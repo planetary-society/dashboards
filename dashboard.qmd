@@ -1,0 +1,201 @@
+---
+title: "NASA Contract Cancellations Tracking"
+author: "Casey Dreier/The Planetary Society"
+format:
+  dashboard:
+    theme: yeti
+    logo: https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg
+---
+
+These data are collected via the offial DOGE website, NASA's Data Procurement View, and the NASA Grants Form archive.
+
+```{python}
+#| echo: false
+#| include: false
+
+# This chunk loads data, performs calculations, and prepares variables/files
+# for the dashboard components. It won't be displayed in the output.
+
+import pandas as pd
+import glob
+import os
+from pathlib import Path
+import json
+from datetime import datetime
+import json
+import leaflet
+import ipyleaflet # Requires ipyleaflet kernel installation
+
+# --- 1. Load and Clean Data ---
+# Assuming the CSV is in the same directory or use a relative path like 'data/file.csv'
+file_path = 'data/nasa_cancelled_contracts_2025_04_16.csv'
+df = pd.read_csv(file_path)
+
+# Find the index of the 'Total' row in 'Nominal End Date'
+try:
+    df['Nominal End Date'] = df['Nominal End Date'].astype(str) # Ensure string type
+    total_row_index = df[df['Nominal End Date'] == 'Total'].index[0]
+    df_cleaned = df.iloc[:total_row_index].copy()
+except IndexError:
+    df_cleaned = df.copy()
+
+# Convert 'Total Obligations' to numeric, handling potential errors
+if 'Total Obligations' in df_cleaned.columns:
+    df_cleaned['Total Obligations'] = df_cleaned['Total Obligations'].astype(str).replace({'\$': '', ',': ''}, regex=True)
+    df_cleaned['Total Obligations'] = pd.to_numeric(df_cleaned['Total Obligations'], errors='coerce')
+    df_cleaned.dropna(subset=['Total Obligations'], inplace=True)
+else:
+    df_cleaned['Total Obligations'] = 0 # Default if column missing
+
+# Ensure 'Recipient' and 'District' columns exist
+if 'Recipient' not in df_cleaned.columns: df_cleaned['Recipient'] = 'Unknown'
+if 'District' not in df_cleaned.columns: df_cleaned['District'] = ''
+
+# --- 2. Calculate Value Box Metrics ---
+total_contracts = len(df_cleaned)
+total_obligations_raw = df_cleaned['Total Obligations'].sum()
+total_obligations = f"${total_obligations_raw / 1_000_000:.1f}M" if total_obligations_raw > 0 else "$0.0M"
+total_unique_recipcients = df_cleaned['Recipient'].nunique()
+last_update = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+# --- 3. Prepare Map Data ---
+df_cleaned['State'] = df_cleaned['District'].fillna('').astype(str).str[:2]
+valid_state_mask = df_cleaned['State'].str.match(r'^[A-Z]{2}$').fillna(False)
+states_impacted = df_cleaned.loc[valid_state_mask, 'State'].value_counts().reset_index()
+states_impacted.columns = ['State', 'Contracts']
+
+# Manually create GeoJSON structure for points
+features = []
+state_coords = { # Add more states or use a more robust lookup if needed
+    'AL': [-86.9023, 32.3182], 'AZ': [-111.0937, 34.0489], 'AR': [-92.1999, 34.7999],
+    'CA': [-119.4179, 36.7783], 'CO': [-105.7821, 39.5501], 'CT': [-72.7554, 41.6032],
+    'DE': [-75.5277, 38.9108], 'FL': [-81.5158, 27.6648], 'GA': [-83.4411, 32.1656],
+    'HI': [-155.8444, 19.8968], 'ID': [-114.7420, 44.0682], 'IL': [-89.3985, 40.6331],
+    'IN': [-86.1349, 40.2672], 'IA': [-93.0977, 41.8780], 'KS': [-98.4842, 39.0119],
+    'KY': [-84.2700, 37.8393], 'LA': [-92.1450, 31.2448], 'ME': [-69.4455, 45.2538],
+    'MD': [-76.6413, 39.0458], 'MA': [-71.3824, 42.4072], 'MI': [-85.6024, 44.3148],
+    'MN': [-94.6859, 46.7296], 'MS': [-89.3985, 32.3547], 'MO': [-92.1001, 38.5739],
+    'MT': [-110.3626, 46.8797], 'NE': [-99.9018, 41.4925], 'NV': [-116.4194, 38.8026],
+    'NH': [-71.5724, 43.1939], 'NJ': [-74.4057, 40.0583], 'NM': [-105.8701, 34.5199],
+    'NY': [-74.2179, 43.2994], 'NC': [-79.0193, 35.7596], 'ND': [-101.0020, 47.5515],
+    'OH': [-82.9071, 40.4173], 'OK': [-97.0929, 35.0078], 'OR': [-120.5542, 43.8041],
+    'PA': [-77.1945, 41.2033], 'RI': [-71.4774, 41.5801], 'SC': [-81.1637, 33.8361],
+    'SD': [-99.9018, 43.9695], 'TN': [-86.5804, 35.5175], 'TX': [-99.9018, 31.9686],
+    'UT': [-111.0937, 39.3210], 'VT': [-72.5778, 44.5588], 'VA': [-78.6569, 37.4316],
+    'WA': [-120.7401, 47.7511], 'WV': [-80.4549, 38.5976], 'WI': [-89.6165, 44.5000],
+    'WY': [-107.2903, 43.0759], 'DC': [-77.0369, 38.9072]
+}
+for index, row in states_impacted.iterrows():
+    state = row['State']
+    count = row['Contracts']
+    if state in state_coords:
+        features.append({
+            "type": "Feature",
+            "properties": {"name": state, "contracts": int(count)},
+            "geometry": {"type": "Point", "coordinates": state_coords[state]}
+        })
+map_geojson_data = {"type": "FeatureCollection", "features": features}
+
+# Save to file (optional, could pass variable directly, but file is robust)
+geojson_output_path = 'states_impacted_map_data.geojson'
+with open(geojson_output_path, 'w') as f:
+    json.dump(map_geojson_data, f)
+
+# --- 4. Prepare Table Data ---
+recipients_table_data = df_cleaned['Recipient'].value_counts().reset_index()
+recipients_table_data.columns = ['Recipient', '# of Contracts']
+recipients_table_data = recipients_table_data.sort_values(by='# of Contracts', ascending=False).reset_index(drop=True)
+
+```
+
+## Row
+
+```{python}
+#| component: valuebox
+#| title: "Contracts Impacted"
+dict(
+    value = f"{total_contracts}",
+    icon="bi-file-earmark-text"
+)
+```
+
+```{python}
+#| component: valuebox
+#| title: "Total Obligated Value"
+dict(
+  value = total_obligations,
+  icon="bi-currency-dollar"
+)
+```
+
+```{python}
+#| component: valuebox
+#| title: "Recipients Impacted"
+dict(
+  value = f"{total_unique_recipcients}",
+  icon="bi-buildings"
+)
+```
+
+## Row {height=85%}
+
+### Column {width=60%}
+
+```{python}
+#| title: "Impacted States (by Congressional District)"
+#| component: card
+
+import json
+from ipyleaflet import Map, Marker, GeoJSON, LayersControl, basemaps # Correct imports
+import ipywidgets # Needed for popups
+
+# Load the GeoJSON data from the file created in the setup chunk
+geojson_file_path = 'states_impacted_map_data.geojson'
+with open(geojson_file_path, 'r') as f:
+    geo_data = json.load(f)
+
+# Create map centered on US using ipyleaflet.Map
+m = Map(center=[39.8283, -98.5795], zoom=4, basemap=basemaps.CartoDB.Positron) # Use correct Map and add basemap
+
+# Add markers with popups
+for feature in geo_data['features']:
+    props = feature['properties']
+    coords = feature['geometry']['coordinates'] # GeoJSON is [lon, lat]
+    # ipyleaflet Marker uses (lat, lon)
+    marker_location = (coords[1], coords[0])
+    marker = Marker(location=marker_location, draggable=False)
+
+    # Create popup content
+    popup_content = ipywidgets.HTML()
+    popup_content.value = f"<b>{props['name']}</b><br>Contracts: {props['contracts']}"
+    marker.popup = popup_content
+
+    m.add_layer(marker)
+
+
+# Add Layer control (Optional if only markers are added, useful if adding other layers)
+# m.add_control(LayersControl()) # Use correct LayersControl if needed
+
+# Display the map
+m
+```
+
+
+### Column {width=40%}
+
+```{python}
+#| title: Recipients Impacted
+#| component: card
+#| class: scrollable-card # Add a class for potential CSS styling
+
+# Display the pandas DataFrame. Quarto renders it as a table.
+# Applying scrolling via CSS is more reliable than pandas styling options here.
+# Add style to make the card body scrollable.
+
+from IPython.display import display, HTML
+#| title: Recipients Impacted
+#| component: card
+# Display the dataframe - Quarto/IPython handles the rendering
+recipients_table_data
+
+```

@@ -1,13 +1,24 @@
 ---
-title: "NASA Contract Cancellations Tracking"
-author: "Casey Dreier/The Planetary Society"
+title: NASA Contracts Cancellations Tracking
 format:
   dashboard:
+    nav-buttons:
+      - href: about
+        text: About
+      - href: https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/edit?usp=drive_link
+        text: Source Data (Google Sheet)
+      - href: mailto:casey.dreier@planetary.org
+        text: "Contact"
     theme: yeti
     logo: https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg
+    logo-href: https://planetary.org
+    css: custom.css
+    include-in-header:
+      - text: |
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
 ---
-
-These data are collected via the offial DOGE website, NASA's Data Procurement View, and the NASA Grants Form archive.
 
 ```{python}
 #| echo: false
@@ -22,161 +33,305 @@ import os
 from pathlib import Path
 import json
 from datetime import datetime
-import json
-import leaflet
-import ipyleaflet # Requires ipyleaflet kernel installation
+import math # For color interpolation ceiling
 
-# --- 1. Load and Clean Data ---
-# Assuming the CSV is in the same directory or use a relative path like 'data/file.csv'
+# --- State Abbreviation to FIPS Code Mapping ---
+# Source: [https://www.census.gov/library/reference/code-lists/ansi.html#par_textimage_3](https://www.census.gov/library/reference/code-lists/ansi.html#par_textimage_3)
+
+STATE_FIPS_MAP = {
+    'AL': '01', 'AK': '02', 'AZ': '04', 'AR': '05', 'CA': '06', 'CO': '08', 'CT': '09',
+    'DE': '10', 'DC': '11', 'FL': '12', 'GA': '13', 'HI': '15', 'ID': '16', 'IL': '17',
+    'IN': '18', 'IA': '19', 'KS': '20', 'KY': '21', 'LA': '22', 'ME': '23', 'MD': '24',
+    'MA': '25', 'MI': '26', 'MN': '27', 'MS': '28', 'MO': '29', 'MT': '30', 'NE': '31',
+    'NV': '32', 'NH': '33', 'NJ': '34', 'NM': '35', 'NY': '36', 'NC': '37', 'ND': '38',
+    'OH': '39', 'OK': '40', 'OR': '41', 'PA': '42', 'RI': '44', 'SC': '45', 'SD': '46',
+    'TN': '47', 'TX': '48', 'UT': '49', 'VT': '50', 'VA': '51', 'WA': '53', 'WV': '54',
+    'WI': '55', 'WY': '56', 'AS': '60', 'GU': '66', 'MP': '69', 'PR': '72', 'VI': '78'
+}
+
+# --- 1. Load and Clean Contract Data ---
 file_path = 'data/nasa_cancelled_contracts_2025_04_16.csv'
 df = pd.read_csv(file_path)
-
-# Find the index of the 'Total' row in 'Nominal End Date'
 try:
-    df['Nominal End Date'] = df['Nominal End Date'].astype(str) # Ensure string type
+    df['Nominal End Date'] = df['Nominal End Date'].astype(str)
     total_row_index = df[df['Nominal End Date'] == 'Total'].index[0]
     df_cleaned = df.iloc[:total_row_index].copy()
 except IndexError:
     df_cleaned = df.copy()
 
-# Convert 'Total Obligations' to numeric, handling potential errors
+# Process Obligations
 if 'Total Obligations' in df_cleaned.columns:
+    # Ensure string type, remove '$' and ',', convert to numeric
     df_cleaned['Total Obligations'] = df_cleaned['Total Obligations'].astype(str).replace({'\$': '', ',': ''}, regex=True)
     df_cleaned['Total Obligations'] = pd.to_numeric(df_cleaned['Total Obligations'], errors='coerce')
+    # Remove rows where conversion failed (resulted in NaN)
     df_cleaned.dropna(subset=['Total Obligations'], inplace=True)
 else:
-    df_cleaned['Total Obligations'] = 0 # Default if column missing
+    # Handle case where column might be missing
+    df_cleaned['Total Obligations'] = 0
 
-# Ensure 'Recipient' and 'District' columns exist
-if 'Recipient' not in df_cleaned.columns: df_cleaned['Recipient'] = 'Unknown'
-if 'District' not in df_cleaned.columns: df_cleaned['District'] = ''
+# --- Calculate the total formatted obligation value ---
+# This uses the processed 'Total Obligations' column
 
-# --- 2. Calculate Value Box Metrics ---
 total_contracts = len(df_cleaned)
 total_obligations_raw = df_cleaned['Total Obligations'].sum()
 total_obligations = f"${total_obligations_raw / 1_000_000:.1f}M" if total_obligations_raw > 0 else "$0.0M"
 total_unique_recipcients = df_cleaned['Recipient'].nunique()
+total_unique_districts = df_cleaned['District'].nunique()
 last_update = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-# --- 3. Prepare Map Data ---
-df_cleaned['State'] = df_cleaned['District'].fillna('').astype(str).str[:2]
-valid_state_mask = df_cleaned['State'].str.match(r'^[A-Z]{2}$').fillna(False)
-states_impacted = df_cleaned.loc[valid_state_mask, 'State'].value_counts().reset_index()
-states_impacted.columns = ['State', 'Contracts']
+df_present = df_cleaned.drop(columns=["Latest Modification Number", "Business Categories"])
+# Transform the "Award ID" into a hyperlink using the URL from the "URL" column, then remove the "URL" column.
+df_present['Award ID'] = df_present.apply(
+    lambda row: f'<a href="{row["URL"]}" target="_blank">{row["Award ID"]}</a>',
+    axis=1
+)
+df_present.drop(columns=["URL"], inplace=True)
 
-# Manually create GeoJSON structure for points
-features = []
-state_coords = { # Add more states or use a more robust lookup if needed
-    'AL': [-86.9023, 32.3182], 'AZ': [-111.0937, 34.0489], 'AR': [-92.1999, 34.7999],
-    'CA': [-119.4179, 36.7783], 'CO': [-105.7821, 39.5501], 'CT': [-72.7554, 41.6032],
-    'DE': [-75.5277, 38.9108], 'FL': [-81.5158, 27.6648], 'GA': [-83.4411, 32.1656],
-    'HI': [-155.8444, 19.8968], 'ID': [-114.7420, 44.0682], 'IL': [-89.3985, 40.6331],
-    'IN': [-86.1349, 40.2672], 'IA': [-93.0977, 41.8780], 'KS': [-98.4842, 39.0119],
-    'KY': [-84.2700, 37.8393], 'LA': [-92.1450, 31.2448], 'ME': [-69.4455, 45.2538],
-    'MD': [-76.6413, 39.0458], 'MA': [-71.3824, 42.4072], 'MI': [-85.6024, 44.3148],
-    'MN': [-94.6859, 46.7296], 'MS': [-89.3985, 32.3547], 'MO': [-92.1001, 38.5739],
-    'MT': [-110.3626, 46.8797], 'NE': [-99.9018, 41.4925], 'NV': [-116.4194, 38.8026],
-    'NH': [-71.5724, 43.1939], 'NJ': [-74.4057, 40.0583], 'NM': [-105.8701, 34.5199],
-    'NY': [-74.2179, 43.2994], 'NC': [-79.0193, 35.7596], 'ND': [-101.0020, 47.5515],
-    'OH': [-82.9071, 40.4173], 'OK': [-97.0929, 35.0078], 'OR': [-120.5542, 43.8041],
-    'PA': [-77.1945, 41.2033], 'RI': [-71.4774, 41.5801], 'SC': [-81.1637, 33.8361],
-    'SD': [-99.9018, 43.9695], 'TN': [-86.5804, 35.5175], 'TX': [-99.9018, 31.9686],
-    'UT': [-111.0937, 39.3210], 'VT': [-72.5778, 44.5588], 'VA': [-78.6569, 37.4316],
-    'WA': [-120.7401, 47.7511], 'WV': [-80.4549, 38.5976], 'WI': [-89.6165, 44.5000],
-    'WY': [-107.2903, 43.0759], 'DC': [-77.0369, 38.9072]
-}
-for index, row in states_impacted.iterrows():
-    state = row['State']
-    count = row['Contracts']
-    if state in state_coords:
-        features.append({
-            "type": "Feature",
-            "properties": {"name": state, "contracts": int(count)},
-            "geometry": {"type": "Point", "coordinates": state_coords[state]}
-        })
-map_geojson_data = {"type": "FeatureCollection", "features": features}
+# Format monetary columns in the contracts table for consistent display
+if 'Total Obligations' in df_present.columns:
+    df_present['Total Obligations'] = df_present['Total Obligations'].apply(
+        lambda x: f"${x:,}" if isinstance(x, (int, float)) else x
+    )
 
-# Save to file (optional, could pass variable directly, but file is robust)
-geojson_output_path = 'states_impacted_map_data.geojson'
-with open(geojson_output_path, 'w') as f:
-    json.dump(map_geojson_data, f)
+if 'Total Outlays' in df_present.columns:
+    df_present['Total Outlays'] = df_present['Total Outlays'].apply(
+        lambda x: f"${x:,.2f}" if isinstance(x, (int, float)) else x
+    )
 
-# --- 4. Prepare Table Data ---
-recipients_table_data = df_cleaned['Recipient'].value_counts().reset_index()
-recipients_table_data.columns = ['Recipient', '# of Contracts']
-recipients_table_data = recipients_table_data.sort_values(by='# of Contracts', ascending=False).reset_index(drop=True)
+# --- 3. Prepare Congressional District Data ---
 
+def get_geoid_from_district(district_str):
+    """Converts 'XX-YY' or 'XX-ZZ' district format to 4-digit GEOID string."""
+    if not isinstance(district_str, str) or '-' not in district_str:
+        return None
+    parts = district_str.split('-')
+    state_abbr = parts[0].upper()
+    district_num_str = parts[1].upper()
+
+    state_fips = STATE_FIPS_MAP.get(state_abbr)
+    if not state_fips:
+        return None
+
+    # Handle 'ZZ' districts described in GeoJSON source
+    if district_num_str == 'ZZ':
+         cd_fips = 'ZZ' # Keep ZZ as is
+    else:
+        try:
+            # Pad district number to 2 digits (e.g., 1 -> 01)
+            cd_fips = f"{int(district_num_str):02d}"
+        except ValueError:
+            return None # Invalid district number
+
+    return f"{state_fips}{cd_fips}"
+
+# Apply function to create GEOID column
+df_cleaned['GEOID'] = df_cleaned['District'].apply(get_geoid_from_district)
+
+# Aggregate counts per GEOID
+district_counts = df_cleaned.dropna(subset=['GEOID'])['GEOID'].value_counts()
+max_contracts_per_district = district_counts.max() if not district_counts.empty else 1
+district_counts_dict = district_counts.to_dict() # Convert to dict for faster lookup
+
+# --- 4. Prepare Recipient Table Data ---
+recipients_table_data = df_cleaned.groupby('Recipient').agg(
+    **{
+        '# of Contracts': ('Award ID', 'count'),
+        'Total Obligations': ('Total Obligations', 'sum')
+    }
+).reset_index()
+
+# Format the obligation column as currency
+recipients_table_data['Total Obligations'] = (
+    recipients_table_data['Total Obligations']
+    .map(lambda x: f"${x:,.2f}")
+)
+
+# Sort by number of contracts descending
+recipients_table_data = recipients_table_data.sort_values(
+    by='# of Contracts', ascending=False
+).reset_index(drop=True)
+
+# --- 5. Load GeoJSON ---
+geojson_file_path = 'us_congressional_districts.geojson'
+try:
+    with open(geojson_file_path, 'r') as f:
+        congressional_geojson_data = json.load(f)
+except FileNotFoundError:
+    print(f"ERROR: GeoJSON file not found at {geojson_file_path}")
+    congressional_geojson_data = None # Set to None to handle gracefully later
+except json.JSONDecodeError:
+    print(f"ERROR: Could not decode GeoJSON file at {geojson_file_path}")
+    congressional_geojson_data = None
+
+# --- 6. Color Scale Logic for Choropleth ---
+
+def hex_to_rgb(hex_color):
+    """Converts #RRGGBB to (R, G, B) tuple."""
+    hex_color = hex_color.lstrip('#')
+    return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+
+def rgb_to_hex(rgb_tuple):
+    """Converts (R, G, B) tuple to #RRGGBB."""
+    return '#{:02x}{:02x}{:02x}'.format(*map(int, rgb_tuple)) # Ensure integers
+
+# Define target colors
+color_zero = hex_to_rgb('#FFFFFF') # White for 0
+color_one = hex_to_rgb('#d19690')  # Light red/pink for 1
+color_max = hex_to_rgb('#9c1a0e')  # Dark red for max
+
+def get_choropleth_color(count, max_count):
+    """Calculates interpolated color based on count."""
+    if count <= 0:
+        return rgb_to_hex(color_zero)
+    if count == 1:
+        return rgb_to_hex(color_one)
+    if max_count <= 1: # Avoid division by zero if max is 1
+         return rgb_to_hex(color_one)
+
+    # Interpolation factor (0=one, 1=max)
+    t = (count - 1) / (max_count - 1)
+    t = max(0, min(1, t)) # Clamp t between 0 and 1
+
+    # Linear interpolation for R, G, B
+    r = color_one[0] + (color_max[0] - color_one[0]) * t
+    g = color_one[1] + (color_max[1] - color_one[1]) * t
+    b = color_one[2] + (color_max[2] - color_one[2]) * t
+
+    # Round components before converting back to hex
+    return rgb_to_hex((round(r), round(g), round(b)))
+
+# --- 7. Define Style Callback for Map ---
+def choropleth_style_callback(feature):
+    """Returns style dictionary for a GeoJSON feature."""
+    # GEOID in properties seems to be STATEFP + CD118FP
+    geoid = feature['properties'].get('GEOID', '')
+    count = district_counts_dict.get(geoid, 0) # Get count, default to 0
+    color = get_choropleth_color(count, max_contracts_per_district)
+
+    return {
+        'fillColor': color,
+        'color': '#555555',  # Border color for districts
+        'weight': 0.5,        # Border weight
+        'fillOpacity': 0.7    # Fill opacity
+    }
 ```
 
-## Row
+## Row {height=15%}
 
 ```{python}
 #| component: valuebox
-#| title: "Contracts Impacted"
+#| title: "Contracts Cancelled"
+#| icon: files
 dict(
     value = f"{total_contracts}",
-    icon="bi-file-earmark-text"
 )
 ```
 
 ```{python}
 #| component: valuebox
-#| title: "Total Obligated Value"
+#| title: "Total Value Impacted"
+#| icon: chevron-double-down
 dict(
   value = total_obligations,
-  icon="bi-currency-dollar"
 )
 ```
 
 ```{python}
 #| component: valuebox
 #| title: "Recipients Impacted"
+#| icon: building-down
 dict(
   value = f"{total_unique_recipcients}",
-  icon="bi-buildings"
 )
 ```
 
-## Row {height=85%}
+```{python}
+#| component: valuebox
+#| title: "Congressional Districts Impacted"
+#| icon: bank
+dict(
+  value = f"{total_unique_districts}",
+)
+```
+
+## Row {height=50%}
 
 ### Column {width=60%}
 
 ```{python}
-#| title: "Impacted States (by Congressional District)"
+#| title: "Impacted Congressional Districts"
 #| component: card
+#| echo: false
+#| warning: false
+#| message: false
+#| results: asis
 
-import json
-from ipyleaflet import Map, Marker, GeoJSON, LayersControl, basemaps # Correct imports
-import ipywidgets # Needed for popups
+import folium
+from branca.colormap import LinearColormap
+from IPython.display import IFrame
 
-# Load the GeoJSON data from the file created in the setup chunk
-geojson_file_path = 'states_impacted_map_data.geojson'
-with open(geojson_file_path, 'r') as f:
-    geo_data = json.load(f)
+# --- build hover_info dict with contract counts ---
+hover_info = {}
+for geoid, group in df_cleaned.dropna(subset=['GEOID']).groupby('GEOID'):
+    n = len(group)
+    # first line shows total contracts in that district
+    header = f"<b>Number of contracts: {n}</b>"
+    # then one entry per contract
+    lines = []
+    for _, row in group.iterrows():
+        amt = row['Total Obligations']
+        amt_str = f"${amt:,.2f}"
+        award = row.get('Award ID', 'N/A')
+        rec   = row['Recipient']
+        lines.append(f"<b>{rec}</b><br>{amt_str} (Award ID: {award})")
+    # join header + a separator + all the lines
+    hover_info[geoid] = header + "<br><br>" + "<br>".join(lines)
 
-# Create map centered on US using ipyleaflet.Map
-m = Map(center=[39.8283, -98.5795], zoom=4, basemap=basemaps.CartoDB.Positron) # Use correct Map and add basemap
+# inject hover_info into GeoJSON properties
+for feature in congressional_geojson_data['features']:
+    gid = feature['properties'].get('GEOID')
+    feature['properties']['hover_info'] = hover_info.get(gid, "No contracts")
 
-# Add markers with popups
-for feature in geo_data['features']:
-    props = feature['properties']
-    coords = feature['geometry']['coordinates'] # GeoJSON is [lon, lat]
-    # ipyleaflet Marker uses (lat, lon)
-    marker_location = (coords[1], coords[0])
-    marker = Marker(location=marker_location, draggable=False)
+# build the map
+m = folium.Map(location=[39.8283, -98.5795], zoom_start=4, tiles="CartoDB positron")
 
-    # Create popup content
-    popup_content = ipywidgets.HTML()
-    popup_content.value = f"<b>{props['name']}</b><br>Contracts: {props['contracts']}"
-    marker.popup = popup_content
+# color ramp
+colormap = LinearColormap(
+    ["#ffffff", "#ff0000", "#660000"],
+    vmin=0,
+    vmax=max_contracts_per_district,
+)
 
-    m.add_layer(marker)
+def style_function(feature):
+    geoid = feature["properties"]["GEOID"]
+    count = district_counts_dict.get(geoid, 0)
+    return {
+        "fillColor": colormap(count),
+        "color": "#555555",
+        "weight": 0.5,
+        "fillOpacity": 0.8,
+    }
 
+# create the tooltip on our injected html
+tooltip = folium.GeoJsonTooltip(
+    fields=["hover_info"],
+    aliases=[""],
+    labels=False,
+    sticky=True,
+    parse_html=True,
+    style=("background-color: white; padding: 5px;")
+)
 
-# Add Layer control (Optional if only markers are added, useful if adding other layers)
-# m.add_control(LayersControl()) # Use correct LayersControl if needed
+# add layers (suppress repr)
+_ = folium.GeoJson(
+    congressional_geojson_data,
+    style_function=style_function,
+    tooltip=tooltip,
+    name="Impacted Districts"
+).add_to(m)
 
-# Display the map
+# 6. Display
 m
 ```
 
@@ -185,17 +340,20 @@ m
 
 ```{python}
 #| title: Recipients Impacted
-#| component: card
-#| class: scrollable-card # Add a class for potential CSS styling
+#| component: datatable
+#| sortable: true
 
-# Display the pandas DataFrame. Quarto renders it as a table.
-# Applying scrolling via CSS is more reliable than pandas styling options here.
-# Add style to make the card body scrollable.
+from itables import show
+show(recipients_table_data, classes="compact display", searching=False, info=False)
 
-from IPython.display import display, HTML
-#| title: Recipients Impacted
-#| component: card
-# Display the dataframe - Quarto/IPython handles the rendering
-recipients_table_data
+```
+
+## Row {height=35%}
+```{python}
+#| title: All Contracts
+#| component: datatable
+#| sortable: true
+
+show(df_present, classes="display nowrap compact", searching=False, info=False)
 
 ```

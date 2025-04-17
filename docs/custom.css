@@ -1,0 +1,58 @@
+/* custom.css - Updated with Planetary Society inspired colors */
+/* --- Font Styling --- */
+body {
+    font-family: Poppins, Helvetica, Arial, sans-serif;
+  }
+
+/* --- General Link Styling --- */
+/* Apply accent color to standard links */
+a {
+    color: #037cc2;
+  }
+  
+  a:hover {
+    color: #025c94; /* Slightly darker blue on hover */
+  }
+  
+  
+  /* --- Navbar Styling --- */
+  
+  /* Set navbar background to black */
+  .navbar {
+    background-color: black !important;
+    padding: 0.5rem 1rem !important; /* Adjust padding for better spacing */
+  }
+  
+  /* Adjust navbar text/link colors for readability on black */
+  .navbar .navbar-brand,
+  .navbar .nav-item .nav-link,
+  .navbar .nav-link,
+  .navbar .quarto-navigation-tool {
+    color: white !important; /* White text/icons on black */
+  }
+  
+  
+.card-header {
+    background-color:#037cc2 !important; /* Planetary Society blue */
+    color: white !important; /* White text */
+}
+
+  /* --- Value Box Styling --- */
+  
+  /* Apply light background and curve to value box corners */
+  .card.valuebox {
+    background-color: #edf2f7; /* Light grey background */
+    border-radius: 0.5rem;    /* Updated border radius */
+    overflow: hidden;         /* Ensures background respects the border radius */
+    border: 1px solid #dee2e6; /* Optional: add a light border */
+    color: #212529;           /* Ensure text is dark on light background */
+    text-align: center;    /* Center text */
+    font-weight: bold;
+  }
+  
+  /* Ensure icons are visible on the light background */
+  .quarto-dashboard-value-box .value-box-icon {
+     color: #495057; /* Darker grey for icon */
+     size: 75%;
+  }
+  

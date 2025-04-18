@@ -27,7 +27,7 @@ jobs:
             "https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=csv"
 
       - name: Render Quarto dashboard
-        run: quarto render dashboard.qmd
+        run: quarto render cancellations.qmd
 
       - name: Commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v4

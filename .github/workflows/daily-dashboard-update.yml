@@ -7,9 +7,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  update-dashboard:
+  build:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
       - name: Check out repository
         uses: actions/checkout@v3

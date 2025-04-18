@@ -1,0 +1,39 @@
+name: Daily Dashboard Update
+
+on:
+  schedule:
+    # runs every day at 8:00 AM Pacific Time (15:00 UTC)
+    - cron: '0 15 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-dashboard:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Quarto CLI
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Ensure data directory exists
+        run: mkdir -p data
+
+      - name: Download latest CSV
+        run: |
+          curl -fL -o data/nasa_cancelled_contracts_$(date +'%Y-%m-%d').csv \
+            "https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=csv"
+
+      - name: Render Quarto dashboard
+        run: quarto render dashboard.qmd
+
+      - name: Commit & push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: daily data refresh and dashboard rebuild"
+          # commit any new CSVs or rebuilt files
+          file_pattern: |
+            data/nasa_cancelled_contracts_*.csv
+            **/*.html
+            **/*.css

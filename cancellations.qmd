@@ -206,17 +206,18 @@ def choropleth_style_callback(feature):
 ```
 
 ---
-title: NASA Contracts Cancellations Tracking (Updated `{python} last_updated.strftime("%Y-%m-%d")`)
+title: NASA Contract Cancellations
 format:
   dashboard:
+    description-meta: "Daily updated dashboard tracking NASA grants and contracts terminated by the Trump Admininistration."
+    author-meta: "Casey Dreier/The Planetary Society"
+    logo: "img/TPS_Logo_3Stack-White.png"
+    logo-href: "https://planetary.org"
+    lang: en
     nav-buttons:
-      - href: https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/edit?usp=drive_link
-        text: Source Data (Google Sheet)
       - href: mailto:casey.dreier@planetary.org
         text: "Contact"
     theme: yeti
-    logo: "img/TPS_Logo_3Stack-White.png"
-    logo-href: "https://planetary.org"
     css: custom.css
     include-in-header:
       - text: |
@@ -225,7 +226,9 @@ format:
           <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
 ---
 
-## Row
+# Summary
+
+## Row {height="25%"}
 
 ```{python}
 #| component: valuebox
@@ -263,7 +266,7 @@ dict(
 )
 ```
 
-## Row {height=50%}
+## Row {height=75%}
 
 ### Column {width=60%}
 
@@ -356,7 +359,7 @@ show(recipients_table_data, classes="compact display", searching=False, info=Fal
 
 ```
 
-## Row {height=35%}
+# All Contracts
 ```{python}
 #| title: All Contracts
 #| component: datatable

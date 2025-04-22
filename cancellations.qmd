@@ -301,7 +301,7 @@ title: NASA Cancelled Contracts
 format:
   dashboard:
     pagetitle: NASA Contract Cancellations
-    description-meta: "Dashboard tracking NASA grants and contracts terminated by the Trump Admininistration."
+    description-meta: "Dashboard tracking NASA grants and contracts terminated by the Trump Administration."
     author-meta: "Casey Dreier/The Planetary Society"
     logo: "img/TPS_Logo_3Stack-White.png"
     lang: en
@@ -317,13 +317,21 @@ format:
           <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
           <script>
             document.addEventListener('DOMContentLoaded', function() {
-                // Select the anchor tag within the navbar brand container
-                const logoLink = document.querySelector('.navbar-brand-container a');
-                if (logoLink) {
-                    // Set the href attribute to the desired URL
-                    logoLink.href = 'https://planetary.org';
-                    // Optional: Add rel="noopener noreferrer" for security when using target="_blank"
-                    logoLink.rel = 'noopener noreferrer';
+                // Select the FIRST anchor tag that is a DIRECT CHILD of the container
+                const logoLinkAnchor = document.querySelector('.navbar-brand-container > a');
+
+                // Alternatively, you could select the image and then get its parent element:
+                // const logoImage = document.querySelector('.navbar-logo');
+                // const logoLinkAnchor = logoImage ? logoImage.parentElement : null;
+
+                // Check if the anchor element was found
+                if (logoLinkAnchor) {
+                    // Set the href attribute of the anchor tag
+                    logoLinkAnchor.href = 'https://planetary.org';
+                    // Optional: For accessibility and SEO, you might want to set the title too
+                    // logoLinkAnchor.title = 'Visit The Planetary Society homepage';
+                } else {
+                    console.error("Could not find the logo link anchor element to update.");
                 }
             });
           </script>
@@ -331,7 +339,7 @@ format:
 
 # Summary
 
-## Row {height="25%"}
+## Row {.flow}
 
 ```{python}
 #| component: valuebox
@@ -471,7 +479,7 @@ show(recipients_table_data, classes="compact display", searching=False, info=Fal
 # Contracts Listing
 
 ## Row {height="12%"}
-::: {.card expandable="false"}
+::: {.card expandable="false" class="vertical-align"}
 Data last updated `{python} last_updated.strftime("%B %-d, %Y")`. Download as <a href="https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=csv">CSV</a> | <a href="https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=xlsx">Excel</a>
 :::
 
@@ -484,3 +492,32 @@ Data last updated `{python} last_updated.strftime("%B %-d, %Y")`. Download as <a
 show(df_present, classes="display nowrap compact", searching=False, info=False)
 
 ```
+
+# About {expandable="false"}
+
+**About This Dashboard**
+
+This dashboard provides insights into NASA contracts and grants that may have been cancelled, terminated, or significantly modified since January 20th, 2025. The data presented here are compiled and maintained by Casey Dreier at The Planetary Society to enhance transparency surrounding NASA's programmatic activities and funding allocations.
+
+**How the Data is Compiled**
+
+To identify potential changes, several different official government data sources and public datasets: the DOGE website, NASA's Procurement Data View database, and an archived database of NASA Grants information. These are monitored on a daily basis. These sources are scanned for specific indicators that might suggest an award is undergoing a significant change, such as:
+
+* DOGE-reported actions
+* Keywords like "termination" or "stop work" appearing in modification descriptions.
+* Official status updates indicating cancellation or termination.
+* Changes suggesting a significant reduction in scope, like a shortened performance period combined with decreased funding.
+
+When one of these sources flags a potential change in a NASA contract or grant, the system retrieves comprehensive and standardized details for that specific award directly from the official **USAspending.gov** database. This ensures the information presented—such as recipient names, funding amounts, award dates, and locations—is based on the authoritative federal spending record.
+
+The goal is to provide a consolidated list of NASA awards that warrant further investigation due to data signals suggesting they may have been cancelled or significantly altered.
+
+*This data is checked daily. The last updated date reflects the last time a change was detected. Inclusion on this list signifies that an award has met specific criteria suggesting a potential cancellation or significant modification based on available data; further investigation is recommended.*
+
+
+*For questions, corrections, or submissions, contact Casey Dreier at [casey.dreier@planetary.org](mailto:casey.dreier@planetary.org).*
+
+
+
+---
+

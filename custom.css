@@ -66,3 +66,13 @@ a {
   .card a.nav-link:hover {
     color: grey !important; /* Planetary Society blue on hover */
   }
+
+
+  .fixed-height {
+    max-height: 600px !important; /*i Or your desired height */
+    overflow-y: auto !important; /* Add vertical scrollbar only if needed */
+  }
+
+  .vertical-align{
+    vertical-align: middle !important;
+  }

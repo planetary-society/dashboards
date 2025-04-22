@@ -297,13 +297,13 @@ district_table_data = district_table_data.sort_values(
 ```
 
 ---
-title: NASA Contract Cancellations
+title: NASA Cancelled Contracts
 format:
   dashboard:
-    description-meta: "Daily updated dashboard tracking NASA grants and contracts terminated by the Trump Admininistration."
+    pagetitle: NASA Contract Cancellations
+    description-meta: "Dashboard tracking NASA grants and contracts terminated by the Trump Admininistration."
     author-meta: "Casey Dreier/The Planetary Society"
     logo: "img/TPS_Logo_3Stack-White.png"
-    logo-href: "https://planetary.org"
     lang: en
     nav-buttons:
       - href: mailto:casey.dreier@planetary.org
@@ -315,6 +315,18 @@ format:
           <link rel="preconnect" href="https://fonts.googleapis.com">
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
           <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Select the anchor tag within the navbar brand container
+                const logoLink = document.querySelector('.navbar-brand-container a');
+                if (logoLink) {
+                    // Set the href attribute to the desired URL
+                    logoLink.href = 'https://planetary.org';
+                    // Optional: Add rel="noopener noreferrer" for security when using target="_blank"
+                    logoLink.rel = 'noopener noreferrer';
+                }
+            });
+          </script>
 ---
 
 # Summary
@@ -456,9 +468,16 @@ show(recipients_table_data, classes="compact display", searching=False, info=Fal
 
 ```
 
-# Contract Listing
+# Contracts Listing
+
+## Row {height="12%"}
+::: {.card expandable="false"}
+Data last updated `{python} last_updated.strftime("%B %-d, %Y")`. Download as <a href="https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=csv">CSV</a> | <a href="https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=xlsx">Excel</a>
+:::
+
+## Row {height="88%"}
 ```{python}
-#| title: All Contracts
+#| title: Contracts Data
 #| component: datatable
 #| sortable: true
 

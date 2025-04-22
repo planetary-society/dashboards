@@ -27,9 +27,11 @@ nasa_budget_data = "https://docs.google.com/spreadsheets/d/1NMRYCCRWXwpn3pZU57-B
 
 df = download_csv_to_dataframe(nasa_budget_data)
 
-chart = plot_nasa_budget_submission_projection(df)
-
-
-chart
+# Write the chart to img/
+plot_nasa_budget_pygal(df)
 
 ```
+
+### Historical NASA Budget Submission vs. Projection
+
+![NASA Budget Trends](img/nasa-budget-latest.svg)

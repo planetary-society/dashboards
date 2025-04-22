@@ -6,6 +6,9 @@
 # for the dashboard components. It won't be displayed in the output.
 
 import pandas as pd
+import altair as alt
+import collections as c # Import collections for Counter
+import re # Import re for splitting
 import glob
 import os
 from pathlib import Path
@@ -203,6 +206,76 @@ def choropleth_style_callback(feature):
         'weight': 0.5,        # Border weight
         'fillOpacity': 0.7    # Fill opacity
     }
+
+# --- 8. Histogram Data Preparation (Keyword-Based Approach) ---
+
+# Define grouping keyword lists
+SMALL_KEYWORDS = ["8(a)", "HUBZone", "Disadvantaged Business", "Women Owned Small Business", "AbilityOne"]
+# Note: "Disadvantaged Business" will catch SDB, Self-Certified SDB, DoT Certified DBE
+MINORITY_KEYWORDS = ["Alaskan Native", "Native Hawaiian", "Tribally Owned", "American Indian", "Asian", "Black American", "Hispanic", "Other Minority", "Minority Owned"]
+# Note: "Asian" catches Asian-Pacific and Subcontinent Asian. "American Indian" catches Native American.
+VETERAN_KEYWORDS = ["Veteran Owned", "Service Disabled Veteran"]
+HIGHER_ED_KEYWORDS = ["University", "College", "Institution", "Land Grant"] # Simplified
+FOREIGN_KEYWORD = "Foreign"
+
+# Define the label extraction function
+def extract_labels(category_str):
+    labels = set()
+    # Handle potential NaN values gracefully
+    if pd.isna(category_str):
+        return labels
+    # Split by comma or semicolon, strip whitespace
+    items = [item.strip() for item in re.split(r"[,;]", str(category_str)) if item.strip()]
+    has_small_program_label = False
+    has_minority_label = False
+    has_veteran_label = False
+    has_higher_ed_label = False
+    has_foreign_label = False
+
+    for item in items:
+        # Check keywords only once per aggregate category to avoid double counting from multiple matches within one contract
+        if not has_small_program_label and any(k in item for k in SMALL_KEYWORDS):
+            labels.add("Small Business Programs")
+            has_small_program_label = True
+        if not has_minority_label and any(k in item for k in MINORITY_KEYWORDS):
+            labels.add("Minority-Owned Business")
+            has_minority_label = True
+        if not has_veteran_label and any(k in item for k in VETERAN_KEYWORDS):
+            labels.add("Veteran-Run Business")
+            has_veteran_label = True
+        if not has_higher_ed_label and any(k in item for k in HIGHER_ED_KEYWORDS):
+            labels.add("Higher Education Institution")
+            has_higher_ed_label = True
+        if not has_foreign_label and FOREIGN_KEYWORD in item:
+            labels.add("Foreign-Owned Business")
+            has_foreign_label = True
+
+    # Add other relevant, non-aggregated, non-excluded categories if needed
+    if 'Nonprofit Organization' in items:
+         labels.add("Nonprofit Organization")
+    # Add a basic check for 'Government' if it's not part of other categories
+    is_gov_subcat = any(kw in item for kw in ["Local", "State", "Federal", "Tribal"] for item in items)
+    if 'Government' in items and not is_gov_subcat and not has_higher_ed_label:
+         labels.add("Government (General)")
+
+
+    return labels
+
+# Calculate counts using the keyword approach
+hist_counter = c.Counter()
+# Ensure df_cleaned and the column exist before iterating
+if 'df_cleaned' in locals() and 'Business Categories' in df_cleaned.columns:
+    for entry in df_cleaned["Business Categories"]:
+        # The extract_labels function returns a set, ensuring each label is counted only once per contract
+        labels_for_entry = extract_labels(entry)
+        for lab in labels_for_entry:
+            hist_counter[lab] += 1
+    # Convert counter to pandas Series for Altair plotting
+    hist_data_series = pd.Series(hist_counter).sort_values(ascending=False)
+else:
+    print("Warning: 'Business Categories' data not available for histogram preparation.")
+    hist_data_series = pd.Series(dtype=int) # Empty series to avoid downstream errors
+
 ```
 
 ---
@@ -268,7 +341,7 @@ dict(
 
 ## Row {height=75%}
 
-### Column {width=60%}
+### Column {width=60%}{.tabset}
 
 ```{python}
 #| title: "Impacted Congressional Districts"
@@ -344,6 +417,44 @@ _ = folium.GeoJson(
 
 # 6. Display
 m
+```
+
+```{python}
+#| title: "Impact by Business Type"
+#| component: card
+#| echo: false
+
+# --- This chunk generates and displays the Altair histogram ---
+# It uses the hist_data_series prepared in the setup chunk using the keyword method.
+
+import altair as alt
+import pandas as pd # Ensure pandas is available here if needed, though hist_data_series should be passed
+
+# Ensure hist_data_series exists and is not empty
+if 'hist_data_series' in locals() and not hist_data_series.empty:
+    # Define colors from CSS
+    planetary_blue = '#037cc2'
+
+    # Convert the series to a DataFrame suitable for Altair
+    hist_df = hist_data_series.reset_index().rename(columns={"index": "Category", 0: "Count"})
+
+    # Create the Altair chart
+    chart = alt.Chart(hist_df).mark_bar(color=planetary_blue).encode(
+        x=alt.X('Count', axis=alt.Axis(title='Number of Cancelled Contracts')),
+        y=alt.Y('Category', sort='-x', axis=alt.Axis(title='Business Category (Keyword Grouped)')), # Updated axis title
+        tooltip=[
+            alt.Tooltip('Category', title='Business Type'),
+            alt.Tooltip('Count', title='Contracts Cancelled')
+            ]
+    ).properties(
+        title='Cancelled Contracts by Simplified Business Category' # Updated title
+    ).interactive()
+
+    # Display the chart (Quarto will render this object)
+    chart
+else:
+    # Display a message if data is not available
+    print("Histogram data not available.")
 ```
 
 

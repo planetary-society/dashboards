@@ -1,0 +1,35 @@
+---
+title: NASA's Budget
+format:
+    dashboard:
+        pagetitle: NASA Budget Dashboard
+        author-meta: Casey Dreier/The Planetary Society
+        logo: "img/TPS_Logo_3Stack-White.png"
+        logo-href: "https://planetary.org"
+        lang: en
+        theme: yeti
+        css: custom.css
+        include-in-header:
+            - text: |
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+---
+
+# NASA Budget
+
+```{python}
+
+from src.common import download_csv_to_dataframe
+from src.budget import *
+
+nasa_budget_data = "https://docs.google.com/spreadsheets/d/1NMRYCCRWXwpn3pZU57-Bb0P1Zp3yg2lTTVUzvc5GkIs/export?format=csv"
+
+df = download_csv_to_dataframe(nasa_budget_data)
+
+chart = plot_nasa_budget_submission_projection(df)
+
+
+chart
+
+```

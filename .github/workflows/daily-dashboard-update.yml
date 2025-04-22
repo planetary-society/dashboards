@@ -1,19 +1,28 @@
+# GitHub Action Workflow: Daily Dashboard Update
+#
+# This workflow runs daily to:
+# 1. Download the latest CSV data.
+# 2. Compare the new CSV with the most recent previous CSV in the data/ directory.
+# 3. Delete the new CSV if it's identical to the previous one.
+# 4. Render a Quarto dashboard using the latest available data.
+# 5. Commit any new data files (if different) and the rebuilt dashboard files.
+
 name: Daily Dashboard Update
 
 on:
   schedule:
-    # runs every day at 8:00 AM Pacific Time (15:00 UTC)
+    # runs every day at 8:00 AM Pacific Time (15:00 UTC)
     - cron: '0 15 * * *'
-  workflow_dispatch:
+  workflow_dispatch: # Allows manual triggering
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write # Required to commit changes back to the repository
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Use latest version
 
       - name: Set up Quarto CLI
         uses: quarto-dev/quarto-actions/setup@v2
@@ -22,7 +31,7 @@ jobs:
         run: mkdir -p data
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5 # Use latest version
         with:
           python-version: '3.x'
 
@@ -31,19 +40,52 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Define new filename
+        id: define_filename # Give this step an ID to reference its output
+        run: echo "FILENAME=data/nasa_cancelled_contracts_$(date +'%Y-%m-%d').csv" >> $GITHUB_OUTPUT
+
       - name: Download latest CSV
         run: |
-          curl -fL -o data/nasa_cancelled_contracts_$(date +'%Y-%m-%d').csv \
+          # Use the filename defined in the previous step
+          curl -fL -o ${{ steps.define_filename.outputs.FILENAME }} \
             "https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=csv"
+
+      - name: Compare with previous and cleanup
+        id: compare_files
+        run: |
+          NEW_FILE="${{ steps.define_filename.outputs.FILENAME }}"
+          echo "Newly downloaded file: $NEW_FILE"
+
+          # Find all CSV files in data/, sort reverse alphabetically (newest date first),
+          # exclude the new file, and take the first one (most recent previous file).
+          PREVIOUS_FILE=$(ls -r data/*.csv 2>/dev/null | grep -v "$NEW_FILE" | head -n 1)
+
+          # Check if a previous file exists and is actually a file
+          if [[ -n "$PREVIOUS_FILE" && -f "$PREVIOUS_FILE" ]]; then
+            echo "Comparing with previous file: $PREVIOUS_FILE"
+            # Use cmp -s for silent comparison (only exit code matters)
+            if cmp -s "$PREVIOUS_FILE" "$NEW_FILE"; then
+              echo "Files are identical. Deleting $NEW_FILE."
+              rm "$NEW_FILE"
+              # Set an output variable indicating the file was removed
+              echo "file_kept=false" >> $GITHUB_OUTPUT
+            else
+              echo "Files are different. Keeping $NEW_FILE."
+              echo "file_kept=true" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "No previous file found or only the new file exists. Keeping $NEW_FILE."
+            echo "file_kept=true" >> $GITHUB_OUTPUT
+          fi
 
       - name: Render Quarto dashboard
         run: quarto render cancellations.qmd
 
       - name: Commit & push changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: daily data refresh and dashboard rebuild"
-          # commit any new CSVs or rebuilt files
+          # Commit any remaining CSVs in data/ (new or old) and rebuilt files.
           file_pattern: |
             data/*.csv
             **/*.html

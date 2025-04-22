@@ -37,22 +37,32 @@ a {
     color: white !important; /* White text */
 }
 
-  /* --- Value Box Styling --- */
-  
-  /* Apply light background and curve to value box corners */
-  .card.valuebox {
-    background-color: #edf2f7; /* Light grey background */
-    border-radius: 0.5rem;    /* Updated border radius */
-    overflow: hidden;         /* Ensures background respects the border radius */
-    border: 1px solid #dee2e6; /* Optional: add a light border */
-    color: #212529;           /* Ensure text is dark on light background */
-    text-align: center;    /* Center text */
-    font-weight: bold;
-  }
-  
-  /* Ensure icons are visible on the light background */
-  .quarto-dashboard-value-box .value-box-icon {
-     color: #495057; /* Darker grey for icon */
-     size: 75%;
-  }
-  
+/* --- Value Box Styling --- */
+
+/* Apply light background and curve to value box corners */
+.card.valuebox {
+  background-color: #edf2f7; /* Light grey background */
+  border-radius: 0.5rem;    /* Updated border radius */
+  overflow: hidden;         /* Ensures background respects the border radius */
+  border: 1px solid #dee2e6; /* Optional: add a light border */
+  color: #212529;           /* Ensure text is dark on light background */
+  text-align: center;    /* Center text */
+  font-weight: bold;
+}
+
+/* Ensure icons are visible on the light background */
+.quarto-dashboard-value-box .value-box-icon {
+    color: #495057; /* Darker grey for icon */
+    size: 75%;
+}
+
+.card a.nav-link {
+  color: white !important; /* White text */
+}
+
+.card a.nav-link.active {
+  color: black !important; /* White text */
+}
+.card a.nav-link:hover {
+  color: grey !important; /* Planetary Society blue on hover */
+}

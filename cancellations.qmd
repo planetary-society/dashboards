@@ -8,13 +8,14 @@
 import pandas as pd
 import altair as alt
 import collections as c # Import collections for Counter
-import re # Import re for splitting
+import re
 import glob
 import os
 from pathlib import Path
 import json
 from datetime import datetime
 import math # For color interpolation ceiling
+from itables import show
 
 # --- State Abbreviation to FIPS Code Mapping ---
 # Source: [https://www.census.gov/library/reference/code-lists/ansi.html#par_textimage_3](https://www.census.gov/library/reference/code-lists/ansi.html#par_textimage_3)
@@ -31,8 +32,6 @@ STATE_FIPS_MAP = {
 }
 
 # --- 1. Load and Clean Contract Data ---
-import glob
-import os
 
 # Find all CSV files in the data/ directory and select the newest one
 csv_files = glob.glob('data/*.csv')
@@ -87,7 +86,7 @@ if 'Total Obligations' in df_present.columns:
 
 if 'Total Outlays' in df_present.columns:
     df_present['Total Outlays'] = df_present['Total Outlays'].apply(
-        lambda x: f"${x:,.2f}" if isinstance(x, (int, float)) else x
+        lambda x: f"${x:,.0f}" if isinstance(x, (int, float)) else x
     )
 
 # --- 3. Prepare Congressional District Data ---
@@ -135,7 +134,7 @@ recipients_table_data = df_cleaned.groupby('Recipient').agg(
 # Format the obligation column as currency
 recipients_table_data['Total Obligations'] = (
     recipients_table_data['Total Obligations']
-    .map(lambda x: f"${x:,.2f}")
+    .map(lambda x: f"${x:,.0f}")
 )
 
 # Sort by number of contracts descending
@@ -276,6 +275,26 @@ else:
     print("Warning: 'Business Categories' data not available for histogram preparation.")
     hist_data_series = pd.Series(dtype=int) # Empty series to avoid downstream errors
 
+# --- 9. Aggregate data by district ---
+district_table_data = df_cleaned.groupby('District').agg(
+    **{
+        '# of Contracts': ('Award ID', 'count'),
+        'Total Obligations': ('Total Obligations', 'sum')
+    }
+).reset_index()
+
+# Format the obligation column as currency
+district_table_data['Total Obligations'] = (
+    district_table_data['Total Obligations']
+    .map(lambda x: f"${x:,.0f}")
+)
+
+# Sort by number of contracts descending
+district_table_data = district_table_data.sort_values(
+    by='# of Contracts', ascending=False
+).reset_index(drop=True)
+
+
 ```
 
 ---
@@ -341,7 +360,7 @@ dict(
 
 ## Row {height=75%}
 
-### Column {width=60%}{.tabset}
+### Column {width=60%}
 
 ```{python}
 #| title: "Impacted Congressional Districts"
@@ -349,7 +368,7 @@ dict(
 #| echo: false
 #| warning: false
 #| message: false
-#| results: asis
+
 
 import folium
 from branca.colormap import LinearColormap
@@ -365,7 +384,7 @@ for geoid, group in df_cleaned.dropna(subset=['GEOID']).groupby('GEOID'):
     lines = []
     for _, row in group.iterrows():
         amt = row['Total Obligations']
-        amt_str = f"${amt:,.2f}"
+        amt_str = f"${amt:,.0f}"
         award = row.get('Award ID', 'N/A')
         rec   = row['Recipient']
         lines.append(f"<b>{rec}</b><br>{amt_str} (Award ID: {award})")
@@ -378,7 +397,7 @@ for feature in congressional_geojson_data['features']:
     feature['properties']['hover_info'] = hover_info.get(gid, "No contracts")
 
 # build the map
-m = folium.Map(location=[39.8283, -98.5795], zoom_start=4, tiles="CartoDB positron")
+m = folium.Map(location=[36.7570, -90.3929], zoom_start=4, tiles="CartoDB positron")
 
 # color ramp
 colormap = LinearColormap(
@@ -419,58 +438,26 @@ _ = folium.GeoJson(
 m
 ```
 
+
+### Column {width=40%}{.tabset}
 ```{python}
-#| title: "Impact by Business Type"
-#| component: card
-#| echo: false
+#| title: Districts Impacted
+#| component: datatable
+#| sortable: true
 
-# --- This chunk generates and displays the Altair histogram ---
-# It uses the hist_data_series prepared in the setup chunk using the keyword method.
-
-import altair as alt
-import pandas as pd # Ensure pandas is available here if needed, though hist_data_series should be passed
-
-# Ensure hist_data_series exists and is not empty
-if 'hist_data_series' in locals() and not hist_data_series.empty:
-    # Define colors from CSS
-    planetary_blue = '#037cc2'
-
-    # Convert the series to a DataFrame suitable for Altair
-    hist_df = hist_data_series.reset_index().rename(columns={"index": "Category", 0: "Count"})
-
-    # Create the Altair chart
-    chart = alt.Chart(hist_df).mark_bar(color=planetary_blue).encode(
-        x=alt.X('Count', axis=alt.Axis(title='Number of Cancelled Contracts')),
-        y=alt.Y('Category', sort='-x', axis=alt.Axis(title='Business Category (Keyword Grouped)')), # Updated axis title
-        tooltip=[
-            alt.Tooltip('Category', title='Business Type'),
-            alt.Tooltip('Count', title='Contracts Cancelled')
-            ]
-    ).properties(
-        title='Cancelled Contracts by Simplified Business Category' # Updated title
-    ).interactive()
-
-    # Display the chart (Quarto will render this object)
-    chart
-else:
-    # Display a message if data is not available
-    print("Histogram data not available.")
+show(district_table_data, classes="compact display", searching=False, info=False)
 ```
-
-
-### Column {width=40%}
 
 ```{python}
 #| title: Recipients Impacted
 #| component: datatable
 #| sortable: true
 
-from itables import show
 show(recipients_table_data, classes="compact display", searching=False, info=False)
 
 ```
 
-# All Contracts
+# Contract Listing
 ```{python}
 #| title: All Contracts
 #| component: datatable

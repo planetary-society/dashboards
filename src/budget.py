@@ -120,6 +120,10 @@ def relative_budget_change(
     chart.width = chart_width
     chart.height = chart_height
     chart.x_labels = [yr if i % 5 == 0 else "" for i, yr in enumerate(years)]
+    chart.y_title = "% change from prior-year appropriations"
+    chart.y_title_font_size = 9
+    # Note: Pygal doesn't directly support setting font style (italic) for titles via simple attributes.
+    # Achieving italics might require custom CSS styling within the SVG or modifying the style object.
     bars = [
         {"value": v, "color": "#037CC2" if v >= 0 else "#FF5D47"}
         for v in changes

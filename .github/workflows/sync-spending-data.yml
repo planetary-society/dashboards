@@ -1,0 +1,51 @@
+# .github/workflows/sync-data.yml
+name: Sync NASA Data
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 6 AM UTC
+  workflow_dispatch:  # Manual trigger
+  
+jobs:
+  sync-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: |
+          pip install requests pandas
+          
+      - name: Download CSV from private repo
+        env:
+          PRIVATE_REPO_TOKEN: ${{ secrets.PRIVATE_REPO_PERSONAL_ACCESS_TOKEN }}
+          PRIVATE_REPO: "planetary-society/nasa-spending-impact-generator"
+        run: |
+          python .github/scripts/fetch_data.py
+          
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet data/*.csv; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Commit and push if changed
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/*.csv
+          git commit -m "Update NASA summary data files - $(date)"
+          git push

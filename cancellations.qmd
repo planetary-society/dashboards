@@ -297,10 +297,10 @@ district_table_data = district_table_data.sort_values(
 ```
 
 ---
-title: NASA Cancelled Contracts
+title: NASA Cancelled Contracts and Grants
 format:
   dashboard:
-    pagetitle: NASA Contract Cancellations
+    pagetitle: NASA Cancellations Tracking Dashboard
     description-meta: "Dashboard tracking NASA grants and contracts terminated by the Trump Administration."
     author-meta: "Casey Dreier/The Planetary Society"
     logo: "img/TPS_Logo_3Stack-White.png"
@@ -315,6 +315,124 @@ format:
           <link rel="preconnect" href="https://fonts.googleapis.com">
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
           <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+          <!-- Twitter Card meta tags -->
+          <meta name="twitter:card" content="summary_large_image">
+          <meta name="twitter:site" content="@exploreplanets">
+          <meta name="twitter:title" content="NASA Cancellations Tracking Dashboard">
+          <meta name="twitter:description" content="Interactive dashboard tracking NASA grants and contracts terminated by the second Trump Administration. View impacted districts, recipients, and contract details.">
+          <meta name="twitter:image" content="https://dashboards.planetary.org/img/tps-nasa-cancellations-dashboard-preview.png">
+          <meta name="twitter:image:alt" content="NASA Contract Cancellations Dashboard showing map of impacted congressional districts">
+          <!-- Open Graph meta tags -->
+          <meta property="og:type" content="website">
+          <meta property="og:site_name" content="The Planetary Society">
+          <meta property="og:title" content="NASA Cancellations Tracking Dashboard">
+          <meta property="og:description" content="Interactive dashboard tracking NASA grants and contracts terminated by the second Trump Administration. View impacted districts, recipients, and contract details.">
+          <meta property="og:image" content="https://dashboards.planetary.org/img/tps-nasa-cancellations-dashboard-preview.png">
+          <meta property="og:image:width" content="1200">
+          <meta property="og:image:height" content="630">
+          <meta property="og:image:alt" content="NASA Contract Cancellations Dashboard showing map of impacted congressional districts">
+          <meta property="og:url" content="https://dashboards.planetary.org/cancellations.html">
+          <!-- Additional meta for better SEO -->
+          <meta name="robots" content="index, follow">
+          <meta name="theme-color" content="#037cc2">
+          <!-- Add this to your include-in-header section -->
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "Dataset",
+              "name": "NASA Contract Cancellations Tracker",
+              "description": "Interactive dashboard tracking NASA grants and contracts terminated by the second Trump Administration, including congressional district impacts and recipient details.",
+              "url": "https://dashboards.planetary.org/cancellations.html",
+              "keywords": [
+                "NASA",
+                "contracts",
+                "government spending",
+                "Trump administration",
+                "congressional districts",
+                "federal procurement",
+                "space policy"
+              ],
+              "license": "https://creativecommons.org/licenses/by/4.0/",
+              "creator": {
+                "@type": "Person",
+                "name": "Casey Dreier",
+                "affiliation": {
+                  "@type": "Organization",
+                  "name": "The Planetary Society",
+                  "url": "https://planetary.org"
+                },
+                "email": "casey.dreier@planetary.org",
+                "sameAs": "https://twitter.com/CaseyDreier"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "The Planetary Society",
+                "url": "https://planetary.org",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://dashboards.planetary.org/img/TPS_Logo_3Stack-White.png"
+                }
+              },
+              "dateCreated": "2025-01-20",
+              "dateModified": "2025-05-25",
+              "temporalCoverage": "2025-01-20/..",
+              "spatialCoverage": {
+                "@type": "Place",
+                "name": "United States",
+                "geo": {
+                  "@type": "GeoShape",
+                  "box": "18.91619 -179.14734 71.3577635769 179.77847"
+                }
+              },
+              "distribution": [
+                {
+                  "@type": "DataDownload",
+                  "encodingFormat": "text/csv",
+                  "contentUrl": "https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=csv",
+                  "name": "NASA Contract Cancellations CSV"
+                },
+                {
+                  "@type": "DataDownload",
+                  "encodingFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                  "contentUrl": "https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=xlsx",
+                  "name": "NASA Contract Cancellations Excel"
+                }
+              ],
+              "variableMeasured": [
+                {
+                  "@type": "PropertyValue",
+                  "name": "Total Obligations",
+                  "description": "Total dollar amount of contract obligations",
+                  "unitText": "USD"
+                },
+                {
+                  "@type": "PropertyValue",
+                  "name": "Congressional District",
+                  "description": "US Congressional district where contract recipient is located"
+                },
+                {
+                  "@type": "PropertyValue",
+                  "name": "Recipient",
+                  "description": "Organization or entity receiving the NASA contract"
+                },
+                {
+                  "@type": "PropertyValue",
+                  "name": "Award ID",
+                  "description": "Unique federal contract identifier"
+                }
+              ],
+              "funding": {
+                "@type": "Grant",
+                "funder": {
+                  "@type": "Organization",
+                  "name": "NASA",
+                  "url": "https://nasa.gov"
+                }
+              },
+              "citation": "Dreier, C. (2025). NASA Contract Cancellations Tracker. The Planetary Society. Retrieved from https://dashboards.planetary.org/cancellations.html",
+              "inLanguage": "en-US"
+            }
+          </script>
           <script>
             document.addEventListener('DOMContentLoaded', function() {
                 // Select the FIRST anchor tag that is a DIRECT CHILD of the container

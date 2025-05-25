@@ -1,0 +1,349 @@
+---
+title: NASA Science Spending by Congressional District
+format:
+  dashboard:
+    pagetitle: NASA Science Spending Map
+    description-meta: "Choropleth map displaying average NASA science contract obligations by U.S. congressional district."
+    author-meta: "Jules AI Agent"
+    logo: "img/TPS_Logo_3Stack-White.png"
+    lang: en
+    nav-buttons:
+      - href: mailto:casey.dreier@planetary.org
+        text: "Contact"
+    theme: yeti
+    css: custom.css
+    include-in-header:
+      - text: |
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Select the FIRST anchor tag that is a DIRECT CHILD of the container
+                const logoLinkAnchor = document.querySelector('.navbar-brand-container > a');
+
+                // Alternatively, you could select the image and then get its parent element:
+                // const logoImage = document.querySelector('.navbar-logo');
+                // const logoLinkAnchor = logoImage ? logoImage.parentElement : null;
+
+                // Check if the anchor element was found
+                if (logoLinkAnchor) {
+                    // Set the href attribute of the anchor tag
+                    logoLinkAnchor.href = 'https://planetary.org';
+                    // Optional: For accessibility and SEO, you might want to set the title too
+                    // logoLinkAnchor.title = 'Visit The Planetary Society homepage';
+                } else {
+                    console.error("Could not find the logo link anchor element to update.");
+                }
+            });
+          </script>
+---
+
+```{python}
+#| echo: false
+#| include: false
+
+# This chunk loads data, performs calculations, and prepares variables/files
+# for the dashboard components. It won't be displayed in the output.
+
+import pandas as pd
+import json
+import os
+from datetime import datetime
+import math # For color interpolation ceiling
+# Removed glob as it's not needed for a fixed CSV file path.
+
+# --- State Abbreviation to FIPS Code Mapping ---
+# Source: [https://www.census.gov/library/reference/code-lists/ansi.html#par_textimage_3](https://www.census.gov/library/reference/code-lists/ansi.html#par_textimage_3)
+
+STATE_FIPS_MAP = {
+    'AL': '01', 'AK': '02', 'AZ': '04', 'AR': '05', 'CA': '06', 'CO': '08', 'CT': '09',
+    'DE': '10', 'DC': '11', 'FL': '12', 'GA': '13', 'HI': '15', 'ID': '16', 'IL': '17',
+    'IN': '18', 'IA': '19', 'KS': '20', 'KY': '21', 'LA': '22', 'ME': '23', 'MD': '24',
+    'MA': '25', 'MI': '26', 'MN': '27', 'MS': '28', 'MO': '29', 'MT': '30', 'NE': '31',
+    'NV': '32', 'NH': '33', 'NJ': '34', 'NM': '35', 'NY': '36', 'NC': '37', 'ND': '38',
+    'OH': '39', 'OK': '40', 'OR': '41', 'PA': '42', 'RI': '44', 'SC': '45', 'SD': '46',
+    'TN': '47', 'TX': '48', 'UT': '49', 'VT': '50', 'VA': '51', 'WA': '53', 'WV': '54',
+    'WI': '55', 'WY': '56', 'AS': '60', 'GU': '66', 'MP': '69', 'PR': '72', 'VI': '78'
+}
+
+# --- 1. Load and Process Contract Data ---
+csv_file_path = 'data/NASA-district-Science-summary.csv'
+if not os.path.exists(csv_file_path):
+    raise FileNotFoundError(f"CSV file not found: {csv_file_path}")
+df = pd.read_csv(csv_file_path)
+
+last_updated = datetime.fromtimestamp(os.path.getmtime(csv_file_path))
+
+# Calculate average obligations
+obligation_cols = ['fy_2024_obligations', 'fy_2023_obligations', 'fy_2022_obligations']
+for col in obligation_cols:
+    df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
+
+df['avg_obligations'] = df[obligation_cols].mean(axis=1)
+
+df_cleaned = df.copy() # df_cleaned will be used for further processing
+
+# --- 2. Create GEOID and Prepare Spending Map ---
+
+def get_geoid_from_district(district_str):
+    """Converts 'XX-YY' or 'XX-ZZ' district format to 4-digit GEOID string."""
+    if not isinstance(district_str, str) or '-' not in district_str:
+        return None
+    parts = district_str.split('-')
+    state_abbr = parts[0].upper()
+    district_num_str = parts[1].upper()
+
+    state_fips = STATE_FIPS_MAP.get(state_abbr)
+    if not state_fips:
+        return None
+
+    # Handle 'ZZ' districts described in GeoJSON source
+    if district_num_str == 'ZZ':
+         cd_fips = 'ZZ' # Keep ZZ as is
+    else:
+        try:
+            # Pad district number to 2 digits (e.g., 1 -> 01)
+            cd_fips = f"{int(district_num_str):02d}"
+        except ValueError:
+            return None # Invalid district number
+
+    return f"{state_fips}{cd_fips}"
+
+# Ensure 'district' column (lowercase) exists for GEOID creation
+if 'district' not in df_cleaned.columns:
+    raise ValueError("Missing 'district' column in the CSV file, which is required for GEOID creation.")
+df_cleaned['GEOID'] = df_cleaned['district'].apply(get_geoid_from_district)
+
+# Create district_avg_obligations_map
+# Since the CSV is one row per district, avg_obligations is the value for that district's GEOID.
+# We need to handle cases where GEOID might be null (if get_geoid_from_district fails)
+df_cleaned_for_map = df_cleaned.dropna(subset=['GEOID', 'avg_obligations'])
+district_avg_obligations_map = pd.Series(
+    df_cleaned_for_map.avg_obligations.values,
+    index=df_cleaned_for_map.GEOID
+).to_dict()
+
+# Determine max_avg_obligation for color scaling
+all_obligations = list(district_avg_obligations_map.values())
+if all_obligations:
+    min_avg_obligation = min(all_obligations) # Will be used for log scale adjustment
+    max_avg_obligation = max(all_obligations)
+    if max_avg_obligation <= 0: # If max is 0 or negative, set to 1 for scaling
+        max_avg_obligation = 1.0
+else: # If no data, set defaults
+    min_avg_obligation = 0.0
+    max_avg_obligation = 1.0
+
+# Cleanup: remove original 'AwardAmount_Avg' specific variables if they exist from old template
+# These are now replaced by avg_obligations, district_avg_obligations_map, max_avg_obligation
+if 'district_spending_map' in locals():
+    del district_spending_map
+if 'min_spending' in locals():
+    del min_spending
+if 'max_spending' in locals():
+    del max_spending
+
+# --- 3. Load GeoJSON ---
+geojson_file_path = 'us_congressional_districts.geojson'
+try:
+    with open(geojson_file_path, 'r') as f:
+        congressional_geojson_data = json.load(f)
+except FileNotFoundError:
+    print(f"ERROR: GeoJSON file not found at {geojson_file_path}")
+    congressional_geojson_data = None
+except json.JSONDecodeError:
+    print(f"ERROR: Could not decode GeoJSON file at {geojson_file_path}")
+    congressional_geojson_data = None
+
+# --- 4. Color Scale Logic for Choropleth ---
+
+def hex_to_rgb(hex_color):
+    """Converts #RRGGBB to (R, G, B) tuple."""
+    hex_color = hex_color.lstrip('#')
+    return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+
+def rgb_to_hex(rgb_tuple):
+    """Converts (R, G, B) tuple to #RRGGBB."""
+    return '#{:02x}{:02x}{:02x}'.format(*map(int, rgb_tuple))
+
+# Define target colors for a blue-based sequential color scale
+COLOR_NO_DATA = '#FFFFFF' # White for no data or zero spending
+COLOR_LOW_SPENDING = '#ADD8E6' # Light Blue for low spending
+COLOR_HIGH_SPENDING = '#00008B' # Dark Blue for high spending
+
+# Convert hex to RGB tuples
+rgb_no_data = hex_to_rgb(COLOR_NO_DATA)
+rgb_low_spending = hex_to_rgb(COLOR_LOW_SPENDING)
+rgb_high_spending = hex_to_rgb(COLOR_HIGH_SPENDING)
+
+def get_choropleth_color(spending_value, min_val, max_val):
+    """Calculates interpolated color based on spending value using a log scale."""
+    if pd.isna(spending_value) or spending_value <= 0:
+        return COLOR_NO_DATA
+
+    # Use logarithmic scaling for better differentiation if data is skewed
+    # To handle cases where min_val is 0 or 1 for log scale, we can adjust.
+    # We scale from "low spending color" to "high spending color".
+    if max_val == min_val or max_val <= 0 : # if all values are same or no positive spending
+        return rgb_to_hex(rgb_low_spending) # return the low spending color
+
+    # Apply log transformation. Add 1 to avoid log(0) or log(<1) issues if data can be small.
+    log_min = math.log1p(min_val if min_val > 0 else 0)
+    log_max = math.log1p(max_val)
+    log_value = math.log1p(spending_value)
+
+    if log_max == log_min: # Avoid division by zero if log values are somehow the same
+        t = 0.5 # Mid-point
+    else:
+        t = (log_value - log_min) / (log_max - log_min)
+    t = max(0, min(1, t)) # Clamp t between 0 and 1
+
+    # Linear interpolation between rgb_low_spending and rgb_high_spending
+    r = rgb_low_spending[0] + (rgb_high_spending[0] - rgb_low_spending[0]) * t
+    g = rgb_low_spending[1] + (rgb_high_spending[1] - rgb_low_spending[1]) * t
+    b = rgb_low_spending[2] + (rgb_high_spending[2] - rgb_low_spending[2]) * t
+
+    return rgb_to_hex((round(r), round(g), round(b)))
+
+
+# --- 5. Define Style Callback for Map ---
+# The style callback function will now use district_avg_obligations_map and max_avg_obligation
+def choropleth_style_callback(feature):
+    """Returns style dictionary for a GeoJSON feature based on average spending."""
+    geoid = feature['properties'].get('GEOID', '')
+    spending = district_avg_obligations_map.get(geoid, 0) # Get average spending, default to 0
+    
+    # Use the actual min/max of the spending data for color calculation
+    # Adjust min_avg_obligation for log scale if it's zero or less.
+    current_min_obligation_for_log = min_avg_obligation if min_avg_obligation > 0 else 0
+
+    fill_color = get_choropleth_color(spending, current_min_obligation_for_log, max_avg_obligation)
+    
+    return {
+        'fillColor': fill_color,
+        'color': '#555555', # Border color for districts
+        'weight': 0.5,       # Border weight
+        'fillOpacity': 0.75   # Fill opacity
+    }
+
+```
+
+## Row {height="100%"}
+
+### Column {width="100%"}
+
+```{python}
+#| title: "NASA Science Spending by Congressional District"
+#| component: card
+#| echo: false
+#| warning: false
+#| message: false
+
+import folium
+from branca.colormap import LinearColormap # Will be used for the legend
+
+# --- Prepare Hover Information ---
+hover_info_map = {}
+# Required columns for hover info: 'district', 'avg_obligations', 'number_of_awards', 'list_of_recipients'
+# Note: CSV headers are 'district', 'AwardAmount_Avg' (now 'avg_obligations'),
+# 'NumberOfAwards', 'Recipient_List_Short'. Adjusting to match new 'avg_obligations'.
+if all(col in df_cleaned.columns for col in ['GEOID', 'district', 'avg_obligations', 'NumberOfAwards', 'Recipient_List_Short']):
+    for index, row in df_cleaned.iterrows():
+        geoid = row['GEOID']
+        if pd.isna(geoid):
+            continue
+
+        avg_amount_str = f"${row['avg_obligations']:,.0f}" # Use the new avg_obligations column
+        num_awards_str = f"{row['NumberOfAwards']}"
+        recipients_str = str(row['Recipient_List_Short']) if pd.notna(row['Recipient_List_Short']) else "N/A"
+        
+        hover_text = (
+            f"<b>District: {row['district']}</b><br>" # Use 'district' from CSV
+            f"Average Science Obligation (FY22-24): {avg_amount_str}<br>"
+            f"Number of Awards: {num_awards_str}<br>"
+            f"Key Recipients: {recipients_str}"
+        )
+        hover_info_map[geoid] = hover_text
+else:
+    print("Warning: One or more required columns for hover_info not found in df_cleaned after processing. Hover info will be basic.")
+    # Fallback hover info if columns are missing, using the new map
+    for geoid_key in district_avg_obligations_map.keys():
+        avg_amount_str = f"${district_avg_obligations_map.get(geoid_key, 0):,.0f}"
+        hover_info_map[geoid_key] = f"<b>Average Science Obligation (FY22-24): {avg_amount_str}</b><br>(Detailed info unavailable)"
+
+
+# Inject hover_info into GeoJSON properties
+if congressional_geojson_data and congressional_geojson_data.get('features'):
+    for feature in congressional_geojson_data['features']:
+        gid = feature.get('properties', {}).get('GEOID')
+        feature['properties']['hover_info'] = hover_info_map.get(gid, "No spending data available for this district.")
+else:
+    print("GeoJSON data not loaded or features are missing, skipping hover_info injection.")
+
+
+# build the map
+m = folium.Map(location=[36.7570, -90.3929], zoom_start=4, tiles="CartoDB positron")
+
+# Create the Folium map centered on the US
+m = folium.Map(location=[38, -96.5], zoom_start=4, tiles="CartoDB positron")
+
+if congressional_geojson_data:
+    # Create the GeoJson layer with the updated style function and tooltip
+    gjson_layer = folium.GeoJson(
+        congressional_geojson_data,
+        style_function=choropleth_style_callback, # Use the refined style function
+        tooltip=folium.GeoJsonTooltip(
+            fields=['hover_info'],
+            aliases=[''], # No explicit alias title for the hover box itself
+            labels=False, # Do not show field names in tooltip
+            sticky=True,
+            parse_html=True, # Allow HTML in hover_info
+            style=("background-color: white; color: black; font-family: sans-serif; font-size: 12px; padding: 10px;")
+        ),
+        name="NASA Science Spending by District"
+    ).add_to(m)
+
+    # --- Create and Add Colormap Legend ---
+    # Define a colormap for the legend that matches the visual style
+    # For log scale, the legend might be tricky. A simpler linear legend might be more practical
+    # or manually creating tick marks for log scale.
+    # For now, let's use a linear colormap for the legend based on actual spending values.
+    
+    # Filter out zero/NaN for legend min/max if log scaling was aggressive
+    # Use min_avg_obligation and max_avg_obligation for the legend scale
+    legend_min_val = min_avg_obligation if min_avg_obligation > 0 else 0
+    legend_max_val = max_avg_obligation if max_avg_obligation > 0 else 1
+
+    # Create a Branca colormap for the legend
+    legend_colormap = LinearColormap(
+        colors=[COLOR_LOW_SPENDING, COLOR_HIGH_SPENDING],
+        index=[legend_min_val, legend_max_val], # Scale based on actual min/max positive avg obligations
+        vmin=legend_min_val,
+        vmax=legend_max_val
+    )
+    legend_colormap.caption = "Average NASA Science Obligations per District (FY22-24, USD, Log Scale)"
+    m.add_child(legend_colormap)
+
+else:
+    # If GeoJSON failed to load, display an error message on the map area
+    error_html = """
+     <div style="position: fixed; 
+                 top: 50%; left: 50%; 
+                 transform: translate(-50%, -50%);
+                 text-align: center;
+                 font-size: 16px;
+                 color: red;
+                 background-color: white;
+                 padding: 20px;
+                 border: 1px solid red;">
+       <h3>Map Data Error</h3>
+       <p>Could not load congressional district boundaries (GeoJSON).<br>
+          Please ensure the file 'us_congressional_districts.geojson' is available.</p>
+     </div>
+    """
+    m.get_root().html.add_child(folium.Element(error_html))
+
+# Display the map
+m
+```

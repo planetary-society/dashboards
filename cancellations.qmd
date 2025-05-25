@@ -443,7 +443,7 @@ format:
                     if (logoAnchor && logoAnchor.querySelector('.navbar-logo')) {
                         logoAnchor.href = 'https://planetary.org';
                         logoAnchor.target = '_blank';
-                        logoAnchor.title = 'Visit The Planetary Society';
+                        logoAnchor.title = 'The Planetary Society';
                         console.log('Successfully updated logo link');
                     } else {
                         console.log('Logo anchor not found');

@@ -4,7 +4,7 @@ format:
   dashboard:
     pagetitle: NASA Science Spending Map
     description-meta: "Choropleth map displaying average NASA science contract obligations by U.S. congressional district."
-    author-meta: "Jules AI Agent"
+    author-meta: "The Planetary Society"
     logo: "img/TPS_Logo_3Stack-White.png"
     lang: en
     nav-buttons:
@@ -19,19 +19,11 @@ format:
           <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
           <script>
             document.addEventListener('DOMContentLoaded', function() {
-                // Select the FIRST anchor tag that is a DIRECT CHILD of the container
-                const logoLinkAnchor = document.querySelector('.navbar-brand-container > a');
-
-                // Alternatively, you could select the image and then get its parent element:
-                // const logoImage = document.querySelector('.navbar-logo');
-                // const logoLinkAnchor = logoImage ? logoImage.parentElement : null;
-
-                // Check if the anchor element was found
+                const logoImage = document.querySelector('.navbar-logo');
+                const logoLinkAnchor = logoImage ? logoImage.parentElement : null;
                 if (logoLinkAnchor) {
-                    // Set the href attribute of the anchor tag
                     logoLinkAnchor.href = 'https://planetary.org';
-                    // Optional: For accessibility and SEO, you might want to set the title too
-                    // logoLinkAnchor.title = 'Visit The Planetary Society homepage';
+                    logoLinkAnchor.title = 'The Planetary Society';
                 } else {
                     console.error("Could not find the logo link anchor element to update.");
                 }
@@ -51,7 +43,6 @@ import json
 import os
 from datetime import datetime
 import math # For color interpolation ceiling
-# Removed glob as it's not needed for a fixed CSV file path.
 
 # --- State Abbreviation to FIPS Code Mapping ---
 # Source: [https://www.census.gov/library/reference/code-lists/ansi.html#par_textimage_3](https://www.census.gov/library/reference/code-lists/ansi.html#par_textimage_3)
@@ -229,9 +220,7 @@ def choropleth_style_callback(feature):
 
 ```
 
-## Row {height="100%"}
-
-### Column {width="100%"}
+## Row
 
 ```{python}
 #| title: "NASA Science Spending by Congressional District"
@@ -245,33 +234,20 @@ from branca.colormap import LinearColormap # Will be used for the legend
 
 # --- Prepare Hover Information ---
 hover_info_map = {}
-# Required columns for hover info: 'district', 'avg_obligations', 'number_of_awards', 'list_of_recipients'
-# Note: CSV headers are 'district', 'AwardAmount_Avg' (now 'avg_obligations'),
-# 'NumberOfAwards', 'Recipient_List_Short'. Adjusting to match new 'avg_obligations'.
-if all(col in df_cleaned.columns for col in ['GEOID', 'district', 'avg_obligations', 'NumberOfAwards', 'Recipient_List_Short']):
+
+if all(col in df_cleaned.columns for col in ['GEOID', 'district', 'avg_obligations']):
     for index, row in df_cleaned.iterrows():
         geoid = row['GEOID']
         if pd.isna(geoid):
             continue
 
         avg_amount_str = f"${row['avg_obligations']:,.0f}" # Use the new avg_obligations column
-        num_awards_str = f"{row['NumberOfAwards']}"
-        recipients_str = str(row['Recipient_List_Short']) if pd.notna(row['Recipient_List_Short']) else "N/A"
         
         hover_text = (
             f"<b>District: {row['district']}</b><br>" # Use 'district' from CSV
-            f"Average Science Obligation (FY22-24): {avg_amount_str}<br>"
-            f"Number of Awards: {num_awards_str}<br>"
-            f"Key Recipients: {recipients_str}"
+            f"Average of annual NASA Science obligations (FY22-24): {avg_amount_str}<br>"
         )
         hover_info_map[geoid] = hover_text
-else:
-    print("Warning: One or more required columns for hover_info not found in df_cleaned after processing. Hover info will be basic.")
-    # Fallback hover info if columns are missing, using the new map
-    for geoid_key in district_avg_obligations_map.keys():
-        avg_amount_str = f"${district_avg_obligations_map.get(geoid_key, 0):,.0f}"
-        hover_info_map[geoid_key] = f"<b>Average Science Obligation (FY22-24): {avg_amount_str}</b><br>(Detailed info unavailable)"
-
 
 # Inject hover_info into GeoJSON properties
 if congressional_geojson_data and congressional_geojson_data.get('features'):
@@ -281,16 +257,12 @@ if congressional_geojson_data and congressional_geojson_data.get('features'):
 else:
     print("GeoJSON data not loaded or features are missing, skipping hover_info injection.")
 
-
-# build the map
-m = folium.Map(location=[36.7570, -90.3929], zoom_start=4, tiles="CartoDB positron")
-
 # Create the Folium map centered on the US
 m = folium.Map(location=[38, -96.5], zoom_start=4, tiles="CartoDB positron")
 
 if congressional_geojson_data:
     # Create the GeoJson layer with the updated style function and tooltip
-    gjson_layer = folium.GeoJson(
+    _ = folium.GeoJson(
         congressional_geojson_data,
         style_function=choropleth_style_callback, # Use the refined style function
         tooltip=folium.GeoJsonTooltip(
@@ -306,20 +278,15 @@ if congressional_geojson_data:
 
     # --- Create and Add Colormap Legend ---
     # Define a colormap for the legend that matches the visual style
-    # For log scale, the legend might be tricky. A simpler linear legend might be more practical
-    # or manually creating tick marks for log scale.
-    # For now, let's use a linear colormap for the legend based on actual spending values.
-    
-    # Filter out zero/NaN for legend min/max if log scaling was aggressive
-    # Use min_avg_obligation and max_avg_obligation for the legend scale
-    legend_min_val = min_avg_obligation if min_avg_obligation > 0 else 0
-    legend_max_val = max_avg_obligation if max_avg_obligation > 0 else 1
+
+    legend_min_val = 0
+    legend_max_val = max_avg_obligation
 
     # Create a Branca colormap for the legend
     legend_colormap = LinearColormap(
         colors=[COLOR_LOW_SPENDING, COLOR_HIGH_SPENDING],
-        index=[legend_min_val, legend_max_val], # Scale based on actual min/max positive avg obligations
-        vmin=legend_min_val,
+        index=[0, legend_max_val], # Scale based on actual min/max positive avg obligations
+        vmin=0,
         vmax=legend_max_val
     )
     legend_colormap.caption = "Average NASA Science Obligations per District (FY22-24, USD, Log Scale)"

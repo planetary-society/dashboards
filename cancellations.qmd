@@ -434,23 +434,21 @@ format:
             }
           </script>
           <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Select the FIRST anchor tag that is a DIRECT CHILD of the container
-                const logoLinkAnchor = document.querySelector('.navbar-brand-container > a');
-
-                // Alternatively, you could select the image and then get its parent element:
-                // const logoImage = document.querySelector('.navbar-logo');
-                // const logoLinkAnchor = logoImage ? logoImage.parentElement : null;
-
-                // Check if the anchor element was found
-                if (logoLinkAnchor) {
-                    // Set the href attribute of the anchor tag
-                    logoLinkAnchor.href = 'https://planetary.org';
-                    // Optional: For accessibility and SEO, you might want to set the title too
-                    // logoLinkAnchor.title = 'Visit The Planetary Society homepage';
-                } else {
-                    console.error("Could not find the logo link anchor element to update.");
-                }
+            // Wait for everything to load, then fix the logo link
+            window.addEventListener('load', function() {
+                // Give Quarto time to finish rendering
+                setTimeout(function() {
+                    // Find the anchor that contains the navbar logo
+                    const logoAnchor = document.querySelector('a[href="#"]');
+                    if (logoAnchor && logoAnchor.querySelector('.navbar-logo')) {
+                        logoAnchor.href = 'https://planetary.org';
+                        logoAnchor.target = '_blank';
+                        logoAnchor.title = 'Visit The Planetary Society';
+                        console.log('Successfully updated logo link');
+                    } else {
+                        console.log('Logo anchor not found');
+                    }
+                }, 1000); // Wait 1 second for dashboard to fully render
             });
           </script>
 ---

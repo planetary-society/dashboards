@@ -160,8 +160,8 @@ def rgb_to_hex(rgb_tuple):
 
 # Define target colors for a blue-based sequential color scale
 COLOR_NO_DATA = '#FFFFFF' # White for no data or zero spending
-COLOR_LOW_SPENDING = '#ADD8E6' # Light Blue for low spending
-COLOR_HIGH_SPENDING = '#00008B' # Dark Blue for high spending
+COLOR_LOW_SPENDING = '#8C8C8C' # Light Blue for low spending
+COLOR_HIGH_SPENDING = '#037CC2' # Dark Blue for high spending
 
 # Convert hex to RGB tuples
 rgb_no_data = hex_to_rgb(COLOR_NO_DATA)
@@ -218,16 +218,6 @@ def choropleth_style_callback(feature):
         'fillOpacity': 0.75   # Fill opacity
     }
 
-```
-
-## Row
-
-```{python}
-#| title: "NASA Science Spending by Congressional District"
-#| component: card
-#| echo: false
-#| warning: false
-#| message: false
 
 import folium
 from branca.colormap import LinearColormap
@@ -254,11 +244,19 @@ if congressional_geojson_data and congressional_geojson_data.get('features'):
     for feature in congressional_geojson_data['features']:
         gid = feature.get('properties', {}).get('GEOID')
         feature['properties']['hover_info'] = hover_info_map.get(gid, "No spending data available for this district.")
-else:
-    print("GeoJSON data not loaded or features are missing, skipping hover_info injection.")
+
+# --- Create and Add Colormap Legend ---
+    legend_colormap = LinearColormap(
+        colors=[COLOR_LOW_SPENDING, COLOR_HIGH_SPENDING],
+        index=[0, max_avg_obligation],
+        vmin=0,
+        vmax=max_avg_obligation
+    )
+    legend_colormap.caption = "Average NASA Science Obligations per District (FY22-24, USD, Log Scale)"
 
 # Create the Folium map centered on the US
-m = folium.Map(location=[38, -96.5], zoom_start=4, tiles="CartoDB positron")
+m = folium.Map(location=[36.7570, -90.3929], zoom_start=4, tiles="CartoDB positron")
+legend_colormap.add_to(m)
 
 if congressional_geojson_data:
     # Create the GeoJson layer with the updated style function and tooltip
@@ -276,16 +274,17 @@ if congressional_geojson_data:
         name="NASA Science Spending by District"
     ).add_to(m)
 
-    # --- Create and Add Colormap Legend ---
-    legend_colormap = LinearColormap(
-        colors=[COLOR_LOW_SPENDING, COLOR_HIGH_SPENDING],
-        index=[0, max_avg_obligation],
-        vmin=0,
-        vmax=max_avg_obligation
-    )
-    legend_colormap.caption = "Average NASA Science Obligations per District (FY22-24, USD, Log Scale)"
-    m.add_child(legend_colormap)
+```
+
+## Row
+
+```{python}
+#| title: "NASA Science Spending by Congressional District"
+#| component: card
+#| echo: false
+#| warning: false
+#| message: false
 
 # Display the map
-
+m
 ```

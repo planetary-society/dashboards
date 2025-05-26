@@ -37,8 +37,7 @@ import pandas as pd
 import json
 import math
 import folium
-from branca.colormap import LinearColormap
-from branca.element import Template, MacroElement
+from branca.colormap import LinearColormap, StepColormap
 from pathlib import Path
 from typing import Dict, Optional, Tuple, Union, List
 import warnings
@@ -74,13 +73,14 @@ class USSpendingMaps:
     
     # Stepped scale spending ranges with corresponding color steps
     # Used for binned color visualization instead of continuous gradients
-    STEPPED_RANGES = [
-        (0, 0),                    # $0 - no data
-        (1_000_000, 1),           # $0 < value < $1M
-        (10_000_000, 2),          # $1M <= value < $10M  
-        (100_000_000, 3),         # $10M <= value < $100M
-        (1_000_000_000, 4),       # $100M <= value < $1B
-        (float('inf'), 5)         # value >= $1B
+    SPENDING_STEPS = [
+        # Threshold,    Color (from 6-class Blues, ColorBrewer), Legend Label
+        (500_000,       '#EFF3FF',  '>$0 to < $500K'),         # Lightest Blue
+        (5_000_000,     '#BDD7E7',  '$500K to < $5M'),
+        (50_000_000,    '#6BAED6',  '$5M to < $50M'),
+        (250_000_000,   '#4292C6',  '$50M to < $250M'),
+        (1_000_000_000, '#2171B5',  '$250M to < $1B'),
+        (5_000_000_000,  '#08519C',  '$1B+')                  # Darkest Blue
     ]
     
     def __init__(self, geojson_path: Union[str, Path]):
@@ -151,47 +151,23 @@ class USSpendingMaps:
     
     def _get_stepped_color(self, value: float) -> str:
         """
-        Calculate color for stepped/binned color scale based on predefined spending ranges.
-        
+        Determines the color for a given value based on the predefined SPENDING_STEPS.
         Args:
-            value: Spending amount to color
-            
+            value: The spending value.
         Returns:
-            Hex color string
+            A hex color string.
         """
         if pd.isna(value) or value <= 0:
             return self.COLORS['no_data']
-        
-        # Determine which spending range the value falls into
-        step = 0
-        for threshold, range_step in self.STEPPED_RANGES[1:]:  # Skip the 0 case
+
+        for threshold, color_hex, _ in self.SPENDING_STEPS:
             if value < threshold:
-                step = range_step
-                break
-        else:
-            step = 5  # Highest spending range
+                return color_hex
         
-        if step == 0:
-            return self.COLORS['no_data']
-        
-        # Interpolate color between low and high spending colors
-        # Convert step (1-5) to interpolation factor (0-1)
-        t = (step - 1) / 4
-        
-        # Parse hex colors to RGB components
-        low_r, low_g, low_b = int(self.COLORS['low_spending'][1:3], 16), \
-                             int(self.COLORS['low_spending'][3:5], 16), \
-                             int(self.COLORS['low_spending'][5:7], 16)
-        high_r, high_g, high_b = int(self.COLORS['high_spending'][1:3], 16), \
-                                int(self.COLORS['high_spending'][3:5], 16), \
-                                int(self.COLORS['high_spending'][5:7], 16)
-        
-        # Linear interpolation between colors
-        r = int(low_r + (high_r - low_r) * t)
-        g = int(low_g + (high_g - low_g) * t)
-        b = int(low_b + (high_b - low_b) * t)
-        
-        return f'#{r:02x}{g:02x}{b:02x}'
+        # This part should ideally not be reached if float('inf') is the last threshold
+        # and handles all values greater than the preceding threshold.
+        # However, as a robust fallback, return the color of the highest defined step.
+        return self.SPENDING_STEPS[-1][1] if self.SPENDING_STEPS else self.COLORS['no_data']
     
     def _get_continuous_color(self, value: float, min_val: float, max_val: float, use_log: bool = True) -> str:
         """
@@ -389,48 +365,51 @@ class USSpendingMaps:
             self._add_continuous_legend(m, title, min_val, max_val)
         
         return m
-    
+        
     def _add_stepped_legend(self, map_obj: folium.Map, title: str):
         """
-        Add custom HTML legend for stepped color scale showing spending ranges.
+        Add legend for stepped color scale using Folium's built-in StepColormap.
         
         Args:
             map_obj: Folium map to add legend to
             title: Legend title
         """
-        # Generate representative colors for each spending range
-        legend_ranges = [
-            ('$0', self.COLORS['no_data']),
-            ('$1 - $1M', self._get_stepped_color(500_000)),
-            ('$1M - $10M', self._get_stepped_color(5_000_000)), 
-            ('$10M - $100M', self._get_stepped_color(50_000_000)),
-            ('$100M - $1B', self._get_stepped_color(500_000_000)),
-            ('$1B+', self._get_stepped_color(2_000_000_000))
-        ]
+
+       
+        # Extract list of hex color values from the SPENDING_STEPS constant
+        step_colors = [color_hex for _, color_hex, _ in self.SPENDING_STEPS]
+        thresholds = [threshold for threshold, _, _ in self.SPENDING_STEPS] 
+        step_labels = []
+        for i in range(len(self.SPENDING_STEPS)):
+            if i == 0:
+                min = 0
+                max = self.SPENDING_STEPS[i][0]
+            elif i == len(self.SPENDING_STEPS) - 1:
+                min = self.SPENDING_STEPS[i-1][0]
+                max = float('inf')
+            else:
+                min = self.SPENDING_STEPS[i-1][0]
+                max = self.SPENDING_STEPS[i][0]
+            if max == float('inf'):
+                step_labels.append(f"{amount_formatter(min)}+")
+            else:
+                step_labels.append(f"{amount_formatter(min)} to < {amount_formatter(max)}")
+
+        step_index = list(range(1, len(step_colors)+1))
+        print(thresholds)
+        # Create step colormap with spending range boundaries
+        step_colormap = StepColormap(
+            colors=step_colors,
+            index=step_index,
+            vmin=0,
+            vmax=6,
+            caption=title,
+            tick_labels=thresholds
+        )
         
-        # Build HTML legend with color squares and range labels
-        legend_html = f'''
-        <div style="position: fixed; bottom: 50px; left: 50px; width: 150px; height: 140px; 
-                    background-color: white; border:2px solid grey; z-index:9999; 
-                    font-size:14px; padding: 10px">
-        <p style="margin: 0 0 10px 0; font-weight: bold;">{title}</p>
-        '''
+        # Add colormap to map
+        step_colormap.add_to(map_obj)
         
-        for range_label, color in legend_ranges:
-            legend_html += f'''
-            <p style="margin: 2px 0; line-height: 1.2;">
-                <span style="background-color: {color}; width: 15px; height: 15px; 
-                      display: inline-block; border: 1px solid #ccc; margin-right: 5px;"></span>
-                {range_label}
-            </p>
-            '''
-        
-        legend_html += '</div>'
-        
-        # Add legend as custom HTML element
-        legend_element = MacroElement()
-        legend_element._template = Template(legend_html)
-        map_obj.get_root().add_child(legend_element)
     
     def _add_continuous_legend(self, map_obj: folium.Map, title: str, min_val: float, max_val: float):
         """
@@ -450,6 +429,33 @@ class USSpendingMaps:
         colormap.caption = f"{title} (Log Scale)"
         colormap.add_to(map_obj)
 
+def amount_formatter(value: float, abbr: bool = True) -> str:
+    """
+    Format spending amount as a string with appropriate units.
+    
+    Args:
+        value: Spending amount to format
+        abbr: Whether to use abbreviated units (e.g., 'K', 'M', 'B') or full dollar amounts
+    
+    Returns:
+        Formatted string with appropriate unit (e.g., '$1.2M', '$500K', '$3.4 billion')
+    """
+    if pd.isna(value) or value < 0:
+        return "No data"
+    
+    billion_suffix = 'B' if abbr else ' billion'
+    million_suffix = 'M' if abbr else ' million'
+    thousand_suffix = 'K' if abbr else ',000'
+    
+    if value >= 1_000_000_000:
+        
+        return f"${value / 1_000_000_000:.1f}{billion_suffix}"
+    elif value >= 1_000_000:
+        return f"${value / 1_000_000:.1f}{million_suffix}"
+    elif value >= 1_000:
+        return f"${value / 1_000:.0f}{thousand_suffix}"
+    else:
+        return f"${value:.2f}"
 
 def create_spending_map(csv_path: str, geo_col: str, value_cols: Union[str, List[str]], 
                        title: str = "Spending Map", agg_func: str = 'mean', 
@@ -545,15 +551,7 @@ def create_spending_map(csv_path: str, geo_col: str, value_cols: Union[str, List
         geo_name = row[geo_col]
         value = row['agg_value']
         
-        # Format spending amount with appropriate units (B/M/K)
-        if value >= 1_000_000_000:
-            value_str = f"${value/1_000_000_000:.1f}B"
-        elif value >= 1_000_000:
-            value_str = f"${value/1_000_000:.1f}M"
-        elif value >= 1_000:
-            value_str = f"${value/1_000:.0f}K"
-        else:
-            value_str = f"${value:,.0f}"
+        value_str = amount_formatter(value,False)  # Use full dollar amounts for hover text
         
         # Extract FY year from value column names using regex
         hover_context = agg_func.capitalize()
@@ -598,7 +596,8 @@ def create_spending_map(csv_path: str, geo_col: str, value_cols: Union[str, List
     return {
         'map': spending_map,
         'data': geo_id_to_value,
-        'stats': {'min': min_val, 'max': max_val, 'count': len(geo_id_to_value)}
+        'stats': {'min': min_val, 'max': max_val, 'count': len(geo_id_to_value)},
+        'dataframe': df
     }
 
 
@@ -611,4 +610,4 @@ if __name__ == "__main__":
                               use_stepped=True,
                               geojson_path="us_congressional_districts.geojson"
                             )
-    map['map'].save('spending_map.html')
+    map['map'].save("nasa_district_map.html")

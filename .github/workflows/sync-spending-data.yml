@@ -30,7 +30,7 @@ jobs:
           PRIVATE_REPO_TOKEN: ${{ secrets.PRIVATE_REPO_PERSONAL_ACCESS_TOKEN }}
           PRIVATE_REPO: "planetary-society/nasa-spending-impact-generator"
         run: |
-          python .github/scripts/fetch_data.py
+          python .github/scripts/fetch-data.py
           
       - name: Check for changes
         id: changes

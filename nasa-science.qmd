@@ -18,114 +18,20 @@ format:
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
           <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
           <script>
-          console.log('Dashboard scripts initializing...');
-
-          // Logo fix - targeting the exact structure from your HTML
           function updateLogoLink() {
-              // Target: <a href="#"><img src="img/TPS_Logo_3Stack-White.png" alt="" class="navbar-logo d-inline-block"></a>
               const logoAnchor = document.querySelector('a[href="#"] > img.navbar-logo');
               
               if (logoAnchor) {
-                  const anchor = logoAnchor.parentElement;
-                  console.log('✓ Found logo anchor:', anchor);
-                  
+                  const anchor = logoAnchor.parentElement;                  
                   anchor.href = 'https://planetary.org';
                   anchor.target = '_blank';
                   anchor.title = 'The Planetary Society';
-                  anchor.setAttribute('rel', 'noopener noreferrer');
-                  
-                  console.log('✓ Logo link updated successfully!');
                   return true;
               }
-              
-              // Also check for the navbar title link if needed
-              const titleLink = document.querySelector('.navbar-title-text a[href="#"]');
-              if (titleLink) {
-                  console.log('Found navbar title link - leaving as is for dashboard navigation');
-              }
-              
               return false;
           }
-
-          // Map bounds adjustment
-          function adjustMapBounds() {
-              if (typeof L === 'undefined') {
-                  console.log('Leaflet not loaded yet');
-                  return false;
-              }
-              
-              const viewportWidth = window.innerWidth;
-              let adjusted = false;
-              
-              // Find all map containers
-              const mapContainers = document.querySelectorAll('.folium-map, [id^="map_"], .leaflet-container');
-              
-              mapContainers.forEach(container => {
-                  try {
-                      let map = null;
-                      
-                      // Check if map object exists on the element
-                      if (container._leaflet_map) {
-                          map = container._leaflet_map;
-                      } else if (container.id && window[container.id]) {
-                          map = window[container.id];
-                      }
-                      
-                      if (map && typeof map.fitBounds === 'function') {
-                          const bounds = L.latLngBounds(
-                              [23.7, -122.5],  // Southwest
-                              [46.7, -68.79]   // Northeast
-                          );
-                          
-                          let options = {};
-                          if (viewportWidth < 768) {
-                              options = { padding: [10, 10], maxZoom: 6 };
-                          } else if (viewportWidth < 1024) {
-                              options = { padding: [20, 20], maxZoom: 7 };
-                          } else {
-                              options = { padding: [30, 30], maxZoom: 4 };
-                          }
-                          
-                          map.fitBounds(bounds, options);
-                          map.invalidateSize();
-                          adjusted = true;
-                          console.log('✓ Map bounds adjusted');
-                      }
-                  } catch (e) {
-                      console.warn('Error adjusting map:', e);
-                  }
-              });
-              
-              return adjusted;
-          }
-
-          // Initialize with retries
           function initialize() {
-              let logoFixed = false;
-              let mapFixed = false;
-              let attempts = 0;
-              const maxAttempts = 20;
-              
-              function tryFixes() {
-                  attempts++;
-                  
-                  if (!logoFixed) {
-                      logoFixed = updateLogoLink();
-                  }
-                  
-                  if (!mapFixed) {
-                      mapFixed = adjustMapBounds();
-                  }
-                  
-                  if ((!logoFixed || !mapFixed) && attempts < maxAttempts) {
-                      setTimeout(tryFixes, 500);
-                  } else {
-                      console.log(`Initialization complete after ${attempts} attempts. Logo: ${logoFixed ? '✓' : '✗'}, Maps: ${mapFixed ? '✓' : '✗'}`);
-                  }
-              }
-              
-              // Start trying
-              tryFixes();
+              updateLogoLink();
           }
 
           // Wait for DOM to be ready
@@ -135,35 +41,12 @@ format:
               // Small delay to ensure Quarto has finished rendering
               setTimeout(initialize, 100);
           }
-
           // Also try on window load as backup
           window.addEventListener('load', () => {
               setTimeout(() => {
                   updateLogoLink();
-                  adjustMapBounds();
               }, 1000);
           });
-
-          // Handle window resize for maps
-          let resizeTimeout;
-          window.addEventListener('resize', () => {
-              clearTimeout(resizeTimeout);
-              resizeTimeout = setTimeout(adjustMapBounds, 300);
-          });
-
-          // Debug helper
-          window.dashboardDebug = {
-              checkStatus: () => {
-                  const logo = document.querySelector('a[href="#"] > img.navbar-logo');
-                  const logoHref = logo ? logo.parentElement.href : 'Not found';
-                  const maps = document.querySelectorAll('.leaflet-container').length;
-                  
-                  console.log('Debug Status:');
-                  console.log('- Logo href:', logoHref);
-                  console.log('- Leaflet loaded:', typeof L !== 'undefined');
-                  console.log('- Map containers:', maps);
-              }
-          };
           </script>
 ---
 
@@ -274,7 +157,7 @@ state_count = state_df[spending_filter].shape[0]
 ### Column {width=70%}{.tabset}
 
 ```{python}
-#| title: Spending by District
+#| title: By District
 #| component: card
 #| echo: false
 
@@ -282,7 +165,7 @@ display(district_map)
 ```
 
 ```{python}
-#| title: Spending by State
+#| title: By State
 #| component: card
 #| echo: false
 

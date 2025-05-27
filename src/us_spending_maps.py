@@ -286,7 +286,9 @@ class USSpendingMaps:
             raise ValueError("No GeoJSON data loaded")
         
         # Create base map centered on continental US
-        m = folium.Map(location=[38.62727, -96.19789],
+        
+        
+        m = folium.Map(location=[40.3736377, 110.0833],
                        zoom_start=4, tiles="CartoDB voyagernolabels",
                        max_bounds=True, min_zoom=3, max_zoom=8)
         

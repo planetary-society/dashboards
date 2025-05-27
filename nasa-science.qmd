@@ -50,12 +50,18 @@ science_district_csv_path = 'data/NASA-district-Science-summary.csv'
 science_state_csv_path = 'data/NASA-state-Science-summary.csv'
 district_last_updated = datetime.fromtimestamp(os.path.getmtime(science_district_csv_path))
 
+start_year = 2022
+end_year = 2024
+value_cols = []
+for fy in range(start_year, end_year+1):
+  value_cols.append(f"fy_{fy}_obligations")
+
 # Create dashboard data using the convenience function
 district_result = create_spending_map(
   csv_path=science_district_csv_path,
   geo_col="district",
   level="district",
-  value_cols=["fy_2024_obligations", "fy_2023_obligations","fy_2022_obligations"],
+  value_cols=value_cols,
   use_stepped=True,
   geojson_path="us_congressional_districts.geojson"
 )
@@ -63,20 +69,19 @@ district_map = district_result['map']
 district_df = district_result["dataframe"]
 
 # Count of all districts with spending (i.e. no all empty rows)
-districts_with_spending = district_df[(district_df['fy_2024_obligations'] != 0) | (district_df['fy_2023_obligations'] != 0) | (district_df['fy_2022_obligations'] != 0)]
-
-
-
-# Create dataframe to list states and district links to spending information
-districts_with_spending = district_df[
-    (district_df['fy_2024_obligations'] != 0) |
-    (district_df['fy_2023_obligations'] != 0) |
-    (district_df['fy_2022_obligations'] != 0)
-]
+# Dynamically generate filter for districts with spending in any year between start_year and end_year
+spending_filter = None
+for fy in range(start_year, end_year + 1):
+  col = f'fy_{fy}_obligations'
+  if spending_filter is None:
+    spending_filter = (district_df[col] != 0)
+  else:
+    spending_filter |= (district_df[col] != 0)
+districts_with_spending = district_df[spending_filter]
 
 df_with_url = districts_with_spending.assign(
     district_url=lambda df_lambda: df_lambda.apply(
-      lambda row: f"https://dashboards.planetary.org/nasa-spending/{row['state']}/{str(row['district'].split('-')[1]).zfill(2)}/",
+      lambda row: f"https://dashboards.planetary.org/nasa-spending/{row['state']}/{str(row['district'].split('-')[1]).zfill(2)}/science.html",
       axis=1
     )
 )
@@ -97,68 +102,34 @@ districts_by_state = (
 )
 
 districts_by_state['state'] = districts_by_state['state'].apply(
-    lambda state_abbr: f'<a href="https://dashboards.planetary.org/nasa-spending/{state_abbr}" target="_blank">{state_abbr}</a>'
+    lambda state_abbr: f'<a href="https://dashboards.planetary.org/nasa-spending/{state_abbr}/science.html" target="_blank">{state_abbr}</a>'
 )
 
 district_count = districts_with_spending.shape[0]
 percent_districts = round(((district_count/435)*100))
-# Sum all values in fy_2024_obligations
-district_total_2024 = amount_formatter(district_df["fy_2024_obligations"].sum())
+# Sum all values in most recent FY
+district_total_most_recent_fy = amount_formatter(district_df[f"fy_{end_year}_obligations"].sum(), False)
 
 state_result = create_spending_map(
   csv_path=science_state_csv_path,
   geo_col="state",
   level="state",
-  value_cols=["fy_2024_obligations", "fy_2023_obligations","fy_2022_obligations"],
+  value_cols=value_cols,
   use_stepped=True,
   geojson_path="us_states.geojson"
 )
 state_map = state_result['map']
 state_df = state_result['dataframe']
 
-state_count = state_df[(state_df['fy_2024_obligations'] != 0) | (state_df['fy_2023_obligations'] != 0) | (state_df['fy_2022_obligations'] != 0)].shape[0]
+state_count = state_df[spending_filter].shape[0]
 
 ```
 
-# Science Spending Maps
-
-## Row{.flow}
-```{python}
-#| component: valuebox
-#| title: "States Impacted"
-#| icon: geo-alt
-
-dict(
-  value = state_count
-)
-
-```
-
-```{python}
-#| component: valuebox
-#| title: "Districts Impacted"
-#| icon: map
-
-dict(
-  value = f"{district_count}"
-)
-
-```
-
-```{python}
-#| component: valuebox
-#| title: "Dollars Obligated (FY24)"
-#| icon: cash-coin
-
-dict(
-  value = district_total_2024
-)
-
-```
+# Spending Maps
 
 ## Row
 
-### Column {width=75%}{.tabset}
+### Column {width=70%}{.tabset}
 
 ```{python}
 #| title: Science by District"
@@ -177,7 +148,16 @@ state_map
 
 ```
 
-### Column {width=25%}
+### Column {width=30%}
+
+#### Row {height=35%}
+
+::: {.card title="NASA Science is Everywhere" class="highlight"}
+NASA's science investments benefit **every state** and **`{python} percent_districts`% (`{python} district_count`)** of all congressional districts. In FY `{python} end_year` alone, **NASA science committed `{python} district_total_most_recent_fy`** to recipients around the country.
+:::
+
+
+#### Row
 ```{python}
 #| title: "Economic Impact Reports" 
 #| component: datatable
@@ -197,10 +177,7 @@ show(districts_by_state,classes="display wrap compact", searching=False, info=Fa
 
 **About the Data**
 
-This dashboard displays the average annual NASA Science Mission Directorate contract obligations by congressional district for fiscal years 2022-2024. The data includes research grants, contracts, and cooperative agreements supporting NASA's science programs including Earth Science, Planetary Science, Astrophysics, and Heliophysics.
+This dashboard displays average annual NASA Science Mission Directorate contract obligations by congressional district and state for fiscal years `{python} start_year`-`{python} end_year`. The data includes research grants, contracts, and cooperative agreements supporting NASA's science programs including Earth Science, Planetary Science, Astrophysics, and Heliophysics.
 
-**Color Scale**
-
-The map uses a logarithmic color scale to better visualize the wide range of spending values across districts. Darker blue indicates higher spending levels.
-
+Values reflect the sum contractual obligations made by NASA's Science Mission Directorate during those fiscal years to recipients doing work in the given locale.
 :::

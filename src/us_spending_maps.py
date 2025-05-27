@@ -486,15 +486,16 @@ def amount_formatter(value: float, abbr: bool = True, decimal: int = 1) -> str:
     
     billion_suffix = 'B' if abbr else ' billion'
     million_suffix = 'M' if abbr else ' million'
-    thousand_suffix = 'K' if abbr else ',000'
-
     
     if value >= 1_000_000_000:
         return f"${value / 1_000_000_000:.{decimal}f}{billion_suffix}"
     elif value >= 1_000_000:
         return f"${value / 1_000_000:.{decimal}f}{million_suffix}"
     elif value >= 1_000:
-        return f"${value / 1_000:.{decimal}f}{thousand_suffix}"
+        if abbr:
+            return f"${value / 1_000:.{decimal}f}K"
+        else:
+            return f"${value:,.0f}"
     elif value == 0:
         return "$0"
     else:
@@ -525,6 +526,7 @@ def create_spending_map(csv_path: str, geo_col: str, value_cols: Union[str, List
         Dictionary containing:
             'map': Folium map object ready for display/saving
             'data': Dictionary mapping geographic IDs to spending values  
+            'dataframe': Original DataFrame
             'stats': Dictionary with 'min', 'max', 'count' of processed data
     
     Example:

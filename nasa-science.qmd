@@ -29,6 +29,48 @@ format:
                 }, 1000);
             });
           </script>
+          <script>
+            // Set dynamic bounds based on viewport size
+            function fitMapToBounds() {
+                setTimeout(function() {
+                    const mapElements = document.querySelectorAll('.folium-map');
+                    
+                    mapElements.forEach(function(mapElement) {
+                        const mapId = mapElement.id;
+                        const mapObj = window[mapId];
+                        
+                        if (mapObj) {
+                            const bounds = L.latLngBounds(
+                                L.latLng(23.7, -122.5),  // Southwest corner
+                                L.latLng(46.7, -68.79)   // Northeast corner
+                            );
+                            
+                            if (viewportWidth < 768) {
+                                padding = [10, 10]; // Less padding on mobile
+                                maxZoom = 6; // Prevent over-zooming on mobile
+                            } else if (viewportWidth < 1024) {
+                                padding = [10, 10]; // Medium padding on tablet
+                                maxZoom = 7;
+                            } else {
+                                padding = [15, 15]; // More padding on desktop
+                                maxZoom = 4; // Default zoom of 4 on desktop
+                            }
+                            
+                            mapObj.fitBounds(bounds, {
+                                padding: padding,
+                                maxZoom: maxZoom
+                            });
+                        }
+                    });
+                }, 1500);
+            }
+
+            window.addEventListener('load', fitMapToBounds);
+            window.addEventListener('resize', function() {
+                clearTimeout(window.resizeTimeout);
+                window.resizeTimeout = setTimeout(fitMapToBounds, 250);
+            });
+          </script>
 ---
 
 ```{python}

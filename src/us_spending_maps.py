@@ -286,7 +286,7 @@ class USSpendingMaps:
             raise ValueError("No GeoJSON data loaded")
         
         # Create base map centered on continental US
-        m = folium.Map(location=[38.62727, -90.19789], zoom_start=4, tiles="CartoDB positron")
+        m = folium.Map(location=[38.62727, -96.19789], zoom_start=4, tiles="CartoDB voyagernolabels")
         
         # Prepare GeoJSON with hover information
         geojson_copy = json.loads(json.dumps(self.geojson_data))  # Deep copy to avoid modifying original
@@ -504,8 +504,7 @@ def amount_formatter(value: float, abbr: bool = True, decimal: int = 1) -> str:
 def create_spending_map(csv_path: str, geo_col: str, value_cols: Union[str, List[str]], 
                        title: str = "Spending Map", agg_func: str = 'mean', 
                        use_stepped: bool = False, level: str = 'district',
-                       geojson_path: str = 'us_congressional_districts.geojson',
-                       bounds: Optional[List[List[float]]] = None) -> Dict:
+                       geojson_path: str = 'us_congressional_districts.geojson') -> Dict:
     """
     Convenience function to create a complete spending map from CSV data.
     
@@ -522,7 +521,6 @@ def create_spending_map(csv_path: str, geo_col: str, value_cols: Union[str, List
         use_stepped: Whether to use stepped color ranges vs continuous gradient
         level: Geographic level - 'district' for congressional districts, 'state' for states
         geojson_path: Path to GeoJSON file with geographic boundaries
-        bounds: Optional geographic bounds to set initial map view (default is continental US)
     
     Returns:
         Dictionary containing:
@@ -639,12 +637,6 @@ def create_spending_map(csv_path: str, geo_col: str, value_cols: Union[str, List
     
     # Generate final map with all styling and interactivity
     spending_map = mapper.create_map(geo_id_to_value, min_val, max_val, title, use_stepped, hover_data)
-    
-    # Set bounds for the continential US
-    if not bounds:
-        bounds = [[23.7, -122.5], [46.7, -68.79]]
-    
-    spending_map.fit_bounds(bounds=bounds,max_zoom=3)
     
     return {
         'map': spending_map,

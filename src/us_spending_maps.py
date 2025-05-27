@@ -638,6 +638,10 @@ def create_spending_map(csv_path: str, geo_col: str, value_cols: Union[str, List
     # Generate final map with all styling and interactivity
     spending_map = mapper.create_map(geo_id_to_value, min_val, max_val, title, use_stepped, hover_data)
     
+    # Set default map bounds to that of the continental US
+    spending_map.fit_bounds([[24.396308, -125.0], [49.384358, -66.93457]])  # Continental US bounds
+    
+    
     return {
         'map': spending_map,
         'data': geo_id_to_value,

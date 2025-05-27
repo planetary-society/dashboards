@@ -184,7 +184,7 @@ state_count = state_df[spending_filter].shape[0]
 #| component: card
 #| echo: false
 
-district_map
+display(district_map)
 ```
 
 ```{python}
@@ -192,7 +192,7 @@ district_map
 #| component: card
 #| echo: false
 
-state_map
+display(state_map)
 
 ```
 

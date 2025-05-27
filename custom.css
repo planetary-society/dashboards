@@ -31,21 +31,19 @@ a:hover {
     color: white !important; /* White text/icons on black */
   }
 
-  
   .navbar-nav a.nav-link.active {
+    font-weight: bold;
+  }
+
+  .navbar-nav a.nav-link.active, .navbar-nav a.nav-link:hover {
     background-color: transparent !important;
-    border-bottom-color: #037cc2;
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+    text-decoration-color: #037cc2;
+    text-decoration-thickness: 3px;
   }
 
-  .navbar-nav a.nav-link {
-    padding-bottom: .25rem;
-    border-bottom-width: 3px;
-    cursor: pointer;
-  }
-
-  .navbar-nav a.nav-link:hover {
-    border-bottom-color: #037cc2;
-  } 
+  
 /* --- Card Styling --- */
   
 .card-header {

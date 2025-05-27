@@ -92,8 +92,11 @@ science_district_csv_path = 'data/NASA-district-Science-summary.csv'
 science_state_csv_path = 'data/NASA-state-Science-summary.csv'
 district_last_updated = datetime.fromtimestamp(os.path.getmtime(science_district_csv_path))
 
+# Set date range to analyze (assumes corresponding range of 'fy_{yyyy}_obligations' columns in csv)
 start_year = 2022
 end_year = 2024
+
+
 value_cols = []
 for fy in range(start_year, end_year+1):
   value_cols.append(f"fy_{fy}_obligations")
@@ -132,7 +135,7 @@ districts_by_state = (
   df_with_url
   .groupby('state')
   .agg(
-    districts=('district', lambda x: ', '.join( # Added a space after comma for better readability if multiple links
+    districts=('district', lambda x: ', '.join(
       [
         # MODIFICATION: Output HTML <a> tag directly
         f'<a href="{u}" target="_blank">{d.split("-")[1].zfill(2)}</a>'
@@ -144,8 +147,11 @@ districts_by_state = (
 )
 
 districts_by_state['state'] = districts_by_state['state'].apply(
-    lambda state_abbr: f'<a href="https://dashboards.planetary.org/nasa-spending/{state_abbr}/science.html" target="_blank">{state_abbr}</a>'
+  lambda state_abbr: f'<a href="https://dashboards.planetary.org/nasa-spending/{state_abbr}/science.html" target="_blank">{state_abbr}</a>'
 )
+
+# Capitalize header column names
+districts_by_state.columns = [col.capitalize() for col in districts_by_state.columns]
 
 district_count = districts_with_spending.shape[0]
 percent_districts = round(((district_count/435)*100))
@@ -174,7 +180,7 @@ state_count = state_df[spending_filter].shape[0]
 ### Column {width=70%}{.tabset}
 
 ```{python}
-#| title: Science by District"
+#| title: Spending by District
 #| component: card
 #| echo: false
 
@@ -182,7 +188,7 @@ district_map
 ```
 
 ```{python}
-#| title: "Science by State" 
+#| title: Spending by State
 #| component: card
 #| echo: false
 
@@ -201,10 +207,9 @@ NASA's science investments benefit **every state** and **`{python} percent_distr
 
 #### Row
 ```{python}
-#| title: "Economic Impact Reports" 
+#| title: "Detailed Economic Impact Reports" 
 #| component: datatable
 #| echo: false
-
 show(districts_by_state,classes="display wrap compact", searching=False, info=False)
 ```
 

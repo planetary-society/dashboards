@@ -286,8 +286,13 @@ class USSpendingMaps:
             raise ValueError("No GeoJSON data loaded")
         
         # Create base map centered on continental US
-        m = folium.Map(location=[38.62727, -96.19789], zoom_start=4, tiles="CartoDB voyagernolabels")
+        m = folium.Map(location=[38.62727, -96.19789],
+                       zoom_start=4, tiles="CartoDB voyagernolabels",
+                       max_bounds=True, min_zoom=3, max_zoom=8)
         
+        # Center map on continental US bounds
+        m.fit_bounds([[23.7, -122.5], [46.7, -68.79]])
+
         # Prepare GeoJSON with hover information
         geojson_copy = json.loads(json.dumps(self.geojson_data))  # Deep copy to avoid modifying original
         hover_added = False
@@ -637,11 +642,7 @@ def create_spending_map(csv_path: str, geo_col: str, value_cols: Union[str, List
     
     # Generate final map with all styling and interactivity
     spending_map = mapper.create_map(geo_id_to_value, min_val, max_val, title, use_stepped, hover_data)
-    
-    # Set default map bounds to that of the continental US
-    spending_map.fit_bounds([[24.396308, -125.0], [49.384358, -66.93457]])  # Continental US bounds
-    
-    
+
     return {
         'map': spending_map,
         'data': geo_id_to_value,

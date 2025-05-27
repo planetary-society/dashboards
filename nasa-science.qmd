@@ -18,16 +18,84 @@ format:
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
           <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
           <script>
-            window.addEventListener('load', function() {
-                setTimeout(function() {
-                    const logoAnchor = document.querySelector('a[href="#"]');
-                    if (logoAnchor && logoAnchor.querySelector('.navbar-logo')) {
-                        logoAnchor.href = 'https://planetary.org';
-                        logoAnchor.target = '_blank';
-                        logoAnchor.title = 'The Planetary Society';
+            console.log('Dashboard scripts loading at:', new Date().toISOString());
+
+            // Strategy 1: Direct attempt with multiple selectors
+            function updateLogoLink() {
+                const selectors = [
+                    'a[href="#"] img.navbar-logo',
+                    'a[href="#"].navbar-brand',
+                    '.navbar-brand[href="#"]',
+                    'a.navbar-brand:not([href*="planetary.org"])',
+                    '.navbar a[href="#"]',
+                    'nav a[href="#"]'
+                ];
+                
+                for (const selector of selectors) {
+                    const element = document.querySelector(selector);
+                    if (element) {
+                        const anchor = element.tagName === 'A' ? element : element.closest('a');
+                        if (anchor && !anchor.href.includes('planetary.org')) {
+                            anchor.href = 'https://planetary.org';
+                            anchor.target = '_blank';
+                            anchor.title = 'The Planetary Society';
+                            anchor.setAttribute('rel', 'noopener noreferrer');
+                            console.log('✓ Logo link updated using selector:', selector);
+                            return true;
+                        }
                     }
-                }, 1000);
-            });
+                }
+                return false;
+            }
+
+            // Strategy 2: MutationObserver for dynamic content
+            function watchForLogo() {
+                const observer = new MutationObserver((mutations, obs) => {
+                    if (updateLogoLink()) {
+                        obs.disconnect();
+                        console.log('✓ Logo link updated via MutationObserver');
+                    }
+                });
+                
+                observer.observe(document.body, {
+                    childList: true,
+                    subtree: true,
+                    attributes: true,
+                    attributeFilter: ['href']
+                });
+                
+                // Disconnect after 10 seconds to prevent memory leaks
+                setTimeout(() => {
+                    observer.disconnect();
+                    console.log('⚠ MutationObserver disconnected after timeout');
+                }, 10000);
+            }
+
+            // Strategy 3: Multiple timed attempts
+            function attemptLogoUpdate() {
+                const intervals = [0, 100, 500, 1000, 2000, 3000, 5000];
+                
+                intervals.forEach(delay => {
+                    setTimeout(() => {
+                        if (updateLogoLink()) {
+                            console.log(`✓ Logo updated after ${delay}ms`);
+                        }
+                    }, delay);
+                });
+            }
+
+            // Execute all strategies
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    console.log('DOM loaded, starting logo update attempts');
+                    attemptLogoUpdate();
+                    watchForLogo();
+                });
+            } else {
+                console.log('DOM already loaded, starting logo update attempts');
+                attemptLogoUpdate();
+                watchForLogo();
+            }
           </script>
           <script>
             // Set dynamic bounds based on viewport size
@@ -38,7 +106,7 @@ format:
                     mapElements.forEach(function(mapElement) {
                         const mapId = mapElement.id;
                         const mapObj = window[mapId];
-                        
+                        const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
                         if (mapObj) {
                             const bounds = L.latLngBounds(
                                 L.latLng(23.7, -122.5),  // Southwest corner
@@ -53,7 +121,7 @@ format:
                                 maxZoom = 7;
                             } else {
                                 padding = [15, 15]; // More padding on desktop
-                                maxZoom = 4; // Default zoom of 4 on desktop
+                                maxZoom = 3; // Default zoom of 4 on desktop
                             }
                             
                             mapObj.fitBounds(bounds, {

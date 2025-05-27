@@ -33,7 +33,7 @@ STATE_FIPS_MAP = {
 # --- 1. Load and Clean Contract Data ---
 
 # Find all CSV files in the data/ directory and select the newest one
-csv_files = glob.glob('data/*.csv')
+csv_files = glob.glob('data/nasa_cancelled_contracts*.csv')
 if not csv_files:
     raise FileNotFoundError("No CSV files found in data/ directory")
 newest_file = max(csv_files, key=os.path.getmtime)
@@ -332,10 +332,8 @@ format:
           <meta property="og:image:height" content="630">
           <meta property="og:image:alt" content="NASA Contract Cancellations Dashboard showing map of impacted congressional districts">
           <meta property="og:url" content="https://dashboards.planetary.org/cancellations.html">
-          <!-- Additional meta for better SEO -->
           <meta name="robots" content="index, follow">
           <meta name="theme-color" content="#037cc2">
-          <!-- Add this to your include-in-header section -->
           <script type="application/ld+json">
             {
               "@context": "https://schema.org",
@@ -451,6 +449,44 @@ format:
                 }, 1000); // Wait 1 second for dashboard to fully render
             });
           </script>
+          <script>
+            // Set dynamic bounds based on viewport size
+            function fitMapToBounds() {
+                setTimeout(function() {
+                    const mapElements = document.querySelectorAll('.folium-map'); 
+                    mapElements.forEach(function(mapElement) {
+                        const mapId = mapElement.id;
+                        const mapObj = window[mapId];               
+                        if (mapObj) {
+                            const bounds = L.latLngBounds(
+                                L.latLng(23.7, -122.5),  // Southwest corner
+                                L.latLng(46.7, -68.79)   // Northeast corner
+                            );           
+                            if (viewportWidth < 768) {
+                                padding = [10, 10]; // Less padding on mobile
+                                maxZoom = 6; // Prevent over-zooming on mobile
+                            } else if (viewportWidth < 1024) {
+                                padding = [10, 10]; // Medium padding on tablet
+                                maxZoom = 7;
+                            } else {
+                                padding = [15, 15]; // More padding on desktop
+                                maxZoom = 4; // Default zoom of 4 on desktop
+                            }
+                            mapObj.fitBounds(bounds, {
+                                padding: padding,
+                                maxZoom: maxZoom
+                            });
+                        }
+                    });
+                }, 1500);
+            }
+
+            window.addEventListener('load', fitMapToBounds);
+            window.addEventListener('resize', function() {
+                clearTimeout(window.resizeTimeout);
+                window.resizeTimeout = setTimeout(fitMapToBounds, 250);
+            });
+          </script>
 ---
 
 # Summary
@@ -532,7 +568,7 @@ for feature in congressional_geojson_data['features']:
     feature['properties']['hover_info'] = hover_info.get(gid, "No contracts")
 
 # build the map
-m = folium.Map(location=[36.7570, -90.3929], zoom_start=4, tiles="CartoDB positron")
+m = folium.Map(location=[36.7570, -96.3929], zoom_start=4, tiles="CartoDB voyagernolabels")
 
 # color ramp
 colormap = LinearColormap(

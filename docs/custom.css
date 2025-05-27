@@ -10,9 +10,9 @@ a {
     color: #037cc2;
   }
   
-  a:hover {
-    color: #025c94; /* Slightly darker blue on hover */
-  }
+a:hover {
+  color: #025c94; /* Slightly darker blue on hover */
+}
   
   
   /* --- Navbar Styling --- */
@@ -30,22 +30,41 @@ a {
   .navbar .quarto-navigation-tool {
     color: white !important; /* White text/icons on black */
   }
+
   
+  .navbar-nav a.nav-link.active {
+    background-color: transparent !important;
+    border-bottom-color: #037cc2;
+  }
+
+  .navbar-nav a.nav-link {
+    padding-bottom: .25rem;
+    border-bottom-width: 3px;
+    cursor: pointer;
+  }
+
+  .navbar-nav a.nav-link:hover {
+    border-bottom-color: #037cc2;
+  } 
+/* --- Card Styling --- */
   
 .card-header {
-    background-color:#037cc2 !important; /* Planetary Society blue */
+    background-color:#037cc2 !important; 
     color: white !important; /* White text */
 }
 
   /* --- Value Box Styling --- */
-  
+
+.value-box-grid {
+    background-color: #bf4105 !important;
+}
+
   /* Apply light background and curve to value box corners */
   .card.valuebox {
-    background-color: #edf2f7; /* Light grey background */
     border-radius: 0.5rem;    /* Updated border radius */
     overflow: hidden;         /* Ensures background respects the border radius */
     border: 1px solid #dee2e6; /* Optional: add a light border */
-    color: #212529;           /* Ensure text is dark on light background */
+    color: white;           /* Ensure text is dark on light background */
     text-align: center;    /* Center text */
     font-weight: bold;
   }

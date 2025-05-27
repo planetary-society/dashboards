@@ -38,10 +38,12 @@ format:
 import sys
 sys.path.append('src')
 
-from us_spending_maps import USSpendingMaps, create_spending_map
+from us_spending_maps import USSpendingMaps, create_spending_map, amount_formatter
 import pandas as pd
 from datetime import datetime
+from itables import show
 import os
+
 
 # Load and prepare data
 science_district_csv_path = 'data/NASA-district-Science-summary.csv'
@@ -58,6 +60,50 @@ district_result = create_spending_map(
   geojson_path="us_congressional_districts.geojson"
 )
 district_map = district_result['map']
+district_df = district_result["dataframe"]
+
+# Count of all districts with spending (i.e. no all empty rows)
+districts_with_spending = district_df[(district_df['fy_2024_obligations'] != 0) | (district_df['fy_2023_obligations'] != 0) | (district_df['fy_2022_obligations'] != 0)]
+
+
+
+# Create dataframe to list states and district links to spending information
+districts_with_spending = district_df[
+    (district_df['fy_2024_obligations'] != 0) |
+    (district_df['fy_2023_obligations'] != 0) |
+    (district_df['fy_2022_obligations'] != 0)
+]
+
+df_with_url = districts_with_spending.assign(
+    district_url=lambda df_lambda: df_lambda.apply(
+      lambda row: f"https://dashboards.planetary.org/nasa-spending/{row['state']}/{str(row['district'].split('-')[1]).zfill(2)}/",
+      axis=1
+    )
+)
+
+districts_by_state = (
+  df_with_url
+  .groupby('state')
+  .agg(
+    districts=('district', lambda x: ', '.join( # Added a space after comma for better readability if multiple links
+      [
+        # MODIFICATION: Output HTML <a> tag directly
+        f'<a href="{u}" target="_blank">{d.split("-")[1].zfill(2)}</a>'
+        for d, u in zip(x, df_with_url.loc[x.index, 'district_url'])
+      ]
+    ))
+  )
+  .reset_index()
+)
+
+districts_by_state['state'] = districts_by_state['state'].apply(
+    lambda state_abbr: f'<a href="https://dashboards.planetary.org/nasa-spending/{state_abbr}" target="_blank">{state_abbr}</a>'
+)
+
+district_count = districts_with_spending.shape[0]
+percent_districts = round(((district_count/435)*100))
+# Sum all values in fy_2024_obligations
+district_total_2024 = amount_formatter(district_df["fy_2024_obligations"].sum())
 
 state_result = create_spending_map(
   csv_path=science_state_csv_path,
@@ -68,33 +114,80 @@ state_result = create_spending_map(
   geojson_path="us_states.geojson"
 )
 state_map = state_result['map']
+state_df = state_result['dataframe']
+
+state_count = state_df[(state_df['fy_2024_obligations'] != 0) | (state_df['fy_2023_obligations'] != 0) | (state_df['fy_2022_obligations'] != 0)].shape[0]
 
 ```
 
-# NASA Science Spending Maps {.tabset}
+# Science Spending Maps
 
-## Districts
+## Row{.flow}
+```{python}
+#| component: valuebox
+#| title: "States Impacted"
+#| icon: geo-alt
+
+dict(
+  value = state_count
+)
+
+```
 
 ```{python}
-#| title: "NASA Science Spending by Congressional District (FY22-24 Average)"
+#| component: valuebox
+#| title: "Districts Impacted"
+#| icon: map
+
+dict(
+  value = f"{district_count}"
+)
+
+```
+
+```{python}
+#| component: valuebox
+#| title: "Dollars Obligated (FY24)"
+#| icon: cash-coin
+
+dict(
+  value = district_total_2024
+)
+
+```
+
+## Row
+
+### Column {width=75%}{.tabset}
+
+```{python}
+#| title: Science by District"
 #| component: card
 #| echo: false
 
-display(district_map)
+district_map
 ```
 
-## States
-
 ```{python}
-#| title: "NASA Science Spending by State (FY22-24 Total)" 
+#| title: "Science by State" 
 #| component: card
 #| echo: false
 
-display(state_map)
+state_map
 
 ```
 
-## Data Summary
+### Column {width=25%}
+```{python}
+#| title: "Economic Impact Reports" 
+#| component: datatable
+#| echo: false
+
+show(districts_by_state,classes="display wrap compact", searching=False, info=False)
+```
+
+
+# Data Summary
 
 ::: {.card}
 **Data Summary**

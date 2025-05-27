@@ -73,14 +73,15 @@ class USSpendingMaps:
     
     # Stepped scale spending ranges with corresponding color steps
     # Used for binned color visualization instead of continuous gradients
+    # (from 6-class Multi-hue, colorblind-safe scheme, ColorBrewer)
     SPENDING_STEPS = [
-        # Threshold,    Color (from 6-class Blues, ColorBrewer), Legend Label
-        (500_000,       '#EFF3FF',  '>$0 to < $500K'),         # Lightest Blue
-        (5_000_000,     '#BDD7E7',  '$500K to < $5M'),
-        (50_000_000,    '#6BAED6',  '$5M to < $50M'),
-        (250_000_000,   '#4292C6',  '$50M to < $250M'),
-        (1_000_000_000, '#2171B5',  '$250M to < $1B'),
-        (5_000_000_000,  '#08519C',  '$1B+')                  # Darkest Blue
+        # Threshold,    Color, Legend Label
+        (500_000,       "#fdfde6",  '>$0 to < $500K'),         # Lightest Blue
+        (5_000_000,     "#d6ebca",  '$500K to < $5M'),
+        (50_000_000,    '#7fcdbb',  '$5M to < $50M'),
+        (250_000_000,   '#41b6c4',  '$50M to < $250M'),
+        (1_000_000_000, '#2c7fb8',  '$250M to < $1B'),
+        (5_000_000_000,  '#253494',  '$1B+')                  # Darkest Blue
     ]
     
     def __init__(self, geojson_path: Union[str, Path]):
@@ -285,7 +286,7 @@ class USSpendingMaps:
             raise ValueError("No GeoJSON data loaded")
         
         # Create base map centered on continental US
-        m = folium.Map(location=[36.7570, -90.3929], zoom_start=4, tiles="CartoDB positron")
+        m = folium.Map(location=[38.62727, -90.19789], zoom_start=4, tiles="CartoDB positron")
         
         # Prepare GeoJSON with hover information
         geojson_copy = json.loads(json.dumps(self.geojson_data))  # Deep copy to avoid modifying original
@@ -360,57 +361,97 @@ class USSpendingMaps:
         
         # Add appropriate legend based on color scale type
         if use_stepped:
-            self._add_stepped_legend(m, title)
+            self._add_stepped_legend(m)
         else:
             self._add_continuous_legend(m, title, min_val, max_val)
         
         return m
-        
-    def _add_stepped_legend(self, map_obj: folium.Map, title: str):
-        """
-        Add legend for stepped color scale using Folium's built-in StepColormap.
-        
-        Args:
-            map_obj: Folium map to add legend to
-            title: Legend title
-        """
-
-       
-        # Extract list of hex color values from the SPENDING_STEPS constant
-        step_colors = [color_hex for _, color_hex, _ in self.SPENDING_STEPS]
-        thresholds = [threshold for threshold, _, _ in self.SPENDING_STEPS] 
-        step_labels = []
-        for i in range(len(self.SPENDING_STEPS)):
-            if i == 0:
-                min = 0
-                max = self.SPENDING_STEPS[i][0]
-            elif i == len(self.SPENDING_STEPS) - 1:
-                min = self.SPENDING_STEPS[i-1][0]
-                max = float('inf')
-            else:
-                min = self.SPENDING_STEPS[i-1][0]
-                max = self.SPENDING_STEPS[i][0]
-            if max == float('inf'):
-                step_labels.append(f"{amount_formatter(min)}+")
-            else:
-                step_labels.append(f"{amount_formatter(min)} to < {amount_formatter(max)}")
-
-        step_index = list(range(1, len(step_colors)+1))
-        print(thresholds)
-        # Create step colormap with spending range boundaries
-        step_colormap = StepColormap(
-            colors=step_colors,
-            index=step_index,
-            vmin=0,
-            vmax=6,
-            caption=title,
-            tick_labels=thresholds
-        )
-        
-        # Add colormap to map
-        step_colormap.add_to(map_obj)
-        
     
+    def _add_stepped_legend(self, m: folium.Map, title="Legend"):
+        """Add a stepped legend to the map with custom labels, styled like Folium's StepColormap."""
+        
+        # Get colors
+        n_steps = len(self.SPENDING_STEPS)
+        colors = [self.SPENDING_STEPS[i][1] for i in range(n_steps)]
+        
+        # Create horizontal color bar HTML - responsive and minimal
+        legend_html = f'''
+        <div style="position: fixed; 
+                    top: 30px; 
+                    right: 1%; 
+                    transform: translateX(-50%);
+                    z-index: 9999; 
+                    font-family: Arial, sans-serif;
+                    font-size: 10px;
+                    max-width: 90vw;">
+            
+            <!-- Color bar -->
+            <div style="display: flex; 
+                        border: 1px solid #333; 
+                        height: 18px; 
+                        min-width: 240px;
+                        max-width: 300px;">
+        '''
+        
+        # Add color segments using flexbox
+        for color in colors:
+            legend_html += f'''
+                <div style="flex: 1; 
+                            background-color: {color};"></div>
+            '''
+        
+        legend_html += '</div>'  # Close color bar
+        
+        # Add tick marks and labels
+        legend_html += '''
+            <div style="position: relative; 
+                        height: 18px; 
+                        display: flex; 
+                        justify-content: space-between;
+                        margin-top: 2px;">
+        '''
+        
+        # Add boundary labels
+        for i in range(n_steps + 1):
+            if i == 0:
+                label_text = "$0"
+            elif i == n_steps:
+                if len(self.SPENDING_STEPS) > 0 and self.SPENDING_STEPS[-1][0] != float('inf'):
+                    label_text = ""
+                else:
+                    continue
+            elif i == (n_steps - 1):
+                label_text = amount_formatter(self.SPENDING_STEPS[i-1][0], True, 0) + "+"
+            else:
+                label_text = amount_formatter(self.SPENDING_STEPS[i-1][0], True, 0)
+            
+            # Position labels at boundaries
+            position_style = "position: absolute;"
+            if i == 0:
+                position_style += "left: 0;"
+            elif i == n_steps:
+                position_style += "right: 0;"
+            else:
+                percent = (i / n_steps) * 100
+                position_style += f"left: {percent}%; transform: translateX(-50%);"
+            
+            legend_html += f'''
+                <span style="{position_style} 
+                            color: #333; 
+                            font-size: 10px;
+                            white-space: nowrap;">{label_text}</span>
+            '''
+        
+        legend_html += '''
+            </div>  <!-- Close labels container -->
+        </div>  <!-- Close main container -->
+        '''
+        
+        # Add legend to map
+        m.get_root().html.add_child(folium.Element(legend_html))
+        
+        return m
+
     def _add_continuous_legend(self, map_obj: folium.Map, title: str, min_val: float, max_val: float):
         """
         Add continuous color scale legend using Folium's built-in colormap.
@@ -429,7 +470,7 @@ class USSpendingMaps:
         colormap.caption = f"{title} (Log Scale)"
         colormap.add_to(map_obj)
 
-def amount_formatter(value: float, abbr: bool = True) -> str:
+def amount_formatter(value: float, abbr: bool = True, decimal: int = 1) -> str:
     """
     Format spending amount as a string with appropriate units.
     
@@ -446,16 +487,18 @@ def amount_formatter(value: float, abbr: bool = True) -> str:
     billion_suffix = 'B' if abbr else ' billion'
     million_suffix = 'M' if abbr else ' million'
     thousand_suffix = 'K' if abbr else ',000'
+
     
     if value >= 1_000_000_000:
-        
-        return f"${value / 1_000_000_000:.1f}{billion_suffix}"
+        return f"${value / 1_000_000_000:.{decimal}f}{billion_suffix}"
     elif value >= 1_000_000:
-        return f"${value / 1_000_000:.1f}{million_suffix}"
+        return f"${value / 1_000_000:.{decimal}f}{million_suffix}"
     elif value >= 1_000:
-        return f"${value / 1_000:.0f}{thousand_suffix}"
+        return f"${value / 1_000:.{decimal}f}{thousand_suffix}"
+    elif value == 0:
+        return "$0"
     else:
-        return f"${value:.2f}"
+        return f"${value:.{decimal}f}"
 
 def create_spending_map(csv_path: str, geo_col: str, value_cols: Union[str, List[str]], 
                        title: str = "Spending Map", agg_func: str = 'mean', 
@@ -610,4 +653,4 @@ if __name__ == "__main__":
                               use_stepped=True,
                               geojson_path="us_congressional_districts.geojson"
                             )
-    map['map'].save("nasa_district_map.html")
+    map['map'].save("nasa_district_map2.html")

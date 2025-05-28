@@ -48,6 +48,25 @@ format:
               }, 1000);
           });
           </script>
+          <!-- Twitter Card meta tags -->
+          <meta name="twitter:card" content="summary_large_image">
+          <meta name="twitter:site" content="@exploreplanets">
+          <meta name="twitter:title" content="NASA Science Spending Dashboard">
+          <meta name="twitter:description" content="Interactive map of spending by NASA's science directorate in every state and congressional district.">
+          <meta name="twitter:image" content="https://dashboards.planetary.orgdocs/img/tps-science-budget-preview.png">
+          <meta name="twitter:image:alt" content="Interactive map of annual spending by NASA science in every state and congressional district.">
+          <!-- Open Graph meta tags -->
+          <meta property="og:type" content="website">
+          <meta property="og:site_name" content="The Planetary Society">
+          <meta property="og:title" content="NASA Science Spending Dashboard">
+          <meta property="og:description" content="Interactive map of spending by NASA's science directorate in every state and congressional district.">
+          <meta property="og:image" content="https://dashboards.planetary.org/img/tps-science-budget-preview.png">
+          <meta property="og:image:width" content="1200">
+          <meta property="og:image:height" content="675">
+          <meta property="og:image:alt" content="Interactive map of spending by NASA's science directorate in every state and congressional district.">
+          <meta property="og:url" content="https://dashboards.planetary.org/nasa-science.html">
+          <meta name="robots" content="index, follow">
+          <meta name="theme-color" content="#037cc2">
 ---
 
 ```{python}
@@ -103,7 +122,11 @@ districts_with_spending = district_df[spending_filter]
 
 df_with_url = districts_with_spending.assign(
     district_url=lambda df_lambda: df_lambda.apply(
-      lambda row: f"https://dashboards.planetary.org/nasa-spending/{row['state']}/{str(row['district'].split('-')[1]).zfill(2)}/science.html",
+      lambda row: (
+        f"https://planetary.s3.amazonaws.com/impact-reports/{row['state']}/{row['state']}-NASA-Science.pdf"
+        if str(row['district'].split('-')[1]).zfill(2) == "00"
+        else f"https://planetary.s3.amazonaws.com/impact-reports/{row['state']}/{str(row['district'].split('-')[1]).zfill(2)}/{row['state']}-{str(row['district'].split('-')[1]).zfill(2)}-NASA-Science.pdf"
+      ),
       axis=1
     )
 )
@@ -114,7 +137,6 @@ districts_by_state = (
   .agg(
     districts=('district', lambda x: ', '.join(
       [
-        # MODIFICATION: Output HTML <a> tag directly
         f'<a href="{u}" target="_blank">{d.split("-")[1].zfill(2)}</a>'
         for d, u in zip(x, df_with_url.loc[x.index, 'district_url'])
       ]
@@ -124,7 +146,7 @@ districts_by_state = (
 )
 
 districts_by_state['state'] = districts_by_state['state'].apply(
-  lambda state_abbr: f'<a href="https://dashboards.planetary.org/nasa-spending/{state_abbr}/science.html" target="_blank">{state_abbr}</a>'
+  lambda state_abbr: f'<a href="https://planetary.s3.amazonaws.com/impact-reports/{state_abbr}/{state_abbr}-NASA-Science.pdf" target="_blank">{state_abbr}</a>'
 )
 
 # Capitalize header column names
@@ -175,7 +197,7 @@ display(state_map)
 
 ### Column {width=30%}
 
-#### Row {height=35%}
+#### Row {height=32%}
 
 ::: {.card title="NASA Science is Everywhere" class="highlight"}
 NASA's science investments benefit **every state** and **`{python} percent_districts`% (`{python} district_count`)** of all congressional districts. In FY `{python} end_year` alone, **NASA science committed `{python} district_total_most_recent_fy`** to recipients around the country.
@@ -203,5 +225,7 @@ show(districts_by_state,classes="display wrap compact", searching=False, info=Fa
 
 This dashboard displays average annual NASA Science Mission Directorate contract obligations by congressional district and state for fiscal years `{python} start_year`-`{python} end_year`. The data includes research grants, contracts, and cooperative agreements supporting NASA's science programs including Earth Science, Planetary Science, Astrophysics, and Heliophysics.
 
-Values reflect the sum contractual obligations made by NASA's Science Mission Directorate during those fiscal years to recipients doing work in the given locale.
+Values reflect the average sum of contractual obligations made by NASA's Science Mission Directorate based on the location of work in the given locale.
+
+
 :::

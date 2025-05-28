@@ -123,9 +123,9 @@ districts_with_spending = district_df[spending_filter]
 df_with_url = districts_with_spending.assign(
     district_url=lambda df_lambda: df_lambda.apply(
       lambda row: (
-        f"https://planetary.s3.amazonaws.com/impact-reports/{row['state']}/{row['state']}-NASA-Science.pdf"
+        f"https://planetary.s3.amazonaws.com/assets/impact-reports/{row['state']}/{row['state']}-NASA-Science.pdf"
         if str(row['district'].split('-')[1]).zfill(2) == "00"
-        else f"https://planetary.s3.amazonaws.com/impact-reports/{row['state']}/{str(row['district'].split('-')[1]).zfill(2)}/{row['state']}-{str(row['district'].split('-')[1]).zfill(2)}-NASA-Science.pdf"
+        else f"https://planetary.s3.amazonaws.com/assets/impact-reports/{row['state']}/{str(row['district'].split('-')[1]).zfill(2)}/{row['state']}-{str(row['district'].split('-')[1]).zfill(2)}-NASA-Science.pdf"
       ),
       axis=1
     )

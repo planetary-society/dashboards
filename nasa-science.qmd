@@ -146,7 +146,7 @@ districts_by_state = (
 )
 
 districts_by_state['state'] = districts_by_state['state'].apply(
-  lambda state_abbr: f'<a href="https://planetary.s3.amazonaws.com/impact-reports/{state_abbr}/{state_abbr}-NASA-Science.pdf" target="_blank">{state_abbr}</a>'
+  lambda state_abbr: f'<a href="https://planetary.s3.amazonaws.com/assets/impact-reports/{state_abbr}/{state_abbr}-NASA-Science.pdf" target="_blank">{state_abbr}</a>'
 )
 
 # Capitalize header column names

@@ -37,6 +37,7 @@ import pandas as pd
 import json
 import math
 import folium
+import branca
 from branca.colormap import LinearColormap, StepColormap
 from pathlib import Path
 from typing import Dict, Optional, Tuple, Union, List
@@ -76,12 +77,12 @@ class USSpendingMaps:
     # (from 6-class Multi-hue, colorblind-safe scheme, ColorBrewer)
     SPENDING_STEPS = [
         # Threshold,    Color, Legend Label
-        (500_000,       "#fdfde6",  '>$0 to < $500K'),         # Lightest Blue
-        (5_000_000,     "#d6ebca",  '$500K to < $5M'),
-        (50_000_000,    '#7fcdbb',  '$5M to < $50M'),
-        (250_000_000,   '#41b6c4',  '$50M to < $250M'),
-        (1_000_000_000, '#2c7fb8',  '$250M to < $1B'),
-        (5_000_000_000,  '#253494',  '$1B+')                  # Darkest Blue
+        (500_000,       "#fdfde6",  '< $500K'),         # Lightest Blue
+        (5_000_000,     "#d6ebca",  '$500K to $5M'),
+        (50_000_000,    '#7fcdbb',  '$5M to $50M'),
+        (250_000_000,   '#41b6c4',  '$50M to $250M'),
+        (1_000_000_000, '#2c7fb8',  '$250M to $1B'),
+        (5_000_000_000,  '#253494',  '$1B+')                 # Darkest Blue
     ]
     
     def __init__(self, geojson_path: Union[str, Path]):
@@ -374,88 +375,148 @@ class USSpendingMaps:
         
         return m
     
-    def _add_stepped_legend(self, m: folium.Map, title="Legend"):
-        """Add a stepped legend to the map with custom labels, styled like Folium's StepColormap."""
+    def _add_stepped_legend(self, m, title="NASA Science Spending"):
+        """Add a custom stepped legend to the map with horizontal color bar."""
+        import branca.element
         
-        # Get colors
-        n_steps = len(self.SPENDING_STEPS)
-        colors = [self.SPENDING_STEPS[i][1] for i in range(n_steps)]
+        # Build color segments HTML
+        color_segments = []
+        for _, color, _ in self.SPENDING_STEPS:
+            color_segments.append(f"<div class='color-segment' style='background:{color};'></div>")
         
-        # Create horizontal color bar HTML - responsive and minimal
+        # Build label items HTML
+        label_items = []
+        for _, _, label in self.SPENDING_STEPS:
+            # HTML encode < and > symbols
+            html_label = label.replace('<', '&lt;').replace('>', '&gt;')
+            label_items.append(f"<div class='label-item'>{html_label}</div>")
+        
+        # Create custom legend HTML template
         legend_html = f'''
-        <div style="position: fixed; 
-                    top: 30px; 
-                    right: 1%; 
-                    transform: translateX(-50%);
-                    z-index: 9999; 
-                    font-family: Arial, sans-serif;
-                    font-size: 10px;
-                    max-width: 90vw;">
+        <div id='maplegend' class='maplegend'>
+            <div class='legend-scale'>
+            <div class='legend-bar'>
+                {''.join(color_segments)}
+            </div>
+            <div class='legend-labels'>
+                {''.join(label_items)}
+            </div>
+            </div>
+        </div>
+        
+        <style type='text/css'>
+        .maplegend {{
+            position: absolute;
+            z-index: 9999;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            border: 2px solid #ccc;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            padding: 12px;
+            font-size: 14px;
+            font-family: 'Arial', sans-serif;
+            left: 20px;
+            bottom: 40px;
+            min-width: 350px;
+        }}
+        
+        .maplegend .legend-title {{
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 15px;
+            color: #333;
+        }}
+        
+        .maplegend .legend-scale {{
+            width: 100%;
+        }}
+        
+        .maplegend .legend-bar {{
+            display: flex;
+            width: 100%;
+            height: 20px;
+            border: 1px solid #999;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }}
+        
+        .maplegend .color-segment {{
+            flex: 1;
+            height: 100%;
+        }}
+        
+        .maplegend .legend-labels {{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }}
+        
+        .maplegend .label-item {{
+            flex: 1;
+            text-align: center;
+            font-size: 11px;
+            color: #555;
+            line-height: 1.2;
+        }}
+        
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {{
+            .maplegend {{
+            left: 10px;
+            right: 10px;
+            bottom: 15px;
+            min-width: 0;
+            width: auto;
+            padding: 10px;
+            font-size: 13px;
+            }}
             
-            <!-- Color bar -->
-            <div style="display: flex; 
-                        border: 1px solid #333; 
-                        height: 18px; 
-                        min-width: 240px;
-                        max-width: 300px;">
+            .maplegend .legend-bar {{
+            height: 16px;
+            margin-bottom: 6px;
+            }}
+            
+            .maplegend .label-item {{
+            font-size: 10px;
+            }}
+            
+            .maplegend .legend-title {{
+            font-size: 14px;
+            margin-bottom: 8px;
+            }}
+        }}
+        
+        @media (max-width: 480px) {{
+            .maplegend {{
+            padding: 8px;
+            font-size: 12px;
+            left: 5px;
+            right: 5px;
+            bottom: 10px;
+            }}
+            
+            .maplegend .legend-bar {{
+            height: 14px;
+            margin-bottom: 5px;
+            }}
+            
+            .maplegend .label-item {{
+            font-size: 9px;
+            }}
+            
+            .maplegend .legend-title {{
+            font-size: 13px;
+            margin-bottom: 6px;
+            }}
+        }}
+        </style>
         '''
         
-        # Add color segments using flexbox
-        for color in colors:
-            legend_html += f'''
-                <div style="flex: 1; 
-                            background-color: {color};"></div>
-            '''
-        
-        legend_html += '</div>'  # Close color bar
-        
-        # Add tick marks and labels
-        legend_html += '''
-            <div style="position: relative; 
-                        height: 18px; 
-                        display: flex; 
-                        justify-content: space-between;
-                        margin-top: 2px;">
-        '''
-        
-        # Add boundary labels
-        for i in range(n_steps + 1):
-            if i == 0:
-                label_text = "$0"
-            elif i == n_steps:
-                if len(self.SPENDING_STEPS) > 0 and self.SPENDING_STEPS[-1][0] != float('inf'):
-                    label_text = ""
-                else:
-                    continue
-            elif i == (n_steps - 1):
-                label_text = amount_formatter(self.SPENDING_STEPS[i-1][0], True, 0) + "+"
-            else:
-                label_text = amount_formatter(self.SPENDING_STEPS[i-1][0], True, 0)
-            
-            # Position labels at boundaries
-            position_style = "position: absolute;"
-            if i == 0:
-                position_style += "left: 0;"
-            elif i == n_steps:
-                position_style += "right: 0;"
-            else:
-                percent = (i / n_steps) * 100
-                position_style += f"left: {percent}%; transform: translateX(-50%);"
-            
-            legend_html += f'''
-                <span style="{position_style} 
-                            color: #333; 
-                            font-size: 10px;
-                            white-space: nowrap;">{label_text}</span>
-            '''
-        
-        legend_html += '''
-            </div>  <!-- Close labels container -->
-        </div>  <!-- Close main container -->
-        '''
-        
-        # Add legend to map
-        m.get_root().html.add_child(folium.Element(legend_html))
+        # Create the legend element and add to map
+        legend = branca.element.Element(legend_html)
+        m.get_root().html.add_child(legend)
         
         return m
 

@@ -416,7 +416,7 @@ class USSpendingMaps:
             font-size: 10px;
             font-family: 'Helvetica', sans-serif;
             left: 20px;
-            bottom: 60px;
+            bottom: 70px;
             min-width: 350px;
         }}
         

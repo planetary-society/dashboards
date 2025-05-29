@@ -197,21 +197,19 @@ display(state_map)
 
 ### Column {width=30%}
 
-#### Row {height=32%}
+#### Row {height=33%}
 
-::: {.card title="NASA Science is Everywhere" class="highlight"}
+::: {.card title="NASA Science is Everywhere"}
 NASA's science investments benefit **every state** and **`{python} percent_districts`% (`{python} district_count`)** of all congressional districts. In FY `{python} end_year` alone, **NASA science committed `{python} district_total_most_recent_fy`** to recipients around the country.
 :::
 
-
-#### Row
+#### Row {height=67%}
 ```{python}
 #| title: "Detailed Economic Impact Reports" 
 #| component: datatable
 #| echo: false
 show(districts_by_state,classes="display wrap compact", searching=False, info=False)
 ```
-
 
 # Data Summary
 

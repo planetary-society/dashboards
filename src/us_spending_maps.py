@@ -412,11 +412,11 @@ class USSpendingMaps:
             border-radius: 8px;
             border: 2px solid #ccc;
             box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-            padding: 12px;
-            font-size: 14px;
-            font-family: 'Arial', sans-serif;
+            padding: 5px;
+            font-size: 10px;
+            font-family: 'Helvetica', sans-serif;
             left: 20px;
-            bottom: 40px;
+            bottom: 60px;
             min-width: 350px;
         }}
         

@@ -112,12 +112,19 @@ district_df = district_result["dataframe"]
 # Count of all districts with spending (i.e. no all empty rows)
 # Dynamically generate filter for districts with spending in any year between start_year and end_year
 spending_filter = None
+min_spending = 50000  # Set your minimum spending threshold here, or None for any nonzero
+
 for fy in range(start_year, end_year + 1):
   col = f'fy_{fy}_obligations'
-  if spending_filter is None:
-    spending_filter = (district_df[col] != 0)
+  if min_spending is not None:
+    current_filter = district_df[col] >= min_spending
   else:
-    spending_filter |= (district_df[col] != 0)
+    current_filter = district_df[col] != 0
+  if spending_filter is None:
+    spending_filter = current_filter
+  else:
+    spending_filter |= current_filter
+
 districts_with_spending = district_df[spending_filter]
 
 df_with_url = districts_with_spending.assign(

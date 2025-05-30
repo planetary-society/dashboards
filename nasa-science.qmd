@@ -186,20 +186,20 @@ state_count = state_df[spending_filter].shape[0]
 ### Column {width=70%}{.tabset}
 
 ```{python}
-#| title: By District
-#| component: card
-#| echo: false
-
-display(district_map)
-```
-
-```{python}
 #| title: By State
 #| component: card
 #| echo: false
 
 display(state_map)
 
+```
+
+```{python}
+#| title: By District
+#| component: card
+#| echo: false
+
+display(district_map)
 ```
 
 ### Column {width=30%}
@@ -218,10 +218,70 @@ NASA's science investments benefit **every state** and **`{python} percent_distr
 show(districts_by_state,classes="display wrap compact", searching=False, info=False)
 ```
 
-# Data Summary
+# Data
+## Row
+
+### Column {width=50%}
+
+```{python}
+#| title: "NASA Science Spending By District" 
+#| component: datatable
+#| echo: false
+show(district_df.drop(columns=["state"]).rename(columns={"district":"District","fy_2024_obligations":"FY 2024 ($)","fy_2023_obligations":"FY 2023 ($)","fy_2022_obligations":"FY 2022 ($)"}),
+classes="display wrap compact",
+searching=False,
+info=False,
+buttons=[
+        {
+            'extend': 'csv',
+            'text': 'Download CSV',
+            'filename': f"{district_last_updated.strftime('%Y%m%d')}-nasa-science-obligations-congressional-districts"
+        },
+        {
+            'extend': 'excel', 
+            'text': 'Download Excel',
+            'filename': f"{district_last_updated.strftime('%Y%m%d')}-nasa-science-obligations-congressional-districts"
+        },
+        {
+            'extend': 'copy',
+            'text': 'Copy to Clipboard'
+        }
+    ],
+    dom='<"d-flex justify-content-center"B>frtip')
+```
+
+### Column {width=50%}
+```{python}
+#| title: "NASA Science Spending By State" 
+#| component: datatable
+#| echo: false
+show(state_df.rename(columns={"state":"State","fy_2024_obligations":"FY 2024 ($)","fy_2023_obligations":"FY 2023 ($)","fy_2022_obligations":"FY 2022 ($)"}),
+classes="display wrap compact",
+searching=False,
+info=False,
+buttons=[
+        {
+            'extend': 'csv',
+            'text': 'Download CSV',
+            'filename': f"{district_last_updated.strftime('%Y%m%d')}-nasa-science-obligations-congressional-districts"
+        },
+        {
+            'extend': 'excel', 
+            'text': 'Download Excel',
+            'filename': f"{district_last_updated.strftime('%Y%m%d')}-nasa-science-obligations-congressional-districts"
+        },
+        {
+            'extend': 'copy',
+            'text': 'Copy to Clipboard'
+        }
+    ],
+    dom='<"d-flex justify-content-center"B>frtip')
+```
+
+# About
 
 ::: {.card}
-**Data Summary**
+**About**
 
 - **Last Updated:** `{python} district_last_updated.strftime("%B %-d, %Y")`
 - **Data Source:** USASpending.gov
@@ -232,5 +292,10 @@ This dashboard displays average annual NASA Science Mission Directorate contract
 
 Values reflect the average sum of contractual obligations made by NASA's Science Mission Directorate based on the location of work in the given locale.
 
+**About The Planetary Society**
+
+[The Planetary Society](https://planetary.org) is an independent, member-supported nonprofit organization that unites a global community of over 2 million space enthusiasts in advancing space science and exploration. Anyone in the world can join as a member.
+
+For any questions, or to request further information, contact Casey Dreier at [casey.dreier@planetary.org](mailto:casey.dreier@planetary.org).
 
 :::

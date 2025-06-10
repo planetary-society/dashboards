@@ -1,0 +1,91 @@
+---
+title: Planetary Society Data Dashboards
+format:
+  dashboard:
+    pagetitle: The Planetary Society's NASA Data Dashboards
+    description-meta: "Tracking dashboards for NASA science spending, contracts, and grants data."
+    author-meta: "The Planetary Society"
+    logo: "img/TPS_Logo_3Stack-White.png"
+    lang: en
+    nav-buttons:
+      - href: mailto:casey.dreier@planetary.org
+        text: "Contact"
+    theme: yeti
+    css: custom.css
+    include-in-header:
+      - text: |
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+          <script>
+          function updateLogoLink() {
+              const logoAnchor = document.querySelector('a[href="#"] > img.navbar-logo');
+              
+              if (logoAnchor) {
+                  const anchor = logoAnchor.parentElement;                  
+                  anchor.href = 'https://planetary.org';
+                  anchor.target = '_blank';
+                  anchor.title = 'The Planetary Society';
+                  return true;
+              }
+              return false;
+          }
+          function initialize() {
+              updateLogoLink();
+          }
+
+          // Wait for DOM to be ready
+          if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', initialize);
+          } else {
+              // Small delay to ensure Quarto has finished rendering
+              setTimeout(initialize, 100);
+          }
+          // Also try on window load as backup
+          window.addEventListener('load', () => {
+              setTimeout(() => {
+                  updateLogoLink();
+              }, 1000);
+          });
+          </script>
+          <!-- Twitter Card meta tags -->
+          <meta name="twitter:card" content="summary_large_image">
+          <meta name="twitter:site" content="@exploreplanets">
+          <meta name="twitter:title" content="NASA Science Spending Dashboard">
+          <meta name="twitter:description" content="Tracking dashboards for NASA science spending, contracts, and grants data.">
+          <meta name="twitter:image" content="https://dashboards.planetary.orgdocs/img/tps-science-budget-preview.png">
+          <meta name="twitter:image:alt" content="Tracking dashboards for NASA science spending, contracts, and grants data.">
+          <!-- Open Graph meta tags -->
+          <meta property="og:type" content="website">
+          <meta property="og:site_name" content="The Planetary Society">
+          <meta property="og:title" content="NASA Science Spending Dashboard">
+          <meta property="og:description" content="Tracking dashboards for NASA science spending, contracts, and grants data.">
+          <meta property="og:image" content="https://dashboards.planetary.org/img/tps-science-budget-preview.png">
+          <meta property="og:image:width" content="1200">
+          <meta property="og:image:height" content="675">
+          <meta property="og:image:alt" content="Tracking dashboards for NASA science spending, contracts, and grants data.">
+          <meta property="og:url" content="https://dashboards.planetary.org/">
+          <meta name="robots" content="index, follow">
+          <meta name="theme-color" content="#037cc2">
+---
+# Dashboards
+
+## Row
+
+### Column{width="50%"}
+
+::: {.card .flow title="NASA Science Spending Across America"}
+[![](https://dashboards.planetary.org/img/tps-science-budget-preview.png)](https://dashboards.planetary.org/nasa-science.html)
+[**NASA Science Spending Across America**](https://dashboards.planetary.org/nasa-science.html)
+
+Interactive map of annual spending by NASA science in every state and congressional district, with custom-generated economic impact reports for each region.
+:::
+
+### Column{width="50%"}
+
+::: {.card .flow title="NASA Contract and Grant Cancellations"}
+[![](https://dashboards.planetary.org/img/tps-nasa-cancellations-dashboard-preview.png)](https://dashboards.planetary.org/cancellations.html)
+[**NASA Contracts and Grants Cancellations**](https://dashboards.planetary.org/cancellations.html)
+
+Interactive dashboard tracking NASA grants and contracts terminated by the second Trump Administration. View impacted districts, recipients, and contract details.
+:::

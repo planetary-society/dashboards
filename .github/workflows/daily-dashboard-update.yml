@@ -2,10 +2,10 @@
 #
 # This workflow runs daily to:
 # 1. Download the latest CSV data.
-# 2. Compare the new CSV with the most recent previous CSV in the data/ directory.
-# 3. Delete the new CSV if it's identical to the previous one.
-# 4. Render a Quarto dashboard using the latest available data.
-# 5. Commit any new data files (if different) and the rebuilt dashboard files.
+# 2. Compare and clean up data files.
+# 3. Render a Quarto dashboard.
+# 4. Commit new data and the rebuilt dashboard.
+# 5. Deploy the output to GitHub Pages.
 
 name: Daily Dashboard Update
 
@@ -16,13 +16,15 @@ on:
   workflow_dispatch: # Allows manual triggering
 
 jobs:
-  build:
+  build-and-deploy: # Renamed job for clarity
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Required to commit changes back to the repository
+      contents: write   # Required to commit changes
+      pages: write      # Required to deploy to GitHub Pages
+      id-token: write   # Required for trusted deployment
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4 # Use latest version
+        uses: actions/checkout@v4
 
       - name: Set up Quarto CLI
         uses: quarto-dev/quarto-actions/setup@v2
@@ -31,7 +33,7 @@ jobs:
         run: mkdir -p data
 
       - name: Set up Python
-        uses: actions/setup-python@v5 # Use latest version
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
@@ -41,12 +43,11 @@ jobs:
           pip install -r requirements.txt
 
       - name: Define new filename
-        id: define_filename # Give this step an ID to reference its output
+        id: define_filename
         run: echo "FILENAME=data/nasa_cancelled_contracts_$(date +'%Y-%m-%d').csv" >> $GITHUB_OUTPUT
 
       - name: Download latest CSV
         run: |
-          # Use the filename defined in the previous step
           curl -fL -o ${{ steps.define_filename.outputs.FILENAME }} \
             "https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=csv"
 
@@ -55,38 +56,44 @@ jobs:
         run: |
           NEW_FILE="${{ steps.define_filename.outputs.FILENAME }}"
           echo "Newly downloaded file: $NEW_FILE"
-
-          # Find all CSV files in data/, sort reverse alphabetically (newest date first),
-          # exclude the new file, and take the first one (most recent previous file).
           PREVIOUS_FILE=$(ls -r data/*.csv 2>/dev/null | grep -v "$NEW_FILE" | head -n 1)
-
-          # Check if a previous file exists and is actually a file
           if [[ -n "$PREVIOUS_FILE" && -f "$PREVIOUS_FILE" ]]; then
             echo "Comparing with previous file: $PREVIOUS_FILE"
-            # Use cmp -s for silent comparison (only exit code matters)
             if cmp -s "$PREVIOUS_FILE" "$NEW_FILE"; then
               echo "Files are identical. Deleting $NEW_FILE."
               rm "$NEW_FILE"
-              # Set an output variable indicating the file was removed
               echo "file_kept=false" >> $GITHUB_OUTPUT
             else
               echo "Files are different. Keeping $NEW_FILE."
               echo "file_kept=true" >> $GITHUB_OUTPUT
             fi
           else
-            echo "No previous file found or only the new file exists. Keeping $NEW_FILE."
+            echo "No previous file found. Keeping $NEW_FILE."
             echo "file_kept=true" >> $GITHUB_OUTPUT
           fi
 
-      - name: Render Quarto dashboard
+      - name: Render Cancelations dashboard
         run: quarto render cancellations.qmd
 
       - name: Commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: daily data refresh and dashboard rebuild"
-          # Commit any remaining CSVs in data/ (new or old) and rebuilt files.
           file_pattern: |
             data/*.csv
             **/*.html
             **/*.css
+
+      # --- New Deployment Steps Below ---
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'docs'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

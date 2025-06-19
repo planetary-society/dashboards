@@ -22,6 +22,11 @@ jobs:
       contents: write   # Required to commit changes
       pages: write      # Required to deploy to GitHub Pages
       id-token: write   # Required for trusted deployment
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
     steps:
       - name: Check out repository
         uses: actions/checkout@v4

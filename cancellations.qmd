@@ -641,7 +641,7 @@ Data last updated `{python} last_updated.strftime("%B %-d, %Y")`. Download as <a
 #| component: datatable
 #| sortable: true
 
-show(df_present, classes="display nowrap compact", searching=False, info=False)
+show(df_present, classes="display nowrap compact", searching=False, info=False,allow_html=True)
 
 ```
 

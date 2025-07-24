@@ -215,7 +215,7 @@ NASA's science investments benefit **every state** and **`{python} percent_distr
 #| title: "Detailed Economic Impact Reports" 
 #| component: datatable
 #| echo: false
-show(districts_by_state,classes="display wrap compact", searching=False, info=False)
+show(districts_by_state,classes="display wrap compact", searching=False, info=False, allow_html=True)
 ```
 
 # Data

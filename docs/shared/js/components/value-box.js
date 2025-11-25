@@ -130,25 +130,25 @@ export class ValueBox {
 export function createCancellationsValueBoxes(stats) {
     return [
         {
-            title: 'Contracts Cancelled',
+            title: 'Awards terminated since Jan 2025',
             value: stats.totalContracts.toLocaleString(),
             icon: ICONS.contracts,
             type: 'contracts'
         },
         {
-            title: 'Total Value Impacted',
+            title: 'Value of terminated awards',
             value: stats.totalObligations,
             icon: ICONS.value,
             type: 'value'
         },
         {
-            title: 'Recipients Impacted',
+            title: 'Organizations Affected',
             value: stats.uniqueRecipients.toLocaleString(),
             icon: ICONS.recipients,
             type: 'recipients'
         },
         {
-            title: 'Districts Impacted',
+            title: 'Congressional Districts Affected',
             value: stats.uniqueDistricts.toLocaleString(),
             icon: ICONS.districts,
             type: 'districts'

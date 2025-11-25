@@ -69,7 +69,7 @@ class CancellationsDashboard {
      */
     renderNavbar() {
         const navbar = new Navbar('navbar', {
-            title: 'NASA Cancelled Contracts and Grants',
+            title: 'NASA Cancelled Awards Tracking Dashboard',
             logoUrl: '../shared/img/TPS_Logo_3Stack-White.png',
             logoLink: 'https://planetary.org'
         });
@@ -134,6 +134,24 @@ class CancellationsDashboard {
     }
 
     /**
+     * Truncate text to specified length, ending on word boundary
+     * @param {string} text - Text to truncate
+     * @param {number} maxLength - Maximum character length
+     * @returns {string} Truncated text with ellipsis if needed
+     */
+    truncateText(text, maxLength = 200) {
+        if (!text || text.length <= maxLength) return text;
+
+        // Find the last space within the limit
+        const truncated = text.substring(0, maxLength);
+        const lastSpace = truncated.lastIndexOf(' ');
+
+        // If no space found, just cut at maxLength
+        const cutPoint = lastSpace > 0 ? lastSpace : maxLength;
+        return text.substring(0, cutPoint) + '...';
+    }
+
+    /**
      * Parse currency string to number
      */
     parseCurrency(value) {
@@ -165,7 +183,7 @@ class CancellationsDashboard {
             }
 
             // Build hover HTML
-            const header = `<b>Number of contracts: ${count}</b>`;
+            const header = `<b>Number of awards: ${count}</b>`;
             const lines = contracts.map(contract => {
                 const amt = formatCurrency(contract.totalObligations, false);
                 return `<b>${contract['Recipient']}</b><br>${amt} (Award ID: ${contract['Award ID']})`;
@@ -247,8 +265,8 @@ class CancellationsDashboard {
         this.districtsTable.render(
             [
                 { name: 'District', id: 'district' },
-                { name: '# of Contracts', id: 'contracts' },
-                { name: 'Total Obligations', id: 'obligations', currency: true }
+                { name: 'Cancellations', id: 'contracts' },
+                { name: 'Total Value', id: 'obligations', currency: true }
             ],
             districtData.map(row => [row.district, row.contractCount, row.totalObligations])
         );
@@ -276,8 +294,8 @@ class CancellationsDashboard {
         this.recipientsTable.render(
             [
                 { name: 'Recipient', id: 'recipient', width: '50%' },
-                { name: '# of Contracts', id: 'contracts' },
-                { name: 'Total Obligations', id: 'obligations', currency: true }
+                { name: 'Cancellations', id: 'contracts' },
+                { name: 'Total Value', id: 'obligations', currency: true }
             ],
             recipientData.map(row => [row.recipient, row.contractCount, row.totalObligations])
         );
@@ -322,7 +340,7 @@ class CancellationsDashboard {
             row['Nominal End Date'],
             formatCurrency(row.totalObligations, false),
             formatCurrency(row.totalOutlays, false),
-            row['Description'],
+            this.truncateText(row['Description'], 200),
             row['URL']
         ]);
 

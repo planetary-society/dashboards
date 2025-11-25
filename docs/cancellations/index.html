@@ -34,7 +34,7 @@
         "@context": "https://schema.org",
         "@type": "Dataset",
         "name": "NASA Contract Cancellations Tracker",
-        "description": "Interactive dashboard tracking NASA grants and contracts terminated by the second Trump Administration, including congressional district impacts and recipient details.",
+        "description": "Interactive dashboard tracking NASA awards terminated by the second Trump Administration, including congressional district impacts and recipient details.",
         "url": "https://dashboards.planetary.org/cancellations/",
         "keywords": [
             "NASA",
@@ -148,7 +148,7 @@
         <!-- Page Tabs -->
         <nav id="page-tabs" class="page-tabs">
             <button class="page-tab active" data-tab="summary-tab">Summary</button>
-            <button class="page-tab" data-tab="contracts-tab">Contracts Listing</button>
+            <button class="page-tab" data-tab="contracts-tab">Raw Data</button>
             <button class="page-tab" data-tab="about-tab">About</button>
         </nav>
 
@@ -178,8 +178,8 @@
                 <div class="tables-container">
                     <div class="card">
                         <nav id="table-tabs" class="card-tabs">
-                            <button class="card-tab active" data-tab="districts-panel">Districts Impacted</button>
-                            <button class="card-tab" data-tab="recipients-panel">Recipients Impacted</button>
+                            <button class="card-tab active" data-tab="districts-panel">By Congressional District</button>
+                            <button class="card-tab" data-tab="recipients-panel">By Organization</button>
                         </nav>
                         <div class="card-body">
                             <div id="districts-panel" class="card-tab-content active">
@@ -200,6 +200,7 @@
                 <div class="info-bar">
                     <span class="info-bar-text">
                         Data last updated <span id="last-updated"></span>.
+                        Sources: USAspending.gov, DOGE, NASA Procurement.
                     </span>
                     <div class="info-bar-links">
                         Download as
@@ -219,25 +220,47 @@
                 <div class="card">
                     <div class="card-header">About This Dashboard</div>
                     <div class="card-body">
-                        <p>This dashboard provides insights into NASA contracts and grants that may have been cancelled, terminated, or significantly modified since January 20th, 2025. The data presented here are compiled and maintained by Casey Dreier at The Planetary Society to enhance transparency surrounding NASA's programmatic activities and funding allocations.</p>
+                        <p>This dashboard tracks NASA contracts and grants that have been cancelled, terminated, or significantly reduced since January 20, 2025. It is maintained by Casey Dreier at <a href="https://planetary.org">The Planetary Society</a> to provide transparency into changes affecting NASA's programs and the organizations that support them.</p>
 
-                        <h3>How the Data is Compiled</h3>
-                        <p>To identify potential changes, several different official government data sources and public datasets are monitored: the DOGE website, NASA's Procurement Data View database, and an archived database of NASA Grants information. These sources are scanned for specific indicators that might suggest an award is undergoing a significant change, such as:</p>
+                        <h3>What's an Award?</h3>
+                        <p>In federal spending, an <strong>award</strong> is money the government commits to a recipient. There are two main types:</p>
                         <ul>
-                            <li>DOGE-reported actions</li>
-                            <li>Keywords like "termination" or "stop work" appearing in modification descriptions</li>
-                            <li>Official status updates indicating cancellation or termination</li>
-                            <li>Changes suggesting a significant reduction in scope, like a shortened performance period combined with decreased funding</li>
+                            <li><strong>Contracts</strong> — Agreements to purchase specific goods or services. NASA uses contracts to buy spacecraft, fund research and development, and hire technical support.</li>
+                            <li><strong>Grants</strong> — Financial assistance to support a public purpose. NASA awards grants to universities, nonprofits, and researchers for scientific studies, education programs, and technology development.</li>
+                        </ul>
+                        <p>This dashboard tracks both types. The dollar amounts shown represent <strong>obligations</strong>—money the government committed to spend—which may differ from amounts actually paid out.</p>
+
+                        <h3>Why This Matters</h3>
+                        <p>NASA awards billions of dollars annually to universities, research institutions, and private companies across the United States. When contracts or grants are terminated, it can affect scientific research, student training, small businesses, and local economies. This dashboard helps citizens, journalists, and policymakers track these changes.</p>
+
+                        <h3>Data Sources</h3>
+                        <p>This dashboard monitors multiple official government sources:</p>
+                        <ul>
+                            <li><strong>USAspending.gov</strong> — The authoritative federal spending database. All award details (recipient names, funding amounts, dates, locations) come from this source.</li>
+                            <li><strong>DOGE Website</strong> — Tracks actions reported by the Department of Government Efficiency.</li>
+                            <li><strong>NASA Procurement Data View</strong> — NASA's contract modification database, monitored for termination-related changes.</li>
+                            <li><strong>NASA Grants Archive</strong> — Historical grants data used to identify discontinued awards.</li>
                         </ul>
 
-                        <p>When one of these sources flags a potential change in a NASA contract or grant, the system retrieves comprehensive and standardized details for that specific award directly from the official <strong>USAspending.gov</strong> database. This ensures the information presented—such as recipient names, funding amounts, award dates, and locations—is based on the authoritative federal spending record.</p>
+                        <h3>How Awards Are Identified</h3>
+                        <p>The system scans these sources for signals that suggest an award has been significantly altered:</p>
+                        <ul>
+                            <li>Explicit termination or cancellation status changes</li>
+                            <li>Keywords like "termination," "stop work," or "de-obligation" in modification descriptions</li>
+                            <li>Shortened performance periods combined with funding reductions</li>
+                            <li>DOGE-reported actions affecting NASA awards</li>
+                        </ul>
+                        <p>When a potential change is detected, the system retrieves standardized details from USAspending.gov to ensure accuracy and consistency.</p>
 
-                        <p>The goal is to provide a consolidated list of NASA awards that warrant further investigation due to data signals suggesting they may have been cancelled or significantly altered.</p>
-
-                        <p><em>This data is checked daily. The last updated date reflects the last time a change was detected. Inclusion on this list signifies that an award has met specific criteria suggesting a potential cancellation or significant modification based on available data; further investigation is recommended.</em></p>
+                        <h3>Important Notes</h3>
+                        <ul>
+                            <li><strong>Updated weekly</strong> — Data is refreshed each week. The "last updated" date reflects when changes were last detected.</li>
+                            <li><strong>Not exhaustive</strong> — This list captures awards meeting specific detection criteria. Some cancellations may not appear if they don't trigger these signals.</li>
+                            <li><strong>Further verification recommended</strong> — Inclusion indicates data signals suggesting a change; official confirmation may require contacting the relevant parties.</li>
+                        </ul>
 
                         <h3>Contact</h3>
-                        <p>For questions, corrections, or submissions, contact Casey Dreier at <a href="mailto:casey.dreier@planetary.org">casey.dreier@planetary.org</a>.</p>
+                        <p>For questions, corrections, or to submit information about cancelled awards, contact Casey Dreier at <a href="mailto:casey.dreier@planetary.org">casey.dreier@planetary.org</a>.</p>
                     </div>
                 </div>
             </div>

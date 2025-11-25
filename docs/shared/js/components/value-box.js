@@ -187,3 +187,41 @@ export function createSpendingValueBoxes(stats) {
         }
     ];
 }
+
+/**
+ * Create value box configurations for NASA Science dashboard
+ * @param {Object} stats - Statistics object
+ * @param {string} stats.totalSpending - Formatted total spending amount
+ * @param {number} stats.districtsReached - Number of congressional districts with spending
+ * @param {number} stats.statesCount - Number of states with spending
+ * @param {string} stats.fiscalYears - Fiscal year range (e.g., "2022-2024")
+ * @returns {Array} Array of value box configurations
+ */
+export function createScienceValueBoxes(stats) {
+    return [
+        {
+            title: 'Total NASA Science Spending',
+            value: stats.totalSpending,
+            icon: 'cash-stack',
+            type: 'value'
+        },
+        {
+            title: 'Congressional Districts Reached',
+            value: stats.districtsReached.toLocaleString(),
+            icon: 'geo-alt',
+            type: 'districts'
+        },
+        {
+            title: 'States with NASA Science',
+            value: `${stats.statesCount} of 50`,
+            icon: 'flag',
+            type: 'recipients'
+        },
+        {
+            title: 'Fiscal Years',
+            value: stats.fiscalYears,
+            icon: 'calendar-range',
+            type: 'contracts'
+        }
+    ];
+}

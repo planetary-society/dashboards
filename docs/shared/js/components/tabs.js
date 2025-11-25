@@ -24,6 +24,8 @@ export class TabNavigation {
         this.tabs = [];
         this.contents = [];
         this.currentTab = null;
+        // Store bound handlers for proper cleanup
+        this._clickHandlers = new Map();
     }
 
     /**
@@ -49,9 +51,11 @@ export class TabNavigation {
             }
         });
 
-        // Set up click handlers
+        // Set up click handlers with stored references for cleanup
         this.tabs.forEach(tab => {
-            tab.addEventListener('click', (e) => this.handleTabClick(e, tab));
+            const handler = (e) => this.handleTabClick(e, tab);
+            this._clickHandlers.set(tab, handler);
+            tab.addEventListener('click', handler);
         });
 
         // Activate first tab if none is active
@@ -116,8 +120,12 @@ export class TabNavigation {
      */
     destroy() {
         this.tabs.forEach(tab => {
-            tab.removeEventListener('click', this.handleTabClick);
+            const handler = this._clickHandlers.get(tab);
+            if (handler) {
+                tab.removeEventListener('click', handler);
+            }
         });
+        this._clickHandlers.clear();
         this.tabs = [];
         this.contents = [];
     }

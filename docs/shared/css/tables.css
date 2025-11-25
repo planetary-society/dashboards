@@ -109,7 +109,7 @@
 .gridjs-td[data-column-id="description"] {
     white-space: normal !important;
     word-wrap: break-word;
-    max-width: 400px
+    max-width: 400px;
 }
 
 /* ============================================
@@ -199,8 +199,8 @@
 }
 
 .gridjs-search-input:focus {
-    border-color: var(--blue-500);
-    box-shadow: 0 0 0 3px rgba(3, 124, 194, 0.1);
+    border-color: var(--focus-ring-color);
+    box-shadow: var(--focus-ring-shadow);
 }
 
 /* ============================================

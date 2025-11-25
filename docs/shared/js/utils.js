@@ -111,7 +111,7 @@ export function formatCurrency(value, abbreviated = true, decimals = 1) {
 /**
  * Parse a currency string to a number
  * Handles formats like "$1,234,567" or "1234567"
- * @param {string} value - Currency string
+ * @param {string|number} value - Currency string or number
  * @returns {number|null} Numeric value or null if invalid
  */
 export function parseCurrency(value) {
@@ -119,10 +119,33 @@ export function parseCurrency(value) {
         return null;
     }
 
+    // If already a number, return it
+    if (typeof value === 'number') {
+        return isNaN(value) ? null : value;
+    }
+
     const cleaned = String(value).replace(/[$,\s]/g, '');
     const num = parseFloat(cleaned);
 
     return isNaN(num) ? null : num;
+}
+
+/**
+ * Truncate text to specified length, ending on word boundary
+ * @param {string} text - Text to truncate
+ * @param {number} maxLength - Maximum character length
+ * @returns {string} Truncated text with ellipsis if needed
+ */
+export function truncateText(text, maxLength = 200) {
+    if (!text || text.length <= maxLength) return text || '';
+
+    // Find the last space within the limit
+    const truncated = text.substring(0, maxLength);
+    const lastSpace = truncated.lastIndexOf(' ');
+
+    // If no space found, just cut at maxLength
+    const cutPoint = lastSpace > 0 ? lastSpace : maxLength;
+    return text.substring(0, cutPoint) + '...';
 }
 
 /**

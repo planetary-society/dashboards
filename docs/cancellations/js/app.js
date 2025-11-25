@@ -6,13 +6,15 @@
 import { DATA_URLS, FIPS_STATE_MAP } from '../../shared/js/constants.js';
 import {
     parseCSV,
+    parseCurrency,
     formatCurrency,
     formatDate,
     getGeoidFromDistrict,
     fetchText,
     groupBy,
     sumBy,
-    countUnique
+    countUnique,
+    truncateText
 } from '../../shared/js/utils.js';
 import { Navbar } from '../../shared/js/components/navbar.js';
 import { ValueBox, createCancellationsValueBoxes } from '../../shared/js/components/value-box.js';
@@ -117,8 +119,8 @@ class CancellationsDashboard {
             })
             .map(row => {
                 // Parse and clean total obligations
-                const obligations = this.parseCurrency(row['Total Obligations']);
-                const outlays = this.parseCurrency(row['Total Outlays']);
+                const obligations = parseCurrency(row['Total Obligations']);
+                const outlays = parseCurrency(row['Total Outlays']);
 
                 return {
                     ...row,
@@ -131,34 +133,6 @@ class CancellationsDashboard {
 
         // Calculate district counts and hover info
         this.calculateDistrictData();
-    }
-
-    /**
-     * Truncate text to specified length, ending on word boundary
-     * @param {string} text - Text to truncate
-     * @param {number} maxLength - Maximum character length
-     * @returns {string} Truncated text with ellipsis if needed
-     */
-    truncateText(text, maxLength = 200) {
-        if (!text || text.length <= maxLength) return text;
-
-        // Find the last space within the limit
-        const truncated = text.substring(0, maxLength);
-        const lastSpace = truncated.lastIndexOf(' ');
-
-        // If no space found, just cut at maxLength
-        const cutPoint = lastSpace > 0 ? lastSpace : maxLength;
-        return text.substring(0, cutPoint) + '...';
-    }
-
-    /**
-     * Parse currency string to number
-     */
-    parseCurrency(value) {
-        if (!value) return null;
-        const cleaned = String(value).replace(/[$,\s]/g, '');
-        const num = parseFloat(cleaned);
-        return isNaN(num) ? null : num;
     }
 
     /**
@@ -340,7 +314,7 @@ class CancellationsDashboard {
             row['Nominal End Date'],
             formatCurrency(row.totalObligations, false),
             formatCurrency(row.totalOutlays, false),
-            this.truncateText(row['Description'], 200),
+            truncateText(row['Description'], 200),
             row['URL']
         ]);
 

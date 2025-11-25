@@ -51,6 +51,16 @@ export const COLORS = {
             low: '#FF5D47',     // TPS orange
             high: '#FF5D47'     // TPS orange for bubbles
         },
+        // NASA Science spending - blue scale (TPS primary)
+        science: {
+            zero: '#f0f0f0',
+            scale: ['#e3f2fd', '#90caf9', '#42a5f5', '#1e88e5', '#1565c0']
+        },
+        // Missions count - orange/amber scale
+        missions: {
+            zero: '#f0f0f0',
+            scale: ['#fff3e0', '#ffcc80', '#ffa726', '#fb8c00', '#ef6c00']
+        },
         // Stepped scale for spending (from ColorBrewer, colorblind-safe)
         spendingSteps: [
             { threshold: 500000, color: '#fdfde6', label: '< $500K' },
@@ -59,6 +69,15 @@ export const COLORS = {
             { threshold: 250000000, color: '#41b6c4', label: '$50M to $250M' },
             { threshold: 1000000000, color: '#2c7fb8', label: '$250M to $1B' },
             { threshold: Infinity, color: '#253494', label: '$1B+' }
+        ],
+        // NASA Science stepped scale (colorblind-safe blue scale)
+        scienceSteps: [
+            { threshold: 500000, color: '#f7fbff', label: '< $500K' },
+            { threshold: 5000000, color: '#deebf7', label: '$500K to $5M' },
+            { threshold: 50000000, color: '#9ecae1', label: '$5M to $50M' },
+            { threshold: 250000000, color: '#4292c6', label: '$50M to $250M' },
+            { threshold: 1000000000, color: '#2171b5', label: '$250M to $1B' },
+            { threshold: Infinity, color: '#084594', label: '$1B+' }
         ]
     }
 };

@@ -3,6 +3,8 @@
  * Grid.js wrapper for interactive data tables
  */
 
+import { parseCurrency } from '../utils.js';
+
 export class DataTable {
     /**
      * Create a data table
@@ -148,9 +150,7 @@ export class DataTable {
      * @returns {number} Numeric value
      */
     parseCurrencyValue(value) {
-        if (typeof value !== 'string') return value || 0;
-        const cleaned = value.replace(/[$,\s]/g, '');
-        return parseFloat(cleaned) || 0;
+        return parseCurrency(value) || 0;
     }
 
     /**

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA Science Spending Across the U.S.</title>
+    <meta name="description" content="Interactive dashboard showing NASA's science investments across every state and congressional district in the United States.">
+    <meta name="author" content="Casey Dreier/The Planetary Society">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#037cc2">
+
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@exploreplanets">
+    <meta name="twitter:title" content="NASA Science Spending Dashboard">
+    <meta name="twitter:description" content="Interactive map of spending by NASA's science directorate in every state and congressional district.">
+    <meta name="twitter:image" content="https://dashboards.planetary.org/img/tps-science-budget-preview.png">
+    <meta name="twitter:image:alt" content="Interactive map of annual spending by NASA science in every state and congressional district.">
+
+    <!-- Open Graph meta tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Planetary Society">
+    <meta property="og:title" content="NASA Science Spending Dashboard">
+    <meta property="og:description" content="Interactive map of spending by NASA's science directorate in every state and congressional district.">
+    <meta property="og:image" content="https://dashboards.planetary.org/img/tps-science-budget-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image:alt" content="Interactive map of spending by NASA's science directorate in every state and congressional district.">
+    <meta property="og:url" content="https://dashboards.planetary.org/nasa-science/">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": "NASA Science Spending Dashboard",
+        "description": "Interactive dashboard showing NASA Science Mission Directorate contract obligations by congressional district and state.",
+        "url": "https://dashboards.planetary.org/nasa-science/",
+        "keywords": [
+            "NASA",
+            "science",
+            "space science",
+            "government spending",
+            "congressional districts",
+            "federal procurement",
+            "planetary science",
+            "astrophysics",
+            "earth science"
+        ],
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "creator": {
+            "@type": "Person",
+            "name": "Casey Dreier",
+            "affiliation": {
+                "@type": "Organization",
+                "name": "The Planetary Society",
+                "url": "https://planetary.org"
+            },
+            "email": "casey.dreier@planetary.org"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "The Planetary Society",
+            "url": "https://planetary.org"
+        },
+        "spatialCoverage": {
+            "@type": "Place",
+            "name": "United States"
+        }
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Grid.js CSS -->
+    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet">
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="../shared/css/variables.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/layout.css">
+    <link rel="stylesheet" href="../shared/css/tables.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header id="navbar"></header>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard">
+        <!-- Page Tabs -->
+        <nav id="page-tabs" class="page-tabs">
+            <button class="page-tab active" data-tab="summary-tab">Spending Maps</button>
+            <button class="page-tab" data-tab="data-tab">Data</button>
+            <button class="page-tab" data-tab="about-tab">About</button>
+        </nav>
+
+        <!-- Summary Tab -->
+        <section id="summary-tab" class="tab-content active">
+            <!-- Value Boxes -->
+            <div id="value-boxes" class="value-boxes-row">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Main Content: Map + Reports Table -->
+            <div class="main-content-row">
+                <!-- Map Column -->
+                <div class="map-container">
+                    <div class="card card--map">
+                        <nav id="map-tabs" class="card-tabs">
+                            <button class="card-tab active" data-tab="state-map-panel">By State</button>
+                            <button class="card-tab" data-tab="district-map-panel">By District</button>
+                        </nav>
+                        <div class="card-body">
+                            <div id="state-map-panel" class="card-tab-content active">
+                                <div id="state-map">
+                                    <div class="loading">
+                                        <div class="loading-spinner"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="district-map-panel" class="card-tab-content">
+                                <div id="district-map">
+                                    <div class="loading">
+                                        <div class="loading-spinner"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reports Column -->
+                <div class="tables-container">
+                    <div class="card">
+                        <div class="card-header">NASA Science is Everywhere</div>
+                        <div class="card-body">
+                            <p id="summary-text" class="summary-text">
+                                <!-- Populated by JavaScript -->
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Detailed Economic Impact Reports</div>
+                        <div class="card-body">
+                            <div id="reports-table"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Tab -->
+        <section id="data-tab" class="tab-content">
+            <div class="info-bar">
+                <span class="info-bar-text">
+                    Data last updated <span id="last-updated"></span>.
+                    Source: USASpending.gov
+                </span>
+            </div>
+            <div class="data-tables-row">
+                <div class="card">
+                    <div class="card-header">NASA Science Spending By District</div>
+                    <div class="card-body">
+                        <div id="district-table"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">NASA Science Spending By State</div>
+                    <div class="card-body">
+                        <div id="state-table"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Tab -->
+        <section id="about-tab" class="tab-content">
+            <div class="about-section">
+                <div class="card">
+                    <div class="card-header">About This Dashboard</div>
+                    <div class="card-body">
+                        <p>This dashboard displays average annual NASA Science Mission Directorate contract obligations by congressional district and state for fiscal years 2022-2024. The data includes research grants, contracts, and cooperative agreements supporting NASA's science programs including Earth Science, Planetary Science, Astrophysics, and Heliophysics.</p>
+
+                        <p>Values reflect the average sum of contractual obligations made by NASA's Science Mission Directorate based on the location of work in the given locale.</p>
+
+                        <h3>About NASA Science</h3>
+                        <p>NASA's Science Mission Directorate (SMD) is the agency's primary arm for scientific discovery and research, operating a fleet of space-based observatories, planetary probes, and Earth-monitoring satellites that explore everything from our home planet to the distant universe. Think of SMD as NASA's research division&mdash;it's responsible for missions like the James Webb Space Telescope, the Perseverance Mars rover, and the Hubble Space Telescope, along with dozens of other spacecraft studying climate change, hunting for exoplanets, and investigating the fundamental workings of the cosmos. For any scientific discovery that NASA made in space, it's almost certain that NASA's SMD paid for it.</p>
+
+                        <p>The directorate derives its scientific priorities from "decadal surveys" committees of the National Academies of Sciences, Engineering, and Medicine that meet every ten years to recommend which missions NASA should pursue. For the past three decades, NASA's science activities accounted for roughly 1/3 of the agency's annual expenditures across four major areas: Earth science, planetary science, astrophysics, and heliophysics (the study of the Sun and its effects on the solar system). While NASA's human spaceflight programs get much of the public attention, SMD quietly conducts the research that expands our understanding of the universe and provides critical data for everything from weather forecasting to planetary defense against asteroid impacts.</p>
+
+                        <p>The White House's FY 2026 budget request for NASA proposes to cut NASA's science program by 47%, which would result in its smallest budget since 1984, when adjusted for inflation.</p>
+
+                        <p>To learn more, visit The Planetary Society's <a href="https://planetary.org/save-nasa-science" target="_blank">Save NASA Science Action Hub</a>.</p>
+
+                        <h3>Data Source</h3>
+                        <p><strong>USASpending.gov</strong> &mdash; The authoritative federal spending database. All award details (recipient names, funding amounts, dates, locations) come from this source.</p>
+
+                        <h3>About The Planetary Society</h3>
+                        <p><a href="https://planetary.org" target="_blank">The Planetary Society</a> is an independent, member-supported nonprofit organization that unites a global community of over 2 million space enthusiasts in advancing space science and exploration. Anyone in the world can join as a member.</p>
+
+                        <h3>Contact</h3>
+                        <p>For any questions, or to request further information, contact Casey Dreier at <a href="mailto:casey.dreier@planetary.org">casey.dreier@planetary.org</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- D3.js -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
+    <!-- TopoJSON client for state map -->
+    <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+
+    <!-- Grid.js -->
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+
+    <!-- Dashboard Application -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

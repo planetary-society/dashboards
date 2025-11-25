@@ -105,7 +105,11 @@ export const MAP_CONFIG = {
 export const DATA_URLS = {
     districts: '../data/us_congressional_districts.geojson',
     states: '../data/us_states.geojson',
+    statesTopoJSON: '../data/states-albers-10m.json', // Pre-projected TopoJSON from US Atlas
     cancellations: '../data/cancellations/nasa_cancelled_contracts_latest.csv',
+    // NASA Science spending data
+    scienceDistrict: '../data/science/NASA-district-Science-summary.csv',
+    scienceState: '../data/science/NASA-state-Science-summary.csv',
     // External download links
     downloadCSV: 'https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=csv',
     downloadXLSX: 'https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=xlsx'

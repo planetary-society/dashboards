@@ -93,7 +93,9 @@
     position: relative;
 }
 
-#choropleth-map {
+#choropleth-map,
+#state-map,
+#district-map {
     width: 100%;
     min-height: 400px;
     max-height: 600px;
@@ -115,6 +117,40 @@
     flex: 1;
     overflow: auto;
     padding: 0;
+}
+
+/* ============================================
+   DATA TABLES LAYOUT (Two-column)
+   ============================================ */
+
+.data-tables-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    padding: var(--space-md);
+}
+
+.data-tables-row .card {
+    height: fit-content;
+}
+
+.data-tables-row .card-body {
+    padding: 0;
+    overflow: auto;
+    max-height: 600px;
+}
+
+@media (max-width: 1024px) {
+    .data-tables-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Summary text styling */
+.summary-text {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--gray-700);
 }
 
 /* ============================================

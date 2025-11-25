@@ -1,7 +1,6 @@
 /**
- * Bubble Map Component
- * D3.js-based US map with bubbles at district centroids
- * Bubble size proportional to data values
+ * Choropleth/Bubble Map Component
+ * D3.js-based US map supporting both filled choropleth and bubble visualization modes
  */
 
 import { COLORS, MAP_CONFIG } from '../constants.js';
@@ -9,30 +8,36 @@ import { debounce } from '../utils.js';
 
 export class ChoroplethMap {
     /**
-     * Create a bubble map
+     * Create a choropleth or bubble map
      * @param {string} containerId - ID of the container element
      * @param {Object} options - Configuration options
-     * @param {string} options.colorScale - Color scale to use ('spending', 'cancellations', 'custom')
+     * @param {string} options.colorScale - Color scale to use ('spending', 'cancellations', 'science', 'custom')
      * @param {string} options.level - Geographic level ('district', 'state')
+     * @param {string} options.mapType - Map type: 'bubble' (default) or 'choropleth'
      * @param {Object} options.customColors - Custom color configuration {zero, low, high}
-     * @param {boolean} options.showLegend - Whether to show the legend
+     * @param {boolean} options.showLegend - Whether to show the legend (default: true for choropleth)
      * @param {boolean} options.interactive - Whether map is interactive
+     * @param {boolean} options.preProjected - Whether the data is pre-projected (skip projection)
      */
     constructor(containerId, options = {}) {
         this.container = document.getElementById(containerId);
         this.options = {
             colorScale: options.colorScale || 'spending',
             level: options.level || 'district',
+            mapType: options.mapType || 'bubble',
             customColors: options.customColors || null,
             interactive: options.interactive !== false,
+            showLegend: options.showLegend !== false,
             maxRadius: options.maxRadius || 20,
-            minRadius: options.minRadius || 3
+            minRadius: options.minRadius || 3,
+            preProjected: options.preProjected || false
         };
 
         this.svg = null;
         this.projection = null;
         this.path = null;
         this.tooltip = null;
+        this.legendContainer = null;
         this.geojsonData = null;
         this.dataMap = {};
         this.hoverInfo = {};
@@ -46,11 +51,37 @@ export class ChoroplethMap {
         this.colors = this.options.customColors ||
             COLORS.choropleth[this.options.colorScale] ||
             COLORS.choropleth.spending;
+
+        // Get stepped color scale if available
+        this.steppedScale = COLORS.choropleth[this.options.colorScale + 'Steps'] || null;
     }
 
     /**
-     * Initialize the map with GeoJSON data
-     * @param {string|Object} geojsonSource - URL or GeoJSON object
+     * Get stepped color for a value using the configured color scale
+     * @param {number} value - The data value
+     * @returns {string} Hex color code
+     */
+    getSteppedColor(value) {
+        if (!value || value <= 0) {
+            return this.colors.zero || '#f0f0f0';
+        }
+
+        if (!this.steppedScale) {
+            // Fallback to simple low/high if no stepped scale defined
+            return this.colors.high || '#037CC2';
+        }
+
+        for (const step of this.steppedScale) {
+            if (value < step.threshold) {
+                return step.color;
+            }
+        }
+        return this.steppedScale[this.steppedScale.length - 1].color;
+    }
+
+    /**
+     * Initialize the map with GeoJSON or TopoJSON data
+     * @param {string|Object} geojsonSource - URL or GeoJSON/TopoJSON object
      */
     async init(geojsonSource) {
         if (!this.container) {
@@ -58,18 +89,27 @@ export class ChoroplethMap {
             return;
         }
 
-        // Load GeoJSON if URL provided
+        // Load data if URL provided
+        let rawData;
         if (typeof geojsonSource === 'string') {
             try {
                 const response = await fetch(geojsonSource);
-                this.geojsonData = await response.json();
+                rawData = await response.json();
             } catch (error) {
-                console.error('Failed to load GeoJSON:', error);
+                console.error('Failed to load map data:', error);
                 this.showError('Failed to load map data');
                 return;
             }
         } else {
-            this.geojsonData = geojsonSource;
+            rawData = geojsonSource;
+        }
+
+        // Handle TopoJSON format - convert to GeoJSON
+        if (rawData.type === 'Topology') {
+            const objectName = Object.keys(rawData.objects)[0];
+            this.geojsonData = topojson.feature(rawData, rawData.objects[objectName]);
+        } else {
+            this.geojsonData = rawData;
         }
 
         this.setupDimensions();
@@ -78,6 +118,11 @@ export class ChoroplethMap {
         this.setupProjection();
         this.render();
         this.setupResizeHandler();
+
+        // Render legend for choropleth maps
+        if (this.options.mapType === 'choropleth' && this.options.showLegend && this.steppedScale) {
+            this.renderLegend();
+        }
     }
 
     /**
@@ -105,7 +150,17 @@ export class ChoroplethMap {
             .attr('class', 'bubble-map-svg')
             .style('width', '100%')
             .style('height', 'auto')
-            .style('display', 'block');
+            .style('display', 'block')
+            .style('background-color', '#fff');
+
+        // Add explicit white background rect
+        this.svg.append('rect')
+            .attr('class', 'map-background')
+            .attr('width', this.width)
+            .attr('height', this.height)
+            .attr('fill', '#ffffff')
+            .attr('x', 0)
+            .attr('y', 0);
 
         // Create groups for layering (base map behind bubbles)
         this.baseGroup = this.svg.append('g')
@@ -134,11 +189,28 @@ export class ChoroplethMap {
      * Set up the D3 projection
      */
     setupProjection() {
-        // Use Albers USA projection for proper continental US + Alaska/Hawaii
-        this.projection = d3.geoAlbersUsa()
-            .fitSize([this.width, this.height], this.geojsonData);
+        if (this.options.preProjected) {
+            // Pre-projected data (like US Atlas TopoJSON) - use identity transform
+            // Scale to fit the container
+            const bounds = d3.geoPath().bounds(this.geojsonData);
+            const dx = bounds[1][0] - bounds[0][0];
+            const dy = bounds[1][1] - bounds[0][1];
+            const scale = 0.95 / Math.max(dx / this.width, dy / this.height);
+            const translate = [
+                (this.width - scale * (bounds[0][0] + bounds[1][0])) / 2,
+                (this.height - scale * (bounds[0][1] + bounds[1][1])) / 2
+            ];
 
-        this.path = d3.geoPath().projection(this.projection);
+            this.projection = d3.geoIdentity()
+                .scale(scale)
+                .translate(translate);
+            this.path = d3.geoPath().projection(this.projection);
+        } else {
+            // Use Albers USA projection for proper continental US + Alaska/Hawaii
+            this.projection = d3.geoAlbersUsa()
+                .fitSize([this.width, this.height], this.geojsonData);
+            this.path = d3.geoPath().projection(this.projection);
+        }
     }
 
     /**
@@ -175,68 +247,113 @@ export class ChoroplethMap {
     }
 
     /**
-     * Render the map with base layer and bubbles
+     * Render the map with base layer and optional bubbles or filled choropleth
      */
     render() {
         if (!this.geojsonData || !this.baseGroup) return;
 
         const self = this;
 
-        // ===== 1. Draw base map (district/state outlines) =====
-        this.baseGroup.selectAll('path.district')
-            .data(this.geojsonData.features, d => d.properties.GEOID || d.id)
-            .join('path')
-            .attr('class', 'district')
-            .attr('d', this.path)
-            .attr('fill', this.colors.zero)
-            .attr('stroke', MAP_CONFIG.districtBorderColor)
-            .attr('stroke-width', MAP_CONFIG.districtBorderWidth)
-            .attr('fill-opacity', 1);
+        if (this.options.mapType === 'choropleth') {
+            // ===== CHOROPLETH MODE: Fill polygons with stepped colors =====
+            this.baseGroup.selectAll('path.district')
+                .data(this.geojsonData.features, d => d.properties.GEOID || d.id)
+                .join('path')
+                .attr('class', 'district')
+                .attr('d', this.path)
+                .attr('fill', d => {
+                    const geoid = d.properties.GEOID || d.id;
+                    const value = this.dataMap[geoid] || 0;
+                    return this.getSteppedColor(value);
+                })
+                .attr('stroke', MAP_CONFIG.districtBorderColor)
+                .attr('stroke-width', MAP_CONFIG.districtBorderWidth)
+                .attr('fill-opacity', MAP_CONFIG.fillOpacity || 0.85)
+                .style('cursor', d => {
+                    const geoid = d.properties.GEOID || d.id;
+                    return this.hoverInfo[geoid] ? 'pointer' : 'default';
+                })
+                .on('mouseover', function(event, d) {
+                    if (self.options.interactive) {
+                        const geoid = d.properties.GEOID || d.id;
+                        if (self.hoverInfo[geoid]) {
+                            self.handleChoroplethMouseOver(event, d, this);
+                        }
+                    }
+                })
+                .on('mousemove', function(event) {
+                    if (self.options.interactive) {
+                        self.handleMouseMove(event);
+                    }
+                })
+                .on('mouseout', function(event, d) {
+                    if (self.options.interactive) {
+                        self.handleChoroplethMouseOut(event, d, this);
+                    }
+                });
 
-        // ===== 2. Prepare bubble data =====
-        const radiusScale = this.createRadiusScale();
+            // Clear any bubbles in choropleth mode
+            this.bubbleGroup.selectAll('circle.bubble').remove();
 
-        const bubbleData = this.geojsonData.features
-            .map(feature => {
-                const geoid = feature.properties.GEOID || feature.id;
-                const value = this.dataMap[geoid] || 0;
-                const centroid = this.path.centroid(feature);
-                return { feature, geoid, value, centroid };
-            })
-            .filter(d => d.value > 0 && !isNaN(d.centroid[0]) && !isNaN(d.centroid[1]));
+        } else {
+            // ===== BUBBLE MODE: Base map + bubbles at centroids =====
 
-        // Sort by value descending so smaller bubbles render on top
-        bubbleData.sort((a, b) => b.value - a.value);
+            // Draw base map (district/state outlines)
+            this.baseGroup.selectAll('path.district')
+                .data(this.geojsonData.features, d => d.properties.GEOID || d.id)
+                .join('path')
+                .attr('class', 'district')
+                .attr('d', this.path)
+                .attr('fill', this.colors.zero)
+                .attr('stroke', MAP_CONFIG.districtBorderColor)
+                .attr('stroke-width', MAP_CONFIG.districtBorderWidth)
+                .attr('fill-opacity', 1);
 
-        // ===== 3. Draw bubbles =====
-        this.bubbleGroup.selectAll('circle.bubble')
-            .data(bubbleData, d => d.geoid)
-            .join('circle')
-            .attr('class', 'bubble')
-            .attr('cx', d => d.centroid[0])
-            .attr('cy', d => d.centroid[1])
-            .attr('r', d => radiusScale(d.value))
-            .attr('fill', this.colors.high)
-            .attr('fill-opacity', 0.6)
-            .attr('stroke', this.colors.high)
-            .attr('stroke-width', 1)
-            .attr('stroke-opacity', 0.8)
-            .style('cursor', 'pointer')
-            .on('mouseover', function(event, d) {
-                if (self.options.interactive) {
-                    self.handleMouseOver(event, d, this);
-                }
-            })
-            .on('mousemove', function(event) {
-                if (self.options.interactive) {
-                    self.handleMouseMove(event);
-                }
-            })
-            .on('mouseout', function(event, d) {
-                if (self.options.interactive) {
-                    self.handleMouseOut(event, d, this);
-                }
-            });
+            // Prepare bubble data
+            const radiusScale = this.createRadiusScale();
+
+            const bubbleData = this.geojsonData.features
+                .map(feature => {
+                    const geoid = feature.properties.GEOID || feature.id;
+                    const value = this.dataMap[geoid] || 0;
+                    const centroid = this.path.centroid(feature);
+                    return { feature, geoid, value, centroid };
+                })
+                .filter(d => d.value > 0 && !isNaN(d.centroid[0]) && !isNaN(d.centroid[1]));
+
+            // Sort by value descending so smaller bubbles render on top
+            bubbleData.sort((a, b) => b.value - a.value);
+
+            // Draw bubbles
+            this.bubbleGroup.selectAll('circle.bubble')
+                .data(bubbleData, d => d.geoid)
+                .join('circle')
+                .attr('class', 'bubble')
+                .attr('cx', d => d.centroid[0])
+                .attr('cy', d => d.centroid[1])
+                .attr('r', d => radiusScale(d.value))
+                .attr('fill', this.colors.high)
+                .attr('fill-opacity', 0.6)
+                .attr('stroke', this.colors.high)
+                .attr('stroke-width', 1)
+                .attr('stroke-opacity', 0.8)
+                .style('cursor', 'pointer')
+                .on('mouseover', function(event, d) {
+                    if (self.options.interactive) {
+                        self.handleMouseOver(event, d, this);
+                    }
+                })
+                .on('mousemove', function(event) {
+                    if (self.options.interactive) {
+                        self.handleMouseMove(event);
+                    }
+                })
+                .on('mouseout', function(event, d) {
+                    if (self.options.interactive) {
+                        self.handleMouseOut(event, d, this);
+                    }
+                });
+        }
     }
 
     /**
@@ -254,6 +371,39 @@ export class ChoroplethMap {
         this.tooltip
             .html(content)
             .style('opacity', 1);
+    }
+
+    /**
+     * Handle mouse over event on choropleth polygon
+     */
+    handleChoroplethMouseOver(event, d, element) {
+        const geoid = d.properties.GEOID || d.id;
+        const content = this.hoverInfo[geoid] || '';
+
+        if (!content) return;
+
+        // Highlight the polygon
+        d3.select(element)
+            .attr('stroke', '#333')
+            .attr('stroke-width', 2);
+
+        // Show tooltip
+        this.tooltip
+            .html(content)
+            .style('opacity', 1);
+    }
+
+    /**
+     * Handle mouse out event on choropleth polygon
+     */
+    handleChoroplethMouseOut(event, d, element) {
+        // Reset polygon styling
+        d3.select(element)
+            .attr('stroke', MAP_CONFIG.districtBorderColor)
+            .attr('stroke-width', MAP_CONFIG.districtBorderWidth);
+
+        // Hide tooltip
+        this.tooltip.style('opacity', 0);
     }
 
     /**
@@ -276,6 +426,37 @@ export class ChoroplethMap {
 
         // Hide tooltip
         this.tooltip.style('opacity', 0);
+    }
+
+    /**
+     * Render the stepped color legend for choropleth maps
+     */
+    renderLegend() {
+        if (!this.steppedScale || !this.container) return;
+
+        // Remove existing legend
+        const existingLegend = this.container.querySelector('.map-legend');
+        if (existingLegend) {
+            existingLegend.remove();
+        }
+
+        // Create legend container
+        this.legendContainer = document.createElement('div');
+        this.legendContainer.className = 'map-legend';
+
+        const legendItems = this.steppedScale.map(step => `
+            <div class="legend-item">
+                <span class="legend-color" style="background-color: ${step.color}"></span>
+                <span class="legend-label">${step.label}</span>
+            </div>
+        `).join('');
+
+        this.legendContainer.innerHTML = `
+            <div class="legend-title">Average Annual Spending</div>
+            <div class="legend-items">${legendItems}</div>
+        `;
+
+        this.container.appendChild(this.legendContainer);
     }
 
     /**
@@ -326,6 +507,9 @@ export class ChoroplethMap {
     destroy() {
         if (this.tooltip) {
             this.tooltip.remove();
+        }
+        if (this.legendContainer) {
+            this.legendContainer.remove();
         }
         if (this.container) {
             this.container.innerHTML = '';

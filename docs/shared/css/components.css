@@ -172,6 +172,12 @@
     padding: 0 !important;
 }
 
+/* Map card variant - keep chrome but ensure white background */
+.card--map .card-body {
+    background-color: #fff;
+    padding: 0;
+}
+
 /* ============================================
    VALUE BOXES (Accent Border Style)
    ============================================ */
@@ -348,10 +354,12 @@
 
 .card-tab-content {
     display: none;
+    background-color: #fff;
 }
 
 .card-tab-content.active {
     display: block;
+    background-color: #fff;
 }
 
 /* ============================================
@@ -482,7 +490,31 @@
     color: var(--gray-500);
 }
 
+/* Stepped color legend (for choropleth maps) */
+.legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.legend-color {
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius-sm);
+    flex-shrink: 0;
+}
+
 .legend-label {
+    font-size: var(--text-xs);
+    color: var(--gray-600);
+    white-space: nowrap;
     font-weight: var(--font-weight-medium);
 }
 
@@ -652,8 +684,40 @@ html {
 }
 
 /* Map container needs relative positioning for legend */
-#choropleth-map {
+#choropleth-map,
+#state-map,
+#district-map {
     position: relative;
+    background-color: #fff;
+}
+
+/* Ensure map panels have white background */
+#state-map-panel,
+#district-map-panel {
+    background-color: #fff;
+}
+
+/* Ensure SVG maps have white background */
+.bubble-map-svg {
+    background-color: #fff !important;
+}
+
+/* Force white background on all map containers and their children */
+#state-map svg,
+#district-map svg,
+#choropleth-map svg {
+    background-color: #fff !important;
+}
+
+#state-map *,
+#district-map *,
+#choropleth-map * {
+    --map-background: #fff;
+}
+
+/* SVG background rect */
+.map-background {
+    fill: #ffffff !important;
 }
 
 /* ============================================

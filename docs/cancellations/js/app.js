@@ -19,6 +19,7 @@ import {
 import { Navbar } from '../../shared/js/components/navbar.js';
 import { ValueBox, createCancellationsValueBoxes } from '../../shared/js/components/value-box.js';
 import { TabNavigation, CardTabs } from '../../shared/js/components/tabs.js';
+import { HashRouter } from '../../shared/js/components/hash-router.js';
 import { ChoroplethMap } from '../../shared/js/components/choropleth-map.js';
 import { DataTable } from '../../shared/js/components/data-table.js';
 
@@ -36,6 +37,14 @@ class CancellationsDashboard {
         this.contractsTable = null;
         this.pageTabs = null;
         this.tableTabs = null;
+        this.router = null;
+
+        // Route to tab ID mapping
+        this.routeMap = {
+            'summary': 'summary-tab',
+            'raw-data': 'contracts-tab',
+            'about': 'about-tab'
+        };
     }
 
     /**
@@ -79,15 +88,32 @@ class CancellationsDashboard {
     }
 
     /**
-     * Initialize tab navigation
+     * Initialize tab navigation with hash-based routing
      */
     initTabs() {
-        // Page-level tabs
+        // Page-level tabs with route sync
         this.pageTabs = new TabNavigation('page-tabs', {
             tabClass: 'page-tab',
-            contentClass: 'tab-content'
+            contentClass: 'tab-content',
+            onTabChange: (tabId) => {
+                // Update URL hash when tab changes (without triggering router callback)
+                const route = Object.entries(this.routeMap).find(([r, t]) => t === tabId)?.[0];
+                if (route && this.router) {
+                    this.router.navigate(route, false);
+                }
+            }
         });
         this.pageTabs.init();
+
+        // Initialize hash router for deep-linking
+        this.router = new HashRouter({
+            defaultRoute: 'summary',
+            onRouteChange: (route) => {
+                const tabId = this.routeMap[route] || this.routeMap['summary'];
+                this.pageTabs.activateTab(tabId);
+            }
+        });
+        this.router.init();
 
         // Card-level tabs for tables
         this.tableTabs = new CardTabs('table-tabs', {

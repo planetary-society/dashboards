@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA Cancellations Tracking Dashboard</title>
+    <meta name="description" content="Dashboard tracking NASA grants and contracts terminated by the Trump Administration.">
+    <meta name="author" content="Casey Dreier/The Planetary Society">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#037cc2">
+
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@exploreplanets">
+    <meta name="twitter:title" content="NASA Cancellations Tracking Dashboard">
+    <meta name="twitter:description" content="Interactive dashboard tracking NASA grants and contracts terminated by the second Trump Administration. View impacted districts, recipients, and contract details.">
+    <meta name="twitter:image" content="https://dashboards.planetary.org/img/tps-nasa-cancellations-dashboard-preview.png">
+    <meta name="twitter:image:alt" content="NASA Contract Cancellations Dashboard showing map of impacted congressional districts">
+
+    <!-- Open Graph meta tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Planetary Society">
+    <meta property="og:title" content="NASA Cancellations Tracking Dashboard">
+    <meta property="og:description" content="Interactive dashboard tracking NASA grants and contracts terminated by the second Trump Administration. View impacted districts, recipients, and contract details.">
+    <meta property="og:image" content="https://dashboards.planetary.org/img/tps-nasa-cancellations-dashboard-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="NASA Contract Cancellations Dashboard showing map of impacted congressional districts">
+    <meta property="og:url" content="https://dashboards.planetary.org/cancellations/">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": "NASA Contract Cancellations Tracker",
+        "description": "Interactive dashboard tracking NASA grants and contracts terminated by the second Trump Administration, including congressional district impacts and recipient details.",
+        "url": "https://dashboards.planetary.org/cancellations/",
+        "keywords": [
+            "NASA",
+            "contracts",
+            "government spending",
+            "Trump administration",
+            "congressional districts",
+            "federal procurement",
+            "space policy"
+        ],
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "creator": {
+            "@type": "Person",
+            "name": "Casey Dreier",
+            "affiliation": {
+                "@type": "Organization",
+                "name": "The Planetary Society",
+                "url": "https://planetary.org"
+            },
+            "email": "casey.dreier@planetary.org"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "The Planetary Society",
+            "url": "https://planetary.org"
+        },
+        "temporalCoverage": "2025-01-20/..",
+        "spatialCoverage": {
+            "@type": "Place",
+            "name": "United States"
+        }
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Grid.js CSS -->
+    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet">
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="../shared/css/variables.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/layout.css">
+    <link rel="stylesheet" href="../shared/css/tables.css">
+
+    <!-- Additional styles for map legend -->
+    <style>
+        .map-legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            font-size: 12px;
+            z-index: 100;
+        }
+        .legend-bar, .legend-gradient {
+            display: flex;
+            height: 16px;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            border: 1px solid #ccc;
+        }
+        .legend-segment {
+            flex: 1;
+        }
+        .legend-gradient {
+            width: 150px;
+        }
+        .legend-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #666;
+        }
+        .legend-label {
+            text-align: center;
+        }
+
+        /* Map container needs relative positioning for legend */
+        #choropleth-map {
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .map-legend {
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header id="navbar"></header>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard">
+        <!-- Page Tabs -->
+        <nav id="page-tabs" class="page-tabs">
+            <button class="page-tab active" data-tab="summary-tab">Summary</button>
+            <button class="page-tab" data-tab="contracts-tab">Contracts Listing</button>
+            <button class="page-tab" data-tab="about-tab">About</button>
+        </nav>
+
+        <!-- Summary Tab -->
+        <section id="summary-tab" class="tab-content active">
+            <!-- Value Boxes -->
+            <div id="value-boxes" class="value-boxes-row">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Main Content: Map + Tables -->
+            <div class="main-content-row">
+                <!-- Map Column -->
+                <div class="map-container">
+                    <div class="card card--transparent">
+                        <div class="card-body">
+                            <div id="choropleth-map">
+                                <div class="loading">
+                                    <div class="loading-spinner"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tables Column -->
+                <div class="tables-container">
+                    <div class="card">
+                        <nav id="table-tabs" class="card-tabs">
+                            <button class="card-tab active" data-tab="districts-panel">Districts Impacted</button>
+                            <button class="card-tab" data-tab="recipients-panel">Recipients Impacted</button>
+                        </nav>
+                        <div class="card-body">
+                            <div id="districts-panel" class="card-tab-content active">
+                                <div id="districts-table"></div>
+                            </div>
+                            <div id="recipients-panel" class="card-tab-content">
+                                <div id="recipients-table"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contracts Listing Tab -->
+        <section id="contracts-tab" class="tab-content">
+            <div class="contracts-section">
+                <div class="info-bar">
+                    <span class="info-bar-text">
+                        Data last updated <span id="last-updated"></span>.
+                    </span>
+                    <div class="info-bar-links">
+                        Download as
+                        <a href="https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=csv" target="_blank">CSV</a> |
+                        <a href="https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=xlsx" target="_blank">Excel</a>
+                    </div>
+                </div>
+                <div class="contracts-table-container">
+                    <div id="contracts-table"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Tab -->
+        <section id="about-tab" class="tab-content">
+            <div class="about-section">
+                <div class="card">
+                    <div class="card-header">About This Dashboard</div>
+                    <div class="card-body">
+                        <p>This dashboard provides insights into NASA contracts and grants that may have been cancelled, terminated, or significantly modified since January 20th, 2025. The data presented here are compiled and maintained by Casey Dreier at The Planetary Society to enhance transparency surrounding NASA's programmatic activities and funding allocations.</p>
+
+                        <h3>How the Data is Compiled</h3>
+                        <p>To identify potential changes, several different official government data sources and public datasets are monitored: the DOGE website, NASA's Procurement Data View database, and an archived database of NASA Grants information. These sources are scanned for specific indicators that might suggest an award is undergoing a significant change, such as:</p>
+                        <ul>
+                            <li>DOGE-reported actions</li>
+                            <li>Keywords like "termination" or "stop work" appearing in modification descriptions</li>
+                            <li>Official status updates indicating cancellation or termination</li>
+                            <li>Changes suggesting a significant reduction in scope, like a shortened performance period combined with decreased funding</li>
+                        </ul>
+
+                        <p>When one of these sources flags a potential change in a NASA contract or grant, the system retrieves comprehensive and standardized details for that specific award directly from the official <strong>USAspending.gov</strong> database. This ensures the information presented—such as recipient names, funding amounts, award dates, and locations—is based on the authoritative federal spending record.</p>
+
+                        <p>The goal is to provide a consolidated list of NASA awards that warrant further investigation due to data signals suggesting they may have been cancelled or significantly altered.</p>
+
+                        <p><em>This data is checked daily. The last updated date reflects the last time a change was detected. Inclusion on this list signifies that an award has met specific criteria suggesting a potential cancellation or significant modification based on available data; further investigation is recommended.</em></p>
+
+                        <h3>Contact</h3>
+                        <p>For questions, corrections, or submissions, contact Casey Dreier at <a href="mailto:casey.dreier@planetary.org">casey.dreier@planetary.org</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- D3.js -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
+    <!-- Grid.js -->
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+
+    <!-- Dashboard Application -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

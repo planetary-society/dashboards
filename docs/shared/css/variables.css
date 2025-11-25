@@ -1,0 +1,256 @@
+/**
+ * CSS Custom Properties (Design Tokens)
+ * The Planetary Society Dashboard Branding
+ * Updated with modern design system
+ */
+
+:root {
+    /* ============================================
+       EXPANDED COLOR SCALES
+       ============================================ */
+
+    /* Blue Scale (Brand Primary) */
+    --blue-50: #EFF6FF;
+    --blue-100: #DBEAFE;
+    --blue-200: #BFDBFE;
+    --blue-300: #93C5FD;
+    --blue-400: #60A5FA;
+    --blue-500: #037CC2;  /* Brand blue */
+    --blue-600: #0369A1;
+    --blue-700: #0C4A6E;
+    --blue-800: #1E3A5F;
+    --blue-900: #0F172A;
+
+    /* Orange Scale (Brand Accent) */
+    --orange-50: #FFF7ED;
+    --orange-100: #FFEDD5;
+    --orange-200: #FED7AA;
+    --orange-300: #FDBA74;
+    --orange-400: #FB923C;
+    --orange-500: #FF5D47;  /* Brand orange */
+    --orange-600: #EA580C;
+    --orange-700: #C2410C;
+    --orange-800: #9A3412;
+    --orange-900: #7C2D12;
+
+    /* Purple Scale (Brand Secondary) */
+    --purple-50: #FAF5FF;
+    --purple-100: #F3E8FF;
+    --purple-200: #E9D5FF;
+    --purple-300: #D8B4FE;
+    --purple-400: #C084FC;
+    --purple-500: #643788;  /* Brand purple */
+    --purple-600: #7C3AED;
+    --purple-700: #6D28D9;
+    --purple-800: #5B21B6;
+    --purple-900: #4C1D95;
+
+    /* Teal Scale (Additional Accent) */
+    --teal-50: #F0FDFA;
+    --teal-100: #CCFBF1;
+    --teal-200: #99F6E4;
+    --teal-300: #5EEAD4;
+    --teal-400: #2DD4BF;
+    --teal-500: #14B8A6;
+    --teal-600: #0D9488;
+    --teal-700: #0F766E;
+    --teal-800: #115E59;
+    --teal-900: #134E4A;
+
+    /* Neutral/Gray Scale */
+    --gray-50: #FAFAFA;
+    --gray-100: #F4F4F5;
+    --gray-200: #E4E4E7;
+    --gray-300: #D4D4D8;
+    --gray-400: #A1A1AA;
+    --gray-500: #71717A;
+    --gray-600: #52525B;
+    --gray-700: #3F3F46;
+    --gray-800: #27272A;
+    --gray-900: #18181B;
+
+    /* Red Scale (for cancellations/errors) */
+    --red-50: #FEF2F2;
+    --red-100: #FEE2E2;
+    --red-200: #FECACA;
+    --red-300: #FCA5A5;
+    --red-400: #F87171;
+    --red-500: #EF4444;
+    --red-600: #DC2626;
+    --red-700: #B91C1C;
+    --red-800: #991B1B;
+    --red-900: #7F1D1D;
+
+    /* ============================================
+       LEGACY BRAND COLORS (for compatibility)
+       ============================================ */
+    --tps-blue: var(--blue-500);
+    --tps-purple: var(--purple-500);
+    --tps-orange: var(--orange-500);
+    --tps-light-blue: var(--blue-300);
+    --tps-light-purple: var(--purple-300);
+    --tps-gray: var(--gray-700);
+
+    /* ============================================
+       SEMANTIC COLORS
+       ============================================ */
+    --color-primary: var(--blue-500);
+    --color-secondary: var(--purple-500);
+    --color-accent: var(--orange-500);
+    --color-background: var(--gray-50);
+    --color-surface: #FFFFFF;
+    --color-text: var(--gray-800);
+    --color-text-secondary: var(--gray-500);
+    --color-text-muted: var(--gray-400);
+    --color-link: var(--blue-500);
+    --color-link-hover: var(--blue-600);
+    --color-border: var(--gray-200);
+    --color-border-light: var(--gray-100);
+
+    /* Card Colors (modernized - no colored headers) */
+    --color-card-header: transparent;
+    --color-card-header-text: var(--gray-500);
+    --color-card-body: var(--color-surface);
+
+    /* Navbar */
+    --color-navbar-bg: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    --color-navbar-text: #FFFFFF;
+
+    /* Value Box Accent Colors */
+    --value-box-contracts: var(--blue-500);
+    --value-box-value: var(--orange-500);
+    --value-box-recipients: var(--purple-500);
+    --value-box-districts: var(--teal-500);
+
+    /* Choropleth Color Scales */
+    --choropleth-spending-zero: #FFFFFF;
+    --choropleth-spending-low: var(--blue-200);
+    --choropleth-spending-high: var(--blue-600);
+
+    --choropleth-cancellations-zero: #FFFFFF;
+    --choropleth-cancellations-low: var(--red-200);
+    --choropleth-cancellations-high: var(--red-700);
+
+    /* ============================================
+       TYPOGRAPHY
+       ============================================ */
+    --font-family: 'Poppins', Helvetica, Arial, sans-serif;
+
+    /* Refined type scale (Major Second - 1.125) */
+    --text-xs: 0.75rem;      /* 12px */
+    --text-sm: 0.875rem;     /* 14px */
+    --text-base: 1rem;       /* 16px */
+    --text-lg: 1.125rem;     /* 18px */
+    --text-xl: 1.25rem;      /* 20px */
+    --text-2xl: 1.5rem;      /* 24px */
+    --text-3xl: 1.875rem;    /* 30px */
+    --text-4xl: 2.25rem;     /* 36px */
+
+    /* Legacy font size aliases */
+    --font-size-xs: var(--text-xs);
+    --font-size-sm: var(--text-sm);
+    --font-size-base: var(--text-base);
+    --font-size-lg: var(--text-lg);
+    --font-size-xl: var(--text-xl);
+    --font-size-2xl: var(--text-2xl);
+    --font-size-3xl: var(--text-3xl);
+
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+
+    --letter-spacing-tight: -0.02em;
+    --letter-spacing-normal: 0;
+    --letter-spacing-wide: 0.03em;
+    --letter-spacing-wider: 0.05em;
+
+    /* ============================================
+       SPACING (4px baseline grid)
+       ============================================ */
+    --space-1: 0.25rem;   /* 4px */
+    --space-2: 0.5rem;    /* 8px */
+    --space-3: 0.75rem;   /* 12px */
+    --space-4: 1rem;      /* 16px */
+    --space-5: 1.25rem;   /* 20px */
+    --space-6: 1.5rem;    /* 24px */
+    --space-8: 2rem;      /* 32px */
+    --space-10: 2.5rem;   /* 40px */
+    --space-12: 3rem;     /* 48px */
+
+    /* Legacy spacing aliases */
+    --space-xs: var(--space-1);
+    --space-sm: var(--space-2);
+    --space-md: var(--space-4);
+    --space-lg: var(--space-6);
+    --space-xl: var(--space-8);
+    --space-2xl: var(--space-12);
+
+    /* ============================================
+       LAYOUT
+       ============================================ */
+    --border-radius-sm: 0.375rem;   /* 6px */
+    --border-radius: 0.5rem;        /* 8px */
+    --border-radius-md: 0.75rem;    /* 12px */
+    --border-radius-lg: 1rem;       /* 16px */
+    --border-radius-xl: 1.5rem;     /* 24px */
+    --border-radius-full: 9999px;
+
+    /* ============================================
+       LAYERED SHADOW SYSTEM
+       ============================================ */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04),
+                 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.04),
+                 0 2px 4px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.06),
+                 0 4px 8px rgba(0, 0, 0, 0.04);
+    --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.08),
+                 0 12px 24px rgba(0, 0, 0, 0.04);
+
+    /* ============================================
+       ANIMATION & TRANSITIONS
+       ============================================ */
+
+    /* Easing functions */
+    --ease-linear: linear;
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Transition durations */
+    --duration-fast: 150ms;
+    --duration-normal: 200ms;
+    --duration-slow: 300ms;
+    --duration-slower: 500ms;
+
+    /* Legacy transition aliases */
+    --transition-fast: var(--duration-fast) var(--ease-out);
+    --transition-normal: var(--duration-normal) var(--ease-out);
+    --transition-slow: var(--duration-slow) var(--ease-out);
+
+    /* ============================================
+       BREAKPOINTS (for reference in JS)
+       ============================================ */
+    --breakpoint-sm: 480px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+
+    /* ============================================
+       Z-INDEX LAYERS
+       ============================================ */
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-fixed: 300;
+    --z-modal: 400;
+    --z-tooltip: 500;
+}

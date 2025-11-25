@@ -1,0 +1,321 @@
+/**
+ * Layout Styles
+ * Grid system, containers, and responsive utilities
+ */
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+.container-fluid {
+    width: 100%;
+    padding: 0 var(--space-md);
+}
+
+/* ============================================
+   DASHBOARD LAYOUT
+   ============================================ */
+
+.dashboard {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-content {
+    flex: 1;
+    padding: var(--space-md);
+}
+
+/* ============================================
+   GRID SYSTEM
+   ============================================ */
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: calc(var(--space-md) * -0.5);
+}
+
+.col {
+    flex: 1;
+    padding: calc(var(--space-md) * 0.5);
+}
+
+/* Column widths */
+.col-auto { flex: 0 0 auto; }
+.col-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+.col-2 { flex: 0 0 16.666%; max-width: 16.666%; }
+.col-3 { flex: 0 0 25%; max-width: 25%; }
+.col-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+.col-5 { flex: 0 0 41.666%; max-width: 41.666%; }
+.col-6 { flex: 0 0 50%; max-width: 50%; }
+.col-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+.col-8 { flex: 0 0 66.666%; max-width: 66.666%; }
+.col-9 { flex: 0 0 75%; max-width: 75%; }
+.col-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+.col-11 { flex: 0 0 91.666%; max-width: 91.666%; }
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+
+/* ============================================
+   MAIN CONTENT LAYOUT (Map + Tables)
+   ============================================ */
+
+.main-content-row {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    min-height: 500px;
+}
+
+.map-container {
+    height: 100%;
+    min-height: 400px;
+}
+
+.map-container .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-container .card-body {
+    flex: 1;
+    padding: 0;
+    position: relative;
+}
+
+#choropleth-map {
+    width: 100%;
+    min-height: 400px;
+    max-height: 600px;
+    position: relative;
+}
+
+.tables-container {
+    height: 100%;
+    min-height: 400px;
+}
+
+.tables-container .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tables-container .card-body {
+    flex: 1;
+    overflow: auto;
+    padding: 0;
+}
+
+/* ============================================
+   CONTRACTS LISTING LAYOUT
+   ============================================ */
+
+.contracts-section {
+    padding: var(--space-md);
+}
+
+.contracts-table-container {
+    background: var(--color-surface);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+/* ============================================
+   ABOUT SECTION LAYOUT
+   ============================================ */
+
+.about-section {
+    padding: var(--space-md);
+    max-width: 900px;
+}
+
+.about-section .card-body {
+    padding: var(--space-lg);
+}
+
+.about-section h3 {
+    margin-top: var(--space-lg);
+}
+
+.about-section h3:first-child {
+    margin-top: 0;
+}
+
+/* ============================================
+   FLEX UTILITIES
+   ============================================ */
+
+.d-flex { display: flex; }
+.d-inline-flex { display: inline-flex; }
+.d-none { display: none; }
+.d-block { display: block; }
+
+.flex-row { flex-direction: row; }
+.flex-column { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+
+.justify-start { justify-content: flex-start; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+
+.align-start { align-items: flex-start; }
+.align-center { align-items: center; }
+.align-end { align-items: flex-end; }
+.align-stretch { align-items: stretch; }
+
+.flex-1 { flex: 1; }
+.flex-auto { flex: auto; }
+.flex-none { flex: none; }
+
+.gap-xs { gap: var(--space-xs); }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+
+/* ============================================
+   SPACING UTILITIES
+   ============================================ */
+
+/* Margin */
+.m-0 { margin: 0; }
+.m-xs { margin: var(--space-xs); }
+.m-sm { margin: var(--space-sm); }
+.m-md { margin: var(--space-md); }
+.m-lg { margin: var(--space-lg); }
+.m-xl { margin: var(--space-xl); }
+
+.mt-0 { margin-top: 0; }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* Padding */
+.p-0 { padding: 0; }
+.p-xs { padding: var(--space-xs); }
+.p-sm { padding: var(--space-sm); }
+.p-md { padding: var(--space-md); }
+.p-lg { padding: var(--space-lg); }
+.p-xl { padding: var(--space-xl); }
+
+/* ============================================
+   WIDTH/HEIGHT UTILITIES
+   ============================================ */
+
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+.h-full { height: 100%; }
+.h-auto { height: auto; }
+
+.min-h-screen { min-height: 100vh; }
+
+/* ============================================
+   OVERFLOW
+   ============================================ */
+
+.overflow-auto { overflow: auto; }
+.overflow-hidden { overflow: hidden; }
+.overflow-x-auto { overflow-x: auto; }
+.overflow-y-auto { overflow-y: auto; }
+
+/* ============================================
+   POSITION
+   ============================================ */
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+/* ============================================
+   RESPONSIVE LAYOUT
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .main-content-row {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .map-container {
+        height: 400px;
+        min-height: 400px;
+    }
+
+    .tables-container {
+        height: 400px;
+        min-height: 400px;
+    }
+
+    /* Responsive columns */
+    .col-lg-6 { flex: 0 0 100%; max-width: 100%; }
+    .col-lg-4 { flex: 0 0 100%; max-width: 100%; }
+}
+
+@media (max-width: 768px) {
+    .main-content-row {
+        padding: var(--space-sm);
+    }
+
+    .map-container {
+        height: 350px;
+        min-height: 350px;
+    }
+
+    .dashboard-content {
+        padding: var(--space-sm);
+    }
+
+    /* Responsive columns */
+    .col-md-6 { flex: 0 0 100%; max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+    .map-container {
+        height: 300px;
+        min-height: 300px;
+    }
+
+    .container,
+    .container-fluid {
+        padding: 0 var(--space-sm);
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .navbar,
+    .page-tabs {
+        display: none;
+    }
+
+    .dashboard {
+        min-height: auto;
+    }
+
+    .card {
+        break-inside: avoid;
+    }
+}

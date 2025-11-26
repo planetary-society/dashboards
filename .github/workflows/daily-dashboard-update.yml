@@ -1,11 +1,10 @@
 # GitHub Action Workflow: Daily Dashboard Update
 #
 # This workflow runs daily to:
-# 1. Download the latest CSV data.
+# 1. Download the latest CSV data for the cancellations dashboard.
 # 2. Compare and clean up data files.
-# 3. Render a Quarto dashboard.
-# 4. Commit new data and the rebuilt dashboard.
-# 5. Deploy the output to GitHub Pages.
+# 3. Commit new data if changed.
+# 4. Deploy the static D3.js dashboards to GitHub Pages.
 
 name: Daily Dashboard Update
 
@@ -16,36 +15,23 @@ on:
   workflow_dispatch: # Allows manual triggering
 
 jobs:
-  build-and-deploy: # Renamed job for clarity
+  build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write   # Required to commit changes
       pages: write      # Required to deploy to GitHub Pages
       id-token: write   # Required for trusted deployment
-    
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Quarto CLI
-        uses: quarto-dev/quarto-actions/setup@v2
-
       - name: Ensure data directory exists
         run: mkdir -p data
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
 
       - name: Define new filename
         id: define_filename
@@ -77,19 +63,11 @@ jobs:
             echo "file_kept=true" >> $GITHUB_OUTPUT
           fi
 
-      - name: Render Cancelations dashboard
-        run: quarto render cancellations.qmd
-
       - name: Commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: daily data refresh and dashboard rebuild"
-          file_pattern: |
-            data/*.csv
-            **/*.html
-            **/*.css
-
-      # --- New Deployment Steps Below ---
+          commit_message: "chore: daily data refresh"
+          file_pattern: data/*.csv
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

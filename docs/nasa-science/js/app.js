@@ -206,12 +206,11 @@ class NASAScienceDashboard {
         this.districtHoverInfo = {};
 
         this.districtData.forEach(row => {
-            if (row.geoid && row.average > 0) {
+            if (row.geoid) {
                 this.districtDataMap[row.geoid] = row.average;
                 this.districtHoverInfo[row.geoid] = `
                     <b>${row.district}</b><br>
-                    Average Annual: ${formatCurrency(row.average, false)}<br>
-                    <small>FY ${this.startYear}-${this.endYear}</small>
+                    Average Annual Obligations: ${formatCurrency(row.average, false)}
                 `;
             }
         });
@@ -225,13 +224,12 @@ class NASAScienceDashboard {
         this.stateHoverInfo = {};
 
         this.stateData.forEach(row => {
-            if (row.state && row.fips && row.average > 0) {
+            if (row.state && row.fips) {
                 // Use FIPS code as key (matches TopoJSON feature IDs like "01", "02", etc.)
                 this.stateDataMap[row.fips] = row.average;
                 this.stateHoverInfo[row.fips] = `
                     <b>${row.state}</b><br>
-                    Average Annual: ${formatCurrency(row.average, false)}<br>
-                    <small>FY ${this.startYear}-${this.endYear}</small>
+                    Average Annual Obligations: ${formatCurrency(row.average, false)}
                 `;
             }
         });
@@ -262,7 +260,8 @@ class NASAScienceDashboard {
             districtsReached: districtCount,
             percentDistricts,
             statesCount: stateCount,
-            fiscalYears: `${this.startYear}-${this.endYear}`
+            recentFYSpending: formatCurrency(totalFy2024, true),
+            recentFY: this.endYear
         };
     }
 
@@ -280,14 +279,11 @@ class NASAScienceDashboard {
      * Render the summary text paragraph
      */
     renderSummaryText() {
-        const stats = this.getSummaryStats();
         const summaryEl = document.getElementById('summary-text');
         if (summaryEl) {
             summaryEl.innerHTML = `
-                NASA's science investments benefit <strong>every state</strong> and
-                <strong>${stats.percentDistricts}% (${stats.districtsReached})</strong> of all congressional districts.
-                In FY ${this.endYear} alone, <strong>NASA science committed ${stats.totalSpending}</strong>
-                to recipients around the country.
+                Explore NASA Science Mission Directorate spending across the U.S. by state and congressional district.
+                Use the maps below to visualize the data, or download detailed economic impact reports for any district.
             `;
         }
     }

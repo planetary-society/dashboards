@@ -194,14 +194,15 @@ export function createSpendingValueBoxes(stats) {
  * @param {string} stats.totalSpending - Formatted total spending amount
  * @param {number} stats.districtsReached - Number of congressional districts with spending
  * @param {number} stats.statesCount - Number of states with spending
- * @param {string} stats.fiscalYears - Fiscal year range (e.g., "2022-2024")
+ * @param {string} stats.recentFYSpending - Formatted spending for most recent fiscal year
+ * @param {number} stats.recentFY - Most recent fiscal year
  * @returns {Array} Array of value box configurations
  */
 export function createScienceValueBoxes(stats) {
     return [
         {
-            title: 'Total NASA Science Spending',
-            value: stats.totalSpending,
+            title: `Spent in FY ${stats.recentFY}`,
+            value: stats.recentFYSpending,
             icon: 'cash-stack',
             type: 'value'
         },
@@ -212,16 +213,16 @@ export function createScienceValueBoxes(stats) {
             type: 'districts'
         },
         {
+            title: 'Share of All Districts',
+            value: `${stats.percentDistricts}%`,
+            icon: 'pie-chart',
+            type: 'contracts'
+        },
+        {
             title: 'States with NASA Science',
             value: `${stats.statesCount} of 50`,
             icon: 'flag',
             type: 'recipients'
-        },
-        {
-            title: 'Fiscal Years',
-            value: stats.fiscalYears,
-            icon: 'calendar-range',
-            type: 'contracts'
         }
     ];
 }

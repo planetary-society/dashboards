@@ -3,8 +3,11 @@
  * D3.js-based US map supporting both filled choropleth and bubble visualization modes
  */
 
-import { COLORS, MAP_CONFIG } from '../constants.js';
+import { COLORS, MAP_CONFIG, STATE_NAME_TO_FIPS } from '../constants.js';
 import { debounce } from '../utils.js';
+
+// Module-level shared tooltip for all map instances
+let sharedTooltip = null;
 
 export class ChoroplethMap {
     /**
@@ -77,6 +80,28 @@ export class ChoroplethMap {
             }
         }
         return this.steppedScale[this.steppedScale.length - 1].color;
+    }
+
+    /**
+     * Extract feature ID from a GeoJSON feature
+     * Handles multiple ID locations for different data sources:
+     * - Districts: properties.GEOID
+     * - States (TopoJSON): id at feature level, or properties.name converted to FIPS
+     * - Alternative formats: properties.STATEFP, properties.id
+     * @param {Object} d - GeoJSON feature
+     * @returns {string} Feature ID
+     */
+    getFeatureId(d) {
+        // Districts have GEOID in properties
+        if (d.properties?.GEOID) return d.properties.GEOID;
+        // TopoJSON converted features may have id at feature level
+        if (d.id) return d.id;
+        // States from TopoJSON have properties.name (e.g., "Alabama")
+        if (d.properties?.name && STATE_NAME_TO_FIPS[d.properties.name]) {
+            return STATE_NAME_TO_FIPS[d.properties.name];
+        }
+        // Other fallbacks
+        return d.properties?.STATEFP || d.properties?.id;
     }
 
     /**
@@ -171,18 +196,24 @@ export class ChoroplethMap {
     }
 
     /**
-     * Create the tooltip element
+     * Create or reuse the shared tooltip element
      */
     createTooltip() {
-        // Remove existing tooltip if present
-        d3.select('.map-tooltip').remove();
+        // Reuse existing shared tooltip if it exists in the DOM
+        if (sharedTooltip && document.body.contains(sharedTooltip.node())) {
+            this.tooltip = sharedTooltip;
+            return;
+        }
 
-        this.tooltip = d3.select('body')
+        // Create new shared tooltip
+        sharedTooltip = d3.select('body')
             .append('div')
             .attr('class', 'map-tooltip')
             .style('opacity', 0)
             .style('position', 'absolute')
             .style('pointer-events', 'none');
+
+        this.tooltip = sharedTooltip;
     }
 
     /**
@@ -257,12 +288,12 @@ export class ChoroplethMap {
         if (this.options.mapType === 'choropleth') {
             // ===== CHOROPLETH MODE: Fill polygons with stepped colors =====
             this.baseGroup.selectAll('path.district')
-                .data(this.geojsonData.features, d => d.properties.GEOID || d.id)
+                .data(this.geojsonData.features, d => this.getFeatureId(d))
                 .join('path')
                 .attr('class', 'district')
                 .attr('d', this.path)
                 .attr('fill', d => {
-                    const geoid = d.properties.GEOID || d.id;
+                    const geoid = this.getFeatureId(d);
                     const value = this.dataMap[geoid] || 0;
                     return this.getSteppedColor(value);
                 })
@@ -270,12 +301,12 @@ export class ChoroplethMap {
                 .attr('stroke-width', MAP_CONFIG.districtBorderWidth)
                 .attr('fill-opacity', MAP_CONFIG.fillOpacity || 0.85)
                 .style('cursor', d => {
-                    const geoid = d.properties.GEOID || d.id;
+                    const geoid = this.getFeatureId(d);
                     return this.hoverInfo[geoid] ? 'pointer' : 'default';
                 })
                 .on('mouseover', function(event, d) {
                     if (self.options.interactive) {
-                        const geoid = d.properties.GEOID || d.id;
+                        const geoid = self.getFeatureId(d);
                         if (self.hoverInfo[geoid]) {
                             self.handleChoroplethMouseOver(event, d, this);
                         }
@@ -300,7 +331,7 @@ export class ChoroplethMap {
 
             // Draw base map (district/state outlines)
             this.baseGroup.selectAll('path.district')
-                .data(this.geojsonData.features, d => d.properties.GEOID || d.id)
+                .data(this.geojsonData.features, d => this.getFeatureId(d))
                 .join('path')
                 .attr('class', 'district')
                 .attr('d', this.path)
@@ -377,7 +408,7 @@ export class ChoroplethMap {
      * Handle mouse over event on choropleth polygon
      */
     handleChoroplethMouseOver(event, d, element) {
-        const geoid = d.properties.GEOID || d.id;
+        const geoid = this.getFeatureId(d);
         const content = this.hoverInfo[geoid] || '';
 
         if (!content) return;

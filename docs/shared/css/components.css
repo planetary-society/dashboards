@@ -375,6 +375,12 @@
     background-color: #fff;
 }
 
+/* Transparent card tab content */
+.card--transparent .card-tab-content,
+.card--transparent .card-tab-content.active {
+    background-color: transparent;
+}
+
 /* ============================================
    INFO BAR
    ============================================ */
@@ -449,16 +455,17 @@
    ============================================ */
 
 .map-legend {
-    position: absolute;
-    bottom: var(--space-4);
-    right: var(--space-4);
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
     border: 1px solid var(--gray-200);
     border-radius: var(--border-radius-md);
     padding: var(--space-3) var(--space-4);
     box-shadow: var(--shadow-md);
-    z-index: 10;
+    margin: var(--space-3) auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
 }
 
 .legend-title {
@@ -651,22 +658,6 @@ html {
     scroll-padding-top: 80px;
 }
 
-/* ============================================
-   MAP LEGEND
-   ============================================ */
-
-.map-legend {
-    position: absolute;
-    bottom: var(--space-5);
-    left: var(--space-5);
-    background: rgba(255, 255, 255, 0.95);
-    padding: var(--space-2) var(--space-4);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-md);
-    font-size: var(--text-xs);
-    z-index: var(--z-dropdown);
-}
-
 .legend-bar,
 .legend-gradient {
     display: flex;
@@ -701,36 +692,51 @@ html {
 #state-map,
 #district-map {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Default white backgrounds for maps in normal cards */
+.card:not(.card--transparent) #state-map,
+.card:not(.card--transparent) #district-map,
+.card:not(.card--transparent) #choropleth-map {
     background-color: #fff;
 }
 
-/* Ensure map panels have white background */
-#state-map-panel,
-#district-map-panel {
+/* Ensure map panels have white background in normal cards */
+.card:not(.card--transparent) #state-map-panel,
+.card:not(.card--transparent) #district-map-panel {
     background-color: #fff;
 }
 
-/* Ensure SVG maps have white background */
+/* Transparent backgrounds for maps in transparent cards */
+.card--transparent #state-map,
+.card--transparent #district-map,
+.card--transparent #choropleth-map,
+.card--transparent #state-map-panel,
+.card--transparent #district-map-panel {
+    background-color: transparent;
+}
+
+.card--transparent #state-map svg,
+.card--transparent #district-map svg,
+.card--transparent #choropleth-map svg {
+    background-color: transparent !important;
+}
+
+/* Ensure SVG bubble maps have white background */
 .bubble-map-svg {
     background-color: #fff !important;
 }
 
-/* Force white background on all map containers and their children */
-#state-map svg,
-#district-map svg,
-#choropleth-map svg {
-    background-color: #fff !important;
-}
-
-#state-map *,
-#district-map *,
-#choropleth-map * {
-    --map-background: #fff;
-}
-
-/* SVG background rect */
-.map-background {
+/* SVG background rect - only for non-transparent cards */
+.card:not(.card--transparent) .map-background {
     fill: #ffffff !important;
+}
+
+.card--transparent .map-background {
+    fill: transparent !important;
 }
 
 /* ============================================
@@ -776,10 +782,8 @@ html {
     }
 
     .map-legend {
-        left: var(--space-3);
-        right: var(--space-3);
-        bottom: var(--space-3);
         padding: var(--space-2) var(--space-3);
+        margin: var(--space-2) auto 0;
     }
 }
 

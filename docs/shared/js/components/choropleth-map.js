@@ -3,7 +3,7 @@
  * D3.js-based US map supporting both filled choropleth and bubble visualization modes
  */
 
-import { COLORS, MAP_CONFIG, STATE_NAME_TO_FIPS } from '../constants.js';
+import { COLORS, MAP_CONFIG } from '../constants.js';
 import { debounce } from '../utils.js';
 
 // Module-level shared tooltip for all map instances
@@ -84,24 +84,11 @@ export class ChoroplethMap {
 
     /**
      * Extract feature ID from a GeoJSON feature
-     * Handles multiple ID locations for different data sources:
-     * - Districts: properties.GEOID
-     * - States (TopoJSON): id at feature level, or properties.name converted to FIPS
-     * - Alternative formats: properties.STATEFP, properties.id
      * @param {Object} d - GeoJSON feature
      * @returns {string} Feature ID
      */
     getFeatureId(d) {
-        // Districts have GEOID in properties
-        if (d.properties?.GEOID) return d.properties.GEOID;
-        // TopoJSON converted features may have id at feature level
-        if (d.id) return d.id;
-        // States from TopoJSON have properties.name (e.g., "Alabama")
-        if (d.properties?.name && STATE_NAME_TO_FIPS[d.properties.name]) {
-            return STATE_NAME_TO_FIPS[d.properties.name];
-        }
-        // Other fallbacks
-        return d.properties?.STATEFP || d.properties?.id;
+        return d.properties?.GEOID || d.id;
     }
 
     /**

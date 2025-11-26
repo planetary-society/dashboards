@@ -225,7 +225,7 @@ p.summary-text {
 
 /* Accent colors per metric type */
 .value-box--contracts { --accent-color: var(--blue-500); }
-.value-box--value { --accent-color: var(--orange-500); }
+.value-box--value { --accent-color: var(--green-600); }
 .value-box--recipients { --accent-color: var(--purple-500); }
 .value-box--districts { --accent-color: var(--teal-500); }
 
@@ -719,20 +719,34 @@ html {
 .card--transparent #state-map,
 .card--transparent #district-map,
 .card--transparent #choropleth-map,
+.card--transparent #unified-map,
 .card--transparent #state-map-panel,
 .card--transparent #district-map-panel {
     background-color: transparent;
+    border: none;
+    outline: none;
 }
 
 .card--transparent #state-map svg,
 .card--transparent #district-map svg,
-.card--transparent #choropleth-map svg {
+.card--transparent #choropleth-map svg,
+.card--transparent #unified-map svg {
     background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
 }
 
-/* Ensure SVG bubble maps have white background */
+/* Transparent SVG background */
 .bubble-map-svg {
-    background-color: #fff !important;
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+}
+
+/* Remove any borders from SVG elements */
+.bubble-map-svg rect,
+.bubble-map-svg path {
+    outline: none;
 }
 
 /* SVG background rect - only for non-transparent cards */

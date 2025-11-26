@@ -228,17 +228,7 @@ export class ChoroplethMap {
             .attr('class', 'bubble-map-svg')
             .style('width', '100%')
             .style('height', 'auto')
-            .style('display', 'block')
-            .style('background-color', '#fff');
-
-        // Add explicit white background rect
-        this.svg.append('rect')
-            .attr('class', 'map-background')
-            .attr('width', this.width)
-            .attr('height', this.height)
-            .attr('fill', '#ffffff')
-            .attr('x', 0)
-            .attr('y', 0);
+            .style('display', 'block');
 
         // Create groups for layering (base map behind bubbles, state boundaries on top)
         this.baseGroup = this.svg.append('g')

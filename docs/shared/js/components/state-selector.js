@@ -208,6 +208,12 @@ export class StateSelector {
 
             ${showSearch ? this.renderDistrictSearch(stateAbbr) : ''}
 
+            <div class="district-list-header">
+                <span class="district-count-label">
+                    ${districts.length} Congressional District${districts.length !== 1 ? 's' : ''}
+                </span>
+            </div>
+
             <div class="district-list">
                 ${sortedDistricts.map(d => this.renderDistrictItem(d)).join('')}
             </div>

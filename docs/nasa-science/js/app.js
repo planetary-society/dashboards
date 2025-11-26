@@ -15,10 +15,11 @@ import {
 } from '../../shared/js/utils.js';
 import { Navbar } from '../../shared/js/components/navbar.js';
 import { ValueBox, createScienceValueBoxes } from '../../shared/js/components/value-box.js';
-import { TabNavigation, CardTabs } from '../../shared/js/components/tabs.js';
+import { TabNavigation } from '../../shared/js/components/tabs.js';
 import { HashRouter } from '../../shared/js/components/hash-router.js';
 import { ChoroplethMap } from '../../shared/js/components/choropleth-map.js';
 import { DataTable } from '../../shared/js/components/data-table.js';
+import { StateSelector } from '../../shared/js/components/state-selector.js';
 
 class NASAScienceDashboard {
     constructor() {
@@ -40,13 +41,11 @@ class NASAScienceDashboard {
         this.stateHoverInfo = {};
 
         // Components
-        this.stateMap = null;
         this.districtMap = null;
         this.districtTable = null;
         this.stateTable = null;
-        this.reportsTable = null;
+        this.stateSelector = null;
         this.pageTabs = null;
-        this.mapTabs = null;
         this.router = null;
 
         // Route to tab ID mapping
@@ -78,7 +77,7 @@ class NASAScienceDashboard {
             this.renderValueBoxes();
             await this.renderMaps();
             this.renderTables();
-            this.renderReportsTable();
+            this.initStateSelector();
 
             // Update last updated date
             this.updateLastUpdated();
@@ -127,13 +126,6 @@ class NASAScienceDashboard {
             }
         });
         this.router.init();
-
-        // Card-level tabs for map switching
-        this.mapTabs = new CardTabs('map-tabs', {
-            tabClass: 'card-tab',
-            contentClass: 'card-tab-content'
-        });
-        this.mapTabs.init();
     }
 
     /**
@@ -275,26 +267,16 @@ class NASAScienceDashboard {
     }
 
     /**
-     * Render both state and district choropleth maps
+     * Render the district choropleth map
      */
     async renderMaps() {
-        // State map (visible by default) - uses pre-projected TopoJSON
-        this.stateMap = new ChoroplethMap('state-map', {
-            colorScale: 'science',
-            level: 'state',
-            mapType: 'choropleth',
-            showLegend: true,
-            preProjected: true  // TopoJSON is pre-projected to Albers USA
-        });
-        await this.stateMap.init(DATA_URLS.statesTopoJSON);
-        this.stateMap.setData(this.stateDataMap, this.stateHoverInfo);
-
-        // District map (hidden initially)
-        this.districtMap = new ChoroplethMap('district-map', {
+        // Single district map with state boundaries
+        this.districtMap = new ChoroplethMap('unified-map', {
             colorScale: 'science',
             level: 'district',
             mapType: 'choropleth',
-            showLegend: true
+            showLegend: true,
+            showStateBoundaries: true  // Enable state boundary outlines
         });
         await this.districtMap.init(DATA_URLS.districts);
         this.districtMap.setData(this.districtDataMap, this.districtHoverInfo);
@@ -365,56 +347,57 @@ class NASAScienceDashboard {
     }
 
     /**
-     * Render the economic impact reports table with PDF links
+     * Initialize the state selector with map integration
      */
-    renderReportsTable() {
-        // Filter to districts with spending
-        const districtsWithSpending = this.districtData.filter(d =>
-            d.fy2024 >= this.minSpending || d.fy2023 >= this.minSpending || d.fy2022 >= this.minSpending
-        );
+    initStateSelector() {
+        this.stateSelector = new StateSelector('reports-table', {
+            minSpending: this.minSpending, // Threshold for PDF availability
 
-        // Group by state
-        const byState = groupBy(districtsWithSpending, 'state');
+            onStateSelect: (stateAbbr, districts) => {
+                // Zoom map to state
+                if (this.districtMap) {
+                    this.districtMap.zoomToState(stateAbbr);
+                }
+            },
 
-        // Build rows: each state with its district links
-        const rows = Object.entries(byState)
-            .sort(([a], [b]) => a.localeCompare(b)) // Sort by state
-            .map(([state, districts]) => {
-                const stateUrl = `https://planetary.s3.amazonaws.com/assets/impact-reports/${state}/${state}-NASA-Science.pdf`;
-                const stateLink = `<a href="${stateUrl}" target="_blank">${state}</a>`;
+            onDistrictSelect: (districtCode, districtData) => {
+                // Highlight district on map
+                if (this.districtMap) {
+                    this.districtMap.highlightDistrict(districtCode);
+                }
+            },
 
-                // Sort districts and create links
-                const districtLinks = districts
-                    .sort((a, b) => a.district.localeCompare(b.district))
-                    .map(d => {
-                        const distNum = d.district.split('-')[1].padStart(2, '0');
-                        const url = distNum === '00'
-                            ? stateUrl
-                            : `https://planetary.s3.amazonaws.com/assets/impact-reports/${state}/${distNum}/${state}-${distNum}-NASA-Science.pdf`;
-                        return `<a href="${url}" target="_blank">${distNum}</a>`;
-                    })
-                    .join(', ');
-
-                return [stateLink, districtLinks];
-            });
-
-        this.reportsTable = new DataTable('reports-table', {
-            pageSize: 15,
-            pagination: true,
-            search: false
+            onReset: () => {
+                // Reset map to national view
+                if (this.districtMap) {
+                    this.districtMap.resetZoom();
+                }
+            }
         });
 
-        this.reportsTable.render(
-            [
-                { name: 'State', id: 'state', width: '80px',
-                    formatter: (cell) => gridjs.html(cell)
-                },
-                { name: 'Districts', id: 'districts',
-                    formatter: (cell) => gridjs.html(cell)
+        // Pass ALL district data - StateSelector will handle insufficient data display
+        this.stateSelector.init(this.districtData, this.stateData);
+
+        // Set up click-to-zoom: clicking a state on the map triggers state selection
+        if (this.districtMap) {
+            this.districtMap.setStateClickHandler((stateAbbr) => {
+                // Select state in sidebar (triggers zoom via onStateSelect)
+                if (this.stateSelector) {
+                    this.stateSelector.stateSelect?.setValue(stateAbbr, true);
+                    this.stateSelector.selectState(stateAbbr);
                 }
-            ],
-            rows
-        );
+            });
+
+            // Set up district click handler for when zoomed into a state
+            this.districtMap.setDistrictClickHandler((districtCode) => {
+                // When district is clicked on map, select it in the sidebar
+                if (this.stateSelector) {
+                    this.stateSelector.selectDistrictFromMap(districtCode);
+                }
+                // Also highlight on map
+                this.districtMap.highlightDistrict(districtCode);
+            });
+        }
     }
 
     /**

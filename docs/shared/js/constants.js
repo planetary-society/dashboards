@@ -91,10 +91,13 @@ export const MAP_CONFIG = {
     },
     // Default center (roughly center of continental US)
     center: [39.8283, -98.5795],
-    // Styling
-    districtBorderColor: '#555555',
+    // Styling - district borders (soft/subtle)
+    districtBorderColor: '#888',
     districtBorderWidth: 0.5,
-    fillOpacity: 0.7,
+    fillOpacity: 0.85,
+    // Styling - state boundaries (stronger)
+    stateBorderColor: '#555',
+    stateBorderWidth: 1,
     // Default zoom levels
     defaultZoom: 4,
     minZoom: 3,

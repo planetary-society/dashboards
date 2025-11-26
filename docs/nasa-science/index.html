@@ -81,6 +81,9 @@
     <!-- Grid.js CSS -->
     <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet">
 
+    <!-- Tom Select CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css" rel="stylesheet">
+
     <!-- Shared CSS -->
     <link rel="stylesheet" href="../shared/css/variables.css">
     <link rel="stylesheet" href="../shared/css/base.css">
@@ -120,23 +123,10 @@
                 <!-- Map Column -->
                 <div class="map-container">
                     <div class="card card--transparent">
-                        <nav id="map-tabs" class="card-tabs">
-                            <button class="card-tab active" data-tab="state-map-panel">By State</button>
-                            <button class="card-tab" data-tab="district-map-panel">By District</button>
-                        </nav>
                         <div class="card-body">
-                            <div id="state-map-panel" class="card-tab-content active">
-                                <div id="state-map">
-                                    <div class="loading">
-                                        <div class="loading-spinner"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="district-map-panel" class="card-tab-content">
-                                <div id="district-map">
-                                    <div class="loading">
-                                        <div class="loading-spinner"></div>
-                                    </div>
+                            <div id="unified-map">
+                                <div class="loading">
+                                    <div class="loading-spinner"></div>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +136,7 @@
                 <!-- Reports Column -->
                 <div class="tables-container">
                     <div class="card">
-                        <div class="card-header">Detailed Economic Impact Reports</div>
+                        <div class="card-header">Find Your Economic Impact Report</div>
                         <div class="card-body">
                             <div id="reports-table"></div>
                         </div>
@@ -220,6 +210,9 @@
 
     <!-- Grid.js -->
     <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+
+    <!-- Tom Select -->
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
 
     <!-- Dashboard Application -->
     <script type="module" src="js/app.js"></script>

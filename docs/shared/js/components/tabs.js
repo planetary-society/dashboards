@@ -93,17 +93,24 @@ export class TabNavigation {
             content.classList.remove(this.options.activeClass);
         });
 
-        // Activate the target tab and content
+        // Find the tab button for this tabId
+        const targetTab = this.tabs.find(tab => tab.dataset.tab === tabId);
+
+        // Activate the target tab and content (if content exists)
         const targetEntry = this.contents.find(({ id }) => id === tabId);
         if (targetEntry) {
             targetEntry.tab.classList.add(this.options.activeClass);
             targetEntry.content.classList.add(this.options.activeClass);
-            this.currentTab = tabId;
+        } else if (targetTab) {
+            // Tab exists but no content panel - just activate the tab button
+            targetTab.classList.add(this.options.activeClass);
+        }
 
-            // Call callback if provided
-            if (this.options.onTabChange) {
-                this.options.onTabChange(tabId, previousTab);
-            }
+        this.currentTab = tabId;
+
+        // Call callback if provided (regardless of whether content panel exists)
+        if (this.options.onTabChange && (targetEntry || targetTab)) {
+            this.options.onTabChange(tabId, previousTab);
         }
     }
 

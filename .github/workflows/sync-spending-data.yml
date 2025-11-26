@@ -31,21 +31,28 @@ jobs:
           PRIVATE_REPO: "planetary-society/nasa-spending-impact-generator"
         run: |
           python .github/scripts/fetch-data.py --get summaries
-          
+
+      - name: Copy Science data to docs folder
+        run: |
+          mkdir -p docs/data/science
+          cp data/NASA-district-Science-summary.csv docs/data/science/
+          cp data/NASA-state-Science-summary.csv docs/data/science/
+          echo "Copied Science summary files to docs/data/science/"
+
       - name: Check for changes
         id: changes
         run: |
-          if git diff --quiet data/*.csv; then
+          if git diff --quiet data/*.csv docs/data/science/*.csv; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
-          
+
       - name: Commit and push if changed
         if: steps.changes.outputs.changed == 'true'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add data/*.csv
+          git add data/*.csv docs/data/science/*.csv
           git commit -m "Update NASA summary data files - $(date)"
           git push

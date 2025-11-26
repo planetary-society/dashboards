@@ -63,11 +63,22 @@ jobs:
             echo "file_kept=true" >> $GITHUB_OUTPUT
           fi
 
+      - name: Copy latest data to docs folder
+        run: |
+          LATEST_FILE=$(ls -t data/nasa_cancelled_contracts_*.csv 2>/dev/null | head -n 1)
+          if [[ -n "$LATEST_FILE" ]]; then
+            mkdir -p docs/data/cancellations
+            cp "$LATEST_FILE" docs/data/cancellations/nasa_cancelled_contracts_latest.csv
+            echo "Copied $LATEST_FILE to docs/data/cancellations/nasa_cancelled_contracts_latest.csv"
+          fi
+
       - name: Commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: daily data refresh"
-          file_pattern: data/*.csv
+          file_pattern: |
+            data/*.csv
+            docs/data/**/*.csv
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

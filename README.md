@@ -39,7 +39,13 @@ Each contract or grant flagged for potential cancellation is verified against th
 
 ## Technical Implementation
 
-These dashboards are built using Quarto and Python.
+These dashboards are built using:
+- **HTML/CSS/JavaScript** - Static web pages with custom styling and interactive components
+- **Grid.js** - For searchable, sortable data tables
+- **Leaflet.js** - For interactive maps
+- **Python** - For data processing and fetching from government APIs
+- **GitHub Actions** - For automated data updates
+- **GitHub Pages** - For hosting
 
 ## About The Planetary Society
 

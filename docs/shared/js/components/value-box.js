@@ -201,28 +201,28 @@ export function createSpendingValueBoxes(stats) {
 export function createScienceValueBoxes(stats) {
     return [
         {
-            title: `Spent in FY ${stats.recentFY}`,
+            title: `NASA Science Spending FY ${stats.recentFY}`,
             value: stats.recentFYSpending,
             icon: 'cash-stack',
             type: 'value'
         },
         {
-            title: 'Congressional Districts Reached',
+            title: 'Benefitting from NASA Science spending',
+            value: `${stats.statesCount} of 50`,
+            icon: 'flag',
+            type: 'recipients'
+        },
+        {
+            title: 'Congressional Districts with NASA Science spending',
             value: stats.districtsReached.toLocaleString(),
             icon: 'geo-alt',
             type: 'districts'
         },
         {
-            title: 'Share of All Districts',
+            title: 'of all congressional districts',
             value: `${stats.percentDistricts}%`,
             icon: 'pie-chart',
             type: 'contracts'
-        },
-        {
-            title: 'States with NASA Science',
-            value: `${stats.statesCount} of 50`,
-            icon: 'flag',
-            type: 'recipients'
         }
     ];
 }

@@ -76,7 +76,6 @@ class NASAScienceDashboard {
 
             // Calculate statistics and render components
             this.renderValueBoxes();
-            this.renderSummaryText();
             await this.renderMaps();
             this.renderTables();
             this.renderReportsTable();
@@ -273,19 +272,6 @@ class NASAScienceDashboard {
         const boxes = createScienceValueBoxes(stats);
         ValueBox.render('value-boxes', boxes);
         ValueBox.animateIn('value-boxes');
-    }
-
-    /**
-     * Render the summary text paragraph
-     */
-    renderSummaryText() {
-        const summaryEl = document.getElementById('summary-text');
-        if (summaryEl) {
-            summaryEl.innerHTML = `
-                Explore NASA Science Mission Directorate spending across the U.S. by state and congressional district.
-                Use the maps below to visualize the data, or download detailed economic impact reports for any district.
-            `;
-        }
     }
 
     /**

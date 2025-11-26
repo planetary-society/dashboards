@@ -189,7 +189,7 @@
     padding: var(--space-4);
 }
 
-.value-box {
+.value-box, .summary-text {
     --accent-color: var(--blue-500);
     background-color: var(--color-surface);
     border: 1px solid var(--gray-200);
@@ -207,6 +207,11 @@
     animation: fadeInUp var(--duration-slower) var(--ease-out-expo) forwards;
     opacity: 0;
 }
+
+p.summary-text {
+    --accent-color: none;
+}
+
 
 .value-box:nth-child(1) { animation-delay: 0.1s; }
 .value-box:nth-child(2) { animation-delay: 0.15s; }

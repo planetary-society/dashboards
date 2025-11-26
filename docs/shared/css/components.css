@@ -858,8 +858,8 @@ html {
     align-items: center;
     gap: var(--space-2);
     padding: var(--space-3) var(--space-4);
-    background: rgba(3, 124, 194, 0.08);
-    color: var(--primary);
+    background: #FF5D47;
+    color: #FFFFFF;
     border-radius: var(--border-radius);
     font-weight: var(--font-weight-medium);
     text-decoration: none;
@@ -867,7 +867,8 @@ html {
 }
 
 .state-report-link:hover {
-    background: rgba(3, 124, 194, 0.15);
+    background: #E54D3D;
+    color: #FFFFFF;
     text-decoration: none;
 }
 
@@ -947,19 +948,31 @@ html {
 }
 
 .district-download {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    color: var(--gray-400);
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: #FF5D47;
+    color: #FFFFFF;
     border-radius: var(--border-radius);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    white-space: nowrap;
     transition: all 0.15s ease;
 }
 
 .district-download:hover {
-    background: rgba(3, 124, 194, 0.1);
-    color: var(--primary);
+    background: #E54D3D;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.district-insufficient {
+    font-size: var(--text-xs);
+    color: var(--gray-400);
+    font-style: italic;
+    white-space: nowrap;
 }
 
 /* District Labels on Map */

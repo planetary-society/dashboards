@@ -201,18 +201,12 @@ export class StateSelector {
         detailsEl.innerHTML = `
             <div class="state-report">
                 <a href="${stateReportUrl}" target="_blank" class="state-report-link">
-                    <i class="bi bi-file-earmark-pdf"></i>
+                    <i class="bi bi-download"></i>
                     Download ${stateAbbr} Statewide Report
                 </a>
             </div>
 
             ${showSearch ? this.renderDistrictSearch(stateAbbr) : ''}
-
-            <div class="district-list-header">
-                <span class="district-count-label">
-                    ${districts.length} Congressional District${districts.length !== 1 ? 's' : ''}
-                </span>
-            </div>
 
             <div class="district-list">
                 ${sortedDistricts.map(d => this.renderDistrictItem(d)).join('')}
@@ -263,7 +257,7 @@ export class StateSelector {
             const displayCode = num === '00' ? `${stateAbbr} At-Large` : `${stateAbbr}-${num}`;
             const option = document.createElement('option');
             option.value = d.district;
-            option.textContent = `${displayCode} - ${formatCurrency(d.average, true)} avg/year`;
+            option.textContent = `${displayCode} - ${formatCurrency(d.average, true)} /year`;
             searchEl.appendChild(option);
         });
 
@@ -277,6 +271,17 @@ export class StateSelector {
                 }
             }
         });
+    }
+
+    /**
+     * Check if district has sufficient data for a downloadable report
+     * @param {Object} district - District data object
+     * @returns {boolean} True if district meets spending threshold
+     */
+    hasSufficientData(district) {
+        return district.fy2024 >= this.options.minSpending ||
+               district.fy2023 >= this.options.minSpending ||
+               district.fy2022 >= this.options.minSpending;
     }
 
     /**
@@ -295,16 +300,23 @@ export class StateSelector {
         // Format: "WA-02" or "At-Large" for 00 districts
         const displayCode = num === '00' ? `${stateAbbr} At-Large` : `${stateAbbr}-${num}`;
 
+        // Check if district has sufficient data for report
+        const hasSufficientData = this.hasSufficientData(district);
+
         return `
             <div class="district-item" data-district="${district.district}">
                 <div class="district-info">
                     <span class="district-number">${displayCode}</span>
-                    <span class="district-spending">${formatCurrency(district.average, true)}/yr avg</span>
+                    <span class="district-spending">${formatCurrency(district.average, true)}/yr</span>
                 </div>
-                <a href="${reportUrl}" target="_blank" class="district-download"
-                   title="Download report for ${displayCode}">
-                    <i class="bi bi-download"></i>
-                </a>
+                ${hasSufficientData
+                    ? `<a href="${reportUrl}" target="_blank" class="district-download"
+                         title="Download report for ${displayCode}">
+                        <i class="bi bi-download"></i>
+                        Download
+                      </a>`
+                    : `<span class="district-insufficient">Insufficient data</span>`
+                }
             </div>
         `;
     }

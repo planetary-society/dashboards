@@ -60,6 +60,9 @@ export class ChoroplethMap {
         this.onDistrictClick = null; // Callback for bidirectional selection
         this.onStateClick = null; // Callback for state click (zoom to state)
 
+        // Mobile detection for tooltip behavior
+        this.isMobileView = window.matchMedia('(max-width: 767px)').matches;
+
         // Get color configuration
         this.colors = this.options.customColors ||
             COLORS.choropleth[this.options.colorScale] ||
@@ -149,6 +152,7 @@ export class ChoroplethMap {
         this.setupZoom();
         this.render();
         this.setupResizeHandler();
+        this.setupMobileDetection();
 
         // Render legend for choropleth maps
         if (this.options.mapType === 'choropleth' && this.options.showLegend && this.steppedScale) {
@@ -464,10 +468,12 @@ export class ChoroplethMap {
             .attr('fill-opacity', 0.9)
             .attr('stroke-width', 2);
 
-        // Show tooltip
-        this.tooltip
-            .html(content)
-            .style('opacity', 1);
+        // Show tooltip ONLY if not mobile
+        if (!this.isMobileView) {
+            this.tooltip
+                .html(content)
+                .style('opacity', 1);
+        }
     }
 
     /**
@@ -488,10 +494,12 @@ export class ChoroplethMap {
             .attr('stroke', '#333')
             .attr('stroke-width', hoverStrokeWidth);
 
-        // Show tooltip
-        this.tooltip
-            .html(content)
-            .style('opacity', 1);
+        // Show tooltip ONLY if not mobile
+        if (!this.isMobileView) {
+            this.tooltip
+                .html(content)
+                .style('opacity', 1);
+        }
     }
 
     /**
@@ -591,6 +599,31 @@ export class ChoroplethMap {
             resizeObserver.observe(this.container);
         } else {
             window.addEventListener('resize', handleResize);
+        }
+    }
+
+    /**
+     * Set up mobile detection listener
+     */
+    setupMobileDetection() {
+        const mobileQuery = window.matchMedia('(max-width: 767px)');
+
+        // Update on resize
+        const handleMobileChange = (e) => {
+            this.isMobileView = e.matches;
+
+            // Hide tooltip if switching to mobile
+            if (this.isMobileView && this.tooltip) {
+                this.tooltip.style('opacity', 0);
+            }
+        };
+
+        // Modern browsers
+        if (mobileQuery.addEventListener) {
+            mobileQuery.addEventListener('change', handleMobileChange);
+        } else {
+            // Fallback for older browsers
+            mobileQuery.addListener(handleMobileChange);
         }
     }
 

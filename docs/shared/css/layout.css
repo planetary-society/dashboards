@@ -297,9 +297,14 @@
         min-height: 400px;
     }
 
+    /* Hide map when actively selecting (JS adds this class) */
+    .map-container.mobile-hidden {
+        display: none;
+    }
+
     .tables-container {
-        height: 400px;
-        min-height: 400px;
+        height: auto;
+        min-height: auto;
     }
 
     /* Responsive columns */

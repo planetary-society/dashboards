@@ -766,11 +766,18 @@ html {
     padding: var(--space-2);
 }
 
-.state-selector-header {
+.state-selector-row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: var(--space-3);
     margin-bottom: var(--space-3);
+}
+
+.state-select-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
 }
 
 .selector-label {
@@ -779,30 +786,29 @@ html {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--gray-500);
+    white-space: nowrap;
 }
 
-.reset-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-1);
-    padding: var(--space-1) var(--space-2);
+.reset-btn-inline {
     font-size: var(--text-xs);
     color: var(--primary);
     background: transparent;
-    border: 1px solid var(--gray-200);
-    border-radius: var(--border-radius);
+    border: none;
+    padding: var(--space-1) var(--space-2);
     cursor: pointer;
-    transition: all 0.15s ease;
+    white-space: nowrap;
+    text-decoration: underline;
+    transition: color 0.15s ease;
 }
 
-.reset-btn:hover {
-    background: var(--gray-50);
-    border-color: var(--primary);
+.reset-btn-inline:hover {
+    color: var(--blue-600);
 }
 
 /* Tom Select Customization */
 .ts-wrapper {
-    margin-bottom: var(--space-4);
+    margin-bottom: 0;
+    flex: 1;
 }
 
 .ts-control {
@@ -1027,6 +1033,21 @@ path.district.highlighted {
     .value-boxes-row {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    /* Sticky state header when scrolling districts */
+    .district-list-header {
+        position: sticky;
+        top: 0;
+        background: var(--color-surface);
+        z-index: 10;
+        padding-top: var(--space-2);
+    }
+
+    /* Better district list scrolling on mobile */
+    .district-list {
+        max-height: calc(100vh - 350px);
+        -webkit-overflow-scrolling: touch;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1066,25 +1087,53 @@ path.district.highlighted {
         margin: var(--space-2) auto 0;
     }
 
-    /* State selector responsive */
-    .state-selector-header {
+    /* State selector responsive - stack label and select on small screens */
+    .state-selector-row {
         flex-direction: column;
         align-items: flex-start;
         gap: var(--space-2);
+    }
+
+    .state-select-wrapper {
+        width: 100%;
     }
 
     .district-list {
         max-height: 250px;
     }
 
+    /* Increase touch targets for district items */
     .district-item {
-        padding: var(--space-3);
+        padding: var(--space-4);
+        min-height: 48px;
     }
 
     .district-info {
         flex-direction: column;
         align-items: flex-start;
         gap: var(--space-1);
+    }
+
+    /* Larger download buttons */
+    .district-download {
+        padding: var(--space-3) var(--space-4);
+        min-height: 44px;
+    }
+
+    /* Larger reset button */
+    .reset-btn-inline {
+        min-height: 44px;
+        padding: var(--space-2) var(--space-3);
+    }
+
+    /* Tom Select larger touch targets */
+    .ts-control {
+        min-height: 48px !important;
+    }
+
+    .ts-dropdown .option {
+        padding: var(--space-3) var(--space-4) !important;
+        min-height: 44px;
     }
 }
 

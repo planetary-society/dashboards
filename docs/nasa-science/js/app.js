@@ -352,6 +352,7 @@ class NASAScienceDashboard {
     initStateSelector() {
         this.stateSelector = new StateSelector('reports-table', {
             minSpending: this.minSpending, // Threshold for PDF availability
+            mapContainer: document.querySelector('.map-container'), // For mobile UX - hide map during selection
 
             onStateSelect: (stateAbbr, districts) => {
                 // Zoom map to state

@@ -47,7 +47,8 @@ export class StateSelector {
             onReset: options.onReset || (() => {}),
             reportBaseUrl: options.reportBaseUrl ||
                 'https://planetary.s3.amazonaws.com/assets/impact-reports',
-            minSpending: options.minSpending || 50000
+            minSpending: options.minSpending || 50000,
+            mapContainer: options.mapContainer || null  // Reference to map container element for mobile UX
         };
 
         this.districtData = [];
@@ -83,19 +84,20 @@ export class StateSelector {
     render() {
         this.container.innerHTML = `
             <div class="state-selector">
-                <div class="state-selector-header">
+                <div class="state-selector-row">
                     <label for="state-select" class="selector-label">
                         Select Your State
                     </label>
-                    <button type="button" class="reset-btn" id="reset-selection"
-                            style="display: none;">
-                        <i class="bi bi-arrow-counterclockwise"></i> View All States
-                    </button>
+                    <div class="state-select-wrapper">
+                        <select id="state-select" placeholder="Type or select..." autocomplete="off">
+                            <option value="">Choose a state...</option>
+                        </select>
+                        <button type="button" class="reset-btn-inline" id="reset-selection"
+                                style="display: none;">
+                            View All
+                        </button>
+                    </div>
                 </div>
-
-                <select id="state-select" placeholder="Type or select a state...">
-                    <option value="">Choose a state...</option>
-                </select>
 
                 <div id="state-details" class="state-details" style="display: none;">
                     <!-- Populated when state is selected -->
@@ -138,6 +140,8 @@ export class StateSelector {
             sortField: { field: 'text', direction: 'asc' },
             maxOptions: 60,
             placeholder: 'Type or select a state...',
+            // Prevent browser autofill with search input type and attributes
+            controlInput: '<input type="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true">',
             render: {
                 option: function(data, escape) {
                     const districtCount = self.districtsByState[data.value]?.length || 0;
@@ -156,6 +160,13 @@ export class StateSelector {
                 }
             }
         });
+
+        // Additional autofill prevention after initialization
+        const inputEl = this.stateSelect.control_input;
+        if (inputEl) {
+            inputEl.setAttribute('autocomplete', 'off');
+            inputEl.setAttribute('name', 'state-search-' + Date.now());
+        }
     }
 
     /**
@@ -172,8 +183,26 @@ export class StateSelector {
         // Show reset button
         this.container.querySelector('#reset-selection').style.display = 'inline-flex';
 
+        // Hide map on mobile to focus on district selection
+        this.hideMapOnMobile();
+
         // Render state details
         this.renderStateDetails(stateAbbr, districts, isLargeState);
+
+        // Blur the Tom Select input to dismiss mobile keyboard
+        if (this.stateSelect) {
+            this.stateSelect.blur();
+        }
+
+        // On mobile, scroll district list into view after keyboard dismisses
+        if (this.isMobileDevice()) {
+            setTimeout(() => {
+                const detailsEl = this.container.querySelector('#state-details');
+                if (detailsEl) {
+                    detailsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 150);
+        }
 
         // Trigger callback
         this.options.onStateSelect(stateAbbr, districts);
@@ -455,6 +484,9 @@ export class StateSelector {
             resetBtn.style.display = 'none';
         }
 
+        // Show map on mobile (restore default view)
+        this.showMapOnMobile();
+
         // Trigger callback
         this.options.onReset();
     }
@@ -466,6 +498,32 @@ export class StateSelector {
      */
     getStateName(abbr) {
         return STATE_NAMES[abbr] || abbr;
+    }
+
+    /**
+     * Check if current device is mobile/tablet
+     * @returns {boolean}
+     */
+    isMobileDevice() {
+        return window.matchMedia('(max-width: 1024px)').matches;
+    }
+
+    /**
+     * Hide map on mobile during selection to maximize screen space
+     */
+    hideMapOnMobile() {
+        if (this.isMobileDevice() && this.options.mapContainer) {
+            this.options.mapContainer.classList.add('mobile-hidden');
+        }
+    }
+
+    /**
+     * Show map on mobile (restore default view)
+     */
+    showMapOnMobile() {
+        if (this.options.mapContainer) {
+            this.options.mapContainer.classList.remove('mobile-hidden');
+        }
     }
 
     /**

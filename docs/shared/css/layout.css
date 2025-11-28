@@ -292,19 +292,20 @@
         min-height: auto;
     }
 
+    /* Hide map entirely on mobile - focus on selection */
     .map-container {
-        height: 400px;
-        min-height: 400px;
-    }
-
-    /* Hide map when actively selecting (JS adds this class) */
-    .map-container.mobile-hidden {
         display: none;
     }
 
     .tables-container {
         height: auto;
         min-height: auto;
+    }
+
+    /* Allow dropdown to overflow on mobile */
+    .tables-container .card,
+    .tables-container .card-body {
+        overflow: visible;
     }
 
     /* Responsive columns */

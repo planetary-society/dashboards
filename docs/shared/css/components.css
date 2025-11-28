@@ -764,6 +764,7 @@ html {
 
 .state-selector {
     padding: var(--space-2);
+    overflow: visible;
 }
 
 .state-selector-row {
@@ -778,6 +779,7 @@ html {
     display: flex;
     align-items: center;
     gap: var(--space-2);
+    overflow: visible;
 }
 
 .selector-label {
@@ -829,6 +831,7 @@ html {
     border-color: var(--gray-200) !important;
     box-shadow: var(--shadow-lg) !important;
     font-family: var(--font-family) !important;
+    z-index: 9999 !important;
 }
 
 .ts-dropdown .option {

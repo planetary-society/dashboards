@@ -183,9 +183,6 @@ export class StateSelector {
         // Show reset button
         this.container.querySelector('#reset-selection').style.display = 'inline-flex';
 
-        // Hide map on mobile to focus on district selection
-        this.hideMapOnMobile();
-
         // Render state details
         this.renderStateDetails(stateAbbr, districts, isLargeState);
 
@@ -483,9 +480,6 @@ export class StateSelector {
         if (resetBtn) {
             resetBtn.style.display = 'none';
         }
-
-        // Show map on mobile (restore default view)
-        this.showMapOnMobile();
 
         // Trigger callback
         this.options.onReset();

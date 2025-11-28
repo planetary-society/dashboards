@@ -905,8 +905,7 @@ html {
 /* District List */
 .district-list-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     padding-bottom: var(--space-2);
     border-bottom: 1px solid var(--gray-100);
     margin-bottom: var(--space-2);
@@ -942,6 +941,16 @@ html {
     background: rgba(3, 124, 194, 0.08);
     border-left: 3px solid var(--primary);
     padding-left: calc(var(--space-3) - 3px);
+}
+
+.district-item--state {
+    background: var(--gray-50);
+    border-bottom: 1px solid var(--gray-200);
+    margin-bottom: var(--space-2);
+}
+
+.district-item--state .district-number {
+    font-weight: var(--font-weight-bold);
 }
 
 .district-info {
@@ -1081,7 +1090,7 @@ path.district.highlighted {
 
 @media (max-width: 480px) {
     .value-boxes-row {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: var(--space-3);
     }
 

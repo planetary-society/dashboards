@@ -191,6 +191,10 @@ export class StateSelector {
         // Get state-level report URL
         const stateReportUrl = `${this.options.reportBaseUrl}/${stateAbbr}/${stateAbbr}-NASA-Science.pdf`;
 
+        // Detect at-large only state (single district ending in -00)
+        const isAtLargeOnly = districts.length === 1 &&
+            districts[0].district.split('-')[1] === '00';
+
         // Sort districts by number
         const sortedDistricts = [...districts].sort((a, b) => {
             const numA = parseInt(a.district.split('-')[1], 10) || 0;
@@ -198,33 +202,45 @@ export class StateSelector {
             return numA - numB;
         });
 
-        detailsEl.innerHTML = `
-            <div class="state-report">
-                <a href="${stateReportUrl}" target="_blank" class="state-report-link">
-                    <i class="bi bi-download"></i>
-                    Download ${stateAbbr} Statewide Report
-                </a>
-            </div>
+        // For at-large only states, just show statewide download (same as at-large district)
+        if (isAtLargeOnly) {
+            detailsEl.innerHTML = `
+                <div class="district-list-header">
+                    <div class="district-item district-item--state">
+                        <div class="district-info">
+                            <span class="district-number">Statewide</span>
+                        </div>
+                        <a href="${stateReportUrl}" target="_blank" class="district-download">
+                            <i class="bi bi-download"></i>
+                            Download
+                        </a>
+                    </div>
+                </div>
+            `;
+        } else {
+            detailsEl.innerHTML = `
+                <div class="district-list-header">
+                    <div class="district-item district-item--state">
+                        <div class="district-info">
+                            <span class="district-number">Statewide</span>
+                        </div>
+                        <a href="${stateReportUrl}" target="_blank" class="district-download">
+                            <i class="bi bi-download"></i>
+                            Download
+                        </a>
+                    </div>
+                    <span class="district-count-label">
+                        ${districts.length} Congressional District${districts.length !== 1 ? 's' : ''}
+                    </span>
+                </div>
 
-            ${showSearch ? this.renderDistrictSearch(stateAbbr) : ''}
-
-            <div class="district-list-header">
-                <span class="district-count-label">
-                    ${districts.length} Congressional District${districts.length !== 1 ? 's' : ''}
-                </span>
-            </div>
-
-            <div class="district-list">
-                ${sortedDistricts.map(d => this.renderDistrictItem(d)).join('')}
-            </div>
-        `;
+                <div class="district-list">
+                    ${sortedDistricts.map(d => this.renderDistrictItem(d)).join('')}
+                </div>
+            `;
+        }
 
         detailsEl.style.display = 'block';
-
-        // Initialize district search if large state
-        if (showSearch) {
-            this.initDistrictSearch(stateAbbr, sortedDistricts);
-        }
 
         // Bind district click handlers
         this.bindDistrictClickHandlers();

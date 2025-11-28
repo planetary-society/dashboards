@@ -1054,6 +1054,15 @@ path.district.highlighted {
 }
 
 @media (max-width: 768px) {
+    /* Prevent iOS Safari auto-zoom on input focus (requires 16px minimum) */
+    .ts-control input,
+    .ts-wrapper input,
+    input[type="text"],
+    input[type="search"],
+    select {
+        font-size: 16px !important;
+    }
+
     .navbar {
         padding: 0 var(--space-4);
         height: 56px;

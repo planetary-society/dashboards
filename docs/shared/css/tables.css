@@ -18,17 +18,13 @@
     font-family: var(--font-family);
 }
 
-.gridjs-table {
-    border-collapse: separate;
-    border-spacing: 0;
-    width: 100%;
-}
+
 
 .gridjs-thead {
     background-color: var(--gray-50);
 }
 
-.gridjs-th {
+th.gridjs-th {
     background-color: var(--gray-50);
     color: var(--gray-500);
     font-weight: var(--font-weight-semibold);
@@ -38,7 +34,7 @@
     padding: var(--space-3) var(--space-4);
     border-bottom: 2px solid var(--gray-200);
     text-align: left;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 .gridjs-th-content {
@@ -83,7 +79,7 @@
 }
 
 /* ============================================
-   NUMERIC COLUMNS (Tabular Numbers, Right Align)
+   NUMERIC COLUMNS (Tabular Numbers, Center Align)
    ============================================ */
 
 .gridjs-td[data-column-id="contracts"],
@@ -94,22 +90,15 @@
 .gridjs-th[data-column-id="obligations"],
 .gridjs-th[data-column-id="outlays"],
 .gridjs-th[data-column-id="total"] {
-    text-align: right;
+    text-align: center;
     font-feature-settings: "tnum" 1;
-}
-
-/* Allow recipient column to wrap (override table-nowrap) */
-.gridjs-td[data-column-id="recipient"],
-.table-nowrap .gridjs-td[data-column-id="recipient"] {
-    white-space: normal !important;
-    word-wrap: break-word;
 }
 
 /* Description column: wrap text with max width */
 .gridjs-td[data-column-id="description"] {
     white-space: normal !important;
     word-wrap: break-word;
-    max-width: 400px;
+    max-width: 500px;
 }
 
 /* ============================================
@@ -236,6 +225,7 @@
     width: 10px;
     height: 10px;
     margin-left: var(--space-2);
+    margin-top:-3px;
 }
 
 .gridjs-sort-neutral {

@@ -295,7 +295,7 @@ class CancellationsDashboard {
             [
                 { name: 'Recipient', id: 'recipient', width: '50%' },
                 { name: 'Cancellations', id: 'contracts' },
-                { name: 'Total Value', id: 'obligations', currency: true }
+                { name: 'Total', id: 'obligations', currency: true }
             ],
             recipientData.map(row => [row.recipient, row.contractCount, row.totalObligations])
         );
@@ -308,7 +308,7 @@ class CancellationsDashboard {
         this.contractsTable = new DataTable('contracts-table', {
             pageSize: 25,
             pagination: true,
-            className: 'table-nowrap'
+            className: 'table'
         });
 
         const columns = [
@@ -320,11 +320,10 @@ class CancellationsDashboard {
                     return gridjs.html(`<a href="${url}" target="_blank">${cell}</a>`);
                 }
             },
-            { name: 'Source', id: 'source' },
-            { name: 'District', id: 'district' },
+            { name: 'District', id: 'district', width: '130px' },
             { name: 'Recipient', id: 'recipient' },
-            { name: 'Start Date', id: 'start_date' },
-            { name: 'End Date', id: 'end_date' },
+            { name: 'Start Date', id: 'start_date', width: '140px' },
+            { name: 'End Date', id: 'end_date', width: '140px' },
             { name: 'Total Obligations', id: 'obligations', currency: true },
             { name: 'Total Outlays', id: 'outlays', currency: true },
             { name: 'Description', id: 'description', width: '250px' },
@@ -333,7 +332,6 @@ class CancellationsDashboard {
 
         const rows = this.cleanedData.map(row => [
             row['Award ID'],
-            row['Source'],
             row['District'],
             row['Recipient'],
             row['Start Date'],

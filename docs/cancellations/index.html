@@ -86,6 +86,17 @@
     <link rel="stylesheet" href="../shared/css/components.css">
     <link rel="stylesheet" href="../shared/css/layout.css">
     <link rel="stylesheet" href="../shared/css/tables.css">
+
+    <!-- Cancellations-specific: Show map on mobile (zoom disabled in JS) -->
+    <style>
+        @media (max-width: 1024px) {
+            .map-container {
+                display: block;
+                height: 300px;
+                min-height: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -127,7 +138,7 @@
                     <div class="card">
                         <nav id="table-tabs" class="card-tabs">
                             <button class="card-tab active" data-tab="districts-panel">By Congressional District</button>
-                            <button class="card-tab" data-tab="recipients-panel">By Organization</button>
+                            <button class="card-tab" data-tab="recipients-panel">By Recipient</button>
                         </nav>
                         <div class="card-body">
                             <div id="districts-panel" class="card-tab-content active">

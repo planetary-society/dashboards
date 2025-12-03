@@ -22,6 +22,7 @@ export class Navbar {
             title: options.title || 'Dashboard',
             logoUrl: options.logoUrl || '../shared/img/TPS_Logo_3Stack-White.png',
             logoLink: options.logoLink || CONTACT.website,
+            titleLink: options.titleLink || '#summary',
             navItems: options.navItems || [],
             contactEmail: options.contactEmail || CONTACT.email,
             showContact: options.showContact !== false
@@ -48,10 +49,14 @@ export class Navbar {
         ` : '';
 
         this.container.innerHTML = `
-            <a href="${this.options.logoLink}" target="_blank" class="navbar-brand" title="The Planetary Society">
-                <img src="${this.options.logoUrl}" alt="The Planetary Society" class="navbar-logo">
-                <span class="navbar-title">${this.options.title}</span>
-            </a>
+            <div class="navbar-brand">
+                <a href="${this.options.logoLink}" target="_blank" class="navbar-logo-link" title="The Planetary Society">
+                    <img src="${this.options.logoUrl}" alt="The Planetary Society" class="navbar-logo">
+                </a>
+                <a href="${this.options.titleLink}" class="navbar-title-link">
+                    <span class="navbar-title">${this.options.title}</span>
+                </a>
+            </div>
             <nav class="navbar-nav">
                 ${navItemsHtml}
                 ${contactHtml}

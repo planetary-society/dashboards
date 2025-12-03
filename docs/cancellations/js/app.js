@@ -73,7 +73,7 @@ class CancellationsDashboard {
             }
 
             // Update last updated date
-            this.updateLastUpdated();
+            await this.updateLastUpdated();
 
         } catch (error) {
             console.error('Dashboard initialization failed:', error);
@@ -319,8 +319,9 @@ class CancellationsDashboard {
             .sort((a, b) => b.rawObligations - a.rawObligations);  // Sort by Total Obligations desc
 
         this.districtsTable = new DataTable('districts-table', {
-            pageSize: 15,
-            pagination: true
+            pagination: false,
+            height: 400,
+            fixedHeader: true
         });
 
         this.districtsTable.render(
@@ -354,8 +355,9 @@ class CancellationsDashboard {
             .sort((a, b) => b.contractCount - a.contractCount);
 
         this.recipientsTable = new DataTable('recipients-table', {
-            pageSize: 15,
-            pagination: true
+            pagination: false,
+            height: 400,
+            fixedHeader: true
         });
 
         this.recipientsTable.render(
@@ -414,14 +416,29 @@ class CancellationsDashboard {
 
     /**
      * Update last updated date in the UI
+     * Fetches from metadata.json which contains the date of the last data change
      */
-    updateLastUpdated() {
+    async updateLastUpdated() {
         const lastUpdatedEl = document.getElementById('last-updated');
-        if (lastUpdatedEl) {
-            // Use current date as we're loading latest data
-            const now = new Date();
-            lastUpdatedEl.textContent = formatDate(now, 'long');
+        if (!lastUpdatedEl) return;
+
+        try {
+            const response = await fetch('../data/cancellations/metadata.json');
+            if (response.ok) {
+                const metadata = await response.json();
+                if (metadata.lastUpdated) {
+                    // Parse date and format (add time to avoid timezone issues)
+                    const date = new Date(metadata.lastUpdated + 'T00:00:00');
+                    lastUpdatedEl.textContent = formatDate(date, 'long');
+                    return;
+                }
+            }
+        } catch (e) {
+            console.warn('Could not fetch metadata.json:', e);
         }
+
+        // Fallback to current date if metadata unavailable
+        lastUpdatedEl.textContent = formatDate(new Date(), 'long');
     }
 
     /**
@@ -454,6 +471,9 @@ class CancellationsDashboard {
      * @param {string} districtCode - District code (e.g., "CA-37")
      */
     showDistrictSummary(districtCode) {
+        // Scroll to top of page
+        window.scrollTo(0, 0);
+
         // Hide page tabs
         const pageTabs = document.getElementById('page-tabs');
         if (pageTabs) {
@@ -517,7 +537,15 @@ class CancellationsDashboard {
                 statsEl.textContent = '';
             } else {
                 const totalObligations = sumBy(districtAwards, 'totalObligations');
-                statsEl.innerHTML = `Found <strong>${districtAwards.length} cancelled award${districtAwards.length !== 1 ? 's' : ''}</strong> valued at <strong>${formatCurrency(totalObligations, true)}</strong>`;
+                const totalReportedSavings = sumBy(districtAwards, 'reportedSavings');
+
+                let statsText = `Found <strong>${districtAwards.length} cancelled award${districtAwards.length !== 1 ? 's' : ''}</strong> valued at <strong>${formatCurrency(totalObligations, true)}</strong>`;
+
+                if (totalReportedSavings > 0) {
+                    statsText += ` with <strong>${formatCurrency(totalReportedSavings, true)}</strong> in savings claimed by DOGE`;
+                }
+
+                statsEl.innerHTML = statsText;
             }
         }
 

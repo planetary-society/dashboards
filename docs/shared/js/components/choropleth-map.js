@@ -660,7 +660,10 @@ export class ChoroplethMap {
                     .attr('stroke-width', 2 / transform.k);
             });
 
-        this.svg.call(this.zoom);
+        // Only apply zoom behavior on non-mobile to prevent scroll hijacking
+        if (!this.isMobileView) {
+            this.svg.call(this.zoom);
+        }
     }
 
     /**

@@ -50,7 +50,13 @@
     display: flex;
     align-items: center;
     gap: var(--space-4);
+}
+
+.navbar-logo-link,
+.navbar-title-link {
     text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 
 .navbar-logo {
@@ -69,6 +75,10 @@
     font-weight: var(--font-weight-medium);
     letter-spacing: var(--letter-spacing-tight);
     white-space: nowrap;
+}
+
+.navbar-title-link:hover .navbar-title {
+    opacity: 0.85;
 }
 
 .navbar-nav {

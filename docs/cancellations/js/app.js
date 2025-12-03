@@ -66,6 +66,12 @@ class CancellationsDashboard {
             await this.renderMap();
             this.renderTables();
 
+            // Re-process district route if page loaded with one (data wasn't ready earlier)
+            const currentRoute = this.router.getCurrentRoute();
+            if (this.isDistrictRoute(currentRoute)) {
+                this.showDistrictSummary(currentRoute);
+            }
+
             // Update last updated date
             this.updateLastUpdated();
 
@@ -109,6 +115,16 @@ class CancellationsDashboard {
         this.router = new HashRouter({
             defaultRoute: 'summary',
             onRouteChange: (route) => {
+                // Check if this is a district route (e.g., "CA-37")
+                if (this.isDistrictRoute(route)) {
+                    this.showDistrictSummary(route);
+                    return;
+                }
+
+                // Hide district summary if we're navigating away from it
+                this.hideDistrictSummary();
+
+                // Handle standard page routes
                 const tabId = this.routeMap[route] || this.routeMap['summary'];
                 this.pageTabs.activateTab(tabId);
             }
@@ -121,6 +137,14 @@ class CancellationsDashboard {
             contentClass: 'card-tab-content'
         });
         this.tableTabs.init();
+
+        // Back button handler for district summary
+        const backBtn = document.getElementById('back-to-summary');
+        if (backBtn) {
+            backBtn.addEventListener('click', () => {
+                this.router.navigate('summary');
+            });
+        }
     }
 
     /**
@@ -130,6 +154,20 @@ class CancellationsDashboard {
         const csvText = await fetchText(DATA_URLS.cancellations);
         this.rawData = parseCSV(csvText);
         this.processData();
+    }
+
+    /**
+     * Extract reported savings amount from description text
+     * @param {string} description - Description field text
+     * @returns {number} Savings amount as float, or 0 if not found
+     */
+    extractReportedSavings(description) {
+        if (!description) return 0;
+        const match = description.match(/Reported savings: \$([\d,]+(?:\.\d{2})?)/);
+        if (match) {
+            return parseFloat(match[1].replace(/,/g, ''));
+        }
+        return 0;
     }
 
     /**
@@ -152,7 +190,8 @@ class CancellationsDashboard {
                     ...row,
                     totalObligations: obligations,
                     totalOutlays: outlays,
-                    geoid: getGeoidFromDistrict(row['District'])
+                    geoid: getGeoidFromDistrict(row['District']),
+                    reportedSavings: this.extractReportedSavings(row['Description'])
                 };
             })
             .filter(row => row.totalObligations !== null);
@@ -198,11 +237,12 @@ class CancellationsDashboard {
      */
     getSummaryStats() {
         const totalObligations = sumBy(this.cleanedData, 'totalObligations');
+        const totalReportedSavings = sumBy(this.cleanedData, 'reportedSavings');
 
         return {
             totalContracts: this.cleanedData.length,
             totalObligations: formatCurrency(totalObligations, true),
-            uniqueRecipients: countUnique(this.cleanedData, 'Recipient'),
+            totalReportedSavings: formatCurrency(totalReportedSavings, true),
             uniqueDistricts: countUnique(this.cleanedData, 'District')
         };
     }
@@ -228,6 +268,27 @@ class CancellationsDashboard {
 
         await this.map.init(DATA_URLS.districts);
         this.map.setData(this.districtCounts, this.hoverInfo, this.maxContracts);
+
+        // Add click handler for map bubbles
+        const mapContainer = document.getElementById('choropleth-map');
+        if (mapContainer) {
+            mapContainer.addEventListener('click', (e) => {
+                // Check if clicked element is a bubble
+                if (e.target.classList.contains('bubble')) {
+                    const d = d3.select(e.target).datum();
+                    if (d && d.geoid) {
+                        // Convert GEOID to district code (e.g., "0637" -> "CA-37")
+                        const stateFips = d.geoid.substring(0, 2);
+                        const districtNum = d.geoid.substring(2);
+                        const stateAbbr = FIPS_STATE_MAP[stateFips];
+                        if (stateAbbr) {
+                            const districtCode = `${stateAbbr}-${districtNum}`;
+                            this.router.navigate(districtCode);
+                        }
+                    }
+                }
+            });
+        }
     }
 
     /**
@@ -264,9 +325,15 @@ class CancellationsDashboard {
 
         this.districtsTable.render(
             [
-                { name: 'District', id: 'district' },
+                {
+                    name: 'District',
+                    id: 'district',
+                    formatter: (cell) => {
+                        return gridjs.html(`<a href="#${cell}" class="district-link">${cell}</a>`);
+                    }
+                },
                 { name: 'Cancellations', id: 'contracts' },
-                { name: 'Total Value', id: 'obligations', currency: true }
+                { name: 'Total', id: 'obligations', currency: true }
             ],
             districtData.map(row => [row.district, row.contractCount, row.totalObligations])
         );
@@ -371,6 +438,148 @@ class CancellationsDashboard {
                 </div>
             `;
         }
+    }
+
+    /**
+     * Check if a route is a district route (e.g., "CA-37", "NY-01")
+     * @param {string} route - Route to check
+     * @returns {boolean} True if route matches district pattern
+     */
+    isDistrictRoute(route) {
+        return /^[A-Z]{2}-\d+$/.test(route);
+    }
+
+    /**
+     * Show district summary view with filtered awards
+     * @param {string} districtCode - District code (e.g., "CA-37")
+     */
+    showDistrictSummary(districtCode) {
+        // Hide page tabs
+        const pageTabs = document.getElementById('page-tabs');
+        if (pageTabs) {
+            pageTabs.style.display = 'none';
+        }
+
+        // Hide all tab content
+        document.querySelectorAll('.tab-content').forEach(el => {
+            el.classList.remove('active');
+        });
+
+        // Show district summary
+        const districtSummary = document.getElementById('district-summary');
+        if (districtSummary) {
+            districtSummary.classList.add('active');
+        }
+
+        // Render the awards
+        this.renderDistrictAwards(districtCode);
+    }
+
+    /**
+     * Hide district summary and return to main view
+     */
+    hideDistrictSummary() {
+        // Show page tabs
+        const pageTabs = document.getElementById('page-tabs');
+        if (pageTabs) {
+            pageTabs.style.display = '';
+        }
+
+        // Hide district summary
+        const districtSummary = document.getElementById('district-summary');
+        if (districtSummary) {
+            districtSummary.classList.remove('active');
+        }
+    }
+
+    /**
+     * Render award cards for a specific district
+     * @param {string} districtCode - District code (e.g., "CA-37")
+     */
+    renderDistrictAwards(districtCode) {
+        const container = document.getElementById('district-awards');
+        const titleEl = document.getElementById('district-title');
+        const statsEl = document.getElementById('district-summary-stats');
+
+        if (!container || !titleEl) return;
+
+        // Filter awards for this district
+        const districtAwards = this.cleanedData.filter(
+            row => row.District === districtCode
+        );
+
+        // Update title
+        titleEl.textContent = districtCode;
+
+        // Update summary stats
+        if (statsEl) {
+            if (districtAwards.length === 0) {
+                statsEl.textContent = '';
+            } else {
+                const totalObligations = sumBy(districtAwards, 'totalObligations');
+                statsEl.innerHTML = `Found <strong>${districtAwards.length} cancelled award${districtAwards.length !== 1 ? 's' : ''}</strong> valued at <strong>${formatCurrency(totalObligations, true)}</strong>`;
+            }
+        }
+
+        // Render cards
+        if (districtAwards.length === 0) {
+            container.innerHTML = `
+                <div class="error-message">
+                    <p>No awards found for district ${districtCode}.</p>
+                </div>
+            `;
+            return;
+        }
+
+        container.innerHTML = districtAwards.map(award =>
+            this.renderAwardCard(award)
+        ).join('');
+    }
+
+    /**
+     * Render a single award card
+     * @param {Object} award - Award data object
+     * @returns {string} HTML string for the card
+     */
+    renderAwardCard(award) {
+        const obligations = formatCurrency(award.totalObligations, false);
+        const outlays = formatCurrency(award.totalOutlays, false);
+        const description = award.Description || '—';
+        const url = award.URL || '#';
+
+        return `
+            <div class="award-card">
+                <div class="award-card-header">
+                    <a href="${url}" target="_blank">${award['Award ID']}</a>
+                </div>
+                <div class="award-card-body">
+                    <div class="award-field">
+                        <span class="award-label">Recipient</span>
+                        <span class="award-value">${award.Recipient}</span>
+                    </div>
+                    <div class="award-field">
+                        <span class="award-label">Total Obligations</span>
+                        <span class="award-value">${obligations}</span>
+                    </div>
+                    <div class="award-field">
+                        <span class="award-label">Total Outlays</span>
+                        <span class="award-value">${outlays}</span>
+                    </div>
+                    <div class="award-field">
+                        <span class="award-label">Start Date</span>
+                        <span class="award-value">${award['Start Date']}</span>
+                    </div>
+                    <div class="award-field">
+                        <span class="award-label">End Date</span>
+                        <span class="award-value">${award['Nominal End Date']}</span>
+                    </div>
+                    <div class="award-field award-field--full">
+                        <span class="award-label">Description</span>
+                        <span class="award-value">${description}</span>
+                    </div>
+                </div>
+            </div>
+        `;
     }
 }
 

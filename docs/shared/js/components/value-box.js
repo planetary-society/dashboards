@@ -142,9 +142,9 @@ export function createCancellationsValueBoxes(stats) {
             type: 'value'
         },
         {
-            title: 'Organizations Affected',
-            value: stats.uniqueRecipients.toLocaleString(),
-            icon: ICONS.recipients,
+            title: 'In savings claimed by DOGE',
+            value: stats.totalReportedSavings,
+            icon: 'piggy-bank',
             type: 'recipients'
         },
         {

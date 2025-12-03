@@ -1029,6 +1029,130 @@ path.district.highlighted {
 }
 
 /* ============================================
+   DISTRICT SUMMARY VIEW
+   ============================================ */
+
+.district-summary-section {
+    padding: var(--space-4);
+}
+
+.district-summary-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.district-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--gray-900);
+    margin: 0;
+}
+
+.district-summary-stats {
+    font-size: var(--text-base);
+    color: var(--gray-600);
+    margin: 0 0 var(--space-4) 0;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+/* Award Cards Grid */
+.award-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--space-4);
+}
+
+/* Individual Award Card */
+.award-card {
+    background: var(--color-surface);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.award-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.award-card-header {
+    background: var(--gray-50);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--gray-100);
+    font-weight: var(--font-weight-medium);
+}
+
+.award-card-header a {
+    color: var(--blue-500);
+    text-decoration: none;
+}
+
+.award-card-header a:hover {
+    text-decoration: underline;
+}
+
+.award-card-body {
+    padding: 0;
+}
+
+.award-field {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.award-field:last-child {
+    border-bottom: none;
+}
+
+.award-field--full {
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.award-label {
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--gray-500);
+    flex-shrink: 0;
+}
+
+.award-value {
+    font-size: var(--text-sm);
+    color: var(--gray-700);
+    text-align: right;
+}
+
+.award-field--full .award-value {
+    text-align: left;
+}
+
+/* Clickable district link in table */
+.district-link {
+    color: var(--blue-500);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+}
+
+.district-link:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
    RESPONSIVE ADJUSTMENTS
    ============================================ */
 
@@ -1171,5 +1295,15 @@ path.district.highlighted {
 
     .page-tab {
         white-space: nowrap;
+    }
+
+    /* District summary responsive */
+    .award-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .district-summary-header {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

@@ -13,7 +13,6 @@ import {
     groupBy,
     sumBy
 } from '../../shared/js/utils.js';
-import { Navbar } from '../../shared/js/components/navbar.js';
 import { ValueBox, createScienceValueBoxes } from '../../shared/js/components/value-box.js';
 import { TabNavigation } from '../../shared/js/components/tabs.js';
 import { HashRouter } from '../../shared/js/components/hash-router.js';
@@ -64,9 +63,6 @@ class NASAScienceDashboard {
      */
     async init() {
         try {
-            // Render navbar
-            this.renderNavbar();
-
             // Initialize tab navigation
             this.initTabs();
 
@@ -86,18 +82,6 @@ class NASAScienceDashboard {
             console.error('Dashboard initialization failed:', error);
             this.showError(error.message);
         }
-    }
-
-    /**
-     * Render the navbar
-     */
-    renderNavbar() {
-        const navbar = new Navbar('navbar', {
-            title: 'NASA Science Spending Dashboard',
-            logoUrl: '../shared/img/TPS_Logo_3Stack-White.png',
-            logoLink: 'https://planetary.org'
-        });
-        navbar.render();
     }
 
     /**

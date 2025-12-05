@@ -16,7 +16,6 @@ import {
     countUnique,
     truncateText
 } from '../../shared/js/utils.js';
-import { Navbar } from '../../shared/js/components/navbar.js';
 import { ValueBox, createCancellationsValueBoxes } from '../../shared/js/components/value-box.js';
 import { TabNavigation, CardTabs } from '../../shared/js/components/tabs.js';
 import { HashRouter } from '../../shared/js/components/hash-router.js';
@@ -52,9 +51,6 @@ class CancellationsDashboard {
      */
     async init() {
         try {
-            // Render navbar
-            this.renderNavbar();
-
             // Initialize tab navigation
             this.initTabs();
 
@@ -79,18 +75,6 @@ class CancellationsDashboard {
             console.error('Dashboard initialization failed:', error);
             this.showError(error.message);
         }
-    }
-
-    /**
-     * Render the navbar
-     */
-    renderNavbar() {
-        const navbar = new Navbar('navbar', {
-            title: 'NASA Cancelled Awards Tracking Dashboard',
-            logoUrl: '../shared/img/TPS_Logo_3Stack-White.png',
-            logoLink: 'https://planetary.org'
-        });
-        navbar.render();
     }
 
     /**

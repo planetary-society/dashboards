@@ -77,6 +77,13 @@
     white-space: nowrap;
 }
 
+/* Reset H1 defaults when used as navbar title */
+h1.navbar-title {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
 .navbar-title-link:hover .navbar-title {
     opacity: 0.85;
 }

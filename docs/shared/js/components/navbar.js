@@ -54,7 +54,7 @@ export class Navbar {
                     <img src="${this.options.logoUrl}" alt="The Planetary Society" class="navbar-logo">
                 </a>
                 <a href="${this.options.titleLink}" class="navbar-title-link">
-                    <span class="navbar-title">${this.options.title}</span>
+                    <h1 class="navbar-title">${this.options.title}</h1>
                 </a>
             </div>
             <nav class="navbar-nav">

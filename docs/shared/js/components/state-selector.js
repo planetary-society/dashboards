@@ -323,13 +323,15 @@ export class StateSelector {
 
     /**
      * Check if district has sufficient data for a downloadable report
+     * Dynamically checks all fiscal year properties (fy20XX)
      * @param {Object} district - District data object
-     * @returns {boolean} True if district meets spending threshold
+     * @returns {boolean} True if district meets spending threshold in any fiscal year
      */
     hasSufficientData(district) {
-        return district.fy2024 >= this.options.minSpending ||
-               district.fy2023 >= this.options.minSpending ||
-               district.fy2022 >= this.options.minSpending;
+        // Dynamically check all fiscal year properties
+        return Object.keys(district)
+            .filter(key => /^fy\d{4}$/.test(key))
+            .some(key => district[key] >= this.options.minSpending);
     }
 
     /**

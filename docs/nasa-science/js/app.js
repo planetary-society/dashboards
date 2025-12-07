@@ -20,11 +20,25 @@ import { ChoroplethMap } from '../../shared/js/components/choropleth-map.js';
 import { DataTable } from '../../shared/js/components/data-table.js';
 import { StateSelector } from '../../shared/js/components/state-selector.js';
 
+/**
+ * Extract fiscal years from CSV headers
+ * Looks for columns matching pattern: fy_XXXX_obligations
+ * @param {Object} row - First row of parsed CSV data
+ * @returns {number[]} Array of fiscal years, sorted descending (newest first)
+ */
+function extractFiscalYears(row) {
+    return Object.keys(row)
+        .filter(key => /^fy_\d{4}_obligations$/.test(key))
+        .map(key => parseInt(key.match(/fy_(\d{4})_obligations/)[1]))
+        .sort((a, b) => b - a); // Descending order (newest first)
+}
+
 class NASAScienceDashboard {
     constructor() {
-        // Configuration
-        this.startYear = 2022;
-        this.endYear = 2024;
+        // Configuration - fiscal years will be detected from CSV headers
+        this.fiscalYears = []; // Array of years, sorted descending (newest first)
+        this.startYear = null; // Will be set from fiscalYears (oldest)
+        this.endYear = null;   // Will be set from fiscalYears (newest)
         this.minSpending = 50000; // Minimum spending threshold for "districts with spending"
 
         // Raw data from CSVs
@@ -124,6 +138,13 @@ class NASAScienceDashboard {
         this.districtRawData = parseCSV(districtCsvText);
         this.stateRawData = parseCSV(stateCsvText);
 
+        // Detect fiscal years from CSV headers
+        if (this.districtRawData.length > 0) {
+            this.fiscalYears = extractFiscalYears(this.districtRawData[0]);
+            this.endYear = this.fiscalYears[0]; // Most recent (first in descending array)
+            this.startYear = this.fiscalYears[this.fiscalYears.length - 1]; // Oldest (last in array)
+        }
+
         this.processData();
     }
 
@@ -133,18 +154,19 @@ class NASAScienceDashboard {
     processData() {
         // Process district data
         this.districtData = this.districtRawData.map(row => {
-            const fy2024 = parseFloat(row['fy_2024_obligations']) || 0;
-            const fy2023 = parseFloat(row['fy_2023_obligations']) || 0;
-            const fy2022 = parseFloat(row['fy_2022_obligations']) || 0;
-            const average = (fy2024 + fy2023 + fy2022) / 3;
+            // Dynamically extract fiscal year values
+            const fyValues = {};
+            this.fiscalYears.forEach(year => {
+                fyValues[`fy${year}`] = parseFloat(row[`fy_${year}_obligations`]) || 0;
+            });
+            const values = Object.values(fyValues);
+            const average = values.length > 0 ? values.reduce((a, b) => a + b, 0) / values.length : 0;
             const geoid = getGeoidFromDistrict(row['district']);
 
             return {
                 state: row['state'],
                 district: row['district'],
-                fy2024,
-                fy2023,
-                fy2022,
+                ...fyValues,
                 average,
                 geoid
             };
@@ -152,17 +174,18 @@ class NASAScienceDashboard {
 
         // Process state data
         this.stateData = this.stateRawData.map(row => {
-            const fy2024 = parseFloat(row['fy_2024_obligations']) || 0;
-            const fy2023 = parseFloat(row['fy_2023_obligations']) || 0;
-            const fy2022 = parseFloat(row['fy_2022_obligations']) || 0;
-            const average = (fy2024 + fy2023 + fy2022) / 3;
+            // Dynamically extract fiscal year values
+            const fyValues = {};
+            this.fiscalYears.forEach(year => {
+                fyValues[`fy${year}`] = parseFloat(row[`fy_${year}_obligations`]) || 0;
+            });
+            const values = Object.values(fyValues);
+            const average = values.length > 0 ? values.reduce((a, b) => a + b, 0) / values.length : 0;
             const fips = STATE_FIPS_MAP[row['state']];
 
             return {
                 state: row['state'],
-                fy2024,
-                fy2023,
-                fy2022,
+                ...fyValues,
                 average,
                 fips
             };
@@ -214,28 +237,29 @@ class NASAScienceDashboard {
      * Get summary statistics for value boxes
      */
     getSummaryStats() {
-        // Total FY2024 spending (most recent year)
-        const totalFy2024 = sumBy(this.districtData, 'fy2024');
+        // Total spending for most recent fiscal year
+        const mostRecentFY = `fy${this.fiscalYears[0]}`;
+        const totalRecentFY = sumBy(this.districtData, mostRecentFY);
 
-        // Districts with spending above threshold
+        // Districts with spending above threshold in any fiscal year
         const districtsWithSpending = this.districtData.filter(d =>
-            d.fy2024 >= this.minSpending || d.fy2023 >= this.minSpending || d.fy2022 >= this.minSpending
+            this.fiscalYears.some(year => d[`fy${year}`] >= this.minSpending)
         );
         const districtCount = districtsWithSpending.length;
         const percentDistricts = Math.round((districtCount / 435) * 100);
 
-        // States with spending
+        // States with spending in any fiscal year
         const statesWithSpending = this.stateData.filter(s =>
-            s.fy2024 >= this.minSpending || s.fy2023 >= this.minSpending || s.fy2022 >= this.minSpending
+            this.fiscalYears.some(year => s[`fy${year}`] >= this.minSpending)
         );
         const stateCount = statesWithSpending.length;
 
         return {
-            totalSpending: formatCurrency(totalFy2024, true),
+            totalSpending: formatCurrency(totalRecentFY, true),
             districtsReached: districtCount,
             percentDistricts,
             statesCount: stateCount,
-            recentFYSpending: formatCurrency(totalFy2024, true),
+            recentFYSpending: formatCurrency(totalRecentFY, true),
             recentFY: this.endYear
         };
     }
@@ -278,26 +302,30 @@ class NASAScienceDashboard {
      * Render the district spending table
      */
     renderDistrictTable() {
-        // Sort by FY2024 spending descending
-        const sortedData = [...this.districtData].sort((a, b) => b.fy2024 - a.fy2024);
+        // Sort by most recent fiscal year spending descending
+        const mostRecentFY = `fy${this.fiscalYears[0]}`;
+        const sortedData = [...this.districtData].sort((a, b) => b[mostRecentFY] - a[mostRecentFY]);
 
         this.districtTable = new DataTable('district-table', {
             pageSize: 20,
             pagination: true
         });
 
+        // Build columns dynamically from fiscal years
+        const columns = [
+            { name: 'District', id: 'district' },
+            ...this.fiscalYears.map(year => ({
+                name: `FY ${year} ($)`,
+                id: `fy${year}`,
+                currency: true
+            }))
+        ];
+
         this.districtTable.render(
-            [
-                { name: 'District', id: 'district' },
-                { name: 'FY 2024 ($)', id: 'fy2024', currency: true },
-                { name: 'FY 2023 ($)', id: 'fy2023', currency: true },
-                { name: 'FY 2022 ($)', id: 'fy2022', currency: true }
-            ],
+            columns,
             sortedData.map(row => [
                 row.district,
-                formatCurrency(row.fy2024, false),
-                formatCurrency(row.fy2023, false),
-                formatCurrency(row.fy2022, false)
+                ...this.fiscalYears.map(year => formatCurrency(row[`fy${year}`], false))
             ])
         );
     }
@@ -306,26 +334,30 @@ class NASAScienceDashboard {
      * Render the state spending table
      */
     renderStateTable() {
-        // Sort by FY2024 spending descending
-        const sortedData = [...this.stateData].sort((a, b) => b.fy2024 - a.fy2024);
+        // Sort by most recent fiscal year spending descending
+        const mostRecentFY = `fy${this.fiscalYears[0]}`;
+        const sortedData = [...this.stateData].sort((a, b) => b[mostRecentFY] - a[mostRecentFY]);
 
         this.stateTable = new DataTable('state-table', {
             pageSize: 20,
             pagination: true
         });
 
+        // Build columns dynamically from fiscal years
+        const columns = [
+            { name: 'State', id: 'state' },
+            ...this.fiscalYears.map(year => ({
+                name: `FY ${year} ($)`,
+                id: `fy${year}`,
+                currency: true
+            }))
+        ];
+
         this.stateTable.render(
-            [
-                { name: 'State', id: 'state' },
-                { name: 'FY 2024 ($)', id: 'fy2024', currency: true },
-                { name: 'FY 2023 ($)', id: 'fy2023', currency: true },
-                { name: 'FY 2022 ($)', id: 'fy2022', currency: true }
-            ],
+            columns,
             sortedData.map(row => [
                 row.state,
-                formatCurrency(row.fy2024, false),
-                formatCurrency(row.fy2023, false),
-                formatCurrency(row.fy2022, false)
+                ...this.fiscalYears.map(year => formatCurrency(row[`fy${year}`], false))
             ])
         );
     }
@@ -386,7 +418,7 @@ class NASAScienceDashboard {
     }
 
     /**
-     * Update last updated date in the UI
+     * Update last updated date and fiscal year range in the UI
      */
     updateLastUpdated() {
         const lastUpdatedEl = document.getElementById('last-updated');
@@ -394,6 +426,12 @@ class NASAScienceDashboard {
             // Use current date since we don't have file modification info in browser
             const now = new Date();
             lastUpdatedEl.textContent = formatDate(now, 'long');
+        }
+
+        // Update fiscal year range in About section
+        const fiscalYearRangeEl = document.getElementById('fiscal-year-range');
+        if (fiscalYearRangeEl && this.startYear && this.endYear) {
+            fiscalYearRangeEl.textContent = `${this.startYear}-${this.endYear}`;
         }
     }
 

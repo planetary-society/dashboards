@@ -1,6 +1,19 @@
 /**
  * Choropleth/Bubble Map Component
  * D3.js-based US map supporting both filled choropleth and bubble visualization modes
+ *
+ * IMPORTANT: Congressional District GeoJSON Compatibility
+ * --------------------------------------------------------
+ * Census Bureau GeoJSON files require preprocessing before use with D3.js:
+ *
+ * 1. COORDINATES: Census files may have 3D coords [lon,lat,elevation].
+ *    D3's geoAlbersUsa projection requires 2D [lon,lat].
+ *
+ * 2. WINDING ORDER: Census files use RFC 7946 counterclockwise winding.
+ *    D3.js expects clockwise exterior rings. Wrong winding = invisible polygons.
+ *
+ * Run `scripts/clean_census_geojson.py` on new Census Bureau files before use.
+ * See that script for detailed documentation.
  */
 
 import { COLORS, MAP_CONFIG, STATE_FIPS_MAP, FIPS_STATE_MAP } from '../constants.js';
@@ -113,6 +126,31 @@ export class ChoroplethMap {
     }
 
     /**
+     * Normalize GeoJSON coordinates by stripping elevation (3rd coordinate)
+     * Census Bureau KML exports include elevation values that D3 projections don't handle
+     * @param {Object} geojson - GeoJSON FeatureCollection
+     */
+    normalizeCoordinates(geojson) {
+        if (!geojson?.features) return;
+
+        const stripElevation = (coords) => {
+            if (!Array.isArray(coords)) return coords;
+            // Check if this is a coordinate pair [lon, lat] or [lon, lat, elevation]
+            if (typeof coords[0] === 'number') {
+                return coords.slice(0, 2);
+            }
+            // Recurse for nested arrays
+            return coords.map(stripElevation);
+        };
+
+        for (const feature of geojson.features) {
+            if (feature.geometry?.coordinates) {
+                feature.geometry.coordinates = stripElevation(feature.geometry.coordinates);
+            }
+        }
+    }
+
+    /**
      * Initialize the map with GeoJSON or TopoJSON data
      * @param {string|Object} geojsonSource - URL or GeoJSON/TopoJSON object
      */
@@ -144,6 +182,9 @@ export class ChoroplethMap {
         } else {
             this.geojsonData = rawData;
         }
+
+        // Normalize GeoJSON coordinates (handle 3D coordinates from Census Bureau KML exports)
+        this.normalizeCoordinates(this.geojsonData);
 
         this.setupDimensions();
         this.createSvg();
@@ -795,7 +836,8 @@ export class ChoroplethMap {
             .attr('pointer-events', 'none')
             .attr('opacity', 0)
             .text(d => {
-                const districtNum = d.properties.CD118FP || d.properties.CDTYP || '00';
+                // Support both 118th and 119th Congress property names
+                const districtNum = d.properties.CD119FP || d.properties.CD118FP || d.properties.CDTYP || '00';
                 return districtNum === '00' ? 'AL' : parseInt(districtNum, 10);
             })
             .transition()

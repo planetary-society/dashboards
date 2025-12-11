@@ -88,3 +88,18 @@ Source data files are stored in `data/` with date suffixes (e.g., `nasa_cancelle
 CSS uses custom properties defined in `docs/shared/css/variables.css`. The Planetary Society brand colors are defined in `constants.js` under `COLORS`.
 
 Map visualization uses stepped color scales defined in `COLORS.choropleth.scienceSteps` for consistent, colorblind-safe representations.
+
+## Updating Congressional District Maps
+
+When a new Congress begins (e.g., 119th → 120th), update the district boundaries:
+
+1. Download new GeoJSON from Census Bureau: https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html
+2. **Run the cleaning script** (required for D3.js compatibility):
+   ```bash
+   python3 scripts/clean_census_geojson.py \
+       path/to/downloaded_file.geojson \
+       docs/data/us_congressional_districts.geojson
+   ```
+3. Update property references if needed (e.g., `CD119FP` → `CD120FP` in choropleth-map.js)
+
+**Why cleaning is required:** Census Bureau GeoJSON files have 3D coordinates and RFC 7946 winding order, but D3.js needs 2D coordinates and clockwise winding. Without cleaning, districts render as invisible.

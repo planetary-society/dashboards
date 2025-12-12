@@ -107,8 +107,7 @@ export const MAP_CONFIG = {
 // Data URLs - relative to dashboard location
 export const DATA_URLS = {
     districts: '../data/us_congressional_districts.geojson',
-    states: '../data/us_states.geojson',
-    statesTopoJSON: '../data/states-albers-10m.json', // Pre-projected TopoJSON from US Atlas
+    states: '../data/gz_2010_us_040_00_5m.json',
     cancellations: '../data/cancellations/nasa_cancelled_contracts_latest.csv',
     // NASA Science spending data
     scienceDistrict: '../data/science/NASA-district-Science-summary.csv',

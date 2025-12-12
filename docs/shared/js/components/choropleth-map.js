@@ -213,8 +213,8 @@ export class ChoroplethMap {
         try {
             // Determine the base path from the current page
             const basePath = window.location.pathname.includes('/nasa-science/')
-                ? '../data/us_states.geojson'
-                : './data/us_states.geojson';
+                ? '../data/gz_2010_us_040_00_5m.json'
+                : './data/gz_2010_us_040_00_5m.json';
 
             const response = await fetch(basePath);
             const stateGeoJSON = await response.json();

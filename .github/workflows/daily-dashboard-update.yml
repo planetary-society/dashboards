@@ -30,67 +30,61 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Ensure data directory exists
-        run: mkdir -p data
-
-      - name: Define new filename
-        id: define_filename
-        run: echo "FILENAME=data/nasa_cancelled_contracts_$(date +'%Y-%m-%d').csv" >> $GITHUB_OUTPUT
-
       - name: Download latest CSV from GitHub
+        id: download
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # Find the latest CSV using gh api, download via raw URL (avoids 1MB API limit)
+          mkdir -p data
+
+          # Find the latest CSV filename and extract date
           LATEST_FILE=$(gh api repos/planetary-society/nasa-cancellations-tracking/contents/consolidated \
             --jq '[.[] | select(.name | endswith(".csv"))] | sort_by(.name) | last | .name')
+          DATE=$(echo "$LATEST_FILE" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}')
 
-          echo "Latest source file: $LATEST_FILE"
-          curl -fL -o "${{ steps.define_filename.outputs.FILENAME }}" \
+          echo "Latest source file: $LATEST_FILE (date: $DATE)"
+          echo "source_date=$DATE" >> $GITHUB_OUTPUT
+
+          # Download directly to data directory
+          curl -fL -o "data/nasa_cancelled_contracts_${DATE}.csv" \
             "https://raw.githubusercontent.com/planetary-society/nasa-cancellations-tracking/main/consolidated/${LATEST_FILE}"
 
-      - name: Compare with previous and cleanup
-        id: compare_files
+      - name: Compare and update if changed
+        id: compare
         run: |
-          NEW_FILE="${{ steps.define_filename.outputs.FILENAME }}"
-          echo "Newly downloaded file: $NEW_FILE"
-          PREVIOUS_FILE=$(ls -r data/*.csv 2>/dev/null | grep -v "$NEW_FILE" | head -n 1)
-          if [[ -n "$PREVIOUS_FILE" && -f "$PREVIOUS_FILE" ]]; then
-            echo "Comparing with previous file: $PREVIOUS_FILE"
-            if cmp -s "$PREVIOUS_FILE" "$NEW_FILE"; then
-              echo "Files are identical. Deleting $NEW_FILE."
-              rm "$NEW_FILE"
-              echo "file_kept=false" >> $GITHUB_OUTPUT
-            else
-              echo "Files are different. Keeping $NEW_FILE."
-              echo "file_kept=true" >> $GITHUB_OUTPUT
-            fi
+          DOCS_FILE="docs/data/cancellations/nasa_cancelled_contracts_latest.csv"
+          DATA_FILE="data/nasa_cancelled_contracts_${{ steps.download.outputs.source_date }}.csv"
+          mkdir -p docs/data/cancellations
+
+          if [[ -f "$DOCS_FILE" ]] && cmp -s "$DATA_FILE" "$DOCS_FILE"; then
+            echo "No changes detected"
+            echo "changed=false" >> $GITHUB_OUTPUT
+            # Remove the just-downloaded file since it's identical
+            rm "$DATA_FILE"
           else
-            echo "No previous file found. Keeping $NEW_FILE."
-            echo "file_kept=true" >> $GITHUB_OUTPUT
-          fi
+            echo "Changes detected, updating files"
+            echo "changed=true" >> $GITHUB_OUTPUT
 
-      - name: Copy latest data to docs folder
-        run: |
-          LATEST_FILE=$(ls -t data/nasa_cancelled_contracts_*.csv 2>/dev/null | head -n 1)
-          if [[ -n "$LATEST_FILE" ]]; then
-            mkdir -p docs/data/cancellations
-            cp "$LATEST_FILE" docs/data/cancellations/nasa_cancelled_contracts_latest.csv
-            echo "Copied $LATEST_FILE to docs/data/cancellations/nasa_cancelled_contracts_latest.csv"
+            # Remove old cancellation CSVs from data dir, keep only the new one
+            # Note: Only targets nasa_cancelled_contracts_*.csv - leaves NASA-*.csv files untouched
+            find data -name "nasa_cancelled_contracts_*.csv" ! -name "$(basename $DATA_FILE)" -delete
 
-            # Extract date from filename and write metadata (overwrites each time)
-            DATE=$(echo "$LATEST_FILE" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}')
-            echo "{\"lastUpdated\": \"$DATE\"}" > docs/data/cancellations/metadata.json
-            echo "Wrote last updated date: $DATE to metadata.json"
+            # Update docs with new file
+            cp "$DATA_FILE" "$DOCS_FILE"
+
+            # Update metadata
+            echo "{\"lastUpdated\": \"${{ steps.download.outputs.source_date }}\"}" > docs/data/cancellations/metadata.json
+            echo "Updated metadata with date: ${{ steps.download.outputs.source_date }}"
           fi
 
       - name: Commit & push changes
+        if: steps.compare.outputs.changed == 'true'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: daily data refresh"
           file_pattern: |
             data/*.csv
-            docs/data/**/*.csv
+            docs/data/**/*
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

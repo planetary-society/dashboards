@@ -1,35 +1,16 @@
-# CLAUDE.md
+# NASA Data Dashboards
+Interactive visualizations from The Planetary Society for NASA spending and contract data. Hosted at `dashboards.planetary.org` via GitHub Pages.
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## Overview
+* This is a static site with no build step. The `docs/` folder is deployed directly to GitHub Pages.
+* Data is refreshed using GitHub Actions workflows
+* Source data files are stored in `data/` with date suffixes (e.g., `nasa_cancelled_contracts_2025-11-28.csv`). Relevant files **must** be copied to `docs/data/` for runtime use.
 
-## Project Overview
-
-NASA Data Dashboards - interactive visualizations from The Planetary Society for NASA spending and contract data. Hosted at dashboards.planetary.org via GitHub Pages.
-
-Two main dashboards:
-- **NASA Science Spending** (`docs/nasa-science/`) - Science Mission Directorate spending by state/district
-- **NASA Cancellations** (`docs/cancellations/`) - Terminated contracts and grants tracking
+**Python is used to fetch and preprocess data, but not for serving the site.**
 
 ## Development
-
-This is a static site with no build step. The `docs/` folder is deployed directly to GitHub Pages.
-
-**Local development:**
-```bash
-# Python simple server (from repo root)
-python3 -m http.server 8000 --directory docs
-
-# Or any static file server, then open http://localhost:8000
-```
-
-**Python environment (for data fetching scripts only):**
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-## Architecture
+* Always use `context7` MCP to fetch the latest documentation when using any external library.
+* Use the GitHub CLI `gh` to interface with GitHub.
 
 ### Frontend Stack
 - **Vanilla JS** with ES6 modules (no framework, no bundler)
@@ -72,22 +53,11 @@ map.setData(dataMap, hoverInfo);
 ```
 
 **GEOID mapping:** Congressional districts use 4-digit GEOIDs (e.g., "0637" for CA-37). Use `getGeoidFromDistrict()` and `STATE_FIPS_MAP` from utils/constants.
-
 **CSV parsing:** Use the custom `parseCSV()` function that handles quoted fields with commas.
 
-## Data Pipeline
-
-Data is refreshed daily via GitHub Actions:
-1. `daily-dashboard-update.yml` - Fetches latest cancellations CSV from Google Sheets, commits if changed, deploys to GitHub Pages
-2. `sync-spending-data.yml` - Fetches summary CSVs from a private repo
-
-Source data files are stored in `data/` with date suffixes (e.g., `nasa_cancelled_contracts_2025-11-28.csv`). Latest version is copied to `docs/data/` for runtime use.
-
 ## Styling
-
-CSS uses custom properties defined in `docs/shared/css/variables.css`. The Planetary Society brand colors are defined in `constants.js` under `COLORS`.
-
-Map visualization uses stepped color scales defined in `COLORS.choropleth.scienceSteps` for consistent, colorblind-safe representations.
+* CSS uses custom properties defined in `docs/shared/css/variables.css`. The Planetary Society brand colors are defined in `constants.js` under `COLORS`.
+* Map visualization uses stepped color scales defined in `COLORS.choropleth.scienceSteps` for consistent, colorblind-safe representations.
 
 ## Updating Congressional District Maps
 

@@ -162,12 +162,12 @@ class CancellationsDashboard {
         this.cleanedData = this.rawData
             .filter(row => {
                 // Skip total row
-                const endDate = row['Nominal End Date'] || '';
+                const endDate = row['End Date'] || '';
                 return endDate.toLowerCase() !== 'total';
             })
             .map(row => {
                 // Parse and clean total obligations
-                const obligations = parseCurrency(row['Total Obligations']);
+                const obligations = parseCurrency(row['Award Amount']);
                 const outlays = parseCurrency(row['Total Outlays']);
 
                 return {
@@ -300,7 +300,7 @@ class CancellationsDashboard {
                     totalObligations: formatCurrency(rawTotal, false)
                 };
             })
-            .sort((a, b) => b.rawObligations - a.rawObligations);  // Sort by Total Obligations desc
+            .sort((a, b) => b.rawObligations - a.rawObligations);  // Sort by Award Amount desc
 
         this.districtsTable = new DataTable('districts-table', {
             pagination: false,
@@ -377,7 +377,7 @@ class CancellationsDashboard {
             { name: 'Recipient', id: 'recipient' },
             { name: 'Start Date', id: 'start_date', width: '140px' },
             { name: 'End Date', id: 'end_date', width: '140px' },
-            { name: 'Total Obligations', id: 'obligations', currency: true },
+            { name: 'Award Amount', id: 'obligations', currency: true },
             { name: 'Total Outlays', id: 'outlays', currency: true },
             { name: 'Description', id: 'description', width: '250px' },
             { name: 'URL', id: 'url', hidden: true }
@@ -388,7 +388,7 @@ class CancellationsDashboard {
             row['District'],
             row['Recipient'],
             row['Start Date'],
-            row['Nominal End Date'],
+            row['End Date'],
             formatCurrency(row.totalObligations, false),
             formatCurrency(row.totalOutlays, false),
             truncateText(row['Description'], 200),
@@ -570,7 +570,7 @@ class CancellationsDashboard {
                         <span class="award-value">${award.Recipient}</span>
                     </div>
                     <div class="award-field">
-                        <span class="award-label">Total Obligations</span>
+                        <span class="award-label">Award Amount</span>
                         <span class="award-value">${obligations}</span>
                     </div>
                     <div class="award-field">
@@ -583,7 +583,7 @@ class CancellationsDashboard {
                     </div>
                     <div class="award-field">
                         <span class="award-label">End Date</span>
-                        <span class="award-value">${award['Nominal End Date']}</span>
+                        <span class="award-value">${award['End Date']}</span>
                     </div>
                     <div class="award-field award-field--full">
                         <span class="award-label">Description</span>

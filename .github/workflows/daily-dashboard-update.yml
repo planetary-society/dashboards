@@ -37,10 +37,17 @@ jobs:
         id: define_filename
         run: echo "FILENAME=data/nasa_cancelled_contracts_$(date +'%Y-%m-%d').csv" >> $GITHUB_OUTPUT
 
-      - name: Download latest CSV
+      - name: Download latest CSV from GitHub
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          curl -fL -o ${{ steps.define_filename.outputs.FILENAME }} \
-            "https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=csv"
+          # Find the latest CSV using gh api, download via raw URL (avoids 1MB API limit)
+          LATEST_FILE=$(gh api repos/planetary-society/nasa-cancellations-tracking/contents/consolidated \
+            --jq '[.[] | select(.name | endswith(".csv"))] | sort_by(.name) | last | .name')
+
+          echo "Latest source file: $LATEST_FILE"
+          curl -fL -o "${{ steps.define_filename.outputs.FILENAME }}" \
+            "https://raw.githubusercontent.com/planetary-society/nasa-cancellations-tracking/main/consolidated/${LATEST_FILE}"
 
       - name: Compare with previous and cleanup
         id: compare_files

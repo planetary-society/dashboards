@@ -56,25 +56,33 @@ jobs:
           DATA_FILE="data/nasa_cancelled_contracts_${{ steps.download.outputs.source_date }}.csv"
           mkdir -p docs/data/cancellations
 
+          echo "DATA_FILE: $DATA_FILE"
+          echo "DOCS_FILE: $DOCS_FILE"
+          echo "Data file exists: $(test -f "$DATA_FILE" && echo yes || echo no)"
+          echo "Docs file exists: $(test -f "$DOCS_FILE" && echo yes || echo no)"
+
           if [[ -f "$DOCS_FILE" ]] && cmp -s "$DATA_FILE" "$DOCS_FILE"; then
-            echo "No changes detected"
+            echo "No changes detected - files are identical"
             echo "changed=false" >> $GITHUB_OUTPUT
-            # Remove the just-downloaded file since it's identical
             rm "$DATA_FILE"
           else
             echo "Changes detected, updating files"
             echo "changed=true" >> $GITHUB_OUTPUT
 
             # Remove old cancellation CSVs from data dir, keep only the new one
-            # Note: Only targets nasa_cancelled_contracts_*.csv - leaves NASA-*.csv files untouched
             find data -name "nasa_cancelled_contracts_*.csv" ! -name "$(basename $DATA_FILE)" -delete
 
             # Update docs with new file
-            cp "$DATA_FILE" "$DOCS_FILE"
+            cp -v "$DATA_FILE" "$DOCS_FILE"
 
             # Update metadata
             echo "{\"lastUpdated\": \"${{ steps.download.outputs.source_date }}\"}" > docs/data/cancellations/metadata.json
-            echo "Updated metadata with date: ${{ steps.download.outputs.source_date }}"
+            echo "Updated metadata: ${{ steps.download.outputs.source_date }}"
+
+            # Verify files were updated
+            echo "Docs file after copy:"
+            head -1 "$DOCS_FILE"
+            ls -la docs/data/cancellations/
           fi
 
       - name: Commit & push changes
@@ -82,9 +90,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: daily data refresh"
-          file_pattern: |
-            data/*.csv
-            docs/data/**/*
+          file_pattern: "data/*.csv docs/data/cancellations/*"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

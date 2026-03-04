@@ -442,9 +442,9 @@ class AppropriationsGuide {
         const contractCount = ctx['Total Contract Awards'] || ctx.total_contract_count || contracts.length;
         const grantCount = ctx['Total Grant Awards'] || ctx.total_grant_count || grants.length;
 
-        const countsLine = `${escapeHtml(String(contractCount))} Contracts (${formatCurrency(contractTotal)} total potential value)`
-            + `<span class="separator">&middot;</span>`
-            + `${escapeHtml(String(grantCount))} Grants (${formatCurrency(grantTotal)} total potential value)`;
+        const countsLine = `${escapeHtml(String(contractCount))} Contracts`
+            + ` and `
+            + `${escapeHtml(String(grantCount))} Grants during this period`;
 
         // Store spending summary for sticky bar
         if (this.currentMember) {
@@ -486,15 +486,14 @@ class AppropriationsGuide {
         }).join('');
 
         container.innerHTML = `
-            <details class="spending-details" open>
-                <summary><i class="bi bi-rocket-takeoff"></i> Local NASA Science Impact ${distLabel} <i class="bi bi-chevron-down chevron"></i></summary>
+            <div class="spending-details">
                 <div class="spending-details-body">
-                    <div class="spending-summary">SPENDING IN ${fyParts}</div>
+                    <div class="spending-summary">NASA SCIENCE SPENDING: ${fyParts}</div>
                     <div class="award-counts">${countsLine}</div>
-                    <button class="awards-toggle-btn">See awards</button>
+                    <button class="awards-toggle-btn">View Active Awards</button>
                     <div class="award-list">${awardRows}</div>
                 </div>
-            </details>
+            </div>
         `;
     }
 

@@ -12,6 +12,19 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://dashboards.planetary.org/appropriations-guide/">
 
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Planetary Society">
+    <meta property="og:title" content="FY 2027 Appropriations Request Guide - The Planetary Society">
+    <meta property="og:description" content="Find your representative and get step-by-step instructions for filling out congressional appropriations request forms supporting NASA Science, NSF, and DOE Office of Science.">
+    <meta property="og:url" content="https://dashboards.planetary.org/appropriations-guide/">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@exploreplanets">
+    <meta name="twitter:title" content="FY 2027 Appropriations Request Guide - The Planetary Society">
+    <meta name="twitter:description" content="Find your representative and get step-by-step instructions for filling out congressional appropriations request forms supporting NASA Science, NSF, and DOE Office of Science.">
+
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="https://www.planetary.org/img/site/apple-touch-icon-180x180.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://www.planetary.org/img/site/favicon-32x32.png">
@@ -43,7 +56,9 @@
             padding: var(--space-8) var(--space-4) var(--space-4);
         }
 
-        .guide-hero h2 {
+        .guide-hero h1 {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-weight-semibold);
             margin-bottom: var(--space-3);
         }
 
@@ -581,6 +596,26 @@
             color: var(--blue-500);
         }
 
+        /* Loading state */
+        .loading {
+            text-align: center;
+            padding: var(--space-8);
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--gray-200);
+            border-top-color: var(--blue-500);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         /* Mobile adjustments for new components */
         @media (max-width: 768px) {
             .award-row-header {
@@ -604,7 +639,7 @@
     <header id="navbar" class="navbar"></header>
     <main class="dashboard">
         <div class="guide-hero">
-            <h2>FY 2027 Appropriations Request Guide</h2>
+            <h1>FY 2027 Appropriations Request Guide</h1>
             <p>Use this tool to find your representative and get step-by-step instructions for filling out congressional appropriations request forms supporting NASA Science, NSF, and DOE Office of Science.</p>
         </div>
         <div id="selector-container" class="selector-section">

@@ -45,9 +45,16 @@ class AppropriationsGuide {
     }
 
     async loadCSV() {
-        const csvText = await fetchText(DATA_URLS.csv);
-        this.members = parseCSV(csvText);
-        this.buildStateMap();
+        try {
+            const csvText = await fetchText(DATA_URLS.csv);
+            this.members = parseCSV(csvText);
+            this.buildStateMap();
+        } catch (err) {
+            console.error('Failed to load member data:', err);
+            document.getElementById('guide-content').innerHTML =
+                '<div class="warning-banner">Unable to load member data. Please try again later.</div>';
+            throw err; // Prevent initSelector from running
+        }
     }
 
     buildStateMap() {
@@ -172,9 +179,11 @@ class AppropriationsGuide {
         const deadline = member['Deadline'] || '';
         const comment = member['Comment'] || '';
 
-        // URL type detection
-        const isEmail = url.toLowerCase().startsWith('mailto:') || comment.toLowerCase().includes('email');
+        // URL type detection: form URL takes priority over email in comment
+        const isMailto = url.toLowerCase().startsWith('mailto:');
         const hasUrl = url && url.toLowerCase() !== 'link' && url.trim() !== '';
+        const isEmailOnly = !hasUrl && comment.toLowerCase().includes('email');
+        const isEmail = isMailto || isEmailOnly;
 
         // Parse deadline date (format "3/6/2026")
         const deadlinePassed = deadline && !isNaN(new Date(deadline).getTime()) && new Date(deadline) < new Date();
@@ -200,7 +209,7 @@ class AppropriationsGuide {
             formHtml = `<div class="warning-banner">
                 <i class="bi bi-exclamation-triangle"></i>
                 No FY 2027 appropriations request form currently tracked.
-                Visit <a href="https://www.house.gov/representatives/find-your-representative" target="_blank">${name}'s official website</a> to contact the office.
+                Visit <a href="${chamber === 'Senate' ? 'https://www.senate.gov/senators/senators-contact.htm' : 'https://www.house.gov/representatives/find-your-representative'}" target="_blank">${name}'s official website</a> to contact the office.
             </div>`;
         }
 

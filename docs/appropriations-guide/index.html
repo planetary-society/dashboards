@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FY 2027 Appropriations Request Guide - The Planetary Society</title>
+    <meta name="description" content="Find your representative and get step-by-step instructions for filling out congressional appropriations request forms supporting NASA Science, NSF, and DOE Office of Science.">
+    <meta name="author" content="Casey Dreier/The Planetary Society">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#037cc2">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://dashboards.planetary.org/appropriations-guide/">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.planetary.org/img/site/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.planetary.org/img/site/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.planetary.org/img/site/favicon-16x16.png">
+    <link rel="shortcut icon" href="https://www.planetary.org/img/site/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Tom Select CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css" rel="stylesheet">
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="../shared/css/variables.css">
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="../shared/css/components.css">
+    <link rel="stylesheet" href="../shared/css/layout.css">
+
+    <style>
+        .guide-hero {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-8) var(--space-4) var(--space-4);
+        }
+
+        .guide-hero h2 {
+            margin-bottom: var(--space-3);
+        }
+
+        .guide-hero p {
+            color: var(--gray-600);
+            line-height: var(--line-height-relaxed);
+        }
+
+        .selector-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-4);
+        }
+
+        .selector-row {
+            display: flex;
+            gap: var(--space-4);
+        }
+
+        .selector-field {
+            flex: 1;
+        }
+
+        .selector-field label {
+            font-weight: var(--font-weight-medium);
+            margin-bottom: var(--space-1);
+            display: block;
+            font-size: var(--text-sm);
+            color: var(--gray-600);
+        }
+
+        .member-header {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-4);
+            background: var(--color-surface);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .member-header h2 {
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-2);
+        }
+
+        .deadline {
+            color: var(--gray-600);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-3);
+        }
+
+        .form-button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            background: var(--blue-500);
+            color: white;
+            padding: var(--space-3) var(--space-5);
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: var(--font-weight-medium);
+            transition: background var(--duration-normal) var(--ease-out),
+                        transform var(--duration-normal) var(--ease-out),
+                        box-shadow var(--duration-normal) var(--ease-out);
+        }
+
+        .form-button:hover {
+            background: var(--blue-600);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-button--email {
+            background: var(--purple-500);
+        }
+
+        .form-button--email:hover {
+            background: var(--purple-600);
+        }
+
+        .warning-banner {
+            background: var(--orange-50);
+            border-left: 4px solid var(--orange-500);
+            padding: var(--space-3) var(--space-4);
+            border-radius: var(--border-radius-sm);
+            color: var(--gray-700);
+            margin-bottom: var(--space-3);
+        }
+
+        .warning-banner--subtle {
+            background: var(--gray-50);
+            border-left-color: var(--gray-400);
+        }
+
+        .warning-banner i {
+            margin-right: var(--space-2);
+        }
+
+        .warning-banner a {
+            color: var(--blue-500);
+        }
+
+        @media (max-width: 768px) {
+            .selector-row {
+                flex-direction: column;
+            }
+
+            .guide-hero {
+                padding: var(--space-4) var(--space-3) var(--space-2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="navbar" class="navbar"></header>
+    <main class="dashboard">
+        <div class="guide-hero">
+            <h2>FY 2027 Appropriations Request Guide</h2>
+            <p>Use this tool to find your representative and get step-by-step instructions for filling out congressional appropriations request forms supporting NASA Science, NSF, and DOE Office of Science.</p>
+        </div>
+        <div id="selector-container" class="selector-section">
+            <div class="selector-row">
+                <div class="selector-field">
+                    <label for="state-select">State</label>
+                    <select id="state-select" placeholder="Select a state..."></select>
+                </div>
+                <div class="selector-field">
+                    <label for="district-select">Representative</label>
+                    <select id="district-select" placeholder="Select state first..."></select>
+                </div>
+            </div>
+        </div>
+        <div id="member-header" class="member-header" style="display:none;"></div>
+        <div id="spending-context" style="display:none;"></div>
+        <div id="guide-content"></div>
+    </main>
+
+    <!-- Tom Select -->
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+
+    <!-- Dashboard Application -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

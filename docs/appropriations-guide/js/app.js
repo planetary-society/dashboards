@@ -107,6 +107,22 @@ class AppropriationsGuide {
                 awardRow.classList.toggle('expanded');
             }
 
+            // Info icon tooltip toggle (for mobile tap support)
+            const infoBtn = e.target.closest('.info-icon-btn');
+            if (infoBtn) {
+                const infoContainer = infoBtn.closest('.confidence-info');
+                if (infoContainer) {
+                    const isActive = infoContainer.classList.contains('active');
+                    document.querySelectorAll('.confidence-info.active').forEach(el => el.classList.remove('active'));
+                    if (!isActive) infoContainer.classList.add('active');
+                }
+                return;
+            }
+            // Close any open tooltips when clicking outside
+            if (!e.target.closest('.confidence-info')) {
+                document.querySelectorAll('.confidence-info.active').forEach(el => el.classList.remove('active'));
+            }
+
             // Instructions toggle
             const instrToggle = e.target.closest('.instructions-toggle');
             if (instrToggle) {
@@ -365,7 +381,17 @@ class AppropriationsGuide {
             if (!response.ok) throw new Error('Not found');
             const guideData = await response.json();
             this.renderSpendingContext(guideData.nasa_context);
-            this.renderFormWalkthrough(guideData);
+
+            // Fall back to generic form_analysis if member JSON has empty/null form_analysis
+            if (guideData.form_analysis && guideData.form_analysis.sections?.length) {
+                this.renderFormWalkthrough(guideData);
+            } else {
+                console.log(`No form_analysis for ${guideKey}, using generic form walkthrough`);
+                const genericResponse = await fetch(`${DATA_URLS.guidesBase}generic.json`);
+                if (!genericResponse.ok) throw new Error('Generic not found');
+                const genericData = await genericResponse.json();
+                this.renderFormWalkthrough(genericData);
+            }
         } catch (err) {
             console.log(`No guide for ${guideKey}, using generic directions`);
             try {
@@ -465,18 +491,7 @@ class AppropriationsGuide {
 
         let html = '<div class="form-walkthrough">';
 
-        // Confidence legend — only show if any field has confidence
         const sections = fa.sections || [];
-        const hasConfidence = sections.some(s =>
-            (s.fields || []).some(f => f.confidence && !f.is_constituent_info && f.draft_value)
-        );
-        if (hasConfidence) {
-            html += `<div class="confidence-legend">
-                <span class="confidence-legend-item"><i class="bi bi-check-circle-fill confidence-icon confidence-high"></i> High confidence &mdash; use as-is</span>
-                <span class="confidence-legend-item"><i class="bi bi-circle-fill confidence-icon confidence-medium"></i> Medium &mdash; review before using</span>
-                <span class="confidence-legend-item"><i class="bi bi-flag-fill confidence-icon confidence-low-icon"></i> Low &mdash; edit to fit your situation</span>
-            </div>`;
-        }
 
         sections.forEach((section, sIdx) => {
             html += `<div class="walkthrough-section" id="section-${sIdx}">`;
@@ -682,20 +697,7 @@ class AppropriationsGuide {
 
         html += `<span class="field-type-prefix field-type-prefix--${actionType}">${typePrefix}:</span>`;
         html += `<span class="field-label">${escapeHtml(field.label || '')}</span>`;
-        if (field.required) {
-            html += '<span class="required-badge">Required</span>';
-        }
 
-        // Confidence icon (only when has draft and not constituent)
-        if (hasDraft && !isConstituent && confidence) {
-            if (confidence === 'high') {
-                html += '<i class="bi bi-check-circle-fill confidence-icon confidence-high" aria-label="High confidence"></i>';
-            } else if (confidence === 'medium') {
-                html += '<i class="bi bi-circle-fill confidence-icon confidence-medium" aria-label="Medium confidence"></i>';
-            } else if (confidence === 'low') {
-                html += '<i class="bi bi-flag-fill confidence-icon confidence-low-icon" aria-label="Low confidence"></i>';
-            }
-        }
         html += '</div>';
 
         // Field instruction
@@ -703,9 +705,27 @@ class AppropriationsGuide {
         html += this.getFieldInstruction(field);
         html += '</div>';
 
-        // Rationale — always visible as subtle footnote
-        if (field.rationale && !isConstituent) {
-            html += `<span class="rationale-text">${escapeHtml(field.rationale)}</span>`;
+        // Confidence bars + info icon (only when has draft and not constituent)
+        if (hasDraft && !isConstituent && confidence) {
+            const barCount = confidence === 'high' ? 3 : confidence === 'medium' ? 2 : 1;
+            const barsHtml = Array(barCount).fill('<div class="confidence-bar"></div>').join('');
+
+            let infoHtml = '';
+            if (field.rationale) {
+                const rationaleText = `AI generated result with the following justification: ${escapeHtml(field.rationale)}`;
+                infoHtml = `<div class="confidence-info">
+                    <button class="info-icon-btn" type="button" aria-label="View AI justification">
+                        <i class="bi bi-info-circle"></i>
+                    </button>
+                    <div class="info-tooltip" role="tooltip">${rationaleText}</div>
+                </div>`;
+            }
+
+            html += `<div class="confidence-display">
+                <span class="confidence-label">Confidence</span>
+                <div class="confidence-bars confidence-bars--${confidence}">${barsHtml}</div>
+                ${infoHtml}
+            </div>`;
         }
 
         html += '</div>';
@@ -720,9 +740,8 @@ class AppropriationsGuide {
             <p class="constituent-group-instruction">Fill in the following fields with your personal/constituent information:</p>
             <ul class="constituent-field-list">
                 ${fields.map(f => {
-                    const required = f.required ? '<span class="required-badge">Required</span>' : '';
                     const helpText = f.help_text ? ` — <span class="constituent-help">${escapeHtml(f.help_text)}</span>` : '';
-                    return `<li>${escapeHtml(f.label || '')} ${required}${helpText}</li>`;
+                    return `<li>${escapeHtml(f.label || '')}${helpText}</li>`;
                 }).join('')}
             </ul>
             <div class="org-details-note">
@@ -766,7 +785,7 @@ class AppropriationsGuide {
         // Fields with draft values by type
         switch (type) {
             case 'text':
-                return `Type: &ldquo;<strong>${escapeHtml(field.draft_value)}</strong>&rdquo;`;
+                return `Enter: &ldquo;<strong>${escapeHtml(field.draft_value)}</strong>&rdquo;`;
 
             case 'dropdown':
                 return `Select: &ldquo;<strong>${escapeHtml(field.draft_value)}</strong>&rdquo;`;

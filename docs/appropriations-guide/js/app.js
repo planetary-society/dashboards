@@ -40,8 +40,45 @@ class AppropriationsGuide {
 
     async init() {
         new Navbar('navbar', { title: 'FY 2027 Appropriations Request Guide' }).render();
+        this.initEventDelegation();
         await this.loadCSV();
         this.initSelector();
+    }
+
+    initEventDelegation() {
+        // Event delegation for dynamically generated elements
+        const handleClick = (e) => {
+            // Award row expand/collapse
+            const awardRow = e.target.closest('.award-row');
+            if (awardRow && !e.target.closest('.award-details a')) {
+                awardRow.classList.toggle('expanded');
+            }
+
+            // Rationale toggle
+            const rationaleToggle = e.target.closest('.rationale-toggle');
+            if (rationaleToggle) {
+                e.preventDefault();
+                rationaleToggle.parentElement.classList.toggle('open');
+            }
+
+            // Copy button
+            const copyBtn = e.target.closest('.copy-btn');
+            if (copyBtn) {
+                const pre = copyBtn.previousElementSibling;
+                if (pre) {
+                    navigator.clipboard.writeText(pre.textContent).then(() => {
+                        copyBtn.textContent = 'Copied!';
+                        setTimeout(() => { copyBtn.textContent = 'Copy'; }, 2000);
+                    }).catch(() => {
+                        copyBtn.textContent = 'Copy failed';
+                        setTimeout(() => { copyBtn.textContent = 'Copy'; }, 2000);
+                    });
+                }
+            }
+        };
+
+        document.getElementById('spending-context').addEventListener('click', handleClick);
+        document.getElementById('guide-content').addEventListener('click', handleClick);
     }
 
     async loadCSV() {
@@ -186,7 +223,8 @@ class AppropriationsGuide {
         const isEmail = isMailto || isEmailOnly;
 
         // Parse deadline date (format "3/6/2026")
-        const deadlinePassed = deadline && !isNaN(new Date(deadline).getTime()) && new Date(deadline) < new Date();
+        const deadlineDate = deadline ? new Date(deadline) : null;
+        const deadlinePassed = deadlineDate && !isNaN(deadlineDate.getTime()) && deadlineDate < new Date();
 
         let formHtml = '';
         if (isEmail) {
@@ -241,11 +279,11 @@ class AppropriationsGuide {
 
         // Build guide key: "TX-20_castro" from "State / District" + lowercase last name
         const sd = member['State / District'];
-        const lastName = member['Last Name'].toLowerCase().replace(/[^a-z]/g, '');
+        const lastName = (member['Last Name'] || '').toLowerCase().replace(/[^a-z]/g, '');
         const guideKey = `${sd}_${lastName}`;
 
         try {
-            const response = await fetch(`${DATA_URLS.guidesBase}${guideKey}.json`);
+            const response = await fetch(`${DATA_URLS.guidesBase}${encodeURIComponent(guideKey)}.json`);
             if (!response.ok) throw new Error('Not found');
             const guideData = await response.json();
             this.renderSpendingContext(guideData.nasa_context);
@@ -295,7 +333,7 @@ class AppropriationsGuide {
             const locationStr = city && st ? `${escapeHtml(city)}, ${escapeHtml(st)}` : escapeHtml(city || st);
             const summaryText = award.generated_award_summary || truncateText(award.description, 200);
 
-            return `<div class="award-row" onclick="this.classList.toggle('expanded')">
+            return `<div class="award-row">
                 <div class="award-row-header">
                     <span class="award-type-badge ${badgeClass}">${badgeLabel}</span>
                     <span class="award-recipient">${escapeHtml(award.recipient_name || '')}</span>
@@ -355,7 +393,7 @@ class AppropriationsGuide {
 
             const fields = section.fields || [];
             fields.forEach((field, fIdx) => {
-                html += this.renderField(field, sIdx, fIdx);
+                html += this.renderField(field);
             });
 
             html += '</div>';
@@ -365,7 +403,7 @@ class AppropriationsGuide {
         container.innerHTML = html;
     }
 
-    renderField(field, sectionNum, fieldNum) {
+    renderField(field) {
         const isConstituent = field.is_constituent_info === true;
         const hasDraft = field.draft_value != null && field.draft_value !== '';
         const confidence = field.confidence || null;
@@ -404,7 +442,7 @@ class AppropriationsGuide {
         // Rationale (only when has rationale)
         if (field.rationale && !isConstituent) {
             html += `<div class="rationale">
-                <button class="rationale-toggle" onclick="this.parentElement.classList.toggle('open')">
+                <button class="rationale-toggle">
                     <i class="bi bi-info-circle"></i>
                 </button>
                 <span class="rationale-text">${escapeHtml(field.rationale)}</span>
@@ -456,7 +494,7 @@ class AppropriationsGuide {
                 return `Paste the following:
                     <div class="copyable-block">
                         <pre>${escapeHtml(field.draft_value)}</pre>
-                        <button class="copy-btn" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent).then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy', 2000); })">Copy</button>
+                        <button class="copy-btn">Copy</button>
                     </div>`;
 
             case 'email':
@@ -586,7 +624,7 @@ class AppropriationsGuide {
             }
 
             // List items: "* item"
-            const listMatch = line.match(/^\* (.+)$/);
+            const listMatch = line.match(/^[\*\-] (.+)$/);
             if (listMatch) {
                 flushParagraph();
                 if (!inList) { html += '<ul>'; inList = true; }
@@ -618,22 +656,13 @@ class AppropriationsGuide {
 
     parseInlineMarkdown(text) {
         if (!text) return '';
-
-        // Bold: **text** -> <strong>
-        text = text.replace(/\*\*(.+?)\*\*/g, (_, content) => `<strong>${escapeHtml(content)}</strong>`);
-
-        // Italic (template placeholders): *text* -> <span class="fill-in">
-        text = text.replace(/\*(.+?)\*/g, (_, content) => `<span class="fill-in">${escapeHtml(content)}</span>`);
-
-        // Links: [text](url) -> <a>
-        text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, linkText, url) => {
-            return `<a href="${escapeHtml(url)}" target="_blank">${escapeHtml(linkText)}</a>`;
-        });
-
-        // Escape remaining plain text segments that aren't already wrapped in HTML tags
-        // We need to be careful not to double-escape text already inside tags
-        // Since bold/italic/links have already been escaped inside, just return as-is
-        // for any remaining text that doesn't match patterns (already safe from markdown source)
+        // Escape everything first to prevent XSS
+        text = escapeHtml(text);
+        // Then apply formatting on the safe string (content is already escaped)
+        text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        text = text.replace(/\*(.+?)\*/g, '<span class="fill-in">$1</span>');
+        // Links: [text](url) - both text and url are already escaped by escapeHtml
+        text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
         return text;
     }
 }

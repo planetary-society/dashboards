@@ -831,6 +831,48 @@
             background: var(--gray-100);
         }
 
+        /* Beta badge */
+        .beta-badge {
+            display: inline-block;
+            font-size: var(--text-xs);
+            font-weight: var(--font-weight-semibold);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing-wide);
+            color: var(--purple-700);
+            background: var(--purple-100);
+            border: 1px solid var(--purple-300);
+            padding: 2px 8px;
+            border-radius: var(--border-radius-full);
+            vertical-align: middle;
+            position: relative;
+            top: -2px;
+        }
+
+        /* AI-generated disclaimer */
+        .ai-disclaimer {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+            padding: var(--space-3) var(--space-4);
+            background: var(--purple-50);
+            border-left: 3px solid var(--purple-400);
+            border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+            font-size: var(--text-sm);
+            color: var(--gray-600);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: var(--space-6);
+        }
+
+        .ai-disclaimer i {
+            color: var(--purple-500);
+            font-size: var(--text-base);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .ai-disclaimer strong {
+            color: var(--gray-800);
+        }
 
         /* Generic Fallback */
         .generic-guide {
@@ -1117,9 +1159,9 @@
             <a href="#" id="back-link" class="back-link"><i class="bi bi-arrow-left"></i> Back</a>
         </div>
         <div class="guide-hero">
-            <h1>FY 2027 Congressional Appropriations Request Guide</h1>
+            <h1>FY 2027 Congressional Appropriations Request Guide <span class="beta-badge">Beta</span></h1>
             <p>Each year, many members of Congress request  submit formal funding requests to the Appropriations Committee for specific dollar amounts for federal programs.</p>
-            <p>Before doing so, they often ask their constituents to submit specific funding requests signals real district-level support and gives the member political cover to champion that funding. This tool helps you find your representative and walks you through filling out their appropriations request form for NASA Science, NSF, and DOE Office of Science programs in FY 2027.</p>
+            <p>Before doing so, they often ask their constituents to submit specific funding requests to gather information about what's important to them.</p><p>This tool helps you find your representative and walks you through filling out their appropriations request form for NASA Science in FY 2027.</p>
         </div>
         <div id="selector-container" class="selector-section">
             <div class="selector-row">

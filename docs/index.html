@@ -134,6 +134,22 @@
             color: var(--blue-500);
         }
 
+        .beta-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #7e22ce;
+            background: #f3e8ff;
+            border: 1px solid #d8b4fe;
+            padding: 2px 7px;
+            border-radius: 9999px;
+            vertical-align: middle;
+            position: relative;
+            top: -2px;
+        }
+
         @media (max-width: 768px) {
             .landing-hero {
                 padding: var(--space-6) var(--space-4);
@@ -199,20 +215,18 @@
                 </div>
             </a>
             <!-- FY 2027 Appropriations Request Guide -->
-            <!--<a href="appropriations-guide/" class="dashboard-card">
-                <div class="dashboard-card-body" style="padding-top: var(--space-8);">
-                    <h2 class="dashboard-card-title">
-                        <i class="bi bi-pencil-square" style="color: var(--purple-500);"></i>
-                        FY 2027 Appropriations Request Guide
-                    </h2>
+            <a href="appropriations-guide/" class="dashboard-card">
+                <img src="img/tps-appropriations-guides-dashboard.png" alt="FY 2027 Appropriations Request Guide" class="dashboard-card-image">
+                <div class="dashboard-card-body">
+                    <h2 class="dashboard-card-title">FY 2027 Appropriations Request Guide <span class="beta-badge">Beta</span></h2>
                     <p class="dashboard-card-description">
-                        Step-by-step guide for filling out congressional appropriations request forms. Find your representative and get personalized instructions for requesting NASA Science, NSF, and DOE funding.
+                        Step-by-step guide for filling out congressional appropriations request forms. Find your representative and get personalized instructions for requesting NASA Science.
                     </p>
                     <span class="dashboard-card-arrow">
                         Get Started <i class="bi bi-arrow-right"></i>
                     </span>
                 </div>
-            </a>-->
+            </a>
         </div>
     </main>
 

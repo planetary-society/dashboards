@@ -38,6 +38,10 @@ class AppropriationsGuide {
         this.stateSelect = null;
         this.districtSelect = null;
         this.router = null;
+        this.currentMember = null;
+        this.stickyBar = null;
+        this.stickyObserver = null;
+        this.sectionObserver = null;
     }
 
     async init() {
@@ -63,9 +67,13 @@ class AppropriationsGuide {
         document.getElementById('selector-container').style.display = '';
         document.getElementById('back-nav').style.display = 'none';
         document.getElementById('member-header').style.display = 'none';
-        document.getElementById('spending-context').style.display = 'none';
-        document.getElementById('spending-context').innerHTML = '';
+        document.getElementById('section-nav').style.display = 'none';
         document.getElementById('guide-content').innerHTML = '';
+        this.removeStickyBar();
+        if (this.sectionObserver) {
+            this.sectionObserver.disconnect();
+            this.sectionObserver = null;
+        }
         this.stateSelect.value = '';
         this.districtSelect.innerHTML = '<option value="">Select state first...</option>';
         this.districtSelect.disabled = true;
@@ -85,17 +93,28 @@ class AppropriationsGuide {
                 }
             }
 
+            // Section nav click to scroll
+            const sectionStep = e.target.closest('.section-step');
+            if (sectionStep) {
+                const idx = sectionStep.dataset.section;
+                const target = document.getElementById(`section-${idx}`);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
             // Award row expand/collapse
             const awardRow = e.target.closest('.award-row');
             if (awardRow && !e.target.closest('.award-details a')) {
                 awardRow.classList.toggle('expanded');
             }
 
-            // Rationale toggle
-            const rationaleToggle = e.target.closest('.rationale-toggle');
-            if (rationaleToggle) {
-                e.preventDefault();
-                rationaleToggle.parentElement.classList.toggle('open');
+            // Instructions toggle
+            const instrToggle = e.target.closest('.instructions-toggle');
+            if (instrToggle) {
+                const instrText = instrToggle.previousElementSibling;
+                if (instrText) {
+                    const isTruncated = instrText.classList.toggle('truncated');
+                    instrToggle.textContent = isTruncated ? 'Read more' : 'Show less';
+                }
             }
 
             // Copy button
@@ -114,8 +133,7 @@ class AppropriationsGuide {
             }
         };
 
-        document.getElementById('spending-context').addEventListener('click', handleClick);
-        document.getElementById('guide-content').addEventListener('click', handleClick);
+        document.querySelector('main.dashboard').addEventListener('click', handleClick);
     }
 
     async loadCSV() {
@@ -191,7 +209,7 @@ class AppropriationsGuide {
     onStateChange(stateAbbr) {
         // Hide member header and guide content
         document.getElementById('member-header').style.display = 'none';
-        document.getElementById('spending-context').style.display = 'none';
+        document.getElementById('section-nav').style.display = 'none';
         document.getElementById('guide-content').innerHTML = '';
 
         if (!stateAbbr || !this.stateMap[stateAbbr]) {
@@ -247,6 +265,7 @@ class AppropriationsGuide {
         this.showResults();
         this.renderMemberHeader(member);
         await this.loadGuide(member);
+        this.createStickyBar();
     }
 
     renderMemberHeader(member) {
@@ -268,7 +287,10 @@ class AppropriationsGuide {
 
         // Parse deadline date (format "3/6/2026")
         const deadlineDate = deadline ? new Date(deadline) : null;
-        const deadlinePassed = deadlineDate && !isNaN(deadlineDate.getTime()) && deadlineDate < new Date();
+        const now = new Date();
+        const deadlinePassed = deadlineDate && !isNaN(deadlineDate.getTime()) && deadlineDate < now;
+        const msInWeek = 7 * 24 * 60 * 60 * 1000;
+        const deadlineUrgent = deadlineDate && !isNaN(deadlineDate.getTime()) && !deadlinePassed && (deadlineDate - now) <= msInWeek;
 
         // Action button (form or email) - displayed inline on desktop
         let actionHtml = '';
@@ -307,7 +329,9 @@ class AppropriationsGuide {
         // Inline deadline (only when not passed)
         let inlineDeadlineHtml = '';
         if (deadline && !deadlinePassed) {
-            inlineDeadlineHtml = `<p class="deadline"><i class="bi bi-calendar-event"></i> Deadline: ${escapeHtml(deadline)}</p>`;
+            const urgentClass = deadlineUrgent ? ' deadline--urgent' : '';
+            const urgentLabel = deadlineUrgent ? '<span class="deadline-label">Due soon</span>' : '';
+            inlineDeadlineHtml = `<p class="deadline${urgentClass}"><i class="bi bi-calendar-event"></i> Deadline: ${escapeHtml(deadline)}${urgentLabel}</p>`;
         }
 
         container.innerHTML = `
@@ -319,16 +343,17 @@ class AppropriationsGuide {
                 ${actionHtml ? `<div class="member-header-action">${actionHtml}</div>` : ''}
             </div>
             ${warningHtml}
+            <div id="spending-details-slot"></div>
         `;
         container.style.display = 'block';
+
+        // Store member info for sticky bar
+        this.currentMember = { name: `${prefix} ${name}`, url, isEmail, spendingSummary: null };
     }
 
     async loadGuide(member) {
         const guideContent = document.getElementById('guide-content');
-        const spendingContext = document.getElementById('spending-context');
         guideContent.innerHTML = '<div class="loading"><div class="loading-spinner"></div></div>';
-        spendingContext.innerHTML = '';
-        spendingContext.style.display = 'none';
 
         // Build guide key: "TX-20_castro" from "State / District" + lowercase last name
         const sd = member['State / District'];
@@ -347,12 +372,6 @@ class AppropriationsGuide {
                 const genericResponse = await fetch(`${DATA_URLS.guidesBase}generic.json`);
                 if (!genericResponse.ok) throw new Error('Generic not found');
                 const genericData = await genericResponse.json();
-                const memberName = member['Member'] || '';
-                if (memberName && genericData.form_analysis) {
-                    genericData.form_analysis.form_instructions_text =
-                        `A detailed form guide for ${memberName}'s office is not yet available. Use these general directions to fill out the appropriations request form.\n\n` +
-                        (genericData.form_analysis.form_instructions_text || '');
-                }
                 this.renderFormWalkthrough(genericData);
             } catch (genericErr) {
                 console.error('Failed to load generic guide:', genericErr);
@@ -363,7 +382,8 @@ class AppropriationsGuide {
 
     renderSpendingContext(ctx) {
         if (!ctx) return;
-        const container = document.getElementById('spending-context');
+        const container = document.getElementById('spending-details-slot');
+        if (!container) return;
 
         // Build FY spending line
         const fyParts = Object.entries(ctx.spending_by_year || {})
@@ -382,6 +402,11 @@ class AppropriationsGuide {
         const countsLine = `${escapeHtml(String(contractCount))} Contracts (${formatCurrency(contractTotal)} total potential value)`
             + `<span class="separator">&middot;</span>`
             + `${escapeHtml(String(grantCount))} Grants (${formatCurrency(grantTotal)} total potential value)`;
+
+        // Store spending summary for sticky bar
+        if (this.currentMember) {
+            this.currentMember.spendingSummary = { fyParts, contractCount, grantCount, contractTotal, grantTotal };
+        }
 
         // District label
         const stateCode = escapeHtml(ctx.state_code || '');
@@ -402,6 +427,7 @@ class AppropriationsGuide {
 
             return `<div class="award-row">
                 <div class="award-row-header">
+                    <i class="bi bi-chevron-right award-chevron"></i>
                     <span class="award-type-badge ${badgeClass}">${badgeLabel}</span>
                     <span class="award-recipient">${escapeHtml(award.recipient_name || '')}</span>
                     <span class="award-location">${locationStr}</span>
@@ -417,13 +443,16 @@ class AppropriationsGuide {
         }).join('');
 
         container.innerHTML = `
-            <h3><i class="bi bi-rocket-takeoff"></i> NASA Science in ${distLabel}</h3>
-            <div class="spending-summary">SPENDING IN ${fyParts}</div>
-            <div class="award-counts">${countsLine}</div>
-            <button class="awards-toggle-btn">See awards</button>
-            <div class="award-list">${awardRows}</div>
+            <details class="spending-details" open>
+                <summary><i class="bi bi-rocket-takeoff"></i> Local NASA Science Impact ${distLabel} <i class="bi bi-chevron-down chevron"></i></summary>
+                <div class="spending-details-body">
+                    <div class="spending-summary">SPENDING IN ${fyParts}</div>
+                    <div class="award-counts">${countsLine}</div>
+                    <button class="awards-toggle-btn">See awards</button>
+                    <div class="award-list">${awardRows}</div>
+                </div>
+            </details>
         `;
-        container.style.display = 'block';
     }
 
     renderFormWalkthrough(guideData) {
@@ -436,22 +465,21 @@ class AppropriationsGuide {
 
         let html = '<div class="form-walkthrough">';
 
-        // Optional form header and instructions
-        if (fa.form_header_text || fa.form_instructions_text) {
-            html += '<div class="form-intro">';
-            if (fa.form_header_text) {
-                html += `<h3>${escapeHtml(fa.form_header_text)}</h3>`;
-            }
-            if (fa.form_instructions_text) {
-                html += `<p class="form-instructions">${escapeHtml(fa.form_instructions_text)}</p>`;
-            }
-            html += '</div>';
+        // Confidence legend — only show if any field has confidence
+        const sections = fa.sections || [];
+        const hasConfidence = sections.some(s =>
+            (s.fields || []).some(f => f.confidence && !f.is_constituent_info && f.draft_value)
+        );
+        if (hasConfidence) {
+            html += `<div class="confidence-legend">
+                <span class="confidence-legend-item"><i class="bi bi-check-circle-fill confidence-icon confidence-high"></i> High confidence &mdash; use as-is</span>
+                <span class="confidence-legend-item"><i class="bi bi-circle-fill confidence-icon confidence-medium"></i> Medium &mdash; review before using</span>
+                <span class="confidence-legend-item"><i class="bi bi-flag-fill confidence-icon confidence-low-icon"></i> Low &mdash; edit to fit your situation</span>
+            </div>`;
         }
 
-        // Sections
-        const sections = fa.sections || [];
         sections.forEach((section, sIdx) => {
-            html += '<div class="walkthrough-section">';
+            html += `<div class="walkthrough-section" id="section-${sIdx}">`;
             if (section.header) {
                 html += `<h3>${escapeHtml(section.header)}</h3>`;
             }
@@ -459,16 +487,172 @@ class AppropriationsGuide {
                 html += `<p class="section-description">${escapeHtml(section.description)}</p>`;
             }
 
+            // Section field summary
             const fields = section.fields || [];
-            fields.forEach((field, fIdx) => {
-                html += this.renderField(field);
-            });
+            const preFilled = fields.filter(f => !f.is_constituent_info && f.draft_value).length;
+            const personal = fields.filter(f => f.is_constituent_info).length;
+            const needsReview = fields.filter(f => !f.is_constituent_info && f.draft_value && (f.confidence === 'low' || f.confidence === 'medium')).length;
+            if (fields.length > 0) {
+                let summaryParts = [];
+                if (preFilled > 0) summaryParts.push(`<span class="section-summary-item">${preFilled} pre-filled</span>`);
+                if (personal > 0) summaryParts.push(`<span class="section-summary-item">${personal} your info</span>`);
+                if (needsReview > 0) summaryParts.push(`<span class="section-summary-item">${needsReview} to review</span>`);
+                if (summaryParts.length > 0) {
+                    html += `<div class="section-summary">${summaryParts.join('<span class="separator">&middot;</span>')}</div>`;
+                }
+            }
+            // Group consecutive constituent fields into a single condensed box
+            let i = 0;
+            while (i < fields.length) {
+                if (fields[i].is_constituent_info) {
+                    // Collect consecutive constituent fields
+                    const constituentFields = [];
+                    while (i < fields.length && fields[i].is_constituent_info) {
+                        constituentFields.push(fields[i]);
+                        i++;
+                    }
+                    html += this.renderConstituentGroup(constituentFields);
+                } else {
+                    html += this.renderField(fields[i]);
+                    i++;
+                }
+            }
 
             html += '</div>';
         });
 
         html += '</div>';
         container.innerHTML = html;
+
+        // Build section progress bar
+        this.buildSectionNav(sections);
+    }
+
+    buildSectionNav(sections) {
+        const nav = document.getElementById('section-nav');
+        if (!nav || sections.length < 2) {
+            if (nav) nav.style.display = 'none';
+            return;
+        }
+
+        const steps = sections.map((section, idx) => {
+            const hasUserFields = (section.fields || []).some(f => f.is_constituent_info);
+            const activeClass = idx === 0 ? ' active' : '';
+            const userClass = hasUserFields ? ' has-user-fields' : '';
+            return `<button class="section-step${activeClass}${userClass}" data-section="${idx}">${escapeHtml(section.header || `Section ${idx + 1}`)}</button>`;
+        }).join('');
+
+        nav.innerHTML = `<div class="section-progress" role="navigation" aria-label="Form sections">${steps}</div>`;
+        nav.style.display = 'block';
+
+        // IntersectionObserver to track active section
+        this.initSectionObserver(sections.length);
+    }
+
+    initSectionObserver(count) {
+        if (this.sectionObserver) this.sectionObserver.disconnect();
+
+        const steps = document.querySelectorAll('.section-step');
+        this.sectionObserver = new IntersectionObserver((entries) => {
+            for (const entry of entries) {
+                if (entry.isIntersecting) {
+                    const idx = entry.target.id.replace('section-', '');
+                    steps.forEach(s => s.classList.remove('active'));
+                    const activeStep = document.querySelector(`.section-step[data-section="${idx}"]`);
+                    if (activeStep) {
+                        activeStep.classList.add('active');
+                        // Horizontal-only scroll within the progress bar (never the page)
+                        const bar = activeStep.parentElement;
+                        if (bar) {
+                            bar.scrollTo({
+                                left: activeStep.offsetLeft - (bar.offsetWidth - activeStep.offsetWidth) / 2,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                }
+            }
+        }, { rootMargin: '-80px 0px -60% 0px' });
+
+        for (let i = 0; i < count; i++) {
+            const section = document.getElementById(`section-${i}`);
+            if (section) this.sectionObserver.observe(section);
+        }
+    }
+
+    createStickyBar() {
+        this.removeStickyBar();
+        if (!this.currentMember) return;
+
+        const { name, url, isEmail } = this.currentMember;
+        const hasUrl = url && url.toLowerCase() !== 'link' && url.trim() !== '';
+
+        let actionHtml = '';
+        if (isEmail) {
+            const email = url.startsWith('mailto:') ? url.replace('mailto:', '') : '';
+            if (email) {
+                actionHtml = `<a href="mailto:${escapeHtml(email)}" class="form-button form-button--email"><i class="bi bi-envelope"></i> Email</a>`;
+            }
+        } else if (hasUrl) {
+            actionHtml = `<a href="${escapeHtml(url)}" target="_blank" rel="noopener" class="form-button"><i class="bi bi-box-arrow-up-right"></i> Open Form</a>`;
+        }
+
+        if (!actionHtml) return;
+
+        // Build spending summary for sticky bar
+        let spendingHtml = '';
+        const spending = this.currentMember.spendingSummary;
+        if (spending) {
+            // FY spending line: "NASA SCIENCE SPENDING: FY23 $72.4M · FY24 $77.9M · FY25 $119.6M"
+            spendingHtml += `<span class="sticky-spending">NASA SCIENCE SPENDING: ${spending.fyParts}</span>`;
+            // Awards line: "244 ACTIVE AWARDS WORTH $1.2B"
+            const totalAwards = spending.contractCount + spending.grantCount;
+            const totalValue = formatCurrency(spending.contractTotal + spending.grantTotal);
+            spendingHtml += `<span class="sticky-awards">${totalAwards} active awards worth ${totalValue}</span>`;
+        }
+
+        const bar = document.createElement('div');
+        bar.className = 'sticky-form-bar';
+        bar.setAttribute('aria-label', 'Quick access to form link');
+        bar.innerHTML = `<div class="sticky-form-bar-inner">
+            <div class="sticky-member-info">
+                <span class="member-name">${escapeHtml(name)}</span>
+                ${spendingHtml}
+            </div>
+            ${actionHtml}
+        </div>`;
+        document.body.appendChild(bar);
+        this.stickyBar = bar;
+
+        // Show bar only after entire member header (including spending details)
+        // scrolls out of view.
+        const header = document.getElementById('member-header');
+        if (header) {
+            this.stickyObserver = new IntersectionObserver((entries) => {
+                bar.classList.toggle('visible', !entries[0].isIntersecting);
+            }, { threshold: 0 });
+            this.stickyObserver.observe(header);
+        }
+    }
+
+    removeStickyBar() {
+        if (this.stickyObserver) {
+            this.stickyObserver.disconnect();
+            this.stickyObserver = null;
+        }
+        if (this.stickyBar) {
+            this.stickyBar.remove();
+            this.stickyBar = null;
+        }
+    }
+
+    getActionType(field) {
+        if (field.is_constituent_info) return 'personal';
+        const type = (field.field_type || 'text').toLowerCase();
+        const hasDraft = field.draft_value != null && field.draft_value !== '';
+        if (type === 'textarea' && hasDraft) return 'copy';
+        if (type === 'dropdown') return 'dropdown';
+        return 'type';
     }
 
     renderField(field) {
@@ -476,28 +660,40 @@ class AppropriationsGuide {
         const hasDraft = field.draft_value != null && field.draft_value !== '';
         const confidence = field.confidence || null;
         const isLowConfidence = confidence === 'low' && hasDraft && !isConstituent;
+        const actionType = this.getActionType(field);
 
         // Build class list
         let classes = 'guide-field';
+        classes += ` guide-field--${actionType}`;
         if (isConstituent) classes += ' constituent-field';
         if (isLowConfidence) classes += ' confidence-low';
 
         let html = `<div class="${classes}">`;
 
-        // Field header
+        // Field header with input type prefix
         html += '<div class="field-header">';
+
+        // Determine literal input type prefix
+        const type = (field.field_type || 'text').toLowerCase();
+        let typePrefix = 'Text box';
+        if (type === 'textarea') typePrefix = 'Text field';
+        else if (type === 'dropdown') typePrefix = 'Dropdown';
+        if (isConstituent) typePrefix = type === 'dropdown' ? 'Dropdown' : 'Text box';
+
+        html += `<span class="field-type-prefix field-type-prefix--${actionType}">${typePrefix}:</span>`;
         html += `<span class="field-label">${escapeHtml(field.label || '')}</span>`;
         if (field.required) {
             html += '<span class="required-badge">Required</span>';
         }
+
         // Confidence icon (only when has draft and not constituent)
         if (hasDraft && !isConstituent && confidence) {
             if (confidence === 'high') {
-                html += '<i class="bi bi-check-circle-fill confidence-icon confidence-high"></i>';
+                html += '<i class="bi bi-check-circle-fill confidence-icon confidence-high" aria-label="High confidence"></i>';
             } else if (confidence === 'medium') {
-                html += '<i class="bi bi-circle-fill confidence-icon confidence-medium"></i>';
+                html += '<i class="bi bi-circle-fill confidence-icon confidence-medium" aria-label="Medium confidence"></i>';
             } else if (confidence === 'low') {
-                html += '<i class="bi bi-flag-fill confidence-icon confidence-low-icon"></i>';
+                html += '<i class="bi bi-flag-fill confidence-icon confidence-low-icon" aria-label="Low confidence"></i>';
             }
         }
         html += '</div>';
@@ -507,18 +703,35 @@ class AppropriationsGuide {
         html += this.getFieldInstruction(field);
         html += '</div>';
 
-        // Rationale (only when has rationale)
+        // Rationale — always visible as subtle footnote
         if (field.rationale && !isConstituent) {
-            html += `<div class="rationale">
-                <button class="rationale-toggle">
-                    <i class="bi bi-info-circle"></i>
-                </button>
-                <span class="rationale-text">${escapeHtml(field.rationale)}</span>
-            </div>`;
+            html += `<span class="rationale-text">${escapeHtml(field.rationale)}</span>`;
         }
 
         html += '</div>';
         return html;
+    }
+
+    renderConstituentGroup(fields) {
+        return `<div class="guide-field guide-field--personal constituent-field constituent-group">
+            <div class="field-header">
+                <span class="field-label"><i class="bi bi-person"></i> Your Information</span>
+            </div>
+            <p class="constituent-group-instruction">Fill in the following fields with your personal/constituent information:</p>
+            <ul class="constituent-field-list">
+                ${fields.map(f => {
+                    const required = f.required ? '<span class="required-badge">Required</span>' : '';
+                    const helpText = f.help_text ? ` — <span class="constituent-help">${escapeHtml(f.help_text)}</span>` : '';
+                    return `<li>${escapeHtml(f.label || '')} ${required}${helpText}</li>`;
+                }).join('')}
+            </ul>
+            <div class="org-details-note">
+                <p>If requested, use the following for organizational details:</p>
+                <strong>The Planetary Society</strong><br>
+                60 S. Los Robles Ave, Pasadena, CA 91101<br>
+                Organizational contact: Jack Kiraly, Director of Government Relations, <a href="mailto:jack.kiraly@planetary.org">jack.kiraly@planetary.org</a>
+            </div>
+        </div>`;
     }
 
     getFieldInstruction(field) {
@@ -556,10 +769,10 @@ class AppropriationsGuide {
                 return `Type: &ldquo;<strong>${escapeHtml(field.draft_value)}</strong>&rdquo;`;
 
             case 'dropdown':
-                return `From the dropdown, select: &ldquo;<strong>${escapeHtml(field.draft_value)}</strong>&rdquo;`;
+                return `Select: &ldquo;<strong>${escapeHtml(field.draft_value)}</strong>&rdquo;`;
 
             case 'textarea':
-                return `Paste the following:
+                return `Suggested response (rewrite in your own voice):
                     <div class="copyable-block">
                         <pre>${escapeHtml(field.draft_value)}</pre>
                         <button class="copy-btn">Copy</button>

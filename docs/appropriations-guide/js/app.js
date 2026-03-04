@@ -4,6 +4,7 @@
  */
 
 import { Navbar } from '../../shared/js/components/navbar.js';
+import { HashRouter } from '../../shared/js/components/hash-router.js';
 import { parseCSV, fetchText, formatCurrency, truncateText, escapeHtml } from '../../shared/js/utils.js';
 
 const DATA_URLS = {
@@ -36,18 +37,54 @@ class AppropriationsGuide {
         this.stateMap = {};
         this.stateSelect = null;
         this.districtSelect = null;
+        this.router = null;
     }
 
     async init() {
         new Navbar('navbar', { title: 'FY 2027 Appropriations Request Guide' }).render();
         this.initEventDelegation();
+        document.getElementById('back-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showSelector();
+        });
         await this.loadCSV();
         this.initSelector();
+        this.initRouter();
+    }
+
+    showResults() {
+        document.querySelector('.guide-hero').style.display = 'none';
+        document.getElementById('selector-container').style.display = 'none';
+        document.getElementById('back-nav').style.display = 'block';
+    }
+
+    showSelector() {
+        document.querySelector('.guide-hero').style.display = '';
+        document.getElementById('selector-container').style.display = '';
+        document.getElementById('back-nav').style.display = 'none';
+        document.getElementById('member-header').style.display = 'none';
+        document.getElementById('spending-context').style.display = 'none';
+        document.getElementById('spending-context').innerHTML = '';
+        document.getElementById('guide-content').innerHTML = '';
+        this.stateSelect.value = '';
+        this.districtSelect.innerHTML = '<option value="">Select state first...</option>';
+        this.districtSelect.disabled = true;
+        this.router.navigate('', false);
     }
 
     initEventDelegation() {
         // Event delegation for dynamically generated elements
         const handleClick = (e) => {
+            // Award list show/hide toggle
+            const awardsToggleBtn = e.target.closest('.awards-toggle-btn');
+            if (awardsToggleBtn) {
+                const awardList = awardsToggleBtn.nextElementSibling;
+                if (awardList) {
+                    const isExpanded = awardList.classList.toggle('expanded');
+                    awardsToggleBtn.textContent = isExpanded ? 'Hide awards' : 'See awards';
+                }
+            }
+
             // Award row expand/collapse
             const awardRow = e.target.closest('.award-row');
             if (awardRow && !e.target.closest('.award-details a')) {
@@ -108,6 +145,28 @@ class AppropriationsGuide {
         }
     }
 
+    initRouter() {
+        this.router = new HashRouter({
+            onRouteChange: (route) => this.restoreFromHash(route)
+        });
+        this.router.init();
+    }
+
+    restoreFromHash(route) {
+        if (!route) return;
+        const state = route.includes('-') ? route.split('-')[0] : route;
+        if (!this.stateMap[state]) return;
+
+        this.stateSelect.value = state;
+        this.onStateChange(state);
+
+        const match = [...this.districtSelect.options].find(o => o.value === route);
+        if (match) {
+            this.districtSelect.value = route;
+            this.onDistrictChange(route); // already calls showResults()
+        }
+    }
+
     initSelector() {
         // Build state options sorted alphabetically by name
         const stateKeys = Object.keys(this.stateMap).sort((a, b) => {
@@ -116,43 +175,29 @@ class AppropriationsGuide {
             return nameA.localeCompare(nameB);
         });
 
-        const stateOptions = stateKeys.map(abbr => ({
-            value: abbr,
-            text: STATE_NAMES[abbr] || abbr
-        }));
+        this.stateSelect = document.getElementById('state-select');
+        this.stateSelect.innerHTML = '<option value="">Select a state...</option>' +
+            stateKeys.map(abbr =>
+                `<option value="${abbr}">${STATE_NAMES[abbr] || abbr}</option>`
+            ).join('');
+        this.stateSelect.addEventListener('change', () => this.onStateChange(this.stateSelect.value));
 
-        // Init Tom Select for state
-        this.stateSelect = new TomSelect('#state-select', {
-            options: stateOptions,
-            placeholder: 'Select a state...',
-            allowEmptyOption: true,
-            onChange: (value) => this.onStateChange(value)
+        this.districtSelect = document.getElementById('district-select');
+        this.districtSelect.addEventListener('change', () => {
+            if (this.districtSelect.value) this.onDistrictChange(this.districtSelect.value);
         });
-
-        // Init Tom Select for district (empty, disabled initially)
-        this.districtSelect = new TomSelect('#district-select', {
-            options: [],
-            placeholder: 'Select state first...',
-            allowEmptyOption: true,
-            onChange: (value) => {
-                if (value) this.onDistrictChange(value);
-            }
-        });
-        this.districtSelect.disable();
     }
 
     onStateChange(stateAbbr) {
-        // Clear district select
-        this.districtSelect.clear();
-        this.districtSelect.clearOptions();
-
         // Hide member header and guide content
         document.getElementById('member-header').style.display = 'none';
         document.getElementById('spending-context').style.display = 'none';
         document.getElementById('guide-content').innerHTML = '';
 
         if (!stateAbbr || !this.stateMap[stateAbbr]) {
-            this.districtSelect.disable();
+            this.districtSelect.innerHTML = '<option value="">Select state first...</option>';
+            this.districtSelect.disabled = true;
+            this.router.navigate('', false);
             return;
         }
 
@@ -188,12 +233,9 @@ class AppropriationsGuide {
             return a.distNum - b.distNum;
         });
 
-        // Add options to Tom Select
-        for (const opt of options) {
-            this.districtSelect.addOption({ value: opt.value, text: opt.text });
-        }
-
-        this.districtSelect.enable();
+        this.districtSelect.innerHTML = '<option value="">Select representative...</option>' +
+            options.map(o => `<option value="${o.value}">${o.text}</option>`).join('');
+        this.districtSelect.disabled = false;
     }
 
     async onDistrictChange(stateDistrict) {
@@ -201,6 +243,8 @@ class AppropriationsGuide {
         const member = this.members.find(m => m['State / District'] === stateDistrict);
         if (!member) return;
 
+        this.router.navigate(stateDistrict, false);
+        this.showResults();
         this.renderMemberHeader(member);
         await this.loadGuide(member);
     }
@@ -226,9 +270,9 @@ class AppropriationsGuide {
         const deadlineDate = deadline ? new Date(deadline) : null;
         const deadlinePassed = deadlineDate && !isNaN(deadlineDate.getTime()) && deadlineDate < new Date();
 
-        let formHtml = '';
+        // Action button (form or email) - displayed inline on desktop
+        let actionHtml = '';
         if (isEmail) {
-            // Extract email from URL or Comment
             let email = '';
             if (url.startsWith('mailto:')) {
                 email = url.replace('mailto:', '');
@@ -236,36 +280,45 @@ class AppropriationsGuide {
                 const emailMatch = comment.match(/[\w.-]+@[\w.-]+/);
                 email = emailMatch ? emailMatch[0] : comment;
             }
-            formHtml = `<a href="mailto:${escapeHtml(email)}" class="form-button form-button--email">
-                <i class="bi bi-envelope"></i> Email your request to: ${escapeHtml(email)}
+            actionHtml = `<a href="mailto:${escapeHtml(email)}" class="form-button form-button--email">
+                <i class="bi bi-envelope"></i> Email request to: ${escapeHtml(email)}
             </a>`;
         } else if (hasUrl) {
-            formHtml = `<a href="${escapeHtml(url)}" target="_blank" rel="noopener" class="form-button">
-                <i class="bi bi-box-arrow-up-right"></i> Open Appropriations Request Form
+            actionHtml = `<a href="${escapeHtml(url)}" target="_blank" rel="noopener" class="form-button">
+                <i class="bi bi-box-arrow-up-right"></i> Open Request Form
             </a>`;
-        } else {
-            formHtml = `<div class="warning-banner">
+        }
+
+        // Warning banners (full width, below header content row)
+        let warningHtml = '';
+        if (!isEmail && !hasUrl) {
+            warningHtml += `<div class="warning-banner">
                 <i class="bi bi-exclamation-triangle"></i>
                 No FY 2027 appropriations request form currently tracked.
                 Visit <a href="${chamber === 'Senate' ? 'https://www.senate.gov/senators/senators-contact.htm' : 'https://www.house.gov/representatives/find-your-representative'}" target="_blank">${name}'s official website</a> to contact the office.
             </div>`;
         }
+        if (deadline && deadlinePassed) {
+            warningHtml += `<div class="warning-banner warning-banner--subtle">
+                <i class="bi bi-clock"></i> The deadline for this office (${escapeHtml(deadline)}) has passed.
+            </div>`;
+        }
 
-        let deadlineHtml = '';
-        if (deadline) {
-            if (deadlinePassed) {
-                deadlineHtml = `<div class="warning-banner warning-banner--subtle">
-                    <i class="bi bi-clock"></i> The deadline for this office (${escapeHtml(deadline)}) has passed.
-                </div>`;
-            } else {
-                deadlineHtml = `<p class="deadline"><i class="bi bi-calendar-event"></i> Deadline: ${escapeHtml(deadline)}</p>`;
-            }
+        // Inline deadline (only when not passed)
+        let inlineDeadlineHtml = '';
+        if (deadline && !deadlinePassed) {
+            inlineDeadlineHtml = `<p class="deadline"><i class="bi bi-calendar-event"></i> Deadline: ${escapeHtml(deadline)}</p>`;
         }
 
         container.innerHTML = `
-            <h2>${prefix} ${name} (${party}) \u2014 ${sd}</h2>
-            ${deadlineHtml}
-            ${formHtml}
+            <div class="member-header-content">
+                <div class="member-header-info">
+                    <h2>${prefix} ${name} (${party}) \u2014 ${sd}</h2>
+                    ${inlineDeadlineHtml}
+                </div>
+                ${actionHtml ? `<div class="member-header-action">${actionHtml}</div>` : ''}
+            </div>
+            ${warningHtml}
         `;
         container.style.display = 'block';
     }
@@ -290,7 +343,21 @@ class AppropriationsGuide {
             this.renderFormWalkthrough(guideData);
         } catch (err) {
             console.log(`No guide for ${guideKey}, using generic directions`);
-            await this.renderGenericFallback(member);
+            try {
+                const genericResponse = await fetch(`${DATA_URLS.guidesBase}generic.json`);
+                if (!genericResponse.ok) throw new Error('Generic not found');
+                const genericData = await genericResponse.json();
+                const memberName = member['Member'] || '';
+                if (memberName && genericData.form_analysis) {
+                    genericData.form_analysis.form_instructions_text =
+                        `A detailed form guide for ${memberName}'s office is not yet available. Use these general directions to fill out the appropriations request form.\n\n` +
+                        (genericData.form_analysis.form_instructions_text || '');
+                }
+                this.renderFormWalkthrough(genericData);
+            } catch (genericErr) {
+                console.error('Failed to load generic guide:', genericErr);
+                await this.renderGenericFallback(member);
+            }
         }
     }
 
@@ -312,9 +379,9 @@ class AppropriationsGuide {
         const contractCount = ctx['Total Contract Awards'] || ctx.total_contract_count || contracts.length;
         const grantCount = ctx['Total Grant Awards'] || ctx.total_grant_count || grants.length;
 
-        const countsLine = `${escapeHtml(String(contractCount))} Contracts (${formatCurrency(contractTotal)})`
+        const countsLine = `${escapeHtml(String(contractCount))} Contracts (${formatCurrency(contractTotal)} total potential value)`
             + `<span class="separator">&middot;</span>`
-            + `${escapeHtml(String(grantCount))} Grants (${formatCurrency(grantTotal)})`;
+            + `${escapeHtml(String(grantCount))} Grants (${formatCurrency(grantTotal)} total potential value)`;
 
         // District label
         const stateCode = escapeHtml(ctx.state_code || '');
@@ -351,8 +418,9 @@ class AppropriationsGuide {
 
         container.innerHTML = `
             <h3><i class="bi bi-rocket-takeoff"></i> NASA Science in ${distLabel}</h3>
-            <div class="spending-summary">${fyParts}</div>
+            <div class="spending-summary">SPENDING IN ${fyParts}</div>
             <div class="award-counts">${countsLine}</div>
+            <button class="awards-toggle-btn">See awards</button>
             <div class="award-list">${awardRows}</div>
         `;
         container.style.display = 'block';

@@ -73,8 +73,10 @@
         }
 
         .selector-section {
+            width: 100%;
             max-width: 780px;
-            margin: 0 auto var(--space-4);
+            align-self: center;
+            margin-bottom: var(--space-4);
             padding: 0 var(--space-6);
         }
 
@@ -1478,82 +1480,6 @@
         }
 
         /* ── How it works — vertical steps (below selector) ───── */
-        .guide-steps {
-            max-width: 780px;
-            margin: var(--space-4) auto var(--space-8);
-            padding: 0 var(--space-6);
-            animation: guideHeroFadeUp 0.55s var(--ease-out-expo) 0.40s both;
-        }
-
-        .guide-steps-header {
-            font-size: var(--text-xs);
-            font-weight: var(--font-weight-semibold);
-            text-transform: uppercase;
-            letter-spacing: var(--letter-spacing-wider);
-            color: var(--gray-400);
-            margin-bottom: var(--space-5);
-        }
-
-        .guide-step {
-            display: flex;
-            gap: var(--space-5);
-        }
-
-        .guide-step-left {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex-shrink: 0;
-            width: 46px;
-        }
-
-        .guide-step-num {
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            background: var(--blue-500);
-            color: white;
-            font-weight: var(--font-weight-semibold);
-            font-size: var(--text-base);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 2px 10px rgba(3, 124, 194, 0.28);
-        }
-
-        .guide-step-line {
-            width: 2px;
-            flex: 1;
-            min-height: var(--space-6);
-            background: linear-gradient(to bottom, var(--blue-200), var(--gray-100));
-            margin: var(--space-2) 0;
-            border-radius: 1px;
-        }
-
-        .guide-step-body {
-            padding-bottom: var(--space-8);
-            padding-top: 11px;
-        }
-
-        .guide-step--last .guide-step-body {
-            padding-bottom: 0;
-        }
-
-        .guide-step-label {
-            font-size: var(--text-base);
-            font-weight: var(--font-weight-semibold);
-            color: var(--gray-800);
-            line-height: 1.25;
-            margin-bottom: var(--space-1);
-        }
-
-        .guide-step-sub {
-            font-size: var(--text-sm);
-            color: var(--gray-400);
-            line-height: 1.5;
-        }
-
         /* ── Selector card ─────────────────────────────────────── */
         .selector-section {
             animation: guideHeroFadeUp 0.55s var(--ease-out-expo) 0.32s both;
@@ -1614,8 +1540,7 @@
                 display: none;
             }
 
-            .selector-section,
-            .guide-steps {
+            .selector-section {
                 padding: 0 var(--space-3);
             }
         }
@@ -1673,38 +1598,7 @@
             </div>
             <p id="custom-guide-stat" class="guide-stat-caption" style="display:none;"></p>
         </div>
-        <div class="guide-steps" aria-label="How it works">
-            <div class="guide-steps-header">How this works:</div>
-            <div class="guide-step">
-                <div class="guide-step-left">
-                    <div class="guide-step-num" aria-hidden="true">1</div>
-                    <div class="guide-step-line"></div>
-                </div>
-                <div class="guide-step-body">
-                    <div class="guide-step-label">Find your rep</div>
-                    <div class="guide-step-sub">Select your state and district above</div>
-                </div>
-            </div>
-            <div class="guide-step">
-                <div class="guide-step-left">
-                    <div class="guide-step-num" aria-hidden="true">2</div>
-                    <div class="guide-step-line"></div>
-                </div>
-                <div class="guide-step-body">
-                    <div class="guide-step-label">Follow the guide</div>
-                    <div class="guide-step-sub">Step-by-step form walkthrough</div>
-                </div>
-            </div>
-            <div class="guide-step guide-step--last">
-                <div class="guide-step-left">
-                    <div class="guide-step-num" aria-hidden="true">3</div>
-                </div>
-                <div class="guide-step-body">
-                    <div class="guide-step-label">Send your request</div>
-                    <div class="guide-step-sub">Request NASA Science funding</div>
-                </div>
-            </div>
-        </div>
+        
         <div id="member-header" class="member-header" style="display:none;"></div>
         <div id="section-nav" style="display:none;"></div>
         <div id="guide-content"></div>

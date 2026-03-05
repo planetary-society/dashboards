@@ -60,14 +60,12 @@ class AppropriationsGuide {
     showResults() {
         document.querySelector('.guide-hero').style.display = 'none';
         document.getElementById('selector-container').style.display = 'none';
-        document.querySelector('.guide-steps').style.display = 'none';
         document.getElementById('back-nav').style.display = 'block';
     }
 
     showSelector() {
         document.querySelector('.guide-hero').style.display = '';
         document.getElementById('selector-container').style.display = '';
-        document.querySelector('.guide-steps').style.display = '';
         document.getElementById('back-nav').style.display = 'none';
         document.getElementById('member-header').style.display = 'none';
         document.getElementById('section-nav').style.display = 'none';
@@ -809,7 +807,7 @@ class AppropriationsGuide {
                 {
                     element: '#member-header',
                     popover: {
-                        title: 'Your Representative',
+                        title: 'Your Elected Official',
                         description: 'This card shows who you\'re advocating to, their submission deadline, and a link to their form. <strong>Tip:</strong> Open the request form in a new tab now and keep it side-by-side — that makes it much easier to fill out while following this guide.',
                         side: 'bottom',
                         align: 'start'
@@ -820,7 +818,7 @@ class AppropriationsGuide {
                     element: '#guide-content',
                     popover: {
                         title: 'Form Walkthrough',
-                        description: 'The guide is organized to match the actual form sections. Each field has a color-coded label: <strong>TYPE</strong> (blue) = type this value, <strong>COPY</strong> (green) = paste directly, <strong>DROPDOWN</strong> (purple) = select from a menu, <strong>PERSONAL</strong> (teal) = your own constituent info. Use the copy button to grab suggested text instantly.',
+                        description: 'The guide is organized to match the actual form sections. Use the <strong>COPY</strong> button to grab suggested text instantly.',
                         side: 'top',
                         align: 'start'
                     }

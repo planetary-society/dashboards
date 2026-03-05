@@ -1,0 +1,394 @@
+{
+  "target_fiscal_year": 2027,
+  "status": "success",
+  "status_reason": null,
+  "status_detail": null,
+  "member": {
+    "full_name": "Yvette Clarke",
+    "first_name": "Yvette",
+    "last_name": "Clarke",
+    "chamber": "House",
+    "party": "Democrat",
+    "state_code": "NY",
+    "district": "9",
+    "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSehd5oErWuquz42D9Gh_FwGwjW3XxOjFuqxU0MNBuG0EQWwpQ/viewform",
+    "deadline": "3/10/2026",
+    "comment": null,
+    "submitted": false,
+    "past_caucus_signatory": false,
+    "caucus_member": false,
+    "appropriator": false,
+    "authorizer": false,
+    "nasa_center": false,
+    "bioguide_id": "C001067",
+    "official_url": "https://clarke.house.gov",
+    "contact_form_url": null,
+    "phone": "202-225-6231",
+    "office_address": "2058 Rayburn House Office Building Washington DC 20515-3209",
+    "district_offices": [
+      {
+        "office_id": "C001067-brooklyn",
+        "address": "222 Lenox Rd.",
+        "city": "Brooklyn",
+        "state": "NY",
+        "zip": "11226",
+        "suite": "Suites 1 & 2",
+        "phone": "718-287-1142",
+        "fax": "718-287-1223",
+        "latitude": 40.6536853,
+        "longitude": -73.9516805
+      }
+    ],
+    "state_district": "NY-09",
+    "district_padded": "09",
+    "member_key": "NY-09_clarke"
+  },
+  "form_analysis": {
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSehd5oErWuquz42D9Gh_FwGwjW3XxOjFuqxU0MNBuG0EQWwpQ/viewform",
+    "url_type": "google_forms",
+    "fetch_method": "httpx",
+    "form_header_text": "FY27 Appropriations Request Form",
+    "form_instructions_text": "Please complete the form below for all language/programmatic appropriations requests for consideration by Congresswoman Yvette D. Clarke (NY-09). Deadline is currently pending further guidance from House Appropriations Committee.",
+    "sections": [
+      {
+        "header": "Contact Information",
+        "description": "Details about the organization and individual submitting the request.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_484370042:48601c477632",
+            "label": "Requesting Organization/Office",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_974484406:3274c72bded5",
+            "label": "Point of Contact - Name",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_282954293:7e1aa981c376",
+            "label": "Point of Contact - Phone Number",
+            "help_text": null,
+            "field_type": "phone",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_1445495424:4c9420c5311c",
+            "label": "Point of Contact - Email",
+            "help_text": null,
+            "field_type": "email",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Request Details",
+        "description": "Specific information regarding the appropriations request.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_374473876:63f419e141b4",
+            "label": "Type of Request",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Bill Language",
+              "Report Language",
+              "Programmatic"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Programmatic",
+            "rationale": "The reference values specify that this is a programmatic funding request for NASA's Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1915647415:a8a4645489e4",
+            "label": "Appropriations Subcommittee",
+            "help_text": null,
+            "field_type": "dropdown",
+            "required": true,
+            "options": [
+              "Ag-Rural-FDA",
+              "CJS",
+              "Defense",
+              "Energy-Water",
+              "Financial Services",
+              "Homeland Security",
+              "Interior-Environment",
+              "L-HHS-Education",
+              "Legislative Branch",
+              "MilCon-VA",
+              "State-Foreign Operations",
+              "Transportation-HUD"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "CJS",
+            "rationale": "The reference values state the request falls under the Commerce, Justice, Science, and Related Agencies (CJS) Subcommittee.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_798928014:de216196a06e",
+            "label": "Request Title",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA Science Mission Directorate Funding",
+            "rationale": "This is the standard short title for the programmatic request based on the provided reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1941007247:aff3f967d464",
+            "label": "Agency (e.g., NIH, SBA, FTC, etc.)",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA",
+            "rationale": "NASA is the target agency for this programmatic funding request.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1801242681:9d20192e491f",
+            "label": "Account",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science",
+            "rationale": "'Science' is the specific appropriations account within NASA that funds the Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1689543116:23ae4cb701c7",
+            "label": "Brief Description/Explanation of Request",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Requesting $9 billion for NASA's Science Mission Directorate (SMD) to restore stability after FY2026 funding disruptions and maintain U.S. leadership in space exploration.\n* Supports high-priority missions across Earth Science, Planetary Science, Astrophysics, and Heliophysics as defined by the National Academies' Decadal Surveys.\n* NASA Science investments provide direct economic impact to NY-09, including $247,415 in recent contract activity for organizations like the Citizen Science Association Inc.\n* Ensuring robust funding protects the specialized aerospace workforce and inspires the next generation of STEM professionals required for national competitiveness.",
+            "rationale": "This draft identifies the specific $9B ask, the need for stability following FY2026, and references the specific $247,415 contract with the Citizen Science Association Inc. in NY-09.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_371220663:85240af561c9",
+            "label": "For Language Requests: Exact Request Language",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The provided context specifies this is a programmatic funding request and that no bill or report language is requested.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1470562695:d1b5cb08cfd6",
+            "label": "For Language Requests: Has this language been included in previous bills or reports? If so, please specify.",
+            "help_text": "Note if the language has historical precedence in previous appropriations cycles.",
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This field is for language requests; this is a programmatic request with no requested language specified in the context.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "google_forms:01:entry_1233537107:88355110716f",
+            "label": "For Programmatic Requests: Desired Level of Funding",
+            "help_text": "Specify the amount requested for this fiscal year.",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "This is the exact funding ask provided in the reference values for the Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_2022732764:a0f6b2caf9a2",
+            "label": "Priority Ranking (if submitting multiple requests, e.g., \"#2 out of 4\")",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "Priority ranking is a user-specific determination based on their full slate of requests.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "google_forms:01:entry_275243851:4128948f09f3",
+            "label": "Please list all Congressional offices receiving this request.",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Reps.\n* Don Bacon (R-NE) and Judy Chu (D-CA) are leading an existing multi-member House letter in support of this request.\n* Request also being submitted to additional House offices.",
+            "rationale": "Request is being submitted to multiple offices; Bacon/Chu lead the House letter per reference values.",
+            "confidence": "high"
+          }
+        ]
+      }
+    ],
+    "submission_method": "online_form",
+    "deadline_text": "Deadline is currently pending further guidance from House Appropriations Committee.",
+    "validation": {
+      "passed": true,
+      "issues": [],
+      "summary": "All fields passed validation."
+    },
+    "refinement": null
+  },
+  "nasa_context": {
+    "state_code": "NY",
+    "state_name": "New York",
+    "district": "09",
+    "spending_by_year": {
+      "2023": 247415.0,
+      "2024": 0.0,
+      "2025": 0.0
+    },
+    "annual_total_spending_by_year": {
+      "2023": 247415.0,
+      "2024": 0.0,
+      "2025": 0.0
+    },
+    "top_contracts": [],
+    "top_grants": [],
+    "top_contract_recipients": [
+      {
+        "name": "Citizen Science Association Inc",
+        "recipient_id": "55c464f1-3c85-0685-4dd7-d104bbb59ebc-C",
+        "total_amount": 247415.0,
+        "award_count": 1,
+        "award_type": "contract",
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "address_line1": "115 OCEAN AVE",
+          "address_line2": "APT A2B",
+          "address_line3": null,
+          "congressional_code": "09",
+          "zip4": "4735",
+          "zip5": "11225",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "congressional_code": "09",
+          "zip4": "112254735",
+          "zip5": "11225"
+        }
+      }
+    ],
+    "top_grant_recipients": [],
+    "total_contract_count": 1,
+    "total_grant_count": 0
+  },
+  "raw_award_data": {
+    "spending": {
+      "2023": 247415.0,
+      "2024": 0,
+      "2025": 0
+    },
+    "Top Active Awards": [],
+    "Top Contract Recipients": [
+      {
+        "name": "Citizen Science Association Inc",
+        "recipient_id": "55c464f1-3c85-0685-4dd7-d104bbb59ebc-C",
+        "amount": 247415.0,
+        "award_count": 1,
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "address_line1": "115 OCEAN AVE",
+          "address_line2": "APT A2B",
+          "address_line3": null,
+          "congressional_code": "09",
+          "zip4": "4735",
+          "zip5": "11225",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "congressional_code": "09",
+          "zip4": "112254735",
+          "zip5": "11225"
+        },
+        "type": "contract"
+      }
+    ],
+    "Top Grant Recipients": [],
+    "Total Contract Awards": 1,
+    "Total Grant Awards": 0
+  }
+}

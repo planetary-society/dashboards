@@ -1,0 +1,427 @@
+{
+  "target_fiscal_year": 2027,
+  "status": "success",
+  "status_reason": null,
+  "status_detail": null,
+  "member": {
+    "full_name": "Kevin Hern",
+    "first_name": "Kevin",
+    "last_name": "Hern",
+    "chamber": "House",
+    "party": "Republican",
+    "state_code": "OK",
+    "district": "1",
+    "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSejkbdmVMxa2H5sbOYHIwNOFgN7PfHKlnyMYALyYhi2fY8FJA/viewform",
+    "deadline": "TBD",
+    "comment": null,
+    "submitted": false,
+    "past_caucus_signatory": false,
+    "caucus_member": false,
+    "appropriator": false,
+    "authorizer": false,
+    "nasa_center": false,
+    "bioguide_id": "H001082",
+    "official_url": "https://hern.house.gov",
+    "contact_form_url": null,
+    "phone": "202-225-2211",
+    "office_address": "171 Cannon House Office Building Washington DC 20515-3601",
+    "district_offices": [
+      {
+        "office_id": "H001082-tulsa",
+        "address": "2448 E. 81st St.",
+        "city": "Tulsa",
+        "state": "OK",
+        "zip": "74137",
+        "suite": "Suite 5150",
+        "phone": "918-935-3222",
+        "fax": null,
+        "latitude": 36.0445807,
+        "longitude": -95.95355529999999
+      }
+    ],
+    "state_district": "OK-01",
+    "district_padded": "01",
+    "member_key": "OK-01_hern"
+  },
+  "form_analysis": {
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSejkbdmVMxa2H5sbOYHIwNOFgN7PfHKlnyMYALyYhi2fY8FJA/viewform",
+    "url_type": "google_forms",
+    "fetch_method": "httpx",
+    "form_header_text": "Rep. Kevin Hern (OK-1) Appropriations Requests",
+    "form_instructions_text": "FY 2027",
+    "sections": [
+      {
+        "header": "General Information",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_2005620554:1d618e056885",
+            "label": "Requesting Organization Name",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_1045781291:2754303fee7b",
+            "label": "Organization Point of Contact (email + phone) ",
+            "help_text": "Please provide both the email address and phone number for the primary contact.",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_1065046570:c863f02f36ee",
+            "label": "Programmatic or Language Request?",
+            "help_text": "Indicate if this is a request for programmatic funding or bill/report language.",
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Program",
+              "Language"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Program",
+            "rationale": "This is a request for programmatic funding for NASA's Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1166974658:cf6dc827b2a4",
+            "label": "Subcommittee",
+            "help_text": "Select the relevant House Appropriations Subcommittee.",
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Agriculture, Rural Development, Food and Drug Administration, and Related Agencies",
+              "Commerce, Justice, Science, and Related Agencies",
+              "Defense",
+              "Energy and Water Development, and Related Agencies",
+              "Financial Services and General Government",
+              "Homeland Security",
+              "Interior, Environment, and Related Agencies",
+              "Labor, Health and Human Services, Education, and Related Agencies",
+              "Legislative Branch",
+              "Military Construction, Veterans Affairs, and Related Agencies",
+              "State, Foreign Operations, and Related Programs",
+              "Transportation, and Housing and Urban Development, and Related Agencies"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Commerce, Justice, Science, and Related Agencies",
+            "rationale": "NASA funding falls under the jurisdiction of the CJS subcommittee.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_839337160:e93b65e6a7df",
+            "label": "Agency, Division, Account",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Agency: National Aeronautics and Space Administration (NASA)\n* Account: Science\n* Division: Science Mission Directorate (SMD)",
+            "rationale": "Directly identifies the agency and account for the $9 billion request as specified in the reference context.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1669994737:15fec8f74ee3",
+            "label": "Priority Number",
+            "help_text": "Rank your requests (1 being the highest priority).",
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "1",
+            "rationale": "NASA Science is a top priority for advancing American leadership and maintaining the nation's technical workforce.",
+            "confidence": "medium"
+          }
+        ]
+      },
+      {
+        "header": "Programmatic Funding Requests",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1719409775:a3e5f1a360a3",
+            "label": "Amount Requested for FY27",
+            "help_text": "Total dollar amount requested for Fiscal Year 2027.",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "This is the established funding ask for the Science Mission Directorate to ensure program stability and leadership.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1100983726:7248471409a6",
+            "label": "The amount included in FY 26 Budget",
+            "help_text": "Provide the numeric dollar amount included in the FY 2026 President's Budget.",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$3,908,000,000",
+            "rationale": "This is the FY2026 President's Budget Request as indicated in the SMD Topline Funding History.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_72487751:8688e9334131",
+            "label": "FY 26 appropriation",
+            "help_text": "Provide the numeric dollar amount enacted in the FY 2026 appropriation bill.",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$7,250,000,000",
+            "rationale": "This is the enacted funding level for FY2026 for the Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_417101582:d833ecc118e0",
+            "label": "Brief Description of program and justification for the request ",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* NASA Science conducts robotic exploration of the solar system and universe to advance U.S. leadership and answer fundamental scientific questions.\n* This $9B request supports Decadal Survey priorities and maintains U.S. competitive advantage as China rapidly expands its space science ambitions.\n* Every dollar invested returns approximately $3 to the U.S. economy, supporting a specialized workforce and driving private-sector aerospace innovation.\n* Sustained funding provides workforce stability and prevents the loss of critical technical capabilities built over decades of bipartisan investment.",
+            "rationale": "Draws on strategic talking points regarding U.S. leadership, the 3:1 economic return, and the geopolitical competition with China.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1164409775:d8932455e642",
+            "label": "How does this program affect the 1st Congressional District of Oklahoma? Please specify cities and counties.",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Supports the local technical workforce in OK-1, including $80,076 in recent NASA Science contract obligations to Integrated Tower Systems Inc.\n* These investments integrate Oklahoma businesses into the national space supply chain, providing specialized equipment for scientific exploration missions.\n* NASA's missions inspire the next generation of STEM professionals in the Tulsa region, strengthening the talent pipeline for Oklahoma's aerospace economy.",
+            "rationale": "Cites the specific FY2024 contract with Integrated Tower Systems Inc in the district and connects it to the broader STEM and aerospace workforce.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Language Requests",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_242598821:ac7b81fc4033",
+            "label": "Bill or Report language?",
+            "help_text": null,
+            "field_type": "radio",
+            "required": false,
+            "options": [
+              "Bill",
+              "Report"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This is a programmatic request; no specific language is being requested at this time.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_196763166:be0b467097dd",
+            "label": "Language Requested:",
+            "help_text": "Provide the specific text requested for the bill or report.",
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The request is identified as a programmatic funding request rather than a specific bill or report language request.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "google_forms:01:entry_1828268621:ac8c9028646e",
+            "label": "Justification for language request:",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "No language is being requested as this is a programmatic funding request.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "google_forms:01:entry_1932565811:99fc67dba292",
+            "label": "Has this language been included in previous years? If so, please include the fiscal year, bill number, and section.",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "No language is being requested as this is a programmatic funding request.",
+            "confidence": "low"
+          }
+        ]
+      },
+      {
+        "header": "Other Information",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1178624287:37902303a9f3",
+            "label": "Other information you want to include with your request: ",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Space science is a non-partisan priority with broad public support; Congress acted on a bipartisan basis to restore funding in FY 2026.\n* Strategic competitors like China are setting aggressive goals for lunar and planetary science, making steady U.S. investment essential for national prestige.\n* Consistent funding allows NASA to follow peer-reviewed scientific roadmaps, providing a rigorous and nonpartisan basis for federal investment decisions.",
+            "rationale": "Includes broader political and strategic context regarding public support and the non-partisan nature of NASA Science funding.",
+            "confidence": "high"
+          }
+        ]
+      }
+    ],
+    "submission_method": "online_form",
+    "deadline_text": null,
+    "validation": {
+      "passed": true,
+      "issues": [],
+      "summary": "All fields passed validation."
+    },
+    "refinement": null
+  },
+  "nasa_context": {
+    "state_code": "OK",
+    "state_name": "Oklahoma",
+    "district": "01",
+    "spending_by_year": {
+      "2023": 0.0,
+      "2024": 80076.0,
+      "2025": 0.0
+    },
+    "annual_total_spending_by_year": {
+      "2023": 0.0,
+      "2024": 80076.0,
+      "2025": 0.0
+    },
+    "top_contracts": [],
+    "top_grants": [],
+    "top_contract_recipients": [
+      {
+        "name": "Integrated Tower Systems Inc",
+        "recipient_id": "734e183c-f759-6712-35ea-7de209506235-C",
+        "total_amount": 80076.0,
+        "award_count": 1,
+        "award_type": "contract",
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OK",
+          "state_name": "Oklahoma",
+          "city_name": "TULSA",
+          "county_code": "143",
+          "county_name": "TULSA",
+          "address_line1": "2703 DAWSON RD",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "01",
+          "zip4": "5033",
+          "zip5": "74110",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OK",
+          "state_name": "Oklahoma",
+          "city_name": "TULSA",
+          "county_code": "143",
+          "county_name": "TULSA",
+          "congressional_code": "01",
+          "zip4": "741105033",
+          "zip5": "74110"
+        }
+      }
+    ],
+    "top_grant_recipients": [],
+    "total_contract_count": 1,
+    "total_grant_count": 0
+  },
+  "raw_award_data": {
+    "spending": {
+      "2023": 0,
+      "2024": 80076.0,
+      "2025": 0
+    },
+    "Top Active Awards": [],
+    "Top Contract Recipients": [
+      {
+        "name": "Integrated Tower Systems Inc",
+        "recipient_id": "734e183c-f759-6712-35ea-7de209506235-C",
+        "amount": 80076.0,
+        "award_count": 1,
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OK",
+          "state_name": "Oklahoma",
+          "city_name": "TULSA",
+          "county_code": "143",
+          "county_name": "TULSA",
+          "address_line1": "2703 DAWSON RD",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "01",
+          "zip4": "5033",
+          "zip5": "74110",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OK",
+          "state_name": "Oklahoma",
+          "city_name": "TULSA",
+          "county_code": "143",
+          "county_name": "TULSA",
+          "congressional_code": "01",
+          "zip4": "741105033",
+          "zip5": "74110"
+        },
+        "type": "contract"
+      }
+    ],
+    "Top Grant Recipients": [],
+    "Total Contract Awards": 1,
+    "Total Grant Awards": 0
+  }
+}

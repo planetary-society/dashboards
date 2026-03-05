@@ -1,0 +1,483 @@
+{
+  "target_fiscal_year": 2027,
+  "status": "success",
+  "status_reason": null,
+  "status_detail": null,
+  "member": {
+    "full_name": "Mike Carey",
+    "first_name": "Mike",
+    "last_name": "Carey",
+    "chamber": "House",
+    "party": "Republican",
+    "state_code": "OH",
+    "district": "15",
+    "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSelgnXMidPkvCyzr_Que27fOygu9V7j2lwrZtVSHtE9PB-kvA/viewform",
+    "deadline": "3/6/2026",
+    "comment": null,
+    "submitted": false,
+    "past_caucus_signatory": false,
+    "caucus_member": false,
+    "appropriator": false,
+    "authorizer": false,
+    "nasa_center": false,
+    "bioguide_id": "C001126",
+    "official_url": "https://carey.house.gov",
+    "contact_form_url": null,
+    "phone": "202-225-2015",
+    "office_address": "1433 Longworth House Office Building Washington DC 20515-3515",
+    "district_offices": [
+      {
+        "office_id": "C001126-columbus",
+        "address": "140 E Town St.",
+        "city": "Columbus",
+        "state": "OH",
+        "zip": "43215",
+        "suite": "Suite 1200",
+        "phone": "614-927-6902",
+        "fax": null,
+        "latitude": 39.9597032,
+        "longitude": -82.99609939999999
+      }
+    ],
+    "state_district": "OH-15",
+    "district_padded": "15",
+    "member_key": "OH-15_carey"
+  },
+  "form_analysis": {
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSelgnXMidPkvCyzr_Que27fOygu9V7j2lwrZtVSHtE9PB-kvA/viewform",
+    "url_type": "google_forms",
+    "fetch_method": "httpx",
+    "form_header_text": "Office of Representative Mike Carey (OH-15) FY27 Appropriations Request Form",
+    "form_instructions_text": "Congressman Mike Carey invites you to submit requests for the Fiscal Year 2027 Congressional appropriations cycle. The annual appropriations process allows Members to submit programmatic, language, and Community Project Funding requests to the Committee. Below is the form for programmatic and language requests, please DO NOT submit Community Projects Funding (CPF) requests on this form. Email Michael Lundquist, Michael.Lundquist@mail.house.gov, for further information on CPF requests. Submitting a request for funding does not guarantee that funding will be submitted or appropriated. All requests must comply with House rules. The House Appropriations Committee FY27 guidance has not yet been released, please check back later for updates. A link to the guidance will be posted on this form at a later date.",
+    "sections": [
+      {
+        "header": "Contact Information",
+        "description": "Details for the primary point of contact at the requesting organization.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1884265043:2936679a8ec7",
+            "label": "Name of Contact of Requesting Organization",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_848209051:ccab6e73b7b0",
+            "label": "Email of the POC of Requesting Organization",
+            "help_text": null,
+            "field_type": "email",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Request Details",
+        "description": "Information regarding the type of appropriations request and the target subcommittee.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1212348438:f29db0f53b76",
+            "label": "Request Type",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Programatic",
+              "Langauge"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Programatic",
+            "rationale": "The request context explicitly identifies this as a programmatic funding request for NASA's Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_243897812:fe50b86b1db1",
+            "label": "Subcommittee",
+            "help_text": null,
+            "field_type": "dropdown",
+            "required": true,
+            "options": [
+              "Agriculture, Rural Development, Food and Drug Administration",
+              "Commerce, Justice, and Science",
+              "Defense",
+              "Energy and Water Development",
+              "Financial Services and General Government",
+              "Homeland Security",
+              "Interior and Environment",
+              "Labor, Health and Human Services, and Education",
+              "Legislative Branch",
+              "Military Construction and Veterans Affairs",
+              "National Security and Department of State (formerly State-Foreign Operations)",
+              "Transportation and Housing and Urban Development"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Commerce, Justice, and Science",
+            "rationale": "NASA Science Mission Directorate falls under the jurisdiction of the Commerce, Justice, Science, and Related Agencies Subcommittee.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_147959521:3698fc4072f0",
+            "label": "Subcommittee/Agency/Account: \n Example: Agriculture/Title I/Office of the Secretary",
+            "help_text": "Provide the specific subcommittee, agency, and account for the request.",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Commerce, Justice, Science/NASA/Science Mission Directorate",
+            "rationale": "This identifies the correct subcommittee (CJS), the agency (NASA), and the specific budget account (Science Mission Directorate) as specified in the reference values.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Funding and Support",
+        "description": "Specifics on the funding amount requested and information on support from other members or local entities.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1692297397:ec8c6013ad88",
+            "label": "Funding Amount Request",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Support total funding level of (include amount In next question)",
+              "Support FY26 enacted level",
+              "Support FY27 President's Budget Request",
+              "General Support for the Program",
+              "Funding should be reduced",
+              "Eliminate the program",
+              ""
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Support total funding level of (include amount In next question)",
+            "rationale": "The strategic ask is for $9,000,000,000, which exceeds both the FY26 enacted level and the known previous budget requests, requiring a specific total funding level selection.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1006646558:9237097f1654",
+            "label": "If requesting a total funding level, please include amount",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "This is the exact funding ask amount provided in the reference values for the Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_191823135:273761125d9d",
+            "label": "Are other Members making this same request? (if so, include below)",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Yes",
+            "rationale": "This request is being submitted to multiple offices.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1299905368:da575b1b75a9",
+            "label": "If yes above, please indicate other members",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Reps. Don Bacon (R-NE) and Judy Chu (D-CA)",
+            "rationale": "These members are identified in the reference values as leading the existing House letter for this request.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1431641325:910de64584ca",
+            "label": "State/Local Support:\nPlease indicate if there is a state or local government entity that is supporting this request, including if there are state or local government matching funds being allocated to support this request. \n\nYour answer",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "There is no specific information in the provided context regarding state or local government matching funds or official endorsements for this federal programmatic request.",
+            "confidence": "low"
+          }
+        ]
+      },
+      {
+        "header": "Request Justification",
+        "description": "Narrative descriptions and relevance to the congressional district.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_663516530:c2fe725219f2",
+            "label": "Description of the Request:\nIf this is a language request, please limit the request to 2000 characters and include the exact language requested and whether this is bill or report language.\nIf this is a programmatic funding request, please limit the request to 500 characters and summarize the purpose of the request. ",
+            "help_text": "Summarize the purpose of the request or provide specific bill/report language.",
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Request $9 billion for NASA's Science Mission Directorate (SMD) to fund vital space exploration.\n* Supports high-priority missions in Earth Science, Planetary Science, Astrophysics, and Heliophysics.\n* Ensures U.S. global leadership in discovery and technical innovation against rising competition.\n* Executes peer-reviewed research priorities established by the National Academies' Decadal Surveys.",
+            "rationale": "This value summarizes the $9 billion programmatic request for NASA SMD as specified in the reference values and aligns with the strategic priority of following Decadal Surveys.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_454148457:604f944cbb52",
+            "label": "Relevance to the 15th Congressional District of Ohio (if applicable):",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* NASA Science has invested $484,600 in OH-15 based on recent obligation data.\n* Local contract recipients include Great Migrations LLC ($285,000) and Kendall Holdings LTD ($199,600).\n* These investments sustain high-tech jobs and specialized technical capabilities within the district.\n* Funding strengthens the local STEM talent pipeline that supports Ohio's aerospace and technology economy.",
+            "rationale": "The response cites the specific district spending total ($484,600) and identifies the top local contract recipients (Great Migrations LLC and Kendall Holdings LTD) provided in the NASA spending context for OH-15.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_2102260509:b14b1631a5c8",
+            "label": "Any other information you would like to include:",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Every dollar invested in NASA Science returns approximately three dollars to the U.S. economy.\n* Sustained funding is critical to maintaining a strategic advantage as China expands its space ambitions.\n* NASA Science is a non-partisan priority supported by the public for its role in discovery and national prestige.\n* Increased funding restores stability to the aerospace workforce after recent budget fluctuations.",
+            "rationale": "This draft uses key advocacy talking points regarding economic ROI, international competition with China, and workforce stability to provide a compelling strategic case for the funding level.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Deadlines and Submission",
+        "description": "Acknowledgment of deadlines and additional contact information.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_502948450:09101b1b9ff4",
+            "label": "Please check the box to confirm that you understand the deadline is Friday, March 6, 2026 by COB.",
+            "help_text": null,
+            "field_type": "checkbox",
+            "required": true,
+            "options": [
+              "I understand"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "I understand",
+            "rationale": "The user must acknowledge the deadline to submit the form.",
+            "confidence": "high"
+          }
+        ]
+      }
+    ],
+    "submission_method": "online_form",
+    "deadline_text": "Friday, March 6, 2026 by COB.",
+    "validation": {
+      "passed": true,
+      "issues": [],
+      "summary": "All fields passed validation."
+    },
+    "refinement": null
+  },
+  "nasa_context": {
+    "state_code": "OH",
+    "state_name": "Ohio",
+    "district": "15",
+    "spending_by_year": {
+      "2023": 417600.0,
+      "2024": 67000.0,
+      "2025": 0.0
+    },
+    "annual_total_spending_by_year": {
+      "2023": 417600.0,
+      "2024": 67000.0,
+      "2025": 0.0
+    },
+    "top_contracts": [],
+    "top_grants": [],
+    "top_contract_recipients": [
+      {
+        "name": "Great Migrations LLC",
+        "recipient_id": "9f106ae2-ca8d-4895-8027-c39a0460a54c-C",
+        "total_amount": 285000.0,
+        "award_count": 2,
+        "award_type": "contract",
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OH",
+          "state_name": "Ohio",
+          "city_name": "DUBLIN",
+          "county_code": "049",
+          "county_name": "FRANKLIN",
+          "address_line1": "7453 KATESBRIDGE CT",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "15",
+          "zip4": "8281",
+          "zip5": "43017",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OH",
+          "state_name": "Ohio",
+          "city_name": "DUBLIN",
+          "county_code": "049",
+          "county_name": "FRANKLIN",
+          "congressional_code": "15",
+          "zip4": "430173542",
+          "zip5": "43017"
+        }
+      },
+      {
+        "name": "Kendall Holdings LTD",
+        "recipient_id": "d585d137-b11b-3634-57ec-e7ddcf3529b0-C",
+        "total_amount": 199600.0,
+        "award_count": 1,
+        "award_type": "contract",
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OH",
+          "state_name": "Ohio",
+          "city_name": "COLUMBUS",
+          "county_code": "049",
+          "county_name": "FRANKLIN",
+          "address_line1": "2111 BUILDERS PL",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "15",
+          "zip4": "4886",
+          "zip5": "43204",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OH",
+          "state_name": "Ohio",
+          "city_name": "COLUMBUS",
+          "county_code": "049",
+          "county_name": "FRANKLIN",
+          "congressional_code": "15",
+          "zip4": "432044886",
+          "zip5": "43204"
+        }
+      }
+    ],
+    "top_grant_recipients": [],
+    "total_contract_count": 3,
+    "total_grant_count": 0
+  },
+  "raw_award_data": {
+    "spending": {
+      "2023": 417600.0,
+      "2024": 67000.0,
+      "2025": 0
+    },
+    "Top Active Awards": [],
+    "Top Contract Recipients": [
+      {
+        "name": "Great Migrations LLC",
+        "recipient_id": "9f106ae2-ca8d-4895-8027-c39a0460a54c-C",
+        "amount": 285000.0,
+        "award_count": 2,
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OH",
+          "state_name": "Ohio",
+          "city_name": "DUBLIN",
+          "county_code": "049",
+          "county_name": "FRANKLIN",
+          "address_line1": "7453 KATESBRIDGE CT",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "15",
+          "zip4": "8281",
+          "zip5": "43017",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OH",
+          "state_name": "Ohio",
+          "city_name": "DUBLIN",
+          "county_code": "049",
+          "county_name": "FRANKLIN",
+          "congressional_code": "15",
+          "zip4": "430173542",
+          "zip5": "43017"
+        },
+        "type": "contract"
+      },
+      {
+        "name": "Kendall Holdings LTD",
+        "recipient_id": "d585d137-b11b-3634-57ec-e7ddcf3529b0-C",
+        "amount": 199600.0,
+        "award_count": 1,
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OH",
+          "state_name": "Ohio",
+          "city_name": "COLUMBUS",
+          "county_code": "049",
+          "county_name": "FRANKLIN",
+          "address_line1": "2111 BUILDERS PL",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "15",
+          "zip4": "4886",
+          "zip5": "43204",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OH",
+          "state_name": "Ohio",
+          "city_name": "COLUMBUS",
+          "county_code": "049",
+          "county_name": "FRANKLIN",
+          "congressional_code": "15",
+          "zip4": "432044886",
+          "zip5": "43204"
+        },
+        "type": "contract"
+      }
+    ],
+    "Top Grant Recipients": [],
+    "Total Contract Awards": 3,
+    "Total Grant Awards": 0
+  }
+}

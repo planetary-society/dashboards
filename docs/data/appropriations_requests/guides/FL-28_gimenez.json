@@ -1,0 +1,466 @@
+{
+  "target_fiscal_year": 2027,
+  "status": "success",
+  "status_reason": null,
+  "status_detail": null,
+  "member": {
+    "full_name": "Carlos Gimenez",
+    "first_name": "Carlos",
+    "last_name": "Gimenez",
+    "chamber": "House",
+    "party": "Republican",
+    "state_code": "FL",
+    "district": "28",
+    "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSdT0Daa8EOqtJtXXdW0kvKV_aLmPTU0nKxciZedApQr2PL0Qw/viewform",
+    "deadline": "3/6/2026",
+    "comment": null,
+    "submitted": false,
+    "past_caucus_signatory": false,
+    "caucus_member": false,
+    "appropriator": false,
+    "authorizer": false,
+    "nasa_center": false,
+    "bioguide_id": "G000593",
+    "official_url": "https://gimenez.house.gov",
+    "contact_form_url": null,
+    "phone": "202-225-2778",
+    "office_address": "448 Cannon House Office Building Washington DC 20515-0001",
+    "district_offices": [
+      {
+        "office_id": "G000593-key_west",
+        "address": "1100 Simonton St.",
+        "city": "Key West",
+        "state": "FL",
+        "zip": "33040",
+        "suite": "Room 1-213",
+        "phone": "305-292-4485",
+        "fax": null,
+        "latitude": 24.5505676,
+        "longitude": -81.7973604
+      },
+      {
+        "office_id": "G000593-miami",
+        "address": "14221 SW 120th St.",
+        "city": "Miami",
+        "state": "FL",
+        "zip": "33186",
+        "suite": "#115",
+        "phone": "305-222-0160",
+        "fax": null,
+        "latitude": 25.6567885,
+        "longitude": -80.42425399999999
+      }
+    ],
+    "state_district": "FL-28",
+    "district_padded": "28",
+    "member_key": "FL-28_gimenez"
+  },
+  "form_analysis": {
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSdT0Daa8EOqtJtXXdW0kvKV_aLmPTU0nKxciZedApQr2PL0Qw/viewform",
+    "url_type": "google_forms",
+    "fetch_method": "httpx",
+    "form_header_text": "Office of Congressman Carlos Gimenez FY27 Programmatic and Language Request Form",
+    "form_instructions_text": "Deadline: March 6, 2026 at 5 PM EST",
+    "sections": [
+      {
+        "header": "Organization Information",
+        "description": "Information about the requesting organization and primary point of contact.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_825431007:9ba9b6bede77",
+            "label": "Organization Name ",
+            "help_text": "Name of the entity making the request",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_1978411403:43a21996343c",
+            "label": "Organization Contact Person (First and Last Name)",
+            "help_text": "Primary point of contact for this organization",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_1140386561:fd0efe202657",
+            "label": "Mailing Address ",
+            "help_text": "Mailing address for the organization",
+            "field_type": "address",
+            "required": false,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_817217623:f68281c9b8f9",
+            "label": "Phone Number ",
+            "help_text": "Contact phone number",
+            "field_type": "phone",
+            "required": false,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_317423166:ed67126146cd",
+            "label": "Email Address ",
+            "help_text": "Contact email address",
+            "field_type": "email",
+            "required": false,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Request Classification",
+        "description": "Categorization of the appropriations request.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_359039357:49b22b2b2f9f",
+            "label": "Subcommittee",
+            "help_text": "Select the appropriate Appropriations subcommittee",
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Agriculture, Rural Development, Food and Drug Administration, and Related Agencies",
+              "Commerce, Justice, Science, and Related Agencies",
+              "Defense",
+              "Energy and Water Development and Related Agencies",
+              "Financial Services and General Government",
+              "Homeland Security",
+              "Interior, Evnironment, and Related Agencies",
+              "Labor, Health and Human Services, Education, and Related Agencies",
+              "Legislative Branch",
+              "Military Construction, Veterans Affairs, and Related Agencies",
+              "National Security, Department of State, and Related Programs",
+              "Transportation, House and Urban Development, and Related Agencies"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Commerce, Justice, Science, and Related Agencies",
+            "rationale": "This request falls under the CJS subcommittee as indicated in the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_380844121:50ddcae578c7",
+            "label": "Request Type ",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Program",
+              "Language",
+              "Bill"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Program",
+            "rationale": "The request context specifies this is a programmatic funding request.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Request Details",
+        "description": "Specific information regarding the proposed programmatic or language request.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_407528181:357452b2a30c",
+            "label": "Request Title ",
+            "help_text": "A brief, descriptive title for the request",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA Science Mission Directorate",
+            "rationale": "Uses the standard short title for the SMD programmatic request.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1943409926:7cfcd0544352",
+            "label": "Exact Language Requested ",
+            "help_text": "Specific bill or report language requested",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The reference values indicate that no specific bill or report language is requested for this programmatic ask.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1217566983:72a6afd9d220",
+            "label": "Agency/Bureau",
+            "help_text": "The federal agency or bureau that oversees this program",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA",
+            "rationale": "The federal agency responsible is NASA.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1431577840:9c64551ad86b",
+            "label": "Account within the Agency ",
+            "help_text": "Specific budget account name",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science",
+            "rationale": "The budget account name is 'Science'.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1072934130:47e207e23d81",
+            "label": "Program ",
+            "help_text": "The specific program name",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science Mission Directorate",
+            "rationale": "The program name is the Science Mission Directorate.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Funding and Description",
+        "description": "Financial details and narrative justification for the request.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_861975231:3708502cf931",
+            "label": "Program Funding Level",
+            "help_text": "The funding level for this program",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "This matches the standard funding ask amount for the Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1268493355:e416ecfc66ff",
+            "label": "Request Amount ",
+            "help_text": "Dollar amount requested for FY27",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "This matches the provided funding ask for the NASA Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1231152818:fe4c0d4d6a50",
+            "label": "Program Description ",
+            "help_text": "Provide a description of the program and why funding is needed",
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* NASA's Science Mission Directorate (SMD) conducts over 100 missions exploring Earth and the Solar System, maintaining U.S. leadership in the 21st-century space race.\n* Funding supports the local aerospace workforce in FL-28, including recent contracts for Ultimate Aviation Solutions Inc, part of a program delivering a 3-to-1 economic return.\n* A $9 billion investment restores stability after FY2026 disruptions and ensures the U.S. sets exploration norms ahead of rapidly expanding Chinese space ambitions.\n* Supports high-priority Decadal Survey missions that advance critical technologies in weather forecasting, planetary defense, and STEM workforce development.",
+            "rationale": "The response combines the $9B ask with local spending data (Ultimate Aviation Solutions Inc in FL-28) and strategic advocacy points regarding the China space race and economic ROI. It addresses the FY2026 enacted level ($7.25B) context by emphasizing the need for restoration and stability.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Dear Colleague Information",
+        "description": "Details regarding any associated House Dear Colleague letters.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1092234950:5820bcb4daf6",
+            "label": "Is This Request Associated with a House Dear Colleague Letter ",
+            "help_text": null,
+            "field_type": "radio",
+            "required": false,
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Yes",
+            "rationale": "Reference values indicate an existing House letter for NASA Science.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_228181704:c0e75600d3b7",
+            "label": "If so, which Member of Congress is leading the Dear Colleauge Letter",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Reps. Don Bacon and Judy Chu",
+            "rationale": "These members are identified as the House leads in the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_182237765:ddcb485c3753",
+            "label": "Subject / Title of Dear Colleague ",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Support for NASA Science Mission Directorate Funding",
+            "rationale": "Standard descriptive title for the relevant programmatic Dear Colleague letter.",
+            "confidence": "medium"
+          }
+        ]
+      }
+    ],
+    "submission_method": "online_form",
+    "deadline_text": "March 6, 2026 at 5 PM EST",
+    "validation": {
+      "passed": true,
+      "issues": [],
+      "summary": "All fields passed validation."
+    },
+    "refinement": null
+  },
+  "nasa_context": {
+    "state_code": "FL",
+    "state_name": "Florida",
+    "district": "28",
+    "spending_by_year": {
+      "2023": 31693.9,
+      "2024": 0.0,
+      "2025": 0.0
+    },
+    "annual_total_spending_by_year": {
+      "2023": 31693.9,
+      "2024": 0.0,
+      "2025": 0.0
+    },
+    "top_contracts": [],
+    "top_grants": [],
+    "top_contract_recipients": [
+      {
+        "name": "Ultimate Aviation Solutions Inc",
+        "recipient_id": "7350fb87-eb1e-e164-6d3d-2c2647ff4cbe-C",
+        "total_amount": 31693.9,
+        "award_count": 2,
+        "award_type": "contract",
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "FL",
+          "state_name": "Florida",
+          "city_name": "MIAMI",
+          "county_code": "086",
+          "county_name": "MIAMI-DADE",
+          "address_line1": "11251 NW 20TH ST",
+          "address_line2": "UNIT 111",
+          "address_line3": null,
+          "congressional_code": "25",
+          "zip4": "1860",
+          "zip5": "33172",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "FL",
+          "state_name": "Florida",
+          "city_name": "MIAMI",
+          "county_code": "086",
+          "county_name": "MIAMI-DADE",
+          "congressional_code": "25",
+          "zip4": "331721860",
+          "zip5": "33172"
+        }
+      }
+    ],
+    "top_grant_recipients": [],
+    "total_contract_count": 2,
+    "total_grant_count": 0
+  },
+  "raw_award_data": {
+    "spending": {
+      "2023": 31693.9,
+      "2024": 0,
+      "2025": 0
+    },
+    "Top Active Awards": [],
+    "Top Contract Recipients": [
+      {
+        "name": "Ultimate Aviation Solutions Inc",
+        "recipient_id": "7350fb87-eb1e-e164-6d3d-2c2647ff4cbe-C",
+        "amount": 31693.9,
+        "award_count": 2,
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "FL",
+          "state_name": "Florida",
+          "city_name": "MIAMI",
+          "county_code": "086",
+          "county_name": "MIAMI-DADE",
+          "address_line1": "11251 NW 20TH ST",
+          "address_line2": "UNIT 111",
+          "address_line3": null,
+          "congressional_code": "25",
+          "zip4": "1860",
+          "zip5": "33172",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "FL",
+          "state_name": "Florida",
+          "city_name": "MIAMI",
+          "county_code": "086",
+          "county_name": "MIAMI-DADE",
+          "congressional_code": "25",
+          "zip4": "331721860",
+          "zip5": "33172"
+        },
+        "type": "contract"
+      }
+    ],
+    "Top Grant Recipients": [],
+    "Total Contract Awards": 2,
+    "Total Grant Awards": 0
+  }
+}

@@ -1,0 +1,977 @@
+{
+  "target_fiscal_year": 2027,
+  "status": "success",
+  "status_reason": null,
+  "status_detail": null,
+  "member": {
+    "full_name": "Grace Meng",
+    "first_name": "Grace",
+    "last_name": "Meng",
+    "chamber": "House",
+    "party": "Democrat",
+    "state_code": "NY",
+    "district": "6",
+    "form_url": "https://forms.cloud.microsoft/pages/responsepage.aspx?id=mYITktAiSU2NMHFw1YltmPPrnRk_S8lOuPh72QMAdAtUNVJTTE1XSEFHWklXQ1g1OTNaS0gwTkNKWi4u&route=shorturl",
+    "deadline": "3/13/2026",
+    "comment": null,
+    "submitted": false,
+    "past_caucus_signatory": false,
+    "caucus_member": false,
+    "appropriator": true,
+    "authorizer": false,
+    "nasa_center": false,
+    "bioguide_id": "M001188",
+    "official_url": "https://meng.house.gov",
+    "contact_form_url": null,
+    "phone": "202-225-2601",
+    "office_address": "2468 Rayburn House Office Building Washington DC 20515-3206",
+    "district_offices": [
+      {
+        "office_id": "M001188-flushing",
+        "address": "40-13 159th St.",
+        "city": "Flushing",
+        "state": "NY",
+        "zip": "11358",
+        "suite": "Suite A",
+        "phone": "718-358-6364",
+        "fax": "718-445-7868",
+        "latitude": 40.76260720000001,
+        "longitude": -73.8062197
+      },
+      {
+        "office_id": "M001188-forest_hills",
+        "address": "118-35 Queens Blvd",
+        "city": "Forest Hills",
+        "state": "NY",
+        "zip": "11375",
+        "suite": "Suite 900",
+        "phone": null,
+        "fax": null,
+        "latitude": 40.7148753,
+        "longitude": -73.83085919999999
+      }
+    ],
+    "state_district": "NY-06",
+    "district_padded": "06",
+    "member_key": "NY-06_meng"
+  },
+  "form_analysis": {
+    "url": "https://forms.cloud.microsoft/pages/responsepage.aspx?id=mYITktAiSU2NMHFw1YltmPPrnRk_S8lOuPh72QMAdAtUNVJTTE1XSEFHWklXQ1g1OTNaS0gwTkNKWi4u&route=shorturl",
+    "url_type": "microsoft_forms",
+    "fetch_method": "httpx",
+    "form_header_text": "FY27 Appropriations Request Form - Rep. Grace Meng",
+    "form_instructions_text": "As a Member of the House Appropriations Committee, my office accepts appropriations requests from interested parties. For your request(s) to be given consideration, you must complete the attached form for each programmatic funding and/or bill or report language request. Multiple requests in one submission WILL NOT be accepted. Please submit each request individually. Please note: This is NOT the CPF Application. Please contact my office at MengAppropriations@mail.house.gov should you have any questions.",
+    "sections": [
+      {
+        "header": "Contact Information",
+        "description": "Information about the entity and individual submitting this request.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:ra2b53bc001da4f9cabc7aa41ffdfba2b:418ba178e6cc",
+            "label": "Requesting Entity:",
+            "help_text": "The organization or individual requesting the funds.",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r2ba7267654ef4a9ab115034d82c7fe5b:c914a1f064cb",
+            "label": "Name:",
+            "help_text": "Point of contact name.",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:rb90aa2abe17c4d4da09f3929ae000616:b9fe96505054",
+            "label": "Organization (if applicable):",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:rd793f507e5df4d96a7626e953c0e59c5:a76562527c27",
+            "label": "Email:",
+            "help_text": null,
+            "field_type": "email",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:rab437578ad2341c496e76a92e73c9a5e:732c173a430a",
+            "label": "Phone:",
+            "help_text": null,
+            "field_type": "phone",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Subcommittee & Agency Selection",
+        "description": "Identify the relevant jurisdiction for the request.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r331bed9d40c843119d80525cb47c8784:8565df8d0b7e",
+            "label": "Subcommittee:",
+            "help_text": "Select the Appropriations Subcommittee with jurisdiction over this request.",
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Agriculture, Rural Development, Food and Drug Administration",
+              "Commerce, Justice, Science",
+              "Defense",
+              "Energy and Water Development",
+              "Financial Services and General Government",
+              "Homeland Security",
+              "Interior, Environment",
+              "Labor, Health and Human Services, Education",
+              "Legislative Branch",
+              "Military Construction, Veterans Affairs",
+              "National Security, State Department",
+              "Transportation, Housing and Urban Development"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Commerce, Justice, Science",
+            "rationale": "NASA funding falls under the jurisdiction of the Commerce, Justice, Science, and Related Agencies Subcommittee.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rf5c4788b8c944fd1b4710ffcad393e10:fefa40148d3a",
+            "label": "Federal Agency to which the request pertains:",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA",
+            "rationale": "Matches the agency identified in the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r82c09f0aafc44d9e9eda9f9dea4c2fbd:eb030d51c979",
+            "label": "Account within the Agency to which the request pertains:",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science",
+            "rationale": "Standard NASA account name for the Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r5346504905e1404bba5e90ae3a6ecee8:1aaa03dc1474",
+            "label": "Title of your request:",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA Science Mission Directorate Funding Request",
+            "rationale": "Clear, descriptive title based on the account name and request type.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r542c6a24f02d4a88878d75feb7387429:944b61cb4311",
+            "label": "Request Type:",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Programmatic Funding",
+              "Language Request"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Programmatic Funding",
+            "rationale": "The request is for a specific funding level ($9 billion) for the Science Mission Directorate, which is a programmatic request.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Itemized Project Details",
+        "description": "Specific project identifiers for items within the agency budget.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r67225bcdcecd4a36836c5fd8c7e1b286:c8439b40a03d",
+            "label": "Federal Agency to which the request pertains:",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA",
+            "rationale": "Matches the agency identified in the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r5d25e83e37ef45b18919b050712171a1:8774472785df",
+            "label": "Item or Project Name:",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science Mission Directorate",
+            "rationale": "This is a programmatic request for the entire SMD account.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r3032fc59d1f14f09a1b48caf29a38cab:ca36bea63d78",
+            "label": "Appropriation Account within the Agency to which request pertains:",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science",
+            "rationale": "Standard account name for SMD funding.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r6ca4f7ba9a8947d09be461d567d07fe1:a646f7560ae0",
+            "label": "Line Number:",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "Line numbers are typically not provided for topline programmatic account requests unless specifically requested by the committee instructions.",
+            "confidence": "medium"
+          },
+          {
+            "field_id": "microsoft_forms:01:r721f2089b8214f61904bf17d050a7a9a:583ee2bdb22d",
+            "label": "Program Element (PE) title (as applicable):",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "N/A",
+            "rationale": "This is a topline account request, not a specific RDT&E program element.",
+            "confidence": "medium"
+          },
+          {
+            "field_id": "microsoft_forms:01:r5ea5c6c055214f3b970ff9e69e9f7bb2:fc39c51314ee",
+            "label": "Program Element (PE) title (as applicable):",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "N/A",
+            "rationale": "This is a topline account request, not a specific RDT&E program element.",
+            "confidence": "medium"
+          },
+          {
+            "field_id": "microsoft_forms:01:r77eea754d01541bd99377687ab8c448c:b529c9569f06",
+            "label": "Title of your request:",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science Mission Directorate",
+            "rationale": "Matches the short title identified in the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rfcc7df0b96214a53ab74e5a4e64637de:9be2026e742a",
+            "label": "Request Type:",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Programmatic Funding",
+              "Language Request"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Programmatic Funding",
+            "rationale": "This is a programmatic funding request for an existing NASA account.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Programmatic Funding Details",
+        "description": "Specifics for requests involving dollar amounts.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r77e4f939f2cd46f78b8649cb9ddcef11:8994a7dd7dca",
+            "label": "Short (must be less than 500 characters) description of program request:",
+            "help_text": "Provide a brief narrative of what the funding will support.",
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* $9B for NASA SMD to restore funding and maintain global leadership against rising international competition.\n* Supports NY-6 entities like Kepco, Inc. and the Research Foundation of CUNY, which received over $425,000 in NASA Science funding since FY2023.\n* Every $1 invested in NASA returns $3 to the economy, fueling local innovation and the STEM talent pipeline.\n* Advances nonpartisan Decadal Survey priorities for solar system exploration and planetary defense.",
+            "rationale": "This draft supports the $9B topline ask for NASA Science while highlighting local economic and scientific impacts in NY-6, specifically citing the $425,974 in district spending across Kepco, Inc. and the Research Foundation of CUNY. It incorporates key advocacy talking points regarding international competition and economic ROI.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rea0aafc3ee7c488a95500031a3eeb663:58f02c79cd44",
+            "label": "Program Funding Level:",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Support the enacted level",
+              "Support the President's Budget Request",
+              "General support for the program",
+              "Funding should be increased",
+              "Funding should be reduced",
+              "Eliminate the Program"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Funding should be increased",
+            "rationale": "The request of $9 billion is a 24% increase over the FY2026 enacted level of $7.25 billion.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rbdf272a665274075980a0a2801f53747:48d763ff6d24",
+            "label": "Programmatic Funding Request Amount:",
+            "help_text": "The specific dollar amount requested.",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "Uses the exact funding ask provided in the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rb8899d1e66184926b02dd5775b56fe89:efa30f479504",
+            "label": "Enacted funding level for FY24\u0000(if known):",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$7,334,000,000",
+            "rationale": "Uses the FY2025 enacted amount (representing the prior cycle's outcome) as the closest available relevant enacted figure for reference.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:re61c7cbcc2824c898b671568a1f5c895:00c79b797582",
+            "label": "Enacted funding level for FY25\u0000(if known):",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$7,334,000,000",
+            "rationale": "Uses the FY2025 enacted amount from the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r893333e3d1e94ee4bb318cfc27b357c8:3f21fdba9071",
+            "label": "Short (must be less than 500 characters) description of program request:",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* $9B for NASA SMD to restore funding and maintain global leadership against rising international competition.\n* Supports NY-6 entities like Kepco, Inc. and the Research Foundation of CUNY, which received over $425,000 in NASA Science funding since FY2023.\n* Every $1 invested in NASA returns $3 to the economy, fueling local innovation and the STEM talent pipeline.\n* Advances nonpartisan Decadal Survey priorities for solar system exploration and planetary defense.",
+            "rationale": "This draft supports the $9B topline ask for NASA Science while highlighting local economic and scientific impacts in NY-6, specifically citing the $425,974 in district spending across Kepco, Inc. and the Research Foundation of CUNY. It incorporates key advocacy talking points regarding international competition and economic ROI.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:re6d4305a334e47a6bba20515c6947b07:5675725c0086",
+            "label": "Program Funding Level:",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Support amount indicated in response to the following question",
+              "Support the enacted level",
+              "Support the President's Budget Request",
+              "General support for the program",
+              "Funding should be increased",
+              "Funding should be reduced",
+              "Eliminate the Program"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Support amount indicated in response to the following question",
+            "rationale": "This option allows for the specification of the exact $9 billion request level.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r07dd2eeb008d419e9de1a29b9fde2d05:a90b26650964",
+            "label": "President's Budget Request (FY25):",
+            "help_text": "The amount requested in the President's Budget.",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$7,566,000,000",
+            "rationale": "Uses the FY2025 PBR amount from the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rc3152cfdc2f94886b62f99136154609e:800da084a9e4",
+            "label": "Programmatic Funding Request Amount:",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "Uses the exact funding ask provided in the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rb073e79bc34f42dfabdabb7e229c1f2e:cac1feed24ce",
+            "label": "Change from President's Budget Request:",
+            "help_text": "The delta between your request and the PBR.",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Currently unknown (President's Budget Request has not been released)",
+            "rationale": "The FY2027 President's Budget Request has not been released yet, making a delta calculation impossible.",
+            "confidence": "medium"
+          },
+          {
+            "field_id": "microsoft_forms:01:rd790eb87b327482392e094772eccc7e1:62f20259e1d6",
+            "label": "Enacted funding level for FY24\u0000(if known):",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$7,334,000,000",
+            "rationale": "Uses the FY2025 enacted amount from the reference values as the most recent data point.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:raf37fc2b8c174123a71ecfece71559b5:d4a136c18079",
+            "label": "Enacted funding level for FY25 (if known):",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$7,334,000,000",
+            "rationale": "Uses the FY2025 enacted amount from the reference values.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Language Request Details",
+        "description": "Specifics for requests involving report or bill language.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:rf50a2ab935a542199bdd14152444fe0b:c716ec4e516f",
+            "label": "Specify whether the request is for bill language or report language:",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Bill language",
+              "Report language"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This section is for language requests; the current request is programmatic.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:rf4e5982446c6482fa9fd388155172f1e:9fd1e9e77760",
+            "label": "Proposed language (must be less than 1000 characters):",
+            "help_text": "The exact text proposed for the bill or report.",
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The request type is programmatic; the provided reference context states that no bill or report language is requested for this submission.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:r31e352d228844e19885c8ec44b5eed03:c053952e69e4",
+            "label": "Specify whether the request is for bill language or report language:",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Bill language",
+              "Report language"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This section is for language requests; the current request is programmatic.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:ra143003c3c4d4821a900d076f459fbf6:6eec50a15bc2",
+            "label": "Appropriation Account:",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science",
+            "rationale": "Standard NASA account name.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r67fe3fddc6b1447eb4dff4951574c011:d138f9c1e68d",
+            "label": "Line Number:",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "Line numbers are typically not provided for topline programmatic account requests.",
+            "confidence": "medium"
+          },
+          {
+            "field_id": "microsoft_forms:01:r736b7dfd1f3d4ab696e739bf1b01306b:9d1b213527a2",
+            "label": "Program Element (PE) Title (as applicable):",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "N/A",
+            "rationale": "This is a topline account request, not a specific RDT&E program element.",
+            "confidence": "medium"
+          },
+          {
+            "field_id": "microsoft_forms:01:r55106ba0883141ce980053db50dd8681:65461906c966",
+            "label": "Proposed language (must be less than 1000 characters):",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The request type is programmatic; the provided reference context states that no bill or report language is requested for this submission.",
+            "confidence": "low"
+          }
+        ]
+      }
+    ],
+    "submission_method": "online_form",
+    "deadline_text": "Monday, March 2, 2026",
+    "validation": {
+      "passed": true,
+      "issues": [],
+      "summary": "All fields passed validation."
+    },
+    "refinement": null
+  },
+  "nasa_context": {
+    "state_code": "NY",
+    "state_name": "New York",
+    "district": "06",
+    "spending_by_year": {
+      "2023": 55988.0,
+      "2024": 150000.0,
+      "2025": 219986.0
+    },
+    "annual_total_spending_by_year": {
+      "2023": 55988.0,
+      "2024": 150000.0,
+      "2025": 219986.0
+    },
+    "top_contracts": [],
+    "top_grants": [
+      {
+        "award_id": "80NSSC24K1069",
+        "generated_unique_award_id": "ASST_NON_80NSSC24K1069_080",
+        "recipient_name": "Research Foundation of the City University of New York",
+        "recipient_id": "af051b1f-0c81-91f7-e003-c538f42cbe15-C",
+        "award_amount": 300000.0,
+        "description": "23-bpsf23-0029  expanding heliophysics scientific discovery through helioanalytics",
+        "start_date": "2024-06-01",
+        "end_date": "2026-05-31",
+        "category": "grant",
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "OAKLAND GARDENS",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "congressional_code": "06",
+          "zip4": "11364-1432",
+          "zip5": "11364"
+        },
+        "recipient_location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "OAKLAND GARDENS",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "address_line1": "222-05 56TH AVE",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "06",
+          "zip4": "1432",
+          "zip5": "11364",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "generated_award_summary": "Accelerating solar system science using advanced data analytics."
+      },
+      {
+        "award_id": "80NSSC25K0122",
+        "generated_unique_award_id": "ASST_NON_80NSSC25K0122_080",
+        "recipient_name": "Research Foundation of the City University of New York",
+        "recipient_id": "4d56551b-7301-dd7a-60f9-10e6e03e9f68-C",
+        "award_amount": 69986.0,
+        "description": "Execute a balanced science program based on discipline-specific guidance from the national academies of sciences  engineering  and medicine  administration priorities  and direction from congress. Participate as a key partner and enabler in the agencys exploration initiative  focusing on scientific research of  on  and from the moon  lunar orbit  Mars  and beyond. Advance discovery in emerging fields by identifying and exploiting cross disciplinary opportunities between traditional science disciplines develop a directorate-wide  target-user focused approach to applied programs  including Earth science applications  space weather  planetary defense  and space situational awareness.",
+        "start_date": "2025-05-19",
+        "end_date": "2026-05-18",
+        "category": "grant",
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "FLUSHING",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "congressional_code": "06",
+          "zip4": "11367-1575",
+          "zip5": "11367"
+        },
+        "recipient_location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "FLUSHING",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "address_line1": "6530 KISSENA BLVD",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "06",
+          "zip4": "1575",
+          "zip5": "11367",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "generated_award_summary": "Strategic science planning for Moon, Mars exploration, and space situational awareness."
+      }
+    ],
+    "top_contract_recipients": [
+      {
+        "name": "Kepco, Inc.",
+        "recipient_id": "a5fc669c-64f9-1307-4bae-e1d0175e1dca-C",
+        "total_amount": 55988.0,
+        "award_count": 1,
+        "award_type": "contract",
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "FLUSHING",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "address_line1": "13138 SANFORD AVE",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "06",
+          "zip4": "4231",
+          "zip5": "11355",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "FLUSHING",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "congressional_code": "06",
+          "zip4": "113554231",
+          "zip5": "11355"
+        }
+      }
+    ],
+    "top_grant_recipients": [
+      {
+        "name": "Research Foundation of the City University of New York",
+        "recipient_id": "af051b1f-0c81-91f7-e003-c538f42cbe15-C",
+        "total_amount": 369986.0,
+        "award_count": 2,
+        "award_type": "grant",
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "OAKLAND GARDENS",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "address_line1": "222-05 56TH AVE",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "06",
+          "zip4": "1432",
+          "zip5": "11364",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "OAKLAND GARDENS",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "congressional_code": "06",
+          "zip4": "11364-1432",
+          "zip5": "11364"
+        }
+      }
+    ],
+    "total_contract_count": 1,
+    "total_grant_count": 2
+  },
+  "raw_award_data": {
+    "spending": {
+      "2023": 55988.0,
+      "2024": 150000.0,
+      "2025": 219986.0
+    },
+    "Top Active Awards": [
+      {
+        "Award Type": "grant",
+        "Award ID": "80NSSC24K1069",
+        "Recipient Name": "Research Foundation of the City University of New York",
+        "recipient_id": "af051b1f-0c81-91f7-e003-c538f42cbe15-C",
+        "Recipient Location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "OAKLAND GARDENS",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "address_line1": "222-05 56TH AVE",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "06",
+          "zip4": "1432",
+          "zip5": "11364",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "Place of Performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "OAKLAND GARDENS",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "congressional_code": "06",
+          "zip4": "11364-1432",
+          "zip5": "11364"
+        },
+        "Award Amount": 300000.0,
+        "Start Date": "2024-06-01",
+        "End Date": "2026-05-31",
+        "Last Modified Date": "2025-07-22",
+        "Base Obligation Date": "2024-06-25",
+        "Description": "23-bpsf23-0029  expanding heliophysics scientific discovery through helioanalytics",
+        "generated_unique_award_id": "ASST_NON_80NSSC24K1069_080",
+        "generated_award_summary": "Accelerating solar system science using advanced data analytics."
+      },
+      {
+        "Award Type": "grant",
+        "Award ID": "80NSSC25K0122",
+        "Recipient Name": "Research Foundation of the City University of New York",
+        "recipient_id": "4d56551b-7301-dd7a-60f9-10e6e03e9f68-C",
+        "Recipient Location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "FLUSHING",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "address_line1": "6530 KISSENA BLVD",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "06",
+          "zip4": "1575",
+          "zip5": "11367",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "Place of Performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "FLUSHING",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "congressional_code": "06",
+          "zip4": "11367-1575",
+          "zip5": "11367"
+        },
+        "Award Amount": 69986.0,
+        "Start Date": "2025-05-19",
+        "End Date": "2026-05-18",
+        "Last Modified Date": "2025-08-05",
+        "Base Obligation Date": "2025-07-31",
+        "Description": "Execute a balanced science program based on discipline-specific guidance from the national academies of sciences  engineering  and medicine  administration priorities  and direction from congress. Participate as a key partner and enabler in the agencys exploration initiative  focusing on scientific research of  on  and from the moon  lunar orbit  Mars  and beyond. Advance discovery in emerging fields by identifying and exploiting cross disciplinary opportunities between traditional science disciplines develop a directorate-wide  target-user focused approach to applied programs  including Earth science applications  space weather  planetary defense  and space situational awareness.",
+        "generated_unique_award_id": "ASST_NON_80NSSC25K0122_080",
+        "generated_award_summary": "Strategic science planning for Moon, Mars exploration, and space situational awareness."
+      }
+    ],
+    "Top Contract Recipients": [
+      {
+        "name": "Kepco, Inc.",
+        "recipient_id": "a5fc669c-64f9-1307-4bae-e1d0175e1dca-C",
+        "amount": 55988.0,
+        "award_count": 1,
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "FLUSHING",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "address_line1": "13138 SANFORD AVE",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "06",
+          "zip4": "4231",
+          "zip5": "11355",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "FLUSHING",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "congressional_code": "06",
+          "zip4": "113554231",
+          "zip5": "11355"
+        },
+        "type": "contract"
+      }
+    ],
+    "Top Grant Recipients": [
+      {
+        "name": "Research Foundation of the City University of New York",
+        "recipient_id": "af051b1f-0c81-91f7-e003-c538f42cbe15-C",
+        "amount": 369986.0,
+        "award_count": 2,
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "OAKLAND GARDENS",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "address_line1": "222-05 56TH AVE",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "06",
+          "zip4": "1432",
+          "zip5": "11364",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "OAKLAND GARDENS",
+          "county_code": "081",
+          "county_name": "QUEENS",
+          "congressional_code": "06",
+          "zip4": "11364-1432",
+          "zip5": "11364"
+        },
+        "type": "grant"
+      }
+    ],
+    "Total Contract Awards": 1,
+    "Total Grant Awards": 2
+  }
+}

@@ -1,5 +1,8 @@
 {
   "target_fiscal_year": 2027,
+  "status": "success",
+  "status_reason": null,
+  "status_detail": null,
   "member": {
     "full_name": "Joaquin Castro",
     "first_name": "Joaquin",
@@ -43,19 +46,19 @@
   "form_analysis": {
     "url": "https://forms.office.com/pages/responsepage.aspx?id=mYITktAiSU2NMHFw1YltmF-pDStJZ-ZKmlpelOSdH3BUREFESENNUEs3WTlXM0szUDdSVzAwWDUwOC4u&route=shorturl",
     "url_type": "microsoft_forms",
-    "fetch_method": "browser-use",
+    "fetch_method": "httpx",
     "form_header_text": "Fiscal Year 2027 Appropriations Request For Congressman Joaquin Castro",
     "form_instructions_text": "Each year, Members of Congress have an opportunity to submit funding priorities to the U.S. House Committee on Appropriations. This is an important way that Members can advocate for programs critical to the nation, their constituents, and their states. Please fill out this form to submit your fiscal year 2027 Programmatic, Bill Language, or Report Language appropriations requests to the Office of Congressman Joaquin Castro. To the fullest extent possible, please provide detailed information regarding the location of your request in the subcommittee bill or report, down to the activity or account level (if applicable). Please contact Sid Ravishankar at sid.ravishankar@mail.house.gov or (202) 225-3236 for any questions.",
     "sections": [
       {
-        "header": "Submitter and Organization Information",
-        "description": "Please provide your contact information and details about your organization.",
+        "header": "Requesting Organization Information",
+        "description": "Details about the entity submitting the appropriations request.",
         "fields": [
           {
-            "field_id": "microsoft_forms:01:questionItem:21a45131735b",
+            "field_id": "microsoft_forms:01:r778010be1cac48819dbb041c8c09830f:8caefc4e3b5e",
             "label": "Name of Requesting Organization",
             "help_text": null,
-            "field_type": "text",
+            "field_type": "textarea",
             "required": true,
             "options": null,
             "is_constituent_info": true,
@@ -65,12 +68,17 @@
             "confidence": null
           },
           {
-            "field_id": "microsoft_forms:01:questionItem:962ea7b5f624",
+            "field_id": "microsoft_forms:01:rd2038f3cab0549ddbde33747878addc8:bf6e0da706cb",
             "label": "Organization Type",
             "help_text": null,
             "field_type": "dropdown",
             "required": true,
-            "options": null,
+            "options": [
+              "Nonprofit",
+              "For Profit",
+              "State or Local Government",
+              "Individual"
+            ],
             "is_constituent_info": true,
             "is_prior_year_field": false,
             "draft_value": null,
@@ -78,9 +86,9 @@
             "confidence": null
           },
           {
-            "field_id": "microsoft_forms:01:questionItem:e9148fbfb0c7",
+            "field_id": "microsoft_forms:01:rd3a9869958b245ac96d30816b53b848f:854ea1f6aff7",
             "label": "Primary Point of Contact",
-            "help_text": "Please include the contact's first and last name",
+            "help_text": null,
             "field_type": "text",
             "required": true,
             "options": null,
@@ -91,7 +99,7 @@
             "confidence": null
           },
           {
-            "field_id": "microsoft_forms:01:questionItem:3b4fc3b8f25e",
+            "field_id": "microsoft_forms:01:reef84df83c164830a8e241067464e160:9f6d05ea2245",
             "label": "Primary Point of Contact's Title",
             "help_text": null,
             "field_type": "text",
@@ -104,7 +112,7 @@
             "confidence": null
           },
           {
-            "field_id": "microsoft_forms:01:questionItem:366f190f38c6",
+            "field_id": "microsoft_forms:01:rd5d2ebf3d00e4791a7457772f2e8ba7c:7f89f7bad211",
             "label": "Primary Point of Contact's Email Address",
             "help_text": null,
             "field_type": "email",
@@ -117,7 +125,7 @@
             "confidence": null
           },
           {
-            "field_id": "microsoft_forms:01:questionItem:e2e6554f0f77",
+            "field_id": "microsoft_forms:01:r3240e29d27bb4c24b19bb68f3d14f77d:c453b5010306",
             "label": "Primary Point of Contact's Phone Number",
             "help_text": null,
             "field_type": "phone",
@@ -130,9 +138,9 @@
             "confidence": null
           },
           {
-            "field_id": "microsoft_forms:01:questionItem:fc93e93d6f35",
+            "field_id": "microsoft_forms:01:r549808e3f81e46d3a8bca73de67f2bd9:795c812ed67f",
             "label": "Provide the street address of your organization",
-            "help_text": "Address, City, State, Zip Code",
+            "help_text": null,
             "field_type": "address",
             "required": true,
             "options": null,
@@ -145,115 +153,138 @@
         ]
       },
       {
-        "header": "Request Details",
-        "description": "Please provide specifics about the appropriations request.",
+        "header": "Subcommittee and Request Type",
+        "description": "Classification of the request within the House Appropriations framework.",
         "fields": [
           {
-            "field_id": "microsoft_forms:01:questionItem:75e546df4aa5",
+            "field_id": "microsoft_forms:01:r709581a38b9a46b190c7182b14d1c164:fab60029932b",
             "label": "Select Subcommittee",
             "help_text": null,
             "field_type": "dropdown",
             "required": true,
-            "options": null,
+            "options": [
+              "Agriculture, Rural Development, Food and Drug Administration, and Related Agencies",
+              "Commerce, Justice, Science, and Related Agencies",
+              "Defense",
+              "Energy and Water Development, and Related Agencies",
+              "Financial Services and General Government",
+              "Homeland Security",
+              "Interior, Environment, and Related Agencies",
+              "Labor, Health and Human Services, Education, and Related Agencies",
+              "Legislative Branch",
+              "Military Construction, Veterans Affairs, and Related Agencies",
+              "National Security, Department of State, and Related Programs",
+              "Transportation, and Housing and Urban Development, and Related Agencies"
+            ],
             "is_constituent_info": false,
             "is_prior_year_field": false,
             "draft_value": "Commerce, Justice, Science, and Related Agencies",
-            "rationale": "Exact match with pre-filled reference value indicating NASA's jurisdiction.",
+            "rationale": "NASA falls under the jurisdiction of the Commerce, Justice, Science, and Related Agencies Subcommittee.",
             "confidence": "high"
           },
           {
-            "field_id": "microsoft_forms:01:questionItem:6a96cde5db0c",
+            "field_id": "microsoft_forms:01:r2abb6ef872144b7696a2a0f9613e712d:46cbe1696acf",
             "label": "Request Type",
             "help_text": null,
             "field_type": "dropdown",
             "required": true,
-            "options": null,
+            "options": [
+              "Funding Request",
+              "Bill Language",
+              "Report Language"
+            ],
             "is_constituent_info": false,
             "is_prior_year_field": false,
             "draft_value": "Funding Request",
-            "rationale": "Inferred from the form instructions (Programmatic, Bill Language, or Report Language) and the nature of this $9B topline funding request.",
-            "confidence": "medium"
-          },
+            "rationale": "This is a programmatic funding request for $9,000,000,000 for NASA's Science Mission Directorate.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Funding Request Information",
+        "description": "Specific details for programmatic funding requests.",
+        "fields": [
           {
-            "field_id": "microsoft_forms:02:questionItem:d1e24d0476b4",
+            "field_id": "microsoft_forms:01:r5e16bcff4503439c94108e5c62127760:91e542814bbd",
             "label": "Name of the Agency or Bureau",
             "help_text": null,
-            "field_type": "text",
+            "field_type": "textarea",
             "required": true,
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
             "draft_value": "National Aeronautics and Space Administration (NASA)",
-            "rationale": "Drawn directly from the provided asks configuration.",
+            "rationale": "NASA is the primary agency for the Science Mission Directorate request.",
             "confidence": "high"
           },
           {
-            "field_id": "microsoft_forms:02:questionItem:baa6ace30d1d",
+            "field_id": "microsoft_forms:01:r9cec1b22b9494312864059d8fa7d108c:bdc16d902987",
             "label": "Account",
             "help_text": null,
-            "field_type": "text",
+            "field_type": "textarea",
             "required": true,
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": "Science Mission Directorate",
-            "rationale": "Exact account name from the reference values.",
+            "draft_value": "Science",
+            "rationale": "The account for the Science Mission Directorate is specifically 'Science'.",
             "confidence": "high"
           },
           {
-            "field_id": "microsoft_forms:02:questionItem:a7026ba94388",
+            "field_id": "microsoft_forms:01:r2931f247cb3c4a89a559917ec28dd245:aae5c50b1ee4",
             "label": "Please provide the name of the program your request concerns",
             "help_text": null,
-            "field_type": "text",
+            "field_type": "textarea",
             "required": true,
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
             "draft_value": "Science Mission Directorate",
-            "rationale": "The focus of the request is the topline funding for the entire Science Mission Directorate.",
+            "rationale": "The Science Mission Directorate (SMD) is the primary program for this request.",
             "confidence": "high"
           },
           {
-            "field_id": "microsoft_forms:02:questionItem:52729e7aadda",
-            "label": "Please provide the title of your request",
+            "field_id": "microsoft_forms:01:r3a81b0bca3c84d32a89a9297ccef3111:119c02bcd2dc",
+            "label": "Please provide the title of your request ",
             "help_text": null,
-            "field_type": "text",
+            "field_type": "textarea",
             "required": true,
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": "",
-            "rationale": "",
+            "draft_value": "NASA Science Mission Directorate Programmatic Funding",
+            "rationale": "Standard programmatic title for a funding request to the SMD.",
             "confidence": "high"
           },
           {
-            "field_id": "microsoft_forms:02:questionItem:08f25d2361cb",
+            "field_id": "microsoft_forms:01:re2276d1b08774bbea6a6a9b821528ac3:156a755acdaf",
             "label": "Indicate the program funding level for FY26",
-            "help_text": null,
-            "field_type": "text",
+            "help_text": "Please provide the prior fiscal year funding level.",
+            "field_type": "textarea",
             "required": true,
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": true,
             "draft_value": "$7,250,000,000",
-            "rationale": "Pre-filled exact FY26 enacted level from reference values.",
+            "rationale": "Value matches the FY2026 Enacted total from H.R. 6938 as provided in the reference context.",
             "confidence": "high"
           },
           {
-            "field_id": "microsoft_forms:02:questionItem:87b935ac72e8",
+            "field_id": "microsoft_forms:01:r45b20b4c0c434840b220f07e80e5aaf3:ca3460e83003",
             "label": "Indicate the funding level you are requesting for FY27",
-            "help_text": null,
-            "field_type": "text",
+            "help_text": "Please provide the requested dollar amount for the upcoming fiscal year.",
+            "field_type": "textarea",
             "required": true,
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
             "draft_value": "$9,000,000,000",
-            "rationale": "Exact requested funding amount for FY27 from the asks configuration.",
+            "rationale": "The target funding ask for NASA's Science Mission Directorate is $9 billion.",
             "confidence": "high"
           },
           {
-            "field_id": "microsoft_forms:02:questionItem:79fb61a23587",
+            "field_id": "microsoft_forms:01:r9fe8c16d06274ae3ad0e0a39a4794457:80de49443c04",
             "label": "Description of your program request and how it will be used",
             "help_text": null,
             "field_type": "textarea",
@@ -261,12 +292,79 @@
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": "\u2022 We respectfully request $9,000,000,000 for NASA's Science Mission Directorate to pursue Decadal Survey priorities and maintain U.S. leadership in space exploration.\n\u2022 Sustained funding provides stability to the STEM workforce, preventing the disruption and loss of highly skilled scientists and engineers experienced during the cuts in FY 2026.\n\u2022 Robust investment ensures the United States maintains its competitive edge and sets international norms, as nations like China rapidly expand their own deep space ambitions.",
-            "rationale": "Highlights key advocacy themes (workforce stability, Decadal Survey priorities, and international competition) as outlined in the advocacy context.",
+            "draft_value": "* Supports scientific exploration through the Earth Science, Planetary Science, Astrophysics, Heliophysics, and Biological and Physical Sciences divisions\n* Funds mission-critical research identified by the National Academies' Decadal Surveys to maintain U.S. leadership in space\n* Provides stability to the scientific and engineering workforce following significant budget disruptions in recent fiscal cycles\n* Sustains advanced technology development and data analysis pipelines across the national academic and industrial base",
+            "rationale": "Draws from the description of SMD's scope and the advocacy talking points regarding workforce stability and decadal survey priorities.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Language Request Information",
+        "description": "Details for requests involving specific bill or report language.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r7a76b5b430e142e7a585d6fcd6de60f7:c5c667aae8a6",
+            "label": "Type of language",
+            "help_text": null,
+            "field_type": "dropdown",
+            "required": true,
+            "options": [
+              "Bill language",
+              "Report language "
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The request type is 'Funding Request' (Programmatic). No bill or report language is requested as indicated in the reference context, making this section non-applicable.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:rb072287e006842678bce101c519d5398:a76f681b8c10",
+            "label": "Please indicate which agency, bureau, account, and program your request concerns",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Agency: National Aeronautics and Space Administration (NASA)\n* Account: Science\n* Program: Science Mission Directorate",
+            "rationale": "Consolidates the agency, account, and program identifiers from the reference context.",
             "confidence": "high"
           },
           {
-            "field_id": "microsoft_forms:02:questionItem:41e7e224d3f7",
+            "field_id": "microsoft_forms:01:r27dbd2bfc7354e48a2141ec1d9b320b3:0a3d3a9574db",
+            "label": "Please provide the proposed language you are requesting",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This is a programmatic request; the reference values state 'Bill Language Requested: N/A'.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:r42931a832f904871bb6a9e6630b05dbb:d13c25b78ccf",
+            "label": "Please provide a description of the language request and how it will be used",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This is a programmatic request; the reference values state 'Report Language Requested: N/A'.",
+            "confidence": "low"
+          }
+        ]
+      },
+      {
+        "header": "Impact and Additional Information",
+        "description": "Justification for the request and its impact on the district.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r3bdc503b0d5648ec8a4cf1ee9251312f:7e41d99bd52f",
             "label": "Please provide an explanation as to how this request will benefit or impact the people of Texas and in particular, residents of the 20th Congressional District of Texas",
             "help_text": null,
             "field_type": "textarea",
@@ -274,12 +372,12 @@
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": "\u2022 NASA Science heavily invests in TX-20's STEM economy, delivering over $269 million in recent fiscal years to local institutions like Southwest Research Institute (SwRI) in San Antonio.\n\u2022 Funding directly supports the high-tech workforce managing major planetary missions, including SwRI's $184 million contract for the Juno Jupiter orbiter and a $163 million contract for the New Horizons mission to Pluto.\n\u2022 This request protects transformative local research, such as SwRI's $139 million contract to engineer the PUNCH instrument for solar wind mapping and a $41.8 million grant to date ancient lunar lava flows.",
-            "rationale": "Leverages specific TX-20 spending data to demonstrate SwRI's immense role in the district's STEM economy, citing real mission contracts (Juno, New Horizons, PUNCH) and specific dollar amounts.",
+            "draft_value": "* Supports $269.9M in recent NASA Science obligations to San Antonio-based Southwest Research Institute (SwRI) (FY23-FY25)\n* Funds SwRI's leadership of major missions including Juno ($184M), New Horizons ($163M), and MMS instrument operations ($377M)\n* Sustains over 200 local grants, including lunar research at the CLOE center ($3.3M) and dating ancient lunar lava flows ($41.8M)\n* Advances San Antonio's aerospace innovation hub through engineering for the PUNCH solar mapping and Lucy asteroid missions",
+            "rationale": "Cites specific local economic and mission data from TX-20 NASA spending context, including SwRI's leadership on major planetary and heliophysics missions.",
             "confidence": "high"
           },
           {
-            "field_id": "microsoft_forms:02:questionItem:6e9123691856",
+            "field_id": "microsoft_forms:01:rb09bf8dba8f04aeb8c97b72f3cad22b7:883d50bc51b4",
             "label": "Additional comments or questions",
             "help_text": null,
             "field_type": "textarea",
@@ -287,8 +385,8 @@
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": "\u2022 A \"Dear Colleague\" letter supporting NASA's Science Mission Directorate is currently circulating in the House, led by Reps. Don Bacon (R-NE) and Judy Chu (D-CA).\n\u2022 At less than one-third of one percent of federal spending, space science delivers outsized returns in discovery, economic growth, and practical applications from weather forecasting to planetary defense.",
-            "rationale": "Flags the existing House multi-member letter for Rep. Castro's staff and provides a closing ROI argument drawn from the advocacy talking points.",
+            "draft_value": "* NASA Science provides a 3-to-1 economic return on investment, directly benefiting the high-tech workforce in San Antonio\n* Sustained investment is necessary to counter rapid expansion of space science capabilities by international competitors such as China\n* Funding restores critical STEM talent pipelines that were disrupted by budget uncertainty in the previous fiscal year",
+            "rationale": "Uses advocacy points concerning economic impact, international competition, and workforce stability.",
             "confidence": "high"
           }
         ]
@@ -297,46 +395,11 @@
     "submission_method": "online_form",
     "deadline_text": "Friday, March 6, 2026.",
     "validation": {
-      "passed": false,
-      "issues": [
-        {
-          "field_id": "microsoft_forms:01:questionItem:6a96cde5db0c",
-          "field_label": "",
-          "issue": "Unexpected error during field validation",
-          "severity": "high"
-        },
-        {
-          "field_id": "microsoft_forms:02:questionItem:baa6ace30d1d",
-          "field_label": "",
-          "issue": "Unexpected error during field validation",
-          "severity": "high"
-        }
-      ],
-      "summary": "Validation failed: 2 high issue(s) found."
+      "passed": true,
+      "issues": [],
+      "summary": "All fields passed validation."
     },
-    "refinement": {
-      "fields_evaluated": 3,
-      "fields_revised": 0,
-      "details": [
-        {
-          "field_id": "microsoft_forms:02:questionItem:41e7e224d3f7",
-          "field_label": "Please provide an explanation as to how this request will benefit or impact the people of Texas and in particular, residents of the 20th Congressional District of Texas",
-          "action": "kept"
-        },
-        {
-          "field_id": "microsoft_forms:02:questionItem:6e9123691856",
-          "field_label": "Additional comments or questions",
-          "action": "kept"
-        },
-        {
-          "field_id": "microsoft_forms:02:questionItem:79fb61a23587",
-          "action": "error",
-          "error": "Unexpected error during refinement"
-        }
-      ],
-      "skipped": false
-    },
-    "error": null
+    "refinement": null
   },
   "nasa_context": {
     "state_code": "TX",

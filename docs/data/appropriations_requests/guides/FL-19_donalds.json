@@ -1,0 +1,634 @@
+{
+  "target_fiscal_year": 2027,
+  "status": "success",
+  "status_reason": null,
+  "status_detail": null,
+  "member": {
+    "full_name": "Byron Donalds",
+    "first_name": "Byron",
+    "last_name": "Donalds",
+    "chamber": "House",
+    "party": "Republican",
+    "state_code": "FL",
+    "district": "19",
+    "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSc4p7HLoVVxABjRNkRunOgWI8t61zWAdaEJE9KthSN77gjgjA/viewform",
+    "deadline": "3/6/2026",
+    "comment": null,
+    "submitted": false,
+    "past_caucus_signatory": false,
+    "caucus_member": false,
+    "appropriator": false,
+    "authorizer": false,
+    "nasa_center": false,
+    "bioguide_id": "D000032",
+    "official_url": "https://donalds.house.gov",
+    "contact_form_url": null,
+    "phone": "202-225-2536",
+    "office_address": "1710 Longworth House Office Building Washington DC 20515-0919",
+    "district_offices": [
+      {
+        "office_id": "D000032-cape_coral",
+        "address": "1039 SE 9th Ave",
+        "city": "Cape Coral",
+        "state": "FL",
+        "zip": "33990",
+        "suite": "Suite 308",
+        "phone": "239-599-6033",
+        "fax": null,
+        "latitude": 26.6321022,
+        "longitude": -81.9561044
+      },
+      {
+        "office_id": "D000032-naples",
+        "address": "3299 Tamiami Trail East",
+        "city": "Naples",
+        "state": "FL",
+        "zip": "34112",
+        "suite": "Suite 105",
+        "phone": "239-252-6225",
+        "fax": null,
+        "latitude": 26.1275648,
+        "longitude": -81.7654845
+      }
+    ],
+    "state_district": "FL-19",
+    "district_padded": "19",
+    "member_key": "FL-19_donalds"
+  },
+  "form_analysis": {
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSc4p7HLoVVxABjRNkRunOgWI8t61zWAdaEJE9KthSN77gjgjA/viewform",
+    "url_type": "google_forms",
+    "fetch_method": "httpx",
+    "form_header_text": "Rep. Byron Donalds Appropriations and Community Project Funding Request Form FY27",
+    "form_instructions_text": "The following form is for appropriation requests for Rep. Byron Donalds for Fiscal Year 2027. Note that for Community Project requests, House Appropriations has limited the number each office may submit (10), so do prioritize projects with the most impact and can be completed in the near term. Also, Community Projects must be sponsored by a public agency or an eligible non-profit. All appropriations requests are subject to internal review process. Acceptance of a request does not guarantee submission to the Appropriations Committee. If you are submitting more than one request, you must fill out a separate form for each.",
+    "sections": [
+      {
+        "header": "Request and Contact Information",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1639717898:b68371494434",
+            "label": "Requesting Agency or Organization (Ex. Fort Myers Beach)",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_1505630110:86a602a43009",
+            "label": "Is this request being submitted to multiple members? ",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Yes",
+            "rationale": "This is a standard programmatic request for NASA SMD that is submitted to multiple members of Congress as part of a national advocacy effort, as indicated by the presence of a multi-member letter lead (Reps. Bacon and Chu).",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_830790177:67a27f2e7566",
+            "label": "If this request is being submitted to multiple members, please list all additional members. ",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This field requires submitter-specific information regarding their other outreach efforts which is not provided in the context.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "google_forms:01:entry_1480747547:deff35b8d853",
+            "label": "Appropriations Title ",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Commerce, Justice, Science and Related Agencies (CJS)",
+            "rationale": "Directly matches the Appropriations Bill provided in the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1925420993:d215c89c5e00",
+            "label": "Agency",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA",
+            "rationale": "Directly matches the Agency provided in the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_2048544947:203c2421dcaa",
+            "label": "Type of Request ",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Programmatic",
+              "Language",
+              "Community Project"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Programmatic",
+            "rationale": "The reference values explicitly categorize this as a programmatic funding request for NASA's Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1276161571:0ade79e3c0e9",
+            "label": "Point of Contact",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_1063440421:c14132b6808a",
+            "label": "Point of Contact Email",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Programmatic Requests",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1934592077:d132a865c226",
+            "label": "Program Description (For Programmatic Requests ONLY. Leave this section blank if request is for language or community project funding.)",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Provides $9 billion for NASA's Science Mission Directorate to restore funding stability and maintain U.S. preeminence over China's expanding space science program.\n* Supports scientific research and STEM workforce training in FL-19, including over $204,000 in cumulative grant funding awarded to Florida Gulf Coast University.\n* Directly impacts the local economy through high-tech contracts, such as those held by local small business Erai, Inc., while delivering a 3:1 national economic return on investment.\n* Funds critical missions identified by the National Academies' Decadal Surveys, ensuring the U.S. continues to set the global norms for 21st-century exploration.",
+            "rationale": "This value justifies the $9B programmatic ask by citing local impact in FL-19 (FGCU and Erai, Inc.) and connecting it to strategic talking points on US leadership, competition with China, and economic ROI.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_805635217:ff6efb5aab47",
+            "label": "Type of Funding (For Programmatic Requests ONLY. Leave this section blank if request is for language or community project funding.)",
+            "help_text": null,
+            "field_type": "radio",
+            "required": false,
+            "options": [
+              "Support enacted funding level",
+              "Support Trump administration's FY 26 Funding Request",
+              "Funding should be reduced",
+              "Eliminate all funding",
+              "Support increased funding"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Support increased funding",
+            "rationale": "The request is for $9 billion, which represents a $1.75 billion increase over the FY2026 enacted level of $7.25 billion.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1471085162:34e081fde9d8",
+            "label": "If supporting increased funding, please specify the level of funding requested. ",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "This is the exact funding ask amount for the Science Mission Directorate provided in the reference values.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Language Requests",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_193660648:190e8a028a80",
+            "label": "Language Type (For Language Requests ONLY. Leave this section blank if request is for programmatic or community project funding.)",
+            "help_text": null,
+            "field_type": "radio",
+            "required": false,
+            "options": [
+              "Legislative Language",
+              "Report Language",
+              "Proposed Language"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The request is programmatic in nature; therefore, the language-specific section does not apply.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_2117062516:4c14db302dd9",
+            "label": "Requested Language ",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The provided request context explicitly states that report and bill language are not requested for this programmatic funding ask.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Community Project Funding Requests",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1811494933:4f5f118c6049",
+            "label": "Community Project Title (For Community Project Requests ONLY. Leave this section blank if request is for language or programmatic.)",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This request is categorized as a Programmatic request, not a Community Project Request.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1009865405:b62b531b69ce",
+            "label": "Project Location (Include Impacted Congressional Districts and Associated Addresses) (For Community Project Requests ONLY. Leave this section blank if request is for language or programmatic.)",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This request is categorized as a Programmatic request, not a Community Project Request.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_364489268:6f4fda9ed4f1",
+            "label": "Is this Community Project also being submitted as a Programmatic Request? ",
+            "help_text": null,
+            "field_type": "radio",
+            "required": false,
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This is not a Community Project funding request.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1627871940:ed5715aba1f5",
+            "label": "If Community Project is also being submitted as a Programmatic Request please share the corresponding information. ",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This request is categorized as programmatic funding for an existing agency directorate (NASA SMD), not a community project/earmark.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_32711564:43a7cd109327",
+            "label": "Project Description (Include information describing the benefits and impacts of the project such as jobs created, problems addressed, etc. Also note the status of a project if it is already underway. Finally note any timelines relating to completion of the project.)",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This field is intended for Community Project Funding (earmarks); this submission is a programmatic request for NASA's Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1267062253:9eebff0c4c56",
+            "label": "Requested Funding and Total Project Cost",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "This reflects the programmatic request amount for the Science Mission Directorate as specified in the funding ask.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1480620412:11dd926f09d9",
+            "label": "Project Budgetary Information (Please provide a history of any federal funding for the project, if any. Include both formula funds and any discretionary grants. Include budgetary information such sources of public or private funding, especially if there is a local/federal share requirement.)",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This field is for specific community project budgetary details and does not apply to this programmatic request for agency-wide directorate funding.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_640146720:b464cd1342de",
+            "label": "If this project is a transportation project, is it a FDOT Project or any other State sponsored project?",
+            "help_text": null,
+            "field_type": "radio",
+            "required": false,
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The request is for NASA Science funding, not a transportation project.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_86644493:ec769554cf92",
+            "label": "If yes, please list the request ID and point of contact ",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_1419783037:3ad380f1ee90",
+            "label": "If this is a transportation project, can the funds be obligated within 12 months?",
+            "help_text": null,
+            "field_type": "radio",
+            "required": false,
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The request is for NASA Science funding, not a transportation project.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1919827695:7add588f0596",
+            "label": "If not, when would they be obligated?",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Throughout Fiscal Year 2027",
+            "rationale": "Programmatic funding for NASA Science is typically obligated across the federal fiscal year for which it is appropriated.",
+            "confidence": "medium"
+          },
+          {
+            "field_id": "google_forms:01:entry_1701921324:45c0419d8024",
+            "label": "If this is a transportation project, is the project also being submitted for an authorization request as part of the surface transportation authorization?",
+            "help_text": null,
+            "field_type": "radio",
+            "required": false,
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The request is for NASA Science funding, not a transportation project.",
+            "confidence": "high"
+          }
+        ]
+      }
+    ],
+    "submission_method": "online_form",
+    "deadline_text": "Friday March 13, 2026 at 5:00 PM EST",
+    "validation": {
+      "passed": true,
+      "issues": [],
+      "summary": "All fields passed validation."
+    },
+    "refinement": null
+  },
+  "nasa_context": {
+    "state_code": "FL",
+    "state_name": "Florida",
+    "district": "19",
+    "spending_by_year": {
+      "2023": 24066.22,
+      "2024": 25000.0,
+      "2025": 25000.0
+    },
+    "annual_total_spending_by_year": {
+      "2023": 24066.22,
+      "2024": 25000.0,
+      "2025": 25000.0
+    },
+    "top_contracts": [],
+    "top_grants": [],
+    "top_contract_recipients": [
+      {
+        "name": "Erai, Inc.",
+        "recipient_id": "3d572bac-e4e8-d0a7-536e-3bc2c1b6c27d-C",
+        "total_amount": 75000.0,
+        "award_count": 3,
+        "award_type": "contract",
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "FL",
+          "state_name": "Florida",
+          "city_name": "NAPLES",
+          "county_code": "021",
+          "county_name": "COLLIER",
+          "address_line1": "4100 CORPORATE SQ STE 123",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "26",
+          "zip4": "4703",
+          "zip5": "34104",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "FL",
+          "state_name": "Florida",
+          "city_name": "NAPLES",
+          "county_code": "021",
+          "county_name": "COLLIER",
+          "congressional_code": "19",
+          "zip4": "341044703",
+          "zip5": "34104"
+        }
+      }
+    ],
+    "top_grant_recipients": [
+      {
+        "name": "Florida Gulf Coast University",
+        "recipient_id": "1334a56a-0947-c510-cf0e-4ce065814379-C",
+        "total_amount": 204938.22,
+        "award_count": 3,
+        "award_type": "grant",
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "FL",
+          "state_name": "Florida",
+          "city_name": null,
+          "county_code": "071",
+          "county_name": "LEE",
+          "address_line1": "10501 FGCU BLVD S",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "19",
+          "zip4": "6502",
+          "zip5": "33965",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "FL",
+          "state_name": "Florida",
+          "city_name": null,
+          "county_code": "071",
+          "county_name": "LEE",
+          "congressional_code": "19",
+          "zip4": "33965-6502",
+          "zip5": "33965"
+        }
+      }
+    ],
+    "total_contract_count": 3,
+    "total_grant_count": 3
+  },
+  "raw_award_data": {
+    "spending": {
+      "2023": 24066.22,
+      "2024": 25000.0,
+      "2025": 25000.0
+    },
+    "Top Active Awards": [],
+    "Top Contract Recipients": [
+      {
+        "name": "Erai, Inc.",
+        "recipient_id": "3d572bac-e4e8-d0a7-536e-3bc2c1b6c27d-C",
+        "amount": 75000.0,
+        "award_count": 3,
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "FL",
+          "state_name": "Florida",
+          "city_name": "NAPLES",
+          "county_code": "021",
+          "county_name": "COLLIER",
+          "address_line1": "4100 CORPORATE SQ STE 123",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "26",
+          "zip4": "4703",
+          "zip5": "34104",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "FL",
+          "state_name": "Florida",
+          "city_name": "NAPLES",
+          "county_code": "021",
+          "county_name": "COLLIER",
+          "congressional_code": "19",
+          "zip4": "341044703",
+          "zip5": "34104"
+        },
+        "type": "contract"
+      }
+    ],
+    "Top Grant Recipients": [
+      {
+        "name": "Florida Gulf Coast University",
+        "recipient_id": "1334a56a-0947-c510-cf0e-4ce065814379-C",
+        "amount": 204938.22,
+        "award_count": 3,
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "FL",
+          "state_name": "Florida",
+          "city_name": null,
+          "county_code": "071",
+          "county_name": "LEE",
+          "address_line1": "10501 FGCU BLVD S",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "19",
+          "zip4": "6502",
+          "zip5": "33965",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "FL",
+          "state_name": "Florida",
+          "city_name": null,
+          "county_code": "071",
+          "county_name": "LEE",
+          "congressional_code": "19",
+          "zip4": "33965-6502",
+          "zip5": "33965"
+        },
+        "type": "grant"
+      }
+    ],
+    "Total Contract Awards": 3,
+    "Total Grant Awards": 3
+  }
+}

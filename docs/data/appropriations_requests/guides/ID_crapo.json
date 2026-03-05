@@ -111,7 +111,7 @@
     "form_instructions_text": "Save and email this completed form and any proposed report or bill language (if any) to: crapo_approps@crapo.senate.gov",
     "sections": [
       {
-        "header": "Initial Information",
+        "header": "Appropriations Request Form",
         "description": null,
         "fields": [
           {
@@ -169,14 +169,14 @@
           {
             "field_id": "pdf:01:appropriations_request_form:9fe984021e8b",
             "label": "Agency or Account:",
-            "help_text": "Specify the agency or account associated with the request",
+            "help_text": "Specify the federal agency or budget account for the request.",
             "field_type": "text",
             "required": false,
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": "NASA / Science Mission Directorate",
-            "rationale": "Identifies the Science Mission Directorate within NASA as the primary account for this request as specified in the reference values.",
+            "draft_value": "NASA Science Mission Directorate",
+            "rationale": "The request is for the Science Mission Directorate within NASA.",
             "confidence": "high"
           }
         ]
@@ -272,20 +272,20 @@
             "is_constituent_info": false,
             "is_prior_year_field": false,
             "draft_value": "Science Mission Directorate",
-            "rationale": "The programmatic request focuses on funding for the overarching Science Mission Directorate.",
+            "rationale": "As per the instructions, the Science Mission Directorate is the specified project name.",
             "confidence": "high"
           },
           {
             "field_id": "pdf:01:request_details:61026a965ec9",
             "label": "Subcommittee:",
-            "help_text": "The relevant Appropriations Subcommittee",
+            "help_text": null,
             "field_type": "text",
             "required": false,
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
             "draft_value": "Commerce, Justice, Science, and Related Agencies",
-            "rationale": "This is the subcommittee with jurisdiction over NASA appropriations.",
+            "rationale": "NASA appropriations fall under the Commerce, Justice, Science (CJS) subcommittee.",
             "confidence": "high"
           },
           {
@@ -297,21 +297,21 @@
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": "* Sustaining $8,088,364.05 in NASA Science investments across Idaho institutions, including Boise State University and the University of Idaho, which fuel the state's innovation workforce with a 3-to-1 economic return. * Ensuring U.S. leadership and setting 21st-century exploration norms against China's rapid expansion by funding nonpartisan, peer-reviewed Decadal Survey priorities that no private entity can replicate. * Restoring mission stability and technical demand following the FY 2026 disruptions to protect the specialized aerospace talent pipeline and critical research capabilities required for national security.",
-            "rationale": "Justification draws on the $9 billion funding ask, the 3:1 economic ROI talking point, and strategic competition framing with China as outlined in the Advocacy Talking Points.",
+            "draft_value": "* $9 billion for the NASA Science Mission Directorate (SMD) restores American leadership in space science following the workforce and mission disruptions caused by the FY 2026 funding cuts.\n* Advancing space science is a fundamental public responsibility codified in Title 51; it secures U.S. economic competitiveness and sets the norms for 21st-century exploration against rapid expansion by China.\n* Every dollar invested in NASA returns approximately $3 to the economy, driving demand for a high-tech industrial workforce and cutting-edge R&D that no private entity can replicate.\n* SMD's peer-reviewed Decadal Surveys provide a rigorous, nonpartisan roadmap for scientific discovery, ensuring taxpayer investments are concentrated on high-priority, transformative missions.",
+            "rationale": "Justification uses strategic advocacy talking points regarding U.S. leadership, competition with China, economic return on investment, and the authority of the Decadal Surveys. It references the $9 billion ask and the context of FY 2026 funding restoration.",
             "confidence": "high"
           },
           {
             "field_id": "pdf:01:request_details:6cd8409bc4df",
             "label": "Relevance to Idaho:",
-            "help_text": "Explain how this project or funding impacts the state of Idaho",
+            "help_text": null,
             "field_type": "textarea",
             "required": false,
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": "* Direct economic impact of $8,088,364 in NASA Science spending across Idaho (FY2023-FY2025), supporting Quality Thermistor, Inc. and McAllister Technical Services. * Funding for Boise State University ($5.4 million cumulative award total) and the University of Idaho ($4.7 million cumulative award total) for mission-critical research in planetary defense and satellite-derived fire mapping.",
-            "rationale": "Relevance is based on the specific spending data provided for Idaho, highlighting the top grant recipients (Boise State and U of Idaho) and contract recipients (Quality Thermistor and McAllister).",
+            "draft_value": "* NASA Science has obligated over $8.08 million to Idaho institutions between FY 2023 and FY 2025, supporting high-tech research and STEM employment across the state.\n* Boise State University received over $5.4 million in grant funding, including a $503,493 award for strategic science supporting lunar exploration, Mars missions, and space defense.\n* The University of Idaho leads critical research in planetary and Earth science, including a $664,543 award for global fire mapping and a $552,119 award to develop imaging for mapping molten lava.\n* Small businesses in Idaho benefit from NASA contracts, including Quality Thermistor, Inc. and McAllister Technical Services, Inc., which provide specialized technical components for agency missions.",
+            "rationale": "Cites specific local spending data for Idaho, including the $8.08M total. It highlights top grant recipients Boise State University ($5.4M) and University of Idaho ($4.6M) and mentions specific active project values and goals. It also references local contract recipients.",
             "confidence": "high"
           },
           {
@@ -324,8 +324,8 @@
             "is_constituent_info": false,
             "is_prior_year_field": false,
             "draft_value": null,
-            "rationale": "The request context specifically states that no bill or report language is requested (N/A) as this is a programmatic funding request.",
-            "confidence": "low"
+            "rationale": "The provided request context explicitly states that report and bill language are 'N/A' for this programmatic funding request.",
+            "confidence": "high"
           },
           {
             "field_id": "pdf:01:request_details:f48799a91f85",
@@ -337,7 +337,7 @@
             "is_constituent_info": false,
             "is_prior_year_field": true,
             "draft_value": "$7,250,000,000",
-            "rationale": "This reflects the FY2026 enacted funding level for the Science Mission Directorate as cited in the provided funding history.",
+            "rationale": "This reflects the FY2026 enacted funding level for NASA Science.",
             "confidence": "high"
           },
           {
@@ -349,9 +349,9 @@
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": null,
-            "rationale": "The FY2027 President's Budget Request has not yet been released at the time of this submission.",
-            "confidence": "low"
+            "draft_value": "[ASK AMOUNT TBD]",
+            "rationale": "The President's Budget Request for FY2027 has not been released.",
+            "confidence": "high"
           },
           {
             "field_id": "pdf:01:request_details:285fa521fe90",
@@ -363,7 +363,7 @@
             "is_constituent_info": false,
             "is_prior_year_field": false,
             "draft_value": "$9,000,000,000",
-            "rationale": "This is the programmatic request amount for the Science Mission Directorate to support American leadership and local research at institutions like Boise State University.",
+            "rationale": "The specific programmatic ask for the NASA Science Mission Directorate is $9 billion.",
             "confidence": "high"
           }
         ]
@@ -376,34 +376,7 @@
       "issues": [],
       "summary": "All fields passed validation."
     },
-    "refinement": {
-      "fields_evaluated": 2,
-      "fields_revised": 2,
-      "details": [
-        {
-          "field_id": "pdf:01:request_details:3167b17082d1",
-          "field_label": "Program Justification:",
-          "action": "revised",
-          "original_value": "* Advancing U.S. leadership and economic competitiveness through NASA's Science Mission Directorate, which returns approximately $3 to the economy for every $1 invested.\n* Maintaining a strategic advantage over China's rapidly expanding space program by funding peer-reviewed Decadal Survey priorities that set international exploration norms.\n* Providing workforce stability and technical demand for the aerospace and innovation pipeline following the significant industry and agency disruptions of FY 2026.\n* Ensuring the continued pursuit of non-partisan, high-priority scientific breakthroughs in planetary defense, weather forecasting, and national prestige.",
-          "critique_issues": [
-            "FORMAT: The response uses 4 bullet points, but the guidelines require 1-3 concise bullet points.",
-            "SPECIFICITY: The draft relies on generic national talking points and fails to cite the specific data provided in the context, such as the $8,088,364.05 in NASA Science spending across Idaho or the $5.4 million awarded to Boise State University.",
-            "ARGUMENT: To better align with the 'Strong' voice examples, the justification should ground the economic and workforce arguments in the specific investments made within Senator Crapo's state."
-          ]
-        },
-        {
-          "field_id": "pdf:01:request_details:6cd8409bc4df",
-          "field_label": "Relevance to Idaho:",
-          "action": "revised",
-          "original_value": "* Direct economic impact of $8,088,364 in NASA Science spending across Idaho institutions and businesses between FY 2023 and FY 2025.\n* Supporting the University of Idaho's $4.6 million research portfolio, including critical work on satellite-derived fire mapping and advanced imaging for lava movement.\n* Funding Boise State University's $5.4 million in grants for strategic science that supports lunar exploration, Mars missions, and planetary defense.\n* Engaging Idaho small businesses like Quality Thermistor, Inc. and McAllister Technical Services, Inc. in the national aerospace supply chain.",
-          "critique_issues": [
-            "The response uses four bullet points; please consolidate into 1-3 concise bullets to meet formatting requirements.",
-            "For the University of Idaho ($4.6 million) and Boise State University ($5.4 million) figures, please explicitly note that these are cumulative 'award totals' to distinguish them from annual spending obligations as per the data precision guidelines."
-          ]
-        }
-      ],
-      "skipped": false
-    }
+    "refinement": null
   },
   "nasa_context": {
     "state_code": "ID",

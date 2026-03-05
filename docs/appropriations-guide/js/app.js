@@ -46,7 +46,7 @@ class AppropriationsGuide {
     }
 
     async init() {
-        new Navbar('navbar', { title: 'FY 2027 Appropriations Request Guide' }).render();
+        new Navbar('navbar', { title: 'FY 2027 Appropriations Request Guide', titleLink: '#' }).render();
         this.initEventDelegation();
         document.getElementById('back-link').addEventListener('click', (e) => {
             e.preventDefault();
@@ -303,7 +303,7 @@ class AppropriationsGuide {
             if (chamber === 'Senate') {
                 label = `Senate \u2014 ${name} (${party})`;
             } else {
-                const distNum = sd.includes('-') ? sd.split('-')[1] : '';
+                const distNum = sd.includes('-') ? sd.split('-')[1].padStart(2, '0') : '';
                 label = `District ${distNum} \u2014 ${name} (${party})`;
             }
 
@@ -492,7 +492,7 @@ class AppropriationsGuide {
 
         // District label
         const stateCode = escapeHtml(ctx.state_code || '');
-        const district = ctx.district ? escapeHtml(ctx.district) : '';
+        const district = ctx.district ? escapeHtml(ctx.district).padStart(2, '0') : '';
         const distLabel = district ? `${stateCode}-${district}` : stateCode;
 
         // Combine and sort awards
@@ -815,6 +815,15 @@ class AppropriationsGuide {
                 },
                 ...spendingStep,
                 {
+                    element: '#section-nav',
+                    popover: {
+                        title: 'Navigate the Guide',
+                        description: 'Click any tab to jump to that section of the form. A <strong>teal dot</strong> marks sections where you\'ll need to fill in personal info. Keep the actual form open side-by-side as you work through each section.',
+                        side: 'bottom',
+                        align: 'start'
+                    }
+                },
+                {
                     element: '#guide-content',
                     popover: {
                         title: 'Form Walkthrough',
@@ -823,16 +832,7 @@ class AppropriationsGuide {
                         align: 'start'
                     }
                 },
-                step4,
-                {
-                    element: '#section-nav',
-                    popover: {
-                        title: 'Navigate the Guide',
-                        description: 'Click any tab to jump to that section of the form. A <strong>teal dot</strong> marks sections where you\'ll need to fill in personal info. Keep the actual form open side-by-side as you work through each section.',
-                        side: 'bottom',
-                        align: 'start'
-                    }
-                }
+                step4
             ]
         });
         driverObj.drive();

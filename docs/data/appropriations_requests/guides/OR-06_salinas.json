@@ -1,0 +1,422 @@
+{
+  "target_fiscal_year": 2027,
+  "status": "success",
+  "status_reason": null,
+  "status_detail": null,
+  "member": {
+    "full_name": "Andrea Salinas",
+    "first_name": "Andrea",
+    "last_name": "Salinas",
+    "chamber": "House",
+    "party": "Democrat",
+    "state_code": "OR",
+    "district": "6",
+    "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSdLtUsfN5ub5N-qWlfcQG-aeEWqCfjcqGS81ZNfvVMaWPT8Yg/viewform",
+    "deadline": "3/11/2026",
+    "comment": null,
+    "submitted": false,
+    "past_caucus_signatory": false,
+    "caucus_member": false,
+    "appropriator": false,
+    "authorizer": true,
+    "nasa_center": false,
+    "bioguide_id": "S001226",
+    "official_url": "https://salinas.house.gov",
+    "contact_form_url": null,
+    "phone": "202-225-5643",
+    "office_address": "403 Cannon House Office Building Washington DC 20515-0001",
+    "district_offices": [
+      {
+        "office_id": "S001226-tualatin",
+        "address": "18861 SW Martinazzi Avenue",
+        "city": "Tualatin",
+        "state": "OR",
+        "zip": "97062",
+        "suite": "#200",
+        "phone": "503-385-0906",
+        "fax": null,
+        "latitude": 45.3836673,
+        "longitude": -122.7589721
+      },
+      {
+        "office_id": "S001226-salem",
+        "address": "530 Center Street NE",
+        "city": "Salem",
+        "state": "OR",
+        "zip": "97301",
+        "suite": "#415",
+        "phone": "503-385-0906",
+        "fax": null,
+        "latitude": 44.9426147,
+        "longitude": -123.0351991
+      }
+    ],
+    "state_district": "OR-06",
+    "district_padded": "06",
+    "member_key": "OR-06_salinas"
+  },
+  "form_analysis": {
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSdLtUsfN5ub5N-qWlfcQG-aeEWqCfjcqGS81ZNfvVMaWPT8Yg/viewform",
+    "url_type": "google_forms",
+    "fetch_method": "httpx",
+    "form_header_text": "Office of Representative Andrea Salinas (OR-06) FY2027 Appropriations Request Form - Programmatic and Language Requests",
+    "form_instructions_text": "These are requests to fund a specific program or activity in the bill at a specified level or a request to include specific bill or report language that does not direct funding to a particular entity but encourages, urges, or directs some type of action. FY2027 Appropriations FY2027 Guidance Overview",
+    "sections": [
+      {
+        "header": "Contact Information",
+        "description": "Provide details for the person or organization submitting the request.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1329929866:b5387d006458",
+            "label": "Email Address",
+            "help_text": "Enter the primary email address for communication regarding this request.",
+            "field_type": "email",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_1361261646:321350400e50",
+            "label": "Full Name",
+            "help_text": "Enter the full name of the submitter.",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_382904924:e8ac1b2b56de",
+            "label": "Phone Number",
+            "help_text": "Provide a phone number for the contact person.",
+            "field_type": "phone",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_2124172107:47b3ddb67cb8",
+            "label": "Website for Requesting Organization",
+            "help_text": "The official URL for the organization making the request.",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Request Details",
+        "description": "Information regarding the specific appropriations request and target agency.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_819103480:5296c54b6eb4",
+            "label": "What type of Request is this?",
+            "help_text": "Select whether this is for program funding, legislative language, or both.",
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Language",
+              "Programmatic",
+              "Both"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Programmatic",
+            "rationale": "The request context specifies this as a programmatic funding request for NASA's Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_656356156:5fd070db4001",
+            "label": "Appropriations Subcommittee",
+            "help_text": "The House Appropriations Subcommittee with jurisdiction over this request.",
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Agriculture, rural Development, Food & Drug Administration",
+              "Commerce, Justice, and Science",
+              "Defense",
+              "Energy and Water Development",
+              "Financial Services and General Government",
+              "Homeland Security",
+              "Interior and Environment",
+              "Labor, Health & Human Services, and Education",
+              "Legislative Branch",
+              "Military Construction and VA",
+              "National Security and Dept. of State (formerly SFOPS)",
+              "Transportation and Housing & Urban Development"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Commerce, Justice, and Science",
+            "rationale": "NASA's Science Mission Directorate falls under the jurisdiction of the Commerce, Justice, Science, and Related Agencies Subcommittee.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_979407927:293d37db346e",
+            "label": "Federal Agency",
+            "help_text": "The specific federal agency associated with the request.",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA",
+            "rationale": "NASA is the specified federal agency for this request.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_186672632:8a471ab25823",
+            "label": "Account",
+            "help_text": "The specific federal budget account for this request.",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science",
+            "rationale": "'Science' is the primary budget account for the Science Mission Directorate within NASA.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1762843007:74c0ba74eeca",
+            "label": "Department (if applicable)",
+            "help_text": "The parent department of the agency if applicable.",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA",
+            "rationale": "NASA is an independent agency and does not fall under a parent department; repeating the agency name is standard for this field.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1207439668:8cf9bd284654",
+            "label": "Program Title",
+            "help_text": "The specific name of the program or project.",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science Mission Directorate",
+            "rationale": "The Science Mission Directorate is the specific program name for this $9 billion funding request.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_103739653:296bf7a685f6",
+            "label": "Program Description",
+            "help_text": "Provide a brief summary of the program's purpose and activities.",
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* NASA's Science Mission Directorate (SMD) manages a diverse portfolio of robotic exploration missions across Earth science, planetary science, astrophysics, and heliophysics.\n* The program conducts high-priority scientific discovery through the operation of telescopes, satellites, and rovers to study our home planet and the solar system.\n* SMD supports national security and economic competitiveness by funding peer-reviewed research and the development of advanced space technologies.\n* Space science is a fundamental public responsibility codified in Title 51 of the U.S. Code, advancing American innovation in ways the private sector cannot replicate.",
+            "rationale": "Used advocacy talking points and program definitions to summarize SMD's mission and statutory authority.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Funding and Language Specifics",
+        "description": "Enter your requested funding levels or specific legislative language text.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1368070295:136800af7975",
+            "label": "Funding Request",
+            "help_text": "Specify the nature of the funding request relative to budget targets or historical levels.",
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Support a total funding level of",
+              "Support the FY2026 enacted level",
+              "Support the President's FY2027 budget request",
+              "General support for the program/project",
+              "Funding should be increased",
+              "Support highest possible funding",
+              "Funding should be reduced",
+              "Support lowest possible funding",
+              "Eliminate the program/project"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Support a total funding level of",
+            "rationale": "The advocacy goal is to support a specific funding target of $9,000,000,000 for the Science Mission Directorate, which is an increase over the FY2026 enacted level.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1128907546:0ac46bd0f4cf",
+            "label": "If you selected, \"Support a total funding level of $___ for FY27\", what is the amount you are requesting?",
+            "help_text": "Provide the specific dollar amount requested for the 2027 Fiscal Year.",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "The specified funding ask for the Science Mission Directorate is $9,000,000,000.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1320715993:fcf1af7a4013",
+            "label": "If you selected \"Language request\" please include the requested language below:",
+            "help_text": "Enter the specific bill or report language text you are proposing.",
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The request context specifies this is a programmatic request and no report or bill language is requested.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "google_forms:01:entry_1793617710:8ea14d4bf422",
+            "label": "Additional Information",
+            "help_text": "Any other context or justification relevant to this request.",
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* The $9 billion request restores stability to the NASA Science workforce and programs after the significant budgetary disruptions of FY 2026.\n* Sustained investment is vital to maintain U.S. leadership in space science as international competitors, specifically China, rapidly expand their lunar and Martian ambitions.\n* NASA Science contributes to the local economy in OR-6, including $62,160 in recent contract obligations to Northwest Uld, Inc. in Tualatin.\n* This funding supports the National Academies' Decadal Survey priorities, representing the scientific community's peer-reviewed consensus on the most urgent questions for discovery.",
+            "rationale": "Combined local spending data for Northwest Uld, Inc. with strategic talking points regarding China competition, the FY2026 funding restoration, and Decadal Survey priorities.",
+            "confidence": "high"
+          }
+        ]
+      }
+    ],
+    "submission_method": "online_form",
+    "deadline_text": "March 11th, 2026 @5pm EST",
+    "validation": {
+      "passed": true,
+      "issues": [],
+      "summary": "All fields passed validation."
+    },
+    "refinement": null
+  },
+  "nasa_context": {
+    "state_code": "OR",
+    "state_name": "Oregon",
+    "district": "06",
+    "spending_by_year": {
+      "2023": 0.0,
+      "2024": 25054.0,
+      "2025": 37106.0
+    },
+    "annual_total_spending_by_year": {
+      "2023": 0.0,
+      "2024": 25054.0,
+      "2025": 37106.0
+    },
+    "top_contracts": [],
+    "top_grants": [],
+    "top_contract_recipients": [
+      {
+        "name": "Northwest Uld, Inc",
+        "recipient_id": "712d69ba-e4b2-0bdb-8eaf-14233d756dd1-C",
+        "total_amount": 62160.0,
+        "award_count": 2,
+        "award_type": "contract",
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OR",
+          "state_name": "Oregon",
+          "city_name": "MCMINNVILLE",
+          "county_code": "071",
+          "county_name": "YAMHILL",
+          "address_line1": "11160 SW DURHAM LN",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "06",
+          "zip4": "8694",
+          "zip5": "97128",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OR",
+          "state_name": "Oregon",
+          "city_name": "MCMINNVILLE",
+          "county_code": "071",
+          "county_name": "YAMHILL",
+          "congressional_code": "06",
+          "zip4": "971288694",
+          "zip5": "97128"
+        }
+      }
+    ],
+    "top_grant_recipients": [],
+    "total_contract_count": 2,
+    "total_grant_count": 0
+  },
+  "raw_award_data": {
+    "spending": {
+      "2023": 0,
+      "2024": 25054.0,
+      "2025": 37106.0
+    },
+    "Top Active Awards": [],
+    "Top Contract Recipients": [
+      {
+        "name": "Northwest Uld, Inc",
+        "recipient_id": "712d69ba-e4b2-0bdb-8eaf-14233d756dd1-C",
+        "amount": 62160.0,
+        "award_count": 2,
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OR",
+          "state_name": "Oregon",
+          "city_name": "MCMINNVILLE",
+          "county_code": "071",
+          "county_name": "YAMHILL",
+          "address_line1": "11160 SW DURHAM LN",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "06",
+          "zip4": "8694",
+          "zip5": "97128",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "OR",
+          "state_name": "Oregon",
+          "city_name": "MCMINNVILLE",
+          "county_code": "071",
+          "county_name": "YAMHILL",
+          "congressional_code": "06",
+          "zip4": "971288694",
+          "zip5": "97128"
+        },
+        "type": "contract"
+      }
+    ],
+    "Top Grant Recipients": [],
+    "Total Contract Awards": 2,
+    "Total Grant Awards": 0
+  }
+}

@@ -1,0 +1,377 @@
+{
+  "target_fiscal_year": 2027,
+  "status": "success",
+  "status_reason": null,
+  "status_detail": null,
+  "member": {
+    "full_name": "Brad Schneider",
+    "first_name": "Brad",
+    "last_name": "Schneider",
+    "chamber": "House",
+    "party": "Democrat",
+    "state_code": "IL",
+    "district": "10",
+    "form_url": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=mYITktAiSU2NMHFw1YltmIWohIEmLXdEkHd_sIX9uKdUNTdYRlk0T01HMDBIVUlKSjAyTE0zUkNFRi4u",
+    "deadline": "2 weeks prior to subcommittee deadline",
+    "comment": null,
+    "submitted": false,
+    "past_caucus_signatory": false,
+    "caucus_member": false,
+    "appropriator": false,
+    "authorizer": false,
+    "nasa_center": false,
+    "bioguide_id": "S001190",
+    "official_url": "https://schneider.house.gov",
+    "contact_form_url": null,
+    "phone": "202-225-4835",
+    "office_address": "300 Cannon House Office Building Washington DC 20515-1310",
+    "district_offices": [
+      {
+        "office_id": "S001190-lincolnshire",
+        "address": "111 Barclay Blvd.",
+        "city": "Lincolnshire",
+        "state": "IL",
+        "zip": "60069",
+        "suite": "Suite 200",
+        "phone": "847-383-4870",
+        "fax": "847-793-0677",
+        "latitude": 42.1964098,
+        "longitude": -87.9362154
+      }
+    ],
+    "state_district": "IL-10",
+    "district_padded": "10",
+    "member_key": "IL-10_schneider"
+  },
+  "form_analysis": {
+    "url": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=mYITktAiSU2NMHFw1YltmIWohIEmLXdEkHd_sIX9uKdUNTdYRlk0T01HMDBIVUlKSjAyTE0zUkNFRi4u",
+    "url_type": "microsoft_forms",
+    "fetch_method": "httpx",
+    "form_header_text": "FY27 Appropriations",
+    "form_instructions_text": "For IL-10 entities that wish to submit Fiscal Year 2027 appropriations requests, please complete the below form. The form is based off Fiscal Year 2026 guidance and is not the official guidance for Fiscal Year 2027. Information requested is subject to change. This is not the request form for Community Project Funding. CPF guidance will be available in the coming weeks.",
+    "sections": [
+      {
+        "header": "Entity Information",
+        "description": "Please provide details regarding the requesting organization and primary point of contact.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r36d98af7878c4217848d1a2bc43a167f:be094730cc9d",
+            "label": "Entity Making the Request",
+            "help_text": "Name of the organization or entity requesting funding.",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r73fbf2473bc74345bde73927e74e8a58:37cd2a0ec6e7",
+            "label": "Point of Contact for the Request",
+            "help_text": "Full name of the primary contact person.",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r75af2fc8bfff4c44be0dcfa9098bdd64:092c21762eeb",
+            "label": "Point of Contact Email",
+            "help_text": null,
+            "field_type": "email",
+            "required": false,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:rb9124a89949b4f64b4c8064806d840fb:c47e33cac8c0",
+            "label": "Point of Contact Phone Number",
+            "help_text": null,
+            "field_type": "phone",
+            "required": false,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Appropriations Request Details",
+        "description": "Provide specific details about the federal program or project for which you are seeking funding.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r7e6ef86adc6546b9bebb90e7110700d9:b3733d5ecef3",
+            "label": "Subcommittee Title of Request",
+            "help_text": "The House Appropriations Subcommittee with jurisdiction over this request.",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Commerce, Justice, Science, and Related Agencies",
+            "rationale": "Identified as the subcommittee with jurisdiction over NASA in the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rccf934f527674b9686a5ae53ac156162:e7fbaefe81c9",
+            "label": "Department/Service/Agency",
+            "help_text": "The federal department or agency that administers the program.",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA",
+            "rationale": "The agency responsible for the Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r04178b8b95ec435b8ee68d1480ab669c:9a8cdb9d6dd6",
+            "label": "Program, project, or activity (For Defense requests, please also include line and PE number as applicable)",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science Mission Directorate",
+            "rationale": "This is the specific account within NASA for which funding is being requested.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:re9e1ea85f94841d4b80e3782f4dc65d3:22f1303b469b",
+            "label": "Amount Requested for FY27",
+            "help_text": "The specific dollar amount requested for Fiscal Year 2027.",
+            "field_type": "number",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "Matches the specific funding ask provided in the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r02ddad9c814d42efb877165a6b056f52:d0f504a28a29",
+            "label": "FY26 Enacted Amount",
+            "help_text": "The funding level enacted for this project or program in Fiscal Year 2026.",
+            "field_type": "number",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$7,250,000,000",
+            "rationale": "Matches the pre-filled value and the FY2026 enacted total provided in the reference data.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rc86bb42516024fc487f2aee4c1103808:1335438097f8",
+            "label": "Language",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The request context specifies that no report or bill language is requested for this programmatic funding ask.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r2301556f917246a3a909d514e2276197:f4005e7aa179",
+            "label": "How does this project or request relate to Illinois's 10th Congressional District?",
+            "help_text": "Explain the local impact and benefit to the IL-10 community.",
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Direct local economic participation via $33,092.60 in NASA contract funding to Paragon Micro Inc in IL-10\n* Supports the district's high-tech workforce and role in the national aerospace and technology supply chain\n* NASA Science investments return approximately $3 to the economy for every $1 invested, benefiting the Illinois innovation ecosystem",
+            "rationale": "Cites specific NASA spending in IL-10 ($33,092.60) and the primary recipient (Paragon Micro Inc) from the provided spending data.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:reb37adeab2924187aa1f2f52b32b75c0:6a231d628072",
+            "label": "What is the justification for the request?",
+            "help_text": "Explain why this funding is necessary and how it will be used.",
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* $9 billion request provides essential stability for 4,000 civil servants and thousands of contractors following recent fiscal volatility\n* Maintains U.S. leadership in space science as a critical front in the geopolitical and technical competition with China\n* Adheres to National Academies' Decadal Survey priorities, providing a nonpartisan, peer-reviewed roadmap for exploration\n* Strengthens the national STEM talent pipeline by inspiring the next generation of researchers and aerospace entrepreneurs",
+            "rationale": "Draws on the specific $9 billion funding ask, workforce stability concerns, and strategic talking points regarding international competition and scientific priorities.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r6f4e5b0d6d134c808e2d2cd07df1bd87:c3387914354a",
+            "label": "Proposed report language (if applicable)",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "Reference values indicate that report language is not applicable for this programmatic request.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:ra74599a4d6454ff18f5c179ea401246e:58b013115010",
+            "label": "Proposed bill language (if applicable)",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "Reference values indicate that bill language is not applicable for this programmatic request.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:r1b4c3d4ce8ae439783e7d95e743b5e0f:9b537bb4665d",
+            "label": "List other Members/Offices whom you have asked make a request",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Representative Don Bacon; Representative Judy Chu",
+            "rationale": "The reference values identify Reps. Bacon and Chu as leads on a multi-member letter for this request.",
+            "confidence": "high"
+          }
+        ]
+      }
+    ],
+    "submission_method": "online_form",
+    "deadline_text": null,
+    "validation": {
+      "passed": true,
+      "issues": [],
+      "summary": "All fields passed validation."
+    },
+    "refinement": null
+  },
+  "nasa_context": {
+    "state_code": "IL",
+    "state_name": "Illinois",
+    "district": "10",
+    "spending_by_year": {
+      "2023": 33092.6,
+      "2024": 0.0,
+      "2025": 0.0
+    },
+    "annual_total_spending_by_year": {
+      "2023": 33092.6,
+      "2024": 0.0,
+      "2025": 0.0
+    },
+    "top_contracts": [],
+    "top_grants": [],
+    "top_contract_recipients": [
+      {
+        "name": "Paragon Micro Inc",
+        "recipient_id": "8249282d-ed64-da04-74bb-8dbf49c9cca5-C",
+        "total_amount": 33092.6,
+        "award_count": 1,
+        "award_type": "contract",
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "IL",
+          "state_name": "Illinois",
+          "city_name": "LAKE ZURICH",
+          "county_code": "097",
+          "county_name": "LAKE",
+          "address_line1": "2 CORPORATE DR STE 105",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "06",
+          "zip4": "8933",
+          "zip5": "60047",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "IL",
+          "state_name": "Illinois",
+          "city_name": "LONG GROVE",
+          "county_code": "097",
+          "county_name": "LAKE",
+          "congressional_code": "10",
+          "zip4": "600478245",
+          "zip5": "60047"
+        }
+      }
+    ],
+    "top_grant_recipients": [],
+    "total_contract_count": 1,
+    "total_grant_count": 0
+  },
+  "raw_award_data": {
+    "spending": {
+      "2023": 33092.6,
+      "2024": 0,
+      "2025": 0
+    },
+    "Top Active Awards": [],
+    "Top Contract Recipients": [
+      {
+        "name": "Paragon Micro Inc",
+        "recipient_id": "8249282d-ed64-da04-74bb-8dbf49c9cca5-C",
+        "amount": 33092.6,
+        "award_count": 1,
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "IL",
+          "state_name": "Illinois",
+          "city_name": "LAKE ZURICH",
+          "county_code": "097",
+          "county_name": "LAKE",
+          "address_line1": "2 CORPORATE DR STE 105",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "06",
+          "zip4": "8933",
+          "zip5": "60047",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "IL",
+          "state_name": "Illinois",
+          "city_name": "LONG GROVE",
+          "county_code": "097",
+          "county_name": "LAKE",
+          "congressional_code": "10",
+          "zip4": "600478245",
+          "zip5": "60047"
+        },
+        "type": "contract"
+      }
+    ],
+    "Top Grant Recipients": [],
+    "Total Contract Awards": 1,
+    "Total Grant Awards": 0
+  }
+}

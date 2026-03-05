@@ -50,8 +50,8 @@
 
     <style>
         .guide-hero {
-            text-align: center;
-            max-width: 800px;
+            text-align: justify;
+            max-width: 750px;
             margin: 0 auto;
             padding: var(--space-8) var(--space-4) var(--space-4);
         }
@@ -76,6 +76,14 @@
         .selector-row {
             display: flex;
             gap: var(--space-4);
+        }
+
+        .guide-stat-caption {
+            margin-top: var(--space-3);
+            font-size: var(--text-xs);
+            color: var(--gray-400);
+            text-align: center;
+            letter-spacing: var(--letter-spacing-wide);
         }
 
         .selector-field {
@@ -1405,6 +1413,7 @@
             <h1>FY 2027 Congressional Appropriations Request Guide <span class="beta-badge">Beta</span></h1>
             <p>Each year, many members of Congress request  submit formal funding requests to the Appropriations Committee for specific dollar amounts for federal programs.</p>
             <p>Before doing so, they often ask their constituents to submit specific funding requests to gather information about what's important to them.</p><p>This tool helps you find your representative and walks you through filling out their appropriations request form for NASA Science in FY 2027.</p>
+            <p style="text-align: center;"><strong>To get started, select your elected official:</strong></p>
         </div>
         <div id="selector-container" class="selector-section">
             <div class="selector-row">
@@ -1417,6 +1426,7 @@
                     <select id="district-select" placeholder="Select state first..." disabled></select>
                 </div>
             </div>
+            <p id="custom-guide-stat" class="guide-stat-caption" style="display:none;"></p>
         </div>
         <div id="member-header" class="member-header" style="display:none;"></div>
         <div id="section-nav" style="display:none;"></div>

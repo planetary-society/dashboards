@@ -10,7 +10,8 @@ import { parseCSV, fetchText, formatCurrency, truncateText, escapeHtml } from '.
 const DATA_URLS = {
     csv: '../data/appropriations_requests/fy2027_appropriations_request_forms.csv',
     guidesBase: '../data/appropriations_requests/guides/',
-    genericMd: '../data/appropriations_requests/fy2027_generic_directions.md'
+    genericMd: '../data/appropriations_requests/fy2027_generic_directions.md',
+    manifest: '../data/appropriations_requests/guides/manifest.json'
 };
 
 const STATE_NAMES = {
@@ -51,7 +52,7 @@ class AppropriationsGuide {
             e.preventDefault();
             this.showSelector();
         });
-        await this.loadCSV();
+        await Promise.all([this.loadCSV(), this.loadManifest()]);
         this.initSelector();
         this.initRouter();
     }
@@ -198,6 +199,24 @@ class AppropriationsGuide {
             document.getElementById('guide-content').innerHTML =
                 '<div class="warning-banner">Unable to load member data. Please try again later.</div>';
             throw err; // Prevent initSelector from running
+        }
+    }
+
+    async loadManifest() {
+        try {
+            const res = await fetch(DATA_URLS.manifest);
+            if (!res.ok) return;
+            const data = await res.json();
+            const count = data.custom_guide_count;
+            if (count) {
+                const el = document.getElementById('custom-guide-stat');
+                if (el) {
+                    el.innerHTML = `<i class="bi bi-stars"></i> Custom-tailored guides available for <strong>${count}</strong> congressional offices`;
+                    el.style.display = '';
+                }
+            }
+        } catch {
+            // Non-critical — silently ignore
         }
     }
 

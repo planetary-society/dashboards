@@ -290,7 +290,8 @@ class AppropriationsGuide {
             return;
         }
 
-        const members = this.stateMap[stateAbbr];
+        const members = this.stateMap[stateAbbr]
+            .filter(m => !(m['Member'] || '').toUpperCase().includes('VACANT'));
 
         // Build options: Senate first, then House by district number
         const options = members.map(member => {
@@ -428,7 +429,11 @@ class AppropriationsGuide {
         guideContent.innerHTML = '<div class="loading"><div class="loading-spinner"></div></div>';
 
         // Build guide key: "TX-20_castro" from "State / District" + lowercase last name
-        const sd = member['State / District'];
+        // Normalize district number to 2 digits: "WA-2" -> "WA-02"
+        const sdRaw = member['State / District'];
+        const sd = sdRaw.includes('-')
+            ? `${sdRaw.split('-')[0]}-${sdRaw.split('-')[1].padStart(2, '0')}`
+            : sdRaw;
         const lastName = (member['Last Name'] || '').toLowerCase().replace(/[^a-z]/g, '');
         const guideKey = `${sd}_${lastName}`;
 
@@ -569,6 +574,16 @@ class AppropriationsGuide {
             }
         }
 
+        // Strategy intro for generic guides
+        if (!isCustom && guideData.strategy_intro) {
+            html += this.renderStrategyIntro(guideData.strategy_intro);
+        }
+
+        // Email request callout when this office requires emailing to get a form
+        if (this.currentMember?.isEmail) {
+            html += this.renderEmailRequestCallout();
+        }
+
         html += `<div class="tips-callout">
             <div class="tips-callout-header"><i class="bi bi-lightbulb"></i> Tips for a successful request</div>
             <ul class="tips-list">
@@ -588,6 +603,9 @@ class AppropriationsGuide {
             }
             if (section.description) {
                 html += `<p class="section-description">${escapeHtml(section.description)}</p>`;
+            }
+            if (section.coach_note) {
+                html += `<div class="coach-note"><i class="bi bi-lightbulb-fill"></i> <strong>Strategy:</strong> ${escapeHtml(section.coach_note)}</div>`;
             }
 
             // Section field summary
@@ -629,6 +647,71 @@ class AppropriationsGuide {
 
         // Build section progress bar
         this.buildSectionNav(sections);
+    }
+
+    renderStrategyIntro(intro) {
+        const headline = escapeHtml(intro.headline || '');
+        const body = escapeHtml(intro.body || '').replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+        const requestTypeNote = intro.request_type_note ? escapeHtml(intro.request_type_note) : '';
+        const keyPoints = (intro.key_points || []).map(p => `<li>${escapeHtml(p)}</li>`).join('');
+
+        return `<div class="strategy-intro">
+            <div class="strategy-intro-header">
+                <i class="bi bi-rocket-takeoff"></i>
+                <strong>${headline}</strong>
+            </div>
+            <div class="strategy-intro-body"><p>${body}</p></div>
+            ${requestTypeNote ? `<div class="strategy-request-type"><i class="bi bi-info-circle"></i>${requestTypeNote}</div>` : ''}
+            ${keyPoints ? `<ul class="strategy-key-points">${keyPoints}</ul>` : ''}
+        </div>`;
+    }
+
+    renderEmailRequestCallout() {
+        const { name, url } = this.currentMember || {};
+        const email = url && url.startsWith('mailto:') ? url.replace('mailto:', '') : null;
+        const memberName = name || 'this office';
+
+        const subjectLine = `FY 2027 Appropriations Request Form`;
+        const emailBody = `Hello,
+
+I am writing as a constituent to inquire about making an appropriations request for FY 2027. Please let me know how best to submit the necessary information.
+
+I intend to submit a request that your office include a $9 billion ask for NASA's Science Mission Directorate. This is the 'Science' account within NASA, under the jurisdiction of the Commerce, Justice, Science (CJS) subcommittee of Appropriations.
+
+$9 billion represents an increase from FY 2026, but is roughly equivalent to the inflation-adjusted level for this program in FY 2020. There is bipartisan support for this proposal: Reps. Don Bacon (NE) and Judy Chu (CA) are currently circulating a 'Dear Colleague' letter with this ask in the House.
+
+This amount would ensure continued U.S. leadership in space science and technology, fund a full portfolio of breakthrough missions, and provide real benefits to us locally.
+
+[Add a sentence or two about your personal connection to NASA Science or its local impact in your district.]
+
+I would be grateful if your office would enter this as a formal appropriations request. Please let me know if additional information or a specific form is required.
+
+Sincerely,
+
+[Your Name]
+[Your Home Address]
+[Your Phone Number]`;
+
+        const emailHref = email
+            ? `mailto:${escapeHtml(email)}?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(emailBody)}`
+            : null;
+
+        return `<div class="email-request-callout">
+            <div class="email-request-callout-header">
+                <i class="bi bi-envelope-paper"></i>
+                <strong>This office requires an email request</strong>
+            </div>
+            <p class="email-request-desc">This congressional office does not have a public online form — you'll need to send an email to request one, or submit your ask directly via email. Use the template below as a starting point. Personalize the bracketed sections before sending.</p>
+            <div class="email-request-meta">
+                <span><strong>To:</strong> ${email ? escapeHtml(email) : 'Contact address listed on office website'}</span>
+                <span><strong>Subject:</strong> ${escapeHtml(subjectLine)}</span>
+            </div>
+            <div class="copyable-block email-request-template">
+                <pre>${escapeHtml(emailBody)}</pre>
+                <button class="copy-btn"><i class="bi bi-clipboard"></i> Copy</button>
+            </div>
+            ${emailHref ? `<a href="${emailHref}" class="form-button form-button--email email-request-open"><i class="bi bi-envelope"></i> Open in email client</a>` : ''}
+        </div>`;
     }
 
     buildSectionNav(sections) {
@@ -861,6 +944,17 @@ class AppropriationsGuide {
     }
 
     renderField(field) {
+        if (field.field_type === 'narrative_block') {
+            const body = escapeHtml(field.draft_value || '')
+                .replace(/\n\n/g, '</p><p>')
+                .replace(/\n/g, '<br>');
+            return `<div class="guide-field guide-field--narrative">
+                <div class="field-header">
+                    <span class="field-label">${escapeHtml(field.label || '')}</span>
+                </div>
+                <div class="narrative-body"><p>${body}</p></div>
+            </div>`;
+        }
         const isConstituent = field.is_constituent_info === true;
         const hasDraft = field.draft_value != null && field.draft_value !== '';
         const confidence = field.confidence || null;
@@ -885,7 +979,9 @@ class AppropriationsGuide {
         else if (type === 'dropdown') typePrefix = 'Dropdown';
         if (isConstituent) typePrefix = type === 'dropdown' ? 'Dropdown' : 'Text box';
 
-        html += `<span class="field-type-prefix field-type-prefix--${actionType}">${typePrefix}:</span>`;
+        if (this.isCustomGuide) {
+            html += `<span class="field-type-prefix field-type-prefix--${actionType}">${typePrefix}:</span>`;
+        }
         html += `<span class="field-label">${escapeHtml(field.label || '')}</span>`;
 
         html += '</div>';
@@ -938,7 +1034,7 @@ class AppropriationsGuide {
             <div class="org-details-note">
                 <p>If requested, use the following for organizational details:</p>
                 <strong>The Planetary Society</strong><br>
-                60 S. Los Robles Ave, Pasadena, CA 91101<br>
+                700 Pennsylvania Ave SE, Suite 2062, Washington D.C. 20003<br>
                 Organizational contact: Jack Kiraly, Director of Government Relations, <a href="mailto:jack.kiraly@planetary.org">jack.kiraly@planetary.org</a>
             </div>
         </div>`;

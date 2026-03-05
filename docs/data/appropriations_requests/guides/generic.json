@@ -1,165 +1,61 @@
 {
   "target_fiscal_year": 2027,
   "member": null,
+  "strategy_intro": {
+    "headline": "We were unable to access detailed information about this Member's appropriations request form.",
+    "body": "This below information is based on the typical structure and questions found in appropriations request forms. It should provide enough context to submit your request. Please use your best judgment to adapt the information in this guide to fit the unique requirements of your Member's form. If you have any questions, contact Jack Kiraly at jack.kiraly@planetary.org.\n\nKey Points:",
+    "request_type_note":null,
+    "key_points": [
+      "Ask: $9 billion for NASA's Science Mission Directorate (24% above FY 2026 enacted)",
+      "Coalition: Coordinated with AAS, AGU, and other science advocacy partners",
+      "Process: Your submission informs what your Member formally enters into the congressional record",
+      "Impact: Over 100 submissions last year helped Congress reject proposed cuts"
+    ]
+  },
   "form_analysis": {
     "url": null,
     "url_type": null,
     "fetch_method": null,
     "form_header_text": "FY 2027 NASA Science Appropriations Request",
-    "form_instructions_text": "Use the general directions below to fill out your appropriations request form. Fields marked as constituent info require your personal details.",
+    "form_instructions_text": "Use the guide below to complete your representative's FY 2027 appropriations request form. The guide is organized to match the typical structure of these forms. Most content is pre-filled based on The Planetary Society's official FY 2027 position — your most important contribution is personalizing the state/district impact section with your unique local connection to NASA Science.",
     "sections": [
       {
         "header": "Contact Information",
-        "description": "Provide your personal and organizational contact details.",
+        "description": "Forms require your personal contact details to verify you are a constituent of this Member's state or district. Offices will only consider requests made by their constituents.",
+        "coach_note":null,
         "fields": [
           {
-            "field_id": "generic:contact:first_name",
-            "label": "First name",
+            "field_id": "generic:contact:personal_info",
+            "label": "Your Personal Information",
             "help_text": null,
-            "field_type": "text",
-            "required": true,
-            "options": null,
-            "is_constituent_info": true,
-            "is_prior_year_field": false,
-            "draft_value": null,
-            "rationale": null,
-            "confidence": null
-          },
-          {
-            "field_id": "generic:contact:last_name",
-            "label": "Last name",
-            "help_text": null,
-            "field_type": "text",
-            "required": true,
-            "options": null,
-            "is_constituent_info": true,
-            "is_prior_year_field": false,
-            "draft_value": null,
-            "rationale": null,
-            "confidence": null
-          },
-          {
-            "field_id": "generic:contact:title",
-            "label": "Title",
-            "help_text": "Your Title and Affiliation. Consider adding \"responding as an individual\".",
-            "field_type": "text",
-            "required": true,
-            "options": null,
-            "is_constituent_info": true,
-            "is_prior_year_field": false,
-            "draft_value": null,
-            "rationale": null,
-            "confidence": null
-          },
-          {
-            "field_id": "generic:contact:org_name",
-            "label": "Organization name (if required)",
-            "help_text": null,
-            "field_type": "text",
+            "field_type": "narrative_block",
             "required": false,
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": "The Planetary Society",
-            "rationale": "Pre-filled with The Planetary Society as the requesting organization.",
-            "confidence": "high"
+            "draft_value": "Forms will typically ask for your first and last name, your home address, phone number, and and email.",
+            "rationale": null,
+            "confidence": null
           },
           {
-            "field_id": "generic:contact:org_address",
-            "label": "Organization address (if required)",
+            "field_id": "generic:contact:org_info",
+            "label": "If Asked for Organizational Information",
             "help_text": null,
-            "field_type": "address",
+            "field_type": "narrative_block",
             "required": false,
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": "700 Pennsylvania Ave SE, Suite 2062, Washington D.C. 20003",
-            "rationale": "Pre-filled with The Planetary Society's Washington D.C. address.",
-            "confidence": "high"
-          },
-          {
-            "field_id": "generic:contact:poc_name",
-            "label": "Primary point of contact name",
-            "help_text": null,
-            "field_type": "text",
-            "required": true,
-            "options": null,
-            "is_constituent_info": true,
-            "is_prior_year_field": false,
-            "draft_value": null,
+            "draft_value": "Sometimes, the form requests an organizational affiliation or a separate organizational point of contact. If required, you may use the following:\n\nOrganization: The Planetary Society\nAddress: 60 S. Los Robles Ave, Pasadena, CA 91101\nWebsite: planetary.org\nOrganizational contact: Jack Kiraly, Director of Government Relations, jack.kiraly@planetary.org\n\nSome forms ask for a \"secondary point of contact\", if so, Jack Kiraly is the appropriate contact to list there.",
             "rationale": null,
             "confidence": null
-          },
-          {
-            "field_id": "generic:contact:poc_email",
-            "label": "Primary point of contact email",
-            "help_text": "Do not use an organizational email — use your personal email.",
-            "field_type": "email",
-            "required": true,
-            "options": null,
-            "is_constituent_info": true,
-            "is_prior_year_field": false,
-            "draft_value": null,
-            "rationale": null,
-            "confidence": null
-          },
-          {
-            "field_id": "generic:contact:poc_phone",
-            "label": "Primary point of contact phone number",
-            "help_text": null,
-            "field_type": "phone",
-            "required": true,
-            "options": null,
-            "is_constituent_info": true,
-            "is_prior_year_field": false,
-            "draft_value": null,
-            "rationale": null,
-            "confidence": null
-          },
-          {
-            "field_id": "generic:contact:secondary_poc",
-            "label": "Secondary point of contact (if required)",
-            "help_text": null,
-            "field_type": "text",
-            "required": false,
-            "options": null,
-            "is_constituent_info": false,
-            "is_prior_year_field": false,
-            "draft_value": "Jack Kiraly, jack.kiraly@planetary.org, 202 746-8281",
-            "rationale": "Pre-filled with The Planetary Society's staff contact.",
-            "confidence": "high"
-          },
-          {
-            "field_id": "generic:contact:district_connection",
-            "label": "Please describe your organization's presence in the Member's state/district",
-            "help_text": "Describe your personal and/or professional connection to the district.",
-            "field_type": "textarea",
-            "required": false,
-            "options": null,
-            "is_constituent_info": true,
-            "is_prior_year_field": false,
-            "draft_value": null,
-            "rationale": null,
-            "confidence": null
-          },
-          {
-            "field_id": "generic:contact:org_website",
-            "label": "Link to requesting organization's website (if required)",
-            "help_text": null,
-            "field_type": "url",
-            "required": false,
-            "options": null,
-            "is_constituent_info": false,
-            "is_prior_year_field": false,
-            "draft_value": "https://planetary.org/",
-            "rationale": "Pre-filled with The Planetary Society's website.",
-            "confidence": "high"
           }
         ]
       },
       {
         "header": "Relevant Bill/Program/Account",
-        "description": "Identify the appropriations bill, subcommittee, agency, and program for your request.",
+        "description": "These fields tell Congress exactly which budget line-item you are requesting. They ensure your submission is routed to the correct appropriations subcommittee and formally attributed to the right account.",
+        "coach_note": null,
         "fields": [
           {
             "field_id": "generic:bill:appropriations_bill",
@@ -170,7 +66,7 @@
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": "Commerce, Justice, Science and Related Agencies Appropriations Bill",
+            "draft_value": "Commerce, Justice, Science and Related Agencies (CJS)",
             "rationale": "NASA is funded through the CJS Appropriations Bill.",
             "confidence": "high"
           },
@@ -209,7 +105,7 @@
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": "Science Mission Directorate",
+            "draft_value": "Science",
             "rationale": "Exact account name from the reference values.",
             "confidence": "high"
           }
@@ -217,7 +113,8 @@
       },
       {
         "header": "Request Details",
-        "description": "Provide specifics about your appropriations request.",
+        "description": "This is our formal ask for funding in FY 2027. All values here reflect The Planetary Society's official FY 2027 position and should be used as-is.",
+        "coach_note": "This is a programmatic funding request, not a congressionally directed spending (earmark) request. If a form asks about what type of request this is, make sure to select 'Programmatic', 'Funding request', or similar.",
         "fields": [
           {
             "field_id": "generic:request:short_title",
@@ -248,13 +145,13 @@
           {
             "field_id": "generic:request:request_type",
             "label": "What type of request are you making?",
-            "help_text": null,
+            "help_text": "Select 'Funding request' or 'Programmatic' — NOT 'Congressionally Directed Spending' or 'Earmark.' This is a request to fund an existing agency account, not to direct funds to a specific project.",
             "field_type": "dropdown",
             "required": true,
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": "Funding request",
+            "draft_value": "'Funding request', 'Programmatic', or similar",
             "rationale": "This is a programmatic funding request for the NASA SMD topline.",
             "confidence": "high"
           },
@@ -314,31 +211,32 @@
       },
       {
         "header": "Benefits of Request",
-        "description": "Explain why this request matters and how it benefits your state or district.",
+        "description": "This is the heart of your submission. It's an opportunity for you to make the case about the local benefits of NASA Science, either through contract and award information (provided above) or even from the inspiration and broad benefits provided by the activity.",
+        "coach_note": "We provide a starting point based on local economic impacts, but don't just copy and paste these. Rewrite them in your own voice and add your own perspective.",
         "fields": [
           {
             "field_id": "generic:benefits:justification",
             "label": "Please describe the problem or issue your request will address / goals, results, and/or expected outcome",
-            "help_text": "Forms may use one of several variations of this question — adapt the pre-filled text as needed. If there is no separate space for state/district impact, add a few sentences about that here.",
+            "help_text": "Forms may use one of several variations of this question — adapt the pre-filled text as needed. If there is no separate space for state/district impact, add a few sentences about that impact here before submitting.",
             "field_type": "textarea",
             "required": true,
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": "This request will allow NASA to remain on track to steadily advance existing and new decadal missions across all divisions, provide unique opportunities for the next generation of STEM professionals, and ensure that the U.S. can continue to be a global space science powerhouse. This request will allow the Astrophysics Division to push the boundaries of current detector technologies and better understand our early universe and habitable exoplanets through missions like the James Webb Space Telescope and the soon-to-be-launched Nancy Grace Roman Space Telescope. NASA's Heliophysics research will enable deeper understanding of the space environment, thereby protecting existing terrestrial and space assets and helping to achieve new space exploration ambitions. Strong investment in the Planetary Science Division will help pursue several high-profile decadal missions, including the Lunar Discovery and Exploration Program and NEO Surveyor, the latter of which is a planetary defense mission set to monitor near-Earth asteroids.",
+            "draft_value": "* NASA Science is on the verge of launching major missions — Roman Space Telescope, Dragonfly, NEO Surveyor, DAVINCI, VERITAS — that represent decades of investment. The FY 2026 budget chaos caused real damage: 4,000+ civil servants pushed out, contractors lost, a 25% drop in new grants, and months wasted on termination planning instead of mission execution. Congress rejected those cuts for good reason. Another round of steep cuts in FY 2027 would repeat the same wasteful cycle and undermine priorities Congress already settled.\n\n* Other nations are investing heavily in their own space science programs. The question isn't whether space science will advance, it's whether America will be the one leading it. $9 billion for NASA Science helps restore the workforce, partnerships, and breakthrough missions that makes American leadership possible.\n\n* NASA Science is an innovation engine for the nation, and benefits all 50 states. These investments turbocharge the American economy and have real benefits from Earth observation, disaster response, national security, and fundamental scientific breakthroughs.",
             "rationale": "Drawn directly from the provided justification text. Add a few sentences about why this matters to your state/district before submitting.",
             "confidence": "high"
           },
           {
             "field_id": "generic:benefits:state_district_impact",
             "label": "Identify which part(s) of your request may be of particular benefit to this Member's state/district",
-            "help_text": "Describe why this benefits your state/district, including jobs, STEM training, and missions you are working on. Use the provided list of active NASA science contracts and grants in this district for reference.",
+            "help_text": "Describe specific NASA investments in your area: research grants to local universities, contracts with businesses in your district, STEM education programs, or your own work or inspiration enabled by NASA Science. Be concrete — dollar amounts and institution names are more persuasive than general statements.",
             "field_type": "textarea",
             "required": true,
             "options": null,
-            "is_constituent_info": true,
+            "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": null,
+            "draft_value": "Use the provided information about NASA's scientific grants and awards to highlight some of the local benefits to your region.\n\nYou can also browse more information at the NASA Science Economic Impact Dashboard:\n\n dashboards.planetary.org/nasa-science",
             "rationale": null,
             "confidence": null
           }
@@ -346,7 +244,8 @@
       },
       {
         "header": "Funding History",
-        "description": "Prior year funding levels for the Science Mission Directorate.",
+        "description": "Prior-year funding levels provide appropriators with essential baseline context. These numbers tell the story of a program that has faced significant budget pressure and demonstrate that the congressional record already supports protecting it.",
+        "coach_note": "These numbers give critical context and establish a pattern of consistent bipartisan support for NASA Science. Lean into that.",
         "fields": [
           {
             "field_id": "generic:history:fy2026_enacted",
@@ -451,36 +350,24 @@
             "draft_value": "$1,750,000,000 increase (24%)",
             "rationale": "The $9B request represents a $1.75B or 24% increase over the FY 2026 enacted $7.25B.",
             "confidence": "high"
-          },
-          {
-            "field_id": "generic:history:additional_context",
-            "label": "Indicate any additional funding amounts provided through the latest CR or supplemental appropriations, or any other relevant funding context",
-            "help_text": null,
-            "field_type": "text",
-            "required": false,
-            "options": null,
-            "is_constituent_info": false,
-            "is_prior_year_field": true,
-            "draft_value": "N/A",
-            "rationale": "No additional CR or supplemental funding context is applicable.",
-            "confidence": "high"
           }
         ]
       },
       {
         "header": "Congressional Support",
-        "description": "Indicate any other offices or organizations supporting this request.",
+        "description": "Sometimes a form will ask if there are other elected officials supporting your request. This helps appropriations offices understand the political landscape and helps to establish credibility.",
+        "coach_note": "Make sure to mention the internal letter circulating in the House led by Reps. Don Bacon (R-NE) and Judy Chu (D-CA) that is asking for $9 billion for NASA Science. It serves as an important bipartisan signal demonstrates that there is   broad support for your request.",
         "fields": [
           {
             "field_id": "generic:support:other_offices",
             "label": "Are you placing this programmatic appropriations request with any other members of Congress? If yes, who?",
-            "help_text": "List any other offices that you are planning to submit a form for.",
-            "field_type": "textarea",
+            "help_text": "List any other House or Senate offices you are submitting or planning to submit to. For example: 'Sen. [Name] (Senate) and Rep. [Name] (House, District).' Submitting to both your House representative and both your Senators doubles or triples the impact of your advocacy.",
+            "field_type": "text",
             "required": false,
             "options": null,
-            "is_constituent_info": true,
+            "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": null,
+            "draft_value": "No",
             "rationale": null,
             "confidence": null
           },
@@ -514,12 +401,12 @@
             "field_id": "generic:support:orgs_in_favor",
             "label": "What other organizations might be in favor of this request?",
             "help_text": null,
-            "field_type": "text",
+            "field_type": "textarea",
             "required": false,
             "options": null,
             "is_constituent_info": false,
             "is_prior_year_field": false,
-            "draft_value": "American Astronomical Society (AAS), American Geophysical Union (AGU)",
+            "draft_value": "American Geophysical Union\nAmerican Society for Gravitational and Space Research\nBlack in AstroCoalition for Aerospace and Science\nPlanetary Science Institute\nSatellite Industry Association\nThe Mars Society\nThe Planetary Society",
             "rationale": "Organizations listed in the reference values as supporting this request.",
             "confidence": "high"
           },

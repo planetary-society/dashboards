@@ -1,0 +1,866 @@
+{
+  "target_fiscal_year": 2027,
+  "status": "success",
+  "status_reason": null,
+  "status_detail": null,
+  "member": {
+    "full_name": "Nydia Vel\u00e1zquez",
+    "first_name": "Nydia",
+    "last_name": "Vel\u00e1zquez",
+    "chamber": "House",
+    "party": "Democrat",
+    "state_code": "NY",
+    "district": "7",
+    "form_url": "https://docs.google.com/forms/d/e/1FAIpQLScPGUCCVn23vnYxx81fy2ajFgBnbVK-Bu7M8lh0VeG_9vfurg/viewform",
+    "deadline": "3/9/2026",
+    "comment": null,
+    "submitted": false,
+    "past_caucus_signatory": false,
+    "caucus_member": false,
+    "appropriator": false,
+    "authorizer": false,
+    "nasa_center": false,
+    "bioguide_id": "V000081",
+    "official_url": "https://velazquez.house.gov",
+    "contact_form_url": null,
+    "phone": "202-225-2361",
+    "office_address": "2302 Rayburn House Office Building Washington DC 20515-3207",
+    "district_offices": [
+      {
+        "office_id": "V000081-brooklyn",
+        "address": "266 Broadway",
+        "city": "Brooklyn",
+        "state": "NY",
+        "zip": "11211",
+        "suite": "Suite 201",
+        "phone": "718-599-3658",
+        "fax": null,
+        "latitude": 40.7085893,
+        "longitude": -73.9592284
+      },
+      {
+        "office_id": "V000081-sunnyside",
+        "address": "39-16 47th Avenue",
+        "city": "Sunnyside",
+        "state": "NY",
+        "zip": "11104",
+        "suite": null,
+        "phone": "718-340-6244",
+        "fax": null,
+        "latitude": null,
+        "longitude": null
+      }
+    ],
+    "state_district": "NY-07",
+    "district_padded": "07",
+    "member_key": "NY-07_vel\u00e1zquez"
+  },
+  "form_analysis": {
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLScPGUCCVn23vnYxx81fy2ajFgBnbVK-Bu7M8lh0VeG_9vfurg/viewform",
+    "url_type": "google_forms",
+    "fetch_method": "httpx",
+    "form_header_text": "Office of Nydia Vel\u00e1zquez, FY2027 Appropriations Programmatic & Language Request Form",
+    "form_instructions_text": "Please use this form to submit Fiscal Year 2027 (FY27) programmatic funding and/or bill or report language requests to the office of Rep. Vel\u00e1zquez. If you have multiple requests, please submit a separate form for each request. Please provide as much of the requested information as possible to ensure we can fully evaluate your request. Multiple requests in one submission WILL NOT be accepted. DO NOT USE THIS FORM FOR COMMUNITY PROJECT FUNDING REQUESTS",
+    "sections": [
+      {
+        "header": "Contact Information",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_623675553:d99cd9c0baac",
+            "label": "Email",
+            "help_text": null,
+            "field_type": "email",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_2043908531:9b1226816820",
+            "label": "First and Last Name of Person Submitting Request",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_363584331:cdd4a6a6f764",
+            "label": "Organization Name",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Request Classification",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_767998218:9184a3356335",
+            "label": "Which Appropriations Subcommittee?",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Agriculture, Rural Development, Food and Drug Administration, and Related Agencies",
+              "Commerce, Justice, Science, and Related Agencies",
+              "Defense",
+              "Energy and Water Development, and Related Agencies",
+              "Financial Services and General Government",
+              "Homeland Security",
+              "Interior, Environment, and Related Agencies",
+              "Labor, Health and Human Services, Education, and Related Agencies",
+              "Legislative Branch",
+              "Military Construction, Veterans Affairs, and Related Agencies",
+              "State, Foreign Operations, and Related Programs",
+              "Transportation, and Housing and Urban Development, and Related Agencies"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Commerce, Justice, Science, and Related Agencies",
+            "rationale": "NASA's Science Mission Directorate is funded through the Commerce, Justice, Science, and Related Agencies subcommittee as per the provided reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1649809149:8bb5d6cc3a38",
+            "label": "What kind of request is this?",
+            "help_text": null,
+            "field_type": "dropdown",
+            "required": true,
+            "options": [
+              "Programmatic",
+              "Language"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Programmatic",
+            "rationale": "The request context explicitly identifies this as a programmatic funding request for $9 billion.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Programmatic Request",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_695230236:cbe1b70d4275",
+            "label": "Agency/Account",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA / Science Mission Directorate",
+            "rationale": "Standard agency and account name provided in the Science Mission Directorate reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_822813821:2609e677a395",
+            "label": "Program Name",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science Mission Directorate",
+            "rationale": "The programmatic request is for the top-level Science Mission Directorate account.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_140544781:182607d5b642",
+            "label": "FY27 Funding Level",
+            "help_text": "Refers to the anticipated or enacted funding baseline for FY27",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The FY2027 President's Budget Request has not been released, and there is no enacted baseline for FY2027 yet. Returning null to avoid inaccuracy.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "google_forms:01:entry_676864286:fb237f3959fa",
+            "label": "FY27 President's Budget Request (or most recent Presidential Budget request if otherwise unavailable)",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Currently unknown (President's Budget Request has not been released)",
+            "rationale": "Using the most recent available President's Budget Request (FY2026) as specified by the field prompt, as the FY2027 request is unknown.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1235895244:a818f08a01b9",
+            "label": "Requested Funding Level",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "This matches the specific funding ask provided in the reference values for the Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_289731707:eccf13452a0c",
+            "label": "Ties to NY and/or NY-07?",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Yes",
+            "rationale": "NASA Science has active grants in NY-07, specifically with the Research Foundation of the City University of New York in Brooklyn, totaling over $669,000 in recent obligations.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_799857776:fc55d3e91b87",
+            "label": "Explanation/Rationale for Request",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* $9 billion for NASA Science sustains U.S. leadership against rapid Chinese expansion in lunar and Martian exploration.\n* Funding restores stability to a workforce that faced thousands of layoffs and talent loss following FY 2026 budget disruptions.\n* Adheres to National Academies' Decadal Surveys, ensuring peer-reviewed, nonpartisan scientific priorities drive federal investment.\n* Supports a 3:1 economic return by driving demand for cutting-edge R&D and high-skill manufacturing across the domestic aerospace industrial base.",
+            "rationale": "This response draws on the specified $9B funding ask, the FY2026 funding context, and advocacy talking points regarding U.S. leadership, workforce stability, and economic ROI.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Bill/Language Request",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_19530537:156253c913e7",
+            "label": "Agency/Account",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This appears to be a duplicate field in a section that may not apply given the previous programmatic entries, or is redundant. Setting to null to avoid duplicate or misaligned entry.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "google_forms:01:entry_1783261173:30ad8f2ba150",
+            "label": "What kind of language request is this?",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Bill",
+              "Report"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The request type is programmatic, not language-based. This section does not apply.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "google_forms:01:entry_266845171:7e291ca3c1df",
+            "label": "Language Title",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science Mission Directorate",
+            "rationale": "The request context indicates that no report or bill language is requested for this programmatic funding submission.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1135624179:f4ff35ddc52f",
+            "label": "Proposed Language",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Science Mission Directorate, $9,000,000,000.\n* This funding level supports NASA's Science Mission Directorate in its efforts to implement the scientific priorities of the National Academies' Decadal Surveys.",
+            "rationale": "Provides the specific funding ask and account name as standard programmatic language, noting the importance of Decadal Surveys as per the advocacy talking points.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1862520490:ecb6468a4692",
+            "label": "Why is this important for NY or NY-07?",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Over $660,000 in NASA Science obligations reached NY-07 institutions between FY2023 and FY2025.\n* Supports the Research Foundation of CUNY in Brooklyn for critical research on urban heat island risks and community resiliency.\n* Funds Brooklyn-based innovation in advanced manufacturing, including CUNY's development of deployable 3D printing for construction materials.\n* Leverages major local industry partners like Honeybee Robotics, which received over $9 million in recent NASA contracts for planetary exploration technology.",
+            "rationale": "Cites specific local spending totals and recipient institutions (CUNY, Honeybee Robotics) in NY-07 and Brooklyn, highlighting the practical application of their research and economic impact.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1440345636:affdae64f7b5",
+            "label": "Ties to NY and/or NY-07?",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The request type is programmatic, not language-based. This section does not apply.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "google_forms:01:entry_375340318:9728ca8ef92c",
+            "label": "Explanation/Rationale for Request",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Sustains the U.S. strategic edge in space science, ensuring American norms for exploration prevail over international competitors.\n* Requests a 24% increase over FY 2026 enacted levels to recover from prior shortfalls and ensure project continuity.\n* Strengthens the STEM talent pipeline by supporting university-led research and local high-tech employment.\n* Guarantees that the nation's most ambitious scientific questions are answered through the rigorous, nonpartisan Decadal Survey process.",
+            "rationale": "This provides a strategically framed justification emphasizing competition, the specific 24% increase calculation, and workforce development consistent with the advocacy tone.",
+            "confidence": "high"
+          }
+        ]
+      }
+    ],
+    "submission_method": "online_form",
+    "deadline_text": "6:00 p.m. EST on Monday, March 9th, 2026",
+    "validation": {
+      "passed": true,
+      "issues": [],
+      "summary": "All fields passed validation."
+    },
+    "refinement": null
+  },
+  "nasa_context": {
+    "state_code": "NY",
+    "state_name": "New York",
+    "district": "07",
+    "spending_by_year": {
+      "2023": 730108.0,
+      "2024": 23176.68,
+      "2025": -83327.38
+    },
+    "annual_total_spending_by_year": {
+      "2023": 730108.0,
+      "2024": 23176.68,
+      "2025": -83327.38
+    },
+    "top_contracts": [],
+    "top_grants": [
+      {
+        "award_id": "80NSSC24K0909",
+        "generated_unique_award_id": "ASST_NON_80NSSC24K0909_080",
+        "recipient_name": "Research Foundation of the City University of New York",
+        "recipient_id": "c82a41a4-35d8-0a46-da1b-9e21b677b77f-C",
+        "award_amount": 50000.0,
+        "description": "Assessment of urban heat island risks  impacts  and resiliency solutions",
+        "start_date": "2024-03-22",
+        "end_date": "2026-03-21",
+        "category": "grant",
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "congressional_code": "07",
+          "zip4": "11201-1909",
+          "zip5": "11201"
+        },
+        "recipient_location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "address_line1": "300 JAY ST",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "07",
+          "zip4": "1909",
+          "zip5": "11201",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "generated_award_summary": "Assessing urban heat island risks and community resiliency solutions."
+      },
+      {
+        "award_id": "80NSSC23K0876",
+        "generated_unique_award_id": "ASST_NON_80NSSC23K0876_080",
+        "recipient_name": "Research Foundation of the City University of New York",
+        "recipient_id": "c82a41a4-35d8-0a46-da1b-9e21b677b77f-C",
+        "award_amount": 9845.53,
+        "description": "Customer identification for fully deployable 3d printing technology for in-situ geo-concrete based construction",
+        "start_date": "2023-04-12",
+        "end_date": null,
+        "category": "grant",
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "congressional_code": "07",
+          "zip4": "11201-1909",
+          "zip5": "11201"
+        },
+        "recipient_location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "address_line1": "300 JAY ST",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "07",
+          "zip4": "1909",
+          "zip5": "11201",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "generated_award_summary": "Developing deployable 3D printing for local construction materials."
+      }
+    ],
+    "top_contract_recipients": [
+      {
+        "name": "Honeybee Robotics LLC",
+        "recipient_id": "df406c85-4912-7a44-73d3-52a179d53a10-C",
+        "total_amount": 6490013.0,
+        "award_count": 2,
+        "award_type": "contract",
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "CO",
+          "state_name": "Colorado",
+          "city_name": "LONGMONT",
+          "county_code": "013",
+          "county_name": "BOULDER",
+          "address_line1": "1830 LEFTHAND CIR",
+          "address_line2": "STE C",
+          "address_line3": null,
+          "congressional_code": "04",
+          "zip4": "6767",
+          "zip5": "80501",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "congressional_code": "07",
+          "zip4": "112051070",
+          "zip5": "11205"
+        }
+      },
+      {
+        "name": "Honeybee Robotics, LTD.",
+        "recipient_id": "b5247fd3-9125-67ef-151a-ead454257097-C",
+        "total_amount": 2746856.09,
+        "award_count": 1,
+        "award_type": "contract",
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "address_line1": "BLG 3 STE 1005, 63 FLUSHING AVE UNIT 150",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "08",
+          "zip4": null,
+          "zip5": "11205",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "congressional_code": "07",
+          "zip4": "112051070",
+          "zip5": "11205"
+        }
+      }
+    ],
+    "top_grant_recipients": [
+      {
+        "name": "Honeybee Robotics, LTD.",
+        "recipient_id": "b5247fd3-9125-67ef-151a-ead454257097-C",
+        "total_amount": 1639747.68,
+        "award_count": 1,
+        "award_type": "grant",
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "address_line1": "BUILDING 128  SUITE 121 63 FLUSHING AVE UNIT 150",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "08",
+          "zip4": "1070",
+          "zip5": "11205",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "congressional_code": "07",
+          "zip4": "11205-1070",
+          "zip5": "11205"
+        }
+      },
+      {
+        "name": "Research Foundation of the City University of New York",
+        "recipient_id": "c82a41a4-35d8-0a46-da1b-9e21b677b77f-C",
+        "total_amount": 59845.53,
+        "award_count": 2,
+        "award_type": "grant",
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "address_line1": "300 JAY ST",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "07",
+          "zip4": "1909",
+          "zip5": "11201",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "congressional_code": "07",
+          "zip4": "11201-1909",
+          "zip5": "11201"
+        }
+      }
+    ],
+    "total_contract_count": 3,
+    "total_grant_count": 3
+  },
+  "raw_award_data": {
+    "spending": {
+      "2023": 730108.0,
+      "2024": 23176.68,
+      "2025": -83327.38
+    },
+    "Top Active Awards": [
+      {
+        "Award Type": "grant",
+        "Award ID": "80NSSC24K0909",
+        "Recipient Name": "Research Foundation of the City University of New York",
+        "recipient_id": "c82a41a4-35d8-0a46-da1b-9e21b677b77f-C",
+        "Recipient Location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "address_line1": "300 JAY ST",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "07",
+          "zip4": "1909",
+          "zip5": "11201",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "Place of Performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "congressional_code": "07",
+          "zip4": "11201-1909",
+          "zip5": "11201"
+        },
+        "Award Amount": 50000.0,
+        "Start Date": "2024-03-22",
+        "End Date": "2026-03-21",
+        "Last Modified Date": "2025-09-19",
+        "Base Obligation Date": "2024-05-01",
+        "Description": "Assessment of urban heat island risks  impacts  and resiliency solutions",
+        "generated_unique_award_id": "ASST_NON_80NSSC24K0909_080",
+        "generated_award_summary": "Assessing urban heat island risks and community resiliency solutions."
+      },
+      {
+        "Award Type": "grant",
+        "Award ID": "80NSSC23K0876",
+        "Recipient Name": "Research Foundation of the City University of New York",
+        "recipient_id": "c82a41a4-35d8-0a46-da1b-9e21b677b77f-C",
+        "Recipient Location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "address_line1": "300 JAY ST",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "07",
+          "zip4": "1909",
+          "zip5": "11201",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "Place of Performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "congressional_code": "07",
+          "zip4": "11201-1909",
+          "zip5": "11201"
+        },
+        "Award Amount": 9845.53,
+        "Start Date": "2023-04-12",
+        "End Date": null,
+        "Last Modified Date": "2025-04-21",
+        "Base Obligation Date": "2023-06-13",
+        "Description": "Customer identification for fully deployable 3d printing technology for in-situ geo-concrete based construction",
+        "generated_unique_award_id": "ASST_NON_80NSSC23K0876_080",
+        "generated_award_summary": "Developing deployable 3D printing for local construction materials."
+      }
+    ],
+    "Top Contract Recipients": [
+      {
+        "name": "Honeybee Robotics LLC",
+        "recipient_id": "df406c85-4912-7a44-73d3-52a179d53a10-C",
+        "amount": 6490013.0,
+        "award_count": 2,
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "CO",
+          "state_name": "Colorado",
+          "city_name": "LONGMONT",
+          "county_code": "013",
+          "county_name": "BOULDER",
+          "address_line1": "1830 LEFTHAND CIR",
+          "address_line2": "STE C",
+          "address_line3": null,
+          "congressional_code": "04",
+          "zip4": "6767",
+          "zip5": "80501",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "congressional_code": "07",
+          "zip4": "112051070",
+          "zip5": "11205"
+        },
+        "type": "contract"
+      },
+      {
+        "name": "Honeybee Robotics, LTD.",
+        "recipient_id": "b5247fd3-9125-67ef-151a-ead454257097-C",
+        "amount": 2746856.09,
+        "award_count": 1,
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "address_line1": "BLG 3 STE 1005, 63 FLUSHING AVE UNIT 150",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "08",
+          "zip4": null,
+          "zip5": "11205",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "congressional_code": "07",
+          "zip4": "112051070",
+          "zip5": "11205"
+        },
+        "type": "contract"
+      }
+    ],
+    "Top Grant Recipients": [
+      {
+        "name": "Honeybee Robotics, LTD.",
+        "recipient_id": "b5247fd3-9125-67ef-151a-ead454257097-C",
+        "amount": 1639747.68,
+        "award_count": 1,
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "address_line1": "BUILDING 128  SUITE 121 63 FLUSHING AVE UNIT 150",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "08",
+          "zip4": "1070",
+          "zip5": "11205",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "congressional_code": "07",
+          "zip4": "11205-1070",
+          "zip5": "11205"
+        },
+        "type": "grant"
+      },
+      {
+        "name": "Research Foundation of the City University of New York",
+        "recipient_id": "c82a41a4-35d8-0a46-da1b-9e21b677b77f-C",
+        "amount": 59845.53,
+        "award_count": 2,
+        "location": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "address_line1": "300 JAY ST",
+          "address_line2": null,
+          "address_line3": null,
+          "congressional_code": "07",
+          "zip4": "1909",
+          "zip5": "11201",
+          "foreign_postal_code": null,
+          "foreign_province": null
+        },
+        "place_of_performance": {
+          "location_country_code": "USA",
+          "country_name": "UNITED STATES",
+          "state_code": "NY",
+          "state_name": "New York",
+          "city_name": "BROOKLYN",
+          "county_code": "047",
+          "county_name": "KINGS",
+          "congressional_code": "07",
+          "zip4": "11201-1909",
+          "zip5": "11201"
+        },
+        "type": "grant"
+      }
+    ],
+    "Total Contract Awards": 3,
+    "Total Grant Awards": 3
+  }
+}

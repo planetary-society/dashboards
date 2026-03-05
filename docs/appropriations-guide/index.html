@@ -1477,63 +1477,81 @@
             animation: guideHeroFadeUp 0.55s var(--ease-out-expo) 0.16s both;
         }
 
-        /* ── How it works — 3-step row ─────────────────────────── */
-        .hero-steps {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            margin-top: var(--space-8);
-            padding: var(--space-5) var(--space-6);
-            background: white;
-            border-radius: var(--border-radius-lg);
-            border: 1px solid var(--gray-100);
-            box-shadow: var(--shadow-md);
-            animation: guideHeroFadeUp 0.55s var(--ease-out-expo) 0.24s both;
+        /* ── How it works — vertical steps (below selector) ───── */
+        .guide-steps {
+            max-width: 780px;
+            margin: var(--space-4) auto var(--space-8);
+            padding: 0 var(--space-6);
+            animation: guideHeroFadeUp 0.55s var(--ease-out-expo) 0.40s both;
         }
 
-        .hero-step {
-            display: flex;
-            align-items: center;
-            gap: var(--space-3);
-            flex: 1;
+        .guide-steps-header {
+            font-size: var(--text-xs);
+            font-weight: var(--font-weight-semibold);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing-wider);
+            color: var(--gray-400);
+            margin-bottom: var(--space-5);
         }
 
-        .hero-step-num {
-            width: 34px;
-            height: 34px;
+        .guide-step {
+            display: flex;
+            gap: var(--space-5);
+        }
+
+        .guide-step-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+            width: 46px;
+        }
+
+        .guide-step-num {
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
             background: var(--blue-500);
             color: white;
             font-weight: var(--font-weight-semibold);
-            font-size: var(--text-sm);
+            font-size: var(--text-base);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(3, 124, 194, 0.30);
+            box-shadow: 0 2px 10px rgba(3, 124, 194, 0.28);
         }
 
-        .hero-step-label {
-            font-size: var(--text-sm);
+        .guide-step-line {
+            width: 2px;
+            flex: 1;
+            min-height: var(--space-6);
+            background: linear-gradient(to bottom, var(--blue-200), var(--gray-100));
+            margin: var(--space-2) 0;
+            border-radius: 1px;
+        }
+
+        .guide-step-body {
+            padding-bottom: var(--space-8);
+            padding-top: 11px;
+        }
+
+        .guide-step--last .guide-step-body {
+            padding-bottom: 0;
+        }
+
+        .guide-step-label {
+            font-size: var(--text-base);
             font-weight: var(--font-weight-semibold);
             color: var(--gray-800);
             line-height: 1.25;
+            margin-bottom: var(--space-1);
         }
 
-        .hero-step-sub {
-            font-size: var(--text-xs);
+        .guide-step-sub {
+            font-size: var(--text-sm);
             color: var(--gray-400);
-            margin-top: 2px;
-            line-height: 1.3;
-        }
-
-        .hero-step-connector {
-            width: 28px;
-            height: 1px;
-            background: linear-gradient(to right, var(--blue-200), var(--gray-200));
-            flex-shrink: 0;
-            margin: 0 var(--space-1);
+            line-height: 1.5;
         }
 
         /* ── Selector card ─────────────────────────────────────── */
@@ -1596,25 +1614,8 @@
                 display: none;
             }
 
-            .hero-steps {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: var(--space-4);
-                padding: var(--space-4) var(--space-5);
-            }
-
-            .hero-step {
-                flex: unset;
-            }
-
-            .hero-step-connector {
-                width: 1px;
-                height: 14px;
-                background: linear-gradient(to bottom, var(--blue-200), var(--gray-200));
-                margin: 0 0 0 16px;
-            }
-
-            .selector-section {
+            .selector-section,
+            .guide-steps {
                 padding: 0 var(--space-3);
             }
         }
@@ -1650,31 +1651,6 @@
             <p class="hero-eyebrow"><i class="bi bi-stars"></i> FY 2027 Congressional Appropriations <span class="beta-badge">Beta</span></p>
             <h1>Your voice for<br><em>space science.</em></h1>
             <p class="hero-lead">Each year, members of Congress invite their constituents to submit formal funding requests before appropriations season. This tool finds your representative and walks you through their NASA Science request form — step by step.</p>
-            <div class="hero-steps" aria-label="How it works: 3 steps">
-                <div class="hero-step">
-                    <div class="hero-step-num" aria-hidden="true">1</div>
-                    <div>
-                        <div class="hero-step-label">Find your rep</div>
-                        <div class="hero-step-sub">Select your state and district</div>
-                    </div>
-                </div>
-                <div class="hero-step-connector" aria-hidden="true"></div>
-                <div class="hero-step">
-                    <div class="hero-step-num" aria-hidden="true">2</div>
-                    <div>
-                        <div class="hero-step-label">Follow the guide</div>
-                        <div class="hero-step-sub">Step-by-step form walkthrough</div>
-                    </div>
-                </div>
-                <div class="hero-step-connector" aria-hidden="true"></div>
-                <div class="hero-step">
-                    <div class="hero-step-num" aria-hidden="true">3</div>
-                    <div>
-                        <div class="hero-step-label">Send your request</div>
-                        <div class="hero-step-sub">Request NASA Science funding</div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div id="selector-container" class="selector-section">
             <div class="selector-card">
@@ -1696,6 +1672,38 @@
                 </div>
             </div>
             <p id="custom-guide-stat" class="guide-stat-caption" style="display:none;"></p>
+        </div>
+        <div class="guide-steps" aria-label="How it works">
+            <div class="guide-steps-header">How this works:</div>
+            <div class="guide-step">
+                <div class="guide-step-left">
+                    <div class="guide-step-num" aria-hidden="true">1</div>
+                    <div class="guide-step-line"></div>
+                </div>
+                <div class="guide-step-body">
+                    <div class="guide-step-label">Find your rep</div>
+                    <div class="guide-step-sub">Select your state and district above</div>
+                </div>
+            </div>
+            <div class="guide-step">
+                <div class="guide-step-left">
+                    <div class="guide-step-num" aria-hidden="true">2</div>
+                    <div class="guide-step-line"></div>
+                </div>
+                <div class="guide-step-body">
+                    <div class="guide-step-label">Follow the guide</div>
+                    <div class="guide-step-sub">Step-by-step form walkthrough</div>
+                </div>
+            </div>
+            <div class="guide-step guide-step--last">
+                <div class="guide-step-left">
+                    <div class="guide-step-num" aria-hidden="true">3</div>
+                </div>
+                <div class="guide-step-body">
+                    <div class="guide-step-label">Send your request</div>
+                    <div class="guide-step-sub">Request NASA Science funding</div>
+                </div>
+            </div>
         </div>
         <div id="member-header" class="member-header" style="display:none;"></div>
         <div id="section-nav" style="display:none;"></div>

@@ -60,12 +60,14 @@ class AppropriationsGuide {
     showResults() {
         document.querySelector('.guide-hero').style.display = 'none';
         document.getElementById('selector-container').style.display = 'none';
+        document.querySelector('.guide-steps').style.display = 'none';
         document.getElementById('back-nav').style.display = 'block';
     }
 
     showSelector() {
         document.querySelector('.guide-hero').style.display = '';
         document.getElementById('selector-container').style.display = '';
+        document.querySelector('.guide-steps').style.display = '';
         document.getElementById('back-nav').style.display = 'none';
         document.getElementById('member-header').style.display = 'none';
         document.getElementById('section-nav').style.display = 'none';
@@ -766,7 +768,7 @@ class AppropriationsGuide {
                 element: '.confidence-display',
                 popover: {
                     title: 'AI Suggestions & Confidence',
-                    description: 'Confidence bars rate how certain the AI is about each suggested value. <strong>High (3 green bars)</strong> = safe to use as-is. <strong>Low (1 orange bar)</strong> = verify carefully before using. All values are AI-generated — always rewrite in your own voice before submitting.',
+                    description: 'Confidence bars rate how certain the AI is about each suggested value. <strong>High (3 green bars)</strong> = safe to use as-is. <strong>Low (1 red bar)</strong> = verify carefully before using. All values are AI-generated — always rewrite in your own voice before submitting.',
                     side: 'top',
                     align: 'start'
                 }

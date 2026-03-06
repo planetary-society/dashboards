@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Normalize CSV line endings to LF
+*.csv text eol=lf

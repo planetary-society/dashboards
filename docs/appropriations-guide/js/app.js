@@ -277,6 +277,24 @@ class AppropriationsGuide {
         });
     }
 
+    isDeadlinePassed(deadline) {
+        if (!deadline) return false;
+        const d = new Date(deadline);
+        if (isNaN(d.getTime())) return false;
+        const t = new Date();
+        return d.getFullYear() < t.getFullYear()
+            || (d.getFullYear() === t.getFullYear() && d.getMonth() < t.getMonth())
+            || (d.getFullYear() === t.getFullYear() && d.getMonth() === t.getMonth() && d.getDate() < t.getDate());
+    }
+
+    isDeadlineToday(deadline) {
+        if (!deadline) return false;
+        const d = new Date(deadline);
+        if (isNaN(d.getTime())) return false;
+        const t = new Date();
+        return d.getFullYear() === t.getFullYear() && d.getMonth() === t.getMonth() && d.getDate() === t.getDate();
+    }
+
     onStateChange(stateAbbr) {
         // Hide member header and guide content
         document.getElementById('member-header').style.display = 'none';
@@ -299,6 +317,17 @@ class AppropriationsGuide {
             const name = member['Member'] || '';
             const party = member['Party'] ? member['Party'][0] : '';
             const chamber = member['Chamber'] || '';
+            const url = member['URL'] || '';
+            const comment = member['Comment'] || '';
+            const deadline = member['Deadline'] || '';
+
+            // Deadline status
+            const deadlinePassed = this.isDeadlinePassed(deadline);
+
+            // Form info status (mirrors renderMemberHeader logic)
+            const hasUrl = url && url.toLowerCase() !== 'link' && url.trim() !== '';
+            const isEmailOnly = !hasUrl && comment.toLowerCase().includes('email');
+            const noFormInfo = !hasUrl && !isEmailOnly;
 
             let label;
             if (chamber === 'Senate') {
@@ -308,9 +337,13 @@ class AppropriationsGuide {
                 label = `District ${distNum} \u2014 ${name} (${party})`;
             }
 
+            if (deadlinePassed) label += ' \u2014 CLOSED';
+            else if (noFormInfo) label += ' \u2014 NO FORM INFO';
+
             return {
                 value: sd,
                 text: label,
+                disabled: deadlinePassed || noFormInfo,
                 chamber: chamber,
                 distNum: sd.includes('-') ? parseInt(sd.split('-')[1], 10) || 0 : 0
             };
@@ -324,7 +357,7 @@ class AppropriationsGuide {
         });
 
         this.districtSelect.innerHTML = '<option value="">Select representative...</option>' +
-            options.map(o => `<option value="${o.value}">${o.text}</option>`).join('');
+            options.map(o => `<option value="${o.value}"${o.disabled ? ' disabled' : ''}>${o.text}</option>`).join('');
         this.districtSelect.disabled = false;
     }
 
@@ -360,10 +393,10 @@ class AppropriationsGuide {
 
         // Parse deadline date (format "3/6/2026")
         const deadlineDate = deadline ? new Date(deadline) : null;
-        const now = new Date();
-        const deadlinePassed = deadlineDate && !isNaN(deadlineDate.getTime()) && deadlineDate < now;
+        const deadlinePassed = this.isDeadlinePassed(deadline);
+        const deadlineToday = this.isDeadlineToday(deadline);
         const msInWeek = 7 * 24 * 60 * 60 * 1000;
-        const deadlineUrgent = deadlineDate && !isNaN(deadlineDate.getTime()) && !deadlinePassed && (deadlineDate - now) <= msInWeek;
+        const deadlineUrgent = deadlineDate && !isNaN(deadlineDate.getTime()) && !deadlinePassed && (deadlineDate - Date.now()) <= msInWeek;
 
         // Action button (form or email) - displayed inline on desktop
         let actionHtml = '';
@@ -403,7 +436,9 @@ class AppropriationsGuide {
         let inlineDeadlineHtml = '';
         if (deadline && !deadlinePassed) {
             const urgentClass = deadlineUrgent ? ' deadline--urgent' : '';
-            const urgentLabel = deadlineUrgent ? '<span class="deadline-label">Due soon</span>' : '';
+            const urgentLabel = deadlineToday
+                ? '<span class="deadline-label">DUE TODAY!</span>'
+                : deadlineUrgent ? '<span class="deadline-label">Due soon</span>' : '';
             inlineDeadlineHtml = `<p class="deadline${urgentClass}"><i class="bi bi-calendar-event"></i> Deadline: ${escapeHtml(deadline)}${urgentLabel}</p>`;
         }
 

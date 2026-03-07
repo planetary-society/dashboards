@@ -390,6 +390,7 @@ class AppropriationsGuide {
         const hasUrl = url && url.toLowerCase() !== 'link' && url.trim() !== '';
         const isEmailOnly = !hasUrl && comment.toLowerCase().includes('email');
         const isEmail = isMailto || isEmailOnly;
+        const isOam = /^https?:\/\/oam[^.]*\.senate\.gov/i.test(url);
 
         // Parse deadline date (format "3/6/2026")
         const deadlineDate = deadline ? new Date(deadline) : null;
@@ -456,7 +457,7 @@ class AppropriationsGuide {
         container.style.display = 'block';
 
         // Store member info for sticky bar
-        this.currentMember = { name: `${prefix} ${name}`, url, isEmail, spendingSummary: null };
+        this.currentMember = { name: `${prefix} ${name}`, url, isEmail, isOam, spendingSummary: null };
     }
 
     async loadGuide(member) {
@@ -609,6 +610,11 @@ class AppropriationsGuide {
             }
         }
 
+        // OAM callout when the form is behind the Senate's authenticated portal
+        if (this.currentMember?.isOam) {
+            html += this.renderOamCallout();
+        }
+
         // Strategy intro for generic guides
         if (!isCustom && guideData.strategy_intro) {
             html += this.renderStrategyIntro(guideData.strategy_intro);
@@ -746,6 +752,25 @@ Sincerely,
                 <button class="copy-btn"><i class="bi bi-clipboard"></i> Copy</button>
             </div>
             ${emailHref ? `<a href="${emailHref}" class="form-button form-button--email email-request-open"><i class="bi bi-envelope"></i> Open in email client</a>` : ''}
+        </div>`;
+    }
+
+    renderOamCallout() {
+        const { url } = this.currentMember || {};
+        return `<div class="oam-callout">
+            <div class="oam-callout-header">
+                <i class="bi bi-lock-fill"></i>
+                <strong>Account required: Senate Online Application Manager (OAM)</strong>
+            </div>
+            <p class="oam-callout-desc">This office uses the Senate's <strong>Office Application Manager (OAM)</strong> — a centralized, authenticated portal used by some Senate offices to collect appropriations requests from constituents. Because access requires a verified personal account, we are unable to provide detailed guidance for this form.</p>
+            <p class="oam-callout-desc">To submit your request, follow these steps:</p>
+            <ol class="oam-steps">
+                <li><strong>Open the OAM portal</strong> using the "Open Request Form" button above.${url ? ` You can also go directly to <a href="${url}" target="_blank" rel="noopener">${url}</a>.` : ''}</li>
+                <li><strong>If you already have an account, log in.</strong></li>
+                <li><strong>If you don't have an account, click the "Create an Account" button.</strong> You will need to provide your name, email address, and contact information, then verify your email to activate the account and log in.</li>
+                <li><strong>After logging in, look for a programmatic appropriations request form link.</strong></li>
+                <li><strong>Complete and submit your request</strong> using the award information, talking points, and baseline guidance below.</li>
+            </ol>
         </div>`;
     }
 

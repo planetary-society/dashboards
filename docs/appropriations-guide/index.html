@@ -712,6 +712,41 @@
             display: inline-flex;
         }
 
+        .oam-callout {
+            background: var(--amber-50, #fffbeb);
+            border: 1px solid var(--amber-200, #fde68a);
+            border-left: 4px solid var(--amber-500, #f59e0b);
+            border-radius: 8px;
+            padding: var(--space-4) var(--space-5);
+            margin-bottom: var(--space-6);
+        }
+        .oam-callout-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-weight: var(--font-weight-semibold);
+            color: var(--amber-800, #92400e);
+            margin-bottom: var(--space-2);
+            font-size: var(--text-base);
+        }
+        .oam-callout-header i { font-size: 1.1rem; }
+        .oam-callout-desc {
+            font-size: var(--text-sm);
+            color: var(--gray-700);
+            margin: 0 0 var(--space-3) 0;
+            line-height: var(--leading-relaxed);
+        }
+        .oam-steps {
+            font-size: var(--text-sm);
+            color: var(--gray-700);
+            margin: 0;
+            padding-left: var(--space-5);
+            line-height: var(--leading-relaxed);
+        }
+        .oam-steps li { margin-bottom: var(--space-2); }
+        .oam-steps li:last-child { margin-bottom: 0; }
+        .oam-steps a { color: var(--amber-800, #92400e); }
+
         .constituent-field {
             border-left-color: var(--teal-400);
             background: var(--teal-50);

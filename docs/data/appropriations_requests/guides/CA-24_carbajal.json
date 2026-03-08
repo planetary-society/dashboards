@@ -1,8 +1,8 @@
 {
   "target_fiscal_year": 2027,
-  "status": "failed",
-  "status_reason": "validation_failed",
-  "status_detail": "Validation failed (1 issue(s)): Validation failed: 1 high issue(s) found.",
+  "status": "success",
+  "status_reason": null,
+  "status_detail": null,
   "member": {
     "full_name": "Salud Carbajal",
     "first_name": "Salud",
@@ -67,7 +67,356 @@
     "district_padded": "24",
     "member_key": "CA-24_carbajal"
   },
-  "form_analysis": null,
+  "form_analysis": {
+    "url": "https://forms.office.com/pages/responsepage.aspx?id=mYITktAiSU2NMHFw1YltmHplW2cIvNRMusmnFsGXwhxURjNNOFI4Rkc0VkY1V1MxVTVDMEJBRDE0OS4u&route=shorturl",
+    "url_type": "microsoft_forms",
+    "fetch_method": "httpx",
+    "form_header_text": "Office of Representative Salud Carbajal FY27 Appropriations Request Form",
+    "form_instructions_text": "If you have a budgetary or policy proposal for Fiscal Year 2027, please complete the form below. Please note this form is for programmatic or language appropriations request. We have a separate form for Community Project Funding requests. Currently, we are accepting submissions on a rolling basis and will update this form once we have more guidance from the Appropriations Committee. If you have specific questions or additional materials related to your request, please contact the appropriate staff listed.",
+    "sections": [
+      {
+        "header": "Contact Information",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r76f47047fa6446ea877a2ecd143b5fa0:e627ec95b464",
+            "label": "Requesting Organization",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r4e1b69bcc09e4db38616ac4d68d70041:0605da44fdba",
+            "label": "Organization Point of Contact",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r064bbad0b97545849f7b959eda14f065:368e986c279c",
+            "label": "Organization Point of Contact Title",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r9aa4b24dd7a548d59a4c5fadd5ae7721:4639fc04cfb2",
+            "label": "Point of Contact e-mail",
+            "help_text": null,
+            "field_type": "email",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r9a6bfa7ab464413fa2526a4b8b0042d2:df06035d9cc6",
+            "label": "Point of Contact Phone Number",
+            "help_text": null,
+            "field_type": "phone",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Request Classification",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r5ed77e386adf41d8a18ca36efc0151e4:bf4f4ce94b39",
+            "label": "Type of Request",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Programmatic",
+              "Language"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Programmatic",
+            "rationale": "The provided context explicitly identifies this as a programmatic funding request for NASA's Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r9abef2f5f6b749bfa3dc287f8b21b5be:5089cb474452",
+            "label": "Appropriations Subcommittee",
+            "help_text": null,
+            "field_type": "dropdown",
+            "required": true,
+            "options": [
+              "Agriculture",
+              "Commerce, Justice, Science",
+              "Energy and Water",
+              "Financial Services",
+              "Homeland Security ",
+              "Interior, Environment and Related Agencies",
+              "Labor, Health and Human Services, Education",
+              "Legislative Branch",
+              "Military Construction, Veteran Affairs",
+              "State and Foreign Operations",
+              "Transportation, Housing and Urban Development"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Commerce, Justice, Science",
+            "rationale": "NASA's Science Mission Directorate is funded under the Commerce, Justice, Science, and Related Agencies subcommittee as per the reference values.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Project/Program Details",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r178b222668f348f28a3e6db3604c9ab0:c666632be9f6",
+            "label": "Agency",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA",
+            "rationale": "Standard agency name for Science Mission Directorate requests.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r72fc0e93ecb945b1a646ee443006da0d:aa7c65fad9b9",
+            "label": "Account",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science",
+            "rationale": "The 'Science' account funds the Science Mission Directorate as per standard appropriations structure.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rf47c3f474ccd40e4bd47e3c57573d4a6:2ed9b054985d",
+            "label": "Title",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science Mission Directorate",
+            "rationale": "Standard short title for this programmatic request.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rf9ce149fa7ef4b24b61d9b9b7e4cfca5:d13855918423",
+            "label": "Short Description and Justification of your Request",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* $9 billion for NASA's Science Mission Directorate to restore funding stability after recent fiscal volatility\n* Sustains U.S. global leadership in space exploration and counters rapid Chinese expansion in planetary and lunar science\n* Protects the specialized aerospace workforce and ensures the execution of peer-reviewed Decadal Survey scientific priorities\n* Leverages NASA's 3-to-1 economic return on investment to drive national innovation and high-tech competitiveness",
+            "rationale": "Justification uses the $9B ask amount and incorporates the 'U.S. Leadership', 'Competition with China', and 'Economic Impact' talking points from the advocacy context.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Budgetary Information",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r3aa789923acd45c6ad3b030420ef2330:722e60d3129b",
+            "label": "Your Requested FY25 Amounts?",
+            "help_text": "Enter the specific dollar amount requested.",
+            "field_type": "number",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "9000000000",
+            "rationale": "As specified in the funding ask for the Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r5bf6f920d4bb4342bfc92e8beebfed3a:7d2f8503d419",
+            "label": "Amount Included in the President's FY25 Budget? (if available; N/A if not available)",
+            "help_text": null,
+            "field_type": "number",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "7566000000",
+            "rationale": "The FY2025 President's Budget Request was $7.566 billion.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r9b65094a82074c94884c406a4b1da6bf:89d81b537741",
+            "label": "Last Enacted Amount?",
+            "help_text": "Provide the funding amount enacted in the most recent fiscal year.",
+            "field_type": "number",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "7250000000",
+            "rationale": "The FY2026 enacted amount is the most recent data available as a pre-filled value.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r1109d189f2c64fc192551f15d2ce6757:707e968ad2f0",
+            "label": "FY24 House Passed Amount?",
+            "help_text": "Provide the amount passed by the House for Fiscal Year 2024.",
+            "field_type": "number",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "7250000000",
+            "rationale": "This value was provided as a pre-filled value for this field.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Community Impact and Support",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r7c0202d93084481eb9a516b4a62575e0:7c620acc8adb",
+            "label": "Impacts to CA-24",
+            "help_text": "Describe the specific impacts or benefits to California's 24th Congressional District.",
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Over $18.5 million in NASA Science funding obligated to CA-24 institutions and businesses between FY2023 and FY2025\n* Support for UC Santa Barbara, which received over $16.7 million in grants for oceanographic tools and climate-related phytoplankton tracking\n* Vital contracts for Goleta-based Freedom Photonics LLC to develop Lidar sources for spacecraft and atmospheric remote sensing\n* Funding for Santa Barbara's Umbra Lab, Inc for radar imagery and Solvang's Bubbleology Research International for GHG reduction assessment",
+            "rationale": "Directly cites the $18,561,014.85 total in district spending and specific local award recipients including UCSB, Freedom Photonics, Umbra Lab, and Bubbleology Research International from the NASA spending context.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r7f3f600d61dd40ae9ae5f9ee296a961e:89447af000c3",
+            "label": "List any stakeholders that support this request",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* The Planetary Society\n* American Astronomical Society (AAS)\n* American Geophysical Union (AGU)\n* Bipartisan House support led by Reps. Don Bacon (R-NE) and Judy Chu (D-CA)",
+            "rationale": "Derived from the 'Congressional Support' section which identifies AAS, AGU, and the leading bipartisan House members.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Coordination and Priority",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r70cd863eb4594486adca0bba2b4200a7:551b63b76793",
+            "label": "Is this request being led by, or submitted to, another Member office?",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Yes",
+            "rationale": "The reference values indicate an existing letter for this request in the House led by Reps. Don Bacon and Judy Chu.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:raefd9fabeb074ab1b77662a62a25ab7a:8fd39b335920",
+            "label": "Please list all Members of the House and Senate to whom the same request is being made",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Representative Don Bacon; Representative Judy Chu",
+            "rationale": "Referencing the leads of the existing House letter for NASA Science as likely recipients of similar requests.",
+            "confidence": "medium"
+          },
+          {
+            "field_id": "microsoft_forms:01:r070e2c62e1b44495b92c36c034fce9d1:4c9e60a53afe",
+            "label": "If yes, what is the Member Office?",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The field 'If yes' refers to a preceding logic-gate question about whether this is a multi-office request, which was not provided in the prompt.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:r09713b2e80294828b3a6f79189a4f58f:b79b6698fc88",
+            "label": "Priority Ranking?",
+            "help_text": "Rank this request if submitting multiple requests (1 being highest priority).",
+            "field_type": "dropdown",
+            "required": true,
+            "options": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5 "
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "Priority ranking is a submitter-specific determination and cannot be inferred from the provided context.",
+            "confidence": "low"
+          }
+        ]
+      }
+    ],
+    "submission_method": "online_form",
+    "deadline_text": "Rolling basis",
+    "validation": {
+      "passed": true,
+      "issues": [],
+      "summary": "All fields passed validation."
+    },
+    "refinement": null
+  },
   "nasa_context": {
     "state_code": "CA",
     "state_name": "California",

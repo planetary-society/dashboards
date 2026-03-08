@@ -1,7 +1,7 @@
 {
   "target_fiscal_year": 2027,
-  "status": "failed",
-  "status_reason": "fetch_failed",
+  "status": "success",
+  "status_reason": null,
   "status_detail": null,
   "member": {
     "full_name": "Wesley Bell",
@@ -11,10 +11,10 @@
     "party": "Democrat",
     "state_code": "MO",
     "district": "1",
-    "form_url": "https://bell.house.gov/services/appropriations-request/fy27-appropriations-requests",
+    "form_url": "https://docs.google.com/forms/d/e/1FAIpQLSeFK8jBboXlfIw86SAngV7VneR5ObtG2LFpRlvgZPST-MJbPg/viewform",
     "deadline": null,
     "comment": null,
-    "submitted": false,
+    "submitted": true,
     "past_caucus_signatory": true,
     "caucus_member": true,
     "appropriator": false,
@@ -43,7 +43,363 @@
     "district_padded": "01",
     "member_key": "MO-01_bell"
   },
-  "form_analysis": null,
+  "form_analysis": {
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSeFK8jBboXlfIw86SAngV7VneR5ObtG2LFpRlvgZPST-MJbPg/viewform",
+    "url_type": "google_forms",
+    "fetch_method": "httpx",
+    "form_header_text": "Fiscal Year 2027 Appropriations Request Form - Office of Congressman Wesley Bell (MO-01)",
+    "form_instructions_text": "To make a Fiscal Year 2027 (FY27) Appropriations Request of Congressman Wesley Bell, please complete and submit this form. Please submit one form per request. To the extent possible, please provide detailed information regarding the location of your request in the subcommittee bill or report, down to the activity or account level (if applicable). Should you have any questions, please contact the office at 202-225-2406 or email our office at MO01.Appropriations@mail.house.gov. ** This form is NOT for submitting requests for Community Project Funding.",
+    "sections": [
+      {
+        "header": "Request Overview",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1062372583:0dd6b6384d53",
+            "label": "Subcommittee",
+            "help_text": "Select the House Appropriations subcommittee with jurisdiction over the request.",
+            "field_type": "dropdown",
+            "required": true,
+            "options": [
+              "Agriculture",
+              "Commerce, Justice, Science",
+              "Defense",
+              "Energy and Water",
+              "Financial Services",
+              "Homeland Security",
+              "Interior",
+              "Labor, Health, and Human Services",
+              "Legislative Branch",
+              "Military Construction - Veteran Affairs",
+              "State and Foreign Operations",
+              "Transportation, Housing, Urban Development"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Commerce, Justice, Science",
+            "rationale": "NASA funding falls under the jurisdiction of the Commerce, Justice, Science, and Related Agencies Subcommittee.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_437603373:60ae982066a1",
+            "label": "Agency:",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA",
+            "rationale": "As specified in the provided reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_2006536510:acebf9bb7318",
+            "label": "Account:",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science",
+            "rationale": "As specified in the reference values for the Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_83110860:f57b7c092818",
+            "label": "Program:",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science Mission Directorate",
+            "rationale": "The request specifically targets the Science Mission Directorate within NASA.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Type of Request",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1544899265:b7c28648b721",
+            "label": "Request Type:",
+            "help_text": null,
+            "field_type": "dropdown",
+            "required": true,
+            "options": [
+              "Program Funding",
+              "Bill Language",
+              "Report Language"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Program Funding",
+            "rationale": "The request is for a specific programmatic funding level of $9 billion for the Science Mission Directorate, rather than bill or report language.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Program Funding Request",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1003791298:a35c42d01c98",
+            "label": "What is the Agency, Office, and Program Title?",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA, Science Mission Directorate",
+            "rationale": "Combines the agency and office/program information as per the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_867720308:3da8e2d3940c",
+            "label": "FY27 Funding Choice:",
+            "help_text": null,
+            "field_type": "dropdown",
+            "required": true,
+            "options": [
+              "Support total funding of",
+              "Support the enacted level of",
+              "Support the President's FY2027 budget request",
+              "General support of the program",
+              "Funding should be reduced",
+              "Eliminate the program"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Support total funding of",
+            "rationale": "The request specifies a target funding amount of $9 billion, which represents a programmatic total rather than simply supporting the enacted level or the (as-yet unknown) President's Budget Request.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1661602568:979e3a6620ee",
+            "label": "FY27 Requested Amount:",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "The funding ask for NASA's Science Mission Directorate is $9 billion.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1278267886:e31351fce61a",
+            "label": "FY26 Appropriated Amount:",
+            "help_text": "Enter the funding amount enacted for the previous fiscal year.",
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$7,250,000,000",
+            "rationale": "This value is explicitly provided in the prior year enacted data (FY2026).",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1099867391:6af68f83cfa4",
+            "label": "President's FY27 Budget Request:",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Currently unknown",
+            "rationale": "The reference values state that the President's Budget Request for FY2027 has not been released.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_588709993:313db7540bb9",
+            "label": "Please provide a description of the program.",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* NASA's Science Mission Directorate (SMD) conducts robotic exploration of the solar system and studies Earth's systems through a portfolio of over 100 missions that define U.S. space leadership.\n* In MO-01, SMD funding supports cutting-edge research at Washington University in St. Louis, including a $9.5M award to maintain the nation's central archive for planetary geology data.\n* Every dollar invested in NASA Science returns roughly three dollars to the economy, supporting a specialized workforce in MO-01 and sustaining the domestic aerospace and innovation pipeline.\n* This $9 billion request restores stability to the agency following the workforce disruptions of FY 2026 and ensures the U.S. remains the global leader in the face of rapid Chinese space science expansion.",
+            "rationale": "Description incorporates the primary mission of SMD, specific high-value local impact at Washington University in St. Louis (MO-1) involving the planetary geology archive, and strategic talking points regarding ROI and international competition.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1476334668:3385290e8792",
+            "label": "What is the Account? *For Defense Requests Only*",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This is a non-defense programmatic request for NASA under the CJS subcommittee.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "google_forms:01:entry_1669190714:e594909e4ba3",
+            "label": "Is this request being led by another Congressional office for sign-on?",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Yes",
+            "rationale": "Reference values indicate an existing house letter led by Reps. Don Bacon and Judy Chu.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Language Request",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1139391495:81af8722a54a",
+            "label": "What is the Agency, Office and Program Title?",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA, Science Mission Directorate",
+            "rationale": "Consistently identifies the specific office and program being requested.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1809111769:418cd75a2a4a",
+            "label": "Please provide exact bill or report language.",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "N/A",
+            "rationale": "The reference values indicate that there is no specific bill or report language requested for this programmatic funding increase.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_384918623:de7a98626b1e",
+            "label": "Description of program:",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* The Science Mission Directorate manages NASA's planetary, Earth, astrophysics, and heliophysics programs, executing peer-reviewed priorities established by the National Academies' Decadal Surveys.\n* Local funding in MO-01 totals over $31.8M (FY23-25), supporting missions like lunar soil analysis and the development of suborbital telescopes at Washington University.\n* This programmatic request of $9 billion supports the advancement of U.S. security and economic competitiveness by solving technical challenges no private entity can replicate alone.\n* Sustained funding prevents the loss of hard-won scientific capabilities and civil servant expertise that took decades to build and are critical to the 21st-century space race.",
+            "rationale": "Provides a concise technical description of the program while highlighting MO-01 specific spending ($31.8M) and the strategic importance of the $9 billion funding level for workforce stability.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1401735060:0d123b6becc8",
+            "label": "Is this request being led by another Congressional office for sign-on?",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Yes",
+            "rationale": "Reference values indicate an existing house letter led by Reps. Don Bacon and Judy Chu.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Organization Contact Information",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_287054074:8fb1fa18c884",
+            "label": "Requesting Entity",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_742367047:733addaa9dcd",
+            "label": "First Name",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_1249485037:6db01286f55a",
+            "label": "Last Name",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_1884265043:4bc1e00c234c",
+            "label": "Email address",
+            "help_text": null,
+            "field_type": "email",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_256910423:d576d554a1f2",
+            "label": "Phone Number",
+            "help_text": null,
+            "field_type": "phone",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      }
+    ],
+    "submission_method": "online_form",
+    "deadline_text": "6:00p ET on Monday, March 9, 2026",
+    "validation": {
+      "passed": true,
+      "issues": [],
+      "summary": "All fields passed validation."
+    },
+    "refinement": null
+  },
   "nasa_context": {
     "state_code": "MO",
     "state_name": "Missouri",

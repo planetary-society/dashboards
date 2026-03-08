@@ -1,8 +1,8 @@
 {
   "target_fiscal_year": 2027,
-  "status": "failed",
-  "status_reason": "validation_failed",
-  "status_detail": "Validation failed (1 issue(s)): Validation failed: 1 high issue(s) found.",
+  "status": "success",
+  "status_reason": null,
+  "status_detail": null,
   "member": {
     "full_name": "Beth Van Duyne",
     "first_name": "Beth",
@@ -55,7 +55,348 @@
     "district_padded": "24",
     "member_key": "TX-24_van_duyne"
   },
-  "form_analysis": null,
+  "form_analysis": {
+    "url": "https://forms.office.com/pages/responsepage.aspx?id=mYITktAiSU2NMHFw1YltmHVcY_cjlyxEupqw4rgQ8ZFUMzRYT0hNTjNZWjdaS0k0T1k2TUMyRk81Qy4u&route=shorturl",
+    "url_type": "microsoft_forms",
+    "fetch_method": "httpx",
+    "form_header_text": "Fiscal Year 2027 Appropriations Request Form-Programmatic and Language Request Application",
+    "form_instructions_text": "Rep. Beth Van Duyne (TX-24) Fiscal Year 2027 Appropriations Request Form Programmatic and Language Requests Application. Rep. Van Duyne is a member of the House Ways and Means Committee and Small Business. The below form is for programmatic and language requests to the House Appropriations Committee for Fiscal Year 2027 (FY27). Please provide detailed information regarding the location of your request in the subcommittee bill or report, down to the activity and account.",
+    "sections": [
+      {
+        "header": "Organization Information",
+        "description": "Details about the entity requesting federal funding or language changes.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:rc486fd53a1bf477cac16fb94416af1e1:46e8759ee8c9",
+            "label": "Requesting Organization:",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:rafd2abc4c94549baa3209e170c8d8c48:a5f07a72188d",
+            "label": "Address:",
+            "help_text": null,
+            "field_type": "address",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r48c951b35f264114a648118c034b4a5f:9c77f6314cad",
+            "label": "Organization Description:\u0000",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:ra0ac38de71b74b608054da4e12240f80:8a20b184bcf2",
+            "label": "Presence in Texas 24th District:\u0000\n",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:rdc3d9a2188d54488bf68245cf72046d8:6f76512dcf43",
+            "label": "For profit or non-profit entity:\u0000\n",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "For Profit",
+              "Non-Profit"
+            ],
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r99e4bdceaa674e1e9138583c04bce3d0:c7fd17a599e9",
+            "label": "Local Point of Contact / Email / Phone Number:\u0000\n",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:rd0ba0d99602d4346a385d6f04fd2d250:eef094c7f795",
+            "label": "DC Point of Contact / Email / Phone Number\u0000(if applicable):\u0000\n",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Proposal Details",
+        "description": "Specifics regarding the appropriations request and its impacts.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:rf705ae813e7142ad94b977d4a8d7534c:4f62ac55d18c",
+            "label": "Proposal Title:",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science Mission Directorate",
+            "rationale": "As per the reference values, the short title for this programmatic request is 'Science Mission Directorate'.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r993f85cfd0aa407da34a62b38d5d7628:6374bf42f7d6",
+            "label": "Proposal type\u0000(Programmatic Request, Language Request, Report Language Request\u0000or Multiple Requests):\u0000",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Programmatic Request",
+              "Language Request",
+              "Report Language Request",
+              "Multiple Requests"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Programmatic Request",
+            "rationale": "The pre-computed reference values explicitly categorize this request for $9,000,000,000 for NASA's Science Mission Directorate as a 'Programmatic Request'.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r539dc7aa511a4009a9a8b27863584ee2:7a3628c2aa48",
+            "label": "Proposal description:\u0000\n",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "This request provides $9 billion for NASA's Science Mission Directorate to sustain U.S. leadership in space. Funding supports over $12.6 million in recent local activity in TX-24, including critical space weather and physics research at the University of Texas at Dallas and Southern Methodist University. This investment ensures the U.S. remains competitive against China's expanding lunar and planetary ambitions while strengthening the domestic STEM workforce.",
+            "rationale": "The description combines the $9B topline ask with the $12.6M in local spending data for TX-24, specifically mentioning top recipients like UT Dallas and SMU to demonstrate district impact.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r54f446076ad4465eb3cf06deaf4f7f90:8b9f3b8243a0",
+            "label": "Subcommittee:",
+            "help_text": "Select the relevant House Appropriations Subcommittee",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Commerce, Justice, Science, and Related Agencies",
+            "rationale": "The Science Mission Directorate is funded under the CJS subcommittee.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rf388e04a098c4d83ac057458a3d9e7d2:86832d6b4a90",
+            "label": "Agency:",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA",
+            "rationale": "Standard agency name for the Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rcf5d287944df4fed80d203bfcb4889a1:506452dd8832",
+            "label": "Account:",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science",
+            "rationale": "The specific account name within the NASA budget for these activities is 'Science'.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rcc6e08ad360b4f07b4d6194ff291cbe6:671a54e89354",
+            "label": "Describe how this proposal will benefit Texas 24th Congressional District:\u0000\n",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Direct investment of $12,657,488 in NASA Science obligations (FY23-FY25) across TX-24 research and industrial institutions.\n* Supports high-tech contracts for Dallas Airmotive ($4.36M) and research grants for Southern Methodist University ($970k).\n* Sustains advanced R&D at the University of Texas at Dallas ($9.1M), including critical work on transparent superconductors and ionospheric satellite data.\n* Strengthens the local aerospace talent pipeline by funding 19 active grants and 7 contracts within the district.",
+            "rationale": "Directly cites cumulative and annual spending data for TX-24, including specific award amounts for Dallas Airmotive, SMU, and UT Dallas as provided in the NASA spending context.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rc25f9183796b4a2a9be747903f1af8c5:89c2294f4835",
+            "label": "Describe how this proposal is a good use of taxpayer dollars:",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Delivers an estimated 3-to-1 return on investment, turbocharging the domestic industrial and innovation workforce.\n* Secures U.S. leadership against rapid Chinese expansion in space science, ensuring America sets the norms for 21st-century exploration.\n* Restores stability to the aerospace workforce and civil service following the significant disruptions and proposed cuts of FY 2026.\n* Adheres to the National Academies' Decadal Surveys, ensuring funds are spent on the highest-priority, peer-reviewed scientific goals.",
+            "rationale": "Leverages the provided advocacy talking points regarding ROI, international competition with China, workforce stability, and Decadal Survey priorities.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r31e19a0f6782446e8a9a0e61b8ddce35:75ddce1baa27",
+            "label": "If you are submitting multiple requests for one organization, please rank your order of preference for this request\u0000(i.e. 1 of 2 total requests)",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "Ranking is specific to the user's total submission package and cannot be determined from the provided context.",
+            "confidence": "low"
+          }
+        ]
+      },
+      {
+        "header": "Funding and Language Specifications",
+        "description": "Information regarding requested dollar amounts and draft legislative text.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r19b278cfa68544158df5cb2d1e9400a9:59a0525d795a",
+            "label": "President's FY27 Budget Request:",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Currently unknown",
+            "rationale": "Reference values indicate the President's Budget Request for FY2027 has not been released.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:re45cb618415349619c3a23d67b979547:7fbe92cd7d23",
+            "label": "FY27 Request:\u0000",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "This reflects the specific funding ask for the Science Mission Directorate provided in the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r1ed52da9fc2d4a19a0aa821220838bd9:cf1bbde88557",
+            "label": "FY27 enacted amount:\u0000",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The FY2027 enacted amount is in the future and cannot be known; if this refers to the prior year (FY26), the enacted amount was $7,250,000,000.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:r06b25816935d42fca0b790bf90767e69:60ab29d950a9",
+            "label": "Your FY27\u0000requested\u0000amount:\u0000",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "Consistent with the funding ask provided in the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r5d75f5bfc229486ea808231557de468e:93f2cd87a654",
+            "label": "If requesting a funding increase, suggest an appropriate offset from this subcommittee bill:\u0000",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "Identifying a specific budget offset requires political judgment from the submitter and is not provided in the advocacy context.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:ra59b770f8fe24834930359e37e596d11:6f3bde222c3b",
+            "label": "Draft bill language:",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The reference values explicitly state that bill language is 'N/A' for this programmatic request.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r6af2c604d8fa4aa7aea5a4a2a24b3fe1:0bd4db133414",
+            "label": "Draft report language:\u0000",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The reference values explicitly state that report language is 'N/A' for this programmatic request.",
+            "confidence": "high"
+          }
+        ]
+      }
+    ],
+    "submission_method": "online_form",
+    "deadline_text": "Friday, March 6, 2026, at 6:00 PM ET",
+    "validation": {
+      "passed": true,
+      "issues": [],
+      "summary": "All fields passed validation."
+    },
+    "refinement": null
+  },
   "nasa_context": {
     "state_code": "TX",
     "state_name": "Texas",

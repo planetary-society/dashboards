@@ -1,8 +1,8 @@
 {
   "target_fiscal_year": 2027,
-  "status": "failed",
-  "status_reason": "validation_failed",
-  "status_detail": "Validation failed (2 issue(s)): Validation failed: 2 high issue(s) found.",
+  "status": "success",
+  "status_reason": null,
+  "status_detail": null,
   "member": {
     "full_name": "Pat Harrigan",
     "first_name": "Pat",
@@ -43,7 +43,445 @@
     "district_padded": "10",
     "member_key": "NC-10_harrigan"
   },
-  "form_analysis": null,
+  "form_analysis": {
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSfjBR4jGF3Wctw2sVYtEofX-f_CgivAML49mo-yLAuhMEGXtA/viewform",
+    "url_type": "google_forms",
+    "fetch_method": "httpx",
+    "form_header_text": "Rep. Pat Harrigan (NC-10) FY 2027 Appropriations Programmatic Request Form",
+    "form_instructions_text": "Thank you for contacting our office to inquire about the fiscal year 2027 appropriations process. Enclosed please find the FY27 appropriations request form for programmatic requests. Please do not use this form for earmark requests. Please submit a separate form for each request if your organization intends to seek funding for more than one request. If you are submitting multiple requests, please indicate the priority of each project on the request form. Please include any supporting documents with each request. A complete request will contain: 1. One form per program and language request 2. Supporting documents as needed",
+    "sections": [
+      {
+        "header": "Company/Organization Mailing Address",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_452358122:6449c386afc7",
+            "label": "Organization Name",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_1351698721:082258a3bbdb",
+            "label": "Type of Entity (non-profit, university, government, etc.)",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_1475578497:37892093f1b7",
+            "label": "Address",
+            "help_text": null,
+            "field_type": "address",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_59186059:aa6ffb49ec8e",
+            "label": "Phone Number",
+            "help_text": "Organization phone number",
+            "field_type": "phone",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Point of Contact",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1294583903:4e918452e0b9",
+            "label": "Name",
+            "help_text": "Point of contact name",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_597740282:b5115e1bf187",
+            "label": "Title",
+            "help_text": "Point of contact title",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_2016728136:405e72538255",
+            "label": "Phone Number",
+            "help_text": "Point of contact phone number",
+            "field_type": "phone",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_121364889:b66f4588c22e",
+            "label": "Email",
+            "help_text": "Point of contact email",
+            "field_type": "email",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Company/Organization Additional Information",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_721391114:a73705e047bb",
+            "label": "Is this company/organization headquartered in North Carolina's 10th Congressional District",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_2045801384:d971302b4906",
+            "label": "Does this company/organization have a satellite office in North Carolina's 10th District?",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_296640189:cda5747e05ce",
+            "label": "Does this company have a presence in North Carolina?",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "google_forms:01:entry_1266922260:dd2c2c526b8d",
+            "label": "If this company/organization does have a presence in North Carolina, but not in NC-10, please tell us where they are located.",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Programmatic Request Information",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_2120174518:340b4c7ddb32",
+            "label": "Request Title ",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA Science Mission Directorate Funding Support",
+            "rationale": "Standard title identifying the specific program and agency request as outlined in the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1365359428:e3e62fafa613",
+            "label": "Suggest an official clear and simple 1-sentence description. ",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* $9 billion programmatic request for NASA's Science Mission Directorate to secure U.S. space leadership and fund local research in NC-10.",
+            "rationale": "Provides a concise summary of the $9 billion request and connects it to the district as requested by the advocacy framing.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_669254593:d6cec3315ef3",
+            "label": "Subcommittee",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Agriculture and Related Agencies",
+              "Commerce, Justice, and Science",
+              "Defense",
+              "Energy and Water Development",
+              "Financial Services and General Government",
+              "Homeland Security",
+              "Interior and Environment",
+              "Labor, Heath and Human Services, and Education",
+              "Legislative Branch",
+              "Military Construction and Veterans' Affairs",
+              "State and Foreign Operations",
+              "Transportation and Housing and Urban Development"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Commerce, Justice, and Science",
+            "rationale": "NASA funding falls under the jurisdiction of the Commerce, Justice, Science, and Related Agencies Subcommittee. This is confirmed by the provided reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_301531858:7772ff7a5d4d",
+            "label": "Agency Name",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA",
+            "rationale": "The agency associated with this request is NASA.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_640807420:72432a9049f9",
+            "label": "Account Name",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science Mission Directorate",
+            "rationale": "The account name provided in the reference values is Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_152473100:b41eb9166427",
+            "label": "Program Name",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science Mission Directorate",
+            "rationale": "The program name provided in the reference values is Science Mission Directorate.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_866886798:dafd64f818bc",
+            "label": "Your Requested FY26 amount \nComplete answer numerically including both commas and dollar sign. (Ex. $1,000,000)",
+            "help_text": "Input the numeric dollar amount for the current fiscal year request.",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "The funding ask specified in the reference values for the Science Mission Directorate is $9 billion.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_271288899:fa40e718048f",
+            "label": "Amount Included in President's FY26 Budget (if available)",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$3,908,000,000",
+            "rationale": "The FY2026 President's Budget Request for SMD was $3.908 billion.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Ongoing Programmatic Requests",
+        "description": "Information regarding prior year appropriations levels for the project.",
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_163552389:a84c44aea955",
+            "label": "FY25 enacted amount",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$7,334,000,000",
+            "rationale": "Using the pre-filled value for FY25 enacted as provided in the instructions.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_359502398:4f847e977b00",
+            "label": "FY25 House passed amount",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$7,250,000,000",
+            "rationale": "Using the pre-filled value for FY25 House passed as provided in the instructions.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1743862099:16314bbfa078",
+            "label": "FY24 enacted amount",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$7.334 billion",
+            "rationale": "Using the pre-filled value for FY24 enacted as provided in the instructions.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1339244098:b4b5de6e2d79",
+            "label": "FY23 enacted amount",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$7.795 billion",
+            "rationale": "Using the pre-filled value for FY23 enacted as provided in the instructions.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Conclusion",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "google_forms:01:entry_1349328288:0b8c50a69dde",
+            "label": "Describe the purpose and impact of your programmatic request. How will this request help your organization, North Carolina and/or the nation? ",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Sustains U.S. preeminence in space exploration against rapid Chinese expansion, ensuring American norms for 21st-century lunar and planetary missions.\n* Directly supports NC-10 research, including $482,689 in recent NASA funding to Wake Forest University for critical studies in regional water cycling and space situational awareness.\n* Provides a 3-to-1 economic return on investment, fueling the local STEM workforce and industrial innovation through high-tech R&D contracts.\n* Protects the specialized aerospace talent pipeline from workforce instability following the significant disruptions caused by previous funding cuts.",
+            "rationale": "Utilizes the 3-to-1 ROI and China competition talking points alongside specific NC-10 spending data (Wake Forest University grants) from the provided NASA context.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "google_forms:01:entry_1601305808:033647e81a3f",
+            "label": "Priority Ranking (if submitting multiple requests)",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "Priority ranking is a submitter-specific determination and cannot be provided without knowing the full list of requests being submitted by the office.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "google_forms:01:entry_653618601:94a5522471ee",
+            "label": "List all Members of the House and Senate who are receiving this request",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Representative Pat Harrigan\n* Senator Thom Tillis\n* Senator Ted Budd",
+            "rationale": "Standard list for a constituent in NC-10, including the House Representative and both North Carolina Senators.",
+            "confidence": "medium"
+          },
+          {
+            "field_id": "google_forms:01:entry_1557644021:c4e5ecae95cc",
+            "label": "Please include any additional supporting documents.",
+            "help_text": null,
+            "field_type": "file_upload",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "File must be attached manually.",
+            "confidence": "low"
+          }
+        ]
+      }
+    ],
+    "submission_method": "online_form",
+    "deadline_text": "DEADLINE #1 MONDAY, MARCH 9th @5PM EST; DEADLINE #2 MONDAY, MARCH 16th @5PM EST",
+    "validation": {
+      "passed": true,
+      "issues": [],
+      "summary": "All fields passed validation."
+    },
+    "refinement": null
+  },
   "nasa_context": {
     "state_code": "NC",
     "state_name": "North Carolina",

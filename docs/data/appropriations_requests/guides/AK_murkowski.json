@@ -1,8 +1,8 @@
 {
   "target_fiscal_year": 2027,
   "status": "failed",
-  "status_reason": "insufficient_fields",
-  "status_detail": "Extraction produced only 2 field(s) (minimum 5) -- likely not a valid form",
+  "status_reason": "analysis_error",
+  "status_detail": "extract_fields: unexpected -- ValueError: LLM omitted 2 of 2 field_ids (100%), exceeding 50% threshold",
   "member": {
     "full_name": "Lisa Murkowski",
     "first_name": "Lisa",

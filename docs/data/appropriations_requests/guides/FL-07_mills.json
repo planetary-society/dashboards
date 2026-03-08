@@ -1,8 +1,8 @@
 {
   "target_fiscal_year": 2027,
-  "status": "failed",
-  "status_reason": "validation_failed",
-  "status_detail": "Validation failed (1 issue(s)): Validation failed: 1 high issue(s) found.",
+  "status": "success",
+  "status_reason": null,
+  "status_detail": null,
   "member": {
     "full_name": "Cory Mills",
     "first_name": "Cory",
@@ -55,7 +55,834 @@
     "district_padded": "07",
     "member_key": "FL-07_mills"
   },
-  "form_analysis": null,
+  "form_analysis": {
+    "url": "https://forms.cloud.microsoft/pages/responsepage.aspx?id=mYITktAiSU2NMHFw1YltmHodqKsF-slPpNDVoJbaS_dUQVE5QjBZOTg4RkhNNVpKU0FMQUsxV1JKViQlQCN0PWcu&route=shorturl",
+    "url_type": "microsoft_forms",
+    "fetch_method": "httpx",
+    "form_header_text": "FY27 Programmatic & Language Appropriations Request Form",
+    "form_instructions_text": "Initial Submission Deadline is Wednesday, March 11, 2026. This form is for programmatic and language requests ONLY. Multiple requests in one submission will not be accepted. Each request must be submitted individually. All required questions on the form must be completed. All submitted forms are subject to public disclosure. Word limits on request descriptions and language are set by the Appropriations Committee.",
+    "sections": [
+      {
+        "header": "Organization Information",
+        "description": "General information about the requesting organization.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r01b1072021df414695228aef773b5ff5:b612b2077335",
+            "label": "Organization Name",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r1ab2af39faa046b58875415087533a64:2218a54ec465",
+            "label": "Street Address",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:rf476d48f39cc451d91ae4fdc80dbcb84:0802792a0ca7",
+            "label": "Phone Number",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r8dffbcf35acc4688b820a6e5fbccedf6:54e54521756b",
+            "label": "Website",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r813c9240a894463b92d0b0c09e0024ef:a44cc9d1b90a",
+            "label": "Secondary Website",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:rb6cc647cec0c4ea2a8a5c97c428c1829:a7485b10d0e6",
+            "label": "Type of Organization",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Non-Profit (must be a 501(c)(3) to select this option)",
+              "Public University",
+              "Private University",
+              "Government"
+            ],
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r09d53a5430984265a99ab9d91bd3bb50:d24184ca1928",
+            "label": "Co-Sponsoring Organization(s) (for requests that have multiple sponsors)",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Primary Point of Contact",
+        "description": "Details for the main contact person regarding this request.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:rc6d86634af904d1c86ec5b9f81cc9710:98f7fcfea154",
+            "label": "Name of Primary Point of Contact (POC)",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:rc212f10f1c9e428a873bc800d11e6348:50841ee5e379",
+            "label": "Organization of Primary POC",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:rd68d24fd92154de097a1c0d89b448403:62f44d499146",
+            "label": "Direct Phone Number of Primary POC",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:rcf7525a524964420b8cfed7e58940d7e:833e12665578",
+            "label": "Email Address for Primary POC",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Secondary Point of Contact",
+        "description": "Optional secondary contact information if applicable.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r29efa217e07640eabe41d66137f1f515:71b02c011c64",
+            "label": "Does this submission have a Secondary Contact Organization/Firm?",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r0d4e99a0fef14d1ca9f8d4d2c0d5fa02:605373aee05d",
+            "label": "Name of Secondary POC",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r6dbbccbdfe5e4e3893e7452a3da80218:f80a117d4184",
+            "label": "Organization/Firm of Secondary POC",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r455332d46ca44a2c85566961396e14d4:e60242092fc3",
+            "label": "Direct Phone Number of Secondary POC",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          },
+          {
+            "field_id": "microsoft_forms:01:r42ded754f4ea43b08f51888eb99ab9a5:0cb37ee6bb57",
+            "label": "Email Address for Secondary POC",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": true,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": null,
+            "confidence": null
+          }
+        ]
+      },
+      {
+        "header": "Request Classification",
+        "description": null,
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r93d39c55387947688d9de045defe7906:025a97343f90",
+            "label": "Is this a Programmatic or a Language Request?",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Programmatic",
+              "Language"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Programmatic",
+            "rationale": "The request context identifies this as a programmatic funding request for NASA's Science Mission Directorate.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Programmatic Request Details",
+        "description": "Details specifically for programmatic funding requests.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:r0ff64857fa1b4388b5a147a315351212:66bbf31b751a",
+            "label": "Subcommittee of Jurisdiction",
+            "help_text": null,
+            "field_type": "dropdown",
+            "required": true,
+            "options": [
+              "Agriculture, Rural Development, Food and Drug Administration",
+              "Commerce, Justice, Science, and Related Agencies",
+              "Energy and Water Development and Related Agencies",
+              "Financial Services and General Government",
+              "Homeland Security",
+              "Interior, Environment, and Related Agencies",
+              "Labor, Health and Human Services, Education",
+              "Legislative Branch",
+              "Military Construction, Veterans Affairs, and Related Agencies",
+              "State, Foreign Operations, and Related Programs",
+              "Transportation, Housing and Urban Development, and Related Agencies"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Commerce, Justice, Science, and Related Agencies",
+            "rationale": "NASA Science falls under the jurisdiction of the CJS subcommittee.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r4bd8c08311d7403899082557c948d908:d9fe6c8aa655",
+            "label": "If your organization is submitting more than one request across all subcommittees, please indicate the priority of your request.",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "Priority ranking is specific to the submitter's organizational portfolio and is not provided in the context.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:rb6483a541f104a60930df829c19ed26a:17c1dc8e8629",
+            "label": "If your organization is submitting more than one request within this subcommittee, please indicate the priority of your request.",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "Priority ranking is specific to the submitter's organizational portfolio and is not provided in the context.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:rcd7656c0985446ed970e55d7645a4f55:9d44b5a0868d",
+            "label": "Agency",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "NASA",
+            "rationale": "Confirmed in reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r4703f3b8ad18407b83651e33799be0e3:51dc803531f0",
+            "label": "Account",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science Mission Directorate",
+            "rationale": "Matches the SMD account name in reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r640a6a21a1fa4ff9ba62c4c521ace48c:b99ed2a76edf",
+            "label": "Please provide a short title for this Programmatic request",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Science Mission Directorate",
+            "rationale": "Standardized short title for SMD programmatic funding.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r575b65d695b5492b8f810e45c39d28fe:356d309715bc",
+            "label": "Description of the Programmatic request:",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* $9,000,000,000 for NASA's Science Mission Directorate (SMD) to support Earth Science, Planetary Science, Astrophysics, Heliophysics, and Biological and Physical Sciences\n* Funding for the implementation of National Academies' Decadal Survey priorities to maintain U.S. global leadership in space exploration\n* Investment in the specialized aerospace workforce and domestic supply chains to provide stability following recent budget volatility",
+            "rationale": "Directly reflects the $9 billion programmatic funding ask for NASA SMD as specified in the reference values.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r9bc2310938ff4c188f5fb35caf8ab67e:d3d0b8590daf",
+            "label": "Briefly describe the problem/issue this Programmatic request will address.",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Counteracts the disruption caused by the FY 2026 budget cuts which led to thousands of layoffs and threatened U.S. aerospace workforce stability\n* Addresses the rapid expansion of China's space program, ensuring the U.S. continues to set the norms for 21st-century exploration\n* Mitigates the high life-cycle costs and mission delays resulting from inconsistent funding of peer-reviewed scientific priorities",
+            "rationale": "Draws on the provided advocacy talking points regarding workforce stability, competition with China, and the impact of the FY 2026 funding situation.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r2e464df92b614e87bdb9bdadb53bc724:814f59130612",
+            "label": "Briefly describe the goals and/or expected outcome of this Programmatic request.",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Secures a predictable funding trajectory for flagship missions like Mars Sample Return and the Habitable Worlds Observatory\n* Advances critical technologies in planetary defense and solar weather forecasting that yield a 3-to-1 economic return on investment\n* Sustains domestic industrial base participation, including local vendors such as Test Equipment Connection Corp. in FL-07",
+            "rationale": "Incorporates the economic ROI argument, Decadal Survey priorities, and specific local context for FL-07.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Funding Levels",
+        "description": "Historical and requested funding amounts.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:rd139dc642d8447beae225049f5f98178:3b4ec3168aac",
+            "label": "Program Funding Level",
+            "help_text": "Select the general nature of your funding request.",
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Support the enacted level",
+              "Support the President's Budget Request",
+              "General support for the program",
+              "Increase funding for the program",
+              "Reduce funding for the program",
+              "Eliminate the program"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Increase funding for the program",
+            "rationale": "The ask of $9 billion is a $1.75 billion (24%) increase over the FY2026 enacted level of $7.25 billion.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:recb034585d484a40ba448d768029e1aa:cfe281d30ee7",
+            "label": "FY27 Requested Funding Level",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$9,000,000,000",
+            "rationale": "This is the specific advocacy ask for NASA Science.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r514360389fc34ab1939c4277f3a5c615:a5bd3ce38598",
+            "label": "Amount included in the FY27 President's Budget",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Currently unknown (President's Budget Request has not been released)",
+            "rationale": "The FY2027 President's Budget Request has not been released yet.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r5cfb0443ca85486a9da9c7aa72ab4916:7bcd9c7d3ccf",
+            "label": "Amount of Proposed Increase/Decrease from the FY26 Enacted Level",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "$1,750,000,000 increase",
+            "rationale": "Calculation of the $9B ask minus the $7.25B FY26 enacted level.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rd9c60d1e84494939a151e08918411c10:f9e1aeeb2674",
+            "label": "If requesting a funding increase, suggest an appropriate offset from this bill.",
+            "help_text": "Use the FY26 President's Budget for offset information as we await the FY27 Budget.",
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "The Planetary Society does not suggest specific offsets as it focuses on the value of the science investment.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:rd72772bb9a3c475fa900c540417223f9:0f520aae70ef",
+            "label": "FY25 Enacted Funding Level",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$7,334,000,000",
+            "rationale": "Using provided pre-filled value as instructed for the most recent enacted year.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r4ded08508d0344f08eaf261fe5803b9a:cffbd4cd1408",
+            "label": "If FY25 Enacted Funding Level is unavailable, provide the FY24 proposed funding level.",
+            "help_text": null,
+            "field_type": "text",
+            "required": false,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$8,261,000,000",
+            "rationale": "Using provided pre-filled value.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r10d6a0e88b3643fdaf4a3bdc39b03419:a4e34e389cdd",
+            "label": "FY24 Enacted Funding Level",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$7.334 billion",
+            "rationale": "Using provided pre-filled value for FY24.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:re63a16627cd4416bb8f4bad9234276e8:0d6b9fc5e051",
+            "label": "FY23 Enacted Funding Level",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": true,
+            "draft_value": "$7,795,000,000",
+            "rationale": "Using provided pre-filled value.",
+            "confidence": "high"
+          }
+        ]
+      },
+      {
+        "header": "Language Request Details",
+        "description": "Details specifically for report or bill language requests.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:ra84c1adeefc44584afb0faad74b4da80:3f6866374727",
+            "label": "Subcommittee of Jurisdiction",
+            "help_text": null,
+            "field_type": "dropdown",
+            "required": true,
+            "options": [
+              "Agriculture, Rural Development, Food and Drug Administration",
+              "Commerce, Justice, Science, and Related Agencies",
+              "Energy and Water Development and Related Agencies",
+              "Financial Services and General Government",
+              "Homeland Security",
+              "Interior, Environment, and Related Agencies",
+              "Labor, Health and Human Services, Education",
+              "Legislative Branch",
+              "Military Construction, Veterans Affairs, and Related Agencies",
+              "State, Foreign Operations, and Related Programs",
+              "Transportation, Housing and Urban Development, and Related Agencies"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This field appears to belong to a language-specific section which is not applicable to this programmatic request.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:r522a00e19bbc4f24a7475045e6e89b6a:eb268273310e",
+            "label": "If your organization is submitting more than one request across all subcommittees, please indicate the priority of your request.",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This field appears to belong to a language-specific section which is not applicable to this programmatic request.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:r16d66a408bca4af8bda31bed01f20d55:3c20773fd9b9",
+            "label": "If your organization is submitting more than one request within this subcommittee, please indicate the priority of your request.",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This field appears to belong to a language-specific section which is not applicable to this programmatic request.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:r91cddc78ed074c2ab7febd4dd33a0952:26de8775b209",
+            "label": "Agency",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This section appears to be for Language requests; this is a programmatic request.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:raa66417612e64821af27e49bc916c4ba:d313ff2a1eaf",
+            "label": "Account",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This section appears to be for Language requests; this is a programmatic request.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:r4328835ff80d4a7288c47503ff98c4b7:a41553456213",
+            "label": "Please specify whether the request is for bill language or report language.",
+            "help_text": null,
+            "field_type": "radio",
+            "required": false,
+            "options": [
+              "Bill Language",
+              "Report Language"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This field appears to belong to a language-specific section which is not applicable to this programmatic request.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:r51f69e88feff4ec5bf9da5969921562b:9fc62177627d",
+            "label": "Please provide a short title for this Language request",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This is a programmatic funding request, not a language request.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:rf404e0a74c6f421d947d84b0f5efd6d0:071e8b40d08f",
+            "label": "Description of the Language request:",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This is a programmatic funding request; language-specific fields do not apply.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:rb03e5863185a46d5b20c067b0c8f9bd3:b1d4342aea1b",
+            "label": "Exact Proposed Language",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This is a programmatic funding request; language-specific fields do not apply.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:rfe89db8db38b42c29be2f05a46893aa5:9106890f498e",
+            "label": "If this or similar language has been included in previous Bills and/or Reports, provide information for the Bills and/or Reports, as applicable.",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This is a programmatic funding request; language-specific fields do not apply.",
+            "confidence": "low"
+          }
+        ]
+      },
+      {
+        "header": "Additional Information",
+        "description": "Supplemental details and multi-member coordination.",
+        "fields": [
+          {
+            "field_id": "microsoft_forms:01:rf09ac2b6379e438b92e830a4198ed2dc:c2c8764902f4",
+            "label": "For SFOPS requests only, please describe how this request is in the national security interest of the United States.",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This request falls under the CJS subcommittee, not SFOPS.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:r84e8e2a8a77e43c5b04104f2262b194e:8a0061b3a178",
+            "label": "Please list all other House Members to whom you are submitting this request.",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This is a user-specific question and requires personal knowledge of the submitter's activities.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:ra8598343ecc24ff7b5c390daf8506bfe:5816069a2aad",
+            "label": "Please list all other Senators to whom you are submitting this request.",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "This is a user-specific question and requires personal knowledge of the submitter's activities.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:re3313b7d168740b79cdd4c9e676d5636:b3da5aeb2f71",
+            "label": "Is there a multimember letter for this request?",
+            "help_text": null,
+            "field_type": "radio",
+            "required": true,
+            "options": [
+              "Yes",
+              "No"
+            ],
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Yes",
+            "rationale": "The context confirms an existing House letter led by Reps. Don Bacon and Judy Chu.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r01067f21212040208f167d39cc6dd119:bc1764067493",
+            "label": "Name of the Member leading the letter",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "Don Bacon (R-NE) and Judy Chu (D-CA)",
+            "rationale": "Reference values identify these members as the leads for the House letter.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:r92b403c3a1fa456898de4f13153a7dab:fb6e8fca4a0a",
+            "label": "Name of the Member's staff POC for the letter",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "Specific staff contact information is not provided in the context.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:r937e0d8cef234c3e96d5dad01b3dc360:5839d149b912",
+            "label": "Email of the Member's staff POC for the letter",
+            "help_text": null,
+            "field_type": "text",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "Specific staff contact information is not provided in the context.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:r073e8a71fbd34ac582000b86e533e905:d7d375b13eab",
+            "label": "If known, provide the deadline to co-sign the multimember letter.",
+            "help_text": null,
+            "field_type": "date",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": null,
+            "rationale": "Letter deadline is not provided in the context.",
+            "confidence": "low"
+          },
+          {
+            "field_id": "microsoft_forms:01:rafc425bb48ab43aaa4f2b0db5b70f5ff:ab8530eadbcb",
+            "label": "Justification for Request",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Maintains the U.S. as the global leader in space science, a position currently challenged by China's rapidly advancing planetary ambitions\n* Protects a strategic national asset: the high-skill aerospace workforce that supports national security and economic competitiveness\n* Aligns with the strong, bipartisan congressional support seen in FY 2026 for restoring NASA's scientific capabilities",
+            "rationale": "Frames the request using advocacy talking points on leadership, competition, and bipartisan support.",
+            "confidence": "high"
+          },
+          {
+            "field_id": "microsoft_forms:01:rbe89371e96744838a393f3cc21d5dca7:ce0dab2a37ce",
+            "label": "Appropriate Use",
+            "help_text": null,
+            "field_type": "textarea",
+            "required": true,
+            "options": null,
+            "is_constituent_info": false,
+            "is_prior_year_field": false,
+            "draft_value": "* Funds will be administered by NASA's Science Mission Directorate to execute peer-reviewed missions according to Decadal Survey strategic roadmaps\n* Investments will be distributed through competitive contracts and research grants to universities and private sector partners\n* Ensures efficient use of federal funds by following the rigorous, nonpartisan scientific priorities established by the National Academies",
+            "rationale": "Based on advocacy points emphasizing the role of NASA SMD and the rigorous Decadal Survey process.",
+            "confidence": "high"
+          }
+        ]
+      }
+    ],
+    "submission_method": "online_form",
+    "deadline_text": "Wednesday, March 11, 2026",
+    "validation": {
+      "passed": true,
+      "issues": [],
+      "summary": "All fields passed validation."
+    },
+    "refinement": null
+  },
   "nasa_context": {
     "state_code": "FL",
     "state_name": "Florida",

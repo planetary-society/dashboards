@@ -220,6 +220,21 @@ class AppropriationsGuide {
         }
     }
 
+    /**
+     * Build a unique key for each member.
+     * House members use State / District (e.g. "TX-20").
+     * Senators use "{state}-sen-{lastname}" (e.g. "CA-sen-schiff") to
+     * distinguish two senators from the same state.
+     */
+    getMemberKey(member) {
+        const sd = member['State / District'] || '';
+        if (member['Chamber'] === 'Senate') {
+            const lastName = (member['Last Name'] || '').toLowerCase().replace(/[^a-z]/g, '');
+            return `${sd}-sen-${lastName}`;
+        }
+        return sd;
+    }
+
     buildStateMap() {
         this.stateMap = {};
         for (const member of this.members) {
@@ -230,6 +245,8 @@ class AppropriationsGuide {
             if (!this.stateMap[state]) {
                 this.stateMap[state] = [];
             }
+            // Attach a unique key for dropdown values and routing
+            member._key = this.getMemberKey(member);
             this.stateMap[state].push(member);
         }
     }
@@ -314,6 +331,7 @@ class AppropriationsGuide {
         // Build options: Senate first, then House by district number
         const options = members.map(member => {
             const sd = member['State / District'] || '';
+            const key = member._key || sd;
             const name = member['Member'] || '';
             const party = member['Party'] ? member['Party'][0] : '';
             const chamber = member['Chamber'] || '';
@@ -341,7 +359,7 @@ class AppropriationsGuide {
             else if (noFormInfo) label += ' \u2014 NO FORM INFO';
 
             return {
-                value: sd,
+                value: key,
                 text: label,
                 disabled: deadlinePassed || noFormInfo,
                 chamber: chamber,
@@ -362,8 +380,8 @@ class AppropriationsGuide {
     }
 
     async onDistrictChange(stateDistrict) {
-        // Find member row
-        const member = this.members.find(m => m['State / District'] === stateDistrict);
+        // Find member row by unique key
+        const member = this.members.find(m => m._key === stateDistrict);
         if (!member) return;
 
         this.router.navigate(stateDistrict, false);

@@ -4,48 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NASA Data Dashboards - The Planetary Society</title>
-    <meta name="description" content="Explore interactive dashboards tracking NASA science spending, contracts, and grants across every U.S. state and congressional district. Free tools from The Planetary Society.">
+    <meta name="description" content="Explore interactive dashboards tracking NASA science spending, contracts, grants, and congressional advocacy across the United States. Free tools from The Planetary Society.">
     <meta name="author" content="Casey Dreier/The Planetary Society">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#037cc2">
 
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://dashboards.planetary.org/">
 
-    <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="https://www.planetary.org/img/site/apple-touch-icon-180x180.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://www.planetary.org/img/site/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://www.planetary.org/img/site/favicon-16x16.png">
     <link rel="shortcut icon" href="https://www.planetary.org/img/site/favicon.ico">
 
-    <!-- Twitter Card meta tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@exploreplanets">
     <meta name="twitter:title" content="NASA Data Dashboards - The Planetary Society">
-    <meta name="twitter:description" content="Explore interactive dashboards tracking NASA science spending, contracts, and grants across every U.S. state and congressional district. Free tools from The Planetary Society.">
+    <meta name="twitter:description" content="Explore interactive dashboards tracking NASA science spending, contracts, grants, and congressional advocacy across the United States. Free tools from The Planetary Society.">
     <meta name="twitter:image" content="https://dashboards.planetary.org/img/tps-science-budget-preview.png">
     <meta name="twitter:image:alt" content="NASA Data Dashboards by The Planetary Society">
 
-    <!-- Open Graph meta tags -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="The Planetary Society">
     <meta property="og:title" content="NASA Data Dashboards - The Planetary Society">
-    <meta property="og:description" content="Explore interactive dashboards tracking NASA science spending, contracts, and grants across every U.S. state and congressional district. Free tools from The Planetary Society.">
+    <meta property="og:description" content="Explore interactive dashboards tracking NASA science spending, contracts, grants, and congressional advocacy across the United States. Free tools from The Planetary Society.">
     <meta property="og:image" content="https://dashboards.planetary.org/img/tps-science-budget-preview.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="675">
     <meta property="og:image:alt" content="NASA Data Dashboards by The Planetary Society">
     <meta property="og:url" content="https://dashboards.planetary.org/">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- Shared CSS -->
     <link rel="stylesheet" href="shared/css/variables.css">
     <link rel="stylesheet" href="shared/css/base.css">
     <link rel="stylesheet" href="shared/css/components.css">
@@ -167,7 +159,6 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <header class="navbar">
         <a href="https://planetary.org" target="_blank" class="navbar-brand">
             <img src="shared/img/TPS_Logo_3Stack-White.png" alt="The Planetary Society" class="navbar-logo">
@@ -179,15 +170,13 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main>
         <div class="landing-hero">
             <h1>NASA Data Dashboards</h1>
-            <p>Interactive tools from The Planetary Society to explore NASA spending, contracts, and grants across every U.S. state and congressional district.</p>
+            <p>Interactive tools from The Planetary Society to explore NASA spending, contracts, grants, and congressional advocacy across the United States.</p>
         </div>
 
         <div class="dashboard-grid">
-            <!-- NASA Science Spending Dashboard -->
             <a href="nasa-science/" class="dashboard-card">
                 <img src="img/tps-science-budget-preview.png" alt="NASA Science Spending Dashboard" class="dashboard-card-image">
                 <div class="dashboard-card-body">
@@ -201,7 +190,6 @@
                 </div>
             </a>
 
-            <!-- NASA Cancellations Dashboard -->
             <a href="cancellations/" class="dashboard-card">
                 <img src="img/tps-nasa-cancellations-dashboard-preview.png" alt="NASA Cancellations Dashboard" class="dashboard-card-image">
                 <div class="dashboard-card-body">
@@ -214,23 +202,22 @@
                     </span>
                 </div>
             </a>
-                <!-- FY 2027 Appropriations Request Guide
-                <a href="appropriations-guide/" class="dashboard-card">
-                    <img src="img/tps-appropriations-guides-dashboard.png" alt="FY 2027 Appropriations Request Guide" class="dashboard-card-image">
-                    <div class="dashboard-card-body">
-                        <h2 class="dashboard-card-title">FY 2027 Appropriations Request Guide <span class="beta-badge">Beta</span></h2>
-                        <p class="dashboard-card-description">
-                            Step-by-step guide for filling out congressional appropriations request forms. Find your representative and get personalized instructions for requesting NASA Science.
-                        </p>
-                        <span class="dashboard-card-arrow">
-                            Get Started <i class="bi bi-arrow-right"></i>
-                        </span>
-                    </div>
-                </a> -->
+
+            <a href="sentiment.html" class="dashboard-card">
+                <img src="img/tps-appropriations-guides-dashboard.png" alt="Congressional NASA Advocacy Reports" class="dashboard-card-image">
+                <div class="dashboard-card-body">
+                    <h2 class="dashboard-card-title">Congressional NASA Advocacy Reports <span class="beta-badge">Beta</span></h2>
+                    <p class="dashboard-card-description">
+                        Open member-by-member NASA advocacy briefings with budget support signals, committees, and constituent-focused meeting strategy for NASA space science.
+                    </p>
+                    <span class="dashboard-card-arrow">
+                        Explore Reports <i class="bi bi-arrow-right"></i>
+                    </span>
+                </div>
+            </a>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer style="text-align: center; padding: var(--space-8) var(--space-4); color: var(--gray-500); font-size: var(--text-sm);">
         <p>Created by <a href="https://planetary.org" target="_blank" style="color: var(--blue-500);">The Planetary Society</a></p>
         <p>For questions, contact <a href="mailto:casey.dreier@planetary.org" style="color: var(--blue-500);">casey.dreier@planetary.org</a></p>

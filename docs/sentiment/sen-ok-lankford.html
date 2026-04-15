@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>NASA Advocacy Briefing</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://planetary.org/img/site/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://planetary.org/img/site/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://planetary.org/img/site/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --tps-blue: #037cc2;
+      --tps-blue-dark: #1e447b;
+      --tps-sand: #f7f1e8;
+      --tps-cream: #fffdf9;
+      --tps-ink: #1e2430;
+      --tps-muted: #51606f;
+      --tps-line: #d9dee5;
+      --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
+      --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(3, 124, 194, 0.08), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--tps-sand) 100%);
+      color: var(--tps-ink);
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container-planetary-responsive {
+      width: 100%;
+      padding-right: var(--bs-container-padding-x, 1rem);
+      padding-left: var(--bs-container-padding-x, 1rem);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 992px;
+    }
+    .tps-report-main {
+      padding: 1.25rem 0 2.5rem;
+    }
+    .advocacy-report-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(217, 222, 229, 0.9);
+      border-radius: 22px;
+      box-shadow: var(--tps-shadow);
+      padding: 1.25rem 1rem 1.5rem;
+      overflow-wrap: anywhere;
+    }
+    .advocacy-report-card h1,
+    .advocacy-report-card h2,
+    .advocacy-report-card h3 {
+      color: var(--tps-blue-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .advocacy-report-card h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--tps-line);
+    }
+    .advocacy-report-card h1 + p {
+      margin: 0.85rem 0 1.25rem;
+      color: var(--tps-muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .advocacy-report-card h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .advocacy-report-card p,
+    .advocacy-report-card li {
+      font-size: 0.98rem;
+    }
+    .advocacy-report-card p {
+      margin: 0 0 0.9rem;
+    }
+    .advocacy-report-card ul,
+    .advocacy-report-card ol {
+      margin: 0 0 1rem 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card li + li {
+      margin-top: 0.55rem;
+    }
+    .advocacy-report-card :is(ul, ol) :is(ul, ol) {
+      margin-top: 0.55rem;
+      margin-bottom: 0.15rem;
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card a {
+      color: var(--tps-blue);
+      font-weight: 600;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.15em;
+    }
+    .advocacy-report-card blockquote {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1.05rem;
+      border-left: 4px solid var(--tps-blue);
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.08), rgba(3, 124, 194, 0.03));
+      border-radius: 14px;
+    }
+    .advocacy-report-card blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
+    .advocacy-report-card code {
+      background: rgba(30, 36, 48, 0.08);
+      padding: 0.1rem 0.32rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .advocacy-report-card hr {
+      border: 0;
+      border-top: 1px solid var(--tps-line);
+      margin: 1.5rem 0;
+    }
+    /* Slug `#nasa-budget-support` is generated by python-markdown's toc extension from
+       the `## NASA Budget Support` heading; renaming that heading will silently break this. */
+    .advocacy-report-card #nasa-budget-support + p,
+    .advocacy-report-card #nasa-budget-support + ul {
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote {
+      margin-top: 0;
+      padding: 1rem 1rem 0.9rem;
+      border-left: 0;
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+    }
+    .advocacy-report-card #nasa-budget-support + p {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:first-child {
+      color: var(--tps-blue-dark);
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li {
+      margin-top: 0.4rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li:first-child {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li:first-child {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .advocacy-report-card #meeting-strategy + p {
+      margin-bottom: 0.8rem;
+    }
+    .advocacy-report-card #sources {
+      margin-top: 1.75rem;
+    }
+    .advocacy-report-card .footnote {
+      color: var(--tps-muted);
+      font-size: 0.92rem;
+    }
+    .advocacy-report-card .footnote ol {
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card .footnote li {
+      margin-top: 0.65rem;
+    }
+    .advocacy-report-card .footnote-backref {
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
+    }
+    .tps-report-closing {
+      margin-top: 1.25rem;
+      background: #dde5ec;
+      border-radius: 18px;
+      padding: 1.15rem 1rem;
+      text-align: center;
+    }
+    .tps-report-closing p {
+      margin: 0;
+      color: var(--tps-blue-dark);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .tps-report-closing a {
+      color: var(--tps-blue-dark);
+      font-weight: 700;
+    }
+    .tps-report-footer {
+      margin-top: 2rem;
+    }
+    .tps-report-footer .list-unstyled li + li {
+      margin-top: 0.35rem;
+    }
+    .tps-report-footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .tps-report-footer a:hover,
+    .tps-report-footer a:focus {
+      color: #9dd9ff;
+    }
+    @media (min-width: 768px) {
+      .tps-report-main {
+        padding: 2rem 0 3rem;
+      }
+      .advocacy-report-card {
+        padding: 2rem 2.25rem 2.25rem;
+      }
+      .advocacy-report-card h1 {
+        font-size: 2.5rem;
+      }
+      .advocacy-report-card h2 {
+        font-size: 1.35rem;
+        margin-top: 1.9rem;
+      }
+      .advocacy-report-card p,
+      .advocacy-report-card li {
+        font-size: 1rem;
+      }
+      .tps-report-closing {
+        padding: 1.35rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white" data-report-shell="tps-advocacy">
+  <header class="tps-report-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-planetary-responsive">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
+        </a>
+        
+      </div>
+    </nav>
+  </header>
+  <main class="tps-report-main" id="main-content">
+    <div class="container-planetary-responsive">
+      <article class="advocacy-report-card">
+        <h1 id="senator-james-lankford-r-ok">Senator James Lankford (R-OK)</h1>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line-caution"><p><strong>Uncertain</strong> (moderate confidence): Senator Lankford is a fiscal conservative who views every federal dollar through the lens of efficiency, often highlighting 'wasteful' research grants in his annual 'Federal Fumbles' report. However, he has a strong relationship with NASA as a model for government efficiency and oversees a state with over $36 million in annual NASA science obligations, including the major GEOCARB mission at the University of Oklahoma. Advocates should focus on how NASA science drives high-tech Oklahoma jobs and strengthens national security through satellite resiliency. Be prepared to address his skepticism regarding climate science by emphasizing the engineering and data-management successes of local projects. The public record shows broad NASA relevance but little recent, specific evidence on Science Mission Directorate funding priorities. This is a heuristic-heavy assessment based more on institutional and political context than on direct recent SMD evidence.</p></blockquote>
+
+<h2 id="nasa-budget-support">NASA Budget Support</h2>
+<blockquote>
+<ul>
+<li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
+</ul>
+</blockquote>
+<h2 id="meeting-strategy">Meeting Strategy</h2>
+<p><strong>Lead with:</strong> The Efficiency Model for Oklahoma Growth</p>
+<p>Lead with NASA as a benchmark for government efficiency, a concept the Senator has championed by using NASA programs as a model for federal property reform. You should frame Science Mission Directorate funding as a high-yield investment in Oklahoma's workforce that avoids the 'waste' he targets in other agencies. Given the thin direct SMD record, treat this as the best available opening rather than evidence of likely support.</p>
+<p><strong>Bridge issues:</strong></p>
+<ul>
+<li><strong>National Security and GPS Resiliency:</strong> "NASA’s research into space weather and heliophysics provides the essential data needed to protect the GPS and satellite infrastructure you are working to secure through the GPS Resiliency Report Act."</li>
+<li><strong>Government Efficiency and Local Economic Growth:</strong> "By supporting NASA science, we are fueling the $173 million GEOCARB mission at the University of Oklahoma and building the exact kind of private-sector aerospace synergy you praised at the Agile Space Industries groundbreaking."</li>
+</ul>
+<p><strong>Watch out for:</strong></p>
+<ul>
+<li>Avoid leading with 'climate change' terminology when discussing Earth Science missions; instead, focus on technical engineering successes, data management, and weather predictability at Oklahoma universities.</li>
+<li>Do not oversell science-specific support when the public record is thin; keep the ask anchored in local value and broad NASA space science.</li>
+</ul>
+<p><strong>Expect this reaction:</strong> The office is likely to be lukewarm and highly skeptical of requests for increased spending. Expect staff to ask sharp questions about how these programs avoid 'duplication' or 'waste' in line with the Senator's 'Federal Fumbles' reports. Expect a cautious, potentially non-committal response unless the ask is tied tightly to local priorities.</p>
+<h2 id="key-opportunities">Key Opportunities</h2>
+<ul>
+<li><strong>District Fiscal Impact:</strong> Highlight the significant economic impact of NASA science in Oklahoma, where the University of Oklahoma and Oklahoma State University manage over $175 million in NASA contracts and grants.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
+<li><strong>Direct NASA Record:</strong> Leverage his public praise of NASA's leasing program as a model for government efficiency to frame science missions as similarly well-managed and effective federal programs.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup></li>
+<li><strong>Adjacent Interest:</strong> Connect NASA's planetary and heliophysics research to his interest in protecting GPS and satellite infrastructure from adversarial and environmental threats.<sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup> <sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup></li>
+</ul>
+<h2 id="key-challenges">Key Challenges</h2>
+<ul>
+<li><strong>Evidence Gap:</strong> The public record shows broad NASA relevance but little recent, specific evidence on Science Mission Directorate funding priorities.<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></li>
+<li><strong>Ideological Barrier:</strong> As a founding member of the Senate DOGE Caucus, he aggressively targets specific science grants that he perceives as lacking clear national utility or medical benefits.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
+<li><strong>Political Constraint:</strong> His history of characterizing the climate change consensus as a myth may create friction when advocating for Earth Science missions, despite the major GEOCARB mission residing in his state.<sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+</ul>
+<h2 id="committees">Committees</h2>
+<ul>
+<li>Member, Senate Committee on Finance<ul>
+<li>Health Care</li>
+<li>Taxation and IRS Oversight</li>
+</ul>
+</li>
+<li>Chairman, Senate Committee on Finance<ul>
+<li>Energy, Natural Resources, and Infrastructure</li>
+</ul>
+</li>
+<li>Member, Senate Committee on Homeland Security and Governmental Affairs<ul>
+<li>Permanent Subcommittee on Investigations</li>
+</ul>
+</li>
+<li>Chairman, Senate Committee on Homeland Security and Governmental Affairs<ul>
+<li>Border Management, Federal Workforce, and Regulatory Affairs</li>
+</ul>
+</li>
+<li>Chairman, Senate Select Committee on Ethics</li>
+<li>Member, Senate Select Committee on Intelligence</li>
+</ul>
+<h2 id="about-senator-james-lankford-r-ok">About Senator James Lankford (R-OK)</h2>
+<ul>
+<li>Earned a Bachelor of Science in secondary education specializing in speech and history from the University of Texas at Austin.</li>
+<li>Served as an ordained Southern Baptist minister and spent over a decade as president of the Falls Creek Baptist Conference Center.</li>
+<li>Has expressed skepticism regarding the scientific consensus on climate change, characterizing it as a myth and criticizing federal funding for climate reporting.</li>
+<li>Introduced the Secure Elections Act in 2017 to authorize grants for updating state voting technology.</li>
+<li>Advocates for expanded domestic oil and gas exploration and opposes EPA regulation of emission standards.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<h3 id="additional-materials-reviewed">Additional Materials Reviewed</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>"Lankford Releases Latest Federal Fumbles as Playbook for DOGE," Official Senate Website, February 13, 2025, <a href="https://lankford.senate.gov/news/press-releases/lankford-releases-latest-federal-fumbles-as-playbook-for-doge/">https://lankford.senate.gov/news/press-releases/lankford-releases-latest-federal-fumbles-as-playbook-for-doge/</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>"Top NASA contracts from member context," Local member context, member_context/top_contracts.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>"Top NASA grants from member context," Local member context, member_context/top_grants.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>"NASA fiscal summary from member context," Local member context, member_context/nasa_fiscal_summary.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"Lankford Bill to Create Leasing Program for Underutilized Federal Properties Passes Senate," Official Senate Website, August 8, 2024, <a href="https://lankford.senate.gov/news/press-releases/lankford-bill-to-create-leasing-program-for-underutilized-federal-properties-passes-senate/">https://lankford.senate.gov/news/press-releases/lankford-bill-to-create-leasing-program-for-underutilized-federal-properties-passes-senate/</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"Immigration enforcement, AI and space testing center land on Lankford's priority list," Tulsa Flyer, February 19, 2026, <a href="https://tulsaflyer.org/2026/02/19/government/post/lankfords-priority-list/">https://tulsaflyer.org/2026/02/19/government/post/lankfords-priority-list/</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"Senators urge Pentagon to review GPS risks to national security and infrastructure," DefenseScoop, July 22, 2025, <a href="https://defensescoop.com/2025/07/22/senators-urge-pentagon-to-review-gps-risks-to-national-security-and-infrastructure/">https://defensescoop.com/2025/07/22/senators-urge-pentagon-to-review-gps-risks-to-national-security-and-infrastructure/</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"Coverage gaps from current facts dossier," Local member context, facts/coverage_gaps.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"Lankford Calls Out Biden For Sending NASA Rocket Scientists to the Southern Border Instead of Finishing the Wall," Official Senate Website, May 12, 2021, <a href="https://lankford.senate.gov/news/press-releases/lankford-calls-out-biden-for-sending-nasa-rocket-scientists-to-the-southern-border-instead-of-finishing-the-wall/">https://lankford.senate.gov/news/press-releases/lankford-calls-out-biden-for-sending-nasa-rocket-scientists-to-the-southern-border-instead-of-finishing-the-wall/</a>.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"Lankford Shines Light on Need for Transparency in Government, What They Need to Fix," Official Senate Website, March 17, 2021, <a href="https://lankford.senate.gov/news/press-releases/lankford-shines-light-on-need-for-transparency-in-government-what-they-need-to-fix/">https://lankford.senate.gov/news/press-releases/lankford-shines-light-on-need-for-transparency-in-government-what-they-need-to-fix/</a>.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"OSU, partners take Oklahoma's aerospace and aviation leadership to next level," Oklahoma State University, June 30, 2023, <a href="https://news.okstate.edu/articles/communications/2023/osu_partners_take_oklahomas_aerospace_and_aviation_leadership_to_next_level">https://news.okstate.edu/articles/communications/2023/osu_partners_take_oklahomas_aerospace_and_aviation_leadership_to_next_level</a>.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>"Issues - Senator James Lankford," Official Senate Website, January 1, 2024, <a href="https://lankford.senate.gov/issues/">https://lankford.senate.gov/issues/</a>.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>"OK NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/OK/OK-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/OK/OK-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </article>
+      <section class="tps-report-closing" aria-label="Further resources">
+        <p>
+          Further resources, data, and updates at
+          <a href="https://planetary.org/save-nasa-science">The Planetary Society's Save NASA Science Action Hub</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer class="tps-report-footer bg-black text-white px-4 px-lg-5 py-5">
+    <div class="container-planetary-responsive">
+      <div class="row py-2 gy-4">
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Explore Space</li>
+            <li><a href="https://planetary.org/worlds">Planets &amp; Other Worlds</a></li>
+            <li><a href="https://planetary.org/space-missions">Space Missions</a></li>
+            <li><a href="https://planetary.org/space-policy">Space Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Get Involved</li>
+            <li><a href="https://planetary.org/action-center">Action Center</a></li>
+            <li><a href="https://planetary.org/connect">Email Signup</a></li>
+            <li><a href="https://planetary.org/membership">Become A Member</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="d-inline-block mb-3" href="https://www.planetary.org/">
+            <img style="width: 4rem;" alt="The Planetary Society emblem" src="https://planetary.s3.amazonaws.com/sites/planetary/images/45-emblem-white.svg">
+          </a>
+          <p class="small mb-2">Empowering the world's citizens to advance space science and exploration.</p>
+          <p class="small mb-0">
+            <a href="https://www.planetary.org/about/contact">Contact Us</a> •
+            <a href="https://www.planetary.org/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

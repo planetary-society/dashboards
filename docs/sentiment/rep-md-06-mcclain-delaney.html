@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>NASA Advocacy Briefing</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://planetary.org/img/site/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://planetary.org/img/site/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://planetary.org/img/site/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --tps-blue: #037cc2;
+      --tps-blue-dark: #1e447b;
+      --tps-sand: #f7f1e8;
+      --tps-cream: #fffdf9;
+      --tps-ink: #1e2430;
+      --tps-muted: #51606f;
+      --tps-line: #d9dee5;
+      --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
+      --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(3, 124, 194, 0.08), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--tps-sand) 100%);
+      color: var(--tps-ink);
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container-planetary-responsive {
+      width: 100%;
+      padding-right: var(--bs-container-padding-x, 1rem);
+      padding-left: var(--bs-container-padding-x, 1rem);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 992px;
+    }
+    .tps-report-main {
+      padding: 1.25rem 0 2.5rem;
+    }
+    .advocacy-report-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(217, 222, 229, 0.9);
+      border-radius: 22px;
+      box-shadow: var(--tps-shadow);
+      padding: 1.25rem 1rem 1.5rem;
+      overflow-wrap: anywhere;
+    }
+    .advocacy-report-card h1,
+    .advocacy-report-card h2,
+    .advocacy-report-card h3 {
+      color: var(--tps-blue-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .advocacy-report-card h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--tps-line);
+    }
+    .advocacy-report-card h1 + p {
+      margin: 0.85rem 0 1.25rem;
+      color: var(--tps-muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .advocacy-report-card h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .advocacy-report-card p,
+    .advocacy-report-card li {
+      font-size: 0.98rem;
+    }
+    .advocacy-report-card p {
+      margin: 0 0 0.9rem;
+    }
+    .advocacy-report-card ul,
+    .advocacy-report-card ol {
+      margin: 0 0 1rem 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card li + li {
+      margin-top: 0.55rem;
+    }
+    .advocacy-report-card :is(ul, ol) :is(ul, ol) {
+      margin-top: 0.55rem;
+      margin-bottom: 0.15rem;
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card a {
+      color: var(--tps-blue);
+      font-weight: 600;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.15em;
+    }
+    .advocacy-report-card blockquote {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1.05rem;
+      border-left: 4px solid var(--tps-blue);
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.08), rgba(3, 124, 194, 0.03));
+      border-radius: 14px;
+    }
+    .advocacy-report-card blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
+    .advocacy-report-card code {
+      background: rgba(30, 36, 48, 0.08);
+      padding: 0.1rem 0.32rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .advocacy-report-card hr {
+      border: 0;
+      border-top: 1px solid var(--tps-line);
+      margin: 1.5rem 0;
+    }
+    /* Slug `#nasa-budget-support` is generated by python-markdown's toc extension from
+       the `## NASA Budget Support` heading; renaming that heading will silently break this. */
+    .advocacy-report-card #nasa-budget-support + p,
+    .advocacy-report-card #nasa-budget-support + ul {
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote {
+      margin-top: 0;
+      padding: 1rem 1rem 0.9rem;
+      border-left: 0;
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+    }
+    .advocacy-report-card #nasa-budget-support + p {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:first-child {
+      color: var(--tps-blue-dark);
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li {
+      margin-top: 0.4rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li:first-child {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li:first-child {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .advocacy-report-card #meeting-strategy + p {
+      margin-bottom: 0.8rem;
+    }
+    .advocacy-report-card #sources {
+      margin-top: 1.75rem;
+    }
+    .advocacy-report-card .footnote {
+      color: var(--tps-muted);
+      font-size: 0.92rem;
+    }
+    .advocacy-report-card .footnote ol {
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card .footnote li {
+      margin-top: 0.65rem;
+    }
+    .advocacy-report-card .footnote-backref {
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
+    }
+    .tps-report-closing {
+      margin-top: 1.25rem;
+      background: #dde5ec;
+      border-radius: 18px;
+      padding: 1.15rem 1rem;
+      text-align: center;
+    }
+    .tps-report-closing p {
+      margin: 0;
+      color: var(--tps-blue-dark);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .tps-report-closing a {
+      color: var(--tps-blue-dark);
+      font-weight: 700;
+    }
+    .tps-report-footer {
+      margin-top: 2rem;
+    }
+    .tps-report-footer .list-unstyled li + li {
+      margin-top: 0.35rem;
+    }
+    .tps-report-footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .tps-report-footer a:hover,
+    .tps-report-footer a:focus {
+      color: #9dd9ff;
+    }
+    @media (min-width: 768px) {
+      .tps-report-main {
+        padding: 2rem 0 3rem;
+      }
+      .advocacy-report-card {
+        padding: 2rem 2.25rem 2.25rem;
+      }
+      .advocacy-report-card h1 {
+        font-size: 2.5rem;
+      }
+      .advocacy-report-card h2 {
+        font-size: 1.35rem;
+        margin-top: 1.9rem;
+      }
+      .advocacy-report-card p,
+      .advocacy-report-card li {
+        font-size: 1rem;
+      }
+      .tps-report-closing {
+        padding: 1.35rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white" data-report-shell="tps-advocacy">
+  <header class="tps-report-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-planetary-responsive">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
+        </a>
+        
+      </div>
+    </nav>
+  </header>
+  <main class="tps-report-main" id="main-content">
+    <div class="container-planetary-responsive">
+      <article class="advocacy-report-card">
+        <h1 id="representative-april-mcclain-delaney-d-md-06">Representative April McClain Delaney (D-MD-06)</h1>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Champion</strong> (high confidence): Representative McClain Delaney is a dedicated ally of NASA science, leveraging her position on the House Science, Space, and Technology Committee to fiercely protect Maryland-based missions and the workforce at Goddard Space Flight Center. Advocates should find a warm reception by emphasizing how robust Science Mission Directorate (SMD) funding directly supports local high-tech jobs and world-class research in her district. While she is already a champion for planetary and astrophysics missions like Dragonfly and Roman, you can strengthen the connection by highlighting how NASA’s Earth science and climate data align with her broader goals for American innovation and competitiveness.</p></blockquote>
+
+<h2 id="nasa-budget-support">NASA Budget Support</h2>
+<blockquote>
+<p><strong>Strong SMD budget signal</strong></p>
+<ul>
+<li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
+<li>$9B NASA Science letter signatory: <strong>FY26, FY27</strong></li>
+</ul>
+</blockquote>
+<h2 id="meeting-strategy">Meeting Strategy</h2>
+<p><strong>Lead with:</strong> The Defender of Maryland's Space Workforce</p>
+<p>Lead by thanking the Congresswoman for her fierce defense of NASA Goddard and missions like Dragonfly and Nancy Grace Roman. You should frame robust Science Mission Directorate (SMD) funding as essential to protecting what she calls a 'national jewel'—Maryland's high-tech workforce and its leadership in scientific discovery.</p>
+<p><strong>Bridge issues:</strong></p>
+<ul>
+<li><strong>American Innovation and Jobs:</strong> "As you’ve noted, NASA missions are what American innovation looks like—they support good-paying jobs in our district and inspire the next generation to reach higher."</li>
+<li><strong>Agricultural Stability:</strong> "NASA’s Earth science missions provide the critical data needed for the agricultural conservation and supply chain stability you've prioritized on the Agriculture Committee."</li>
+</ul>
+<p><strong>Watch out for:</strong></p>
+<ul>
+<li>While she is a champion for major Maryland missions, her record is thinner regarding specific support for Heliophysics or Biological and Physical Sciences, so keep the focus on the broader SMD topline.</li>
+<li>Don't let the conversation get lost in AI or quantum policy; instead, frame NASA’s complex science missions as the ultimate real-world application for the deep-tech standards she is drafting.</li>
+</ul>
+<p><strong>Expect this reaction:</strong> Expect a very warm and knowledgeable reception; the Congresswoman is already a signed supporter of the $9 billion science budget and will likely view your visit as a reinforcement of her own committee work.</p>
+<h2 id="key-opportunities">Key Opportunities</h2>
+<ul>
+<li><strong>Committee Position:</strong> As a member of the House Committee on Science, Space, and Technology, she has a direct platform to influence NASA's budget and oversight.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup></li>
+<li><strong>Direct NASA Record:</strong> She has signed direct letters of support for a $9 billion Science Mission Directorate budget in both the FY26 and FY27 cycles.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
+<li><strong>Local Institution:</strong> She has explicitly defended the Dragonfly (Planetary Science) and Nancy Grace Roman (Astrophysics) missions against facility closures and workforce cuts at NASA Goddard.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+<li><strong>Direct NASA Record:</strong> She co-sponsored the 'Saving NASA's Workforce Act' to protect career employees from involuntary separations during budget uncertainties.<sup id="fnref:11"><a class="footnote-ref" href="#fn:11">11</a></sup></li>
+<li><strong>District Fiscal Impact:</strong> Her district receives significant NASA science funding, averaging $106K annually, including research into growing fresh food for astronauts in space.<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup> <sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup></li>
+</ul>
+<h2 id="key-challenges">Key Challenges</h2>
+<ul>
+<li><strong>Evidence Gap:</strong> While a champion for large Maryland-based missions, her record is thinner regarding specific support for the Heliophysics and Biological and Physical Sciences divisions.<sup id="fnref:12"><a class="footnote-ref" href="#fn:12">12</a></sup></li>
+<li><strong>Competing Priority:</strong> She has significant legislative focuses on AI safeguards and rural broadband that may compete for her primary attention in committee hearings.<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup> <sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup></li>
+</ul>
+<h2 id="strategic-considerations">Strategic Considerations</h2>
+<ul>
+<li>It could be worth mentioning her support for the Frostburg State University planetarium as a way to thank her for investing in regional STEM literacy.</li>
+<li>You might find it useful to discuss how budget stability for the Science Mission Directorate directly supports her goal of preventing involuntary separations of career employees at NASA.</li>
+<li>Consider exploring how NASA's research into growing fresh food for astronauts—a project already receiving funding in her district—bridges her interests in space exploration and agricultural innovation.</li>
+</ul>
+<h2 id="committees">Committees</h2>
+<ul>
+<li><strong>Member, House Committee on Science, Space, and Technology</strong><ul>
+<li>Research and Technology</li>
+</ul>
+</li>
+<li>Member, House Committee on Agriculture<ul>
+<li>Commodity Markets, Digital Assets, and Rural Development</li>
+<li>Conservation, Research, and Biotechnology</li>
+</ul>
+</li>
+</ul>
+<h2 id="about-representative-april-mcclain-delaney-d-md-06">About Representative April McClain Delaney (D-MD-06)</h2>
+<ul>
+<li>Earned a Bachelor of Science degree in communications from Northwestern University and a Juris Doctor from the Georgetown University Law Center.</li>
+<li>Served as the deputy administrator of the National Telecommunications and Information Administration (NTIA) within the U.S. Department of Commerce from 2022 to 2023.</li>
+<li>Spent much of her legal career as a media lawyer and founded the Washington, D.C. division of Common Sense Media, a nonprofit focused on the effects of media on children.</li>
+<li>Advocates for increasing funding for climate science research and providing tax incentives for investments in decarbonization technologies.</li>
+<li>Supports the use of new technologies to help secure the Mexico–United States border.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<h3 id="additional-materials-reviewed">Additional Materials Reviewed</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>"Mfume, Maryland Congressional Delegation Holds Meeting to Discuss Future of NASA, Maryland's Role in Space Innovation," U.S. Representative Kweisi Mfume, December 16, 2025, <a href="https://mfume.house.gov/media/press-releases/mfume-maryland-congressional-delegation-holds-meeting-to-discuss-future-of-nasa-maryland-s-role-in-space-innovation">https://mfume.house.gov/media/press-releases/mfume-maryland-congressional-delegation-holds-meeting-to-discuss-future-of-nasa-maryland-s-role-in-space-innovation</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"Maryland Delegation Members Slam OMB's Proposed NASA Goddard Cuts, Vow to Fight Back Against NASA Budget," U.S. Senator Chris Van Hollen, December 4, 2025, <a href="https://vanhollen.senate.gov/news/press-releases/maryland-delegation-members-slam-ombs-proposed-nasa-goddard-cuts-vow-to-fight-back-against-nasa-budget">https://vanhollen.senate.gov/news/press-releases/maryland-delegation-members-slam-ombs-proposed-nasa-goddard-cuts-vow-to-fight-back-against-nasa-budget</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>"Letter to NASA OIG regarding Goddard," House Committee on Science, Space, and Technology, November 21, 2025, <a href="https://democrats-science.house.gov/download/2025-11-21-nasa-oig-letter-on-goddard">https://democrats-science.house.gov/download/2025-11-21-nasa-oig-letter-on-goddard</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>"NASA fiscal summary from member context," Local member context, member_context/nasa_fiscal_summary.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"Congresswoman April McClain Delaney Assigned to Agriculture and Science, Space &amp; Technology Committees for 119th Congress," Congresswoman April McClain Delaney, January 14, 2025, <a href="https://mcclaindelaney.house.gov/media/press-releases/congresswoman-april-mcclain-delaney-assigned-agriculture-and-science-space">https://mcclaindelaney.house.gov/media/press-releases/congresswoman-april-mcclain-delaney-assigned-agriculture-and-science-space</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"Home | House Committee on Science, Space and Technology," House Committee on Science, Space, and Technology (Democrats), April 2, 2026, <a href="https://democrats-science.house.gov/">https://democrats-science.house.gov/</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"Rep. April McClain Delaney Hopes to Pass New Quantum, AI Measures," Broadband Breakfast, February 9, 2026, <a href="https://broadbandbreakfast.com/rep-april-mcclain-delaney-hopes-to-pass-new-quantum-ai-measures/">https://broadbandbreakfast.com/rep-april-mcclain-delaney-hopes-to-pass-new-quantum-ai-measures/</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"Issues: Congress," Congresswoman April McClain Delaney, January 1, 2025, <a href="https://mcclaindelaney.house.gov/issues/congress">https://mcclaindelaney.house.gov/issues/congress</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"Top NASA grants from member context," Local member context, member_context/top_grants.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"HR 2210 - Saving NASA's Workforce Act," PoliScore, March 18, 2025, <a href="https://poliscore.us/2026/bill/hr/2210">https://poliscore.us/2026/bill/hr/2210</a>.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"Coverage gaps from current facts dossier," Local member context, facts/coverage_gaps.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>"Congresswoman April McClain Delaney Announces Over $41 Million in Community Project Funding Requests for Maryland," Congresswoman April McClain Delaney, May 30, 2025, <a href="https://mcclaindelaney.house.gov/media/press-releases/congresswoman-april-mcclain-delaney-announces-over-41-million-community">https://mcclaindelaney.house.gov/media/press-releases/congresswoman-april-mcclain-delaney-announces-over-41-million-community</a>.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>"Maryland Delegation Members Press Administration for Answers on Reported Changes at NASA Goddard," U.S. Senator Chris Van Hollen, November 13, 2025, <a href="https://vanhollen.senate.gov/news/press-releases/maryland-delegation-members-press-administration-for-answers-on-reported-changes-at-nasa-goddard">https://vanhollen.senate.gov/news/press-releases/maryland-delegation-members-press-administration-for-answers-on-reported-changes-at-nasa-goddard</a>.&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>"MD-06 NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/MD/06/MD-06-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/MD/06/MD-06-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </article>
+      <section class="tps-report-closing" aria-label="Further resources">
+        <p>
+          Further resources, data, and updates at
+          <a href="https://planetary.org/save-nasa-science">The Planetary Society's Save NASA Science Action Hub</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer class="tps-report-footer bg-black text-white px-4 px-lg-5 py-5">
+    <div class="container-planetary-responsive">
+      <div class="row py-2 gy-4">
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Explore Space</li>
+            <li><a href="https://planetary.org/worlds">Planets &amp; Other Worlds</a></li>
+            <li><a href="https://planetary.org/space-missions">Space Missions</a></li>
+            <li><a href="https://planetary.org/space-policy">Space Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Get Involved</li>
+            <li><a href="https://planetary.org/action-center">Action Center</a></li>
+            <li><a href="https://planetary.org/connect">Email Signup</a></li>
+            <li><a href="https://planetary.org/membership">Become A Member</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="d-inline-block mb-3" href="https://www.planetary.org/">
+            <img style="width: 4rem;" alt="The Planetary Society emblem" src="https://planetary.s3.amazonaws.com/sites/planetary/images/45-emblem-white.svg">
+          </a>
+          <p class="small mb-2">Empowering the world's citizens to advance space science and exploration.</p>
+          <p class="small mb-0">
+            <a href="https://www.planetary.org/about/contact">Contact Us</a> •
+            <a href="https://www.planetary.org/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

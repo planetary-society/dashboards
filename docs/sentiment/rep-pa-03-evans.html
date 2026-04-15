@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>NASA Advocacy Briefing</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://planetary.org/img/site/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://planetary.org/img/site/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://planetary.org/img/site/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --tps-blue: #037cc2;
+      --tps-blue-dark: #1e447b;
+      --tps-sand: #f7f1e8;
+      --tps-cream: #fffdf9;
+      --tps-ink: #1e2430;
+      --tps-muted: #51606f;
+      --tps-line: #d9dee5;
+      --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
+      --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(3, 124, 194, 0.08), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--tps-sand) 100%);
+      color: var(--tps-ink);
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container-planetary-responsive {
+      width: 100%;
+      padding-right: var(--bs-container-padding-x, 1rem);
+      padding-left: var(--bs-container-padding-x, 1rem);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 992px;
+    }
+    .tps-report-main {
+      padding: 1.25rem 0 2.5rem;
+    }
+    .advocacy-report-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(217, 222, 229, 0.9);
+      border-radius: 22px;
+      box-shadow: var(--tps-shadow);
+      padding: 1.25rem 1rem 1.5rem;
+      overflow-wrap: anywhere;
+    }
+    .advocacy-report-card h1,
+    .advocacy-report-card h2,
+    .advocacy-report-card h3 {
+      color: var(--tps-blue-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .advocacy-report-card h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--tps-line);
+    }
+    .advocacy-report-card h1 + p {
+      margin: 0.85rem 0 1.25rem;
+      color: var(--tps-muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .advocacy-report-card h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .advocacy-report-card p,
+    .advocacy-report-card li {
+      font-size: 0.98rem;
+    }
+    .advocacy-report-card p {
+      margin: 0 0 0.9rem;
+    }
+    .advocacy-report-card ul,
+    .advocacy-report-card ol {
+      margin: 0 0 1rem 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card li + li {
+      margin-top: 0.55rem;
+    }
+    .advocacy-report-card :is(ul, ol) :is(ul, ol) {
+      margin-top: 0.55rem;
+      margin-bottom: 0.15rem;
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card a {
+      color: var(--tps-blue);
+      font-weight: 600;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.15em;
+    }
+    .advocacy-report-card blockquote {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1.05rem;
+      border-left: 4px solid var(--tps-blue);
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.08), rgba(3, 124, 194, 0.03));
+      border-radius: 14px;
+    }
+    .advocacy-report-card blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
+    .advocacy-report-card code {
+      background: rgba(30, 36, 48, 0.08);
+      padding: 0.1rem 0.32rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .advocacy-report-card hr {
+      border: 0;
+      border-top: 1px solid var(--tps-line);
+      margin: 1.5rem 0;
+    }
+    /* Slug `#nasa-budget-support` is generated by python-markdown's toc extension from
+       the `## NASA Budget Support` heading; renaming that heading will silently break this. */
+    .advocacy-report-card #nasa-budget-support + p,
+    .advocacy-report-card #nasa-budget-support + ul {
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote {
+      margin-top: 0;
+      padding: 1rem 1rem 0.9rem;
+      border-left: 0;
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+    }
+    .advocacy-report-card #nasa-budget-support + p {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:first-child {
+      color: var(--tps-blue-dark);
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li {
+      margin-top: 0.4rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li:first-child {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li:first-child {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .advocacy-report-card #meeting-strategy + p {
+      margin-bottom: 0.8rem;
+    }
+    .advocacy-report-card #sources {
+      margin-top: 1.75rem;
+    }
+    .advocacy-report-card .footnote {
+      color: var(--tps-muted);
+      font-size: 0.92rem;
+    }
+    .advocacy-report-card .footnote ol {
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card .footnote li {
+      margin-top: 0.65rem;
+    }
+    .advocacy-report-card .footnote-backref {
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
+    }
+    .tps-report-closing {
+      margin-top: 1.25rem;
+      background: #dde5ec;
+      border-radius: 18px;
+      padding: 1.15rem 1rem;
+      text-align: center;
+    }
+    .tps-report-closing p {
+      margin: 0;
+      color: var(--tps-blue-dark);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .tps-report-closing a {
+      color: var(--tps-blue-dark);
+      font-weight: 700;
+    }
+    .tps-report-footer {
+      margin-top: 2rem;
+    }
+    .tps-report-footer .list-unstyled li + li {
+      margin-top: 0.35rem;
+    }
+    .tps-report-footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .tps-report-footer a:hover,
+    .tps-report-footer a:focus {
+      color: #9dd9ff;
+    }
+    @media (min-width: 768px) {
+      .tps-report-main {
+        padding: 2rem 0 3rem;
+      }
+      .advocacy-report-card {
+        padding: 2rem 2.25rem 2.25rem;
+      }
+      .advocacy-report-card h1 {
+        font-size: 2.5rem;
+      }
+      .advocacy-report-card h2 {
+        font-size: 1.35rem;
+        margin-top: 1.9rem;
+      }
+      .advocacy-report-card p,
+      .advocacy-report-card li {
+        font-size: 1rem;
+      }
+      .tps-report-closing {
+        padding: 1.35rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white" data-report-shell="tps-advocacy">
+  <header class="tps-report-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-planetary-responsive">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
+        </a>
+        
+      </div>
+    </nav>
+  </header>
+  <main class="tps-report-main" id="main-content">
+    <div class="container-planetary-responsive">
+      <article class="advocacy-report-card">
+        <h1 id="representative-dwight-evans-d-pa-03">Representative Dwight Evans (D-PA-03)</h1>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Likely Supportive</strong> (high confidence): Representative Evans is a consistent supporter of NASA's Science Mission Directorate, evidenced by his recent signatures on budget letters and his defense of science-related job creation. His district is a major hub for NASA-funded research, specifically in astrophysics and space biology at the University of Pennsylvania and Drexel University. Advocates should emphasize how NASA science funding directly supports local academic research and high-tech workforce development. While he has announced his retirement for 2027, he remains a reliable ally for science investment as part of his broader focus on economic development.</p></blockquote>
+
+<h2 id="nasa-budget-support">NASA Budget Support</h2>
+<blockquote>
+<p><strong>Strong SMD budget signal</strong></p>
+<ul>
+<li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
+<li>$9B NASA Science letter signatory: <strong>FY26, FY27</strong></li>
+</ul>
+</blockquote>
+<h2 id="meeting-strategy">Meeting Strategy</h2>
+<p><strong>Lead with:</strong> Championing a Legacy of Local Discovery</p>
+<p>Lead with a direct thank-you for his consistent support in signing the FY26 and FY27 NASA Science Mission Directorate budget letters. You should emphasize that PA-03 is a vital hub for NASA-funded research, specifically in astrophysics and space biology, and that maintaining this funding is essential for the district's elite academic institutions.</p>
+<p><strong>Bridge issues:</strong></p>
+<ul>
+<li><strong>STEM Education &amp; Workforce Development:</strong> "NASA's multi-million dollar investments at the University of Pennsylvania and Drexel are more than just experiments—they are high-tech job training programs for our local students that align perfectly with your career-long commitment to expanding STEM pathways."</li>
+<li><strong>Economic Development &amp; Job Creation:</strong> "Just as you have championed the CHIPS and Science Act as a vital tool for job creation, robust funding for NASA science provides the high-skill research positions that keep the Philadelphia innovation economy competitive."</li>
+</ul>
+<p><strong>Watch out for:</strong></p>
+<ul>
+<li>Avoid focusing heavily on new long-term initiatives; since the Representative is retiring in 2027, frame your request as a way to solidify his legacy of leadership in federal science investment.</li>
+<li>Be careful not to overstate his personal focus on planetary exploration specifically, as his documented record is much stronger in astrophysics and space-related biology.</li>
+</ul>
+<p><strong>Expect this reaction:</strong> The office is likely to be highly receptive given his recent signatures on budget letters and the significant NASA grant footprint in the district. Expect them to agree with the topline request but be prepared for the conversation to pivot quickly toward his final-term priorities like affordable housing.</p>
+<h2 id="key-opportunities">Key Opportunities</h2>
+<ul>
+<li><strong>Direct NASA Record:</strong> Representative Evans signed the FY2026 and FY2027 letters calling for a $9 billion Science Mission Directorate budget, signaling direct support for NASA's scientific topline.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
+<li><strong>Local Institution:</strong> The district hosts multi-million dollar NASA grants for astrophysics and space biology, including research on galactic magnetic fields and the health effects of spaceflight on stem cells.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+<li><strong>District Fiscal Impact:</strong> Evans explicitly lists NASA science education and research as eligible for local non-profit funding requests in his Community Project Funding guides.<sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup></li>
+<li><strong>Bipartisan Coalition:</strong> He is a vocal defender of the CHIPS and Science Act, providing a strong bridge to discuss the broader importance of federal investment in scientific exploration.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+</ul>
+<h2 id="key-challenges">Key Challenges</h2>
+<ul>
+<li><strong>Political Constraint:</strong> Having announced his retirement at the end of his current term, he may be less focused on new legislative initiatives and more on securing his existing local priorities.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
+<li><strong>Competing Priority:</strong> His primary legislative focus is on affordable housing, which he identifies as his top priority and the destination for the majority of his local funding requests.<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></li>
+<li><strong>Evidence Gap:</strong> While his record is strong in astrophysics and space biology, there is an evidence gap regarding his specific views on planetary science or Earth science programs.<sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup> <sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+</ul>
+<h2 id="strategic-considerations">Strategic Considerations</h2>
+<ul>
+<li>You might find it useful to mention that NASA science grants in the district include research on muscle atrophy and cellular health, which links space exploration directly to Philadelphia's world-class medical research sector.</li>
+<li>Consider exploring how NASA science research supports the regional Mid-Atlantic Semiconductor Collaborative, an initiative he has supported that includes the NASA Goddard Space Flight Center.</li>
+<li>Think about whether to mention his past support for NASA's cooperation with the Israel Space Agency if you are looking for a hook on his long-term legislative record in international scientific partnership.</li>
+</ul>
+<h2 id="committees">Committees</h2>
+<ul>
+<li>Member, House Committee on Ways and Means<ul>
+<li>Health</li>
+<li>Work and Welfare</li>
+</ul>
+</li>
+</ul>
+<h2 id="about-representative-dwight-evans-d-pa-03">About Representative Dwight Evans (D-PA-03)</h2>
+<ul>
+<li>Served as a teacher in the School District of Philadelphia following graduation from La Salle University in 1975.</li>
+<li>Worked as an employment counselor for the Urban League early in his career.</li>
+<li>Served 36 years in the Pennsylvania House of Representatives, including 20 years as the first African-American chairman of the House Appropriations Committee.</li>
+<li>Elected to the U.S. House of Representatives in 2016, winning both a special election and a regular election on the same day.</li>
+<li>Co-led the $1 billion Reconnecting Communities initiative as part of the Infrastructure Investment and Jobs Act.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"Top NASA grants from member context," Local member context, member_context/top_grants.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>"Evans: Much of GOP Agenda is Unpopular, We'll Fight It," U.S. Representative Dwight Evans, November 7, 2024, <a href="https://evans.house.gov/media/press-releases/evans-much-gop-agenda-unpopular-well-fight-it">https://evans.house.gov/media/press-releases/evans-much-gop-agenda-unpopular-well-fight-it</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>"Evans Announces He Won't Seek Re-Election, Will Serve Full Term Ending Jan. 3, 2027," U.S. Representative Dwight Evans, June 30, 2025, <a href="https://evans.house.gov/media/press-releases/evans-announces-he-wont-seek-re-election-will-serve-full-term-ending-jan-3">https://evans.house.gov/media/press-releases/evans-announces-he-wont-seek-re-election-will-serve-full-term-ending-jan-3</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>"HR2627 - Keep STEM Talent Act of 2025," BillTrack50, April 3, 2025, <a href="https://billtrack50.com/billdetail/1882426">https://billtrack50.com/billdetail/1882426</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"Dwight Evans' 2024 Congressional App Challenge in Pennsylvania's Third District," Congressional App Challenge, January 16, 2025, <a href="https://congressionalappchallenge.us/24-pa03/">https://congressionalappchallenge.us/24-pa03/</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"Congressional Labor Caucus Urges Commerce to Prioritize Labor Standards for CHIPS Implementation," Congressional Labor Caucus, February 29, 2024, <a href="https://laborcaucus.house.gov/media/press-releases/congressional-labor-caucus-urges-commerce-to-prioritize-labor-standards-for-chips-implementation">https://laborcaucus.house.gov/media/press-releases/congressional-labor-caucus-urges-commerce-to-prioritize-labor-standards-for-chips-implementation</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"FY2027 Community Project Funding Resource Guide," U.S. Representative Dwight Evans, March 6, 2026, <a href="https://evans.house.gov/sites/evo-subsites/evans.house.gov/files/evo-media-document/fy2027-community-project-funding-resource-guide.pdf">https://evans.house.gov/sites/evo-subsites/evans.house.gov/files/evo-media-document/fy2027-community-project-funding-resource-guide.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"Evans Secures $13.3 Million for 15 Community Projects; $8.2 Million Going Toward Affordable Housing," U.S. Representative Dwight Evans, March 8, 2024, <a href="https://evans.house.gov/media/press-releases/evans-secures-133-million-15-community-projects-82-million-going-toward">https://evans.house.gov/media/press-releases/evans-secures-133-million-15-community-projects-82-million-going-toward</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"Coverage gaps from current facts dossier," Local member context, facts/coverage_gaps.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"Hoyer Joins Bipartisan Push for Defense Department Partnership with UMD-Led Coalition," U.S. Representative Steny Hoyer, April 27, 2023, <a href="https://hoyer.house.gov/media/press-releases/hoyer-joins-bipartisan-push-defense-department-partnership-umd-led-coalition">https://hoyer.house.gov/media/press-releases/hoyer-joins-bipartisan-push-defense-department-partnership-umd-led-coalition</a>.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"United States-Israel Security Assistance Authorization Act of 2018," Congressional Monitor, May 22, 2018, <a href="https://congressionalmonitor.org/content/united-states-israel-security-assistance-authorization-act-2018">https://congressionalmonitor.org/content/united-states-israel-security-assistance-authorization-act-2018</a>.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>"PA-03 NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/PA/03/PA-03-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/PA/03/PA-03-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </article>
+      <section class="tps-report-closing" aria-label="Further resources">
+        <p>
+          Further resources, data, and updates at
+          <a href="https://planetary.org/save-nasa-science">The Planetary Society's Save NASA Science Action Hub</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer class="tps-report-footer bg-black text-white px-4 px-lg-5 py-5">
+    <div class="container-planetary-responsive">
+      <div class="row py-2 gy-4">
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Explore Space</li>
+            <li><a href="https://planetary.org/worlds">Planets &amp; Other Worlds</a></li>
+            <li><a href="https://planetary.org/space-missions">Space Missions</a></li>
+            <li><a href="https://planetary.org/space-policy">Space Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Get Involved</li>
+            <li><a href="https://planetary.org/action-center">Action Center</a></li>
+            <li><a href="https://planetary.org/connect">Email Signup</a></li>
+            <li><a href="https://planetary.org/membership">Become A Member</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="d-inline-block mb-3" href="https://www.planetary.org/">
+            <img style="width: 4rem;" alt="The Planetary Society emblem" src="https://planetary.s3.amazonaws.com/sites/planetary/images/45-emblem-white.svg">
+          </a>
+          <p class="small mb-2">Empowering the world's citizens to advance space science and exploration.</p>
+          <p class="small mb-0">
+            <a href="https://www.planetary.org/about/contact">Contact Us</a> •
+            <a href="https://www.planetary.org/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

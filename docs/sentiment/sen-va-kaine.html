@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>NASA Advocacy Briefing</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://planetary.org/img/site/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://planetary.org/img/site/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://planetary.org/img/site/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --tps-blue: #037cc2;
+      --tps-blue-dark: #1e447b;
+      --tps-sand: #f7f1e8;
+      --tps-cream: #fffdf9;
+      --tps-ink: #1e2430;
+      --tps-muted: #51606f;
+      --tps-line: #d9dee5;
+      --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
+      --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(3, 124, 194, 0.08), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--tps-sand) 100%);
+      color: var(--tps-ink);
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container-planetary-responsive {
+      width: 100%;
+      padding-right: var(--bs-container-padding-x, 1rem);
+      padding-left: var(--bs-container-padding-x, 1rem);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 992px;
+    }
+    .tps-report-main {
+      padding: 1.25rem 0 2.5rem;
+    }
+    .advocacy-report-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(217, 222, 229, 0.9);
+      border-radius: 22px;
+      box-shadow: var(--tps-shadow);
+      padding: 1.25rem 1rem 1.5rem;
+      overflow-wrap: anywhere;
+    }
+    .advocacy-report-card h1,
+    .advocacy-report-card h2,
+    .advocacy-report-card h3 {
+      color: var(--tps-blue-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .advocacy-report-card h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--tps-line);
+    }
+    .advocacy-report-card h1 + p {
+      margin: 0.85rem 0 1.25rem;
+      color: var(--tps-muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .advocacy-report-card h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .advocacy-report-card p,
+    .advocacy-report-card li {
+      font-size: 0.98rem;
+    }
+    .advocacy-report-card p {
+      margin: 0 0 0.9rem;
+    }
+    .advocacy-report-card ul,
+    .advocacy-report-card ol {
+      margin: 0 0 1rem 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card li + li {
+      margin-top: 0.55rem;
+    }
+    .advocacy-report-card :is(ul, ol) :is(ul, ol) {
+      margin-top: 0.55rem;
+      margin-bottom: 0.15rem;
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card a {
+      color: var(--tps-blue);
+      font-weight: 600;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.15em;
+    }
+    .advocacy-report-card blockquote {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1.05rem;
+      border-left: 4px solid var(--tps-blue);
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.08), rgba(3, 124, 194, 0.03));
+      border-radius: 14px;
+    }
+    .advocacy-report-card blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
+    .advocacy-report-card code {
+      background: rgba(30, 36, 48, 0.08);
+      padding: 0.1rem 0.32rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .advocacy-report-card hr {
+      border: 0;
+      border-top: 1px solid var(--tps-line);
+      margin: 1.5rem 0;
+    }
+    /* Slug `#nasa-budget-support` is generated by python-markdown's toc extension from
+       the `## NASA Budget Support` heading; renaming that heading will silently break this. */
+    .advocacy-report-card #nasa-budget-support + p,
+    .advocacy-report-card #nasa-budget-support + ul {
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote {
+      margin-top: 0;
+      padding: 1rem 1rem 0.9rem;
+      border-left: 0;
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+    }
+    .advocacy-report-card #nasa-budget-support + p {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:first-child {
+      color: var(--tps-blue-dark);
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li {
+      margin-top: 0.4rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li:first-child {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li:first-child {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .advocacy-report-card #meeting-strategy + p {
+      margin-bottom: 0.8rem;
+    }
+    .advocacy-report-card #sources {
+      margin-top: 1.75rem;
+    }
+    .advocacy-report-card .footnote {
+      color: var(--tps-muted);
+      font-size: 0.92rem;
+    }
+    .advocacy-report-card .footnote ol {
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card .footnote li {
+      margin-top: 0.65rem;
+    }
+    .advocacy-report-card .footnote-backref {
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
+    }
+    .tps-report-closing {
+      margin-top: 1.25rem;
+      background: #dde5ec;
+      border-radius: 18px;
+      padding: 1.15rem 1rem;
+      text-align: center;
+    }
+    .tps-report-closing p {
+      margin: 0;
+      color: var(--tps-blue-dark);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .tps-report-closing a {
+      color: var(--tps-blue-dark);
+      font-weight: 700;
+    }
+    .tps-report-footer {
+      margin-top: 2rem;
+    }
+    .tps-report-footer .list-unstyled li + li {
+      margin-top: 0.35rem;
+    }
+    .tps-report-footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .tps-report-footer a:hover,
+    .tps-report-footer a:focus {
+      color: #9dd9ff;
+    }
+    @media (min-width: 768px) {
+      .tps-report-main {
+        padding: 2rem 0 3rem;
+      }
+      .advocacy-report-card {
+        padding: 2rem 2.25rem 2.25rem;
+      }
+      .advocacy-report-card h1 {
+        font-size: 2.5rem;
+      }
+      .advocacy-report-card h2 {
+        font-size: 1.35rem;
+        margin-top: 1.9rem;
+      }
+      .advocacy-report-card p,
+      .advocacy-report-card li {
+        font-size: 1rem;
+      }
+      .tps-report-closing {
+        padding: 1.35rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white" data-report-shell="tps-advocacy">
+  <header class="tps-report-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-planetary-responsive">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
+        </a>
+        
+      </div>
+    </nav>
+  </header>
+  <main class="tps-report-main" id="main-content">
+    <div class="container-planetary-responsive">
+      <article class="advocacy-report-card">
+        <h1 id="senator-tim-kaine-d-va">Senator Tim Kaine (D-VA)</h1>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Likely Supportive</strong> (moderate confidence): Senator Kaine is a reliable supporter of NASA who recently celebrated a significant funding boost for the Science Mission Directorate. Your best path is to emphasize the massive economic impact of NASA science in Virginia, which receives over $750 million annually and supports major local employers like Peraton and SAIC. While he is generally supportive, his focus often shifts toward STEM education, national security, and local facilities like Wallops Flight Facility. Highlighting how specific planetary or Earth science missions sustain Virginia’s specialized workforce will resonate strongly with his priorities.</p></blockquote>
+
+<h2 id="nasa-budget-support">NASA Budget Support</h2>
+<blockquote>
+<p><strong>Unavailable</strong></p>
+<ul>
+<li>FY2026 CJS Appropriations vote: <strong>N/A</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
+</ul>
+</blockquote>
+<h2 id="meeting-strategy">Meeting Strategy</h2>
+<p><strong>Lead with:</strong> Defending Virginia's $750 Million Science Economy</p>
+<p>Lead by thanking the Senator for his recent support of the $7.3 billion for NASA Science in the FY2026 funding bill. You should frame your request as a way to protect the $2.3 billion in NASA science obligations Virginia has received recently, which fuels thousands of high-tech jobs at local employers like Peraton and SAIC.</p>
+<p><strong>Bridge issues:</strong></p>
+<ul>
+<li><strong>Jobs &amp; the Economy:</strong> "NASA science is a major economic engine for the Commonwealth, averaging $759 million in annual obligations that support massive local contracts for space communications and engineering services."</li>
+<li><strong>Education and Workforce Training:</strong> "By funding the Science Mission Directorate, you are providing the real-world missions that inspire students in programs like the Virginia Aerospace Science and Technology Scholars to become our next generation of scientists."</li>
+</ul>
+<p><strong>Watch out for:</strong></p>
+<ul>
+<li>Avoid assuming his past advocacy for Wallops Island infrastructure, such as the new bridge or water well relocation, automatically equates to support for specific planetary science missions like Mars Sample Return.</li>
+<li>Be prepared for him to weigh NASA science against other national priorities due to his role on the Budget Committee; always tie the 'ask' back to Virginia's industrial and research base.</li>
+</ul>
+<p><strong>Expect this reaction:</strong> Senator Kaine's office is likely to be highly receptive and supportive, given his recent public praise for NASA science funding and his defense of Virginia-based centers. However, he may pivot the conversation toward local facilities and operational issues like those at Wallops.</p>
+<h2 id="key-opportunities">Key Opportunities</h2>
+<ul>
+<li><strong>District Fiscal Impact:</strong> Emphasize that Virginia is a top-tier hub for NASA science, with $2.3 billion in recent obligations supporting local industry leaders like Peraton and SAIC.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+<li><strong>Direct NASA Record:</strong> Reference his recent public praise for the FY2026 funding bill that protected $7.3 billion specifically for NASA Science.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
+<li><strong>Committee Position:</strong> Leverage his role on the Senate Budget Committee to advocate for protecting NASA's Science Mission Directorate from broader fiscal cuts.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
+<li><strong>Adjacent Interest:</strong> Connect NASA science missions to his long-standing commitment to STEM education and his efforts to honor NASA's 'Hidden Figures'.<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup> <sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup></li>
+<li><strong>Local Institution:</strong> Highlight the role of local Virginia institutions like George Mason University and the National Institute of Aerospace in advancing NASA Earth science and research.<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup></li>
+</ul>
+<h2 id="key-challenges">Key Challenges</h2>
+<ul>
+<li><strong>Evidence Gap:</strong> There is a notable evidence gap regarding his specific stances on planetary science, astrophysics, and heliophysics compared to his support for NASA's broader topline.<sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup></li>
+<li><strong>Competing Priority:</strong> His NASA advocacy often focuses on local operational or facility issues, such as water well contamination at Wallops or museum artifact preservation, rather than programmatic science funding.<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup> <sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup> <sup id="fnref:11"><a class="footnote-ref" href="#fn:11">11</a></sup></li>
+<li><strong>Political Constraint:</strong> As a member of the Budget Committee, he faces pressure to balance NASA funding against other high-priority issues like healthcare and military readiness.<sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
+</ul>
+<h2 id="strategic-considerations">Strategic Considerations</h2>
+<ul>
+<li>Consider mentioning how local research at institutions like George Mason University and the National Institute of Aerospace directly advances NASA's Earth science and climate objectives.</li>
+<li>You might find it useful to connect NASA's deep space communications contracts in Virginia to his work on the Armed Services Committee, framing science infrastructure as a national security asset.</li>
+<li>It could be worth highlighting his effort to keep the Space Shuttle Discovery in Virginia as a bridge to discuss how today's science missions are the future of Virginia's aerospace heritage.</li>
+</ul>
+<h2 id="committees">Committees</h2>
+<ul>
+<li>Member, Senate Committee on Armed Services<ul>
+<li>Emerging Threats and Capabilities</li>
+<li>Readiness and Management Support</li>
+</ul>
+</li>
+<li>Ranking Member, Senate Committee on Armed Services<ul>
+<li>Seapower</li>
+</ul>
+</li>
+<li>Member, Senate Committee on Foreign Relations<ul>
+<li>Near East, South Asia, Central Asia, and Counterterrorism</li>
+<li>State Department and USAID Management, International Operations, and Bilateral International Development</li>
+</ul>
+</li>
+<li>Ranking Member, Senate Committee on Foreign Relations<ul>
+<li>Western Hemisphere, Transnational Crime, Civilian Security, Democracy, Human Rights, and Global Women's Issues</li>
+</ul>
+</li>
+<li>Member, Senate Committee on Health, Education, Labor, and Pensions<ul>
+<li>Education and the American Family</li>
+<li>Employment and Workplace Safety</li>
+</ul>
+</li>
+<li>Member, Senate Committee on the Budget</li>
+</ul>
+<h2 id="about-senator-tim-kaine-d-va">About Senator Tim Kaine (D-VA)</h2>
+<ul>
+<li>Earned a Juris Doctor from Harvard Law School and practiced law for 17 years, specializing in fair housing and representing clients discriminated against on the basis of race or disability.</li>
+<li>Served as an adjunct professor at the University of Richmond School of Law for six years and later taught at the Jepson School of Leadership Studies.</li>
+<li>Spent nine months in Honduras helping Jesuit missionaries run a vocational center where he taught carpentry and welding.</li>
+<li>Held multiple executive leadership roles in Virginia, including serving as the 70th Governor, 38th Lieutenant Governor, and Mayor of Richmond.</li>
+<li>Parent of a U.S. Marine and recipient of the Shipbuilders Council of America Maritime Leadership Award in 2024.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<h3 id="additional-materials-reviewed">Additional Materials Reviewed</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>"Warner and Kaine Applaud Senate Passage of Three Funding Bills," Office of U.S. Senator Tim Kaine, January 23, 2026, <a href="https://kaine.senate.gov/press-releases/01/23/2026/warner-and-kaine-applaud-senate-passage-of-three-funding-bills">https://kaine.senate.gov/press-releases/01/23/2026/warner-and-kaine-applaud-senate-passage-of-three-funding-bills</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"NASA fiscal summary from member context," Local member context, member_context/nasa_fiscal_summary.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>"Top NASA contracts from member context," Local member context, member_context/top_contracts.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>"Issues," Office of U.S. Senator Tim Kaine, <a href="https://kaine.senate.gov/issues">https://kaine.senate.gov/issues</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>"VASTS Students Get Special Visit from Sen. Kaine," NASA, July 23, 2019, <a href="https://nasa.gov/centers-and-facilities/langley/vasts-students-get-special-visit-from-sen-kaine/">https://nasa.gov/centers-and-facilities/langley/vasts-students-get-special-visit-from-sen-kaine/</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"Kaine Joins Colleagues To Introduce Bill To Award Four African American Women At NASA Congressional Gold Medals For Groundbreaking Contributions," Office of U.S. Senator Tim Kaine, August 2, 2018, <a href="https://kaine.senate.gov/press-releases/kaine-joins-colleagues-to-introduce-bill-to-award-four-african-american-women-at-nasa-congressional-gold-medals-for-groundbreaking-contributions">https://kaine.senate.gov/press-releases/kaine-joins-colleagues-to-introduce-bill-to-award-four-african-american-women-at-nasa-congressional-gold-medals-for-groundbreaking-contributions</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"Top NASA grants from member context," Local member context, member_context/top_grants.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"Coverage gaps from current facts dossier," Local member context, facts/coverage_gaps.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"Kaine Applauds Senate Passage of Fiscal Year 2026 National Defense Bill," Office of U.S. Senator Tim Kaine, December 17, 2025, <a href="https://kaine.senate.gov/press-releases/12/17/2025/kaine-applauds-senate-passage-of-fiscal-year-2026-national-defense-bill">https://kaine.senate.gov/press-releases/12/17/2025/kaine-applauds-senate-passage-of-fiscal-year-2026-national-defense-bill</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"Warner and Kaine Applaud Unanimous Senate Passage of Legislation to Remove Unnecessary Burdens and Costs to Relocate Contaminated Chincoteague Water Wells," Office of U.S. Senator Tim Kaine, December 17, 2024, <a href="https://kaine.senate.gov/press-releases/warner-and-kaine-applaud-unanimous-senate-passage-of-legislation-to-remove-unnecessary-burdens-and-costs-to-relocate-contaminated-chincoteague-water-wells">https://kaine.senate.gov/press-releases/warner-and-kaine-applaud-unanimous-senate-passage-of-legislation-to-remove-unnecessary-burdens-and-costs-to-relocate-contaminated-chincoteague-water-wells</a>.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"Warner, Kaine, Colleagues Urge Appropriators to Block Costly, Risky Relocation of Space Shuttle Discovery from Virginia to Texas," Office of U.S. Senator Tim Kaine, September 26, 2025, <a href="https://kaine.senate.gov/press-releases/warner-kaine-colleagues-urge-appropriators-to-block-costly-risky-relocation-of-space-shuttle-discovery-from-virginia-to-texas">https://kaine.senate.gov/press-releases/warner-kaine-colleagues-urge-appropriators-to-block-costly-risky-relocation-of-space-shuttle-discovery-from-virginia-to-texas</a>.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"NASA Secures Funding for New Wallops Island Bridge," WBOC, February 16, 2024, <a href="https://wboc.com/news/nasa-secures-funding-for-new-wallops-island-bridge/article_c3288b96-cd20-11ee-b7fa-9f91cbafff59.html">https://wboc.com/news/nasa-secures-funding-for-new-wallops-island-bridge/article_c3288b96-cd20-11ee-b7fa-9f91cbafff59.html</a>.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>"Congress Signals Initial Rejection of Proposed NASA Funding Cuts," WBOC, July 17, 2025, <a href="https://wboc.com/news/congress-signals-initial-rejection-of-proposed-nasa-funding-cuts/article_ea4c0b8e-be2b-425a-9b5d-cc841ca3152b.html">https://wboc.com/news/congress-signals-initial-rejection-of-proposed-nasa-funding-cuts/article_ea4c0b8e-be2b-425a-9b5d-cc841ca3152b.html</a>.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>"Massive Cuts Could Be on the Horizon to a Federal Agency," WBOC, June 2, 2025, <a href="https://wboc.com/news/massive-cuts-could-be-on-the-horizon-to-a-federal-agency/article_277878f4-c44c-42fe-b5b5-7f34ad3020e7.html">https://wboc.com/news/massive-cuts-could-be-on-the-horizon-to-a-federal-agency/article_277878f4-c44c-42fe-b5b5-7f34ad3020e7.html</a>.&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>"Smithsonian directed to prepare Space Shuttle Discovery for relocation," FFXnow, October 2, 2025, <a href="https://ffxnow.com/2025/10/02/new-smithsonian-directed-to-prepare-space-shuttle-discovery-for-relocation/">https://ffxnow.com/2025/10/02/new-smithsonian-directed-to-prepare-space-shuttle-discovery-for-relocation/</a>.&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+<li id="fn:16">
+<p>"Letter to Majority Leader Schumer and Chair Sanders on NASA Infrastructure," United States Senate (via SpacePolicyOnline), August 6, 2021, <a href="https://spacepolicyonline.com/wp-content/uploads/2021/08/NASA-Infrastructure-Req.pdf">https://spacepolicyonline.com/wp-content/uploads/2021/08/NASA-Infrastructure-Req.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:16" title="Jump back to footnote 16 in the text">&#8617;</a></p>
+</li>
+<li id="fn:17">
+<p>"VA NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/VA/VA-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/VA/VA-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:17" title="Jump back to footnote 17 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </article>
+      <section class="tps-report-closing" aria-label="Further resources">
+        <p>
+          Further resources, data, and updates at
+          <a href="https://planetary.org/save-nasa-science">The Planetary Society's Save NASA Science Action Hub</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer class="tps-report-footer bg-black text-white px-4 px-lg-5 py-5">
+    <div class="container-planetary-responsive">
+      <div class="row py-2 gy-4">
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Explore Space</li>
+            <li><a href="https://planetary.org/worlds">Planets &amp; Other Worlds</a></li>
+            <li><a href="https://planetary.org/space-missions">Space Missions</a></li>
+            <li><a href="https://planetary.org/space-policy">Space Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Get Involved</li>
+            <li><a href="https://planetary.org/action-center">Action Center</a></li>
+            <li><a href="https://planetary.org/connect">Email Signup</a></li>
+            <li><a href="https://planetary.org/membership">Become A Member</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="d-inline-block mb-3" href="https://www.planetary.org/">
+            <img style="width: 4rem;" alt="The Planetary Society emblem" src="https://planetary.s3.amazonaws.com/sites/planetary/images/45-emblem-white.svg">
+          </a>
+          <p class="small mb-2">Empowering the world's citizens to advance space science and exploration.</p>
+          <p class="small mb-0">
+            <a href="https://www.planetary.org/about/contact">Contact Us</a> •
+            <a href="https://www.planetary.org/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

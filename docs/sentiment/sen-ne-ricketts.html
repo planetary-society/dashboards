@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>NASA Advocacy Briefing</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://planetary.org/img/site/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://planetary.org/img/site/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://planetary.org/img/site/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --tps-blue: #037cc2;
+      --tps-blue-dark: #1e447b;
+      --tps-sand: #f7f1e8;
+      --tps-cream: #fffdf9;
+      --tps-ink: #1e2430;
+      --tps-muted: #51606f;
+      --tps-line: #d9dee5;
+      --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
+      --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(3, 124, 194, 0.08), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--tps-sand) 100%);
+      color: var(--tps-ink);
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container-planetary-responsive {
+      width: 100%;
+      padding-right: var(--bs-container-padding-x, 1rem);
+      padding-left: var(--bs-container-padding-x, 1rem);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 992px;
+    }
+    .tps-report-main {
+      padding: 1.25rem 0 2.5rem;
+    }
+    .advocacy-report-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(217, 222, 229, 0.9);
+      border-radius: 22px;
+      box-shadow: var(--tps-shadow);
+      padding: 1.25rem 1rem 1.5rem;
+      overflow-wrap: anywhere;
+    }
+    .advocacy-report-card h1,
+    .advocacy-report-card h2,
+    .advocacy-report-card h3 {
+      color: var(--tps-blue-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .advocacy-report-card h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--tps-line);
+    }
+    .advocacy-report-card h1 + p {
+      margin: 0.85rem 0 1.25rem;
+      color: var(--tps-muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .advocacy-report-card h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .advocacy-report-card p,
+    .advocacy-report-card li {
+      font-size: 0.98rem;
+    }
+    .advocacy-report-card p {
+      margin: 0 0 0.9rem;
+    }
+    .advocacy-report-card ul,
+    .advocacy-report-card ol {
+      margin: 0 0 1rem 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card li + li {
+      margin-top: 0.55rem;
+    }
+    .advocacy-report-card :is(ul, ol) :is(ul, ol) {
+      margin-top: 0.55rem;
+      margin-bottom: 0.15rem;
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card a {
+      color: var(--tps-blue);
+      font-weight: 600;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.15em;
+    }
+    .advocacy-report-card blockquote {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1.05rem;
+      border-left: 4px solid var(--tps-blue);
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.08), rgba(3, 124, 194, 0.03));
+      border-radius: 14px;
+    }
+    .advocacy-report-card blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
+    .advocacy-report-card code {
+      background: rgba(30, 36, 48, 0.08);
+      padding: 0.1rem 0.32rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .advocacy-report-card hr {
+      border: 0;
+      border-top: 1px solid var(--tps-line);
+      margin: 1.5rem 0;
+    }
+    /* Slug `#nasa-budget-support` is generated by python-markdown's toc extension from
+       the `## NASA Budget Support` heading; renaming that heading will silently break this. */
+    .advocacy-report-card #nasa-budget-support + p,
+    .advocacy-report-card #nasa-budget-support + ul {
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote {
+      margin-top: 0;
+      padding: 1rem 1rem 0.9rem;
+      border-left: 0;
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+    }
+    .advocacy-report-card #nasa-budget-support + p {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:first-child {
+      color: var(--tps-blue-dark);
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li {
+      margin-top: 0.4rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li:first-child {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li:first-child {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .advocacy-report-card #meeting-strategy + p {
+      margin-bottom: 0.8rem;
+    }
+    .advocacy-report-card #sources {
+      margin-top: 1.75rem;
+    }
+    .advocacy-report-card .footnote {
+      color: var(--tps-muted);
+      font-size: 0.92rem;
+    }
+    .advocacy-report-card .footnote ol {
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card .footnote li {
+      margin-top: 0.65rem;
+    }
+    .advocacy-report-card .footnote-backref {
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
+    }
+    .tps-report-closing {
+      margin-top: 1.25rem;
+      background: #dde5ec;
+      border-radius: 18px;
+      padding: 1.15rem 1rem;
+      text-align: center;
+    }
+    .tps-report-closing p {
+      margin: 0;
+      color: var(--tps-blue-dark);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .tps-report-closing a {
+      color: var(--tps-blue-dark);
+      font-weight: 700;
+    }
+    .tps-report-footer {
+      margin-top: 2rem;
+    }
+    .tps-report-footer .list-unstyled li + li {
+      margin-top: 0.35rem;
+    }
+    .tps-report-footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .tps-report-footer a:hover,
+    .tps-report-footer a:focus {
+      color: #9dd9ff;
+    }
+    @media (min-width: 768px) {
+      .tps-report-main {
+        padding: 2rem 0 3rem;
+      }
+      .advocacy-report-card {
+        padding: 2rem 2.25rem 2.25rem;
+      }
+      .advocacy-report-card h1 {
+        font-size: 2.5rem;
+      }
+      .advocacy-report-card h2 {
+        font-size: 1.35rem;
+        margin-top: 1.9rem;
+      }
+      .advocacy-report-card p,
+      .advocacy-report-card li {
+        font-size: 1rem;
+      }
+      .tps-report-closing {
+        padding: 1.35rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white" data-report-shell="tps-advocacy">
+  <header class="tps-report-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-planetary-responsive">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
+        </a>
+        
+      </div>
+    </nav>
+  </header>
+  <main class="tps-report-main" id="main-content">
+    <div class="container-planetary-responsive">
+      <article class="advocacy-report-card">
+        <h1 id="senator-pete-ricketts-r-ne">Senator Pete Ricketts (R-NE)</h1>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Likely Supportive</strong> (moderate confidence): Senator Ricketts views NASA through the lenses of national security and economic utility, particularly regarding how satellite technology supports Nebraska’s agricultural sector. Your best path is to frame NASA’s Science Mission Directorate as essential infrastructure that provides the data Nebraska farmers need for drought monitoring and precision agriculture. Be prepared to address his role on the Budget Committee and his strong focus on fiscal restraint by highlighting the tangible local economic impact of NASA research grants and contracts in Nebraska. While he is generally supportive of NASA’s broad mission, he has yet to take a public stand on specific science funding levels, making your meeting a key opportunity to link space science to his security and economic priorities.</p></blockquote>
+
+<h2 id="nasa-budget-support">NASA Budget Support</h2>
+<blockquote>
+<ul>
+<li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
+</ul>
+</blockquote>
+<h2 id="meeting-strategy">Meeting Strategy</h2>
+<p><strong>Lead with:</strong> Strategic Security and Agricultural Utility</p>
+<p>Lead by framing NASA science as a strategic asset for national security and Nebraska's agricultural economy. You should emphasize that maintaining leadership in space is essential for countering geopolitical competitors and protecting the satellite-derived data that Nebraska farmers rely on for precision agriculture and drought monitoring.</p>
+<p><strong>Bridge issues:</strong></p>
+<ul>
+<li><strong>Boosting Nebraska Agriculture:</strong> "NASA’s Earth science missions provide the critical data our farmers in Nebraska need for drought monitoring and precision irrigation, ensuring our state's agricultural equipment remains the most efficient in the world."</li>
+<li><strong>Maintaining Peace Through Strength:</strong> "Consistent funding for the Science Mission Directorate is vital to winning the modern space race against China and ensuring that the United States, not our adversaries, defines the next generation of space technology."</li>
+</ul>
+<p><strong>Watch out for:</strong></p>
+<ul>
+<li>Avoid pitching NASA science as a purely academic or 'blank check' endeavor, as the Senator is a member of the Budget Committee and a vocal critic of what he terms 'reckless big government spending.'</li>
+<li>Do not overstate his past support for specific science missions; while he voted for the broad NASA budget bill, he hasn't yet signed on to specific funding requests for the Science Mission Directorate.</li>
+</ul>
+<p><strong>Expect this reaction:</strong> The office is likely to be receptive to the importance of the mission but lukewarm regarding specific funding increases. Expect staff to emphasize fiscal restraint and the need to prioritize national security-aligned space projects over other scientific goals.</p>
+<h2 id="key-opportunities">Key Opportunities</h2>
+<ul>
+<li><strong>District Fiscal Impact:</strong> Highlight that Nebraska receives over $745,000 annually in NASA science funding, directly supporting research at the University of Nebraska.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup> <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+<li><strong>Local Institution:</strong> Emphasize local contracts like McCallie Associates' $61 million award for mission systems engineering to show how NASA science drives high-skilled Nebraska jobs.<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup></li>
+<li><strong>Committee Position:</strong> Leverage his position on the Foreign Relations Committee by framing NASA leadership as a vital counter to Chinese technological ambitions.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+<li><strong>Adjacent Interest:</strong> Connect Earth Science missions to his agricultural priorities, specifically how satellite data improves irrigation scheduling and drought detection.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> <sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+<li><strong>Direct NASA Record:</strong> Reference his vote for the broad NASA budget bill as a baseline for his support of the agency's mission.<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></li>
+</ul>
+<h2 id="key-challenges">Key Challenges</h2>
+<ul>
+<li><strong>Political Constraint:</strong> As a member of the Budget Committee, he consistently advocates for strict federal spending controls and may resist increases in discretionary funding.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup> <sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup></li>
+<li><strong>Evidence Gap:</strong> There is an evidence gap regarding his specific support for the astrophysics and heliophysics divisions, as his focus remains on Earth-observation and security.<sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup> <sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
+<li><strong>Evidence Gap:</strong> The Senator did not sign the FY26 or FY27 letters requesting specific $9 billion funding levels for the Science Mission Directorate.<sup id="fnref2:9"><a class="footnote-ref" href="#fn:9">9</a></sup></li>
+</ul>
+<h2 id="strategic-considerations">Strategic Considerations</h2>
+<ul>
+<li>Consider mentioning the $61 million engineering contract for McCallie Associates in Bellevue to demonstrate how NASA science funding directly supports high-skilled jobs in Nebraska.</li>
+<li>You might find it useful to link NASA's inspirational mission to the Senator's own past efforts with the Developing Youth Talent Initiative to promote STEM careers.</li>
+<li>It could be worth mentioning the University of Nebraska's research on spacecraft sterilization and drought indicators to show how local academic excellence serves NASA's broader goals.</li>
+</ul>
+<h2 id="committees">Committees</h2>
+<ul>
+<li>Member, Senate Committee on Banking, Housing, and Urban Affairs<ul>
+<li>Economic Policy</li>
+<li>Financial Institutions and Consumer Protection</li>
+<li>National Security and International Trade and Finance</li>
+</ul>
+</li>
+<li>Member, Senate Committee on Environment and Public Works<ul>
+<li>Clean Air, Climate, and Nuclear Innovation and Safety</li>
+<li>Transportation and Infrastructure</li>
+</ul>
+</li>
+<li>Chairman, Senate Committee on Environment and Public Works<ul>
+<li>Fisheries, Wildlife, and Water</li>
+</ul>
+</li>
+<li>Member, Senate Committee on Foreign Relations<ul>
+<li>Europe and Regional Security Cooperation</li>
+<li>State Department and USAID Management, International Operations, and Bilateral International Development</li>
+</ul>
+</li>
+<li>Chairman, Senate Committee on Foreign Relations<ul>
+<li>East Asia, the Pacific, and International Cybersecurity Policy</li>
+</ul>
+</li>
+<li>Member, Senate Committee on the Budget</li>
+</ul>
+<h2 id="about-senator-pete-ricketts-r-ne">About Senator Pete Ricketts (R-NE)</h2>
+<ul>
+<li>Served as the 40th Governor of Nebraska from 2015 to 2023 before being appointed to the U.S. Senate in 2023.</li>
+<li>Holds a Bachelor of Arts in biology and a Master of Business Administration in marketing and finance from the University of Chicago.</li>
+<li>Extensive private sector experience as former Chief Operating Officer of TD Ameritrade and former employee of Union Pacific Railroad.</li>
+<li>Co-founded and served as president of the Platte Institute for Economic Research and was a trustee of the American Enterprise Institute.</li>
+<li>Maintains significant industry ties as a part owner of Major League Baseball's Chicago Cubs.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>"Ricketts Warns CCP’s Space Ambitions Threaten Satellite Technology &amp; Nebraska Agriculture," Senator Pete Ricketts, June 13, 2023, <a href="https://ricketts.senate.gov/news/press-releases/ricketts-warns-ccps-space-ambitions-threaten-satellite-technology-nebraska-agriculture-equipment-would-be-useless/">https://ricketts.senate.gov/news/press-releases/ricketts-warns-ccps-space-ambitions-threaten-satellite-technology-nebraska-agriculture-equipment-would-be-useless/</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"Ricketts Chairs Subcommittee Hearing on American AI Leadership," Senator Pete Ricketts, December 3, 2025, <a href="https://ricketts.senate.gov/news/press-releases/ricketts-chairs-subcommittee-hearing-on-american-ai-leadership-countering-communist-china/">https://ricketts.senate.gov/news/press-releases/ricketts-chairs-subcommittee-hearing-on-american-ai-leadership-countering-communist-china/</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>"Top NASA grants from member context," Local member context, member_context/top_grants.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>"NASA fiscal summary from member context," Local member context, member_context/nasa_fiscal_summary.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>"Issues," Senator Pete Ricketts, January 12, 2023, <a href="https://ricketts.senate.gov/about/issues/">https://ricketts.senate.gov/about/issues/</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"Reining in Big Government," Senator Pete Ricketts, January 12, 2023, <a href="https://ricketts.senate.gov/issues/reining-in-big-government/">https://ricketts.senate.gov/issues/reining-in-big-government/</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"Top NASA contracts from member context," Local member context, member_context/top_contracts.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"Developing Youth Talent Initiative (DYTI)," Nebraska Department of Economic Development, December 1, 2021, <a href="https://opportunity.nebraska.gov/wp-content/uploads/2021/12/DYTI-Flyer-2021.pdf">https://opportunity.nebraska.gov/wp-content/uploads/2021/12/DYTI-Flyer-2021.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"Coverage gaps from current facts dossier," Local member context, facts/coverage_gaps.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"Offutt, Bellevue Public Schools celebrate DoD investment in national STEM program," Offutt Air Force Base, August 30, 2018, <a href="https://offutt.af.mil/News/Article/1617112/offutt-bellevue-public-schools-celebrate-dod-investment-in-national-stem-progra/">https://offutt.af.mil/News/Article/1617112/offutt-bellevue-public-schools-celebrate-dod-investment-in-national-stem-progra/</a>.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"NE NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/NE/NE-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/NE/NE-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </article>
+      <section class="tps-report-closing" aria-label="Further resources">
+        <p>
+          Further resources, data, and updates at
+          <a href="https://planetary.org/save-nasa-science">The Planetary Society's Save NASA Science Action Hub</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer class="tps-report-footer bg-black text-white px-4 px-lg-5 py-5">
+    <div class="container-planetary-responsive">
+      <div class="row py-2 gy-4">
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Explore Space</li>
+            <li><a href="https://planetary.org/worlds">Planets &amp; Other Worlds</a></li>
+            <li><a href="https://planetary.org/space-missions">Space Missions</a></li>
+            <li><a href="https://planetary.org/space-policy">Space Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Get Involved</li>
+            <li><a href="https://planetary.org/action-center">Action Center</a></li>
+            <li><a href="https://planetary.org/connect">Email Signup</a></li>
+            <li><a href="https://planetary.org/membership">Become A Member</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="d-inline-block mb-3" href="https://www.planetary.org/">
+            <img style="width: 4rem;" alt="The Planetary Society emblem" src="https://planetary.s3.amazonaws.com/sites/planetary/images/45-emblem-white.svg">
+          </a>
+          <p class="small mb-2">Empowering the world's citizens to advance space science and exploration.</p>
+          <p class="small mb-0">
+            <a href="https://www.planetary.org/about/contact">Contact Us</a> •
+            <a href="https://www.planetary.org/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

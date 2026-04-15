@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>NASA Advocacy Briefing</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://planetary.org/img/site/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://planetary.org/img/site/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://planetary.org/img/site/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --tps-blue: #037cc2;
+      --tps-blue-dark: #1e447b;
+      --tps-sand: #f7f1e8;
+      --tps-cream: #fffdf9;
+      --tps-ink: #1e2430;
+      --tps-muted: #51606f;
+      --tps-line: #d9dee5;
+      --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
+      --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(3, 124, 194, 0.08), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--tps-sand) 100%);
+      color: var(--tps-ink);
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container-planetary-responsive {
+      width: 100%;
+      padding-right: var(--bs-container-padding-x, 1rem);
+      padding-left: var(--bs-container-padding-x, 1rem);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 992px;
+    }
+    .tps-report-main {
+      padding: 1.25rem 0 2.5rem;
+    }
+    .advocacy-report-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(217, 222, 229, 0.9);
+      border-radius: 22px;
+      box-shadow: var(--tps-shadow);
+      padding: 1.25rem 1rem 1.5rem;
+      overflow-wrap: anywhere;
+    }
+    .advocacy-report-card h1,
+    .advocacy-report-card h2,
+    .advocacy-report-card h3 {
+      color: var(--tps-blue-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .advocacy-report-card h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--tps-line);
+    }
+    .advocacy-report-card h1 + p {
+      margin: 0.85rem 0 1.25rem;
+      color: var(--tps-muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .advocacy-report-card h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .advocacy-report-card p,
+    .advocacy-report-card li {
+      font-size: 0.98rem;
+    }
+    .advocacy-report-card p {
+      margin: 0 0 0.9rem;
+    }
+    .advocacy-report-card ul,
+    .advocacy-report-card ol {
+      margin: 0 0 1rem 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card li + li {
+      margin-top: 0.55rem;
+    }
+    .advocacy-report-card :is(ul, ol) :is(ul, ol) {
+      margin-top: 0.55rem;
+      margin-bottom: 0.15rem;
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card a {
+      color: var(--tps-blue);
+      font-weight: 600;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.15em;
+    }
+    .advocacy-report-card blockquote {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1.05rem;
+      border-left: 4px solid var(--tps-blue);
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.08), rgba(3, 124, 194, 0.03));
+      border-radius: 14px;
+    }
+    .advocacy-report-card blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
+    .advocacy-report-card code {
+      background: rgba(30, 36, 48, 0.08);
+      padding: 0.1rem 0.32rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .advocacy-report-card hr {
+      border: 0;
+      border-top: 1px solid var(--tps-line);
+      margin: 1.5rem 0;
+    }
+    /* Slug `#nasa-budget-support` is generated by python-markdown's toc extension from
+       the `## NASA Budget Support` heading; renaming that heading will silently break this. */
+    .advocacy-report-card #nasa-budget-support + p,
+    .advocacy-report-card #nasa-budget-support + ul {
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote {
+      margin-top: 0;
+      padding: 1rem 1rem 0.9rem;
+      border-left: 0;
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+    }
+    .advocacy-report-card #nasa-budget-support + p {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:first-child {
+      color: var(--tps-blue-dark);
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li {
+      margin-top: 0.4rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li:first-child {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li:first-child {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .advocacy-report-card #meeting-strategy + p {
+      margin-bottom: 0.8rem;
+    }
+    .advocacy-report-card #sources {
+      margin-top: 1.75rem;
+    }
+    .advocacy-report-card .footnote {
+      color: var(--tps-muted);
+      font-size: 0.92rem;
+    }
+    .advocacy-report-card .footnote ol {
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card .footnote li {
+      margin-top: 0.65rem;
+    }
+    .advocacy-report-card .footnote-backref {
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
+    }
+    .tps-report-closing {
+      margin-top: 1.25rem;
+      background: #dde5ec;
+      border-radius: 18px;
+      padding: 1.15rem 1rem;
+      text-align: center;
+    }
+    .tps-report-closing p {
+      margin: 0;
+      color: var(--tps-blue-dark);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .tps-report-closing a {
+      color: var(--tps-blue-dark);
+      font-weight: 700;
+    }
+    .tps-report-footer {
+      margin-top: 2rem;
+    }
+    .tps-report-footer .list-unstyled li + li {
+      margin-top: 0.35rem;
+    }
+    .tps-report-footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .tps-report-footer a:hover,
+    .tps-report-footer a:focus {
+      color: #9dd9ff;
+    }
+    @media (min-width: 768px) {
+      .tps-report-main {
+        padding: 2rem 0 3rem;
+      }
+      .advocacy-report-card {
+        padding: 2rem 2.25rem 2.25rem;
+      }
+      .advocacy-report-card h1 {
+        font-size: 2.5rem;
+      }
+      .advocacy-report-card h2 {
+        font-size: 1.35rem;
+        margin-top: 1.9rem;
+      }
+      .advocacy-report-card p,
+      .advocacy-report-card li {
+        font-size: 1rem;
+      }
+      .tps-report-closing {
+        padding: 1.35rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white" data-report-shell="tps-advocacy">
+  <header class="tps-report-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-planetary-responsive">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
+        </a>
+        
+      </div>
+    </nav>
+  </header>
+  <main class="tps-report-main" id="main-content">
+    <div class="container-planetary-responsive">
+      <article class="advocacy-report-card">
+        <h1 id="representative-gabe-evans-r-co-08">Representative Gabe Evans (R-CO-08)</h1>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Likely Supportive</strong> (moderate confidence): Representative Evans is an emerging leader on space issues, co-chairing a bipartisan caucus dedicated to U.S. space leadership. While his public statements often emphasize human spaceflight and commercial sector growth, he has directly touted a $6.1 million win for NASA's CAPSTONE mission in his district as a major legislative victory. Advocates should frame Science Mission Directorate (SMD) funding as a driver of Colorado's aerospace economy and a critical component of national competitiveness. Be prepared to provide more detail on specific science divisions like Earth Science or Astrophysics, as his current record is heavily centered on lunar exploration and commercial data acquisition.</p></blockquote>
+
+<h2 id="nasa-budget-support">NASA Budget Support</h2>
+<blockquote>
+<ul>
+<li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
+</ul>
+</blockquote>
+<h2 id="meeting-strategy">Meeting Strategy</h2>
+<p><strong>Lead with:</strong> Space Leadership and Economic Competitiveness</p>
+<p>Lead by recognizing the Representative's leadership as a founding co-chair of the Advancing Humanity in Space Congressional Caucus. Frame robust funding for the Science Mission Directorate as the essential foundation for U.S. preeminence in space and a direct driver of Colorado's commercial aerospace economy.</p>
+<p><strong>Bridge issues:</strong></p>
+<ul>
+<li><strong>Economic Growth and Local Contracts:</strong> "With over $10 million in NASA science obligations flowing into our district through companies like Maxar and Advanced Space, supporting the Science Mission Directorate directly protects high-tech jobs and the economic vitality of Colorado's 8th district."</li>
+<li><strong>Artemis and Lunar Exploration:</strong> "As a champion for Artemis, you know that a permanent human presence on the Moon requires the critical robotic precursors and lunar science funded through NASA's science budget."</li>
+</ul>
+<p><strong>Watch out for:</strong></p>
+<ul>
+<li>Avoid assuming Representative Evans is already committed to specific science funding levels; while he supports NASA's broad budget, he has not yet signed the programmatic letters calling for $9 billion in science funding.</li>
+<li>Be prepared for concerns regarding the national debt; frame NASA science as a strategic investment to 'outcompete China' rather than just discretionary spending.</li>
+</ul>
+<p><strong>Expect this reaction:</strong> The office is likely to be highly receptive given the Representative's caucus leadership, but the response may be conditional on how science funding supports his commercial space and national security priorities.</p>
+<h2 id="key-opportunities">Key Opportunities</h2>
+<ul>
+<li><strong>Bipartisan Coalition:</strong> As a founding co-chair of the Advancing Humanity in Space Congressional Caucus, he is actively seeking bipartisan ways to promote U.S. leadership in space exploration.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+<li><strong>District Fiscal Impact:</strong> He successfully secured $6.1 million for NASA's CAPSTONE mission, demonstrating a willingness to prioritize science programs with local industrial ties.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
+<li><strong>Local Institution:</strong> His district receives an average of $3.5 million annually in NASA science obligations, primarily through major commercial satellite data contracts with companies like Maxar.<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup> <sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup></li>
+<li><strong>Direct NASA Record:</strong> He has expressed strong enthusiasm for the Artemis program and establishing a permanent human presence on the Moon, which provides a gateway to discuss lunar science.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
+<li><strong>Committee Position:</strong> His service on the House Energy and Commerce Committee provides a platform to connect NASA's data capabilities to domestic technology and energy innovation.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup></li>
+</ul>
+<h2 id="key-challenges">Key Challenges</h2>
+<ul>
+<li><strong>Evidence Gap:</strong> He has not yet signed on to the annual funding letters requesting a $9 billion budget for the Science Mission Directorate, showing his support for science is not yet programmatic.<sup id="fnref:12"><a class="footnote-ref" href="#fn:12">12</a></sup></li>
+<li><strong>Evidence Gap:</strong> There is a significant lack of evidence regarding his stance on specific SMD divisions beyond lunar exploration, including Earth Science, Astrophysics, and Heliophysics.<sup id="fnref:13"><a class="footnote-ref" href="#fn:13">13</a></sup></li>
+<li><strong>Political Constraint:</strong> His fiscal priorities center on reducing inflation and the national debt, which may create friction with requests for increased discretionary spending for NASA science.<sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup></li>
+<li><strong>Competing Priority:</strong> His space advocacy is heavily focused on human spaceflight and commercial sector growth, which could lead to pure science missions being deprioritized.<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup> <sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+</ul>
+<h2 id="strategic-considerations">Strategic Considerations</h2>
+<ul>
+<li>You might find it effective to mention the Commercial Satellite Data Acquisition (CSDA) program, as Maxar Intelligence is a major local employer providing vital data to NASA.</li>
+<li>Consider exploring how NASA science data supports AI and tech-driven career training, connecting to his recent workforce development initiatives at Aims Community College.</li>
+<li>It could be worth mentioning that the same aerospace infrastructure he defended for Space Command is also vital for maintaining our nation's fleet of scientific satellites.</li>
+</ul>
+<h2 id="committees">Committees</h2>
+<ul>
+<li>Member, House Committee on Homeland Security<ul>
+<li>Emergency Management and Technology</li>
+<li>Counterterrorism and Intelligence</li>
+</ul>
+</li>
+<li>Member, House Committee on Energy and Commerce<ul>
+<li>Energy</li>
+<li>Environment</li>
+<li>Commerce, Manufacturing, and Trade</li>
+</ul>
+</li>
+</ul>
+<h2 id="about-representative-gabe-evans-r-co-08">About Representative Gabe Evans (R-CO-08)</h2>
+<ul>
+<li>Served as a U.S. Army officer and Colorado National Guard captain, where he was trained to fly UH-60 Black Hawk helicopters.</li>
+<li>Utilized piloting skills during military service to conduct search and rescue missions and assist in fighting wildfires.</li>
+<li>Served ten years in the Arvada Police Department, reaching the rank of lieutenant, and currently works as a firearms instructor.</li>
+<li>Earned a bachelor's degree in government from Patrick Henry College, graduating cum laude.</li>
+<li>Sponsored federal legislation aimed at streamlining the permitting process for broadband providers to reach rural and underserved communities.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<h3 id="additional-materials-reviewed">Additional Materials Reviewed</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>"Congressman Gabe Evans Votes to Pass Bipartisan Appropriations Package, Secures Major Wins for CO-08," Official Member Website, January 9, 2026, <a href="https://gabeevans.house.gov/media/press-releases/congressman-gabe-evans-votes-pass-bipartisan-appropriations-package-secures">https://gabeevans.house.gov/media/press-releases/congressman-gabe-evans-votes-pass-bipartisan-appropriations-package-secures</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"New Caucus Promotes Humanity Boldly Going," Payload Space, August 4, 2025, <a href="https://payloadspace.com/new-caucus-promotes-humanity-boldly-going/">https://payloadspace.com/new-caucus-promotes-humanity-boldly-going/</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>"Congressman Evans Launches New Congressional Caucus Focused On Space Exploration," Official Member Website, July 21, 2025, <a href="https://gabeevans.house.gov/media/press-releases/congressman-evans-launches-new-congressional-caucus-focused-space-exploration">https://gabeevans.house.gov/media/press-releases/congressman-evans-launches-new-congressional-caucus-focused-space-exploration</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>"The Advancing Humanity in Space Caucus Applauds America's First Crewed Lunar Mission In Over 50 Years," Official Member Website, April 2, 2026, <a href="https://gabeevans.house.gov/media/press-releases/advancing-humanity-space-caucus-applauds-americas-first-crewed-lunar-mission">https://gabeevans.house.gov/media/press-releases/advancing-humanity-space-caucus-applauds-americas-first-crewed-lunar-mission</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>"NASA fiscal summary from member context," Local member context, member_context/nasa_fiscal_summary.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"Issues | Representative Gabe Evans," Official Member Website, <a href="https://gabeevans.house.gov/issues">https://gabeevans.house.gov/issues</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"Top NASA contracts from member context," Local member context, member_context/top_contracts.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"Armed Forces | Representative Gabe Evans," Official Member Website, February 5, 2025, <a href="https://gabeevans.house.gov/issues/armed-forces">https://gabeevans.house.gov/issues/armed-forces</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"Colorado's Republican Delegation Joint Statement on DoD IG Report on Space Command," Official Member Website, April 17, 2025, <a href="https://gabeevans.house.gov/media/press-releases/colorados-republican-delegation-joint-statement-dod-ig-report-space-command">https://gabeevans.house.gov/media/press-releases/colorados-republican-delegation-joint-statement-dod-ig-report-space-command</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"Congressional App Challenge | Representative Gabe Evans," Official Member Website, <a href="https://gabeevans.house.gov/services/congressional-app-challenge">https://gabeevans.house.gov/services/congressional-app-challenge</a>.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"Rep. Evans and Deputy Secretary of Labor Highlight CO-08's AI Workforce Innovation," Official Member Website, July 31, 2025, <a href="https://gabeevans.house.gov/media/press-releases/rep-evans-and-deputy-secretary-labor-highlight-co-08s-ai-workforce-innovation">https://gabeevans.house.gov/media/press-releases/rep-evans-and-deputy-secretary-labor-highlight-co-08s-ai-workforce-innovation</a>.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>"Coverage gaps from current facts dossier," Local member context, facts/coverage_gaps.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>"Border Security and Immigration | Representative Gabe Evans," Official Member Website, <a href="https://gabeevans.house.gov/issues/border-security-and-immigration">https://gabeevans.house.gov/issues/border-security-and-immigration</a>.&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>"CO-08 NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/CO/08/CO-08-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/CO/08/CO-08-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </article>
+      <section class="tps-report-closing" aria-label="Further resources">
+        <p>
+          Further resources, data, and updates at
+          <a href="https://planetary.org/save-nasa-science">The Planetary Society's Save NASA Science Action Hub</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer class="tps-report-footer bg-black text-white px-4 px-lg-5 py-5">
+    <div class="container-planetary-responsive">
+      <div class="row py-2 gy-4">
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Explore Space</li>
+            <li><a href="https://planetary.org/worlds">Planets &amp; Other Worlds</a></li>
+            <li><a href="https://planetary.org/space-missions">Space Missions</a></li>
+            <li><a href="https://planetary.org/space-policy">Space Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Get Involved</li>
+            <li><a href="https://planetary.org/action-center">Action Center</a></li>
+            <li><a href="https://planetary.org/connect">Email Signup</a></li>
+            <li><a href="https://planetary.org/membership">Become A Member</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="d-inline-block mb-3" href="https://www.planetary.org/">
+            <img style="width: 4rem;" alt="The Planetary Society emblem" src="https://planetary.s3.amazonaws.com/sites/planetary/images/45-emblem-white.svg">
+          </a>
+          <p class="small mb-2">Empowering the world's citizens to advance space science and exploration.</p>
+          <p class="small mb-0">
+            <a href="https://www.planetary.org/about/contact">Contact Us</a> •
+            <a href="https://www.planetary.org/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

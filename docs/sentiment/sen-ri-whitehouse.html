@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>NASA Advocacy Briefing</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://planetary.org/img/site/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://planetary.org/img/site/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://planetary.org/img/site/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --tps-blue: #037cc2;
+      --tps-blue-dark: #1e447b;
+      --tps-sand: #f7f1e8;
+      --tps-cream: #fffdf9;
+      --tps-ink: #1e2430;
+      --tps-muted: #51606f;
+      --tps-line: #d9dee5;
+      --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
+      --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(3, 124, 194, 0.08), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--tps-sand) 100%);
+      color: var(--tps-ink);
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container-planetary-responsive {
+      width: 100%;
+      padding-right: var(--bs-container-padding-x, 1rem);
+      padding-left: var(--bs-container-padding-x, 1rem);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 992px;
+    }
+    .tps-report-main {
+      padding: 1.25rem 0 2.5rem;
+    }
+    .advocacy-report-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(217, 222, 229, 0.9);
+      border-radius: 22px;
+      box-shadow: var(--tps-shadow);
+      padding: 1.25rem 1rem 1.5rem;
+      overflow-wrap: anywhere;
+    }
+    .advocacy-report-card h1,
+    .advocacy-report-card h2,
+    .advocacy-report-card h3 {
+      color: var(--tps-blue-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .advocacy-report-card h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--tps-line);
+    }
+    .advocacy-report-card h1 + p {
+      margin: 0.85rem 0 1.25rem;
+      color: var(--tps-muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .advocacy-report-card h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .advocacy-report-card p,
+    .advocacy-report-card li {
+      font-size: 0.98rem;
+    }
+    .advocacy-report-card p {
+      margin: 0 0 0.9rem;
+    }
+    .advocacy-report-card ul,
+    .advocacy-report-card ol {
+      margin: 0 0 1rem 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card li + li {
+      margin-top: 0.55rem;
+    }
+    .advocacy-report-card :is(ul, ol) :is(ul, ol) {
+      margin-top: 0.55rem;
+      margin-bottom: 0.15rem;
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card a {
+      color: var(--tps-blue);
+      font-weight: 600;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.15em;
+    }
+    .advocacy-report-card blockquote {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1.05rem;
+      border-left: 4px solid var(--tps-blue);
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.08), rgba(3, 124, 194, 0.03));
+      border-radius: 14px;
+    }
+    .advocacy-report-card blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
+    .advocacy-report-card code {
+      background: rgba(30, 36, 48, 0.08);
+      padding: 0.1rem 0.32rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .advocacy-report-card hr {
+      border: 0;
+      border-top: 1px solid var(--tps-line);
+      margin: 1.5rem 0;
+    }
+    /* Slug `#nasa-budget-support` is generated by python-markdown's toc extension from
+       the `## NASA Budget Support` heading; renaming that heading will silently break this. */
+    .advocacy-report-card #nasa-budget-support + p,
+    .advocacy-report-card #nasa-budget-support + ul {
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote {
+      margin-top: 0;
+      padding: 1rem 1rem 0.9rem;
+      border-left: 0;
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+    }
+    .advocacy-report-card #nasa-budget-support + p {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:first-child {
+      color: var(--tps-blue-dark);
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li {
+      margin-top: 0.4rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li:first-child {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li:first-child {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .advocacy-report-card #meeting-strategy + p {
+      margin-bottom: 0.8rem;
+    }
+    .advocacy-report-card #sources {
+      margin-top: 1.75rem;
+    }
+    .advocacy-report-card .footnote {
+      color: var(--tps-muted);
+      font-size: 0.92rem;
+    }
+    .advocacy-report-card .footnote ol {
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card .footnote li {
+      margin-top: 0.65rem;
+    }
+    .advocacy-report-card .footnote-backref {
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
+    }
+    .tps-report-closing {
+      margin-top: 1.25rem;
+      background: #dde5ec;
+      border-radius: 18px;
+      padding: 1.15rem 1rem;
+      text-align: center;
+    }
+    .tps-report-closing p {
+      margin: 0;
+      color: var(--tps-blue-dark);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .tps-report-closing a {
+      color: var(--tps-blue-dark);
+      font-weight: 700;
+    }
+    .tps-report-footer {
+      margin-top: 2rem;
+    }
+    .tps-report-footer .list-unstyled li + li {
+      margin-top: 0.35rem;
+    }
+    .tps-report-footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .tps-report-footer a:hover,
+    .tps-report-footer a:focus {
+      color: #9dd9ff;
+    }
+    @media (min-width: 768px) {
+      .tps-report-main {
+        padding: 2rem 0 3rem;
+      }
+      .advocacy-report-card {
+        padding: 2rem 2.25rem 2.25rem;
+      }
+      .advocacy-report-card h1 {
+        font-size: 2.5rem;
+      }
+      .advocacy-report-card h2 {
+        font-size: 1.35rem;
+        margin-top: 1.9rem;
+      }
+      .advocacy-report-card p,
+      .advocacy-report-card li {
+        font-size: 1rem;
+      }
+      .tps-report-closing {
+        padding: 1.35rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white" data-report-shell="tps-advocacy">
+  <header class="tps-report-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-planetary-responsive">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
+        </a>
+        
+      </div>
+    </nav>
+  </header>
+  <main class="tps-report-main" id="main-content">
+    <div class="container-planetary-responsive">
+      <article class="advocacy-report-card">
+        <h1 id="senator-sheldon-whitehouse-d-ri">Senator Sheldon Whitehouse (D-RI)</h1>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Likely Supportive</strong> (high confidence): Senator Whitehouse is a reliable ally for NASA's Earth science and astrophysics programs, frequently citing NASA data as the gold standard for federal policy and recently fighting to save the Chandra X-Ray Observatory from budget cuts. While he has not signed recent broad funding letters for the Science Mission Directorate, his state hosts critical NASA research on exoplanets, lunar composition, and Mars Sample Return technology. Your best path is to emphasize how planetary exploration and Earth science are two sides of the same coin of scientific discovery, both of which drive high-tech jobs at Brown University and the University of Rhode Island. Be prepared for him to focus heavily on climate-related data, but use that as a bridge to discuss the importance of maintaining robust funding across all NASA science divisions.</p></blockquote>
+
+<h2 id="nasa-budget-support">NASA Budget Support</h2>
+<blockquote>
+<ul>
+<li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
+</ul>
+</blockquote>
+<h2 id="meeting-strategy">Meeting Strategy</h2>
+<p><strong>Lead with:</strong> NASA Science as the Gold Standard for Truth</p>
+<p>Lead with a strong word of thanks for the Senator's long-standing defense of NASA's scientific integrity and his recent efforts to protect the Chandra X-Ray Observatory. You should frame robust Science Mission Directorate funding not just as an agency request, but as an essential investment in the 'best available science' he relies on for federal climate and infrastructure policy.</p>
+<p><strong>Bridge issues:</strong></p>
+<ul>
+<li><strong>Fighting the Climate Crisis:</strong> "Senator, you’ve frequently said you trust NASA scientists over industry lobbyists; we are asking for your support for the Science Mission Directorate to ensure those scientists have the funding to continue providing the authoritative climate data that Rhode Island’s coastal planning depends on."</li>
+<li><strong>Growing the Middle Class:</strong> "NASA science is a direct engine for Rhode Island’s economy, supporting high-tech manufacturing at Spirit Aerosystems—where workers are building the heat shields for Mars Sample Return—and over $10 million in research grants at Brown and URI."</li>
+</ul>
+<p><strong>Watch out for:</strong></p>
+<ul>
+<li>Be prepared for the Senator to pivot primarily to Earth Science; avoid being dismissive of climate data and instead bridge to how planetary exploration helps us understand atmospheric changes here at home.</li>
+<li>Do not overstate his past support for the specific $9 billion science budget topline, as he has not yet signed the recent joint letters calling for that level of funding.</li>
+</ul>
+<p><strong>Expect this reaction:</strong> The Senator is likely to be highly supportive of NASA's scientific mission and receptive to local economic arguments, though his staff may remain cautious about committing to specific topline budget increases without broader committee consensus.</p>
+<h2 id="key-opportunities">Key Opportunities</h2>
+<ul>
+<li><strong>Local Institution:</strong> Highlight Rhode Island's direct role in Mars Sample Return; Spirit Aerosystems Textiles in the state is producing essential thermal protection components for the mission.<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup></li>
+<li><strong>Direct NASA Record:</strong> Reference his recent bicameral effort to maintain full funding for the Chandra X-Ray Observatory, proving his willingness to intervene on behalf of specific NASA science missions.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+<li><strong>District Fiscal Impact:</strong> Leverage the $5.1M in NASA grants to Brown University for lunar exploration to discuss the importance of the Planetary Science Division to the local economy.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
+<li><strong>Local Institution:</strong> Connect NASA's planetary research to his deep interest in exoplanets, as Brown University currently manages a $2.2M grant for spectrographic measurements of giant planets.<sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
+<li><strong>Direct NASA Record:</strong> Emphasize the role of NASA satellite data in tracking sea ice and climate changes, an issue he has highlighted in over 250 floor speeches.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> <sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></li>
+</ul>
+<h2 id="key-challenges">Key Challenges</h2>
+<ul>
+<li><strong>Competing Priority:</strong> His primary focus on NASA is often limited to Earth Science; advocates must actively bridge the gap to Planetary Science and Heliophysics.<sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup> <sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup> <sup id="fnref2:9"><a class="footnote-ref" href="#fn:9">9</a></sup></li>
+<li><strong>Evidence Gap:</strong> While he supports NASA science, he did not sign the most recent joint letters calling for a $9 billion topline budget for the Science Mission Directorate.<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup></li>
+<li><strong>Evidence Gap:</strong> There is a notable lack of evidence regarding his stance on Heliophysics and Biological and Physical Sciences programs.<sup id="fnref:11"><a class="footnote-ref" href="#fn:11">11</a></sup></li>
+</ul>
+<h2 id="strategic-considerations">Strategic Considerations</h2>
+<ul>
+<li>Consider mentioning the University of Rhode Island’s work on the EXPORTS mission, which uses NASA science to study carbon flow in the ocean—this perfectly aligns with his personal and legislative focus on marine conservation.</li>
+<li>You might find it useful to highlight the $2.2M grant at Brown University studying extrasolar giant planets, bridging his interest in atmospheric science with deep-space exploration.</li>
+<li>It could be worth mentioning his role on the Budget Committee to emphasize how investing in science now prevents the 'profound risks' climate-driven events pose to federal facilities and the economy.</li>
+</ul>
+<h2 id="committees">Committees</h2>
+<ul>
+<li>Ranking Member, Senate Committee on Environment and Public Works</li>
+<li>Ex Officio, Senate Committee on Environment and Public Works<ul>
+<li>Chemical Safety, Waste Management, Environmental Justice, and Regulatory Oversight</li>
+<li>Clean Air, Climate, and Nuclear Innovation and Safety</li>
+<li>Fisheries, Wildlife, and Water</li>
+<li>Transportation and Infrastructure</li>
+</ul>
+</li>
+<li>Member, Senate Committee on Finance<ul>
+<li>Health Care</li>
+<li>International Trade, Customs, and Global Competitiveness</li>
+<li>Taxation and IRS Oversight</li>
+</ul>
+</li>
+<li>Member, Senate Committee on the Budget</li>
+<li>Member, Senate Committee on the Judiciary<ul>
+<li>Border Security and Immigration</li>
+<li>Intellectual Property</li>
+<li>the Constitution</li>
+</ul>
+</li>
+<li>Ranking Member, Senate Committee on the Judiciary<ul>
+<li>Federal Courts, Oversight, Agency Action, and Federal Rights</li>
+</ul>
+</li>
+<li>Chairman, United States Senate Caucus on International Narcotics Control</li>
+<li>Member, Commission on Security and Cooperation in Europe</li>
+</ul>
+<h2 id="about-senator-sheldon-whitehouse-d-ri">About Senator Sheldon Whitehouse (D-RI)</h2>
+<ul>
+<li>Served as the United States Attorney for the District of Rhode Island (1993–1998) and as the 71st Attorney General of Rhode Island (1999–2003).</li>
+<li>Holds a Juris Doctor from the University of Virginia School of Law and a bachelor's degree from Yale College.</li>
+<li>Authored the Safeguarding America's Future and Environment (SAFE) Act and the U.S.-Israel Cybersecurity Cooperation Enhancement Act.</li>
+<li>Maintains personal and professional ties to the maritime sector through his spouse, a marine biologist, and his legislative focus on ocean conservation and octopus farming bans.</li>
+<li>Has delivered over 250 Senate floor speeches regarding climate change and has advocated for the use of the best available science in federal natural resource planning.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<h3 id="additional-materials-reviewed">Additional Materials Reviewed</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>"Moulton, Warren, Markey Urge NASA to Rescind Proposed Severe Budget Cuts to Chandra X-Ray Observatory in MA," Office of Congressman Seth Moulton, June 12, 2024, <a href="https://moulton.house.gov/news/press-releases/moulton-warren-markey-urge-nasa-rescind-proposed-severe-budget-cuts-chandra-x">https://moulton.house.gov/news/press-releases/moulton-warren-markey-urge-nasa-rescind-proposed-severe-budget-cuts-chandra-x</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"Bicameral Letter to NASA - Chandra," U.S. Congress, June 6, 2024, <a href="https://moulton.house.gov/sites/evo-subsites/moulton.house.gov/files/evo-media-document/Bicameral%20Letter%20to%20NASA%20-%20Chandra%20-%20FINAL%20-%206.6.04.pdf">https://moulton.house.gov/sites/evo-subsites/moulton.house.gov/files/evo-media-document/Bicameral%20Letter%20to%20NASA%20-%20Chandra%20-%20FINAL%20-%206.6.04.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>"Time to Wake Up: 100 Speeches, 100 Reasons to Act on Climate," U.S. Senate, May 18, 2015, <a href="https://whitehouse.senate.gov/news/speeches/time-to-wake-up-100-speeches-100-reasons-to-act-on-climate/">https://whitehouse.senate.gov/news/speeches/time-to-wake-up-100-speeches-100-reasons-to-act-on-climate/</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>"Top NASA grants from member context," Local member context, member_context/top_grants.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>"Top NASA contracts from member context," Local member context, member_context/top_contracts.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"Time to Wake Up: Conflicting Voices from Oklahoma," U.S. Senate, January 1, 2015, <a href="https://whitehouse.senate.gov/news/speeches/time-to-wake-up-conflicting-voices-from-oklahoma/">https://whitehouse.senate.gov/news/speeches/time-to-wake-up-conflicting-voices-from-oklahoma/</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"Issues | U.S. Senator Sheldon Whitehouse of Rhode Island," U.S. Senate, January 1, 2024, <a href="https://whitehouse.senate.gov/about/issues/">https://whitehouse.senate.gov/about/issues/</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"Time to Wake Up: Climate Change in the Arctic," U.S. Senate, April 28, 2015, <a href="https://whitehouse.senate.gov/news/speeches/time-to-wake-up-climate-change-in-the-arctic/">https://whitehouse.senate.gov/news/speeches/time-to-wake-up-climate-change-in-the-arctic/</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"NASA fiscal summary from member context," Local member context, member_context/nasa_fiscal_summary.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"Coverage gaps from current facts dossier," Local member context, facts/coverage_gaps.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"Chairman Whitehouse Opening Statement at Hearing on Climate Change and the Costs to National Security," U.S. Senate Budget Committee, May 15, 2024, <a href="https://budget.senate.gov/chairman/newsroom/press/whitehouse-opening-statement-at-hearing-on-climate-change-and-the-costs-to-national-security">https://budget.senate.gov/chairman/newsroom/press/whitehouse-opening-statement-at-hearing-on-climate-change-and-the-costs-to-national-security</a>.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>"White House Budget Plan Slams Climate and Environmental Programs," Eos, March 17, 2017, <a href="https://eos.org/articles/white-house-budget-plan-slams-climate-and-environmental-programs">https://eos.org/articles/white-house-budget-plan-slams-climate-and-environmental-programs</a>.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>"RI NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/RI/RI-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/RI/RI-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </article>
+      <section class="tps-report-closing" aria-label="Further resources">
+        <p>
+          Further resources, data, and updates at
+          <a href="https://planetary.org/save-nasa-science">The Planetary Society's Save NASA Science Action Hub</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer class="tps-report-footer bg-black text-white px-4 px-lg-5 py-5">
+    <div class="container-planetary-responsive">
+      <div class="row py-2 gy-4">
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Explore Space</li>
+            <li><a href="https://planetary.org/worlds">Planets &amp; Other Worlds</a></li>
+            <li><a href="https://planetary.org/space-missions">Space Missions</a></li>
+            <li><a href="https://planetary.org/space-policy">Space Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Get Involved</li>
+            <li><a href="https://planetary.org/action-center">Action Center</a></li>
+            <li><a href="https://planetary.org/connect">Email Signup</a></li>
+            <li><a href="https://planetary.org/membership">Become A Member</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="d-inline-block mb-3" href="https://www.planetary.org/">
+            <img style="width: 4rem;" alt="The Planetary Society emblem" src="https://planetary.s3.amazonaws.com/sites/planetary/images/45-emblem-white.svg">
+          </a>
+          <p class="small mb-2">Empowering the world's citizens to advance space science and exploration.</p>
+          <p class="small mb-0">
+            <a href="https://www.planetary.org/about/contact">Contact Us</a> •
+            <a href="https://www.planetary.org/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>NASA Advocacy Briefing</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://planetary.org/img/site/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://planetary.org/img/site/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://planetary.org/img/site/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --tps-blue: #037cc2;
+      --tps-blue-dark: #1e447b;
+      --tps-sand: #f7f1e8;
+      --tps-cream: #fffdf9;
+      --tps-ink: #1e2430;
+      --tps-muted: #51606f;
+      --tps-line: #d9dee5;
+      --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
+      --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(3, 124, 194, 0.08), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--tps-sand) 100%);
+      color: var(--tps-ink);
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container-planetary-responsive {
+      width: 100%;
+      padding-right: var(--bs-container-padding-x, 1rem);
+      padding-left: var(--bs-container-padding-x, 1rem);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 992px;
+    }
+    .tps-report-main {
+      padding: 1.25rem 0 2.5rem;
+    }
+    .advocacy-report-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(217, 222, 229, 0.9);
+      border-radius: 22px;
+      box-shadow: var(--tps-shadow);
+      padding: 1.25rem 1rem 1.5rem;
+      overflow-wrap: anywhere;
+    }
+    .advocacy-report-card h1,
+    .advocacy-report-card h2,
+    .advocacy-report-card h3 {
+      color: var(--tps-blue-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .advocacy-report-card h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--tps-line);
+    }
+    .advocacy-report-card h1 + p {
+      margin: 0.85rem 0 1.25rem;
+      color: var(--tps-muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .advocacy-report-card h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .advocacy-report-card p,
+    .advocacy-report-card li {
+      font-size: 0.98rem;
+    }
+    .advocacy-report-card p {
+      margin: 0 0 0.9rem;
+    }
+    .advocacy-report-card ul,
+    .advocacy-report-card ol {
+      margin: 0 0 1rem 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card li + li {
+      margin-top: 0.55rem;
+    }
+    .advocacy-report-card :is(ul, ol) :is(ul, ol) {
+      margin-top: 0.55rem;
+      margin-bottom: 0.15rem;
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card a {
+      color: var(--tps-blue);
+      font-weight: 600;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.15em;
+    }
+    .advocacy-report-card blockquote {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1.05rem;
+      border-left: 4px solid var(--tps-blue);
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.08), rgba(3, 124, 194, 0.03));
+      border-radius: 14px;
+    }
+    .advocacy-report-card blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
+    .advocacy-report-card code {
+      background: rgba(30, 36, 48, 0.08);
+      padding: 0.1rem 0.32rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .advocacy-report-card hr {
+      border: 0;
+      border-top: 1px solid var(--tps-line);
+      margin: 1.5rem 0;
+    }
+    /* Slug `#nasa-budget-support` is generated by python-markdown's toc extension from
+       the `## NASA Budget Support` heading; renaming that heading will silently break this. */
+    .advocacy-report-card #nasa-budget-support + p,
+    .advocacy-report-card #nasa-budget-support + ul {
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote {
+      margin-top: 0;
+      padding: 1rem 1rem 0.9rem;
+      border-left: 0;
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+    }
+    .advocacy-report-card #nasa-budget-support + p {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:first-child {
+      color: var(--tps-blue-dark);
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li {
+      margin-top: 0.4rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li:first-child {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li:first-child {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .advocacy-report-card #meeting-strategy + p {
+      margin-bottom: 0.8rem;
+    }
+    .advocacy-report-card #sources {
+      margin-top: 1.75rem;
+    }
+    .advocacy-report-card .footnote {
+      color: var(--tps-muted);
+      font-size: 0.92rem;
+    }
+    .advocacy-report-card .footnote ol {
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card .footnote li {
+      margin-top: 0.65rem;
+    }
+    .advocacy-report-card .footnote-backref {
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
+    }
+    .tps-report-closing {
+      margin-top: 1.25rem;
+      background: #dde5ec;
+      border-radius: 18px;
+      padding: 1.15rem 1rem;
+      text-align: center;
+    }
+    .tps-report-closing p {
+      margin: 0;
+      color: var(--tps-blue-dark);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .tps-report-closing a {
+      color: var(--tps-blue-dark);
+      font-weight: 700;
+    }
+    .tps-report-footer {
+      margin-top: 2rem;
+    }
+    .tps-report-footer .list-unstyled li + li {
+      margin-top: 0.35rem;
+    }
+    .tps-report-footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .tps-report-footer a:hover,
+    .tps-report-footer a:focus {
+      color: #9dd9ff;
+    }
+    @media (min-width: 768px) {
+      .tps-report-main {
+        padding: 2rem 0 3rem;
+      }
+      .advocacy-report-card {
+        padding: 2rem 2.25rem 2.25rem;
+      }
+      .advocacy-report-card h1 {
+        font-size: 2.5rem;
+      }
+      .advocacy-report-card h2 {
+        font-size: 1.35rem;
+        margin-top: 1.9rem;
+      }
+      .advocacy-report-card p,
+      .advocacy-report-card li {
+        font-size: 1rem;
+      }
+      .tps-report-closing {
+        padding: 1.35rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white" data-report-shell="tps-advocacy">
+  <header class="tps-report-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-planetary-responsive">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
+        </a>
+        
+      </div>
+    </nav>
+  </header>
+  <main class="tps-report-main" id="main-content">
+    <div class="container-planetary-responsive">
+      <article class="advocacy-report-card">
+        <h1 id="representative-grace-meng-d-ny-06">Representative Grace Meng (D-NY-06)</h1>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Champion</strong> (high confidence): Representative Meng is a powerful ally for NASA science, serving as the Ranking Member on the subcommittee that directly determines the agency's budget. She has been vocal in opposing cuts to the Science Mission Directorate and is particularly passionate about protecting the STEM education pipeline and university research partnerships. When meeting with her office, focus on how NASA science missions support academic research and inspire the next generation of New York students. Be prepared to address her concerns regarding agency transparency and commercial conflicts of interest, as she has recently scrutinized NASA leadership on these fronts.</p></blockquote>
+
+<h2 id="nasa-budget-support">NASA Budget Support</h2>
+<blockquote>
+<ul>
+<li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
+</ul>
+</blockquote>
+<h2 id="meeting-strategy">Meeting Strategy</h2>
+<p><strong>Lead with:</strong> The Champion of the Scientific Pipeline</p>
+<p>Lead with Representative Meng's powerful role as Ranking Member of the CJS Appropriations Subcommittee and her vocal defense of the Science Mission Directorate (SMD). You should frame NASA science funding as the essential fuel for the STEM education pipeline and university partnerships she champions in Queens.</p>
+<p><strong>Bridge issues:</strong></p>
+<ul>
+<li><strong>Education and Student Access:</strong> "By robustly funding NASA's science missions, we provide the real-world inspiration that fuels programs like the one you hosted at the New York Hall of Science to keep Queens students engaged in the STEM pipeline."</li>
+<li><strong>Economy and Local Research:</strong> "NASA's investment in our district—including nearly $400,000 in recent grants to CUNY for heliophysics and general science—shows how the Science Mission Directorate directly supports high-level academic jobs right here in New York."</li>
+</ul>
+<p><strong>Watch out for:</strong></p>
+<ul>
+<li>Avoid centering your pitch on commercial space partnerships or private-sector efficiency; the Representative has expressed deep concern regarding conflicts of interest between NASA and major commercial contractors.</li>
+<li>While she is a staunch defender of the broad science budget, do not overstate her support for specific missions like Mars Sample Return or Hubble, as her public record focuses on topline protections rather than individual mission endorsements.</li>
+</ul>
+<p><strong>Expect this reaction:</strong> Expect a highly receptive response; the Representative is a recognized 'champion' who has publicly called proposed NASA science cuts 'shocking.' However, her staff may pivot the conversation toward demanding better agency transparency and accountability regarding spending plans.</p>
+<h2 id="key-opportunities">Key Opportunities</h2>
+<ul>
+<li><strong>Committee Position:</strong> Leverage her powerful position as the Ranking Member of the CJS Appropriations Subcommittee to influence the topline funding for the Science Mission Directorate.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> <sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup></li>
+<li><strong>Direct NASA Record:</strong> Highlight her recent public defense of Science Mission Directorate programs against proposed cancellations and budget cuts in the FY2026 cycle.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+<li><strong>District Fiscal Impact:</strong> Reference the $300K NASA grant to CUNY in her district specifically for heliophysics discovery to show the local value of SMD science.<sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup></li>
+<li><strong>Adjacent Interest:</strong> Connect space science advocacy to her 'homework gap' and education priorities by emphasizing NASA's role in strengthening university-federal research partnerships.<sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup> <sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup></li>
+</ul>
+<h2 id="key-challenges">Key Challenges</h2>
+<ul>
+<li><strong>Evidence Gap:</strong> Her record is currently thin on support for specific missions in planetary science, astrophysics, or biological sciences, as she often focuses on broad SMD and STEM protection.<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></li>
+<li><strong>Political Constraint:</strong> A strong skepticism toward major commercial partners and perceived conflicts of interest could complicate advocacy centered on public-private space science partnerships.<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup></li>
+<li><strong>Political Constraint:</strong> High demand for agency accountability and transparency may shift the focus of her office toward oversight rather than purely increasing budget toplines.<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+</ul>
+<h2 id="strategic-considerations">Strategic Considerations</h2>
+<ul>
+<li>You might find it useful to specifically mention the $300,000 heliophysics grant at the Research Foundation of CUNY, as it directly connects her subcommittee oversight to local district impact.</li>
+<li>Consider exploring the intersection of Earth Science missions and her commitment to environmental protection and emission reductions.</li>
+<li>Think about whether to frame consistent funding as a tool for agency accountability, arguing that budget stability prevents the wasteful mission cancellations she has recently criticized.</li>
+</ul>
+<h2 id="committees">Committees</h2>
+<ul>
+<li><strong>Member, House Committee on Appropriations</strong><ul>
+<li>National Security, Department of State, and Related Programs</li>
+</ul>
+</li>
+<li><strong>Ranking Member, House Committee on Appropriations</strong><ul>
+<li><strong>Commerce, Justice, Science, and Related Agencies</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="about-representative-grace-meng-d-ny-06">About Representative Grace Meng (D-NY-06)</h2>
+<ul>
+<li>Elected to the U.S. House of Representatives in 2012, becoming the first Asian American to represent New York in Congress.</li>
+<li>Served in the New York State Assembly from 2009 to 2012, where she authored the Reverse Mortgage Act of 2009.</li>
+<li>Holds a Bachelor of Arts from the University of Michigan and a Juris Doctor from the Benjamin N. Cardozo School of Law at Yeshiva University.</li>
+<li>Attended Stuyvesant High School in New York City with an initial intent to pursue a career in teaching.</li>
+<li>Stated concerns regarding national security threats posed by the Chinese Communist Party following the 2024 arrest of a former staff member.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>"Meng Makes Recommendations to Support NASA Innovation," Congresswoman Grace Meng, April 8, 2025, <a href="https://meng.house.gov/media-center/press-releases/meng-makes-recommendations-support-nasa-innovation">https://meng.house.gov/media-center/press-releases/meng-makes-recommendations-support-nasa-innovation</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"Meng Calls Out Trump Admin's Lack of Transparency on Spending, Demands Agencies Follow Law," Congresswoman Grace Meng, July 10, 2025, <a href="https://meng.house.gov/media-center/press-releases/meng-calls-out-trump-admins-lack-transparency-spending-demands-agencies">https://meng.house.gov/media-center/press-releases/meng-calls-out-trump-admins-lack-transparency-spending-demands-agencies</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>"Congress Selects New Top Appropriators for Science Agencies," American Institute of Physics, February 4, 2025, <a href="https://aip.org/fyi/congress-selects-new-top-appropriators-for-science-agencies">https://aip.org/fyi/congress-selects-new-top-appropriators-for-science-agencies</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>"Trump Proposes 24 Percent Cut to NASA," Space Policy Online, May 2, 2025, <a href="https://spacepolicyonline.com/news/trump-proposes-6-billion-cut-to-nasa/">https://spacepolicyonline.com/news/trump-proposes-6-billion-cut-to-nasa/</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>"Meng Sounds Alarm Over Elon Musk and DOGE's Access to NASA," Congresswoman Grace Meng, February 11, 2025, <a href="https://meng.house.gov/media-center/press-releases/meng-sounds-alarm-elon-musk-and-doges-access-nasa">https://meng.house.gov/media-center/press-releases/meng-sounds-alarm-elon-musk-and-doges-access-nasa</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"Issues," Congresswoman Grace Meng, January 1, 2024, <a href="https://meng.house.gov/issues">https://meng.house.gov/issues</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"Meng Arranges For NASA Astronaut To Talk With Queens Students Live From Space," Congresswoman Grace Meng, July 18, 2025, <a href="https://meng.house.gov/media-center/press-releases/meng-arranges-nasa-astronaut-talk-queens-students-live-space">https://meng.house.gov/media-center/press-releases/meng-arranges-nasa-astronaut-talk-queens-students-live-space</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"Top NASA grants from member context," Local member context, member_context/top_grants.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"Coverage gaps from current facts dossier," Local member context, facts/coverage_gaps.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"A Q&amp;A With Rep. Grace Meng," Payload Space, August 12, 2025, <a href="https://payloadspace.com/a-qa-with-rep-grace-meng/">https://payloadspace.com/a-qa-with-rep-grace-meng/</a>.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"NASA fiscal summary from member context," Local member context, member_context/nasa_fiscal_summary.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>"Grace Meng," Columbia University Freedom and Citizenship, January 1, 2024, <a href="https://freedomandcitizenship.columbia.edu/people/grace-meng">https://freedomandcitizenship.columbia.edu/people/grace-meng</a>.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>"NY-06 NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/NY/06/NY-06-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/NY/06/NY-06-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </article>
+      <section class="tps-report-closing" aria-label="Further resources">
+        <p>
+          Further resources, data, and updates at
+          <a href="https://planetary.org/save-nasa-science">The Planetary Society's Save NASA Science Action Hub</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer class="tps-report-footer bg-black text-white px-4 px-lg-5 py-5">
+    <div class="container-planetary-responsive">
+      <div class="row py-2 gy-4">
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Explore Space</li>
+            <li><a href="https://planetary.org/worlds">Planets &amp; Other Worlds</a></li>
+            <li><a href="https://planetary.org/space-missions">Space Missions</a></li>
+            <li><a href="https://planetary.org/space-policy">Space Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Get Involved</li>
+            <li><a href="https://planetary.org/action-center">Action Center</a></li>
+            <li><a href="https://planetary.org/connect">Email Signup</a></li>
+            <li><a href="https://planetary.org/membership">Become A Member</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="d-inline-block mb-3" href="https://www.planetary.org/">
+            <img style="width: 4rem;" alt="The Planetary Society emblem" src="https://planetary.s3.amazonaws.com/sites/planetary/images/45-emblem-white.svg">
+          </a>
+          <p class="small mb-2">Empowering the world's citizens to advance space science and exploration.</p>
+          <p class="small mb-0">
+            <a href="https://www.planetary.org/about/contact">Contact Us</a> •
+            <a href="https://www.planetary.org/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

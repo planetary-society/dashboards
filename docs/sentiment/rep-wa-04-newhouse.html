@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>NASA Advocacy Briefing</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://planetary.org/img/site/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://planetary.org/img/site/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://planetary.org/img/site/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --tps-blue: #037cc2;
+      --tps-blue-dark: #1e447b;
+      --tps-sand: #f7f1e8;
+      --tps-cream: #fffdf9;
+      --tps-ink: #1e2430;
+      --tps-muted: #51606f;
+      --tps-line: #d9dee5;
+      --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
+      --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(3, 124, 194, 0.08), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--tps-sand) 100%);
+      color: var(--tps-ink);
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container-planetary-responsive {
+      width: 100%;
+      padding-right: var(--bs-container-padding-x, 1rem);
+      padding-left: var(--bs-container-padding-x, 1rem);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 992px;
+    }
+    .tps-report-main {
+      padding: 1.25rem 0 2.5rem;
+    }
+    .advocacy-report-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(217, 222, 229, 0.9);
+      border-radius: 22px;
+      box-shadow: var(--tps-shadow);
+      padding: 1.25rem 1rem 1.5rem;
+      overflow-wrap: anywhere;
+    }
+    .advocacy-report-card h1,
+    .advocacy-report-card h2,
+    .advocacy-report-card h3 {
+      color: var(--tps-blue-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .advocacy-report-card h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--tps-line);
+    }
+    .advocacy-report-card h1 + p {
+      margin: 0.85rem 0 1.25rem;
+      color: var(--tps-muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .advocacy-report-card h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .advocacy-report-card p,
+    .advocacy-report-card li {
+      font-size: 0.98rem;
+    }
+    .advocacy-report-card p {
+      margin: 0 0 0.9rem;
+    }
+    .advocacy-report-card ul,
+    .advocacy-report-card ol {
+      margin: 0 0 1rem 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card li + li {
+      margin-top: 0.55rem;
+    }
+    .advocacy-report-card :is(ul, ol) :is(ul, ol) {
+      margin-top: 0.55rem;
+      margin-bottom: 0.15rem;
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card a {
+      color: var(--tps-blue);
+      font-weight: 600;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.15em;
+    }
+    .advocacy-report-card blockquote {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1.05rem;
+      border-left: 4px solid var(--tps-blue);
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.08), rgba(3, 124, 194, 0.03));
+      border-radius: 14px;
+    }
+    .advocacy-report-card blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
+    .advocacy-report-card code {
+      background: rgba(30, 36, 48, 0.08);
+      padding: 0.1rem 0.32rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .advocacy-report-card hr {
+      border: 0;
+      border-top: 1px solid var(--tps-line);
+      margin: 1.5rem 0;
+    }
+    /* Slug `#nasa-budget-support` is generated by python-markdown's toc extension from
+       the `## NASA Budget Support` heading; renaming that heading will silently break this. */
+    .advocacy-report-card #nasa-budget-support + p,
+    .advocacy-report-card #nasa-budget-support + ul {
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote {
+      margin-top: 0;
+      padding: 1rem 1rem 0.9rem;
+      border-left: 0;
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+    }
+    .advocacy-report-card #nasa-budget-support + p {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:first-child {
+      color: var(--tps-blue-dark);
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li {
+      margin-top: 0.4rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li:first-child {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li:first-child {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .advocacy-report-card #meeting-strategy + p {
+      margin-bottom: 0.8rem;
+    }
+    .advocacy-report-card #sources {
+      margin-top: 1.75rem;
+    }
+    .advocacy-report-card .footnote {
+      color: var(--tps-muted);
+      font-size: 0.92rem;
+    }
+    .advocacy-report-card .footnote ol {
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card .footnote li {
+      margin-top: 0.65rem;
+    }
+    .advocacy-report-card .footnote-backref {
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
+    }
+    .tps-report-closing {
+      margin-top: 1.25rem;
+      background: #dde5ec;
+      border-radius: 18px;
+      padding: 1.15rem 1rem;
+      text-align: center;
+    }
+    .tps-report-closing p {
+      margin: 0;
+      color: var(--tps-blue-dark);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .tps-report-closing a {
+      color: var(--tps-blue-dark);
+      font-weight: 700;
+    }
+    .tps-report-footer {
+      margin-top: 2rem;
+    }
+    .tps-report-footer .list-unstyled li + li {
+      margin-top: 0.35rem;
+    }
+    .tps-report-footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .tps-report-footer a:hover,
+    .tps-report-footer a:focus {
+      color: #9dd9ff;
+    }
+    @media (min-width: 768px) {
+      .tps-report-main {
+        padding: 2rem 0 3rem;
+      }
+      .advocacy-report-card {
+        padding: 2rem 2.25rem 2.25rem;
+      }
+      .advocacy-report-card h1 {
+        font-size: 2.5rem;
+      }
+      .advocacy-report-card h2 {
+        font-size: 1.35rem;
+        margin-top: 1.9rem;
+      }
+      .advocacy-report-card p,
+      .advocacy-report-card li {
+        font-size: 1rem;
+      }
+      .tps-report-closing {
+        padding: 1.35rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white" data-report-shell="tps-advocacy">
+  <header class="tps-report-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-planetary-responsive">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
+        </a>
+        
+      </div>
+    </nav>
+  </header>
+  <main class="tps-report-main" id="main-content">
+    <div class="container-planetary-responsive">
+      <article class="advocacy-report-card">
+        <h1 id="representative-dan-newhouse-r-wa-04">Representative Dan Newhouse (R-WA-04)</h1>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Persuadable</strong> (moderate confidence): Representative Newhouse is an influential Appropriator who deeply values the scientific research conducted at Pacific Northwest National Laboratory (PNNL) and Washington State University. While he supports NASA's broad mission and Artemis, he has not yet focused specifically on the Science Mission Directorate's funding needs. Your best path is to connect NASA space science—particularly biological and physical sciences—to his priorities in agriculture, national security, and STEM education. Emphasize that NASA science provides critical innovations for terrestrial agriculture and supports the high-tech workforce in Central Washington.</p></blockquote>
+
+<h2 id="nasa-budget-support">NASA Budget Support</h2>
+<blockquote>
+<ul>
+<li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
+</ul>
+</blockquote>
+<h2 id="meeting-strategy">Meeting Strategy</h2>
+<p><strong>Lead with:</strong> Connect Space Biology to Central Washington Agriculture</p>
+<p>Lead with the BioS-ENDURES partnership at WSU and PNNL to show how NASA science directly impacts local research and crop resilience. You should frame Science Mission Directorate funding as an investment in the same kind of scientific discovery that fuels the Representative’s priorities in agriculture and food security.</p>
+<p><strong>Bridge issues:</strong></p>
+<ul>
+<li><strong>Agriculture and Food Security:</strong> "NASA-funded research at Washington State University is studying plant resilience in space to help us develop more durable and productive crops for farmers here in Central Washington."</li>
+<li><strong>STEM Education and Workforce:</strong> "The project where Wapato High School students tested fruit preservation with NASA shows how space science inspires the next generation of researchers needed to support our local high-tech economy."</li>
+</ul>
+<p><strong>Watch out for:</strong></p>
+<ul>
+<li>Avoid assuming the Representative is already a committed champion of the Science Mission Directorate; while he supports NASA's broad budget, he has not yet signed on to specific science-targeted funding letters.</li>
+<li>Be prepared for a focus on fiscal restraint, as his role on the Appropriations Committee often emphasizes avoiding shutdowns and exercising budgetary discipline.</li>
+</ul>
+<p><strong>Expect this reaction:</strong> The office will likely be receptive to local impact stories but may remain non-committal regarding specific funding toplines given his cautious 'broad support only' record and focus on fiscal responsibility on the Appropriations Committee.</p>
+<h2 id="key-opportunities">Key Opportunities</h2>
+<ul>
+<li><strong>Local Institution:</strong> Highlight the NASA-funded BioS-ENDURES space biology partnership involving WSU and PNNL to show how NASA science directly impacts his district's research institutions.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+<li><strong>Committee Position:</strong> Leverage his seat on the House Appropriations Committee to discuss the specific need for stable topline funding for the Science Mission Directorate.<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup></li>
+<li><strong>Bipartisan Coalition:</strong> Mention his former communications director, Will Boyington, is now a high-ranking NASA official, which may increase his office's interest in NASA-related issues.<sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup></li>
+<li><strong>District Fiscal Impact:</strong> Connect NASA science to his pride in district students, such as those from Wapato High School who worked on NASA projects for food preservation.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup></li>
+<li><strong>Direct NASA Record:</strong> Point to his previous support for the broader NASA budget as a foundation for more targeted support for specific science missions.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+</ul>
+<h2 id="key-challenges">Key Challenges</h2>
+<ul>
+<li><strong>Evidence Gap:</strong> There is a significant evidence gap regarding his views on planetary science, astrophysics, and Earth science, as his space-related actions have focused almost exclusively on biology and suppliers.<sup id="fnref:11"><a class="footnote-ref" href="#fn:11">11</a></sup></li>
+<li><strong>Competing Priority:</strong> His primary focus on the Appropriations Committee is often fiscal restraint and avoiding shutdowns, which could hinder support for major science funding increases.<sup id="fnref2:5"><a class="footnote-ref" href="#fn:5">5</a></sup></li>
+<li><strong>Evidence Gap:</strong> The lack of participation in recent years' science-specific 'Dear Colleague' funding letters suggests that SMD priorities are not yet a legislative priority for him.<sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+</ul>
+<h2 id="strategic-considerations">Strategic Considerations</h2>
+<ul>
+<li>Consider mentioning that his former communications director, Will Boyington, now serves as NASA’s Associate Administrator for Communications, which could serve as a friendly opening to the conversation.</li>
+<li>You might find it effective to highlight PNNL as a 'scientific gem' that provides critical technical discovery for the nation, mirroring the role of NASA's science divisions.</li>
+<li>It could be worth mentioning that scientific leadership in space biology and planetary science is a component of national security, aligning with his interests in strategic competition.</li>
+</ul>
+<h2 id="committees">Committees</h2>
+<ul>
+<li>Member, House Committee on Agriculture<ul>
+<li>Conservation, Research, and Biotechnology</li>
+</ul>
+</li>
+<li><strong>Member, House Committee on Appropriations</strong><ul>
+<li>Agriculture, Rural Development, Food and Drug Administration, and Related Agencies</li>
+<li>Homeland Security</li>
+<li>Energy and Water Development and Related Agencies</li>
+</ul>
+</li>
+<li>Chair, House Committee on Agriculture<ul>
+<li>Forestry and Horticulture</li>
+</ul>
+</li>
+<li>Member, House Select Committee on the Strategic Competition Between the United States and the Chinese Communist Party</li>
+</ul>
+<h2 id="about-representative-dan-newhouse-r-wa-04">About Representative Dan Newhouse (R-WA-04)</h2>
+<ul>
+<li>Earned a Bachelor of Science degree in agricultural economics from Washington State University in 1977.</li>
+<li>Served as the director of the Washington State Department of Agriculture from 2009 to 2013.</li>
+<li>Operates a 600-acre farm in Sunnyside, Washington, producing hops, tree fruit, grapes, and alfalfa.</li>
+<li>Advocated for U.S. leadership in biotechnology and alternative proteins, including cultivated meat, to ensure national food security.</li>
+<li>Served four terms in the Washington House of Representatives prior to his election to the U.S. House of Representatives in 2014.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<h3 id="additional-materials-reviewed">Additional Materials Reviewed</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>"WSU biology in space takes center stage in D.C.," Washington State University Government Relations, November 20, 2025, <a href="https://governmentrelations.wsu.edu/2025/11/20/wsu-biology-in-space-takes-center-stage-in-d-c/">https://governmentrelations.wsu.edu/2025/11/20/wsu-biology-in-space-takes-center-stage-in-d-c/</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"Secretary Wright Celebrates Scientific Innovation at Pacific Northwest National Laboratory," Pacific Northwest National Laboratory, February 2, 2026, <a href="https://pnnl.gov/publications/secretary-wright-celebrates-scientific-innovation-pacific-northwest-national">https://pnnl.gov/publications/secretary-wright-celebrates-scientific-innovation-pacific-northwest-national</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>"NASA fiscal summary from member context," Local member context, member_context/nasa_fiscal_summary.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>"Newhouse Votes for American Energy Dominance, Increased Hanford Funding," Representative Dan Newhouse, January 8, 2026, <a href="https://newhouse.house.gov/media-center/press-releases/newhouse-votes-american-energy-dominance-increased-hanford-funding">https://newhouse.house.gov/media-center/press-releases/newhouse-votes-american-energy-dominance-increased-hanford-funding</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"COLUMN: Education and Job Preparedness Brighten Our Young People's Future," Representative Dan Newhouse, September 14, 2015, <a href="https://newhouse.house.gov/column-education-and-job-preparedness-brighten-our-young-peoples-future">https://newhouse.house.gov/column-education-and-job-preparedness-brighten-our-young-peoples-future</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"Issues | Congressman Dan Newhouse," Representative Dan Newhouse, January 1, 2026, <a href="https://newhouse.house.gov/issues">https://newhouse.house.gov/issues</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"Pacific Northwest National Laboratory," Representative Dan Newhouse, January 1, 2026, <a href="https://newhouse.house.gov/issues/pacific-northwest-national-laboratory">https://newhouse.house.gov/issues/pacific-northwest-national-laboratory</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"2024 Congressional App Challenge," Representative Dan Newhouse, July 26, 2024, <a href="https://newhouse.house.gov/2024-congressional-app-challenge">https://newhouse.house.gov/2024-congressional-app-challenge</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"Will Boyington New AA At NASA Office of Communications," NASA Watch, June 23, 2025, <a href="https://nasawatch.com/personnel-news/will-boyington-new-aa-nasa-office-of-communications/">https://nasawatch.com/personnel-news/will-boyington-new-aa-nasa-office-of-communications/</a>.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"Coverage gaps from current facts dossier," Local member context, facts/coverage_gaps.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"H. Res. 515 (IH) - Honoring NASA suppliers for the work they are doing on the Artemis missions.," U.S. Government Publishing Office, June 30, 2021, <a href="https://govinfo.gov/app/details/BILLS-117hres515ih">https://govinfo.gov/app/details/BILLS-117hres515ih</a>.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>"WA-04 NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/WA/04/WA-04-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/WA/04/WA-04-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </article>
+      <section class="tps-report-closing" aria-label="Further resources">
+        <p>
+          Further resources, data, and updates at
+          <a href="https://planetary.org/save-nasa-science">The Planetary Society's Save NASA Science Action Hub</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer class="tps-report-footer bg-black text-white px-4 px-lg-5 py-5">
+    <div class="container-planetary-responsive">
+      <div class="row py-2 gy-4">
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Explore Space</li>
+            <li><a href="https://planetary.org/worlds">Planets &amp; Other Worlds</a></li>
+            <li><a href="https://planetary.org/space-missions">Space Missions</a></li>
+            <li><a href="https://planetary.org/space-policy">Space Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Get Involved</li>
+            <li><a href="https://planetary.org/action-center">Action Center</a></li>
+            <li><a href="https://planetary.org/connect">Email Signup</a></li>
+            <li><a href="https://planetary.org/membership">Become A Member</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="d-inline-block mb-3" href="https://www.planetary.org/">
+            <img style="width: 4rem;" alt="The Planetary Society emblem" src="https://planetary.s3.amazonaws.com/sites/planetary/images/45-emblem-white.svg">
+          </a>
+          <p class="small mb-2">Empowering the world's citizens to advance space science and exploration.</p>
+          <p class="small mb-0">
+            <a href="https://www.planetary.org/about/contact">Contact Us</a> •
+            <a href="https://www.planetary.org/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

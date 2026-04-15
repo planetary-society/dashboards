@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>NASA Advocacy Briefing</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://planetary.org/img/site/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://planetary.org/img/site/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://planetary.org/img/site/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --tps-blue: #037cc2;
+      --tps-blue-dark: #1e447b;
+      --tps-sand: #f7f1e8;
+      --tps-cream: #fffdf9;
+      --tps-ink: #1e2430;
+      --tps-muted: #51606f;
+      --tps-line: #d9dee5;
+      --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
+      --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(3, 124, 194, 0.08), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--tps-sand) 100%);
+      color: var(--tps-ink);
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container-planetary-responsive {
+      width: 100%;
+      padding-right: var(--bs-container-padding-x, 1rem);
+      padding-left: var(--bs-container-padding-x, 1rem);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 992px;
+    }
+    .tps-report-main {
+      padding: 1.25rem 0 2.5rem;
+    }
+    .advocacy-report-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(217, 222, 229, 0.9);
+      border-radius: 22px;
+      box-shadow: var(--tps-shadow);
+      padding: 1.25rem 1rem 1.5rem;
+      overflow-wrap: anywhere;
+    }
+    .advocacy-report-card h1,
+    .advocacy-report-card h2,
+    .advocacy-report-card h3 {
+      color: var(--tps-blue-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .advocacy-report-card h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--tps-line);
+    }
+    .advocacy-report-card h1 + p {
+      margin: 0.85rem 0 1.25rem;
+      color: var(--tps-muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .advocacy-report-card h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .advocacy-report-card p,
+    .advocacy-report-card li {
+      font-size: 0.98rem;
+    }
+    .advocacy-report-card p {
+      margin: 0 0 0.9rem;
+    }
+    .advocacy-report-card ul,
+    .advocacy-report-card ol {
+      margin: 0 0 1rem 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card li + li {
+      margin-top: 0.55rem;
+    }
+    .advocacy-report-card :is(ul, ol) :is(ul, ol) {
+      margin-top: 0.55rem;
+      margin-bottom: 0.15rem;
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card a {
+      color: var(--tps-blue);
+      font-weight: 600;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.15em;
+    }
+    .advocacy-report-card blockquote {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1.05rem;
+      border-left: 4px solid var(--tps-blue);
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.08), rgba(3, 124, 194, 0.03));
+      border-radius: 14px;
+    }
+    .advocacy-report-card blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
+    .advocacy-report-card code {
+      background: rgba(30, 36, 48, 0.08);
+      padding: 0.1rem 0.32rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .advocacy-report-card hr {
+      border: 0;
+      border-top: 1px solid var(--tps-line);
+      margin: 1.5rem 0;
+    }
+    /* Slug `#nasa-budget-support` is generated by python-markdown's toc extension from
+       the `## NASA Budget Support` heading; renaming that heading will silently break this. */
+    .advocacy-report-card #nasa-budget-support + p,
+    .advocacy-report-card #nasa-budget-support + ul {
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote {
+      margin-top: 0;
+      padding: 1rem 1rem 0.9rem;
+      border-left: 0;
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+    }
+    .advocacy-report-card #nasa-budget-support + p {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:first-child {
+      color: var(--tps-blue-dark);
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li {
+      margin-top: 0.4rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li:first-child {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li:first-child {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .advocacy-report-card #meeting-strategy + p {
+      margin-bottom: 0.8rem;
+    }
+    .advocacy-report-card #sources {
+      margin-top: 1.75rem;
+    }
+    .advocacy-report-card .footnote {
+      color: var(--tps-muted);
+      font-size: 0.92rem;
+    }
+    .advocacy-report-card .footnote ol {
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card .footnote li {
+      margin-top: 0.65rem;
+    }
+    .advocacy-report-card .footnote-backref {
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
+    }
+    .tps-report-closing {
+      margin-top: 1.25rem;
+      background: #dde5ec;
+      border-radius: 18px;
+      padding: 1.15rem 1rem;
+      text-align: center;
+    }
+    .tps-report-closing p {
+      margin: 0;
+      color: var(--tps-blue-dark);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .tps-report-closing a {
+      color: var(--tps-blue-dark);
+      font-weight: 700;
+    }
+    .tps-report-footer {
+      margin-top: 2rem;
+    }
+    .tps-report-footer .list-unstyled li + li {
+      margin-top: 0.35rem;
+    }
+    .tps-report-footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .tps-report-footer a:hover,
+    .tps-report-footer a:focus {
+      color: #9dd9ff;
+    }
+    @media (min-width: 768px) {
+      .tps-report-main {
+        padding: 2rem 0 3rem;
+      }
+      .advocacy-report-card {
+        padding: 2rem 2.25rem 2.25rem;
+      }
+      .advocacy-report-card h1 {
+        font-size: 2.5rem;
+      }
+      .advocacy-report-card h2 {
+        font-size: 1.35rem;
+        margin-top: 1.9rem;
+      }
+      .advocacy-report-card p,
+      .advocacy-report-card li {
+        font-size: 1rem;
+      }
+      .tps-report-closing {
+        padding: 1.35rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white" data-report-shell="tps-advocacy">
+  <header class="tps-report-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-planetary-responsive">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
+        </a>
+        
+      </div>
+    </nav>
+  </header>
+  <main class="tps-report-main" id="main-content">
+    <div class="container-planetary-responsive">
+      <article class="advocacy-report-card">
+        <h1 id="senator-chuck-grassley-r-ia">Senator Chuck Grassley (R-IA)</h1>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line-caution"><p><strong>Uncertain</strong> (moderate confidence): Senator Grassley balances his role as a rigorous government watchdog with support for Iowa's significant contributions to NASA science, particularly in heliophysics. While he has personally toured the University of Iowa to celebrate major NASA grants, his recent focus has been on investigating potential violations of the Wolf Amendment regarding Chinese collaboration. Advocates should lead with the local economic and scientific prestige generated by the TRACERS mission while being prepared for his focus on agency accountability and national security. Emphasizing NASA science as a vehicle for American-led innovation and Iowa-based excellence is the most effective strategy. This is a heuristic-heavy assessment based more on institutional and political context than on direct recent SMD evidence.</p></blockquote>
+
+<h2 id="nasa-budget-support">NASA Budget Support</h2>
+<blockquote>
+<p><strong>Unavailable</strong></p>
+<ul>
+<li>FY2026 CJS Appropriations vote: <strong>N/A</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
+</ul>
+</blockquote>
+<h2 id="meeting-strategy">Meeting Strategy</h2>
+<p><strong>Lead with:</strong> Lead with Iowa's Leadership in Heliophysics</p>
+<p>Given the sparse record on direct science funding, you should lead with the University of Iowa's prominent role in the $115 million TRACERS mission. Frame NASA science as a driver of Iowa-based excellence and national prestige that deserves support provided it meets the Senator's high standards for agency accountability. Given the thin direct SMD record, treat this as the best available opening rather than evidence of likely support.</p>
+<p><strong>Bridge issues:</strong></p>
+<ul>
+<li><strong>Government Oversight and Accountability:</strong> "Senator, we share your commitment to government accountability; properly funding NASA science ensures that high-value projects at the University of Iowa are managed transparently and protected from the waste and fraud you've fought against throughout your career."</li>
+<li><strong>Protecting American Innovation and Workforce:</strong> "By supporting NASA's Science Mission Directorate, you are investing in the American STEM workforce and ensuring that sensitive research remains anchored in U.S. institutions rather than being compromised by foreign interests."</li>
+</ul>
+<p><strong>Watch out for:</strong></p>
+<ul>
+<li>Avoid championing international scientific collaborations without explicitly mentioning security and the Wolf Amendment, as the Senator is currently investigating potential Chinese state influence in NASA-funded research.</li>
+<li>Do not oversell science-specific support when the public record is thin; keep the ask anchored in local value and broad NASA space science.</li>
+</ul>
+<p><strong>Expect this reaction:</strong> The reaction is likely to be conditional and cautious. Expect staff to focus on cost-saving measures and oversight mechanisms before providing any commitments on funding levels. Expect a cautious, potentially non-committal response unless the ask is tied tightly to local priorities.</p>
+<h2 id="key-opportunities">Key Opportunities</h2>
+<ul>
+<li><strong>Local Institution:</strong> Highlight the University of Iowa's leadership in the $115 million TRACERS heliophysics mission, which the Senator has previously supported through public site visits.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> <sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup></li>
+<li><strong>Adjacent Interest:</strong> Appeal to his stated concern for maintaining national 'prestige in space exploration' and the cost-saving advantages of commercial space partnerships.<sup id="fnref:12"><a class="footnote-ref" href="#fn:12">12</a></sup></li>
+<li><strong>Committee Position:</strong> Leverage his senior role on the Budget Committee to frame NASA science as a high-value federal investment with a significant $59 million fiscal footprint in Iowa.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
+</ul>
+<h2 id="key-challenges">Key Challenges</h2>
+<ul>
+<li><strong>Evidence Gap:</strong> The public record shows broad NASA relevance but little recent, specific evidence on Science Mission Directorate funding priorities.<sup id="fnref:13"><a class="footnote-ref" href="#fn:13">13</a></sup></li>
+<li><strong>Political Constraint:</strong> His recent investigation into NASA-funded research and potential Wolf Amendment violations creates a high barrier for advocacy regarding international science collaboration.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+<li><strong>Known Skepticism:</strong> A history of aggressive oversight of the NASA Inspector General and agency leasing practices suggests a default skepticism toward agency management and spending.<sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup> <sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></li>
+</ul>
+<h2 id="committees">Committees</h2>
+<ul>
+<li>Member, Senate Committee on Agriculture, Nutrition, and Forestry<ul>
+<li>Commodities, Derivatives, Risk Management, and Trade</li>
+<li>Food and Nutrition, Specialty Crops, Organics, and Research</li>
+<li>Rural Development, Energy, and Credit</li>
+</ul>
+</li>
+<li>Member, Senate Committee on Finance<ul>
+<li>International Trade, Customs, and Global Competitiveness</li>
+<li>Taxation and IRS Oversight</li>
+</ul>
+</li>
+<li>Chairman, Senate Committee on Finance<ul>
+<li>Social Security, Pensions, and Family Policy</li>
+</ul>
+</li>
+<li>Member, Senate Committee on the Budget</li>
+<li>Chairman, Senate Committee on the Judiciary</li>
+<li>Member, Joint Committee on Taxation</li>
+<li>Member, United States Senate Caucus on International Narcotics Control</li>
+</ul>
+<h2 id="about-senator-chuck-grassley-r-ia">About Senator Chuck Grassley (R-IA)</h2>
+<ul>
+<li>Longest-serving Republican in congressional history, serving in the U.S. Senate since 1981 and previously in the U.S. House of Representatives (1975–1981) and Iowa House of Representatives (1959–1975).</li>
+<li>Holds a Bachelor of Arts and a Master of Arts in political science from Iowa State Teachers College and pursued Ph.D. coursework at the University of Iowa.</li>
+<li>Early career experience includes working as an assembly line worker and sheet metal shearer at Iowa factories, as well as operating an IBM machine and teaching at Charles City College.</li>
+<li>Authored the federal wind energy tax credit in 1992 and has consistently supported tax incentives for alternative energy sources including ethanol, biomass, and biodiesel.</li>
+<li>Extensive record of legislative oversight and investigations into federal spending, pharmaceutical industry payments to physicians, and whistleblower protections, including authoring the Whistleblower Protection Act of 1989.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<h3 id="additional-materials-reviewed">Additional Materials Reviewed</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>"NASA administrator emphasizes real-world applications of space research at UI," The Daily Iowan, August 30, 2019, <a href="https://dailyiowan.com/2019/08/30/nasa-administrator-jim-bridenstine-space-exploration-grant-university-of-iowa/">https://dailyiowan.com/2019/08/30/nasa-administrator-jim-bridenstine-space-exploration-grant-university-of-iowa/</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"Congress investigates NASA over funding ‘bilateral collaboration’ with CCP," Washington Examiner, February 12, 2026, <a href="https://washingtonexaminer.com/news/4456303/congress-investigates-nasa-over-funding-bilateral-collaboration-with-ccp/">https://washingtonexaminer.com/news/4456303/congress-investigates-nasa-over-funding-bilateral-collaboration-with-ccp/</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>"Chairman Moolenaar, Chairman Grassley Alert NASA, FBI to CCP-Linked Research Collaboration," House Select Committee on the Strategic Competition Between the United States and the Chinese Communist Party, February 19, 2026, <a href="https://chinaselectcommittee.house.gov/media/press-releases/chairman-moolenaar-chairman-grassley-alert-nasa-fbi-to-ccp-linked-research-collaboration">https://chinaselectcommittee.house.gov/media/press-releases/chairman-moolenaar-chairman-grassley-alert-nasa-fbi-to-ccp-linked-research-collaboration</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>"NASA fiscal summary from member context," Local member context, member_context/nasa_fiscal_summary.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>"Top NASA contracts from member context," Local member context, member_context/top_contracts.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"Issues - Grassley Works," Grassley Works, <a href="https://grassleyworks.com/issues/">https://grassleyworks.com/issues/</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"Government Accountability," Sen. Chuck Grassley, <a href="https://grassley.senate.gov/about/results/government-accountability">https://grassley.senate.gov/about/results/government-accountability</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"Grassley Says Report Verifies That NASA Inspector General Has Failed in Watchdog Role," Senate Committee on Finance, June 7, 2007, <a href="https://finance.senate.gov/download/2007/06/07/grassley-says-report-verifies-that-nasa-inspector-general-has-failed-in-watchdog-role">https://finance.senate.gov/download/2007/06/07/grassley-says-report-verifies-that-nasa-inspector-general-has-failed-in-watchdog-role</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"Grassley Seeks Response from NASA to Allegations over Ames Research Center, Moffett," Sen. Chuck Grassley, May 15, 2012, <a href="https://grassley.senate.gov/news/news-releases/grassley-seeks-response-nasa-allegations-over-ames-research-center-moffett">https://grassley.senate.gov/news/news-releases/grassley-seeks-response-nasa-allegations-over-ames-research-center-moffett</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"Grassley Calls on Homeland Security Secretary to End Unlawful Work Authorizations for Student Visa Holders, Clamp Down on Foreign Espionage," Sen. Chuck Grassley, September 23, 2025, <a href="https://grassley.senate.gov/news/news-releases/grassley-calls-on-homeland-security-secretary-to-end-unlawful-work-authorizations-for-student-visa-holders-clamp-down-on-foreign-espionage">https://grassley.senate.gov/news/news-releases/grassley-calls-on-homeland-security-secretary-to-end-unlawful-work-authorizations-for-student-visa-holders-clamp-down-on-foreign-espionage</a>.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"Grassley: STEM OPT Program Distorted into Back-Door Visa for Foreign Students with No Accountability, Protections," Sen. Chuck Grassley, February 18, 2022, <a href="https://grassley.senate.gov/news/news-releases/grassley-stem-opt-program-distorted-into-back-door-visa-for-foreign-students-with-no-accountability-protections">https://grassley.senate.gov/news/news-releases/grassley-stem-opt-program-distorted-into-back-door-visa-for-foreign-students-with-no-accountability-protections</a>.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"Grassley says launch of private rocket shifts NASA to the back seat," Radio Iowa, May 22, 2012, <a href="https://radioiowa.com/2012/05/22/grassley-says-launch-of-private-rocket-shifts-nasa-to-the-back-seat/">https://radioiowa.com/2012/05/22/grassley-says-launch-of-private-rocket-shifts-nasa-to-the-back-seat/</a>.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>"Coverage gaps from current facts dossier," Local member context, facts/coverage_gaps.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>"Grassley, Durbin Propose Bipartisan H-1B and L-1 Visa Reforms to Protect American Workers and Stop Outsourcing Jobs," Senate Committee on the Judiciary, September 29, 2025, <a href="https://judiciary.senate.gov/press/rep/releases/grassley-durbin-propose-bipartisan-h-1b-and-l-1-visa-reforms-to-protect-american-workers-and-stop-outsourcing-jobs">https://judiciary.senate.gov/press/rep/releases/grassley-durbin-propose-bipartisan-h-1b-and-l-1-visa-reforms-to-protect-american-workers-and-stop-outsourcing-jobs</a>.&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>"IA NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/IA/IA-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/IA/IA-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </article>
+      <section class="tps-report-closing" aria-label="Further resources">
+        <p>
+          Further resources, data, and updates at
+          <a href="https://planetary.org/save-nasa-science">The Planetary Society's Save NASA Science Action Hub</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer class="tps-report-footer bg-black text-white px-4 px-lg-5 py-5">
+    <div class="container-planetary-responsive">
+      <div class="row py-2 gy-4">
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Explore Space</li>
+            <li><a href="https://planetary.org/worlds">Planets &amp; Other Worlds</a></li>
+            <li><a href="https://planetary.org/space-missions">Space Missions</a></li>
+            <li><a href="https://planetary.org/space-policy">Space Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Get Involved</li>
+            <li><a href="https://planetary.org/action-center">Action Center</a></li>
+            <li><a href="https://planetary.org/connect">Email Signup</a></li>
+            <li><a href="https://planetary.org/membership">Become A Member</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="d-inline-block mb-3" href="https://www.planetary.org/">
+            <img style="width: 4rem;" alt="The Planetary Society emblem" src="https://planetary.s3.amazonaws.com/sites/planetary/images/45-emblem-white.svg">
+          </a>
+          <p class="small mb-2">Empowering the world's citizens to advance space science and exploration.</p>
+          <p class="small mb-0">
+            <a href="https://www.planetary.org/about/contact">Contact Us</a> •
+            <a href="https://www.planetary.org/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

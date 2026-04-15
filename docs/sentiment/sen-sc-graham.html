@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>NASA Advocacy Briefing</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://planetary.org/img/site/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://planetary.org/img/site/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://planetary.org/img/site/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --tps-blue: #037cc2;
+      --tps-blue-dark: #1e447b;
+      --tps-sand: #f7f1e8;
+      --tps-cream: #fffdf9;
+      --tps-ink: #1e2430;
+      --tps-muted: #51606f;
+      --tps-line: #d9dee5;
+      --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
+      --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(3, 124, 194, 0.08), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--tps-sand) 100%);
+      color: var(--tps-ink);
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container-planetary-responsive {
+      width: 100%;
+      padding-right: var(--bs-container-padding-x, 1rem);
+      padding-left: var(--bs-container-padding-x, 1rem);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 992px;
+    }
+    .tps-report-main {
+      padding: 1.25rem 0 2.5rem;
+    }
+    .advocacy-report-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(217, 222, 229, 0.9);
+      border-radius: 22px;
+      box-shadow: var(--tps-shadow);
+      padding: 1.25rem 1rem 1.5rem;
+      overflow-wrap: anywhere;
+    }
+    .advocacy-report-card h1,
+    .advocacy-report-card h2,
+    .advocacy-report-card h3 {
+      color: var(--tps-blue-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .advocacy-report-card h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--tps-line);
+    }
+    .advocacy-report-card h1 + p {
+      margin: 0.85rem 0 1.25rem;
+      color: var(--tps-muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .advocacy-report-card h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .advocacy-report-card p,
+    .advocacy-report-card li {
+      font-size: 0.98rem;
+    }
+    .advocacy-report-card p {
+      margin: 0 0 0.9rem;
+    }
+    .advocacy-report-card ul,
+    .advocacy-report-card ol {
+      margin: 0 0 1rem 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card li + li {
+      margin-top: 0.55rem;
+    }
+    .advocacy-report-card :is(ul, ol) :is(ul, ol) {
+      margin-top: 0.55rem;
+      margin-bottom: 0.15rem;
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card a {
+      color: var(--tps-blue);
+      font-weight: 600;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.15em;
+    }
+    .advocacy-report-card blockquote {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1.05rem;
+      border-left: 4px solid var(--tps-blue);
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.08), rgba(3, 124, 194, 0.03));
+      border-radius: 14px;
+    }
+    .advocacy-report-card blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
+    .advocacy-report-card code {
+      background: rgba(30, 36, 48, 0.08);
+      padding: 0.1rem 0.32rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .advocacy-report-card hr {
+      border: 0;
+      border-top: 1px solid var(--tps-line);
+      margin: 1.5rem 0;
+    }
+    /* Slug `#nasa-budget-support` is generated by python-markdown's toc extension from
+       the `## NASA Budget Support` heading; renaming that heading will silently break this. */
+    .advocacy-report-card #nasa-budget-support + p,
+    .advocacy-report-card #nasa-budget-support + ul {
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote {
+      margin-top: 0;
+      padding: 1rem 1rem 0.9rem;
+      border-left: 0;
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+    }
+    .advocacy-report-card #nasa-budget-support + p {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:first-child {
+      color: var(--tps-blue-dark);
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li {
+      margin-top: 0.4rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li:first-child {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li:first-child {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .advocacy-report-card #meeting-strategy + p {
+      margin-bottom: 0.8rem;
+    }
+    .advocacy-report-card #sources {
+      margin-top: 1.75rem;
+    }
+    .advocacy-report-card .footnote {
+      color: var(--tps-muted);
+      font-size: 0.92rem;
+    }
+    .advocacy-report-card .footnote ol {
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card .footnote li {
+      margin-top: 0.65rem;
+    }
+    .advocacy-report-card .footnote-backref {
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
+    }
+    .tps-report-closing {
+      margin-top: 1.25rem;
+      background: #dde5ec;
+      border-radius: 18px;
+      padding: 1.15rem 1rem;
+      text-align: center;
+    }
+    .tps-report-closing p {
+      margin: 0;
+      color: var(--tps-blue-dark);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .tps-report-closing a {
+      color: var(--tps-blue-dark);
+      font-weight: 700;
+    }
+    .tps-report-footer {
+      margin-top: 2rem;
+    }
+    .tps-report-footer .list-unstyled li + li {
+      margin-top: 0.35rem;
+    }
+    .tps-report-footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .tps-report-footer a:hover,
+    .tps-report-footer a:focus {
+      color: #9dd9ff;
+    }
+    @media (min-width: 768px) {
+      .tps-report-main {
+        padding: 2rem 0 3rem;
+      }
+      .advocacy-report-card {
+        padding: 2rem 2.25rem 2.25rem;
+      }
+      .advocacy-report-card h1 {
+        font-size: 2.5rem;
+      }
+      .advocacy-report-card h2 {
+        font-size: 1.35rem;
+        margin-top: 1.9rem;
+      }
+      .advocacy-report-card p,
+      .advocacy-report-card li {
+        font-size: 1rem;
+      }
+      .tps-report-closing {
+        padding: 1.35rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white" data-report-shell="tps-advocacy">
+  <header class="tps-report-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-planetary-responsive">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
+        </a>
+        
+      </div>
+    </nav>
+  </header>
+  <main class="tps-report-main" id="main-content">
+    <div class="container-planetary-responsive">
+      <article class="advocacy-report-card">
+        <h1 id="senator-lindsey-graham-r-sc">Senator Lindsey Graham (R-SC)</h1>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Likely Supportive</strong> (moderate confidence): Senator Graham is a powerful figure on the Senate Appropriations Committee who views aerospace and high-tech research as critical pillars of South Carolina's economy. While he has not recently been a lead champion for the Science Mission Directorate specifically, your best path is to highlight the $15.3 million in NASA science funding currently supporting researchers at Clemson and Furman Universities. Frame NASA's planetary and heliophysics missions as vital tools for American technological leadership and workforce development—issues he has championed throughout his career. Be prepared to address his broader focus on fiscal restraint and national security by connecting space science to South Carolina's technical prowess and strategic interests.</p></blockquote>
+
+<h2 id="nasa-budget-support">NASA Budget Support</h2>
+<blockquote>
+<ul>
+<li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
+</ul>
+</blockquote>
+<h2 id="meeting-strategy">Meeting Strategy</h2>
+<p><strong>Lead with:</strong> South Carolina’s High-Tech Frontier</p>
+<p>Lead with the $15.3 million in NASA science funding currently flowing into South Carolina, particularly the cutting-edge heliophysics and astrobiology research at Clemson and Furman. You should emphasize that as a senior member of the CJS Appropriations Subcommittee, he is uniquely positioned to protect these local research pipelines from proposed funding cuts.</p>
+<p><strong>Bridge issues:</strong></p>
+<ul>
+<li><strong>Aerospace and Advanced Manufacturing:</strong> "Senator, you have been a champion for aerospace leaders like Boeing in Charleston; the NASA science grants at Clemson serve as the R&amp;D engine training the highly skilled technical workforce those companies need to thrive in our state."</li>
+<li><strong>National Security:</strong> "The heliophysics research being conducted at Clemson to understand space weather is directly relevant to protecting our national security satellites and the resilient infrastructure you have long advocated for."</li>
+</ul>
+<p><strong>Watch out for:</strong></p>
+<ul>
+<li>Avoid overstating his specific commitment to the Science Mission Directorate topline, as he has not signed recent multi-member funding letters despite his subcommittee role.</li>
+<li>Be prepared for a pivot to fiscal restraint given his role as Budget Chairman; avoid framing space science as a competitor to his defense priorities.</li>
+</ul>
+<p><strong>Expect this reaction:</strong> The office will likely be receptive to local economic and workforce arguments, though the Senator’s reaction will be cautious and pragmatic due to his broader responsibility to oversee fiscal restraint as Budget Chairman.</p>
+<h2 id="key-opportunities">Key Opportunities</h2>
+<ul>
+<li><strong>Committee Position:</strong> Leverage his senior position on the CJS Appropriations Subcommittee, which directly oversees and sets funding levels for NASA's Science Mission Directorate.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
+<li><strong>Local Institution:</strong> Highlight significant active NASA science investments in South Carolina, including over $6 million in grants to Clemson and Furman for heliophysics and astrobiology.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> <sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup></li>
+<li><strong>Direct NASA Record:</strong> Point to his previous support for the broader NASA budget (H.R. 6938) as a signal of his commitment to American leadership in space.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+<li><strong>Adjacent Interest:</strong> Use his public support for aerospace hubs like the McNair Center to bridge the conversation from aviation to NASA’s advanced science and exploration programs.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup></li>
+</ul>
+<h2 id="key-challenges">Key Challenges</h2>
+<ul>
+<li><strong>Competing Priority:</strong> As Chairman of the Senate Budget Committee, he faces pressure to prioritize national security and border spending over increases in discretionary science accounts.<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup></li>
+<li><strong>Evidence Gap:</strong> There is a notable evidence gap regarding his specific positions on planetary science, astrophysics, and Earth science, as he did not sign recent SMD-specific funding letters.<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup> <sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup></li>
+<li><strong>Political Constraint:</strong> The lack of recent public statements specifically championing NASA science funding suggests the office may view NASA as a secondary priority to military and defense accounts.<sup id="fnref2:7"><a class="footnote-ref" href="#fn:7">7</a></sup> <sup id="fnref2:10"><a class="footnote-ref" href="#fn:10">10</a></sup></li>
+</ul>
+<h2 id="strategic-considerations">Strategic Considerations</h2>
+<ul>
+<li>Consider mentioning the historical pride South Carolina takes in former NASA Administrator Charles Bolden, whom the Senator strongly endorsed, as a way to bridge toward future NASA leadership.</li>
+<li>You might find it useful to highlight the sounding rocket experiments led by Clemson researchers, which provide a tangible example of South Carolina's active role in space exploration.</li>
+<li>It could be worth referencing the 'NASA Just for Kids' section on the Senator's own website to connect your ask to his interest in inspiring the next generation of scientists.</li>
+</ul>
+<h2 id="committees">Committees</h2>
+<ul>
+<li><strong>Member, Senate Committee on Appropriations</strong><ul>
+<li><strong>Commerce, Justice, Science, and Related Agencies</strong></li>
+<li>Department of Defense</li>
+<li>Energy and Water Development</li>
+<li>Departments of Labor, Health and Human Services, and Education, and Related Agencies</li>
+<li>Transportation, Housing and Urban Development, and Related Agencies</li>
+</ul>
+</li>
+<li>Chairman, Senate Committee on Appropriations<ul>
+<li>State, Foreign Operations, and Related Programs</li>
+</ul>
+</li>
+<li>Member, Senate Committee on Environment and Public Works<ul>
+<li>Chemical Safety, Waste Management, Environmental Justice, and Regulatory Oversight</li>
+<li>Clean Air, Climate, and Nuclear Innovation and Safety</li>
+<li>Transportation and Infrastructure</li>
+</ul>
+</li>
+<li>Chairman, Senate Committee on the Budget</li>
+<li>Member, Senate Committee on the Judiciary<ul>
+<li>Crime and Counterterrorism</li>
+<li>Federal Courts, Oversight, Agency Action, and Federal Rights</li>
+<li>Border Security and Immigration</li>
+<li>Privacy, Technology, and the Law</li>
+</ul>
+</li>
+</ul>
+<h2 id="about-senator-lindsey-graham-r-sc">About Senator Lindsey Graham (R-SC)</h2>
+<ul>
+<li>Served over 33 years in the U.S. Air Force and Air Force Reserve, retiring at the rank of colonel after serving as a judge advocate and chief prosecutor in Europe.</li>
+<li>Earned a Bachelor of Arts in psychology and a Juris Doctor from the University of South Carolina before entering private legal practice.</li>
+<li>Held legislative office at the state and federal levels, serving in the South Carolina House of Representatives and the U.S. House of Representatives before his 2002 election to the U.S. Senate.</li>
+<li>Advocates for an interventionist foreign policy and increased defense spending, frequently supporting U.S. military presence in Iraq and Afghanistan.</li>
+<li>Maintains a legislative focus on national security, judicial nominations, and immigration reform, including past bipartisan efforts on climate change and border policy.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>"Commerce, Justice, Science, and Related Agencies," U.S. Senator Lindsey Graham, January 1, 2025, <a href="https://lgraham.senate.gov/public/index.cfm/commerce-justice-science-and-related-agencies">https://lgraham.senate.gov/public/index.cfm/commerce-justice-science-and-related-agencies</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>"Top NASA grants from member context," Local member context, member_context/top_grants.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>"Graham Announces $810,000 Grant for SC State's Space Science Program," U.S. Senator Lindsey Graham, June 3, 2003, <a href="https://lgraham.senate.gov/public/index.cfm/blog?page=291">https://lgraham.senate.gov/public/index.cfm/blog?page=291</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>"Graham Announces $810,000 Grant for SC State's Space Science Program," U.S. Senator Lindsey Graham, September 22, 2003, <a href="https://lgraham.senate.gov/public/index.cfm/press-releases?ID=73CFF705-4433-4BCA-A5DA-EC411D8DBC6F">https://lgraham.senate.gov/public/index.cfm/press-releases?ID=73CFF705-4433-4BCA-A5DA-EC411D8DBC6F</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"Lindsey Graham congratulates the University of South Carolina on the McNair Aerospace Center," University of South Carolina, October 25, 2012, <a href="https://youtube.com/watch?v=V2srjI60-ao">https://youtube.com/watch?v=V2srjI60-ao</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"What's Happening in Space Policy February 9-15, 2025," Space Policy Online, February 9, 2025, <a href="https://spacepolicyonline.com/news/whats-happening-in-space-policy-february-9-15-2025/">https://spacepolicyonline.com/news/whats-happening-in-space-policy-february-9-15-2025/</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"NASA fiscal summary from member context," Local member context, member_context/nasa_fiscal_summary.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"Boeing Targets 10 Dreamliners Per Month With South Carolina Expansion," Aviation Source News, November 9, 2025, <a href="https://aviationsourcenews.com/boeing-targets-10-dreamliners-per-month-with-south-carolina-expansion/">https://aviationsourcenews.com/boeing-targets-10-dreamliners-per-month-with-south-carolina-expansion/</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"Coverage gaps from current facts dossier," Local member context, facts/coverage_gaps.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"Confirmation Hearing Charles F. Bolden, Jr.," U.S. Government Publishing Office, January 1, 2009, <a href="https://govinfo.gov/content/pkg/CHRG-111shrg54285/html/CHRG-111shrg54285.htm">https://govinfo.gov/content/pkg/CHRG-111shrg54285/html/CHRG-111shrg54285.htm</a>.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"Lindsey's Kid Page," U.S. Senator Lindsey Graham, January 1, 2025, <a href="https://lgraham.senate.gov/public/index.cfm/lindsey-s-kid-page">https://lgraham.senate.gov/public/index.cfm/lindsey-s-kid-page</a>.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>"SC NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/SC/SC-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/SC/SC-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </article>
+      <section class="tps-report-closing" aria-label="Further resources">
+        <p>
+          Further resources, data, and updates at
+          <a href="https://planetary.org/save-nasa-science">The Planetary Society's Save NASA Science Action Hub</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer class="tps-report-footer bg-black text-white px-4 px-lg-5 py-5">
+    <div class="container-planetary-responsive">
+      <div class="row py-2 gy-4">
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Explore Space</li>
+            <li><a href="https://planetary.org/worlds">Planets &amp; Other Worlds</a></li>
+            <li><a href="https://planetary.org/space-missions">Space Missions</a></li>
+            <li><a href="https://planetary.org/space-policy">Space Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Get Involved</li>
+            <li><a href="https://planetary.org/action-center">Action Center</a></li>
+            <li><a href="https://planetary.org/connect">Email Signup</a></li>
+            <li><a href="https://planetary.org/membership">Become A Member</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="d-inline-block mb-3" href="https://www.planetary.org/">
+            <img style="width: 4rem;" alt="The Planetary Society emblem" src="https://planetary.s3.amazonaws.com/sites/planetary/images/45-emblem-white.svg">
+          </a>
+          <p class="small mb-2">Empowering the world's citizens to advance space science and exploration.</p>
+          <p class="small mb-0">
+            <a href="https://www.planetary.org/about/contact">Contact Us</a> •
+            <a href="https://www.planetary.org/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

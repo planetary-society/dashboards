@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>NASA Advocacy Briefing</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://planetary.org/img/site/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://planetary.org/img/site/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://planetary.org/img/site/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --tps-blue: #037cc2;
+      --tps-blue-dark: #1e447b;
+      --tps-sand: #f7f1e8;
+      --tps-cream: #fffdf9;
+      --tps-ink: #1e2430;
+      --tps-muted: #51606f;
+      --tps-line: #d9dee5;
+      --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
+      --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(3, 124, 194, 0.08), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--tps-sand) 100%);
+      color: var(--tps-ink);
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container-planetary-responsive {
+      width: 100%;
+      padding-right: var(--bs-container-padding-x, 1rem);
+      padding-left: var(--bs-container-padding-x, 1rem);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 992px;
+    }
+    .tps-report-main {
+      padding: 1.25rem 0 2.5rem;
+    }
+    .advocacy-report-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(217, 222, 229, 0.9);
+      border-radius: 22px;
+      box-shadow: var(--tps-shadow);
+      padding: 1.25rem 1rem 1.5rem;
+      overflow-wrap: anywhere;
+    }
+    .advocacy-report-card h1,
+    .advocacy-report-card h2,
+    .advocacy-report-card h3 {
+      color: var(--tps-blue-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .advocacy-report-card h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--tps-line);
+    }
+    .advocacy-report-card h1 + p {
+      margin: 0.85rem 0 1.25rem;
+      color: var(--tps-muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .advocacy-report-card h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .advocacy-report-card p,
+    .advocacy-report-card li {
+      font-size: 0.98rem;
+    }
+    .advocacy-report-card p {
+      margin: 0 0 0.9rem;
+    }
+    .advocacy-report-card ul,
+    .advocacy-report-card ol {
+      margin: 0 0 1rem 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card li + li {
+      margin-top: 0.55rem;
+    }
+    .advocacy-report-card :is(ul, ol) :is(ul, ol) {
+      margin-top: 0.55rem;
+      margin-bottom: 0.15rem;
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card a {
+      color: var(--tps-blue);
+      font-weight: 600;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.15em;
+    }
+    .advocacy-report-card blockquote {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1.05rem;
+      border-left: 4px solid var(--tps-blue);
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.08), rgba(3, 124, 194, 0.03));
+      border-radius: 14px;
+    }
+    .advocacy-report-card blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
+    .advocacy-report-card code {
+      background: rgba(30, 36, 48, 0.08);
+      padding: 0.1rem 0.32rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .advocacy-report-card hr {
+      border: 0;
+      border-top: 1px solid var(--tps-line);
+      margin: 1.5rem 0;
+    }
+    /* Slug `#nasa-budget-support` is generated by python-markdown's toc extension from
+       the `## NASA Budget Support` heading; renaming that heading will silently break this. */
+    .advocacy-report-card #nasa-budget-support + p,
+    .advocacy-report-card #nasa-budget-support + ul {
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote {
+      margin-top: 0;
+      padding: 1rem 1rem 0.9rem;
+      border-left: 0;
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+    }
+    .advocacy-report-card #nasa-budget-support + p {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:first-child {
+      color: var(--tps-blue-dark);
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li {
+      margin-top: 0.4rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li:first-child {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li:first-child {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .advocacy-report-card #meeting-strategy + p {
+      margin-bottom: 0.8rem;
+    }
+    .advocacy-report-card #sources {
+      margin-top: 1.75rem;
+    }
+    .advocacy-report-card .footnote {
+      color: var(--tps-muted);
+      font-size: 0.92rem;
+    }
+    .advocacy-report-card .footnote ol {
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card .footnote li {
+      margin-top: 0.65rem;
+    }
+    .advocacy-report-card .footnote-backref {
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
+    }
+    .tps-report-closing {
+      margin-top: 1.25rem;
+      background: #dde5ec;
+      border-radius: 18px;
+      padding: 1.15rem 1rem;
+      text-align: center;
+    }
+    .tps-report-closing p {
+      margin: 0;
+      color: var(--tps-blue-dark);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .tps-report-closing a {
+      color: var(--tps-blue-dark);
+      font-weight: 700;
+    }
+    .tps-report-footer {
+      margin-top: 2rem;
+    }
+    .tps-report-footer .list-unstyled li + li {
+      margin-top: 0.35rem;
+    }
+    .tps-report-footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .tps-report-footer a:hover,
+    .tps-report-footer a:focus {
+      color: #9dd9ff;
+    }
+    @media (min-width: 768px) {
+      .tps-report-main {
+        padding: 2rem 0 3rem;
+      }
+      .advocacy-report-card {
+        padding: 2rem 2.25rem 2.25rem;
+      }
+      .advocacy-report-card h1 {
+        font-size: 2.5rem;
+      }
+      .advocacy-report-card h2 {
+        font-size: 1.35rem;
+        margin-top: 1.9rem;
+      }
+      .advocacy-report-card p,
+      .advocacy-report-card li {
+        font-size: 1rem;
+      }
+      .tps-report-closing {
+        padding: 1.35rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white" data-report-shell="tps-advocacy">
+  <header class="tps-report-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-planetary-responsive">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
+        </a>
+        
+      </div>
+    </nav>
+  </header>
+  <main class="tps-report-main" id="main-content">
+    <div class="container-planetary-responsive">
+      <article class="advocacy-report-card">
+        <h1 id="representative-debbie-dingell-d-mi-06">Representative Debbie Dingell (D-MI-06)</h1>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Champion</strong> (high confidence): Representative Dingell is a stalwart supporter of NASA science, driven by both a strong local research presence and a national commitment to innovation. As a consistent signer of letters advocating for $9 billion in Science Mission Directorate funding, she is already closely aligned with our goals. Your best path is to thank her for her leadership on recent budget letters and emphasize how continued funding supports the high-level research happening at the University of Michigan, such as the Dragonfly mission. While she is a champion, remind her staff how NASA's planetary and Earth science missions directly contribute to the global technological leadership she prioritizes.</p></blockquote>
+
+<h2 id="nasa-budget-support">NASA Budget Support</h2>
+<blockquote>
+<p><strong>Strong SMD budget signal</strong></p>
+<ul>
+<li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
+<li>$9B NASA Science letter signatory: <strong>FY25, FY26, FY27</strong></li>
+</ul>
+</blockquote>
+<h2 id="meeting-strategy">Meeting Strategy</h2>
+<p><strong>Lead with:</strong> The Local Champion of Innovation</p>
+<p>Lead by thanking Representative Dingell for her consistent leadership in signing the Science Mission Directorate budget letters and being a 'Champion of Science.' You should frame NASA science funding as the critical foundation for the high-tech research happening at the University of Michigan, ensuring the office sees budget cuts as a direct threat to local innovation.</p>
+<p><strong>Bridge issues:</strong></p>
+<ul>
+<li><strong>Domestic Manufacturing &amp; Innovation:</strong> "With over $50 million in NASA science funding flowing to our district recently, your support for a $9 billion Science Mission Directorate budget is directly protecting high-tech jobs and cutting-edge research at the University of Michigan, such as the Dragonfly mission to Titan."</li>
+<li><strong>Environment &amp; Climate Change:</strong> "NASA’s Earth Science missions provide the essential data needed to protect the Great Lakes and address climate change, which mirrors your commitment to ensuring the U.S. remains a global leader in environmental protection."</li>
+</ul>
+<p><strong>Watch out for:</strong></p>
+<ul>
+<li>While she is a vocal champion, she does not sit on the Appropriations committee; ask her specifically to use her influence with peers on that committee to match her support for the $9 billion science topline.</li>
+<li>Avoid letting the meeting pivot entirely toward automotive manufacturing or healthcare; keep the focus on how NASA science provides the 'basic research' that fuels the broader innovation she prioritizes.</li>
+</ul>
+<p><strong>Expect this reaction:</strong> The office is likely to be highly receptive and enthusiastic, as the Representative is a proven ally who has already signed multiple letters supporting the funding levels we are requesting.</p>
+<h2 id="key-opportunities">Key Opportunities</h2>
+<ul>
+<li><strong>Local Institution:</strong> Highlight the significant $54.4M in NASA science funding flowing into her district, supporting University of Michigan leadership in missions like Dragonfly and Geospace Dynamics Constellation.<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup> <sup id="fnref:11"><a class="footnote-ref" href="#fn:11">11</a></sup> <sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup></li>
+<li><strong>Direct NASA Record:</strong> Reference her consistent support for the Science Mission Directorate via the FY25, FY26, and FY27 budget letters calling for robust funding.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
+<li><strong>Adjacent Interest:</strong> Leverage her recent 'Champion of Science' award to frame space exploration as a core component of her advocacy for federally funded basic research.<sup id="fnref:12"><a class="footnote-ref" href="#fn:12">12</a></sup> <sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup></li>
+<li><strong>Bipartisan Coalition:</strong> Acknowledge her membership in the bipartisan House NASA Caucus as a demonstration of her ongoing commitment to U.S. space exploration.<sup id="fnref:13"><a class="footnote-ref" href="#fn:13">13</a></sup></li>
+</ul>
+<h2 id="key-challenges">Key Challenges</h2>
+<ul>
+<li><strong>Political Constraint:</strong> While she is highly supportive, she does not serve on the primary committees responsible for setting NASA's budget, requiring her to influence peers on the Appropriations committee.<sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup> <sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+<li><strong>Competing Priority:</strong> Her heavy legislative focus on domestic automotive manufacturing and healthcare affordability may limit the time her office can dedicate to space-specific advocacy.<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></li>
+</ul>
+<h2 id="strategic-considerations">Strategic Considerations</h2>
+<ul>
+<li>Consider mentioning the Geospace Dynamics Constellation (GDC) mission, as she has previously highlighted the University of Michigan's leadership in this area for mapping Earth's atmosphere.</li>
+<li>You might find it useful to reference the Apollo 15 anniversary and its all-Michigan crew to remind the office of the state's long legacy in space exploration.</li>
+<li>It could be worth mentioning her past involvement in Robotics Day to connect local STEM education efforts to the complex robotics required for missions like Dragonfly.</li>
+</ul>
+<h2 id="committees">Committees</h2>
+<ul>
+<li>Member, House Committee on Natural Resources<ul>
+<li>Energy and Mineral Resources</li>
+<li>Water, Wildlife and Fisheries</li>
+</ul>
+</li>
+<li>Member, House Committee on Energy and Commerce<ul>
+<li>Communications and Technology</li>
+<li>Commerce, Manufacturing, and Trade</li>
+<li>Health</li>
+</ul>
+</li>
+</ul>
+<h2 id="about-representative-debbie-dingell-d-mi-06">About Representative Debbie Dingell (D-MI-06)</h2>
+<ul>
+<li>Served as president of the General Motors Foundation and as executive director of global community relations and government relations at General Motors.</li>
+<li>Worked as a consultant to the American Automobile Policy Council.</li>
+<li>Founder and past chair of the National Women's Health Resource Center and the Children's Inn at the National Institutes of Health (NIH).</li>
+<li>Earned a degree from the Edmund A. Walsh School of Foreign Service at Georgetown University in 1975.</li>
+<li>Served on the board of governors for Wayne State University and the board of directors for Vital Voices Global Partnership.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<h3 id="additional-materials-reviewed">Additional Materials Reviewed</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>"Science on the docket: The 2024 Congressional Day of Action," The Planetary Society, May 1, 2024, <a href="https://planetary.org/articles/science-on-the-docket-the-2024-congressional-day-of-action">https://planetary.org/articles/science-on-the-docket-the-2024-congressional-day-of-action</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"Planetary Caucus FY2027 SMD Letter," APLU / House Planetary Caucus, March 13, 2026, <a href="https://aplu.org/wp-content/uploads/202603-planetary-caucus-fy2027-smd-letter-signed.pdf">https://aplu.org/wp-content/uploads/202603-planetary-caucus-fy2027-smd-letter-signed.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>"Foushee Letter NASA FY26 PBR Cuts," Representative Valerie Foushee, July 18, 2025, <a href="https://foushee.house.gov/imo/media/doc/foushee_letter_nasa_fy26_pbr_cuts.pdf">https://foushee.house.gov/imo/media/doc/foushee_letter_nasa_fy26_pbr_cuts.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>"Dingell Congratulates University of Michigan on Selection for NASA Mission Investigation," Representative Debbie Dingell, January 9, 2023, <a href="https://debbiedingell.house.gov/news/documentsingle.aspx?DocumentID=3820">https://debbiedingell.house.gov/news/documentsingle.aspx?DocumentID=3820</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"Champion of Science Award," Representative Debbie Dingell, August 19, 2025, <a href="https://debbiedingell.house.gov/news/documentsingle.aspx?DocumentID=6078">https://debbiedingell.house.gov/news/documentsingle.aspx?DocumentID=6078</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"NASA fiscal summary from member context," Local member context, member_context/nasa_fiscal_summary.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"Environment &amp; Climate Change," Representative Debbie Dingell, December 13, 2024, <a href="https://debbiedingell.house.gov/issues/issue/?IssueID=16223">https://debbiedingell.house.gov/issues/issue/?IssueID=16223</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"Issues," Debbie Dingell for Congress, November 5, 2024, <a href="https://debbiedingellforcongress.com/issues/">https://debbiedingellforcongress.com/issues/</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"The Science Coalition Honors 2025 Champions of Science," The Science Coalition, September 4, 2025, <a href="https://sciencecoalition.org/2025/09/04/honors-2025-champions-of-science/">https://sciencecoalition.org/2025/09/04/honors-2025-champions-of-science/</a>.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"Top NASA contracts from member context," Local member context, member_context/top_contracts.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"Award Highlights Representative Dingell's Leadership in Strengthening U.S. Research Institutions," The Science Coalition, July 31, 2025, <a href="https://sciencecoalition.org/2025/07/31/debbie-dingell-champion-of-science-award/">https://sciencecoalition.org/2025/07/31/debbie-dingell-champion-of-science-award/</a>.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>"House NASA Caucus," LegiStorm, January 1, 2024, <a href="https://legistorm.com/organization/summary/139049/House_NASA_Caucus.html">https://legistorm.com/organization/summary/139049/House_NASA_Caucus.html</a>.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>"Dingell Introduces Legislation Commemorating Apollo 15 Mission 50th Anniversary," Representative Debbie Dingell, August 6, 2021, <a href="https://debbiedingell.house.gov/news/documentsingle.aspx?DocumentID=3186">https://debbiedingell.house.gov/news/documentsingle.aspx?DocumentID=3186</a>.&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>"Michigan Space Grant Consortium Report," NASA, March 22, 2017, <a href="https://nasa.gov/wp-content/uploads/2017/12/2016_mi_space_grant.pdf">https://nasa.gov/wp-content/uploads/2017/12/2016_mi_space_grant.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+<li id="fn:16">
+<p>"Representative Debbie Dingell," Giffords, January 1, 2024, <a href="https://giffords.org/candidates/debbie-dingell/">https://giffords.org/candidates/debbie-dingell/</a>.&#160;<a class="footnote-backref" href="#fnref:16" title="Jump back to footnote 16 in the text">&#8617;</a></p>
+</li>
+<li id="fn:17">
+<p>"Dingell Announces More Than $23 Million for Science and Technology Center Led by University of Michigan," Representative Debbie Dingell, September 7, 2023, <a href="https://debbiedingell.house.gov/news/documentsingle.aspx?DocumentID=4570">https://debbiedingell.house.gov/news/documentsingle.aspx?DocumentID=4570</a>.&#160;<a class="footnote-backref" href="#fnref:17" title="Jump back to footnote 17 in the text">&#8617;</a></p>
+</li>
+<li id="fn:18">
+<p>"MI-06 NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/MI/06/MI-06-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/MI/06/MI-06-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:18" title="Jump back to footnote 18 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </article>
+      <section class="tps-report-closing" aria-label="Further resources">
+        <p>
+          Further resources, data, and updates at
+          <a href="https://planetary.org/save-nasa-science">The Planetary Society's Save NASA Science Action Hub</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer class="tps-report-footer bg-black text-white px-4 px-lg-5 py-5">
+    <div class="container-planetary-responsive">
+      <div class="row py-2 gy-4">
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Explore Space</li>
+            <li><a href="https://planetary.org/worlds">Planets &amp; Other Worlds</a></li>
+            <li><a href="https://planetary.org/space-missions">Space Missions</a></li>
+            <li><a href="https://planetary.org/space-policy">Space Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Get Involved</li>
+            <li><a href="https://planetary.org/action-center">Action Center</a></li>
+            <li><a href="https://planetary.org/connect">Email Signup</a></li>
+            <li><a href="https://planetary.org/membership">Become A Member</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="d-inline-block mb-3" href="https://www.planetary.org/">
+            <img style="width: 4rem;" alt="The Planetary Society emblem" src="https://planetary.s3.amazonaws.com/sites/planetary/images/45-emblem-white.svg">
+          </a>
+          <p class="small mb-2">Empowering the world's citizens to advance space science and exploration.</p>
+          <p class="small mb-0">
+            <a href="https://www.planetary.org/about/contact">Contact Us</a> •
+            <a href="https://www.planetary.org/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

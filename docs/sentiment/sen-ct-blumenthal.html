@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>NASA Advocacy Briefing</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://planetary.org/img/site/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://planetary.org/img/site/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://planetary.org/img/site/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --tps-blue: #037cc2;
+      --tps-blue-dark: #1e447b;
+      --tps-sand: #f7f1e8;
+      --tps-cream: #fffdf9;
+      --tps-ink: #1e2430;
+      --tps-muted: #51606f;
+      --tps-line: #d9dee5;
+      --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
+      --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(3, 124, 194, 0.08), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--tps-sand) 100%);
+      color: var(--tps-ink);
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container-planetary-responsive {
+      width: 100%;
+      padding-right: var(--bs-container-padding-x, 1rem);
+      padding-left: var(--bs-container-padding-x, 1rem);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 992px;
+    }
+    .tps-report-main {
+      padding: 1.25rem 0 2.5rem;
+    }
+    .advocacy-report-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(217, 222, 229, 0.9);
+      border-radius: 22px;
+      box-shadow: var(--tps-shadow);
+      padding: 1.25rem 1rem 1.5rem;
+      overflow-wrap: anywhere;
+    }
+    .advocacy-report-card h1,
+    .advocacy-report-card h2,
+    .advocacy-report-card h3 {
+      color: var(--tps-blue-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .advocacy-report-card h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--tps-line);
+    }
+    .advocacy-report-card h1 + p {
+      margin: 0.85rem 0 1.25rem;
+      color: var(--tps-muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .advocacy-report-card h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .advocacy-report-card p,
+    .advocacy-report-card li {
+      font-size: 0.98rem;
+    }
+    .advocacy-report-card p {
+      margin: 0 0 0.9rem;
+    }
+    .advocacy-report-card ul,
+    .advocacy-report-card ol {
+      margin: 0 0 1rem 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card li + li {
+      margin-top: 0.55rem;
+    }
+    .advocacy-report-card :is(ul, ol) :is(ul, ol) {
+      margin-top: 0.55rem;
+      margin-bottom: 0.15rem;
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card a {
+      color: var(--tps-blue);
+      font-weight: 600;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.15em;
+    }
+    .advocacy-report-card blockquote {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1.05rem;
+      border-left: 4px solid var(--tps-blue);
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.08), rgba(3, 124, 194, 0.03));
+      border-radius: 14px;
+    }
+    .advocacy-report-card blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
+    .advocacy-report-card code {
+      background: rgba(30, 36, 48, 0.08);
+      padding: 0.1rem 0.32rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .advocacy-report-card hr {
+      border: 0;
+      border-top: 1px solid var(--tps-line);
+      margin: 1.5rem 0;
+    }
+    /* Slug `#nasa-budget-support` is generated by python-markdown's toc extension from
+       the `## NASA Budget Support` heading; renaming that heading will silently break this. */
+    .advocacy-report-card #nasa-budget-support + p,
+    .advocacy-report-card #nasa-budget-support + ul {
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote {
+      margin-top: 0;
+      padding: 1rem 1rem 0.9rem;
+      border-left: 0;
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+    }
+    .advocacy-report-card #nasa-budget-support + p {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:first-child {
+      color: var(--tps-blue-dark);
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li {
+      margin-top: 0.4rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li:first-child {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li:first-child {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .advocacy-report-card #meeting-strategy + p {
+      margin-bottom: 0.8rem;
+    }
+    .advocacy-report-card #sources {
+      margin-top: 1.75rem;
+    }
+    .advocacy-report-card .footnote {
+      color: var(--tps-muted);
+      font-size: 0.92rem;
+    }
+    .advocacy-report-card .footnote ol {
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card .footnote li {
+      margin-top: 0.65rem;
+    }
+    .advocacy-report-card .footnote-backref {
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
+    }
+    .tps-report-closing {
+      margin-top: 1.25rem;
+      background: #dde5ec;
+      border-radius: 18px;
+      padding: 1.15rem 1rem;
+      text-align: center;
+    }
+    .tps-report-closing p {
+      margin: 0;
+      color: var(--tps-blue-dark);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .tps-report-closing a {
+      color: var(--tps-blue-dark);
+      font-weight: 700;
+    }
+    .tps-report-footer {
+      margin-top: 2rem;
+    }
+    .tps-report-footer .list-unstyled li + li {
+      margin-top: 0.35rem;
+    }
+    .tps-report-footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .tps-report-footer a:hover,
+    .tps-report-footer a:focus {
+      color: #9dd9ff;
+    }
+    @media (min-width: 768px) {
+      .tps-report-main {
+        padding: 2rem 0 3rem;
+      }
+      .advocacy-report-card {
+        padding: 2rem 2.25rem 2.25rem;
+      }
+      .advocacy-report-card h1 {
+        font-size: 2.5rem;
+      }
+      .advocacy-report-card h2 {
+        font-size: 1.35rem;
+        margin-top: 1.9rem;
+      }
+      .advocacy-report-card p,
+      .advocacy-report-card li {
+        font-size: 1rem;
+      }
+      .tps-report-closing {
+        padding: 1.35rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white" data-report-shell="tps-advocacy">
+  <header class="tps-report-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-planetary-responsive">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
+        </a>
+        
+      </div>
+    </nav>
+  </header>
+  <main class="tps-report-main" id="main-content">
+    <div class="container-planetary-responsive">
+      <article class="advocacy-report-card">
+        <h1 id="senator-richard-blumenthal-d-ct">Senator Richard Blumenthal (D-CT)</h1>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Likely Supportive</strong> (high confidence): Senator Blumenthal is a reliable supporter of NASA's science budget, specifically signing on to calls for robust Science Mission Directorate funding. While his public profile often focuses on aerospace manufacturing and consumer protection, his state benefits from millions in NASA grants for Earth science and exobiology research at the University of Connecticut. The best path for an advocate is to link NASA science funding to the high-tech jobs in Connecticut's 'Aerospace Alley' and the cutting-edge research happening at local universities. Be aware that he has expressed concerns regarding the lack of legal frameworks for commercial space activity, so framing space exploration as an area requiring responsible leadership will resonate with his background.</p></blockquote>
+
+<h2 id="nasa-budget-support">NASA Budget Support</h2>
+<blockquote>
+<p><strong>Direct SMD budget support signal</strong></p>
+<ul>
+<li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
+<li>$9B NASA Science letter signatory: <strong>FY26</strong></li>
+</ul>
+</blockquote>
+<h2 id="meeting-strategy">Meeting Strategy</h2>
+<p><strong>Lead with:</strong> Protecting the Future of Connecticut's Aerospace Alley</p>
+<p>Lead by thanking the Senator for his direct support of the $9 billion funding request for NASA's Science Mission Directorate. Frame NASA science as the essential fuel for Connecticut's high-tech industrial base and the world-class research conducted at local universities like UConn and Wesleyan.</p>
+<p><strong>Bridge issues:</strong></p>
+<ul>
+<li><strong>National Defense and Aerospace Manufacturing:</strong> "NASA science missions rely on the same specialized workforce and 'Aerospace Alley' expertise that you champion, ensuring Connecticut companies like Linde continue to lead in space operations and high-tech manufacturing."</li>
+<li><strong>STEM Education and Research:</strong> "With over $4 million in annual NASA science grants coming to Connecticut, researchers at UConn and Wesleyan are training the next generation of scientists while leading the world in understanding our climate and the origins of life."</li>
+</ul>
+<p><strong>Watch out for:</strong></p>
+<ul>
+<li>Avoid centering the conversation on the Collins Aerospace spacesuit contract. While the Senator previously championed it, the contract was recently descoped, making it a sensitive topic regarding local job stability.</li>
+<li>Do not oversell the Senator's familiarity with specific planetary missions. While he supports the overall science budget, he has no recent public record regarding projects like Mars Sample Return or Europa Clipper.</li>
+</ul>
+<p><strong>Expect this reaction:</strong> The office is likely to be highly receptive and supportive. Senator Blumenthal has a strong record of signing budget support letters and clearly views NASA through the lens of Connecticut's economic and academic strength.</p>
+<h2 id="key-opportunities">Key Opportunities</h2>
+<ul>
+<li><strong>Direct NASA Record:</strong> Blumenthal signed the FY26 letter requesting $9 billion for the Science Mission Directorate, indicating direct support for your primary funding goals.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
+<li><strong>Local Institution:</strong> The University of Connecticut receives over $4 million annually in NASA grants for Earth system modeling and exobiology research, providing a strong local impact story.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+<li><strong>District Fiscal Impact:</strong> Connecticut-based companies like Linde Inc. hold multi-million dollar contracts for liquid hydrogen and helium supporting NASA's balloon and launch operations.<sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup></li>
+<li><strong>Adjacent Interest:</strong> His leadership in calling for the rebuilding of the Arecibo Observatory shows an openness to supporting large-scale astronomical infrastructure and STEM programs.<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup> <sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup></li>
+</ul>
+<h2 id="key-challenges">Key Challenges</h2>
+<ul>
+<li><strong>Evidence Gap:</strong> There is a notable evidence gap regarding his views on specific uncrewed planetary science missions, such as Mars Sample Return or the Europa Clipper.<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></li>
+<li><strong>Known Skepticism:</strong> The Senator has raised concerns about the lack of established legal and enforcement frameworks for commercial space activity, which may make him cautious about rapid program expansions.<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup></li>
+<li><strong>Political Constraint:</strong> The recent mutual descoping of the Collins Aerospace spacesuit contract in Windsor Locks removes a high-profile local NASA program that the Senator previously championed.<sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup> <sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup></li>
+</ul>
+<h2 id="strategic-considerations">Strategic Considerations</h2>
+<ul>
+<li>It could be worth mentioning the Senator's past advocacy for the Arecibo Observatory to discuss the importance of investing in large-scale astronomical infrastructure.</li>
+<li>You might find it useful to connect UConn's NASA-funded research on air-sea carbon exchange to the Senator's long-standing leadership on climate change.</li>
+<li>Think about framing NASA's scientific exploration as a necessary foundation for the 'laws of space' the Senator has called for, providing the data needed to manage space traffic and resources responsibly.</li>
+</ul>
+<h2 id="committees">Committees</h2>
+<ul>
+<li>Member, Senate Committee on Armed Services<ul>
+<li>Airland</li>
+<li>Personnel</li>
+<li>Seapower</li>
+</ul>
+</li>
+<li>Member, Senate Committee on Homeland Security and Governmental Affairs<ul>
+<li>Disaster Management, District of Columbia, and Census</li>
+</ul>
+</li>
+<li>Ranking Member, Senate Committee on Homeland Security and Governmental Affairs<ul>
+<li>Permanent Subcommittee on Investigations</li>
+</ul>
+</li>
+<li>Member, Senate Committee on the Judiciary<ul>
+<li>Antitrust, Competition Policy, and Consumer Rights</li>
+<li>Crime and Counterterrorism</li>
+<li>Federal Courts, Oversight, Agency Action, and Federal Rights</li>
+<li>Privacy, Technology, and the Law</li>
+</ul>
+</li>
+<li>Ranking Member, Senate Committee on Veterans' Affairs</li>
+<li>Member, United States Senate Caucus on International Narcotics Control</li>
+</ul>
+<h2 id="about-senator-richard-blumenthal-d-ct">About Senator Richard Blumenthal (D-CT)</h2>
+<ul>
+<li>Served in the United States Marine Corps Reserve from 1970 to 1976, attaining the rank of sergeant.</li>
+<li>Held significant legal roles including U.S. Attorney for the District of Connecticut, administrative assistant to Senator Abraham Ribicoff, and law clerk to Supreme Court Justice Harry A. Blackmun.</li>
+<li>Served as the Attorney General of Connecticut for 20 years (1991–2010), leading major litigation against the tobacco industry and Microsoft.</li>
+<li>Earned a J.D. from Yale Law School, where he served as editor-in-chief of the Yale Law Journal, and an A.B. in government from Harvard College.</li>
+<li>Advocated for scientific consensus on climate change and led legislative efforts to address online safety and harms children experience on social media platforms.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<h3 id="additional-materials-reviewed">Additional Materials Reviewed</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"NASA fiscal summary from member context," Local member context, member_context/nasa_fiscal_summary.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>"Top NASA grants from member context," Local member context, member_context/top_grants.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>"Issues - U.S. Senator Richard Blumenthal," Office of Senator Richard Blumenthal, January 1, 2023, <a href="https://blumenthal.senate.gov/about/issues">https://blumenthal.senate.gov/about/issues</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>"Senate Commerce Committee Hearing Transcript," U.S. Government Publishing Office, January 23, 2024, <a href="https://govinfo.gov/content/pkg/CHRG-117shrg54586/pdf/CHRG-117shrg54586.pdf">https://govinfo.gov/content/pkg/CHRG-117shrg54586/pdf/CHRG-117shrg54586.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"Senator Blumenthal Week In Review 12/09/2022—12/16/2022," Office of Senator Richard Blumenthal, December 16, 2022, <a href="https://blumenthal.senate.gov/newsroom/press/release/senator-blumenthal-week-in-review-12/09/202212/16/2022">https://blumenthal.senate.gov/newsroom/press/release/senator-blumenthal-week-in-review-12/09/202212/16/2022</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"Letter to NSF and NASA on Arecibo Observatory," Office of Senator Richard Blumenthal, December 14, 2022, <a href="https://blumenthal.senate.gov/download/121422_-nsf-nasa---arecibo-observatory">https://blumenthal.senate.gov/download/121422_-nsf-nasa---arecibo-observatory</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"Top NASA contracts from member context," Local member context, member_context/top_contracts.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"Coverage gaps from current facts dossier," Local member context, facts/coverage_gaps.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"NASA, Collins xEVAS Update," NASA, June 26, 2024, <a href="https://nasa.gov/blogs/spacestation/2024/06/26/nasa-collins-xevas-update/">https://nasa.gov/blogs/spacestation/2024/06/26/nasa-collins-xevas-update/</a>.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"Sens. Marco Rubio, Richard Blumenthal Want NASA Artemis To Expand Industrial Collaboration," Wash100 / Executive Mosaic, April 17, 2020, <a href="https://wash100.com/wash100/sens-marco-rubio-richard-blumenthal-want-nasa-artemis-to-expand-industrial-collaboration/">https://wash100.com/wash100/sens-marco-rubio-richard-blumenthal-want-nasa-artemis-to-expand-industrial-collaboration/</a>.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"FY2025 Congressionally Directed Spending Application Guidance," Office of U.S. Senator Richard Blumenthal &amp; Office of U.S. Senator Christopher Murphy, January 1, 2024, <a href="https://wiltonct.gov/sites/g/files/vyhlif10026/f/agendas/agenda_8_b_-_fy25_blumenthal_murphy_cds_application_guidance_final.pdf">https://wiltonct.gov/sites/g/files/vyhlif10026/f/agendas/agenda_8_b_-_fy25_blumenthal_murphy_cds_application_guidance_final.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>"CT NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/CT/CT-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/CT/CT-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </article>
+      <section class="tps-report-closing" aria-label="Further resources">
+        <p>
+          Further resources, data, and updates at
+          <a href="https://planetary.org/save-nasa-science">The Planetary Society's Save NASA Science Action Hub</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer class="tps-report-footer bg-black text-white px-4 px-lg-5 py-5">
+    <div class="container-planetary-responsive">
+      <div class="row py-2 gy-4">
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Explore Space</li>
+            <li><a href="https://planetary.org/worlds">Planets &amp; Other Worlds</a></li>
+            <li><a href="https://planetary.org/space-missions">Space Missions</a></li>
+            <li><a href="https://planetary.org/space-policy">Space Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Get Involved</li>
+            <li><a href="https://planetary.org/action-center">Action Center</a></li>
+            <li><a href="https://planetary.org/connect">Email Signup</a></li>
+            <li><a href="https://planetary.org/membership">Become A Member</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="d-inline-block mb-3" href="https://www.planetary.org/">
+            <img style="width: 4rem;" alt="The Planetary Society emblem" src="https://planetary.s3.amazonaws.com/sites/planetary/images/45-emblem-white.svg">
+          </a>
+          <p class="small mb-2">Empowering the world's citizens to advance space science and exploration.</p>
+          <p class="small mb-0">
+            <a href="https://www.planetary.org/about/contact">Contact Us</a> •
+            <a href="https://www.planetary.org/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

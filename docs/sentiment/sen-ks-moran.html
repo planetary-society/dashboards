@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>NASA Advocacy Briefing</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://planetary.org/img/site/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://planetary.org/img/site/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://planetary.org/img/site/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --tps-blue: #037cc2;
+      --tps-blue-dark: #1e447b;
+      --tps-sand: #f7f1e8;
+      --tps-cream: #fffdf9;
+      --tps-ink: #1e2430;
+      --tps-muted: #51606f;
+      --tps-line: #d9dee5;
+      --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
+      --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(3, 124, 194, 0.08), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--tps-sand) 100%);
+      color: var(--tps-ink);
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container-planetary-responsive {
+      width: 100%;
+      padding-right: var(--bs-container-padding-x, 1rem);
+      padding-left: var(--bs-container-padding-x, 1rem);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 992px;
+    }
+    .tps-report-main {
+      padding: 1.25rem 0 2.5rem;
+    }
+    .advocacy-report-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(217, 222, 229, 0.9);
+      border-radius: 22px;
+      box-shadow: var(--tps-shadow);
+      padding: 1.25rem 1rem 1.5rem;
+      overflow-wrap: anywhere;
+    }
+    .advocacy-report-card h1,
+    .advocacy-report-card h2,
+    .advocacy-report-card h3 {
+      color: var(--tps-blue-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .advocacy-report-card h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--tps-line);
+    }
+    .advocacy-report-card h1 + p {
+      margin: 0.85rem 0 1.25rem;
+      color: var(--tps-muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .advocacy-report-card h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .advocacy-report-card p,
+    .advocacy-report-card li {
+      font-size: 0.98rem;
+    }
+    .advocacy-report-card p {
+      margin: 0 0 0.9rem;
+    }
+    .advocacy-report-card ul,
+    .advocacy-report-card ol {
+      margin: 0 0 1rem 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card li + li {
+      margin-top: 0.55rem;
+    }
+    .advocacy-report-card :is(ul, ol) :is(ul, ol) {
+      margin-top: 0.55rem;
+      margin-bottom: 0.15rem;
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card a {
+      color: var(--tps-blue);
+      font-weight: 600;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.15em;
+    }
+    .advocacy-report-card blockquote {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1.05rem;
+      border-left: 4px solid var(--tps-blue);
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.08), rgba(3, 124, 194, 0.03));
+      border-radius: 14px;
+    }
+    .advocacy-report-card blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
+    .advocacy-report-card code {
+      background: rgba(30, 36, 48, 0.08);
+      padding: 0.1rem 0.32rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .advocacy-report-card hr {
+      border: 0;
+      border-top: 1px solid var(--tps-line);
+      margin: 1.5rem 0;
+    }
+    /* Slug `#nasa-budget-support` is generated by python-markdown's toc extension from
+       the `## NASA Budget Support` heading; renaming that heading will silently break this. */
+    .advocacy-report-card #nasa-budget-support + p,
+    .advocacy-report-card #nasa-budget-support + ul {
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote {
+      margin-top: 0;
+      padding: 1rem 1rem 0.9rem;
+      border-left: 0;
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+    }
+    .advocacy-report-card #nasa-budget-support + p {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:first-child {
+      color: var(--tps-blue-dark);
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li {
+      margin-top: 0.4rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li:first-child {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li:first-child {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .advocacy-report-card #meeting-strategy + p {
+      margin-bottom: 0.8rem;
+    }
+    .advocacy-report-card #sources {
+      margin-top: 1.75rem;
+    }
+    .advocacy-report-card .footnote {
+      color: var(--tps-muted);
+      font-size: 0.92rem;
+    }
+    .advocacy-report-card .footnote ol {
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card .footnote li {
+      margin-top: 0.65rem;
+    }
+    .advocacy-report-card .footnote-backref {
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
+    }
+    .tps-report-closing {
+      margin-top: 1.25rem;
+      background: #dde5ec;
+      border-radius: 18px;
+      padding: 1.15rem 1rem;
+      text-align: center;
+    }
+    .tps-report-closing p {
+      margin: 0;
+      color: var(--tps-blue-dark);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .tps-report-closing a {
+      color: var(--tps-blue-dark);
+      font-weight: 700;
+    }
+    .tps-report-footer {
+      margin-top: 2rem;
+    }
+    .tps-report-footer .list-unstyled li + li {
+      margin-top: 0.35rem;
+    }
+    .tps-report-footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .tps-report-footer a:hover,
+    .tps-report-footer a:focus {
+      color: #9dd9ff;
+    }
+    @media (min-width: 768px) {
+      .tps-report-main {
+        padding: 2rem 0 3rem;
+      }
+      .advocacy-report-card {
+        padding: 2rem 2.25rem 2.25rem;
+      }
+      .advocacy-report-card h1 {
+        font-size: 2.5rem;
+      }
+      .advocacy-report-card h2 {
+        font-size: 1.35rem;
+        margin-top: 1.9rem;
+      }
+      .advocacy-report-card p,
+      .advocacy-report-card li {
+        font-size: 1rem;
+      }
+      .tps-report-closing {
+        padding: 1.35rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white" data-report-shell="tps-advocacy">
+  <header class="tps-report-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-planetary-responsive">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
+        </a>
+        
+      </div>
+    </nav>
+  </header>
+  <main class="tps-report-main" id="main-content">
+    <div class="container-planetary-responsive">
+      <article class="advocacy-report-card">
+        <h1 id="senator-jerry-moran-r-ks">Senator Jerry Moran (R-KS)</h1>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Champion</strong> (high confidence): Senator Moran is arguably the most critical ally for NASA science in the Senate, serving as the Chair of the Appropriations subcommittee responsible for funding the agency. He has taken a firm, public stand against cutting the Science Mission Directorate to pay for exploration, emphasizing that a 'balanced' budget is essential for American leadership. As a result, your best path is to provide him with 'ammunition'—local Kansas success stories and national impact data—that he can use to defend science funding during difficult budget negotiations. Be aware that while he is a champion, he faces intense pressure to balance the budget and maintain a strategic advantage over international competitors like China.</p></blockquote>
+
+<h2 id="nasa-budget-support">NASA Budget Support</h2>
+<blockquote>
+<ul>
+<li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
+</ul>
+</blockquote>
+<h2 id="meeting-strategy">Meeting Strategy</h2>
+<p><strong>Lead with:</strong> The Guardian of a Balanced NASA</p>
+<p>Lead by thanking the Senator for his public commitment to rejecting massive cuts to NASA science, specifically his stance that prioritizing exploration at the total expense of science is a mistake. As the Chair of the CJS Appropriations Subcommittee, you should urge him to use his unique leverage to codify this 'balanced' vision in the upcoming budget to protect American leadership.</p>
+<p><strong>Bridge issues:</strong></p>
+<ul>
+<li><strong>STEM Workforce and National Competitiveness:</strong> "NASA science grants at the University of Kansas are doing exactly what your RESEARCHER Act aims to do—providing the financial stability and high-tech training our graduate and postdoctoral researchers need to keep the U.S. ahead of global competitors."</li>
+<li><strong>Agricultural Stability and Rural Development:</strong> "Missions like SWOT, which researchers at Kansas State University are using to study water storage and river discharge, provide the critical data our farmers and ranchers need to protect the backbone of the Kansas economy."</li>
+</ul>
+<p><strong>Watch out for:</strong></p>
+<ul>
+<li>Avoid framing science funding as a competitor to the Artemis program; the Senator views Moon-to-Mars missions as vital for maintaining a strategic advantage over China. Always frame science as an essential partner to exploration within a 'balanced' agency.</li>
+<li>Do not overstate his commitment to specific Science Mission Directorate divisions beyond Earth Science and Heliophysics, as his record is thinner there and he has not signed recent science-specific budget letters.</li>
+</ul>
+<p><strong>Expect this reaction:</strong> The Senator is likely to be very receptive but pragmatically cautious, as his staff will emphasize the difficulty of balancing these priorities in a fiscally constrained environment. Expect them to affirm his public support for science while warning that flat funding may be the only realistic victory against deeper cuts.</p>
+<h2 id="key-opportunities">Key Opportunities</h2>
+<ul>
+<li><strong>Committee Position:</strong> As Chairman of the CJS Appropriations Subcommittee, Senator Moran has the direct authority to protect and increase Science Mission Directorate funding levels.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+<li><strong>Direct NASA Record:</strong> The Senator has explicitly rebuked proposed 20% plus cuts to NASA science, stating he intends to maintain funding similar to previous years.<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup> <sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+<li><strong>Local Institution:</strong> Kansas universities are currently leading NASA-funded research in Heliophysics and Earth Science, including the development of innovative particle telescopes and snow radar systems.<sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup></li>
+<li><strong>Adjacent Interest:</strong> His cosponsorship of the RESEARCHER Act shows a deep commitment to the financial security of the graduate and postdoctoral researchers who power NASA science missions.<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup></li>
+<li><strong>Committee Position:</strong> He serves as a key bridge between the Commerce Committee (authorizers) and Appropriations (funders), allowing for high-level coordination on space science policy.<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup> <sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup></li>
+</ul>
+<h2 id="key-challenges">Key Challenges</h2>
+<ul>
+<li><strong>Competing Priority:</strong> The Senator must balance science funding against the massive costs of the Artemis program, which he views as vital for maintaining a strategic advantage over China.<sup id="fnref3:2"><a class="footnote-ref" href="#fn:2">2</a></sup> <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+<li><strong>Evidence Gap:</strong> There is an evidence gap regarding the Senator's specific stance on the Astrophysics and Biological and Physical Sciences divisions, as his record primarily emphasizes Heliophysics and Earth science.<sup id="fnref2:8"><a class="footnote-ref" href="#fn:8">8</a></sup> <sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup></li>
+<li><strong>Political Constraint:</strong> As an appropriator in a fiscally constrained environment, he may be forced to settle for flat funding rather than the growth needed for ambitious new planetary missions.<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup> <sup id="fnref4:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+</ul>
+<h2 id="strategic-considerations">Strategic Considerations</h2>
+<ul>
+<li>Consider mentioning the KU research on the 'Agile' particle telescope; it aligns well with his interest in understanding space weather to protect national security assets.</li>
+<li>You might find it useful to connect NASA science missions to the aerospace manufacturers in Wichita the Senator recently toured, noting that these missions provide steady high-end contracts for Kansas engineering firms.</li>
+<li>It could be worth mentioning the spaceflight health research at the KU Medical Center, as this intersects his roles in both science and Veterans' Affairs.</li>
+</ul>
+<h2 id="committees">Committees</h2>
+<ul>
+<li>Member, Senate Committee on Agriculture, Nutrition, and Forestry<ul>
+<li>Commodities, Derivatives, Risk Management, and Trade</li>
+<li>Rural Development, Energy, and Credit</li>
+</ul>
+</li>
+<li><strong>Member, Senate Committee on Appropriations</strong><ul>
+<li>Agriculture, Rural Development, Food and Drug Administration, and Related Agencies</li>
+<li>Department of Defense</li>
+<li>Departments of Labor, Health and Human Services, and Education, and Related Agencies</li>
+<li>State, Foreign Operations, and Related Programs</li>
+<li>Transportation, Housing and Urban Development, and Related Agencies</li>
+</ul>
+</li>
+<li><strong>Chairman, Senate Committee on Appropriations</strong><ul>
+<li><strong>Commerce, Justice, Science, and Related Agencies</strong></li>
+</ul>
+</li>
+<li><strong>Member, Senate Committee on Commerce, Science, and Transportation</strong><ul>
+<li>Telecommunications and Media</li>
+<li>Consumer Protection, Technology, and Data Privacy</li>
+</ul>
+</li>
+<li><strong>Chairman, Senate Committee on Commerce, Science, and Transportation</strong><ul>
+<li><strong>Aviation, Space, and Innovation</strong></li>
+</ul>
+</li>
+<li>Member, Senate Committee on Indian Affairs</li>
+<li>Chairman, Senate Committee on Veterans' Affairs</li>
+<li>Member, Senate Select Committee on Intelligence</li>
+</ul>
+<h2 id="about-senator-jerry-moran-r-ks">About Senator Jerry Moran (R-KS)</h2>
+<ul>
+<li>Earned a Bachelor of Science in economics and a Juris Doctor from the University of Kansas, later serving as an adjunct professor of political science at Fort Hays State University.</li>
+<li>Professional background includes experience as a banker and 15 years in private law practice, including service as a state special assistant attorney general and deputy county attorney.</li>
+<li>Served seven terms in the U.S. House of Representatives and was elected to the U.S. Senate in 2010, where he has been the dean of the Kansas congressional delegation since 2021.</li>
+<li>Maintains ties to the military and aerospace sectors through service on the United States Air Force Academy Board of Visitors since 2014.</li>
+<li>Recognized by industry leaders for legislative work on technology and entrepreneurship, including sponsorship of the JOBS Act and the Global Leadership in Advanced Manufacturing Act.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<h3 id="additional-materials-reviewed">Additional Materials Reviewed</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>"Key NASA Appropriator Rebukes White House 2027 Budget Plan," Aviation Week, April 14, 2026, <a href="https://aviationweek.com/space/budget-policy-regulation/key-nasa-appropriator-rebukes-white-house-2027-budget-plan">https://aviationweek.com/space/budget-policy-regulation/key-nasa-appropriator-rebukes-white-house-2027-budget-plan</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"Key Senate Appropriator Rejects Proposed NASA Budget Cuts," SpaceNews (via Reddit Archive), April 13, 2026, <a href="https://reddit.com/r/space/comments/1skpfa0/key_senate_appropriator_rejects_proposed_nasa/">https://reddit.com/r/space/comments/1skpfa0/key_senate_appropriator_rejects_proposed_nasa/</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>"Senate Appropriators Approve Slightly More Than House For NASA in FY2025," SpacePolicyOnline, July 25, 2024, <a href="https://spacepolicyonline.com/news/senate-appropriators-approve-slightly-more-than-house-for-nasa-in-fy2025/">https://spacepolicyonline.com/news/senate-appropriators-approve-slightly-more-than-house-for-nasa-in-fy2025/</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>"Sen. Moran Hosts NASA Administrator in Kansas to Tour NASA Suppliers &amp; Visit the Cosmosphere," U.S. Senator Jerry Moran, April 7, 2026, <a href="https://moran.senate.gov/public/index.cfm/news-releases?id=6AF8552B-CEA2-4ECD-99F3-CC1143C9E177">https://moran.senate.gov/public/index.cfm/news-releases?id=6AF8552B-CEA2-4ECD-99F3-CC1143C9E177</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>"Commerce Committee Leaders Introduce Bipartisan Bill to Reinforce U.S. Space Leadership," Senate Committee on Commerce, Science, and Transportation, March 11, 2025, <a href="https://commerce.senate.gov/press/rep/release/commerce-committee-leaders-introduce-bipartisan-bill-to-reinforce-u-s-space-leadership-2025-3/">https://commerce.senate.gov/press/rep/release/commerce-committee-leaders-introduce-bipartisan-bill-to-reinforce-u-s-space-leadership-2025-3/</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"Issues," U.S. Senator Jerry Moran, April 14, 2026, <a href="https://moran.senate.gov/public/index.cfm/issues">https://moran.senate.gov/public/index.cfm/issues</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"Padilla, Moran Introduce Bipartisan Bill to Bolster U.S. STEM Leadership, Address Financial Insecurity for Graduate and Postdoctoral Researchers," U.S. Senator Alex Padilla, May 7, 2025, <a href="https://padilla.senate.gov/newsroom/press-releases/padilla-moran-introduce-bipartisan-bill-to-bolster-u-s-stem-leadership-address-financial-insecurity-for-graduate-and-postdoctoral-researchers/">https://padilla.senate.gov/newsroom/press-releases/padilla-moran-introduce-bipartisan-bill-to-bolster-u-s-stem-leadership-address-financial-insecurity-for-graduate-and-postdoctoral-researchers/</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"Top NASA grants from member context," Local member context, member_context/top_grants.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"Sen. Moran Supports Committee Passage of NASA Reauthorization Legislation," U.S. Senator Jerry Moran, March 6, 2026, <a href="https://moran.senate.gov/public/index.cfm/2026/3/sen-moran-supports-committee-passage-of-nasa-reauthorization-legislation">https://moran.senate.gov/public/index.cfm/2026/3/sen-moran-supports-committee-passage-of-nasa-reauthorization-legislation</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"Coverage gaps from current facts dossier," Local member context, facts/coverage_gaps.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"Top NASA contracts from member context," Local member context, member_context/top_contracts.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>"Sen. Moran Joins Call with Artemis II Astronauts During their Return to Earth," U.S. Senator Jerry Moran, April 9, 2026, <a href="https://moran.senate.gov/public/index.cfm/news-releases?id=53E97DA3-B270-4E3F-AF22-23C9D24F5CA5">https://moran.senate.gov/public/index.cfm/news-releases?id=53E97DA3-B270-4E3F-AF22-23C9D24F5CA5</a>.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>"Moran unveils five million for STEM," The Collegio (Pittsburg State University), November 1, 2024, <a href="https://psucollegio.com/2024/11/01/moran-unveils-five-million-for-stem/">https://psucollegio.com/2024/11/01/moran-unveils-five-million-for-stem/</a>.&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>"KS NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/KS/KS-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/KS/KS-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </article>
+      <section class="tps-report-closing" aria-label="Further resources">
+        <p>
+          Further resources, data, and updates at
+          <a href="https://planetary.org/save-nasa-science">The Planetary Society's Save NASA Science Action Hub</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer class="tps-report-footer bg-black text-white px-4 px-lg-5 py-5">
+    <div class="container-planetary-responsive">
+      <div class="row py-2 gy-4">
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Explore Space</li>
+            <li><a href="https://planetary.org/worlds">Planets &amp; Other Worlds</a></li>
+            <li><a href="https://planetary.org/space-missions">Space Missions</a></li>
+            <li><a href="https://planetary.org/space-policy">Space Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Get Involved</li>
+            <li><a href="https://planetary.org/action-center">Action Center</a></li>
+            <li><a href="https://planetary.org/connect">Email Signup</a></li>
+            <li><a href="https://planetary.org/membership">Become A Member</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="d-inline-block mb-3" href="https://www.planetary.org/">
+            <img style="width: 4rem;" alt="The Planetary Society emblem" src="https://planetary.s3.amazonaws.com/sites/planetary/images/45-emblem-white.svg">
+          </a>
+          <p class="small mb-2">Empowering the world's citizens to advance space science and exploration.</p>
+          <p class="small mb-0">
+            <a href="https://www.planetary.org/about/contact">Contact Us</a> •
+            <a href="https://www.planetary.org/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

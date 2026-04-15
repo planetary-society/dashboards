@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>NASA Advocacy Briefing</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://planetary.org/img/site/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://planetary.org/img/site/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://planetary.org/img/site/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --tps-blue: #037cc2;
+      --tps-blue-dark: #1e447b;
+      --tps-sand: #f7f1e8;
+      --tps-cream: #fffdf9;
+      --tps-ink: #1e2430;
+      --tps-muted: #51606f;
+      --tps-line: #d9dee5;
+      --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
+      --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(3, 124, 194, 0.08), transparent 38%),
+        linear-gradient(180deg, #ffffff 0%, var(--tps-sand) 100%);
+      color: var(--tps-ink);
+      font-family: "Poppins", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .container-planetary-responsive {
+      width: 100%;
+      padding-right: var(--bs-container-padding-x, 1rem);
+      padding-left: var(--bs-container-padding-x, 1rem);
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 992px;
+    }
+    .tps-report-main {
+      padding: 1.25rem 0 2.5rem;
+    }
+    .advocacy-report-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(217, 222, 229, 0.9);
+      border-radius: 22px;
+      box-shadow: var(--tps-shadow);
+      padding: 1.25rem 1rem 1.5rem;
+      overflow-wrap: anywhere;
+    }
+    .advocacy-report-card h1,
+    .advocacy-report-card h2,
+    .advocacy-report-card h3 {
+      color: var(--tps-blue-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .advocacy-report-card h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--tps-line);
+    }
+    .advocacy-report-card h1 + p {
+      margin: 0.85rem 0 1.25rem;
+      color: var(--tps-muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .advocacy-report-card h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .advocacy-report-card p,
+    .advocacy-report-card li {
+      font-size: 0.98rem;
+    }
+    .advocacy-report-card p {
+      margin: 0 0 0.9rem;
+    }
+    .advocacy-report-card ul,
+    .advocacy-report-card ol {
+      margin: 0 0 1rem 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card li + li {
+      margin-top: 0.55rem;
+    }
+    .advocacy-report-card :is(ul, ol) :is(ul, ol) {
+      margin-top: 0.55rem;
+      margin-bottom: 0.15rem;
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card a {
+      color: var(--tps-blue);
+      font-weight: 600;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.15em;
+    }
+    .advocacy-report-card blockquote {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1.05rem;
+      border-left: 4px solid var(--tps-blue);
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.08), rgba(3, 124, 194, 0.03));
+      border-radius: 14px;
+    }
+    .advocacy-report-card blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
+    .advocacy-report-card code {
+      background: rgba(30, 36, 48, 0.08);
+      padding: 0.1rem 0.32rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .advocacy-report-card hr {
+      border: 0;
+      border-top: 1px solid var(--tps-line);
+      margin: 1.5rem 0;
+    }
+    /* Slug `#nasa-budget-support` is generated by python-markdown's toc extension from
+       the `## NASA Budget Support` heading; renaming that heading will silently break this. */
+    .advocacy-report-card #nasa-budget-support + p,
+    .advocacy-report-card #nasa-budget-support + ul {
+      margin-top: 0;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote {
+      margin-top: 0;
+      padding: 1rem 1rem 0.9rem;
+      border-left: 0;
+      border: 1px solid rgba(3, 124, 194, 0.18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(3, 124, 194, 0.12), rgba(3, 124, 194, 0.04));
+    }
+    .advocacy-report-card #nasa-budget-support + p {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:first-child {
+      color: var(--tps-blue-dark);
+      font-size: 1.04rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li {
+      margin-top: 0.4rem;
+    }
+    .advocacy-report-card #nasa-budget-support + blockquote li:first-child {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li {
+      margin-top: 0;
+    }
+    .advocacy-report-card #nasa-budget-support + ul li:first-child {
+      color: var(--tps-blue-dark);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .advocacy-report-card #meeting-strategy + p {
+      margin-bottom: 0.8rem;
+    }
+    .advocacy-report-card #sources {
+      margin-top: 1.75rem;
+    }
+    .advocacy-report-card .footnote {
+      color: var(--tps-muted);
+      font-size: 0.92rem;
+    }
+    .advocacy-report-card .footnote ol {
+      padding-left: 1.2rem;
+    }
+    .advocacy-report-card .footnote li {
+      margin-top: 0.65rem;
+    }
+    .advocacy-report-card .footnote-backref {
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
+    }
+    .tps-report-closing {
+      margin-top: 1.25rem;
+      background: #dde5ec;
+      border-radius: 18px;
+      padding: 1.15rem 1rem;
+      text-align: center;
+    }
+    .tps-report-closing p {
+      margin: 0;
+      color: var(--tps-blue-dark);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .tps-report-closing a {
+      color: var(--tps-blue-dark);
+      font-weight: 700;
+    }
+    .tps-report-footer {
+      margin-top: 2rem;
+    }
+    .tps-report-footer .list-unstyled li + li {
+      margin-top: 0.35rem;
+    }
+    .tps-report-footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .tps-report-footer a:hover,
+    .tps-report-footer a:focus {
+      color: #9dd9ff;
+    }
+    @media (min-width: 768px) {
+      .tps-report-main {
+        padding: 2rem 0 3rem;
+      }
+      .advocacy-report-card {
+        padding: 2rem 2.25rem 2.25rem;
+      }
+      .advocacy-report-card h1 {
+        font-size: 2.5rem;
+      }
+      .advocacy-report-card h2 {
+        font-size: 1.35rem;
+        margin-top: 1.9rem;
+      }
+      .advocacy-report-card p,
+      .advocacy-report-card li {
+        font-size: 1rem;
+      }
+      .tps-report-closing {
+        padding: 1.35rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white" data-report-shell="tps-advocacy">
+  <header class="tps-report-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-planetary-responsive">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
+        </a>
+        
+      </div>
+    </nav>
+  </header>
+  <main class="tps-report-main" id="main-content">
+    <div class="container-planetary-responsive">
+      <article class="advocacy-report-card">
+        <h1 id="senator-katie-boyd-britt-r-al">Senator Katie Boyd Britt (R-AL)</h1>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Likely Supportive</strong> (moderate confidence): Senator Britt is a 'fierce advocate' for Alabama's space industry, particularly the Marshall Space Flight Center and the Artemis program. While her public record focuses heavily on propulsion and human exploration, her state is a major hub for NASA science, receiving an average of $585 million annually in science obligations. To gain her support, advocates should frame Science Mission Directorate funding as a critical driver for Alabama's high-tech workforce and its leadership in Earth science and heliophysics research. Be prepared to highlight how science missions provide the necessary data and discovery to ensure the long-term success of the human exploration goals she champions.</p></blockquote>
+
+<h2 id="nasa-budget-support">NASA Budget Support</h2>
+<blockquote>
+<ul>
+<li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
+</ul>
+</blockquote>
+<h2 id="meeting-strategy">Meeting Strategy</h2>
+<p><strong>Lead with:</strong> Secure Alabama's Role as a Science Powerhouse</p>
+<p>Lead by emphasizing that NASA’s $585 million annual investment in Alabama science is the engine behind the state's high-tech workforce. You should urge her to use her seat on the CJS Appropriations Subcommittee to protect the Science Mission Directorate, which sustains the research infrastructure at Alabama’s universities and centers.</p>
+<p><strong>Bridge issues:</strong></p>
+<ul>
+<li><strong>Education &amp; Workforce Development:</strong> "NASA science funding is a direct investment in Alabama's students; for example, the major research grants at UAH and your bipartisan work for HBCUs are exactly what sustain our state's technical leadership and research capacity."</li>
+<li><strong>Artemis and Space Infrastructure:</strong> "By supporting the Science Mission Directorate, we provide the critical planetary and lunar data needed to ensure the Artemis missions—and the Marshall-built SLS—can safely land the next generation of Alabamians on the Moon."</li>
+</ul>
+<p><strong>Watch out for:</strong></p>
+<ul>
+<li>Avoid assuming her support for the Space Launch System (SLS) and Marshall Space Flight Center translates to automatic support for science; she has not yet signed key letters specifically calling for a $9 billion Science Mission Directorate budget.</li>
+<li>Be prepared for her to prioritize human exploration and propulsion over science if budget trade-offs are mentioned, as her recent focus has been almost exclusively on protecting Marshall's 'propulsion excellence.'</li>
+</ul>
+<p><strong>Expect this reaction:</strong> Given her role on the Appropriations Committee, the office will likely be receptive but focused on the fiscal bottom line. Expect a reaction that is supportive of NASA’s local economic impact but potentially non-committal on specific science toplines unless they are clearly tied to Marshall's mission.</p>
+<h2 id="key-opportunities">Key Opportunities</h2>
+<ul>
+<li><strong>Committee Position:</strong> As a member of the Senate Commerce, Justice, Science, and Related Agencies Appropriations Subcommittee, she has direct authority over the funding levels for all NASA Science divisions.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
+<li><strong>District Fiscal Impact:</strong> Alabama receives significant NASA science funding, with obligations totaling $1.8B from FY23-FY25, including a $104M cooperative agreement at UAH for Earth science, heliophysics, and planetary science research.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> <sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
+<li><strong>Adjacent Interest:</strong> She has demonstrated a willingness to leverage her position to secure funding for adjacent science needs, such as weather research and AI infrastructure at Alabama institutions.<sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup> <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+</ul>
+<h2 id="key-challenges">Key Challenges</h2>
+<ul>
+<li><strong>Evidence Gap:</strong> While broadly supportive of NASA, her specific record on Science Mission Directorate funding is thin, as she did not sign recent Senate letters advocating for a $9 billion science budget.<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></li>
+<li><strong>Evidence Gap:</strong> There is a lack of direct public evidence regarding her specific positions on the astrophysics, planetary science, or biological and physical sciences divisions.<sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup></li>
+<li><strong>Competing Priority:</strong> Her intense focus on protecting 'propulsion excellence' and heavy-lift rockets like the Space Launch System may lead her to prioritize human exploration accounts over science during tight budget cycles.<sup id="fnref:11"><a class="footnote-ref" href="#fn:11">11</a></sup> <sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup> <sup id="fnref:12"><a class="footnote-ref" href="#fn:12">12</a></sup></li>
+</ul>
+<h2 id="strategic-considerations">Strategic Considerations</h2>
+<ul>
+<li>Consider mentioning her support for the Vortex Southeast Hazardous Weather Research Program to bridge into the importance of NASA’s Earth Science missions for Alabama’s safety and economy.</li>
+<li>You might find it useful to highlight the 'METTS' and 'SEAS' contracts at Marshall, which demonstrate that local engineering trades and mission systems engineering are deeply integrated with NASA science mission success.</li>
+<li>Think about framing heliophysics and space weather research as a matter of 'National Security,' aligning with her established priority of protecting Alabama’s defense assets like Redstone Arsenal.</li>
+</ul>
+<h2 id="committees">Committees</h2>
+<ul>
+<li><strong>Member, Senate Committee on Appropriations</strong><ul>
+<li><strong>Commerce, Justice, Science, and Related Agencies</strong></li>
+<li>Energy and Water Development</li>
+<li>Departments of Labor, Health and Human Services, and Education, and Related Agencies</li>
+<li>State, Foreign Operations, and Related Programs</li>
+<li>Transportation, Housing and Urban Development, and Related Agencies</li>
+</ul>
+</li>
+<li>Chairman, Senate Committee on Appropriations<ul>
+<li>Department of Homeland Security</li>
+</ul>
+</li>
+<li>Member, Senate Committee on Banking, Housing, and Urban Affairs<ul>
+<li>Financial Institutions and Consumer Protection</li>
+<li>Securities, Insurance, and Investment</li>
+</ul>
+</li>
+<li>Chairman, Senate Committee on Banking, Housing, and Urban Affairs<ul>
+<li>Housing, Transportation, and Community Development</li>
+</ul>
+</li>
+<li>Member, Senate Committee on Rules and Administration</li>
+<li>Member, Senate Committee on the Judiciary<ul>
+<li>Antitrust, Competition Policy, and Consumer Rights</li>
+<li>Crime and Counterterrorism</li>
+<li>Border Security and Immigration</li>
+<li>Intellectual Property</li>
+</ul>
+</li>
+<li>Member, Commission on Security and Cooperation in Europe</li>
+</ul>
+<h2 id="about-senator-katie-boyd-britt-r-al">About Senator Katie Boyd Britt (R-AL)</h2>
+<ul>
+<li>Served as president and CEO of the Business Council of Alabama from 2019 to 2021, focusing on workforce and economic development.</li>
+<li>Held the role of chief of staff to U.S. Senator Richard Shelby from 2016 to 2018 and previously served as his press secretary.</li>
+<li>Practiced law at Butler Snow LLP, where she established the firm's government affairs branch.</li>
+<li>Earned a Bachelor of Science in political science and a Juris Doctor from the University of Alabama.</li>
+<li>Advocates for the expansion of broadband access and legislative reform regarding technology and social media platforms.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<h3 id="additional-materials-reviewed">Additional Materials Reviewed</h3>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:1">
+<p>"U.S. Senator Katie Britt Speaks Live with Artemis II Astronaut Crew During Their Final Day in Space," Senator Katie Britt Official Website, April 10, 2026, <a href="https://britt.senate.gov/news/press-releases/u-s-senator-katie-britt-speaks-live-with-artemis-ii-astronaut-crew-during-their-final-day-in-space/">https://britt.senate.gov/news/press-releases/u-s-senator-katie-britt-speaks-live-with-artemis-ii-astronaut-crew-during-their-final-day-in-space/</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"Senator Katie Britt updates Huntsville on federal investments," Fox 54, February 14, 2026, <a href="https://youtube.com/watch?v=7wX_-4OO34M">https://youtube.com/watch?v=7wX_-4OO34M</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>"NASA fiscal summary from member context," Local member context, member_context/nasa_fiscal_summary.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>"Top NASA grants from member context," Local member context, member_context/top_grants.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>"Isaacman confirmed to lead NASA after earning Britt's support," Alabama Public Television, December 19, 2025, <a href="https://aptv.org/apt-news/isaacman-confirmed-to-lead-nasa-after-earning-britts-support/">https://aptv.org/apt-news/isaacman-confirmed-to-lead-nasa-after-earning-britts-support/</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"U.S. Senators Katie Britt, Raphael Warnock Introduce Bipartisan Bill to Streamline Federal Grants for HBCUs," Senator Katie Britt Official Website, March 26, 2026, <a href="https://britt.senate.gov/news/press-releases/u-s-senators-katie-britt-raphael-warnock-introduce-bipartisan-bill-to-streamline-federal-grants-for-hbcus-host-hbcu-presidents-in-roundtable-discussion/">https://britt.senate.gov/news/press-releases/u-s-senators-katie-britt-raphael-warnock-introduce-bipartisan-bill-to-streamline-federal-grants-for-hbcus-host-hbcu-presidents-in-roundtable-discussion/</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"U.S. Senator Katie Britt Advances $345,000 for Classroom Technology and Equipment for I3 Academy in Birmingham," Senator Katie Britt Official Website, September 11, 2024, <a href="https://britt.senate.gov/news/press-releases/u-s-senator-katie-britt-advances-345000-for-classroom-technology-and-equipment-for-i3-academy-in-birmingham/">https://britt.senate.gov/news/press-releases/u-s-senator-katie-britt-advances-345000-for-classroom-technology-and-equipment-for-i3-academy-in-birmingham/</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"U.S. Sen. Katie Britt Gives 2026 Legislative Update In Huntsville, Shares Timeline For Space Command Relocation," Huntsville Business Journal, February 18, 2026, <a href="https://huntsvillebusinessjournal.com/news/2026/02/18/u-s-sen-katie-britt-gives-2026-legislative-update-in-huntsville-shares-timeline-for-space-command-relocation/">https://huntsvillebusinessjournal.com/news/2026/02/18/u-s-sen-katie-britt-gives-2026-legislative-update-in-huntsville-shares-timeline-for-space-command-relocation/</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"Coverage gaps from current facts dossier," Local member context, facts/coverage_gaps.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"Britt needs public commitments from NASA appointee that he will protect Alabama space programs," Alabama Daily News, December 3, 2025, <a href="https://aldailynews.com/britt-needs-public-commitments-from-nasa-appointee-that-he-will-protect-alabama-space-programs/">https://aldailynews.com/britt-needs-public-commitments-from-nasa-appointee-that-he-will-protect-alabama-space-programs/</a>.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"Sen. Katie Britt Pushed Trump’s Renominated NASA Nominee on Past Comments," NOTUS, December 2, 2025, <a href="https://notus.org/trump-white-house/katie-britt-jared-isaacman-alabama-nasa">https://notus.org/trump-white-house/katie-britt-jared-isaacman-alabama-nasa</a>.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>"Top NASA contracts from member context," Local member context, member_context/top_contracts.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>"Senator Katie Britt Official Website," Senator Katie Britt Official Website, April 14, 2026, <a href="https://britt.senate.gov/">https://britt.senate.gov/</a>.&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>"U.S. Senators Katie Britt, Lisa Blunt Rochester Introduce Bill to Modernize Workforce Training," Senator Katie Britt Official Website, September 19, 2025, <a href="https://britt.senate.gov/news/press-releases/u-s-senators-katie-britt-lisa-blunt-rochester-introduce-bill-to-modernize-workforce-training/">https://britt.senate.gov/news/press-releases/u-s-senators-katie-britt-lisa-blunt-rochester-introduce-bill-to-modernize-workforce-training/</a>.&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+<li id="fn:16">
+<p>"AL NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/AL/AL-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/AL/AL-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:16" title="Jump back to footnote 16 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      </article>
+      <section class="tps-report-closing" aria-label="Further resources">
+        <p>
+          Further resources, data, and updates at
+          <a href="https://planetary.org/save-nasa-science">The Planetary Society's Save NASA Science Action Hub</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer class="tps-report-footer bg-black text-white px-4 px-lg-5 py-5">
+    <div class="container-planetary-responsive">
+      <div class="row py-2 gy-4">
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Explore Space</li>
+            <li><a href="https://planetary.org/worlds">Planets &amp; Other Worlds</a></li>
+            <li><a href="https://planetary.org/space-missions">Space Missions</a></li>
+            <li><a href="https://planetary.org/space-policy">Space Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="list-unstyled mb-0">
+            <li class="fw-semibold tracking-wide text-uppercase py-1">Get Involved</li>
+            <li><a href="https://planetary.org/action-center">Action Center</a></li>
+            <li><a href="https://planetary.org/connect">Email Signup</a></li>
+            <li><a href="https://planetary.org/membership">Become A Member</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <a class="d-inline-block mb-3" href="https://www.planetary.org/">
+            <img style="width: 4rem;" alt="The Planetary Society emblem" src="https://planetary.s3.amazonaws.com/sites/planetary/images/45-emblem-white.svg">
+          </a>
+          <p class="small mb-2">Empowering the world's citizens to advance space science and exploration.</p>
+          <p class="small mb-0">
+            <a href="https://www.planetary.org/about/contact">Contact Us</a> •
+            <a href="https://www.planetary.org/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

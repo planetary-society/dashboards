@@ -24,6 +24,7 @@
       --tps-muted: #51606f;
       --tps-line: #d9dee5;
       --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
       --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
     }
     * {
@@ -121,6 +122,28 @@
     .advocacy-report-card blockquote p:last-child {
       margin-bottom: 0;
     }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
     .advocacy-report-card code {
       background: rgba(30, 36, 48, 0.08);
       padding: 0.1rem 0.32rem;
@@ -202,8 +225,10 @@
       margin-top: 0.65rem;
     }
     .advocacy-report-card .footnote-backref {
-      text-decoration: none;
-      margin-left: 0.25rem;
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
     }
     .tps-report-closing {
       margin-top: 1.25rem;
@@ -264,9 +289,11 @@
   <header class="tps-report-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
       <div class="container-planetary-responsive">
-        <a class="navbar-brand" href="../sentiment.html">
-          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
         </a>
+        
       </div>
     </nav>
   </header>
@@ -274,7 +301,11 @@
     <div class="container-planetary-responsive">
       <article class="advocacy-report-card">
         <h1 id="senator-amy-klobuchar-d-mn">Senator Amy Klobuchar (D-MN)</h1>
-<p><em>Senator | D | MN</em></p>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Likely Supportive</strong> (high confidence): Senator Klobuchar is a reliable ally for NASA science, particularly where it intersects with Minnesota’s agricultural and medical sectors. She views NASA’s Earth-monitoring capabilities as essential for farmers and disaster response, and she has a specific interest in the medical breakthroughs possible through space research at institutions like the Mayo Clinic. Advocates should emphasize how robust Science Mission Directorate funding supports the University of Minnesota’s significant research portfolio and the state's $20.7M in NASA science obligations. While she is broadly supportive, she is particularly focused on ensuring that NASA data remains publicly accessible to academic researchers rather than being restricted by commercial partnerships.</p></blockquote>
+
 <h2 id="nasa-budget-support">NASA Budget Support</h2>
 <blockquote>
 <p><strong>Strong SMD budget signal</strong></p>
@@ -282,10 +313,6 @@
 <li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
 <li>$9B NASA Science letter signatory: <strong>FY26, FY27</strong></li>
 </ul>
-</blockquote>
-<h2 id="bottom-line">Bottom Line</h2>
-<blockquote>
-<p><strong>Likely Supportive</strong> (high confidence): Senator Klobuchar is a reliable ally for NASA science, particularly where it intersects with Minnesota’s agricultural and medical sectors. She views NASA’s Earth-monitoring capabilities as essential for farmers and disaster response, and she has a specific interest in the medical breakthroughs possible through space research at institutions like the Mayo Clinic. Advocates should emphasize how robust Science Mission Directorate funding supports the University of Minnesota’s significant research portfolio and the state's $20.7M in NASA science obligations. While she is broadly supportive, she is particularly focused on ensuring that NASA data remains publicly accessible to academic researchers rather than being restricted by commercial partnerships.</p>
 </blockquote>
 <h2 id="meeting-strategy">Meeting Strategy</h2>
 <p><strong>Lead with:</strong> Championing Science with Real-World Impact</p>
@@ -321,7 +348,7 @@
 <li>Think about whether to highlight her legacy with the INSPIRE Women Act to show how NASA’s discovery missions align with her long-term commitment to diversifying the STEM workforce.</li>
 <li>It could be worth mentioning the $20.7 million in NASA science obligations Minnesota received recently to underscore the state's significant fiscal stake in a strong Science Mission Directorate budget.</li>
 </ul>
-<h2 id="relevant-committees">Relevant Committees</h2>
+<h2 id="committees">Committees</h2>
 <ul>
 <li>Ranking Member, Senate Committee on Agriculture, Nutrition, and Forestry</li>
 <li>Ex Officio, Senate Committee on Agriculture, Nutrition, and Forestry<ul>
@@ -365,28 +392,31 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>"Planetary Society Internal Tracking Document," The Planetary Society, congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>"Senate Commerce Committee Hearing with Jared Isaacman," Forbes, December 6, 2025, https://youtube.com/watch?v=SU571hkhfqQ.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>"Senate Commerce Committee Hearing with Jared Isaacman," Forbes, December 6, 2025, <a href="https://youtube.com/watch?v=SU571hkhfqQ">https://youtube.com/watch?v=SU571hkhfqQ</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>"Senate Commerce Committee Hearing on NASA's Publicly Funded Data," Forbes, December 6, 2025, https://youtube.com/watch?v=SU571hkhfqQ.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>"Senate Commerce Committee Hearing on NASA's Publicly Funded Data," Forbes, December 6, 2025, <a href="https://youtube.com/watch?v=SU571hkhfqQ">https://youtube.com/watch?v=SU571hkhfqQ</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p>"Issues: Education," U.S. Senator Amy Klobuchar, January 1, 2024, https://klobuchar.senate.gov/public/index.cfm/education.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>"Issues: Education," U.S. Senator Amy Klobuchar, January 1, 2024, <a href="https://klobuchar.senate.gov/public/index.cfm/education">https://klobuchar.senate.gov/public/index.cfm/education</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>"Klobuchar Bipartisan Bills to Encourage, Recruit and Support Women in STEM Fields Signed Into Law," U.S. Senator Amy Klobuchar, February 28, 2017, https://klobuchar.senate.gov/public/index.cfm/2017/2/klobuchar-bipartisan-bills-to-encourage-recruit-and-support-women-in-stem-fields-signed-into-law.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p>"Klobuchar Bipartisan Bills to Encourage, Recruit and Support Women in STEM Fields Signed Into Law," U.S. Senator Amy Klobuchar, February 28, 2017, <a href="https://klobuchar.senate.gov/public/index.cfm/2017/2/klobuchar-bipartisan-bills-to-encourage-recruit-and-support-women-in-stem-fields-signed-into-law">https://klobuchar.senate.gov/public/index.cfm/2017/2/klobuchar-bipartisan-bills-to-encourage-recruit-and-support-women-in-stem-fields-signed-into-law</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:6">
-<p>"Hearing on NASA Administrator Nominee Jared Isaacman," Forbes, April 13, 2025, https://youtube.com/watch?v=8GPqhjNvnGs.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+<p>"Hearing on NASA Administrator Nominee Jared Isaacman," Forbes, April 13, 2025, <a href="https://youtube.com/watch?v=8GPqhjNvnGs">https://youtube.com/watch?v=8GPqhjNvnGs</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
 </li>
 <li id="fn:7">
-<p>"Isaacman Evades Thorny Questions in Nomination Redo," American Institute of Physics, December 3, 2025, https://aip.org/fyi/isaacman-evades-thorny-questions-in-nomination-redo.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+<p>"Isaacman Evades Thorny Questions in Nomination Redo," American Institute of Physics, December 3, 2025, <a href="https://aip.org/fyi/isaacman-evades-thorny-questions-in-nomination-redo">https://aip.org/fyi/isaacman-evades-thorny-questions-in-nomination-redo</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
 </li>
 <li id="fn:8">
-<p>"Senate Commerce Advances Isaacman to Lead NASA," MeriTalk, May 1, 2025, https://meritalk.com/articles/senate-commerce-advances-isaacman-to-lead-nasa/.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+<p>"Senate Commerce Advances Isaacman to Lead NASA," MeriTalk, May 1, 2025, <a href="https://meritalk.com/articles/senate-commerce-advances-isaacman-to-lead-nasa/">https://meritalk.com/articles/senate-commerce-advances-isaacman-to-lead-nasa/</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"MN NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/MN/MN-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/MN/MN-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

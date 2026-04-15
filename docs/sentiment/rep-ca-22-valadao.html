@@ -24,6 +24,7 @@
       --tps-muted: #51606f;
       --tps-line: #d9dee5;
       --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
       --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
     }
     * {
@@ -121,6 +122,28 @@
     .advocacy-report-card blockquote p:last-child {
       margin-bottom: 0;
     }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
     .advocacy-report-card code {
       background: rgba(30, 36, 48, 0.08);
       padding: 0.1rem 0.32rem;
@@ -202,8 +225,10 @@
       margin-top: 0.65rem;
     }
     .advocacy-report-card .footnote-backref {
-      text-decoration: none;
-      margin-left: 0.25rem;
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
     }
     .tps-report-closing {
       margin-top: 1.25rem;
@@ -264,9 +289,11 @@
   <header class="tps-report-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
       <div class="container-planetary-responsive">
-        <a class="navbar-brand" href="../sentiment.html">
-          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
         </a>
+        
       </div>
     </nav>
   </header>
@@ -274,16 +301,16 @@
     <div class="container-planetary-responsive">
       <article class="advocacy-report-card">
         <h1 id="representative-david-g-valadao-r-ca-22">Representative David G. Valadao (R-CA-22)</h1>
-<p><em>Representative | R | CA-22</em></p>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Likely Supportive</strong> (moderate confidence): Representative Valadao is a strategic ally on the House Appropriations Committee who views federal science investment as a driver of regional economic competitiveness and workforce development. While he has not signed recent Science Mission Directorate (SMD) funding letters, his recent efforts to protect NASA-Caltech contracts from administrative cuts demonstrate a willingness to defend space science assets. Advocates should frame NASA science as a vital component of the California research economy and a key motivator for STEM education in the Central Valley. Be prepared to bridge the gap between his general support for NASA's budget and the specific funding needs of planetary and Earth science programs.</p></blockquote>
+
 <h2 id="nasa-budget-support">NASA Budget Support</h2>
 <blockquote>
 <ul>
 <li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
 </ul>
-</blockquote>
-<h2 id="bottom-line">Bottom Line</h2>
-<blockquote>
-<p><strong>Likely Supportive</strong> (moderate confidence): Representative Valadao is a strategic ally on the House Appropriations Committee who views federal science investment as a driver of regional economic competitiveness and workforce development. While he has not signed recent Science Mission Directorate (SMD) funding letters, his recent efforts to protect NASA-Caltech contracts from administrative cuts demonstrate a willingness to defend space science assets. Advocates should frame NASA science as a vital component of the California research economy and a key motivator for STEM education in the Central Valley. Be prepared to bridge the gap between his general support for NASA's budget and the specific funding needs of planetary and Earth science programs.</p>
 </blockquote>
 <h2 id="meeting-strategy">Meeting Strategy</h2>
 <p><strong>Lead with:</strong> Defending California’s Research Economy</p>
@@ -317,7 +344,7 @@
 <li>You might find it useful to mention his 'Champion of Science' award from The Science Coalition as a reason why his leadership on the Appropriations Committee is so vital for the research community.</li>
 <li>Think about whether to highlight the University of California’s support for his work, as their nomination for his science award shows he values the input of California’s major research institutions.</li>
 </ul>
-<h2 id="relevant-committees">Relevant Committees</h2>
+<h2 id="committees">Committees</h2>
 <ul>
 <li>Member, Joint Committee of Congress on the Library</li>
 <li><strong>Member, House Committee on Appropriations</strong><ul>
@@ -343,37 +370,49 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p>"NOTUS: DOGE Changing California, And Democrats Worry It's Just The Start," Rep. Lateefah Simon (reposting NOTUS), March 12, 2025, https://simon.house.gov/media/in-the-news/notus-doge-changing-california-and-democrats-worry-its-just-start.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>"NOTUS: DOGE Changing California, And Democrats Worry It's Just The Start," Rep. Lateefah Simon (reposting NOTUS), March 12, 2025, <a href="https://simon.house.gov/media/in-the-news/notus-doge-changing-california-and-democrats-worry-its-just-start">https://simon.house.gov/media/in-the-news/notus-doge-changing-california-and-democrats-worry-its-just-start</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>"The Science Coalition Announces 2026 Champion of Science Winners," The Science Coalition, March 5, 2026, https://sciencecoalition.org/2026/03/05/the-science-coalition-announces-2026-champion-of-science-winners/.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>"The Science Coalition Announces 2026 Champion of Science Winners," The Science Coalition, March 5, 2026, <a href="https://sciencecoalition.org/2026/03/05/the-science-coalition-announces-2026-champion-of-science-winners/">https://sciencecoalition.org/2026/03/05/the-science-coalition-announces-2026-champion-of-science-winners/</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>"Congressman Valadao Votes to Advance Key Central Valley Funding in Appropriations Package," Official U.S. House Website, January 8, 2026, https://valadao.house.gov/news/documentsingle.aspx?DocumentID=3426.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>"Congressman Valadao Votes to Advance Key Central Valley Funding in Appropriations Package," Official U.S. House Website, January 8, 2026, <a href="https://valadao.house.gov/news/documentsingle.aspx?DocumentID=3426">https://valadao.house.gov/news/documentsingle.aspx?DocumentID=3426</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>"Planetary Society Internal Tracking Document," The Planetary Society, congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>"David Valadao on The Issues," Valadao for Congress, January 1, 2024, https://valadaoforcongress.com/issues/.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p>"David Valadao on The Issues," Valadao for Congress, January 1, 2024, <a href="https://valadaoforcongress.com/issues/">https://valadaoforcongress.com/issues/</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:6">
-<p>"Just for Kids," Official U.S. House Website, January 21, 2026, https://valadao.house.gov/kids/.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+<p>"Just for Kids," Official U.S. House Website, January 21, 2026, <a href="https://valadao.house.gov/kids/">https://valadao.house.gov/kids/</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
 </li>
 <li id="fn:7">
-<p>"Combatting Homelessness in the Central Valley," Official U.S. House Website, November 20, 2024, https://valadao.house.gov/news/email/show.aspx?ID=BSE5PN6YUSSX2.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+<p>"Combatting Homelessness in the Central Valley," Official U.S. House Website, November 20, 2024, <a href="https://valadao.house.gov/news/email/show.aspx?ID=BSE5PN6YUSSX2">https://valadao.house.gov/news/email/show.aspx?ID=BSE5PN6YUSSX2</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
 </li>
 <li id="fn:8">
-<p>"Passing Legislation to Support Central Valley Infrastructure and Water Projects," Official U.S. House Website, June 25, 2025, https://valadao.house.gov/news/email/show.aspx?ID=NWQ7ZO2LZDHXM.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+<p>"Passing Legislation to Support Central Valley Infrastructure and Water Projects," Official U.S. House Website, June 25, 2025, <a href="https://valadao.house.gov/news/email/show.aspx?ID=NWQ7ZO2LZDHXM">https://valadao.house.gov/news/email/show.aspx?ID=NWQ7ZO2LZDHXM</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
 </li>
 <li id="fn:9">
-<p>"Issues: Education," Official U.S. House Website, January 21, 2026, https://valadao.house.gov/issues/issue/?IssueID=73.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+<p>"Issues: Education," Official U.S. House Website, January 21, 2026, <a href="https://valadao.house.gov/issues/issue/?IssueID=73">https://valadao.house.gov/issues/issue/?IssueID=73</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
 </li>
 <li id="fn:10">
-<p>"REMINDER: David Valadao Voted Against Lowering Costs, Creating Jobs, and Spurring Innovation," DCCC, August 9, 2023, https://dccc.org/reminder-david-valadao-voted-against-lowering-costs-creating-jobs-and-spurring-innovation/.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+<p>"REMINDER: David Valadao Voted Against Lowering Costs, Creating Jobs, and Spurring Innovation," DCCC, August 9, 2023, <a href="https://dccc.org/reminder-david-valadao-voted-against-lowering-costs-creating-jobs-and-spurring-innovation/">https://dccc.org/reminder-david-valadao-voted-against-lowering-costs-creating-jobs-and-spurring-innovation/</a>.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
 </li>
 <li id="fn:11">
-<p>"US Congress Representative David Valadao [R] Legislation," LegiScan, March 2, 2026, https://legiscan.com/US/people/david-valadao/id/15240.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+<p>"US Congress Representative David Valadao [R] Legislation," LegiScan, March 2, 2026, <a href="https://legiscan.com/US/people/david-valadao/id/15240">https://legiscan.com/US/people/david-valadao/id/15240</a>.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"US Congress Representative David Valadao [R] Passed Legislation," LegiScan, February 28, 2017, <a href="https://legiscan.com/US/people/david-valadao/id/15240?page=1&amp;record=all&amp;status=passed&amp;chamber=house">https://legiscan.com/US/people/david-valadao/id/15240?page=1&amp;record=all&amp;status=passed&amp;chamber=house</a>.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>"Supporting Hospitals in Underserved Communities," Official U.S. House Website, January 20, 2025, <a href="https://valadao.house.gov/news/email/show.aspx?ID=FF474PWVJFA5Q">https://valadao.house.gov/news/email/show.aspx?ID=FF474PWVJFA5Q</a>.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>"Issues: Immigration," Official U.S. House Website, September 24, 2025, <a href="https://valadao.house.gov/issues/issue/?IssueID=14901">https://valadao.house.gov/issues/issue/?IssueID=14901</a>.&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>"CA-22 NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/CA/22/CA-22-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/CA/22/CA-22-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

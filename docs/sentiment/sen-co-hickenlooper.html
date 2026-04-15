@@ -24,6 +24,7 @@
       --tps-muted: #51606f;
       --tps-line: #d9dee5;
       --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
       --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
     }
     * {
@@ -121,6 +122,28 @@
     .advocacy-report-card blockquote p:last-child {
       margin-bottom: 0;
     }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
     .advocacy-report-card code {
       background: rgba(30, 36, 48, 0.08);
       padding: 0.1rem 0.32rem;
@@ -202,8 +225,10 @@
       margin-top: 0.65rem;
     }
     .advocacy-report-card .footnote-backref {
-      text-decoration: none;
-      margin-left: 0.25rem;
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
     }
     .tps-report-closing {
       margin-top: 1.25rem;
@@ -264,9 +289,11 @@
   <header class="tps-report-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
       <div class="container-planetary-responsive">
-        <a class="navbar-brand" href="../sentiment.html">
-          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
         </a>
+        
       </div>
     </nav>
   </header>
@@ -274,7 +301,11 @@
     <div class="container-planetary-responsive">
       <article class="advocacy-report-card">
         <h1 id="senator-john-w-hickenlooper-d-co">Senator John W. Hickenlooper (D-CO)</h1>
-<p><em>Senator | D | CO</em></p>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Champion</strong> (high confidence): Senator Hickenlooper is a premier advocate for NASA science, viewing the agency as a 'force multiplier' for discovery through probes, rovers, and telescopes. As a geologist and member of the Space Subcommittee, he understands the technical value of planetary and Earth science, evidenced by his leadership on the ASCEND Act and Space RACE Act. Advocates should emphasize how NASA science missions like OSIRIS-REx and Lucy drive Colorado’s massive aerospace economy, which receives over $240 million annually in NASA science funding. While he is a strong ally, he is also focused on balancing these scientific goals with exploration missions like Artemis during tight budget cycles.</p></blockquote>
+
 <h2 id="nasa-budget-support">NASA Budget Support</h2>
 <blockquote>
 <p><strong>Strong SMD budget signal</strong></p>
@@ -282,10 +313,6 @@
 <li>FY2026 CJS Appropriations vote: <strong>Nay</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
 <li>$9B NASA Science letter signatory: <strong>FY26, FY27</strong></li>
 </ul>
-</blockquote>
-<h2 id="bottom-line">Bottom Line</h2>
-<blockquote>
-<p><strong>Champion</strong> (high confidence): Senator Hickenlooper is a premier advocate for NASA science, viewing the agency as a 'force multiplier' for discovery through probes, rovers, and telescopes. As a geologist and member of the Space Subcommittee, he understands the technical value of planetary and Earth science, evidenced by his leadership on the ASCEND Act and Space RACE Act. Advocates should emphasize how NASA science missions like OSIRIS-REx and Lucy drive Colorado’s massive aerospace economy, which receives over $240 million annually in NASA science funding. While he is a strong ally, he is also focused on balancing these scientific goals with exploration missions like Artemis during tight budget cycles.</p>
 </blockquote>
 <h2 id="meeting-strategy">Meeting Strategy</h2>
 <p><strong>Lead with:</strong> The Science Force Multiplier and Colorado's Economic Engine</p>
@@ -320,7 +347,7 @@
 <li>You might find it useful to bring up his Space RACE Act and ask how the proposed National Institute for Space Research could further integrate NASA's scientific goals with long-term exploration.</li>
 <li>Think about whether to highlight the role of Colorado's universities, like CU Boulder or UCAR, which receive millions in NASA grants for heliophysics and atmospheric research.</li>
 </ul>
-<h2 id="relevant-committees">Relevant Committees</h2>
+<h2 id="committees">Committees</h2>
 <ul>
 <li><strong>Member, Senate Committee on Commerce, Science, and Transportation</strong><ul>
 <li><strong>Aviation, Space, and Innovation</strong></li>
@@ -361,25 +388,28 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>"Planetary Society Internal Tracking Document," The Planetary Society, congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>"Hickenlooper, Cornyn Cheer Senate Passage of Bipartisan Bill to Expand Satellite Data Sharing," Senator John Hickenlooper Official Website, December 15, 2025, https://hickenlooper.senate.gov/press_releases/hickenlooper-cornyn-cheer-senate-passage-of-bipartisan-bill-to-expand-satellite-data-sharing/.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>"Hickenlooper, Cornyn Cheer Senate Passage of Bipartisan Bill to Expand Satellite Data Sharing," Senator John Hickenlooper Official Website, December 15, 2025, <a href="https://hickenlooper.senate.gov/press_releases/hickenlooper-cornyn-cheer-senate-passage-of-bipartisan-bill-to-expand-satellite-data-sharing/">https://hickenlooper.senate.gov/press_releases/hickenlooper-cornyn-cheer-senate-passage-of-bipartisan-bill-to-expand-satellite-data-sharing/</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>"Hickenlooper, Cornyn, Kelly, Wicker, Luján Introduce Bipartisan Bill to Bolster American Space Research, Exploration," Senator John Hickenlooper Official Website, November 19, 2025, https://hickenlooper.senate.gov/press_releases/hickenlooper-cornyn-kelly-wicker-lujan-introduce-bipartisan-bill-to-bolster-american-space-research-exploration/.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>"Hickenlooper, Cornyn, Kelly, Wicker, Luján Introduce Bipartisan Bill to Bolster American Space Research, Exploration," Senator John Hickenlooper Official Website, November 19, 2025, <a href="https://hickenlooper.senate.gov/press_releases/hickenlooper-cornyn-kelly-wicker-lujan-introduce-bipartisan-bill-to-bolster-american-space-research-exploration/">https://hickenlooper.senate.gov/press_releases/hickenlooper-cornyn-kelly-wicker-lujan-introduce-bipartisan-bill-to-bolster-american-space-research-exploration/</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p>"John Hickenlooper: This Is Why The U.S. And NASA Should Be 'Laser-Focused On Returning' To The Moon," Forbes Breaking News (YouTube), December 29, 2025, https://youtube.com/watch?v=IjN3FnivCz4.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>"John Hickenlooper: This Is Why The U.S. And NASA Should Be 'Laser-Focused On Returning' To The Moon," Forbes Breaking News (YouTube), December 29, 2025, <a href="https://youtube.com/watch?v=IjN3FnivCz4">https://youtube.com/watch?v=IjN3FnivCz4</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>"Space, Science &amp; Innovation," Senator John Hickenlooper Official Website, April 10, 2026, https://hickenlooper.senate.gov/issues/innovation/.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p>"Space, Science &amp; Innovation," Senator John Hickenlooper Official Website, April 10, 2026, <a href="https://hickenlooper.senate.gov/issues/innovation/">https://hickenlooper.senate.gov/issues/innovation/</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:6">
-<p>"Hickenlooper Heralds Committee Passage of His Bill to Clear Space Junk, Protect Space Exploration," Senator John Hickenlooper Official Website, February 12, 2026, https://hickenlooper.senate.gov/press_releases/hickenlooper-heralds-committee-passage-of-his-bill-to-clear-space-junk-protect-space-exploration/.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+<p>"Hickenlooper Heralds Committee Passage of His Bill to Clear Space Junk, Protect Space Exploration," Senator John Hickenlooper Official Website, February 12, 2026, <a href="https://hickenlooper.senate.gov/press_releases/hickenlooper-heralds-committee-passage-of-his-bill-to-clear-space-junk-protect-space-exploration/">https://hickenlooper.senate.gov/press_releases/hickenlooper-heralds-committee-passage-of-his-bill-to-clear-space-junk-protect-space-exploration/</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
 </li>
 <li id="fn:7">
-<p>"John's Priorities - Issues," Senator John Hickenlooper Official Website, April 13, 2026, https://hickenlooper.senate.gov/issues/.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+<p>"John's Priorities - Issues," Senator John Hickenlooper Official Website, April 13, 2026, <a href="https://hickenlooper.senate.gov/issues/">https://hickenlooper.senate.gov/issues/</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"CO NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/CO/CO-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/CO/CO-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

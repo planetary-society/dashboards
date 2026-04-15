@@ -24,6 +24,7 @@
       --tps-muted: #51606f;
       --tps-line: #d9dee5;
       --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
       --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
     }
     * {
@@ -121,6 +122,28 @@
     .advocacy-report-card blockquote p:last-child {
       margin-bottom: 0;
     }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
     .advocacy-report-card code {
       background: rgba(30, 36, 48, 0.08);
       padding: 0.1rem 0.32rem;
@@ -202,8 +225,10 @@
       margin-top: 0.65rem;
     }
     .advocacy-report-card .footnote-backref {
-      text-decoration: none;
-      margin-left: 0.25rem;
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
     }
     .tps-report-closing {
       margin-top: 1.25rem;
@@ -264,9 +289,11 @@
   <header class="tps-report-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
       <div class="container-planetary-responsive">
-        <a class="navbar-brand" href="../sentiment.html">
-          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
         </a>
+        
       </div>
     </nav>
   </header>
@@ -274,16 +301,16 @@
     <div class="container-planetary-responsive">
       <article class="advocacy-report-card">
         <h1 id="representative-robert-b-aderholt-r-al-04">Representative Robert B. Aderholt (R-AL-04)</h1>
-<p><em>Representative | R | AL-04</em></p>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Likely Supportive</strong> (moderate confidence): Representative Aderholt is a veteran appropriator and a staunch advocate for NASA, particularly the Marshall Space Flight Center and the Artemis program. While his public record is dominated by human exploration and heavy-lift rockets, his membership in the Planetary Science Caucus and local manufacturing of science instruments for the Atmosphere Observing System provide a strong opening for advocates. To be effective, frame NASA science as a critical pillar of Alabama's space economy and a necessary partner to the human exploration goals he champions. Be aware that while he supports the broad NASA budget, he has not yet signed on to specific Science Mission Directorate funding letters.</p></blockquote>
+
 <h2 id="nasa-budget-support">NASA Budget Support</h2>
 <blockquote>
 <ul>
 <li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
 </ul>
-</blockquote>
-<h2 id="bottom-line">Bottom Line</h2>
-<blockquote>
-<p><strong>Likely Supportive</strong> (moderate confidence): Representative Aderholt is a veteran appropriator and a staunch advocate for NASA, particularly the Marshall Space Flight Center and the Artemis program. While his public record is dominated by human exploration and heavy-lift rockets, his membership in the Planetary Science Caucus and local manufacturing of science instruments for the Atmosphere Observing System provide a strong opening for advocates. To be effective, frame NASA science as a critical pillar of Alabama's space economy and a necessary partner to the human exploration goals he champions. Be aware that while he supports the broad NASA budget, he has not yet signed on to specific Science Mission Directorate funding letters.</p>
 </blockquote>
 <h2 id="meeting-strategy">Meeting Strategy</h2>
 <p><strong>Lead with:</strong> Science as an Alabama Manufacturing Powerhouse</p>
@@ -317,7 +344,7 @@
 <li>You might find it useful to thank him specifically for his membership in the Planetary Science Caucus as a starting point for discussing the need for a strong Science Mission Directorate topline.</li>
 <li>Think about whether to mention the Atmosphere Observing System (AOS) specifically as a local manufacturing success story, as this connects Earth science directly to his district's industrial base.</li>
 </ul>
-<h2 id="relevant-committees">Relevant Committees</h2>
+<h2 id="committees">Committees</h2>
 <ul>
 <li><strong>Member, House Committee on Appropriations</strong><ul>
 <li>Agriculture, Rural Development, Food and Drug Administration, and Related Agencies</li>
@@ -343,31 +370,34 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p>"The Planetary Science Congressional Caucus," The Planetary Society, January 1, 2025, https://planetary.org/advocacy/the-planetary-science-congressional-caucus.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>"The Planetary Science Congressional Caucus," The Planetary Society, January 1, 2025, <a href="https://planetary.org/advocacy/the-planetary-science-congressional-caucus">https://planetary.org/advocacy/the-planetary-science-congressional-caucus</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>"Issues: NASA," Official Member Website, February 25, 2026, https://aderholt.house.gov/issues/nasa.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>"Issues: NASA," Official Member Website, February 25, 2026, <a href="https://aderholt.house.gov/issues/nasa">https://aderholt.house.gov/issues/nasa</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>"Planetary Society Internal Tracking Document," The Planetary Society, congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p>"Aderholt Welcomes New Marshall Space Flight Center Director," Official Member Website, February 5, 2024, https://aderholt.house.gov/media-center/press-releases/aderholt-welcomes-new-marshall-space-flight-center-director.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>"Aderholt Welcomes New Marshall Space Flight Center Director," Official Member Website, February 5, 2024, <a href="https://aderholt.house.gov/media-center/press-releases/aderholt-welcomes-new-marshall-space-flight-center-director">https://aderholt.house.gov/media-center/press-releases/aderholt-welcomes-new-marshall-space-flight-center-director</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>"NASA Marshall to Lead Artemis Program's Human Lunar Lander Development," NASA, August 16, 2019, https://nasa.gov/news-release/nasa-marshall-to-lead-artemis-programs-human-lunar-lander-development/.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p>"NASA Marshall to Lead Artemis Program's Human Lunar Lander Development," NASA, August 16, 2019, <a href="https://nasa.gov/news-release/nasa-marshall-to-lead-artemis-programs-human-lunar-lander-development/">https://nasa.gov/news-release/nasa-marshall-to-lead-artemis-programs-human-lunar-lander-development/</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:6">
-<p>"Issues: NASA (Expanded statements)," Official Member Website, November 16, 2022, https://aderholt.house.gov/issues/nasa.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+<p>"Issues: NASA (Expanded statements)," Official Member Website, November 16, 2022, <a href="https://aderholt.house.gov/issues/nasa">https://aderholt.house.gov/issues/nasa</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
 </li>
 <li id="fn:7">
-<p>"Aderholt Secures More Than $42 Million in Projects for Fourth District," Official Member Website, March 4, 2024, https://aderholt.house.gov/media-center/press-releases/aderholt-secures-more-42-million-projects-fourth-district-republicans.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+<p>"Aderholt Secures More Than $42 Million in Projects for Fourth District," Official Member Website, March 4, 2024, <a href="https://aderholt.house.gov/media-center/press-releases/aderholt-secures-more-42-million-projects-fourth-district-republicans">https://aderholt.house.gov/media-center/press-releases/aderholt-secures-more-42-million-projects-fourth-district-republicans</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
 </li>
 <li id="fn:8">
-<p>"NASA Lays Off ISS Workers at Marshall Space Flight Center," Payload Space, November 3, 2025, https://payloadspace.com/nasa-lays-off-iss-workers-at-marshall-space-flight-center/.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+<p>"NASA Lays Off ISS Workers at Marshall Space Flight Center," Payload Space, November 3, 2025, <a href="https://payloadspace.com/nasa-lays-off-iss-workers-at-marshall-space-flight-center/">https://payloadspace.com/nasa-lays-off-iss-workers-at-marshall-space-flight-center/</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
 </li>
 <li id="fn:9">
-<p>"WHNT News 19: NASA cuts ISS jobs at Marshall Space Flight Center," WHNT, October 31, 2025, https://youtube.com/watch?v=QG-w7fPnTpU.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+<p>"WHNT News 19: NASA cuts ISS jobs at Marshall Space Flight Center," WHNT, October 31, 2025, <a href="https://youtube.com/watch?v=QG-w7fPnTpU">https://youtube.com/watch?v=QG-w7fPnTpU</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>"AL-04 NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/AL/04/AL-04-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/AL/04/AL-04-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

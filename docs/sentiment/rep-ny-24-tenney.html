@@ -24,6 +24,7 @@
       --tps-muted: #51606f;
       --tps-line: #d9dee5;
       --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
       --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
     }
     * {
@@ -121,6 +122,28 @@
     .advocacy-report-card blockquote p:last-child {
       margin-bottom: 0;
     }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
     .advocacy-report-card code {
       background: rgba(30, 36, 48, 0.08);
       padding: 0.1rem 0.32rem;
@@ -202,8 +225,10 @@
       margin-top: 0.65rem;
     }
     .advocacy-report-card .footnote-backref {
-      text-decoration: none;
-      margin-left: 0.25rem;
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
     }
     .tps-report-closing {
       margin-top: 1.25rem;
@@ -264,9 +289,11 @@
   <header class="tps-report-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
       <div class="container-planetary-responsive">
-        <a class="navbar-brand" href="../sentiment.html">
-          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
         </a>
+        
       </div>
     </nav>
   </header>
@@ -274,16 +301,16 @@
     <div class="container-planetary-responsive">
       <article class="advocacy-report-card">
         <h1 id="representative-claudia-tenney-r-ny-24">Representative Claudia Tenney (R-NY-24)</h1>
-<p><em>Representative | R | NY-24</em></p>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line-caution"><p><strong>Uncertain</strong> (moderate confidence): Representative Tenney is a member of the House Committee on Science, Space, and Technology, giving her a direct hand in NASA's authorization and oversight. While she has supported broad NASA budget bills, she has not yet signed on to specific letters advocating for the Science Mission Directorate's topline funding. Her district benefits from significant NASA investment, particularly in Mars exploration research at SUNY and astrophysics at Hobart & William Smith Colleges. Advocates should emphasize how NASA science funding directly supports high-tech jobs and academic research in New York's 24th district, while remaining aware of her past skepticism regarding climate science. The public record shows broad NASA relevance but little recent, specific evidence on Science Mission Directorate funding priorities. This is a heuristic-heavy assessment based more on institutional and political context than on direct recent SMD evidence.</p></blockquote>
+
 <h2 id="nasa-budget-support">NASA Budget Support</h2>
 <blockquote>
 <ul>
 <li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
 </ul>
-</blockquote>
-<h2 id="bottom-line">Bottom Line</h2>
-<blockquote>
-<p><strong>Uncertain</strong> (moderate confidence): Representative Tenney is a member of the House Committee on Science, Space, and Technology, giving her a direct hand in NASA's authorization and oversight. While she has supported broad NASA budget bills, she has not yet signed on to specific letters advocating for the Science Mission Directorate's topline funding. Her district benefits from significant NASA investment, particularly in Mars exploration research at SUNY and astrophysics at Hobart &amp; William Smith Colleges. Advocates should emphasize how NASA science funding directly supports high-tech jobs and academic research in New York's 24th district, while remaining aware of her past skepticism regarding climate science. The public record shows broad NASA relevance but little recent, specific evidence on Science Mission Directorate funding priorities. This is a heuristic-heavy assessment based more on institutional and political context than on direct recent SMD evidence.</p>
 </blockquote>
 <h2 id="meeting-strategy">Meeting Strategy</h2>
 <p><strong>Lead with:</strong> Leverage Committee Leadership and Local Research Impact</p>
@@ -310,7 +337,7 @@
 <li><strong>Evidence Gap:</strong> The public record shows broad NASA relevance but little recent, specific evidence on Science Mission Directorate funding priorities.<sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
 <li><strong>Ideological Barrier:</strong> Rep. Tenney has previously expressed skepticism regarding the scientific consensus on climate change, which may create friction for Earth science advocacy.<sup id="fnref5:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
 </ul>
-<h2 id="relevant-committees">Relevant Committees</h2>
+<h2 id="committees">Committees</h2>
 <ul>
 <li><strong>Member, House Committee on Science, Space, and Technology</strong><ul>
 <li>Energy</li>
@@ -340,7 +367,10 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>"Planetary Society Internal Tracking Document," The Planetary Society, congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>"NY-24 NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/NY/24/NY-24-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/NY/24/NY-24-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

@@ -24,6 +24,7 @@
       --tps-muted: #51606f;
       --tps-line: #d9dee5;
       --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
       --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
     }
     * {
@@ -121,6 +122,28 @@
     .advocacy-report-card blockquote p:last-child {
       margin-bottom: 0;
     }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
     .advocacy-report-card code {
       background: rgba(30, 36, 48, 0.08);
       padding: 0.1rem 0.32rem;
@@ -202,8 +225,10 @@
       margin-top: 0.65rem;
     }
     .advocacy-report-card .footnote-backref {
-      text-decoration: none;
-      margin-left: 0.25rem;
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
     }
     .tps-report-closing {
       margin-top: 1.25rem;
@@ -264,9 +289,11 @@
   <header class="tps-report-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
       <div class="container-planetary-responsive">
-        <a class="navbar-brand" href="../sentiment.html">
-          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
         </a>
+        
       </div>
     </nav>
   </header>
@@ -274,7 +301,11 @@
     <div class="container-planetary-responsive">
       <article class="advocacy-report-card">
         <h1 id="representative-lateefah-simon-d-ca-12">Representative Lateefah Simon (D-CA-12)</h1>
-<p><em>Representative | D | CA-12</em></p>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Likely Supportive</strong> (high confidence): Rep. Simon is a natural ally for NASA science due to the massive research footprint of UC Berkeley in her district, which manages major missions like THEMIS and ICON. While her primary legislative focus is on social justice and domestic welfare, she has already signaled direct support for the Science Mission Directorate by signing the FY27 funding letter. Advocates should frame NASA science as a driver of local high-tech jobs and a critical component of the federal research ecosystem she has pledged to protect. Be prepared to discuss how space science investments support broader scientific innovation and educational opportunities in the East Bay.</p></blockquote>
+
 <h2 id="nasa-budget-support">NASA Budget Support</h2>
 <blockquote>
 <p><strong>Direct SMD budget support signal</strong></p>
@@ -282,10 +313,6 @@
 <li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
 <li>$9B NASA Science letter signatory: <strong>FY27</strong></li>
 </ul>
-</blockquote>
-<h2 id="bottom-line">Bottom Line</h2>
-<blockquote>
-<p><strong>Likely Supportive</strong> (high confidence): Rep. Simon is a natural ally for NASA science due to the massive research footprint of UC Berkeley in her district, which manages major missions like THEMIS and ICON. While her primary legislative focus is on social justice and domestic welfare, she has already signaled direct support for the Science Mission Directorate by signing the FY27 funding letter. Advocates should frame NASA science as a driver of local high-tech jobs and a critical component of the federal research ecosystem she has pledged to protect. Be prepared to discuss how space science investments support broader scientific innovation and educational opportunities in the East Bay.</p>
 </blockquote>
 <h2 id="meeting-strategy">Meeting Strategy</h2>
 <p><strong>Lead with:</strong> Protecting the East Bay's Scientific Engine</p>
@@ -319,7 +346,7 @@
 <li>You might find it useful to mention her interest in small business contracting to discuss how NASA science missions like THEMIS and ICON support local innovation and specialized technical jobs.</li>
 <li>Think about whether you can connect her focus on disability rights to the importance of accessible data and inclusive science communication within NASA's outreach programs.</li>
 </ul>
-<h2 id="relevant-committees">Relevant Committees</h2>
+<h2 id="committees">Committees</h2>
 <ul>
 <li>Member, House Committee on Oversight and Government Reform<ul>
 <li>Federal Law Enforcement</li>
@@ -345,28 +372,31 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p>"Planetary Caucus FY2027 SMD Letter," U.S. House of Representatives / Planetary Caucus, March 13, 2026, https://aplu.org/wp-content/uploads/202603-planetary-caucus-fy2027-smd-letter-signed.pdf.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>"Planetary Caucus FY2027 SMD Letter," U.S. House of Representatives / Planetary Caucus, March 13, 2026, <a href="https://aplu.org/wp-content/uploads/202603-planetary-caucus-fy2027-smd-letter-signed.pdf">https://aplu.org/wp-content/uploads/202603-planetary-caucus-fy2027-smd-letter-signed.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>"Planetary Society Internal Tracking Document," The Planetary Society, congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>"Congresswoman Simon Visits UC Berkeley Lab with Democratic Caucus Vice Chair Ted Lieu and Opposes Attacks to NIH Funding," U.S. House of Representatives, February 24, 2025, https://simon.house.gov/media/press-releases/congresswoman-simon-visits-uc-berkeley-lab-democratic-caucus-vice-chair-ted.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>"Congresswoman Simon Visits UC Berkeley Lab with Democratic Caucus Vice Chair Ted Lieu and Opposes Attacks to NIH Funding," U.S. House of Representatives, February 24, 2025, <a href="https://simon.house.gov/media/press-releases/congresswoman-simon-visits-uc-berkeley-lab-democratic-caucus-vice-chair-ted">https://simon.house.gov/media/press-releases/congresswoman-simon-visits-uc-berkeley-lab-democratic-caucus-vice-chair-ted</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p>"During campus visit, U.S. representatives vow to fight freeze on federal research funding," UC Berkeley, February 24, 2025, https://news.berkeley.edu/2025/02/24/during-campus-visit-u-s-representatives-vow-to-fight-freeze-on-federal-research-funding/.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>"During campus visit, U.S. representatives vow to fight freeze on federal research funding," UC Berkeley, February 24, 2025, <a href="https://news.berkeley.edu/2025/02/24/during-campus-visit-u-s-representatives-vow-to-fight-freeze-on-federal-research-funding/">https://news.berkeley.edu/2025/02/24/during-campus-visit-u-s-representatives-vow-to-fight-freeze-on-federal-research-funding/</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>"Congresswoman Simon Announces Over $2.7 Million in Funding for Scientific Research in the East Bay," U.S. House of Representatives, April 3, 2025, https://simon.house.gov/media/press-releases/congresswoman-simon-announces-over-27-million-funding-scientific-research-east.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p>"Congresswoman Simon Announces Over $2.7 Million in Funding for Scientific Research in the East Bay," U.S. House of Representatives, April 3, 2025, <a href="https://simon.house.gov/media/press-releases/congresswoman-simon-announces-over-27-million-funding-scientific-research-east">https://simon.house.gov/media/press-releases/congresswoman-simon-announces-over-27-million-funding-scientific-research-east</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:6">
-<p>"Issues | Representative Lateefah Simon," U.S. House of Representatives, https://simon.house.gov/issues?page=1.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+<p>"Issues | Representative Lateefah Simon," U.S. House of Representatives, <a href="https://simon.house.gov/issues?page=1">https://simon.house.gov/issues?page=1</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
 </li>
 <li id="fn:7">
-<p>"Lateefah's Priorities," Lateefah Simon for Congress, https://lateefahsimon.com/priorities.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+<p>"Lateefah's Priorities," Lateefah Simon for Congress, <a href="https://lateefahsimon.com/priorities">https://lateefahsimon.com/priorities</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
 </li>
 <li id="fn:8">
-<p>"H.R. 3736 - The Small Business Representation in Contracting Rulemaking Act," PoliScore, June 4, 2025, https://poliscore.us/2026/bill/hr/3736.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+<p>"H.R. 3736 - The Small Business Representation in Contracting Rulemaking Act," PoliScore, June 4, 2025, <a href="https://poliscore.us/2026/bill/hr/3736">https://poliscore.us/2026/bill/hr/3736</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"CA-12 NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/CA/12/CA-12-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/CA/12/CA-12-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

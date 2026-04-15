@@ -24,6 +24,7 @@
       --tps-muted: #51606f;
       --tps-line: #d9dee5;
       --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
       --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
     }
     * {
@@ -121,6 +122,28 @@
     .advocacy-report-card blockquote p:last-child {
       margin-bottom: 0;
     }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
     .advocacy-report-card code {
       background: rgba(30, 36, 48, 0.08);
       padding: 0.1rem 0.32rem;
@@ -202,8 +225,10 @@
       margin-top: 0.65rem;
     }
     .advocacy-report-card .footnote-backref {
-      text-decoration: none;
-      margin-left: 0.25rem;
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
     }
     .tps-report-closing {
       margin-top: 1.25rem;
@@ -264,9 +289,11 @@
   <header class="tps-report-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
       <div class="container-planetary-responsive">
-        <a class="navbar-brand" href="../sentiment.html">
-          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
         </a>
+        
       </div>
     </nav>
   </header>
@@ -274,16 +301,16 @@
     <div class="container-planetary-responsive">
       <article class="advocacy-report-card">
         <h1 id="senator-raphael-g-warnock-d-ga">Senator Raphael G. Warnock (D-GA)</h1>
-<p><em>Senator | D | GA</em></p>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Persuadable</strong> (low confidence): Senator Warnock is a persuadable advocate who views federal research through the lens of economic development and STEM equity. While he has not yet signed onto specific Science Mission Directorate funding letters, his support for the broader NASA budget and his focus on Georgia's 'innovation hubs' provide a clear path for advocates. Note that his current record primarily reflects adjacent STEM and manufacturing support rather than direct NASA science advocacy. You should emphasize how NASA science funding supports high-tech jobs and research capacity at Georgia institutions, while being prepared to address his interest in ensuring space activities are balanced with environmental protections. The public record shows broad NASA relevance but little recent, specific evidence on Science Mission Directorate funding priorities. This is a heuristic-heavy assessment based more on institutional and political context than on direct recent SMD evidence.</p></blockquote>
+
 <h2 id="nasa-budget-support">NASA Budget Support</h2>
 <blockquote>
 <ul>
 <li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
 </ul>
-</blockquote>
-<h2 id="bottom-line">Bottom Line</h2>
-<blockquote>
-<p><strong>Persuadable</strong> (low confidence): Senator Warnock is a persuadable advocate who views federal research through the lens of economic development and STEM equity. While he has not yet signed onto specific Science Mission Directorate funding letters, his support for the broader NASA budget and his focus on Georgia's 'innovation hubs' provide a clear path for advocates. Note that his current record primarily reflects adjacent STEM and manufacturing support rather than direct NASA science advocacy. You should emphasize how NASA science funding supports high-tech jobs and research capacity at Georgia institutions, while being prepared to address his interest in ensuring space activities are balanced with environmental protections. The public record shows broad NASA relevance but little recent, specific evidence on Science Mission Directorate funding priorities. This is a heuristic-heavy assessment based more on institutional and political context than on direct recent SMD evidence.</p>
 </blockquote>
 <h2 id="meeting-strategy">Meeting Strategy</h2>
 <p><strong>Lead with:</strong> NASA Science as a Georgia Research Engine</p>
@@ -310,7 +337,7 @@
 <li><strong>Evidence Gap:</strong> The public record shows broad NASA relevance but little recent, specific evidence on Science Mission Directorate funding priorities.<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
 <li><strong>Adjacent Interest:</strong> Environmental concerns regarding Spaceport Camden suggest the Senator prioritizes regulatory oversight and environmental protection in space-related projects.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
 </ul>
-<h2 id="relevant-committees">Relevant Committees</h2>
+<h2 id="committees">Committees</h2>
 <ul>
 <li>Member, Senate Committee on Agriculture, Nutrition, and Forestry<ul>
 <li>Conservation, Forestry, Natural Resources, and Biotechnology</li>
@@ -351,19 +378,28 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>"Planetary Society Internal Tracking Document," The Planetary Society, congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>"Senator Reverend Warnock Announces Robust Investment in Georgia Tech Regional Tech Hub Pilot Program," U.S. Senate, September 2, 2022, https://warnock.senate.gov/newsroom/press-releases/senator-reverend-warnock-champion-of-workforce-development-investments-announces-robust-investment-in-georgia-tech-regional-tech-hub-pilot-program/.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>"Senator Reverend Warnock Announces Robust Investment in Georgia Tech Regional Tech Hub Pilot Program," U.S. Senate, September 2, 2022, <a href="https://warnock.senate.gov/newsroom/press-releases/senator-reverend-warnock-champion-of-workforce-development-investments-announces-robust-investment-in-georgia-tech-regional-tech-hub-pilot-program/">https://warnock.senate.gov/newsroom/press-releases/senator-reverend-warnock-champion-of-workforce-development-investments-announces-robust-investment-in-georgia-tech-regional-tech-hub-pilot-program/</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>"Warnock, Britt Introduce Bipartisan Bill to Streamline Federal Grants for HBCUs," U.S. Senate, March 25, 2026, https://warnock.senate.gov/newsroom/press-releases/warnock-britt-introduce-bipartisan-bill-to-streamline-federal-grants-for-hbcus/.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>"Warnock, Britt Introduce Bipartisan Bill to Streamline Federal Grants for HBCUs," U.S. Senate, March 25, 2026, <a href="https://warnock.senate.gov/newsroom/press-releases/warnock-britt-introduce-bipartisan-bill-to-streamline-federal-grants-for-hbcus/">https://warnock.senate.gov/newsroom/press-releases/warnock-britt-introduce-bipartisan-bill-to-streamline-federal-grants-for-hbcus/</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p>"Warnock letter to FAA re Spaceport Camden," U.S. Senate, May 17, 2021, https://warnock.senate.gov/wp-content/uploads/2021/05/05.17.2021-Warnock-letter-to-FAA-re-Spaceport-Camden.pdf.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>"Warnock letter to FAA re Spaceport Camden," U.S. Senate, May 17, 2021, <a href="https://warnock.senate.gov/wp-content/uploads/2021/05/05.17.2021-Warnock-letter-to-FAA-re-Spaceport-Camden.pdf">https://warnock.senate.gov/wp-content/uploads/2021/05/05.17.2021-Warnock-letter-to-FAA-re-Spaceport-Camden.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>"Senator Reverend Warnock Pushes Biden Administration to Fully Fund Regional Tech Hubs," U.S. Senate, February 15, 2023, https://warnock.senate.gov/newsroom/press-releases/senator-reverend-warnock-pushes-biden-administration-to-fully-fund-regional-tech-hubs-potentially-supporting-georgias-growing-tech-and-innovation-economies/.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p>"Senator Reverend Warnock Pushes Biden Administration to Fully Fund Regional Tech Hubs," U.S. Senate, February 15, 2023, <a href="https://warnock.senate.gov/newsroom/press-releases/senator-reverend-warnock-pushes-biden-administration-to-fully-fund-regional-tech-hubs-potentially-supporting-georgias-growing-tech-and-innovation-economies/">https://warnock.senate.gov/newsroom/press-releases/senator-reverend-warnock-pushes-biden-administration-to-fully-fund-regional-tech-hubs-potentially-supporting-georgias-growing-tech-and-innovation-economies/</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>"Raphael Warnock's Voting Records," Vote Smart, December 17, 2025, <a href="https://justfacts.votesmart.org/candidate/key-votes/189794/raphael-warnock/?p=3">https://justfacts.votesmart.org/candidate/key-votes/189794/raphael-warnock/?p=3</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"On the Issues - Reverend Raphael Warnock," Warnock for Georgia, <a href="https://warnockforgeorgia.com/issues/">https://warnockforgeorgia.com/issues/</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"GA NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/GA/GA-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/GA/GA-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

@@ -24,6 +24,7 @@
       --tps-muted: #51606f;
       --tps-line: #d9dee5;
       --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
       --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
     }
     * {
@@ -121,6 +122,28 @@
     .advocacy-report-card blockquote p:last-child {
       margin-bottom: 0;
     }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
     .advocacy-report-card code {
       background: rgba(30, 36, 48, 0.08);
       padding: 0.1rem 0.32rem;
@@ -202,8 +225,10 @@
       margin-top: 0.65rem;
     }
     .advocacy-report-card .footnote-backref {
-      text-decoration: none;
-      margin-left: 0.25rem;
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
     }
     .tps-report-closing {
       margin-top: 1.25rem;
@@ -264,9 +289,11 @@
   <header class="tps-report-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
       <div class="container-planetary-responsive">
-        <a class="navbar-brand" href="../sentiment.html">
-          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
         </a>
+        
       </div>
     </nav>
   </header>
@@ -274,16 +301,16 @@
     <div class="container-planetary-responsive">
       <article class="advocacy-report-card">
         <h1 id="senator-tim-scott-r-sc">Senator Tim Scott (R-SC)</h1>
-<p><em>Senator | R | SC</em></p>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line-caution"><p><strong>Uncertain</strong> (moderate confidence): Senator Scott is a reliable supporter of NASA's broad mission and the Artemis program, but his specific stance on Science Mission Directorate (SMD) funding remains undefined. His office is highly responsive to STEM workforce and economic competitiveness arguments, especially those involving South Carolina's universities. Advocates should focus on connecting NASA science missions to the $15.3 million in federal science obligations flowing into the state, framing planetary and heliophysics research as a vital engine for the local high-tech workforce he champions. The public record shows broad NASA relevance but little recent, specific evidence on Science Mission Directorate funding priorities. This is a heuristic-heavy assessment based more on institutional and political context than on direct recent SMD evidence.</p></blockquote>
+
 <h2 id="nasa-budget-support">NASA Budget Support</h2>
 <blockquote>
 <ul>
 <li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
 </ul>
-</blockquote>
-<h2 id="bottom-line">Bottom Line</h2>
-<blockquote>
-<p><strong>Uncertain</strong> (moderate confidence): Senator Scott is a reliable supporter of NASA's broad mission and the Artemis program, but his specific stance on Science Mission Directorate (SMD) funding remains undefined. His office is highly responsive to STEM workforce and economic competitiveness arguments, especially those involving South Carolina's universities. Advocates should focus on connecting NASA science missions to the $15.3 million in federal science obligations flowing into the state, framing planetary and heliophysics research as a vital engine for the local high-tech workforce he champions. The public record shows broad NASA relevance but little recent, specific evidence on Science Mission Directorate funding priorities. This is a heuristic-heavy assessment based more on institutional and political context than on direct recent SMD evidence.</p>
 </blockquote>
 <h2 id="meeting-strategy">Meeting Strategy</h2>
 <p><strong>Lead with:</strong> The Engine for South Carolina's STEM Workforce</p>
@@ -310,7 +337,7 @@
 <li><strong>Evidence Gap:</strong> The public record shows broad NASA relevance but little recent, specific evidence on Science Mission Directorate funding priorities.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> <sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
 <li><strong>Political Constraint:</strong> The Senator did not sign the FY26 or FY27 Science Mission Directorate funding letters, suggesting he may not yet view specific SMD topline increases as a personal legislative priority.<sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
 </ul>
-<h2 id="relevant-committees">Relevant Committees</h2>
+<h2 id="committees">Committees</h2>
 <ul>
 <li>Chairman, Senate Committee on Banking, Housing, and Urban Affairs</li>
 <li>Ex Officio, Senate Committee on Banking, Housing, and Urban Affairs<ul>
@@ -348,22 +375,31 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>"Planetary Society Internal Tracking Document," The Planetary Society, congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>"Tim Scott Runs for President: What Would That Mean for NASA?," Medium, July 6, 2023, https://medium.com/@patrick.chase.814/tim-scott-runs-for-president-what-would-that-mean-for-nasa-e285ca511701.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>"Tim Scott Runs for President: What Would That Mean for NASA?," Medium, July 6, 2023, <a href="https://medium.com/@patrick.chase.814/tim-scott-runs-for-president-what-would-that-mean-for-nasa-e285ca511701">https://medium.com/@patrick.chase.814/tim-scott-runs-for-president-what-would-that-mean-for-nasa-e285ca511701</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>"Leadership That is Out of This World," U.S. Senator Tim Scott, September 16, 2022, https://scott.senate.gov/media-center/sweet-tea/leadership-that-is-out-of-this-world/.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>"Leadership That is Out of This World," U.S. Senator Tim Scott, September 16, 2022, <a href="https://scott.senate.gov/media-center/sweet-tea/leadership-that-is-out-of-this-world/">https://scott.senate.gov/media-center/sweet-tea/leadership-that-is-out-of-this-world/</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p>"Senator Tim Scott Introduces Southern Energy Access Jobs Act as Part of Opportunity Agenda," U.S. Senator Tim Scott, October 5, 2017, https://scott.senate.gov/media-center/press-releases/senator-tim-scott-introduces-southern-energy-access-jobs-act-as-part-of-opportunity-agenda/.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>"Senator Tim Scott Introduces Southern Energy Access Jobs Act as Part of Opportunity Agenda," U.S. Senator Tim Scott, October 5, 2017, <a href="https://scott.senate.gov/media-center/press-releases/senator-tim-scott-introduces-southern-energy-access-jobs-act-as-part-of-opportunity-agenda/">https://scott.senate.gov/media-center/press-releases/senator-tim-scott-introduces-southern-energy-access-jobs-act-as-part-of-opportunity-agenda/</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>"Sens. Scott, Rosen, Colleagues Introduce Bipartisan Bill to Strengthen U.S. Critical Mineral Mining Workforce," U.S. Senator Tim Scott, January 15, 2026, https://scott.senate.gov/media-center/press-releases/sens-scott-rosen-colleagues-introduce-bipartisan-bill-to-strengthen-u-s-critical-mineral-mining-workforce/.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p>"Sens. Scott, Rosen, Colleagues Introduce Bipartisan Bill to Strengthen U.S. Critical Mineral Mining Workforce," U.S. Senator Tim Scott, January 15, 2026, <a href="https://scott.senate.gov/media-center/press-releases/sens-scott-rosen-colleagues-introduce-bipartisan-bill-to-strengthen-u-s-critical-mineral-mining-workforce/">https://scott.senate.gov/media-center/press-releases/sens-scott-rosen-colleagues-introduce-bipartisan-bill-to-strengthen-u-s-critical-mineral-mining-workforce/</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:6">
-<p>"Sen. Tim Scott Inspires Students at South Carolina's "Introduce a Girl to Engineering Day"," Engineering Inc., February 24, 2026, https://engineeringinc.acec.org/blog/sen-tim-scott-inspires-students-at-south-carolinas-introduce-a-girl-to-engineering-day/.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+<p>"Sen. Tim Scott Inspires Students at South Carolina's "Introduce a Girl to Engineering Day"," Engineering Inc., February 24, 2026, <a href="https://engineeringinc.acec.org/blog/sen-tim-scott-inspires-students-at-south-carolinas-introduce-a-girl-to-engineering-day/">https://engineeringinc.acec.org/blog/sen-tim-scott-inspires-students-at-south-carolinas-introduce-a-girl-to-engineering-day/</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"Tim Scott Children: Shaping Future Leaders and Empowering Communities," East West Studios, April 14, 2026, <a href="https://lists.eastweststudios.com/lis/tim-scott-children-shaping-future-leaders-and-empowering-communities">https://lists.eastweststudios.com/lis/tim-scott-children-shaping-future-leaders-and-empowering-communities</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>"Launch with NASA Complete Winning Application," Charleston County Government, June 21, 2019, <a href="https://sccounties.org/sites/default/files/uploads/files/launch_with_nasa_complete_winning_application.pdf">https://sccounties.org/sites/default/files/uploads/files/launch_with_nasa_complete_winning_application.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"SC NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/SC/SC-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/SC/SC-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

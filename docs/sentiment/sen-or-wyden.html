@@ -24,6 +24,7 @@
       --tps-muted: #51606f;
       --tps-line: #d9dee5;
       --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
       --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
     }
     * {
@@ -121,6 +122,28 @@
     .advocacy-report-card blockquote p:last-child {
       margin-bottom: 0;
     }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
     .advocacy-report-card code {
       background: rgba(30, 36, 48, 0.08);
       padding: 0.1rem 0.32rem;
@@ -202,8 +225,10 @@
       margin-top: 0.65rem;
     }
     .advocacy-report-card .footnote-backref {
-      text-decoration: none;
-      margin-left: 0.25rem;
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
     }
     .tps-report-closing {
       margin-top: 1.25rem;
@@ -264,9 +289,11 @@
   <header class="tps-report-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
       <div class="container-planetary-responsive">
-        <a class="navbar-brand" href="../sentiment.html">
-          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
         </a>
+        
       </div>
     </nav>
   </header>
@@ -274,7 +301,11 @@
     <div class="container-planetary-responsive">
       <article class="advocacy-report-card">
         <h1 id="senator-ron-wyden-d-or">Senator Ron Wyden (D-OR)</h1>
-<p><em>Senator | D | OR</em></p>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Likely Supportive</strong> (high confidence): Senator Wyden is a consistent supporter of NASA's Science Mission Directorate, backed by significant federal investment in Oregon's research universities. His support is particularly strong for Earth science and oceanography, which provide critical data for Oregon's coastal safety and natural resource management. Advocates should frame NASA science as a vital tool for data-driven policy and university-led innovation, areas where the Senator already shows deep commitment. While he is a reliable vote for science funding, his primary legislative focus remains on technology and privacy, so connecting space science to broader scientific discovery and STEM workforce development is the most effective path.</p></blockquote>
+
 <h2 id="nasa-budget-support">NASA Budget Support</h2>
 <blockquote>
 <p><strong>Strong SMD budget signal</strong></p>
@@ -282,10 +313,6 @@
 <li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
 <li>$9B NASA Science letter signatory: <strong>FY26, FY27</strong></li>
 </ul>
-</blockquote>
-<h2 id="bottom-line">Bottom Line</h2>
-<blockquote>
-<p><strong>Likely Supportive</strong> (high confidence): Senator Wyden is a consistent supporter of NASA's Science Mission Directorate, backed by significant federal investment in Oregon's research universities. His support is particularly strong for Earth science and oceanography, which provide critical data for Oregon's coastal safety and natural resource management. Advocates should frame NASA science as a vital tool for data-driven policy and university-led innovation, areas where the Senator already shows deep commitment. While he is a reliable vote for science funding, his primary legislative focus remains on technology and privacy, so connecting space science to broader scientific discovery and STEM workforce development is the most effective path.</p>
 </blockquote>
 <h2 id="meeting-strategy">Meeting Strategy</h2>
 <p><strong>Lead with:</strong> The Champion of Data-Driven Discovery</p>
@@ -319,7 +346,7 @@
 <li>You might find it useful to frame NASA science as a protector of 'scientific scrutiny,' a phrase the Senator has used to defend the integrity of satellite data against commercial interference.</li>
 <li>Think about whether to emphasize his role on the Budget Committee; he is a key gatekeeper who can protect the Science Mission Directorate from the massive cuts currently being proposed.</li>
 </ul>
-<h2 id="relevant-committees">Relevant Committees</h2>
+<h2 id="committees">Committees</h2>
 <ul>
 <li>Member, Senate Committee on Energy and Natural Resources<ul>
 <li>Energy</li>
@@ -357,28 +384,31 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p>"Fiscal Year 2026 NASA Science Mission Directorate Senate Appropriations Letter," Office of Senator Mark Kelly, May 22, 2025, https://kelly.senate.gov/wp-content/uploads/2026/01/NASA-SMD.pdf.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>"Fiscal Year 2026 NASA Science Mission Directorate Senate Appropriations Letter," Office of Senator Mark Kelly, May 22, 2025, <a href="https://kelly.senate.gov/wp-content/uploads/2026/01/NASA-SMD.pdf">https://kelly.senate.gov/wp-content/uploads/2026/01/NASA-SMD.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>"Planetary Society Internal Tracking Document," The Planetary Society, congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>"Wyden, Merkley Announce $2.35 Million Federal Investment to Oregon State University for Health Research," U.S. Senator Ron Wyden, August 26, 2024, https://wyden.senate.gov/news/press-releases/wyden-merkley-announce-235-million-federal-investment-to-oregon-state-university-for-health-research?utm_source=miragenews&amp;utm_medium=miragenews&amp;utm_campaign=news.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>"Wyden, Merkley Announce $2.35 Million Federal Investment to Oregon State University for Health Research," U.S. Senator Ron Wyden, August 26, 2024, <a href="https://wyden.senate.gov/news/press-releases/wyden-merkley-announce-235-million-federal-investment-to-oregon-state-university-for-health-research?utm_source=miragenews&amp;utm_medium=miragenews&amp;utm_campaign=news">https://wyden.senate.gov/news/press-releases/wyden-merkley-announce-235-million-federal-investment-to-oregon-state-university-for-health-research?utm_source=miragenews&amp;utm_medium=miragenews&amp;utm_campaign=news</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p>"Planetary Society Dashboard: Senator Ron Wyden (D-OR)," The Planetary Society, April 15, 2026, https://dashboards.planetary.org/sentiment/OR-Wyden.html.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>"Planetary Society Dashboard: Senator Ron Wyden (D-OR)," The Planetary Society, April 15, 2026, <a href="https://dashboards.planetary.org/sentiment/OR-Wyden.html">https://dashboards.planetary.org/sentiment/OR-Wyden.html</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>"Issues | U.S. Senator Ron Wyden of Oregon," U.S. Senator Ron Wyden, April 15, 2026, https://wyden.senate.gov/issues.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p>"Issues | U.S. Senator Ron Wyden of Oregon," U.S. Senator Ron Wyden, April 15, 2026, <a href="https://wyden.senate.gov/issues">https://wyden.senate.gov/issues</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:6">
-<p>"Oregon Delegation Announces $45 Million Award to Oregon State University-led Regional Tech Hub For Microfludics," U.S. Senator Ron Wyden, January 14, 2025, https://wyden.senate.gov/news/press-releases/oregon-delegation-announces-45-million-award-to-oregon-state-university-led-regional-tech-hub-for-microfludics.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+<p>"Oregon Delegation Announces $45 Million Award to Oregon State University-led Regional Tech Hub For Microfludics," U.S. Senator Ron Wyden, January 14, 2025, <a href="https://wyden.senate.gov/news/press-releases/oregon-delegation-announces-45-million-award-to-oregon-state-university-led-regional-tech-hub-for-microfludics">https://wyden.senate.gov/news/press-releases/oregon-delegation-announces-45-million-award-to-oregon-state-university-led-regional-tech-hub-for-microfludics</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
 </li>
 <li id="fn:7">
-<p>"Oregon Fiscal Year 2027 Community-initiated Project Guidance," U.S. Senators Ron Wyden and Jeff Merkley, January 21, 2026, https://orcities.org/download_file/view/7ad23f96-9b4d-49e5-ae22-3ba0b8954b89/2513.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+<p>"Oregon Fiscal Year 2027 Community-initiated Project Guidance," U.S. Senators Ron Wyden and Jeff Merkley, January 21, 2026, <a href="https://orcities.org/download_file/view/7ad23f96-9b4d-49e5-ae22-3ba0b8954b89/2513">https://orcities.org/download_file/view/7ad23f96-9b4d-49e5-ae22-3ba0b8954b89/2513</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
 </li>
 <li id="fn:8">
-<p>"Wyden and Cantwell to FCC: Don't Ignore NASA, NOAA &amp; Navy Concerns on 5G Auction," U.S. Senator Ron Wyden, May 14, 2019, https://wyden.senate.gov/news/press-releases/wyden-and-cantwell-to-fcc-dont-ignore-nasa-noaa-and-navy-concerns-on-5g-auction.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+<p>"Wyden and Cantwell to FCC: Don't Ignore NASA, NOAA &amp; Navy Concerns on 5G Auction," U.S. Senator Ron Wyden, May 14, 2019, <a href="https://wyden.senate.gov/news/press-releases/wyden-and-cantwell-to-fcc-dont-ignore-nasa-noaa-and-navy-concerns-on-5g-auction">https://wyden.senate.gov/news/press-releases/wyden-and-cantwell-to-fcc-dont-ignore-nasa-noaa-and-navy-concerns-on-5g-auction</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>"OR NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/OR/OR-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/OR/OR-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

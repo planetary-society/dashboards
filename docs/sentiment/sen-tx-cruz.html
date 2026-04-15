@@ -24,6 +24,7 @@
       --tps-muted: #51606f;
       --tps-line: #d9dee5;
       --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
       --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
     }
     * {
@@ -121,6 +122,28 @@
     .advocacy-report-card blockquote p:last-child {
       margin-bottom: 0;
     }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
     .advocacy-report-card code {
       background: rgba(30, 36, 48, 0.08);
       padding: 0.1rem 0.32rem;
@@ -202,8 +225,10 @@
       margin-top: 0.65rem;
     }
     .advocacy-report-card .footnote-backref {
-      text-decoration: none;
-      margin-left: 0.25rem;
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
     }
     .tps-report-closing {
       margin-top: 1.25rem;
@@ -264,9 +289,11 @@
   <header class="tps-report-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
       <div class="container-planetary-responsive">
-        <a class="navbar-brand" href="../sentiment.html">
-          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
         </a>
+        
       </div>
     </nav>
   </header>
@@ -274,16 +301,16 @@
     <div class="container-planetary-responsive">
       <article class="advocacy-report-card">
         <h1 id="senator-ted-cruz-r-tx">Senator Ted Cruz (R-TX)</h1>
-<p><em>Senator | R | TX</em></p>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Champion</strong> (high confidence): Senator Cruz is a powerful ally who views NASA science through the lens of national security and the 'space race' with China. While his primary focus is often human exploration, he has taken direct legislative action to protect the Science Mission Directorate, specifically shielding the Great Observatories from premature cuts and funding Mars communications. Advocates should frame science missions as essential tools for maintaining American technological supremacy and protecting the planet from near-Earth objects. Be prepared for his focus on cost-discipline, as he has mandated strict caps on programs like Mars Sample Return.</p></blockquote>
+
 <h2 id="nasa-budget-support">NASA Budget Support</h2>
 <blockquote>
 <ul>
 <li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
 </ul>
-</blockquote>
-<h2 id="bottom-line">Bottom Line</h2>
-<blockquote>
-<p><strong>Champion</strong> (high confidence): Senator Cruz is a powerful ally who views NASA science through the lens of national security and the 'space race' with China. While his primary focus is often human exploration, he has taken direct legislative action to protect the Science Mission Directorate, specifically shielding the Great Observatories from premature cuts and funding Mars communications. Advocates should frame science missions as essential tools for maintaining American technological supremacy and protecting the planet from near-Earth objects. Be prepared for his focus on cost-discipline, as he has mandated strict caps on programs like Mars Sample Return.</p>
 </blockquote>
 <h2 id="meeting-strategy">Meeting Strategy</h2>
 <p><strong>Lead with:</strong> Securing American Leadership in the Second Space Race</p>
@@ -318,7 +345,7 @@
 <li>You might find it useful to mention the importance of the Astromaterials Research and Exploration Science (ARES) Division at Johnson Space Center to highlight your support for local Texas expertise.</li>
 <li>Think about whether to bring up the Habitable Worlds Observatory, as local Texas astronomers have previously noted its absence in recent authorization language.</li>
 </ul>
-<h2 id="relevant-committees">Relevant Committees</h2>
+<h2 id="committees">Committees</h2>
 <ul>
 <li><strong>Chairman, Senate Committee on Commerce, Science, and Transportation</strong></li>
 <li><strong>Ex Officio, Senate Committee on Commerce, Science, and Transportation</strong><ul>
@@ -364,34 +391,40 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p>"Senate Committee Clears New NASA Authorization Bill, Calls for Moon Base," SpacePolicyOnline.com, March 4, 2026, https://spacepolicyonline.com/news/senate-committee-clears-new-nasa-authorization-bill-calls-for-moon-base/.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>"Senate Committee Clears New NASA Authorization Bill, Calls for Moon Base," SpacePolicyOnline.com, March 4, 2026, <a href="https://spacepolicyonline.com/news/senate-committee-clears-new-nasa-authorization-bill-calls-for-moon-base/">https://spacepolicyonline.com/news/senate-committee-clears-new-nasa-authorization-bill-calls-for-moon-base/</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>"US risks losing space dominance to China without NASA support, experts say," Nextgov, September 3, 2025, https://nextgov.com/emerging-tech/2025/09/us-risks-losing-space-dominance-china-without-nasa-support-experts-say/407878/.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>"US risks losing space dominance to China without NASA support, experts say," Nextgov, September 3, 2025, <a href="https://nextgov.com/emerging-tech/2025/09/us-risks-losing-space-dominance-china-without-nasa-support-experts-say/407878/">https://nextgov.com/emerging-tech/2025/09/us-risks-losing-space-dominance-china-without-nasa-support-experts-say/407878/</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>"Chairman Cruz: Isaacman is Committed to American Supremacy in Space," Senate Committee on Commerce, Science, and Transportation, December 3, 2025, https://commerce.senate.gov/press/rep/release/chairman-cruz-isaacman-is-committed-to-american-supremacy-in-space/.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>"Chairman Cruz: Isaacman is Committed to American Supremacy in Space," Senate Committee on Commerce, Science, and Transportation, December 3, 2025, <a href="https://commerce.senate.gov/press/rep/release/chairman-cruz-isaacman-is-committed-to-american-supremacy-in-space/">https://commerce.senate.gov/press/rep/release/chairman-cruz-isaacman-is-committed-to-american-supremacy-in-space/</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p>"There's a Bad Moon on the Rise: Why Congress and NASA Must Thwart China in the Space Race," Senate Committee on Commerce, Science, and Transportation, August 27, 2025, https://commerce.senate.gov/meetings/theres-a-bad-moon-on-the-rise-why-congress-and-nasa-must-thwart-china-in-the-space-race/.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>"There's a Bad Moon on the Rise: Why Congress and NASA Must Thwart China in the Space Race," Senate Committee on Commerce, Science, and Transportation, August 27, 2025, <a href="https://commerce.senate.gov/meetings/theres-a-bad-moon-on-the-rise-why-congress-and-nasa-must-thwart-china-in-the-space-race/">https://commerce.senate.gov/meetings/theres-a-bad-moon-on-the-rise-why-congress-and-nasa-must-thwart-china-in-the-space-race/</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>"Save NASA Science 2025," The Planetary Society, January 26, 2026, https://planetary.org/save-nasa-science-2025.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p>"Save NASA Science 2025," The Planetary Society, January 26, 2026, <a href="https://planetary.org/save-nasa-science-2025">https://planetary.org/save-nasa-science-2025</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:6">
-<p>"Sen. Cruz: Choices We Make Now Will Determine If America Leads in Space," Senate Committee on Commerce, Science, and Transportation, September 3, 2025, https://commerce.senate.gov/press/rep/release/sen-cruz-choices-we-make-now-will-determine-if-america-leads-in-space/.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+<p>"Sen. Cruz: Choices We Make Now Will Determine If America Leads in Space," Senate Committee on Commerce, Science, and Transportation, September 3, 2025, <a href="https://commerce.senate.gov/press/rep/release/sen-cruz-choices-we-make-now-will-determine-if-america-leads-in-space/">https://commerce.senate.gov/press/rep/release/sen-cruz-choices-we-make-now-will-determine-if-america-leads-in-space/</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
 </li>
 <li id="fn:7">
-<p>"Issues," Office of Senator Ted Cruz, January 1, 2024, https://cruz.senate.gov/about/issues.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+<p>"Issues," Office of Senator Ted Cruz, January 1, 2024, <a href="https://cruz.senate.gov/about/issues">https://cruz.senate.gov/about/issues</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
 </li>
 <li id="fn:8">
-<p>"Cruz, Cornyn Urge Senate Appropriations Committee to Prioritize Funding for Johnson Space Center," Office of Senator Ted Cruz, August 30, 2023, https://cruz.senate.gov/newsroom/press-releases/cruz-cornyn-urge-senate-appropriations-committee-to-prioritize-funding-for-johnson-space-center.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+<p>"Cruz, Cornyn Urge Senate Appropriations Committee to Prioritize Funding for Johnson Space Center," Office of Senator Ted Cruz, August 30, 2023, <a href="https://cruz.senate.gov/newsroom/press-releases/cruz-cornyn-urge-senate-appropriations-committee-to-prioritize-funding-for-johnson-space-center">https://cruz.senate.gov/newsroom/press-releases/cruz-cornyn-urge-senate-appropriations-committee-to-prioritize-funding-for-johnson-space-center</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
 </li>
 <li id="fn:9">
-<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+<p>"Planetary Society Internal Tracking Document," The Planetary Society, congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
 </li>
 <li id="fn:10">
-<p>"Space at Stake: Texas Astronomers Take a Stand against Government Cuts," American Astronomical Society, May 21, 2025, https://aas.org/posts/news/2025/05/space-stake-texas-astronomers-take-stand-against-government-cuts.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+<p>"Space at Stake: Texas Astronomers Take a Stand against Government Cuts," American Astronomical Society, May 21, 2025, <a href="https://aas.org/posts/news/2025/05/space-stake-texas-astronomers-take-stand-against-government-cuts">https://aas.org/posts/news/2025/05/space-stake-texas-astronomers-take-stand-against-government-cuts</a>.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>"Chairmen Babin and Cruz Want Timely Release of OBBBA NASA Funds," U.S. House Committee on Science, Space, and Technology, August 5, 2025, <a href="https://science.house.gov/2025/8/chairmen-babin-and-cruz-want-timely-release-of-obbb-nasa-funds">https://science.house.gov/2025/8/chairmen-babin-and-cruz-want-timely-release-of-obbb-nasa-funds</a>.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>"TX NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/TX/TX-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/TX/TX-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

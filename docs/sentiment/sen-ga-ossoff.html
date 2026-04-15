@@ -24,6 +24,7 @@
       --tps-muted: #51606f;
       --tps-line: #d9dee5;
       --tps-accent: #d14c47;
+      --tps-caution: #FF5D47;
       --tps-shadow: 0 12px 32px rgba(17, 24, 39, 0.09);
     }
     * {
@@ -121,6 +122,28 @@
     .advocacy-report-card blockquote p:last-child {
       margin-bottom: 0;
     }
+    .advocacy-report-card blockquote.bottom-line-caution {
+      border-left-color: var(--tps-caution);
+      background: linear-gradient(180deg, rgba(255, 93, 71, 0.12), rgba(255, 93, 71, 0.04));
+    }
+    .advocacy-report-card blockquote.bottom-line-caution p strong {
+      color: var(--tps-caution);
+    }
+    .advocacy-report-card .report-notice {
+      display: block;
+      margin: 0.75rem 0 1.5rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--tps-muted);
+      background: transparent;
+      border: 1px dashed var(--tps-line);
+      border-radius: 8px;
+    }
+    .advocacy-report-card .report-notice strong {
+      color: var(--tps-ink);
+      font-weight: 600;
+    }
     .advocacy-report-card code {
       background: rgba(30, 36, 48, 0.08);
       padding: 0.1rem 0.32rem;
@@ -202,8 +225,10 @@
       margin-top: 0.65rem;
     }
     .advocacy-report-card .footnote-backref {
-      text-decoration: none;
-      margin-left: 0.25rem;
+      display: none;
+    }
+    .advocacy-report-card .footnote hr {
+      display: none;
     }
     .tps-report-closing {
       margin-top: 1.25rem;
@@ -264,9 +289,11 @@
   <header class="tps-report-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
       <div class="container-planetary-responsive">
-        <a class="navbar-brand" href="../sentiment.html">
-          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;">
+        <a class="navbar-brand" href="/sentiment.html">
+          <img src="https://planetary.s3.amazonaws.com/sites/planetary/images/TPS_Logo_3Stack-White.svg" alt="The Planetary Society logo" style="height: 40px;padding-right:1rem;">
+          <span style="font-size:.95rem;">Congressional Sentiment Reports</span>
         </a>
+        
       </div>
     </nav>
   </header>
@@ -274,16 +301,16 @@
     <div class="container-planetary-responsive">
       <article class="advocacy-report-card">
         <h1 id="senator-jon-ossoff-d-ga">Senator Jon Ossoff (D-GA)</h1>
-<p><em>Senator | D | GA</em></p>
+<aside class="report-notice" role="note"><strong>Note: this is an AI-generated report.</strong> It integrates information about the member's activities, statements on NASA and space science, local economic impact from NASA science such as contracts and grants, and other public information. Despite our efforts, there may still be errors. Please validate key claims as you prepare for your meetings.</aside>
+
+<h2 id="bottom-line">Bottom Line</h2>
+<blockquote class="bottom-line"><p><strong>Persuadable</strong> (moderate confidence): Senator Ossoff is a critical target for advocacy due to his role on the Senate Appropriations Committee and the substantial NASA science investment in Georgia. While he has not yet signed onto specific Science Mission Directorate (SMD) funding letters, he has a record of supporting broad NASA budgets and securing local STEM education funding. Advocates should emphasize that the high-level planetary science and astrobiology research occurring at Georgia Tech depends on the stable SMD topline funding he oversees. Highlighting the link between NASA science and Georgia's growing reputation as a hub for research and clean energy innovation is the most effective path. The public record shows broad NASA relevance but little recent, specific evidence on Science Mission Directorate funding priorities. This is a heuristic-heavy assessment based more on institutional and political context than on direct recent SMD evidence.</p></blockquote>
+
 <h2 id="nasa-budget-support">NASA Budget Support</h2>
 <blockquote>
 <ul>
 <li>FY2026 CJS Appropriations vote: <strong>Yea</strong> on <a href="https://www.congress.gov/bill/119th-congress/house-bill/6938">H.R. 6938</a></li>
 </ul>
-</blockquote>
-<h2 id="bottom-line">Bottom Line</h2>
-<blockquote>
-<p><strong>Persuadable</strong> (moderate confidence): Senator Ossoff is a critical target for advocacy due to his role on the Senate Appropriations Committee and the substantial NASA science investment in Georgia. While he has not yet signed onto specific Science Mission Directorate (SMD) funding letters, he has a record of supporting broad NASA budgets and securing local STEM education funding. Advocates should emphasize that the high-level planetary science and astrobiology research occurring at Georgia Tech depends on the stable SMD topline funding he oversees. Highlighting the link between NASA science and Georgia's growing reputation as a hub for research and clean energy innovation is the most effective path. The public record shows broad NASA relevance but little recent, specific evidence on Science Mission Directorate funding priorities. This is a heuristic-heavy assessment based more on institutional and political context than on direct recent SMD evidence.</p>
 </blockquote>
 <h2 id="meeting-strategy">Meeting Strategy</h2>
 <p><strong>Lead with:</strong> Georgia’s Scientific Leadership and Appropriations Leverage</p>
@@ -310,7 +337,7 @@
 <li><strong>Evidence Gap:</strong> The public record shows broad NASA relevance but little recent, specific evidence on Science Mission Directorate funding priorities.<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
 <li><strong>Competing Priority:</strong> Ossoff's legislative record in aerospace is currently dominated by aviation and hydrogen fuel research rather than deep space exploration or planetary science.<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup> <sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup></li>
 </ul>
-<h2 id="relevant-committees">Relevant Committees</h2>
+<h2 id="committees">Committees</h2>
 <ul>
 <li><strong>Member, Senate Committee on Appropriations</strong><ul>
 <li>Agriculture, Rural Development, Food and Drug Administration, and Related Agencies</li>
@@ -339,22 +366,25 @@
 <hr>
 <ol>
 <li id="fn:1">
-<p>"Key NASA Science Actions by 119th Congress," The Planetary Society (local congressional reference dataset), congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>"Planetary Society Internal Tracking Document," The Planetary Society, congress/nasa-science-actions-119th.csv.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>"Five-Year Report," Official Website of Senator Jon Ossoff, January 1, 2025, https://ossoff.senate.gov/five-year-report/.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>"Five-Year Report," Official Website of Senator Jon Ossoff, January 1, 2025, <a href="https://ossoff.senate.gov/five-year-report/">https://ossoff.senate.gov/five-year-report/</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>"Sen. Ossoff’s Push to Expand Columbus State University’s STEM &amp; Robotics Programs Passes Congress," Official Website of Senator Jon Ossoff, March 10, 2022, https://ossoff.senate.gov/press-releases/sen-ossoffs-push-to-expand-columbus-state-universitys-stem-robotics-programs-passes-congress%EF%BF%BC/.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>"Sen. Ossoff’s Push to Expand Columbus State University’s STEM &amp; Robotics Programs Passes Congress," Official Website of Senator Jon Ossoff, March 10, 2022, <a href="https://ossoff.senate.gov/press-releases/sen-ossoffs-push-to-expand-columbus-state-universitys-stem-robotics-programs-passes-congress%EF%BF%BC/">https://ossoff.senate.gov/press-releases/sen-ossoffs-push-to-expand-columbus-state-universitys-stem-robotics-programs-passes-congress%EF%BF%BC/</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p>"Sen. Ossoff Cosponsoring Bipartisan Legislation to Bolster Scientific Research," Official Website of Senator Jon Ossoff, February 2, 2026, https://ossoff.senate.gov/press-releases/sen-ossoff-cosponsoring-bipartisan-legislation-to-bolster-scientific-research/.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>"Sen. Ossoff Cosponsoring Bipartisan Legislation to Bolster Scientific Research," Official Website of Senator Jon Ossoff, February 2, 2026, <a href="https://ossoff.senate.gov/press-releases/sen-ossoff-cosponsoring-bipartisan-legislation-to-bolster-scientific-research/">https://ossoff.senate.gov/press-releases/sen-ossoff-cosponsoring-bipartisan-legislation-to-bolster-scientific-research/</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>"News: Key U.S. Senate Committee Passes Sen. Ossoff, Rep. Johnson’s Bipartisan Bill to Advance Adoption of Hydrogen Energy for Aviation," Official Website of Senator Jon Ossoff, February 9, 2024, https://ossoff.senate.gov/press-releases/news-key-u-s-senate-committee-passes-sen-ossoff-rep-johnsons-bipartisan-bill-to-advance-adoption-of-hydrogen-energy-for-aviation/.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p>"News: Key U.S. Senate Committee Passes Sen. Ossoff, Rep. Johnson’s Bipartisan Bill to Advance Adoption of Hydrogen Energy for Aviation," Official Website of Senator Jon Ossoff, February 9, 2024, <a href="https://ossoff.senate.gov/press-releases/news-key-u-s-senate-committee-passes-sen-ossoff-rep-johnsons-bipartisan-bill-to-advance-adoption-of-hydrogen-energy-for-aviation/">https://ossoff.senate.gov/press-releases/news-key-u-s-senate-committee-passes-sen-ossoff-rep-johnsons-bipartisan-bill-to-advance-adoption-of-hydrogen-energy-for-aviation/</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:6">
-<p>"Congresswoman Nikema Williams Celebrates Accomplishments of Aviators on Black Aviation Professionals Day," Official Website of Representative Nikema Williams, February 16, 2022, https://nikemawilliams.house.gov/posts/congresswoman-nikema-williams-celebrates-accomplishments-of-aviators-on-black-aviation-professionals-day.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+<p>"Congresswoman Nikema Williams Celebrates Accomplishments of Aviators on Black Aviation Professionals Day," Official Website of Representative Nikema Williams, February 16, 2022, <a href="https://nikemawilliams.house.gov/posts/congresswoman-nikema-williams-celebrates-accomplishments-of-aviators-on-black-aviation-professionals-day">https://nikemawilliams.house.gov/posts/congresswoman-nikema-williams-celebrates-accomplishments-of-aviators-on-black-aviation-professionals-day</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>"GA NASA Science Economic Impact Report," The Planetary Society, <a href="https://planetary.s3.amazonaws.com/assets/impact-reports/GA/GA-NASA-Science.pdf">https://planetary.s3.amazonaws.com/assets/impact-reports/GA/GA-NASA-Science.pdf</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

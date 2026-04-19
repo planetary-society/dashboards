@@ -246,19 +246,23 @@ class NASAScienceDashboard {
             this.fiscalYears.some(year => d[`fy${year}`] >= this.minSpending)
         );
         const districtCount = districtsWithSpending.length;
-        const percentDistricts = Math.round((districtCount / 435) * 100);
+        const totalDistrictGeographies = this.districtData.length || 435;
+        const percentDistricts = Math.round((districtCount / totalDistrictGeographies) * 100);
 
         // States with spending in any fiscal year
         const statesWithSpending = this.stateData.filter(s =>
             this.fiscalYears.some(year => s[`fy${year}`] >= this.minSpending)
         );
         const stateCount = statesWithSpending.length;
+        const totalStateGeographies = this.stateData.length || 50;
 
         return {
             totalSpending: formatCurrency(totalRecentFY, true),
             districtsReached: districtCount,
             percentDistricts,
             statesCount: stateCount,
+            totalDistrictGeographies,
+            totalStateGeographies,
             recentFYSpending: formatCurrency(totalRecentFY, true),
             recentFY: this.endYear
         };

@@ -194,11 +194,16 @@ export function createSpendingValueBoxes(stats) {
  * @param {string} stats.totalSpending - Formatted total spending amount
  * @param {number} stats.districtsReached - Number of congressional districts with spending
  * @param {number} stats.statesCount - Number of states with spending
+ * @param {number} [stats.totalDistrictGeographies=435] - Total district geographies in the dataset
+ * @param {number} [stats.totalStateGeographies=50] - Total state geographies in the dataset
  * @param {string} stats.recentFYSpending - Formatted spending for most recent fiscal year
  * @param {number} stats.recentFY - Most recent fiscal year
  * @returns {Array} Array of value box configurations
  */
 export function createScienceValueBoxes(stats) {
+    const totalStateGeographies = stats.totalStateGeographies || 50;
+    const totalDistrictGeographies = stats.totalDistrictGeographies || 435;
+
     return [
         {
             title: `spent by NASA science in ${stats.recentFY}`,
@@ -208,13 +213,13 @@ export function createScienceValueBoxes(stats) {
         },
         {
             title: 'Receive NASA Science investments',
-            value: `${stats.statesCount} of 50`,
+            value: `${stats.statesCount} of ${totalStateGeographies}`,
             icon: 'flag',
             type: 'recipients'
         },
         {
             title: 'Congressional Districts Impacted',
-            value: `${stats.districtsReached.toLocaleString()} of 435`,
+            value: `${stats.districtsReached.toLocaleString()} of ${totalDistrictGeographies}`,
             icon: 'geo-alt',
             type: 'districts'
         },

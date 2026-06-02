@@ -1,133 +1,57 @@
 
 :root {
   color-scheme: light;
-
-  /* The Planetary Society brand palette, mirrored from the dashboard design tokens
-     (shared/css/variables.css): blue #037CC2 primary, orange #FF5D47 accent/call-to-action,
-     purple #643788 secondary, plus the gray/green/red scales used for chrome and diffs. */
-  --blue-500: #037CC2;
-  --blue-600: #0369A1;
-  --blue-700: #0C4A6E;
-  --orange-500: #FF5D47;
-  --orange-600: #E54D3D;
-  --orange-700: #C2410C;
-  --orange-800: #9A3412;
-  --purple-500: #643788;
-  --gray-50: #FAFAFA;
-  --gray-100: #F4F4F5;
-  --gray-200: #E4E4E7;
-  --gray-300: #D4D4D8;
-  --gray-400: #A1A1AA;
-  --gray-500: #71717A;
-  --gray-600: #52525B;
-  --gray-700: #3F3F46;
-  --gray-800: #27272A;
-  --gray-900: #18181B;
-  --green-100: #DCFCE7;
-  --green-600: #16A34A;
-  --green-700: #15803D;
-  --green-900: #14532D;
-  --red-100: #FEE2E2;
-  --red-600: #DC2626;
-  --red-700: #B91C1C;
-  --red-900: #7F1D1D;
-
-  /* Semantic aliases used throughout this sheet. */
-  --ink: var(--gray-800);
-  --muted: var(--gray-500);
-  --line: var(--gray-200);
-  --panel: var(--gray-50);
-  --surface: #ffffff;
-  --brand: var(--blue-500);
-  --link: var(--blue-500);
-  --link-hover: var(--blue-600);
-  --accent: var(--orange-500);        /* the "key change / take action" highlight */
-  --accent-hover: var(--orange-600);
-  --accent-ink: var(--orange-700);
-  --accent-tint: #FFF1EE;             /* coral wash to match orange-500 */
-  --green-bg: var(--green-100);
-  --green-line: var(--green-600);
-  --green-ink: var(--green-700);
-  --red-bg: var(--red-100);
-  --red-line: var(--red-600);
-  --red-ink: var(--red-700);
-  --change-bar: var(--purple-500);
-  --brand-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-
-  --radius-sm: 6px;
-  --radius: 8px;
-  --radius-md: 12px;
-  --radius-full: 9999px;
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.06);
-  --focus-shadow: 0 0 0 3px rgba(3, 124, 194, 0.18);
-
-  /* Brand type: Poppins is the Planetary Society UI/heading face; Newsreader (used in their
-     newest dashboard) carries the long-form regulatory prose so dense legal text stays readable;
-     a mono keeps change-magnitude digits aligned. Loaded from Google Fonts in the page <head>. */
-  --font-ui: Poppins, Helvetica, Arial, sans-serif;
-  --font-read: Newsreader, Georgia, "Times New Roman", serif;
-  --font-mono: "Monaco", "Menlo", "Consolas", ui-monospace, monospace;
+  --ink: #1d252d;
+  --muted: #5b6671;
+  --line: #d8dee5;
+  --panel: #f7f9fb;
+  --green-bg: #e9f7ed;
+  --green-line: #30a46c;
+  --red-bg: #fdebec;
+  --red-line: #d64545;
+  --gold: #8a6d1d;
+  --change-bar: #b08400;
+  /* Reading text (regulatory prose + headlines) is set in a serif so it reads as a
+     *document*; UI chrome stays sans; change-magnitude deltas use a mono so digits
+     align. All three are system stacks — the site keeps its zero-web-font footprint. */
+  --font-ui: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-read: Charter, "Bitstream Charter", "Sitka Text", Cambria, "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-mono: "SF Mono", "IBM Plex Mono", ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  font: 400 15px/1.55 var(--font-ui);
+  font: 15px/1.55 var(--font-ui);
   color: var(--ink);
-  background: var(--panel);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background: #ffffff;
 }
-a { color: var(--link); text-decoration: none; }
-a:hover { color: var(--link-hover); text-decoration: underline; }
-:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
-/* The hero takes the Planetary Society dashboard navbar treatment: dark gradient, white type,
-   a blue brand rule, and a small wordmark so the page reads as part of their family. */
+a { color: #155e9f; }
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 24px;
   align-items: end;
-  padding: 34px clamp(18px, 4vw, 56px) 30px;
-  background: var(--brand-gradient);
-  color: #fff;
-  border-bottom: 3px solid var(--brand);
+  padding: 32px clamp(18px, 4vw, 56px) 24px;
+  border-bottom: 1px solid var(--line);
+  background: #f6f8fa;
 }
-.brandmark {
-  margin: 0 0 14px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: #fff;
-}
-.eyebrow {
-  margin: 0 0 8px;
-  color: #93C5FD;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .06em;
-}
-.record-kicker {
+.eyebrow, .record-kicker {
   margin: 0 0 6px;
   color: var(--muted);
   text-transform: uppercase;
   font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .05em;
+  letter-spacing: .04em;
 }
-.hero h1 {
-  margin: 0;
-  font-family: var(--font-ui);
-  font-weight: 700;
-  font-size: clamp(28px, 4vw, 46px);
-  letter-spacing: -0.02em;
-  line-height: 1.08;
-  color: #fff;
+h1 { margin: 0; font-family: var(--font-read); font-weight: 650; font-size: clamp(30px, 4vw, 52px); letter-spacing: -0.01em; line-height: 1.08; }
+.lede { max-width: 62ch; margin: 12px 0 0; color: #384653; font-family: var(--font-read); font-size: 18px; line-height: 1.5; }
+.deadline {
+  border: 1px solid var(--line);
+  background: white;
+  padding: 14px 16px;
+  min-width: 180px;
 }
-.lede { max-width: 64ch; margin: 14px 0 0; color: rgba(255, 255, 255, .82); font-family: var(--font-read); font-size: 18px; line-height: 1.5; }
+.deadline span { display: block; color: var(--muted); font-size: 12px; text-transform: uppercase; }
+.deadline strong { font-size: 20px; }
 .layout { display: grid; grid-template-columns: 320px minmax(0, 1fr); }
 .sidebar {
   position: sticky;
@@ -136,40 +60,34 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   overflow: auto;
   padding: 20px;
   border-right: 1px solid var(--line);
-  background: var(--surface);
+  background: #fbfcfd;
 }
-.search-label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.search-label { display: block; font-weight: 700; margin-bottom: 6px; }
 #searchInput {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: 6px;
   font: inherit;
-  background: var(--surface);
 }
-#searchInput:focus-visible { outline: none; border-color: var(--brand); box-shadow: var(--focus-shadow); }
 .nav-list { list-style: none; padding: 0; margin: 14px 0 0; }
-.nav-item > a { display: block; border-left: 3px solid transparent; border-radius: var(--radius-sm); transition: background .15s ease, border-left-color .15s ease; }
-/* Key provisions: orange accent + a ★, so the signal is never carried by color alone. */
-.nav-item.nav-key > a { border-left-color: var(--accent); background: var(--accent-tint); }
-.nav-item.nav-key .nav-cite { color: var(--accent-ink); }
-.nav-key-star { color: var(--accent); margin-right: 4px; }
-/* Active section: the entry you navigated to. A brand-blue highlight (distinct from the orange
-   "key" accent) that moves to whichever section you open next; the list auto-centers it. */
-.nav-item.is-active > a { background: rgba(3, 124, 194, 0.10); border-left-color: var(--brand); }
-.nav-item.is-active .nav-cite { color: var(--blue-700); font-weight: 700; }
+.nav-item > a { border-left: 3px solid transparent; }
+/* Key provisions: gold accent + a ★, so the signal is never carried by color alone. */
+.nav-item.nav-key > a { border-left-color: var(--gold); background: #fffaf0; }
+.nav-item.nav-key .nav-cite { color: #8a4b00; }
+.nav-key-star { color: var(--gold); margin-right: 4px; }
 .nav-empty { color: var(--muted); font-style: italic; font-size: 13px; padding: 10px 4px; }
 .sidebar ul { list-style: none; padding: 0; margin: 0; }
 .sidebar li { margin: 3px 0; }
 .sidebar a {
   display: block;
-  padding: 4px 6px;
-  border-radius: var(--radius-sm);
+  padding: 3px 4px;
+  border-radius: 4px;
   text-decoration: none;
-  color: var(--gray-700);
+  color: #394856;
   font-size: 13px;
 }
-.sidebar a:hover { background: var(--gray-100); text-decoration: none; }
+.sidebar a:hover { background: #eef2f6; }
 .nav-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
 .nav-cite { font-weight: 600; }
 .nav-cat { display: block; color: var(--muted); font-size: 12px; line-height: 1.3; }
@@ -184,136 +102,58 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
-.nav-add { color: var(--green-ink); }
-.nav-del { color: var(--red-ink); }
-.overview {
-  padding: 26px clamp(18px, 4vw, 56px) 28px;
-  border-bottom: 1px solid var(--line);
-  background: var(--surface);
-}
-.overview > h2 {
-  margin: 0 0 12px;
-  font-family: var(--font-ui);
-  font-weight: 600;
-  font-size: clamp(20px, 2.6vw, 26px);
-  letter-spacing: -0.01em;
-}
-.overview p {
-  max-width: 74ch;
-  margin: 0 0 12px;
-  font-family: var(--font-read);
-  font-size: 17px;
-  line-height: 1.6;
-  color: var(--gray-700);
-}
-.overview-action {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px 16px;
-  margin: 18px 0 0 !important;
-}
-/* The take-action link is the page's primary call: the Planetary Society dashboards use the
-   orange accent for their action buttons. It carries a → affordance so it never relies on color. */
-.action-link {
-  display: inline-flex;
-  align-items: center;
-  padding: 11px 20px;
-  border-radius: var(--radius);
-  background: var(--accent);
-  color: #fff;
-  font-family: var(--font-ui);
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: var(--shadow-sm);
-  transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
-}
-.action-link::after { content: " \2192"; margin-left: 8px; }
-.action-link:hover { background: var(--accent-hover); color: #fff; text-decoration: none; transform: translateY(-1px); box-shadow: var(--shadow-md); }
-.action-link:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
-.action-note { color: var(--muted); font-family: var(--font-ui); font-size: 14px; }
+.nav-add { color: #146c43; }
+.nav-del { color: #9f1d20; }
 .key-summary {
-  padding: 24px clamp(18px, 4vw, 56px) 28px;
+  padding: 22px clamp(18px, 4vw, 56px) 26px;
   border-bottom: 1px solid var(--line);
   background: var(--panel);
 }
-.key-summary > h2 { margin: 0 0 6px; font-family: var(--font-ui); font-weight: 600; font-size: clamp(22px, 3vw, 28px); letter-spacing: -0.01em; }
-.key-intro { max-width: 74ch; margin: 0 0 20px; color: var(--gray-600); }
-/* Transition band between the curated highlights and the full searchable list below. */
-.explore-intro {
-  padding: 26px clamp(18px, 4vw, 56px) 24px;
-  border-bottom: 1px solid var(--line);
-  background: var(--surface);
-}
-.explore-intro > h2 { margin: 0 0 8px; font-family: var(--font-ui); font-weight: 600; font-size: clamp(20px, 2.6vw, 26px); letter-spacing: -0.01em; }
-.explore-intro p { max-width: 76ch; margin: 0; color: var(--gray-600); font-size: 15.5px; line-height: 1.55; }
-.key-issue { margin: 0 0 16px; padding-left: 16px; border-left: 3px solid var(--accent); }
+.key-summary > h2 { margin: 0 0 4px; font-family: var(--font-read); font-size: clamp(22px, 3vw, 28px); }
+.key-intro { max-width: 70ch; margin: 0 0 18px; color: #384653; }
+.key-issue { margin: 0 0 16px; padding-left: 14px; border-left: 3px solid var(--gold); }
 .key-issue:last-child { margin-bottom: 0; }
-.key-issue h3 { display: flex; align-items: baseline; gap: 12px; margin: 0 0 6px; font-size: clamp(20px, 2.4vw, 24px); font-weight: 600; letter-spacing: -0.01em; }
+.key-issue h3 { display: flex; align-items: baseline; gap: 8px; margin: 0 0 4px; font-size: 16px; }
 .key-num {
   flex: none;
   display: inline-grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
-  border-radius: var(--radius-full);
-  background: var(--accent);
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--gold);
   color: #fff;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
 }
-.key-issue > p { max-width: 84ch; margin: 0 0 14px; color: var(--muted); font-size: 14px; }
-/* Each flagged section is its own delineated card: a §-number eyebrow, a bold title, a plain
-   two-line reading, and a quiet "Track changes →" affordance pinned to the bottom. The whole
-   card is the link; a left accent bar lights up orange on hover to mark it as interactive. */
-.key-changes {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 12px;
-}
-.key-change {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  padding: 14px 16px 12px;
+.key-issue > p { max-width: 84ch; margin: 0 0 10px; color: var(--muted); font-size: 14px; }
+.key-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.key-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 12px;
   border: 1px solid var(--line);
-  border-left: 3px solid var(--gray-300);
-  border-radius: var(--radius-md);
-  background: var(--surface);
+  border-radius: 999px;
+  background: #fff;
   text-decoration: none;
   color: var(--ink);
-  box-shadow: var(--shadow-xs);
-  transition: border-left-color .15s ease, box-shadow .15s ease, transform .15s ease;
+  font-size: 13px;
 }
-.key-change:hover {
-  border-left-color: var(--accent);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-  text-decoration: none;
-}
-.key-change:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
-.key-change-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-.key-sec { font-family: var(--font-mono); font-weight: 700; color: var(--accent-ink); white-space: nowrap; }
-.key-change-title { font-weight: 600; font-size: 14.5px; line-height: 1.25; color: var(--gray-900); }
-.key-change-blurb { color: var(--gray-600); font-size: 13px; line-height: 1.5; }
-.key-change-jump { margin-top: auto; padding-top: 2px; font-size: 12px; font-weight: 600; letter-spacing: .02em; color: var(--gray-400); }
-.key-change-jump::after { content: " \2192"; }
-.key-change:hover .key-change-jump { color: var(--accent-ink); }
-.content { padding: 24px clamp(18px, 4vw, 48px) 64px; min-width: 0; }
+.key-chip:hover { border-color: var(--gold); background: #fffaf0; }
+.key-sec { font-family: var(--font-mono); font-weight: 700; color: #8a4b00; white-space: nowrap; }
+.key-label { color: #384653; }
+.content { padding: 22px clamp(18px, 4vw, 48px) 64px; min-width: 0; }
 .context-panel, .record-card {
   border: 1px solid var(--line);
-  border-radius: var(--radius-md);
+  border-radius: 8px;
   padding: 20px;
   margin-bottom: 18px;
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
+  background: white;
 }
-.record-card { transition: box-shadow .2s ease; }
-.record-card:hover { box-shadow: var(--shadow-md); }
-.context-panel { background: var(--gray-50); }
+.context-panel { background: #f9fbfd; }
 .context-panel p { max-width: 68ch; font-family: var(--font-read); font-size: 16px; }
-.caution { color: var(--accent-ink); }
+.caution { color: var(--gold); }
 .record-head {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -322,44 +162,30 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   border-bottom: 1px solid var(--line);
   padding-bottom: 14px;
 }
-.record-head h2 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
-.instruction { margin: 8px 0 0; color: var(--gray-600); }
-/* Copy-a-deep-link control, top-right of each card. Quiet by default; brand-blue on hover and
-   green once the URL is on the clipboard. */
-.permalink {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 12px 5px 10px;
+.record-head h2 { margin: 0; font-size: 22px; }
+.instruction { margin: 8px 0 0; color: #45535f; }
+.confidence {
   border: 1px solid var(--line);
-  border-radius: var(--radius-full);
-  background: var(--surface);
-  color: var(--muted);
-  font-family: var(--font-ui);
+  border-radius: 999px;
+  padding: 4px 10px;
   font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: border-color .15s ease, color .15s ease, background .15s ease;
+  text-transform: uppercase;
 }
-.permalink:hover { border-color: var(--brand); color: var(--brand); background: #F1F8FC; }
-.permalink:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
-.permalink-icon { flex: none; display: block; }
-.permalink.is-copied { border-color: var(--green-600); color: var(--green-ink); background: var(--green-bg); }
-.side-by-side h3 { margin: 0 0 6px; font-size: 14px; font-weight: 600; }
+.confidence-low { border-color: #c77600; color: #8a4b00; background: #fff6e0; }
+.confidence-medium { border-color: #9a6b00; color: #715100; background: #fff8e5; }
+.side-by-side h3 { margin: 0 0 6px; font-size: 14px; }
 details {
   border-top: 1px solid var(--line);
   padding-top: 12px;
   margin-top: 12px;
 }
-summary { cursor: pointer; font-weight: 600; color: var(--brand); }
+summary { cursor: pointer; font-weight: 750; }
 .diff-view {
   margin-top: 12px;
   padding: 16px 18px;
-  background: var(--gray-50);
+  background: #fbfcfd;
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: 6px;
   max-width: 72ch;
   max-height: 620px;
   overflow: auto;
@@ -370,7 +196,7 @@ summary { cursor: pointer; font-weight: 600; color: var(--brand); }
 /* Background tint + the .diff-changed change-bar carry the signal; no per-token
    borders, so dense word-by-word edits don't stack into a "ransom note". */
 .diff-del {
-  color: var(--red-ink);
+  color: #9f1d20;
   background: var(--red-bg);
   border: 0;
   border-radius: 2px;
@@ -379,7 +205,7 @@ summary { cursor: pointer; font-weight: 600; color: var(--brand); }
   text-decoration-thickness: 1px;
 }
 .diff-add {
-  color: var(--green-ink);
+  color: #146c43;
   background: var(--green-bg);
   border: 0;
   border-radius: 2px;
@@ -411,7 +237,7 @@ summary { cursor: pointer; font-weight: 600; color: var(--brand); }
   margin: 0 0 10px;
   color: var(--muted);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 650;
 }
 /* Banners use a text label + border style + a CSS glyph so meaning never relies on color alone. */
 .diff-banner {
@@ -419,33 +245,33 @@ summary { cursor: pointer; font-weight: 600; color: var(--brand); }
   padding: 10px 14px;
   border: 1px solid var(--line);
   border-left-width: 4px;
-  border-radius: var(--radius);
+  border-radius: 6px;
   font-size: 14px;
   background: var(--panel);
 }
 .diff-banner::before {
-  font-weight: 700;
+  font-weight: 750;
   margin-right: 6px;
 }
 .diff-banner-info {
   border-left-style: solid;
   border-left-color: var(--green-line);
   background: var(--green-bg);
-  color: var(--green-900);
+  color: #14532d;
 }
 .diff-banner-info::before { content: "= "; }
 .diff-banner-warn {
   border-left-style: double;
   border-left-color: var(--red-line);
   background: var(--red-bg);
-  color: var(--red-900);
+  color: #7f1417;
 }
 .diff-banner-warn::before { content: "! "; }
 .diff-banner-add {
   border-left-style: solid;
   border-left-color: var(--green-line);
   background: var(--green-bg);
-  color: var(--green-900);
+  color: #14532d;
 }
 .diff-banner-add::before { content: "+ "; }
 @media (prefers-contrast: more) {
@@ -459,17 +285,17 @@ summary { cursor: pointer; font-weight: 600; color: var(--brand); }
 }
 .source-text {
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: 6px;
   padding: 14px 16px;
   max-width: 72ch;
   max-height: 520px;
   overflow: auto;
-  background: var(--surface);
+  background: #fff;
   font-family: var(--font-read);
   font-size: 15.5px;
   line-height: 1.6;
 }
-.source-text.proposed { background: #FCFEFF; }
+.source-text.proposed { background: #fcfefc; }
 .source-note { color: var(--muted); font-size: 13px; }
 .source-links { margin-bottom: 0; }
 .empty { color: var(--muted); font-style: italic; }
@@ -477,9 +303,4 @@ summary { cursor: pointer; font-weight: 600; color: var(--brand); }
 @media (max-width: 900px) {
   .hero, .layout, .side-by-side { grid-template-columns: 1fr; }
   .sidebar { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .action-link, .record-card, .key-change, .nav-item > a, .permalink { transition: none; }
-  .key-change:hover { transform: none; }
-  .action-link:hover { transform: none; }
 }

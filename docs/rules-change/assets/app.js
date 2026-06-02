@@ -64,8 +64,44 @@ function revealCard(card) {
   loadRecord(card);
 }
 
+// The sidebar list mirrors the cards. We track the entry you navigated to: it gets an .is-active
+// highlight (which moves as you open another section) and the list auto-scrolls to center it, so
+// the current spot stays visible without hunting.
+const sidebar = document.querySelector('.sidebar');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const navByHash = new Map();
+for (const item of navItems) {
+  const link = item.querySelector('a[href^="#record-"]');
+  if (link) navByHash.set(link.getAttribute('href').slice(1), item);
+}
+
+// Center the active entry within the sidebar's OWN scroll area (not the page), as far as the
+// list's length allows — the browser clamps scrollTop at the two ends.
+function centerNavInSidebar(item) {
+  if (!sidebar) return;
+  const itemRect = item.getBoundingClientRect();
+  const sideRect = sidebar.getBoundingClientRect();
+  const delta = (itemRect.top - sideRect.top) - (sidebar.clientHeight / 2 - item.offsetHeight / 2);
+  sidebar.scrollTo({ top: sidebar.scrollTop + delta, behavior: reduceMotion ? 'auto' : 'smooth' });
+}
+
+function setActiveNav(id) {
+  const active = navByHash.get(id) || null;
+  for (const item of navItems) {
+    const on = item === active;
+    item.classList.toggle('is-active', on);
+    const link = item.querySelector('a');
+    if (link) {
+      if (on) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
+    }
+  }
+  // offsetParent is null when the entry is filtered out by search; only center a visible one.
+  if (active && active.offsetParent !== null) centerNavInSidebar(active);
+}
+
 // When the page lands on (or navigates to) a #record-N anchor — a summary quicklink, a sidebar
-// link, or a shared deep link — expand that card so the comparison is visible immediately.
+// link, or a shared deep link — expand that card and mark/center its sidebar entry.
 function revealFromHash() {
   const id = location.hash.slice(1);
   if (!id) return;
@@ -73,7 +109,50 @@ function revealFromHash() {
   if (!card || !card.classList.contains('record-card')) return;
   revealCard(card);
   card.scrollIntoView({ block: 'start' });
+  setActiveNav(id);
 }
 
 window.addEventListener('hashchange', revealFromHash);
 revealFromHash();
+
+// "Permalink" buttons copy a deep link to that card. The URL is derived from the current location
+// (minus any existing #fragment) so it works from a file://, localhost, or deployed https path.
+const copyStatus = document.getElementById('copyStatus');
+
+function copyText(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(text);
+  }
+  // Fallback for non-secure contexts (e.g. a page opened straight from disk).
+  return new Promise((resolve, reject) => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy') ? resolve() : reject(new Error('copy rejected')); }
+    catch (err) { reject(err); }
+    finally { ta.remove(); }
+  });
+}
+
+for (const button of document.querySelectorAll('.permalink')) {
+  const label = button.querySelector('.permalink-label');
+  const original = label ? label.textContent : '';
+  let resetTimer = null;
+  button.addEventListener('click', async () => {
+    const url = location.href.split('#')[0] + '#' + button.dataset.anchor;
+    let ok = true;
+    try { await copyText(url); } catch (err) { ok = false; }
+    button.classList.toggle('is-copied', ok);
+    if (label) label.textContent = ok ? 'Copied' : 'Copy failed';
+    if (copyStatus) copyStatus.textContent = ok ? 'Link copied to clipboard' : 'Could not copy link';
+    if (resetTimer) clearTimeout(resetTimer);
+    resetTimer = setTimeout(() => {
+      button.classList.remove('is-copied');
+      if (label) label.textContent = original;
+    }, 1600);
+  });
+}

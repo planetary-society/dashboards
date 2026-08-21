@@ -1,63 +1,177 @@
 # NASA Data Dashboards
+
 Interactive visualizations from The Planetary Society for NASA spending and contract data. Hosted at `dashboards.planetary.org` via GitHub Pages.
 
 ## Overview
-* This is a static site with no build step. The `docs/` folder is deployed directly to GitHub Pages.
-* Data is refreshed using GitHub Actions workflows
-* Source data files are stored in `data/` with date suffixes (e.g., `nasa_cancelled_contracts_2025-11-28.csv`). Relevant files **must** be copied to `docs/data/` for runtime use.
+
+- Static site with no build step. The `docs/` folder is deployed directly to GitHub Pages.
+- All frontend libraries loaded via CDN (D3.js, Grid.js, Bootstrap Icons) — no npm/bundler.
+- Data refreshed by two GitHub Actions workflows (see [Data Pipeline](#data-pipeline)).
+- Source data files stored in `data/` with date suffixes. Relevant files **must** be copied to `docs/data/` for runtime use.
 
 **Python is used to fetch and preprocess data, but not for serving the site.**
 
 ## Development
-* Always use `context7` MCP to fetch the latest documentation when using any external library.
-* Use the GitHub CLI `gh` to interface with GitHub.
+
+- Always use `context7` MCP to fetch the latest documentation when using any external library.
+- Use the GitHub CLI `gh` to interface with GitHub.
 
 ### Frontend Stack
+
 - **Vanilla JS** with ES6 modules (no framework, no bundler)
 - **D3.js** for choropleth maps with zoom/pan interactions
 - **Grid.js** for searchable, sortable data tables
 - **Leaflet.js** available for interactive maps
 
 ### File Structure
+
 ```
 docs/
-├── index.html              # Landing page
+├── index.html                  # Landing page
+├── cancellations/
+│   └── js/app.js               # Contract cancellations dashboard
+├── nasa-science/
+│   └── js/app.js               # NASA Science spending dashboard
+├── appropriations-guide/
+│   └── js/app.js               # FY2027 appropriations request guide
 ├── shared/
-│   ├── css/                # Shared stylesheets (variables.css, base.css, etc.)
+│   ├── css/
+│   │   ├── variables.css       # Design tokens (colors, typography, spacing, breakpoints)
+│   │   ├── base.css            # CSS reset, body/typography foundations
+│   │   ├── components.css      # Navbar, cards, value boxes, tabs, badges, spinners
+│   │   ├── layout.css          # Container, grid system, responsive utilities
+│   │   └── tables.css          # Grid.js overrides and custom table styling
 │   └── js/
-│       ├── constants.js    # STATE_FIPS_MAP, COLORS, MAP_CONFIG, DATA_URLS
-│       ├── utils.js        # parseCSV, formatCurrency, getGeoidFromDistrict, etc.
-│       └── components/     # Reusable UI components
+│       ├── constants.js        # STATE_FIPS_MAP, FIPS_STATE_MAP, COLORS, MAP_CONFIG, DATA_URLS, BREAKPOINTS, ICONS, CONTACT
+│       ├── utils.js            # parseCSV, formatCurrency, fetchText, escapeHtml, debounce, groupBy, etc.
+│       └── components/
 │           ├── choropleth-map.js   # D3 map with bubble/choropleth modes
 │           ├── data-table.js       # Grid.js wrapper
-│           ├── state-selector.js   # State/district dropdown
-│           ├── tabs.js             # Tab navigation
-│           └── hash-router.js      # URL hash routing
-├── cancellations/
-│   └── js/app.js           # Dashboard-specific application code
-├── nasa-science/
-│   └── js/app.js           # Dashboard-specific application code
-└── data/                   # Runtime data (CSV files copied here)
+│           ├── state-selector.js   # State/district dropdown with map integration
+│           ├── tabs.js             # Tab navigation (TabNavigation + CardTabs)
+│           ├── hash-router.js      # URL hash routing
+│           ├── navbar.js           # Reusable navigation bar
+│           └── value-box.js        # Summary statistic boxes + factory functions
+└── data/
+    ├── us_congressional_districts.geojson    # D3-compatible district boundaries
+    ├── gz_2010_us_040_00_5m.json             # State boundary TopoJSON
+    ├── cancellations/
+    │   ├── master_ledger_latest.csv          # Deployed copy of the tracking repo's master ledger
+    │   └── metadata.json                     # {"lastUpdated": "YYYY-MM-DD", "rowCount": N}
+    ├── science/
+    │   ├── NASA-district-Science-summary.csv
+    │   └── NASA-state-Science-summary.csv
+    └── appropriations_requests/
+        ├── fy2027_appropriations_request_forms.csv
+        ├── fy2027_generic_directions.md
+        └── guides/                           # Per-member JSON (generic.json, TX-20_castro.json, etc.)
 
-data/                       # Source data archive (dated CSV files)
+data/                           # Source data archive (dated CSV files, 8 NASA mission areas)
 ```
 
 ### Key Patterns
 
-**Component pattern:** Each component is a class with `init()` and `render()` methods. Example:
+**Dashboard class pattern:** Each dashboard is a class with `async init()`, instantiated in `DOMContentLoaded`:
+
 ```javascript
-import { ChoroplethMap } from '../../shared/js/components/choropleth-map.js';
-const map = new ChoroplethMap('container-id', { colorScale: 'science', level: 'district' });
+document.addEventListener("DOMContentLoaded", () => {
+  new MyDashboard().init();
+});
+```
+
+**Data loading:**
+
+```javascript
+import { fetchText, parseCSV } from "../../shared/js/utils.js";
+const csvText = await fetchText(DATA_URLS.cancellations);
+this.rawData = parseCSV(csvText);
+```
+
+**Component usage:**
+
+```javascript
+import { ChoroplethMap } from "../../shared/js/components/choropleth-map.js";
+const map = new ChoroplethMap("container-id", {
+  colorScale: "science",
+  level: "district",
+});
 await map.init(DATA_URLS.districts);
 map.setData(dataMap, hoverInfo);
 ```
 
+**Event delegation** (preferred pattern for dynamic content):
+
+```javascript
+container.addEventListener("click", (e) => {
+  const btn = e.target.closest(".my-button");
+  if (btn) {
+    /* handle */
+  }
+});
+```
+
 **GEOID mapping:** Congressional districts use 4-digit GEOIDs (e.g., "0637" for CA-37). Use `getGeoidFromDistrict()` and `STATE_FIPS_MAP` from utils/constants.
-**CSV parsing:** Use the custom `parseCSV()` function that handles quoted fields with commas.
+
+**CSV parsing:** Use the custom `parseCSV()` from utils — it handles quoted fields with commas.
+
+### Shared Utilities Reference
+
+**`utils.js`** — key exports:
+
+| Category       | Functions                                                                     |
+| -------------- | ----------------------------------------------------------------------------- |
+| Data parsing   | `parseCSV`, `parseCurrency`, `formatCurrency`, `formatDate`, `truncateText`   |
+| Fetch helpers  | `fetchText`, `fetchJSON`                                                      |
+| GEOID/district | `getGeoidFromDistrict`, `getDistrictFromGeoid`, `getStateFips`                |
+| Collections    | `groupBy`, `sumBy`, `countUnique`                                             |
+| DOM/browser    | `escapeHtml`, `htmlToElement`, `isMobile`, `isTablet`, `debounce`, `throttle` |
+
+**`constants.js`** — key exports:
+
+| Export           | Description                                                                            |
+| ---------------- | -------------------------------------------------------------------------------------- |
+| `STATE_FIPS_MAP` | State abbreviation → FIPS code (e.g., `"CA"` → `"06"`)                                 |
+| `FIPS_STATE_MAP` | Reverse: FIPS code → state abbreviation                                                |
+| `COLORS`         | Brand colors + choropleth scales (`scienceSteps`, `spendingSteps`, etc.)               |
+| `MAP_CONFIG`     | Continental US bounds, default center/zoom, border styles                              |
+| `DATA_URLS`      | Paths to all runtime data files (districts, states, cancellations, science, downloads) |
+| `BREAKPOINTS`    | `{sm: 480, md: 768, lg: 1024, xl: 1280}`                                               |
+| `ICONS`          | Bootstrap Icon names for common UI elements                                            |
+| `CONTACT`        | Organization email, name, website                                                      |
+
+### Component API Quick Reference
+
+**ChoroplethMap** (`choropleth-map.js`):
+
+- Options: `mapType` (`'bubble'`/`'choropleth'`), `colorScale`, `level` (`'district'`/`'state'`), `showStateBoundaries`, `showLegend`
+- Methods: `init(geoUrl)`, `setData(dataMap, hoverInfo)`, `zoomToState(abbr)`, `resetZoom()`, `highlightDistrict(code)`, `setStateClickHandler(fn)`, `setDistrictClickHandler(fn)`
+
+**ValueBox** (`value-box.js`):
+
+- Factory functions: `createCancellationsValueBoxes(stats)`, `createScienceValueBoxes(stats)`, `createSpendingValueBoxes(stats)`
 
 ## Styling
-* CSS uses custom properties defined in `docs/shared/css/variables.css`. The Planetary Society brand colors are defined in `constants.js` under `COLORS`.
-* Map visualization uses stepped color scales defined in `COLORS.choropleth.scienceSteps` for consistent, colorblind-safe representations.
+
+- CSS custom properties defined in `docs/shared/css/variables.css`. Brand colors in `constants.js` under `COLORS`.
+- Map visualization uses stepped color scales (`COLORS.choropleth.scienceSteps`, `spendingSteps`) for colorblind-safe representations.
+- Component styles (navbar, cards, value boxes, tabs, badges) are in `components.css` — check there before adding new styles.
+
+## Data Pipeline
+
+### GitHub Actions Workflows
+
+- **`daily-dashboard-update.yml`** — Runs daily at 17:00 UTC. Downloads latest cancellations CSV from `planetary-society/nasa-cancellations-tracking`, updates `metadata.json`, deploys `docs/` to GitHub Pages.
+- **`sync-spending-data.yml`** — Runs daily at 06:00 UTC. Runs `.github/scripts/fetch-data.py --get summaries` to pull science spending CSVs from private repo (`planetary-society/nasa-spending-impact-generator`). Commits but does not deploy (deployment happens via the other workflow).
+
+### Scripts
+
+- **`scripts/clean_census_geojson.py`** — Cleans Census Bureau GeoJSON for D3 compatibility (see [Updating Congressional District Maps](#updating-congressional-district-maps)).
+- **`.github/scripts/fetch-data.py`** — Fetches data from private repo using `PRIVATE_REPO_PERSONAL_ACCESS_TOKEN`. Modes: `--get summaries` (CSV data) and `--get html` (sentiment reports).
+- **`requirements.txt`** — Python dependency: `requests`.
+
+### Data Archive
+
+The `data/` directory contains summary CSVs for 8 NASA mission areas (Aeronautics, Exploration, Science, Space Operations, Space Technology, SSMS, STEM Education, and an all-NASA aggregate). Only Science data is currently deployed to `docs/data/science/`.
 
 ## Updating Congressional District Maps
 

@@ -32,6 +32,7 @@ export class ChoroplethMap {
      * @param {string} options.mapType - Map type: 'bubble' (default) or 'choropleth'
      * @param {Object} options.customColors - Custom color configuration {zero, low, high}
      * @param {boolean} options.showLegend - Whether to show the legend (default: true for choropleth)
+     * @param {string} options.legendTitle - Legend heading (default: 'Average Annual Spending')
      * @param {boolean} options.interactive - Whether map is interactive
      * @param {boolean} options.preProjected - Whether the data is pre-projected (skip projection)
      */
@@ -44,6 +45,7 @@ export class ChoroplethMap {
             customColors: options.customColors || null,
             interactive: options.interactive !== false,
             showLegend: options.showLegend !== false,
+            legendTitle: options.legendTitle || 'Average Annual Spending',
             maxRadius: options.maxRadius || 20,
             minRadius: options.minRadius || 3,
             preProjected: options.preProjected || false,
@@ -196,9 +198,7 @@ export class ChoroplethMap {
         this.setupMobileDetection();
 
         // Render legend for choropleth maps
-        if (this.options.mapType === 'choropleth' && this.options.showLegend && this.steppedScale) {
-            this.renderLegend();
-        }
+        this.updateLegend();
 
         // Load and render state boundaries if enabled
         if (this.options.showStateBoundaries) {
@@ -353,6 +353,19 @@ export class ChoroplethMap {
         }
 
         this.render();
+    }
+
+    /**
+     * Render the legend if the current configuration calls for one
+     *
+     * Bubble maps and maps without a stepped scale show no legend, so this is a
+     * no-op for them. The legend derives entirely from the construction-time
+     * stepped scale and title, so init() is the only caller it needs.
+     */
+    updateLegend() {
+        if (this.options.mapType === 'choropleth' && this.options.showLegend && this.steppedScale) {
+            this.renderLegend();
+        }
     }
 
     /**
@@ -596,7 +609,7 @@ export class ChoroplethMap {
         `).join('');
 
         this.legendContainer.innerHTML = `
-            <div class="legend-title">Average Annual Spending</div>
+            <div class="legend-title">${this.options.legendTitle}</div>
             <div class="legend-items">${legendItems}</div>
         `;
 

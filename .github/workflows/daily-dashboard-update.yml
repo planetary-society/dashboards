@@ -1,7 +1,7 @@
 # GitHub Action Workflow: Daily Dashboard Update
 #
 # This workflow runs daily to:
-# 1. Download the latest CSV data for the cancellations dashboard.
+# 1. Download the master ledger CSV for the cancellations dashboard.
 # 2. Compare and clean up data files.
 # 3. Commit new data if changed.
 # 4. Deploy the static D3.js dashboards to GitHub Pages.
@@ -30,30 +30,29 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Download latest CSV from GitHub
+      - name: Download master ledger from GitHub
         id: download
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p data
 
-          # Find the latest CSV filename and extract date
-          LATEST_FILE=$(gh api repos/planetary-society/nasa-cancellations-tracking/contents/consolidated \
-            --jq '[.[] | select(.name | endswith(".csv"))] | sort_by(.name) | last | .name')
-          DATE=$(echo "$LATEST_FILE" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}')
+          # Date comes from the most recent commit that touched the master ledger
+          DATE=$(gh api "repos/planetary-society/nasa-cancellations-tracking/commits?path=consolidated/master_ledger.csv&per_page=1" \
+            --jq '.[0].commit.committer.date | split("T")[0]')
 
-          echo "Latest source file: $LATEST_FILE (date: $DATE)"
+          echo "Master ledger last updated: $DATE"
           echo "source_date=$DATE" >> $GITHUB_OUTPUT
 
           # Download directly to data directory
-          curl -fL -o "data/nasa_cancelled_contracts_${DATE}.csv" \
-            "https://raw.githubusercontent.com/planetary-society/nasa-cancellations-tracking/main/consolidated/${LATEST_FILE}"
+          curl -fL -o "data/master_ledger_${DATE}.csv" \
+            "https://raw.githubusercontent.com/planetary-society/nasa-cancellations-tracking/main/consolidated/master_ledger.csv"
 
       - name: Compare and update if changed
         id: compare
         run: |
-          DOCS_FILE="docs/data/cancellations/nasa_cancelled_contracts_latest.csv"
-          DATA_FILE="data/nasa_cancelled_contracts_${{ steps.download.outputs.source_date }}.csv"
+          DOCS_FILE="docs/data/cancellations/master_ledger_latest.csv"
+          DATA_FILE="data/master_ledger_${{ steps.download.outputs.source_date }}.csv"
           mkdir -p docs/data/cancellations
 
           echo "DATA_FILE: $DATA_FILE"
@@ -69,15 +68,19 @@ jobs:
             echo "Changes detected, updating files"
             echo "changed=true" >> $GITHUB_OUTPUT
 
-            # Remove old cancellation CSVs from data dir, keep only the new one
-            find data -name "nasa_cancelled_contracts_*.csv" ! -name "$(basename $DATA_FILE)" -delete
+            # Remove old master ledger CSVs from data dir, keep only the new one
+            find data -name "master_ledger_*.csv" ! -name "$(basename $DATA_FILE)" -delete
 
             # Update docs with new file
             cp -v "$DATA_FILE" "$DOCS_FILE"
 
+            # Count data rows (CSV-aware: the file has CRLF endings and quoted
+            # embedded newlines, so wc -l overcounts)
+            ROW_COUNT=$(python3 -c "import csv,sys; print(sum(1 for _ in csv.reader(open('$DOCS_FILE', newline=''))) - 1)")
+
             # Update metadata
-            echo "{\"lastUpdated\": \"${{ steps.download.outputs.source_date }}\"}" > docs/data/cancellations/metadata.json
-            echo "Updated metadata: ${{ steps.download.outputs.source_date }}"
+            echo "{\"lastUpdated\": \"${{ steps.download.outputs.source_date }}\", \"rowCount\": ${ROW_COUNT}}" > docs/data/cancellations/metadata.json
+            echo "Updated metadata: ${{ steps.download.outputs.source_date }} (${ROW_COUNT} rows)"
 
             # Verify files were updated
             echo "Docs file after copy:"

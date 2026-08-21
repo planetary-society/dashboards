@@ -7,27 +7,25 @@ import { STATE_FIPS_MAP } from './constants.js';
 
 /**
  * Parse CSV text into an array of objects
- * Handles quoted fields containing commas
+ * Handles quoted fields containing commas, embedded newlines, and "" escapes,
+ * plus LF, CRLF, and CR line endings; values and header keys are trimmed
  * @param {string} csvText - Raw CSV text
  * @returns {Array<Object>} Array of row objects with header keys
  */
 export function parseCSV(csvText) {
-    const lines = csvText.trim().split('\n');
-    if (lines.length === 0) return [];
+    const records = tokenizeCSV(csvText);
+    if (records.length === 0) return [];
 
-    const headers = parseCSVLine(lines[0]);
+    const headers = records[0].map(header => header.trim());
     const rows = [];
 
-    for (let i = 1; i < lines.length; i++) {
-        const line = lines[i].trim();
-        if (!line) continue;
-
-        const values = parseCSVLine(line);
+    for (let i = 1; i < records.length; i++) {
+        const values = records[i];
         const row = {};
 
-        headers.forEach((header, index) => {
-            row[header.trim()] = values[index]?.trim() || '';
-        });
+        for (let j = 0; j < headers.length; j++) {
+            row[headers[j]] = values[j]?.trim() || '';
+        }
 
         rows.push(row);
     }
@@ -36,38 +34,68 @@ export function parseCSV(csvText) {
 }
 
 /**
- * Parse a single CSV line, handling quoted fields
- * @param {string} line - CSV line
- * @returns {Array<string>} Array of field values
+ * Tokenize CSV text into an array of records (arrays of raw field values)
+ * Single pass over the whole text so quoted fields may span multiple lines
+ * Blank records (from trailing or repeated line breaks) are skipped
+ * @param {string} csvText - Raw CSV text
+ * @returns {Array<Array<string>>} Array of records
  */
-function parseCSVLine(line) {
-    const result = [];
+function tokenizeCSV(csvText) {
+    // Normalize CRLF/CR to LF up front so the loop only ever sees \n
+    const text = csvText.replace(/\r\n?/g, '\n');
+    const records = [];
+    let record = [];
     let current = '';
     let inQuotes = false;
+    let sawQuote = false;
 
-    for (let i = 0; i < line.length; i++) {
-        const char = line[i];
-        const nextChar = line[i + 1];
+    // Push the record under construction unless it is an empty line.
+    // A lone quoted field ("") is a real value, not an empty line.
+    const endRecord = () => {
+        record.push(current);
+        current = '';
 
-        if (char === '"') {
-            if (inQuotes && nextChar === '"') {
-                // Escaped quote
-                current += '"';
-                i++;
+        if (record.length > 1 || sawQuote || record[0].trim() !== '') {
+            records.push(record);
+        }
+
+        record = [];
+        sawQuote = false;
+    };
+
+    for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+
+        if (inQuotes) {
+            if (char === '"') {
+                if (text[i + 1] === '"') {
+                    // Escaped quote
+                    current += '"';
+                    i++;
+                } else {
+                    inQuotes = false;
+                }
             } else {
-                // Toggle quote state
-                inQuotes = !inQuotes;
+                // Commas and newlines are field content inside quotes
+                current += char;
             }
-        } else if (char === ',' && !inQuotes) {
-            result.push(current);
+        } else if (char === '"') {
+            inQuotes = true;
+            sawQuote = true;
+        } else if (char === ',') {
+            record.push(current);
             current = '';
+        } else if (char === '\n') {
+            endRecord();
         } else {
             current += char;
         }
     }
 
-    result.push(current);
-    return result;
+    // Flush the last record; endRecord drops it if blank
+    endRecord();
+
+    return records;
 }
 
 /**
@@ -178,6 +206,42 @@ export function formatDate(dateStr, format = 'long') {
         default:
             return date.toLocaleDateString('en-US');
     }
+}
+
+/**
+ * Parse a strict 'YYYY-MM-DD' string into UTC milliseconds
+ *
+ * Deliberately avoids `new Date(string)`, whose local-timezone parsing of
+ * date-only strings shifts whole-day differences by one, and rejects
+ * rolled-over values such as '2026-13-45' that Date.UTC would silently accept.
+ * The safe counterpart to formatDate for date-only arithmetic.
+ *
+ * @param {string} value - Candidate date string
+ * @returns {number|null} UTC milliseconds, or null when not a real calendar date
+ */
+export function parseIsoDateUTC(value) {
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(value ?? ''));
+    if (!match) return null;
+
+    const [, year, month, day] = match.map(Number);
+    const ms = Date.UTC(year, month - 1, day);
+    const parsed = new Date(ms);
+
+    if (parsed.getUTCFullYear() !== year) return null;
+    if (parsed.getUTCMonth() !== month - 1) return null;
+    if (parsed.getUTCDate() !== day) return null;
+
+    return ms;
+}
+
+/**
+ * Pluralize a counted noun
+ * @param {number} count - The count, possibly fractional (e.g. a median)
+ * @param {string} noun - Singular noun ('award', 'day', 'claim')
+ * @returns {string} Localized count and correctly pluralized noun
+ */
+export function pluralCount(count, noun) {
+    return `${count.toLocaleString()} ${noun}${count === 1 ? '' : 's'}`;
 }
 
 /**
@@ -339,6 +403,17 @@ export function escapeHtml(str) {
     const div = document.createElement('div');
     div.textContent = str;
     return div.innerHTML;
+}
+
+/**
+ * Escape a string for use inside a double-quoted HTML attribute
+ * escapeHtml alone leaves quotes intact, which is safe in text nodes but not
+ * in `href="..."` or `title="..."`
+ * @param {string} value - String to escape
+ * @returns {string} Attribute-safe string
+ */
+export function escapeAttr(value) {
+    return escapeHtml(value).replace(/"/g, '&quot;');
 }
 
 /**

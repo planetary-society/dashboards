@@ -119,44 +119,6 @@ export class ValueBox {
 }
 
 /**
- * Create common value box configurations for cancellations dashboard
- * @param {Object} stats - Statistics object
- * @param {number} stats.totalContracts - Total number of contracts
- * @param {string} stats.totalObligations - Formatted total obligations
- * @param {number} stats.uniqueRecipients - Number of unique recipients
- * @param {number} stats.uniqueDistricts - Number of unique districts
- * @returns {Array} Array of value box configurations
- */
-export function createCancellationsValueBoxes(stats) {
-    return [
-        {
-            title: 'Awards terminated since Jan 2025',
-            value: stats.totalContracts.toLocaleString(),
-            icon: ICONS.contracts,
-            type: 'contracts'
-        },
-        {
-            title: 'Value of terminated awards',
-            value: stats.totalObligations,
-            icon: ICONS.value,
-            type: 'value'
-        },
-        {
-            title: 'In savings claimed by DOGE',
-            value: stats.totalReportedSavings,
-            icon: 'piggy-bank',
-            type: 'recipients'
-        },
-        {
-            title: 'Congressional Districts Affected',
-            value: stats.uniqueDistricts.toLocaleString(),
-            icon: ICONS.districts,
-            type: 'districts'
-        }
-    ];
-}
-
-/**
  * Create common value box configurations for spending dashboard
  * @param {Object} stats - Statistics object
  * @param {number} stats.percentDistricts - Percentage of districts with spending

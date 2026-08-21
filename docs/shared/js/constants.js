@@ -70,6 +70,24 @@ export const COLORS = {
             { threshold: 1000000000, color: '#2c7fb8', label: '$250M to $1B' },
             { threshold: Infinity, color: '#253494', label: '$1B+' }
         ],
+        // Cancelled awards stepped scale — COUNTS of awards per district, not dollars.
+        // Single-hue sequential red ramp (the site's "cancelled" ink, --red-100 →
+        // --red-700), so it stays colorblind-safe and reads as severity.
+        // Thresholds are upper-exclusive and were fitted to the observed
+        // cancelled-lens distribution (106 districts, max 33 awards):
+        // 1 award ×65, 2 ×20, 3-4 ×11, 5-9 ×7, 10-19 ×2, 20+ ×1 — no empty bucket.
+        // The fit is to the CANCELLED lens specifically; after a data refresh,
+        // re-check the histogram (the tests print lens counts) and refit if a
+        // bucket empties. Currently dormant: the map runs in bubble mode, which
+        // shows no legend and no fills.
+        cancellationsSteps: [
+            { threshold: 2, color: '#FEE2E2', label: '1 award' },
+            { threshold: 3, color: '#FECACA', label: '2 awards' },
+            { threshold: 5, color: '#FCA5A5', label: '3 to 4' },
+            { threshold: 10, color: '#F87171', label: '5 to 9' },
+            { threshold: 20, color: '#DC2626', label: '10 to 19' },
+            { threshold: Infinity, color: '#B91C1C', label: '20+' }
+        ],
         // NASA Science stepped scale (colorblind-safe blue scale)
         scienceSteps: [
             { threshold: 500000, color: '#f7fbff', label: '< $500K' },
@@ -108,13 +126,10 @@ export const MAP_CONFIG = {
 export const DATA_URLS = {
     districts: '../data/us_congressional_districts.geojson',
     states: '../data/gz_2010_us_040_00_5m.json',
-    cancellations: '../data/cancellations/nasa_cancelled_contracts_latest.csv',
+    cancellations: '../data/cancellations/master_ledger_latest.csv',
     // NASA Science spending data
     scienceDistrict: '../data/science/NASA-district-Science-summary.csv',
-    scienceState: '../data/science/NASA-state-Science-summary.csv',
-    // External download links
-    downloadCSV: 'https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=csv',
-    downloadXLSX: 'https://docs.google.com/spreadsheets/d/1I3qXx1XDLKukqAd9U6zVp7S861XUAKZaAp0vrmsDJpg/export?format=xlsx'
+    scienceState: '../data/science/NASA-state-Science-summary.csv'
 };
 
 // Contact information

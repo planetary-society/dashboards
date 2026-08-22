@@ -125,10 +125,14 @@ test('PANEL_META carries exactly the two panel ids', () => {
 
 test('PANEL_META entries are complete', () => {
     for (const [id, meta] of Object.entries(PANEL_META)) {
-        for (const key of ['label', 'unitLabel', 'downloadUrl', 'tableHeading']) {
+        // A panel must always name itself, its row unit and its download.
+        for (const key of ['label', 'unitLabel', 'downloadUrl']) {
             assert.equal(typeof meta[key], 'string', `${id}.${key} should be a string`);
             assert.ok(meta[key].length > 0, `${id}.${key} should be non-empty`);
         }
+        // tableHeading is optional copy: a panel whose table needs no sentence
+        // above it sets '', and app.js renders an empty heading.
+        assert.equal(typeof meta.tableHeading, 'string', `${id}.tableHeading should be a string`);
         assert.equal(typeof meta.hasMap, 'boolean', `${id}.hasMap should be a boolean`);
     }
 });
@@ -280,20 +284,23 @@ test('createPanelValueBoxes uses a distinct type per box so the tint scale reads
 
 /**
  * The note on one DOGE box, found by a word in its title
- * @param {string} titlePattern - Case-insensitive substring of the box title
- * @param {Object} [overrides] - Stats overrides
+ * Boxes are found by their rendered value, not their title — the titles are
+ * copy, free to be reworded without touching this suite.
+ *
+ * @param {string} value - The box's formatted value, e.g. '$78.6M'
+ * @param {Object} [overrides] - Stats overrides that leave that value unchanged
  * @returns {string|undefined} That box's note
  */
-function dogeNoteFor(titlePattern, overrides = {}) {
+function dogeNoteFor(value, overrides = {}) {
     return createPanelValueBoxes('doge', dogeStatsFixture(overrides))
-        .find((box) => new RegExp(titlePattern, 'i').test(box.title))?.note;
+        .find((box) => box.value === value)?.note;
 }
 
 // Each optional clause is identified by the figure only it carries
 // ($11.8M for the active-award caveat, 62 for the no-figure count), so the
 // prose around those figures can be reworded freely.
 test('the claimed-savings total never stands alone', () => {
-    const note = dogeNoteFor('savings claimed');
+    const note = dogeNoteFor('$78.6M');
 
     assert.ok(note.includes('$11.8M'), note);
     assert.ok(note.includes('62'), note);
@@ -301,27 +308,27 @@ test('the claimed-savings total never stands alone', () => {
 });
 
 test('the claimed-savings note drops the active-award clause when nothing sits on active awards', () => {
-    const note = dogeNoteFor('savings claimed', { claimedOnActive: 0 });
+    const note = dogeNoteFor('$78.6M', { claimedOnActive: 0 });
 
     assert.ok(!note.includes('$11.8M'), note);
     assert.ok(note.includes('62'), note);
 });
 
 test('the claimed-savings note drops the no-figure clause when every claim carries a figure', () => {
-    const note = dogeNoteFor('savings claimed', { noFigureCount: 0 });
+    const note = dogeNoteFor('$78.6M', { noFigureCount: 0 });
 
     assert.ok(!note.includes('62'), note);
     assert.ok(note.length > 0, 'the standing caveat should remain');
 });
 
 test('the claimed-savings caveat survives even with nothing else to say', () => {
-    const note = dogeNoteFor('savings claimed', { claimedOnActive: 0, noFigureCount: 0 });
+    const note = dogeNoteFor('$78.6M', { claimedOnActive: 0, noFigureCount: 0 });
 
     assert.ok(note.length > 0, 'the caveat must never disappear entirely');
 });
 
 test('the calculated-savings note says how it is derived and how many claims it covers', () => {
-    const note = dogeNoteFor('cut from these awards');
+    const note = dogeNoteFor('$16.4M');
 
     // Named by what it subtracts, not by a sentence this suite pins
     assert.match(note, /ceiling/i, note);

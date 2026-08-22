@@ -33,7 +33,7 @@ export const PANEL_META = {
         label: 'Confirmed Cancellations',
         unitLabel: 'Awards',
         downloadUrl: DATA_URLS.terminations,
-        tableHeading: '',
+        tableHeading: 'All awards explicitly terminated for "convenience" since January 2025.',
         hasMap: true
     },
     doge: {

@@ -317,13 +317,12 @@ export function terminationCardModel(row) {
  *   url: string|null}>, description: string}} Card view-model
  */
 export function claimCardModel(row) {
+    const meta = OUTCOME_META[row._outcome];
+
     return {
         title: (row._recipient || 'Unknown recipient').toUpperCase(),
         subtitle: placeLine(row),
-        badge: {
-            label: OUTCOME_META[row._outcome].short,
-            className: `outcome-pill outcome-pill--${row._outcome}`
-        },
+        badge: { label: meta.short, className: `badge ${meta.badgeClass}` },
         fields: [
             row.generated_award_id
                 ? {

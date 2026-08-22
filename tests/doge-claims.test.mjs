@@ -275,6 +275,14 @@ test('OUTCOME_META covers every outcome with bar and badge copy', () => {
         assert.ok(meta.short, `${outcome} short`);
         assert.ok(meta.description.endsWith('.'), `${outcome} description is a sentence`);
         assert.ok(BAR_SEGMENTS.includes(meta.segment), `${outcome} rolls up into a real segment`);
+        assert.match(meta.badgeClass, /^badge--/, `${outcome} wears the shared badge family`);
+    }
+});
+
+test('only a termination on record wears the cancelled badge', () => {
+    for (const outcome of OUTCOME_ORDER) {
+        const isRed = OUTCOME_META[outcome].badgeClass === 'badge--cancelled';
+        assert.equal(isRed, outcome === 'terminated', outcome);
     }
 });
 

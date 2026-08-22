@@ -25,7 +25,7 @@ import {
 } from '../scripts/bake/templates.mjs';
 import { districtOf, placeLine } from '../docs/cancellations/js/panel-common.js';
 import { normalizeTerminations, overrideMeta } from '../docs/cancellations/js/terminations.js';
-import { normalizeDogeClaims } from '../docs/cancellations/js/doge-claims.js';
+import { OUTCOME_META, normalizeDogeClaims } from '../docs/cancellations/js/doge-claims.js';
 import { districtEmptyNote } from '../docs/cancellations/js/panel-views.js';
 import { dogeClaimRow, loadCsv, terminationRow } from './fixtures.mjs';
 
@@ -196,17 +196,19 @@ test('renderDistrictPage emits a canonical URL with a trailing slash', () => {
 });
 
 test('renderDistrictPage titles the page after the district', () => {
+    // The district code must appear in the title and the h1; the wording
+    // around it is copy, free to change.
     const html = fixturePage({ terminations: [terminationRow()] });
 
-    assert.ok(html.includes('<title>NASA Cancellations in CA-16 | The Planetary Society</title>'));
-    assert.ok(html.includes('<h1 class="district-title">NASA Award Cancellations in CA-16</h1>'));
+    assert.match(html, /<title>[^<]*CA-16[^<]*<\/title>/);
+    assert.match(html, /<h1 class="district-title">[^<]*CA-16[^<]*<\/h1>/);
 });
 
 test('renderDistrictPage links back into the interactive dashboard', () => {
     const html = fixturePage({ terminations: [terminationRow()] });
 
-    assert.ok(html.includes('href="../../#CA-16"'));
-    assert.ok(html.includes('View this district on the interactive dashboard'));
+    // A visible-text anchor pointing at the district's hash route.
+    assert.match(html, /<a href="\.\.\/\.\.\/#CA-16">[^<]+/);
 });
 
 test('renderDistrictPage escapes ampersands and angle brackets everywhere', () => {
@@ -258,10 +260,12 @@ test('renderDistrictPage links award ids to USAspending in a new tab', () => {
     ));
 });
 
-test('renderDistrictPage renders a DOGE outcome pill and the claim date', () => {
+test('renderDistrictPage badges a DOGE outcome like any other award', () => {
     const html = fixturePage({ doge: [dogeClaimRow({ doge_claim_date: '2025-09-18' })] });
 
-    assert.ok(html.includes('outcome-pill outcome-pill--terminated'));
+    // The fixture claim has a termination on record, so it wears the same
+    // cancelled badge a confirmed termination does.
+    assert.ok(html.includes(`badge ${OUTCOME_META.terminated.badgeClass}`));
     assert.ok(html.includes('2025-09-18'));
 });
 
@@ -303,10 +307,15 @@ test('renderDistrictsIndex groups districts under full state names', () => {
 
 test('renderDistrictsIndex links each district and states both counts', () => {
     const html = renderDistrictsIndex(INDEX_ENTRIES, '2026-08-20');
+    const itemFor = (code) => html.split('<li>').find((chunk) => chunk.includes(`${code}/`));
 
     assert.ok(html.includes('<a href="CA-16/">CA-16</a>'));
-    assert.ok(html.includes('7 confirmed terminations, 3 DOGE claims'));
-    assert.ok(html.includes('1 confirmed termination, 0 DOGE claims'));
+    // Each entry's list item carries both of its counts — including an
+    // explicit zero — whatever the phrasing around the digits.
+    assert.match(itemFor('CA-16'), /\b7\b/);
+    assert.match(itemFor('CA-16'), /\b3\b/);
+    assert.match(itemFor('AL-05'), /\b1\b/);
+    assert.match(itemFor('AL-05'), /\b0\b/);
 });
 
 test('renderDistrictsIndex orders entries by code, not by input order', () => {

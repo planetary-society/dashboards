@@ -103,15 +103,19 @@ const CARD_DESCRIPTION_CHARS = 400;
 const LEGACY_ROUTES = new Set(['summary', 'raw-data', 'cancelled', 'suspicious', 'reversed']);
 
 /**
- * Render an outcome pill for a DOGE table cell or award card
+ * Render an outcome badge for a DOGE table cell
+ *
+ * Same .badge family as the terminations panel's status badges, so a DOGE
+ * award reads exactly like any other award wherever it appears.
+ *
  * @param {string} outcome - claimOutcome() key
- * @returns {string} HTML for the pill
+ * @returns {string} HTML for the badge
  */
-function renderOutcomePill(outcome) {
+function renderOutcomeBadge(outcome) {
     const meta = OUTCOME_META[outcome];
     if (!meta) return escapeHtml(outcome || MISSING);
 
-    return `<span class="outcome-pill outcome-pill--${outcome}">${escapeHtml(meta.short)}</span>`;
+    return `<span class="badge ${meta.badgeClass}">${escapeHtml(meta.short)}</span>`;
 }
 
 /**
@@ -743,7 +747,7 @@ class CancellationsDashboard {
             row.doge_claim_date
                 ? `${row._statusLabel}\n${row.doge_claim_date}`
                 : row._statusLabel,
-            renderOutcomePill(row._outcome),
+            renderOutcomeBadge(row._outcome),
             row.generated_award_id ? (row.doge_award_id || row.generated_award_id) : MISSING,
             usaspendingUrl(row),
             row._obligation !== null ? formatCurrency(row._obligation, false) : MISSING,

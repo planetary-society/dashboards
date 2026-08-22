@@ -51,29 +51,37 @@ export const OUTCOME_ORDER = ['terminated', 'ended', 'active', 'unmatched'];
  * @type {Object<string, {label: string, short: string, description: string, segment: string}>}
  */
 export const OUTCOME_META = {
+    // `badgeClass` puts outcomes in the same .badge family the terminations
+    // panel wears, so a DOGE award renders exactly like any other award:
+    // cancelled-red only when the federal record shows a termination, the
+    // neutral badge otherwise (the short text carries the distinction).
     terminated: {
         label: 'Termination on record',
         short: 'Terminated',
         description: "A termination action appears in the award's federal transaction history.",
-        segment: 'terminated'
+        segment: 'terminated',
+        badgeClass: 'badge--cancelled'
     },
     ended: {
         label: 'No termination found',
         short: 'Ended',
         description: 'Reached its scheduled end date; no termination action recorded.',
-        segment: 'noTermination'
+        segment: 'noTermination',
+        badgeClass: 'badge--excluded'
     },
     active: {
         label: 'No termination found',
         short: 'Active',
         description: 'Award still active as of the last check; no termination action recorded.',
-        segment: 'noTermination'
+        segment: 'noTermination',
+        badgeClass: 'badge--excluded'
     },
     unmatched: {
         label: 'Not in federal records',
         short: 'Not found',
         description: 'Could not be matched to any award in federal spending records.',
-        segment: 'unmatched'
+        segment: 'unmatched',
+        badgeClass: 'badge--excluded'
     }
 };
 

@@ -9,73 +9,71 @@
    ============================================ */
 
 .gridjs-wrapper {
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 .gridjs-container {
-    font-family: var(--font-family);
+  font-family: var(--font-family);
 }
 
-
-
 .gridjs-thead {
-    background-color: var(--gray-50);
+  background-color: var(--gray-50);
 }
 
 th.gridjs-th {
-    background-color: var(--gray-50);
-    color: var(--gray-500);
-    font-weight: var(--font-weight-semibold);
-    font-size: var(--text-xs);
-    text-transform: uppercase;
-    letter-spacing: var(--letter-spacing-wider);
-    padding: var(--space-3) var(--space-4);
-    border-bottom: 2px solid var(--gray-200);
-    text-align: left;
-    white-space: normal;
+  background-color: var(--gray-50);
+  color: var(--gray-500);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 2px solid var(--gray-200);
+  text-align: left;
+  white-space: normal;
 }
 
 .gridjs-th-content {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
 }
 
 .gridjs-th-sort {
-    cursor: pointer;
-    transition: background-color var(--duration-fast) var(--ease-out);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
 }
 
 .gridjs-th-sort:hover {
-    background-color: var(--gray-100);
+  background-color: var(--gray-100);
 }
 
 .gridjs-td {
-    padding: var(--space-4);
-    font-size: var(--text-sm);
-    color: var(--gray-700);
-    border-bottom: 1px solid var(--gray-100);
-    vertical-align: middle;
-    transition: background-color var(--duration-fast) var(--ease-out);
+  padding: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--gray-700);
+  border-bottom: 1px solid var(--gray-100);
+  vertical-align: middle;
+  transition: background-color var(--duration-fast) var(--ease-out);
 }
 
 .gridjs-tr:hover .gridjs-td {
-    background-color: var(--blue-50);
+  background-color: var(--blue-50);
 }
 
 /* Links in tables */
 .gridjs-td a {
-    color: var(--blue-500);
-    text-decoration: none;
-    font-weight: var(--font-weight-medium);
-    transition: color var(--duration-fast) var(--ease-out);
+  color: var(--blue-500);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color var(--duration-fast) var(--ease-out);
 }
 
 .gridjs-td a:hover {
-    color: var(--blue-600);
-    text-decoration: underline;
+  color: var(--blue-600);
+  text-decoration: underline;
 }
 
 /* ============================================
@@ -90,15 +88,15 @@ th.gridjs-th {
 .gridjs-th[data-column-id="obligations"],
 .gridjs-th[data-column-id="outlays"],
 .gridjs-th[data-column-id="total"] {
-    text-align: center;
-    font-feature-settings: "tnum" 1;
+  text-align: center;
+  font-feature-settings: "tnum" 1;
 }
 
 /* Description column: wrap text with max width */
 .gridjs-td[data-column-id="description"] {
-    white-space: normal !important;
-    word-wrap: break-word;
-    max-width: 500px;
+  white-space: normal !important;
+  word-wrap: break-word;
+  max-width: 500px;
 }
 
 /* ============================================
@@ -106,60 +104,60 @@ th.gridjs-th {
    ============================================ */
 
 .gridjs-pagination {
-    padding: var(--space-4);
-    background-color: var(--gray-50);
-    border-top: 1px solid var(--gray-100);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  padding: var(--space-4);
+  background-color: var(--gray-50);
+  border-top: 1px solid var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .gridjs-summary {
-    font-size: var(--text-sm);
-    color: var(--gray-500);
+  font-size: var(--text-sm);
+  color: var(--gray-500);
 }
 
 .gridjs-pages {
-    display: flex;
-    gap: var(--space-1);
+  display: flex;
+  gap: var(--space-1);
 }
 
 .gridjs-pages button {
-    min-width: 36px;
-    height: 36px;
-    padding: var(--space-2);
-    font-size: var(--text-sm);
-    font-weight: var(--font-weight-medium);
-    border: 1px solid var(--gray-200);
-    border-radius: var(--border-radius);
-    background-color: var(--color-surface);
-    color: var(--gray-700);
-    cursor: pointer;
-    transition: all var(--duration-fast) var(--ease-out);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+  background-color: var(--color-surface);
+  color: var(--gray-700);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gridjs-pages button:hover:not(:disabled) {
-    background-color: var(--gray-50);
-    border-color: var(--gray-300);
+  background-color: var(--gray-50);
+  border-color: var(--gray-300);
 }
 
 .gridjs-pages button:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .gridjs-pages button.gridjs-currentPage {
-    background-color: var(--blue-500);
-    border-color: var(--blue-500);
-    color: white;
+  background-color: var(--blue-500);
+  border-color: var(--blue-500);
+  color: white;
 }
 
 .gridjs-pages button.gridjs-currentPage:hover {
-    background-color: var(--blue-600);
-    border-color: var(--blue-600);
+  background-color: var(--blue-600);
+  border-color: var(--blue-600);
 }
 
 /* ============================================
@@ -167,29 +165,29 @@ th.gridjs-th {
    ============================================ */
 
 .gridjs-search {
-    margin-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
 }
 
 .gridjs-search-input {
-    width: 100%;
-    max-width: 320px;
-    padding: var(--space-3) var(--space-4);
-    font-size: var(--text-sm);
-    font-family: var(--font-family);
-    border: 1px solid var(--gray-200);
-    border-radius: var(--border-radius);
-    background-color: var(--color-surface);
-    outline: none;
-    transition: all var(--duration-fast) var(--ease-out);
+  width: 100%;
+  max-width: 320px;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  font-family: var(--font-family);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+  background-color: var(--color-surface);
+  outline: none;
+  transition: all var(--duration-fast) var(--ease-out);
 }
 
 .gridjs-search-input::placeholder {
-    color: var(--gray-400);
+  color: var(--gray-400);
 }
 
 .gridjs-search-input:focus {
-    border-color: var(--focus-ring-color);
-    box-shadow: var(--focus-ring-shadow);
+  border-color: var(--focus-ring-color);
+  box-shadow: var(--focus-ring-shadow);
 }
 
 /* ============================================
@@ -197,13 +195,13 @@ th.gridjs-th {
    ============================================ */
 
 .gridjs-loading {
-    padding: var(--space-12);
-    text-align: center;
-    color: var(--gray-400);
+  padding: var(--space-12);
+  text-align: center;
+  color: var(--gray-400);
 }
 
 .gridjs-loading-bar {
-    background-color: var(--blue-500);
+  background-color: var(--blue-500);
 }
 
 /* ============================================
@@ -211,10 +209,10 @@ th.gridjs-th {
    ============================================ */
 
 .gridjs-notfound {
-    padding: var(--space-12);
-    text-align: center;
-    color: var(--gray-400);
-    font-size: var(--text-sm);
+  padding: var(--space-12);
+  text-align: center;
+  color: var(--gray-400);
+  font-size: var(--text-sm);
 }
 
 /* ============================================
@@ -222,23 +220,23 @@ th.gridjs-th {
    ============================================ */
 
 .gridjs-sort {
-    width: 10px;
-    height: 10px;
-    margin-left: var(--space-2);
-    margin-top:-3px;
+  width: 10px;
+  height: 10px;
+  margin-left: var(--space-2);
+  margin-top: -3px;
 }
 
 .gridjs-sort-neutral {
-    opacity: 0.3;
+  opacity: 0.3;
 }
 
 .gridjs-sort-asc,
 .gridjs-sort-desc {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .gridjs-th-sort:hover .gridjs-sort-neutral {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 /* ============================================
@@ -248,26 +246,26 @@ th.gridjs-th {
 /* Compact table */
 .table-compact .gridjs-th,
 .table-compact .gridjs-td {
-    padding: var(--space-2) var(--space-3);
+  padding: var(--space-2) var(--space-3);
 }
 
 /* Striped table */
 .table-striped .gridjs-tr:nth-child(even) .gridjs-td {
-    background-color: var(--gray-50);
+  background-color: var(--gray-50);
 }
 
 .table-striped .gridjs-tr:hover .gridjs-td {
-    background-color: var(--blue-50);
+  background-color: var(--blue-50);
 }
 
 /* No border table */
 .table-borderless .gridjs-td {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 /* Nowrap for certain columns */
 .table-nowrap .gridjs-td {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 /* ============================================
@@ -275,21 +273,21 @@ th.gridjs-th {
    ============================================ */
 
 .table-container {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    border-radius: var(--border-radius-md);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--border-radius-md);
 }
 
 /* Table header wrapper for sticky headers */
 .table-scroll-container {
-    max-height: 400px;
-    overflow-y: auto;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .table-scroll-container .gridjs-th {
-    position: sticky;
-    top: 0;
-    z-index: 10;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 /* ============================================
@@ -298,7 +296,7 @@ th.gridjs-th {
 
 .gridjs-th[data-column-id="url"],
 .gridjs-td[data-column-id="url"] {
-    display: none;
+  display: none;
 }
 
 /* ============================================
@@ -306,141 +304,164 @@ th.gridjs-th {
    ============================================ */
 
 @media (max-width: 768px) {
-    /* Hide table header on mobile */
-    .gridjs-thead {
-        display: none;
-    }
+  /* Hide table header on mobile */
+  .gridjs-thead {
+    display: none;
+  }
 
-    /* Transform tbody for card layout */
-    .gridjs-tbody {
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-4);
-        padding: var(--space-4);
-    }
+  /* Transform tbody for card layout */
+  .gridjs-tbody {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-4);
+  }
 
-    /* Each row becomes a card */
-    .gridjs-tr {
-        display: flex;
-        flex-direction: column;
-        background: var(--color-surface);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--border-radius-md);
-        box-shadow: var(--shadow-sm);
-        padding: 0;
-        overflow: hidden;
-    }
+  /* Each row becomes a card */
+  .gridjs-tr {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 0;
+    overflow: hidden;
+  }
 
-    /* Remove row hover background in card mode */
-    .gridjs-tr:hover .gridjs-td {
-        background-color: transparent;
-    }
+  /* Remove row hover background in card mode */
+  .gridjs-tr:hover .gridjs-td {
+    background-color: transparent;
+  }
 
-    /* Each cell becomes a labeled row */
-    .gridjs-td {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: var(--space-3) var(--space-4);
-        border-bottom: 1px solid var(--gray-100);
-        text-align: right;
-        font-size: var(--text-sm);
-    }
+  /* Each cell becomes a labeled row */
+  .gridjs-td {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--gray-100);
+    text-align: right;
+    font-size: var(--text-sm);
+  }
 
-    .gridjs-td:last-child {
-        border-bottom: none;
-    }
+  .gridjs-td:last-child {
+    border-bottom: none;
+  }
 
-    /* Add label before each cell value */
-    .gridjs-td::before {
-        content: attr(data-column-id);
-        font-weight: var(--font-weight-semibold);
-        font-size: var(--text-xs);
-        text-transform: uppercase;
-        letter-spacing: var(--letter-spacing-wider);
-        color: var(--gray-500);
-        text-align: left;
-        flex-shrink: 0;
-        margin-right: var(--space-4);
-    }
+  /* Add label before each cell value */
+  .gridjs-td::before {
+    content: attr(data-column-id);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--gray-500);
+    text-align: left;
+    flex-shrink: 0;
+    margin-right: var(--space-4);
+  }
 
-    /* Human-readable labels for each column */
-    .gridjs-td[data-column-id="award_id"]::before { content: "Award ID"; }
-    .gridjs-td[data-column-id="source"]::before { content: "Source"; }
-    .gridjs-td[data-column-id="district"]::before { content: "District"; }
-    .gridjs-td[data-column-id="recipient"]::before { content: "Recipient"; }
-    .gridjs-td[data-column-id="start_date"]::before { content: "Start Date"; }
-    .gridjs-td[data-column-id="end_date"]::before { content: "End Date"; }
-    .gridjs-td[data-column-id="obligations"]::before { content: "Total Obligations"; }
-    .gridjs-td[data-column-id="outlays"]::before { content: "Total Outlays"; }
-    .gridjs-td[data-column-id="description"]::before { content: "Description"; }
+  /* Human-readable labels for each column */
+  .gridjs-td[data-column-id="award_id"]::before {
+    content: "Award ID";
+  }
+  .gridjs-td[data-column-id="source"]::before {
+    content: "Source";
+  }
+  .gridjs-td[data-column-id="district"]::before {
+    content: "District";
+  }
+  .gridjs-td[data-column-id="recipient"]::before {
+    content: "Recipient";
+  }
+  .gridjs-td[data-column-id="start_date"]::before {
+    content: "Start Date";
+  }
+  .gridjs-td[data-column-id="end_date"]::before {
+    content: "End Date";
+  }
+  .gridjs-td[data-column-id="obligations"]::before {
+    content: "Total Obligations";
+  }
+  .gridjs-td[data-column-id="outlays"]::before {
+    content: "Total Outlays";
+  }
+  .gridjs-td[data-column-id="description"]::before {
+    content: "Description";
+  }
 
-    /* For districts/recipients summary tables */
-    .gridjs-td[data-column-id="contracts"]::before { content: "# of Contracts"; }
+  /* For districts/recipients summary tables */
+  .gridjs-td[data-column-id="contracts"]::before {
+    content: "# of Contracts";
+  }
 
-    /* First cell styled as card header */
-    .gridjs-td:first-child {
-        background: var(--gray-50);
-        font-weight: var(--font-weight-medium);
-    }
+  /* First cell styled as card header */
+  .gridjs-td:first-child {
+    background: var(--gray-50);
+    font-weight: var(--font-weight-medium);
+  }
 
-    /* Show hidden mobile columns in card view */
-    .gridjs-td.hide-mobile {
-        display: flex !important;
-    }
+  /* Show hidden mobile columns in card view (data attribute set by
+       DataTable's hideOnMobile option; legacy class kept for any
+       hand-authored markup) */
+  .gridjs-td.hide-mobile,
+  .gridjs-td[data-hide-mobile] {
+    display: flex !important;
+  }
 
-    /* Reset numeric alignment for card layout */
-    .gridjs-td[data-column-id="contracts"],
-    .gridjs-td[data-column-id="obligations"],
-    .gridjs-td[data-column-id="outlays"],
-    .gridjs-td[data-column-id="total"] {
-        text-align: right;
-    }
+  /* Reset numeric alignment for card layout */
+  .gridjs-td[data-column-id="contracts"],
+  .gridjs-td[data-column-id="obligations"],
+  .gridjs-td[data-column-id="outlays"],
+  .gridjs-td[data-column-id="total"] {
+    text-align: right;
+  }
 
-    /* Description field takes full width and wraps */
-    .gridjs-td[data-column-id="description"] {
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-        max-width: none;
-    }
+  /* Description field takes full width and wraps */
+  .gridjs-td[data-column-id="description"] {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    max-width: none;
+  }
 
-    .gridjs-td[data-column-id="description"]::before {
-        margin-bottom: var(--space-2);
-    }
+  .gridjs-td[data-column-id="description"]::before {
+    margin-bottom: var(--space-2);
+  }
 
-    /* Reset max-width for recipient column in card view */
-    .gridjs-td[data-column-id="recipient"] {
-        max-width: none;
-    }
+  /* Reset max-width for recipient column in card view */
+  .gridjs-td[data-column-id="recipient"] {
+    max-width: none;
+  }
 
-    /* Pagination adjustments */
-    .gridjs-pagination {
-        flex-direction: column;
-        gap: var(--space-3);
-        align-items: center;
-    }
+  /* Pagination adjustments */
+  .gridjs-pagination {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: center;
+  }
 
-    .gridjs-summary {
-        order: 1;
-    }
+  .gridjs-summary {
+    order: 1;
+  }
 
-    .gridjs-pages {
-        order: 0;
-    }
+  .gridjs-pages {
+    order: 0;
+  }
 }
 
 @media (max-width: 480px) {
-    .gridjs-pages button {
-        min-width: 32px;
-        height: 32px;
-        padding: var(--space-1);
-        font-size: var(--text-xs);
-    }
+  .gridjs-pages button {
+    min-width: 32px;
+    height: 32px;
+    padding: var(--space-1);
+    font-size: var(--text-xs);
+  }
 
-    .gridjs-td {
-        padding: var(--space-2) var(--space-3);
-    }
+  .gridjs-td {
+    padding: var(--space-2) var(--space-3);
+  }
 }
 
 /* ============================================
@@ -448,21 +469,21 @@ th.gridjs-th {
    ============================================ */
 
 @media print {
-    .gridjs-pagination,
-    .gridjs-search {
-        display: none;
-    }
+  .gridjs-pagination,
+  .gridjs-search {
+    display: none;
+  }
 
-    .gridjs-wrapper {
-        overflow: visible;
-    }
+  .gridjs-wrapper {
+    overflow: visible;
+  }
 
-    .gridjs-tr {
-        break-inside: avoid;
-    }
+  .gridjs-tr {
+    break-inside: avoid;
+  }
 
-    .gridjs-th,
-    .gridjs-td {
-        border: 1px solid var(--gray-300);
-    }
+  .gridjs-th,
+  .gridjs-td {
+    border: 1px solid var(--gray-300);
+  }
 }

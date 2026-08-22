@@ -400,9 +400,13 @@ export function isTablet() {
  */
 export function escapeHtml(str) {
     if (!str) return '';
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
+    // Pure string escaping (no DOM) so modules that build HTML strings stay
+    // importable in Node tests. Matches the browser's textContent→innerHTML
+    // escaping: &, <, > — quotes are escapeAttr's job.
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
 }
 
 /**

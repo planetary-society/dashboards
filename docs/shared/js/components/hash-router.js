@@ -32,16 +32,37 @@ export class HashRouter {
 
     /**
      * Navigate to a route programmatically
+     *
+     * Neither form fires `hashchange` synchronously (assignment fires it on a
+     * later task, replaceState never fires it at all), so this method always
+     * does its own bookkeeping: it records the new route and invokes the
+     * callback itself. The `hashchange` handler then no-ops because the route
+     * already matches.
+     *
      * @param {string} route - Route to navigate to (without '#')
-     * @param {boolean} triggerCallback - Whether to trigger onRouteChange callback (default: true)
+     * @param {boolean|Object} [options=true] - Legacy boolean form is the
+     *   triggerCallback flag; object form accepts:
+     * @param {boolean} [options.replace=false] - Use history.replaceState instead
+     *   of assigning the hash, so the navigation adds no history entry (Back
+     *   leaves the page rather than returning to the route just left behind)
+     * @param {boolean} [options.trigger=true] - Explicit form of the legacy flag
      */
-    navigate(route, triggerCallback = true) {
-        if (route !== this._currentRoute) {
-            this._currentRoute = route;
+    navigate(route, options = true) {
+        const opts = typeof options === 'boolean' ? { trigger: options } : (options || {});
+        const trigger = opts.trigger !== false;
+
+        if (route === this._currentRoute) return;
+
+        this._currentRoute = route;
+
+        if (opts.replace === true) {
+            HashRouter.replaceHash(route);
+        } else {
             HashRouter.setHash(route);
-            if (triggerCallback && this.onRouteChange) {
-                this.onRouteChange(route);
-            }
+        }
+
+        if (trigger && this.onRouteChange) {
+            this.onRouteChange(route);
         }
     }
 
@@ -86,10 +107,24 @@ export class HashRouter {
     }
 
     /**
-     * Set the URL hash
+     * Set the URL hash, pushing a history entry
      * @param {string} route - Route to set (without '#')
      */
     static setHash(route) {
         window.location.hash = route;
+    }
+
+    /**
+     * Replace the URL hash in place, adding no history entry
+     *
+     * Used for redirects (legacy route → its replacement) so the Back button
+     * doesn't bounce the user straight back onto the route that redirects.
+     * Note: replaceState does NOT fire `hashchange` — callers are responsible
+     * for their own route bookkeeping (navigate() does this).
+     *
+     * @param {string} route - Route to set (without '#')
+     */
+    static replaceHash(route) {
+        window.history.replaceState(null, '', '#' + route);
     }
 }

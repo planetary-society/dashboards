@@ -1,881 +1,516 @@
 /**
- * NASA Cancellations Dashboard Application
- * Main entry point and dashboard-specific logic
+ * NASA Cancellations Dashboard
+ *
+ * Two independent panels over two independent datasets:
+ *
+ *   cancellations — terminations.csv: NASA awards whose federal record shows
+ *                   a termination action (the default, high-confidence panel)
+ *   doge          — doge_claims.csv: every cancellation DOGE claimed, checked
+ *                   against the award's federal transaction history
+ *
+ * The panels are datasets, not filters of one dataset: 88 of the 112 DOGE
+ * claims also appear among the confirmed terminations, so their counts must
+ * never be summed. That rule shapes the UI — counts live in each panel's
+ * headline next to the noun they count (never in the panel-bar tab labels),
+ * and the overlap is stated in the DOGE panel's own headline area.
+ *
+ * Architecture: one DOM skeleton shared by both panels; applyPanel() re-renders
+ * the shared containers and hides the cards a panel doesn't use. Pure data
+ * logic lives in terminations.js / doge-claims.js / fy-actions.js (Node-tested);
+ * display copy in panel-views.js; this file owns the DOM and the routing.
+ *
+ * Routes: #cancellations (default) · #doge · #about · bare district codes
+ * (#CA-37). District pages are dataset-independent — one URL means one thing —
+ * showing both datasets for the district as labelled groups. Legacy routes
+ * (#summary, #raw-data, #cancelled, #suspicious, #reversed) redirect with
+ * history.replaceState so the Back button is never trapped.
  */
 
-import { DATA_URLS, FIPS_STATE_MAP } from '../../shared/js/constants.js';
 import {
     parseCSV,
-    parseCurrency,
     formatCurrency,
     formatDate,
-    getGeoidFromDistrict,
     fetchText,
     groupBy,
-    sumBy,
-    truncateText,
     escapeHtml,
     escapeAttr,
+    truncateText,
     pluralCount
 } from '../../shared/js/utils.js';
-import {
-    categorize,
-    summarize,
-    deriveBadges,
-    detectionEvidence,
-    evidenceTier,
-    verificationConflict,
-    tierMix,
-    claimOutcomeMix,
-    latestVerification,
-    monthlyActivity,
-    endDateChanges,
-    isExtensionCarveOut,
-    obligatedValue,
-    EVIDENCE_TIER_ORDER,
-    CLAIM_OUTCOME_ORDER,
-    STATUS_PILLS,
-    SUSPICIOUS_PILL,
-    applyLens as filterByLens
-} from './ledger-categories.js';
-import {
-    LENS_META,
-    TIER_META,
-    OUTCOME_META,
-    TIMELINE_META,
-    VERDICT_META,
-    truncationChip,
-    selectSpotlights,
-    createLensValueBoxes,
-    ENDDATE_META,
-    endDateSummary
-} from './lens-views.js';
+import { DATA_URLS } from '../../shared/js/constants.js';
+import { ChoroplethMap } from '../../shared/js/components/choropleth-map.js';
+import { DataTable } from '../../shared/js/components/data-table.js';
 import { ValueBox } from '../../shared/js/components/value-box.js';
 import { TabNavigation, CardTabs } from '../../shared/js/components/tabs.js';
 import { HashRouter } from '../../shared/js/components/hash-router.js';
-import { ChoroplethMap } from '../../shared/js/components/choropleth-map.js';
-import { DataTable } from '../../shared/js/components/data-table.js';
+import { MISSING } from './panel-common.js';
+import {
+    normalizeTerminations,
+    terminationStats,
+    monthlyCounts,
+    overrideMeta,
+    usaspendingUrl
+} from './terminations.js';
+import {
+    normalizeDogeClaims,
+    dogeStats,
+    outcomeMix,
+    overlapWithTerminations,
+    OUTCOME_META
+} from './doge-claims.js';
+import { parseFyActions } from './fy-actions.js';
+import {
+    PANEL_META,
+    panelHeadline,
+    panelNote,
+    createPanelValueBoxes,
+    valueBoxNote,
+    outcomeLead,
+    timelineNote,
+    districtSummaryLine,
+    districtEmptyNote,
+    renderOutcomeBar,
+    renderOutcomeLegend,
+    renderOutcomeDefinitions
+} from './panel-views.js';
 import { TimelineChart } from './timeline-chart.js';
-import { EndDateChart } from './enddate-chart.js';
+import { FyChart } from './fy-chart.js';
 
-/** District codes that can be routed to, e.g. "CA-37" */
+/** Matches district codes such as CA-37 or NY-01 */
 const DISTRICT_CODE_RE = /^[A-Z]{2}-\d+$/;
 
-/** Longest description rendered unclamped on an award card, in characters */
-const DESCRIPTION_CLAMP_CHARS = 400;
-
-/** Longest description rendered without a disclosure control in the table, in characters */
-const DESCRIPTION_SUMMARY_CHARS = 120;
-
-/** Spotlight cards drawn beneath the summary */
-const SPOTLIGHT_COUNT = 3;
+/** Characters shown before a table description truncates */
+const TABLE_DESCRIPTION_CHARS = 140;
 
 /**
- * Marker written into the Raw Data table's hidden conflict column
- *
- * Grid.js cells hold plain data, so the boolean travels as a string the status
- * formatter can test.
+ * Hidden data-carrier column indexes, assigned where each table declares its
+ * columns (findIndex on the column id — never a hardcoded position)
  */
-const CONFLICT_FLAG = 'conflict';
+const URL_COL = { terminations: -1, doge: -1 };
+
+/** Characters shown before an award card's description clamps */
+const CARD_DESCRIPTION_CHARS = 400;
 
 /**
- * Tier label → tier display metadata
+ * Routes that no longer exist; all redirect to the default panel
  *
- * Evidence cells carry the tier label so Grid.js sorts them as plain text; the
- * matching badge class and description are looked up here, the same trick
- * PILL_CLASSES uses for status cells. Labels are unique by construction.
- *
- * @type {Object<string, {label: string, description: string, cls: string}>}
+ * Redirected with {replace: true} so the dead route never enters history —
+ * otherwise Back would bounce the visitor straight back onto the redirect.
  */
-const TIER_BY_LABEL = Object.fromEntries(
-    Object.values(TIER_META).map((meta) => [meta.label, meta])
-);
+const LEGACY_ROUTES = new Set(['summary', 'raw-data', 'cancelled', 'suspicious', 'reversed']);
 
 /**
- * Verification-verdict label → verdict display metadata
- *
- * Same label-is-the-cell trick as TIER_BY_LABEL, for the Raw Data
- * Verification column. Labels are unique by construction.
- *
- * @type {Object<string, {label: string, description: string}>}
+ * Render an outcome pill for a DOGE table cell or award card
+ * @param {string} outcome - claimOutcome() key
+ * @returns {string} HTML for the pill
  */
-const VERDICT_BY_LABEL = Object.fromEntries(
-    Object.values(VERDICT_META).map((meta) => [meta.label, meta])
-);
+function renderOutcomePill(outcome) {
+    const meta = OUTCOME_META[outcome];
+    if (!meta) return escapeHtml(outcome || MISSING);
 
-/**
- * Resolve a row's weekly re-verification verdict for display
- *
- * Unknown or blank verdicts fall back to the raw value so new upstream
- * vocabulary degrades to visible text rather than disappearing.
- *
- * @param {Object} row - Ledger row
- * @returns {{label: string, description: string}} Verdict display metadata
- */
-function rowVerdict(row) {
-    const raw = String(row['Auto Status'] ?? '').trim();
-    return VERDICT_META[raw] || { label: raw || '—', description: '' };
+    return `<span class="outcome-pill outcome-pill--${outcome}">${escapeHtml(meta.short)}</span>`;
 }
 
 /**
- * The ⍰ glyph marking a cancelled row with no termination action on record
- *
- * The About tab renders this same glyph with the same title text so readers
- * can hover the explanation there too — keep the two copies in sync
- * (index.html, "Re-checked every week" section).
- *
- * @type {string}
- */
-const CONFLICT_GLYPH = '<i class="bi bi-question-circle award-conflict" title="'
-    + 'No termination action found in this award’s federal transaction history;'
-    + ' its cancelled status comes from NASA’s internal lists."></i>';
-
-/**
- * Pill label → badge class
- *
- * Status cells carry the pill label so Grid.js sorts them as plain text; the
- * matching class is looked up here.
- *
- * @type {Object<string, string>}
- */
-const PILL_CLASSES = Object.fromEntries(
-    [...Object.values(STATUS_PILLS), SUSPICIOUS_PILL].map(({ label, cls }) => [label, cls])
-);
-
-/**
- * Format a row's claimed savings
- *
- * A blank means no claim was ever made, which is a different fact from a claim
- * of zero, so blanks render as an em dash and zeros render as $0.
- *
- * @param {Object} row - Ledger row
- * @returns {string} Formatted amount, or '—' when unclaimed
- */
-function formatClaimedSavings(row) {
-    const amount = parseCurrency(row['Claimed Savings']);
-    return amount === null ? '—' : formatCurrency(amount, false);
-}
-
-/**
- * Render an evidence-tier badge
- *
- * The one rendering of the tier badge, shared by the spotlight cards, the
- * award cards, and the Raw Data Evidence column so the markup cannot drift.
- *
- * @param {{label: string, cls: string, description: string}} tier - TIER_META entry
- * @param {string} [title] - Tooltip text (defaults to the tier description)
+ * Render a status badge for a terminations table cell or award card
+ * @param {Object} row - Normalized termination row
  * @returns {string} HTML for the badge
  */
-function renderTierBadge(tier, title = tier.description) {
-    return `<span class="badge ${tier.cls}" title="${escapeAttr(title)}">${escapeHtml(tier.label)}</span>`;
+function renderStatusBadge(row) {
+    const meta = overrideMeta(row.override_status);
+    return `<span class="badge ${meta.badgeClass}">${escapeHtml(meta.label)}</span>`;
 }
 
 /**
- * Render a horizontal segmented bar over one categorical mix
- *
- * The segments carry no text: the fills are light enough that any label on top
- * of them would fail contrast, so identity and counts live in the legend
- * beneath. Zero-count categories are dropped from the bar (a zero-width segment
- * is not a thing) but kept in the legend, so the full vocabulary stays visible.
- *
- * @param {string[]} order - Category keys in display order
- * @param {Object<string, {label: string, description: string}>} meta - Display copy per key
- * @param {Object<string, number>} mix - Zero-filled counts per key
- * @param {string} noun - Singular noun for the counted rows
- * @returns {string} HTML for the bar, or '' when the mix is empty
+ * Render an award ID as a USAspending link when one exists
+ * @param {string} label - Text to show (award id)
+ * @param {string|null} url - usaspendingUrl() result
+ * @returns {string} HTML string
  */
-function renderSegmentedBar(order, meta, mix, noun) {
-    const total = order.reduce((sum, key) => sum + mix[key], 0);
-    if (total === 0) return '';
-
-    const segments = order
-        .filter((key) => mix[key] > 0)
-        .map((key) => {
-            const width = (mix[key] / total) * 100;
-            const title = `${meta[key].label} — ${pluralCount(mix[key], noun)}. ${meta[key].description}`;
-
-            return `<div class="seg-bar__segment ${meta[key].segCls}"`
-                + ` style="width: ${width.toFixed(2)}%"`
-                + ` title="${escapeAttr(title)}"></div>`;
-        })
-        .join('');
-
-    const summary = order.map((key) => `${meta[key].label}: ${mix[key].toLocaleString()}`).join(', ');
-
-    return `<div class="seg-bar" role="img" aria-label="${escapeAttr(summary)}">${segments}</div>`;
+function renderAwardLink(label, url) {
+    if (!label) return MISSING;
+    if (!url) return escapeHtml(label);
+    return `<a href="${escapeAttr(url)}" target="_blank" rel="noopener">${escapeHtml(label)}</a>`;
 }
 
 /**
- * Render the legend that names a segmented bar's categories
- *
- * Every category appears, including the ones at zero, so a reader can tell an
- * absent tier from an unlisted one.
- *
- * @param {string[]} order - Category keys in display order
- * @param {Object<string, {label: string, description: string}>} meta - Display copy per key
- * @param {Object<string, number>} mix - Zero-filled counts per key
- * @returns {string} HTML for the legend
+ * A row's recipient location line: 'CITY, ST' in caps ('' when unknown)
+ * @param {Object} row - Normalized row (either dataset)
+ * @returns {string} Location line
  */
-function renderSegmentLegend(order, meta, mix) {
-    const items = order.map((key) => {
-        const zero = mix[key] === 0 ? ' seg-legend-item--zero' : '';
-
-        return `<span class="seg-legend-item${zero}" title="${escapeAttr(meta[key].description)}">`
-            + `<span class="seg-swatch ${meta[key].segCls}"></span>`
-            + `<span class="seg-legend-label">${escapeHtml(meta[key].label)}</span>`
-            + `<span class="seg-legend-count">${mix[key].toLocaleString()}</span>`
-            + '</span>';
-    }).join('');
-
-    return `<div class="seg-legend">${items}</div>`;
+function placeLine(row) {
+    return [row.recipient_city, row.recipient_state]
+        .map((part) => String(part || '').trim().toUpperCase())
+        .filter(Boolean)
+        .join(', ');
 }
 
 /**
- * Render one column of the claim comparison row
- * @param {string} label - Column label
- * @param {string} value - Pre-formatted currency value
- * @returns {string} HTML string for the column
+ * Two-line recipient cell text: NAME, then CITY, ST — all caps
+ *
+ * Plain text with a newline separator so Grid.js sorts by name and search
+ * matches both lines; the formatter turns the newline into markup.
+ *
+ * @param {string} name - Recipient name
+ * @param {string} place - placeLine() result
+ * @returns {string} 'NAME\nCITY, ST', or MISSING when nameless
  */
-function renderClaimCell(label, value) {
-    return `
-        <div class="award-claim-item">
-            <span class="award-label">${label}</span>
-            <span class="award-value">${value}</span>
-        </div>
-    `;
+function recipientCellText(name, place) {
+    const line1 = String(name || '').trim().toUpperCase();
+    if (!line1) return MISSING;
+
+    return place ? `${line1}\n${place}` : line1;
+}
+
+/**
+ * Grid.js formatter for stacked two-line cells ('MAIN\nsubline')
+ *
+ * The data stays plain text (sortable by the first line, searchable on both);
+ * this renders the newline as a muted second line.
+ *
+ * @param {string} cell - Cell data
+ * @returns {*} Grid.js HTML cell
+ */
+function stackedCellFormatter(cell) {
+    if (!cell || cell === MISSING) return cell;
+
+    const [main, subline] = String(cell).split('\n');
+    return gridjs.html(
+        escapeHtml(main)
+        + (subline ? `<br><span class="cell-subline">${escapeHtml(subline)}</span>` : '')
+    );
 }
 
 class CancellationsDashboard {
     constructor() {
-        // Every ledger row, with derived fields attached
-        this.allRows = [];
-        // The active lens's subset of allRows — drives every summary view
-        this.lensRows = [];
-        this.activeLens = 'cancelled';
+        /**
+         * Per-panel data, filled by loadData():
+         * {cancellations: {rows, stats, columns}, doge: {rows, stats, columns}}
+         */
+        this.panels = null;
+        this.activePanel = 'cancellations';
+
+        /** Cross-panel figures computed once at load */
+        this.overlap = null;
+
+        /** Parsed FY actions series for the static FY chart */
+        this.fyItems = [];
+
+        /** Map data (confirmed panel only) */
         this.districtCounts = {};
         this.hoverInfo = {};
-        this.maxContracts = 1;
-        // Latest weekly re-verification date across the whole ledger, read once
-        // at load: it describes the data, not the active lens
-        this.lastVerified = '';
-        // Timeline metric, kept across lens switches so a reader who chose
-        // dollars stays in dollars
-        this.timelineMetric = 'count';
+        this.maxAwards = 1;
 
+        // Component handles
         this.map = null;
         this.timeline = null;
-        this.endDateChart = null;
-        this.lensTabs = null;
+        this.fyChart = null;
+        this.pageTabs = null;
+        this.router = null;
         this.districtsTable = null;
         this.recipientsTable = null;
-        this.contractsTable = null;
-        this.pageTabs = null;
-        this.tableTabs = null;
-        this.router = null;
-
-        // Route to tab ID mapping
-        this.routeMap = {
-            'summary': 'summary-tab',
-            'raw-data': 'contracts-tab',
-            'about': 'about-tab'
-        };
+        this.panelTable = null;
     }
 
-    /**
-     * Initialize the dashboard
-     */
     async init() {
         try {
-            // Initialize tab navigation
             this.initTabs();
+            this.updateLastUpdated();
 
-            // Load and process data
+            // The 900 KB district geojson downloads in parallel with the CSVs
+            // and is awaited only after the panels have rendered — the map is
+            // below the fold and must not delay the headline numbers.
+            const mapReady = this.initMap();
             await this.loadData();
 
-            // Lens selector: one active lens drives every summary view
-            this.initLensBar();
-            this.renderLensCounts();
-
-            // Lens-independent, so filled once rather than per lens switch
-            this.renderVerificationFreshness();
-
-            // Build the map shell; applyLens supplies its data
-            await this.renderMap();
-
-            // Summary tables are built once and re-rendered on every lens switch
             this.initSummaryTables();
-
-            // The chart instances and the timeline's metric toggle outlive
-            // every lens switch, so they must exist before the first applyLens
-            // call
-            this.initTimeline();
-            this.endDateChart = new EndDateChart('enddate-chart', {
-                ariaLabel: 'End-date changes',
-                color: ENDDATE_META.color
-            });
-
-            // Award-card description toggles, delegated from the static container
+            this.initCharts();
             this.initAwardCardInteractions();
 
-            // Render every lens-driven view for the default lens
-            this.applyLens(this.activeLens);
+            // First render. Any deep-linked tab was already activated by the
+            // router pre-load (its applyPanel no-opped on empty panels), so a
+            // single explicit apply here renders exactly once.
+            this.applyPanel(this.activePanel);
 
-            // Raw Data tab always shows the full ledger, lens-independent
-            this.renderRawDataTable();
+            await mapReady;
+            this.map.setData(this.districtCounts, this.hoverInfo, this.maxAwards);
 
-            // Re-process district route if page loaded with one (data wasn't ready earlier)
-            const currentRoute = this.router.getCurrentRoute();
-            if (this.isDistrictRoute(currentRoute)) {
-                this.showDistrictSummary(currentRoute);
+            // Replay a district deep link now that there is data to show
+            const route = this.router.getCurrentRoute();
+            if (this.isDistrictRoute(route)) {
+                this.showDistrictSummary(route);
             }
-
-            // Update last updated date
-            await this.updateLastUpdated();
-
         } catch (error) {
             console.error('Dashboard initialization failed:', error);
             this.showError(error.message);
         }
     }
 
+    /* ------------------------------------------------------------------ *
+     *  Data loading
+     * ------------------------------------------------------------------ */
+
     /**
-     * Initialize tab navigation with hash-based routing
+     * Fetch and normalize both datasets plus the FY series
+     *
+     * All three files load in parallel; each panel keeps its rows, its stats,
+     * and its column-availability flags. Cross-panel figures (the DOGE overlap)
+     * are computed once here, not per render.
      */
+    async loadData() {
+        const [terminationsText, dogeText, fyText] = await Promise.all([
+            fetchText(DATA_URLS.terminations),
+            fetchText(DATA_URLS.dogeClaims),
+            fetchText(DATA_URLS.fyActions)
+        ]);
+
+        const terminations = normalizeTerminations(parseCSV(terminationsText));
+        const doge = normalizeDogeClaims(parseCSV(dogeText));
+
+        this.panels = {
+            cancellations: {
+                rows: terminations.rows,
+                columns: terminations.columns,
+                stats: terminationStats(terminations.rows, terminations.columns)
+            },
+            doge: {
+                rows: doge.rows,
+                columns: doge.columns,
+                stats: dogeStats(doge.rows)
+            }
+        };
+
+        // Both ID namespaces are checked per row (see doge-claims.js), so the
+        // Set can carry either key; give it both and stay immune to upstream
+        // key-shape changes.
+        const idSet = new Set();
+        for (const row of terminations.rows) {
+            if (row.award_id) idSet.add(row.award_id);
+            if (row.generated_award_id) idSet.add(row.generated_award_id);
+        }
+        this.overlap = overlapWithTerminations(doge.rows, idSet);
+
+        this.fyItems = parseFyActions(parseCSV(fyText));
+
+        this.calculateDistrictData();
+    }
+
+    /**
+     * District counts and hover info for the map (confirmed awards only)
+     *
+     * Partial actions (descoped / closed out) are excluded: the map's legend
+     * says "Terminated awards", and a descoped award is not one. This keeps
+     * the map's total consistent with the panel headline.
+     */
+    calculateDistrictData() {
+        const confirmed = this.panels.cancellations.rows.filter(
+            (row) => !row._partial && row._geoid
+        );
+        const byGeoid = groupBy(confirmed, '_geoid');
+
+        this.districtCounts = {};
+        this.hoverInfo = {};
+        this.maxAwards = 1;
+
+        Object.entries(byGeoid).forEach(([geoid, rows]) => {
+            const count = rows.length;
+            this.districtCounts[geoid] = count;
+            this.maxAwards = Math.max(this.maxAwards, count);
+
+            const district = rows[0]._district;
+            this.hoverInfo[geoid] = `
+                <strong>${escapeHtml(district)}</strong><br>
+                ${pluralCount(count, 'terminated award')}
+            `;
+        });
+    }
+
+    /* ------------------------------------------------------------------ *
+     *  Tabs and routing
+     * ------------------------------------------------------------------ */
+
     initTabs() {
-        // Page-level tabs with route sync
+        // No contentClass: the two dataset tabs share one section, so tab→
+        // section mapping is managed here (showSection), not by the component.
         this.pageTabs = new TabNavigation('page-tabs', {
             tabClass: 'page-tab',
-            contentClass: 'tab-content',
             onTabChange: (tabId) => {
-                // Update URL hash when tab changes (without triggering router callback)
-                const route = Object.entries(this.routeMap).find(([r, t]) => t === tabId)?.[0];
-                if (route && this.router) {
-                    this.router.navigate(route, false);
+                if (tabId === 'about') {
+                    this.showSection('about-tab');
+                } else {
+                    this.showSection('summary-tab');
+                    this.applyPanel(tabId);
+                }
+                if (this.router && tabId !== this.router.getCurrentRoute()) {
+                    this.router.navigate(tabId, false);
                 }
             }
         });
         this.pageTabs.init();
 
-        // Initialize hash router for deep-linking
         this.router = new HashRouter({
-            defaultRoute: 'summary',
-            onRouteChange: (route) => {
-                // Check if this is a district route (e.g., "CA-37")
-                if (this.isDistrictRoute(route)) {
-                    this.showDistrictSummary(route);
-                    return;
-                }
-
-                // Hide district summary if we're navigating away from it
-                this.hideDistrictSummary();
-
-                // Handle standard page routes
-                const tabId = this.routeMap[route] || this.routeMap['summary'];
-                this.pageTabs.activateTab(tabId);
-            }
+            defaultRoute: 'cancellations',
+            onRouteChange: (route) => this.handleRoute(route)
         });
         this.router.init();
 
-        // Card-level tabs for tables
-        this.tableTabs = new CardTabs('table-tabs', {
-            tabClass: 'card-tab',
-            contentClass: 'card-tab-content'
-        });
-        this.tableTabs.init();
+        new CardTabs('table-tabs').init();
 
-        // Back button handler for district summary
+        // Back from a district page returns to the panel the visitor left
         const backBtn = document.getElementById('back-to-summary');
         if (backBtn) {
             backBtn.addEventListener('click', () => {
-                this.router.navigate('summary');
+                this.router.navigate(this.activePanel);
             });
         }
     }
 
     /**
-     * Load the master ledger and attach derived fields
-     *
-     * Every row is kept, including rows with no parseable award amount:
-     * filtering is the lens's job, not this method's.
+     * Route dispatch: legacy redirects, district pages, panels, about
+     * @param {string} route - Current route (without '#')
      */
-    async loadData() {
-        const csvText = await fetchText(DATA_URLS.cancellations);
-
-        this.allRows = parseCSV(csvText).map(row => {
-            const tier = evidenceTier(row);
-
-            return {
-                ...row,
-                totalObligations: parseCurrency(row['Award Amount']),
-                totalOutlays: parseCurrency(row['Total Outlays']),
-                geoid: getGeoidFromDistrict(row['District']),
-                _cat: categorize(row),
-                _tier: tier,
-                _conflict: verificationConflict(row, tier)
-            };
-        });
-
-        // Describes the ledger, not any one lens, so it is read once here
-        // rather than recomputed on every lens switch
-        this.lastVerified = latestVerification(this.allRows);
-    }
-
-    /**
-     * Wire the lens selector to the lens-driven views
-     *
-     * Called after data load, so the callback always has rows to work with.
-     */
-    initLensBar() {
-        this.lensTabs = new TabNavigation('lens-bar', {
-            tabClass: 'lens-tab',
-            onTabChange: (lens) => this.applyLens(lens)
-        });
-        this.lensTabs.init();
-    }
-
-    /**
-     * Write each lens's row count into its tab
-     *
-     * Counts describe the whole ledger, so they are computed once and never
-     * change when the active lens changes.
-     */
-    renderLensCounts() {
-        this.lensTabs.tabs.forEach(tab => {
-            const lens = tab.dataset.tab;
-            const countEl = tab.querySelector('.lens-count');
-            if (lens && countEl) {
-                countEl.textContent = filterByLens(this.allRows, lens).length;
-            }
-        });
-    }
-
-    /**
-     * Switch the active lens and re-render everything driven by it
-     * @param {'cancelled'|'doge'|'suspicious'|'reversed'} lens - Lens to activate
-     */
-    applyLens(lens) {
-        if (!LENS_META[lens]) lens = 'cancelled';
-
-        this.activeLens = lens;
-        this.lensRows = filterByLens(this.allRows, lens);
-
-        this.calculateDistrictData();
-        this.renderValueBoxes();
-        this.renderEvidencePanel();
-
-        if (this.map) {
-            this.map.setData(this.districtCounts, this.hoverInfo, this.maxContracts);
+    handleRoute(route) {
+        if (LEGACY_ROUTES.has(route)) {
+            // replace, not push: the dead route must not survive in history,
+            // or Back becomes a redirect loop
+            this.router.navigate('cancellations', { replace: true });
+            return;
         }
 
-        this.renderSummaryTables();
-        this.renderTimeline();
-        this.renderEndDates();
-        this.renderSpotlights();
-
-        const subtitleEl = document.getElementById('lens-subtitle');
-        if (subtitleEl) {
-            subtitleEl.textContent = LENS_META[lens].headline;
+        if (this.isDistrictRoute(route)) {
+            this.showDistrictSummary(route);
+            return;
         }
 
-        // The district view is a filtered slice of the lens, so it moves too
-        const currentRoute = this.router?.getCurrentRoute();
-        if (currentRoute && this.isDistrictRoute(currentRoute)) {
-            this.renderDistrictAwards(currentRoute);
+        this.hideDistrictSummary();
+
+        if (route !== 'about') {
+            this.activePanel = PANEL_META[route] ? route : 'cancellations';
+        }
+        const tabId = route === 'about' ? 'about' : this.activePanel;
+
+        if (this.pageTabs.currentTab !== tabId) {
+            // Tab change: the onTabChange callback shows the section, applies
+            // the panel, and syncs the route (guarded against loops).
+            this.pageTabs.activateTab(tabId);
+        } else {
+            // Same tab (e.g. returning from a district page, which hid every
+            // section): restore visibility without a full panel re-render.
+            this.showSection(tabId === 'about' ? 'about-tab' : 'summary-tab');
         }
     }
 
     /**
-     * Calculate district counts and hover info for map
+     * Show one of the two page sections, hiding the other
+     * @param {'summary-tab'|'about-tab'} sectionId - Section to show
      */
-    calculateDistrictData() {
-        const districtGroups = groupBy(
-            this.lensRows.filter(row => row.geoid),
-            'geoid'
-        );
-
-        this.districtCounts = {};
-        this.hoverInfo = {};
-        this.maxContracts = 1;
-
-        Object.entries(districtGroups).forEach(([geoid, contracts]) => {
-            const count = contracts.length;
-            this.districtCounts[geoid] = count;
-
-            if (count > this.maxContracts) {
-                this.maxContracts = count;
-            }
-
-            // Build hover HTML
-            const header = `<b>Number of awards: ${count}</b>`;
-            const lines = contracts.map(contract => {
-                const amt = formatCurrency(contract.totalObligations, false);
-                const recipient = escapeHtml(contract['Recipient']);
-                const awardId = escapeHtml(contract['Award ID']);
-                return `<b>${recipient}</b><br>${amt} (Award ID: ${awardId})`;
-            });
-
-            this.hoverInfo[geoid] = header + '<br><br>' + lines.join('<br>');
-        });
+    showSection(sectionId) {
+        for (const id of ['summary-tab', 'about-tab']) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('active', id === sectionId);
+        }
     }
 
+    isDistrictRoute(route) {
+        return DISTRICT_CODE_RE.test(route);
+    }
+
+    /* ------------------------------------------------------------------ *
+     *  Panel switching
+     * ------------------------------------------------------------------ */
+
     /**
-     * Render value boxes for the active lens
+     * Switch the active panel and re-render everything driven by it
+     * @param {'cancellations'|'doge'} panelId - Panel to activate
      */
-    renderValueBoxes() {
-        ValueBox.render('value-boxes', createLensValueBoxes(summarize(this.lensRows), this.activeLens));
+    applyPanel(panelId) {
+        if (!this.panels) return;
+
+        this.activePanel = panelId;
+        const panel = this.panels[panelId];
+        const meta = PANEL_META[panelId];
+
+        this.renderHeadline(panelId, panel);
+        this.renderValueBoxes(panelId, panel);
+        this.renderOutcomePanel(panelId, panel);
+
+        // The map + districts/recipients row belongs to the confirmed panel;
+        // the DOGE panel is just the claims record (outcome bar + table).
+        this.setMainContentVisibility(meta.hasMap);
+        if (meta.hasMap) this.renderSummaryTables(panelId, panel);
+
+        this.setChartVisibility(panelId);
+        this.renderPanelTable(panelId, panel);
+        this.updateDownloadLink(meta);
+        this.announcePanel(meta, panel);
+    }
+
+    renderHeadline(panelId, panel) {
+        const headlineEl = document.getElementById('panel-headline');
+        const noteEl = document.getElementById('panel-note');
+
+        if (headlineEl) headlineEl.textContent = panelHeadline(panelId, panel.stats);
+        if (noteEl) noteEl.textContent = panelNote(panelId, panel.stats, this.overlap);
+    }
+
+    renderValueBoxes(panelId, panel) {
+        ValueBox.render('value-boxes', createPanelValueBoxes(panelId, panel.stats));
         ValueBox.animateIn('value-boxes');
+
+        const noteEl = document.getElementById('value-boxes-note');
+        if (noteEl) noteEl.textContent = valueBoxNote(panelId, panel.stats);
     }
 
     /**
-     * Render the evidence card for the active lens
-     *
-     * Two mutually exclusive variants. Three lenses ask "how do we know?" and
-     * get the evidence-tier mix; the DOGE lens asks "what became of the claim?"
-     * and gets the verification-outcome mix instead. The two bars are never
-     * shown together: they reuse the same hues for different meanings, and
-     * stacking them would invite the reader to compare segments that are not
-     * comparable.
+     * DOGE claims-vs-outcomes card (hidden on every other panel)
      */
-    renderEvidencePanel() {
-        const container = document.getElementById('evidence-body');
-        if (!container) return;
-
-        const isDoge = this.activeLens === 'doge';
-        const order = isDoge ? CLAIM_OUTCOME_ORDER : EVIDENCE_TIER_ORDER;
-        const meta = isDoge ? OUTCOME_META : TIER_META;
-        const mix = isDoge ? claimOutcomeMix(this.lensRows) : tierMix(this.lensRows);
-        const noun = isDoge ? 'claim' : 'award';
-
-        const lead = isDoge
-            ? '<p class="evidence-lead">Every claim is re-checked weekly against'
-                + ' the award’s federal transaction history.</p>'
-            : '';
-
-        const bar = renderSegmentedBar(order, meta, mix, noun);
-        const body = bar
-            ? bar + renderSegmentLegend(order, meta, mix)
-            : '<p class="evidence-empty">No awards in this view.</p>';
-
-        // The card's heading and freshness line are lens-independent and live
-        // in the static HTML; only the bar region is rewritten per switch
-        container.innerHTML = lead + body + this.renderClaimOverlap(isDoge);
-    }
-
-    /**
-     * Reconcile the evidence tiers with the DOGE Claims count
-     *
-     * Readers see the DOGE lens tab count and the Uncorroborated tier count on
-     * screen at the same time, and the two disagree on purpose: an award is
-     * counted under its strongest evidence, so a corroborated claim lands in a
-     * higher tier. This line does that arithmetic for the reader instead of
-     * leaving it to look like a contradiction.
-     *
-     * @param {boolean} isDoge - Whether the DOGE lens is active (its bar is
-     *   already all claims, so no reconciliation is needed)
-     * @returns {string} HTML for the overlap line, or '' when nothing overlaps
-     */
-    renderClaimOverlap(isDoge) {
-        if (isDoge) return '';
-
-        const claimed = this.lensRows.filter(
-            row => String(row['Claiming Source'] ?? '').trim()
-        ).length;
-        if (claimed === 0) return '';
-
-        return `<p class="evidence-overlap">${pluralCount(claimed, 'award')} in this view also`
-            + ' appear on DOGE’s claims list. Each award is counted under its strongest'
-            + ' evidence, so corroborated claims sit in the tiers above — switch to the'
-            + ' DOGE Claims view to see every claim and its verification outcome.</p>';
-    }
-
-    /**
-     * Fill the static freshness line beneath the evidence bar, once
-     *
-     * The sentence depends only on the load-time verification date, so it is
-     * written after loadData rather than on every lens switch. A ledger with no
-     * recorded verification date states the cadence and stops rather than
-     * trailing off into an empty "last check".
-     */
-    renderVerificationFreshness() {
-        const el = document.getElementById('verification-freshness');
-        if (!el) return;
-
-        const base = 'Every award re-verified against federal spending records weekly';
-
-        // Date-only strings parse as UTC and shift back a day when formatted in
-        // western time zones, so the time is pinned first
-        el.textContent = this.lastVerified
-            ? `${base} — last check ${formatDate(`${this.lastVerified}T00:00:00`, 'long')}.`
-            : `${base}.`;
-    }
-
-    /**
-     * Create the timeline chart and wire its metric toggle
-     *
-     * Called once, before the first lens is applied. The toggle only changes
-     * which series is plotted, so its handler re-renders the chart and nothing
-     * else.
-     */
-    initTimeline() {
-        this.timeline = new TimelineChart('timeline-chart', {
-            ariaLabel: 'Monthly ledger activity'
-        });
-
-        // TabNavigation handles the exclusive-active state, same as the lens
-        // bar; only the aria-pressed mirror is toggle-specific
-        this.metricToggle = new TabNavigation('timeline-metric-toggle', {
-            tabClass: 'metric-toggle-btn',
-            onTabChange: (metric) => {
-                this.timelineMetric = metric;
-
-                this.metricToggle.tabs.forEach(tab => {
-                    tab.setAttribute('aria-pressed', String(tab.dataset.tab === metric));
-                });
-
-                this.renderTimeline();
-            }
-        });
-        this.metricToggle.init();
-    }
-
-    /**
-     * Render the monthly timeline for the active lens
-     *
-     * The chart is redrawn in full rather than updated: a lens switch changes
-     * the month domain entirely, so there is nothing stable to join against.
-     */
-    renderTimeline() {
-        const meta = TIMELINE_META[this.activeLens];
-        const { months, skipped } = monthlyActivity(this.lensRows, this.activeLens);
-
-        const subtitleEl = document.getElementById('timeline-subtitle');
-        if (subtitleEl) {
-            subtitleEl.textContent = meta.subtitle;
-        }
-
-        const noteEl = document.getElementById('timeline-note');
-        if (noteEl) {
-            // Undated rows are named rather than silently dropped, so the
-            // chart's total and the lens count can be reconciled
-            noteEl.textContent = skipped > 0
-                ? `${meta.dateNote} ${skipped.toLocaleString()} rows lack a usable date and are not plotted.`
-                : meta.dateNote;
-        }
-
-        if (this.timeline) {
-            this.timeline.render(months, {
-                metric: this.timelineMetric,
-                barColor: meta.barColor,
-                valueLabel: meta.valueLabel,
-                countLabel: meta.countLabel
-            });
-        }
-    }
-
-    /**
-     * Render the end-date change chart, on the one lens that earns it
-     *
-     * Only the Suspicious lens is defined by its end dates moving, so the card
-     * is hidden outright everywhere else rather than shown with a chart that
-     * answers a question nobody asked. The chart is drawn only while the card is
-     * visible: a hidden container measures zero and would lay the rows out
-     * against a width that does not exist.
-     */
-    renderEndDates() {
-        const card = document.getElementById('enddate-card');
+    renderOutcomePanel(panelId, panel) {
+        const card = document.getElementById('outcome-card');
         if (!card) return;
 
-        if (this.activeLens !== 'suspicious') {
+        if (panelId !== 'doge') {
             card.hidden = true;
             return;
         }
-
         card.hidden = false;
 
-        const changes = endDateChanges(this.lensRows);
+        const leadEl = document.getElementById('outcome-lead');
+        if (leadEl) leadEl.textContent = outcomeLead(panel.stats);
 
-        // The card's copy comes from ENDDATE_META at runtime, the same way the
-        // timeline reads TIMELINE_META — the HTML text is only a static
-        // fallback. Exclusions are disclosed rather than silently absent: this
-        // lens is defined by end dates, so a row the chart cannot draw — or one
-        // carved out because its date moved the other way — is exactly the
-        // caveat a reader needs.
-        const subtitleEl = document.getElementById('enddate-subtitle');
-        if (subtitleEl) {
-            subtitleEl.textContent = ENDDATE_META.heading;
-        }
-
-        const noteEl = document.getElementById('enddate-note');
-        if (noteEl) {
-            const noteParts = [ENDDATE_META.note];
-
-            if (changes.unmeasured > 0) {
-                noteParts.push(`${pluralCount(changes.unmeasured, 'award')} in this view`
-                    + ' lack a usable date and are not drawn.');
-            }
-
-            // Explicit lambda: isExtensionCarveOut's second parameter is
-            // flags, and Array.filter would pass the index into it
-            const carvedOut = this.allRows
-                .filter((row) => isExtensionCarveOut(row, row._cat)).length;
-
-            if (carvedOut > 0) {
-                noteParts.push(`Another ${pluralCount(carvedOut, 'flagged award')} saw`
-                    + ` ${carvedOut === 1 ? 'its end date' : 'their end dates'} move later`
-                    + ` instead and ${carvedOut === 1 ? 'is' : 'are'} not counted in this view.`);
-            }
-
-            noteEl.textContent = noteParts.join(' ');
-        }
-
-        const summaryEl = document.getElementById('enddate-summary');
-        if (summaryEl) {
-            summaryEl.textContent = endDateSummary(changes);
-        }
-
-        if (this.endDateChart) {
-            this.endDateChart.render(changes.items);
+        const body = document.getElementById('outcome-body');
+        if (body) {
+            const mix = outcomeMix(panel.rows);
+            body.innerHTML =
+                renderOutcomeBar(mix)
+                + renderOutcomeLegend(mix)
+                + renderOutcomeDefinitions();
         }
     }
 
     /**
-     * Render the representative-award strip for the active lens
+     * Show or hide the whole map + summary-tables row
      *
-     * Hidden outright on an empty lens: three blank cards would read as missing
-     * data rather than as an empty view.
+     * [hidden] is authoritative (base.css), so the row can't be resurrected
+     * by the page's mobile .map-container display override.
      */
-    renderSpotlights() {
-        const strip = document.getElementById('spotlight-strip');
-        const grid = document.getElementById('spotlight-cards');
-        if (!strip || !grid) return;
-
-        // The selector reports whether the last card is genuinely the
-        // median-representative pick; with no distribution to represent, the
-        // cards are simply every award and carry no eyebrow
-        const { rows, hasRepresentative } = selectSpotlights(this.lensRows, SPOTLIGHT_COUNT);
-
-        if (rows.length === 0) {
-            strip.style.display = 'none';
-            grid.innerHTML = '';
-            return;
-        }
-
-        strip.style.display = '';
-
-        grid.innerHTML = rows
-            .map((row, index) => this.renderSpotlightCard(row, hasRepresentative, index === rows.length - 1))
-            .join('');
+    setMainContentVisibility(visible) {
+        const row = document.getElementById('main-content-row');
+        if (row) row.hidden = !visible;
     }
 
     /**
-     * Render one spotlight card
-     * @param {Object} row - Ledger row
-     * @param {boolean} labelled - Whether to show the largest/typical eyebrow
-     * @param {boolean} isRepresentative - Whether this is the median-representative card
-     * @returns {string} HTML string for the card
-     */
-    renderSpotlightCard(row, labelled, isRepresentative) {
-        const tier = TIER_META[row._tier] || TIER_META['claim-only'];
-        const district = String(row['District'] ?? '').trim();
-
-        const districtHtml = DISTRICT_CODE_RE.test(district)
-            ? `<a href="#${escapeAttr(district)}" class="district-link">${escapeHtml(district)}</a>`
-            : escapeHtml(district) || '—';
-
-        const eyebrow = labelled
-            ? `<span class="spotlight-eyebrow">${isRepresentative ? 'Closer to typical' : 'Among the largest'}</span>`
-            : '';
-
-        return `
-            <div class="card spotlight-card">
-                ${eyebrow}
-                <div class="spotlight-head">
-                    <a href="${escapeAttr(row['URL'] || '#')}" target="_blank">${escapeHtml(row['Award ID'])}</a>
-                    ${renderTierBadge(tier)}
-                </div>
-                <div class="spotlight-recipient">${escapeHtml(row['Recipient'])}</div>
-                <div class="spotlight-meta">
-                    <span class="spotlight-amount">${formatCurrency(obligatedValue(row), false)}</span>
-                    <span class="spotlight-district">${districtHtml}</span>
-                </div>
-                <p class="spotlight-desc">${escapeHtml(truncateText(row['Description'], 180))}</p>
-            </div>
-        `;
-    }
-
-    /**
-     * Build the map shell; applyLens supplies its data
-     */
-    async renderMap() {
-        this.map = new ChoroplethMap('choropleth-map', {
-            colorScale: 'cancellations',
-            level: 'district',
-            legendTitle: 'Cancelled Awards'
-        });
-
-        await this.map.init(DATA_URLS.districts);
-
-        // Add click handler for map bubbles
-        const mapContainer = document.getElementById('choropleth-map');
-        if (mapContainer) {
-            mapContainer.addEventListener('click', (e) => {
-                // Check if clicked element is a bubble
-                if (e.target.classList.contains('bubble')) {
-                    const d = d3.select(e.target).datum();
-                    if (d && d.geoid) {
-                        // Convert GEOID to district code (e.g., "0637" -> "CA-37")
-                        const stateFips = d.geoid.substring(0, 2);
-                        const districtNum = d.geoid.substring(2);
-                        const stateAbbr = FIPS_STATE_MAP[stateFips];
-                        if (stateAbbr) {
-                            const districtCode = `${stateAbbr}-${districtNum}`;
-                            this.router.navigate(districtCode);
-                        }
-                    }
-                }
-            });
-        }
-    }
-
-    /**
-     * Build the two lens-driven summary tables
+     * Districts/Recipients summary tables over the active panel's rows
      *
-     * The instances outlive every lens switch; render() destroys the old grid
-     * and draws the new rows in place.
+     * Both normalizers emit `_district`/`_recipient`, so the aggregation is
+     * panel-agnostic; only the count column's unit label differs.
      */
-    initSummaryTables() {
-        const options = { pagination: false, height: 400, fixedHeader: true };
+    renderSummaryTables(panelId, panel) {
+        const unitHeader = PANEL_META[panelId].unitLabel;
 
-        this.districtsTable = new DataTable('districts-table', options);
-        this.recipientsTable = new DataTable('recipients-table', options);
-    }
-
-    /**
-     * Render the two lens-driven summary tables
-     */
-    renderSummaryTables() {
-        this.renderDistrictsTable();
-        this.renderRecipientsTable();
-    }
-
-    /**
-     * Render districts table
-     */
-    renderDistrictsTable() {
-        // Aggregate by district
-        const districtGroups = groupBy(this.lensRows, 'District');
-        const districtData = Object.entries(districtGroups)
-            .map(([district, contracts]) => {
-                const rawTotal = sumBy(contracts, 'totalObligations');
-                return {
-                    // Rows with no district still belong somewhere in the table
-                    district: district || 'Unknown',
-                    contractCount: contracts.length,
-                    rawObligations: rawTotal,
-                    totalObligations: formatCurrency(rawTotal, false)
-                };
-            })
-            .sort((a, b) => b.rawObligations - a.rawObligations);  // Sort by Total Obligations desc
+        // Sorted [key, count] pairs for a derived field
+        const countBy = (rows, key) => Object.entries(groupBy(rows.filter((r) => r[key]), key))
+            .map(([k, group]) => [k, group.length])
+            .sort((a, b) => b[1] - a[1]);
 
         this.districtsTable.render(
             [
@@ -883,287 +518,446 @@ class CancellationsDashboard {
                     name: 'District',
                     id: 'district',
                     formatter: (cell) => {
-                        // "Unknown" has no geoid, so there is no route to link to
                         if (!DISTRICT_CODE_RE.test(cell)) return cell;
                         return gridjs.html(`<a href="#${cell}" class="district-link">${cell}</a>`);
                     }
                 },
-                { name: 'Awards', id: 'contracts' },
-                { name: 'Total', id: 'obligations', currency: true }
+                { name: unitHeader, id: 'count' }
             ],
-            districtData.map(row => [row.district, row.contractCount, row.totalObligations])
+            countBy(panel.rows, '_district')
         );
-    }
 
-    /**
-     * Render recipients table
-     */
-    renderRecipientsTable() {
-        // Aggregate by recipient
-        const recipientGroups = groupBy(this.lensRows, 'Recipient');
-        const recipientData = Object.entries(recipientGroups)
-            .map(([recipient, contracts]) => ({
-                recipient,
-                contractCount: contracts.length,
-                totalObligations: formatCurrency(sumBy(contracts, 'totalObligations'), false)
-            }))
-            .sort((a, b) => b.contractCount - a.contractCount);
+        // Recipients aggregate by name but display the two-line NAME +
+        // CITY, ST cell; an organization's location comes from its first row.
+        const recipientData = Object.entries(groupBy(panel.rows.filter((r) => r._recipient), '_recipient'))
+            .map(([name, group]) => [recipientCellText(name, placeLine(group[0])), group.length])
+            .sort((a, b) => b[1] - a[1]);
 
         this.recipientsTable.render(
             [
-                { name: 'Recipient', id: 'recipient', width: '50%' },
-                { name: 'Awards', id: 'contracts' },
-                { name: 'Total', id: 'obligations', currency: true }
+                {
+                    name: 'Recipient',
+                    id: 'recipient',
+                    width: '70%',
+                    formatter: stackedCellFormatter
+                },
+                { name: unitHeader, id: 'count' }
             ],
-            recipientData.map(row => [row.recipient, row.contractCount, row.totalObligations])
+            recipientData
         );
     }
 
     /**
-     * Render the Raw Data table
-     *
-     * Lens-independent: shows every ledger row, including the rows no lens
-     * displays. Rendered once at init.
+     * The monthly timeline and FY chart belong to the confirmed panel only
      */
-    renderRawDataTable() {
-        this.contractsTable = new DataTable('contracts-table', {
+    setChartVisibility(panelId) {
+        const isConfirmed = panelId === 'cancellations';
+
+        const timelineCard = document.getElementById('timeline-card');
+        if (timelineCard) timelineCard.hidden = !isConfirmed;
+
+        const fyCard = document.getElementById('fy-card');
+        if (fyCard) fyCard.hidden = !isConfirmed;
+
+        if (isConfirmed) {
+            this.renderTimeline();
+            // Re-render, not just unhide: a chart first drawn into a hidden
+            // container measured a fallback width, and its wrapped in-SVG
+            // title only fits when measured at the real one.
+            this.renderFyChart();
+
+            // The caption's denominator tracks the live file so the sentence
+            // can't rot as the daily refresh adds rows
+            const denominator = document.getElementById('fy-denominator');
+            if (denominator) {
+                denominator.textContent = this.panels.cancellations.rows.length.toLocaleString();
+            }
+        }
+    }
+
+    /* ------------------------------------------------------------------ *
+     *  Charts
+     * ------------------------------------------------------------------ */
+
+    initCharts() {
+        this.timeline = new TimelineChart('timeline-chart', {
+            ariaLabel: 'Confirmed termination actions by month'
+        });
+        this.fyChart = new FyChart('fy-chart', {
+            ariaLabel: 'FPDS termination-for-convenience contract actions by fiscal year, all NASA',
+            barColor: 'var(--red-500)'
+        });
+    }
+
+    renderTimeline() {
+        if (!this.timeline) return;
+
+        const { months, skipped } = monthlyCounts(this.panels.cancellations.rows);
+        this.timeline.render(months, {
+            metric: 'count',
+            barColor: 'var(--red-500)',
+            countLabel: 'Actions'
+        });
+
+        const noteEl = document.getElementById('timeline-note');
+        if (noteEl) noteEl.textContent = timelineNote(skipped);
+    }
+
+    /**
+     * FY chart is static (one series, one file) — rendered once at init
+     */
+    renderFyChart() {
+        if (!this.fyChart) return;
+        this.fyChart.render(this.fyItems, { countLabel: 'Actions' });
+    }
+
+    /* ------------------------------------------------------------------ *
+     *  Map
+     * ------------------------------------------------------------------ */
+
+    /**
+     * Construct the map and start its geojson download
+     *
+     * Deliberately does NOT set data — init() awaits the returned promise
+     * after the panels are on screen, then calls setData once. Bubble clicks
+     * route to the district page through the component's own click contract.
+     *
+     * @returns {Promise<void>} Resolves when the base map has rendered
+     */
+    initMap() {
+        this.map = new ChoroplethMap('choropleth-map', {
+            colorScale: 'cancellations',
+            level: 'district',
+            legendTitle: 'Terminated awards'
+        });
+        this.map.setDistrictClickHandler((districtCode) => {
+            this.router.navigate(districtCode);
+        });
+
+        return this.map.init(DATA_URLS.districts);
+    }
+
+    /* ------------------------------------------------------------------ *
+     *  Tables
+     * ------------------------------------------------------------------ */
+
+    initSummaryTables() {
+        const options = { pagination: false, height: 400, fixedHeader: true };
+        this.districtsTable = new DataTable('districts-table', options);
+        this.recipientsTable = new DataTable('recipients-table', options);
+        this.panelTable = new DataTable('panel-table', {
             pageSize: 25,
             pagination: true,
             className: 'table'
         });
+    }
 
+    renderPanelTable(panelId, panel) {
+        const headingEl = document.getElementById('panel-table-heading');
+        if (headingEl) headingEl.textContent = PANEL_META[panelId].tableHeading;
+
+        if (panelId === 'doge') {
+            this.renderDogeTable(panel);
+        } else {
+            this.renderTerminationsTable(panel);
+        }
+    }
+
+    /**
+     * Cell conventions for both panel tables:
+     *  - purely presentational cells (badges, pills) carry HTML in the data
+     *    array with a pass-through formatter — they are never sorted/searched
+     *  - the Award ID stays PLAIN data so Grid.js sorts and searches the bare
+     *    id; its link URL rides in a hidden data-carrier column, located by
+     *    id (never by a hardcoded index)
+     */
+    renderTerminationsTable(panel) {
         const columns = [
             {
                 name: 'Award ID',
                 id: 'award_id',
-                formatter: (cell, row) => {
-                    const url = row.cells[urlIndex]?.data || '#';
-                    return gridjs.html(
-                        `<a href="${escapeAttr(url)}" target="_blank">${escapeHtml(cell)}</a>`
-                    );
-                }
+                formatter: (cell, row) => gridjs.html(
+                    renderAwardLink(cell, row.cells[URL_COL.terminations].data)
+                )
+            },
+            {
+                name: 'Recipient',
+                id: 'recipient',
+                width: '22%',
+                formatter: stackedCellFormatter
             },
             {
                 name: 'Status',
                 id: 'status',
-                formatter: (cell, row) => {
-                    const cls = PILL_CLASSES[cell] || 'badge--excluded';
-                    const conflict = row.cells[conflictIndex]?.data === CONFLICT_FLAG
-                        ? CONFLICT_GLYPH
-                        : '';
-
-                    return gridjs.html(
-                        `<span class="badge ${cls}">${escapeHtml(cell)}</span>${conflict}`
-                    );
-                }
+                formatter: (cell) => gridjs.html(cell)
             },
-            { name: 'District', id: 'district', width: '130px' },
-            { name: 'Recipient', id: 'recipient' },
-            { name: 'Award Amount', id: 'obligations', currency: true },
-            { name: 'Total Outlays', id: 'outlays', currency: true, hideOnMobile: true },
-            { name: 'Claimed Savings', id: 'claimed_savings', currency: true, hideOnMobile: true },
+            { name: 'District', id: 'district', hideOnMobile: true },
+            { name: 'Obligated', id: 'obligated', hideOnMobile: true },
+            { name: 'url', id: 'url', hidden: true },
             {
-                // The tier label is the cell data so Grid.js sorts and searches
-                // it as text; the badge and its sourcing are added on render
-                name: 'Evidence',
-                id: 'evidence',
-                formatter: (cell, row) => {
-                    const tier = TIER_BY_LABEL[cell];
-                    if (!tier) return cell;
-
-                    const sources = row.cells[sourcesIndex]?.data || 'No sources listed';
-
-                    return gridjs.html(renderTierBadge(tier, `${sources} — ${tier.description}`));
-                }
-            },
-            {
-                // The verdict label is the cell data so Grid.js sorts and
-                // searches it as text, same trick as Evidence and Status
-                name: 'Verification',
-                id: 'verification',
-                hideOnMobile: true,
-                formatter: (cell) => {
-                    const verdict = VERDICT_BY_LABEL[cell];
-                    if (!verdict) return cell;
-
-                    return gridjs.html(
-                        `<span title="${escapeAttr(verdict.description)}">${escapeHtml(cell)}</span>`
-                    );
-                }
-            },
-            { name: 'First Seen', id: 'first_seen', hideOnMobile: true },
-            {
-                // Full text is the cell data so search and sort see all of it,
-                // same rule as Description; only the rendering is abbreviated
-                name: 'Detection',
-                id: 'detection',
-                hideOnMobile: true,
-                formatter: (cell) => {
-                    const text = String(cell ?? '');
-                    return text.length > DESCRIPTION_SUMMARY_CHARS
-                        ? truncateText(text, DESCRIPTION_SUMMARY_CHARS)
-                        : text;
-                }
-            },
-            {
-                // Full text is the cell data so search and sort see all of it;
-                // only the rendering is abbreviated
                 name: 'Description',
                 id: 'description',
-                width: '250px',
-                formatter: (cell) => {
-                    const text = String(cell ?? '');
-                    if (text.length <= DESCRIPTION_SUMMARY_CHARS) return text;
-
-                    return gridjs.html(
-                        '<details class="desc-expand">'
-                        + `<summary>${escapeHtml(truncateText(text, DESCRIPTION_SUMMARY_CHARS))}</summary>`
-                        + `${escapeHtml(text)}</details>`
-                    );
-                }
-            },
-            // Data side-channels for the formatters above; hidden by the
-            // per-column CSS rules (DataTable ignores a `hidden` flag)
-            { name: 'URL', id: 'url' },
-            { name: 'Sources', id: 'sources' },
-            { name: 'Conflict', id: 'conflict' }
-        ];
-
-        const urlIndex = columns.findIndex(column => column.id === 'url');
-        const sourcesIndex = columns.findIndex(column => column.id === 'sources');
-        const conflictIndex = columns.findIndex(column => column.id === 'conflict');
-
-        const rows = this.allRows.map(row => {
-            const evidence = detectionEvidence(row);
-
-            return [
-                row['Award ID'],
-                deriveBadges(row, row._cat).statusPill.label,
-                row['District'],
-                row['Recipient'],
-                formatCurrency(row.totalObligations, false),
-                formatCurrency(row.totalOutlays, false),
-                formatClaimedSavings(row),
-                TIER_META[row._tier].label,
-                rowVerdict(row).label,
-                row['First Seen'] || '',
-                evidence || '—',
-                row['Description'] || '',
-                row['URL'],
-                row['Sources'] || '',
-                row._conflict ? CONFLICT_FLAG : ''
-            ];
-        });
-
-        this.contractsTable.render(columns, rows);
-    }
-
-    /**
-     * Update last updated date in the UI
-     * Fetches from metadata.json which contains the date of the last data change
-     */
-    async updateLastUpdated() {
-        const lastUpdatedEl = document.getElementById('last-updated');
-        if (!lastUpdatedEl) return;
-
-        try {
-            const response = await fetch('../data/cancellations/metadata.json');
-            if (response.ok) {
-                const metadata = await response.json();
-                if (metadata.lastUpdated) {
-                    // Parse date and format (add time to avoid timezone issues)
-                    const date = new Date(metadata.lastUpdated + 'T00:00:00');
-                    lastUpdatedEl.textContent = formatDate(date, 'long');
-                    return;
-                }
+                hideOnMobile: true,
+                width: '30%'
             }
-        } catch (e) {
-            console.warn('Could not fetch metadata.json:', e);
+        ];
+        URL_COL.terminations = columns.findIndex((c) => c.id === 'url');
+
+        const data = panel.rows.map((row) => [
+            row.award_id,
+            recipientCellText(row._recipient, placeLine(row)),
+            renderStatusBadge(row)
+                + (row.action_date ? `<span class="cell-subline">${escapeHtml(row.action_date)}</span>` : ''),
+            row._district || MISSING,
+            row._obligated !== null ? formatCurrency(row._obligated, false) : MISSING,
+            usaspendingUrl(row),
+            truncateText(row.transaction_description || row.award_description || '', TABLE_DESCRIPTION_CHARS)
+        ]);
+
+        this.panelTable.render(columns, data);
+    }
+
+    renderDogeTable(panel) {
+        const columns = [
+            {
+                name: 'Recipient',
+                id: 'recipient',
+                width: '22%',
+                formatter: stackedCellFormatter
+            },
+            { name: 'Claimed savings', id: 'savings' },
+            {
+                name: "DOGE's stated status",
+                id: 'status',
+                hideOnMobile: true,
+                formatter: stackedCellFormatter
+            },
+            {
+                name: 'Outcome',
+                id: 'outcome',
+                formatter: (cell) => gridjs.html(cell)
+            },
+            {
+                name: 'Award ID',
+                id: 'awardId',
+                hideOnMobile: true,
+                formatter: (cell, row) => gridjs.html(
+                    cell === MISSING ? cell : renderAwardLink(cell, row.cells[URL_COL.doge].data)
+                )
+            },
+            { name: 'url', id: 'url', hidden: true },
+            { name: 'Current obligation', id: 'obligation', hideOnMobile: true },
+            {
+                name: 'Description',
+                id: 'description',
+                hideOnMobile: true,
+                width: '25%'
+            }
+        ];
+        URL_COL.doge = columns.findIndex((c) => c.id === 'url');
+
+        const data = panel.rows.map((row) => [
+            recipientCellText(row._recipient, placeLine(row)),
+            row._savings !== null && row._savings !== 0
+                ? formatCurrency(row._savings, false)
+                : MISSING,
+            row.doge_claim_date
+                ? `${row._statusLabel}\n${row.doge_claim_date}`
+                : row._statusLabel,
+            renderOutcomePill(row._outcome),
+            row.generated_award_id ? (row.doge_award_id || row.generated_award_id) : MISSING,
+            usaspendingUrl(row),
+            row._obligation !== null ? formatCurrency(row._obligation, false) : MISSING,
+            truncateText(row.latest_description || '', TABLE_DESCRIPTION_CHARS)
+        ]);
+
+        this.panelTable.render(columns, data);
+    }
+
+    updateDownloadLink(meta) {
+        const link = document.getElementById('panel-download');
+        if (link) link.href = meta.downloadUrl;
+    }
+
+    announcePanel(meta, panel) {
+        const announcer = document.getElementById('panel-announcer');
+        if (announcer) {
+            announcer.textContent = `Showing ${meta.label} — ${panelHeadline(this.activePanel, panel.stats)}`;
         }
-
-        // Fallback to current date if metadata unavailable
-        lastUpdatedEl.textContent = formatDate(new Date(), 'long');
     }
 
-    /**
-     * Show error message
-     */
-    showError(message) {
-        const mapContainer = document.getElementById('choropleth-map');
-        if (mapContainer) {
-            mapContainer.innerHTML = `
-                <div class="error-message">
-                    <p><strong>Error loading dashboard:</strong></p>
-                    <p>${message}</p>
-                    <p>Please try refreshing the page.</p>
-                </div>
-            `;
-        }
-    }
+    /* ------------------------------------------------------------------ *
+     *  District pages (dataset-independent)
+     * ------------------------------------------------------------------ */
 
-    /**
-     * Check if a route is a district route (e.g., "CA-37", "NY-01")
-     * @param {string} route - Route to check
-     * @returns {boolean} True if route matches district pattern
-     */
-    isDistrictRoute(route) {
-        return DISTRICT_CODE_RE.test(route);
-    }
-
-    /**
-     * Show district summary view with filtered awards
-     * @param {string} districtCode - District code (e.g., "CA-37")
-     */
     showDistrictSummary(districtCode) {
-        // Scroll to top of page
         window.scrollTo(0, 0);
 
-        // Hide page tabs
         const pageTabs = document.getElementById('page-tabs');
-        if (pageTabs) {
-            pageTabs.style.display = 'none';
-        }
+        if (pageTabs) pageTabs.style.display = 'none';
 
-        // Hide all tab content
-        document.querySelectorAll('.tab-content').forEach(el => {
+        document.querySelectorAll('.tab-content').forEach((el) => {
             el.classList.remove('active');
         });
 
-        // Show district summary
         const districtSummary = document.getElementById('district-summary');
-        if (districtSummary) {
-            districtSummary.classList.add('active');
-        }
+        if (districtSummary) districtSummary.classList.add('active');
 
-        // Render the awards
-        this.renderDistrictAwards(districtCode);
+        this.renderDistrictPage(districtCode);
     }
 
-    /**
-     * Hide district summary and return to main view
-     */
     hideDistrictSummary() {
-        // Show page tabs
         const pageTabs = document.getElementById('page-tabs');
-        if (pageTabs) {
-            pageTabs.style.display = '';
-        }
+        if (pageTabs) pageTabs.style.display = '';
 
-        // Hide district summary
         const districtSummary = document.getElementById('district-summary');
-        if (districtSummary) {
-            districtSummary.classList.remove('active');
-        }
+        if (districtSummary) districtSummary.classList.remove('active');
     }
 
     /**
-     * Wire the award-card description toggles
+     * Render one district's page: both datasets, as labelled groups
      *
-     * Delegated from the static container, which survives every re-render of
-     * the cards inside it, so the listener is registered exactly once.
+     * One URL means one thing: a #CA-37 link shows the same page no matter
+     * which panel the sharer was on.
+     */
+    renderDistrictPage(districtCode) {
+        const titleEl = document.getElementById('district-title');
+        const statsEl = document.getElementById('district-summary-stats');
+        const container = document.getElementById('district-groups');
+        if (!titleEl || !container) return;
+
+        titleEl.textContent = `Congressional District ${districtCode}`;
+
+        // Data may not be loaded yet on a cold deep link; init() replays.
+        if (!this.panels) {
+            container.innerHTML = '';
+            if (statsEl) statsEl.textContent = 'Loading…';
+            return;
+        }
+
+        const inDistrict = (panelId) => this.panels[panelId].rows.filter(
+            (row) => row._district === districtCode
+        );
+        const groupSpecs = [
+            ['cancellations', inDistrict('cancellations'), (row) => this.renderTerminationCard(row)],
+            ['doge', inDistrict('doge'), (row) => this.renderClaimCard(row)]
+        ];
+
+        if (statsEl) {
+            statsEl.textContent = districtSummaryLine(groupSpecs[0][1].length, groupSpecs[1][1].length);
+        }
+
+        container.innerHTML = groupSpecs.map(([panelId, rows, renderCard]) =>
+            this.renderDistrictGroup(
+                PANEL_META[panelId].label,
+                rows.length
+                    ? rows.map(renderCard).join('')
+                    : `<p class="district-group-note">${escapeHtml(districtEmptyNote(panelId))}</p>`
+            )
+        ).join('');
+    }
+
+    renderDistrictGroup(heading, bodyHtml) {
+        return `
+            <section class="district-group">
+                <h3 class="district-group-heading">${escapeHtml(heading)}</h3>
+                <div class="award-cards-grid">${bodyHtml}</div>
+            </section>
+        `;
+    }
+
+    /**
+     * Award card body shared by both datasets
+     * @param {Array<[string, string]>} fields - [label, valueHtml] pairs
+     * @param {string} description - Full description text ('' to omit)
+     * @param {string} badgeHtml - Status/outcome HTML for the header
+     * @param {string} title - Card heading (recipient name, caps)
+     * @param {string} [subtitle] - Location line under the heading
+     * @returns {string} HTML
+     */
+    renderAwardCard(fields, description, badgeHtml, title, subtitle = '') {
+        const fieldHtml = fields
+            .filter(([, value]) => value)
+            .map(([label, value]) => `
+                <div class="award-field">
+                    <span class="award-label">${escapeHtml(label)}</span>
+                    <span class="award-value">${value}</span>
+                </div>
+            `)
+            .join('');
+
+        // Description is one more field row (award-field carries the card's
+        // padding), clamped with a toggle when long — the full text stays in
+        // the DOM so it is findable and copyable without a round trip.
+        const clamped = description.length > CARD_DESCRIPTION_CHARS;
+        const descriptionHtml = description
+            ? `
+                <div class="award-field award-field--full">
+                    <span class="award-label">Description</span>
+                    <span class="award-value${clamped ? ' desc-clamp' : ''}">${escapeHtml(description)}</span>
+                    ${clamped ? '<button type="button" class="desc-toggle">Show more</button>' : ''}
+                </div>
+            `
+            : '';
+
+        const subtitleHtml = subtitle
+            ? `<p class="award-recipient-place">${escapeHtml(subtitle)}</p>`
+            : '';
+
+        return `
+            <article class="award-card">
+                <div class="award-card-header">
+                    <div class="award-card-title">
+                        <h4 class="award-recipient">${escapeHtml(title)}</h4>
+                        ${subtitleHtml}
+                    </div>
+                    ${badgeHtml}
+                </div>
+                <div class="award-card-body">${fieldHtml}${descriptionHtml}</div>
+            </article>
+        `;
+    }
+
+    renderTerminationCard(row) {
+        return this.renderAwardCard(
+            [
+                ['Award', renderAwardLink(row.award_id, usaspendingUrl(row))],
+                ['Type', escapeHtml(row.award_type || MISSING)],
+                ['Action date', escapeHtml(row.action_date || MISSING)],
+                ['Obligated', row._obligated !== null ? formatCurrency(row._obligated, false) : '']
+            ],
+            row.transaction_description || row.award_description || '',
+            renderStatusBadge(row),
+            (row._recipient || 'Unknown recipient').toUpperCase(),
+            placeLine(row)
+        );
+    }
+
+    renderClaimCard(row) {
+        return this.renderAwardCard(
+            [
+                [
+                    'Award',
+                    row.generated_award_id
+                        ? renderAwardLink(row.doge_award_id || row.generated_award_id, usaspendingUrl(row))
+                        : MISSING
+                ],
+                ['Claim date', escapeHtml(row.doge_claim_date || MISSING)],
+                ['Claimed savings', row._savings ? formatCurrency(row._savings, false) : ''],
+                ["DOGE's stated status", escapeHtml(row._statusLabel)]
+            ],
+            row.latest_description || '',
+            renderOutcomePill(row._outcome),
+            (row._recipient || 'Unknown recipient').toUpperCase(),
+            placeLine(row)
+        );
+    }
+
+    /**
+     * Wire the award-card description toggles (delegated, registered once)
      */
     initAwardCardInteractions() {
-        const container = document.getElementById('district-awards');
+        const container = document.getElementById('district-groups');
         if (!container) return;
 
         container.addEventListener('click', (e) => {
@@ -1177,194 +971,52 @@ class CancellationsDashboard {
         });
     }
 
+    /* ------------------------------------------------------------------ *
+     *  Chrome
+     * ------------------------------------------------------------------ */
+
     /**
-     * Render award cards for a specific district
-     * @param {string} districtCode - District code (e.g., "CA-37")
+     * Fill the persistent freshness line from metadata.json
+     *
+     * Reads only the top-level `lastUpdated`, which both the new per-file
+     * shape and the legacy flat shape carry. On failure the date reads as
+     * absent — never today's date, which would fake freshness.
      */
-    renderDistrictAwards(districtCode) {
-        const container = document.getElementById('district-awards');
-        const titleEl = document.getElementById('district-title');
-        const statsEl = document.getElementById('district-summary-stats');
+    async updateLastUpdated() {
+        const el = document.getElementById('last-updated');
+        if (!el) return;
 
-        if (!container || !titleEl) return;
-
-        // Filter awards for this district
-        const districtAwards = this.lensRows.filter(
-            row => row.District === districtCode
-        );
-
-        // Update title
-        titleEl.textContent = districtCode;
-
-        // Update summary stats
-        if (statsEl) {
-            if (districtAwards.length === 0) {
-                statsEl.textContent = '';
-            } else {
-                const s = summarize(districtAwards);
-                const lensLabel = LENS_META[this.activeLens].label;
-                const plural = districtAwards.length !== 1 ? 's' : '';
-
-                let statsText = `Found <strong>${districtAwards.length} award${plural}</strong>`
-                    + ` valued at <strong>${formatCurrency(s.totalObligations, true)}</strong>`
-                    + ` under the <strong>${lensLabel}</strong> view`;
-
-                if (s.claimedSavings > 0) {
-                    statsText += ` with <strong>${formatCurrency(s.claimedSavings, true)}</strong> in savings claimed by DOGE`;
+        try {
+            const response = await fetch('../data/cancellations/metadata.json');
+            if (response.ok) {
+                const metadata = await response.json();
+                if (metadata.lastUpdated) {
+                    const date = new Date(metadata.lastUpdated + 'T00:00:00');
+                    el.textContent = formatDate(date, 'long');
+                    return;
                 }
-
-                statsEl.innerHTML = statsText;
             }
+        } catch (e) {
+            console.warn('Could not fetch metadata.json:', e);
         }
 
-        // Render cards
-        if (districtAwards.length === 0) {
-            container.innerHTML = `
-                <div class="error-message">
-                    <p>No awards found for district ${districtCode}.</p>
-                </div>
-            `;
-            return;
-        }
-
-        container.innerHTML = districtAwards.map(award =>
-            this.renderAwardCard(award)
-        ).join('');
+        el.textContent = MISSING;
     }
 
-    /**
-     * Render a single award card
-     * @param {Object} award - Award data object
-     * @returns {string} HTML string for the card
-     */
-    renderAwardCard(award) {
-        const { statusPill, divergence, trendGlyphs } = deriveBadges(award, award._cat);
-
-        const obligations = formatCurrency(award.totalObligations, false);
-        const outlays = formatCurrency(award.totalOutlays, false);
-        const url = escapeAttr(award.URL || '#');
-
-        const tier = TIER_META[award._tier] || TIER_META['claim-only'];
-        const tierBadge = renderTierBadge(tier);
-
-        const conflictGlyph = award._conflict ? CONFLICT_GLYPH : '';
-
-        const truncation = truncationChip(award, award._cat);
-        const chip = truncation
-            ? `<span class="award-chip" title="${escapeAttr(truncation.title)}">${escapeHtml(truncation.label)}</span>`
-            : '';
-
-        const verdict = rowVerdict(award);
-        const verdictField = `
-                    <div class="award-field">
-                        <span class="award-label">Weekly check</span>
-                        <span class="award-value" title="${escapeAttr(verdict.description)}">${escapeHtml(verdict.label)}</span>
-                    </div>`;
-
-        // DOGE's own characterization of the action, when the row carries a claim
-        const claimedStatus = String(award['Claimed Status'] ?? '').trim();
-        const claimedStatusField = String(award['Claiming Source'] ?? '').trim()
-            ? `
-                    <div class="award-field">
-                        <span class="award-label">DOGE claimed</span>
-                        <span class="award-value">${escapeHtml(claimedStatus) || '—'}</span>
-                    </div>`
-            : '';
-
-        // Curated explanation of the status, present on a minority of rows
-        const statusDetail = String(award['Status Detail'] ?? '').trim();
-        const statusNoteField = statusDetail
-            ? `
-                    <div class="award-field award-field--full">
-                        <span class="award-label">Status note</span>
-                        <span class="award-value">${escapeHtml(statusDetail)}</span>
-                    </div>`
-            : '';
-
-        const detection = detectionEvidence(award);
-        const detectionField = detection
-            ? `
-                    <div class="award-field award-field--full">
-                        <span class="award-label">Detection</span>
-                        <span class="award-value">${escapeHtml(detection)}</span>
-                    </div>`
-            : '';
-
-        // Long descriptions are clamped rather than truncated: the full text
-        // stays in the DOM so it is findable and copyable without a round trip
-        const descriptionText = String(award.Description ?? '');
-        const descriptionHtml = escapeHtml(descriptionText) || '—';
-        const descriptionField = descriptionText.length > DESCRIPTION_CLAMP_CHARS
-            ? `<span class="award-value desc-clamp">${descriptionHtml}</span>
-                        <button class="desc-toggle" type="button">Show more</button>`
-            : `<span class="award-value">${descriptionHtml}</span>`;
-
-        const glyphs = trendGlyphs
-            .map(({ glyph, title }) =>
-                `<span class="award-trend" title="${escapeAttr(title)}">${escapeHtml(glyph)}</span>`
-            )
-            .join('');
-
-        const divergencePill = divergence
-            ? `<span class="badge ${divergence.cls}">${escapeHtml(divergence.label)}</span>`
-            : '';
-
-        // Claims only get the three-up comparison; unclaimed awards would show
-        // an empty column and imply a claim that was never made.
-        const claimRow = String(award['Claiming Source'] ?? '').trim()
-            ? `<div class="award-claim-row">
-                        ${renderClaimCell('Claimed', formatClaimedSavings(award))}
-                        ${renderClaimCell('Obligated', obligations)}
-                        ${renderClaimCell('Outlaid', outlays)}
-                    </div>`
-            : '';
-
-        return `
-            <div class="award-card">
-                <div class="award-card-header">
-                    <a href="${url}" target="_blank">${escapeHtml(award['Award ID'])}</a>
-                    <span class="award-card-header-meta">
-                        ${glyphs}
-                        ${tierBadge}
-                        <span class="badge ${statusPill.cls}">${escapeHtml(statusPill.label)}</span>${conflictGlyph}
-                        ${divergencePill}
-                        ${chip}
-                    </span>
+    showError(message) {
+        const mapContainer = document.getElementById('choropleth-map');
+        if (mapContainer) {
+            mapContainer.innerHTML = `
+                <div class="error-message">
+                    <p><strong>Error loading dashboard:</strong></p>
+                    <p>${escapeHtml(message)}</p>
+                    <p>Please try refreshing the page.</p>
                 </div>
-                ${claimRow}
-                <div class="award-card-body">
-                    <div class="award-field">
-                        <span class="award-label">Recipient</span>
-                        <span class="award-value">${escapeHtml(award.Recipient)}</span>
-                    </div>
-                    <div class="award-field">
-                        <span class="award-label">Total Obligations</span>
-                        <span class="award-value">${obligations}</span>
-                    </div>
-                    <div class="award-field">
-                        <span class="award-label">Total Outlays</span>
-                        <span class="award-value">${outlays}</span>
-                    </div>
-                    <div class="award-field">
-                        <span class="award-label">Start Date</span>
-                        <span class="award-value">${escapeHtml(award['Start Date'])}</span>
-                    </div>
-                    <div class="award-field">
-                        <span class="award-label">End Date</span>
-                        <span class="award-value">${escapeHtml(award['End Date'])}</span>
-                    </div>${verdictField}${claimedStatusField}${statusNoteField}${detectionField}
-                    <div class="award-field award-field--full">
-                        <span class="award-label">Description</span>
-                        ${descriptionField}
-                    </div>
-                </div>
-            </div>
-        `;
+            `;
+        }
     }
 }
 
-// Initialize dashboard when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    const dashboard = new CancellationsDashboard();
-    dashboard.init();
+    new CancellationsDashboard().init();
 });

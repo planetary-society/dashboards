@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      NASA Contract Cancellations Dashboard 2025 - Terminated Grants Tracker
+      NASA Contract Cancellations Dashboard - Terminated Awards Tracker
     </title>
     <meta
       name="description"
-      content="Track NASA grants and contracts terminated since 2025 by congressional district and recipient. Compare DOGE claims against actual outcomes and reversals."
+      content="Track NASA grants and contracts terminated since January 2025 by congressional district and recipient, with a historical record of DOGE's claimed cancellations checked against federal award records."
     />
     <meta name="author" content="Casey Dreier/The Planetary Society" />
     <meta name="robots" content="index, follow" />
@@ -48,11 +48,11 @@
     <meta name="twitter:site" content="@exploreplanets" />
     <meta
       name="twitter:title"
-      content="NASA Contract Cancellations Dashboard 2025"
+      content="NASA Contract Cancellations Dashboard"
     />
     <meta
       name="twitter:description"
-      content="Track NASA grants and contracts terminated since 2025 by congressional district and recipient. Compare DOGE claims against actual outcomes and reversals."
+      content="Track NASA grants and contracts terminated since January 2025 by congressional district and recipient, plus a record of DOGE's claims checked against federal award data."
     />
     <meta
       name="twitter:image"
@@ -66,13 +66,10 @@
     <!-- Open Graph meta tags -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="The Planetary Society" />
-    <meta
-      property="og:title"
-      content="NASA Contract Cancellations Dashboard 2025"
-    />
+    <meta property="og:title" content="NASA Contract Cancellations Dashboard" />
     <meta
       property="og:description"
-      content="Track NASA grants and contracts terminated since 2025 by congressional district and recipient. Compare DOGE claims against actual outcomes and reversals."
+      content="Track NASA grants and contracts terminated since January 2025 by congressional district and recipient, plus a record of DOGE's claims checked against federal award data."
     />
     <meta
       property="og:image"
@@ -93,9 +90,9 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Dataset",
+        "@type": "DataCatalog",
         "name": "NASA Contract Cancellations Tracker",
-        "description": "Interactive dashboard tracking NASA awards terminated by the second Trump Administration, presented in four views: confirmed cancellations, DOGE savings claims compared against what the award record actually shows, unconfirmed leads, and terminations later rescinded or vacated. Includes congressional district impacts and recipient details.",
+        "description": "Interactive dashboard tracking NASA awards terminated by the second Trump Administration, presented as two datasets: confirmed termination actions from federal award records, and a historical record of DOGE's claimed cancellations checked against what the federal record shows. Includes congressional district impacts and recipient details.",
         "url": "https://dashboards.planetary.org/cancellations/",
         "keywords": [
           "NASA",
@@ -105,9 +102,9 @@
           "congressional districts",
           "federal procurement",
           "space policy",
-          "2025",
           "cancelled contracts",
           "terminated grants",
+          "DOGE",
           "budget cuts"
         ],
         "license": "https://creativecommons.org/licenses/by/4.0/",
@@ -126,6 +123,28 @@
           "name": "The Planetary Society",
           "url": "https://planetary.org"
         },
+        "dataset": [
+          {
+            "@type": "Dataset",
+            "name": "Confirmed NASA award terminations",
+            "description": "NASA contracts and grants with a termination action in federal award records since January 20, 2025.",
+            "distribution": {
+              "@type": "DataDownload",
+              "encodingFormat": "text/csv",
+              "contentUrl": "https://dashboards.planetary.org/data/cancellations/terminations.csv"
+            }
+          },
+          {
+            "@type": "Dataset",
+            "name": "DOGE claimed NASA cancellations",
+            "description": "Every NASA award cancellation claimed by the Department of Government Efficiency, with each claim checked against the award's federal transaction history.",
+            "distribution": {
+              "@type": "DataDownload",
+              "encodingFormat": "text/csv",
+              "contentUrl": "https://dashboards.planetary.org/data/cancellations/doge_claims.csv"
+            }
+          }
+        ],
         "temporalCoverage": "2025-01-20/..",
         "spatialCoverage": {
           "@type": "Place",
@@ -161,16 +180,9 @@
     <link rel="stylesheet" href="../shared/css/layout.css" />
     <link rel="stylesheet" href="../shared/css/tables.css" />
 
-    <!-- Cancellations-specific: Show map on mobile (zoom disabled in JS) -->
-    <style>
-      @media (max-width: 1024px) {
-        .map-container {
-          display: block;
-          height: 300px;
-          min-height: 300px;
-        }
-      }
-    </style>
+    <!-- Cancellations-specific styles (panel layout, outcome bar, FY chart,
+         mobile map override) -->
+    <link rel="stylesheet" href="css/panels.css" />
   </head>
   <body>
     <!-- Navbar -->
@@ -188,7 +200,7 @@
             class="navbar-logo"
           />
         </a>
-        <a href="#summary" class="navbar-title-link">
+        <a href="#cancellations" class="navbar-title-link">
           <h1 class="navbar-title">NASA Cancelled Awards Tracking Dashboard</h1>
         </a>
       </div>
@@ -201,63 +213,58 @@
 
     <!-- Main Dashboard -->
     <main class="dashboard">
-      <!-- Page Tabs -->
-      <nav id="page-tabs" class="page-tabs">
-        <button class="page-tab active" data-tab="summary-tab">Summary</button>
-        <button class="page-tab" data-tab="contracts-tab">Raw Data</button>
-        <button class="page-tab" data-tab="about-tab">About</button>
+      <!-- Page Tabs: the two datasets are the top-level navigation, beside
+           About. Both dataset tabs render into the same #summary-tab section;
+           app.js manages section visibility and panel state. -->
+      <nav id="page-tabs" class="page-tabs" aria-label="Dataset">
+        <button class="page-tab active" data-tab="cancellations">
+          Confirmed Cancellations
+        </button>
+        <button class="page-tab" data-tab="doge">DOGE Claims</button>
+        <button class="page-tab" data-tab="about">About</button>
       </nav>
 
-      <!-- Summary Tab -->
+      <!-- Dashboard section (shared by both dataset tabs) -->
       <section id="summary-tab" class="tab-content active">
-        <!-- Lens Selector: switches between evidentiary views of the data -->
-        <nav id="lens-bar" class="lens-bar" aria-label="Evidence view">
-          <button
-            class="lens-tab active"
-            data-tab="cancelled"
-            data-lens="cancelled"
-          >
-            Cancelled <span class="lens-count"></span>
-          </button>
-          <button class="lens-tab" data-tab="doge" data-lens="doge">
-            DOGE Claims <span class="lens-count"></span>
-          </button>
-          <button class="lens-tab" data-tab="suspicious" data-lens="suspicious">
-            Suspicious <span class="lens-count"></span>
-          </button>
-          <button class="lens-tab" data-tab="reversed" data-lens="reversed">
-            Reversed <span class="lens-count"></span>
-          </button>
-        </nav>
-        <!-- JS overwrites this per lens (LENS_META headline in lens-views.js) -->
-        <p id="lens-subtitle" class="lens-subtitle">
-          Awards terminated since Jan 2025
+        <!-- Screen-reader announcement of panel switches -->
+        <p id="panel-announcer" class="sr-only" aria-live="polite"></p>
+
+        <!-- Panel headline: the count next to the noun it counts, plus the
+             disclosure line (partial actions / overlap with the other panel).
+             Counts live here, not in the tab labels, so a screenshot of the
+             selector never shows three addable numbers. -->
+        <div class="panel-headline-block">
+          <h2 id="panel-headline" class="panel-headline"></h2>
+          <p id="panel-note" class="panel-note"></p>
+        </div>
+
+        <!-- Persistent data freshness line, fed by metadata.json -->
+        <p id="freshness-bar" class="freshness-bar">
+          Data updated <span id="last-updated">&hellip;</span>. Sources:
+          USAspending.gov federal award records; DOGE's published claims.
         </p>
 
         <!-- Value Boxes -->
         <div id="value-boxes" class="value-boxes-row">
           <!-- Populated by JavaScript -->
         </div>
-        <p class="lens-footnote">
-          Detection expanded July 2026 (IDV vehicles, end-date truncations,
-          grant clawbacks); counts are not comparable to earlier versions of
-          this page.
-        </p>
+        <p id="value-boxes-note" class="panel-note"></p>
 
-        <!-- Evidence Mix: how strong the record behind the active lens is -->
-        <div id="evidence-card" class="card evidence-card">
+        <!-- DOGE claims vs outcomes (DOGE panel only) -->
+        <div id="outcome-card" class="card evidence-card" hidden>
           <div class="card-body">
-            <h2 class="evidence-heading">The evidence behind these numbers</h2>
-            <div id="evidence-body">
-              <!-- Populated by JavaScript (renderEvidencePanel) -->
+            <h2 id="outcome-heading" class="evidence-heading">
+              What became of DOGE's claims
+            </h2>
+            <p id="outcome-lead" class="outcome-lead"></p>
+            <div id="outcome-body">
+              <!-- Populated by JavaScript (renderOutcomePanel) -->
             </div>
-            <!-- Filled once by renderVerificationFreshness; lens-independent -->
-            <p id="verification-freshness" class="evidence-freshness"></p>
           </div>
         </div>
 
         <!-- Main Content: Map + Tables -->
-        <div class="main-content-row">
+        <div id="main-content-row" class="main-content-row">
           <!-- Map Column -->
           <div class="map-container">
             <div class="card card--transparent">
@@ -294,35 +301,12 @@
           </div>
         </div>
 
-        <!-- Monthly Timeline: activity in the active lens, month by month -->
+        <!-- Monthly timeline (Confirmed panel): when the terminations landed -->
         <div id="timeline-card" class="card timeline-card">
           <div class="timeline-header">
             <span id="timeline-subtitle" class="timeline-subtitle">
               Termination actions by month
             </span>
-            <div
-              id="timeline-metric-toggle"
-              class="metric-toggle"
-              role="group"
-              aria-label="Timeline metric"
-            >
-              <button
-                type="button"
-                class="metric-toggle-btn active"
-                data-tab="count"
-                aria-pressed="true"
-              >
-                Count
-              </button>
-              <button
-                type="button"
-                class="metric-toggle-btn"
-                data-tab="dollars"
-                aria-pressed="false"
-              >
-                Dollars
-              </button>
-            </div>
           </div>
           <div class="card-body">
             <div id="timeline-chart"></div>
@@ -330,73 +314,69 @@
           <p id="timeline-note" class="timeline-note"></p>
         </div>
 
-        <!-- End-date changes: shown only on the Suspicious lens, where the
-             quietly moved end dates are the evidence -->
-        <div id="enddate-card" class="card enddate-card" hidden>
-          <div class="enddate-header">
-            <!-- JS overwrites this per render (ENDDATE_META in lens-views.js) -->
-            <span id="enddate-subtitle" class="enddate-subtitle"
-              >Where the end dates moved</span
-            >
-          </div>
+        <!-- FY convenience-termination actions (Confirmed panel).
+             The chart title and universe qualifier are rendered inside the
+             SVG by fy-chart.js so a screenshot cannot crop them away; this
+             caption adds the reconciliation a careful reader needs. -->
+        <div id="fy-card" class="card timeline-card">
           <div class="card-body">
-            <p id="enddate-summary" class="enddate-summary"></p>
-            <div id="enddate-chart"></div>
+            <!-- The denominator is live data (refreshed daily); app.js fills
+                 the span so the sentence can never go stale. The 93 and ~9
+                 describe the static FY file and a fixed historical cutoff. -->
+            <p id="fy-caption" class="fy-caption">
+              This chart counts FPDS &ldquo;termination for convenience&rdquo;
+              contract actions across all of NASA by federal fiscal year. It is
+              a subset of the awards listed on this panel: 93 of the
+              <span id="fy-denominator">177</span> listed awards carry this
+              action code, and grants do not receive FPDS codes at all. The
+              FY2025 bar includes roughly 9 actions taken before January 20,
+              2025.
+            </p>
+            <div id="fy-chart"></div>
           </div>
-          <!-- JS overwrites this per render (ENDDATE_META in lens-views.js) -->
-          <p id="enddate-note" class="enddate-note">
-            Each arrow runs from the award's originally reported end date to its
-            current one. None of these changes were announced — they were found
-            by comparing the award's original record against daily USAspending
-            snapshots.
-          </p>
         </div>
 
-        <!-- Representative awards drawn from the active lens -->
-        <section id="spotlight-strip" class="spotlight-strip">
+        <!-- Representative awards (enabled in a later polish phase) -->
+        <section id="spotlight-strip" class="spotlight-strip" hidden>
           <h2 class="spotlight-heading">Representative awards</h2>
           <div id="spotlight-cards" class="spotlight-grid">
             <!-- Populated by JavaScript (renderSpotlights) -->
           </div>
         </section>
-      </section>
 
-      <!-- Contracts Listing Tab -->
-      <section id="contracts-tab" class="tab-content">
-        <div class="contracts-section">
+        <!-- Per-panel data table -->
+        <div id="panel-table-card" class="card">
           <div class="info-bar">
-            <span class="info-bar-text">
-              Data last updated <span id="last-updated"></span>. Sources:
-              USAspending.gov, NASA Procurement Data View, DOGE, NASA grants
-              archive.
-            </span>
+            <span id="panel-table-heading" class="info-bar-text"></span>
             <div class="info-bar-links">
               Download as
-              <a href="../data/cancellations/master_ledger_latest.csv" download
-                >CSV</a
-              >
+              <a id="panel-download" href="#" download>CSV</a>
             </div>
           </div>
-          <div class="contracts-table-container">
-            <div id="contracts-table"></div>
+          <div class="card-body">
+            <div class="contracts-table-container">
+              <div id="panel-table"></div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- District Summary View (shown when navigating to #XX-YY) -->
+      <!-- District Summary View (shown when navigating to #XX-YY).
+           Dataset-independent: one URL means one thing, so both datasets are
+           shown as labelled groups. -->
       <section id="district-summary" class="tab-content">
         <div class="district-summary-section">
           <div class="district-summary-header">
             <button class="btn btn-secondary back-btn" id="back-to-summary">
-              <i class="bi bi-arrow-left"></i> Back to Summary
+              <i class="bi bi-arrow-left"></i> Back to Dashboard
             </button>
             <h2 class="district-title" id="district-title"></h2>
           </div>
           <div class="info-bar">
             <p id="district-summary-stats" class="district-summary-stats"></p>
           </div>
-          <div id="district-awards" class="award-cards-grid">
-            <!-- Populated by JavaScript -->
+          <div id="district-groups">
+            <!-- Populated by JavaScript: one labelled group per dataset -->
           </div>
         </div>
       </section>
@@ -407,21 +387,60 @@
           <div class="card">
             <div class="card-header">About This Dashboard</div>
             <div class="card-body">
+              <!-- PLACEHOLDER COPY: drafted for structure and factual accuracy;
+                   Casey reviews and finalizes all About text before launch. -->
               <p>
-                This dashboard tracks NASA contracts and grants that have been
-                cancelled, terminated, or significantly reduced since January
-                20, 2025. It is maintained by Casey Dreier at
+                This dashboard tracks NASA contracts and grants terminated since
+                January 20, 2025. It is maintained by Casey Dreier at
                 <a href="https://planetary.org">The Planetary Society</a> to
                 provide transparency into changes affecting NASA's programs and
                 the organizations that support them.
               </p>
               <p>
-                The underlying record is a running ledger of every award the
-                monitoring system has ever flagged. Awards are never deleted
-                from it—they are reclassified as the federal record changes. The
-                selector at the top of the Summary tab switches between four
-                views of that ledger, and the Raw Data tab shows every row,
-                including the ones no view displays.
+                The dashboard presents
+                <strong>two independent datasets</strong>, selected at the top
+                of the Dashboard tab. They answer different questions and may
+                overlap &mdash; many awards claimed by DOGE also appear among
+                the confirmed terminations &mdash; so their counts must never be
+                added together.
+              </p>
+
+              <h3>Confirmed Cancellations</h3>
+              <p>
+                NASA awards whose federal record shows a termination action.
+                Each award was identified from USAspending.gov award data in one
+                of two ways: a formal FPDS termination action code (98 of the
+                177 listed awards carry one), or explicit termination language
+                in the text of the award's transaction descriptions (79 awards
+                rest on description text alone). Both are records the government
+                itself filed; the difference is whether the termination was
+                coded or only described.
+              </p>
+              <p>
+                The headline count excludes five awards where the federal record
+                shows a partial action rather than a full termination: three
+                descoped awards (part of the work was cut while the award
+                continues) and two closed-out awards. They appear in the table
+                with their own labels, and their dollars are excluded from the
+                panel's totals.
+              </p>
+
+              <h3>DOGE Claims</h3>
+              <p>
+                Every NASA award cancellation publicly claimed by the Department
+                of Government Efficiency. DOGE is no longer active; this dataset
+                is preserved as a historical record of its claims and their
+                outcomes. Each claim was checked against the award's federal
+                transaction history, and the outcome shown follows the federal
+                record, not DOGE's label: some awards DOGE listed as
+                &ldquo;expired&rdquo; show explicit termination actions, and
+                some claims could not be matched to any federal award at all.
+              </p>
+              <p>
+                Claimed savings figures are DOGE's own numbers, reproduced as
+                claimed. Most claims list no savings figure, and some claimed
+                savings are attached to awards that remain active &mdash; the
+                dashboard states both alongside any total.
               </p>
 
               <h3>What's an Award?</h3>
@@ -431,22 +450,25 @@
               </p>
               <ul>
                 <li>
-                  <strong>Contracts</strong> — Agreements to purchase specific
-                  goods or services. NASA uses contracts to buy spacecraft, fund
-                  research and development, and hire technical support.
+                  <strong>Contracts</strong> &mdash; Agreements to purchase
+                  specific goods or services. NASA uses contracts to buy
+                  spacecraft, fund research and development, and hire technical
+                  support.
                 </li>
                 <li>
-                  <strong>Grants</strong> — Financial assistance to support a
-                  public purpose. NASA awards grants to universities,
+                  <strong>Grants</strong> &mdash; Financial assistance to
+                  support a public purpose. NASA awards grants to universities,
                   nonprofits, and researchers for scientific studies, education
                   programs, and technology development.
                 </li>
               </ul>
               <p>
-                This dashboard tracks both types. The dollar amounts shown
-                represent <strong>obligations</strong>—money the government
-                committed to spend—which may differ from amounts actually paid
-                out.
+                The dollar amounts shown represent
+                <strong>obligations</strong>&mdash;money the government
+                committed to spend&mdash;which may differ from amounts actually
+                paid out. Counts on this dashboard are counts of
+                <strong>awards</strong>, not organizations: a single university
+                or company can hold several awards.
               </p>
 
               <h3>Why This Matters</h3>
@@ -459,329 +481,88 @@
                 policymakers track these changes.
               </p>
 
-              <h3>Data Sources</h3>
+              <h3>About the Fiscal-Year Chart</h3>
               <p>
-                No single government source publishes a list of cancelled NASA
-                awards, so the system watches several at once:
+                The fiscal-year chart on the Confirmed Cancellations panel
+                counts FPDS &ldquo;termination for convenience&rdquo; contract
+                actions across all of NASA. It is drawn from a different, and
+                narrower, records universe than the panel's award list: only
+                contracts receive FPDS action codes, so grants and
+                description-detected terminations do not appear in it. Federal
+                fiscal years run October through September, so the FY2025 bar
+                includes actions from October 2024 through January 19, 2025
+                (roughly 9 of its 74 actions) that predate the current
+                administration. The full FY2010&ndash;2026 series is included in
+                the downloadable file.
               </p>
+
+              <h3>Data Sources &amp; Downloads</h3>
               <ul>
                 <li>
-                  <strong>USAspending.gov</strong> — The authoritative federal
-                  spending database. All award details (recipient names, funding
-                  amounts, dates, locations) come from this source, and it is
-                  searched directly for termination transactions.
+                  <strong>USAspending.gov</strong> &mdash; The authoritative
+                  federal spending database. All award details (recipient names,
+                  funding amounts, dates, locations, congressional districts)
+                  come from this source.
                 </li>
                 <li>
-                  <strong>NASA Procurement Data View</strong> — NASA's contract
-                  modification database, monitored for termination and stop-work
-                  language in the text of contract modifications.
-                </li>
-                <li>
-                  <strong>DOGE's published list</strong> — The savings claims
-                  posted by the Department of Government Efficiency for NASA
-                  contracts and grants.
-                </li>
-                <li>
-                  <strong>NASA grants archive</strong> — NASA's own grants
-                  search, used to catch discontinued or shortened grants.
-                </li>
-                <li>
-                  <strong>A local copy of the USAspending database</strong> —
-                  Queried directly for patterns the public search tools do not
-                  expose well: formal termination action codes (including on
-                  large ordering vehicles), performance periods pulled in
-                  sharply by a modification that also removes money, and grant
-                  clawbacks that take back a substantial share of an award.
+                  <strong>DOGE's published list</strong> &mdash; The savings
+                  claims posted by the Department of Government Efficiency for
+                  NASA contracts and grants, archived before DOGE's dissolution.
                 </li>
               </ul>
-
-              <h3>How Awards Are Identified</h3>
-              <p>
-                Each of those sources is an independent detection net. An award
-                enters the ledger when any one of them fires. The
-                <strong>Sources</strong> column in the downloadable data records
-                which nets flagged a given award, and the system also records
-                the specific evidence—for example, a terminate-for-convenience
-                action on a named modification and date, an end date pulled in
-                by hundreds of days, or a clawback of a stated dollar amount and
-                percentage.
-              </p>
-              <p>
-                The nets differ in how strong their evidence is. A formal
-                termination action code is close to conclusive; an end date that
-                suddenly moves up is a signal that something happened, not proof
-                of a termination. That difference is why the Summary tab offers
-                four views instead of one number:
-              </p>
+              <p>Download the data behind each panel:</p>
               <ul>
                 <li>
-                  <span class="badge badge--cancelled">Cancelled</span> — Awards
-                  with affirmative evidence of termination: a formal termination
-                  action, termination or stop-work language in the award record,
-                  or a clawback. This is the default view and the basis for the
-                  headline count. Awards flagged only by a shortened end date
-                  are excluded here, as are descopes — awards where part of the
-                  work was cut but the award itself continues.
+                  <a href="../data/cancellations/terminations.csv" download
+                    >terminations.csv</a
+                  >
+                  &mdash; Confirmed Cancellations (one row per award termination
+                  action)
                 </li>
                 <li>
-                  <span class="badge badge--doge">DOGE Claims</span> — Every
-                  award DOGE has publicly claimed credit for, regardless of what
-                  the award record later showed. This view compares claimed
-                  savings against the money actually obligated and flags
-                  divergence between the two.
+                  <a href="../data/cancellations/doge_claims.csv" download
+                    >doge_claims.csv</a
+                  >
+                  &mdash; DOGE Claims (one row per claim, with verification
+                  columns)
                 </li>
                 <li>
-                  <span class="badge badge--suspicious">Suspicious</span> —
-                  Awards whose only evidence is a truncated performance period:
-                  the end date moved up, but there is no termination action
-                  code, no termination language, no clawback, and no outside
-                  claim. Awards whose end date moved later on net are excluded
-                  from this view — a flagged date change that extended the award
-                  is not a cut. These are leads worth checking, not confirmed
-                  cancellations.
-                </li>
-                <li>
-                  <span class="badge badge--reversed">Reversed</span> —
-                  Terminations that did not stick: rescinded, set aside by a
-                  court, or awards that kept receiving money after being
-                  flagged.
+                  <a
+                    href="../data/cancellations/cancellations_for_convenience_actions_by_fiscal_year.csv"
+                    download
+                    >cancellations_for_convenience_actions_by_fiscal_year.csv</a
+                  >
+                  &mdash; FPDS convenience-termination actions by fiscal year,
+                  FY2010&ndash;2026
                 </li>
               </ul>
-              <p>
-                Every visitor sees one view at a time. The counts, dollar
-                figures, map, and tables all reflect the view currently
-                selected.
-              </p>
-
-              <h3>How Confident Are We in These Numbers?</h3>
-              <p>
-                Not every row rests on equally solid ground, and the dashboard
-                says so rather than averaging the difference away. Each award
-                carries an <strong>evidence tier</strong>—a plain answer to the
-                question "how do we know?"—shown as a badge in the Raw Data
-                table and on each award card, and summarized for the whole view
-                in the evidence bar at the top of the Summary tab. The four
-                tiers, strongest to weakest:
-              </p>
-              <ul>
-                <li>
-                  <span class="badge badge--tier-official">Federal record</span>
-                  — A termination or deobligation action appears in USAspending
-                  or FPDS federal contracting records, found either by our daily
-                  source sweeps or by the weekly re-verification of the award's
-                  transaction history. This is the government's own accounting
-                  of what it did.
-                </li>
-                <li>
-                  <span class="badge badge--tier-nasa">NASA list</span> — The
-                  award appears on NASA internal cancellation or
-                  grant-termination lists, but no federal termination action has
-                  turned up yet. NASA is a credible source about its own awards;
-                  the paperwork simply has not caught up.
-                </li>
-                <li>
-                  <span class="badge badge--tier-mirror">Inferred</span> —
-                  Detected by comparing daily USAspending snapshots: the award's
-                  end date was quietly cut short. Nobody announced anything;
-                  this is our own inference from a change in the record.
-                </li>
-                <li>
-                  <span class="badge badge--tier-claim">Uncorroborated</span> —
-                  The only evidence is DOGE's own claim. No federal record, no
-                  NASA list, and no weekly re-check corroborates it. A claim the
-                  record later confirms moves up to Federal record, so this tier
-                  is the residue that nothing else backs.
-                </li>
-              </ul>
-              <p>
-                A view made mostly of federal records is a much firmer number
-                than one made mostly of claims, and the evidence bar is there so
-                that difference is visible before you quote a total.
-              </p>
-
-              <h4>Re-checked every week</h4>
-              <p>
-                Once a week, every award in the ledger has its full federal
-                transaction history walked again from scratch, and the result is
-                recorded with the date it was checked. That is how reversals get
-                caught, how closed-out awards get relabeled, and how a
-                termination that never materialized stops being counted as one.
-                The date of the most recent sweep is printed beneath the
-                evidence bar.
-              </p>
-              <p>
-                Sometimes the weekly check disagrees with the listing. When an
-                award is carried as cancelled but no termination action appears
-                anywhere in its federal transaction history, it is marked with a
-                <i
-                  class="bi bi-question-circle award-conflict"
-                  title="No termination action found in this award’s federal transaction history; its cancelled status comes from NASA’s internal lists."
-                ></i>
-                next to its status. That usually means the cancellation is real
-                but was recorded only on NASA's internal lists; occasionally it
-                means the award was never terminated at all. Either way, it is
-                flagged rather than smoothed over.
-              </p>
-
-              <h4>What became of the DOGE claims</h4>
-              <p>
-                Claims get the same treatment, and the DOGE Claims view breaks
-                them into four outcomes: a
-                <strong>termination was verified</strong> in the award's federal
-                transaction history; the award simply
-                <strong>expired on schedule</strong> with no termination action
-                at all; <strong>no termination was found</strong> in the federal
-                record; or the claim was
-                <strong>reversed or otherwise resolved</strong>—reinstated,
-                vacated by a court, descoped, or excluded from our totals. The
-                mix shifts as the record fills in, so the current breakdown is
-                shown on the page rather than quoted here.
-              </p>
-
-              <h4>Reading the monthly timeline</h4>
-              <p>
-                The timeline on the Summary tab buckets each award by month. For
-                DOGE claims, that month is when the claim first appeared. For
-                every other view, it is the month of the
-                <strong>latest federal contract action</strong> on the award—a
-                proxy for when the termination landed, not a recorded event
-                date. It is usually close and occasionally not, so treat the
-                shape of the timeline as an approximation of timing rather than
-                a precise record of it. Awards with no usable date are counted
-                in the note beneath the chart instead of being plotted.
-              </p>
-
-              <h3>Claims vs. Outcomes</h3>
-              <p>
-                The dashboard keeps two different kinds of fact apart, because
-                they can disagree.
-              </p>
-              <p>
-                A <strong>claim</strong> is someone's public assertion that an
-                award was cancelled—who said it, what they said it saved, and
-                when. Today the only claimant is DOGE. Claims are recorded once
-                and never removed, whether or not the award turned out to be
-                genuinely terminated. If a claim is later restated, the revision
-                is appended alongside the original rather than replacing it.
-              </p>
-              <p>
-                An <strong>outcome</strong> is what the federal award record now
-                shows: whether the total obligated amount has grown or shrunk
-                since the award was first flagged, and whether its end date
-                moved. Outcomes are recomputed from the live data every time the
-                ledger is rebuilt.
-              </p>
-              <p>
-                <strong>Divergence</strong> is the comparison between the two.
-                An award that was claimed as a saving but has since received
-                more money is labeled accordingly, and it stays in the DOGE
-                Claims view. This is a factual comparison of a public claim
-                against the public record, not a judgement about intent.
-              </p>
-
-              <h3>When Terminations Are Reversed</h3>
-              <p>
-                Terminations are not always final, and the ledger records what
-                happened next rather than quietly dropping the award:
-              </p>
-              <ul>
-                <li>
-                  <strong>Rescinded</strong> — A later modification cancels the
-                  termination and the award becomes active again. Six Princeton
-                  University grants terminated in April 2025 were rescinded by
-                  modifications posted in December 2025.
-                </li>
-                <li>
-                  <strong>Vacated by court order</strong> — In September 2025, a
-                  federal court order set aside the termination of several
-                  Harvard University research grants. The modification text
-                  filed in the federal record states that "the termination has
-                  been vacated and set aside pursuant to the order entered on
-                  September 3, 2025, in President and Fellows of Harvard College
-                  v. US Department of Health and Human Services et al."
-                </li>
-                <li>
-                  <strong>Continued</strong> — The award was flagged, but the
-                  record shows it kept receiving new obligations afterward, so
-                  no cancellation took effect.
-                </li>
-              </ul>
-              <p>
-                Reversals are moved out of the Cancelled view once they have
-                been confirmed in the award's transaction history. An award
-                whose reversal has been detected by the automated weekly check
-                but not yet confirmed by hand remains in the Cancelled view; the
-                automated verdict is visible in the
-                <strong>Auto Status</strong> column of the downloadable data.
-                Several of the Harvard grants above are in that state today.
-              </p>
-
-              <h3>What Is Deliberately Excluded</h3>
-              <p>
-                Some flagged awards are removed from every view on purpose,
-                because including them would overstate the effect of policy
-                decisions. They remain visible in the Raw Data tab, where the
-                Status column marks them
-                <span class="badge badge--excluded">Excluded</span>
-                and records the reason:
-              </p>
-              <ul>
-                <li>
-                  <strong>Termination for cause</strong> — The government ended
-                  the award because the recipient failed to perform. That is a
-                  contracting dispute, not a policy cancellation.
-                </li>
-                <li>
-                  <strong>Actions before January 20, 2025</strong> — Awards
-                  terminated before the tracking window opened. Detection
-                  sometimes surfaces them; they are outside the scope of this
-                  dashboard.
-                </li>
-                <li>
-                  <strong>Descopes</strong> — Awards where a modification cut
-                  part of the work while the award itself continues. Calling a
-                  contract that is still active and still being funded
-                  "cancelled" would overstate the effect, so descoped awards
-                  appear only in the Raw Data tab, marked
-                  <span class="badge badge--excluded">Descoped</span>.
-                </li>
-              </ul>
-              <p>
-                A small number of awards are also held back as needing manual
-                review when the available evidence is not sufficient to classify
-                them either way.
-              </p>
 
               <h3>Important Notes</h3>
               <ul>
                 <li>
-                  <strong>Updated daily, re-verified weekly</strong> — The
-                  sources are checked each day. Once a week, every flagged award
-                  is re-checked against its full USAspending transaction history
-                  to see whether the termination still stands, was closed out,
-                  or was reversed. The result of that check is published in the
-                  <strong>Auto Status</strong> and
-                  <strong>Auto Verified Date</strong> columns of the CSV
-                  download. A failed lookup is recorded as unresolved and
-                  retried; it is never treated as a finding.
+                  <strong>Updated daily</strong> &mdash; The source data is
+                  refreshed from federal records each day; the date of the last
+                  update is shown at the top of the Dashboard tab.
                 </li>
                 <li>
-                  <strong>Counts are not comparable over time</strong> —
-                  Detection was expanded in July 2026 to cover large ordering
-                  vehicles, end-date truncations, and grant clawbacks. The
-                  headline count rose substantially as a result. That reflects
-                  better detection, not a sudden wave of new terminations.
+                  <strong>Not exhaustive</strong> &mdash; This list captures
+                  awards meeting specific detection criteria. Cancellations that
+                  leave no trace in these sources will not appear.
                 </li>
                 <li>
-                  <strong>Not exhaustive</strong> — This list captures awards
-                  meeting specific detection criteria. Cancellations that leave
-                  no trace in these sources will not appear.
+                  <strong
+                    >Counts are not comparable to earlier versions of this
+                    page</strong
+                  >
+                  &mdash; The dashboard moved to a rebuilt data pipeline in
+                  August 2026 with different detection criteria than earlier
+                  versions.
                 </li>
                 <li>
-                  <strong>Further verification recommended</strong> — Inclusion
-                  reflects evidence in federal data. Before publishing, confirm
-                  details with the recipient or with NASA; corrections are
-                  welcome and are applied to the ledger.
+                  <strong>Further verification recommended</strong> &mdash;
+                  Inclusion reflects evidence in federal data. Before
+                  publishing, confirm details with the recipient or with NASA;
+                  corrections are welcome.
                 </li>
               </ul>
 

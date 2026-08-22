@@ -31,8 +31,9 @@ export class ChoroplethMap {
      * @param {string} options.level - Geographic level ('district', 'state')
      * @param {string} options.mapType - Map type: 'bubble' (default) or 'choropleth'
      * @param {Object} options.customColors - Custom color configuration {zero, low, high}
-     * @param {boolean} options.showLegend - Whether to show the legend (default: true for choropleth)
+     * @param {boolean} options.showLegend - Whether to show the legend (default: true)
      * @param {string} options.legendTitle - Legend heading (default: 'Average Annual Spending')
+     * @param {Function} options.legendValueFormat - Formats bubble-legend values (default: toLocaleString)
      * @param {boolean} options.interactive - Whether map is interactive
      * @param {boolean} options.preProjected - Whether the data is pre-projected (skip projection)
      */
@@ -46,6 +47,7 @@ export class ChoroplethMap {
             interactive: options.interactive !== false,
             showLegend: options.showLegend !== false,
             legendTitle: options.legendTitle || 'Average Annual Spending',
+            legendValueFormat: options.legendValueFormat || ((v) => v.toLocaleString()),
             maxRadius: options.maxRadius || 20,
             minRadius: options.minRadius || 3,
             preProjected: options.preProjected || false,
@@ -193,12 +195,9 @@ export class ChoroplethMap {
         this.createTooltip();
         this.setupProjection();
         this.setupZoom();
-        this.render();
+        this.render();  // also renders the legend
         this.setupResizeHandler();
         this.setupMobileDetection();
-
-        // Render legend for choropleth maps
-        this.updateLegend();
 
         // Load and render state boundaries if enabled
         if (this.options.showStateBoundaries) {
@@ -356,15 +355,24 @@ export class ChoroplethMap {
     }
 
     /**
-     * Render the legend if the current configuration calls for one
+     * Render whichever legend the current configuration calls for
      *
-     * Bubble maps and maps without a stepped scale show no legend, so this is a
-     * no-op for them. The legend derives entirely from the construction-time
-     * stepped scale and title, so init() is the only caller it needs.
+     * Choropleth maps get the stepped colour swatches, which derive entirely
+     * from the construction-time scale and never change. Bubble maps get a size
+     * legend, whose reference circles depend on the current maximum — so this
+     * runs at the end of every render() rather than only at init(). Maps with
+     * neither a stepped scale (choropleth) nor any positive value (bubble) show
+     * nothing, as before.
      */
     updateLegend() {
-        if (this.options.mapType === 'choropleth' && this.options.showLegend && this.steppedScale) {
-            this.renderLegend();
+        if (!this.options.showLegend) return;
+
+        if (this.options.mapType === 'choropleth') {
+            if (this.steppedScale) {
+                this.renderLegend();
+            }
+        } else {
+            this.renderBubbleLegend();
         }
     }
 
@@ -457,14 +465,17 @@ export class ChoroplethMap {
             // Prepare bubble data
             const radiusScale = this.createRadiusScale();
 
+            // Filter before computing centroids: path.centroid() walks the
+            // whole polygon ring, and only ~a quarter of districts carry data.
             const bubbleData = this.geojsonData.features
+                .filter(feature => (this.dataMap[feature.properties.GEOID || feature.id] || 0) > 0)
                 .map(feature => {
                     const geoid = feature.properties.GEOID || feature.id;
-                    const value = this.dataMap[geoid] || 0;
+                    const value = this.dataMap[geoid];
                     const centroid = this.path.centroid(feature);
                     return { feature, geoid, value, centroid };
                 })
-                .filter(d => d.value > 0 && !isNaN(d.centroid[0]) && !isNaN(d.centroid[1]));
+                .filter(d => !isNaN(d.centroid[0]) && !isNaN(d.centroid[1]));
 
             // Sort by value descending so smaller bubbles render on top
             bubbleData.sort((a, b) => b.value - a.value);
@@ -497,8 +508,22 @@ export class ChoroplethMap {
                     if (self.options.interactive) {
                         self.handleMouseOut(event, d, this);
                     }
+                })
+                .on('click', function(event, d) {
+                    // Same contract as choropleth polygons: bubbles report
+                    // their district through the registered click handler.
+                    if (self.options.interactive && self.onDistrictClick) {
+                        const districtCode = self.getDistrictCode(d.feature);
+                        if (districtCode) {
+                            self.onDistrictClick(districtCode);
+                        }
+                    }
                 });
         }
+
+        // The bubble legend's reference circles track this.maxValue, so the
+        // legend is rebuilt alongside the marks it describes.
+        this.updateLegend();
     }
 
     /**
@@ -617,12 +642,93 @@ export class ChoroplethMap {
     }
 
     /**
+     * Reference values for the bubble size legend: 1, roughly half the maximum,
+     * and the maximum.
+     *
+     * Deduplicated and sorted ascending, so a small maximum (1 or 2) collapses
+     * to fewer circles instead of printing the same size twice.
+     *
+     * @returns {number[]} Ascending reference values, empty when there is no data
+     */
+    getBubbleLegendValues() {
+        const max = this.maxValue;
+        if (!(max > 0)) return [];
+
+        // Derive references from the value range rather than assuming integer
+        // counts — a dollar-valued bubble map gets sensible references too.
+        // d3.ticks can return only values below max, so max itself (the
+        // largest bubble actually drawn) is always included.
+        const ticks = d3.ticks(0, max, 3).filter(v => v > 0 && v < max);
+        return [...new Set([...ticks.slice(-2), max])].sort((a, b) => a - b);
+    }
+
+    /**
+     * Render the size legend for bubble maps
+     *
+     * Circles are drawn with the same radius scale the map's bubbles use, so
+     * they read as literal references rather than decoration. Recomputed on
+     * every render because setData() can move the maximum.
+     */
+    renderBubbleLegend() {
+        if (!this.container) return;
+
+        // Remove existing legend
+        const existingLegend = this.container.querySelector('.map-legend');
+        if (existingLegend) {
+            existingLegend.remove();
+        }
+        this.legendContainer = null;
+
+        const values = this.getBubbleLegendValues();
+        if (values.length === 0) return;
+
+        const radiusScale = this.createRadiusScale();
+        const format = this.options.legendValueFormat;
+
+        const legendItems = values.map(value => {
+            const r = radiusScale(value);
+            // +2 keeps the 1px stroke inside the viewBox
+            const size = Math.ceil(r * 2) + 2;
+            return `
+            <div class="legend-bubble-item">
+                <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true" focusable="false">
+                    <circle cx="${size / 2}" cy="${size / 2}" r="${r}"
+                        fill="${this.colors.high}" fill-opacity="0.6"
+                        stroke="${this.colors.high}" stroke-width="1" stroke-opacity="0.8"></circle>
+                </svg>
+                <span>${format(value)}</span>
+            </div>
+        `;
+        }).join('');
+
+        this.legendContainer = document.createElement('div');
+        this.legendContainer.className = 'map-legend map-legend--bubble';
+        // The legend sits in flow beneath the SVG, so it cannot overlap the map
+        // today — but it must never swallow a hover or click meant for a bubble
+        // if the layout ever changes.
+        this.legendContainer.style.pointerEvents = 'none';
+
+        this.legendContainer.innerHTML = `
+            <div class="legend-title">${this.options.legendTitle}</div>
+            <div class="legend-bubbles">${legendItems}</div>
+        `;
+
+        this.container.appendChild(this.legendContainer);
+    }
+
+    /**
      * Set up resize handler
      */
     setupResizeHandler() {
         let lastWidth = this.width;
 
         const handleResize = debounce(() => {
+            // Skip hidden containers. A display:none card measures width 0, and
+            // re-projecting ~440 district polygons into a phantom width is pure
+            // waste (and would cache a bogus projection for when it reappears).
+            // Same idiom as the cancellations chart resize guards.
+            if (!this.container || this.container.offsetParent === null) return;
+
             const rect = this.container.getBoundingClientRect();
             const newWidth = rect.width || 800;
 

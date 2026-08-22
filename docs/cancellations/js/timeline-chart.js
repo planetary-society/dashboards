@@ -4,16 +4,17 @@
  *
  * IMPORTANT: Rendering constraints
  * --------------------------------------------------------
- * 1. ONE METRIC AT A TIME. The chart plots either counts or dollars against a
- *    single y-axis. Dual axes invite false correlations, so there is no mode
- *    that draws both.
+ * 1. COUNTS ONLY. The chart plots actions per month against a single y-axis.
+ *    The old count/dollars toggle is gone: 129 of the 177 confirmed
+ *    terminations carry a zero transaction amount, so a dollars view described
+ *    a quarter of the corpus and implied it was all of it.
  *
  * 2. FULL REDRAW. render() clears and rebuilds the SVG on every call because
- *    lens switches change the month domain entirely; there is no stable key to
+ *    panel switches change the month domain entirely; there is no stable key to
  *    join against across views.
  *
- * 3. NO ANIMATION. Bars appear statically. The chart re-renders on every lens
- *    and metric change, so transitions would read as noise, not motion.
+ * 3. NO ANIMATION. Bars appear statically. The chart re-renders on every panel
+ *    change, so transitions would read as noise, not motion.
  *
  * 4. `d3` is a global from the CDN script tag and is referenced only inside
  *    methods, so this module stays importable in Node for wiring checks.
@@ -24,17 +25,15 @@ import {
     ChartTooltip,
     tooltipRow,
     formatIsoMonthLong,
-    formatIsoMonthShort
+    formatIsoMonthShort,
+    topRoundedPath,
+    barPadding,
+    labelIndices,
+    yTicks
 } from './chart-common.js';
 
-/** Chart margins; left is sized for abbreviated currency labels like "$1.2M" */
-const MARGIN = { top: 12, right: 8, bottom: 26, left: 52 };
-
-/** Minimum horizontal gap between bars, in px */
-const MIN_BAR_GAP = 2;
-
-/** Corner radius applied to the top of each bar, in px */
-const BAR_RADIUS = 3;
+/** Chart margins; left is sized for integer count labels */
+const MARGIN = { top: 12, right: 8, bottom: 26, left: 34 };
 
 /** Minimum horizontal space an x-axis label needs before labels are thinned, in px */
 const MIN_LABEL_SPACE = 46;
@@ -68,9 +67,13 @@ export class TimelineChart {
         this.width = 0;
         this.height = this.options.height;
 
-        // Registered once so repeated render() calls cannot stack listeners
+        // Registered once so repeated render() calls cannot stack listeners.
+        // The visibility guard matters: this card is hidden while other panels
+        // are showing, and a hidden container measures width 0 — rebuilding into
+        // it on every resize would draw a chart nobody can see, at the fallback
+        // width, which then persists when the panel comes back.
         this.handleResize = debounce(() => {
-            if (this.months) {
+            if (this.months && this.container?.offsetParent !== null) {
                 this.render(this.months, this.renderOptions);
             }
         }, 150);
@@ -80,22 +83,23 @@ export class TimelineChart {
     /**
      * Render the chart, replacing any previous contents
      *
-     * Called on every lens switch and metric toggle, so it is a full teardown
-     * and rebuild rather than a data join.
+     * Called on every panel switch, so it is a full teardown and rebuild rather
+     * than a data join.
+     *
+     * A stray `metric` key in `config` is accepted and ignored: the toggle it
+     * belonged to is gone, and refusing the key would break callers for nothing.
      *
      * @param {Array<Object>} months - Ascending, gap-filled months:
-     *   {month: 'YYYY-MM', count: number, dollars: number, top: Array<{recipient: string, amount: number}>}
+     *   {month: 'YYYY-MM', count: number, top?: Array<{recipient: string, amount: number}>}
      * @param {Object} config - Render configuration
-     * @param {string} config.metric - 'count' or 'dollars' (default: 'count')
      * @param {string} config.barColor - SVG fill for bars, CSS vars allowed (default: 'var(--red-500)')
-     * @param {string} config.valueLabel - Label for the dollar figure in the tooltip (default: 'Value')
      * @param {string} config.countLabel - Label for the row count in the tooltip (default: 'Awards')
      */
-    render(months, { metric = 'count', barColor = 'var(--red-500)', valueLabel = 'Value', countLabel = 'Awards' } = {}) {
+    render(months, { barColor = 'var(--red-500)', countLabel = 'Awards' } = {}) {
         if (!this.container) return;
 
         this.months = months;
-        this.renderOptions = { metric, barColor, valueLabel, countLabel };
+        this.renderOptions = { barColor, countLabel };
 
         this.container.innerHTML = '';
         this.svg = null;
@@ -108,19 +112,19 @@ export class TimelineChart {
         }
 
         this.setupDimensions();
-        this.createSvg(months, metric);
+        this.createSvg(months);
         this.createTooltip();
 
         const innerWidth = Math.max(1, this.width - MARGIN.left - MARGIN.right);
         const innerHeight = Math.max(1, this.height - MARGIN.top - MARGIN.bottom);
 
-        const value = (d) => this.metricValue(d, metric);
+        const value = (d) => (Number.isFinite(d.count) ? d.count : 0);
         const maxValue = d3.max(months, value) || 0;
 
         const x = d3.scaleBand()
             .domain(months.map(d => d.month))
             .range([0, innerWidth])
-            .paddingInner(this.barPadding(innerWidth, months.length))
+            .paddingInner(barPadding(innerWidth, months.length))
             .paddingOuter(0.1);
 
         const y = d3.scaleLinear()
@@ -131,7 +135,7 @@ export class TimelineChart {
         const plot = this.svg.append('g')
             .attr('transform', `translate(${MARGIN.left},${MARGIN.top})`);
 
-        this.renderYAxis(plot, y, innerWidth, metric);
+        this.renderYAxis(plot, y, innerWidth);
         this.renderBars(plot, months, x, y, innerHeight, value, barColor);
         this.renderXAxis(plot, months, x, innerHeight);
         this.renderHitBands(plot, months, x, innerWidth, innerHeight);
@@ -171,13 +175,11 @@ export class TimelineChart {
     /**
      * Create the SVG element with its accessible description
      * @param {Array<Object>} months - Month records being plotted
-     * @param {string} metric - 'count' or 'dollars'
      */
-    createSvg(months, metric) {
+    createSvg(months) {
         const span = months.length === 1
             ? formatIsoMonthLong(months[0].month)
             : `${formatIsoMonthLong(months[0].month)} to ${formatIsoMonthLong(months[months.length - 1].month)}`;
-        const metricPhrase = metric === 'dollars' ? 'obligated value' : 'number of actions';
 
         this.svg = d3.select(this.container)
             .append('svg')
@@ -185,7 +187,7 @@ export class TimelineChart {
             .attr('viewBox', `0 0 ${this.width} ${this.height}`)
             .attr('preserveAspectRatio', 'xMidYMid meet')
             .attr('role', 'img')
-            .attr('aria-label', `${this.options.ariaLabel}: ${metricPhrase} by month, ${span}`)
+            .attr('aria-label', `${this.options.ariaLabel}: number of actions by month, ${span}`)
             .style('width', '100%')
             .style('height', 'auto')
             .style('display', 'block');
@@ -199,50 +201,14 @@ export class TimelineChart {
     }
 
     /**
-     * Read the plotted value off a month record
-     * @param {Object} d - Month record
-     * @param {string} metric - 'count' or 'dollars'
-     * @returns {number} Plotted value, zero when missing
-     */
-    metricValue(d, metric) {
-        const raw = metric === 'dollars' ? d.dollars : d.count;
-        return Number.isFinite(raw) ? raw : 0;
-    }
-
-    /**
-     * Band padding that keeps at least MIN_BAR_GAP px between bars
-     *
-     * Capped so dense views thin the bars rather than dissolving them.
-     *
-     * @param {number} innerWidth - Plot width in px
-     * @param {number} count - Number of months
-     * @returns {number} paddingInner fraction
-     */
-    barPadding(innerWidth, count) {
-        const step = innerWidth / Math.max(1, count);
-        return Math.max(0.15, Math.min(0.7, MIN_BAR_GAP / step));
-    }
-
-    /**
      * Render y-axis gridlines and labels (no axis line)
      * @param {Object} plot - D3 selection of the plot group
      * @param {Function} y - Y scale
      * @param {number} innerWidth - Plot width in px
-     * @param {string} metric - 'count' or 'dollars'
      */
-    renderYAxis(plot, y, innerWidth, metric) {
-        const format = metric === 'dollars'
-            ? (v) => formatCurrency(v, true, 1)
-            : d3.format('d');
-
-        // Abbreviated currency collapses near-identical ticks to the same label; keep the first of each
-        const seen = new Set();
-        const ticks = this.yTicks(y, metric).filter((v) => {
-            const label = format(v);
-            if (seen.has(label)) return false;
-            seen.add(label);
-            return true;
-        });
+    renderYAxis(plot, y, innerWidth) {
+        const format = d3.format('d');
+        const ticks = yTicks(y);
 
         const axis = plot.append('g').attr('class', 'timeline-y-axis');
 
@@ -272,25 +238,6 @@ export class TimelineChart {
     }
 
     /**
-     * Choose y-axis tick values, ~4 of them
-     *
-     * Counts are whole actions, so fractional ticks are dropped rather than
-     * formatted away.
-     *
-     * @param {Function} y - Y scale
-     * @param {string} metric - 'count' or 'dollars'
-     * @returns {Array<number>} Tick values
-     */
-    yTicks(y, metric) {
-        const ticks = y.ticks(4);
-        if (metric !== 'dollars') {
-            const whole = [...new Set(ticks.filter(Number.isInteger))];
-            return whole.length > 0 ? whole : [0, Math.ceil(y.domain()[1])];
-        }
-        return ticks;
-    }
-
-    /**
      * Render the bars
      *
      * Bars are paths, not rects: a plain rect's `rx` would round the baseline
@@ -316,31 +263,10 @@ export class TimelineChart {
             .attr('d', (d) => {
                 // Floor at 1.5px so a small but non-zero month stays visible
                 const barHeight = Math.max(1.5, innerHeight - y(value(d)));
-                return this.topRoundedPath(x(d.month), innerHeight - barHeight, bandWidth, barHeight);
+                return topRoundedPath(x(d.month), innerHeight - barHeight, bandWidth, barHeight);
             })
             .attr('fill', barColor)
             .attr('fill-opacity', 0.9);
-    }
-
-    /**
-     * Build a path for a bar with only its top corners rounded
-     * @param {number} x - Left edge
-     * @param {number} y - Top edge
-     * @param {number} width - Bar width
-     * @param {number} height - Bar height
-     * @returns {string} SVG path data
-     */
-    topRoundedPath(x, y, width, height) {
-        const r = Math.max(0, Math.min(BAR_RADIUS, width / 2, height));
-        return [
-            `M${x},${y + height}`,
-            `V${y + r}`,
-            `Q${x},${y} ${x + r},${y}`,
-            `H${x + width - r}`,
-            `Q${x + width},${y} ${x + width},${y + r}`,
-            `V${y + height}`,
-            'Z'
-        ].join(' ');
     }
 
     /**
@@ -351,7 +277,7 @@ export class TimelineChart {
      * @param {number} innerHeight - Plot height in px
      */
     renderXAxis(plot, months, x, innerHeight) {
-        const indices = this.labelIndices(months.length, x.step());
+        const indices = labelIndices(months.length, x.step(), MIN_LABEL_SPACE);
         const axis = plot.append('g')
             .attr('class', 'timeline-x-axis')
             .attr('transform', `translate(0,${innerHeight})`);
@@ -381,37 +307,6 @@ export class TimelineChart {
             .attr('font-size', 11)
             .attr('fill', 'var(--gray-600)')
             .text(d => formatIsoMonthShort(d.month));
-    }
-
-    /**
-     * Pick which months get an x-axis label
-     *
-     * Labels are thinned to whatever the current width can fit without
-     * collisions; the first and last month are always labelled so the span is
-     * readable at any density.
-     *
-     * @param {number} count - Number of months
-     * @param {number} step - Band step in px
-     * @returns {Array<number>} Ascending month indices to label
-     */
-    labelIndices(count, step) {
-        if (count <= 1) return [0];
-
-        const every = Math.max(1, Math.ceil(MIN_LABEL_SPACE / Math.max(1, step)));
-        const indices = [];
-        for (let i = 0; i < count; i += every) {
-            indices.push(i);
-        }
-
-        const last = count - 1;
-        if (indices[indices.length - 1] !== last) {
-            // Drop the previous label if the final one would crowd it
-            if (indices.length > 1 && last - indices[indices.length - 1] < every) {
-                indices.pop();
-            }
-            indices.push(last);
-        }
-        return indices;
     }
 
     /**
@@ -482,15 +377,13 @@ export class TimelineChart {
      * @returns {string} Tooltip HTML
      */
     tooltipHtml(d) {
-        const { valueLabel, countLabel } = this.renderOptions;
+        const { countLabel } = this.renderOptions;
         const count = Number.isFinite(d.count) ? d.count : 0;
-        const dollars = Number.isFinite(d.dollars) ? d.dollars : 0;
         const top = Array.isArray(d.top) ? d.top.slice(0, MAX_TOP_AWARDS) : [];
 
         const rows = [
             `<div class="timeline-tooltip-month">${escapeHtml(formatIsoMonthLong(d.month))}</div>`,
-            tooltipRow(countLabel, String(count)),
-            tooltipRow(valueLabel, formatCurrency(dollars, true, 1))
+            tooltipRow(countLabel, String(count))
         ];
 
         if (top.length > 0) {

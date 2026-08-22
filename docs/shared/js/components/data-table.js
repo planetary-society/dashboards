@@ -109,6 +109,11 @@ export class DataTable {
                 processedCol.width = col.width;
             }
 
+            // Pass through Grid.js hidden columns (data carriers for formatters)
+            if (col.hidden) {
+                processedCol.hidden = true;
+            }
+
             // Add custom formatter
             if (col.formatter) {
                 processedCol.formatter = col.formatter;
@@ -130,12 +135,16 @@ export class DataTable {
                 };
             }
 
-            // Add data-column-id attribute for mobile card labels
-            // Merge with hideOnMobile class if needed
+            // Add data-column-id attribute for mobile card labels.
+            // hideOnMobile rides as a data attribute, NOT a class: a class
+            // set through Grid.js attributes collides with Grid.js's own
+            // className handling (which version-dependently clobbers one or
+            // the other), stripping gridjs-td styling from exactly those
+            // columns. A data attribute cannot collide.
             processedCol.attributes = (cell) => {
                 const attrs = { 'data-column-id': colId };
                 if (col.hideOnMobile) {
-                    attrs['class'] = 'hide-mobile';
+                    attrs['data-hide-mobile'] = '';
                 }
                 return attrs;
             };

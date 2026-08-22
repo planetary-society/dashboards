@@ -1,0 +1,219 @@
+/**
+ * Cancellations dashboard — panel-specific styles
+ *
+ * Page-local styles for the two-panel layout (Confirmed Cancellations /
+ * DOGE Claims). Shared component styles (cards, lens bar, value boxes,
+ * seg-bar layout) live in shared/css/components.css; this file adds only
+ * what those don't cover.
+ */
+
+/* --- Panel headline: the count next to the noun it counts --- */
+
+/* The .dashboard container has no horizontal padding — standalone text
+   blocks carry their own side margins, matching the lens bar's inset. */
+.panel-headline-block {
+  margin: var(--space-4, 1rem) var(--space-4, 1rem) var(--space-2, 0.5rem);
+}
+
+.panel-headline {
+  font-size: var(--text-xl, 1.25rem);
+  font-weight: 600;
+  color: var(--gray-800, #27272a);
+  margin: 0 0 0.25rem;
+}
+
+/* Prose notes share one treatment: body-size at AA contrast — never the
+   12px gray-400 footnote look, which fails WCAG and reads as fine print.
+   (.panel-note = disclosure lines; .freshness-bar = data date;
+   .outcome-lead = DOGE card lead; .fy-caption = chart qualifier;
+   .district-group-note = empty-state lines; .seg-definitions below.) */
+.panel-note,
+.freshness-bar,
+.outcome-lead,
+.fy-caption,
+.district-group-note {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--gray-600, #52525b);
+}
+
+.panel-note {
+  margin: 0;
+  max-width: 70ch;
+}
+
+/* --- Persistent freshness line --- */
+
+.freshness-bar {
+  margin: var(--space-2, 0.5rem) var(--space-4, 1rem) var(--space-4, 1rem);
+}
+
+/* The value-box caveat sits directly in the section, outside any card */
+#value-boxes-note {
+  margin: var(--space-2, 0.5rem) var(--space-4, 1rem) 0;
+}
+
+/* --- DOGE outcome card --- */
+
+.outcome-lead {
+  margin: 0 0 var(--space-3, 0.75rem);
+  max-width: 70ch;
+}
+
+/*
+ * Outcome ramp — validated red ordinal ramp, defined once for both the
+ * segmented bar and the table pills so the two can never drift.
+ *
+ * red-800/600/400 (#991B1B / #DC2626 / #F87171) passes all-pairs CVD
+ * separation and both themes (dataviz validate_palette.js). The light end's
+ * contrast WARN is relieved only because the legend prints counts and the
+ * panel table exists — if either is dropped this becomes a hard fail. Do
+ * not swap these values without re-running the validator.
+ */
+:root {
+  --outcome-strong: var(--red-800, #991b1b);
+  --outcome-mid: var(--red-600, #dc2626);
+  --outcome-weak: var(--red-400, #f87171);
+}
+
+.seg--outcome-strong {
+  background-color: var(--outcome-strong);
+}
+
+.seg--outcome-mid {
+  background-color: var(--outcome-mid);
+}
+
+.seg--outcome-weak {
+  background-color: var(--outcome-weak);
+}
+
+/* Visible definitions under the segment legend (no title-attribute-only
+   tooltips — they're dead on touch and invisible to keyboards). */
+.seg-definitions {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2, 0.5rem) 0 0;
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--gray-600, #52525b); /* same prose treatment as .panel-note */
+}
+
+.seg-definitions li {
+  margin: 0.15rem 0;
+}
+
+.seg-definitions .seg-term {
+  font-weight: 600;
+  color: var(--gray-700, #3f3f46);
+}
+
+/* --- Outcome pills (DOGE table) ---
+ * Meaning is carried by the text; the dot repeats the bar's ramp swatch so
+ * bar and badge share one palette. Ended and Active share the mid swatch
+ * (both mean "no termination found"); their text differentiates them.
+ */
+
+.outcome-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  white-space: nowrap;
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: 600;
+  color: var(--gray-700, #3f3f46);
+}
+
+.outcome-pill::before {
+  content: "";
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  flex: none;
+  background-color: var(--gray-400, #a1a1aa);
+}
+
+.outcome-pill--terminated::before {
+  background-color: var(--outcome-strong);
+}
+
+.outcome-pill--ended::before,
+.outcome-pill--active::before {
+  background-color: var(--outcome-mid);
+}
+
+.outcome-pill--unmatched::before {
+  background-color: var(--outcome-weak);
+}
+
+/* The 4 name-only unmatched claims: "Not found" is the row's loudest element */
+.outcome-pill--unmatched {
+  color: var(--gray-800, #27272a);
+}
+
+/* --- FY chart caption ---
+ * ABOVE the chart: the universe qualifier must be read before the bars, and
+ * survives partial screenshots better than a footnote below them would.
+ */
+.fy-caption {
+  margin: 0 0 var(--space-3, 0.75rem);
+  max-width: 80ch;
+}
+
+/* --- District page: one labelled group per dataset --- */
+
+.district-group {
+  margin: var(--space-5, 1.5rem) 0;
+}
+
+/* Card heading: h4 inside the flex header must not carry block margins */
+.award-card-header .award-recipient {
+  margin: 0;
+  font-size: var(--text-base, 1rem);
+}
+
+/* Muted second line of a stacked table cell (recipient location, status
+   date) and of a card heading */
+.cell-subline,
+.award-recipient-place {
+  color: var(--gray-500, #71717a);
+  font-size: var(--text-xs, 0.75rem);
+}
+
+/* The status badge's date sits on its own line below the pill */
+.gridjs-td .badge + .cell-subline {
+  display: block;
+  margin-top: 0.3rem;
+}
+
+.award-recipient-place {
+  margin: 0.1rem 0 0;
+}
+
+.district-group-heading {
+  font-size: var(--text-lg, 1.125rem);
+  font-weight: 600;
+  color: var(--gray-800, #27272a);
+  margin: 0 0 var(--space-2, 0.5rem);
+}
+
+.district-group-note {
+  margin: 0 0 var(--space-3, 0.75rem);
+}
+
+/* --- Map on mobile: shared layout.css hides .map-container below 1024px,
+       but this dashboard keeps a 300px map (zoom is disabled in JS) --- */
+
+@media (max-width: 1024px) {
+  .map-container {
+    display: block;
+    height: 300px;
+    min-height: 300px;
+  }
+}
+
+/* --- Mobile --- */
+
+@media (max-width: 768px) {
+  .panel-headline {
+    font-size: var(--text-lg, 1.125rem);
+  }
+}

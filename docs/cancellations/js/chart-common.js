@@ -1,14 +1,19 @@
 /**
  * Shared Chart Helpers
  *
- * The pieces the dashboard's D3 charts (timeline-chart.js, enddate-chart.js)
- * have in common: timezone-safe date-label formatting and the container-scoped
- * hover tooltip. Each chart keeps its own scales, marks, axes, and tooltip
- * *content*; only the machinery lives here. A full base class would be
- * over-abstraction — the render pipelines genuinely differ.
+ * The pieces the dashboard's D3 bar charts (timeline-chart.js, fy-chart.js)
+ * have in common: timezone-safe date-label formatting, the bar/axis geometry
+ * both charts compute identically, and the container-scoped hover tooltip.
+ * Each chart keeps its own scales, marks, axes, and tooltip *content*; only the
+ * machinery lives here. A full base class would be over-abstraction — the
+ * render pipelines genuinely differ.
  *
  * Formatters split date strings rather than handing them to `new Date`, whose
  * local-timezone parsing of date-only strings shifts them by a day.
+ *
+ * The geometry helpers are pure functions of numbers (plus a D3 scale for
+ * yTicks), so they carry no `d3` or `document` reference and this module stays
+ * importable in Node for wiring checks.
  */
 
 import { escapeHtml } from '../../shared/js/utils.js';
@@ -80,6 +85,107 @@ export function formatUtcMonthShort(date) {
     const year = String(date.getUTCFullYear());
 
     return `${MONTH_ABBR[date.getUTCMonth() + 1]} ’${year.slice(-2)}`;
+}
+
+/** Default minimum horizontal gap between bars, in px */
+export const MIN_BAR_GAP = 2;
+
+/** Default corner radius applied to the top of each bar, in px */
+export const BAR_RADIUS = 3;
+
+/**
+ * Build a path for a bar with only its top corners rounded
+ *
+ * Bars are paths, not rects: a plain rect's `rx` would round the baseline
+ * corners too, which detaches the bar from the axis.
+ *
+ * @param {number} x - Left edge
+ * @param {number} y - Top edge
+ * @param {number} width - Bar width
+ * @param {number} height - Bar height
+ * @param {number} [radius] - Requested corner radius in px, clamped to the bar
+ * @returns {string} SVG path data
+ */
+export function topRoundedPath(x, y, width, height, radius = BAR_RADIUS) {
+    const r = Math.max(0, Math.min(radius, width / 2, height));
+
+    return [
+        `M${x},${y + height}`,
+        `V${y + r}`,
+        `Q${x},${y} ${x + r},${y}`,
+        `H${x + width - r}`,
+        `Q${x + width},${y} ${x + width},${y + r}`,
+        `V${y + height}`,
+        'Z'
+    ].join(' ');
+}
+
+/**
+ * Band padding that keeps at least `minGap` px between bars
+ *
+ * Capped so dense views thin the bars rather than dissolving them.
+ *
+ * @param {number} innerWidth - Plot width in px
+ * @param {number} count - Number of bands
+ * @param {number} [minGap] - Minimum gap between bars in px
+ * @returns {number} paddingInner fraction
+ */
+export function barPadding(innerWidth, count, minGap = MIN_BAR_GAP) {
+    const step = innerWidth / Math.max(1, count);
+
+    return Math.max(0.15, Math.min(0.7, minGap / step));
+}
+
+/**
+ * Pick which bands get an x-axis label
+ *
+ * Labels are thinned to whatever the current width can fit without collisions;
+ * the first and last band are always labelled so the span is readable at any
+ * density. `minLabelSpace` is per chart, since it depends on how wide that
+ * chart's label text runs ('Feb ’25' needs more room than 'YYYY').
+ *
+ * @param {number} count - Number of bands
+ * @param {number} step - Band step in px
+ * @param {number} minLabelSpace - Minimum horizontal space one label needs, in px
+ * @returns {Array<number>} Ascending band indices to label
+ */
+export function labelIndices(count, step, minLabelSpace) {
+    if (count <= 1) return [0];
+
+    const every = Math.max(1, Math.ceil(minLabelSpace / Math.max(1, step)));
+    const indices = [];
+    for (let i = 0; i < count; i += every) {
+        indices.push(i);
+    }
+
+    const last = count - 1;
+    if (indices[indices.length - 1] !== last) {
+        // The final index always crowds the stride's tail: the gap is
+        // (count-1) mod every, necessarily < every. So the previous label
+        // is dropped unconditionally (when one exists) to make room.
+        if (indices.length > 1) {
+            indices.pop();
+        }
+        indices.push(last);
+    }
+
+    return indices;
+}
+
+/**
+ * Choose y-axis tick values, ~`count` of them
+ *
+ * Both charts plot whole things (actions, awards), so fractional ticks are
+ * dropped rather than formatted away.
+ *
+ * @param {Function} y - D3 linear y scale
+ * @param {number} [count] - Requested tick count
+ * @returns {Array<number>} Tick values
+ */
+export function yTicks(y, count = 4) {
+    const whole = [...new Set(y.ticks(count).filter(Number.isInteger))];
+
+    return whole.length > 0 ? whole : [0, Math.ceil(y.domain()[1])];
 }
 
 /**

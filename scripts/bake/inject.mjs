@@ -21,7 +21,22 @@
  * the same values produces byte-identical output.
  */
 
-import { escapeHtml } from '../../docs/shared/js/utils.js';
+import { escapeAttr, escapeHtml } from '../../docs/shared/js/utils.js';
+
+/**
+ * The description attributes kept in step, as [attribute, value] pairs
+ *
+ * All three carry the same sentence: a crawler reads the first, a shared link
+ * preview reads the other two, and three descriptions that disagree about the
+ * counts would be worse than none.
+ *
+ * @type {Array<[string, string]>}
+ */
+const DESCRIPTION_TAGS = [
+    ['name', 'description'],
+    ['property', 'og:description'],
+    ['name', 'twitter:description']
+];
 
 /** Matches an ISO calendar day, the only date shape the page's JSON-LD accepts */
 const ISO_DAY_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -93,6 +108,71 @@ export function injectMarker(html, name, text) {
     // Function replacement, never a replacement string: '$&' in an award
     // description would otherwise re-inject the matched markers.
     return html.replace(pairRe, (_match, open, close) => open + escapeHtml(text) + close);
+}
+
+/**
+ * Rewrite one `<meta>` tag's `content` attribute
+ *
+ * Matched by the tag's identifying attribute rather than by position, and
+ * rewritten in place so prettier's attribute wrapping survives the bake. The
+ * `[^>]*` spans are safe because the replacement is escaped: `escapeAttr` turns
+ * `>` into `&gt;`, so no injected value can close the tag early.
+ *
+ * @param {string} html - Full page HTML
+ * @param {string} attr - Identifying attribute, 'name' or 'property'
+ * @param {string} value - That attribute's value, e.g. 'og:description'
+ * @param {string} text - Plain text for the content attribute
+ * @returns {string} Rewritten HTML
+ * @throws {Error} When the tag is absent, duplicated, or carries no content attribute
+ */
+function setMetaContent(html, attr, value, text) {
+    const tagRe = new RegExp(
+        `<meta\\b[^>]*\\b${escapeRegExp(attr)}\\s*=\\s*"${escapeRegExp(value)}"[^>]*>`,
+        'gi'
+    );
+
+    const found = countMatches(html, tagRe);
+
+    if (found === 0) {
+        throw new Error(`no <meta ${attr}="${value}"> tag found in the document`);
+    }
+    if (found > 1) {
+        throw new Error(
+            `<meta ${attr}="${value}"> appears ${found} times; it must appear exactly once`
+        );
+    }
+
+    return html.replace(tagRe, (tag) => {
+        const contentRe = /(\bcontent\s*=\s*")[^"]*(")/i;
+
+        if (!contentRe.test(tag)) {
+            throw new Error(`<meta ${attr}="${value}"> carries no content attribute`);
+        }
+
+        // Function replacement, never a replacement string: a '$&' in the
+        // sentence would otherwise re-inject the matched tag.
+        return tag.replace(contentRe, (_match, prefix, suffix) => prefix + escapeAttr(text) + suffix);
+    });
+}
+
+/**
+ * Bake one sentence into all three of the page's description attributes
+ *
+ * The dashboard's figures are rendered by JavaScript, so this is the only place
+ * a crawler that never runs it reads a real count. A missing tag fails the job
+ * for the same reason a missing marker does: silently serving last quarter's
+ * description is worse than not deploying.
+ *
+ * @param {string} html - Full page HTML
+ * @param {string} text - Plain-text description
+ * @returns {string} Rewritten HTML
+ * @throws {Error} When any of the three tags is absent or duplicated
+ */
+export function setMetaDescription(html, text) {
+    return DESCRIPTION_TAGS.reduce(
+        (page, [attr, value]) => setMetaContent(page, attr, value, text),
+        html
+    );
 }
 
 /**

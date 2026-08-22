@@ -274,7 +274,7 @@ test('OUTCOME_META covers every outcome with bar and badge copy', () => {
         assert.ok(meta.label, `${outcome} label`);
         assert.ok(meta.short, `${outcome} short`);
         assert.ok(meta.description.endsWith('.'), `${outcome} description is a sentence`);
-        assert.ok(BAR_SEGMENTS.includes(meta.segment), `${outcome} rolls up into a real segment`);
+        assert.ok(BAR_SEGMENTS.includes(outcome), `${outcome} has its own bar segment`);
         assert.match(meta.badgeClass, /^badge--/, `${outcome} wears the shared badge family`);
     }
 });
@@ -286,18 +286,26 @@ test('only a termination on record wears the cancelled badge', () => {
     }
 });
 
-test('ended and active share a bar label but differ in the table', () => {
-    assert.equal(OUTCOME_META.ended.label, OUTCOME_META.active.label);
-    assert.equal(OUTCOME_META.ended.segment, OUTCOME_META.active.segment);
+test('ended and active are told apart everywhere they appear', () => {
+    // Both mean "no termination action on record", but which one happened is
+    // the point: one ran out its clock, the other is still running.
+    assert.notEqual(OUTCOME_META.ended.label, OUTCOME_META.active.label);
     assert.notEqual(OUTCOME_META.ended.short, OUTCOME_META.active.short);
+    assert.notEqual(OUTCOME_META.ended.description, OUTCOME_META.active.description);
+    assert.notEqual(SEGMENT_META.ended.segClass, SEGMENT_META.active.segClass);
 });
 
-test('SEGMENT_META covers the three bar segments with the red-ramp classes', () => {
+test('SEGMENT_META gives every outcome its own bar segment and swatch', () => {
     assert.deepEqual(Object.keys(SEGMENT_META).sort(), [...BAR_SEGMENTS].sort());
-    assert.deepEqual(
-        BAR_SEGMENTS.map((segment) => SEGMENT_META[segment].segClass),
-        ['seg--outcome-strong', 'seg--outcome-mid', 'seg--outcome-weak']
-    );
+
+    const classes = BAR_SEGMENTS.map((segment) => SEGMENT_META[segment].segClass);
+
+    assert.equal(new Set(classes).size, classes.length, 'no two segments share a swatch');
+    for (const segClass of classes) assert.match(segClass, /^seg--outcome-/);
+
+    // Unmatched closes the bar in neutral gray: missing evidence, not weaker
+    // evidence, and a fourth red step would not stay apart from the third.
+    assert.equal(SEGMENT_META.unmatched.segClass, 'seg--outcome-none');
 
     for (const segment of BAR_SEGMENTS) {
         assert.ok(SEGMENT_META[segment].label, `${segment} label`);
@@ -309,7 +317,7 @@ test('SEGMENT_META covers the three bar segments with the red-ramp classes', () 
 // outcomeMix
 // ---------------------------------------------------------------------------
 
-test('outcomeMix collapses ended and active into one segment', () => {
+test('outcomeMix keeps expired and still-active apart', () => {
     const { rows } = normalizeDogeClaims([
         dogeClaimRow({ has_explicit_termination: 'true' }),
         dogeClaimRow({ has_explicit_termination: 'false', current_end_date: '2025-01-01' }),
@@ -317,17 +325,20 @@ test('outcomeMix collapses ended and active into one segment', () => {
         dogeClaimRow({ usaspending_found: 'false', has_explicit_termination: 'false' })
     ]);
 
-    assert.deepEqual(outcomeMix(rows), { terminated: 1, noTermination: 2, unmatched: 1 });
+    assert.deepEqual(outcomeMix(rows), { terminated: 1, ended: 1, active: 1, unmatched: 1 });
 });
 
 test('outcomeMix zero-fills every segment', () => {
     for (const rows of [[], null, undefined]) {
-        assert.deepEqual(outcomeMix(rows), { terminated: 0, noTermination: 0, unmatched: 0 });
+        assert.deepEqual(outcomeMix(rows), { terminated: 0, ended: 0, active: 0, unmatched: 0 });
     }
 });
 
 test('outcomeMix derives outcomes for un-normalized rows', () => {
-    assert.deepEqual(outcomeMix([dogeClaimRow()]), { terminated: 1, noTermination: 0, unmatched: 0 });
+    assert.deepEqual(
+        outcomeMix([dogeClaimRow()]),
+        { terminated: 1, ended: 0, active: 0, unmatched: 0 }
+    );
 });
 
 // ---------------------------------------------------------------------------
@@ -348,11 +359,40 @@ test('dogeStats summarizes claims, savings and outcomes', () => {
         claimedSavings: 1349.5,
         claimedOnActive: 250.5,
         noFigureCount: 2,
+        // The terminated row and the expired row; the still-active row and both
+        // unmatched rows contribute nothing. Each fixture award has a $2,000,000
+        // ceiling against $149,834.25 obligated.
+        calculatedSavings: 3_700_331.5,
+        calculatedSavingsCount: 2,
         terminated: 1,
         unmatched: 2,
         expiredButTerminated: 0,
         checkedDate: '2026-08-20'
     });
+});
+
+test('dogeStats counts no calculated savings for an award still running', () => {
+    const { rows } = normalizeDogeClaims([
+        dogeClaimRow({ has_explicit_termination: 'false', current_end_date: '2030-01-01' })
+    ]);
+
+    const stats = dogeStats(rows);
+
+    assert.equal(stats.calculatedSavings, 0);
+    assert.equal(stats.calculatedSavingsCount, 0);
+});
+
+test('dogeStats skips a claim missing either figure it would subtract', () => {
+    const { rows } = normalizeDogeClaims([
+        dogeClaimRow({ total_potential_value: '' }),
+        dogeClaimRow({ current_obligation: '' }),
+        dogeClaimRow()
+    ]);
+
+    const stats = dogeStats(rows);
+
+    assert.equal(stats.calculatedSavingsCount, 1, 'only the complete row is counted');
+    assert.ok(stats.calculatedSavings > 0);
 });
 
 test('dogeStats counts DOGE-"Expired" claims whose record shows a termination', () => {
@@ -396,6 +436,8 @@ test('dogeStats returns zeros for an empty set', () => {
         claimedSavings: 0,
         claimedOnActive: 0,
         noFigureCount: 0,
+        calculatedSavings: 0,
+        calculatedSavingsCount: 0,
         terminated: 0,
         unmatched: 0,
         expiredButTerminated: 0,
@@ -487,18 +529,19 @@ test('live doge_claims.csv partitions cleanly across the four outcomes', () => {
     );
 });
 
-test('live doge_claims.csv aggregates into the 3-segment bar without losing a row', () => {
-    // 2026-08-21: 89 terminated / 19 noTermination / 4 unmatched
+test('live doge_claims.csv fills the bar without losing or double-counting a row', () => {
+    // 2026-08-21: 89 terminated / 11 expired / 8 still active / 4 unmatched
     const mix = outcomeMix(live.rows);
     const partition = Object.fromEntries(OUTCOME_ORDER.map((outcome) => [outcome, 0]));
     for (const row of live.rows) partition[row._outcome]++;
 
-    assert.equal(mix.terminated + mix.noTermination + mix.unmatched, live.rows.length);
+    assert.equal(
+        BAR_SEGMENTS.reduce((sum, segment) => sum + mix[segment], 0),
+        live.rows.length
+    );
 
-    // The bar is a strict roll-up of the outcome partition
-    assert.equal(mix.terminated, partition.terminated);
-    assert.equal(mix.noTermination, partition.ended + partition.active);
-    assert.equal(mix.unmatched, partition.unmatched);
+    // The bar is the outcome partition, segment for segment
+    assert.deepEqual(mix, partition);
 });
 
 test('live doge_claims.csv stats stay internally consistent', () => {
@@ -524,14 +567,6 @@ test('live doge_claims.csv rolls both blank and zero savings into noFigureCount'
     const zero = live.rows.filter((row) => row._savings === 0).length;
 
     assert.equal(blank + zero, liveStats.noFigureCount);
-});
-
-test('live doge_claims.csv carries one file-wide checked_date', () => {
-    // 2026-08-21: every row reads '2026-08-20'
-    const dates = new Set(liveRaw.map((row) => row.checked_date));
-
-    assert.equal(dates.size, 1, `checked_date values: ${[...dates].join(', ')}`);
-    assert.match([...dates][0], /^\d{4}-\d{2}-\d{2}$/);
 });
 
 test('live doge_claims.csv normalizes every DOGE status to a printable label', () => {

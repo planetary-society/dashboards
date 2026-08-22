@@ -129,7 +129,7 @@ export const DATA_URLS = {
     states: '../data/gz_2010_us_040_00_5m.json',
     terminations: '../data/cancellations/terminations.csv',
     dogeClaims: '../data/cancellations/doge_claims.csv',
-    fyActions: '../data/cancellations/cancellations_for_convenience_actions_by_fiscal_year.csv',
+    fyAwards: '../data/cancellations/cancellations_for_convenience_awards_by_fiscal_year.csv',
     // NASA Science spending data
     scienceDistrict: '../data/science/NASA-district-Science-summary.csv',
     scienceState: '../data/science/NASA-state-Science-summary.csv'

@@ -16,7 +16,7 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { injectMarker, setJsonLdDateModified } from '../scripts/bake/inject.mjs';
+import { injectMarker, setJsonLdDateModified, setMetaDescription } from '../scripts/bake/inject.mjs';
 import {
     SITE_BASE,
     renderDistrictPage,
@@ -26,7 +26,7 @@ import {
 import { districtOf, placeLine } from '../docs/cancellations/js/panel-common.js';
 import { normalizeTerminations, overrideMeta } from '../docs/cancellations/js/terminations.js';
 import { OUTCOME_META, normalizeDogeClaims } from '../docs/cancellations/js/doge-claims.js';
-import { districtEmptyNote } from '../docs/cancellations/js/panel-views.js';
+import { districtEmptyNote, metaDescription } from '../docs/cancellations/js/panel-views.js';
 import { dogeClaimRow, loadCsv, terminationRow } from './fixtures.mjs';
 
 const TERMINATIONS_PATH = 'docs/data/cancellations/terminations.csv';
@@ -95,18 +95,20 @@ test('injectMarker escapes markup characters in the injected text', () => {
 });
 
 test('injectMarker replaces multi-line reformatted content', () => {
+    // Prettier reflows the deployed page, so a marker pair can land on its own
+    // lines with the old text indented between them.
     const reflowed = [
-        '<span class="panel-headline">',
-        '  <!-- bake:headline -->',
-        '  172 NASA awards terminated since January 2025',
-        '  <!-- /bake:headline -->',
+        '<span class="freshness-bar">',
+        '  <!-- bake:last-updated -->',
+        '  August 20, 2026',
+        '  <!-- /bake:last-updated -->',
         '</span>'
     ].join('\n');
 
-    const output = injectMarker(reflowed, 'headline', 'new copy');
+    const output = injectMarker(reflowed, 'last-updated', 'new copy');
 
-    assert.ok(output.includes('<!-- bake:headline -->new copy<!-- /bake:headline -->'));
-    assert.ok(!output.includes('172 NASA awards'));
+    assert.ok(output.includes('<!-- bake:last-updated -->new copy<!-- /bake:last-updated -->'));
+    assert.ok(!output.includes('August 20, 2026'));
 });
 
 test('injectMarker tolerates extra whitespace inside the comment delimiters', () => {
@@ -117,8 +119,8 @@ test('injectMarker tolerates extra whitespace inside the comment delimiters', ()
 
 test('injectMarker throws, naming the marker, when the pair is absent', () => {
     assert.throws(
-        () => injectMarker('<p>no markers here</p>', 'panel-note', 'text'),
-        /bake:panel-note/
+        () => injectMarker('<p>no markers here</p>', 'missing-marker', 'text'),
+        /bake:missing-marker/
     );
 });
 
@@ -140,6 +142,155 @@ test('injectMarker does not treat $& in the text as a replacement pattern', () =
     const output = injectMarker(page(''), 'headline', 'cost $& rising');
 
     assert.ok(output.includes('cost $&amp; rising'));
+});
+
+// --- setMetaDescription ------------------------------------------------------
+
+/** The three description tags, as the deployed page writes them */
+const DESCRIPTION_HEAD = [
+    '<meta name="description" content="old copy" />',
+    '<meta property="og:description" content="old copy" />',
+    '<meta name="twitter:description" content="old copy" />'
+].join('\n');
+
+/**
+ * Every content attribute value in a fragment
+ * @param {string} html - Markup
+ * @returns {string[]} Attribute values
+ */
+function contentValues(html) {
+    return [...html.matchAll(/content="([^"]*)"/g)].map((match) => match[1]);
+}
+
+test('setMetaDescription rewrites all three description tags together', () => {
+    const output = setMetaDescription(DESCRIPTION_HEAD, '172 awards terminated');
+
+    assert.deepEqual(contentValues(output), [
+        '172 awards terminated',
+        '172 awards terminated',
+        '172 awards terminated'
+    ]);
+});
+
+test('setMetaDescription leaves the identifying attributes untouched', () => {
+    const output = setMetaDescription(DESCRIPTION_HEAD, 'new copy');
+
+    assert.ok(output.includes('name="description"'));
+    assert.ok(output.includes('property="og:description"'));
+    assert.ok(output.includes('name="twitter:description"'));
+});
+
+test('setMetaDescription is idempotent', () => {
+    const once = setMetaDescription(DESCRIPTION_HEAD, 'same copy');
+
+    assert.equal(setMetaDescription(once, 'same copy'), once);
+});
+
+test('setMetaDescription survives prettier wrapping the attributes across lines', () => {
+    const reflowed = [
+        '<meta',
+        '  name="description"',
+        '  content="old copy"',
+        '/>',
+        '<meta property="og:description" content="old copy" />',
+        '<meta name="twitter:description" content="old copy" />'
+    ].join('\n');
+
+    const output = setMetaDescription(reflowed, 'new copy');
+
+    assert.deepEqual(contentValues(output), ['new copy', 'new copy', 'new copy']);
+});
+
+test('setMetaDescription escapes a value that would otherwise close the tag', () => {
+    const output = setMetaDescription(DESCRIPTION_HEAD, 'DOGE\'s "savings" > $1B & rising');
+
+    assert.ok(!output.includes('"savings"'), output);
+    assert.ok(output.includes('&quot;savings&quot;'), output);
+    assert.ok(output.includes('&gt;'), output);
+    // Still exactly three tags — nothing was closed early
+    assert.equal(contentValues(output).length, 3);
+});
+
+test('setMetaDescription does not treat $& in the text as a replacement pattern', () => {
+    const output = setMetaDescription(DESCRIPTION_HEAD, 'cost $& rising');
+
+    assert.ok(output.includes('cost $&amp; rising'));
+});
+
+test('setMetaDescription throws, naming the tag, when one is missing', () => {
+    const missingTwitter = [
+        '<meta name="description" content="x" />',
+        '<meta property="og:description" content="x" />'
+    ].join('\n');
+
+    assert.throws(() => setMetaDescription(missingTwitter, 'y'), /twitter:description/);
+    assert.throws(() => setMetaDescription('<p>nothing here</p>', 'y'), /name="description"/);
+});
+
+test('setMetaDescription throws when a description tag is duplicated', () => {
+    const doubled = `${DESCRIPTION_HEAD}\n<meta name="description" content="again" />`;
+
+    assert.throws(() => setMetaDescription(doubled, 'y'), /exactly once/);
+});
+
+test('setMetaDescription throws when the tag carries no content attribute', () => {
+    const contentless = [
+        '<meta name="description" />',
+        '<meta property="og:description" content="x" />',
+        '<meta name="twitter:description" content="x" />'
+    ].join('\n');
+
+    assert.throws(() => setMetaDescription(contentless, 'y'), /content attribute/);
+});
+
+// --- metaDescription ---------------------------------------------------------
+
+/**
+ * Stats pair shaped like the bake's inputs
+ * @param {Object} [terminations] - terminationStats overrides
+ * @param {Object} [claims] - dogeStats overrides
+ * @returns {string} Description sentence
+ */
+function description(terminations = {}, claims = {}) {
+    return metaDescription(
+        { confirmed: 172, totalPotential: 2_871_000_000, districts: 76, ...terminations },
+        { count: 112, ...claims }
+    );
+}
+
+test('metaDescription leads with the counts a crawler cannot get from the page', () => {
+    const text = description();
+
+    assert.ok(text.startsWith('172'), text);
+    assert.ok(text.includes('$2.9B'), text);
+    assert.ok(text.includes('76'), text);
+    assert.ok(text.includes('112'), text);
+});
+
+test('metaDescription stays inside the length a search result will show', () => {
+    // Past ~160 characters the tail is truncated mid-clause, which reads worse
+    // than a shorter sentence. Checked at implausibly large figures too, since
+    // digits are the part that grows with the data.
+    for (const text of [description(), description({ confirmed: 12_345, districts: 435 }, { count: 9_999 })]) {
+        assert.ok(text.length <= 160, `${text.length} chars: ${text}`);
+    }
+});
+
+test('metaDescription drops the dollar clause rather than inventing a figure', () => {
+    const text = description({ totalPotential: null, districts: null });
+
+    assert.ok(text.startsWith('172'), text);
+    assert.ok(text.includes('112'), text);
+    assert.ok(!text.includes('$'), text);
+    assert.ok(!/\bnull\b|NaN|undefined/.test(text), text);
+});
+
+test('metaDescription pluralizes rather than printing a bare "1 districts"', () => {
+    const text = description({ confirmed: 1, districts: 1 }, { count: 1 });
+
+    assert.ok(!/\b1 districts\b/.test(text), text);
+    assert.ok(!/\b1 claims\b/.test(text), text);
+    assert.ok(!/\b1 awards\b/.test(text), text);
 });
 
 // --- setJsonLdDateModified --------------------------------------------------
@@ -398,38 +549,80 @@ test('renderSitemap is well-formed and carries no unescaped ampersands', () => {
 // --- placeLine --------------------------------------------------------------
 
 test('placeLine renders city and state uppercased', () => {
-    assert.equal(placeLine({ recipient_city: 'Mountain View', recipient_state: 'ca' }), 'MOUNTAIN VIEW, CA');
+    assert.equal(placeLine({ pop_city: 'Mountain View', pop_state: 'ca' }), 'MOUNTAIN VIEW, CA');
+});
+
+test('placeLine prefers place of performance over the recipient address', () => {
+    const row = {
+        pop_city: 'Huntsville',
+        pop_state: 'AL',
+        recipient_city: 'Mountain View',
+        recipient_state: 'CA'
+    };
+
+    assert.equal(placeLine(row), 'HUNTSVILLE, AL');
+});
+
+test('placeLine falls back to the recipient address when no place of performance is given', () => {
+    const row = { pop_city: '', pop_state: '', recipient_city: 'Houston', recipient_state: 'TX' };
+
+    assert.equal(placeLine(row), 'HOUSTON, TX');
+});
+
+test('placeLine never pairs a city from one address with a state from the other', () => {
+    // A pop state with no pop city keeps the state alone; borrowing the
+    // recipient's city could place it in a state it does not sit in.
+    const row = { pop_city: '', pop_state: 'VA', recipient_city: 'Houston', recipient_state: 'TX' };
+
+    assert.equal(placeLine(row), 'VA');
 });
 
 test('placeLine drops the missing half rather than emitting a stray comma', () => {
-    assert.equal(placeLine({ recipient_city: '', recipient_state: 'CA' }), 'CA');
-    assert.equal(placeLine({ recipient_city: 'HOUSTON', recipient_state: '' }), 'HOUSTON');
+    assert.equal(placeLine({ pop_city: '', pop_state: 'CA' }), 'CA');
+    assert.equal(placeLine({ pop_city: 'HOUSTON', pop_state: '' }), 'HOUSTON');
     assert.equal(placeLine({}), '');
+    assert.equal(placeLine(undefined), '');
 });
 
 // --- live-file smoke --------------------------------------------------------
+//
+// Both files are read and normalized once for the whole suite, and each row's
+// district is resolved once into `byDistrict` — the same single grouping pass
+// the bake itself makes, rather than a filter per district code.
+
+const liveTerminations = normalizeTerminations(loadCsv(TERMINATIONS_PATH)).rows;
+const liveClaims = normalizeDogeClaims(loadCsv(DOGE_PATH)).rows;
+
+/** District code → {terminations, claims} rows, built in one pass over each file */
+const byDistrict = new Map();
+
+/**
+ * Add a row to its district's bucket
+ * @param {string} code - District code, or '' to skip the row
+ * @param {'terminations'|'claims'} key - Which list the row belongs to
+ * @param {Object} row - Normalized row
+ */
+function bucket(code, key, row) {
+    if (!code) return;
+    if (!byDistrict.has(code)) byDistrict.set(code, { terminations: [], claims: [] });
+    byDistrict.get(code)[key].push(row);
+}
+
+for (const row of liveTerminations) bucket(row._district, 'terminations', row);
+for (const row of liveClaims) bucket(districtOf(row), 'claims', row);
 
 test('renderDistrictPage builds the busiest live district without throwing', () => {
-    const terminations = normalizeTerminations(loadCsv(TERMINATIONS_PATH)).rows;
-    const claims = normalizeDogeClaims(loadCsv(DOGE_PATH)).rows;
+    assert.ok(byDistrict.size > 0, 'live files carry no districts');
 
-    const byDistrict = new Map();
-    for (const row of terminations) {
-        const code = row._district;
-        if (code) byDistrict.set(code, (byDistrict.get(code) || 0) + 1);
-    }
-
-    assert.ok(byDistrict.size > 0, 'live terminations carry no districts');
-
-    // Deterministic pick: most rows, ties broken by code.
-    const [code] = [...byDistrict.entries()].sort(
-        (a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1)
+    // Deterministic pick: most termination rows, ties broken by code.
+    const [code, rows] = [...byDistrict.entries()].sort(
+        (a, b) => b[1].terminations.length - a[1].terminations.length || (a[0] < b[0] ? -1 : 1)
     )[0];
 
     const html = renderDistrictPage({
         code,
-        terminationRows: terminations.filter((row) => row._district === code),
-        dogeRows: claims.filter((row) => districtOf(row) === code),
+        terminationRows: rows.terminations,
+        dogeRows: rows.claims,
         lastUpdated: '2026-08-20'
     });
 
@@ -440,20 +633,12 @@ test('renderDistrictPage builds the busiest live district without throwing', () 
 });
 
 test('renderDistrictsIndex and renderSitemap cover every live district', () => {
-    const terminations = normalizeTerminations(loadCsv(TERMINATIONS_PATH)).rows;
-    const claims = normalizeDogeClaims(loadCsv(DOGE_PATH)).rows;
+    const codes = new Set(byDistrict.keys());
 
-    const codes = new Set();
-    for (const row of terminations) if (row._district) codes.add(row._district);
-    for (const row of claims) {
-        const code = districtOf(row);
-        if (code) codes.add(code);
-    }
-
-    const entries = [...codes].map((code) => ({
+    const entries = [...byDistrict].map(([code, rows]) => ({
         code,
-        terminations: terminations.filter((row) => row._district === code).length,
-        claims: claims.filter((row) => districtOf(row) === code).length
+        terminations: rows.terminations.length,
+        claims: rows.claims.length
     }));
 
     const html = renderDistrictsIndex(entries, '2026-08-20');

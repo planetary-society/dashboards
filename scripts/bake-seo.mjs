@@ -4,11 +4,11 @@
  * Run daily by .github/workflows/daily-dashboard-update.yml (and locally via
  * `node scripts/bake-seo.mjs`). Three outputs:
  *
- *   1. docs/cancellations/index.html — the headline facts (count sentence,
- *      disclosure note, data date, DOGE outcome lead, FY denominator) injected
- *      between `<!-- bake:* -->` marker pairs, so crawlers that never execute
- *      JavaScript still see the numbers. app.js re-renders identical strings
- *      into the same containers at load.
+ *   1. docs/cancellations/index.html — the data date (between a `<!-- bake:* -->`
+ *      marker pair), the JSON-LD dateModified, and the description/og/twitter
+ *      attributes, which carry the day's headline figures. The page renders its
+ *      numbers with JavaScript, so those attributes are where a crawler that
+ *      never executes it reads a real count.
  *   2. docs/cancellations/districts/ — one static page per congressional
  *      district appearing in either dataset, plus an index. Deleted and
  *      rebuilt from scratch every run.
@@ -28,12 +28,12 @@
 import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-import { escapeHtml, formatCount, groupBy, parseCSV } from '../docs/shared/js/utils.js';
-import { normalizeTerminations, terminationIdSet, terminationStats } from '../docs/cancellations/js/terminations.js';
-import { dogeStats, normalizeDogeClaims, overlapWithTerminations } from '../docs/cancellations/js/doge-claims.js';
-import { outcomeLead, panelHeadline, panelNote } from '../docs/cancellations/js/panel-views.js';
+import { escapeHtml, groupBy, parseCSV } from '../docs/shared/js/utils.js';
+import { normalizeTerminations, terminationStats } from '../docs/cancellations/js/terminations.js';
+import { dogeStats, normalizeDogeClaims } from '../docs/cancellations/js/doge-claims.js';
 import { formatIsoDayLong } from '../docs/cancellations/js/chart-common.js';
-import { injectMarker, setJsonLdDateModified } from './bake/inject.mjs';
+import { metaDescription } from '../docs/cancellations/js/panel-views.js';
+import { injectMarker, setJsonLdDateModified, setMetaDescription } from './bake/inject.mjs';
 import { SITE_TITLE, renderDistrictPage, renderDistrictsIndex, renderSitemap } from './bake/templates.mjs';
 
 const repoRoot = fileURLToPath(new URL('..', import.meta.url));
@@ -98,8 +98,6 @@ if (terminations.rows.length === 0 || doge.rows.length === 0) {
 const tStats = terminationStats(terminations.rows, terminations.columns);
 const dStats = dogeStats(doge.rows);
 
-const overlap = overlapWithTerminations(doge.rows, terminationIdSet(terminations.rows));
-
 // --- Inject index.html ---------------------------------------------------
 
 const indexPath = path('docs/cancellations/index.html');
@@ -114,15 +112,12 @@ if (!html.includes(escapeHtml(SITE_TITLE))) {
     );
 }
 
-html = injectMarker(html, 'headline', panelHeadline('cancellations', tStats));
-html = injectMarker(html, 'panel-note', panelNote('cancellations', tStats, overlap));
 html = injectMarker(html, 'last-updated', formatIsoDayLong(lastUpdated));
-html = injectMarker(html, 'outcome-lead', outcomeLead(dStats));
-html = injectMarker(html, 'fy-denominator', formatCount(terminations.rows.length));
+html = setMetaDescription(html, metaDescription(tStats, dStats));
 html = setJsonLdDateModified(html, lastUpdated);
 
 writeFileSync(indexPath, html);
-console.log(`index.html: baked headline for ${tStats.confirmed} confirmed / ${dStats.count} claims, data date ${lastUpdated}`);
+console.log(`index.html: ${terminations.rows.length} terminations / ${doge.rows.length} claims, data date ${lastUpdated}`);
 
 // --- District pages ------------------------------------------------------
 

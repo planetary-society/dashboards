@@ -5,6 +5,7 @@
  */
 
 import { ICONS } from '../constants.js';
+import { escapeAttr } from '../utils.js';
 
 export class ValueBox {
     /**
@@ -15,6 +16,7 @@ export class ValueBox {
      * @param {string|number} boxes[].value - Box value to display
      * @param {string} boxes[].icon - Bootstrap Icon name (optional)
      * @param {string} boxes[].type - Box type for accent color (contracts, value, recipients, districts)
+     * @param {string} [boxes[].note] - Caveat revealed on hover/focus behind a ?-in-a-circle (optional)
      */
     static render(containerId, boxes) {
         const container = document.getElementById(containerId);
@@ -40,6 +42,19 @@ export class ValueBox {
             </div>
         ` : '';
 
+        // Optional caveat, revealed on hover/focus behind a ?-in-a-circle.
+        // Focusable so keyboards reach it; the text also rides aria-label so
+        // screen readers get it without the visual tooltip.
+        const tip = box.note ? escapeAttr(box.note) : '';
+        const helpHtml = tip ? `
+            <span
+                class="value-box-help"
+                tabindex="0"
+                data-tip="${tip}"
+                aria-label="${tip}"
+            ><i class="bi bi-question-circle" aria-hidden="true"></i></span>
+        ` : '';
+
         // Determine the accent class based on type
         const typeClass = box.type ? `value-box--${box.type}` : '';
 
@@ -48,7 +63,7 @@ export class ValueBox {
                 ${iconHtml}
                 <div class="value-box-content">
                     <div class="value-box-value">${box.value}</div>
-                    <div class="value-box-title">${box.title}</div>
+                    <div class="value-box-title">${box.title}${helpHtml}</div>
                 </div>
             </div>
         `;

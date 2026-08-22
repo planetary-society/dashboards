@@ -6,18 +6,19 @@
  * reads, no fetches — so everything here is importable and testable in Node.
  * app.js owns the DOM; this module owns what the panels say.
  *
- * Editorial rules encoded here (from the 2026-08 review):
- *  - Counts sit next to the noun they count, in the panel headline — never in
- *    the panel-bar tab labels, where a screenshot would show addable numbers.
- *  - The cross-panel overlap is stated in the DOGE panel's own headline area.
+ * Editorial rules encoded here (from the 2026-08 review, trimmed in the
+ * copy declutter):
+ *  - Counts live in the value boxes — never in the panel-bar tab labels,
+ *    where a screenshot would show addable numbers. panelHeadline() survives
+ *    as the screen-reader panel announcement.
+ *  - Per-figure caveats ride their value box as a hover/focus note.
  *  - DOGE's claimed-savings total is never rendered without its caveats.
  *  - Segment definitions are visible text, not title-attribute tooltips.
  */
 
-import { formatCurrency, escapeHtml, escapeAttr, pluralCount } from '../../shared/js/utils.js';
+import { formatCount, formatCurrency, escapeHtml, escapeAttr, pluralCount } from '../../shared/js/utils.js';
 import { ICONS, DATA_URLS } from '../../shared/js/constants.js';
 import { MISSING, placeLine, usaspendingUrl } from './panel-common.js';
-import { formatIsoDayLong } from './chart-common.js';
 import { overrideMeta } from './terminations.js';
 import { BAR_SEGMENTS, OUTCOME_META, SEGMENT_META } from './doge-claims.js';
 
@@ -32,23 +33,27 @@ export const PANEL_META = {
         label: 'Confirmed Cancellations',
         unitLabel: 'Awards',
         downloadUrl: DATA_URLS.terminations,
-        tableHeading: 'Every termination action in the federal record',
+        tableHeading: '',
         hasMap: true
     },
     doge: {
         label: 'DOGE Claims',
         unitLabel: 'Claims',
         downloadUrl: DATA_URLS.dogeClaims,
-        tableHeading: 'Every award cancellation DOGE claimed',
+        tableHeading: 'Award terminations claimed by DOGE.',
         hasMap: false
     }
 };
 
 /**
- * Panel headline: the count beside the noun it counts
+ * One-sentence panel summary: the count beside the noun it counts
+ *
+ * No longer rendered as a visible heading (the value boxes carry the counts);
+ * app.js uses it for the screen-reader announcement on panel switches.
+ *
  * @param {'cancellations'|'doge'} panelId - Active panel
  * @param {Object} stats - That panel's stats object
- * @returns {string} Plain-text headline
+ * @returns {string} Plain-text summary
  */
 export function panelHeadline(panelId, stats) {
     if (panelId === 'doge') {
@@ -58,85 +63,87 @@ export function panelHeadline(panelId, stats) {
 }
 
 /**
- * Panel disclosure line, rendered directly under the headline
+ * The page's meta description — the one place a crawler reads real figures
  *
- * Confirmed: the partial-action split, so the headline number and the table's
- * badges can never contradict each other. DOGE: the overlap with the confirmed
- * panel plus the historical framing — stated here, next to the count it
- * qualifies, where a screenshot cannot crop it away.
+ * The dashboard's numbers are rendered by JavaScript, so a crawler that never
+ * executes it sees no counts on the page itself. This sentence is baked into
+ * the description/og:description/twitter:description attributes, which is why
+ * it leads with the figures rather than describing the tool.
  *
- * @param {'cancellations'|'doge'} panelId - Active panel
- * @param {Object} stats - That panel's stats object
- * @param {number} [overlap] - Claims shared with the confirmed panel, computed at load
- * @returns {string} Plain-text note ('' when nothing needs disclosing)
+ * Kept under ~160 characters: search results truncate past that, and a sentence
+ * cut mid-clause reads as neglect. The freshness signal is deliberately left
+ * out — JSON-LD carries `dateModified`, and a date here would cost a quarter of
+ * the budget to say what the structured data already says.
+ *
+ * Built from `panelHeadline` so the crawler's first clause and the screen
+ * reader's panel announcement can never state different counts.
+ *
+ * @param {Object} terminations - terminationStats() result
+ * @param {Object} claims - dogeStats() result
+ * @returns {string} Plain-text description
  */
-export function panelNote(panelId, stats, overlap) {
-    if (panelId === 'doge') {
-        const parts = [];
-        if (Number.isFinite(overlap)) {
-            parts.push(`${overlap} of these ${stats.count} claims also appear under Confirmed Cancellations — the two panels overlap and must not be added together.`);
-        }
-        parts.push('DOGE is no longer active; this panel is a historical record of its claims and their outcomes.');
-        return parts.join(' ');
+export function metaDescription(terminations, claims) {
+    const clauses = [panelHeadline('cancellations', terminations)];
+
+    if (Number.isFinite(terminations.totalPotential) && Number.isFinite(terminations.districts)) {
+        clauses.push(
+            `${formatCurrency(terminations.totalPotential)} across `
+            + `${pluralCount(terminations.districts, 'congressional district')}`
+        );
     }
 
-    if (stats.partials > 0) {
-        // Breakdown comes from the data, never hardcoded — the split changes
-        // as upstream reclassifies awards.
-        const kinds = [];
-        if (stats.descoped > 0) kinds.push(`${stats.descoped} descoped`);
-        if (stats.closedOut > 0) kinds.push(`${stats.closedOut} closed out`);
-        const breakdown = kinds.length ? ` (${kinds.join(', ')})` : '';
-
-        return `Plus ${pluralCount(stats.partials, 'partial action')}${breakdown}, listed in the table with their own labels and excluded from the totals above.`;
-    }
-    return '';
+    return `${clauses.join(' — ')}, plus `
+        + `${pluralCount(claims.count, 'DOGE claim')} checked against the federal record.`;
 }
 
 /**
  * Value boxes for a panel — only boxes whose data exists
  *
- * A box with nothing to say is omitted rather than rendered as a dash: one
- * honest sentence under the row (see valueBoxNote) beats a grid of blanks.
+ * A box with nothing to say is omitted rather than rendered as a dash. Caveats
+ * a figure cannot stand without ride the box itself as a hover/focus note (see
+ * `note` in value-box.js), never a separate line the eye has to pair back up
+ * with the number it qualifies.
  *
  * @param {'cancellations'|'doge'} panelId - Active panel
  * @param {Object} stats - That panel's stats object
- * @returns {Array<{title: string, value: string, icon: string, type: string}>}
+ * @returns {Array<{title: string, value: string, icon: string, type: string, note?: string}>}
  */
 export function createPanelValueBoxes(panelId, stats) {
     if (panelId === 'doge') {
         return [
             {
-                title: 'Claims made',
-                value: stats.count.toLocaleString(),
+                title: 'Terminations claimed by DOGE',
+                value: formatCount(stats.count),
                 icon: ICONS.contracts,
                 type: 'contracts'
             },
             {
-                title: 'Savings claimed by DOGE',
+                title: 'In savings claimed by DOGE',
                 value: formatCurrency(stats.claimedSavings),
                 icon: 'piggy-bank',
-                type: 'value'
+                type: 'value',
+                note: claimedSavingsNote(stats)
             },
             {
-                title: 'Terminations found in federal records',
-                value: stats.terminated.toLocaleString(),
+                title: 'Terminations confirmed in federal records',
+                value: formatCount(stats.terminated),
                 icon: 'file-earmark-check',
                 type: 'recipients'
             },
             {
-                title: 'Not found in federal records',
-                value: stats.unmatched.toLocaleString(),
-                icon: 'question-circle',
-                type: 'districts'
+                title: 'Calculated savings from confirmed terminations',
+                value: formatCurrency(stats.calculatedSavings),
+                icon: 'scissors',
+                type: 'districts',
+                note: calculatedSavingsNote(stats)
             }
         ];
     }
 
     const boxes = [
         {
-            title: 'Awards terminated',
-            value: stats.confirmed.toLocaleString(),
+            title: 'Awards terminated since Jan 2025',
+            value: formatCount(stats.confirmed),
             icon: ICONS.contracts,
             type: 'contracts'
         }
@@ -144,26 +151,37 @@ export function createPanelValueBoxes(panelId, stats) {
 
     // Number.isFinite, not a null check: an absent stats field (undefined)
     // must omit the box exactly like an unavailable column (null) does.
-    if (Number.isFinite(stats.totalObligated)) {
-        boxes.push({
-            title: 'Obligated to terminated awards',
-            value: formatCurrency(stats.totalObligated),
-            icon: ICONS.value,
-            type: 'value'
-        });
-    }
     if (Number.isFinite(stats.totalPotential)) {
+        // The total mixes two bases — contract ceilings and, for grants, the
+        // obligated amount — so the box always says so. The coverage clause is
+        // added only when an award contributed neither. Both ride the box
+        // itself as a hover/focus note.
+        const covered = stats.potentialFillCount;
+        const note = 'Contract ceilings plus obligations on grants, which report no ceiling.'
+            + (covered < stats.confirmed
+                ? ` Covers ${formatCount(covered)} of the ${formatCount(stats.confirmed)} awards.`
+                : '');
+
         boxes.push({
             title: 'Total potential value',
             value: formatCurrency(stats.totalPotential),
             icon: 'graph-up',
+            type: 'value',
+            note
+        });
+    }
+    if (Number.isFinite(stats.recipients)) {
+        boxes.push({
+            title: 'Recipients impacted',
+            value: formatCount(stats.recipients),
+            icon: ICONS.recipients,
             type: 'recipients'
         });
     }
     if (Number.isFinite(stats.districts)) {
         boxes.push({
             title: 'Congressional districts affected',
-            value: stats.districts.toLocaleString(),
+            value: formatCount(stats.districts),
             icon: ICONS.districts,
             type: 'districts'
         });
@@ -173,75 +191,45 @@ export function createPanelValueBoxes(panelId, stats) {
 }
 
 /**
- * The caveat sentence under the value boxes
+ * The caveat riding the claimed-savings box
  *
- * DOGE's claimed-savings total never stands alone (the box above it shows
- * $78.6M; this line says what that number is made of). Confirmed panel: the
- * potential-value column is only partially filled upstream, so its sum reads
- * low — say so rather than let a careful reader catch it.
- *
- * @param {'cancellations'|'doge'} panelId - Active panel
- * @param {Object} stats - That panel's stats object
- * @returns {string} Plain-text note ('' when nothing needs saying)
- */
-export function valueBoxNote(panelId, stats) {
-    if (panelId === 'doge') {
-        const parts = [];
-        if (stats.claimedOnActive > 0) {
-            parts.push(`${formatCurrency(stats.claimedOnActive)} of the claimed savings is attached to awards that remain active.`);
-        }
-        if (stats.noFigureCount > 0) {
-            parts.push(`${stats.noFigureCount} of ${stats.count} claims list no savings figure.`);
-        }
-        parts.push('Savings figures are DOGE’s own claims, not verified amounts.');
-        return parts.join(' ');
-    }
-
-    // Same universe as the box it qualifies: the potential-value box sums
-    // confirmed awards only, so the fill fraction is confirmed-only too.
-    if (stats.potentialFillCount !== undefined && stats.potentialFillCount < stats.confirmed) {
-        return `Total potential value is reported for ${stats.potentialFillCount} of the ${stats.confirmed} confirmed awards, so its sum understates the true total.`;
-    }
-    return '';
-}
-
-/**
- * The DOGE outcome card's lead sentence
- *
- * States the check date and how the record-first rule played out — every
- * figure from the data, never hardcoded copy that rots as the file updates.
+ * DOGE's total never stands alone: the clauses say what is inside it — money
+ * claimed against awards the record still shows as running, and claims that
+ * carry no figure at all. Both clauses are data-conditional; the base sentence
+ * is not, because the number is DOGE's own claim whatever else is true of it.
  *
  * @param {Object} stats - dogeStats() result
- * @returns {string} Plain-text lead
+ * @returns {string} Plain-text note
  */
-export function outcomeLead(stats) {
-    const checked = stats.checkedDate ? formatIsoDayLong(stats.checkedDate) : null;
-    const parts = [
-        'Each claim was checked against the award\'s federal transaction history'
-            + (checked ? ` — last check ${checked}.` : '.'),
-        'The outcome shown follows the federal record, not DOGE\'s label'
-    ];
-
-    if (stats.expiredButTerminated > 0) {
-        parts[1] += `: ${pluralCount(stats.expiredButTerminated, 'award')} DOGE listed as "expired" show explicit termination actions.`;
-    } else {
-        parts[1] += '.';
+function claimedSavingsNote(stats) {
+    const clauses = [];
+    if (stats.claimedOnActive > 0) {
+        clauses.push(`${formatCurrency(stats.claimedOnActive)} sits on awards still active`);
+    }
+    if (stats.noFigureCount > 0) {
+        clauses.push(`${formatCount(stats.noFigureCount)} of ${formatCount(stats.count)} claims list no figure`);
     }
 
-    return parts.join(' ');
+    const base = 'Savings figures are DOGE’s own claims';
+    return clauses.length ? `${base} — ${clauses.join(', and ')}.` : `${base}.`;
 }
 
 /**
- * The note under the monthly timeline
- * @param {number} skipped - Rows without a usable action date
+ * The caveat riding the calculated-savings box
+ *
+ * Says what the figure is (ceiling less what was already obligated) and which
+ * claims it covers, since the awards still inside their period of performance
+ * are deliberately excluded — nothing has been saved on those yet.
+ *
+ * @param {Object} stats - dogeStats() result
  * @returns {string} Plain-text note
  */
-export function timelineNote(skipped) {
-    const parts = ['Each award is bucketed by the date of its termination action in the federal record.'];
-    if (skipped > 0) {
-        parts.push(`${pluralCount(skipped, 'award')} lack a usable date and are not drawn.`);
-    }
-    return parts.join(' ');
+function calculatedSavingsNote(stats) {
+    const base = 'Award ceilings less what they had already obligated, for the claims whose awards stopped';
+
+    return Number.isFinite(stats.calculatedSavingsCount)
+        ? `${base} — ${pluralCount(stats.calculatedSavingsCount, 'claim')} of ${formatCount(stats.count)}.`
+        : `${base}.`;
 }
 
 /**
@@ -252,8 +240,8 @@ export function timelineNote(skipped) {
  */
 export function districtSummaryLine(terminations, claims) {
     return `${pluralCount(terminations, 'confirmed termination')} and `
-        + `${pluralCount(claims, 'DOGE claim')} list this district. `
-        + 'The two lists overlap: an award can appear in both.';
+        + `${pluralCount(claims, 'DOGE claim')} list this district; `
+        + 'an award can appear in both.';
 }
 
 /**
@@ -265,6 +253,42 @@ export function districtEmptyNote(panelId) {
     return panelId === 'doge'
         ? 'No DOGE claims list this district.'
         : 'No confirmed terminations list this district.';
+}
+
+/**
+ * Badge view-model for a confirmed termination's status
+ *
+ * One definition serving the panel table, the district-view cards, and the
+ * baked static pages, so an award's status cannot read one way in the table and
+ * another on its card.
+ *
+ * @param {Object} row - Normalized termination row
+ * @returns {{label: string, className: string}} Badge view-model
+ */
+export function terminationBadgeModel(row) {
+    const meta = overrideMeta(row.override_status);
+
+    return { label: meta.label, className: `badge ${meta.badgeClass}` };
+}
+
+/**
+ * Badge view-model for what the federal record shows about a DOGE claim
+ *
+ * The same four-way rubric the summary bar segments by — `claimOutcome` decides
+ * it once per row, and every surface that shows a claim's status reads it from
+ * here, so the table, the cards and the chart can never disagree.
+ *
+ * @param {Object} row - Normalized DOGE claim row
+ * @returns {{label: string, className: string}} Badge view-model
+ */
+export function claimBadgeModel(row) {
+    const meta = OUTCOME_META[row?._outcome];
+
+    if (!meta) {
+        return { label: MISSING, className: 'badge badge--excluded' };
+    }
+
+    return { label: meta.short, className: `badge ${meta.badgeClass}` };
 }
 
 /**
@@ -284,12 +308,10 @@ export function districtEmptyNote(panelId) {
  *   url: string|null}>, description: string}} Card view-model
  */
 export function terminationCardModel(row) {
-    const meta = overrideMeta(row.override_status);
-
     return {
         title: (row._recipient || 'Unknown recipient').toUpperCase(),
         subtitle: placeLine(row),
-        badge: { label: meta.label, className: `badge ${meta.badgeClass}` },
+        badge: terminationBadgeModel(row),
         fields: [
             { label: 'Award', text: row.award_id || MISSING, url: usaspendingUrl(row) },
             { label: 'Type', text: row.award_type || MISSING, url: null },
@@ -317,12 +339,10 @@ export function terminationCardModel(row) {
  *   url: string|null}>, description: string}} Card view-model
  */
 export function claimCardModel(row) {
-    const meta = OUTCOME_META[row._outcome];
-
     return {
         title: (row._recipient || 'Unknown recipient').toUpperCase(),
         subtitle: placeLine(row),
-        badge: { label: meta.short, className: `badge ${meta.badgeClass}` },
+        badge: claimBadgeModel(row),
         fields: [
             row.generated_award_id
                 ? {
@@ -350,7 +370,7 @@ export function claimCardModel(row) {
  * doge-claims.js for the palette contract). Zero-count segments are dropped
  * from the bar but always shown in the legend.
  *
- * @param {{terminated: number, noTermination: number, unmatched: number}} mix - Zero-filled counts
+ * @param {Object<string, number>} mix - Zero-filled counts
  * @returns {string} HTML for the bar, or '' when the mix is empty
  */
 export function renderOutcomeBar(mix) {
@@ -367,7 +387,7 @@ export function renderOutcomeBar(mix) {
         .join('');
 
     const summary = BAR_SEGMENTS
-        .map((key) => `${SEGMENT_META[key].label}: ${mix[key].toLocaleString()}`)
+        .map((key) => `${SEGMENT_META[key].label}: ${formatCount(mix[key])}`)
         .join(', ');
 
     return `<div class="seg-bar" role="img" aria-label="${escapeAttr(summary)}">${segments}</div>`;
@@ -379,7 +399,7 @@ export function renderOutcomeBar(mix) {
  * Every segment appears, including the ones at zero, so a reader can tell an
  * absent outcome from an unlisted one.
  *
- * @param {{terminated: number, noTermination: number, unmatched: number}} mix - Zero-filled counts
+ * @param {Object<string, number>} mix - Zero-filled counts
  * @returns {string} HTML for the legend
  */
 export function renderOutcomeLegend(mix) {
@@ -389,7 +409,7 @@ export function renderOutcomeLegend(mix) {
         return `<span class="seg-legend-item${zero}">`
             + `<span class="seg-swatch ${SEGMENT_META[key].segClass}"></span>`
             + `<span class="seg-legend-label">${escapeHtml(SEGMENT_META[key].label)}</span>`
-            + `<span class="seg-legend-count">${mix[key].toLocaleString()}</span>`
+            + `<span class="seg-legend-count">${formatCount(mix[key])}</span>`
             + '</span>';
     }).join('');
 

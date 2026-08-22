@@ -41,7 +41,7 @@ docs/
 │       ├── panel-views.js      # Display copy + view-model builders (pure)
 │       ├── terminations.js     # Pure helpers over terminations.csv
 │       ├── doge-claims.js      # Pure derivation over doge_claims.csv
-│       ├── fy-actions.js       # Pure reader for the FY rollup CSV
+│       ├── fy-awards.js        # Pure reader for the FY rollup CSV
 │       ├── chart-common.js     # Helpers shared by the two D3 bar charts
 │       ├── timeline-chart.js   # Monthly activity column chart
 │       └── fy-chart.js         # Fiscal-year FPDS actions column chart
@@ -73,7 +73,7 @@ docs/
     ├── cancellations/
     │   ├── terminations.csv                  # Federal-record terminations (synced daily)
     │   ├── doge_claims.csv                   # DOGE's claimed cancellations (synced daily)
-    │   ├── cancellations_for_convenience_actions_by_fiscal_year.csv  # Static FPDS rollup, manually curated
+    │   ├── cancellations_for_convenience_awards_by_fiscal_year.csv   # FY rollup of cancelled awards (synced daily)
     │   ├── metadata.json                     # {"lastUpdated": "...", "files": {"terminations": {...}, "doge_claims": {...}}}
     │   └── master_ledger_latest.csv          # DEPRECATED — no longer read by the dashboard; kept one cycle for external links
     ├── science/
@@ -146,16 +146,16 @@ container.addEventListener("click", (e) => {
 
 **`constants.js`** — key exports:
 
-| Export           | Description                                                                                       |
-| ---------------- | ------------------------------------------------------------------------------------------------- |
-| `STATE_FIPS_MAP` | State abbreviation → FIPS code (e.g., `"CA"` → `"06"`)                                            |
-| `FIPS_STATE_MAP` | Reverse: FIPS code → state abbreviation                                                           |
-| `COLORS`         | Brand colors + choropleth scales (`scienceSteps`, `spendingSteps`, etc.)                          |
-| `MAP_CONFIG`     | Continental US bounds, default center/zoom, border styles                                         |
-| `DATA_URLS`      | Paths to all runtime data files (districts, states, terminations, dogeClaims, fyActions, science) |
-| `BREAKPOINTS`    | `{sm: 480, md: 768, lg: 1024, xl: 1280}`                                                          |
-| `ICONS`          | Bootstrap Icon names for common UI elements                                                       |
-| `CONTACT`        | Organization email, name, website                                                                 |
+| Export           | Description                                                                                      |
+| ---------------- | ------------------------------------------------------------------------------------------------ |
+| `STATE_FIPS_MAP` | State abbreviation → FIPS code (e.g., `"CA"` → `"06"`)                                           |
+| `FIPS_STATE_MAP` | Reverse: FIPS code → state abbreviation                                                          |
+| `COLORS`         | Brand colors + choropleth scales (`scienceSteps`, `spendingSteps`, etc.)                         |
+| `MAP_CONFIG`     | Continental US bounds, default center/zoom, border styles                                        |
+| `DATA_URLS`      | Paths to all runtime data files (districts, states, terminations, dogeClaims, fyAwards, science) |
+| `BREAKPOINTS`    | `{sm: 480, md: 768, lg: 1024, xl: 1280}`                                                         |
+| `ICONS`          | Bootstrap Icon names for common UI elements                                                      |
+| `CONTACT`        | Organization email, name, website                                                                |
 
 ### Component API Quick Reference
 
@@ -178,7 +178,7 @@ container.addEventListener("click", (e) => {
 
 ### GitHub Actions Workflows
 
-- **`daily-dashboard-update.yml`** — Runs daily at 17:00 UTC. Downloads `terminations.csv` and `doge_claims.csv` from the `output/` directory of `planetary-society/nasa-cancellations-tracking`, copies over the deployed copies only when a file actually changed, rewrites `metadata.json` with a per-file `lastUpdated`/`rowCount` (each date taken from the most recent upstream commit touching that file), and deploys `docs/` to GitHub Pages. Not managed here: `cancellations_for_convenience_actions_by_fiscal_year.csv` is static and manually curated.
+- **`daily-dashboard-update.yml`** — Runs daily at 17:00 UTC. Downloads every CSV named in the workflow's `DATA_FILES` env (`terminations`, `doge_claims`, `cancellations_for_convenience_awards_by_fiscal_year`) from the `output/` directory of `planetary-society/nasa-cancellations-tracking`, copies over the deployed copies only when a file actually changed, rewrites `metadata.json` with a per-file `lastUpdated`/`rowCount` (each date taken from the most recent upstream commit touching that file), and deploys `docs/` to GitHub Pages. The download, compare and metadata steps all iterate `DATA_FILES`, so syncing another file is a one-line change. The top-level `lastUpdated` — the date the page states — is the max over `terminations`/`doge_claims` only, so regenerating the fiscal-year rollup never makes the page claim newer award data than it has.
 - **`sync-spending-data.yml`** — Runs daily at 06:00 UTC. Runs `.github/scripts/fetch-data.py --get summaries` to pull science spending CSVs from private repo (`planetary-society/nasa-spending-impact-generator`). Commits but does not deploy (deployment happens via the other workflow).
 
 ### Scripts

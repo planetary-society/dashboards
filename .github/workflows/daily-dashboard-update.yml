@@ -1,15 +1,16 @@
 # GitHub Action Workflow: Daily Dashboard Update
 #
 # This workflow runs daily to:
-# 1. Download the cancellations dashboard CSVs (terminations, doge_claims).
+# 1. Download the cancellations dashboard CSVs (see DATA_FILES below).
 # 2. Compare them against the deployed copies and update only what changed.
 # 3. Rewrite docs/data/cancellations/metadata.json when data changed.
-# 4. Run the Node test suite, then bake static SEO content (headline facts in
-#    index.html, per-district pages, sitemap) via scripts/bake-seo.mjs.
+# 4. Run the Node test suite, then bake static SEO content (the headline figures
+#    in index.html, per-district pages, sitemap) via scripts/bake-seo.mjs.
 # 5. Commit whatever changed and deploy the static dashboards to GitHub Pages.
 #
-# Not managed here: cancellations_for_convenience_actions_by_fiscal_year.csv is a
-# static, manually curated file that lives in docs/data/cancellations/ untouched.
+# Every file the dashboard reads is generated upstream, so all three are synced
+# the same way. Adding a fourth means adding one line to DATA_FILES -- the
+# download, compare and metadata steps all iterate that list.
 
 name: Daily Dashboard Update
 
@@ -18,6 +19,16 @@ on:
     # runs every day at 10:00 AM Pacific Time (17:00 UTC)
     - cron: '0 17 * * *'
   workflow_dispatch: # Allows manual triggering
+
+env:
+  # Every CSV the dashboard reads, all published to output/ upstream. The
+  # fiscal-year rollup changes far less often than the other two, but it is
+  # generated the same way, so it is synced rather than hand-copied.
+  DATA_FILES: >-
+    terminations
+    doge_claims
+    cancellations_for_convenience_awards_by_fiscal_year
+  UPSTREAM_REPO: planetary-society/nasa-cancellations-tracking
 
 jobs:
   build-and-deploy:
@@ -41,10 +52,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p tmp_data
+          : > tmp_data/dates.tsv
 
-          for f in terminations doge_claims; do
+          for f in $DATA_FILES; do
             # Date comes from the most recent commit that touched this file upstream
-            DATE=$(gh api "repos/planetary-society/nasa-cancellations-tracking/commits?path=output/${f}.csv&per_page=1" \
+            DATE=$(gh api "repos/${UPSTREAM_REPO}/commits?path=output/${f}.csv&per_page=1" \
               --jq '.[0].commit.committer.date | split("T")[0]')
 
             if [[ -z "$DATE" ]]; then
@@ -53,13 +65,14 @@ jobs:
             fi
 
             echo "${f}.csv last updated: ${DATE}"
-            echo "${f}_date=${DATE}" >> "$GITHUB_OUTPUT"
+            # A TSV rather than per-file step outputs: the metadata step reads
+            # this back, so adding a file needs no new plumbing.
+            printf '%s\t%s\n' "$f" "$DATE" >> tmp_data/dates.tsv
 
-            # curl -f makes a 404 fail the job. output/*.csv is not published
-            # upstream yet, and a loud failure here is the intended behavior
-            # until it is -- do not soften this into a warning.
+            # curl -f makes a 404 fail the job: a file that vanished upstream
+            # must stop the deploy, not quietly ship yesterday's copy.
             curl -fL -o "tmp_data/${f}.csv" \
-              "https://raw.githubusercontent.com/planetary-society/nasa-cancellations-tracking/main/output/${f}.csv"
+              "https://raw.githubusercontent.com/${UPSTREAM_REPO}/main/output/${f}.csv"
           done
 
       - name: Compare and update if changed
@@ -68,7 +81,7 @@ jobs:
           mkdir -p docs/data/cancellations
           CHANGED=false
 
-          for f in terminations doge_claims; do
+          for f in $DATA_FILES; do
             SRC="tmp_data/${f}.csv"
             DEST="docs/data/cancellations/${f}.csv"
 
@@ -86,39 +99,38 @@ jobs:
 
       - name: Update metadata
         if: steps.compare.outputs.changed == 'true'
-        env:
-          TERMINATIONS_DATE: ${{ steps.download.outputs.terminations_date }}
-          DOGE_CLAIMS_DATE: ${{ steps.download.outputs.doge_claims_date }}
         run: |
-          # Count data rows (CSV-aware: the files have CRLF endings and quoted
-          # embedded newlines, so wc -l overcounts)
-          TERMINATIONS_ROWS=$(python3 -c "import csv; print(sum(1 for _ in csv.reader(open('docs/data/cancellations/terminations.csv', newline=''))) - 1)")
-          DOGE_CLAIMS_ROWS=$(python3 -c "import csv; print(sum(1 for _ in csv.reader(open('docs/data/cancellations/doge_claims.csv', newline=''))) - 1)")
-
-          echo "terminations: ${TERMINATIONS_ROWS} rows (${TERMINATIONS_DATE})"
-          echo "doge_claims: ${DOGE_CLAIMS_ROWS} rows (${DOGE_CLAIMS_DATE})"
-
           # Written with json.dump rather than shell string interpolation so the
           # file is always valid JSON regardless of what the values contain.
-          TERMINATIONS_ROWS="$TERMINATIONS_ROWS" DOGE_CLAIMS_ROWS="$DOGE_CLAIMS_ROWS" \
+          # Row counts are CSV-aware: the files have CRLF endings and quoted
+          # embedded newlines, so wc -l overcounts.
           python3 - <<'PY'
+          import csv
           import json
           import os
 
-          files = {
-              "terminations": {
-                  "lastUpdated": os.environ["TERMINATIONS_DATE"],
-                  "rowCount": int(os.environ["TERMINATIONS_ROWS"]),
-              },
-              "doge_claims": {
-                  "lastUpdated": os.environ["DOGE_CLAIMS_DATE"],
-                  "rowCount": int(os.environ["DOGE_CLAIMS_ROWS"]),
-              },
-          }
-          metadata = {
-              "lastUpdated": max(f["lastUpdated"] for f in files.values()),
-              "files": files,
-          }
+          # The date the page states -- "Data updated {date}" and the JSON-LD
+          # dateModified -- describes the award records. The fiscal-year rollup
+          # is regenerated on its own cadence, so a fresh rollup must not make
+          # the page claim newer award data than it actually has.
+          HEADLINE_FILES = ("terminations", "doge_claims")
+
+          with open("tmp_data/dates.tsv") as fh:
+              dates = dict(line.rstrip("\n").split("\t") for line in fh if line.strip())
+
+          files = {}
+          for name in os.environ["DATA_FILES"].split():
+              path = f"docs/data/cancellations/{name}.csv"
+              with open(path, newline="") as fh:
+                  rows = sum(1 for _ in csv.reader(fh)) - 1
+              files[name] = {"lastUpdated": dates[name], "rowCount": rows}
+              print(f"{name}: {rows} rows ({dates[name]})")
+
+          headline = [files[n]["lastUpdated"] for n in HEADLINE_FILES if n in files]
+          if not headline:
+              raise SystemExit("no headline data file present -- refusing to write metadata")
+
+          metadata = {"lastUpdated": max(headline), "files": files}
 
           with open("docs/data/cancellations/metadata.json", "w") as fh:
               json.dump(metadata, fh, indent=2)

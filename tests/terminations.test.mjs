@@ -244,6 +244,35 @@ test('terminationStats keeps partial dollars out of both totals', () => {
     assert.equal(stats.totalPotential, 1000);
 });
 
+test('terminationStats falls back to obligations for an award with no reported ceiling', () => {
+    const { rows, columns } = normalizeTerminations([
+        // A contract: reports a ceiling above what it obligated
+        terminationRow({ total_obligated: '100', total_potential_value: '1000' }),
+        // A grant: no ceiling exists, so its obligations stand in
+        terminationRow({ total_obligated: '250', total_potential_value: '' })
+    ]);
+
+    const stats = terminationStats(rows, columns);
+
+    assert.equal(stats.totalObligated, 350);
+    // A coalesce, not a sum: the grant contributes 250 once, and the contract
+    // contributes its ceiling rather than ceiling + obligations
+    assert.equal(stats.totalPotential, 1250);
+    assert.equal(stats.potentialFillCount, stats.confirmed);
+});
+
+test('terminationStats leaves an award reporting neither figure out of the potential total', () => {
+    const { rows, columns } = normalizeTerminations([
+        terminationRow({ total_obligated: '100', total_potential_value: '1000' }),
+        terminationRow({ total_obligated: '', total_potential_value: '' })
+    ]);
+
+    const stats = terminationStats(rows, columns);
+
+    assert.equal(stats.totalPotential, 1000);
+    assert.ok(stats.potentialFillCount < stats.confirmed, 'the uncovered award is visible to the caveat');
+});
+
 test('terminationStats counts distinct non-empty districts and recipients', () => {
     const { rows, columns } = normalizeTerminations([
         terminationRow({ pop_state: 'CA', pop_district: '37', recipient_name: 'Acme' }),

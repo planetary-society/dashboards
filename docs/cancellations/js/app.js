@@ -8,15 +8,16 @@
  *   doge          — doge_claims.csv: every cancellation DOGE claimed, checked
  *                   against the award's federal transaction history
  *
- * The panels are datasets, not filters of one dataset: 88 of the 112 DOGE
- * claims also appear among the confirmed terminations, so their counts must
- * never be summed. That rule shapes the UI — counts live in each panel's
- * headline next to the noun they count (never in the panel-bar tab labels),
- * and the overlap is stated in the DOGE panel's own headline area.
+ * The panels are datasets, not filters of one dataset: most DOGE claims also
+ * appear among the confirmed terminations, so their counts must never be
+ * summed. That rule shapes the UI — counts live in each panel's own value
+ * boxes next to the noun they count, never in the panel-bar tab labels where a
+ * screenshot would show two addable numbers side by side. The overlap itself is
+ * explained in the About tab.
  *
  * Architecture: one DOM skeleton shared by both panels; applyPanel() re-renders
  * the shared containers and hides the cards a panel doesn't use. Pure data
- * logic lives in terminations.js / doge-claims.js / fy-actions.js (Node-tested);
+ * logic lives in terminations.js / doge-claims.js / fy-awards.js (Node-tested);
  * display copy in panel-views.js; this file owns the DOM and the routing.
  *
  * Routes: #cancellations (default) · #doge · #about · bare district codes
@@ -33,10 +34,8 @@ import {
     fetchText,
     groupBy,
     escapeHtml,
-    escapeAttr,
     truncateText,
-    pluralCount,
-    formatCount
+    pluralCount
 } from '../../shared/js/utils.js';
 import { DATA_URLS } from '../../shared/js/constants.js';
 import { ChoroplethMap } from '../../shared/js/components/choropleth-map.js';
@@ -49,25 +48,20 @@ import {
     normalizeTerminations,
     terminationStats,
     monthlyCounts,
-    overrideMeta,
     usaspendingUrl
 } from './terminations.js';
 import {
     normalizeDogeClaims,
     dogeStats,
-    outcomeMix,
-    overlapWithTerminations,
-    OUTCOME_META
+    outcomeMix
 } from './doge-claims.js';
-import { parseFyActions } from './fy-actions.js';
+import { parseFyAwards } from './fy-awards.js';
 import {
     PANEL_META,
     panelHeadline,
-    panelNote,
     createPanelValueBoxes,
-    valueBoxNote,
-    outcomeLead,
-    timelineNote,
+    terminationBadgeModel,
+    claimBadgeModel,
     districtSummaryLine,
     districtEmptyNote,
     terminationCardModel,
@@ -103,29 +97,19 @@ const CARD_DESCRIPTION_CHARS = 400;
 const LEGACY_ROUTES = new Set(['summary', 'raw-data', 'cancelled', 'suspicious', 'reversed']);
 
 /**
- * Render an outcome badge for a DOGE table cell
+ * Render a badge view-model as a table cell
  *
- * Same .badge family as the terminations panel's status badges, so a DOGE
- * award reads exactly like any other award wherever it appears.
+ * Both panels' status cells come through here from the badge models in
+ * panel-views.js, which the award cards and the baked static pages read too —
+ * so one award wears the same badge wherever it appears.
  *
- * @param {string} outcome - claimOutcome() key
- * @returns {string} HTML for the badge
+ * @param {{label: string, className: string}} badge - Badge view-model
+ * @param {string} [date] - Optional date, rendered as a subline beneath it
+ * @returns {string} HTML for the cell
  */
-function renderOutcomeBadge(outcome) {
-    const meta = OUTCOME_META[outcome];
-    if (!meta) return escapeHtml(outcome || MISSING);
-
-    return `<span class="badge ${meta.badgeClass}">${escapeHtml(meta.short)}</span>`;
-}
-
-/**
- * Render a status badge for a terminations table cell or award card
- * @param {Object} row - Normalized termination row
- * @returns {string} HTML for the badge
- */
-function renderStatusBadge(row) {
-    const meta = overrideMeta(row.override_status);
-    return `<span class="badge ${meta.badgeClass}">${escapeHtml(meta.label)}</span>`;
+function renderBadgeCell(badge, date) {
+    return `<span class="${badge.className}">${escapeHtml(badge.label)}</span>`
+        + (date ? `<span class="cell-subline">${escapeHtml(date)}</span>` : '');
 }
 
 /**
@@ -173,10 +157,7 @@ class CancellationsDashboard {
         this.panels = null;
         this.activePanel = 'cancellations';
 
-        /** Cross-panel figures computed once at load */
-        this.overlap = null;
-
-        /** Parsed FY actions series for the static FY chart */
+        /** Parsed FY awards series for the static FY chart */
         this.fyItems = [];
 
         /** Map data (confirmed panel only) */
@@ -237,14 +218,13 @@ class CancellationsDashboard {
      * Fetch and normalize both datasets plus the FY series
      *
      * All three files load in parallel; each panel keeps its rows, its stats,
-     * and its column-availability flags. Cross-panel figures (the DOGE overlap)
-     * are computed once here, not per render.
+     * and its column-availability flags.
      */
     async loadData() {
         const [terminationsText, dogeText, fyText] = await Promise.all([
             fetchText(DATA_URLS.terminations),
             fetchText(DATA_URLS.dogeClaims),
-            fetchText(DATA_URLS.fyActions)
+            fetchText(DATA_URLS.fyAwards)
         ]);
 
         const terminations = normalizeTerminations(parseCSV(terminationsText));
@@ -263,17 +243,7 @@ class CancellationsDashboard {
             }
         };
 
-        // Both ID namespaces are checked per row (see doge-claims.js), so the
-        // Set can carry either key; give it both and stay immune to upstream
-        // key-shape changes.
-        const idSet = new Set();
-        for (const row of terminations.rows) {
-            if (row.award_id) idSet.add(row.award_id);
-            if (row.generated_award_id) idSet.add(row.generated_award_id);
-        }
-        this.overlap = overlapWithTerminations(doge.rows, idSet);
-
-        this.fyItems = parseFyActions(parseCSV(fyText));
+        this.fyItems = parseFyAwards(parseCSV(fyText));
 
         this.calculateDistrictData();
     }
@@ -281,9 +251,9 @@ class CancellationsDashboard {
     /**
      * District counts and hover info for the map (confirmed awards only)
      *
-     * Partial actions (descoped / closed out) are excluded: the map's legend
-     * says "Terminated awards", and a descoped award is not one. This keeps
-     * the map's total consistent with the panel headline.
+     * Partial actions (descoped / closed out) are excluded: the map plots
+     * terminated awards, and a descoped award is not one. This keeps the
+     * map's total consistent with the panel headline.
      */
     calculateDistrictData() {
         const confirmed = this.panels.cancellations.rows.filter(
@@ -413,7 +383,6 @@ class CancellationsDashboard {
         const panel = this.panels[panelId];
         const meta = PANEL_META[panelId];
 
-        this.renderHeadline(panelId, panel);
         this.renderValueBoxes(panelId, panel);
         this.renderOutcomePanel(panelId, panel);
 
@@ -428,20 +397,9 @@ class CancellationsDashboard {
         this.announcePanel(meta, panel);
     }
 
-    renderHeadline(panelId, panel) {
-        const headlineEl = document.getElementById('panel-headline');
-        const noteEl = document.getElementById('panel-note');
-
-        if (headlineEl) headlineEl.textContent = panelHeadline(panelId, panel.stats);
-        if (noteEl) noteEl.textContent = panelNote(panelId, panel.stats, this.overlap);
-    }
-
     renderValueBoxes(panelId, panel) {
         ValueBox.render('value-boxes', createPanelValueBoxes(panelId, panel.stats));
         ValueBox.animateIn('value-boxes');
-
-        const noteEl = document.getElementById('value-boxes-note');
-        if (noteEl) noteEl.textContent = valueBoxNote(panelId, panel.stats);
     }
 
     /**
@@ -456,9 +414,6 @@ class CancellationsDashboard {
             return;
         }
         card.hidden = false;
-
-        const leadEl = document.getElementById('outcome-lead');
-        if (leadEl) leadEl.textContent = outcomeLead(panel.stats);
 
         const body = document.getElementById('outcome-body');
         if (body) {
@@ -545,16 +500,9 @@ class CancellationsDashboard {
         if (isConfirmed) {
             this.renderTimeline();
             // Re-render, not just unhide: a chart first drawn into a hidden
-            // container measured a fallback width, and its wrapped in-SVG
-            // title only fits when measured at the real one.
+            // container measured a fallback width, so its band scale is laid
+            // out for the wrong size until it is redrawn at the real one.
             this.renderFyChart();
-
-            // The caption's denominator tracks the live file so the sentence
-            // can't rot as the daily refresh adds rows
-            const denominator = document.getElementById('fy-denominator');
-            if (denominator) {
-                denominator.textContent = formatCount(this.panels.cancellations.rows.length);
-            }
         }
     }
 
@@ -567,7 +515,7 @@ class CancellationsDashboard {
             ariaLabel: 'Confirmed termination actions by month'
         });
         this.fyChart = new FyChart('fy-chart', {
-            ariaLabel: 'FPDS termination-for-convenience contract actions by fiscal year, all NASA',
+            ariaLabel: 'NASA awards cancelled for convenience by fiscal year, all NASA',
             barColor: 'var(--red-500)'
         });
     }
@@ -575,15 +523,12 @@ class CancellationsDashboard {
     renderTimeline() {
         if (!this.timeline) return;
 
-        const { months, skipped } = monthlyCounts(this.panels.cancellations.rows);
+        const { months } = monthlyCounts(this.panels.cancellations.rows);
         this.timeline.render(months, {
             metric: 'count',
             barColor: 'var(--red-500)',
             countLabel: 'Actions'
         });
-
-        const noteEl = document.getElementById('timeline-note');
-        if (noteEl) noteEl.textContent = timelineNote(skipped);
     }
 
     /**
@@ -591,7 +536,7 @@ class CancellationsDashboard {
      */
     renderFyChart() {
         if (!this.fyChart) return;
-        this.fyChart.render(this.fyItems, { countLabel: 'Actions' });
+        this.fyChart.render(this.fyItems, { countLabel: 'Awards' });
     }
 
     /* ------------------------------------------------------------------ *
@@ -611,7 +556,7 @@ class CancellationsDashboard {
         this.map = new ChoroplethMap('choropleth-map', {
             colorScale: 'cancellations',
             level: 'district',
-            legendTitle: 'Terminated awards'
+            showLegend: false
         });
         this.map.setDistrictClickHandler((districtCode) => {
             this.router.navigate(districtCode);
@@ -689,8 +634,7 @@ class CancellationsDashboard {
         const data = panel.rows.map((row) => [
             row.award_id,
             recipientCellText(row._recipient, placeLine(row)),
-            renderStatusBadge(row)
-                + (row.action_date ? `<span class="cell-subline">${escapeHtml(row.action_date)}</span>` : ''),
+            renderBadgeCell(terminationBadgeModel(row), row.action_date),
             row._district || MISSING,
             row._obligated !== null ? formatCurrency(row._obligated, false) : MISSING,
             usaspendingUrl(row),
@@ -710,14 +654,12 @@ class CancellationsDashboard {
             },
             { name: 'Claimed savings', id: 'savings' },
             {
-                name: "DOGE's stated status",
+                // What the federal record shows, on the same four-way rubric as
+                // the summary bar. DOGE's own label for the award is not a
+                // second status column — it sits on the award's card, where the
+                // two accounts can be read against each other.
+                name: 'Status',
                 id: 'status',
-                hideOnMobile: true,
-                formatter: stackedCellFormatter
-            },
-            {
-                name: 'Outcome',
-                id: 'outcome',
                 formatter: (cell) => gridjs.html(cell)
             },
             {
@@ -744,10 +686,7 @@ class CancellationsDashboard {
             row._savings !== null && row._savings !== 0
                 ? formatCurrency(row._savings, false)
                 : MISSING,
-            row.doge_claim_date
-                ? `${row._statusLabel}\n${row.doge_claim_date}`
-                : row._statusLabel,
-            renderOutcomeBadge(row._outcome),
+            renderBadgeCell(claimBadgeModel(row), row.latest_action_date),
             row.generated_award_id ? (row.doge_award_id || row.generated_award_id) : MISSING,
             usaspendingUrl(row),
             row._obligation !== null ? formatCurrency(row._obligation, false) : MISSING,

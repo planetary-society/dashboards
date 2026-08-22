@@ -110,7 +110,15 @@ export function renderAwardLink(label, url) {
 }
 
 /**
- * A row's recipient location line: 'CITY, ST' in caps ('' when unknown)
+ * A row's location line: 'CITY, ST' in caps ('' when unknown)
+ *
+ * Place of performance first, the recipient's own address as the fallback —
+ * the same order `districtOf` uses, so the line under a recipient names the
+ * place whose district put the award on the map.
+ *
+ * The fallback is per-pair, not per-field: a row with a pop state but no pop
+ * city keeps 'ST' rather than borrowing a city from the recipient's address,
+ * which could pair a city with a state it does not sit in.
  *
  * Lives here rather than in app.js because the baked static district pages
  * build the same subline without loading the dashboard's DOM module.
@@ -119,8 +127,20 @@ export function renderAwardLink(label, url) {
  * @returns {string} Location line
  */
 export function placeLine(row) {
-    return [row.recipient_city, row.recipient_state]
-        .map((part) => String(part || '').trim().toUpperCase())
+    return placeFromPair(row, 'pop_city', 'pop_state')
+        || placeFromPair(row, 'recipient_city', 'recipient_state');
+}
+
+/**
+ * Assemble a location line from one city/state column pair
+ * @param {Object} row - Parsed CSV row
+ * @param {string} cityKey - City column name
+ * @param {string} stateKey - State column name
+ * @returns {string} 'CITY, ST', either half alone, or '' when both are empty
+ */
+function placeFromPair(row, cityKey, stateKey) {
+    return [field(row, cityKey), field(row, stateKey)]
+        .map((part) => part.toUpperCase())
         .filter(Boolean)
         .join(', ');
 }

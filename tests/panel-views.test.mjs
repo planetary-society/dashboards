@@ -15,16 +15,23 @@ import assert from 'node:assert/strict';
 import {
     PANEL_META,
     panelHeadline,
-    panelNote,
     createPanelValueBoxes,
-    valueBoxNote,
+    claimBadgeModel,
+    claimCardModel,
     renderOutcomeBar,
     renderOutcomeLegend,
     renderOutcomeDefinitions
 } from '../docs/cancellations/js/panel-views.js';
-import { BAR_SEGMENTS, SEGMENT_META } from '../docs/cancellations/js/doge-claims.js';
+import {
+    BAR_SEGMENTS,
+    OUTCOME_META,
+    OUTCOME_ORDER,
+    SEGMENT_META,
+    normalizeDogeClaims
+} from '../docs/cancellations/js/doge-claims.js';
+import { dogeClaimRow } from './fixtures.mjs';
 
-const RAMP_CLASSES = ['seg--outcome-strong', 'seg--outcome-mid', 'seg--outcome-weak'];
+const RAMP_CLASSES = ['seg--outcome-strong', 'seg--outcome-mid', 'seg--outcome-weak', 'seg--outcome-none'];
 
 /**
  * Confirmed-panel stats shaped like `terminationStats` output
@@ -35,10 +42,8 @@ function confirmedStats(overrides = {}) {
     return {
         confirmed: 172,
         partials: 5,
-        descoped: 3,
-        closedOut: 2,
-        totalObligated: 2_000_000_000,
         totalPotential: 5_400_000_000,
+        recipients: 136,
         districts: 120,
         potentialFillCount: 93,
         ...overrides
@@ -56,6 +61,8 @@ function dogeStatsFixture(overrides = {}) {
         claimedSavings: 78_600_000,
         claimedOnActive: 11_800_000,
         noFigureCount: 62,
+        calculatedSavings: 16_400_000,
+        calculatedSavingsCount: 71,
         terminated: 89,
         unmatched: 4,
         checkedDate: '2026-08-20',
@@ -64,12 +71,12 @@ function dogeStatsFixture(overrides = {}) {
 }
 
 /**
- * Full three-way outcome mix matching the live file
+ * Full four-way outcome mix matching the live file
  * @param {Object} [overrides] - Segment counts to override
- * @returns {{terminated: number, noTermination: number, unmatched: number}} Mix
+ * @returns {{terminated: number, ended: number, active: number, unmatched: number}} Mix
  */
 function outcomeMixFixture(overrides = {}) {
-    return { terminated: 89, noTermination: 19, unmatched: 4, ...overrides };
+    return { terminated: 89, ended: 11, active: 8, unmatched: 4, ...overrides };
 }
 
 /**
@@ -187,82 +194,6 @@ test('panelHeadline pluralizes the DOGE noun', () => {
     assert.notEqual(one.replace(/[\d,]+/g, ''), many.replace(/[\d,]+/g, ''));
 });
 
-// --- panelNote ---------------------------------------------------------------
-
-// Copy assertions here anchor on the numbers and category words (the data),
-// never on full sentences — the wording is panel-views.js's to change.
-test('panelNote discloses the partial-action split on the confirmed panel', () => {
-    const note = panelNote('cancellations', confirmedStats());
-
-    assert.match(note, /\b5\b/, note);
-    assert.match(note, /3\s+descoped/, note);
-    assert.match(note, /2\s+closed out/, note);
-});
-
-test('panelNote drops absent partial kinds', () => {
-    const note = panelNote('cancellations', confirmedStats({ partials: 1, descoped: 1, closedOut: 0 }));
-
-    assert.match(note, /1\s+descoped/, note);
-    assert.ok(!note.includes('closed out'), note);
-});
-
-test('panelNote breakdown is data-driven, never a hardcoded split', () => {
-    const note = panelNote('cancellations', confirmedStats({ partials: 7, descoped: 6, closedOut: 1 }));
-
-    assert.match(note, /\b7\b/, note);
-    assert.match(note, /6\s+descoped/, note);
-    assert.match(note, /1\s+closed out/, note);
-});
-
-test('panelNote says nothing on the confirmed panel when there are no partials', () => {
-    assert.equal(panelNote('cancellations', confirmedStats({ partials: 0 })), '');
-});
-
-test('panelNote states the overlap with both counts on the DOGE panel', () => {
-    const note = panelNote('doge', dogeStatsFixture(), 88);
-
-    assert.ok(note.includes('88'), note);
-    assert.ok(note.includes('112'), note);
-});
-
-test('panelNote keeps its standing disclosure alongside the overlap', () => {
-    // The overlap-free note is the baseline disclosure; a known overlap adds
-    // to it rather than replacing it.
-    const base = panelNote('doge', dogeStatsFixture());
-    const withOverlap = panelNote('doge', dogeStatsFixture(), 88);
-
-    assert.ok(base.length > 0);
-    assert.ok(withOverlap.includes(base), withOverlap);
-    assert.ok(withOverlap.length > base.length);
-});
-
-test('panelNote reports a zero overlap rather than hiding it', () => {
-    const note = panelNote('doge', dogeStatsFixture(), 0);
-
-    assert.match(note, /\b0\b/, note);
-    assert.ok(note.includes('112'), note);
-});
-
-test('panelNote drops only the overlap sentence when the overlap is unknown', () => {
-    // The claim count appears only in the overlap sentence, so its absence
-    // means the sentence is gone — while the note still says something.
-    const note = panelNote('doge', dogeStatsFixture());
-
-    assert.ok(!note.includes('112'), note);
-    assert.ok(note.length > 0);
-});
-
-test('panelNote drops the overlap sentence for a non-finite overlap', () => {
-    for (const overlap of [null, NaN, undefined, 'many']) {
-        const note = panelNote('doge', dogeStatsFixture(), { overlap });
-        assert.ok(!note.includes('112'), String(overlap));
-    }
-});
-
-test('panelNote tolerates a missing extras argument', () => {
-    assert.equal(panelNote('doge', dogeStatsFixture()), panelNote('doge', dogeStatsFixture(), {}));
-});
-
 // --- createPanelValueBoxes ---------------------------------------------------
 
 test('createPanelValueBoxes renders four confirmed boxes in order', () => {
@@ -272,25 +203,27 @@ test('createPanelValueBoxes renders four confirmed boxes in order', () => {
     // wording is copy, free to change without touching this suite.
     assert.equal(boxes.length, 4);
     assert.equal(boxes[0].value, '172');
-    assert.equal(boxes[1].value, '$2.0B');
+    assert.equal(boxes[1].value, '$5.4B');
+    assert.equal(boxes[2].value, '136');
     assert.equal(boxes[3].value, '120');
 });
 
-test('createPanelValueBoxes omits the obligated box when its data is missing', () => {
-    const boxes = createPanelValueBoxes('cancellations', confirmedStats({ totalObligated: null }));
+test('createPanelValueBoxes never gives obligations a box of their own', () => {
+    // The potential total already contains them, so a second money box would
+    // invite a reader to add two overlapping figures together.
+    const boxes = createPanelValueBoxes('cancellations', confirmedStats());
 
-    assert.equal(boxes.length, 3);
-    assert.equal(boxes[0].value, '172');
-    assert.ok(!boxes.some((box) => box.value === '$2.0B'));
+    assert.ok(!boxes.some((box) => /obligat/i.test(box.title)), boxes.map((b) => b.title).join(' | '));
 });
 
 test('createPanelValueBoxes omits each optional box independently', () => {
     assert.equal(createPanelValueBoxes('cancellations', confirmedStats({ totalPotential: null })).length, 3);
+    assert.equal(createPanelValueBoxes('cancellations', confirmedStats({ recipients: null })).length, 3);
     assert.equal(createPanelValueBoxes('cancellations', confirmedStats({ districts: null })).length, 3);
 });
 
 test('createPanelValueBoxes always keeps the count box first', () => {
-    const stats = confirmedStats({ totalObligated: null, totalPotential: null, districts: null });
+    const stats = confirmedStats({ totalPotential: null, recipients: null, districts: null });
     const boxes = createPanelValueBoxes('cancellations', stats);
 
     assert.equal(boxes.length, 1);
@@ -298,7 +231,7 @@ test('createPanelValueBoxes always keeps the count box first', () => {
 });
 
 test('createPanelValueBoxes never renders an N/A tile for missing confirmed data', () => {
-    const boxes = createPanelValueBoxes('cancellations', confirmedStats({ totalObligated: null, districts: null }));
+    const boxes = createPanelValueBoxes('cancellations', confirmedStats({ totalPotential: null, districts: null }));
 
     assert.ok(boxes.every((box) => box.value !== 'N/A' && box.value !== '—'));
 });
@@ -310,7 +243,7 @@ test('createPanelValueBoxes renders all four DOGE boxes in order', () => {
     assert.equal(boxes[0].value, '112');
     assert.equal(boxes[1].value, '$78.6M');
     assert.equal(boxes[2].value, '89');
-    assert.equal(boxes[3].value, '4');
+    assert.equal(boxes[3].value, '$16.4M');
 });
 
 test('createPanelValueBoxes keeps the DOGE row at four boxes even at zero', () => {
@@ -343,55 +276,144 @@ test('createPanelValueBoxes uses a distinct type per box so the tint scale reads
     }
 });
 
-// --- valueBoxNote ------------------------------------------------------------
+// --- DOGE box notes ----------------------------------------------------------
 
-// Each optional sentence is identified by the figure only it carries
+/**
+ * The note on one DOGE box, found by a word in its title
+ * @param {string} titlePattern - Case-insensitive substring of the box title
+ * @param {Object} [overrides] - Stats overrides
+ * @returns {string|undefined} That box's note
+ */
+function dogeNoteFor(titlePattern, overrides = {}) {
+    return createPanelValueBoxes('doge', dogeStatsFixture(overrides))
+        .find((box) => new RegExp(titlePattern, 'i').test(box.title))?.note;
+}
+
+// Each optional clause is identified by the figure only it carries
 // ($11.8M for the active-award caveat, 62 for the no-figure count), so the
 // prose around those figures can be reworded freely.
-test('valueBoxNote never lets the DOGE savings total stand alone', () => {
-    const note = valueBoxNote('doge', dogeStatsFixture());
+test('the claimed-savings total never stands alone', () => {
+    const note = dogeNoteFor('savings claimed');
 
     assert.ok(note.includes('$11.8M'), note);
     assert.ok(note.includes('62'), note);
     assert.ok(note.includes('112'), note);
 });
 
-test('valueBoxNote drops the active-award sentence when nothing sits on active awards', () => {
-    const note = valueBoxNote('doge', dogeStatsFixture({ claimedOnActive: 0 }));
+test('the claimed-savings note drops the active-award clause when nothing sits on active awards', () => {
+    const note = dogeNoteFor('savings claimed', { claimedOnActive: 0 });
 
     assert.ok(!note.includes('$11.8M'), note);
     assert.ok(note.includes('62'), note);
 });
 
-test('valueBoxNote drops the no-figure sentence when every claim carries a figure', () => {
-    const note = valueBoxNote('doge', dogeStatsFixture({ noFigureCount: 0 }));
+test('the claimed-savings note drops the no-figure clause when every claim carries a figure', () => {
+    const note = dogeNoteFor('savings claimed', { noFigureCount: 0 });
 
     assert.ok(!note.includes('62'), note);
     assert.ok(note.length > 0, 'the standing caveat should remain');
 });
 
-test('valueBoxNote always keeps the DOGE caveat, even with nothing else to say', () => {
-    const note = valueBoxNote('doge', dogeStatsFixture({ claimedOnActive: 0, noFigureCount: 0 }));
+test('the claimed-savings caveat survives even with nothing else to say', () => {
+    const note = dogeNoteFor('savings claimed', { claimedOnActive: 0, noFigureCount: 0 });
 
     assert.ok(note.length > 0, 'the caveat must never disappear entirely');
 });
 
-test('valueBoxNote flags the partly-filled potential-value column with both numbers', () => {
-    const note = valueBoxNote('cancellations', confirmedStats());
+test('the calculated-savings note says how it is derived and how many claims it covers', () => {
+    const note = dogeNoteFor('cut from these awards');
 
-    // Denominator is the confirmed count — the same universe the
-    // potential-value box sums — never the full row count.
-    assert.ok(note.includes('93'), note);
-    assert.ok(note.includes('172'), note);
-    assert.ok(!note.includes('177'), note);
+    // Named by what it subtracts, not by a sentence this suite pins
+    assert.match(note, /ceiling/i, note);
+    assert.match(note, /obligat/i, note);
+    assert.ok(note.includes('71'), note);
+    assert.ok(note.includes('112'), note);
 });
 
-test('valueBoxNote says nothing when the potential-value column is fully filled', () => {
-    assert.equal(valueBoxNote('cancellations', confirmedStats({ potentialFillCount: 177 })), '');
+test('the potential-value note discloses its two bases, and counts awards only when coverage is short', () => {
+    // The total is contract ceilings where a ceiling exists and obligations
+    // where none does — a reader must never have to guess which. The coverage
+    // clause is the conditional half: it appears only when an award reported
+    // neither figure.
+    const cases = [
+        { potentialFillCount: 93, expectsCoverage: true },
+        { potentialFillCount: 172, expectsCoverage: false }
+    ];
+
+    for (const { potentialFillCount, expectsCoverage } of cases) {
+        const boxes = createPanelValueBoxes('cancellations', confirmedStats({ potentialFillCount }));
+        const noted = boxes.filter((box) => box.note);
+
+        assert.equal(noted.length, 1, `one box carries a note at fill ${potentialFillCount}`);
+        assert.match(noted[0].title, /potential/i);
+        assert.match(noted[0].note, /grant/i, noted[0].note);
+        assert.match(noted[0].note, /ceiling/i, noted[0].note);
+
+        if (expectsCoverage) {
+            // Denominator is the confirmed count — the same universe the box
+            // sums — never the full row count.
+            assert.ok(noted[0].note.includes('93'), noted[0].note);
+            assert.ok(noted[0].note.includes('172'), noted[0].note);
+            assert.ok(!noted[0].note.includes('177'), noted[0].note);
+        } else {
+            assert.doesNotMatch(noted[0].note, /\d/, `full coverage still counted awards: ${noted[0].note}`);
+        }
+    }
 });
 
-test('valueBoxNote says nothing when the fill count was not computed', () => {
-    assert.equal(valueBoxNote('cancellations', confirmedStats({ potentialFillCount: undefined })), '');
+// --- claimBadgeModel ---------------------------------------------------------
+
+/**
+ * Normalize one DOGE fixture row
+ * @param {Object} [overrides] - Raw column overrides
+ * @returns {Object} Normalized row
+ */
+function claimRow(overrides = {}) {
+    return normalizeDogeClaims([dogeClaimRow(overrides)]).rows[0];
+}
+
+test('claimBadgeModel labels a claim on the same rubric the bar segments by', () => {
+    // The table badge and the chart segment must name the same four states —
+    // not two vocabularies for one classification.
+    for (const outcome of OUTCOME_ORDER) {
+        const badge = claimBadgeModel({ _outcome: outcome });
+
+        assert.equal(badge.label, OUTCOME_META[outcome].short, outcome);
+        assert.ok(badge.className.includes(OUTCOME_META[outcome].badgeClass), outcome);
+        assert.ok(SEGMENT_META[outcome], `${outcome} is also a bar segment`);
+    }
+});
+
+test('claimBadgeModel follows the federal record, not the label DOGE published', () => {
+    // DOGE said "Expired"; the record carries an explicit termination.
+    const disagreeing = claimRow({ doge_status: 'Expired', has_explicit_termination: 'true' });
+
+    assert.equal(disagreeing._outcome, 'terminated');
+    assert.equal(claimBadgeModel(disagreeing).label, OUTCOME_META.terminated.short);
+    // DOGE's own wording survives on the row for the card to show
+    assert.equal(disagreeing._statusLabel, 'Expired');
+});
+
+test('claimBadgeModel separates an award that ran out from one still running', () => {
+    const expired = claimRow({ has_explicit_termination: 'false', current_end_date: '2025-01-01' });
+    const stillActive = claimRow({ has_explicit_termination: 'false', current_end_date: '2030-01-01' });
+
+    assert.equal(claimBadgeModel(expired).label, OUTCOME_META.ended.short);
+    assert.equal(claimBadgeModel(stillActive).label, OUTCOME_META.active.short);
+    assert.notEqual(claimBadgeModel(expired).label, claimBadgeModel(stillActive).label);
+});
+
+test('a claim card wears the same badge the table gives it', () => {
+    const row = claimRow({ has_explicit_termination: 'false', current_end_date: '2025-01-01' });
+
+    assert.deepEqual(claimCardModel(row).badge, claimBadgeModel(row));
+});
+
+test('claimBadgeModel degrades to a neutral badge for an unclassified row', () => {
+    const badge = claimBadgeModel({});
+
+    assert.ok(badge.label.length > 0);
+    assert.match(badge.className, /badge/);
 });
 
 // --- renderOutcomeBar --------------------------------------------------------
@@ -399,18 +421,18 @@ test('valueBoxNote says nothing when the fill count was not computed', () => {
 test('renderOutcomeBar draws one segment per non-zero outcome', () => {
     const html = renderOutcomeBar(outcomeMixFixture());
 
-    assert.equal(occurrences(html, 'seg-bar__segment'), 3);
+    assert.equal(occurrences(html, 'seg-bar__segment'), BAR_SEGMENTS.length);
 });
 
 test('renderOutcomeBar drops zero-count segments from the bar', () => {
     const html = renderOutcomeBar(outcomeMixFixture({ unmatched: 0 }));
 
-    assert.equal(occurrences(html, 'seg-bar__segment'), 2);
+    assert.equal(occurrences(html, 'seg-bar__segment'), BAR_SEGMENTS.length - 1);
     assert.ok(!html.includes(SEGMENT_META.unmatched.segClass), html);
 });
 
 test('renderOutcomeBar segment widths sum to 100 percent', () => {
-    for (const mix of [outcomeMixFixture(), outcomeMixFixture({ unmatched: 0 }), { terminated: 1, noTermination: 0, unmatched: 0 }]) {
+    for (const mix of [outcomeMixFixture(), outcomeMixFixture({ unmatched: 0 }), { ...Object.fromEntries(BAR_SEGMENTS.map((segment) => [segment, 0])), terminated: 1 }]) {
         const widths = segmentWidths(renderOutcomeBar(mix));
         const total = widths.reduce((sum, width) => sum + width, 0);
         assert.ok(Math.abs(total - 100) < 0.05, `widths ${widths.join('/')} summed to ${total}`);
@@ -418,9 +440,9 @@ test('renderOutcomeBar segment widths sum to 100 percent', () => {
 });
 
 test('renderOutcomeBar sizes segments in proportion to their counts', () => {
-    const widths = segmentWidths(renderOutcomeBar({ terminated: 75, noTermination: 20, unmatched: 5 }));
+    const widths = segmentWidths(renderOutcomeBar({ terminated: 75, ended: 15, active: 5, unmatched: 5 }));
 
-    assert.deepEqual(widths, [75, 20, 5]);
+    assert.deepEqual(widths, [75, 15, 5, 5]);
 });
 
 test('renderOutcomeBar exposes the whole mix to assistive tech', () => {
@@ -430,7 +452,8 @@ test('renderOutcomeBar exposes the whole mix to assistive tech', () => {
         assert.ok(label.includes(`${SEGMENT_META[key].label}: `), `${key} missing from ${label}`);
     }
     assert.ok(label.includes('89'), label);
-    assert.ok(label.includes('19'), label);
+    assert.ok(label.includes('11'), label);
+    assert.ok(label.includes('8'), label);
     assert.ok(label.includes('4'), label);
 });
 
@@ -445,7 +468,7 @@ test('renderOutcomeBar marks the bar as an image, not decoration', () => {
 });
 
 test('renderOutcomeBar renders nothing for an empty mix', () => {
-    assert.equal(renderOutcomeBar({ terminated: 0, noTermination: 0, unmatched: 0 }), '');
+    assert.equal(renderOutcomeBar(Object.fromEntries(BAR_SEGMENTS.map((segment) => [segment, 0]))), '');
 });
 
 // --- renderOutcomeLegend -----------------------------------------------------
@@ -453,20 +476,21 @@ test('renderOutcomeBar renders nothing for an empty mix', () => {
 test('renderOutcomeLegend lists every segment with its label and count', () => {
     const html = renderOutcomeLegend(outcomeMixFixture());
 
-    assert.equal(occurrences(html, 'seg-legend-item'), 3);
+    assert.equal(occurrences(html, 'seg-legend-item'), BAR_SEGMENTS.length);
     for (const key of BAR_SEGMENTS) {
         assert.ok(html.includes(SEGMENT_META[key].label), key);
         assert.ok(html.includes(SEGMENT_META[key].segClass), key);
     }
-    assert.ok(html.includes('>89<'), html);
-    assert.ok(html.includes('>19<'), html);
-    assert.ok(html.includes('>4<'), html);
+    const mix = outcomeMixFixture();
+    for (const key of BAR_SEGMENTS) {
+        assert.ok(html.includes(`>${mix[key]}<`), `${key} count missing from ${html}`);
+    }
 });
 
 test('renderOutcomeLegend keeps a zero segment visible and marks it zero', () => {
     const html = renderOutcomeLegend(outcomeMixFixture({ unmatched: 0 }));
 
-    assert.equal(occurrences(html, 'seg-legend-item"'), 2);
+    assert.equal(occurrences(html, 'seg-legend-item"'), BAR_SEGMENTS.length - 1);
     assert.equal(occurrences(html, 'seg-legend-item--zero'), 1);
     assert.ok(html.includes(SEGMENT_META.unmatched.label), html);
     assert.ok(html.includes('>0<'), html);
@@ -477,13 +501,13 @@ test('renderOutcomeLegend marks nothing zero when every segment has a count', ()
 });
 
 test('renderOutcomeLegend still renders for an all-zero mix', () => {
-    const html = renderOutcomeLegend({ terminated: 0, noTermination: 0, unmatched: 0 });
+    const html = renderOutcomeLegend(Object.fromEntries(BAR_SEGMENTS.map((segment) => [segment, 0])));
 
-    assert.equal(occurrences(html, 'seg-legend-item--zero'), 3);
+    assert.equal(occurrences(html, 'seg-legend-item--zero'), BAR_SEGMENTS.length);
 });
 
 test('renderOutcomeLegend thousands-separates its counts', () => {
-    assert.ok(renderOutcomeLegend({ terminated: 1234, noTermination: 1, unmatched: 0 }).includes('1,234'));
+    assert.ok(renderOutcomeLegend({ ...Object.fromEntries(BAR_SEGMENTS.map((segment) => [segment, 0])), terminated: 1234 }).includes('1,234'));
 });
 
 // --- renderOutcomeDefinitions ------------------------------------------------
@@ -491,8 +515,8 @@ test('renderOutcomeLegend thousands-separates its counts', () => {
 test('renderOutcomeDefinitions prints one visible definition per segment', () => {
     const html = renderOutcomeDefinitions();
 
-    assert.equal(occurrences(html, '<li>'), 3);
-    assert.equal(occurrences(html, '</li>'), 3);
+    assert.equal(occurrences(html, '<li>'), BAR_SEGMENTS.length);
+    assert.equal(occurrences(html, '</li>'), BAR_SEGMENTS.length);
     for (const key of BAR_SEGMENTS) {
         assert.ok(html.includes(SEGMENT_META[key].label), `${key} label`);
         assert.ok(html.includes(SEGMENT_META[key].description), `${key} description`);
@@ -502,7 +526,7 @@ test('renderOutcomeDefinitions prints one visible definition per segment', () =>
 test('renderOutcomeDefinitions pairs each term with its own description', () => {
     const items = renderOutcomeDefinitions().match(/<li>[\s\S]*?<\/li>/g);
 
-    assert.equal(items.length, 3);
+    assert.equal(items.length, BAR_SEGMENTS.length);
     items.forEach((item, index) => {
         const key = BAR_SEGMENTS[index];
         assert.ok(item.includes(`>${SEGMENT_META[key].label}<`), item);
@@ -514,7 +538,7 @@ test('renderOutcomeDefinitions carries the definitions as text, not tooltips', (
     const html = renderOutcomeDefinitions();
 
     assert.ok(!html.includes('title='), html);
-    assert.ok(textOf(html).includes(SEGMENT_META.noTermination.description));
+    assert.ok(textOf(html).includes(SEGMENT_META.ended.description));
 });
 
 test('renderOutcomeDefinitions emits no unescaped markup in its text nodes', () => {
@@ -553,6 +577,6 @@ test('bar and legend both carry all three ramp classes for a full mix', () => {
 test('the legend keeps the ramp class of a segment the bar dropped', () => {
     const mix = outcomeMixFixture({ unmatched: 0 });
 
-    assert.ok(!renderOutcomeBar(mix).includes('seg--outcome-weak'));
-    assert.ok(renderOutcomeLegend(mix).includes('seg--outcome-weak'));
+    assert.ok(!renderOutcomeBar(mix).includes(SEGMENT_META.unmatched.segClass));
+    assert.ok(renderOutcomeLegend(mix).includes(SEGMENT_META.unmatched.segClass));
 });

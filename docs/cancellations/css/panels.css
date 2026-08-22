@@ -7,73 +7,51 @@
  * what those don't cover.
  */
 
-/* --- Panel headline: the count next to the noun it counts --- */
-
-/* The .dashboard container has no horizontal padding — standalone text
-   blocks carry their own side margins, matching the lens bar's inset. */
-.panel-headline-block {
-  margin: var(--space-4, 1rem) var(--space-4, 1rem) var(--space-2, 0.5rem);
-}
-
-.panel-headline {
-  font-size: var(--text-xl, 1.25rem);
-  font-weight: 600;
-  color: var(--gray-800, #27272a);
-  margin: 0 0 0.25rem;
-}
-
 /* Prose notes share one treatment: body-size at AA contrast — never the
    12px gray-400 footnote look, which fails WCAG and reads as fine print.
-   (.panel-note = disclosure lines; .freshness-bar = data date;
-   .outcome-lead = DOGE card lead; .fy-caption = chart qualifier;
-   .district-group-note = empty-state lines; .seg-definitions below.) */
-.panel-note,
+   (.freshness-bar = data date; .district-group-note = empty-state lines;
+   .seg-definitions below. Per-figure caveats are not prose blocks at all —
+   they ride their value box as a hover/focus note.) */
 .freshness-bar,
-.outcome-lead,
-.fy-caption,
 .district-group-note {
   font-size: var(--text-sm, 0.875rem);
   color: var(--gray-600, #52525b);
 }
 
-.panel-note {
-  margin: 0;
-  max-width: 70ch;
-}
+/* --- Freshness line (sits at the bottom of the dashboard) --- */
 
-/* --- Persistent freshness line --- */
-
+/* The .dashboard container has no horizontal padding — standalone text blocks
+   carry their own side margins, matching the tab bar's inset. */
 .freshness-bar {
-  margin: var(--space-2, 0.5rem) var(--space-4, 1rem) var(--space-4, 1rem);
-}
-
-/* The value-box caveat sits directly in the section, outside any card */
-#value-boxes-note {
-  margin: var(--space-2, 0.5rem) var(--space-4, 1rem) 0;
-}
-
-/* --- DOGE outcome card --- */
-
-.outcome-lead {
-  margin: 0 0 var(--space-3, 0.75rem);
-  max-width: 70ch;
+  margin: var(--space-4, 1rem) var(--space-4, 1rem) var(--space-2, 0.5rem);
 }
 
 /*
- * Outcome ramp — validated red ordinal ramp for the segmented bar and its
- * legend swatches. (Table cells and award cards wear the shared .badge
- * family instead, so every award displays alike across panels.)
+ * Outcome ramp — the segmented bar and its legend swatches. (Table cells and
+ * award cards wear the shared .badge family instead, so every award displays
+ * alike across panels.)
  *
- * red-800/600/400 (#991B1B / #DC2626 / #F87171) passes all-pairs CVD
- * separation and both themes (dataviz validate_palette.js). The light end's
- * contrast WARN is relieved only because the legend prints counts and the
- * panel table exists — if either is dropped this becomes a hard fail. Do
- * not swap these values without re-running the validator.
+ * Three reds descending by strength of termination evidence — red-800/600/400
+ * (#991B1B / #DC2626 / #F87171), lightness rising monotonically, which is the
+ * check that governs a sequential ramp; the dataviz categorical validator FAILs
+ * any sequential ramp by design. Against the light surface they clear its
+ * lightness band and adjacent-pair CVD separation.
+ *
+ * Neutral gray closes the bar for claims with no federal record at all. It is
+ * deliberately NOT a fourth red step: an unmatched claim is missing evidence
+ * rather than weaker evidence, and one hue cannot carry four steps that stay
+ * apart (every 4-red candidate fails the validator's separation floor).
+ *
+ * The light end's sub-3:1 contrast is relieved only because the legend prints
+ * counts, the definitions list is visible, and the panel table exists — drop
+ * any of the three and this becomes a hard fail. Do not swap these values
+ * without re-running the validator.
  */
 :root {
   --outcome-strong: var(--red-800, #991b1b);
   --outcome-mid: var(--red-600, #dc2626);
   --outcome-weak: var(--red-400, #f87171);
+  --outcome-none: var(--gray-400, #a1a1aa);
 }
 
 .seg--outcome-strong {
@@ -88,6 +66,10 @@
   background-color: var(--outcome-weak);
 }
 
+.seg--outcome-none {
+  background-color: var(--outcome-none);
+}
+
 /* Visible definitions under the segment legend (no title-attribute-only
    tooltips — they're dead on touch and invisible to keyboards). */
 .seg-definitions {
@@ -95,7 +77,7 @@
   padding: 0;
   margin: var(--space-2, 0.5rem) 0 0;
   font-size: var(--text-sm, 0.875rem);
-  color: var(--gray-600, #52525b); /* same prose treatment as .panel-note */
+  color: var(--gray-600, #52525b); /* same prose treatment as .freshness-bar */
 }
 
 .seg-definitions li {
@@ -105,15 +87,6 @@
 .seg-definitions .seg-term {
   font-weight: 600;
   color: var(--gray-700, #3f3f46);
-}
-
-/* --- FY chart caption ---
- * ABOVE the chart: the universe qualifier must be read before the bars, and
- * survives partial screenshots better than a footnote below them would.
- */
-.fy-caption {
-  margin: 0 0 var(--space-3, 0.75rem);
-  max-width: 80ch;
 }
 
 /* --- District page: one labelled group per dataset --- */
@@ -168,10 +141,21 @@
   }
 }
 
-/* --- Mobile --- */
+/* --- Rollup tables on phones ---
+   The map stays; the By-District / By-Recipient rollups do not. Grid.js keeps
+   its search box, pagination and multi-column layout at every width, so on a
+   phone these become two cramped tables stacked above the award table that
+   already lists the same awards — and any district's own figures are one tap
+   away on its page.
+
+   Scoped to this file because .tables-container is shared markup: the
+   nasa-science dashboard uses it too and keeps its tables at every width.
+
+   display:none rather than removing the markup: the tables are still built, so
+   turning a phone to landscape shows them with no re-render. */
 
 @media (max-width: 768px) {
-  .panel-headline {
-    font-size: var(--text-lg, 1.125rem);
+  .tables-container {
+    display: none;
   }
 }

@@ -1,603 +1,99 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      NASA Cancellations by Congressional District | The Planetary Society
-    </title>
-    <meta
-      name="description"
-      content="NASA award cancellations and DOGE claims in 78 congressional districts, one page per district, from federal award records."
-    />
-    <meta name="author" content="Casey Dreier/The Planetary Society" />
-    <meta name="theme-color" content="#037cc2" />
-    <link
-      rel="canonical"
-      href="https://dashboards.planetary.org/cancellations/districts/"
-    />
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NASA Cancellations by Congressional District | The Planetary Society</title>
+<meta name="description" content="NASA award cancellations and DOGE claims in 78 congressional districts, one page per district, from federal award records.">
+<meta name="author" content="Casey Dreier/The Planetary Society">
+<meta name="theme-color" content="#037cc2">
+<link rel="canonical" href="https://dashboards.planetary.org/cancellations/districts/">
 
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="https://www.planetary.org/img/site/apple-touch-icon-180x180.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="https://www.planetary.org/img/site/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="https://www.planetary.org/img/site/favicon-16x16.png"
-    />
-    <link
-      rel="shortcut icon"
-      href="https://www.planetary.org/img/site/favicon.ico"
-    />
+<link rel="apple-touch-icon" sizes="180x180" href="https://www.planetary.org/img/site/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.planetary.org/img/site/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.planetary.org/img/site/favicon-16x16.png">
+<link rel="shortcut icon" href="https://www.planetary.org/img/site/favicon.ico">
 
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="The Planetary Society" />
-    <meta
-      property="og:title"
-      content="NASA Cancellations by Congressional District | The Planetary Society"
-    />
-    <meta
-      property="og:description"
-      content="NASA award cancellations and DOGE claims in 78 congressional districts, one page per district, from federal award records."
-    />
-    <meta
-      property="og:url"
-      content="https://dashboards.planetary.org/cancellations/districts/"
-    />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@exploreplanets" />
-    <meta
-      name="twitter:title"
-      content="NASA Cancellations by Congressional District | The Planetary Society"
-    />
-    <meta
-      name="twitter:description"
-      content="NASA award cancellations and DOGE claims in 78 congressional districts, one page per district, from federal award records."
-    />
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Planetary Society">
+<meta property="og:title" content="NASA Cancellations by Congressional District | The Planetary Society">
+<meta property="og:description" content="NASA award cancellations and DOGE claims in 78 congressional districts, one page per district, from federal award records.">
+<meta property="og:url" content="https://dashboards.planetary.org/cancellations/districts/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@exploreplanets">
+<meta name="twitter:title" content="NASA Cancellations by Congressional District | The Planetary Society">
+<meta name="twitter:description" content="NASA award cancellations and DOGE claims in 78 congressional districts, one page per district, from federal award records.">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&amp;display=swap"
-      rel="stylesheet"
-    />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../shared/css/variables.css" />
-    <link rel="stylesheet" href="../../shared/css/base.css" />
-    <link rel="stylesheet" href="../../shared/css/components.css" />
-    <link rel="stylesheet" href="../../shared/css/layout.css" />
-    <link rel="stylesheet" href="../css/panels.css" />
-  </head>
-  <body>
-    <header class="navbar">
-      <div class="navbar-brand">
-        <a
-          href="https://planetary.org"
-          target="_blank"
-          rel="noopener"
-          class="navbar-logo-link"
-          title="The Planetary Society"
-        >
-          <img
-            src="../../shared/img/TPS_Logo_3Stack-White.png"
-            alt="The Planetary Society"
-            class="navbar-logo"
-          />
-        </a>
-        <a href="../" class="navbar-title-link"
-          ><span class="navbar-title"
-            >NASA Contract &amp; Grant Cancellations Tracker</span
-          ></a
-        >
-      </div>
-      <nav class="navbar-nav">
-        <a href="mailto:casey.dreier@planetary.org" class="navbar-contact"
-          >Contact</a
-        >
-      </nav>
-    </header>
-    <main class="dashboard">
-      <section class="district-summary-section">
-        <div class="district-summary-header">
-          <h1 class="district-title">
-            NASA Cancellations by Congressional District
-          </h1>
-        </div>
-        <p class="district-summary-stats">
-          NASA award cancellations and DOGE claims in 78 congressional
-          districts, one page per district, from federal award records.
-        </p>
-        <section class="district-group">
-          <h2 class="district-group-heading">Alaska</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="AK-00/">AK-00</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Alabama</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="AL-05/">AL-05</a> &mdash; 2 confirmed terminations, 1
-              DOGE claim
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Arkansas</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="AR-04/">AR-04</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">California</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="CA-11/">CA-11</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-            <li>
-              <a href="CA-14/">CA-14</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-            <li>
-              <a href="CA-16/">CA-16</a> &mdash; 5 confirmed terminations, 2
-              DOGE claims
-            </li>
-            <li>
-              <a href="CA-20/">CA-20</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-            <li>
-              <a href="CA-24/">CA-24</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-            <li>
-              <a href="CA-28/">CA-28</a> &mdash; 4 confirmed terminations, 0
-              DOGE claims
-            </li>
-            <li>
-              <a href="CA-30/">CA-30</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-            <li>
-              <a href="CA-34/">CA-34</a> &mdash; 2 confirmed terminations, 0
-              DOGE claims
-            </li>
-            <li>
-              <a href="CA-36/">CA-36</a> &mdash; 4 confirmed terminations, 2
-              DOGE claims
-            </li>
-            <li>
-              <a href="CA-47/">CA-47</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-            <li>
-              <a href="CA-51/">CA-51</a> &mdash; 2 confirmed terminations, 1
-              DOGE claim
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Colorado</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="CO-02/">CO-02</a> &mdash; 3 confirmed terminations, 1
-              DOGE claim
-            </li>
-            <li>
-              <a href="CO-03/">CO-03</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-            <li>
-              <a href="CO-05/">CO-05</a> &mdash; 2 confirmed terminations, 2
-              DOGE claims
-            </li>
-            <li>
-              <a href="CO-06/">CO-06</a> &mdash; 0 confirmed terminations, 1
-              DOGE claim
-            </li>
-            <li>
-              <a href="CO-07/">CO-07</a> &mdash; 2 confirmed terminations, 0
-              DOGE claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Connecticut</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="CT-04/">CT-04</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">District of Columbia</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="DC-98/">DC-98</a> &mdash; 9 confirmed terminations, 6
-              DOGE claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Delaware</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="DE-00/">DE-00</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Florida</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="FL-03/">FL-03</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-            <li>
-              <a href="FL-07/">FL-07</a> &mdash; 4 confirmed terminations, 3
-              DOGE claims
-            </li>
-            <li>
-              <a href="FL-08/">FL-08</a> &mdash; 2 confirmed terminations, 3
-              DOGE claims
-            </li>
-            <li>
-              <a href="FL-09/">FL-09</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-            <li>
-              <a href="FL-16/">FL-16</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Georgia</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="GA-05/">GA-05</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Iowa</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="IA-01/">IA-01</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Illinois</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="IL-05/">IL-05</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-            <li>
-              <a href="IL-07/">IL-07</a> &mdash; 2 confirmed terminations, 2
-              DOGE claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Indiana</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="IN-02/">IN-02</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-            <li>
-              <a href="IN-06/">IN-06</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-            <li>
-              <a href="IN-07/">IN-07</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-            <li>
-              <a href="IN-09/">IN-09</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Massachusetts</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="MA-03/">MA-03</a> &mdash; 2 confirmed terminations, 2
-              DOGE claims
-            </li>
-            <li>
-              <a href="MA-05/">MA-05</a> &mdash; 2 confirmed terminations, 1
-              DOGE claim
-            </li>
-            <li>
-              <a href="MA-07/">MA-07</a> &mdash; 3 confirmed terminations, 3
-              DOGE claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Maryland</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="MD-01/">MD-01</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-            <li>
-              <a href="MD-03/">MD-03</a> &mdash; 6 confirmed terminations, 2
-              DOGE claims
-            </li>
-            <li>
-              <a href="MD-04/">MD-04</a> &mdash; 3 confirmed terminations, 0
-              DOGE claims
-            </li>
-            <li>
-              <a href="MD-05/">MD-05</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-            <li>
-              <a href="MD-06/">MD-06</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-            <li>
-              <a href="MD-07/">MD-07</a> &mdash; 3 confirmed terminations, 2
-              DOGE claims
-            </li>
-            <li>
-              <a href="MD-08/">MD-08</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Michigan</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="MI-12/">MI-12</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Minnesota</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="MN-05/">MN-05</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Mississippi</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="MS-04/">MS-04</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Montana</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="MT-01/">MT-01</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">North Carolina</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="NC-04/">NC-04</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Nebraska</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="NE-03/">NE-03</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">New York</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="NY-12/">NY-12</a> &mdash; 2 confirmed terminations, 0
-              DOGE claims
-            </li>
-            <li>
-              <a href="NY-13/">NY-13</a> &mdash; 3 confirmed terminations, 3
-              DOGE claims
-            </li>
-            <li>
-              <a href="NY-19/">NY-19</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-            <li>
-              <a href="NY-24/">NY-24</a> &mdash; 0 confirmed terminations, 1
-              DOGE claim
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Ohio</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="OH-07/">OH-07</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-            <li>
-              <a href="OH-11/">OH-11</a> &mdash; 4 confirmed terminations, 7
-              DOGE claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Oklahoma</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="OK-03/">OK-03</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-            <li>
-              <a href="OK-04/">OK-04</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Oregon</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="OR-01/">OR-01</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Pennsylvania</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="PA-04/">PA-04</a> &mdash; 2 confirmed terminations, 1
-              DOGE claim
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Rhode Island</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="RI-01/">RI-01</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Texas</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="TX-07/">TX-07</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-            <li>
-              <a href="TX-15/">TX-15</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-            <li>
-              <a href="TX-18/">TX-18</a> &mdash; 3 confirmed terminations, 2
-              DOGE claims
-            </li>
-            <li>
-              <a href="TX-20/">TX-20</a> &mdash; 2 confirmed terminations, 0
-              DOGE claims
-            </li>
-            <li>
-              <a href="TX-22/">TX-22</a> &mdash; 2 confirmed terminations, 0
-              DOGE claims
-            </li>
-            <li>
-              <a href="TX-25/">TX-25</a> &mdash; 3 confirmed terminations, 2
-              DOGE claims
-            </li>
-            <li>
-              <a href="TX-26/">TX-26</a> &mdash; 2 confirmed terminations, 2
-              DOGE claims
-            </li>
-            <li>
-              <a href="TX-36/">TX-36</a> &mdash; 9 confirmed terminations, 11
-              DOGE claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Virginia</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="VA-03/">VA-03</a> &mdash; 5 confirmed terminations, 0
-              DOGE claims
-            </li>
-            <li>
-              <a href="VA-04/">VA-04</a> &mdash; 2 confirmed terminations, 2
-              DOGE claims
-            </li>
-            <li>
-              <a href="VA-08/">VA-08</a> &mdash; 12 confirmed terminations, 8
-              DOGE claims
-            </li>
-            <li>
-              <a href="VA-09/">VA-09</a> &mdash; 2 confirmed terminations, 2
-              DOGE claims
-            </li>
-            <li>
-              <a href="VA-11/">VA-11</a> &mdash; 19 confirmed terminations, 12
-              DOGE claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Washington</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="WA-02/">WA-02</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">Wisconsin</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="WI-07/">WI-07</a> &mdash; 1 confirmed termination, 0 DOGE
-              claims
-            </li>
-          </ul>
-        </section>
-        <section class="district-group">
-          <h2 class="district-group-heading">West Virginia</h2>
-          <ul class="district-index-list">
-            <li>
-              <a href="WV-02/">WV-02</a> &mdash; 1 confirmed termination, 1 DOGE
-              claim
-            </li>
-          </ul>
-        </section>
-        <p class="freshness-bar">Data updated August 21, 2026</p>
-        <footer class="site-footer">
-          <nav aria-label="Site">
-            <a href="./">All districts</a>
-            <a href="../">Interactive dashboard</a>
-            <a href="../../">Dashboards home</a>
-            <a href="https://planetary.org">The Planetary Society</a>
-          </nav>
-        </footer>
-      </section>
-    </main>
-  </body>
+<link rel="stylesheet" href="../../shared/css/variables.css">
+<link rel="stylesheet" href="../../shared/css/base.css">
+<link rel="stylesheet" href="../../shared/css/components.css">
+<link rel="stylesheet" href="../../shared/css/layout.css">
+<link rel="stylesheet" href="../css/panels.css">
+</head>
+<body>
+<header class="navbar">
+<div class="navbar-brand">
+<a href="https://planetary.org" target="_blank" rel="noopener" class="navbar-logo-link" title="The Planetary Society">
+<img src="../../shared/img/TPS_Logo_3Stack-White.png" alt="The Planetary Society" class="navbar-logo">
+</a>
+<a href="../" class="navbar-title-link"><span class="navbar-title">NASA Contract &amp; Grant Cancellations Tracker</span></a>
+</div>
+<nav class="navbar-nav">
+<a href="mailto:casey.dreier@planetary.org" class="navbar-contact">Contact</a>
+</nav>
+</header>
+<main class="dashboard">
+<section class="district-summary-section">
+<div class="district-summary-header">
+<h1 class="district-title">NASA Cancellations by Congressional District</h1>
+</div>
+<p class="district-summary-stats">NASA award cancellations and DOGE claims in 78 congressional districts, one page per district, from federal award records.</p>
+<section class="district-group"><h2 class="district-group-heading">Alaska</h2><ul class="district-index-list"><li><a href="AK-00/">AK-00</a> &mdash; 1 confirmed termination, 1 DOGE claim</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Alabama</h2><ul class="district-index-list"><li><a href="AL-05/">AL-05</a> &mdash; 2 confirmed terminations, 1 DOGE claim</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Arkansas</h2><ul class="district-index-list"><li><a href="AR-04/">AR-04</a> &mdash; 1 confirmed termination, 1 DOGE claim</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">California</h2><ul class="district-index-list"><li><a href="CA-11/">CA-11</a> &mdash; 1 confirmed termination, 0 DOGE claims</li><li><a href="CA-14/">CA-14</a> &mdash; 1 confirmed termination, 0 DOGE claims</li><li><a href="CA-16/">CA-16</a> &mdash; 5 confirmed terminations, 2 DOGE claims</li><li><a href="CA-20/">CA-20</a> &mdash; 1 confirmed termination, 1 DOGE claim</li><li><a href="CA-24/">CA-24</a> &mdash; 1 confirmed termination, 1 DOGE claim</li><li><a href="CA-28/">CA-28</a> &mdash; 4 confirmed terminations, 0 DOGE claims</li><li><a href="CA-30/">CA-30</a> &mdash; 1 confirmed termination, 0 DOGE claims</li><li><a href="CA-34/">CA-34</a> &mdash; 2 confirmed terminations, 0 DOGE claims</li><li><a href="CA-36/">CA-36</a> &mdash; 4 confirmed terminations, 2 DOGE claims</li><li><a href="CA-47/">CA-47</a> &mdash; 1 confirmed termination, 0 DOGE claims</li><li><a href="CA-51/">CA-51</a> &mdash; 2 confirmed terminations, 1 DOGE claim</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Colorado</h2><ul class="district-index-list"><li><a href="CO-02/">CO-02</a> &mdash; 3 confirmed terminations, 1 DOGE claim</li><li><a href="CO-03/">CO-03</a> &mdash; 1 confirmed termination, 0 DOGE claims</li><li><a href="CO-05/">CO-05</a> &mdash; 2 confirmed terminations, 2 DOGE claims</li><li><a href="CO-06/">CO-06</a> &mdash; 0 confirmed terminations, 1 DOGE claim</li><li><a href="CO-07/">CO-07</a> &mdash; 2 confirmed terminations, 0 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Connecticut</h2><ul class="district-index-list"><li><a href="CT-04/">CT-04</a> &mdash; 1 confirmed termination, 1 DOGE claim</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">District of Columbia</h2><ul class="district-index-list"><li><a href="DC-98/">DC-98</a> &mdash; 9 confirmed terminations, 6 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Delaware</h2><ul class="district-index-list"><li><a href="DE-00/">DE-00</a> &mdash; 1 confirmed termination, 0 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Florida</h2><ul class="district-index-list"><li><a href="FL-03/">FL-03</a> &mdash; 1 confirmed termination, 0 DOGE claims</li><li><a href="FL-07/">FL-07</a> &mdash; 4 confirmed terminations, 3 DOGE claims</li><li><a href="FL-08/">FL-08</a> &mdash; 2 confirmed terminations, 3 DOGE claims</li><li><a href="FL-09/">FL-09</a> &mdash; 1 confirmed termination, 0 DOGE claims</li><li><a href="FL-16/">FL-16</a> &mdash; 1 confirmed termination, 0 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Georgia</h2><ul class="district-index-list"><li><a href="GA-05/">GA-05</a> &mdash; 1 confirmed termination, 1 DOGE claim</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Iowa</h2><ul class="district-index-list"><li><a href="IA-01/">IA-01</a> &mdash; 1 confirmed termination, 1 DOGE claim</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Illinois</h2><ul class="district-index-list"><li><a href="IL-05/">IL-05</a> &mdash; 1 confirmed termination, 0 DOGE claims</li><li><a href="IL-07/">IL-07</a> &mdash; 2 confirmed terminations, 2 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Indiana</h2><ul class="district-index-list"><li><a href="IN-02/">IN-02</a> &mdash; 1 confirmed termination, 0 DOGE claims</li><li><a href="IN-06/">IN-06</a> &mdash; 1 confirmed termination, 0 DOGE claims</li><li><a href="IN-07/">IN-07</a> &mdash; 1 confirmed termination, 0 DOGE claims</li><li><a href="IN-09/">IN-09</a> &mdash; 1 confirmed termination, 0 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Massachusetts</h2><ul class="district-index-list"><li><a href="MA-03/">MA-03</a> &mdash; 2 confirmed terminations, 2 DOGE claims</li><li><a href="MA-05/">MA-05</a> &mdash; 2 confirmed terminations, 1 DOGE claim</li><li><a href="MA-07/">MA-07</a> &mdash; 3 confirmed terminations, 3 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Maryland</h2><ul class="district-index-list"><li><a href="MD-01/">MD-01</a> &mdash; 1 confirmed termination, 0 DOGE claims</li><li><a href="MD-03/">MD-03</a> &mdash; 6 confirmed terminations, 2 DOGE claims</li><li><a href="MD-04/">MD-04</a> &mdash; 3 confirmed terminations, 0 DOGE claims</li><li><a href="MD-05/">MD-05</a> &mdash; 1 confirmed termination, 1 DOGE claim</li><li><a href="MD-06/">MD-06</a> &mdash; 1 confirmed termination, 1 DOGE claim</li><li><a href="MD-07/">MD-07</a> &mdash; 3 confirmed terminations, 2 DOGE claims</li><li><a href="MD-08/">MD-08</a> &mdash; 1 confirmed termination, 1 DOGE claim</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Michigan</h2><ul class="district-index-list"><li><a href="MI-12/">MI-12</a> &mdash; 1 confirmed termination, 0 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Minnesota</h2><ul class="district-index-list"><li><a href="MN-05/">MN-05</a> &mdash; 1 confirmed termination, 0 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Mississippi</h2><ul class="district-index-list"><li><a href="MS-04/">MS-04</a> &mdash; 1 confirmed termination, 0 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Montana</h2><ul class="district-index-list"><li><a href="MT-01/">MT-01</a> &mdash; 1 confirmed termination, 0 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">North Carolina</h2><ul class="district-index-list"><li><a href="NC-04/">NC-04</a> &mdash; 1 confirmed termination, 1 DOGE claim</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Nebraska</h2><ul class="district-index-list"><li><a href="NE-03/">NE-03</a> &mdash; 1 confirmed termination, 1 DOGE claim</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">New York</h2><ul class="district-index-list"><li><a href="NY-12/">NY-12</a> &mdash; 2 confirmed terminations, 0 DOGE claims</li><li><a href="NY-13/">NY-13</a> &mdash; 3 confirmed terminations, 3 DOGE claims</li><li><a href="NY-19/">NY-19</a> &mdash; 1 confirmed termination, 1 DOGE claim</li><li><a href="NY-24/">NY-24</a> &mdash; 0 confirmed terminations, 1 DOGE claim</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Ohio</h2><ul class="district-index-list"><li><a href="OH-07/">OH-07</a> &mdash; 1 confirmed termination, 1 DOGE claim</li><li><a href="OH-11/">OH-11</a> &mdash; 4 confirmed terminations, 7 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Oklahoma</h2><ul class="district-index-list"><li><a href="OK-03/">OK-03</a> &mdash; 1 confirmed termination, 1 DOGE claim</li><li><a href="OK-04/">OK-04</a> &mdash; 1 confirmed termination, 1 DOGE claim</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Oregon</h2><ul class="district-index-list"><li><a href="OR-01/">OR-01</a> &mdash; 1 confirmed termination, 1 DOGE claim</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Pennsylvania</h2><ul class="district-index-list"><li><a href="PA-04/">PA-04</a> &mdash; 2 confirmed terminations, 1 DOGE claim</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Rhode Island</h2><ul class="district-index-list"><li><a href="RI-01/">RI-01</a> &mdash; 1 confirmed termination, 1 DOGE claim</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Texas</h2><ul class="district-index-list"><li><a href="TX-07/">TX-07</a> &mdash; 1 confirmed termination, 1 DOGE claim</li><li><a href="TX-15/">TX-15</a> &mdash; 1 confirmed termination, 1 DOGE claim</li><li><a href="TX-18/">TX-18</a> &mdash; 3 confirmed terminations, 2 DOGE claims</li><li><a href="TX-20/">TX-20</a> &mdash; 2 confirmed terminations, 0 DOGE claims</li><li><a href="TX-22/">TX-22</a> &mdash; 2 confirmed terminations, 0 DOGE claims</li><li><a href="TX-25/">TX-25</a> &mdash; 3 confirmed terminations, 2 DOGE claims</li><li><a href="TX-26/">TX-26</a> &mdash; 2 confirmed terminations, 2 DOGE claims</li><li><a href="TX-36/">TX-36</a> &mdash; 9 confirmed terminations, 11 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Virginia</h2><ul class="district-index-list"><li><a href="VA-03/">VA-03</a> &mdash; 5 confirmed terminations, 0 DOGE claims</li><li><a href="VA-04/">VA-04</a> &mdash; 2 confirmed terminations, 2 DOGE claims</li><li><a href="VA-08/">VA-08</a> &mdash; 12 confirmed terminations, 8 DOGE claims</li><li><a href="VA-09/">VA-09</a> &mdash; 2 confirmed terminations, 2 DOGE claims</li><li><a href="VA-11/">VA-11</a> &mdash; 19 confirmed terminations, 12 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Washington</h2><ul class="district-index-list"><li><a href="WA-02/">WA-02</a> &mdash; 1 confirmed termination, 0 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">Wisconsin</h2><ul class="district-index-list"><li><a href="WI-07/">WI-07</a> &mdash; 1 confirmed termination, 0 DOGE claims</li></ul></section>
+<section class="district-group"><h2 class="district-group-heading">West Virginia</h2><ul class="district-index-list"><li><a href="WV-02/">WV-02</a> &mdash; 1 confirmed termination, 1 DOGE claim</li></ul></section>
+<p class="freshness-bar">Data updated August 21, 2026</p>
+<footer class="site-footer">
+<nav aria-label="Site">
+<a href="./">All districts</a>
+<a href="../">Interactive dashboard</a>
+<a href="../../">Dashboards home</a>
+<a href="https://planetary.org">The Planetary Society</a>
+</nav>
+</footer>
+</section>
+</main>
+</body>
 </html>

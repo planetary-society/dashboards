@@ -59,14 +59,23 @@ function detectColumns(rows) {
 /**
  * Normalize parsed `terminations.csv` rows for display and analysis
  *
- * Each row is copied with five derived fields attached, all underscore-prefixed
- * so they cannot collide with a future upstream column:
+ * Each row is copied with derived fields attached, all underscore-prefixed so
+ * they cannot collide with a future upstream column:
  *
  *   - `_obligated`  numeric `total_obligated`, or null
  *   - `_potential`  numeric `total_potential_value`, or null
+ *   - `_atStake`    the award's value at stake: its ceiling where the record
+ *                   reports one, else what it had obligated (see below)
  *   - `_district`   'VA-11'-style code, or '' when the row carries no district
  *   - `_geoid`      4-digit map GEOID for `_district`, or null
+ *   - `_recipient`  trimmed `recipient_name`
  *   - `_partial`    true when only part of the award was cut
+ *
+ * `_atStake` is a coalesce, never a sum: contracts and IDVs report a ceiling in
+ * `total_potential_value`, grants report none, and every row carrying both has
+ * potential >= obligated. Deriving it here rather than inside a total means the
+ * table, the cards, the district pages and the value box all reconcile to one
+ * number per award.
  *
  * A column dropped upstream degrades to a single console warning and null
  * values rather than a throw: `columns` tells the display layer which value
@@ -105,11 +114,14 @@ export function normalizeTerminations(rawRows) {
 
     const rows = list.map((row) => {
         const district = districtOf(row);
+        const obligated = parseCurrency(row.total_obligated);
+        const potential = parseCurrency(row.total_potential_value);
 
         return {
             ...row,
-            _obligated: parseCurrency(row.total_obligated),
-            _potential: parseCurrency(row.total_potential_value),
+            _obligated: obligated,
+            _potential: potential,
+            _atStake: Number.isFinite(potential) ? potential : obligated,
             _district: district,
             _geoid: getGeoidFromDistrict(district),
             _recipient: field(row, 'recipient_name'),
@@ -154,13 +166,24 @@ export function terminationIdSet(rows) {
  * column is absent, so the display layer can omit the box rather than print a
  * misleading $0.
  *
+ * `totalPotential` sums each row's `_atStake` (see `normalizeTerminations`) and
+ * `potentialFillCount` counts the rows that had one, so the value box can say
+ * how much of its universe it covers. Both ride on `columns.potential`: without
+ * a ceiling column the figure would be pure obligations under a label promising
+ * ceilings, so the display layer drops the box instead.
+ *
+ * `totalObligated` is kept even though no box shows it: it is what the grant
+ * fallback draws on, and the live-data tests use it to check that the coalesce
+ * never lands below the obligations it replaced.
+ *
  * All values are unformatted; callers decide on presentation.
  *
  * @param {Array<Object>} rows - Normalized termination rows
  * @param {{districts: boolean, obligated: boolean, potential: boolean}} [columns] -
  *   Availability flags from `normalizeTerminations`; re-derived when omitted
  * @returns {{confirmed: number, partials: number, totalObligated: number|null,
- *   totalPotential: number|null, districts: number|null, recipients: number}} Statistics
+ *   totalPotential: number|null, potentialFillCount: number, districts: number|null,
+ *   recipients: number}} Statistics
  */
 export function terminationStats(rows, columns = detectColumns(rows || [])) {
     const list = rows || [];
@@ -171,8 +194,6 @@ export function terminationStats(rows, columns = detectColumns(rows || [])) {
     let totalObligated = 0;
     let totalPotential = 0;
     let potentialFillCount = 0;
-    let descoped = 0;
-    let closedOut = 0;
 
     for (const row of list) {
         const district = field(row, '_district');
@@ -183,17 +204,16 @@ export function terminationStats(rows, columns = detectColumns(rows || [])) {
 
         if (row._partial) {
             partials++;
-            if (field(row, 'override_status') === 'descoped') descoped++;
-            if (field(row, 'override_status') === 'closed_out') closedOut++;
             continue;
         }
 
         confirmed++;
         if (Number.isFinite(row._obligated)) totalObligated += row._obligated;
-        if (Number.isFinite(row._potential)) {
-            totalPotential += row._potential;
+
+        if (Number.isFinite(row._atStake)) {
             // Confirmed-only, matching the totalPotential sum it qualifies:
             // the value-box caveat must describe the same universe as the box.
+            totalPotential += row._atStake;
             potentialFillCount++;
         }
     }
@@ -201,8 +221,6 @@ export function terminationStats(rows, columns = detectColumns(rows || [])) {
     return {
         confirmed,
         partials,
-        descoped,
-        closedOut,
         totalObligated: columns.obligated ? totalObligated : null,
         totalPotential: columns.potential ? totalPotential : null,
         potentialFillCount: columns.potential ? potentialFillCount : 0,

@@ -189,6 +189,52 @@ export function yTicks(y, count = 4) {
 }
 
 /**
+ * Draw y-axis gridlines and labels (no axis line)
+ *
+ * Both column charts want the same axis — whole-number ticks, full-width
+ * gridlines, right-aligned labels outside the plot — and differ only in the
+ * class prefix their CSS hooks use, so that is the one parameter.
+ *
+ * `d3` is a global from the CDN script tag; this function is only ever called
+ * from a render path, so the module stays importable in Node.
+ *
+ * @param {Object} plot - D3 selection of the plot group
+ * @param {Function} y - D3 linear y scale
+ * @param {number} innerWidth - Plot width in px
+ * @param {string} prefix - CSS class prefix, e.g. 'fy' or 'timeline'
+ */
+export function renderYAxis(plot, y, innerWidth, prefix) {
+    const format = d3.format('d');
+    const ticks = yTicks(y);
+
+    const axis = plot.append('g').attr('class', `${prefix}-y-axis`);
+
+    axis.selectAll(`line.${prefix}-gridline`)
+        .data(ticks)
+        .join('line')
+        .attr('class', `${prefix}-gridline`)
+        .attr('x1', 0)
+        .attr('x2', innerWidth)
+        .attr('y1', d => y(d))
+        .attr('y2', d => y(d))
+        .attr('stroke', 'var(--gray-200)')
+        .attr('stroke-width', 1)
+        .attr('shape-rendering', 'crispEdges');
+
+    axis.selectAll(`text.${prefix}-y-label`)
+        .data(ticks)
+        .join('text')
+        .attr('class', `${prefix}-y-label`)
+        .attr('x', -8)
+        .attr('y', d => y(d))
+        .attr('dy', '0.32em')
+        .attr('text-anchor', 'end')
+        .attr('font-size', 11)
+        .attr('fill', 'var(--gray-600)')
+        .text(format);
+}
+
+/**
  * Build one label/value row of a chart tooltip
  * @param {string} label - Row label
  * @param {string} value - Row value

@@ -1,15 +1,20 @@
 /**
- * FY Actions Module
+ * FY Awards Module
  *
- * Pure reader for `cancellations_for_convenience_actions_by_fiscal_year.csv`, a
- * two-column FPDS rollup of termination-for-convenience *contract* actions
- * across all of NASA, one row per federal fiscal year (FY2010–FY2026).
+ * Pure reader for `cancellations_for_convenience_awards_by_fiscal_year.csv`, a
+ * rollup of NASA awards cancelled for convenience across all of NASA, one row
+ * per federal fiscal year (FY2010–FY2026).
  *
- * This is a different universe from the Confirmed Cancellations panel's own
- * table: it is contracts-only, it covers all administrations, and it counts
- * actions rather than awards. The chart that renders these numbers says so in
- * its own SVG; this module's only jobs are to read the two columns, drop rows it
- * cannot trust, and flag the fiscal year that has not finished yet.
+ * The file carries three count columns — awards found by an FPDS action code,
+ * awards found by termination language in the transaction text, and the union
+ * of the two. The chart plots the union, which is the same detection method the
+ * Confirmed Cancellations panel uses on its own list.
+ *
+ * It is still a wider universe than that panel: it covers all of NASA and every
+ * administration, and its fiscal years start on October 1 rather than at the
+ * January 20, 2025 cut. That qualifier is stated in the About tab and in the
+ * chart's aria-label; this module's only jobs are to read the two columns it
+ * needs, drop rows it cannot trust, and flag the fiscal year not yet finished.
  *
  * No DOM, no fetch — safe to import from Node test runners.
  */
@@ -20,13 +25,19 @@ import { warnOnce, hasColumn } from './panel-common.js';
  * Fiscal-year column header, exactly as upstream writes it
  * @type {string}
  */
-const FY_COLUMN = 'FY';
+const FY_COLUMN = 'fiscal_year';
 
 /**
- * Action-count column header, exactly as upstream writes it
+ * Award-count column header, exactly as upstream writes it
+ *
+ * The union column: awards caught by an FPDS action code *or* by termination
+ * language. The two component columns (`action_code_cancellation_awards`,
+ * `keyword_cancellation_awards`) are deliberately unread — an award can satisfy
+ * both, so they do not sum.
+ *
  * @type {string}
  */
-const COUNT_COLUMN = 'Cancellations for Convenience Actions';
+const COUNT_COLUMN = 'action_code_or_keyword_cancellation_awards';
 
 /**
  * Zero-based month in which a US federal fiscal year begins (October)
@@ -94,7 +105,7 @@ export function currentFederalFy(now = new Date()) {
 }
 
 /**
- * Read the FY actions CSV into chart-ready rows
+ * Read the FY awards CSV into chart-ready rows
  *
  * Returns an ascending series so the chart can render it without re-sorting.
  * Degrades rather than throws: a renamed column yields an empty series and one
@@ -107,15 +118,15 @@ export function currentFederalFy(now = new Date()) {
  * @param {Date} [options.now] - Date used to decide which FY is still in progress
  * @returns {Array<{fy: number, count: number, partial: boolean}>} Ascending by fy
  */
-export function parseFyActions(rawRows, { fromFy = 2020, now = new Date() } = {}) {
+export function parseFyAwards(rawRows, { fromFy = 2020, now = new Date() } = {}) {
     if (!Array.isArray(rawRows) || rawRows.length === 0) {
         return [];
     }
 
     if (!hasColumn(rawRows, FY_COLUMN) || !hasColumn(rawRows, COUNT_COLUMN)) {
         warnOnce(
-            'fy-actions:columns',
-            `FY actions CSV is missing "${FY_COLUMN}" or "${COUNT_COLUMN}" — the fiscal-year chart will be empty.`
+            'fy-awards:columns',
+            `FY awards CSV is missing "${FY_COLUMN}" or "${COUNT_COLUMN}" — the fiscal-year chart will be empty.`
         );
 
         return [];
@@ -147,8 +158,8 @@ export function parseFyActions(rawRows, { fromFy = 2020, now = new Date() } = {}
 
     if (skipped > 0) {
         warnOnce(
-            'fy-actions:rows',
-            `FY actions CSV: skipped ${skipped} row(s) with an unparseable fiscal year or action count.`
+            'fy-awards:rows',
+            `FY awards CSV: skipped ${skipped} row(s) with an unparseable fiscal year or award count.`
         );
     }
 

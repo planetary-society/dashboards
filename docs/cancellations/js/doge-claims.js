@@ -17,8 +17,8 @@
  * called "Expired" carry explicit termination actions, and one it called
  * "TERMINATED" merely reached its end date. The badge follows the record.
  *
- * `checked_date` is one file-wide snapshot, not a per-row observation — every
- * row in a given file carries the same value.
+ * `checked_date` is per row: upstream re-checks claims in batches, so a file
+ * can carry several dates at once. `dogeStats` reports the newest.
  */
 
 import { parseCurrency, parseIsoDateUTC } from '../../shared/js/utils.js';
@@ -27,8 +27,7 @@ import { districtOf, field, hasColumn } from './panel-common.js';
 /**
  * The four claim outcomes, in display order
  *
- * The panel table shows all four; the summary bar aggregates the middle two
- * (see BAR_SEGMENTS).
+ * The panel table and the summary bar both show all four (see BAR_SEGMENTS).
  *
  * @type {string[]}
  */
@@ -38,17 +37,16 @@ export const OUTCOME_ORDER = ['terminated', 'ended', 'active', 'unmatched'];
  * Display metadata for each claim outcome
  *
  * Carries both altitudes so the bar and the table cannot drift apart:
- *   - `label` is the bar/legend wording, deliberately shared by 'ended' and
- *     'active' because both mean the same thing about the federal record —
- *     no termination action was found
- *   - `short` is the table badge, where the ended/active distinction is worth
- *     the extra word
- *   - `description` is printed as visible text, never a `title=` tooltip; the
- *     ended/active difference is invisible otherwise
- *   - `segment` names the bar segment the outcome rolls up into, so a badge can
- *     reuse the segment's swatch colour without a second mapping
+ *   - `label` is the bar/legend wording
+ *   - `short` is the table badge
+ *   - `description` is printed as visible text, never a `title=` tooltip
  *
- * @type {Object<string, {label: string, short: string, description: string, segment: string}>}
+ * 'ended' and 'active' say different things about the award — one ran out its
+ * period of performance, the other is still inside it — so they carry their own
+ * labels and their own bar segments rather than collapsing into one
+ * "no termination found" bucket that hides which happened.
+ *
+ * @type {Object<string, {label: string, short: string, description: string, badgeClass: string}>}
  */
 export const OUTCOME_META = {
     // `badgeClass` puts outcomes in the same .badge family the terminations
@@ -58,73 +56,80 @@ export const OUTCOME_META = {
     terminated: {
         label: 'Termination on record',
         short: 'Terminated',
-        description: "A termination action appears in the award's federal transaction history.",
-        segment: 'terminated',
+        description: "A termination action is in the award's federal record.",
         badgeClass: 'badge--cancelled'
     },
     ended: {
-        label: 'No termination found',
-        short: 'Ended',
-        description: 'Reached its scheduled end date; no termination action recorded.',
-        segment: 'noTermination',
+        label: 'Expired',
+        short: 'Expired',
+        description: 'Ran out its period of performance; no termination action recorded.',
         badgeClass: 'badge--excluded'
     },
     active: {
-        label: 'No termination found',
-        short: 'Active',
-        description: 'Award still active as of the last check; no termination action recorded.',
-        segment: 'noTermination',
+        label: 'Still active',
+        short: 'Still active',
+        description: 'Still inside its period of performance; no termination action recorded.',
         badgeClass: 'badge--excluded'
     },
     unmatched: {
         label: 'Not in federal records',
         short: 'Not found',
-        description: 'Could not be matched to any award in federal spending records.',
-        segment: 'unmatched',
+        description: 'No matching award in federal spending records.',
         badgeClass: 'badge--excluded'
     }
 };
 
 /**
- * The three summary-bar segments, strongest evidence first
+ * The summary-bar segments, strongest evidence first
  *
- * 'ended' and 'active' collapse into `noTermination`: the bar answers "did the
- * record show a termination?", which is a three-way question. The four-way
- * detail survives in the table.
+ * One segment per outcome — the bar and the table now answer the same four-way
+ * question, so there is no roll-up mapping to keep in step.
  *
  * @type {string[]}
  */
-export const BAR_SEGMENTS = ['terminated', 'noTermination', 'unmatched'];
+export const BAR_SEGMENTS = OUTCOME_ORDER;
 
 /**
- * Display metadata for the three-segment summary bar
+ * Display metadata for the summary bar
  *
- * Validated red ordinal ramp — passes all-pairs CVD in both themes via the
- * dataviz validate_palette.js; the legend's printed counts and the panel table
- * are what relieve the light-end contrast WARN — if either is dropped this
- * becomes a hard fail; do not re-derive without re-running the validator.
+ * Ordinal ramp: three reds descending by strength of termination evidence, then
+ * neutral gray for the claims with no federal record at all. Gray is not a
+ * fourth step of the ramp — an unmatched claim is missing evidence rather than
+ * weaker evidence, and a single hue cannot carry four steps that stay apart.
  *
- * The hexes live in CSS against these class names (added in a later phase):
- * `seg--outcome-strong` #991B1B, `seg--outcome-mid` #DC2626,
- * `seg--outcome-weak` #F87171.
+ * The three reds are #991B1B / #DC2626 / #F87171 with monotonically rising
+ * lightness, which is the check that governs a sequential ramp (the dataviz
+ * categorical validator FAILs any sequential ramp by design — see
+ * references/color-formula.md). Against the light surface they clear the
+ * lightness band and adjacent-pair CVD separation; the light end's sub-3:1
+ * contrast is relieved by the legend's printed counts, the definitions list,
+ * and the panel table. Drop any of those three and this becomes a hard fail.
+ *
+ * The hexes live in CSS against these class names: `seg--outcome-strong`,
+ * `seg--outcome-mid`, `seg--outcome-weak`, `seg--outcome-none`.
  *
  * @type {Object<string, {label: string, description: string, segClass: string}>}
  */
 export const SEGMENT_META = {
     terminated: {
-        label: 'Termination on record',
+        label: OUTCOME_META.terminated.label,
         description: OUTCOME_META.terminated.description,
         segClass: 'seg--outcome-strong'
     },
-    noTermination: {
-        label: 'No termination found',
-        description: 'Matched to a federal award, but no termination action was recorded.',
+    ended: {
+        label: OUTCOME_META.ended.label,
+        description: OUTCOME_META.ended.description,
         segClass: 'seg--outcome-mid'
     },
-    unmatched: {
-        label: 'Not in federal records',
-        description: OUTCOME_META.unmatched.description,
+    active: {
+        label: OUTCOME_META.active.label,
+        description: OUTCOME_META.active.description,
         segClass: 'seg--outcome-weak'
+    },
+    unmatched: {
+        label: OUTCOME_META.unmatched.label,
+        description: OUTCOME_META.unmatched.description,
+        segClass: 'seg--outcome-none'
     }
 };
 
@@ -264,6 +269,7 @@ export function normalizeDogeClaims(rawRows) {
         _savings: parseCurrency(field(row, 'doge_savings')),
         _value: parseCurrency(field(row, 'doge_value')),
         _obligation: parseCurrency(field(row, 'current_obligation')),
+        _potential: parseCurrency(field(row, 'total_potential_value')),
         _district: districtOf(row),
         _recipient: field(row, 'recipient'),
         _statusLabel: statusLabel(row),
@@ -288,13 +294,13 @@ export function normalizeDogeClaims(rawRows) {
  * all three keys without guarding. On the live file this is 89 / 19 / 4.
  *
  * @param {Array<Object>} rows - DOGE claim rows
- * @returns {{terminated: number, noTermination: number, unmatched: number}} Segment counts
+ * @returns {Object<string, number>} Segment counts
  */
 export function outcomeMix(rows) {
     const mix = Object.fromEntries(BAR_SEGMENTS.map((segment) => [segment, 0]));
 
     for (const row of rows || []) {
-        mix[OUTCOME_META[outcomeOf(row)].segment]++;
+        mix[outcomeOf(row)]++;
     }
 
     return mix;
@@ -312,16 +318,27 @@ export function outcomeMix(rows) {
  * for a claim DOGE published without a savings number, and treating that as a
  * real $0 saving would put 62 of 112 claims into an average that means nothing.
  *
+ * `calculatedSavings` is the independent figure DOGE's claims are measured
+ * against: the award's ceiling less what it had already obligated, which is the
+ * money the cancellation actually took off the table. It is summed only over
+ * claims whose award stopped spending — terminated or expired — since an award
+ * still inside its period of performance has saved nothing yet, and an unmatched
+ * claim has no federal figures to subtract. `calculatedSavingsCount` says how
+ * many claims carried both figures, so the display can qualify the total.
+ *
  * @param {Array<Object>} rows - DOGE claim rows
  * @returns {{count: number, claimedSavings: number, claimedOnActive: number,
- *   noFigureCount: number, terminated: number, unmatched: number, checkedDate: string}}
- *   Summary statistics
+ *   noFigureCount: number, calculatedSavings: number, calculatedSavingsCount: number,
+ *   terminated: number, unmatched: number, expiredButTerminated: number,
+ *   checkedDate: string}} Summary statistics
  */
 export function dogeStats(rows) {
     const list = rows || [];
     let claimedSavings = 0;
     let claimedOnActive = 0;
     let noFigureCount = 0;
+    let calculatedSavings = 0;
+    let calculatedSavingsCount = 0;
     let terminated = 0;
     let unmatched = 0;
     let expiredButTerminated = 0;
@@ -349,9 +366,21 @@ export function dogeStats(rows) {
         }
         if (outcome === 'unmatched') unmatched++;
 
+        // Only an award that stopped spending can have saved anything, so a
+        // still-active award contributes nothing however DOGE scored it.
+        if (outcome === 'terminated' || outcome === 'ended') {
+            const potential = row?._potential ?? parseCurrency(field(row, 'total_potential_value'));
+            const obligation = row?._obligation ?? parseCurrency(field(row, 'current_obligation'));
+
+            if (Number.isFinite(potential) && Number.isFinite(obligation)) {
+                calculatedSavings += potential - obligation;
+                calculatedSavingsCount++;
+            }
+        }
+
         // ISO 'YYYY-MM-DD', so a lexicographic max is the chronological max.
-        // One file-wide snapshot in practice; the max guards against a future
-        // file assembled from more than one check.
+        // Rows re-checked in a later batch carry a later date; the panel quotes
+        // the newest rather than implying the whole file was checked at once.
         const checked = field(row, 'checked_date');
         if (checked > checkedDate) checkedDate = checked;
     }
@@ -361,6 +390,8 @@ export function dogeStats(rows) {
         claimedSavings,
         claimedOnActive,
         noFigureCount,
+        calculatedSavings,
+        calculatedSavingsCount,
         terminated,
         unmatched,
         expiredButTerminated,

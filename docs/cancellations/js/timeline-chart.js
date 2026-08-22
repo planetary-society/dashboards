@@ -29,7 +29,7 @@ import {
     topRoundedPath,
     barPadding,
     labelIndices,
-    yTicks
+    renderYAxis
 } from './chart-common.js';
 
 /** Chart margins; left is sized for integer count labels */
@@ -135,7 +135,7 @@ export class TimelineChart {
         const plot = this.svg.append('g')
             .attr('transform', `translate(${MARGIN.left},${MARGIN.top})`);
 
-        this.renderYAxis(plot, y, innerWidth);
+        renderYAxis(plot, y, innerWidth, 'timeline');
         this.renderBars(plot, months, x, y, innerHeight, value, barColor);
         this.renderXAxis(plot, months, x, innerHeight);
         this.renderHitBands(plot, months, x, innerWidth, innerHeight);
@@ -198,43 +198,6 @@ export class TimelineChart {
      */
     createTooltip() {
         this.tooltip = new ChartTooltip(this.container, 'timeline-tooltip');
-    }
-
-    /**
-     * Render y-axis gridlines and labels (no axis line)
-     * @param {Object} plot - D3 selection of the plot group
-     * @param {Function} y - Y scale
-     * @param {number} innerWidth - Plot width in px
-     */
-    renderYAxis(plot, y, innerWidth) {
-        const format = d3.format('d');
-        const ticks = yTicks(y);
-
-        const axis = plot.append('g').attr('class', 'timeline-y-axis');
-
-        axis.selectAll('line.timeline-gridline')
-            .data(ticks)
-            .join('line')
-            .attr('class', 'timeline-gridline')
-            .attr('x1', 0)
-            .attr('x2', innerWidth)
-            .attr('y1', d => y(d))
-            .attr('y2', d => y(d))
-            .attr('stroke', 'var(--gray-200)')
-            .attr('stroke-width', 1)
-            .attr('shape-rendering', 'crispEdges');
-
-        axis.selectAll('text.timeline-y-label')
-            .data(ticks)
-            .join('text')
-            .attr('class', 'timeline-y-label')
-            .attr('x', -8)
-            .attr('y', d => y(d))
-            .attr('dy', '0.32em')
-            .attr('text-anchor', 'end')
-            .attr('font-size', 11)
-            .attr('fill', 'var(--gray-600)')
-            .text(format);
     }
 
     /**

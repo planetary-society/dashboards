@@ -13,6 +13,8 @@
  *   - both carry a USAspending `generated_award_id` that links to the award page
  */
 
+import { escapeAttr, escapeHtml } from '../../shared/js/utils.js';
+
 /** Base URL for a USAspending award page */
 const USASPENDING_AWARD_BASE = 'https://www.usaspending.gov/award/';
 
@@ -88,6 +90,39 @@ export function field(row, key) {
 export function usaspendingUrl(row) {
     const id = field(row, 'generated_award_id');
     return id ? USASPENDING_AWARD_BASE + encodeURIComponent(id) : null;
+}
+
+/**
+ * Render an award ID as a USAspending link when one exists
+ *
+ * Lives here rather than in app.js because the baked static district pages
+ * emit the same security-sensitive markup (escaping plus `noopener`) and two
+ * copies of it could silently drift.
+ *
+ * @param {string} label - Text to show (award id)
+ * @param {string|null} url - usaspendingUrl() result
+ * @returns {string} HTML string
+ */
+export function renderAwardLink(label, url) {
+    if (!label) return MISSING;
+    if (!url) return escapeHtml(label);
+    return `<a href="${escapeAttr(url)}" target="_blank" rel="noopener">${escapeHtml(label)}</a>`;
+}
+
+/**
+ * A row's recipient location line: 'CITY, ST' in caps ('' when unknown)
+ *
+ * Lives here rather than in app.js because the baked static district pages
+ * build the same subline without loading the dashboard's DOM module.
+ *
+ * @param {Object} row - Normalized row (either dataset)
+ * @returns {string} Location line
+ */
+export function placeLine(row) {
+    return [row.recipient_city, row.recipient_state]
+        .map((part) => String(part || '').trim().toUpperCase())
+        .filter(Boolean)
+        .join(', ');
 }
 
 /**

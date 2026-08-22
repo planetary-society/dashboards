@@ -1,16 +1,21 @@
 # GitHub Action Workflow: Daily Dashboard Update
 #
 # This workflow runs daily to:
-# 1. Download the master ledger CSV for the cancellations dashboard.
-# 2. Compare and clean up data files.
-# 3. Commit new data if changed.
-# 4. Deploy the static D3.js dashboards to GitHub Pages.
+# 1. Download the cancellations dashboard CSVs (terminations, doge_claims).
+# 2. Compare them against the deployed copies and update only what changed.
+# 3. Rewrite docs/data/cancellations/metadata.json when data changed.
+# 4. Run the Node test suite, then bake static SEO content (headline facts in
+#    index.html, per-district pages, sitemap) via scripts/bake-seo.mjs.
+# 5. Commit whatever changed and deploy the static dashboards to GitHub Pages.
+#
+# Not managed here: cancellations_for_convenience_actions_by_fiscal_year.csv is a
+# static, manually curated file that lives in docs/data/cancellations/ untouched.
 
 name: Daily Dashboard Update
 
 on:
   schedule:
-    # runs every day at 10:00 AM Pacific Time (15:00 UTC)
+    # runs every day at 10:00 AM Pacific Time (17:00 UTC)
     - cron: '0 17 * * *'
   workflow_dispatch: # Allows manual triggering
 
@@ -30,70 +35,122 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Download master ledger from GitHub
+      - name: Download cancellations CSVs from GitHub
         id: download
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          mkdir -p data
+          mkdir -p tmp_data
 
-          # Date comes from the most recent commit that touched the master ledger
-          DATE=$(gh api "repos/planetary-society/nasa-cancellations-tracking/commits?path=consolidated/master_ledger.csv&per_page=1" \
-            --jq '.[0].commit.committer.date | split("T")[0]')
+          for f in terminations doge_claims; do
+            # Date comes from the most recent commit that touched this file upstream
+            DATE=$(gh api "repos/planetary-society/nasa-cancellations-tracking/commits?path=output/${f}.csv&per_page=1" \
+              --jq '.[0].commit.committer.date | split("T")[0]')
 
-          echo "Master ledger last updated: $DATE"
-          echo "source_date=$DATE" >> $GITHUB_OUTPUT
+            if [[ -z "$DATE" ]]; then
+              echo "::error::No commit history found for output/${f}.csv upstream"
+              exit 1
+            fi
 
-          # Download directly to data directory
-          curl -fL -o "data/master_ledger_${DATE}.csv" \
-            "https://raw.githubusercontent.com/planetary-society/nasa-cancellations-tracking/main/consolidated/master_ledger.csv"
+            echo "${f}.csv last updated: ${DATE}"
+            echo "${f}_date=${DATE}" >> "$GITHUB_OUTPUT"
+
+            # curl -f makes a 404 fail the job. output/*.csv is not published
+            # upstream yet, and a loud failure here is the intended behavior
+            # until it is -- do not soften this into a warning.
+            curl -fL -o "tmp_data/${f}.csv" \
+              "https://raw.githubusercontent.com/planetary-society/nasa-cancellations-tracking/main/output/${f}.csv"
+          done
 
       - name: Compare and update if changed
         id: compare
         run: |
-          DOCS_FILE="docs/data/cancellations/master_ledger_latest.csv"
-          DATA_FILE="data/master_ledger_${{ steps.download.outputs.source_date }}.csv"
           mkdir -p docs/data/cancellations
+          CHANGED=false
 
-          echo "DATA_FILE: $DATA_FILE"
-          echo "DOCS_FILE: $DOCS_FILE"
-          echo "Data file exists: $(test -f "$DATA_FILE" && echo yes || echo no)"
-          echo "Docs file exists: $(test -f "$DOCS_FILE" && echo yes || echo no)"
+          for f in terminations doge_claims; do
+            SRC="tmp_data/${f}.csv"
+            DEST="docs/data/cancellations/${f}.csv"
 
-          if [[ -f "$DOCS_FILE" ]] && cmp -s "$DATA_FILE" "$DOCS_FILE"; then
-            echo "No changes detected - files are identical"
-            echo "changed=false" >> $GITHUB_OUTPUT
-            rm "$DATA_FILE"
-          else
-            echo "Changes detected, updating files"
-            echo "changed=true" >> $GITHUB_OUTPUT
+            if [[ -f "$DEST" ]] && cmp -s "$SRC" "$DEST"; then
+              echo "${f}.csv: no changes detected - files are identical"
+            else
+              echo "${f}.csv: changes detected, updating"
+              cp -v "$SRC" "$DEST"
+              CHANGED=true
+            fi
+          done
 
-            # Remove old master ledger CSVs from data dir, keep only the new one
-            find data -name "master_ledger_*.csv" ! -name "$(basename $DATA_FILE)" -delete
+          echo "changed=${CHANGED}" >> "$GITHUB_OUTPUT"
+          ls -la docs/data/cancellations/
 
-            # Update docs with new file
-            cp -v "$DATA_FILE" "$DOCS_FILE"
-
-            # Count data rows (CSV-aware: the file has CRLF endings and quoted
-            # embedded newlines, so wc -l overcounts)
-            ROW_COUNT=$(python3 -c "import csv,sys; print(sum(1 for _ in csv.reader(open('$DOCS_FILE', newline=''))) - 1)")
-
-            # Update metadata
-            echo "{\"lastUpdated\": \"${{ steps.download.outputs.source_date }}\", \"rowCount\": ${ROW_COUNT}}" > docs/data/cancellations/metadata.json
-            echo "Updated metadata: ${{ steps.download.outputs.source_date }} (${ROW_COUNT} rows)"
-
-            # Verify files were updated
-            echo "Docs file after copy:"
-            head -1 "$DOCS_FILE"
-            ls -la docs/data/cancellations/
-          fi
-
-      - name: Commit & push changes
+      - name: Update metadata
         if: steps.compare.outputs.changed == 'true'
+        env:
+          TERMINATIONS_DATE: ${{ steps.download.outputs.terminations_date }}
+          DOGE_CLAIMS_DATE: ${{ steps.download.outputs.doge_claims_date }}
+        run: |
+          # Count data rows (CSV-aware: the files have CRLF endings and quoted
+          # embedded newlines, so wc -l overcounts)
+          TERMINATIONS_ROWS=$(python3 -c "import csv; print(sum(1 for _ in csv.reader(open('docs/data/cancellations/terminations.csv', newline=''))) - 1)")
+          DOGE_CLAIMS_ROWS=$(python3 -c "import csv; print(sum(1 for _ in csv.reader(open('docs/data/cancellations/doge_claims.csv', newline=''))) - 1)")
+
+          echo "terminations: ${TERMINATIONS_ROWS} rows (${TERMINATIONS_DATE})"
+          echo "doge_claims: ${DOGE_CLAIMS_ROWS} rows (${DOGE_CLAIMS_DATE})"
+
+          # Written with json.dump rather than shell string interpolation so the
+          # file is always valid JSON regardless of what the values contain.
+          TERMINATIONS_ROWS="$TERMINATIONS_ROWS" DOGE_CLAIMS_ROWS="$DOGE_CLAIMS_ROWS" \
+          python3 - <<'PY'
+          import json
+          import os
+
+          files = {
+              "terminations": {
+                  "lastUpdated": os.environ["TERMINATIONS_DATE"],
+                  "rowCount": int(os.environ["TERMINATIONS_ROWS"]),
+              },
+              "doge_claims": {
+                  "lastUpdated": os.environ["DOGE_CLAIMS_DATE"],
+                  "rowCount": int(os.environ["DOGE_CLAIMS_ROWS"]),
+              },
+          }
+          metadata = {
+              "lastUpdated": max(f["lastUpdated"] for f in files.values()),
+              "files": files,
+          }
+
+          with open("docs/data/cancellations/metadata.json", "w") as fh:
+              json.dump(metadata, fh, indent=2)
+              fh.write("\n")
+
+          print(json.dumps(metadata, indent=2))
+          PY
+
+      # Gate the bake on the full suite (known-broken cases are skipped inside
+      # their test files, so this is the same command a developer runs locally).
+      - name: Run tests
+        run: npm test
+
+      # Unconditional by design: the bake is idempotent (all dates come from
+      # metadata.json, never "today"), so a no-change day writes byte-identical
+      # files and nothing commits -- but bake-script or template fixes take
+      # effect on the next run, and a previously failed bake self-heals.
+      # A bake failure fails the job and skips the deploy; the site stays on
+      # yesterday's build. That is the intended failure mode -- do not soften.
+      - name: Bake static SEO content
+        run: node scripts/bake-seo.mjs
+
+      # No `if:` guard: bake output must commit even on days when the CSVs did
+      # not change (otherwise the deployed artifact and the repo drift apart,
+      # and the same diff reappears every run). The action no-ops on a clean
+      # tree. The docs/cancellations/** glob stages district-page deletions
+      # from the bake's delete-and-rebuild too.
+      - name: Commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: daily data refresh"
-          file_pattern: "data/*.csv docs/data/cancellations/*"
+          file_pattern: "docs/data/cancellations/* docs/cancellations/** docs/sitemap.xml"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

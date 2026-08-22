@@ -235,13 +235,25 @@ export function parseIsoDateUTC(value) {
 }
 
 /**
+ * Format a count for display
+ * @param {number} count - The count
+ * @returns {string} Grouped digits ('1,234')
+ */
+export function formatCount(count) {
+    // Pinned to en-US, matching the site's lang="en": the daily SEO bake and
+    // the browser render the same counts, so pinning both to one locale is
+    // what keeps the baked HTML and the live re-render byte-identical.
+    return count.toLocaleString('en-US');
+}
+
+/**
  * Pluralize a counted noun
  * @param {number} count - The count, possibly fractional (e.g. a median)
  * @param {string} noun - Singular noun ('award', 'day', 'claim')
- * @returns {string} Localized count and correctly pluralized noun
+ * @returns {string} Formatted count and correctly pluralized noun
  */
 export function pluralCount(count, noun) {
-    return `${count.toLocaleString()} ${noun}${count === 1 ? '' : 's'}`;
+    return `${formatCount(count)} ${noun}${count === 1 ? '' : 's'}`;
 }
 
 /**

@@ -16,8 +16,10 @@
 
 import { formatCurrency, escapeHtml, escapeAttr, pluralCount } from '../../shared/js/utils.js';
 import { ICONS, DATA_URLS } from '../../shared/js/constants.js';
+import { MISSING, placeLine, usaspendingUrl } from './panel-common.js';
 import { formatIsoDayLong } from './chart-common.js';
-import { BAR_SEGMENTS, SEGMENT_META } from './doge-claims.js';
+import { overrideMeta } from './terminations.js';
+import { BAR_SEGMENTS, OUTCOME_META, SEGMENT_META } from './doge-claims.js';
 
 /**
  * Static display metadata for each panel
@@ -263,6 +265,83 @@ export function districtEmptyNote(panelId) {
     return panelId === 'doge'
         ? 'No DOGE claims list this district.'
         : 'No confirmed terminations list this district.';
+}
+
+/**
+ * View-model for one confirmed termination's award card
+ *
+ * The single source for what a termination card says: the dashboard's district
+ * view and the baked static district pages both render from this model, so a
+ * label rename or field change here reaches ~78 static pages and the live view
+ * in one edit. Rows must be normalized (`normalizeTerminations`).
+ *
+ * Fields are data, not markup: `url` is null except on linkable values, and a
+ * field whose `text` is '' is omitted by the renderers.
+ *
+ * @param {Object} row - Normalized termination row
+ * @returns {{title: string, subtitle: string, badge: {label: string,
+ *   className: string}, fields: Array<{label: string, text: string,
+ *   url: string|null}>, description: string}} Card view-model
+ */
+export function terminationCardModel(row) {
+    const meta = overrideMeta(row.override_status);
+
+    return {
+        title: (row._recipient || 'Unknown recipient').toUpperCase(),
+        subtitle: placeLine(row),
+        badge: { label: meta.label, className: `badge ${meta.badgeClass}` },
+        fields: [
+            { label: 'Award', text: row.award_id || MISSING, url: usaspendingUrl(row) },
+            { label: 'Type', text: row.award_type || MISSING, url: null },
+            { label: 'Action date', text: row.action_date || MISSING, url: null },
+            {
+                label: 'Obligated',
+                text: row._obligated !== null ? formatCurrency(row._obligated, false) : '',
+                url: null
+            }
+        ],
+        description: row.transaction_description || row.award_description || ''
+    };
+}
+
+/**
+ * View-model for one DOGE claim's award card
+ *
+ * Same contract as `terminationCardModel`. Rows must be normalized
+ * (`normalizeDogeClaims`), which guarantees `_outcome` is one of the four
+ * OUTCOME_META keys and `_statusLabel` is never blank.
+ *
+ * @param {Object} row - Normalized DOGE claim row
+ * @returns {{title: string, subtitle: string, badge: {label: string,
+ *   className: string}, fields: Array<{label: string, text: string,
+ *   url: string|null}>, description: string}} Card view-model
+ */
+export function claimCardModel(row) {
+    return {
+        title: (row._recipient || 'Unknown recipient').toUpperCase(),
+        subtitle: placeLine(row),
+        badge: {
+            label: OUTCOME_META[row._outcome].short,
+            className: `outcome-pill outcome-pill--${row._outcome}`
+        },
+        fields: [
+            row.generated_award_id
+                ? {
+                      label: 'Award',
+                      text: row.doge_award_id || row.generated_award_id,
+                      url: usaspendingUrl(row)
+                  }
+                : { label: 'Award', text: MISSING, url: null },
+            { label: 'Claim date', text: row.doge_claim_date || MISSING, url: null },
+            {
+                label: 'Claimed savings',
+                text: row._savings ? formatCurrency(row._savings, false) : '',
+                url: null
+            },
+            { label: "DOGE's stated status", text: row._statusLabel, url: null }
+        ],
+        description: row.latest_description || ''
+    };
 }
 
 /**

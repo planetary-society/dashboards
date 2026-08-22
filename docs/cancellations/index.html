@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      NASA Contract Cancellations Dashboard - Terminated Awards Tracker
+      NASA Contract & Grant Cancellations Tracker | The Planetary Society
     </title>
     <meta
       name="description"
       content="Track NASA grants and contracts terminated since January 2025 by congressional district and recipient, with a historical record of DOGE's claimed cancellations checked against federal award records."
     />
     <meta name="author" content="Casey Dreier/The Planetary Society" />
-    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#037cc2" />
 
     <!-- Canonical URL -->
@@ -48,7 +47,7 @@
     <meta name="twitter:site" content="@exploreplanets" />
     <meta
       name="twitter:title"
-      content="NASA Contract Cancellations Dashboard"
+      content="NASA Contract & Grant Cancellations Tracker"
     />
     <meta
       name="twitter:description"
@@ -66,7 +65,10 @@
     <!-- Open Graph meta tags -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="The Planetary Society" />
-    <meta property="og:title" content="NASA Contract Cancellations Dashboard" />
+    <meta
+      property="og:title"
+      content="NASA Contract & Grant Cancellations Tracker"
+    />
     <meta
       property="og:description"
       content="Track NASA grants and contracts terminated since January 2025 by congressional district and recipient, plus a record of DOGE's claims checked against federal award data."
@@ -91,9 +93,10 @@
       {
         "@context": "https://schema.org",
         "@type": "DataCatalog",
-        "name": "NASA Contract Cancellations Tracker",
+        "name": "NASA Contract & Grant Cancellations Tracker",
         "description": "Interactive dashboard tracking NASA awards terminated by the second Trump Administration, presented as two datasets: confirmed termination actions from federal award records, and a historical record of DOGE's claimed cancellations checked against what the federal record shows. Includes congressional district impacts and recipient details.",
         "url": "https://dashboards.planetary.org/cancellations/",
+        "dateModified": "2026-08-21",
         "keywords": [
           "NASA",
           "contracts",
@@ -128,6 +131,19 @@
             "@type": "Dataset",
             "name": "Confirmed NASA award terminations",
             "description": "NASA contracts and grants with a termination action in federal award records since January 20, 2025.",
+            "license": "https://creativecommons.org/licenses/by/4.0/",
+            "isAccessibleForFree": true,
+            "dateModified": "2026-08-21",
+            "temporalCoverage": "2025-01-20/..",
+            "keywords": [
+              "NASA",
+              "terminated contracts",
+              "terminated grants",
+              "USAspending",
+              "FPDS",
+              "congressional districts"
+            ],
+            "measurementTechnique": "Awards identified by FPDS termination-for-convenience action codes or explicit termination language in USAspending.gov transaction descriptions.",
             "distribution": {
               "@type": "DataDownload",
               "encodingFormat": "text/csv",
@@ -138,6 +154,19 @@
             "@type": "Dataset",
             "name": "DOGE claimed NASA cancellations",
             "description": "Every NASA award cancellation claimed by the Department of Government Efficiency, with each claim checked against the award's federal transaction history.",
+            "license": "https://creativecommons.org/licenses/by/4.0/",
+            "isAccessibleForFree": true,
+            "dateModified": "2026-08-21",
+            "temporalCoverage": "2025-01-20/2026-08-20",
+            "keywords": [
+              "NASA",
+              "DOGE",
+              "Department of Government Efficiency",
+              "claimed savings",
+              "cancelled contracts",
+              "USAspending"
+            ],
+            "measurementTechnique": "DOGE's published claims cross-checked against each award's USAspending.gov transaction history.",
             "distribution": {
               "@type": "DataDownload",
               "encodingFormat": "text/csv",
@@ -156,6 +185,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- CDN script/style host -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap"
       rel="stylesheet"
@@ -169,7 +201,7 @@
 
     <!-- Grid.js CSS -->
     <link
-      href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css"
+      href="https://cdn.jsdelivr.net/npm/gridjs@6.2.0/dist/theme/mermaid.min.css"
       rel="stylesheet"
     />
 
@@ -201,7 +233,9 @@
           />
         </a>
         <a href="#cancellations" class="navbar-title-link">
-          <h1 class="navbar-title">NASA Cancelled Awards Tracking Dashboard</h1>
+          <h1 class="navbar-title">
+            NASA Contract &amp; Grant Cancellations Tracker
+          </h1>
         </a>
       </div>
       <nav class="navbar-nav">
@@ -233,15 +267,27 @@
              disclosure line (partial actions / overlap with the other panel).
              Counts live here, not in the tab labels, so a screenshot of the
              selector never shows three addable numbers. -->
+        <!-- The bake:* marker pairs are rewritten daily by scripts/bake-seo.mjs
+             so the headline facts exist in the static HTML for crawlers; app.js
+             re-renders identical content into these containers at load. -->
         <div class="panel-headline-block">
-          <h2 id="panel-headline" class="panel-headline"></h2>
-          <p id="panel-note" class="panel-note"></p>
+          <h2 id="panel-headline" class="panel-headline">
+            <!-- bake:headline -->172 NASA awards terminated since January 2025<!-- /bake:headline -->
+          </h2>
+          <p id="panel-note" class="panel-note">
+            <!-- bake:panel-note -->Plus 5 partial actions (3 descoped, 2 closed
+            out), listed in the table with their own labels and excluded from
+            the totals above.<!-- /bake:panel-note -->
+          </p>
         </div>
 
         <!-- Persistent data freshness line, fed by metadata.json -->
         <p id="freshness-bar" class="freshness-bar">
-          Data updated <span id="last-updated">&hellip;</span>. Sources:
-          USAspending.gov federal award records; DOGE's published claims.
+          Data updated
+          <span id="last-updated"
+            ><!-- bake:last-updated -->August 21, 2026<!-- /bake:last-updated --></span
+          >. Sources: USAspending.gov federal award records; DOGE's published
+          claims.
         </p>
 
         <!-- Value Boxes -->
@@ -256,7 +302,12 @@
             <h2 id="outcome-heading" class="evidence-heading">
               What became of DOGE's claims
             </h2>
-            <p id="outcome-lead" class="outcome-lead"></p>
+            <p id="outcome-lead" class="outcome-lead">
+              <!-- bake:outcome-lead -->Each claim was checked against the
+              award's federal transaction history — last check August 20, 2026.
+              The outcome shown follows the federal record, not DOGE's label: 15
+              awards DOGE listed as "expired" show explicit termination actions.<!-- /bake:outcome-lead -->
+            </p>
             <div id="outcome-body">
               <!-- Populated by JavaScript (renderOutcomePanel) -->
             </div>
@@ -327,10 +378,12 @@
               This chart counts FPDS &ldquo;termination for convenience&rdquo;
               contract actions across all of NASA by federal fiscal year. It is
               a subset of the awards listed on this panel: 93 of the
-              <span id="fy-denominator">177</span> listed awards carry this
-              action code, and grants do not receive FPDS codes at all. The
-              FY2025 bar includes roughly 9 actions taken before January 20,
-              2025.
+              <span id="fy-denominator"
+                ><!-- bake:fy-denominator -->177<!-- /bake:fy-denominator --></span
+              >
+              listed awards carry this action code, and grants do not receive
+              FPDS codes at all. The FY2025 bar includes roughly 9 actions taken
+              before January 20, 2025.
             </p>
             <div id="fy-chart"></div>
           </div>
@@ -374,6 +427,12 @@
           </div>
           <div class="info-bar">
             <p id="district-summary-stats" class="district-summary-stats"></p>
+            <!-- Reciprocal of the baked district pages' "interactive
+                 dashboard" link; JS fills the href and unhides it only for
+                 districts that have a generated page. -->
+            <a id="district-static-link" class="info-bar-links" hidden
+              >Permalink</a
+            >
           </div>
           <div id="district-groups">
             <!-- Populated by JavaScript: one labelled group per dataset -->
@@ -510,6 +569,13 @@
                   NASA contracts and grants, archived before DOGE's dissolution.
                 </li>
               </ul>
+              <p>
+                You can also
+                <a href="districts/"
+                  >browse cancellations by congressional district</a
+                >
+                as plain pages, one per district.
+              </p>
               <p>Download the data behind each panel:</p>
               <ul>
                 <li>
@@ -580,11 +646,29 @@
       </section>
     </main>
 
+    <footer class="site-footer">
+      <nav aria-label="Site">
+        <a href="../">Dashboards home</a>
+        <a href="../nasa-science/">NASA Science Spending</a>
+        <span aria-current="page">NASA Cancellations Tracker</span>
+        <a href="districts/">Browse cancellations by district</a>
+        <a href="../appropriations-guide/">FY2027 Appropriations Guide</a>
+        <a href="https://planetary.org" target="_blank" rel="noopener"
+          >The Planetary Society</a
+        >
+        <a href="mailto:casey.dreier@planetary.org">Contact</a>
+      </nav>
+      <p class="site-footer-note">
+        Created by The Planetary Society, an independent, member-supported
+        nonprofit. For questions, contact casey.dreier@planetary.org.
+      </p>
+    </footer>
+
     <!-- D3.js -->
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 
     <!-- Grid.js -->
-    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gridjs@6.2.0/dist/gridjs.production.min.js"></script>
 
     <!-- Dashboard Application -->
     <script type="module" src="js/app.js"></script>

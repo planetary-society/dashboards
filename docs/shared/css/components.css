@@ -1600,6 +1600,78 @@ path.district.highlighted {
 }
 
 /* ============================================
+   SITE FOOTER
+   ============================================ */
+
+.site-footer {
+  margin-top: var(--space-12);
+  padding: var(--space-8) var(--space-6);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-normal);
+  text-align: center;
+}
+
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+}
+
+.site-footer nav a,
+.site-footer nav span {
+  display: inline-block;
+  padding: var(--space-1) 0;
+  text-decoration: none;
+}
+
+.site-footer nav a {
+  color: var(--color-link);
+}
+
+.site-footer nav a:hover,
+.site-footer nav a:focus {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+/* The current page renders as plain text rather than a self-link */
+.site-footer nav [aria-current="page"] {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.site-footer-note {
+  margin: var(--space-4) 0 0;
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+}
+
+.site-footer-note a {
+  color: var(--color-link);
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .site-footer nav {
+    gap: var(--space-2) var(--space-4);
+  }
+
+  /* Roomier tap targets when links stack */
+  .site-footer nav a,
+  .site-footer nav span {
+    padding: var(--space-2) 0;
+  }
+}
+
+/* ============================================
    RESPONSIVE ADJUSTMENTS
    ============================================ */
 

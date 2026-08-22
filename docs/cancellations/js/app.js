@@ -35,7 +35,8 @@ import {
     escapeHtml,
     escapeAttr,
     truncateText,
-    pluralCount
+    pluralCount,
+    formatCount
 } from '../../shared/js/utils.js';
 import { DATA_URLS } from '../../shared/js/constants.js';
 import { ChoroplethMap } from '../../shared/js/components/choropleth-map.js';
@@ -43,7 +44,7 @@ import { DataTable } from '../../shared/js/components/data-table.js';
 import { ValueBox } from '../../shared/js/components/value-box.js';
 import { TabNavigation, CardTabs } from '../../shared/js/components/tabs.js';
 import { HashRouter } from '../../shared/js/components/hash-router.js';
-import { MISSING } from './panel-common.js';
+import { MISSING, placeLine, renderAwardLink } from './panel-common.js';
 import {
     normalizeTerminations,
     terminationStats,
@@ -69,6 +70,8 @@ import {
     timelineNote,
     districtSummaryLine,
     districtEmptyNote,
+    terminationCardModel,
+    claimCardModel,
     renderOutcomeBar,
     renderOutcomeLegend,
     renderOutcomeDefinitions
@@ -119,30 +122,6 @@ function renderOutcomePill(outcome) {
 function renderStatusBadge(row) {
     const meta = overrideMeta(row.override_status);
     return `<span class="badge ${meta.badgeClass}">${escapeHtml(meta.label)}</span>`;
-}
-
-/**
- * Render an award ID as a USAspending link when one exists
- * @param {string} label - Text to show (award id)
- * @param {string|null} url - usaspendingUrl() result
- * @returns {string} HTML string
- */
-function renderAwardLink(label, url) {
-    if (!label) return MISSING;
-    if (!url) return escapeHtml(label);
-    return `<a href="${escapeAttr(url)}" target="_blank" rel="noopener">${escapeHtml(label)}</a>`;
-}
-
-/**
- * A row's recipient location line: 'CITY, ST' in caps ('' when unknown)
- * @param {Object} row - Normalized row (either dataset)
- * @returns {string} Location line
- */
-function placeLine(row) {
-    return [row.recipient_city, row.recipient_state]
-        .map((part) => String(part || '').trim().toUpperCase())
-        .filter(Boolean)
-        .join(', ');
 }
 
 /**
@@ -570,7 +549,7 @@ class CancellationsDashboard {
             // can't rot as the daily refresh adds rows
             const denominator = document.getElementById('fy-denominator');
             if (denominator) {
-                denominator.textContent = this.panels.cancellations.rows.length.toLocaleString();
+                denominator.textContent = formatCount(this.panels.cancellations.rows.length);
             }
         }
     }
@@ -823,6 +802,7 @@ class CancellationsDashboard {
     renderDistrictPage(districtCode) {
         const titleEl = document.getElementById('district-title');
         const statsEl = document.getElementById('district-summary-stats');
+        const staticLink = document.getElementById('district-static-link');
         const container = document.getElementById('district-groups');
         if (!titleEl || !container) return;
 
@@ -832,6 +812,7 @@ class CancellationsDashboard {
         if (!this.panels) {
             container.innerHTML = '';
             if (statsEl) statsEl.textContent = 'Loading…';
+            if (staticLink) staticLink.hidden = true;
             return;
         }
 
@@ -845,6 +826,15 @@ class CancellationsDashboard {
 
         if (statsEl) {
             statsEl.textContent = districtSummaryLine(groupSpecs[0][1].length, groupSpecs[1][1].length);
+        }
+
+        // The bake generates a static page for every district with data in
+        // either dataset, so an empty district (a hand-typed hash) has no
+        // page to link to.
+        if (staticLink) {
+            const hasData = groupSpecs[0][1].length + groupSpecs[1][1].length > 0;
+            staticLink.href = `districts/${districtCode}/`;
+            staticLink.hidden = !hasData;
         }
 
         container.innerHTML = groupSpecs.map(([panelId, rows, renderCard]) =>
@@ -919,37 +909,33 @@ class CancellationsDashboard {
     }
 
     renderTerminationCard(row) {
-        return this.renderAwardCard(
-            [
-                ['Award', renderAwardLink(row.award_id, usaspendingUrl(row))],
-                ['Type', escapeHtml(row.award_type || MISSING)],
-                ['Action date', escapeHtml(row.action_date || MISSING)],
-                ['Obligated', row._obligated !== null ? formatCurrency(row._obligated, false) : '']
-            ],
-            row.transaction_description || row.award_description || '',
-            renderStatusBadge(row),
-            (row._recipient || 'Unknown recipient').toUpperCase(),
-            placeLine(row)
-        );
+        return this.renderCardFromModel(terminationCardModel(row));
     }
 
     renderClaimCard(row) {
+        return this.renderCardFromModel(claimCardModel(row));
+    }
+
+    /**
+     * Turn a card view-model (panel-views.js) into award-card markup
+     *
+     * The model carries data, not markup; the only rendering decisions made
+     * here are the ones the model cannot know: linked values become anchors,
+     * blank values drop their field row.
+     *
+     * @param {Object} model - terminationCardModel()/claimCardModel() result
+     * @returns {string} HTML for the card
+     */
+    renderCardFromModel({ title, subtitle, badge, fields, description }) {
         return this.renderAwardCard(
-            [
-                [
-                    'Award',
-                    row.generated_award_id
-                        ? renderAwardLink(row.doge_award_id || row.generated_award_id, usaspendingUrl(row))
-                        : MISSING
-                ],
-                ['Claim date', escapeHtml(row.doge_claim_date || MISSING)],
-                ['Claimed savings', row._savings ? formatCurrency(row._savings, false) : ''],
-                ["DOGE's stated status", escapeHtml(row._statusLabel)]
-            ],
-            row.latest_description || '',
-            renderOutcomePill(row._outcome),
-            (row._recipient || 'Unknown recipient').toUpperCase(),
-            placeLine(row)
+            fields.map(({ label, text, url }) => [
+                label,
+                url ? renderAwardLink(text, url) : text ? escapeHtml(text) : ''
+            ]),
+            description,
+            `<span class="${badge.className}">${escapeHtml(badge.label)}</span>`,
+            title,
+            subtitle
         );
     }
 

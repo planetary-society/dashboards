@@ -135,6 +135,8 @@ function renderHead({ title, description, canonical, paths }) {
 <link rel="stylesheet" href="${paths.root}shared/css/components.css">
 <link rel="stylesheet" href="${paths.root}shared/css/layout.css">
 <link rel="stylesheet" href="${paths.panels}">
+
+<script src="https://cdn.usefathom.com/script.js" data-site="UDDGKLNZ" defer></script>
 </head>`;
 }
 

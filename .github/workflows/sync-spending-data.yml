@@ -16,21 +16,25 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Setup Python
-        uses: actions/setup-python@v7
+      - name: Set up uv
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
-          python-version: '3.11'
+          version: "0.11.29"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
           
+      - name: Install Python
+        run: uv python install 3.11
+
       - name: Install dependencies
-        run: |
-          pip install requests pandas
+        run: uv sync --locked
           
       - name: Download CSV from private repo
         env:
           PRIVATE_REPO_TOKEN: ${{ secrets.PRIVATE_REPO_PERSONAL_ACCESS_TOKEN }}
           PRIVATE_REPO: "planetary-society/nasa-spending-impact-generator"
         run: |
-          python .github/scripts/fetch-data.py --get summaries
+          uv run --locked python .github/scripts/fetch-data.py --get summaries
 
       - name: Copy Science data to docs folder
         run: |

@@ -554,7 +554,7 @@ class CancellationsDashboard {
             ariaLabel: 'Confirmed termination actions by month'
         });
         this.fyChart = new FyChart('fy-chart', {
-            ariaLabel: 'NASA awards cancelled for convenience by fiscal year, all NASA',
+            ariaLabel: 'NASA awards terminated for convenience by fiscal year, all NASA',
             barColor: 'var(--red-500)'
         });
     }
@@ -577,7 +577,7 @@ class CancellationsDashboard {
      */
     renderFyChart() {
         if (!this.fyChart) return;
-        this.fyChart.render(this.fyItems, { countLabel: 'Awards' });
+        this.fyChart.render(this.fyItems, { countLabel: 'Awards terminated' });
     }
 
     /* ------------------------------------------------------------------ *

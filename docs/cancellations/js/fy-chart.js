@@ -1,9 +1,11 @@
 /**
  * Fiscal-Year Awards Bar Chart
  *
- * D3.js column chart of NASA *awards* cancelled for convenience by federal
- * fiscal year. A deliberate fork of timeline-chart.js rather than an option on
- * it — the two charts share machinery (chart-common.js) but not a purpose.
+ * D3.js column chart of NASA *awards* terminated for convenience by federal
+ * fiscal year — one adjudicated count per year, each award counted once in the
+ * year its termination was issued. A deliberate fork of timeline-chart.js rather
+ * than an option on it — the two charts share machinery (chart-common.js) but
+ * not a purpose.
  *
  * The chart carries no visible label of its own. It plots a wider population
  * than the panel it sits on (all of NASA, every administration, fiscal years
@@ -64,7 +66,7 @@ export class FyChart {
         this.container = document.getElementById(containerId);
         this.options = {
             height: options.height || 260,
-            ariaLabel: options.ariaLabel || 'Awards cancelled for convenience by fiscal year',
+            ariaLabel: options.ariaLabel || 'Awards terminated for convenience by fiscal year',
             barColor: options.barColor || 'var(--red-500)'
         };
 
@@ -98,9 +100,10 @@ export class FyChart {
      *   {fy: number, count: number, partial: boolean}
      * @param {Object} config - Render configuration
      * @param {string} config.barColor - SVG fill for bars (default: the constructor's)
-     * @param {string} config.countLabel - Label for the count row in the tooltip (default: 'Awards')
+     * @param {string} config.countLabel - Label for the count row in the tooltip
+     *   (default: 'Awards terminated')
      */
-    render(items, { barColor = this.options.barColor, countLabel = 'Awards' } = {}) {
+    render(items, { barColor = this.options.barColor, countLabel = 'Awards terminated' } = {}) {
         if (!this.container) return;
 
         this.items = items;
@@ -193,7 +196,7 @@ export class FyChart {
             .attr('viewBox', `0 0 ${this.width} ${this.height}`)
             .attr('preserveAspectRatio', 'xMidYMid meet')
             .attr('role', 'img')
-            .attr('aria-label', `${this.options.ariaLabel}: number of awards by fiscal year, ${span}`)
+            .attr('aria-label', `${this.options.ariaLabel}, ${span}`)
             .style('width', '100%')
             .style('height', 'auto')
             .style('display', 'block');

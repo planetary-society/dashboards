@@ -2,19 +2,21 @@
  * FY Awards Module
  *
  * Pure reader for `cancellations_for_convenience_awards_by_fiscal_year.csv`, a
- * rollup of NASA awards cancelled for convenience across all of NASA, one row
- * per federal fiscal year (FY2010–FY2026).
+ * rollup of NASA awards terminated for convenience across all of NASA, one row
+ * per federal fiscal year, zero-filled from FY2010 to the current one.
  *
- * The file carries three count columns — awards found by an FPDS action code,
- * awards found by termination language in the transaction text, and the union
- * of the two. The chart plots the union, which is the same detection method the
- * Confirmed Cancellations panel uses on its own list.
+ * The file carries a single count column: distinct awards the tracker has
+ * adjudicated as terminated for convenience — reversed and vacated terminations
+ * cleared, terminations for cause excluded, human overrides and de-scope routing
+ * applied — each award counted once, in the fiscal year of the transaction that
+ * terminated it.
  *
- * It is still a wider universe than that panel: it covers all of NASA and every
- * administration, and its fiscal years start on October 1 rather than at the
- * January 20, 2025 cut. That qualifier is stated in the About tab and in the
- * chart's aria-label; this module's only jobs are to read the two columns it
- * needs, drop rows it cannot trust, and flag the fiscal year not yet finished.
+ * It is a wider universe than the Confirmed Cancellations panel: it covers all
+ * of NASA and every administration, and its fiscal years start on October 1
+ * rather than at the January 20, 2025 cut. That qualifier is stated in the About
+ * tab and in the chart's aria-label; this module's only jobs are to read the two
+ * columns it needs, drop rows it cannot trust, and flag the fiscal year not yet
+ * finished.
  *
  * No DOM, no fetch — safe to import from Node test runners.
  */
@@ -27,17 +29,8 @@ import { warnOnce, hasColumn } from './panel-common.js';
  */
 const FY_COLUMN = 'fiscal_year';
 
-/**
- * Award-count column header, exactly as upstream writes it
- *
- * The union column: awards caught by an FPDS action code *or* by termination
- * language. The two component columns (`action_code_cancellation_awards`,
- * `keyword_cancellation_awards`) are deliberately unread — an award can satisfy
- * both, so they do not sum.
- *
- * @type {string}
- */
-const COUNT_COLUMN = 'action_code_or_keyword_cancellation_awards';
+/** Award-count column header, exactly as upstream writes it @type {string} */
+const COUNT_COLUMN = 'terminated_awards';
 
 /**
  * Zero-based month in which a US federal fiscal year begins (October)

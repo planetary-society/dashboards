@@ -4,11 +4,7 @@ import { parseFyAwards, currentFederalFy } from '../docs/cancellations/js/fy-awa
 import { captureWarnings, loadCsv } from './fixtures.mjs';
 
 const FY_COLUMN = 'fiscal_year';
-const COUNT_COLUMN = 'action_code_or_keyword_cancellation_awards';
-
-/** The two component columns the chart deliberately does not plot */
-const ACTION_CODE_COLUMN = 'action_code_cancellation_awards';
-const KEYWORD_COLUMN = 'keyword_cancellation_awards';
+const COUNT_COLUMN = 'terminated_awards';
 
 const DEPLOYED_PATH = 'docs/data/cancellations/cancellations_for_convenience_awards_by_fiscal_year.csv';
 
@@ -80,20 +76,18 @@ test('parseFyAwards returns the series ascending regardless of file order', () =
     );
 });
 
-// --- column choice -----------------------------------------------------------
-
-test('parseFyAwards plots the union column, not either component column', () => {
-    const rows = [{
-        [FY_COLUMN]: '2021',
-        [ACTION_CODE_COLUMN]: '3',
-        [KEYWORD_COLUMN]: '7',
-        [COUNT_COLUMN]: '9'
-    }];
+test('parseFyAwards keeps a zero-filled fiscal year as a real zero', () => {
+    // Upstream zero-fills FY2010 onward, so a quiet year is 0, not a gap. It
+    // must survive as a datum: the chart draws no bar for it but still keeps
+    // its slot on the x-axis.
+    const rows = [fyRow(2020, 0), fyRow(2021, 4)];
 
     const series = parseFyAwards(rows, { fromFy: 2020, now: new Date('2026-08-21T00:00:00Z') });
 
-    assert.equal(series.length, 1);
-    assert.equal(series[0].count, 9);
+    assert.deepEqual(
+        series.map((entry) => entry.count),
+        [0, 4]
+    );
 });
 
 // --- partial flag ------------------------------------------------------------
@@ -185,7 +179,7 @@ test('parseFyAwards drops a fully blank row without warning', () => {
 // --- missing columns ---------------------------------------------------------
 
 test('parseFyAwards returns [] with one warning when the count column is renamed', () => {
-    const rows = [{ [FY_COLUMN]: '2020', [ACTION_CODE_COLUMN]: '9' }];
+    const rows = [{ [FY_COLUMN]: '2020', awards: '9' }];
     let series;
 
     const warnings = captureWarnings(() => {
@@ -231,9 +225,11 @@ const LIVE_OPTS = { fromFy: 2020, now: new Date('2026-08-21T00:00:00Z') };
 const liveRows = loadCsv(DEPLOYED_PATH);
 const liveSeries = parseFyAwards(liveRows, LIVE_OPTS);
 
-test('live CSV carries the columns the chart reads', () => {
-    assert.ok(FY_COLUMN in liveRows[0]);
-    assert.ok(COUNT_COLUMN in liveRows[0]);
+test('live CSV header is exactly the schema the chart is built against', () => {
+    // The deploy gate. The daily sync copies this file in wholesale, so an
+    // upstream schema change lands here silently; failing on the exact header
+    // is what stops a stale-schema copy reaching the site as an empty chart.
+    assert.deepEqual(Object.keys(liveRows[0]), [FY_COLUMN, COUNT_COLUMN]);
 });
 
 test('live CSV yields fiscal years in ascending order, each one once', () => {
@@ -256,24 +252,24 @@ test('every live count is a non-negative integer', () => {
     }
 });
 
-test('the plotted column is the union of the two detection methods', () => {
-    // An award can carry both an action code and termination language, so the
-    // union sits between the larger component and their sum — never outside it.
-    // Skipped rather than failed if the component columns ever go away: the
-    // chart does not read them, so their absence is not a chart bug.
-    if (!(ACTION_CODE_COLUMN in liveRows[0] && KEYWORD_COLUMN in liveRows[0])) {
-        return;
-    }
+test('live CSV is zero-filled, with no gap between its first and last fiscal year', () => {
+    // Upstream writes every year from FY2010 to the current one, quiet years
+    // included. A missing year would leave a hole in the x-axis that reads as
+    // "no data" rather than "no terminations".
+    const years = parseFyAwards(liveRows, { fromFy: 0, now: LIVE_OPTS.now }).map((entry) => entry.fy);
 
-    for (const row of liveRows) {
-        const byCode = Number(row[ACTION_CODE_COLUMN]);
-        const byKeyword = Number(row[KEYWORD_COLUMN]);
-        const union = Number(row[COUNT_COLUMN]);
+    assert.ok(years.length > 1);
+    assert.equal(years[years.length - 1] - years[0] + 1, years.length, `FY${years[0]}–FY${years[years.length - 1]} has a gap`);
+});
 
-        if (![byCode, byKeyword, union].every(Number.isFinite)) continue;
+test('a live partial year is the last bar, never one in the middle', () => {
+    // Each award is counted once, in the fiscal year its termination was
+    // issued, so the in-progress year can only ever be the newest row. Stated
+    // as a position rather than a year so a refresh into a new FY is not a bug.
+    const partialIndex = liveSeries.findIndex((entry) => entry.partial);
 
-        assert.ok(union >= Math.max(byCode, byKeyword), `FY${row[FY_COLUMN]} union is below a component`);
-        assert.ok(union <= byCode + byKeyword, `FY${row[FY_COLUMN]} union exceeds the component sum`);
+    if (partialIndex !== -1) {
+        assert.equal(partialIndex, liveSeries.length - 1);
     }
 });
 

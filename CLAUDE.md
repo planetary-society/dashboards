@@ -44,7 +44,7 @@ docs/
 │       ├── fy-awards.js        # Pure reader for the FY rollup CSV
 │       ├── chart-common.js     # Helpers shared by the two D3 bar charts
 │       ├── timeline-chart.js   # Monthly activity column chart
-│       └── fy-chart.js         # Fiscal-year FPDS actions column chart
+│       └── fy-chart.js         # Terminated-awards-by-fiscal-year column chart
 ├── nasa-science/
 │   └── js/app.js               # NASA Science spending dashboard
 ├── appropriations-guide/
@@ -73,7 +73,7 @@ docs/
     ├── cancellations/
     │   ├── terminations.csv                  # Federal-record terminations (synced daily)
     │   ├── doge_claims.csv                   # DOGE's claimed cancellations (synced daily)
-    │   ├── cancellations_for_convenience_awards_by_fiscal_year.csv   # FY rollup of cancelled awards (synced daily)
+    │   ├── cancellations_for_convenience_awards_by_fiscal_year.csv   # FY rollup: fiscal_year,terminated_awards (synced daily)
     │   ├── metadata.json                     # {"lastUpdated": "...", "files": {"terminations": {...}, "doge_claims": {...}}}
     │   └── master_ledger_latest.csv          # DEPRECATED — no longer read by the dashboard; kept one cycle for external links
     ├── science/

@@ -24,12 +24,17 @@ import {
     renderSitemap
 } from '../scripts/bake/templates.mjs';
 import { districtOf, placeLine } from '../docs/cancellations/js/panel-common.js';
-import { normalizeTerminations, overrideMeta } from '../docs/cancellations/js/terminations.js';
+import {
+    normalizeAwards,
+    overrideMeta,
+    splitByStatus
+} from '../docs/cancellations/js/terminations.js';
 import { OUTCOME_META, normalizeDogeClaims } from '../docs/cancellations/js/doge-claims.js';
 import { districtEmptyNote, metaDescription } from '../docs/cancellations/js/panel-views.js';
 import { dogeClaimRow, loadCsv, terminationRow } from './fixtures.mjs';
 
 const TERMINATIONS_PATH = 'docs/data/cancellations/terminations.csv';
+const DESCOPED_PATH = 'docs/data/cancellations/descoped.csv';
 const DOGE_PATH = 'docs/data/cancellations/doge_claims.csv';
 
 /** A recipient name carrying every character escapeHtml/escapeAttr must handle */
@@ -46,16 +51,22 @@ function page(inner) {
 
 /**
  * Render a district page from fixture rows
+ *
+ * `terminations` and `descoped` arrive as separate raw lists and reach the
+ * template as the single status-tagged union it renders, exactly as the bake
+ * assembles them.
+ *
  * @param {Object} [options] - Overrides
  * @param {string} [options.code] - District code
  * @param {Array<Object>} [options.terminations] - Raw termination rows
+ * @param {Array<Object>} [options.descoped] - Raw descoped rows
  * @param {Array<Object>} [options.doge] - Raw DOGE rows
  * @returns {string} Page HTML
  */
-function fixturePage({ code = 'CA-16', terminations = [], doge = [] } = {}) {
+function fixturePage({ code = 'CA-16', terminations = [], descoped = [], doge = [] } = {}) {
     return renderDistrictPage({
         code,
-        terminationRows: normalizeTerminations(terminations).rows,
+        awardRows: normalizeAwards(terminations, descoped).rows,
         dogeRows: normalizeDogeClaims(doge).rows,
         lastUpdated: '2026-08-20'
     });
@@ -563,38 +574,38 @@ test('placeLine drops the missing half rather than emitting a stray comma', () =
 // district is resolved once into `byDistrict` — the same single grouping pass
 // the bake itself makes, rather than a filter per district code.
 
-const liveTerminations = normalizeTerminations(loadCsv(TERMINATIONS_PATH)).rows;
+const liveAwards = normalizeAwards(loadCsv(TERMINATIONS_PATH), loadCsv(DESCOPED_PATH)).rows;
 const liveClaims = normalizeDogeClaims(loadCsv(DOGE_PATH)).rows;
 
-/** District code → {terminations, claims} rows, built in one pass over each file */
+/** District code → {awards, claims} rows, built in one pass over each file */
 const byDistrict = new Map();
 
 /**
  * Add a row to its district's bucket
  * @param {string} code - District code, or '' to skip the row
- * @param {'terminations'|'claims'} key - Which list the row belongs to
+ * @param {'awards'|'claims'} key - Which list the row belongs to
  * @param {Object} row - Normalized row
  */
 function bucket(code, key, row) {
     if (!code) return;
-    if (!byDistrict.has(code)) byDistrict.set(code, { terminations: [], claims: [] });
+    if (!byDistrict.has(code)) byDistrict.set(code, { awards: [], claims: [] });
     byDistrict.get(code)[key].push(row);
 }
 
-for (const row of liveTerminations) bucket(row._district, 'terminations', row);
+for (const row of liveAwards) bucket(row._district, 'awards', row);
 for (const row of liveClaims) bucket(districtOf(row), 'claims', row);
 
 test('renderDistrictPage builds the busiest live district without throwing', () => {
     assert.ok(byDistrict.size > 0, 'live files carry no districts');
 
-    // Deterministic pick: most termination rows, ties broken by code.
+    // Deterministic pick: most award rows, ties broken by code.
     const [code, rows] = [...byDistrict.entries()].sort(
-        (a, b) => b[1].terminations.length - a[1].terminations.length || (a[0] < b[0] ? -1 : 1)
+        (a, b) => b[1].awards.length - a[1].awards.length || (a[0] < b[0] ? -1 : 1)
     )[0];
 
     const html = renderDistrictPage({
         code,
-        terminationRows: rows.terminations,
+        awardRows: rows.awards,
         dogeRows: rows.claims,
         lastUpdated: '2026-08-20'
     });
@@ -607,11 +618,16 @@ test('renderDistrictPage builds the busiest live district without throwing', () 
 test('renderDistrictsIndex and renderSitemap cover every live district', () => {
     const codes = new Set(byDistrict.keys());
 
-    const entries = [...byDistrict].map(([code, rows]) => ({
-        code,
-        terminations: rows.terminations.length,
-        claims: rows.claims.length
-    }));
+    const entries = [...byDistrict].map(([code, rows]) => {
+        const { terminated, descoped } = splitByStatus(rows.awards);
+
+        return {
+            code,
+            terminations: terminated.length,
+            descoped: descoped.length,
+            claims: rows.claims.length
+        };
+    });
 
     const html = renderDistrictsIndex(entries, '2026-08-20');
     const xml = renderSitemap({ districtCodes: [...codes], lastUpdated: '2026-08-20' });

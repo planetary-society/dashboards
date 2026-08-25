@@ -78,6 +78,28 @@ export function terminationRow(overrides = {}) {
 }
 
 /**
+ * Build a descoped.csv row with sane defaults
+ *
+ * `descoped.csv` carries the identical 27 columns as `terminations.csv`, so
+ * this is `terminationRow` with the descriptions that file actually holds — a
+ * stop-work notice rather than a termination — and a blank `override_status`,
+ * which is the majority case there. The blank is the point: nothing inside the
+ * row says "descoped", so only the file it came from can say so.
+ *
+ * @param {Object} [overrides] - Column values to override
+ * @returns {Object} Descoped row
+ */
+export function descopedRow(overrides = {}) {
+    return terminationRow({
+        action_type: 'M',
+        transaction_description: 'STOP WORK NOTICE ISSUED WITH NOTIFICATION OF INTENT TO DE-SCOPE.',
+        detected_by: 'description',
+        override_status: '',
+        ...overrides
+    });
+}
+
+/**
  * Build a doge_claims.csv row with sane defaults
  *
  * Covers all 30 columns of `docs/data/cancellations/doge_claims.csv`. Defaults

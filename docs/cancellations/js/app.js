@@ -3,8 +3,10 @@
  *
  * Two independent panels over two independent datasets:
  *
- *   cancellations — terminations.csv: NASA awards whose federal record shows
- *                   a termination action (the default, high-confidence panel)
+ *   cancellations — terminations.csv + descoped.csv: NASA awards whose federal
+ *                   record shows a termination action, plus awards NASA cut
+ *                   back without ending, tagged apart by `_status` (the
+ *                   default, high-confidence panel)
  *   doge          — doge_claims.csv: every cancellation DOGE claimed, checked
  *                   against the award's federal transaction history
  *
@@ -43,9 +45,16 @@ import { DataTable } from '../../shared/js/components/data-table.js';
 import { ValueBox } from '../../shared/js/components/value-box.js';
 import { TabNavigation, CardTabs } from '../../shared/js/components/tabs.js';
 import { HashRouter } from '../../shared/js/components/hash-router.js';
-import { MISSING, placeLine, renderAwardLink } from './panel-common.js';
 import {
-    normalizeTerminations,
+    MISSING,
+    placeLine,
+    renderAwardLink,
+    sortGroupedCounts,
+    sortAwardsByActionDateDesc
+} from './panel-common.js';
+import {
+    normalizeAwards,
+    splitByStatus,
     terminationStats,
     monthlyCounts,
     usaspendingUrl
@@ -95,6 +104,27 @@ const CARD_DESCRIPTION_CHARS = 400;
  * otherwise Back would bounce the visitor straight back onto the redirect.
  */
 const LEGACY_ROUTES = new Set(['summary', 'raw-data', 'cancelled', 'suspicious', 'reversed']);
+
+/**
+ * Fetch a CSV the page can do without, degrading to an empty file
+ *
+ * Only descoped.csv is loaded this way. It shipped after the dashboard did, so
+ * a Pages deploy or a cached tree that predates it answers 404 — and losing the
+ * descoped awards must cost the visitor those rows, not the whole page. Every
+ * other CSV stays on `fetchText`, whose throw is caught by init() and shown as
+ * an error: a page missing its terminations is not a page.
+ *
+ * @param {string} url - CSV URL
+ * @returns {Promise<string>} File text, or '' when it could not be read
+ */
+async function fetchOptionalText(url) {
+    try {
+        return await fetchText(url);
+    } catch (error) {
+        console.warn(`Optional data file unavailable (${url}):`, error.message);
+        return '';
+    }
+}
 
 /**
  * Render a badge view-model as a table cell
@@ -217,24 +247,35 @@ class CancellationsDashboard {
     /**
      * Fetch and normalize both datasets plus the FY series
      *
-     * All three files load in parallel; each panel keeps its rows, its stats,
+     * All four files load in parallel; each panel keeps its rows, its stats,
      * and its column-availability flags.
+     *
+     * The confirmed panel's `rows` are the union of terminations.csv and
+     * descoped.csv — everything the table, map and district pages list — while
+     * `stats` is computed from the terminated half alone, so no headline figure
+     * moves because an award was descoped. `stats.descoped` carries the other
+     * half's size for the value box's note; it is a caveat, never an addend.
      */
     async loadData() {
-        const [terminationsText, dogeText, fyText] = await Promise.all([
+        const [terminationsText, descopedText, dogeText, fyText] = await Promise.all([
             fetchText(DATA_URLS.terminations),
+            fetchOptionalText(DATA_URLS.descoped),
             fetchText(DATA_URLS.dogeClaims),
             fetchText(DATA_URLS.fyAwards)
         ]);
 
-        const terminations = normalizeTerminations(parseCSV(terminationsText));
+        const awards = normalizeAwards(parseCSV(terminationsText), parseCSV(descopedText));
         const doge = normalizeDogeClaims(parseCSV(dogeText));
 
         this.panels = {
             cancellations: {
-                rows: terminations.rows,
-                columns: terminations.columns,
-                stats: terminationStats(terminations.rows, terminations.columns)
+                rows: awards.rows,
+                terminated: awards.terminated,
+                columns: awards.columns,
+                stats: {
+                    ...terminationStats(awards.terminated, awards.columns),
+                    descoped: awards.descoped.length
+                }
             },
             doge: {
                 rows: doge.rows,
@@ -249,17 +290,16 @@ class CancellationsDashboard {
     }
 
     /**
-     * District counts and hover info for the map (confirmed awards only)
+     * District counts and hover info for the map (every affected award)
      *
-     * Partial actions (descoped / closed out) are excluded: the map plots
-     * terminated awards, and a descoped award is not one. This keeps the
-     * map's total consistent with the panel headline.
+     * Counts the union: a descoped award is real impact in the district that
+     * holds it, and so is a closed-out or annotated-partial one. That makes the
+     * map's total deliberately larger than the panel headline, which counts
+     * terminations only — hence "affected", not "terminated", in the hover.
      */
     calculateDistrictData() {
-        const confirmed = this.panels.cancellations.rows.filter(
-            (row) => !row._partial && row._geoid
-        );
-        const byGeoid = groupBy(confirmed, '_geoid');
+        const located = this.panels.cancellations.rows.filter((row) => row._geoid);
+        const byGeoid = groupBy(located, '_geoid');
 
         this.districtCounts = {};
         this.hoverInfo = {};
@@ -273,7 +313,7 @@ class CancellationsDashboard {
             const district = rows[0]._district;
             this.hoverInfo[geoid] = `
                 <strong>${escapeHtml(district)}</strong><br>
-                ${pluralCount(count, 'terminated award')}
+                ${pluralCount(count, 'affected award')}
             `;
         });
     }
@@ -447,8 +487,7 @@ class CancellationsDashboard {
 
         // Sorted [key, count] pairs for a derived field
         const countBy = (rows, key) => Object.entries(groupBy(rows.filter((r) => r[key]), key))
-            .map(([k, group]) => [k, group.length])
-            .sort((a, b) => b[1] - a[1]);
+            .map(([k, group]) => [k, group.length]);
 
         this.districtsTable.render(
             [
@@ -462,7 +501,7 @@ class CancellationsDashboard {
                 },
                 { name: unitHeader, id: 'count' }
             ],
-            countBy(panel.rows, '_district')
+            sortGroupedCounts(countBy(panel.rows, '_district'))
         );
 
         // Recipients aggregate by name but display the two-line NAME +
@@ -523,7 +562,9 @@ class CancellationsDashboard {
     renderTimeline() {
         if (!this.timeline) return;
 
-        const { months } = monthlyCounts(this.panels.cancellations.rows);
+        // Terminated rows only: the chart's subject is termination actions, so
+        // a descoped award has no month to contribute to it.
+        const { months } = monthlyCounts(this.panels.cancellations.terminated);
         this.timeline.render(months, {
             metric: 'count',
             barColor: 'var(--red-500)',
@@ -631,7 +672,7 @@ class CancellationsDashboard {
         ];
         URL_COL.terminations = columns.findIndex((c) => c.id === 'url');
 
-        const data = panel.rows.map((row) => [
+        const data = sortAwardsByActionDateDesc(panel.rows).map((row) => [
             row.award_id,
             recipientCellText(row._recipient, placeLine(row)),
             renderBadgeCell(terminationBadgeModel(row), row.action_date),
@@ -768,7 +809,16 @@ class CancellationsDashboard {
         ];
 
         if (statsEl) {
-            statsEl.textContent = districtSummaryLine(groupSpecs[0][1].length, groupSpecs[1][1].length);
+            // The cancellations group is the union, so its two halves are split
+            // back apart here — the sentence counts terminations and descoped
+            // awards separately even though one list shows both.
+            const { terminated, descoped } = splitByStatus(groupSpecs[0][1]);
+
+            statsEl.textContent = districtSummaryLine(
+                terminated.length,
+                groupSpecs[1][1].length,
+                descoped.length
+            );
         }
 
         // The bake generates a static page for every district with data in

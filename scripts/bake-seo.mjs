@@ -29,7 +29,11 @@ import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'nod
 import { fileURLToPath } from 'node:url';
 
 import { escapeHtml, groupBy, parseCSV } from '../docs/shared/js/utils.js';
-import { normalizeTerminations, terminationStats } from '../docs/cancellations/js/terminations.js';
+import {
+    normalizeAwards,
+    splitByStatus,
+    terminationStats
+} from '../docs/cancellations/js/terminations.js';
 import { dogeStats, normalizeDogeClaims } from '../docs/cancellations/js/doge-claims.js';
 import { formatIsoDayLong } from '../docs/cancellations/js/chart-common.js';
 import { metaDescription } from '../docs/cancellations/js/panel-views.js';
@@ -51,6 +55,27 @@ const DISTRICT_CODE = /^[A-Z]{2}-\d{2}$/;
  */
 function byDistrict(rows) {
     return groupBy(rows.filter((row) => row._district), '_district');
+}
+
+/**
+ * Read an optional data file, treating an absent one as empty
+ *
+ * Only descoped.csv is read this way, and only because it postdates the rest of
+ * the pipeline: a checkout or a workflow run that predates it must bake the
+ * site it has always baked rather than fail the deploy. Every other read stays
+ * unguarded — a missing terminations.csv is a broken bake, not a smaller one.
+ *
+ * @param {string} absolutePath - File to read
+ * @returns {string} File contents, or '' when it does not exist
+ */
+function readOptional(absolutePath) {
+    try {
+        return readFileSync(absolutePath, 'utf8');
+    } catch (error) {
+        if (error.code !== 'ENOENT') throw error;
+        console.log(`optional data file absent: ${absolutePath}`);
+        return '';
+    }
 }
 
 /**
@@ -84,18 +109,24 @@ if (!/^\d{4}-\d{2}-\d{2}$/.test(lastUpdated ?? '')) {
     throw new Error(`metadata.json lastUpdated is not an ISO date: ${lastUpdated}`);
 }
 
-const terminations = normalizeTerminations(
-    parseCSV(readFileSync(path('docs/data/cancellations/terminations.csv'), 'utf8'))
+// `awards.rows` is the union the district pages list; `awards.terminated` is
+// what every baked headline figure is computed from, so a descoped award can
+// never move the count a crawler reads out of the meta description.
+const awards = normalizeAwards(
+    parseCSV(readFileSync(path('docs/data/cancellations/terminations.csv'), 'utf8')),
+    parseCSV(readOptional(path('docs/data/cancellations/descoped.csv')))
 );
 const doge = normalizeDogeClaims(
     parseCSV(readFileSync(path('docs/data/cancellations/doge_claims.csv'), 'utf8'))
 );
 
-if (terminations.rows.length === 0 || doge.rows.length === 0) {
+// descoped.csv is deliberately not in this guard: it is optional and legitimately
+// small, so an empty one is data, not a broken bake.
+if (awards.terminated.length === 0 || doge.rows.length === 0) {
     throw new Error('a source CSV parsed to zero rows — refusing to bake an empty site');
 }
 
-const tStats = terminationStats(terminations.rows, terminations.columns);
+const tStats = terminationStats(awards.terminated, awards.columns);
 const dStats = dogeStats(doge.rows);
 
 // --- Inject index.html ---------------------------------------------------
@@ -117,13 +148,16 @@ html = setMetaDescription(html, metaDescription(tStats, dStats));
 html = setJsonLdDateModified(html, lastUpdated);
 
 writeFileSync(indexPath, html);
-console.log(`index.html: ${terminations.rows.length} terminations / ${doge.rows.length} claims, data date ${lastUpdated}`);
+console.log(
+    `index.html: ${awards.terminated.length} terminations (+${awards.descoped.length} descoped)`
+    + ` / ${doge.rows.length} claims, data date ${lastUpdated}`
+);
 
 // --- District pages ------------------------------------------------------
 
 let districtCodes;
 
-if (!terminations.columns.districts && !doge.columns.district) {
+if (!awards.columns.districts && !doge.columns.district) {
     // District columns vanished upstream. Deleting ~78 indexed URLs over a
     // column rename is worse than serving day-old pages: keep what's on disk,
     // surface a warning, and let the sitemap follow reality. The ::warning::
@@ -132,11 +166,11 @@ if (!terminations.columns.districts && !doge.columns.district) {
     console.log(`${prefix}district columns missing from both datasets — keeping existing district pages`);
     districtCodes = districtsOnDisk();
 } else {
-    const terminationGroups = byDistrict(terminations.rows);
+    const awardGroups = byDistrict(awards.rows);
     const dogeGroups = byDistrict(doge.rows);
 
     const codes = [
-        ...new Set([...Object.keys(terminationGroups), ...Object.keys(dogeGroups)])
+        ...new Set([...Object.keys(awardGroups), ...Object.keys(dogeGroups)])
     ].sort();
     const invalid = codes.filter((code) => !DISTRICT_CODE.test(code));
     if (invalid.length > 0) {
@@ -148,15 +182,22 @@ if (!terminations.columns.districts && !doge.columns.district) {
 
     const entries = [];
     for (const code of codes) {
-        const terminationRows = terminationGroups[code] ?? [];
+        const awardRows = awardGroups[code] ?? [];
         const dogeRows = dogeGroups[code] ?? [];
+        // The page lists the union; the index counts the halves.
+        const { terminated, descoped } = splitByStatus(awardRows);
 
         mkdirSync(`${DISTRICTS_DIR}/${code}`);
         writeFileSync(
             `${DISTRICTS_DIR}/${code}/index.html`,
-            renderDistrictPage({ code, terminationRows, dogeRows, lastUpdated })
+            renderDistrictPage({ code, awardRows, dogeRows, lastUpdated })
         );
-        entries.push({ code, terminations: terminationRows.length, claims: dogeRows.length });
+        entries.push({
+            code,
+            terminations: terminated.length,
+            descoped: descoped.length,
+            claims: dogeRows.length
+        });
     }
 
     writeFileSync(`${DISTRICTS_DIR}/index.html`, renderDistrictsIndex(entries, lastUpdated));

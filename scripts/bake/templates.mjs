@@ -23,6 +23,7 @@ import {
 } from '../../docs/shared/js/utils.js';
 import { STATE_NAMES } from '../../docs/shared/js/constants.js';
 import { renderAwardLink } from '../../docs/cancellations/js/panel-common.js';
+import { splitByStatus } from '../../docs/cancellations/js/terminations.js';
 import {
     PANEL_META,
     claimCardModel,
@@ -275,17 +276,23 @@ function renderFreshness(lastUpdated) {
  * groups, one card per row — with a link back into the interactive dashboard so
  * the static page is an entry point rather than a dead end.
  *
+ * `awardRows` is the terminations/descoped union, listed whole and told apart by
+ * each card's badge. The meta description counts terminations only, matching the
+ * terminated-only figures baked into the dashboard's own head — a crawler must
+ * never read a larger termination count here than the site claims elsewhere.
+ *
  * @param {Object} options - Page inputs
  * @param {string} options.code - District code, e.g. 'CA-16'
- * @param {Array<Object>} options.terminationRows - Termination rows for this district
+ * @param {Array<Object>} options.awardRows - Terminated + descoped rows for this district
  * @param {Array<Object>} options.dogeRows - DOGE claim rows for this district
  * @param {string} options.lastUpdated - ISO 'YYYY-MM-DD' data date
  * @returns {string} Complete HTML document
  */
-export function renderDistrictPage({ code, terminationRows = [], dogeRows = [], lastUpdated = '' }) {
+export function renderDistrictPage({ code, awardRows = [], dogeRows = [], lastUpdated = '' }) {
+    const { terminated, descoped } = splitByStatus(awardRows);
     const canonical = `${SITE_BASE}/cancellations/districts/${encodeURIComponent(code)}/`;
     const title = `NASA Cancellations in ${code} | The Planetary Society`;
-    const description = `${pluralCount(terminationRows.length, 'confirmed NASA award termination')} and `
+    const description = `${pluralCount(terminated.length, 'confirmed NASA award termination')} and `
         + `${pluralCount(dogeRows.length, 'DOGE cancellation claim')} list congressional district `
         + `${code}. Recipients, award IDs, dollars, and dates from federal award records.`;
 
@@ -296,10 +303,10 @@ export function renderDistrictPage({ code, terminationRows = [], dogeRows = [], 
         '<div class="district-summary-header">',
         `<h1 class="district-title">NASA Award Cancellations in ${escapeHtml(code)}</h1>`,
         '</div>',
-        `<p class="district-summary-stats">${escapeHtml(districtSummaryLine(terminationRows.length, dogeRows.length))}</p>`,
+        `<p class="district-summary-stats">${escapeHtml(districtSummaryLine(terminated.length, dogeRows.length, descoped.length))}</p>`,
         `<p class="district-dashboard-link"><a href="${DISTRICT_PAGE_PATHS.dashboard}#${escapeAttr(code)}">`
             + 'View this district on the interactive dashboard &rarr;</a></p>',
-        renderGroup('cancellations', terminationRows, terminationCardModel),
+        renderGroup('cancellations', awardRows, terminationCardModel),
         renderGroup('doge', dogeRows, claimCardModel),
         renderFreshness(lastUpdated),
         renderFooter(DISTRICT_PAGE_PATHS),
@@ -346,7 +353,11 @@ function sortedByCode(entries) {
  * Grouped by state so the list is scannable at ~78 entries, with the full state
  * name as the heading and the two per-dataset counts beside each link.
  *
- * @param {Array<{code: string, terminations: number, claims: number}>} entries - District entries
+ * The descoped clause is added only where a district has descoped awards, so
+ * every other line stays byte-identical to what the last bake wrote.
+ *
+ * @param {Array<{code: string, terminations: number, descoped: number,
+ *   claims: number}>} entries - District entries
  * @param {string} lastUpdated - ISO 'YYYY-MM-DD' data date
  * @returns {string} Complete HTML document
  */
@@ -369,6 +380,7 @@ export function renderDistrictsIndex(entries, lastUpdated = '') {
     const groupHtml = [...groups.entries()].map(([state, items]) => {
         const links = items.map((entry) => {
             const counts = `${pluralCount(entry.terminations, 'confirmed termination')}, `
+                + (entry.descoped > 0 ? `${pluralCount(entry.descoped, 'descoped award')}, ` : '')
                 + pluralCount(entry.claims, 'DOGE claim');
 
             return `<li><a href="${escapeAttr(encodeURIComponent(entry.code))}/">${escapeHtml(entry.code)}</a> `

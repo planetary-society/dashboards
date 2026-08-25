@@ -8,8 +8,8 @@
 #    in index.html, per-district pages, sitemap) via scripts/bake-seo.mjs.
 # 5. Commit whatever changed and deploy the static dashboards to GitHub Pages.
 #
-# Every file the dashboard reads is generated upstream, so all three are synced
-# the same way. Adding a fourth means adding one line to DATA_FILES -- the
+# Every file the dashboard reads is generated upstream, so they are all synced
+# the same way. Adding another means adding one line to DATA_FILES -- the
 # download, compare and metadata steps all iterate that list.
 
 name: Daily Dashboard Update
@@ -22,10 +22,12 @@ on:
 
 env:
   # Every CSV the dashboard reads, all published to output/ upstream. The
-  # fiscal-year rollup changes far less often than the other two, but it is
-  # generated the same way, so it is synced rather than hand-copied.
+  # descoped file and the fiscal-year rollup change far less often than the
+  # award files, but they are generated the same way, so they are synced
+  # rather than hand-copied.
   DATA_FILES: >-
     terminations
+    descoped
     doge_claims
     cancellations_for_convenience_awards_by_fiscal_year
   UPSTREAM_REPO: planetary-society/nasa-cancellations-tracking
@@ -110,9 +112,10 @@ jobs:
           import os
 
           # The date the page states -- "Data updated {date}" and the JSON-LD
-          # dateModified -- describes the award records. The fiscal-year rollup
-          # is regenerated on its own cadence, so a fresh rollup must not make
-          # the page claim newer award data than it actually has.
+          # dateModified -- describes the award records behind the headline
+          # figures. The descoped file and the fiscal-year rollup are
+          # regenerated on their own cadences and drive no headline number, so
+          # neither must make the page claim newer award data than it has.
           HEADLINE_FILES = ("terminations", "doge_claims")
 
           with open("tmp_data/dates.tsv") as fh:

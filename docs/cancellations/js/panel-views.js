@@ -19,7 +19,7 @@
 import { formatCount, formatCurrency, escapeHtml, escapeAttr, pluralCount } from '../../shared/js/utils.js';
 import { ICONS, DATA_URLS } from '../../shared/js/constants.js';
 import { MISSING, placeLine, usaspendingUrl } from './panel-common.js';
-import { overrideMeta } from './terminations.js';
+import { awardMeta } from './terminations.js';
 import { BAR_SEGMENTS, OUTCOME_META, SEGMENT_META } from './doge-claims.js';
 
 /**
@@ -33,7 +33,8 @@ export const PANEL_META = {
         label: 'Confirmed Cancellations',
         unitLabel: 'Awards',
         downloadUrl: DATA_URLS.terminations,
-        tableHeading: 'All awards explicitly terminated for "convenience" since January 2025.',
+        tableHeading: 'All awards explicitly terminated for "convenience" since January 2025, '
+            + 'plus awards NASA descoped without ending.',
         hasMap: true
     },
     doge: {
@@ -145,7 +146,11 @@ export function createPanelValueBoxes(panelId, stats) {
             title: 'Awards terminated since Jan 2025',
             value: formatCount(stats.confirmed),
             icon: ICONS.contracts,
-            type: 'contracts'
+            type: 'contracts',
+            // Descoped awards are listed and mapped but never counted here:
+            // the value is what was terminated. The note is how the page says
+            // so without adding a second number beside the first.
+            note: descopedNote(stats)
         }
     ];
 
@@ -188,6 +193,24 @@ export function createPanelValueBoxes(panelId, stats) {
     }
 
     return boxes;
+}
+
+/**
+ * The caveat riding the terminated-awards box
+ *
+ * Returns '' when the descoped file is absent or empty, which drops the help
+ * marker entirely rather than showing a note that says "and zero others".
+ *
+ * @param {Object} stats - terminationStats() result plus a `descoped` count
+ * @returns {string} Plain-text note, or '' when there is nothing to say
+ */
+function descopedNote(stats) {
+    const descoped = stats.descoped;
+    if (!(descoped > 0)) return '';
+
+    return `Excludes ${pluralCount(descoped, 'descoped award')} — NASA cut back the `
+        + 'scope but the award continues. They appear in the table, the map and the '
+        + 'district pages.';
 }
 
 /**
@@ -234,13 +257,23 @@ function calculatedSavingsNote(stats) {
 
 /**
  * The summary sentence atop a district page
+ *
+ * The descoped clause appears only when the district has descoped awards: most
+ * do not, and their sentence must stay exactly as it was so the daily bake
+ * rewrites nothing it did not have to.
+ *
  * @param {number} terminations - Confirmed terminations listing the district
  * @param {number} claims - DOGE claims listing the district
+ * @param {number} [descoped] - Descoped awards listing the district
  * @returns {string} Plain-text sentence
  */
-export function districtSummaryLine(terminations, claims) {
-    return `${pluralCount(terminations, 'confirmed termination')} and `
-        + `${pluralCount(claims, 'DOGE claim')} list this district; `
+export function districtSummaryLine(terminations, claims, descoped = 0) {
+    const head = descoped > 0
+        ? `${pluralCount(terminations, 'confirmed termination')}, `
+            + `${pluralCount(descoped, 'descoped award')},`
+        : pluralCount(terminations, 'confirmed termination');
+
+    return `${head} and ${pluralCount(claims, 'DOGE claim')} list this district; `
         + 'an award can appear in both.';
 }
 
@@ -256,17 +289,19 @@ export function districtEmptyNote(panelId) {
 }
 
 /**
- * Badge view-model for a confirmed termination's status
+ * Badge view-model for an award's status
  *
  * One definition serving the panel table, the district-view cards, and the
  * baked static pages, so an award's status cannot read one way in the table and
- * another on its card.
+ * another on its card. `awardMeta` decides Terminated vs Descoped from the file
+ * the row came from, so the union's two halves are told apart everywhere a row
+ * is shown.
  *
- * @param {Object} row - Normalized termination row
+ * @param {Object} row - Normalized award row (either file)
  * @returns {{label: string, className: string}} Badge view-model
  */
 export function terminationBadgeModel(row) {
-    const meta = overrideMeta(row.override_status);
+    const meta = awardMeta(row);
 
     return { label: meta.label, className: `badge ${meta.badgeClass}` };
 }

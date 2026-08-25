@@ -1,17 +1,28 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
+    AWARD_STATUS,
     OVERRIDE_META,
+    awardMeta,
     monthlyCounts,
+    normalizeAwards,
     normalizeTerminations,
     overrideMeta,
+    splitByStatus,
     terminationIdSet,
     terminationStats,
     usaspendingUrl
 } from '../docs/cancellations/js/terminations.js';
-import { captureWarnings, loadCsv, terminationRow, withoutColumns } from './fixtures.mjs';
+import {
+    captureWarnings,
+    descopedRow,
+    loadCsv,
+    terminationRow,
+    withoutColumns
+} from './fixtures.mjs';
 
 const TERMINATIONS_PATH = 'docs/data/cancellations/terminations.csv';
+const DESCOPED_PATH = 'docs/data/cancellations/descoped.csv';
 
 /**
  * Normalize a set of fixture rows and return just the rows
@@ -182,6 +193,150 @@ test('a file missing every optional column warns once per column and does not th
 
     assert.equal(warnings.length, 3);
     assert.deepEqual(result.columns, { districts: false, obligated: false, potential: false });
+});
+
+// --- the descoped union ---------------------------------------------------------
+
+test('normalizeTerminations tags every row TERMINATED unless told otherwise', () => {
+    const [row] = normalized([terminationRow()]);
+    const [descoped] = normalizeTerminations([descopedRow()], AWARD_STATUS.descoped).rows;
+
+    assert.equal(row._status, AWARD_STATUS.terminated);
+    assert.equal(descoped._status, AWARD_STATUS.descoped);
+});
+
+test('normalizeAwards returns the union and both of its halves', () => {
+    const awards = normalizeAwards(
+        [terminationRow({ award_id: 'T1' }), terminationRow({ award_id: 'T2' })],
+        [descopedRow({ award_id: 'D1' })]
+    );
+
+    assert.equal(awards.rows.length, 3);
+    assert.deepEqual(awards.rows.map((row) => row.award_id), ['T1', 'T2', 'D1']);
+    assert.deepEqual(awards.terminated.map((row) => row.award_id), ['T1', 'T2']);
+    assert.deepEqual(awards.descoped.map((row) => row.award_id), ['D1']);
+
+    // The halves are the same objects the union holds, not copies: a consumer
+    // that filters the union must see exactly what `terminated` gave it
+    assert.equal(awards.rows[0], awards.terminated[0]);
+    assert.equal(awards.rows[2], awards.descoped[0]);
+});
+
+test('normalizeAwards tags each half by the file it came from, not by override_status', () => {
+    // The descoped file's rows mostly carry a blank override_status; only the
+    // file they arrived in says they describe a surviving award
+    const awards = normalizeAwards(
+        [terminationRow({ override_status: '' })],
+        [descopedRow({ override_status: '' }), descopedRow({ override_status: 'descoped' })]
+    );
+
+    assert.deepEqual(
+        awards.rows.map((row) => row._status),
+        [AWARD_STATUS.terminated, AWARD_STATUS.descoped, AWARD_STATUS.descoped]
+    );
+});
+
+test('normalizeAwards degrades to terminations alone when descoped.csv is missing', () => {
+    // An older deploy 404s the file; app.js and the bake both hand on the empty
+    // parse rather than failing, so the page is smaller, never broken
+    for (const absent of [[], undefined, null]) {
+        const awards = normalizeAwards([terminationRow(), terminationRow()], absent);
+
+        assert.equal(awards.rows.length, 2, String(absent));
+        assert.equal(awards.descoped.length, 0, String(absent));
+        assert.equal(awards.terminated.length, 2, String(absent));
+        assert.deepEqual(awards.columns, { districts: true, obligated: true, potential: true });
+    }
+});
+
+test('normalizeAwards takes its column flags from terminations.csv alone', () => {
+    // The flags gate the value boxes, which are terminated-only: a column
+    // present in one file and absent from the other must not move them
+    const awards = normalizeAwards(
+        [terminationRow()],
+        withoutColumns([descopedRow()], ['total_obligated', 'total_potential_value'])
+    );
+
+    assert.deepEqual(awards.columns, { districts: true, obligated: true, potential: true });
+});
+
+test('a descoped award never reaches a headline figure', () => {
+    const terminations = [terminationRow({ total_obligated: '100', total_potential_value: '1000' })];
+    const descoped = [
+        descopedRow({
+            pop_state: 'OH',
+            pop_district: '11',
+            recipient_name: 'Case Western',
+            total_obligated: '999999',
+            total_potential_value: '999999'
+        })
+    ];
+
+    const withFile = normalizeAwards(terminations, descoped);
+    const withoutFile = normalizeAwards(terminations, []);
+
+    // Every stat is computed from the terminated half, so adding the descoped
+    // file leaves the headline count, the dollars, the districts and the
+    // recipients exactly where they were
+    assert.deepEqual(
+        terminationStats(withFile.terminated, withFile.columns),
+        terminationStats(withoutFile.terminated, withoutFile.columns)
+    );
+    assert.equal(terminationStats(withFile.terminated, withFile.columns).confirmed, 1);
+    assert.equal(terminationStats(withFile.terminated, withFile.columns).totalPotential, 1000);
+});
+
+test('district aggregation over the union counts descoped awards as impact', () => {
+    const awards = normalizeAwards(
+        [
+            terminationRow({ pop_state: 'CA', pop_district: '16' }),
+            terminationRow({ pop_state: 'OH', pop_district: '11' })
+        ],
+        [
+            descopedRow({ pop_state: 'OH', pop_district: '11' }),
+            descopedRow({ pop_state: 'TX', pop_district: '20' })
+        ]
+    );
+
+    const counts = {};
+    for (const row of awards.rows.filter((entry) => entry._geoid)) {
+        counts[row._district] = (counts[row._district] || 0) + 1;
+    }
+
+    // OH-11 holds one of each and TX-20 only a descoped award — both are real
+    // district impact, so both appear
+    assert.deepEqual(counts, { 'CA-16': 1, 'OH-11': 2, 'TX-20': 1 });
+
+    // …while the headline still names two districts, not three
+    assert.equal(terminationStats(awards.terminated, awards.columns).districts, 2);
+});
+
+// --- splitByStatus ---------------------------------------------------------------
+
+test('splitByStatus puts the union back into the halves it was built from', () => {
+    const awards = normalizeAwards(
+        [terminationRow({ award_id: 'T1' })],
+        [descopedRow({ award_id: 'D1' }), descopedRow({ award_id: 'D2' })]
+    );
+
+    const split = splitByStatus(awards.rows);
+
+    assert.deepEqual(split.terminated, awards.terminated);
+    assert.deepEqual(split.descoped, awards.descoped);
+});
+
+test('splitByStatus treats an untagged row as terminated', () => {
+    // Rows normalized before the descoped file existed carry no `_status`;
+    // counting them as descoped would quietly shrink the headline
+    const split = splitByStatus([{ award_id: 'legacy' }, {}]);
+
+    assert.equal(split.terminated.length, 2);
+    assert.equal(split.descoped.length, 0);
+});
+
+test('splitByStatus tolerates no rows', () => {
+    assert.deepEqual(splitByStatus([]), { terminated: [], descoped: [] });
+    assert.deepEqual(splitByStatus(undefined), { terminated: [], descoped: [] });
 });
 
 // --- terminationIdSet ---------------------------------------------------------
@@ -445,6 +600,38 @@ test('overrideMeta warns once per unknown value and shows it verbatim', () => {
     assert.ok(warnings[1].includes('another_one'));
 });
 
+// --- awardMeta -------------------------------------------------------------------
+
+test('awardMeta badges a descoped-file row Descoped whatever its override_status', () => {
+    const { rows } = normalizeTerminations(
+        [descopedRow({ override_status: '' }), descopedRow({ override_status: 'descoped' })],
+        AWARD_STATUS.descoped
+    );
+
+    for (const row of rows) {
+        assert.deepEqual(awardMeta(row), OVERRIDE_META.descoped, row.override_status);
+    }
+});
+
+test('awardMeta leaves terminations.csv rows on their override_status badge', () => {
+    const rows = normalized([
+        terminationRow({ override_status: '' }),
+        terminationRow({ override_status: 'still_terminated' }),
+        terminationRow({ override_status: 'closed_out' })
+    ]);
+
+    assert.deepEqual(rows.map(awardMeta), [
+        OVERRIDE_META[''],
+        OVERRIDE_META.still_terminated,
+        OVERRIDE_META.closed_out
+    ]);
+});
+
+test('awardMeta tolerates a row with no status at all', () => {
+    assert.deepEqual(awardMeta({}), OVERRIDE_META['']);
+    assert.deepEqual(awardMeta(undefined), OVERRIDE_META['']);
+});
+
 // --- usaspendingUrl --------------------------------------------------------------
 
 test('usaspendingUrl links an award by its generated award id', () => {
@@ -467,7 +654,8 @@ test('usaspendingUrl is null when the row carries no id', () => {
 // assert invariants that survive data growth rather than the day's figures.
 // Each test names the value observed on 2026-08-21 so drift stays visible.
 
-const live = normalizeTerminations(loadCsv(TERMINATIONS_PATH));
+const liveAwards = normalizeAwards(loadCsv(TERMINATIONS_PATH), loadCsv(DESCOPED_PATH));
+const live = { rows: liveAwards.terminated, columns: liveAwards.columns };
 const liveStats = terminationStats(live.rows, live.columns);
 
 test('the deployed file carries every column the panel needs', () => {
@@ -554,5 +742,69 @@ test('monthlyCounts over the deployed file is continuous and accounts for every 
 test('every deployed row links to a USAspending award page', () => {
     for (const row of live.rows) {
         assert.match(usaspendingUrl(row), /^https:\/\/www\.usaspending\.gov\/award\/.+/, row.award_id);
+    }
+});
+
+// --- integrity of the deployed descoped file ----------------------------------------
+//
+// descoped.csv is published by the same upstream job under the same schema, and
+// is synced daily like every other file. 2026-08-25: 6 rows.
+
+test('the deployed descoped file carries the same columns the terminations file does', () => {
+    const descoped = normalizeTerminations(loadCsv(DESCOPED_PATH), AWARD_STATUS.descoped);
+
+    assert.ok(descoped.rows.length > 0, 'descoped.csv parsed to zero rows');
+    assert.deepEqual(descoped.columns, live.columns);
+});
+
+test('every deployed descoped row is tagged and badged as descoped', () => {
+    for (const row of liveAwards.descoped) {
+        assert.equal(row._status, AWARD_STATUS.descoped, row.award_id);
+        // Roughly half the file leaves override_status blank, which would badge
+        // the award "Terminated" if the file it came from did not outrank it
+        assert.deepEqual(awardMeta(row), OVERRIDE_META.descoped, row.award_id);
+    }
+});
+
+test('no deployed award is listed twice across the two files', () => {
+    // THE DEPLOY GATE. The union is a plain concatenation - normalizeAwards
+    // deliberately does no dedup - so the two synced files must be disjoint.
+    // An overlap means a stale sync (on 2026-08-25 the deployed
+    // terminations.csv predated the descope split and still carried all six
+    // descoped awards), and this failing is what stops that deploy: the daily
+    // workflow syncs the CSVs first and runs this suite before it bakes and
+    // ships. Fix the data upstream or resync; never absorb the duplicate.
+    const terminatedIds = terminationIdSet(liveAwards.terminated);
+
+    for (const row of liveAwards.descoped) {
+        assert.ok(!terminatedIds.has(row.award_id), `${row.award_id} is in both files`);
+        assert.ok(
+            !terminatedIds.has(row.generated_award_id),
+            `${row.generated_award_id} is in both files`
+        );
+    }
+});
+
+test('the deployed union is exactly its two halves and no headline figure moves', () => {
+    assert.equal(
+        liveAwards.rows.length,
+        liveAwards.terminated.length + liveAwards.descoped.length
+    );
+
+    // The stats the value boxes render are computed from the terminated half,
+    // so they match a run that never saw descoped.csv at all
+    const withoutDescoped = normalizeAwards(loadCsv(TERMINATIONS_PATH), []);
+
+    assert.deepEqual(
+        terminationStats(liveAwards.terminated, liveAwards.columns),
+        terminationStats(withoutDescoped.terminated, withoutDescoped.columns)
+    );
+});
+
+test('every deployed descoped district resolves to a map GEOID', () => {
+    // The map counts the union, so a descoped row without a GEOID would be a
+    // district's impact silently missing from the choropleth
+    for (const row of liveAwards.descoped) {
+        if (row._district) assert.ok(row._geoid, `${row.award_id} ${row._district}`);
     }
 });

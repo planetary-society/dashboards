@@ -128,6 +128,10 @@ export const DATA_URLS = {
     districts: '../data/us_congressional_districts.geojson',
     states: '../data/gz_2010_us_040_00_5m.json',
     terminations: '../data/cancellations/terminations.csv',
+    // Awards whose scope was cut but which continue; same schema as
+    // terminations.csv. Optional at runtime — a deploy predating this file
+    // must still render (see loadData in cancellations/js/app.js).
+    descoped: '../data/cancellations/descoped.csv',
     dogeClaims: '../data/cancellations/doge_claims.csv',
     fyAwards: '../data/cancellations/cancellations_for_convenience_awards_by_fiscal_year.csv',
     // NASA Science spending data

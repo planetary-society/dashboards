@@ -204,3 +204,28 @@ export function districtOf(row) {
         districtFromPair(row, 'recipient_state', 'recipient_district')
     );
 }
+
+/**
+ * Sort grouped table rows by count descending, then label ascending
+ *
+ * @param {Array<[string, number]>} rows - Label/count pairs
+ * @returns {Array<[string, number]>} A sorted copy
+ */
+export function sortGroupedCounts(rows) {
+    return [...rows].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+}
+
+/**
+ * Sort award rows newest-first without separating their statuses
+ *
+ * Action dates are normalized ISO calendar dates, so their lexical order is
+ * chronological. Blank dates naturally fall after every populated date.
+ *
+ * @param {Array<Object>} rows - Terminated and descoped award rows
+ * @returns {Array<Object>} A sorted copy
+ */
+export function sortAwardsByActionDateDesc(rows) {
+    return [...rows].sort(
+        (a, b) => field(b, 'action_date').localeCompare(field(a, 'action_date'))
+    );
+}

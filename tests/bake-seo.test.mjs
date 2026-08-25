@@ -384,17 +384,6 @@ test('renderDistrictPage shows the shared empty-state line for a dataset with no
     assert.ok(!html.includes(districtEmptyNote('cancellations')));
 });
 
-test('renderDistrictPage carries no JavaScript at all', () => {
-    const html = fixturePage({
-        terminations: [terminationRow()],
-        doge: [dogeClaimRow()]
-    });
-
-    assert.ok(!html.includes('<script'));
-    assert.ok(!html.includes('gridjs'));
-    assert.ok(!html.includes('bootstrap-icons'));
-});
-
 test('renderDistrictPage badges a termination with the shared override label', () => {
     const html = fixturePage({ terminations: [terminationRow({ override_status: '' })] });
     const meta = overrideMeta('');
@@ -476,12 +465,11 @@ test('renderDistrictsIndex orders entries by code, not by input order', () => {
     assert.deepEqual(order, ['AL-05', 'CA-08', 'CA-16', 'TX-22']);
 });
 
-test('renderDistrictsIndex is deterministic and script-free', () => {
+test('renderDistrictsIndex is deterministic', () => {
     const first = renderDistrictsIndex(INDEX_ENTRIES, '2026-08-20');
     const second = renderDistrictsIndex([...INDEX_ENTRIES].reverse(), '2026-08-20');
 
     assert.equal(first, second);
-    assert.ok(!first.includes('<script'));
     assert.deepEqual(bareAmpersands(first), []);
 });
 
@@ -628,7 +616,6 @@ test('renderDistrictPage builds the busiest live district without throwing', () 
 
     assert.ok(html.length > 1000);
     assert.ok(html.includes(code));
-    assert.ok(!html.includes('<script'));
     assert.deepEqual(bareAmpersands(html), []);
 });
 

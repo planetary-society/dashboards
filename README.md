@@ -47,6 +47,16 @@ These dashboards are built using:
 - **GitHub Actions** - For automated data updates
 - **GitHub Pages** - For hosting
 
+## Python tooling
+
+Python dependencies are managed with [uv](https://docs.astral.sh/uv/). Install
+the locked environment and run Python scripts with:
+
+```bash
+uv sync --locked
+uv run python scripts/clean_census_geojson.py --help
+```
+
 ## About The Planetary Society
 
 Founded in 1980 by Carl Sagan, Bruce Murray, and Louis Friedman, The Planetary Society is the world's largest independent space organization. We advance space science and exploration through research, advocacy, and education. These dashboards represent our commitment to enabling informed public participation in space policy decisions.

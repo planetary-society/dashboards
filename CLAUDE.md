@@ -186,7 +186,7 @@ container.addEventListener("click", (e) => {
 - **`scripts/bake-seo.mjs`** — Static SEO bake. Run daily by `daily-dashboard-update.yml` before the deploy, and locally with `node scripts/bake-seo.mjs`. Three outputs: (1) injects the headline facts into `docs/cancellations/index.html` between the `<!-- bake:* -->` marker pairs so crawlers that never run JavaScript still see the numbers; (2) regenerates `docs/cancellations/districts/` — one static page per congressional district plus an index, deleted and rebuilt from scratch each run; (3) rewrites `docs/sitemap.xml` to match what it actually wrote. Pure helpers live in `scripts/bake/` (`inject.mjs` for marker/JSON-LD rewriting, `templates.mjs` for the page HTML), and all copy and numbers come from the dashboard's own modules (`panel-views.js`, `terminations.js`, `doge-claims.js`), so baked text can never drift from what `app.js` renders. Every date comes from `metadata.json` rather than "today", so a no-change day produces byte-identical output. Any failure (missing marker, malformed metadata) throws so the daily job fails loudly instead of deploying a degraded page.
 - **`scripts/clean_census_geojson.py`** — Cleans Census Bureau GeoJSON for D3 compatibility (see [Updating Congressional District Maps](#updating-congressional-district-maps)).
 - **`.github/scripts/fetch-data.py`** — Fetches data from private repo using `PRIVATE_REPO_PERSONAL_ACCESS_TOKEN`. Modes: `--get summaries` (CSV data) and `--get html` (sentiment reports).
-- **`requirements.txt`** — Python dependency: `requests`.
+- **`pyproject.toml` / `uv.lock`** — Python project metadata and locked dependency set. Run `uv sync --locked` to install it.
 
 ### Data Archive
 
@@ -199,7 +199,7 @@ When a new Congress begins (e.g., 119th → 120th), update the district boundari
 1. Download new GeoJSON from Census Bureau: https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html
 2. **Run the cleaning script** (required for D3.js compatibility):
    ```bash
-   python3 scripts/clean_census_geojson.py \
+   uv run python scripts/clean_census_geojson.py \
        path/to/downloaded_file.geojson \
        docs/data/us_congressional_districts.geojson
    ```

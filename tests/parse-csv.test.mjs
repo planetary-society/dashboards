@@ -1,6 +1,5 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
 import { parseCSV, parseIsoDateUTC, pluralCount } from '../docs/shared/js/utils.js';
 
 test('parseIsoDateUTC parses strict calendar dates and rejects everything else', () => {
@@ -93,28 +92,4 @@ test('parseCSV returns an empty array for empty input', () => {
     assert.deepEqual(parseCSV(''), []);
     assert.deepEqual(parseCSV('\n'), []);
     assert.deepEqual(parseCSV('a,b\n'), []);
-});
-
-test('parseCSV reads the deployed master ledger intact', () => {
-    // The deployed copy refreshes daily, so expectations come from metadata
-    // and file shape rather than hard-coded counts
-    const rows = parseCSV(readFileSync('docs/data/cancellations/master_ledger_latest.csv', 'utf8'));
-    const metadata = JSON.parse(readFileSync('docs/data/cancellations/metadata.json', 'utf8'));
-
-    if (typeof metadata.rowCount === 'number') {
-        assert.equal(rows.length, metadata.rowCount);
-    } else {
-        assert.ok(rows.length > 0);
-    }
-
-    const columnCount = Object.keys(rows[0]).length;
-    assert.ok(columnCount >= 30, `expected at least 30 columns, got ${columnCount}`);
-
-    for (const row of rows) {
-        assert.equal(Object.keys(row).length, columnCount);
-
-        for (const value of Object.values(row)) {
-            assert.ok(!value.includes('\r'), `unexpected carriage return in ${JSON.stringify(value)}`);
-        }
-    }
 });

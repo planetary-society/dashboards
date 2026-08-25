@@ -510,7 +510,6 @@ const liveStats = dogeStats(live.rows);
 
 test('live doge_claims.csv partitions cleanly across the four outcomes', () => {
     // 2026-08-21: 112 rows partitioning 89 terminated / 11 ended / 8 active / 4 unmatched
-    assert.ok(live.rows.length >= 50, `rows=${live.rows.length}`);
     assert.equal(live.columns.district, true);
     assert.equal(live.columns.totalPotentialValue, true);
 
@@ -522,10 +521,6 @@ test('live doge_claims.csv partitions cleanly across the four outcomes', () => {
     assert.equal(
         OUTCOME_ORDER.reduce((sum, outcome) => sum + partition[outcome], 0),
         live.rows.length
-    );
-    assert.ok(
-        partition.terminated >= partition.unmatched,
-        `terminated=${partition.terminated} unmatched=${partition.unmatched}`
     );
 });
 

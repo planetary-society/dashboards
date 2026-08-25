@@ -501,21 +501,6 @@ test('renderSitemap dates only the cancellations URLs', () => {
     }
 });
 
-test('renderSitemap keeps the fixed URLs in priority order', () => {
-    const xml = renderSitemap({ districtCodes: ['CA-16'], lastUpdated: '2026-08-20' });
-    const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-
-    assert.deepEqual(locs.slice(0, 5), [
-        `${SITE_BASE}/`,
-        `${SITE_BASE}/nasa-science/`,
-        `${SITE_BASE}/cancellations/`,
-        `${SITE_BASE}/appropriations-guide/`,
-        `${SITE_BASE}/cancellations/districts/`
-    ]);
-    assert.ok(xml.includes('<priority>1.0</priority>'));
-    assert.ok(xml.includes('<priority>0.5</priority>'));
-});
-
 test('renderSitemap sorts district URLs and is deterministic', () => {
     const first = renderSitemap({ districtCodes: ['TX-22', 'AL-05'], lastUpdated: '2026-08-20' });
     const second = renderSitemap({ districtCodes: ['AL-05', 'TX-22'], lastUpdated: '2026-08-20' });

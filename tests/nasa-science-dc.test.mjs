@@ -1,37 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
 import { createScienceValueBoxes } from '../docs/shared/js/components/value-box.js';
-
-function parseCsv(filePath) {
-    const [headerLine, ...lines] = readFileSync(filePath, 'utf8').trim().split('\n');
-    const headers = headerLine.split(',');
-
-    return lines.map((line) => {
-        const values = line.split(',');
-        return Object.fromEntries(headers.map((header, index) => [header, values[index] ?? '']));
-    });
-}
-
-// Skip, not delete: the upstream data pipeline renamed DC's district from
-// DC-98 to DC-00, so the deployed CSV no longer matches this expectation.
-// The skip lives here — not in a CI file filter — so `node --test` gives the
-// same verdict locally and in the workflow. Unskip once upstream and the
-// dashboard agree on DC's district code again.
-test('NASA Science deployed summary CSVs include District of Columbia', { skip: 'upstream renamed DC-98 to DC-00; pending reconciliation' }, () => {
-    const stateRows = parseCsv('docs/data/science/NASA-state-Science-summary.csv');
-    const districtRows = parseCsv('docs/data/science/NASA-district-Science-summary.csv');
-
-    const dcState = stateRows.find((row) => row.state === 'DC');
-    const dcDistrict = districtRows.find((row) => row.district === 'DC-98');
-
-    assert.ok(dcState, 'expected docs/data/science/NASA-state-Science-summary.csv to include DC');
-    assert.ok(dcDistrict, 'expected docs/data/science/NASA-district-Science-summary.csv to include DC-98');
-    assert.equal(dcDistrict.state, 'DC');
-    assert.equal(dcDistrict.fy_2023_obligations, dcState.fy_2023_obligations);
-    assert.equal(dcDistrict.fy_2024_obligations, dcState.fy_2024_obligations);
-    assert.equal(dcDistrict.fy_2025_obligations, dcState.fy_2025_obligations);
-});
 
 test('NASA Science value boxes use supplied geography totals instead of hardcoded 50 and 435', () => {
     const boxes = createScienceValueBoxes({

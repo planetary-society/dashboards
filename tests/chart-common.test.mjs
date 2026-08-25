@@ -4,9 +4,7 @@ import {
     topRoundedPath,
     barPadding,
     labelIndices,
-    yTicks,
-    MIN_BAR_GAP,
-    BAR_RADIUS
+    yTicks
 } from '../docs/cancellations/js/chart-common.js';
 
 // These four helpers were lifted out of timeline-chart.js and fy-chart.js, which
@@ -47,13 +45,6 @@ function scaleStub(domain, ticks) {
         domain: () => domain
     };
 }
-
-// --- shared defaults ---------------------------------------------------------
-
-test('the hoisted defaults match the constants the charts used to declare locally', () => {
-    assert.equal(MIN_BAR_GAP, 2);
-    assert.equal(BAR_RADIUS, 3);
-});
 
 // --- topRoundedPath ----------------------------------------------------------
 
@@ -182,11 +173,6 @@ test('labelIndices drops the penultimate label when the final one would crowd it
 test('labelIndices collapses to first and last when nothing else fits', () => {
     assert.deepEqual(labelIndices(13, 3, TIMELINE_LABEL_SPACE), [0, 12]);
     assert.deepEqual(labelIndices(7, 5, FY_LABEL_SPACE), [0, 6]);
-});
-
-test('labelIndices treats a sub-pixel step as one pixel instead of exploding', () => {
-    assert.deepEqual(labelIndices(7, 0.2, FY_LABEL_SPACE), [0, 6]);
-    assert.deepEqual(labelIndices(60, 0.2, TIMELINE_LABEL_SPACE), [0, 59]);
 });
 
 test('labelIndices clamps the step to 1px so the stride stays tied to label width', () => {

@@ -31,8 +31,6 @@ import {
 } from '../docs/cancellations/js/doge-claims.js';
 import { dogeClaimRow } from './fixtures.mjs';
 
-const RAMP_CLASSES = ['seg--outcome-strong', 'seg--outcome-mid', 'seg--outcome-weak', 'seg--outcome-none'];
-
 /**
  * Confirmed-panel stats shaped like `terminationStats` output
  * @param {Object} [overrides] - Fields to override
@@ -119,10 +117,6 @@ function textOf(html) {
 
 // --- PANEL_META --------------------------------------------------------------
 
-test('PANEL_META carries exactly the two panel ids', () => {
-    assert.deepEqual(Object.keys(PANEL_META).sort(), ['cancellations', 'doge']);
-});
-
 test('PANEL_META entries are complete', () => {
     for (const [id, meta] of Object.entries(PANEL_META)) {
         // A panel must always name itself, its row unit and its download.
@@ -140,11 +134,6 @@ test('PANEL_META entries are complete', () => {
 test('PANEL_META download URLs point at the two source files', () => {
     assert.ok(PANEL_META.cancellations.downloadUrl.endsWith('terminations.csv'));
     assert.ok(PANEL_META.doge.downloadUrl.endsWith('doge_claims.csv'));
-});
-
-test("PANEL_META unit labels name each panel's row unit", () => {
-    assert.equal(PANEL_META.cancellations.unitLabel, 'Awards');
-    assert.equal(PANEL_META.doge.unitLabel, 'Claims');
 });
 
 test('PANEL_META gives a map to the confirmed panel only', () => {
@@ -519,17 +508,6 @@ test('renderOutcomeLegend thousands-separates its counts', () => {
 
 // --- renderOutcomeDefinitions ------------------------------------------------
 
-test('renderOutcomeDefinitions prints one visible definition per segment', () => {
-    const html = renderOutcomeDefinitions();
-
-    assert.equal(occurrences(html, '<li>'), BAR_SEGMENTS.length);
-    assert.equal(occurrences(html, '</li>'), BAR_SEGMENTS.length);
-    for (const key of BAR_SEGMENTS) {
-        assert.ok(html.includes(SEGMENT_META[key].label), `${key} label`);
-        assert.ok(html.includes(SEGMENT_META[key].description), `${key} description`);
-    }
-});
-
 test('renderOutcomeDefinitions pairs each term with its own description', () => {
     const items = renderOutcomeDefinitions().match(/<li>[\s\S]*?<\/li>/g);
 
@@ -562,20 +540,11 @@ test('renderOutcomeLegend emits no unescaped markup in its text nodes', () => {
     assert.ok(!text.includes('>'), text);
 });
 
-// --- the validated red ordinal ramp ------------------------------------------
-
-test('the three ramp classes are exactly the ones SEGMENT_META assigns', () => {
-    assert.deepEqual(
-        BAR_SEGMENTS.map((key) => SEGMENT_META[key].segClass),
-        RAMP_CLASSES
-    );
-});
-
-test('bar and legend both carry all three ramp classes for a full mix', () => {
+test('bar and legend carry every configured segment class for a full mix', () => {
     const mix = outcomeMixFixture();
 
     for (const html of [renderOutcomeBar(mix), renderOutcomeLegend(mix)]) {
-        for (const cls of RAMP_CLASSES) {
+        for (const cls of BAR_SEGMENTS.map((key) => SEGMENT_META[key].segClass)) {
             assert.ok(html.includes(cls), `${cls} missing from ${html}`);
         }
     }

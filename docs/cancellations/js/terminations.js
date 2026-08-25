@@ -11,12 +11,9 @@
  * explicit termination language in the transaction description. De-scoped
  * awards — NASA pulled part of the work but the award lives on — are published
  * upstream to their own `descoped.csv`, which carries the identical column
- * schema. A few terminations.csv rows are still disclosed *partials*: wound
- * down administratively (`closed_out`), or `descoped` should one ever be
- * annotated rather than routed out upstream. Partials stay in the table with
- * their own badge but are kept out of the headline count and out of every
- * dollar total, because counting a partial as a cancelled award overstates
- * the effect.
+ * schema. Every terminations.csv row counts: a `closed_out` annotation means a
+ * human noted the award had wound down before the termination was recorded,
+ * and it keeps its badge, but the termination action is real and is counted.
  *
  * The two files are one union to the display layer and two datasets to the
  * arithmetic: `_status` records which file a row came from, so the table, the
@@ -30,16 +27,6 @@ import { districtOf, field, hasColumn, usaspendingUrl, warnOnce } from './panel-
 // Re-exported so panel code can treat the URL builder as part of this
 // dataset's API; the definition lives in panel-common (both datasets use it).
 export { usaspendingUrl };
-
-/**
- * `override_status` values meaning only part of the award was cut
- *
- * The split every count and total in this module turns on: these rows describe
- * a surviving award, everything else describes a terminated one.
- *
- * @type {string[]}
- */
-const PARTIAL_STATUSES = ['descoped', 'closed_out'];
 
 /**
  * Which upstream file a normalized row came from
@@ -92,7 +79,6 @@ function detectColumns(rows) {
  *   - `_district`   'VA-11'-style code, or '' when the row carries no district
  *   - `_geoid`      4-digit map GEOID for `_district`, or null
  *   - `_recipient`  trimmed `recipient_name`
- *   - `_partial`    true when only part of the award was cut
  *   - `_status`     which file the row came from (see `AWARD_STATUS`)
  *
  * `_atStake` is a coalesce, never a sum: contracts and IDVs report a ceiling in
@@ -155,7 +141,6 @@ export function normalizeTerminations(rawRows, status = AWARD_STATUS.terminated)
             _district: district,
             _geoid: getGeoidFromDistrict(district),
             _recipient: field(row, 'recipient_name'),
-            _partial: PARTIAL_STATUSES.includes(field(row, 'override_status')),
             _status: status
         };
     });
@@ -259,11 +244,11 @@ export function terminationIdSet(rows) {
 /**
  * Compute summary statistics for the Confirmed Cancellations panel
  *
- * `confirmed` and `partials` split the rows in two; the dollar totals cover the
- * confirmed side only, so the headline figure never quietly includes money from
- * awards that are still running. Totals are null — not zero — when the source
- * column is absent, so the display layer can omit the box rather than print a
- * misleading $0.
+ * `confirmed` counts every row: descoped awards — the ones whose money belongs
+ * to a still-running award — never reach this file, and a `closed_out`
+ * annotation does not un-terminate an award. Totals are null — not zero — when
+ * the source column is absent, so the display layer can omit the box rather
+ * than print a misleading $0.
  *
  * `totalPotential` sums each row's `_atStake` (see `normalizeTerminations`) and
  * `potentialFillCount` counts the rows that had one, so the value box can say
@@ -280,7 +265,7 @@ export function terminationIdSet(rows) {
  * @param {Array<Object>} rows - Normalized termination rows
  * @param {{districts: boolean, obligated: boolean, potential: boolean}} [columns] -
  *   Availability flags from `normalizeTerminations`; re-derived when omitted
- * @returns {{confirmed: number, partials: number, totalObligated: number|null,
+ * @returns {{confirmed: number, totalObligated: number|null,
  *   totalPotential: number|null, potentialFillCount: number, districts: number|null,
  *   recipients: number}} Statistics
  */
@@ -288,8 +273,6 @@ export function terminationStats(rows, columns = detectColumns(rows || [])) {
     const list = rows || [];
     const districts = new Set();
     const recipients = new Set();
-    let confirmed = 0;
-    let partials = 0;
     let totalObligated = 0;
     let totalPotential = 0;
     let potentialFillCount = 0;
@@ -301,25 +284,16 @@ export function terminationStats(rows, columns = detectColumns(rows || [])) {
         const recipient = field(row, 'recipient_name');
         if (recipient) recipients.add(recipient);
 
-        if (row._partial) {
-            partials++;
-            continue;
-        }
-
-        confirmed++;
         if (Number.isFinite(row._obligated)) totalObligated += row._obligated;
 
         if (Number.isFinite(row._atStake)) {
-            // Confirmed-only, matching the totalPotential sum it qualifies:
-            // the value-box caveat must describe the same universe as the box.
             totalPotential += row._atStake;
             potentialFillCount++;
         }
     }
 
     return {
-        confirmed,
-        partials,
+        confirmed: list.length,
         totalObligated: columns.obligated ? totalObligated : null,
         totalPotential: columns.potential ? totalPotential : null,
         potentialFillCount: columns.potential ? potentialFillCount : 0,

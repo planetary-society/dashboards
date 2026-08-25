@@ -104,16 +104,6 @@ test("normalizeTerminations maps DC's district 98 onto the geojson GEOID", () =>
     assert.equal(row._geoid, '1198');
 });
 
-test('_partial is true for exactly the two partial statuses', () => {
-    const partialFor = (status) => normalized([terminationRow({ override_status: status })])[0]._partial;
-
-    assert.equal(partialFor('descoped'), true);
-    assert.equal(partialFor('closed_out'), true);
-    assert.equal(partialFor(''), false);
-    assert.equal(partialFor('still_terminated'), false);
-    assert.equal(partialFor('invented_status'), false);
-});
-
 test('normalizeTerminations tolerates no rows and non-arrays', () => {
     assert.deepEqual(normalizeTerminations([]), {
         rows: [],
@@ -363,28 +353,16 @@ test('terminationIdSet tolerates no rows', () => {
 
 // --- terminationStats ---------------------------------------------------------
 
-test('terminationStats splits confirmed rows from partials', () => {
-    const { rows, columns } = normalizeTerminations([
-        terminationRow(),
-        terminationRow({ override_status: 'still_terminated' }),
-        terminationRow({ override_status: 'descoped' }),
-        terminationRow({ override_status: 'closed_out' })
-    ]);
-
-    const stats = terminationStats(rows, columns);
-
-    assert.equal(stats.confirmed, 2);
-    assert.equal(stats.partials, 2);
-});
-
-test('terminationStats keeps partial dollars out of both totals', () => {
+test('terminationStats counts every published row, closed_out included', () => {
+    // A closed_out annotation flags an award that had wound down before its
+    // termination was recorded - a real termination action all the same, so it
+    // counts in the headline and its dollars count in the totals.
     const { rows, columns } = normalizeTerminations([
         terminationRow({ total_obligated: '100', total_potential_value: '1000' }),
-        terminationRow({ total_obligated: '', total_potential_value: '' }),
         terminationRow({
-            override_status: 'descoped',
-            total_obligated: '194000000',
-            total_potential_value: '194000000'
+            override_status: 'still_terminated',
+            total_obligated: '',
+            total_potential_value: ''
         }),
         terminationRow({
             override_status: 'closed_out',
@@ -395,8 +373,9 @@ test('terminationStats keeps partial dollars out of both totals', () => {
 
     const stats = terminationStats(rows, columns);
 
-    assert.equal(stats.totalObligated, 100);
-    assert.equal(stats.totalPotential, 1000);
+    assert.equal(stats.confirmed, 3);
+    assert.equal(stats.totalObligated, 150);
+    assert.equal(stats.totalPotential, 1500);
 });
 
 test('terminationStats falls back to obligations for an award with no reported ceiling', () => {
@@ -448,26 +427,6 @@ test('terminationStats counts distinct non-empty districts and recipients', () =
     assert.equal(stats.recipients, 2);
 });
 
-test('terminationStats counts partial rows towards districts and recipients', () => {
-    // A descoped award still sits in a district and still has a recipient; only
-    // the headline count and the dollar totals exclude it
-    const { rows, columns } = normalizeTerminations([
-        terminationRow({
-            override_status: 'descoped',
-            pop_state: 'FL',
-            pop_district: '08',
-            recipient_name: 'Bechtel'
-        })
-    ]);
-
-    const stats = terminationStats(rows, columns);
-
-    assert.equal(stats.confirmed, 0);
-    assert.equal(stats.partials, 1);
-    assert.equal(stats.districts, 1);
-    assert.equal(stats.recipients, 1);
-});
-
 test('terminationStats nulls the totals whose column is absent', () => {
     const { rows, columns } = normalizeTerminations(
         withoutColumns(
@@ -495,7 +454,6 @@ test('terminationStats tolerates no rows', () => {
     const stats = terminationStats([]);
 
     assert.equal(stats.confirmed, 0);
-    assert.equal(stats.partials, 0);
     assert.equal(stats.recipients, 0);
     assert.deepEqual(terminationStats(undefined), stats);
 });
@@ -672,17 +630,11 @@ test('the deployed file has unique award ids', () => {
     assert.equal(terminationIdSet(live.rows).size, 2 * live.rows.length);
 });
 
-test('confirmed and partial actions partition the deployed file', () => {
-    // The headline number is the confirmed count; disclosed partials stay in
-    // the table but out of every count and total. 2026-08-21: 172/5
-    assert.equal(liveStats.confirmed + liveStats.partials, live.rows.length);
-
-    const descoped = live.rows.filter((row) => row.override_status === 'descoped');
-    const closedOut = live.rows.filter((row) => row.override_status === 'closed_out');
-
-    // The two partial statuses account for every partial, and nothing else
-    // 2026-08-21: 3 descoped, 2 closed_out
-    assert.equal(descoped.length + closedOut.length, liveStats.partials);
+test('every deployed row counts in the headline', () => {
+    // A closed_out badge does not un-terminate an award, and descoped awards
+    // never reach this file - so the headline is simply the row count.
+    assert.equal(liveStats.confirmed, live.rows.length);
+    assert.equal(live.rows.filter((row) => row.override_status === 'descoped').length, 0);
 });
 
 test('every deployed action_date is a plain ISO date', () => {

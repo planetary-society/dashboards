@@ -39,7 +39,6 @@ import { dogeClaimRow } from './fixtures.mjs';
 function confirmedStats(overrides = {}) {
     return {
         confirmed: 172,
-        partials: 5,
         totalPotential: 5_400_000_000,
         recipients: 136,
         districts: 120,
@@ -149,11 +148,10 @@ test('PANEL_META labels carry no counts (counts belong in the headline)', () => 
 
 // --- panelHeadline -----------------------------------------------------------
 
-test('panelHeadline counts confirmed terminations, not confirmed plus partials', () => {
+test('panelHeadline renders the confirmed count', () => {
     const headline = panelHeadline('cancellations', confirmedStats());
 
     assert.ok(headline.includes('172'), headline);
-    assert.ok(!headline.includes('177'), headline);
 });
 
 test('panelHeadline pluralizes the confirmed noun', () => {

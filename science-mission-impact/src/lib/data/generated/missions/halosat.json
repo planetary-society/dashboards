@@ -1,0 +1,403 @@
+{
+  "id": "halosat",
+  "name": "HaloSat",
+  "fullName": "HaloSat",
+  "division": "astrophysics",
+  "divisionName": "Astrophysics",
+  "hasThumb": true,
+  "meta": {
+    "status": "Completed",
+    "failed": false,
+    "cost": 5.2,
+    "type": "Survey Observatory",
+    "dates": {
+      "formulation": "2016-01-01",
+      "launch": "2018-05-21",
+      "scienceStart": "2018-10-15",
+      "primeEnd": "2019-09-24",
+      "missionEnd": "2020-09-29"
+    }
+  },
+  "indices": {
+    "h": 8,
+    "m": 1,
+    "i100": 0
+  },
+  "facts": {
+    "papers": 15,
+    "citations": 269,
+    "publicationYears": [
+      2019,
+      2024
+    ]
+  },
+  "lifetimeSeries": {
+    "years": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
+      1,
+      6,
+      3,
+      1,
+      3,
+      1,
+      0,
+      0
+    ],
+    "citations": [
+      0,
+      14,
+      27,
+      34,
+      53,
+      68,
+      39,
+      34
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 269,
+      "observed": 269,
+      "missing": 0
+    }
+  },
+  "windowSeries": {
+    "start": "2018-11-01",
+    "end": "2021-10-01",
+    "matureDate": "2024-10-01",
+    "status": "available",
+    "months": 35,
+    "citationBuckets": 7,
+    "outputBasis": "measured",
+    "papersByMonth": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      2,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1
+    ],
+    "citationsByYearOffset": [
+      0,
+      0,
+      14,
+      27,
+      34,
+      28,
+      8
+    ]
+  },
+  "mostCited": {
+    "bibcode": "2020NatAs...4.1072K",
+    "title": "A disk-dominated and clumpy circumgalactic medium of the Milky Way seen in X-ray emission",
+    "firstAuthor": "Kaaret, P.",
+    "year": 2020,
+    "citations": 67
+  },
+  "ranks": {
+    "full": {
+      "bins": [
+        0,
+        2,
+        1.409,
+        1.686,
+        2.904,
+        0.063,
+        0.937,
+        0,
+        2,
+        0
+      ],
+      "top1": 0
+    },
+    "window": {
+      "bins": [
+        0,
+        2.257,
+        1.743,
+        2.888,
+        1.112,
+        1,
+        0,
+        0.061,
+        0.939,
+        0
+      ],
+      "top1": 0
+    },
+    "lifetime": {
+      "bins": [
+        0.422,
+        2.668,
+        4.092,
+        2.818,
+        1,
+        1,
+        2,
+        1,
+        0,
+        0
+      ],
+      "top1": 0
+    }
+  },
+  "full": {
+    "papers": 11,
+    "outputBasis": "measured",
+    "citations": 145,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2018-11-01",
+      "end": "2022-10-01",
+      "matureDate": "2025-10-01",
+      "status": "available",
+      "months": 47,
+      "citationBuckets": 8
+    }
+  },
+  "window": {
+    "papers": 10,
+    "outputBasis": "measured",
+    "citations": 111,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2018-11-01",
+      "end": "2021-10-01",
+      "matureDate": "2024-10-01",
+      "status": "available",
+      "months": 35,
+      "citationBuckets": 7
+    }
+  },
+  "lifetime": {
+    "papers": 15,
+    "outputBasis": "measured",
+    "citations": 269,
+    "top10": 1,
+    "top10ShareOfDivision": 0.00018,
+    "top1": null,
+    "top1ShareOfDivision": null,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    }
+  },
+  "query": {
+    "arms": "(=abs:HaloSat AND collection:astronomy)",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2018-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%3Dabs%3AHaloSat+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-02T04:39:47.102935+00:00",
+    "reconciliation": {
+      "adsReturned": 15,
+      "curatedOut": 1,
+      "curatedIn": 2,
+      "libraryOut": 0,
+      "otherOut": 0,
+      "duplicates": 1,
+      "final": 15
+    }
+  },
+  "curation": {
+    "includes": [
+      {
+        "bibcode": "2020NatAs...4.1072K",
+        "doi": null,
+        "title": "A disk-dominated and clumpy circumgalactic medium of the Milky Way seen in X-ray emission",
+        "reason": "HaloSat team's survey of the Milky Way's hot gas halo from HaloSat data.",
+        "authority": "agent",
+        "date": "2026-09-08"
+      },
+      {
+        "bibcode": "2020JATIS...6d4005Z",
+        "doi": null,
+        "title": "On-ground calibration of the HaloSat science instrument",
+        "reason": "Ground calibration of the HaloSat X-ray instrument used to process its data.",
+        "authority": "agent",
+        "date": "2026-10-02"
+      }
+    ],
+    "excludes": [
+      {
+        "bibcode": "2024JATIS..10c6001P",
+        "doi": "10.1117/1.JATIS.10.3.036001",
+        "title": "Soft X-ray quantum efficiency of a commercial CMOS imaging sensor",
+        "reason": "Lab test of a CMOS sensor for future missions; cites HaloSat only for comparison.",
+        "authority": "agent",
+        "date": "2026-09-08"
+      }
+    ]
+  },
+  "topCited": [
+    {
+      "bibcode": "2020NatAs...4.1072K",
+      "title": "A disk-dominated and clumpy circumgalactic medium of the Milky Way seen in X-ray emission",
+      "firstAuthor": "Kaaret, P.",
+      "year": 2020,
+      "citations": 67
+    },
+    {
+      "bibcode": "2022ApJ...936...72B",
+      "title": "Widespread Detection of Two Components in the Hot Circumgalactic Medium of the Milky Way",
+      "firstAuthor": "Bluem, Jesse",
+      "year": 2022,
+      "citations": 42
+    },
+    {
+      "bibcode": "2019ApJ...884..162K",
+      "title": "HaloSat: A CubeSat to Study the Hot Galactic Halo",
+      "firstAuthor": "Kaaret, P.",
+      "year": 2019,
+      "citations": 38
+    },
+    {
+      "bibcode": "2020ApJ...904...54L",
+      "title": "An Analysis of the North Polar Spur Using HaloSat",
+      "firstAuthor": "LaRocca, Daniel M.",
+      "year": 2020,
+      "citations": 27
+    },
+    {
+      "bibcode": "2023CRPhy..23S...1L",
+      "title": "North Polar Spur/Loop I: gigantic outskirt of the Northern Fermi bubble or nearby hot gas cavity blown by supernovae?",
+      "firstAuthor": "Lallement, Rosine",
+      "year": 2023,
+      "citations": 18
+    },
+    {
+      "bibcode": "2021ApJ...916....2S",
+      "title": "A Search for the 3.5 keV Line from the Milky Way's Dark Matter Halo with HaloSat",
+      "firstAuthor": "Silich, E. M.",
+      "year": 2021,
+      "citations": 15
+    },
+    {
+      "bibcode": "2020JATIS...6a4003L",
+      "title": "Design and construction of the x-ray instrumentation onboard the HaloSat CubeSat",
+      "firstAuthor": "LaRocca, Daniel M.",
+      "year": 2020,
+      "citations": 12
+    },
+    {
+      "bibcode": "2021ApJ...918...41R",
+      "title": "HaloSat Observations of Heliospheric Solar Wind Charge Exchange",
+      "firstAuthor": "Ringuette, R.",
+      "year": 2021,
+      "citations": 11
+    },
+    {
+      "bibcode": "2020ApJ...905...91B",
+      "title": "A HaloSat Analysis of the Cygnus Superbubble",
+      "firstAuthor": "Bluem, Jesse",
+      "year": 2020,
+      "citations": 8
+    },
+    {
+      "bibcode": "2020JATIS...6d4005Z",
+      "title": "On-ground calibration of the HaloSat science instrument",
+      "firstAuthor": "Zajczyk, Anna",
+      "year": 2020,
+      "citations": 8
+    },
+    {
+      "bibcode": "2020AJ....160...20S",
+      "title": "Global X-Ray Properties of the Vela and Puppis A Supernova Remnants",
+      "firstAuthor": "Silich, E. M.",
+      "year": 2020,
+      "citations": 6
+    },
+    {
+      "bibcode": "2021AJ....161...57G",
+      "title": "Total X-Ray Emission from the LMC Observed with HaloSat",
+      "firstAuthor": "Gulick, H.",
+      "year": 2021,
+      "citations": 6
+    },
+    {
+      "bibcode": "2023ApJ...943...61F",
+      "title": "The Orion OB Association as a Generator for the Hot Circumgalactic Medium",
+      "firstAuthor": "Fuller, Chase A.",
+      "year": 2023,
+      "citations": 6
+    },
+    {
+      "bibcode": "2023ApJ...955..139R",
+      "title": "Observations of Magnetospheric Solar Wind Charge Exchange",
+      "firstAuthor": "Ringuette, R.",
+      "year": 2023,
+      "citations": 3
+    },
+    {
+      "bibcode": "2024ApJ...962..153A",
+      "title": "Soft X-Ray Energy Spectra in the Wide-field Galactic Disk Area Revealed with HaloSat",
+      "firstAuthor": "Ampuku, Kazuki",
+      "year": 2024,
+      "citations": 2
+    }
+  ],
+  "papersFile": {
+    "rows": 15
+  }
+}

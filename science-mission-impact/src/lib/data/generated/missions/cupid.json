@@ -1,0 +1,258 @@
+{
+  "id": "cupid",
+  "name": "CuPID",
+  "fullName": "Cusp Plasma Imaging Detector",
+  "division": "heliophysics",
+  "divisionName": "Heliophysics",
+  "hasThumb": true,
+  "meta": {
+    "status": "Failure",
+    "failed": true,
+    "cost": 8.5,
+    "type": "Remote Sensing Observatory",
+    "dates": {
+      "formulation": "2017-07-28",
+      "launch": "2021-09-27",
+      "scienceStart": null,
+      "primeEnd": null,
+      "missionEnd": "2021-09-27"
+    }
+  },
+  "indices": {
+    "h": 1,
+    "m": 0.2,
+    "i100": 0
+  },
+  "facts": {
+    "papers": 1,
+    "citations": 4,
+    "publicationYears": [
+      2022,
+      2022
+    ]
+  },
+  "lifetimeSeries": {
+    "years": [
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "citations": [
+      0,
+      1,
+      2,
+      1,
+      0
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 4,
+      "observed": 4,
+      "missing": 0
+    }
+  },
+  "windowSeries": {
+    "start": "2021-10-01",
+    "end": "2023-10-01",
+    "matureDate": "2026-10-01",
+    "status": "available",
+    "months": 24,
+    "citationBuckets": 6,
+    "outputBasis": "measured",
+    "papersByMonth": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "citationsByYearOffset": [
+      0,
+      0,
+      1,
+      2,
+      1,
+      0
+    ]
+  },
+  "mostCited": {
+    "bibcode": "2022RScI...93f4504A",
+    "title": "The cusp plasma imaging detector (CuPID) cubesat observatory: Instrumentation",
+    "firstAuthor": "Atz, Emil",
+    "year": 2022,
+    "citations": 4
+  },
+  "ranks": {
+    "full": {
+      "bins": [
+        0,
+        0,
+        0.555,
+        0.445,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "window": {
+      "bins": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "lifetime": {
+      "bins": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    }
+  },
+  "full": {
+    "papers": 1,
+    "outputBasis": "measured",
+    "citations": 4,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "failure",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2021-10-01",
+      "end": "2023-10-01",
+      "matureDate": "2026-10-01",
+      "status": "available",
+      "months": 24,
+      "citationBuckets": 6
+    }
+  },
+  "window": {
+    "papers": 1,
+    "outputBasis": "measured",
+    "citations": 4,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "failure",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2021-10-01",
+      "end": "2023-10-01",
+      "matureDate": "2026-10-01",
+      "status": "available",
+      "months": 24,
+      "citationBuckets": 6
+    }
+  },
+  "lifetime": {
+    "papers": 1,
+    "outputBasis": "measured",
+    "citations": 4,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": null,
+    "top1ShareOfDivision": null,
+    "first": {
+      "state": "failure",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    }
+  },
+  "query": {
+    "arms": "((=abs:\"Cusp Plasma Imaging Detector\" OR (abs:\"CuPID\" AND (abs:\"cusp\" OR abs:\"magnetopause\" OR abs:\"cubesat\" OR abs:\"magnetosheath\" OR abs:\"X-ray imaging\" OR abs:\"charge exchange\"))))",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2021-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Cusp+Plasma+Imaging+Detector%22+OR+%28abs%3A%22CuPID%22+AND+%28abs%3A%22cusp%22+OR+abs%3A%22magnetopause%22+OR+abs%3A%22cubesat%22+OR+abs%3A%22magnetosheath%22+OR+abs%3A%22X-ray+imaging%22+OR+abs%3A%22charge+exchange%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2021-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-02T04:31:40.740711+00:00",
+    "reconciliation": {
+      "adsReturned": 1,
+      "curatedOut": 0,
+      "curatedIn": 0,
+      "libraryOut": 0,
+      "otherOut": 0,
+      "duplicates": 0,
+      "final": 1
+    }
+  },
+  "curation": {
+    "includes": [],
+    "excludes": []
+  },
+  "topCited": [
+    {
+      "bibcode": "2022RScI...93f4504A",
+      "title": "The cusp plasma imaging detector (CuPID) cubesat observatory: Instrumentation",
+      "firstAuthor": "Atz, Emil",
+      "year": 2022,
+      "citations": 4
+    }
+  ],
+  "papersFile": {
+    "rows": 1
+  }
+}

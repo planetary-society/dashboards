@@ -1,0 +1,315 @@
+{
+  "id": "asteria",
+  "name": "ASTERIA",
+  "fullName": "Arcsecond Space Telescope Enabling Research in Astrophysics",
+  "division": "astrophysics",
+  "divisionName": "Astrophysics",
+  "hasThumb": true,
+  "meta": {
+    "status": "Completed",
+    "failed": false,
+    "cost": 6.5,
+    "type": "Pointed Observatory",
+    "dates": {
+      "formulation": "2014-12-11",
+      "launch": "2017-08-14",
+      "scienceStart": "2017-11-20",
+      "primeEnd": "2018-02-01",
+      "missionEnd": "2020-02-01"
+    }
+  },
+  "indices": {
+    "h": 3,
+    "m": 0.429,
+    "i100": 0
+  },
+  "facts": {
+    "papers": 3,
+    "citations": 42,
+    "publicationYears": [
+      2020,
+      2021
+    ]
+  },
+  "lifetimeSeries": {
+    "years": [
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "citations": [
+      4,
+      10,
+      4,
+      2,
+      8,
+      9,
+      5
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 42,
+      "observed": 42,
+      "missing": 0
+    }
+  },
+  "windowSeries": {
+    "start": "2017-12-01",
+    "end": "2020-03-01",
+    "matureDate": "2023-10-01",
+    "status": "available",
+    "months": 27,
+    "citationBuckets": 7,
+    "outputBasis": "measured",
+    "papersByMonth": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "citationsByYearOffset": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "mostCited": {
+    "bibcode": "2020AJ....160...23K",
+    "title": "Demonstrating High-precision Photometry with a CubeSat: ASTERIA Observations of 55 Cancri e",
+    "firstAuthor": "Knapp, Mary",
+    "year": 2020,
+    "citations": 30
+  },
+  "ranks": {
+    "full": {
+      "bins": [
+        0.356,
+        0.644,
+        1,
+        0,
+        0,
+        0.063,
+        0.937,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "window": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "lifetime": {
+      "bins": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    }
+  },
+  "full": {
+    "papers": 3,
+    "outputBasis": "measured",
+    "citations": 24,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2017-12-01",
+      "end": "2022-03-01",
+      "matureDate": "2025-10-01",
+      "status": "available",
+      "months": 51,
+      "citationBuckets": 9
+    }
+  },
+  "window": {
+    "papers": 0,
+    "outputBasis": "measured",
+    "citations": 0,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "no_papers",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2017-12-01",
+      "end": "2020-03-01",
+      "matureDate": "2023-10-01",
+      "status": "available",
+      "months": 27,
+      "citationBuckets": 7
+    }
+  },
+  "lifetime": {
+    "papers": 3,
+    "outputBasis": "measured",
+    "citations": 42,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": null,
+    "top1ShareOfDivision": null,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    }
+  },
+  "query": {
+    "arms": "((=abs:\"Arcsecond Space Telescope Enabling Research in Astrophysics\"))",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2017-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Arcsecond+Space+Telescope+Enabling+Research+in+Astrophysics%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2017-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-09-28T13:39:40.556708+00:00",
+    "reconciliation": {
+      "adsReturned": 3,
+      "curatedOut": 0,
+      "curatedIn": 0,
+      "libraryOut": 0,
+      "otherOut": 0,
+      "duplicates": 0,
+      "final": 3
+    }
+  },
+  "curation": {
+    "includes": [],
+    "excludes": [
+      {
+        "bibcode": "2022AcAau.200..599T",
+        "doi": null,
+        "title": null,
+        "reason": "About a CNES collision-avoidance system also named ASTERIA; not the ASTERIA CubeSat.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2024Icar..42116225N",
+        "doi": null,
+        "title": null,
+        "reason": "ASTERIA here is an asteroid thermal-inertia model; not the ASTERIA CubeSat.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2025A&A...695A.196F",
+        "doi": null,
+        "title": null,
+        "reason": "Uses an asteroid thermal-inertia method named ASTERIA; not the ASTERIA CubeSat.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2026AcAau.238..209B",
+        "doi": null,
+        "title": null,
+        "reason": "ASTERIA here is an Italian astrobiology project; not the ASTERIA CubeSat.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      }
+    ]
+  },
+  "topCited": [
+    {
+      "bibcode": "2020AJ....160...23K",
+      "title": "Demonstrating High-precision Photometry with a CubeSat: ASTERIA Observations of 55 Cancri e",
+      "firstAuthor": "Knapp, Mary",
+      "year": 2020,
+      "citations": 30
+    },
+    {
+      "bibcode": "2021AJ....161..117S",
+      "title": "HD 219134 Revisited: Planet d Transit Upper Limit and Planet f Transit Nondetection with ASTERIA and TESS",
+      "firstAuthor": "Seager, Sara",
+      "year": 2021,
+      "citations": 9
+    },
+    {
+      "bibcode": "2021AJ....161..275K",
+      "title": "Transit Search for Exoplanets around Alpha Centauri A and B with ASTERIA",
+      "firstAuthor": "Krishnamurthy, Akshata",
+      "year": 2021,
+      "citations": 3
+    }
+  ],
+  "papersFile": {
+    "rows": 3
+  }
+}

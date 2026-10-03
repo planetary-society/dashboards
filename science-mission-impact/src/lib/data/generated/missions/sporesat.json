@@ -1,0 +1,211 @@
+{
+  "id": "sporesat",
+  "name": "SporeSat",
+  "fullName": "SporeSat",
+  "division": "biological-physical",
+  "divisionName": "Biological & Physical Sciences",
+  "hasThumb": true,
+  "meta": {
+    "status": "Partial Failure",
+    "failed": false,
+    "cost": 14.7,
+    "type": "Orbiter",
+    "dates": {
+      "formulation": "2011-01-01",
+      "launch": "2014-04-18",
+      "scienceStart": "2014-04-18",
+      "primeEnd": "2014-05-18",
+      "missionEnd": null
+    }
+  },
+  "indices": {
+    "h": 0,
+    "m": null,
+    "i100": 0
+  },
+  "facts": {
+    "papers": 0,
+    "citations": 0,
+    "publicationYears": null
+  },
+  "lifetimeSeries": null,
+  "windowSeries": {
+    "start": "2014-05-01",
+    "end": "2016-06-01",
+    "matureDate": "2019-10-01",
+    "status": "available",
+    "months": 25,
+    "citationBuckets": 6,
+    "outputBasis": "measured",
+    "papersByMonth": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "citationsByYearOffset": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "mostCited": null,
+  "ranks": {
+    "full": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "window": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "lifetime": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    }
+  },
+  "full": {
+    "papers": 0,
+    "outputBasis": "measured",
+    "citations": 0,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "no_papers",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2014-05-01",
+      "end": "2024-01-01",
+      "matureDate": "2026-10-01",
+      "status": "available",
+      "months": 116,
+      "citationBuckets": 13
+    }
+  },
+  "window": {
+    "papers": 0,
+    "outputBasis": "measured",
+    "citations": 0,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "no_papers",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2014-05-01",
+      "end": "2016-06-01",
+      "matureDate": "2019-10-01",
+      "status": "available",
+      "months": 25,
+      "citationBuckets": 6
+    }
+  },
+  "lifetime": {
+    "papers": 0,
+    "outputBasis": "measured",
+    "citations": 0,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": null,
+    "top1ShareOfDivision": null,
+    "first": {
+      "state": "no_papers",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    }
+  },
+  "query": {
+    "arms": "((abs:\"SporeSat\" OR (abs:BioCD AND abs:satellite)))",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2014-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22SporeSat%22+OR+%28abs%3ABioCD+AND+abs%3Asatellite%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-02T04:34:36.625645+00:00",
+    "reconciliation": {
+      "adsReturned": 0,
+      "curatedOut": 0,
+      "curatedIn": 0,
+      "libraryOut": 0,
+      "otherOut": 0,
+      "duplicates": 0,
+      "final": 0
+    }
+  },
+  "curation": {
+    "includes": [],
+    "excludes": []
+  },
+  "topCited": [],
+  "papersFile": null
+}

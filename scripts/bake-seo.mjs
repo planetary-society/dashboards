@@ -38,7 +38,7 @@ import { dogeStats, normalizeDogeClaims } from '../docs/cancellations/js/doge-cl
 import { formatIsoDayLong } from '../docs/cancellations/js/chart-common.js';
 import { metaDescription } from '../docs/cancellations/js/panel-views.js';
 import { injectMarker, setJsonLdDateModified, setMetaDescription } from './bake/inject.mjs';
-import { SITE_TITLE, renderDistrictPage, renderDistrictsIndex, renderSitemap } from './bake/templates.mjs';
+import { FIXED_URLS, SITE_TITLE, renderDistrictPage, renderDistrictsIndex, renderSitemap } from './bake/templates.mjs';
 
 const repoRoot = fileURLToPath(new URL('..', import.meta.url));
 const path = (rel) => `${repoRoot}${rel}`;
@@ -209,4 +209,4 @@ if (!awards.columns.districts && !doge.columns.district) {
 // --- Sitemap -------------------------------------------------------------
 
 writeFileSync(path('docs/sitemap.xml'), renderSitemap({ districtCodes, lastUpdated }));
-console.log(`sitemap.xml: ${districtCodes.length + 5} URLs`);
+console.log(`sitemap.xml: ${FIXED_URLS.length + districtCodes.length} URLs`);

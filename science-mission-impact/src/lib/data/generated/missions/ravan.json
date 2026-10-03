@@ -1,0 +1,291 @@
+{
+  "id": "ravan",
+  "name": "RAVAN",
+  "fullName": "Radiometer Assessment using Vertically Aligned Nanotubes",
+  "division": "earth",
+  "divisionName": "Earth Science",
+  "hasThumb": true,
+  "meta": {
+    "status": "Completed",
+    "failed": false,
+    "cost": 4.8,
+    "type": "Orbiter",
+    "dates": {
+      "formulation": "2013-08-01",
+      "launch": "2016-11-11",
+      "scienceStart": "2016-12-11",
+      "primeEnd": "2017-05-11",
+      "missionEnd": "2018-08-01"
+    }
+  },
+  "indices": {
+    "h": 2,
+    "m": 0.222,
+    "i100": 0
+  },
+  "facts": {
+    "papers": 2,
+    "citations": 26,
+    "publicationYears": [
+      2018,
+      2019
+    ]
+  },
+  "lifetimeSeries": {
+    "years": [
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "citations": [
+      0,
+      2,
+      4,
+      7,
+      4,
+      2,
+      3,
+      4,
+      0
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 26,
+      "observed": 26,
+      "missing": 0
+    }
+  },
+  "windowSeries": {
+    "start": "2017-01-01",
+    "end": "2019-06-01",
+    "matureDate": "2022-10-01",
+    "status": "available",
+    "months": 29,
+    "citationBuckets": 6,
+    "outputBasis": "measured",
+    "papersByMonth": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "citationsByYearOffset": [
+      0,
+      0,
+      2,
+      4,
+      7,
+      3
+    ]
+  },
+  "mostCited": {
+    "bibcode": "2019RemS...11..796S",
+    "title": "RAVAN: CubeSat Demonstration for Multi-Point Earth Radiation Budget Measurements",
+    "firstAuthor": "Swartz, William H.",
+    "year": 2019,
+    "citations": 19
+  },
+  "ranks": {
+    "full": {
+      "bins": [
+        0,
+        0.559,
+        0.441,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "window": {
+      "bins": [
+        0,
+        0.799,
+        0.201,
+        0,
+        0,
+        0,
+        0.259,
+        0.741,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "lifetime": {
+      "bins": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0.154,
+        0.846,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    }
+  },
+  "full": {
+    "papers": 2,
+    "outputBasis": "measured",
+    "citations": 16,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2017-01-01",
+      "end": "2020-09-01",
+      "matureDate": "2023-10-01",
+      "status": "available",
+      "months": 44,
+      "citationBuckets": 7
+    }
+  },
+  "window": {
+    "papers": 2,
+    "outputBasis": "measured",
+    "citations": 16,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2017-01-01",
+      "end": "2019-06-01",
+      "matureDate": "2022-10-01",
+      "status": "available",
+      "months": 29,
+      "citationBuckets": 6
+    }
+  },
+  "lifetime": {
+    "papers": 2,
+    "outputBasis": "measured",
+    "citations": 26,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": null,
+    "top1ShareOfDivision": null,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    }
+  },
+  "query": {
+    "arms": "((=abs:\"Radiometer Assessment using Vertically Aligned Nanotubes\" OR (abs:RAVAN AND abs:(CubeSat OR radiometer OR nanotube))))",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2017-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Radiometer+Assessment+using+Vertically+Aligned+Nanotubes%22+OR+%28abs%3ARAVAN+AND+abs%3A%28CubeSat+OR+radiometer+OR+nanotube%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2017-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-02T04:25:38.688070+00:00",
+    "reconciliation": {
+      "adsReturned": 2,
+      "curatedOut": 0,
+      "curatedIn": 0,
+      "libraryOut": 0,
+      "otherOut": 0,
+      "duplicates": 0,
+      "final": 2
+    }
+  },
+  "curation": {
+    "includes": [],
+    "excludes": [
+      {
+        "bibcode": "2021IJN....2050024R",
+        "doi": null,
+        "title": null,
+        "reason": "Ultraviolet photodetector study by an author named Ravan; unrelated to the RAVAN CubeSat.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      }
+    ]
+  },
+  "topCited": [
+    {
+      "bibcode": "2019RemS...11..796S",
+      "title": "RAVAN: CubeSat Demonstration for Multi-Point Earth Radiation Budget Measurements",
+      "firstAuthor": "Swartz, William H.",
+      "year": 2019,
+      "citations": 19
+    },
+    {
+      "bibcode": "2018Aeros...5...63C",
+      "title": "Design of Power, Propulsion, and Thermal Sub-Systems for a 3U CubeSat Measuring Earth's Radiation Imbalance",
+      "firstAuthor": "Claricoats, Jack",
+      "year": 2018,
+      "citations": 7
+    }
+  ],
+  "papersFile": {
+    "rows": 2
+  }
+}

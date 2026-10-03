@@ -1,0 +1,223 @@
+{
+  "id": "e_tbex",
+  "name": "E-TBEx",
+  "fullName": "Enhanced Tandem Beacon Experiment",
+  "division": "heliophysics",
+  "divisionName": "Heliophysics",
+  "hasThumb": true,
+  "meta": {
+    "status": "Completed",
+    "failed": false,
+    "cost": 2.4,
+    "type": "In-Situ Probe",
+    "dates": {
+      "formulation": "2014-07-31",
+      "launch": "2019-06-25",
+      "scienceStart": "2019-06-25",
+      "primeEnd": "2020-06-25",
+      "missionEnd": "2021-03-10"
+    }
+  },
+  "indices": {
+    "h": 0,
+    "m": null,
+    "i100": 0
+  },
+  "facts": {
+    "papers": 0,
+    "citations": 0,
+    "publicationYears": null
+  },
+  "lifetimeSeries": null,
+  "windowSeries": {
+    "start": "2019-07-01",
+    "end": "2022-07-01",
+    "matureDate": "2025-10-01",
+    "status": "available",
+    "months": 36,
+    "citationBuckets": 7,
+    "outputBasis": "measured",
+    "papersByMonth": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "citationsByYearOffset": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "mostCited": null,
+  "ranks": {
+    "full": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "window": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "lifetime": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    }
+  },
+  "full": {
+    "papers": 0,
+    "outputBasis": "measured",
+    "citations": 0,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "no_papers",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2019-07-01",
+      "end": "2023-04-01",
+      "matureDate": "2026-10-01",
+      "status": "available",
+      "months": 45,
+      "citationBuckets": 8
+    }
+  },
+  "window": {
+    "papers": 0,
+    "outputBasis": "measured",
+    "citations": 0,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "no_papers",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2019-07-01",
+      "end": "2022-07-01",
+      "matureDate": "2025-10-01",
+      "status": "available",
+      "months": 36,
+      "citationBuckets": 7
+    }
+  },
+  "lifetime": {
+    "papers": 0,
+    "outputBasis": "measured",
+    "citations": 0,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": null,
+    "top1ShareOfDivision": null,
+    "first": {
+      "state": "no_papers",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    }
+  },
+  "query": {
+    "arms": "((=abs:\"Tandem Beacon Experiment\" OR abs:\"E-TBEx\" OR (abs:\"TBEx\" AND abs:(ionosphere OR ionospheric OR scintillation OR beacon OR \"total electron content\" OR \"plasma bubble\"))))",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2019-07 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Tandem+Beacon+Experiment%22+OR+abs%3A%22E-TBEx%22+OR+%28abs%3A%22TBEx%22+AND+abs%3A%28ionosphere+OR+ionospheric+OR+scintillation+OR+beacon+OR+%22total+electron+content%22+OR+%22plasma+bubble%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2019-07+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-02T04:31:29.460696+00:00",
+    "reconciliation": {
+      "adsReturned": 0,
+      "curatedOut": 0,
+      "curatedIn": 0,
+      "libraryOut": 0,
+      "otherOut": 0,
+      "duplicates": 0,
+      "final": 0
+    }
+  },
+  "curation": {
+    "includes": [],
+    "excludes": []
+  },
+  "topCited": [],
+  "papersFile": null
+}

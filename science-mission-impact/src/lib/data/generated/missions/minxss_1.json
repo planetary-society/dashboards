@@ -1,0 +1,414 @@
+{
+  "id": "minxss_1",
+  "name": "MinXSS-1",
+  "fullName": "Miniature X-ray Solar Spectrometer-1",
+  "division": "heliophysics",
+  "divisionName": "Heliophysics",
+  "hasThumb": true,
+  "meta": {
+    "status": "Completed",
+    "failed": false,
+    "cost": 2.1,
+    "type": "Orbiter",
+    "dates": {
+      "formulation": "2014-07-18",
+      "launch": "2015-12-06",
+      "scienceStart": "2016-05-16",
+      "primeEnd": "2017-05-06",
+      "missionEnd": "2017-05-06"
+    }
+  },
+  "indices": {
+    "h": 8,
+    "m": 0.8,
+    "i100": 0
+  },
+  "facts": {
+    "papers": 11,
+    "citations": 222,
+    "publicationYears": [
+      2017,
+      2025
+    ]
+  },
+  "lifetimeSeries": {
+    "years": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
+      3,
+      1,
+      0,
+      1,
+      0,
+      2,
+      3,
+      0,
+      1,
+      0
+    ],
+    "citations": [
+      5,
+      10,
+      9,
+      23,
+      24,
+      33,
+      27,
+      23,
+      39,
+      29
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 222,
+      "observed": 222,
+      "missing": 0
+    }
+  },
+  "windowSeries": {
+    "start": "2016-06-01",
+    "end": "2019-06-01",
+    "matureDate": "2022-10-01",
+    "status": "available",
+    "months": 36,
+    "citationBuckets": 7,
+    "outputBasis": "measured",
+    "papersByMonth": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "citationsByYearOffset": [
+      0,
+      5,
+      9,
+      9,
+      20,
+      6,
+      0
+    ]
+  },
+  "mostCited": {
+    "bibcode": "2018SoPh..293...21M",
+    "title": "The Instruments and Capabilities of the Miniature X-Ray Solar Spectrometer (MinXSS) CubeSats",
+    "firstAuthor": "Moore, Christopher S.",
+    "year": 2018,
+    "citations": 58
+  },
+  "ranks": {
+    "full": {
+      "bins": [
+        0,
+        0.025,
+        0.975,
+        0,
+        0,
+        1,
+        0,
+        0,
+        2,
+        0
+      ],
+      "top1": 0
+    },
+    "window": {
+      "bins": [
+        0,
+        0.687,
+        0.313,
+        0,
+        1,
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "lifetime": {
+      "bins": [
+        0.524,
+        0.476,
+        1.812,
+        0.188,
+        1.964,
+        3.036,
+        1,
+        0,
+        2,
+        0
+      ],
+      "top1": 0
+    }
+  },
+  "full": {
+    "papers": 4,
+    "outputBasis": "measured",
+    "citations": 49,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2016-06-01",
+      "end": "2019-06-01",
+      "matureDate": "2022-10-01",
+      "status": "available",
+      "months": 36,
+      "citationBuckets": 7
+    }
+  },
+  "window": {
+    "papers": 4,
+    "outputBasis": "measured",
+    "citations": 49,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2016-06-01",
+      "end": "2019-06-01",
+      "matureDate": "2022-10-01",
+      "status": "available",
+      "months": 36,
+      "citationBuckets": 7
+    }
+  },
+  "lifetime": {
+    "papers": 11,
+    "outputBasis": "measured",
+    "citations": 222,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": null,
+    "top1ShareOfDivision": null,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    }
+  },
+  "query": {
+    "arms": "((((abs:minXSS AND abs:(solar OR \"X-ray\")) OR =abs:\"Miniature X-ray Solar Spectrometer\") AND NOT abs:(DAXSS OR \"MinXSS-3\" OR INSPIRESat)))",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2016-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3AminXSS+AND+abs%3A%28solar+OR+%22X-ray%22%29%29+OR+%3Dabs%3A%22Miniature+X-ray+Solar+Spectrometer%22%29+AND+NOT+abs%3A%28DAXSS+OR+%22MinXSS-3%22+OR+INSPIRESat%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2016-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-02T04:31:22.288405+00:00",
+    "reconciliation": {
+      "adsReturned": 11,
+      "curatedOut": 1,
+      "curatedIn": 2,
+      "libraryOut": 0,
+      "otherOut": 0,
+      "duplicates": 1,
+      "final": 11
+    }
+  },
+  "curation": {
+    "includes": [
+      {
+        "bibcode": "2023ApJ...948...71M",
+        "doi": null,
+        "title": "Coronal Heating as Determined by the Solar Flare Frequency Distribution Obtained by Aggregating Case Studies",
+        "reason": "Uses MinXSS-1 flare spectra to check flare energies; credits the mission only in acknowledgements.",
+        "authority": "agent",
+        "date": "2026-09-07"
+      },
+      {
+        "bibcode": "2017JSSat...6..651M",
+        "doi": null,
+        "title": "MinXSS-1 CubeSat On-Orbit Pointing and Power Performance: The First Flight of the Blue Canyon Technologies XACT 3-axis Attitude Determination and Control System",
+        "reason": "On-orbit pointing and power performance of the MinXSS-1 spacecraft.",
+        "authority": "agent",
+        "date": "2026-10-02"
+      }
+    ],
+    "excludes": [
+      {
+        "bibcode": "2025ApJ...993...95T",
+        "doi": null,
+        "title": null,
+        "reason": "Analyzes data from the third-generation instrument (MinXSS-3/DAXSS); does not name MinXSS-1.",
+        "authority": "agent",
+        "date": "2026-09-07"
+      },
+      {
+        "bibcode": "2026A&A...708A.151J",
+        "doi": null,
+        "title": null,
+        "reason": "Analyzes data from the third-generation instrument (MinXSS-3/DAXSS); does not name MinXSS-1.",
+        "authority": "agent",
+        "date": "2026-09-07"
+      },
+      {
+        "bibcode": "2023ApJ...956...94W",
+        "doi": null,
+        "title": null,
+        "reason": "First results from MinXSS-3 (DAXSS); names MinXSS-1 only as an earlier generation.",
+        "authority": "agent",
+        "date": "2026-10-01"
+      },
+      {
+        "bibcode": "2024ApJ...966..198T",
+        "doi": null,
+        "title": null,
+        "reason": "Analyzes MinXSS-3 (DAXSS) flare spectra; not MinXSS-1 data.",
+        "authority": "agent",
+        "date": "2026-10-01"
+      },
+      {
+        "bibcode": "2020AdSpR..66....3M",
+        "doi": "10.1016/j.asr.2019.02.011",
+        "title": "MinXSS-2 CubeSat mission overview: Improvements from the successful MinXSS-1 mission",
+        "reason": "Overview of the follow-on MinXSS-2 mission; names MinXSS-1 as its predecessor.",
+        "authority": "agent",
+        "date": "2026-09-09"
+      }
+    ]
+  },
+  "topCited": [
+    {
+      "bibcode": "2018SoPh..293...21M",
+      "title": "The Instruments and Capabilities of the Miniature X-Ray Solar Spectrometer (MinXSS) CubeSats",
+      "firstAuthor": "Moore, Christopher S.",
+      "year": 2018,
+      "citations": 58
+    },
+    {
+      "bibcode": "2017ApJ...835..122W",
+      "title": "New Solar Irradiance Measurements from the Miniature X-Ray Solar Spectrometer CubeSat",
+      "firstAuthor": "Woods, Thomas N.",
+      "year": 2017,
+      "citations": 49
+    },
+    {
+      "bibcode": "2017JSSat...6..651M",
+      "title": "MinXSS-1 CubeSat On-Orbit Pointing and Power Performance: The First Flight of the Blue Canyon Technologies XACT 3-axis Attitude Determination and Control System",
+      "firstAuthor": "Mason, James Paul",
+      "year": 2017,
+      "citations": 26
+    },
+    {
+      "bibcode": "2020ApJ...895...30R",
+      "title": "Simulating Solar Flare Irradiance with Multithreaded Models of Flare Arcades",
+      "firstAuthor": "Reep, Jeffrey W.",
+      "year": 2020,
+      "citations": 19
+    },
+    {
+      "bibcode": "2022ApJ...933..173N",
+      "title": "Study of Time Evolution of Thermal and Nonthermal Emission from an M-class Solar Flare",
+      "firstAuthor": "Nagasawa, Shunsaku",
+      "year": 2022,
+      "citations": 18
+    },
+    {
+      "bibcode": "2023ApJ...957...14S",
+      "title": "Estimations of Elemental Abundances during Solar Flares Observed in Soft X-Rays by the MinXSS-1 CubeSat Mission",
+      "firstAuthor": "Suarez, Crisel",
+      "year": 2023,
+      "citations": 15
+    },
+    {
+      "bibcode": "2017JTHT...32..237M",
+      "title": "CubeSat On-Orbit Temperature Comparison to Thermal-Balance-Tuned-Model Predictions",
+      "firstAuthor": "Mason, James Paul",
+      "year": 2017,
+      "citations": 14
+    },
+    {
+      "bibcode": "2023ApJ...948...71M",
+      "title": "Coronal Heating as Determined by the Solar Flare Frequency Distribution Obtained by Aggregating Case Studies",
+      "firstAuthor": "Mason, James Paul",
+      "year": 2023,
+      "citations": 12
+    },
+    {
+      "bibcode": "2022SoPh..297...64W",
+      "title": "Solar Radiation and Climate Experiment (SORCE) X-Ray Photometer System (XPS): Final Data-Processing Algorithms",
+      "firstAuthor": "Woods, Thomas N.",
+      "year": 2022,
+      "citations": 6
+    },
+    {
+      "bibcode": "2023ApJ...945...31S",
+      "title": "Modeling the Daily Variations of the Coronal X-ray Spectral Irradiance with Two Temperatures and Two Emission Measures",
+      "firstAuthor": "Schwab, Bennet D.",
+      "year": 2023,
+      "citations": 4
+    },
+    {
+      "bibcode": "2025ApJ...995..117X",
+      "title": "Disentangling Thermal and Abundance Characteristics in a Solar Flare Using SDO/AIA, Hinode/XRT, and MinXSS-1 Observations",
+      "firstAuthor": "Xie, Xiaoyan",
+      "year": 2025,
+      "citations": 1
+    }
+  ],
+  "papersFile": {
+    "rows": 11
+  }
+}

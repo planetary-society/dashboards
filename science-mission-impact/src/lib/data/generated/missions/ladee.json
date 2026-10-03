@@ -1,0 +1,453 @@
+{
+  "id": "ladee",
+  "name": "LADEE",
+  "fullName": "Lunar Atmosphere and Dust Environment Explorer",
+  "division": "planetary",
+  "divisionName": "Planetary Science",
+  "hasThumb": true,
+  "meta": {
+    "status": "Completed",
+    "failed": false,
+    "cost": 377.9,
+    "type": "Orbiter",
+    "dates": {
+      "formulation": "2008-03-01",
+      "launch": "2013-09-07",
+      "scienceStart": "2013-11-20",
+      "primeEnd": "2014-03-01",
+      "missionEnd": "2014-04-17"
+    }
+  },
+  "indices": {
+    "h": 25,
+    "m": 1.923,
+    "i100": 3
+  },
+  "facts": {
+    "papers": 74,
+    "citations": 1733,
+    "publicationYears": [
+      2014,
+      2026
+    ]
+  },
+  "lifetimeSeries": {
+    "years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
+      10,
+      9,
+      14,
+      8,
+      6,
+      5,
+      3,
+      4,
+      3,
+      1,
+      1,
+      6,
+      4
+    ],
+    "citations": [
+      9,
+      35,
+      101,
+      64,
+      112,
+      130,
+      138,
+      195,
+      167,
+      261,
+      206,
+      176,
+      139
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 1733,
+      "observed": 1733,
+      "missing": 0
+    }
+  },
+  "windowSeries": {
+    "start": "2013-12-01",
+    "end": "2016-04-01",
+    "matureDate": "2019-10-01",
+    "status": "available",
+    "months": 28,
+    "citationBuckets": 7,
+    "outputBasis": "measured",
+    "papersByMonth": [
+      0,
+      2,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      1,
+      0,
+      0,
+      1,
+      1,
+      2,
+      3,
+      0,
+      0,
+      0,
+      0,
+      1,
+      3,
+      0,
+      0
+    ],
+    "citationsByYearOffset": [
+      0,
+      9,
+      35,
+      93,
+      45,
+      37,
+      12
+    ]
+  },
+  "mostCited": {
+    "bibcode": "2018P&SS..156...71P",
+    "title": "Lunar dust and dusty plasmas: Recent developments, advances, and unsolved problems",
+    "firstAuthor": "Popel, S. I.",
+    "year": 2018,
+    "citations": 116
+  },
+  "ranks": {
+    "full": {
+      "bins": [
+        4.63,
+        2.119,
+        1.251,
+        1.902,
+        3.098,
+        2,
+        2,
+        3,
+        4,
+        0
+      ],
+      "top1": 0
+    },
+    "window": {
+      "bins": [
+        4.661,
+        2.202,
+        0.185,
+        3.38,
+        2.571,
+        1.658,
+        1.981,
+        4.361,
+        1,
+        0
+      ],
+      "top1": 0
+    },
+    "lifetime": {
+      "bins": [
+        11.701,
+        9.299,
+        8,
+        6.264,
+        5.602,
+        8.485,
+        7.649,
+        6.38,
+        6.601,
+        4.019
+      ],
+      "top1": 0
+    }
+  },
+  "full": {
+    "papers": 24,
+    "outputBasis": "measured",
+    "citations": 240,
+    "top10": 1,
+    "top10ShareOfDivision": 0.00092,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2013-12-01",
+      "end": "2016-05-01",
+      "matureDate": "2019-10-01",
+      "status": "available",
+      "months": 29,
+      "citationBuckets": 7
+    }
+  },
+  "window": {
+    "papers": 22,
+    "outputBasis": "measured",
+    "citations": 231,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2013-12-01",
+      "end": "2016-04-01",
+      "matureDate": "2019-10-01",
+      "status": "available",
+      "months": 28,
+      "citationBuckets": 7
+    }
+  },
+  "lifetime": {
+    "papers": 74,
+    "outputBasis": "measured",
+    "citations": 1733,
+    "top10": 3.75,
+    "top10ShareOfDivision": 0.00275,
+    "top1": null,
+    "top1ShareOfDivision": null,
+    "first": {
+      "state": "reached",
+      "yearsFromScienceStart": 1.029,
+      "yearsFromFormulation": 6.752,
+      "bibcode": "2014SSRv..185...93H",
+      "date": "2014-12-00"
+    }
+  },
+  "query": {
+    "arms": "((=abs:\"Lunar Atmosphere and Dust Environment Explorer\" OR ((abs:LADEE OR abs:LDEX OR =abs:\"Lunar Dust Experiment\") AND abs:(Moon OR lunar OR dust))))",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2013-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Atmosphere+and+Dust+Environment+Explorer%22+OR+%28%28abs%3ALADEE+OR+abs%3ALDEX+OR+%3Dabs%3A%22Lunar+Dust+Experiment%22%29+AND+abs%3A%28Moon+OR+lunar+OR+dust%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2013-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-09-26T22:29:15.322365+00:00",
+    "reconciliation": {
+      "adsReturned": 77,
+      "curatedOut": 3,
+      "curatedIn": 0,
+      "libraryOut": 0,
+      "otherOut": 0,
+      "duplicates": 0,
+      "final": 74
+    }
+  },
+  "curation": {
+    "includes": [],
+    "excludes": [
+      {
+        "bibcode": "2011SSRv..165....3A",
+        "doi": null,
+        "title": null,
+        "reason": "Angelopoulos 2011, \"The ARTEMIS Mission\" (doi 10.1007/s11214-010-9687-2). An ARTEMIS mission overview, not an LADEE paper: it reaches the LADEE corpus through the abs:\"LADEE\" arm paired with the lunar/Moon co-term, but the only LRO mention is the incidental \"ARTEMIS is synergistic with concurrent NASA missions LRO and LADEE\", which names LADEE as a contemporaneous mission and draws no data, product or result from it.",
+        "authority": "human",
+        "date": "2026-09-08"
+      },
+      {
+        "bibcode": "2013NatGe...6..988L",
+        "doi": "10.1038/ngeo2024",
+        "title": "To the Moon with LADEE",
+        "reason": "Journal editorial introducing LADEE; not a research paper.",
+        "authority": "agent",
+        "date": "2026-09-08"
+      },
+      {
+        "bibcode": "2014Natur.508..436.",
+        "doi": "10.1038/508436a",
+        "title": "Seven days: 18-24 April 2014",
+        "reason": "Weekly news digest noting LADEE's impact; not a research paper.",
+        "authority": "agent",
+        "date": "2026-09-08"
+      },
+      {
+        "bibcode": "2014SSRv..185....1R",
+        "doi": "10.1007/s11214-014-0120-0",
+        "title": "Foreword. The Lunar Atmosphere and Dust Environment Explorer Mission",
+        "reason": "Foreword to a journal special issue; not a research paper.",
+        "authority": "agent",
+        "date": "2026-09-09"
+      }
+    ]
+  },
+  "topCited": [
+    {
+      "bibcode": "2018P&SS..156...71P",
+      "title": "Lunar dust and dusty plasmas: Recent developments, advances, and unsolved problems",
+      "firstAuthor": "Popel, S. I.",
+      "year": 2018,
+      "citations": 116
+    },
+    {
+      "bibcode": "2019NatGe..12..333B",
+      "title": "Lunar soil hydration constrained by exospheric water liberated by meteoroid impacts",
+      "firstAuthor": "Benna, M.",
+      "year": 2019,
+      "citations": 115
+    },
+    {
+      "bibcode": "2014SSRv..185...93H",
+      "title": "The Lunar Dust Experiment (LDEX) Onboard the Lunar Atmosphere and Dust Environment Explorer (LADEE) Mission",
+      "firstAuthor": "Horányi, M.",
+      "year": 2014,
+      "citations": 101
+    },
+    {
+      "bibcode": "2015GeoRL..42.3723B",
+      "title": "Variability of helium, neon, and argon in the lunar exosphere as observed by the LADEE NMS instrument",
+      "firstAuthor": "Benna, M.",
+      "year": 2015,
+      "citations": 87
+    },
+    {
+      "bibcode": "2019JGRE..124..752P",
+      "title": "Meteoroids at the Moon: Orbital Properties, Surface Vaporization, and Impact Ejecta Production",
+      "firstAuthor": "Pokorný, Petr",
+      "year": 2019,
+      "citations": 86
+    },
+    {
+      "bibcode": "2016Sci...351..249C",
+      "title": "How surface composition and meteoroid impacts mediate sodium and potassium in the lunar exosphere",
+      "firstAuthor": "Colaprete, A.",
+      "year": 2016,
+      "citations": 67
+    },
+    {
+      "bibcode": "2014SSRv..185....3E",
+      "title": "The Lunar Atmosphere and Dust Environment Explorer Mission",
+      "firstAuthor": "Elphic, R. C.",
+      "year": 2014,
+      "citations": 65
+    },
+    {
+      "bibcode": "2019Reach..1300026K",
+      "title": "Commercial lunar propellant architecture: A collaborative study of lunar propellant production",
+      "firstAuthor": "Kornuta, David",
+      "year": 2019,
+      "citations": 61
+    },
+    {
+      "bibcode": "2016GeoRL..43.4893S",
+      "title": "Lunar meteoritic gardening rate derived from in situ LADEE/LDEX measurements",
+      "firstAuthor": "Szalay, Jamey R.",
+      "year": 2016,
+      "citations": 58
+    },
+    {
+      "bibcode": "2014Icar..233..106F",
+      "title": "Upper limits for a lunar dust exosphere from far-ultraviolet spectroscopy by LRO/LAMP",
+      "firstAuthor": "Feldman, Paul D.",
+      "year": 2014,
+      "citations": 53
+    },
+    {
+      "bibcode": "2015GeoRL..42.5141S",
+      "title": "The search for electrostatically lofted grains above the Moon with the Lunar Dust Experiment",
+      "firstAuthor": "Szalay, Jamey R.",
+      "year": 2015,
+      "citations": 52
+    },
+    {
+      "bibcode": "2014SSRv..185...27M",
+      "title": "The Neutral Mass Spectrometer on the Lunar Atmosphere and Dust Environment Explorer Mission",
+      "firstAuthor": "Mahaffy, Paul R.",
+      "year": 2014,
+      "citations": 48
+    },
+    {
+      "bibcode": "2015GeoRL..42.5162H",
+      "title": "Detections of lunar exospheric ions by the LADEE neutral mass spectrometer",
+      "firstAuthor": "Halekas, J. S.",
+      "year": 2015,
+      "citations": 45
+    },
+    {
+      "bibcode": "2015GeoRL..4210580S",
+      "title": "Annual variation and synodic modulation of the sporadic meteoroid flux to the Moon",
+      "firstAuthor": "Szalay, Jamey R.",
+      "year": 2015,
+      "citations": 45
+    },
+    {
+      "bibcode": "2014SSRv..185..115B",
+      "title": "The Lunar Laser Communication Demonstration: NASA's First Step Toward Very High Data Rate Support of Science and Exploration Missions",
+      "firstAuthor": "Boroson, Don M.",
+      "year": 2014,
+      "citations": 42
+    },
+    {
+      "bibcode": "2020JGRE..12506282B",
+      "title": "Meteoroid Impacts as a Source of Bennu's Particle Ejection Events",
+      "firstAuthor": "Bottke, W. F.",
+      "year": 2020,
+      "citations": 40
+    },
+    {
+      "bibcode": "2016GeoRL..43.6742H",
+      "title": "Methane in the lunar exosphere: Implications for solar wind carbon escape",
+      "firstAuthor": "Hodges, R. Richard",
+      "year": 2016,
+      "citations": 36
+    },
+    {
+      "bibcode": "2017JETPL.105..635P",
+      "title": "Impacts of fast meteoroids and a plasma-dust cloud over the lunar surface",
+      "firstAuthor": "Popel, S. I.",
+      "year": 2017,
+      "citations": 33
+    },
+    {
+      "bibcode": "2015Icar..255..135G",
+      "title": "Lunar exospheric argon modeling",
+      "firstAuthor": "Grava, Cesare",
+      "year": 2015,
+      "citations": 31
+    },
+    {
+      "bibcode": "2016GeoRL..43.6096S",
+      "title": "Meteoritic influence on sodium and potassium abundance in the lunar exosphere measured by LADEE",
+      "firstAuthor": "Szalay, Jamey R.",
+      "year": 2016,
+      "citations": 31
+    }
+  ],
+  "papersFile": {
+    "rows": 74
+  }
+}

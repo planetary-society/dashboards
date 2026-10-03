@@ -1,0 +1,606 @@
+{
+  "id": "landsat_5",
+  "name": "Landsat 5",
+  "fullName": "Landsat 5",
+  "division": "earth",
+  "divisionName": "Earth Science",
+  "hasThumb": true,
+  "meta": {
+    "status": "Completed",
+    "failed": false,
+    "cost": 1372.5,
+    "type": "Orbiter",
+    "dates": {
+      "formulation": "1976-10-01",
+      "launch": "1984-03-01",
+      "scienceStart": "1984-03-06",
+      "primeEnd": "1987-03-01",
+      "missionEnd": "2013-06-05"
+    }
+  },
+  "indices": {
+    "h": 115,
+    "m": 2.738,
+    "i100": 134
+  },
+  "facts": {
+    "papers": 2571,
+    "citations": 73758,
+    "publicationYears": [
+      1985,
+      2026
+    ]
+  },
+  "lifetimeSeries": {
+    "years": [
+      1985,
+      1986,
+      1987,
+      1988,
+      1989,
+      1990,
+      1991,
+      1992,
+      1993,
+      1994,
+      1995,
+      1996,
+      1997,
+      1998,
+      1999,
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
+      3,
+      4,
+      10,
+      5,
+      4,
+      11,
+      5,
+      7,
+      6,
+      8,
+      10,
+      6,
+      15,
+      8,
+      11,
+      15,
+      20,
+      27,
+      30,
+      36,
+      22,
+      31,
+      22,
+      51,
+      43,
+      40,
+      54,
+      69,
+      83,
+      103,
+      102,
+      118,
+      115,
+      108,
+      112,
+      142,
+      154,
+      185,
+      199,
+      222,
+      205,
+      150
+    ],
+    "citations": [
+      0,
+      1,
+      4,
+      17,
+      17,
+      33,
+      23,
+      32,
+      56,
+      48,
+      58,
+      48,
+      48,
+      69,
+      76,
+      78,
+      106,
+      174,
+      267,
+      345,
+      361,
+      412,
+      492,
+      666,
+      722,
+      803,
+      910,
+      975,
+      1263,
+      1560,
+      1899,
+      2166,
+      2654,
+      3379,
+      4149,
+      5370,
+      6465,
+      7575,
+      7224,
+      8215,
+      9011,
+      5987
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 73758,
+      "observed": 73758,
+      "missing": 0
+    }
+  },
+  "windowSeries": {
+    "start": "1984-04-01",
+    "end": "1989-04-01",
+    "matureDate": "1992-10-01",
+    "status": "available",
+    "months": 60,
+    "citationBuckets": 9,
+    "outputBasis": "measured",
+    "papersByMonth": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      7,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      0
+    ],
+    "citationsByYearOffset": [
+      0,
+      0,
+      1,
+      4,
+      17,
+      14,
+      27,
+      7,
+      0
+    ]
+  },
+  "mostCited": {
+    "bibcode": "2012JPRS...67...93R",
+    "title": "An assessment of the effectiveness of a random forest classifier for land-cover classification",
+    "firstAuthor": "Rodriguez-Galiano, V. F.",
+    "year": 2012,
+    "citations": 1792
+  },
+  "ranks": {
+    "full": {
+      "bins": [
+        204.633,
+        138.753,
+        110.196,
+        86.359,
+        61.694,
+        66.623,
+        49.641,
+        45.768,
+        32.789,
+        21.544
+      ],
+      "top1": 2
+    },
+    "window": {
+      "bins": [
+        8.124,
+        6.073,
+        5.378,
+        2.584,
+        0.841,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "lifetime": {
+      "bins": [
+        368.194,
+        309.282,
+        266.13,
+        281.021,
+        249.796,
+        239.033,
+        209.185,
+        219.698,
+        212.761,
+        215.899
+      ],
+      "top1": 27
+    }
+  },
+  "full": {
+    "papers": 818,
+    "outputBasis": "measured",
+    "citations": 4520,
+    "top10": 28.717,
+    "top10ShareOfDivision": 0.00746,
+    "top1": 2,
+    "top1ShareOfDivision": 0.0052,
+    "first": {
+      "state": "reached",
+      "yearsFromScienceStart": 13.32,
+      "yearsFromFormulation": 20.747,
+      "bibcode": "1997JGR...10216971T",
+      "date": "1997-07-00"
+    },
+    "status": "available",
+    "bounds": {
+      "start": "1984-04-01",
+      "end": "2015-07-01",
+      "matureDate": "2018-10-01",
+      "status": "available",
+      "months": 375,
+      "citationBuckets": 35
+    }
+  },
+  "window": {
+    "papers": 25,
+    "outputBasis": "measured",
+    "citations": 70,
+    "top10": 0.5,
+    "top10ShareOfDivision": 0.00048,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "1984-04-01",
+      "end": "1989-04-01",
+      "matureDate": "1992-10-01",
+      "status": "available",
+      "months": 60,
+      "citationBuckets": 9
+    }
+  },
+  "lifetime": {
+    "papers": 2571,
+    "outputBasis": "measured",
+    "citations": 73758,
+    "top10": 136.508,
+    "top10ShareOfDivision": 0.03299,
+    "top1": null,
+    "top1ShareOfDivision": null,
+    "first": {
+      "state": "reached",
+      "yearsFromScienceStart": 2.823,
+      "yearsFromFormulation": 10.251,
+      "bibcode": "1987RSEnv..22...11S",
+      "date": "1987-00-00"
+    }
+  },
+  "query": {
+    "arms": "((=abs:\"Landsat-5\" OR =abs:\"Landsat 4-5\" OR =abs:\"Landsats 5\" OR =abs:\"Landsats 4 5\" OR =abs:\"Landsat TM5\" OR =abs:\"Landsat TM 5\" OR =abs:\"Thematic Mapper 5\" OR =abs:\"Thematic Mapper TM 5\" OR =abs:\"Landsat satellites 5\" OR =abs:\"Landsat satellite 5\" OR =abs:\"Landsat missions 5\" OR =abs:\"Landsat series 5\" OR =abs:\"Landsat 2 5\" OR =abs:\"Landsat 7 5\" OR =abs:\"Landsat 8 5\" OR =abs:\"Landsat 1 5\" OR =abs:\"Landsat 4 7\" OR =abs:\"Landsat 4 8\" OR =abs:\"Landsats 4 8\" OR =abs:\"Landsat 4 9\"))",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1984-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Landsat-5%22+OR+%3Dabs%3A%22Landsat+4-5%22+OR+%3Dabs%3A%22Landsats+5%22+OR+%3Dabs%3A%22Landsats+4+5%22+OR+%3Dabs%3A%22Landsat+TM5%22+OR+%3Dabs%3A%22Landsat+TM+5%22+OR+%3Dabs%3A%22Thematic+Mapper+5%22+OR+%3Dabs%3A%22Thematic+Mapper+TM+5%22+OR+%3Dabs%3A%22Landsat+satellites+5%22+OR+%3Dabs%3A%22Landsat+satellite+5%22+OR+%3Dabs%3A%22Landsat+missions+5%22+OR+%3Dabs%3A%22Landsat+series+5%22+OR+%3Dabs%3A%22Landsat+2+5%22+OR+%3Dabs%3A%22Landsat+7+5%22+OR+%3Dabs%3A%22Landsat+8+5%22+OR+%3Dabs%3A%22Landsat+1+5%22+OR+%3Dabs%3A%22Landsat+4+7%22+OR+%3Dabs%3A%22Landsat+4+8%22+OR+%3Dabs%3A%22Landsats+4+8%22+OR+%3Dabs%3A%22Landsat+4+9%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1984-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-02T04:16:39.422752+00:00",
+    "reconciliation": {
+      "adsReturned": 2583,
+      "curatedOut": 8,
+      "curatedIn": 0,
+      "libraryOut": 0,
+      "otherOut": 0,
+      "duplicates": 4,
+      "final": 2571
+    }
+  },
+  "curation": {
+    "includes": [],
+    "excludes": [
+      {
+        "bibcode": "1997CaJRS..23..318M",
+        "doi": "10.1080/07038992.1997.10855218",
+        "title": "Landsat-7 Enhanced Thematic Mapper Plus Radiometric Calibration",
+        "reason": "Pre-launch calibration plan for Landsat 7's ETM+; Landsat 5 appears as design heritage.",
+        "authority": "agent",
+        "date": "2026-09-16"
+      },
+      {
+        "bibcode": "2016RSEnv.175..282N",
+        "doi": "10.1016/j.rse.2016.01.006",
+        "title": "Mapping and estimating forest area and aboveground biomass in miombo woodlands in Tanzania using data from airborne laser scanning, TanDEM-X, RapidEye, and global forest maps: A comparison of estimated precision",
+        "reason": "A numbered list \"(4) Landsat and (5)\" matches; does not name Landsat 5.",
+        "authority": "agent",
+        "date": "2026-09-16"
+      },
+      {
+        "bibcode": "2017RSEnv.194..205W",
+        "doi": "10.1016/j.rse.2017.03.005",
+        "title": "Monthly flooded area classification using low resolution SAR imagery in the Sudd wetland from 2007 to 2011",
+        "reason": "A numbered list \"Landsat, and (5)\" matches; does not name Landsat 5.",
+        "authority": "agent",
+        "date": "2026-09-16"
+      },
+      {
+        "bibcode": "2025LaEco..40..227D",
+        "doi": "10.1007/s10980-025-02229-3",
+        "title": "Multiple trajectories of land-cover change: influence of disturbance severity over four decades after the eruption of Mount St. Helens",
+        "reason": "The text \"Landsat) at 5-year intervals\" matches; does not name Landsat 5.",
+        "authority": "agent",
+        "date": "2026-09-16"
+      },
+      {
+        "bibcode": "1997RSEnv..62...40E",
+        "doi": "10.1016/S0034-4257(97)00071-0",
+        "title": "A video system capable of simulating Landsat TM 5, 4, 3 imagery",
+        "reason": "\"TM 5, 4, 3\" refers to Thematic Mapper bands; does not name Landsat 5.",
+        "authority": "agent",
+        "date": "2026-09-18"
+      },
+      {
+        "bibcode": "1993RSEnv..45..273V",
+        "doi": "10.1016/0034-4257(93)90110-J",
+        "title": "Spectral reflectance measurements in the genus Sphagnum",
+        "reason": "\"Thematic Mapper 5/4\" refers to a band ratio; does not name Landsat 5.",
+        "authority": "agent",
+        "date": "2026-09-18"
+      },
+      {
+        "bibcode": "2020ScTEn.72137814W",
+        "doi": "10.1016/j.scitotenv.2020.137814",
+        "title": "Impacts of urbanization on soil organic carbon stocks in the northeast coastal agricultural areas of China",
+        "reason": "\"Landsat TM5\" refers to Thematic Mapper band 5; does not name Landsat 5.",
+        "authority": "agent",
+        "date": "2026-09-18"
+      },
+      {
+        "bibcode": "2024ERCom...6j5037A",
+        "doi": "10.1088/2515-7620/ad898e",
+        "title": "Gap-filling of land surface temperature in arid regions by combining Landsat 8 and 9 imageries",
+        "reason": "The text \"Landsat 8 and 5.4 °C\" matches; does not name Landsat 5.",
+        "authority": "agent",
+        "date": "2026-09-18"
+      }
+    ]
+  },
+  "topCited": [
+    {
+      "bibcode": "2012JPRS...67...93R",
+      "title": "An assessment of the effectiveness of a random forest classifier for land-cover classification",
+      "firstAuthor": "Rodriguez-Galiano, V. F.",
+      "year": 2012,
+      "citations": 1792
+    },
+    {
+      "bibcode": "2004RSEnv..90..434S",
+      "title": "Land surface temperature retrieval from LANDSAT TM 5",
+      "firstAuthor": "Sobrino, José A.",
+      "year": 2004,
+      "citations": 1517
+    },
+    {
+      "bibcode": "2014RSEnv.140...23F",
+      "title": "Automated Water Extraction Index: A new technique for surface water mapping using Landsat imagery",
+      "firstAuthor": "Feyisa, Gudina L.",
+      "year": 2014,
+      "citations": 1441
+    },
+    {
+      "bibcode": "2016RSEnv.185...46V",
+      "title": "Preliminary analysis of the performance of the Landsat 8/OLI land surface reflectance product",
+      "firstAuthor": "Vermote, Eric",
+      "year": 2016,
+      "citations": 1255
+    },
+    {
+      "bibcode": "2001RSEnv..75..230S",
+      "title": "Classification and Change Detection Using Landsat TM Data. When and How to Correct Atmospheric Effects?",
+      "firstAuthor": "Song, Conghe",
+      "year": 2001,
+      "citations": 1098
+    },
+    {
+      "bibcode": "2019Natur.574..667H",
+      "title": "Widespread global increase in intense lake phytoplankton blooms since the 1980s",
+      "firstAuthor": "Ho, Jeff C.",
+      "year": 2019,
+      "citations": 1048
+    },
+    {
+      "bibcode": "1997JGR...10216971T",
+      "title": "Remote sensing of aerosol properties over oceans using the MODIS/EOS spectral radiances",
+      "firstAuthor": "Tanré, D.",
+      "year": 1997,
+      "citations": 677
+    },
+    {
+      "bibcode": "2003ITGRS..41.2674C",
+      "title": "Revised Landsat-5 TM Radiometric Calibration Procedures and Postcalibration Dynamic Ranges",
+      "firstAuthor": "Chander, Gyanesh",
+      "year": 2003,
+      "citations": 611
+    },
+    {
+      "bibcode": "2016RSEnv.185..271W",
+      "title": "The global Landsat archive: Status, consolidation, and direction",
+      "firstAuthor": "Wulder, Michael A.",
+      "year": 2016,
+      "citations": 577
+    },
+    {
+      "bibcode": "2018RemS...10.1669B",
+      "title": "The Global Mangrove Watch—A New 2010 Global Baseline of Mangrove Extent",
+      "firstAuthor": "Bunting, Pete",
+      "year": 2018,
+      "citations": 490
+    },
+    {
+      "bibcode": "2020RemS...12.1471E",
+      "title": "Google Earth Engine Open-Source Code for Land Surface Temperature Estimation from the Landsat Series",
+      "firstAuthor": "Ermida, Sofia L.",
+      "year": 2020,
+      "citations": 457
+    },
+    {
+      "bibcode": "2009ITGRS..47..339J",
+      "title": "Revision of the Single-Channel Algorithm for Land Surface Temperature Retrieval from Landsat Thermal-Infrared Data",
+      "firstAuthor": "Jiménez-Muñoz, Juan C.",
+      "year": 2009,
+      "citations": 450
+    },
+    {
+      "bibcode": "2019RSEnv.225..175V",
+      "title": "Adaptation of the dark spectrum fitting atmospheric correction for aquatic applications of the Landsat and Sentinel-2 archives",
+      "firstAuthor": "Vanhellemont, Quinten",
+      "year": 2019,
+      "citations": 450
+    },
+    {
+      "bibcode": "2014RemS....6.4173R",
+      "title": "Water Feature Extraction and Change Detection Using Multitemporal Landsat Imagery",
+      "firstAuthor": "Rokni, Komeil",
+      "year": 2014,
+      "citations": 439
+    },
+    {
+      "bibcode": "2012RSEnv.118..127V",
+      "title": "Machine learning regression algorithms for biophysical parameter retrieval: Opportunities for Sentinel-2 and -3",
+      "firstAuthor": "Verrelst, Jochem",
+      "year": 2012,
+      "citations": 418
+    },
+    {
+      "bibcode": "2008RSEnv.112..955W",
+      "title": "Landsat continuity: Issues and opportunities for land cover monitoring",
+      "firstAuthor": "Wulder, Michael A.",
+      "year": 2008,
+      "citations": 407
+    },
+    {
+      "bibcode": "1999RSEnv..70...52T",
+      "title": "Relationships between Leaf Area Index and Landsat TM Spectral Vegetation Indices across Three Temperate Zone Sites",
+      "firstAuthor": "Turner, David P.",
+      "year": 1999,
+      "citations": 401
+    },
+    {
+      "bibcode": "1991RSEnv..35...11H",
+      "title": "Radiometric rectification: Toward a common radiometric response among multidate, multisensor images",
+      "firstAuthor": "Hall, F. G.",
+      "year": 1991,
+      "citations": 391
+    },
+    {
+      "bibcode": "2013IJAEO..21..103H",
+      "title": "A visible band index for remote sensing leaf chlorophyll content at the canopy scale",
+      "firstAuthor": "Hunt, E. Raymond",
+      "year": 2013,
+      "citations": 349
+    },
+    {
+      "bibcode": "2009RSEnv.113.2606A",
+      "title": "Spatial-temporal dynamics of land surface temperature in relation to fractional vegetation cover and land use/cover in the Tabriz urban area, Iran",
+      "firstAuthor": "Amiri, Reza",
+      "year": 2009,
+      "citations": 344
+    }
+  ],
+  "papersFile": {
+    "rows": 2571
+  }
+}

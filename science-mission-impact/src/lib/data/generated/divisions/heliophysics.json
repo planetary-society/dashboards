@@ -1,0 +1,4218 @@
+{
+  "slug": "heliophysics",
+  "name": "Heliophysics",
+  "facts": {
+    "missions": 29,
+    "papers": 18232,
+    "citations": 589794,
+    "publicationYears": [
+      1980,
+      2026
+    ]
+  },
+  "rankable": true,
+  "lifetimeSeries": {
+    "years": [
+      1980,
+      1981,
+      1982,
+      1983,
+      1984,
+      1985,
+      1986,
+      1987,
+      1988,
+      1989,
+      1990,
+      1991,
+      1992,
+      1993,
+      1994,
+      1995,
+      1996,
+      1997,
+      1998,
+      1999,
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
+      7,
+      40,
+      56,
+      79,
+      97,
+      82,
+      101,
+      100,
+      106,
+      62,
+      93,
+      81,
+      56,
+      77,
+      89,
+      72,
+      102,
+      134,
+      208,
+      189,
+      212,
+      315,
+      295,
+      336,
+      261,
+      392,
+      346,
+      340,
+      431,
+      534,
+      425,
+      517,
+      620,
+      667,
+      680,
+      742,
+      792,
+      763,
+      840,
+      827,
+      860,
+      918,
+      871,
+      870,
+      902,
+      931,
+      714
+    ],
+    "citations": [
+      2,
+      96,
+      205,
+      444,
+      629,
+      768,
+      964,
+      1142,
+      1291,
+      1224,
+      1615,
+      1870,
+      1315,
+      1699,
+      1801,
+      1828,
+      2034,
+      1972,
+      2626,
+      2936,
+      3478,
+      4384,
+      4503,
+      5142,
+      4853,
+      6600,
+      8302,
+      8745,
+      10319,
+      11498,
+      11710,
+      14844,
+      17465,
+      18394,
+      20041,
+      23828,
+      26269,
+      27008,
+      29892,
+      32169,
+      34229,
+      40960,
+      39076,
+      40000,
+      42778,
+      44509,
+      32337
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 589794,
+      "observed": 589794,
+      "missing": 0
+    }
+  },
+  "windowSeries": {
+    "papersByMonth": [
+      6,
+      9,
+      15,
+      6,
+      14,
+      45,
+      31,
+      44,
+      56,
+      36,
+      41,
+      37,
+      63,
+      44,
+      45,
+      48,
+      43,
+      95,
+      70,
+      65,
+      46,
+      86,
+      81,
+      47,
+      67,
+      71,
+      74,
+      79,
+      92,
+      85,
+      99,
+      69,
+      80,
+      114,
+      104,
+      111,
+      91,
+      101,
+      85,
+      82,
+      93,
+      70,
+      102,
+      103,
+      100,
+      98,
+      139,
+      97,
+      60,
+      67,
+      57,
+      47,
+      51,
+      33,
+      62,
+      53,
+      59,
+      48,
+      41,
+      39,
+      48,
+      33,
+      30,
+      29,
+      32,
+      28,
+      25,
+      29,
+      19,
+      31,
+      21,
+      37,
+      22,
+      16,
+      27,
+      18,
+      25,
+      32,
+      25,
+      30,
+      35,
+      9,
+      18,
+      14
+    ],
+    "citationsByYearOffset": [
+      153,
+      1796,
+      5674,
+      11007,
+      14921,
+      14046,
+      10574,
+      6619,
+      3363,
+      1451,
+      378
+    ],
+    "missionsByYear": [
+      28,
+      28,
+      27,
+      17,
+      9,
+      4,
+      2
+    ],
+    "missionsIncluded": 28,
+    "status": "available",
+    "missionsImmature": []
+  },
+  "mostCited": {
+    "bibcode": "2012SoPh..275...17L",
+    "title": "The Atmospheric Imaging Assembly (AIA) on the Solar Dynamics Observatory (SDO)",
+    "firstAuthor": "Lemen, James R.",
+    "year": 2012,
+    "citations": 4693,
+    "missionId": "sdo"
+  },
+  "cutoffs": {
+    "full": {
+      "1": 61,
+      "10": 25
+    },
+    "window": {
+      "1": 90,
+      "10": 32
+    },
+    "lifetime": {
+      "1": 259,
+      "10": 72
+    }
+  },
+  "costCurves": {
+    "full": {
+      "1": {
+        "points": [
+          {
+            "id": "minxss_2",
+            "cost": 1.4,
+            "topShare": 0,
+            "costShare": 0.00012
+          },
+          {
+            "id": "ceres",
+            "cost": 1.6,
+            "topShare": 0,
+            "costShare": 0.00026
+          },
+          {
+            "id": "minxss_1",
+            "cost": 2.1,
+            "topShare": 0,
+            "costShare": 0.00045
+          },
+          {
+            "id": "e_tbex",
+            "cost": 2.4,
+            "topShare": 0,
+            "costShare": 0.00066
+          },
+          {
+            "id": "sortie",
+            "cost": 5,
+            "topShare": 0,
+            "costShare": 0.0011
+          },
+          {
+            "id": "elfin",
+            "cost": 5.4,
+            "topShare": 0,
+            "costShare": 0.00157
+          },
+          {
+            "id": "cupid",
+            "cost": 8.5,
+            "topShare": 0,
+            "costShare": 0.00231
+          },
+          {
+            "id": "snoe",
+            "cost": 25.5,
+            "topShare": 0,
+            "costShare": 0.00455
+          },
+          {
+            "id": "trace",
+            "cost": 104,
+            "topShare": 0.03466,
+            "costShare": 0.01366
+          },
+          {
+            "id": "fast",
+            "cost": 116.7,
+            "topShare": 0.04853,
+            "costShare": 0.02388
+          },
+          {
+            "id": "sampex",
+            "cost": 127.8,
+            "topShare": 0.04853,
+            "costShare": 0.03508
+          },
+          {
+            "id": "sme",
+            "cost": 149.7,
+            "topShare": 0.04853,
+            "costShare": 0.0482
+          },
+          {
+            "id": "rhessi",
+            "cost": 169,
+            "topShare": 0.10168,
+            "costShare": 0.063
+          },
+          {
+            "id": "iris",
+            "cost": 172.4,
+            "topShare": 0.12247,
+            "costShare": 0.07811
+          },
+          {
+            "id": "ibex",
+            "cost": 209.3,
+            "topShare": 0.18356,
+            "costShare": 0.09645
+          },
+          {
+            "id": "aim",
+            "cost": 234.4,
+            "topShare": 0.18356,
+            "costShare": 0.11698
+          },
+          {
+            "id": "ampte_cce",
+            "cost": 242,
+            "topShare": 0.18356,
+            "costShare": 0.13819
+          },
+          {
+            "id": "image",
+            "cost": 276.9,
+            "topShare": 0.18356,
+            "costShare": 0.16245
+          },
+          {
+            "id": "themis_artemis",
+            "cost": 301.3,
+            "topShare": 0.27585,
+            "costShare": 0.18885
+          },
+          {
+            "id": "icon",
+            "cost": 340.4,
+            "topShare": 0.28278,
+            "costShare": 0.21867
+          },
+          {
+            "id": "timed",
+            "cost": 490.6,
+            "topShare": 0.30358,
+            "costShare": 0.26166
+          },
+          {
+            "id": "ace",
+            "cost": 538,
+            "topShare": 0.32034,
+            "costShare": 0.30879
+          },
+          {
+            "id": "smm",
+            "cost": 581.4,
+            "topShare": 0.34113,
+            "costShare": 0.35973
+          },
+          {
+            "id": "polar",
+            "cost": 757.1,
+            "topShare": 0.34113,
+            "costShare": 0.42607
+          },
+          {
+            "id": "rbsp",
+            "cost": 1015.3,
+            "topShare": 0.46758,
+            "costShare": 0.51502
+          },
+          {
+            "id": "stereo",
+            "cost": 1066.8,
+            "topShare": 0.61475,
+            "costShare": 0.60849
+          },
+          {
+            "id": "wind",
+            "cost": 1356.5,
+            "topShare": 0.71815,
+            "costShare": 0.72734
+          },
+          {
+            "id": "sdo",
+            "cost": 1456.4,
+            "topShare": 0.91797,
+            "costShare": 0.85494
+          },
+          {
+            "id": "mms",
+            "cost": 1655.6,
+            "topShare": 1,
+            "costShare": 1
+          }
+        ],
+        "band": {
+          "p25": 301.3,
+          "p50": 1066.8,
+          "p75": 1456.4
+        },
+        "cheapestWithTop": {
+          "id": "trace",
+          "name": "TRACE",
+          "cost": 104
+        },
+        "unplaced": []
+      },
+      "10": {
+        "points": [
+          {
+            "id": "minxss_2",
+            "cost": 1.4,
+            "topShare": 0,
+            "costShare": 0.00012
+          },
+          {
+            "id": "ceres",
+            "cost": 1.6,
+            "topShare": 0,
+            "costShare": 0.00026
+          },
+          {
+            "id": "minxss_1",
+            "cost": 2.1,
+            "topShare": 0,
+            "costShare": 0.00045
+          },
+          {
+            "id": "e_tbex",
+            "cost": 2.4,
+            "topShare": 0,
+            "costShare": 0.00066
+          },
+          {
+            "id": "sortie",
+            "cost": 5,
+            "topShare": 0,
+            "costShare": 0.0011
+          },
+          {
+            "id": "elfin",
+            "cost": 5.4,
+            "topShare": 0.00849,
+            "costShare": 0.00157
+          },
+          {
+            "id": "cupid",
+            "cost": 8.5,
+            "topShare": 0.00849,
+            "costShare": 0.00231
+          },
+          {
+            "id": "snoe",
+            "cost": 25.5,
+            "topShare": 0.00849,
+            "costShare": 0.00455
+          },
+          {
+            "id": "trace",
+            "cost": 104,
+            "topShare": 0.0751,
+            "costShare": 0.01366
+          },
+          {
+            "id": "fast",
+            "cost": 116.7,
+            "topShare": 0.08503,
+            "costShare": 0.02388
+          },
+          {
+            "id": "sampex",
+            "cost": 127.8,
+            "topShare": 0.09401,
+            "costShare": 0.03508
+          },
+          {
+            "id": "sme",
+            "cost": 149.7,
+            "topShare": 0.10279,
+            "costShare": 0.0482
+          },
+          {
+            "id": "rhessi",
+            "cost": 169,
+            "topShare": 0.15595,
+            "costShare": 0.063
+          },
+          {
+            "id": "iris",
+            "cost": 172.4,
+            "topShare": 0.20074,
+            "costShare": 0.07811
+          },
+          {
+            "id": "ibex",
+            "cost": 209.3,
+            "topShare": 0.24148,
+            "costShare": 0.09645
+          },
+          {
+            "id": "aim",
+            "cost": 234.4,
+            "topShare": 0.24356,
+            "costShare": 0.11698
+          },
+          {
+            "id": "ampte_cce",
+            "cost": 242,
+            "topShare": 0.255,
+            "costShare": 0.13819
+          },
+          {
+            "id": "image",
+            "cost": 276.9,
+            "topShare": 0.26888,
+            "costShare": 0.16245
+          },
+          {
+            "id": "themis_artemis",
+            "cost": 301.3,
+            "topShare": 0.31223,
+            "costShare": 0.18885
+          },
+          {
+            "id": "icon",
+            "cost": 340.4,
+            "topShare": 0.32401,
+            "costShare": 0.21867
+          },
+          {
+            "id": "timed",
+            "cost": 490.6,
+            "topShare": 0.35725,
+            "costShare": 0.26166
+          },
+          {
+            "id": "ace",
+            "cost": 538,
+            "topShare": 0.40562,
+            "costShare": 0.30879
+          },
+          {
+            "id": "smm",
+            "cost": 581.4,
+            "topShare": 0.44758,
+            "costShare": 0.35973
+          },
+          {
+            "id": "polar",
+            "cost": 757.1,
+            "topShare": 0.46285,
+            "costShare": 0.42607
+          },
+          {
+            "id": "rbsp",
+            "cost": 1015.3,
+            "topShare": 0.53667,
+            "costShare": 0.51502
+          },
+          {
+            "id": "stereo",
+            "cost": 1066.8,
+            "topShare": 0.64546,
+            "costShare": 0.60849
+          },
+          {
+            "id": "wind",
+            "cost": 1356.5,
+            "topShare": 0.72258,
+            "costShare": 0.72734
+          },
+          {
+            "id": "sdo",
+            "cost": 1456.4,
+            "topShare": 0.91415,
+            "costShare": 0.85494
+          },
+          {
+            "id": "mms",
+            "cost": 1655.6,
+            "topShare": 1,
+            "costShare": 1
+          }
+        ],
+        "band": {
+          "p25": 242,
+          "p50": 1015.3,
+          "p75": 1456.4
+        },
+        "cheapestWithTop": {
+          "id": "elfin",
+          "name": "ELFIN",
+          "cost": 5.4
+        },
+        "unplaced": []
+      }
+    },
+    "window": {
+      "1": {
+        "points": [
+          {
+            "id": "minxss_2",
+            "cost": 1.4,
+            "topShare": 0,
+            "costShare": 0.00012
+          },
+          {
+            "id": "ceres",
+            "cost": 1.6,
+            "topShare": 0,
+            "costShare": 0.00026
+          },
+          {
+            "id": "minxss_1",
+            "cost": 2.1,
+            "topShare": 0,
+            "costShare": 0.00045
+          },
+          {
+            "id": "e_tbex",
+            "cost": 2.4,
+            "topShare": 0,
+            "costShare": 0.00066
+          },
+          {
+            "id": "sortie",
+            "cost": 5,
+            "topShare": 0,
+            "costShare": 0.0011
+          },
+          {
+            "id": "elfin",
+            "cost": 5.4,
+            "topShare": 0,
+            "costShare": 0.00157
+          },
+          {
+            "id": "cupid",
+            "cost": 8.5,
+            "topShare": 0,
+            "costShare": 0.00231
+          },
+          {
+            "id": "snoe",
+            "cost": 25.5,
+            "topShare": 0,
+            "costShare": 0.00455
+          },
+          {
+            "id": "trace",
+            "cost": 104,
+            "topShare": 0.04526,
+            "costShare": 0.01366
+          },
+          {
+            "id": "fast",
+            "cost": 116.7,
+            "topShare": 0.04526,
+            "costShare": 0.02388
+          },
+          {
+            "id": "sampex",
+            "cost": 127.8,
+            "topShare": 0.04526,
+            "costShare": 0.03508
+          },
+          {
+            "id": "sme",
+            "cost": 149.7,
+            "topShare": 0.04526,
+            "costShare": 0.0482
+          },
+          {
+            "id": "rhessi",
+            "cost": 169,
+            "topShare": 0.06789,
+            "costShare": 0.063
+          },
+          {
+            "id": "iris",
+            "cost": 172.4,
+            "topShare": 0.09052,
+            "costShare": 0.07811
+          },
+          {
+            "id": "ibex",
+            "cost": 209.3,
+            "topShare": 0.13793,
+            "costShare": 0.09645
+          },
+          {
+            "id": "aim",
+            "cost": 234.4,
+            "topShare": 0.13793,
+            "costShare": 0.11698
+          },
+          {
+            "id": "ampte_cce",
+            "cost": 242,
+            "topShare": 0.13793,
+            "costShare": 0.13819
+          },
+          {
+            "id": "image",
+            "cost": 276.9,
+            "topShare": 0.13793,
+            "costShare": 0.16245
+          },
+          {
+            "id": "themis_artemis",
+            "cost": 301.3,
+            "topShare": 0.22845,
+            "costShare": 0.18885
+          },
+          {
+            "id": "icon",
+            "cost": 340.4,
+            "topShare": 0.22845,
+            "costShare": 0.21867
+          },
+          {
+            "id": "timed",
+            "cost": 490.6,
+            "topShare": 0.22845,
+            "costShare": 0.26166
+          },
+          {
+            "id": "ace",
+            "cost": 538,
+            "topShare": 0.22845,
+            "costShare": 0.30879
+          },
+          {
+            "id": "smm",
+            "cost": 581.4,
+            "topShare": 0.2306,
+            "costShare": 0.35973
+          },
+          {
+            "id": "polar",
+            "cost": 757.1,
+            "topShare": 0.2306,
+            "costShare": 0.42607
+          },
+          {
+            "id": "rbsp",
+            "cost": 1015.3,
+            "topShare": 0.45689,
+            "costShare": 0.51502
+          },
+          {
+            "id": "stereo",
+            "cost": 1066.8,
+            "topShare": 0.52478,
+            "costShare": 0.60849
+          },
+          {
+            "id": "wind",
+            "cost": 1356.5,
+            "topShare": 0.52478,
+            "costShare": 0.72734
+          },
+          {
+            "id": "sdo",
+            "cost": 1456.4,
+            "topShare": 0.79633,
+            "costShare": 0.85494
+          },
+          {
+            "id": "mms",
+            "cost": 1655.6,
+            "topShare": 1,
+            "costShare": 1
+          }
+        ],
+        "band": {
+          "p25": 1015.3,
+          "p50": 1066.8,
+          "p75": 1456.4
+        },
+        "cheapestWithTop": {
+          "id": "trace",
+          "name": "TRACE",
+          "cost": 104
+        },
+        "unplaced": []
+      },
+      "10": {
+        "points": [
+          {
+            "id": "minxss_2",
+            "cost": 1.4,
+            "topShare": 0,
+            "costShare": 0.00012
+          },
+          {
+            "id": "ceres",
+            "cost": 1.6,
+            "topShare": 0,
+            "costShare": 0.00026
+          },
+          {
+            "id": "minxss_1",
+            "cost": 2.1,
+            "topShare": 0,
+            "costShare": 0.00045
+          },
+          {
+            "id": "e_tbex",
+            "cost": 2.4,
+            "topShare": 0,
+            "costShare": 0.00066
+          },
+          {
+            "id": "sortie",
+            "cost": 5,
+            "topShare": 0,
+            "costShare": 0.0011
+          },
+          {
+            "id": "elfin",
+            "cost": 5.4,
+            "topShare": 0.00249,
+            "costShare": 0.00157
+          },
+          {
+            "id": "cupid",
+            "cost": 8.5,
+            "topShare": 0.00249,
+            "costShare": 0.00231
+          },
+          {
+            "id": "snoe",
+            "cost": 25.5,
+            "topShare": 0.00249,
+            "costShare": 0.00455
+          },
+          {
+            "id": "trace",
+            "cost": 104,
+            "topShare": 0.03983,
+            "costShare": 0.01366
+          },
+          {
+            "id": "fast",
+            "cost": 116.7,
+            "topShare": 0.05623,
+            "costShare": 0.02388
+          },
+          {
+            "id": "sampex",
+            "cost": 127.8,
+            "topShare": 0.06302,
+            "costShare": 0.03508
+          },
+          {
+            "id": "sme",
+            "cost": 149.7,
+            "topShare": 0.07803,
+            "costShare": 0.0482
+          },
+          {
+            "id": "rhessi",
+            "cost": 169,
+            "topShare": 0.15211,
+            "costShare": 0.063
+          },
+          {
+            "id": "iris",
+            "cost": 172.4,
+            "topShare": 0.22339,
+            "costShare": 0.07811
+          },
+          {
+            "id": "ibex",
+            "cost": 209.3,
+            "topShare": 0.24828,
+            "costShare": 0.09645
+          },
+          {
+            "id": "aim",
+            "cost": 234.4,
+            "topShare": 0.25066,
+            "costShare": 0.11698
+          },
+          {
+            "id": "ampte_cce",
+            "cost": 242,
+            "topShare": 0.25066,
+            "costShare": 0.13819
+          },
+          {
+            "id": "image",
+            "cost": 276.9,
+            "topShare": 0.27359,
+            "costShare": 0.16245
+          },
+          {
+            "id": "themis_artemis",
+            "cost": 301.3,
+            "topShare": 0.30609,
+            "costShare": 0.18885
+          },
+          {
+            "id": "icon",
+            "cost": 340.4,
+            "topShare": 0.32894,
+            "costShare": 0.21867
+          },
+          {
+            "id": "timed",
+            "cost": 490.6,
+            "topShare": 0.34014,
+            "costShare": 0.26166
+          },
+          {
+            "id": "ace",
+            "cost": 538,
+            "topShare": 0.36568,
+            "costShare": 0.30879
+          },
+          {
+            "id": "smm",
+            "cost": 581.4,
+            "topShare": 0.40317,
+            "costShare": 0.35973
+          },
+          {
+            "id": "polar",
+            "cost": 757.1,
+            "topShare": 0.42851,
+            "costShare": 0.42607
+          },
+          {
+            "id": "rbsp",
+            "cost": 1015.3,
+            "topShare": 0.53035,
+            "costShare": 0.51502
+          },
+          {
+            "id": "stereo",
+            "cost": 1066.8,
+            "topShare": 0.60251,
+            "costShare": 0.60849
+          },
+          {
+            "id": "wind",
+            "cost": 1356.5,
+            "topShare": 0.64969,
+            "costShare": 0.72734
+          },
+          {
+            "id": "sdo",
+            "cost": 1456.4,
+            "topShare": 0.86897,
+            "costShare": 0.85494
+          },
+          {
+            "id": "mms",
+            "cost": 1655.6,
+            "topShare": 1,
+            "costShare": 1
+          }
+        ],
+        "band": {
+          "p25": 234.4,
+          "p50": 1015.3,
+          "p75": 1456.4
+        },
+        "cheapestWithTop": {
+          "id": "elfin",
+          "name": "ELFIN",
+          "cost": 5.4
+        },
+        "unplaced": []
+      }
+    },
+    "lifetime": {
+      "1": null,
+      "10": {
+        "points": [
+          {
+            "id": "minxss_2",
+            "cost": 1.4,
+            "topShare": 0,
+            "costShare": 0.00012
+          },
+          {
+            "id": "ceres",
+            "cost": 1.6,
+            "topShare": 0,
+            "costShare": 0.00026
+          },
+          {
+            "id": "minxss_1",
+            "cost": 2.1,
+            "topShare": 0,
+            "costShare": 0.00045
+          },
+          {
+            "id": "e_tbex",
+            "cost": 2.4,
+            "topShare": 0,
+            "costShare": 0.00066
+          },
+          {
+            "id": "sortie",
+            "cost": 5,
+            "topShare": 0,
+            "costShare": 0.0011
+          },
+          {
+            "id": "elfin",
+            "cost": 5.4,
+            "topShare": 0.00776,
+            "costShare": 0.00157
+          },
+          {
+            "id": "cupid",
+            "cost": 8.5,
+            "topShare": 0.00776,
+            "costShare": 0.00231
+          },
+          {
+            "id": "snoe",
+            "cost": 25.5,
+            "topShare": 0.00871,
+            "costShare": 0.00455
+          },
+          {
+            "id": "trace",
+            "cost": 104,
+            "topShare": 0.05301,
+            "costShare": 0.01366
+          },
+          {
+            "id": "fast",
+            "cost": 116.7,
+            "topShare": 0.06151,
+            "costShare": 0.02388
+          },
+          {
+            "id": "sampex",
+            "cost": 127.8,
+            "topShare": 0.07303,
+            "costShare": 0.03508
+          },
+          {
+            "id": "sme",
+            "cost": 149.7,
+            "topShare": 0.08157,
+            "costShare": 0.0482
+          },
+          {
+            "id": "rhessi",
+            "cost": 169,
+            "topShare": 0.12952,
+            "costShare": 0.063
+          },
+          {
+            "id": "iris",
+            "cost": 172.4,
+            "topShare": 0.16756,
+            "costShare": 0.07811
+          },
+          {
+            "id": "ibex",
+            "cost": 209.3,
+            "topShare": 0.20022,
+            "costShare": 0.09645
+          },
+          {
+            "id": "aim",
+            "cost": 234.4,
+            "topShare": 0.20149,
+            "costShare": 0.11698
+          },
+          {
+            "id": "ampte_cce",
+            "cost": 242,
+            "topShare": 0.22821,
+            "costShare": 0.13819
+          },
+          {
+            "id": "image",
+            "cost": 276.9,
+            "topShare": 0.24032,
+            "costShare": 0.16245
+          },
+          {
+            "id": "themis_artemis",
+            "cost": 301.3,
+            "topShare": 0.28527,
+            "costShare": 0.18885
+          },
+          {
+            "id": "icon",
+            "cost": 340.4,
+            "topShare": 0.2976,
+            "costShare": 0.21867
+          },
+          {
+            "id": "timed",
+            "cost": 490.6,
+            "topShare": 0.34367,
+            "costShare": 0.26166
+          },
+          {
+            "id": "ace",
+            "cost": 538,
+            "topShare": 0.40106,
+            "costShare": 0.30879
+          },
+          {
+            "id": "smm",
+            "cost": 581.4,
+            "topShare": 0.4543,
+            "costShare": 0.35973
+          },
+          {
+            "id": "polar",
+            "cost": 757.1,
+            "topShare": 0.47198,
+            "costShare": 0.42607
+          },
+          {
+            "id": "rbsp",
+            "cost": 1015.3,
+            "topShare": 0.56184,
+            "costShare": 0.51502
+          },
+          {
+            "id": "stereo",
+            "cost": 1066.8,
+            "topShare": 0.6576,
+            "costShare": 0.60849
+          },
+          {
+            "id": "wind",
+            "cost": 1356.5,
+            "topShare": 0.75096,
+            "costShare": 0.72734
+          },
+          {
+            "id": "sdo",
+            "cost": 1456.4,
+            "topShare": 0.92,
+            "costShare": 0.85494
+          },
+          {
+            "id": "mms",
+            "cost": 1655.6,
+            "topShare": 1,
+            "costShare": 1
+          }
+        ],
+        "band": {
+          "p25": 301.3,
+          "p50": 1015.3,
+          "p75": 1356.5
+        },
+        "cheapestWithTop": {
+          "id": "elfin",
+          "name": "ELFIN",
+          "cost": 5.4
+        },
+        "unplaced": []
+      }
+    }
+  },
+  "indexCorrelation": {
+    "m": {
+      "rho": 0.73197,
+      "n": 26
+    },
+    "h": {
+      "rho": 0.75885,
+      "n": 27
+    }
+  },
+  "missions": [
+    {
+      "id": "minxss_2",
+      "name": "MinXSS-2",
+      "cost": 1.4,
+      "launchYear": 2018,
+      "failed": false,
+      "shortfall": false,
+      "type": "Orbiter",
+      "indices": {
+        "h": 1,
+        "m": 0.143,
+        "i100": 0
+      },
+      "yearsToBuild": 1.988,
+      "papers": 1,
+      "citations": 25,
+      "hasThumb": true,
+      "full": {
+        "papers": 1,
+        "outputBasis": "measured",
+        "citations": 16,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2019-01-01",
+          "end": "2021-02-01",
+          "matureDate": "2024-10-01",
+          "status": "available",
+          "months": 25,
+          "citationBuckets": 6
+        }
+      },
+      "window": {
+        "papers": 1,
+        "outputBasis": "measured",
+        "citations": 16,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2019-01-01",
+          "end": "2021-02-01",
+          "matureDate": "2024-10-01",
+          "status": "available",
+          "months": 25,
+          "citationBuckets": 6
+        }
+      },
+      "lifetime": {
+        "papers": 1,
+        "outputBasis": "measured",
+        "citations": 25,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        }
+      },
+      "strip": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "ceres",
+      "name": "CeREs",
+      "cost": 1.6,
+      "launchYear": 2018,
+      "failed": true,
+      "shortfall": true,
+      "type": "In-Situ Probe",
+      "indices": {
+        "h": 0,
+        "m": null,
+        "i100": 0
+      },
+      "yearsToBuild": 5.44,
+      "papers": 0,
+      "citations": 0,
+      "hasThumb": true,
+      "full": {
+        "papers": 0,
+        "outputBasis": "assumed_zero",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "failure",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2019-01-01",
+          "end": "2021-01-01",
+          "matureDate": "2023-10-01",
+          "status": "available",
+          "months": 24,
+          "citationBuckets": 5
+        }
+      },
+      "window": {
+        "papers": 0,
+        "outputBasis": "assumed_zero",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "failure",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2019-01-01",
+          "end": "2021-01-01",
+          "matureDate": "2023-10-01",
+          "status": "available",
+          "months": 24,
+          "citationBuckets": 5
+        }
+      },
+      "lifetime": {
+        "papers": 0,
+        "outputBasis": "assumed_zero",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "failure",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        }
+      },
+      "strip": []
+    },
+    {
+      "id": "minxss_1",
+      "name": "MinXSS-1",
+      "cost": 2.1,
+      "launchYear": 2015,
+      "failed": false,
+      "shortfall": false,
+      "type": "Orbiter",
+      "indices": {
+        "h": 8,
+        "m": 0.8,
+        "i100": 0
+      },
+      "yearsToBuild": 1.385,
+      "papers": 11,
+      "citations": 222,
+      "hasThumb": true,
+      "full": {
+        "papers": 4,
+        "outputBasis": "measured",
+        "citations": 49,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2016-06-01",
+          "end": "2019-06-01",
+          "matureDate": "2022-10-01",
+          "status": "available",
+          "months": 36,
+          "citationBuckets": 7
+        }
+      },
+      "window": {
+        "papers": 4,
+        "outputBasis": "measured",
+        "citations": 49,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2016-06-01",
+          "end": "2019-06-01",
+          "matureDate": "2022-10-01",
+          "status": "available",
+          "months": 36,
+          "citationBuckets": 7
+        }
+      },
+      "lifetime": {
+        "papers": 11,
+        "outputBasis": "measured",
+        "citations": 222,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        }
+      },
+      "strip": [
+        0,
+        3,
+        1,
+        0,
+        1,
+        0,
+        2,
+        3,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "e_tbex",
+      "name": "E-TBEx",
+      "cost": 2.4,
+      "launchYear": 2019,
+      "failed": false,
+      "shortfall": false,
+      "type": "In-Situ Probe",
+      "indices": {
+        "h": 0,
+        "m": null,
+        "i100": 0
+      },
+      "yearsToBuild": 4.901,
+      "papers": 0,
+      "citations": 0,
+      "hasThumb": true,
+      "full": {
+        "papers": 0,
+        "outputBasis": "measured",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "no_papers",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2019-07-01",
+          "end": "2023-04-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 45,
+          "citationBuckets": 8
+        }
+      },
+      "window": {
+        "papers": 0,
+        "outputBasis": "measured",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "no_papers",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2019-07-01",
+          "end": "2022-07-01",
+          "matureDate": "2025-10-01",
+          "status": "available",
+          "months": 36,
+          "citationBuckets": 7
+        }
+      },
+      "lifetime": {
+        "papers": 0,
+        "outputBasis": "measured",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "no_papers",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        }
+      },
+      "strip": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "sortie",
+      "name": "SORTIE",
+      "cost": 5,
+      "launchYear": 2019,
+      "failed": false,
+      "shortfall": false,
+      "type": "In-Situ Probe",
+      "indices": {
+        "h": 2,
+        "m": 0.333,
+        "i100": 0
+      },
+      "yearsToBuild": 2.048,
+      "papers": 2,
+      "citations": 26,
+      "hasThumb": true,
+      "full": {
+        "papers": 2,
+        "outputBasis": "measured",
+        "citations": 21,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2020-01-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 48,
+          "citationBuckets": 7
+        }
+      },
+      "window": {
+        "papers": 1,
+        "outputBasis": "measured",
+        "citations": 10,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2020-01-01",
+          "end": "2022-07-01",
+          "matureDate": "2025-10-01",
+          "status": "available",
+          "months": 30,
+          "citationBuckets": 6
+        }
+      },
+      "lifetime": {
+        "papers": 2,
+        "outputBasis": "measured",
+        "citations": 26,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        }
+      },
+      "strip": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "elfin",
+      "name": "ELFIN",
+      "cost": 5.4,
+      "launchYear": 2018,
+      "failed": false,
+      "shortfall": false,
+      "type": "In-Situ Probe",
+      "indices": {
+        "h": 19,
+        "m": 2.714,
+        "i100": 1
+      },
+      "yearsToBuild": 4.958,
+      "papers": 70,
+      "citations": 1093,
+      "hasThumb": true,
+      "full": {
+        "papers": 23,
+        "outputBasis": "measured",
+        "citations": 655,
+        "top10": 12.24,
+        "top10ShareOfDivision": 0.00849,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.793,
+          "yearsFromFormulation": 6.752,
+          "bibcode": "2020SSRv..216..103A",
+          "date": "2020-07-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2018-10-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 63,
+          "citationBuckets": 9
+        }
+      },
+      "window": {
+        "papers": 3,
+        "outputBasis": "measured",
+        "citations": 109,
+        "top10": 1.1,
+        "top10ShareOfDivision": 0.00249,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.793,
+          "yearsFromFormulation": 6.752,
+          "bibcode": "2020SSRv..216..103A",
+          "date": "2020-07-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2018-10-01",
+          "end": "2022-02-01",
+          "matureDate": "2025-10-01",
+          "status": "available",
+          "months": 40,
+          "citationBuckets": 8
+        }
+      },
+      "lifetime": {
+        "papers": 70,
+        "outputBasis": "measured",
+        "citations": 1093,
+        "top10": 12.167,
+        "top10ShareOfDivision": 0.00776,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.793,
+          "yearsFromFormulation": 6.752,
+          "bibcode": "2020SSRv..216..103A",
+          "date": "2020-07-00"
+        }
+      },
+      "strip": [
+        0,
+        0,
+        1,
+        2,
+        8,
+        12,
+        22,
+        17,
+        8
+      ]
+    },
+    {
+      "id": "cupid",
+      "name": "CuPID",
+      "cost": 8.5,
+      "launchYear": 2021,
+      "failed": true,
+      "shortfall": true,
+      "type": "Remote Sensing Observatory",
+      "indices": {
+        "h": 1,
+        "m": 0.2,
+        "i100": 0
+      },
+      "yearsToBuild": 4.167,
+      "papers": 1,
+      "citations": 4,
+      "hasThumb": true,
+      "full": {
+        "papers": 1,
+        "outputBasis": "measured",
+        "citations": 4,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "failure",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2021-10-01",
+          "end": "2023-10-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 24,
+          "citationBuckets": 6
+        }
+      },
+      "window": {
+        "papers": 1,
+        "outputBasis": "measured",
+        "citations": 4,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "failure",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2021-10-01",
+          "end": "2023-10-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 24,
+          "citationBuckets": 6
+        }
+      },
+      "lifetime": {
+        "papers": 1,
+        "outputBasis": "measured",
+        "citations": 4,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "failure",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        }
+      },
+      "strip": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "snoe",
+      "name": "SNOE",
+      "cost": 25.5,
+      "launchYear": 1998,
+      "failed": false,
+      "shortfall": false,
+      "type": "Remote Sensing Observatory",
+      "indices": {
+        "h": 28,
+        "m": 1,
+        "i100": 3
+      },
+      "yearsToBuild": 3.009,
+      "papers": 54,
+      "citations": 1973,
+      "hasThumb": true,
+      "full": {
+        "papers": 22,
+        "outputBasis": "measured",
+        "citations": 185,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1998-04-01",
+          "end": "2005-10-01",
+          "matureDate": "2008-10-01",
+          "status": "available",
+          "months": 90,
+          "citationBuckets": 11
+        }
+      },
+      "window": {
+        "papers": 4,
+        "outputBasis": "measured",
+        "citations": 39,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1998-04-01",
+          "end": "2001-04-01",
+          "matureDate": "2004-10-01",
+          "status": "available",
+          "months": 36,
+          "citationBuckets": 7
+        }
+      },
+      "lifetime": {
+        "papers": 54,
+        "outputBasis": "measured",
+        "citations": 1973,
+        "top10": 1.5,
+        "top10ShareOfDivision": 0.00096,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 3.253,
+          "yearsFromFormulation": 6.27,
+          "bibcode": "2001GeoRL..28.2149S",
+          "date": "2001-06-00"
+        }
+      },
+      "strip": [
+        0,
+        3,
+        1,
+        4,
+        2,
+        5,
+        6,
+        1,
+        6,
+        7,
+        4,
+        3,
+        3,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "trace",
+      "name": "TRACE",
+      "cost": 104,
+      "launchYear": 1998,
+      "failed": false,
+      "shortfall": false,
+      "type": "Remote Sensing Observatory",
+      "indices": {
+        "h": 103,
+        "m": 3.552,
+        "i100": 108
+      },
+      "yearsToBuild": 3.548,
+      "papers": 714,
+      "citations": 39076,
+      "hasThumb": true,
+      "full": {
+        "papers": 654,
+        "outputBasis": "measured",
+        "citations": 8283,
+        "top10": 96.092,
+        "top10ShareOfDivision": 0.06661,
+        "top1": 5,
+        "top1ShareOfDivision": 0.03466,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.252,
+          "yearsFromFormulation": 3.88,
+          "bibcode": "1998ApJ...502L.181A",
+          "date": "1998-08-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1998-06-01",
+          "end": "2012-07-01",
+          "matureDate": "2015-10-01",
+          "status": "available",
+          "months": 169,
+          "citationBuckets": 18
+        }
+      },
+      "window": {
+        "papers": 72,
+        "outputBasis": "measured",
+        "citations": 1363,
+        "top10": 16.5,
+        "top10ShareOfDivision": 0.03734,
+        "top1": 2,
+        "top1ShareOfDivision": 0.04526,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.252,
+          "yearsFromFormulation": 3.88,
+          "bibcode": "1998ApJ...502L.181A",
+          "date": "1998-08-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1998-06-01",
+          "end": "2001-05-01",
+          "matureDate": "2004-10-01",
+          "status": "available",
+          "months": 35,
+          "citationBuckets": 7
+        }
+      },
+      "lifetime": {
+        "papers": 714,
+        "outputBasis": "measured",
+        "citations": 39076,
+        "top10": 69.476,
+        "top10ShareOfDivision": 0.04429,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.252,
+          "yearsFromFormulation": 3.88,
+          "bibcode": "1998ApJ...502L.181A",
+          "date": "1998-08-00"
+        }
+      },
+      "strip": [
+        2,
+        29,
+        29,
+        34,
+        49,
+        61,
+        46,
+        56,
+        64,
+        60,
+        69,
+        72,
+        40,
+        29,
+        23,
+        21,
+        3,
+        4,
+        4,
+        3
+      ]
+    },
+    {
+      "id": "fast",
+      "name": "FAST",
+      "cost": 116.7,
+      "launchYear": 1996,
+      "failed": false,
+      "shortfall": false,
+      "type": "In-Situ Probe",
+      "indices": {
+        "h": 53,
+        "m": 1.767,
+        "i100": 23
+      },
+      "yearsToBuild": 7.381,
+      "papers": 282,
+      "citations": 9574,
+      "hasThumb": true,
+      "full": {
+        "papers": 212,
+        "outputBasis": "measured",
+        "citations": 1706,
+        "top10": 14.325,
+        "top10ShareOfDivision": 0.00993,
+        "top1": 2,
+        "top1ShareOfDivision": 0.01386,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.777,
+          "yearsFromFormulation": 9.158,
+          "bibcode": "1998GeoRL..25.2041E",
+          "date": "1998-06-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1996-09-01",
+          "end": "2011-06-01",
+          "matureDate": "2014-10-01",
+          "status": "available",
+          "months": 177,
+          "citationBuckets": 19
+        }
+      },
+      "window": {
+        "papers": 36,
+        "outputBasis": "measured",
+        "citations": 608,
+        "top10": 7.25,
+        "top10ShareOfDivision": 0.01641,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.777,
+          "yearsFromFormulation": 9.158,
+          "bibcode": "1998GeoRL..25.2041E",
+          "date": "1998-06-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1996-09-01",
+          "end": "1999-09-01",
+          "matureDate": "2002-10-01",
+          "status": "available",
+          "months": 36,
+          "citationBuckets": 7
+        }
+      },
+      "lifetime": {
+        "papers": 282,
+        "outputBasis": "measured",
+        "citations": 9574,
+        "top10": 13.333,
+        "top10ShareOfDivision": 0.0085,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.777,
+          "yearsFromFormulation": 9.158,
+          "bibcode": "1998GeoRL..25.2041E",
+          "date": "1998-06-00"
+        }
+      },
+      "strip": [
+        2,
+        16,
+        21,
+        18,
+        22,
+        29,
+        29,
+        13,
+        12,
+        12,
+        10,
+        13,
+        7,
+        7,
+        5,
+        9,
+        7,
+        9,
+        5,
+        4
+      ]
+    },
+    {
+      "id": "sampex",
+      "name": "SAMPEX",
+      "cost": 127.8,
+      "launchYear": 1992,
+      "failed": false,
+      "shortfall": false,
+      "type": "In-Situ Probe",
+      "indices": {
+        "h": 55,
+        "m": 1.618,
+        "i100": 24
+      },
+      "yearsToBuild": 3.247,
+      "papers": 212,
+      "citations": 9387,
+      "hasThumb": true,
+      "full": {
+        "papers": 129,
+        "outputBasis": "measured",
+        "citations": 1174,
+        "top10": 12.95,
+        "top10ShareOfDivision": 0.00898,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.58,
+          "yearsFromFormulation": 4.074,
+          "bibcode": "1993ITGRS..31..531B",
+          "date": "1993-05-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1992-11-01",
+          "end": "2006-07-01",
+          "matureDate": "2009-10-01",
+          "status": "available",
+          "months": 164,
+          "citationBuckets": 18
+        }
+      },
+      "window": {
+        "papers": 23,
+        "outputBasis": "measured",
+        "citations": 296,
+        "top10": 3,
+        "top10ShareOfDivision": 0.00679,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1992-11-01",
+          "end": "1995-10-01",
+          "matureDate": "1998-10-01",
+          "status": "available",
+          "months": 35,
+          "citationBuckets": 7
+        }
+      },
+      "lifetime": {
+        "papers": 212,
+        "outputBasis": "measured",
+        "citations": 9387,
+        "top10": 18.067,
+        "top10ShareOfDivision": 0.01152,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.58,
+          "yearsFromFormulation": 4.074,
+          "bibcode": "1993ITGRS..31..531B",
+          "date": "1993-05-00"
+        }
+      },
+      "strip": [
+        0,
+        10,
+        5,
+        11,
+        18,
+        8,
+        15,
+        12,
+        5,
+        12,
+        8,
+        7,
+        3,
+        12,
+        10,
+        9,
+        7,
+        1,
+        6,
+        1
+      ]
+    },
+    {
+      "id": "sme",
+      "name": "SME",
+      "cost": 149.7,
+      "launchYear": 1981,
+      "failed": false,
+      "shortfall": false,
+      "type": "Orbiter",
+      "indices": {
+        "h": 46,
+        "m": 1.022,
+        "i100": 8
+      },
+      "yearsToBuild": 5.265,
+      "papers": 179,
+      "citations": 6152,
+      "hasThumb": true,
+      "full": {
+        "papers": 105,
+        "outputBasis": "measured",
+        "citations": 1016,
+        "top10": 12.667,
+        "top10ShareOfDivision": 0.00878,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.238,
+          "yearsFromFormulation": 6.502,
+          "bibcode": "1983GeoRL..10...24L",
+          "date": "1983-01-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1981-11-01",
+          "end": "1991-05-01",
+          "matureDate": "1994-10-01",
+          "status": "available",
+          "months": 114,
+          "citationBuckets": 14
+        }
+      },
+      "window": {
+        "papers": 27,
+        "outputBasis": "measured",
+        "citations": 347,
+        "top10": 6.633,
+        "top10ShareOfDivision": 0.01501,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.238,
+          "yearsFromFormulation": 6.502,
+          "bibcode": "1983GeoRL..10...24L",
+          "date": "1983-01-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1981-11-01",
+          "end": "1984-11-01",
+          "matureDate": "1987-10-01",
+          "status": "available",
+          "months": 36,
+          "citationBuckets": 7
+        }
+      },
+      "lifetime": {
+        "papers": 179,
+        "outputBasis": "measured",
+        "citations": 6152,
+        "top10": 13.4,
+        "top10ShareOfDivision": 0.00854,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.567,
+          "yearsFromFormulation": 5.832,
+          "bibcode": "1982GeoRL...9..587R",
+          "date": "1982-05-00"
+        }
+      },
+      "strip": [
+        0,
+        3,
+        16,
+        9,
+        5,
+        12,
+        13,
+        13,
+        8,
+        22,
+        6,
+        2,
+        8,
+        11,
+        5,
+        6,
+        7,
+        8,
+        4,
+        3
+      ]
+    },
+    {
+      "id": "rhessi",
+      "name": "RHESSI",
+      "cost": 169,
+      "launchYear": 2002,
+      "failed": false,
+      "shortfall": false,
+      "type": "Remote Sensing Observatory",
+      "indices": {
+        "h": 92,
+        "m": 3.68,
+        "i100": 86
+      },
+      "yearsToBuild": 4.307,
+      "papers": 1037,
+      "citations": 39721,
+      "hasThumb": true,
+      "full": {
+        "papers": 909,
+        "outputBasis": "measured",
+        "citations": 10771,
+        "top10": 76.685,
+        "top10ShareOfDivision": 0.05316,
+        "top1": 7.667,
+        "top1ShareOfDivision": 0.05315,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.619,
+          "yearsFromFormulation": 5.043,
+          "bibcode": "2002SoPh..210....3L",
+          "date": "2002-11-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2002-04-01",
+          "end": "2020-09-01",
+          "matureDate": "2023-10-01",
+          "status": "available",
+          "months": 221,
+          "citationBuckets": 22
+        }
+      },
+      "window": {
+        "papers": 252,
+        "outputBasis": "measured",
+        "citations": 3217,
+        "top10": 32.733,
+        "top10ShareOfDivision": 0.07407,
+        "top1": 1,
+        "top1ShareOfDivision": 0.02263,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.619,
+          "yearsFromFormulation": 5.043,
+          "bibcode": "2002SoPh..210....3L",
+          "date": "2002-11-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2002-04-01",
+          "end": "2007-04-01",
+          "matureDate": "2010-10-01",
+          "status": "available",
+          "months": 60,
+          "citationBuckets": 9
+        }
+      },
+      "lifetime": {
+        "papers": 1037,
+        "outputBasis": "measured",
+        "citations": 39721,
+        "top10": 75.21,
+        "top10ShareOfDivision": 0.04795,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.619,
+          "yearsFromFormulation": 5.043,
+          "bibcode": "2002SoPh..210....3L",
+          "date": "2002-11-00"
+        }
+      },
+      "strip": [
+        28,
+        37,
+        37,
+        55,
+        77,
+        53,
+        60,
+        82,
+        39,
+        62,
+        59,
+        51,
+        46,
+        54,
+        45,
+        37,
+        39,
+        30,
+        31,
+        30
+      ]
+    },
+    {
+      "id": "iris",
+      "name": "IRIS",
+      "cost": 172.4,
+      "launchYear": 2013,
+      "failed": false,
+      "shortfall": false,
+      "type": "Remote Sensing Observatory",
+      "indices": {
+        "h": 65,
+        "m": 4.643,
+        "i100": 27
+      },
+      "yearsToBuild": 4.025,
+      "papers": 674,
+      "citations": 18612,
+      "hasThumb": true,
+      "full": {
+        "papers": 541,
+        "outputBasis": "measured",
+        "citations": 8399,
+        "top10": 64.614,
+        "top10ShareOfDivision": 0.04479,
+        "top1": 3,
+        "top1ShareOfDivision": 0.0208,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.041,
+          "yearsFromFormulation": 4.118,
+          "bibcode": "2013ApJ...772...90L",
+          "date": "2013-08-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2013-08-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 125,
+          "citationBuckets": 14
+        }
+      },
+      "window": {
+        "papers": 271,
+        "outputBasis": "measured",
+        "citations": 5072,
+        "top10": 31.5,
+        "top10ShareOfDivision": 0.07128,
+        "top1": 1,
+        "top1ShareOfDivision": 0.02263,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.041,
+          "yearsFromFormulation": 4.118,
+          "bibcode": "2013ApJ...772...90L",
+          "date": "2013-08-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2013-08-01",
+          "end": "2019-01-01",
+          "matureDate": "2021-10-01",
+          "status": "available",
+          "months": 65,
+          "citationBuckets": 9
+        }
+      },
+      "lifetime": {
+        "papers": 674,
+        "outputBasis": "measured",
+        "citations": 18612,
+        "top10": 59.667,
+        "top10ShareOfDivision": 0.03804,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.041,
+          "yearsFromFormulation": 4.118,
+          "bibcode": "2013ApJ...772...90L",
+          "date": "2013-08-00"
+        }
+      },
+      "strip": [
+        6,
+        22,
+        61,
+        61,
+        58,
+        63,
+        53,
+        58,
+        44,
+        58,
+        57,
+        54,
+        36,
+        43
+      ]
+    },
+    {
+      "id": "ibex",
+      "name": "IBEX",
+      "cost": 209.3,
+      "launchYear": 2008,
+      "failed": false,
+      "shortfall": false,
+      "type": "In-Situ Probe",
+      "indices": {
+        "h": 62,
+        "m": 3.444,
+        "i100": 33
+      },
+      "yearsToBuild": 3.726,
+      "papers": 370,
+      "citations": 14358,
+      "hasThumb": true,
+      "full": {
+        "papers": 330,
+        "outputBasis": "measured",
+        "citations": 5742,
+        "top10": 58.765,
+        "top10ShareOfDivision": 0.04074,
+        "top1": 8.813,
+        "top1ShareOfDivision": 0.06109,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.496,
+          "yearsFromFormulation": 4.509,
+          "bibcode": "2009SSRv..146...11M",
+          "date": "2009-08-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2009-03-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 178,
+          "citationBuckets": 18
+        }
+      },
+      "window": {
+        "papers": 58,
+        "outputBasis": "measured",
+        "citations": 1396,
+        "top10": 11,
+        "top10ShareOfDivision": 0.02489,
+        "top1": 2.095,
+        "top1ShareOfDivision": 0.04741,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.496,
+          "yearsFromFormulation": 4.509,
+          "bibcode": "2009SSRv..146...11M",
+          "date": "2009-08-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2009-03-01",
+          "end": "2012-04-01",
+          "matureDate": "2015-10-01",
+          "status": "available",
+          "months": 37,
+          "citationBuckets": 7
+        }
+      },
+      "lifetime": {
+        "papers": 370,
+        "outputBasis": "measured",
+        "citations": 14358,
+        "top10": 51.225,
+        "top10ShareOfDivision": 0.03266,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.329,
+          "yearsFromFormulation": 4.342,
+          "bibcode": "2009GeoRL..3612104M",
+          "date": "2009-06-00"
+        }
+      },
+      "strip": [
+        18,
+        15,
+        14,
+        25,
+        32,
+        28,
+        41,
+        19,
+        12,
+        16,
+        26,
+        17,
+        18,
+        25,
+        24,
+        9,
+        23,
+        8
+      ]
+    },
+    {
+      "id": "aim",
+      "name": "AIM",
+      "cost": 234.4,
+      "launchYear": 2007,
+      "failed": false,
+      "shortfall": false,
+      "type": "Remote Sensing Observatory",
+      "indices": {
+        "h": 32,
+        "m": 1.778,
+        "i100": 3
+      },
+      "yearsToBuild": 4.789,
+      "papers": 157,
+      "citations": 3304,
+      "hasThumb": true,
+      "full": {
+        "papers": 143,
+        "outputBasis": "measured",
+        "citations": 1206,
+        "top10": 3,
+        "top10ShareOfDivision": 0.00208,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.777,
+          "yearsFromFormulation": 6.639,
+          "bibcode": "2009JASTP..71..289R",
+          "date": "2009-03-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2007-06-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 199,
+          "citationBuckets": 20
+        }
+      },
+      "window": {
+        "papers": 31,
+        "outputBasis": "measured",
+        "citations": 419,
+        "top10": 1.05,
+        "top10ShareOfDivision": 0.00238,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.777,
+          "yearsFromFormulation": 6.639,
+          "bibcode": "2009JASTP..71..289R",
+          "date": "2009-03-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2007-06-01",
+          "end": "2011-08-01",
+          "matureDate": "2014-10-01",
+          "status": "available",
+          "months": 50,
+          "citationBuckets": 8
+        }
+      },
+      "lifetime": {
+        "papers": 157,
+        "outputBasis": "measured",
+        "citations": 3304,
+        "top10": 2,
+        "top10ShareOfDivision": 0.00128,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.777,
+          "yearsFromFormulation": 6.639,
+          "bibcode": "2009JASTP..71..289R",
+          "date": "2009-03-00"
+        }
+      },
+      "strip": [
+        0,
+        0,
+        17,
+        9,
+        10,
+        6,
+        11,
+        7,
+        16,
+        7,
+        12,
+        13,
+        8,
+        3,
+        9,
+        6,
+        9,
+        8,
+        3,
+        3
+      ]
+    },
+    {
+      "id": "ampte_cce",
+      "name": "AMPTE-CCE",
+      "cost": 242,
+      "launchYear": 1984,
+      "failed": false,
+      "shortfall": false,
+      "type": "In-Situ Probe",
+      "indices": {
+        "h": 66,
+        "m": 1.571,
+        "i100": 48
+      },
+      "yearsToBuild": 3.874,
+      "papers": 286,
+      "citations": 14432,
+      "hasThumb": true,
+      "full": {
+        "papers": 114,
+        "outputBasis": "measured",
+        "citations": 1064,
+        "top10": 16.5,
+        "top10ShareOfDivision": 0.01144,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.706,
+          "yearsFromFormulation": 4.58,
+          "bibcode": "1985GeoRL..12..325G",
+          "date": "1985-05-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1984-09-01",
+          "end": "1991-08-01",
+          "matureDate": "1994-10-01",
+          "status": "available",
+          "months": 83,
+          "citationBuckets": 11
+        }
+      },
+      "window": {
+        "papers": 33,
+        "outputBasis": "measured",
+        "citations": 301,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1984-09-01",
+          "end": "1987-08-01",
+          "matureDate": "1990-10-01",
+          "status": "available",
+          "months": 35,
+          "citationBuckets": 7
+        }
+      },
+      "lifetime": {
+        "papers": 286,
+        "outputBasis": "measured",
+        "citations": 14432,
+        "top10": 41.9,
+        "top10ShareOfDivision": 0.02671,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.706,
+          "yearsFromFormulation": 4.58,
+          "bibcode": "1985GeoRL..12..325G",
+          "date": "1985-05-00"
+        }
+      },
+      "strip": [
+        0,
+        17,
+        7,
+        16,
+        20,
+        14,
+        24,
+        21,
+        18,
+        17,
+        13,
+        15,
+        19,
+        11,
+        12,
+        7,
+        8,
+        7,
+        10,
+        4
+      ]
+    },
+    {
+      "id": "image",
+      "name": "IMAGE",
+      "cost": 276.9,
+      "launchYear": 2000,
+      "failed": false,
+      "shortfall": false,
+      "type": "Remote Sensing Observatory",
+      "indices": {
+        "h": 59,
+        "m": 2.185,
+        "i100": 25
+      },
+      "yearsToBuild": 4.066,
+      "papers": 495,
+      "citations": 13853,
+      "hasThumb": true,
+      "full": {
+        "papers": 255,
+        "outputBasis": "measured",
+        "citations": 2050,
+        "top10": 20.019,
+        "top10ShareOfDivision": 0.01388,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.268,
+          "yearsFromFormulation": 4.334,
+          "bibcode": "2000JGR...10515741M",
+          "date": "2000-07-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2000-04-01",
+          "end": "2008-01-01",
+          "matureDate": "2010-10-01",
+          "status": "available",
+          "months": 93,
+          "citationBuckets": 11
+        }
+      },
+      "window": {
+        "papers": 107,
+        "outputBasis": "measured",
+        "citations": 1121,
+        "top10": 10.133,
+        "top10ShareOfDivision": 0.02293,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.772,
+          "yearsFromFormulation": 4.838,
+          "bibcode": "2001Sci...291..619B",
+          "date": "2001-01-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2000-04-01",
+          "end": "2004-04-01",
+          "matureDate": "2007-10-01",
+          "status": "available",
+          "months": 48,
+          "citationBuckets": 8
+        }
+      },
+      "lifetime": {
+        "papers": 495,
+        "outputBasis": "measured",
+        "citations": 13853,
+        "top10": 19,
+        "top10ShareOfDivision": 0.01211,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.268,
+          "yearsFromFormulation": 4.334,
+          "bibcode": "2000JGR...10515741M",
+          "date": "2000-07-00"
+        }
+      },
+      "strip": [
+        4,
+        22,
+        24,
+        44,
+        36,
+        59,
+        27,
+        39,
+        35,
+        32,
+        31,
+        25,
+        12,
+        15,
+        13,
+        11,
+        10,
+        9,
+        9,
+        0
+      ]
+    },
+    {
+      "id": "themis_artemis",
+      "name": "THEMIS-ARTEMIS",
+      "cost": 301.3,
+      "launchYear": 2007,
+      "failed": false,
+      "shortfall": false,
+      "type": "Constellation",
+      "indices": {
+        "h": 85,
+        "m": 4.25,
+        "i100": 63
+      },
+      "yearsToBuild": 3.915,
+      "papers": 986,
+      "citations": 34995,
+      "hasThumb": true,
+      "full": {
+        "papers": 875,
+        "outputBasis": "measured",
+        "citations": 9935,
+        "top10": 62.534,
+        "top10ShareOfDivision": 0.04335,
+        "top1": 13.313,
+        "top1ShareOfDivision": 0.09229,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.202,
+          "yearsFromFormulation": 5.117,
+          "bibcode": "2008GeoRL..3517S19L",
+          "date": "2008-05-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2007-03-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 202,
+          "citationBuckets": 20
+        }
+      },
+      "window": {
+        "papers": 174,
+        "outputBasis": "measured",
+        "citations": 2987,
+        "top10": 14.36,
+        "top10ShareOfDivision": 0.0325,
+        "top1": 4,
+        "top1ShareOfDivision": 0.09052,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.454,
+          "yearsFromFormulation": 5.369,
+          "bibcode": "2008Sci...321..931A",
+          "date": "2008-08-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2007-03-01",
+          "end": "2011-10-01",
+          "matureDate": "2014-10-01",
+          "status": "available",
+          "months": 55,
+          "citationBuckets": 8
+        }
+      },
+      "lifetime": {
+        "papers": 986,
+        "outputBasis": "measured",
+        "citations": 34995,
+        "top10": 70.501,
+        "top10ShareOfDivision": 0.04495,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.12,
+          "yearsFromFormulation": 5.035,
+          "bibcode": "2008GeoRL..3517S03E",
+          "date": "2008-04-00"
+        }
+      },
+      "strip": [
+        1,
+        33,
+        50,
+        42,
+        66,
+        66,
+        63,
+        82,
+        89,
+        59,
+        73,
+        53,
+        40,
+        37,
+        43,
+        44,
+        34,
+        43,
+        43,
+        25
+      ]
+    },
+    {
+      "id": "icon",
+      "name": "ICON",
+      "cost": 340.4,
+      "launchYear": 2019,
+      "failed": false,
+      "shortfall": false,
+      "type": "Remote Sensing Observatory",
+      "indices": {
+        "h": 24,
+        "m": 3.429,
+        "i100": 0
+      },
+      "yearsToBuild": 6.497,
+      "papers": 210,
+      "citations": 2220,
+      "hasThumb": true,
+      "full": {
+        "papers": 107,
+        "outputBasis": "measured",
+        "citations": 1581,
+        "top10": 17,
+        "top10ShareOfDivision": 0.01179,
+        "top1": 1,
+        "top1ShareOfDivision": 0.00693,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.133,
+          "yearsFromFormulation": 7.808,
+          "bibcode": "2021JGRA..12628726M",
+          "date": "2021-02-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2020-01-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 48,
+          "citationBuckets": 7
+        }
+      },
+      "window": {
+        "papers": 107,
+        "outputBasis": "measured",
+        "citations": 1581,
+        "top10": 10.1,
+        "top10ShareOfDivision": 0.02286,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.133,
+          "yearsFromFormulation": 7.808,
+          "bibcode": "2021JGRA..12628726M",
+          "date": "2021-02-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2020-01-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 48,
+          "citationBuckets": 7
+        }
+      },
+      "lifetime": {
+        "papers": 210,
+        "outputBasis": "measured",
+        "citations": 2220,
+        "top10": 19.333,
+        "top10ShareOfDivision": 0.01233,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 2.376,
+          "yearsFromFormulation": 9.051,
+          "bibcode": "2022GeoRL..4998577H",
+          "date": "2022-05-00"
+        }
+      },
+      "strip": [
+        0,
+        5,
+        24,
+        35,
+        43,
+        39,
+        42,
+        22
+      ]
+    },
+    {
+      "id": "timed",
+      "name": "TIMED",
+      "cost": 490.6,
+      "launchYear": 2001,
+      "failed": false,
+      "shortfall": false,
+      "type": "Remote Sensing Observatory",
+      "indices": {
+        "h": 79,
+        "m": 3.292,
+        "i100": 57
+      },
+      "yearsToBuild": 9.435,
+      "papers": 1251,
+      "citations": 31746,
+      "hasThumb": true,
+      "full": {
+        "papers": 1029,
+        "outputBasis": "measured",
+        "citations": 9075,
+        "top10": 47.939,
+        "top10ShareOfDivision": 0.03323,
+        "top1": 3,
+        "top1ShareOfDivision": 0.0208,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.856,
+          "yearsFromFormulation": 11.417,
+          "bibcode": "2003JGRA..108.1451C",
+          "date": "2003-12-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2002-02-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 263,
+          "citationBuckets": 25
+        }
+      },
+      "window": {
+        "papers": 62,
+        "outputBasis": "measured",
+        "citations": 627,
+        "top10": 4.95,
+        "top10ShareOfDivision": 0.0112,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.856,
+          "yearsFromFormulation": 11.417,
+          "bibcode": "2003JGRA..108.1451C",
+          "date": "2003-12-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2002-02-01",
+          "end": "2006-02-01",
+          "matureDate": "2009-10-01",
+          "status": "available",
+          "months": 48,
+          "citationBuckets": 8
+        }
+      },
+      "lifetime": {
+        "papers": 1251,
+        "outputBasis": "measured",
+        "citations": 31746,
+        "top10": 72.267,
+        "top10ShareOfDivision": 0.04607,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.437,
+          "yearsFromFormulation": 10.998,
+          "bibcode": "2003GeoRL..30.1766K",
+          "date": "2003-07-00"
+        }
+      },
+      "strip": [
+        0,
+        11,
+        13,
+        28,
+        49,
+        34,
+        52,
+        60,
+        61,
+        47,
+        61,
+        59,
+        47,
+        52,
+        44,
+        54,
+        69,
+        52,
+        50,
+        65
+      ]
+    },
+    {
+      "id": "ace",
+      "name": "ACE",
+      "cost": 538,
+      "launchYear": 1997,
+      "failed": false,
+      "shortfall": false,
+      "type": "In-Situ Probe",
+      "indices": {
+        "h": 105,
+        "m": 3.621,
+        "i100": 118
+      },
+      "yearsToBuild": 3.899,
+      "papers": 1507,
+      "citations": 53419,
+      "hasThumb": true,
+      "full": {
+        "papers": 1362,
+        "outputBasis": "measured",
+        "citations": 12326,
+        "top10": 69.778,
+        "top10ShareOfDivision": 0.04837,
+        "top1": 2.417,
+        "top1ShareOfDivision": 0.01675,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.468,
+          "yearsFromFormulation": 4.665,
+          "bibcode": "1998ApJ...500L.153L",
+          "date": "1998-06-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1998-01-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 312,
+          "citationBuckets": 29
+        }
+      },
+      "window": {
+        "papers": 241,
+        "outputBasis": "measured",
+        "citations": 2024,
+        "top10": 11.283,
+        "top10ShareOfDivision": 0.02553,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.054,
+          "yearsFromFormulation": 5.251,
+          "bibcode": "1999GeoRL..26..157G",
+          "date": "1999-01-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1998-01-01",
+          "end": "2004-10-01",
+          "matureDate": "2007-10-01",
+          "status": "available",
+          "months": 81,
+          "citationBuckets": 10
+        }
+      },
+      "lifetime": {
+        "papers": 1507,
+        "outputBasis": "measured",
+        "citations": 53419,
+        "top10": 90.022,
+        "top10ShareOfDivision": 0.05739,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.55,
+          "yearsFromFormulation": 4.747,
+          "bibcode": "1998SSRv...86..563M",
+          "date": "1998-07-00"
+        }
+      },
+      "strip": [
+        0,
+        22,
+        15,
+        19,
+        52,
+        40,
+        56,
+        49,
+        88,
+        70,
+        66,
+        77,
+        69,
+        54,
+        70,
+        72,
+        55,
+        56,
+        50,
+        51
+      ]
+    },
+    {
+      "id": "smm",
+      "name": "SMM",
+      "cost": 581.4,
+      "launchYear": 1980,
+      "failed": false,
+      "shortfall": false,
+      "type": "Solar Observatory",
+      "indices": {
+        "h": 91,
+        "m": 1.936,
+        "i100": 79
+      },
+      "yearsToBuild": 6.872,
+      "papers": 1016,
+      "citations": 39662,
+      "hasThumb": true,
+      "full": {
+        "papers": 678,
+        "outputBasis": "measured",
+        "citations": 5446,
+        "top10": 60.533,
+        "top10ShareOfDivision": 0.04196,
+        "top1": 3,
+        "top1ShareOfDivision": 0.0208,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.966,
+          "yearsFromFormulation": 7.838,
+          "bibcode": "1981Sci...211..700W",
+          "date": "1981-02-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1980-03-01",
+          "end": "1992-01-01",
+          "matureDate": "1994-10-01",
+          "status": "available",
+          "months": 142,
+          "citationBuckets": 15
+        }
+      },
+      "window": {
+        "papers": 205,
+        "outputBasis": "measured",
+        "citations": 1932,
+        "top10": 16.567,
+        "top10ShareOfDivision": 0.03749,
+        "top1": 0.095,
+        "top1ShareOfDivision": 0.00215,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.966,
+          "yearsFromFormulation": 7.838,
+          "bibcode": "1981Sci...211..700W",
+          "date": "1981-02-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1980-03-01",
+          "end": "1984-03-01",
+          "matureDate": "1987-10-01",
+          "status": "available",
+          "months": 48,
+          "citationBuckets": 8
+        }
+      },
+      "lifetime": {
+        "papers": 1016,
+        "outputBasis": "measured",
+        "citations": 39662,
+        "top10": 83.5,
+        "top10ShareOfDivision": 0.05324,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.463,
+          "yearsFromFormulation": 7.335,
+          "bibcode": "1980SoPh...67..285S",
+          "date": "1980-08-00"
+        }
+      },
+      "strip": [
+        7,
+        40,
+        53,
+        63,
+        88,
+        60,
+        82,
+        71,
+        73,
+        40,
+        47,
+        54,
+        36,
+        42,
+        60,
+        27,
+        23,
+        21,
+        10,
+        13
+      ]
+    },
+    {
+      "id": "polar",
+      "name": "Polar",
+      "cost": 757.1,
+      "launchYear": 1996,
+      "failed": false,
+      "shortfall": false,
+      "type": "Remote Sensing Observatory",
+      "indices": {
+        "h": 75,
+        "m": 2.5,
+        "i100": 50
+      },
+      "yearsToBuild": 7.398,
+      "papers": 742,
+      "citations": 23576,
+      "hasThumb": true,
+      "full": {
+        "papers": 620,
+        "outputBasis": "measured",
+        "citations": 3728,
+        "top10": 22.025,
+        "top10ShareOfDivision": 0.01527,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.435,
+          "yearsFromFormulation": 8.832,
+          "bibcode": "1997PhRvL..79.1281M",
+          "date": "1997-08-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1996-03-01",
+          "end": "2010-05-01",
+          "matureDate": "2013-10-01",
+          "status": "available",
+          "months": 170,
+          "citationBuckets": 18
+        }
+      },
+      "window": {
+        "papers": 136,
+        "outputBasis": "measured",
+        "citations": 1137,
+        "top10": 11.2,
+        "top10ShareOfDivision": 0.02535,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.435,
+          "yearsFromFormulation": 8.832,
+          "bibcode": "1997PhRvL..79.1281M",
+          "date": "1997-08-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1996-03-01",
+          "end": "2000-03-01",
+          "matureDate": "2003-10-01",
+          "status": "available",
+          "months": 48,
+          "citationBuckets": 8
+        }
+      },
+      "lifetime": {
+        "papers": 742,
+        "outputBasis": "measured",
+        "citations": 23576,
+        "top10": 27.733,
+        "top10ShareOfDivision": 0.01768,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.101,
+          "yearsFromFormulation": 8.498,
+          "bibcode": "1997GeoRL..24..995G",
+          "date": "1997-04-00"
+        }
+      },
+      "strip": [
+        0,
+        29,
+        47,
+        40,
+        64,
+        97,
+        74,
+        55,
+        44,
+        58,
+        35,
+        27,
+        26,
+        19,
+        20,
+        14,
+        13,
+        9,
+        7,
+        7
+      ]
+    },
+    {
+      "id": "rbsp",
+      "name": "RBSP",
+      "cost": 1015.3,
+      "launchYear": 2012,
+      "failed": false,
+      "shortfall": false,
+      "type": "In-Situ Probe",
+      "indices": {
+        "h": 82,
+        "m": 5.467,
+        "i100": 56
+      },
+      "yearsToBuild": 6.248,
+      "papers": 1427,
+      "citations": 38792,
+      "hasThumb": true,
+      "full": {
+        "papers": 895,
+        "outputBasis": "measured",
+        "citations": 13164,
+        "top10": 106.478,
+        "top10ShareOfDivision": 0.07382,
+        "top1": 18.24,
+        "top1ShareOfDivision": 0.12644,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.674,
+          "yearsFromFormulation": 7.083,
+          "bibcode": "2013GeoRL..40.3507T",
+          "date": "2013-07-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2012-11-01",
+          "end": "2021-11-01",
+          "matureDate": "2024-10-01",
+          "status": "available",
+          "months": 108,
+          "citationBuckets": 13
+        }
+      },
+      "window": {
+        "papers": 388,
+        "outputBasis": "measured",
+        "citations": 7304,
+        "top10": 45,
+        "top10ShareOfDivision": 0.10183,
+        "top1": 10,
+        "top1ShareOfDivision": 0.2263,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.674,
+          "yearsFromFormulation": 7.083,
+          "bibcode": "2013GeoRL..40.3507T",
+          "date": "2013-07-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2012-11-01",
+          "end": "2017-12-01",
+          "matureDate": "2020-10-01",
+          "status": "available",
+          "months": 61,
+          "citationBuckets": 9
+        }
+      },
+      "lifetime": {
+        "papers": 1427,
+        "outputBasis": "measured",
+        "citations": 38792,
+        "top10": 140.942,
+        "top10ShareOfDivision": 0.08986,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.674,
+          "yearsFromFormulation": 7.083,
+          "bibcode": "2013GeoRL..40.3507T",
+          "date": "2013-07-00"
+        }
+      },
+      "strip": [
+        1,
+        30,
+        59,
+        87,
+        115,
+        106,
+        129,
+        129,
+        113,
+        155,
+        118,
+        101,
+        104,
+        111,
+        69
+      ]
+    },
+    {
+      "id": "stereo",
+      "name": "STEREO",
+      "cost": 1066.8,
+      "launchYear": 2006,
+      "failed": false,
+      "shortfall": false,
+      "type": "Remote Sensing Observatory",
+      "indices": {
+        "h": 111,
+        "m": 5.55,
+        "i100": 137
+      },
+      "yearsToBuild": 6.908,
+      "papers": 1893,
+      "citations": 66308,
+      "hasThumb": true,
+      "full": {
+        "papers": 1628,
+        "outputBasis": "measured",
+        "citations": 22736,
+        "top10": 156.936,
+        "top10ShareOfDivision": 0.10879,
+        "top1": 21.229,
+        "top1ShareOfDivision": 0.14717,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.098,
+          "yearsFromFormulation": 8.005,
+          "bibcode": "2007ApJ...671L.205F",
+          "date": "2007-12-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2006-11-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 206,
+          "citationBuckets": 21
+        }
+      },
+      "window": {
+        "papers": 337,
+        "outputBasis": "measured",
+        "citations": 6163,
+        "top10": 31.89,
+        "top10ShareOfDivision": 0.07217,
+        "top1": 3,
+        "top1ShareOfDivision": 0.06789,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.183,
+          "yearsFromFormulation": 8.09,
+          "bibcode": "2008SoPh..247..171H",
+          "date": "2008-01-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2006-11-01",
+          "end": "2011-02-01",
+          "matureDate": "2014-10-01",
+          "status": "available",
+          "months": 51,
+          "citationBuckets": 9
+        }
+      },
+      "lifetime": {
+        "papers": 1893,
+        "outputBasis": "measured",
+        "citations": 66308,
+        "top10": 150.197,
+        "top10ShareOfDivision": 0.09576,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.43,
+          "yearsFromFormulation": 7.337,
+          "bibcode": "2007ApJ...659..788L",
+          "date": "2007-04-00"
+        }
+      },
+      "strip": [
+        0,
+        19,
+        63,
+        137,
+        112,
+        120,
+        137,
+        116,
+        117,
+        94,
+        92,
+        101,
+        96,
+        63,
+        98,
+        98,
+        80,
+        85,
+        90,
+        104
+      ]
+    },
+    {
+      "id": "wind",
+      "name": "WIND",
+      "cost": 1356.5,
+      "launchYear": 1994,
+      "failed": false,
+      "shortfall": false,
+      "type": "In-Situ Probe",
+      "indices": {
+        "h": 118,
+        "m": 3.688,
+        "i100": 153
+      },
+      "yearsToBuild": 6.084,
+      "papers": 1762,
+      "citations": 68506,
+      "hasThumb": true,
+      "full": {
+        "papers": 1570,
+        "outputBasis": "measured",
+        "citations": 16018,
+        "top10": 111.238,
+        "top10ShareOfDivision": 0.07711,
+        "top1": 14.917,
+        "top1ShareOfDivision": 0.10341,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.252,
+          "yearsFromFormulation": 6.335,
+          "bibcode": "1995SSRv...71..207L",
+          "date": "1995-02-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1994-12-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 349,
+          "citationBuckets": 33
+        }
+      },
+      "window": {
+        "papers": 250,
+        "outputBasis": "measured",
+        "citations": 2471,
+        "top10": 20.85,
+        "top10ShareOfDivision": 0.04718,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.252,
+          "yearsFromFormulation": 6.335,
+          "bibcode": "1995SSRv...71..207L",
+          "date": "1995-02-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "1994-12-01",
+          "end": "1999-11-01",
+          "matureDate": "2002-10-01",
+          "status": "available",
+          "months": 59,
+          "citationBuckets": 9
+        }
+      },
+      "lifetime": {
+        "papers": 1762,
+        "outputBasis": "measured",
+        "citations": 68506,
+        "top10": 146.443,
+        "top10ShareOfDivision": 0.09336,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.252,
+          "yearsFromFormulation": 6.335,
+          "bibcode": "1995SSRv...71..207L",
+          "date": "1995-02-00"
+        }
+      },
+      "strip": [
+        0,
+        14,
+        38,
+        69,
+        83,
+        52,
+        73,
+        85,
+        60,
+        59,
+        39,
+        73,
+        45,
+        51,
+        49,
+        51,
+        30,
+        49,
+        46,
+        56
+      ]
+    },
+    {
+      "id": "sdo",
+      "name": "SDO",
+      "cost": 1456.4,
+      "launchYear": 2010,
+      "failed": false,
+      "shortfall": false,
+      "type": "Remote Sensing Observatory",
+      "indices": {
+        "h": 116,
+        "m": 6.824,
+        "i100": 148
+      },
+      "yearsToBuild": 7.447,
+      "papers": 3840,
+      "citations": 104500,
+      "hasThumb": true,
+      "full": {
+        "papers": 3035,
+        "outputBasis": "measured",
+        "citations": 39196,
+        "top10": 276.339,
+        "top10ShareOfDivision": 0.19157,
+        "top1": 28.823,
+        "top1ShareOfDivision": 0.19981,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.419,
+          "yearsFromFormulation": 8.082,
+          "bibcode": "2010A&A...521A..21O",
+          "date": "2010-10-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2010-06-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 163,
+          "citationBuckets": 17
+        }
+      },
+      "window": {
+        "papers": 1322,
+        "outputBasis": "measured",
+        "citations": 21373,
+        "top10": 96.9,
+        "top10ShareOfDivision": 0.21928,
+        "top1": 12,
+        "top1ShareOfDivision": 0.27155,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.419,
+          "yearsFromFormulation": 8.082,
+          "bibcode": "2010A&A...521A..21O",
+          "date": "2010-10-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2010-06-01",
+          "end": "2017-06-01",
+          "matureDate": "2020-10-01",
+          "status": "available",
+          "months": 84,
+          "citationBuckets": 11
+        }
+      },
+      "lifetime": {
+        "papers": 3840,
+        "outputBasis": "measured",
+        "citations": 104500,
+        "top10": 265.135,
+        "top10ShareOfDivision": 0.16904,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.419,
+          "yearsFromFormulation": 8.082,
+          "bibcode": "2010A&A...521A..21O",
+          "date": "2010-10-00"
+        }
+      },
+      "strip": [
+        10,
+        70,
+        187,
+        225,
+        235,
+        245,
+        255,
+        242,
+        264,
+        274,
+        255,
+        251,
+        251,
+        271,
+        274,
+        279,
+        252
+      ]
+    },
+    {
+      "id": "mms",
+      "name": "MMS",
+      "cost": 1655.6,
+      "launchYear": 2015,
+      "failed": false,
+      "shortfall": false,
+      "type": "Constellation",
+      "indices": {
+        "h": 70,
+        "m": 5.833,
+        "i100": 30
+      },
+      "yearsToBuild": 12.361,
+      "papers": 1428,
+      "citations": 32114,
+      "hasThumb": true,
+      "full": {
+        "papers": 1029,
+        "outputBasis": "measured",
+        "citations": 14804,
+        "top10": 123.843,
+        "top10ShareOfDivision": 0.08585,
+        "top1": 11.833,
+        "top1ShareOfDivision": 0.08203,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.498,
+          "yearsFromFormulation": 13.331,
+          "bibcode": "2016SSRv..199....5B",
+          "date": "2016-03-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2015-10-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 99,
+          "citationBuckets": 12
+        }
+      },
+      "window": {
+        "papers": 383,
+        "outputBasis": "measured",
+        "citations": 8016,
+        "top10": 57.9,
+        "top10ShareOfDivision": 0.13103,
+        "top1": 9,
+        "top1ShareOfDivision": 0.20367,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.498,
+          "yearsFromFormulation": 13.331,
+          "bibcode": "2016SSRv..199....5B",
+          "date": "2016-03-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2015-10-01",
+          "end": "2019-10-01",
+          "matureDate": "2022-10-01",
+          "status": "available",
+          "months": 48,
+          "citationBuckets": 8
+        }
+      },
+      "lifetime": {
+        "papers": 1428,
+        "outputBasis": "measured",
+        "citations": 32114,
+        "top10": 125.483,
+        "top10ShareOfDivision": 0.08,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.419,
+          "yearsFromFormulation": 13.251,
+          "bibcode": "2016JGRA..121.1263F",
+          "date": "2016-02-00"
+        }
+      },
+      "strip": [
+        2,
+        105,
+        83,
+        106,
+        133,
+        159,
+        148,
+        152,
+        141,
+        154,
+        159,
+        86
+      ]
+    }
+  ]
+}

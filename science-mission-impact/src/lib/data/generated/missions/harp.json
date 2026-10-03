@@ -1,0 +1,288 @@
+{
+  "id": "harp",
+  "name": "HARP",
+  "fullName": "Hyper-Angular Rainbow Polarimeter",
+  "division": "earth",
+  "divisionName": "Earth Science",
+  "hasThumb": true,
+  "meta": {
+    "status": "Completed",
+    "failed": false,
+    "cost": 5.3,
+    "type": "Orbiter",
+    "dates": {
+      "formulation": "2013-07-12",
+      "launch": "2019-11-02",
+      "scienceStart": "2020-02-19",
+      "primeEnd": "2020-05-19",
+      "missionEnd": "2022-04-06"
+    }
+  },
+  "indices": {
+    "h": 0,
+    "m": 0,
+    "i100": 0
+  },
+  "facts": {
+    "papers": 1,
+    "citations": 0,
+    "publicationYears": [
+      2024,
+      2024
+    ]
+  },
+  "lifetimeSeries": {
+    "years": [
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
+      1,
+      0,
+      0
+    ],
+    "citations": [
+      0,
+      0,
+      0
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 0,
+      "observed": 0,
+      "missing": 0
+    }
+  },
+  "windowSeries": {
+    "start": "2020-03-01",
+    "end": "2022-06-01",
+    "matureDate": "2025-10-01",
+    "status": "available",
+    "months": 27,
+    "citationBuckets": 6,
+    "outputBasis": "measured",
+    "papersByMonth": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "citationsByYearOffset": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "mostCited": {
+    "bibcode": "2024FrRS....574600S",
+    "title": "Developing small satellite ground support software for orbit tracking and target acquisition of the HARP cubesat",
+    "firstAuthor": "Sienkiewicz, Noah",
+    "year": 2024,
+    "citations": 0
+  },
+  "ranks": {
+    "full": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "window": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "lifetime": {
+      "bins": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    }
+  },
+  "full": {
+    "papers": 0,
+    "outputBasis": "measured",
+    "citations": 0,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "no_papers",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2020-03-01",
+      "end": "2024-01-01",
+      "matureDate": "2026-10-01",
+      "status": "available",
+      "months": 46,
+      "citationBuckets": 7
+    }
+  },
+  "window": {
+    "papers": 0,
+    "outputBasis": "measured",
+    "citations": 0,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "no_papers",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2020-03-01",
+      "end": "2022-06-01",
+      "matureDate": "2025-10-01",
+      "status": "available",
+      "months": 27,
+      "citationBuckets": 6
+    }
+  },
+  "lifetime": {
+    "papers": 1,
+    "outputBasis": "measured",
+    "citations": 0,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": null,
+    "top1ShareOfDivision": null,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    }
+  },
+  "query": {
+    "arms": "(((=abs:\"HARP CubeSat\" OR =abs:\"HyperAngular Rainbow Polarimeter\") NOT title:AirHARP))",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2020-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22HARP+CubeSat%22+OR+%3Dabs%3A%22HyperAngular+Rainbow+Polarimeter%22%29+NOT+title%3AAirHARP%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2020-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-02T04:26:09.482567+00:00",
+    "reconciliation": {
+      "adsReturned": 2,
+      "curatedOut": 1,
+      "curatedIn": 0,
+      "libraryOut": 0,
+      "otherOut": 0,
+      "duplicates": 0,
+      "final": 1
+    }
+  },
+  "curation": {
+    "includes": [],
+    "excludes": [
+      {
+        "bibcode": "2026ITGRS..6408510M",
+        "doi": "10.1109/TGRS.2026.3702267",
+        "title": "First Aerosol Retrieval From PACE HARP2 Over Land With Physics-Informed Deep Learning Method",
+        "reason": "Uses data from HARP2 on the PACE mission; not the HARP CubeSat.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2020AMT....13.1777M",
+        "doi": null,
+        "title": null,
+        "reason": "Uses the airborne AirHARP instrument; mentions the HARP CubeSat only as a future application.",
+        "authority": "agent",
+        "date": "2026-10-01"
+      },
+      {
+        "bibcode": "2020AMT....13.5207P",
+        "doi": null,
+        "title": null,
+        "reason": "Uses airborne AirHARP observations; no HARP CubeSat data.",
+        "authority": "agent",
+        "date": "2026-10-01"
+      },
+      {
+        "bibcode": "2024AMT....17.5709M",
+        "doi": null,
+        "title": null,
+        "reason": "Calibrates the airborne AirHARP instrument; not the HARP CubeSat.",
+        "authority": "agent",
+        "date": "2026-10-01"
+      }
+    ]
+  },
+  "topCited": [
+    {
+      "bibcode": "2024FrRS....574600S",
+      "title": "Developing small satellite ground support software for orbit tracking and target acquisition of the HARP cubesat",
+      "firstAuthor": "Sienkiewicz, Noah",
+      "year": 2024,
+      "citations": 0
+    }
+  ],
+  "papersFile": {
+    "rows": 1
+  }
+}

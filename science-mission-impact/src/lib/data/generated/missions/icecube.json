@@ -1,0 +1,311 @@
+{
+  "id": "icecube",
+  "name": "IceCube",
+  "fullName": "IceCube",
+  "division": "earth",
+  "divisionName": "Earth Science",
+  "hasThumb": true,
+  "meta": {
+    "status": "Completed",
+    "failed": false,
+    "cost": 5.7,
+    "type": "Orbiter",
+    "dates": {
+      "formulation": "2014-04-14",
+      "launch": "2017-04-18",
+      "scienceStart": "2017-05-16",
+      "primeEnd": "2017-06-13",
+      "missionEnd": "2018-10-03"
+    }
+  },
+  "indices": {
+    "h": 1,
+    "m": 0.167,
+    "i100": 0
+  },
+  "facts": {
+    "papers": 1,
+    "citations": 10,
+    "publicationYears": [
+      2021,
+      2021
+    ]
+  },
+  "lifetimeSeries": {
+    "years": [
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "citations": [
+      0,
+      1,
+      1,
+      3,
+      5,
+      0
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 10,
+      "observed": 10,
+      "missing": 0
+    }
+  },
+  "windowSeries": {
+    "start": "2017-06-01",
+    "end": "2019-07-01",
+    "matureDate": "2022-10-01",
+    "status": "available",
+    "months": 25,
+    "citationBuckets": 6,
+    "outputBasis": "measured",
+    "papersByMonth": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "citationsByYearOffset": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "mostCited": {
+    "bibcode": "2021ESSD...13.5369G",
+    "title": "The first global 883 GHz cloud ice survey: IceCube Level 1 data calibration, processing and analysis",
+    "firstAuthor": "Gong, Jie",
+    "year": 2021,
+    "citations": 10
+  },
+  "ranks": {
+    "full": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "window": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "lifetime": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    }
+  },
+  "full": {
+    "papers": 0,
+    "outputBasis": "measured",
+    "citations": 0,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "no_papers",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2017-06-01",
+      "end": "2020-11-01",
+      "matureDate": "2023-10-01",
+      "status": "available",
+      "months": 41,
+      "citationBuckets": 7
+    }
+  },
+  "window": {
+    "papers": 0,
+    "outputBasis": "measured",
+    "citations": 0,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "no_papers",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2017-06-01",
+      "end": "2019-07-01",
+      "matureDate": "2022-10-01",
+      "status": "available",
+      "months": 25,
+      "citationBuckets": 6
+    }
+  },
+  "lifetime": {
+    "papers": 1,
+    "outputBasis": "measured",
+    "citations": 10,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": null,
+    "top1ShareOfDivision": null,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    }
+  },
+  "query": {
+    "arms": "((abs:\"IceCube\" AND (=abs:\"883 GHz\" OR =abs:\"874 GHz\" OR =abs:\"cloud ice\" OR =abs:\"ice cloud\" OR =abs:\"ice clouds\" OR =abs:\"ice water path\")))",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2017-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22IceCube%22+AND+%28%3Dabs%3A%22883+GHz%22+OR+%3Dabs%3A%22874+GHz%22+OR+%3Dabs%3A%22cloud+ice%22+OR+%3Dabs%3A%22ice+cloud%22+OR+%3Dabs%3A%22ice+clouds%22+OR+%3Dabs%3A%22ice+water+path%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2017-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-02T04:25:51.750593+00:00",
+    "reconciliation": {
+      "adsReturned": 1,
+      "curatedOut": 0,
+      "curatedIn": 0,
+      "libraryOut": 0,
+      "otherOut": 0,
+      "duplicates": 0,
+      "final": 1
+    }
+  },
+  "curation": {
+    "includes": [],
+    "excludes": [
+      {
+        "bibcode": "2018AcAau.144..283B",
+        "doi": null,
+        "title": null,
+        "reason": "About Lunar IceCube, a different CubeSat; not the IceCube cloud-ice mission.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2022SASS...41...27W",
+        "doi": null,
+        "title": null,
+        "reason": "Lunar radar CubeSat concept naming Lunar IceCube; not the IceCube cloud-ice mission.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2022ApJ...939..123C",
+        "doi": null,
+        "title": null,
+        "reason": "Uses the IceCube Neutrino Observatory; not the IceCube cloud-ice CubeSat.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2023ApJ...956....8F",
+        "doi": null,
+        "title": null,
+        "reason": "About neutrinos seen by the IceCube Neutrino Observatory; not the IceCube CubeSat.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2026PASJ...78..166S",
+        "doi": null,
+        "title": null,
+        "reason": "Refers to the IceCube-Gen2 neutrino detector; not the IceCube cloud-ice CubeSat.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2026NatAs..10.1218U",
+        "doi": null,
+        "title": null,
+        "reason": "About an IceCube Neutrino Observatory event; not the IceCube cloud-ice CubeSat.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      }
+    ]
+  },
+  "topCited": [
+    {
+      "bibcode": "2021ESSD...13.5369G",
+      "title": "The first global 883 GHz cloud ice survey: IceCube Level 1 data calibration, processing and analysis",
+      "firstAuthor": "Gong, Jie",
+      "year": 2021,
+      "citations": 10
+    }
+  ],
+  "papersFile": {
+    "rows": 1
+  }
+}

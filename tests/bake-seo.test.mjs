@@ -21,7 +21,8 @@ import {
     SITE_BASE,
     renderDistrictPage,
     renderDistrictsIndex,
-    renderSitemap
+    renderSitemap,
+    FIXED_URLS
 } from '../scripts/bake/templates.mjs';
 import { districtOf, placeLine } from '../docs/cancellations/js/panel-common.js';
 import {
@@ -492,12 +493,21 @@ test('renderDistrictsIndex canonical points at the districts directory', () => {
 
 // --- renderSitemap ----------------------------------------------------------
 
-test('renderSitemap emits the five fixed URLs plus one per district', () => {
-    const codes = ['CA-16', 'TX-22', 'AL-05'];
-    const xml = renderSitemap({ districtCodes: codes, lastUpdated: '2026-08-20' });
+/** Science Mission Impact division slugs, in configured order */
+const SMI_DIVISIONS = ['astrophysics', 'earth', 'planetary'];
 
-    assert.equal((xml.match(/<url>/g) || []).length, 5 + codes.length);
-    assert.equal((xml.match(/<loc>/g) || []).length, 5 + codes.length);
+test('renderSitemap emits the fixed URLs plus one per district', () => {
+    const codes = ['CA-16', 'TX-22', 'AL-05'];
+    const xml = renderSitemap({ districtCodes: codes, smiDivisions: SMI_DIVISIONS, lastUpdated: '2026-08-20' });
+    const expected = FIXED_URLS.length + codes.length;
+
+    assert.equal((xml.match(/<url>/g) || []).length, expected);
+    assert.equal((xml.match(/<loc>/g) || []).length, expected);
+});
+
+test('renderSitemap excludes the unlisted Science Mission Impact dashboard', () => {
+    const xml = renderSitemap({ districtCodes: ['CA-16'], smiDivisions: SMI_DIVISIONS });
+    assert.ok(!xml.includes('/science-mission-impact/'));
 });
 
 test('renderSitemap dates only the cancellations URLs', () => {
@@ -636,5 +646,5 @@ test('renderDistrictsIndex and renderSitemap cover every live district', () => {
         assert.ok(html.includes(`<a href="${code}/">${code}</a>`), `index missing ${code}`);
         assert.ok(xml.includes(`/cancellations/districts/${code}/`), `sitemap missing ${code}`);
     }
-    assert.equal((xml.match(/<url>/g) || []).length, 5 + codes.size);
+    assert.equal((xml.match(/<url>/g) || []).length, FIXED_URLS.length + codes.size);
 });

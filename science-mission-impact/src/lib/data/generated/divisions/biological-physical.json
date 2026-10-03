@@ -1,0 +1,671 @@
+{
+  "slug": "biological-physical",
+  "name": "Biological & Physical Sciences",
+  "facts": {
+    "missions": 5,
+    "papers": 15,
+    "citations": 236,
+    "publicationYears": [
+      2011,
+      2021
+    ]
+  },
+  "rankable": false,
+  "lifetimeSeries": {
+    "years": [
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
+      1,
+      2,
+      0,
+      4,
+      1,
+      0,
+      1,
+      0,
+      1,
+      3,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "citations": [
+      0,
+      5,
+      1,
+      22,
+      26,
+      8,
+      14,
+      2,
+      18,
+      19,
+      14,
+      38,
+      24,
+      15,
+      17,
+      13
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 236,
+      "observed": 236,
+      "missing": 0
+    }
+  },
+  "windowSeries": {
+    "papersByMonth": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "citationsByYearOffset": [
+      0,
+      0,
+      5,
+      1,
+      16,
+      9,
+      0
+    ],
+    "missionsByYear": [
+      5,
+      5,
+      5
+    ],
+    "missionsIncluded": 5,
+    "status": "available",
+    "missionsImmature": []
+  },
+  "mostCited": {
+    "bibcode": "2011AsBio..11..951N",
+    "title": "The O/OREOS Mission: First Science Data from the Space Environment Survivability of Living Organisms (SESLO) Payload",
+    "firstAuthor": "Nicholson, Wayne L.",
+    "year": 2011,
+    "citations": 42,
+    "missionId": "o_oreos"
+  },
+  "cutoffs": {
+    "full": {
+      "1": 16,
+      "10": 16
+    },
+    "window": {
+      "1": 14,
+      "10": 14
+    },
+    "lifetime": {
+      "1": 42,
+      "10": 38
+    }
+  },
+  "costCurves": null,
+  "indexCorrelation": {
+    "m": {
+      "rho": null,
+      "n": 2
+    },
+    "h": {
+      "rho": -0.1118,
+      "n": 5
+    }
+  },
+  "missions": [
+    {
+      "id": "ecamsat",
+      "name": "EcAMSat",
+      "cost": 2,
+      "launchYear": 2017,
+      "failed": false,
+      "shortfall": false,
+      "type": "Orbiter",
+      "indices": {
+        "h": 2,
+        "m": 0.286,
+        "i100": 0
+      },
+      "yearsToBuild": 7.368,
+      "papers": 4,
+      "citations": 40,
+      "hasThumb": true,
+      "full": {
+        "papers": 4,
+        "outputBasis": "measured",
+        "citations": 25,
+        "top10": 0.7,
+        "top10ShareOfDivision": 1,
+        "top1": 0.07,
+        "top1ShareOfDivision": 1,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 2.198,
+          "yearsFromFormulation": 9.588,
+          "bibcode": "2020LSSR...24...18P",
+          "date": "2020-02-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2017-12-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 73,
+          "citationBuckets": 10
+        }
+      },
+      "window": {
+        "papers": 0,
+        "outputBasis": "measured",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "no_papers",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2017-12-01",
+          "end": "2020-01-01",
+          "matureDate": "2022-10-01",
+          "status": "available",
+          "months": 25,
+          "citationBuckets": 6
+        }
+      },
+      "lifetime": {
+        "papers": 4,
+        "outputBasis": "measured",
+        "citations": 40,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        }
+      },
+      "strip": [
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "genesat",
+      "name": "GeneSat",
+      "cost": 6,
+      "launchYear": 2006,
+      "failed": false,
+      "shortfall": false,
+      "type": "Orbiter",
+      "indices": {
+        "h": 0,
+        "m": null,
+        "i100": 0
+      },
+      "yearsToBuild": 3.956,
+      "papers": 0,
+      "citations": 0,
+      "hasThumb": true,
+      "full": {
+        "papers": 0,
+        "outputBasis": "measured",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "no_papers",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2007-01-01",
+          "end": "2012-09-01",
+          "matureDate": "2015-10-01",
+          "status": "available",
+          "months": 68,
+          "citationBuckets": 9
+        }
+      },
+      "window": {
+        "papers": 0,
+        "outputBasis": "measured",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "no_papers",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2007-01-01",
+          "end": "2009-02-01",
+          "matureDate": "2012-10-01",
+          "status": "available",
+          "months": 25,
+          "citationBuckets": 6
+        }
+      },
+      "lifetime": {
+        "papers": 0,
+        "outputBasis": "measured",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "no_papers",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        }
+      },
+      "strip": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "pharmasat",
+      "name": "PharmaSat",
+      "cost": 6.8,
+      "launchYear": 2009,
+      "failed": false,
+      "shortfall": false,
+      "type": "Orbiter",
+      "indices": {
+        "h": 0,
+        "m": null,
+        "i100": 0
+      },
+      "yearsToBuild": 2.278,
+      "papers": 0,
+      "citations": 0,
+      "hasThumb": true,
+      "full": {
+        "papers": 0,
+        "outputBasis": "measured",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "no_papers",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2009-06-01",
+          "end": "2014-09-01",
+          "matureDate": "2017-10-01",
+          "status": "available",
+          "months": 63,
+          "citationBuckets": 9
+        }
+      },
+      "window": {
+        "papers": 0,
+        "outputBasis": "measured",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "no_papers",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2009-06-01",
+          "end": "2011-12-01",
+          "matureDate": "2014-10-01",
+          "status": "available",
+          "months": 30,
+          "citationBuckets": 6
+        }
+      },
+      "lifetime": {
+        "papers": 0,
+        "outputBasis": "measured",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "no_papers",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        }
+      },
+      "strip": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "o_oreos",
+      "name": "O/OREOS",
+      "cost": 8.1,
+      "launchYear": 2010,
+      "failed": false,
+      "shortfall": false,
+      "type": "Orbiter",
+      "indices": {
+        "h": 8,
+        "m": 0.5,
+        "i100": 0
+      },
+      "yearsToBuild": 2.385,
+      "papers": 11,
+      "citations": 196,
+      "hasThumb": true,
+      "full": {
+        "papers": 3,
+        "outputBasis": "measured",
+        "citations": 31,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2010-12-01",
+          "end": "2013-06-01",
+          "matureDate": "2016-10-01",
+          "status": "available",
+          "months": 30,
+          "citationBuckets": 7
+        }
+      },
+      "window": {
+        "papers": 3,
+        "outputBasis": "measured",
+        "citations": 31,
+        "top10": 0.3,
+        "top10ShareOfDivision": 1,
+        "top1": 0.03,
+        "top1ShareOfDivision": 1,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.782,
+          "yearsFromFormulation": 4.167,
+          "bibcode": "2012AsBio..12..841M",
+          "date": "2012-09-00"
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2010-12-01",
+          "end": "2013-06-01",
+          "matureDate": "2016-10-01",
+          "status": "available",
+          "months": 30,
+          "citationBuckets": 7
+        }
+      },
+      "lifetime": {
+        "papers": 11,
+        "outputBasis": "measured",
+        "citations": 196,
+        "top10": 1.5,
+        "top10ShareOfDivision": 1,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 1.029,
+          "yearsFromFormulation": 3.414,
+          "bibcode": "2011AsBio..11..951N",
+          "date": "2011-12-00"
+        }
+      },
+      "strip": [
+        0,
+        1,
+        2,
+        0,
+        4,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "sporesat",
+      "name": "SporeSat",
+      "cost": 14.7,
+      "launchYear": 2014,
+      "failed": false,
+      "shortfall": true,
+      "type": "Orbiter",
+      "indices": {
+        "h": 0,
+        "m": null,
+        "i100": 0
+      },
+      "yearsToBuild": 3.294,
+      "papers": 0,
+      "citations": 0,
+      "hasThumb": true,
+      "full": {
+        "papers": 0,
+        "outputBasis": "measured",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "no_papers",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2014-05-01",
+          "end": "2024-01-01",
+          "matureDate": "2026-10-01",
+          "status": "available",
+          "months": 116,
+          "citationBuckets": 13
+        }
+      },
+      "window": {
+        "papers": 0,
+        "outputBasis": "measured",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": 0,
+        "top1ShareOfDivision": 0,
+        "first": {
+          "state": "no_papers",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        },
+        "status": "available",
+        "bounds": {
+          "start": "2014-05-01",
+          "end": "2016-06-01",
+          "matureDate": "2019-10-01",
+          "status": "available",
+          "months": 25,
+          "citationBuckets": 6
+        }
+      },
+      "lifetime": {
+        "papers": 0,
+        "outputBasis": "measured",
+        "citations": 0,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "no_papers",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        }
+      },
+      "strip": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

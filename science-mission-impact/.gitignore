@@ -1,0 +1,10 @@
+node_modules/
+.svelte-kit/
+.site/
+.cache/
+
+# The repo-root .gitignore carries a Python template that ignores `lib/` at any
+# depth, which silently swallows scripts/lib/. Re-include it: a deeper
+# .gitignore wins, and re-including the directory lets git descend into it.
+!scripts/lib/
+!src/lib/

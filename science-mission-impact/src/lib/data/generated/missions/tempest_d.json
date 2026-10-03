@@ -1,0 +1,396 @@
+{
+  "id": "tempest_d",
+  "name": "TEMPEST-D",
+  "fullName": "Temporal Experiment for Storms and Tropical Systems – Demonstration",
+  "division": "earth",
+  "divisionName": "Earth Science",
+  "hasThumb": true,
+  "meta": {
+    "status": "Completed",
+    "failed": false,
+    "cost": 10.7,
+    "type": "Orbiter",
+    "dates": {
+      "formulation": "2015-07-07",
+      "launch": "2018-05-21",
+      "scienceStart": "2018-09-11",
+      "primeEnd": "2018-12-10",
+      "missionEnd": "2021-06-21"
+    }
+  },
+  "indices": {
+    "h": 4,
+    "m": 0.571,
+    "i100": 0
+  },
+  "facts": {
+    "papers": 9,
+    "citations": 76,
+    "publicationYears": [
+      2020,
+      2024
+    ]
+  },
+  "lifetimeSeries": {
+    "years": [
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
+      1,
+      2,
+      3,
+      2,
+      1,
+      0,
+      0
+    ],
+    "citations": [
+      0,
+      6,
+      18,
+      9,
+      15,
+      22,
+      6
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 76,
+      "observed": 76,
+      "missing": 0
+    }
+  },
+  "windowSeries": {
+    "start": "2018-10-01",
+    "end": "2021-01-01",
+    "matureDate": "2023-10-01",
+    "status": "available",
+    "months": 27,
+    "citationBuckets": 6,
+    "outputBasis": "measured",
+    "papersByMonth": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "citationsByYearOffset": [
+      0,
+      0,
+      0,
+      1,
+      4,
+      1
+    ]
+  },
+  "mostCited": {
+    "bibcode": "2021ITGRS..5910213P",
+    "title": "TEMPEST-D Radiometer: Instrument Description and Prelaunch Calibration",
+    "firstAuthor": "Padmanabhan, Sharmila",
+    "year": 2021,
+    "citations": 25
+  },
+  "ranks": {
+    "full": {
+      "bins": [
+        0.426,
+        1.574,
+        1.831,
+        0.169,
+        1,
+        0.54,
+        0.46,
+        1.963,
+        0.037,
+        0
+      ],
+      "top1": 0
+    },
+    "window": {
+      "bins": [
+        0,
+        0,
+        0,
+        0.159,
+        0.841,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "lifetime": {
+      "bins": [
+        0.13,
+        3.011,
+        1.859,
+        0.084,
+        1.916,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    }
+  },
+  "full": {
+    "papers": 8,
+    "outputBasis": "measured",
+    "citations": 52,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2018-10-01",
+      "end": "2023-07-01",
+      "matureDate": "2026-10-01",
+      "status": "available",
+      "months": 57,
+      "citationBuckets": 9
+    }
+  },
+  "window": {
+    "papers": 1,
+    "outputBasis": "measured",
+    "citations": 6,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2018-10-01",
+      "end": "2021-01-01",
+      "matureDate": "2023-10-01",
+      "status": "available",
+      "months": 27,
+      "citationBuckets": 6
+    }
+  },
+  "lifetime": {
+    "papers": 9,
+    "outputBasis": "measured",
+    "citations": 76,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": null,
+    "top1ShareOfDivision": null,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    }
+  },
+  "query": {
+    "arms": "((=abs:\"Temporal Experiment for Storms and Tropical Systems\"))",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2018-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Temporal+Experiment+for+Storms+and+Tropical+Systems%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-02T04:25:57.742900+00:00",
+    "reconciliation": {
+      "adsReturned": 13,
+      "curatedOut": 4,
+      "curatedIn": 0,
+      "libraryOut": 0,
+      "otherOut": 0,
+      "duplicates": 0,
+      "final": 9
+    }
+  },
+  "curation": {
+    "includes": [],
+    "excludes": [
+      {
+        "bibcode": "2022QJRMS.148.2325C",
+        "doi": null,
+        "title": null,
+        "reason": "Weather-forecast ensemble study; does not name TEMPEST-D or its radiometer.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2023EMnAs.195..425H",
+        "doi": null,
+        "title": null,
+        "reason": "TEMPEST here is a coastal-forest flooding experiment, not the CubeSat mission.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2024QJRMS.150.3220T",
+        "doi": null,
+        "title": null,
+        "reason": "Weather-forecast ensemble study by an author named Tempest; not about the mission.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2025QJRMS.151e5030T",
+        "doi": null,
+        "title": null,
+        "reason": "Weather-forecast ensemble study by an author named Tempest; not about the mission.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2026PLoSO..2123584M",
+        "doi": null,
+        "title": null,
+        "reason": "TEMPEST here is a coastal-forest flooding experiment, not the CubeSat mission.",
+        "authority": "agent",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2025IJSTA..18.2444M",
+        "doi": "10.1109/JSTARS.2024.3520429",
+        "title": "COWVRTEMPEST Multisensor Satellite-Based Surface State Parameter Retrievals",
+        "reason": "Wrong platform. COWVR and TEMPEST surface-state retrievals from the TEMPEST radiometer re-flown on the ISS as the STP-H8 hosted payload, not the TEMPEST-D CubeSat; the abstract names \"Temporal Experiment for Storms and Tropical Systems (TEMPEST)\" for the ISS unit, which has no megasheet row.",
+        "authority": "human",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2025JAtOT..42..657T",
+        "doi": "10.1175/JTECH-D-24-0061.1",
+        "title": "Discrimination of Light Precipitation from COWVR + TEMPEST, GMI, and ATMS Passive Microwave Radiometer Observations",
+        "reason": "Wrong platform. COWVR and TEMPEST light-precipitation discrimination using the TEMPEST radiometer on the ISS (STP-H8), not the TEMPEST-D CubeSat; same full-name match on the hosted-payload re-flight.",
+        "authority": "human",
+        "date": "2026-09-17"
+      },
+      {
+        "bibcode": "2021JHyd..59325798P",
+        "doi": "10.1016/j.jhydrol.2020.125798",
+        "title": "Impact of sampling of GPM orbital data on streamflow simulations",
+        "reason": "Streamflow study using GPM rainfall; mentions TEMPEST-D only as a possible future data source.",
+        "authority": "agent",
+        "date": "2026-10-01"
+      },
+      {
+        "bibcode": "2022ITGRS..6000863P",
+        "doi": "10.1109/TGRS.2022.3200863",
+        "title": "Derived Observations From Frequently Sampled Microwave Measurements of Precipitation—Part III: Convoys of mm-Wave Radiometers",
+        "reason": "Concept study of radiometer convoys using simulated data; uses no TEMPEST-D measurements.",
+        "authority": "agent",
+        "date": "2026-10-01"
+      }
+    ]
+  },
+  "topCited": [
+    {
+      "bibcode": "2021ITGRS..5910213P",
+      "title": "TEMPEST-D Radiometer: Instrument Description and Prelaunch Calibration",
+      "firstAuthor": "Padmanabhan, Sharmila",
+      "year": 2021,
+      "citations": 25
+    },
+    {
+      "bibcode": "2021ITGRS..59.4904B",
+      "title": "Calibration and Validation of the TEMPEST-D CubeSat Radiometer",
+      "firstAuthor": "Berg, Wesley",
+      "year": 2021,
+      "citations": 21
+    },
+    {
+      "bibcode": "2020JAtOT..37..197S",
+      "title": "A Passive Microwave Retrieval Algorithm with Minimal View-Angle Bias: Application to the TEMPEST-D CubeSat Mission",
+      "firstAuthor": "Schulte, Richard M.",
+      "year": 2020,
+      "citations": 10
+    },
+    {
+      "bibcode": "2022IJSTA..15.3626R",
+      "title": "Rainfall Estimation From TEMPEST-D CubeSat Observations: A Machine-Learning Approach",
+      "firstAuthor": "Radhakrishnan, Chandrasekar",
+      "year": 2022,
+      "citations": 9
+    },
+    {
+      "bibcode": "2022IJSTA..15.7826R",
+      "title": "Cross Validation of TEMPEST-D and RainCube Observations Over Precipitation Systems",
+      "firstAuthor": "Radhakrishnan, Chandrasekar",
+      "year": 2022,
+      "citations": 4
+    },
+    {
+      "bibcode": "2023JAtOT..40..669B",
+      "title": "Single-Point Calibration for Microwave Sounders: Application to TEMPEST-D",
+      "firstAuthor": "Brown, Shannon T.",
+      "year": 2023,
+      "citations": 3
+    },
+    {
+      "bibcode": "2024AMT....17.5637K",
+      "title": "Merging TEMPEST microwave and GOES-16 geostationary IR soundings for improved water vapor profiles",
+      "firstAuthor": "Kuo, Chia-Pang",
+      "year": 2024,
+      "citations": 2
+    },
+    {
+      "bibcode": "2022ITGRS..6059698C",
+      "title": "Correcting Calibration Drifts Using Solar and Lunar Intrusions for Miniaturized Microwave Radiometers",
+      "firstAuthor": "Crews, Angela",
+      "year": 2022,
+      "citations": 1
+    },
+    {
+      "bibcode": "2023IJSTA..16.7422R",
+      "title": "TEMPEST-D and GPM-GMI Observations Over Precipitating Systems: A Cross-Validation Study",
+      "firstAuthor": "Radhakrishnan, Chandrasekar",
+      "year": 2023,
+      "citations": 1
+    }
+  ],
+  "papersFile": {
+    "rows": 9
+  }
+}

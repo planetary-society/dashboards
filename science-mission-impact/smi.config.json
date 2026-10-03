@@ -1,0 +1,65 @@
+{
+  "rawDirDefault": "../../science-mission-citations/dist/fixed",
+  "schemaVersions": {
+    "mission": 5,
+    "stats": 11
+  },
+  "divisions": [
+    {
+      "slug": "astrophysics",
+      "name": "Astrophysics",
+      "nav": "Astrophysics",
+      "statsLabel": "astro"
+    },
+    {
+      "slug": "biological-physical",
+      "name": "Biological & Physical Sciences",
+      "nav": "Bio + Phys",
+      "statsLabel": "bps"
+    },
+    {
+      "slug": "earth",
+      "name": "Earth Science",
+      "nav": "Earth",
+      "statsLabel": "earth"
+    },
+    {
+      "slug": "heliophysics",
+      "name": "Heliophysics",
+      "nav": "Helio",
+      "statsLabel": "helio"
+    },
+    {
+      "slug": "planetary",
+      "name": "Planetary Science",
+      "nav": "Planetary",
+      "statsLabel": "psd"
+    }
+  ],
+  "costBaseYear": 2025,
+  "storyTimingDivision": "planetary",
+  "thresholdCost": 150,
+  "clps": {
+    "rawDir": "../../science-mission-citations/dist/latest",
+    "comparators": ["lcross", "mars_pathfinder"],
+    "horizonMonths": 36
+  },
+  "paperKinds": { "file": "data/paper-kinds.json", "examples": ["raincube", "marco"], "smallMax": 10 },
+  "rankingMinPapers": 50,
+  "topPercents": [
+    10,
+    1
+  ],
+  "tierPercents": [
+    0.1,
+    1,
+    5,
+    10,
+    25,
+    50
+  ],
+  "citationHistory": {
+    "maxMissing": 5,
+    "maxMissingFraction": 0.001
+  }
+}

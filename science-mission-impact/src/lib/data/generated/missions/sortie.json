@@ -1,0 +1,274 @@
+{
+  "id": "sortie",
+  "name": "SORTIE",
+  "fullName": "Scintillation Observations & Response of the Ionosphere to Electrodynamics",
+  "division": "heliophysics",
+  "divisionName": "Heliophysics",
+  "hasThumb": true,
+  "meta": {
+    "status": "Completed",
+    "failed": false,
+    "cost": 5,
+    "type": "In-Situ Probe",
+    "dates": {
+      "formulation": "2017-11-17",
+      "launch": "2019-12-05",
+      "scienceStart": "2019-12-05",
+      "primeEnd": "2020-06-05",
+      "missionEnd": "2024-12-05"
+    }
+  },
+  "indices": {
+    "h": 2,
+    "m": 0.333,
+    "i100": 0
+  },
+  "facts": {
+    "papers": 2,
+    "citations": 26,
+    "publicationYears": [
+      2021,
+      2023
+    ]
+  },
+  "lifetimeSeries": {
+    "years": [
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
+      1,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "citations": [
+      0,
+      2,
+      6,
+      4,
+      10,
+      4
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 26,
+      "observed": 26,
+      "missing": 0
+    }
+  },
+  "windowSeries": {
+    "start": "2020-01-01",
+    "end": "2022-07-01",
+    "matureDate": "2025-10-01",
+    "status": "available",
+    "months": 30,
+    "citationBuckets": 6,
+    "outputBasis": "measured",
+    "papersByMonth": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "citationsByYearOffset": [
+      0,
+      0,
+      2,
+      6,
+      2,
+      0
+    ]
+  },
+  "mostCited": {
+    "bibcode": "2021GeoRL..4893277G",
+    "title": "Dynamical Coupling Between the Low-Latitude Lower Thermosphere and Ionosphere via the Nonmigrating Diurnal Tide as Revealed by Concurrent Satellite Observations and Numerical Modeling",
+    "firstAuthor": "Gasperini, Federico",
+    "year": 2021,
+    "citations": 15
+  },
+  "ranks": {
+    "full": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.449,
+        1.551,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "window": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        0.509,
+        0.491,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "lifetime": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    }
+  },
+  "full": {
+    "papers": 2,
+    "outputBasis": "measured",
+    "citations": 21,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2020-01-01",
+      "end": "2024-01-01",
+      "matureDate": "2026-10-01",
+      "status": "available",
+      "months": 48,
+      "citationBuckets": 7
+    }
+  },
+  "window": {
+    "papers": 1,
+    "outputBasis": "measured",
+    "citations": 10,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2020-01-01",
+      "end": "2022-07-01",
+      "matureDate": "2025-10-01",
+      "status": "available",
+      "months": 30,
+      "citationBuckets": 6
+    }
+  },
+  "lifetime": {
+    "papers": 2,
+    "outputBasis": "measured",
+    "citations": 26,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": null,
+    "top1ShareOfDivision": null,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    }
+  },
+  "query": {
+    "arms": "((abs:\"Scintillation Observations and Response of the Ionosphere to Electrodynamics\" OR (abs:\"SORTIE\" AND (abs:\"ionosphere\" OR abs:\"ionospheric\" OR abs:\"scintillation\" OR abs:\"electrodynamics\" OR abs:\"CubeSat\" OR abs:\"mini-IVM\" OR abs:\"Ion Velocity Meter\" OR abs:\"Langmuir Probe\")) OR abs:\"SORTIE mission\" OR abs:\"SORTIE satellite\"))",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2020-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22Scintillation+Observations+and+Response+of+the+Ionosphere+to+Electrodynamics%22+OR+%28abs%3A%22SORTIE%22+AND+%28abs%3A%22ionosphere%22+OR+abs%3A%22ionospheric%22+OR+abs%3A%22scintillation%22+OR+abs%3A%22electrodynamics%22+OR+abs%3A%22CubeSat%22+OR+abs%3A%22mini-IVM%22+OR+abs%3A%22Ion+Velocity+Meter%22+OR+abs%3A%22Langmuir+Probe%22%29%29+OR+abs%3A%22SORTIE+mission%22+OR+abs%3A%22SORTIE+satellite%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2020-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-02T04:31:36.207032+00:00",
+    "reconciliation": {
+      "adsReturned": 2,
+      "curatedOut": 0,
+      "curatedIn": 0,
+      "libraryOut": 0,
+      "otherOut": 0,
+      "duplicates": 0,
+      "final": 2
+    }
+  },
+  "curation": {
+    "includes": [],
+    "excludes": []
+  },
+  "topCited": [
+    {
+      "bibcode": "2021GeoRL..4893277G",
+      "title": "Dynamical Coupling Between the Low-Latitude Lower Thermosphere and Ionosphere via the Nonmigrating Diurnal Tide as Revealed by Concurrent Satellite Observations and Numerical Modeling",
+      "firstAuthor": "Gasperini, Federico",
+      "year": 2021,
+      "citations": 15
+    },
+    {
+      "bibcode": "2023FrASS..1017737G",
+      "title": "Ionosphere-thermosphere coupling via global-scale waves: new insights from two-years of concurrent in situ and remotely-sensed satellite observations",
+      "firstAuthor": "Gasperini, Federico",
+      "year": 2023,
+      "citations": 11
+    }
+  ],
+  "papersFile": {
+    "rows": 2
+  }
+}

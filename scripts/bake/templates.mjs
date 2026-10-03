@@ -415,7 +415,7 @@ export function renderDistrictsIndex(entries, lastUpdated = '') {
 }
 
 /**
- * Site URLs that exist regardless of the data, in sitemap order
+ * Site URLs that exist regardless of the data
  *
  * `lastmod` is carried only by the cancellations pages, the only ones whose
  * content is dated by a data file. The others are edited by hand at no fixed
@@ -424,12 +424,12 @@ export function renderDistrictsIndex(entries, lastUpdated = '') {
  *
  * @type {Array<{path: string, priority: string, dated: boolean}>}
  */
-const FIXED_URLS = [
+export const FIXED_URLS = [
     { path: '/', priority: '1.0', dated: false },
     { path: '/nasa-science/', priority: '0.9', dated: false },
     { path: '/cancellations/', priority: '0.9', dated: true },
     { path: '/appropriations-guide/', priority: '0.8', dated: false },
-    { path: '/cancellations/districts/', priority: '0.6', dated: true }
+    { path: '/cancellations/districts/', priority: '0.6', dated: true },
 ];
 
 /**
@@ -461,9 +461,12 @@ function renderUrlEntry(path, priority, lastmod) {
  */
 export function renderSitemap({ districtCodes = [], lastUpdated = '' }) {
     const codes = [...districtCodes].sort(compareCodes);
+    // Science Mission Impact is intentionally unlisted during its soft launch.
+    // Stable sort: highest priority first, list order within a priority
+    const urls = [...FIXED_URLS].sort((a, b) => b.priority - a.priority);
 
     const entries = [
-        ...FIXED_URLS.map((url) => renderUrlEntry(url.path, url.priority, url.dated ? lastUpdated : '')),
+        ...urls.map((url) => renderUrlEntry(url.path, url.priority, url.dated ? lastUpdated : '')),
         ...codes.map((code) =>
             renderUrlEntry(`/cancellations/districts/${encodeURIComponent(code)}/`, '0.5', lastUpdated))
     ];

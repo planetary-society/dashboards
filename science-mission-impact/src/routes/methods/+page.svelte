@@ -97,19 +97,17 @@
 				remained consistent.</p>
 			<p>Our aim is to identify broad patterns in the research associated with these missions. We call
 				these records “tracked publications” to make their scope clear: they capture the papers we found,
-				while leaving room for omissions and corrections. The methods below explain how we select
-				missions, count their publications and citations, and compare costs and time.</p>
+				while leaving room for omissions and corrections.</p>
 		</section>
 
 		<section id="missions">
 			<h2>What we included</h2>
 			<p>This dataset contains <b>{int(site.missions)}</b> projects primarily built and funded by
-				NASA’s science programs, launched from
+				NASA’s science directorate, launched from
 				{site.launchYears[0]} to {site.launchYears[1]}, spanning {spell(site.divisions.length)} divisions.
 				It focuses on US-led, free-flying missions with mature publication windows. The default
 				comparison allows papers the publication year and {spell(fullPolicy.citationYears)} following
-				calendar years to accrue citations. Hosted instruments are excluded; failed missions remain
-				in the study.</p>
+				calendar years to accrue citations.</p>
 			<p>Comparisons stay within each division. Research communities differ in size, publishing practices,
 				and citation rates, so a higher count in one field does not mean its science is more valuable.</p>
 		</section>
@@ -123,8 +121,8 @@
 				<a href="https://scixplorer.org/">SciX</a>. Searches look for mission and instrument names in titles,
 				abstracts, and keywords, with topic restrictions to distinguish ambiguous acronyms. Mission
 				bibliographies help identify omissions; additions and exclusions are reviewed individually.</p>
-			<p>This approach can miss papers that use mission data without naming the source in those fields.
-				A name match alone also does not establish that a paper used the data.</p>
+			<p> This approach will miss papers that use mission data without naming the source in those fields.
+				A name match alone also does not establish that a paper used the data. In essence, we are measuring the signal strength of a mission's name in the ADS's abstract fields.</p>
 			<h3 id="removed">What we exclude</h3>
 			<p>We have general exclusions for non-refereed material, conference proceedings, news articles, and records for
 				datasets or catalogs.</p>
@@ -133,29 +131,6 @@
 				date if no prime mission start is published. This reduces pre-launch and overview material; it does not eliminate
 				every false match. For missions with long cruises or flyby results, we include results published
 				before the prime mission start.</p>
-		</section>
-
-		<section id="high-impact">
-			<h2>Citations and credit</h2>
-			<p>Publication counts describe research output. Citations describe how often later papers refer
-				to that work—a measure of research attention, not a direct measure of discovery, correctness,
-				or societal benefit. Citation counts include self-citations.</p>
-			<p><b>Top-10% papers</b> are highly cited relative to tracked papers published around the same time
-				in the same division. We group publication years into bands targeting at least
-				{int(site.yearCohortMinN)} papers, then identify the top decile within each band. This reduces
-				age effects without removing every difference in citation opportunity.</p>
-			<p><b>Top-paper credit</b> can be fractional. Papers tied at the cutoff share the remaining credit,
-				and a paper attributed to several eligible missions shares its credit equally among them.</p>
-			<h3>Shared papers and percentile rules</h3>
-			<p>Each distinct paper appears once in its division’s reference pool. Mission publication counts
-				count whole papers, so adding mission totals can count a shared paper more than once. Top-paper
-				credit is divided only among eligible missions in the same division and comparison window.</p>
-			<p>Papers above a percentile cutoff receive full credit. Tied papers at the boundary share the
-				amount needed to reach the stated percentage. A short final year band joins the preceding
-				band; a small reference may remain below the target size.</p>
-			<p>The top 1% uses the division’s pooled citation distribution, without publication-year adjustment,
-				and is available only in the two windowed comparisons. It is a different reference from the
-				era-adjusted top 10%.</p>
 		</section>
 
 		<section id="windows">
@@ -181,65 +156,10 @@
 
 		<section id="cost">
 			<h2>Mission costs</h2>
-			<p>Costs come from the mission catalog’s reported life-cycle costs, including documented partner
+			<p>Costs come from the NASA's reported life-cycle costs at launch. We include documented partner
 				contributions where available. These generally cover development, payloads, launch, and prime
 				operations. Values are adjusted to <b>{site.costBaseYear} dollars</b> using NASA’s
 				<a href="https://www.nasa.gov/wp-content/uploads/2024/11/nnsi-faqs-2024.pdf">New Start Inflation Index</a>.
-				These are the dataset’s adjusted life-cycle costs; for CubeSats they may not include a rideshare
-				launch or university labor.</p>
-			<p>Cost comparisons use individual mission values. The {money(site.story.referenceCost)} line is
-				a discussion point in adjusted dollars, not a scientific boundary. A mission exactly on the
-				line belongs to the “at or below” group.</p>
-		</section>
-
-		<section id="failures">
-			<h2>Failed and partly successful missions</h2>
-			<p>Each mission carries the outcome recorded in the mission catalog. Three outcomes count as
-				falling short: {listify(site.story.failure.statuses)}. The shortfall rate on each side of the
-				{threshold} line is the share of costed missions with one of them, overall and in each division.</p>
-			<p>Missions recorded as a Failure stay in every comparison with whatever they published; one that
-				returned nothing counts as zero output, so a lost spacecraft lowers its group’s average rather than
-				leaving it. Missions whose output could not be
-				measured, such as a window too young to score, missing mission dates or a citation history that
-				cannot be checked, are
-				left out rather than counted as zero, as are missions without a reported cost in any cost
-				comparison.</p>
-		</section>
-
-		<section id="across-divisions">
-			<h2>Figures across divisions</h2>
-			<p>Top-10% status is always decided within a division and is era-adjusted, as described under
-				<a href="#high-impact">Citations and credit</a>. Shares of a division’s top-10% papers are never
-				added up across fields. Where the overview counts top-10% papers from several divisions together
-				(a mission’s share of all the top-10% papers from its cost group, or the share of that credit on
-				papers of a given kind), each paper was ranked within its own division first and the text says
-				which group it covers. Study-wide paper totals count each distinct paper once; where a figure
-				counts a shared paper once per mission, it is called mission papers.</p>
-			<p><b>Where the middle half of top papers sits.</b> Within each division, missions are ordered by
-				adjusted cost and the division’s top-10% credit is accumulated as a running share. The band across
-				divisions averages those running shares with each division weighted equally, at every cost where
-				any of them has a mission. Its quarter marks are the costs at which that average first reaches
-				25%, 50% and 75%. A division with no top-10% credit is left out.</p>
-			<p><b>At or below the line, and above it.</b> The two-group comparison counts each mission’s
-				top-10% papers, averages them per mission on each side of the {threshold} line within each
-				division, and then averages the divisions with equal weight. The same comparison is also shown
-				division by division.</p>
-		</section>
-
-		<section id="reproduce">
-			<h2>Sources and snapshot</h2>
-			<p>Mission dates and costs come from public NASA records.
-				Publication records come from ADS/SciX. Mission pages provide the available query, curation
-				decisions, tracked publication list, and CSV download.</p>
-			<p>The analysis snapshot is <b>{longDate(site.asOf)}</b>. Records were fetched between
-				{longDate(site.fetchedMin)} and {longDate(site.fetchedMax)}{#if revisions.length && site.codeRevisionDirty};
-					the analysis was run from a working tree of the science-mission-citations analysis code with uncommitted changes relative to
-					{revisions.length > 1 ? 'revisions' : 'revision'} {listify(revisions)}{:else if revisions.length};
-				science-mission-citations analysis code {revisions.length > 1 ? 'revisions' : 'revision'} {listify(revisions)}{/if}.
-				Live searches may differ as the literature and its indexing change; an exact reproduction needs
-				this snapshot and its curation decisions.</p>
-			<p>{site.attribution.acknowledgement} See the <a href={site.attribution.adsTermsUrl}>ADS terms of use</a>
-				and <a href="https://scixplorer.org/scixhelp/search-scix/search-syntax">SciX search documentation</a>.</p>
 		</section>
 
 		<section id="citing">

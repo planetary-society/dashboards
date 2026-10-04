@@ -69,7 +69,7 @@
 
 		<section aria-labelledby="share-title">
 			<div class="section-heading">
-				<h2 id="share-title" class="chart-title">{d.rankable ? 'Highly cited papers per mission' : 'Publications per mission'}<Hint label="this chart" text={d.rankable ? note(top === 1 ? 'top1' : 'top10', 'shared', 'never') : note('publications')} href={methodsHref(d.rankable ? 'high-impact' : 'mission-papers')} /></h2>
+				<h2 id="share-title" class="chart-title">{d.rankable ? 'Highly cited papers per mission' : 'Publications per mission'}<Hint label="this chart" text={d.rankable ? note(top === 1 ? 'top1' : 'top10', 'shared', 'never') : note('publications')} href={methodsHref(d.rankable ? '' : 'mission-papers')} /></h2>
 				{#if d.rankable}{@render tier('Highly cited share percentile')}{/if}
 			</div>
 			<TopShareBars missions={d.missions} slug={d.slug} rankable={d.rankable} {top} {selectedId} onselect={selectMission} />

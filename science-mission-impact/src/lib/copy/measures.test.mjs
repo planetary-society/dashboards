@@ -26,7 +26,7 @@ test('divisionMeasureGroups: eight pooled measures, then six highlighted cutoffs
 		'Top 25% | 30 | 300 papers at or above | true', 'Top 50% | 9 | 1,210 papers at or above | true'
 	]);
 	assert.match(cuts.rows[0].hint.text, /^Cutoff: the fewest citations/);
-	assert.equal(cuts.rows[0].hint.anchor, 'high-impact');
+	assert.equal(cuts.rows[0].hint.anchor, '');
 	assert.match(pooled.rows[7].hint.text, /^The share of all citations/);
 });
 

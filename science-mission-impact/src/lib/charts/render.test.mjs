@@ -386,5 +386,7 @@ test('ScopeSwitch prerenders the three scopes, short forms, the pressed one and 
 	assert.match(html, /role="tooltip"[^>]*>Papers published from the first full month after science operations begin through 3 years after the prime mission ends\. Citations are counted through the third calendar year after each paper appears\./);
 	assert.match(html, /through 3 years after the mission ends\. Citations are counted through the third calendar year/);
 	assert.match(html, /Every tracked publication to date, with every citation to date\./);
-	for (const anchor of ['full-window', 'early-window', 'high-impact']) assert.ok(html.includes(`href="/methods/#${anchor}"`), anchor);
+	for (const anchor of ['full-window', 'early-window']) assert.ok(html.includes(`href="/methods/#${anchor}"`), anchor);
+	assert.ok(html.includes('href="/methods/"'));
+	assert.ok(!html.includes('href="/methods/#high-impact"'));
 });

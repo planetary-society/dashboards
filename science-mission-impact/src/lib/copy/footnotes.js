@@ -9,12 +9,12 @@ const calendarYears = (p) => p.citationYears + 1;
 
 export const FOOTNOTES = {
 	top10: {
-		anchor: 'high-impact',
+		anchor: '',
 		text: () =>
 			'Top 10%: among the 10% most-cited papers from this division’s missions, ranked against papers published around the same time.'
 	},
 	top1: {
-		anchor: 'high-impact',
+		anchor: '',
 		text: () => 'Top 1%: among the 1% most-cited papers from this division’s missions within the selected window. Not adjusted for publication year.'
 	},
 	full: {
@@ -28,12 +28,12 @@ export const FOOTNOTES = {
 			`${windowLabel(p)}: ${publicationWindowText(p)} Citations count from the year a paper appeared through the ${ordinal(p.citationYears)} calendar year after it (${calendarYears(p)} calendar years in all).`
 	},
 	lifetime: {
-		anchor: 'high-impact',
+		anchor: '',
 		text: () =>
 			'Lifetime: all tracked publications to date. The most recent publication years are too new to rank, so those papers count as tracked publications but carry no top-10% score.'
 	},
 	shared: {
-		anchor: 'high-impact',
+		anchor: '',
 		text: () =>
 			'A paper naming several missions is split evenly among the missions in this division that claim it, so counts can be fractional.'
 	},
@@ -102,12 +102,12 @@ export const FOOTNOTES = {
 		text: () => 'Uncited publications: papers with no citations in the selected scope.'
 	},
 	topDecileShare: {
-		anchor: 'high-impact',
+		anchor: '',
 		text: () =>
 			'The share of all citations in the selected scope that went to the 10% most-cited papers from this division’s missions. The higher it is, the more attention concentrates on a few papers.'
 	},
 	cutoff: {
-		anchor: 'high-impact',
+		anchor: '',
 		text: () =>
 			'Cutoff: the fewest citations a paper needs to rank in the top share named, among every paper from this division’s missions in the selected scope, ties included. The count beside it is the papers at or above that line. Not adjusted for publication year.'
 	},

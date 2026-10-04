@@ -90,8 +90,7 @@ docs/
     │   ├── descoped.csv                      # Scope-cut awards, same schema as terminations.csv (synced daily; optional at runtime)
     │   ├── doge_claims.csv                   # DOGE's claimed cancellations (synced daily)
     │   ├── cancellations_for_convenience_awards_by_fiscal_year.csv   # FY rollup: fiscal_year,terminated_awards (synced daily)
-    │   ├── metadata.json                     # {"lastUpdated": "...", "files": {"terminations": {...}, "doge_claims": {...}}}
-    │   └── master_ledger_latest.csv          # DEPRECATED — no longer read by the dashboard; kept one cycle for external links
+    │   └── metadata.json                     # {"lastUpdated": "...", "files": {"terminations": {...}, "doge_claims": {...}}}
     ├── science/
     │   ├── NASA-district-Science-summary.csv
     │   └── NASA-state-Science-summary.csv

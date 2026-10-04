@@ -145,11 +145,12 @@ test('citations per $100M keep each rankable division apart, null for an empty s
 		{ division: 'test', name: 'Test', groups: [
 			{ key: 'under', missions: 2, cost: 50, citations: 10, perHundredM: 20 },
 			{ key: 'over', missions: 1, cost: 300, citations: 7, perHundredM: 2.333 }
-		], favors: null, margin: 0.88335, largestUnder: { id: 'u1', name: 'u1', share: 1 } },
+		], favors: null, flipsOn: [{ id: 'u1', name: 'u1', side: 'under' }, { id: 'o1', name: 'o1', side: 'over' }],
+		margin: 0.88335, largestUnder: { id: 'u1', name: 'u1', share: 1 } },
 		{ division: 'other', name: 'Other', groups: [
 			{ key: 'under', missions: 0, cost: 0, citations: 0, perHundredM: null },
 			{ key: 'over', missions: 1, cost: 150, citations: 10, perHundredM: 6.667 }
-		], favors: null, margin: null, largestUnder: null }
+		], favors: null, flipsOn: [], margin: null, largestUnder: null }
 	]);
 });
 
@@ -234,6 +235,34 @@ test('per-dollar favors a side only when no single mission decides it', () => {
 		{ favors: null, margin: 0.995, largestUnder: { id: 's1', name: 's1', share: 1 } },
 		{ favors: null, margin: null, largestUnder: null }
 	]);
+	// flipsOn names what favors === null rests on: without v1 the under side reads 0 (reversed),
+	// without w1 the over side is empty; a robust lead, or no order at all, has none.
+	const flips = (row) => row.flipsOn.map((m) => `${m.id}:${m.side}`);
+	assert.deepEqual(rows.map(flips), [[], ['v1:under', 'w1:over'], [], ['s1:under', 's2:over'], []]);
+	for (const row of rows) assert.equal(row.favors !== null, row.flipsOn.length === 0 && row.margin !== null);
+});
+
+test('the comparison per rankable division, and its equal-weight mean over divisions with both sides', () => {
+	// Test: under a1 (2) and a failure (0); over b1 (6).
+	const a = division([mission('a1', 50, 2), failure('af', 60), mission('b1', 500, 6), unmeasured('lost', 70)]);
+	// Other: under o1 (1); over o2 (3) and o3 (5).
+	const b = { ...division([mission('o1', 100, 1), mission('o2', 200, 3), mission('o3', 900, 5)]), slug: 'other', name: 'Other' };
+	// One-sided: present in byDivision, left out of the mean.
+	const c = { ...division([mission('c1', 20, 4), mission('c2', 30, 0)]), slug: 'cheap', name: 'Cheap' };
+	const tiny = { ...division([mission('skip', 10, 9)]), slug: 'tiny', name: 'Tiny', rankable: false };
+	const { comparison } = discuss([a, b, c, tiny].map(packaged));
+	assert.deepEqual(comparison.byDivision, [
+		{ division: 'test', name: 'Test', under: { missions: 2, failed: 1, withTop: 1, top10: 2, top10PerMission: 1 },
+			over: { missions: 1, failed: 0, withTop: 1, top10: 6, top10PerMission: 6 } },
+		{ division: 'other', name: 'Other', under: { missions: 1, failed: 0, withTop: 1, top10: 1, top10PerMission: 1 },
+			over: { missions: 2, failed: 0, withTop: 2, top10: 8, top10PerMission: 4 } },
+		{ division: 'cheap', name: 'Cheap', under: { missions: 2, failed: 0, withTop: 1, top10: 4, top10PerMission: 2 },
+			over: { missions: 0, failed: 0, withTop: 0, top10: 0, top10PerMission: null } }
+	]);
+	// (1 + 1) / 2 and (6 + 4) / 2; the pooled groups instead read 7 / 5 and 14 / 3.
+	assert.deepEqual(comparison.equalWeight, { under: 1, over: 5 });
+	assert.deepEqual(comparison.groups.map((g) => g.top10PerMission), [1.4, 4.667]);
+	assert.deepEqual(discuss([packaged(c)]).comparison.equalWeight, { under: null, over: null });
 });
 
 test('timing cuts the reached missions into cost thirds at round(n/3) and round(2n/3)', () => {
@@ -307,4 +336,28 @@ test('the packaged story is the discussion over the packaged divisions', () => {
 	assert.deepEqual(story, site.story);
 	// ponytail: conditional until data/paper-kinds.json has been packaged; make it unconditional after.
 	assert.deepEqual(new Set(site.kinds.missions.map((m) => m.id)), new Set(site.story.threshold.ids));
+});
+
+test('every smi.config.json names override reaches the packaged tiles, index, mission docs and CLPS', () => {
+	const dir = new URL('./generated/', import.meta.url);
+	const read = (name) => JSON.parse(readFileSync(new URL(name, dir), 'utf8'));
+	const { names } = loadConfig(new URL('../../../', import.meta.url).pathname);
+	const { tiles } = read('scrolly.json');
+	const index = read('index.json');
+	const { clps } = read('site.json');
+	for (const [id, override] of Object.entries(names)) {
+		const tile = tiles.find((t) => t.id === id);
+		const lander = clps.missions.find((m) => m.id === id);
+		assert.ok(tile || lander, `${id} is published`);
+		if (tile) {
+			const doc = read(`missions/${id}.json`);
+			const entry = index.find((e) => e.id === id);
+			if (override.name) for (const named of [tile, doc, entry]) assert.equal(named.name, override.name, id);
+			if (override.fullName) for (const named of [doc, entry]) assert.equal(named.fullName, override.fullName, id);
+		}
+		if (lander && override.name) assert.equal(lander.name, override.name, id);
+		if (lander && override.fullName) assert.equal(lander.fullName, override.fullName, id);
+	}
+	// The overridden tile in the example: MarCo is published as MarCO.
+	assert.equal(tiles.find((t) => t.id === 'marco')?.name, names.marco.name);
 });

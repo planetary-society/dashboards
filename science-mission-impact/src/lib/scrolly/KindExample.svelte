@@ -3,7 +3,11 @@
 	// every paper on record (lifetime) with its kind, year, citations and any note. Papers reporting
 	// the mission's own science data stay at full contrast; the rest are faded.
 	import { int, money, plural } from '$lib/format.js';
+	import { fullWindowLabel } from '$lib/copy/window.js';
 
+	// The data says only whether a paper is inside the window, not which side of it, hence
+	// "outside". On a phone a faded paper is its one-line title alone, on the row pitches
+	// exampleLayout sets, so all seven RainCube papers fit; the list scrolls if a stage cannot.
 	/** layout: exampleLayout() result. example: one of site.kinds.examples. kinds: site.kinds. */
 	let { layout, example, kinds, visible = false, compact = false } = $props();
 
@@ -16,13 +20,13 @@
 		<span class="meta">{money(example.cost)} · {int(example.lifetime.papers)} {plural(example.lifetime.papers, 'paper')} to date · {int(example.lifetime.citations)} citations</span>
 	</span>
 
-	<ol class="list" style:top="{layout.listY}px" style:left="{layout.left}px" style:right="{layout.left}px">
+	<ol class="list" style:top="{layout.listY}px" style:left="{layout.left}px" style:right="{layout.left}px" style:--row={compact ? `${layout.row}px` : null} style:--hit={compact ? `${layout.hit}px` : null}>
 		{#each example.lifetime.list as p (p.bibcode)}
 			<li class={p.kind === 'results' ? 'hit' : 'dim'}>
 				<i class="kind-{p.kind}"></i>
 				<span class="text">
 					<span class="paper">{p.title}</span>
-					<span class="meta">{p.year} · {int(p.citations)} citations · {labels.get(p.kind) ?? ''}{!compact && p.note ? ` · ${p.note}` : ''}{p.inScope ? '' : ' · after its window'}</span>
+					{#if !compact || p.kind === 'results'}<span class="meta">{p.year} · {int(p.citations)} citations · {labels.get(p.kind) ?? ''}{!compact && p.note ? ` · ${p.note}` : ''}{p.inScope ? '' : ` · outside its ${compact ? 'window' : fullWindowLabel}`}</span>{/if}
 				</span>
 			</li>
 		{/each}
@@ -66,23 +70,22 @@
 		color: var(--dust);
 	}
 
+	/* a stage too short for every row scrolls the list rather than cutting it */
 	.list {
 		bottom: 0;
 		margin: 0;
 		padding: 0;
 		list-style: none;
-		overflow: hidden;
-		/* rows that do not fit wrap into a second column, off to the right and clipped, so the cut falls between rows */
-		display: flex;
-		flex-direction: column;
-		flex-wrap: wrap;
-		align-content: flex-start;
+		overflow-y: auto;
+		scrollbar-width: thin;
+	}
+
+	.visible .list {
+		pointer-events: auto;
 	}
 
 	li {
 		display: flex;
-		flex: none;
-		width: 100%;
 		gap: 8px;
 		padding: 6px 0;
 		border-top: 1px solid var(--shadow);
@@ -128,9 +131,35 @@
 		line-height: 16px;
 	}
 
-	/* on a phone the faded rows take one line so all seven papers fit; the hit keeps two */
+	.compact .title {
+		font-size: 16px;
+		line-height: 20px;
+	}
+
+	/* on a phone every row has a fixed pitch: a faded row is one line of title, the hit keeps
+	   two lines and its meta line */
+	.compact li {
+		height: var(--row);
+		padding: 4px 0 3px;
+	}
+
+	.compact li.hit {
+		height: var(--hit);
+	}
+
+	.compact li i {
+		margin-top: 3px;
+	}
+
 	.compact .dim .paper {
 		-webkit-line-clamp: 1;
 		line-clamp: 1;
+	}
+
+	.compact .text .meta {
+		line-height: 14px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 </style>

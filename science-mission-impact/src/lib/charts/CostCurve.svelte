@@ -19,13 +19,13 @@
 	const band = $derived(facts?.band.p25 != null && facts?.band.p75 != null ? facts.band : null);
 	const takeaway = $derived(
 		facts?.atP25
-			? `Missions up to ${money(facts.band.p25)} account for the first quarter of the division’s top ${view.top}% papers and ${pct(facts.atP25.costShare)} of its spending.`
-			: `No mission in this division holds a top ${view.top}% paper in this view.`
+			? `Missions up to ${money(facts.band.p25)} account for the first quarter of the division’s top-${view.top}% papers and ${pct(facts.atP25.costShare)} of its spending.`
+			: `No mission in this division holds a top-${view.top}% paper in this view.`
 	);
 	const unplaced = $derived(facts?.unplaced ? `${upperFirst(spell(facts.unplaced))} ${plural(facts.unplaced, 'mission')} ${facts.unplaced === 1 ? 'has' : 'have'} no cost on record and ${facts.unplaced === 1 ? 'is' : 'are'} not shown.` : '');
-	const summary = $derived(facts ? `Running share of top ${view.top}% papers and spending, adding missions in cost order. ${band ? `The middle half of the top papers comes from missions costing ${money(band.p25)} to ${money(band.p75)}. ` : ''}${takeaway} ${unplaced}` : '');
+	const summary = $derived(facts ? `Running share of top-${view.top}% papers and spending, adding missions in cost order. ${band ? `The middle half of the top-${view.top}% papers comes from missions costing ${money(band.p25)} to ${money(band.p75)}. ` : ''}${takeaway} ${unplaced}` : '');
 	const tiles = $derived(missions.map((m) => ({ ...m, division: slug })));
-	const label = (p) => `${p.name}: ${money(p.cost)}, ${pct(p.share)} of top-paper credit.\nMissions up to this cost: ${pct(p.topShare)} of credit, ${pct(p.costShare)} of spending.`;
+	const label = (p) => `${p.name}: ${money(p.cost)}, ${pct(p.share)} of top-${view.top}% credit.\nMissions up to this cost: ${pct(p.topShare)} of credit, ${pct(p.costShare)} of spending.`;
 	const items = $derived(new Map((c?.marks ?? []).map((p) => [p.id, {
 		...p, variant: missions.find((m) => m.id === p.id)?.failed ? 'failure' : p.reached ? 'reached' : 'none', label: label(p)
 	}])));
@@ -39,10 +39,10 @@
 		<p class="sr-only">{summary}</p>
 		<p class="takeaway">{takeaway}</p>
 		<div class="legend meta">
-			<span><i class="top"></i>Top-paper credit</span>
+			<span><i class="top"></i>Top-{view.top}% credit</span>
 			<span><i class="cost"></i>Spending</span>
 			{#if referenceCost}<span><i class="reference"></i>{money(referenceCost)} reference</span>{/if}
-			{#if band}<label><input type="checkbox" bind:checked={showBand} /> Middle half of credit</label>{/if}
+			{#if band}<label><input type="checkbox" bind:checked={showBand} /> Middle half of top-{view.top}% credit</label>{/if}
 		</div>
 		<p class="meta axis-label">Cumulative share · Moving right adds costlier missions</p>
 		<div class="stage" bind:clientWidth={width} style:height="{c?.height ?? 360}px">
@@ -70,7 +70,7 @@
 			{/if}
 		</div>
 		<p class="meta axis-label">Adjusted mission cost · log scale</p>
-		{#if showBand && band}<p class="meta">Middle half of credit: {money(band.p25)}–{money(band.p75)}.</p>{/if}
+		{#if showBand && band}<p class="meta">Middle half of top-{view.top}% credit: {money(band.p25)}–{money(band.p75)}.</p>{/if}
 		<MissionReadout id={selectedId} {slug} label={selected ? label(selected) : 'Selected mission: not included in this cost comparison.'} />
 		{#if unplaced}<p class="meta">{unplaced}</p>{/if}
 	</figure>

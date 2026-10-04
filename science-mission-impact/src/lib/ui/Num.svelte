@@ -5,8 +5,11 @@
 	const chars = $derived(String(value ?? '').split(''));
 </script>
 
-<span class="num" aria-label={String(value ?? '')}
-	>{#each chars as ch}{#if ch >= '0' && ch <= '9'}<span class="d" aria-hidden="true">{ch}</span>{:else}<span aria-hidden="true">{ch}</span>{/if}{/each}</span
+<!-- aria-label on a plain span is ignored by many screen readers: the number is read from real text -->
+<span class="num"
+	><span class="sr-only">{value ?? ''}</span><span aria-hidden="true"
+		>{#each chars as ch}{#if ch >= '0' && ch <= '9'}<span class="d">{ch}</span>{:else}{ch}{/if}{/each}</span
+	></span
 >
 
 <style>

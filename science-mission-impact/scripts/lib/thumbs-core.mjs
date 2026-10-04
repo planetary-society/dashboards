@@ -9,6 +9,7 @@ import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { assertKnownIds } from './config.mjs';
 import { loadSourceCatalog } from './source.mjs';
 import { groupBy } from './util.mjs';
 
@@ -132,14 +133,18 @@ export function readManifest(file) {
  * Missions in scope = every short_title in the configured corpus_stats runs,
  * joined to index.json and its verified envelope. Missing identities are fatal;
  * unmatched remains an empty array for the existing thumbnail caller contract.
+ * The image is smi.config.json `thumbnails.overrides[id]` when set, else upstream's
+ * image_url: the URL fetched, hashed for the cache and recorded in the manifest.
  * @returns {{missions: Array<{mission_id: string, short_title: string, url: string|null}>, unmatched: string[]}}
  */
 export function loadMissionScope({ rawDir, config }) {
 	const source = loadSourceCatalog(rawDir, config);
+	const overrides = config.thumbnails?.overrides ?? {};
+	assertKnownIds('thumbnails.overrides', Object.keys(overrides), new Set(source.missions.keys()));
 	const missions = [...source.missions.values()].map(({ id, shortTitle, corpus }) => ({
 		mission_id: id,
 		short_title: shortTitle,
-		url: isFetchableUrl(corpus.image_url) ? corpus.image_url : null
+		url: overrides[id] ?? (isFetchableUrl(corpus.image_url) ? corpus.image_url : null)
 	}));
 	missions.sort((a, b) => (a.mission_id < b.mission_id ? -1 : a.mission_id > b.mission_id ? 1 : 0));
 	return { missions, unmatched: [] };

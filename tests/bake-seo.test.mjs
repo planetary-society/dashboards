@@ -495,19 +495,29 @@ test('renderDistrictsIndex canonical points at the districts directory', () => {
 
 /** Science Mission Impact division slugs, in configured order */
 const SMI_DIVISIONS = ['astrophysics', 'earth', 'planetary'];
+const SMI_MISSIONS = [{ division: 'planetary', id: 'msl' }, { division: 'astrophysics', id: 'hst' }];
 
-test('renderSitemap emits the fixed URLs plus one per district', () => {
+test('renderSitemap emits the fixed URLs plus one per district and Science Mission Impact page', () => {
     const codes = ['CA-16', 'TX-22', 'AL-05'];
-    const xml = renderSitemap({ districtCodes: codes, smiDivisions: SMI_DIVISIONS, lastUpdated: '2026-08-20' });
-    const expected = FIXED_URLS.length + codes.length;
+    const xml = renderSitemap({
+        districtCodes: codes, smiDivisions: SMI_DIVISIONS, smiMissions: SMI_MISSIONS, lastUpdated: '2026-08-20'
+    });
+    const expected = FIXED_URLS.length + codes.length + SMI_DIVISIONS.length + SMI_MISSIONS.length;
 
     assert.equal((xml.match(/<url>/g) || []).length, expected);
     assert.equal((xml.match(/<loc>/g) || []).length, expected);
 });
 
-test('renderSitemap excludes the unlisted Science Mission Impact dashboard', () => {
-    const xml = renderSitemap({ districtCodes: ['CA-16'], smiDivisions: SMI_DIVISIONS });
-    assert.ok(!xml.includes('/science-mission-impact/'));
+test('renderSitemap lists the Science Mission Impact overview, methods, divisions and missions', () => {
+    const xml = renderSitemap({ districtCodes: ['CA-16'], smiDivisions: SMI_DIVISIONS, smiMissions: SMI_MISSIONS });
+    const paths = [
+        '', 'methods/', ...SMI_DIVISIONS.map((slug) => `${slug}/`), 'astrophysics/hst/', 'planetary/msl/'
+    ];
+
+    for (const p of paths) {
+        assert.ok(xml.includes(`<loc>${SITE_BASE}/science-mission-impact/${p}</loc>`), `sitemap missing ${p || 'overview'}`);
+    }
+    assert.ok(xml.indexOf('/astrophysics/hst/') < xml.indexOf('/planetary/msl/'), 'mission URLs sorted');
 });
 
 test('renderSitemap dates only the cancellations URLs', () => {

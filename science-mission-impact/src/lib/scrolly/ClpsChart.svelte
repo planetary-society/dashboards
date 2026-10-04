@@ -60,15 +60,17 @@
 	const lines = $derived(
 		all.map((s, i) => ({ ...s, text: texts[i], d: path(s.series.map((papers, month) => ({ month, papers }))), opacity: s.main ? a : b }))
 	);
-	// end labels in y order, each block's top at least a line below the last line of the one above;
-	// y is the block's last line, the CLPS names stack above it
+	// end labels in y order, each block's top line at least `apart` below the last line of the one
+	// above; y is the block's last line, the CLPS names stack above it. `apart` is Poppins' full
+	// glyph box (1.4em) at the label size, so blocks never touch, where lineH only packs one block.
+	const apart = $derived(compact ? 16 : 19);
 	const labels = $derived.by(() => {
 		let prev = -Infinity;
 		return lines
 			.map((l) => ({ id: l.id, lines: l.main ? clpsLines : [l.text], y: y(l.last.papers), opacity: l.opacity, main: l.main }))
 			.sort((p, q) => p.y - q.y)
 			.map((l) => {
-				const ly = Math.max(l.y, prev + l.lines.length * lineH);
+				const ly = Math.max(l.y, prev + (l.lines.length - 1) * lineH + apart);
 				prev = ly;
 				return { ...l, y: ly };
 			});

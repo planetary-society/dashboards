@@ -92,8 +92,8 @@
 		inset: 0;
 	}
 
-	/* Fills and outlines per variant are the shared .mark-* classes in app.css, so the legend
-	   (LanesKey) can never drift from the squares it explains. */
+	/* Fills and outlines per variant are the shared .mark-* classes in app.css, so any legend
+	   drawn from them can never drift from the squares it explains. */
 	.sq {
 		position: absolute;
 		left: 0;

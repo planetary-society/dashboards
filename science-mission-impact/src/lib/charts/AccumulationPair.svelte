@@ -8,7 +8,7 @@
 	// simply ends, and the citations are a bar that keeps growing.
 	import { scaleLinear } from 'd3-scale';
 	import { line } from 'd3-shape';
-	import { int, compact, plural } from '$lib/format.js';
+	import { int, compact, plural, longDate } from '$lib/format.js';
 	import { windowLabel } from '$lib/copy/window.js';
 	import { lifetimeModel, windowModel, axes, lifetimeDomain, missionMilestones, layoutMilestones, stackLabels, box } from './accumulation.js';
 
@@ -39,7 +39,7 @@
 		const { markers, height } = layoutMilestones(milestones, x, b);
 		const [pubLabelY, citeLabelY] = stackLabels(b.top, 2);
 		b.top += height;
-		const { yPub, yCite, rows } = axes({ pubTotal: life.pubTotal, citeTotal: life.citeTotal, top: b.top, bottom: b.bottom });
+		const { yPub, yCite, pubTicks, citeTicks } = axes({ pubTotal: life.pubTotal, citeTotal: life.citeTotal, top: b.top, bottom: b.bottom });
 		const pubLine = line()
 			.x((p) => x(p.year))
 			.y((p) => yPub(p.pub));
@@ -55,7 +55,8 @@
 			markers,
 			yPub,
 			yCite,
-			rows,
+			pubTicks,
+			citeTicks,
 			pubPath: pubLine(solid),
 			citePath: citeLine(solid),
 			pubDash: dashed && pubLine(dashed),
@@ -71,14 +72,14 @@
 
 	const lifeLabel = $derived(
 		life
-			? `Cumulative tracked publications and citations, ${life.years[0]} to ${life.years[life.years.length - 1]}: ${int(life.pubTotal)} tracked publications and ${int(life.citeTotal)} citations in total.${
-					milestones.map((m) => ` ${m.label}: ${m.date}.`).join('')
+			? `Cumulative tracked publications and citations, ${life.years[0]} to ${life.years[life.years.length - 1]}: ${int(life.pubTotal)} tracked ${plural(life.pubTotal, 'publication')} and ${int(life.citeTotal)} ${plural(life.citeTotal, 'citation')} in total.${
+					milestones.map((m) => ` ${m.label}: ${longDate(m.date)}.`).join('')
 				} ${coverageNote}`
 			: 'No lifetime series.'
 	);
 	const winLabel = $derived(
 		win
-			? `Cumulative tracked publications and citations within the exported publication windows, with ${policy.citationYears} subsequent citation years per paper: ${int(win.pubTotal)} tracked publications and ${int(win.citeTotal)} citations in total.`
+			? `Cumulative tracked publications and citations within the ${windowTitle}, with ${policy.citationYears} subsequent citation years per paper: ${int(win.pubTotal)} tracked ${plural(win.pubTotal, 'publication')} and ${int(win.citeTotal)} ${plural(win.citeTotal, 'citation')} in total.`
 			: 'No window series.'
 	);
 
@@ -97,14 +98,18 @@
 		{#if incomplete}<p class="meta note">{coverageNote}</p>{/if}
 		<p class="readout meta" aria-hidden="true">{readout}</p>
 		<div class="plot">
-			<div class="canvas" role="img" aria-label={lifeLabel} bind:clientWidth={lifeWidth}>
+			<!-- the SVG's height is reserved before hydration measures the width, so nothing below jumps -->
+			<div class="canvas" role="img" aria-label={lifeLabel} bind:clientWidth={lifeWidth} style:min-height={life ? `${HEIGHT}px` : null}>
 				{#if L}
 					<svg width={lifeWidth} height={HEIGHT} viewBox="0 0 {lifeWidth} {HEIGHT}" aria-hidden="true">
 						<line class="rule" x1={L.b.left} x2={L.b.right} y1={L.b.bottom} y2={L.b.bottom} />
-						{#each L.rows as row (row.f)}
-							<line class="rule" x1={L.b.left} x2={L.b.right} y1={row.y} y2={row.y} />
-							<text class="tick pub" x={L.b.left - 8} y={row.y} dy="0.32em" text-anchor="end">{compact(row.pub)}</text>
-							<text class="tick cite" x={L.b.right + 8} y={row.y} dy="0.32em">{compact(row.cite)}</text>
+						<!-- gridlines follow the publications axis; with two large totals the citation ticks share its rows -->
+						{#each L.pubTicks as t (t.v)}
+							{#if t.v > 0}<line class="rule" x1={L.b.left} x2={L.b.right} y1={t.y} y2={t.y} />{/if}
+							<text class="tick pub" x={L.b.left - 8} y={t.y} dy="0.32em" text-anchor="end">{compact(t.v)}</text>
+						{/each}
+						{#each L.citeTicks as t (t.v)}
+							<text class="tick cite" x={L.b.right + 8} y={t.y} dy="0.32em">{compact(t.v)}</text>
 						{/each}
 
 						{#each L.markers as marker (marker.key)}
@@ -119,8 +124,8 @@
 						<path class="line cite" class:dash={incomplete} d={L.citePath} />
 						<path class="line pub" d={L.pubPath} />
 
-						<text class="end pub" x={L.b.right} y={L.pubLabelY} text-anchor="end">{total(life.pubTotal)} tracked publications</text>
-						<text class="end cite" x={L.b.right} y={L.citeLabelY} text-anchor="end">{total(life.citeTotal)} citations</text>
+						<text class="end pub" x={L.b.right} y={L.pubLabelY} text-anchor="end">{total(life.pubTotal)} tracked {plural(life.pubTotal, 'publication')}</text>
+						<text class="end cite" x={L.b.right} y={L.citeLabelY} text-anchor="end">{total(life.citeTotal)} {plural(life.citeTotal, 'citation')}</text>
 
 						{#if point}
 							<line class="cursor" x1={L.x(point.year)} x2={L.x(point.year)} y1={L.b.top} y2={L.b.bottom} />
@@ -167,7 +172,7 @@
 	<figure class="panel">
 		<h2 class="chart-title">{windowTitle}</h2>
 		{#if windowSeries?.start && windowSeries?.end}
-			<p class="meta note">Tracked publications: {windowSeries.start} to {windowSeries.end} (end exclusive). {#if windowSeries.matureDate}Maturity date: {windowSeries.matureDate}.{/if}</p>
+			<p class="meta note">Tracked publications from {longDate(windowSeries.start)} to {longDate(windowSeries.end)}{#if windowSeries.matureDate}; citations counted through {longDate(windowSeries.matureDate)}{/if}.</p>
 		{/if}
 		{#if windowState === 'available' && win}
 			<p class="readout meta">Running totals aligned to each publication window’s opening month. Citation rows use calendar-year offsets from its opening year.</p>
@@ -181,16 +186,16 @@
 				</li>
 				{#each win.rows as row (row.year)}
 					<li class:first-closed={row.year === win.pubYears + 1}>
-						<span class="year">Year {row.year}{#if row.missions != null}<span class="coverage">{int(row.missions)} {plural(row.missions, 'mission')}</span>{/if}</span>
+						<span class="year">Year {row.year}{#if row.missions != null}{' '}<span class="coverage">{int(row.missions)} {plural(row.missions, 'mission')}</span>{/if}</span>
 						<span class="pubs">
-							{#if row.papers != null}{int(row.papers)}<span class="sr-only"> tracked publications</span>{:else if row.year === win.pubYears + 1}<span class="meta">window closed</span>{/if}
+							{#if row.papers != null}{int(row.papers)}<span class="sr-only">{' '}tracked {plural(row.papers, 'publication')}</span>{:else if row.year === win.pubYears + 1}<span class="meta">window closed</span>{/if}
 						</span>
 						<span class="track">
 							<span class="bar" style:width="calc((100% - var(--val)) * {row.to})">
 								<span class="was" style:flex-grow={row.from}></span>
 								<span class="new" style:flex-grow={row.to - row.from}></span>
 							</span>
-							<span class="val">{total(row.cite)}<span class="sr-only"> citations</span></span>
+							<span class="val">{total(row.cite)}<span class="sr-only">{' '}{plural(row.cite, 'citation')}</span></span>
 						</span>
 					</li>
 				{/each}
@@ -200,7 +205,7 @@
 			{/if}
 		{:else}
 			<p class="meta note">
-				The publication window is not available for this mission{windowState === 'immature' ? ' yet' : ''}.
+				The {windowTitle} is not available for this mission{windowState === 'immature' ? ' yet' : ''}.
 			</p>
 		{/if}
 	</figure>

@@ -6,11 +6,11 @@
 	import { view, setScope, setTop } from '$lib/state/view.svelte.js';
 
 	let { lead, tail = '', showTop = true } = $props();
-	// mid-sentence: the window names are proper nouns, only "lifetime" reads lower-case
+	// the three scope names share one capitalisation, as the choice set is read as a list
 	const scopes = $derived(
 		['full', 'window', 'lifetime'].map((value) => ({
 			value,
-			label: value === 'lifetime' ? 'lifetime' : scopeLabel(value, { windowPolicy: page.data.site.windowPolicy })
+			label: scopeLabel(value, { windowPolicy: page.data.site.windowPolicy })
 		}))
 	);
 </script>

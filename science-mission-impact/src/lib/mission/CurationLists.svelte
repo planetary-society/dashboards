@@ -14,7 +14,6 @@
 	let showAll = $state({ includes: false, excludes: false });
 
 	const href = (item) => (item.bibcode ? adsAbstract(item.bibcode) : item.doi ? `https://doi.org/${item.doi}` : null);
-	const label = (item) => item.title || item.bibcode || item.doi || 'Untitled';
 	const reviewer = (item) => (item.authority === 'agent' ? 'AI-assisted review' : 'Reviewed by hand');
 </script>
 
@@ -26,10 +25,12 @@
 			{#each shown as item, i (item.bibcode ?? item.doi ?? `${key}-${i}`)}
 				{@const url = href(item)}
 				<li>
-					{#if url}
-						<a class="title" href={url} target="_blank" rel="noopener">{label(item)}</a>
+					{#if url && item.title}
+						<a class="title" href={url} target="_blank" rel="noopener">{item.title}</a>
 					{:else}
-						<span class="title plain">{label(item)}</span>
+						<!-- an untitled record is named as such; its identifier is the link -->
+						<span class="title plain">{item.title || 'Untitled'}</span>
+						{#if url}<a class="id" href={url} target="_blank" rel="noopener">{item.bibcode ?? item.doi}</a>{/if}
 					{/if}
 					{#if item.reason}<span class="reason">{item.reason}</span>{/if}
 					<span class="meta">{reviewer(item)}{item.date ? `, ${longDate(item.date)}` : ''}</span>
@@ -45,10 +46,10 @@
 {#if includes.length || excludes.length}
 	<div class="curation">
 		{#if includes.length}
-			{@render list('includes', 'Added by hand', includes)}
+			{@render list('includes', 'Added after review', includes)}
 		{/if}
 		{#if excludes.length}
-			{@render list('excludes', 'Removed by hand', excludes)}
+			{@render list('excludes', 'Removed after review', excludes)}
 		{/if}
 	</div>
 {/if}
@@ -85,7 +86,14 @@
 		font-size: 14px;
 		line-height: 20px;
 		color: var(--white);
-		/* an untitled item falls back to its bibcode or DOI, which has nothing to break on */
+		overflow-wrap: anywhere;
+	}
+
+	/* a bibcode or DOI has nothing to break on */
+	.id {
+		display: block;
+		font-size: 12px;
+		color: var(--neptune-mid);
 		overflow-wrap: anywhere;
 	}
 

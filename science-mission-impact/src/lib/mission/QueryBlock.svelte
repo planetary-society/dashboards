@@ -6,7 +6,7 @@
 	import { longDate } from '$lib/format.js';
 	import { reconciliationSentence, hasReconciliation, fullQuery } from './query.js';
 
-	let { query } = $props();
+	let { query, name } = $props();
 
 	const arms = $derived(query?.arms ?? null);
 	const filters = $derived(query?.filters ?? null);
@@ -68,6 +68,7 @@
 {#if !empty}
 	<div class="query">
 		{#if arms}
+			<p class="lead">We searched NASA’s Astrophysics Data System (ADS) for peer-reviewed articles naming {name} in the title, abstract or keywords; standard filters drop articles that are not peer-reviewed and magazine pieces. SciX is ADS’s current interface.</p>
 			<p class="arms">{arms}</p>
 
 			{#if filters}
@@ -88,6 +89,7 @@
 
 		{#if sentence}
 			<p class="count">{sentence}</p>
+			{#if reconciliation?.curatedOut > 0}<p class="meta">Curated out: returned by the search but, on review, not about {name}.</p>{/if}
 		{/if}
 		{#if fetchedAt}
 			<p class="meta">Fetched {longDate(fetchedAt)}. ADS counts drift as its database updates.</p>
@@ -151,6 +153,13 @@
 	.actions a:hover {
 		color: var(--white);
 		text-decoration: underline;
+	}
+
+	.lead {
+		margin-bottom: 12px;
+		font-size: 14px;
+		line-height: 22px;
+		color: var(--dust);
 	}
 
 	.count {

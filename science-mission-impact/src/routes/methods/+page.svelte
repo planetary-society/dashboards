@@ -2,27 +2,27 @@
 	import { fullWindowLabel, fullWindowText, publicationWindowText, windowLabel } from '$lib/copy/window.js';
 	import Seo from '$lib/ui/Seo.svelte';
 	import EntityHeader from '$lib/ui/EntityHeader.svelte';
-	import { asset, divisionHref } from '$lib/paths.js';
+	import { canonical, divisionHref, home } from '$lib/paths.js';
 	import { int, longDate, money, listify, spell } from '$lib/format.js';
 
 	let { data } = $props();
 	const site = $derived(data.full);
 	const policy = $derived(site.windowPolicy);
 	const fullPolicy = $derived(site.fullPolicy);
+	const grace = $derived(policy.maturityGraceMonths ?? 0);
 	const revisions = $derived(site.codeRevision?.split('+').filter(Boolean).map((r) => r.slice(0, 7)) ?? []);
-	const kindDefinitions = {
-		results: 'findings drawn from the mission’s own observations',
-		data: 'calibration, validation, retrieval algorithms and data releases that make its data usable',
-		mission: 'the spacecraft, an instrument, its design, build, in-flight performance or operations',
-		review: 'reviews, roadmaps, comments and replies in which the mission is one of several things discussed',
-		future: 'predictions or plans made without its flight data',
-		other: 'work on something else that names the mission for context'
-	};
+	const clps = $derived(site.clps);
+	const threshold = $derived(money(site.story.referenceCost));
+	// Organization contact, as in docs/shared/js/constants.js CONTACT.
+	const CONTACT_EMAIL = 'casey.dreier@planetary.org';
 	const sections = [
 		['challenges', 'Bibliometric challenges'], ['missions', 'What we included'],
 		['mission-papers', 'Tracked publications'],
 		['high-impact', 'Citations and credit'], ['windows', 'Comparison windows'],
-		['cost', 'Mission costs'], ['limits', 'Interpretation'], ['reproduce', 'Sources and snapshot'],
+		['cost', 'Mission costs'], ['failures', 'Failed missions'],
+		['across-divisions', 'Figures across divisions'], ['per-dollar', 'Citations per dollar'],
+		['clps', 'Commercial lunar landers'], ['limits', 'Interpretation'], ['reproduce', 'Sources and snapshot'],
+		['citing', 'Citing and corrections'], ['image-credits', 'Image credits'],
 		['further-reading', 'Further reading']
 	];
 	const furtherReading = [
@@ -105,8 +105,12 @@
 				as a proxy for impact.</p>
 			<p>We tailor each query to filter out obvious false positives from name or acronym collisions:
 				TRACE, for example, is both a space mission and a very common word. We also compared our query
-				outcomes to the managed collections of several missions with hand-curated publication sets. They generaly agree within 10% - 25% of publication records, with a single exception, GALEX, differing by a wide amount due to the pattern of not reporting the mission name in many abstracts. Since we’re primarily comparing mission costs across orders of magnitude,
-				this is well within acceptable limits. We tested our outcomes with curated mission collections and found the overall comparative outcomes remained consistent.</p>
+				outcomes to the managed collections of several missions with hand-curated publication sets. They
+				generally agree within 10%–25% of publication records. The one exception is GALEX, which differs
+				widely because many papers using its data do not name the mission in their abstracts. Since we’re
+				primarily comparing mission costs across orders of magnitude, this is well within acceptable limits.
+				We tested our outcomes with curated mission collections and found the overall comparative outcomes
+				remained consistent.</p>
 			<p>Our aim is to identify broad patterns in the research associated with these missions. We call
 				these records “tracked publications” to make their scope clear: they capture the papers we found,
 				while leaving room for omissions and corrections. The methods below explain how we select
@@ -152,7 +156,8 @@
 			<h3 id="start">When tracking begins</h3>
 			<p>Queries are time-bound by the first full month after prime science operations start, or launch
 				date if no prime mission start is published. This reduces pre-launch and overview material; it does not eliminate
-				every false match. Missions with long cruise times or flyby results were include these results prior to the prime mission start.</p>
+				every false match. For missions with long cruises or flyby results, we include results published
+				before the prime mission start.</p>
 		</section>
 
 		<section id="high-impact">
@@ -186,10 +191,16 @@
 				a defined citation period, while lifetime totals show the accumulated record.</p>
 			<h3 id="full-window">{fullWindowLabel}</h3>
 			<p>The default comparison covers publications from a mission’s operating life and allows
-				{fullPolicy.postEndYears} years after mission end for results to appear. Recent publications
-				are excluded until their citation period is mature.</p>
+				{spell(fullPolicy.postEndYears)} years after mission end for results to appear. Each paper’s
+				citations count from its publication year through the {spell(fullPolicy.citationYears)} calendar
+				years that follow. A window counts as mature {spell(grace)} months before its last citation year
+				ends, so the most recent papers’ final citation year is counted only through the as-of date (at
+				least {spell(12 - grace)} of its twelve months), and their counts can still grow slightly. A
+				mission still operating, or one that ended too recently, is cut at the latest window end that is
+				mature on the as-of date{#if fullPolicy.minWindowYears}; a cut window shorter than
+				{spell(fullPolicy.minWindowYears)} years is not scored{/if}.</p>
 			<h3 id="early-window">{windowLabel(policy)}</h3>
-			<p>This comparison follows the prime phase, with {policy.postPrimeYears} years after prime mission
+			<p>This comparison follows the prime phase, with {spell(policy.postPrimeYears)} years after prime mission
 				end for results to appear. Its length varies by mission.</p>
 			<h3>Lifetime</h3>
 			<p>All tracked publications and their reported citations to date.</p>
@@ -200,10 +211,67 @@
 			<p>Costs come from the mission catalog’s reported life-cycle costs, including documented partner
 				contributions where available. These generally cover development, payloads, launch, and prime
 				operations. Values are adjusted to <b>{site.costBaseYear} dollars</b> using NASA’s
-				<a href="https://www.nasa.gov/wp-content/uploads/2024/11/nnsi-faqs-2024.pdf">New Start Inflation Index</a>.</p>
+				<a href="https://www.nasa.gov/wp-content/uploads/2024/11/nnsi-faqs-2024.pdf">New Start Inflation Index</a>.
+				These are the dataset’s adjusted life-cycle costs; for CubeSats they may not include a rideshare
+				launch or university labor.</p>
 			<p>Cost comparisons use individual mission values. The {money(site.story.referenceCost)} line is
 				a discussion point in adjusted dollars, not a scientific boundary. A mission exactly on the
 				line belongs to the “at or below” group.</p>
+		</section>
+
+		<section id="failures">
+			<h2>Failed and partly successful missions</h2>
+			<p>Each mission carries the outcome recorded in the mission catalog. Three outcomes count as
+				falling short: {listify(site.story.failure.statuses)}. The shortfall rate on each side of the
+				{threshold} line is the share of costed missions with one of them, overall and in each division.</p>
+			<p>Missions recorded as a Failure stay in every comparison with whatever they published; one that
+				returned nothing counts as zero output, so a lost spacecraft lowers its group’s average rather than
+				leaving it. Missions whose output could not be
+				measured, such as a window too young to score, missing mission dates or a citation history that
+				cannot be checked, are
+				left out rather than counted as zero, as are missions without a reported cost in any cost
+				comparison.</p>
+		</section>
+
+		<section id="across-divisions">
+			<h2>Figures across divisions</h2>
+			<p>Top-10% status is always decided within a division and is era-adjusted, as described under
+				<a href="#high-impact">Citations and credit</a>. Shares of a division’s top-10% papers are never
+				added up across fields. Where the overview counts top-10% papers from several divisions together
+				(a mission’s share of all the top-10% papers from its cost group, or the share of that credit on
+				papers of a given kind), each paper was ranked within its own division first and the text says
+				which group it covers. Study-wide paper totals count each distinct paper once; where a figure
+				counts a shared paper once per mission, it is called mission papers.</p>
+			<p><b>Where the middle half of top papers sits.</b> Within each division, missions are ordered by
+				adjusted cost and the division’s top-10% credit is accumulated as a running share. The band across
+				divisions averages those running shares with each division weighted equally, at every cost where
+				any of them has a mission. Its quarter marks are the costs at which that average first reaches
+				25%, 50% and 75%. A division with no top-10% credit is left out.</p>
+			<p><b>At or below the line, and above it.</b> The two-group comparison counts each mission’s
+				top-10% papers, averages them per mission on each side of the {threshold} line within each
+				division, and then averages the divisions with equal weight. The same comparison is also shown
+				division by division.</p>
+		</section>
+
+		<section id="per-dollar">
+			<h2>Citations per dollar</h2>
+			<p>Within each division, each side’s citations are divided by its summed adjusted cost and
+				reported per $100M. Divisions are kept apart. A side is said to be favored only when its higher
+				rate survives dropping any one measured mission from the division and recomputing both rates;
+				otherwise the rates are shown without a verdict.</p>
+		</section>
+
+		<section id="clps">
+			<h2>Commercial lunar landers</h2>
+			<p>The {clps.program} figure comes from a second export of the same records (the
+				<code>dist/latest</code> export), which includes missions too recent for the main study. It must
+				share this snapshot’s as-of date and schema versions.</p>
+			<p>The CLPS line is the running total of peer-reviewed papers across all CLPS landers, pooled, by
+				calendar month since the first CLPS launch on {longDate(clps.start)}. A paper claimed by more
+				than one lander counts once, at its earliest date. {listify(clps.comparators.map((c) => c.name))}
+				are aligned by months since the start of their own prime missions. The figure runs to
+				{int(clps.horizonMonths)} months, and a month is reported only once it has fully elapsed by the
+				as-of date.</p>
 		</section>
 
 		<section id="limits">
@@ -214,6 +282,8 @@
 			<p><b>Time to a first top-10% paper</b> means the publication date of the earliest qualifying paper
 				in the current snapshot—not the later date when it earned enough citations. Division charts
 				measure from science start; the overview’s project-timing chart measures from formulation start.
+				The first top-10% paper is judged era-adjusted, like every top-10% figure. A paper dated with the
+				year only is placed at 1 July for these durations.
 				No observed milestone does not mean an infinite wait.</p>
 		</section>
 
@@ -232,12 +302,41 @@
 				Publication records come from ADS/SciX. Mission pages provide the available query, curation
 				decisions, tracked publication list, and CSV download.</p>
 			<p>The analysis snapshot is <b>{longDate(site.asOf)}</b>. Records were fetched between
-				{longDate(site.fetchedMin)} and {longDate(site.fetchedMax)}{#if revisions.length};
-				analysis code {revisions.length > 1 ? 'revisions' : 'revision'} {listify(revisions)}{/if}.
+				{longDate(site.fetchedMin)} and {longDate(site.fetchedMax)}{#if revisions.length && site.codeRevisionDirty};
+					the analysis was run from a working tree of the science-mission-citations analysis code with uncommitted changes relative to
+					{revisions.length > 1 ? 'revisions' : 'revision'} {listify(revisions)}{:else if revisions.length};
+				science-mission-citations analysis code {revisions.length > 1 ? 'revisions' : 'revision'} {listify(revisions)}{/if}.
 				Live searches may differ as the literature and its indexing change; an exact reproduction needs
 				this snapshot and its curation decisions.</p>
 			<p>{site.attribution.acknowledgement} See the <a href={site.attribution.adsTermsUrl}>ADS terms of use</a>
 				and <a href="https://scixplorer.org/scixhelp/search-scix/search-syntax">SciX search documentation</a>.</p>
+		</section>
+
+		<section id="citing">
+			<h2>Citing and corrections</h2>
+			<p>Please cite this site as: The Planetary Society, “Science Mission Impact,”
+				{canonical(home())}, data as of {longDate(site.asOf)}. A companion paper describing the
+				analysis in full is in preparation.</p>
+			<p>If you find a missing or misattributed paper, a wrong date or cost, or any other error, write to
+				<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Mission pages list the query and every
+				tracked publication, which makes a specific correction easy to check.</p>
+		</section>
+
+		<section id="image-credits">
+			<h2>Image credits</h2>
+			<p>The mission squares are small greyscale crops of published images. Each name below links to
+				the image its square was cropped from, grouped by the site that hosts it.</p>
+			<details>
+				<summary>Image sources for {int(data.credits.reduce((n, g) => n + g.missions.length, 0))} missions</summary>
+				<dl>
+					{#each data.credits as group (group.host)}
+						<dt>{group.host} · {int(group.missions.length)}</dt>
+						<dd>
+							{#each group.missions as mission, i (mission.id)}{i ? ', ' : ''}<a href={mission.url}>{mission.name}</a>{/each}
+						</dd>
+					{/each}
+				</dl>
+			</details>
 		</section>
 
 		<section id="further-reading">

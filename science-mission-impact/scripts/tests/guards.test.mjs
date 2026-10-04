@@ -1,7 +1,7 @@
 import { strict as assert } from 'node:assert';
 import { describe, it } from 'node:test';
 
-import { tierBounds, validateConfig } from '../lib/config.mjs';
+import { assertKnownIds, displayNames, tierBounds, validateConfig } from '../lib/config.mjs';
 import { buildTitleIndex, resolveRunMissions } from '../lib/join.mjs';
 import {
 	assertDivisionTotals,
@@ -66,6 +66,32 @@ describe('validateConfig', () => {
 			/duplicate division slug/
 		);
 		assert.throws(() => validateConfig({ ...config, tierPercents: [5, 1] }), /ascending/);
+	});
+
+	it('validates display-name overrides and applies them over upstream names only where set', () => {
+		const names = { marco: { name: 'MarCO' }, ceres: { fullName: 'Compact Radiation belt Explorer (CeREs)' } };
+		const withNames = { ...config, names };
+		assert.equal(validateConfig(withNames), withNames);
+		for (const bad of [[], { marco: 'MarCO' }, { marco: {} }, { marco: { name: '' } }, { marco: { name: ' ' } }, { marco: { short: 'x' } }, { marco: { name: 3 } }]) {
+			assert.throws(() => validateConfig({ ...config, names: bad }), /names/, JSON.stringify(bad));
+		}
+		const upstream = { name: 'MarCo', fullName: 'Mars Cubesat One' };
+		assert.deepEqual(displayNames(withNames, 'marco', upstream), { name: 'MarCO', fullName: 'Mars Cubesat One' });
+		assert.deepEqual(displayNames(withNames, 'ceres', { name: 'CeREs', fullName: 'Compact Radiation belt Explorer (formerly CeREs)' }),
+			{ name: 'CeREs', fullName: 'Compact Radiation belt Explorer (CeREs)' });
+		assert.deepEqual(displayNames(config, 'marco', upstream), upstream);
+		// An override for a mission the package does not publish is a typo, not a no-op.
+		assert.doesNotThrow(() => assertKnownIds('names', Object.keys(names), new Set(['marco', 'ceres', 'other'])));
+		assert.throws(() => assertKnownIds('names', Object.keys(names), new Set(['marco'])), /names has unknown mission id\(s\): ceres/);
+	});
+
+	it('validates thumbnail URL overrides as http(s) URLs keyed by mission id', () => {
+		const thumbnails = { overrides: { hst: 'https://images-assets.nasa.gov/image/PIA18165/PIA18165~medium.jpg', euve: 'http://example.org/e.jpg' } };
+		assert.doesNotThrow(() => validateConfig({ ...config, thumbnails }));
+		for (const bad of [{}, { overrides: [] }, { overrides: 'x' }, { overrides: { hst: 'file:///etc/x.jpg' } }, { overrides: { hst: 'not a url' } }, { overrides: { hst: 3 } }]) {
+			assert.throws(() => validateConfig({ ...config, thumbnails: bad }), /thumbnails.overrides/, JSON.stringify(bad));
+		}
+		assert.throws(() => assertKnownIds('thumbnails.overrides', ['hst', 'nope'], new Set(['hst'])), /thumbnails.overrides has unknown mission id\(s\): nope/);
 	});
 
 });

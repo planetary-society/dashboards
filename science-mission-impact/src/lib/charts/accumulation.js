@@ -10,8 +10,9 @@
  */
 
 import { scaleLinear } from 'd3-scale';
+import { ticks } from 'd3-array';
 
-/** Gridline rows, as fractions of each axis maximum. Zero is the baseline rule. */
+/** Tick rows above zero, as fractions of each axis maximum. */
 export const TICK_FRACTIONS = [0.25, 0.5, 0.75, 1];
 
 /** Running totals of a per-period array. Non-numbers count as zero. */
@@ -129,20 +130,32 @@ export function layoutMilestones(milestones, x, { left, right, top }) {
 	return { markers, height: rows.length ? rows.length * 16 + 8 : 0 };
 }
 
+/** Below this total, quarter fractions round to repeats ("0, 1, 1, 1"); whole numbers instead. */
+export const SMALL_TOTAL = 8;
+
 /**
- * The two zero-based scales and the tick rows they share.
+ * Tick values for one axis, zero included: quarters of the total, or for a small total the
+ * whole numbers d3 picks (step at least 1).
+ */
+export function axisTicks(total) {
+	if (total < SMALL_TOTAL) return ticks(0, Math.max(0, total), 4).filter(Number.isInteger);
+	return [0, ...TICK_FRACTIONS.map((f) => total * f)];
+}
+
+/**
+ * The two zero-based scales and each one's ticks as { v, y }. With two large totals the ticks
+ * fall on the same rows; a small total gets its own whole-number rows.
  * A zero total keeps a usable scale so the flat line still sits on the baseline.
  */
 export function axes({ pubTotal, citeTotal, top, bottom }) {
 	const yPub = scaleLinear().domain([0, Math.max(pubTotal, 1)]).range([bottom, top]);
 	const yCite = scaleLinear().domain([0, Math.max(citeTotal, 1)]).range([bottom, top]);
-	const rows = TICK_FRACTIONS.map((f) => ({
-		f,
-		y: bottom + (top - bottom) * f,
-		pub: pubTotal * f,
-		cite: citeTotal * f
-	}));
-	return { yPub, yCite, rows };
+	return {
+		yPub,
+		yCite,
+		pubTicks: axisTicks(pubTotal).map((v) => ({ v, y: yPub(v) })),
+		citeTicks: axisTicks(citeTotal).map((v) => ({ v, y: yCite(v) }))
+	};
 }
 
 /**

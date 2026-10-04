@@ -13,24 +13,25 @@
 
 <Seo title="Science Mission Impact" {description} />
 
-<h1 class="sr-only">Science Mission Impact: what has NASA’s science investment produced?</h1>
+<h1 class="sr-only">Science Mission Impact: how does science impact and productivity scale with cost?</h1>
 <a class="skip" href="#divisions">Skip to divisions</a>
 
 <Story {site} scrolly={data.scrolly} />
 
 <div class="wrap">
-	<section id="divisions" class="doors" aria-label="Divisions">
+	<section id="divisions" class="doors" aria-labelledby="divisions-title">
+		<h2 id="divisions-title" class="chart-title">Explore each division</h2>
 		<ul>
 			{#each site.divisions as d (d.slug)}
 				<li>
 					<a href={divisionHref(d.slug)}>
 						<span class="name">{d.name}</span>
 						<span class="fact">
-							<b>{int(d.missions)}</b> missions, <b>{int(d.papers)}</b> tracked publications, <b>{int(d.citations)}</b> citations, {yearSpan(d.publicationYears)}
+							<b>{int(d.missions)}</b> missions, <b>{int(d.papers)}</b> tracked publications, <b>{int(d.citations)}</b> citations{#if d.publicationYears}, published {yearSpan(d.publicationYears)}{/if}
 						</span>
 						{#if bandOf.get(d.slug)?.p25 != null}
 							{@const b = bandOf.get(d.slug)}
-								<span class="fact">Its middle half of top-paper credit falls between mission costs of <b>{money(b.p25)}</b> and <b>{money(b.p75)}</b>.</span>
+							<span class="fact">Counting its missions from cheapest to costliest, the middle half of its top-10% papers came from missions costing <b>{money(b.p25)}</b> to <b>{money(b.p75)}</b>.</span>
 						{/if}
 					</a>
 				</li>
@@ -42,6 +43,10 @@
 <style>
 	.doors {
 		margin-top: 120px;
+	}
+
+	.doors h2 {
+		margin-bottom: 16px;
 	}
 
 	.doors li {

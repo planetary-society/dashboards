@@ -164,7 +164,8 @@ describe('pipelineTestFiles', () => {
 		const npmTest = JSON.parse(
 			fs.readFileSync(path.join(appRoot, 'package.json'), 'utf8'),
 		).scripts.test;
-		assert.equal(npmTest, 'node --test scripts/tests/*.test.mjs src/lib/**/*.test.mjs');
+		// Quoted, so Node expands the globs itself (recursively) whatever the shell.
+		assert.equal(npmTest, 'node --test "scripts/tests/*.test.mjs" "src/lib/**/*.test.mjs"');
 
 		// The two halves of that glob, expanded by hand from the same tree.
 		const expected = [

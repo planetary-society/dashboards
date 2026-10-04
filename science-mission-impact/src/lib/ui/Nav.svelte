@@ -13,11 +13,19 @@
 	let list = $state(null);
 
 	// The items don't fit a phone, so the strip scrolls; bring the current page's item
-	// into it rather than leaving the reader on an apparently unmarked nav.
+	// into it rather than leaving the reader on an apparently unmarked nav. Plain scrollLeft
+	// arithmetic, not scrollIntoView: Chromium moves the sequential-focus start point to a
+	// scrolled-into-view element, so the first Tab would skip the skip link.
 	$effect(() => {
 		void path;
 		const active = list?.querySelector('[aria-current="page"]');
-		const reveal = () => active?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+		const reveal = () => {
+			if (!list || !active) return;
+			const l = list.getBoundingClientRect();
+			const a = active.getBoundingClientRect();
+			if (a.left < l.left) list.scrollLeft += a.left - l.left;
+			else if (a.right > l.right) list.scrollLeft += a.right - l.right;
+		};
 		reveal();
 		// Font loading can widen the last label after the initial scroll.
 		let cancelled = false;

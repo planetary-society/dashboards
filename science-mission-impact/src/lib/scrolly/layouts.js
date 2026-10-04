@@ -181,7 +181,8 @@ export function failureLayout(tiles, W, H, { divisions, threshold }) {
 	const gapX = compact ? 16 : 40;
 	const gap = compact ? 1 : 2;
 	const headH = compact ? 52 : 76;
-	const nameH = stacked ? 16 : 0;
+	// the name's line box (FailureLabels: 16px on a phone, 20px otherwise) plus clearance for its descenders
+	const nameH = stacked ? (compact ? 16 : 26) : 0;
 	const figuresH = compact ? 14 : 18;
 	const rowGap = compact ? 6 : 10;
 	const inner = W - left - right - gapX;
@@ -372,6 +373,62 @@ export function innerSide(share, maxShare, floor) {
 }
 
 /**
+ * A waffle of `total` with `part` in the first boxes: the smallest unit from 100 up whose grid
+ * keeps a readable pitch, a grid shaped like the stage below `top`, and a legend band reserved
+ * under it. The box after the last full one carries `fraction` of a unit.
+ */
+export function waffleLayout(total, part, W, H, { top = 0, compact = false, legendH = compact ? 30 : 20 } = {}) {
+	const margin = compact ? 8 : 24;
+	const minPitch = compact ? 7 : 9;
+	const availW = W - margin * 2;
+	const availH = H - top - margin * 2 - legendH;
+	const grid = (unit) => {
+		const cells = Math.ceil(total / unit);
+		const cols = Math.ceil(Math.sqrt((cells * availW) / availH));
+		const rows = Math.ceil(cells / cols);
+		return { unit, cells, cols, rows, pitch: Math.floor(Math.min(availW / cols, availH / rows)) };
+	};
+	const units = [100, 200, 500, 1000].map(grid);
+	const g = units.find((u) => u.pitch >= minPitch) ?? units.at(-1);
+	const gap = g.pitch < 8 ? 1 : 2;
+	const width = g.cols * g.pitch - gap;
+	const height = g.rows * g.pitch - gap;
+	const partCells = part / g.unit;
+	const full = Math.floor(partCells);
+	const fraction = partCells - full;
+	// a sliver under 5% of a box is not drawn
+	const partial = fraction >= 0.05 && full < g.cells;
+	const l = { ...g, part, size: g.pitch - gap, gap, x0: Math.round((W - width) / 2), y0: top + margin, full, fraction, partial, partCells, width, height, margin, legendH };
+	return { ...l, ring: waffleRing(l, full + (partial ? 1 : 0)) };
+}
+
+/**
+ * The outline 3px outside the first `n` boxes of a waffle in reading order: one row segment, a
+ * block of whole rows, or that block with a shorter last row (clockwise points, corners rounded
+ * 3px). The label sits 6px right of the first row, or under the ring when that end is within
+ * 90px of the grid's right edge.
+ */
+export function waffleRing({ x0, y0, cols, pitch, size, width }, n, { offset = 3, radius = 3 } = {}) {
+	if (!(n > 0)) return null;
+	const rows = Math.ceil(n / cols);
+	const last = n - (rows - 1) * cols; // boxes in the last row, 1..cols
+	const right = (k) => x0 + (k - 1) * pitch + size + offset; // outside edge of k boxes from the left
+	const bottom = (r) => y0 + (r - 1) * pitch + size + offset; // outside edge of r rows from the top
+	const [L, T] = [x0 - offset, y0 - offset];
+	const R = right(rows > 1 ? cols : n);
+	const points =
+		rows > 1 && last < cols
+			? [[L, T], [R, T], [R, bottom(rows - 1)], [right(last), bottom(rows - 1)], [right(last), bottom(rows)], [L, bottom(rows)]]
+			: [[L, T], [R, T], [R, bottom(rows)], [L, bottom(rows)]];
+	// each corner: a line to `radius` short of it, then a quadratic through it (convex or concave alike)
+	const toward = ([x, y], [tx, ty]) => [x + Math.sign(tx - x) * radius, y + Math.sign(ty - y) * radius];
+	const ends = points.map((p, i) => [toward(p, points.at(i - 1)), toward(p, points[(i + 1) % points.length])]);
+	const d = `M${ends[0][0]}${points.map((p, i) => `${i ? `L${ends[i][0]}` : ''}Q${p} ${ends[i][1]}`).join('')}Z`;
+	const below = x0 + width - R < 90;
+	return { points, d, label: below ? { x: L, y: bottom(rows) + 6, below } : { x: R + 6, y: y0 + size / 2, below } };
+}
+
+/**
  * Paper kinds for the missions at or under the threshold: one row per mission with papers (a
  * square, then its bar), in the given order; missions without papers in a strip underneath.
  */
@@ -381,7 +438,7 @@ export function kindsLayout(missions, W, H, { compact = false } = {}) {
 	const headH = compact ? 56 : 44;
 	const gap = compact ? 2 : 3;
 	const left = compact ? 6 : 24;
-	const nameW = compact ? 64 : 110;
+	const nameW = compact ? 88 : 110; // "Lunar Prospector" whole at the 9–10px a phone row gets
 	const valueW = compact ? 30 : 44;
 	const right = compact ? 6 : 24;
 	const x = left + nameW + 8;
@@ -419,10 +476,15 @@ export function kindsLayout(missions, W, H, { compact = false } = {}) {
 	return { rows, pos, s, pitch, headH, left, nameW, barX, barW, valueW, valueX: barX + barW + 6, strip, fontPx: clamp(s - 2, 9, 12) };
 }
 
-/** One mission's square at the top left, its paper list underneath. */
+/**
+ * One mission's square at the top left, its paper list underneath. On a phone the rows have
+ * fixed pitches, `row` for a faded one-line paper and `hit` for a highlighted one (two-line
+ * title and its meta line), which KindExample applies, so a list's height is known here.
+ */
 export function exampleLayout(id, W, H, { compact = false } = {}) {
-	const s = compact ? 44 : 64;
+	const s = compact ? 36 : 64;
 	const x = compact ? 6 : 24;
 	const y = compact ? 6 : 16;
-	return { pos: new Map([[id, { x, y, s }]]), s, left: x, top: y, headRight: x + s + 12, listY: y + s + (compact ? 14 : 22) };
+	const rows = compact ? { row: 24, hit: 54 } : {};
+	return { pos: new Map([[id, { x, y, s }]]), s, left: x, top: y, headRight: x + s + (compact ? 10 : 12), listY: y + s + (compact ? 8 : 22), ...rows };
 }

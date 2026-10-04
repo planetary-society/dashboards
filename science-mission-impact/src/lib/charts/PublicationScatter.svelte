@@ -5,10 +5,12 @@
 	import { int, plural } from '$lib/format.js';
 	import { publicationModel, publicationLayout } from './publicationscatter.js';
 
-	let { missions, slug, selectedId = '', onselect = null } = $props();
+	// A division too small to rank plots citations instead, with no division reference.
+	let { missions, slug, rankable = true, selectedId = '', onselect = null } = $props();
 	let width = $state(0);
 	const height = 300;
-	const model = $derived(publicationModel(missions, view.scope));
+	const measureName = $derived(rankable ? 'top-10% paper credit' : 'citations');
+	const model = $derived(publicationModel(missions, view.scope, rankable ? 'top10' : 'citations'));
 	const layout = $derived(width > 0 ? publicationLayout(model, width, height) : null);
 	const tiles = $derived(model.points.map((p) => ({ ...p, division: slug })));
 	const zeros = $derived(model.zeros.map((p) => ({ ...p, division: slug })));
@@ -17,10 +19,10 @@
 </script>
 
 <figure>
-	<p class="guide">Above the dashed line: more top-10% credit per publication than the division reference.</p>
-	<p class="axis-title meta">Top-10% paper credit</p>
+	<p class="guide">{rankable ? 'Above the dashed line: more top-10% credit per publication than the division reference.' : 'Each square is a mission: tracked publications against the citations they have received.'}</p>
+	<p class="axis-title meta">{rankable ? 'Top-10% paper credit' : 'Citations'}</p>
 	{#if model.points.length}
-		<div class="stage" bind:clientWidth={width} style:height="{height}px" role="group" aria-label="Tracked publications versus top-10% paper credit. Both axes use square-root scales.">
+		<div class="stage" bind:clientWidth={width} style:height="{height}px" role="group" aria-label="Tracked publications versus {measureName}. Both axes use square-root scales.">
 			{#if layout}
 				<svg width={width} {height} aria-hidden="true">
 					{#each layout.yTicks as value (value)}
@@ -44,7 +46,7 @@
 		</div>
 		<p class="meta scale">Square-root scales · {int(model.points.length)} {plural(model.points.length, 'mission')} plotted</p>
 	{:else}
-		<p class="meta">No missions with tracked publications and available top-10% scores in this view.</p>
+		<p class="meta">No missions with tracked publications and available {rankable ? 'top-10% scores' : 'citation counts'} in this view.</p>
 	{/if}
 	{#if zeros.length}
 		<p class="meta zero-label">No tracked publications: {int(zeros.length)} {plural(zeros.length, 'mission')}</p>

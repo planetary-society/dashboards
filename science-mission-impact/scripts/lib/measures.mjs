@@ -11,7 +11,7 @@
  * null means unavailable; 0 means measured zero.
  */
 
-import { num, ratio, share, weight, daysToYears, sum, yearsBetween } from './util.mjs';
+import { num, parseDay, ratio, share, weight, sum, yearsBetween } from './util.mjs';
 
 const FAILURE_STATUSES = ['failed', 'failure'];
 // A mission that fell short of its goals: a failure, or upstream's partial failure or partial success.
@@ -74,23 +74,43 @@ export function isRankable({ poolPapers, missions, rankingMinPapers, scope = 'fu
 }
 
 /**
- * FirstTopPaper for one mission in one scope.
+ * The earliest-published paper with era-adjusted top-10% weight among one scope's rows (any
+ * weight above zero, so a paper tied at the cutoff counts): the story's high-impact paper.
+ * Dated by its ADS pubdate (month resolution, read by `parseDay`), ties in date broken by
+ * bibcode so the pick is stable. Null when no row qualifies; throws on a qualifying row with
+ * no date rather than skipping it.
  *
- * `first_qualifying` on the division's pooled top-10% level is the earliest
- * published paper that ranks in the division's top decile today. Time runs from
- * the start of science, and again from the start of formulation when that date
- * is on record: the same paper read from when the agency committed to the
- * project. How long the mission took to build is a separate figure
+ * @param {Iterable<object>} rows one scope's paper rows of one mission
+ * @param {string} weightKey the scope's era-adjusted weight field
+ * @param {Map<string, string>} pubdates bibcode -> ADS pubdate
+ */
+export function firstEraTop(rows, weightKey, pubdates) {
+	let best = null;
+	for (const row of rows) {
+		if (!(Number(row[weightKey]) > 0)) continue;
+		const date = pubdates.get(row.bibcode) ?? null;
+		const day = parseDay(date);
+		if (day === null) throw new Error(`first top-10% paper: ${row.mission} ${row.bibcode} has no publication date`);
+		if (!best || day < best.day || (day === best.day && row.bibcode < best.bibcode)) best = { bibcode: row.bibcode, date, day };
+	}
+	return best && { bibcode: best.bibcode, date: best.date };
+}
+
+/**
+ * FirstTopPaper for one mission in one scope, from `firstEraTop`. Time runs from the start of
+ * science (the prime-mission start, else launch, as upstream reads it), and again from the start
+ * of formulation when that date is on record: the same paper read from when the agency
+ * committed to the project. How long the mission took to build is a separate figure
  * (`yearsToBuild`, formulation to launch).
  */
-export function buildFirstTopPaper({ firstQualifying, failed, papers, formulation = null }) {
-	if (firstQualifying) {
+export function buildFirstTopPaper({ first, failed, papers, scienceStart = null, formulation = null }) {
+	if (first) {
 		return {
 			state: 'reached',
-			yearsFromScienceStart: daysToYears(firstQualifying.days_after_ops_start),
-			yearsFromFormulation: yearsBetween(formulation, firstQualifying.date),
-			bibcode: firstQualifying.bibcode ?? null,
-			date: firstQualifying.date ?? null
+			yearsFromScienceStart: yearsBetween(scienceStart, first.date),
+			yearsFromFormulation: yearsBetween(formulation, first.date),
+			bibcode: first.bibcode,
+			date: first.date
 		};
 	}
 	let state = 'none';
@@ -111,19 +131,24 @@ export function buildFirstTopPaper({ firstQualifying, failed, papers, formulatio
  *
  * `divisionTop10` / `divisionTop1` are the sums of the same measure over every
  * mission of the division, so a mission's share is its own value over them.
+ * `first` is the scope's `firstEraTop`; it must exist exactly when the mission
+ * holds top-10% credit, or the paper rows and the mission measure disagree.
  */
 export function buildMissionScopeStats({
 	statsMission,
 	scope,
-	percentileView,
+	first,
 	divisionTop10,
 	divisionTop1,
+	scienceStart = null,
 	formulation = null
 }) {
 	const papers = missionPapers(statsMission, scope);
 	const top10 = missionTop10(statsMission, scope);
 	const top1 = missionTop1(statsMission, scope);
-	const firstQualifying = percentileView?.by_top_percent?.['10']?.first_qualifying ?? null;
+	if (top10 !== null && (first !== null) !== top10 > 0) {
+		throw new Error(`${statsMission.short_title} (${scope}): top-10% credit ${top10} but ${first ? 'a' : 'no'} paper row with era-adjusted weight`);
+	}
 	return {
 		papers,
 		outputBasis: scopeField(statsMission, scope, 'output_basis') ?? (papers === null ? 'unavailable' : 'measured'),
@@ -133,9 +158,10 @@ export function buildMissionScopeStats({
 		top1: weight(top1),
 		top1ShareOfDivision: top1 === null ? null : share(ratio(top1, divisionTop1)),
 		first: buildFirstTopPaper({
-			firstQualifying,
+			first,
 			failed: isFailure(statsMission?.mission_status),
 			papers,
+			scienceStart,
 			formulation
 		})
 	};

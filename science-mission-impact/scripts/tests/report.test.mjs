@@ -317,6 +317,9 @@ describe('formatReport', () => {
 		assert.match(text, /Snapshot \*\*2026-09-18\*\*/);
 		assert.match(text, /2026-09-16T20:06:24Z → 2026-09-18T19:39:45Z/);
 		assert.match(text, /`aaaaaaaaaaaa`, `bbbbbbbbbbbb`/);
+		assert.doesNotMatch(text, /uncommitted/);
+		assert.match(squeeze(formatReport({ ...base, site: { ...base.site, codeRevisionDirty: true } })),
+			/`bbbbbbbbbbbb` \(from a working tree with uncommitted changes\)/);
 	});
 
 	it('prints no date that is not a data date', () => {

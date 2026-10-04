@@ -15,11 +15,10 @@
 </span>
 
 <style>
-	.choice {
-		white-space: nowrap;
-	}
-
+	/* The group wraps between options (a three-way scope choice is wider than a phone
+	   heading); each option stays whole. */
 	button {
+		white-space: nowrap;
 		position: relative;
 		color: var(--soil);
 		padding: 12px 2px;

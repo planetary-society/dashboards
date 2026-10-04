@@ -1,4 +1,7 @@
-import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { readdirSync, readFileSync } from 'node:fs';
+import { join, relative, sep } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import adapter from '@sveltejs/adapter-static';
 
 // adapter-static empties its target directory, and docs/science-mission-impact/
@@ -9,8 +12,21 @@ import adapter from '@sveltejs/adapter-static';
 const OUT_DIR = '.site';
 
 // SvelteKit stamps every build with a version, by default the current time, which would make
-// each rebuild differ byte for byte. The data snapshot date keeps an unchanged input reproducible.
-const { asOf } = JSON.parse(readFileSync(new URL('./src/lib/data/generated/site.json', import.meta.url), 'utf8'));
+// each rebuild differ byte for byte. The data snapshot date plus a hash of the sources keeps an
+// unchanged input reproducible, while a code-only redeploy still tells open tabs to reload
+// rather than fetch chunks that no longer exist. Dotfiles (.DS_Store) are skipped so a local
+// build matches CI's.
+const APP_DIR = fileURLToPath(new URL('.', import.meta.url));
+const { asOf } = JSON.parse(readFileSync(join(APP_DIR, 'src/lib/data/generated/site.json'), 'utf8'));
+const sources = readdirSync(join(APP_DIR, 'src'), { recursive: true, withFileTypes: true })
+	.filter((f) => f.isFile())
+	.map((f) => relative(APP_DIR, join(f.parentPath, f.name)).split(sep).join('/'))
+	.filter((file) => !file.split('/').some((part) => part.startsWith('.')))
+	.concat('smi.config.json')
+	.sort();
+const hash = createHash('sha256');
+for (const file of sources) hash.update(`${file}\0`).update(readFileSync(join(APP_DIR, file))).update('\0');
+const version = `${asOf}-${hash.digest('hex').slice(0, 8)}`;
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -20,7 +36,7 @@ const config = {
 			base: process.argv.includes('dev') ? '' : '/science-mission-impact',
 			relative: false
 		},
-		version: { name: asOf },
+		version: { name: version },
 		prerender: { handleHttpError: 'fail', handleMissingId: 'fail' }
 	}
 };

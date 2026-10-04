@@ -60,6 +60,14 @@ export function buildDiscussion(divisions, { thresholdCost, scope = 'full', timi
 	const costed = all.filter(hasCost);
 	const failureUnder = shortfalls(costed.filter(under));
 	const failureOver = shortfalls(costed.filter(over));
+	// The comparison kept apart by field: the same groups, one rankable division at a time.
+	const comparisonByDivision = rankable.map((d) => {
+		const side = ([key, fn]) => {
+			const { missions, failed, withTop, top10, top10PerMission } = comparisonGroup(key, d.missions.filter(measured).filter(fn), stats);
+			return [key, { missions, failed, withTop, top10, top10PerMission }];
+		};
+		return { division: d.slug, name: d.name, ...Object.fromEntries(sides.map(side)) };
+	});
 	return {
 		/** Membership is inclusive: under the threshold means 0 < cost <= referenceCost. */
 		referenceCost: thresholdCost,
@@ -90,7 +98,9 @@ export function buildDiscussion(divisions, { thresholdCost, scope = 'full', timi
 			divisions: rankable.map((d) => d.slug),
 			unavailable: rankableMissions.filter((m) => !measured(m)).length,
 			gap: referenceGap(all, thresholdCost),
-			groups: sides.map(([key, side]) => comparisonGroup(key, rankableMissions.filter(measured).filter(side), stats))
+			groups: sides.map(([key, side]) => comparisonGroup(key, rankableMissions.filter(measured).filter(side), stats)),
+			byDivision: comparisonByDivision,
+			equalWeight: equalWeight(comparisonByDivision)
 		},
 		pooledBand: pooled ? {
 			divisions: pooledFrom.map((d) => d.slug),
@@ -102,6 +112,16 @@ export function buildDiscussion(divisions, { thresholdCost, scope = 'full', timi
 		perDollar: rankable.map((d) => perDollarFacts(d, d.missions.filter(measured), stats, sides)),
 		missingCosts: all.filter((m) => !hasCost(m)).length
 	};
+}
+
+/**
+ * Top-10% papers per mission either side, each division weighted equally: the plain mean of the
+ * divisions' per-mission figures, over the divisions with at least one mission on both sides.
+ */
+function equalWeight(byDivision) {
+	const both = byDivision.filter((d) => d.under.missions > 0 && d.over.missions > 0);
+	const mean = (key) => (both.length ? round(sum(both.map((d) => d[key].top10PerMission)) / both.length, 3) : null);
+	return { under: mean('under'), over: mean('over') };
 }
 
 /** The costed missions nearest the threshold over every division, rankable or not: the largest cost at or below it, the smallest above it. */
@@ -156,6 +176,8 @@ function mostCommon(values) {
  * Citations per $100M either side of the threshold in one division. `favors` names the side with
  * the higher rate only when that ordering survives dropping any one measured mission from the
  * division (both rates recomputed without it; a side left empty counts as not surviving).
+ * `flipsOn` names the missions it does not survive dropping; empty exactly when `favors` is set,
+ * or when there is no order to keep (a tie or an empty side).
  */
 function perDollarFacts(division, members, stats, sides) {
 	const groups = sides.map(([key, side]) => {
@@ -166,7 +188,8 @@ function perDollarFacts(division, members, stats, sides) {
 	const [under, over] = groups.map((g) => g.perHundredM);
 	const order = higherRate(under, over);
 	const rates = (pool) => sides.map(([, side]) => perHundredM(pool.filter(side), stats));
-	const stable = order !== null && members.every((dropped) => higherRate(...rates(members.filter((m) => m !== dropped))) === order);
+	// The missions whose removal alone reverses the order (or leaves a side empty, so no order).
+	const breakers = order === null ? [] : members.filter((dropped) => higherRate(...rates(members.filter((m) => m !== dropped))) !== order);
 	const underSide = members.filter(sides[0][1]);
 	const underCitations = sum(underSide.map((m) => stats(m).citations));
 	const top = largestBy(underSide, (m) => stats(m).citations);
@@ -174,7 +197,8 @@ function perDollarFacts(division, members, stats, sides) {
 		division: division.slug,
 		name: division.name,
 		groups,
-		favors: stable ? order : null,
+		favors: order !== null && breakers.length === 0 ? order : null,
+		flipsOn: breakers.map((m) => ({ id: m.id, name: m.name, side: sides[0][1](m) ? 'under' : 'over' })),
 		margin: under === null || over === null || Math.max(under, over) === 0 ? null : share(Math.abs(under - over) / Math.max(under, over)),
 		largestUnder: underCitations > 0 ? { id: top.id, name: top.name, share: share((stats(top).citations ?? 0) / underCitations) } : null
 	};

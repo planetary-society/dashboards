@@ -6,6 +6,7 @@
 	let mode = $state('annual');
 	let width = $state(0);
 	let selected = $state(null);
+	let dragging = $state(null);
 	const model = $derived(timelineModel(lifetime, mode));
 	const layout = $derived(width > 0 ? timelineLayout(model, width) : null);
 	const point = $derived(model?.points[Math.min(selected ?? model.points.length - 1, model.points.length - 1)]);
@@ -13,6 +14,36 @@
 	const incomplete = $derived(coverage?.status === 'incomplete');
 	const partialYear = $derived(model?.partialIndex >= 0 ? model.years[model.partialIndex] : null);
 	const readout = $derived(point ? `${point.year}: ${int(point.pub)} tracked publications · ${int(point.cite)} citations${mode === 'cumulative' ? ' accumulated' : ''}` : '');
+
+	function selectAtPointer(event) {
+		const bounds = event.currentTarget.getBoundingClientRect();
+		const year = layout.x.invert(layout.left + (event.clientX - bounds.left) * (layout.right - layout.left) / bounds.width);
+		selected = model.years.reduce((nearest, value, index) =>
+			Math.abs(value - year) < Math.abs(model.years[nearest] - year) ? index : nearest, 0);
+	}
+
+	function startDrag(event) {
+		if (!event.isPrimary || event.button !== 0) return;
+		dragging = event.pointerId;
+		event.currentTarget.setPointerCapture(event.pointerId);
+		event.currentTarget.focus({ preventScroll: true });
+		selectAtPointer(event);
+	}
+
+	function endDrag(event) {
+		if (dragging !== event.pointerId) return;
+		dragging = null;
+		if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+	}
+
+	function selectWithKeyboard(event) {
+		const index = model.years.indexOf(point.year);
+		const next = { ArrowLeft: index - 1, ArrowDown: index - 1, ArrowRight: index + 1, ArrowUp: index + 1,
+			Home: 0, End: model.points.length - 1, PageDown: index - 10, PageUp: index + 10 }[event.key];
+		if (next == null) return;
+		event.preventDefault();
+		selected = Math.max(0, Math.min(model.points.length - 1, next));
+	}
 </script>
 
 <figure>
@@ -40,11 +71,20 @@
 					{/each}
 					<text class="tick" x={(layout.left + layout.right) / 2} y={layout.height - 5} text-anchor="middle">Calendar year</text>
 				</svg>
+				<div
+					class="chart-control" class:dragging={dragging !== null}
+					style:left={`${layout.left}px`} style:width={`${layout.right - layout.left}px`}
+					style:top={`${layout.panels[0].top}px`} style:height={`${layout.panels.at(-1).bottom - layout.panels[0].top}px`}
+					role="slider" tabindex="0" aria-label="Calendar year" aria-orientation="horizontal"
+					aria-valuemin={model.years[0]} aria-valuemax={model.years.at(-1)} aria-valuenow={point.year} aria-valuetext={readout}
+					onpointerdown={startDrag}
+					onpointermove={(event) => { if (dragging === event.pointerId) selectAtPointer(event); }}
+					onpointerup={endDrag} onpointercancel={endDrag} onlostpointercapture={endDrag}
+					onkeydown={selectWithKeyboard}
+				></div>
 			{/if}
 		</div>
-		<label class="year-control">Year
-			<input type="range" min="0" max={model.points.length - 1} step="1" value={selected ?? model.points.length - 1} oninput={(e) => (selected = Number(e.currentTarget.value))} aria-valuetext={readout} disabled={model.points.length === 1} />
-		</label>
+		<p class="meta note">Tap or drag across either plot to choose a year. Use arrow keys when focused.</p>
 		<p class="readout">{readout}</p>
 		{#if partialYear != null}<p class="meta note">Dashed from {partialYear}: incomplete calendar-year coverage.</p>{/if}
 		{#if incomplete}
@@ -61,12 +101,15 @@
 <style>
 	figure { min-width: 0; }
 	.toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-	.toolbar p, .toolbar label, .explanation, .readout, .year-control, details { font-size: 14px; line-height: 1.5; }
+	.toolbar p, .toolbar label, .explanation, .readout, details { font-size: 14px; line-height: 1.5; }
 	.toolbar { margin-top: 12px; color: var(--dust); }
 	.toolbar label { display: flex; align-items: center; gap: 8px; }
 	select { background: var(--panel); color: var(--white); border: 1px solid var(--soil); padding: 6px 8px; font: inherit; }
 	.explanation { margin-top: 12px; color: var(--dust); }
-	.stage { min-height: 410px; margin-top: 12px; }
+	.stage { position: relative; min-height: 410px; margin-top: 12px; }
+	.chart-control { position: absolute; cursor: ew-resize; touch-action: pan-y; user-select: none; }
+	.chart-control.dragging { cursor: grabbing; }
+	.chart-control:focus-visible { outline: 2px solid var(--neptune); outline-offset: 4px; }
 	svg { display: block; overflow: visible; }
 	text { font-family: var(--sans); }
 	.title { font-size: 14px; fill: var(--white); }
@@ -79,8 +122,6 @@
 	.partial { stroke-dasharray: 4 4; }
 	.dot.pub { fill: var(--white); }
 	.dot.cite { fill: var(--neptune); }
-	.year-control { display: flex; gap: 12px; align-items: center; }
-	input { flex: 1; min-width: 0; accent-color: var(--neptune); }
 	.readout { margin-top: 8px; min-height: 42px; font-variant-numeric: tabular-nums; }
 	.note { margin-top: 10px; color: var(--dust); }
 	summary { cursor: pointer; }

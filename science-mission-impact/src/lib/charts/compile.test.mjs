@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { compile } from 'svelte/compiler';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const components = ['AccumulationPair.svelte', 'LifetimeTimeline.svelte', 'CostCurve.svelte', 'DollarMinorTicks.svelte', 'IndexScatter.svelte', 'PublicationScatter.svelte', 'RankHistogram.svelte', 'TimeToScience.svelte', '../scrolly/Squares.svelte', '../ui/ComparisonControls.svelte', '../ui/Footnote.svelte', '../ui/MissionTable.svelte', '../../routes/[division]/+page.svelte'];
+const components = ['AccumulationPair.svelte', 'LifetimeTimeline.svelte', 'CostCurve.svelte', 'DollarMinorTicks.svelte', 'IndexScatter.svelte', 'PublicationScatter.svelte', 'RankHistogram.svelte', 'TimeToScience.svelte', '../scrolly/Squares.svelte', '../ui/ComparisonControls.svelte', '../ui/Footnote.svelte', '../ui/MissionTable.svelte', '../ui/Num.svelte', '../ui/Nav.svelte', '../ui/Choice.svelte', '../ui/ViewSentence.svelte', '../mission/PaperBrowser.svelte', '../mission/QueryBlock.svelte', '../mission/CurationLists.svelte', '../../routes/[division]/+page.svelte', '../../routes/[division]/[mission]/+page.svelte', '../../routes/+error.svelte'];
 
 for (const name of components) {
 	for (const generate of ['client', 'server']) {

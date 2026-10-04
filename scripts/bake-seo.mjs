@@ -12,7 +12,9 @@
  *   2. docs/cancellations/districts/ — one static page per congressional
  *      district appearing in either dataset, plus an index. Deleted and
  *      rebuilt from scratch every run.
- *   3. docs/sitemap.xml — regenerated to match what step 2 actually wrote.
+ *   3. docs/sitemap.xml — regenerated to match what step 2 actually wrote, plus
+ *      the Science Mission Impact overview, methods, division and mission pages
+ *      that the committed build in docs/science-mission-impact/ contains.
  *
  * Drift is the failure mode this script is designed against: every sentence
  * and number comes from the same pure modules app.js renders from
@@ -25,7 +27,7 @@
  * silently degraded page.
  */
 
-import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 import { escapeHtml, groupBy, parseCSV } from '../docs/shared/js/utils.js';
@@ -38,7 +40,7 @@ import { dogeStats, normalizeDogeClaims } from '../docs/cancellations/js/doge-cl
 import { formatIsoDayLong } from '../docs/cancellations/js/chart-common.js';
 import { metaDescription } from '../docs/cancellations/js/panel-views.js';
 import { injectMarker, setJsonLdDateModified, setMetaDescription } from './bake/inject.mjs';
-import { FIXED_URLS, SITE_TITLE, renderDistrictPage, renderDistrictsIndex, renderSitemap } from './bake/templates.mjs';
+import { SITE_TITLE, renderDistrictPage, renderDistrictsIndex, renderSitemap } from './bake/templates.mjs';
 
 const repoRoot = fileURLToPath(new URL('..', import.meta.url));
 const path = (rel) => `${repoRoot}${rel}`;
@@ -208,5 +210,26 @@ if (!awards.columns.districts && !doge.columns.district) {
 
 // --- Sitemap -------------------------------------------------------------
 
-writeFileSync(path('docs/sitemap.xml'), renderSitemap({ districtCodes, lastUpdated }));
-console.log(`sitemap.xml: ${FIXED_URLS.length + districtCodes.length} URLs`);
+// Science Mission Impact pages come from the app's committed config and packaged
+// mission index, kept only where the committed build actually has the page.
+const readJson = (rel) => JSON.parse(readFileSync(path(rel), 'utf8'));
+const smiBuilt = (...parts) => existsSync(path(`docs/science-mission-impact/${parts.join('/')}/index.html`));
+const smiListed = [
+    ...readJson('science-mission-impact/smi.config.json').divisions.map((d) => [d.slug]),
+    ...readJson('science-mission-impact/src/lib/data/generated/index.json').map((m) => [m.division, m.id])
+];
+const smiMissing = smiListed.filter((parts) => !smiBuilt(...parts));
+if (smiMissing.length) {
+    const prefix = process.env.GITHUB_ACTIONS ? '::warning::' : 'WARNING: ';
+    console.log(`${prefix}${smiMissing.length} Science Mission Impact page(s) not built, left out of the sitemap: ${smiMissing.map((p) => p.join('/')).join(', ')}`);
+}
+const smiPages = smiListed.filter((parts) => smiBuilt(...parts));
+
+const sitemap = renderSitemap({
+    districtCodes,
+    smiDivisions: smiPages.filter((p) => p.length === 1).map(([slug]) => slug),
+    smiMissions: smiPages.filter((p) => p.length === 2).map(([division, id]) => ({ division, id })),
+    lastUpdated
+});
+writeFileSync(path('docs/sitemap.xml'), sitemap);
+console.log(`sitemap.xml: ${sitemap.split('<url>').length - 1} URLs`);

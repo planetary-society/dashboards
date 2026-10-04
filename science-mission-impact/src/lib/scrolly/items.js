@@ -51,20 +51,6 @@ export function costItems(tiles, layout, { scope, top, unranked, referenceCost }
 	return items;
 }
 
-/**
- * Publications per mission: an inner fill whose area is the mission's papers against `max`,
- * the largest paper count in the study. Unmeasured output is marked apart from a measured zero.
- */
-export function papersItems(tiles, layout, { max }) {
-	const items = new Map();
-	for (const t of tiles) {
-		const p = layout.pos.get(t.id);
-		if (!p) continue;
-		items.set(t.id, { ...p, variant: t.papers == null ? 'unavailable' : 'outline', inner: innerSide(t.papers, max, MIN_FILL_PX / p.s), filled: t.papers > 0 });
-	}
-	return items;
-}
-
 /** Partial or total failures carry the red X; every other placed mission stays solid. */
 export function failureItems(tiles, layout) {
 	const items = new Map();

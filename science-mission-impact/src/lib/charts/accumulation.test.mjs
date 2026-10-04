@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { scaleLinear } from 'd3-scale';
-import { cumulate, lifetimeModel, windowModel, axes, xDomain, stackLabels, box, decimalYear, missionMilestones, lifetimeDomain, layoutMilestones, TICK_FRACTIONS } from './accumulation.js';
+import { cumulate, lifetimeModel, windowModel, axes, xDomain, stackLabels, box, decimalYear, missionMilestones, lifetimeDomain, layoutMilestones, TICK_FRACTIONS, axisTicks } from './accumulation.js';
 
 const policy = { publicationYears: 3, citationYears: 3 };
 
@@ -73,21 +73,29 @@ test('windowModel draws empty bars, not NaN, when nothing was cited', () => {
 });
 
 test('both axes start at zero and end at their own total, on shared rows', () => {
-	const { yPub, yCite, rows } = axes({ pubTotal: 63114, citeTotal: 3400000, top: 46, bottom: 272 });
+	const { yPub, yCite, pubTicks, citeTicks } = axes({ pubTotal: 63114, citeTotal: 3400000, top: 46, bottom: 272 });
 	assert.equal(yPub(0), 272);
 	assert.equal(yCite(0), 272);
 	// the dual-axis rule: the two series' final points are the same pixel
 	assert.equal(yPub(63114), 46);
 	assert.equal(yCite(3400000), 46);
-	assert.equal(rows.length, TICK_FRACTIONS.length);
-	assert.deepEqual(rows.map((r) => r.y), [215.5, 159, 102.5, 46]);
-	assert.equal(rows[1].pub, 63114 / 2);
-	assert.equal(rows[1].cite, 1700000);
-	// a row's two tick values sit on the same pixel row as the row itself
-	for (const r of rows) {
-		assert.ok(Math.abs(yPub(r.pub) - r.y) < 1e-9);
-		assert.ok(Math.abs(yCite(r.cite) - r.y) < 1e-9);
-	}
+	assert.equal(pubTicks.length, TICK_FRACTIONS.length + 1);
+	assert.deepEqual(pubTicks.map((t) => t.y), [272, 215.5, 159, 102.5, 46]);
+	assert.deepEqual(citeTicks.map((t) => t.y), pubTicks.map((t) => t.y));
+	assert.equal(pubTicks[2].v, 63114 / 2);
+	assert.equal(citeTicks[2].v, 1700000);
+});
+
+test('a small total gets whole-number ticks from zero, never repeats', () => {
+	assert.deepEqual(axisTicks(0), [0]);
+	assert.deepEqual(axisTicks(1), [0, 1]);
+	assert.deepEqual(axisTicks(3), [0, 1, 2, 3]);
+	assert.deepEqual(axisTicks(7), [0, 2, 4, 6]);
+	assert.deepEqual(axisTicks(100), [0, 25, 50, 75, 100]);
+	const { pubTicks, citeTicks, yPub } = axes({ pubTotal: 3, citeTotal: 400, top: 0, bottom: 300 });
+	assert.deepEqual(pubTicks.map((t) => t.v), [0, 1, 2, 3]);
+	assert.equal(pubTicks[1].y, yPub(1));
+	assert.deepEqual(citeTicks.map((t) => t.v), [0, 100, 200, 300, 400]);
 });
 
 test('a zero total still gives a usable scale', () => {

@@ -2,13 +2,16 @@
   "name": "science-mission-impact",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && node scripts/sync-to-docs.mjs",
     "preview": "vite preview",
     "data": "node scripts/package-data.mjs",
     "thumbs": "NODE_USE_ENV_PROXY=1 node scripts/fetch-thumbs.mjs",
-    "test": "node --test scripts/tests/*.test.mjs src/lib/**/*.test.mjs",
+    "test": "node --test \"scripts/tests/*.test.mjs\" \"src/lib/**/*.test.mjs\"",
     "refresh": "node scripts/refresh.mjs"
   },
   "devDependencies": {

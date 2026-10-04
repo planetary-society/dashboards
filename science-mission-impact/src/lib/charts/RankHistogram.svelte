@@ -1,14 +1,18 @@
 <script>
 	// Where a mission's papers rank among every paper from its division's missions: a plain
 	// histogram over citation percentile, least cited on the left. An evenly spread mission
-	// would put a tenth of its papers in every bin (the dashed line); the top tenth is the
-	// division's top 10%, and the lighter cap on it is the top 1%.
+	// would put a tenth of its papers in every bin (the dashed line). The top tenth is by raw
+	// citations, not the era-adjusted top-10% measure; the lighter cap on it is the top 1%.
 	import { int, pct, weight, plural, compact } from '$lib/format.js';
 	import { histogramModel } from './ranks.js';
 
 	let { ranks } = $props();
 
 	const m = $derived(histogramModel(ranks));
+	// One rule for the figures on the bars and in the key: whole numbers only when every count
+	// is whole, otherwise one decimal below 10, so "0" never sits beside "0.9".
+	const whole = $derived(!m || [...m.bars.map((b) => b.value), m.top1].every(Number.isInteger));
+	const fig = (v) => (v >= 1000 ? compact(v) : whole || v >= 10 ? weight(v) : v.toFixed(1));
 	const label = $derived(
 		m
 			? `Papers by citation percentile: ${m.bars.map((b) => `${b.from} to ${b.to}, ${weight(b.value)}`).join('; ')}. An even spread would be ${weight(m.even)} in each.`
@@ -37,8 +41,9 @@
 				<div class="bars">
 					{#each m.bars as b (b.from)}
 						<div class="slot">
-							<!-- four digits would collide with the next bar's figure on a phone -->
-							<span class="value meta" style:bottom="{b.height * 100}%">{b.value >= 1000 ? compact(b.value) : weight(b.value)}</span>
+							<!-- four digits would collide with the next bar's figure on a phone; the
+							     figure sits on its bar or on the even-spread line, whichever is higher -->
+							<span class="value meta" style:bottom="{Math.max(b.height, m.even / m.max) * 100}%">{fig(b.value)}</span>
 							<span class="bar" class:top={b.top} style:height="{b.height * 100}%">
 								{#if b.top && m.top1 > 0}<span class="cap" style:height="{(m.top1 / b.value) * 100}%"></span>{/if}
 							</span>
@@ -60,12 +65,12 @@
 		</div>
 
 		<ul class="key meta">
-			<li><span class="swatch dash"></span>Even spread: {weight(m.even)} per bar</li>
-			<li><span class="swatch top"></span>Top {m.topPercent}% of the division</li>
-			{#if m.top1 > 0}<li><span class="swatch cap"></span>Top 1%: {weight(m.top1)} {plural(m.top1, 'paper')}</li>{/if}
+			<li><span class="swatch dash"></span>Even spread: {fig(m.even)} per bar</li>
+			<li><span class="swatch top"></span>Top tenth by raw citations, not adjusted for publication year</li>
+			{#if m.top1 > 0}<li><span class="swatch cap"></span>Top 1%: {fig(m.top1)} {plural(m.top1, 'paper')}</li>{/if}
 		</ul>
 		<p class="meta sentence">
-			{pct(m.topShare)} of this mission’s {weight(m.total)} {plural(m.total, 'paper')} {m.total === 1 ? 'is' : 'are'} in the division’s top {m.topPercent}%; {m.topPercent}% would be an even spread.
+			{pct(m.topShare)} of this mission’s {weight(m.total)} {plural(m.total, 'paper')} {m.total === 1 ? 'is' : 'are'} in the division’s top tenth by raw citations; {m.topPercent}% would be an even spread.
 		</p>
 	</figure>
 {/if}

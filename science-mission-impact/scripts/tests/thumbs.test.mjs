@@ -220,6 +220,17 @@ describe('loadMissionScope', () => {
 		assert.deepEqual(unmatched, []);
 	});
 
+	it('takes a configured URL override over upstream image_url, and refuses an unknown mission', () => {
+		const f = sourceFixture(tmpDir());
+		const overrides = { fixture_astro: 'https://images.test/astro.jpg', fixture_bps: 'https://images.test/bps.jpg' };
+		const { missions } = loadMissionScope({ ...f, config: { ...f.config, thumbnails: { overrides } } });
+		assert.equal(missions[0].url, overrides.fixture_astro);
+		assert.equal(missions.find((m) => m.mission_id === 'fixture_bps').url, overrides.fixture_bps); // none upstream
+		assert.equal(missions.find((m) => m.mission_id === 'fixture_earth').url, 'https://example.test/fixture_earth.jpg');
+		assert.throws(() => loadMissionScope({ ...f, config: { ...f.config, thumbnails: { overrides: { gone: 'https://x.test/a.jpg' } } } }),
+			/thumbnails.overrides has unknown mission id\(s\): gone/);
+	});
+
 	it('throws loudly when inputs are missing', () => {
 		const f = sourceFixture(tmpDir());
 		assert.throws(() => loadMissionScope({ rawDir: tmpDir(), config: f.config }), /Cannot read source .*index.json/);

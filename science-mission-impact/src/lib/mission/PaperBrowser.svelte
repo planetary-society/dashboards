@@ -47,15 +47,17 @@
 	);
 
 	const haystack = $derived(columns ? buildSearchIndex(columns) : null);
-	// Sorted once per sort/scope change; each keystroke only filters that order.
-	const order = $derived(columns ? sortIndex(columns.b.map((_, i) => i), columns, { sort, scope: view.scope }) : null);
+	// Sorted once per sort change; each keystroke only filters that order.
+	const order = $derived(columns ? sortIndex(columns.b.map((_, i) => i), columns, { sort }) : null);
 	const result = $derived(
 		columns ? filterIndex(columns, { search, topOnly, scope: view.scope, top: view.top, haystack, order }) : []
 	);
 	const rows = $derived(columns ? rowsFor(columns, result, 0, limit, view.scope) : initialRows);
 
 	const showWindow = $derived(loaded && view.scope !== 'lifetime');
-	const canLoadAll = $derived(file && file.rows > (initial?.length ?? 0));
+	// Even a short list loads its file: that is where search, the top-10% marks and the CSV live.
+	const canLoadAll = $derived(!!file);
+	const hasMore = $derived(file && file.rows > (initial?.length ?? 0));
 
 	// Any change to what the list contains starts the reader back at the first hundred.
 	const resultKey = $derived(`${search}|${sort}|${topOnly}|${view.scope}|${view.top}`);
@@ -121,18 +123,24 @@
 				value={sort}
 				onchange={(v) => (sort = v)}
 				options={[
-					{ value: 'cited', label: 'Most cited' },
+					{ value: 'cited', label: 'Most cited (lifetime)' },
 					{ value: 'newest', label: 'Newest' },
 					{ value: 'oldest', label: 'Oldest' }
 				]}
 			/>
 
-			<button type="button" class="toggle" aria-pressed={topOnly} onclick={() => (topOnly = !topOnly)}>Top {view.top}% only</button>
+			<button type="button" class="toggle" aria-pressed={topOnly} onclick={() => (topOnly = !topOnly)}>Top-{view.top}% papers only</button>
 
 			<p class="meta readout" aria-live="polite">{int(result.length)} of {int(total)}</p>
 
 			<button type="button" class="link csv" onclick={downloadCsv}>Download CSV</button>
 		</div>
+		<p class="meta legend" aria-hidden="true">
+			<span><span class="tier on"></span>Top-10% paper</span>
+			<span><span class="tier on partial"></span>Partial top-10% credit</span>
+			<span><span class="tier on one"></span>Top-1% paper</span>
+			<span>Citations: lifetime{showWindow ? ', and within the window' : ''}</span>
+		</p>
 	{/if}
 
 	<ol class="papers" aria-label="{name} tracked publications">
@@ -141,13 +149,13 @@
 				<p class="line">
 					{#if loaded}
 						<span class="tier" class:on={r.top10 > 0} class:partial={r.top10 > 0 && r.top10 < 1} class:one={r.top1} aria-hidden="true"></span>
-						{#if r.top1}<span class="sr-only">Top 1%.</span>{:else if r.top10 > 0}<span class="sr-only">Top 10%.</span>{/if}
+						{#if r.top1}<span class="sr-only">Top-1% paper.</span>{:else if r.top10 > 0}<span class="sr-only">Top-10% paper.</span>{/if}
 					{/if}
 					<a class="title" href={adsAbstract(r.bibcode)} target="_blank" rel="noopener">{r.title ?? r.bibcode}</a>
 				</p>
 				<p class="meta">{metaLine(r)}</p>
 				<p class="cites">
-					<Num value={int(r.citations)} />
+					<Num value={int(r.citations)} /><span class="unit meta">{' '}{plural(r.citations, 'citation')}</span>
 					{#if showWindow}
 						<span class="meta win"><Num value={r.windowCitations == null ? '—' : int(r.windowCitations)} /> in window</span>
 					{/if}
@@ -169,7 +177,7 @@
 				<button type="button" class="link" onclick={loadAll}>Try again.</button>
 			{:else}
 				<button type="button" class="link" disabled={status === 'loading'} onclick={loadAll}>
-					{status === 'loading' ? 'Loading…' : `Show all ${int(file.rows)} tracked publications`}
+					{status === 'loading' ? 'Loading…' : hasMore ? `Show all ${int(file.rows)} tracked publications` : 'Search, mark top-10% papers or download CSV'}
 				</button>
 			{/if}
 		</p>
@@ -316,9 +324,22 @@
 		line-height: 20px;
 	}
 
+	.unit,
 	.win {
 		display: block;
 		margin-top: 2px;
+	}
+
+	.legend {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 20px;
+		padding: 10px 0;
+		border-bottom: 1px solid var(--shadow);
+	}
+
+	.legend .tier {
+		margin-right: 6px;
 	}
 
 	.more {

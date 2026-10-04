@@ -40,7 +40,8 @@ export const moneyTick = (millions) => money(millions).replace(/\.0(?=[MB]$)/, '
 /** Years, signed, one decimal. */
 export const years = (y) => (y == null ? '—' : `${y < 0 ? '−' : ''}${Math.abs(y).toFixed(1)}`);
 
-export const yearSpan = (range) => (range ? `${range[0]}–${range[1]}` : '');
+/** [1990, 2026] → "1990–2026"; one year prints once. */
+export const yearSpan = (range) => (!range ? '' : range[0] === range[1] ? String(range[0]) : `${range[0]}–${range[1]}`);
 
 /** Compact axis ticks: 1200 → 1.2k, 3400000 → 3.4M. */
 export function compact(n) {

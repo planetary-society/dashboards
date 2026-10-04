@@ -111,17 +111,16 @@ const compareStrings = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
  * Sort an index array. Every order is total — ties fall back to lifetime
  * citations and then the bibcode — so the list never wobbles between renders.
  *
- * "cited" follows the reader's scope: citations inside the scope's window for the
- * two windowed scopes (papers outside the cohort have none and sort last), lifetime
- * citations otherwise.
+ * "cited" is lifetime citations in every scope: the count each row shows, and the order
+ * of the prerendered list, so loading the full table never reshuffles what is on screen.
  *
  * @param {number[]} index
  * @param {import('../data/types.d.ts').PapersFile['columns']} columns
- * @param {{ sort?: 'cited'|'newest'|'oldest', scope?: import('../data/types.d.ts').Scope }} [options]
+ * @param {{ sort?: 'cited'|'newest'|'oldest' }} [options]
  * @returns {number[]}
  */
 export function sortIndex(index, columns, options = {}) {
-	const { sort = 'cited', scope = 'full' } = options;
+	const { sort = 'cited' } = options;
 	const out = index.slice();
 	const citations = columns.c;
 	const years = columns.y;
@@ -133,8 +132,7 @@ export function sortIndex(index, columns, options = {}) {
 	};
 
 	if (sort === 'cited') {
-		const primary = columns[keysFor(scope).cited];
-		out.sort((i, j) => nullsLastDesc(primary[i], primary[j]) || tieBreak(i, j));
+		out.sort((i, j) => nullsLastDesc(citations[i], citations[j]) || compareStrings(bibcodes[i], bibcodes[j]));
 		return out;
 	}
 

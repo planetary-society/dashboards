@@ -133,21 +133,11 @@ describe('filterIndex', () => {
 describe('sortIndex', () => {
 	const all = [0, 1, 2, 3, 4];
 
-	it('most cited, lifetime scope, ties broken by bibcode', () => {
+	it('most cited is lifetime citations, the count each row shows, ties broken by bibcode', () => {
 		// rows 0 and 1 both have 900 citations; "1998..." sorts before "2004...".
-		assert.deepEqual(sortIndex(all, fixture(), { sort: 'cited', scope: 'lifetime' }), [1, 0, 2, 3, 4]);
-	});
-
-	it('most cited, window scope, uses window citations with nulls last', () => {
-		const out = sortIndex(all, fixture(), { sort: 'cited', scope: 'window' });
-		assert.deepEqual(out.slice(0, 3), [0, 2, 3]);
-		// 1 and 4 have no window citations; among them the more cited comes first.
-		assert.deepEqual(out.slice(3), [1, 4]);
-	});
-
-	it('most cited, full scope, uses full-window citations with nulls last', () => {
-		assert.deepEqual(sortIndex(all, fixture(), { sort: 'cited', scope: 'full' }), [0, 1, 3, 4, 2]);
-		assert.deepEqual(sortIndex(all, fixture(), { sort: 'cited' }), [0, 1, 3, 4, 2]);
+		assert.deepEqual(sortIndex(all, fixture(), { sort: 'cited' }), [1, 0, 2, 3, 4]);
+		// the scope does not reorder it, so loading the full list never reshuffles the prerendered one
+		for (const scope of SCOPES) assert.deepEqual(sortIndex(all, fixture(), { sort: 'cited', scope }), [1, 0, 2, 3, 4], scope);
 	});
 
 	it('newest first, nulls last', () => {

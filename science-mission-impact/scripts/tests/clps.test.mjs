@@ -93,8 +93,9 @@ describe('loadClps', () => {
 			provenance: astro.corpus.provenance, records: [paper('a1', '2000-03-01')] };
 		astro.corpus.files.records = f.write('payload/astro/records-with-paper.json', records);
 		repin(f, 0);
-		const clps = loadClps({ rawDir: f.rawDir, config: config(f), asOf: '2026-10-02' });
+		const clps = loadClps({ rawDir: f.rawDir, config: { ...config(f), names: { fixture_psd: { name: 'Lander One' } } }, asOf: '2026-10-02' });
 		assert.deepEqual(clps.missions.map((m) => m.id), ['fixture_psd']);
+		assert.equal(clps.missions[0].name, 'Lander One'); // the smi.config.json names override
 		assert.equal(clps.start, '2000-01-01');
 		assert.deepEqual(clps.comparators[0].series, [0, 0, 0, 1]);
 		assert.equal(clps.comparators[0].papers, 1);

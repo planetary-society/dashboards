@@ -4,6 +4,7 @@ import { describe, it } from 'node:test';
 import {
 	buildFirstTopPaper,
 	buildMissionScopeStats,
+	firstEraTop,
 	buildTiers,
 	divisionTotal,
 	isFailure,
@@ -114,60 +115,80 @@ describe('isRankable', () => {
 	});
 });
 
+describe('firstEraTop', () => {
+	const rows = [
+		{ mission: 'M', bibcode: '2006b', w: 1 },
+		{ mission: 'M', bibcode: '2005late', w: 0.4 }, // tied at the cutoff: still qualifies
+		{ mission: 'M', bibcode: '2004none', w: 0 },
+		{ mission: 'M', bibcode: '2004null', w: null },
+		{ mission: 'M', bibcode: '2005year', w: 1 }
+	];
+	const pubdates = new Map([['2006b', '2006-01-00'], ['2005late', '2005-03-00'], ['2004none', '2004-01-00'], ['2005year', '2005-00-00']]);
+
+	it('picks the earliest-published paper with any era-adjusted weight', () => {
+		assert.deepEqual(firstEraTop(rows, 'w', pubdates), { bibcode: '2005late', date: '2005-03-00' });
+		// A year-only date reads as 1 July, so it is later than March.
+		assert.deepEqual(firstEraTop(rows.slice(0, 2).concat(rows[4]), 'w', new Map([...pubdates, ['2005late', '2005-09-00']])),
+			{ bibcode: '2005year', date: '2005-00-00' });
+		assert.equal(firstEraTop(rows.slice(2, 4), 'w', pubdates), null);
+	});
+
+	it('breaks a date tie by bibcode and throws on a qualifying row with no date', () => {
+		const tie = [{ bibcode: 'b', w: 1 }, { bibcode: 'a', w: 1 }];
+		assert.equal(firstEraTop(tie, 'w', new Map([['a', '2001-02-00'], ['b', '2001-02-00']])).bibcode, 'a');
+		assert.throws(() => firstEraTop([{ mission: 'M', bibcode: 'x', w: 1 }], 'w', new Map()), /M x has no publication date/);
+	});
+});
+
 describe('buildFirstTopPaper', () => {
+	const first = { bibcode: '2005Sci...307.1262Y', date: '2005-02-00' };
+
 	it('reports "reached" with years from the start of science, and from formulation when on record', () => {
-		const firstQualifying = {
-			bibcode: '2005Sci...307.1262Y',
-			date: '2005-02-00',
-			days_after_ops_start: 324
-		};
-		const first = buildFirstTopPaper({ firstQualifying, failed: false, papers: 3399 });
-		assert.equal(first.state, 'reached');
-		assert.equal(first.yearsFromScienceStart, 0.887);
-		assert.equal(first.yearsFromFormulation, null);
-		assert.equal(first.bibcode, '2005Sci...307.1262Y');
-		assert.equal(first.date, '2005-02-00');
-		const fromFormulation = buildFirstTopPaper({ firstQualifying, failed: false, papers: 3399, formulation: '1990-10-01' });
-		assert.equal(fromFormulation.yearsFromScienceStart, 0.887);
+		const reached = buildFirstTopPaper({ first, failed: false, papers: 3399, scienceStart: '2004-04-01' });
+		assert.equal(reached.state, 'reached');
+		// 1 April 2004 to 1 February 2005 (an unknown day reads as the 1st).
+		assert.equal(reached.yearsFromScienceStart, 0.838);
+		assert.equal(reached.yearsFromFormulation, null);
+		assert.equal(reached.bibcode, '2005Sci...307.1262Y');
+		assert.equal(reached.date, '2005-02-00');
+		const fromFormulation = buildFirstTopPaper({ first, failed: false, papers: 3399, scienceStart: '2004-04-01', formulation: '1990-10-01' });
 		assert.equal(fromFormulation.yearsFromFormulation, 14.338);
-		// No paper date, no reading from formulation.
-		assert.equal(buildFirstTopPaper({ firstQualifying: { ...firstQualifying, date: null }, failed: false, papers: 1, formulation: '1990-10-01' }).yearsFromFormulation, null);
+		// No science start on record, no reading from it.
+		assert.equal(buildFirstTopPaper({ first, failed: false, papers: 1 }).yearsFromScienceStart, null);
 	});
 
 	it('has no formulation reading when nothing qualifies', () => {
-		const none = buildFirstTopPaper({ firstQualifying: null, failed: false, papers: 12, formulation: '1990-10-01' });
+		const none = buildFirstTopPaper({ first: null, failed: false, papers: 12, formulation: '1990-10-01' });
 		assert.equal(none.state, 'none');
 		assert.equal(none.yearsFromFormulation, null);
 	});
 
 	it('keeps a negative time-to-first (papers can predate science start)', () => {
-		const first = buildFirstTopPaper({
-			firstQualifying: { bibcode: 'x', date: null, days_after_ops_start: -772 },
-			failed: false,
-			papers: 10
-		});
-		assert.equal(first.yearsFromScienceStart, -2.114);
+		const early = buildFirstTopPaper({ first: { bibcode: 'x', date: '2000-01-00' }, failed: false, papers: 10, scienceStart: '2002-01-15' });
+		assert.equal(early.yearsFromScienceStart, -2.04);
 	});
 
 	it('prefers "failure" over "no_papers" for a failed mission', () => {
-		assert.equal(buildFirstTopPaper({ firstQualifying: null, failed: true, papers: 0 }).state, 'failure');
-		assert.equal(buildFirstTopPaper({ firstQualifying: null, failed: true, papers: null }).state, 'failure');
+		assert.equal(buildFirstTopPaper({ first: null, failed: true, papers: 0 }).state, 'failure');
+		assert.equal(buildFirstTopPaper({ first: null, failed: true, papers: null }).state, 'failure');
 	});
 
 	it('distinguishes "no_papers" from "none"', () => {
-		assert.equal(buildFirstTopPaper({ firstQualifying: null, failed: false, papers: 0 }).state, 'no_papers');
-		assert.equal(buildFirstTopPaper({ firstQualifying: null, failed: false, papers: 12 }).state, 'none');
+		assert.equal(buildFirstTopPaper({ first: null, failed: false, papers: 0 }).state, 'no_papers');
+		assert.equal(buildFirstTopPaper({ first: null, failed: false, papers: 12 }).state, 'none');
 		// null papers is "unavailable", not a measured zero.
-		assert.equal(buildFirstTopPaper({ firstQualifying: null, failed: false, papers: null }).state, 'unavailable');
+		assert.equal(buildFirstTopPaper({ first: null, failed: false, papers: null }).state, 'unavailable');
 	});
 });
 
 describe('buildMissionScopeStats', () => {
+	const first = { bibcode: 'x', date: '2005-02-00' };
+
 	it('uses cohort fields for top 10% and pooled window fields for top 1%', () => {
 		const stats = buildMissionScopeStats({
 			statsMission: measured,
 			scope: 'window',
-			percentileView: null,
+			first,
 			divisionTop10: 32,
 			divisionTop1: 8
 		});
@@ -182,11 +203,10 @@ describe('buildMissionScopeStats', () => {
 		const stats = buildMissionScopeStats({
 			statsMission: measured,
 			scope: 'full',
-			percentileView: {
-				by_top_percent: { 10: { first_qualifying: { bibcode: 'x', date: '2005-02-00', days_after_ops_start: 324 } } }
-			},
+			first,
 			divisionTop10: 56,
 			divisionTop1: 12,
+			scienceStart: '2004-04-01',
 			formulation: '1990-10-01'
 		});
 		assert.equal(stats.papers, 70);
@@ -197,15 +217,21 @@ describe('buildMissionScopeStats', () => {
 		assert.equal(stats.top1, 3);
 		assert.equal(stats.top1ShareOfDivision, 0.25);
 		assert.equal(stats.first.state, 'reached');
-		assert.equal(stats.first.yearsFromScienceStart, 0.887);
+		assert.equal(stats.first.yearsFromScienceStart, 0.838);
 		assert.equal(stats.first.yearsFromFormulation, 14.338);
+	});
+
+	it('throws when the paper rows and the mission credit disagree about any top-10% paper', () => {
+		const args = { statsMission: measured, scope: 'full', divisionTop10: 56, divisionTop1: 12 };
+		assert.throws(() => buildMissionScopeStats({ ...args, first: null }), /Big \(full\): top-10% credit 14 but no paper row/);
+		assert.throws(() => buildMissionScopeStats({ ...args, statsMission: { ...measured, full_mission_cohort_top10: 0 }, first }), /credit 0 but a paper row/);
 	});
 
 	it('has no top 1% in the lifetime scope', () => {
 		const stats = buildMissionScopeStats({
 			statsMission: measured,
 			scope: 'lifetime',
-			percentileView: null,
+			first,
 			divisionTop10: 40,
 			divisionTop1: 0
 		});
@@ -218,7 +244,7 @@ describe('buildMissionScopeStats', () => {
 		const stats = buildMissionScopeStats({
 			statsMission: unavailable,
 			scope: 'lifetime',
-			percentileView: null,
+			first: null,
 			divisionTop10: 40,
 			divisionTop1: 0
 		});
@@ -233,7 +259,7 @@ describe('buildMissionScopeStats', () => {
 		const stats = buildMissionScopeStats({
 			statsMission: { ...measured, window_cohort_top10: 0 },
 			scope: 'window',
-			percentileView: null,
+			first: null,
 			divisionTop10: 0,
 			divisionTop1: 0
 		});

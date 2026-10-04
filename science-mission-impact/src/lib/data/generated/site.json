@@ -3,6 +3,7 @@
   "fetchedMin": "2026-09-26T22:25:07.267173+00:00",
   "fetchedMax": "2026-10-02T04:39:47.102935+00:00",
   "codeRevision": "81208d8e629a331f3b6b98ff30ca79f3e90fa006",
+  "codeRevisionDirty": true,
   "missions": 134,
   "papersDistinct": 146699,
   "citationsDistinct": 6153105,
@@ -398,7 +399,85 @@
             "missions": 43
           }
         }
-      ]
+      ],
+      "byDivision": [
+        {
+          "division": "astrophysics",
+          "name": "Astrophysics",
+          "under": {
+            "missions": 6,
+            "failed": 1,
+            "withTop": 1,
+            "top10": 1.15,
+            "top10PerMission": 0.192
+          },
+          "over": {
+            "missions": 19,
+            "failed": 0,
+            "withTop": 19,
+            "top10": 4983.749,
+            "top10PerMission": 262.303
+          }
+        },
+        {
+          "division": "earth",
+          "name": "Earth Science",
+          "under": {
+            "missions": 12,
+            "failed": 2,
+            "withTop": 2,
+            "top10": 1.333,
+            "top10PerMission": 0.111
+          },
+          "over": {
+            "missions": 28,
+            "failed": 3,
+            "withTop": 25,
+            "top10": 3845.667,
+            "top10PerMission": 137.345
+          }
+        },
+        {
+          "division": "heliophysics",
+          "name": "Heliophysics",
+          "under": {
+            "missions": 12,
+            "failed": 2,
+            "withTop": 5,
+            "top10": 148.274,
+            "top10PerMission": 12.356
+          },
+          "over": {
+            "missions": 17,
+            "failed": 0,
+            "withTop": 17,
+            "top10": 1294.226,
+            "top10PerMission": 76.131
+          }
+        },
+        {
+          "division": "planetary",
+          "name": "Planetary Science",
+          "under": {
+            "missions": 5,
+            "failed": 2,
+            "withTop": 2,
+            "top10": 9.45,
+            "top10PerMission": 1.89
+          },
+          "over": {
+            "missions": 30,
+            "failed": 4,
+            "withTop": 26,
+            "top10": 1081.65,
+            "top10PerMission": 36.055
+          }
+        }
+      ],
+      "equalWeight": {
+        "under": 3.637,
+        "over": 127.959
+      }
     },
     "pooledBand": {
       "divisions": [
@@ -470,8 +549,8 @@
         "division": "earth",
         "name": "Earth Science",
         "missions": 40,
-        "reached": 26,
-        "never": 14,
+        "reached": 27,
+        "never": 13,
         "under": {
           "missions": 12,
           "reached": 2,
@@ -481,9 +560,9 @@
           "id": "quikscat",
           "name": "QuikSCAT",
           "cost": 188,
-          "years": 3.365
+          "years": 2.7
         },
-        "medianYears": 8.778,
+        "medianYears": 8.89,
         "byCostThird": [
           {
             "key": "low",
@@ -497,13 +576,13 @@
           },
           {
             "key": "mid",
-            "missions": 8,
+            "missions": 9,
             "costRange": [
               404.2,
               1372.5
             ],
-            "medianYears": 8.333,
-            "medianBuildYears": 7.194
+            "medianYears": 8.665,
+            "medianBuildYears": 7.19
           },
           {
             "key": "high",
@@ -553,7 +632,7 @@
               209.3,
               538
             ],
-            "medianYears": 4.891,
+            "medianYears": 5.058,
             "medianBuildYears": 3.991
           },
           {
@@ -563,7 +642,7 @@
               581.4,
               1655.6
             ],
-            "medianYears": 8.005,
+            "medianYears": 7.838,
             "medianBuildYears": 6.908
           }
         ]
@@ -572,8 +651,8 @@
         "division": "planetary",
         "name": "Planetary Science",
         "missions": 35,
-        "reached": 26,
-        "never": 9,
+        "reached": 28,
+        "never": 7,
         "under": {
           "missions": 5,
           "reached": 2,
@@ -585,27 +664,27 @@
           "cost": 131.4,
           "years": 3.337
         },
-        "medianYears": 6.141,
+        "medianYears": 6.099,
         "byCostThird": [
           {
             "key": "low",
             "missions": 9,
             "costRange": [
               131.4,
-              613
+              486.2
             ],
-            "medianYears": 5.498,
-            "medianBuildYears": 3.176
+            "medianYears": 5.747,
+            "medianBuildYears": 3.214
           },
           {
             "key": "mid",
-            "missions": 8,
+            "missions": 10,
             "costRange": [
-              623.5,
+              550.4,
               883.2
             ],
-            "medianYears": 5.261,
-            "medianBuildYears": 4.518
+            "medianYears": 5.321,
+            "medianBuildYears": 4.118
           },
           {
             "key": "high",
@@ -641,6 +720,7 @@
           }
         ],
         "favors": "over",
+        "flipsOn": [],
         "margin": 0.94228,
         "largestUnder": {
           "id": "swas",
@@ -668,6 +748,7 @@
           }
         ],
         "favors": "over",
+        "flipsOn": [],
         "margin": 0.87383,
         "largestUnder": {
           "id": "raincube",
@@ -695,6 +776,13 @@
           }
         ],
         "favors": null,
+        "flipsOn": [
+          {
+            "id": "trace",
+            "name": "TRACE",
+            "side": "under"
+          }
+        ],
         "margin": 0.31535,
         "largestUnder": {
           "id": "trace",
@@ -722,6 +810,7 @@
           }
         ],
         "favors": "over",
+        "flipsOn": [],
         "margin": 0.28434,
         "largestUnder": {
           "id": "lunar_prospector",
@@ -759,7 +848,7 @@
       },
       {
         "id": "m1",
-        "name": "M1",
+        "name": "Blue Ghost M1",
         "fullName": "Blue Ghost Mission 1",
         "launchDate": "2025-01-15",
         "primeStart": "2025-03-02",
@@ -1826,7 +1915,7 @@
       },
       {
         "id": "marco",
-        "name": "MarCo",
+        "name": "MarCO",
         "division": "planetary",
         "cost": 23.5,
         "papers": 1,
@@ -2436,6 +2525,19 @@
       }
     },
     "majorityNonScience": 7,
+    "topCredit": {
+      "total": 160.907,
+      "nonScience": 28.7,
+      "share": 0.17836,
+      "byKind": {
+        "results": 130.207,
+        "data": 2,
+        "mission": 6.783,
+        "review": 4.333,
+        "future": 1,
+        "other": 16.583
+      }
+    },
     "examples": [
       {
         "id": "raincube",
@@ -2591,7 +2693,7 @@
       },
       {
         "id": "marco",
-        "name": "MarCo",
+        "name": "MarCO",
         "division": "planetary",
         "cost": 23.5,
         "papers": 1,

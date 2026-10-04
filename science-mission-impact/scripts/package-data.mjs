@@ -39,7 +39,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { combineWindows, fullMissionPolicy, missionWindow, windowPolicy } from './lib/windows.mjs';
-import { loadConfig, resolveRawDir, tierBounds } from './lib/config.mjs';
+import { assertKnownIds, displayNames, loadConfig, resolveRawDir, tierBounds } from './lib/config.mjs';
 import { citationCoverage, citationRepresentatives } from './lib/citations.mjs';
 import { buildCostCurve } from './lib/costcurve.mjs';
 import { formatReport } from './lib/report.mjs';
@@ -58,6 +58,7 @@ import {
 import {
 	buildMissionScopeStats,
 	buildTiers,
+	firstEraTop,
 	divisionTotal,
 	isFailure,
 	isRankable,
@@ -84,6 +85,7 @@ import { buildSite, byCost, byLaunch, tileSort } from './lib/site.mjs';
 import { loadClps } from './lib/clps.mjs';
 import { buildKinds, loadPaperKinds } from './lib/kinds.mjs';
 import { underThreshold } from './lib/public.mjs';
+import { cleanTitle } from './lib/text.mjs';
 import { byText, groupBy, int, num, weight, yearOf, yearsBetween } from './lib/util.mjs';
 
 const APP_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -190,8 +192,8 @@ function paperRefFromTopCited(entry) {
 	if (!entry?.bibcode) return null;
 	return {
 		bibcode: entry.bibcode,
-		title: entry.title_text ?? null,
-		firstAuthor: entry.first_author ?? null,
+		title: cleanTitle(entry.title_text ?? null),
+		firstAuthor: cleanTitle(entry.first_author ?? null),
 		year: num(entry.year),
 		citations: num(entry.citation_count) ?? 0
 	};
@@ -204,7 +206,7 @@ function curationItem(entry, titleByBibcode) {
 		bibcode,
 		doi: entry?.doi ?? entry?.record_summary?.doi_primary ?? null,
 		title:
-			entry?.record_summary?.title_text ?? (bibcode ? (titleByBibcode.get(bibcode) ?? null) : null),
+			cleanTitle(entry?.record_summary?.title_text ?? null) ?? (bibcode ? (titleByBibcode.get(bibcode) ?? null) : null),
 		reason: entry?.reason ?? '',
 		authority: entry?.authority ?? 'unknown',
 		date: entry?.date ?? null
@@ -218,13 +220,16 @@ const laneFirst = (first) => ({
 	yearsFromFormulation: first.yearsFromFormulation
 });
 
+/** One full-mission paper row's top-10% credit to its mission: the era-adjusted weight split between the missions sharing it. */
+const fullCredit = (row) => Number(row.window_cohort_top10_weight ?? 0) / (Number(row.window_shared_by) || 1);
+
 /** One division's cost curve at one scope and percentile. */
-function costCurveFor(resolved, slug, scope, top) {
+function costCurveFor(resolved, slug, scope, top, config) {
 	const credit = top === 1 ? missionTop1 : missionTop10;
 	return buildCostCurve(
 		resolved.map(({ id, shortTitle, statsMission }) => ({
 			id,
-			name: shortTitle,
+			name: displayNames(config, id, { name: shortTitle }).name,
 			cost: statsMission.adjusted_lcc > 0 ? num(statsMission.adjusted_lcc) : null,
 			top: credit(statsMission, scope)
 		})),
@@ -321,6 +326,7 @@ export function loadRuns(rawDir, config, warnings, source = loadSourceCatalog(ra
 			windowPolicy: policies[0],
 			fullPolicy: fullPolicies[0],
 			codeRevision: revisions.join('+'),
+			codeRevisionDirty: runs.some((r) => Boolean(r.stats.provenance?.code?.working_tree_dirty)),
 			attribution: runs[0].stats.attribution ?? {},
 			fetchedMin: runs.map((r) => r.stats.run?.fetched_at_min).filter(Boolean).sort()[0] ?? null,
 			fetchedMax: runs.map((r) => r.stats.run?.fetched_at_max).filter(Boolean).sort().at(-1) ?? null,
@@ -354,8 +360,8 @@ export function loadRuns(rawDir, config, warnings, source = loadSourceCatalog(ra
  * @param {object} args.run per-division blocks: scopes, summary and share denominators
  * @param {{into: Map<number, number>, seen: Set<string>}} args.divisionCitations
  * @param {Map<string, string[]>} args.citationOverrides rebuilt citing lists
- * @param {{cited: string[], curated: Set<string>}} args.ownCitations the mission's
- *   own cited bibcodes (file order, packaged papers only) and its curated records
+ * @param {{cited: string[], curated: Set<string>, pubdates: Map<string, string>}} args.ownCitations the mission's
+ *   own cited bibcodes (file order, packaged papers only), its curated records and every record's ADS pubdate
  */
 export function buildMissionDoc({
 	mission,
@@ -374,6 +380,10 @@ export function buildMissionDoc({
 
 	const corpus = paths.source.readMission(id);
 	assertSchemaVersion(`${id}.json`, corpus.schema_version, config.schemaVersions.mission);
+	// Published names (smi.config.json names); `shortTitle` stays the key into every stats table.
+	const display = displayNames(config, id, { name: shortTitle, fullName: corpus.full_name ?? statsMission.full_name ?? null });
+	const name = display.name;
+	const fullName = display.fullName ?? name;
 
 	const lifetimeRows = run.rowsByMission.get(shortTitle) ?? [];
 	assertMissionPaperRows({
@@ -394,7 +404,7 @@ export function buildMissionDoc({
 
 	// --- lifetime citations by citing year (aggregates only) ------------------
 	const missionCitationYears = new Map();
-	const { cited, curated: curatedBibcodes } = ownCitations;
+	const { cited, curated: curatedBibcodes, pubdates } = ownCitations;
 	let divisionEdges = 0;
 	if (lifetimeRows.length > 0) {
 		// One pass, two sinks: the mission's own citing years, and the
@@ -465,32 +475,42 @@ export function buildMissionDoc({
 	// set than implementation dates do: build time and the project-start reading
 	// of a first top paper both run from here.
 	const formulation = corpus.mission?.formulation_start_date ?? null;
+	const launchDate = corpus.mission?.mission_launch_date ?? indexEntry.mission_launch_date ?? null;
+	// Science starts at the prime-mission start, else at launch, as upstream reads it.
+	const scienceStart = corpus.mission?.prime_mission_start_date ?? launchDate;
 	const percentileView = (block) => block.percentile_view?.mission_stats?.[shortTitle] ?? null;
 	const pvLifetime = percentileView(scopeLifetime);
 	const pvWindow = percentileView(scopeWindow);
 	const pvFull = percentileView(scopeFull);
-	const scopeStats = (scope, pv) =>
+	// A first top-10% paper is era-adjusted like every top-10% count: read from the paper rows,
+	// not from the pooled view's first_qualifying (which ranks against the division's pooled cutoff).
+	const firstTop = {
+		full: firstEraTop(fullRows.values(), 'window_cohort_top10_weight', pubdates),
+		window: firstEraTop(windowRows.values(), 'window_cohort_top10_weight', pubdates),
+		lifetime: firstEraTop(lifetimeRows, 'cohort_top10_weight', pubdates)
+	};
+	const scopeStats = (scope) =>
 		buildMissionScopeStats({
 			statsMission,
 			scope,
-			percentileView: pv,
+			first: firstTop[scope],
 			divisionTop10: divisionTop10[scope],
 			divisionTop1: divisionTop1[scope],
+			scienceStart,
 			formulation
 		});
-	const lifetimeStats = scopeStats('lifetime', pvLifetime);
-	const windowStats = { ...scopeStats('window', pvWindow), status: windowStatus, bounds };
+	const lifetimeStats = scopeStats('lifetime');
+	const windowStats = { ...scopeStats('window'), status: windowStatus, bounds };
 	// The full-mission window has no month-by-month companions: its cohort dates and measures only.
 	const fullCohort = statsMission.full_mission_cohort;
 	const fullStats = {
-		...scopeStats('full', pvFull),
+		...scopeStats('full'),
 		status: statsMission.full_mission_status ?? fullCohort?.status ?? 'unknown',
 		bounds: missionWindow(fullCohort, snapshot.fullPolicy, `${id} (full-mission window)`)
 	};
 
 	const failed = isFailure(statsMission.mission_status);
 	const shortfall = isShortfall(statsMission.mission_status);
-	const launchDate = corpus.mission?.mission_launch_date ?? indexEntry.mission_launch_date ?? null;
 	const launchYear = yearOf(launchDate);
 	const hasThumb = existsSync(join(THUMBS_DIR, `${id}.webp`));
 	const yearsToBuild = yearsBetween(formulation, launchDate);
@@ -548,8 +568,8 @@ export function buildMissionDoc({
 	// --- generated/missions/<id>.json ---------------------------------------------
 	const missionDoc = {
 		id,
-		name: shortTitle,
-		fullName: corpus.full_name ?? statsMission.full_name ?? shortTitle,
+		name,
+		fullName,
 		division: division.slug,
 		divisionName: division.name,
 		hasThumb,
@@ -609,7 +629,7 @@ export function buildMissionDoc({
 		missionDoc,
 		missionRow: {
 			id,
-			name: shortTitle,
+			name,
 			cost: num(statsMission.adjusted_lcc),
 			launchYear,
 			failed,
@@ -632,7 +652,7 @@ export function buildMissionDoc({
 		},
 		indexEntry: {
 			id,
-			name: shortTitle,
+			name,
 			fullName: missionDoc.fullName,
 			cost: num(statsMission.adjusted_lcc),
 			division: division.slug,
@@ -641,7 +661,7 @@ export function buildMissionDoc({
 		},
 		scrollyTile: {
 			id,
-			name: shortTitle,
+			name,
 			division: division.slug,
 			launchYear,
 			launchDate,
@@ -672,6 +692,8 @@ export function buildMissionDoc({
 			firstAuthor: row.first_author ?? null,
 			inScope: fullRows.has(row.bibcode),
 			citations: fullRows.has(row.bibcode) ? Number(fullRows.get(row.bibcode).window_citations ?? 0) : null,
+			// The mission's share of the paper's era-adjusted top-10% weight: summed, these are full.top10.
+			top10Credit: fullRows.has(row.bibcode) ? fullCredit(fullRows.get(row.bibcode)) : null,
 			citationsLifetime: Number(row.citations ?? 0)
 		})),
 		// What the division folds in afterwards.
@@ -679,8 +701,8 @@ export function buildMissionDoc({
 		windowSeries,
 		bytes: { missions: missionBytes, papers: papersBytes },
 		notes: {
-			unbalanced: balanced ? null : `${id} (${shortTitle})`,
-			missingQuery: corpus.query?.source_query ? null : { id, name: shortTitle, division: division.slug }
+			unbalanced: balanced ? null : `${id} (${name})`,
+			missingQuery: corpus.query?.source_query ? null : { id, name, division: division.slug }
 		}
 	};
 }
@@ -717,6 +739,11 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 		papersJson.schema_version,
 		config.schemaVersions.stats
 	);
+	// Every published title and author comes from these rows: clean the ADS markup once, here.
+	for (const row of papersJson.papers) {
+		row.title = cleanTitle(row.title ?? null);
+		row.first_author = cleanTitle(row.first_author ?? null);
+	}
 	const windowPapersJson = paths.source.readPapers(run, 'window');
 	assertSchemaVersion(
 		`stats/${division.statsLabel}/papers.window.json`,
@@ -803,7 +830,8 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 			const citations = paths.source.readMission(id, 'citations').citations ?? {};
 			ownCitations.set(id, {
 				cited: Object.keys(citations).filter((bibcode) => included.has(bibcode)),
-				curated: new Set(records.filter((r) => r?.source && r.source !== 'query').map((r) => r.bibcode))
+				curated: new Set(records.filter((r) => r?.source && r.source !== 'query').map((r) => r.bibcode)),
+				pubdates: new Map(records.map((r) => [r.bibcode, r.pubdate]))
 			});
 			yield { name: shortTitle, records: records.filter((r) => included.has(r.bibcode)), citations };
 		}
@@ -820,7 +848,7 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 	const missionRows = [];
 	const indexEntries = [];
 	const scrollyTiles = [];
-	const kindInputs = new Map(); // mission id -> { fullName, rows } for site.kinds
+	const kindInputs = new Map(); // mission id -> { fullName, top10, rows } for site.kinds
 	const unbalanced = [];
 	const missionsWithoutQuery = [];
 	const bytes = { missions: 0, papers: 0 };
@@ -856,7 +884,7 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 		missionRows.push(built.missionRow);
 		indexEntries.push(built.indexEntry);
 		scrollyTiles.push(built.scrollyTile);
-		kindInputs.set(built.scrollyTile.id, { fullName: built.missionDoc.fullName, rows: built.kindRows });
+		kindInputs.set(built.scrollyTile.id, { fullName: built.missionDoc.fullName, top10: built.missionRow.full.top10, rows: built.kindRows });
 		divisionEdges += built.divisionEdges;
 		bytes.missions += built.bytes.missions;
 		bytes.papers += built.bytes.papers;
@@ -876,14 +904,14 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 	const costCurves = rankable
 		? {
 				full: {
-					10: costCurveFor(resolved, division.slug, 'full', 10),
-					1: costCurveFor(resolved, division.slug, 'full', 1)
+					10: costCurveFor(resolved, division.slug, 'full', 10, config),
+					1: costCurveFor(resolved, division.slug, 'full', 1, config)
 				},
 				window: {
-					10: costCurveFor(resolved, division.slug, 'window', 10),
-					1: costCurveFor(resolved, division.slug, 'window', 1)
+					10: costCurveFor(resolved, division.slug, 'window', 10, config),
+					1: costCurveFor(resolved, division.slug, 'window', 1, config)
 				},
-				lifetime: { 10: costCurveFor(resolved, division.slug, 'lifetime', 10), 1: null }
+				lifetime: { 10: costCurveFor(resolved, division.slug, 'lifetime', 10, config), 1: null }
 			}
 		: null;
 
@@ -1020,6 +1048,7 @@ function main() {
 	const { runs, snapshot } = loadRuns(rawDir, config, warnings, source);
 	// The CLPS chart's dataset is checked with everything else, before any output changes.
 	const clps = loadClps({ rawDir: resolve(APP_ROOT, config.clps.rawDir), config, asOf: snapshot.asOf });
+	assertKnownIds('names', Object.keys(config.names ?? {}), new Set([...source.missions.keys(), ...clps.missions.map((m) => m.id), ...clps.comparators.map((m) => m.id)]));
 	const kindsFile = loadPaperKinds(resolve(APP_ROOT, config.paperKinds.file));
 	paths.source = source;
 	const byTitle = source.byTitle;

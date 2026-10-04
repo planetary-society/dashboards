@@ -5,7 +5,7 @@
  */
 
 import { readFileSync } from 'node:fs';
-import { byText, ratio, share } from './util.mjs';
+import { byText, ratio, share, sum, weight } from './util.mjs';
 
 export const KINDS = [
 	{ key: 'results', label: 'Science results', short: 'Science', science: true },
@@ -85,7 +85,9 @@ function lifetimeOf(m, classes) {
 }
 
 /**
- * Count each mission's in-scope (full-mission window) papers by kind.
+ * Count each mission's in-scope (full-mission window) papers by kind, with their top-10% credit.
+ * Each mission carries its full-scope `top10` (null when unavailable) and rows with `top10Credit`
+ * (the in-window row's share of the mission's top10); the two must agree.
  * @param {{kindsFile: ReturnType<typeof validatePaperKinds>, missions: object[], examples: string[], smallMax: number, warnings: {add(m: string): void}}} args
  */
 export function buildKinds({ kindsFile, missions, examples, smallMax, warnings }) {
@@ -111,6 +113,7 @@ export function buildKinds({ kindsFile, missions, examples, smallMax, warnings }
 	const built = missions.map((m) => {
 		const classes = kindsFile.byMission.get(m.id) ?? new Map();
 		const byKind = emptyByKind();
+		const credit = Object.fromEntries(KINDS.map((k) => [k.key, 0]));
 		const list = [];
 		let unclassifiedOut = 0;
 		for (const row of m.rows) {
@@ -125,20 +128,30 @@ export function buildKinds({ kindsFile, missions, examples, smallMax, warnings }
 			}
 			byKind[c.kind].papers += 1;
 			byKind[c.kind].citations += row.citations;
+			if (!Number.isFinite(row.top10Credit)) throw new Error(`paper kinds: ${m.id} ${row.bibcode} has no top-10% credit`);
+			credit[c.kind] += row.top10Credit;
 			list.push({ bibcode: row.bibcode, title: row.title, year: row.year, firstAuthor: row.firstAuthor, citations: row.citations, kind: c.kind, note: c.note });
 		}
 		if (unclassifiedOut) warnings.add(`paper kinds: ${m.id} has ${unclassifiedOut} unclassified paper(s) outside the full-mission window`);
 		const papers = list.length;
 		const citations = list.reduce((n, r) => n + r.citations, 0);
-		return { m, byKind, list, papers, citations };
+		return { m, byKind, credit, list, papers, citations };
 	});
 	if (missing.length) throw new Error(`paper kinds: ${missing.length} in-window paper(s) have no classification:\n- ${missing.join('\n- ')}`);
 
-	for (const { m, papers, citations } of built) {
+	for (const { m, papers, citations, credit } of built) {
 		if (papers !== m.papers || citations !== m.citations) {
 			throw new Error(`paper kinds: ${m.id} in-window rows give ${papers} papers / ${citations} citations, the tile says ${m.papers} / ${m.citations}`);
 		}
+		const top10 = sum(Object.values(credit));
+		if (m.top10 !== null && !(Math.abs(top10 - m.top10) <= 0.001)) {
+			throw new Error(`paper kinds: ${m.id} in-window rows give ${top10} top-10% credit, the mission says ${m.top10}`);
+		}
 	}
+	// Top-10% credit by kind: the same tie-weighted, era-adjusted credit the comparison counts.
+	const creditByKind = Object.fromEntries(KINDS.map((k) => [k.key, sum(built.map((b) => b.credit[k.key]))]));
+	const creditTotal = sum(Object.values(creditByKind));
+	const creditNonScience = sum(KINDS.filter((k) => !k.science).map((k) => creditByKind[k.key]));
 
 	const toMission = ({ m, byKind, papers, citations }) => ({
 		id: m.id,
@@ -197,6 +210,12 @@ export function buildKinds({ kindsFile, missions, examples, smallMax, warnings }
 			nonScience: smallTally.nonScience
 		},
 		majorityNonScience: all.filter((m) => m.papers > 0 && nonScience(m.byKind) > m.papers - nonScience(m.byKind)).length,
+		topCredit: {
+			total: weight(creditTotal),
+			nonScience: weight(creditNonScience),
+			share: share(ratio(creditNonScience, creditTotal)),
+			byKind: Object.fromEntries(KINDS.map((k) => [k.key, weight(creditByKind[k.key])]))
+		},
 		examples: examples.map((id) => {
 			const b = built.find((x) => x.m.id === id);
 			return { ...toMission(b), fullName: b.m.fullName, lifetime: lifetimeOf(b.m, kindsFile.byMission.get(id) ?? new Map()) };

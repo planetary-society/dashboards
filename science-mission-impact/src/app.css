@@ -1,9 +1,35 @@
 /* Science Mission Impact — tokens and foundations.
    TPS house palette on true black. Neptune marks, Rocket Flame only for true negatives. */
 
-@import "@fontsource/poppins/latin-300.css";
-@import "@fontsource/poppins/latin-400.css";
-@import "@fontsource/poppins/latin-500.css";
+/* Poppins travels inside this stylesheet (about 24 KB, cached with it), so the first paint is
+   already set in it. Fetched separately, the faces arrived just after first paint and every
+   page header re-wrapped when they swapped in: a layout shift of 0.12-0.18 on mission pages. */
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("@fontsource/poppins/files/poppins-latin-300-normal.woff2?inline")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("@fontsource/poppins/files/poppins-latin-400-normal.woff2?inline")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("@fontsource/poppins/files/poppins-latin-500-normal.woff2?inline")
+    format("woff2");
+}
 
 :root {
   --black: #000000;
@@ -15,7 +41,6 @@
   --dust: #c3c3c3; /* secondary text */
   --soil: #8c8c8c; /* tertiary text, axes */
   --shadow: #414141; /* rules only, never text */
-  --shadow-light: #5a5a5a; /* planned-results kind */
   --square: #2b2b2b; /* resting mission square */
   --outline: #4d4d4d; /* hairline around an empty mission square */
   --outline-filled: #6e6e6e; /* …and around one with a fill */
@@ -235,29 +260,31 @@ svg text {
   transform: rotate(-45deg);
 }
 
-/* Paper kinds. Shared by the kind bars and their legend. */
+/* Paper kinds. Shared by the kind bars and their legend. The two science kinds are the two
+   blues; the four others are greys about 21 L* apart on black (92, 70, 49, 27), so adjacent
+   segments and the small legend swatches stay distinguishable. */
 .kind-results {
   background: var(--neptune);
 }
 
 .kind-data {
-  background: var(--neptune-light);
+  background: var(--neptune-mid);
 }
 
 .kind-mission {
-  background: var(--dust);
+  background: #e6e6e6;
 }
 
 .kind-review {
-  background: var(--soil);
+  background: #ababab;
 }
 
 .kind-future {
-  background: var(--shadow-light);
+  background: #737373;
 }
 
 .kind-other {
-  background: var(--shadow);
+  background: #404040;
 }
 
 @media (prefers-reduced-motion: reduce) {

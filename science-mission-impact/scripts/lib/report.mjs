@@ -199,7 +199,8 @@ export function formatReport(input) {
 			`${(site.codeRevision || 'unknown')
 				.split('+')
 				.map((r) => `\`${r.slice(0, 12)}\``)
-				.join(', ')}`,
+				.join(', ')}` +
+			(site.codeRevisionDirty ? ' (from a working tree with uncommitted changes)' : ''),
 	);
 	out.push('');
 	out.push(

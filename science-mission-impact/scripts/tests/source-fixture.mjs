@@ -8,7 +8,8 @@ export const APP_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url))
 
 /** Small schema-5/11 export with deliberately nonstandard companion paths. */
 export function sourceFixture(rawDir, { compatible = true } = {}) {
-	const config = loadConfig(APP_DIR);
+	// The real config, less its per-mission maps: they name real missions, not the fixture's.
+	const { names, thumbnails, ...config } = loadConfig(APP_DIR);
 	const index = { kind: 'mission_index', schema_version: 5, missions: [] };
 	const runs = [];
 	const write = (relative, doc) => {

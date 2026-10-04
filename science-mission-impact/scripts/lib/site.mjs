@@ -59,6 +59,7 @@ export function buildSite({
 		fetchedMin: snapshot.fetchedMin,
 		fetchedMax: snapshot.fetchedMax,
 		codeRevision: snapshot.codeRevision,
+		codeRevisionDirty: snapshot.codeRevisionDirty,
 		missions: indexEntries.length,
 		papersDistinct,
 		citationsDistinct,

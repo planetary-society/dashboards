@@ -6,7 +6,8 @@
 	import { int, weight, money } from '$lib/format.js';
 	import { view } from '$lib/state/view.svelte.js';
 
-	let { missions, slug, selectedId = '', scopeLabel = '' } = $props();
+	// rankable: false for a division too small to rank, which has no top-10% credit to show
+	let { missions, slug, costBaseYear, rankable = true, selectedId = '', scopeLabel = '' } = $props();
 
 	let sort = $state({ key: 'launch', dir: 1 });
 
@@ -39,7 +40,7 @@
 	const rows = $derived(sorted(missions));
 	const maxTop = $derived(Math.max(1e-9, ...missions.map((m) => topOf(m) ?? 0)));
 	const maxStrip = $derived(Math.max(1, ...missions.flatMap((m) => m.strip)));
-	const topLabel = $derived(`Top ${view.top}% credit`);
+	const topLabel = $derived(`Top-${view.top}% credit`);
 
 	function setSort(key) {
 		sort = sort.key === key ? { key, dir: -sort.dir } : { key, dir: key === 'name' ? 1 : -1 };
@@ -57,18 +58,18 @@
 {/snippet}
 
 <table>
-	<caption>Lifetime totals · Top {view.top}% credit: {scopeLabel}</caption>
+	<caption>Lifetime totals{#if rankable} · Top-{view.top}% credit: {scopeLabel}{/if}</caption>
 	<thead>
 		<tr>
 			<th class="thumb"><span class="sr-only">Image</span></th>
 			{@render th('name', 'Mission', 'name')}
 			{@render th('launch', 'Launch', 'num wide')}
 			{@render th('type', 'Type', 'type wide')}
-			{@render th('cost', 'Cost', 'num')}
+			{@render th('cost', `Cost (${costBaseYear} $)`, 'num')}
 			{@render th('papers', 'Tracked publications', 'num')}
 			{@render th('citations', 'Citations', 'num wide')}
 			{@render th('hindex', 'h-index', 'num wide')}
-			{@render th('top', topLabel, 'num top')}
+			{#if rankable}{@render th('top', topLabel, 'num top')}{/if}
 			<th class="strip wide">Tracked publications per year</th>
 		</tr>
 	</thead>
@@ -85,7 +86,7 @@
 					</td>
 					<td class="name">
 						<a href={missionHref(slug, m.id)}>{m.name}</a>
-						{#if m.failed}<span class="meta"> failed</span>{/if}
+						{#if m.failed}<span class="meta">{' '}failed</span>{/if}
 					</td>
 					<td class="num wide"><Num value={m.launchYear ?? '—'} /></td>
 					<td class="type wide">{m.type ?? '—'}</td>
@@ -93,10 +94,12 @@
 					<td class="num"><Num value={int(m.papers)} /></td>
 					<td class="num wide"><Num value={int(m.citations)} /></td>
 					<td class="num wide"><Num value={m.indices?.h == null ? '—' : int(m.indices.h)} /></td>
-					<td class="num top">
-						<span class="bar" style:width="{((top ?? 0) / maxTop) * 100}%"></span>
-						<span class="topv" class:nil={!top}><Num value={top == null ? '—' : weight(top)} /></span>
-					</td>
+					{#if rankable}
+						<td class="num top">
+							<span class="bar" style:width="{((top ?? 0) / maxTop) * 100}%"></span>
+							<span class="topv" class:nil={!top}><Num value={top == null ? '—' : weight(top)} /></span>
+						</td>
+					{/if}
 					<td class="strip wide"><PubStrip values={m.strip} max={maxStrip} /></td>
 				</tr>
 			{/each}

@@ -2,7 +2,7 @@
  * Model for IndexScatter: one mark per mission, what the mission cost against a citation index.
  *
  * Cost runs on a log axis because the missions span four decades of dollars; the index runs
- * linearly from zero because zero is a real value here — a mission with no qualifying papers
+ * linearly from zero because zero is a real value here — a mission with no tracked papers
  * has no index, and a failed one counts as a zero rather than a gap.
  *
  * Positions are percentages of the plot box, so the chart is complete in the prerendered HTML

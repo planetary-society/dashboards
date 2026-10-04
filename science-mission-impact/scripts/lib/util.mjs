@@ -87,12 +87,19 @@ export function yearOf(value) {
 	return parseYearMonth(value)?.y ?? null;
 }
 
-/** UTC milliseconds of a date string, day defaulting to the 1st. */
-function parseDay(value) {
-	const ym = parseYearMonth(value);
-	if (ym === null) return null;
-	const day = Number(/^\d{4}-\d{2}-(\d{2})/.exec(String(value).trim())?.[1]);
-	return Date.UTC(ym.y, ym.m - 1, Number.isFinite(day) && day >= 1 ? day : 1);
+/**
+ * UTC milliseconds of a date string, for durations. ADS writes "2003-00-00" for a paper dated
+ * only by year: an unknown (or missing) month is read at mid-year, 1 July, so the duration is off
+ * by at most half a year. An unknown day ("2003-01-00") is the 1st, as upstream reads it.
+ * Month buckets (`parseYearMonth`) keep January for an unknown month, because they must agree
+ * with the `date` ADS itself derives from the same pubdate.
+ */
+export function parseDay(value) {
+	const match = typeof value === 'string' ? /^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?/.exec(value.trim()) : null;
+	if (!match) return null;
+	const [y, m, d] = match.slice(1).map((part) => Number(part ?? 0));
+	if (m < 1) return Date.UTC(y, 6, 1);
+	return Date.UTC(y, Math.min(m, 12) - 1, d >= 1 ? d : 1);
 }
 
 /**
@@ -116,12 +123,6 @@ export function groupBy(items, keyFn) {
 		else out.set(key, [item]);
 	}
 	return out;
-}
-
-/** Days -> Julian years, rounded for output. Negative values are meaningful. */
-export function daysToYears(days) {
-	const d = num(days);
-	return d === null ? null : weight(d / 365.25);
 }
 
 // ---------------------------------------------------------------- formatting

@@ -13,6 +13,15 @@ export const fullWindowLabel = 'Active Mission Window';
 export const fullWindowText = (policy, asOf = null) =>
 	`Mission-specific publication windows, from the month after science starts through the month ${policy.postEndYears} years after the mission ends${policy.minWindowYears ? ` (never shorter than ${policy.minWindowYears} years)` : ''}, cut at the latest date that is mature on ${asOf ? longDate(asOf) : 'the snapshot date'}. Exact exported boundaries are shown on each mission page.`;
 
+/** One line on what a scope covers, for beside the scope switcher. */
+export function scopeGloss(scope, { windowPolicy, fullPolicy } = {}) {
+	if (scope === 'full') return `Papers from the month after science starts through ${fullPolicy.postEndYears} years after the mission ends.`;
+	if (scope === 'window') return windowPolicy?.kind === 'prime'
+		? `Papers from the month after science starts through ${windowPolicy.postPrimeYears} years after the prime mission ends.`
+		: `Papers from the first ${windowPolicy.publicationYears} years after science starts.`;
+	return 'Every tracked publication to date.';
+}
+
 /** Display name of any scope; the two windows are proper nouns. */
 export function scopeLabel(scope, { windowPolicy } = {}) {
 	if (scope === 'full') return fullWindowLabel;

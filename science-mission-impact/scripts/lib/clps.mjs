@@ -11,6 +11,7 @@
  * same verified loader as the main package; it must share the site's as-of date.
  */
 
+import { displayNames } from './config.mjs';
 import { loadSourceCatalog } from './source.mjs';
 import { assertSingleAsOfDate, PackagingError } from './invariants.mjs';
 import { byText, num } from './util.mjs';
@@ -125,8 +126,7 @@ export function loadClps({ rawDir, config, asOf }) {
 		.filter(({ id, statsMission }) => statsMission.program === CLPS_PROGRAM || comparators.includes(id))
 		.map(({ id, shortTitle, statsMission, corpus }) => ({
 			id,
-			name: shortTitle,
-			fullName: corpus.full_name ?? statsMission.full_name ?? shortTitle,
+			...displayNames(config, id, { name: shortTitle, fullName: corpus.full_name ?? statsMission.full_name ?? shortTitle }),
 			program: statsMission.program ?? null,
 			launchDate: corpus.mission?.mission_launch_date ?? null,
 			primeStart: corpus.mission?.prime_mission_start_date ?? null,

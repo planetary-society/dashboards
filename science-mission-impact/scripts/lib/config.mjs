@@ -64,6 +64,27 @@ export function validateConfig(config) {
 		fail('paperKinds.examples must be a non-empty array of non-empty mission ids');
 	}
 	if (!Number.isInteger(kinds.smallMax) || kinds.smallMax < 1) fail('paperKinds.smallMax must be an integer >= 1');
+	// Display names for published output; upstream titles stay the lookup keys.
+	const names = config.names ?? {};
+	if (typeof names !== 'object' || Array.isArray(names)) fail('names must be an object keyed by mission id');
+	for (const [id, entry] of Object.entries(names)) {
+		const keys = Object.keys(entry ?? {});
+		if (typeof entry !== 'object' || Array.isArray(entry) || keys.length === 0 ||
+			keys.some((key) => !['name', 'fullName'].includes(key) || typeof entry[key] !== 'string' || entry[key].trim() === '')) {
+			fail(`names.${id} must be an object with a non-empty string "name" and/or "fullName", got ${JSON.stringify(entry)}`);
+		}
+	}
+	// Tile images from a URL of our choosing instead of upstream's image_url (scripts/fetch-thumbs.mjs).
+	const thumbs = config.thumbnails;
+	if (thumbs !== undefined) {
+		const overrides = thumbs?.overrides;
+		if (!overrides || typeof overrides !== 'object' || Array.isArray(overrides)) fail('thumbnails.overrides must be an object keyed by mission id');
+		for (const [id, url] of Object.entries(overrides)) {
+			let protocol = null;
+			try { protocol = new URL(url).protocol; } catch { /* not a URL */ }
+			if (protocol !== 'http:' && protocol !== 'https:') fail(`thumbnails.overrides.${id} must be an http(s) URL, got ${JSON.stringify(url)}`);
+		}
+	}
 	if (!Number.isFinite(config.rankingMinPapers) || config.rankingMinPapers < 0) {
 		fail('rankingMinPapers must be a non-negative number');
 	}
@@ -99,6 +120,18 @@ export function validateConfig(config) {
 export function resolveRawDir({ cliArg, env, config, appDir }) {
 	const chosen = cliArg || env?.SMI_RAW_DIR || config.rawDirDefault;
 	return path.resolve(appDir, chosen);
+}
+
+/** A mission's published name and full name: the `names` override where set, else upstream's. */
+export const displayNames = (config, id, { name, fullName }) => ({
+	name: config.names?.[id]?.name ?? name,
+	fullName: config.names?.[id]?.fullName ?? fullName
+});
+
+/** Throw unless every mission id a config map names (`names`, `thumbnails.overrides`) is in `known`; an unused entry is a typo. */
+export function assertKnownIds(label, ids, known) {
+	const unknown = ids.filter((id) => !known.has(id));
+	if (unknown.length) throw new Error(`smi.config.json: ${label} has unknown mission id(s): ${unknown.join(', ')}`);
 }
 
 /** Tier bounds for the mission percentile bars: the configured percents plus 100. */

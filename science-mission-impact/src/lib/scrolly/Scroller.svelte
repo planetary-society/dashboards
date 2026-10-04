@@ -39,13 +39,32 @@
 			if (!frame) frame = requestAnimationFrame(measure);
 		};
 
+		// Safety net: text taller than the room below its sticky top would be clipped while it
+		// holds (on a phone, under the pinned graphic), so that step's text scrolls normally
+		// instead. The sticky top is read back from the CSS, so the two cannot disagree.
+		const fit = () => {
+			for (const el of els) {
+				const text = el.firstElementChild;
+				if (!text) continue;
+				el.classList.remove('overflows');
+				const room = window.innerHeight - parseFloat(getComputedStyle(text).top) - 8;
+				if (text.offsetHeight > room) el.classList.add('overflows');
+			}
+		};
+		const onResize = () => {
+			fit();
+			onScroll();
+		};
+
+		fit();
+		document.fonts?.ready.then(fit);
 		measure();
 		window.addEventListener('scroll', onScroll, { passive: true });
-		window.addEventListener('resize', onScroll);
+		window.addEventListener('resize', onResize);
 		return () => {
 			cancelAnimationFrame(frame);
 			window.removeEventListener('scroll', onScroll);
-			window.removeEventListener('resize', onScroll);
+			window.removeEventListener('resize', onResize);
 		};
 	});
 </script>
@@ -64,7 +83,7 @@
 		/* Once a step's text unsticks, its top edge leaves the screen (under the nav) after the
 		   same scroll distance that brings a point this far below its bottom edge up to the
 		   bottom of the screen, whatever the text's height. */
-		--step-gap: calc(100svh - var(--nav-h));
+		--step-gap: calc(100vh - var(--nav-h)); /* svh in the @supports block below */
 		position: relative;
 		display: grid;
 		grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr);
@@ -79,6 +98,7 @@
 		grid-row: 1;
 		position: sticky;
 		top: var(--nav-h);
+		height: calc(100vh - var(--nav-h));
 		height: calc(100svh - var(--nav-h));
 		padding-block: 24px;
 	}
@@ -94,6 +114,7 @@
 	/* The gap also holds the graphic still, so the step itself can be shorter than it would
 	   otherwise need to be. */
 	.steps :global([data-step]) {
+		min-height: 130vh;
 		min-height: 130svh;
 		pointer-events: none;
 	}
@@ -106,11 +127,18 @@
 	   block scrolls by. */
 	.steps :global([data-step] > *) {
 		position: sticky;
+		top: 36vh;
 		top: 36svh;
 		pointer-events: auto;
 	}
 
+	/* Scroller's safety net: text too tall for the hold scrolls with its step instead. */
+	.steps :global([data-step].overflows > *) {
+		position: static;
+	}
+
 	.steps :global([data-step]:last-child) {
+		min-height: 120vh;
 		min-height: 120svh;
 	}
 
@@ -118,8 +146,8 @@
 	@media (max-width: 860px) {
 		.scroller {
 			/* the text leaves under the pinned graphic rather than the nav */
-			--graphic-h: 50svh;
-			--step-gap: calc(100svh - var(--nav-h) - var(--graphic-h) - 28px);
+			--graphic-h: 50vh;
+			--step-gap: calc(100vh - var(--nav-h) - var(--graphic-h) - 28px);
 			display: block;
 			padding-inline: 0;
 		}
@@ -134,7 +162,9 @@
 		}
 
 		.steps :global([data-step]) {
-			min-height: 125svh; /* a shorter hold: long steps are clipped by the screen while stuck */
+			/* a shorter hold: a step too long for it scrolls normally (the safety net above) */
+			min-height: 125vh;
+			min-height: 125svh;
 			padding: 28px var(--gutter) 0;
 			background: var(--black);
 		}
@@ -145,7 +175,23 @@
 		}
 
 		.steps :global([data-step]:last-child) {
+			min-height: 100vh;
 			min-height: 100svh;
+		}
+	}
+
+	/* A custom property cannot fall back by repetition (an unsupported unit only fails where it
+	   is used), so the svh versions of the two that hold viewport units come in here, last. */
+	@supports (height: 1svh) {
+		.scroller {
+			--step-gap: calc(100svh - var(--nav-h));
+		}
+
+		@media (max-width: 860px) {
+			.scroller {
+				--graphic-h: 50svh;
+				--step-gap: calc(100svh - var(--nav-h) - var(--graphic-h) - 28px);
+			}
 		}
 	}
 </style>

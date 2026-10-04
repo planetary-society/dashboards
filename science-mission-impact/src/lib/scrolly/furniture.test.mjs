@@ -17,6 +17,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { compile } from 'svelte/compiler';
 import { render } from 'svelte/server';
 import { scaleLinear, scaleLog } from 'd3-scale';
+import { waffleLayout } from './layouts.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const lib = join(here, '..');
@@ -58,43 +59,50 @@ const x = scaleLog().domain([5, 20000]).range([105, 867]);
 
 // --- ComparisonLabels -----------------------------------------------------------------------
 
+const side = (missions, failed, withTop, top10) => ({ missions, failed, withTop, top10, top10PerMission: missions ? top10 / missions : null });
 const comparison = {
 	divisions: ['astrophysics', 'earth', 'heliophysics', 'planetary'],
 	unavailable: 0,
+	// the panels show each division apart, not the equal-weight averages or the pooled groups
+	equalWeight: { under: 3.637, over: 127.959 },
 	groups: [
-		{ key: 'under', missions: 26, failed: 6, withTop: 3, top10: 12.602, top10PerMission: 0.485, top1: 1, top1PerMission: 0.038, cost: 302.9, citations: 1350 },
-		{ key: 'over', missions: 103, failed: 8, withTop: 93, top10: 11302.599, top10PerMission: 109.734, top1: 1130.517, top1PerMission: 10.976, cost: 114925.1, citations: 2184453 }
+		{ key: 'under', missions: 35, failed: 7, withTop: 10, top10: 160.207, top10PerMission: 4.577 },
+		{ key: 'over', missions: 94, failed: 7, withTop: 87, top10: 11205.292, top10PerMission: 119.205 }
+	],
+	byDivision: [
+		{ division: 'astrophysics', name: 'Astrophysics', under: side(6, 1, 1, 1.15), over: side(19, 0, 19, 4983.749) },
+		{ division: 'earth', name: 'Earth Science', under: side(12, 2, 2, 1.333), over: side(28, 3, 25, 3845.667) },
+		{ division: 'heliophysics', name: 'Heliophysics', under: side(12, 2, 5, 148.274), over: side(17, 0, 17, 1294.226) },
+		{ division: 'planetary', name: 'Planetary Science', under: side(5, 2, 2, 9.45), over: side(30, 4, 26, 1081.65) }
 	]
 };
 
-test('ComparisonLabels prerenders two bars either side of the threshold, on one ruler', async () => {
+test('ComparisonLabels prerenders one bar pair per division either side of the threshold, on one shared ruler', async () => {
 	const Component = await load('ComparisonLabels.svelte');
 	const { body } = render(Component, { props: { comparison, referenceCost: 150, visible: true } });
-	assert.ok(body.includes('Average high-impact papers per mission'));
-	assert.ok(body.includes('$150M or less'));
-	assert.ok(body.includes('Over $150M'));
-	assert.match(body, />0\.5</, 'the under average, one decimal below 10');
-	assert.match(body, />110</, 'the over average, whole above 10');
-	assert.ok(body.includes('26 missions, 6 failed'));
-	assert.ok(body.includes('103 missions, 8 failed'));
-	assert.match(body, /height: max\(2px, 100%\)/, 'the larger side fills the plot');
+	for (const t of ['Top-10% papers per mission', '$150M or less', 'Over $150M']) assert.ok(body.includes(t), t);
+	for (const [name, under, over] of [
+		['Astrophysics', '0.2', '262'],
+		['Earth Science', '0.1', '137'],
+		['Heliophysics', '12', '76'],
+		['Planetary Science', '1.9', '36']
+	]) {
+		assert.match(body, new RegExp(`>${under}<[^]*?>${over}<[^]*?>${name}<`), `${name}: ${under} against ${over}`);
+	}
+	assert.ok(!body.includes('>3.6<') && !body.includes('>128<'), 'not the equal-weight averages');
+	for (const t of ['6 and 19 missions', '1 and 0 failed', '5 and 30 missions', '2 and 4 failed']) assert.ok(body.includes(t), t);
+	assert.equal((body.match(/height: max\(2px, 100%\)/g) ?? []).length, 1, 'only the tallest bar of all four fills its plot');
 	assert.match(body, /class="bars[^"]*\bvisible\b/);
 	clean(body);
 });
 
-test('ComparisonLabels shows a dash, not NaN, for a side with no average, and tolerates a stray layout', async () => {
+test('ComparisonLabels shows a dash, not NaN, for a side with no missions, and drops the meta line on a phone', async () => {
 	const Component = await load('ComparisonLabels.svelte');
-	const empty = {
-		...comparison,
-		groups: [
-			{ ...comparison.groups[0], missions: 0, failed: 0, withTop: 0, top10: 0, top10PerMission: null, top1PerMission: null },
-			{ ...comparison.groups[1], top10PerMission: null }
-		]
-	};
+	const empty = { ...comparison, byDivision: [{ ...comparison.byDivision[0], under: side(0, 0, 0, 0) }, comparison.byDivision[1]] };
 	const { body } = render(Component, { props: { layout: { blocks: [] }, comparison: empty, referenceCost: 150, compact: true } });
 	assert.match(body, />—</);
-	assert.ok(body.includes('0 missions, 0 failed'));
-	assert.match(body, /height: max\(2px, 0%\)/, 'hidden bars sit at their 2px floor');
+	assert.ok(!body.includes('missions'), 'no meta line on a phone');
+	assert.equal((body.match(/height: max\(2px, 0%\)/g) ?? []).length, 4, 'hidden bars sit at their 2px floor');
 	clean(body);
 });
 
@@ -209,6 +217,22 @@ test('ClpsChart on a phone before it draws', async () => {
 	clean(body);
 });
 
+// Poppins' glyph box is 1.4em: blocks closer than that touch even when their lines do not.
+test('ClpsChart end-label blocks never touch, on a phone or not', async () => {
+	const Component = await load('ClpsChart.svelte');
+	for (const [compact, lineH, apart] of [
+		[true, 13, 16],
+		[false, 15, 19]
+	]) {
+		const { body } = render(Component, { props: { clps, draw: 1, drawComparators: 1, ...stage, compact } });
+		const blocks = [...body.matchAll(/<text class="label[^>]*\by="([-\d.]+)"[^>]*>(.*?)<\/text>/g)]
+			.map(([, y, inner]) => ({ top: +y, last: +y + ((inner.match(/<tspan/g) ?? []).length - 1) * lineH }))
+			.sort((a, b) => a.top - b.top);
+		assert.equal(blocks.length, 3);
+		for (let i = 1; i < blocks.length; i++) assert.ok(blocks[i].top - blocks[i - 1].last >= apart - 1e-9, `compact=${compact}: block ${i} clears the one above`);
+	}
+});
+
 // --- ProjectTimeAxis ------------------------------------------------------------------------
 
 const y = scaleLinear().domain([0, 15]).range([38, 540]);
@@ -300,13 +324,14 @@ test('PerDollarAxis prerenders each division with its rate either side of the re
 	clean(body);
 });
 
-test('PerDollarAxis on a phone: both rates in short form, no rate labels', async () => {
+test('PerDollarAxis on a phone: both rates in short form, each side named, one rate label', async () => {
 	const Component = await load('PerDollarAxis.svelte');
 	const { body } = render(Component, { props: { layout: { ...dollar, left: 0 }, perDollar, referenceCost, ticks: costTicks, ...stage, compact: true } });
-	assert.ok(body.includes('458 vs 3.6k'));
-	assert.ok(body.includes('— vs 1.9k'));
-	assert.ok(body.includes('0 vs 409'));
-	assert.ok(!body.includes('rate-label'));
+	assert.ok(body.includes('≤$100M 458 · over 3.6k'));
+	assert.ok(body.includes('≤$100M — · over 1.9k'));
+	assert.ok(body.includes('≤$100M 0 · over 409'));
+	assert.equal((body.match(/class="rate-label[ "]/g) ?? []).length, 1, 'the top rule only');
+	assert.match(body, /class="rate-label[^"]*\binside\b[^>]*>10k</);
 	clean(body);
 });
 
@@ -378,7 +403,7 @@ const kindsL = {
 test('KindBars prerenders names, the non-zero legend, counts per mode and the strip label', async () => {
 	const Component = await load('KindBars.svelte');
 	const papers = render(Component, { props: { layout: kindsL, kinds, visible: true } }).body;
-	for (const t of ['>RainCube<', '>TwoSat<', 'Science results', 'Mission and instrument', 'Reviews and commentary', '>Papers<', '>5<', '>2<', '1 with no publications']) assert.ok(papers.includes(t), t);
+	for (const t of ['>RainCube<', '>TwoSat<', 'Science results', 'Mission and instrument', 'Reviews and commentary', '>Papers<', '>5<', '>2<', '1 with no publications in their window']) assert.ok(papers.includes(t), t);
 	for (const t of ['Data and calibration', 'Planned or expected results', 'Mentions only']) assert.ok(!papers.includes(t), `no ${t}`);
 	assert.match(papers, /kind-review[^"]*" style="width: 20%;"/, 'a fifth of the papers');
 	clean(papers);
@@ -392,9 +417,50 @@ test('KindExample prerenders the name, the cost line, every title and a note', a
 	const Component = await load('KindExample.svelte');
 	const layout = { pos: new Map(), s: 64, left: 24, top: 16, headRight: 100, listY: 102 };
 	const { body } = render(Component, { props: { layout, example: raincube, kinds, visible: true } });
-	for (const t of ['>RainCube<', '$13M · 4 papers to date · 172 citations', ...raincube.lifetime.list.map((p) => p.title), 'one review, most of the citations', 'Reviews and commentary', '3 citations · Mission and instrument · after its window']) assert.ok(body.includes(t), t);
+	for (const t of ['>RainCube<', '$13M · 4 papers to date · 172 citations', ...raincube.lifetime.list.map((p) => p.title), 'one review, most of the citations', 'Reviews and commentary', '3 citations · Mission and instrument · outside its Active Mission Window']) assert.ok(body.includes(t), t);
 	const rowOf = (title) => body.slice(body.lastIndexOf('<li', body.indexOf(title)), body.indexOf(title));
 	assert.match(rowOf('Precipitation profiles from RainCube'), /class="[^"]*\bhit\b/);
 	assert.match(rowOf('RainCube lessons learned'), /class="[^"]*\bdim\b/);
 	clean(body);
+});
+
+// --- Waffle ---------------------------------------------------------------------------------
+
+test('Waffle prerenders one box per unit, the threshold missions first in blue, a partial box and the legend', async () => {
+	const Component = await load('Waffle.svelte');
+	const layout = waffleLayout(135129, 1329, 704, 666, { top: 96 });
+	const { body } = render(Component, { props: { layout, referenceCost: 150, visible: true, width: 704, height: 666 } });
+	const rects = [...body.matchAll(/<rect class="(on|off)\b[^"]*" x="([\d.]+)" y="([\d.]+)" width="([\d.]+)" height="([\d.]+)"/g)].map(([, c, ...n]) => [c, ...n.map(Number)]);
+	// every cell, then the partial fill drawn over cell 13
+	assert.equal(rects.length, layout.cells + 1);
+	const cells = rects.slice(0, layout.cells);
+	assert.equal(cells.filter(([c]) => c === 'on').length, 13);
+	assert.ok(cells.every(([c], i) => (c === 'on') === (i < 13)), 'cells 0–12 blue, the rest grey');
+	const [c, x, y, , h] = rects.at(-1);
+	assert.ok(c === 'on' && x === cells[13][1], 'the partial fill sits on cell 13');
+	assert.ok(Math.abs(h - layout.size * 0.29) < 1e-9 && Math.abs(y + h - (cells[13][2] + layout.size)) < 1e-9, 'filled 29% from the bottom');
+	for (const t of ['Missions at $150M or less', 'All other missions', '1 box = 100 mission papers']) assert.ok(body.includes(t), t);
+	assert.match(body, /class="waffle[^"]*\bvisible\b/);
+	clean(body);
+});
+
+test('Waffle builds from the top-left: half built shows the blue boxes first; built shows the ring and the count', async () => {
+	const Component = await load('Waffle.svelte');
+	const layout = waffleLayout(135129, 1329, 704, 666, { top: 96 });
+	const props = { layout, referenceCost: 150, visible: true, width: 704, height: 666 };
+	const cellsOf = (body) => [...body.matchAll(/<rect class="(on|off)([^"]*)"/g)].slice(0, layout.cells).map(([, c, rest]) => ({ on: c === 'on', hidden: /\bhidden\b/.test(rest) }));
+
+	const half = render(Component, { props: { ...props, build: 0.5 } }).body;
+	const cells = cellsOf(half);
+	const shown = Math.round(layout.cells / 2);
+	assert.equal(cells.filter((c) => c.hidden).length, layout.cells - shown, 'about half hidden');
+	assert.ok(cells.every((c, i) => c.hidden === i >= shown), 'the shown ones are the first in reading order');
+	assert.ok(cells.filter((c) => c.on).every((c) => !c.hidden), 'the blue boxes are in first');
+	assert.doesNotMatch(half, /class="ring[^"]*\bdone\b/, 'no ring during the build-out');
+
+	const built = render(Component, { props: { ...props, build: 1 } }).body;
+	assert.ok(!/<rect[^>]*\bhidden\b/.test(built), 'every box visible');
+	assert.match(built, new RegExp(`<path class="ring[^"]*\\bdone\\b[^"]*" d="${layout.ring.d}" pathLength="1" stroke-dasharray="1"`));
+	assert.match(built, /<text class="count[^"]*\bdone\b[^>]*x="248"[^>]*>1,329 papers<\/text>/);
+	clean(built);
 });

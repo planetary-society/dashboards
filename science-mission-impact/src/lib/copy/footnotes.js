@@ -10,7 +10,7 @@ const calendarYears = (p) => p.citationYears + 1;
 export const FOOTNOTES = {
 	publicationImpact: {
 		anchor: 'high-impact',
-		text: () => 'Each mission sits at its tracked publication count and era-adjusted top-10% paper credit in the selected scope. Shared top papers split credit among missions; tracked publication counts include each mission’s whole papers. The reference is total top-paper credit divided by total tracked publications across measured missions shown, not a fitted trend. Above it means more credit per tracked publication. Failed missions are marked with a slash; assumed zeros are identified on hover.'
+		text: () => 'Each mission sits at its tracked publication count and era-adjusted top-10% paper credit in the selected scope. Shared top-10% papers split credit among missions; tracked publication counts include each mission’s whole papers. The reference is total top-10% credit divided by total tracked publications across measured missions shown, not a fitted trend. Above it means more credit per tracked publication. Failed missions are marked with a slash; assumed zeros are identified on hover.'
 	},
 	top10: {
 		anchor: 'high-impact',
@@ -57,7 +57,7 @@ export const FOOTNOTES = {
 	},
 	never: {
 		anchor: 'missions',
-		text: () => 'Measured zero, unavailable output, and mission failure are distinct. A missing publication source is not measured zero.'
+		text: () => 'A failed mission counts as zero and is marked with a slash; a mission whose output could not be measured is left out, not counted as zero.'
 	},
 	cost: {
 		anchor: 'cost',
@@ -66,13 +66,13 @@ export const FOOTNOTES = {
 	costAxis: {
 		anchor: 'cost',
 		text: (p) =>
-			'Missions sit at their own cost on a log scale. The blue line is the running share of the division’s top papers, adding each mission in cost order; the grey line is the running share of its spending. The shaded span holds the middle half of the top papers.' +
-			(p?.referenceCost ? ` A dashed line marks the adjusted ${money(p.referenceCost)} threshold: missions at or below it are compared with those above it; the line is an editorial comparison point, not an inferred scientific threshold.` : '')
+			'Missions sit at their own cost on a log scale. The blue line is the running share of the division’s top-10% papers, adding each mission in cost order; the grey line is the running share of its spending. The shaded span holds the middle half of the top-10% papers.' +
+			(p?.referenceCost ? ` A dashed line marks the adjusted ${money(p.referenceCost)} threshold: missions costing ${money(p.referenceCost)} or less are compared with those over ${money(p.referenceCost)}; the line is an editorial comparison point, not an inferred scientific threshold.` : '')
 	},
 	qualifying: {
 		anchor: 'removed',
 		text: () =>
-			'Qualifying papers: peer-reviewed science results. Papers that only describe a mission or its instruments are left out for every mission, so a mission with only those has none.'
+			'Qualifying papers: the tracked peer-reviewed publications a measure counts, mission overview papers included.'
 	},
 	mindex: {
 		anchor: 'other-measures',
@@ -93,7 +93,7 @@ export const FOOTNOTES = {
 	},
 	ranks: {
 		anchor: 'high-impact',
-		text: () => 'Each paper is ranked by citations against every paper from this division’s missions, not adjusted for publication year. Tied papers are spread evenly across the ranks they share.'
+		text: () => 'Each paper is ranked by citations against every paper from this division’s missions, not adjusted for publication year. The highlighted band is the top tenth by raw citations, not the era-adjusted top-10% measure used elsewhere. Tied papers are spread evenly across the ranks they share.'
 	},
 	strip: {
 		anchor: 'mission-papers',

@@ -430,6 +430,8 @@ export const FIXED_URLS = [
     { path: '/cancellations/', priority: '0.9', dated: true },
     { path: '/appropriations-guide/', priority: '0.8', dated: false },
     { path: '/cancellations/districts/', priority: '0.6', dated: true },
+    { path: '/science-mission-impact/', priority: '0.9', dated: false },
+    { path: '/science-mission-impact/methods/', priority: '0.5', dated: false },
 ];
 
 /**
@@ -456,17 +458,22 @@ function renderUrlEntry(path, priority, lastmod) {
  *
  * @param {Object} options - Sitemap inputs
  * @param {Array<string>} options.districtCodes - District codes with a baked page
+ * @param {Array<string>} options.smiDivisions - Science Mission Impact division slugs
+ * @param {Array<{division: string, id: string}>} options.smiMissions - Science Mission Impact mission pages
  * @param {string} options.lastUpdated - ISO 'YYYY-MM-DD' data date
  * @returns {string} Sitemap XML
  */
-export function renderSitemap({ districtCodes = [], lastUpdated = '' }) {
+export function renderSitemap({ districtCodes = [], smiDivisions = [], smiMissions = [], lastUpdated = '' }) {
     const codes = [...districtCodes].sort(compareCodes);
-    // Science Mission Impact is intentionally unlisted during its soft launch.
     // Stable sort: highest priority first, list order within a priority
     const urls = [...FIXED_URLS].sort((a, b) => b.priority - a.priority);
+    const smiPath = (...parts) => `/science-mission-impact/${parts.map(encodeURIComponent).join('/')}/`;
+    const missions = smiMissions.map((m) => smiPath(m.division, m.id)).sort();
 
     const entries = [
         ...urls.map((url) => renderUrlEntry(url.path, url.priority, url.dated ? lastUpdated : '')),
+        ...smiDivisions.map((slug) => renderUrlEntry(smiPath(slug), '0.6', '')),
+        ...missions.map((path) => renderUrlEntry(path, '0.4', '')),
         ...codes.map((code) =>
             renderUrlEntry(`/cancellations/districts/${encodeURIComponent(code)}/`, '0.5', lastUpdated))
     ];

@@ -73,6 +73,7 @@ describe('buildSite', () => {
 		windowPolicy: { publicationYears: 3, citationYears: 3 },
 		fullPolicy: { kind: 'full', postEndYears: 2, citationYears: 3, minWindowYears: 2 },
 		codeRevision: 'abc',
+		codeRevisionDirty: true,
 		fetchedMin: '2026-09-16',
 		fetchedMax: '2026-09-18',
 		attribution: { acknowledgement: 'thanks', ads_terms_url: 'https://x.test' },
@@ -119,6 +120,7 @@ describe('buildSite', () => {
 
 	it('carries the snapshot and the config through unchanged', () => {
 		assert.equal(site.asOf, '2026-09-18');
+		assert.equal(site.codeRevisionDirty, true);
 		assert.deepEqual(site.windowPolicy, { publicationYears: 3, citationYears: 3 });
 		assert.deepEqual(site.fullPolicy, { kind: 'full', postEndYears: 2, citationYears: 3, minWindowYears: 2 });
 		assert.equal('costClasses' in site, false);

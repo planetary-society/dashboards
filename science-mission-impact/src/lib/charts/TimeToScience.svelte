@@ -17,7 +17,7 @@
 </script>
 
 <p class="sr-only">{summary}</p>
-<p class="guide">Publication date of a paper that ranks highly today. Earlier tracked publications sit farther left.</p>
+<p class="guide">Each square is a mission: higher costs more; farther left reached its first top-10% paper sooner after science operations began. The overview counts from project start instead.</p>
 {#if tiles.length}
 	<p class="meta axis-title">Adjusted mission cost · log scale ↑</p>
 	<div class="stage" bind:clientWidth={width} style:height="{height}px" role="group" aria-label={summary}>
@@ -45,7 +45,7 @@
 			<p class="sr-only">{tiles.map((p) => p.label).join('; ')}</p>
 		{/if}
 	</div>
-	<p class="meta">{int(tiles.length)} {plural(tiles.length, 'mission')} plotted{#if referenceVisible} · Dashed line: {moneyTick(referenceCost)}{/if}</p>
+	<p class="meta">{int(tiles.length)} {plural(tiles.length, 'mission')} plotted{referenceVisible ? ` · Dashed line: ${moneyTick(referenceCost)}` : ''}</p>
 	{#if tiles.some((p) => p.months < 0)}<p class="meta">Negative months indicate publication before science operations began.</p>{/if}
 {:else}
 	<p class="meta">No missions with an observed milestone, recorded timing and known positive cost in this view.</p>

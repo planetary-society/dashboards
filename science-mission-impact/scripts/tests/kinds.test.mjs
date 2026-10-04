@@ -5,15 +5,16 @@ import { Warnings } from '../lib/invariants.mjs';
 
 const entry = (mission, bibcode, kind, note = '') => ({ mission, bibcode, kind, note });
 const file = (papers) => validatePaperKinds({ asOf: '2026-10-03', method: 'Read every paper.', papers });
-const row = (bibcode, citations, inScope = true, lifetime = citations ?? 0) => ({
-	bibcode, title: `T ${bibcode}`, year: 2020, firstAuthor: 'A', inScope, citations: inScope ? citations : null, citationsLifetime: lifetime
+const row = (bibcode, citations, inScope = true, lifetime = citations ?? 0, top10Credit = 0) => ({
+	bibcode, title: `T ${bibcode}`, year: 2020, firstAuthor: 'A', inScope, citations: inScope ? citations : null, citationsLifetime: lifetime,
+	top10Credit: inScope ? top10Credit : null
 });
 
 const missions = () => [
-	{ id: 'mixed', name: 'Mixed', fullName: 'Mixed Sat', division: 'earth', cost: 50, papers: 3, citations: 60,
-		rows: [row('m1', 40), row('m2', 15), row('m3', 5), row('m4', null, false, 50)] },
-	{ id: 'empty', name: 'Empty', fullName: 'Empty Sat', division: 'helio', cost: 20, papers: 0, citations: 0, rows: [] },
-	{ id: 'rev', name: 'Rev', fullName: 'Rev Sat', division: 'earth', cost: 30, papers: 1, citations: 10, rows: [row('r1', 10)] }
+	{ id: 'mixed', name: 'Mixed', fullName: 'Mixed Sat', division: 'earth', cost: 50, papers: 3, citations: 60, top10: 1.5,
+		rows: [row('m1', 40, true, 40, 1), row('m2', 15, true, 15, 0.5), row('m3', 5), row('m4', null, false, 50)] },
+	{ id: 'empty', name: 'Empty', fullName: 'Empty Sat', division: 'helio', cost: 20, papers: 0, citations: 0, top10: 0, rows: [] },
+	{ id: 'rev', name: 'Rev', fullName: 'Rev Sat', division: 'earth', cost: 30, papers: 1, citations: 10, top10: 0.25, rows: [row('r1', 10, true, 10, 0.25)] }
 ];
 const entries = () => [
 	entry('mixed', 'm1', 'results'),
@@ -116,6 +117,26 @@ describe('buildKinds', () => {
 		const stale = (extra) => build({ kindsFile: file([...entries(), extra]) });
 		assert.throws(() => stale(entry('mixed', 'gone', 'results')), /mixed gone/);
 		assert.throws(() => stale(entry('nope', 'x', 'results')), /unknown mission "nope"/);
+	});
+
+	it('splits the missions\' top-10% credit by kind, held to each mission\'s own credit', () => {
+		// mixed: 1 results + 0.5 mission; rev: 0.25 review. Non-science: 0.75 of 1.75.
+		assert.deepEqual(build().topCredit, {
+			total: 1.75, nonScience: 0.75, share: 0.42857,
+			byKind: { results: 1, data: 0, mission: 0.5, review: 0.25, future: 0, other: 0 }
+		});
+		const off = missions();
+		off[0].top10 = 2;
+		assert.throws(() => build({ missions: off }), /mixed in-window rows give 1.5 top-10% credit, the mission says 2/);
+		const unset = missions();
+		delete unset[2].top10;
+		assert.throws(() => build({ missions: unset }), /rev .*the mission says undefined/);
+		const uncredited = missions();
+		uncredited[2].rows[0].top10Credit = null;
+		assert.throws(() => build({ missions: uncredited }), /rev r1 has no top-10% credit/);
+		// Unavailable full-scope credit is not checked against, and no credit is a share of null.
+		const none = missions().map((m) => ({ ...m, top10: null, rows: m.rows.map((r) => ({ ...r, top10Credit: r.inScope ? 0 : null })) }));
+		assert.deepEqual(build({ missions: none }).topCredit.share, null);
 	});
 
 	it('throws when counts disagree with the tile', () => {

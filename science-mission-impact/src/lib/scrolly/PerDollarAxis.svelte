@@ -44,17 +44,18 @@
 
 	{#each layout.rows as row, i (row.slug)}
 		{@const g = rates.get(row.slug)}
-		<span class="row" style:top="{row.y}px" style:width={compact ? null : `${layout.left}px`}>
+		<span class="row" class:alt={row.band} style:top="{row.y}px" style:width={compact ? null : `${layout.left}px`}>
 			<span class="name">{row.label}</span>
 			{#if g}
 				<span class="meta">
-					{#if compact}{figure(g.under)} vs {figure(g.over)}{:else}{money(referenceCost)} or less: {figure(g.under)} · Over {money(referenceCost)}: {figure(g.over)}{/if}
+					{#if compact}≤{money(referenceCost)} {figure(g.under)} · over {figure(g.over)}{:else}{money(referenceCost)} or less: {figure(g.under)} · Over {money(referenceCost)}: {figure(g.over)}{/if}
 				</span>
 			{/if}
 		</span>
-		{#if i === 0 && !compact}
-			{#each layout.rateTicks as r (r)}
-				<span class="rate-label" style:top="{rateY(row, r)}px" style:left="{x1 + 4}px">{short(r)}</span>
+		<!-- the rate scale is labelled once, on the first row; a phone has room for its top rule only, inside the plot -->
+		{#if i === 0}
+			{#each compact ? layout.rateTicks.slice(-1) : layout.rateTicks as r (r)}
+				<span class="rate-label" class:inside={compact} style:top="{rateY(row, r)}px" style:left={compact ? null : `${x1 + 4}px`}>{short(r)}</span>
 			{/each}
 		{/if}
 	{/each}
@@ -139,6 +140,12 @@
 		white-space: nowrap;
 	}
 
+	/* sits just above its rule at the plot's right edge */
+	.rate-label.inside {
+		right: 8px;
+		transform: translateY(-100%);
+	}
+
 	.row {
 		left: 0;
 		display: flex;
@@ -154,11 +161,19 @@
 		color: var(--white);
 	}
 
+	/* on a phone the label sits inside the plot, on a backing of its band's colour so the
+	   gridlines and the reference line stop short of it (as the timing labels do) */
 	.compact .row {
 		flex-direction: row;
 		align-items: baseline;
 		gap: 8px;
-		padding: 2px 0 0 4px;
+		margin-top: 1px; /* clear of the band's top rule */
+		padding: 1px 6px 2px 4px;
+		background: var(--black);
+	}
+
+	.compact .row.alt {
+		background: var(--band);
 	}
 
 	.compact .name {

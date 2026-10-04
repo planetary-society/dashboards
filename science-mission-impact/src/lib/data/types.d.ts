@@ -17,7 +17,11 @@
  * - Top 10% is era-adjusted (cohort_* fields) in every scope. Top 1% exists for the two
  *   windowed scopes only (pooled, not era-adjusted). `null` = not available. `0` = measured zero.
  * - No figure is pinned in app code or copy; all numbers on the site come from these files.
- * - Dates are ISO strings from the raw data. Nothing uses the build date.
+ * - Dates are ISO strings from the raw data. Nothing uses the build date. ADS paper dates are
+ *   month-resolution pubdates ("2003-01-00"); a duration reads an unknown day as the 1st and an
+ *   unknown month as 1 July.
+ * - Names are display names: smi.config.json `names` where set, else upstream's short_title /
+ *   full_name. Paper titles and authors are plain text (ADS markup cleaned by scripts/lib/text.mjs).
  */
 
 export type Scope = 'full' | 'window' | 'lifetime';
@@ -56,6 +60,7 @@ export interface Site {
 	fetchedMin: string;
 	fetchedMax: string;
 	codeRevision: string;
+	codeRevisionDirty: boolean; // true when any stats run came from a working tree with uncommitted changes
 	missions: number; // analysed missions
 	papersDistinct: number; // globally distinct bibcodes across all divisions
 	citationsDistinct: number; // citations of those distinct papers
@@ -132,6 +137,10 @@ export interface StoryFacts {
 		/** over every costed mission of every division: the largest cost at or under the threshold, the smallest above it */
 		gap: { below: number | null; above: number | null };
 		groups: ComparisonGroup[];
+		/** the same groups one rankable division at a time (config order), failures as zeros */
+		byDivision: { division: DivisionSlug; name: string; under: ComparisonDivisionSide; over: ComparisonDivisionSide }[];
+		/** the plain mean over byDivision of each side's top10PerMission, over divisions with at least one mission on both sides; null when none */
+		equalWeight: { under: number | null; over: number | null };
 	};
 	/**
 	 * Where the middle half of top papers sits across the rankable divisions: each division's
@@ -165,6 +174,8 @@ export interface StoryFacts {
 		groups: { key: ComparisonKey; missions: number; cost: number; citations: number; perHundredM: number | null }[];
 		/** the side with the higher rate, only if it stays higher with any one measured mission dropped; null when a side is empty, tied or the order flips */
 		favors: ComparisonKey | null;
+		/** the measured missions whose removal alone reverses the order (or empties a side): what favors === null rests on; empty when favors is set or there is no order */
+		flipsOn: { id: string; name: string; side: ComparisonKey }[];
 		margin: number | null; // |under − over| ÷ the higher rate; null when a rate is null or both are 0
 		largestUnder: { id: string; name: string; share: number } | null; // most-cited under mission, its share of the under side's citations
 	}[];
@@ -193,6 +204,8 @@ export interface ComparisonGroup {
 	launchMedian: number | null; // whole year, over missions with a launch year
 	topType: { type: string; missions: number } | null; // most common mission type, ties by name
 }
+
+export type ComparisonDivisionSide = Pick<ComparisonGroup, 'missions' | 'failed' | 'withTop' | 'top10' | 'top10PerMission'>;
 
 export interface ShortfallSide {
 	missions: number;
@@ -232,7 +245,7 @@ export interface CostCurve {
 /** generated/index.json — routing + lookups */
 export interface MissionIndexEntry {
 	id: string;
-	name: string; // short_title
+	name: string; // display name (smi.config.json names, else short_title)
 	fullName: string;
 	division: DivisionSlug;
 	cost: number | null;
@@ -321,14 +334,20 @@ export interface MissionScopeStats {
 	first: FirstTopPaper; // first top-10% paper
 }
 
+/**
+ * The earliest-published paper in the scope with era-adjusted top-10% weight (the same flag the
+ * top10 counts sum; a paper tied at the cutoff counts), dated by its ADS pubdate. Exists exactly
+ * when top10 > 0.
+ */
 export interface FirstTopPaper {
 	/** reached: has one. none: has papers, none qualify. no_papers. failure: mission failed and has none. unavailable: output not measured. */
 	state: 'reached' | 'none' | 'no_papers' | 'failure' | 'unavailable';
+	/** from the prime-mission start, else launch */
 	yearsFromScienceStart: number | null;
 	/** from the start of formulation, when both dates are on record: the project-start reading of the same paper */
 	yearsFromFormulation: number | null;
 	bibcode: string | null;
-	date: string | null;
+	date: string | null; // ADS pubdate, month resolution ("2003-01-00"; "2003-00-00" = year only)
 }
 
 export interface PaperRef {
@@ -501,6 +520,12 @@ export interface KindFacts {
 	};
 	/** missions with papers whose non-science papers outnumber their science papers */
 	majorityNonScience: number;
+	/**
+	 * Top-10% credit (tie-weighted, era-adjusted: the credit `StoryFacts.comparison` counts) of the
+	 * classified in-window papers, split by kind; per mission it sums to the mission's full.top10.
+	 * share = nonScience / total, null when total is 0.
+	 */
+	topCredit: { total: number; nonScience: number; share: number | null; byKind: Record<KindKey, number> };
 	/** smi.config.json paperKinds.examples order */
 	examples: KindExample[];
 }

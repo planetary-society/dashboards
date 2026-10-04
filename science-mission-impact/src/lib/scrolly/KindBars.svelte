@@ -37,7 +37,7 @@
 	{/each}
 
 	{#if layout.strip}
-		<span class="strip" style:top="{layout.strip.y - 16}px" style:left="{layout.barX}px">{int(layout.strip.ids.length)} with no publications</span>
+		<span class="strip" style:top="{layout.strip.y - 16}px" style:left="{layout.barX}px">{int(layout.strip.ids.length)} with no publications in their window</span>
 	{/if}
 </div>
 

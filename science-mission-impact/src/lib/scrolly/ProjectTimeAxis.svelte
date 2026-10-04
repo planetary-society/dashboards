@@ -100,10 +100,13 @@
 		transform: translateY(-50%);
 	}
 
-	/* no gutter on a phone: the year labels sit inside the plot, at its right edge */
+	/* no gutter on a phone: the year labels sit inside the plot, at its right edge, on a black
+	   backing so their rules stop short of them (the squares still draw above it) */
 	.tick.inside {
 		left: auto;
 		right: 0;
+		padding-left: 4px;
+		background: var(--black);
 	}
 
 	.never-label {

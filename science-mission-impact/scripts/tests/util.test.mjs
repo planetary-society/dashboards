@@ -2,7 +2,6 @@ import { strict as assert } from 'node:assert';
 import { describe, it } from 'node:test';
 
 import {
-	daysToYears,
 	groupBy,
 	int,
 	median,
@@ -117,12 +116,6 @@ describe('date helpers', () => {
 		assert.equal(yearOf(null), null);
 	});
 
-	it('daysToYears keeps negative values, which are meaningful', () => {
-		assert.equal(daysToYears(365.25), 1);
-		assert.equal(daysToYears(-772), -2.114);
-		assert.equal(daysToYears(null), null);
-	});
-
 	it('yearsBetween measures one date to another', () => {
 		assert.equal(yearsBetween('1990-10-01', '1997-10-15'), 7.039);
 		assert.equal(yearsBetween('2000-01-01', '1999-01-01'), -0.999);
@@ -131,6 +124,17 @@ describe('date helpers', () => {
 		assert.equal(yearsBetween(null, '2001-01-01'), null);
 		assert.equal(yearsBetween('2001-01-01', undefined), null);
 		assert.equal(yearsBetween('not a date', '2001-01-01'), null);
+	});
+
+	it('yearsBetween reads an unknown month as 1 July and an unknown day as the 1st', () => {
+		// ADS "2003-00-00": dated by year only, read at mid-year.
+		assert.equal(yearsBetween('2003-07-01', '2003-00-00'), 0);
+		assert.equal(yearsBetween('2003-07-01', '2003'), 0);
+		// ADS "2003-01-00": dated by month only, read at the 1st, as upstream does.
+		assert.equal(yearsBetween('2003-01-01', '2003-01-00'), 0);
+		assert.equal(yearsBetween('2003-01-01', '2003-01'), 0);
+		// Month buckets keep the 1st (they must agree with ADS's own `date`).
+		assert.deepEqual(parseYearMonth('2003-00-00'), { y: 2003, m: 1 });
 	});
 });
 

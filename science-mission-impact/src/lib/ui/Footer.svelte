@@ -13,7 +13,7 @@
 				<a href={methodsHref()}>How we did this</a>
 			</p>
 			<p class="meta">
-				Preliminary. Data as of {longDate(site.asOf)}.<br />
+				Data as of {longDate(site.asOf)}.<br />
 				{site.attribution.acknowledgement}
 				Mission and cost data: {site.attribution.missionMetadataSource}.
 			</p>

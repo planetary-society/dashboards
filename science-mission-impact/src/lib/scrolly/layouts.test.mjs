@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { costLayout, costCurve, timeLayout, rugLayout, skylineLayout, gridLayout, failureLayout, projectTimeLayout, perDollarLayout, kindsLayout, exampleLayout } from './layouts.js';
+import { costLayout, costCurve, timeLayout, rugLayout, skylineLayout, gridLayout, failureLayout, projectTimeLayout, perDollarLayout, kindsLayout, exampleLayout, waffleLayout } from './layouts.js';
 
 const load = async (name) => JSON.parse(await readFile(new URL(`../data/generated/${name}.json`, import.meta.url), 'utf8'));
 const site = await load('site');
@@ -300,4 +300,75 @@ test('example layout: the square inside the stage, the list under it', () => {
 		assert.ok(p.x >= 0 && p.x + p.s <= W && p.y >= 0 && p.y + p.s <= H);
 		assert.ok(l.listY > l.top + l.s);
 	}
+});
+
+test('example layout: a phone stage holds all seven RainCube papers, one highlighted', () => {
+	const l = exampleLayout('raincube', 351, 262, { compact: true });
+	assert.ok(l.listY + l.hit + 6 * l.row <= 262, `${l.listY + l.hit + 6 * l.row}px of 262`);
+});
+
+// --- the publications waffle ----------------------------------------------------------------
+
+test('waffle: one box per 100 mission papers where the stage allows, the next unit where not, inside the stage', () => {
+	// the story's facts as of this snapshot: 1,329 of 135,129 mission papers
+	const [papers, papersAll] = [1329, 135129];
+	for (const [W, H, top, unit] of [
+		[704, 666, 96, 100],
+		[374, 367, 56, 100],
+		[351, 262, 56, 200]
+	]) {
+		const compact = W < 600;
+		const l = waffleLayout(papersAll, papers, W, H, { top, compact });
+		assert.equal(l.unit, unit, `${W}×${H}: unit`);
+		assert.equal(l.cells, Math.ceil(papersAll / unit));
+		assert.ok(l.cols * l.rows >= l.cells && (l.rows - 1) * l.cols < l.cells, `${W}×${H}: no empty row`);
+		assert.ok(l.pitch >= (compact ? 7 : 9), `${W}×${H}: pitch ${l.pitch}`);
+		assert.equal(l.size, l.pitch - l.gap);
+		assert.equal(l.width, l.cols * l.pitch - l.gap);
+		assert.ok(l.x0 >= 0 && l.x0 + l.width <= W, `${W}×${H}: inside the stage across`);
+		assert.ok(l.y0 >= top && l.y0 + l.height <= H - l.margin - l.legendH, `${W}×${H}: under the figure, over the legend`);
+		assert.equal(l.full, Math.floor(papers / unit));
+		assert.ok(Math.abs(l.fraction - (papers / unit - l.full)) < 1e-9);
+		if (unit === 100) assert.ok(l.full === 13 && Math.abs(l.fraction - 0.29) < 1e-9, `${W}×${H}: 13 full boxes and 29% of the next`);
+	}
+});
+
+test('waffle ring: one row segment round the 14 boxes at 704×666, an L or a block when the run wraps', () => {
+	const l = waffleLayout(135129, 1329, 704, 666, { top: 96 });
+	const { x0, y0, pitch, size } = l;
+	// 13 full boxes and the partial one, all in row 0
+	assert.deepEqual(l.ring.points, [
+		[x0 - 3, y0 - 3],
+		[x0 + 13 * pitch + size + 3, y0 - 3],
+		[x0 + 13 * pitch + size + 3, y0 + size + 3],
+		[x0 - 3, y0 + size + 3]
+	]);
+	assert.equal((l.ring.d.match(/Q/g) ?? []).length, 4, 'four rounded corners');
+	assert.deepEqual(l.ring.label, { x: x0 + 13 * pitch + size + 9, y: y0 + size / 2, below: false });
+
+	// 10 boxes of 100 on a 4-column grid: 6.5 boxes is two rows, the second three long
+	const L = waffleLayout(1000, 650, 200, 220);
+	assert.equal(L.cols, 4);
+	const right = (k) => L.x0 + (k - 1) * L.pitch + L.size + 3;
+	const bottom = (r) => L.y0 + (r - 1) * L.pitch + L.size + 3;
+	assert.deepEqual(L.ring.points, [
+		[L.x0 - 3, L.y0 - 3],
+		[right(4), L.y0 - 3],
+		[right(4), bottom(1)],
+		[right(3), bottom(1)],
+		[right(3), bottom(2)],
+		[L.x0 - 3, bottom(2)]
+	]);
+	assert.equal((L.ring.d.match(/Q/g) ?? []).length, 6);
+	assert.deepEqual(L.ring.label, { x: L.x0 - 3, y: bottom(2) + 6, below: true }, 'the first row ends at the grid edge, so the label goes under the ring');
+
+	// exactly two whole rows: a block
+	const B = waffleLayout(1000, 800, 200, 220);
+	assert.deepEqual(B.ring.points, [
+		[B.x0 - 3, B.y0 - 3],
+		[right(4), B.y0 - 3],
+		[right(4), bottom(2)],
+		[B.x0 - 3, bottom(2)]
+	]);
+	assert.equal(waffleLayout(1000, 0, 200, 220).ring, null, 'nothing to ring');
 });

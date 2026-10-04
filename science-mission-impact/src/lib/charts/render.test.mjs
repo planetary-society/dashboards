@@ -64,7 +64,8 @@ test('division timeline defaults to annual counts and keeps missing citations ex
 	assert.match(body, /2001: 3 tracked publications · 7 citations/);
 	assert.match(body, /Dashed from 2001/);
 	assert.match(body, /12 of 13 reported citations/);
-	assert.match(body, /type="range"/);
+	assert.doesNotMatch(body, /type="range"/);
+	assert.match(body, /Tap or drag across either plot/);
 	assert.doesNotMatch(body, /NaN|undefined/);
 });
 
@@ -102,7 +103,7 @@ test('TimeToScience explains the axes and omitted missions in prerendered HTML',
 	];
 	const body = render(Component, { props: { missions, slug: 'earth', referenceCost: 100 } }).body;
 	assert.match(body, /1 of 2 missions/);
-	assert.match(body, /Publication date of a paper that ranks highly today/);
+	assert.match(body, /farther left reached its first top-10% paper sooner after science operations began/);
 	assert.match(body, /12 months before science start/);
 	assert.match(body, /Negative months/);
 	assert.match(body, /No top-10% paper observed \(1\): None/);
@@ -133,7 +134,8 @@ test('prime-window boundaries and incomplete citation coverage are present in pr
 		policy: { kind: 'prime', postPrimeYears: 2, citationYears: 3 }
 	} });
 	assert.match(body, /Prime Mission Window/);
-	assert.match(body, /2000-02-01 to 2004-03-01/);
+	assert.match(body.replace(/<!--.*?-->/g, ''), /from February 1, 2000 to March 1, 2004; citations counted through October 1, 2007\./);
+	assert.doesNotMatch(body, /end exclusive|Maturity date/);
 	assert.match(body, /1,200 of 1,201 reported citations/);
 	assert.match(body, /1 missing/);
 	assert.doesNotMatch(body, /undefined/);
@@ -191,10 +193,10 @@ test('CostCurve prerenders the takeaway and the summary, and draws nothing unmea
 	for (const scope of ['full', 'window']) {
 		const Component = await load('CostCurve.svelte', { scope });
 		const { body } = render(Component, { props: { costCurves, missions, slug: 'astrophysics' } });
-		assert.match(body, /Missions up to \$120M account for the first quarter of the division’s top 10% papers and 6.4% of its spending\./, scope);
-		assert.match(body, /The middle half of the top papers comes from missions costing \$120M to \$1\.0B\./, scope);
+		assert.match(body, /Missions up to \$120M account for the first quarter of the division’s top-10% papers and 6.4% of its spending\./, scope);
+		assert.match(body, /The middle half of the top-10% papers comes from missions costing \$120M to \$1\.0B\./, scope);
 		assert.match(body, /One mission has no cost on record and is not shown\./, scope);
-		assert.match(body, /Running share of top 10% papers/, scope);
+		assert.match(body, /Running share of top-10% papers/, scope);
 		assert.ok(!body.includes('<svg'), 'no chart is drawn before the stage is measured');
 		assert.ok(!body.includes('NaN'));
 	}
@@ -223,9 +225,23 @@ test('RankHistogram prerenders ten bars, the top-1% cap and the computed sentenc
 	const { body } = render(Component, { props: { ranks: { bins: [50, 40, 30, 30, 20, 10, 8, 6, 4, 2], top1: 0.5 } } });
 	assert.equal((body.match(/class="bar[ "]/g) ?? []).length, 10);
 	assert.equal((body.match(/class="cap[ "]/g) ?? []).length, 1);
-	assert.match(body, /1\.0% of this mission’s 200 papers are in the division’s top 10%; 10% would be an even spread\./);
+	assert.match(body, /1\.0% of this mission’s 200 papers are in the division’s top tenth by raw citations; 10% would be an even spread\./);
 	assert.match(body, /Even spread: 20 per bar/);
 	assert.ok(!body.includes('NaN'));
+});
+
+test('RankHistogram uses one number rule on the bars and in the key', async () => {
+	const Component = await load('RankHistogram.svelte');
+	const values = (body) => [...body.matchAll(/class="value meta[^"]*"[^>]*>([^<]*)</g)].map((m) => m[1]);
+	// shared credit: one decimal everywhere, so no bare "0" beside "0.9"
+	const shared = render(Component, { props: { ranks: { bins: [0, 0, 0.9, 0.6, 0.5, 0.5, 0.5, 0.98, 0.02, 1], top1: 0 } } }).body;
+	assert.deepEqual(values(shared), ['0.0', '0.0', '0.9', '0.6', '0.5', '0.5', '0.5', '1.0', '0.0', '1.0']);
+	assert.match(shared, /Even spread: 0\.5 per bar/);
+	// whole papers: integers on the bars; the even line is a mean and keeps its decimal
+	const whole = render(Component, { props: { ranks: { bins: [0, 1, 2, 0, 0, 0, 1, 0, 0, 1], top1: 1 } } }).body;
+	assert.deepEqual(values(whole), ['0', '1', '2', '0', '0', '0', '1', '0', '0', '1']);
+	assert.match(whole, /Even spread: 0\.5 per bar/);
+	assert.match(whole, /Top 1%: 1 paper/);
 });
 
 test('RankHistogram says when the view has no histogram', async () => {
@@ -252,7 +268,7 @@ test('IndexScatter prerenders the marks, the correlation and the summary', async
 	assert.match(body, /href="\/planetary\/cassini\/"/);
 	assert.match(body, /aria-label="Cassini: \$7\.6B, m-index 4\.7 \(h-index 127\)"/);
 	// a failure with no m-index still appears, on the zero line and marked as one
-	assert.match(body, /aria-label="CONTOUR: \$297M, failed with no qualifying papers"/);
+	assert.match(body, /aria-label="CONTOUR: \$297M, failed; counts as zero"/);
 	assert.match(body, /mark-failure/);
 	assert.ok(!body.includes('/planetary/nocost/'), 'a mission with no cost has nowhere to sit');
 	assert.match(body, /m-index by mission cost for 3 missions, as of September 20, 2026/);
@@ -274,9 +290,9 @@ test('AccumulationPair names recorded lifecycle dates for screen readers', async
 	const Component = await load('AccumulationPair.svelte');
 	const dates = { launch: '1997-10-15', primeEnd: '2002-06-30', missionEnd: '2017-09-15' };
 	const { body } = render(Component, { props: { lifetime, window: windowSeries, policy, dates } });
-	assert.match(body, /launch: 1997-10-15\./);
-	assert.match(body, /prime end: 2002-06-30\./);
-	assert.match(body, /mission end: 2017-09-15\./);
+	assert.match(body, /launch: October 15, 1997\./);
+	assert.match(body, /prime end: June 30, 2002\./);
+	assert.match(body, /mission end: September 15, 2017\./);
 	const ongoing = render(Component, { props: { lifetime, policy, dates: { launch: dates.launch } } }).body;
 	assert.doesNotMatch(ongoing, /prime end:|mission end:/);
 });
@@ -307,4 +323,17 @@ test('PublicationScatter prerenders selected-scope values, zero states and unava
 	const empty = render(Component, { props: { missions: [], slug: 'earth' } }).body;
 	assert.match(empty, /No missions with tracked publications/);
 	assert.doesNotMatch(empty, /NaN|undefined|Division reference/);
+});
+
+test('MissionTable drops the top-10% column and readout for a division too small to rank', async () => {
+	const Component = await load('../ui/MissionTable.svelte');
+	const missions = [{ id: 'a', name: 'Alpha', launchYear: 2001, type: 'Lander', cost: 120, papers: 4, citations: 30, indices: { h: 2 }, strip: [1, 3], full: { top10: 0.5, top1: 0 }, hasThumb: false }];
+	const props = { missions, slug: 'biological-physical', costBaseYear: 2025, scopeLabel: 'Active Mission Window' };
+	const ranked = render(Component, { props }).body;
+	assert.match(ranked, /Top-10% credit: Active Mission Window/);
+	assert.match(ranked, /class="num top/);
+	const unranked = render(Component, { props: { ...props, rankable: false } }).body;
+	assert.ok(!/Top-10%/.test(unranked), 'no top-10% wording');
+	assert.ok(!/class="num top/.test(unranked), 'no top-10% column');
+	assert.match(unranked, /Lifetime totals/);
 });

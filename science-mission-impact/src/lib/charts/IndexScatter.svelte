@@ -29,7 +29,7 @@
 	const selected = $derived(m?.points.find((p) => p.id === selectedId));
 
 	function describe(p) {
-		if (p.value == null) return `${p.name}: ${money(p.cost)}, failed with no qualifying papers`;
+		if (p.value == null) return `${p.name}: ${money(p.cost)}, failed; counts as zero`;
 		const paren = p.other != null ? ` (${INDEX_LABEL[other]} ${indexValue(other, p.other)})` : '';
 		return `${p.name}: ${money(p.cost)}, ${INDEX_LABEL[index]} ${indexValue(index, p.value)}${paren}${p.failed ? ', mission failed' : ''}`;
 	}

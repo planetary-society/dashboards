@@ -20,22 +20,24 @@
   },
   "indices": {
     "h": 64,
-    "m": 4.923,
-    "i100": 30,
-    "g": 98,
-    "tori": 116.048,
-    "riq": 828
+    "m": 4.267,
+    "i100": 31,
+    "g": 99,
+    "tori": 117.511,
+    "riq": 722
   },
   "facts": {
-    "papers": 877,
-    "citations": 18402,
+    "papers": 878,
+    "citations": 18608,
     "publicationYears": [
-      2014,
+      2012,
       2026
     ]
   },
   "lifetimeSeries": {
     "years": [
+      2012,
+      2013,
       2014,
       2015,
       2016,
@@ -51,6 +53,8 @@
       2026
     ],
     "papers": [
+      1,
+      0,
       16,
       56,
       57,
@@ -66,25 +70,27 @@
       46
     ],
     "citations": [
-      3,
-      97,
-      226,
-      395,
-      670,
-      1155,
-      1493,
-      1843,
-      2633,
-      2496,
-      2725,
-      2823,
-      1843
+      0,
+      6,
+      17,
+      116,
+      243,
+      413,
+      687,
+      1173,
+      1506,
+      1860,
+      2649,
+      2505,
+      2742,
+      2843,
+      1848
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 18402,
-      "observed": 18402,
+      "expected": 18608,
+      "observed": 18608,
       "missing": 0
     }
   },
@@ -213,46 +219,46 @@
   "ranks": {
     "full": {
       "bins": [
-        50.155,
-        59.538,
-        74.305,
-        74.89,
-        78.097,
-        59.274,
-        60.561,
-        83.774,
-        77.319,
-        74.088
+        50.143,
+        59.54,
+        74.326,
+        74.911,
+        78.064,
+        59.276,
+        60.565,
+        83.778,
+        77.327,
+        74.069
       ],
-      "top1": 8.17
+      "top1": 8.172
     },
     "window": {
       "bins": [
-        33.462,
-        38.115,
-        60.658,
-        58.176,
-        43.964,
-        42.618,
-        46.852,
-        55.981,
-        44.954,
-        40.22
+        33.438,
+        38.124,
+        60.669,
+        58.232,
+        43.931,
+        42.637,
+        46.86,
+        56.024,
+        44.981,
+        40.105
       ],
       "top1": 3
     },
     "lifetime": {
       "bins": [
-        96.423,
-        107.922,
-        97.709,
-        125.305,
-        87.424,
-        94.499,
-        85.487,
-        65.601,
-        63.63,
-        53
+        96.523,
+        107.979,
+        97.69,
+        125.262,
+        87.429,
+        94.539,
+        85.363,
+        65.616,
+        63.6,
+        54
       ],
       "top1": 4
     }
@@ -263,7 +269,7 @@
     "citations": 8428,
     "top10": 44.93,
     "top10ShareOfDivision": 0.01168,
-    "top1": 8.17,
+    "top1": 8.172,
     "top1ShareOfDivision": 0.02124,
     "first": {
       "state": "reached",
@@ -294,9 +300,9 @@
     "outputBasis": "measured",
     "citations": 5932,
     "top10": 24.44,
-    "top10ShareOfDivision": 0.02357,
+    "top10ShareOfDivision": 0.02356,
     "top1": 3,
-    "top1ShareOfDivision": 0.02893,
+    "top1ShareOfDivision": 0.02892,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.832,
@@ -322,45 +328,54 @@
     }
   },
   "lifetime": {
-    "papers": 877,
+    "papers": 878,
     "outputBasis": "measured",
-    "citations": 18402,
-    "top10": 44.952,
-    "top10ShareOfDivision": 0.01086,
+    "citations": 18608,
+    "top10": 45.952,
+    "top10ShareOfDivision": 0.0111,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 0.504,
-      "yearsFromFormulation": 16,
-      "bibcode": "2014RSEnv.154...19G",
-      "date": "2014-11-00"
+      "yearsFromScienceStart": -1.662,
+      "yearsFromFormulation": 13.834,
+      "bibcode": "2012PNAS..10915706M",
+      "date": "2012-09-00"
     },
     "spread": {
-      "mean": 20.983,
+      "mean": 21.194,
       "median": 9,
       "uncited": 93,
-      "i10": 423,
-      "i100": 30
+      "i10": 424,
+      "i100": 31
     }
   },
   "query": {
     "arms": "((=abs:\"Suomi National Polar-orbiting Partnership\" OR abs:\"Suomi NPP\" OR abs:\"Suomi-NPP\" OR (abs:\"SNPP\" AND abs:\"satellite\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Suomi+National+Polar-orbiting+Partnership%22+OR+abs%3A%22Suomi+NPP%22+OR+abs%3A%22Suomi-NPP%22+OR+%28abs%3A%22SNPP%22+AND+abs%3A%22satellite%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T18:02:03.311536+00:00",
+    "fetchedAt": "2026-10-02T04:23:29.673033+00:00",
     "reconciliation": {
       "adsReturned": 881,
       "curatedOut": 0,
-      "curatedIn": 0,
+      "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 4,
-      "final": 877
+      "final": 878
     }
   },
   "curation": {
-    "includes": [],
+    "includes": [
+      {
+        "bibcode": "2012PNAS..10915706M",
+        "doi": null,
+        "title": "Suomi satellite brings to light a unique frontier of nighttime environmental sensing capabilities",
+        "reason": "Mission's first published science result: VIIRS Day/Night Band imaging of nighttime clouds and mesospheric airglow.",
+        "authority": "agent",
+        "date": "2026-10-04"
+      }
+    ],
     "excludes": []
   },
   "topCited": [
@@ -399,6 +414,15 @@
       "authorCount": null,
       "year": 2017,
       "citations": 366
+    },
+    {
+      "bibcode": "2012PNAS..10915706M",
+      "title": "Suomi satellite brings to light a unique frontier of nighttime environmental sensing capabilities",
+      "firstAuthor": "Miller, Steven D.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2012,
+      "citations": 206
     },
     {
       "bibcode": "2015IJSTA...8.1217Y",
@@ -534,18 +558,9 @@
       "authorCount": null,
       "year": 2018,
       "citations": 114
-    },
-    {
-      "bibcode": "2017ESSD....9..765R",
-      "title": "Overview of NASA's MODIS and Visible Infrared Imaging Radiometer Suite (VIIRS) snow-cover Earth System Data Records",
-      "firstAuthor": "Riggs, George A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2017,
-      "citations": 113
     }
   ],
   "papersFile": {
-    "rows": 877
+    "rows": 878
   }
 }

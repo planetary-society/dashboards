@@ -23,12 +23,12 @@
     "m": 4.923,
     "i100": 39,
     "g": 115,
-    "tori": 54.847,
-    "riq": 569
+    "tori": 54.933,
+    "riq": 570
   },
   "facts": {
     "papers": 698,
-    "citations": 19055,
+    "citations": 19059,
     "publicationYears": [
       2014,
       2026
@@ -78,13 +78,13 @@
       2693,
       3168,
       3626,
-      2375
+      2379
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 19055,
-      "observed": 19055,
+      "expected": 19059,
+      "observed": 19059,
       "missing": 0
     }
   },
@@ -174,46 +174,46 @@
   "ranks": {
     "full": {
       "bins": [
-        28.407,
-        21.53,
-        19.876,
-        31.654,
-        43.581,
-        39.051,
-        42.181,
-        52.425,
-        65.512,
-        103.784
+        28.402,
+        21.531,
+        19.882,
+        31.661,
+        43.571,
+        39.053,
+        42.185,
+        52.426,
+        65.53,
+        103.758
       ],
       "top1": 20
     },
     "window": {
       "bins": [
-        9.281,
-        4.715,
-        6.76,
-        10.032,
-        12.371,
-        5.34,
-        5.018,
-        10.086,
-        9.397,
+        9.28,
+        4.713,
+        6.761,
+        10.043,
+        12.363,
+        5.345,
+        5.021,
+        10.089,
+        9.386,
         25
       ],
       "top1": 7
     },
     "lifetime": {
       "bins": [
-        102.106,
-        88.691,
-        75.338,
-        70.842,
-        61.889,
-        68.925,
-        60.336,
-        58.244,
-        52.658,
-        58.972
+        102.196,
+        88.741,
+        75.278,
+        70.8,
+        61.893,
+        68.958,
+        60.297,
+        58.237,
+        52.649,
+        58.951
       ],
       "top1": 12
     }
@@ -225,7 +225,7 @@
     "top10": 75.111,
     "top10ShareOfDivision": 0.01952,
     "top1": 19.333,
-    "top1ShareOfDivision": 0.05026,
+    "top1ShareOfDivision": 0.05025,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.405,
@@ -257,7 +257,7 @@
     "top10": 19.8,
     "top10ShareOfDivision": 0.01909,
     "top1": 7,
-    "top1ShareOfDivision": 0.0675,
+    "top1ShareOfDivision": 0.06748,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.405,
@@ -285,7 +285,7 @@
   "lifetime": {
     "papers": 698,
     "outputBasis": "measured",
-    "citations": 19055,
+    "citations": 19059,
     "top10": 72.768,
     "top10ShareOfDivision": 0.01759,
     "top1": null,
@@ -298,7 +298,7 @@
       "date": "2015-01-00"
     },
     "spread": {
-      "mean": 27.299,
+      "mean": 27.305,
       "median": 10,
       "uncited": 99,
       "i10": 350,
@@ -309,7 +309,7 @@
     "arms": "((=abs:\"Orbiting Carbon Observatory 2\" OR (=abs:\"Orbiting Carbon Observatory\" AND NOT (abs:\"OCO-3\" OR =abs:\"Orbiting Carbon Observatory 3\")) OR ((abs:\"OCO-2\" OR abs:OCO2) AND (=abs:xco2 OR abs:satellite OR abs:atmosphere OR abs:vegetation OR abs:photosynthesis OR abs:albedo OR abs:emissions OR abs:crop OR abs:terrestrial OR abs:concentration) AND NOT =abs:\"operational carbon dioxide\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Orbiting+Carbon+Observatory+2%22+OR+%28%3Dabs%3A%22Orbiting+Carbon+Observatory%22+AND+NOT+%28abs%3A%22OCO-3%22+OR+%3Dabs%3A%22Orbiting+Carbon+Observatory+3%22%29%29+OR+%28%28abs%3A%22OCO-2%22+OR+abs%3AOCO2%29+AND+%28%3Dabs%3Axco2+OR+abs%3Asatellite+OR+abs%3Aatmosphere+OR+abs%3Avegetation+OR+abs%3Aphotosynthesis+OR+abs%3Aalbedo+OR+abs%3Aemissions+OR+abs%3Acrop+OR+abs%3Aterrestrial+OR+abs%3Aconcentration%29+AND+NOT+%3Dabs%3A%22operational+carbon+dioxide%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T18:03:22.811919+00:00",
+    "fetchedAt": "2026-10-02T04:25:07.591167+00:00",
     "reconciliation": {
       "adsReturned": 698,
       "curatedOut": 0,

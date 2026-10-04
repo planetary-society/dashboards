@@ -23,12 +23,12 @@
     "m": 8.273,
     "i100": 471,
     "g": 289,
-    "tori": 500.273,
-    "riq": 972
+    "tori": 502.175,
+    "riq": 974
   },
   "facts": {
-    "papers": 5490,
-    "citations": 226035,
+    "papers": 5491,
+    "citations": 226110,
     "publicationYears": [
       2005,
       2026
@@ -60,7 +60,7 @@
       2026
     ],
     "papers": [
-      69,
+      70,
       172,
       188,
       173,
@@ -84,13 +84,13 @@
       298
     ],
     "citations": [
-      172,
-      1838,
+      177,
+      1843,
       3487,
-      3709,
+      3710,
       4900,
       5224,
-      6839,
+      6844,
       7987,
       8764,
       8561,
@@ -99,19 +99,19 @@
       11391,
       12165,
       12539,
-      12437,
+      12438,
       13143,
       15254,
       15953,
       18482,
-      22092,
-      19913
+      22093,
+      19970
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 226035,
-      "observed": 226035,
+      "expected": 226110,
+      "observed": 226110,
       "missing": 0
     }
   },
@@ -198,46 +198,46 @@
   "ranks": {
     "full": {
       "bins": [
-        422.089,
-        483.555,
-        491.564,
-        439.523,
-        466.499,
-        482.808,
-        462.095,
-        463.142,
-        424.626,
-        370.098
+        422.098,
+        483.568,
+        491.572,
+        439.552,
+        466.143,
+        483.426,
+        461.507,
+        463.56,
+        424.627,
+        369.946
       ],
-      "top1": 26.374
+      "top1": 26.375
     },
     "window": {
       "bins": [
-        89.221,
-        53.179,
-        51.581,
+        89.225,
+        53.182,
+        51.585,
         49.677,
         53.97,
-        66.769,
-        70.64,
-        58.204,
+        66.779,
+        70.65,
+        58.197,
         69.378,
-        73.38
+        73.357
       ],
       "top1": 9
     },
     "lifetime": {
       "bins": [
-        590.696,
-        650.626,
-        622.556,
-        597.934,
-        578.871,
-        608.422,
-        529.261,
-        487.336,
-        437.247,
-        387.052
+        590.686,
+        650.232,
+        624.066,
+        598.465,
+        578.58,
+        606.841,
+        530.646,
+        485.983,
+        438.528,
+        386.972
       ],
       "top1": 27
     }
@@ -245,10 +245,10 @@
   "full": {
     "papers": 4506,
     "outputBasis": "measured",
-    "citations": 88990,
-    "top10": 297.276,
-    "top10ShareOfDivision": 0.05964,
-    "top1": 20.374,
+    "citations": 89001,
+    "top10": 297.083,
+    "top10ShareOfDivision": 0.0596,
+    "top1": 20.375,
     "top1ShareOfDivision": 0.04087,
     "first": {
       "state": "reached",
@@ -267,7 +267,7 @@
       "citationBuckets": 22
     },
     "spread": {
-      "mean": 19.749,
+      "mean": 19.752,
       "median": 12,
       "uncited": 196,
       "i10": 2684,
@@ -279,7 +279,7 @@
     "outputBasis": "measured",
     "citations": 16212,
     "top10": 66.5,
-    "top10ShareOfDivision": 0.03419,
+    "top10ShareOfDivision": 0.03418,
     "top1": 9,
     "top1ShareOfDivision": 0.04627,
     "first": {
@@ -307,11 +307,11 @@
     }
   },
   "lifetime": {
-    "papers": 5490,
+    "papers": 5491,
     "outputBasis": "measured",
-    "citations": 226035,
-    "top10": 303.662,
-    "top10ShareOfDivision": 0.05482,
+    "citations": 226110,
+    "top10": 303.6,
+    "top10ShareOfDivision": 0.0548,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -322,10 +322,10 @@
       "date": "2005-06-00"
     },
     "spread": {
-      "mean": 41.172,
+      "mean": 41.178,
       "median": 20,
       "uncited": 299,
-      "i10": 3757,
+      "i10": 3759,
       "i100": 471
     }
   },
@@ -333,19 +333,28 @@
     "arms": "((=abs:\"Neil Gehrels Swift Observatory\" OR =abs:\"Swift satellite\" OR =abs:\"Swift observatory\" OR =abs:\"Swift mission\" OR =abs:\"Swift spacecraft\" OR =abs:\"Swift telescope\" OR =abs:\"Swift observations\" OR =abs:\"Swift observation\" OR =abs:\"Swift data\" OR =abs:\"Swift monitoring\" OR (abs:Swift AND (abs:GRB OR =abs:\"gamma-ray burst\" OR =abs:\"gamma-ray bursts\" OR abs:BAT OR abs:XRT OR abs:UVOT OR =abs:\"X-ray\" OR =abs:\"X-rays\" OR =abs:ultraviolet OR =abs:UV OR =abs:\"gamma-ray\" OR =abs:\"gamma-rays\" OR =abs:afterglow OR =abs:afterglows) AND NOT (=abs:\"swift heavy ion\" OR =abs:\"swift heavy ions\" OR =abs:\"swift ions\")) OR =abs:\"Burst Alert Telescope\" OR (abs:UVOT AND (=abs:ultraviolet OR =abs:UV OR =abs:optical OR =abs:photometry)) OR (abs:BAT AND (=abs:\"hard X-ray\" OR =abs:\"hard X-rays\" OR abs:AGN OR abs:GRB OR =abs:\"gamma-ray burst\" OR =abs:\"gamma-ray bursts\" OR =abs:\"X-ray\" OR =abs:\"X-rays\")) OR (abs:XRT AND (abs:UVOT OR abs:BAT)) OR facility:Swift) AND collection:astronomy)",
     "filters": "property:refereed AND doctype:article AND pubdate:[2005-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Neil+Gehrels+Swift+Observatory%22+OR+%3Dabs%3A%22Swift+satellite%22+OR+%3Dabs%3A%22Swift+observatory%22+OR+%3Dabs%3A%22Swift+mission%22+OR+%3Dabs%3A%22Swift+spacecraft%22+OR+%3Dabs%3A%22Swift+telescope%22+OR+%3Dabs%3A%22Swift+observations%22+OR+%3Dabs%3A%22Swift+observation%22+OR+%3Dabs%3A%22Swift+data%22+OR+%3Dabs%3A%22Swift+monitoring%22+OR+%28abs%3ASwift+AND+%28abs%3AGRB+OR+%3Dabs%3A%22gamma-ray+burst%22+OR+%3Dabs%3A%22gamma-ray+bursts%22+OR+abs%3ABAT+OR+abs%3AXRT+OR+abs%3AUVOT+OR+%3Dabs%3A%22X-ray%22+OR+%3Dabs%3A%22X-rays%22+OR+%3Dabs%3Aultraviolet+OR+%3Dabs%3AUV+OR+%3Dabs%3A%22gamma-ray%22+OR+%3Dabs%3A%22gamma-rays%22+OR+%3Dabs%3Aafterglow+OR+%3Dabs%3Aafterglows%29+AND+NOT+%28%3Dabs%3A%22swift+heavy+ion%22+OR+%3Dabs%3A%22swift+heavy+ions%22+OR+%3Dabs%3A%22swift+ions%22%29%29+OR+%3Dabs%3A%22Burst+Alert+Telescope%22+OR+%28abs%3AUVOT+AND+%28%3Dabs%3Aultraviolet+OR+%3Dabs%3AUV+OR+%3Dabs%3Aoptical+OR+%3Dabs%3Aphotometry%29%29+OR+%28abs%3ABAT+AND+%28%3Dabs%3A%22hard+X-ray%22+OR+%3Dabs%3A%22hard+X-rays%22+OR+abs%3AAGN+OR+abs%3AGRB+OR+%3Dabs%3A%22gamma-ray+burst%22+OR+%3Dabs%3A%22gamma-ray+bursts%22+OR+%3Dabs%3A%22X-ray%22+OR+%3Dabs%3A%22X-rays%22%29%29+OR+%28abs%3AXRT+AND+%28abs%3AUVOT+OR+abs%3ABAT%29%29+OR+facility%3ASwift%29+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2005-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T18:19:55.145063+00:00",
+    "fetchedAt": "2026-10-02T04:36:47.768223+00:00",
     "reconciliation": {
       "adsReturned": 5494,
       "curatedOut": 4,
-      "curatedIn": 0,
+      "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 5490
+      "final": 5491
     }
   },
   "curation": {
-    "includes": [],
+    "includes": [
+      {
+        "bibcode": "2005ApJ...622L..85B",
+        "doi": null,
+        "title": "Swift X-Ray Telescope and Very Large Telescope Observations of the Afterglow of GRB 041223",
+        "reason": "Mission's first published science result: the first gamma-ray burst afterglow detected by Swift's X-ray telescope (GRB 041223).",
+        "authority": "agent",
+        "date": "2026-10-04"
+      }
+    ],
     "excludes": [
       {
         "bibcode": "2015A&A...576A.125D",
@@ -398,7 +407,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 2232
+      "citations": 2233
     },
     {
       "bibcode": "2005SSRv..120...95R",
@@ -425,7 +434,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 1713
+      "citations": 1715
     },
     {
       "bibcode": "2006ApJ...642..354Z",
@@ -564,6 +573,6 @@
     }
   ],
   "papersFile": {
-    "rows": 5490
+    "rows": 5491
   }
 }

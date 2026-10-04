@@ -21,14 +21,14 @@
   "indices": {
     "h": 91,
     "m": 7.583,
-    "i100": 80,
+    "i100": 81,
     "g": 135,
-    "tori": 128.228,
+    "tori": 128.301,
     "riq": 871
   },
   "facts": {
     "papers": 1824,
-    "citations": 39628,
+    "citations": 39630,
     "publicationYears": [
       2015,
       2026
@@ -75,13 +75,13 @@
       5086,
       6025,
       7119,
-      5541
+      5543
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 39628,
-      "observed": 39628,
+      "expected": 39630,
+      "observed": 39630,
       "missing": 0
     }
   },
@@ -187,46 +187,46 @@
   "ranks": {
     "full": {
       "bins": [
-        42.432,
-        67.053,
-        73.767,
-        98.126,
-        114.479,
-        123.218,
-        126.944,
-        147.205,
-        152.753,
-        208.024
+        42.419,
+        67.056,
+        73.788,
+        98.151,
+        114.444,
+        123.225,
+        126.95,
+        147.212,
+        152.774,
+        207.982
       ],
-      "top1": 23.17
+      "top1": 23.172
     },
     "window": {
       "bins": [
-        17.495,
-        25.09,
-        23.287,
-        42.223,
-        51.811,
-        54.586,
-        54.902,
-        62.636,
-        79.833,
-        97.136
+        17.479,
+        25.097,
+        23.294,
+        42.274,
+        51.803,
+        54.579,
+        54.942,
+        62.676,
+        79.923,
+        96.934
       ],
       "top1": 10
     },
     "lifetime": {
       "bins": [
-        272.063,
-        238.189,
-        224.385,
-        188.347,
-        180.257,
+        272.328,
+        238.343,
+        224.221,
+        188.253,
+        180.224,
         175.741,
-        144.269,
-        149.067,
-        127.793,
-        123.888
+        144.215,
+        149.074,
+        127.794,
+        123.806
       ],
       "top1": 5
     }
@@ -237,8 +237,8 @@
     "citations": 18807,
     "top10": 141.919,
     "top10ShareOfDivision": 0.03689,
-    "top1": 20.337,
-    "top1ShareOfDivision": 0.05286,
+    "top1": 20.339,
+    "top1ShareOfDivision": 0.05287,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.145,
@@ -268,9 +268,9 @@
     "outputBasis": "measured",
     "citations": 10087,
     "top10": 66.42,
-    "top10ShareOfDivision": 0.06405,
+    "top10ShareOfDivision": 0.06403,
     "top1": 9.5,
-    "top1ShareOfDivision": 0.09161,
+    "top1ShareOfDivision": 0.09158,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.145,
@@ -298,9 +298,9 @@
   "lifetime": {
     "papers": 1824,
     "outputBasis": "measured",
-    "citations": 39628,
-    "top10": 145.179,
-    "top10ShareOfDivision": 0.03509,
+    "citations": 39630,
+    "top10": 145.12,
+    "top10ShareOfDivision": 0.03507,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -311,18 +311,18 @@
       "date": "2015-05-00"
     },
     "spread": {
-      "mean": 21.726,
+      "mean": 21.727,
       "median": 8,
       "uncited": 263,
       "i10": 856,
-      "i100": 80
+      "i100": 81
     }
   },
   "query": {
     "arms": "((=abs:\"Soil Moisture Active Passive\" OR =abs:\"SMAP Reflectometry\" OR (abs:SMAP AND (abs:(satellite OR soil OR radiometer OR microwave OR ocean OR freeze OR thaw OR vegetation OR drought OR SAR) OR =abs:salinity OR =abs:\"remote sensing\" OR =abs:\"land surface\" OR =abs:\"gap filling\" OR abs:\"L-band\"))) AND NOT =abs:\"GIC-SMAP\")",
     "filters": "property:refereed AND doctype:article AND pubdate:[2015-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Soil+Moisture+Active+Passive%22+OR+%3Dabs%3A%22SMAP+Reflectometry%22+OR+%28abs%3ASMAP+AND+%28abs%3A%28satellite+OR+soil+OR+radiometer+OR+microwave+OR+ocean+OR+freeze+OR+thaw+OR+vegetation+OR+drought+OR+SAR%29+OR+%3Dabs%3Asalinity+OR+%3Dabs%3A%22remote+sensing%22+OR+%3Dabs%3A%22land+surface%22+OR+%3Dabs%3A%22gap+filling%22+OR+abs%3A%22L-band%22%29%29%29+AND+NOT+%3Dabs%3A%22GIC-SMAP%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2015-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T18:03:38.100148+00:00",
+    "fetchedAt": "2026-10-02T04:25:23.077991+00:00",
     "reconciliation": {
       "adsReturned": 1827,
       "curatedOut": 3,

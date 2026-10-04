@@ -23,12 +23,12 @@
     "m": 3.194,
     "i100": 152,
     "g": 168,
-    "tori": 430.823,
-    "riq": 560
+    "tori": 431.504,
+    "riq": 561
   },
   "facts": {
-    "papers": 1577,
-    "citations": 63881,
+    "papers": 1579,
+    "citations": 63892,
     "publicationYears": [
       1991,
       2026
@@ -74,7 +74,7 @@
       2026
     ],
     "papers": [
-      7,
+      8,
       5,
       21,
       21,
@@ -109,11 +109,11 @@
       33,
       40,
       51,
-      36
+      37
     ],
     "citations": [
-      15,
-      10,
+      18,
+      11,
       77,
       156,
       252,
@@ -129,17 +129,17 @@
       2047,
       1503,
       1577,
-      1667,
+      1668,
       1557,
       2581,
-      1924,
+      1929,
       1634,
       1947,
       1893,
       2131,
       2249,
       2171,
-      2185,
+      2186,
       2161,
       2851,
       2632,
@@ -152,8 +152,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 63881,
-      "observed": 63881,
+      "expected": 63892,
+      "observed": 63892,
       "missing": 0
     }
   },
@@ -272,16 +272,16 @@
     },
     "lifetime": {
       "bins": [
-        136.941,
-        121.928,
-        126.624,
-        143.086,
-        152.041,
-        156.866,
-        168.127,
-        197.837,
-        186.283,
-        187.267
+        136.489,
+        122.429,
+        125.951,
+        145.293,
+        151.312,
+        157.416,
+        168.084,
+        198.146,
+        186.377,
+        187.503
       ],
       "top1": 13
     }
@@ -351,11 +351,11 @@
     }
   },
   "lifetime": {
-    "papers": 1577,
+    "papers": 1579,
     "outputBasis": "measured",
-    "citations": 63881,
-    "top10": 95.933,
-    "top10ShareOfDivision": 0.0704,
+    "citations": 63892,
+    "top10": 96.033,
+    "top10ShareOfDivision": 0.07046,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -366,7 +366,7 @@
       "date": "1992-09-00"
     },
     "spread": {
-      "mean": 40.508,
+      "mean": 40.464,
       "median": 22,
       "uncited": 105,
       "i10": 1115,
@@ -377,15 +377,15 @@
     "arms": "(((=abs:Galileo AND abs:(Jupiter OR Jovian OR Io OR Europa OR Ganymede OR Callisto OR Amalthea OR Thebe OR Gaspra OR Dactyl OR \"Shoemaker-Levy\" OR =abs:(\"Galilean satellites\" OR \"Galilean satellite\" OR \"Galilean moons\" OR \"Galilean moon\")) NOT =abs:(\"Telescopio Nazionale Galileo\" OR \"Telescopio Nazinale Galileo\")) OR (=abs:Galileo AND collection:astronomy AND (abs:(spacecraft OR flyby OR asteroid OR magnetometer) OR =abs:(\"entry probe\" OR orbiter)) NOT (=abs:(\"navigation satellite\" OR \"satellite navigation\" OR \"positioning system\" OR \"Galileo Project\" OR \"Galileo FOC\" OR \"Galileo IOV\" OR \"Galileo constellation\" OR \"Galileo for Science\" OR \"Telescopio Nazionale Galileo\" OR \"Telescopio Nazinale Galileo\") OR abs:(GLONASS OR BeiDou))) OR =abs:\"Galileo probe\" OR (collection:astronomy AND (=abs:(\"Near-Infrared Mapping Spectrometer\" OR \"Near Infrared Mapping Spectrometer\" OR \"Photopolarimeter-Radiometer\" OR \"Solid State Imaging\" OR \"Energetic Particles Detector\" OR \"Heavy Ion Counter\" OR \"Dust Detector System\" OR \"Probe Mass Spectrometer\" OR \"Net Flux Radiometer\") OR abs:(NIMS OR SSI OR PPR OR EPD)) AND abs:(Jupiter OR Jovian OR Io OR Europa OR Ganymede OR Callisto OR Amalthea OR Gaspra OR Ida OR Dactyl))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1996-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3AGalileo+AND+abs%3A%28Jupiter+OR+Jovian+OR+Io+OR+Europa+OR+Ganymede+OR+Callisto+OR+Amalthea+OR+Thebe+OR+Gaspra+OR+Dactyl+OR+%22Shoemaker-Levy%22+OR+%3Dabs%3A%28%22Galilean+satellites%22+OR+%22Galilean+satellite%22+OR+%22Galilean+moons%22+OR+%22Galilean+moon%22%29%29+NOT+%3Dabs%3A%28%22Telescopio+Nazionale+Galileo%22+OR+%22Telescopio+Nazinale+Galileo%22%29%29+OR+%28%3Dabs%3AGalileo+AND+collection%3Aastronomy+AND+%28abs%3A%28spacecraft+OR+flyby+OR+asteroid+OR+magnetometer%29+OR+%3Dabs%3A%28%22entry+probe%22+OR+orbiter%29%29+NOT+%28%3Dabs%3A%28%22navigation+satellite%22+OR+%22satellite+navigation%22+OR+%22positioning+system%22+OR+%22Galileo+Project%22+OR+%22Galileo+FOC%22+OR+%22Galileo+IOV%22+OR+%22Galileo+constellation%22+OR+%22Galileo+for+Science%22+OR+%22Telescopio+Nazionale+Galileo%22+OR+%22Telescopio+Nazinale+Galileo%22%29+OR+abs%3A%28GLONASS+OR+BeiDou%29%29%29+OR+%3Dabs%3A%22Galileo+probe%22+OR+%28collection%3Aastronomy+AND+%28%3Dabs%3A%28%22Near-Infrared+Mapping+Spectrometer%22+OR+%22Near+Infrared+Mapping+Spectrometer%22+OR+%22Photopolarimeter-Radiometer%22+OR+%22Solid+State+Imaging%22+OR+%22Energetic+Particles+Detector%22+OR+%22Heavy+Ion+Counter%22+OR+%22Dust+Detector+System%22+OR+%22Probe+Mass+Spectrometer%22+OR+%22Net+Flux+Radiometer%22%29+OR+abs%3A%28NIMS+OR+SSI+OR+PPR+OR+EPD%29%29+AND+abs%3A%28Jupiter+OR+Jovian+OR+Io+OR+Europa+OR+Ganymede+OR+Callisto+OR+Amalthea+OR+Gaspra+OR+Ida+OR+Dactyl%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T17:48:49.829450+00:00",
+    "fetchedAt": "2026-10-04T05:34:14.414557+00:00",
     "reconciliation": {
-      "adsReturned": 1522,
+      "adsReturned": 1523,
       "curatedOut": 23,
-      "curatedIn": 83,
+      "curatedIn": 84,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 5,
-      "final": 1577
+      "final": 1579
     }
   },
   "curation": {
@@ -1053,6 +1053,14 @@
         "reason": "Flux-rope models fitted to Galileo's magnetotail observations from the first Earth flyby.",
         "authority": "agent",
         "date": "2026-09-14"
+      },
+      {
+        "bibcode": "1991Sci...253.1516J",
+        "doi": null,
+        "title": "The Galileo Venus Encounter",
+        "reason": "Mission's first published science result: overview of the findings from the 1990 Venus flyby.",
+        "authority": "agent",
+        "date": "2026-10-04"
       }
     ],
     "excludes": [
@@ -1293,7 +1301,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 462
+      "citations": 463
     },
     {
       "bibcode": "2001Icar..149..133C",
@@ -1441,6 +1449,6 @@
     }
   ],
   "papersFile": {
-    "rows": 1577
+    "rows": 1579
   }
 }

@@ -20,22 +20,23 @@
   },
   "indices": {
     "h": 134,
-    "m": 4.621,
+    "m": 4.467,
     "i100": 204,
     "g": 211,
-    "tori": 695.207,
-    "riq": 909
+    "tori": 695.92,
+    "riq": 879
   },
   "facts": {
-    "papers": 1509,
-    "citations": 81654,
+    "papers": 1510,
+    "citations": 81704,
     "publicationYears": [
-      1998,
+      1997,
       2026
     ]
   },
   "lifetimeSeries": {
     "years": [
+      1997,
       1998,
       1999,
       2000,
@@ -67,6 +68,7 @@
       2026
     ],
     "papers": [
+      1,
       14,
       26,
       59,
@@ -98,41 +100,42 @@
       22
     ],
     "citations": [
+      0,
       30,
       191,
-      496,
-      1134,
-      1246,
-      1867,
+      497,
+      1135,
+      1247,
+      1869,
       1987,
       2369,
-      2965,
-      3366,
+      2968,
+      3367,
       3218,
-      3503,
-      3965,
-      3543,
-      3523,
-      3247,
-      3126,
-      4021,
-      3362,
-      3081,
-      3286,
+      3509,
+      3971,
+      3551,
+      3526,
+      3248,
+      3128,
+      4023,
+      3363,
+      3082,
+      3288,
       3460,
-      2951,
-      4121,
-      4084,
-      3688,
-      3534,
+      2952,
+      4122,
+      4086,
+      3691,
+      3536,
       3695,
       2595
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 81654,
-      "observed": 81654,
+      "expected": 81704,
+      "observed": 81704,
       "missing": 0
     }
   },
@@ -250,18 +253,18 @@
     },
     "lifetime": {
       "bins": [
-        91.434,
-        117.514,
-        109.291,
-        144.629,
-        122.017,
-        132.241,
-        150.593,
-        167.78,
-        219.033,
-        254.467
+        90.191,
+        117.241,
+        109.802,
+        144.696,
+        121.593,
+        132.923,
+        150.685,
+        168.899,
+        219.092,
+        254.879
       ],
-      "top1": 28.03
+      "top1": 28.145
     }
   },
   "full": {
@@ -329,11 +332,11 @@
     }
   },
   "lifetime": {
-    "papers": 1509,
+    "papers": 1510,
     "outputBasis": "measured",
-    "citations": 81654,
-    "top10": 107.779,
-    "top10ShareOfDivision": 0.07909,
+    "citations": 81704,
+    "top10": 107.767,
+    "top10ShareOfDivision": 0.07907,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -344,10 +347,10 @@
       "date": "1998-03-00"
     },
     "spread": {
-      "mean": 54.111,
+      "mean": 54.109,
       "median": 27,
       "uncited": 65,
-      "i10": 1127,
+      "i10": 1128,
       "i100": 204
     }
   },
@@ -355,15 +358,15 @@
     "arms": "((=abs:\"Mars Global Surveyor\" OR (abs:MGS AND abs:Mars) OR ((=abs:Mars OR =abs:Martian) AND (abs:MOLA OR =abs:\"Mars Orbiter Laser Altimeter\" OR abs:MOC OR =abs:\"Mars Orbiter Camera\" OR ((abs:TES OR =abs:\"Thermal Emission Spectrometer\") NOT (abs:\"Mini-TES\" OR =abs:\"Miniature Thermal Emission Spectrometer\"))))) NOT (=abs:simulant OR =abs:simulants OR =abs:\"thermal energy storage\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1999-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Global+Surveyor%22+OR+%28abs%3AMGS+AND+abs%3AMars%29+OR+%28%28%3Dabs%3AMars+OR+%3Dabs%3AMartian%29+AND+%28abs%3AMOLA+OR+%3Dabs%3A%22Mars+Orbiter+Laser+Altimeter%22+OR+abs%3AMOC+OR+%3Dabs%3A%22Mars+Orbiter+Camera%22+OR+%28%28abs%3ATES+OR+%3Dabs%3A%22Thermal+Emission+Spectrometer%22%29+NOT+%28abs%3A%22Mini-TES%22+OR+%3Dabs%3A%22Miniature+Thermal+Emission+Spectrometer%22%29%29%29%29%29+NOT+%28%3Dabs%3Asimulant+OR+%3Dabs%3Asimulants+OR+%3Dabs%3A%22thermal+energy+storage%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T17:49:20.542279+00:00",
+    "fetchedAt": "2026-10-04T05:34:34.644767+00:00",
     "reconciliation": {
       "adsReturned": 1494,
       "curatedOut": 13,
-      "curatedIn": 32,
+      "curatedIn": 33,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 4,
-      "final": 1509
+      "final": 1510
     }
   },
   "curation": {
@@ -623,6 +626,14 @@
         "reason": "Mars Polar Lander site characteristics from Mars Orbiter Camera images.",
         "authority": "agent",
         "date": "2026-10-01"
+      },
+      {
+        "bibcode": "1997JGR...10210875C",
+        "doi": null,
+        "title": "Initial data from the Mars Global Surveyor thermal emission spectrometer experiment: Observations of the Earth",
+        "reason": "Mission's first published science result: TES thermal-infrared spectra of Earth taken during cruise.",
+        "authority": "agent",
+        "date": "2026-10-04"
       }
     ],
     "excludes": [
@@ -923,6 +934,6 @@
     }
   ],
   "papersFile": {
-    "rows": 1509
+    "rows": 1510
   }
 }

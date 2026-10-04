@@ -23,12 +23,12 @@
     "m": 9.778,
     "i100": 66,
     "g": 138,
-    "tori": 113.501,
-    "riq": 1065
+    "tori": 113.886,
+    "riq": 1067
   },
   "facts": {
     "papers": 3535,
-    "citations": 62156,
+    "citations": 62183,
     "publicationYears": [
       2018,
       2026
@@ -66,13 +66,13 @@
       8372,
       11588,
       13453,
-      12573
+      12600
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 62156,
-      "observed": 62156,
+      "expected": 62183,
+      "observed": 62183,
       "missing": 0
     }
   },
@@ -162,45 +162,45 @@
   "ranks": {
     "full": {
       "bins": [
-        214.227,
-        169.28,
-        190.66,
-        182.284,
-        194.184,
-        192.384,
-        182.93,
-        193.745,
-        207.685,
-        136.62
+        214.229,
+        169.285,
+        190.665,
+        182.255,
+        194.191,
+        191.618,
+        183.734,
+        193.358,
+        208.076,
+        136.589
       ],
-      "top1": 8.374
+      "top1": 8.375
     },
     "window": {
       "bins": [
-        105.295,
-        102.733,
-        122.293,
-        129.21,
-        132.102,
-        123.876,
-        108.979,
-        139.116,
-        126.116,
-        83.278
+        105.3,
+        102.741,
+        122.296,
+        129.226,
+        132.099,
+        123.883,
+        109.003,
+        139.115,
+        126.194,
+        83.144
       ],
       "top1": 7
     },
     "lifetime": {
       "bins": [
-        933.621,
-        635.719,
-        509.27,
-        397.539,
-        304.984,
-        230.054,
-        203.496,
-        168.283,
-        101.035,
+        932.519,
+        637.035,
+        509.215,
+        395.992,
+        306.621,
+        229.908,
+        203.468,
+        168.367,
+        100.875,
         51
       ],
       "top1": 4
@@ -209,7 +209,7 @@
   "full": {
     "papers": 1864,
     "outputBasis": "measured",
-    "citations": 35427,
+    "citations": 35431,
     "top10": 183.65,
     "top10ShareOfDivision": 0.03684,
     "top1": 7.708,
@@ -231,7 +231,7 @@
       "citationBuckets": 9
     },
     "spread": {
-      "mean": 19.006,
+      "mean": 19.008,
       "median": 12,
       "uncited": 107,
       "i10": 1114,
@@ -243,9 +243,9 @@
     "outputBasis": "measured",
     "citations": 25604,
     "top10": 118.3,
-    "top10ShareOfDivision": 0.06082,
+    "top10ShareOfDivision": 0.06081,
     "top1": 7,
-    "top1ShareOfDivision": 0.03599,
+    "top1ShareOfDivision": 0.03598,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.104,
@@ -273,7 +273,7 @@
   "lifetime": {
     "papers": 3535,
     "outputBasis": "measured",
-    "citations": 62156,
+    "citations": 62183,
     "top10": 163.654,
     "top10ShareOfDivision": 0.02954,
     "top1": null,
@@ -286,7 +286,7 @@
       "date": "2018-08-00"
     },
     "spread": {
-      "mean": 17.583,
+      "mean": 17.591,
       "median": 7,
       "uncited": 563,
       "i10": 1550,
@@ -297,7 +297,7 @@
     "arms": "((=abs:\"Transiting Exoplanet Survey Satellite\" OR (abs:TESS AND abs:(mission OR satellite OR spacecraft OR catalog OR exoplanet OR planet OR star OR stellar OR photometry OR photometric OR asteroseismology OR transit OR pulsation OR binary OR supernova OR galaxy OR asteroid OR comet OR Jupiter)) OR facility:TESS))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2018-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Transiting+Exoplanet+Survey+Satellite%22+OR+%28abs%3ATESS+AND+abs%3A%28mission+OR+satellite+OR+spacecraft+OR+catalog+OR+exoplanet+OR+planet+OR+star+OR+stellar+OR+photometry+OR+photometric+OR+asteroseismology+OR+transit+OR+pulsation+OR+binary+OR+supernova+OR+galaxy+OR+asteroid+OR+comet+OR+Jupiter%29%29+OR+facility%3ATESS%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T18:22:46.221946+00:00",
+    "fetchedAt": "2026-10-02T04:39:38.940317+00:00",
     "reconciliation": {
       "adsReturned": 3542,
       "curatedOut": 7,
@@ -421,7 +421,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 432
+      "citations": 433
     },
     {
       "bibcode": "2020AJ....159...60G",
@@ -514,21 +514,21 @@
       "citations": 228
     },
     {
-      "bibcode": "2018ApJ...868L..39H",
-      "title": "TESS Discovery of a Transiting Super-Earth in the pi Mensae System",
-      "firstAuthor": "Huang, Chelsea X.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2018,
-      "citations": 184
-    },
-    {
       "bibcode": "2020AJ....159..211C",
       "title": "Evolution of the Radius Valley around Low-mass Stars from Kepler and K2",
       "firstAuthor": "Cloutier, Ryan",
       "authors": null,
       "authorCount": null,
       "year": 2020,
+      "citations": 185
+    },
+    {
+      "bibcode": "2018ApJ...868L..39H",
+      "title": "TESS Discovery of a Transiting Super-Earth in the pi Mensae System",
+      "firstAuthor": "Huang, Chelsea X.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2018,
       "citations": 184
     },
     {

@@ -72,7 +72,7 @@ import {
 	scopeField,
 	SCOPES
 } from './lib/measures.mjs';
-import { assertColumnLengths, buildPapersFile } from './lib/papers.mjs';
+import { assertColumnLengths, buildPapersFile, topPapers } from './lib/papers.mjs';
 import { assertRanksMatchTiers, emptyRanks, publicRanks, rankHistograms } from './lib/ranks.mjs';
 import { buildReconciliation } from './lib/reconcile.mjs';
 import { splitQuery } from './lib/query.mjs';
@@ -784,6 +784,7 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 	);
 
 	const rowsByMission = groupBy(papersJson.papers, (row) => row.mission);
+	const lifetimeByBibcode = new Map(papersJson.papers.map((row) => [row.bibcode, row]));
 	const windowRowsByMission = groupBy(windowPapersJson.papers, (row) => row.mission);
 	const fullRowsByMission = groupBy(fullPapersJson.papers, (row) => row.mission);
 	const windowed = { citations: 'window_citations', sharedBy: 'window_shared_by' };
@@ -825,6 +826,14 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 	const idByTitle = new Map(resolved.map((m) => [m.shortTitle, m.id]));
 	const statsMissions = resolved.map((m) => m.statsMission);
 
+	// The division's most cited papers in each scope; windows rank by in-window citations.
+	const TOP_PAPERS = 10;
+	const topByScope = {
+		full: topPapers(fullPapersJson.papers, 'window_citations', TOP_PAPERS),
+		window: topPapers(windowPapersJson.papers, 'window_citations', TOP_PAPERS),
+		lifetime: topPapers(papersJson.papers, 'citations', TOP_PAPERS)
+	};
+
 	const divisionTop10 = {
 		full: divisionTotal(statsMissions, (m) => missionTop10(m, 'full')),
 		window: divisionTotal(statsMissions, (m) => missionTop10(m, 'window')),
@@ -854,7 +863,11 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 			const records = paths.source.readMission(id, 'records').records ?? [];
 			const citations = paths.source.readMission(id, 'citations').citations ?? {};
 			// Bylines are read only for the mission's and the division's most-cited paper.
-			const bylined = new Set([paths.source.readMission(id).corpus?.top_cited?.[0]?.bibcode, mostCitedRow?.bibcode]);
+			const bylined = new Set([
+				paths.source.readMission(id).corpus?.top_cited?.[0]?.bibcode,
+				mostCitedRow?.bibcode,
+				...Object.values(topByScope).flatMap((list) => list.map((p) => p.bibcode))
+			]);
 			ownCitations.set(id, {
 				cited: Object.keys(citations).filter((bibcode) => included.has(bibcode)),
 				curated: new Set(records.filter((r) => r?.source && r.source !== 'query').map((r) => r.bibcode)),
@@ -993,6 +1006,25 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 					missionId: idByTitle.get(mostCitedRow.mission) ?? null
 				}
 			: null,
+		// Titles and authors from the cleaned lifetime rows; the window tables are not cleaned.
+		topPapers: Object.fromEntries(
+			Object.entries(topByScope).map(([scope, list]) => [
+				scope,
+				list.map((p) => {
+					const missions = p.missions.map((title) => idByTitle.get(title)).filter(Boolean);
+					const clean = lifetimeByBibcode.get(p.bibcode);
+					return {
+						bibcode: p.bibcode,
+						title: clean?.title ?? p.title,
+						firstAuthor: clean?.first_author ?? p.firstAuthor,
+						...byline(ownCitations.get(missions[0])?.authors.get(p.bibcode)),
+						year: p.year,
+						citations: p.citations,
+						missions
+					};
+				})
+			])
+		),
 		stats: divisionStats,
 		costCurves,
 		indexCorrelation: buildIndexCorrelation(missionRows),

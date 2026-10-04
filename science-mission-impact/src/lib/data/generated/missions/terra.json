@@ -23,12 +23,12 @@
     "m": 9.148,
     "i100": 1126,
     "g": 420,
-    "tori": 3264.729,
-    "riq": 2040
+    "tori": 3267.171,
+    "riq": 2041
   },
   "facts": {
-    "papers": 15347,
-    "citations": 577899,
+    "papers": 15344,
+    "citations": 577938,
     "publicationYears": [
       2000,
       2026
@@ -91,7 +91,7 @@
       788,
       775,
       759,
-      528
+      525
     ],
     "citations": [
       14,
@@ -105,7 +105,7 @@
       6019,
       7122,
       8522,
-      10767,
+      10773,
       12593,
       15776,
       19215,
@@ -120,13 +120,13 @@
       50808,
       53340,
       55211,
-      35234
+      35267
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 577899,
-      "observed": 577899,
+      "expected": 577938,
+      "observed": 577938,
       "missing": 0
     }
   },
@@ -267,58 +267,58 @@
   "ranks": {
     "full": {
       "bins": [
-        1052.875,
-        1272.608,
-        1337.753,
-        1367.204,
-        1363.238,
-        1434.412,
-        1355.416,
-        1419.546,
-        1391.541,
-        1290.408
+        1052.617,
+        1272.661,
+        1337.223,
+        1367.389,
+        1363.787,
+        1434.484,
+        1355.49,
+        1419.633,
+        1391.614,
+        1290.101
       ],
-      "top1": 124.34
+      "top1": 124.344
     },
     "window": {
       "bins": [
-        156.278,
-        198.004,
-        177.56,
-        184.019,
-        167.427,
-        155.523,
-        144.979,
-        144.669,
-        115.099,
-        100.441
+        156.149,
+        198.054,
+        177.619,
+        184.201,
+        167.347,
+        155.544,
+        145.019,
+        144.738,
+        115.118,
+        100.21
       ],
-      "top1": 9.283
+      "top1": 9.288
     },
     "lifetime": {
       "bins": [
-        1009.007,
-        1249.234,
-        1472.495,
-        1476.268,
-        1544.113,
-        1620.885,
-        1638.253,
-        1713.935,
-        1789.099,
-        1833.71
+        1007.14,
+        1248.603,
+        1472.011,
+        1477.462,
+        1544.187,
+        1620.057,
+        1638.668,
+        1713.672,
+        1789.436,
+        1832.764
       ],
-      "top1": 200.7
+      "top1": 200.696
     }
   },
   "full": {
     "papers": 13285,
     "outputBasis": "measured",
-    "citations": 151514,
+    "citations": 151518,
     "top10": 762.66,
-    "top10ShareOfDivision": 0.19825,
-    "top1": 74.253,
-    "top1ShareOfDivision": 0.19302,
+    "top10ShareOfDivision": 0.19824,
+    "top1": 74.255,
+    "top1ShareOfDivision": 0.19301,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.238,
@@ -348,8 +348,8 @@
     "outputBasis": "measured",
     "citations": 16388,
     "top10": 120.443,
-    "top10ShareOfDivision": 0.11615,
-    "top1": 6.642,
+    "top10ShareOfDivision": 0.11611,
+    "top1": 6.644,
     "top1ShareOfDivision": 0.06405,
     "first": {
       "state": "reached",
@@ -376,11 +376,11 @@
     }
   },
   "lifetime": {
-    "papers": 15347,
+    "papers": 15344,
     "outputBasis": "measured",
-    "citations": 577899,
-    "top10": 827.726,
-    "top10ShareOfDivision": 0.20005,
+    "citations": 577938,
+    "top10": 827.556,
+    "top10ShareOfDivision": 0.19999,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -391,9 +391,9 @@
       "date": "2000-05-00"
     },
     "spread": {
-      "mean": 37.656,
+      "mean": 37.665,
       "median": 16,
-      "uncited": 968,
+      "uncited": 965,
       "i10": 9801,
       "i100": 1126
     }
@@ -402,15 +402,15 @@
     "arms": "(((abs:Terra AND abs:(ASTER OR CERES OR MODIS OR MISR OR MOPITT)) OR =abs:\"Terra Earth-Observing\" OR =abs:\"Terra Earth Observing\" OR =abs:\"Terra spacecraft\" OR =abs:\"Terra satellite\" OR =abs:\"Terra satellites\" OR =abs:\"Terra and Aqua\" OR =abs:\"Aqua and Terra\" OR (abs:\"EOS-AM1\" AND abs:(Terra OR satellite OR MODIS OR ASTER OR MISR OR MOPITT OR CERES)) OR =abs:\"EOS AM-1\" OR =abs:\"Measurements of Pollution in the Troposphere\" OR =abs:\"Measurement of Pollution in the Troposphere\" OR =abs:\"Advanced Spaceborne Thermal Emission and Reflection Radiometer\" OR =abs:\"Multi-angle Imaging SpectroRadiometer\" OR =abs:\"Multiangle Imaging Spectroradiometer\" OR (abs:MOPITT AND abs:(carbon OR monoxide OR troposphere OR pollution)) OR (abs:MISR AND abs:(aerosol OR cloud OR radiance OR satellite OR reflectance OR smoke)) OR (abs:ASTER AND abs:(satellite OR radiometer OR thermal OR elevation OR remote)) OR ((=abs:\"Moderate Resolution Imaging Spectroradiometer\" OR =abs:\"Clouds and the Earth's Radiant Energy System\") AND abs:Terra) OR ((=abs:\"Moderate Resolution Imaging Spectroradiometer\" OR =abs:\"Clouds and the Earth's Radiant Energy System\") AND NOT abs:Aqua)))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2000-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ATerra+AND+abs%3A%28ASTER+OR+CERES+OR+MODIS+OR+MISR+OR+MOPITT%29%29+OR+%3Dabs%3A%22Terra+Earth-Observing%22+OR+%3Dabs%3A%22Terra+Earth+Observing%22+OR+%3Dabs%3A%22Terra+spacecraft%22+OR+%3Dabs%3A%22Terra+satellite%22+OR+%3Dabs%3A%22Terra+satellites%22+OR+%3Dabs%3A%22Terra+and+Aqua%22+OR+%3Dabs%3A%22Aqua+and+Terra%22+OR+%28abs%3A%22EOS-AM1%22+AND+abs%3A%28Terra+OR+satellite+OR+MODIS+OR+ASTER+OR+MISR+OR+MOPITT+OR+CERES%29%29+OR+%3Dabs%3A%22EOS+AM-1%22+OR+%3Dabs%3A%22Measurements+of+Pollution+in+the+Troposphere%22+OR+%3Dabs%3A%22Measurement+of+Pollution+in+the+Troposphere%22+OR+%3Dabs%3A%22Advanced+Spaceborne+Thermal+Emission+and+Reflection+Radiometer%22+OR+%3Dabs%3A%22Multi-angle+Imaging+SpectroRadiometer%22+OR+%3Dabs%3A%22Multiangle+Imaging+Spectroradiometer%22+OR+%28abs%3AMOPITT+AND+abs%3A%28carbon+OR+monoxide+OR+troposphere+OR+pollution%29%29+OR+%28abs%3AMISR+AND+abs%3A%28aerosol+OR+cloud+OR+radiance+OR+satellite+OR+reflectance+OR+smoke%29%29+OR+%28abs%3AASTER+AND+abs%3A%28satellite+OR+radiometer+OR+thermal+OR+elevation+OR+remote%29%29+OR+%28%28%3Dabs%3A%22Moderate+Resolution+Imaging+Spectroradiometer%22+OR+%3Dabs%3A%22Clouds+and+the+Earth%27s+Radiant+Energy+System%22%29+AND+abs%3ATerra%29+OR+%28%28%3Dabs%3A%22Moderate+Resolution+Imaging+Spectroradiometer%22+OR+%3Dabs%3A%22Clouds+and+the+Earth%27s+Radiant+Energy+System%22%29+AND+NOT+abs%3AAqua%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T17:58:12.487756+00:00",
+    "fetchedAt": "2026-10-02T04:20:10.343835+00:00",
     "reconciliation": {
-      "adsReturned": 15375,
+      "adsReturned": 15372,
       "curatedOut": 4,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 24,
-      "final": 15347
+      "final": 15344
     }
   },
   "curation": {
@@ -595,7 +595,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 1522
+      "citations": 1523
     },
     {
       "bibcode": "2008RSEnv.112.3833J",
@@ -689,6 +689,6 @@
     }
   ],
   "papersFile": {
-    "rows": 15347
+    "rows": 15344
   }
 }

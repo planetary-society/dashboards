@@ -23,11 +23,11 @@
     "m": 1.923,
     "i100": 3,
     "g": 40,
-    "tori": 10.906,
-    "riq": 254
+    "tori": 10.721,
+    "riq": 251
   },
   "facts": {
-    "papers": 74,
+    "papers": 75,
     "citations": 1734,
     "publicationYears": [
       2014,
@@ -63,7 +63,7 @@
       1,
       1,
       6,
-      4
+      5
     ],
     "citations": [
       9,
@@ -183,16 +183,16 @@
     },
     "lifetime": {
       "bins": [
-        11.652,
-        9.348,
+        12.574,
+        9.426,
         8,
-        6.245,
+        6.205,
         5.604,
-        8.471,
-        7.68,
-        6.35,
-        6.583,
-        4.067
+        8.468,
+        7.722,
+        6.303,
+        6.572,
+        4.126
       ],
       "top1": 0
     }
@@ -262,7 +262,7 @@
     }
   },
   "lifetime": {
-    "papers": 74,
+    "papers": 75,
     "outputBasis": "measured",
     "citations": 1734,
     "top10": 3.75,
@@ -277,9 +277,9 @@
       "date": "2014-12-00"
     },
     "spread": {
-      "mean": 23.432,
-      "median": 13.5,
-      "uncited": 10,
+      "mean": 23.12,
+      "median": 13,
+      "uncited": 11,
       "i10": 42,
       "i100": 3
     }
@@ -288,15 +288,15 @@
     "arms": "((=abs:\"Lunar Atmosphere and Dust Environment Explorer\" OR ((abs:LADEE OR abs:LDEX OR =abs:\"Lunar Dust Experiment\") AND abs:(Moon OR lunar OR dust))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2013-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Atmosphere+and+Dust+Environment+Explorer%22+OR+%28%28abs%3ALADEE+OR+abs%3ALDEX+OR+%3Dabs%3A%22Lunar+Dust+Experiment%22%29+AND+abs%3A%28Moon+OR+lunar+OR+dust%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2013-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T17:53:22.057146+00:00",
+    "fetchedAt": "2026-10-04T05:37:33.174815+00:00",
     "reconciliation": {
-      "adsReturned": 77,
+      "adsReturned": 78,
       "curatedOut": 3,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 74
+      "final": 75
     }
   },
   "curation": {
@@ -519,6 +519,6 @@
     }
   ],
   "papersFile": {
-    "rows": 74
+    "rows": 75
   }
 }

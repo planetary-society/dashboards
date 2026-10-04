@@ -23,12 +23,12 @@
     "m": 1.936,
     "i100": 79,
     "g": 154,
-    "tori": 540.96,
-    "riq": 494
+    "tori": 541.568,
+    "riq": 495
   },
   "facts": {
     "papers": 1016,
-    "citations": 39661,
+    "citations": 39662,
     "publicationYears": [
       1980,
       2026
@@ -165,7 +165,7 @@
       763,
       850,
       782,
-      831,
+      832,
       832,
       763,
       852,
@@ -185,8 +185,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 39661,
-      "observed": 39661,
+      "expected": 39662,
+      "observed": 39662,
       "missing": 0
     }
   },
@@ -276,46 +276,46 @@
   "ranks": {
     "full": {
       "bins": [
-        139.896,
-        90.476,
-        67.687,
-        71.97,
-        53.359,
-        52.852,
-        61.278,
-        56.039,
-        48.806,
-        35.635
+        139.942,
+        90.45,
+        67.696,
+        71.971,
+        53.365,
+        52.859,
+        61.282,
+        56.013,
+        48.818,
+        35.604
       ],
       "top1": 3
     },
     "window": {
       "bins": [
-        54.411,
-        26.794,
-        20.534,
-        14.335,
-        13.067,
-        19.081,
-        15.786,
-        18.035,
-        13.595,
-        9.362
+        54.459,
+        26.761,
+        20.552,
+        14.315,
+        13.09,
+        19.086,
+        15.761,
+        18.036,
+        13.64,
+        9.3
       ],
-      "top1": 0.185
+      "top1": 0.195
     },
     "lifetime": {
       "bins": [
-        112.793,
-        92.122,
-        81.52,
-        85.979,
-        83.911,
-        96.021,
-        95.118,
-        108.893,
-        127.859,
-        131.785
+        112.829,
+        92.105,
+        81.528,
+        85.993,
+        83.929,
+        96.026,
+        95.085,
+        108.895,
+        127.892,
+        131.719
       ],
       "top1": 18
     }
@@ -325,9 +325,9 @@
     "outputBasis": "measured",
     "citations": 5446,
     "top10": 60.533,
-    "top10ShareOfDivision": 0.04182,
+    "top10ShareOfDivision": 0.04181,
     "top1": 3,
-    "top1ShareOfDivision": 0.02073,
+    "top1ShareOfDivision": 0.02072,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.966,
@@ -357,9 +357,9 @@
     "outputBasis": "measured",
     "citations": 1932,
     "top10": 16.567,
-    "top10ShareOfDivision": 0.03734,
-    "top1": 0.185,
-    "top1ShareOfDivision": 0.00417,
+    "top10ShareOfDivision": 0.03732,
+    "top1": 0.195,
+    "top1ShareOfDivision": 0.00439,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.966,
@@ -387,9 +387,9 @@
   "lifetime": {
     "papers": 1016,
     "outputBasis": "measured",
-    "citations": 39661,
+    "citations": 39662,
     "top10": 83.5,
-    "top10ShareOfDivision": 0.05309,
+    "top10ShareOfDivision": 0.05308,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -400,7 +400,7 @@
       "date": "1981-02-00"
     },
     "spread": {
-      "mean": 39.036,
+      "mean": 39.037,
       "median": 17,
       "uncited": 89,
       "i10": 652,
@@ -411,7 +411,7 @@
     "arms": "((=abs:\"Solar Maximum Mission\" OR facility:SMM OR (abs:SMM AND collection:astronomy NOT abs:(submillimeter OR submillimetre OR submm OR SCUBA OR protostar OR protostars OR protostellar OR Serpens OR lensed OR multifragmentation OR ULIRG) NOT =abs:\"molecular gas\" NOT =abs:\"high redshift\" NOT =abs:\"high-redshift\" NOT =abs:\"mixture modeling\") OR (=abs:\"Solar Max\" AND abs:(ACRIM OR blankets OR louver OR repair OR \"space shuttle\")) OR ((abs:HXIS OR =abs:\"Hard X-ray Imaging Spectrometer\") AND abs:(flare OR flares OR solar OR sun OR coronal OR arch OR arches) NOT abs:(STIX OR \"Solar Orbiter\" OR \"ASO-S\" OR Hitomi OR NuSTAR)) OR ((abs:HXRBS OR =abs:\"Hard X-ray Burst Spectrometer\") AND (abs:(flare OR flares OR solar OR sun OR \"gamma-ray\") OR =abs:\"gamma rays\") NOT abs:binaries) OR ((abs:UVSP OR =abs:\"Ultraviolet Spectrometer and Polarimeter\") AND abs:(solar OR sun OR flare OR flares OR ozone OR filament OR \"transition region\") NOT abs:Mars) OR ((abs:XRP OR =abs:\"X-Ray Polychromator\") AND abs:(flare OR flares OR \"active region\") NOT abs:pulsar) OR (=abs:\"Coronagraph/Polarimeter\" AND abs:(CME OR CMEs)) OR =abs:\"ACRIM I\" OR (abs:(ACRIM1 OR \"ACRIM-1\") AND abs:(irradiance OR TSI OR solar))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1980-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Solar+Maximum+Mission%22+OR+facility%3ASMM+OR+%28abs%3ASMM+AND+collection%3Aastronomy+NOT+abs%3A%28submillimeter+OR+submillimetre+OR+submm+OR+SCUBA+OR+protostar+OR+protostars+OR+protostellar+OR+Serpens+OR+lensed+OR+multifragmentation+OR+ULIRG%29+NOT+%3Dabs%3A%22molecular+gas%22+NOT+%3Dabs%3A%22high+redshift%22+NOT+%3Dabs%3A%22high-redshift%22+NOT+%3Dabs%3A%22mixture+modeling%22%29+OR+%28%3Dabs%3A%22Solar+Max%22+AND+abs%3A%28ACRIM+OR+blankets+OR+louver+OR+repair+OR+%22space+shuttle%22%29%29+OR+%28%28abs%3AHXIS+OR+%3Dabs%3A%22Hard+X-ray+Imaging+Spectrometer%22%29+AND+abs%3A%28flare+OR+flares+OR+solar+OR+sun+OR+coronal+OR+arch+OR+arches%29+NOT+abs%3A%28STIX+OR+%22Solar+Orbiter%22+OR+%22ASO-S%22+OR+Hitomi+OR+NuSTAR%29%29+OR+%28%28abs%3AHXRBS+OR+%3Dabs%3A%22Hard+X-ray+Burst+Spectrometer%22%29+AND+%28abs%3A%28flare+OR+flares+OR+solar+OR+sun+OR+%22gamma-ray%22%29+OR+%3Dabs%3A%22gamma+rays%22%29+NOT+abs%3Abinaries%29+OR+%28%28abs%3AUVSP+OR+%3Dabs%3A%22Ultraviolet+Spectrometer+and+Polarimeter%22%29+AND+abs%3A%28solar+OR+sun+OR+flare+OR+flares+OR+ozone+OR+filament+OR+%22transition+region%22%29+NOT+abs%3AMars%29+OR+%28%28abs%3AXRP+OR+%3Dabs%3A%22X-Ray+Polychromator%22%29+AND+abs%3A%28flare+OR+flares+OR+%22active+region%22%29+NOT+abs%3Apulsar%29+OR+%28%3Dabs%3A%22Coronagraph%2FPolarimeter%22+AND+abs%3A%28CME+OR+CMEs%29%29+OR+%3Dabs%3A%22ACRIM+I%22+OR+%28abs%3A%28ACRIM1+OR+%22ACRIM-1%22%29+AND+abs%3A%28irradiance+OR+TSI+OR+solar%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1980-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T18:05:04.848629+00:00",
+    "fetchedAt": "2026-10-02T04:26:49.946805+00:00",
     "reconciliation": {
       "adsReturned": 1030,
       "curatedOut": 13,
@@ -692,7 +692,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1988,
-      "citations": 266
+      "citations": 267
     },
     {
       "bibcode": "1985Natur.318..449W",

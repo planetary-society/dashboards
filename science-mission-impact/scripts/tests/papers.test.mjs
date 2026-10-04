@@ -1,7 +1,7 @@
 import { strict as assert } from 'node:assert';
 import { describe, it } from 'node:test';
 
-import { assertColumnLengths, buildPapersFile, top1Weight } from '../lib/papers.mjs';
+import { assertColumnLengths, buildPapersFile, top1Weight, topPapers } from '../lib/papers.mjs';
 
 const cutoff = { cutoff_citations: 133, tie_weight_at_cutoff: 0.47 };
 
@@ -125,5 +125,19 @@ describe('buildPapersFile', () => {
 	it('throws when a column length drifts', () => {
 		const broken = { ...file, columns: { ...file.columns, b: ['only-one'] } };
 		assert.throws(() => assertColumnLengths(broken), /column "b"/);
+	});
+});
+
+describe('topPapers', () => {
+	const row = (mission, bibcode, window_citations) => ({ mission, bibcode, title: bibcode, first_author: 'A', year: 2000, citations: 999, window_citations });
+
+	it('ranks each paper once by its highest count and lists the missions sharing it', () => {
+		const rows = [row('B', 'p1', 5), row('A', 'p1', 9), row('A', 'p2', 9), row('C', 'p3', 20), row('A', 'p4', 1)];
+		const top = topPapers(rows, 'window_citations', 3);
+		assert.deepEqual(top.map((p) => [p.bibcode, p.citations, p.missions]), [
+			['p3', 20, ['C']],
+			['p1', 9, ['A', 'B']],
+			['p2', 9, ['A']]
+		]);
 	});
 });

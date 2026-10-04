@@ -2,6 +2,7 @@
 	import Seo from '$lib/ui/Seo.svelte';
 	import EntityHeader from '$lib/ui/EntityHeader.svelte';
 	import MostCited from '$lib/ui/MostCited.svelte';
+	import TopPapers from '$lib/ui/TopPapers.svelte';
 	import MissionTable from '$lib/ui/MissionTable.svelte';
 	import ScopeSwitch from '$lib/ui/ScopeSwitch.svelte';
 	import MeasureTable from '$lib/ui/MeasureTable.svelte';
@@ -89,6 +90,14 @@
 			</section>
 		{/if}
 
+		{#if d.topPapers?.[view.scope]?.length}
+			<section aria-labelledby="papers-title">
+				<h2 id="papers-title" class="chart-title">Most cited publications</h2>
+				<p class="meta caption">{view.scope === 'lifetime' ? 'Every tracked publication, ranked by citations to date.' : `Publications from the ${scopeName}, ranked by the citations counted in it.`}</p>
+				<TopPapers papers={d.topPapers[view.scope]} missions={d.missions} slug={d.slug} label="{d.name} most cited publications, {scopeName}" />
+			</section>
+		{/if}
+
 		<section aria-labelledby="missions-title">
 			<h2 id="missions-title" class="chart-title">Explore missions</h2>
 			<div class="table">
@@ -103,5 +112,6 @@
 	.scoped > section:first-of-type { margin-top: 32px; }
 	.section-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; }
 	.threshold { color: var(--dust); font-size: 14px; }
+	.caption { margin-top: 4px; color: var(--dust); }
 	.table { margin-top: 8px; overflow-x: auto; overscroll-behavior-x: contain; }
 </style>

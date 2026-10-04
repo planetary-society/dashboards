@@ -23,12 +23,12 @@
     "m": 6.769,
     "i100": 67,
     "g": 144,
-    "tori": 167.593,
+    "tori": 167.62,
     "riq": 924
   },
   "facts": {
     "papers": 2799,
-    "citations": 51965,
+    "citations": 51987,
     "publicationYears": [
       2014,
       2026
@@ -51,7 +51,7 @@
       2026
     ],
     "papers": [
-      17,
+      18,
       38,
       55,
       84,
@@ -63,28 +63,28 @@
       347,
       323,
       406,
-      364
+      363
     ],
     "citations": [
       23,
-      139,
-      324,
-      654,
-      1702,
-      2289,
-      3235,
-      5077,
-      6810,
-      7309,
-      8026,
+      140,
+      325,
+      655,
+      1705,
+      2293,
+      3237,
+      5079,
+      6813,
+      7312,
+      8027,
       9279,
-      7098
+      7099
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 51965,
-      "observed": 51965,
+      "expected": 51987,
+      "observed": 51987,
       "missing": 0
     }
   },
@@ -190,46 +190,46 @@
   "ranks": {
     "full": {
       "bins": [
-        66.097,
-        112.703,
-        115.824,
-        146.202,
-        155.079,
-        178.189,
-        197.264,
-        220.2,
-        243.57,
-        270.872
+        66.073,
+        112.71,
+        115.857,
+        146.236,
+        155.029,
+        178.198,
+        197.279,
+        220.214,
+        243.577,
+        270.827
       ],
       "top1": 27
     },
     "window": {
       "bins": [
-        15.057,
-        28.126,
-        30.295,
-        33.829,
-        31.225,
-        36.961,
-        55.902,
-        52.033,
-        57.961,
-        77.61
+        15.038,
+        28.135,
+        30.303,
+        33.871,
+        31.206,
+        36.972,
+        55.942,
+        52.062,
+        57.919,
+        77.553
       ],
-      "top1": 7.567
+      "top1": 7.577
     },
     "lifetime": {
       "bins": [
-        480.246,
-        381.818,
-        360.412,
-        304.972,
-        253.306,
-        261.807,
-        228.048,
-        236.289,
-        171.157,
-        120.944
+        479.633,
+        382.078,
+        360.133,
+        304.824,
+        253.254,
+        261.921,
+        228.862,
+        236.295,
+        171.097,
+        120.903
       ],
       "top1": 7
     }
@@ -241,7 +241,7 @@
     "top10": 200.775,
     "top10ShareOfDivision": 0.05219,
     "top1": 25,
-    "top1ShareOfDivision": 0.06499,
+    "top1ShareOfDivision": 0.06498,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.148,
@@ -271,9 +271,9 @@
     "outputBasis": "measured",
     "citations": 8320,
     "top10": 61.767,
-    "top10ShareOfDivision": 0.05956,
-    "top1": 7.567,
-    "top1ShareOfDivision": 0.07297,
+    "top10ShareOfDivision": 0.05955,
+    "top1": 7.577,
+    "top1ShareOfDivision": 0.07304,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.148,
@@ -301,9 +301,9 @@
   "lifetime": {
     "papers": 2799,
     "outputBasis": "measured",
-    "citations": 51965,
-    "top10": 161.466,
-    "top10ShareOfDivision": 0.03902,
+    "citations": 51987,
+    "top10": 161.437,
+    "top10ShareOfDivision": 0.03901,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -314,10 +314,10 @@
       "date": "2014-05-00"
     },
     "spread": {
-      "mean": 18.566,
+      "mean": 18.573,
       "median": 7,
-      "uncited": 467,
-      "i10": 1210,
+      "uncited": 466,
+      "i10": 1211,
       "i100": 67
     }
   },
@@ -325,11 +325,11 @@
     "arms": "(((abs:IMERG AND abs:(precipitation OR rainfall OR satellite)) OR =abs:\"Global Precipitation Measurement\" OR (abs:GPM AND (abs:(precipitation OR rainfall OR satellite OR DPR OR GMI OR IMERG) OR =abs:\"Core Observatory\" OR =abs:\"Microwave Imager\") NOT (=abs:\"gas-permeable membrane\" OR =abs:\"Glaciar Perito Moreno\" OR =abs:\"groundwater potential\" OR =abs:\"gamma-pareto quantile mapping\" OR =abs:\"grid-preprocessed mosaicking\" OR =abs:\"Gauss pseudospectral\" OR =abs:\"Gaussian plume model\")) OR =abs:\"GPM Microwave Imager\" OR (=abs:\"Dual-frequency Precipitation Radar\" AND abs:(satellite OR GPM OR spaceborne) NOT abs:(FY-3G OR FY3G)) OR (abs:GMI AND abs:(precipitation OR rainfall OR microwave) NOT (=abs:\"Global Modeling Initiative\" OR =abs:\"giant magnetoimpedance\" OR =abs:\"giant magneto-impedance\" OR =abs:\"gradient meteorological instrument\" OR (abs:global AND abs:Moran))) OR (abs:DPR AND abs:(precipitation AND (satellite OR spaceborne OR GPM)) NOT =abs:\"DPR Korea\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3AIMERG+AND+abs%3A%28precipitation+OR+rainfall+OR+satellite%29%29+OR+%3Dabs%3A%22Global+Precipitation+Measurement%22+OR+%28abs%3AGPM+AND+%28abs%3A%28precipitation+OR+rainfall+OR+satellite+OR+DPR+OR+GMI+OR+IMERG%29+OR+%3Dabs%3A%22Core+Observatory%22+OR+%3Dabs%3A%22Microwave+Imager%22%29+NOT+%28%3Dabs%3A%22gas-permeable+membrane%22+OR+%3Dabs%3A%22Glaciar+Perito+Moreno%22+OR+%3Dabs%3A%22groundwater+potential%22+OR+%3Dabs%3A%22gamma-pareto+quantile+mapping%22+OR+%3Dabs%3A%22grid-preprocessed+mosaicking%22+OR+%3Dabs%3A%22Gauss+pseudospectral%22+OR+%3Dabs%3A%22Gaussian+plume+model%22%29%29+OR+%3Dabs%3A%22GPM+Microwave+Imager%22+OR+%28%3Dabs%3A%22Dual-frequency+Precipitation+Radar%22+AND+abs%3A%28satellite+OR+GPM+OR+spaceborne%29+NOT+abs%3A%28FY-3G+OR+FY3G%29%29+OR+%28abs%3AGMI+AND+abs%3A%28precipitation+OR+rainfall+OR+microwave%29+NOT+%28%3Dabs%3A%22Global+Modeling+Initiative%22+OR+%3Dabs%3A%22giant+magnetoimpedance%22+OR+%3Dabs%3A%22giant+magneto-impedance%22+OR+%3Dabs%3A%22gradient+meteorological+instrument%22+OR+%28abs%3Aglobal+AND+abs%3AMoran%29%29%29+OR+%28abs%3ADPR+AND+abs%3A%28precipitation+AND+%28satellite+OR+spaceborne+OR+GPM%29%29+NOT+%3Dabs%3A%22DPR+Korea%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T18:03:10.345721+00:00",
+    "fetchedAt": "2026-10-02T04:24:57.454362+00:00",
     "reconciliation": {
-      "adsReturned": 2803,
+      "adsReturned": 2802,
       "curatedOut": 1,
-      "curatedIn": 0,
+      "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 3,
@@ -337,7 +337,16 @@
     }
   },
   "curation": {
-    "includes": [],
+    "includes": [
+      {
+        "bibcode": "2014SOLA...10..204K",
+        "doi": null,
+        "title": "GPM/DPR Precipitation Compared with a 3.5-km-Resolution NICAM Simulation",
+        "reason": "Mission's first published science result: early DPR precipitation observations compared with a global cloud-resolving simulation.",
+        "authority": "agent",
+        "date": "2026-10-04"
+      }
+    ],
     "excludes": [
       {
         "bibcode": "2014QJRMS.140.1219C",

@@ -23,12 +23,12 @@
     "m": 2.738,
     "i100": 134,
     "g": 198,
-    "tori": 619.656,
-    "riq": 592
+    "tori": 620.316,
+    "riq": 593
   },
   "facts": {
     "papers": 2572,
-    "citations": 73755,
+    "citations": 73762,
     "publicationYears": [
       1985,
       2026
@@ -80,7 +80,7 @@
       2026
     ],
     "papers": [
-      3,
+      4,
       4,
       10,
       5,
@@ -121,7 +121,7 @@
       199,
       222,
       205,
-      151
+      150
     ],
     "citations": [
       0,
@@ -134,18 +134,18 @@
       32,
       56,
       48,
-      58,
+      59,
       48,
       48,
       69,
       76,
-      78,
+      79,
       106,
       174,
       267,
       345,
       361,
-      412,
+      413,
       492,
       666,
       722,
@@ -154,7 +154,7 @@
       975,
       1263,
       1560,
-      1899,
+      1900,
       2166,
       2654,
       3379,
@@ -165,13 +165,13 @@
       7224,
       8215,
       9011,
-      5984
+      5987
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 73755,
-      "observed": 73755,
+      "expected": 73762,
+      "observed": 73762,
       "missing": 0
     }
   },
@@ -204,7 +204,7 @@
       1,
       0,
       1,
-      0,
+      1,
       3,
       0,
       0,
@@ -274,26 +274,26 @@
   "ranks": {
     "full": {
       "bins": [
-        204.633,
-        138.753,
-        110.171,
-        86.354,
-        61.724,
-        66.623,
-        49.641,
-        45.768,
-        32.789,
-        21.544
+        205.602,
+        138.765,
+        110.204,
+        86.366,
+        61.698,
+        66.626,
+        49.644,
+        45.771,
+        32.79,
+        21.534
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        8.124,
-        6.073,
-        5.378,
-        2.583,
-        0.842,
+        9.12,
+        6.075,
+        5.38,
+        2.585,
+        0.841,
         0,
         1,
         1,
@@ -304,22 +304,22 @@
     },
     "lifetime": {
       "bins": [
-        368.028,
-        310.047,
-        266.972,
-        280.426,
-        249.795,
-        239.057,
-        209.232,
-        219.712,
-        212.816,
-        215.916
+        368.22,
+        309.297,
+        267.099,
+        281.036,
+        249.822,
+        239.035,
+        209.168,
+        219.722,
+        212.746,
+        215.854
       ],
       "top1": 27
     }
   },
   "full": {
-    "papers": 818,
+    "papers": 819,
     "outputBasis": "measured",
     "citations": 4520,
     "top10": 28.717,
@@ -343,15 +343,15 @@
       "citationBuckets": 35
     },
     "spread": {
-      "mean": 5.526,
+      "mean": 5.519,
       "median": 3,
-      "uncited": 181,
+      "uncited": 182,
       "i10": 141,
       "i100": 2
     }
   },
   "window": {
-    "papers": 25,
+    "papers": 26,
     "outputBasis": "measured",
     "citations": 70,
     "top10": 0.5,
@@ -375,9 +375,9 @@
       "citationBuckets": 9
     },
     "spread": {
-      "mean": 2.8,
+      "mean": 2.692,
       "median": 2,
-      "uncited": 7,
+      "uncited": 8,
       "i10": 2,
       "i100": 0
     }
@@ -385,9 +385,9 @@
   "lifetime": {
     "papers": 2572,
     "outputBasis": "measured",
-    "citations": 73755,
-    "top10": 136.55,
-    "top10ShareOfDivision": 0.033,
+    "citations": 73762,
+    "top10": 136.508,
+    "top10ShareOfDivision": 0.03299,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -398,7 +398,7 @@
       "date": "1987-00-00"
     },
     "spread": {
-      "mean": 28.676,
+      "mean": 28.679,
       "median": 10,
       "uncited": 357,
       "i10": 1296,
@@ -409,11 +409,11 @@
     "arms": "((=abs:\"Landsat-5\" OR =abs:\"Landsat 4-5\" OR =abs:\"Landsats 5\" OR =abs:\"Landsats 4 5\" OR =abs:\"Landsat TM5\" OR =abs:\"Landsat TM 5\" OR =abs:\"Thematic Mapper 5\" OR =abs:\"Thematic Mapper TM 5\" OR =abs:\"Landsat satellites 5\" OR =abs:\"Landsat satellite 5\" OR =abs:\"Landsat missions 5\" OR =abs:\"Landsat series 5\" OR =abs:\"Landsat 2 5\" OR =abs:\"Landsat 7 5\" OR =abs:\"Landsat 8 5\" OR =abs:\"Landsat 1 5\" OR =abs:\"Landsat 4 7\" OR =abs:\"Landsat 4 8\" OR =abs:\"Landsats 4 8\" OR =abs:\"Landsat 4 9\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1984-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Landsat-5%22+OR+%3Dabs%3A%22Landsat+4-5%22+OR+%3Dabs%3A%22Landsats+5%22+OR+%3Dabs%3A%22Landsats+4+5%22+OR+%3Dabs%3A%22Landsat+TM5%22+OR+%3Dabs%3A%22Landsat+TM+5%22+OR+%3Dabs%3A%22Thematic+Mapper+5%22+OR+%3Dabs%3A%22Thematic+Mapper+TM+5%22+OR+%3Dabs%3A%22Landsat+satellites+5%22+OR+%3Dabs%3A%22Landsat+satellite+5%22+OR+%3Dabs%3A%22Landsat+missions+5%22+OR+%3Dabs%3A%22Landsat+series+5%22+OR+%3Dabs%3A%22Landsat+2+5%22+OR+%3Dabs%3A%22Landsat+7+5%22+OR+%3Dabs%3A%22Landsat+8+5%22+OR+%3Dabs%3A%22Landsat+1+5%22+OR+%3Dabs%3A%22Landsat+4+7%22+OR+%3Dabs%3A%22Landsat+4+8%22+OR+%3Dabs%3A%22Landsats+4+8%22+OR+%3Dabs%3A%22Landsat+4+9%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1984-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T17:54:58.106254+00:00",
+    "fetchedAt": "2026-10-02T04:16:39.422752+00:00",
     "reconciliation": {
-      "adsReturned": 2584,
+      "adsReturned": 2583,
       "curatedOut": 8,
-      "curatedIn": 0,
+      "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 4,
@@ -421,7 +421,16 @@
     }
   },
   "curation": {
-    "includes": [],
+    "includes": [
+      {
+        "bibcode": "1985CaJRS..11..162T",
+        "doi": null,
+        "title": "Thematic Mapper Data Used for Rangeland Management in Rough Fescue Grasslands in Western Canada",
+        "reason": "Mission's first published science result: Thematic Mapper imagery used to map rangeland condition in western Canada.",
+        "authority": "agent",
+        "date": "2026-10-04"
+      }
+    ],
     "excludes": [
       {
         "bibcode": "1997CaJRS..23..318M",
@@ -506,7 +515,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 1516
+      "citations": 1517
     },
     {
       "bibcode": "2014RSEnv.140...23F",
@@ -560,7 +569,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 610
+      "citations": 611
     },
     {
       "bibcode": "2016RSEnv.185..271W",
@@ -578,7 +587,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 489
+      "citations": 490
     },
     {
       "bibcode": "2020RemS...12.1471E",

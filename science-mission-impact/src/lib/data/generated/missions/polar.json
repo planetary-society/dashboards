@@ -23,12 +23,12 @@
     "m": 2.5,
     "i100": 50,
     "g": 116,
-    "tori": 147.398,
+    "tori": 147.393,
     "riq": 404
   },
   "facts": {
     "papers": 742,
-    "citations": 23579,
+    "citations": 23576,
     "publicationYears": [
       1997,
       2026
@@ -116,7 +116,7 @@
       956,
       1054,
       1076,
-      926,
+      923,
       939,
       886,
       958,
@@ -134,8 +134,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 23579,
-      "observed": 23579,
+      "expected": 23576,
+      "observed": 23576,
       "missing": 0
     }
   },
@@ -225,46 +225,46 @@
   "ranks": {
     "full": {
       "bins": [
-        122.642,
-        110.969,
-        84.447,
-        70.466,
-        66.081,
-        54.787,
-        42.291,
-        30.205,
-        19.983,
-        18.127
+        122.7,
+        110.934,
+        84.463,
+        70.469,
+        66.078,
+        54.782,
+        42.277,
+        30.191,
+        19.985,
+        18.121
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        32.206,
-        18,
+        32.229,
+        17.991,
         16.767,
-        13.152,
-        12.447,
-        13.911,
-        8.854,
-        8.707,
-        7.956,
+        13.158,
+        12.444,
+        13.92,
+        8.833,
+        8.719,
+        7.94,
         4
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        54.586,
-        61.927,
-        78.135,
-        91.236,
-        73.6,
-        76.036,
-        68.302,
-        72.806,
-        85.327,
-        80.047
+        54.612,
+        61.917,
+        78.145,
+        91.243,
+        73.62,
+        76.03,
+        68.265,
+        72.835,
+        85.375,
+        79.958
       ],
       "top1": 5
     }
@@ -306,7 +306,7 @@
     "outputBasis": "measured",
     "citations": 1137,
     "top10": 11.2,
-    "top10ShareOfDivision": 0.02524,
+    "top10ShareOfDivision": 0.02523,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -336,7 +336,7 @@
   "lifetime": {
     "papers": 742,
     "outputBasis": "measured",
-    "citations": 23579,
+    "citations": 23576,
     "top10": 27.733,
     "top10ShareOfDivision": 0.01763,
     "top1": null,
@@ -349,7 +349,7 @@
       "date": "1997-08-00"
     },
     "spread": {
-      "mean": 31.778,
+      "mean": 31.774,
       "median": 15,
       "uncited": 37,
       "i10": 463,
@@ -360,7 +360,7 @@
     "arms": "((=abs:\"GGS Polar\" OR =abs:\"NASA Polar Spacecraft\" OR =abs:\"NASA Polar mission\" OR (abs:\"Polar\" AND abs:\"GGS\") OR (abs:\"Polar\" AND (abs:\"HYDRA\" OR abs:\"CAMMICE\" OR abs:\"CEPPAD\" OR abs:\"TIMAS\" OR abs:\"PIXIE\")) OR =abs:\"Thermal Ion Dynamics Experiment\" OR =abs:\"Toroidal Imaging Mass-Angle Spectrograph\" OR =abs:\"Charge and Mass Magnetospheric Ion Composition Experiment\" OR =abs:\"Comprehensive Energetic-Particle Pitch Angle Distribution\" OR =abs:\"Polar Ionospheric X-ray Imaging Experiment\" OR ((=abs:\"Polar spacecraft\" OR =abs:\"Polar satellite\" OR =abs:\"Polar mission\" OR =abs:\"Polar UV\" OR =abs:\"Polar Lyman-Birge-Hopfield\" OR =abs:\"Polar Ultraviolet Imager\" OR =abs:\"Polar/UVI\" OR =abs:\"Polar/VIS\" OR =abs:\"Polar/PWI\" OR =abs:\"Polar/EFI\" OR =abs:\"Polar EFI\" OR =abs:\"Polar/MFE\" OR =abs:\"Polar and Geotail\" OR =abs:\"Geotail and Polar\" OR =abs:\"Polar-Geotail\" OR =abs:\"Polar and Interball\" OR =abs:\"Interball and Polar\" OR =abs:\"Polar-Interball\" OR =abs:\"Polar and DMSP\" OR =abs:\"Polar and Fast Auroral Snapshot\" OR =abs:\"Polar, FAST, and Interball\" OR (abs:\"Polar\" AND (abs:UVI OR abs:PWI OR abs:MFE OR abs:HIST OR abs:TIDE OR =abs:\"Visible Imaging System\" OR =abs:\"Earth Camera\" OR =abs:\"Magnetic Field Experiment\" OR =abs:\"High Sensitivity Telescope\"))) AND abs:(magnetosphere OR magnetospheric OR magnetosheath OR magnetopause OR magnetotail OR aurora OR auroral OR substorm OR cusp OR =\"plasma sheet\" OR =\"radiation belt\" OR =\"ring current\" OR =\"polar cap\" OR =\"polar wind\" OR =\"ion outflow\" OR =\"ionospheric outflow\" OR whistler OR chorus OR plasmasphere) AND NOT abs:(Saturn OR Jupiter OR Jovian OR Kronian OR Mars OR Martian OR Mercury OR Uranus OR Neptune OR Titan OR Ganymede OR GUVI))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1996-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22GGS+Polar%22+OR+%3Dabs%3A%22NASA+Polar+Spacecraft%22+OR+%3Dabs%3A%22NASA+Polar+mission%22+OR+%28abs%3A%22Polar%22+AND+abs%3A%22GGS%22%29+OR+%28abs%3A%22Polar%22+AND+%28abs%3A%22HYDRA%22+OR+abs%3A%22CAMMICE%22+OR+abs%3A%22CEPPAD%22+OR+abs%3A%22TIMAS%22+OR+abs%3A%22PIXIE%22%29%29+OR+%3Dabs%3A%22Thermal+Ion+Dynamics+Experiment%22+OR+%3Dabs%3A%22Toroidal+Imaging+Mass-Angle+Spectrograph%22+OR+%3Dabs%3A%22Charge+and+Mass+Magnetospheric+Ion+Composition+Experiment%22+OR+%3Dabs%3A%22Comprehensive+Energetic-Particle+Pitch+Angle+Distribution%22+OR+%3Dabs%3A%22Polar+Ionospheric+X-ray+Imaging+Experiment%22+OR+%28%28%3Dabs%3A%22Polar+spacecraft%22+OR+%3Dabs%3A%22Polar+satellite%22+OR+%3Dabs%3A%22Polar+mission%22+OR+%3Dabs%3A%22Polar+UV%22+OR+%3Dabs%3A%22Polar+Lyman-Birge-Hopfield%22+OR+%3Dabs%3A%22Polar+Ultraviolet+Imager%22+OR+%3Dabs%3A%22Polar%2FUVI%22+OR+%3Dabs%3A%22Polar%2FVIS%22+OR+%3Dabs%3A%22Polar%2FPWI%22+OR+%3Dabs%3A%22Polar%2FEFI%22+OR+%3Dabs%3A%22Polar+EFI%22+OR+%3Dabs%3A%22Polar%2FMFE%22+OR+%3Dabs%3A%22Polar+and+Geotail%22+OR+%3Dabs%3A%22Geotail+and+Polar%22+OR+%3Dabs%3A%22Polar-Geotail%22+OR+%3Dabs%3A%22Polar+and+Interball%22+OR+%3Dabs%3A%22Interball+and+Polar%22+OR+%3Dabs%3A%22Polar-Interball%22+OR+%3Dabs%3A%22Polar+and+DMSP%22+OR+%3Dabs%3A%22Polar+and+Fast+Auroral+Snapshot%22+OR+%3Dabs%3A%22Polar%2C+FAST%2C+and+Interball%22+OR+%28abs%3A%22Polar%22+AND+%28abs%3AUVI+OR+abs%3APWI+OR+abs%3AMFE+OR+abs%3AHIST+OR+abs%3ATIDE+OR+%3Dabs%3A%22Visible+Imaging+System%22+OR+%3Dabs%3A%22Earth+Camera%22+OR+%3Dabs%3A%22Magnetic+Field+Experiment%22+OR+%3Dabs%3A%22High+Sensitivity+Telescope%22%29%29%29+AND+abs%3A%28magnetosphere+OR+magnetospheric+OR+magnetosheath+OR+magnetopause+OR+magnetotail+OR+aurora+OR+auroral+OR+substorm+OR+cusp+OR+%3D%22plasma+sheet%22+OR+%3D%22radiation+belt%22+OR+%3D%22ring+current%22+OR+%3D%22polar+cap%22+OR+%3D%22polar+wind%22+OR+%3D%22ion+outflow%22+OR+%3D%22ionospheric+outflow%22+OR+whistler+OR+chorus+OR+plasmasphere%29+AND+NOT+abs%3A%28Saturn+OR+Jupiter+OR+Jovian+OR+Kronian+OR+Mars+OR+Martian+OR+Mercury+OR+Uranus+OR+Neptune+OR+Titan+OR+Ganymede+OR+GUVI%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T18:06:12.653718+00:00",
+    "fetchedAt": "2026-10-02T04:28:17.846868+00:00",
     "reconciliation": {
       "adsReturned": 748,
       "curatedOut": 4,
@@ -577,7 +577,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 222
+      "citations": 221
     },
     {
       "bibcode": "1998GeoRL..25.4063L",

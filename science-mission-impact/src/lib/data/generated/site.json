@@ -1,15 +1,15 @@
 {
   "asOf": "2026-10-04",
-  "fetchedMin": "2026-09-30T17:48:36.983977+00:00",
-  "fetchedMax": "2026-10-04T05:45:28.992497+00:00",
-  "codeRevision": "4ee1c88e640645a403c5f6761a3f175ff5e89cb6",
+  "fetchedMin": "2026-09-28T13:39:35.341546+00:00",
+  "fetchedMax": "2026-10-04T05:41:00.063645+00:00",
+  "codeRevision": "537c7f4d6ffc638414a38a5301643c9bf1cc2555",
   "codeRevisionDirty": true,
-  "missions": 134,
-  "papersDistinct": 146808,
-  "citationsDistinct": 6154462,
+  "missions": 139,
+  "papersDistinct": 146833,
+  "citationsDistinct": 6155976,
   "launchYears": [
     1980,
-    2021
+    2022
   ],
   "publicationYears": [
     1980,
@@ -37,8 +37,8 @@
       "name": "Astrophysics",
       "nav": "Astrophysics",
       "missions": 25,
-      "papers": 63383,
-      "citations": 3416710,
+      "papers": 63385,
+      "citations": 3417433,
       "publicationYears": [
         1983,
         2026
@@ -63,8 +63,8 @@
       "name": "Earth Science",
       "nav": "Earth",
       "missions": 40,
-      "papers": 50650,
-      "citations": 1605946,
+      "papers": 50648,
+      "citations": 1606392,
       "publicationYears": [
         1981,
         2026
@@ -75,9 +75,9 @@
       "slug": "heliophysics",
       "name": "Heliophysics",
       "nav": "Helio",
-      "missions": 29,
-      "papers": 18323,
-      "citations": 591462,
+      "missions": 32,
+      "papers": 18325,
+      "citations": 591707,
       "publicationYears": [
         1980,
         2026
@@ -88,9 +88,9 @@
       "slug": "planetary",
       "name": "Planetary Science",
       "nav": "Planetary",
-      "missions": 35,
-      "papers": 15706,
-      "citations": 584964,
+      "missions": 37,
+      "papers": 15729,
+      "citations": 585067,
       "publicationYears": [
         1990,
         2026
@@ -106,18 +106,18 @@
     "missionMetadataSource": "The Planetary Society NASA science mission database"
   },
   "filters": {
-    "astrophysics": "Launch Date <= 2026-10-04 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Astrophysics\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-04 AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"SOFIA\"}",
-    "biological-physical": "Launch Date <= 2026-10-04 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Biological & Physical Sciences\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-04 AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"}",
-    "earth": "Launch Date <= 2026-10-04 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Earth Science\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-04 AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"Geosat\"}",
-    "heliophysics": "Launch Date <= 2026-10-04 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Heliophysics\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-04 AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"DICE\"}",
-    "planetary": "Launch Date <= 2026-10-04 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Planetary Science\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-04 AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"Clementine\"}"
+    "astrophysics": "Launch Date <= 2026-10-04 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Astrophysics\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-04 or failure 2 years after mission end with no recorded publications AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"SOFIA\"}",
+    "biological-physical": "Launch Date <= 2026-10-04 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Biological & Physical Sciences\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-04 or failure 2 years after mission end with no recorded publications AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"}",
+    "earth": "Launch Date <= 2026-10-04 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Earth Science\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-04 or failure 2 years after mission end with no recorded publications AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"Geosat\"}",
+    "heliophysics": "Launch Date <= 2026-10-04 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Heliophysics\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-04 or failure 2 years after mission end with no recorded publications AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"DICE\"}",
+    "planetary": "Launch Date <= 2026-10-04 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Planetary Science\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-04 or failure 2 years after mission end with no recorded publications AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"Clementine\"}"
   },
   "story": {
     "referenceCost": 150,
     "scope": "full",
     "threshold": {
-      "missions": 40,
-      "total": 134,
+      "missions": 45,
+      "total": 139,
       "ids": [
         "halosat",
         "asteria",
@@ -146,8 +146,11 @@
         "ceres",
         "minxss_1",
         "e_tbex",
+        "daili",
         "sortie",
         "elfin",
+        "cusp",
+        "petitsat",
         "cupid",
         "snoe",
         "trace",
@@ -155,15 +158,17 @@
         "sampex",
         "sme",
         "q_pace",
+        "lunar_icecube",
         "marco",
+        "nea_scout",
         "ds_2",
         "lunar_prospector",
         "lcross"
       ],
-      "papers": 1329,
-      "papersAll": 135215,
+      "papers": 1330,
+      "papersAll": 135221,
       "unavailable": 0,
-      "launchMedian": 2016
+      "launchMedian": 2017
     },
     "failure": {
       "statuses": [
@@ -172,9 +177,9 @@
         "Partial Success"
       ],
       "under": {
-        "missions": 40,
-        "failed": 9,
-        "rate": 0.225
+        "missions": 45,
+        "failed": 14,
+        "rate": 0.31111
       },
       "over": {
         "missions": 94,
@@ -223,8 +228,8 @@
           "division": "heliophysics",
           "name": "Heliophysics",
           "under": {
-            "missions": 12,
-            "failed": 2
+            "missions": 15,
+            "failed": 5
           },
           "over": {
             "missions": 17,
@@ -235,8 +240,8 @@
           "division": "planetary",
           "name": "Planetary Science",
           "under": {
-            "missions": 5,
-            "failed": 2
+            "missions": 7,
+            "failed": 4
           },
           "over": {
             "missions": 30,
@@ -252,7 +257,7 @@
         "missions": 6,
         "measuredMissions": 6,
         "top10": 1.15,
-        "share": 0.00023069675032533253,
+        "share": 0.00023069212250594233,
         "costTotal": 452
       },
       {
@@ -269,27 +274,27 @@
         "name": "Earth Science",
         "missions": 12,
         "measuredMissions": 12,
-        "top10": 1.333,
-        "share": 0.0003465037691707824,
+        "top10": 1.833,
+        "share": 0.00047645040548970676,
         "costTotal": 130
       },
       {
         "division": "heliophysics",
         "name": "Heliophysics",
-        "missions": 12,
-        "measuredMissions": 12,
-        "top10": 148.264,
-        "share": 0.10242763385146805,
-        "costTotal": 550.1
+        "missions": 15,
+        "measuredMissions": 15,
+        "top10": 148.28,
+        "share": 0.10242446472027028,
+        "costTotal": 567.1
       },
       {
         "division": "planetary",
         "name": "Planetary Science",
-        "missions": 5,
-        "measuredMissions": 5,
+        "missions": 7,
+        "measuredMissions": 7,
         "top10": 9.45,
         "share": 0.008661778185151238,
-        "costTotal": 352.5
+        "costTotal": 388.5
       }
     ],
     "bands": [
@@ -304,7 +309,7 @@
         "division": "earth",
         "name": "Earth Science",
         "p25": 1268.4,
-        "p50": 1873.3,
+        "p50": 1610.1,
         "p75": 2345.3
       },
       {
@@ -337,34 +342,34 @@
       "groups": [
         {
           "key": "under",
-          "missions": 35,
-          "failed": 7,
-          "withTop": 10,
-          "top10": 160.197,
-          "top10PerMission": 4.577,
+          "missions": 40,
+          "failed": 12,
+          "withTop": 11,
+          "top10": 160.713,
+          "top10PerMission": 4.018,
           "top1": 8,
-          "top1PerMission": 0.229,
-          "cost": 1484.6,
-          "citations": 15460,
+          "top1PerMission": 0.2,
+          "cost": 1537.6,
+          "citations": 15499,
           "median": 0,
-          "papersMedian": 2,
-          "noPapers": 11,
+          "papersMedian": 1.5,
+          "noPapers": 16,
           "largest": {
             "id": "trace",
             "name": "TRACE",
-            "top10": 96.092,
-            "share": 0.59984
+            "top10": 96.108,
+            "share": 0.59801
           },
           "costMin": 0.6,
           "costMax": 149.7,
           "launchYears": [
             1981,
-            2021
+            2022
           ],
-          "launchMedian": 2017,
+          "launchMedian": 2018,
           "topType": {
             "type": "Orbiter",
-            "missions": 17
+            "missions": 20
           }
         },
         {
@@ -372,12 +377,12 @@
           "missions": 94,
           "failed": 7,
           "withTop": 87,
-          "top10": 11210.202,
+          "top10": 11210.187,
           "top10PerMission": 119.257,
-          "top1": 1129.041,
-          "top1PerMission": 12.011,
+          "top1": 1129.09,
+          "top1PerMission": 12.012,
           "cost": 113743.4,
-          "citations": 2194705,
+          "citations": 2195023,
           "median": 49.716,
           "papersMedian": 560,
           "noPapers": 7,
@@ -415,8 +420,8 @@
             "missions": 19,
             "failed": 0,
             "withTop": 19,
-            "top10": 4983.749,
-            "top10PerMission": 262.303
+            "top10": 4983.849,
+            "top10PerMission": 262.308
           }
         },
         {
@@ -425,45 +430,45 @@
           "under": {
             "missions": 12,
             "failed": 2,
-            "withTop": 2,
-            "top10": 1.333,
-            "top10PerMission": 0.111
+            "withTop": 3,
+            "top10": 1.833,
+            "top10PerMission": 0.153
           },
           "over": {
             "missions": 28,
             "failed": 3,
             "withTop": 25,
-            "top10": 3845.667,
-            "top10PerMission": 137.345
+            "top10": 3845.367,
+            "top10PerMission": 137.335
           }
         },
         {
           "division": "heliophysics",
           "name": "Heliophysics",
           "under": {
-            "missions": 12,
-            "failed": 2,
+            "missions": 15,
+            "failed": 5,
             "withTop": 5,
-            "top10": 148.264,
-            "top10PerMission": 12.355
+            "top10": 148.28,
+            "top10PerMission": 9.885
           },
           "over": {
             "missions": 17,
             "failed": 0,
             "withTop": 17,
-            "top10": 1299.236,
-            "top10PerMission": 76.426
+            "top10": 1299.421,
+            "top10PerMission": 76.437
           }
         },
         {
           "division": "planetary",
           "name": "Planetary Science",
           "under": {
-            "missions": 5,
-            "failed": 2,
+            "missions": 7,
+            "failed": 4,
             "withTop": 2,
             "top10": 9.45,
-            "top10PerMission": 1.89
+            "top10PerMission": 1.35
           },
           "over": {
             "missions": 30,
@@ -475,8 +480,8 @@
         }
       ],
       "equalWeight": {
-        "under": 3.637,
-        "over": 128.032
+        "under": 2.895,
+        "over": 128.033
       }
     },
     "pooledBand": {
@@ -489,8 +494,8 @@
       "p25": 756.4,
       "p50": 1361.2,
       "p75": 2353.5,
-      "costShare": 0.47816,
-      "missionShare": 0.27869
+      "costShare": 0.47785,
+      "missionShare": 0.26921
     },
     "timingDivision": "planetary",
     "timing": [
@@ -509,7 +514,7 @@
           "id": "nustar",
           "name": "NuSTAR",
           "cost": 248.2,
-          "years": 5.265
+          "years": 4.936
         },
         "medianYears": 7.765,
         "byCostThird": [
@@ -549,11 +554,11 @@
         "division": "earth",
         "name": "Earth Science",
         "missions": 40,
-        "reached": 27,
-        "never": 13,
+        "reached": 28,
+        "never": 12,
         "under": {
           "missions": 12,
-          "reached": 2,
+          "reached": 3,
           "failed": 2
         },
         "fastest": {
@@ -562,27 +567,27 @@
           "cost": 188,
           "years": 2.7
         },
-        "medianYears": 8.89,
+        "medianYears": 8.749,
         "byCostThird": [
           {
             "key": "low",
             "missions": 9,
             "costRange": [
               9.1,
-              374.8
+              358.6
             ],
             "medianYears": 5.867,
             "medianBuildYears": 4.493
           },
           {
             "key": "mid",
-            "missions": 9,
+            "missions": 10,
             "costRange": [
-              404.2,
+              374.8,
               1372.5
             ],
-            "medianYears": 8.665,
-            "medianBuildYears": 7.19
+            "medianYears": 8.333,
+            "medianBuildYears": 6.803
           },
           {
             "key": "high",
@@ -599,13 +604,13 @@
       {
         "division": "heliophysics",
         "name": "Heliophysics",
-        "missions": 29,
+        "missions": 32,
         "reached": 22,
-        "never": 7,
+        "never": 10,
         "under": {
-          "missions": 12,
+          "missions": 15,
           "reached": 5,
-          "failed": 2
+          "failed": 5
         },
         "fastest": {
           "id": "trace",
@@ -650,13 +655,13 @@
       {
         "division": "planetary",
         "name": "Planetary Science",
-        "missions": 35,
+        "missions": 37,
         "reached": 28,
-        "never": 7,
+        "never": 9,
         "under": {
-          "missions": 5,
+          "missions": 7,
           "reached": 2,
-          "failed": 2
+          "failed": 4
         },
         "fastest": {
           "id": "lunar_prospector",
@@ -700,34 +705,34 @@
       }
     ],
     "scienceStart": {
-      "missions": 98,
+      "missions": 99,
       "groups": [
         {
           "lo": 2,
-          "hi": 282.2,
+          "hi": 276.9,
           "missions": 25,
           "months": 14.9
         },
         {
-          "lo": 297.7,
+          "lo": 282.2,
           "hi": 581.4,
-          "missions": 24,
-          "months": 10.8
+          "missions": 25,
+          "months": 11.6
         },
         {
           "lo": 588.7,
-          "hi": 1361.2,
-          "missions": 25,
+          "hi": 1356.5,
+          "missions": 24,
           "months": 4.9
         },
         {
-          "lo": 1365.5,
+          "lo": 1361.2,
           "hi": 13890.2,
-          "missions": 24,
-          "months": 4.8
+          "missions": 25,
+          "months": 4.7
         }
       ],
-      "ratio": 3.1
+      "ratio": 3.17
     },
     "perDollar": [
       {
@@ -745,13 +750,13 @@
             "key": "over",
             "missions": 19,
             "cost": 34027.5,
-            "citations": 1257265,
-            "perHundredM": 3694.85
+            "citations": 1257435,
+            "perHundredM": 3695.349
           }
         ],
         "favors": "over",
         "flipsOn": [],
-        "margin": 0.94228,
+        "margin": 0.94229,
         "largestUnder": {
           "id": "swas",
           "name": "SWAS",
@@ -766,24 +771,24 @@
             "key": "under",
             "missions": 12,
             "cost": 130,
-            "citations": 320,
-            "perHundredM": 246.154
+            "citations": 358,
+            "perHundredM": 275.385
           },
           {
             "key": "over",
             "missions": 28,
             "cost": 30586.5,
-            "citations": 596733,
-            "perHundredM": 1950.969
+            "citations": 596784,
+            "perHundredM": 1951.135
           }
         ],
         "favors": "over",
         "flipsOn": [],
-        "margin": 0.87383,
+        "margin": 0.85886,
         "largestUnder": {
-          "id": "raincube",
-          "name": "RainCube",
-          "share": 0.3
+          "id": "acrimsat",
+          "name": "ACRIMSAT",
+          "share": 0.32402
         }
       },
       {
@@ -792,17 +797,17 @@
         "groups": [
           {
             "key": "under",
-            "missions": 12,
-            "cost": 550.1,
+            "missions": 15,
+            "cost": 567.1,
             "citations": 13109,
-            "perHundredM": 2383.021
+            "perHundredM": 2311.585
           },
           {
             "key": "over",
             "missions": 17,
             "cost": 10863.4,
-            "citations": 178814,
-            "perHundredM": 1646.022
+            "citations": 178910,
+            "perHundredM": 1646.906
           }
         ],
         "favors": null,
@@ -813,7 +818,7 @@
             "side": "under"
           }
         ],
-        "margin": 0.30927,
+        "margin": 0.28754,
         "largestUnder": {
           "id": "trace",
           "name": "TRACE",
@@ -826,26 +831,26 @@
         "groups": [
           {
             "key": "under",
-            "missions": 5,
-            "cost": 352.5,
-            "citations": 1067,
-            "perHundredM": 302.695
+            "missions": 7,
+            "cost": 388.5,
+            "citations": 1068,
+            "perHundredM": 274.903
           },
           {
             "key": "over",
             "missions": 30,
             "cost": 38266,
-            "citations": 161893,
-            "perHundredM": 423.073
+            "citations": 161894,
+            "perHundredM": 423.075
           }
         ],
         "favors": "over",
         "flipsOn": [],
-        "margin": 0.28453,
+        "margin": 0.35023,
         "largestUnder": {
           "id": "lunar_prospector",
           "name": "Lunar Prospector",
-          "share": 0.59138
+          "share": 0.59082
         }
       }
     ],
@@ -1379,11 +1384,11 @@
         "division": "planetary",
         "cost": 139,
         "papers": 14,
-        "citations": 427,
+        "citations": 428,
         "byKind": {
           "results": {
             "papers": 9,
-            "citations": 329
+            "citations": 330
           },
           "data": {
             "papers": 0,
@@ -1407,6 +1412,41 @@
           }
         },
         "nonScienceShare": 0.35714
+      },
+      {
+        "id": "acrimsat",
+        "name": "ACRIMSAT",
+        "division": "earth",
+        "cost": 36.2,
+        "papers": 12,
+        "citations": 116,
+        "byKind": {
+          "results": {
+            "papers": 10,
+            "citations": 96
+          },
+          "data": {
+            "papers": 1,
+            "citations": 14
+          },
+          "mission": {
+            "papers": 0,
+            "citations": 0
+          },
+          "review": {
+            "papers": 0,
+            "citations": 0
+          },
+          "future": {
+            "papers": 0,
+            "citations": 0
+          },
+          "other": {
+            "papers": 1,
+            "citations": 6
+          }
+        },
+        "nonScienceShare": 0.08333
       },
       {
         "id": "halosat",
@@ -1442,41 +1482,6 @@
           }
         },
         "nonScienceShare": 0.18182
-      },
-      {
-        "id": "acrimsat",
-        "name": "ACRIMSAT",
-        "division": "earth",
-        "cost": 36.2,
-        "papers": 11,
-        "citations": 78,
-        "byKind": {
-          "results": {
-            "papers": 9,
-            "citations": 58
-          },
-          "data": {
-            "papers": 1,
-            "citations": 14
-          },
-          "mission": {
-            "papers": 0,
-            "citations": 0
-          },
-          "review": {
-            "papers": 0,
-            "citations": 0
-          },
-          "future": {
-            "papers": 0,
-            "citations": 0
-          },
-          "other": {
-            "papers": 1,
-            "citations": 6
-          }
-        },
-        "nonScienceShare": 0.09091
       },
       {
         "id": "tempest_d",
@@ -2074,6 +2079,76 @@
         "nonScienceShare": null
       },
       {
+        "id": "cusp",
+        "name": "CuSP",
+        "division": "heliophysics",
+        "cost": 6.5,
+        "papers": 0,
+        "citations": 0,
+        "byKind": {
+          "results": {
+            "papers": 0,
+            "citations": 0
+          },
+          "data": {
+            "papers": 0,
+            "citations": 0
+          },
+          "mission": {
+            "papers": 0,
+            "citations": 0
+          },
+          "review": {
+            "papers": 0,
+            "citations": 0
+          },
+          "future": {
+            "papers": 0,
+            "citations": 0
+          },
+          "other": {
+            "papers": 0,
+            "citations": 0
+          }
+        },
+        "nonScienceShare": null
+      },
+      {
+        "id": "daili",
+        "name": "DAILI",
+        "division": "heliophysics",
+        "cost": 3.8,
+        "papers": 0,
+        "citations": 0,
+        "byKind": {
+          "results": {
+            "papers": 0,
+            "citations": 0
+          },
+          "data": {
+            "papers": 0,
+            "citations": 0
+          },
+          "mission": {
+            "papers": 0,
+            "citations": 0
+          },
+          "review": {
+            "papers": 0,
+            "citations": 0
+          },
+          "future": {
+            "papers": 0,
+            "citations": 0
+          },
+          "other": {
+            "papers": 0,
+            "citations": 0
+          }
+        },
+        "nonScienceShare": null
+      },
+      {
         "id": "ds_2",
         "name": "DS-2",
         "division": "planetary",
@@ -2319,10 +2394,80 @@
         "nonScienceShare": null
       },
       {
+        "id": "lunar_icecube",
+        "name": "Lunar IceCube",
+        "division": "planetary",
+        "cost": 11.6,
+        "papers": 0,
+        "citations": 0,
+        "byKind": {
+          "results": {
+            "papers": 0,
+            "citations": 0
+          },
+          "data": {
+            "papers": 0,
+            "citations": 0
+          },
+          "mission": {
+            "papers": 0,
+            "citations": 0
+          },
+          "review": {
+            "papers": 0,
+            "citations": 0
+          },
+          "future": {
+            "papers": 0,
+            "citations": 0
+          },
+          "other": {
+            "papers": 0,
+            "citations": 0
+          }
+        },
+        "nonScienceShare": null
+      },
+      {
         "id": "mirata",
         "name": "MiRaTA",
         "division": "earth",
         "cost": 5.5,
+        "papers": 0,
+        "citations": 0,
+        "byKind": {
+          "results": {
+            "papers": 0,
+            "citations": 0
+          },
+          "data": {
+            "papers": 0,
+            "citations": 0
+          },
+          "mission": {
+            "papers": 0,
+            "citations": 0
+          },
+          "review": {
+            "papers": 0,
+            "citations": 0
+          },
+          "future": {
+            "papers": 0,
+            "citations": 0
+          },
+          "other": {
+            "papers": 0,
+            "citations": 0
+          }
+        },
+        "nonScienceShare": null
+      },
+      {
+        "id": "nea_scout",
+        "name": "NEA Scout",
+        "division": "planetary",
+        "cost": 24.4,
         "papers": 0,
         "citations": 0,
         "byKind": {
@@ -2492,17 +2637,52 @@
           }
         },
         "nonScienceShare": null
+      },
+      {
+        "id": "petitsat",
+        "name": "petitSat",
+        "division": "heliophysics",
+        "cost": 6.7,
+        "papers": 0,
+        "citations": 0,
+        "byKind": {
+          "results": {
+            "papers": 0,
+            "citations": 0
+          },
+          "data": {
+            "papers": 0,
+            "citations": 0
+          },
+          "mission": {
+            "papers": 0,
+            "citations": 0
+          },
+          "review": {
+            "papers": 0,
+            "citations": 0
+          },
+          "future": {
+            "papers": 0,
+            "citations": 0
+          },
+          "other": {
+            "papers": 0,
+            "citations": 0
+          }
+        },
+        "nonScienceShare": null
       }
     ],
     "withPapers": 26,
-    "withoutPapers": 14,
+    "withoutPapers": 19,
     "total": {
-      "papers": 1329,
-      "citations": 15516,
+      "papers": 1330,
+      "citations": 15555,
       "byKind": {
         "results": {
-          "papers": 1013,
-          "citations": 12218
+          "papers": 1014,
+          "citations": 12257
         },
         "data": {
           "papers": 39,
@@ -2532,9 +2712,9 @@
     },
     "nonScience": {
       "papers": 277,
-      "paperShare": 0.20843,
+      "paperShare": 0.20827,
       "citations": 2961,
-      "citationShare": 0.19084
+      "citationShare": 0.19036
     },
     "small": {
       "maxPapers": 10,
@@ -2550,16 +2730,16 @@
     },
     "majorityNonScience": 7,
     "topCredit": {
-      "total": 160.896,
-      "nonScience": 28.7,
-      "share": 0.17838,
+      "total": 161.413,
+      "nonScience": 28.717,
+      "share": 0.17791,
       "byKind": {
-        "results": 130.196,
+        "results": 130.696,
         "data": 2,
         "mission": 6.783,
         "review": 4.333,
         "future": 1,
-        "other": 16.583
+        "other": 16.6
       }
     },
     "examples": [

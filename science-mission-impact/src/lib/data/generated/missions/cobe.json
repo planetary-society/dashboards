@@ -23,12 +23,12 @@
     "m": 4.297,
     "i100": 266,
     "g": 314,
-    "tori": 924.093,
+    "tori": 924.671,
     "riq": 821
   },
   "facts": {
     "papers": 1413,
-    "citations": 125285,
+    "citations": 125293,
     "publicationYears": [
       1990,
       2026
@@ -135,7 +135,7 @@
       3635,
       3852,
       3850,
-      4011,
+      4012,
       3943,
       3872,
       3703,
@@ -150,13 +150,13 @@
       3177,
       3685,
       3930,
-      3395
+      3402
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 125285,
-      "observed": 125285,
+      "expected": 125293,
+      "observed": 125293,
       "missing": 0
     }
   },
@@ -221,53 +221,53 @@
     ],
     "authorCount": 3,
     "year": 1998,
-    "citations": 14187
+    "citations": 14188
   },
   "ranks": {
     "full": {
       "bins": [
-        86.901,
+        86.903,
         39.225,
-        38.787,
-        44.108,
-        49.631,
-        25.649,
-        29.727,
-        37.198,
-        38.772,
+        38.788,
+        44.101,
+        49.636,
+        25.666,
+        29.714,
+        37.211,
+        38.757,
         52
       ],
       "top1": 9
     },
     "window": {
       "bins": [
-        16.481,
-        9.062,
+        16.482,
+        9.063,
         7.237,
-        6.664,
-        5.556,
+        6.663,
+        5.555,
         0,
         1,
         4,
-        2.62,
-        3.38
+        2.643,
+        3.357
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        154.59,
-        135.633,
-        112.92,
-        129.455,
-        132.358,
-        116.41,
-        114.595,
-        129.165,
-        158.874,
+        154.707,
+        135.568,
+        112.738,
+        129.715,
+        132.349,
+        116.344,
+        114.583,
+        129.308,
+        158.688,
         229
       ],
-      "top1": 43.958
+      "top1": 43.95
     }
   },
   "full": {
@@ -337,7 +337,7 @@
   "lifetime": {
     "papers": 1413,
     "outputBasis": "measured",
-    "citations": 125285,
+    "citations": 125293,
     "top10": 166.367,
     "top10ShareOfDivision": 0.03003,
     "top1": null,
@@ -350,7 +350,7 @@
       "date": "1990-05-00"
     },
     "spread": {
-      "mean": 88.666,
+      "mean": 88.672,
       "median": 26,
       "uncited": 85,
       "i10": 1035,
@@ -361,7 +361,7 @@
     "arms": "((=abs:(\"Cosmic Background Explorer\" OR \"Diffuse Infrared Background Experiment\" OR \"Far Infrared Absolute Spectrophotometer\" OR \"Differential Microwave Radiometer\" OR \"Differential Microwave Radiometers\") OR facility:COBE OR (abs:COBE AND (collection:astronomy OR (abs:(inflation OR inflationary OR microwave OR anisotropy OR anisotropies OR cosmological OR cosmology OR cosmic OR blackbody OR infrared OR spectrometer OR dewar OR cryogenic OR neutrino OR neutrinos) NOT =abs:\"sea surface\"))) OR (abs:(DIRBE OR FIRAS) AND (collection:astronomy OR abs:(blackbody OR CMB OR microwave OR infrared OR spectrometer OR spectrometry) OR =abs:\"background radiation\")) OR (abs:DMR AND collection:astronomy AND abs:(microwave OR CMB OR anisotropy OR anisotropies))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1989-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Cosmic+Background+Explorer%22+OR+%22Diffuse+Infrared+Background+Experiment%22+OR+%22Far+Infrared+Absolute+Spectrophotometer%22+OR+%22Differential+Microwave+Radiometer%22+OR+%22Differential+Microwave+Radiometers%22%29+OR+facility%3ACOBE+OR+%28abs%3ACOBE+AND+%28collection%3Aastronomy+OR+%28abs%3A%28inflation+OR+inflationary+OR+microwave+OR+anisotropy+OR+anisotropies+OR+cosmological+OR+cosmology+OR+cosmic+OR+blackbody+OR+infrared+OR+spectrometer+OR+dewar+OR+cryogenic+OR+neutrino+OR+neutrinos%29+NOT+%3Dabs%3A%22sea+surface%22%29%29%29+OR+%28abs%3A%28DIRBE+OR+FIRAS%29+AND+%28collection%3Aastronomy+OR+abs%3A%28blackbody+OR+CMB+OR+microwave+OR+infrared+OR+spectrometer+OR+spectrometry%29+OR+%3Dabs%3A%22background+radiation%22%29%29+OR+%28abs%3ADMR+AND+collection%3Aastronomy+AND+abs%3A%28microwave+OR+CMB+OR+anisotropy+OR+anisotropies%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1989-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T18:11:07.252792+00:00",
+    "fetchedAt": "2026-10-02T04:29:20.111100+00:00",
     "reconciliation": {
       "adsReturned": 1417,
       "curatedOut": 4,
@@ -417,7 +417,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 14187
+      "citations": 14188
     },
     {
       "bibcode": "2003ApJS..148....1B",
@@ -453,7 +453,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 1280
+      "citations": 1281
     },
     {
       "bibcode": "1996ApJ...464L...1B",
@@ -534,7 +534,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1995,
-      "citations": 882
+      "citations": 883
     },
     {
       "bibcode": "1994MNRAS.267.1020P",

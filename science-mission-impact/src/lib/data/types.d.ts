@@ -276,6 +276,8 @@ export interface Division {
 	/** The prime-phase windows combined; the full-mission scope has no month-by-month companion. */
 	windowSeries: WindowSeries & { missionsIncluded: number; missionsImmature: string[] };
 	mostCited: PaperRef | null;
+	/** The ten most cited papers per scope, each paper once (windows count in-window citations). missions: ids sharing it, highest count first. */
+	topPapers: Record<Scope, (Omit<PaperRef, 'missionId'> & { missions: string[] })[]>;
 	/** Pooled statistics of every paper from the division's missions, a shared paper once; null when a scope reports no pool. */
 	stats: Record<Scope, DivisionScopeStats | null>;
 	/** null when the division is not rankable. lifetime[1] is always null (top 1% needs a window). */

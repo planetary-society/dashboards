@@ -84,3 +84,39 @@ export function assertColumnLengths(papersFile) {
 		}
 	}
 }
+
+/**
+ * A division's most cited papers in one scope, each paper once. A shared paper
+ * takes its highest count among the missions sharing it (the upstream
+ * representative rule) and lists those missions, highest count first, then by
+ * name. Ties break on bibcode, as the division's most cited paper does.
+ *
+ * @param {object[]} rows a stats papers table (lifetime, window or full-mission)
+ * @param {string} key the citation column: 'citations', or 'window_citations' for a window
+ * @param {number} limit how many papers to keep
+ * @returns {{ bibcode: string, title: string|null, firstAuthor: string|null, year: number|null, citations: number, missions: string[] }[]}
+ */
+export function topPapers(rows, key, limit) {
+	const byBibcode = new Map();
+	for (const row of rows) {
+		const citations = Number(row[key] ?? 0);
+		const entry = byBibcode.get(row.bibcode) ?? { row, citations, shares: [] };
+		entry.shares.push({ mission: row.mission, citations });
+		if (citations > entry.citations) Object.assign(entry, { row, citations });
+		byBibcode.set(row.bibcode, entry);
+	}
+	return [...byBibcode.values()]
+		.map(({ row, citations, shares }) => ({ bibcode: row.bibcode, citations, row, shares }))
+		.sort(comparePapers)
+		.slice(0, limit)
+		.map(({ bibcode, citations, row, shares }) => ({
+			bibcode,
+			title: row.title ?? null,
+			firstAuthor: row.first_author ?? null,
+			year: row.year == null ? null : Number(row.year),
+			citations,
+			missions: shares
+				.sort((a, b) => b.citations - a.citations || (a.mission < b.mission ? -1 : a.mission > b.mission ? 1 : 0))
+				.map((s) => s.mission)
+		}));
+}

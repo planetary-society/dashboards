@@ -19,16 +19,16 @@
     }
   },
   "indices": {
-    "h": 61,
-    "m": 5.545,
+    "h": 62,
+    "m": 5.636,
     "i100": 27,
     "g": 99,
-    "tori": 37.62,
-    "riq": 511
+    "tori": 37.81,
+    "riq": 512
   },
   "facts": {
-    "papers": 821,
-    "citations": 18277,
+    "papers": 824,
+    "citations": 18294,
     "publicationYears": [
       2016,
       2026
@@ -49,7 +49,7 @@
       2026
     ],
     "papers": [
-      6,
+      7,
       94,
       48,
       60,
@@ -59,26 +59,26 @@
       75,
       106,
       112,
-      73
+      75
     ],
     "citations": [
       4,
-      541,
-      598,
-      777,
-      1645,
+      548,
+      599,
+      778,
+      1650,
       1647,
       1966,
       2308,
-      2816,
+      2818,
       3383,
-      2592
+      2593
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 18277,
-      "observed": 18277,
+      "expected": 18294,
+      "observed": 18294,
       "missing": 0
     }
   },
@@ -236,14 +236,14 @@
     },
     "lifetime": {
       "bins": [
-        108.985,
-        116.67,
-        112.279,
-        86.712,
-        100.844,
-        89.394,
-        77.689,
-        56.427,
+        109.716,
+        117.017,
+        112.164,
+        87.005,
+        101.192,
+        90.406,
+        77.876,
+        56.623,
         36,
         36
       ],
@@ -315,11 +315,11 @@
     }
   },
   "lifetime": {
-    "papers": 821,
+    "papers": 824,
     "outputBasis": "measured",
-    "citations": 18277,
-    "top10": 78.058,
-    "top10ShareOfDivision": 0.05728,
+    "citations": 18294,
+    "top10": 77.608,
+    "top10ShareOfDivision": 0.05694,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -330,10 +330,10 @@
       "date": "2016-03-00"
     },
     "spread": {
-      "mean": 22.262,
+      "mean": 22.201,
       "median": 11,
-      "uncited": 82,
-      "i10": 441,
+      "uncited": 84,
+      "i10": 442,
       "i100": 27
     }
   },
@@ -341,15 +341,15 @@
     "arms": "((=abs:\"Juno mission\" OR =abs:\"Juno spacecraft\" OR =abs:\"Jupiter Near-polar Orbiter\" OR ((=abs:Juno OR abs:JIRAM OR =abs:JunoCam) AND (abs:Jupiter OR abs:Jovian OR abs:Io OR abs:Europa OR abs:Ganymede OR abs:Callisto OR abs:Thebe OR abs:Amalthea OR abs:Adrastea OR abs:Metis))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2016-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Juno+mission%22+OR+%3Dabs%3A%22Juno+spacecraft%22+OR+%3Dabs%3A%22Jupiter+Near-polar+Orbiter%22+OR+%28%28%3Dabs%3AJuno+OR+abs%3AJIRAM+OR+%3Dabs%3AJunoCam%29+AND+%28abs%3AJupiter+OR+abs%3AJovian+OR+abs%3AIo+OR+abs%3AEuropa+OR+abs%3AGanymede+OR+abs%3ACallisto+OR+abs%3AThebe+OR+abs%3AAmalthea+OR+abs%3AAdrastea+OR+abs%3AMetis%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2016-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T17:52:55.466154+00:00",
+    "fetchedAt": "2026-10-04T05:37:16.775444+00:00",
     "reconciliation": {
-      "adsReturned": 839,
+      "adsReturned": 841,
       "curatedOut": 19,
-      "curatedIn": 2,
+      "curatedIn": 3,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 1,
-      "final": 821
+      "final": 824
     }
   },
   "curation": {
@@ -369,6 +369,14 @@
         "reason": "Laboratory gas absorption measurements made to support Juno microwave radiometer retrievals.",
         "authority": "agent",
         "date": "2026-10-02"
+      },
+      {
+        "bibcode": "2016Ap&SS.361..272A",
+        "doi": null,
+        "title": "Juno's Earth flyby: the Jovian infrared Auroral Mapper preliminary results",
+        "reason": "Mission's first published science result: JIRAM infrared observations of the Earth and Moon during the 2013 Earth flyby.",
+        "authority": "agent",
+        "date": "2026-10-04"
       }
     ],
     "excludes": [
@@ -592,7 +600,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 333
+      "citations": 334
     },
     {
       "bibcode": "2017SSRv..213...39C",
@@ -601,7 +609,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 324
+      "citations": 323
     },
     {
       "bibcode": "2018GeoRL..45.2590C",
@@ -655,7 +663,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 201
+      "citations": 200
     },
     {
       "bibcode": "2017SSRv..213..219B",
@@ -700,7 +708,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 179
+      "citations": 178
     },
     {
       "bibcode": "2018Natur.555..227G",
@@ -749,6 +757,6 @@
     }
   ],
   "papersFile": {
-    "rows": 821
+    "rows": 824
   }
 }

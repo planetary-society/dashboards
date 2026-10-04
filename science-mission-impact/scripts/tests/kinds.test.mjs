@@ -68,6 +68,9 @@ describe('buildKinds', () => {
 		assert.equal(k.majorityNonScience, 2);
 	});
 
+	it('spans the in-window citations of every mission paper, out-of-window rows left out', () => {
+		assert.deepEqual(build().citationRange, { min: 5, max: 40 });
+	});
 	it('sums the small corpora: above the cap and zero-paper missions excluded', () => {
 		// mixed has 3 papers (over the cap of 2), empty has 0; only rev qualifies
 		assert.deepEqual(build().small, {

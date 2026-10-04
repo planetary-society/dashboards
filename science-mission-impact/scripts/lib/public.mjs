@@ -109,6 +109,7 @@ export function buildDiscussion(divisions, { thresholdCost, scope = 'full', timi
 		} : null,
 		timingDivision: rankable.some((d) => d.slug === timingDivision) ? timingDivision : null,
 		timing: rankable.map((d) => timingFacts(d, d.missions.filter(measured), stats, under)),
+		scienceStart: scienceStartFacts(all, stats),
 		perDollar: rankable.map((d) => perDollarFacts(d, d.missions.filter(measured), stats, sides)),
 		missingCosts: all.filter((m) => !hasCost(m)).length
 	};
@@ -241,6 +242,30 @@ function timingFacts(division, members, stats, isUnder) {
 		fastest: first ? { id: first.id, name: first.name, cost: first.cost, years: years(first) } : null,
 		medianYears: round(median(reached.map(years)), 3),
 		byCostThird: costThirds(reached, years)
+	};
+}
+
+/**
+ * Months from the start of science operations to a first top-10% paper, every division's costed
+ * missions together (each paper ranked within its own division), as the overview's timing chart
+ * plots them: medians in four equal-count cost groups, cheapest first. `ratio` is the cheapest
+ * group's median over the costliest's. Null below twelve missions.
+ */
+function scienceStartFacts(missions, stats, k = 4) {
+	const months = (m) => stats(m).first.yearsFromScienceStart * 12;
+	const reached = missions
+		.filter((m) => hasCost(m) && stats(m).first?.state === 'reached' && Number.isFinite(stats(m).first.yearsFromScienceStart))
+		.sort((a, b) => a.cost - b.cost || byText(a.id, b.id));
+	if (reached.length < k * 3) return null;
+	const group = (list) => ({ missions: list.length, months: round(median(list.map(months)), 1) });
+	const groups = Array.from({ length: k }, (_, i) => {
+		const list = reached.slice(Math.round((i * reached.length) / k), Math.round(((i + 1) * reached.length) / k));
+		return { lo: list[0].cost, hi: list.at(-1).cost, ...group(list) };
+	});
+	return {
+		missions: reached.length,
+		groups,
+		ratio: groups.at(-1).months > 0 ? round(groups[0].months / groups.at(-1).months, 2) : null
 	};
 }
 

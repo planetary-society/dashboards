@@ -253,6 +253,19 @@ export interface MissionIndexEntry {
 	hasThumb: boolean;
 }
 
+export interface DivisionScopeStats {
+	missions: number; // missions pooled in the scope
+	papers: number; // distinct papers in the division pool
+	citations: number;
+	mean: number | null; // citations per paper, weight()-rounded
+	median: number | null;
+	uncited: number; // papers with 0 citations
+	hIndex: number | null; // h-index of the pooled papers
+	topDecileCitationShare: number | null; // share of the pool's citations held by its 10% most-cited papers (0..1, share()-rounded)
+	/** smi.config.json tierPercents order. citations = the fewest a paper needs to rank in the top `percent`; papers = distinct papers at or above it, ties included. */
+	cutoffs: { percent: number; citations: number; papers: number }[];
+}
+
 /** generated/divisions/<slug>.json */
 export interface Division {
 	slug: DivisionSlug;
@@ -263,8 +276,8 @@ export interface Division {
 	/** The prime-phase windows combined; the full-mission scope has no month-by-month companion. */
 	windowSeries: WindowSeries & { missionsIncluded: number; missionsImmature: string[] };
 	mostCited: PaperRef | null;
-	/** pooled citation cutoffs, for footnotes */
-	cutoffs: Record<Scope, { 10: number; 1: number } | null>;
+	/** Pooled statistics of every paper from the division's missions, a shared paper once; null when a scope reports no pool. */
+	stats: Record<Scope, DivisionScopeStats | null>;
 	/** null when the division is not rankable. lifetime[1] is always null (top 1% needs a window). */
 	costCurves: { full: { 10: CostCurve; 1: CostCurve }; window: { 10: CostCurve; 1: CostCurve }; lifetime: { 10: CostCurve; 1: null } } | null;
 	/** Spearman rank correlation of each index with adjusted cost, over non-failed missions with a cost. */
@@ -272,11 +285,23 @@ export interface Division {
 	missions: MissionRow[];
 }
 
-/** Citation indices as computed upstream from the curated paper list. `m` moves with the calendar year of `Site.asOf`. */
+/** Citation indices as computed upstream from the curated paper list, lifetime scope. `m` moves with the calendar year of `Site.asOf`. */
 export interface MissionIndices {
 	h: number | null;
 	m: number | null; // h ÷ (as-of year − year of first refereed paper + 1)
 	i100: number | null; // papers with at least 100 citations
+	g: number | null; // largest g such that the g most-cited papers together hold at least g² citations
+	tori: number | null; // total research impact (reference- and author-normalised citations, self-citations removed), from the local citation graph; weight()-rounded
+	riq: number | null; // research impact quotient: 1000 × √tori ÷ years since the first paper
+}
+
+/** Mission doc only: the shape of one scope's citation distribution. */
+export interface CitationSpread {
+	mean: number | null; // citations ÷ papers from the source-reported totals; null when papers is null or 0; weight()-rounded
+	median: number | null; // median per-paper citation count in the scope, over the mission's paper rows; null when no papers
+	uncited: number | null; // papers with 0 citations in the scope
+	i10: number | null; // papers with ≥ 10 citations in the scope (upstream `<prefix>_thresholds.by_name.i10.count`)
+	i100: number | null; // the same at ≥ 100
 }
 
 export interface RankHistogram {
@@ -354,6 +379,8 @@ export interface PaperRef {
 	bibcode: string;
 	title: string;
 	firstAuthor: string | null;
+	authors?: string[] | null; // first four, ADS "Last, First" (byline() in format.js)
+	authorCount?: number | null;
 	year: number | null;
 	citations: number;
 	missionId?: string;
@@ -385,9 +412,10 @@ export interface Mission {
 	 * top1 = the part of bins[9] inside the division's top 1%. Pooled, not era-adjusted.
 	 */
 	ranks: Record<Scope, RankHistogram | null>;
-	full: MissionScopeStats & { status: string };
-	window: MissionScopeStats & { status: string };
-	lifetime: MissionScopeStats;
+	// spread is null when the scope's papers is null (unavailable is never a measured zero)
+	full: MissionScopeStats & { status: string; spread: CitationSpread | null };
+	window: MissionScopeStats & { status: string; spread: CitationSpread | null };
+	lifetime: MissionScopeStats & { spread: CitationSpread | null };
 	query: {
 		arms: string | null; // the mission-specific part of source_query
 		filters: string | null; // the standard tail, identical in form across missions
@@ -509,6 +537,8 @@ export interface KindFacts {
 	withPapers: number;
 	withoutPapers: number;
 	total: { papers: number; citations: number; byKind: KindCounts };
+	/** fewest and most in-window citations of one mission paper; null with no papers */
+	citationRange: { min: number; max: number } | null;
 	nonScience: { papers: number; paperShare: number | null; citations: number; citationShare: number | null };
 	/** The smallest corpora (0 < papers <= maxPapers, smi.config.json paperKinds.smallMax), where a single review can dominate the citations. */
 	small: {

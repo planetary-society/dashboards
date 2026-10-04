@@ -1,8 +1,7 @@
 <script>
-	import { fullWindowLabel, fullWindowText, publicationWindowText, windowLabel } from '$lib/copy/window.js';
+	import { fullWindowLabel, windowLabel } from '$lib/copy/window.js';
 	import Seo from '$lib/ui/Seo.svelte';
 	import EntityHeader from '$lib/ui/EntityHeader.svelte';
-	import { canonical, divisionHref, home } from '$lib/paths.js';
 	import { int, longDate, money, listify, spell } from '$lib/format.js';
 
 	let { data } = $props();
@@ -11,20 +10,9 @@
 	const fullPolicy = $derived(site.fullPolicy);
 	const grace = $derived(policy.maturityGraceMonths ?? 0);
 	const revisions = $derived(site.codeRevision?.split('+').filter(Boolean).map((r) => r.slice(0, 7)) ?? []);
-	const clps = $derived(site.clps);
 	const threshold = $derived(money(site.story.referenceCost));
 	// Organization contact, as in docs/shared/js/constants.js CONTACT.
 	const CONTACT_EMAIL = 'casey.dreier@planetary.org';
-	const sections = [
-		['challenges', 'Bibliometric challenges'], ['missions', 'What we included'],
-		['mission-papers', 'Tracked publications'],
-		['high-impact', 'Citations and credit'], ['windows', 'Comparison windows'],
-		['cost', 'Mission costs'], ['failures', 'Failed missions'],
-		['across-divisions', 'Figures across divisions'], ['per-dollar', 'Citations per dollar'],
-		['clps', 'Commercial lunar landers'], ['limits', 'Interpretation'], ['reproduce', 'Sources and snapshot'],
-		['citing', 'Citing and corrections'], ['image-credits', 'Image credits'],
-		['further-reading', 'Further reading']
-	];
 	const furtherReading = [
 		{
 			title: 'Space science & the space economy',
@@ -80,10 +68,6 @@
 		How we compare mission costs with tracked publications and citations.
 	</EntityHeader>
 
-	<nav class="contents" aria-label="On this page">
-		{#each sections as [id, label] (id)}<a href={`#${id}`}>{label}</a>{/each}
-	</nav>
-
 	<div class="body">
 		<section id="challenges">
 			<h2>The challenges of bibliometrics for space science missions</h2>
@@ -106,8 +90,8 @@
 			<p>We tailor each query to filter out obvious false positives from name or acronym collisions:
 				TRACE, for example, is both a space mission and a very common word. We also compared our query
 				outcomes to the managed collections of several missions with hand-curated publication sets. They
-				generally agree within 10%–25% of publication records. The one exception is GALEX, which differs
-				widely because many papers using its data do not name the mission in their abstracts. Since we’re
+				generally agree within 10%–25% of publication records, with a single exception, GALEX, differing
+				by a wide amount due to the pattern of not reporting the mission name in many abstracts. Since we’re
 				primarily comparing mission costs across orders of magnitude, this is well within acceptable limits.
 				We tested our outcomes with curated mission collections and found the overall comparative outcomes
 				remained consistent.</p>
@@ -128,15 +112,6 @@
 				in the study.</p>
 			<p>Comparisons stay within each division. Research communities differ in size, publishing practices,
 				and citation rates, so a higher count in one field does not mean its science is more valuable.</p>
-			<details>
-				<summary>Selection rules and mission counts</summary>
-				<dl>
-					{#each site.divisions as d (d.slug)}
-						<dt><a href={divisionHref(d.slug)}>{d.name}</a> · {int(d.missions)} missions</dt>
-						<dd>{site.filters?.[d.slug] ?? 'No selection rule supplied.'}</dd>
-					{/each}
-				</dl>
-			</details>
 		</section>
 
 		<section id="mission-papers">
@@ -171,18 +146,16 @@
 				age effects without removing every difference in citation opportunity.</p>
 			<p><b>Top-paper credit</b> can be fractional. Papers tied at the cutoff share the remaining credit,
 				and a paper attributed to several eligible missions shares its credit equally among them.</p>
-			<details>
-				<summary>Shared papers and percentile rules</summary>
-				<p>Each distinct paper appears once in its division’s reference pool. Mission publication counts
-					count whole papers, so adding mission totals can count a shared paper more than once. Top-paper
-					credit is divided only among eligible missions in the same division and comparison window.</p>
-				<p>Papers above a percentile cutoff receive full credit. Tied papers at the boundary share the
-					amount needed to reach the stated percentage. A short final year band joins the preceding
-					band; a small reference may remain below the target size.</p>
-				<p>The top 1% uses the division’s pooled citation distribution, without publication-year adjustment,
-					and is available only in the two windowed comparisons. It is a different reference from the
-					era-adjusted top 10%.</p>
-			</details>
+			<h3>Shared papers and percentile rules</h3>
+			<p>Each distinct paper appears once in its division’s reference pool. Mission publication counts
+				count whole papers, so adding mission totals can count a shared paper more than once. Top-paper
+				credit is divided only among eligible missions in the same division and comparison window.</p>
+			<p>Papers above a percentile cutoff receive full credit. Tied papers at the boundary share the
+				amount needed to reach the stated percentage. A short final year band joins the preceding
+				band; a small reference may remain below the target size.</p>
+			<p>The top 1% uses the division’s pooled citation distribution, without publication-year adjustment,
+				and is available only in the two windowed comparisons. It is a different reference from the
+				era-adjusted top 10%.</p>
 		</section>
 
 		<section id="windows">
@@ -253,49 +226,6 @@
 				division by division.</p>
 		</section>
 
-		<section id="per-dollar">
-			<h2>Citations per dollar</h2>
-			<p>Within each division, each side’s citations are divided by its summed adjusted cost and
-				reported per $100M. Divisions are kept apart. A side is said to be favored only when its higher
-				rate survives dropping any one measured mission from the division and recomputing both rates;
-				otherwise the rates are shown without a verdict.</p>
-		</section>
-
-		<section id="clps">
-			<h2>Commercial lunar landers</h2>
-			<p>The {clps.program} figure comes from a second export of the same records (the
-				<code>dist/latest</code> export), which includes missions too recent for the main study. It must
-				share this snapshot’s as-of date and schema versions.</p>
-			<p>The CLPS line is the running total of peer-reviewed papers across all CLPS landers, pooled, by
-				calendar month since the first CLPS launch on {longDate(clps.start)}. A paper claimed by more
-				than one lander counts once, at its earliest date. {listify(clps.comparators.map((c) => c.name))}
-				are aligned by months since the start of their own prime missions. The figure runs to
-				{int(clps.horizonMonths)} months, and a month is reported only once it has fully elapsed by the
-				as-of date.</p>
-		</section>
-
-		<section id="limits">
-			<h2>What these comparisons can tell us</h2>
-			<p>These are historical associations. Mission objectives, instruments, longevity, research
-				communities, and cost vary together. Publication and citation counts cannot establish that
-				spending caused an outcome, or that several smaller missions could deliver the capabilities of a larger one.</p>
-			<p><b>Time to a first top-10% paper</b> means the publication date of the earliest qualifying paper
-				in the current snapshot—not the later date when it earned enough citations. Division charts
-				measure from science start; the overview’s project-timing chart measures from formulation start.
-				The first top-10% paper is judged era-adjusted, like every top-10% figure. A paper dated with the
-				year only is placed at 1 July for these durations.
-				No observed milestone does not mean an infinite wait.</p>
-		</section>
-
-		<section id="other-measures">
-			<h2>Other citation measures</h2>
-			<dl>
-				<dt>h-index</dt><dd>The largest h for which h tracked papers each have at least h citations.</dd>
-				<dt>m-index</dt><dd>The h-index divided by the inclusive calendar-year span from the earliest
-					refereed paper’s ADS bibcode year to the snapshot year. It changes with time even if no new citations arrive.</dd>
-			</dl>
-		</section>
-
 		<section id="reproduce">
 			<h2>Sources and snapshot</h2>
 			<p>Mission dates and costs come from public NASA records.
@@ -313,10 +243,7 @@
 		</section>
 
 		<section id="citing">
-			<h2>Citing and corrections</h2>
-			<p>Please cite this site as: The Planetary Society, “Science Mission Impact,”
-				{canonical(home())}, data as of {longDate(site.asOf)}. A companion paper describing the
-				analysis in full is in preparation.</p>
+			<h2>Corrections</h2>
 			<p>If you find a missing or misattributed paper, a wrong date or cost, or any other error, write to
 				<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Mission pages list the query and every
 				tracked publication, which makes a specific correction easy to check.</p>
@@ -324,19 +251,7 @@
 
 		<section id="image-credits">
 			<h2>Image credits</h2>
-			<p>The mission squares are small greyscale crops of published images. Each name below links to
-				the image its square was cropped from, grouped by the site that hosts it.</p>
-			<details>
-				<summary>Image sources for {int(data.credits.reduce((n, g) => n + g.missions.length, 0))} missions</summary>
-				<dl>
-					{#each data.credits as group (group.host)}
-						<dt>{group.host} · {int(group.missions.length)}</dt>
-						<dd>
-							{#each group.missions as mission, i (mission.id)}{i ? ', ' : ''}<a href={mission.url}>{mission.name}</a>{/each}
-						</dd>
-					{/each}
-				</dl>
-			</details>
+			<p>NASA/ESA.</p>
 		</section>
 
 		<section id="further-reading">
@@ -354,21 +269,17 @@
 </div>
 
 <style>
-	.contents { display: flex; flex-wrap: wrap; gap: 12px 24px; padding-top: 8px; font-size: 14px; }
 	.body { max-width: 68ch; font-size: 16px; line-height: 1.8; }
 	section { margin-top: 56px; }
 	h2 { font-size: 24px; font-weight: 400; line-height: 1.4; margin-bottom: 16px; }
 	h3 { font-size: 17px; font-weight: 500; margin: 24px 0 8px; }
 	p + p { margin-top: 16px; }
-	details { margin-top: 20px; color: var(--dust); }
-	summary { color: var(--neptune-mid); cursor: pointer; }
-	details p, dl { margin-top: 16px; }
+	dl { margin-top: 16px; }
 	dt { margin-top: 16px; color: var(--white); }
 	dd { margin-top: 4px; overflow-wrap: anywhere; }
 	.reading li + li { margin-top: 24px; }
 	.reading p { margin-top: 4px; color: var(--dust); font-size: 14px; }
 	@media (max-width: 600px) {
 		section { margin-top: 40px; }
-		.contents { gap: 10px 20px; }
 	}
 </style>

@@ -21,11 +21,14 @@
   "indices": {
     "h": 49,
     "m": 1.633,
-    "i100": 24
+    "i100": 24,
+    "g": 80,
+    "tori": 51.84,
+    "riq": 239
   },
   "facts": {
     "papers": 158,
-    "citations": 7220,
+    "citations": 7222,
     "publicationYears": [
       1997,
       2026
@@ -126,13 +129,13 @@
       210,
       255,
       251,
-      209
+      211
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 7220,
-      "observed": 7220,
+      "expected": 7222,
+      "observed": 7222,
       "missing": 0
     }
   },
@@ -231,35 +234,42 @@
     "bibcode": "2001ApJ...552...57R",
     "title": "A Possible Cepheid-like Luminosity Estimator for the Long Gamma-Ray Bursts",
     "firstAuthor": "Reichart, Daniel E.",
+    "authors": [
+      "Reichart, Daniel E.",
+      "Lamb, Donald Q.",
+      "Fenimore, Edward E.",
+      "Ramirez-Ruiz, Enrico"
+    ],
+    "authorCount": 6,
     "year": 2001,
     "citations": 289
   },
   "ranks": {
     "full": {
       "bins": [
-        19.411,
-        8.835,
-        9.099,
-        3.655,
-        10.073,
-        7.22,
-        7.151,
-        11.247,
-        11.375,
-        11.934
+        19.433,
+        8.83,
+        9.119,
+        3.618,
+        10.077,
+        7.224,
+        7.148,
+        11.248,
+        11.386,
+        11.917
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        19.624,
-        11.552,
-        9.824,
-        6.571,
-        9.608,
-        5.796,
-        11.664,
-        10.361,
+        19.682,
+        11.536,
+        9.783,
+        6.624,
+        9.569,
+        5.803,
+        11.67,
+        10.335,
         10,
         5
       ],
@@ -267,15 +277,15 @@
     },
     "lifetime": {
       "bins": [
-        16.537,
-        10.625,
-        8.838,
+        16.406,
+        10.668,
+        8.927,
         15,
-        13.058,
-        16.292,
-        15.582,
-        19.448,
-        15.62,
+        12.943,
+        16.378,
+        15.573,
+        19.457,
+        15.65,
         27
       ],
       "top1": 0
@@ -304,6 +314,13 @@
       "status": "available",
       "months": 68,
       "citationBuckets": 10
+    },
+    "spread": {
+      "mean": 13.45,
+      "median": 8,
+      "uncited": 15,
+      "i10": 48,
+      "i100": 0
     }
   },
   "window": {
@@ -311,7 +328,7 @@
     "outputBasis": "measured",
     "citations": 1345,
     "top10": 8,
-    "top10ShareOfDivision": 0.01656,
+    "top10ShareOfDivision": 0.01657,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -329,12 +346,19 @@
       "status": "available",
       "months": 68,
       "citationBuckets": 10
+    },
+    "spread": {
+      "mean": 13.45,
+      "median": 8,
+      "uncited": 15,
+      "i10": 48,
+      "i100": 0
     }
   },
   "lifetime": {
     "papers": 158,
     "outputBasis": "measured",
-    "citations": 7220,
+    "citations": 7222,
     "top10": 9.617,
     "top10ShareOfDivision": 0.00706,
     "top1": null,
@@ -345,13 +369,20 @@
       "yearsFromFormulation": 4.167,
       "bibcode": "1997Sci...278.2106Y",
       "date": "1997-12-00"
+    },
+    "spread": {
+      "mean": 45.709,
+      "median": 23.5,
+      "uncited": 12,
+      "i10": 118,
+      "i100": 24
     }
   },
   "query": {
     "arms": "((=abs:\"NEAR Shoemaker\" OR =abs:\"Near Earth Asteroid Rendezvous\" OR =abs:\"NEAR spacecraft\" OR =abs:\"NEAR mission\" OR =abs:\"NEAR probe\" OR =abs:\"NEAR probes\" OR (=abs:\"NEAR flyby\" AND (title:Mathilde OR abs:Mathilde)) OR =abs:\"NEAR target 253 Mathilde\" OR =abs:\"NEAR observations\" OR =abs:\"NEAR results\" OR =abs:\"NEAR data\" OR =abs:\"NEAR images\" OR =abs:\"NEAR imaging\" OR =abs:\"NEAR found Eros\" OR =abs:\"NEAR space probe\" OR =abs:\"NEAR spacecraft images\" OR =abs:\"NEAR Doppler tracking\" OR =abs:\"NEAR Multispectral Imager\" OR =abs:\"NEAR multispectral imaging\" OR =title:\"NEAR at Eros\" OR =title:\"NEAR at Mathilde\" OR (abs:\"Near-Earth Asteroid Rendezvous\" AND (=title:\"433 Eros\" OR =title:\"253 Mathilde\"))) AND (title:Eros OR title:Mathilde OR =abs:\"433 Eros\" OR =abs:\"253 Mathilde\" OR (abs:Eros AND abs:asteroid) OR (abs:Mathilde AND abs:asteroid)))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1997-07 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22NEAR+Shoemaker%22+OR+%3Dabs%3A%22Near+Earth+Asteroid+Rendezvous%22+OR+%3Dabs%3A%22NEAR+spacecraft%22+OR+%3Dabs%3A%22NEAR+mission%22+OR+%3Dabs%3A%22NEAR+probe%22+OR+%3Dabs%3A%22NEAR+probes%22+OR+%28%3Dabs%3A%22NEAR+flyby%22+AND+%28title%3AMathilde+OR+abs%3AMathilde%29%29+OR+%3Dabs%3A%22NEAR+target+253+Mathilde%22+OR+%3Dabs%3A%22NEAR+observations%22+OR+%3Dabs%3A%22NEAR+results%22+OR+%3Dabs%3A%22NEAR+data%22+OR+%3Dabs%3A%22NEAR+images%22+OR+%3Dabs%3A%22NEAR+imaging%22+OR+%3Dabs%3A%22NEAR+found+Eros%22+OR+%3Dabs%3A%22NEAR+space+probe%22+OR+%3Dabs%3A%22NEAR+spacecraft+images%22+OR+%3Dabs%3A%22NEAR+Doppler+tracking%22+OR+%3Dabs%3A%22NEAR+Multispectral+Imager%22+OR+%3Dabs%3A%22NEAR+multispectral+imaging%22+OR+%3Dtitle%3A%22NEAR+at+Eros%22+OR+%3Dtitle%3A%22NEAR+at+Mathilde%22+OR+%28abs%3A%22Near-Earth+Asteroid+Rendezvous%22+AND+%28%3Dtitle%3A%22433+Eros%22+OR+%3Dtitle%3A%22253+Mathilde%22%29%29%29+AND+%28title%3AEros+OR+title%3AMathilde+OR+%3Dabs%3A%22433+Eros%22+OR+%3Dabs%3A%22253+Mathilde%22+OR+%28abs%3AEros+AND+abs%3Aasteroid%29+OR+%28abs%3AMathilde+AND+abs%3Aasteroid%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1997-07+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:25:38.771144+00:00",
+    "fetchedAt": "2026-09-30T17:49:08.398145+00:00",
     "reconciliation": {
       "adsReturned": 141,
       "curatedOut": 1,
@@ -597,6 +628,8 @@
       "bibcode": "2001ApJ...552...57R",
       "title": "A Possible Cepheid-like Luminosity Estimator for the Long Gamma-Ray Bursts",
       "firstAuthor": "Reichart, Daniel E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 289
     },
@@ -604,13 +637,17 @@
       "bibcode": "2004AREPS..32..539C",
       "title": "Space Weathering of Asteroid Surfaces",
       "firstAuthor": "Chapman, Clark R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
-      "citations": 244
+      "citations": 245
     },
     {
       "bibcode": "2000Sci...289.2088V",
       "title": "NEAR at Eros: Imaging and Spectral Results",
       "firstAuthor": "Veverka, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 232
     },
@@ -618,6 +655,8 @@
       "bibcode": "2005Icar..179..325R",
       "title": "The global effects of impact-induced seismic activity on fractured asteroid surface morphology",
       "firstAuthor": "Richardson, James E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 190
     },
@@ -625,6 +664,8 @@
       "bibcode": "2002Icar..155....3M",
       "title": "Determination of Shape, Gravity, and Rotational State of Asteroid 433 Eros",
       "firstAuthor": "Miller, J. K.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 181
     },
@@ -632,6 +673,8 @@
       "bibcode": "2001Natur.413..396R",
       "title": "The nature of ponded deposits on Eros",
       "firstAuthor": "Robinson, M. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 172
     },
@@ -639,6 +682,8 @@
       "bibcode": "2000Sci...289.2085Y",
       "title": "Radio Science Results During the NEAR-Shoemaker Spacecraft Rendezvous with Eros",
       "firstAuthor": "Yeomans, D. K.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 170
     },
@@ -646,6 +691,8 @@
       "bibcode": "1997Sci...278.2106Y",
       "title": "Estimating the Mass of Asteroid 253 Mathilde from Tracking Data During the NEAR Flyby",
       "firstAuthor": "Yeomans, D. K.",
+      "authors": null,
+      "authorCount": null,
       "year": 1997,
       "citations": 169
     },
@@ -653,6 +700,8 @@
       "bibcode": "1997Sci...278.2109V",
       "title": "NEAR's Flyby of 253 Mathilde: Images of a C Asteroid",
       "firstAuthor": "Veverka, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 1997,
       "citations": 168
     },
@@ -660,6 +709,8 @@
       "bibcode": "2001Natur.413..390V",
       "title": "The landing of the NEAR-Shoemaker spacecraft on asteroid 433 Eros",
       "firstAuthor": "Veverka, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 155
     },
@@ -667,6 +718,8 @@
       "bibcode": "2001Sci...292..484V",
       "title": "Imaging of Small-Scale Features on 433 Eros from NEAR: Evidence for a Complex Regolith",
       "firstAuthor": "Veverka, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 154
     },
@@ -674,6 +727,8 @@
       "bibcode": "2002Icar..155...18T",
       "title": "Eros: Shape, Topography, and Slope Processes",
       "firstAuthor": "Thomas, P. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 148
     },
@@ -681,6 +736,8 @@
       "bibcode": "2001A&A...370..909J",
       "title": "The afterglow of the short/intermediate-duration gamma-ray burst GRB 000301C: A jet at z=2.04",
       "firstAuthor": "Jensen, B. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 147
     },
@@ -688,6 +745,8 @@
       "bibcode": "2000Sci...289.2097Z",
       "title": "The Shape of 433 Eros from the NEAR-Shoemaker Laser Rangefinder",
       "firstAuthor": "Zuber, Maria T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 143
     },
@@ -695,6 +754,8 @@
       "bibcode": "2002M&PS...37.1651R",
       "title": "The geology of 433 Eros",
       "firstAuthor": "Robinson, M. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 138
     },
@@ -702,6 +763,8 @@
       "bibcode": "2008PhRvL.100i1102A",
       "title": "Anomalous Orbital-Energy Changes Observed during Spacecraft Flybys of Earth",
       "firstAuthor": "Anderson, John D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 132
     },
@@ -709,6 +772,8 @@
       "bibcode": "2005Icar..175..159C",
       "title": "Dust transport in photoelectron layers and the formation of dust ponds on Eros",
       "firstAuthor": "Colwell, Joshua E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 126
     },
@@ -716,6 +781,8 @@
       "bibcode": "2002Icar..155..189C",
       "title": "NEAR Infrared Spectrometer Photometry of Asteroid 433 Eros",
       "firstAuthor": "Clark, Beth E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 123
     },
@@ -723,6 +790,8 @@
       "bibcode": "1999Icar..140....3V",
       "title": "NEAR Encounter with Asteroid 253 Mathilde: Overview",
       "firstAuthor": "Veverka, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 122
     },
@@ -730,6 +799,8 @@
       "bibcode": "2000Sci...289.2101T",
       "title": "The Elemental Composition of Asteroid 433 Eros: Results of the NEAR-Shoemaker X-ray Spectrometer",
       "firstAuthor": "Trombka, J. I.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 122
     }

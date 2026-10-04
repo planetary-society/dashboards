@@ -21,7 +21,10 @@
   "indices": {
     "h": 1,
     "m": 0.143,
-    "i100": 0
+    "i100": 0,
+    "g": 1,
+    "tori": 0.059,
+    "riq": 243
   },
   "facts": {
     "papers": 1,
@@ -115,6 +118,13 @@
     "bibcode": "2020AdSpR..66....3M",
     "title": "MinXSS-2 CubeSat mission overview: Improvements from the successful MinXSS-1 mission",
     "firstAuthor": "Mason, James Paul",
+    "authors": [
+      "Mason, James Paul",
+      "Woods, Thomas N.",
+      "Chamberlin, Phillip C.",
+      "Jones, Andrew"
+    ],
+    "authorCount": 12,
     "year": 2020,
     "citations": 25
   },
@@ -188,6 +198,13 @@
       "status": "available",
       "months": 25,
       "citationBuckets": 6
+    },
+    "spread": {
+      "mean": 16,
+      "median": 16,
+      "uncited": 0,
+      "i10": 1,
+      "i100": 0
     }
   },
   "window": {
@@ -213,6 +230,13 @@
       "status": "available",
       "months": 25,
       "citationBuckets": 6
+    },
+    "spread": {
+      "mean": 16,
+      "median": 16,
+      "uncited": 0,
+      "i10": 1,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -229,13 +253,20 @@
       "yearsFromFormulation": null,
       "bibcode": null,
       "date": null
+    },
+    "spread": {
+      "mean": 25,
+      "median": 25,
+      "uncited": 0,
+      "i10": 1,
+      "i100": 0
     }
   },
   "query": {
     "arms": "((=abs:\"MinXSS-2\" AND abs:(solar OR \"X-ray\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2019-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22MinXSS-2%22+AND+abs%3A%28solar+OR+%22X-ray%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2019-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:31:28.555279+00:00",
+    "fetchedAt": "2026-09-30T18:10:24.733045+00:00",
     "reconciliation": {
       "adsReturned": 1,
       "curatedOut": 0,
@@ -255,6 +286,8 @@
       "bibcode": "2020AdSpR..66....3M",
       "title": "MinXSS-2 CubeSat mission overview: Improvements from the successful MinXSS-1 mission",
       "firstAuthor": "Mason, James Paul",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 25
     }

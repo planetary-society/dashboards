@@ -21,7 +21,10 @@
   "indices": {
     "h": 109,
     "m": 3.114,
-    "i100": 131
+    "i100": 131,
+    "g": 189,
+    "tori": 796.241,
+    "riq": 806
   },
   "facts": {
     "papers": 1635,
@@ -235,6 +238,11 @@
     "bibcode": "1998DSRI...45.1977M",
     "title": "Abyssal recipes II: energetics of tidal and wind mixing",
     "firstAuthor": "Munk, Walter",
+    "authors": [
+      "Munk, Walter",
+      "Wunsch, Carl"
+    ],
+    "authorCount": 2,
     "year": 1998,
     "citations": 1258
   },
@@ -243,9 +251,9 @@
       "bins": [
         245.13,
         211.417,
-        176.15,
-        124.216,
-        112.596,
+        176.11,
+        124.212,
+        112.64,
         97.088,
         92.683,
         56.388,
@@ -259,8 +267,8 @@
         52.586,
         41.79,
         34.922,
-        22.769,
-        20.832,
+        22.75,
+        20.852,
         31.761,
         19.408,
         14.535,
@@ -271,16 +279,16 @@
     },
     "lifetime": {
       "bins": [
-        89.645,
-        131.938,
-        150.082,
-        139.616,
-        165.765,
-        169.874,
-        179.977,
-        169.466,
-        216.772,
-        221.865
+        89.549,
+        131.81,
+        150.123,
+        139.688,
+        165.773,
+        169.889,
+        180.008,
+        169.478,
+        216.793,
+        221.888
       ],
       "top1": 27
     }
@@ -308,6 +316,13 @@
       "status": "available",
       "months": 183,
       "citationBuckets": 20
+    },
+    "spread": {
+      "mean": 5.8,
+      "median": 3,
+      "uncited": 210,
+      "i10": 214,
+      "i100": 0
     }
   },
   "window": {
@@ -333,6 +348,13 @@
       "status": "available",
       "months": 58,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 7.47,
+      "median": 4,
+      "uncited": 45,
+      "i10": 71,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -349,13 +371,20 @@
       "yearsFromFormulation": 9.415,
       "bibcode": "1993WRR....29.1839K",
       "date": "1993-06-00"
+    },
+    "spread": {
+      "mean": 40.265,
+      "median": 17,
+      "uncited": 86,
+      "i10": 1088,
+      "i100": 131
     }
   },
   "query": {
     "arms": "((((abs:TOPEX OR abs:\"TOPEX/Poseidon\") AND abs:(altimeter OR altimetry OR ocean OR sea OR satellite OR radiometer OR ionosphere OR electron OR geoid OR tide OR wave OR wind OR orbit OR data OR Poseidon OR Jason) -abs:\"topographic exposure\") OR =abs:\"Ocean Topography Experiment\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1992-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3ATOPEX+OR+abs%3A%22TOPEX%2FPoseidon%22%29+AND+abs%3A%28altimeter+OR+altimetry+OR+ocean+OR+sea+OR+satellite+OR+radiometer+OR+ionosphere+OR+electron+OR+geoid+OR+tide+OR+wave+OR+wind+OR+orbit+OR+data+OR+Poseidon+OR+Jason%29+-abs%3A%22topographic+exposure%22%29+OR+%3Dabs%3A%22Ocean+Topography+Experiment%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1992-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:17:45.620624+00:00",
+    "fetchedAt": "2026-09-30T17:56:04.009979+00:00",
     "reconciliation": {
       "adsReturned": 1641,
       "curatedOut": 4,
@@ -417,6 +446,8 @@
       "bibcode": "1998DSRI...45.1977M",
       "title": "Abyssal recipes II: energetics of tidal and wind mixing",
       "firstAuthor": "Munk, Walter",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 1258
     },
@@ -424,6 +455,8 @@
       "bibcode": "2000JGR...10519477D",
       "title": "Global high-resolution mapping of ocean circulation from TOPEX/Poseidon and ERS-1 and -2",
       "firstAuthor": "Ducet, N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 1255
     },
@@ -431,6 +464,8 @@
       "bibcode": "1998RaSc...33..565M",
       "title": "A global mapping technique for GPS-derived ionospheric total electron content measurements",
       "firstAuthor": "Mannucci, A. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 1070
     },
@@ -438,6 +473,8 @@
       "bibcode": "1994JGR....9924821E",
       "title": "TOPEX/POSEIDON tides estimated using a global inverse model",
       "firstAuthor": "Egbert, Gary D.",
+      "authors": null,
+      "authorCount": null,
       "year": 1994,
       "citations": 940
     },
@@ -445,6 +482,8 @@
       "bibcode": "2007GeoRL..3415606C",
       "title": "Global observations of large oceanic eddies",
       "firstAuthor": "Chelton, Dudley B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 900
     },
@@ -452,6 +491,8 @@
       "bibcode": "2018PNAS..115.2022N",
       "title": "Climate-change-driven accelerated sea-level rise detected in the altimeter era",
       "firstAuthor": "Nerem, R. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 676
     },
@@ -459,6 +500,8 @@
       "bibcode": "2000Natur.405..775E",
       "title": "Significant dissipation of tidal energy in the deep ocean inferred from satellite altimeter data",
       "firstAuthor": "Egbert, G. D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 608
     },
@@ -466,6 +509,8 @@
       "bibcode": "1996Sci...272..234C",
       "title": "Global Observations of Oceanic Rossby Waves",
       "firstAuthor": "Chelton, Dudley B.",
+      "authors": null,
+      "authorCount": null,
       "year": 1996,
       "citations": 564
     },
@@ -473,6 +518,8 @@
       "bibcode": "2003GeoRL..30.1275C",
       "title": "Modeling the barotropic response of the global ocean to atmospheric wind and pressure forcing - comparisons with observations",
       "firstAuthor": "Carrère, Loren",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 523
     },
@@ -480,6 +527,8 @@
       "bibcode": "2011AdSpR..47.1497C",
       "title": "SOLS: A lake database to monitor in the Near Real Time water level and storage variations from remote sensing data",
       "firstAuthor": "Crétaux, J.-F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 513
     },
@@ -487,6 +536,8 @@
       "bibcode": "1994JGR....9924369F",
       "title": "TOPEX/POSEIDON mission overview",
       "firstAuthor": "Fu, Lee-Lueng",
+      "authors": null,
+      "authorCount": null,
       "year": 1994,
       "citations": 510
     },
@@ -494,6 +545,8 @@
       "bibcode": "1997JPO....27.1743S",
       "title": "Global Characteristics of Ocean Variability Estimated from Regional TOPEX/POSEIDON Altimeter Measurements",
       "firstAuthor": "Stammer, Detlef",
+      "authors": null,
+      "authorCount": null,
       "year": 1997,
       "citations": 481
     },
@@ -501,6 +554,8 @@
       "bibcode": "2004Sci...304..555H",
       "title": "Decline of Subpolar North Atlantic Circulation During the 1990s",
       "firstAuthor": "Häkkinen, Sirpa",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 467
     },
@@ -508,6 +563,8 @@
       "bibcode": "2004JGRA..109.8302T",
       "title": "Global dayside ionospheric uplift and enhancement associated with interplanetary electric fields",
       "firstAuthor": "Tsurutani, Bruce",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 442
     },
@@ -515,6 +572,8 @@
       "bibcode": "2000JOce...56..567M",
       "title": "Ocean Tide Models Developed by Assimilating TOPEX/POSEIDON Altimeter Data into Hydrodynamical Model: A Global Model and a Regional Model around Japan",
       "firstAuthor": "Matsumoto, Koji",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 403
     },
@@ -522,6 +581,8 @@
       "bibcode": "2004JCli...17.2609C",
       "title": "Estimates of the Regional Distribution of Sea Level Rise over the 1950 2000 Period.",
       "firstAuthor": "Church, John A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 403
     },
@@ -529,6 +590,8 @@
       "bibcode": "2015HESS...19.4345S",
       "title": "DAHITI - an innovative approach for estimating water level time series over inland waters using multi-mission satellite altimetry",
       "firstAuthor": "Schwatke, C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 400
     },
@@ -536,6 +599,8 @@
       "bibcode": "2006JGRB..11110306S",
       "title": "A study of the seismic noise from its long-range correlation properties",
       "firstAuthor": "Stehly, L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 372
     },
@@ -543,6 +608,8 @@
       "bibcode": "2004JGRC..10912032R",
       "title": "A mean dynamic topography computed over the world ocean from altimetry, in situ measurements, and a geoid model",
       "firstAuthor": "Rio, M.-H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 340
     },
@@ -550,6 +617,8 @@
       "bibcode": "2001GeoRL..28..811J",
       "title": "Parameterizing tidal dissipation over rough topography",
       "firstAuthor": "Jayne, Steven R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 336
     }

@@ -68,7 +68,6 @@
 	}
 
 	const point = $derived(hover != null && life ? life.points[Math.min(hover, life.points.length - 1)] : null);
-	const readout = $derived(point ? `${point.year} · ${int(point.pub)} tracked publications · ${int(point.cite)} citations` : '');
 
 	const lifeLabel = $derived(
 		life
@@ -96,7 +95,6 @@
 	<figure class="panel">
 		<h2 class="chart-title">Lifetime</h2>
 		{#if incomplete}<p class="meta note">{coverageNote}</p>{/if}
-		<p class="readout meta" aria-hidden="true">{readout}</p>
 		<div class="plot">
 			<!-- the SVG's height is reserved before hydration measures the width, so nothing below jumps -->
 			<div class="canvas" role="img" aria-label={lifeLabel} bind:clientWidth={lifeWidth} style:min-height={life ? `${HEIGHT}px` : null}>
@@ -128,9 +126,16 @@
 						<text class="end cite" x={L.b.right} y={L.citeLabelY} text-anchor="end">{total(life.citeTotal)} {plural(life.citeTotal, 'citation')}</text>
 
 						{#if point}
-							<line class="cursor" x1={L.x(point.year)} x2={L.x(point.year)} y1={L.b.top} y2={L.b.bottom} />
-							<circle class="dot cite" cx={L.x(point.year)} cy={L.yCite(point.cite)} r="3" />
-							<circle class="dot pub" cx={L.x(point.year)} cy={L.yPub(point.pub)} r="3" />
+							{@const cx = L.x(point.year)}
+							{@const side = cx > (L.b.left + L.b.right) / 2 ? -1 : 1}
+							{@const anchor = side > 0 ? 'start' : 'end'}
+							<line class="cursor" x1={cx} x2={cx} y1={L.b.top} y2={L.b.bottom} />
+							<circle class="dot cite" cx={cx} cy={L.yCite(point.cite)} r="3" />
+							<circle class="dot pub" cx={cx} cy={L.yPub(point.pub)} r="3" />
+							<!-- Values beside their dots, the year by the axis; the lines are the context. -->
+							<text class="hover pub" x={cx + 8 * side} y={L.yPub(point.pub) - 8} text-anchor={anchor}>{int(point.pub)}</text>
+							<text class="hover cite" x={cx + 8 * side} y={L.yCite(point.cite) + 16} text-anchor={anchor}>{int(point.cite)}</text>
+							<text class="hover meta" x={cx + 8 * side} y={L.b.bottom - 8} text-anchor={anchor}>{point.year}</text>
 						{/if}
 
 						{#each L.ticks as t (t)}
@@ -290,6 +295,10 @@
 	.end.cite {
 		fill: var(--neptune-mid);
 	}
+
+	.hover { fill: var(--white); font: 500 12px var(--sans); paint-order: stroke; stroke: var(--black); stroke-width: 3px; stroke-linejoin: round; }
+	.hover.cite { fill: var(--neptune-mid); }
+	.hover.meta { fill: var(--dust); font-weight: 400; }
 
 	.cursor {
 		stroke: var(--shadow);

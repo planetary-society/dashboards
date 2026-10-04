@@ -21,11 +21,14 @@
   "indices": {
     "h": 32,
     "m": 1.778,
-    "i100": 3
+    "i100": 3,
+    "g": 47,
+    "tori": 7.94,
+    "riq": 156
   },
   "facts": {
     "papers": 157,
-    "citations": 3304,
+    "citations": 3303,
     "publicationYears": [
       2009,
       2026
@@ -75,7 +78,7 @@
     "citations": [
       105,
       89,
-      97,
+      96,
       105,
       144,
       147,
@@ -95,8 +98,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 3304,
-      "observed": 3304,
+      "expected": 3303,
+      "observed": 3303,
       "missing": 0
     }
   },
@@ -165,7 +168,7 @@
       0,
       104,
       89,
-      94,
+      93,
       87,
       39,
       6
@@ -175,35 +178,42 @@
     "bibcode": "2009JASTP..71..289R",
     "title": "The Aeronomy of Ice in the Mesosphere (AIM) mission: Overview and early science results",
     "firstAuthor": "Russell, James M., III",
+    "authors": [
+      "Russell, James M., III",
+      "Bailey, Scott M.",
+      "Gordley, Larry L.",
+      "Rusch, David W."
+    ],
+    "authorCount": 16,
     "year": 2009,
     "citations": 182
   },
   "ranks": {
     "full": {
       "bins": [
-        11.632,
-        16.615,
-        17.521,
-        14.825,
-        20.084,
-        17.465,
-        16.958,
-        15.503,
-        8.395,
+        12.173,
+        16.125,
+        17.576,
+        14.829,
+        20.057,
+        17.474,
+        16.916,
+        15.574,
+        8.276,
         4
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        2.29,
-        3.397,
-        2.095,
-        4.218,
-        2.018,
-        5.357,
-        2.334,
-        5.291,
+        2.534,
+        3.155,
+        2.105,
+        4.206,
+        2.047,
+        5.323,
+        2.302,
+        5.327,
         1,
         3
       ],
@@ -211,15 +221,15 @@
     },
     "lifetime": {
       "bins": [
-        11.667,
-        14.648,
-        18.122,
-        18.254,
-        16.2,
-        19.138,
-        23.985,
-        17.732,
-        10.253,
+        12.138,
+        14.114,
+        18.106,
+        18.172,
+        16.231,
+        19.065,
+        24.085,
+        17.632,
+        10.458,
         7
       ],
       "top1": 0
@@ -228,9 +238,9 @@
   "full": {
     "papers": 143,
     "outputBasis": "measured",
-    "citations": 1206,
+    "citations": 1205,
     "top10": 3,
-    "top10ShareOfDivision": 0.00208,
+    "top10ShareOfDivision": 0.00207,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -248,14 +258,21 @@
       "status": "available",
       "months": 199,
       "citationBuckets": 20
+    },
+    "spread": {
+      "mean": 8.427,
+      "median": 7,
+      "uncited": 6,
+      "i10": 48,
+      "i100": 0
     }
   },
   "window": {
     "papers": 31,
     "outputBasis": "measured",
-    "citations": 419,
+    "citations": 418,
     "top10": 1.05,
-    "top10ShareOfDivision": 0.00238,
+    "top10ShareOfDivision": 0.00237,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -273,14 +290,21 @@
       "status": "available",
       "months": 50,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 13.484,
+      "median": 11,
+      "uncited": 1,
+      "i10": 18,
+      "i100": 0
     }
   },
   "lifetime": {
     "papers": 157,
     "outputBasis": "measured",
-    "citations": 3304,
+    "citations": 3303,
     "top10": 2,
-    "top10ShareOfDivision": 0.00128,
+    "top10ShareOfDivision": 0.00127,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -289,13 +313,20 @@
       "yearsFromFormulation": 6.639,
       "bibcode": "2009JASTP..71..289R",
       "date": "2009-03-00"
+    },
+    "spread": {
+      "mean": 21.038,
+      "median": 14,
+      "uncited": 8,
+      "i10": 96,
+      "i100": 3
     }
   },
   "query": {
     "arms": "((=abs:\"Aeronomy of Ice in the Mesosphere\" OR =abs:\"Cloud Imaging and Particle Size\" OR =abs:\"Solar Occultation for Ice Experiment\" OR (abs:CIPS AND (abs:(mesosphere OR noctilucent) OR =abs:\"gravity wave\" OR =abs:\"gravity waves\")) OR (abs:SOFIE AND (abs:(mesosphere OR stratosphere OR thermosphere OR occultation OR meteoric) OR =abs:\"middle atmospheric\" OR =abs:\"middle atmosphere\")) OR (abs:AIM AND (abs:noctilucent OR =abs:\"polar mesospheric\") AND abs:(satellite OR spacecraft))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2007-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Aeronomy+of+Ice+in+the+Mesosphere%22+OR+%3Dabs%3A%22Cloud+Imaging+and+Particle+Size%22+OR+%3Dabs%3A%22Solar+Occultation+for+Ice+Experiment%22+OR+%28abs%3ACIPS+AND+%28abs%3A%28mesosphere+OR+noctilucent%29+OR+%3Dabs%3A%22gravity+wave%22+OR+%3Dabs%3A%22gravity+waves%22%29%29+OR+%28abs%3ASOFIE+AND+%28abs%3A%28mesosphere+OR+stratosphere+OR+thermosphere+OR+occultation+OR+meteoric%29+OR+%3Dabs%3A%22middle+atmospheric%22+OR+%3Dabs%3A%22middle+atmosphere%22%29%29+OR+%28abs%3AAIM+AND+%28abs%3Anoctilucent+OR+%3Dabs%3A%22polar+mesospheric%22%29+AND+abs%3A%28satellite+OR+spacecraft%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2007-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:30:30.154750+00:00",
+    "fetchedAt": "2026-09-30T18:08:37.924730+00:00",
     "reconciliation": {
       "adsReturned": 157,
       "curatedOut": 0,
@@ -436,6 +467,8 @@
       "bibcode": "2009JASTP..71..289R",
       "title": "The Aeronomy of Ice in the Mesosphere (AIM) mission: Overview and early science results",
       "firstAuthor": "Russell, James M., III",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 182
     },
@@ -443,6 +476,8 @@
       "bibcode": "2009JASTP..71..300G",
       "title": "The solar occultation for ice experiment",
       "firstAuthor": "Gordley, Larry L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 122
     },
@@ -450,6 +485,8 @@
       "bibcode": "2009JASTP..71..531E",
       "title": "High-altitude data assimilation system experiments for the northern summer mesosphere season of 2007",
       "firstAuthor": "Eckermann, Stephen D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 106
     },
@@ -457,6 +494,8 @@
       "bibcode": "2009JASTP..71..316H",
       "title": "Interpretation of SOFIE PMC measurements: Cloud identification and derivation of mass density, particle shape, and particle size",
       "firstAuthor": "Hervig, Mark E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 84
     },
@@ -464,6 +503,8 @@
       "bibcode": "2009JASTP..71..340M",
       "title": "The cloud imaging and particle size experiment on the Aeronomy of Ice in the mesosphere mission: Instrument concept, design, calibration, and on-orbit performance",
       "firstAuthor": "McClintock, W. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 82
     },
@@ -471,6 +512,8 @@
       "bibcode": "2009GeoRL..3618805H",
       "title": "First Satellite Observations of Meteoric Smoke in the Middle Atmosphere",
       "firstAuthor": "Hervig, Mark E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 77
     },
@@ -478,6 +521,8 @@
       "bibcode": "2013JGRD..118.5803S",
       "title": "Satellite observations of ozone in the upper mesosphere",
       "firstAuthor": "Smith, A. K.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 77
     },
@@ -485,6 +530,8 @@
       "bibcode": "2009JGRD..11420203H",
       "title": "Relationships between polar mesospheric clouds, temperature, and water vapor from Solar Occultation for Ice Experiment (SOFIE) observations",
       "firstAuthor": "Hervig, Mark E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 69
     },
@@ -492,6 +539,8 @@
       "bibcode": "2012JASTP..84....1H",
       "title": "The content and composition of meteoric smoke in mesospheric ice particles from SOFIE observations",
       "firstAuthor": "Hervig, Mark E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 66
     },
@@ -499,6 +548,8 @@
       "bibcode": "2013JASTP.104..167L",
       "title": "Retrieval of polar mesospheric cloud properties from CIPS: Algorithm description, error analysis and cloud detection sensitivity",
       "firstAuthor": "Lumpe, J. D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 66
     },
@@ -506,6 +557,8 @@
       "bibcode": "2009JASTP..71..373B",
       "title": "Phase functions of polar mesospheric cloud ice as observed by the CIPS instrument on the AIM satellite",
       "firstAuthor": "Bailey, Scott M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 64
     },
@@ -513,6 +566,8 @@
       "bibcode": "2009JASTP..71..356R",
       "title": "The cloud imaging and particle size experiment on the aeronomy of ice in the mesosphere mission: Cloud morphology for the northern 2007 season",
       "firstAuthor": "Rusch, D. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 58
     },
@@ -520,6 +575,8 @@
       "bibcode": "2010JGRD..11513102C",
       "title": "Polar mesospheric cloud structures observed from the cloud imaging and particle size experiment on the Aeronomy of Ice in the Mesosphere spacecraft: Atmospheric gravity waves as drivers for longitudinal variability in polar mesospheric cloud occurrence",
       "firstAuthor": "Chandran, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 57
     },
@@ -527,6 +584,8 @@
       "bibcode": "2009GeoRL..3620802K",
       "title": "Intra-seasonal variability of polar mesospheric clouds due to inter-hemispheric coupling",
       "firstAuthor": "Karlsson, B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 56
     },
@@ -534,6 +593,8 @@
       "bibcode": "2016JGRD..121.2383H",
       "title": "Decadal variability in PMCs and implications for changing temperature and water vapor in the upper mesosphere",
       "firstAuthor": "Hervig, Mark E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 48
     },
@@ -541,6 +602,8 @@
       "bibcode": "2009JASTP..71..392C",
       "title": "Gravity wave observations in the summertime polar mesosphere from the Cloud Imaging and Particle Size (CIPS) experiment on the AIM spacecraft",
       "firstAuthor": "Chandran, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 45
     },
@@ -548,6 +611,8 @@
       "bibcode": "2010JGRD..11518111N",
       "title": "Seasonal variation of the quasi 5 day planetary wave: Causes and consequences for polar mesospheric cloud variability in 2007",
       "firstAuthor": "Nielsen, K.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 43
     },
@@ -555,6 +620,8 @@
       "bibcode": "2014GeoRL..41.5216B",
       "title": "A multi tracer analysis of thermosphere to stratosphere descent triggered by the 2013 Stratospheric Sudden Warming",
       "firstAuthor": "Bailey, S. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 43
     },
@@ -562,6 +629,8 @@
       "bibcode": "2009JASTP..71..365B",
       "title": "Comparison of polar mesospheric cloud measurements from the Cloud Imaging and Particle Size experiment and the solar backscatter ultraviolet instrument in 2007",
       "firstAuthor": "Benze, Susanne",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 41
     },
@@ -569,6 +638,8 @@
       "bibcode": "2010JGRD..11510204B",
       "title": "Numerical simulations of the three-dimensional distribution of polar mesospheric clouds and comparisons with Cloud Imaging and Particle Size (CIPS) experiment and the Solar Occultation For Ice Experiment (SOFIE) observations",
       "firstAuthor": "Bardeen, C. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 41
     }

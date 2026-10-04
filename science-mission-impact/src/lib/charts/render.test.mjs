@@ -14,6 +14,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { compile } from 'svelte/compiler';
 import { render } from 'svelte/server';
+import { missionMeasureGroups, divisionMeasureGroups } from '../copy/measures.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const lib = join(here, '..');
@@ -25,9 +26,10 @@ const dataUrl = (code) => `data:text/javascript,${encodeURIComponent(code).repla
 const PATHS_STUB = dataUrl(`
 	export const missionHref = (slug, id) => \`/\${slug}/\${id}/\`;
 	export const thumbSrc = (id) => \`/img/missions/\${id}.webp\`;
+	export const methodsHref = (anchor = '') => '/methods/' + (anchor ? '#' + anchor : '');
 `);
 
-const viewStub = (scope, top) => dataUrl(`export const view = { scope: ${JSON.stringify(scope)}, top: ${top} };`);
+const viewStub = (scope, top) => dataUrl(`export const view = { scope: ${JSON.stringify(scope)}, top: ${top} }; export const setScope = () => {}; export const setTop = () => {};`);
 
 /** One specifier as something node can import. A component a chart uses is compiled in turn. */
 async function resolveSpec(spec, dir, ctx) {
@@ -61,11 +63,12 @@ test('division timeline defaults to annual counts and keeps missing citations ex
 		years: [2000, 2001], papers: [2, 3], citations: [5, 7], partialFromYear: 2001,
 		citationCoverage: { status: 'incomplete', expected: 13, observed: 12, missing: 1 }
 	} } }).body;
-	assert.match(body, /2001: 3 tracked publications · 7 citations/);
-	assert.match(body, /Dashed from 2001/);
+	assert.match(body, /class="swatch pub[^>]*><\/i>Tracked publications/);
+	assert.match(body, /class="swatch cite[^>]*><\/i>Citations/);
+	assert.doesNotMatch(body, /<b[^>]*>2001/, 'no readout outside the plot');
+	assert.match(body, /Dashed: 2001 is not yet a full year/);
 	assert.match(body, /12 of 13 reported citations/);
-	assert.doesNotMatch(body, /type="range"/);
-	assert.match(body, /Tap or drag across either plot/);
+	assert.doesNotMatch(body, /Tap or drag|Lifetime ·/);
 	assert.doesNotMatch(body, /NaN|undefined/);
 });
 
@@ -79,8 +82,8 @@ test('selected mission readouts follow the window and retain unavailable states'
 	assert.match(render(Full, { props }).body, /24 months after science start/);
 	const Window = await load('TimeToScience.svelte', { scope: 'window' });
 	assert.match(render(Window, { props }).body, /no recorded timing in this window/);
-	const Scatter = await load('PublicationScatter.svelte', { scope: 'window' });
-	assert.match(render(Scatter, { props }).body, /scores unavailable in this window/);
+	const Bars = await load('TopShareBars.svelte', { scope: 'window' });
+	assert.match(render(Bars, { props }).body, /Selected mission: not measured in this scope/);
 });
 
 test('mission squares select in division charts and preserve links elsewhere', async () => {
@@ -101,12 +104,12 @@ test('TimeToScience explains the axes and omitted missions in prerendered HTML',
 		{ id: 'early', name: 'Early', cost: 10, full: { first: { state: 'reached', yearsFromScienceStart: -1 } } },
 		{ id: 'none', name: 'None', cost: 100, full: { first: { state: 'none', yearsFromScienceStart: null } } }
 	];
-	const body = render(Component, { props: { missions, slug: 'earth', referenceCost: 100 } }).body;
+	const body = render(Component, { props: { missions, slug: 'earth' } }).body;
 	assert.match(body, /1 of 2 missions/);
 	assert.match(body, /farther left reached its first top-10% paper sooner after science operations began/);
 	assert.match(body, /12 months before science start/);
 	assert.match(body, /Negative months/);
-	assert.match(body, /No top-10% paper observed \(1\): None/);
+	assert.doesNotMatch(body, /<details|Not plotted|Not shown/);
 	const empty = render(Component, { props: { missions: [], slug: 'earth' } }).body;
 	assert.match(empty, /No missions with an observed milestone/);
 	assert.doesNotMatch(empty, /NaN|undefined/);
@@ -162,9 +165,10 @@ test('AccumulationPair says so when the window is missing or immature', async ()
 });
 
 const missions = [
-	{ id: 'alpha', name: 'Alpha', full: { top10: 6, top1: 1 }, window: { top10: 6, top1: 1 }, lifetime: { top10: 6, top1: null } },
-	{ id: 'bravo', name: 'Bravo', full: { top10: 2.5, top1: 0 }, window: { top10: 2.5, top1: 0 }, lifetime: { top10: 2.5, top1: null } },
-	{ id: 'hubble', name: 'Hubble', full: { top10: 38, top1: 9 }, window: { top10: 38, top1: 9 }, lifetime: { top10: 38, top1: null } },
+	// own credits that sum to the curve's shares below: 0, 3 of 10, 10 of 10
+	{ id: 'alpha', name: 'Alpha', full: { top10: 0, top1: 0 }, window: { top10: 0, top1: 0 }, lifetime: { top10: 0, top1: null } },
+	{ id: 'bravo', name: 'Bravo', full: { top10: 3, top1: 0 }, window: { top10: 3, top1: 0 }, lifetime: { top10: 3, top1: null } },
+	{ id: 'hubble', name: 'Hubble', full: { top10: 7, top1: 9 }, window: { top10: 7, top1: 9 }, lifetime: { top10: 7, top1: null } },
 	{ id: 'quiet', name: 'Quiet', full: { top10: 1, top1: 0 }, window: { top10: 1, top1: 0 }, lifetime: { top10: 1, top1: null } }
 ];
 
@@ -189,14 +193,16 @@ const costCurves = {
 	lifetime: { 10: null, 1: null }
 };
 
-test('CostCurve prerenders the takeaway and the summary, and draws nothing unmeasured', async () => {
+// the readout wraps its numbers in <b>; Svelte adds <!----> anchors
+const costText = (body) => body.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ');
+
+test('CostCurve prerenders the summary and draws nothing unmeasured', async () => {
 	for (const scope of ['full', 'window']) {
 		const Component = await load('CostCurve.svelte', { scope });
-		const { body } = render(Component, { props: { costCurves, missions, slug: 'astrophysics' } });
-		assert.match(body, /Missions up to \$120M account for the first quarter of the division’s top-10% papers and 6.4% of its spending\./, scope);
-		assert.match(body, /The middle half of the top-10% papers comes from missions costing \$120M to \$1\.0B\./, scope);
+		const { body } = render(Component, { props: { costCurves, missions, slug: 'astrophysics', referenceCost: 150 } });
+		assert.doesNotMatch(costText(body), /Missions costing|papers, running total/, scope);
 		assert.match(body, /One mission has no cost on record and is not shown\./, scope);
-		assert.match(body, /Running share of top-10% papers/, scope);
+		assert.match(body, /Running total of the division’s top-10% papers, adding missions from cheapest to costliest/, scope);
 		assert.ok(!body.includes('<svg'), 'no chart is drawn before the stage is measured');
 		assert.ok(!body.includes('NaN'));
 	}
@@ -205,50 +211,23 @@ test('CostCurve prerenders the takeaway and the summary, and draws nothing unmea
 test('CostCurve reads the curve of the selected scope, full by default', async () => {
 	const onlyFull = { ...costCurves, window: { 10: null, 1: null } };
 	const Default = await load('CostCurve.svelte');
-	assert.match(render(Default, { props: { costCurves: onlyFull, missions, slug: 'astrophysics' } }).body, /Missions up to \$120M/);
+	assert.match(costText(render(Default, { props: { costCurves: onlyFull, missions, slug: 'astrophysics', referenceCost: 150 } }).body), /: 10 papers across/);
+	// the selected mission's readout states its own credit and the running total
+	const picked = render(Default, { props: { costCurves: onlyFull, missions, slug: 'astrophysics', referenceCost: 150, selectedId: 'bravo' } }).body;
+	assert.match(picked, /Bravo: \$120M · 3 top-10% papers · 3 for all missions up to this cost/);
 	const Window = await load('CostCurve.svelte', { scope: 'window' });
 	assert.match(render(Window, { props: { costCurves: onlyFull, missions, slug: 'astrophysics' } }).body, /Not available for this view\./);
 });
 
 test('CostCurve says so when the view has no curve', async () => {
-	const Component = await load('CostCurve.svelte', { scope: 'lifetime', top: 1 });
-	assert.match(render(Component, { props: { costCurves, missions, slug: 'astrophysics' } }).body, /Not available for this view\./);
+	// the tier is the page's `top` prop, not the view's
+	const Component = await load('CostCurve.svelte', { scope: 'lifetime' });
+	assert.match(render(Component, { props: { costCurves, missions, slug: 'astrophysics', top: 1 } }).body, /Not available for this view\./);
 	for (const scope of ['full', 'window']) {
-		const empty = await load('CostCurve.svelte', { scope, top: 1 });
-		assert.match(render(empty, { props: { costCurves, missions, slug: 'astrophysics' } }).body, /Not available for this view\./, scope);
-		assert.match(render(empty, { props: { costCurves: null, missions, slug: 'astrophysics' } }).body, /Not available for this view\./, scope);
+		const empty = await load('CostCurve.svelte', { scope });
+		assert.match(render(empty, { props: { costCurves, missions, slug: 'astrophysics', top: 1 } }).body, /Not available for this view\./, scope);
+		assert.match(render(empty, { props: { costCurves: null, missions, slug: 'astrophysics', top: 1 } }).body, /Not available for this view\./, scope);
 	}
-});
-
-test('RankHistogram prerenders ten bars, the top-1% cap and the computed sentence', async () => {
-	const Component = await load('RankHistogram.svelte');
-	const { body } = render(Component, { props: { ranks: { bins: [50, 40, 30, 30, 20, 10, 8, 6, 4, 2], top1: 0.5 } } });
-	assert.equal((body.match(/class="bar[ "]/g) ?? []).length, 10);
-	assert.equal((body.match(/class="cap[ "]/g) ?? []).length, 1);
-	assert.match(body, /1\.0% of this mission’s 200 papers are in the division’s top tenth by raw citations; 10% would be an even spread\./);
-	assert.match(body, /Even spread: 20 per bar/);
-	assert.ok(!body.includes('NaN'));
-});
-
-test('RankHistogram uses one number rule on the bars and in the key', async () => {
-	const Component = await load('RankHistogram.svelte');
-	const values = (body) => [...body.matchAll(/class="value meta[^"]*"[^>]*>([^<]*)</g)].map((m) => m[1]);
-	// shared credit: one decimal everywhere, so no bare "0" beside "0.9"
-	const shared = render(Component, { props: { ranks: { bins: [0, 0, 0.9, 0.6, 0.5, 0.5, 0.5, 0.98, 0.02, 1], top1: 0 } } }).body;
-	assert.deepEqual(values(shared), ['0.0', '0.0', '0.9', '0.6', '0.5', '0.5', '0.5', '1.0', '0.0', '1.0']);
-	assert.match(shared, /Even spread: 0\.5 per bar/);
-	// whole papers: integers on the bars; the even line is a mean and keeps its decimal
-	const whole = render(Component, { props: { ranks: { bins: [0, 1, 2, 0, 0, 0, 1, 0, 0, 1], top1: 1 } } }).body;
-	assert.deepEqual(values(whole), ['0', '1', '2', '0', '0', '0', '1', '0', '0', '1']);
-	assert.match(whole, /Even spread: 0\.5 per bar/);
-	assert.match(whole, /Top 1%: 1 paper/);
-});
-
-test('RankHistogram says when the view has no histogram', async () => {
-	const Component = await load('RankHistogram.svelte');
-	assert.match(render(Component, { props: { ranks: null } }).body, /Not available for this view\./);
-	// icecube and mars_observer really are like this: papers over a lifetime, none in the window
-	assert.match(render(Component, { props: { ranks: { bins: new Array(10).fill(0), top1: 0 } } }).body, /No papers in this view\./);
 });
 
 const indexMissions = [
@@ -304,25 +283,29 @@ test('division companion replaces the prime-phase panel while retaining the life
 	assert.doesNotMatch(body, /3-year window|publication window is not available/);
 });
 
-test('PublicationScatter prerenders selected-scope values, zero states and unavailable names', async () => {
+test('TopShareBars prerenders selected-scope top-paper counts and unmeasured names', async () => {
 	const rows = [
 		{ id: 'a', name: 'Alpha', full: { papers: 100, top10: 12.5, outputBasis: 'measured' }, window: { papers: 10, top10: 2, outputBasis: 'measured' } },
+		{ id: 'd', name: 'Delta', full: { papers: 50, top10: 2.5, outputBasis: 'measured' } },
 		{ id: 'b', name: 'Beta', failed: true, full: { papers: 0, top10: 0, outputBasis: 'assumed_zero' } },
 		{ id: 'c', name: 'Gamma', full: { papers: null, top10: null, outputBasis: 'unavailable' } }
 	];
-	const Component = await load('PublicationScatter.svelte');
-	const { body } = render(Component, { props: { missions: rows, slug: 'earth' } });
-	assert.match(body, /100 tracked publications · 12.5 top-10% paper credit/);
-	assert.match(body, /Division reference: 12.5 credits per 100 tracked publications/);
-	assert.match(body, /No tracked publications: 1 mission/);
-	assert.match(body, /Assumed zero output/);
-	assert.match(body, /Scores unavailable: 1 mission/);
-	assert.match(body, /Gamma\./);
-	const Window = await load('PublicationScatter.svelte', { scope: 'window' });
-	assert.match(render(Window, { props: { missions: rows, slug: 'earth' } }).body, /Division reference: 20 credits per 100 tracked publications/);
+	const Component = await load('TopShareBars.svelte');
+	const { body } = render(Component, { props: { missions: rows, slug: 'earth', selectedId: 'a', onselect: () => {} } });
+	assert.match(body, /aria-pressed="true"[^>]*aria-label="Alpha: 13"/);
+	assert.match(body, /aria-label="Delta: 2\.5"/);
+	assert.match(body, /aria-label="Beta: 0"/);
+	assert.doesNotMatch(body, /Gamma|No tracked publications in this scope|Not measured/);
+	assert.match(body, /Alpha: 13 top-10% papers of 100 tracked publications/);
+	assert.doesNotMatch(body, /NaN|undefined|Division average/);
+	const Window = await load('TopShareBars.svelte', { scope: 'window' });
+	assert.match(render(Window, { props: { missions: rows, slug: 'earth' } }).body, /aria-label="Alpha: 2"/);
+	const counts = render(Component, { props: { missions: rows, slug: 'earth', rankable: false } }).body;
+	assert.match(counts, /Tracked publications per mission/);
+	assert.doesNotMatch(counts, /NaN|undefined/);
 	const empty = render(Component, { props: { missions: [], slug: 'earth' } }).body;
 	assert.match(empty, /No missions with tracked publications/);
-	assert.doesNotMatch(empty, /NaN|undefined|Division reference/);
+	assert.doesNotMatch(empty, /NaN|undefined|Division average/);
 });
 
 test('MissionTable drops the top-10% column and readout for a division too small to rank', async () => {
@@ -330,10 +313,78 @@ test('MissionTable drops the top-10% column and readout for a division too small
 	const missions = [{ id: 'a', name: 'Alpha', launchYear: 2001, type: 'Lander', cost: 120, papers: 4, citations: 30, indices: { h: 2 }, strip: [1, 3], full: { top10: 0.5, top1: 0 }, hasThumb: false }];
 	const props = { missions, slug: 'biological-physical', costBaseYear: 2025, scopeLabel: 'Active Mission Window' };
 	const ranked = render(Component, { props }).body;
-	assert.match(ranked, /Top-10% credit: Active Mission Window/);
+	assert.match(ranked, /Top-10% credit follows the scope above \(Active Mission Window\)/);
 	assert.match(ranked, /class="num top/);
 	const unranked = render(Component, { props: { ...props, rankable: false } }).body;
 	assert.ok(!/Top-10%/.test(unranked), 'no top-10% wording');
 	assert.ok(!/class="num top/.test(unranked), 'no top-10% column');
 	assert.match(unranked, /Lifetime totals/);
+});
+
+const site = { asOf: '2026-09-18', windowPolicy: { kind: 'prime', postPrimeYears: 3, citationYears: 3 },
+	fullPolicy: { postEndYears: 3, citationYears: 3 }, referenceCost: 150, costBaseYear: 2025 };
+const spread = { mean: 12.5, median: 4, uncited: 10, i10: 30, i100: 2 };
+const scope = { papers: 80, citations: 1000, top10: 6.5, top10ShareOfDivision: 0.031, top1: 0.5, top1ShareOfDivision: 0.012, spread };
+const mission = {
+	indices: { h: 15, g: 28, m: 0.6, i100: 2, tori: 12.34, riq: 140 },
+	full: scope, window: { ...scope, spread: null }, lifetime: { ...scope, top1: null, top1ShareOfDivision: null }
+};
+// Each row's visible text: label, the hint's "i", value. Tips and screen-reader copies dropped.
+const rowsOf = (html) => [...html.matchAll(/<tr>([\s\S]*?)<\/tr>/g)].map(([, r]) =>
+	r.replace(/<span role="tooltip"[\s\S]*?<\/span>|<span class="sr-only[^"]*">[\s\S]*?<\/span>/g, '')
+		.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim());
+
+test('MeasureTable renders every measure of the selected scope and the dated lifetime indices', async () => {
+	const Component = await load('../ui/MeasureTable.svelte');
+	const html = render(Component, { props: { groups: missionMeasureGroups(mission, 'full', site) } }).body;
+	assert.deepEqual(rowsOf(html), [
+		'Active Mission Window',
+		'Tracked publicationsi80', 'Citationsi1,000', 'Mean citations per publicationi13', 'Median citations per publicationi4',
+		'Uncited publicationsi10 (13%)', 'Top-10% crediti6.5 · 3.1% of division', 'Top-1% crediti0.5 · 1.2% of division',
+		'Lifetime indices · every tracked publication to date, in any scope',
+		'h-indexi15', 'g-indexi28', 'm-index, as of September 18, 2026i0.6', 'torii12', 'riqi140'
+	]);
+	assert.match(html, /role="tooltip"[^>]*>g-index: the largest g/);
+	assert.match(html, /role="tooltip"[^>]*>Top 10%: [^<]*A paper naming several missions/);
+	assert.match(html, /h-index[\s\S]*?href="\/methods\/"/, 'index hints link to the methods page itself');
+	assert.match(html, /aria-label="What is m-index\?"/);
+});
+
+test('MeasureTable leaves top 1% out of the lifetime scope', async () => {
+	const Component = await load('../ui/MeasureTable.svelte');
+	const rows = rowsOf(render(Component, { props: { groups: missionMeasureGroups(mission, 'lifetime', site) } }).body);
+	assert.equal(rows[0], 'Lifetime');
+	assert.ok(rows.includes('Top-1% crediti— · windowed scopes only'));
+});
+
+test('MeasureTable says when a scope was not measured and still shows the lifetime indices', async () => {
+	const Component = await load('../ui/MeasureTable.svelte');
+	const sparse = { ...mission, indices: { h: 3, g: null, m: null, i100: 0, tori: null, riq: null } };
+	assert.deepEqual(rowsOf(render(Component, { props: { groups: missionMeasureGroups(sparse, 'window', site) } }).body), [
+		'Prime Mission Window', 'Not available for this view.',
+		'Lifetime indices · every tracked publication to date, in any scope',
+		'h-indexi3', 'g-indexi—', 'm-index, as of September 18, 2026i—', 'torii—', 'riqi—'
+	]);
+});
+
+test('division MeasureTable highlights every percentile cutoff', async () => {
+	const Component = await load('../ui/MeasureTable.svelte');
+	const cutoffs = [0.1, 1, 5, 10, 25, 50].map((percent, i) => ({ percent, citations: 500 - i * 80, papers: i + 1 }));
+	const stats = { missions: 12, papers: 900, citations: 9000, mean: 10, median: 4, uncited: 90, hIndex: 40, topDecileCitationShare: 0.45, cutoffs };
+	const html = render(Component, { props: { groups: divisionMeasureGroups({ stats: { full: stats } }, 'full', site) } }).body;
+	assert.equal(html.match(/class="[^"]*\bhi\b/g)?.length, 6);
+	assert.match(html, /Top 0\.1%/);
+});
+
+test('ScopeSwitch prerenders the three scopes, short forms, the pressed one and a hint per scope', async () => {
+	const Component = await load('../ui/ScopeSwitch.svelte', { scope: 'window' });
+	const html = render(Component, { props: { site } }).body;
+	for (const label of ['Active Mission Window', 'Prime Mission Window', 'Lifetime', '>Active<', '>Prime<']) assert.ok(html.includes(label), label);
+	assert.match(html, /aria-pressed="true"[^>]*>(<!--[^>]*-->)*<span class="long[^"]*">Prime Mission Window/);
+	assert.equal(html.match(/aria-pressed="true"/g).length, 1);
+	assert.equal(html.match(/role="tooltip"/g).length, 3);
+	assert.match(html, /role="tooltip"[^>]*>Papers published from the first full month after science operations begin through 3 years after the prime mission ends\. Citations are counted through the third calendar year after each paper appears\./);
+	assert.match(html, /through 3 years after the mission ends\. Citations are counted through the third calendar year/);
+	assert.match(html, /Every tracked publication to date, with every citation to date\./);
+	for (const anchor of ['full-window', 'early-window', 'high-impact']) assert.ok(html.includes(`href="/methods/#${anchor}"`), anchor);
 });

@@ -129,22 +129,143 @@
     "bibcode": "2011AsBio..11..951N",
     "title": "The O/OREOS Mission: First Science Data from the Space Environment Survivability of Living Organisms (SESLO) Payload",
     "firstAuthor": "Nicholson, Wayne L.",
+    "authors": [
+      "Nicholson, Wayne L.",
+      "Ricco, Antonio J.",
+      "Agasid, Elwood",
+      "Beasley, Christopher"
+    ],
+    "authorCount": 28,
     "year": 2011,
     "citations": 42,
     "missionId": "o_oreos"
   },
-  "cutoffs": {
+  "stats": {
     "full": {
-      "1": 16,
-      "10": 16
+      "missions": 5,
+      "papers": 7,
+      "citations": 56,
+      "mean": 8,
+      "median": 7,
+      "uncited": 0,
+      "hIndex": 5,
+      "topDecileCitationShare": null,
+      "cutoffs": [
+        {
+          "percent": 0.1,
+          "citations": 16,
+          "papers": 1
+        },
+        {
+          "percent": 1,
+          "citations": 16,
+          "papers": 1
+        },
+        {
+          "percent": 5,
+          "citations": 16,
+          "papers": 1
+        },
+        {
+          "percent": 10,
+          "citations": 16,
+          "papers": 1
+        },
+        {
+          "percent": 25,
+          "citations": 14,
+          "papers": 2
+        },
+        {
+          "percent": 50,
+          "citations": 7,
+          "papers": 5
+        }
+      ]
     },
     "window": {
-      "1": 14,
-      "10": 14
+      "missions": 5,
+      "papers": 3,
+      "citations": 31,
+      "mean": 10.333,
+      "median": 10,
+      "uncited": 0,
+      "hIndex": 3,
+      "topDecileCitationShare": null,
+      "cutoffs": [
+        {
+          "percent": 0.1,
+          "citations": 14,
+          "papers": 1
+        },
+        {
+          "percent": 1,
+          "citations": 14,
+          "papers": 1
+        },
+        {
+          "percent": 5,
+          "citations": 14,
+          "papers": 1
+        },
+        {
+          "percent": 10,
+          "citations": 14,
+          "papers": 1
+        },
+        {
+          "percent": 25,
+          "citations": 14,
+          "papers": 1
+        },
+        {
+          "percent": 50,
+          "citations": 10,
+          "papers": 2
+        }
+      ]
     },
     "lifetime": {
-      "1": 42,
-      "10": 38
+      "missions": 5,
+      "papers": 15,
+      "citations": 236,
+      "mean": 15.733,
+      "median": 13,
+      "uncited": 0,
+      "hIndex": 9,
+      "topDecileCitationShare": null,
+      "cutoffs": [
+        {
+          "percent": 0.1,
+          "citations": 42,
+          "papers": 1
+        },
+        {
+          "percent": 1,
+          "citations": 42,
+          "papers": 1
+        },
+        {
+          "percent": 5,
+          "citations": 42,
+          "papers": 1
+        },
+        {
+          "percent": 10,
+          "citations": 38,
+          "papers": 2
+        },
+        {
+          "percent": 25,
+          "citations": 25,
+          "papers": 4
+        },
+        {
+          "percent": 50,
+          "citations": 13,
+          "papers": 8
+        }
+      ]
     }
   },
   "costCurves": null,
@@ -170,7 +291,10 @@
       "indices": {
         "h": 2,
         "m": 0.286,
-        "i100": 0
+        "i100": 0,
+        "g": 4,
+        "tori": 0.26,
+        "riq": 255
       },
       "yearsToBuild": 7.368,
       "papers": 4,
@@ -266,7 +390,10 @@
       "indices": {
         "h": 0,
         "m": null,
-        "i100": 0
+        "i100": 0,
+        "g": 0,
+        "tori": null,
+        "riq": null
       },
       "yearsToBuild": 3.956,
       "papers": 0,
@@ -372,7 +499,10 @@
       "indices": {
         "h": 0,
         "m": null,
-        "i100": 0
+        "i100": 0,
+        "g": 0,
+        "tori": null,
+        "riq": null
       },
       "yearsToBuild": 2.278,
       "papers": 0,
@@ -476,7 +606,10 @@
       "indices": {
         "h": 8,
         "m": 0.5,
-        "i100": 0
+        "i100": 0,
+        "g": 11,
+        "tori": 0.903,
+        "riq": 95
       },
       "yearsToBuild": 2.385,
       "papers": 11,
@@ -579,7 +712,10 @@
       "indices": {
         "h": 0,
         "m": null,
-        "i100": 0
+        "i100": 0,
+        "g": 0,
+        "tori": null,
+        "riq": null
       },
       "yearsToBuild": 3.294,
       "papers": 0,

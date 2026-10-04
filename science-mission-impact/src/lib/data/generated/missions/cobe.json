@@ -21,11 +21,14 @@
   "indices": {
     "h": 159,
     "m": 4.297,
-    "i100": 266
+    "i100": 266,
+    "g": 314,
+    "tori": 924.093,
+    "riq": 821
   },
   "facts": {
     "papers": 1413,
-    "citations": 125293,
+    "citations": 125285,
     "publicationYears": [
       1990,
       2026
@@ -132,7 +135,7 @@
       3635,
       3852,
       3850,
-      4012,
+      4011,
       3943,
       3872,
       3703,
@@ -147,13 +150,13 @@
       3177,
       3685,
       3930,
-      3402
+      3395
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 125293,
-      "observed": 125293,
+      "expected": 125285,
+      "observed": 125285,
       "missing": 0
     }
   },
@@ -211,8 +214,14 @@
     "bibcode": "1998ApJ...500..525S",
     "title": "Maps of Dust Infrared Emission for Use in Estimation of Reddening and Cosmic Microwave Background Radiation Foregrounds",
     "firstAuthor": "Schlegel, David J.",
+    "authors": [
+      "Schlegel, David J.",
+      "Finkbeiner, Douglas P.",
+      "Davis, Marc"
+    ],
+    "authorCount": 3,
     "year": 1998,
-    "citations": 14188
+    "citations": 14187
   },
   "ranks": {
     "full": {
@@ -220,12 +229,12 @@
         86.901,
         39.225,
         38.787,
-        44.098,
-        49.639,
-        25.665,
-        29.714,
-        37.207,
-        38.764,
+        44.108,
+        49.631,
+        25.649,
+        29.727,
+        37.198,
+        38.772,
         52
       ],
       "top1": 9
@@ -240,25 +249,25 @@
         0,
         1,
         4,
-        2.629,
-        3.371
+        2.62,
+        3.38
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        154.702,
-        135.564,
-        112.736,
-        129.73,
-        132.346,
-        116.341,
-        114.579,
-        129.297,
-        158.706,
+        154.59,
+        135.633,
+        112.92,
+        129.455,
+        132.358,
+        116.41,
+        114.595,
+        129.165,
+        158.874,
         229
       ],
-      "top1": 43.943
+      "top1": 43.958
     }
   },
   "full": {
@@ -284,6 +293,13 @@
       "status": "available",
       "months": 73,
       "citationBuckets": 10
+    },
+    "spread": {
+      "mean": 22.932,
+      "median": 10,
+      "uncited": 50,
+      "i10": 235,
+      "i100": 17
     }
   },
   "window": {
@@ -309,12 +325,19 @@
       "status": "available",
       "months": 30,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 16.661,
+      "median": 5,
+      "uncited": 13,
+      "i10": 20,
+      "i100": 2
     }
   },
   "lifetime": {
     "papers": 1413,
     "outputBasis": "measured",
-    "citations": 125293,
+    "citations": 125285,
     "top10": 166.367,
     "top10ShareOfDivision": 0.03003,
     "top1": null,
@@ -325,13 +348,20 @@
       "yearsFromFormulation": 7.915,
       "bibcode": "1990ApJ...354L..37M",
       "date": "1990-05-00"
+    },
+    "spread": {
+      "mean": 88.666,
+      "median": 26,
+      "uncited": 85,
+      "i10": 1035,
+      "i100": 266
     }
   },
   "query": {
     "arms": "((=abs:(\"Cosmic Background Explorer\" OR \"Diffuse Infrared Background Experiment\" OR \"Far Infrared Absolute Spectrophotometer\" OR \"Differential Microwave Radiometer\" OR \"Differential Microwave Radiometers\") OR facility:COBE OR (abs:COBE AND (collection:astronomy OR (abs:(inflation OR inflationary OR microwave OR anisotropy OR anisotropies OR cosmological OR cosmology OR cosmic OR blackbody OR infrared OR spectrometer OR dewar OR cryogenic OR neutrino OR neutrinos) NOT =abs:\"sea surface\"))) OR (abs:(DIRBE OR FIRAS) AND (collection:astronomy OR abs:(blackbody OR CMB OR microwave OR infrared OR spectrometer OR spectrometry) OR =abs:\"background radiation\")) OR (abs:DMR AND collection:astronomy AND abs:(microwave OR CMB OR anisotropy OR anisotropies))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1989-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Cosmic+Background+Explorer%22+OR+%22Diffuse+Infrared+Background+Experiment%22+OR+%22Far+Infrared+Absolute+Spectrophotometer%22+OR+%22Differential+Microwave+Radiometer%22+OR+%22Differential+Microwave+Radiometers%22%29+OR+facility%3ACOBE+OR+%28abs%3ACOBE+AND+%28collection%3Aastronomy+OR+%28abs%3A%28inflation+OR+inflationary+OR+microwave+OR+anisotropy+OR+anisotropies+OR+cosmological+OR+cosmology+OR+cosmic+OR+blackbody+OR+infrared+OR+spectrometer+OR+dewar+OR+cryogenic+OR+neutrino+OR+neutrinos%29+NOT+%3Dabs%3A%22sea+surface%22%29%29%29+OR+%28abs%3A%28DIRBE+OR+FIRAS%29+AND+%28collection%3Aastronomy+OR+abs%3A%28blackbody+OR+CMB+OR+microwave+OR+infrared+OR+spectrometer+OR+spectrometry%29+OR+%3Dabs%3A%22background+radiation%22%29%29+OR+%28abs%3ADMR+AND+collection%3Aastronomy+AND+abs%3A%28microwave+OR+CMB+OR+anisotropy+OR+anisotropies%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1989-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:29:20.111100+00:00",
+    "fetchedAt": "2026-09-30T18:11:07.252792+00:00",
     "reconciliation": {
       "adsReturned": 1417,
       "curatedOut": 4,
@@ -384,13 +414,17 @@
       "bibcode": "1998ApJ...500..525S",
       "title": "Maps of Dust Infrared Emission for Use in Estimation of Reddening and Cosmic Microwave Background Radiation Foregrounds",
       "firstAuthor": "Schlegel, David J.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
-      "citations": 14188
+      "citations": 14187
     },
     {
       "bibcode": "2003ApJS..148....1B",
       "title": "First-Year Wilkinson Microwave Anisotropy Probe (WMAP) Observations: Preliminary Maps and Basic Results",
       "firstAuthor": "Bennett, C. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 4893
     },
@@ -398,6 +432,8 @@
       "bibcode": "1992ApJ...396L...1S",
       "title": "Structure in the COBE Differential Microwave Radiometer First-Year Maps",
       "firstAuthor": "Smoot, G. F.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 2792
     },
@@ -405,6 +441,8 @@
       "bibcode": "1996ApJ...473..576F",
       "title": "The Cosmic Microwave Background Spectrum from the Full COBE FIRAS Data Set",
       "firstAuthor": "Fixsen, D. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 1996,
       "citations": 1634
     },
@@ -412,13 +450,17 @@
       "bibcode": "2001ApJ...554..778L",
       "title": "Infrared Emission from Interstellar Dust. II. The Diffuse Interstellar Medium",
       "firstAuthor": "Li, Aigen",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
-      "citations": 1281
+      "citations": 1280
     },
     {
       "bibcode": "1996ApJ...464L...1B",
       "title": "Four-Year COBE DMR Cosmic Microwave Background Observations: Maps and Basic Results",
       "firstAuthor": "Bennett, C. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 1996,
       "citations": 1187
     },
@@ -426,6 +468,8 @@
       "bibcode": "2000PhR...331..283M",
       "title": "Gravitational wave experiments and early universe cosmology",
       "firstAuthor": "Maggiore, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 1049
     },
@@ -433,6 +477,8 @@
       "bibcode": "2001PhRvD..63f3002K",
       "title": "Acoustic signatures in the primary microwave background bispectrum",
       "firstAuthor": "Komatsu, Eiichiro",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 1016
     },
@@ -440,6 +486,8 @@
       "bibcode": "2009ApJ...707..916F",
       "title": "The Temperature of the Cosmic Microwave Background",
       "firstAuthor": "Fixsen, D. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 1014
     },
@@ -447,6 +495,8 @@
       "bibcode": "1998PhRvD..58b3503F",
       "title": "Cosmology with a primordial scaling field",
       "firstAuthor": "Ferreira, Pedro G.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 921
     },
@@ -454,6 +504,8 @@
       "bibcode": "2011ApJ...731...53M",
       "title": "Preliminary Results from NEOWISE: An Enhancement to the Wide-field Infrared Survey Explorer for Solar System Science",
       "firstAuthor": "Mainzer, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 907
     },
@@ -461,6 +513,8 @@
       "bibcode": "1998ApJ...508..483W",
       "title": "Cluster Abundance Constraints for Cosmological Models with a Time-varying, Spatially Inhomogeneous Energy Component with Negative Pressure",
       "firstAuthor": "Wang, Limin",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 905
     },
@@ -468,6 +522,8 @@
       "bibcode": "2008A&A...487..837F",
       "title": "Extragalactic optical-infrared background radiation, its time evolution and the cosmic photon-photon opacity",
       "firstAuthor": "Franceschini, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 888
     },
@@ -475,13 +531,17 @@
       "bibcode": "1995ApJ...443..152W",
       "title": "The Neutral Atomic Phases of the Interstellar Medium",
       "firstAuthor": "Wolfire, M. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 1995,
-      "citations": 883
+      "citations": 882
     },
     {
       "bibcode": "1994MNRAS.267.1020P",
       "title": "Reconstructing the Linear Power Spectrum of Cosmological Mass Fluctuations",
       "firstAuthor": "Peacock, J. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 1994,
       "citations": 864
     },
@@ -489,6 +549,8 @@
       "bibcode": "1993PhR...231....1L",
       "title": "The cold dark matter density perturbation",
       "firstAuthor": "Liddle, Andrew R.",
+      "authors": null,
+      "authorCount": null,
       "year": 1993,
       "citations": 804
     },
@@ -496,6 +558,8 @@
       "bibcode": "1994ApJ...420..439M",
       "title": "Measurement of the Cosmic Microwave Background Spectrum by the COBE FIRAS Instrument",
       "firstAuthor": "Mather, J. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 1994,
       "citations": 798
     },
@@ -503,6 +567,8 @@
       "bibcode": "1994ApJ...427..822B",
       "title": "The Photoelectric Heating Mechanism for Very Small Graphitic Grains and Polycyclic Aromatic Hydrocarbons",
       "firstAuthor": "Bakes, E. L. O.",
+      "authors": null,
+      "authorCount": null,
       "year": 1994,
       "citations": 766
     },
@@ -510,6 +576,8 @@
       "bibcode": "2001ARA&A..39..249H",
       "title": "The Cosmic Infrared Background: Measurements and Implications",
       "firstAuthor": "Hauser, Michael G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 757
     },
@@ -517,6 +585,8 @@
       "bibcode": "1996A&A...308L...5P",
       "title": "Tentative detection of a cosmic far-infrared background with COBE.",
       "firstAuthor": "Puget, J.-L.",
+      "authors": null,
+      "authorCount": null,
       "year": 1996,
       "citations": 730
     }

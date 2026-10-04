@@ -21,11 +21,14 @@
   "indices": {
     "h": 169,
     "m": 4.694,
-    "i100": 340
+    "i100": 340,
+    "g": 288,
+    "tori": 1059.383,
+    "riq": 904
   },
   "facts": {
     "papers": 2768,
-    "citations": 149145,
+    "citations": 149133,
     "publicationYears": [
       1991,
       2026
@@ -129,7 +132,7 @@
       6121,
       7059,
       6035,
-      6590,
+      6584,
       5816,
       5398,
       4420,
@@ -143,14 +146,14 @@
       4038,
       3706,
       3927,
-      4161,
-      3426
+      4163,
+      3418
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 149145,
-      "observed": 149145,
+      "expected": 149133,
+      "observed": 149133,
       "missing": 0
     }
   },
@@ -227,6 +230,13 @@
     "bibcode": "1993ApJ...413..281B",
     "title": "BATSE Observations of Gamma-Ray Burst Spectra. I. Spectral Diversity",
     "firstAuthor": "Band, D.",
+    "authors": [
+      "Band, D.",
+      "Matteson, J.",
+      "Ford, L.",
+      "Schaefer, B."
+    ],
+    "authorCount": 15,
     "year": 1993,
     "citations": 2341
   },
@@ -236,13 +246,13 @@
         362.946,
         233.311,
         184.721,
-        152.962,
-        143.138,
-        140.247,
-        107.568,
-        122.493,
-        118.799,
-        97.816
+        152.992,
+        143.124,
+        140.175,
+        107.623,
+        122.462,
+        118.788,
+        97.859
       ],
       "top1": 7
     },
@@ -256,23 +266,23 @@
         29.547,
         35.579,
         37.308,
-        33.629,
-        33.371
+        33.62,
+        33.38
       ],
       "top1": 3
     },
     "lifetime": {
       "bins": [
-        364.093,
-        333.258,
-        277.107,
-        273.391,
-        226.815,
-        238.383,
-        257.071,
-        234.47,
-        270.915,
-        292.497
+        364.441,
+        332.833,
+        277.274,
+        273.004,
+        226.944,
+        238.42,
+        257.109,
+        234.229,
+        271.221,
+        292.526
       ],
       "top1": 35
     }
@@ -300,6 +310,13 @@
       "status": "available",
       "months": 134,
       "citationBuckets": 15
+    },
+    "spread": {
+      "mean": 14.767,
+      "median": 8,
+      "uncited": 209,
+      "i10": 736,
+      "i100": 18
     }
   },
   "window": {
@@ -325,12 +342,19 @@
       "status": "available",
       "months": 48,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 20.275,
+      "median": 10.5,
+      "uncited": 27,
+      "i10": 221,
+      "i100": 8
     }
   },
   "lifetime": {
     "papers": 2768,
     "outputBasis": "measured",
-    "citations": 149145,
+    "citations": 149133,
     "top10": 184.7,
     "top10ShareOfDivision": 0.03334,
     "top1": null,
@@ -341,13 +365,20 @@
       "yearsFromFormulation": 12.252,
       "bibcode": "1992ApJ...385L...1H",
       "date": "1992-01-00"
+    },
+    "spread": {
+      "mean": 53.878,
+      "median": 20,
+      "uncited": 194,
+      "i10": 1855,
+      "i100": 340
     }
   },
   "query": {
     "arms": "((=abs:\"Compton Gamma Ray Observatory\" OR =abs:\"Compton Observatory\" OR =abs:\"Compton GRO\" OR (=abs:\"Gamma Ray Observatory\" AND =abs:GRO) OR facility:CGRO OR =abs:\"Burst and Transient Source Experiment\" OR =abs:\"Energetic Gamma Ray Experiment Telescope\" OR =abs:\"Oriented Scintillation Spectrometer Experiment\" OR ((=abs:CGRO OR abs:BATSE OR =abs:EGRET OR abs:COMPTEL) AND (collection:astronomy OR =abs:\"gamma ray\" OR =abs:\"gamma rays\") NOT =abs:\"Egret Member\") OR (=abs:OSSE AND (=abs:\"gamma ray\" OR =abs:\"gamma rays\" OR (collection:astronomy AND abs:(Compton OR CGRO OR keV OR annihilation OR positron))))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1991-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Compton+Gamma+Ray+Observatory%22+OR+%3Dabs%3A%22Compton+Observatory%22+OR+%3Dabs%3A%22Compton+GRO%22+OR+%28%3Dabs%3A%22Gamma+Ray+Observatory%22+AND+%3Dabs%3AGRO%29+OR+facility%3ACGRO+OR+%3Dabs%3A%22Burst+and+Transient+Source+Experiment%22+OR+%3Dabs%3A%22Energetic+Gamma+Ray+Experiment+Telescope%22+OR+%3Dabs%3A%22Oriented+Scintillation+Spectrometer+Experiment%22+OR+%28%28%3Dabs%3ACGRO+OR+abs%3ABATSE+OR+%3Dabs%3AEGRET+OR+abs%3ACOMPTEL%29+AND+%28collection%3Aastronomy+OR+%3Dabs%3A%22gamma+ray%22+OR+%3Dabs%3A%22gamma+rays%22%29+NOT+%3Dabs%3A%22Egret+Member%22%29+OR+%28%3Dabs%3AOSSE+AND+%28%3Dabs%3A%22gamma+ray%22+OR+%3Dabs%3A%22gamma+rays%22+OR+%28collection%3Aastronomy+AND+abs%3A%28Compton+OR+CGRO+OR+keV+OR+annihilation+OR+positron%29%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1991-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:33:08.590317+00:00",
+    "fetchedAt": "2026-09-30T18:14:41.003629+00:00",
     "reconciliation": {
       "adsReturned": 2846,
       "curatedOut": 77,
@@ -992,6 +1023,8 @@
       "bibcode": "1993ApJ...413..281B",
       "title": "BATSE Observations of Gamma-Ray Burst Spectra. I. Spectral Diversity",
       "firstAuthor": "Band, D.",
+      "authors": null,
+      "authorCount": null,
       "year": 1993,
       "citations": 2341
     },
@@ -999,27 +1032,35 @@
       "bibcode": "1993ApJ...413L.101K",
       "title": "Identification of Two Classes of Gamma-Ray Bursts",
       "firstAuthor": "Kouveliotou, Chryssa",
+      "authors": null,
+      "authorCount": null,
       "year": 1993,
-      "citations": 2092
+      "citations": 2091
     },
     {
       "bibcode": "2004RvMP...76.1143P",
       "title": "The physics of gamma-ray bursts",
       "firstAuthor": "Piran, Tsvi",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
-      "citations": 1801
+      "citations": 1800
     },
     {
       "bibcode": "1999ApJS..123...79H",
       "title": "The Third EGRET Catalog of High-Energy Gamma-Ray Sources",
       "firstAuthor": "Hartman, R. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
-      "citations": 1783
+      "citations": 1782
     },
     {
       "bibcode": "2009PhRvD..79a5014A",
       "title": "A theory of dark matter",
       "firstAuthor": "Arkani-Hamed, Nima",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 1748
     },
@@ -1027,6 +1068,8 @@
       "bibcode": "1999PhR...314..575P",
       "title": "Gamma-ray bursts and the fireball model",
       "firstAuthor": "Piran, T.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 1529
     },
@@ -1034,6 +1077,8 @@
       "bibcode": "1994ApJ...421..153S",
       "title": "Comptonization of Diffuse Ambient Radiation by a Relativistic Jet: The Source of Gamma Rays from Blazars?",
       "firstAuthor": "Sikora, Marek",
+      "authors": null,
+      "authorCount": null,
       "year": 1994,
       "citations": 1352
     },
@@ -1041,6 +1086,8 @@
       "bibcode": "1996ApJ...461..396M",
       "title": "The Likelihood Analysis of EGRET Data",
       "firstAuthor": "Mattox, J. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 1996,
       "citations": 1192
     },
@@ -1048,6 +1095,8 @@
       "bibcode": "1992Natur.357..472U",
       "title": "Millisecond pulsars with extremely strong magnetic fields as a cosmological source of γ-ray bursts",
       "firstAuthor": "Usov, V. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 1087
     },
@@ -1055,6 +1104,8 @@
       "bibcode": "2010ApJ...716...30A",
       "title": "The Spectral Energy Distribution of Fermi Bright Blazars",
       "firstAuthor": "Abdo, A. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 1017
     },
@@ -1062,6 +1113,8 @@
       "bibcode": "1992Natur.358..477P",
       "title": "Detection of TeV photons from the active galaxy Markarian 421",
       "firstAuthor": "Punch, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 826
     },
@@ -1069,6 +1122,8 @@
       "bibcode": "1996MNRAS.283..193Z",
       "title": "Broad-band γ-ray and X-ray spectra of NGC 4151 and their implications for physical processes and geometry.",
       "firstAuthor": "Zdziarski, A. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 1996,
       "citations": 784
     },
@@ -1076,6 +1131,8 @@
       "bibcode": "1998ApJ...493..694M",
       "title": "Production and Propagation of Cosmic-Ray Positrons and Electrons",
       "firstAuthor": "Moskalenko, I. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 770
     },
@@ -1083,6 +1140,8 @@
       "bibcode": "1992Natur.355..143M",
       "title": "Spatial distribution of γ-ray bursts observed by BATSE",
       "firstAuthor": "Meegan, C. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 759
     },
@@ -1090,6 +1149,8 @@
       "bibcode": "1997ApJ...481..205H",
       "title": "EGRET Observations of the Diffuse Gamma-Ray Emission from the Galactic Plane",
       "firstAuthor": "Hunter, S. D.",
+      "authors": null,
+      "authorCount": null,
       "year": 1997,
       "citations": 755
     },
@@ -1097,6 +1158,8 @@
       "bibcode": "1998ApJ...494..523S",
       "title": "EGRET Observations of the Extragalactic Gamma-Ray Emission",
       "firstAuthor": "Sreekumar, P.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 750
     },
@@ -1104,13 +1167,17 @@
       "bibcode": "2001ApJ...550..410M",
       "title": "Supernovae, Jets, and Collapsars",
       "firstAuthor": "MacFadyen, A. I.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
-      "citations": 743
+      "citations": 742
     },
     {
       "bibcode": "1997ApJS..113..367B",
       "title": "Observations of Accreting Pulsars",
       "firstAuthor": "Bildsten, Lars",
+      "authors": null,
+      "authorCount": null,
       "year": 1997,
       "citations": 724
     },
@@ -1118,6 +1185,8 @@
       "bibcode": "2004ApJ...609..935Y",
       "title": "Gamma-Ray Burst Formation Rate Inferred from the Spectral Peak Energy-Peak Luminosity Relation",
       "firstAuthor": "Yonetoku, D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 706
     },
@@ -1125,6 +1194,8 @@
       "bibcode": "1994Sci...264.1313F",
       "title": "Discovery of Intense Gamma-Ray Flashes of Atmospheric Origin",
       "firstAuthor": "Fishman, G. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 1994,
       "citations": 660
     }

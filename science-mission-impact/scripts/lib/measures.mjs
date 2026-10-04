@@ -11,7 +11,8 @@
  * null means unavailable; 0 means measured zero.
  */
 
-import { num, parseDay, ratio, share, weight, sum, yearsBetween } from './util.mjs';
+import { PackagingError } from './invariants.mjs';
+import { median, num, parseDay, ratio, share, weight, sum, yearsBetween } from './util.mjs';
 
 const FAILURE_STATUSES = ['failed', 'failure'];
 // A mission that fell short of its goals: a failure, or upstream's partial failure or partial success.
@@ -168,6 +169,22 @@ export function buildMissionScopeStats({
 }
 
 /**
+ * CitationSpread for one mission in one scope. `citations` are the in-scope per-paper counts
+ * (the PapersFile column); `papers`/`citationsTotal` are the source-reported totals the mean
+ * comes from; `thresholds` is the raw `<prefix>_thresholds`. Null when papers is unavailable.
+ */
+export function buildCitationSpread({ citations, papers, citationsTotal, thresholds }) {
+	if (num(papers) === null) return null;
+	return {
+		mean: weight(ratio(citationsTotal, papers)), // ratio() is null over 0 papers
+		median: median(citations),
+		uncited: citations.filter((c) => c === 0).length,
+		i10: num(thresholds?.by_name?.i10?.count),
+		i100: num(thresholds?.by_name?.i100?.count)
+	};
+}
+
+/**
  * Exclusive percentile tiers for one mission in one scope: the differences of
  * the pooled tie-weighted credit across the configured percents, with the last
  * tier holding everything below the widest percent.
@@ -194,4 +211,34 @@ export function buildTiers({ percentileView, papers, tierPercents }) {
 /** Sum of a measure over a division's missions, used as a share denominator. */
 export function divisionTotal(missions, accessor) {
 	return sum(missions.map(accessor));
+}
+
+/**
+ * DivisionScopeStats for one division in one scope: the pooled papers of every
+ * mission, a shared paper once. `summary` is `stats.summary.<scope>.<Division>`,
+ * `scopeBlock` is `stats.scopes.<scope>.divisions.<Division>`. Null without a pool.
+ */
+export function buildDivisionScopeStats({ summary, scopeBlock, tierPercents }) {
+	const pooled = scopeBlock?.pooled;
+	if (!pooled) return null;
+	const ks = pooled.cutoffs?.ks ?? [];
+	const cutoffs = tierPercents.map((percent) => {
+		const citations = num(pooled.cutoffs?.cutoffs?.[ks.indexOf(percent)]);
+		const papers = num(scopeBlock.pooled_cutoffs?.top_k_distinct_counts?.[String(percent)]);
+		if (citations === null || papers === null) {
+			throw new PackagingError(`${scopeBlock.division} (${scopeBlock.scope}): no pooled cutoff for top ${percent}%; regenerate the statistics with ks covering tierPercents`);
+		}
+		return { percent, citations, papers };
+	});
+	return {
+		missions: num(summary?.missions) ?? 0,
+		papers: num(pooled.n) ?? 0,
+		citations: num(pooled.total) ?? 0,
+		mean: weight(pooled.mean),
+		median: num(pooled.median),
+		uncited: num(pooled.uncited) ?? 0,
+		hIndex: num(pooled.h_index),
+		topDecileCitationShare: share(pooled.top_decile_hold),
+		cutoffs
+	};
 }

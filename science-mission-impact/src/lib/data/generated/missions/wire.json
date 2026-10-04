@@ -21,7 +21,10 @@
   "indices": {
     "h": 16,
     "m": 0.593,
-    "i100": 4
+    "i100": 4,
+    "g": 23,
+    "tori": 5.138,
+    "riq": 90
   },
   "facts": {
     "papers": 24,
@@ -191,6 +194,13 @@
     "bibcode": "2001MNRAS.328..601D",
     "title": "Oscillations of α UMa and other red giants",
     "firstAuthor": "Dziembowski, W. A.",
+    "authors": [
+      "Dziembowski, W. A.",
+      "Gough, D. O.",
+      "Houdek, G.",
+      "Sienkiewicz, R."
+    ],
+    "authorCount": 4,
     "year": 2001,
     "citations": 144
   },
@@ -227,12 +237,12 @@
     },
     "lifetime": {
       "bins": [
-        1.422,
-        2.578,
+        1.42,
+        2.58,
         2,
         3,
-        2.227,
-        1.773,
+        2.22,
+        1.78,
         4,
         3,
         1,
@@ -264,6 +274,13 @@
       "status": "available",
       "months": 40,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 13.2,
+      "median": 10,
+      "uncited": 0,
+      "i10": 3,
+      "i100": 0
     }
   },
   "window": {
@@ -289,6 +306,13 @@
       "status": "available",
       "months": 40,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 13.2,
+      "median": 10,
+      "uncited": 0,
+      "i10": 3,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -305,13 +329,20 @@
       "yearsFromFormulation": null,
       "bibcode": null,
       "date": null
+    },
+    "spread": {
+      "mean": 40.875,
+      "median": 25,
+      "uncited": 1,
+      "i10": 18,
+      "i100": 4
     }
   },
   "query": {
     "arms": "(((=abs:\"Wide-Field Infrared Explorer (WIRE)\" OR =abs:\"Wide Field Infrared Explorer (WIRE)\" OR ((=abs:\"Wide-Field Infrared Explorer\" OR =abs:\"Wide Field Infrared Explorer\") AND =abs:\"star camera\") OR =abs:\"WIRE satellite\" OR =abs:\"WIRE photometry\" OR =abs:\"WIRE star tracker\" OR (abs:WIRE AND abs:photometric)) AND (abs:astroseismic OR abs:photometry OR abs:helioseismology OR abs:asteroseismology OR abs:photometric OR abs:oscillation)))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1999-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Wide-Field+Infrared+Explorer+%28WIRE%29%22+OR+%3Dabs%3A%22Wide+Field+Infrared+Explorer+%28WIRE%29%22+OR+%28%28%3Dabs%3A%22Wide-Field+Infrared+Explorer%22+OR+%3Dabs%3A%22Wide+Field+Infrared+Explorer%22%29+AND+%3Dabs%3A%22star+camera%22%29+OR+%3Dabs%3A%22WIRE+satellite%22+OR+%3Dabs%3A%22WIRE+photometry%22+OR+%3Dabs%3A%22WIRE+star+tracker%22+OR+%28abs%3AWIRE+AND+abs%3Aphotometric%29%29+AND+%28abs%3Aastroseismic+OR+abs%3Aphotometry+OR+abs%3Ahelioseismology+OR+abs%3Aasteroseismology+OR+abs%3Aphotometric+OR+abs%3Aoscillation%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:33:30.610539+00:00",
+    "fetchedAt": "2026-09-30T18:15:41.335842+00:00",
     "reconciliation": {
       "adsReturned": 25,
       "curatedOut": 2,
@@ -357,6 +388,8 @@
       "bibcode": "2001MNRAS.328..601D",
       "title": "Oscillations of α UMa and other red giants",
       "firstAuthor": "Dziembowski, W. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 144
     },
@@ -364,6 +397,8 @@
       "bibcode": "2007A&A...467.1215S",
       "title": "Eclipsing binaries observed with the WIRE satellite. II. β Aurigae and non-linear limb darkening in light curves",
       "firstAuthor": "Southworth, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 133
     },
@@ -371,6 +406,8 @@
       "bibcode": "2008ApJ...674L..53S",
       "title": "Oscillating K Giants with the WIRE Satellite: Determination of Their Asteroseismic Masses",
       "firstAuthor": "Stello, D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 119
     },
@@ -378,6 +415,8 @@
       "bibcode": "2000ApJ...532L.133B",
       "title": "The Detection of Multimodal Oscillations on α Ursae Majoris",
       "firstAuthor": "Buzasi, D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 102
     },
@@ -385,6 +424,8 @@
       "bibcode": "2006MNRAS.371..935F",
       "title": "Frequency, splitting, linewidth and amplitude estimates of low-ℓ p modes of α Cen A: analysis of Wide-Field Infrared Explorer photometry",
       "firstAuthor": "Fletcher, S. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 64
     },
@@ -392,6 +433,8 @@
       "bibcode": "2005ApJ...619.1072B",
       "title": "Altair: The Brightest δ Scuti Star",
       "firstAuthor": "Buzasi, D. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 54
     },
@@ -399,6 +442,8 @@
       "bibcode": "2005ApJ...633..440B",
       "title": "Evidence for Granulation and Oscillations in Procyon from Photometry with the WIRE Satellite",
       "firstAuthor": "Bruntt, H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 48
     },
@@ -406,6 +451,8 @@
       "bibcode": "2003ApJ...591L.151R",
       "title": "Oscillations in Arcturus from WIRE Photometry",
       "firstAuthor": "Retter, Alon",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 41
     },
@@ -413,6 +460,8 @@
       "bibcode": "2008ApJ...683..433B",
       "title": "Polaris the Cepheid Returns: 4.5 Years of Monitoring from Ground and Space",
       "firstAuthor": "Bruntt, H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 40
     },
@@ -420,6 +469,8 @@
       "bibcode": "2006A&A...456..651B",
       "title": "Eclipsing binaries observed with the WIRE satellite. I. Discovery and photometric analysis of the new bright A0 IV eclipsing binary ψ Centauri",
       "firstAuthor": "Bruntt, H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 38
     },
@@ -427,6 +478,8 @@
       "bibcode": "2009MNRAS.396.1189B",
       "title": "Asteroseismic analysis of the roAp star α Circini: 84d of high-precision photometry from the WIRE satellite",
       "firstAuthor": "Bruntt, H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 38
     },
@@ -434,6 +487,8 @@
       "bibcode": "2000ApJ...530L..45G",
       "title": "Evolutionary Model and Oscillation Frequencies for α Ursae Majoris: A Comparison with Observations",
       "firstAuthor": "Guenther, D. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 26
     },
@@ -441,6 +496,8 @@
       "bibcode": "2007A&A...461..619B",
       "title": "Asteroseismology with the WIRE satellite. I. Combining ground- and space-based photometry of the δ Scuti star ∊ Cephei",
       "firstAuthor": "Bruntt, H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 24
     },
@@ -448,6 +505,8 @@
       "bibcode": "2007CoAst.150..326B",
       "title": "Asteroseismology with the WIRE satellite",
       "firstAuthor": "Bruntt, H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 21
     },
@@ -455,6 +514,8 @@
       "bibcode": "2002A&A...392..599C",
       "title": "Multiperiodicity in the light variations of the beta Cephei star beta Crucis",
       "firstAuthor": "Cuypers, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 18
     },
@@ -462,6 +523,8 @@
       "bibcode": "2002A&A...382..157P",
       "title": "Asteroseismology from space: The delta Scuti star theta ² Tauri monitored by the WIRE satellite",
       "firstAuthor": "Poretti, E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 16
     },
@@ -469,6 +532,8 @@
       "bibcode": "2016A&A...588A..54W",
       "title": "The roAp star α Circinus as seen by BRITE-Constellation",
       "firstAuthor": "Weiss, W. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 16
     },
@@ -476,6 +541,8 @@
       "bibcode": "2014MNRAS.440.1674H",
       "title": "Amplitude variability in satellite photometry of the non-radially pulsating O9.5 V star ζ Oph",
       "firstAuthor": "Howarth, Ian D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 14
     },
@@ -483,6 +550,8 @@
       "bibcode": "2004ApJ...601L..95R",
       "title": "A Tight Upper Limit on Oscillations in the Ap Star ∊ Ursae Majoris from WIRE Photometry",
       "firstAuthor": "Retter, Alon",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 8
     },
@@ -490,6 +559,8 @@
       "bibcode": "2020A&A...642A..64W",
       "title": "New BRITE-Constellation observations of the roAp star α Cir",
       "firstAuthor": "Weiss, W. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 7
     }

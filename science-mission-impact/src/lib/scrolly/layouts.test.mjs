@@ -3,7 +3,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { costLayout, costCurve, timeLayout, rugLayout, skylineLayout, gridLayout, failureLayout, projectTimeLayout, perDollarLayout, kindsLayout, exampleLayout, waffleLayout } from './layouts.js';
+import { timeScienceModel, timeScienceLayout } from '../charts/timetoscience.js';
+import { costLayout, costCurve, timeLayout, rugLayout, skylineLayout, skylineHit, gridLayout, failureLayout, perDollarLayout, kindsLayout, exampleLayout, waffleLayout } from './layouts.js';
 
 const load = async (name) => JSON.parse(await readFile(new URL(`../data/generated/${name}.json`, import.meta.url), 'utf8'));
 const site = await load('site');
@@ -86,39 +87,21 @@ const storyCost = (W, H) => costLayout(tiles.filter((t) => compared.has(t.divisi
 const byId = new Map(tiles.map((t) => [t.id, t]));
 const inStage = (p, W, H) => p.x >= 0 && p.x + p.s <= W && p.y >= 0 && p.y + p.s <= H;
 
-test('project-time layout moves one division vertically, reached missions above the never lane', (t) => {
-	const division = site.story.timingDivision;
-	if (!division) return t.skip('the story names no timing division');
-	const timing = site.story.timing.find((d) => d.division === division);
+test('the time-to-science step plots every division together: each costed mission with a top-10% paper, inside the stage', () => {
 	const first = (m) => m.first[scope];
-	const reached = (m) => first(m).state === 'reached' && first(m).yearsFromFormulation != null;
-	const ids = tiles
-		.filter((m) => m.division === division && m.cost > 0)
-		.map((m) => m.id)
-		.sort();
+	const expected = tiles.filter((m) => m.cost > 0 && first(m).state === 'reached' && Number.isFinite(first(m).yearsFromScienceStart)).map((m) => m.id).sort();
+	const model = timeScienceModel(tiles, scope, first);
+	assert.deepEqual(model.points.map((p) => p.id).sort(), expected);
+	assert.ok(new Set(expected.map((id) => byId.get(id).division)).size > 1, 'more than one division');
 	for (const [W, H] of stages) {
-		const cost = storyCost(W, H);
-		const layout = projectTimeLayout(tiles, W, H, { scope, x: cost.x, left: cost.left, division });
-		assert.deepEqual([...layout.pos.keys()].sort(), ids, `${W}px: that division's costed missions and no others`);
-		assert.equal(layout.never + layout.reached, layout.pos.size, `${W}px: every placed mission is reached or never`);
-		// the lane and the sentence count the same missions
-		assert.equal(layout.never, timing.never, `${W}px: never`);
-		assert.equal(layout.reached, timing.reached, `${W}px: reached`);
-		for (const [id, p] of layout.pos) {
-			const c = cost.pos.get(id);
-			assert.ok(inStage(p, W, H), `${W}px: ${id} inside the stage`);
-			assert.ok(Math.abs(p.x + p.s / 2 - (c.x + c.s / 2)) < 1e-9, `${W}px: ${id} moves only vertically`);
-			if (reached(byId.get(id))) assert.ok(p.y + p.s <= layout.neverTop, `${W}px: ${id} above the never lane`);
-			else assert.ok(p.y >= layout.neverTop, `${W}px: ${id} in the never lane`);
-		}
-		const climb = tiles.filter((m) => layout.pos.has(m.id) && reached(m)).sort((a, b) => first(a).yearsFromFormulation - first(b).yearsFromFormulation);
-		for (let i = 1; i < climb.length; i++) {
-			const [a, b] = [climb[i - 1], climb[i]];
-			const [ya, yb] = [layout.pos.get(a.id).y, layout.pos.get(b.id).y];
-			if (first(b).yearsFromFormulation > first(a).yearsFromFormulation) assert.ok(yb > ya, `${W}px: ${b.id} came later than ${a.id}, so sits lower`);
-			else assert.equal(yb, ya, `${W}px: ${a.id} and ${b.id} at the same years sit level`);
-		}
+		const layout = timeScienceLayout(model.points, W, H);
+		assert.deepEqual([...layout.items.keys()].sort(), expected, `${W}px: one square per point`);
+		for (const [id, p] of layout.items) assert.ok(inStage(p, W, H), `${W}px: ${id} inside the stage`);
+		assert.ok(layout.fit, `${W}px: a trend line`);
 	}
+	// the packaged quarters the copy quotes cover exactly the missions the chart plots
+	assert.equal(site.story.scienceStart.missions, model.points.length);
+	assert.equal(site.story.scienceStart.groups.reduce((n, g) => n + g.missions, 0), model.points.length);
 });
 
 test('per-dollar layout keeps every square in its own row, rated ones between curve top and shelf', () => {
@@ -151,6 +134,13 @@ test('per-dollar layout keeps every square in its own row, rated ones between cu
 			const missions = facts.get(d.slug).groups.reduce((n, g) => n + g.missions, 0);
 			assert.equal(counts.get(d.slug) ?? 0, missions, `${W}px: ${d.slug} squares`);
 			assert.equal(rows.get(d.slug).missions, missions, `${W}px: ${d.slug} row count`);
+			// the best-fit line spans the row's missions with citations (zeros have no log rate) and stays inside the row
+			const costs = tiles.filter((m) => m.division === d.slug && layout.pos.has(m.id) && m.citations > 0).map((m) => m.cost);
+			const { fit, y, h } = rows.get(d.slug);
+			if (costs.length < 3) continue;
+			assert.ok(fit, `${W}px: ${d.slug} has a best-fit line`);
+			assert.ok(Math.abs(fit.x1 - cost.x(Math.min(...costs))) < 1e-9 && Math.abs(fit.x2 - cost.x(Math.max(...costs))) < 1e-9, `${W}px: ${d.slug} line spans its missions`);
+			for (const fy of [fit.y1, fit.y2]) assert.ok(fy >= y && fy <= y + h, `${W}px: ${d.slug} line inside its row`);
 		}
 		const [lo, hi] = layout.scale.domain();
 		assert.ok(layout.rateTicks.length > 0, `${W}px: at least one rate rule`);
@@ -184,7 +174,7 @@ test('the rug hangs from the ground: first square of each year just under it, de
 	}
 });
 
-test('skyline columns rise from the ground inside their year, labels clear of each other', () => {
+test('skyline columns rise from the ground inside their year, with headroom for the hover label', () => {
 	for (const [W, H] of sizes) {
 		const compact = W < 600;
 		const rug = rugLayout(tiles, W, H, site.launchYears);
@@ -195,23 +185,26 @@ test('skyline columns rise from the ground inside their year, labels clear of ea
 			const p = rug.pos.get(c.id);
 			assert.ok(c.x >= p.x - 1e-9 && c.x + c.w <= p.x + p.s + 1e-9, `${W}px: ${c.id} inside its year's footprint`);
 			assert.ok(Math.abs(c.y + c.h - sky.ground) < 1e-9, `${W}px: ${c.id} stands on the ground`);
-			assert.ok(c.y >= sky.top + 2 * sky.lineH - 1e-9, `${W}px: ${c.id} leaves room for the labels`);
+			assert.ok(c.y >= sky.top + 2 * sky.lineH - 1e-9, `${W}px: ${c.id} leaves room for the label`);
 		}
 		const tall = [...sky.columns].sort((a, b) => a.papers - b.papers);
 		for (let i = 1; i < tall.length; i++) assert.ok(tall[i].h >= tall[i - 1].h, `${W}px: more papers, no shorter`);
-		assert.equal(sky.labels.length, Math.min(4, sky.columns.length));
-		const cols = new Map(sky.columns.map((c) => [c.id, c]));
-		for (const l of sky.labels) {
-			assert.ok(l.box.x >= 0 && l.box.x + l.box.w <= W, `${W}px: ${l.name} inside the stage`);
-			assert.equal(l.leader != null, l.y !== cols.get(l.id).y - 4, `${W}px: ${l.name} has a leader only when moved`);
+	}
+});
+
+test('skimming the skyline picks the nearest column, and nothing off the chart', () => {
+	for (const [W, H] of sizes) {
+		const rug = rugLayout(tiles, W, H, site.launchYears);
+		const sky = skylineLayout(tiles, rug, { papers: papersOf, compact: W < 600 });
+		const mid = (sky.top + sky.ground) / 2;
+		for (const c of sky.columns) {
+			const hit = sky.columns.find((d) => d.id === skylineHit(sky, c.x + c.w / 2, mid));
+			assert.ok(hit && hit.x === c.x, `${W}px: over ${c.id}, a column at its x`);
 		}
-		for (let i = 0; i < sky.labels.length; i++) {
-			for (let j = i + 1; j < sky.labels.length; j++) {
-				const [a, b] = [sky.labels[i], sky.labels[j]];
-				const apart = a.box.x + a.box.w <= b.box.x || b.box.x + b.box.w <= a.box.x || Math.abs(a.y - b.y) >= sky.lineH;
-				assert.ok(apart, `${W}px: ${a.name} and ${b.name} do not overlap`);
-			}
-		}
+		const first = sky.columns[0];
+		assert.equal(skylineHit(sky, first.x, sky.ground + 5), null, `${W}px: below the ground is the rug, not the skyline`);
+		assert.equal(skylineHit(sky, first.x, sky.top - 5), null, `${W}px: above the chart`);
+		assert.equal(skylineHit(sky, -1000, mid), null, `${W}px: far off to the side`);
 	}
 });
 

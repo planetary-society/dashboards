@@ -8,6 +8,9 @@
 
 import { int, num, sum } from './util.mjs';
 
+/** The fewest citations a paper needs for the division's pooled top `top`%, or undefined. */
+const cutoffOf = (doc, scope, top) => doc?.stats?.[scope]?.cutoffs.find((c) => c.percent === top)?.citations;
+
 // ------------------------------------------------------------------ format
 
 const NBSP_FREE = (s) => String(s).replace(/\|/g, '\\|');
@@ -66,7 +69,7 @@ export function buildFigures({ site, divisions }) {
 		out.set(`${p}citations`, num(summary.citations));
 		for (const scope of ['full', 'window', 'lifetime']) {
 			for (const top of [10, 1]) {
-				out.set(`${p}${scope} top-${top}% cutoff`, num(doc?.cutoffs?.[scope]?.[top]));
+				out.set(`${p}${scope} top-${top}% cutoff`, num(cutoffOf(doc, scope, top)));
 			}
 		}
 		for (const key of ['m', 'h']) {
@@ -235,8 +238,8 @@ export function formatReport(input) {
 			(site.divisions ?? []).map((d) => {
 				const doc = docsBySlug[d.slug] ?? null;
 				const cut = (scope) => {
-					const c = doc?.cutoffs?.[scope];
-					return c ? `${int(c[10])} / ${int(c[1])}` : '—';
+					if (!doc?.stats?.[scope]) return '—';
+					return `${int(cutoffOf(doc, scope, 10))} / ${int(cutoffOf(doc, scope, 1))}`;
 				};
 				return [
 					d.name,

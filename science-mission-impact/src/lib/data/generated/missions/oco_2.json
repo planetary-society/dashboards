@@ -21,11 +21,14 @@
   "indices": {
     "h": 64,
     "m": 4.923,
-    "i100": 39
+    "i100": 39,
+    "g": 115,
+    "tori": 54.847,
+    "riq": 569
   },
   "facts": {
     "papers": 698,
-    "citations": 19059,
+    "citations": 19055,
     "publicationYears": [
       2014,
       2026
@@ -75,13 +78,13 @@
       2693,
       3168,
       3626,
-      2379
+      2375
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 19059,
-      "observed": 19059,
+      "expected": 19055,
+      "observed": 19055,
       "missing": 0
     }
   },
@@ -160,6 +163,11 @@
     "bibcode": "2019RemS...11..517L",
     "title": "A Global, 0.05-Degree Product of Solar-Induced Chlorophyll Fluorescence Derived from OCO-2, MODIS, and Reanalysis Data",
     "firstAuthor": "Li, Xing",
+    "authors": [
+      "Li, Xing",
+      "Xiao, Jingfeng"
+    ],
+    "authorCount": 2,
     "year": 2019,
     "citations": 585
   },
@@ -168,9 +176,9 @@
       "bins": [
         28.407,
         21.53,
-        19.881,
-        31.66,
-        43.57,
+        19.876,
+        31.654,
+        43.581,
         39.051,
         42.181,
         52.425,
@@ -184,8 +192,8 @@
         9.281,
         4.715,
         6.76,
-        10.04,
-        12.363,
+        10.032,
+        12.371,
         5.34,
         5.018,
         10.086,
@@ -196,16 +204,16 @@
     },
     "lifetime": {
       "bins": [
-        102.189,
-        88.735,
-        75.289,
-        70.797,
-        61.888,
-        68.947,
-        60.308,
-        58.234,
-        52.648,
-        58.966
+        102.106,
+        88.691,
+        75.338,
+        70.842,
+        61.889,
+        68.925,
+        60.336,
+        58.244,
+        52.658,
+        58.972
       ],
       "top1": 12
     }
@@ -233,6 +241,13 @@
       "status": "available",
       "months": 112,
       "citationBuckets": 13
+    },
+    "spread": {
+      "mean": 19.685,
+      "median": 12,
+      "uncited": 25,
+      "i10": 257,
+      "i100": 10
     }
   },
   "window": {
@@ -258,12 +273,19 @@
       "status": "available",
       "months": 50,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 25.827,
+      "median": 10.5,
+      "uncited": 9,
+      "i10": 52,
+      "i100": 6
     }
   },
   "lifetime": {
     "papers": 698,
     "outputBasis": "measured",
-    "citations": 19059,
+    "citations": 19055,
     "top10": 72.768,
     "top10ShareOfDivision": 0.01759,
     "top1": null,
@@ -274,13 +296,20 @@
       "yearsFromFormulation": 4.838,
       "bibcode": "2015AMT.....8..301F",
       "date": "2015-01-00"
+    },
+    "spread": {
+      "mean": 27.299,
+      "median": 10,
+      "uncited": 99,
+      "i10": 350,
+      "i100": 39
     }
   },
   "query": {
     "arms": "((=abs:\"Orbiting Carbon Observatory 2\" OR (=abs:\"Orbiting Carbon Observatory\" AND NOT (abs:\"OCO-3\" OR =abs:\"Orbiting Carbon Observatory 3\")) OR ((abs:\"OCO-2\" OR abs:OCO2) AND (=abs:xco2 OR abs:satellite OR abs:atmosphere OR abs:vegetation OR abs:photosynthesis OR abs:albedo OR abs:emissions OR abs:crop OR abs:terrestrial OR abs:concentration) AND NOT =abs:\"operational carbon dioxide\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Orbiting+Carbon+Observatory+2%22+OR+%28%3Dabs%3A%22Orbiting+Carbon+Observatory%22+AND+NOT+%28abs%3A%22OCO-3%22+OR+%3Dabs%3A%22Orbiting+Carbon+Observatory+3%22%29%29+OR+%28%28abs%3A%22OCO-2%22+OR+abs%3AOCO2%29+AND+%28%3Dabs%3Axco2+OR+abs%3Asatellite+OR+abs%3Aatmosphere+OR+abs%3Avegetation+OR+abs%3Aphotosynthesis+OR+abs%3Aalbedo+OR+abs%3Aemissions+OR+abs%3Acrop+OR+abs%3Aterrestrial+OR+abs%3Aconcentration%29+AND+NOT+%3Dabs%3A%22operational+carbon+dioxide%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:25:07.591167+00:00",
+    "fetchedAt": "2026-09-30T18:03:22.811919+00:00",
     "reconciliation": {
       "adsReturned": 698,
       "curatedOut": 0,
@@ -300,6 +329,8 @@
       "bibcode": "2019RemS...11..517L",
       "title": "A Global, 0.05-Degree Product of Solar-Induced Chlorophyll Fluorescence Derived from OCO-2, MODIS, and Reanalysis Data",
       "firstAuthor": "Li, Xing",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 585
     },
@@ -307,6 +338,8 @@
       "bibcode": "2017Sci...358.5747S",
       "title": "OCO-2 advances photosynthesis observation from space via solar-induced chlorophyll fluorescence",
       "firstAuthor": "Sun, Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 525
     },
@@ -314,6 +347,8 @@
       "bibcode": "2018ESSD...10...87O",
       "title": "The Open-source Data Inventory for Anthropogenic CO₂, version 2016 (ODIAC2016): a global monthly fossil fuel CO₂ gridded emissions data product for tracer transport simulations and surface flux inversions",
       "firstAuthor": "Oda, Tomohiro",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 512
     },
@@ -321,6 +356,8 @@
       "bibcode": "2018BGeo...15.5779Z",
       "title": "A global spatially contiguous solar-induced fluorescence (CSIF) dataset using neural networks",
       "firstAuthor": "Zhang, Yao",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 413
     },
@@ -328,6 +365,8 @@
       "bibcode": "2018RSEnv.209..808S",
       "title": "Overview of Solar-Induced chlorophyll Fluorescence (SIF) from the Orbiting Carbon Observatory-2: Retrieval, cross-mission comparison, and global monitoring for GPP",
       "firstAuthor": "Sun, Ying",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 386
     },
@@ -335,6 +374,8 @@
       "bibcode": "2018GCBio..24.3990L",
       "title": "Solar-induced chlorophyll fluorescence is strongly correlated with terrestrial photosynthesis for a wide variety of biomes: First global analysis based on OCO-2 and flux tower observations",
       "firstAuthor": "Li, Xing",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 371
     },
@@ -342,6 +383,8 @@
       "bibcode": "2017Sci...358.5690L",
       "title": "Contrasting carbon cycle responses of the tropical continents to the 2015─2016 El Niño",
       "firstAuthor": "Liu, Junjie",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 351
     },
@@ -349,6 +392,8 @@
       "bibcode": "2018GeoRL..4510456K",
       "title": "Global Retrievals of Solar-Induced Chlorophyll Fluorescence With TROPOMI: First Results and Intersensor Comparison to OCO-2",
       "firstAuthor": "Köhler, Philipp",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 326
     },
@@ -356,6 +401,8 @@
       "bibcode": "2017AMT....10...59C",
       "title": "The on-orbit performance of the Orbiting Carbon Observatory-2 (OCO-2) instrument and its radiometrically calibrated products",
       "firstAuthor": "Crisp, David",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 322
     },
@@ -363,6 +410,8 @@
       "bibcode": "2019RemS...11.2563L",
       "title": "Mapping Photosynthesis Solely from Solar-Induced Chlorophyll Fluorescence: A Global, Fine-Resolution Dataset of Gross Primary Production Derived from OCO-2",
       "firstAuthor": "Li",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 310
     },
@@ -370,6 +419,8 @@
       "bibcode": "2019PNAS..11611640M",
       "title": "Mechanistic evidence for tracking the seasonality of photosynthesis with solar-induced fluorescence",
       "firstAuthor": "Magney, Troy S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 298
     },
@@ -377,6 +428,8 @@
       "bibcode": "2017AMT....10.2209W",
       "title": "Comparisons of the Orbiting Carbon Observatory-2 (OCO-2) X_{CO₂} measurements with TCCON",
       "firstAuthor": "Wunch, Debra",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 297
     },
@@ -384,6 +437,8 @@
       "bibcode": "2018AMT....11.6539O",
       "title": "Improved retrievals of carbon dioxide from Orbiting Carbon Observatory-2 with the version 8 ACOS algorithm",
       "firstAuthor": "O'Dell, Christopher W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 256
     },
@@ -391,6 +446,8 @@
       "bibcode": "2017GeoRL..4410045N",
       "title": "Quantifying CO₂ Emissions From Individual Power Plants From Space",
       "firstAuthor": "Nassar, Ray",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 229
     },
@@ -398,6 +455,8 @@
       "bibcode": "2019AMT....12.2341E",
       "title": "The OCO-3 mission: measurement objectives and expected performance based on 1 year of simulated data",
       "firstAuthor": "Eldering, Annmarie",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 226
     },
@@ -405,6 +464,8 @@
       "bibcode": "2017Sci...358.5745E",
       "title": "The Orbiting Carbon Observatory-2 early science investigations of regional carbon dioxide fluxes",
       "firstAuthor": "Eldering, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 200
     },
@@ -412,6 +473,8 @@
       "bibcode": "2017AMT....10..549E",
       "title": "The Orbiting Carbon Observatory-2: first 18 months of science data products",
       "firstAuthor": "Eldering, Annmarie",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 193
     },
@@ -419,6 +482,8 @@
       "bibcode": "2017RSEnv.199..333G",
       "title": "The shared and unique values of optical, fluorescence, thermal and microwave satellite data for estimating large-scale crop yields",
       "firstAuthor": "Guan, Kaiyu",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 192
     },
@@ -426,6 +491,8 @@
       "bibcode": "2019ACP....19.9371R",
       "title": "Towards monitoring localized CO₂ emissions from space: co-located regional CO₂ and NO₂ enhancements observed by the OCO-2 and S5P satellites",
       "firstAuthor": "Reuter, Maximilian",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 174
     },
@@ -433,6 +500,8 @@
       "bibcode": "2016GeoRL..4311400H",
       "title": "Direct space-based observations of anthropogenic CO₂ emission areas from OCO-2",
       "firstAuthor": "Hakkarainen, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 168
     }

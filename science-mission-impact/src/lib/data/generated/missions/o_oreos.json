@@ -21,7 +21,10 @@
   "indices": {
     "h": 8,
     "m": 0.5,
-    "i100": 0
+    "i100": 0,
+    "g": 11,
+    "tori": 0.903,
+    "riq": 95
   },
   "facts": {
     "papers": 11,
@@ -148,6 +151,13 @@
     "bibcode": "2011AsBio..11..951N",
     "title": "The O/OREOS Mission: First Science Data from the Space Environment Survivability of Living Organisms (SESLO) Payload",
     "firstAuthor": "Nicholson, Wayne L.",
+    "authors": [
+      "Nicholson, Wayne L.",
+      "Ricco, Antonio J.",
+      "Agasid, Elwood",
+      "Beasley, Christopher"
+    ],
+    "authorCount": 28,
     "year": 2011,
     "citations": 42
   },
@@ -221,6 +231,13 @@
       "status": "available",
       "months": 30,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 10.333,
+      "median": 10,
+      "uncited": 0,
+      "i10": 2,
+      "i100": 0
     }
   },
   "window": {
@@ -246,6 +263,13 @@
       "status": "available",
       "months": 30,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 10.333,
+      "median": 10,
+      "uncited": 0,
+      "i10": 2,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -262,13 +286,20 @@
       "yearsFromFormulation": 3.414,
       "bibcode": "2011AsBio..11..951N",
       "date": "2011-12-00"
+    },
+    "spread": {
+      "mean": 17.818,
+      "median": 13,
+      "uncited": 0,
+      "i10": 7,
+      "i100": 0
     }
   },
   "query": {
     "arms": "((abs:\"O/OREOS\" OR abs:\"OOREOS\" OR abs:\"O-OREOS\" OR abs:\"Organism/Organic Exposure to Orbital Stresses\" OR abs:\"Organism/Organics Exposure to Orbital Stresses\" OR abs:\"SESLO\" OR abs:\"Space Environment Survivability of Living Organisms\" OR abs:\"Space Environment Viability of Organics\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2010-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22O%2FOREOS%22+OR+abs%3A%22OOREOS%22+OR+abs%3A%22O-OREOS%22+OR+abs%3A%22Organism%2FOrganic+Exposure+to+Orbital+Stresses%22+OR+abs%3A%22Organism%2FOrganics+Exposure+to+Orbital+Stresses%22+OR+abs%3A%22SESLO%22+OR+abs%3A%22Space+Environment+Survivability+of+Living+Organisms%22+OR+abs%3A%22Space+Environment+Viability+of+Organics%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2010-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:34:35.780299+00:00",
+    "fetchedAt": "2026-09-30T18:23:09.344320+00:00",
     "reconciliation": {
       "adsReturned": 11,
       "curatedOut": 0,
@@ -288,6 +319,8 @@
       "bibcode": "2011AsBio..11..951N",
       "title": "The O/OREOS Mission: First Science Data from the Space Environment Survivability of Living Organisms (SESLO) Payload",
       "firstAuthor": "Nicholson, Wayne L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 42
     },
@@ -295,6 +328,8 @@
       "bibcode": "2014AcAau..93..501E",
       "title": "The O/OREOS mission—Astrobiology in low Earth orbit",
       "firstAuthor": "Ehrenfreund, P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 38
     },
@@ -302,6 +337,8 @@
       "bibcode": "2012AsBio..12..841M",
       "title": "The O/OREOS Mission: First Science Data from the Space Environment Viability of Organics (SEVO) Payload",
       "firstAuthor": "Mattioda, Andrew",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 29
     },
@@ -309,6 +346,8 @@
       "bibcode": "2017AcAau.133..269B",
       "title": "Online attitude determination of a passively magnetically stabilized spacecraft",
       "firstAuthor": "Burton, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 16
     },
@@ -316,6 +355,8 @@
       "bibcode": "2012P&SS...60..121B",
       "title": "The development of the Space Environment Viability of Organics (SEVO) experiment aboard the Organism/Organic Exposure to Orbital Stresses (O/OREOS) satellite",
       "firstAuthor": "Bramall, Nathan E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 15
     },
@@ -323,6 +364,8 @@
       "bibcode": "2014ApJS..210...15C",
       "title": "SEVO on the Ground: Design of a Laboratory Solar Simulation in Support of the O/OREOS Mission",
       "firstAuthor": "Cook, Amanda M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 13
     },
@@ -330,6 +373,8 @@
       "bibcode": "2014AsBio..14...87C",
       "title": "The Organism/Organic Exposure to Orbital Stresses (O/OREOS) Satellite: Radiation Exposure in Low-Earth Orbit and Supporting Laboratory Studies of Iron Tetraphenylporphyrin Chloride",
       "firstAuthor": "Cook, Amanda M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 11
     },
@@ -337,6 +382,8 @@
       "bibcode": "2020AcAau.166..377S",
       "title": "SPECTROModule: A modular in-situ spectroscopy platform for exobiology and space sciences",
       "firstAuthor": "Sgambati, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 9
     },
@@ -344,6 +391,8 @@
       "bibcode": "2014AcAau..94..145B",
       "title": "Dual attitude and parameter estimation of passively magnetically stabilized nano satellites",
       "firstAuthor": "Burton, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 8
     },
@@ -351,6 +400,8 @@
       "bibcode": "2019Life...10....1N",
       "title": "Nanosatellites for Biology in Space: In Situ Measurement of Bacillus subtilis Spore Germination and Growth after 6 Months in Low Earth Orbit on the O/OREOS Mission",
       "firstAuthor": "Nicholson, Wayne L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 8
     },
@@ -358,6 +409,8 @@
       "bibcode": "2015BSRSL..84...60C",
       "title": "Photochemical studies in low Earth orbit for organic compounds related to small bodies, Titan and Mars. Current and future facilities.",
       "firstAuthor": "Cottin, H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 7
     }

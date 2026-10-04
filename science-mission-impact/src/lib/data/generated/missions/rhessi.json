@@ -21,11 +21,14 @@
   "indices": {
     "h": 92,
     "m": 3.68,
-    "i100": 86
+    "i100": 86,
+    "g": 150,
+    "tori": 218.853,
+    "riq": 591
   },
   "facts": {
     "papers": 1037,
-    "citations": 39721,
+    "citations": 39720,
     "publicationYears": [
       2002,
       2026
@@ -96,7 +99,7 @@
       1104,
       1375,
       1298,
-      2112,
+      2111,
       1828,
       1988,
       1571,
@@ -116,8 +119,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 39721,
-      "observed": 39721,
+      "expected": 39720,
+      "observed": 39720,
       "missing": 0
     }
   },
@@ -207,52 +210,59 @@
     "bibcode": "2002SoPh..210....3L",
     "title": "The Reuven Ramaty High-Energy Solar Spectroscopic Imager (RHESSI)",
     "firstAuthor": "Lin, R. P.",
+    "authors": [
+      "Lin, R. P.",
+      "Dennis, B. R.",
+      "Hurford, G. J.",
+      "Smith, D. M."
+    ],
+    "authorCount": 66,
     "year": 2002,
     "citations": 1676
   },
   "ranks": {
     "full": {
       "bins": [
-        104.222,
-        99.063,
-        81.788,
-        68.508,
-        75.905,
-        93.128,
-        98.727,
-        90.472,
-        91.856,
-        105.329
+        104.526,
+        99.025,
+        81.945,
+        68.405,
+        76.008,
+        93.187,
+        98.574,
+        90.503,
+        91.938,
+        104.888
       ],
       "top1": 10
     },
     "window": {
       "bins": [
-        38.032,
-        35.959,
-        27.486,
-        14.615,
-        26.471,
-        24.938,
-        18.917,
-        21.845,
-        19.737,
+        38.11,
+        35.922,
+        27.53,
+        14.712,
+        26.392,
+        24.816,
+        18.863,
+        21.786,
+        19.868,
         24
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        66.574,
-        95.394,
-        91.586,
-        92.552,
-        96.131,
-        96.91,
-        116.025,
-        126.321,
-        128.207,
-        127.3
+        66.275,
+        95.143,
+        91.373,
+        92.063,
+        96.469,
+        96.846,
+        116.293,
+        126.622,
+        128.392,
+        127.523
       ],
       "top1": 16
     }
@@ -261,10 +271,10 @@
     "papers": 909,
     "outputBasis": "measured",
     "citations": 10771,
-    "top10": 76.685,
-    "top10ShareOfDivision": 0.05316,
+    "top10": 75.281,
+    "top10ShareOfDivision": 0.05201,
     "top1": 7.667,
-    "top1ShareOfDivision": 0.05315,
+    "top1ShareOfDivision": 0.05296,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.619,
@@ -280,6 +290,13 @@
       "status": "available",
       "months": 221,
       "citationBuckets": 22
+    },
+    "spread": {
+      "mean": 11.849,
+      "median": 8,
+      "uncited": 68,
+      "i10": 403,
+      "i100": 2
     }
   },
   "window": {
@@ -287,9 +304,9 @@
     "outputBasis": "measured",
     "citations": 3217,
     "top10": 32.733,
-    "top10ShareOfDivision": 0.07407,
+    "top10ShareOfDivision": 0.07377,
     "top1": 1,
-    "top1ShareOfDivision": 0.02263,
+    "top1ShareOfDivision": 0.02254,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.619,
@@ -305,14 +322,21 @@
       "status": "available",
       "months": 60,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 12.766,
+      "median": 8,
+      "uncited": 22,
+      "i10": 113,
+      "i100": 1
     }
   },
   "lifetime": {
     "papers": 1037,
     "outputBasis": "measured",
-    "citations": 39721,
-    "top10": 75.21,
-    "top10ShareOfDivision": 0.04795,
+    "citations": 39720,
+    "top10": 71.173,
+    "top10ShareOfDivision": 0.04525,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -321,13 +345,20 @@
       "yearsFromFormulation": 5.043,
       "bibcode": "2002SoPh..210....3L",
       "date": "2002-11-00"
+    },
+    "spread": {
+      "mean": 38.303,
+      "median": 19,
+      "uncited": 43,
+      "i10": 704,
+      "i100": 86
     }
   },
   "query": {
     "arms": "(((abs:RHESSI AND abs:(solar OR flare OR X-ray OR gamma OR terrestrial OR electron OR photon OR polarization OR transient OR image)) OR (abs:HESSI AND abs:solar) OR =abs:\"High Energy Solar Spectroscopic Imager\" OR =abs:\"High Energy Solar Spectroscopy Imager\" OR facility:RHESSI))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2002-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ARHESSI+AND+abs%3A%28solar+OR+flare+OR+X-ray+OR+gamma+OR+terrestrial+OR+electron+OR+photon+OR+polarization+OR+transient+OR+image%29%29+OR+%28abs%3AHESSI+AND+abs%3Asolar%29+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopic+Imager%22+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopy+Imager%22+OR+facility%3ARHESSI%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:29:38.135015+00:00",
+    "fetchedAt": "2026-09-30T18:07:43.044168+00:00",
     "reconciliation": {
       "adsReturned": 1047,
       "curatedOut": 9,
@@ -453,6 +484,8 @@
       "bibcode": "2002SoPh..210....3L",
       "title": "The Reuven Ramaty High-Energy Solar Spectroscopic Imager (RHESSI)",
       "firstAuthor": "Lin, R. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 1676
     },
@@ -460,6 +493,8 @@
       "bibcode": "2011SSRv..159...19F",
       "title": "An Observational Overview of Solar Flares",
       "firstAuthor": "Fletcher, L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 813
     },
@@ -467,6 +502,8 @@
       "bibcode": "2002SoPh..210...61H",
       "title": "The RHESSI Imaging Concept",
       "firstAuthor": "Hurford, G. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 521
     },
@@ -474,13 +511,17 @@
       "bibcode": "2017LRSP...14....2B",
       "title": "Flare Observations",
       "firstAuthor": "Benz, Arnold O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
-      "citations": 477
+      "citations": 476
     },
     {
       "bibcode": "2006ApJ...647..483L",
       "title": "The Nucleosynthesis of ²⁶Al and ⁶⁰Fe in Solar Metallicity Stars Extending in Mass from 11 to 120 Mₛₒₗₐᵣ: The Hydrostatic and Explosive Contributions",
       "firstAuthor": "Limongi, Marco",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 383
     },
@@ -488,6 +529,8 @@
       "bibcode": "2005Sci...307.1085S",
       "title": "Terrestrial Gamma-Ray Flashes Observed up to 20 MeV",
       "firstAuthor": "Smith, David M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 379
     },
@@ -495,6 +538,8 @@
       "bibcode": "2003ApJ...595L..69L",
       "title": "RHESSI Observations of Particle Acceleration and Energy Release in an Intense Solar Gamma-Ray Line Flare",
       "firstAuthor": "Lin, R. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 378
     },
@@ -502,6 +547,8 @@
       "bibcode": "2011SSRv..159..107H",
       "title": "Implications of X-ray Observations for Electron Acceleration and Propagation in Solar Flares",
       "firstAuthor": "Holman, G. D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 347
     },
@@ -509,13 +556,17 @@
       "bibcode": "2012A&A...539A.146H",
       "title": "Differential emission measures from the regularized inversion of Hinode and SDO data",
       "firstAuthor": "Hannah, I. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
-      "citations": 337
+      "citations": 336
     },
     {
       "bibcode": "2002SoPh..210...33S",
       "title": "The RHESSI Spectrometer",
       "firstAuthor": "Smith, D. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 329
     },
@@ -523,6 +574,8 @@
       "bibcode": "2005ApJ...622.1251L",
       "title": "Direct Observations of the Magnetic Reconnection Site of an Eruption on 2003 November 18",
       "firstAuthor": "Lin, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 321
     },
@@ -530,6 +583,8 @@
       "bibcode": "2003ApJ...596L.251S",
       "title": "Evidence for the Formation of a Large-Scale Current Sheet in a Solar Flare",
       "firstAuthor": "Sui, Linhui",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 295
     },
@@ -537,6 +592,8 @@
       "bibcode": "2008LRSP....5....1B",
       "title": "Flare Observations",
       "firstAuthor": "Benz, Arnold O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 281
     },
@@ -544,6 +601,8 @@
       "bibcode": "2003ApJ...595L..97H",
       "title": "Electron Bremsstrahlung Hard X-Ray Spectra, Electron Distributions, and Energetics in the 2002 July 23 Solar Flare",
       "firstAuthor": "Holman, Gordon D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 277
     },
@@ -551,6 +610,8 @@
       "bibcode": "2003ApJ...595L.135J",
       "title": "Observations of the Failed Eruption of a Filament",
       "firstAuthor": "Ji, Haisheng",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 273
     },
@@ -558,6 +619,8 @@
       "bibcode": "2003ApJ...597..998L",
       "title": "Polarization of Prompt Gamma-Ray Burst Emission: Evidence for Electromagnetically Dominated Outflow",
       "firstAuthor": "Lyutikov, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 266
     },
@@ -565,6 +628,8 @@
       "bibcode": "2005GeoRL..3222804D",
       "title": "A comparison between Monte Carlo simulations of runaway breakdown and terrestrial gamma-ray flash observations",
       "firstAuthor": "Dwyer, J. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 253
     },
@@ -572,6 +637,8 @@
       "bibcode": "2004JGRA..10910104E",
       "title": "Energy partition in two solar flare/CME events",
       "firstAuthor": "Emslie, A. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 241
     },
@@ -579,6 +646,8 @@
       "bibcode": "2010ApJ...714.1108K",
       "title": "Measurements of the Coronal Acceleration Region of a Solar Flare",
       "firstAuthor": "Krucker, Säm",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 241
     },
@@ -586,6 +655,8 @@
       "bibcode": "2008A&ARv..16..155K",
       "title": "Hard X-ray emission from the solar corona",
       "firstAuthor": "Krucker, S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 239
     }

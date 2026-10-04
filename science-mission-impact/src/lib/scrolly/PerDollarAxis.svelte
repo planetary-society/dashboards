@@ -1,7 +1,7 @@
 <script>
 	// Furniture for citations per dollar: division bands on the cost axis, a faint rule per
-	// decade of the shared rate scale inside each row, and under each division's name the rate
-	// either side of the reference. Rows are read on their own.
+	// decade of the shared rate scale inside each row, each row's dashed best-fit line, and under
+	// each division's name the rate either side of the reference. Rows are read on their own.
 	import { compact as short, int, money, moneyTick } from '$lib/format.js';
 	import { minorDollarTicks } from '$lib/charts/costaxis.js';
 	import DollarMinorTicks from '$lib/charts/DollarMinorTicks.svelte';
@@ -39,6 +39,7 @@
 				<line class="rate" x1={x0} x2={x1} y1={rateY(row, r)} y2={rateY(row, r)} />
 			{/each}
 			<line class="shelf" x1={x0} x2={x1} y1={row.shelfY} y2={row.shelfY} />
+			{#if row.fit}<line class="fit" x1={row.fit.x1} y1={row.fit.y1} x2={row.fit.x2} y2={row.fit.y2} />{/if}
 		{/each}
 	</svg>
 
@@ -129,6 +130,13 @@
 	.rate {
 		stroke: var(--shadow);
 		stroke-width: 1;
+		opacity: 0.7;
+	}
+
+	/* the time-to-science chart's best-fit style */
+	.fit {
+		stroke: var(--soil);
+		stroke-dasharray: 4 4;
 		opacity: 0.7;
 	}
 

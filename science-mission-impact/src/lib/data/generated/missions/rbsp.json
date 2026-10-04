@@ -21,7 +21,10 @@
   "indices": {
     "h": 82,
     "m": 5.467,
-    "i100": 56
+    "i100": 56,
+    "g": 139,
+    "tori": 62.3,
+    "riq": 526
   },
   "facts": {
     "papers": 1427,
@@ -178,52 +181,59 @@
     "bibcode": "2013SSRv..179..127K",
     "title": "The Electric and Magnetic Field Instrument Suite and Integrated Science (EMFISIS) on RBSP",
     "firstAuthor": "Kletzing, C. A.",
+    "authors": [
+      "Kletzing, C. A.",
+      "Kurth, W. S.",
+      "Acuna, M.",
+      "MacDowall, R. J."
+    ],
+    "authorCount": 33,
     "year": 2013,
     "citations": 1104
   },
   "ranks": {
     "full": {
       "bins": [
-        33.876,
-        57.36,
-        74.843,
-        76.697,
-        88.195,
-        111.033,
-        102.643,
-        97.694,
-        129.571,
-        123.089
+        34.035,
+        57.457,
+        74.942,
+        76.754,
+        88.264,
+        111.189,
+        102.48,
+        97.721,
+        129.761,
+        122.396
       ],
-      "top1": 18.906
+      "top1": 18.844
     },
     "window": {
       "bins": [
-        13.634,
-        31.417,
-        34.467,
-        35.656,
-        50.495,
-        36.082,
-        33.084,
-        51.558,
-        51.225,
-        50.38
+        13.671,
+        31.428,
+        34.612,
+        35.811,
+        50.427,
+        35.755,
+        32.986,
+        51.506,
+        51.399,
+        50.404
       ],
       "top1": 10
     },
     "lifetime": {
       "bins": [
-        165.719,
-        150.056,
-        149.4,
-        167.736,
-        149.108,
-        147.138,
-        141.929,
-        130.034,
-        123.73,
-        102.15
+        165.241,
+        149.785,
+        148.913,
+        167.358,
+        149.548,
+        147.237,
+        142.515,
+        130.217,
+        123.925,
+        102.262
       ],
       "top1": 12
     }
@@ -232,10 +242,10 @@
     "papers": 895,
     "outputBasis": "measured",
     "citations": 13164,
-    "top10": 106.478,
-    "top10ShareOfDivision": 0.07382,
-    "top1": 18.24,
-    "top1ShareOfDivision": 0.12644,
+    "top10": 105.689,
+    "top10ShareOfDivision": 0.07301,
+    "top1": 18.177,
+    "top1ShareOfDivision": 0.12558,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.674,
@@ -251,16 +261,23 @@
       "status": "available",
       "months": 108,
       "citationBuckets": 13
+    },
+    "spread": {
+      "mean": 14.708,
+      "median": 10,
+      "uncited": 15,
+      "i10": 475,
+      "i100": 8
     }
   },
   "window": {
     "papers": 388,
     "outputBasis": "measured",
     "citations": 7304,
-    "top10": 45,
-    "top10ShareOfDivision": 0.10183,
+    "top10": 44.967,
+    "top10ShareOfDivision": 0.10134,
     "top1": 10,
-    "top1ShareOfDivision": 0.2263,
+    "top1ShareOfDivision": 0.22538,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.674,
@@ -276,14 +293,21 @@
       "status": "available",
       "months": 61,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 18.825,
+      "median": 12,
+      "uncited": 6,
+      "i10": 232,
+      "i100": 8
     }
   },
   "lifetime": {
     "papers": 1427,
     "outputBasis": "measured",
     "citations": 38792,
-    "top10": 140.942,
-    "top10ShareOfDivision": 0.08986,
+    "top10": 140.374,
+    "top10ShareOfDivision": 0.08925,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -292,13 +316,20 @@
       "yearsFromFormulation": 7.083,
       "bibcode": "2013GeoRL..40.3507T",
       "date": "2013-07-00"
+    },
+    "spread": {
+      "mean": 27.184,
+      "median": 12,
+      "uncited": 128,
+      "i10": 811,
+      "i100": 56
     }
   },
   "query": {
     "arms": "((=abs:\"Van Allen Probes\" OR =abs:\"Van Allen Probe\" OR =abs:\"Radiation Belt Storm Probes\" OR (abs:RBSP AND abs:(ECT OR EMFISIS OR EFW OR RBSPICE OR MagEIS OR REPT OR magnetic OR plasma OR \"radiation belt\" OR mission))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2012-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Van+Allen+Probes%22+OR+%3Dabs%3A%22Van+Allen+Probe%22+OR+%3Dabs%3A%22Radiation+Belt+Storm+Probes%22+OR+%28abs%3ARBSP+AND+abs%3A%28ECT+OR+EMFISIS+OR+EFW+OR+RBSPICE+OR+MagEIS+OR+REPT+OR+magnetic+OR+plasma+OR+%22radiation+belt%22+OR+mission%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:31:09.017186+00:00",
+    "fetchedAt": "2026-09-30T18:09:39.709540+00:00",
     "reconciliation": {
       "adsReturned": 1433,
       "curatedOut": 8,
@@ -480,6 +511,8 @@
       "bibcode": "2013SSRv..179..127K",
       "title": "The Electric and Magnetic Field Instrument Suite and Integrated Science (EMFISIS) on RBSP",
       "firstAuthor": "Kletzing, C. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 1104
     },
@@ -487,6 +520,8 @@
       "bibcode": "2013SSRv..179....3M",
       "title": "Science Objectives and Rationale for the Radiation Belt Storm Probes Mission",
       "firstAuthor": "Mauk, B. H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 987
     },
@@ -494,6 +529,8 @@
       "bibcode": "2013Natur.504..411T",
       "title": "Rapid local acceleration of relativistic radiation-belt electrons by magnetospheric chorus",
       "firstAuthor": "Thorne, R. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 726
     },
@@ -501,6 +538,8 @@
       "bibcode": "2013SSRv..179..383B",
       "title": "The Magnetic Electron Ion Spectrometer (MagEIS) Instruments Aboard the Radiation Belt Storm Probes (RBSP) Spacecraft",
       "firstAuthor": "Blake, J. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 571
     },
@@ -508,6 +547,8 @@
       "bibcode": "2013SSRv..179..311S",
       "title": "Science Goals and Overview of the Radiation Belt Storm Probes (RBSP) Energetic Particle, Composition, and Thermal Plasma (ECT) Suite on NASA's Van Allen Probes Mission",
       "firstAuthor": "Spence, H. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 524
     },
@@ -515,6 +556,8 @@
       "bibcode": "2013Sci...341..991R",
       "title": "Electron Acceleration in the Heart of the Van Allen Radiation Belts",
       "firstAuthor": "Reeves, G. D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 517
     },
@@ -522,6 +565,8 @@
       "bibcode": "2013SSRv..179..423F",
       "title": "Helium, Oxygen, Proton, and Electron (HOPE) Mass Spectrometer for the Radiation Belt Storm Probes Mission",
       "firstAuthor": "Funsten, H. O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 487
     },
@@ -529,6 +574,8 @@
       "bibcode": "2013SSRv..179..183W",
       "title": "The Electric Field and Waves Instruments on the Radiation Belt Storm Probes Mission",
       "firstAuthor": "Wygant, J. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 475
     },
@@ -536,6 +583,8 @@
       "bibcode": "2015JGRA..120..904K",
       "title": "Electron densities inferred from plasma wave spectra obtained by the Waves instrument on Van Allen Probes",
       "firstAuthor": "Kurth, W. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 474
     },
@@ -543,6 +592,8 @@
       "bibcode": "2013SSRv..179..337B",
       "title": "The Relativistic Electron-Proton Telescope (REPT) Instrument on Board the Radiation Belt Storm Probes (RBSP) Spacecraft: Characterization of Earth's Radiation Belt High-Energy Particle Populations",
       "firstAuthor": "Baker, D. N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 389
     },
@@ -550,6 +601,8 @@
       "bibcode": "2014GeoRL..41.1375U",
       "title": "Effect of EMIC waves on relativistic and ultrarelativistic electron populations: Ground-based and Van Allen Probes observations",
       "firstAuthor": "Usanova, M. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 330
     },
@@ -557,6 +610,8 @@
       "bibcode": "2015JGRA..120.7240J",
       "title": "Source and seed populations for relativistic electrons: Their roles in radiation belt changes",
       "firstAuthor": "Jaynes, A. N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 275
     },
@@ -564,6 +619,8 @@
       "bibcode": "2019JGRA..124.8319L",
       "title": "Earth's Van Allen Radiation Belts: From Discovery to the Van Allen Probes Era",
       "firstAuthor": "Li, W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 243
     },
@@ -571,6 +628,8 @@
       "bibcode": "2015JGRA..120.7477S",
       "title": "The occurrence and wave properties of H⁺-, He⁺-, and O⁺-band EMIC waves observed by the Van Allen Probes",
       "firstAuthor": "Saikin, A. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 229
     },
@@ -578,6 +637,8 @@
       "bibcode": "2014JGRA..119.4681L",
       "title": "Radiation belt electron acceleration by chorus waves during the 17 March 2013 storm",
       "firstAuthor": "Li, W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 215
     },
@@ -585,6 +646,8 @@
       "bibcode": "2013JGRA..118.7740N",
       "title": "Resonant scattering and resultant pitch angle evolution of relativistic electrons by plasmaspheric hiss",
       "firstAuthor": "Ni, Binbin",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 213
     },
@@ -592,6 +655,8 @@
       "bibcode": "2015JGRA..120.3393L",
       "title": "Statistical properties of plasmaspheric hiss derived from Van Allen Probes data and their effects on radiation belt electron dynamics",
       "firstAuthor": "Li, W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 207
     },
@@ -599,6 +664,8 @@
       "bibcode": "2016JGRA..121..397R",
       "title": "Energy-dependent dynamics of keV to MeV electrons in the inner zone, outer zone, and slot regions",
       "firstAuthor": "Reeves, Geoffrey D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 176
     },
@@ -606,6 +673,8 @@
       "bibcode": "2014Natur.515..531B",
       "title": "An impenetrable barrier to ultrarelativistic electrons in the Van Allen radiation belts",
       "firstAuthor": "Baker, D. N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 173
     },
@@ -613,6 +682,8 @@
       "bibcode": "2013GeoRL..40.4526L",
       "title": "Constructing the global distribution of chorus wave intensity using measurements of electrons by the POES satellites and waves by the Van Allen Probes",
       "firstAuthor": "Li, W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 172
     }

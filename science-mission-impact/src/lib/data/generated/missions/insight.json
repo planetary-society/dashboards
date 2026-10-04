@@ -21,11 +21,14 @@
   "indices": {
     "h": 43,
     "m": 4.778,
-    "i100": 15
+    "i100": 15,
+    "g": 74,
+    "tori": 11.485,
+    "riq": 376
   },
   "facts": {
     "papers": 362,
-    "citations": 8035,
+    "citations": 8041,
     "publicationYears": [
       2018,
       2026
@@ -63,13 +66,13 @@
       1662,
       1117,
       1539,
-      1186
+      1192
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 8035,
-      "observed": 8035,
+      "expected": 8041,
+      "observed": 8041,
       "missing": 0
     }
   },
@@ -146,51 +149,58 @@
     "bibcode": "2020NatGe..13..183B",
     "title": "Initial results from the InSight mission on Mars",
     "firstAuthor": "Banerdt, W. Bruce",
+    "authors": [
+      "Banerdt, W. Bruce",
+      "Smrekar, Suzanne E.",
+      "Banfield, Don",
+      "Giardini, Domenico"
+    ],
+    "authorCount": 69,
     "year": 2020,
     "citations": 360
   },
   "ranks": {
     "full": {
       "bins": [
-        13.302,
-        18.939,
-        25.709,
-        24.318,
-        15.541,
-        22.367,
-        26.547,
-        26.427,
-        35.917,
-        47.934
+        13.333,
+        18.947,
+        25.769,
+        24.288,
+        15.512,
+        22.355,
+        26.519,
+        26.46,
+        35.899,
+        47.917
       ],
       "top1": 9
     },
     "window": {
       "bins": [
-        8.624,
-        15.728,
-        20.274,
-        20.089,
-        18.914,
-        20.347,
-        13.345,
-        18.5,
-        25.93,
-        25.25
+        8.682,
+        15.753,
+        20.423,
+        19.892,
+        18.924,
+        20.322,
+        13.338,
+        18.511,
+        25.918,
+        25.238
       ],
       "top1": 7
     },
     "lifetime": {
       "bins": [
-        56.179,
-        53.308,
-        48.7,
-        39.245,
-        40.896,
-        34.776,
-        28.897,
-        24.76,
-        16.24,
+        55.768,
+        53.452,
+        48.425,
+        39.534,
+        41.066,
+        34.678,
+        29.077,
+        24.7,
+        16.3,
         19
       ],
       "top1": 1
@@ -219,6 +229,13 @@
       "status": "available",
       "months": 61,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 22.136,
+      "median": 12,
+      "uncited": 7,
+      "i10": 149,
+      "i100": 9
     }
   },
   "window": {
@@ -226,9 +243,9 @@
     "outputBasis": "measured",
     "citations": 4524,
     "top10": 32.95,
-    "top10ShareOfDivision": 0.06822,
+    "top10ShareOfDivision": 0.06825,
     "top1": 7,
-    "top1ShareOfDivision": 0.14493,
+    "top1ShareOfDivision": 0.14499,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.099,
@@ -244,12 +261,19 @@
       "status": "available",
       "months": 48,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 24.193,
+      "median": 12,
+      "uncited": 4,
+      "i10": 111,
+      "i100": 8
     }
   },
   "lifetime": {
     "papers": 362,
     "outputBasis": "measured",
-    "citations": 8035,
+    "citations": 8041,
     "top10": 59.333,
     "top10ShareOfDivision": 0.04354,
     "top1": null,
@@ -260,13 +284,20 @@
       "yearsFromFormulation": 6.366,
       "bibcode": "2019SSRv..215....3S",
       "date": "2019-01-00"
+    },
+    "spread": {
+      "mean": 22.213,
+      "median": 9.5,
+      "uncited": 42,
+      "i10": 181,
+      "i100": 15
     }
   },
   "query": {
     "arms": "((=abs:\"Interior Exploration using Seismic Investigations, Geodesy and Heat Transport\" OR =abs:\"InSight lander\" OR =abs:\"InSight mission\" OR =abs:\"InSight landing\" OR =abs:\"Mars InSight\" OR =abs:\"NASA InSight\" OR =abs:\"InSight spacecraft\" OR =abs:\"InSight seismometer\" OR =abs:\"InSight seismometers\" OR =abs:\"InSight SEIS\" OR =abs:\"InSight HP3\" OR =abs:\"InSight sols\" OR ((=abs:\"InSight seismic\" OR =abs:\"InSight data\" OR =abs:\"InSight observations\" OR =abs:\"InSight measurements\" OR =abs:\"InSight pressure\" OR =abs:\"InSight wind\" OR =abs:\"InSight site\" OR =abs:\"InSight sites\" OR =abs:\"InSight probe\" OR =abs:\"InSight operations\" OR =abs:\"InSight team\" OR abs:SEIS OR abs:HP3 OR abs:APSS) AND (abs:Mars OR abs:martian OR abs:marsquake OR =abs:marsquakes)) OR ((abs:marsquake OR =abs:marsquakes) AND (abs:InSight OR abs:SEIS OR abs:seismometer OR abs:recorded OR abs:detected OR abs:S1222a)) OR ((abs:InSight AND (abs:Mars OR abs:martian OR abs:marsquake OR =abs:marsquakes) AND (abs:seismic OR abs:seismometer OR abs:RISE OR =abs:\"Rotation and Interior Structure Experiment\" OR =abs:\"Seismic Experiment for Interior Structure\" OR =abs:\"Heat Flow and Physical Properties Package\" OR =abs:\"Auxiliary Payload Sensor Subsystem\" OR =abs:\"Instrument Deployment Camera\" OR =abs:\"Instrument Context Camera\")) NOT =abs:insights)))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2018-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Interior+Exploration+using+Seismic+Investigations%2C+Geodesy+and+Heat+Transport%22+OR+%3Dabs%3A%22InSight+lander%22+OR+%3Dabs%3A%22InSight+mission%22+OR+%3Dabs%3A%22InSight+landing%22+OR+%3Dabs%3A%22Mars+InSight%22+OR+%3Dabs%3A%22NASA+InSight%22+OR+%3Dabs%3A%22InSight+spacecraft%22+OR+%3Dabs%3A%22InSight+seismometer%22+OR+%3Dabs%3A%22InSight+seismometers%22+OR+%3Dabs%3A%22InSight+SEIS%22+OR+%3Dabs%3A%22InSight+HP3%22+OR+%3Dabs%3A%22InSight+sols%22+OR+%28%28%3Dabs%3A%22InSight+seismic%22+OR+%3Dabs%3A%22InSight+data%22+OR+%3Dabs%3A%22InSight+observations%22+OR+%3Dabs%3A%22InSight+measurements%22+OR+%3Dabs%3A%22InSight+pressure%22+OR+%3Dabs%3A%22InSight+wind%22+OR+%3Dabs%3A%22InSight+site%22+OR+%3Dabs%3A%22InSight+sites%22+OR+%3Dabs%3A%22InSight+probe%22+OR+%3Dabs%3A%22InSight+operations%22+OR+%3Dabs%3A%22InSight+team%22+OR+abs%3ASEIS+OR+abs%3AHP3+OR+abs%3AAPSS%29+AND+%28abs%3AMars+OR+abs%3Amartian+OR+abs%3Amarsquake+OR+%3Dabs%3Amarsquakes%29%29+OR+%28%28abs%3Amarsquake+OR+%3Dabs%3Amarsquakes%29+AND+%28abs%3AInSight+OR+abs%3ASEIS+OR+abs%3Aseismometer+OR+abs%3Arecorded+OR+abs%3Adetected+OR+abs%3AS1222a%29%29+OR+%28%28abs%3AInSight+AND+%28abs%3AMars+OR+abs%3Amartian+OR+abs%3Amarsquake+OR+%3Dabs%3Amarsquakes%29+AND+%28abs%3Aseismic+OR+abs%3Aseismometer+OR+abs%3ARISE+OR+%3Dabs%3A%22Rotation+and+Interior+Structure+Experiment%22+OR+%3Dabs%3A%22Seismic+Experiment+for+Interior+Structure%22+OR+%3Dabs%3A%22Heat+Flow+and+Physical+Properties+Package%22+OR+%3Dabs%3A%22Auxiliary+Payload+Sensor+Subsystem%22+OR+%3Dabs%3A%22Instrument+Deployment+Camera%22+OR+%3Dabs%3A%22Instrument+Context+Camera%22%29%29+NOT+%3Dabs%3Ainsights%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:29:40.546373+00:00",
+    "fetchedAt": "2026-09-30T17:54:05.902491+00:00",
     "reconciliation": {
       "adsReturned": 385,
       "curatedOut": 30,
@@ -616,6 +647,8 @@
       "bibcode": "2020NatGe..13..183B",
       "title": "Initial results from the InSight mission on Mars",
       "firstAuthor": "Banerdt, W. Bruce",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 360
     },
@@ -623,6 +656,8 @@
       "bibcode": "2019SSRv..215...12L",
       "title": "SEIS: Insight's Seismic Experiment for Internal Structure of Mars",
       "firstAuthor": "Lognonné, P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 277
     },
@@ -630,13 +665,17 @@
       "bibcode": "2021Sci...373..443S",
       "title": "Seismic detection of the martian core",
       "firstAuthor": "Stähler, Simon C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
-      "citations": 271
+      "citations": 272
     },
     {
       "bibcode": "2020NatGe..13..213L",
       "title": "Constraints on the shallow elastic and anelastic structure of Mars from InSight seismic data",
       "firstAuthor": "Lognonné, P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 253
     },
@@ -644,6 +683,8 @@
       "bibcode": "2021Sci...373..438K",
       "title": "Thickness and structure of the martian crust from InSight seismic data",
       "firstAuthor": "Knapmeyer-Endrun, Brigitte",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 228
     },
@@ -651,6 +692,8 @@
       "bibcode": "2020NatGe..13..205G",
       "title": "The seismicity of Mars",
       "firstAuthor": "Giardini, D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 227
     },
@@ -658,6 +701,8 @@
       "bibcode": "2020NatGe..13..190B",
       "title": "The atmosphere of Mars as observed by InSight",
       "firstAuthor": "Banfield, Don",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 200
     },
@@ -665,6 +710,8 @@
       "bibcode": "2021Sci...373..434K",
       "title": "Upper mantle structure of Mars from InSight seismic data",
       "firstAuthor": "Khan, Amir",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 159
     },
@@ -672,6 +719,8 @@
       "bibcode": "2020NatCo..11.1014G",
       "title": "Geology of the InSight landing site on Mars",
       "firstAuthor": "Golombek, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 122
     },
@@ -679,13 +728,17 @@
       "bibcode": "2019SSRv..215....4B",
       "title": "InSight Auxiliary Payload Sensor Suite (APSS)",
       "firstAuthor": "Banfield, D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
-      "citations": 112
+      "citations": 113
     },
     {
       "bibcode": "2021PEPI..31006595C",
       "title": "The Marsquake catalogue from InSight, sols 0-478",
       "firstAuthor": "Clinton, John F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 112
     },
@@ -693,6 +746,8 @@
       "bibcode": "2022JGRE..12707298W",
       "title": "InSight Constraints on the Global Character of the Martian Crust",
       "firstAuthor": "Wieczorek, Mark A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 108
     },
@@ -700,6 +755,8 @@
       "bibcode": "2023Natur.622..712S",
       "title": "Geophysical evidence for an enriched molten silicate layer above Mars's core",
       "firstAuthor": "Samuel, Henri",
+      "authors": null,
+      "authorCount": null,
       "year": 2023,
       "citations": 105
     },
@@ -707,6 +764,8 @@
       "bibcode": "2020SSRv..216...89N",
       "title": "Lunar Seismology: A Data and Instrumentation Review",
       "firstAuthor": "Nunn, Ceri",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 103
     },
@@ -714,6 +773,8 @@
       "bibcode": "2019SSRv..215....3S",
       "title": "Pre-mission InSights on the Interior of Mars",
       "firstAuthor": "Smrekar, Suzanne E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 100
     },
@@ -721,6 +782,8 @@
       "bibcode": "2020E&SS....701317S",
       "title": "Detection, Analysis, and Removal of Glitches From InSight's Seismic Data From Mars",
       "firstAuthor": "Scholz, John-Robert",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 97
     },
@@ -728,6 +791,8 @@
       "bibcode": "2022Sci...378..412P",
       "title": "Largest recent impact craters on Mars: Orbital imaging and surface seismic co-investigation",
       "firstAuthor": "Posiolova, L. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 90
     },
@@ -735,13 +800,17 @@
       "bibcode": "2023Natur.622..718K",
       "title": "Evidence for a liquid silicate layer atop the Martian core",
       "firstAuthor": "Khan, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2023,
-      "citations": 89
+      "citations": 90
     },
     {
       "bibcode": "2020NatGe..13..199J",
       "title": "Crustal and time-varying magnetic fields at the InSight landing site on Mars",
       "firstAuthor": "Johnson, Catherine L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 87
     },
@@ -749,6 +818,8 @@
       "bibcode": "2022E&PSL.57817330K",
       "title": "Geophysical and cosmochemical evidence for a volatile-rich Mars",
       "firstAuthor": "Khan, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 76
     }

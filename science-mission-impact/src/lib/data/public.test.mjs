@@ -287,6 +287,21 @@ test('timing cuts the reached missions into cost thirds at round(n/3) and round(
 	]);
 });
 
+test('science-start timing: cost quarters over every division together, and the ratio', () => {
+	const at = (id, cost, months) => {
+		const m = mission(id, cost);
+		m.full.first = { state: 'reached', yearsFromScienceStart: months / 12 };
+		return m;
+	};
+	const a = division([at('a1', 10, 30), at('a2', 20, 24), at('a3', 50, 18), at('a4', 100, 12), at('a5', 200, 9), at('a6', 300, 6)]);
+	const b = { ...division([at('b1', 400, 6), at('b2', 500, 3), at('b3', 600, 3), at('b4', 700, 3), at('b5', 800, 0), at('b6', 900, 3), failure('bf', 5)]), slug: 'other' };
+	const t = discuss([packaged(a), packaged(b)]).scienceStart;
+	assert.equal(t.missions, 12, 'both divisions; the failure left out');
+	assert.deepEqual(t.groups.map((g) => [g.lo, g.hi, g.missions, g.months]), [[10, 50, 3, 24], [100, 300, 3, 9], [400, 600, 3, 3], [700, 900, 3, 3]]);
+	assert.equal(t.ratio, 8);
+	assert.equal(discuss([packaged(division([at('x', 10, 1), at('y', 20, 2)]))]).scienceStart, null, 'too few missions for four groups');
+});
+
 test('failure facts count shortfalls either side of the threshold, every costed mission of every division', () => {
 	const short = (m) => Object.assign(m, { shortfall: true });
 	const a = division([short(mission('u1', 50)), short(mission('edge', 100)), mission('u3', 80),

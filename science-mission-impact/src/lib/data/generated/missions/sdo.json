@@ -21,11 +21,14 @@
   "indices": {
     "h": 116,
     "m": 6.824,
-    "i100": 148
+    "i100": 151,
+    "g": 209,
+    "tori": 359.357,
+    "riq": 1115
   },
   "facts": {
-    "papers": 3840,
-    "citations": 104500,
+    "papers": 3970,
+    "citations": 107312,
     "publicationYears": [
       2010,
       2026
@@ -54,46 +57,46 @@
     "papers": [
       10,
       70,
-      187,
-      225,
-      235,
+      188,
+      228,
+      240,
+      250,
+      257,
       245,
-      255,
-      242,
-      264,
-      274,
-      255,
-      251,
-      251,
-      271,
-      274,
-      279,
-      252
+      266,
+      284,
+      268,
+      262,
+      256,
+      284,
+      294,
+      302,
+      266
     ],
     "citations": [
       0,
       197,
       1471,
-      2481,
-      3562,
-      4416,
-      5534,
-      5834,
-      6925,
-      7700,
-      7976,
-      8998,
-      9013,
-      9327,
-      10768,
-      11103,
-      9195
+      2485,
+      3582,
+      4461,
+      5621,
+      5932,
+      7032,
+      7843,
+      8207,
+      9292,
+      9337,
+      9626,
+      11139,
+      11464,
+      9623
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 104500,
-      "observed": 104500,
+      "expected": 107312,
+      "observed": 107312,
       "missing": 0
     }
   },
@@ -134,7 +137,7 @@
       13,
       13,
       8,
-      17,
+      18,
       23,
       28,
       17,
@@ -143,34 +146,34 @@
       20,
       13,
       24,
-      19,
+      20,
       20,
       14,
       22,
-      14,
-      29,
+      15,
+      30,
       25,
       17,
-      19,
-      19,
       20,
+      19,
+      22,
       22,
       18,
       15,
       21,
-      25,
-      12,
+      26,
+      13,
       22,
       23,
       23,
-      15,
+      16,
       9,
-      19,
-      25,
+      20,
+      26,
       23,
       22,
-      21,
       22,
+      23,
       23,
       20,
       26,
@@ -180,93 +183,100 @@
       30,
       12,
       12,
-      24,
-      16,
+      25,
+      17,
       23,
       30,
       22,
       24,
       30,
-      9,
-      18,
+      10,
+      19,
       14
     ],
     "citationsByYearOffset": [
       0,
       193,
       1430,
-      2461,
-      3487,
-      3904,
-      3192,
-      2843,
-      2185,
-      1300,
-      378
+      2465,
+      3507,
+      3949,
+      3270,
+      2915,
+      2239,
+      1315,
+      388
     ]
   },
   "mostCited": {
     "bibcode": "2012SoPh..275...17L",
     "title": "The Atmospheric Imaging Assembly (AIA) on the Solar Dynamics Observatory (SDO)",
     "firstAuthor": "Lemen, James R.",
+    "authors": [
+      "Lemen, James R.",
+      "Title, Alan M.",
+      "Akin, David J.",
+      "Boerner, Paul F."
+    ],
+    "authorCount": 47,
     "year": 2012,
-    "citations": 4693
+    "citations": 4694
   },
   "ranks": {
     "full": {
       "bins": [
-        267.648,
-        259.999,
-        272.133,
-        272.53,
-        303.734,
-        286.699,
-        326.664,
-        347.771,
-        350.124,
-        347.698
+        268.342,
+        263.297,
+        275.6,
+        277.811,
+        309.131,
+        291.957,
+        339.295,
+        359.039,
+        361.593,
+        361.935
       ],
-      "top1": 33.906
+      "top1": 35.844
     },
     "window": {
       "bins": [
-        110.935,
-        131.584,
-        128.037,
-        136.903,
-        115.515,
-        148.161,
-        145.021,
-        137.591,
-        131.523,
-        136.732
+        111.124,
+        133.585,
+        128.426,
+        138.258,
+        117.885,
+        152.394,
+        148.064,
+        139.636,
+        132.181,
+        138.446
       ],
       "top1": 12
     },
     "lifetime": {
       "bins": [
-        492.633,
-        452.105,
-        422.286,
-        423.873,
-        373.743,
-        361.851,
-        376.998,
-        354.351,
-        322.56,
-        259.6
+        506.342,
+        468.135,
+        437.554,
+        436.298,
+        387.482,
+        375.178,
+        386.443,
+        372.533,
+        333.989,
+        266.047
       ],
       "top1": 24
     }
   },
   "full": {
-    "papers": 3035,
+    "papers": 3108,
     "outputBasis": "measured",
-    "citations": 39196,
-    "top10": 276.339,
-    "top10ShareOfDivision": 0.19157,
-    "top1": 28.823,
-    "top1ShareOfDivision": 0.19981,
+    "citations": 40510,
+    "top10": 287.798,
+    "top10ShareOfDivision": 0.19882,
+    "top1": 30.094,
+    "top1ShareOfDivision": 0.2079,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.419,
@@ -282,16 +292,23 @@
       "status": "available",
       "months": 163,
       "citationBuckets": 17
+    },
+    "spread": {
+      "mean": 13.034,
+      "median": 9,
+      "uncited": 185,
+      "i10": 1475,
+      "i100": 12
     }
   },
   "window": {
-    "papers": 1322,
+    "papers": 1340,
     "outputBasis": "measured",
-    "citations": 21373,
-    "top10": 96.9,
-    "top10ShareOfDivision": 0.21928,
+    "citations": 21671,
+    "top10": 98.433,
+    "top10ShareOfDivision": 0.22185,
     "top1": 12,
-    "top1ShareOfDivision": 0.27155,
+    "top1ShareOfDivision": 0.27045,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.419,
@@ -307,14 +324,21 @@
       "status": "available",
       "months": 84,
       "citationBuckets": 11
+    },
+    "spread": {
+      "mean": 16.172,
+      "median": 11,
+      "uncited": 72,
+      "i10": 739,
+      "i100": 10
     }
   },
   "lifetime": {
-    "papers": 3840,
+    "papers": 3970,
     "outputBasis": "measured",
-    "citations": 104500,
-    "top10": 265.135,
-    "top10ShareOfDivision": 0.16904,
+    "citations": 107312,
+    "top10": 274.491,
+    "top10ShareOfDivision": 0.17452,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -323,21 +347,28 @@
       "yearsFromFormulation": 8.082,
       "bibcode": "2010A&A...521A..21O",
       "date": "2010-10-00"
+    },
+    "spread": {
+      "mean": 27.031,
+      "median": 11,
+      "uncited": 391,
+      "i10": 2158,
+      "i100": 151
     }
   },
   "query": {
-    "arms": "(( =abs:\"Solar Dynamics Observatory\" OR =abs:\"Solar Dynamic Observatory\" OR =abs:\"Atmospheric Imaging Assembly\" OR =abs:\"Atmosphere Imaging Assembly\" OR =abs:\"Helioseismic and Magnetic Imager\" OR =abs:\"Extreme Ultraviolet Variability Experiment\" OR =abs:\"EUV Variability Experiment\" OR ( abs:SDO AND abs:(solar OR Sun OR corona OR flare OR helioseismology) AND NOT ( abs:(subdwarf OR subdwarfs OR sdB) OR =abs:\"helium star\" OR =abs:\"white dwarf\" OR =abs:\"stripped star\" OR =abs:\"scattered disk\" OR =abs:\"scattered disc\" OR =abs:\"mass decretion\" OR =abs:\"Galactic Bulge Survey\" OR abs:(photovoltaic OR microgrid) OR =abs:\"supply demand\" OR =abs:\"sustainable development objective\" ) ) OR ( (abs:AIA OR abs:HMI) AND abs:(solar OR Sun OR corona OR flare OR sunspot OR photosphere OR chromosphere OR helioseismology) AND NOT (abs:(microgrid OR photovoltaic) OR =abs:\"active integrated\") ) OR ( abs:EVE AND abs:(solar OR Sun) AND abs:(EUV OR irradiance OR flare) AND NOT =abs:\"Evaporating Exoplanets\" ) ))",
+    "arms": "(((=abs:\"Solar Dynamics Observatory\" OR =abs:\"Solar Dynamic Observatory\" OR =abs:\"Atmospheric Imaging Assembly\" OR =abs:\"Atmosphere Imaging Assembly\" OR =abs:\"Helioseismic and Magnetic Imager\" OR =abs:\"Extreme Ultraviolet Variability Experiment\" OR =abs:\"EUV Variability Experiment\" OR ( abs:SDO AND abs:(solar OR Sun OR corona OR flare OR helioseismology) AND NOT ( abs:(subdwarf OR subdwarfs OR sdB) OR =abs:\"helium star\" OR =abs:\"white dwarf\" OR =abs:\"stripped star\" OR =abs:\"scattered disk\" OR =abs:\"scattered disc\" OR =abs:\"mass decretion\" OR =abs:\"Galactic Bulge Survey\" OR abs:(photovoltaic OR microgrid) OR =abs:\"supply demand\" OR =abs:\"sustainable development objective\" ) ) OR ( (abs:AIA OR abs:HMI) AND abs:(solar OR Sun OR corona OR flare OR sunspot OR photosphere OR chromosphere OR helioseismology) AND NOT (abs:(microgrid OR photovoltaic) OR =abs:\"active integrated\") ) OR ( abs:EVE AND abs:(solar OR Sun) AND abs:(EUV OR irradiance OR flare) AND NOT =abs:\"Evaporating Exoplanets\" )) OR facility:SDO OR =abs:\"Atmospheric Image Assembly\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2010-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28+%3Dabs%3A%22Solar+Dynamics+Observatory%22+OR+%3Dabs%3A%22Solar+Dynamic+Observatory%22+OR+%3Dabs%3A%22Atmospheric+Imaging+Assembly%22+OR+%3Dabs%3A%22Atmosphere+Imaging+Assembly%22+OR+%3Dabs%3A%22Helioseismic+and+Magnetic+Imager%22+OR+%3Dabs%3A%22Extreme+Ultraviolet+Variability+Experiment%22+OR+%3Dabs%3A%22EUV+Variability+Experiment%22+OR+%28+abs%3ASDO+AND+abs%3A%28solar+OR+Sun+OR+corona+OR+flare+OR+helioseismology%29+AND+NOT+%28+abs%3A%28subdwarf+OR+subdwarfs+OR+sdB%29+OR+%3Dabs%3A%22helium+star%22+OR+%3Dabs%3A%22white+dwarf%22+OR+%3Dabs%3A%22stripped+star%22+OR+%3Dabs%3A%22scattered+disk%22+OR+%3Dabs%3A%22scattered+disc%22+OR+%3Dabs%3A%22mass+decretion%22+OR+%3Dabs%3A%22Galactic+Bulge+Survey%22+OR+abs%3A%28photovoltaic+OR+microgrid%29+OR+%3Dabs%3A%22supply+demand%22+OR+%3Dabs%3A%22sustainable+development+objective%22+%29+%29+OR+%28+%28abs%3AAIA+OR+abs%3AHMI%29+AND+abs%3A%28solar+OR+Sun+OR+corona+OR+flare+OR+sunspot+OR+photosphere+OR+chromosphere+OR+helioseismology%29+AND+NOT+%28abs%3A%28microgrid+OR+photovoltaic%29+OR+%3Dabs%3A%22active+integrated%22%29+%29+OR+%28+abs%3AEVE+AND+abs%3A%28solar+OR+Sun%29+AND+abs%3A%28EUV+OR+irradiance+OR+flare%29+AND+NOT+%3Dabs%3A%22Evaporating+Exoplanets%22+%29+%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2010-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:30:58.484624+00:00",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Solar+Dynamics+Observatory%22+OR+%3Dabs%3A%22Solar+Dynamic+Observatory%22+OR+%3Dabs%3A%22Atmospheric+Imaging+Assembly%22+OR+%3Dabs%3A%22Atmosphere+Imaging+Assembly%22+OR+%3Dabs%3A%22Helioseismic+and+Magnetic+Imager%22+OR+%3Dabs%3A%22Extreme+Ultraviolet+Variability+Experiment%22+OR+%3Dabs%3A%22EUV+Variability+Experiment%22+OR+%28+abs%3ASDO+AND+abs%3A%28solar+OR+Sun+OR+corona+OR+flare+OR+helioseismology%29+AND+NOT+%28+abs%3A%28subdwarf+OR+subdwarfs+OR+sdB%29+OR+%3Dabs%3A%22helium+star%22+OR+%3Dabs%3A%22white+dwarf%22+OR+%3Dabs%3A%22stripped+star%22+OR+%3Dabs%3A%22scattered+disk%22+OR+%3Dabs%3A%22scattered+disc%22+OR+%3Dabs%3A%22mass+decretion%22+OR+%3Dabs%3A%22Galactic+Bulge+Survey%22+OR+abs%3A%28photovoltaic+OR+microgrid%29+OR+%3Dabs%3A%22supply+demand%22+OR+%3Dabs%3A%22sustainable+development+objective%22+%29+%29+OR+%28+%28abs%3AAIA+OR+abs%3AHMI%29+AND+abs%3A%28solar+OR+Sun+OR+corona+OR+flare+OR+sunspot+OR+photosphere+OR+chromosphere+OR+helioseismology%29+AND+NOT+%28abs%3A%28microgrid+OR+photovoltaic%29+OR+%3Dabs%3A%22active+integrated%22%29+%29+OR+%28+abs%3AEVE+AND+abs%3A%28solar+OR+Sun%29+AND+abs%3A%28EUV+OR+irradiance+OR+flare%29+AND+NOT+%3Dabs%3A%22Evaporating+Exoplanets%22+%29%29+OR+facility%3ASDO+OR+%3Dabs%3A%22Atmospheric+Image+Assembly%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2010-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-04T05:45:28.992497+00:00",
     "reconciliation": {
-      "adsReturned": 3845,
+      "adsReturned": 3975,
       "curatedOut": 1,
       "curatedIn": 8,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 12,
-      "final": 3840
+      "final": 3970
     }
   },
   "curation": {
@@ -439,27 +470,35 @@
       "bibcode": "2012SoPh..275...17L",
       "title": "The Atmospheric Imaging Assembly (AIA) on the Solar Dynamics Observatory (SDO)",
       "firstAuthor": "Lemen, James R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
-      "citations": 4693
+      "citations": 4694
     },
     {
       "bibcode": "2012SoPh..275....3P",
       "title": "The Solar Dynamics Observatory (SDO)",
       "firstAuthor": "Pesnell, W. Dean",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
-      "citations": 3423
+      "citations": 3424
     },
     {
       "bibcode": "2012SoPh..275..207S",
       "title": "The Helioseismic and Magnetic Imager (HMI) Investigation for the Solar Dynamics Observatory (SDO)",
       "firstAuthor": "Scherrer, P. H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
-      "citations": 2441
+      "citations": 2442
     },
     {
       "bibcode": "2012SoPh..275..229S",
       "title": "Design and Ground Calibration of the Helioseismic and Magnetic Imager (HMI) Instrument on the Solar Dynamics Observatory (SDO)",
       "firstAuthor": "Schou, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 2001
     },
@@ -467,20 +506,26 @@
       "bibcode": "2014SoPh..289.3549B",
       "title": "The Helioseismic and Magnetic Imager (HMI) Vector Magnetic Field Pipeline: SHARPs - Space-Weather HMI Active Region Patches",
       "firstAuthor": "Bobra, M. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
-      "citations": 707
+      "citations": 708
     },
     {
       "bibcode": "2012LRSP....9....3W",
       "title": "Coronal Mass Ejections: Observations",
       "firstAuthor": "Webb, David F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
-      "citations": 705
+      "citations": 706
     },
     {
       "bibcode": "2014SoPh..289.3483H",
       "title": "The Helioseismic and Magnetic Imager (HMI) Vector Magnetic Field Pipeline: Overview and Performance",
       "firstAuthor": "Hoeksema, J. Todd",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 575
     },
@@ -488,6 +533,8 @@
       "bibcode": "2014ApJ...782...81V",
       "title": "Alfvén Wave Solar Model (AWSoM): Coronal Heating",
       "firstAuthor": "van der Holst, B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 521
     },
@@ -495,6 +542,8 @@
       "bibcode": "2017LRSP...14....2B",
       "title": "Flare Observations",
       "firstAuthor": "Benz, Arnold O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 477
     },
@@ -502,6 +551,8 @@
       "bibcode": "2012SoPh..275..115W",
       "title": "Extreme Ultraviolet Variability Experiment (EVE) on the Solar Dynamics Observatory (SDO): Overview of Science Objectives, Instrument Design, Data Products, and Model Developments",
       "firstAuthor": "Woods, T. N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 471
     },
@@ -509,6 +560,8 @@
       "bibcode": "2012SoPh..275...41B",
       "title": "Initial Calibration of the Atmospheric Imaging Assembly (AIA) on the Solar Dynamics Observatory (SDO)",
       "firstAuthor": "Boerner, Paul",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 459
     },
@@ -516,6 +569,8 @@
       "bibcode": "2013SoPh..284..179V",
       "title": "How Many CMEs Have Flux Ropes? Deciphering the Signatures of Shocks, Flux Ropes, and Prominences in Coronagraph Observations of CMEs",
       "firstAuthor": "Vourlidas, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 400
     },
@@ -523,6 +578,8 @@
       "bibcode": "2010A&A...521A..21O",
       "title": "SDO/AIA response to coronal hole, quiet Sun, active region, and flare plasma",
       "firstAuthor": "O'Dwyer, B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 388
     },
@@ -530,6 +587,8 @@
       "bibcode": "2011Sci...331...55D",
       "title": "The Origins of Hot Plasma in the Solar Corona",
       "firstAuthor": "De Pontieu, B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 368
     },
@@ -537,13 +596,17 @@
       "bibcode": "2015ApJ...798..135B",
       "title": "Solar Flare Prediction Using SDO/HMI Vector Magnetic Field Data with a Machine-learning Algorithm",
       "firstAuthor": "Bobra, M. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
-      "citations": 363
+      "citations": 364
     },
     {
       "bibcode": "2012ApJ...748...77S",
       "title": "Evolution of Magnetic Field and Energy in a Major Eruptive Active Region Based on SDO/HMI Observation",
       "firstAuthor": "Sun, Xudong",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 349
     },
@@ -551,6 +614,8 @@
       "bibcode": "2012A&A...539A.146H",
       "title": "Differential emission measures from the regularized inversion of Hinode and SDO data",
       "firstAuthor": "Hannah, I. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 337
     },
@@ -558,6 +623,8 @@
       "bibcode": "2011SoPh..273..267B",
       "title": "VFISV: Very Fast Inversion of the Stokes Vector for the Helioseismic and Magnetic Imager",
       "firstAuthor": "Borrero, J. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 330
     },
@@ -565,6 +632,8 @@
       "bibcode": "2012NatCo...3..747Z",
       "title": "Observation of an evolving magnetic flux rope before and during a solar eruption",
       "firstAuthor": "Zhang, Jie",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 322
     },
@@ -572,11 +641,13 @@
       "bibcode": "2015ApJ...807..143C",
       "title": "Thermal Diagnostics with the Atmospheric Imaging Assembly on board the Solar Dynamics Observatory: A Validated Method for Differential Emission Measure Inversions",
       "firstAuthor": "Cheung, Mark C. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 314
     }
   ],
   "papersFile": {
-    "rows": 3840
+    "rows": 3970
   }
 }

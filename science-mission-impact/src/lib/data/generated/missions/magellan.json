@@ -21,11 +21,14 @@
   "indices": {
     "h": 63,
     "m": 1.703,
-    "i100": 35
+    "i100": 35,
+    "g": 100,
+    "tori": 177.046,
+    "riq": 359
   },
   "facts": {
-    "papers": 381,
-    "citations": 14017,
+    "papers": 382,
+    "citations": 14025,
     "publicationYears": [
       1990,
       2026
@@ -108,7 +111,7 @@
       12,
       9,
       10,
-      3
+      4
     ],
     "citations": [
       0,
@@ -147,13 +150,13 @@
       806,
       834,
       789,
-      508
+      516
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 14017,
-      "observed": 14017,
+      "expected": 14025,
+      "observed": 14025,
       "missing": 0
     }
   },
@@ -214,54 +217,61 @@
     "bibcode": "1992JGR....9713257S",
     "title": "Geology and distribution of impact craters on Venus: What are they telling us?",
     "firstAuthor": "Schaber, G. G.",
+    "authors": [
+      "Schaber, G. G.",
+      "Strom, R. G.",
+      "Moore, H. J.",
+      "Soderblom, L. A."
+    ],
+    "authorCount": 10,
     "year": 1992,
     "citations": 424
   },
   "ranks": {
     "full": {
       "bins": [
-        48.973,
-        29.016,
-        20.615,
-        8.298,
-        17.245,
-        7.441,
-        7.218,
-        13.194,
-        23.132,
-        17.868
+        49.033,
+        29.001,
+        20.633,
+        8.244,
+        17.243,
+        7.448,
+        7.209,
+        13.189,
+        23.167,
+        17.833
       ],
       "top1": 1
     },
     "window": {
       "bins": [
-        17.303,
-        9.011,
-        5.687,
-        5.714,
-        4.465,
-        3.821,
-        4.639,
-        10.241,
-        12.87,
-        12.25
+        17.344,
+        9.004,
+        5.652,
+        5.749,
+        4.443,
+        3.808,
+        4.665,
+        10.231,
+        12.866,
+        12.238
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        46.074,
-        28.18,
-        42.089,
-        37.241,
-        30.878,
-        36.291,
-        32.045,
-        45.343,
-        42.841,
-        40.019
+        46.811,
+        28.194,
+        42.029,
+        37.433,
+        30.929,
+        36.206,
+        32.078,
+        45.37,
+        42.883,
+        40.067
       ],
-      "top1": 2.935
+      "top1": 3
     }
   },
   "full": {
@@ -269,7 +279,7 @@
     "outputBasis": "measured",
     "citations": 2251,
     "top10": 14.8,
-    "top10ShareOfDivision": 0.01356,
+    "top10ShareOfDivision": 0.01357,
     "top1": 1,
     "top1ShareOfDivision": 0.00917,
     "first": {
@@ -287,6 +297,13 @@
       "status": "available",
       "months": 74,
       "citationBuckets": 10
+    },
+    "spread": {
+      "mean": 11.663,
+      "median": 4,
+      "uncited": 37,
+      "i10": 67,
+      "i100": 1
     }
   },
   "window": {
@@ -294,7 +311,7 @@
     "outputBasis": "measured",
     "citations": 1656,
     "top10": 7.3,
-    "top10ShareOfDivision": 0.01511,
+    "top10ShareOfDivision": 0.01512,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -312,12 +329,19 @@
       "status": "available",
       "months": 33,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 19.256,
+      "median": 11,
+      "uncited": 14,
+      "i10": 46,
+      "i100": 1
     }
   },
   "lifetime": {
-    "papers": 381,
+    "papers": 382,
     "outputBasis": "measured",
-    "citations": 14017,
+    "citations": 14025,
     "top10": 23.525,
     "top10ShareOfDivision": 0.01726,
     "top1": null,
@@ -328,21 +352,28 @@
       "yearsFromFormulation": 8.835,
       "bibcode": "1992JGR....9713067S",
       "date": "1992-08-00"
+    },
+    "spread": {
+      "mean": 36.715,
+      "median": 18,
+      "uncited": 38,
+      "i10": 249,
+      "i100": 35
     }
   },
   "query": {
     "arms": "(abs:(=Magellan AND Venus) NOT =abs:(\"Las Campanas\" OR \"Magellan Telescope\" OR \"Magellan Telescopes\" OR \"Magellan 6.5\" OR \"Magellan Province\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1990-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28abs%3A%28%3DMagellan+AND+Venus%29+NOT+%3Dabs%3A%28%22Las+Campanas%22+OR+%22Magellan+Telescope%22+OR+%22Magellan+Telescopes%22+OR+%22Magellan+6.5%22+OR+%22Magellan+Province%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1990-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:25:07.267173+00:00",
+    "fetchedAt": "2026-09-30T17:48:36.983977+00:00",
     "reconciliation": {
-      "adsReturned": 387,
+      "adsReturned": 388,
       "curatedOut": 6,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 381
+      "final": 382
     }
   },
   "curation": {
@@ -427,6 +458,8 @@
       "bibcode": "1992JGR....9713257S",
       "title": "Geology and distribution of impact craters on Venus: What are they telling us?",
       "firstAuthor": "Schaber, G. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 424
     },
@@ -434,6 +467,8 @@
       "bibcode": "1992JGR....9713153H",
       "title": "Venus volcanism: Classification of volcanic features and structures, associations, and global distribution from Magellan data",
       "firstAuthor": "Head, James W.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 393
     },
@@ -441,13 +476,17 @@
       "bibcode": "2018P&SS..150....9A",
       "title": "A look towards the future in the handling of space science mission geometry",
       "firstAuthor": "Acton, Charles",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
-      "citations": 327
+      "citations": 329
     },
     {
       "bibcode": "1992JGR....9713199S",
       "title": "Venus tectonics - an overview of Magellan observations",
       "firstAuthor": "Solomon, Sean C.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 306
     },
@@ -455,20 +494,26 @@
       "bibcode": "1996JGR...101.4595M",
       "title": "Ground-based near-infrared observations of the Venus nightside: The thermal structure and water abundance near the surface",
       "firstAuthor": "Meadows, V. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 1996,
-      "citations": 304
+      "citations": 305
     },
     {
       "bibcode": "2016GeoRL..43.8376W",
       "title": "Was Venus the first habitable world of our solar system?",
       "firstAuthor": "Way, M. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
-      "citations": 262
+      "citations": 264
     },
     {
       "bibcode": "1992JGR....9713103F",
       "title": "Venus topography and kilometer-scale slopes",
       "firstAuthor": "Ford, Peter G.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 255
     },
@@ -476,6 +521,8 @@
       "bibcode": "1999Icar..139....3K",
       "title": "Venus Gravity: 180th Degree and Order Model",
       "firstAuthor": "Konopliv, A. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 218
     },
@@ -483,6 +530,8 @@
       "bibcode": "1992JGR....9713611S",
       "title": "The morphology and evolution of coronae on Venus",
       "firstAuthor": "Squyres, Steven W.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 166
     },
@@ -490,6 +539,8 @@
       "bibcode": "1992JGR....9713067S",
       "title": "Magellan mission summary",
       "firstAuthor": "Saunders, R. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 163
     },
@@ -497,6 +548,8 @@
       "bibcode": "1992JGR....9716183S",
       "title": "Atmospheric effects on ejecta emplacement and crater formation on Venus from Magellan",
       "firstAuthor": "Schultz, Peter H.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 163
     },
@@ -504,6 +557,8 @@
       "bibcode": "1992JGR....9713495B",
       "title": "Coldspots and hotspots: Global tectonics and mantle dynamics of Venus",
       "firstAuthor": "Bindschadler, Duane L.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 162
     },
@@ -511,6 +566,8 @@
       "bibcode": "2001Icar..150...19B",
       "title": "The Recent Evolution of Climate on Venus",
       "firstAuthor": "Bullock, Mark A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 160
     },
@@ -518,6 +575,8 @@
       "bibcode": "2011P&SS...59.1559I",
       "title": "Global geological map of Venus",
       "firstAuthor": "Ivanov, Mikhail A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 159
     },
@@ -525,6 +584,8 @@
       "bibcode": "1992JGR....9713421B",
       "title": "Channels and valleys on Venus: Preliminary analysis of Magellan data",
       "firstAuthor": "Baker, V. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 150
     },
@@ -532,6 +593,8 @@
       "bibcode": "1992JGR....9713395S",
       "title": "Regional topographic rises on Venus: Geology of western Eistla Regio and comparison to Beta Regio and Atla Regio",
       "firstAuthor": "Senske, D. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 146
     },
@@ -539,6 +602,8 @@
       "bibcode": "1991Sci...252..276H",
       "title": "Venus Volcanism: Initial Analysis from Magellan Data",
       "firstAuthor": "Head, J. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 1991,
       "citations": 145
     },
@@ -546,6 +611,8 @@
       "bibcode": "2007Icar..191...25K",
       "title": "Chemical kinetic model for the lower atmosphere of Venus",
       "firstAuthor": "Krasnopolsky, Vladimir A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 136
     },
@@ -553,6 +620,8 @@
       "bibcode": "1996JGR...10114861I",
       "title": "Tessera terrain on Venus: A survey of the global distribution, characteristics, and relation to surrounding units from Magellan data",
       "firstAuthor": "Ivanov, Mikhail A.",
+      "authors": null,
+      "authorCount": null,
       "year": 1996,
       "citations": 133
     },
@@ -560,11 +629,13 @@
       "bibcode": "1992JGR....9716055J",
       "title": "Geophysical Models for the Formation and Evolution of Coronae on Venus",
       "firstAuthor": "Janes, Daniel M.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 130
     }
   ],
   "papersFile": {
-    "rows": 381
+    "rows": 382
   }
 }

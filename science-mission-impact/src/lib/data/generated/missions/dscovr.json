@@ -21,7 +21,10 @@
   "indices": {
     "h": 26,
     "m": 2.364,
-    "i100": 1
+    "i100": 1,
+    "g": 40,
+    "tori": 7.163,
+    "riq": 243
   },
   "facts": {
     "papers": 195,
@@ -191,6 +194,13 @@
     "bibcode": "2018BAMS...99.1829M",
     "title": "Earth Observations from DSCOVR EPIC Instrument",
     "firstAuthor": "Marshak, Alexander",
+    "authors": [
+      "Marshak, Alexander",
+      "Herman, Jay",
+      "Adam, Szabo",
+      "Karin, Blank"
+    ],
+    "authorCount": 17,
     "year": 2018,
     "citations": 136
   },
@@ -199,9 +209,9 @@
       "bins": [
         6.703,
         11.324,
-        18.622,
-        11.84,
-        20.916,
+        18.617,
+        11.839,
+        20.922,
         18.295,
         8.6,
         7.626,
@@ -215,8 +225,8 @@
         5.686,
         9.908,
         16.981,
-        11.175,
-        24.884,
+        11.158,
+        24.9,
         10.033,
         5.851,
         9.086,
@@ -227,15 +237,15 @@
     },
     "lifetime": {
       "bins": [
-        41.106,
+        41.077,
         27.019,
-        26.358,
-        29.853,
-        20.435,
-        15.382,
-        9.846,
-        10.795,
-        8.205,
+        26.353,
+        29.876,
+        20.431,
+        15.393,
+        9.851,
+        10.79,
+        8.21,
         6
       ],
       "top1": 0
@@ -264,6 +274,13 @@
       "status": "available",
       "months": 101,
       "citationBuckets": 12
+    },
+    "spread": {
+      "mean": 10.744,
+      "median": 6,
+      "uncited": 5,
+      "i10": 39,
+      "i100": 0
     }
   },
   "window": {
@@ -289,6 +306,13 @@
       "status": "available",
       "months": 84,
       "citationBuckets": 11
+    },
+    "spread": {
+      "mean": 10.712,
+      "median": 7,
+      "uncited": 4,
+      "i10": 34,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -305,13 +329,20 @@
       "yearsFromFormulation": 20.665,
       "bibcode": "2018BAMS...99.1829M",
       "date": "2018-09-00"
+    },
+    "spread": {
+      "mean": 12.154,
+      "median": 6,
+      "uncited": 40,
+      "i10": 67,
+      "i100": 1
     }
   },
   "query": {
     "arms": "((=abs:\"Deep Space Climate Observatory\" OR (abs:DSCOVR AND abs:(Earth OR solar OR wind OR climate OR satellite OR spacecraft OR EPIC OR NISTAR)) OR =abs:\"Earth Polychromatic Imaging Camera\" OR (abs:EPIC AND (=abs:polychromatic OR =abs:\"sunlit Earth\" OR (abs:aerosol AND abs:(satellite OR retrieval OR radiometric OR polarimetric)))) OR (abs:NISTAR AND abs:(Earth OR radiometer OR radiation))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2015-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Deep+Space+Climate+Observatory%22+OR+%28abs%3ADSCOVR+AND+abs%3A%28Earth+OR+solar+OR+wind+OR+climate+OR+satellite+OR+spacecraft+OR+EPIC+OR+NISTAR%29%29+OR+%3Dabs%3A%22Earth+Polychromatic+Imaging+Camera%22+OR+%28abs%3AEPIC+AND+%28%3Dabs%3Apolychromatic+OR+%3Dabs%3A%22sunlit+Earth%22+OR+%28abs%3Aaerosol+AND+abs%3A%28satellite+OR+retrieval+OR+radiometric+OR+polarimetric%29%29%29%29+OR+%28abs%3ANISTAR+AND+abs%3A%28Earth+OR+radiometer+OR+radiation%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2015-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:25:35.332459+00:00",
+    "fetchedAt": "2026-09-30T18:03:52.123640+00:00",
     "reconciliation": {
       "adsReturned": 198,
       "curatedOut": 3,
@@ -364,6 +395,8 @@
       "bibcode": "2018BAMS...99.1829M",
       "title": "Earth Observations from DSCOVR EPIC Instrument",
       "firstAuthor": "Marshak, Alexander",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 136
     },
@@ -371,6 +404,8 @@
       "bibcode": "2022FrEaS..10.6962C",
       "title": "Out of the blue: Volcanic SO₂ emissions during the 2021-2022 eruptions of Hunga Tonga—Hunga Ha'apai (Tonga)",
       "firstAuthor": "Carn, S. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 88
     },
@@ -378,6 +413,8 @@
       "bibcode": "2021RSEnv.25312236F",
       "title": "OC-SMART: A machine learning based data analysis platform for satellite ocean color sensors",
       "firstAuthor": "Fan, Yongzhen",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 86
     },
@@ -385,6 +422,8 @@
       "bibcode": "2017GeoRL..44.7544X",
       "title": "Passive remote sensing of altitude and optical depth of dust plumes using the oxygen A and B bands: First results from EPIC/DSCOVR at Lagrange-1 point",
       "firstAuthor": "Xu, Xiaoguang",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 82
     },
@@ -392,6 +431,8 @@
       "bibcode": "2018SpWea..16.1190R",
       "title": "September 2017's Geoeffective Space Weather and Impacts to Caribbean Radio Communications During Hurricane Response",
       "firstAuthor": "Redmon, R. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 82
     },
@@ -399,6 +440,8 @@
       "bibcode": "2020JGRD..12532579T",
       "title": "Stratospheric Injection of Massive Smoke Plume From Canadian Boreal Fires in 2017 as Seen by DSCOVR-EPIC, CALIOP, and OMPS-LP Observations",
       "firstAuthor": "Torres, O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 74
     },
@@ -406,6 +449,8 @@
       "bibcode": "2017RSEnv.198...69Y",
       "title": "Estimation of leaf area index and its sunlit portion from DSCOVR EPIC data: Theoretical basis",
       "firstAuthor": "Yang, Bin",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 58
     },
@@ -413,6 +458,8 @@
       "bibcode": "2018AMT....11..177H",
       "title": "Synoptic ozone, cloud reflectivity, and erythemal irradiance from sunrise to sunset for the whole earth as viewed by the DSCOVR spacecraft from the earth─sun Lagrange 1 orbit",
       "firstAuthor": "Herman, Jay",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 55
     },
@@ -420,6 +467,8 @@
       "bibcode": "2019AMT....12.3269X",
       "title": "Detecting layer height of smoke aerosols over vegetated land and water surfaces via oxygen absorption bands: hourly results from EPIC/DSCOVR in deep space",
       "firstAuthor": "Xu, Xiaoguang",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 55
     },
@@ -427,6 +476,8 @@
       "bibcode": "2018AJ....156...26J",
       "title": "Using Deep Space Climate Observatory Measurements to Study the Earth as an Exoplanet",
       "firstAuthor": "Jiang, Jonathan H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 54
     },
@@ -434,6 +485,8 @@
       "bibcode": "2019GeoRL..4610061C",
       "title": "Radiative Forcing and Stratospheric Warming of Pyrocumulonimbus Smoke Aerosols: First Modeling Results With Multisensor (EPIC, CALIPSO, and CATS) Views from Space",
       "firstAuthor": "Christian, Kenneth",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 52
     },
@@ -441,6 +494,8 @@
       "bibcode": "2019RSEnv.23211320H",
       "title": "Estimating hourly land surface downward shortwave and photosynthetically active radiation from DSCOVR/EPIC observations",
       "firstAuthor": "Hao, Dalei",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 52
     },
@@ -448,6 +503,8 @@
       "bibcode": "2021GCBio..27.2144H",
       "title": "Potential of hotspot solar-induced chlorophyll fluorescence for better tracking terrestrial photosynthesis",
       "firstAuthor": "Hao, Dalei",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 52
     },
@@ -455,6 +512,8 @@
       "bibcode": "2020RSEnv.24011686Z",
       "title": "The potential of satellite FPAR product for GPP estimation: An indirect evaluation using solar-induced chlorophyll fluorescence",
       "firstAuthor": "Zhang, Zhaoying",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 50
     },
@@ -462,6 +521,8 @@
       "bibcode": "2020ESSD...12.2209H",
       "title": "DSCOVR/EPIC-derived global hourly and daily downward shortwave and photosynthetically active radiation data at 0.1° × 0.1° resolution",
       "firstAuthor": "Hao, Dalei",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 40
     },
@@ -469,6 +530,8 @@
       "bibcode": "2019ApJ...882L...1F",
       "title": "Earth as an Exoplanet: A Two-dimensional Alien Map",
       "firstAuthor": "Fan, Siteng",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 38
     },
@@ -476,6 +539,8 @@
       "bibcode": "2017SpWea..15.1321E",
       "title": "SPRINTS: A Framework for Solar-Driven Event Forecasting and Research",
       "firstAuthor": "Engell, A. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 37
     },
@@ -483,6 +548,8 @@
       "bibcode": "2018AMT....11..359G",
       "title": "Calibration of the DSCOVR EPIC visible and NIR channels using MODIS Terra and Aqua data and EPIC lunar observations",
       "firstAuthor": "Geogdzhayev, Igor V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 36
     },
@@ -490,6 +557,8 @@
       "bibcode": "2018RemS...10.1508Z",
       "title": "Spectral Invariant Provides a Practical Modeling Approach for Future Biophysical Variable Estimations",
       "firstAuthor": "Zeng, Yelu",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 33
     },
@@ -497,6 +566,8 @@
       "bibcode": "2022SpWea..2003085L",
       "title": "Validation of the DSCOVR Spacecraft Mission Space Weather Solar Wind Products",
       "firstAuthor": "Loto'aniu, Paul T. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 33
     }

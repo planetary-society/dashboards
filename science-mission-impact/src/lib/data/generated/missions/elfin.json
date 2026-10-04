@@ -21,7 +21,10 @@
   "indices": {
     "h": 19,
     "m": 2.714,
-    "i100": 1
+    "i100": 1,
+    "g": 31,
+    "tori": 1.165,
+    "riq": 154
   },
   "facts": {
     "papers": 70,
@@ -132,6 +135,13 @@
     "bibcode": "2020SSRv..216..103A",
     "title": "The ELFIN Mission",
     "firstAuthor": "Angelopoulos, V.",
+    "authors": [
+      "Angelopoulos, V.",
+      "Tsai, E.",
+      "Bingley, L.",
+      "Shaffer, C."
+    ],
+    "authorCount": 82,
     "year": 2020,
     "citations": 119
   },
@@ -140,14 +150,14 @@
       "bins": [
         0,
         0,
-        0.555,
-        1.445,
+        0.562,
+        1.438,
         0,
         1,
-        3.367,
-        1.554,
-        2.889,
-        12.19
+        3.384,
+        1.561,
+        2.928,
+        12.127
       ],
       "top1": 0
     },
@@ -168,13 +178,13 @@
     },
     "lifetime": {
       "bins": [
-        9.619,
-        9.106,
-        15.711,
-        5.986,
-        6.541,
+        9.586,
+        9.115,
+        15.657,
+        6.025,
+        6.538,
         6.036,
-        5,
+        5.044,
         4,
         7,
         1
@@ -186,8 +196,8 @@
     "papers": 23,
     "outputBasis": "measured",
     "citations": 655,
-    "top10": 12.24,
-    "top10ShareOfDivision": 0.00849,
+    "top10": 12.23,
+    "top10ShareOfDivision": 0.00845,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -205,6 +215,13 @@
       "status": "available",
       "months": 63,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 28.478,
+      "median": 26,
+      "uncited": 0,
+      "i10": 20,
+      "i100": 0
     }
   },
   "window": {
@@ -212,7 +229,7 @@
     "outputBasis": "measured",
     "citations": 109,
     "top10": 1.1,
-    "top10ShareOfDivision": 0.00249,
+    "top10ShareOfDivision": 0.00248,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -230,6 +247,13 @@
       "status": "available",
       "months": 40,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 36.333,
+      "median": 37,
+      "uncited": 0,
+      "i10": 3,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -237,7 +261,7 @@
     "outputBasis": "measured",
     "citations": 1093,
     "top10": 12.167,
-    "top10ShareOfDivision": 0.00776,
+    "top10ShareOfDivision": 0.00774,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -246,13 +270,20 @@
       "yearsFromFormulation": 6.752,
       "bibcode": "2020SSRv..216..103A",
       "date": "2020-07-00"
+    },
+    "spread": {
+      "mean": 15.614,
+      "median": 7,
+      "uncited": 7,
+      "i10": 30,
+      "i100": 1
     }
   },
   "query": {
     "arms": "((=abs:\"Electron Losses and Fields Investigation\" OR =abs:\"Electron Loss and Fields Investigation\" OR =abs:\"Electron Losses and Fields Investigations\" OR (abs:ELFIN AND abs:(\"Van Allen\" OR \"magnetic field\" OR \"radiation belt\" OR \"electron precipitation\" OR magnetosphere OR \"energetic particle\" OR CubeSat))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2018-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Electron+Losses+and+Fields+Investigation%22+OR+%3Dabs%3A%22Electron+Loss+and+Fields+Investigation%22+OR+%3Dabs%3A%22Electron+Losses+and+Fields+Investigations%22+OR+%28abs%3AELFIN+AND+abs%3A%28%22Van+Allen%22+OR+%22magnetic+field%22+OR+%22radiation+belt%22+OR+%22electron+precipitation%22+OR+magnetosphere+OR+%22energetic+particle%22+OR+CubeSat%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:31:30.287478+00:00",
+    "fetchedAt": "2026-09-30T18:10:22.510240+00:00",
     "reconciliation": {
       "adsReturned": 71,
       "curatedOut": 1,
@@ -281,6 +312,8 @@
       "bibcode": "2020SSRv..216..103A",
       "title": "The ELFIN Mission",
       "firstAuthor": "Angelopoulos, V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 119
     },
@@ -288,6 +321,8 @@
       "bibcode": "2023SSRv..219...37A",
       "title": "Energetic Electron Precipitation Driven by Electromagnetic Ion Cyclotron Waves from ELFIN's Low Altitude Perspective",
       "firstAuthor": "Angelopoulos, V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2023,
       "citations": 60
     },
@@ -295,6 +330,8 @@
       "bibcode": "2021JGRA..12629757M",
       "title": "Electron Lifetimes and Diffusion Rates Inferred From ELFIN Measurements at Low Altitude: First Results",
       "firstAuthor": "Mourenas, D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 59
     },
@@ -302,6 +339,8 @@
       "bibcode": "2022JGRA..12730509Z",
       "title": "Characteristics of Electron Microburst Precipitation Based on High-Resolution ELFIN Measurements",
       "firstAuthor": "Zhang, Xiao-Jia",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 53
     },
@@ -309,6 +348,8 @@
       "bibcode": "2023JGRA..12831774W",
       "title": "Statistical Characteristics of the Electron Isotropy Boundary",
       "firstAuthor": "Wilkins, C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2023,
       "citations": 53
     },
@@ -316,6 +357,8 @@
       "bibcode": "2023GeoRL..5003519C",
       "title": "Electron Precipitation Observed by ELFIN Using Proton Precipitation as a Proxy for Electromagnetic Ion Cyclotron (EMIC) Waves",
       "firstAuthor": "Capannolo, L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2023,
       "citations": 52
     },
@@ -323,6 +366,8 @@
       "bibcode": "2022JGRA..12730338T",
       "title": "Relativistic Electron Precipitation Driven by Nonlinear Resonance With Whistler-Mode Waves",
       "firstAuthor": "Tsai, Ethan",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 50
     },
@@ -330,6 +375,8 @@
       "bibcode": "2022GeoRL..4999994G",
       "title": "Relativistic Electron Precipitation by EMIC Waves: Importance of Nonlinear Resonant Effects",
       "firstAuthor": "Grach, Veronika S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 49
     },
@@ -337,6 +384,8 @@
       "bibcode": "2021JGRA..12629851A",
       "title": "Role of Ducting in Relativistic Electron Loss by Whistler-Mode Wave Scattering",
       "firstAuthor": "Artemyev, A. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 42
     },
@@ -344,6 +393,8 @@
       "bibcode": "2022JGRA..12730705A",
       "title": "Thinning of the Magnetotail Current Sheet Inferred From Low-Altitude Observations of Energetic Electrons",
       "firstAuthor": "Artemyev, A. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 40
     },
@@ -351,6 +402,8 @@
       "bibcode": "2022JGRA..12730310M",
       "title": "Short Chorus Wave Packets: Generation Within Chorus Elements, Statistics, and Consequences on Energetic Electron Precipitation",
       "firstAuthor": "Mourenas, D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 36
     },
@@ -358,6 +411,8 @@
       "bibcode": "2023JGRA..12831087Z",
       "title": "Temporal Scales of Electron Precipitation Driven by Whistler-Mode Waves",
       "firstAuthor": "Zhang, Xiao-Jia",
+      "authors": null,
+      "authorCount": null,
       "year": 2023,
       "citations": 31
     },
@@ -365,6 +420,8 @@
       "bibcode": "2024JGRA..12931863A",
       "title": "Nonresonant Scattering of Energetic Electrons by Electromagnetic Ion Cyclotron Waves: Spacecraft Observations and Theoretical Framework",
       "firstAuthor": "An, Xin",
+      "authors": null,
+      "authorCount": null,
       "year": 2024,
       "citations": 26
     },
@@ -372,6 +429,8 @@
       "bibcode": "2023JGRA..12832200A",
       "title": "Dispersed Relativistic Electron Precipitation Patterns Between the Ion and Electron Isotropy Boundaries",
       "firstAuthor": "Artemyev, A. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2023,
       "citations": 25
     },
@@ -379,6 +438,8 @@
       "bibcode": "2024GeoRL..5110365K",
       "title": "The Principal Role of Chorus Ducting for Night-Side Relativistic Electron Precipitation",
       "firstAuthor": "Kang, Ning",
+      "authors": null,
+      "authorCount": null,
       "year": 2024,
       "citations": 25
     },
@@ -386,6 +447,8 @@
       "bibcode": "2024GeoRL..5109227Z",
       "title": "The Key Role of Magnetic Curvature Scattering in Energetic Electron Precipitation During Substorms",
       "firstAuthor": "Zou, Ying",
+      "authors": null,
+      "authorCount": null,
       "year": 2024,
       "citations": 23
     },
@@ -393,6 +456,8 @@
       "bibcode": "2024SpWea..2204062S",
       "title": "Picturing Global Substorm Dynamics in the Magnetotail Using Low-Altitude ELFIN Measurements and Data Mining-Based Magnetic Field Reconstructions",
       "firstAuthor": "Shi, Xiaofei",
+      "authors": null,
+      "authorCount": null,
       "year": 2024,
       "citations": 23
     },
@@ -400,6 +465,8 @@
       "bibcode": "2023GeoRL..5001682S",
       "title": "Modulation of Energetic Electron Precipitation Driven by Three Types of Whistler Mode Waves",
       "firstAuthor": "Shen, Xiao-Chen",
+      "authors": null,
+      "authorCount": null,
       "year": 2023,
       "citations": 20
     },
@@ -407,6 +474,8 @@
       "bibcode": "2024JGRA..12933231A",
       "title": "Categorization of Electron Isotropy Boundary Patterns: ELFIN and POES Observations",
       "firstAuthor": "Artemyev, A. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2024,
       "citations": 19
     },
@@ -414,6 +483,8 @@
       "bibcode": "2023JGRA..12831578T",
       "title": "Investigating Whistler-Mode Wave Intensity Along Field Lines Using Electron Precipitation Measurements",
       "firstAuthor": "Tsai, Ethan",
+      "authors": null,
+      "authorCount": null,
       "year": 2023,
       "citations": 18
     }

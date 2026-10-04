@@ -21,7 +21,10 @@
   "indices": {
     "h": 94,
     "m": 3.917,
-    "i100": 84
+    "i100": 84,
+    "g": 164,
+    "tori": 219.866,
+    "riq": 617
   },
   "facts": {
     "papers": 793,
@@ -204,6 +207,13 @@
     "bibcode": "2009MarGe..32..355B",
     "title": "Global Bathymetry and Elevation Data at 30 Arc Seconds Resolution: SRTM30_PLUS",
     "firstAuthor": "Becker, J. J.",
+    "authors": [
+      "Becker, J. J.",
+      "Sandwell, D. T.",
+      "Smith, W. H. F.",
+      "Braud, J."
+    ],
+    "authorCount": 18,
     "year": 2009,
     "citations": 1084
   },
@@ -212,9 +222,9 @@
       "bins": [
         22.555,
         17.265,
-        21.745,
-        15.428,
-        19.944,
+        21.739,
+        15.43,
+        19.948,
         18.002,
         29.661,
         26.215,
@@ -228,8 +238,8 @@
         6.843,
         7.751,
         12.374,
-        6.986,
-        10.204,
+        6.977,
+        10.213,
         6.508,
         8.627,
         10.914,
@@ -240,16 +250,16 @@
     },
     "lifetime": {
       "bins": [
-        60.432,
-        42.96,
-        56.821,
-        66.386,
-        61.133,
-        80.727,
-        95.507,
-        84.216,
-        116.987,
-        127.832
+        60.394,
+        42.935,
+        56.804,
+        66.411,
+        61.13,
+        80.712,
+        95.561,
+        84.212,
+        116.981,
+        127.86
       ],
       "top1": 17
     }
@@ -277,6 +287,13 @@
       "status": "available",
       "months": 115,
       "citationBuckets": 13
+    },
+    "spread": {
+      "mean": 14.888,
+      "median": 10,
+      "uncited": 20,
+      "i10": 122,
+      "i100": 2
     }
   },
   "window": {
@@ -302,14 +319,21 @@
       "status": "available",
       "months": 60,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 10.482,
+      "median": 7,
+      "uncited": 6,
+      "i10": 34,
+      "i100": 0
     }
   },
   "lifetime": {
     "papers": 793,
     "outputBasis": "measured",
     "citations": 38398,
-    "top10": 77.112,
-    "top10ShareOfDivision": 0.01864,
+    "top10": 77.171,
+    "top10ShareOfDivision": 0.01865,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -318,13 +342,20 @@
       "yearsFromFormulation": 6.598,
       "bibcode": "2004GeoRL..3118402S",
       "date": "2004-09-00"
+    },
+    "spread": {
+      "mean": 48.421,
+      "median": 21,
+      "uncited": 59,
+      "i10": 549,
+      "i100": 84
     }
   },
   "query": {
     "arms": "((((abs:\"ICESat\" OR abs:\"ICESat-1\" OR abs:\"GLAS\" OR =abs:\"Geoscience Laser Altimeter System\") AND (abs:\"satellite\" OR abs:\"remote sensing\" OR abs:\"laser altimetry\" OR abs:\"laser altimeter\")) OR abs:\"Ice, Clouds and Land Elevation Satellite\" OR abs:\"Geoscience Laser Altimeter System\") AND NOT (abs:\"ICESat-2\" AND NOT (abs:\"ICESat-1\" OR abs:\"GLAS\" OR =abs:\"Geoscience Laser Altimeter System\" OR =abs:\"ICESat ICESat-2\" OR =abs:\"ICESat 2003\" OR =abs:\"ICESat data\" OR =abs:\"ICESat mission\" OR =abs:\"ICESat CryoSat\" OR =abs:\"ICESat Ice Cloud\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2003-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3A%22ICESat%22+OR+abs%3A%22ICESat-1%22+OR+abs%3A%22GLAS%22+OR+%3Dabs%3A%22Geoscience+Laser+Altimeter+System%22%29+AND+%28abs%3A%22satellite%22+OR+abs%3A%22remote+sensing%22+OR+abs%3A%22laser+altimetry%22+OR+abs%3A%22laser+altimeter%22%29%29+OR+abs%3A%22Ice%2C+Clouds+and+Land+Elevation+Satellite%22+OR+abs%3A%22Geoscience+Laser+Altimeter+System%22%29+AND+NOT+%28abs%3A%22ICESat-2%22+AND+NOT+%28abs%3A%22ICESat-1%22+OR+abs%3A%22GLAS%22+OR+%3Dabs%3A%22Geoscience+Laser+Altimeter+System%22+OR+%3Dabs%3A%22ICESat+ICESat-2%22+OR+%3Dabs%3A%22ICESat+2003%22+OR+%3Dabs%3A%22ICESat+data%22+OR+%3Dabs%3A%22ICESat+mission%22+OR+%3Dabs%3A%22ICESat+CryoSat%22+OR+%3Dabs%3A%22ICESat+Ice+Cloud%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:22:34.477521+00:00",
+    "fetchedAt": "2026-09-30T18:01:06.899822+00:00",
     "reconciliation": {
       "adsReturned": 800,
       "curatedOut": 0,
@@ -344,6 +375,8 @@
       "bibcode": "2009MarGe..32..355B",
       "title": "Global Bathymetry and Elevation Data at 30 Arc Seconds Resolution: SRTM30_PLUS",
       "firstAuthor": "Becker, J. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 1084
     },
@@ -351,6 +384,8 @@
       "bibcode": "2017GeoRL..44.5844Y",
       "title": "A high-accuracy map of global terrain elevations",
       "firstAuthor": "Yamazaki, Dai",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 1049
     },
@@ -358,6 +393,8 @@
       "bibcode": "2017RSEnv.190..260M",
       "title": "The Ice, Cloud, and land Elevation Satellite-2 (ICESat-2): Science requirements, concept, and implementation",
       "firstAuthor": "Markus, Thorsten",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 976
     },
@@ -365,6 +402,8 @@
       "bibcode": "2011JGRG..116.4021S",
       "title": "Mapping forest canopy height globally with spaceborne lidar",
       "firstAuthor": "Simard, Marc",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 772
     },
@@ -372,6 +411,8 @@
       "bibcode": "2011TCry....5..271N",
       "title": "Co-registration and bias corrections of satellite elevation data sets for quantifying glacier thickness change",
       "firstAuthor": "Nuth, C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 769
     },
@@ -379,6 +420,8 @@
       "bibcode": "2009Natur.461..971P",
       "title": "Extensive dynamic thinning on the margins of the Greenland and Antarctic ice sheets",
       "firstAuthor": "Pritchard, Hamish D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 712
     },
@@ -386,6 +429,8 @@
       "bibcode": "2004GeoRL..3118402S",
       "title": "Glacier acceleration and thinning after ice shelf collapse in the Larsen B embayment, Antarctica",
       "firstAuthor": "Scambos, T. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 617
     },
@@ -393,6 +438,8 @@
       "bibcode": "2013GeoRL..40..732L",
       "title": "CryoSat-2 estimates of Arctic sea ice thickness and volume",
       "firstAuthor": "Laxon, Seymour W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 580
     },
@@ -400,6 +447,8 @@
       "bibcode": "2009JGRC..114.7005K",
       "title": "Thinning and volume loss of the Arctic Ocean sea ice cover: 2003-2008",
       "firstAuthor": "Kwok, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 544
     },
@@ -407,6 +456,8 @@
       "bibcode": "2005GeoRL..3221S01S",
       "title": "Overview of the ICESat Mission",
       "firstAuthor": "Schutz, B. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 524
     },
@@ -414,6 +465,8 @@
       "bibcode": "2020Sci...368.1239S",
       "title": "Pervasive ice sheet mass loss reflects competing ocean and atmosphere processes",
       "firstAuthor": "Smith, Ben",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 404
     },
@@ -421,6 +474,8 @@
       "bibcode": "2005GeoRL..3222S02L",
       "title": "Estimates of forest canopy height and aboveground biomass using ICESat",
       "firstAuthor": "Lefsky, Michael A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 389
     },
@@ -428,6 +483,8 @@
       "bibcode": "2010GeoRL..3715401L",
       "title": "A global forest canopy height map from the Moderate Resolution Imaging Spectroradiometer and the Geoscience Laser Altimeter System",
       "firstAuthor": "Lefsky, Michael A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 378
     },
@@ -435,6 +492,8 @@
       "bibcode": "2015TCry....9..557K",
       "title": "Brief Communication: Contending estimates of 2003-2008 glacier mass balance over the Pamir-Karakoram-Himalaya",
       "firstAuthor": "Kääb, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 355
     },
@@ -442,6 +501,8 @@
       "bibcode": "2013RSEnv.135...25S",
       "title": "Modeling and analysis of lake water storage changes on the Tibetan Plateau using multi-mission satellite data",
       "firstAuthor": "Song, Chunqiao",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 327
     },
@@ -449,6 +510,8 @@
       "bibcode": "2014TCry....8.1539H",
       "title": "Elevation and elevation change of Greenland and Antarctica derived from CryoSat-2",
       "firstAuthor": "Helm, V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 326
     },
@@ -456,6 +519,8 @@
       "bibcode": "2011GeoRL..3810504R",
       "title": "Antarctic grounding line mapping from differential satellite radar interferometry",
       "firstAuthor": "Rignot, E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 325
     },
@@ -463,6 +528,8 @@
       "bibcode": "2009JGlac..55..573S",
       "title": "An inventory of active subglacial lakes in Antarctica detected by ICESat (2003-2008)",
       "firstAuthor": "Smith, Benjamin E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 283
     },
@@ -470,6 +537,8 @@
       "bibcode": "2013RSEnv.134..403D",
       "title": "Estimating water volume variations in lakes and reservoirs from four operational satellite altimetry databases and satellite imagery data",
       "firstAuthor": "Duan, Zheng",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 265
     },
@@ -477,6 +546,8 @@
       "bibcode": "2005GeoRL..3221S02A",
       "title": "Geoscience Laser Altimeter System (GLAS) on the ICESat Mission: On-orbit measurement performance",
       "firstAuthor": "Abshire, James B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 261
     }

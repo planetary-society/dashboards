@@ -21,11 +21,14 @@
   "indices": {
     "h": 84,
     "m": 3.36,
-    "i100": 57
+    "i100": 57,
+    "g": 139,
+    "tori": 209.057,
+    "riq": 578
   },
   "facts": {
-    "papers": 612,
-    "citations": 28091,
+    "papers": 613,
+    "citations": 28099,
     "publicationYears": [
       2002,
       2026
@@ -84,7 +87,7 @@
       13,
       13,
       18,
-      17
+      18
     ],
     "citations": [
       21,
@@ -96,7 +99,7 @@
       1008,
       1237,
       1326,
-      1345,
+      1346,
       1318,
       1336,
       1199,
@@ -111,13 +114,13 @@
       1392,
       1390,
       1492,
-      1088
+      1095
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 28091,
-      "observed": 28091,
+      "expected": 28099,
+      "observed": 28099,
       "missing": 0
     }
   },
@@ -200,54 +203,61 @@
     "bibcode": "2004SSRv..110...85C",
     "title": "The Thermal Emission Imaging System (THEMIS) for the Mars 2001 Odyssey Mission",
     "firstAuthor": "Christensen, Philip R.",
+    "authors": [
+      "Christensen, Philip R.",
+      "Jakosky, Bruce M.",
+      "Kieffer, Hugh H.",
+      "Malin, Michael C."
+    ],
+    "authorCount": 11,
     "year": 2004,
     "citations": 880
   },
   "ranks": {
     "full": {
       "bins": [
-        66.207,
-        70.264,
-        69.514,
-        41.94,
-        62.544,
-        44.882,
-        60.622,
-        49.794,
-        45.498,
-        52.736
+        66.333,
+        70.261,
+        69.599,
+        41.834,
+        62.517,
+        44.865,
+        60.574,
+        49.805,
+        45.544,
+        52.667
       ],
       "top1": 4
     },
     "window": {
       "bins": [
-        23.266,
-        25.086,
-        23.889,
-        17.188,
-        9.02,
-        17.818,
-        14.053,
-        11.68,
-        12.75,
-        16.25
+        23.357,
+        25.077,
+        23.895,
+        17.168,
+        8.983,
+        17.839,
+        14.013,
+        11.667,
+        12.763,
+        16.238
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        52.611,
-        47.805,
-        63.676,
-        57.339,
-        52.434,
-        46.64,
-        65.955,
-        68.68,
-        80.803,
-        76.057
+        53.217,
+        47.862,
+        63.515,
+        57.34,
+        52.915,
+        46.355,
+        65.942,
+        68.253,
+        81.4,
+        76.2
       ],
-      "top1": 11
+      "top1": 11.03
     }
   },
   "full": {
@@ -273,6 +283,13 @@
       "status": "available",
       "months": 262,
       "citationBuckets": 25
+    },
+    "spread": {
+      "mean": 12.732,
+      "median": 7.5,
+      "uncited": 41,
+      "i10": 235,
+      "i100": 3
     }
   },
   "window": {
@@ -280,9 +297,9 @@
     "outputBasis": "measured",
     "citations": 2772,
     "top10": 12.1,
-    "top10ShareOfDivision": 0.02505,
+    "top10ShareOfDivision": 0.02506,
     "top1": 2,
-    "top1ShareOfDivision": 0.04141,
+    "top1ShareOfDivision": 0.04143,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.361,
@@ -298,12 +315,19 @@
       "status": "available",
       "months": 54,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 16.211,
+      "median": 7,
+      "uncited": 16,
+      "i10": 74,
+      "i100": 2
     }
   },
   "lifetime": {
-    "papers": 612,
+    "papers": 613,
     "outputBasis": "measured",
-    "citations": 28091,
+    "citations": 28099,
     "top10": 35.033,
     "top10ShareOfDivision": 0.02571,
     "top1": null,
@@ -314,21 +338,28 @@
       "yearsFromFormulation": 5.747,
       "bibcode": "2002Sci...297...75F",
       "date": "2002-07-00"
+    },
+    "spread": {
+      "mean": 45.838,
+      "median": 22,
+      "uncited": 40,
+      "i10": 418,
+      "i100": 57
     }
   },
   "query": {
     "arms": "((=abs:\"Mars Odyssey\" OR ((abs:Odyssey OR abs:ODY OR abs:THEMIS OR abs:GRS OR =abs:\"Gamma Ray Spectrometer\" OR =abs:\"Thermal Emission Imaging System\") AND (abs:Mars OR abs:Martian)) OR (abs:HEND AND (abs:Mars OR abs:Odyssey)) OR =abs:\"Odyssey data\" OR =abs:\"Odyssey observations\" OR =abs:\"Odyssey spacecraft\" OR =abs:\"Gamma-Ray Spectrometer on Odyssey\" OR =abs:\"Odyssey Gamma-Ray Spectrometer\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2002-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Odyssey%22+OR+%28%28abs%3AOdyssey+OR+abs%3AODY+OR+abs%3ATHEMIS+OR+abs%3AGRS+OR+%3Dabs%3A%22Gamma+Ray+Spectrometer%22+OR+%3Dabs%3A%22Thermal+Emission+Imaging+System%22%29+AND+%28abs%3AMars+OR+abs%3AMartian%29%29+OR+%28abs%3AHEND+AND+%28abs%3AMars+OR+abs%3AOdyssey%29%29+OR+%3Dabs%3A%22Odyssey+data%22+OR+%3Dabs%3A%22Odyssey+observations%22+OR+%3Dabs%3A%22Odyssey+spacecraft%22+OR+%3Dabs%3A%22Gamma-Ray+Spectrometer+on+Odyssey%22+OR+%3Dabs%3A%22Odyssey+Gamma-Ray+Spectrometer%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:27:08.240062+00:00",
+    "fetchedAt": "2026-09-30T17:50:49.758491+00:00",
     "reconciliation": {
-      "adsReturned": 627,
+      "adsReturned": 628,
       "curatedOut": 14,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 1,
-      "final": 612
+      "final": 613
     }
   },
   "curation": {
@@ -557,6 +588,8 @@
       "bibcode": "2004SSRv..110...85C",
       "title": "The Thermal Emission Imaging System (THEMIS) for the Mars 2001 Odyssey Mission",
       "firstAuthor": "Christensen, Philip R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 880
     },
@@ -564,6 +597,8 @@
       "bibcode": "2002Sci...297...81B",
       "title": "Distribution of Hydrogen in the Near Surface of Mars: Evidence for Subsurface Ice Deposits",
       "firstAuthor": "Boynton, W. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 804
     },
@@ -571,6 +606,8 @@
       "bibcode": "2002Sci...297...75F",
       "title": "Global Distribution of Neutrons from Mars: Results from Mars Odyssey",
       "firstAuthor": "Feldman, W. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 475
     },
@@ -578,6 +615,8 @@
       "bibcode": "2008Sci...319.1651O",
       "title": "Chloride-Bearing Materials in the Southern Highlands of Mars",
       "firstAuthor": "Osterloo, M. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 425
     },
@@ -585,6 +624,8 @@
       "bibcode": "2015Icar..251...65M",
       "title": "Eight-year climatology of dust optical depth on Mars",
       "firstAuthor": "Montabone, L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 422
     },
@@ -592,6 +633,8 @@
       "bibcode": "2009JGRE..114.0D06M",
       "title": "A synthesis of Martian aqueous mineralogy after 1 Mars year of observations from the Mars Reconnaissance Orbiter",
       "firstAuthor": "Murchie, Scott L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 413
     },
@@ -599,6 +642,8 @@
       "bibcode": "2004Icar..172..537K",
       "title": "Detection of methane in the martian atmosphere: evidence for life?",
       "firstAuthor": "Krasnopolsky, Vladimir A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 411
     },
@@ -606,6 +651,8 @@
       "bibcode": "2003Sci...302.1931M",
       "title": "Evidence for Persistent Flow and Aqueous Sedimentation on Early Mars",
       "firstAuthor": "Malin, Michael C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 405
     },
@@ -613,13 +660,17 @@
       "bibcode": "2003Sci...300.2056C",
       "title": "Morphology and Composition of the Surface of Mars: Mars Odyssey THEMIS Results",
       "firstAuthor": "Christensen, Philip R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
-      "citations": 338
+      "citations": 339
     },
     {
       "bibcode": "2002Sci...297...78M",
       "title": "Maps of Subsurface Hydrogen from the High Energy Neutron Detector, Mars Odyssey",
       "firstAuthor": "Mitrofanov, I.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 334
     },
@@ -627,6 +678,8 @@
       "bibcode": "2004JGRE..109.9006F",
       "title": "Global distribution of near-surface hydrogen on Mars",
       "firstAuthor": "Feldman, W. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 333
     },
@@ -634,6 +687,8 @@
       "bibcode": "2004Icar..169..324M",
       "title": "The presence and stability of ground ice in the southern hemisphere of Mars",
       "firstAuthor": "Mellon, Michael T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 325
     },
@@ -641,6 +696,8 @@
       "bibcode": "2011Icar..211..401K",
       "title": "Mars high resolution gravity fields from MRO, Mars seasonal gravity, and other dynamical parameters",
       "firstAuthor": "Konopliv, Alex S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 319
     },
@@ -648,6 +705,8 @@
       "bibcode": "2006JGRE..11112004F",
       "title": "High-resolution thermal inertia derived from the Thermal Emission Imaging System (THEMIS): Thermal model and applications",
       "firstAuthor": "Fergason, Robin L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 287
     },
@@ -655,13 +714,17 @@
       "bibcode": "2004Natur.431..663V",
       "title": "Magnesium sulphate salts and the history of water on Mars",
       "firstAuthor": "Vaniman, David T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
-      "citations": 274
+      "citations": 275
     },
     {
       "bibcode": "2006Icar..182...23K",
       "title": "A global solution for the Mars static and seasonal gravity, Mars orientation, Phobos and Deimos masses, and Mars ephemeris",
       "firstAuthor": "Konopliv, Alex S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 269
     },
@@ -669,6 +732,8 @@
       "bibcode": "2009Icar..201...44W",
       "title": "The global martian volcanic evolutionary history",
       "firstAuthor": "Werner, Stephanie C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 257
     },
@@ -676,6 +741,8 @@
       "bibcode": "2004Natur.428..627B",
       "title": "Perennial water ice identified in the south polar cap of Mars",
       "firstAuthor": "Bibring, Jean-Pierre",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 255
     },
@@ -683,6 +750,8 @@
       "bibcode": "2011JGRE..11610008E",
       "title": "Mosaicking of global planetary image datasets: 1. Techniques and data processing for Thermal Emission Imaging System (THEMIS) multi-spectral data",
       "firstAuthor": "Edwards, C. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 249
     },
@@ -690,11 +759,13 @@
       "bibcode": "2004Sci...305...78M",
       "title": "Evidence for Precipitation on Mars from Dendritic Valleys in the Valles Marineris Area",
       "firstAuthor": "Mangold, Nicolas",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 244
     }
   ],
   "papersFile": {
-    "rows": 612
+    "rows": 613
   }
 }

@@ -1,6 +1,9 @@
 <script>
 	// One sortable list of missions, initially ordered by launch year, earliest first.
 	import Num from './Num.svelte';
+	import Hint from './Hint.svelte';
+	import { FOOTNOTES } from '$lib/copy/footnotes.js';
+	import { methodsHref } from '$lib/paths.js';
 	import PubStrip from '$lib/charts/PubStrip.svelte';
 	import { missionHref, thumbSrc } from '$lib/paths.js';
 	import { int, weight, money } from '$lib/format.js';
@@ -49,28 +52,28 @@
 
 </script>
 
-{#snippet th(key, label, cls = '')}
+{#snippet th(key, label, cls = '', note = null)}
 	<th class={cls} aria-sort={ariaSort(key)}>
-		<button type="button" onclick={() => setSort(key)}>
+		<span class="head"><button type="button" onclick={() => setSort(key)}>
 			{label}<span class="arrow" aria-hidden="true">{sort.key === key ? (sort.dir === 1 ? '↑' : '↓') : ''}</span>
-		</button>
+		</button>{#if note}<Hint {label} text={FOOTNOTES[note].text({ costBaseYear })} href={methodsHref(FOOTNOTES[note].anchor)} />{/if}</span>
 	</th>
 {/snippet}
 
 <table>
-	<caption>Lifetime totals{#if rankable} · Top-{view.top}% credit: {scopeLabel}{/if}</caption>
+	<caption>Lifetime totals{#if rankable}; Top-{view.top}% credit follows the scope above ({scopeLabel}){/if}.</caption>
 	<thead>
 		<tr>
 			<th class="thumb"><span class="sr-only">Image</span></th>
 			{@render th('name', 'Mission', 'name')}
 			{@render th('launch', 'Launch', 'num wide')}
 			{@render th('type', 'Type', 'type wide')}
-			{@render th('cost', `Cost (${costBaseYear} $)`, 'num')}
-			{@render th('papers', 'Tracked publications', 'num')}
+			{@render th('cost', `Cost (${costBaseYear} $)`, 'num', 'cost')}
+			{@render th('papers', 'Tracked publications', 'num', 'publications')}
 			{@render th('citations', 'Citations', 'num wide')}
-			{@render th('hindex', 'h-index', 'num wide')}
-			{#if rankable}{@render th('top', topLabel, 'num top')}{/if}
-			<th class="strip wide">Tracked publications per year</th>
+			{@render th('hindex', 'h-index', 'num wide', 'hindex')}
+			{#if rankable}{@render th('top', topLabel, 'num top', view.top === 1 ? 'top1' : 'top10')}{/if}
+			<th class="strip wide">Tracked publications per year<Hint label="publications per year" text={FOOTNOTES.strip.text()} href={methodsHref(FOOTNOTES.strip.anchor)} /></th>
 		</tr>
 	</thead>
 		<tbody>
@@ -124,6 +127,12 @@
 		padding: 0 12px 10px 0;
 		white-space: nowrap;
 		vertical-align: middle;
+	}
+
+	/* The sort button is a flex box; the "i" beside it has to share its line. */
+	.head {
+		display: inline-flex;
+		align-items: center;
 	}
 
 	thead button {

@@ -21,7 +21,10 @@
   "indices": {
     "h": 78,
     "m": 3.714,
-    "i100": 49
+    "i100": 49,
+    "g": 127,
+    "tori": 129.893,
+    "riq": 542
   },
   "facts": {
     "papers": 981,
@@ -180,6 +183,13 @@
     "bibcode": "2010BAMS...91.1211W",
     "title": "The CALIPSO Mission",
     "firstAuthor": "Winker, D. M.",
+    "authors": [
+      "Winker, D. M.",
+      "Pelon, J.",
+      "Coakley, J. A.",
+      "Ackerman, S. A."
+    ],
+    "authorCount": 19,
     "year": 2010,
     "citations": 869
   },
@@ -188,9 +198,9 @@
       "bins": [
         54.136,
         76.142,
-        86.979,
-        83.18,
-        104.651,
+        86.957,
+        83.17,
+        104.682,
         103.03,
         92.162,
         97.166,
@@ -204,8 +214,8 @@
         4.248,
         8.15,
         9.177,
-        9.221,
-        14.522,
+        9.213,
+        14.529,
         10.347,
         16.888,
         11.449,
@@ -216,16 +226,16 @@
     },
     "lifetime": {
       "bins": [
-        78.059,
-        96.413,
-        90.735,
-        99.159,
-        110.326,
-        101.306,
-        108.119,
-        119.064,
-        82.852,
-        94.966
+        77.979,
+        96.325,
+        90.81,
+        99.139,
+        110.34,
+        101.346,
+        108.134,
+        119.086,
+        82.869,
+        94.972
       ],
       "top1": 12
     }
@@ -253,6 +263,13 @@
       "status": "available",
       "months": 212,
       "citationBuckets": 21
+    },
+    "spread": {
+      "mean": 10.157,
+      "median": 7,
+      "uncited": 42,
+      "i10": 313,
+      "i100": 2
     }
   },
   "window": {
@@ -278,6 +295,13 @@
       "status": "available",
       "months": 46,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 13.841,
+      "median": 10,
+      "uncited": 2,
+      "i10": 58,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -294,13 +318,20 @@
       "yearsFromFormulation": 8.088,
       "bibcode": "2007GeoRL..34.9808M",
       "date": "2007-05-00"
+    },
+    "spread": {
+      "mean": 29.29,
+      "median": 13,
+      "uncited": 75,
+      "i10": 580,
+      "i100": 49
     }
   },
   "query": {
     "arms": "(=abs:\"CloudSat\")",
     "filters": "property:refereed AND doctype:article AND pubdate:[2006-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%3Dabs%3A%22CloudSat%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2006-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:23:21.306959+00:00",
+    "fetchedAt": "2026-09-30T18:01:55.050615+00:00",
     "reconciliation": {
       "adsReturned": 986,
       "curatedOut": 5,
@@ -361,6 +392,8 @@
       "bibcode": "2010BAMS...91.1211W",
       "title": "The CALIPSO Mission",
       "firstAuthor": "Winker, D. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 869
     },
@@ -368,6 +401,8 @@
       "bibcode": "2008JGRD..113.0A18S",
       "title": "CloudSat mission: Performance and early science after the first year of operation",
       "firstAuthor": "Stephens, Graeme L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 586
     },
@@ -375,6 +410,8 @@
       "bibcode": "2010JGRD..11524211S",
       "title": "Dreary state of precipitation in global models",
       "firstAuthor": "Stephens, Graeme L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 574
     },
@@ -382,6 +419,8 @@
       "bibcode": "2008JAtOT..25..519M",
       "title": "Hydrometeor Detection Using Cloudsat—An Earth-Orbiting 94-GHz Cloud Radar",
       "firstAuthor": "Marchand, Roger",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 435
     },
@@ -389,6 +428,8 @@
       "bibcode": "2008JGRD..113.0A12S",
       "title": "Global distribution of cirrus clouds from CloudSat/Cloud-Aerosol Lidar and Infrared Pathfinder Satellite Observations (CALIPSO) measurements",
       "firstAuthor": "Sassen, Kenneth",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 402
     },
@@ -396,6 +437,8 @@
       "bibcode": "2018JCli...31.4501K",
       "title": "Surface Irradiances of Edition 4.0 Clouds and the Earth's Radiant Energy System (CERES) Energy Balanced and Filled (EBAF) Data Product",
       "firstAuthor": "Kato, Seiji",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 383
     },
@@ -403,6 +446,8 @@
       "bibcode": "2009JGRD..114.0A26M",
       "title": "A description of hydrometeor layer occurrence statistics derived from the first year of merged Cloudsat and CALIPSO data",
       "firstAuthor": "Mace, Gerald G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 367
     },
@@ -410,6 +455,8 @@
       "bibcode": "2010JGRD..115.0H29D",
       "title": "Combined CloudSat-CALIPSO-MODIS retrievals of the properties of ice clouds",
       "firstAuthor": "Delanoë, Julien",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 320
     },
@@ -417,6 +464,8 @@
       "bibcode": "2009JGRD..114.0A21W",
       "title": "Cloud ice: A climate model challenge with signs and expectations of progress",
       "firstAuthor": "Waliser, Duane E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 316
     },
@@ -424,6 +473,8 @@
       "bibcode": "2015GeoRL..42.6502M",
       "title": "Frequency of occurrence of rain from liquid-, mixed-, and ice-phase clouds derived from A-Train satellite retrievals",
       "firstAuthor": "Mülmenstädt, Johannes",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 290
     },
@@ -431,6 +482,8 @@
       "bibcode": "2008ITGRS..46.3560T",
       "title": "CloudSat's Cloud Profiling Radar After Two Years in Orbit: Performance, Calibration, and Processing",
       "firstAuthor": "Tanelli, Simone",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 289
     },
@@ -438,6 +491,8 @@
       "bibcode": "2009JGRD..114.0A22H",
       "title": "Rainfall retrieval over the ocean with spaceborne W-band radar",
       "firstAuthor": "Haynes, John M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 289
     },
@@ -445,6 +500,8 @@
       "bibcode": "2009JGRD..114.0A23A",
       "title": "Retrieval of ice cloud microphysical parameters using the CloudSat millimeter-wave radar and temperature",
       "firstAuthor": "Austin, Richard T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 269
     },
@@ -452,6 +509,8 @@
       "bibcode": "2017JGRD..122.2559M",
       "title": "The role of cloud phase in Earth's radiation budget",
       "firstAuthor": "Matus, Alexander V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 265
     },
@@ -459,6 +518,8 @@
       "bibcode": "2008GeoRL..35.4805S",
       "title": "Classifying clouds around the globe with the CloudSat radar: 1-year of results",
       "firstAuthor": "Sassen, Kenneth",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 262
     },
@@ -466,6 +527,8 @@
       "bibcode": "2011JGRD..11619209K",
       "title": "Improvements of top-of-atmosphere and surface irradiance computations with CALIPSO-, CloudSat-, and MODIS-derived cloud and aerosol properties",
       "firstAuthor": "Kato, Seiji",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 222
     },
@@ -473,6 +536,8 @@
       "bibcode": "2014JGRD..119.9441M",
       "title": "The CloudSat radar-lidar geometrical profile product (RL-GeoProf): Updates, improvements, and selected results",
       "firstAuthor": "Mace, Gerald G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 197
     },
@@ -480,6 +545,8 @@
       "bibcode": "2018BAMS...99..569S",
       "title": "CloudSat and CALIPSO within the A-Train: Ten Years of Actively Observing the Earth System",
       "firstAuthor": "Stephens, Graeme",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 194
     },
@@ -487,6 +554,8 @@
       "bibcode": "2007GeoRL..34.9808M",
       "title": "Global hydrometeor occurrence as observed by CloudSat: Initial observations from summer 2006",
       "firstAuthor": "Mace, Gerald G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 163
     },
@@ -494,6 +563,8 @@
       "bibcode": "2010JGRD..115.0J15D",
       "title": "Tropical Composition, Cloud and Climate Coupling Experiment validation for cirrus cloud profiling retrieval using CloudSat radar and CALIPSO lidar",
       "firstAuthor": "Deng, Min",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 159
     }

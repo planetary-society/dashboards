@@ -21,7 +21,10 @@
   "indices": {
     "h": 2,
     "m": 0.25,
-    "i100": 0
+    "i100": 0,
+    "g": 2,
+    "tori": 0.054,
+    "riq": 116
   },
   "facts": {
     "papers": 2,
@@ -130,6 +133,13 @@
     "bibcode": "2020IJSTA..13.1610J",
     "title": "Real-Time Detection and Filtering of Radio Frequency Interference Onboard a Spaceborne Microwave Radiometer: The CubeRRT Mission",
     "firstAuthor": "Johnson, Joel T.",
+    "authors": [
+      "Johnson, Joel T.",
+      "Ball, Christopher",
+      "Chen, Chi-Chih",
+      "McKelvey, Christa"
+    ],
+    "authorCount": 26,
     "year": 2020,
     "citations": 16
   },
@@ -168,8 +178,8 @@
       "bins": [
         0,
         0,
-        0.748,
-        0.252,
+        0.745,
+        0.255,
         0,
         1,
         0,
@@ -203,6 +213,13 @@
       "status": "available",
       "months": 52,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 6.5,
+      "median": 6.5,
+      "uncited": 0,
+      "i10": 0,
+      "i100": 0
     }
   },
   "window": {
@@ -228,6 +245,13 @@
       "status": "available",
       "months": 36,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 6.5,
+      "median": 6.5,
+      "uncited": 0,
+      "i10": 0,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -244,13 +268,20 @@
       "yearsFromFormulation": null,
       "bibcode": null,
       "date": null
+    },
+    "spread": {
+      "mean": 10.5,
+      "median": 10.5,
+      "uncited": 0,
+      "i10": 1,
+      "i100": 0
     }
   },
   "query": {
     "arms": "((=abs:\"CubeSat Radiometer Radio Frequency Interference Technology Validation\" OR (abs:CubeRRT AND abs:(radiometer OR CubeSat OR RFI OR microwave))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2018-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22CubeSat+Radiometer+Radio+Frequency+Interference+Technology+Validation%22+OR+%28abs%3ACubeRRT+AND+abs%3A%28radiometer+OR+CubeSat+OR+RFI+OR+microwave%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:25:55.945012+00:00",
+    "fetchedAt": "2026-10-01T16:27:42.836116+00:00",
     "reconciliation": {
       "adsReturned": 2,
       "curatedOut": 0,
@@ -270,6 +301,8 @@
       "bibcode": "2020IJSTA..13.1610J",
       "title": "Real-Time Detection and Filtering of Radio Frequency Interference Onboard a Spaceborne Microwave Radiometer: The CubeRRT Mission",
       "firstAuthor": "Johnson, Joel T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 16
     },
@@ -277,6 +310,8 @@
       "bibcode": "2019ITAP...67.3410C",
       "title": "6 GHz to 40 GHz CubeSat Radiometer Antenna System",
       "firstAuthor": "Che, Jiu-Kun",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 5
     }

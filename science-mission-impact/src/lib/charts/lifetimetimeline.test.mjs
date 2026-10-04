@@ -35,7 +35,7 @@ test('complete years are solid and source-declared citation gaps retain their ex
 	assert.deepEqual(m.citationCoverage, citationCoverage);
 });
 
-test('all packaged divisions keep first and last years and independent responsive count scales', () => {
+test('all packaged divisions keep first and last years and two responsive count scales on one plot', () => {
 	const dir = new URL('../data/generated/divisions/', import.meta.url);
 	for (const file of readdirSync(dir)) {
 		const source = JSON.parse(readFileSync(new URL(file, dir))).lifetimeSeries;
@@ -51,6 +51,8 @@ test('all packaged divisions keep first and last years and independent responsiv
 			}
 			for (const width of [280, 800]) {
 				const l = timelineLayout(m, width);
+				assert.deepEqual(l.panels.map((p) => p.side), ['left', 'right']);
+				assert.deepEqual([l.panels[1].top, l.panels[1].bottom], [l.panels[0].top, l.panels[0].bottom]);
 				assert.equal(l.xTicks[0], source.years[0]);
 				assert.equal(l.xTicks.at(-1), source.years.at(-1));
 				for (const panel of l.panels) for (const p of m.points) {

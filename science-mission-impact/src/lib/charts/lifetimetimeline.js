@@ -16,11 +16,11 @@ export function timelineModel(series, mode = 'annual') {
 	};
 }
 
-/** Two independently scaled count plots, sharing calendar-year coordinates. */
-export function timelineLayout(model, width, panelHeight = 190) {
+/** One plot, two count scales: publications on the left axis, citations on the right. */
+export function timelineLayout(model, width, height = 300) {
 	if (!model) return null;
 	const left = width < 480 ? 42 : 52;
-	const right = Math.max(left + 1, width - 20);
+	const right = Math.max(left + 1, width - (width < 480 ? 46 : 56));
 	const x = scaleLinear().domain(xDomain(model.years)).range([left, right]);
 	const first = model.years[0], last = model.years.at(-1);
 	const candidates = x.ticks(Math.max(2, Math.floor((right - left) / 90))).filter(Number.isInteger);
@@ -29,12 +29,11 @@ export function timelineLayout(model, width, panelHeight = 190) {
 		if (year > first && year < last && x(year) - x(xTicks.at(-1)) >= 52 && x(last) - x(year) >= 52) xTicks.push(year);
 	}
 	if (last !== first) xTicks.push(last);
-	const panels = [['pub', 'Tracked publications'], ['cite', 'Citations received']].map(([key, label], i) => {
-		const top = i * panelHeight + 30;
-		const bottom = (i + 1) * panelHeight - 18;
+	const top = 30, bottom = height - 40;
+	const panels = [['pub', 'Tracked publications', 'left'], ['cite', 'Citations received', 'right']].map(([key, label, side]) => {
 		const y = scaleLinear().domain([0, Math.max(1, ...model.points.map((p) => p[key]))]).nice(4).range([bottom, top]);
 		const path = line().x((p) => x(p.year)).y((p) => y(p[key]));
-		return { key, label, top, bottom, y, ticks: y.ticks(4).filter(Number.isInteger), solid: path(model.solid), partial: path(model.partial) };
+		return { key, label, side, top, bottom, y, ticks: y.ticks(4).filter(Number.isInteger), solid: path(model.solid), partial: path(model.partial) };
 	});
-	return { left, right, x, xTicks, panels, height: panelHeight * 2 + 30 };
+	return { left, right, x, xTicks, panels, height };
 }

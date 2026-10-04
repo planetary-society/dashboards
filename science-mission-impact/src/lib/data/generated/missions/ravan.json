@@ -21,7 +21,10 @@
   "indices": {
     "h": 2,
     "m": 0.222,
-    "i100": 0
+    "i100": 0,
+    "g": 2,
+    "tori": 0.405,
+    "riq": 318
   },
   "facts": {
     "papers": 2,
@@ -125,6 +128,13 @@
     "bibcode": "2019RemS...11..796S",
     "title": "RAVAN: CubeSat Demonstration for Multi-Point Earth Radiation Budget Measurements",
     "firstAuthor": "Swartz, William H.",
+    "authors": [
+      "Swartz, William H.",
+      "Lorentz, Steven R.",
+      "Papadakis, Stergios J.",
+      "Huang, Philip M."
+    ],
+    "authorCount": 10,
     "year": 2019,
     "citations": 19
   },
@@ -166,8 +176,8 @@
         0,
         1,
         0,
-        0.154,
-        0.846,
+        0.149,
+        0.851,
         0,
         0,
         0
@@ -198,6 +208,13 @@
       "status": "available",
       "months": 44,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 8,
+      "median": 8,
+      "uncited": 0,
+      "i10": 1,
+      "i100": 0
     }
   },
   "window": {
@@ -223,6 +240,13 @@
       "status": "available",
       "months": 29,
       "citationBuckets": 6
+    },
+    "spread": {
+      "mean": 8,
+      "median": 8,
+      "uncited": 0,
+      "i10": 1,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -239,13 +263,20 @@
       "yearsFromFormulation": null,
       "bibcode": null,
       "date": null
+    },
+    "spread": {
+      "mean": 13,
+      "median": 13,
+      "uncited": 0,
+      "i10": 1,
+      "i100": 0
     }
   },
   "query": {
     "arms": "((=abs:\"Radiometer Assessment using Vertically Aligned Nanotubes\" OR (abs:RAVAN AND abs:(CubeSat OR radiometer OR nanotube))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2017-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Radiometer+Assessment+using+Vertically+Aligned+Nanotubes%22+OR+%28abs%3ARAVAN+AND+abs%3A%28CubeSat+OR+radiometer+OR+nanotube%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2017-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:25:38.688070+00:00",
+    "fetchedAt": "2026-10-01T16:27:35.825160+00:00",
     "reconciliation": {
       "adsReturned": 2,
       "curatedOut": 0,
@@ -274,6 +305,8 @@
       "bibcode": "2019RemS...11..796S",
       "title": "RAVAN: CubeSat Demonstration for Multi-Point Earth Radiation Budget Measurements",
       "firstAuthor": "Swartz, William H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 19
     },
@@ -281,6 +314,8 @@
       "bibcode": "2018Aeros...5...63C",
       "title": "Design of Power, Propulsion, and Thermal Sub-Systems for a 3U CubeSat Measuring Earth's Radiation Imbalance",
       "firstAuthor": "Claricoats, Jack",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 7
     }

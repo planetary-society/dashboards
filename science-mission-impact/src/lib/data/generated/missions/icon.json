@@ -21,7 +21,10 @@
   "indices": {
     "h": 24,
     "m": 3.429,
-    "i100": 0
+    "i100": 0,
+    "g": 36,
+    "tori": 6.875,
+    "riq": 374
   },
   "facts": {
     "papers": 210,
@@ -139,51 +142,58 @@
     "bibcode": "2022GeoRL..4998577H",
     "title": "Impacts of the January 2022 Tonga Volcanic Eruption on the Ionospheric Dynamo: ICON-MIGHTI and Swarm Observations of Extreme Neutral Winds and Currents",
     "firstAuthor": "Harding, Brian J.",
+    "authors": [
+      "Harding, Brian J.",
+      "Wu, Yen-Jung Joanne",
+      "Alken, Patrick",
+      "Yamazaki, Yosuke"
+    ],
+    "authorCount": 9,
     "year": 2022,
     "citations": 85
   },
   "ranks": {
     "full": {
       "bins": [
-        2.02,
-        7.128,
+        2.029,
+        7.15,
         8.071,
-        7.978,
-        13.287,
-        13.312,
-        16.571,
-        11.475,
-        11.158,
+        7.998,
+        13.295,
+        13.305,
+        16.535,
+        11.506,
+        11.11,
         16
       ],
       "top1": 1
     },
     "window": {
       "bins": [
-        2.527,
-        10.595,
-        9.791,
-        15.13,
-        13.994,
-        16.339,
-        10.334,
-        10.335,
-        5.956,
+        2.534,
+        10.602,
+        9.836,
+        15.152,
+        13.97,
+        16.276,
+        10.302,
+        10.349,
+        5.978,
         12
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        47.001,
-        39.531,
-        26.153,
-        23.851,
-        21.391,
-        23.082,
-        11.99,
-        6.373,
-        9.627,
+        46.862,
+        39.446,
+        26.194,
+        23.793,
+        21.546,
+        23.072,
+        11.998,
+        6.361,
+        9.729,
         1
       ],
       "top1": 0
@@ -194,9 +204,9 @@
     "outputBasis": "measured",
     "citations": 1581,
     "top10": 17,
-    "top10ShareOfDivision": 0.01179,
+    "top10ShareOfDivision": 0.01174,
     "top1": 1,
-    "top1ShareOfDivision": 0.00693,
+    "top1ShareOfDivision": 0.00691,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.133,
@@ -212,6 +222,13 @@
       "status": "available",
       "months": 48,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 14.776,
+      "median": 10,
+      "uncited": 1,
+      "i10": 57,
+      "i100": 0
     }
   },
   "window": {
@@ -219,7 +236,7 @@
     "outputBasis": "measured",
     "citations": 1581,
     "top10": 10.1,
-    "top10ShareOfDivision": 0.02286,
+    "top10ShareOfDivision": 0.02276,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -237,14 +254,21 @@
       "status": "available",
       "months": 48,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 14.776,
+      "median": 10,
+      "uncited": 1,
+      "i10": 57,
+      "i100": 0
     }
   },
   "lifetime": {
     "papers": 210,
     "outputBasis": "measured",
     "citations": 2220,
-    "top10": 19.333,
-    "top10ShareOfDivision": 0.01233,
+    "top10": 19.192,
+    "top10ShareOfDivision": 0.0122,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -253,13 +277,20 @@
       "yearsFromFormulation": 7.639,
       "bibcode": "2020PEPS....7...18C",
       "date": "2020-12-00"
+    },
+    "spread": {
+      "mean": 10.571,
+      "median": 5,
+      "uncited": 36,
+      "i10": 76,
+      "i100": 0
     }
   },
   "query": {
     "arms": "(((=abs:\"Ionospheric Connection Explorer\" OR =abs:\"Ionospheric Connections Explorer\" OR =abs:\"ICON mission\" OR =abs:\"ICON satellite\" OR =abs:\"NASA ICON\" OR (abs:MIGHTI AND abs:(wind OR winds OR temperature OR thermosphere OR ICON)) OR (abs:ICON AND abs:(ionosphere OR ionospheric OR thermosphere OR IVM))) NOT (abs:(\"UA-ICON\" OR \"ICON-ART\" OR \"ICON-ESM\" OR \"ICON-LEM\" OR \"ICON-NWP\" OR \"ICON-Sapphire\" OR \"ICON general circulation model\" OR icosahedral) AND abs:(model OR models OR simulation OR simulations))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2020-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Ionospheric+Connection+Explorer%22+OR+%3Dabs%3A%22Ionospheric+Connections+Explorer%22+OR+%3Dabs%3A%22ICON+mission%22+OR+%3Dabs%3A%22ICON+satellite%22+OR+%3Dabs%3A%22NASA+ICON%22+OR+%28abs%3AMIGHTI+AND+abs%3A%28wind+OR+winds+OR+temperature+OR+thermosphere+OR+ICON%29%29+OR+%28abs%3AICON+AND+abs%3A%28ionosphere+OR+ionospheric+OR+thermosphere+OR+IVM%29%29%29+NOT+%28abs%3A%28%22UA-ICON%22+OR+%22ICON-ART%22+OR+%22ICON-ESM%22+OR+%22ICON-LEM%22+OR+%22ICON-NWP%22+OR+%22ICON-Sapphire%22+OR+%22ICON+general+circulation+model%22+OR+icosahedral%29+AND+abs%3A%28model+OR+models+OR+simulation+OR+simulations%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2020-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:31:34.666034+00:00",
+    "fetchedAt": "2026-09-30T18:10:34.779144+00:00",
     "reconciliation": {
       "adsReturned": 214,
       "curatedOut": 4,
@@ -497,6 +528,8 @@
       "bibcode": "2022GeoRL..4998577H",
       "title": "Impacts of the January 2022 Tonga Volcanic Eruption on the Ionospheric Dynamo: ICON-MIGHTI and Swarm Observations of Extreme Neutral Winds and Currents",
       "firstAuthor": "Harding, Brian J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 85
     },
@@ -504,6 +537,8 @@
       "bibcode": "2022GeoRL..4996202Y",
       "title": "Examining the Wind Shear Theory of Sporadic E With ICON/MIGHTI Winds and COSMIC-2 Radio 2 Occultation Data",
       "firstAuthor": "Yamazaki, Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 69
     },
@@ -511,6 +546,8 @@
       "bibcode": "2022JGRA..12730527A",
       "title": "Pronounced Suppression and X-Pattern Merging of Equatorial Ionization Anomalies After the 2022 Tonga Volcano Eruption",
       "firstAuthor": "Aa, Ercha",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 67
     },
@@ -518,6 +555,8 @@
       "bibcode": "2022SpWea..2003101A",
       "title": "Significant Ionospheric Hole and Equatorial Plasma Bubbles After the 2022 Tonga Volcano Eruption",
       "firstAuthor": "Aa, Ercha",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 65
     },
@@ -525,6 +564,8 @@
       "bibcode": "2021JGRA..12628947H",
       "title": "Validation of ICON MIGHTI Thermospheric Wind Observations: 2. Green Line Comparisons to Specular Meteor Radars",
       "firstAuthor": "Harding, Brian J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 63
     },
@@ -532,6 +573,8 @@
       "bibcode": "2021NatGe..14..893I",
       "title": "Regulation of ionospheric plasma velocities by thermospheric winds",
       "firstAuthor": "Immel, Thomas J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 55
     },
@@ -539,6 +582,8 @@
       "bibcode": "2021JGRA..12628726M",
       "title": "Validation of ICON MIGHTI Thermospheric Wind Observations: 1. Nighttime Red Line Ground Based Fabry Perot Interferometers",
       "firstAuthor": "Makela, Jonathan J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 54
     },
@@ -546,6 +591,8 @@
       "bibcode": "2022GeoRL..4900369O",
       "title": "Day-to-Day Variability of the Semidiurnal Tide in the F-Region Ionosphere During the January 2021 SSW From COSMIC-2 and ICON",
       "firstAuthor": "Oberheide, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 48
     },
@@ -553,6 +600,8 @@
       "bibcode": "2020PEPS....7...18C",
       "title": "Sensitivity study for ICON tidal analysis",
       "firstAuthor": "Cullens, Chihoko Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 47
     },
@@ -560,6 +609,8 @@
       "bibcode": "2023JGRA..12831375A",
       "title": "Significant Mid- and Low-Latitude Ionospheric Disturbances Characterized by Dynamic EIA, EPBs, and SED Variations During the 13-14 March 2022 Geomagnetic Storm",
       "firstAuthor": "Aa, Ercha",
+      "authors": null,
+      "authorCount": null,
       "year": 2023,
       "citations": 47
     },
@@ -567,6 +618,8 @@
       "bibcode": "2023JGRA..12831138V",
       "title": "Primary and Secondary Gravity Waves and Large-Scale Wind Changes Generated by the Tonga Volcanic Eruption on 15 January 2022: Modeling and Comparison With ICON-MIGHTI Winds",
       "firstAuthor": "Vadas, Sharon L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2023,
       "citations": 43
     },
@@ -574,6 +627,8 @@
       "bibcode": "2023E&SS...1002962Y",
       "title": "Monthly Climatologies of Zonal-Mean and Tidal Winds in the Thermosphere as Observed by ICON/MIGHTI During April 2020-March 2022",
       "firstAuthor": "Yamazaki, Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2023,
       "citations": 39
     },
@@ -581,6 +636,8 @@
       "bibcode": "2023SSRv..219...27E",
       "title": "Michelson Interferometer for Global High-Resolution Thermospheric Imaging (MIGHTI) On-Orbit Wind Observations: Data Analysis and Instrument Performance",
       "firstAuthor": "Englert, Christoph R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2023,
       "citations": 38
     },
@@ -588,6 +645,8 @@
       "bibcode": "2021JGRA..12629059M",
       "title": "The Thermospheric Column O/N₂ Ratio",
       "firstAuthor": "Meier, R. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 37
     },
@@ -595,6 +654,8 @@
       "bibcode": "2021GeoRL..4893567Y",
       "title": "Neutral Wind Profiles During Periods of Eastward and Westward Equatorial Electrojet",
       "firstAuthor": "Yamazaki, Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 35
     },
@@ -602,6 +663,8 @@
       "bibcode": "2022JGRA..12730288F",
       "title": "Vertical Coupling by Solar Semidiurnal Tides in the Thermosphere From ICON/MIGHTI Measurements",
       "firstAuthor": "Forbes, Jeffrey M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 34
     },
@@ -609,6 +672,8 @@
       "bibcode": "2022GeoRL..4999002L",
       "title": "Intense Equatorial Electrojet and Counter Electrojet Caused by the 15 January 2022 Tonga Volcanic Eruption: Space- and Ground-Based Observations",
       "firstAuthor": "Le, Guan",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 31
     },
@@ -616,6 +681,8 @@
       "bibcode": "2021JGRA..12629904D",
       "title": "Comparison of ICON/MIGHTI and TIMED/TIDI Neutral Wind Measurements in the Lower Thermosphere",
       "firstAuthor": "Dhadly, Manbharat S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 29
     },
@@ -623,6 +690,8 @@
       "bibcode": "2024GeoRL..5106529G",
       "title": "Thermospheric Responses to the 3 and 4 November 2021 Geomagnetic Storm During the Main and Recovery Phases as Observed by NASA's GOLD and ICON Missions",
       "firstAuthor": "Gan, Quan",
+      "authors": null,
+      "authorCount": null,
       "year": 2024,
       "citations": 29
     },
@@ -630,6 +699,8 @@
       "bibcode": "2020GeoRL..4790517X",
       "title": "Unexpected High Occurrence of Daytime F-Region Backscatter Plume Structures Over Low Latitude Sanya and Their Possible Origin",
       "firstAuthor": "Xie, Haiyong",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 28
     }

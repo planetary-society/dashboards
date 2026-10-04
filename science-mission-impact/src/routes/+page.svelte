@@ -20,7 +20,7 @@
 
 <div class="wrap">
 	<section id="divisions" class="doors" aria-labelledby="divisions-title">
-		<h2 id="divisions-title" class="chart-title">Explore each division</h2>
+		<h2 id="divisions-title">Explore Data for Each Division</h2>
 		<ul>
 			{#each site.divisions as d (d.slug)}
 				<li>
@@ -42,11 +42,16 @@
 
 <style>
 	.doors {
-		margin-top: 120px;
+		margin-top: 160px;
 	}
 
+	/* the story ends here and the reader takes over: a heading a size above the division names */
 	.doors h2 {
-		margin-bottom: 16px;
+		margin-bottom: 40px;
+		font-weight: 400;
+		font-size: clamp(38px, 6vw, 76px);
+		line-height: 1.05;
+		letter-spacing: -0.03em;
 	}
 
 	.doors li {

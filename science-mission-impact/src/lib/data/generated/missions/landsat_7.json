@@ -21,7 +21,10 @@
   "indices": {
     "h": 185,
     "m": 6.852,
-    "i100": 437
+    "i100": 437,
+    "g": 294,
+    "tori": 1786.261,
+    "riq": 1565
   },
   "facts": {
     "papers": 4681,
@@ -237,6 +240,12 @@
     "bibcode": "2009RSEnv.113..893C",
     "title": "Summary of current radiometric calibration coefficients for Landsat MSS, TM, ETM+, and EO-1 ALI sensors",
     "firstAuthor": "Chander, Gyanesh",
+    "authors": [
+      "Chander, Gyanesh",
+      "Markham, Brian L.",
+      "Helder, Dennis L."
+    ],
+    "authorCount": 3,
     "year": 2009,
     "citations": 1940
   },
@@ -245,9 +254,9 @@
       "bins": [
         577.524,
         515.224,
-        485.269,
-        440.163,
-        408.669,
+        485.154,
+        440.119,
+        408.828,
         392.657,
         367.89,
         318.459,
@@ -261,8 +270,8 @@
         115.544,
         92.208,
         71.174,
-        64.162,
-        59.711,
+        64.114,
+        59.758,
         51.026,
         45.502,
         31.292,
@@ -273,18 +282,18 @@
     },
     "lifetime": {
       "bins": [
-        340.301,
-        389.758,
-        393.245,
-        379.203,
-        472.403,
-        487.691,
-        515.764,
-        482.11,
-        522.896,
-        697.63
+        339.979,
+        389.456,
+        393.451,
+        379.303,
+        472.4,
+        487.64,
+        515.905,
+        482.193,
+        522.982,
+        697.692
       ],
-      "top1": 82.376
+      "top1": 82.4
     }
   },
   "full": {
@@ -310,6 +319,13 @@
       "status": "available",
       "months": 294,
       "citationBuckets": 28
+    },
+    "spread": {
+      "mean": 9.787,
+      "median": 5,
+      "uncited": 493,
+      "i10": 1302,
+      "i100": 21
     }
   },
   "window": {
@@ -335,14 +351,21 @@
       "status": "available",
       "months": 82,
       "citationBuckets": 11
+    },
+    "spread": {
+      "mean": 6.5,
+      "median": 4,
+      "uncited": 97,
+      "i10": 130,
+      "i100": 0
     }
   },
   "lifetime": {
     "papers": 4681,
     "outputBasis": "measured",
     "citations": 197986,
-    "top10": 339.686,
-    "top10ShareOfDivision": 0.0821,
+    "top10": 339.745,
+    "top10ShareOfDivision": 0.08211,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -351,13 +374,20 @@
       "yearsFromFormulation": 9.402,
       "bibcode": "2001ITGRS..39.2490L",
       "date": "2001-00-00"
+    },
+    "spread": {
+      "mean": 42.296,
+      "median": 17,
+      "uncited": 328,
+      "i10": 3075,
+      "i100": 437
     }
   },
   "query": {
     "arms": "((=abs:\"Landsat-7\" OR =abs:\"Enhanced Thematic Mapper Plus\" OR (abs:\"ETM+\" AND (abs:(Landsat OR multispectral OR albedo OR MODIS OR NDVI) OR =abs:\"TM ETM\" OR =abs:\"TM images\" OR =abs:\"Thematic Mapper\" OR =abs:\"remote sensing\" OR =abs:\"satellite imagery\" OR =abs:\"satellite images\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1999-07 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Landsat-7%22+OR+%3Dabs%3A%22Enhanced+Thematic+Mapper+Plus%22+OR+%28abs%3A%22ETM%2B%22+AND+%28abs%3A%28Landsat+OR+multispectral+OR+albedo+OR+MODIS+OR+NDVI%29+OR+%3Dabs%3A%22TM+ETM%22+OR+%3Dabs%3A%22TM+images%22+OR+%3Dabs%3A%22Thematic+Mapper%22+OR+%3Dabs%3A%22remote+sensing%22+OR+%3Dabs%3A%22satellite+imagery%22+OR+%3Dabs%3A%22satellite+images%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-07+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:18:36.410388+00:00",
+    "fetchedAt": "2026-10-01T22:09:20.341766+00:00",
     "reconciliation": {
       "adsReturned": 4705,
       "curatedOut": 9,
@@ -458,6 +488,8 @@
       "bibcode": "2009RSEnv.113..893C",
       "title": "Summary of current radiometric calibration coefficients for Landsat MSS, TM, ETM+, and EO-1 ALI sensors",
       "firstAuthor": "Chander, Gyanesh",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 1940
     },
@@ -465,6 +497,8 @@
       "bibcode": "2004RSEnv..89..467W",
       "title": "Estimation of land surface temperature-vegetation abundance relationship for urban heat island studies",
       "firstAuthor": "Weng, Qihao",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 1636
     },
@@ -472,6 +506,8 @@
       "bibcode": "2004IJRS...25.2365L",
       "title": "Change detection techniques",
       "firstAuthor": "Lu, D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 1523
     },
@@ -479,6 +515,8 @@
       "bibcode": "2006ITGRS..44.2207G",
       "title": "On the Blending of the Landsat and MODIS Surface Reflectance: Predicting Daily Landsat Surface Reflectance",
       "firstAuthor": "Gao, Feng",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 1449
     },
@@ -486,6 +524,8 @@
       "bibcode": "2005IJRS...26..217P",
       "title": "Random forest classifier for remote sensing classification",
       "firstAuthor": "Pal, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 1405
     },
@@ -493,6 +533,8 @@
       "bibcode": "2006IGRSL...3...68M",
       "title": "A Landsat Surface Reflectance Dataset for North America, 1990─2000",
       "firstAuthor": "Masek, Jeffrey G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 1287
     },
@@ -500,6 +542,8 @@
       "bibcode": "2016RSEnv.185...46V",
       "title": "Preliminary analysis of the performance of the Landsat 8/OLI land surface reflectance product",
       "firstAuthor": "Vermote, Eric",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 1255
     },
@@ -507,6 +551,8 @@
       "bibcode": "2006RSEnv.104..133C",
       "title": "Remote sensing image-based analysis of the relationship between urban heat island and land use/cover changes",
       "firstAuthor": "Chen, Xiao-Ling",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 1130
     },
@@ -514,6 +560,8 @@
       "bibcode": "2013IJRS...34.2607G",
       "title": "Finer resolution observation and monitoring of global land cover: first mapping results with Landsat TM and ETM+ data",
       "firstAuthor": "Gong, Peng",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 1091
     },
@@ -521,6 +569,8 @@
       "bibcode": "2007RSEnv.106..375Y",
       "title": "Comparison of impervious surface area and normalized difference vegetation index as indicators of surface urban heat island effects in Landsat imagery",
       "firstAuthor": "Yuan, Fei",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 1057
     },
@@ -528,6 +578,8 @@
       "bibcode": "2016RSEnv.185...57R",
       "title": "Characterization of Landsat-7 to Landsat-8 reflective wavelength and normalized difference vegetation index continuity",
       "firstAuthor": "Roy, D. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 964
     },
@@ -535,6 +587,8 @@
       "bibcode": "2017RSEnv.194..379F",
       "title": "Cloud detection algorithm comparison and validation for operational Landsat data products",
       "firstAuthor": "Foga, Steve",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 922
     },
@@ -542,6 +596,8 @@
       "bibcode": "2001RSEnv..76..213L",
       "title": "Narrowband to broadband conversions of land surface albedo I. Algorithms",
       "firstAuthor": "Liang, Shunlin",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 893
     },
@@ -549,6 +605,8 @@
       "bibcode": "2011RSEnv.115.3249L",
       "title": "Impacts of landscape structure on surface urban heat islands: A case study of Shanghai, China",
       "firstAuthor": "Li, Junxiang",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 864
     },
@@ -556,6 +614,8 @@
       "bibcode": "2005RSEnv..98..442L",
       "title": "Spatial and temporal patterns of China's cropland during 1990-2000: An analysis based on Landsat TM data",
       "firstAuthor": "Liu, Jiyuan",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 774
     },
@@ -563,6 +623,8 @@
       "bibcode": "2009RSEnv.113.2118H",
       "title": "A novel ocean color index to detect floating algae in the global oceans",
       "firstAuthor": "Hu, Chuanmin",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 741
     },
@@ -570,6 +632,8 @@
       "bibcode": "2018RemS...11...48Z",
       "title": "Satellite Remote Sensing of Surface Urban Heat Islands: Progress, Challenges, and Perspectives",
       "firstAuthor": "Zhou, Decheng",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 733
     },
@@ -577,6 +641,8 @@
       "bibcode": "2005RSEnv..95..480X",
       "title": "Mapping paddy rice agriculture in southern China using multi-temporal MODIS images",
       "firstAuthor": "Xiao, Xiangming",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 723
     },
@@ -584,6 +650,8 @@
       "bibcode": "2003RSEnv..86..554P",
       "title": "An assessment of the effectiveness of decision tree methods for land cover classification",
       "firstAuthor": "Pal, Mahesh",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 663
     },
@@ -591,6 +659,8 @@
       "bibcode": "2004GeoRL..3118402S",
       "title": "Glacier acceleration and thinning after ice shelf collapse in the Larsen B embayment, Antarctica",
       "firstAuthor": "Scambos, T. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 617
     }

@@ -21,11 +21,14 @@
   "indices": {
     "h": 80,
     "m": 4.706,
-    "i100": 64
+    "i100": 64,
+    "g": 133,
+    "tori": 132.441,
+    "riq": 639
   },
   "facts": {
-    "papers": 1009,
-    "citations": 28984,
+    "papers": 1011,
+    "citations": 28993,
     "publicationYears": [
       2010,
       2026
@@ -68,7 +71,7 @@
       58,
       93,
       67,
-      81
+      83
     ],
     "citations": [
       69,
@@ -87,13 +90,13 @@
       3450,
       3411,
       3687,
-      3047
+      3056
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 28984,
-      "observed": 28984,
+      "expected": 28993,
+      "observed": 28993,
       "missing": 0
     }
   },
@@ -157,52 +160,59 @@
     "bibcode": "2010SSRv..150...81R",
     "title": "Lunar Reconnaissance Orbiter Camera (LROC) Instrument Overview",
     "firstAuthor": "Robinson, M. S.",
+    "authors": [
+      "Robinson, M. S.",
+      "Brylow, S. M.",
+      "Tschimmel, M.",
+      "Humm, D."
+    ],
+    "authorCount": 23,
     "year": 2010,
     "citations": 1045
   },
   "ranks": {
     "full": {
       "bins": [
-        88.878,
-        106.956,
-        91.826,
-        90.239,
-        82.304,
-        74.616,
-        73.319,
-        55.318,
-        59.675,
-        44.868
+        89.033,
+        106.973,
+        92.145,
+        89.949,
+        82.217,
+        74.599,
+        73.241,
+        55.328,
+        59.68,
+        44.833
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        9.642,
-        10.671,
-        9.783,
-        5.618,
-        8.734,
-        13.16,
-        12.35,
-        9.861,
-        14.18,
+        9.675,
+        10.672,
+        9.784,
+        5.617,
+        8.732,
+        13.174,
+        12.343,
+        9.846,
+        14.156,
         11
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        170.058,
-        128.774,
-        136.166,
-        111.073,
-        76.046,
-        91.142,
-        85.067,
-        58.335,
-        78.321,
-        74.019
+        170.738,
+        128.634,
+        136.867,
+        111.14,
+        76.506,
+        90.921,
+        85.02,
+        58.623,
+        78.483,
+        74.067
       ],
       "top1": 8
     }
@@ -211,8 +221,8 @@
     "papers": 768,
     "outputBasis": "measured",
     "citations": 8040,
-    "top10": 48.455,
-    "top10ShareOfDivision": 0.04441,
+    "top10": 48.474,
+    "top10ShareOfDivision": 0.04443,
     "top1": 2,
     "top1ShareOfDivision": 0.01833,
     "first": {
@@ -230,6 +240,13 @@
       "status": "available",
       "months": 171,
       "citationBuckets": 18
+    },
+    "spread": {
+      "mean": 10.469,
+      "median": 7,
+      "uncited": 58,
+      "i10": 280,
+      "i100": 2
     }
   },
   "window": {
@@ -237,9 +254,9 @@
     "outputBasis": "measured",
     "citations": 1990,
     "top10": 9.55,
-    "top10ShareOfDivision": 0.01977,
+    "top10ShareOfDivision": 0.01978,
     "top1": 1,
-    "top1ShareOfDivision": 0.0207,
+    "top1ShareOfDivision": 0.02071,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.296,
@@ -255,14 +272,21 @@
       "status": "available",
       "months": 36,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 18.952,
+      "median": 13,
+      "uncited": 7,
+      "i10": 64,
+      "i100": 1
     }
   },
   "lifetime": {
-    "papers": 1009,
+    "papers": 1011,
     "outputBasis": "measured",
-    "citations": 28984,
+    "citations": 28993,
     "top10": 82.25,
-    "top10ShareOfDivision": 0.06035,
+    "top10ShareOfDivision": 0.06036,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -271,21 +295,28 @@
       "yearsFromFormulation": 5.027,
       "bibcode": "2010SSRv..150....7V",
       "date": "2010-01-00"
+    },
+    "spread": {
+      "mean": 28.678,
+      "median": 10,
+      "uncited": 141,
+      "i10": 519,
+      "i100": 64
     }
   },
   "query": {
     "arms": "((=abs:\"Lunar Reconnaissance Orbiter\" OR =abs:\"Lunar Reconnaissance Orbiter Camera\" OR =abs:\"Lunar Exploration Neutron Detector\" OR =abs:\"Lyman-Alpha Mapping Project\" OR =abs:\"Lunar Orbiter Laser Altimeter\" OR =abs:\"Cosmic Ray Telescope for the Effects of Radiation\" OR =abs:\"Diviner Lunar Radiometer\" OR ((=abs:Moon OR =abs:lunar) AND (abs:LRO OR =abs:LROC OR abs:LEND OR abs:LAMP OR abs:LOLA OR abs:CRaTER OR =abs:Diviner OR abs:\"Mini-RF\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2009-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Reconnaissance+Orbiter%22+OR+%3Dabs%3A%22Lunar+Reconnaissance+Orbiter+Camera%22+OR+%3Dabs%3A%22Lunar+Exploration+Neutron+Detector%22+OR+%3Dabs%3A%22Lyman-Alpha+Mapping+Project%22+OR+%3Dabs%3A%22Lunar+Orbiter+Laser+Altimeter%22+OR+%3Dabs%3A%22Cosmic+Ray+Telescope+for+the+Effects+of+Radiation%22+OR+%3Dabs%3A%22Diviner+Lunar+Radiometer%22+OR+%28%28%3Dabs%3AMoon+OR+%3Dabs%3Alunar%29+AND+%28abs%3ALRO+OR+%3Dabs%3ALROC+OR+abs%3ALEND+OR+abs%3ALAMP+OR+abs%3ALOLA+OR+abs%3ACRaTER+OR+%3Dabs%3ADiviner+OR+abs%3A%22Mini-RF%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:28:41.188439+00:00",
+    "fetchedAt": "2026-09-30T17:52:39.243846+00:00",
     "reconciliation": {
-      "adsReturned": 1025,
+      "adsReturned": 1027,
       "curatedOut": 16,
       "curatedIn": 2,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 2,
-      "final": 1009
+      "final": 1011
     }
   },
   "curation": {
@@ -475,6 +506,8 @@
       "bibcode": "2010SSRv..150...81R",
       "title": "Lunar Reconnaissance Orbiter Camera (LROC) Instrument Overview",
       "firstAuthor": "Robinson, M. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 1045
     },
@@ -482,6 +515,8 @@
       "bibcode": "2010SSRv..150..209S",
       "title": "The Lunar Orbiter Laser Altimeter Investigation on the Lunar Reconnaissance Orbiter Mission",
       "firstAuthor": "Smith, David E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 480
     },
@@ -489,6 +524,8 @@
       "bibcode": "2016Icar..273..346B",
       "title": "A new lunar digital elevation model from the Lunar Orbiter Laser Altimeter and SELENE Terrain Camera",
       "firstAuthor": "Barker, M. K.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 476
     },
@@ -496,6 +533,8 @@
       "bibcode": "2010Sci...330..479P",
       "title": "Diviner Lunar Radiometer Observations of Cold Traps in the Moon’s South Polar Region",
       "firstAuthor": "Paige, David A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 468
     },
@@ -503,6 +542,8 @@
       "bibcode": "2010GeoRL..3718204S",
       "title": "Initial observations from the Lunar Orbiter Laser Altimeter (LOLA)",
       "firstAuthor": "Smith, David E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 443
     },
@@ -510,6 +551,8 @@
       "bibcode": "2018PNAS..115.8907L",
       "title": "Direct evidence of surface exposed water ice in the lunar polar regions",
       "firstAuthor": "Li, Shuai",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 421
     },
@@ -517,6 +560,8 @@
       "bibcode": "2010SSRv..150..125P",
       "title": "The Lunar Reconnaissance Orbiter Diviner Lunar Radiometer Experiment",
       "firstAuthor": "Paige, D. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 418
     },
@@ -524,6 +569,8 @@
       "bibcode": "2017Icar..283..300W",
       "title": "The global surface temperatures of the Moon as measured by the Diviner Lunar Radiometer Experiment",
       "firstAuthor": "Williams, J.-P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 364
     },
@@ -531,6 +578,8 @@
       "bibcode": "2017JGRE..122.2371H",
       "title": "Global Regolith Thermophysical Properties of the Moon From the Diviner Lunar Radiometer Experiment",
       "firstAuthor": "Hayne, Paul O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 324
     },
@@ -538,6 +587,8 @@
       "bibcode": "2011Icar..211.1066M",
       "title": "Illumination conditions of the lunar polar regions using LOLA topography",
       "firstAuthor": "Mazarico, E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 314
     },
@@ -545,6 +596,8 @@
       "bibcode": "2010Sci...330..483M",
       "title": "Hydrogen Mapping of the Lunar South Pole Using the LRO Neutron Detector Experiment LEND",
       "firstAuthor": "Mitrofanov, I. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 308
     },
@@ -552,6 +605,8 @@
       "bibcode": "2011JGRE..116.0H02B",
       "title": "Lunar surface rock abundance and regolith fines temperatures derived from LRO Diviner Radiometer data",
       "firstAuthor": "Bandfield, Joshua L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 293
     },
@@ -559,6 +614,8 @@
       "bibcode": "2015Icar..255...58H",
       "title": "Evidence for exposed water ice in the Moon's south polar regions from Lunar Reconnaissance Orbiter ultraviolet albedo and temperature measurements",
       "firstAuthor": "Hayne, Paul O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 261
     },
@@ -566,6 +623,8 @@
       "bibcode": "2011P&SS...59.1326S",
       "title": "Optical measurements of the Moon as a tool to study its surface",
       "firstAuthor": "Shkuratov, Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 257
     },
@@ -573,6 +632,8 @@
       "bibcode": "2012JGRE..117.0H18V",
       "title": "Lunar equatorial surface temperatures and regolith properties from the Diviner Lunar Radiometer Experiment",
       "firstAuthor": "Vasavada, Ashwin R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 221
     },
@@ -580,6 +641,8 @@
       "bibcode": "2010Sci...329.1507G",
       "title": "Global Silicate Mineralogy of the Moon from the Diviner Lunar Radiometer",
       "firstAuthor": "Greenhagen, Benjamin T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 217
     },
@@ -587,6 +650,8 @@
       "bibcode": "2017Icar..296..216S",
       "title": "Lunar mare TiO₂ abundances estimated from UV/Vis reflectance",
       "firstAuthor": "Sato, Hiroyuki",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 213
     },
@@ -594,6 +659,8 @@
       "bibcode": "2010Sci...329.1510G",
       "title": "Highly Silicic Compositions on the Moon",
       "firstAuthor": "Glotch, Timothy D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 208
     },
@@ -601,6 +668,8 @@
       "bibcode": "2012JGRE..117.0H17S",
       "title": "GLD100: The near-global lunar 100 m raster DTM from LROC WAC stereo image data",
       "firstAuthor": "Scholten, F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 183
     },
@@ -608,11 +677,13 @@
       "bibcode": "2014NatGe...7..787B",
       "title": "Evidence for basaltic volcanism on the Moon within the past 100 million years",
       "firstAuthor": "Braden, S. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 179
     }
   ],
   "papersFile": {
-    "rows": 1009
+    "rows": 1011
   }
 }

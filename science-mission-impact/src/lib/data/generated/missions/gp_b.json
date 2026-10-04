@@ -21,11 +21,14 @@
   "indices": {
     "h": 28,
     "m": 1.217,
-    "i100": 5
+    "i100": 5,
+    "g": 58,
+    "tori": 34.805,
+    "riq": 256
   },
   "facts": {
     "papers": 124,
-    "citations": 3730,
+    "citations": 3729,
     "publicationYears": [
       2004,
       2026
@@ -105,13 +108,13 @@
       225,
       224,
       237,
-      172
+      171
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 3730,
-      "observed": 3730,
+      "expected": 3729,
+      "observed": 3729,
       "missing": 0
     }
   },
@@ -179,6 +182,13 @@
     "bibcode": "2011PhRvL.106v1101E",
     "title": "Gravity Probe B: Final Results of a Space Experiment to Test General Relativity",
     "firstAuthor": "Everitt, C. W. F.",
+    "authors": [
+      "Everitt, C. W. F.",
+      "Debra, D. B.",
+      "Parkinson, B. W.",
+      "Turneaure, J. P."
+    ],
+    "authorCount": 27,
     "year": 2011,
     "citations": 744
   },
@@ -188,10 +198,10 @@
         15.712,
         9.788,
         5.138,
-        11.65,
-        7.988,
-        1.788,
-        3.937,
+        11.651,
+        7.987,
+        1.785,
+        3.94,
         2,
         1,
         2
@@ -215,15 +225,15 @@
     },
     "lifetime": {
       "bins": [
-        13.69,
+        13.681,
         23.491,
-        21.547,
-        20.657,
-        14.615,
-        5.552,
-        7.448,
-        6.185,
-        6.815,
+        21.548,
+        21.546,
+        13.734,
+        5.546,
+        7.454,
+        6.161,
+        6.839,
         4
       ],
       "top1": 1
@@ -252,6 +262,13 @@
       "status": "available",
       "months": 100,
       "citationBuckets": 12
+    },
+    "spread": {
+      "mean": 11.098,
+      "median": 7,
+      "uncited": 9,
+      "i10": 19,
+      "i100": 1
     }
   },
   "window": {
@@ -277,12 +294,19 @@
       "status": "available",
       "months": 40,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 10.136,
+      "median": 5.5,
+      "uncited": 4,
+      "i10": 7,
+      "i100": 0
     }
   },
   "lifetime": {
     "papers": 124,
     "outputBasis": "measured",
-    "citations": 3730,
+    "citations": 3729,
     "top10": 4,
     "top10ShareOfDivision": 0.00072,
     "top1": null,
@@ -293,13 +317,20 @@
       "yearsFromFormulation": 12,
       "bibcode": "2004Natur.431..958C",
       "date": "2004-10-00"
+    },
+    "spread": {
+      "mean": 30.073,
+      "median": 11.5,
+      "uncited": 9,
+      "i10": 69,
+      "i100": 5
     }
   },
   "query": {
     "arms": "((=abs:\"Gravity Probe B\" OR (=abs:\"GP B\" AND abs:(gyroscope OR relativity))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2004-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Gravity+Probe+B%22+OR+%28%3Dabs%3A%22GP+B%22+AND+abs%3A%28gyroscope+OR+relativity%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:36:10.493708+00:00",
+    "fetchedAt": "2026-09-30T18:19:32.319675+00:00",
     "reconciliation": {
       "adsReturned": 136,
       "curatedOut": 12,
@@ -504,6 +535,8 @@
       "bibcode": "2011PhRvL.106v1101E",
       "title": "Gravity Probe B: Final Results of a Space Experiment to Test General Relativity",
       "firstAuthor": "Everitt, C. W. F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 744
     },
@@ -511,6 +544,8 @@
       "bibcode": "2004Natur.431..958C",
       "title": "A confirmation of the general relativistic prediction of the Lense-Thirring effect",
       "firstAuthor": "Ciufolini, I.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 413
     },
@@ -518,6 +553,8 @@
       "bibcode": "2011JCAP...07..020A",
       "title": "Constraints on perturbative f(R) gravity via neutron stars",
       "firstAuthor": "Arapoǧlu, Savaș",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 201
     },
@@ -525,6 +562,8 @@
       "bibcode": "2015CQGra..32v4001E",
       "title": "The Gravity Probe B test of general relativity",
       "firstAuthor": "Everitt, C. W. F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 125
     },
@@ -532,6 +571,8 @@
       "bibcode": "2011PhRvD..84l4033A",
       "title": "Slowly rotating stars and black holes in dynamical Chern-Simons gravity",
       "firstAuthor": "Ali-Haïmoud, Yacine",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 105
     },
@@ -539,6 +580,8 @@
       "bibcode": "2007PhRvD..76j4029M",
       "title": "Constraining torsion with Gravity Probe B",
       "firstAuthor": "Mao, Yi",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 97
     },
@@ -546,6 +589,8 @@
       "bibcode": "2010PhRvD..81j4003N",
       "title": "On the 1/c expansion of f(R) gravity",
       "firstAuthor": "Näf, Joachim",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 90
     },
@@ -553,6 +598,8 @@
       "bibcode": "2016Univ....2...30H",
       "title": "Tests of Lorentz Symmetry in the Gravitational Sector",
       "firstAuthor": "Hees, Aurélien",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 87
     },
@@ -560,6 +607,8 @@
       "bibcode": "2007PhRvL..99x1101A",
       "title": "New Post-Newtonian Parameter to Test Chern-Simons Gravity",
       "firstAuthor": "Alexander, Stephon",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 85
     },
@@ -567,6 +616,8 @@
       "bibcode": "2013PhLA..377.1775H",
       "title": "On Poincaré gauge theory of gravity, its equations of motion, and Gravity Probe B",
       "firstAuthor": "Hehl, Friedrich W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 84
     },
@@ -574,6 +625,8 @@
       "bibcode": "2015PhRvD..91d4012C",
       "title": "Constraining models of extended gravity using Gravity Probe B and LARES experiments",
       "firstAuthor": "Capozziello, S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 68
     },
@@ -581,6 +634,8 @@
       "bibcode": "2014PhRvD..90l2009S",
       "title": "New pulsar limit on local Lorentz invariance violation of gravity in the standard-model extension",
       "firstAuthor": "Shao, Lijing",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 67
     },
@@ -588,6 +643,8 @@
       "bibcode": "2007PhRvD..75l4016F",
       "title": "Can Gravity Probe B usefully constrain torsion gravity theories?",
       "firstAuthor": "Flanagan, Éanna É.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 65
     },
@@ -595,6 +652,8 @@
       "bibcode": "2007AdSpR..40....1L",
       "title": "On-orbit performance of Gravity Probe B drag-free translation control and orbit determination",
       "firstAuthor": "Li, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 60
     },
@@ -602,6 +661,8 @@
       "bibcode": "2007PhRvL..98g1102M",
       "title": "Gravitomagnetic Influence on Gyroscopes and on the Lunar Orbit",
       "firstAuthor": "Murphy, T. W., Jr.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 58
     },
@@ -609,6 +670,8 @@
       "bibcode": "2013PhRvD..88j2001B",
       "title": "Limits on violations of Lorentz symmetry from Gravity Probe B",
       "firstAuthor": "Bailey, Quentin G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 57
     },
@@ -616,6 +679,8 @@
       "bibcode": "2005IJMPD..14..901N",
       "title": "Empirical Foundations of the Relativistic Gravity",
       "firstAuthor": "Ni, Wei-Tou",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 47
     },
@@ -623,6 +688,8 @@
       "bibcode": "2013JCAP...12..020L",
       "title": "Constraints on noncommutative spectral action from Gravity Probe B and torsion balance experiments",
       "firstAuthor": "Lambiase, Gaetano",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 45
     },
@@ -630,6 +697,8 @@
       "bibcode": "2016PhRvD..94l5030L",
       "title": "Lorentz symmetry and very long baseline interferometry",
       "firstAuthor": "Le Poncin-Lafitte, C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 43
     },
@@ -637,6 +706,8 @@
       "bibcode": "2024EPJC...84.1257J",
       "title": "Spontaneous Lorentz symmetry-breaking constraints in Kalb-Ramond gravity",
       "firstAuthor": "Junior, Ednaldo L. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2024,
       "citations": 42
     }

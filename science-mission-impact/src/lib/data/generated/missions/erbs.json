@@ -21,7 +21,10 @@
   "indices": {
     "h": 90,
     "m": 2.093,
-    "i100": 81
+    "i100": 81,
+    "g": 153,
+    "tori": 330.385,
+    "riq": 422
   },
   "facts": {
     "papers": 843,
@@ -248,6 +251,13 @@
     "bibcode": "1989Sci...243...57R",
     "title": "Cloud-Radiative Forcing and Climate: Results from the Earth Radiation Budget Experiment",
     "firstAuthor": "Ramanathan, V.",
+    "authors": [
+      "Ramanathan, V.",
+      "Cess, R. D.",
+      "Harrison, E. F.",
+      "Minnis, P."
+    ],
+    "authorCount": 7,
     "year": 1989,
     "citations": 1281
   },
@@ -256,9 +266,9 @@
       "bins": [
         114.562,
         86.095,
-        89.939,
-        64.359,
-        68.499,
+        89.918,
+        64.356,
+        68.522,
         66.665,
         58.782,
         46.768,
@@ -272,8 +282,8 @@
         15.405,
         5.193,
         3.976,
-        4.584,
-        6.158,
+        4.583,
+        6.159,
         3.349,
         4.334,
         1,
@@ -284,16 +294,16 @@
     },
     "lifetime": {
       "bins": [
-        46.953,
-        53.861,
-        64.896,
-        75.636,
-        84.614,
-        85.806,
-        109.386,
-        97.416,
-        102.466,
-        121.966
+        46.901,
+        53.839,
+        64.883,
+        75.677,
+        84.617,
+        85.766,
+        109.442,
+        97.403,
+        102.499,
+        121.972
       ],
       "top1": 15
     }
@@ -321,6 +331,13 @@
       "status": "available",
       "months": 276,
       "citationBuckets": 27
+    },
+    "spread": {
+      "mean": 7.834,
+      "median": 5,
+      "uncited": 102,
+      "i10": 173,
+      "i100": 2
     }
   },
   "window": {
@@ -346,6 +363,13 @@
       "status": "available",
       "months": 48,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 5.826,
+      "median": 3.5,
+      "uncited": 14,
+      "i10": 9,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -362,13 +386,20 @@
       "yearsFromFormulation": 7.833,
       "bibcode": "1984BAMS...65.1170B",
       "date": "1984-11-00"
+    },
+    "spread": {
+      "mean": 42.671,
+      "median": 19,
+      "uncited": 45,
+      "i10": 587,
+      "i100": 81
     }
   },
   "query": {
     "arms": "((=abs:(\"Earth Radiation Budget Satellite\" OR \"Stratospheric Aerosol and Gas Experiment II\") OR (=abs:\"Earth Radiation Budget Experiment\" NOT abs:Nimbus NOT =abs:(\"Geostationary Earth Radiation Budget\" OR \"Moon and Earth Radiation Budget\")) OR (abs:ERBS AND abs:(stratospher* OR troposph* OR ozone OR aerosol OR aerosols OR cloud OR clouds OR cloudiness OR radiative OR irradiance OR albedo OR longwave OR shortwave OR occultation OR volcanic OR =\"water vapor\" OR NO2 OR ERBE OR SAGE OR OLR OR nonscanner OR scanner OR =\"radiation budget\")) OR (abs:ERBE AND abs:(atmosphere OR atmospheric OR stratospher* OR troposph* OR mesospher* OR ozone OR aerosol OR aerosols OR cloud OR clouds OR cloudiness OR radiation OR radiative OR irradiance OR climate OR albedo OR flux OR fluxes OR longwave OR shortwave OR limb OR occultation OR volcanic OR =\"water vapor\" OR NO2 OR satellite)) OR (=abs:(\"SAGE II\" OR \"SAGE I and II\") AND abs:(atmosphere OR atmospheric OR stratospher* OR troposph* OR mesospher* OR ozone OR aerosol OR aerosols OR cloud OR clouds OR occultation OR extinction OR volcanic OR =\"water vapor\" OR NO2 OR limb OR climate))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1984-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Earth+Radiation+Budget+Satellite%22+OR+%22Stratospheric+Aerosol+and+Gas+Experiment+II%22%29+OR+%28%3Dabs%3A%22Earth+Radiation+Budget+Experiment%22+NOT+abs%3ANimbus+NOT+%3Dabs%3A%28%22Geostationary+Earth+Radiation+Budget%22+OR+%22Moon+and+Earth+Radiation+Budget%22%29%29+OR+%28abs%3AERBS+AND+abs%3A%28stratospher%2A+OR+troposph%2A+OR+ozone+OR+aerosol+OR+aerosols+OR+cloud+OR+clouds+OR+cloudiness+OR+radiative+OR+irradiance+OR+albedo+OR+longwave+OR+shortwave+OR+occultation+OR+volcanic+OR+%3D%22water+vapor%22+OR+NO2+OR+ERBE+OR+SAGE+OR+OLR+OR+nonscanner+OR+scanner+OR+%3D%22radiation+budget%22%29%29+OR+%28abs%3AERBE+AND+abs%3A%28atmosphere+OR+atmospheric+OR+stratospher%2A+OR+troposph%2A+OR+mesospher%2A+OR+ozone+OR+aerosol+OR+aerosols+OR+cloud+OR+clouds+OR+cloudiness+OR+radiation+OR+radiative+OR+irradiance+OR+climate+OR+albedo+OR+flux+OR+fluxes+OR+longwave+OR+shortwave+OR+limb+OR+occultation+OR+volcanic+OR+%3D%22water+vapor%22+OR+NO2+OR+satellite%29%29+OR+%28%3Dabs%3A%28%22SAGE+II%22+OR+%22SAGE+I+and+II%22%29+AND+abs%3A%28atmosphere+OR+atmospheric+OR+stratospher%2A+OR+troposph%2A+OR+mesospher%2A+OR+ozone+OR+aerosol+OR+aerosols+OR+cloud+OR+clouds+OR+occultation+OR+extinction+OR+volcanic+OR+%3D%22water+vapor%22+OR+NO2+OR+limb+OR+climate%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1984-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:17:04.006617+00:00",
+    "fetchedAt": "2026-09-30T17:55:27.018164+00:00",
     "reconciliation": {
       "adsReturned": 856,
       "curatedOut": 10,
@@ -469,6 +500,8 @@
       "bibcode": "1989Sci...243...57R",
       "title": "Cloud-Radiative Forcing and Climate: Results from the Earth Radiation Budget Experiment",
       "firstAuthor": "Ramanathan, V.",
+      "authors": null,
+      "authorCount": null,
       "year": 1989,
       "citations": 1281
     },
@@ -476,6 +509,8 @@
       "bibcode": "1993JCli....6.1587K",
       "title": "The Seasonal Cycle of Low Stratiform Clouds.",
       "firstAuthor": "Klein, Stephen A.",
+      "authors": null,
+      "authorCount": null,
       "year": 1993,
       "citations": 1235
     },
@@ -483,6 +518,8 @@
       "bibcode": "2004JGRD..10919105Z",
       "title": "Calculation of radiative fluxes from the surface to top of atmosphere based on ISCCP and other global data sets: Refinements of the radiative transfer model and the input data",
       "firstAuthor": "Zhang, Yuanchong",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 834
     },
@@ -490,6 +527,8 @@
       "bibcode": "2001JCli...14.3433T",
       "title": "Estimates of Meridional Atmosphere and Ocean Heat Transports.",
       "firstAuthor": "Trenberth, Kevin E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 594
     },
@@ -497,6 +536,8 @@
       "bibcode": "1992JCli....5.1281H",
       "title": "The Effect of Cloud Type on Earth's Energy Balance: Global Analysis.",
       "firstAuthor": "Hartmann, Dennis L.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 567
     },
@@ -504,6 +545,8 @@
       "bibcode": "1990JGR....9518687H",
       "title": "Seasonal variation of cloud radiative forcing derived from the Earth Radiation Budget Experiment",
       "firstAuthor": "Harrison, E. F.",
+      "authors": null,
+      "authorCount": null,
       "year": 1990,
       "citations": 430
     },
@@ -511,6 +554,8 @@
       "bibcode": "1990JGR....95.3599F",
       "title": "Distribution of tropospheric ozone determined from satellite data",
       "firstAuthor": "Fishman, Jack",
+      "authors": null,
+      "authorCount": null,
       "year": 1990,
       "citations": 357
     },
@@ -518,6 +563,8 @@
       "bibcode": "1984BAMS...65.1170B",
       "title": "The Earth Radiation Budget Experiment (ERBE).",
       "firstAuthor": "Barkstrom, B. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 1984,
       "citations": 342
     },
@@ -525,6 +572,8 @@
       "bibcode": "1992GeoRL..19..155M",
       "title": "SAGE II measurements of early Pinatubo aerosols",
       "firstAuthor": "McCormick, M. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 1992,
       "citations": 310
     },
@@ -532,6 +581,8 @@
       "bibcode": "1989Natur.342..758R",
       "title": "Observational determination of the greenhouse effect",
       "firstAuthor": "Raval, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 1989,
       "citations": 306
     },
@@ -539,6 +590,8 @@
       "bibcode": "1996JCli....9..270D",
       "title": "A Prognostic Cloud Water Parameterization for Global Climate Models.",
       "firstAuthor": "del Genio, Anthony D.",
+      "authors": null,
+      "authorCount": null,
       "year": 1996,
       "citations": 303
     },
@@ -546,6 +599,8 @@
       "bibcode": "2001ClDy...17..905W",
       "title": "Combining ERBE and ISCCP data to assess clouds in the Hadley Centre, ECMWF and LMD atmospheric climate models",
       "firstAuthor": "Webb, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 303
     },
@@ -553,6 +608,8 @@
       "bibcode": "2011GeoRL..3812807V",
       "title": "Major influence of tropical volcanic eruptions on the stratospheric aerosol layer during the last decade",
       "firstAuthor": "Vernier, J.-P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 296
     },
@@ -560,6 +617,8 @@
       "bibcode": "1998JGR...10313837S",
       "title": "Radiative forcing from the 1991 Mount Pinatubo volcanic eruption",
       "firstAuthor": "Stenchikov, Georgiy L.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 291
     },
@@ -567,6 +626,8 @@
       "bibcode": "2003JCli...16..696G",
       "title": "Large-Scale Ocean Heat and Freshwater Transports during the World Ocean Circulation Experiment.",
       "firstAuthor": "Ganachaud, Alexandre",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 286
     },
@@ -574,6 +635,8 @@
       "bibcode": "1996JGR...10129407W",
       "title": "A 6-year climatology of cloud occurrence frequency from Stratospheric Aerosol and Gas Experiment II observations (1985-1990)",
       "firstAuthor": "Wang, Pi-Huan",
+      "authors": null,
+      "authorCount": null,
       "year": 1996,
       "citations": 274
     },
@@ -581,6 +644,8 @@
       "bibcode": "1995JGR...10016519C",
       "title": "Line-by-line calculation of atmospheric fluxes and cooling rates: 2. Application to carbon dioxide, ozone, methane, nitrous oxide and the halocarbons",
       "firstAuthor": "Clough, S. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 1995,
       "citations": 270
     },
@@ -588,6 +653,8 @@
       "bibcode": "1987JGR....92.4075R",
       "title": "The role of earth radiation budget studies in climate and general circulation research",
       "firstAuthor": "Ramanathan, V.",
+      "authors": null,
+      "authorCount": null,
       "year": 1987,
       "citations": 258
     },
@@ -595,6 +662,8 @@
       "bibcode": "1993Sci...259.1411M",
       "title": "Radiative Climate Forcing by the Mount Pinatubo Eruption",
       "firstAuthor": "Minnis, P.",
+      "authors": null,
+      "authorCount": null,
       "year": 1993,
       "citations": 247
     },
@@ -602,6 +671,8 @@
       "bibcode": "1997JGR...102.8967T",
       "title": "A global climatology of stratospheric aerosol surface area density deduced from Stratospheric Aerosol and Gas Experiment II measurements: 1984-1994",
       "firstAuthor": "Thomason, L. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 1997,
       "citations": 228
     }

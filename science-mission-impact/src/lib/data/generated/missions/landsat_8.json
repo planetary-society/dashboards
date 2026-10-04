@@ -21,11 +21,14 @@
   "indices": {
     "h": 151,
     "m": 10.786,
-    "i100": 317
+    "i100": 317,
+    "g": 237,
+    "tori": 1117.811,
+    "riq": 2228
   },
   "facts": {
-    "papers": 9649,
-    "citations": 203665,
+    "papers": 9650,
+    "citations": 203642,
     "publicationYears": [
       2013,
       2026
@@ -62,7 +65,7 @@
       1026,
       1017,
       1113,
-      870
+      871
     ],
     "citations": [
       0,
@@ -78,13 +81,13 @@
       27551,
       32762,
       37420,
-      24639
+      24616
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 203665,
-      "observed": 203665,
+      "expected": 203642,
+      "observed": 203642,
       "missing": 0
     }
   },
@@ -200,6 +203,13 @@
     "bibcode": "2014RSEnv.145..154R",
     "title": "Landsat-8: Science and product vision for terrestrial global change research",
     "firstAuthor": "Roy, D. P.",
+    "authors": [
+      "Roy, D. P.",
+      "Wulder, M. A.",
+      "Loveland, T. R.",
+      "C. E., Woodcock"
+    ],
+    "authorCount": 34,
     "year": 2014,
     "citations": 1814
   },
@@ -208,9 +218,9 @@
       "bins": [
         594.182,
         532.259,
-        569.664,
-        586.437,
-        627.26,
+        569.526,
+        586.347,
+        627.488,
         608.211,
         697.258,
         717.289,
@@ -224,8 +234,8 @@
         348.103,
         297.325,
         298.586,
-        263.905,
-        279.652,
+        263.663,
+        279.894,
         289.717,
         325.363,
         293.032,
@@ -236,18 +246,18 @@
     },
     "lifetime": {
       "bins": [
-        1487.908,
-        1258.484,
-        1112.286,
-        1053.28,
-        1000.626,
-        889.314,
-        815.922,
-        748.994,
-        722.691,
-        559.495
+        1487.732,
+        1259.912,
+        1111.563,
+        1053.016,
+        1000.849,
+        889.36,
+        816.081,
+        749.083,
+        722.825,
+        559.579
       ],
-      "top1": 35.376
+      "top1": 35.4
     }
   },
   "full": {
@@ -273,6 +283,13 @@
       "status": "available",
       "months": 127,
       "citationBuckets": 14
+    },
+    "spread": {
+      "mean": 13.814,
+      "median": 8,
+      "uncited": 512,
+      "i10": 3004,
+      "i100": 57
     }
   },
   "window": {
@@ -298,14 +315,21 @@
       "status": "available",
       "months": 84,
       "citationBuckets": 11
+    },
+    "spread": {
+      "mean": 14.602,
+      "median": 8,
+      "uncited": 295,
+      "i10": 1404,
+      "i100": 36
     }
   },
   "lifetime": {
-    "papers": 9649,
+    "papers": 9650,
     "outputBasis": "measured",
-    "citations": 203665,
-    "top10": 658.889,
-    "top10ShareOfDivision": 0.15924,
+    "citations": 203642,
+    "top10": 658.747,
+    "top10ShareOfDivision": 0.15921,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -314,21 +338,28 @@
       "yearsFromFormulation": 8,
       "bibcode": "2013RemS....6..310L",
       "date": "2013-12-00"
+    },
+    "spread": {
+      "mean": 21.103,
+      "median": 8,
+      "uncited": 1444,
+      "i10": 4498,
+      "i100": 317
     }
   },
   "query": {
     "arms": "((=abs:\"Landsat-8\" OR =abs:\"Landsat Data Continuity\" OR (abs:LDCM AND abs:(Landsat OR satellite OR imagery)) OR ((=abs:\"Operational Land Imager\" OR (=abs:\"Thermal Infrared Sensor\" AND abs:(Landsat OR OLI)) OR (abs:(OLI OR TIRS) AND (abs:(Landsat OR multispectral OR albedo OR MODIS OR NDVI) OR =abs:\"remote sensing\" OR =abs:\"satellite imagery\" OR =abs:\"satellite images\"))) AND NOT (=abs:\"Landsat-9\" OR abs:MEDA))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2013-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Landsat-8%22+OR+%3Dabs%3A%22Landsat+Data+Continuity%22+OR+%28abs%3ALDCM+AND+abs%3A%28Landsat+OR+satellite+OR+imagery%29%29+OR+%28%28%3Dabs%3A%22Operational+Land+Imager%22+OR+%28%3Dabs%3A%22Thermal+Infrared+Sensor%22+AND+abs%3A%28Landsat+OR+OLI%29%29+OR+%28abs%3A%28OLI+OR+TIRS%29+AND+%28abs%3A%28Landsat+OR+multispectral+OR+albedo+OR+MODIS+OR+NDVI%29+OR+%3Dabs%3A%22remote+sensing%22+OR+%3Dabs%3A%22satellite+imagery%22+OR+%3Dabs%3A%22satellite+images%22%29%29%29+AND+NOT+%28%3Dabs%3A%22Landsat-9%22+OR+abs%3AMEDA%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2013-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:24:14.529606+00:00",
+    "fetchedAt": "2026-09-30T18:02:31.383740+00:00",
     "reconciliation": {
-      "adsReturned": 9686,
+      "adsReturned": 9687,
       "curatedOut": 2,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 35,
-      "final": 9649
+      "final": 9650
     }
   },
   "curation": {
@@ -357,6 +388,8 @@
       "bibcode": "2014RSEnv.145..154R",
       "title": "Landsat-8: Science and product vision for terrestrial global change research",
       "firstAuthor": "Roy, D. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 1814
     },
@@ -364,6 +397,8 @@
       "bibcode": "2016RSEnv.185...46V",
       "title": "Preliminary analysis of the performance of the Landsat 8/OLI land surface reflectance product",
       "firstAuthor": "Vermote, Eric",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 1255
     },
@@ -371,6 +406,8 @@
       "bibcode": "2015RSEnv.159..269Z",
       "title": "Improvement and expansion of the Fmask algorithm: cloud, cloud shadow, and snow detection for Landsats 4-7, 8, and Sentinel 2 images",
       "firstAuthor": "Zhu, Zhe",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 1194
     },
@@ -378,6 +415,8 @@
       "bibcode": "2018RSEnv.219..145C",
       "title": "The Harmonized Landsat and Sentinel-2 surface reflectance data set",
       "firstAuthor": "Claverie, Martin",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 1066
     },
@@ -385,6 +424,8 @@
       "bibcode": "2017IGRSL..14..778K",
       "title": "Deep Learning Classification of Land Cover and Crop Types Using Remote Sensing Data",
       "firstAuthor": "Kussul, Nataliia",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 997
     },
@@ -392,6 +433,8 @@
       "bibcode": "2016RSEnv.185...57R",
       "title": "Characterization of Landsat-7 to Landsat-8 reflective wavelength and normalized difference vegetation index continuity",
       "firstAuthor": "Roy, D. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 964
     },
@@ -399,13 +442,17 @@
       "bibcode": "2017ScTEn.577..349E",
       "title": "Effects of landscape composition and pattern on land surface temperature: An urban heat island study in the megacities of Southeast Asia",
       "firstAuthor": "Estoque, Ronald C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
-      "citations": 929
+      "citations": 928
     },
     {
       "bibcode": "2017RSEnv.194..379F",
       "title": "Cloud detection algorithm comparison and validation for operational Landsat data products",
       "firstAuthor": "Foga, Steve",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 922
     },
@@ -413,6 +460,8 @@
       "bibcode": "2019RSEnv.225..127W",
       "title": "Current status of Landsat program, science, and applications",
       "firstAuthor": "Wulder, Michael A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 828
     },
@@ -420,6 +469,8 @@
       "bibcode": "2018RemS...11...48Z",
       "title": "Satellite Remote Sensing of Surface Urban Heat Islands: Progress, Challenges, and Perspectives",
       "firstAuthor": "Zhou, Decheng",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 733
     },
@@ -427,6 +478,8 @@
       "bibcode": "2014IGRSL..11.1840J",
       "title": "Land Surface Temperature Retrieval Methods From Landsat-8 Thermal Infrared Sensor Data",
       "firstAuthor": "Jimnez-Muoz, Juan C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 673
     },
@@ -434,6 +487,8 @@
       "bibcode": "2014RemS....6.9829Y",
       "title": "Land Surface Temperature Retrieval from Landsat 8 TIRS—Comparison between Radiative Transfer Equation-Based Method, Split Window Algorithm and Single Channel Method",
       "firstAuthor": "Yu, Xiaolei",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 607
     },
@@ -441,6 +496,8 @@
       "bibcode": "2016RSEnv.185..142D",
       "title": "Mapping paddy rice planting area in northeastern Asia with Landsat 8 images, phenology-based algorithm and Google Earth Engine",
       "firstAuthor": "Dong, Jinwei",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 588
     },
@@ -448,6 +505,8 @@
       "bibcode": "2016RSEnv.185..271W",
       "title": "The global Landsat archive: Status, consolidation, and direction",
       "firstAuthor": "Wulder, Michael A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 577
     },
@@ -455,6 +514,8 @@
       "bibcode": "2019ScTEn.655..707D",
       "title": "Land use change, urbanization, and change in landscape pattern in a metropolitan area",
       "firstAuthor": "Dadashpoor, Hashem",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 572
     },
@@ -462,6 +523,8 @@
       "bibcode": "2016RSEnv.175..167F",
       "title": "Comparing Landsat water index methods for automated water classification in eastern Australia",
       "firstAuthor": "Fisher, Adrian",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 464
     },
@@ -469,6 +532,8 @@
       "bibcode": "2017RemS....9..902L",
       "title": "A Global Analysis of Sentinel-2A, Sentinel-2B and Landsat-8 Data Revisit Intervals and Implications for Terrestrial Monitoring",
       "firstAuthor": "Li, Jian",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 461
     },
@@ -476,6 +541,8 @@
       "bibcode": "2016RSEnv.187..156P",
       "title": "Assessing the robustness of Random Forests to map land cover with high resolution satellite image time series over large areas",
       "firstAuthor": "Pelletier, Charlotte",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 445
     },
@@ -483,6 +550,8 @@
       "bibcode": "2014RemS....6.4173R",
       "title": "Water Feature Extraction and Change Detection Using Multitemporal Landsat Imagery",
       "firstAuthor": "Rokni, Komeil",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 439
     },
@@ -490,11 +559,13 @@
       "bibcode": "2014RSL.....5..423B",
       "title": "Derivation of a tasselled cap transformation based on Landsat 8 at-satellite reflectance",
       "firstAuthor": "Baig, Muhammad Hasan Ali",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 426
     }
   ],
   "papersFile": {
-    "rows": 9649
+    "rows": 9650
   }
 }

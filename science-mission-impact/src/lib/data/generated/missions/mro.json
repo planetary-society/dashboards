@@ -21,11 +21,14 @@
   "indices": {
     "h": 96,
     "m": 4.8,
-    "i100": 90
+    "i100": 90,
+    "g": 163,
+    "tori": 188.162,
+    "riq": 653
   },
   "facts": {
     "papers": 1273,
-    "citations": 45374,
+    "citations": 45391,
     "publicationYears": [
       2007,
       2026
@@ -81,7 +84,7 @@
       260,
       683,
       1288,
-      1443,
+      1449,
       1664,
       1918,
       1967,
@@ -96,13 +99,13 @@
       3123,
       3831,
       3701,
-      2834
+      2845
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 45374,
-      "observed": 45374,
+      "expected": 45391,
+      "observed": 45391,
       "missing": 0
     }
   },
@@ -192,7 +195,7 @@
       260,
       682,
       1285,
-      1210,
+      1215,
       1077,
       919,
       456,
@@ -203,64 +206,71 @@
     "bibcode": "2007JGRE..112.5S02M",
     "title": "Mars Reconnaissance Orbiter's High Resolution Imaging Science Experiment (HiRISE)",
     "firstAuthor": "McEwen, Alfred S.",
+    "authors": [
+      "McEwen, Alfred S.",
+      "Eliason, Eric M.",
+      "Bergstrom, James W.",
+      "Bridges, Nathan T."
+    ],
+    "authorCount": 15,
     "year": 2007,
     "citations": 1244
   },
   "ranks": {
     "full": {
       "bins": [
-        100.92,
-        124.407,
-        126.644,
-        99.099,
-        100.898,
-        124.91,
-        91.706,
-        108.48,
-        82.134,
-        87.802
+        101.1,
+        124.432,
+        126.761,
+        99.013,
+        100.867,
+        124.854,
+        91.581,
+        108.55,
+        82.092,
+        87.75
       ],
       "top1": 8
     },
     "window": {
       "bins": [
-        25.587,
-        25.765,
-        25.611,
-        35.037,
-        30.808,
-        32.142,
-        43.926,
-        34.944,
-        36.68,
-        32.5
+        25.694,
+        25.74,
+        24.951,
+        35.113,
+        31.367,
+        32.125,
+        44.004,
+        34.85,
+        36.681,
+        32.475
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        161.133,
-        151.046,
-        147.569,
-        119.851,
-        117.979,
-        102.68,
-        131.864,
-        110.398,
-        120.442,
-        110.038
+        159.999,
+        150.311,
+        149.184,
+        119.619,
+        118.169,
+        102.525,
+        131.807,
+        110.787,
+        120.467,
+        110.133
       ],
-      "top1": 15.935
+      "top1": 16
     }
   },
   "full": {
     "papers": 1047,
     "outputBasis": "measured",
-    "citations": 13410,
-    "top10": 81.362,
-    "top10ShareOfDivision": 0.07457,
+    "citations": 13415,
+    "top10": 81.371,
+    "top10ShareOfDivision": 0.07458,
     "top1": 8,
-    "top1ShareOfDivision": 0.07332,
+    "top1ShareOfDivision": 0.07333,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.233,
@@ -276,16 +286,23 @@
       "status": "available",
       "months": 205,
       "citationBuckets": 21
+    },
+    "spread": {
+      "mean": 12.813,
+      "median": 8,
+      "uncited": 65,
+      "i10": 445,
+      "i100": 8
     }
   },
   "window": {
     "papers": 323,
     "outputBasis": "measured",
-    "citations": 6124,
+    "citations": 6129,
     "top10": 37.2,
-    "top10ShareOfDivision": 0.07702,
+    "top10ShareOfDivision": 0.07705,
     "top1": 2,
-    "top1ShareOfDivision": 0.04141,
+    "top1ShareOfDivision": 0.04143,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.476,
@@ -301,14 +318,21 @@
       "status": "available",
       "months": 70,
       "citationBuckets": 10
+    },
+    "spread": {
+      "mean": 18.975,
+      "median": 12,
+      "uncited": 17,
+      "i10": 193,
+      "i100": 5
     }
   },
   "lifetime": {
     "papers": 1273,
     "outputBasis": "measured",
-    "citations": 45374,
+    "citations": 45391,
     "top10": 86.554,
-    "top10ShareOfDivision": 0.06351,
+    "top10ShareOfDivision": 0.06352,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -317,13 +341,20 @@
       "yearsFromFormulation": 5.574,
       "bibcode": "2007JGRE..112.5S01Z",
       "date": "2007-05-00"
+    },
+    "spread": {
+      "mean": 35.657,
+      "median": 14,
+      "uncited": 122,
+      "i10": 751,
+      "i100": 90
     }
   },
   "query": {
     "arms": "((=abs:\"Mars Reconnaissance Orbiter\" OR (abs:\"MRO\" AND abs:\"Mars\") OR (abs:\"HiRISE\" AND abs:\"Mars\") OR (abs:\"CRISM\" AND abs:\"Mars\") OR (abs:\"CTX\" AND abs:\"Mars\") OR (abs:\"SHARAD\" AND abs:\"Mars\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2006-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Reconnaissance+Orbiter%22+OR+%28abs%3A%22MRO%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22HiRISE%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22CRISM%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22CTX%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22SHARAD%22+AND+abs%3A%22Mars%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2006-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:28:00.820230+00:00",
+    "fetchedAt": "2026-09-30T17:51:53.711806+00:00",
     "reconciliation": {
       "adsReturned": 1278,
       "curatedOut": 2,
@@ -360,6 +391,8 @@
       "bibcode": "2007JGRE..112.5S02M",
       "title": "Mars Reconnaissance Orbiter's High Resolution Imaging Science Experiment (HiRISE)",
       "firstAuthor": "McEwen, Alfred S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 1244
     },
@@ -367,6 +400,8 @@
       "bibcode": "2007JGRE..112.5S04M",
       "title": "Context Camera Investigation on board the Mars Reconnaissance Orbiter",
       "firstAuthor": "Malin, Michael C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 957
     },
@@ -374,20 +409,26 @@
       "bibcode": "2007JGRE..112.5S03M",
       "title": "Compact Reconnaissance Imaging Spectrometer for Mars (CRISM) on Mars Reconnaissance Orbiter (MRO)",
       "firstAuthor": "Murchie, S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
-      "citations": 787
+      "citations": 788
     },
     {
       "bibcode": "2008Natur.454..305M",
       "title": "Hydrated silicate minerals on Mars observed by the Mars Reconnaissance Orbiter CRISM instrument",
       "firstAuthor": "Mustard, John F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
-      "citations": 706
+      "citations": 707
     },
     {
       "bibcode": "2008Sci...322.1828E",
       "title": "Orbital Identification of Carbonate-Bearing Rocks on Mars",
       "firstAuthor": "Ehlmann, Bethany L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 619
     },
@@ -395,6 +436,8 @@
       "bibcode": "2009JGRE..114.0D08E",
       "title": "Identification of hydrated silicate minerals on Mars using MRO-CRISM: Geologic context near Nili Fossae and implications for aqueous alteration",
       "firstAuthor": "Ehlmann, Bethany L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 494
     },
@@ -402,13 +445,17 @@
       "bibcode": "2013JGRE..118..831C",
       "title": "Hydrous minerals on Mars as seen by the CRISM and OMEGA imaging spectrometers: Updated global view",
       "firstAuthor": "Carter, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
-      "citations": 436
+      "citations": 437
     },
     {
       "bibcode": "2015Icar..251...65M",
       "title": "Eight-year climatology of dust optical depth on Mars",
       "firstAuthor": "Montabone, L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 422
     },
@@ -416,6 +463,8 @@
       "bibcode": "2011Sci...333..740M",
       "title": "Seasonal Flows on Warm Martian Slopes",
       "firstAuthor": "McEwen, Alfred S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 414
     },
@@ -423,6 +472,8 @@
       "bibcode": "2009JGRE..114.0D06M",
       "title": "A synthesis of Martian aqueous mineralogy after 1 Mars year of observations from the Mars Reconnaissance Orbiter",
       "firstAuthor": "Murchie, Scott L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 413
     },
@@ -430,6 +481,8 @@
       "bibcode": "2015NatGe...8..829O",
       "title": "Spectral evidence for hydrated salts in recurring slope lineae on Mars",
       "firstAuthor": "Ojha, Lujendra",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 381
     },
@@ -437,6 +490,8 @@
       "bibcode": "2008Sci...321..830B",
       "title": "Phyllosilicate Diversity and Past Aqueous Activity Revealed at Mawrth Vallis, Mars",
       "firstAuthor": "Bishop, Janice L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 372
     },
@@ -444,20 +499,26 @@
       "bibcode": "2014JGRE..119.1403V",
       "title": "Revised CRISM spectral parameters and summary products based on the currently detected mineral diversity on Mars",
       "firstAuthor": "Viviano-Beck, Christina E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
-      "citations": 363
+      "citations": 364
     },
     {
       "bibcode": "2008Geo....36..847M",
       "title": "Opaline silica in young deposits on Mars",
       "firstAuthor": "Milliken, R. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
-      "citations": 341
+      "citations": 342
     },
     {
       "bibcode": "2008NatGe...1..355E",
       "title": "Clay minerals in delta deposits and organic preservation potential on Mars",
       "firstAuthor": "Ehlmann, Bethany L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 332
     },
@@ -465,6 +526,8 @@
       "bibcode": "2008JGRE..113.0A24K",
       "title": "Ultrahigh resolution topographic mapping of Mars with MRO HiRISE stereo images: Meter-scale slopes of candidate Phoenix landing sites",
       "firstAuthor": "Kirk, R. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 327
     },
@@ -472,6 +535,8 @@
       "bibcode": "2011Icar..211..401K",
       "title": "Mars high resolution gravity fields from MRO, Mars seasonal gravity, and other dynamical parameters",
       "firstAuthor": "Konopliv, Alex S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 319
     },
@@ -479,6 +544,8 @@
       "bibcode": "2008Sci...322.1235H",
       "title": "Radar Sounding Evidence for Buried Glaciers in the Southern Mid-Latitudes of Mars",
       "firstAuthor": "Holt, John W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 317
     },
@@ -486,6 +553,8 @@
       "bibcode": "2007JGRE..112.8S14P",
       "title": "CRISM multispectral summary products: Parameterizing mineral diversity on Mars from reflectance",
       "firstAuthor": "Pelkey, S. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 309
     },
@@ -493,6 +562,8 @@
       "bibcode": "2011Icar..214..413T",
       "title": "Constraints on the origin and evolution of the layered mound in Gale Crater, Mars using Mars Reconnaissance Orbiter data",
       "firstAuthor": "Thomson, B. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 300
     }

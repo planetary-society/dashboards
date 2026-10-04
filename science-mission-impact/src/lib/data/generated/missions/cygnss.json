@@ -21,7 +21,10 @@
   "indices": {
     "h": 45,
     "m": 4.5,
-    "i100": 13
+    "i100": 13,
+    "g": 70,
+    "tori": 27.556,
+    "riq": 524
   },
   "facts": {
     "papers": 483,
@@ -173,6 +176,11 @@
     "bibcode": "2018GeoRL..45.4049C",
     "title": "Soil Moisture Sensing Using Spaceborne GNSS Reflections: Comparison of CYGNSS Reflectivity to SMAP Soil Moisture",
     "firstAuthor": "Chew, C. C.",
+    "authors": [
+      "Chew, C. C.",
+      "Small, E. E."
+    ],
+    "authorCount": 2,
     "year": 2018,
     "citations": 273
   },
@@ -181,9 +189,9 @@
       "bins": [
         5.703,
         11.882,
-        19.979,
-        15.418,
-        22.367,
+        19.973,
+        15.414,
+        22.376,
         24.209,
         43.881,
         35.376,
@@ -197,8 +205,8 @@
         3.124,
         9.269,
         13.181,
-        15.698,
-        12.203,
+        15.686,
+        12.215,
         25.019,
         28.799,
         19.517,
@@ -209,15 +217,15 @@
     },
     "lifetime": {
       "bins": [
-        88.148,
-        61.651,
-        56.414,
-        60.797,
-        48.888,
-        60.025,
-        32.45,
-        27.423,
-        26.205,
+        88.092,
+        61.609,
+        56.434,
+        60.842,
+        48.889,
+        60.031,
+        32.463,
+        27.432,
+        26.21,
         21
       ],
       "top1": 0
@@ -246,6 +254,13 @@
       "status": "available",
       "months": 84,
       "citationBuckets": 10
+    },
+    "spread": {
+      "mean": 16.648,
+      "median": 11,
+      "uncited": 4,
+      "i10": 161,
+      "i100": 0
     }
   },
   "window": {
@@ -271,6 +286,13 @@
       "status": "available",
       "months": 71,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 18.691,
+      "median": 12,
+      "uncited": 2,
+      "i10": 125,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -287,13 +309,20 @@
       "yearsFromFormulation": 5.867,
       "bibcode": "2018GeoRL..45.4049C",
       "date": "2018-05-00"
+    },
+    "spread": {
+      "mean": 16.536,
+      "median": 7,
+      "uncited": 86,
+      "i10": 205,
+      "i100": 13
     }
   },
   "query": {
     "arms": "((=abs:\"Cyclone Global Navigation Satellite System\" OR (abs:CYGNSS AND (abs:satellite OR abs:GNSS OR abs:reflectometry OR abs:wind OR abs:soil OR abs:ocean OR abs:surface OR abs:data OR abs:retrieval OR abs:observations OR abs:cyclone OR abs:land OR abs:simulator OR abs:constellation OR abs:flood)) OR ((=abs:\"Delay Doppler Mapping Instrument\" OR abs:DDMI) AND (abs:CYGNSS OR abs:GNSS OR abs:reflectometry))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2017-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Cyclone+Global+Navigation+Satellite+System%22+OR+%28abs%3ACYGNSS+AND+%28abs%3Asatellite+OR+abs%3AGNSS+OR+abs%3Areflectometry+OR+abs%3Awind+OR+abs%3Asoil+OR+abs%3Aocean+OR+abs%3Asurface+OR+abs%3Adata+OR+abs%3Aretrieval+OR+abs%3Aobservations+OR+abs%3Acyclone+OR+abs%3Aland+OR+abs%3Asimulator+OR+abs%3Aconstellation+OR+abs%3Aflood%29%29+OR+%28%28%3Dabs%3A%22Delay+Doppler+Mapping+Instrument%22+OR+abs%3ADDMI%29+AND+%28abs%3ACYGNSS+OR+abs%3AGNSS+OR+abs%3Areflectometry%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2017-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:25:49.659333+00:00",
+    "fetchedAt": "2026-09-30T18:04:01.244434+00:00",
     "reconciliation": {
       "adsReturned": 484,
       "curatedOut": 1,
@@ -322,6 +351,8 @@
       "bibcode": "2018GeoRL..45.4049C",
       "title": "Soil Moisture Sensing Using Spaceborne GNSS Reflections: Comparison of CYGNSS Reflectivity to SMAP Soil Moisture",
       "firstAuthor": "Chew, C. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 273
     },
@@ -329,6 +360,8 @@
       "bibcode": "2019IJSTA..12.2227C",
       "title": "Analysis of CYGNSS Data for Soil Moisture Retrieval",
       "firstAuthor": "Clarizia, Maria Paola",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 209
     },
@@ -336,6 +369,8 @@
       "bibcode": "2018NatSR...8.8782R",
       "title": "A New Paradigm in Earth Environmental Monitoring with the CYGNSS Small Satellite Constellation",
       "firstAuthor": "Ruf, Christopher S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 195
     },
@@ -343,6 +378,8 @@
       "bibcode": "2019ITGRS..57.4322A",
       "title": "Time-Series Retrieval of Soil Moisture Using CYGNSS",
       "firstAuthor": "Al-Khaldi, Mohammad M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 182
     },
@@ -350,6 +387,8 @@
       "bibcode": "2018GeoRL..45.8272K",
       "title": "Use of Cyclone Global Navigation Satellite System (CyGNSS) Observations for Estimation of Soil Moisture",
       "firstAuthor": "Kim, Hyunglok",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 172
     },
@@ -357,6 +396,8 @@
       "bibcode": "2019RemS...11.2272E",
       "title": "High Spatio-Temporal Resolution CYGNSS Soil Moisture Estimates Using Artificial Neural Networks",
       "firstAuthor": "Eroglu, Orhan",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 148
     },
@@ -364,6 +405,8 @@
       "bibcode": "2019IJSTA..12...66R",
       "title": "Development of the CYGNSS Geophysical Model Function for Wind Speed",
       "firstAuthor": "Ruf, Christopher S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 142
     },
@@ -371,6 +414,8 @@
       "bibcode": "2020RSEnv.24711944Y",
       "title": "Pan-tropical soil moisture mapping based on a three-layer model from CYGNSS GNSS-R data",
       "firstAuthor": "Yan, Qingyun",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 132
     },
@@ -378,6 +423,8 @@
       "bibcode": "2020RemS...12.1558C",
       "title": "Description of the UCAR/CU Soil Moisture Product",
       "firstAuthor": "Chew, Clara",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 132
     },
@@ -385,6 +432,8 @@
       "bibcode": "2020ITGRS..58..238L",
       "title": "Assessment of Spaceborne GNSS-R Ocean Altimetry Performance Using CYGNSS Mission Raw Data",
       "firstAuthor": "Li, Weiqiang",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 124
     },
@@ -392,6 +441,8 @@
       "bibcode": "2018NatSR...8.9336C",
       "title": "CYGNSS data map flood inundation during the 2017 Atlantic hurricane season",
       "firstAuthor": "Chew, Clara",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 118
     },
@@ -399,6 +450,8 @@
       "bibcode": "2019IJSTA..12...87R",
       "title": "Assessment of CYGNSS Wind Speed Retrieval Uncertainty",
       "firstAuthor": "Ruf, Christopher S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 107
     },
@@ -406,6 +459,8 @@
       "bibcode": "2020RemS...12.1168S",
       "title": "Machine Learning-Based CYGNSS Soil Moisture Estimates over ISMN sites in CONUS",
       "firstAuthor": "Senyurek, Volkan",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 104
     },
@@ -413,6 +468,8 @@
       "bibcode": "2019BAMS..100.2009R",
       "title": "In-Orbit Performance of the Constellation of CYGNSS Hurricane Satellites",
       "firstAuthor": "Ruf, Christopher",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 99
     },
@@ -420,6 +477,8 @@
       "bibcode": "2019IJSTA..12...37G",
       "title": "The CYGNSS Level 1 Calibration Algorithm and Error Analysis Based on On-Orbit Measurements",
       "firstAuthor": "Gleason, Scott",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 99
     },
@@ -427,6 +486,8 @@
       "bibcode": "2020RemS...12.1368C",
       "title": "Above-Ground Biomass Retrieval over Tropical Forests: A Novel GNSS-R Approach with CyGNSS",
       "firstAuthor": "Carreno-Luengo, Hugo",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 85
     },
@@ -434,6 +495,8 @@
       "bibcode": "2022ITGRS..6035989Y",
       "title": "A Semiempirical Modeling of Soil Moisture, Vegetation, and Surface Roughness Impact on CYGNSS Reflectometry Data",
       "firstAuthor": "Yueh, Simon H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 80
     },
@@ -441,6 +504,8 @@
       "bibcode": "2019RSEnv.23311417M",
       "title": "A novel approach to monitoring wetland dynamics using CYGNSS: Everglades case study",
       "firstAuthor": "Morris, Mary",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 79
     },
@@ -448,6 +513,8 @@
       "bibcode": "2018GeoRL..4513332L",
       "title": "Lake Level and Surface Topography Measured With Spaceborne GNSS-Reflectometry From CYGNSS Mission: Example for the Lake Qinghai",
       "firstAuthor": "Li, Weiqiang",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 77
     },
@@ -455,6 +522,8 @@
       "bibcode": "2019ITGRS..57.9756L",
       "title": "Application of Neural Network to GNSS-R Wind Speed Retrieval",
       "firstAuthor": "Liu, Yunxiang",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 77
     }

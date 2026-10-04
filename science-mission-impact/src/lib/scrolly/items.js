@@ -73,16 +73,6 @@ export function perDollarItems(tiles, layout) {
 	return items;
 }
 
-export function lanesItems(tiles, layout, { scope }) {
-	const items = new Map();
-	for (const t of tiles) {
-		const p = layout.pos.get(t.id);
-		if (!p) continue;
-		items.set(t.id, { ...p, variant: t.first[scope].state });
-	}
-	return items;
-}
-
 /** Paper kinds: every placed mission solid; the strip of missions without papers dimmed. */
 export function kindsItems(tiles, layout) {
 	const empty = new Set(layout.strip?.ids ?? []);

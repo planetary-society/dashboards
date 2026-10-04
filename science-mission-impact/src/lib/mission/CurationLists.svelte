@@ -1,8 +1,7 @@
 <script>
 	// Papers a person or an agent added to, or removed from, what the query returned.
-	// Both lists are collapsed: they are provenance, not reading.
 	import { adsAbstract } from '$lib/paths.js';
-	import { int, longDate } from '$lib/format.js';
+	import { int } from '$lib/format.js';
 
 	let { curation } = $props();
 
@@ -14,33 +13,33 @@
 	let showAll = $state({ includes: false, excludes: false });
 
 	const href = (item) => (item.bibcode ? adsAbstract(item.bibcode) : item.doi ? `https://doi.org/${item.doi}` : null);
-	const reviewer = (item) => (item.authority === 'agent' ? 'AI-assisted review' : 'Reviewed by hand');
+	const reviewer = (item) => (item.authority === 'agent' ? ['🤖', 'AI-assisted review'] : ['👨', 'Reviewed by hand']);
 </script>
 
 {#snippet list(key, heading, items)}
 	{@const shown = showAll[key] ? items : items.slice(0, PAGE)}
-	<details>
-		<summary>{heading} ({int(items.length)})</summary>
-		<ol>
-			{#each shown as item, i (item.bibcode ?? item.doi ?? `${key}-${i}`)}
-				{@const url = href(item)}
-				<li>
-					{#if url && item.title}
-						<a class="title" href={url} target="_blank" rel="noopener">{item.title}</a>
-					{:else}
-						<!-- an untitled record is named as such; its identifier is the link -->
-						<span class="title plain">{item.title || 'Untitled'}</span>
-						{#if url}<a class="id" href={url} target="_blank" rel="noopener">{item.bibcode ?? item.doi}</a>{/if}
-					{/if}
-					{#if item.reason}<span class="reason">{item.reason}</span>{/if}
-					<span class="meta">{reviewer(item)}{item.date ? `, ${longDate(item.date)}` : ''}</span>
-				</li>
-			{/each}
-		</ol>
-		{#if !showAll[key] && items.length > PAGE}
-			<button type="button" onclick={() => (showAll = { ...showAll, [key]: true })}>Show all {int(items.length)}</button>
-		{/if}
-	</details>
+	<h3 class="chart-title sub">{heading} <span class="meta">({int(items.length)})</span></h3>
+	<ol>
+		{#each shown as item, i (item.bibcode ?? item.doi ?? `${key}-${i}`)}
+			{@const url = href(item)}
+			{@const [emoji, who] = reviewer(item)}
+			<li>
+				{#if url && item.title}
+					<a class="title" href={url} target="_blank" rel="noopener">{item.title}</a>
+				{:else if url}
+					<!-- an untitled record is known by its identifier -->
+					<a class="title id" href={url} target="_blank" rel="noopener">{item.bibcode ?? item.doi}</a>
+				{:else if item.title}
+					<span class="title plain">{item.title}</span>
+				{/if}
+				{#if item.reason}<span class="reason">{item.reason}</span>{/if}
+				<span class="meta">Decision <span role="img" aria-label={who}>{emoji}</span></span>
+			</li>
+		{/each}
+	</ol>
+	{#if !showAll[key] && items.length > PAGE}
+		<button type="button" onclick={() => (showAll = { ...showAll, [key]: true })}>Show all {int(items.length)}</button>
+	{/if}
 {/snippet}
 
 {#if includes.length || excludes.length}
@@ -56,20 +55,11 @@
 
 <style>
 	.curation {
-		margin-top: 20px;
 		max-width: 92ch;
 	}
 
-	summary {
-		display: flex;
-		align-items: center;
-		min-height: 44px;
-		color: var(--neptune-mid);
-		cursor: pointer;
-	}
-
-	summary:hover {
-		color: var(--white);
+	.sub {
+		margin-top: 40px;
 	}
 
 	ol {
@@ -89,12 +79,8 @@
 		overflow-wrap: anywhere;
 	}
 
-	/* a bibcode or DOI has nothing to break on */
 	.id {
-		display: block;
-		font-size: 12px;
 		color: var(--neptune-mid);
-		overflow-wrap: anywhere;
 	}
 
 	.title.plain {
@@ -112,7 +98,7 @@
 		color: var(--dust);
 	}
 
-	.meta {
+	li .meta {
 		display: block;
 		margin-top: 2px;
 	}

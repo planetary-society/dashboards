@@ -21,11 +21,14 @@
   "indices": {
     "h": 55,
     "m": 1.833,
-    "i100": 25
+    "i100": 25,
+    "g": 90,
+    "tori": 72.993,
+    "riq": 284
   },
   "facts": {
     "papers": 154,
-    "citations": 8735,
+    "citations": 8739,
     "publicationYears": [
       1997,
       2026
@@ -126,13 +129,13 @@
       279,
       243,
       230,
-      161
+      165
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 8735,
-      "observed": 8735,
+      "expected": 8739,
+      "observed": 8739,
       "missing": 0
     }
   },
@@ -184,52 +187,59 @@
     "bibcode": "1997Sci...278.1752S",
     "title": "The Mars Pathfinder Atmospheric Structure Investigation/Meteorology",
     "firstAuthor": "Schofield, J. T.",
+    "authors": [
+      "Schofield, J. T.",
+      "Barnes, J. R.",
+      "Crisp, D.",
+      "Haberle, R. M."
+    ],
+    "authorCount": 9,
     "year": 1997,
     "citations": 367
   },
   "ranks": {
     "full": {
       "bins": [
-        8.26,
+        8.267,
         3.488,
-        2.51,
-        3.692,
-        7.122,
+        2.532,
+        3.67,
+        7.121,
         2.573,
-        5.353,
+        5.349,
         7,
-        6.066,
-        10.934
+        6.083,
+        10.917
       ],
       "top1": 1
     },
     "window": {
       "bins": [
-        6.321,
-        4.404,
-        4.323,
-        4.523,
-        5.518,
-        5.227,
+        6.338,
+        4.401,
+        4.327,
+        4.558,
+        5.473,
+        5.234,
         7.003,
-        3.62,
-        5.06,
+        3.615,
+        5.052,
         8
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        12.836,
-        5.862,
-        9.74,
-        7.091,
-        17.799,
-        12.023,
-        10.447,
-        22.583,
-        24.601,
-        31.019
+        12.754,
+        5.89,
+        9.441,
+        7.404,
+        17.756,
+        12.076,
+        10.36,
+        22.32,
+        24.933,
+        31.067
       ],
       "top1": 1
     }
@@ -257,6 +267,13 @@
       "status": "available",
       "months": 26,
       "citationBuckets": 6
+    },
+    "spread": {
+      "mean": 18.947,
+      "median": 12,
+      "uncited": 7,
+      "i10": 31,
+      "i100": 1
     }
   },
   "window": {
@@ -264,7 +281,7 @@
     "outputBasis": "measured",
     "citations": 1055,
     "top10": 11,
-    "top10ShareOfDivision": 0.02277,
+    "top10ShareOfDivision": 0.02278,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -282,12 +299,19 @@
       "status": "available",
       "months": 25,
       "citationBuckets": 6
+    },
+    "spread": {
+      "mean": 19.537,
+      "median": 12,
+      "uncited": 5,
+      "i10": 30,
+      "i100": 1
     }
   },
   "lifetime": {
     "papers": 154,
     "outputBasis": "measured",
-    "citations": 8735,
+    "citations": 8739,
     "top10": 12.167,
     "top10ShareOfDivision": 0.00893,
     "top1": null,
@@ -298,13 +322,20 @@
       "yearsFromFormulation": 4.167,
       "bibcode": "1997Sci...278.1743G",
       "date": "1997-12-00"
+    },
+    "spread": {
+      "mean": 56.747,
+      "median": 36,
+      "uncited": 10,
+      "i10": 121,
+      "i100": 25
     }
   },
   "query": {
     "arms": "((=abs:\"Mars Pathfinder\" OR ((=abs:Sojourner OR =abs:\"Pathfinder rover\" OR =abs:\"Pathfinder microrover\" OR =abs:\"Imager for Pathfinder\") AND abs:Mars)) AND NOT =title:(navigation OR \"orbit determination\" OR heatshield OR \"heat shield\" OR airbag OR aeroheating OR \"gas dynamics\" OR aerothermodynamics OR \"entry vehicles\" OR \"flow field\" OR \"thermal analysis\" OR thermochemical OR dsmc OR \"solar power\" OR \"radioisotope power\" OR \"radioactive sources\" OR \"alpha sources\" OR electronics OR \"force balances\" OR \"chromatic calibration\" OR \"lander cameras\" OR NetLander OR \"Surface Stereo Imager\" OR \"Mars Polar Lander\" OR \"parachute drag\" OR \"entry descent and landing scenario\" OR \"entry descent and landing systems\" OR \"ascent propulsion\" OR \"mission proposal\" OR management OR \"project manager\" OR \"media coverage\" OR \"manage to budget\" OR \"robotic exploration program\" OR \"Mars exploration rover project\" OR \"Mars exploration rover mission\" OR \"lunar base\" OR communications OR \"heat flux\" OR \"flow properties\" OR \"laminar turbulent\" OR \"design approach\" OR \"interaction framework\" OR pseudolite OR localization OR \"motion planning\" OR educator OR \"limited by cost\" OR \"Discovery Program\" OR \"angular rates\" OR Goldstone OR \"superpressure balloon\" OR \"Mars Pathfinder vehicle\" OR proceedings) AND NOT (=title:instruments AND =title:\"Magnetic Properties\") AND NOT (=title:\"solar cells\" AND =title:performance) AND NOT =abs:bibliometric)",
     "filters": "property:refereed AND doctype:article AND pubdate:[1997-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Pathfinder%22+OR+%28%28%3Dabs%3ASojourner+OR+%3Dabs%3A%22Pathfinder+rover%22+OR+%3Dabs%3A%22Pathfinder+microrover%22+OR+%3Dabs%3A%22Imager+for+Pathfinder%22%29+AND+abs%3AMars%29%29+AND+NOT+%3Dtitle%3A%28navigation+OR+%22orbit+determination%22+OR+heatshield+OR+%22heat+shield%22+OR+airbag+OR+aeroheating+OR+%22gas+dynamics%22+OR+aerothermodynamics+OR+%22entry+vehicles%22+OR+%22flow+field%22+OR+%22thermal+analysis%22+OR+thermochemical+OR+dsmc+OR+%22solar+power%22+OR+%22radioisotope+power%22+OR+%22radioactive+sources%22+OR+%22alpha+sources%22+OR+electronics+OR+%22force+balances%22+OR+%22chromatic+calibration%22+OR+%22lander+cameras%22+OR+NetLander+OR+%22Surface+Stereo+Imager%22+OR+%22Mars+Polar+Lander%22+OR+%22parachute+drag%22+OR+%22entry+descent+and+landing+scenario%22+OR+%22entry+descent+and+landing+systems%22+OR+%22ascent+propulsion%22+OR+%22mission+proposal%22+OR+management+OR+%22project+manager%22+OR+%22media+coverage%22+OR+%22manage+to+budget%22+OR+%22robotic+exploration+program%22+OR+%22Mars+exploration+rover+project%22+OR+%22Mars+exploration+rover+mission%22+OR+%22lunar+base%22+OR+communications+OR+%22heat+flux%22+OR+%22flow+properties%22+OR+%22laminar+turbulent%22+OR+%22design+approach%22+OR+%22interaction+framework%22+OR+pseudolite+OR+localization+OR+%22motion+planning%22+OR+educator+OR+%22limited+by+cost%22+OR+%22Discovery+Program%22+OR+%22angular+rates%22+OR+Goldstone+OR+%22superpressure+balloon%22+OR+%22Mars+Pathfinder+vehicle%22+OR+proceedings%29+AND+NOT+%28%3Dtitle%3Ainstruments+AND+%3Dtitle%3A%22Magnetic+Properties%22%29+AND+NOT+%28%3Dtitle%3A%22solar+cells%22+AND+%3Dtitle%3Aperformance%29+AND+NOT+%3Dabs%3Abibliometric%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1997-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:26:01.829084+00:00",
+    "fetchedAt": "2026-09-30T17:49:35.766283+00:00",
     "reconciliation": {
       "adsReturned": 161,
       "curatedOut": 9,
@@ -430,6 +461,8 @@
       "bibcode": "1997Sci...278.1752S",
       "title": "The Mars Pathfinder Atmospheric Structure Investigation/Meteorology",
       "firstAuthor": "Schofield, J. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 1997,
       "citations": 367
     },
@@ -437,6 +470,8 @@
       "bibcode": "1999JGR...104.8987T",
       "title": "Properties of dust in the Martian atmosphere from the Imager on Mars Pathfinder",
       "firstAuthor": "Tomasko, M. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 280
     },
@@ -444,6 +479,8 @@
       "bibcode": "2006Icar..182...23K",
       "title": "A global solution for the Mars static and seasonal gravity, Mars orientation, Phobos and Deimos masses, and Mars ephemeris",
       "firstAuthor": "Konopliv, Alex S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 269
     },
@@ -451,6 +488,8 @@
       "bibcode": "2000JGR...105.1757M",
       "title": "Mineralogy, composition, and alteration of Mars Pathfinder rocks and soils: Evidence from multispectral, elemental, and magnetic data on terrestrial analogue, SNC meteorite, and Pathfinder samples",
       "firstAuthor": "Morris, Richard V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 267
     },
@@ -458,6 +497,8 @@
       "bibcode": "1997Sci...278.1749F",
       "title": "Interior Structure and Seasonal Mass Redistribution of Mars from Radio Tracking of Mars Pathfinder",
       "firstAuthor": "Folkner, W. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 1997,
       "citations": 255
     },
@@ -465,6 +506,8 @@
       "bibcode": "1997Sci...278.1758S",
       "title": "Results from the Mars Pathfinder Camera",
       "firstAuthor": "Smith, P. H.",
+      "authors": null,
+      "authorCount": null,
       "year": 1997,
       "citations": 253
     },
@@ -472,6 +515,8 @@
       "bibcode": "2000JGR...105.1721B",
       "title": "Mineralogic and compositional properties of Martian soil and dust: Results from Mars Pathfinder",
       "firstAuthor": "Bell, J. F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 226
     },
@@ -479,6 +524,8 @@
       "bibcode": "1999JGR...104.8679M",
       "title": "Chemical, multispectral, and textural constraints on the composition and origin of rocks at the Mars Pathfinder landing site",
       "firstAuthor": "McSween, H. Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 222
     },
@@ -486,6 +533,8 @@
       "bibcode": "1999JGR...104.8957H",
       "title": "General circulation model simulations of the Mars Pathfinder atmospheric structure investigation/meteorology data",
       "firstAuthor": "Haberle, Robert M.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 205
     },
@@ -493,6 +542,8 @@
       "bibcode": "2004JGRE..109.5003T",
       "title": "Acid-sulfate weathering of synthetic Martian basalt: The acid fog model revisited",
       "firstAuthor": "Tosca, Nicholas J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 191
     },
@@ -500,13 +551,17 @@
       "bibcode": "1997Sci...278.1743G",
       "title": "Overview of the Mars Pathfinder Mission and Assessment of Landing Site Predictions",
       "firstAuthor": "Golombek, M. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 1997,
-      "citations": 185
+      "citations": 186
     },
     {
       "bibcode": "2001Icar..151..228R",
       "title": "The Mars Regional Atmospheric Modeling System: Model Description and Selected Simulations",
       "firstAuthor": "Rafkin, Scot C. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 185
     },
@@ -514,6 +569,8 @@
       "bibcode": "2000JGR...105.1841G",
       "title": "Erosion rates on Mars and implications for climate change: Constraints from the Pathfinder landing site",
       "firstAuthor": "Golombek, M. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 167
     },
@@ -521,6 +578,8 @@
       "bibcode": "1999GeoRL..26.2781M",
       "title": "Dust devil vortices seen by the Mars Pathfinder Camera",
       "firstAuthor": "Metzger, Stephen M.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 158
     },
@@ -528,6 +587,8 @@
       "bibcode": "1999JGR...104.8729M",
       "title": "Soil-like deposits observed by Sojourner, the Pathfinder rover",
       "firstAuthor": "Moore, Henry J.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 126
     },
@@ -535,6 +596,8 @@
       "bibcode": "1999JGR...104.8943M",
       "title": "Results of the Mars Pathfinder atmospheric structure investigation",
       "firstAuthor": "Magalhães, Julio A.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 126
     },
@@ -542,6 +605,8 @@
       "bibcode": "1997Sci...278.1765M",
       "title": "Characterization of the Martian surface deposits by the Mars Pathfinder rover, Sojourner.",
       "firstAuthor": "Matijevic, J. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 1997,
       "citations": 122
     },
@@ -549,6 +614,8 @@
       "bibcode": "2000GeCoA..64.2155M",
       "title": "Mixing relationships in the Martian regolith and the composition of globally homogeneous dust",
       "firstAuthor": "McSween, Harry Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 122
     },
@@ -556,6 +623,8 @@
       "bibcode": "1999JGR...104.8975S",
       "title": "Opacity of the Martian atmosphere measured by the Imager for Mars Pathfinder",
       "firstAuthor": "Smith, Peter H.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 121
     },
@@ -563,6 +632,8 @@
       "bibcode": "2003JGRE..108.5135M",
       "title": "Constraints on the composition and petrogenesis of the Martian crust",
       "firstAuthor": "McSween, Harry Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 111
     }

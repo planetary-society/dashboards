@@ -80,7 +80,7 @@ const comparison = {
 test('ComparisonLabels prerenders one bar pair per division either side of the threshold, on one shared ruler', async () => {
 	const Component = await load('ComparisonLabels.svelte');
 	const { body } = render(Component, { props: { comparison, referenceCost: 150, visible: true } });
-	for (const t of ['Top-10% papers per mission', '$150M or less', 'Over $150M']) assert.ok(body.includes(t), t);
+	for (const t of ['Average number of top-10% papers contributed by a mission', '$150M or less', 'Over $150M']) assert.ok(body.includes(t), t);
 	for (const [name, under, over] of [
 		['Astrophysics', '0.2', '262'],
 		['Earth Science', '0.1', '137'],
@@ -90,18 +90,17 @@ test('ComparisonLabels prerenders one bar pair per division either side of the t
 		assert.match(body, new RegExp(`>${under}<[^]*?>${over}<[^]*?>${name}<`), `${name}: ${under} against ${over}`);
 	}
 	assert.ok(!body.includes('>3.6<') && !body.includes('>128<'), 'not the equal-weight averages');
-	for (const t of ['6 and 19 missions', '1 and 0 failed', '5 and 30 missions', '2 and 4 failed']) assert.ok(body.includes(t), t);
+	assert.ok(!body.includes(' missions<') && !body.includes(' failed'), 'no mission or failure counts under the bars');
 	assert.equal((body.match(/height: max\(2px, 100%\)/g) ?? []).length, 1, 'only the tallest bar of all four fills its plot');
 	assert.match(body, /class="bars[^"]*\bvisible\b/);
 	clean(body);
 });
 
-test('ComparisonLabels shows a dash, not NaN, for a side with no missions, and drops the meta line on a phone', async () => {
+test('ComparisonLabels shows a dash, not NaN, for a side with no missions', async () => {
 	const Component = await load('ComparisonLabels.svelte');
 	const empty = { ...comparison, byDivision: [{ ...comparison.byDivision[0], under: side(0, 0, 0, 0) }, comparison.byDivision[1]] };
 	const { body } = render(Component, { props: { layout: { blocks: [] }, comparison: empty, referenceCost: 150, compact: true } });
 	assert.match(body, />—</);
-	assert.ok(!body.includes('missions'), 'no meta line on a phone');
 	assert.equal((body.match(/height: max\(2px, 0%\)/g) ?? []).length, 4, 'hidden bars sit at their 2px floor');
 	clean(body);
 });
@@ -111,10 +110,9 @@ test('ComparisonLabels shows a dash, not NaN, for a side with no missions, and d
 const years = scaleLinear().domain([1980, 2021]).range([64, 828]);
 const skyline = {
 	columns: [
-		{ id: 'hubble', x: 300, y: 80, w: 2, h: 400, papers: 16885 },
-		{ id: 'cubesat', x: 800, y: 470, w: 2, h: 10, papers: 12 }
+		{ id: 'hubble', name: 'Hubble', x: 300, y: 80, w: 2, h: 400, papers: 16885 },
+		{ id: 'cubesat', name: 'CubeSat', x: 800, y: 470, w: 2, h: 10, papers: 12 }
 	],
-	labels: [{ id: 'hubble', name: 'Hubble', papers: 16885, x: 301, y: 76, anchor: 'middle', box: { x: 250, w: 100 }, leader: null }],
 	ground: 480,
 	top: 28,
 	left: 64,
@@ -123,14 +121,23 @@ const skyline = {
 	lineH: 15
 };
 
-test('Skyline prerenders the columns, the largest names, the year ticks and the running total', async () => {
+test('Skyline prerenders the columns, the year ticks and the running total, and no names', async () => {
 	const Component = await load('Skyline.svelte');
 	const { body } = render(Component, { props: { layout: skyline, total: 146165, rise: 1, ...stage } });
 	assert.ok(body.includes('>146,165<'), 'the full total once risen');
-	assert.ok(body.includes('Hubble 16,885'));
+	assert.ok(!body.includes('Hubble'), 'no name until the reader points');
 	assert.equal((body.match(/<rect /g) ?? []).length, 2, 'one column per mission');
 	for (const t of ['1980', '2000', '2020']) assert.ok(body.includes(`>${t}<`), t);
 	assert.match(body, /class="skyline[^"]*\bvisible\b/);
+	clean(body);
+});
+
+test('Skyline names and lights only the highlighted column', async () => {
+	const Component = await load('Skyline.svelte');
+	const { body } = render(Component, { props: { layout: skyline, total: 146165, rise: 1, highlight: 'hubble', ...stage } });
+	assert.ok(body.includes('Hubble 16,885'));
+	assert.ok(!body.includes('CubeSat'));
+	assert.equal((body.match(/class="[^"]*\bhot\b/g) ?? []).length, 1, 'one column in flame');
 	clean(body);
 });
 
@@ -231,35 +238,6 @@ test('ClpsChart end-label blocks never touch, on a phone or not', async () => {
 		assert.equal(blocks.length, 3);
 		for (let i = 1; i < blocks.length; i++) assert.ok(blocks[i].top - blocks[i - 1].last >= apart - 1e-9, `compact=${compact}: block ${i} clears the one above`);
 	}
-});
-
-// --- ProjectTimeAxis ------------------------------------------------------------------------
-
-const y = scaleLinear().domain([0, 15]).range([38, 540]);
-const time = { pos: new Map(), x, y, left: 96, top: 28, neverTop: 564, never: 9, reached: 26, ticks: [0, 5, 10, 15] };
-
-test('ProjectTimeAxis prerenders the project-start line, the year rules and the never lane', async () => {
-	const Component = await load('ProjectTimeAxis.svelte');
-	const { body } = render(Component, { props: { layout: time, ticks: costTicks, referenceCost, ...stage } });
-	assert.ok(body.includes('Project start'));
-	for (const t of ['5 yr', '10 yr', '15 yr']) assert.ok(body.includes(t), t);
-	assert.ok(body.includes('No top-10% paper: 9'));
-	for (const t of ['$10M', '$100M', '$1B', '$10B']) assert.ok(body.includes(`>${t}<`), t);
-	assert.match(body, /class="cost\b[^"]*\breference-tick\b[^>]*>\$100M</, 'the reference cost is the marked tick');
-	assert.match(body, /class="reference[ "]/, 'the reference line is drawn inside the axis');
-	assert.match(body, /class="rule\b[^"]*\bzero\b[^>]*y1="38"/, 'the project-start rule');
-	assert.match(body, /class="rule\b[^"]*\bnever\b[^>]*y1="564"/, 'the never-lane rule');
-	clean(body);
-});
-
-test('ProjectTimeAxis on a phone: a short start label inside the plot', async () => {
-	const Component = await load('ProjectTimeAxis.svelte');
-	const { body } = render(Component, { props: { layout: { ...time, left: 0, never: 0 }, ticks: costTicks, referenceCost, ...stage, compact: true } });
-	assert.match(body, />Start</);
-	assert.ok(!body.includes('Project start'));
-	assert.match(body, /class="tick\b[^"]*\binside\b[^>]*>Start</, 'the year labels sit inside the plot');
-	assert.ok(body.includes('No top-10% paper: 0'));
-	clean(body);
 });
 
 // --- PerDollarAxis --------------------------------------------------------------------------
@@ -441,6 +419,18 @@ test('Waffle prerenders one box per unit, the threshold missions first in blue, 
 	assert.ok(Math.abs(h - layout.size * 0.29) < 1e-9 && Math.abs(y + h - (cells[13][2] + layout.size)) < 1e-9, 'filled 29% from the bottom');
 	for (const t of ['Missions at $150M or less', 'All other missions', '1 box = 100 mission papers']) assert.ok(body.includes(t), t);
 	assert.match(body, /class="waffle[^"]*\bvisible\b/);
+	clean(body);
+});
+
+test('Waffle before the highlight: every box grey, no ring, one legend swatch for all missions', async () => {
+	const Component = await load('Waffle.svelte');
+	const layout = waffleLayout(135129, 1329, 704, 666, { top: 96 });
+	const { body } = render(Component, { props: { layout, referenceCost: 150, highlight: false, visible: true, width: 704, height: 666 } });
+	const rects = [...body.matchAll(/<rect class="(on|off)\b/g)].map(([, c]) => c);
+	assert.equal(rects.length, layout.cells, 'no partial fill');
+	assert.ok(rects.every((c) => c === 'off'), 'all grey');
+	assert.doesNotMatch(body, /class="ring[^"]*\bdone\b/);
+	assert.ok(body.includes('All missions') && !body.includes('Missions at $150M or less'));
 	clean(body);
 });
 

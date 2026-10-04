@@ -2,7 +2,7 @@
 	// One small bar chart per rankable division (comparison.byDivision): top-10% papers per mission
 	// either side of the threshold, failures counted as zero, every bar on one linear ruler from
 	// zero shared across the panels. No squares behind them; the numbers live in the steps.
-	import { int, money, weight } from '$lib/format.js';
+	import { money, weight } from '$lib/format.js';
 
 	/** comparison: StoryFacts.comparison. referenceCost: the threshold ($M, inclusive below). */
 	let { comparison, referenceCost, visible = false, compact = false } = $props();
@@ -12,10 +12,10 @@
 	const sides = ['under', 'over'];
 </script>
 
-<!-- a 2×2 grid of equal cells; every panel carries the same text under its plot, so all four plots, and the ruler, match -->
+<!-- a 2×2 grid of equal cells; every panel carries the same name under its plot, so all four plots, and the ruler, match -->
 <div class="bars" class:visible class:compact aria-hidden="true">
 	<div class="head">
-		<span class="heading">Top-10% papers per mission</span>
+		<span class="heading">Average number of top-10% papers contributed by a mission</span>
 		<span class="legend"><span><i class="under"></i>{money(referenceCost)} or less</span> <span><i class="over"></i>Over {money(referenceCost)}</span></span>
 	</div>
 	{#each divisions as d (d.division)}
@@ -28,9 +28,6 @@
 				{/each}
 			</div>
 			<span class="name">{d.name}</span>
-			{#if !compact}
-				<span class="meta">{int(d.under.missions)} and {int(d.over.missions)} missions<br />{int(d.under.failed)} and {int(d.over.failed)} failed</span>
-			{/if}
 		</div>
 	{/each}
 </div>
@@ -45,7 +42,7 @@
 		column-gap: clamp(12px, 3vw, 40px);
 		/* taller than any value label (18px + 6px), so a full-height bottom-row bar still clears the names above */
 		row-gap: 40px;
-		/* heading and legend end at 66px; the tallest bar's value label (18px + 6px) starts at 96px */
+		/* heading and legend end at 70px; the tallest bar's value label (18px + 6px) starts at 96px */
 		padding-top: 120px;
 		text-align: center;
 		opacity: 0;
@@ -56,7 +53,7 @@
 	.bars.compact {
 		/* taller than a value label (12px + 4px) */
 		row-gap: 28px;
-		/* heading and legend end at 44px; the value label (12px + 4px) starts at 56px */
+		/* heading and legend end at 47px; the value label (12px + 4px) starts at 56px */
 		padding-top: 72px;
 	}
 
@@ -83,17 +80,17 @@
 
 	.legend {
 		display: flex;
-		gap: 16px;
-		font-size: 12px;
-		line-height: 18px;
+		gap: 20px;
+		font-size: 15px;
+		line-height: 22px;
 		color: var(--dust);
 	}
 
 	.legend i {
 		display: inline-block;
-		width: 10px;
-		height: 10px;
-		margin-right: 6px;
+		width: 13px;
+		height: 13px;
+		margin-right: 7px;
 	}
 
 	.panel {
@@ -117,12 +114,12 @@
 
 	.bar.under,
 	.legend .under {
-		background: var(--neptune);
+		background: var(--dust);
 	}
 
 	.bar.over,
 	.legend .over {
-		background: var(--dust);
+		background: var(--neptune);
 	}
 
 	.bar.under {
@@ -153,13 +150,6 @@
 		color: var(--dust);
 	}
 
-	.meta {
-		font-size: 12px;
-		line-height: 16px;
-		color: var(--soil);
-		white-space: nowrap;
-	}
-
 	.compact .head {
 		top: 12px;
 		gap: 2px;
@@ -171,14 +161,14 @@
 	}
 
 	.compact .legend {
-		gap: 12px;
-		font-size: 11px;
-		line-height: 14px;
+		gap: 14px;
+		font-size: 13px;
+		line-height: 17px;
 	}
 
 	.compact .legend i {
-		width: 8px;
-		height: 8px;
+		width: 10px;
+		height: 10px;
 		margin-right: 4px;
 	}
 

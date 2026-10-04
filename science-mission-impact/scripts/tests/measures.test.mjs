@@ -2,6 +2,8 @@ import { strict as assert } from 'node:assert';
 import { describe, it } from 'node:test';
 
 import {
+	buildCitationSpread,
+	buildDivisionScopeStats,
 	buildFirstTopPaper,
 	buildMissionScopeStats,
 	firstEraTop,
@@ -317,5 +319,66 @@ describe('divisionTotal', () => {
 		assert.equal(divisionTotal([measured, unavailable], (m) => missionTop1(m, 'window')), 2);
 		assert.equal(divisionTotal([measured, unavailable], (m) => missionTop10(m, 'full')), 14);
 		assert.equal(divisionTotal([measured, unavailable], (m) => missionTop1(m, 'full')), 3);
+	});
+});
+
+describe('buildCitationSpread', () => {
+	const thresholds = { by_name: { i10: { count: 2 }, i100: { count: 1 } } };
+	it('summarises a measured scope: weight()-rounded mean, row median, uncited, upstream i-counts', () => {
+		assert.deepEqual(buildCitationSpread({ citations: [0, 0, 12, 150], papers: 4, citationsTotal: 163, thresholds }), {
+			mean: 40.75,
+			median: 6,
+			uncited: 2,
+			i10: 2,
+			i100: 1
+		});
+		assert.equal(buildCitationSpread({ citations: [1, 2, 3], papers: 3, citationsTotal: 10, thresholds }).mean, 3.333);
+	});
+	it('reads a measured zero as zeros with no mean or median', () => {
+		const zero = { by_name: { i10: { count: 0 }, i100: { count: 0 } } };
+		assert.deepEqual(buildCitationSpread({ citations: [], papers: 0, citationsTotal: 0, thresholds: zero }), {
+			mean: null,
+			median: null,
+			uncited: 0,
+			i10: 0,
+			i100: 0
+		});
+	});
+	it('is null when the scope is unavailable (null is not zero)', () => {
+		assert.equal(buildCitationSpread({ citations: [], papers: null, citationsTotal: null, thresholds: null }), null);
+	});
+});
+
+describe('buildDivisionScopeStats', () => {
+	const scopeBlock = {
+		scope: 'full_mission',
+		division: 'Astrophysics',
+		pooled: { n: 10, total: 125, mean: 12.5004, median: 6, uncited: 2, h_index: 5, top_decile_hold: 0.4368422, cutoffs: { ks: [1, 10], cutoffs: [90, 40] } },
+		pooled_cutoffs: { top_k_distinct_counts: { 1: 1, 10: 2 } }
+	};
+
+	it('builds the full shape with rounding', () => {
+		assert.deepEqual(buildDivisionScopeStats({ summary: { missions: 3 }, scopeBlock, tierPercents: [1, 10] }), {
+			missions: 3,
+			papers: 10,
+			citations: 125,
+			mean: 12.5,
+			median: 6,
+			uncited: 2,
+			hIndex: 5,
+			topDecileCitationShare: 0.43684,
+			cutoffs: [
+				{ percent: 1, citations: 90, papers: 1 },
+				{ percent: 10, citations: 40, papers: 2 }
+			]
+		});
+	});
+
+	it('throws when a configured percent is missing', () => {
+		assert.throws(() => buildDivisionScopeStats({ summary: {}, scopeBlock, tierPercents: [1, 5] }), /Astrophysics \(full_mission\).*top 5%/);
+	});
+
+	it('is null without a pool', () => {
+		assert.equal(buildDivisionScopeStats({ summary: {}, scopeBlock: { scope: 'window' }, tierPercents: [1] }), null);
 	});
 });

@@ -21,11 +21,14 @@
   "indices": {
     "h": 61,
     "m": 5.545,
-    "i100": 27
+    "i100": 27,
+    "g": 99,
+    "tori": 37.62,
+    "riq": 511
   },
   "facts": {
-    "papers": 822,
-    "citations": 18250,
+    "papers": 821,
+    "citations": 18277,
     "publicationYears": [
       2016,
       2026
@@ -47,16 +50,16 @@
     ],
     "papers": [
       6,
-      95,
+      94,
       48,
       60,
-      89,
+      88,
       82,
       77,
       75,
       106,
       112,
-      72
+      73
     ],
     "citations": [
       4,
@@ -69,13 +72,13 @@
       2308,
       2816,
       3383,
-      2565
+      2592
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 18250,
-      "observed": 18250,
+      "expected": 18277,
+      "observed": 18277,
       "missing": 0
     }
   },
@@ -101,7 +104,7 @@
       9,
       9,
       6,
-      4,
+      3,
       17,
       0,
       5,
@@ -133,7 +136,7 @@
       6,
       5,
       6,
-      8,
+      7,
       7,
       16,
       8,
@@ -183,57 +186,64 @@
       1169,
       1083,
       615,
-      142
+      148
     ]
   },
   "mostCited": {
     "bibcode": "2021AJ....161..105P",
     "title": "The JPL Planetary and Lunar Ephemerides DE440 and DE441",
     "firstAuthor": "Park, Ryan S.",
+    "authors": [
+      "Park, Ryan S.",
+      "Folkner, William M.",
+      "Williams, James G.",
+      "Boggs, Dale H."
+    ],
+    "authorCount": 4,
     "year": 2021,
-    "citations": 480
+    "citations": 482
   },
   "ranks": {
     "full": {
       "bins": [
-        19.453,
-        38.286,
-        36.333,
-        37.147,
-        60.765,
-        67.896,
-        74.899,
-        69.211,
-        65.341,
-        61.669
+        17.5,
+        38.289,
+        34.692,
+        38.813,
+        60.716,
+        67.957,
+        74.831,
+        69.27,
+        65.351,
+        61.583
       ],
       "top1": 6
     },
     "window": {
       "bins": [
-        19.248,
-        41.418,
-        48.105,
-        54.944,
-        65.17,
-        71.282,
-        58.668,
-        59.865,
-        41.8,
-        38.5
+        17.363,
+        41.419,
+        48.273,
+        54.876,
+        65.088,
+        71.281,
+        58.024,
+        60.416,
+        41.785,
+        38.475
       ],
       "top1": 3
     },
     "lifetime": {
       "bins": [
-        111.357,
-        117.081,
-        111.279,
-        87.034,
-        99.903,
-        89.851,
-        78.157,
-        55.338,
+        108.985,
+        116.67,
+        112.279,
+        86.712,
+        100.844,
+        89.394,
+        77.689,
+        56.427,
         36,
         36
       ],
@@ -241,13 +251,13 @@
     }
   },
   "full": {
-    "papers": 531,
+    "papers": 529,
     "outputBasis": "measured",
-    "citations": 9057,
-    "top10": 73.05,
-    "top10ShareOfDivision": 0.06695,
+    "citations": 9064,
+    "top10": 73.058,
+    "top10ShareOfDivision": 0.06696,
     "top1": 6,
-    "top1ShareOfDivision": 0.05499,
+    "top1ShareOfDivision": 0.055,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.676,
@@ -263,16 +273,23 @@
       "status": "available",
       "months": 88,
       "citationBuckets": 11
+    },
+    "spread": {
+      "mean": 17.134,
+      "median": 11,
+      "uncited": 8,
+      "i10": 315,
+      "i100": 6
     }
   },
   "window": {
-    "papers": 499,
+    "papers": 497,
     "outputBasis": "measured",
-    "citations": 8661,
-    "top10": 48.05,
-    "top10ShareOfDivision": 0.09948,
+    "citations": 8667,
+    "top10": 47.95,
+    "top10ShareOfDivision": 0.09932,
     "top1": 3,
-    "top1ShareOfDivision": 0.06211,
+    "top1ShareOfDivision": 0.06214,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.676,
@@ -288,14 +305,21 @@
       "status": "available",
       "months": 83,
       "citationBuckets": 11
+    },
+    "spread": {
+      "mean": 17.439,
+      "median": 12,
+      "uncited": 8,
+      "i10": 297,
+      "i100": 6
     }
   },
   "lifetime": {
-    "papers": 822,
+    "papers": 821,
     "outputBasis": "measured",
-    "citations": 18250,
-    "top10": 77.783,
-    "top10ShareOfDivision": 0.05708,
+    "citations": 18277,
+    "top10": 78.058,
+    "top10ShareOfDivision": 0.05728,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -304,21 +328,28 @@
       "yearsFromFormulation": 10.749,
       "bibcode": "2016ApJ...819...72L",
       "date": "2016-03-00"
+    },
+    "spread": {
+      "mean": 22.262,
+      "median": 11,
+      "uncited": 82,
+      "i10": 441,
+      "i100": 27
     }
   },
   "query": {
     "arms": "((=abs:\"Juno mission\" OR =abs:\"Juno spacecraft\" OR =abs:\"Jupiter Near-polar Orbiter\" OR ((=abs:Juno OR abs:JIRAM OR =abs:JunoCam) AND (abs:Jupiter OR abs:Jovian OR abs:Io OR abs:Europa OR abs:Ganymede OR abs:Callisto OR abs:Thebe OR abs:Amalthea OR abs:Adrastea OR abs:Metis))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2016-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Juno+mission%22+OR+%3Dabs%3A%22Juno+spacecraft%22+OR+%3Dabs%3A%22Jupiter+Near-polar+Orbiter%22+OR+%28%28%3Dabs%3AJuno+OR+abs%3AJIRAM+OR+%3Dabs%3AJunoCam%29+AND+%28abs%3AJupiter+OR+abs%3AJovian+OR+abs%3AIo+OR+abs%3AEuropa+OR+abs%3AGanymede+OR+abs%3ACallisto+OR+abs%3AThebe+OR+abs%3AAmalthea+OR+abs%3AAdrastea+OR+abs%3AMetis%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2016-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:28:53.787355+00:00",
+    "fetchedAt": "2026-09-30T17:52:55.466154+00:00",
     "reconciliation": {
-      "adsReturned": 838,
-      "curatedOut": 17,
+      "adsReturned": 839,
+      "curatedOut": 19,
       "curatedIn": 2,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 1,
-      "final": 822
+      "final": 821
     }
   },
   "curation": {
@@ -341,6 +372,22 @@
       }
     ],
     "excludes": [
+      {
+        "bibcode": "2020JBAA..130..139R",
+        "doi": null,
+        "title": "Notes and News: Jupiter in 2019 Part II: Juno",
+        "reason": "This news report summarizes Jupiter observations without independent research.",
+        "authority": "human",
+        "date": "2026-10-03"
+      },
+      {
+        "bibcode": "2017Natur.550..437W",
+        "doi": "10.1038/nature.2017.22866",
+        "title": "Jupiter's stormy winds churn deep into the planet",
+        "reason": "This staff news article reports research findings without independent analysis.",
+        "authority": "human",
+        "date": "2026-10-03"
+      },
       {
         "bibcode": "2017SSRv..212..925L",
         "doi": "10.1007/s11214-017-0405-1",
@@ -524,20 +571,26 @@
       "bibcode": "2021AJ....161..105P",
       "title": "The JPL Planetary and Lunar Ephemerides DE440 and DE441",
       "firstAuthor": "Park, Ryan S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
-      "citations": 480
+      "citations": 482
     },
     {
       "bibcode": "2017SSRv..213....5B",
       "title": "The Juno Mission",
       "firstAuthor": "Bolton, S. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
-      "citations": 338
+      "citations": 339
     },
     {
       "bibcode": "2017GeoRL..44.4649W",
       "title": "Comparing Jupiter interior structure models to Juno gravity measurements and the role of a dilute core",
       "firstAuthor": "Wahl, S. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 333
     },
@@ -545,27 +598,35 @@
       "bibcode": "2017SSRv..213...39C",
       "title": "The Juno Magnetic Field Investigation",
       "firstAuthor": "Connerney, J. E. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
-      "citations": 323
+      "citations": 324
     },
     {
       "bibcode": "2018GeoRL..45.2590C",
       "title": "A New Model of Jupiter's Magnetic Field From Juno's First Nine Orbits",
       "firstAuthor": "Connerney, J. E. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
-      "citations": 304
+      "citations": 305
     },
     {
       "bibcode": "2017Sci...356..821B",
       "title": "Jupiter's interior and deep atmosphere: The initial pole-to-pole passes with the Juno spacecraft",
       "firstAuthor": "Bolton, S. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
-      "citations": 274
+      "citations": 275
     },
     {
       "bibcode": "2017SSRv..213..547M",
       "title": "The Jovian Auroral Distributions Experiment (JADE) on the Juno Mission to Jupiter",
       "firstAuthor": "McComas, D. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 269
     },
@@ -573,6 +634,8 @@
       "bibcode": "2017MNRAS.469.3994B",
       "title": "Chemical enrichment of giant planets and discs due to pebble drift",
       "firstAuthor": "Booth, Richard A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 233
     },
@@ -580,6 +643,8 @@
       "bibcode": "2018Natur.555..223K",
       "title": "Jupiter’s atmospheric jet streams extend thousands of kilometres deep",
       "firstAuthor": "Kaspi, Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 223
     },
@@ -587,6 +652,8 @@
       "bibcode": "2017SSRv..213..289M",
       "title": "The Jupiter Energetic Particle Detector Instrument (JEDI) Investigation for the Juno Mission",
       "firstAuthor": "Mauk, B. H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 201
     },
@@ -594,6 +661,8 @@
       "bibcode": "2017SSRv..213..219B",
       "title": "Magnetospheric Science Objectives of the Juno Mission",
       "firstAuthor": "Bagenal, F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 184
     },
@@ -601,6 +670,8 @@
       "bibcode": "2017SSRv..213..347K",
       "title": "The Juno Waves Investigation",
       "firstAuthor": "Kurth, W. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 183
     },
@@ -608,6 +679,8 @@
       "bibcode": "2018Natur.555..220I",
       "title": "Measurement of Jupiter’s asymmetric gravity field",
       "firstAuthor": "Iess, L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 183
     },
@@ -615,6 +688,8 @@
       "bibcode": "2019ApJ...872..100D",
       "title": "New Models of Jupiter in the Context of Juno and Galileo",
       "firstAuthor": "Debras, Florian",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 182
     },
@@ -622,6 +697,8 @@
       "bibcode": "2022JGRE..12707055C",
       "title": "A New Model of Jupiter's Magnetic Field at the Completion of Juno's Prime Mission",
       "firstAuthor": "Connerney, J. E. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 179
     },
@@ -629,6 +706,8 @@
       "bibcode": "2018Natur.555..227G",
       "title": "A suppression of differential rotation in Jupiter’s deep interior",
       "firstAuthor": "Guillot, T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 158
     },
@@ -636,6 +715,8 @@
       "bibcode": "2020JGRA..12528138C",
       "title": "A Jovian Magnetodisc Model for the Juno Era",
       "firstAuthor": "Connerney, J. E. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 149
     },
@@ -643,6 +724,8 @@
       "bibcode": "2017SSRv..213..393A",
       "title": "JIRAM, the Jovian Infrared Auroral Mapper",
       "firstAuthor": "Adriani, Alberto",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 142
     },
@@ -650,18 +733,22 @@
       "bibcode": "2020NatAs...4..609L",
       "title": "The water abundance in Jupiter's equatorial zone",
       "firstAuthor": "Li, Cheng",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
-      "citations": 139
+      "citations": 140
     },
     {
       "bibcode": "2017GeoRL..44.5317L",
       "title": "The distribution of ammonia on Jupiter from a preliminary inversion of Juno microwave radiometer data",
       "firstAuthor": "Li, Cheng",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 134
     }
   ],
   "papersFile": {
-    "rows": 822
+    "rows": 821
   }
 }

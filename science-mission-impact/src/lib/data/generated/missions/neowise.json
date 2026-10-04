@@ -21,11 +21,14 @@
   "indices": {
     "h": 33,
     "m": 2.063,
-    "i100": 9
+    "i100": 9,
+    "g": 64,
+    "tori": 13.002,
+    "riq": 225
   },
   "facts": {
     "papers": 109,
-    "citations": 4380,
+    "citations": 4379,
     "publicationYears": [
       2011,
       2026
@@ -84,13 +87,13 @@
       367,
       437,
       467,
-      349
+      348
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 4380,
-      "observed": 4380,
+      "expected": 4379,
+      "observed": 4379,
       "missing": 0
     }
   },
@@ -238,20 +241,27 @@
     "bibcode": "2014ApJ...792...30M",
     "title": "Initial Performance of the NEOWISE Reactivation Mission",
     "firstAuthor": "Mainzer, A.",
+    "authors": [
+      "Mainzer, A.",
+      "Bauer, J.",
+      "Cutri, R. M.",
+      "Grav, T."
+    ],
+    "authorCount": 35,
     "year": 2014,
-    "citations": 767
+    "citations": 766
   },
   "ranks": {
     "full": {
       "bins": [
-        4.63,
-        3.119,
-        5.769,
-        11.189,
-        8.66,
-        12.573,
-        7.865,
-        6.194,
+        4.633,
+        3.121,
+        5.818,
+        11.163,
+        8.651,
+        12.566,
+        7.859,
+        6.189,
         10,
         1
       ],
@@ -259,26 +269,26 @@
     },
     "window": {
       "bins": [
-        4.661,
-        4.065,
-        10.563,
-        10.997,
-        12.984,
-        7.389,
-        8.342,
-        6.94,
-        3.06,
+        4.669,
+        4.07,
+        10.657,
+        10.916,
+        12.977,
+        7.377,
+        8.335,
+        6.948,
+        3.052,
         1
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        11.134,
-        8.331,
-        9.41,
-        16.389,
-        7.736,
+        11.101,
+        8.328,
+        9.351,
+        16.465,
+        7.755,
         15,
         11,
         10,
@@ -311,6 +321,13 @@
       "status": "available",
       "months": 120,
       "citationBuckets": 13
+    },
+    "spread": {
+      "mean": 11.056,
+      "median": 9,
+      "uncited": 4,
+      "i10": 33,
+      "i100": 0
     }
   },
   "window": {
@@ -336,12 +353,19 @@
       "status": "available",
       "months": 114,
       "citationBuckets": 13
+    },
+    "spread": {
+      "mean": 11.114,
+      "median": 9,
+      "uncited": 4,
+      "i10": 33,
+      "i100": 0
     }
   },
   "lifetime": {
     "papers": 109,
     "outputBasis": "measured",
-    "citations": 4380,
+    "citations": 4379,
     "top10": 10,
     "top10ShareOfDivision": 0.00734,
     "top1": null,
@@ -352,13 +376,20 @@
       "yearsFromFormulation": 8.671,
       "bibcode": "2011ApJ...741...68M",
       "date": "2011-11-00"
+    },
+    "spread": {
+      "mean": 40.174,
+      "median": 18,
+      "uncited": 10,
+      "i10": 68,
+      "i100": 9
     }
   },
   "query": {
     "arms": "((((((abs:NEOWISE AND (abs:infrared OR abs:survey OR abs:telescope OR abs:mission OR abs:photometry OR abs:asteroid OR abs:data OR abs:variability OR abs:WISE)) AND NOT (=abs:\"C 2020 F3 NEOWISE\" OR =abs:\"comet NEOWISE\" OR =abs:\"C 2014 N3 NEOWISE\")) OR ((abs:NEOWISE AND (abs:infrared OR abs:survey OR abs:telescope OR abs:mission OR abs:photometry OR abs:asteroid OR abs:data OR abs:variability OR abs:WISE)) AND (=abs:\"NEOWISE data\" OR =abs:\"NEOWISE observations\" OR =abs:\"NEOWISE mission\" OR =abs:\"NEOWISE survey\" OR =abs:\"NEOWISE images\" OR =abs:\"NEOWISE space telescope\" OR =abs:\"NEOWISE program\" OR =abs:\"Near Earth Object program of the Wide Field Infrared Survey Explorer\"))) AND (abs:asteroid OR abs:comet OR =abs:NEOs OR =abs:\"near-Earth objects\" OR =abs:\"minor planet\" OR =abs:\"minor planets\" OR =abs:\"small body\" OR =abs:\"small bodies\" OR abs:trojan OR =abs:\"planetary defense\" OR =abs:\"Kuiper belt\" OR =abs:\"trans-Neptunian\" OR abs:Neptune OR abs:regolith OR =abs:\"Planet Nine\") AND NOT (abs:AGN OR abs:quasar OR abs:YSO OR abs:protostar OR abs:\"tidal disruption event\" OR abs:supernova OR abs:\"brown dwarf\" OR abs:\"white dwarf\" OR abs:maser OR abs:\"star-forming\" OR abs:\"black hole\")) AND collection:astronomy))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28%28%28abs%3ANEOWISE+AND+%28abs%3Ainfrared+OR+abs%3Asurvey+OR+abs%3Atelescope+OR+abs%3Amission+OR+abs%3Aphotometry+OR+abs%3Aasteroid+OR+abs%3Adata+OR+abs%3Avariability+OR+abs%3AWISE%29%29+AND+NOT+%28%3Dabs%3A%22C+2020+F3+NEOWISE%22+OR+%3Dabs%3A%22comet+NEOWISE%22+OR+%3Dabs%3A%22C+2014+N3+NEOWISE%22%29%29+OR+%28%28abs%3ANEOWISE+AND+%28abs%3Ainfrared+OR+abs%3Asurvey+OR+abs%3Atelescope+OR+abs%3Amission+OR+abs%3Aphotometry+OR+abs%3Aasteroid+OR+abs%3Adata+OR+abs%3Avariability+OR+abs%3AWISE%29%29+AND+%28%3Dabs%3A%22NEOWISE+data%22+OR+%3Dabs%3A%22NEOWISE+observations%22+OR+%3Dabs%3A%22NEOWISE+mission%22+OR+%3Dabs%3A%22NEOWISE+survey%22+OR+%3Dabs%3A%22NEOWISE+images%22+OR+%3Dabs%3A%22NEOWISE+space+telescope%22+OR+%3Dabs%3A%22NEOWISE+program%22+OR+%3Dabs%3A%22Near+Earth+Object+program+of+the+Wide+Field+Infrared+Survey+Explorer%22%29%29%29+AND+%28abs%3Aasteroid+OR+abs%3Acomet+OR+%3Dabs%3ANEOs+OR+%3Dabs%3A%22near-Earth+objects%22+OR+%3Dabs%3A%22minor+planet%22+OR+%3Dabs%3A%22minor+planets%22+OR+%3Dabs%3A%22small+body%22+OR+%3Dabs%3A%22small+bodies%22+OR+abs%3Atrojan+OR+%3Dabs%3A%22planetary+defense%22+OR+%3Dabs%3A%22Kuiper+belt%22+OR+%3Dabs%3A%22trans-Neptunian%22+OR+abs%3ANeptune+OR+abs%3Aregolith+OR+%3Dabs%3A%22Planet+Nine%22%29+AND+NOT+%28abs%3AAGN+OR+abs%3Aquasar+OR+abs%3AYSO+OR+abs%3Aprotostar+OR+abs%3A%22tidal+disruption+event%22+OR+abs%3Asupernova+OR+abs%3A%22brown+dwarf%22+OR+abs%3A%22white+dwarf%22+OR+abs%3Amaser+OR+abs%3A%22star-forming%22+OR+abs%3A%22black+hole%22%29%29+AND+collection%3Aastronomy%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:15:54.065892+00:00",
+    "fetchedAt": "2026-09-30T21:09:17.114640+00:00",
     "reconciliation": {
       "adsReturned": 86,
       "curatedOut": 0,
@@ -563,13 +594,17 @@
       "bibcode": "2014ApJ...792...30M",
       "title": "Initial Performance of the NEOWISE Reactivation Mission",
       "firstAuthor": "Mainzer, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
-      "citations": 767
+      "citations": 766
     },
     {
       "bibcode": "2011ApJ...741...68M",
       "title": "Main Belt Asteroids with WISE/NEOWISE. I. Preliminary Albedos and Diameters",
       "firstAuthor": "Masiero, Joseph R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 398
     },
@@ -577,6 +612,8 @@
       "bibcode": "2011ApJ...743..156M",
       "title": "NEOWISE Observations of Near-Earth Objects: Preliminary Results",
       "firstAuthor": "Mainzer, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 373
     },
@@ -584,6 +621,8 @@
       "bibcode": "2011ApJ...741...90M",
       "title": "NEOWISE Studies of Spectrophotometrically Classified Asteroids: Preliminary Results",
       "firstAuthor": "Mainzer, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 135
     },
@@ -591,6 +630,8 @@
       "bibcode": "2011ApJ...742...40G",
       "title": "WISE/NEOWISE Observations of the Jovian Trojans: Preliminary Results",
       "firstAuthor": "Grav, T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 117
     },
@@ -598,6 +639,8 @@
       "bibcode": "2014ApJ...791..121M",
       "title": "Main-belt Asteroids with WISE/NEOWISE: Near-infrared Albedos",
       "firstAuthor": "Masiero, Joseph R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 113
     },
@@ -605,6 +648,8 @@
       "bibcode": "2013ApJ...770....7M",
       "title": "Asteroid Family Identification Using the Hierarchical Clustering Method and WISE/NEOWISE Physical Properties",
       "firstAuthor": "Masiero, Joseph R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 110
     },
@@ -612,6 +657,8 @@
       "bibcode": "2013ApJ...773...22B",
       "title": "Centaurs and Scattered Disk Objects in the Thermal Infrared: Analysis of WISE/NEOWISE Observations",
       "firstAuthor": "Bauer, James M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 108
     },
@@ -619,6 +666,8 @@
       "bibcode": "2012ApJ...759...49G",
       "title": "WISE/NEOWISE Observations of the Jovian Trojan Population: Taxonomy",
       "firstAuthor": "Grav, T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 102
     },
@@ -626,6 +675,8 @@
       "bibcode": "2012ApJ...759L...8M",
       "title": "Preliminary Analysis of WISE/NEOWISE 3-Band Cryogenic and Post-cryogenic Observations of Main Belt Asteroids",
       "firstAuthor": "Masiero, Joseph R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 96
     },
@@ -633,6 +684,8 @@
       "bibcode": "2011ApJ...736..100M",
       "title": "Thermal Model Calibration for Minor Planets Observed with Wide-field Infrared Survey Explorer/NEOWISE",
       "firstAuthor": "Mainzer, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 83
     },
@@ -640,6 +693,8 @@
       "bibcode": "2015ApJ...814..117N",
       "title": "NEOWISE Reactivation Mission Year One: Preliminary Asteroid Diameters and Albedos",
       "firstAuthor": "Nugent, C. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 83
     },
@@ -647,6 +702,8 @@
       "bibcode": "2016AJ....152...63N",
       "title": "NEOWISE Reactivation Mission Year Two: Asteroid Diameters and Albedos",
       "firstAuthor": "Nugent, C. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 80
     },
@@ -654,6 +711,8 @@
       "bibcode": "2012ApJ...744..197G",
       "title": "WISE/NEOWISE Observations of the Hilda Population: Preliminary Results",
       "firstAuthor": "Grav, T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 79
     },
@@ -661,6 +720,8 @@
       "bibcode": "2014ApJ...784..110M",
       "title": "The Population of Tiny Near-Earth Objects Observed by NEOWISE",
       "firstAuthor": "Mainzer, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 68
     },
@@ -668,6 +729,8 @@
       "bibcode": "2015ApJ...814...85B",
       "title": "The NEOWISE-Discovered Comet Population and the CO + CO₂ Production Rates",
       "firstAuthor": "Bauer, James M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 66
     },
@@ -675,6 +738,8 @@
       "bibcode": "2017AJ....154...53B",
       "title": "Debiasing the NEOWISE Cryogenic Mission Comet Populations",
       "firstAuthor": "Bauer, James M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 61
     },
@@ -682,6 +747,8 @@
       "bibcode": "2012ApJ...760L..12M",
       "title": "Physical Parameters of Asteroids Estimated from the WISE 3-Band Data and NEOWISE Post-Cryogenic Survey",
       "firstAuthor": "Mainzer, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 56
     },
@@ -689,6 +756,8 @@
       "bibcode": "2021Icar..36514452H",
       "title": "The population of near-earth asteroids revisited and updated",
       "firstAuthor": "Harris, Alan W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 56
     },
@@ -696,6 +765,8 @@
       "bibcode": "2012ApJ...752..110M",
       "title": "Characterizing Subpopulations within the near-Earth Objects with NEOWISE: Preliminary Results",
       "firstAuthor": "Mainzer, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 53
     }

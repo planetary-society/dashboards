@@ -1,13 +1,23 @@
 <script>
 	// The corpus as a skyline: one Neptune column per mission rising from the ground line the
-	// rug hangs from, height ∝ √papers, the largest few named, and a running total that counts
-	// up as the columns rise.
+	// rug hangs from, height ∝ √papers, and a running total that counts up as the columns rise.
+	// No names until the reader points: the highlighted column turns Rocket Flame and is named.
 	import { int } from '$lib/format.js';
 
-	/** layout: skylineLayout() result. total: distinct papers. rise: 0..1 column growth. */
-	let { layout, total, rise = 1, visible = false, compact = false, width, height } = $props();
+	/** layout: skylineLayout() result. total: distinct papers. rise: 0..1 column growth. highlight: mission id. */
+	let { layout, total, rise = 1, visible = false, compact = false, highlight = null, width, height } = $props();
 
 	const ticks = $derived(layout.x.ticks(compact ? 4 : 8));
+	const hot = $derived(layout.columns.find((c) => c.id === highlight) ?? null);
+	// centred over its column unless that would run it off either end of the chart (width estimated per character)
+	const label = $derived.by(() => {
+		if (!hot) return null;
+		const text = `${hot.name} ${int(hot.papers)}`;
+		const cx = hot.x + hot.w / 2;
+		const half = ((text.length + 1) * (compact ? 6 : 7)) / 2;
+		const anchor = cx - half < layout.left ? 'start' : cx + half > layout.right ? 'end' : 'middle';
+		return { text, x: anchor === 'start' ? hot.x : anchor === 'end' ? hot.x + hot.w : cx, y: hot.y - 4, anchor };
+	});
 </script>
 
 <div class="skyline" class:visible class:compact aria-hidden="true">
@@ -15,15 +25,10 @@
 		<line class="ground" x1={layout.left} x2={layout.right} y1={layout.ground + 0.5} y2={layout.ground + 0.5} />
 		<g class="columns" style:transform="scaleY({rise})" style:transform-origin="0 {layout.ground}px">
 			{#each layout.columns as c (c.id)}
-				<rect x={c.x} y={c.y} width={c.w} height={c.h} />
+				<rect class:hot={c.id === highlight} x={c.x} y={c.y} width={c.w} height={c.h} />
 			{/each}
 		</g>
-		<g class="labels" style:opacity={rise > 0.9 ? 1 : 0}>
-			{#each layout.labels as l (l.id)}
-				{#if l.leader}<line class="leader" x1={l.leader.x} x2={l.leader.x} y1={l.leader.y1} y2={l.leader.y2} />{/if}
-				<text x={l.x} y={l.y} text-anchor={l.anchor}>{l.name} {int(l.papers)}</text>
-			{/each}
-		</g>
+		{#if label && rise > 0.9}<text class="label" x={label.x} y={label.y} text-anchor={label.anchor}>{label.text}</text>{/if}
 		{#each ticks as t (t)}
 			<text class="tick" x={layout.x(t)} y={height - 8} text-anchor="middle">{t}</text>
 		{/each}
@@ -53,8 +58,7 @@
 		overflow: visible;
 	}
 
-	.ground,
-	.leader {
+	.ground {
 		stroke: var(--soil);
 		stroke-width: 1;
 	}
@@ -63,11 +67,11 @@
 		fill: var(--neptune);
 	}
 
-	.labels {
-		transition: opacity 300ms linear;
+	.columns rect.hot {
+		fill: var(--flame);
 	}
 
-	.labels text {
+	.label {
 		fill: var(--white);
 		font-size: 12px;
 		paint-order: stroke;
@@ -75,7 +79,7 @@
 		stroke-width: 3px;
 	}
 
-	.compact .labels text {
+	.compact .label {
 		font-size: 11px;
 	}
 

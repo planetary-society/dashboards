@@ -36,6 +36,26 @@ export function decadeTicks(lo, hi) {
 	return out;
 }
 
+/**
+ * Cost ticks for a log scale `x`. Decades always carry a gridline (`grid`). When every label
+ * gets `gap` px of its own, the 2× and 5× values are labelled too; narrower than that they go
+ * first, and below one decade per `gap` every other decade loses its label as well.
+ */
+export function costTicks(x, gap = 44) {
+	const [lo, hi] = x.domain();
+	const decade = x(lo * 10) - x(lo); // px per decade: the same anywhere on a log scale
+	// 1→2 and 5→10 are the closest neighbours, log10(2) of a decade apart
+	if (decade * Math.log10(2) < gap) return decadeTicks(lo, hi).map((value, i) => ({ value, grid: true, label: decade >= gap || i % 2 === 0 }));
+	const out = [];
+	for (let power = Math.floor(Math.log10(lo)); power <= Math.floor(Math.log10(hi)); power++) {
+		for (const multiple of [1, 2, 5]) {
+			const value = Number((multiple * 10 ** power).toPrecision(12));
+			if (value >= lo && value <= hi) out.push({ value, grid: multiple === 1, label: true });
+		}
+	}
+	return out;
+}
+
 /** Unlabeled 2–9 subdivisions of each dollar decade, clipped to the actual log domain. */
 export function minorDollarTicks(lo, hi) {
 	if (!(Number.isFinite(lo) && Number.isFinite(hi) && lo > 0 && hi >= lo)) return [];

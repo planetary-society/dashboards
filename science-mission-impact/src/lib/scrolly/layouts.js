@@ -3,8 +3,8 @@
 // No DOM, no Svelte: the scrolly and the preview image render from these.
 
 import { scaleLinear, scaleLog, scaleSqrt } from 'd3-scale';
-import { int } from '../format.js';
 import { byCostThenId, decadeTicks, stackLevels } from '../charts/costaxis.js';
+import { timeFit } from '../charts/timetoscience.js';
 
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
 
@@ -66,12 +66,12 @@ export function rugLayout(tiles, W, H, yearDomain) {
 
 /**
  * The skyline over the hanging rug: one column per mission with papers, rising from the ground
- * inside its year's footprint, height ∝ √papers. The largest few get a name label, nudged up
- * a line at a time until it clears the labels already placed. papers: (tile) => count.
+ * inside its year's footprint, height ∝ √papers, with two lines of headroom for the hover label.
+ * No names by default; the reader skims the columns or the squares to light one up.
+ * papers: (tile) => count.
  */
-export function skylineLayout(tiles, rug, { papers = (t) => t.papersLifetime, labels = 4, compact = false } = {}) {
+export function skylineLayout(tiles, rug, { papers = (t) => t.papersLifetime, compact = false } = {}) {
 	const lineH = compact ? 13 : 15;
-	const charW = compact ? 6 : 7;
 	const w = compact ? 1 : 2;
 	const { left, right, top, bottom: ground } = rug.chart;
 	const withPapers = tiles.filter((t) => rug.pos.has(t.id) && papers(t) > 0);
@@ -90,24 +90,22 @@ export function skylineLayout(tiles, rug, { papers = (t) => t.papersLifetime, la
 			columns.push({ id: t.id, name: t.name, x: cx - w / 2, y: ground - h, w, h, papers: papers(t) });
 		});
 	}
+	return { columns, ground, top, left, right, x: rug.x, lineH, reach: rug.s };
+}
 
-	const placed = [];
-	const ranked = [...columns].sort((a, b) => b.papers - a.papers || a.id.localeCompare(b.id)).slice(0, labels);
-	for (const c of ranked) {
-		const cx = c.x + w / 2;
-		const bw = (`${c.name} ${int(c.papers)}`.length + 1) * charW;
-		let anchor = 'middle';
-		let bx = cx - bw / 2;
-		if (bx < left) [anchor, bx] = ['start', c.x];
-		else if (bx + bw > right) [anchor, bx] = ['end', c.x + w - bw];
-		const x = anchor === 'middle' ? cx : anchor === 'start' ? c.x : c.x + w;
-		const base = c.y - 4;
-		let ly = base;
-		const hits = (p) => bx < p.box.x + p.box.w + 4 && p.box.x < bx + bw + 4 && Math.abs(ly - p.y) < lineH;
-		while (placed.some(hits)) ly -= lineH;
-		placed.push({ id: c.id, name: c.name, papers: c.papers, x, y: ly, anchor, box: { x: bx, w: bw }, leader: ly === base ? null : { x: cx, y1: ly + 3, y2: c.y - 1 } });
+/**
+ * The column under a pointer skimming the skyline: the nearest by x, within one year's footprint,
+ * anywhere between the top of the chart and the ground. Null off the chart or in an empty year.
+ */
+export function skylineHit(sky, px, py) {
+	if (py < sky.top || py > sky.ground) return null;
+	let best = null;
+	let dist = sky.reach;
+	for (const c of sky.columns) {
+		const d = Math.abs(c.x + c.w / 2 - px);
+		if (d <= dist) [best, dist] = [c, d];
 	}
-	return { columns, labels: placed, ground, top, left, right, x: rug.x, lineH };
+	return best?.id ?? null;
 }
 
 /** Label gutter on the left of the row-based states: none on a phone, where names move into the band. */
@@ -283,41 +281,14 @@ export function timeLayout(tiles, W, H, { scope, x, left }) {
 }
 
 /**
- * One division's time from project start on the cost axis. x is the cost layout's scale, so
- * its squares only move vertically. Years from the start of formulation to the first top-10%
- * paper run down from a project-start line; the missions that never produced one, including
- * failures, close the bottom in their own lane. Every other division is left unplaced.
- */
-export function projectTimeLayout(tiles, W, H, { scope, x, left, division }) {
-	const compact = W < 600;
-	const top = compact ? 20 : 28;
-	const s = compact ? 6 : 9;
-	const gap = 1;
-	const first = (t) => t.first[scope];
-	const placed = tiles.filter((t) => t.division === division && t.cost > 0).sort(byCostThenId);
-	const px = (t) => x(t.cost) - s / 2;
-
-	const reached = placed.filter((t) => first(t).state === 'reached' && first(t).yearsFromFormulation != null);
-	const never = placed.filter((t) => !reached.includes(t));
-	const stack = stackLevels(never, px, s, gap);
-	const neverTop = H - stack.depth * (s + gap) - (compact ? 18 : 22);
-
-	const yMax = Math.max(5, Math.ceil(Math.max(0, ...reached.map((t) => first(t).yearsFromFormulation))));
-	const y = scaleLinear().domain([0, yMax]).range([top + 10, neverTop - (compact ? 18 : 24)]).clamp(true);
-
-	const pos = new Map();
-	for (const t of reached) pos.set(t.id, { x: px(t), y: y(first(t).yearsFromFormulation) - s / 2, s });
-	for (const t of never) pos.set(t.id, { x: px(t), y: neverTop + (compact ? 16 : 20) + stack.levels.get(t.id) * (s + gap), s });
-
-	return { pos, x, y, left, top, neverTop, never: never.length, reached: reached.length, ticks: y.ticks(compact ? 3 : 5) };
-}
-
-/**
  * Citations per $100M of cost, one row per compared division on the cost layout's x. Each
  * square rises above its row's shelf by its rate on one shared log scale; a mission with no
  * citations sits on the shelf, lifted only off a neighbour. Rows are read on their own, as
  * everywhere else: fields cite at different rates, so the scale is shared only so a square
- * means the same height wherever it is drawn.
+ * means the same height wherever it is drawn. Each row's `fit` is the least-squares line of log
+ * rate on log cost over its missions with citations, across their cost range: a zero has no
+ * place on a log scale, and any stand-in value would set the slope, so the shelf shows those
+ * missions apart (the rate sentences still count them). Null below three cited missions.
  */
 export function perDollarLayout(tiles, W, H, { divisions, x, left }) {
 	const compact = W < 600;
@@ -357,7 +328,14 @@ export function perDollarLayout(tiles, W, H, { divisions, x, left }) {
 				s
 			});
 		}
-		return { slug: d.slug, label: W < 900 ? d.nav : d.name, missions: members.length, zeros: zeros.length, y: y0, h: rh, band: r % 2 === 1, shelfY, curveTop };
+		const rateY = (v) => shelfY - scale(v) * (shelfY - curveTop);
+		// timeFit regresses `months` on log10(cost); here that y is log10(rate)
+		const cited = members.filter((t) => rate(t) > 0);
+		const line = timeFit(cited.map((t) => ({ cost: t.cost, months: Math.log10(rate(t)) })));
+		const at = (c) => ({ x: x(c), y: rateY(10 ** (line.intercept + line.slope * Math.log10(c))) });
+		const [c1, c2] = [cited[0]?.cost, cited.at(-1)?.cost];
+		const fit = line ? { x1: at(c1).x, y1: at(c1).y, x2: at(c2).x, y2: at(c2).y } : null;
+		return { slug: d.slug, label: W < 900 ? d.nav : d.name, missions: members.length, zeros: zeros.length, y: y0, h: rh, band: r % 2 === 1, shelfY, curveTop, fit };
 	});
 
 	return { pos, x, rows, left, top, bottomY: top + divisions.length * rh, scale, rateTicks: decadeTicks(...scale.domain()) };

@@ -21,11 +21,14 @@
   "indices": {
     "h": 145,
     "m": 4.677,
-    "i100": 288
+    "i100": 288,
+    "g": 221,
+    "tori": 605.174,
+    "riq": 793
   },
   "facts": {
     "papers": 2582,
-    "citations": 121084,
+    "citations": 121071,
     "publicationYears": [
       1996,
       2026
@@ -114,7 +117,7 @@
       4343,
       4018,
       4380,
-      4853,
+      4852,
       4632,
       5219,
       5080,
@@ -129,13 +132,13 @@
       4919,
       5156,
       5612,
-      4695
+      4683
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 121084,
-      "observed": 121084,
+      "expected": 121071,
+      "observed": 121071,
       "missing": 0
     }
   },
@@ -212,6 +215,11 @@
     "bibcode": "2006ARA&A..44...49R",
     "title": "X-Ray Properties of Black-Hole Binaries",
     "firstAuthor": "Remillard, Ronald A.",
+    "authors": [
+      "Remillard, Ronald A.",
+      "McClintock, Jeffrey E."
+    ],
+    "authorCount": 2,
     "year": 2006,
     "citations": 2409
   },
@@ -221,13 +229,13 @@
         286.741,
         240.143,
         238.189,
-        232.634,
-        208.873,
-        205.25,
-        175.093,
-        154.14,
-        164.131,
-        105.807
+        232.668,
+        208.864,
+        205.147,
+        175.169,
+        154.104,
+        164.15,
+        105.826
       ],
       "top1": 3.374
     },
@@ -241,23 +249,23 @@
         32.011,
         26.759,
         31.595,
-        35.077,
-        31.741
+        35.059,
+        31.759
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        205.574,
-        199.597,
-        240.014,
-        286.664,
-        269.439,
-        312.281,
-        296.425,
-        277.854,
-        255.66,
-        238.492
+        205.994,
+        199.107,
+        240.185,
+        286.265,
+        269.461,
+        312.361,
+        296.55,
+        277.686,
+        255.813,
+        238.578
       ],
       "top1": 17
     }
@@ -285,6 +293,13 @@
       "status": "available",
       "months": 216,
       "citationBuckets": 22
+    },
+    "spread": {
+      "mean": 15.117,
+      "median": 10,
+      "uncited": 140,
+      "i10": 1020,
+      "i100": 10
     }
   },
   "window": {
@@ -310,12 +325,19 @@
       "status": "available",
       "months": 48,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 19.256,
+      "median": 11,
+      "uncited": 44,
+      "i10": 199,
+      "i100": 4
     }
   },
   "lifetime": {
     "papers": 2582,
     "outputBasis": "measured",
-    "citations": 121084,
+    "citations": 121071,
     "top10": 121.633,
     "top10ShareOfDivision": 0.02196,
     "top1": null,
@@ -326,13 +348,20 @@
       "yearsFromFormulation": 7.918,
       "bibcode": "1996ApJ...469L...1V",
       "date": "1996-09-00"
+    },
+    "spread": {
+      "mean": 46.89,
+      "median": 26,
+      "uncited": 106,
+      "i10": 1997,
+      "i100": 288
     }
   },
   "query": {
     "arms": "((abs:RXTE OR =abs:\"Rossi X-ray Timing Explorer\" OR =abs:\"Rossi-XTE\" OR abs:HEXTE OR =abs:\"XTE observations\" OR =abs:\"XTE observation\" OR =abs:\"XTE data\" OR =abs:\"XTE/PCA\" OR =abs:\"XTE/ASM\" OR =abs:\"observed with XTE\" OR =abs:\"observed by XTE\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1996-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28abs%3ARXTE+OR+%3Dabs%3A%22Rossi+X-ray+Timing+Explorer%22+OR+%3Dabs%3A%22Rossi-XTE%22+OR+abs%3AHEXTE+OR+%3Dabs%3A%22XTE+observations%22+OR+%3Dabs%3A%22XTE+observation%22+OR+%3Dabs%3A%22XTE+data%22+OR+%3Dabs%3A%22XTE%2FPCA%22+OR+%3Dabs%3A%22XTE%2FASM%22+OR+%3Dabs%3A%22observed+with+XTE%22+OR+%3Dabs%3A%22observed+by+XTE%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:33:18.452678+00:00",
+    "fetchedAt": "2026-09-30T18:15:17.371695+00:00",
     "reconciliation": {
       "adsReturned": 2589,
       "curatedOut": 8,
@@ -1002,6 +1031,8 @@
       "bibcode": "2006ARA&A..44...49R",
       "title": "X-Ray Properties of Black-Hole Binaries",
       "firstAuthor": "Remillard, Ronald A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 2409
     },
@@ -1009,6 +1040,8 @@
       "bibcode": "2008ApJS..179..360G",
       "title": "Thermonuclear (Type I) X-Ray Bursts Observed by the Rossi X-Ray Timing Explorer",
       "firstAuthor": "Galloway, Duncan K.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 751
     },
@@ -1016,6 +1049,8 @@
       "bibcode": "2003MNRAS.339..793G",
       "title": "High-mass X-ray binaries as a star formation rate indicator in distant galaxies",
       "firstAuthor": "Grimm, H.-J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 649
     },
@@ -1023,6 +1058,8 @@
       "bibcode": "1996ApJ...469L..33L",
       "title": "First Results from the All-Sky Monitor on the Rossi X-Ray Timing Explorer",
       "firstAuthor": "Levine, Alan M.",
+      "authors": null,
+      "authorCount": null,
       "year": 1996,
       "citations": 648
     },
@@ -1030,6 +1067,8 @@
       "bibcode": "2000ARA&A..38..717V",
       "title": "Millisecond Oscillations in X-ray Binaries",
       "firstAuthor": "van der Klis, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 640
     },
@@ -1037,6 +1076,8 @@
       "bibcode": "2000ApJ...537..763S",
       "title": "Diffuse Continuum Gamma Rays from the Galaxy",
       "firstAuthor": "Strong, Andrew W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 597
     },
@@ -1044,6 +1085,8 @@
       "bibcode": "2006ApJ...652..518M",
       "title": "The Spin of the Near-Extreme Kerr Black Hole GRS 1915+105",
       "firstAuthor": "McClintock, Jeffrey E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 590
     },
@@ -1051,6 +1094,8 @@
       "bibcode": "2006ApJS..163..401J",
       "title": "Calibration of the Rossi X-Ray Timing Explorer Proportional Counter Array",
       "firstAuthor": "Jahoda, Keith",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 543
     },
@@ -1058,6 +1103,8 @@
       "bibcode": "2001ApJS..132..377H",
       "title": "Correlated X-Ray Spectral and Timing Behavior of the Black Hole Candidate XTE J1550-564: A New Interpretation of Black Hole States",
       "firstAuthor": "Homan, Jeroen",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 534
     },
@@ -1065,6 +1112,8 @@
       "bibcode": "2000A&A...355..271B",
       "title": "A model-independent analysis of the variability of GRS 1915+105",
       "firstAuthor": "Belloni, T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 526
     },
@@ -1072,6 +1121,8 @@
       "bibcode": "1998ApJ...501L..89B",
       "title": "Gravitational Radiation and Rotation of Accreting Neutron Stars",
       "firstAuthor": "Bildsten, Lars",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 497
     },
@@ -1079,13 +1130,17 @@
       "bibcode": "2005A&A...440..207B",
       "title": "The evolution of the timing properties of the black-hole transient GX 339-4 during its 2002/2003 outburst",
       "firstAuthor": "Belloni, T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
-      "citations": 487
+      "citations": 486
     },
     {
       "bibcode": "1999ApJ...510..874N",
       "title": "Rossi X-Ray Timing Explorer Observation of Cygnus X-1. II. Timing Analysis",
       "firstAuthor": "Nowak, Michael A.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 482
     },
@@ -1093,6 +1148,8 @@
       "bibcode": "1999MNRAS.309..496G",
       "title": "Radiation mechanisms and geometry of Cygnus X-1 in the soft state",
       "firstAuthor": "Gierliński, Marek",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 467
     },
@@ -1100,6 +1157,8 @@
       "bibcode": "2005Ap&SS.300..107H",
       "title": "The Evolution of Black Hole States",
       "firstAuthor": "Homan, Jeroen",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 463
     },
@@ -1107,6 +1166,8 @@
       "bibcode": "1997ApJ...482..993M",
       "title": "RXTE Observations of QPOs in the Black Hole Candidate GRS 1915+105",
       "firstAuthor": "Morgan, E. H.",
+      "authors": null,
+      "authorCount": null,
       "year": 1997,
       "citations": 462
     },
@@ -1114,6 +1175,8 @@
       "bibcode": "2002MNRAS.332..231U",
       "title": "Measuring the broad-band power spectra of active galactic nuclei with RXTE",
       "firstAuthor": "Uttley, P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 456
     },
@@ -1121,6 +1184,8 @@
       "bibcode": "1996ApJ...469L...9S",
       "title": "Millisecond X-Ray Variability from an Accreting Neutron Star System",
       "firstAuthor": "Strohmayer, Tod E.",
+      "authors": null,
+      "authorCount": null,
       "year": 1996,
       "citations": 449
     },
@@ -1128,6 +1193,8 @@
       "bibcode": "2003A&A...400.1007C",
       "title": "Radio/X-ray correlation in the low/hard state of GX 339-4",
       "firstAuthor": "Corbel, S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 442
     },
@@ -1135,6 +1202,8 @@
       "bibcode": "2002ApJ...568..610E",
       "title": "X-Ray Spectral Variability and Rapid Variability of the Soft X-Ray Spectrum Seyfert 1 Galaxies Arakelian 564 and Ton S180",
       "firstAuthor": "Edelson, Rick",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 422
     }

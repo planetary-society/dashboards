@@ -21,11 +21,14 @@
   "indices": {
     "h": 91,
     "m": 7.583,
-    "i100": 81
+    "i100": 80,
+    "g": 135,
+    "tori": 128.228,
+    "riq": 871
   },
   "facts": {
     "papers": 1824,
-    "citations": 39630,
+    "citations": 39628,
     "publicationYears": [
       2015,
       2026
@@ -72,13 +75,13 @@
       5086,
       6025,
       7119,
-      5543
+      5541
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 39630,
-      "observed": 39630,
+      "expected": 39628,
+      "observed": 39628,
       "missing": 0
     }
   },
@@ -171,6 +174,13 @@
     "bibcode": "2017RSEnv.191..215C",
     "title": "Validation of SMAP surface soil moisture products with core validation sites",
     "firstAuthor": "Colliander, A.",
+    "authors": [
+      "Colliander, A.",
+      "Jackson, T. J.",
+      "Bindlish, R.",
+      "Chan, S."
+    ],
+    "authorCount": 49,
     "year": 2017,
     "citations": 569
   },
@@ -179,9 +189,9 @@
       "bins": [
         42.432,
         67.053,
-        73.785,
-        98.148,
-        114.439,
+        73.767,
+        98.126,
+        114.479,
         123.218,
         126.944,
         147.205,
@@ -195,8 +205,8 @@
         17.495,
         25.09,
         23.287,
-        42.262,
-        51.773,
+        42.223,
+        51.811,
         54.586,
         54.902,
         62.636,
@@ -207,16 +217,16 @@
     },
     "lifetime": {
       "bins": [
-        272.307,
-        238.325,
-        224.252,
-        188.238,
-        180.215,
-        175.736,
-        144.23,
-        149.06,
-        127.772,
-        123.865
+        272.063,
+        238.189,
+        224.385,
+        188.347,
+        180.257,
+        175.741,
+        144.269,
+        149.067,
+        127.793,
+        123.888
       ],
       "top1": 5
     }
@@ -244,6 +254,13 @@
       "status": "available",
       "months": 105,
       "citationBuckets": 12
+    },
+    "spread": {
+      "mean": 16.297,
+      "median": 10,
+      "uncited": 32,
+      "i10": 611,
+      "i100": 11
     }
   },
   "window": {
@@ -269,14 +286,21 @@
       "status": "available",
       "months": 63,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 19.817,
+      "median": 13,
+      "uncited": 13,
+      "i10": 307,
+      "i100": 7
     }
   },
   "lifetime": {
     "papers": 1824,
     "outputBasis": "measured",
-    "citations": 39630,
-    "top10": 145.12,
-    "top10ShareOfDivision": 0.03507,
+    "citations": 39628,
+    "top10": 145.179,
+    "top10ShareOfDivision": 0.03509,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -285,13 +309,20 @@
       "yearsFromFormulation": 6.661,
       "bibcode": "2015ITGRS..53.2784M",
       "date": "2015-05-00"
+    },
+    "spread": {
+      "mean": 21.726,
+      "median": 8,
+      "uncited": 263,
+      "i10": 856,
+      "i100": 80
     }
   },
   "query": {
     "arms": "((=abs:\"Soil Moisture Active Passive\" OR =abs:\"SMAP Reflectometry\" OR (abs:SMAP AND (abs:(satellite OR soil OR radiometer OR microwave OR ocean OR freeze OR thaw OR vegetation OR drought OR SAR) OR =abs:salinity OR =abs:\"remote sensing\" OR =abs:\"land surface\" OR =abs:\"gap filling\" OR abs:\"L-band\"))) AND NOT =abs:\"GIC-SMAP\")",
     "filters": "property:refereed AND doctype:article AND pubdate:[2015-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Soil+Moisture+Active+Passive%22+OR+%3Dabs%3A%22SMAP+Reflectometry%22+OR+%28abs%3ASMAP+AND+%28abs%3A%28satellite+OR+soil+OR+radiometer+OR+microwave+OR+ocean+OR+freeze+OR+thaw+OR+vegetation+OR+drought+OR+SAR%29+OR+%3Dabs%3Asalinity+OR+%3Dabs%3A%22remote+sensing%22+OR+%3Dabs%3A%22land+surface%22+OR+%3Dabs%3A%22gap+filling%22+OR+abs%3A%22L-band%22%29%29%29+AND+NOT+%3Dabs%3A%22GIC-SMAP%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2015-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:25:23.077991+00:00",
+    "fetchedAt": "2026-09-30T18:03:38.100148+00:00",
     "reconciliation": {
       "adsReturned": 1827,
       "curatedOut": 3,
@@ -353,6 +384,8 @@
       "bibcode": "2017RSEnv.191..215C",
       "title": "Validation of SMAP surface soil moisture products with core validation sites",
       "firstAuthor": "Colliander, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 569
     },
@@ -360,6 +393,8 @@
       "bibcode": "2016ITGRS..54.4994C",
       "title": "Assessment of the SMAP Passive Soil Moisture Product",
       "firstAuthor": "Chan, Steven K.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 490
     },
@@ -367,6 +402,8 @@
       "bibcode": "2017NatGe..10..100M",
       "title": "The global distribution and dynamics of surface soil moisture",
       "firstAuthor": "McColl, Kaighin A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 434
     },
@@ -374,6 +411,8 @@
       "bibcode": "2017RSEnv.192..238W",
       "title": "Modelling the passive microwave signature from land surfaces: A review of recent results and application to the L-band SMOS & SMAP soil moisture retrieval algorithms",
       "firstAuthor": "Wigneron, J.-P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 400
     },
@@ -381,6 +420,8 @@
       "bibcode": "2018RSEnv.204..931C",
       "title": "Development and assessment of the SMAP enhanced passive soil moisture product",
       "firstAuthor": "Chan, S. K.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 391
     },
@@ -388,6 +429,8 @@
       "bibcode": "2018GeoRL..45.4049C",
       "title": "Soil Moisture Sensing Using Spaceborne GNSS Reflections: Comparison of CYGNSS Reflectivity to SMAP Soil Moisture",
       "firstAuthor": "Chew, C. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 273
     },
@@ -395,6 +438,8 @@
       "bibcode": "2015WRR....51.7309L",
       "title": "Inroads of remote sensing into hydrologic science during the WRR era",
       "firstAuthor": "Lettenmaier, Dennis P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 256
     },
@@ -402,6 +447,8 @@
       "bibcode": "2017JHyMe..18.2621R",
       "title": "Assessment of the SMAP Level-4 Surface and Root-Zone Soil Moisture Product Using In Situ Measurements",
       "firstAuthor": "Reichle, Rolf H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 251
     },
@@ -409,6 +456,8 @@
       "bibcode": "2019RSEnv.23111215M",
       "title": "Satellite surface soil moisture from SMAP, SMOS, AMSR2 and ESA CCI: A comprehensive assessment using global ground-based observations",
       "firstAuthor": "Ma, Hongliang",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 235
     },
@@ -416,6 +465,8 @@
       "bibcode": "2022ESSD...14.5267L",
       "title": "A 1 km daily soil moisture dataset over China using in situ measurement and machine learning",
       "firstAuthor": "Li, Qingliang",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 228
     },
@@ -423,6 +474,8 @@
       "bibcode": "2016Senso..16.1308Z",
       "title": "Estimation of Soil Moisture from Optical and Thermal Remote Sensing: A Review",
       "firstAuthor": "Zhang, Dianjun",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 226
     },
@@ -430,6 +483,8 @@
       "bibcode": "2018RSEnv.214....1C",
       "title": "Global-scale evaluation of SMAP, SMOS and ASCAT soil moisture products using triple collocation",
       "firstAuthor": "Chen, Fan",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 221
     },
@@ -437,6 +492,8 @@
       "bibcode": "2017VZJ....16..105M",
       "title": "Soil Moisture Remote Sensing: State-of-the-Science",
       "firstAuthor": "Mohanty, Binayak P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 216
     },
@@ -444,6 +501,8 @@
       "bibcode": "2019IJSTA..12.2227C",
       "title": "Analysis of CYGNSS Data for Soil Moisture Retrieval",
       "firstAuthor": "Clarizia, Maria Paola",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 209
     },
@@ -451,6 +510,8 @@
       "bibcode": "2015ITGRS..53.2784M",
       "title": "The Soil Moisture Active Passive Validation Experiment 2012 (SMAPVEX12): Prelaunch Calibration and Validation of the SMAP Soil Moisture Algorithms",
       "firstAuthor": "McNairn, Heather",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 208
     },
@@ -458,6 +519,8 @@
       "bibcode": "2019RSEnv.224..289A",
       "title": "Assessment and inter-comparison of recently developed/reprocessed microwave satellite soil moisture products using ISMN ground-based measurements",
       "firstAuthor": "Al-Yaari, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 205
     },
@@ -465,6 +528,8 @@
       "bibcode": "2017RSEnv.198..460K",
       "title": "L-band vegetation optical depth and effective scattering albedo estimation from SMAP",
       "firstAuthor": "Konings, Alexandra G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 204
     },
@@ -472,6 +537,8 @@
       "bibcode": "2018RSEnv.219....1P",
       "title": "SMAP soil moisture improves global evapotranspiration",
       "firstAuthor": "Purdy, Adam J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 204
     },
@@ -479,6 +546,8 @@
       "bibcode": "2019RSEnv.23311380D",
       "title": "The SMAP and Copernicus Sentinel 1A/B microwave active-passive high resolution surface soil moisture product",
       "firstAuthor": "Das, Narendra N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 196
     },
@@ -486,6 +555,8 @@
       "bibcode": "2017GeoRL..4411030F",
       "title": "Prolongation of SMAP to Spatiotemporally Seamless Coverage of Continental U.S. Using a Deep Learning Neural Network",
       "firstAuthor": "Fang, Kuai",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 194
     }

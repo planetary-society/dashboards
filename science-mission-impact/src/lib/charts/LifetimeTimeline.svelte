@@ -5,65 +5,58 @@
 	let { lifetime } = $props();
 	let mode = $state('annual');
 	let width = $state(0);
-	let selected = $state(null);
-	let dragging = $state(null);
+	let hover = $state(null); // index under the pointer; the latest year otherwise
 	const model = $derived(timelineModel(lifetime, mode));
 	const layout = $derived(width > 0 ? timelineLayout(model, width) : null);
-	const point = $derived(model?.points[Math.min(selected ?? model.points.length - 1, model.points.length - 1)]);
+	const point = $derived(model?.points[Math.min(hover ?? model.points.length - 1, model.points.length - 1)]);
 	const coverage = $derived(model?.citationCoverage);
 	const incomplete = $derived(coverage?.status === 'incomplete');
 	const partialYear = $derived(model?.partialIndex >= 0 ? model.years[model.partialIndex] : null);
-	const readout = $derived(point ? `${point.year}: ${int(point.pub)} tracked publications · ${int(point.cite)} citations${mode === 'cumulative' ? ' accumulated' : ''}` : '');
+	const when = $derived(mode === 'cumulative' ? `Through ${point?.year}` : `${point?.year}`);
+	// Hover labels sit beside the cursor, on the side with room.
+	const cx = $derived(layout && point ? layout.x(point.year) : 0);
+	const side = $derived(layout && cx > (layout.left + layout.right) / 2 ? -1 : 1);
 
-	function selectAtPointer(event) {
-		const bounds = event.currentTarget.getBoundingClientRect();
-		const year = layout.x.invert(layout.left + (event.clientX - bounds.left) * (layout.right - layout.left) / bounds.width);
-		selected = model.years.reduce((nearest, value, index) =>
-			Math.abs(value - year) < Math.abs(model.years[nearest] - year) ? index : nearest, 0);
-	}
-
-	function startDrag(event) {
-		if (!event.isPrimary || event.button !== 0) return;
-		dragging = event.pointerId;
-		event.currentTarget.setPointerCapture(event.pointerId);
-		event.currentTarget.focus({ preventScroll: true });
-		selectAtPointer(event);
-	}
-
-	function endDrag(event) {
-		if (dragging !== event.pointerId) return;
-		dragging = null;
-		if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
-	}
-
-	function selectWithKeyboard(event) {
-		const index = model.years.indexOf(point.year);
-		const next = { ArrowLeft: index - 1, ArrowDown: index - 1, ArrowRight: index + 1, ArrowUp: index + 1,
-			Home: 0, End: model.points.length - 1, PageDown: index - 10, PageUp: index + 10 }[event.key];
-		if (next == null) return;
-		event.preventDefault();
-		selected = Math.max(0, Math.min(model.points.length - 1, next));
+	// The same invisible scrubber as the mission page's AccumulationPair: the pointer picks a
+	// year as it moves, arrow keys step it, and leaving the plot returns to the latest year.
+	function scrub(event) {
+		const rect = event.currentTarget.getBoundingClientRect();
+		const t = rect.width > 0 ? (event.clientX - rect.left) / rect.width : 0;
+		const year = layout.x.invert(layout.left + t * (layout.right - layout.left));
+		hover = model.years.reduce((best, value, i) => Math.abs(value - year) < Math.abs(model.years[best] - year) ? i : best, 0);
 	}
 </script>
 
 <figure>
 	<div class="toolbar">
-		<p>Lifetime · {model ? `${model.years[0]}–${model.years.at(-1)}` : 'No recorded years'}</p>
+		{#if model}
+			<p class="key"><span><i class="swatch pub"></i>Tracked publications</span> <span><i class="swatch cite"></i>Citations</span></p>
+		{:else}
+			<p class="meta">No recorded years</p>
+		{/if}
 		<label>View <select bind:value={mode}><option value="annual">Annual</option><option value="cumulative">Cumulative</option></select></label>
 	</div>
 	{#if model}
 		<div class="stage" bind:clientWidth={width}>
 			{#if layout}
-				<svg {width} height={layout.height} role="img" aria-label={`Tracked publications and citations by calendar year, ${model.years[0]} to ${model.years.at(-1)}. Each plot has its own count scale.`}>
+				{@const [pub] = layout.panels}
+				<svg {width} height={layout.height} role="img" aria-label={`Tracked publications (left scale) and citations received (right scale) by calendar year, ${model.years[0]} to ${model.years.at(-1)}.`}>
+					<!-- Grid from the left scale only, so the two tick sets don't paint competing grids. -->
+					{#each pub.ticks as value (value)}
+						<line class="grid" x1={layout.left} x2={layout.right} y1={pub.y(value)} y2={pub.y(value)} />
+					{/each}
+					<line class="cursor" x1={cx} x2={cx} y1={pub.top} y2={pub.bottom} />
+					<!-- Values sit beside their dots, the year above the cursor; the lines are the context. -->
+					<text class="hover meta" x={cx + 8 * side} y={pub.top - 10} text-anchor={side > 0 ? 'start' : 'end'}>{when}</text>
 					{#each layout.panels as panel (panel.key)}
-						<text class="title" x={layout.left} y={panel.top - 14}>{panel.label}</text>
+						<text class="hover {panel.key}" x={cx + 8 * side} y={panel.y(point[panel.key]) + (panel.key === 'pub' ? -8 : 16)} text-anchor={side > 0 ? 'start' : 'end'}>{int(point[panel.key])}</text>
+					{/each}
+					{#each layout.panels as panel (panel.key)}
 						{#each panel.ticks as value (value)}
-							<line class="grid" x1={layout.left} x2={layout.right} y1={panel.y(value)} y2={panel.y(value)} />
-							<text class="tick" x={layout.left - 8} y={panel.y(value)} dy="0.32em" text-anchor="end">{compact(value)}</text>
+							<text class="tick {panel.key}" x={panel.side === 'left' ? layout.left - 8 : layout.right + 8} y={panel.y(value)} dy="0.32em" text-anchor={panel.side === 'left' ? 'end' : 'start'}>{compact(value)}</text>
 						{/each}
 						{#if panel.solid}<path class="series {panel.key}" d={panel.solid} />{/if}
 						{#if panel.partial}<path class="series partial {panel.key}" d={panel.partial} />{/if}
-						<line class="cursor" x1={layout.x(point.year)} x2={layout.x(point.year)} y1={panel.top} y2={panel.bottom} />
 						<circle class="dot {panel.key}" cx={layout.x(point.year)} cy={panel.y(point[panel.key])} r="3" />
 					{/each}
 					{#each layout.xTicks as year (year)}
@@ -71,28 +64,27 @@
 					{/each}
 					<text class="tick" x={(layout.left + layout.right) / 2} y={layout.height - 5} text-anchor="middle">Calendar year</text>
 				</svg>
-				<div
-					class="chart-control" class:dragging={dragging !== null}
-					style:left={`${layout.left}px`} style:width={`${layout.right - layout.left}px`}
-					style:top={`${layout.panels[0].top}px`} style:height={`${layout.panels.at(-1).bottom - layout.panels[0].top}px`}
-					role="slider" tabindex="0" aria-label="Calendar year" aria-orientation="horizontal"
-					aria-valuemin={model.years[0]} aria-valuemax={model.years.at(-1)} aria-valuenow={point.year} aria-valuetext={readout}
-					onpointerdown={startDrag}
-					onpointermove={(event) => { if (dragging === event.pointerId) selectAtPointer(event); }}
-					onpointerup={endDrag} onpointercancel={endDrag} onlostpointercapture={endDrag}
-					onkeydown={selectWithKeyboard}
-				></div>
+				<input
+					class="scrub"
+					type="range"
+					min="0"
+					max={model.points.length - 1}
+					step="1"
+					value={hover ?? model.points.length - 1}
+					aria-label="Calendar year"
+					aria-valuetext={`${point.year}: ${int(point.pub)} tracked publications, ${int(point.cite)} citations`}
+					style:left="{layout.left}px"
+					style:top="{pub.top}px"
+					style:width="{Math.max(0, layout.right - layout.left)}px"
+					style:height="{Math.max(0, pub.bottom - pub.top)}px"
+					oninput={(e) => (hover = Number(e.currentTarget.value))}
+					onpointermove={scrub}
+					onpointerleave={() => (hover = null)}
+				/>
 			{/if}
 		</div>
-		<p class="meta note">Tap or drag across either plot to choose a year. Use arrow keys when focused.</p>
-		<p class="readout">{readout}</p>
-		{#if partialYear != null}<p class="meta note">Dashed from {partialYear}: incomplete calendar-year coverage.</p>{/if}
-		{#if incomplete}
-			<details class="note">
-				<summary>Citation timeline has a small gap</summary>
-				<p>{int(coverage.observed)} of {int(coverage.expected)} reported citations have dated records; {int(coverage.missing)} missing. Headline totals include all reported citations.</p>
-			</details>
-		{/if}
+		{#if partialYear != null}<p class="meta note">Dashed: {partialYear} is not yet a full year.</p>{/if}
+		{#if incomplete}<p class="meta note">{int(coverage.observed)} of {int(coverage.expected)} reported citations have dated records; the headline totals include them all.</p>{/if}
 	{:else}
 		<p class="explanation">No publication or citation timeline is available.</p>
 	{/if}
@@ -100,30 +92,36 @@
 
 <style>
 	figure { min-width: 0; }
-	.toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-	.toolbar p, .toolbar label, .explanation, .readout, details { font-size: 14px; line-height: 1.5; }
-	.toolbar { margin-top: 12px; color: var(--dust); }
+	.toolbar { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; margin-top: 12px; color: var(--dust); }
+	.toolbar p, .toolbar label, .explanation { font-size: 14px; line-height: 1.5; }
 	.toolbar label { display: flex; align-items: center; gap: 8px; }
 	select { background: var(--panel); color: var(--white); border: 1px solid var(--soil); padding: 6px 8px; font: inherit; }
 	.explanation { margin-top: 12px; color: var(--dust); }
-	.stage { position: relative; min-height: 410px; margin-top: 12px; }
-	.chart-control { position: absolute; cursor: ew-resize; touch-action: pan-y; user-select: none; }
-	.chart-control.dragging { cursor: grabbing; }
-	.chart-control:focus-visible { outline: 2px solid var(--neptune); outline-offset: 4px; }
+	.key { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+	.key span { white-space: nowrap; }
+	.swatch { display: inline-block; width: 14px; margin-right: 6px; vertical-align: middle; border-top: 2px solid var(--white); }
+	.swatch.cite { border-color: var(--neptune); }
+	.stage { position: relative; min-height: 300px; margin-top: 12px; }
 	svg { display: block; overflow: visible; }
 	text { font-family: var(--sans); }
-	.title { font-size: 14px; fill: var(--white); }
 	.tick { font-size: 12px; fill: var(--dust); }
+	.tick.cite { fill: var(--neptune-mid); }
 	.grid { stroke: var(--shadow); }
 	.cursor { stroke: var(--soil); stroke-dasharray: 2 4; }
+	.hover { fill: var(--white); font: 500 12px var(--sans); paint-order: stroke; stroke: var(--black); stroke-width: 3px; stroke-linejoin: round; }
+	.hover.cite { fill: var(--neptune-mid); }
+	.hover.meta { fill: var(--dust); font-weight: 400; }
 	.series { fill: none; stroke-width: 2; }
 	.series.pub { stroke: var(--white); }
 	.series.cite { stroke: var(--neptune); }
 	.partial { stroke-dasharray: 4 4; }
 	.dot.pub { fill: var(--white); }
 	.dot.cite { fill: var(--neptune); }
-	.readout { margin-top: 8px; min-height: 42px; font-variant-numeric: tabular-nums; }
 	.note { margin-top: 10px; color: var(--dust); }
-	summary { cursor: pointer; }
-	details p { margin-top: 8px; }
+
+	/* An invisible scrubber gives the readout a real keyboard control; the focus ring the
+	   global stylesheet draws on it is the only part that ever shows. */
+	.scrub { position: absolute; margin: 0; padding: 0; cursor: crosshair; touch-action: pan-y; -webkit-appearance: none; appearance: none; background: transparent; }
+	.scrub::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 1px; height: 1px; opacity: 0; }
+	.scrub::-moz-range-thumb { width: 1px; height: 1px; border: 0; opacity: 0; }
 </style>

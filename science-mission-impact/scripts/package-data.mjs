@@ -56,6 +56,8 @@ import {
 	Warnings
 } from './lib/invariants.mjs';
 import {
+	buildCitationSpread,
+	buildDivisionScopeStats,
 	buildMissionScopeStats,
 	buildTiers,
 	firstEraTop,
@@ -67,6 +69,7 @@ import {
 	missionPapers,
 	missionTop1,
 	missionTop10,
+	scopeField,
 	SCOPES
 } from './lib/measures.mjs';
 import { assertColumnLengths, buildPapersFile } from './lib/papers.mjs';
@@ -187,13 +190,23 @@ function publicationYearsPair(years, asOfYear) {
 	return [first, Math.min(last, asOfYear)];
 }
 
-/** PaperRef from a `top_cited` entry. */
-function paperRefFromTopCited(entry) {
+/** A record's first four authors (ADS "Last, First") and how many it has, for a byline; null without a list. */
+function recordAuthors(record) {
+	if (!Array.isArray(record?.author) || !record.author.length) return null;
+	return { names: record.author.slice(0, 4).map((a) => cleanTitle(a)), count: num(record.author_count) ?? record.author.length };
+}
+
+/** PaperRef byline fields from a recordAuthors() entry. */
+const byline = (b) => ({ authors: b?.names ?? null, authorCount: b?.count ?? null });
+
+/** PaperRef from a `top_cited` entry; authors from the mission's records (bibcode -> recordAuthors). */
+function paperRefFromTopCited(entry, authors = new Map()) {
 	if (!entry?.bibcode) return null;
 	return {
 		bibcode: entry.bibcode,
 		title: cleanTitle(entry.title_text ?? null),
 		firstAuthor: cleanTitle(entry.first_author ?? null),
+		...byline(authors.get(entry.bibcode)),
 		year: num(entry.year),
 		citations: num(entry.citation_count) ?? 0
 	};
@@ -235,16 +248,6 @@ function costCurveFor(resolved, slug, scope, top, config) {
 		})),
 		{ division: slug, scope, top }
 	);
-}
-
-/** The pooled citation cutoffs one scope reports, or null when it has none. */
-function cutoffsFor(scopeBlock) {
-	const weights = scopeBlock.pooled_cutoffs?.weights;
-	if (!weights) return null;
-	const ten = num(weights['10']?.cutoff_citations);
-	const one = num(weights['1']?.cutoff_citations);
-	if (ten === null && one === null) return null;
-	return { 10: ten, 1: one };
 }
 
 // -------------------------------------------------------------- load stage
@@ -360,8 +363,8 @@ export function loadRuns(rawDir, config, warnings, source = loadSourceCatalog(ra
  * @param {object} args.run per-division blocks: scopes, summary and share denominators
  * @param {{into: Map<number, number>, seen: Set<string>}} args.divisionCitations
  * @param {Map<string, string[]>} args.citationOverrides rebuilt citing lists
- * @param {{cited: string[], curated: Set<string>, pubdates: Map<string, string>}} args.ownCitations the mission's
- *   own cited bibcodes (file order, packaged papers only), its curated records and every record's ADS pubdate
+ * @param {{cited: string[], curated: Set<string>, pubdates: Map<string, string>, authors: Map<string, object>}} args.ownCitations the mission's
+ *   own cited bibcodes (file order, packaged papers only), its curated records, every record's ADS pubdate and byline authors
  */
 export function buildMissionDoc({
 	mission,
@@ -517,7 +520,11 @@ export function buildMissionDoc({
 	const indices = {
 		h: num(corpus.metrics?.lifetime?.local?.h_index),
 		m: weight(corpus.metrics?.lifetime?.local?.m_index),
-		i100: num(corpus.metrics?.lifetime?.thresholds?.i100?.count)
+		i100: num(corpus.metrics?.lifetime?.thresholds?.i100?.count),
+		g: num(corpus.metrics?.lifetime?.local?.g_index),
+		// No citation graph for some missions: null, not zero.
+		tori: weight(corpus.metrics?.lifetime?.graph?.tori_index),
+		riq: num(corpus.metrics?.lifetime?.graph?.riq_index)
 	};
 
 	// --- the mission's paper table ---------------------------------------------
@@ -546,6 +553,23 @@ export function buildMissionDoc({
 		fullTop1Cutoff: scopeFull.pooled_cutoffs?.weights?.['1'] ?? null
 	});
 	assertColumnLengths(papersFile);
+	// Per-paper citations by scope; null in f/w marks a row outside that cohort.
+	const columnOf = { lifetime: 'c', full: 'f', window: 'w' };
+	const spreads = {};
+	for (const scope of SCOPES) {
+		const citations = papersFile.columns[columnOf[scope]].filter((c) => c !== null);
+		const papers = missionPapers(statsMission, scope);
+		// The median and uncited count come from the rows, so they must be the rows the totals count.
+		if (papers !== null && scopeField(statsMission, scope, 'output_basis') === 'measured' && citations.length !== papers) {
+			throw new PackagingError(`${id} (${scope}): ${citations.length} paper rows in scope, statistics report ${papers} papers. Repair the ${scope} paper rows upstream and re-export.`);
+		}
+		spreads[scope] = buildCitationSpread({
+			citations,
+			papers,
+			citationsTotal: missionCitations(statsMission, scope),
+			thresholds: scopeField(statsMission, scope, 'thresholds')
+		});
+	}
 	// The reader only needs to know how many rows are waiting; the URL comes from
 	// the mission id via src/lib/paths.js, not from a path written into the doc.
 	let papersFileRef = null;
@@ -594,11 +618,11 @@ export function buildMissionDoc({
 		},
 		lifetimeSeries,
 		windowSeries,
-		mostCited: paperRefFromTopCited(corpus.corpus?.top_cited?.[0]),
+		mostCited: paperRefFromTopCited(corpus.corpus?.top_cited?.[0], ownCitations.authors),
 		ranks,
-		full: fullStats,
-		window: windowStats,
-		lifetime: lifetimeStats,
+		full: { ...fullStats, spread: spreads.full },
+		window: { ...windowStats, spread: spreads.window },
+		lifetime: { ...lifetimeStats, spread: spreads.lifetime },
 		query: {
 			arms,
 			filters: queryFilters,
@@ -616,7 +640,7 @@ export function buildMissionDoc({
 		},
 		topCited: (corpus.corpus?.top_cited ?? [])
 			.slice(0, TOP_CITED_LIMIT)
-			.map(paperRefFromTopCited)
+			.map((entry) => paperRefFromTopCited(entry))
 			.filter(Boolean),
 		papersFile: papersFileRef
 	};
@@ -728,6 +752,7 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 	const { asOfYear } = snapshot;
 
 	const summaryLifetime = stats.summary.lifetime?.[statsKey];
+	const summaryWindow = stats.summary.window?.[statsKey];
 	const summaryFull = stats.summary.full_mission?.[statsKey];
 	const scopeLifetime = stats.scopes?.lifetime?.divisions?.[statsKey];
 	const scopeWindow = stats.scopes?.window?.divisions?.[statsKey];
@@ -828,10 +853,13 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 			const included = new Set((rowsByMission.get(shortTitle) ?? []).map((row) => row.bibcode));
 			const records = paths.source.readMission(id, 'records').records ?? [];
 			const citations = paths.source.readMission(id, 'citations').citations ?? {};
+			// Bylines are read only for the mission's and the division's most-cited paper.
+			const bylined = new Set([paths.source.readMission(id).corpus?.top_cited?.[0]?.bibcode, mostCitedRow?.bibcode]);
 			ownCitations.set(id, {
 				cited: Object.keys(citations).filter((bibcode) => included.has(bibcode)),
 				curated: new Set(records.filter((r) => r?.source && r.source !== 'query').map((r) => r.bibcode)),
-				pubdates: new Map(records.map((r) => [r.bibcode, r.pubdate]))
+				pubdates: new Map(records.map((r) => [r.bibcode, r.pubdate])),
+				authors: new Map(records.filter((r) => bylined.has(r.bibcode)).map((r) => [r.bibcode, recordAuthors(r)]))
 			});
 			yield { name: shortTitle, records: records.filter((r) => included.has(r.bibcode)), citations };
 		}
@@ -927,6 +955,18 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 
 	missionRows.sort(byCost);
 
+	const { tierPercents } = config;
+	const divisionStats = {
+		full: buildDivisionScopeStats({ summary: summaryFull, scopeBlock: scopeFull, tierPercents }),
+		window: buildDivisionScopeStats({ summary: summaryWindow, scopeBlock: scopeWindow, tierPercents }),
+		lifetime: buildDivisionScopeStats({ summary: summaryLifetime, scopeBlock: scopeLifetime, tierPercents })
+	};
+	// The same lifetime pool reported twice; a difference means the blocks drifted.
+	const pool = divisionStats.lifetime;
+	if (pool && (pool.papers !== num(summaryLifetime.papers) || pool.citations !== num(summaryLifetime.citations_total))) {
+		throw new PackagingError(`${division.slug}: lifetime pool has ${pool.papers} papers / ${pool.citations} citations, summary reports ${summaryLifetime.papers} / ${summaryLifetime.citations_total}`);
+	}
+
 	const divisionDoc = {
 		slug: division.slug,
 		name: division.name,
@@ -947,12 +987,13 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 					bibcode: mostCitedRow.bibcode,
 					title: mostCitedRow.title ?? null,
 					firstAuthor: mostCitedRow.first_author ?? null,
+					...byline(ownCitations.get(idByTitle.get(mostCitedRow.mission))?.authors.get(mostCitedRow.bibcode)),
 					year: num(mostCitedRow.year),
 					citations: num(mostCitedRow.citations) ?? 0,
 					missionId: idByTitle.get(mostCitedRow.mission) ?? null
 				}
 			: null,
-		cutoffs: { full: cutoffsFor(scopeFull), window: cutoffsFor(scopeWindow), lifetime: cutoffsFor(scopeLifetime) },
+		stats: divisionStats,
 		costCurves,
 		indexCorrelation: buildIndexCorrelation(missionRows),
 		missions: missionRows

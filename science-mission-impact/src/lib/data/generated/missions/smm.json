@@ -21,11 +21,14 @@
   "indices": {
     "h": 91,
     "m": 1.936,
-    "i100": 79
+    "i100": 79,
+    "g": 154,
+    "tori": 540.96,
+    "riq": 494
   },
   "facts": {
     "papers": 1016,
-    "citations": 39662,
+    "citations": 39661,
     "publicationYears": [
       1980,
       2026
@@ -162,7 +165,7 @@
       763,
       850,
       782,
-      832,
+      831,
       832,
       763,
       852,
@@ -182,8 +185,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 39662,
-      "observed": 39662,
+      "expected": 39661,
+      "observed": 39661,
       "missing": 0
     }
   },
@@ -260,52 +263,59 @@
     "bibcode": "2002JGRA..107.1468P",
     "title": "NRLMSISE-00 empirical model of the atmosphere: Statistical comparisons and scientific issues",
     "firstAuthor": "Picone, J. M.",
+    "authors": [
+      "Picone, J. M.",
+      "Hedin, A. E.",
+      "Drob, D. P.",
+      "Aikin, A. C."
+    ],
+    "authorCount": 4,
     "year": 2002,
     "citations": 2611
   },
   "ranks": {
     "full": {
       "bins": [
-        139.631,
-        90.506,
-        67.613,
-        72.036,
-        53.345,
-        52.85,
-        61.26,
-        56.127,
-        48.683,
-        35.95
+        139.896,
+        90.476,
+        67.687,
+        71.97,
+        53.359,
+        52.852,
+        61.278,
+        56.039,
+        48.806,
+        35.635
       ],
       "top1": 3
     },
     "window": {
       "bins": [
-        54.322,
-        26.86,
-        20.424,
-        14.418,
-        13.029,
-        19.198,
-        15.812,
-        18.024,
-        13.56,
-        9.352
+        54.411,
+        26.794,
+        20.534,
+        14.335,
+        13.067,
+        19.081,
+        15.786,
+        18.035,
+        13.595,
+        9.362
       ],
-      "top1": 0.095
+      "top1": 0.185
     },
     "lifetime": {
       "bins": [
-        113.098,
-        92.241,
-        81.779,
-        86.183,
-        83.936,
-        95.9,
-        95.006,
-        108.723,
-        127.683,
-        131.45
+        112.793,
+        92.122,
+        81.52,
+        85.979,
+        83.911,
+        96.021,
+        95.118,
+        108.893,
+        127.859,
+        131.785
       ],
       "top1": 18
     }
@@ -315,9 +325,9 @@
     "outputBasis": "measured",
     "citations": 5446,
     "top10": 60.533,
-    "top10ShareOfDivision": 0.04196,
+    "top10ShareOfDivision": 0.04182,
     "top1": 3,
-    "top1ShareOfDivision": 0.0208,
+    "top1ShareOfDivision": 0.02073,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.966,
@@ -333,6 +343,13 @@
       "status": "available",
       "months": 142,
       "citationBuckets": 15
+    },
+    "spread": {
+      "mean": 8.032,
+      "median": 5,
+      "uncited": 108,
+      "i10": 211,
+      "i100": 0
     }
   },
   "window": {
@@ -340,9 +357,9 @@
     "outputBasis": "measured",
     "citations": 1932,
     "top10": 16.567,
-    "top10ShareOfDivision": 0.03749,
-    "top1": 0.095,
-    "top1ShareOfDivision": 0.00215,
+    "top10ShareOfDivision": 0.03734,
+    "top1": 0.185,
+    "top1ShareOfDivision": 0.00417,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.966,
@@ -358,14 +375,21 @@
       "status": "available",
       "months": 48,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 9.424,
+      "median": 5,
+      "uncited": 36,
+      "i10": 79,
+      "i100": 0
     }
   },
   "lifetime": {
     "papers": 1016,
     "outputBasis": "measured",
-    "citations": 39662,
+    "citations": 39661,
     "top10": 83.5,
-    "top10ShareOfDivision": 0.05324,
+    "top10ShareOfDivision": 0.05309,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -374,13 +398,20 @@
       "yearsFromFormulation": 7.838,
       "bibcode": "1981Sci...211..700W",
       "date": "1981-02-00"
+    },
+    "spread": {
+      "mean": 39.036,
+      "median": 17,
+      "uncited": 89,
+      "i10": 652,
+      "i100": 79
     }
   },
   "query": {
     "arms": "((=abs:\"Solar Maximum Mission\" OR facility:SMM OR (abs:SMM AND collection:astronomy NOT abs:(submillimeter OR submillimetre OR submm OR SCUBA OR protostar OR protostars OR protostellar OR Serpens OR lensed OR multifragmentation OR ULIRG) NOT =abs:\"molecular gas\" NOT =abs:\"high redshift\" NOT =abs:\"high-redshift\" NOT =abs:\"mixture modeling\") OR (=abs:\"Solar Max\" AND abs:(ACRIM OR blankets OR louver OR repair OR \"space shuttle\")) OR ((abs:HXIS OR =abs:\"Hard X-ray Imaging Spectrometer\") AND abs:(flare OR flares OR solar OR sun OR coronal OR arch OR arches) NOT abs:(STIX OR \"Solar Orbiter\" OR \"ASO-S\" OR Hitomi OR NuSTAR)) OR ((abs:HXRBS OR =abs:\"Hard X-ray Burst Spectrometer\") AND (abs:(flare OR flares OR solar OR sun OR \"gamma-ray\") OR =abs:\"gamma rays\") NOT abs:binaries) OR ((abs:UVSP OR =abs:\"Ultraviolet Spectrometer and Polarimeter\") AND abs:(solar OR sun OR flare OR flares OR ozone OR filament OR \"transition region\") NOT abs:Mars) OR ((abs:XRP OR =abs:\"X-Ray Polychromator\") AND abs:(flare OR flares OR \"active region\") NOT abs:pulsar) OR (=abs:\"Coronagraph/Polarimeter\" AND abs:(CME OR CMEs)) OR =abs:\"ACRIM I\" OR (abs:(ACRIM1 OR \"ACRIM-1\") AND abs:(irradiance OR TSI OR solar))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1980-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Solar+Maximum+Mission%22+OR+facility%3ASMM+OR+%28abs%3ASMM+AND+collection%3Aastronomy+NOT+abs%3A%28submillimeter+OR+submillimetre+OR+submm+OR+SCUBA+OR+protostar+OR+protostars+OR+protostellar+OR+Serpens+OR+lensed+OR+multifragmentation+OR+ULIRG%29+NOT+%3Dabs%3A%22molecular+gas%22+NOT+%3Dabs%3A%22high+redshift%22+NOT+%3Dabs%3A%22high-redshift%22+NOT+%3Dabs%3A%22mixture+modeling%22%29+OR+%28%3Dabs%3A%22Solar+Max%22+AND+abs%3A%28ACRIM+OR+blankets+OR+louver+OR+repair+OR+%22space+shuttle%22%29%29+OR+%28%28abs%3AHXIS+OR+%3Dabs%3A%22Hard+X-ray+Imaging+Spectrometer%22%29+AND+abs%3A%28flare+OR+flares+OR+solar+OR+sun+OR+coronal+OR+arch+OR+arches%29+NOT+abs%3A%28STIX+OR+%22Solar+Orbiter%22+OR+%22ASO-S%22+OR+Hitomi+OR+NuSTAR%29%29+OR+%28%28abs%3AHXRBS+OR+%3Dabs%3A%22Hard+X-ray+Burst+Spectrometer%22%29+AND+%28abs%3A%28flare+OR+flares+OR+solar+OR+sun+OR+%22gamma-ray%22%29+OR+%3Dabs%3A%22gamma+rays%22%29+NOT+abs%3Abinaries%29+OR+%28%28abs%3AUVSP+OR+%3Dabs%3A%22Ultraviolet+Spectrometer+and+Polarimeter%22%29+AND+abs%3A%28solar+OR+sun+OR+flare+OR+flares+OR+ozone+OR+filament+OR+%22transition+region%22%29+NOT+abs%3AMars%29+OR+%28%28abs%3AXRP+OR+%3Dabs%3A%22X-Ray+Polychromator%22%29+AND+abs%3A%28flare+OR+flares+OR+%22active+region%22%29+NOT+abs%3Apulsar%29+OR+%28%3Dabs%3A%22Coronagraph%2FPolarimeter%22+AND+abs%3A%28CME+OR+CMEs%29%29+OR+%3Dabs%3A%22ACRIM+I%22+OR+%28abs%3A%28ACRIM1+OR+%22ACRIM-1%22%29+AND+abs%3A%28irradiance+OR+TSI+OR+solar%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1980-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:26:49.946805+00:00",
+    "fetchedAt": "2026-09-30T18:05:04.848629+00:00",
     "reconciliation": {
       "adsReturned": 1030,
       "curatedOut": 13,
@@ -505,6 +536,8 @@
       "bibcode": "2002JGRA..107.1468P",
       "title": "NRLMSISE-00 empirical model of the atmosphere: Statistical comparisons and scientific issues",
       "firstAuthor": "Picone, J. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 2611
     },
@@ -512,6 +545,8 @@
       "bibcode": "1993JGR....9813177H",
       "title": "Sizes and locations of coronal mass ejections: SMM observations from 1980 and 1984-1989",
       "firstAuthor": "Hundhausen, A. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 1993,
       "citations": 492
     },
@@ -519,6 +554,8 @@
       "bibcode": "1993SoPh..143..275C",
       "title": "Frequency distributions and correlations of solar X-ray flare parameters",
       "firstAuthor": "Crosby, Norma B.",
+      "authors": null,
+      "authorCount": null,
       "year": 1993,
       "citations": 491
     },
@@ -526,6 +563,8 @@
       "bibcode": "1997JGR...10214631M",
       "title": "Critical issues for understanding particle acceleration in impulsive solar flares",
       "firstAuthor": "Miller, James A.",
+      "authors": null,
+      "authorCount": null,
       "year": 1997,
       "citations": 450
     },
@@ -533,6 +572,8 @@
       "bibcode": "1984Natur.312..623R",
       "title": "A 154-day periodicity in the occurrence of hard solar flares?",
       "firstAuthor": "Rieger, E.",
+      "authors": null,
+      "authorCount": null,
       "year": 1984,
       "citations": 441
     },
@@ -540,6 +581,8 @@
       "bibcode": "1985SoPh..100..465D",
       "title": "Solar Hard X-Ray Bursts",
       "firstAuthor": "Dennis, B. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 1985,
       "citations": 436
     },
@@ -547,6 +590,8 @@
       "bibcode": "2015JCAP...02..006P",
       "title": "Revisiting the SN1987A gamma-ray limit on ultralight axion-like particles",
       "firstAuthor": "Payez, Alexandre",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 389
     },
@@ -554,6 +599,8 @@
       "bibcode": "1982SoPh...78..107A",
       "title": "Impulsive Phase of Flares in Soft X-Ray Emission",
       "firstAuthor": "Antonucci, E.",
+      "authors": null,
+      "authorCount": null,
       "year": 1982,
       "citations": 351
     },
@@ -561,6 +608,8 @@
       "bibcode": "1981Sci...211..700W",
       "title": "Observations of Solar Irradiance Variability",
       "firstAuthor": "Willson, R. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 1981,
       "citations": 348
     },
@@ -568,6 +617,8 @@
       "bibcode": "1985JGR....90..275I",
       "title": "Observation of a coronal transient from 1.2 to 6 solar radii",
       "firstAuthor": "Illing, R. M. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 1985,
       "citations": 332
     },
@@ -575,6 +626,8 @@
       "bibcode": "1993SoPh..146..177D",
       "title": "The Neupert Effect: what can it tell up about the Impulsive and Gradual Phases of Solar Flares",
       "firstAuthor": "Dennis, Brian R.",
+      "authors": null,
+      "authorCount": null,
       "year": 1993,
       "citations": 303
     },
@@ -582,6 +635,8 @@
       "bibcode": "1987SoPh..108..383W",
       "title": "Activity Associated with the Solar Origin of Coronal Mass Ejections",
       "firstAuthor": "Webb, D. F.",
+      "authors": null,
+      "authorCount": null,
       "year": 1987,
       "citations": 298
     },
@@ -589,6 +644,8 @@
       "bibcode": "1986JGR....9110951I",
       "title": "Disruption of a coronal streamer by an eruptive prominence and coronal mass ejection",
       "firstAuthor": "Illing, R. M. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 1986,
       "citations": 289
     },
@@ -596,6 +653,8 @@
       "bibcode": "1988ApJ...328..347F",
       "title": "Magnetic Modulation of Solar Luminosity by Photospheric Activity",
       "firstAuthor": "Foukal, P.",
+      "authors": null,
+      "authorCount": null,
       "year": 1988,
       "citations": 283
     },
@@ -603,6 +662,8 @@
       "bibcode": "1991Natur.351...42W",
       "title": "The Sun's luminosity over a complete solar cycle",
       "firstAuthor": "Willson, Richard C.",
+      "authors": null,
+      "authorCount": null,
       "year": 1991,
       "citations": 282
     },
@@ -610,6 +671,8 @@
       "bibcode": "1995JGR...100.3355F",
       "title": "The initiation of coronal mass ejections by newly emerging magnetic flux",
       "firstAuthor": "Feynman, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 1995,
       "citations": 279
     },
@@ -617,6 +680,8 @@
       "bibcode": "1994ApJ...428..837K",
       "title": "Injection Profiles of Solar Energetic Particles as Functions of Coronal Mass Ejection Heights",
       "firstAuthor": "Kahler, S.",
+      "authors": null,
+      "authorCount": null,
       "year": 1994,
       "citations": 275
     },
@@ -624,13 +689,17 @@
       "bibcode": "1988Natur.331..416M",
       "title": "Gamma-ray line emission from SN1987A",
       "firstAuthor": "Matz, S. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 1988,
-      "citations": 267
+      "citations": 266
     },
     {
       "bibcode": "1985Natur.318..449W",
       "title": "Change of solar oscillation eigenfrequencies with the solar cycle",
       "firstAuthor": "Woodard, Martin F.",
+      "authors": null,
+      "authorCount": null,
       "year": 1985,
       "citations": 252
     },
@@ -638,6 +707,8 @@
       "bibcode": "1988Natur.332..810W",
       "title": "Solar luminosity variations in solar cycle 21",
       "firstAuthor": "Willson, Richard C.",
+      "authors": null,
+      "authorCount": null,
       "year": 1988,
       "citations": 251
     }

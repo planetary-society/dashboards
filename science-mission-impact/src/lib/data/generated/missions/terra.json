@@ -21,11 +21,14 @@
   "indices": {
     "h": 247,
     "m": 9.148,
-    "i100": 1126
+    "i100": 1126,
+    "g": 420,
+    "tori": 3264.729,
+    "riq": 2040
   },
   "facts": {
-    "papers": 15344,
-    "citations": 577938,
+    "papers": 15347,
+    "citations": 577899,
     "publicationYears": [
       2000,
       2026
@@ -88,7 +91,7 @@
       788,
       775,
       759,
-      525
+      528
     ],
     "citations": [
       14,
@@ -102,7 +105,7 @@
       6019,
       7122,
       8522,
-      10773,
+      10767,
       12593,
       15776,
       19215,
@@ -117,13 +120,13 @@
       50808,
       53340,
       55211,
-      35267
+      35234
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 577938,
-      "observed": 577938,
+      "expected": 577899,
+      "observed": 577899,
       "missing": 0
     }
   },
@@ -251,6 +254,13 @@
     "bibcode": "2002RSEnv..83..195H",
     "title": "Overview of the radiometric and biophysical performance of the MODIS vegetation indices",
     "firstAuthor": "Huete, A.",
+    "authors": [
+      "Huete, A.",
+      "Didan, K.",
+      "Miura, T.",
+      "Rodriguez, E. P."
+    ],
+    "authorCount": 6,
     "year": 2002,
     "citations": 7003
   },
@@ -259,9 +269,9 @@
       "bins": [
         1052.875,
         1272.608,
-        1337.158,
-        1367.319,
-        1363.718,
+        1337.753,
+        1367.204,
+        1363.238,
         1434.412,
         1355.416,
         1419.546,
@@ -275,8 +285,8 @@
         156.278,
         198.004,
         177.56,
-        184.15,
-        167.296,
+        184.019,
+        167.427,
         155.523,
         144.979,
         144.669,
@@ -287,24 +297,24 @@
     },
     "lifetime": {
       "bins": [
-        1007.044,
-        1248.467,
-        1472.186,
-        1477.347,
-        1544.039,
-        1619.953,
-        1638.825,
-        1713.563,
-        1789.124,
-        1833.452
+        1009.007,
+        1249.234,
+        1472.495,
+        1476.268,
+        1544.113,
+        1620.885,
+        1638.253,
+        1713.935,
+        1789.099,
+        1833.71
       ],
-      "top1": 200.688
+      "top1": 200.7
     }
   },
   "full": {
     "papers": 13285,
     "outputBasis": "measured",
-    "citations": 151518,
+    "citations": 151514,
     "top10": 762.66,
     "top10ShareOfDivision": 0.19825,
     "top1": 74.253,
@@ -324,6 +334,13 @@
       "status": "available",
       "months": 286,
       "citationBuckets": 27
+    },
+    "spread": {
+      "mean": 11.405,
+      "median": 7,
+      "uncited": 857,
+      "i10": 5208,
+      "i100": 63
     }
   },
   "window": {
@@ -349,14 +366,21 @@
       "status": "available",
       "months": 95,
       "citationBuckets": 12
+    },
+    "spread": {
+      "mean": 10.614,
+      "median": 6,
+      "uncited": 122,
+      "i10": 546,
+      "i100": 6
     }
   },
   "lifetime": {
-    "papers": 15344,
+    "papers": 15347,
     "outputBasis": "measured",
-    "citations": 577938,
-    "top10": 828.006,
-    "top10ShareOfDivision": 0.20012,
+    "citations": 577899,
+    "top10": 827.726,
+    "top10ShareOfDivision": 0.20005,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -365,21 +389,28 @@
       "yearsFromFormulation": 11.581,
       "bibcode": "2000JGR...10511767B",
       "date": "2000-05-00"
+    },
+    "spread": {
+      "mean": 37.656,
+      "median": 16,
+      "uncited": 968,
+      "i10": 9801,
+      "i100": 1126
     }
   },
   "query": {
     "arms": "(((abs:Terra AND abs:(ASTER OR CERES OR MODIS OR MISR OR MOPITT)) OR =abs:\"Terra Earth-Observing\" OR =abs:\"Terra Earth Observing\" OR =abs:\"Terra spacecraft\" OR =abs:\"Terra satellite\" OR =abs:\"Terra satellites\" OR =abs:\"Terra and Aqua\" OR =abs:\"Aqua and Terra\" OR (abs:\"EOS-AM1\" AND abs:(Terra OR satellite OR MODIS OR ASTER OR MISR OR MOPITT OR CERES)) OR =abs:\"EOS AM-1\" OR =abs:\"Measurements of Pollution in the Troposphere\" OR =abs:\"Measurement of Pollution in the Troposphere\" OR =abs:\"Advanced Spaceborne Thermal Emission and Reflection Radiometer\" OR =abs:\"Multi-angle Imaging SpectroRadiometer\" OR =abs:\"Multiangle Imaging Spectroradiometer\" OR (abs:MOPITT AND abs:(carbon OR monoxide OR troposphere OR pollution)) OR (abs:MISR AND abs:(aerosol OR cloud OR radiance OR satellite OR reflectance OR smoke)) OR (abs:ASTER AND abs:(satellite OR radiometer OR thermal OR elevation OR remote)) OR ((=abs:\"Moderate Resolution Imaging Spectroradiometer\" OR =abs:\"Clouds and the Earth's Radiant Energy System\") AND abs:Terra) OR ((=abs:\"Moderate Resolution Imaging Spectroradiometer\" OR =abs:\"Clouds and the Earth's Radiant Energy System\") AND NOT abs:Aqua)))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2000-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ATerra+AND+abs%3A%28ASTER+OR+CERES+OR+MODIS+OR+MISR+OR+MOPITT%29%29+OR+%3Dabs%3A%22Terra+Earth-Observing%22+OR+%3Dabs%3A%22Terra+Earth+Observing%22+OR+%3Dabs%3A%22Terra+spacecraft%22+OR+%3Dabs%3A%22Terra+satellite%22+OR+%3Dabs%3A%22Terra+satellites%22+OR+%3Dabs%3A%22Terra+and+Aqua%22+OR+%3Dabs%3A%22Aqua+and+Terra%22+OR+%28abs%3A%22EOS-AM1%22+AND+abs%3A%28Terra+OR+satellite+OR+MODIS+OR+ASTER+OR+MISR+OR+MOPITT+OR+CERES%29%29+OR+%3Dabs%3A%22EOS+AM-1%22+OR+%3Dabs%3A%22Measurements+of+Pollution+in+the+Troposphere%22+OR+%3Dabs%3A%22Measurement+of+Pollution+in+the+Troposphere%22+OR+%3Dabs%3A%22Advanced+Spaceborne+Thermal+Emission+and+Reflection+Radiometer%22+OR+%3Dabs%3A%22Multi-angle+Imaging+SpectroRadiometer%22+OR+%3Dabs%3A%22Multiangle+Imaging+Spectroradiometer%22+OR+%28abs%3AMOPITT+AND+abs%3A%28carbon+OR+monoxide+OR+troposphere+OR+pollution%29%29+OR+%28abs%3AMISR+AND+abs%3A%28aerosol+OR+cloud+OR+radiance+OR+satellite+OR+reflectance+OR+smoke%29%29+OR+%28abs%3AASTER+AND+abs%3A%28satellite+OR+radiometer+OR+thermal+OR+elevation+OR+remote%29%29+OR+%28%28%3Dabs%3A%22Moderate+Resolution+Imaging+Spectroradiometer%22+OR+%3Dabs%3A%22Clouds+and+the+Earth%27s+Radiant+Energy+System%22%29+AND+abs%3ATerra%29+OR+%28%28%3Dabs%3A%22Moderate+Resolution+Imaging+Spectroradiometer%22+OR+%3Dabs%3A%22Clouds+and+the+Earth%27s+Radiant+Energy+System%22%29+AND+NOT+abs%3AAqua%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:20:10.343835+00:00",
+    "fetchedAt": "2026-09-30T17:58:12.487756+00:00",
     "reconciliation": {
-      "adsReturned": 15372,
+      "adsReturned": 15375,
       "curatedOut": 4,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 24,
-      "final": 15344
+      "final": 15347
     }
   },
   "curation": {
@@ -480,6 +511,8 @@
       "bibcode": "2002RSEnv..83..195H",
       "title": "Overview of the radiometric and biophysical performance of the MODIS vegetation indices",
       "firstAuthor": "Huete, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 7003
     },
@@ -487,6 +520,8 @@
       "bibcode": "2001BAMS...82.2415B",
       "title": "FLUXNET: A New Tool to Study the Temporal and Spatial Variability of Ecosystem-Scale Carbon Dioxide, Water Vapor, and Energy Flux Densities.",
       "firstAuthor": "Baldocchi, Dennis",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 2809
     },
@@ -494,6 +529,8 @@
       "bibcode": "2005JAtS...62..947R",
       "title": "The MODIS Aerosol Algorithm, Products, and Validation.",
       "firstAuthor": "Remer, L. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 2311
     },
@@ -501,6 +538,8 @@
       "bibcode": "2010ACP....1011707V",
       "title": "Global fire emissions and the contribution of deforestation, savanna, forest, agricultural, and peat fires (1997-2009)",
       "firstAuthor": "van der Werf, G. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 2090
     },
@@ -508,6 +547,8 @@
       "bibcode": "2002RSEnv..83..287F",
       "title": "Global land cover mapping from MODIS: algorithms and early results",
       "firstAuthor": "Friedl, M. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 2020
     },
@@ -515,6 +556,8 @@
       "bibcode": "2003RSEnv..84..471Z",
       "title": "Monitoring vegetation phenology using MODIS",
       "firstAuthor": "Zhang, Xiaoyang",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 1890
     },
@@ -522,6 +565,8 @@
       "bibcode": "2002RSEnv..83..135S",
       "title": "First operational BRDF, albedo nadir reflectance products from MODIS",
       "firstAuthor": "Schaaf, Crystal B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 1879
     },
@@ -529,6 +574,8 @@
       "bibcode": "2004RSEnv..91..332C",
       "title": "A simple method for reconstructing a high-quality NDVI time-series data set based on the Savitzky-Golay filter",
       "firstAuthor": "Chen, Jin",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 1705
     },
@@ -536,6 +583,8 @@
       "bibcode": "2013AMT.....6.2989L",
       "title": "The Collection 6 MODIS aerosol products over land and ocean",
       "firstAuthor": "Levy, R. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 1566
     },
@@ -543,13 +592,17 @@
       "bibcode": "2004IJRS...25.2365L",
       "title": "Change detection techniques",
       "firstAuthor": "Lu, D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
-      "citations": 1523
+      "citations": 1522
     },
     {
       "bibcode": "2008RSEnv.112.3833J",
       "title": "Development of a two-band enhanced vegetation index without a blue band",
       "firstAuthor": "Jiang, Zhangyan",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 1517
     },
@@ -557,6 +610,8 @@
       "bibcode": "2002RSEnv..83..214M",
       "title": "Global products of vegetation leaf area and fraction absorbed PAR from year one of MODIS data",
       "firstAuthor": "Myneni, R. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 1490
     },
@@ -564,6 +619,8 @@
       "bibcode": "2006ITGRS..44.2207G",
       "title": "On the Blending of the Landsat and MODIS Surface Reflectance: Predicting Daily Landsat Surface Reflectance",
       "firstAuthor": "Gao, Feng",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 1449
     },
@@ -571,6 +628,8 @@
       "bibcode": "2003ITGRS..41..459P",
       "title": "The MODIS Cloud Products: Algorithms and Examples From Terra",
       "firstAuthor": "Platnick, Steven",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 1417
     },
@@ -578,6 +637,8 @@
       "bibcode": "2004BiSci..54..547R",
       "title": "A Continuous Satellite-Derived Measure of Global Terrestrial Primary Production",
       "firstAuthor": "Running, Steven W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 1350
     },
@@ -585,6 +646,8 @@
       "bibcode": "2007RSEnv.111..519M",
       "title": "Development of a global evapotranspiration algorithm based on MODIS and global meteorology data",
       "firstAuthor": "Mu, Qiaozhen",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 1307
     },
@@ -592,6 +655,8 @@
       "bibcode": "2010RSEnv.114..106V",
       "title": "Detecting trend and seasonal changes in satellite image time series",
       "firstAuthor": "Verbesselt, Jan",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 1298
     },
@@ -599,6 +664,8 @@
       "bibcode": "2006IGRSL...3...68M",
       "title": "A Landsat Surface Reflectance Dataset for North America, 1990─2000",
       "firstAuthor": "Masek, Jeffrey G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 1287
     },
@@ -606,6 +673,8 @@
       "bibcode": "2016RSEnv.185...46V",
       "title": "Preliminary analysis of the performance of the Landsat 8/OLI land surface reflectance product",
       "firstAuthor": "Vermote, Eric",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 1255
     },
@@ -613,11 +682,13 @@
       "bibcode": "2003RSEnv..87..273G",
       "title": "An Enhanced Contextual Fire Detection Algorithm for MODIS",
       "firstAuthor": "Giglio, Louis",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 1231
     }
   ],
   "papersFile": {
-    "rows": 15344
+    "rows": 15347
   }
 }

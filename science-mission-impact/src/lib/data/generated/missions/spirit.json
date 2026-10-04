@@ -21,11 +21,14 @@
   "indices": {
     "h": 73,
     "m": 3.174,
-    "i100": 48
+    "i100": 48,
+    "g": 115,
+    "tori": 71.023,
+    "riq": 351
   },
   "facts": {
-    "papers": 333,
-    "citations": 16600,
+    "papers": 335,
+    "citations": 16607,
     "publicationYears": [
       2004,
       2026
@@ -80,7 +83,7 @@
       6,
       4,
       4,
-      3
+      5
     ],
     "citations": [
       89,
@@ -90,7 +93,7 @@
       797,
       491,
       678,
-      637,
+      640,
       642,
       917,
       871,
@@ -105,13 +108,13 @@
       796,
       833,
       837,
-      565
+      569
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 16600,
-      "observed": 16600,
+      "expected": 16607,
+      "observed": 16607,
       "missing": 0
     }
   },
@@ -164,50 +167,57 @@
     "bibcode": "2015Icar..251...65M",
     "title": "Eight-year climatology of dust optical depth on Mars",
     "firstAuthor": "Montabone, L.",
+    "authors": [
+      "Montabone, L.",
+      "Forget, F.",
+      "Millour, E.",
+      "Wilson, R. J."
+    ],
+    "authorCount": 11,
     "year": 2015,
     "citations": 422
   },
   "ranks": {
     "full": {
       "bins": [
-        34.822,
-        23.547,
-        20.753,
-        19.487,
-        13.052,
-        24.22,
-        18.841,
-        18.352,
-        28.058,
-        33.868
+        34.867,
+        23.528,
+        20.846,
+        19.407,
+        12.971,
+        24.286,
+        18.821,
+        18.368,
+        28.075,
+        33.833
       ],
-      "top1": 5.016
+      "top1": 5.014
     },
     "window": {
       "bins": [
-        7.303,
-        6.423,
-        3.323,
-        3.38,
-        4.661,
-        3.227,
-        1.962,
-        5.662,
-        8.81,
-        20.25
+        7.344,
+        6.395,
+        3.327,
+        3.371,
+        4.659,
+        3.234,
+        2.001,
+        5.617,
+        8.814,
+        20.238
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        20.537,
-        29.09,
-        34.716,
-        26.713,
-        24.541,
-        29.156,
-        34.112,
-        34.135,
+        22.406,
+        29.097,
+        34.532,
+        26.944,
+        23.72,
+        29.904,
+        34.185,
+        34.213,
         40,
         60
       ],
@@ -217,11 +227,11 @@
   "full": {
     "papers": 235,
     "outputBasis": "measured",
-    "citations": 3865,
+    "citations": 3866,
     "top10": 23.25,
     "top10ShareOfDivision": 0.02131,
-    "top1": 4.516,
-    "top1ShareOfDivision": 0.04139,
+    "top1": 4.514,
+    "top1ShareOfDivision": 0.04138,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.575,
@@ -237,6 +247,13 @@
       "status": "available",
       "months": 112,
       "citationBuckets": 13
+    },
+    "spread": {
+      "mean": 16.451,
+      "median": 9,
+      "uncited": 26,
+      "i10": 116,
+      "i100": 4
     }
   },
   "window": {
@@ -244,7 +261,7 @@
     "outputBasis": "measured",
     "citations": 1979,
     "top10": 11.5,
-    "top10ShareOfDivision": 0.02381,
+    "top10ShareOfDivision": 0.02382,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -262,12 +279,19 @@
       "status": "available",
       "months": 26,
       "citationBuckets": 6
+    },
+    "spread": {
+      "mean": 30.446,
+      "median": 19,
+      "uncited": 4,
+      "i10": 42,
+      "i100": 4
     }
   },
   "lifetime": {
-    "papers": 333,
+    "papers": 335,
     "outputBasis": "measured",
-    "citations": 16600,
+    "citations": 16607,
     "top10": 27.283,
     "top10ShareOfDivision": 0.02002,
     "top1": null,
@@ -278,21 +302,28 @@
       "yearsFromFormulation": 4.252,
       "bibcode": "2004Sci...305..794S",
       "date": "2004-08-00"
+    },
+    "spread": {
+      "mean": 49.573,
+      "median": 25,
+      "uncited": 18,
+      "i10": 236,
+      "i100": 48
     }
   },
   "query": {
     "arms": "(((=abs:\"Mars Exploration Rover\" OR =abs:\"Mars Exploration Rovers\" OR =abs:\"Spirit rover\" OR =abs:\"Opportunity rover\" OR (abs:Spirit AND (abs:\"MER-A\" OR =abs:\"Mars Rover\" OR =abs:\"Mars Rovers\" OR =abs:\"Mars roving\" OR abs:Gusev)) OR (abs:Opportunity AND (abs:\"MER-B\" OR =abs:\"Mars Rover\" OR =abs:\"Mars Rovers\" OR =abs:\"Mars roving\" OR =abs:\"Meridiani Planum\")) OR (((abs:Pancam AND NOT abs:ExoMars) OR =abs:\"Mini-TES\" OR =abs:\"Microscopic Imager\" OR =abs:\"Rock Abrasion Tool\") AND (abs:Gusev OR =abs:Meridiani OR =abs:\"Columbia Hills\" OR =abs:\"Home Plate\" OR =abs:\"Victoria crater\" OR =abs:\"Endeavour crater\" OR =abs:\"Endurance crater\"))) AND (((abs:Spirit AND NOT =abs:\"Spirit of St. Louis\") OR abs:\"MER-A\" OR abs:Gusev OR =abs:\"Columbia Hills\" OR =abs:\"Husband Hill\" OR =abs:\"Home Plate\" OR abs:Wishstone OR =abs:\"Columbia Memorial Station\") OR (=abs:\"Mars Exploration Rovers\" AND NOT (=abs:\"Opportunity rover\" OR =abs:\"Opportunity rovers\" OR =abs:\"rover Opportunity\" OR =abs:\"rovers Opportunity\" OR =abs:\"Spirit and Opportunity\" OR =abs:\"Opportunity and Spirit\" OR =abs:\"MER Opportunity\" OR =abs:\"Opportunity Mars Exploration Rover\" OR =abs:\"Opportunity Mars Exploration Rovers\" OR =abs:\"Opportunity Mars rover\" OR =abs:\"Opportunity MER\" OR =abs:\"Opportunity tracking\" OR abs:\"MER-B\" OR =abs:\"Opportunity site\" OR =abs:\"Opportunity landing\" OR =abs:\"Opportunity mission\" OR =abs:\"Opportunity missions\" OR =abs:\"Opportunity traverse\" OR =abs:\"Opportunity data\" OR =abs:\"Opportunity Mini-TES\" OR =abs:\"Opportunity Mössbauer\" OR =abs:Meridiani OR =abs:\"Burns formation\" OR =abs:\"Endeavour crater\" OR =abs:\"Eagle crater\" OR =abs:\"Endurance crater\" OR =abs:\"Victoria crater\" OR =abs:\"hematite spherules\" OR =abs:\"Marathon Valley\" OR =abs:\"Perseverance Valley\" OR =abs:\"Erebus crater\" OR =abs:\"Bounce Rock\" OR =abs:\"Cape York\")))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2004-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Mars+Exploration+Rover%22+OR+%3Dabs%3A%22Mars+Exploration+Rovers%22+OR+%3Dabs%3A%22Spirit+rover%22+OR+%3Dabs%3A%22Opportunity+rover%22+OR+%28abs%3ASpirit+AND+%28abs%3A%22MER-A%22+OR+%3Dabs%3A%22Mars+Rover%22+OR+%3Dabs%3A%22Mars+Rovers%22+OR+%3Dabs%3A%22Mars+roving%22+OR+abs%3AGusev%29%29+OR+%28abs%3AOpportunity+AND+%28abs%3A%22MER-B%22+OR+%3Dabs%3A%22Mars+Rover%22+OR+%3Dabs%3A%22Mars+Rovers%22+OR+%3Dabs%3A%22Mars+roving%22+OR+%3Dabs%3A%22Meridiani+Planum%22%29%29+OR+%28%28%28abs%3APancam+AND+NOT+abs%3AExoMars%29+OR+%3Dabs%3A%22Mini-TES%22+OR+%3Dabs%3A%22Microscopic+Imager%22+OR+%3Dabs%3A%22Rock+Abrasion+Tool%22%29+AND+%28abs%3AGusev+OR+%3Dabs%3AMeridiani+OR+%3Dabs%3A%22Columbia+Hills%22+OR+%3Dabs%3A%22Home+Plate%22+OR+%3Dabs%3A%22Victoria+crater%22+OR+%3Dabs%3A%22Endeavour+crater%22+OR+%3Dabs%3A%22Endurance+crater%22%29%29%29+AND+%28%28%28abs%3ASpirit+AND+NOT+%3Dabs%3A%22Spirit+of+St.+Louis%22%29+OR+abs%3A%22MER-A%22+OR+abs%3AGusev+OR+%3Dabs%3A%22Columbia+Hills%22+OR+%3Dabs%3A%22Husband+Hill%22+OR+%3Dabs%3A%22Home+Plate%22+OR+abs%3AWishstone+OR+%3Dabs%3A%22Columbia+Memorial+Station%22%29+OR+%28%3Dabs%3A%22Mars+Exploration+Rovers%22+AND+NOT+%28%3Dabs%3A%22Opportunity+rover%22+OR+%3Dabs%3A%22Opportunity+rovers%22+OR+%3Dabs%3A%22rover+Opportunity%22+OR+%3Dabs%3A%22rovers+Opportunity%22+OR+%3Dabs%3A%22Spirit+and+Opportunity%22+OR+%3Dabs%3A%22Opportunity+and+Spirit%22+OR+%3Dabs%3A%22MER+Opportunity%22+OR+%3Dabs%3A%22Opportunity+Mars+Exploration+Rover%22+OR+%3Dabs%3A%22Opportunity+Mars+Exploration+Rovers%22+OR+%3Dabs%3A%22Opportunity+Mars+rover%22+OR+%3Dabs%3A%22Opportunity+MER%22+OR+%3Dabs%3A%22Opportunity+tracking%22+OR+abs%3A%22MER-B%22+OR+%3Dabs%3A%22Opportunity+site%22+OR+%3Dabs%3A%22Opportunity+landing%22+OR+%3Dabs%3A%22Opportunity+mission%22+OR+%3Dabs%3A%22Opportunity+missions%22+OR+%3Dabs%3A%22Opportunity+traverse%22+OR+%3Dabs%3A%22Opportunity+data%22+OR+%3Dabs%3A%22Opportunity+Mini-TES%22+OR+%3Dabs%3A%22Opportunity+M%C3%B6ssbauer%22+OR+%3Dabs%3AMeridiani+OR+%3Dabs%3A%22Burns+formation%22+OR+%3Dabs%3A%22Endeavour+crater%22+OR+%3Dabs%3A%22Eagle+crater%22+OR+%3Dabs%3A%22Endurance+crater%22+OR+%3Dabs%3A%22Victoria+crater%22+OR+%3Dabs%3A%22hematite+spherules%22+OR+%3Dabs%3A%22Marathon+Valley%22+OR+%3Dabs%3A%22Perseverance+Valley%22+OR+%3Dabs%3A%22Erebus+crater%22+OR+%3Dabs%3A%22Bounce+Rock%22+OR+%3Dabs%3A%22Cape+York%22%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:27:27.096812+00:00",
+    "fetchedAt": "2026-09-30T17:51:08.239260+00:00",
     "reconciliation": {
-      "adsReturned": 339,
+      "adsReturned": 341,
       "curatedOut": 6,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 333
+      "final": 335
     }
   },
   "curation": {
@@ -369,6 +400,8 @@
       "bibcode": "2015Icar..251...65M",
       "title": "Eight-year climatology of dust optical depth on Mars",
       "firstAuthor": "Montabone, L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 422
     },
@@ -376,6 +409,8 @@
       "bibcode": "2008Sci...320.1063S",
       "title": "Detection of Silica-Rich Deposits on Mars",
       "firstAuthor": "Squyres, S. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 373
     },
@@ -383,6 +418,8 @@
       "bibcode": "2005Natur.436...49Y",
       "title": "An integrated view of the chemistry and mineralogy of martian soils",
       "firstAuthor": "Yen, Albert S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 349
     },
@@ -390,6 +427,8 @@
       "bibcode": "2010Sci...329..421M",
       "title": "Identification of Carbonate-Rich Outcrops on Mars by the Spirit Rover",
       "firstAuthor": "Morris, Richard V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 335
     },
@@ -397,6 +436,8 @@
       "bibcode": "2004Sci...305..829G",
       "title": "Chemistry of Rocks and Soils in Gusev Crater from the Alpha Particle X-ray Spectrometer",
       "firstAuthor": "Gellert, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 300
     },
@@ -404,13 +445,17 @@
       "bibcode": "2004Sci...305..794S",
       "title": "The Spirit Rover's Athena Science Investigation at Gusev Crater, Mars",
       "firstAuthor": "Squyres, S. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
-      "citations": 278
+      "citations": 279
     },
     {
       "bibcode": "2006JGRE..111.2S05G",
       "title": "Alpha Particle X-Ray Spectrometer (APXS): Results from Gusev crater and calibration report",
       "firstAuthor": "Gellert, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 276
     },
@@ -418,6 +463,8 @@
       "bibcode": "2006JGRE..111.2S13M",
       "title": "Mössbauer mineralogy of rock, soil, and dust at Gusev crater, Mars: Spirit's journey through weakly altered olivine basalt on the plains and pervasively altered basalt in the Columbia Hills",
       "firstAuthor": "Morris, R. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 259
     },
@@ -425,6 +472,8 @@
       "bibcode": "2004Sci...305..833M",
       "title": "Mineralogy at Gusev Crater from the Mössbauer Spectrometer on the Spirit Rover",
       "firstAuthor": "Morris, R. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 245
     },
@@ -432,6 +481,8 @@
       "bibcode": "2013Sci...341E...5B",
       "title": "Curiosity at Gale Crater, Mars: Characterization and Analysis of the Rocknest Sand Shadow",
       "firstAuthor": "Blake, D. F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 242
     },
@@ -439,6 +490,8 @@
       "bibcode": "2004Sci...305..842M",
       "title": "Basaltic Rocks Analyzed by the Spirit Rover in Gusev Crater",
       "firstAuthor": "McSween, H. Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 240
     },
@@ -446,6 +499,8 @@
       "bibcode": "2006AREPS..34...83D",
       "title": "Mössbauer Spectroscopy of Earth and Planetary Materials",
       "firstAuthor": "Dyar, M. Darby",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 223
     },
@@ -453,6 +508,8 @@
       "bibcode": "2008JGRE..113.6S07S",
       "title": "Wind-driven particle mobility on Mars: Insights from Mars Exploration Rover observations at ``El Dorado'' and surroundings at Gusev Crater",
       "firstAuthor": "Sullivan, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 223
     },
@@ -460,6 +517,8 @@
       "bibcode": "2005Natur.436...66H",
       "title": "Water alteration of rocks and soils on Mars at the Spirit rover site in Gusev crater",
       "firstAuthor": "Haskin, Larry A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 220
     },
@@ -467,6 +526,8 @@
       "bibcode": "2004Sci...306.1753L",
       "title": "Atmospheric Imaging Results from the Mars Exploration Rovers: Spirit and Opportunity",
       "firstAuthor": "Lemmon, M. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 210
     },
@@ -474,6 +535,8 @@
       "bibcode": "2009JGRE..114.0D04W",
       "title": "Wavelength dependence of dust aerosol single scattering albedo as observed by the Compact Reconnaissance Imaging Spectrometer",
       "firstAuthor": "Wolff, M. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 205
     },
@@ -481,6 +544,8 @@
       "bibcode": "2006JGRE..11112S10G",
       "title": "Erosion rates at the Mars Exploration Rover landing sites and long-term climate change on Mars",
       "firstAuthor": "Golombek, M. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 203
     },
@@ -488,6 +553,8 @@
       "bibcode": "2006JGRE..11112S15M",
       "title": "Mössbauer mineralogy of rock, soil, and dust at Meridiani Planum, Mars: Opportunity's journey across sulfate-rich outcrop, basaltic sand and dust, and hematite lag deposits",
       "firstAuthor": "Morris, R. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 198
     },
@@ -495,6 +562,8 @@
       "bibcode": "2006JGRE..111.2S10M",
       "title": "Characterization and petrologic interpretation of olivine-rich basalts at Gusev Crater, Mars",
       "firstAuthor": "McSween, H. Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 190
     },
@@ -502,11 +571,13 @@
       "bibcode": "2011E&PSL.304..527F",
       "title": "Fe ²⁺-Mg partitioning between olivine and basaltic melts: Applications to genesis of olivine-phyric shergottites and conditions of melting in the Martian interior",
       "firstAuthor": "Filiberto, Justin",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 163
     }
   ],
   "papersFile": {
-    "rows": 333
+    "rows": 335
   }
 }

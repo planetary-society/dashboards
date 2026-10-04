@@ -21,11 +21,14 @@
   "indices": {
     "h": 115,
     "m": 3.194,
-    "i100": 152
+    "i100": 152,
+    "g": 168,
+    "tori": 430.823,
+    "riq": 560
   },
   "facts": {
     "papers": 1577,
-    "citations": 63865,
+    "citations": 63881,
     "publicationYears": [
       1991,
       2026
@@ -129,7 +132,7 @@
       1667,
       1557,
       2581,
-      1923,
+      1924,
       1634,
       1947,
       1893,
@@ -144,13 +147,13 @@
       3181,
       3742,
       3792,
-      2689
+      2704
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 63865,
-      "observed": 63865,
+      "expected": 63881,
+      "observed": 63881,
       "missing": 0
     }
   },
@@ -226,52 +229,59 @@
     "bibcode": "2000Sci...289.1340K",
     "title": "Galileo Magnetometer Measurements: A Stronger Case for a Subsurface Ocean at Europa",
     "firstAuthor": "Kivelson, Margaret G.",
+    "authors": [
+      "Kivelson, Margaret G.",
+      "Khurana, Krishan K.",
+      "Russell, Christopher T.",
+      "Volwerk, Martin"
+    ],
+    "authorCount": 6,
     "year": 2000,
     "citations": 529
   },
   "ranks": {
     "full": {
       "bins": [
-        137.659,
-        92.678,
-        92.532,
-        96.373,
-        66.109,
-        63.588,
-        65.562,
-        67.723,
-        58.173,
-        56.603
+        137.833,
+        92.664,
+        92.989,
+        95.923,
+        66.063,
+        63.541,
+        65.507,
+        67.756,
+        58.224,
+        56.5
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        70.193,
-        43.061,
-        41.228,
-        34.947,
-        34.648,
-        38.481,
-        40.72,
-        30.542,
-        32.93,
-        24.25
+        70.383,
+        43.008,
+        41.269,
+        34.899,
+        34.595,
+        38.491,
+        40.686,
+        30.513,
+        32.918,
+        24.238
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        138.461,
-        121.209,
-        126.796,
-        142.716,
-        151.916,
-        157.16,
-        168.797,
-        196.605,
-        186.264,
-        187.076
+        136.941,
+        121.928,
+        126.624,
+        143.086,
+        152.041,
+        156.866,
+        168.127,
+        197.837,
+        186.283,
+        187.267
       ],
       "top1": 13
     }
@@ -299,6 +309,13 @@
       "status": "available",
       "months": 117,
       "citationBuckets": 13
+    },
+    "spread": {
+      "mean": 10.317,
+      "median": 6,
+      "uncited": 103,
+      "i10": 282,
+      "i100": 2
     }
   },
   "window": {
@@ -306,7 +323,7 @@
     "outputBasis": "measured",
     "citations": 5113,
     "top10": 31,
-    "top10ShareOfDivision": 0.06418,
+    "top10ShareOfDivision": 0.06421,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -324,14 +341,21 @@
       "status": "available",
       "months": 48,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 13.077,
+      "median": 8,
+      "uncited": 55,
+      "i10": 179,
+      "i100": 2
     }
   },
   "lifetime": {
     "papers": 1577,
     "outputBasis": "measured",
-    "citations": 63865,
+    "citations": 63881,
     "top10": 95.933,
-    "top10ShareOfDivision": 0.07039,
+    "top10ShareOfDivision": 0.0704,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -340,13 +364,20 @@
       "yearsFromFormulation": 14.919,
       "bibcode": "1992Sci...257.1647B",
       "date": "1992-09-00"
+    },
+    "spread": {
+      "mean": 40.508,
+      "median": 22,
+      "uncited": 105,
+      "i10": 1115,
+      "i100": 152
     }
   },
   "query": {
     "arms": "(((=abs:Galileo AND abs:(Jupiter OR Jovian OR Io OR Europa OR Ganymede OR Callisto OR Amalthea OR Thebe OR Gaspra OR Dactyl OR \"Shoemaker-Levy\" OR =abs:(\"Galilean satellites\" OR \"Galilean satellite\" OR \"Galilean moons\" OR \"Galilean moon\")) NOT =abs:(\"Telescopio Nazionale Galileo\" OR \"Telescopio Nazinale Galileo\")) OR (=abs:Galileo AND collection:astronomy AND (abs:(spacecraft OR flyby OR asteroid OR magnetometer) OR =abs:(\"entry probe\" OR orbiter)) NOT (=abs:(\"navigation satellite\" OR \"satellite navigation\" OR \"positioning system\" OR \"Galileo Project\" OR \"Galileo FOC\" OR \"Galileo IOV\" OR \"Galileo constellation\" OR \"Galileo for Science\" OR \"Telescopio Nazionale Galileo\" OR \"Telescopio Nazinale Galileo\") OR abs:(GLONASS OR BeiDou))) OR =abs:\"Galileo probe\" OR (collection:astronomy AND (=abs:(\"Near-Infrared Mapping Spectrometer\" OR \"Near Infrared Mapping Spectrometer\" OR \"Photopolarimeter-Radiometer\" OR \"Solid State Imaging\" OR \"Energetic Particles Detector\" OR \"Heavy Ion Counter\" OR \"Dust Detector System\" OR \"Probe Mass Spectrometer\" OR \"Net Flux Radiometer\") OR abs:(NIMS OR SSI OR PPR OR EPD)) AND abs:(Jupiter OR Jovian OR Io OR Europa OR Ganymede OR Callisto OR Amalthea OR Gaspra OR Ida OR Dactyl))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1996-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3AGalileo+AND+abs%3A%28Jupiter+OR+Jovian+OR+Io+OR+Europa+OR+Ganymede+OR+Callisto+OR+Amalthea+OR+Thebe+OR+Gaspra+OR+Dactyl+OR+%22Shoemaker-Levy%22+OR+%3Dabs%3A%28%22Galilean+satellites%22+OR+%22Galilean+satellite%22+OR+%22Galilean+moons%22+OR+%22Galilean+moon%22%29%29+NOT+%3Dabs%3A%28%22Telescopio+Nazionale+Galileo%22+OR+%22Telescopio+Nazinale+Galileo%22%29%29+OR+%28%3Dabs%3AGalileo+AND+collection%3Aastronomy+AND+%28abs%3A%28spacecraft+OR+flyby+OR+asteroid+OR+magnetometer%29+OR+%3Dabs%3A%28%22entry+probe%22+OR+orbiter%29%29+NOT+%28%3Dabs%3A%28%22navigation+satellite%22+OR+%22satellite+navigation%22+OR+%22positioning+system%22+OR+%22Galileo+Project%22+OR+%22Galileo+FOC%22+OR+%22Galileo+IOV%22+OR+%22Galileo+constellation%22+OR+%22Galileo+for+Science%22+OR+%22Telescopio+Nazionale+Galileo%22+OR+%22Telescopio+Nazinale+Galileo%22%29+OR+abs%3A%28GLONASS+OR+BeiDou%29%29%29+OR+%3Dabs%3A%22Galileo+probe%22+OR+%28collection%3Aastronomy+AND+%28%3Dabs%3A%28%22Near-Infrared+Mapping+Spectrometer%22+OR+%22Near+Infrared+Mapping+Spectrometer%22+OR+%22Photopolarimeter-Radiometer%22+OR+%22Solid+State+Imaging%22+OR+%22Energetic+Particles+Detector%22+OR+%22Heavy+Ion+Counter%22+OR+%22Dust+Detector+System%22+OR+%22Probe+Mass+Spectrometer%22+OR+%22Net+Flux+Radiometer%22%29+OR+abs%3A%28NIMS+OR+SSI+OR+PPR+OR+EPD%29%29+AND+abs%3A%28Jupiter+OR+Jovian+OR+Io+OR+Europa+OR+Ganymede+OR+Callisto+OR+Amalthea+OR+Gaspra+OR+Ida+OR+Dactyl%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:25:27.078643+00:00",
+    "fetchedAt": "2026-09-30T17:48:49.829450+00:00",
     "reconciliation": {
       "adsReturned": 1522,
       "curatedOut": 23,
@@ -1232,6 +1263,8 @@
       "bibcode": "2000Sci...289.1340K",
       "title": "Galileo Magnetometer Measurements: A Stronger Case for a Subsurface Ocean at Europa",
       "firstAuthor": "Kivelson, Margaret G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 529
     },
@@ -1239,6 +1272,8 @@
       "bibcode": "1998Natur.395..777K",
       "title": "Induced magnetic fields as evidence for subsurface oceans in Europa and Callisto",
       "firstAuthor": "Khurana, K. K.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 513
     },
@@ -1246,6 +1281,8 @@
       "bibcode": "1998PhRvL..81.2858A",
       "title": "Indication, from Pioneer 10/11, Galileo, and Ulysses Data, of an Apparent Anomalous, Weak, Long-Range Acceleration",
       "firstAuthor": "Anderson, John D.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 466
     },
@@ -1253,6 +1290,8 @@
       "bibcode": "1998Natur.391..363C",
       "title": "Evidence for a subsurface ocean on Europa",
       "firstAuthor": "Carr, M. H.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 462
     },
@@ -1260,6 +1299,8 @@
       "bibcode": "2001Icar..149..133C",
       "title": "Energetic Ion and Electron Irradiation of the Icy Galilean Satellites",
       "firstAuthor": "Cooper, John F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 365
     },
@@ -1267,6 +1308,8 @@
       "bibcode": "1998Sci...281.2019A",
       "title": "Europa's Differentiated Internal Structure: Inferences from Four Galileo Encounters",
       "firstAuthor": "Anderson, J. D.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 363
     },
@@ -1274,6 +1317,8 @@
       "bibcode": "2002Icar..157..507K",
       "title": "The Permanent and Inductive Magnetic Moments of Ganymede",
       "firstAuthor": "Kivelson, M. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 363
     },
@@ -1281,6 +1326,8 @@
       "bibcode": "1999JGR...10424015P",
       "title": "Does Europa have a subsurface ocean? Evaluation of the geological evidence",
       "firstAuthor": "Pappalardo, R. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 360
     },
@@ -1288,13 +1335,17 @@
       "bibcode": "2000Icar..148..226K",
       "title": "Europa's Crust and Ocean: Origin, Composition, and the Prospects for Life",
       "firstAuthor": "Kargel, Jeffrey S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
-      "citations": 355
+      "citations": 356
     },
     {
       "bibcode": "1998Natur.391..365P",
       "title": "Geological evidence for solid-state convection in Europa's ice shell",
       "firstAuthor": "Pappalardo, R. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 348
     },
@@ -1302,6 +1353,8 @@
       "bibcode": "1998Sci...280.1242M",
       "title": "Salts on Europa's Surface Detected by Galileo's Near Infrared Mapping Spectrometer",
       "firstAuthor": "McCord, T. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 347
     },
@@ -1309,6 +1362,8 @@
       "bibcode": "1996Natur.384..537K",
       "title": "Discovery of Ganymede's magnetic field by the Galileo spacecraft",
       "firstAuthor": "Kivelson, M. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 1996,
       "citations": 341
     },
@@ -1316,6 +1371,8 @@
       "bibcode": "2000Icar..147..329Z",
       "title": "Subsurface Oceans on Europa and Callisto: Constraints from Galileo Magnetometer Observations",
       "firstAuthor": "Zimmer, Christophe",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 334
     },
@@ -1323,6 +1380,8 @@
       "bibcode": "1993Natur.365..715S",
       "title": "A search for life on Earth from the Galileo spacecraft",
       "firstAuthor": "Sagan, Carl",
+      "authors": null,
+      "authorCount": null,
       "year": 1993,
       "citations": 321
     },
@@ -1330,6 +1389,8 @@
       "bibcode": "1999Sci...286...97C",
       "title": "Sulfuric acid on Europa and the radiolytic sulfur cycle.",
       "firstAuthor": "Carlson, R. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 321
     },
@@ -1337,6 +1398,8 @@
       "bibcode": "2005RPPh...68.1935V",
       "title": "Jovian atmospheric dynamics: an update after Galileo and Cassini",
       "firstAuthor": "Vasavada, Ashwin R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 299
     },
@@ -1344,6 +1407,8 @@
       "bibcode": "1998Icar..135...64G",
       "title": "Tectonic Processes on Europa: Tidal Stresses, Mechanical Response, and Visible Features",
       "firstAuthor": "Greenberg, Richard",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 297
     },
@@ -1351,6 +1416,8 @@
       "bibcode": "1999JGR...10411827M",
       "title": "Hydrated salt minerals on Europa's surface from the Galileo near-infrared mapping spectrometer (NIMS) investigation",
       "firstAuthor": "McCord, Thomas B.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 290
     },
@@ -1358,13 +1425,17 @@
       "bibcode": "2004Icar..171..153W",
       "title": "Updated Galileo probe mass spectrometer measurements of carbon, oxygen, nitrogen, and sulfur on Jupiter",
       "firstAuthor": "Wong, Michael H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
-      "citations": 287
+      "citations": 288
     },
     {
       "bibcode": "1998JGR...10322831N",
       "title": "The composition of the Jovian atmosphere as determined by the Galileo probe mass spectrometer",
       "firstAuthor": "Niemann, H. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 283
     }

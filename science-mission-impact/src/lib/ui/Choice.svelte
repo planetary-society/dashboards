@@ -1,5 +1,7 @@
 <script>
 	// A choice set inside a sentence: "Share of top [10% · 1%] papers". No pills, no chrome.
+	// An option's `short` replaces its label on a phone; its `hint` ({ text, href }) adds an "i".
+	import Hint from './Hint.svelte';
 	let { options, value, onchange, label } = $props();
 </script>
 
@@ -9,8 +11,9 @@
 		<button
 			type="button"
 			aria-pressed={opt.value === value}
-			onclick={() => onchange(opt.value)}>{opt.label}</button
-		>
+			onclick={() => onchange(opt.value)}
+			>{#if opt.short}<span class="long">{opt.label}</span><span class="short">{opt.short}</span>{:else}{opt.label}{/if}</button
+		>{#if opt.hint}<Hint label={opt.label} text={opt.hint.text} href={opt.hint.href} />{/if}
 	{/each}
 </span>
 
@@ -58,6 +61,20 @@
 
 	button[aria-pressed='true']::after {
 		background: var(--neptune);
+	}
+
+	.short {
+		display: none;
+	}
+
+	@media (max-width: 560px) {
+		.long {
+			display: none;
+		}
+
+		.short {
+			display: inline;
+		}
 	}
 
 	.sep {

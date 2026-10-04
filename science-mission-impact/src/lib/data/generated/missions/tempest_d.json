@@ -21,7 +21,10 @@
   "indices": {
     "h": 4,
     "m": 0.571,
-    "i100": 0
+    "i100": 0,
+    "g": 8,
+    "tori": 0.404,
+    "riq": 127
   },
   "facts": {
     "papers": 9,
@@ -117,6 +120,13 @@
     "bibcode": "2021ITGRS..5910213P",
     "title": "TEMPEST-D Radiometer: Instrument Description and Prelaunch Calibration",
     "firstAuthor": "Padmanabhan, Sharmila",
+    "authors": [
+      "Padmanabhan, Sharmila",
+      "Gaier, Todd C.",
+      "Tanner, Alan B.",
+      "Brown, Shannon T."
+    ],
+    "authorCount": 9,
     "year": 2021,
     "citations": 25
   },
@@ -125,8 +135,8 @@
       "bins": [
         0.426,
         1.574,
-        1.831,
-        0.169,
+        1.83,
+        0.17,
         1,
         0.54,
         0.46,
@@ -141,8 +151,8 @@
         0,
         0,
         0,
-        0.159,
-        0.841,
+        0.158,
+        0.842,
         0,
         0,
         0,
@@ -153,11 +163,11 @@
     },
     "lifetime": {
       "bins": [
-        0.13,
-        3.011,
-        1.859,
-        0.084,
-        1.916,
+        0.127,
+        3.01,
+        1.863,
+        0.081,
+        1.919,
         0,
         2,
         0,
@@ -190,6 +200,13 @@
       "status": "available",
       "months": 57,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 6.5,
+      "median": 4.5,
+      "uncited": 0,
+      "i10": 2,
+      "i100": 0
     }
   },
   "window": {
@@ -215,6 +232,13 @@
       "status": "available",
       "months": 27,
       "citationBuckets": 6
+    },
+    "spread": {
+      "mean": 6,
+      "median": 6,
+      "uncited": 0,
+      "i10": 0,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -231,13 +255,20 @@
       "yearsFromFormulation": null,
       "bibcode": null,
       "date": null
+    },
+    "spread": {
+      "mean": 8.444,
+      "median": 4,
+      "uncited": 0,
+      "i10": 3,
+      "i100": 0
     }
   },
   "query": {
     "arms": "((=abs:\"Temporal Experiment for Storms and Tropical Systems\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2018-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Temporal+Experiment+for+Storms+and+Tropical+Systems%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:25:57.742900+00:00",
+    "fetchedAt": "2026-10-01T16:27:45.106058+00:00",
     "reconciliation": {
       "adsReturned": 13,
       "curatedOut": 4,
@@ -330,6 +361,8 @@
       "bibcode": "2021ITGRS..5910213P",
       "title": "TEMPEST-D Radiometer: Instrument Description and Prelaunch Calibration",
       "firstAuthor": "Padmanabhan, Sharmila",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 25
     },
@@ -337,6 +370,8 @@
       "bibcode": "2021ITGRS..59.4904B",
       "title": "Calibration and Validation of the TEMPEST-D CubeSat Radiometer",
       "firstAuthor": "Berg, Wesley",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 21
     },
@@ -344,6 +379,8 @@
       "bibcode": "2020JAtOT..37..197S",
       "title": "A Passive Microwave Retrieval Algorithm with Minimal View-Angle Bias: Application to the TEMPEST-D CubeSat Mission",
       "firstAuthor": "Schulte, Richard M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 10
     },
@@ -351,6 +388,8 @@
       "bibcode": "2022IJSTA..15.3626R",
       "title": "Rainfall Estimation From TEMPEST-D CubeSat Observations: A Machine-Learning Approach",
       "firstAuthor": "Radhakrishnan, Chandrasekar",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 9
     },
@@ -358,6 +397,8 @@
       "bibcode": "2022IJSTA..15.7826R",
       "title": "Cross Validation of TEMPEST-D and RainCube Observations Over Precipitation Systems",
       "firstAuthor": "Radhakrishnan, Chandrasekar",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 4
     },
@@ -365,6 +406,8 @@
       "bibcode": "2023JAtOT..40..669B",
       "title": "Single-Point Calibration for Microwave Sounders: Application to TEMPEST-D",
       "firstAuthor": "Brown, Shannon T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2023,
       "citations": 3
     },
@@ -372,6 +415,8 @@
       "bibcode": "2024AMT....17.5637K",
       "title": "Merging TEMPEST microwave and GOES-16 geostationary IR soundings for improved water vapor profiles",
       "firstAuthor": "Kuo, Chia-Pang",
+      "authors": null,
+      "authorCount": null,
       "year": 2024,
       "citations": 2
     },
@@ -379,6 +424,8 @@
       "bibcode": "2022ITGRS..6059698C",
       "title": "Correcting Calibration Drifts Using Solar and Lunar Intrusions for Miniaturized Microwave Radiometers",
       "firstAuthor": "Crews, Angela",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 1
     },
@@ -386,6 +433,8 @@
       "bibcode": "2023IJSTA..16.7422R",
       "title": "TEMPEST-D and GPM-GMI Observations Over Precipitating Systems: A Cross-Validation Study",
       "firstAuthor": "Radhakrishnan, Chandrasekar",
+      "authors": null,
+      "authorCount": null,
       "year": 2023,
       "citations": 1
     }

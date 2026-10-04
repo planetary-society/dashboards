@@ -3,8 +3,8 @@
   "name": "Heliophysics",
   "facts": {
     "missions": 29,
-    "papers": 18232,
-    "citations": 589794,
+    "papers": 18323,
+    "citations": 591462,
     "publicationYears": [
       1980,
       2026
@@ -79,7 +79,7 @@
       89,
       72,
       102,
-      134,
+      135,
       208,
       189,
       212,
@@ -93,22 +93,22 @@
       431,
       534,
       425,
-      517,
-      620,
-      667,
-      680,
-      742,
-      792,
-      763,
+      518,
+      621,
+      669,
+      683,
+      747,
+      793,
+      765,
       840,
-      827,
-      860,
-      918,
-      871,
-      870,
-      902,
-      931,
-      714
+      831,
+      869,
+      923,
+      874,
+      876,
+      916,
+      953,
+      726
     ],
     "citations": [
       2,
@@ -129,41 +129,41 @@
       1828,
       2034,
       1972,
-      2626,
+      2627,
       2936,
       3478,
       4384,
       4503,
       5142,
       4853,
-      6600,
-      8302,
-      8745,
+      6601,
+      8303,
+      8746,
       10319,
       11498,
       11710,
-      14844,
-      17465,
-      18394,
-      20041,
-      23828,
-      26269,
-      27008,
-      29892,
-      32169,
-      34229,
-      40960,
-      39076,
-      40000,
-      42778,
-      44509,
-      32337
+      14841,
+      17467,
+      18410,
+      20061,
+      23869,
+      26344,
+      27081,
+      29970,
+      32253,
+      34352,
+      41104,
+      39222,
+      40159,
+      42987,
+      44723,
+      32620
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 589794,
-      "observed": 589794,
+      "expected": 591462,
+      "observed": 591462,
       "missing": 0
     }
   },
@@ -197,7 +197,7 @@
       71,
       74,
       79,
-      92,
+      94,
       85,
       99,
       69,
@@ -206,34 +206,34 @@
       104,
       111,
       91,
-      101,
+      102,
       85,
       82,
       93,
-      70,
-      102,
+      71,
+      103,
       103,
       100,
-      98,
+      99,
       139,
-      97,
+      99,
       60,
       67,
       57,
       47,
-      51,
-      33,
+      52,
+      34,
       62,
       53,
       59,
-      48,
+      49,
       41,
-      39,
-      48,
+      40,
+      49,
       33,
       30,
-      29,
-      32,
+      30,
+      33,
       28,
       25,
       29,
@@ -243,29 +243,29 @@
       37,
       22,
       16,
-      27,
-      18,
+      28,
+      19,
       25,
       32,
       25,
       30,
       35,
-      9,
-      18,
+      10,
+      19,
       14
     ],
     "citationsByYearOffset": [
       153,
       1796,
       5674,
-      11007,
-      14921,
-      14046,
-      10574,
-      6619,
-      3363,
-      1451,
-      378
+      11011,
+      14941,
+      14091,
+      10652,
+      6691,
+      3417,
+      1466,
+      388
     ],
     "missionsByYear": [
       28,
@@ -284,22 +284,143 @@
     "bibcode": "2012SoPh..275...17L",
     "title": "The Atmospheric Imaging Assembly (AIA) on the Solar Dynamics Observatory (SDO)",
     "firstAuthor": "Lemen, James R.",
+    "authors": [
+      "Lemen, James R.",
+      "Title, Alan M.",
+      "Akin, David J.",
+      "Boerner, Paul F."
+    ],
+    "authorCount": 47,
     "year": 2012,
-    "citations": 4693,
+    "citations": 4694,
     "missionId": "sdo"
   },
-  "cutoffs": {
+  "stats": {
     "full": {
-      "1": 61,
-      "10": 25
+      "missions": 29,
+      "papers": 14475,
+      "citations": 167927,
+      "mean": 11.601,
+      "median": 8,
+      "uncited": 967,
+      "hIndex": 78,
+      "topDecileCitationShare": 0.3713,
+      "cutoffs": [
+        {
+          "percent": 0.1,
+          "citations": 181,
+          "papers": 15
+        },
+        {
+          "percent": 1,
+          "citations": 61,
+          "papers": 146
+        },
+        {
+          "percent": 5,
+          "citations": 34,
+          "papers": 757
+        },
+        {
+          "percent": 10,
+          "citations": 25,
+          "papers": 1561
+        },
+        {
+          "percent": 25,
+          "citations": 15,
+          "papers": 3753
+        },
+        {
+          "percent": 50,
+          "citations": 8,
+          "papers": 7307
+        }
+      ]
     },
     "window": {
-      "1": 90,
-      "10": 32
+      "missions": 29,
+      "papers": 4437,
+      "citations": 68564,
+      "mean": 15.453,
+      "median": 10,
+      "uncited": 278,
+      "hIndex": 71,
+      "topDecileCitationShare": 0.39028,
+      "cutoffs": [
+        {
+          "percent": 0.1,
+          "citations": 356,
+          "papers": 5
+        },
+        {
+          "percent": 1,
+          "citations": 90,
+          "papers": 46
+        },
+        {
+          "percent": 5,
+          "citations": 44,
+          "papers": 225
+        },
+        {
+          "percent": 10,
+          "citations": 32,
+          "papers": 452
+        },
+        {
+          "percent": 25,
+          "citations": 19,
+          "papers": 1195
+        },
+        {
+          "percent": 50,
+          "citations": 10,
+          "papers": 2307
+        }
+      ]
     },
     "lifetime": {
-      "1": 259,
-      "10": 72
+      "missions": 29,
+      "papers": 18323,
+      "citations": 591462,
+      "mean": 32.28,
+      "median": 14,
+      "uncited": 1358,
+      "hIndex": 229,
+      "topDecileCitationShare": 0.50413,
+      "cutoffs": [
+        {
+          "percent": 0.1,
+          "citations": 1104,
+          "papers": 19
+        },
+        {
+          "percent": 1,
+          "citations": 258,
+          "papers": 184
+        },
+        {
+          "percent": 5,
+          "citations": 112,
+          "papers": 920
+        },
+        {
+          "percent": 10,
+          "citations": 72,
+          "papers": 1867
+        },
+        {
+          "percent": 25,
+          "citations": 35,
+          "papers": 4686
+        },
+        {
+          "percent": 50,
+          "citations": 14,
+          "papers": 9490
+        }
+      ]
     }
   },
   "costCurves": {
@@ -357,121 +478,121 @@
           {
             "id": "trace",
             "cost": 104,
-            "topShare": 0.03466,
+            "topShare": 0.03454,
             "costShare": 0.01366
           },
           {
             "id": "fast",
             "cost": 116.7,
-            "topShare": 0.04853,
+            "topShare": 0.04836,
             "costShare": 0.02388
           },
           {
             "id": "sampex",
             "cost": 127.8,
-            "topShare": 0.04853,
+            "topShare": 0.04836,
             "costShare": 0.03508
           },
           {
             "id": "sme",
             "cost": 149.7,
-            "topShare": 0.04853,
+            "topShare": 0.04836,
             "costShare": 0.0482
           },
           {
             "id": "rhessi",
             "cost": 169,
-            "topShare": 0.10168,
+            "topShare": 0.10132,
             "costShare": 0.063
           },
           {
             "id": "iris",
             "cost": 172.4,
-            "topShare": 0.12247,
+            "topShare": 0.12205,
             "costShare": 0.07811
           },
           {
             "id": "ibex",
             "cost": 209.3,
-            "topShare": 0.18356,
+            "topShare": 0.18207,
             "costShare": 0.09645
           },
           {
             "id": "aim",
             "cost": 234.4,
-            "topShare": 0.18356,
+            "topShare": 0.18207,
             "costShare": 0.11698
           },
           {
             "id": "ampte_cce",
             "cost": 242,
-            "topShare": 0.18356,
+            "topShare": 0.18207,
             "costShare": 0.13819
           },
           {
             "id": "image",
             "cost": 276.9,
-            "topShare": 0.18356,
+            "topShare": 0.18207,
             "costShare": 0.16245
           },
           {
             "id": "themis_artemis",
             "cost": 301.3,
-            "topShare": 0.27585,
+            "topShare": 0.27317,
             "costShare": 0.18885
           },
           {
             "id": "icon",
             "cost": 340.4,
-            "topShare": 0.28278,
+            "topShare": 0.28008,
             "costShare": 0.21867
           },
           {
             "id": "timed",
             "cost": 490.6,
-            "topShare": 0.30358,
+            "topShare": 0.30081,
             "costShare": 0.26166
           },
           {
             "id": "ace",
             "cost": 538,
-            "topShare": 0.32034,
+            "topShare": 0.3175,
             "costShare": 0.30879
           },
           {
             "id": "smm",
             "cost": 581.4,
-            "topShare": 0.34113,
+            "topShare": 0.33823,
             "costShare": 0.35973
           },
           {
             "id": "polar",
             "cost": 757.1,
-            "topShare": 0.34113,
+            "topShare": 0.33823,
             "costShare": 0.42607
           },
           {
             "id": "rbsp",
             "cost": 1015.3,
-            "topShare": 0.46758,
+            "topShare": 0.4638,
             "costShare": 0.51502
           },
           {
             "id": "stereo",
             "cost": 1066.8,
-            "topShare": 0.61475,
+            "topShare": 0.60499,
             "costShare": 0.60849
           },
           {
             "id": "wind",
             "cost": 1356.5,
-            "topShare": 0.71815,
+            "topShare": 0.71035,
             "costShare": 0.72734
           },
           {
             "id": "sdo",
             "cost": 1456.4,
-            "topShare": 0.91797,
+            "topShare": 0.91825,
             "costShare": 0.85494
           },
           {
@@ -528,139 +649,139 @@
           {
             "id": "elfin",
             "cost": 5.4,
-            "topShare": 0.00849,
+            "topShare": 0.00845,
             "costShare": 0.00157
           },
           {
             "id": "cupid",
             "cost": 8.5,
-            "topShare": 0.00849,
+            "topShare": 0.00845,
             "costShare": 0.00231
           },
           {
             "id": "snoe",
             "cost": 25.5,
-            "topShare": 0.00849,
+            "topShare": 0.00845,
             "costShare": 0.00455
           },
           {
             "id": "trace",
             "cost": 104,
-            "topShare": 0.0751,
+            "topShare": 0.07483,
             "costShare": 0.01366
           },
           {
             "id": "fast",
             "cost": 116.7,
-            "topShare": 0.08503,
+            "topShare": 0.08473,
             "costShare": 0.02388
           },
           {
             "id": "sampex",
             "cost": 127.8,
-            "topShare": 0.09401,
+            "topShare": 0.09368,
             "costShare": 0.03508
           },
           {
             "id": "sme",
             "cost": 149.7,
-            "topShare": 0.10279,
+            "topShare": 0.10243,
             "costShare": 0.0482
           },
           {
             "id": "rhessi",
             "cost": 169,
-            "topShare": 0.15595,
+            "topShare": 0.15443,
             "costShare": 0.063
           },
           {
             "id": "iris",
             "cost": 172.4,
-            "topShare": 0.20074,
+            "topShare": 0.19824,
             "costShare": 0.07811
           },
           {
             "id": "ibex",
             "cost": 209.3,
-            "topShare": 0.24148,
+            "topShare": 0.23866,
             "costShare": 0.09645
           },
           {
             "id": "aim",
             "cost": 234.4,
-            "topShare": 0.24356,
+            "topShare": 0.24073,
             "costShare": 0.11698
           },
           {
             "id": "ampte_cce",
             "cost": 242,
-            "topShare": 0.255,
+            "topShare": 0.25213,
             "costShare": 0.13819
           },
           {
             "id": "image",
             "cost": 276.9,
-            "topShare": 0.26888,
+            "topShare": 0.26596,
             "costShare": 0.16245
           },
           {
             "id": "themis_artemis",
             "cost": 301.3,
-            "topShare": 0.31223,
+            "topShare": 0.30888,
             "costShare": 0.18885
           },
           {
             "id": "icon",
             "cost": 340.4,
-            "topShare": 0.32401,
+            "topShare": 0.32063,
             "costShare": 0.21867
           },
           {
             "id": "timed",
             "cost": 490.6,
-            "topShare": 0.35725,
+            "topShare": 0.35352,
             "costShare": 0.26166
           },
           {
             "id": "ace",
             "cost": 538,
-            "topShare": 0.40562,
+            "topShare": 0.40149,
             "costShare": 0.30879
           },
           {
             "id": "smm",
             "cost": 581.4,
-            "topShare": 0.44758,
+            "topShare": 0.44331,
             "costShare": 0.35973
           },
           {
             "id": "polar",
             "cost": 757.1,
-            "topShare": 0.46285,
+            "topShare": 0.4586,
             "costShare": 0.42607
           },
           {
             "id": "rbsp",
             "cost": 1015.3,
-            "topShare": 0.53667,
+            "topShare": 0.53161,
             "costShare": 0.51502
           },
           {
             "id": "stereo",
             "cost": 1066.8,
-            "topShare": 0.64546,
+            "topShare": 0.63889,
             "costShare": 0.60849
           },
           {
             "id": "wind",
             "cost": 1356.5,
-            "topShare": 0.72258,
+            "topShare": 0.71619,
             "costShare": 0.72734
           },
           {
             "id": "sdo",
             "cost": 1456.4,
-            "topShare": 0.91415,
+            "topShare": 0.91502,
             "costShare": 0.85494
           },
           {
@@ -737,121 +858,121 @@
           {
             "id": "trace",
             "cost": 104,
-            "topShare": 0.04526,
+            "topShare": 0.04508,
             "costShare": 0.01366
           },
           {
             "id": "fast",
             "cost": 116.7,
-            "topShare": 0.04526,
+            "topShare": 0.04508,
             "costShare": 0.02388
           },
           {
             "id": "sampex",
             "cost": 127.8,
-            "topShare": 0.04526,
+            "topShare": 0.04508,
             "costShare": 0.03508
           },
           {
             "id": "sme",
             "cost": 149.7,
-            "topShare": 0.04526,
+            "topShare": 0.04508,
             "costShare": 0.0482
           },
           {
             "id": "rhessi",
             "cost": 169,
-            "topShare": 0.06789,
+            "topShare": 0.06761,
             "costShare": 0.063
           },
           {
             "id": "iris",
             "cost": 172.4,
-            "topShare": 0.09052,
+            "topShare": 0.09015,
             "costShare": 0.07811
           },
           {
             "id": "ibex",
             "cost": 209.3,
-            "topShare": 0.13793,
+            "topShare": 0.1394,
             "costShare": 0.09645
           },
           {
             "id": "aim",
             "cost": 234.4,
-            "topShare": 0.13793,
+            "topShare": 0.1394,
             "costShare": 0.11698
           },
           {
             "id": "ampte_cce",
             "cost": 242,
-            "topShare": 0.13793,
+            "topShare": 0.1394,
             "costShare": 0.13819
           },
           {
             "id": "image",
             "cost": 276.9,
-            "topShare": 0.13793,
+            "topShare": 0.1394,
             "costShare": 0.16245
           },
           {
             "id": "themis_artemis",
             "cost": 301.3,
-            "topShare": 0.22845,
+            "topShare": 0.22955,
             "costShare": 0.18885
           },
           {
             "id": "icon",
             "cost": 340.4,
-            "topShare": 0.22845,
+            "topShare": 0.22955,
             "costShare": 0.21867
           },
           {
             "id": "timed",
             "cost": 490.6,
-            "topShare": 0.22845,
+            "topShare": 0.22955,
             "costShare": 0.26166
           },
           {
             "id": "ace",
             "cost": 538,
-            "topShare": 0.22845,
+            "topShare": 0.22955,
             "costShare": 0.30879
           },
           {
             "id": "smm",
             "cost": 581.4,
-            "topShare": 0.2306,
+            "topShare": 0.23372,
             "costShare": 0.35973
           },
           {
             "id": "polar",
             "cost": 757.1,
-            "topShare": 0.2306,
+            "topShare": 0.23372,
             "costShare": 0.42607
           },
           {
             "id": "rbsp",
             "cost": 1015.3,
-            "topShare": 0.45689,
+            "topShare": 0.45909,
             "costShare": 0.51502
           },
           {
             "id": "stereo",
             "cost": 1066.8,
-            "topShare": 0.52478,
+            "topShare": 0.52671,
             "costShare": 0.60849
           },
           {
             "id": "wind",
             "cost": 1356.5,
-            "topShare": 0.52478,
+            "topShare": 0.52671,
             "costShare": 0.72734
           },
           {
             "id": "sdo",
             "cost": 1456.4,
-            "topShare": 0.79633,
+            "topShare": 0.79716,
             "costShare": 0.85494
           },
           {
@@ -908,139 +1029,139 @@
           {
             "id": "elfin",
             "cost": 5.4,
-            "topShare": 0.00249,
+            "topShare": 0.00248,
             "costShare": 0.00157
           },
           {
             "id": "cupid",
             "cost": 8.5,
-            "topShare": 0.00249,
+            "topShare": 0.00248,
             "costShare": 0.00231
           },
           {
             "id": "snoe",
             "cost": 25.5,
-            "topShare": 0.00249,
+            "topShare": 0.00248,
             "costShare": 0.00455
           },
           {
             "id": "trace",
             "cost": 104,
-            "topShare": 0.03983,
+            "topShare": 0.03967,
             "costShare": 0.01366
           },
           {
             "id": "fast",
             "cost": 116.7,
-            "topShare": 0.05623,
+            "topShare": 0.05601,
             "costShare": 0.02388
           },
           {
             "id": "sampex",
             "cost": 127.8,
-            "topShare": 0.06302,
+            "topShare": 0.06277,
             "costShare": 0.03508
           },
           {
             "id": "sme",
             "cost": 149.7,
-            "topShare": 0.07803,
+            "topShare": 0.07772,
             "costShare": 0.0482
           },
           {
             "id": "rhessi",
             "cost": 169,
-            "topShare": 0.15211,
+            "topShare": 0.15149,
             "costShare": 0.063
           },
           {
             "id": "iris",
             "cost": 172.4,
-            "topShare": 0.22339,
+            "topShare": 0.22249,
             "costShare": 0.07811
           },
           {
             "id": "ibex",
             "cost": 209.3,
-            "topShare": 0.24828,
+            "topShare": 0.24728,
             "costShare": 0.09645
           },
           {
             "id": "aim",
             "cost": 234.4,
-            "topShare": 0.25066,
+            "topShare": 0.24964,
             "costShare": 0.11698
           },
           {
             "id": "ampte_cce",
             "cost": 242,
-            "topShare": 0.25066,
+            "topShare": 0.24964,
             "costShare": 0.13819
           },
           {
             "id": "image",
             "cost": 276.9,
-            "topShare": 0.27359,
+            "topShare": 0.27248,
             "costShare": 0.16245
           },
           {
             "id": "themis_artemis",
             "cost": 301.3,
-            "topShare": 0.30609,
+            "topShare": 0.30485,
             "costShare": 0.18885
           },
           {
             "id": "icon",
             "cost": 340.4,
-            "topShare": 0.32894,
+            "topShare": 0.32761,
             "costShare": 0.21867
           },
           {
             "id": "timed",
             "cost": 490.6,
-            "topShare": 0.34014,
+            "topShare": 0.33876,
             "costShare": 0.26166
           },
           {
             "id": "ace",
             "cost": 538,
-            "topShare": 0.36568,
+            "topShare": 0.3642,
             "costShare": 0.30879
           },
           {
             "id": "smm",
             "cost": 581.4,
-            "topShare": 0.40317,
+            "topShare": 0.40153,
             "costShare": 0.35973
           },
           {
             "id": "polar",
             "cost": 757.1,
-            "topShare": 0.42851,
+            "topShare": 0.42677,
             "costShare": 0.42607
           },
           {
             "id": "rbsp",
             "cost": 1015.3,
-            "topShare": 0.53035,
+            "topShare": 0.52812,
             "costShare": 0.51502
           },
           {
             "id": "stereo",
             "cost": 1066.8,
-            "topShare": 0.60251,
+            "topShare": 0.59999,
             "costShare": 0.60849
           },
           {
             "id": "wind",
             "cost": 1356.5,
-            "topShare": 0.64969,
+            "topShare": 0.64721,
             "costShare": 0.72734
           },
           {
             "id": "sdo",
             "cost": 1456.4,
-            "topShare": 0.86897,
+            "topShare": 0.86906,
             "costShare": 0.85494
           },
           {
@@ -1051,7 +1172,7 @@
           }
         ],
         "band": {
-          "p25": 234.4,
+          "p25": 276.9,
           "p50": 1015.3,
           "p75": 1456.4
         },
@@ -1100,139 +1221,139 @@
           {
             "id": "elfin",
             "cost": 5.4,
-            "topShare": 0.00776,
+            "topShare": 0.00774,
             "costShare": 0.00157
           },
           {
             "id": "cupid",
             "cost": 8.5,
-            "topShare": 0.00776,
+            "topShare": 0.00774,
             "costShare": 0.00231
           },
           {
             "id": "snoe",
             "cost": 25.5,
-            "topShare": 0.00871,
+            "topShare": 0.00869,
             "costShare": 0.00455
           },
           {
             "id": "trace",
             "cost": 104,
-            "topShare": 0.05301,
+            "topShare": 0.05286,
             "costShare": 0.01366
           },
           {
             "id": "fast",
             "cost": 116.7,
-            "topShare": 0.06151,
+            "topShare": 0.06134,
             "costShare": 0.02388
           },
           {
             "id": "sampex",
             "cost": 127.8,
-            "topShare": 0.07303,
+            "topShare": 0.07286,
             "costShare": 0.03508
           },
           {
             "id": "sme",
             "cost": 149.7,
-            "topShare": 0.08157,
+            "topShare": 0.08138,
             "costShare": 0.0482
           },
           {
             "id": "rhessi",
             "cost": 169,
-            "topShare": 0.12952,
+            "topShare": 0.12663,
             "costShare": 0.063
           },
           {
             "id": "iris",
             "cost": 172.4,
-            "topShare": 0.16756,
+            "topShare": 0.16436,
             "costShare": 0.07811
           },
           {
             "id": "ibex",
             "cost": 209.3,
-            "topShare": 0.20022,
+            "topShare": 0.19682,
             "costShare": 0.09645
           },
           {
             "id": "aim",
             "cost": 234.4,
-            "topShare": 0.20149,
+            "topShare": 0.19809,
             "costShare": 0.11698
           },
           {
             "id": "ampte_cce",
             "cost": 242,
-            "topShare": 0.22821,
+            "topShare": 0.22473,
             "costShare": 0.13819
           },
           {
             "id": "image",
             "cost": 276.9,
-            "topShare": 0.24032,
+            "topShare": 0.23681,
             "costShare": 0.16245
           },
           {
             "id": "themis_artemis",
             "cost": 301.3,
-            "topShare": 0.28527,
+            "topShare": 0.28164,
             "costShare": 0.18885
           },
           {
             "id": "icon",
             "cost": 340.4,
-            "topShare": 0.2976,
+            "topShare": 0.29384,
             "costShare": 0.21867
           },
           {
             "id": "timed",
             "cost": 490.6,
-            "topShare": 0.34367,
+            "topShare": 0.33963,
             "costShare": 0.26166
           },
           {
             "id": "ace",
             "cost": 538,
-            "topShare": 0.40106,
+            "topShare": 0.39685,
             "costShare": 0.30879
           },
           {
             "id": "smm",
             "cost": 581.4,
-            "topShare": 0.4543,
+            "topShare": 0.44994,
             "costShare": 0.35973
           },
           {
             "id": "polar",
             "cost": 757.1,
-            "topShare": 0.47198,
+            "topShare": 0.46757,
             "costShare": 0.42607
           },
           {
             "id": "rbsp",
             "cost": 1015.3,
-            "topShare": 0.56184,
+            "topShare": 0.55682,
             "costShare": 0.51502
           },
           {
             "id": "stereo",
             "cost": 1066.8,
-            "topShare": 0.6576,
+            "topShare": 0.65172,
             "costShare": 0.60849
           },
           {
             "id": "wind",
             "cost": 1356.5,
-            "topShare": 0.75096,
+            "topShare": 0.74573,
             "costShare": 0.72734
           },
           {
             "id": "sdo",
             "cost": 1456.4,
-            "topShare": 0.92,
+            "topShare": 0.92026,
             "costShare": 0.85494
           },
           {
@@ -1245,7 +1366,7 @@
         "band": {
           "p25": 301.3,
           "p50": 1015.3,
-          "p75": 1356.5
+          "p75": 1456.4
         },
         "cheapestWithTop": {
           "id": "elfin",
@@ -1278,7 +1399,10 @@
       "indices": {
         "h": 1,
         "m": 0.143,
-        "i100": 0
+        "i100": 0,
+        "g": 1,
+        "tori": 0.059,
+        "riq": 243
       },
       "yearsToBuild": 1.988,
       "papers": 1,
@@ -1373,7 +1497,10 @@
       "indices": {
         "h": 0,
         "m": null,
-        "i100": 0
+        "i100": 0,
+        "g": 0,
+        "tori": null,
+        "riq": null
       },
       "yearsToBuild": 5.44,
       "papers": 0,
@@ -1458,7 +1585,10 @@
       "indices": {
         "h": 8,
         "m": 0.8,
-        "i100": 0
+        "i100": 0,
+        "g": 11,
+        "tori": 1.064,
+        "riq": 114
       },
       "yearsToBuild": 1.385,
       "papers": 11,
@@ -1555,7 +1685,10 @@
       "indices": {
         "h": 0,
         "m": null,
-        "i100": 0
+        "i100": 0,
+        "g": 0,
+        "tori": null,
+        "riq": null
       },
       "yearsToBuild": 4.901,
       "papers": 0,
@@ -1649,7 +1782,10 @@
       "indices": {
         "h": 2,
         "m": 0.333,
-        "i100": 0
+        "i100": 0,
+        "g": 2,
+        "tori": 0.051,
+        "riq": 75
       },
       "yearsToBuild": 2.048,
       "papers": 2,
@@ -1743,7 +1879,10 @@
       "indices": {
         "h": 19,
         "m": 2.714,
-        "i100": 1
+        "i100": 1,
+        "g": 31,
+        "tori": 1.165,
+        "riq": 154
       },
       "yearsToBuild": 4.958,
       "papers": 70,
@@ -1753,8 +1892,8 @@
         "papers": 23,
         "outputBasis": "measured",
         "citations": 655,
-        "top10": 12.24,
-        "top10ShareOfDivision": 0.00849,
+        "top10": 12.23,
+        "top10ShareOfDivision": 0.00845,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -1779,7 +1918,7 @@
         "outputBasis": "measured",
         "citations": 109,
         "top10": 1.1,
-        "top10ShareOfDivision": 0.00249,
+        "top10ShareOfDivision": 0.00248,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -1804,7 +1943,7 @@
         "outputBasis": "measured",
         "citations": 1093,
         "top10": 12.167,
-        "top10ShareOfDivision": 0.00776,
+        "top10ShareOfDivision": 0.00774,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -1838,7 +1977,10 @@
       "indices": {
         "h": 1,
         "m": 0.2,
-        "i100": 0
+        "i100": 0,
+        "g": 1,
+        "tori": 0.004,
+        "riq": 63
       },
       "yearsToBuild": 4.167,
       "papers": 1,
@@ -1929,7 +2071,10 @@
       "indices": {
         "h": 28,
         "m": 1,
-        "i100": 3
+        "i100": 3,
+        "g": 43,
+        "tori": 16.38,
+        "riq": 155
       },
       "yearsToBuild": 3.009,
       "papers": 54,
@@ -1990,7 +2135,7 @@
         "outputBasis": "measured",
         "citations": 1973,
         "top10": 1.5,
-        "top10ShareOfDivision": 0.00096,
+        "top10ShareOfDivision": 0.00095,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -2035,20 +2180,23 @@
       "indices": {
         "h": 103,
         "m": 3.552,
-        "i100": 108
+        "i100": 108,
+        "g": 162,
+        "tori": 346.676,
+        "riq": 664
       },
       "yearsToBuild": 3.548,
       "papers": 714,
-      "citations": 39076,
+      "citations": 39075,
       "hasThumb": true,
       "full": {
         "papers": 654,
         "outputBasis": "measured",
         "citations": 8283,
         "top10": 96.092,
-        "top10ShareOfDivision": 0.06661,
+        "top10ShareOfDivision": 0.06638,
         "top1": 5,
-        "top1ShareOfDivision": 0.03466,
+        "top1ShareOfDivision": 0.03454,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.252,
@@ -2071,9 +2219,9 @@
         "outputBasis": "measured",
         "citations": 1363,
         "top10": 16.5,
-        "top10ShareOfDivision": 0.03734,
+        "top10ShareOfDivision": 0.03719,
         "top1": 2,
-        "top1ShareOfDivision": 0.04526,
+        "top1ShareOfDivision": 0.04508,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.252,
@@ -2094,9 +2242,9 @@
       "lifetime": {
         "papers": 714,
         "outputBasis": "measured",
-        "citations": 39076,
+        "citations": 39075,
         "top10": 69.476,
-        "top10ShareOfDivision": 0.04429,
+        "top10ShareOfDivision": 0.04417,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -2141,7 +2289,10 @@
       "indices": {
         "h": 53,
         "m": 1.767,
-        "i100": 23
+        "i100": 23,
+        "g": 85,
+        "tori": 51.3,
+        "riq": 238
       },
       "yearsToBuild": 7.381,
       "papers": 282,
@@ -2152,9 +2303,9 @@
         "outputBasis": "measured",
         "citations": 1706,
         "top10": 14.325,
-        "top10ShareOfDivision": 0.00993,
+        "top10ShareOfDivision": 0.0099,
         "top1": 2,
-        "top1ShareOfDivision": 0.01386,
+        "top1ShareOfDivision": 0.01382,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 1.777,
@@ -2177,7 +2328,7 @@
         "outputBasis": "measured",
         "citations": 608,
         "top10": 7.25,
-        "top10ShareOfDivision": 0.01641,
+        "top10ShareOfDivision": 0.01634,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -2202,7 +2353,7 @@
         "outputBasis": "measured",
         "citations": 9574,
         "top10": 13.333,
-        "top10ShareOfDivision": 0.0085,
+        "top10ShareOfDivision": 0.00848,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -2247,18 +2398,21 @@
       "indices": {
         "h": 55,
         "m": 1.618,
-        "i100": 24
+        "i100": 24,
+        "g": 89,
+        "tori": 54.476,
+        "riq": 217
       },
       "yearsToBuild": 3.247,
       "papers": 212,
-      "citations": 9387,
+      "citations": 9386,
       "hasThumb": true,
       "full": {
         "papers": 129,
         "outputBasis": "measured",
         "citations": 1174,
         "top10": 12.95,
-        "top10ShareOfDivision": 0.00898,
+        "top10ShareOfDivision": 0.00895,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -2283,7 +2437,7 @@
         "outputBasis": "measured",
         "citations": 296,
         "top10": 3,
-        "top10ShareOfDivision": 0.00679,
+        "top10ShareOfDivision": 0.00676,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -2306,8 +2460,8 @@
       "lifetime": {
         "papers": 212,
         "outputBasis": "measured",
-        "citations": 9387,
-        "top10": 18.067,
+        "citations": 9386,
+        "top10": 18.117,
         "top10ShareOfDivision": 0.01152,
         "top1": null,
         "top1ShareOfDivision": null,
@@ -2353,18 +2507,21 @@
       "indices": {
         "h": 46,
         "m": 1.022,
-        "i100": 8
+        "i100": 8,
+        "g": 69,
+        "tori": 83.088,
+        "riq": 239
       },
       "yearsToBuild": 5.265,
       "papers": 179,
-      "citations": 6152,
+      "citations": 6151,
       "hasThumb": true,
       "full": {
         "papers": 105,
         "outputBasis": "measured",
         "citations": 1016,
         "top10": 12.667,
-        "top10ShareOfDivision": 0.00878,
+        "top10ShareOfDivision": 0.00875,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -2389,7 +2546,7 @@
         "outputBasis": "measured",
         "citations": 347,
         "top10": 6.633,
-        "top10ShareOfDivision": 0.01501,
+        "top10ShareOfDivision": 0.01495,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -2412,9 +2569,9 @@
       "lifetime": {
         "papers": 179,
         "outputBasis": "measured",
-        "citations": 6152,
+        "citations": 6151,
         "top10": 13.4,
-        "top10ShareOfDivision": 0.00854,
+        "top10ShareOfDivision": 0.00852,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -2459,20 +2616,23 @@
       "indices": {
         "h": 92,
         "m": 3.68,
-        "i100": 86
+        "i100": 86,
+        "g": 150,
+        "tori": 218.853,
+        "riq": 591
       },
       "yearsToBuild": 4.307,
       "papers": 1037,
-      "citations": 39721,
+      "citations": 39720,
       "hasThumb": true,
       "full": {
         "papers": 909,
         "outputBasis": "measured",
         "citations": 10771,
-        "top10": 76.685,
-        "top10ShareOfDivision": 0.05316,
+        "top10": 75.281,
+        "top10ShareOfDivision": 0.05201,
         "top1": 7.667,
-        "top1ShareOfDivision": 0.05315,
+        "top1ShareOfDivision": 0.05296,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.619,
@@ -2495,9 +2655,9 @@
         "outputBasis": "measured",
         "citations": 3217,
         "top10": 32.733,
-        "top10ShareOfDivision": 0.07407,
+        "top10ShareOfDivision": 0.07377,
         "top1": 1,
-        "top1ShareOfDivision": 0.02263,
+        "top1ShareOfDivision": 0.02254,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.619,
@@ -2518,9 +2678,9 @@
       "lifetime": {
         "papers": 1037,
         "outputBasis": "measured",
-        "citations": 39721,
-        "top10": 75.21,
-        "top10ShareOfDivision": 0.04795,
+        "citations": 39720,
+        "top10": 71.173,
+        "top10ShareOfDivision": 0.04525,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -2565,20 +2725,23 @@
       "indices": {
         "h": 65,
         "m": 4.643,
-        "i100": 27
+        "i100": 27,
+        "g": 98,
+        "tori": 47.854,
+        "riq": 494
       },
       "yearsToBuild": 4.025,
       "papers": 674,
-      "citations": 18612,
+      "citations": 18613,
       "hasThumb": true,
       "full": {
         "papers": 541,
         "outputBasis": "measured",
         "citations": 8399,
-        "top10": 64.614,
-        "top10ShareOfDivision": 0.04479,
+        "top10": 63.412,
+        "top10ShareOfDivision": 0.04381,
         "top1": 3,
-        "top1ShareOfDivision": 0.0208,
+        "top1ShareOfDivision": 0.02073,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.041,
@@ -2601,9 +2764,9 @@
         "outputBasis": "measured",
         "citations": 5072,
         "top10": 31.5,
-        "top10ShareOfDivision": 0.07128,
+        "top10ShareOfDivision": 0.07099,
         "top1": 1,
-        "top1ShareOfDivision": 0.02263,
+        "top1ShareOfDivision": 0.02254,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.041,
@@ -2624,9 +2787,9 @@
       "lifetime": {
         "papers": 674,
         "outputBasis": "measured",
-        "citations": 18612,
-        "top10": 59.667,
-        "top10ShareOfDivision": 0.03804,
+        "citations": 18613,
+        "top10": 59.335,
+        "top10ShareOfDivision": 0.03773,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -2665,7 +2828,10 @@
       "indices": {
         "h": 62,
         "m": 3.444,
-        "i100": 33
+        "i100": 33,
+        "g": 99,
+        "tori": 28.315,
+        "riq": 295
       },
       "yearsToBuild": 3.726,
       "papers": 370,
@@ -2675,10 +2841,10 @@
         "papers": 330,
         "outputBasis": "measured",
         "citations": 5742,
-        "top10": 58.765,
-        "top10ShareOfDivision": 0.04074,
-        "top1": 8.813,
-        "top1ShareOfDivision": 0.06109,
+        "top10": 58.507,
+        "top10ShareOfDivision": 0.04042,
+        "top1": 8.688,
+        "top1ShareOfDivision": 0.06002,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.496,
@@ -2701,9 +2867,9 @@
         "outputBasis": "measured",
         "citations": 1396,
         "top10": 11,
-        "top10ShareOfDivision": 0.02489,
-        "top1": 2.095,
-        "top1ShareOfDivision": 0.04741,
+        "top10ShareOfDivision": 0.02479,
+        "top1": 2.185,
+        "top1ShareOfDivision": 0.04924,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.496,
@@ -2725,8 +2891,8 @@
         "papers": 370,
         "outputBasis": "measured",
         "citations": 14358,
-        "top10": 51.225,
-        "top10ShareOfDivision": 0.03266,
+        "top10": 51.059,
+        "top10ShareOfDivision": 0.03246,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -2769,18 +2935,21 @@
       "indices": {
         "h": 32,
         "m": 1.778,
-        "i100": 3
+        "i100": 3,
+        "g": 47,
+        "tori": 7.94,
+        "riq": 156
       },
       "yearsToBuild": 4.789,
       "papers": 157,
-      "citations": 3304,
+      "citations": 3303,
       "hasThumb": true,
       "full": {
         "papers": 143,
         "outputBasis": "measured",
-        "citations": 1206,
+        "citations": 1205,
         "top10": 3,
-        "top10ShareOfDivision": 0.00208,
+        "top10ShareOfDivision": 0.00207,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -2803,9 +2972,9 @@
       "window": {
         "papers": 31,
         "outputBasis": "measured",
-        "citations": 419,
+        "citations": 418,
         "top10": 1.05,
-        "top10ShareOfDivision": 0.00238,
+        "top10ShareOfDivision": 0.00237,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -2828,9 +2997,9 @@
       "lifetime": {
         "papers": 157,
         "outputBasis": "measured",
-        "citations": 3304,
+        "citations": 3303,
         "top10": 2,
-        "top10ShareOfDivision": 0.00128,
+        "top10ShareOfDivision": 0.00127,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -2875,7 +3044,10 @@
       "indices": {
         "h": 66,
         "m": 1.571,
-        "i100": 48
+        "i100": 48,
+        "g": 109,
+        "tori": 129.447,
+        "riq": 277
       },
       "yearsToBuild": 3.874,
       "papers": 286,
@@ -2886,7 +3058,7 @@
         "outputBasis": "measured",
         "citations": 1064,
         "top10": 16.5,
-        "top10ShareOfDivision": 0.01144,
+        "top10ShareOfDivision": 0.0114,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -2936,7 +3108,7 @@
         "outputBasis": "measured",
         "citations": 14432,
         "top10": 41.9,
-        "top10ShareOfDivision": 0.02671,
+        "top10ShareOfDivision": 0.02664,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -2981,7 +3153,10 @@
       "indices": {
         "h": 59,
         "m": 2.185,
-        "i100": 25
+        "i100": 25,
+        "g": 88,
+        "tori": 63.584,
+        "riq": 295
       },
       "yearsToBuild": 4.066,
       "papers": 495,
@@ -2992,7 +3167,7 @@
         "outputBasis": "measured",
         "citations": 2050,
         "top10": 20.019,
-        "top10ShareOfDivision": 0.01388,
+        "top10ShareOfDivision": 0.01383,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -3017,7 +3192,7 @@
         "outputBasis": "measured",
         "citations": 1121,
         "top10": 10.133,
-        "top10ShareOfDivision": 0.02293,
+        "top10ShareOfDivision": 0.02284,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -3042,7 +3217,7 @@
         "outputBasis": "measured",
         "citations": 13853,
         "top10": 19,
-        "top10ShareOfDivision": 0.01211,
+        "top10ShareOfDivision": 0.01208,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -3087,20 +3262,23 @@
       "indices": {
         "h": 85,
         "m": 4.25,
-        "i100": 63
+        "i100": 63,
+        "g": 144,
+        "tori": 126.873,
+        "riq": 563
       },
       "yearsToBuild": 3.915,
       "papers": 986,
-      "citations": 34995,
+      "citations": 34998,
       "hasThumb": true,
       "full": {
         "papers": 875,
         "outputBasis": "measured",
         "citations": 9935,
-        "top10": 62.534,
-        "top10ShareOfDivision": 0.04335,
-        "top1": 13.313,
-        "top1ShareOfDivision": 0.09229,
+        "top10": 62.127,
+        "top10ShareOfDivision": 0.04292,
+        "top1": 13.188,
+        "top1ShareOfDivision": 0.09111,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 1.454,
@@ -3123,9 +3301,9 @@
         "outputBasis": "measured",
         "citations": 2987,
         "top10": 14.36,
-        "top10ShareOfDivision": 0.0325,
+        "top10ShareOfDivision": 0.03236,
         "top1": 4,
-        "top1ShareOfDivision": 0.09052,
+        "top1ShareOfDivision": 0.09015,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 1.454,
@@ -3146,9 +3324,9 @@
       "lifetime": {
         "papers": 986,
         "outputBasis": "measured",
-        "citations": 34995,
-        "top10": 70.501,
-        "top10ShareOfDivision": 0.04495,
+        "citations": 34998,
+        "top10": 70.507,
+        "top10ShareOfDivision": 0.04483,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -3193,7 +3371,10 @@
       "indices": {
         "h": 24,
         "m": 3.429,
-        "i100": 0
+        "i100": 0,
+        "g": 36,
+        "tori": 6.875,
+        "riq": 374
       },
       "yearsToBuild": 6.497,
       "papers": 210,
@@ -3204,9 +3385,9 @@
         "outputBasis": "measured",
         "citations": 1581,
         "top10": 17,
-        "top10ShareOfDivision": 0.01179,
+        "top10ShareOfDivision": 0.01174,
         "top1": 1,
-        "top1ShareOfDivision": 0.00693,
+        "top1ShareOfDivision": 0.00691,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 1.133,
@@ -3229,7 +3410,7 @@
         "outputBasis": "measured",
         "citations": 1581,
         "top10": 10.1,
-        "top10ShareOfDivision": 0.02286,
+        "top10ShareOfDivision": 0.02276,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -3253,8 +3434,8 @@
         "papers": 210,
         "outputBasis": "measured",
         "citations": 2220,
-        "top10": 19.333,
-        "top10ShareOfDivision": 0.01233,
+        "top10": 19.192,
+        "top10ShareOfDivision": 0.0122,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -3287,20 +3468,23 @@
       "indices": {
         "h": 79,
         "m": 3.292,
-        "i100": 57
+        "i100": 57,
+        "g": 118,
+        "tori": 133.091,
+        "riq": 480
       },
       "yearsToBuild": 9.435,
       "papers": 1251,
-      "citations": 31746,
+      "citations": 31745,
       "hasThumb": true,
       "full": {
         "papers": 1029,
         "outputBasis": "measured",
         "citations": 9075,
-        "top10": 47.939,
-        "top10ShareOfDivision": 0.03323,
+        "top10": 47.614,
+        "top10ShareOfDivision": 0.03289,
         "top1": 3,
-        "top1ShareOfDivision": 0.0208,
+        "top1ShareOfDivision": 0.02073,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 1.856,
@@ -3323,7 +3507,7 @@
         "outputBasis": "measured",
         "citations": 627,
         "top10": 4.95,
-        "top10ShareOfDivision": 0.0112,
+        "top10ShareOfDivision": 0.01116,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -3346,9 +3530,9 @@
       "lifetime": {
         "papers": 1251,
         "outputBasis": "measured",
-        "citations": 31746,
-        "top10": 72.267,
-        "top10ShareOfDivision": 0.04607,
+        "citations": 31745,
+        "top10": 72.01,
+        "top10ShareOfDivision": 0.04578,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -3393,7 +3577,10 @@
       "indices": {
         "h": 105,
         "m": 3.621,
-        "i100": 118
+        "i100": 118,
+        "g": 167,
+        "tori": 308.6,
+        "riq": 605
       },
       "yearsToBuild": 3.899,
       "papers": 1507,
@@ -3403,10 +3590,10 @@
         "papers": 1362,
         "outputBasis": "measured",
         "citations": 12326,
-        "top10": 69.778,
-        "top10ShareOfDivision": 0.04837,
+        "top10": 69.439,
+        "top10ShareOfDivision": 0.04797,
         "top1": 2.417,
-        "top1ShareOfDivision": 0.01675,
+        "top1ShareOfDivision": 0.0167,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.55,
@@ -3429,7 +3616,7 @@
         "outputBasis": "measured",
         "citations": 2024,
         "top10": 11.283,
-        "top10ShareOfDivision": 0.02553,
+        "top10ShareOfDivision": 0.02543,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -3453,8 +3640,8 @@
         "papers": 1507,
         "outputBasis": "measured",
         "citations": 53419,
-        "top10": 90.022,
-        "top10ShareOfDivision": 0.05739,
+        "top10": 89.997,
+        "top10ShareOfDivision": 0.05722,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -3499,20 +3686,23 @@
       "indices": {
         "h": 91,
         "m": 1.936,
-        "i100": 79
+        "i100": 79,
+        "g": 154,
+        "tori": 540.96,
+        "riq": 494
       },
       "yearsToBuild": 6.872,
       "papers": 1016,
-      "citations": 39662,
+      "citations": 39661,
       "hasThumb": true,
       "full": {
         "papers": 678,
         "outputBasis": "measured",
         "citations": 5446,
         "top10": 60.533,
-        "top10ShareOfDivision": 0.04196,
+        "top10ShareOfDivision": 0.04182,
         "top1": 3,
-        "top1ShareOfDivision": 0.0208,
+        "top1ShareOfDivision": 0.02073,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.966,
@@ -3535,9 +3725,9 @@
         "outputBasis": "measured",
         "citations": 1932,
         "top10": 16.567,
-        "top10ShareOfDivision": 0.03749,
-        "top1": 0.095,
-        "top1ShareOfDivision": 0.00215,
+        "top10ShareOfDivision": 0.03734,
+        "top1": 0.185,
+        "top1ShareOfDivision": 0.00417,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.966,
@@ -3558,9 +3748,9 @@
       "lifetime": {
         "papers": 1016,
         "outputBasis": "measured",
-        "citations": 39662,
+        "citations": 39661,
         "top10": 83.5,
-        "top10ShareOfDivision": 0.05324,
+        "top10ShareOfDivision": 0.05309,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -3605,18 +3795,21 @@
       "indices": {
         "h": 75,
         "m": 2.5,
-        "i100": 50
+        "i100": 50,
+        "g": 116,
+        "tori": 147.398,
+        "riq": 404
       },
       "yearsToBuild": 7.398,
       "papers": 742,
-      "citations": 23576,
+      "citations": 23579,
       "hasThumb": true,
       "full": {
         "papers": 620,
         "outputBasis": "measured",
         "citations": 3728,
-        "top10": 22.025,
-        "top10ShareOfDivision": 0.01527,
+        "top10": 22.125,
+        "top10ShareOfDivision": 0.01528,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -3641,7 +3834,7 @@
         "outputBasis": "measured",
         "citations": 1137,
         "top10": 11.2,
-        "top10ShareOfDivision": 0.02535,
+        "top10ShareOfDivision": 0.02524,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -3664,9 +3857,9 @@
       "lifetime": {
         "papers": 742,
         "outputBasis": "measured",
-        "citations": 23576,
+        "citations": 23579,
         "top10": 27.733,
-        "top10ShareOfDivision": 0.01768,
+        "top10ShareOfDivision": 0.01763,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -3711,7 +3904,10 @@
       "indices": {
         "h": 82,
         "m": 5.467,
-        "i100": 56
+        "i100": 56,
+        "g": 139,
+        "tori": 62.3,
+        "riq": 526
       },
       "yearsToBuild": 6.248,
       "papers": 1427,
@@ -3721,10 +3917,10 @@
         "papers": 895,
         "outputBasis": "measured",
         "citations": 13164,
-        "top10": 106.478,
-        "top10ShareOfDivision": 0.07382,
-        "top1": 18.24,
-        "top1ShareOfDivision": 0.12644,
+        "top10": 105.689,
+        "top10ShareOfDivision": 0.07301,
+        "top1": 18.177,
+        "top1ShareOfDivision": 0.12558,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.674,
@@ -3746,10 +3942,10 @@
         "papers": 388,
         "outputBasis": "measured",
         "citations": 7304,
-        "top10": 45,
-        "top10ShareOfDivision": 0.10183,
+        "top10": 44.967,
+        "top10ShareOfDivision": 0.10134,
         "top1": 10,
-        "top1ShareOfDivision": 0.2263,
+        "top1ShareOfDivision": 0.22538,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.674,
@@ -3771,8 +3967,8 @@
         "papers": 1427,
         "outputBasis": "measured",
         "citations": 38792,
-        "top10": 140.942,
-        "top10ShareOfDivision": 0.08986,
+        "top10": 140.374,
+        "top10ShareOfDivision": 0.08925,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -3812,20 +4008,23 @@
       "indices": {
         "h": 111,
         "m": 5.55,
-        "i100": 137
+        "i100": 137,
+        "g": 170,
+        "tori": 239.863,
+        "riq": 774
       },
       "yearsToBuild": 6.908,
       "papers": 1893,
-      "citations": 66308,
+      "citations": 66313,
       "hasThumb": true,
       "full": {
         "papers": 1628,
         "outputBasis": "measured",
         "citations": 22736,
-        "top10": 156.936,
-        "top10ShareOfDivision": 0.10879,
-        "top1": 21.229,
-        "top1ShareOfDivision": 0.14717,
+        "top10": 155.286,
+        "top10ShareOfDivision": 0.10728,
+        "top1": 20.438,
+        "top1ShareOfDivision": 0.14119,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.43,
@@ -3848,9 +4047,9 @@
         "outputBasis": "measured",
         "citations": 6163,
         "top10": 31.89,
-        "top10ShareOfDivision": 0.07217,
+        "top10ShareOfDivision": 0.07187,
         "top1": 3,
-        "top1ShareOfDivision": 0.06789,
+        "top1ShareOfDivision": 0.06761,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 1.432,
@@ -3871,9 +4070,9 @@
       "lifetime": {
         "papers": 1893,
         "outputBasis": "measured",
-        "citations": 66308,
-        "top10": 150.197,
-        "top10ShareOfDivision": 0.09576,
+        "citations": 66313,
+        "top10": 149.249,
+        "top10ShareOfDivision": 0.09489,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -3916,22 +4115,25 @@
       "shortfall": false,
       "type": "In-Situ Probe",
       "indices": {
-        "h": 118,
-        "m": 3.688,
-        "i100": 153
+        "h": 119,
+        "m": 3.719,
+        "i100": 155,
+        "g": 190,
+        "tori": 362.195,
+        "riq": 594
       },
       "yearsToBuild": 6.084,
-      "papers": 1762,
-      "citations": 68506,
+      "papers": 1786,
+      "citations": 69115,
       "hasThumb": true,
       "full": {
-        "papers": 1570,
+        "papers": 1584,
         "outputBasis": "measured",
-        "citations": 16018,
-        "top10": 111.238,
-        "top10ShareOfDivision": 0.07711,
-        "top1": 14.917,
-        "top1ShareOfDivision": 0.10341,
+        "citations": 16278,
+        "top10": 111.893,
+        "top10ShareOfDivision": 0.0773,
+        "top1": 15.25,
+        "top1ShareOfDivision": 0.10535,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.252,
@@ -3950,11 +4152,11 @@
         }
       },
       "window": {
-        "papers": 250,
+        "papers": 251,
         "outputBasis": "measured",
-        "citations": 2471,
-        "top10": 20.85,
-        "top10ShareOfDivision": 0.04718,
+        "citations": 2472,
+        "top10": 20.95,
+        "top10ShareOfDivision": 0.04722,
         "top1": 0,
         "top1ShareOfDivision": 0,
         "first": {
@@ -3975,11 +4177,11 @@
         }
       },
       "lifetime": {
-        "papers": 1762,
+        "papers": 1786,
         "outputBasis": "measured",
-        "citations": 68506,
-        "top10": 146.443,
-        "top10ShareOfDivision": 0.09336,
+        "citations": 69115,
+        "top10": 147.866,
+        "top10ShareOfDivision": 0.09401,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -3994,7 +4196,7 @@
         0,
         14,
         38,
-        69,
+        70,
         83,
         52,
         73,
@@ -4004,11 +4206,11 @@
         39,
         73,
         45,
-        51,
+        52,
         49,
         51,
         30,
-        49,
+        50,
         46,
         56
       ]
@@ -4024,20 +4226,23 @@
       "indices": {
         "h": 116,
         "m": 6.824,
-        "i100": 148
+        "i100": 151,
+        "g": 209,
+        "tori": 359.357,
+        "riq": 1115
       },
       "yearsToBuild": 7.447,
-      "papers": 3840,
-      "citations": 104500,
+      "papers": 3970,
+      "citations": 107312,
       "hasThumb": true,
       "full": {
-        "papers": 3035,
+        "papers": 3108,
         "outputBasis": "measured",
-        "citations": 39196,
-        "top10": 276.339,
-        "top10ShareOfDivision": 0.19157,
-        "top1": 28.823,
-        "top1ShareOfDivision": 0.19981,
+        "citations": 40510,
+        "top10": 287.798,
+        "top10ShareOfDivision": 0.19882,
+        "top1": 30.094,
+        "top1ShareOfDivision": 0.2079,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.419,
@@ -4056,13 +4261,13 @@
         }
       },
       "window": {
-        "papers": 1322,
+        "papers": 1340,
         "outputBasis": "measured",
-        "citations": 21373,
-        "top10": 96.9,
-        "top10ShareOfDivision": 0.21928,
+        "citations": 21671,
+        "top10": 98.433,
+        "top10ShareOfDivision": 0.22185,
         "top1": 12,
-        "top1ShareOfDivision": 0.27155,
+        "top1ShareOfDivision": 0.27045,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.419,
@@ -4081,11 +4286,11 @@
         }
       },
       "lifetime": {
-        "papers": 3840,
+        "papers": 3970,
         "outputBasis": "measured",
-        "citations": 104500,
-        "top10": 265.135,
-        "top10ShareOfDivision": 0.16904,
+        "citations": 107312,
+        "top10": 274.491,
+        "top10ShareOfDivision": 0.17452,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {
@@ -4099,21 +4304,21 @@
       "strip": [
         10,
         70,
-        187,
-        225,
-        235,
+        188,
+        228,
+        240,
+        250,
+        257,
         245,
-        255,
-        242,
-        264,
-        274,
-        255,
-        251,
-        251,
-        271,
-        274,
-        279,
-        252
+        266,
+        284,
+        268,
+        262,
+        256,
+        284,
+        294,
+        302,
+        266
       ]
     },
     {
@@ -4127,7 +4332,10 @@
       "indices": {
         "h": 70,
         "m": 5.833,
-        "i100": 30
+        "i100": 30,
+        "g": 127,
+        "tori": 45,
+        "riq": 559
       },
       "yearsToBuild": 12.361,
       "papers": 1428,
@@ -4137,10 +4345,10 @@
         "papers": 1029,
         "outputBasis": "measured",
         "citations": 14804,
-        "top10": 123.843,
-        "top10ShareOfDivision": 0.08585,
+        "top10": 123.013,
+        "top10ShareOfDivision": 0.08498,
         "top1": 11.833,
-        "top1ShareOfDivision": 0.08203,
+        "top1ShareOfDivision": 0.08175,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.498,
@@ -4162,10 +4370,10 @@
         "papers": 383,
         "outputBasis": "measured",
         "citations": 8016,
-        "top10": 57.9,
-        "top10ShareOfDivision": 0.13103,
+        "top10": 58.1,
+        "top10ShareOfDivision": 0.13094,
         "top1": 9,
-        "top1ShareOfDivision": 0.20367,
+        "top1ShareOfDivision": 0.20284,
         "first": {
           "state": "reached",
           "yearsFromScienceStart": 0.498,
@@ -4187,8 +4395,8 @@
         "papers": 1428,
         "outputBasis": "measured",
         "citations": 32114,
-        "top10": 125.483,
-        "top10ShareOfDivision": 0.08,
+        "top10": 125.422,
+        "top10ShareOfDivision": 0.07974,
         "top1": null,
         "top1ShareOfDivision": null,
         "first": {

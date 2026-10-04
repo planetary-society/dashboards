@@ -21,11 +21,14 @@
   "indices": {
     "h": 51,
     "m": 2.55,
-    "i100": 14
+    "i100": 15,
+    "g": 76,
+    "tori": 26.141,
+    "riq": 255
   },
   "facts": {
-    "papers": 444,
-    "citations": 10186,
+    "papers": 446,
+    "citations": 10211,
     "publicationYears": [
       2007,
       2026
@@ -74,7 +77,7 @@
       22,
       21,
       36,
-      23
+      25
     ],
     "citations": [
       10,
@@ -96,13 +99,13 @@
       1055,
       971,
       1509,
-      928
+      953
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 10186,
-      "observed": 10186,
+      "expected": 10211,
+      "observed": 10211,
       "missing": 0
     }
   },
@@ -175,35 +178,42 @@
     "bibcode": "2015Sci...350.1815S",
     "title": "The Pluto system: Initial results from its exploration by New Horizons",
     "firstAuthor": "Stern, S. A.",
+    "authors": [
+      "Stern, S. A.",
+      "Bagenal, F.",
+      "Ennico, K.",
+      "Gladstone, G. R."
+    ],
+    "authorCount": 151,
     "year": 2015,
     "citations": 325
   },
   "ranks": {
     "full": {
       "bins": [
-        42.603,
-        30.637,
-        25.399,
-        26.872,
-        37.884,
-        35.78,
-        27.547,
-        28.661,
-        37.617,
+        42.667,
+        30.613,
+        25.532,
+        26.746,
+        37.91,
+        35.737,
+        27.519,
+        28.67,
+        37.605,
         36
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        19.982,
-        17.782,
-        13.429,
-        14.95,
-        17.037,
-        7.137,
-        12.962,
-        10.722,
+        20.006,
+        17.819,
+        13.438,
+        14.983,
+        16.945,
+        7.138,
+        13.001,
+        10.669,
         16,
         10
       ],
@@ -211,24 +221,24 @@
     },
     "lifetime": {
       "bins": [
-        60.746,
-        47.276,
-        49.477,
-        49.932,
-        56.761,
-        50.261,
-        43.411,
-        35.135,
-        28.962,
-        22.038
+        61.869,
+        46.136,
+        50.809,
+        50.12,
+        56.311,
+        49.998,
+        44.544,
+        35.213,
+        28.867,
+        22.133
       ],
-      "top1": 0
+      "top1": 0.03
     }
   },
   "full": {
     "papers": 329,
     "outputBasis": "measured",
-    "citations": 4578,
+    "citations": 4581,
     "top10": 39.233,
     "top10ShareOfDivision": 0.03596,
     "top1": 2,
@@ -248,14 +258,21 @@
       "status": "available",
       "months": 107,
       "citationBuckets": 12
+    },
+    "spread": {
+      "mean": 13.924,
+      "median": 9,
+      "uncited": 30,
+      "i10": 148,
+      "i100": 2
     }
   },
   "window": {
     "papers": 140,
     "outputBasis": "measured",
     "citations": 2061,
-    "top10": 10.075,
-    "top10ShareOfDivision": 0.02086,
+    "top10": 10.05,
+    "top10ShareOfDivision": 0.02082,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -273,14 +290,21 @@
       "status": "available",
       "months": 45,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 14.721,
+      "median": 8,
+      "uncited": 18,
+      "i10": 62,
+      "i100": 2
     }
   },
   "lifetime": {
-    "papers": 444,
+    "papers": 446,
     "outputBasis": "measured",
-    "citations": 10186,
-    "top10": 39.025,
-    "top10ShareOfDivision": 0.02864,
+    "citations": 10211,
+    "top10": 38.525,
+    "top10ShareOfDivision": 0.02827,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -289,21 +313,28 @@
       "yearsFromFormulation": 5.837,
       "bibcode": "2007Sci...318..240S",
       "date": "2007-10-00"
+    },
+    "spread": {
+      "mean": 22.895,
+      "median": 13,
+      "uncited": 47,
+      "i10": 261,
+      "i100": 15
     }
   },
   "query": {
     "arms": "((((=abs:\"New Horizons\" OR =abs:\"New Horizon\") AND (=abs:Pluto OR =abs:Charon OR =abs:Arrokoth OR abs:MU69 OR =abs:\"Kuiper belt\" OR abs:Jupiter OR abs:Europa OR abs:Io OR abs:Rosetta OR abs:flyby OR abs:heliosphere OR abs:heliospheric OR =abs:\"solar wind\" OR =abs:\"cosmic optical background\" OR abs:LORRI OR abs:PEPSSI OR abs:MVIC OR abs:LEISA OR abs:VBSDC OR abs:REX OR =abs:\"radio science\")) OR =abs:\"New Horizons Alice\" OR =abs:\"New Horizons spacecrafts\" OR =abs:\"New Horizons spacecraft\" OR =abs:\"New Horizons observations\" OR =abs:\"New Horizons mission\" OR =abs:\"New Horizons probe\" OR (=abs:\"NH flyby\" AND (=abs:Pluto OR =abs:Charon OR =abs:Arrokoth)) OR ((abs:LORRI OR abs:MVIC OR abs:LEISA OR abs:PEPSSI OR =abs:\"Long Range Reconnaissance Imager\" OR =abs:\"Multispectral Visible Imaging Camera\" OR =abs:\"Multicolor Visible Imaging Camera\" OR =abs:\"Linear Etalon Imaging Spectral Array\") AND (=abs:Pluto OR =abs:Charon OR =abs:Arrokoth OR abs:MU69 OR =abs:\"Kuiper belt\" OR =abs:\"New Horizons\" OR =abs:\"cosmic optical background\")) OR ((abs:SWAP OR abs:SDC OR abs:VBSDC) AND (=abs:\"New Horizons\" OR =abs:Pluto OR =abs:\"Kuiper belt\")) OR ((=abs:Alice OR =abs:Ralph OR abs:REX OR =abs:\"Radio Science Experiment\") AND (=abs:Pluto OR =abs:Charon OR =abs:Arrokoth)) OR =abs:\"Solar Wind Around Pluto\" OR =abs:\"Solar Wind at Pluto\" OR =abs:\"Pluto Energetic Particle Spectrometer Science Investigation\" OR =abs:\"Pluto Exploration Remote Sensing Investigation\" OR =abs:\"Venetia Burney Student Dust Counter\" OR (=abs:\"Student Dust Counter\" AND (abs:dust OR abs:interplanetary))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2015-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22New+Horizons%22+OR+%3Dabs%3A%22New+Horizon%22%29+AND+%28%3Dabs%3APluto+OR+%3Dabs%3ACharon+OR+%3Dabs%3AArrokoth+OR+abs%3AMU69+OR+%3Dabs%3A%22Kuiper+belt%22+OR+abs%3AJupiter+OR+abs%3AEuropa+OR+abs%3AIo+OR+abs%3ARosetta+OR+abs%3Aflyby+OR+abs%3Aheliosphere+OR+abs%3Aheliospheric+OR+%3Dabs%3A%22solar+wind%22+OR+%3Dabs%3A%22cosmic+optical+background%22+OR+abs%3ALORRI+OR+abs%3APEPSSI+OR+abs%3AMVIC+OR+abs%3ALEISA+OR+abs%3AVBSDC+OR+abs%3AREX+OR+%3Dabs%3A%22radio+science%22%29%29+OR+%3Dabs%3A%22New+Horizons+Alice%22+OR+%3Dabs%3A%22New+Horizons+spacecrafts%22+OR+%3Dabs%3A%22New+Horizons+spacecraft%22+OR+%3Dabs%3A%22New+Horizons+observations%22+OR+%3Dabs%3A%22New+Horizons+mission%22+OR+%3Dabs%3A%22New+Horizons+probe%22+OR+%28%3Dabs%3A%22NH+flyby%22+AND+%28%3Dabs%3APluto+OR+%3Dabs%3ACharon+OR+%3Dabs%3AArrokoth%29%29+OR+%28%28abs%3ALORRI+OR+abs%3AMVIC+OR+abs%3ALEISA+OR+abs%3APEPSSI+OR+%3Dabs%3A%22Long+Range+Reconnaissance+Imager%22+OR+%3Dabs%3A%22Multispectral+Visible+Imaging+Camera%22+OR+%3Dabs%3A%22Multicolor+Visible+Imaging+Camera%22+OR+%3Dabs%3A%22Linear+Etalon+Imaging+Spectral+Array%22%29+AND+%28%3Dabs%3APluto+OR+%3Dabs%3ACharon+OR+%3Dabs%3AArrokoth+OR+abs%3AMU69+OR+%3Dabs%3A%22Kuiper+belt%22+OR+%3Dabs%3A%22New+Horizons%22+OR+%3Dabs%3A%22cosmic+optical+background%22%29%29+OR+%28%28abs%3ASWAP+OR+abs%3ASDC+OR+abs%3AVBSDC%29+AND+%28%3Dabs%3A%22New+Horizons%22+OR+%3Dabs%3APluto+OR+%3Dabs%3A%22Kuiper+belt%22%29%29+OR+%28%28%3Dabs%3AAlice+OR+%3Dabs%3ARalph+OR+abs%3AREX+OR+%3Dabs%3A%22Radio+Science+Experiment%22%29+AND+%28%3Dabs%3APluto+OR+%3Dabs%3ACharon+OR+%3Dabs%3AArrokoth%29%29+OR+%3Dabs%3A%22Solar+Wind+Around+Pluto%22+OR+%3Dabs%3A%22Solar+Wind+at+Pluto%22+OR+%3Dabs%3A%22Pluto+Energetic+Particle+Spectrometer+Science+Investigation%22+OR+%3Dabs%3A%22Pluto+Exploration+Remote+Sensing+Investigation%22+OR+%3Dabs%3A%22Venetia+Burney+Student+Dust+Counter%22+OR+%28%3Dabs%3A%22Student+Dust+Counter%22+AND+%28abs%3Adust+OR+abs%3Ainterplanetary%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2015-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:28:19.704148+00:00",
+    "fetchedAt": "2026-09-30T17:52:07.436867+00:00",
     "reconciliation": {
-      "adsReturned": 413,
+      "adsReturned": 415,
       "curatedOut": 3,
       "curatedIn": 35,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 1,
-      "final": 444
+      "final": 446
     }
   },
   "curation": {
@@ -629,6 +660,8 @@
       "bibcode": "2015Sci...350.1815S",
       "title": "The Pluto system: Initial results from its exploration by New Horizons",
       "firstAuthor": "Stern, S. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 325
     },
@@ -636,6 +669,8 @@
       "bibcode": "2016Sci...351.1284M",
       "title": "The geology of Pluto and Charon through the eyes of New Horizons",
       "firstAuthor": "Moore, Jeffrey M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 221
     },
@@ -643,6 +678,8 @@
       "bibcode": "2016Sci...351.9189G",
       "title": "Surface compositions across Pluto and Charon",
       "firstAuthor": "Grundy, W. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 216
     },
@@ -650,6 +687,8 @@
       "bibcode": "2016Sci...351.8866G",
       "title": "The atmosphere of Pluto as observed by New Horizons",
       "firstAuthor": "Gladstone, G. Randall",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 187
     },
@@ -657,6 +696,8 @@
       "bibcode": "2019Sci...364.9771S",
       "title": "Initial results from the New Horizons exploration of 2014 MU₆₉, a small Kuiper Belt object",
       "firstAuthor": "Stern, S. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 161
     },
@@ -664,6 +705,8 @@
       "bibcode": "2019Sci...363..955S",
       "title": "Impact craters on Pluto and Charon indicate a deficit of small Kuiper belt objects",
       "firstAuthor": "Singer, K. N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 142
     },
@@ -671,6 +714,8 @@
       "bibcode": "2007Sci...318..240S",
       "title": "Io Volcanism Seen by New Horizons: A Major Eruption of the Tvashtar Volcano",
       "firstAuthor": "Spencer, J. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 127
     },
@@ -678,6 +723,8 @@
       "bibcode": "2016Icar..264..369P",
       "title": "An improved model for interplanetary dust fluxes in the outer Solar System",
       "firstAuthor": "Poppe, Andrew R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 126
     },
@@ -685,13 +732,17 @@
       "bibcode": "2018ApJ...869...23Z",
       "title": "The Pickup Ion-mediated Solar Wind",
       "firstAuthor": "Zank, G. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
-      "citations": 124
+      "citations": 125
     },
     {
       "bibcode": "2020Sci...367.6620M",
       "title": "The solar nebula origin of (486958) Arrokoth, a primordial contact binary in the Kuiper Belt",
       "firstAuthor": "McKinnon, W. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 118
     },
@@ -699,6 +750,8 @@
       "bibcode": "2017Icar..287..218P",
       "title": "Pluto's global surface composition through pixel-by-pixel Hapke modeling of New Horizons Ralph/LEISA data",
       "firstAuthor": "Protopapa, S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 114
     },
@@ -706,6 +759,8 @@
       "bibcode": "2017Icar..287...12N",
       "title": "Mean radius and shape of Pluto and Charon from New Horizons images",
       "firstAuthor": "Nimmo, Francis",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 109
     },
@@ -713,6 +768,8 @@
       "bibcode": "2017JGRA..122.7865W",
       "title": "Interplanetary coronal mass ejection observed at STEREO-A, Mars, comet 67P/Churyumov-Gerasimenko, Saturn, and New Horizons en route to Pluto: Comparison of its Forbush decreases at 1.4, 3.1, and 9.9 AU",
       "firstAuthor": "Witasse, O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 107
     },
@@ -720,6 +777,8 @@
       "bibcode": "2020Sci...367.3999S",
       "title": "The geology and geophysics of Kuiper Belt object (486958) Arrokoth",
       "firstAuthor": "Spencer, J. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 104
     },
@@ -727,13 +786,17 @@
       "bibcode": "2020ApJ...903...48S",
       "title": "Density of Neutral Hydrogen in the Sun's Interstellar Neighborhood",
       "firstAuthor": "Swaczyna, P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
-      "citations": 99
+      "citations": 100
     },
     {
       "bibcode": "2018Sci...360..992T",
       "title": "Dunes on Pluto",
       "firstAuthor": "Telfer, Matt W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 93
     },
@@ -741,6 +804,8 @@
       "bibcode": "2017Icar..287....2M",
       "title": "Origin of the Pluto-Charon system: Constraints from the New Horizons flyby",
       "firstAuthor": "McKinnon, William B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 90
     },
@@ -748,6 +813,8 @@
       "bibcode": "2017Icar..286..289L",
       "title": "Detection of CO and HCN in Pluto's atmosphere with ALMA",
       "firstAuthor": "Lellouch, E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 89
     },
@@ -755,6 +822,8 @@
       "bibcode": "2017Icar..287..229S",
       "title": "Physical state and distribution of materials at the surface of Pluto from New Horizons LEISA imaging spectrometer",
       "firstAuthor": "Schmitt, B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 88
     },
@@ -762,11 +831,13 @@
       "bibcode": "2018ARA&A..56..357S",
       "title": "The Pluto System After New Horizons",
       "firstAuthor": "Stern, S. Alan",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 88
     }
   ],
   "papersFile": {
-    "rows": 444
+    "rows": 446
   }
 }

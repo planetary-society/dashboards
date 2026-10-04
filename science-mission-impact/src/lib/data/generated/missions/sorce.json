@@ -21,11 +21,14 @@
   "indices": {
     "h": 41,
     "m": 1.783,
-    "i100": 17
+    "i100": 17,
+    "g": 75,
+    "tori": 45.745,
+    "riq": 294
   },
   "facts": {
     "papers": 156,
-    "citations": 6334,
+    "citations": 6332,
     "publicationYears": [
       2004,
       2026
@@ -105,13 +108,13 @@
       417,
       391,
       402,
-      265
+      263
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 6334,
-      "observed": 6334,
+      "expected": 6332,
+      "observed": 6332,
       "missing": 0
     }
   },
@@ -227,6 +230,11 @@
     "bibcode": "2011GeoRL..38.1706K",
     "title": "A new, lower value of total solar irradiance: Evidence and climate significance",
     "firstAuthor": "Kopp, Greg",
+    "authors": [
+      "Kopp, Greg",
+      "Lean, Judith L."
+    ],
+    "authorCount": 2,
     "year": 2011,
     "citations": 575
   },
@@ -235,9 +243,9 @@
       "bins": [
         9.555,
         13.355,
-        7.668,
-        15.412,
-        11.772,
+        7.666,
+        15.408,
+        11.777,
         12.097,
         18.061,
         12.08,
@@ -251,8 +259,8 @@
         3.843,
         2.157,
         1.787,
-        3.531,
-        3.682,
+        3.528,
+        3.685,
         5.499,
         1.277,
         4.224,
@@ -263,15 +271,15 @@
     },
     "lifetime": {
       "bins": [
-        8.521,
-        17.183,
-        13.29,
+        8.507,
+        17.178,
+        13.295,
         12.427,
-        10.579,
-        20.615,
-        18.385,
-        12.795,
-        19.205,
+        10.593,
+        20.597,
+        18.403,
+        12.79,
+        19.21,
         23
       ],
       "top1": 2
@@ -300,6 +308,13 @@
       "status": "available",
       "months": 229,
       "citationBuckets": 23
+    },
+    "spread": {
+      "mean": 13.779,
+      "median": 9,
+      "uncited": 7,
+      "i10": 57,
+      "i100": 2
     }
   },
   "window": {
@@ -325,12 +340,19 @@
       "status": "available",
       "months": 84,
       "citationBuckets": 11
+    },
+    "spread": {
+      "mean": 12.156,
+      "median": 9,
+      "uncited": 3,
+      "i10": 14,
+      "i100": 0
     }
   },
   "lifetime": {
     "papers": 156,
     "outputBasis": "measured",
-    "citations": 6334,
+    "citations": 6332,
     "top10": 15.684,
     "top10ShareOfDivision": 0.00379,
     "top1": null,
@@ -341,13 +363,20 @@
       "yearsFromFormulation": 5.582,
       "bibcode": "2004GeoRL..3110802W",
       "date": "2004-05-00"
+    },
+    "spread": {
+      "mean": 40.59,
+      "median": 18,
+      "uncited": 8,
+      "i10": 100,
+      "i100": 17
     }
   },
   "query": {
     "arms": "((=abs:\"Solar Radiation and Climate Experiment\" OR (abs:\"SORCE\" AND abs:(solar OR irradiance))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2003-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Solar+Radiation+and+Climate+Experiment%22+OR+%28abs%3A%22SORCE%22+AND+abs%3A%28solar+OR+irradiance%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:22:39.623106+00:00",
+    "fetchedAt": "2026-09-30T18:01:13.460522+00:00",
     "reconciliation": {
       "adsReturned": 157,
       "curatedOut": 1,
@@ -385,6 +414,8 @@
       "bibcode": "2011GeoRL..38.1706K",
       "title": "A new, lower value of total solar irradiance: Evidence and climate significance",
       "firstAuthor": "Kopp, Greg",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 575
     },
@@ -392,6 +423,8 @@
       "bibcode": "2013ACP....13.3945E",
       "title": "Recent variability of the solar spectral irradiance and its impact on climate modelling",
       "firstAuthor": "Ermolli, I.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 294
     },
@@ -399,6 +432,8 @@
       "bibcode": "2005SoPh..230...27L",
       "title": "SORCE Contributions to New Understanding of Global Change and Solar Variability",
       "firstAuthor": "Lean, Judith",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 242
     },
@@ -406,6 +441,8 @@
       "bibcode": "2016BAMS...97.1265C",
       "title": "A Solar Irradiance Climate Data Record",
       "firstAuthor": "Coddington, O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 233
     },
@@ -413,6 +450,8 @@
       "bibcode": "2010Natur.467..696H",
       "title": "An influence of solar spectral variations on radiative forcing of climate",
       "firstAuthor": "Haigh, Joanna D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 198
     },
@@ -420,13 +459,17 @@
       "bibcode": "2009GeoRL..36.1101W",
       "title": "Solar Irradiance Reference Spectra (SIRS) for the 2008 Whole Heliosphere Interval (WHI)",
       "firstAuthor": "Woods, Thomas N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
-      "citations": 196
+      "citations": 195
     },
     {
       "bibcode": "2005SoPh..230..129K",
       "title": "The Total Irradiance Monitor (TIM): Science Results",
       "firstAuthor": "Kopp, Greg",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 187
     },
@@ -434,6 +477,8 @@
       "bibcode": "2009GeoRL..36.7801H",
       "title": "Trends in solar spectral irradiance variability in the visible and infrared",
       "firstAuthor": "Harder, Jerald W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 180
     },
@@ -441,6 +486,8 @@
       "bibcode": "2005JGRA..11011103E",
       "title": "Refinements to flare energy estimates: A followup to ``Energy partition in two solar flare/CME events'' by A. G. Emslie et al.",
       "firstAuthor": "Emslie, A. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 179
     },
@@ -448,6 +495,8 @@
       "bibcode": "2004GeoRL..3110802W",
       "title": "Solar irradiance variability during the October 2003 solar storm period",
       "firstAuthor": "Woods, Thomas N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 177
     },
@@ -455,6 +504,8 @@
       "bibcode": "2005SoPh..230..225M",
       "title": "Solar-Stellar Irradiance Comparison Experiment II (Solstice II): Instrument Concept and Design",
       "firstAuthor": "Mcclintock, William E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 170
     },
@@ -462,6 +513,8 @@
       "bibcode": "2014A&A...570A..85Y",
       "title": "Reconstruction of total and spectral solar irradiance from 1974 to 2013 based on KPVT, SoHO/MDI, and SDO/HMI observations",
       "firstAuthor": "Yeo, K. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 160
     },
@@ -469,6 +522,8 @@
       "bibcode": "2005SoPh..230....7R",
       "title": "The SORCE Mission",
       "firstAuthor": "Rottman, Gary",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 153
     },
@@ -476,6 +531,8 @@
       "bibcode": "2018ApJ...855...75R",
       "title": "Patterns of Variation for the Sun and Sun-like Stars",
       "firstAuthor": "Radick, Richard R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 107
     },
@@ -483,6 +540,8 @@
       "bibcode": "2006JGRA..11110S14W",
       "title": "Contributions of the solar ultraviolet irradiance to the total solar irradiance during large flares",
       "firstAuthor": "Woods, Thomas N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 105
     },
@@ -490,6 +549,8 @@
       "bibcode": "2020SpWea..1802588C",
       "title": "The Flare Irradiance Spectral Model-Version 2 (FISM2)",
       "firstAuthor": "Chamberlin, P. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 105
     },
@@ -497,6 +558,8 @@
       "bibcode": "2012A&A...541A..27B",
       "title": "Reconstruction of total solar irradiance 1974-2009",
       "firstAuthor": "Ball, W. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 100
     },
@@ -504,21 +567,27 @@
       "bibcode": "2014JSWSC...4A..04S",
       "title": "Comparison of Magnesium II core-to-wing ratio observations during solar minimum 23/24",
       "firstAuthor": "Snow, Martin",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 98
-    },
-    {
-      "bibcode": "2019E&SS....6.2263M",
-      "title": "An Improved Lyman-Alpha Composite",
-      "firstAuthor": "Machol, J.",
-      "year": 2019,
-      "citations": 88
     },
     {
       "bibcode": "2012SGeo...33..453F",
       "title": "Total Solar Irradiance Observations",
       "firstAuthor": "Fröhlich, Claus",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
+      "citations": 87
+    },
+    {
+      "bibcode": "2019E&SS....6.2263M",
+      "title": "An Improved Lyman-Alpha Composite",
+      "firstAuthor": "Machol, J.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2019,
       "citations": 87
     }
   ],

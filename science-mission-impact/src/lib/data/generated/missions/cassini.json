@@ -21,11 +21,14 @@
   "indices": {
     "h": 131,
     "m": 4.852,
-    "i100": 205
+    "i100": 205,
+    "g": 204,
+    "tori": 414.282,
+    "riq": 753
   },
   "facts": {
-    "papers": 3408,
-    "citations": 119754,
+    "papers": 3410,
+    "citations": 119834,
     "publicationYears": [
       2000,
       2026
@@ -88,7 +91,7 @@
       93,
       85,
       117,
-      71
+      73
     ],
     "citations": [
       0,
@@ -102,7 +105,7 @@
       3443,
       4256,
       6479,
-      4795,
+      4821,
       5650,
       5311,
       5838,
@@ -117,13 +120,13 @@
       6026,
       7030,
       7652,
-      5497
+      5551
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 119754,
-      "observed": 119754,
+      "expected": 119834,
+      "observed": 119834,
       "missing": 0
     }
   },
@@ -220,7 +223,7 @@
       2945,
       2999,
       3723,
-      2090,
+      2097,
       1299,
       321
     ]
@@ -229,52 +232,58 @@
     "bibcode": "2003Natur.425..374B",
     "title": "A test of general relativity using radio links with the Cassini spacecraft",
     "firstAuthor": "Bertotti, B.",
+    "authors": [
+      "Bertotti, B.",
+      "Iess, L.",
+      "Tortora, P."
+    ],
+    "authorCount": 3,
     "year": 2003,
     "citations": 1737
   },
   "ranks": {
     "full": {
       "bins": [
-        238.593,
-        238.306,
-        261.478,
-        307.123,
-        277.507,
-        261.392,
-        304.685,
-        251.735,
-        268.04,
-        195.141
+        239.033,
+        238.294,
+        261.459,
+        306.528,
+        278.107,
+        261.344,
+        304.404,
+        251.146,
+        268.768,
+        194.917
       ],
       "top1": 14
     },
     "window": {
       "bins": [
-        115.385,
-        99.061,
-        122.201,
-        119.21,
-        106.092,
-        130.193,
-        104.972,
-        112.927,
-        106.46,
-        82.5
+        115.765,
+        99.059,
+        121.804,
+        119.672,
+        105.931,
+        130.064,
+        105.027,
+        112.846,
+        106.357,
+        82.475
       ],
-      "top1": 5.65
+      "top1": 5.64
     },
     "lifetime": {
       "bins": [
-        251.997,
-        301.246,
-        304.533,
-        377.132,
-        371.02,
-        401.898,
-        367.217,
-        398.417,
-        367.389,
-        267.151
+        250.346,
+        302.906,
+        304.345,
+        376.964,
+        372.378,
+        400.442,
+        367.633,
+        399.937,
+        367.517,
+        267.533
       ],
       "top1": 31
     }
@@ -282,11 +291,11 @@
   "full": {
     "papers": 2604,
     "outputBasis": "measured",
-    "citations": 32977,
-    "top10": 175.738,
-    "top10ShareOfDivision": 0.16107,
+    "citations": 32986,
+    "top10": 175.018,
+    "top10ShareOfDivision": 0.16042,
     "top1": 14,
-    "top1ShareOfDivision": 0.12831,
+    "top1ShareOfDivision": 0.12832,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.468,
@@ -302,16 +311,23 @@
       "status": "available",
       "months": 186,
       "citationBuckets": 19
+    },
+    "spread": {
+      "mean": 12.667,
+      "median": 8,
+      "uncited": 151,
+      "i10": 1180,
+      "i100": 13
     }
   },
   "window": {
     "papers": 1099,
     "outputBasis": "measured",
-    "citations": 17253,
+    "citations": 17260,
     "top10": 79.1,
-    "top10ShareOfDivision": 0.16377,
-    "top1": 5.65,
-    "top1ShareOfDivision": 0.11698,
+    "top10ShareOfDivision": 0.16384,
+    "top1": 5.64,
+    "top1ShareOfDivision": 0.11682,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.887,
@@ -327,14 +343,21 @@
       "status": "available",
       "months": 75,
       "citationBuckets": 10
+    },
+    "spread": {
+      "mean": 15.705,
+      "median": 10,
+      "uncited": 85,
+      "i10": 578,
+      "i100": 11
     }
   },
   "lifetime": {
-    "papers": 3408,
+    "papers": 3410,
     "outputBasis": "measured",
-    "citations": 119754,
-    "top10": 205.392,
-    "top10ShareOfDivision": 0.15071,
+    "citations": 119834,
+    "top10": 205.292,
+    "top10ShareOfDivision": 0.15065,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -343,21 +366,28 @@
       "yearsFromFormulation": 11.337,
       "bibcode": "2002Natur.415..985G",
       "date": "2002-02-00"
+    },
+    "spread": {
+      "mean": 35.142,
+      "median": 19,
+      "uncited": 176,
+      "i10": 2358,
+      "i100": 205
     }
   },
   "query": {
     "arms": "((((abs:Cassini OR abs:(VIMS OR CIRS OR UVIS OR INMS OR RPWS OR CAPS OR CDA OR MIMI)) AND abs:(Saturn OR Saturnian OR Titan OR Enceladus OR Iapetus OR Rhea OR Dione OR Hyperion OR Mimas OR Tethys OR Phoebe)) OR (abs:Cassini AND abs:(Jupiter OR Jovian OR Io OR INCA OR heliosphere OR heliosheath OR heliospheric OR \"energetic neutral\" OR \"interplanetary shock\" OR \"interstellar dust\" OR \"radio science\" OR \"radio tracking\" OR \"solar conjunction\" OR \"Earth flyby\" OR \"Venus flyby\" OR \"solar wind\") NOT abs:\"Cassini state\") OR (abs:Cassini AND abs:VIMS AND abs:(lunar OR Moon)) OR (abs:Huygens AND abs:Titan)))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2004-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3ACassini+OR+abs%3A%28VIMS+OR+CIRS+OR+UVIS+OR+INMS+OR+RPWS+OR+CAPS+OR+CDA+OR+MIMI%29%29+AND+abs%3A%28Saturn+OR+Saturnian+OR+Titan+OR+Enceladus+OR+Iapetus+OR+Rhea+OR+Dione+OR+Hyperion+OR+Mimas+OR+Tethys+OR+Phoebe%29%29+OR+%28abs%3ACassini+AND+abs%3A%28Jupiter+OR+Jovian+OR+Io+OR+INCA+OR+heliosphere+OR+heliosheath+OR+heliospheric+OR+%22energetic+neutral%22+OR+%22interplanetary+shock%22+OR+%22interstellar+dust%22+OR+%22radio+science%22+OR+%22radio+tracking%22+OR+%22solar+conjunction%22+OR+%22Earth+flyby%22+OR+%22Venus+flyby%22+OR+%22solar+wind%22%29+NOT+abs%3A%22Cassini+state%22%29+OR+%28abs%3ACassini+AND+abs%3AVIMS+AND+abs%3A%28lunar+OR+Moon%29%29+OR+%28abs%3AHuygens+AND+abs%3ATitan%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:26:26.511511+00:00",
+    "fetchedAt": "2026-09-30T17:50:00.729489+00:00",
     "reconciliation": {
-      "adsReturned": 3388,
+      "adsReturned": 3390,
       "curatedOut": 13,
       "curatedIn": 36,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 3,
-      "final": 3408
+      "final": 3410
     }
   },
   "curation": {
@@ -859,6 +889,8 @@
       "bibcode": "2003Natur.425..374B",
       "title": "A test of general relativity using radio links with the Cassini spacecraft",
       "firstAuthor": "Bertotti, B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 1737
     },
@@ -866,6 +898,8 @@
       "bibcode": "2006Sci...311.1393P",
       "title": "Cassini Observes the Active South Pole of Enceladus",
       "firstAuthor": "Porco, C. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 1026
     },
@@ -873,27 +907,35 @@
       "bibcode": "2005Natur.438..779N",
       "title": "The abundances of constituents of Titan's atmosphere from the GCMS instrument on the Huygens probe",
       "firstAuthor": "Niemann, H. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
-      "citations": 783
+      "citations": 784
     },
     {
       "bibcode": "2006Sci...311.1419W",
       "title": "Cassini Ion and Neutral Mass Spectrometer: Enceladus Plume Composition and Structure",
       "firstAuthor": "Waite, J. Hunter",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
-      "citations": 581
+      "citations": 582
     },
     {
       "bibcode": "2005Natur.438..785F",
       "title": "In situ measurements of the physical characteristics of Titan's environment",
       "firstAuthor": "Fulchignoni, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
-      "citations": 580
+      "citations": 581
     },
     {
       "bibcode": "2007Sci...316..870W",
       "title": "The Process of Tholin Formation in Titan’s Upper Atmosphere",
       "firstAuthor": "Waite, J. H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 546
     },
@@ -901,48 +943,62 @@
       "bibcode": "2006Sci...311.1401S",
       "title": "Cassini Encounters Enceladus: Background and the Discovery of a South Polar Hot Spot",
       "firstAuthor": "Spencer, J. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
-      "citations": 525
+      "citations": 526
     },
     {
       "bibcode": "2006Sci...311.1422H",
       "title": "Enceladus' Water Vapor Plume",
       "firstAuthor": "Hansen, Candice J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
-      "citations": 493
+      "citations": 494
     },
     {
       "bibcode": "2021AJ....161..105P",
       "title": "The JPL Planetary and Lunar Ephemerides DE440 and DE441",
       "firstAuthor": "Park, Ryan S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
-      "citations": 480
+      "citations": 482
     },
     {
       "bibcode": "2007Natur.445...61S",
       "title": "The lakes of Titan",
       "firstAuthor": "Stofan, E. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
-      "citations": 479
+      "citations": 481
     },
     {
       "bibcode": "2004SSRv..114..395G",
       "title": "The Cassini Radio and Plasma Wave Investigation",
       "firstAuthor": "Gurnett, D. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
-      "citations": 477
+      "citations": 478
     },
     {
       "bibcode": "2005Natur.438..765T",
       "title": "Rain, winds and haze during the Huygens probe's descent to Titan's surface",
       "firstAuthor": "Tomasko, M. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
-      "citations": 470
+      "citations": 471
     },
     {
       "bibcode": "2004SSRv..114....1Y",
       "title": "Cassini Plasma Spectrometer Investigation",
       "firstAuthor": "Young, D. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 457
     },
@@ -950,13 +1006,17 @@
       "bibcode": "2004SSRv..114..331D",
       "title": "The Cassini Magnetic Field Investigation",
       "firstAuthor": "Dougherty, M. K.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
-      "citations": 451
+      "citations": 452
     },
     {
       "bibcode": "2017Sci...356..155W",
       "title": "Cassini finds molecular hydrogen in the Enceladus plume: Evidence for hydrothermal processes",
       "firstAuthor": "Waite, J. Hunter",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 444
     },
@@ -964,6 +1024,8 @@
       "bibcode": "2011Natur.474..620P",
       "title": "A salt-water reservoir as the source of a compositionally stratified plume on Enceladus",
       "firstAuthor": "Postberg, F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 407
     },
@@ -971,6 +1033,8 @@
       "bibcode": "2009Sci...326..562C",
       "title": "Detection of Adsorbed Water and Hydroxyl on the Moon",
       "firstAuthor": "Clark, Roger N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 403
     },
@@ -978,6 +1042,8 @@
       "bibcode": "2005Sci...308..982W",
       "title": "Ion Neutral Mass Spectrometer Results from the First Flyby of Titan",
       "firstAuthor": "Waite, J. Hunter",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 387
     },
@@ -985,6 +1051,8 @@
       "bibcode": "2003Sci...299.1541P",
       "title": "Cassini Imaging of Jupiter's Atmosphere, Satellites, and Rings",
       "firstAuthor": "Porco, Carolyn C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 386
     },
@@ -992,11 +1060,13 @@
       "bibcode": "2007GeoRL..3422103C",
       "title": "Discovery of heavy negative ions in Titan's ionosphere",
       "firstAuthor": "Coates, A. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 382
     }
   ],
   "papersFile": {
-    "rows": 3408
+    "rows": 3410
   }
 }

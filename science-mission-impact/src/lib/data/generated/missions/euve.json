@@ -21,7 +21,10 @@
   "indices": {
     "h": 73,
     "m": 2.147,
-    "i100": 50
+    "i100": 50,
+    "g": 105,
+    "tori": 138.138,
+    "riq": 345
   },
   "facts": {
     "papers": 473,
@@ -221,6 +224,13 @@
     "bibcode": "2002ApJ...568..610E",
     "title": "X-Ray Spectral Variability and Rapid Variability of the Soft X-Ray Spectrum Seyfert 1 Galaxies Arakelian 564 and Ton S180",
     "firstAuthor": "Edelson, Rick",
+    "authors": [
+      "Edelson, Rick",
+      "Turner, T. J.",
+      "Pounds, Ken",
+      "Vaughan, Simon"
+    ],
+    "authorCount": 8,
     "year": 2002,
     "citations": 422
   },
@@ -230,12 +240,12 @@
         63.765,
         51.362,
         43.834,
-        38.668,
-        42.572,
-        30.493,
-        39.365,
-        31.618,
-        27.323,
+        38.676,
+        42.568,
+        30.46,
+        39.394,
+        31.612,
+        27.329,
         20
       ],
       "top1": 0
@@ -257,16 +267,16 @@
     },
     "lifetime": {
       "bins": [
-        41.915,
-        41.446,
-        48.458,
-        52.143,
-        53.397,
-        52.612,
-        43.903,
-        61.311,
-        41.318,
-        36.497
+        41.883,
+        41.461,
+        48.457,
+        52.086,
+        53.431,
+        52.593,
+        43.949,
+        61.3,
+        41.313,
+        36.526
       ],
       "top1": 0
     }
@@ -294,6 +304,13 @@
       "status": "available",
       "months": 126,
       "citationBuckets": 15
+    },
+    "spread": {
+      "mean": 13.928,
+      "median": 9,
+      "uncited": 40,
+      "i10": 193,
+      "i100": 0
     }
   },
   "window": {
@@ -319,6 +336,13 @@
       "status": "available",
       "months": 48,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 13,
+      "median": 8.5,
+      "uncited": 24,
+      "i10": 69,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -335,13 +359,20 @@
       "yearsFromFormulation": 11.499,
       "bibcode": "1995ApJ...443..393D",
       "date": "1995-04-00"
+    },
+    "spread": {
+      "mean": 38.793,
+      "median": 24,
+      "uncited": 27,
+      "i10": 349,
+      "i100": 50
     }
   },
   "query": {
     "arms": "((=abs:\"Extreme Ultraviolet Explorer\" OR facility:EUVE OR (abs:EUVE AND (collection:astronomy OR abs:(ultraviolet OR EUV OR star OR stars OR spectra OR spectrometer OR spacecraft)))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1992-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Extreme+Ultraviolet+Explorer%22+OR+facility%3AEUVE+OR+%28abs%3AEUVE+AND+%28collection%3Aastronomy+OR+abs%3A%28ultraviolet+OR+EUV+OR+star+OR+stars+OR+spectra+OR+spectrometer+OR+spacecraft%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1992-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-01T00:09:50.883540+00:00",
+    "fetchedAt": "2026-09-30T21:06:33.161023+00:00",
     "reconciliation": {
       "adsReturned": 477,
       "curatedOut": 4,
@@ -394,6 +425,8 @@
       "bibcode": "2002ApJ...568..610E",
       "title": "X-Ray Spectral Variability and Rapid Variability of the Soft X-Ray Spectrum Seyfert 1 Galaxies Arakelian 564 and Ton S180",
       "firstAuthor": "Edelson, Rick",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 422
     },
@@ -401,6 +434,8 @@
       "bibcode": "2002ApJ...564..981P",
       "title": "Toward a Mass and Radius Determination of the Nearby Isolated Neutron Star RX J185635-3754",
       "firstAuthor": "Pons, Jose A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 231
     },
@@ -408,6 +443,8 @@
       "bibcode": "2000ApJ...541..396A",
       "title": "Extreme-Ultraviolet Flare Activity in Late-Type Stars",
       "firstAuthor": "Audard, Marc",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 223
     },
@@ -415,6 +452,8 @@
       "bibcode": "2004A&A...426..897M",
       "title": "Synopsis of the interstellar He parameters from combined neutral gas, pickup ion and UV scattering observations and related consequences",
       "firstAuthor": "Möbius, E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 201
     },
@@ -422,6 +461,8 @@
       "bibcode": "2000ApJ...539L..41C",
       "title": "High-Resolution X-Ray Spectra of Capella: Initial Results from the Chandra High-Energy Transmission Grating Spectrometer",
       "firstAuthor": "Canizares, C. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 184
     },
@@ -429,6 +470,8 @@
       "bibcode": "2014ApJ...780...61L",
       "title": "The Intrinsic Extreme Ultraviolet Fluxes of F5 V TO M5 V Stars",
       "firstAuthor": "Linsky, Jeffrey L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 179
     },
@@ -436,6 +479,8 @@
       "bibcode": "1995ApJ...453..464H",
       "title": "Simultaneous Extreme-Ultraviolet Explorer and Optical Observations of AD Leonis: Evidence for Large Coronal Loops and the Neupert Effect in Stellar Flares",
       "firstAuthor": "Hawley, Suzanne L.",
+      "authors": null,
+      "authorCount": null,
       "year": 1995,
       "citations": 172
     },
@@ -443,6 +488,8 @@
       "bibcode": "1999PASP..111..532S",
       "title": "White Dwarfs in Cataclysmic Variables",
       "firstAuthor": "Sion, E. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 171
     },
@@ -450,6 +497,8 @@
       "bibcode": "2003ARA&A..41..343B",
       "title": "Laboratory X-Ray Astrophysics",
       "firstAuthor": "Beiersdorfer, Peter",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 171
     },
@@ -457,6 +506,8 @@
       "bibcode": "1995ApJS...97..551B",
       "title": "New Model of Iron Spectra in the Extreme Ultraviolet and Application to SERTS and EUVE Observations: A Solar Active Region and Capella",
       "firstAuthor": "Brickhouse, N. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 1995,
       "citations": 168
     },
@@ -464,6 +515,8 @@
       "bibcode": "1996Sci...274.1335L",
       "title": "Diffuse Extreme-Ultraviolet Emission from the Coma Cluster: Evidence for Rapidly Cooling Gases at Submegakelvin Temperatures",
       "firstAuthor": "Lieu, Richard",
+      "authors": null,
+      "authorCount": null,
       "year": 1996,
       "citations": 163
     },
@@ -471,6 +524,8 @@
       "bibcode": "1996ApJ...458L...5L",
       "title": "Discovery of 0.5 MK Gas in the Center of the Virgo Cluster",
       "firstAuthor": "Lieu, Richard",
+      "authors": null,
+      "authorCount": null,
       "year": 1996,
       "citations": 160
     },
@@ -478,6 +533,8 @@
       "bibcode": "2002ApJS..140....3M",
       "title": "Abundances of Deuterium, Nitrogen, and Oxygen in the Local Interstellar Medium: Overview of First Results from the FUSE Mission",
       "firstAuthor": "Moos, H. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 156
     },
@@ -485,6 +542,8 @@
       "bibcode": "2001ApJ...555..477M",
       "title": "Complete and Simultaneous Spectral Observations of the Black Hole X-Ray Nova XTE J1118+480",
       "firstAuthor": "McClintock, J. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 155
     },
@@ -492,6 +551,8 @@
       "bibcode": "1997ApJ...480..714V",
       "title": "Hot White Dwarfs in the Extreme Ultraviolet Explorer Survey. II. Mass Distribution, Space Density, and Population Age",
       "firstAuthor": "Vennes, Stéphane",
+      "authors": null,
+      "authorCount": null,
       "year": 1997,
       "citations": 148
     },
@@ -499,6 +560,8 @@
       "bibcode": "1999ApJ...517..399N",
       "title": "A Comparative Study of the Mass Distribution of Extreme-Ultraviolet-selected White Dwarfs",
       "firstAuthor": "Napiwotzki, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 147
     },
@@ -506,6 +569,8 @@
       "bibcode": "1994A&ARv...6..123M",
       "title": "Spectroscopic diagnostics in the VUV for solar and stellar plasmas",
       "firstAuthor": "Mason, H. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 1994,
       "citations": 145
     },
@@ -513,6 +578,8 @@
       "bibcode": "2000ApJ...528..292C",
       "title": "Simultaneous EUVE/ASCA/RXTE Observations of NGC 5548",
       "firstAuthor": "Chiang, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 144
     },
@@ -520,6 +587,8 @@
       "bibcode": "2000ApJ...534..825R",
       "title": "The Three-dimensional Structure of the Warm Local Interstellar Medium. II. The Colorado Model of the Local Interstellar Cloud",
       "firstAuthor": "Redfield, Seth",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 144
     },
@@ -527,6 +596,8 @@
       "bibcode": "1995ApJ...455..574D",
       "title": "Hot White Dwarfs in the Local Interstellar Medium: Hydrogen and Helium Interstellar Column Densities and Stellar Effective Temperatures from Extreme-Ultraviolet Explorer Spectroscopy",
       "firstAuthor": "Dupuis, Jean",
+      "authors": null,
+      "authorCount": null,
       "year": 1995,
       "citations": 140
     }

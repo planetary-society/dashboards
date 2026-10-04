@@ -21,11 +21,14 @@
   "indices": {
     "h": 82,
     "m": 4.316,
-    "i100": 62
+    "i100": 62,
+    "g": 118,
+    "tori": 70.143,
+    "riq": 440
   },
   "facts": {
-    "papers": 760,
-    "citations": 26605,
+    "papers": 761,
+    "citations": 26617,
     "publicationYears": [
       2008,
       2026
@@ -72,7 +75,7 @@
       40,
       36,
       44,
-      32
+      33
     ],
     "citations": [
       65,
@@ -92,14 +95,14 @@
       2454,
       2191,
       2204,
-      2276,
-      1644
+      2273,
+      1659
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 26605,
-      "observed": 26605,
+      "expected": 26617,
+      "observed": 26617,
       "missing": 0
     }
   },
@@ -162,52 +165,59 @@
     "bibcode": "2011Sci...333.1847N",
     "title": "The Major-Element Composition of Mercury’s Surface from MESSENGER X-ray Spectrometry",
     "firstAuthor": "Nittler, Larry R.",
+    "authors": [
+      "Nittler, Larry R.",
+      "Starr, Richard D.",
+      "Weider, Shoshana Z.",
+      "McCoy, Timothy J."
+    ],
+    "authorCount": 15,
     "year": 2011,
     "citations": 431
   },
   "ranks": {
     "full": {
       "bins": [
-        13.781,
-        19.331,
-        34.923,
-        24.28,
-        25.933,
-        33.927,
-        34.714,
-        26.26,
-        48.115,
-        39.736
+        13.8,
+        19.366,
+        34.979,
+        24.237,
+        25.932,
+        33.892,
+        34.693,
+        26.286,
+        48.149,
+        39.667
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        7.642,
-        7.534,
-        15.209,
-        17.901,
-        19.714,
-        8.975,
-        7.345,
-        19.5,
-        18.93,
-        17.25
+        7.675,
+        7.542,
+        15.31,
+        17.784,
+        19.688,
+        8.995,
+        7.338,
+        19.511,
+        18.919,
+        17.238
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        65.179,
-        74.167,
-        64.747,
-        68.395,
-        78.957,
-        78.062,
-        86.955,
-        85.2,
-        83.283,
-        75.057
+        65.768,
+        74.17,
+        64.352,
+        68.623,
+        79.218,
+        78.074,
+        86.942,
+        85.303,
+        83.35,
+        75.2
       ],
       "top1": 1
     }
@@ -217,7 +227,7 @@
     "outputBasis": "measured",
     "citations": 4938,
     "top10": 42.6,
-    "top10ShareOfDivision": 0.03904,
+    "top10ShareOfDivision": 0.03905,
     "top1": 2,
     "top1ShareOfDivision": 0.01833,
     "first": {
@@ -235,6 +245,13 @@
       "status": "available",
       "months": 72,
       "citationBuckets": 10
+    },
+    "spread": {
+      "mean": 16.405,
+      "median": 11,
+      "uncited": 10,
+      "i10": 167,
+      "i100": 2
     }
   },
   "window": {
@@ -242,9 +259,9 @@
     "outputBasis": "measured",
     "citations": 2759,
     "top10": 12.2,
-    "top10ShareOfDivision": 0.02526,
+    "top10ShareOfDivision": 0.02527,
     "top1": 1,
-    "top1ShareOfDivision": 0.0207,
+    "top1ShareOfDivision": 0.02071,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.411,
@@ -260,14 +277,21 @@
       "status": "available",
       "months": 35,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 19.707,
+      "median": 12,
+      "uncited": 5,
+      "i10": 81,
+      "i100": 2
     }
   },
   "lifetime": {
-    "papers": 760,
+    "papers": 761,
     "outputBasis": "measured",
-    "citations": 26605,
-    "top10": 74.8,
-    "top10ShareOfDivision": 0.05489,
+    "citations": 26617,
+    "top10": 75.025,
+    "top10ShareOfDivision": 0.05506,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -276,21 +300,28 @@
       "yearsFromFormulation": 8.668,
       "bibcode": "2008PhRvL.100i1102A",
       "date": "2008-03-00"
+    },
+    "spread": {
+      "mean": 34.976,
+      "median": 19,
+      "uncited": 52,
+      "i10": 517,
+      "i100": 62
     }
   },
   "query": {
     "arms": "((((=abs:\"Mercury Surface, Space Environment, Geochemistry, and Ranging\" OR (abs:MESSENGER AND (abs:Mercury OR abs:hermean OR abs:mission OR abs:probe OR abs:spacecraft)) OR =abs:\"Mercury Dual Imaging System\" OR =abs:\"MESSENGER X-Ray Spectrometer\" OR =abs:\"MESSENGER Gamma-Ray Spectrometer\" OR =abs:\"MESSENGER Neutron Spectrometer\" OR =abs:\"MESSENGER Magnetometer\" OR =abs:\"Mercury Laser Altimeter\" OR =abs:\"MESSENGER Energetic Particle and Plasma Spectrometer\")) OR =abs:\"Mercury Atmospheric and Surface Composition Spectrometer\" OR ((abs:MASCS OR abs:MDIS OR abs:FIPS OR abs:EPPS OR =abs:\"Fast Imaging Plasma Spectrometer\") AND (abs:Mercury OR abs:hermean OR abs:MESSENGER)) OR facility:MESSENGER))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2011-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Mercury+Surface%2C+Space+Environment%2C+Geochemistry%2C+and+Ranging%22+OR+%28abs%3AMESSENGER+AND+%28abs%3AMercury+OR+abs%3Ahermean+OR+abs%3Amission+OR+abs%3Aprobe+OR+abs%3Aspacecraft%29%29+OR+%3Dabs%3A%22Mercury+Dual+Imaging+System%22+OR+%3Dabs%3A%22MESSENGER+X-Ray+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Gamma-Ray+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Neutron+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Magnetometer%22+OR+%3Dabs%3A%22Mercury+Laser+Altimeter%22+OR+%3Dabs%3A%22MESSENGER+Energetic+Particle+and+Plasma+Spectrometer%22%29%29+OR+%3Dabs%3A%22Mercury+Atmospheric+and+Surface+Composition+Spectrometer%22+OR+%28%28abs%3AMASCS+OR+abs%3AMDIS+OR+abs%3AFIPS+OR+abs%3AEPPS+OR+%3Dabs%3A%22Fast+Imaging+Plasma+Spectrometer%22%29+AND+%28abs%3AMercury+OR+abs%3Ahermean+OR+abs%3AMESSENGER%29%29+OR+facility%3AMESSENGER%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2011-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:27:49.349066+00:00",
+    "fetchedAt": "2026-09-30T17:51:35.798459+00:00",
     "reconciliation": {
-      "adsReturned": 699,
+      "adsReturned": 700,
       "curatedOut": 8,
       "curatedIn": 69,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 760
+      "final": 761
     }
   },
   "curation": {
@@ -960,6 +991,8 @@
       "bibcode": "2011Sci...333.1847N",
       "title": "The Major-Element Composition of Mercury’s Surface from MESSENGER X-ray Spectrometry",
       "firstAuthor": "Nittler, Larry R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 431
     },
@@ -967,6 +1000,8 @@
       "bibcode": "2011Sci...333.1859A",
       "title": "The Global Magnetic Field of Mercury from MESSENGER Orbital Observations",
       "firstAuthor": "Anderson, Brian J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 281
     },
@@ -974,6 +1009,8 @@
       "bibcode": "2012Sci...336..214S",
       "title": "Gravity Field and Internal Structure of Mercury from MESSENGER",
       "firstAuthor": "Smith, David E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 267
     },
@@ -981,6 +1018,8 @@
       "bibcode": "2011Sci...333.1853H",
       "title": "Flood Volcanism in the Northern High Latitudes of Mercury Revealed by MESSENGER",
       "firstAuthor": "Head, James W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 246
     },
@@ -988,6 +1027,8 @@
       "bibcode": "2009Sci...324..606S",
       "title": "MESSENGER Observations of Magnetic Reconnection in Mercury’s Magnetosphere",
       "firstAuthor": "Slavin, James A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 240
     },
@@ -995,6 +1036,8 @@
       "bibcode": "2013JGRE..118.1204H",
       "title": "The curious case of Mercury's internal structure",
       "firstAuthor": "Hauck, Steven A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 240
     },
@@ -1002,6 +1045,8 @@
       "bibcode": "2018CeMDA.130...22A",
       "title": "Report of the IAU Working Group on Cartographic Coordinates and Rotational Elements: 2015",
       "firstAuthor": "Archinal, B. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 234
     },
@@ -1009,6 +1054,8 @@
       "bibcode": "2013JGRE..118..891D",
       "title": "The distribution and origin of smooth plains on Mercury",
       "firstAuthor": "Denevi, Brett W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 232
     },
@@ -1016,6 +1063,8 @@
       "bibcode": "2009Sci...324..613D",
       "title": "The Evolution of Mercury’s Crust: A Global Perspective from MESSENGER",
       "firstAuthor": "Denevi, Brett W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 224
     },
@@ -1023,13 +1072,17 @@
       "bibcode": "2013JGRA..118.2213W",
       "title": "Mercury's magnetopause and bow shock from MESSENGER Magnetometer observations",
       "firstAuthor": "Winslow, Reka M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
-      "citations": 214
+      "citations": 215
     },
     {
       "bibcode": "2011Sci...333.1850P",
       "title": "Radioactive Elements on Mercury’s Surface from MESSENGER: Implications for the Planet’s Formation and Evolution",
       "firstAuthor": "Peplowski, Patrick N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 211
     },
@@ -1037,6 +1090,8 @@
       "bibcode": "2014NatGe...7..301B",
       "title": "Mercury's global contraction much greater than earlier estimates",
       "firstAuthor": "Byrne, Paul K.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 183
     },
@@ -1044,6 +1099,8 @@
       "bibcode": "2012Sci...336..217Z",
       "title": "Topography of the Northern Hemisphere of Mercury from MESSENGER Laser Altimetry",
       "firstAuthor": "Zuber, Maria T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 182
     },
@@ -1051,6 +1108,8 @@
       "bibcode": "2008Sci...321...69H",
       "title": "Volcanism on Mercury: Evidence from the First MESSENGER Flyby",
       "firstAuthor": "Head, James W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 180
     },
@@ -1058,6 +1117,8 @@
       "bibcode": "2008Sci...321...66R",
       "title": "Reflectance and Color Variations on Mercury: Regolith Processes and Compositional Heterogeneity",
       "firstAuthor": "Robinson, Mark S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 176
     },
@@ -1065,6 +1126,8 @@
       "bibcode": "2010Sci...329..665S",
       "title": "MESSENGER Observations of Extreme Loading and Unloading of Mercury’s Magnetic Tail",
       "firstAuthor": "Slavin, James A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 173
     },
@@ -1072,6 +1135,8 @@
       "bibcode": "2013ApJ...767...41L",
       "title": "Longitudinal and Radial Dependence of Solar Energetic Particle Peak Intensities: STEREO, ACE, SOHO, GOES, and MESSENGER Observations",
       "firstAuthor": "Lario, D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 173
     },
@@ -1079,6 +1144,8 @@
       "bibcode": "2013Sci...339..292L",
       "title": "Evidence for Water Ice Near Mercury’s North Pole from MESSENGER Neutron Spectrometer Measurements",
       "firstAuthor": "Lawrence, David J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 173
     },
@@ -1086,6 +1153,8 @@
       "bibcode": "2015E&PSL.416..109W",
       "title": "Evidence for geochemical terranes on Mercury: Global mapping of major elements with MESSENGER's X-Ray Spectrometer",
       "firstAuthor": "Weider, Shoshana Z.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 172
     },
@@ -1093,11 +1162,13 @@
       "bibcode": "2008Sci...321...82A",
       "title": "The Structure of Mercury’s Magnetic Field from MESSENGER’s First Flyby",
       "firstAuthor": "Anderson, Brian J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 165
     }
   ],
   "papersFile": {
-    "rows": 760
+    "rows": 761
   }
 }

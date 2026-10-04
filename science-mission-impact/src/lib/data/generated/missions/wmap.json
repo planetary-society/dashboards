@@ -21,11 +21,14 @@
   "indices": {
     "h": 236,
     "m": 9.077,
-    "i100": 642
+    "i100": 642,
+    "g": 491,
+    "tori": 1306.463,
+    "riq": 1390
   },
   "facts": {
     "papers": 3298,
-    "citations": 339131,
+    "citations": 339100,
     "publicationYears": [
       2001,
       2026
@@ -99,7 +102,7 @@
       12424,
       16287,
       15745,
-      17319,
+      17317,
       17905,
       18019,
       22249,
@@ -114,13 +117,13 @@
       12954,
       13921,
       15110,
-      12427
+      12398
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 339131,
-      "observed": 339131,
+      "expected": 339100,
+      "observed": 339100,
       "missing": 0
     }
   },
@@ -197,8 +200,15 @@
     "bibcode": "2016A&A...594A..13P",
     "title": "Planck 2015 results. XIII. Cosmological parameters",
     "firstAuthor": "Planck Collaboration",
+    "authors": [
+      "Planck Collaboration",
+      "Ade, P. A. R.",
+      "Aghanim, N.",
+      "Arnaud, M."
+    ],
+    "authorCount": 262,
     "year": 2016,
-    "citations": 13475
+    "citations": 13473
   },
   "ranks": {
     "full": {
@@ -206,13 +216,13 @@
         206.923,
         196.083,
         168.609,
-        143.037,
-        196.677,
-        199.075,
-        258.262,
-        246.308,
-        278.604,
-        403.421
+        143.065,
+        196.679,
+        198.901,
+        258.404,
+        246.257,
+        278.599,
+        403.478
       ],
       "top1": 74
     },
@@ -226,23 +236,23 @@
         54.484,
         59.579,
         68.671,
-        67.895,
-        124.741
+        67.877,
+        124.759
       ],
       "top1": 23.704
     },
     "lifetime": {
       "bins": [
-        200.729,
-        286.53,
-        289.109,
-        281.289,
-        278.499,
-        303.1,
-        327.985,
-        372.238,
-        403.538,
-        554.983
+        200.574,
+        286.596,
+        289.098,
+        281.105,
+        278.539,
+        303.731,
+        327.481,
+        372.162,
+        403.556,
+        555.157
       ],
       "top1": 87
     }
@@ -270,6 +280,13 @@
       "status": "available",
       "months": 134,
       "citationBuckets": 15
+    },
+    "spread": {
+      "mean": 41.624,
+      "median": 17,
+      "uncited": 100,
+      "i10": 1588,
+      "i100": 133
     }
   },
   "window": {
@@ -295,12 +312,19 @@
       "status": "available",
       "months": 48,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 52.92,
+      "median": 22,
+      "uncited": 32,
+      "i10": 419,
+      "i100": 48
     }
   },
   "lifetime": {
     "papers": 3298,
     "outputBasis": "measured",
-    "citations": 339131,
+    "citations": 339100,
     "top10": 373.833,
     "top10ShareOfDivision": 0.06748,
     "top1": null,
@@ -311,13 +335,20 @@
       "yearsFromFormulation": 6.166,
       "bibcode": "2002PhRvD..65l3004M",
       "date": "2002-06-00"
+    },
+    "spread": {
+      "mean": 102.82,
+      "median": 33,
+      "uncited": 102,
+      "i10": 2592,
+      "i100": 642
     }
   },
   "query": {
     "arms": "((=abs:\"Microwave Anisotropy Probe\" OR =title:\"Microwave Anisotropy Probe\" OR =abs:\"differencing assembly\" OR =abs:\"Pseudo-Correlation Radiometer\" OR ((abs:WMAP OR title:WMAP OR =abs:WMAP1 OR =abs:WMAP5 OR =abs:WMAP7 OR =abs:WMAP9 OR =title:WMAP1 OR =title:WMAP5 OR =title:WMAP7 OR =title:WMAP9) AND (=abs:\"WMAP satellite\" OR =abs:\"WMAP mission\" OR =abs:\"WMAP team\" OR =abs:\"WMAP instrument\" OR =abs:\"WMAP data\" OR =abs:\"WMAP observations\" OR =abs:\"cosmic microwave background\" OR abs:CMB OR =abs:cosmology OR =abs:cosmological OR =abs:anisotropy OR =abs:anisotropies OR =abs:\"power spectrum\" OR =abs:polarization OR =abs:polarisation OR =abs:foreground OR =abs:foregrounds OR =abs:inflation OR =abs:\"dark energy\" OR =abs:\"dark matter\" OR =abs:microwave OR =abs:sky OR =abs:map OR =abs:maps OR =abs:galactic OR =abs:emission OR =abs:universe OR =abs:haze OR =abs:reionization OR =abs:neutrino OR =abs:neutrinos OR =abs:baryon OR =abs:cosmic OR =abs:galaxies OR =abs:redshift))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2001-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Microwave+Anisotropy+Probe%22+OR+%3Dtitle%3A%22Microwave+Anisotropy+Probe%22+OR+%3Dabs%3A%22differencing+assembly%22+OR+%3Dabs%3A%22Pseudo-Correlation+Radiometer%22+OR+%28%28abs%3AWMAP+OR+title%3AWMAP+OR+%3Dabs%3AWMAP1+OR+%3Dabs%3AWMAP5+OR+%3Dabs%3AWMAP7+OR+%3Dabs%3AWMAP9+OR+%3Dtitle%3AWMAP1+OR+%3Dtitle%3AWMAP5+OR+%3Dtitle%3AWMAP7+OR+%3Dtitle%3AWMAP9%29+AND+%28%3Dabs%3A%22WMAP+satellite%22+OR+%3Dabs%3A%22WMAP+mission%22+OR+%3Dabs%3A%22WMAP+team%22+OR+%3Dabs%3A%22WMAP+instrument%22+OR+%3Dabs%3A%22WMAP+data%22+OR+%3Dabs%3A%22WMAP+observations%22+OR+%3Dabs%3A%22cosmic+microwave+background%22+OR+abs%3ACMB+OR+%3Dabs%3Acosmology+OR+%3Dabs%3Acosmological+OR+%3Dabs%3Aanisotropy+OR+%3Dabs%3Aanisotropies+OR+%3Dabs%3A%22power+spectrum%22+OR+%3Dabs%3Apolarization+OR+%3Dabs%3Apolarisation+OR+%3Dabs%3Aforeground+OR+%3Dabs%3Aforegrounds+OR+%3Dabs%3Ainflation+OR+%3Dabs%3A%22dark+energy%22+OR+%3Dabs%3A%22dark+matter%22+OR+%3Dabs%3Amicrowave+OR+%3Dabs%3Asky+OR+%3Dabs%3Amap+OR+%3Dabs%3Amaps+OR+%3Dabs%3Agalactic+OR+%3Dabs%3Aemission+OR+%3Dabs%3Auniverse+OR+%3Dabs%3Ahaze+OR+%3Dabs%3Areionization+OR+%3Dabs%3Aneutrino+OR+%3Dabs%3Aneutrinos+OR+%3Dabs%3Abaryon+OR+%3Dabs%3Acosmic+OR+%3Dabs%3Agalaxies+OR+%3Dabs%3Aredshift%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2001-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:34:54.798184+00:00",
+    "fetchedAt": "2026-09-30T18:17:33.234414+00:00",
     "reconciliation": {
       "adsReturned": 3300,
       "curatedOut": 0,
@@ -442,13 +473,17 @@
       "bibcode": "2016A&A...594A..13P",
       "title": "Planck 2015 results. XIII. Cosmological parameters",
       "firstAuthor": "Planck Collaboration",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
-      "citations": 13475
+      "citations": 13473
     },
     {
       "bibcode": "2003ApJS..148..175S",
       "title": "First-Year Wilkinson Microwave Anisotropy Probe (WMAP) Observations: Determination of Cosmological Parameters",
       "firstAuthor": "Spergel, D. N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 10797
     },
@@ -456,6 +491,8 @@
       "bibcode": "2014A&A...571A..16P",
       "title": "Planck 2013 results. XVI. Cosmological parameters",
       "firstAuthor": "Planck Collaboration",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 8399
     },
@@ -463,13 +500,17 @@
       "bibcode": "2011ApJS..192...18K",
       "title": "Seven-year Wilkinson Microwave Anisotropy Probe (WMAP) Observations: Cosmological Interpretation",
       "firstAuthor": "Komatsu, E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
-      "citations": 8389
+      "citations": 8388
     },
     {
       "bibcode": "2007ApJS..170..377S",
       "title": "Three-Year Wilkinson Microwave Anisotropy Probe (WMAP) Observations: Implications for Cosmology",
       "firstAuthor": "Spergel, D. N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 7632
     },
@@ -477,13 +518,17 @@
       "bibcode": "2013ApJS..208...19H",
       "title": "Nine-year Wilkinson Microwave Anisotropy Probe (WMAP) Observations: Cosmological Parameter Results",
       "firstAuthor": "Hinshaw, G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
-      "citations": 5628
+      "citations": 5626
     },
     {
       "bibcode": "2005ApJ...622..759G",
       "title": "HEALPix: A Framework for High-Resolution Discretization and Fast Analysis of Data Distributed on the Sphere",
       "firstAuthor": "Górski, K. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 5532
     },
@@ -491,6 +536,8 @@
       "bibcode": "2009ApJS..180..330K",
       "title": "Five-Year Wilkinson Microwave Anisotropy Probe Observations: Cosmological Interpretation",
       "firstAuthor": "Komatsu, E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 5448
     },
@@ -498,6 +545,8 @@
       "bibcode": "2003ApJS..148....1B",
       "title": "First-Year Wilkinson Microwave Anisotropy Probe (WMAP) Observations: Preliminary Maps and Basic Results",
       "firstAuthor": "Bennett, C. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 4893
     },
@@ -505,6 +554,8 @@
       "bibcode": "2004PhRvD..69j3501T",
       "title": "Cosmological parameters from SDSS and WMAP",
       "firstAuthor": "Tegmark, Max",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 3853
     },
@@ -512,6 +563,8 @@
       "bibcode": "2011MNRAS.416.3017B",
       "title": "The 6dF Galaxy Survey: baryon acoustic oscillations and the local Hubble constant",
       "firstAuthor": "Beutler, Florian",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 2529
     },
@@ -519,6 +572,8 @@
       "bibcode": "2013ApJS..208...20B",
       "title": "Nine-year Wilkinson Microwave Anisotropy Probe (WMAP) Observations: Final Maps and Results",
       "firstAuthor": "Bennett, C. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 2523
     },
@@ -526,6 +581,8 @@
       "bibcode": "2016ApJ...826...56R",
       "title": "A 2.4% Determination of the Local Value of the Hubble Constant",
       "firstAuthor": "Riess, Adam G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 2079
     },
@@ -533,6 +590,8 @@
       "bibcode": "2005MNRAS.362..505C",
       "title": "The 2dF Galaxy Redshift Survey: power-spectrum analysis of the final data set and cosmological implications",
       "firstAuthor": "Cole, Shaun",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 1994
     },
@@ -540,6 +599,8 @@
       "bibcode": "2014A&A...568A..22B",
       "title": "Improved cosmological constraints from a joint analysis of the SDSS-II and SNLS supernova samples",
       "firstAuthor": "Betoule, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 1864
     },
@@ -547,6 +608,8 @@
       "bibcode": "2010MNRAS.401.2148P",
       "title": "Baryon acoustic oscillations in the Sloan Digital Sky Survey Data Release 7 galaxy sample",
       "firstAuthor": "Percival, Will J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 1822
     },
@@ -554,6 +617,8 @@
       "bibcode": "2009ApJS..180..306D",
       "title": "Five-Year Wilkinson Microwave Anisotropy Probe Observations: Likelihoods and Parameters from the WMAP Data",
       "firstAuthor": "Dunkley, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 1810
     },
@@ -561,6 +626,8 @@
       "bibcode": "2014A&A...571A..22P",
       "title": "Planck 2013 results. XXII. Constraints on inflation",
       "firstAuthor": "Planck Collaboration",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 1789
     },
@@ -568,6 +635,8 @@
       "bibcode": "2003ApJ...594....1T",
       "title": "Cosmological Results from High-z Supernovae",
       "firstAuthor": "Tonry, John L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 1779
     },
@@ -575,6 +644,8 @@
       "bibcode": "2009PhRvD..79a5014A",
       "title": "A theory of dark matter",
       "firstAuthor": "Arkani-Hamed, Nima",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 1748
     }

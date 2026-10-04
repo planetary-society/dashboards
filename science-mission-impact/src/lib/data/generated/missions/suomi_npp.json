@@ -21,7 +21,10 @@
   "indices": {
     "h": 64,
     "m": 4.923,
-    "i100": 30
+    "i100": 30,
+    "g": 98,
+    "tori": 116.048,
+    "riq": 828
   },
   "facts": {
     "papers": 877,
@@ -197,6 +200,13 @@
     "bibcode": "2021ESSD...13..889C",
     "title": "An extended time series (2000─2018) of global NPP-VIIRS-like nighttime light data from a cross-sensor calibration",
     "firstAuthor": "Chen, Zuoqi",
+    "authors": [
+      "Chen, Zuoqi",
+      "Yu, Bailang",
+      "Yang, Chengshu",
+      "Zhou, Yuyu"
+    ],
+    "authorCount": 9,
     "year": 2021,
     "citations": 619
   },
@@ -205,9 +215,9 @@
       "bins": [
         50.155,
         59.538,
-        74.324,
-        74.908,
-        78.059,
+        74.305,
+        74.89,
+        78.097,
         59.274,
         60.561,
         83.774,
@@ -221,8 +231,8 @@
         33.462,
         38.115,
         60.658,
-        58.218,
-        43.922,
+        58.176,
+        43.964,
         42.618,
         46.852,
         55.981,
@@ -233,15 +243,15 @@
     },
     "lifetime": {
       "bins": [
-        96.515,
-        107.972,
-        97.7,
-        125.253,
-        87.418,
-        94.523,
-        85.399,
-        65.607,
-        63.614,
+        96.423,
+        107.922,
+        97.709,
+        125.305,
+        87.424,
+        94.499,
+        85.487,
+        65.601,
+        63.63,
         53
       ],
       "top1": 4
@@ -270,6 +280,13 @@
       "status": "available",
       "months": 115,
       "citationBuckets": 13
+    },
+    "spread": {
+      "mean": 12.179,
+      "median": 7,
+      "uncited": 41,
+      "i10": 287,
+      "i100": 3
     }
   },
   "window": {
@@ -295,6 +312,13 @@
       "status": "available",
       "months": 84,
       "citationBuckets": 11
+    },
+    "spread": {
+      "mean": 12.757,
+      "median": 8,
+      "uncited": 27,
+      "i10": 203,
+      "i100": 2
     }
   },
   "lifetime": {
@@ -311,13 +335,20 @@
       "yearsFromFormulation": 16,
       "bibcode": "2014RSEnv.154...19G",
       "date": "2014-11-00"
+    },
+    "spread": {
+      "mean": 20.983,
+      "median": 9,
+      "uncited": 93,
+      "i10": 423,
+      "i100": 30
     }
   },
   "query": {
     "arms": "((=abs:\"Suomi National Polar-orbiting Partnership\" OR abs:\"Suomi NPP\" OR abs:\"Suomi-NPP\" OR (abs:\"SNPP\" AND abs:\"satellite\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Suomi+National+Polar-orbiting+Partnership%22+OR+abs%3A%22Suomi+NPP%22+OR+abs%3A%22Suomi-NPP%22+OR+%28abs%3A%22SNPP%22+AND+abs%3A%22satellite%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:23:29.673033+00:00",
+    "fetchedAt": "2026-09-30T18:02:03.311536+00:00",
     "reconciliation": {
       "adsReturned": 881,
       "curatedOut": 0,
@@ -337,6 +368,8 @@
       "bibcode": "2021ESSD...13..889C",
       "title": "An extended time series (2000─2018) of global NPP-VIIRS-like nighttime light data from a cross-sensor calibration",
       "firstAuthor": "Chen, Zuoqi",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 619
     },
@@ -344,6 +377,8 @@
       "bibcode": "2016RSEnv.178..127H",
       "title": "Downscaling land surface temperatures at regional scales with random forest regression",
       "firstAuthor": "Hutengs, Christopher",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 414
     },
@@ -351,6 +386,8 @@
       "bibcode": "2018RSEnv.210..113R",
       "title": "NASA's Black Marble nighttime lights product suite",
       "firstAuthor": "Román, Miguel O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 403
     },
@@ -358,6 +395,8 @@
       "bibcode": "2017RSEnv.192..176B",
       "title": "Advances in using multitemporal night-time lights satellite imagery to detect, estimate, and monitor socioeconomic dynamics",
       "firstAuthor": "Bennett, Mia M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 366
     },
@@ -365,6 +404,8 @@
       "bibcode": "2015IJSTA...8.1217Y",
       "title": "Poverty Evaluation Using NPP-VIIRS Nighttime Light Composite Data at the County Level in China",
       "firstAuthor": "Yu, Bailang",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 205
     },
@@ -372,6 +413,8 @@
       "bibcode": "2017IJRS...38.5934L",
       "title": "Intercalibration between DMSP/OLS and VIIRS night-time light images to evaluate city light dynamics of Syria's major human settlement during Syrian Civil War",
       "firstAuthor": "Li, Xi",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 172
     },
@@ -379,6 +422,8 @@
       "bibcode": "2017RSEnv.190..366L",
       "title": "A global analysis of factors controlling VIIRS nighttime light levels from densely populated areas",
       "firstAuthor": "Levin, Noam",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 159
     },
@@ -386,6 +431,8 @@
       "bibcode": "2022ITGRS..6035333W",
       "title": "Developing Improved Time-Series DMSP-OLS-Like Data (1992-2019) in China by Integrating DMSP-OLS and SNPP-VIIRS",
       "firstAuthor": "Wu, Yizhen",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 155
     },
@@ -393,6 +440,8 @@
       "bibcode": "2018ScTEn.615..857L",
       "title": "Potential for using remote sensing to estimate carbon fluxes across northern peatlands ─ A review",
       "firstAuthor": "Lees, K. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 151
     },
@@ -400,6 +449,8 @@
       "bibcode": "2019ApEn..235..612Z",
       "title": "Spatio-temporal dynamics of urban residential CO₂ emissions and their driving forces in China using the integrated two nighttime light datasets",
       "firstAuthor": "Zhao, Jincai",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 151
     },
@@ -407,6 +458,8 @@
       "bibcode": "2020RSEnv.24811980Z",
       "title": "Mapping urban dynamics (1992-2018) in Southeast Asia using consistent nighttime light data from DMSP and VIIRS",
       "firstAuthor": "Zhao, Min",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 145
     },
@@ -414,6 +467,8 @@
       "bibcode": "2021JCPro.32829488Z",
       "title": "An improved approach for monitoring urban built-up areas by combining NPP-VIIRS nighttime light, NDVI, NDWI, and NDBI",
       "firstAuthor": "Zheng, Yuanmao",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 141
     },
@@ -421,6 +476,8 @@
       "bibcode": "2014RSEnv.154...19G",
       "title": "Validation of Land Surface Temperature products derived from the Visible Infrared Imaging Radiometer Suite (VIIRS) using ground-based and heritage satellite measurements",
       "firstAuthor": "Guillevic, Pierre C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 136
     },
@@ -428,6 +485,8 @@
       "bibcode": "2019JPRS..153...36Z",
       "title": "Developing a new cross-sensor calibration model for DMSP-OLS and Suomi-NPP VIIRS night-light imageries",
       "firstAuthor": "Zheng, Qiming",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 136
     },
@@ -435,6 +494,8 @@
       "bibcode": "2015GeoRL..42.7874A",
       "title": "Multisensor profiling of a concentric gravity wave event propagating from the troposphere to the ionosphere",
       "firstAuthor": "Azeem, Irfan",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 133
     },
@@ -442,6 +503,8 @@
       "bibcode": "2020ITGRS..58.1843Z",
       "title": "Building a Series of Consistent Night-Time Light Data (1992─2018) in Southeast Asia by Integrating DMSP-OLS and NPP-VIIRS",
       "firstAuthor": "Zhao, Min",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 131
     },
@@ -449,6 +512,8 @@
       "bibcode": "2019RSEnv.23311357L",
       "title": "Anisotropic characteristic of artificial light at night - Systematic investigation with VIIRS DNB multi-temporal observations",
       "firstAuthor": "Li, Xi",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 122
     },
@@ -456,6 +521,8 @@
       "bibcode": "2017RSEnv.201..256L",
       "title": "Evaluation of the VIIRS BRDF, Albedo and NBAR products suite and an assessment of continuity with the long term MODIS record",
       "firstAuthor": "Liu, Yan",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 114
     },
@@ -463,6 +530,8 @@
       "bibcode": "2018IGRSL..15.1279Y",
       "title": "Urban Built-Up Area Extraction From Log- Transformed NPP-VIIRS Nighttime Light Composite Data",
       "firstAuthor": "Yu, Bailang",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 114
     },
@@ -470,6 +539,8 @@
       "bibcode": "2017ESSD....9..765R",
       "title": "Overview of NASA's MODIS and Visible Infrared Imaging Radiometer Suite (VIIRS) snow-cover Earth System Data Records",
       "firstAuthor": "Riggs, George A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 113
     }

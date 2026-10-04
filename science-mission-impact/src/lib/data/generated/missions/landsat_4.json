@@ -21,11 +21,14 @@
   "indices": {
     "h": 46,
     "m": 1.045,
-    "i100": 24
+    "i100": 24,
+    "g": 96,
+    "tori": 128.945,
+    "riq": 258
   },
   "facts": {
     "papers": 315,
-    "citations": 10557,
+    "citations": 10556,
     "publicationYears": [
       1983,
       2026
@@ -168,13 +171,13 @@
       976,
       1200,
       1361,
-      924
+      923
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 10557,
-      "observed": 10557,
+      "expected": 10556,
+      "observed": 10556,
       "missing": 0
     }
   },
@@ -257,6 +260,12 @@
     "bibcode": "2015RSEnv.159..269Z",
     "title": "Improvement and expansion of the Fmask algorithm: cloud, cloud shadow, and snow detection for Landsats 4-7, 8, and Sentinel 2 images",
     "firstAuthor": "Zhu, Zhe",
+    "authors": [
+      "Zhu, Zhe",
+      "Wang, Shixiong",
+      "Woodcock, Curtis E."
+    ],
+    "authorCount": 3,
     "year": 2015,
     "citations": 1194
   },
@@ -265,9 +274,9 @@
       "bins": [
         36.981,
         12.695,
-        6.818,
-        6.502,
-        5.886,
+        6.816,
+        6.501,
+        5.889,
         4.739,
         3.38,
         0.963,
@@ -281,8 +290,8 @@
         24.967,
         6.632,
         4.976,
-        5.743,
-        3.84,
+        5.741,
+        3.843,
         3.675,
         1.167,
         1,
@@ -293,16 +302,16 @@
     },
     "lifetime": {
       "bins": [
-        45.302,
-        37.231,
-        37.203,
+        45.268,
+        37.199,
+        37.238,
         33.19,
-        34.137,
-        28.398,
-        19.132,
-        29.998,
-        19.443,
-        30.966
+        34.159,
+        28.394,
+        19.142,
+        29.99,
+        19.448,
+        30.972
       ],
       "top1": 7
     }
@@ -330,6 +339,13 @@
       "status": "available",
       "months": 245,
       "citationBuckets": 24
+    },
+    "spread": {
+      "mean": 2.813,
+      "median": 1,
+      "uncited": 34,
+      "i10": 5,
+      "i100": 0
     }
   },
   "window": {
@@ -355,12 +371,19 @@
       "status": "available",
       "months": 54,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 2.692,
+      "median": 1,
+      "uncited": 23,
+      "i10": 3,
+      "i100": 0
     }
   },
   "lifetime": {
     "papers": 315,
     "outputBasis": "measured",
-    "citations": 10557,
+    "citations": 10556,
     "top10": 12.446,
     "top10ShareOfDivision": 0.00301,
     "top1": null,
@@ -371,13 +394,20 @@
       "yearsFromFormulation": 8.58,
       "bibcode": "1985IJRS....6..697M",
       "date": "1985-05-00"
+    },
+    "spread": {
+      "mean": 33.511,
+      "median": 9,
+      "uncited": 44,
+      "i10": 152,
+      "i100": 24
     }
   },
   "query": {
     "arms": "((=abs:\"Landsat-4\" OR =abs:\"Landsat 4-5\" OR =abs:\"Landsats 4\" OR =abs:\"Landsat TM 4 5\" OR =abs:\"Landsat missions 4\" OR =abs:\"Landsat 1 4\" OR =abs:\"Landsat 1 5\" OR =abs:\"Landsats 1 5\" OR =abs:\"Landsat 1 8\" OR =abs:\"Landsat 1 9\" OR =abs:\"Landsat-D\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1983-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Landsat-4%22+OR+%3Dabs%3A%22Landsat+4-5%22+OR+%3Dabs%3A%22Landsats+4%22+OR+%3Dabs%3A%22Landsat+TM+4+5%22+OR+%3Dabs%3A%22Landsat+missions+4%22+OR+%3Dabs%3A%22Landsat+1+4%22+OR+%3Dabs%3A%22Landsat+1+5%22+OR+%3Dabs%3A%22Landsats+1+5%22+OR+%3Dabs%3A%22Landsat+1+8%22+OR+%3Dabs%3A%22Landsat+1+9%22+OR+%3Dabs%3A%22Landsat-D%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1983-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:16:23.851643+00:00",
+    "fetchedAt": "2026-09-30T18:52:40.766700+00:00",
     "reconciliation": {
       "adsReturned": 314,
       "curatedOut": 5,
@@ -487,6 +517,8 @@
       "bibcode": "2015RSEnv.159..269Z",
       "title": "Improvement and expansion of the Fmask algorithm: cloud, cloud shadow, and snow detection for Landsats 4-7, 8, and Sentinel 2 images",
       "firstAuthor": "Zhu, Zhe",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 1194
     },
@@ -494,13 +526,17 @@
       "bibcode": "2003ITGRS..41.2674C",
       "title": "Revised Landsat-5 TM Radiometric Calibration Procedures and Postcalibration Dynamic Ranges",
       "firstAuthor": "Chander, Gyanesh",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
-      "citations": 611
+      "citations": 610
     },
     {
       "bibcode": "2020RemS...12.1471E",
       "title": "Google Earth Engine Open-Source Code for Land Surface Temperature Estimation from the Landsat Series",
       "firstAuthor": "Ermida, Sofia L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 457
     },
@@ -508,6 +544,8 @@
       "bibcode": "2009ITGRS..47..339J",
       "title": "Revision of the Single-Channel Algorithm for Land Surface Temperature Retrieval from Landsat Thermal-Infrared Data",
       "firstAuthor": "Jiménez-Muñoz, Juan C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 450
     },
@@ -515,6 +553,8 @@
       "bibcode": "2009RSEnv.113.2606A",
       "title": "Spatial-temporal dynamics of land surface temperature in relation to fractional vegetation cover and land use/cover in the Tabriz urban area, Iran",
       "firstAuthor": "Amiri, Reza",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 344
     },
@@ -522,6 +562,8 @@
       "bibcode": "2018RemS...10.1363D",
       "title": "Analysis Ready Data: Enabling Analysis of the Landsat Archive",
       "firstAuthor": "Dwyer, John L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 325
     },
@@ -529,6 +571,8 @@
       "bibcode": "2019RSEnv.23111205Q",
       "title": "Fmask 4.0: Improved cloud and cloud shadow detection in Landsats 4-8 and Sentinel-2 imagery",
       "firstAuthor": "Qiu, Shi",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 306
     },
@@ -536,6 +580,8 @@
       "bibcode": "1987RSEnv..22...11S",
       "title": "Reflectance- and radiance-based methods for the in-flight absolute calibration of multispectral sensors",
       "firstAuthor": "Slater, P. N.",
+      "authors": null,
+      "authorCount": null,
       "year": 1987,
       "citations": 256
     },
@@ -543,6 +589,8 @@
       "bibcode": "2004ITGRS..42.2691M",
       "title": "Landsat Sensor Performance: History and Current Status",
       "firstAuthor": "Markham, Brian L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 237
     },
@@ -550,6 +598,8 @@
       "bibcode": "2012RSEnv.122...30M",
       "title": "Forty-year calibrated record of earth-reflected radiance from Landsat: A review",
       "firstAuthor": "Markham, Brian L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 200
     },
@@ -557,6 +607,8 @@
       "bibcode": "2022RemS...14.2654A",
       "title": "Urban Land Use and Land Cover Change Analysis Using Random Forest Classification of Landsat Time Series",
       "firstAuthor": "Amini, Saeid",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 190
     },
@@ -564,6 +616,8 @@
       "bibcode": "1985IJRS....6..697M",
       "title": "Spectral characterization of the Landsat Thematic Mapper sensors",
       "firstAuthor": "Markham, B. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 1985,
       "citations": 183
     },
@@ -571,6 +625,8 @@
       "bibcode": "2005RSEnv..98...63C",
       "title": "A simple and effective radiometric correction method to improve landscape change detection across sensors and across time",
       "firstAuthor": "Chen, Xuexia",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 176
     },
@@ -578,6 +634,8 @@
       "bibcode": "2016JPRS..122..206Z",
       "title": "Optimizing selection of training and auxiliary data for operational land cover classification for the LCMAP initiative",
       "firstAuthor": "Zhu, Zhe",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 161
     },
@@ -585,6 +643,8 @@
       "bibcode": "2016RemS....8..575P",
       "title": "Glacier Remote Sensing Using Sentinel-2. Part II: Mapping Glacier Extents and Surface Facies, and Comparison to Landsat 8",
       "firstAuthor": "Paul, Frank",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 149
     },
@@ -592,6 +652,8 @@
       "bibcode": "2012RSEnv.123..334K",
       "title": "The possibility of using the Landsat image archive for monitoring long time trends in coloured dissolved organic matter concentration in lake waters",
       "firstAuthor": "Kutser, Tiit",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 132
     },
@@ -599,6 +661,8 @@
       "bibcode": "2019EJRSS..22..203C",
       "title": "Assessment of land use land cover changes and its impact on variations of land surface temperature in Asansol-Durgapur Development Region",
       "firstAuthor": "Choudhury, Deblina",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 132
     },
@@ -606,6 +670,8 @@
       "bibcode": "2018RSEnv.214..135Z",
       "title": "An automatic method for screening clouds and cloud shadows in optical satellite image time series in cloudy regions",
       "firstAuthor": "Zhu, Xiaolin",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 127
     },
@@ -613,6 +679,8 @@
       "bibcode": "2001RSEnv..78...55V",
       "title": "Effects of Landsat 5 Thematic Mapper and Landsat 7 Enhanced Thematic Mapper Plus radiometric and geometric calibrations and corrections on landscape characterization",
       "firstAuthor": "Vogelmann, James E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 124
     },
@@ -620,6 +688,8 @@
       "bibcode": "1984ITGRS..22..323D",
       "title": "Snow Reflectance from LANDSAT-4 Thematic Mapper",
       "firstAuthor": "Dozier, Jeff",
+      "authors": null,
+      "authorCount": null,
       "year": 1984,
       "citations": 120
     }

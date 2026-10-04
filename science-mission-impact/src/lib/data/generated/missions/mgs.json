@@ -21,11 +21,14 @@
   "indices": {
     "h": 134,
     "m": 4.621,
-    "i100": 204
+    "i100": 204,
+    "g": 211,
+    "tori": 695.207,
+    "riq": 909
   },
   "facts": {
     "papers": 1509,
-    "citations": 81640,
+    "citations": 81654,
     "publicationYears": [
       1998,
       2026
@@ -108,7 +111,7 @@
       3218,
       3503,
       3965,
-      3542,
+      3543,
       3523,
       3247,
       3126,
@@ -123,13 +126,13 @@
       3688,
       3534,
       3695,
-      2582
+      2595
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 81640,
-      "observed": 81640,
+      "expected": 81654,
+      "observed": 81654,
       "missing": 0
     }
   },
@@ -204,54 +207,61 @@
     "bibcode": "2001JGR...10623689S",
     "title": "Mars Orbiter Laser Altimeter: Experiment summary after the first year of global mapping of Mars",
     "firstAuthor": "Smith, David E.",
+    "authors": [
+      "Smith, David E.",
+      "Zuber, Maria T.",
+      "Frey, Herbert V.",
+      "Garvin, James B."
+    ],
+    "authorCount": 24,
     "year": 2001,
     "citations": 1306
   },
   "ranks": {
     "full": {
       "bins": [
-        81.769,
-        77.205,
-        75.22,
-        74.706,
-        89.011,
-        79.145,
-        95.529,
-        79.331,
-        80.415,
-        88.669
+        81.933,
+        77.153,
+        75.444,
+        74.571,
+        88.908,
+        79.162,
+        95.437,
+        79.366,
+        80.443,
+        88.583
       ],
-      "top1": 10.016
+      "top1": 10.014
     },
     "window": {
       "bins": [
-        22.927,
-        23.837,
-        28.621,
-        27.044,
-        23.738,
-        26.783,
-        23.689,
-        23.241,
-        28.87,
-        26.25
+        23.026,
+        23.8,
+        28.702,
+        26.97,
+        23.752,
+        26.74,
+        23.675,
+        23.231,
+        28.867,
+        26.238
       ],
       "top1": 5
     },
     "lifetime": {
       "bins": [
-        92.79,
-        117.064,
-        109.144,
-        144.337,
-        121.782,
-        132.492,
-        150.581,
-        168.23,
-        218.448,
-        254.132
+        91.434,
+        117.514,
+        109.291,
+        144.629,
+        122.017,
+        132.241,
+        150.593,
+        167.78,
+        219.033,
+        254.467
       ],
-      "top1": 27.935
+      "top1": 28.03
     }
   },
   "full": {
@@ -260,7 +270,7 @@
     "citations": 11938,
     "top10": 69.183,
     "top10ShareOfDivision": 0.06341,
-    "top1": 10.016,
+    "top1": 10.014,
     "top1ShareOfDivision": 0.09179,
     "first": {
       "state": "reached",
@@ -277,6 +287,13 @@
       "status": "available",
       "months": 116,
       "citationBuckets": 13
+    },
+    "spread": {
+      "mean": 14.541,
+      "median": 9,
+      "uncited": 49,
+      "i10": 399,
+      "i100": 10
     }
   },
   "window": {
@@ -284,9 +301,9 @@
     "outputBasis": "measured",
     "citations": 4984,
     "top10": 28.1,
-    "top10ShareOfDivision": 0.05818,
+    "top10ShareOfDivision": 0.0582,
     "top1": 5,
-    "top1ShareOfDivision": 0.10352,
+    "top1ShareOfDivision": 0.10356,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.063,
@@ -302,12 +319,19 @@
       "status": "available",
       "months": 46,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 19.545,
+      "median": 11,
+      "uncited": 15,
+      "i10": 139,
+      "i100": 8
     }
   },
   "lifetime": {
     "papers": 1509,
     "outputBasis": "measured",
-    "citations": 81640,
+    "citations": 81654,
     "top10": 107.779,
     "top10ShareOfDivision": 0.07909,
     "top1": null,
@@ -318,13 +342,20 @@
       "yearsFromFormulation": 4.413,
       "bibcode": "1998Sci...279.1672K",
       "date": "1998-03-00"
+    },
+    "spread": {
+      "mean": 54.111,
+      "median": 27,
+      "uncited": 65,
+      "i10": 1127,
+      "i100": 204
     }
   },
   "query": {
     "arms": "((=abs:\"Mars Global Surveyor\" OR (abs:MGS AND abs:Mars) OR ((=abs:Mars OR =abs:Martian) AND (abs:MOLA OR =abs:\"Mars Orbiter Laser Altimeter\" OR abs:MOC OR =abs:\"Mars Orbiter Camera\" OR ((abs:TES OR =abs:\"Thermal Emission Spectrometer\") NOT (abs:\"Mini-TES\" OR =abs:\"Miniature Thermal Emission Spectrometer\"))))) NOT (=abs:simulant OR =abs:simulants OR =abs:\"thermal energy storage\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1999-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Global+Surveyor%22+OR+%28abs%3AMGS+AND+abs%3AMars%29+OR+%28%28%3Dabs%3AMars+OR+%3Dabs%3AMartian%29+AND+%28abs%3AMOLA+OR+%3Dabs%3A%22Mars+Orbiter+Laser+Altimeter%22+OR+abs%3AMOC+OR+%3Dabs%3A%22Mars+Orbiter+Camera%22+OR+%28%28abs%3ATES+OR+%3Dabs%3A%22Thermal+Emission+Spectrometer%22%29+NOT+%28abs%3A%22Mini-TES%22+OR+%3Dabs%3A%22Miniature+Thermal+Emission+Spectrometer%22%29%29%29%29%29+NOT+%28%3Dabs%3Asimulant+OR+%3Dabs%3Asimulants+OR+%3Dabs%3A%22thermal+energy+storage%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:25:48.423220+00:00",
+    "fetchedAt": "2026-09-30T17:49:20.542279+00:00",
     "reconciliation": {
       "adsReturned": 1494,
       "curatedOut": 13,
@@ -714,6 +745,8 @@
       "bibcode": "2001JGR...10623689S",
       "title": "Mars Orbiter Laser Altimeter: Experiment summary after the first year of global mapping of Mars",
       "firstAuthor": "Smith, David E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 1306
     },
@@ -721,6 +754,8 @@
       "bibcode": "1999Sci...284..790A",
       "title": "Global Distribution of Crustal Magnetization Discovered by the Mars Global Surveyor MAG/ER Experiment",
       "firstAuthor": "Acuna, M. H.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 957
     },
@@ -728,6 +763,8 @@
       "bibcode": "2000Sci...288.2330M",
       "title": "Evidence for Recent Groundwater Seepage and Surface Runoff on Mars",
       "firstAuthor": "Malin, Michael C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 932
     },
@@ -735,13 +772,17 @@
       "bibcode": "2001JGR...10623823C",
       "title": "Mars Global Surveyor Thermal Emission Spectrometer experiment: Investigation description and surface science results",
       "firstAuthor": "Christensen, P. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
-      "citations": 826
+      "citations": 827
     },
     {
       "bibcode": "1999Sci...284.1495S",
       "title": "The Global Topography of Mars and Implications for Surface Evolution",
       "firstAuthor": "Smith, David E.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 771
     },
@@ -749,6 +790,8 @@
       "bibcode": "2001JGR...10623429M",
       "title": "Mars Global Surveyor Mars Orbiter Camera: Interplanetary cruise through primary mission",
       "firstAuthor": "Malin, Michael C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 735
     },
@@ -756,6 +799,8 @@
       "bibcode": "2004Icar..167..148S",
       "title": "Interannual variability in TES atmospheric observations of Mars during 1999-2003",
       "firstAuthor": "Smith, Michael D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 686
     },
@@ -763,6 +808,8 @@
       "bibcode": "1998Sci...279.1676A",
       "title": "Magnetic Field and Plasma Observations at Mars: Initial Results of the Mars Global Surveyor Mission",
       "firstAuthor": "Acuna, M. H.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 684
     },
@@ -770,6 +817,8 @@
       "bibcode": "2000Sci...287.1626B",
       "title": "A Global View of Martian Surface Compositions from MGS-TES",
       "firstAuthor": "Bandfield, Joshua L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 670
     },
@@ -777,6 +826,8 @@
       "bibcode": "2000Sci...287.1788Z",
       "title": "Internal Structure and Early Thermal Evolution of Mars from Mars Global Surveyor Topography and Gravity",
       "firstAuthor": "Zuber, Maria T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 508
     },
@@ -784,6 +835,8 @@
       "bibcode": "2000Icar..148..437M",
       "title": "High-Resolution Thermal Inertia Mapping from the Mars Global Surveyor Thermal Emission Spectrometer",
       "firstAuthor": "Mellon, Michael T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 471
     },
@@ -791,6 +844,8 @@
       "bibcode": "2001Natur.412..228B",
       "title": "Water and the martian landscape",
       "firstAuthor": "Baker, Victor R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 464
     },
@@ -798,6 +853,8 @@
       "bibcode": "2000JGR...105.9623C",
       "title": "Detection of crystalline hematite mineralization on Mars by the Thermal Emission Spectrometer: Evidence for near-surface water",
       "firstAuthor": "Christensen, P. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 450
     },
@@ -805,6 +862,8 @@
       "bibcode": "1999Sci...284..794C",
       "title": "Magnetic Lineations in the Ancient Crust of Mars",
       "firstAuthor": "Connerney, J. E. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 425
     },
@@ -812,6 +871,8 @@
       "bibcode": "2015Icar..251...65M",
       "title": "Eight-year climatology of dust optical depth on Mars",
       "firstAuthor": "Montabone, L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 422
     },
@@ -819,6 +880,8 @@
       "bibcode": "2009JGRE..114.0D06M",
       "title": "A synthesis of Martian aqueous mineralogy after 1 Mars year of observations from the Mars Reconnaissance Orbiter",
       "firstAuthor": "Murchie, Scott L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 413
     },
@@ -826,27 +889,35 @@
       "bibcode": "2001SSRv...96..105N",
       "title": "Ages and Geologic Histories of Martian Meteorites",
       "firstAuthor": "Nyquist, L. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 407
-    },
-    {
-      "bibcode": "2003Sci...302.1931M",
-      "title": "Evidence for Persistent Flow and Aqueous Sedimentation on Early Mars",
-      "firstAuthor": "Malin, Michael C.",
-      "year": 2003,
-      "citations": 405
     },
     {
       "bibcode": "2002JGRE..107.5111C",
       "title": "The case for rainfall on a warm, wet early Mars",
       "firstAuthor": "Craddock, Robert A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
-      "citations": 404
+      "citations": 405
+    },
+    {
+      "bibcode": "2003Sci...302.1931M",
+      "title": "Evidence for Persistent Flow and Aqueous Sedimentation on Early Mars",
+      "firstAuthor": "Malin, Michael C.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2003,
+      "citations": 405
     },
     {
       "bibcode": "2006Sci...314.1573M",
       "title": "Present-Day Impact Cratering Rate and Contemporary Gully Activity on Mars",
       "firstAuthor": "Malin, Michael C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 394
     }

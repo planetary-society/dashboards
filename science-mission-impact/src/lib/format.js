@@ -73,6 +73,18 @@ const NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'sev
 /** AP style: spell out whole numbers below 10. */
 export const spell = (n) => (Number.isInteger(n) && n >= 0 && n < 10 ? NUMBER_WORDS[n] : int(n));
 
-/** "a", "a and b", "a, b and c" (AP: no serial comma). */
-export const listify = (items) =>
-	items.length < 3 ? items.join(' and ') : `${items.slice(0, -1).join(', ')} and ${items.at(-1)}`;
+/** "a", "a and b", "a, b and c" (AP: no serial comma); `conj` swaps the "and". */
+export const listify = (items, conj = 'and') =>
+	items.length < 3 ? items.join(` ${conj} `) : `${items.slice(0, -1).join(', ')} ${conj} ${items.at(-1)}`;
+
+/**
+ * A paper's byline from ADS "Last, First" names: one author in full; two as "A & B"; up to four as
+ * "A, B, C & D" (last names); more as the first four and "et al." count: the paper's author count.
+ */
+export function byline(authors, count = authors?.length ?? 0) {
+	if (!authors?.length) return '';
+	if (count === 1) return authors[0];
+	const last = authors.slice(0, 4).map((a) => a.split(',')[0].trim());
+	if (count > 4) return `${last.join(', ')} et al.`;
+	return listify(last, '&');
+}

@@ -21,11 +21,14 @@
   "indices": {
     "h": 93,
     "m": 3.444,
-    "i100": 85
+    "i100": 85,
+    "g": 146,
+    "tori": 166.58,
+    "riq": 478
   },
   "facts": {
     "papers": 799,
-    "citations": 37658,
+    "citations": 37654,
     "publicationYears": [
       2000,
       2026
@@ -117,13 +120,13 @@
       1217,
       1576,
       1463,
-      1117
+      1113
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 37658,
-      "observed": 37658,
+      "expected": 37654,
+      "observed": 37654,
       "missing": 0
     }
   },
@@ -216,8 +219,12 @@
     "bibcode": "2009ApJ...700.1299J",
     "title": "A Unified Representation of Gas-Phase Element Depletions in the Interstellar Medium",
     "firstAuthor": "Jenkins, Edward B.",
+    "authors": [
+      "Jenkins, Edward B."
+    ],
+    "authorCount": 1,
     "year": 2009,
-    "citations": 906
+    "citations": 907
   },
   "ranks": {
     "full": {
@@ -225,13 +232,13 @@
         49.121,
         60.132,
         64.393,
-        69.695,
-        51.885,
-        59.908,
-        66.267,
-        51.511,
-        51.885,
-        31.202
+        69.702,
+        51.888,
+        59.852,
+        66.315,
+        51.497,
+        51.895,
+        31.207
       ],
       "top1": 2
     },
@@ -252,16 +259,16 @@
     },
     "lifetime": {
       "bins": [
-        38.45,
-        60.275,
-        77.094,
-        80.913,
-        105.346,
-        91.998,
-        94.423,
-        94.871,
-        84.636,
-        70.994
+        38.404,
+        60.302,
+        77.095,
+        80.885,
+        105.27,
+        92.047,
+        94.477,
+        94.841,
+        84.626,
+        71.052
       ],
       "top1": 4
     }
@@ -289,6 +296,13 @@
       "status": "available",
       "months": 118,
       "citationBuckets": 13
+    },
+    "spread": {
+      "mean": 16.817,
+      "median": 12,
+      "uncited": 24,
+      "i10": 314,
+      "i100": 3
     }
   },
   "window": {
@@ -314,12 +328,19 @@
       "status": "available",
       "months": 63,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 18.744,
+      "median": 13,
+      "uncited": 11,
+      "i10": 201,
+      "i100": 3
     }
   },
   "lifetime": {
     "papers": 799,
     "outputBasis": "measured",
-    "citations": 37658,
+    "citations": 37654,
     "top10": 30.114,
     "top10ShareOfDivision": 0.00544,
     "top1": null,
@@ -330,13 +351,20 @@
       "yearsFromFormulation": 11.001,
       "bibcode": "2000ApJ...538L...1M",
       "date": "2000-07-00"
+    },
+    "spread": {
+      "mean": 47.126,
+      "median": 27,
+      "uncited": 18,
+      "i10": 656,
+      "i100": 85
     }
   },
   "query": {
     "arms": "((=abs:\"Far Ultraviolet Spectroscopic Explorer\" OR =abs:\"Far Ultraviolet Spectrographic Explorer\" OR =abs:\"Far Ultraviolet Spectroscopy Explorer\" OR =abs:\"Far Ultraviolet Explorer\" OR facility:FUSE OR (abs:FUSE AND collection:astronomy AND NOT (=abs:\"file system\" OR =abs:\"file systems\" OR =abs:\"SIT-FUSE\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2000-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Far+Ultraviolet+Spectroscopic+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Spectrographic+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Spectroscopy+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Explorer%22+OR+facility%3AFUSE+OR+%28abs%3AFUSE+AND+collection%3Aastronomy+AND+NOT+%28%3Dabs%3A%22file+system%22+OR+%3Dabs%3A%22file+systems%22+OR+%3Dabs%3A%22SIT-FUSE%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T02:25:57.235435+00:00",
+    "fetchedAt": "2026-09-30T18:15:46.984482+00:00",
     "reconciliation": {
       "adsReturned": 802,
       "curatedOut": 4,
@@ -398,13 +426,17 @@
       "bibcode": "2009ApJ...700.1299J",
       "title": "A Unified Representation of Gas-Phase Element Depletions in the Interstellar Medium",
       "firstAuthor": "Jenkins, Edward B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
-      "citations": 906
+      "citations": 907
     },
     {
       "bibcode": "2000ApJ...538L...1M",
       "title": "Overview of the Far Ultraviolet Spectroscopic Explorer Mission",
       "firstAuthor": "Moos, H. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 647
     },
@@ -412,6 +444,8 @@
       "bibcode": "2003ApJS..146..165S",
       "title": "Highly Ionized High-Velocity Gas in the Vicinity of the Galaxy",
       "firstAuthor": "Sembach, K. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 460
     },
@@ -419,6 +453,8 @@
       "bibcode": "2007MNRAS.381.1235V",
       "title": "Piecing together the X-ray background: bolometric corrections for active galactic nuclei",
       "firstAuthor": "Vasudevan, R. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 458
     },
@@ -426,6 +462,8 @@
       "bibcode": "2000ApJ...538L...7S",
       "title": "On-Orbit Performance of the Far Ultraviolet Spectroscopic Explorer Satellite",
       "firstAuthor": "Sahnow, D. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 442
     },
@@ -433,6 +471,8 @@
       "bibcode": "2006ApJ...637.1025F",
       "title": "The Discordance of Mass-Loss Estimates for Galactic O-Type Stars",
       "firstAuthor": "Fullerton, A. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 359
     },
@@ -440,6 +480,8 @@
       "bibcode": "2002ApJ...577..221R",
       "title": "A Far Ultraviolet Spectroscopic Explorer Survey of Interstellar Molecular Hydrogen in Translucent Clouds",
       "firstAuthor": "Rachford, Brian L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 303
     },
@@ -447,13 +489,17 @@
       "bibcode": "2010ApJS..189..309L",
       "title": "A Library of Theoretical Ultraviolet Spectra of Massive, Hot Stars for Evolutionary Synthesis",
       "firstAuthor": "Leitherer, Claus",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
-      "citations": 294
+      "citations": 295
     },
     {
       "bibcode": "2006ApJ...647.1106L",
       "title": "What Is the Total Deuterium Abundance in the Local Galactic Disk?",
       "firstAuthor": "Linsky, Jeffrey L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 291
     },
@@ -461,6 +507,8 @@
       "bibcode": "2011ApJ...730....5H",
       "title": "Extreme Feedback and the Epoch of Reionization: Clues in the Local Universe",
       "firstAuthor": "Heckman, Timothy M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 289
     },
@@ -468,6 +516,8 @@
       "bibcode": "2008ApJS..177...39T",
       "title": "A High-Resolution Survey of Low-Redshift QSO Absorption Lines: Statistics and Physical Conditions of O VI Absorbers",
       "firstAuthor": "Tripp, Todd M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 288
     },
@@ -475,6 +525,8 @@
       "bibcode": "2002ApJ...571..563K",
       "title": "Constrained Simulations of the Real Universe. II. Observational Signatures of Intergalactic Gas in the Local Supercluster Region",
       "firstAuthor": "Kravtsov, Andrey V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 263
     },
@@ -482,6 +534,8 @@
       "bibcode": "2008ApJ...687.1075S",
       "title": "Ultraviolet Survey of CO and H₂ in Diffuse Molecular Clouds: The Reflection of Two Photochemistry Regimes in Abundance Relationships",
       "firstAuthor": "Sheffer, Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 256
     },
@@ -489,6 +543,8 @@
       "bibcode": "2013ApJ...763..148S",
       "title": "Characterizing the Circumgalactic Medium of Nearby Galaxies with HST/COS and HST/STIS Absorption-line Spectroscopy",
       "firstAuthor": "Stocke, John T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 255
     },
@@ -496,6 +552,8 @@
       "bibcode": "2003ApJ...596...47S",
       "title": "Galaxy Formation: Cold Dark Matter, Feedback, and the Hubble Sequence",
       "firstAuthor": "Sommer-Larsen, Jesper",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 254
     },
@@ -503,6 +561,8 @@
       "bibcode": "2005A&A...438..301B",
       "title": "Lower mass loss rates in O-type stars: Spectral signatures of dense clumps in the wind of two Galactic O4 stars",
       "firstAuthor": "Bouret, J.-C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 247
     },
@@ -510,6 +570,8 @@
       "bibcode": "2008ApJ...679..194D",
       "title": "The Low-z Intergalactic Medium. III. H I and Metal Absorbers at z < 0.4",
       "firstAuthor": "Danforth, Charles W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 238
     },
@@ -517,6 +579,8 @@
       "bibcode": "2002ApJ...573..157N",
       "title": "Chandra Discovery of a Tree in the X-Ray Forest toward PKS 2155-304: The Local Filament?",
       "firstAuthor": "Nicastro, Fabrizio",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 226
     },
@@ -524,6 +588,8 @@
       "bibcode": "2002ApJ...566..857T",
       "title": "A Far Ultraviolet Spectroscopic Explorer Survey of Interstellar Molecular Hydrogen in the Small and Large Magellanic Clouds",
       "firstAuthor": "Tumlinson, Jason",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 213
     },
@@ -531,6 +597,8 @@
       "bibcode": "2009ApJS..180..125R",
       "title": "Molecular Hydrogen in the Far Ultraviolet Spectroscopic Explorer Translucent Lines of Sight: The Full Sample",
       "firstAuthor": "Rachford, Brian L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 210
     }

@@ -21,11 +21,14 @@
   "indices": {
     "h": 29,
     "m": 1.208,
-    "i100": 7
+    "i100": 7,
+    "g": 61,
+    "tori": 20.617,
+    "riq": 189
   },
   "facts": {
     "papers": 72,
-    "citations": 3813,
+    "citations": 3826,
     "publicationYears": [
       2003,
       2026
@@ -107,14 +110,14 @@
       223,
       255,
       342,
-      431,
-      347
+      430,
+      361
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 3813,
-      "observed": 3813,
+      "expected": 3826,
+      "observed": 3826,
       "missing": 0
     }
   },
@@ -191,15 +194,21 @@
     "bibcode": "2021A&A...653A.141A",
     "title": "The chemical make-up of the Sun: A 2020 vision",
     "firstAuthor": "Asplund, M.",
+    "authors": [
+      "Asplund, M.",
+      "Amarsi, A. M.",
+      "Grevesse, N."
+    ],
+    "authorCount": 3,
     "year": 2021,
-    "citations": 817
+    "citations": 821
   },
   "ranks": {
     "full": {
       "bins": [
         0,
-        2.374,
-        0.626,
+        2.377,
+        0.623,
         0,
         3,
         1,
@@ -213,10 +222,10 @@
     "window": {
       "bins": [
         0,
-        2.863,
-        0.137,
-        1.857,
-        2.143,
+        2.87,
+        0.13,
+        1.875,
+        2.125,
         1,
         0,
         0,
@@ -227,16 +236,16 @@
     },
     "lifetime": {
       "bins": [
-        5.269,
-        5.964,
-        3.768,
-        8.264,
-        7.736,
+        5.203,
+        6.012,
+        3.785,
+        8.245,
+        7.755,
         8,
         7,
         6,
-        10.981,
-        9.019
+        10.867,
+        9.133
       ],
       "top1": 1
     }
@@ -264,6 +273,13 @@
       "status": "available",
       "months": 58,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 10.8,
+      "median": 8,
+      "uncited": 0,
+      "i10": 4,
+      "i100": 0
     }
   },
   "window": {
@@ -289,12 +305,19 @@
       "status": "available",
       "months": 48,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 10.8,
+      "median": 8,
+      "uncited": 0,
+      "i10": 4,
+      "i100": 0
     }
   },
   "lifetime": {
     "papers": 72,
     "outputBasis": "measured",
-    "citations": 3813,
+    "citations": 3826,
     "top10": 9,
     "top10ShareOfDivision": 0.0066,
     "top1": null,
@@ -305,13 +328,20 @@
       "yearsFromFormulation": 5.251,
       "bibcode": "2003SSRv..105..509B",
       "date": "2003-01-00"
+    },
+    "spread": {
+      "mean": 53.139,
+      "median": 20,
+      "uncited": 3,
+      "i10": 51,
+      "i100": 7
     }
   },
   "query": {
     "arms": "(((=abs:\"Genesis mission\" OR =abs:\"Genesis space mission\" OR =abs:\"Genesis spacecraft\" OR =abs:\"Genesis sample return\" OR =abs:\"Genesis Discovery mission\" OR =abs:\"Genesis solar wind\" OR =abs:\"Genesis solar-wind\" OR =abs:\"Genesis probe\" OR =abs:\"Genesis collector\" OR =abs:\"Genesis collectors\" OR =abs:\"Genesis concentrator\" OR =abs:\"Genesis target\" OR =abs:\"Genesis targets\" OR =abs:\"Genesis samples\" OR =abs:\"Genesis capsule\" OR =abs:\"Genesis array\" OR =abs:\"Genesis regime\") AND (abs:\"solar\" OR =abs:\"Ion Monitor\" OR =abs:\"Electron Monitor\" OR =abs:\"space weather\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2001-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Genesis+mission%22+OR+%3Dabs%3A%22Genesis+space+mission%22+OR+%3Dabs%3A%22Genesis+spacecraft%22+OR+%3Dabs%3A%22Genesis+sample+return%22+OR+%3Dabs%3A%22Genesis+Discovery+mission%22+OR+%3Dabs%3A%22Genesis+solar+wind%22+OR+%3Dabs%3A%22Genesis+solar-wind%22+OR+%3Dabs%3A%22Genesis+probe%22+OR+%3Dabs%3A%22Genesis+collector%22+OR+%3Dabs%3A%22Genesis+collectors%22+OR+%3Dabs%3A%22Genesis+concentrator%22+OR+%3Dabs%3A%22Genesis+target%22+OR+%3Dabs%3A%22Genesis+targets%22+OR+%3Dabs%3A%22Genesis+samples%22+OR+%3Dabs%3A%22Genesis+capsule%22+OR+%3Dabs%3A%22Genesis+array%22+OR+%3Dabs%3A%22Genesis+regime%22%29+AND+%28abs%3A%22solar%22+OR+%3Dabs%3A%22Ion+Monitor%22+OR+%3Dabs%3A%22Electron+Monitor%22+OR+%3Dabs%3A%22space+weather%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2001-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:27:14.283638+00:00",
+    "fetchedAt": "2026-09-30T17:51:00.712206+00:00",
     "reconciliation": {
       "adsReturned": 82,
       "curatedOut": 10,
@@ -428,13 +458,17 @@
       "bibcode": "2021A&A...653A.141A",
       "title": "The chemical make-up of the Sun: A 2020 vision",
       "firstAuthor": "Asplund, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
-      "citations": 817
+      "citations": 821
     },
     {
       "bibcode": "2011Sci...332.1528M",
       "title": "The Oxygen Isotopic Composition of the Sun Inferred from Captured Solar Wind",
       "firstAuthor": "McKeegan, K. D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 321
     },
@@ -442,6 +476,8 @@
       "bibcode": "2011Sci...332.1533M",
       "title": "A ¹⁵N-Poor Isotopic Composition for the Solar System As Shown by Genesis Solar Wind Samples",
       "firstAuthor": "Marty, B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 247
     },
@@ -449,6 +485,8 @@
       "bibcode": "2009GeCoA..73.7414H",
       "title": "Noble gas composition of the solar wind as collected by the Genesis mission",
       "firstAuthor": "Heber, Veronika S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 194
     },
@@ -456,6 +494,8 @@
       "bibcode": "2015NatGe...8..515F",
       "title": "Nitrogen isotope variations in the Solar System",
       "firstAuthor": "Füri, Evelyn",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 168
     },
@@ -463,13 +503,17 @@
       "bibcode": "2003SSRv..105..509B",
       "title": "The Genesis Discovery Mission: Return of Solar Matter to Earth",
       "firstAuthor": "Burnett, D. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
-      "citations": 156
+      "citations": 157
     },
     {
       "bibcode": "2006Sci...314.1133G",
       "title": "Solar Wind Neon from Genesis: Implications for the Lunar Noble Gas Record",
       "firstAuthor": "Grimberg, Ansgar",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 117
     },
@@ -477,34 +521,44 @@
       "bibcode": "2014GeCoA.127..326M",
       "title": "Heavy noble gases in solar wind delivered by Genesis mission",
       "firstAuthor": "Meshik, Alex",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
-      "citations": 97
+      "citations": 98
     },
     {
       "bibcode": "2010ApJ...713.1159K",
       "title": "Oxygen Isotopic Composition of the Sun and Mean Oxygen Isotopic Composition of the Protosolar Silicate Dust: Evidence from Refractory Inclusions",
       "firstAuthor": "Krot, Alexander N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 88
-    },
-    {
-      "bibcode": "2019M&PS...54.1647K",
-      "title": "Refractory inclusions in carbonaceous chondrites: Records of early solar system processes",
-      "firstAuthor": "Krot, Alexander N.",
-      "year": 2019,
-      "citations": 86
     },
     {
       "bibcode": "2012ApJ...759..121H",
       "title": "Isotopic Mass Fractionation of Solar Wind: Evidence from Fast and Slow Solar Wind Collected by the Genesis mission",
       "firstAuthor": "Heber, Veronika S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
-      "citations": 85
+      "citations": 86
+    },
+    {
+      "bibcode": "2019M&PS...54.1647K",
+      "title": "Refractory inclusions in carbonaceous chondrites: Records of early solar system processes",
+      "firstAuthor": "Krot, Alexander N.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2019,
+      "citations": 86
     },
     {
       "bibcode": "2010GeCoA..74..340M",
       "title": "Nitrogen isotopes in the recent solar wind from the analysis of Genesis targets: Evidence for large scale isotope heterogeneity in the early solar system",
       "firstAuthor": "Marty, Bernard",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 84
     },
@@ -512,6 +566,8 @@
       "bibcode": "2004SSRv..110..307G",
       "title": "The Apollo SWC Experiment: Results, Conclusions, Consequences",
       "firstAuthor": "Geiss, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 83
     },
@@ -519,6 +575,8 @@
       "bibcode": "2003SSRv..105..535J",
       "title": "The Genesis Solar-Wind Collector Materials",
       "firstAuthor": "Jurewicz, A. J. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 75
     },
@@ -526,6 +584,8 @@
       "bibcode": "2003SSRv..105..661N",
       "title": "Genesis on-board determination of the solar wind flow regime",
       "firstAuthor": "Neugebauer, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 69
     },
@@ -533,13 +593,17 @@
       "bibcode": "2018NatCo...9..908L",
       "title": "A light carbon isotope composition for the Sun",
       "firstAuthor": "Lyons, James R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
-      "citations": 67
+      "citations": 68
     },
     {
       "bibcode": "2007SSRv..130...79R",
       "title": "Elemental Abundances of the Bulk Solar Wind: Analyses from Genesis and ACE",
       "firstAuthor": "Reisenfeld, D. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 61
     },
@@ -547,6 +611,8 @@
       "bibcode": "2009E&PSL.287..551R",
       "title": "Atmospheric ³⁸Ar/ ³⁶Ar in the mantle: Implications for the nature of the terrestrial parent bodies",
       "firstAuthor": "Raquin, Aude",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 58
     },
@@ -554,6 +620,8 @@
       "bibcode": "2012GeCoA..89...62P",
       "title": "Helium, neon, and argon composition of the solar wind as recorded in gold and other Genesis collector materials",
       "firstAuthor": "Pepin, Robert O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 54
     },
@@ -561,6 +629,8 @@
       "bibcode": "2007Sci...318..433M",
       "title": "Constraints on Neon and Argon Isotopic Fractionation in Solar Wind",
       "firstAuthor": "Meshik, Alex",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 53
     }

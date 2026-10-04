@@ -1,6 +1,6 @@
 <script>
 	import { adsAbstract, missionHref } from '$lib/paths.js';
-	import { int } from '$lib/format.js';
+	import { byline, int } from '$lib/format.js';
 
 	let { paper, slug = null, missionName = null } = $props();
 </script>
@@ -11,7 +11,7 @@
 			<h2 id="most-cited-label" class="chart-title">Most cited paper</h2>
 			<a class="title" href={adsAbstract(paper.bibcode)} rel="noopener">{paper.title}</a>
 			<p class="meta">
-				{paper.firstAuthor ?? ''}{paper.year ? ` (${paper.year})` : ''}{#if paper.missionId && slug}, <a href={missionHref(slug, paper.missionId)}>{missionName ?? 'mission page'}</a>{/if}
+				{byline(paper.authors, paper.authorCount ?? undefined) || (paper.firstAuthor ?? '')}{paper.year ? ` (${paper.year})` : ''}{#if paper.missionId && slug}, <a href={missionHref(slug, paper.missionId)}>{missionName ?? 'mission page'}</a>{/if}
 			</p>
 		</div>
 		<p class="count">

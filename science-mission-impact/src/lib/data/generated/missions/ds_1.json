@@ -21,7 +21,10 @@
   "indices": {
     "h": 23,
     "m": 0.821,
-    "i100": 2
+    "i100": 2,
+    "g": 40,
+    "tori": 11.626,
+    "riq": 136
   },
   "facts": {
     "papers": 57,
@@ -189,33 +192,40 @@
     "bibcode": "2002Sci...296.1087S",
     "title": "Observations of Comet 19P/Borrelly by the Miniature Integrated Camera and Spectrometer Aboard Deep Space 1",
     "firstAuthor": "Soderblom, L. A.",
+    "authors": [
+      "Soderblom, L. A.",
+      "Becker, T. L.",
+      "Bennett, G.",
+      "Boice, D. C."
+    ],
+    "authorCount": 22,
     "year": 2002,
     "citations": 184
   },
   "ranks": {
     "full": {
       "bins": [
-        3.891,
-        5.109,
-        2.259,
-        4.643,
-        3.098,
-        1.294,
-        1.067,
-        2.33,
-        0.308,
+        3.9,
+        5.1,
+        2.286,
+        4.625,
+        3.088,
+        1.301,
+        1.061,
+        2.335,
+        0.303,
         1
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        1.661,
-        1.339,
-        1.048,
-        1.952,
-        0.09,
-        0.91,
+        1.669,
+        1.331,
+        1.066,
+        1.934,
+        0.096,
+        0.904,
         0,
         1,
         0,
@@ -226,13 +236,13 @@
     "lifetime": {
       "bins": [
         2,
-        5.465,
-        6.973,
-        6.091,
-        5.338,
-        11.485,
-        4.582,
-        5.068,
+        5.429,
+        6.961,
+        6.099,
+        5.36,
+        11.471,
+        4.573,
+        5.107,
         6,
         4
       ],
@@ -262,6 +272,13 @@
       "status": "available",
       "months": 62,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 8.04,
+      "median": 5,
+      "uncited": 2,
+      "i10": 6,
+      "i100": 0
     }
   },
   "window": {
@@ -287,6 +304,13 @@
       "status": "available",
       "months": 35,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 6.375,
+      "median": 5,
+      "uncited": 1,
+      "i10": 2,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -303,13 +327,20 @@
       "yearsFromFormulation": 5.667,
       "bibcode": "2001Icar..151..139B",
       "date": "2001-06-00"
+    },
+    "spread": {
+      "mean": 30,
+      "median": 18,
+      "uncited": 2,
+      "i10": 40,
+      "i100": 2
     }
   },
   "query": {
     "arms": "(((=abs:\"Deep Space 1\" OR =abs:\"Deep Space-1\" OR abs:DS1 OR abs:\"DS-1\" OR =abs:\"Miniature Integrated Camera and Spectrometer\" OR =abs:\"Plasma Experiment for Planetary Exploration\") AND (abs:comet* OR abs:asteroid* OR abs:Borrelly OR abs:Braille)) AND NOT (title:propulsion OR title:thruster OR title:telecommunications OR =title:\"pointing control\" OR =title:\"mission design\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1998-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Deep+Space+1%22+OR+%3Dabs%3A%22Deep+Space-1%22+OR+abs%3ADS1+OR+abs%3A%22DS-1%22+OR+%3Dabs%3A%22Miniature+Integrated+Camera+and+Spectrometer%22+OR+%3Dabs%3A%22Plasma+Experiment+for+Planetary+Exploration%22%29+AND+%28abs%3Acomet%2A+OR+abs%3Aasteroid%2A+OR+abs%3ABorrelly+OR+abs%3ABraille%29%29+AND+NOT+%28title%3Apropulsion+OR+title%3Athruster+OR+title%3Atelecommunications+OR+%3Dtitle%3A%22pointing+control%22+OR+%3Dtitle%3A%22mission+design%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:26:49.839149+00:00",
+    "fetchedAt": "2026-09-30T17:50:26.725115+00:00",
     "reconciliation": {
       "adsReturned": 57,
       "curatedOut": 0,
@@ -411,6 +442,8 @@
       "bibcode": "2002Sci...296.1087S",
       "title": "Observations of Comet 19P/Borrelly by the Miniature Integrated Camera and Spectrometer Aboard Deep Space 1",
       "firstAuthor": "Soderblom, L. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 184
     },
@@ -418,6 +451,8 @@
       "bibcode": "2001Icar..151..139B",
       "title": "Spectral Properties of Near-Earth Objects: Palomar and IRTF Results for 48 Objects Including Spacecraft Targets (9969) Braille and (10302) 1989 ML",
       "firstAuthor": "Binzel, Richard P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 174
     },
@@ -425,6 +460,8 @@
       "bibcode": "2004Icar..167...45B",
       "title": "The morphology and surface processes of Comet 19/P Borrelly",
       "firstAuthor": "Britt, D. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 92
     },
@@ -432,6 +469,8 @@
       "bibcode": "2004Icar..167...16B",
       "title": "Deep Space 1 photometry of the nucleus of Comet 19P/Borrelly",
       "firstAuthor": "Buratti, B. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 91
     },
@@ -439,6 +478,8 @@
       "bibcode": "2002Icar..160..398F",
       "title": "A McDonald Observatory Study of Comet 19P/Borrelly: Placing the Deep Space 1 Observations into a Broader Context",
       "firstAuthor": "Farnham, Tony L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 77
     },
@@ -446,6 +487,8 @@
       "bibcode": "2004Icar..167...30Y",
       "title": "Formation of jets in Comet 19P/Borrelly by subsurface geysers",
       "firstAuthor": "Yelle, Roger V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 63
     },
@@ -453,6 +496,8 @@
       "bibcode": "2007Icar..188..195L",
       "title": "Photometric analysis and disk-resolved thermal modeling of Comet 19P/Borrelly from Deep Space 1 data",
       "firstAuthor": "Li, Jian-Yang",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 63
     },
@@ -460,6 +505,8 @@
       "bibcode": "2003A&A...402L..55L",
       "title": "Observations of water in comets with Odin",
       "firstAuthor": "Lecacheux, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 62
     },
@@ -467,6 +514,8 @@
       "bibcode": "2004Icar..167....4S",
       "title": "Imaging Borrelly",
       "firstAuthor": "Soderblom, L. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 60
     },
@@ -474,6 +523,8 @@
       "bibcode": "2003Icar..162..415S",
       "title": "Comet 19P/Borrelly at multiple apparitions: seasonal variations in gas production and dust morphology",
       "firstAuthor": "Schleicher, David G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 55
     },
@@ -481,6 +532,8 @@
       "bibcode": "2005SSRv..117..137B",
       "title": "Deep Impact: Working Properties for the Target Nucleus Comet 9P/Tempel 1",
       "firstAuthor": "Belton, Michael J. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 50
     },
@@ -488,6 +541,8 @@
       "bibcode": "2004Icar..167..100S",
       "title": "Short-wavelength infrared (1.3-2.6 μm) observations of the nucleus of Comet 19P/Borrelly",
       "firstAuthor": "Soderblom, L. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 45
     },
@@ -495,6 +550,8 @@
       "bibcode": "2004Icar..167...70O",
       "title": "The nucleus of Comet Borrelly: a study of morphology and surface brightness",
       "firstAuthor": "Oberst, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 43
     },
@@ -502,6 +559,8 @@
       "bibcode": "2001GeoRL..28.1913R",
       "title": "First direct magnetic field measurements of an asteroidal magnetic field: DS1 at Braille",
       "firstAuthor": "Richter, I.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 41
     },
@@ -509,6 +568,8 @@
       "bibcode": "2004Icar..167...80Y",
       "title": "Solar wind interactions with Comet 19P/Borrelly",
       "firstAuthor": "Young, D. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 40
     },
@@ -516,6 +577,8 @@
       "bibcode": "2004Icar..167..113B",
       "title": "The outgassing and composition of Comet 19P/Borrelly from radio observations",
       "firstAuthor": "Bockelée-Morvan, Dominique",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 35
     },
@@ -523,6 +586,8 @@
       "bibcode": "2002EM&P...89..301B",
       "title": "The Deep Space 1 Encounter with Comet 19p/Borrelly",
       "firstAuthor": "Boice, D. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 34
     },
@@ -530,6 +595,8 @@
       "bibcode": "2004Icar..167...89T",
       "title": "Plasma clouds associated with Comet P/Borrelly dust impacts",
       "firstAuthor": "Tsurutani, Bruce T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 33
     },
@@ -537,6 +604,8 @@
       "bibcode": "2004Icar..167...54K",
       "title": "Comparison of USGS and DLR topographic models of Comet Borrelly and photometric applications",
       "firstAuthor": "Kirk, Randolph L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 32
     },
@@ -544,6 +613,8 @@
       "bibcode": "2001AcAau..48..693R",
       "title": "The deep space 1 extended mission",
       "firstAuthor": "Rayman, Marc D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 25
     }

@@ -3,15 +3,11 @@
 // referenceCost) so no number is typed into copy. `anchor` is the section of /methods that explains it.
 
 import { money } from '../format.js';
-import { fullWindowLabel, fullWindowText, publicationWindowText, windowLabel } from './window.js';
+import { fullWindowLabel, fullWindowText, ordinal, publicationWindowText, windowLabel } from './window.js';
 
 const calendarYears = (p) => p.citationYears + 1;
 
 export const FOOTNOTES = {
-	publicationImpact: {
-		anchor: 'high-impact',
-		text: () => 'Each mission sits at its tracked publication count and era-adjusted top-10% paper credit in the selected scope. Shared top-10% papers split credit among missions; tracked publication counts include each mission’s whole papers. The reference is total top-10% credit divided by total tracked publications across measured missions shown, not a fitted trend. Above it means more credit per tracked publication. Failed missions are marked with a slash; assumed zeros are identified on hover.'
-	},
 	top10: {
 		anchor: 'high-impact',
 		text: () =>
@@ -46,14 +42,9 @@ export const FOOTNOTES = {
 		text: () => 'Tracked publications: peer-reviewed research papers we found for the mission. The list may not be complete.'
 	},
 	firstTop: {
-		anchor: 'limits',
+		anchor: '',
 		text: () =>
 			'First top-10% paper: the earliest-published paper that ranks in its division’s top 10% today, measured from the start of science operations. A paper dated before that start was added by hand and comes from cruise or flyby science.'
-	},
-	projectStart: {
-		anchor: 'limits',
-		text: () =>
-			'Years from project start: from the recorded start of formulation to the publication date of the first top-10% paper, for missions with both dates on record.'
 	},
 	never: {
 		anchor: 'missions',
@@ -66,34 +57,59 @@ export const FOOTNOTES = {
 	costAxis: {
 		anchor: 'cost',
 		text: (p) =>
-			'Missions sit at their own cost on a log scale. The blue line is the running share of the division’s top-10% papers, adding each mission in cost order; the grey line is the running share of its spending. The shaded span holds the middle half of the top-10% papers.' +
-			(p?.referenceCost ? ` A dashed line marks the adjusted ${money(p.referenceCost)} threshold: missions costing ${money(p.referenceCost)} or less are compared with those over ${money(p.referenceCost)}; the line is an editorial comparison point, not an inferred scientific threshold.` : '')
-	},
-	qualifying: {
-		anchor: 'removed',
-		text: () =>
-			'Qualifying papers: the tracked peer-reviewed publications a measure counts, mission overview papers included.'
+			'Missions sit at their own cost on a log scale. The line is the running total of the division’s top-10% papers, adding missions from cheapest to costliest.' +
+			(p?.referenceCost ? ` The dashed line at ${money(p.referenceCost)} is an editorial comparison point, not an inferred scientific threshold.` : '')
 	},
 	mindex: {
-		anchor: 'other-measures',
+		anchor: '',
 		text: () =>
 			'm-index: a mission’s h-index divided by the years since its first peer-reviewed paper. It falls every 1 January even when nothing else changes, so it belongs to the date shown; it also discounts the long operating life that larger missions paid for.'
 	},
 	hindex: {
-		anchor: 'other-measures',
+		anchor: '',
 		text: () => 'h-index: the largest h such that h papers have at least h citations each. It only grows with time, so older missions score higher.'
 	},
-	i100: {
-		anchor: 'other-measures',
-		text: () => 'Papers with 100 or more citations: an absolute bar, easier to clear in fields that cite more.'
+	gindex: {
+		anchor: '',
+		text: () => 'g-index: the largest g for which the g most-cited papers together hold at least g² citations. Like the h-index, but it lets the most-cited papers count for more.'
 	},
-	build: {
-		anchor: 'cost',
-		text: () => 'Years to build: from the start of formulation to launch, for missions with both dates on record.'
+	tori: {
+		anchor: '',
+		text: () =>
+			'tori (total research impact, from ADS): for every paper citing one of the mission’s papers, 1 divided by the citing paper’s reference count times the cited paper’s author count, summed, with self-citations removed. It favors citations from papers with short reference lists and from outside the mission’s own authors. Computed over the tracked citation graph, which can be slightly incomplete.'
 	},
-	ranks: {
+	riq: {
+		anchor: '',
+		text: () =>
+			'riq (research impact quotient): 1,000 times the square root of tori, divided by the years since the mission’s first paper. A rate, not a total, so it does not keep growing with age the way the h-index and tori do.'
+	},
+	citations: {
+		anchor: '',
+		text: () =>
+			'Citations received by the tracked publications in the selected scope. The two windowed scopes count each paper’s citations only within its citation window.'
+	},
+	meanCitations: {
+		anchor: '',
+		text: () => 'Mean citations: total citations divided by tracked publications in the selected scope. One blockbuster paper can lift it.'
+	},
+	medianCitations: {
+		anchor: '',
+		text: () =>
+			'Median citations: the middle paper’s citation count in the selected scope; half the papers have more, half fewer. A single blockbuster sways it less than the mean.'
+	},
+	uncited: {
+		anchor: '',
+		text: () => 'Uncited publications: papers with no citations in the selected scope.'
+	},
+	topDecileShare: {
 		anchor: 'high-impact',
-		text: () => 'Each paper is ranked by citations against every paper from this division’s missions, not adjusted for publication year. The highlighted band is the top tenth by raw citations, not the era-adjusted top-10% measure used elsewhere. Tied papers are spread evenly across the ranks they share.'
+		text: () =>
+			'The share of all citations in the selected scope that went to the 10% most-cited papers from this division’s missions. The higher it is, the more attention concentrates on a few papers.'
+	},
+	cutoff: {
+		anchor: 'high-impact',
+		text: () =>
+			'Cutoff: the fewest citations a paper needs to rank in the top share named, among every paper from this division’s missions in the selected scope, ties included. The count beside it is the papers at or above that line. Not adjusted for publication year.'
 	},
 	strip: {
 		anchor: 'mission-papers',
@@ -101,10 +117,14 @@ export const FOOTNOTES = {
 	}
 };
 
-/** The footnote ids that define whatever the reader is currently looking at. */
-export const viewNotes = (view) => [view.top === 1 ? 'top1' : 'top10', view.scope];
+/** What every FOOTNOTES text reads, from the page's `site`. */
+export const notePolicy = (site) => ({
+	...site.windowPolicy,
+	fullPolicy: site.fullPolicy,
+	asOf: site.asOf,
+	costBaseYear: site.costBaseYear,
+	referenceCost: site.referenceCost
+});
 
-function ordinal(n) {
-	const words = ['zeroth', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth'];
-	return words[n] ?? `${n}th`;
-}
+/** The joined text of footnotes `ids`, read against `site`. */
+export const noteText = (ids, site) => ids.map((id) => FOOTNOTES[id].text(notePolicy(site))).join(' ');

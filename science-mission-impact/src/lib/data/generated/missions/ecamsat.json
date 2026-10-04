@@ -21,7 +21,10 @@
   "indices": {
     "h": 2,
     "m": 0.286,
-    "i100": 0
+    "i100": 0,
+    "g": 4,
+    "tori": 0.26,
+    "riq": 255
   },
   "facts": {
     "papers": 4,
@@ -115,6 +118,13 @@
     "bibcode": "2020LSSR...24...18P",
     "title": "EcAMSat spaceflight measurements of the role of σˢ in antibiotic resistance of stationary phase Escherichia coli in microgravity",
     "firstAuthor": "Padgen, Michael R.",
+    "authors": [
+      "Padgen, Michael R.",
+      "Lera, Matthew P.",
+      "Parra, Macarena P.",
+      "Ricco, Antonio J."
+    ],
+    "authorCount": 13,
     "year": 2020,
     "citations": 25
   },
@@ -188,6 +198,13 @@
       "status": "available",
       "months": 73,
       "citationBuckets": 10
+    },
+    "spread": {
+      "mean": 6.25,
+      "median": 4,
+      "uncited": 0,
+      "i10": 1,
+      "i100": 0
     }
   },
   "window": {
@@ -213,6 +230,13 @@
       "status": "available",
       "months": 25,
       "citationBuckets": 6
+    },
+    "spread": {
+      "mean": null,
+      "median": null,
+      "uncited": 0,
+      "i10": 0,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -229,13 +253,20 @@
       "yearsFromFormulation": null,
       "bibcode": null,
       "date": null
+    },
+    "spread": {
+      "mean": 10,
+      "median": 7,
+      "uncited": 0,
+      "i10": 2,
+      "i100": 0
     }
   },
   "query": {
     "arms": "((abs:\"EcAMSat\" OR abs:\"E. coli Antimicrobial Satellite\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2017-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22EcAMSat%22+OR+abs%3A%22E.+coli+Antimicrobial+Satellite%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2017-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:34:39.182662+00:00",
+    "fetchedAt": "2026-09-30T18:23:12.704420+00:00",
     "reconciliation": {
       "adsReturned": 4,
       "curatedOut": 0,
@@ -255,6 +286,8 @@
       "bibcode": "2020LSSR...24...18P",
       "title": "EcAMSat spaceflight measurements of the role of σˢ in antibiotic resistance of stationary phase Escherichia coli in microgravity",
       "firstAuthor": "Padgen, Michael R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 25
     },
@@ -262,6 +295,8 @@
       "bibcode": "2020AcAau.173..449P",
       "title": "The EcAMSat fluidic system to study antibiotic resistance in low earth orbit: Development and lessons learned from space flight",
       "firstAuthor": "Padgen, Michael R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 13
     },
@@ -269,6 +304,8 @@
       "bibcode": "2021LSSR...29...72W",
       "title": "Comments on \"EcAMSat spaceflight measurements of the role of σˢ in antibiotic resistance of stationary phase Escherichia coli in microgravity\"",
       "firstAuthor": "Wang, Chongzhen",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 1
     },
@@ -276,6 +313,8 @@
       "bibcode": "2021LSSR...29...85P",
       "title": "Response to Comments on \"EcAMSat spaceflight measurements of the role of σˢ in antibiotic resistance of stationary phase Escherichia coli in microgravity\"",
       "firstAuthor": "Padgen, Michael R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 1
     }

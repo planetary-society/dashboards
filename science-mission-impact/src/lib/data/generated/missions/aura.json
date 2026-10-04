@@ -21,7 +21,10 @@
   "indices": {
     "h": 131,
     "m": 5.696,
-    "i100": 205
+    "i100": 205,
+    "g": 192,
+    "tori": 330.063,
+    "riq": 789
   },
   "facts": {
     "papers": 3011,
@@ -242,6 +245,13 @@
     "bibcode": "2006ITGRS..44.1093L",
     "title": "The Ozone Monitoring Instrument",
     "firstAuthor": "Levelt, Pieternel F.",
+    "authors": [
+      "Levelt, Pieternel F.",
+      "van den Oord, Gijsbertus H. J.",
+      "Dobber, Marcel R.",
+      "Mälkki, Anssi"
+    ],
+    "authorCount": 9,
     "year": 2006,
     "citations": 1419
   },
@@ -250,9 +260,9 @@
       "bins": [
         200.659,
         216.671,
-        235.482,
-        251.969,
-        259.157,
+        235.427,
+        251.914,
+        259.266,
         283.551,
         306.069,
         297.705,
@@ -266,8 +276,8 @@
         59.801,
         66.161,
         73.177,
-        82.221,
-        75.388,
+        82.162,
+        75.448,
         97.4,
         99.056,
         95.033,
@@ -278,16 +288,16 @@
     },
     "lifetime": {
       "bins": [
-        219.331,
-        258.708,
-        282.032,
-        265.491,
-        294.05,
-        307.225,
-        345.956,
-        368.342,
-        334.134,
-        335.731
+        219.113,
+        258.51,
+        282.068,
+        265.652,
+        294.087,
+        307.177,
+        346.077,
+        368.375,
+        334.166,
+        335.776
       ],
       "top1": 22
     }
@@ -315,6 +325,13 @@
       "status": "available",
       "months": 232,
       "citationBuckets": 23
+    },
+    "spread": {
+      "mean": 12.613,
+      "median": 8,
+      "uncited": 170,
+      "i10": 1183,
+      "i100": 16
     }
   },
   "window": {
@@ -340,14 +357,21 @@
       "status": "available",
       "months": 98,
       "citationBuckets": 12
+    },
+    "spread": {
+      "mean": 13.021,
+      "median": 9,
+      "uncited": 48,
+      "i10": 404,
+      "i100": 3
     }
   },
   "lifetime": {
     "papers": 3011,
     "outputBasis": "measured",
     "citations": 98286,
-    "top10": 209.791,
-    "top10ShareOfDivision": 0.0507,
+    "top10": 209.876,
+    "top10ShareOfDivision": 0.05072,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -356,13 +380,20 @@
       "yearsFromFormulation": 14.749,
       "bibcode": "2005GeoRL..3214826L",
       "date": "2005-07-00"
+    },
+    "spread": {
+      "mean": 32.642,
+      "median": 16,
+      "uncited": 211,
+      "i10": 1914,
+      "i100": 205
     }
   },
   "query": {
     "arms": "(((abs:Aura AND abs:(HIRDLS OR MLS OR OMI OR TES OR satellite OR spacecraft OR ozone OR stratospher* OR tropospher* OR =\"remote sensing\")) OR =abs:\"Aura Earth-Observing\" OR =abs:\"EOS Aura\" OR =abs:\"eos-ch1\" OR =abs:\"EOS CH-1\" OR =abs:\"eos-chem1\" OR =abs:\"High Resolution Dynamics Limb Sounder\" OR (=abs:\"Ozone Monitoring Instrument\" AND NOT ((=abs:\"Global Ozone Monitoring Instrument\" OR =abs:\"Tropospheric Ozone Monitoring Instrument\") AND NOT abs:OMI)) OR =abs:\"Tropospheric Emission Spectrometer\" OR (abs:HIRDLS AND abs:(stratospher* OR ozone OR temperature OR satellite OR atmospheric)) OR (abs:OMI AND abs:(ozone OR =\"nitrogen dioxide\" OR NO2 OR SO2 OR aerosol* OR =\"sulfur dioxide\")) OR ((abs:MLS OR =abs:\"Microwave Limb Sounder\") AND abs:(Aura OR EOS))) AND NOT =abs:\"AURA Inc.\" AND NOT =abs:\"Cathartes aura\")",
     "filters": "property:refereed AND doctype:article AND pubdate:[2004-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3AAura+AND+abs%3A%28HIRDLS+OR+MLS+OR+OMI+OR+TES+OR+satellite+OR+spacecraft+OR+ozone+OR+stratospher%2A+OR+tropospher%2A+OR+%3D%22remote+sensing%22%29%29+OR+%3Dabs%3A%22Aura+Earth-Observing%22+OR+%3Dabs%3A%22EOS+Aura%22+OR+%3Dabs%3A%22eos-ch1%22+OR+%3Dabs%3A%22EOS+CH-1%22+OR+%3Dabs%3A%22eos-chem1%22+OR+%3Dabs%3A%22High+Resolution+Dynamics+Limb+Sounder%22+OR+%28%3Dabs%3A%22Ozone+Monitoring+Instrument%22+AND+NOT+%28%28%3Dabs%3A%22Global+Ozone+Monitoring+Instrument%22+OR+%3Dabs%3A%22Tropospheric+Ozone+Monitoring+Instrument%22%29+AND+NOT+abs%3AOMI%29%29+OR+%3Dabs%3A%22Tropospheric+Emission+Spectrometer%22+OR+%28abs%3AHIRDLS+AND+abs%3A%28stratospher%2A+OR+ozone+OR+temperature+OR+satellite+OR+atmospheric%29%29+OR+%28abs%3AOMI+AND+abs%3A%28ozone+OR+%3D%22nitrogen+dioxide%22+OR+NO2+OR+SO2+OR+aerosol%2A+OR+%3D%22sulfur+dioxide%22%29%29+OR+%28%28abs%3AMLS+OR+%3Dabs%3A%22Microwave+Limb+Sounder%22%29+AND+abs%3A%28Aura+OR+EOS%29%29%29+AND+NOT+%3Dabs%3A%22AURA+Inc.%22+AND+NOT+%3Dabs%3A%22Cathartes+aura%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:23:10.449082+00:00",
+    "fetchedAt": "2026-09-30T18:01:40.648669+00:00",
     "reconciliation": {
       "adsReturned": 3013,
       "curatedOut": 1,
@@ -391,6 +422,8 @@
       "bibcode": "2006ITGRS..44.1093L",
       "title": "The Ozone Monitoring Instrument",
       "firstAuthor": "Levelt, Pieternel F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 1419
     },
@@ -398,6 +431,8 @@
       "bibcode": "2006ITGRS..44.1075W",
       "title": "The Earth Observing System Microwave Limb Sounder (EOS MLS) on the Aura Satellite",
       "firstAuthor": "Waters, Joe W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 1010
     },
@@ -405,6 +440,8 @@
       "bibcode": "2007JGRD..11224S47T",
       "title": "Aerosols and surface UV products from Ozone Monitoring Instrument observations: An overview",
       "firstAuthor": "Torres, Omar",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 573
     },
@@ -412,6 +449,8 @@
       "bibcode": "2016ACP....16.4605K",
       "title": "Aura OMI observations of regional SO₂ and NO₂ pollution changes from 2005 to 2015",
       "firstAuthor": "Krotkov, Nickolay A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 538
     },
@@ -419,6 +458,8 @@
       "bibcode": "2010ACP....10.1155R",
       "title": "Absorption Angstrom Exponent in AERONET and related data as an indicator of aerosol composition",
       "firstAuthor": "Russell, P. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 535
     },
@@ -426,6 +467,8 @@
       "bibcode": "2009ACP.....9.9001K",
       "title": "Evaluation of black carbon estimations in global aerosol models",
       "firstAuthor": "Koch, D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 474
     },
@@ -433,6 +476,8 @@
       "bibcode": "2011AMT.....4.1905B",
       "title": "An improved tropospheric NO₂ column retrieval algorithm for the Ozone Monitoring Instrument",
       "firstAuthor": "Boersma, K. F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 434
     },
@@ -440,6 +485,8 @@
       "bibcode": "2020GeoRL..4787978B",
       "title": "Impact of Coronavirus Outbreak on NO₂ Pollution Assessed Using TROPOMI and OMI Observations",
       "firstAuthor": "Bauwens, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 421
     },
@@ -447,6 +494,8 @@
       "bibcode": "2012ACP....12.7779H",
       "title": "Steps towards a mechanistic model of global soil nitric oxide emissions: implementation and space based-constraints",
       "firstAuthor": "Hudman, R. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 386
     },
@@ -454,6 +503,8 @@
       "bibcode": "2007ACP.....7.2103B",
       "title": "Near-real time retrieval of tropospheric NO₂ from OMI",
       "firstAuthor": "Boersma, K. F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 383
     },
@@ -461,6 +512,8 @@
       "bibcode": "2010AtmEn..44.2213D",
       "title": "Application of OMI observations to a space-based indicator of NO ₓ and VOC controls on surface ozone formation",
       "firstAuthor": "Duncan, Bryan N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 369
     },
@@ -468,6 +521,8 @@
       "bibcode": "2007Natur.445..528W",
       "title": "Importance of rain evaporation and continental convection in the tropical water cycle",
       "firstAuthor": "Worden, John",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 358
     },
@@ -475,6 +530,8 @@
       "bibcode": "2006ITGRS..44.1199L",
       "title": "Science Objectives of the Ozone Monitoring Instrument",
       "firstAuthor": "Levelt, Pieternel F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 349
     },
@@ -482,6 +539,8 @@
       "bibcode": "2008JGRD..11315S11S",
       "title": "Validation of the Aura Microwave Limb Sounder temperature and geopotential height measurements",
       "firstAuthor": "Schwartz, M. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 346
     },
@@ -489,6 +548,8 @@
       "bibcode": "2009GeoRL..3612815M",
       "title": "Aura Microwave Limb Sounder observations of dynamics and transport during the record-breaking 2009 Arctic stratospheric major warming",
       "firstAuthor": "Manney, Gloria L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 342
     },
@@ -496,6 +557,8 @@
       "bibcode": "2015JGRD..120.7229J",
       "title": "Spatial and temporal variability of ozone sensitivity over China observed from the Ozone Monitoring Instrument",
       "firstAuthor": "Jin, Xiaomeng",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 336
     },
@@ -503,6 +566,8 @@
       "bibcode": "2016ACP....1613561T",
       "title": "Why do models overestimate surface ozone in the Southeast United States?",
       "firstAuthor": "Travis, Katherine R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 325
     },
@@ -510,6 +575,8 @@
       "bibcode": "2016JGRD..121..976D",
       "title": "A space-based, high-resolution view of notable changes in urban NOₓ pollution around the world (2005-2014)",
       "firstAuthor": "Duncan, Bryan N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 320
     },
@@ -517,6 +584,8 @@
       "bibcode": "2018ACP....18.5699L",
       "title": "The Ozone Monitoring Instrument: overview of 14 years in space",
       "firstAuthor": "Levelt, Pieternel F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 318
     },
@@ -524,6 +593,8 @@
       "bibcode": "2009JGRD..114.0A21W",
       "title": "Cloud ice: A climate model challenge with signs and expectations of progress",
       "firstAuthor": "Waliser, Duane E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 316
     }

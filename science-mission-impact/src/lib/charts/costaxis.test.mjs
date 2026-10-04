@@ -2,7 +2,8 @@
 // places the story's step and the division's chart could have quietly disagreed.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { byCostThenId, decadeTicks, minorDollarTicks, stackLevels, stepAfterPath } from './costaxis.js';
+import { scaleLog } from 'd3-scale';
+import { byCostThenId, costTicks, decadeTicks, minorDollarTicks, stackLevels, stepAfterPath } from './costaxis.js';
 
 test('byCostThenId orders by cost and settles a tie on the id', () => {
 	const list = [
@@ -32,6 +33,23 @@ test('decadeTicks lands on whole powers of ten inside the domain', () => {
 	assert.deepEqual(decadeTicks(1200, 9000), []); // no decade in between
 	// repeated ×10 drifts off the decade; every value is a round number regardless
 	for (const v of decadeTicks(1e-6, 1e12)) assert.equal(v, Number(v.toPrecision(12)));
+});
+
+test('costTicks labels 2× and 5× only when every label has room, and drops them first', () => {
+	const at = (w) => costTicks(scaleLog().domain([3, 4000]).range([0, w]));
+	const labels = (ticks) => ticks.filter((t) => t.label).map((t) => t.value);
+	// 1100px over ~3.1 decades: 1-2-5 all fit, gridlines on the decades only
+	const wide = at(1100);
+	assert.deepEqual(labels(wide), [5, 10, 20, 50, 100, 200, 500, 1000, 2000]);
+	assert.deepEqual(wide.filter((t) => t.grid).map((t) => t.value), [10, 100, 1000]);
+	// adjacent labels are never closer than the gap
+	const x = scaleLog().domain([3, 4000]).range([0, 1100]);
+	const xs = labels(wide).map(x);
+	assert.ok(xs.every((v, i) => i === 0 || v - xs[i - 1] >= 44));
+	// narrower: the decades alone, then every other decade
+	assert.deepEqual(labels(at(300)), [10, 100, 1000]);
+	assert.deepEqual(at(120).map((t) => [t.value, t.label]), [[10, true], [100, false], [1000, true]]);
+	assert.ok(at(120).every((t) => t.grid));
 });
 
 test('minor dollar ticks subdivide decades without duplicating major ticks or leaving the domain', () => {

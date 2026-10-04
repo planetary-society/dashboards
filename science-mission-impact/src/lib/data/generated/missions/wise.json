@@ -21,11 +21,14 @@
   "indices": {
     "h": 128,
     "m": 7.529,
-    "i100": 211
+    "i100": 211,
+    "g": 231,
+    "tori": 227.501,
+    "riq": 837
   },
   "facts": {
     "papers": 2581,
-    "citations": 102773,
+    "citations": 102751,
     "publicationYears": [
       2010,
       2026
@@ -79,21 +82,21 @@
       3539,
       4457,
       5151,
-      6115,
+      6114,
       6341,
       7113,
       8017,
       8285,
       9418,
       11578,
-      13649,
-      13014
+      13652,
+      12990
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 102773,
-      "observed": 102773,
+      "expected": 102751,
+      "observed": 102751,
       "missing": 0
     }
   },
@@ -158,8 +161,15 @@
     "bibcode": "2010AJ....140.1868W",
     "title": "The Wide-field Infrared Survey Explorer (WISE): Mission Description and Initial On-orbit Performance",
     "firstAuthor": "Wright, Edward L.",
+    "authors": [
+      "Wright, Edward L.",
+      "Eisenhardt, Peter R. M.",
+      "Mainzer, Amy K.",
+      "Ressler, Michael E."
+    ],
+    "authorCount": 38,
     "year": 2010,
-    "citations": 7882
+    "citations": 7879
   },
   "ranks": {
     "full": {
@@ -167,13 +177,13 @@
         8.068,
         14.808,
         17.581,
-        17.022,
+        17.025,
         13.896,
-        20.94,
-        25.714,
-        21.648,
-        31.121,
-        19.202
+        20.924,
+        25.727,
+        21.641,
+        31.123,
+        19.207
       ],
       "top1": 2
     },
@@ -194,16 +204,16 @@
     },
     "lifetime": {
       "bins": [
-        359.896,
-        343.361,
-        335.656,
-        275.455,
-        254.749,
-        240.377,
-        217.128,
-        199.302,
-        199.082,
-        155.994
+        359.643,
+        343.509,
+        335.675,
+        275.28,
+        254.828,
+        240.435,
+        218.453,
+        197.982,
+        199.143,
+        156.052
       ],
       "top1": 12
     }
@@ -231,6 +241,13 @@
       "status": "available",
       "months": 37,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 27.653,
+      "median": 17,
+      "uncited": 5,
+      "i10": 133,
+      "i100": 7
     }
   },
   "window": {
@@ -256,13 +273,20 @@
       "status": "available",
       "months": 37,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 27.653,
+      "median": 17,
+      "uncited": 5,
+      "i10": 133,
+      "i100": 7
     }
   },
   "lifetime": {
     "papers": 2581,
     "outputBasis": "measured",
-    "citations": 102773,
-    "top10": 163.291,
+    "citations": 102751,
+    "top10": 163.304,
     "top10ShareOfDivision": 0.02948,
     "top1": null,
     "top1ShareOfDivision": null,
@@ -272,13 +296,20 @@
       "yearsFromFormulation": 6.924,
       "bibcode": "2010ApJ...710.1627L",
       "date": "2010-02-00"
+    },
+    "spread": {
+      "mean": 39.811,
+      "median": 16,
+      "uncited": 196,
+      "i10": 1623,
+      "i100": 211
     }
   },
   "query": {
     "arms": "(((((=abs:\"Wide-field Infrared Survey Explorer\" OR =abs:\"Wide-field Infrared Space Explorer\" OR (abs:WISE AND (abs:infrared OR abs:observatory OR abs:NEOWISE OR abs:asteroid OR abs:\"all-sky\")) OR facility:WISE OR =abs:\"WISE satellite\" OR ((=abs:AllWISE OR =abs:unWISE OR =abs:CatWISE) AND (abs:infrared OR abs:catalog OR abs:photometry OR abs:survey OR abs:WISE)) OR (abs:NEOWISE AND NOT (abs:asteroid OR abs:comet OR =abs:NEOs OR =abs:\"near-Earth objects\" OR =abs:\"minor planet\" OR =abs:\"minor planets\" OR =abs:\"small body\" OR =abs:\"small bodies\" OR abs:trojan OR =abs:\"planetary defense\" OR =abs:\"Kuiper belt\" OR =abs:\"trans-Neptunian\" OR abs:Neptune OR abs:regolith OR =abs:\"Planet Nine\")) OR (abs:NEOWISE AND (abs:AGN OR abs:quasar OR abs:YSO OR abs:protostar OR abs:\"tidal disruption event\" OR abs:supernova OR abs:\"brown dwarf\" OR abs:\"white dwarf\" OR abs:maser OR abs:\"star-forming\" OR abs:\"black hole\"))) AND NOT (=abs:\"C 2020 F3 NEOWISE\" OR =abs:\"comet NEOWISE\" OR =abs:\"C 2014 N3 NEOWISE\")) AND NOT (abs:NEOWISE AND (abs:asteroid OR abs:comet OR =abs:NEOs OR =abs:\"near-Earth objects\" OR =abs:\"minor planet\" OR =abs:\"minor planets\" OR =abs:\"small body\" OR =abs:\"small bodies\" OR abs:trojan OR =abs:\"planetary defense\" OR =abs:\"Kuiper belt\" OR =abs:\"trans-Neptunian\" OR abs:Neptune OR abs:regolith OR =abs:\"Planet Nine\") AND NOT (abs:AGN OR abs:quasar OR abs:YSO OR abs:protostar OR abs:\"tidal disruption event\" OR abs:supernova OR abs:\"brown dwarf\" OR abs:\"white dwarf\" OR abs:maser OR abs:\"star-forming\" OR abs:\"black hole\") AND NOT =abs:WISE AND NOT facility:WISE)) AND collection:astronomy))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2010-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28%28%3Dabs%3A%22Wide-field+Infrared+Survey+Explorer%22+OR+%3Dabs%3A%22Wide-field+Infrared+Space+Explorer%22+OR+%28abs%3AWISE+AND+%28abs%3Ainfrared+OR+abs%3Aobservatory+OR+abs%3ANEOWISE+OR+abs%3Aasteroid+OR+abs%3A%22all-sky%22%29%29+OR+facility%3AWISE+OR+%3Dabs%3A%22WISE+satellite%22+OR+%28%28%3Dabs%3AAllWISE+OR+%3Dabs%3AunWISE+OR+%3Dabs%3ACatWISE%29+AND+%28abs%3Ainfrared+OR+abs%3Acatalog+OR+abs%3Aphotometry+OR+abs%3Asurvey+OR+abs%3AWISE%29%29+OR+%28abs%3ANEOWISE+AND+NOT+%28abs%3Aasteroid+OR+abs%3Acomet+OR+%3Dabs%3ANEOs+OR+%3Dabs%3A%22near-Earth+objects%22+OR+%3Dabs%3A%22minor+planet%22+OR+%3Dabs%3A%22minor+planets%22+OR+%3Dabs%3A%22small+body%22+OR+%3Dabs%3A%22small+bodies%22+OR+abs%3Atrojan+OR+%3Dabs%3A%22planetary+defense%22+OR+%3Dabs%3A%22Kuiper+belt%22+OR+%3Dabs%3A%22trans-Neptunian%22+OR+abs%3ANeptune+OR+abs%3Aregolith+OR+%3Dabs%3A%22Planet+Nine%22%29%29+OR+%28abs%3ANEOWISE+AND+%28abs%3AAGN+OR+abs%3Aquasar+OR+abs%3AYSO+OR+abs%3Aprotostar+OR+abs%3A%22tidal+disruption+event%22+OR+abs%3Asupernova+OR+abs%3A%22brown+dwarf%22+OR+abs%3A%22white+dwarf%22+OR+abs%3Amaser+OR+abs%3A%22star-forming%22+OR+abs%3A%22black+hole%22%29%29%29+AND+NOT+%28%3Dabs%3A%22C+2020+F3+NEOWISE%22+OR+%3Dabs%3A%22comet+NEOWISE%22+OR+%3Dabs%3A%22C+2014+N3+NEOWISE%22%29%29+AND+NOT+%28abs%3ANEOWISE+AND+%28abs%3Aasteroid+OR+abs%3Acomet+OR+%3Dabs%3ANEOs+OR+%3Dabs%3A%22near-Earth+objects%22+OR+%3Dabs%3A%22minor+planet%22+OR+%3Dabs%3A%22minor+planets%22+OR+%3Dabs%3A%22small+body%22+OR+%3Dabs%3A%22small+bodies%22+OR+abs%3Atrojan+OR+%3Dabs%3A%22planetary+defense%22+OR+%3Dabs%3A%22Kuiper+belt%22+OR+%3Dabs%3A%22trans-Neptunian%22+OR+abs%3ANeptune+OR+abs%3Aregolith+OR+%3Dabs%3A%22Planet+Nine%22%29+AND+NOT+%28abs%3AAGN+OR+abs%3Aquasar+OR+abs%3AYSO+OR+abs%3Aprotostar+OR+abs%3A%22tidal+disruption+event%22+OR+abs%3Asupernova+OR+abs%3A%22brown+dwarf%22+OR+abs%3A%22white+dwarf%22+OR+abs%3Amaser+OR+abs%3A%22star-forming%22+OR+abs%3A%22black+hole%22%29+AND+NOT+%3Dabs%3AWISE+AND+NOT+facility%3AWISE%29%29+AND+collection%3Aastronomy%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2010-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:39:11.990419+00:00",
+    "fetchedAt": "2026-09-30T21:07:14.948854+00:00",
     "reconciliation": {
       "adsReturned": 2587,
       "curatedOut": 7,
@@ -380,20 +411,26 @@
       "bibcode": "2010AJ....140.1868W",
       "title": "The Wide-field Infrared Survey Explorer (WISE): Mission Description and Initial On-orbit Performance",
       "firstAuthor": "Wright, Edward L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
-      "citations": 7882
+      "citations": 7879
     },
     {
       "bibcode": "2019AJ....157..168D",
       "title": "Overview of the DESI Legacy Imaging Surveys",
       "firstAuthor": "Dey, Arjun",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
-      "citations": 2219
+      "citations": 2218
     },
     {
       "bibcode": "2011ApJ...731...53M",
       "title": "Preliminary Results from NEOWISE: An Enhancement to the Wide-field Infrared Survey Explorer for Solar System Science",
       "firstAuthor": "Mainzer, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 907
     },
@@ -401,6 +438,8 @@
       "bibcode": "2012ApJ...753...30S",
       "title": "Mid-infrared Selection of Active Galactic Nuclei with the Wide-Field Infrared Survey Explorer. I. Characterizing WISE-selected Active Galactic Nuclei in COSMOS",
       "firstAuthor": "Stern, Daniel",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 877
     },
@@ -408,13 +447,17 @@
       "bibcode": "2014ApJ...792...30M",
       "title": "Initial Performance of the NEOWISE Reactivation Mission",
       "firstAuthor": "Mainzer, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
-      "citations": 767
+      "citations": 766
     },
     {
       "bibcode": "2011ApJ...735..112J",
       "title": "The Spitzer-WISE Survey of the Ecliptic Poles",
       "firstAuthor": "Jarrett, T. H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 707
     },
@@ -422,13 +465,17 @@
       "bibcode": "2018ApJ...859...11S",
       "title": "Dust Attenuation Curves in the Local Universe: Demographics and New Laws for Star-forming Galaxies and High-redshift Analogs",
       "firstAuthor": "Salim, Samir",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
-      "citations": 620
+      "citations": 618
     },
     {
       "bibcode": "2020ApJS..250....8L",
       "title": "The Sloan Digital Sky Survey Quasar Catalog: Sixteenth Data Release",
       "firstAuthor": "Lyke, Brad W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 587
     },
@@ -436,6 +483,8 @@
       "bibcode": "2017ApJS..233...17R",
       "title": "BAT AGN Spectroscopic Survey. V. X-Ray Properties of the Swift/BAT 70-month AGN Catalog",
       "firstAuthor": "Ricci, C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 583
     },
@@ -443,6 +492,8 @@
       "bibcode": "2012ApJS..201...19D",
       "title": "The Hawaii Infrared Parallax Program. I. Ultracool Binaries and the L/T Transition",
       "firstAuthor": "Dupuy, Trent J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 559
     },
@@ -450,6 +501,8 @@
       "bibcode": "2026AJ....171..285D",
       "title": "Data Release 1 of the Dark Energy Spectroscopic Instrument",
       "firstAuthor": "DESI Collaboration",
+      "authors": null,
+      "authorCount": null,
       "year": 2026,
       "citations": 537
     },
@@ -457,6 +510,8 @@
       "bibcode": "2019ApJ...877..116W",
       "title": "The Optical to Mid-infrared Extinction Law Based on the APOGEE, Gaia DR2, Pan-STARRS1, SDSS, APASS, 2MASS, and WISE Surveys",
       "firstAuthor": "Wang, Shu",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 503
     },
@@ -464,6 +519,8 @@
       "bibcode": "2014ApJS..212....1A",
       "title": "The WISE Catalog of Galactic H II Regions",
       "firstAuthor": "Anderson, L. D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 441
     },
@@ -471,13 +528,17 @@
       "bibcode": "2016ApJS..227....2S",
       "title": "GALEX-SDSS-WISE Legacy Catalog (GSWLC): Star Formation Rates, Stellar Masses, and Dust Attenuations of 700,000 Low-redshift Galaxies",
       "firstAuthor": "Salim, Samir",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
-      "citations": 429
+      "citations": 427
     },
     {
       "bibcode": "2013ApJ...772...26A",
       "title": "Mid-infrared Selection of Active Galactic Nuclei with the Wide-field Infrared Survey Explorer. II. Properties of WISE-selected Active Galactic Nuclei in the NDWFS Boötes Field",
       "firstAuthor": "Assef, R. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 425
     },
@@ -485,13 +546,17 @@
       "bibcode": "2011PASP..123.1218A",
       "title": "Common-Resolution Convolution Kernels for Space- and Ground-Based Telescopes",
       "firstAuthor": "Aniano, G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
-      "citations": 424
+      "citations": 423
     },
     {
       "bibcode": "2019ApJS..240...30S",
       "title": "The unWISE Catalog: Two Billion Infrared Sources from Five Years of WISE Imaging",
       "firstAuthor": "Schlafly, Edward F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 414
     },
@@ -499,6 +564,8 @@
       "bibcode": "2011ApJS..197...19K",
       "title": "The First Hundred Brown Dwarfs Discovered by the Wide-field Infrared Survey Explorer (WISE)",
       "firstAuthor": "Kirkpatrick, J. Davy",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 405
     },
@@ -506,6 +573,8 @@
       "bibcode": "2011ApJ...741...68M",
       "title": "Main Belt Asteroids with WISE/NEOWISE. I. Preliminary Albedos and Diameters",
       "firstAuthor": "Masiero, Joseph R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 400
     },
@@ -513,6 +582,8 @@
       "bibcode": "2016MNRAS.461..794P",
       "title": "The star formation history and accretion-disc fraction among the K-type members of the Scorpius-Centaurus OB association",
       "firstAuthor": "Pecaut, Mark J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 382
     }

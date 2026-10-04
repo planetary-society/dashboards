@@ -21,7 +21,10 @@
   "indices": {
     "h": 70,
     "m": 5.833,
-    "i100": 30
+    "i100": 30,
+    "g": 127,
+    "tori": 45,
+    "riq": 559
   },
   "facts": {
     "papers": 1428,
@@ -155,52 +158,59 @@
     "bibcode": "2016SSRv..199....5B",
     "title": "Magnetospheric Multiscale Overview and Science Objectives",
     "firstAuthor": "Burch, J. L.",
+    "authors": [
+      "Burch, J. L.",
+      "Moore, T. E.",
+      "Torbert, R. B.",
+      "Giles, B. L."
+    ],
+    "authorCount": 4,
     "year": 2016,
     "citations": 1468
   },
   "ranks": {
     "full": {
       "bins": [
-        42.387,
-        67.874,
-        83.587,
-        101.921,
-        116.752,
-        124.279,
-        111.745,
-        142.558,
-        116.048,
-        121.849
+        42.549,
+        67.972,
+        83.787,
+        101.999,
+        116.883,
+        124.3,
+        111.482,
+        142.706,
+        116.419,
+        120.904
       ],
       "top1": 13
     },
     "window": {
       "bins": [
-        16.398,
-        15.724,
-        29.744,
-        43.293,
-        41.967,
-        35.877,
-        53.48,
-        40.044,
-        55.77,
-        50.704
+        16.438,
+        15.698,
+        29.958,
+        43.378,
+        41.859,
+        35.633,
+        53.391,
+        39.908,
+        56.014,
+        50.723
       ],
       "top1": 9
     },
     "lifetime": {
       "bins": [
-        179.816,
-        188,
-        191.294,
-        168.533,
-        161.977,
-        138.586,
-        130.923,
-        98.111,
-        111.86,
-        58.9
+        179.171,
+        187.807,
+        190.605,
+        168.566,
+        161.817,
+        139.203,
+        131.472,
+        97.985,
+        111.803,
+        59.57
       ],
       "top1": 9
     }
@@ -209,10 +219,10 @@
     "papers": 1029,
     "outputBasis": "measured",
     "citations": 14804,
-    "top10": 123.843,
-    "top10ShareOfDivision": 0.08585,
+    "top10": 123.013,
+    "top10ShareOfDivision": 0.08498,
     "top1": 11.833,
-    "top1ShareOfDivision": 0.08203,
+    "top1ShareOfDivision": 0.08175,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.498,
@@ -228,16 +238,23 @@
       "status": "available",
       "months": 99,
       "citationBuckets": 12
+    },
+    "spread": {
+      "mean": 14.387,
+      "median": 10,
+      "uncited": 23,
+      "i10": 516,
+      "i100": 8
     }
   },
   "window": {
     "papers": 383,
     "outputBasis": "measured",
     "citations": 8016,
-    "top10": 57.9,
-    "top10ShareOfDivision": 0.13103,
+    "top10": 58.1,
+    "top10ShareOfDivision": 0.13094,
     "top1": 9,
-    "top1ShareOfDivision": 0.20367,
+    "top1ShareOfDivision": 0.20284,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.498,
@@ -253,14 +270,21 @@
       "status": "available",
       "months": 48,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 20.93,
+      "median": 14,
+      "uncited": 8,
+      "i10": 243,
+      "i100": 8
     }
   },
   "lifetime": {
     "papers": 1428,
     "outputBasis": "measured",
     "citations": 32114,
-    "top10": 125.483,
-    "top10ShareOfDivision": 0.08,
+    "top10": 125.422,
+    "top10ShareOfDivision": 0.07974,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -269,13 +293,20 @@
       "yearsFromFormulation": 13.251,
       "bibcode": "2016JGRA..121.1263F",
       "date": "2016-02-00"
+    },
+    "spread": {
+      "mean": 22.489,
+      "median": 10,
+      "uncited": 129,
+      "i10": 716,
+      "i100": 30
     }
   },
   "query": {
     "arms": "((=abs:\"Magnetospheric Multiscale\" OR =abs:\"Magnetospheric Multi-scale\" OR (abs:MMS AND abs:(magnetos* OR magnetopause OR magnetotail OR \"magnetic reconnection\" OR \"plasma sheet\" OR \"current sheet\" OR \"bow shock\" OR \"solar wind\" OR whistler OR chorus))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2015-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Magnetospheric+Multiscale%22+OR+%3Dabs%3A%22Magnetospheric+Multi-scale%22+OR+%28abs%3AMMS+AND+abs%3A%28magnetos%2A+OR+magnetopause+OR+magnetotail+OR+%22magnetic+reconnection%22+OR+%22plasma+sheet%22+OR+%22current+sheet%22+OR+%22bow+shock%22+OR+%22solar+wind%22+OR+whistler+OR+chorus%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2015-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:31:24.677523+00:00",
+    "fetchedAt": "2026-09-30T18:10:01.945321+00:00",
     "reconciliation": {
       "adsReturned": 1429,
       "curatedOut": 5,
@@ -505,6 +536,8 @@
       "bibcode": "2016SSRv..199....5B",
       "title": "Magnetospheric Multiscale Overview and Science Objectives",
       "firstAuthor": "Burch, J. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 1468
     },
@@ -512,6 +545,8 @@
       "bibcode": "2016SSRv..199..331P",
       "title": "Fast Plasma Investigation for Magnetospheric Multiscale",
       "firstAuthor": "Pollock, C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 1304
     },
@@ -519,6 +554,8 @@
       "bibcode": "2016SSRv..199..189R",
       "title": "The Magnetospheric Multiscale Magnetometers",
       "firstAuthor": "Russell, C. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 1208
     },
@@ -526,6 +563,8 @@
       "bibcode": "2016SSRv..199..137L",
       "title": "The Spin-Plane Double Probe Electric Field Instrument for MMS",
       "firstAuthor": "Lindqvist, P.-A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 702
     },
@@ -533,6 +572,8 @@
       "bibcode": "2016Sci...352.2939B",
       "title": "Electron-scale measurements of magnetic reconnection in space",
       "firstAuthor": "Burch, J. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 642
     },
@@ -540,6 +581,8 @@
       "bibcode": "2016SSRv..199..167E",
       "title": "The Axial Double Probe and Fields Signal Processing for the MMS Mission",
       "firstAuthor": "Ergun, R. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 637
     },
@@ -547,6 +590,8 @@
       "bibcode": "2016SSRv..199..105T",
       "title": "The FIELDS Instrument Suite on MMS: Scientific Objectives, Measurements, and Data Products",
       "firstAuthor": "Torbert, R. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 453
     },
@@ -554,6 +599,8 @@
       "bibcode": "2018Sci...362.1391T",
       "title": "Electron-scale dynamics of the diffusion region during symmetric magnetic reconnection in space",
       "firstAuthor": "Torbert, R. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 299
     },
@@ -561,6 +608,8 @@
       "bibcode": "2016SSRv..199..257L",
       "title": "The Search-Coil Magnetometer for MMS",
       "firstAuthor": "Le Contel, O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 265
     },
@@ -568,6 +617,8 @@
       "bibcode": "2016SSRv..199..407Y",
       "title": "Hot Plasma Composition Analyzer for the Magnetospheric Multiscale Mission",
       "firstAuthor": "Young, D. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 199
     },
@@ -575,6 +626,8 @@
       "bibcode": "2016SSRv..199...77F",
       "title": "Magnetospheric Multiscale Science Mission Profile and Operations",
       "firstAuthor": "Fuselier, S. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 159
     },
@@ -582,6 +635,8 @@
       "bibcode": "2016GeoRL..43.8327B",
       "title": "Magnetic reconnection at the dayside magnetopause: Advances with MMS",
       "firstAuthor": "Burch, J. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 156
     },
@@ -589,6 +644,8 @@
       "bibcode": "2020JGRA..12525935H",
       "title": "Magnetic Reconnection in the Space Sciences: Past, Present, and Future",
       "firstAuthor": "Hesse, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 144
     },
@@ -596,6 +653,8 @@
       "bibcode": "2016SSRv..199..309B",
       "title": "The Fly's Eye Energetic Particle Spectrometer (FEEPS) Sensors for the Magnetospheric Multiscale (MMS) Mission",
       "firstAuthor": "Blake, J. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 142
     },
@@ -603,6 +662,8 @@
       "bibcode": "2016GeoRL..43.5606E",
       "title": "Magnetospheric Multiscale observations of magnetic reconnection associated with Kelvin-Helmholtz waves",
       "firstAuthor": "Eriksson, S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 138
     },
@@ -610,6 +671,8 @@
       "bibcode": "2020JGRA..12526735R",
       "title": "Particle Dynamics in the Earth's Radiation Belts: Review of Current Research and Open Questions",
       "firstAuthor": "Ripoll, J.-F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 135
     },
@@ -617,6 +680,8 @@
       "bibcode": "2016SSRv..199..471M",
       "title": "The Energetic Particle Detector (EPD) Investigation and the Energetic Ion Spectrometer (EIS) for the Magnetospheric Multiscale (MMS) Mission",
       "firstAuthor": "Mauk, B. H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 128
     },
@@ -624,6 +689,8 @@
       "bibcode": "2017JGRA..122..517G",
       "title": "Lower hybrid waves in the ion diffusion and magnetospheric inflow regions",
       "firstAuthor": "Graham, D. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 121
     },
@@ -631,6 +698,8 @@
       "bibcode": "2017JGRA..122.1990Y",
       "title": "Observations of kinetic-size magnetic holes in the magnetosheath",
       "firstAuthor": "Yao, S. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 119
     },
@@ -638,6 +707,8 @@
       "bibcode": "2016PhRvL.117p5101J",
       "title": "Rippled Quasiperpendicular Shock Observed by the Magnetospheric Multiscale Spacecraft",
       "firstAuthor": "Johlander, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 117
     }

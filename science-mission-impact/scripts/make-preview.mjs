@@ -39,7 +39,7 @@ const items = costItems(tiles, layout, { scope: story.scope, top: 10, unranked, 
 const bandOf = new Map(story.bands.map((b) => [b.division, b]));
 const [x0, x1] = layout.x.range();
 
-// The same furniture CostAxis.svelte draws: a band per division, the cost ticks, each
+// The cost-axis furniture (once the story's cost step, now only here): a band per division, the cost ticks, each
 // division's running shares as step lines and the span holding the middle half of its top papers.
 const parts = [];
 for (const t of minorDollarTicks(...layout.x.domain())) {

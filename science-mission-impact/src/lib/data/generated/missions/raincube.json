@@ -21,7 +21,10 @@
   "indices": {
     "h": 4,
     "m": 0.5,
-    "i100": 1
+    "i100": 1,
+    "g": 6,
+    "tori": 0.581,
+    "riq": 95
   },
   "facts": {
     "papers": 7,
@@ -119,6 +122,13 @@
     "bibcode": "2020RvGeo..5800686B",
     "title": "Spaceborne Cloud and Precipitation Radars: Status, Challenges, and Ways Forward",
     "firstAuthor": "Battaglia, Alessandro",
+    "authors": [
+      "Battaglia, Alessandro",
+      "Kollias, Pavlos",
+      "Dhillon, Ranvir",
+      "Roy, Richard"
+    ],
+    "authorCount": 13,
     "year": 2020,
     "citations": 127
   },
@@ -127,9 +137,9 @@
       "bins": [
         0,
         0,
-        0.916,
+        0.915,
         0.583,
-        0.501,
+        0.502,
         0.54,
         0.46,
         0.963,
@@ -156,8 +166,8 @@
     "lifetime": {
       "bins": [
         1,
-        0.141,
-        1.859,
+        0.137,
+        1.863,
         1,
         1,
         0,
@@ -192,6 +202,13 @@
       "status": "available",
       "months": 52,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 19.2,
+      "median": 9,
+      "uncited": 0,
+      "i10": 2,
+      "i100": 0
     }
   },
   "window": {
@@ -217,6 +234,13 @@
       "status": "available",
       "months": 26,
       "citationBuckets": 6
+    },
+    "spread": {
+      "mean": 39.5,
+      "median": 39.5,
+      "uncited": 0,
+      "i10": 2,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -233,13 +257,20 @@
       "yearsFromFormulation": 5.339,
       "bibcode": "2020RvGeo..5800686B",
       "date": "2020-09-00"
+    },
+    "spread": {
+      "mean": 25.571,
+      "median": 7,
+      "uncited": 1,
+      "i10": 3,
+      "i100": 1
     }
   },
   "query": {
     "arms": "(abs:(RainCube AND (CubeSat OR precipitation OR radar OR \"Ka-band\" OR reflectivity OR spaceborne OR satellite)))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2018-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28abs%3A%28RainCube+AND+%28CubeSat+OR+precipitation+OR+radar+OR+%22Ka-band%22+OR+reflectivity+OR+spaceborne+OR+satellite%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:25:53.352542+00:00",
+    "fetchedAt": "2026-09-30T18:04:08.292695+00:00",
     "reconciliation": {
       "adsReturned": 8,
       "curatedOut": 1,
@@ -276,6 +307,8 @@
       "bibcode": "2020RvGeo..5800686B",
       "title": "Spaceborne Cloud and Precipitation Radars: Status, Challenges, and Ways Forward",
       "firstAuthor": "Battaglia, Alessandro",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 127
     },
@@ -283,6 +316,8 @@
       "bibcode": "2019JARS...13c2504P",
       "title": "RainCube: the first ever radar measurements from a CubeSat in space",
       "firstAuthor": "Peral, Eva",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 28
     },
@@ -290,6 +325,8 @@
       "bibcode": "2022ITGRS..6073990S",
       "title": "Scientific Products From the First Radar in a CubeSat (RainCube): Deconvolution, Cross-Validation, and Retrievals",
       "firstAuthor": "Sy, Ousmane O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 10
     },
@@ -297,6 +334,8 @@
       "bibcode": "2021ITGRS..59.4535B",
       "title": "Observations and Design Considerations for Spaceborne Pulse Compression Weather Radar",
       "firstAuthor": "Beauchamp, Robert M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 7
     },
@@ -304,6 +343,8 @@
       "bibcode": "2022IJSTA..15.7826R",
       "title": "Cross Validation of TEMPEST-D and RainCube Observations Over Precipitation Systems",
       "firstAuthor": "Radhakrishnan, Chandrasekar",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 4
     },
@@ -311,6 +352,8 @@
       "bibcode": "2025AIAAJ..63..309S",
       "title": "Design and Implementation of a Ka-band Folding Rib Mesh Antenna for CubeSats",
       "firstAuthor": "Sauder, Jonathan F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2025,
       "citations": 3
     },
@@ -318,6 +361,8 @@
       "bibcode": "2026ITGRS..6403424S",
       "title": "Enhancing the Observations From the Dynamic Atmospheric Radars of NASA's INCUS Mission",
       "firstAuthor": "Sy, Ousmane O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2026,
       "citations": 0
     }

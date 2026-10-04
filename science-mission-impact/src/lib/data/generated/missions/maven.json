@@ -21,11 +21,14 @@
   "indices": {
     "h": 68,
     "m": 5.667,
-    "i100": 38
+    "i100": 39,
+    "g": 111,
+    "tori": 27.458,
+    "riq": 436
   },
   "facts": {
-    "papers": 940,
-    "citations": 22701,
+    "papers": 942,
+    "citations": 22721,
     "publicationYears": [
       2015,
       2026
@@ -58,7 +61,7 @@
       99,
       103,
       100,
-      81
+      83
     ],
     "citations": [
       341,
@@ -72,13 +75,13 @@
       3119,
       3100,
       3184,
-      2611
+      2631
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 22701,
-      "observed": 22701,
+      "expected": 22721,
+      "observed": 22721,
       "missing": 0
     }
   },
@@ -154,52 +157,59 @@
     "bibcode": "2015SSRv..195....3J",
     "title": "The Mars Atmosphere and Volatile Evolution (MAVEN) Mission",
     "firstAuthor": "Jakosky, B. M.",
+    "authors": [
+      "Jakosky, B. M.",
+      "Lin, R. P.",
+      "Grebowsky, J. M.",
+      "Luhmann, J. G."
+    ],
+    "authorCount": 71,
     "year": 2015,
     "citations": 769
   },
   "ranks": {
     "full": {
       "bins": [
-        23.973,
-        43.631,
-        58.675,
-        67.06,
-        84.159,
-        84.616,
-        74.275,
-        103.6,
-        62.209,
-        53.802
+        24.033,
+        43.658,
+        58.029,
+        67.778,
+        84.051,
+        84.669,
+        74.2,
+        103.647,
+        62.184,
+        53.75
       ],
-      "top1": 3.016
+      "top1": 3.014
     },
     "window": {
       "bins": [
-        9.303,
-        15.011,
-        18.12,
-        21.71,
-        33.665,
-        26.484,
-        37.543,
-        35.105,
-        26.06,
+        9.344,
+        15.004,
+        18.246,
+        21.653,
+        33.618,
+        26.46,
+        37.667,
+        34.956,
+        26.052,
         22
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        139.431,
-        125.12,
-        123.291,
-        112.757,
-        105.979,
-        78.174,
-        76.842,
-        74.785,
-        58.601,
-        45.019
+        140.347,
+        124.816,
+        123.296,
+        113.409,
+        104.564,
+        80.169,
+        76.758,
+        74.99,
+        58.583,
+        45.067
       ],
       "top1": 3
     }
@@ -207,11 +217,11 @@
   "full": {
     "papers": 656,
     "outputBasis": "measured",
-    "citations": 9165,
-    "top10": 55.938,
-    "top10ShareOfDivision": 0.05127,
-    "top1": 3.016,
-    "top1ShareOfDivision": 0.02764,
+    "citations": 9168,
+    "top10": 55.924,
+    "top10ShareOfDivision": 0.05126,
+    "top1": 3.014,
+    "top1ShareOfDivision": 0.02763,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.211,
@@ -227,16 +237,23 @@
       "status": "available",
       "months": 109,
       "citationBuckets": 13
+    },
+    "spread": {
+      "mean": 13.976,
+      "median": 10,
+      "uncited": 12,
+      "i10": 348,
+      "i100": 3
     }
   },
   "window": {
     "papers": 245,
     "outputBasis": "measured",
     "citations": 4615,
-    "top10": 21.075,
-    "top10ShareOfDivision": 0.04363,
+    "top10": 21.05,
+    "top10ShareOfDivision": 0.0436,
     "top1": 1,
-    "top1ShareOfDivision": 0.0207,
+    "top1ShareOfDivision": 0.02071,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.211,
@@ -252,12 +269,19 @@
       "status": "available",
       "months": 47,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 18.837,
+      "median": 14,
+      "uncited": 6,
+      "i10": 163,
+      "i100": 2
     }
   },
   "lifetime": {
-    "papers": 940,
+    "papers": 942,
     "outputBasis": "measured",
-    "citations": 22701,
+    "citations": 22721,
     "top10": 74.6,
     "top10ShareOfDivision": 0.05474,
     "top1": null,
@@ -268,21 +292,28 @@
       "yearsFromFormulation": 6.418,
       "bibcode": "2015JGRE..120..311B",
       "date": "2015-02-00"
+    },
+    "spread": {
+      "mean": 24.12,
+      "median": 10,
+      "uncited": 104,
+      "i10": 492,
+      "i100": 39
     }
   },
   "query": {
     "arms": "((=abs:\"Mars Atmosphere and Volatile Evolution\" OR =abs:\"Mars Atmospheric and Volatile Evolution\" OR (abs:MAVEN AND (abs:solar OR abs:heliosphere)) OR ((abs:MAVEN OR abs:SWEA OR abs:SWIA OR abs:STATIC OR abs:IUVS OR abs:NGIMS OR =abs:\"Solar Wind Electron Analyzer\" OR =abs:\"Solar Wind Ion Analyzer\" OR =abs:\"Suprathermal and Thermal Ion Composition\" OR =abs:\"Imaging Ultraviolet Spectrometer\" OR =abs:\"Imaging Ultraviolet Spectrograph\" OR =abs:\"Langmuir Probe and Waves\" OR =abs:\"Neutral Gas and Ion Mass Spectrometer\") AND (abs:Mars OR abs:martian))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Atmosphere+and+Volatile+Evolution%22+OR+%3Dabs%3A%22Mars+Atmospheric+and+Volatile+Evolution%22+OR+%28abs%3AMAVEN+AND+%28abs%3Asolar+OR+abs%3Aheliosphere%29%29+OR+%28%28abs%3AMAVEN+OR+abs%3ASWEA+OR+abs%3ASWIA+OR+abs%3ASTATIC+OR+abs%3AIUVS+OR+abs%3ANGIMS+OR+%3Dabs%3A%22Solar+Wind+Electron+Analyzer%22+OR+%3Dabs%3A%22Solar+Wind+Ion+Analyzer%22+OR+%3Dabs%3A%22Suprathermal+and+Thermal+Ion+Composition%22+OR+%3Dabs%3A%22Imaging+Ultraviolet+Spectrometer%22+OR+%3Dabs%3A%22Imaging+Ultraviolet+Spectrograph%22+OR+%3Dabs%3A%22Langmuir+Probe+and+Waves%22+OR+%3Dabs%3A%22Neutral+Gas+and+Ion+Mass+Spectrometer%22%29+AND+%28abs%3AMars+OR+abs%3Amartian%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:29:21.121001+00:00",
+    "fetchedAt": "2026-09-30T17:53:35.029040+00:00",
     "reconciliation": {
-      "adsReturned": 947,
+      "adsReturned": 949,
       "curatedOut": 7,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 940
+      "final": 942
     }
   },
   "curation": {
@@ -359,6 +390,8 @@
       "bibcode": "2015SSRv..195....3J",
       "title": "The Mars Atmosphere and Volatile Evolution (MAVEN) Mission",
       "firstAuthor": "Jakosky, B. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 769
     },
@@ -366,6 +399,8 @@
       "bibcode": "2015SSRv..195..257C",
       "title": "The MAVEN Magnetic Field Investigation",
       "firstAuthor": "Connerney, J. E. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 537
     },
@@ -373,6 +408,8 @@
       "bibcode": "2015SSRv..195..125H",
       "title": "The Solar Wind Ion Analyzer for MAVEN",
       "firstAuthor": "Halekas, J. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 437
     },
@@ -380,6 +417,8 @@
       "bibcode": "2016SSRv..200..495M",
       "title": "The MAVEN Solar Wind Electron Analyzer",
       "firstAuthor": "Mitchell, D. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 318
     },
@@ -387,6 +426,8 @@
       "bibcode": "2015SSRv..195..199M",
       "title": "MAVEN SupraThermal and Thermal Ion Compostion (STATIC) Instrument",
       "firstAuthor": "McFadden, J. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 313
     },
@@ -394,6 +435,8 @@
       "bibcode": "2015SSRv..195...49M",
       "title": "The Neutral Gas and Ion Mass Spectrometer on the Mars Atmosphere and Volatile Evolution Mission",
       "firstAuthor": "Mahaffy, Paul R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 292
     },
@@ -401,6 +444,8 @@
       "bibcode": "2018Icar..315..146J",
       "title": "Loss of the Martian atmosphere to space: Present-day loss rates determined from MAVEN observations and integrated loss through time",
       "firstAuthor": "Jakosky, B. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 288
     },
@@ -408,6 +453,8 @@
       "bibcode": "2017JGRA..122..547H",
       "title": "Structure, dynamics, and seasonal variability of the Mars-solar wind interaction: MAVEN Solar Wind Ion Analyzer in-flight performance and science results",
       "firstAuthor": "Halekas, J. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 268
     },
@@ -415,6 +462,8 @@
       "bibcode": "2015SSRv..195..173A",
       "title": "The Langmuir Probe and Waves (LPW) Instrument for MAVEN",
       "firstAuthor": "Andersson, L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 236
     },
@@ -422,6 +471,8 @@
       "bibcode": "2015JGRE..120..311B",
       "title": "Mars Global Ionosphere-Thermosphere Model: Solar cycle, seasonal, and diurnal variations of the Mars upper atmosphere",
       "firstAuthor": "Bougher, S. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 232
     },
@@ -429,6 +480,8 @@
       "bibcode": "2015SSRv..195..293E",
       "title": "The Solar Extreme Ultraviolet Monitor for MAVEN",
       "firstAuthor": "Eparvier, F. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 229
     },
@@ -436,6 +489,8 @@
       "bibcode": "2015GeoRL..42.8942D",
       "title": "Strong plume fluxes at Mars observed by MAVEN: An important planetary ion escape channel",
       "firstAuthor": "Dong, Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 210
     },
@@ -443,6 +498,8 @@
       "bibcode": "2015Sci...350.0210J",
       "title": "MAVEN observations of the response of Mars to an interplanetary coronal mass ejection",
       "firstAuthor": "Jakosky, B. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 208
     },
@@ -450,6 +507,8 @@
       "bibcode": "2017Sci...355.1408J",
       "title": "Mars’ atmospheric history derived from upper-atmosphere measurements of ³⁸Ar/³⁶Ar",
       "firstAuthor": "Jakosky, B. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 199
     },
@@ -457,6 +516,8 @@
       "bibcode": "2015GeoRL..42.8951M",
       "title": "Structure and composition of the neutral upper atmosphere of Mars from the MAVEN NGIMS investigation",
       "firstAuthor": "Mahaffy, P. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 189
     },
@@ -464,6 +525,8 @@
       "bibcode": "2015SSRv..195...75M",
       "title": "The Imaging Ultraviolet Spectrograph (IUVS) for the MAVEN Mission",
       "firstAuthor": "McClintock, William E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 188
     },
@@ -471,13 +534,17 @@
       "bibcode": "2015GeoRL..42.8958B",
       "title": "First measurements of composition and dynamics of the Martian ionosphere by MAVEN's Neutral Gas and Ion Mass Spectrometer",
       "firstAuthor": "Benna, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
-      "citations": 160
+      "citations": 161
     },
     {
       "bibcode": "2017JGRA..122.2748T",
       "title": "The MAVEN EUVM model of solar spectral irradiance variability at Mars: Algorithms and results",
       "firstAuthor": "Thiemann, Edward M. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 154
     },
@@ -485,6 +552,8 @@
       "bibcode": "2017JGRA..122.1831X",
       "title": "Martian low-altitude magnetic topology deduced from MAVEN/SWEA observations",
       "firstAuthor": "Xu, Shaosui",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 145
     },
@@ -492,11 +561,13 @@
       "bibcode": "2015GeoRL..42.9142B",
       "title": "The spatial distribution of planetary ion fluxes near Mars observed by MAVEN",
       "firstAuthor": "Brain, D. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 142
     }
   ],
   "papersFile": {
-    "rows": 940
+    "rows": 942
   }
 }

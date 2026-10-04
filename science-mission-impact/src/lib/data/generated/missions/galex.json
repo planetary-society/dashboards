@@ -21,11 +21,14 @@
   "indices": {
     "h": 139,
     "m": 5.792,
-    "i100": 200
+    "i100": 200,
+    "g": 249,
+    "tori": 211.814,
+    "riq": 606
   },
   "facts": {
     "papers": 1573,
-    "citations": 91651,
+    "citations": 91653,
     "publicationYears": [
       2003,
       2026
@@ -107,14 +110,14 @@
       5904,
       5715,
       7064,
-      7278,
-      6549
+      7279,
+      6550
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 91651,
-      "observed": 91651,
+      "expected": 91653,
+      "observed": 91653,
       "missing": 0
     }
   },
@@ -197,6 +200,13 @@
     "bibcode": "2005ApJ...619L...1M",
     "title": "The Galaxy Evolution Explorer: A Space Ultraviolet Survey Mission",
     "firstAuthor": "Martin, D. Christopher",
+    "authors": [
+      "Martin, D. Christopher",
+      "Fanson, James",
+      "Schiminovich, David",
+      "Morrissey, Patrick"
+    ],
+    "authorCount": 26,
     "year": 2005,
     "citations": 2406
   },
@@ -206,13 +216,13 @@
         67.545,
         66.082,
         84.019,
-        82.557,
-        76.298,
-        63.444,
-        87.544,
-        78.187,
-        86.121,
-        88.202
+        82.568,
+        76.297,
+        63.395,
+        87.584,
+        78.181,
+        86.123,
+        88.207
       ],
       "top1": 9
     },
@@ -233,16 +243,16 @@
     },
     "lifetime": {
       "bins": [
-        155.927,
-        178.427,
-        186.921,
-        151.034,
-        167.768,
-        146.102,
-        136.817,
-        148.927,
-        128.082,
-        172.994
+        155.792,
+        178.499,
+        186.933,
+        150.907,
+        167.826,
+        146.138,
+        136.867,
+        148.843,
+        128.143,
+        173.052
       ],
       "top1": 25
     }
@@ -270,6 +280,13 @@
       "status": "available",
       "months": 142,
       "citationBuckets": 16
+    },
+    "spread": {
+      "mean": 22.464,
+      "median": 13,
+      "uncited": 35,
+      "i10": 482,
+      "i100": 23
     }
   },
   "window": {
@@ -295,14 +312,21 @@
       "status": "available",
       "months": 53,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 31.779,
+      "median": 18,
+      "uncited": 9,
+      "i10": 93,
+      "i100": 11
     }
   },
   "lifetime": {
     "papers": 1573,
     "outputBasis": "measured",
-    "citations": 91651,
-    "top10": 105.658,
-    "top10ShareOfDivision": 0.01907,
+    "citations": 91653,
+    "top10": 105.829,
+    "top10ShareOfDivision": 0.0191,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -311,13 +335,20 @@
       "yearsFromFormulation": 6.396,
       "bibcode": "2004A&A...419..821T",
       "date": "2004-06-00"
+    },
+    "spread": {
+      "mean": 58.266,
+      "median": 21,
+      "uncited": 79,
+      "i10": 1104,
+      "i100": 200
     }
   },
   "query": {
     "arms": "((facility:GALEX OR =abs:\"Galaxy Evolution Explorer\" OR abs:GALEX))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2003-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28facility%3AGALEX+OR+%3Dabs%3A%22Galaxy+Evolution+Explorer%22+OR+abs%3AGALEX%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:35:22.864960+00:00",
+    "fetchedAt": "2026-10-01T19:37:53.808881+00:00",
     "reconciliation": {
       "adsReturned": 1574,
       "curatedOut": 1,
@@ -346,6 +377,8 @@
       "bibcode": "2005ApJ...619L...1M",
       "title": "The Galaxy Evolution Explorer: A Space Ultraviolet Survey Mission",
       "firstAuthor": "Martin, D. Christopher",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 2406
     },
@@ -353,6 +386,8 @@
       "bibcode": "2007ApJ...660L..43N",
       "title": "Star Formation in AEGIS Field Galaxies since z=1.1: The Dominance of Gradually Declining Star Formation, and the Main Sequence of Star-forming Galaxies",
       "firstAuthor": "Noeske, K. G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 1883
     },
@@ -360,6 +395,8 @@
       "bibcode": "2008AJ....136.2782L",
       "title": "The Star Formation Efficiency in Nearby Galaxies: Measuring Where Gas Forms Stars Effectively",
       "firstAuthor": "Leroy, Adam K.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 1829
     },
@@ -367,6 +404,8 @@
       "bibcode": "2008AJ....136.2846B",
       "title": "The Star Formation Law in Nearby Galaxies on Sub-Kpc Scales",
       "firstAuthor": "Bigiel, F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 1718
     },
@@ -374,6 +413,8 @@
       "bibcode": "2007ApJS..173..267S",
       "title": "UV Star Formation Rates in the Local Universe",
       "firstAuthor": "Salim, Samir",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 1626
     },
@@ -381,6 +422,8 @@
       "bibcode": "2007AJ....133..734B",
       "title": "K-Corrections and Filter Transformations in the Ultraviolet, Optical, and Near-Infrared",
       "firstAuthor": "Blanton, Michael R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 1551
     },
@@ -388,6 +431,8 @@
       "bibcode": "2006ApJS..166..470R",
       "title": "Spectral Energy Distributions and Multiwavelength Selection of Type 1 Quasars",
       "firstAuthor": "Richards, Gordon T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 1214
     },
@@ -395,6 +440,8 @@
       "bibcode": "2009ApJ...690.1236I",
       "title": "Cosmos Photometric Redshifts with 30-Bands for 2-deg²",
       "firstAuthor": "Ilbert, O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 1182
     },
@@ -402,6 +449,8 @@
       "bibcode": "2007ApJS..173..682M",
       "title": "The Calibration and Data Products of GALEX",
       "firstAuthor": "Morrissey, Patrick",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 1075
     },
@@ -409,6 +458,8 @@
       "bibcode": "2007ApJS..173..185G",
       "title": "The GALEX Ultraviolet Atlas of Nearby Galaxies",
       "firstAuthor": "Gil de Paz, Armando",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 777
     },
@@ -416,6 +467,8 @@
       "bibcode": "2014MNRAS.440..889S",
       "title": "The green valley is a red herring: Galaxy Zoo reveals two evolutionary pathways towards quenching of star formation in early- and late-type galaxies",
       "firstAuthor": "Schawinski, Kevin",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 701
     },
@@ -423,6 +476,8 @@
       "bibcode": "2018ApJ...859...11S",
       "title": "Dust Attenuation Curves in the Local Universe: Demographics and New Laws for Star-forming Galaxies and High-redshift Analogs",
       "firstAuthor": "Salim, Samir",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 620
     },
@@ -430,6 +485,8 @@
       "bibcode": "2020ApJS..250....8L",
       "title": "The Sloan Digital Sky Survey Quasar Catalog: Sixteenth Data Release",
       "firstAuthor": "Lyke, Brad W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 587
     },
@@ -437,6 +494,8 @@
       "bibcode": "2017ApJS..233...17R",
       "title": "BAT AGN Spectroscopic Survey. V. X-Ray Properties of the Swift/BAT 70-month AGN Catalog",
       "firstAuthor": "Ricci, C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 583
     },
@@ -444,6 +503,8 @@
       "bibcode": "2007ApJ...660L...1D",
       "title": "The All-Wavelength Extended Groth Strip International Survey (AEGIS) Data Sets",
       "firstAuthor": "Davis, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 575
     },
@@ -451,6 +512,8 @@
       "bibcode": "2022ApJS..258...11W",
       "title": "COSMOS2020: A Panchromatic View of the Universe to z∼10 from Two Complementary Catalogs",
       "firstAuthor": "Weaver, J. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 568
     },
@@ -458,6 +521,8 @@
       "bibcode": "2012MNRAS.419.2095M",
       "title": "X-ray emission from star-forming galaxies - I. High-mass X-ray binaries",
       "firstAuthor": "Mineo, S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 565
     },
@@ -465,6 +530,8 @@
       "bibcode": "2009ApJ...706..599L",
       "title": "Comparison of Hα and UV Star Formation Rates in the Local Volume: Systematic Discrepancies for Dwarf Galaxies",
       "firstAuthor": "Lee, Janice C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 553
     },
@@ -472,6 +539,8 @@
       "bibcode": "2009MNRAS.400.2070S",
       "title": "Optical flares from the tidal disruption of stars by massive black holes",
       "firstAuthor": "Strubbe, Linda E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 522
     },
@@ -479,6 +548,8 @@
       "bibcode": "2017ApJS..233...22S",
       "title": "xCOLD GASS: The Complete IRAM 30 m Legacy Survey of Molecular Gas for Galaxy Evolution Studies",
       "firstAuthor": "Saintonge, Amélie",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 521
     }

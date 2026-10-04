@@ -21,7 +21,10 @@
   "indices": {
     "h": 61,
     "m": 6.778,
-    "i100": 23
+    "i100": 23,
+    "g": 98,
+    "tori": 49.483,
+    "riq": 781
   },
   "facts": {
     "papers": 1238,
@@ -162,6 +165,13 @@
     "bibcode": "2019RSEnv.23311325N",
     "title": "The Ice, Cloud, and Land Elevation Satellite - 2 mission: A global geolocated photon product derived from the Advanced Topographic Laser Altimeter System",
     "firstAuthor": "Neumann, Thomas A.",
+    "authors": [
+      "Neumann, Thomas A.",
+      "Martino, Anthony J.",
+      "Markus, Thorsten",
+      "Bae, Sungkoo"
+    ],
+    "authorCount": 21,
     "year": 2019,
     "citations": 452
   },
@@ -170,9 +180,9 @@
       "bins": [
         15.555,
         16.148,
-        17.2,
-        36.064,
-        51.494,
+        17.195,
+        36.052,
+        51.511,
         48.338,
         50.641,
         69.043,
@@ -186,8 +196,8 @@
         16.372,
         18.218,
         24.07,
-        44.428,
-        52.394,
+        44.381,
+        52.442,
         58.507,
         48.372,
         75.877,
@@ -198,16 +208,16 @@
     },
     "lifetime": {
       "bins": [
-        279.55,
-        195.284,
-        169.818,
-        125.956,
-        110.478,
-        101.219,
-        84.033,
-        70.639,
-        51.091,
-        49.933
+        279.352,
+        195.2,
+        169.89,
+        126.078,
+        110.505,
+        101.211,
+        84.068,
+        70.645,
+        51.107,
+        49.944
       ],
       "top1": 5
     }
@@ -235,6 +245,13 @@
       "status": "available",
       "months": 63,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 20.045,
+      "median": 13,
+      "uncited": 13,
+      "i10": 316,
+      "i100": 10
     }
   },
   "window": {
@@ -260,6 +277,13 @@
       "status": "available",
       "months": 63,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 20.045,
+      "median": 13,
+      "uncited": 13,
+      "i10": 316,
+      "i100": 10
     }
   },
   "lifetime": {
@@ -276,13 +300,20 @@
       "yearsFromFormulation": 8.972,
       "bibcode": "2018RemS...10.1962Z",
       "date": "2018-12-00"
+    },
+    "spread": {
+      "mean": 14.986,
+      "median": 5,
+      "uncited": 272,
+      "i10": 439,
+      "i100": 23
     }
   },
   "query": {
     "arms": "((=abs:\"ICESat-2\" OR abs:\"ICESat 2\" OR abs:\"Ice, Cloud, and Land Elevation Satellite 2\" OR =abs:\"Advanced Topographic Laser Altimeter System\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2018-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22ICESat-2%22+OR+abs%3A%22ICESat+2%22+OR+abs%3A%22Ice%2C+Cloud%2C+and+Land+Elevation+Satellite+2%22+OR+%3Dabs%3A%22Advanced+Topographic+Laser+Altimeter+System%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:26:04.904350+00:00",
+    "fetchedAt": "2026-09-30T18:04:21.139823+00:00",
     "reconciliation": {
       "adsReturned": 1243,
       "curatedOut": 2,
@@ -319,6 +350,8 @@
       "bibcode": "2019RSEnv.23311325N",
       "title": "The Ice, Cloud, and Land Elevation Satellite - 2 mission: A global geolocated photon product derived from the Advanced Topographic Laser Altimeter System",
       "firstAuthor": "Neumann, Thomas A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 452
     },
@@ -326,6 +359,8 @@
       "bibcode": "2020Sci...368.1239S",
       "title": "Pervasive ice sheet mass loss reflects competing ocean and atmosphere processes",
       "firstAuthor": "Smith, Ben",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 404
     },
@@ -333,6 +368,8 @@
       "bibcode": "2019RSEnv.221..247N",
       "title": "The ATL08 land and vegetation product for the ICESat-2 Mission",
       "firstAuthor": "Neuenschwander, Amy",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 388
     },
@@ -340,6 +377,8 @@
       "bibcode": "2021Natur.591...78C",
       "title": "Human alteration of global surface water storage variability",
       "firstAuthor": "Cooley, Sarah W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 373
     },
@@ -347,6 +386,8 @@
       "bibcode": "2019RemS...11.1634P",
       "title": "Validation of ICESat-2 ATLAS Bathymetry and Analysis of ATLAS's Bathymetric Mapping Performance",
       "firstAuthor": "Parrish, Christopher E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 320
     },
@@ -354,6 +395,8 @@
       "bibcode": "2020RSEnv.25012047M",
       "title": "Satellite-derived bathymetry using the ICESat-2 lidar and Sentinel-2 imagery datasets",
       "firstAuthor": "Ma, Yue",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 267
     },
@@ -361,6 +404,8 @@
       "bibcode": "2021RSEnv.26412571L",
       "title": "Performance evaluation of GEDI and ICESat-2 laser altimeter data for terrain and canopy height retrievals",
       "firstAuthor": "Liu, Aobo",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 261
     },
@@ -368,6 +413,8 @@
       "bibcode": "2020RSEnv.24211779D",
       "title": "Biomass estimation from simulated GEDI, ICESat-2 and NISAR across environmental gradients in Sonoma County, California",
       "firstAuthor": "Duncanson, Laura",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 187
     },
@@ -375,6 +422,8 @@
       "bibcode": "2020IJAEO..9202163L",
       "title": "High-resolution mapping of forest canopy height using machine learning by coupling ICESat-2 LiDAR with Sentinel-1, Sentinel-2 and Landsat-8 data",
       "firstAuthor": "Li, Wang",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 180
     },
@@ -382,6 +431,8 @@
       "bibcode": "2019GeoRL..4613107Z",
       "title": "Tibetan Plateau's Lake Level and Volume Changes From NASA's ICESat/ICESat-2 and Landsat Missions",
       "firstAuthor": "Zhang, Guoqing",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 176
     },
@@ -389,6 +440,8 @@
       "bibcode": "2019RemS...11.1721N",
       "title": "Canopy and Terrain Height Retrievals with ICESat-2: A First Look",
       "firstAuthor": "Neuenschwander, Amy L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 174
     },
@@ -396,6 +449,8 @@
       "bibcode": "2022RSEnv.26912844L",
       "title": "Neural network guided interpolation for mapping canopy height of China's forests by integrating GEDI and ICESat-2 data",
       "firstAuthor": "Liu, Xiaoqiang",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 165
     },
@@ -403,6 +458,8 @@
       "bibcode": "2020RSEnv.25112110N",
       "title": "Validation of ICESat-2 terrain and canopy heights in boreal forests",
       "firstAuthor": "Neuenschwander, Amy",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 164
     },
@@ -410,6 +467,8 @@
       "bibcode": "2021RSEnv.25312234S",
       "title": "Fusing simulated GEDI, ICESat-2 and NISAR data for regional aboveground biomass mapping",
       "firstAuthor": "Silva, Carlos Alberto",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 163
     },
@@ -417,6 +476,8 @@
       "bibcode": "2019RSEnv.23311352S",
       "title": "Land ice height-retrieval algorithm for NASA's ICESat-2 photon-counting laser altimeter",
       "firstAuthor": "Smith, Benjamin",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 152
     },
@@ -424,6 +485,8 @@
       "bibcode": "2019GeoRL..4613072B",
       "title": "Assessment of ICESat-2 Ice Sheet Surface Heights, Based on Comparisons Over the Interior of the Antarctic Ice Sheet",
       "firstAuthor": "Brunt, K. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 140
     },
@@ -431,6 +494,8 @@
       "bibcode": "2021GeoRL..4893799N",
       "title": "Mapping Forest Height and Aboveground Biomass by Integrating ICESat-2, Sentinel-1 and Sentinel-2 Data Using Random Forest Algorithm in Northwest Himalayan Foothills of India",
       "firstAuthor": "Nandy, Subrata",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 134
     },
@@ -438,6 +503,8 @@
       "bibcode": "2019RSEnv.224....1N",
       "title": "Estimating aboveground biomass and forest canopy cover with simulated ICESat-2 data",
       "firstAuthor": "Narine, Lana L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 127
     },
@@ -445,6 +512,8 @@
       "bibcode": "2021JPRS..178....1H",
       "title": "A semi-empirical scheme for bathymetric mapping in shallow water by ICESat-2 and Sentinel-2: A case study in the South China Sea",
       "firstAuthor": "Hsu, Hsiao-Jou",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 124
     },
@@ -452,6 +521,8 @@
       "bibcode": "2022RSEnv.26812780H",
       "title": "Land cover classification in an era of big and open data: Optimizing localized implementation and training data selection to improve mapping outcomes",
       "firstAuthor": "Hermosilla, Txomin",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 120
     }

@@ -188,6 +188,8 @@ export function buildKinds({ kindsFile, missions, examples, smallMax, warnings }
 		};
 	};
 	const overall = tally(all);
+	// The spread of in-window citations over those mission papers (a shared paper is one row per mission).
+	const paperCitations = built.flatMap((b) => b.list.map((r) => r.citations));
 	// The smallest corpora, where a single review can dominate the citations.
 	const smallList = all.filter((m) => m.papers > 0 && m.papers <= smallMax);
 	const smallTally = tally(smallList);
@@ -201,6 +203,7 @@ export function buildKinds({ kindsFile, missions, examples, smallMax, warnings }
 		withPapers: all.filter((m) => m.papers > 0).length,
 		withoutPapers: all.filter((m) => m.papers === 0).length,
 		total: overall.total,
+		citationRange: paperCitations.length ? { min: Math.min(...paperCitations), max: Math.max(...paperCitations) } : null,
 		nonScience: overall.nonScience,
 		small: {
 			maxPapers: smallMax,

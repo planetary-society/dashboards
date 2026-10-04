@@ -21,7 +21,10 @@
   "indices": {
     "h": 3,
     "m": 0.429,
-    "i100": 0
+    "i100": 0,
+    "g": 3,
+    "tori": 0.056,
+    "riq": 118
   },
   "facts": {
     "papers": 3,
@@ -118,6 +121,13 @@
     "bibcode": "2020AJ....160...23K",
     "title": "Demonstrating High-precision Photometry with a CubeSat: ASTERIA Observations of 55 Cancri e",
     "firstAuthor": "Knapp, Mary",
+    "authors": [
+      "Knapp, Mary",
+      "Seager, Sara",
+      "Demory, Brice-Olivier",
+      "Krishnamurthy, Akshata"
+    ],
+    "authorCount": 22,
     "year": 2020,
     "citations": 30
   },
@@ -129,8 +139,8 @@
         1,
         0,
         0,
-        0.063,
-        0.937,
+        0.06,
+        0.94,
         0,
         0,
         0
@@ -191,6 +201,13 @@
       "status": "available",
       "months": 51,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 8,
+      "median": 5,
+      "uncited": 0,
+      "i10": 1,
+      "i100": 0
     }
   },
   "window": {
@@ -216,6 +233,13 @@
       "status": "available",
       "months": 27,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": null,
+      "median": null,
+      "uncited": 0,
+      "i10": 0,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -232,13 +256,20 @@
       "yearsFromFormulation": null,
       "bibcode": null,
       "date": null
+    },
+    "spread": {
+      "mean": 14,
+      "median": 9,
+      "uncited": 0,
+      "i10": 1,
+      "i100": 0
     }
   },
   "query": {
     "arms": "((=abs:\"Arcsecond Space Telescope Enabling Research in Astrophysics\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2017-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Arcsecond+Space+Telescope+Enabling+Research+in+Astrophysics%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2017-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-28T13:39:40.556708+00:00",
+    "fetchedAt": "2026-09-30T18:22:27.904901+00:00",
     "reconciliation": {
       "adsReturned": 3,
       "curatedOut": 0,
@@ -291,6 +322,8 @@
       "bibcode": "2020AJ....160...23K",
       "title": "Demonstrating High-precision Photometry with a CubeSat: ASTERIA Observations of 55 Cancri e",
       "firstAuthor": "Knapp, Mary",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 30
     },
@@ -298,6 +331,8 @@
       "bibcode": "2021AJ....161..117S",
       "title": "HD 219134 Revisited: Planet d Transit Upper Limit and Planet f Transit Nondetection with ASTERIA and TESS",
       "firstAuthor": "Seager, Sara",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 9
     },
@@ -305,6 +340,8 @@
       "bibcode": "2021AJ....161..275K",
       "title": "Transit Search for Exoplanets around Alpha Centauri A and B with ASTERIA",
       "firstAuthor": "Krishnamurthy, Akshata",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 3
     }

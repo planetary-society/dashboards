@@ -21,11 +21,14 @@
   "indices": {
     "h": 79,
     "m": 2.926,
-    "i100": 44
+    "i100": 44,
+    "g": 117,
+    "tori": 243.92,
+    "riq": 578
   },
   "facts": {
     "papers": 827,
-    "citations": 26695,
+    "citations": 26694,
     "publicationYears": [
       2000,
       2026
@@ -102,7 +105,7 @@
       710,
       725,
       833,
-      946,
+      945,
       1194,
       1210,
       1445,
@@ -122,8 +125,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 26695,
-      "observed": 26695,
+      "expected": 26694,
+      "observed": 26694,
       "missing": 0
     }
   },
@@ -212,6 +215,13 @@
     "bibcode": "2004Sci...303..978C",
     "title": "Satellite Measurements Reveal Persistent Small-Scale Features in Ocean Winds",
     "firstAuthor": "Chelton, Dudley B.",
+    "authors": [
+      "Chelton, Dudley B.",
+      "Schlax, Michael G.",
+      "Freilich, Michael H.",
+      "Milliff, Ralph F."
+    ],
+    "authorCount": 4,
     "year": 2004,
     "citations": 739
   },
@@ -220,9 +230,9 @@
       "bins": [
         110.588,
         122.122,
-        116.196,
-        93.526,
-        80.021,
+        116.169,
+        93.519,
+        80.055,
         80.665,
         66.862,
         49.91,
@@ -236,8 +246,8 @@
         9.529,
         18.458,
         16.556,
-        10.252,
-        13.996,
+        10.245,
+        14.004,
         8.041,
         4.167,
         5.603,
@@ -248,16 +258,16 @@
     },
     "lifetime": {
       "bins": [
-        26.148,
-        68.932,
-        70.623,
-        86.148,
-        85.109,
-        79.038,
-        104.154,
-        114.825,
-        102.057,
-        89.966
+        26.092,
+        68.883,
+        70.63,
+        86.185,
+        85.129,
+        79.021,
+        104.187,
+        114.823,
+        102.079,
+        89.972
       ],
       "top1": 6
     }
@@ -285,6 +295,13 @@
       "status": "available",
       "months": 255,
       "citationBuckets": 25
+    },
+    "spread": {
+      "mean": 6.508,
+      "median": 4,
+      "uncited": 91,
+      "i10": 171,
+      "i100": 0
     }
   },
   "window": {
@@ -310,12 +327,19 @@
       "status": "available",
       "months": 59,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 7.457,
+      "median": 4,
+      "uncited": 7,
+      "i10": 18,
+      "i100": 0
     }
   },
   "lifetime": {
     "papers": 827,
     "outputBasis": "measured",
-    "citations": 26695,
+    "citations": 26694,
     "top10": 27.833,
     "top10ShareOfDivision": 0.00673,
     "top1": null,
@@ -326,13 +350,20 @@
       "yearsFromFormulation": 2.7,
       "bibcode": "2000GeoRL..27.2545L",
       "date": "2000-08-00"
+    },
+    "spread": {
+      "mean": 32.278,
+      "median": 18,
+      "uncited": 24,
+      "i10": 555,
+      "i100": 44
     }
   },
   "query": {
     "arms": "((abs:\"QuikSCAT\" OR abs:QSCAT OR (=abs:\"SeaWinds\" AND NOT abs:(\"ADEOS\" OR \"Midori\" OR \"Advanced Earth Observing Satellite\" OR \"Blended SeaWinds\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1999-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22QuikSCAT%22+OR+abs%3AQSCAT+OR+%28%3Dabs%3A%22SeaWinds%22+AND+NOT+abs%3A%28%22ADEOS%22+OR+%22Midori%22+OR+%22Advanced+Earth+Observing+Satellite%22+OR+%22Blended+SeaWinds%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:18:52.895019+00:00",
+    "fetchedAt": "2026-09-30T17:57:22.376954+00:00",
     "reconciliation": {
       "adsReturned": 836,
       "curatedOut": 10,
@@ -442,6 +473,8 @@
       "bibcode": "2004Sci...303..978C",
       "title": "Satellite Measurements Reveal Persistent Small-Scale Features in Ocean Winds",
       "firstAuthor": "Chelton, Dudley B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 739
     },
@@ -449,6 +482,8 @@
       "bibcode": "2001JCli...14.1479C",
       "title": "Observations of Coupling between Surface Wind Stress and Sea Surface Temperature in the Eastern Tropical Pacific.",
       "firstAuthor": "Chelton, Dudley B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 426
     },
@@ -456,6 +491,8 @@
       "bibcode": "2008JPO....38.2379R",
       "title": "A Global Climatology of Surface Wind and Wind Stress Fields from Eight Years of QuikSCAT Scatterometer Data",
       "firstAuthor": "Risien, Craig M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 421
     },
@@ -463,6 +500,8 @@
       "bibcode": "2005JCli...18..287C",
       "title": "Annual Cycle of Southeast Asia -- Maritime Continent Rainfall and the Asymmetric Monsoon Transition.",
       "firstAuthor": "Chang, C.-P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 356
     },
@@ -470,6 +509,8 @@
       "bibcode": "2004Sci...304.1144M",
       "title": "Wind as a Long-Distance Dispersal Vehicle in the Southern Hemisphere",
       "firstAuthor": "Muñoz, Jesús",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 348
     },
@@ -477,6 +518,8 @@
       "bibcode": "2007GeoRL..3419504N",
       "title": "Rapid reduction of Arctic perennial sea ice",
       "firstAuthor": "Nghiem, S. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 288
     },
@@ -484,6 +527,8 @@
       "bibcode": "2005ITGRS..43.1229G",
       "title": "Detection and Processing of Bistatically Reflected GPS Signals From Low Earth Orbit for the Purpose of Ocean Remote Sensing",
       "firstAuthor": "Gleason, Scott",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 251
     },
@@ -491,6 +536,8 @@
       "bibcode": "2013RSPSB.28030171L",
       "title": "Forest productivity and water stress in Amazonia: observations from GOSAT chlorophyll fluorescence",
       "firstAuthor": "Lee, Jung-Eun",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 246
     },
@@ -498,6 +545,8 @@
       "bibcode": "2002JAtOT..19.2049E",
       "title": "Evaluation of Wind Vectors Observed by QuikSCAT/SeaWinds Using Ocean Buoy Data",
       "firstAuthor": "Ebuchi, Naoto",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 244
     },
@@ -505,6 +554,8 @@
       "bibcode": "2001ITGRS..39..291E",
       "title": "Image Reconstruction and Enhanced Resolution Imaging from Irregular Samples",
       "firstAuthor": "Early",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 206
     },
@@ -512,6 +563,8 @@
       "bibcode": "2003JCli...16.2340O",
       "title": "Observations of SST-Induced Perturbations of the Wind Stress Field over the Southern Ocean on Seasonal Timescales.",
       "firstAuthor": "O'Neill, Larry W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 196
     },
@@ -519,6 +572,8 @@
       "bibcode": "2009CSR....29..467J",
       "title": "Numerical study on the summer upwelling system in the northern continental shelf of the South China Sea",
       "firstAuthor": "Jing, Zhi-you",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 195
     },
@@ -526,6 +581,8 @@
       "bibcode": "2005JCli...18.2706O",
       "title": "High-Resolution Satellite Measurements of the Atmospheric Boundary Layer Response to SST Variations along the Agulhas Return Current.",
       "firstAuthor": "O'Neill, Larry W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 193
     },
@@ -533,6 +590,8 @@
       "bibcode": "2010GeoRL..3718816C",
       "title": "A QuikSCAT climatology of tropical cyclone size",
       "firstAuthor": "Chavas, D. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 193
     },
@@ -540,6 +599,8 @@
       "bibcode": "2017RSEnv.199..333G",
       "title": "The shared and unique values of optical, fluorescence, thermal and microwave satellite data for estimating large-scale crop yields",
       "firstAuthor": "Guan, Kaiyu",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 192
     },
@@ -547,6 +608,8 @@
       "bibcode": "2008RSEnv.112.2000S",
       "title": "Modeling distribution of Amazonian tree species and diversity using remote sensing measurements",
       "firstAuthor": "Saatchi, Sassan",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 170
     },
@@ -554,6 +617,8 @@
       "bibcode": "2005JCli...18.3713M",
       "title": "Tip Jets and Barrier Winds: A QuikSCAT Climatology of High Wind Speed Events around Greenland.",
       "firstAuthor": "Moore, G. W. K.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 165
     },
@@ -561,6 +626,8 @@
       "bibcode": "2000GeoRL..27.2545L",
       "title": "Atmospheric manifestation of tropical instability wave observed by QuikSCAT and tropical rain measuring mission",
       "firstAuthor": "Liu, Timothy W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 152
     },
@@ -568,6 +635,8 @@
       "bibcode": "2006GeoRL..33.3602C",
       "title": "Upwelling around Cabo Frio, Brazil: The importance of wind stress curl",
       "firstAuthor": "Castelao, Renato M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 152
     },
@@ -575,6 +644,8 @@
       "bibcode": "2008JGRC..113.4035H",
       "title": "Annual cycle of the South Indian Ocean (Seychelles-Chagos) thermocline ridge in a regional ocean model",
       "firstAuthor": "Hermes, J. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 150
     }

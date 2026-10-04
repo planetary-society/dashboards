@@ -21,7 +21,10 @@
   "indices": {
     "h": 62,
     "m": 3.444,
-    "i100": 33
+    "i100": 33,
+    "g": 99,
+    "tori": 28.315,
+    "riq": 295
   },
   "facts": {
     "papers": 370,
@@ -161,52 +164,59 @@
     "bibcode": "2009Sci...326..959M",
     "title": "Global Observations of the Interstellar Interaction from the Interstellar Boundary Explorer (IBEX)",
     "firstAuthor": "McComas, D. J.",
+    "authors": [
+      "McComas, D. J.",
+      "Allegrini, F.",
+      "Bochsler, P.",
+      "Bzowski, M."
+    ],
+    "authorCount": 36,
     "year": 2009,
     "citations": 503
   },
   "ranks": {
     "full": {
       "bins": [
-        12.592,
-        15.705,
-        18.362,
-        18.935,
-        32.569,
-        30.023,
-        37.22,
-        56.646,
-        41.189,
-        66.76
+        12.63,
+        15.728,
+        18.391,
+        18.954,
+        32.6,
+        30.09,
+        37.209,
+        56.736,
+        41.154,
+        66.508
       ],
-      "top1": 8.813
+      "top1": 8.688
     },
     "window": {
       "bins": [
-        2.527,
+        2.534,
         4.534,
-        2.722,
-        3.234,
-        4.492,
-        3.992,
+        2.726,
+        3.255,
+        4.474,
+        3.958,
         7.854,
-        3.689,
-        10.28,
-        14.676
+        3.686,
+        10.297,
+        14.681
       ],
-      "top1": 2.095
+      "top1": 2.185
     },
     "lifetime": {
       "bins": [
-        20.239,
-        22.116,
-        31.143,
-        27.348,
-        32.9,
-        35.293,
-        45.018,
-        60.689,
-        46.103,
-        49.15
+        20.172,
+        22.033,
+        31.082,
+        27.478,
+        32.676,
+        35.384,
+        44.906,
+        60.811,
+        46.196,
+        49.262
       ],
       "top1": 2
     }
@@ -215,10 +225,10 @@
     "papers": 330,
     "outputBasis": "measured",
     "citations": 5742,
-    "top10": 58.765,
-    "top10ShareOfDivision": 0.04074,
-    "top1": 8.813,
-    "top1ShareOfDivision": 0.06109,
+    "top10": 58.507,
+    "top10ShareOfDivision": 0.04042,
+    "top1": 8.688,
+    "top1ShareOfDivision": 0.06002,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.496,
@@ -234,6 +244,13 @@
       "status": "available",
       "months": 178,
       "citationBuckets": 18
+    },
+    "spread": {
+      "mean": 17.4,
+      "median": 13,
+      "uncited": 8,
+      "i10": 209,
+      "i100": 1
     }
   },
   "window": {
@@ -241,9 +258,9 @@
     "outputBasis": "measured",
     "citations": 1396,
     "top10": 11,
-    "top10ShareOfDivision": 0.02489,
-    "top1": 2.095,
-    "top1ShareOfDivision": 0.04741,
+    "top10ShareOfDivision": 0.02479,
+    "top1": 2.185,
+    "top1ShareOfDivision": 0.04924,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.496,
@@ -259,14 +276,21 @@
       "status": "available",
       "months": 37,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 24.069,
+      "median": 16.5,
+      "uncited": 1,
+      "i10": 41,
+      "i100": 0
     }
   },
   "lifetime": {
     "papers": 370,
     "outputBasis": "measured",
     "citations": 14358,
-    "top10": 51.225,
-    "top10ShareOfDivision": 0.03266,
+    "top10": 51.059,
+    "top10ShareOfDivision": 0.03246,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -275,13 +299,20 @@
       "yearsFromFormulation": 4.509,
       "bibcode": "2009SSRv..146...11M",
       "date": "2009-08-00"
+    },
+    "spread": {
+      "mean": 38.805,
+      "median": 24,
+      "uncited": 15,
+      "i10": 270,
+      "i100": 33
     }
   },
   "query": {
     "arms": "(((abs:\"IBEX-Hi\" OR abs:\"IBEX-Lo\" OR abs:\"Interstellar Boundary Explorer\" OR (abs:IBEX AND (abs:\"energetic neutral atom\" OR abs:\"electrostatic analyzer\" OR abs:(ENA OR ENAs OR heliosphere OR heliospheric OR heliosheath OR heliopause OR interstellar OR ribbon OR \"pickup ion\" OR \"pick-up ion\" OR \"solar wind\" OR magnetosphere OR magnetospheric OR \"bow shock\" OR lunar OR Moon))))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2009-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22IBEX-Hi%22+OR+abs%3A%22IBEX-Lo%22+OR+abs%3A%22Interstellar+Boundary+Explorer%22+OR+%28abs%3AIBEX+AND+%28abs%3A%22energetic+neutral+atom%22+OR+abs%3A%22electrostatic+analyzer%22+OR+abs%3A%28ENA+OR+ENAs+OR+heliosphere+OR+heliospheric+OR+heliosheath+OR+heliopause+OR+interstellar+OR+ribbon+OR+%22pickup+ion%22+OR+%22pick-up+ion%22+OR+%22solar+wind%22+OR+magnetosphere+OR+magnetospheric+OR+%22bow+shock%22+OR+lunar+OR+Moon%29%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:30:36.227047+00:00",
+    "fetchedAt": "2026-09-30T18:08:48.297761+00:00",
     "reconciliation": {
       "adsReturned": 377,
       "curatedOut": 8,
@@ -423,6 +454,8 @@
       "bibcode": "2009Sci...326..959M",
       "title": "Global Observations of the Interstellar Interaction from the Interstellar Boundary Explorer (IBEX)",
       "firstAuthor": "McComas, D. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 503
     },
@@ -430,6 +463,8 @@
       "bibcode": "2009SSRv..146...11M",
       "title": "IBEX—Interstellar Boundary Explorer",
       "firstAuthor": "McComas, D. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 371
     },
@@ -437,6 +472,8 @@
       "bibcode": "2010ApJ...708L.126H",
       "title": "Pick-Up Ions in the Outer Heliosheath: A Possible Mechanism for the Interstellar Boundary EXplorer Ribbon",
       "firstAuthor": "Heerikhuisen, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 248
     },
@@ -444,6 +481,8 @@
       "bibcode": "2012Sci...336.1291M",
       "title": "The Heliosphere’s Interstellar Interaction: No Bow Shock",
       "firstAuthor": "McComas, D. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 248
     },
@@ -451,6 +490,8 @@
       "bibcode": "2009Sci...326..966S",
       "title": "Comparison of Interstellar Boundary Explorer Observations with 3D Global Heliospheric Models",
       "firstAuthor": "Schwadron, N. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 245
     },
@@ -458,6 +499,8 @@
       "bibcode": "2009SSRv..146...75F",
       "title": "The Interstellar Boundary Explorer High Energy (IBEX-Hi) Neutral Atom Imager",
       "firstAuthor": "Funsten, H. O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 220
     },
@@ -465,6 +508,8 @@
       "bibcode": "2009Sci...326..964F",
       "title": "Structures and Spectral Variations of the Outer Heliosphere in IBEX Energetic Neutral Atom Maps",
       "firstAuthor": "Funsten, H. O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 215
     },
@@ -472,6 +517,8 @@
       "bibcode": "2009SSRv..146..117F",
       "title": "The IBEX-Lo Sensor",
       "firstAuthor": "Fuselier, S. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 202
     },
@@ -479,6 +526,8 @@
       "bibcode": "2016ApJ...818L..18Z",
       "title": "Local Interstellar Magnetic Field Determined from the Interstellar Boundary Explorer Ribbon",
       "firstAuthor": "Zirnstein, E. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 195
     },
@@ -486,6 +535,8 @@
       "bibcode": "2010ApJ...708.1092Z",
       "title": "Microstructure of the Heliospheric Termination Shock: Implications for Energetic Neutral Atom Observations",
       "firstAuthor": "Zank, G. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 185
     },
@@ -493,6 +544,8 @@
       "bibcode": "2009Sci...326..962F",
       "title": "Width and Variation of the ENA Flux Ribbon Observed by the Interstellar Boundary Explorer",
       "firstAuthor": "Fuselier, S. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 175
     },
@@ -500,6 +553,8 @@
       "bibcode": "2011ApJ...731...56S",
       "title": "Separation of the Interstellar Boundary Explorer Ribbon from Globally Distributed Energetic Neutral Atom Flux",
       "firstAuthor": "Schwadron, N. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 175
     },
@@ -507,6 +562,8 @@
       "bibcode": "2012ApJS..198...11M",
       "title": "Interstellar Gas Flow Parameters Derived from Interstellar Boundary Explorer-Lo Observations in 2009 and 2010: Analytical Analysis",
       "firstAuthor": "Möbius, E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 172
     },
@@ -514,6 +571,8 @@
       "bibcode": "2013ApJ...763...20Z",
       "title": "Heliospheric Structure: The Bow Wave and the Hydrogen Wall",
       "firstAuthor": "Zank, G. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 168
     },
@@ -521,6 +580,8 @@
       "bibcode": "2012ApJS..198...12B",
       "title": "Neutral Interstellar Helium Parameters Based on IBEX-Lo Observations and Test Particle Calculations",
       "firstAuthor": "Bzowski, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 159
     },
@@ -528,6 +589,8 @@
       "bibcode": "2015ApJS..220...22M",
       "title": "Local Interstellar Medium: Six Years of Direct Sampling by IBEX",
       "firstAuthor": "McComas, D. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 157
     },
@@ -535,6 +598,8 @@
       "bibcode": "2015ApJS..220...32I",
       "title": "Three-dimensional Kinetic-MHD Model of the Global Heliosphere with the Heliopause-surface Fitting",
       "firstAuthor": "Izmodenov, V. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 152
     },
@@ -542,6 +607,8 @@
       "bibcode": "2015ARA&A..53..449Z",
       "title": "Faltering Steps Into the Galaxy: The Boundary Regions of the Heliosphere",
       "firstAuthor": "Zank, G. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 141
     },
@@ -549,6 +616,8 @@
       "bibcode": "2010ApJ...716L..99C",
       "title": "Scatter-free Pickup Ions beyond the Heliopause as a Model for the Interstellar Boundary Explorer Ribbon",
       "firstAuthor": "Chalov, S. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 137
     },
@@ -556,6 +625,8 @@
       "bibcode": "2009Sci...326..969M",
       "title": "Direct Observations of Interstellar H, He, and O by the Interstellar Boundary Explorer",
       "firstAuthor": "Möbius, E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 135
     }

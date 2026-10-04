@@ -21,7 +21,10 @@
   "indices": {
     "h": 39,
     "m": 1.3,
-    "i100": 12
+    "i100": 12,
+    "g": 68,
+    "tori": 34.401,
+    "riq": 225
   },
   "facts": {
     "papers": 141,
@@ -209,6 +212,13 @@
     "bibcode": "2002JAtS...59..398T",
     "title": "A Long-Term Record of Aerosol Optical Depth from TOMS Observations and Comparison to AERONET Measurements.",
     "firstAuthor": "Torres, O.",
+    "authors": [
+      "Torres, O.",
+      "Bhartia, P. K.",
+      "Herman, J. R.",
+      "Sinyuk, A."
+    ],
+    "authorCount": 6,
     "year": 2002,
     "citations": 415
   },
@@ -217,9 +227,9 @@
       "bins": [
         17.703,
         12.441,
-        14.927,
-        7.924,
-        4.886,
+        14.923,
+        7.925,
+        4.889,
         7.659,
         4.84,
         3.62,
@@ -245,15 +255,15 @@
     },
     "lifetime": {
       "bins": [
-        6.325,
-        12.378,
-        10.793,
-        17.26,
-        15.597,
-        10.953,
-        15.286,
-        15.793,
-        13.614,
+        6.317,
+        12.368,
+        10.805,
+        17.242,
+        15.619,
+        10.947,
+        15.291,
+        15.78,
+        13.63,
         23
       ],
       "top1": 1
@@ -282,6 +292,13 @@
       "status": "available",
       "months": 137,
       "citationBuckets": 15
+    },
+    "spread": {
+      "mean": 8.112,
+      "median": 3,
+      "uncited": 16,
+      "i10": 23,
+      "i100": 0
     }
   },
   "window": {
@@ -307,6 +324,13 @@
       "status": "available",
       "months": 48,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 7.2,
+      "median": 3,
+      "uncited": 3,
+      "i10": 5,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -323,13 +347,20 @@
       "yearsFromFormulation": 9.665,
       "bibcode": "1998JGR...10322115Z",
       "date": "1998-09-00"
+    },
+    "spread": {
+      "mean": 36.652,
+      "median": 16,
+      "uncited": 6,
+      "i10": 86,
+      "i100": 12
     }
   },
   "query": {
     "arms": "(((=abs:\"Earth Probe\" AND (abs:TOMS OR =abs:\"Total Ozone Mapping Spectrometer\")) OR ((abs:\"TOMS-EP\" OR abs:\"EP-TOMS\" OR abs:EPTOMS) AND abs:(ozone OR aerosol OR ultraviolet OR UV OR SO2 OR volcanic OR satellite))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1996-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Earth+Probe%22+AND+%28abs%3ATOMS+OR+%3Dabs%3A%22Total+Ozone+Mapping+Spectrometer%22%29%29+OR+%28%28abs%3A%22TOMS-EP%22+OR+abs%3A%22EP-TOMS%22+OR+abs%3AEPTOMS%29+AND+abs%3A%28ozone+OR+aerosol+OR+ultraviolet+OR+UV+OR+SO2+OR+volcanic+OR+satellite%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:17:58.202929+00:00",
+    "fetchedAt": "2026-09-30T17:56:19.561207+00:00",
     "reconciliation": {
       "adsReturned": 141,
       "curatedOut": 0,
@@ -349,6 +380,8 @@
       "bibcode": "2002JAtS...59..398T",
       "title": "A Long-Term Record of Aerosol Optical Depth from TOMS Observations and Comparison to AERONET Measurements.",
       "firstAuthor": "Torres, O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 415
     },
@@ -356,6 +389,8 @@
       "bibcode": "2003JGRD..108.8238T",
       "title": "Southern Hemisphere Additional Ozonesondes (SHADOZ) 1998-2000 tropical ozone climatology 1. Comparison with Total Ozone Mapping Spectrometer (TOMS) and ground-based measurements",
       "firstAuthor": "Thompson, Anne M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 282
     },
@@ -363,6 +398,8 @@
       "bibcode": "2004ACP.....4.1311D",
       "title": "Around the world in 17 days - hemispheric-scale transport of forest fire smoke from Russia in May 2003",
       "firstAuthor": "Damoah, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 189
     },
@@ -370,6 +407,8 @@
       "bibcode": "2001Sci...291.2128T",
       "title": "Tropical Tropospheric Ozone and Biomass Burning",
       "firstAuthor": "Thompson, Anne M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 172
     },
@@ -377,6 +416,8 @@
       "bibcode": "2019ACP....19.3257Z",
       "title": "Trends in global tropospheric ozone inferred from a composite record of TOMS/OMI/MLS/OMPS satellite measurements and the MERRA-2 GMI simulation",
       "firstAuthor": "Ziemke, Jerry R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 157
     },
@@ -384,6 +425,8 @@
       "bibcode": "2005JGRD..11020307L",
       "title": "Ozone profile and tropospheric ozone retrievals from the Global Ozone Monitoring Experiment: Algorithm description and validation",
       "firstAuthor": "Liu, X.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 143
     },
@@ -391,6 +434,8 @@
       "bibcode": "1998GeoRL..25.3867C",
       "title": "Effects of 1997-1998 El Niño on tropospheric ozone and water vapor",
       "firstAuthor": "Chandra, S.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 138
     },
@@ -398,6 +443,8 @@
       "bibcode": "2005ACP.....5.2603B",
       "title": "Indicators of Antarctic ozone depletion",
       "firstAuthor": "Bodeker, G. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 118
     },
@@ -405,6 +452,8 @@
       "bibcode": "1998JGR...10322115Z",
       "title": "Two new methods for deriving tropospheric column ozone from TOMS measurements: Assimilated UARS MLS/HALOE and convective-cloud differential techniques",
       "firstAuthor": "Ziemke, J. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 116
     },
@@ -412,6 +461,8 @@
       "bibcode": "2003JGRD..108.4320M",
       "title": "Organic nitrogen in rain and aerosol in the eastern Mediterranean atmosphere: An association with atmospheric dust",
       "firstAuthor": "Mace, Kimberly A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 111
     },
@@ -419,6 +470,8 @@
       "bibcode": "2010ACP....1011277V",
       "title": "Multi sensor reanalysis of total ozone",
       "firstAuthor": "van der A, R. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 110
     },
@@ -426,6 +479,8 @@
       "bibcode": "2004EcoH....1..284G",
       "title": "Dust storms and their impact on ocean and human health: dust in Earth's atmosphere",
       "firstAuthor": "Griffin, Dale W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 104
     },
@@ -433,6 +488,8 @@
       "bibcode": "2000GeoRL..27.3317T",
       "title": "A tropical Atlantic Paradox: Shipboard and satellite views of a tropospheric ozone maximum and wave-one in January-February 1999",
       "firstAuthor": "Thompson, Anne M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 96
     },
@@ -440,6 +497,8 @@
       "bibcode": "2003JGRD..108.4237E",
       "title": "Tropospheric ozone over the tropical Atlantic: A satellite perspective",
       "firstAuthor": "Edwards, D. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 94
     },
@@ -447,6 +506,8 @@
       "bibcode": "2006ACP.....6.4057S",
       "title": "Search for evidence of trend slow-down in the long-term TOMS/SBUV total ozone data record: the importance of instrument drift uncertainty",
       "firstAuthor": "Stolarski, R. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 94
     },
@@ -454,6 +515,8 @@
       "bibcode": "2016ACP....16.8609G",
       "title": "Mediterranean intense desert dust outbreaks and their vertical structure based on remote sensing data",
       "firstAuthor": "Gkikas, Antonis",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 93
     },
@@ -461,6 +524,8 @@
       "bibcode": "2013AMT.....6.1287N",
       "title": "A 4-D climatology (1979-2009) of the monthly tropospheric aerosol optical depth distribution over the Mediterranean region from a comparative evaluation and blending of remote sensing and model products",
       "firstAuthor": "Nabat, P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 89
     },
@@ -468,6 +533,8 @@
       "bibcode": "2017JGRD..122.6611W",
       "title": "First reprocessing of Southern Hemisphere ADditional OZonesondes (SHADOZ) profile records (1998-2015): 1. Methodology and evaluation",
       "firstAuthor": "Witte, Jacquelyn C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 89
     },
@@ -475,6 +542,8 @@
       "bibcode": "2015AMT.....8.3021V",
       "title": "Extended and refined multi sensor reanalysis of total ozone for the period 1970-2012",
       "firstAuthor": "van der A, R. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 84
     },
@@ -482,6 +551,8 @@
       "bibcode": "2008JGRD..11314313F",
       "title": "Performance of the ground-based total ozone network assessed using satellite data",
       "firstAuthor": "Fioletov, V. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 81
     }

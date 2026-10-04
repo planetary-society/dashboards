@@ -21,11 +21,14 @@
   "indices": {
     "h": 224,
     "m": 8.96,
-    "i100": 850
+    "i100": 850,
+    "g": 374,
+    "tori": 2475.77,
+    "riq": 1913
   },
   "facts": {
-    "papers": 12547,
-    "citations": 451989,
+    "papers": 12549,
+    "citations": 451977,
     "publicationYears": [
       2002,
       2026
@@ -84,7 +87,7 @@
       692,
       661,
       621,
-      402
+      404
     ],
     "citations": [
       7,
@@ -96,7 +99,7 @@
       3682,
       4388,
       5708,
-      7274,
+      7267,
       8887,
       11340,
       14221,
@@ -111,13 +114,13 @@
       41723,
       43670,
       45087,
-      28703
+      28698
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 451989,
-      "observed": 451989,
+      "expected": 451977,
+      "observed": 451977,
       "missing": 0
     }
   },
@@ -241,7 +244,7 @@
       2358,
       2425,
       2651,
-      2855,
+      2854,
       1970,
       891
     ]
@@ -250,6 +253,13 @@
     "bibcode": "2005JAtS...62..947R",
     "title": "The MODIS Aerosol Algorithm, Products, and Validation.",
     "firstAuthor": "Remer, L. A.",
+    "authors": [
+      "Remer, L. A.",
+      "Kaufman, Y. J.",
+      "Tanré, D.",
+      "Mattoo, S."
+    ],
+    "authorCount": 13,
     "year": 2005,
     "citations": 2311
   },
@@ -258,9 +268,9 @@
       "bins": [
         752.397,
         979.235,
-        1094.776,
-        1138.229,
-        1130.271,
+        1094.508,
+        1138.563,
+        1130.204,
         1168.149,
         1144.751,
         1210.243,
@@ -274,8 +284,8 @@
         140.997,
         206.076,
         209.132,
-        200.81,
-        196.016,
+        201.493,
+        195.333,
         190.278,
         160.551,
         179.601,
@@ -286,24 +296,24 @@
     },
     "lifetime": {
       "bins": [
-        794.826,
-        1005.52,
-        1223.686,
-        1283.889,
-        1289.218,
-        1373.828,
-        1337.845,
-        1399.091,
-        1413.242,
-        1425.856
+        795.993,
+        1004.529,
+        1223.986,
+        1284.512,
+        1289.289,
+        1373.833,
+        1338.146,
+        1399.264,
+        1413.401,
+        1426.047
       ],
-      "top1": 155.688
+      "top1": 155.7
     }
   },
   "full": {
     "papers": 10863,
     "outputBasis": "measured",
-    "citations": 127248,
+    "citations": 127246,
     "top10": 572.159,
     "top10ShareOfDivision": 0.14873,
     "top1": 48.168,
@@ -323,12 +333,19 @@
       "status": "available",
       "months": 259,
       "citationBuckets": 25
+    },
+    "spread": {
+      "mean": 11.714,
+      "median": 7,
+      "uncited": 604,
+      "i10": 4386,
+      "i100": 51
     }
   },
   "window": {
     "papers": 1716,
     "outputBasis": "measured",
-    "citations": 17986,
+    "citations": 17985,
     "top10": 122.15,
     "top10ShareOfDivision": 0.11779,
     "top1": 4.642,
@@ -348,14 +365,21 @@
       "status": "available",
       "months": 100,
       "citationBuckets": 12
+    },
+    "spread": {
+      "mean": 10.481,
+      "median": 7,
+      "uncited": 107,
+      "i10": 621,
+      "i100": 4
     }
   },
   "lifetime": {
-    "papers": 12547,
+    "papers": 12549,
     "outputBasis": "measured",
-    "citations": 451989,
-    "top10": 596.613,
-    "top10ShareOfDivision": 0.14419,
+    "citations": 451977,
+    "top10": 596.672,
+    "top10ShareOfDivision": 0.14421,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -364,21 +388,28 @@
       "yearsFromFormulation": 10.667,
       "bibcode": "2002GeoRL..29.8007C",
       "date": "2002-06-00"
+    },
+    "spread": {
+      "mean": 36.017,
+      "median": 16,
+      "uncited": 765,
+      "i10": 7946,
+      "i100": 850
     }
   },
   "query": {
     "arms": "(((abs:\"Aqua\" AND (=abs:\"AIRS\" OR =abs:\"AMSU\" OR =abs:\"CERES\" OR =abs:\"MODIS\" OR =abs:\"AMSR-E\" OR =abs:\"HSB\")) OR =abs:\"Advanced Microwave Scanning Radiometer-EOS\" OR (=abs:\"Moderate Resolution Imaging Spectroradiometer\" AND abs:\"Aqua\") OR (=abs:\"Moderate Resolution Imaging Spectroradiometer\" AND NOT abs:\"Terra\") OR (=abs:\"Advanced Microwave Sounding Unit\" AND (abs:(Aqua OR AIRS OR \"AMSR-E\") OR =abs:\"Advanced Microwave Scanning Radiometer for the Earth Observing System\")) OR =abs:\"Humidity Sounder for Brazil\" OR =abs:\"Atmospheric Infrared Sounder\" OR (=abs:\"Clouds and the Earth's Radiant Energy System\" AND abs:\"Aqua\") OR (=abs:\"Clouds and the Earth's Radiant Energy System\" AND NOT abs:\"Terra\") OR abs:\"Aqua satellite\" OR abs:\"Aqua spacecraft\" OR abs:\"Aqua Earth-Observing\" OR abs:\"EOS-PM1\" OR abs:\"EOS PM-1\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2002-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22Aqua%22+AND+%28%3Dabs%3A%22AIRS%22+OR+%3Dabs%3A%22AMSU%22+OR+%3Dabs%3A%22CERES%22+OR+%3Dabs%3A%22MODIS%22+OR+%3Dabs%3A%22AMSR-E%22+OR+%3Dabs%3A%22HSB%22%29%29+OR+%3Dabs%3A%22Advanced+Microwave+Scanning+Radiometer-EOS%22+OR+%28%3Dabs%3A%22Moderate+Resolution+Imaging+Spectroradiometer%22+AND+abs%3A%22Aqua%22%29+OR+%28%3Dabs%3A%22Moderate+Resolution+Imaging+Spectroradiometer%22+AND+NOT+abs%3A%22Terra%22%29+OR+%28%3Dabs%3A%22Advanced+Microwave+Sounding+Unit%22+AND+%28abs%3A%28Aqua+OR+AIRS+OR+%22AMSR-E%22%29+OR+%3Dabs%3A%22Advanced+Microwave+Scanning+Radiometer+for+the+Earth+Observing+System%22%29%29+OR+%3Dabs%3A%22Humidity+Sounder+for+Brazil%22+OR+%3Dabs%3A%22Atmospheric+Infrared+Sounder%22+OR+%28%3Dabs%3A%22Clouds+and+the+Earth%27s+Radiant+Energy+System%22+AND+abs%3A%22Aqua%22%29+OR+%28%3Dabs%3A%22Clouds+and+the+Earth%27s+Radiant+Energy+System%22+AND+NOT+abs%3A%22Terra%22%29+OR+abs%3A%22Aqua+satellite%22+OR+abs%3A%22Aqua+spacecraft%22+OR+abs%3A%22Aqua+Earth-Observing%22+OR+abs%3A%22EOS-PM1%22+OR+abs%3A%22EOS+PM-1%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:21:55.336004+00:00",
+    "fetchedAt": "2026-09-30T18:00:14.758103+00:00",
     "reconciliation": {
-      "adsReturned": 12563,
+      "adsReturned": 12565,
       "curatedOut": 4,
       "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 13,
-      "final": 12547
+      "final": 12549
     }
   },
   "curation": {
@@ -432,6 +463,8 @@
       "bibcode": "2005JAtS...62..947R",
       "title": "The MODIS Aerosol Algorithm, Products, and Validation.",
       "firstAuthor": "Remer, L. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 2311
     },
@@ -439,6 +472,8 @@
       "bibcode": "2010ACP....1011707V",
       "title": "Global fire emissions and the contribution of deforestation, savanna, forest, agricultural, and peat fires (1997-2009)",
       "firstAuthor": "van der Werf, G. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 2090
     },
@@ -446,6 +481,8 @@
       "bibcode": "2003RSEnv..84..471Z",
       "title": "Monitoring vegetation phenology using MODIS",
       "firstAuthor": "Zhang, Xiaoyang",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 1890
     },
@@ -453,6 +490,8 @@
       "bibcode": "2004RSEnv..91..332C",
       "title": "A simple method for reconstructing a high-quality NDVI time-series data set based on the Savitzky-Golay filter",
       "firstAuthor": "Chen, Jin",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 1705
     },
@@ -460,6 +499,8 @@
       "bibcode": "2013AMT.....6.2989L",
       "title": "The Collection 6 MODIS aerosol products over land and ocean",
       "firstAuthor": "Levy, R. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 1566
     },
@@ -467,13 +508,17 @@
       "bibcode": "2004IJRS...25.2365L",
       "title": "Change detection techniques",
       "firstAuthor": "Lu, D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
-      "citations": 1523
+      "citations": 1522
     },
     {
       "bibcode": "2008RSEnv.112.3833J",
       "title": "Development of a two-band enhanced vegetation index without a blue band",
       "firstAuthor": "Jiang, Zhangyan",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 1517
     },
@@ -481,6 +526,8 @@
       "bibcode": "2006ITGRS..44.2207G",
       "title": "On the Blending of the Landsat and MODIS Surface Reflectance: Predicting Daily Landsat Surface Reflectance",
       "firstAuthor": "Gao, Feng",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 1449
     },
@@ -488,6 +535,8 @@
       "bibcode": "2003ITGRS..41..459P",
       "title": "The MODIS Cloud Products: Algorithms and Examples From Terra",
       "firstAuthor": "Platnick, Steven",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 1417
     },
@@ -495,6 +544,8 @@
       "bibcode": "2004BiSci..54..547R",
       "title": "A Continuous Satellite-Derived Measure of Global Terrestrial Primary Production",
       "firstAuthor": "Running, Steven W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 1350
     },
@@ -502,6 +553,8 @@
       "bibcode": "2010RSEnv.114..106V",
       "title": "Detecting trend and seasonal changes in satellite image time series",
       "firstAuthor": "Verbesselt, Jan",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 1298
     },
@@ -509,6 +562,8 @@
       "bibcode": "2006IGRSL...3...68M",
       "title": "A Landsat Surface Reflectance Dataset for North America, 1990─2000",
       "firstAuthor": "Masek, Jeffrey G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 1287
     },
@@ -516,6 +571,8 @@
       "bibcode": "2016RSEnv.185...46V",
       "title": "Preliminary analysis of the performance of the Landsat 8/OLI land surface reflectance product",
       "firstAuthor": "Vermote, Eric",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 1255
     },
@@ -523,6 +580,8 @@
       "bibcode": "2003RSEnv..87..273G",
       "title": "An Enhanced Contextual Fire Detection Algorithm for MODIS",
       "firstAuthor": "Giglio, Louis",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 1231
     },
@@ -530,13 +589,17 @@
       "bibcode": "2003ITGRS..41..215N",
       "title": "Soil Moisture Retrieval From AMSR-E",
       "firstAuthor": "Njoku, Eni G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
-      "citations": 1127
+      "citations": 1126
     },
     {
       "bibcode": "2013IJRS...34.2607G",
       "title": "Finer resolution observation and monitoring of global land cover: first mapping results with Landsat TM and ETM+ data",
       "firstAuthor": "Gong, Peng",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 1091
     },
@@ -544,6 +607,8 @@
       "bibcode": "2016RSEnv.178...31G",
       "title": "The collection 6 MODIS active fire detection algorithm and fire products",
       "firstAuthor": "Giglio, Louis",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 1085
     },
@@ -551,6 +616,8 @@
       "bibcode": "2003ITGRS..41..253A",
       "title": "AIRS/AMSU/HSB on the Aqua Mission: Design, Science Objectives, Data Products, and Processing Systems",
       "firstAuthor": "Aumann, Hartmut H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 1078
     },
@@ -558,18 +625,22 @@
       "bibcode": "2012BGeo....9..527K",
       "title": "Biomass burning emissions estimated with a global fire assimilation system based on observed fire radiative power",
       "firstAuthor": "Kaiser, J. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
-      "citations": 1058
+      "citations": 1057
     },
     {
       "bibcode": "2016Natur.531..229S",
       "title": "Sensitivity of global terrestrial ecosystems to climate variability",
       "firstAuthor": "Seddon, Alistair W. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 1052
     }
   ],
   "papersFile": {
-    "rows": 12547
+    "rows": 12549
   }
 }

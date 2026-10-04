@@ -21,11 +21,14 @@
   "indices": {
     "h": 182,
     "m": 8.273,
-    "i100": 471
+    "i100": 471,
+    "g": 289,
+    "tori": 500.273,
+    "riq": 972
   },
   "facts": {
     "papers": 5490,
-    "citations": 226098,
+    "citations": 226035,
     "publicationYears": [
       2005,
       2026
@@ -87,7 +90,7 @@
       3709,
       4900,
       5224,
-      6844,
+      6839,
       7987,
       8764,
       8561,
@@ -101,14 +104,14 @@
       15254,
       15953,
       18482,
-      22093,
-      19970
+      22092,
+      19913
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 226098,
-      "observed": 226098,
+      "expected": 226035,
+      "observed": 226035,
       "missing": 0
     }
   },
@@ -182,6 +185,13 @@
     "bibcode": "2005SSRv..120..165B",
     "title": "The Swift X-Ray Telescope",
     "firstAuthor": "Burrows, David N.",
+    "authors": [
+      "Burrows, David N.",
+      "Hill, J. E.",
+      "Nousek, J. A.",
+      "Kennea, J. A."
+    ],
+    "authorCount": 24,
     "year": 2005,
     "citations": 2784
   },
@@ -191,13 +201,13 @@
         422.089,
         483.555,
         491.564,
-        439.544,
-        466.132,
-        483.419,
-        461.49,
-        463.566,
-        424.613,
-        370.027
+        439.523,
+        466.499,
+        482.808,
+        462.095,
+        463.142,
+        424.626,
+        370.098
       ],
       "top1": 26.374
     },
@@ -211,23 +221,23 @@
         66.769,
         70.64,
         58.204,
-        69.387,
-        73.371
+        69.378,
+        73.38
       ],
       "top1": 9
     },
     "lifetime": {
       "bins": [
-        590.667,
-        650.212,
-        624.039,
-        597.549,
-        578.562,
-        606.824,
-        530.636,
-        485.946,
-        438.57,
-        386.994
+        590.696,
+        650.626,
+        622.556,
+        597.934,
+        578.871,
+        608.422,
+        529.261,
+        487.336,
+        437.247,
+        387.052
       ],
       "top1": 27
     }
@@ -235,7 +245,7 @@
   "full": {
     "papers": 4506,
     "outputBasis": "measured",
-    "citations": 89001,
+    "citations": 88990,
     "top10": 297.276,
     "top10ShareOfDivision": 0.05964,
     "top1": 20.374,
@@ -255,6 +265,13 @@
       "status": "available",
       "months": 224,
       "citationBuckets": 22
+    },
+    "spread": {
+      "mean": 19.749,
+      "median": 12,
+      "uncited": 196,
+      "i10": 2684,
+      "i100": 79
     }
   },
   "window": {
@@ -280,14 +297,21 @@
       "status": "available",
       "months": 45,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 25.491,
+      "median": 16,
+      "uncited": 56,
+      "i10": 412,
+      "i100": 19
     }
   },
   "lifetime": {
     "papers": 5490,
     "outputBasis": "measured",
-    "citations": 226098,
-    "top10": 303.6,
-    "top10ShareOfDivision": 0.0548,
+    "citations": 226035,
+    "top10": 303.662,
+    "top10ShareOfDivision": 0.05482,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -296,13 +320,20 @@
       "yearsFromFormulation": 5.632,
       "bibcode": "2005A&A...436..273A",
       "date": "2005-06-00"
+    },
+    "spread": {
+      "mean": 41.172,
+      "median": 20,
+      "uncited": 299,
+      "i10": 3757,
+      "i100": 471
     }
   },
   "query": {
     "arms": "((=abs:\"Neil Gehrels Swift Observatory\" OR =abs:\"Swift satellite\" OR =abs:\"Swift observatory\" OR =abs:\"Swift mission\" OR =abs:\"Swift spacecraft\" OR =abs:\"Swift telescope\" OR =abs:\"Swift observations\" OR =abs:\"Swift observation\" OR =abs:\"Swift data\" OR =abs:\"Swift monitoring\" OR (abs:Swift AND (abs:GRB OR =abs:\"gamma-ray burst\" OR =abs:\"gamma-ray bursts\" OR abs:BAT OR abs:XRT OR abs:UVOT OR =abs:\"X-ray\" OR =abs:\"X-rays\" OR =abs:ultraviolet OR =abs:UV OR =abs:\"gamma-ray\" OR =abs:\"gamma-rays\" OR =abs:afterglow OR =abs:afterglows) AND NOT (=abs:\"swift heavy ion\" OR =abs:\"swift heavy ions\" OR =abs:\"swift ions\")) OR =abs:\"Burst Alert Telescope\" OR (abs:UVOT AND (=abs:ultraviolet OR =abs:UV OR =abs:optical OR =abs:photometry)) OR (abs:BAT AND (=abs:\"hard X-ray\" OR =abs:\"hard X-rays\" OR abs:AGN OR abs:GRB OR =abs:\"gamma-ray burst\" OR =abs:\"gamma-ray bursts\" OR =abs:\"X-ray\" OR =abs:\"X-rays\")) OR (abs:XRT AND (abs:UVOT OR abs:BAT)) OR facility:Swift) AND collection:astronomy)",
     "filters": "property:refereed AND doctype:article AND pubdate:[2005-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Neil+Gehrels+Swift+Observatory%22+OR+%3Dabs%3A%22Swift+satellite%22+OR+%3Dabs%3A%22Swift+observatory%22+OR+%3Dabs%3A%22Swift+mission%22+OR+%3Dabs%3A%22Swift+spacecraft%22+OR+%3Dabs%3A%22Swift+telescope%22+OR+%3Dabs%3A%22Swift+observations%22+OR+%3Dabs%3A%22Swift+observation%22+OR+%3Dabs%3A%22Swift+data%22+OR+%3Dabs%3A%22Swift+monitoring%22+OR+%28abs%3ASwift+AND+%28abs%3AGRB+OR+%3Dabs%3A%22gamma-ray+burst%22+OR+%3Dabs%3A%22gamma-ray+bursts%22+OR+abs%3ABAT+OR+abs%3AXRT+OR+abs%3AUVOT+OR+%3Dabs%3A%22X-ray%22+OR+%3Dabs%3A%22X-rays%22+OR+%3Dabs%3Aultraviolet+OR+%3Dabs%3AUV+OR+%3Dabs%3A%22gamma-ray%22+OR+%3Dabs%3A%22gamma-rays%22+OR+%3Dabs%3Aafterglow+OR+%3Dabs%3Aafterglows%29+AND+NOT+%28%3Dabs%3A%22swift+heavy+ion%22+OR+%3Dabs%3A%22swift+heavy+ions%22+OR+%3Dabs%3A%22swift+ions%22%29%29+OR+%3Dabs%3A%22Burst+Alert+Telescope%22+OR+%28abs%3AUVOT+AND+%28%3Dabs%3Aultraviolet+OR+%3Dabs%3AUV+OR+%3Dabs%3Aoptical+OR+%3Dabs%3Aphotometry%29%29+OR+%28abs%3ABAT+AND+%28%3Dabs%3A%22hard+X-ray%22+OR+%3Dabs%3A%22hard+X-rays%22+OR+abs%3AAGN+OR+abs%3AGRB+OR+%3Dabs%3A%22gamma-ray+burst%22+OR+%3Dabs%3A%22gamma-ray+bursts%22+OR+%3Dabs%3A%22X-ray%22+OR+%3Dabs%3A%22X-rays%22%29%29+OR+%28abs%3AXRT+AND+%28abs%3AUVOT+OR+abs%3ABAT%29%29+OR+facility%3ASwift%29+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2005-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:36:47.768223+00:00",
+    "fetchedAt": "2026-09-30T18:19:55.145063+00:00",
     "reconciliation": {
       "adsReturned": 5494,
       "curatedOut": 4,
@@ -355,6 +386,8 @@
       "bibcode": "2005SSRv..120..165B",
       "title": "The Swift X-Ray Telescope",
       "firstAuthor": "Burrows, David N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 2784
     },
@@ -362,13 +395,17 @@
       "bibcode": "2022ApJ...930L..12E",
       "title": "First Sagittarius A* Event Horizon Telescope Results. I. The Shadow of the Supermassive Black Hole in the Center of the Milky Way",
       "firstAuthor": "Event Horizon Telescope Collaboration",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
-      "citations": 2233
+      "citations": 2232
     },
     {
       "bibcode": "2005SSRv..120...95R",
       "title": "The Swift Ultra-Violet/Optical Telescope",
       "firstAuthor": "Roming, Peter W. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 2037
     },
@@ -376,6 +413,8 @@
       "bibcode": "2009MNRAS.397.1177E",
       "title": "Methods and results of an automatic analysis of a complete sample of Swift-XRT observations of GRBs",
       "firstAuthor": "Evans, P. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 1779
     },
@@ -383,13 +422,17 @@
       "bibcode": "2005SSRv..120..143B",
       "title": "The Burst Alert Telescope (BAT) on the SWIFT Midex Mission",
       "firstAuthor": "Barthelmy, Scott D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
-      "citations": 1715
+      "citations": 1713
     },
     {
       "bibcode": "2006ApJ...642..354Z",
       "title": "Physical Processes Shaping Gamma-Ray Burst X-Ray Afterglow Light Curves: Theoretical Implications from the Swift X-Ray Telescope Observations",
       "firstAuthor": "Zhang, Bing",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 1127
     },
@@ -397,6 +440,8 @@
       "bibcode": "2006RPPh...69.2259M",
       "title": "Gamma-ray bursts",
       "firstAuthor": "Mészáros, P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 1097
     },
@@ -404,6 +449,8 @@
       "bibcode": "2010ApJ...716...30A",
       "title": "The Spectral Energy Distribution of Fermi Bright Blazars",
       "firstAuthor": "Abdo, A. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 1017
     },
@@ -411,6 +458,8 @@
       "bibcode": "2006ApJ...642..389N",
       "title": "Evidence for a Canonical Gamma-Ray Burst Afterglow Light Curve in the Swift XRT Data",
       "firstAuthor": "Nousek, J. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 931
     },
@@ -418,6 +467,8 @@
       "bibcode": "2008MNRAS.383..627P",
       "title": "Photometric calibration of the Swift ultraviolet/optical telescope",
       "firstAuthor": "Poole, T. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 925
     },
@@ -425,6 +476,8 @@
       "bibcode": "2007A&A...469..379E",
       "title": "An online repository of Swift/XRT light curves of γ-ray bursts",
       "firstAuthor": "Evans, P. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 905
     },
@@ -432,6 +485,8 @@
       "bibcode": "2007A&A...463...79G",
       "title": "The synthesis of the cosmic X-ray background in the Chandra and XMM-Newton era",
       "firstAuthor": "Gilli, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 858
     },
@@ -439,6 +494,8 @@
       "bibcode": "2013MNRAS.431..394W",
       "title": "Calibration of X-ray absorption in our Galaxy",
       "firstAuthor": "Willingale, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 789
     },
@@ -446,6 +503,8 @@
       "bibcode": "2008ApJS..174..223B",
       "title": "Compact Object Modeling with the StarTrack Population Synthesis Code",
       "firstAuthor": "Belczynski, Krzysztof",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 761
     },
@@ -453,6 +512,8 @@
       "bibcode": "2014ApJ...786..104U",
       "title": "Toward the Standard Population Synthesis Model of the X-Ray Background: Evolution of X-Ray Luminosity and Absorption Functions of Active Galactic Nuclei Including Compton-thick Populations",
       "firstAuthor": "Ueda, Yoshihiro",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 665
     },
@@ -460,6 +521,8 @@
       "bibcode": "2013ApJS..207...19B",
       "title": "The 70 Month Swift-BAT All-sky Hard X-Ray Survey",
       "firstAuthor": "Baumgartner, W. H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 587
     },
@@ -467,6 +530,8 @@
       "bibcode": "2017ApJS..233...17R",
       "title": "BAT AGN Spectroscopic Survey. V. X-Ray Properties of the Swift/BAT 70-month AGN Catalog",
       "firstAuthor": "Ricci, C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 583
     },
@@ -474,6 +539,8 @@
       "bibcode": "2010MNRAS.402..497G",
       "title": "General physical properties of bright Fermi blazars",
       "firstAuthor": "Ghisellini, G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 582
     },
@@ -481,6 +548,8 @@
       "bibcode": "2011Natur.476..421B",
       "title": "Relativistic jet activity from the tidal disruption of a star by a massive black hole",
       "firstAuthor": "Burrows, D. N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 566
     },
@@ -488,6 +557,8 @@
       "bibcode": "2013ApJS..209...14K",
       "title": "The Swift/BAT Hard X-Ray Transient Monitor",
       "firstAuthor": "Krimm, H. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 540
     }

@@ -21,11 +21,14 @@
   "indices": {
     "h": 95,
     "m": 6.333,
-    "i100": 87
+    "i100": 87,
+    "g": 150,
+    "tori": 95.162,
+    "riq": 609
   },
   "facts": {
-    "papers": 1099,
-    "citations": 38773,
+    "papers": 1107,
+    "citations": 38823,
     "publicationYears": [
       2012,
       2026
@@ -57,14 +60,14 @@
       87,
       93,
       87,
-      77,
+      78,
       84,
       66,
       86,
       61,
       76,
       67,
-      60
+      67
     ],
     "citations": [
       35,
@@ -75,19 +78,19 @@
       2275,
       2511,
       2708,
-      3832,
-      4050,
-      4799,
-      3235,
-      3929,
-      4097,
-      2941
+      3835,
+      4053,
+      4804,
+      3238,
+      3933,
+      4100,
+      2970
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 38773,
-      "observed": 38773,
+      "expected": 38823,
+      "observed": 38823,
       "missing": 0
     }
   },
@@ -162,63 +165,70 @@
     "bibcode": "2014Sci...343A.386G",
     "title": "A Habitable Fluvio-Lacustrine Environment at Yellowknife Bay, Gale Crater, Mars",
     "firstAuthor": "Grotzinger, J. P.",
+    "authors": [
+      "Grotzinger, J. P.",
+      "Sumner, D. Y.",
+      "Kah, L. C.",
+      "Stack, K."
+    ],
+    "authorCount": 448,
     "year": 2014,
     "citations": 653
   },
   "ranks": {
     "full": {
       "bins": [
-        68.878,
-        88.587,
-        88.763,
-        95.182,
-        66.013,
-        86.69,
-        70.386,
-        99.33,
-        100.633,
-        131.537
+        69.033,
+        88.579,
+        89.062,
+        94.985,
+        65.891,
+        86.669,
+        71.302,
+        99.427,
+        100.636,
+        131.417
       ],
-      "top1": 15.016
+      "top1": 15.014
     },
     "window": {
       "bins": [
-        36.211,
-        37.866,
-        30.452,
-        23.471,
-        24.628,
-        23.005,
-        28.284,
-        26.962,
-        29.12,
+        36.376,
+        37.797,
+        30.552,
+        23.335,
+        24.612,
+        22.987,
+        28.336,
+        26.9,
+        29.104,
         37
       ],
-      "top1": 5.65
+      "top1": 5.64
     },
     "lifetime": {
       "bins": [
-        126.626,
-        125.299,
-        133.199,
-        103.476,
-        105.518,
-        100.739,
-        99.402,
-        98.883,
-        97.822,
-        108.038
+        132.738,
+        125.351,
+        132.369,
+        103.409,
+        106.168,
+        102.168,
+        99.622,
+        99.223,
+        97.75,
+        108.2
       ],
       "top1": 12
     }
   },
   "full": {
-    "papers": 896,
+    "papers": 897,
     "outputBasis": "measured",
-    "citations": 15243,
-    "top10": 138.859,
-    "top10ShareOfDivision": 0.12727,
-    "top1": 15.016,
+    "citations": 15257,
+    "top10": 138.703,
+    "top10ShareOfDivision": 0.12713,
+    "top1": 15.014,
     "top1ShareOfDivision": 0.13762,
     "first": {
       "state": "reached",
@@ -235,6 +245,13 @@
       "status": "available",
       "months": 136,
       "citationBuckets": 15
+    },
+    "spread": {
+      "mean": 17.009,
+      "median": 10,
+      "uncited": 38,
+      "i10": 459,
+      "i100": 15
     }
   },
   "window": {
@@ -242,9 +259,9 @@
     "outputBasis": "measured",
     "citations": 6101,
     "top10": 35.925,
-    "top10ShareOfDivision": 0.07438,
-    "top1": 5.65,
-    "top1ShareOfDivision": 0.11698,
+    "top10ShareOfDivision": 0.07441,
+    "top1": 5.64,
+    "top1ShareOfDivision": 0.11682,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.071,
@@ -260,12 +277,19 @@
       "status": "available",
       "months": 46,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 20.542,
+      "median": 10,
+      "uncited": 23,
+      "i10": 155,
+      "i100": 13
     }
   },
   "lifetime": {
-    "papers": 1099,
+    "papers": 1107,
     "outputBasis": "measured",
-    "citations": 38773,
+    "citations": 38823,
     "top10": 148.525,
     "top10ShareOfDivision": 0.10899,
     "top1": null,
@@ -276,21 +300,28 @@
       "yearsFromFormulation": 9.002,
       "bibcode": "2012SSRv..170....5G",
       "date": "2012-09-00"
+    },
+    "spread": {
+      "mean": 35.07,
+      "median": 14,
+      "uncited": 103,
+      "i10": 659,
+      "i100": 87
     }
   },
   "query": {
-    "arms": "((=abs:\"Mars Science Laboratory\" OR =abs:\"Curiosity rover\" OR (=abs:Curiosity AND (abs:Mars OR abs:Gale OR abs:martian)) OR (abs:MSL AND (abs:Mars OR abs:Gale OR abs:martian)) OR (abs:Mars AND NOT (abs:Perseverance OR abs:Jezero OR =abs:\"Mars 2020\") AND (=abs:\"Radiation Assessment Detector\" OR =abs:ChemCam OR =abs:CheMin OR =abs:\"Sample Analysis at Mars\" OR =abs:\"Mast Camera\" OR =abs:Mastcam OR =abs:\"Mars Hand Lens Imager\" OR abs:MAHLI OR =abs:\"Rover Environmental Monitoring Station\" OR =abs:\"Dynamic Albedo of Neutrons\" OR (=abs:\"Alpha Particle X-ray Spectrometer\" AND abs:Gale)))))",
+    "arms": "((((=abs:\"Mars Science Laboratory\" OR =abs:\"Curiosity rover\" OR (=abs:Curiosity AND (abs:Mars OR abs:Gale OR abs:martian)) OR (abs:MSL AND (abs:Mars OR abs:Gale OR abs:martian)) OR (abs:Mars AND NOT (abs:Perseverance OR abs:Jezero OR =abs:\"Mars 2020\") AND (=abs:\"Radiation Assessment Detector\" OR =abs:ChemCam OR =abs:CheMin OR =abs:\"Sample Analysis at Mars\" OR =abs:\"Mast Camera\" OR =abs:Mastcam OR =abs:\"Mars Hand Lens Imager\" OR abs:MAHLI OR =abs:\"Rover Environmental Monitoring Station\" OR =abs:\"Dynamic Albedo of Neutrons\" OR (=abs:\"Alpha Particle X-ray Spectrometer\" AND abs:Gale))))) OR (=abs:\"Mars Descent Imager\" AND abs:(Mars OR martian OR Gale)) OR (abs:(REMS OR DAN) AND abs:Gale)))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2012-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Science+Laboratory%22+OR+%3Dabs%3A%22Curiosity+rover%22+OR+%28%3Dabs%3ACuriosity+AND+%28abs%3AMars+OR+abs%3AGale+OR+abs%3Amartian%29%29+OR+%28abs%3AMSL+AND+%28abs%3AMars+OR+abs%3AGale+OR+abs%3Amartian%29%29+OR+%28abs%3AMars+AND+NOT+%28abs%3APerseverance+OR+abs%3AJezero+OR+%3Dabs%3A%22Mars+2020%22%29+AND+%28%3Dabs%3A%22Radiation+Assessment+Detector%22+OR+%3Dabs%3AChemCam+OR+%3Dabs%3ACheMin+OR+%3Dabs%3A%22Sample+Analysis+at+Mars%22+OR+%3Dabs%3A%22Mast+Camera%22+OR+%3Dabs%3AMastcam+OR+%3Dabs%3A%22Mars+Hand+Lens+Imager%22+OR+abs%3AMAHLI+OR+%3Dabs%3A%22Rover+Environmental+Monitoring+Station%22+OR+%3Dabs%3A%22Dynamic+Albedo+of+Neutrons%22+OR+%28%3Dabs%3A%22Alpha+Particle+X-ray+Spectrometer%22+AND+abs%3AGale%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:29:08.079983+00:00",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Mars+Science+Laboratory%22+OR+%3Dabs%3A%22Curiosity+rover%22+OR+%28%3Dabs%3ACuriosity+AND+%28abs%3AMars+OR+abs%3AGale+OR+abs%3Amartian%29%29+OR+%28abs%3AMSL+AND+%28abs%3AMars+OR+abs%3AGale+OR+abs%3Amartian%29%29+OR+%28abs%3AMars+AND+NOT+%28abs%3APerseverance+OR+abs%3AJezero+OR+%3Dabs%3A%22Mars+2020%22%29+AND+%28%3Dabs%3A%22Radiation+Assessment+Detector%22+OR+%3Dabs%3AChemCam+OR+%3Dabs%3ACheMin+OR+%3Dabs%3A%22Sample+Analysis+at+Mars%22+OR+%3Dabs%3A%22Mast+Camera%22+OR+%3Dabs%3AMastcam+OR+%3Dabs%3A%22Mars+Hand+Lens+Imager%22+OR+abs%3AMAHLI+OR+%3Dabs%3A%22Rover+Environmental+Monitoring+Station%22+OR+%3Dabs%3A%22Dynamic+Albedo+of+Neutrons%22+OR+%28%3Dabs%3A%22Alpha+Particle+X-ray+Spectrometer%22+AND+abs%3AGale%29%29%29%29%29+OR+%28%3Dabs%3A%22Mars+Descent+Imager%22+AND+abs%3A%28Mars+OR+martian+OR+Gale%29%29+OR+%28abs%3A%28REMS+OR+DAN%29+AND+abs%3AGale%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-04T05:43:25.815747+00:00",
     "reconciliation": {
-      "adsReturned": 1156,
+      "adsReturned": 1164,
       "curatedOut": 53,
       "curatedIn": 2,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 6,
-      "final": 1099
+      "final": 1107
     }
   },
   "curation": {
@@ -760,6 +791,8 @@
       "bibcode": "2014Sci...343A.386G",
       "title": "A Habitable Fluvio-Lacustrine Environment at Yellowknife Bay, Gale Crater, Mars",
       "firstAuthor": "Grotzinger, J. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 653
     },
@@ -767,13 +800,17 @@
       "bibcode": "2012SSRv..170....5G",
       "title": "Mars Science Laboratory Mission and Science Investigation",
       "firstAuthor": "Grotzinger, John P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
-      "citations": 572
+      "citations": 573
     },
     {
       "bibcode": "2015Sci...350.7575G",
       "title": "Deposition, exhumation, and paleoclimate of an ancient lake deposit, Gale crater, Mars",
       "firstAuthor": "Grotzinger, J. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 512
     },
@@ -781,6 +818,8 @@
       "bibcode": "2012SSRv..170..167W",
       "title": "The ChemCam Instrument Suite on the Mars Science Laboratory (MSL) Rover: Body Unit and Combined System Tests",
       "firstAuthor": "Wiens, Roger C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 469
     },
@@ -788,6 +827,8 @@
       "bibcode": "2012SSRv..170..401M",
       "title": "The Sample Analysis at Mars Investigation and Instrument Suite",
       "firstAuthor": "Mahaffy, Paul R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 466
     },
@@ -795,6 +836,8 @@
       "bibcode": "2014Sci...343B.386V",
       "title": "Mineralogy of a Mudstone at Yellowknife Bay, Gale Crater, Mars",
       "firstAuthor": "Vaniman, D. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 452
     },
@@ -802,6 +845,8 @@
       "bibcode": "2012SSRv..170...95M",
       "title": "The ChemCam Instrument Suite on the Mars Science Laboratory (MSL) Rover: Science Objectives and Mast Unit Description",
       "firstAuthor": "Maurice, S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 417
     },
@@ -809,13 +854,17 @@
       "bibcode": "2018Sci...360.1096E",
       "title": "Organic matter preserved in 3-billion-year-old mudstones at Gale crater, Mars",
       "firstAuthor": "Eigenbrode, Jennifer L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
-      "citations": 395
+      "citations": 396
     },
     {
       "bibcode": "2014Sci...343D.386H",
       "title": "Mars' Surface Radiation Environment Measured with the Mars Science Laboratory's Curiosity Rover",
       "firstAuthor": "Hassler, Donald M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 380
     },
@@ -823,6 +872,8 @@
       "bibcode": "2015JGRE..120..495F",
       "title": "Organic molecules in the Sheepbed Mudstone, Gale Crater, Mars",
       "firstAuthor": "Freissinet, C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 361
     },
@@ -830,13 +881,17 @@
       "bibcode": "2013Sci...340.1080Z",
       "title": "Measurements of Energetic Particle Radiation in Transit to Mars on the Mars Science Laboratory",
       "firstAuthor": "Zeitlin, C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
-      "citations": 352
+      "citations": 353
     },
     {
       "bibcode": "2013Sci...340.1068W",
       "title": "Martian Fluvial Conglomerates at Gale Crater",
       "firstAuthor": "Williams, R. M. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 331
     },
@@ -844,6 +899,8 @@
       "bibcode": "2013JGRE..118.1955G",
       "title": "Evidence for perchlorates and the origin of chlorinated hydrocarbons detected by SAM at the Rocknest aeolian deposit in Gale Crater",
       "firstAuthor": "Glavin, Daniel P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 319
     },
@@ -851,6 +908,8 @@
       "bibcode": "2015Sci...347..415W",
       "title": "Mars methane detection and variability at Gale crater",
       "firstAuthor": "Webster, Christopher R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 308
     },
@@ -858,6 +917,8 @@
       "bibcode": "2013Sci...341E...3L",
       "title": "Volatile, Isotope, and Organic Analysis of Martian Fines with the Mars Curiosity Rover",
       "firstAuthor": "Leshin, L. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 304
     },
@@ -865,6 +926,8 @@
       "bibcode": "2014Sci...343E.386M",
       "title": "Volatile and Organic Compositions of Sedimentary Rocks in Yellowknife Bay, Gale Crater, Mars",
       "firstAuthor": "Ming, D. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 299
     },
@@ -872,13 +935,17 @@
       "bibcode": "2017E&PSL.471..172R",
       "title": "Mineralogy of an ancient lacustrine mudstone succession from the Murray formation, Gale crater, Mars",
       "firstAuthor": "Rampe, E. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
-      "citations": 292
+      "citations": 293
     },
     {
       "bibcode": "2015NatGe...8..357M",
       "title": "Transient liquid water and water activity at Gale crater on Mars",
       "firstAuthor": "Martín-Torres, F. Javier",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 270
     },
@@ -886,6 +953,8 @@
       "bibcode": "2013Sci...341..263M",
       "title": "Abundance and Isotopic Composition of Gases in the Martian Atmosphere from the Curiosity Rover",
       "firstAuthor": "Mahaffy, Paul R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 269
     },
@@ -893,11 +962,13 @@
       "bibcode": "2014Sci...343C.386M",
       "title": "Elemental Geochemistry of Sedimentary Rocks at Yellowknife Bay, Gale Crater, Mars",
       "firstAuthor": "McLennan, S. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 244
     }
   ],
   "papersFile": {
-    "rows": 1099
+    "rows": 1107
   }
 }

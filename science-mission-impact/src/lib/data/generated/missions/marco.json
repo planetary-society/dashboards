@@ -21,7 +21,10 @@
   "indices": {
     "h": 1,
     "m": 0.143,
-    "i100": 0
+    "i100": 0,
+    "g": 1,
+    "tori": 0.946,
+    "riq": 972
   },
   "facts": {
     "papers": 1,
@@ -114,6 +117,10 @@
     "bibcode": "2020CEAS...12..491F",
     "title": "Exploring our solar system with CubeSats and SmallSats: the dawn of a new era",
     "firstAuthor": "Freeman, Anthony",
+    "authors": [
+      "Freeman, Anthony"
+    ],
+    "authorCount": 1,
     "year": 2020,
     "citations": 20
   },
@@ -124,8 +131,8 @@
         0,
         0,
         0,
-        0.073,
-        0.927,
+        0.077,
+        0.923,
         0,
         0,
         0,
@@ -187,6 +194,13 @@
       "status": "available",
       "months": 26,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 9,
+      "median": 9,
+      "uncited": 0,
+      "i10": 0,
+      "i100": 0
     }
   },
   "window": {
@@ -212,6 +226,13 @@
       "status": "available",
       "months": 24,
       "citationBuckets": 6
+    },
+    "spread": {
+      "mean": 9,
+      "median": 9,
+      "uncited": 0,
+      "i10": 0,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -228,13 +249,20 @@
       "yearsFromFormulation": null,
       "bibcode": null,
       "date": null
+    },
+    "spread": {
+      "mean": 20,
+      "median": 20,
+      "uncited": 0,
+      "i10": 1,
+      "i100": 0
     }
   },
   "query": {
     "arms": "((=abs:\"Mars Cube One\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2018-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Cube+One%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:29:42.603982+00:00",
+    "fetchedAt": "2026-09-30T17:54:08.511349+00:00",
     "reconciliation": {
       "adsReturned": 1,
       "curatedOut": 0,
@@ -254,6 +282,8 @@
       "bibcode": "2020CEAS...12..491F",
       "title": "Exploring our solar system with CubeSats and SmallSats: the dawn of a new era",
       "firstAuthor": "Freeman, Anthony",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 20
     }

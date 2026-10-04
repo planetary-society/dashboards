@@ -21,7 +21,10 @@
   "indices": {
     "h": 28,
     "m": 1,
-    "i100": 3
+    "i100": 3,
+    "g": 43,
+    "tori": 16.38,
+    "riq": 155
   },
   "facts": {
     "papers": 54,
@@ -190,6 +193,13 @@
     "bibcode": "2003JGRA..108.1027B",
     "title": "Global observations of nitric oxide in the thermosphere",
     "firstAuthor": "Barth, C. A.",
+    "authors": [
+      "Barth, C. A.",
+      "Mankoff, K. D.",
+      "Bailey, S. M.",
+      "Solomon, S. C."
+    ],
+    "authorCount": 4,
     "year": 2003,
     "citations": 138
   },
@@ -197,14 +207,14 @@
     "full": {
       "bins": [
         0,
-        3.025,
-        2.64,
-        2.335,
-        3.097,
-        3.352,
-        3.918,
-        2.554,
-        1.079,
+        3.03,
+        2.657,
+        2.313,
+        3.109,
+        3.353,
+        3.921,
+        2.561,
+        1.055,
         0
       ],
       "top1": 0
@@ -226,15 +236,15 @@
     },
     "lifetime": {
       "bins": [
-        0.524,
-        3.476,
-        3.812,
-        4.033,
-        4.154,
-        6.01,
-        5.019,
-        9.345,
-        10.627,
+        0.517,
+        3.483,
+        3.786,
+        3.979,
+        4.235,
+        5.956,
+        4.999,
+        9.316,
+        10.729,
         7
       ],
       "top1": 0
@@ -263,6 +273,13 @@
       "status": "available",
       "months": 90,
       "citationBuckets": 11
+    },
+    "spread": {
+      "mean": 8.409,
+      "median": 7.5,
+      "uncited": 0,
+      "i10": 8,
+      "i100": 0
     }
   },
   "window": {
@@ -288,6 +305,13 @@
       "status": "available",
       "months": 36,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 9.75,
+      "median": 10,
+      "uncited": 0,
+      "i10": 2,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -295,7 +319,7 @@
     "outputBasis": "measured",
     "citations": 1973,
     "top10": 1.5,
-    "top10ShareOfDivision": 0.00096,
+    "top10ShareOfDivision": 0.00095,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -304,13 +328,20 @@
       "yearsFromFormulation": 7.855,
       "bibcode": "2003JGRA..108.1027B",
       "date": "2003-01-00"
+    },
+    "spread": {
+      "mean": 36.537,
+      "median": 29.5,
+      "uncited": 0,
+      "i10": 43,
+      "i100": 3
     }
   },
   "query": {
     "arms": "((=abs:\"Student Nitric Oxide Explorer\" OR ((abs:SNOE) AND abs:(\"nitric oxide\" OR thermosphere OR mesosphere OR \"soft X-ray\" OR ionosphere OR auroral))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1998-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Student+Nitric+Oxide+Explorer%22+OR+%28%28abs%3ASNOE%29+AND+abs%3A%28%22nitric+oxide%22+OR+thermosphere+OR+mesosphere+OR+%22soft+X-ray%22+OR+ionosphere+OR+auroral%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:28:48.498328+00:00",
+    "fetchedAt": "2026-09-30T18:06:46.147986+00:00",
     "reconciliation": {
       "adsReturned": 53,
       "curatedOut": 0,
@@ -372,6 +403,8 @@
       "bibcode": "2003JGRA..108.1027B",
       "title": "Global observations of nitric oxide in the thermosphere",
       "firstAuthor": "Barth, C. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 138
     },
@@ -379,6 +412,8 @@
       "bibcode": "2003ApJ...593..534J",
       "title": "An Estimate of the Sun's ROSAT-PSPC X-Ray Luminosities Using SNOE-SXP Measurements",
       "firstAuthor": "Judge, Philip G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 122
     },
@@ -386,6 +421,8 @@
       "bibcode": "2002JGRA..107.1205B",
       "title": "A model of nitric oxide in the lower thermosphere",
       "firstAuthor": "Bailey, Scott M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 102
     },
@@ -393,6 +430,8 @@
       "bibcode": "2004JGRA..10911310F",
       "title": "Response of the Martian thermosphere/ionosphere to enhanced fluxes of solar soft X rays",
       "firstAuthor": "Fox, J. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 93
     },
@@ -400,6 +439,8 @@
       "bibcode": "2004JGRA..109.7301M",
       "title": "Empirical model of nitric oxide in the lower thermosphere",
       "firstAuthor": "Marsh, D. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 92
     },
@@ -407,6 +448,8 @@
       "bibcode": "2022JGRA..12730896E",
       "title": "NRLMSIS 2.1: An Empirical Model of Nitric Oxide Incorporated Into MSIS",
       "firstAuthor": "Emmert, J. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 90
     },
@@ -414,6 +457,8 @@
       "bibcode": "2001GeoRL..28.2149S",
       "title": "Effect of solar soft X-rays on the lower ionosphere",
       "firstAuthor": "Solomon, Stanley C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 75
     },
@@ -421,6 +466,8 @@
       "bibcode": "1999GeoRL..26.1259S",
       "title": "Auroral production of nitric oxide measured by the SNOE satellite",
       "firstAuthor": "Solomon, Stanley C.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 69
     },
@@ -428,6 +475,8 @@
       "bibcode": "2003GeoRL..30.1196M",
       "title": "Observations of the 5-day planetary wave in PMC measurements from the Student Nitric Oxide Explorer Satellite",
       "firstAuthor": "Merkel, A. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 66
     },
@@ -435,6 +484,8 @@
       "bibcode": "2005JGRD..11013203B",
       "title": "Observations of polar mesospheric clouds by the Student Nitric Oxide Explorer",
       "firstAuthor": "Bailey, Scott M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 65
     },
@@ -442,6 +493,8 @@
       "bibcode": "2000JGR...10527179B",
       "title": "Measurements of the solar soft X-ray irradiance by the Student Nitric Oxide Explorer: First analysis and underflight calibrations",
       "firstAuthor": "Bailey, S. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 63
     },
@@ -449,6 +502,8 @@
       "bibcode": "2009JGRA..114.5301B",
       "title": "Joule heating and nitric oxide in the thermosphere",
       "firstAuthor": "Barth, C. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 61
     },
@@ -456,6 +511,8 @@
       "bibcode": "1999GeoRL..26.1251B",
       "title": "Solar-terrestrial coupling: Solar soft X-rays and thermospheric nitric oxide",
       "firstAuthor": "Barth, Charles A.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 60
     },
@@ -463,6 +520,8 @@
       "bibcode": "2003JGRA..108.1059L",
       "title": "A new model of solar EUV irradiance variability 2. Comparisons with empirical models and observations and implications for space weather",
       "firstAuthor": "Lean, J. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 52
     },
@@ -470,6 +529,8 @@
       "bibcode": "2008GeoRL..3516814O",
       "title": "Thermospheric nitric oxide variability induced by nonmigrating tides",
       "firstAuthor": "Oberheide, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 48
     },
@@ -477,6 +538,8 @@
       "bibcode": "2008AdSpR..42..895W",
       "title": "Recent advances in observations and modeling of the solar ultraviolet and X-ray spectral irradiance",
       "firstAuthor": "Woods, Thomas N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 46
     },
@@ -484,6 +547,8 @@
       "bibcode": "2004JGRA..109.3304B",
       "title": "Comparison of a thermospheric photochemical model with Student Nitric Oxide Explorer (SNOE) observations of nitric oxide",
       "firstAuthor": "Barth, C. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 45
     },
@@ -491,6 +556,8 @@
       "bibcode": "2011JGRA..11610313B",
       "title": "Global observations of thermospheric temperature and nitric oxide from MIPAS spectra at 5.3 μm",
       "firstAuthor": "Bermejo-Pantaleón, D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 43
     },
@@ -498,6 +565,8 @@
       "bibcode": "2007ApJ...663..643J",
       "title": "The Outer Solar Atmosphere during the Maunder Minimum: A Stellar Perspective",
       "firstAuthor": "Judge, Philip G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 38
     },
@@ -505,6 +574,8 @@
       "bibcode": "2007JASTP..69.1407B",
       "title": "Hemispheric differences in Polar Mesospheric Cloud morphology observed by the Student Nitric Oxide Explorer",
       "firstAuthor": "Bailey, Scott M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 37
     }

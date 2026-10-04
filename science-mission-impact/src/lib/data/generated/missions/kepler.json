@@ -21,11 +21,14 @@
   "indices": {
     "h": 204,
     "m": 11.333,
-    "i100": 553
+    "i100": 553,
+    "g": 322,
+    "tori": 657.225,
+    "riq": 1424
   },
   "facts": {
     "papers": 4573,
-    "citations": 232524,
+    "citations": 232495,
     "publicationYears": [
       2009,
       2026
@@ -90,14 +93,14 @@
       18669,
       20905,
       22617,
-      18867
+      18839
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
-      "status": "incomplete",
-      "expected": 232524,
-      "observed": 232523,
-      "missing": 1
+      "status": "complete",
+      "expected": 232495,
+      "observed": 232495,
+      "missing": 0
     }
   },
   "windowSeries": {
@@ -192,6 +195,13 @@
     "bibcode": "2010Sci...327..977B",
     "title": "Kepler Planet-Detection Mission: Introduction and First Results",
     "firstAuthor": "Borucki, William J.",
+    "authors": [
+      "Borucki, William J.",
+      "Koch, David",
+      "Basri, Gibor",
+      "Batalha, Natalie"
+    ],
+    "authorCount": 71,
     "year": 2010,
     "citations": 3888
   },
@@ -201,13 +211,13 @@
         249.537,
         247.221,
         214.732,
-        260.569,
-        306.947,
-        290.597,
-        297.241,
-        354.604,
-        361.123,
-        442.43
+        260.62,
+        306.934,
+        290.364,
+        297.433,
+        354.537,
+        361.112,
+        442.511
       ],
       "top1": 47.374
     },
@@ -221,23 +231,23 @@
         93.528,
         110.504,
         115.117,
-        146.299,
-        184.853
+        146.254,
+        184.899
       ],
       "top1": 29
     },
     "lifetime": {
       "bins": [
-        538.613,
-        477.634,
-        470.849,
-        438.832,
-        475.571,
-        471.175,
-        403.312,
-        410.417,
-        429.614,
-        456.983
+        538.308,
+        477.774,
+        470.888,
+        438.51,
+        475.587,
+        471.397,
+        403.343,
+        410.284,
+        429.752,
+        457.157
       ],
       "top1": 40
     }
@@ -265,6 +275,13 @@
       "status": "available",
       "months": 137,
       "citationBuckets": 15
+    },
+    "spread": {
+      "mean": 26.606,
+      "median": 16,
+      "uncited": 123,
+      "i10": 2063,
+      "i100": 113
     }
   },
   "window": {
@@ -290,13 +307,20 @@
       "status": "available",
       "months": 66,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 35.869,
+      "median": 22,
+      "uncited": 36,
+      "i10": 770,
+      "i100": 62
     }
   },
   "lifetime": {
     "papers": 4573,
     "outputBasis": "measured",
-    "citations": 232524,
-    "top10": 466.542,
+    "citations": 232495,
+    "top10": 466.555,
     "top10ShareOfDivision": 0.08422,
     "top1": null,
     "top1ShareOfDivision": null,
@@ -306,13 +330,20 @@
       "yearsFromFormulation": 7.447,
       "bibcode": "2009ApJ...698.1778R",
       "date": "2009-06-00"
+    },
+    "spread": {
+      "mean": 50.841,
+      "median": 22,
+      "uncited": 296,
+      "i10": 3191,
+      "i100": 553
     }
   },
   "query": {
     "arms": "(((facility:\"Kepler\" OR (=abs:(\"Kepler mission\"~2 OR \"Kepler missions\"~2 OR \"Kepler spacecraft\"~2 OR \"Kepler satellite\"~2 OR \"Kepler telescope\"~3 OR \"Kepler photometry\"~2 OR \"Kepler data\"~2 OR \"Kepler observations\"~2 OR \"Kepler observed\"~2 OR \"Kepler light curve\"~3 OR \"Kepler light curves\"~3 OR \"Kepler targets\"~2 OR \"Kepler field\"~2 OR \"Kepler catalog\"~3 OR \"Kepler survey\"~2 OR \"Kepler candidates\"~2 OR \"Kepler sample\"~2 OR \"Kepler asteroseismology\"~3 OR \"Kepler asteroseismic\"~3 OR \"Kepler eclipsing\"~2 OR \"Kepler binary\"~2 OR \"Kepler binaries\"~2))) OR facility:K2 OR abs:/kepler[0-9]+[a-z]?/ OR ((=abs:(\"K2 mission\"~2 OR \"K2 campaign\"~3 OR \"K2 data\"~2 OR \"K2 photometry\"~2 OR \"K2 light curve\"~3 OR \"K2 observations\"~2 OR \"K2 observed\"~2 OR \"K2 TESS\"~3 OR \"K2 b\"~2 OR \"K2 planet\"~2 OR \"K2 planets\"~2) OR (abs:/k2[0-9]+[a-z]?/ AND abs:K2)) AND =abs:(star OR stars OR stellar OR planet OR planets OR planetary OR transit OR transits OR photometry OR asteroseismology OR \"light curve\" OR \"light curves\" OR Kepler OR EPIC))) AND NOT =abs:(\"Kepler supernova remnant\"~3 OR \"Kepler SNR\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2009-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28facility%3A%22Kepler%22+OR+%28%3Dabs%3A%28%22Kepler+mission%22~2+OR+%22Kepler+missions%22~2+OR+%22Kepler+spacecraft%22~2+OR+%22Kepler+satellite%22~2+OR+%22Kepler+telescope%22~3+OR+%22Kepler+photometry%22~2+OR+%22Kepler+data%22~2+OR+%22Kepler+observations%22~2+OR+%22Kepler+observed%22~2+OR+%22Kepler+light+curve%22~3+OR+%22Kepler+light+curves%22~3+OR+%22Kepler+targets%22~2+OR+%22Kepler+field%22~2+OR+%22Kepler+catalog%22~3+OR+%22Kepler+survey%22~2+OR+%22Kepler+candidates%22~2+OR+%22Kepler+sample%22~2+OR+%22Kepler+asteroseismology%22~3+OR+%22Kepler+asteroseismic%22~3+OR+%22Kepler+eclipsing%22~2+OR+%22Kepler+binary%22~2+OR+%22Kepler+binaries%22~2%29%29%29+OR+facility%3AK2+OR+abs%3A%2Fkepler%5B0-9%5D%2B%5Ba-z%5D%3F%2F+OR+%28%28%3Dabs%3A%28%22K2+mission%22~2+OR+%22K2+campaign%22~3+OR+%22K2+data%22~2+OR+%22K2+photometry%22~2+OR+%22K2+light+curve%22~3+OR+%22K2+observations%22~2+OR+%22K2+observed%22~2+OR+%22K2+TESS%22~3+OR+%22K2+b%22~2+OR+%22K2+planet%22~2+OR+%22K2+planets%22~2%29+OR+%28abs%3A%2Fk2%5B0-9%5D%2B%5Ba-z%5D%3F%2F+AND+abs%3AK2%29%29+AND+%3Dabs%3A%28star+OR+stars+OR+stellar+OR+planet+OR+planets+OR+planetary+OR+transit+OR+transits+OR+photometry+OR+asteroseismology+OR+%22light+curve%22+OR+%22light+curves%22+OR+Kepler+OR+EPIC%29%29%29+AND+NOT+%3Dabs%3A%28%22Kepler+supernova+remnant%22~3+OR+%22Kepler+SNR%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:38:26.955573+00:00",
+    "fetchedAt": "2026-09-30T18:21:50.464305+00:00",
     "reconciliation": {
       "adsReturned": 4577,
       "curatedOut": 2,
@@ -349,6 +380,8 @@
       "bibcode": "2010Sci...327..977B",
       "title": "Kepler Planet-Detection Mission: Introduction and First Results",
       "firstAuthor": "Borucki, William J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 3888
     },
@@ -356,6 +389,8 @@
       "bibcode": "2013ApJS..208....4P",
       "title": "Modules for Experiments in Stellar Astrophysics (MESA): Planets, Oscillations, Rotation, and Massive Stars",
       "firstAuthor": "Paxton, Bill",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 3608
     },
@@ -363,6 +398,8 @@
       "bibcode": "2014PASP..126..398H",
       "title": "The K2 Mission: Characterization and Early Results",
       "firstAuthor": "Howell, Steve B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 1805
     },
@@ -370,6 +407,8 @@
       "bibcode": "2013ApJ...765..131K",
       "title": "Habitable Zones around Main-sequence Stars: New Estimates",
       "firstAuthor": "Kopparapu, Ravi Kumar",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 1379
     },
@@ -377,13 +416,17 @@
       "bibcode": "2017AJ....154..109F",
       "title": "The California-Kepler Survey. III. A Gap in the Radius Distribution of Small Planets",
       "firstAuthor": "Fulton, Benjamin J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
-      "citations": 1370
+      "citations": 1369
     },
     {
       "bibcode": "2010ApJ...713L..79K",
       "title": "Kepler Mission Design, Realized Photometric Performance, and Early Science",
       "firstAuthor": "Koch, David G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 1162
     },
@@ -391,6 +434,8 @@
       "bibcode": "2012ApJS..201...15H",
       "title": "Planet Occurrence within 0.25 AU of Solar-type Stars from Kepler",
       "firstAuthor": "Howard, Andrew W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 1083
     },
@@ -398,6 +443,8 @@
       "bibcode": "2013ApJ...766...81F",
       "title": "The False Positive Rate of Kepler and the Occurrence of Planets",
       "firstAuthor": "Fressin, François",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 1046
     },
@@ -405,6 +452,8 @@
       "bibcode": "2013ApJS..204...24B",
       "title": "Planetary Candidates Observed by Kepler. III. Analysis of the First 16 Months of Data",
       "firstAuthor": "Batalha, Natalie M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 1041
     },
@@ -412,6 +461,8 @@
       "bibcode": "2012PASP..124.1000S",
       "title": "Kepler Presearch Data Conditioning II - A Bayesian Approach to Systematic Error Correction",
       "firstAuthor": "Smith, Jeffrey C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 991
     },
@@ -419,6 +470,8 @@
       "bibcode": "2015ApJ...807...45D",
       "title": "The Occurrence of Potentially Habitable Planets Orbiting M Dwarfs Estimated from the Full Kepler Dataset and an Empirical Measurement of the Detection Sensitivity",
       "firstAuthor": "Dressing, Courtney D.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 963
     },
@@ -426,6 +479,8 @@
       "bibcode": "2011ApJ...736...19B",
       "title": "Characteristics of Planetary Candidates Observed by Kepler. II. Analysis of the First Four Months of Data",
       "firstAuthor": "Borucki, William J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 953
     },
@@ -433,6 +488,8 @@
       "bibcode": "2017AJ....154..220F",
       "title": "Fast and Scalable Gaussian Process Modeling with Applications to Astronomical Time Series",
       "firstAuthor": "Foreman-Mackey, Daniel",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 948
     },
@@ -440,6 +497,8 @@
       "bibcode": "2012PASP..124..985S",
       "title": "Kepler Presearch Data Conditioning I—Architecture and Algorithms for Error Correction in Kepler Light Curves",
       "firstAuthor": "Stumpe, Martin C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 862
     },
@@ -447,20 +506,26 @@
       "bibcode": "2017ApJ...847...29O",
       "title": "The Evaporation Valley in the Kepler Planets",
       "firstAuthor": "Owen, James E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
-      "citations": 841
+      "citations": 840
     },
     {
       "bibcode": "2013ApJ...775..105O",
       "title": "Kepler Planets: A Tale of Evaporation",
       "firstAuthor": "Owen, James E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
-      "citations": 833
+      "citations": 832
     },
     {
       "bibcode": "2013PASP..125..989A",
       "title": "The NASA Exoplanet Archive: Data and Tools for Exoplanet Research",
       "firstAuthor": "Akeson, R. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 816
     },
@@ -468,6 +533,8 @@
       "bibcode": "2011AJ....142..112B",
       "title": "Kepler Input Catalog: Photometric Calibration and Stellar Classification",
       "firstAuthor": "Brown, Timothy M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 815
     },
@@ -475,6 +542,8 @@
       "bibcode": "2014ApJS..211...24M",
       "title": "Rotation Periods of 34,030 Kepler Main-sequence Stars: The Full Autocorrelation Sample",
       "firstAuthor": "McQuillan, A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 758
     },
@@ -482,6 +551,8 @@
       "bibcode": "2014ApJ...790..146F",
       "title": "Architecture of Kepler's Multi-transiting Systems. II. New Investigations with Twice as Many Candidates",
       "firstAuthor": "Fabrycky, Daniel C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 746
     }

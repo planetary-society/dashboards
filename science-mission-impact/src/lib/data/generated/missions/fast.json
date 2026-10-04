@@ -21,7 +21,10 @@
   "indices": {
     "h": 53,
     "m": 1.767,
-    "i100": 23
+    "i100": 23,
+    "g": 85,
+    "tori": 51.3,
+    "riq": 238
   },
   "facts": {
     "papers": 282,
@@ -196,52 +199,59 @@
     "bibcode": "1998GeoRL..25.2041E",
     "title": "FAST satellite observations of large-amplitude solitary structures",
     "firstAuthor": "Ergun, R. E.",
+    "authors": [
+      "Ergun, R. E.",
+      "Carlson, C. W.",
+      "McFadden, J. P.",
+      "Mozer, F. S."
+    ],
+    "authorCount": 19,
     "year": 1998,
     "citations": 512
   },
   "ranks": {
     "full": {
       "bins": [
-        35.122,
-        26.323,
-        26.988,
-        27.762,
-        26.29,
-        16.659,
-        18.958,
-        7.899,
-        13.81,
-        12.19
+        35.173,
+        26.364,
+        27.024,
+        27.726,
+        26.256,
+        16.692,
+        18.916,
+        7.849,
+        13.873,
+        12.127
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        5.763,
-        1.61,
-        4.191,
-        1.444,
-        3.501,
-        5.866,
-        2.625,
+        5.767,
+        1.612,
+        4.21,
+        1.436,
+        3.499,
+        5.847,
+        2.63,
         2,
-        3.324,
-        5.676
+        3.319,
+        5.681
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        21.763,
-        19.455,
-        31.717,
-        27.448,
-        27.4,
-        36.228,
-        29.033,
-        26.33,
-        32.477,
-        30.15
+        21.69,
+        19.366,
+        31.59,
+        27.414,
+        27.462,
+        36.435,
+        28.999,
+        26.316,
+        32.467,
+        30.262
       ],
       "top1": 4
     }
@@ -251,9 +261,9 @@
     "outputBasis": "measured",
     "citations": 1706,
     "top10": 14.325,
-    "top10ShareOfDivision": 0.00993,
+    "top10ShareOfDivision": 0.0099,
     "top1": 2,
-    "top1ShareOfDivision": 0.01386,
+    "top1ShareOfDivision": 0.01382,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.777,
@@ -269,6 +279,13 @@
       "status": "available",
       "months": 177,
       "citationBuckets": 19
+    },
+    "spread": {
+      "mean": 8.047,
+      "median": 5,
+      "uncited": 29,
+      "i10": 56,
+      "i100": 0
     }
   },
   "window": {
@@ -276,7 +293,7 @@
     "outputBasis": "measured",
     "citations": 608,
     "top10": 7.25,
-    "top10ShareOfDivision": 0.01641,
+    "top10ShareOfDivision": 0.01634,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -294,6 +311,13 @@
       "status": "available",
       "months": 36,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 16.889,
+      "median": 11,
+      "uncited": 5,
+      "i10": 20,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -301,7 +325,7 @@
     "outputBasis": "measured",
     "citations": 9574,
     "top10": 13.333,
-    "top10ShareOfDivision": 0.0085,
+    "top10ShareOfDivision": 0.00848,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -310,13 +334,20 @@
       "yearsFromFormulation": 9.158,
       "bibcode": "1998GeoRL..25.2013C",
       "date": "1998-06-00"
+    },
+    "spread": {
+      "mean": 33.95,
+      "median": 16,
+      "uncited": 16,
+      "i10": 185,
+      "i100": 23
     }
   },
   "query": {
     "arms": "((=abs:\"Fast Auroral Snapshot\" OR =abs:\"Fast Auroral Snapshots\" OR (abs:FAST AND (abs:satellite OR abs:spacecraft OR abs:mission OR abs:probe) AND (abs:aurora OR abs:auroral)) OR (abs:FAST AND (abs:satellite OR abs:spacecraft) AND (abs:ionospher* OR abs:magnetospher* OR abs:photoelectron*))) AND NOT =abs:\"Aperture Spherical\" AND NOT =abs:\"FAST events\" AND NOT =abs:\"FAST perturbations\" AND NOT =abs:\"Swarm FAST\")",
     "filters": "property:refereed AND doctype:article AND pubdate:[1996-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Fast+Auroral+Snapshot%22+OR+%3Dabs%3A%22Fast+Auroral+Snapshots%22+OR+%28abs%3AFAST+AND+%28abs%3Asatellite+OR+abs%3Aspacecraft+OR+abs%3Amission+OR+abs%3Aprobe%29+AND+%28abs%3Aaurora+OR+abs%3Aauroral%29%29+OR+%28abs%3AFAST+AND+%28abs%3Asatellite+OR+abs%3Aspacecraft%29+AND+%28abs%3Aionospher%2A+OR+abs%3Amagnetospher%2A+OR+abs%3Aphotoelectron%2A%29%29%29+AND+NOT+%3Dabs%3A%22Aperture+Spherical%22+AND+NOT+%3Dabs%3A%22FAST+events%22+AND+NOT+%3Dabs%3A%22FAST+perturbations%22+AND+NOT+%3Dabs%3A%22Swarm+FAST%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:28:23.269056+00:00",
+    "fetchedAt": "2026-09-30T18:06:25.016629+00:00",
     "reconciliation": {
       "adsReturned": 286,
       "curatedOut": 4,
@@ -690,6 +721,8 @@
       "bibcode": "1998GeoRL..25.2041E",
       "title": "FAST satellite observations of large-amplitude solitary structures",
       "firstAuthor": "Ergun, R. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 512
     },
@@ -697,6 +730,8 @@
       "bibcode": "1998GeoRL..25.2017C",
       "title": "FAST observations in the downward auroral current region: Energetic upgoing electron beams, parallel potential drops, and ion heating",
       "firstAuthor": "Carlson, C. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 276
     },
@@ -704,6 +739,8 @@
       "bibcode": "1998GeoRL..25.2025E",
       "title": "FAST satellite observations of electric field structures in the auroral zone",
       "firstAuthor": "Ergun, R. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 265
     },
@@ -711,6 +748,8 @@
       "bibcode": "1999GeoRL..26.2629P",
       "title": "Modulated electron-acoustic waves in auroral density cavities: FAST observations",
       "firstAuthor": "Pottelette, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 260
     },
@@ -718,6 +757,8 @@
       "bibcode": "2005JGRA..110.3221S",
       "title": "Factors controlling ionospheric outflows as observed at intermediate altitudes",
       "firstAuthor": "Strangeway, R. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 245
     },
@@ -725,6 +766,8 @@
       "bibcode": "1998GeoRL..25.2013C",
       "title": "The Fast Auroral SnapshoT (FAST) Mission",
       "firstAuthor": "Carlson, C. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 234
     },
@@ -732,6 +775,8 @@
       "bibcode": "2000ApJ...538..456E",
       "title": "Electron-Cyclotron Maser Driven by Charged-Particle Acceleration from Magnetic Field-aligned Electric Fields",
       "firstAuthor": "Ergun, R. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 180
     },
@@ -739,6 +784,8 @@
       "bibcode": "1998GeoRL..25.2061E",
       "title": "FAST satellite wave observations in the AKR source region",
       "firstAuthor": "Ergun, R. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 178
     },
@@ -746,6 +793,8 @@
       "bibcode": "2003AnGeo..21.1121M",
       "title": "Variations in the polar cap area during two substorm cycles",
       "firstAuthor": "Milan, S. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 171
     },
@@ -753,6 +802,8 @@
       "bibcode": "2006JGRA..11112216B",
       "title": "Observation of two distinct, rapid loss mechanisms during the 20 November 2003 radiation belt dropout event",
       "firstAuthor": "Bortnik, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 169
     },
@@ -760,6 +811,8 @@
       "bibcode": "2003JGRA..108.8003C",
       "title": "Properties of small-scale Alfvén waves and accelerated electrons from FAST",
       "firstAuthor": "Chaston, C. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 153
     },
@@ -767,6 +820,8 @@
       "bibcode": "1999GeoRL..26.1821G",
       "title": "Nonlinear two-stream instabilities as an explanation for auroral bipolar wave structures",
       "firstAuthor": "Goldman, M. V.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 150
     },
@@ -774,6 +829,8 @@
       "bibcode": "2004JGRA..109.4205C",
       "title": "Auroral ion acceleration in dispersive Alfvén waves",
       "firstAuthor": "Chaston, C. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 135
     },
@@ -781,6 +838,8 @@
       "bibcode": "1999JGR...10414453M",
       "title": "Microstructure of the auroral acceleration region as observed by FAST",
       "firstAuthor": "McFadden, J. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 1999,
       "citations": 124
     },
@@ -788,6 +847,8 @@
       "bibcode": "2002PhPl....9.3685E",
       "title": "Parallel electric fields in the upward current region of the aurora: Indirect and direct observations",
       "firstAuthor": "Ergun, R. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 124
     },
@@ -795,6 +856,8 @@
       "bibcode": "2002GeoRL..29.1535C",
       "title": "Driven Alfven waves and electron acceleration: A FAST case study",
       "firstAuthor": "Chaston, C. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 116
     },
@@ -802,6 +865,8 @@
       "bibcode": "2005JGRA..110.2211C",
       "title": "Energy deposition by Alfvén waves into the dayside auroral oval: Cluster and FAST observations",
       "firstAuthor": "Chaston, C. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 114
     },
@@ -809,6 +874,8 @@
       "bibcode": "2000GeoRL..27.4053E",
       "title": "parallel electric fields in discrete arcs",
       "firstAuthor": "Ergun, R. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 112
     },
@@ -816,6 +883,8 @@
       "bibcode": "2006AdSpR..37..315R",
       "title": "HEUVAC: A new high resolution solar EUV proxy model",
       "firstAuthor": "Richards, Philip G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 112
     },
@@ -823,6 +892,8 @@
       "bibcode": "1998GeoRL..25.2065S",
       "title": "FAST observations of VLF waves in the auroral zone: Evidence of very low plasma densities",
       "firstAuthor": "Strangeway, R. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 104
     }

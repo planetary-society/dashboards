@@ -21,11 +21,14 @@
   "indices": {
     "h": 71,
     "m": 3.087,
-    "i100": 48
+    "i100": 48,
+    "g": 123,
+    "tori": 97.5,
+    "riq": 429
   },
   "facts": {
-    "papers": 336,
-    "citations": 17860,
+    "papers": 337,
+    "citations": 17870,
     "publicationYears": [
       2004,
       2026
@@ -80,7 +83,7 @@
       7,
       5,
       4,
-      6
+      7
     ],
     "citations": [
       86,
@@ -90,7 +93,7 @@
       871,
       671,
       797,
-      775,
+      777,
       710,
       856,
       900,
@@ -105,13 +108,13 @@
       846,
       856,
       852,
-      600
+      608
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 17860,
-      "observed": 17860,
+      "expected": 17870,
+      "observed": 17870,
       "missing": 0
     }
   },
@@ -164,64 +167,71 @@
     "bibcode": "2004Sci...306.1709S",
     "title": "In Situ Evidence for an Ancient Aqueous Environment at Meridiani Planum, Mars",
     "firstAuthor": "Squyres, S. W.",
+    "authors": [
+      "Squyres, S. W.",
+      "Grotzinger, J. P.",
+      "Arvidson, R. E.",
+      "Bell, J. F."
+    ],
+    "authorCount": 19,
     "year": 2004,
-    "citations": 826
+    "citations": 827
   },
   "ranks": {
     "full": {
       "bins": [
-        40.713,
-        40.897,
-        32.944,
-        31.665,
-        23.59,
-        24.72,
-        20.277,
-        24.269,
-        17.124,
-        42.802
+        40.767,
+        40.908,
+        33.043,
+        31.576,
+        23.557,
+        24.705,
+        20.257,
+        24.281,
+        16.241,
+        43.667
       ],
       "top1": 7
     },
     "window": {
       "bins": [
-        8.642,
-        5.083,
-        4.323,
-        4.38,
-        1.571,
-        2.658,
-        0.342,
+        8.675,
+        5.064,
+        4.327,
+        4.371,
+        1.563,
+        2.665,
+        0.335,
         2,
-        7.75,
-        21.25
+        7.762,
+        21.238
       ],
       "top1": 4
     },
     "lifetime": {
       "bins": [
-        20.403,
-        29.457,
-        45.046,
-        28.15,
-        38.868,
-        20.777,
-        32.231,
-        31.448,
-        28.62,
+        21.304,
+        29.413,
+        44.927,
+        28.333,
+        37.965,
+        21.698,
+        32.252,
+        31.107,
+        29,
         61
       ],
-      "top1": 9.935
+      "top1": 10
     }
   },
   "full": {
     "papers": 299,
     "outputBasis": "measured",
-    "citations": 4733,
-    "top10": 29.842,
-    "top10ShareOfDivision": 0.02735,
+    "citations": 4734,
+    "top10": 30.579,
+    "top10ShareOfDivision": 0.02803,
     "top1": 6.5,
-    "top1ShareOfDivision": 0.05957,
+    "top1ShareOfDivision": 0.05958,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.35,
@@ -237,6 +247,13 @@
       "status": "available",
       "months": 205,
       "citationBuckets": 21
+    },
+    "spread": {
+      "mean": 15.833,
+      "median": 7,
+      "uncited": 30,
+      "i10": 119,
+      "i100": 7
     }
   },
   "window": {
@@ -244,9 +261,9 @@
     "outputBasis": "measured",
     "citations": 2236,
     "top10": 12.5,
-    "top10ShareOfDivision": 0.02588,
+    "top10ShareOfDivision": 0.02589,
     "top1": 4,
-    "top1ShareOfDivision": 0.08282,
+    "top1ShareOfDivision": 0.08285,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.851,
@@ -262,12 +279,19 @@
       "status": "available",
       "months": 26,
       "citationBuckets": 6
+    },
+    "spread": {
+      "mean": 38.552,
+      "median": 26.5,
+      "uncited": 6,
+      "i10": 34,
+      "i100": 7
     }
   },
   "lifetime": {
-    "papers": 336,
+    "papers": 337,
     "outputBasis": "measured",
-    "citations": 17860,
+    "citations": 17870,
     "top10": 24.167,
     "top10ShareOfDivision": 0.01773,
     "top1": null,
@@ -278,21 +302,28 @@
       "yearsFromFormulation": 4.586,
       "bibcode": "2004Sci...306.1698S",
       "date": "2004-12-00"
+    },
+    "spread": {
+      "mean": 53.027,
+      "median": 20,
+      "uncited": 18,
+      "i10": 230,
+      "i100": 48
     }
   },
   "query": {
     "arms": "(((=abs:\"Mars Exploration Rover\" OR =abs:\"Mars Exploration Rovers\" OR =abs:\"Spirit rover\" OR =abs:\"Opportunity rover\" OR (abs:Spirit AND (abs:\"MER-A\" OR =abs:\"Mars Rover\" OR =abs:\"Mars Rovers\" OR =abs:\"Mars roving\" OR abs:Gusev)) OR (abs:Opportunity AND (abs:\"MER-B\" OR =abs:\"Mars Rover\" OR =abs:\"Mars Rovers\" OR =abs:\"Mars roving\" OR =abs:\"Meridiani Planum\")) OR (((abs:Pancam AND NOT abs:ExoMars) OR =abs:\"Mini-TES\" OR =abs:\"Microscopic Imager\" OR =abs:\"Rock Abrasion Tool\") AND (abs:Gusev OR =abs:Meridiani OR =abs:\"Columbia Hills\" OR =abs:\"Home Plate\" OR =abs:\"Victoria crater\" OR =abs:\"Endeavour crater\" OR =abs:\"Endurance crater\"))) AND ((=abs:\"Opportunity rover\" OR =abs:\"Opportunity rovers\" OR =abs:\"rover Opportunity\" OR =abs:\"rovers Opportunity\" OR =abs:\"Spirit and Opportunity\" OR =abs:\"Opportunity and Spirit\" OR =abs:\"MER Opportunity\" OR =abs:\"Opportunity Mars Exploration Rover\" OR =abs:\"Opportunity Mars Exploration Rovers\" OR =abs:\"Opportunity Mars rover\" OR =abs:\"Opportunity MER\" OR =abs:\"Opportunity tracking\" OR abs:\"MER-B\" OR =abs:\"Opportunity site\" OR =abs:\"Opportunity landing\" OR =abs:\"Opportunity mission\" OR =abs:\"Opportunity missions\" OR =abs:\"Opportunity traverse\" OR =abs:\"Opportunity data\" OR =abs:\"Opportunity Mini-TES\" OR =abs:\"Opportunity Mössbauer\" OR =abs:Meridiani OR =abs:\"Burns formation\" OR =abs:\"Endeavour crater\" OR =abs:\"Eagle crater\" OR =abs:\"Endurance crater\" OR =abs:\"Victoria crater\" OR =abs:\"hematite spherules\" OR =abs:\"Marathon Valley\" OR =abs:\"Perseverance Valley\" OR =abs:\"Erebus crater\" OR =abs:\"Bounce Rock\" OR =abs:\"Cape York\") OR (=abs:\"Mars Exploration Rovers\" AND NOT ((abs:Spirit AND NOT =abs:\"Spirit of St. Louis\") OR abs:\"MER-A\" OR abs:Gusev OR =abs:\"Columbia Hills\" OR =abs:\"Husband Hill\" OR =abs:\"Home Plate\" OR abs:Wishstone OR =abs:\"Columbia Memorial Station\")))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2004-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Mars+Exploration+Rover%22+OR+%3Dabs%3A%22Mars+Exploration+Rovers%22+OR+%3Dabs%3A%22Spirit+rover%22+OR+%3Dabs%3A%22Opportunity+rover%22+OR+%28abs%3ASpirit+AND+%28abs%3A%22MER-A%22+OR+%3Dabs%3A%22Mars+Rover%22+OR+%3Dabs%3A%22Mars+Rovers%22+OR+%3Dabs%3A%22Mars+roving%22+OR+abs%3AGusev%29%29+OR+%28abs%3AOpportunity+AND+%28abs%3A%22MER-B%22+OR+%3Dabs%3A%22Mars+Rover%22+OR+%3Dabs%3A%22Mars+Rovers%22+OR+%3Dabs%3A%22Mars+roving%22+OR+%3Dabs%3A%22Meridiani+Planum%22%29%29+OR+%28%28%28abs%3APancam+AND+NOT+abs%3AExoMars%29+OR+%3Dabs%3A%22Mini-TES%22+OR+%3Dabs%3A%22Microscopic+Imager%22+OR+%3Dabs%3A%22Rock+Abrasion+Tool%22%29+AND+%28abs%3AGusev+OR+%3Dabs%3AMeridiani+OR+%3Dabs%3A%22Columbia+Hills%22+OR+%3Dabs%3A%22Home+Plate%22+OR+%3Dabs%3A%22Victoria+crater%22+OR+%3Dabs%3A%22Endeavour+crater%22+OR+%3Dabs%3A%22Endurance+crater%22%29%29%29+AND+%28%28%3Dabs%3A%22Opportunity+rover%22+OR+%3Dabs%3A%22Opportunity+rovers%22+OR+%3Dabs%3A%22rover+Opportunity%22+OR+%3Dabs%3A%22rovers+Opportunity%22+OR+%3Dabs%3A%22Spirit+and+Opportunity%22+OR+%3Dabs%3A%22Opportunity+and+Spirit%22+OR+%3Dabs%3A%22MER+Opportunity%22+OR+%3Dabs%3A%22Opportunity+Mars+Exploration+Rover%22+OR+%3Dabs%3A%22Opportunity+Mars+Exploration+Rovers%22+OR+%3Dabs%3A%22Opportunity+Mars+rover%22+OR+%3Dabs%3A%22Opportunity+MER%22+OR+%3Dabs%3A%22Opportunity+tracking%22+OR+abs%3A%22MER-B%22+OR+%3Dabs%3A%22Opportunity+site%22+OR+%3Dabs%3A%22Opportunity+landing%22+OR+%3Dabs%3A%22Opportunity+mission%22+OR+%3Dabs%3A%22Opportunity+missions%22+OR+%3Dabs%3A%22Opportunity+traverse%22+OR+%3Dabs%3A%22Opportunity+data%22+OR+%3Dabs%3A%22Opportunity+Mini-TES%22+OR+%3Dabs%3A%22Opportunity+M%C3%B6ssbauer%22+OR+%3Dabs%3AMeridiani+OR+%3Dabs%3A%22Burns+formation%22+OR+%3Dabs%3A%22Endeavour+crater%22+OR+%3Dabs%3A%22Eagle+crater%22+OR+%3Dabs%3A%22Endurance+crater%22+OR+%3Dabs%3A%22Victoria+crater%22+OR+%3Dabs%3A%22hematite+spherules%22+OR+%3Dabs%3A%22Marathon+Valley%22+OR+%3Dabs%3A%22Perseverance+Valley%22+OR+%3Dabs%3A%22Erebus+crater%22+OR+%3Dabs%3A%22Bounce+Rock%22+OR+%3Dabs%3A%22Cape+York%22%29+OR+%28%3Dabs%3A%22Mars+Exploration+Rovers%22+AND+NOT+%28%28abs%3ASpirit+AND+NOT+%3Dabs%3A%22Spirit+of+St.+Louis%22%29+OR+abs%3A%22MER-A%22+OR+abs%3AGusev+OR+%3Dabs%3A%22Columbia+Hills%22+OR+%3Dabs%3A%22Husband+Hill%22+OR+%3Dabs%3A%22Home+Plate%22+OR+abs%3AWishstone+OR+%3Dabs%3A%22Columbia+Memorial+Station%22%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:27:37.337690+00:00",
+    "fetchedAt": "2026-09-30T17:51:20.164255+00:00",
     "reconciliation": {
-      "adsReturned": 343,
+      "adsReturned": 344,
       "curatedOut": 7,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 336
+      "final": 337
     }
   },
   "curation": {
@@ -377,20 +408,26 @@
       "bibcode": "2004Sci...306.1709S",
       "title": "In Situ Evidence for an Ancient Aqueous Environment at Meridiani Planum, Mars",
       "firstAuthor": "Squyres, S. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
-      "citations": 826
+      "citations": 827
     },
     {
       "bibcode": "2004Sci...306.1740K",
       "title": "Jarosite and Hematite at Meridiani Planum from Opportunity's Mössbauer Spectrometer",
       "firstAuthor": "Klingelhöfer, G.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
-      "citations": 657
+      "citations": 658
     },
     {
       "bibcode": "2005E&PSL.240...11G",
       "title": "Stratigraphy and sedimentology of a dry to wet eolian depositional system, Burns formation, Meridiani Planum, Mars",
       "firstAuthor": "Grotzinger, J. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 506
     },
@@ -398,6 +435,8 @@
       "bibcode": "2004Sci...306.1698S",
       "title": "The Opportunity Rover's Athena Science Investigation at Meridiani Planum, Mars",
       "firstAuthor": "Squyres, S. W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 422
     },
@@ -405,6 +444,8 @@
       "bibcode": "2015Icar..251...65M",
       "title": "Eight-year climatology of dust optical depth on Mars",
       "firstAuthor": "Montabone, L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 422
     },
@@ -412,6 +453,8 @@
       "bibcode": "2005Natur.436...49Y",
       "title": "An integrated view of the chemistry and mineralogy of martian soils",
       "firstAuthor": "Yen, Albert S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 349
     },
@@ -419,6 +462,8 @@
       "bibcode": "2004Sci...306.1733C",
       "title": "Mineralogy at Meridiani Planum from the Mini-TES Experiment on the Opportunity Rover",
       "firstAuthor": "Christensen, P. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 347
     },
@@ -426,6 +471,8 @@
       "bibcode": "2004Sci...306.1746R",
       "title": "Chemistry of Rocks and Soils at Meridiani Planum from the Alpha Particle X-ray Spectrometer",
       "firstAuthor": "Rieder, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 346
     },
@@ -433,6 +480,8 @@
       "bibcode": "2005E&PSL.240...73C",
       "title": "Chemistry and mineralogy of outcrops at Meridiani Planum",
       "firstAuthor": "Clark, B. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 341
     },
@@ -440,6 +489,8 @@
       "bibcode": "2008JGRE..113.0A24K",
       "title": "Ultrahigh resolution topographic mapping of Mars with MRO HiRISE stereo images: Meter-scale slopes of candidate Phoenix landing sites",
       "firstAuthor": "Kirk, R. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 327
     },
@@ -447,6 +498,8 @@
       "bibcode": "2005E&PSL.240....1S",
       "title": "Sedimentary rocks at Meridiani Planum: Origin, diagenesis, and implications for life on Mars",
       "firstAuthor": "Squyres, Steven W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 283
     },
@@ -454,13 +507,17 @@
       "bibcode": "2005E&PSL.240..149F",
       "title": "The Río Tinto Basin, Spain: Mineralogy, sedimentary geobiology, and implications for interpretation of outcrop rocks at Meridiani Planum, Mars",
       "firstAuthor": "Fernández-Remolar, David C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
-      "citations": 245
+      "citations": 246
     },
     {
       "bibcode": "2013Sci...341E...5B",
       "title": "Curiosity at Gale Crater, Mars: Characterization and Analysis of the Rocknest Sand Shadow",
       "firstAuthor": "Blake, D. F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 242
     },
@@ -468,6 +525,8 @@
       "bibcode": "2005E&PSL.240..122T",
       "title": "Geochemical modeling of evaporation processes on Mars: Insight from the sedimentary record at Meridiani Planum",
       "firstAuthor": "Tosca, N. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 229
     },
@@ -475,6 +534,8 @@
       "bibcode": "2005Natur.436...58S",
       "title": "Aeolian processes at the Mars Exploration Rover Meridiani Planum landing site",
       "firstAuthor": "Sullivan, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 226
     },
@@ -482,6 +543,8 @@
       "bibcode": "2006AREPS..34...83D",
       "title": "Mössbauer Spectroscopy of Earth and Planetary Materials",
       "firstAuthor": "Dyar, M. Darby",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 223
     },
@@ -489,6 +552,8 @@
       "bibcode": "2007Natur.446..163A",
       "title": "Meridiani Planum and the global hydrology of Mars",
       "firstAuthor": "Andrews-Hanna, Jeffrey C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2007,
       "citations": 218
     },
@@ -496,6 +561,8 @@
       "bibcode": "2004Sci...306.1753L",
       "title": "Atmospheric Imaging Results from the Mars Exploration Rovers: Spirit and Opportunity",
       "firstAuthor": "Lemmon, M. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 210
     },
@@ -503,6 +570,8 @@
       "bibcode": "2009JGRE..114.0D04W",
       "title": "Wavelength dependence of dust aerosol single scattering albedo as observed by the Compact Reconnaissance Imaging Spectrometer",
       "firstAuthor": "Wolff, M. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 205
     },
@@ -510,11 +579,13 @@
       "bibcode": "2006JGRE..11112S10G",
       "title": "Erosion rates at the Mars Exploration Rover landing sites and long-term climate change on Mars",
       "firstAuthor": "Golombek, M. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 203
     }
   ],
   "papersFile": {
-    "rows": 336
+    "rows": 337
   }
 }

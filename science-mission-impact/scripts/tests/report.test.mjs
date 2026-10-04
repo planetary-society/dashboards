@@ -89,16 +89,19 @@ const site = {
 	},
 };
 
+// A DivisionScopeStats reduced to the two cutoffs the report reads.
+const pool = (ten, one) => ({ cutoffs: [{ percent: 1, citations: one, papers: 0 }, { percent: 10, citations: ten, papers: 0 }] });
+
 const divisions = [
 	{
 		slug: 'astro',
 		name: 'Astrophysics',
-		cutoffs: { full: { 10: 42, 1: 101 }, window: { 10: 39, 1: 90 }, lifetime: { 10: 70, 1: 227 } },
+		stats: { full: pool(42, 101), window: pool(39, 90), lifetime: pool(70, 227) },
 	},
 	{
 		slug: 'bps',
 		name: 'Bio + Phys',
-		cutoffs: { full: null, window: null, lifetime: null },
+		stats: { full: null, window: null, lifetime: null },
 	},
 ];
 
@@ -410,8 +413,8 @@ describe('formatReport deltas', () => {
 		const previousDivisions = structuredClone(
 			Object.fromEntries(divisions.map((d) => [d.slug, d])),
 		);
-		previousDivisions.astro.cutoffs.window[10] = 37;
-		previousDivisions.astro.cutoffs.full[10] = 40;
+		previousDivisions.astro.stats.window.cutoffs[1].citations = 37;
+		previousDivisions.astro.stats.full.cutoffs[1].citations = 40;
 
 		const text = squeeze(
 			formatReport({

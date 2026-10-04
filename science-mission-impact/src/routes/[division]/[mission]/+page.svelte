@@ -2,10 +2,9 @@
 	import Seo from '$lib/ui/Seo.svelte';
 	import EntityHeader from '$lib/ui/EntityHeader.svelte';
 	import MostCited from '$lib/ui/MostCited.svelte';
-	import ViewSentence from '$lib/ui/ViewSentence.svelte';
-	import Footnote from '$lib/ui/Footnote.svelte';
+	import ScopeSwitch from '$lib/ui/ScopeSwitch.svelte';
 	import AccumulationPair from '$lib/charts/AccumulationPair.svelte';
-	import RankHistogram from '$lib/charts/RankHistogram.svelte';
+	import MeasureTable from '$lib/ui/MeasureTable.svelte';
 	import QueryBlock from '$lib/mission/QueryBlock.svelte';
 	import CurationLists from '$lib/mission/CurationLists.svelte';
 	import PaperBrowser from '$lib/mission/PaperBrowser.svelte';
@@ -14,7 +13,7 @@
 	import { int, money, yearSpan, plural, longDate, weight } from '$lib/format.js';
 	import { fullWindowLabel } from '$lib/copy/window.js';
 	import { view } from '$lib/state/view.svelte.js';
-	import { viewNotes } from '$lib/copy/footnotes.js';
+	import { missionMeasureGroups } from '$lib/copy/measures.js';
 
 	let { data } = $props();
 	const m = $derived(data.mission);
@@ -64,37 +63,42 @@
 		<AccumulationPair lifetime={m.lifetimeSeries} window={m.windowSeries} policy={site.windowPolicy} dates={m.meta.dates} />
 
 		<MostCited paper={m.mostCited} />
+	{/if}
 
-		{#if Object.values(m.ranks).some(Boolean)}
+	<!-- The scope bar sticks over every section that reads view.scope; provenance between them simply scrolls under it. -->
+	<div class="scoped">
+		{#if f.papers > 0}
+			<ScopeSwitch {site} />
+
 			<section>
-				<h2 class="chart-title">
-					<ViewSentence lead="Where this mission’s papers rank among all {m.divisionName} mission papers," showTop={false} />
-				</h2>
-				<RankHistogram ranks={m.ranks[view.scope]} />
-				<Footnote ids={['ranks', view.scope, 'shared', 'hindex', 'i100']} />
+				<h2 class="chart-title">Key measures</h2>
+				<MeasureTable groups={missionMeasureGroups(m, view.scope, site)} />
+			</section>
+
+			<section>
+				<h2 class="chart-title">Tracked publications</h2>
+				<PaperBrowser missionId={m.id} name={m.name} initial={m.topCited} file={m.papersFile} />
 			</section>
 		{/if}
-	{/if}
 
-	{#if hasProvenance}
-		<section>
-			<h2 class="chart-title">How we found these papers</h2>
-			<QueryBlock query={m.query} name={m.name} />
-			<CurationLists curation={m.curation} />
-		</section>
-	{/if}
-
-	{#if f.papers > 0}
-		<section>
-			<h2 class="chart-title">Tracked publications</h2>
-			<PaperBrowser missionId={m.id} name={m.name} initial={m.topCited} file={m.papersFile} />
-			<Footnote ids={['publications', ...viewNotes(view), 'shared']} />
-		</section>
-	{/if}
+		{#if hasProvenance}
+			<section>
+				<h2 class="chart-title">How we found these papers</h2>
+				<QueryBlock query={m.query} name={m.name} />
+				<CurationLists curation={m.curation} />
+			</section>
+		{/if}
+	</div>
 </div>
 
 <style>
-	.page > :global(section) {
+	.page > :global(section),
+	.scoped,
+	.scoped > :global(section) {
 		margin-top: 88px;
+	}
+
+	.scoped > :global(section:first-of-type) {
+		margin-top: 32px;
 	}
 </style>

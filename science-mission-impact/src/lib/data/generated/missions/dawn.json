@@ -21,11 +21,14 @@
   "indices": {
     "h": 59,
     "m": 3.688,
-    "i100": 27
+    "i100": 27,
+    "g": 93,
+    "tori": 36.368,
+    "riq": 354
   },
   "facts": {
     "papers": 425,
-    "citations": 13481,
+    "citations": 13482,
     "publicationYears": [
       2011,
       2026
@@ -84,13 +87,13 @@
       853,
       818,
       908,
-      622
+      623
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 13481,
-      "observed": 13481,
+      "expected": 13482,
+      "observed": 13482,
       "missing": 0
     }
   },
@@ -205,51 +208,58 @@
     "bibcode": "2012Sci...336..684R",
     "title": "Dawn at Vesta: Testing the Protoplanetary Paradigm",
     "firstAuthor": "Russell, C. T.",
+    "authors": [
+      "Russell, C. T.",
+      "Raymond, C. A.",
+      "Coradini, A.",
+      "McSween, H. Y."
+    ],
+    "authorCount": 28,
     "year": 2012,
     "citations": 455
   },
   "ranks": {
     "full": {
       "bins": [
-        16.672,
-        25.564,
-        30.973,
-        24.206,
-        26.541,
-        33.749,
-        35.463,
-        42.674,
-        47.358,
-        53.802
+        16.7,
+        25.597,
+        31.038,
+        24.134,
+        26.534,
+        33.756,
+        35.414,
+        42.708,
+        47.368,
+        53.75
       ],
-      "top1": 6.031
+      "top1": 6.029
     },
     "window": {
       "bins": [
-        9.982,
-        24.546,
-        20.665,
-        17.522,
-        22.914,
-        20.638,
-        24.97,
-        24.583,
-        28.93,
-        33.25
+        10.006,
+        24.645,
+        20.612,
+        17.546,
+        22.863,
+        20.647,
+        25.009,
+        24.515,
+        28.919,
+        33.238
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        31.641,
-        39.45,
-        41.126,
-        48.006,
-        50.104,
-        50.126,
-        49.479,
-        47.207,
-        34.86,
+        31.362,
+        39.57,
+        40.882,
+        48.098,
+        50.333,
+        49.678,
+        49.971,
+        47.157,
+        34.95,
         33
       ],
       "top1": 1
@@ -259,10 +269,10 @@
     "papers": 337,
     "outputBasis": "measured",
     "citations": 6462,
-    "top10": 60.875,
-    "top10ShareOfDivision": 0.05579,
-    "top1": 6.031,
-    "top1ShareOfDivision": 0.05528,
+    "top10": 60.892,
+    "top10ShareOfDivision": 0.05581,
+    "top1": 6.029,
+    "top1ShareOfDivision": 0.05526,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.378,
@@ -278,16 +288,23 @@
       "status": "available",
       "months": 111,
       "citationBuckets": 13
+    },
+    "spread": {
+      "mean": 19.175,
+      "median": 12,
+      "uncited": 11,
+      "i10": 201,
+      "i100": 6
     }
   },
   "window": {
     "papers": 228,
     "outputBasis": "measured",
     "citations": 5083,
-    "top10": 28.65,
-    "top10ShareOfDivision": 0.05932,
+    "top10": 28.6,
+    "top10ShareOfDivision": 0.05924,
     "top1": 2,
-    "top1ShareOfDivision": 0.04141,
+    "top1ShareOfDivision": 0.04143,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.378,
@@ -303,12 +320,19 @@
       "status": "available",
       "months": 83,
       "citationBuckets": 11
+    },
+    "spread": {
+      "mean": 22.294,
+      "median": 14,
+      "uncited": 8,
+      "i10": 138,
+      "i100": 6
     }
   },
   "lifetime": {
     "papers": 425,
     "outputBasis": "measured",
-    "citations": 13481,
+    "citations": 13482,
     "top10": 40.15,
     "top10ShareOfDivision": 0.02946,
     "top1": null,
@@ -319,13 +343,20 @@
       "yearsFromFormulation": 9.248,
       "bibcode": "2011SSRv..163....3R",
       "date": "2011-12-00"
+    },
+    "spread": {
+      "mean": 31.722,
+      "median": 18,
+      "uncited": 22,
+      "i10": 283,
+      "i100": 27
     }
   },
   "query": {
     "arms": "((=abs:\"Dawn mission\" OR =abs:\"Dawn spacecraft\" OR ((=abs:Dawn OR abs:VIR) AND (abs:Vesta OR abs:Ceres))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2011-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Dawn+mission%22+OR+%3Dabs%3A%22Dawn+spacecraft%22+OR+%28%28%3Dabs%3ADawn+OR+abs%3AVIR%29+AND+%28abs%3AVesta+OR+abs%3ACeres%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2011-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:28:34.039098+00:00",
+    "fetchedAt": "2026-09-30T17:52:27.246573+00:00",
     "reconciliation": {
       "adsReturned": 431,
       "curatedOut": 6,
@@ -419,6 +450,8 @@
       "bibcode": "2012Sci...336..684R",
       "title": "Dawn at Vesta: Testing the Protoplanetary Paradigm",
       "firstAuthor": "Russell, C. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 455
     },
@@ -426,6 +459,8 @@
       "bibcode": "2011SSRv..163..263S",
       "title": "The Dawn Framing Camera",
       "firstAuthor": "Sierks, H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 280
     },
@@ -433,6 +468,8 @@
       "bibcode": "2012Sci...336..697D",
       "title": "Spectroscopic Characterization of Mineralogy and Its Diversity Across Vesta",
       "firstAuthor": "De Sanctis, M. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 257
     },
@@ -440,6 +477,8 @@
       "bibcode": "2012Sci...338..242P",
       "title": "Elemental Mapping by Dawn Reveals Exogenic H in Vesta’s Regolith",
       "firstAuthor": "Prettyman, Thomas H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 219
     },
@@ -447,6 +486,8 @@
       "bibcode": "2012Sci...336..690M",
       "title": "The Violent Collisional History of Asteroid 4 Vesta",
       "firstAuthor": "Marchi, S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 217
     },
@@ -454,6 +495,8 @@
       "bibcode": "2012Sci...336..687J",
       "title": "Vesta’s Shape and Morphology",
       "firstAuthor": "Jaumann, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 212
     },
@@ -461,6 +504,8 @@
       "bibcode": "2011SSRv..163....3R",
       "title": "The Dawn Mission to Vesta and Ceres",
       "firstAuthor": "Russell, C. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 210
     },
@@ -468,6 +513,8 @@
       "bibcode": "2012Sci...336..694S",
       "title": "The Geologically Recent Giant Impact Basins at Vesta’s South Pole",
       "firstAuthor": "Schenk, Paul",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 185
     },
@@ -475,6 +522,8 @@
       "bibcode": "2016Sci...353.1008R",
       "title": "Dawn arrives at Ceres: Exploration of a small, volatile-rich world",
       "firstAuthor": "Russell, C. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 185
     },
@@ -482,6 +531,8 @@
       "bibcode": "2013M&PS...48.2090M",
       "title": "Dawn; the Vesta-HED connection; and the geologic context for eucrites, diogenites, and howardites",
       "firstAuthor": "McSween, Harry Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 182
     },
@@ -489,6 +540,8 @@
       "bibcode": "2016Natur.537..515P",
       "title": "A partially differentiated interior for (1) Ceres deduced from its gravity field and shape",
       "firstAuthor": "Park, R. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 182
     },
@@ -496,6 +549,8 @@
       "bibcode": "2011SSRv..163..371P",
       "title": "Dawn's Gamma Ray and Neutron Detector",
       "firstAuthor": "Prettyman, Thomas H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 175
     },
@@ -503,6 +558,8 @@
       "bibcode": "2012Sci...336..700R",
       "title": "Color and Albedo Heterogeneity of Vesta from Dawn",
       "firstAuthor": "Reddy, Vishnu",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 165
     },
@@ -510,6 +567,8 @@
       "bibcode": "2012Icar..221..544R",
       "title": "Delivery of dark material to Vesta via carbonaceous chondritic impacts",
       "firstAuthor": "Reddy, Vishnu",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 162
     },
@@ -517,6 +576,8 @@
       "bibcode": "2017Sci...355...55P",
       "title": "Extensive water ice within Ceres’ aqueously altered regolith: Evidence from nuclear spectroscopy",
       "firstAuthor": "Prettyman, T. H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 160
     },
@@ -524,6 +585,8 @@
       "bibcode": "2017Sci...355..719D",
       "title": "Localized aliphatic organic material on the surface of Ceres",
       "firstAuthor": "De Sanctis, M. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 152
     },
@@ -531,6 +594,8 @@
       "bibcode": "2016Sci...353.4279A",
       "title": "Distribution of phyllosilicates on the surface of Ceres",
       "firstAuthor": "Ammannito, E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 147
     },
@@ -538,6 +603,8 @@
       "bibcode": "2013M&PS...48.2333M",
       "title": "The origin of eucrites, diogenites, and olivine diogenites: Magma ocean crystallization and shallow magma chamber processes on Vesta",
       "firstAuthor": "Mandler, Ben E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 138
     },
@@ -545,6 +612,8 @@
       "bibcode": "2016Sci...353.4286R",
       "title": "Cryovolcanism on Ceres",
       "firstAuthor": "Ruesch, O.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 136
     },
@@ -552,6 +621,8 @@
       "bibcode": "2016Sci...353.4759H",
       "title": "Cratering on Ceres: Implications for its crust and evolution",
       "firstAuthor": "Hiesinger, H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 124
     }

@@ -21,11 +21,14 @@
   "indices": {
     "h": 67,
     "m": 2.31,
-    "i100": 37
+    "i100": 37,
+    "g": 109,
+    "tori": 119.996,
+    "riq": 377
   },
   "facts": {
-    "papers": 298,
-    "citations": 14567,
+    "papers": 299,
+    "citations": 14579,
     "publicationYears": [
       1998,
       2026
@@ -92,7 +95,7 @@
       2,
       5,
       5,
-      5
+      6
     ],
     "citations": [
       10,
@@ -123,13 +126,13 @@
       1112,
       939,
       936,
-      754
+      766
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 14567,
-      "observed": 14567,
+      "expected": 14579,
+      "observed": 14579,
       "missing": 0
     }
   },
@@ -193,19 +196,26 @@
     "bibcode": "2000JGR...105.4197J",
     "title": "Major lunar crustal terranes: Surface expressions and crust-mantle origins",
     "firstAuthor": "Jolliff, Bradley L.",
+    "authors": [
+      "Jolliff, Bradley L.",
+      "Gillis, Jeffrey J.",
+      "Haskin, Larry A.",
+      "Korotev, Randy L."
+    ],
+    "authorCount": 5,
     "year": 2000,
-    "citations": 883
+    "citations": 885
   },
   "ranks": {
     "full": {
       "bins": [
-        15.891,
-        2.858,
-        3.338,
-        1.865,
-        1.122,
-        2.867,
-        2.059,
+        15.9,
+        2.854,
+        3.341,
+        1.86,
+        1.121,
+        2.875,
+        2.048,
         6,
         4,
         7
@@ -214,31 +224,31 @@
     },
     "window": {
       "bins": [
-        14.982,
-        2.881,
-        2.185,
-        1.952,
-        1.179,
-        2.479,
-        2.981,
-        3.301,
-        4.06,
+        15.006,
+        2.863,
+        2.196,
+        1.934,
+        1.192,
+        2.473,
+        3,
+        3.283,
+        4.052,
         5
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        24.537,
-        20.857,
-        28.355,
-        22.306,
         25.406,
-        28.291,
-        31.977,
-        38.27,
-        29.981,
-        48.019
+        20.882,
+        28.272,
+        22.418,
+        25.418,
+        28.206,
+        31.971,
+        38.427,
+        29.933,
+        48.067
       ],
       "top1": 3
     }
@@ -266,6 +276,13 @@
       "status": "available",
       "months": 42,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 13.426,
+      "median": 6,
+      "uncited": 14,
+      "i10": 21,
+      "i100": 0
     }
   },
   "window": {
@@ -273,7 +290,7 @@
     "outputBasis": "measured",
     "citations": 578,
     "top10": 5,
-    "top10ShareOfDivision": 0.01035,
+    "top10ShareOfDivision": 0.01036,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -291,14 +308,21 @@
       "status": "available",
       "months": 36,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 14.098,
+      "median": 6,
+      "uncited": 13,
+      "i10": 18,
+      "i100": 0
     }
   },
   "lifetime": {
-    "papers": 298,
+    "papers": 299,
     "outputBasis": "measured",
-    "citations": 14567,
+    "citations": 14579,
     "top10": 25,
-    "top10ShareOfDivision": 0.01834,
+    "top10ShareOfDivision": 0.01835,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -307,21 +331,28 @@
       "yearsFromFormulation": 3.337,
       "bibcode": "1998Sci...281.1476K",
       "date": "1998-09-00"
+    },
+    "spread": {
+      "mean": 48.759,
+      "median": 25,
+      "uncited": 21,
+      "i10": 215,
+      "i100": 37
     }
   },
   "query": {
     "arms": "((=abs:\"Lunar Prospector\" OR (abs:LPNS AND abs:(lunar OR Moon OR neutron))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1998-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Prospector%22+OR+%28abs%3ALPNS+AND+abs%3A%28lunar+OR+Moon+OR+neutron%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-26T22:26:42.728872+00:00",
+    "fetchedAt": "2026-09-30T17:50:18.193432+00:00",
     "reconciliation": {
-      "adsReturned": 305,
+      "adsReturned": 306,
       "curatedOut": 7,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 298
+      "final": 299
     }
   },
   "curation": {
@@ -398,27 +429,35 @@
       "bibcode": "2000JGR...105.4197J",
       "title": "Major lunar crustal terranes: Surface expressions and crust-mantle origins",
       "firstAuthor": "Jolliff, Bradley L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
-      "citations": 883
+      "citations": 885
     },
     {
       "bibcode": "1998Sci...281.1496F",
       "title": "Fluxes of Fast and Epithermal Neutrons from Lunar Prospector: Evidence for Water Ice at the Lunar Poles",
       "firstAuthor": "Feldman, W. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
-      "citations": 531
+      "citations": 532
     },
     {
       "bibcode": "2006JGRE..11112007P",
       "title": "Elemental composition of the lunar surface: Analysis of gamma ray spectroscopy data from Lunar Prospector",
       "firstAuthor": "Prettyman, T. H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
-      "citations": 348
+      "citations": 350
     },
     {
       "bibcode": "1998Sci...281.1484L",
       "title": "Global Elemental Maps of the Moon: The Lunar Prospector Gamma-Ray Spectrometer",
       "firstAuthor": "Lawrence, D. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 314
     },
@@ -426,6 +465,8 @@
       "bibcode": "2001Icar..150....1K",
       "title": "Recent Gravity Models as a Result of the Lunar Prospector Mission",
       "firstAuthor": "Konopliv, A. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 290
     },
@@ -433,6 +474,8 @@
       "bibcode": "2001JGR...10623231F",
       "title": "Evidence for water ice near the lunar poles",
       "firstAuthor": "Feldman, W. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 268
     },
@@ -440,6 +483,8 @@
       "bibcode": "2011P&SS...59.1326S",
       "title": "Optical measurements of the Moon as a tool to study its surface",
       "firstAuthor": "Shkuratov, Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 257
     },
@@ -447,6 +492,8 @@
       "bibcode": "2000JGR...105.4175F",
       "title": "Polar hydrogen deposits on the Moon",
       "firstAuthor": "Feldman, W. C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 233
     },
@@ -454,6 +501,8 @@
       "bibcode": "1998Sci...281.1476K",
       "title": "Improved Gravity Field of the Moon from Lunar Prospector",
       "firstAuthor": "Konopliv, A. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 231
     },
@@ -461,6 +510,8 @@
       "bibcode": "1998Sci...281.1480L",
       "title": "Lunar Surface Magnetic Fields and Their Interaction with the Solar Wind: Results from Lunar Prospector",
       "firstAuthor": "Lin, R. P.",
+      "authors": null,
+      "authorCount": null,
       "year": 1998,
       "citations": 226
     },
@@ -468,6 +519,8 @@
       "bibcode": "2000JGR...10520307L",
       "title": "Thorium abundances on the lunar surface",
       "firstAuthor": "Lawrence, D. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 222
     },
@@ -475,6 +528,8 @@
       "bibcode": "2017Icar..296..216S",
       "title": "Lunar mare TiO₂ abundances estimated from UV/Vis reflectance",
       "firstAuthor": "Sato, Hiroyuki",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 213
     },
@@ -482,6 +537,8 @@
       "bibcode": "2002JGRE..107.5130L",
       "title": "Iron abundances on the lunar surface as measured by the Lunar Prospector gamma-ray and neutron spectrometers",
       "firstAuthor": "Lawrence, D. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 211
     },
@@ -489,6 +546,8 @@
       "bibcode": "2008Icar..194..401M",
       "title": "Global mapping of lunar crustal magnetic fields by Lunar Prospector",
       "firstAuthor": "Mitchell, D. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 181
     },
@@ -496,13 +555,17 @@
       "bibcode": "2013JGRE..118.1415K",
       "title": "The JPL lunar gravity field to spherical harmonic degree 660 from the GRAIL Primary Mission",
       "firstAuthor": "Konopliv, Alex S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
-      "citations": 173
+      "citations": 174
     },
     {
       "bibcode": "2006Natur.443..835C",
       "title": "No evidence for thick deposits of ice at the lunar south pole",
       "firstAuthor": "Campbell, Donald B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 166
     },
@@ -510,13 +573,17 @@
       "bibcode": "2004GeCoA..68.3791G",
       "title": "Lunar surface geochemistry: Global concentrations of Th, K, and FeO as derived from lunar prospector and Clementine data",
       "firstAuthor": "Gillis, Jeffrey J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
-      "citations": 163
+      "citations": 164
     },
     {
       "bibcode": "2001JGR...10627825H",
       "title": "Initial mapping and interpretation of lunar crustal magnetic anomalies using Lunar Prospector magnetometer data",
       "firstAuthor": "Hood, L. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 162
     },
@@ -524,6 +591,8 @@
       "bibcode": "2003JGRE..108.5102L",
       "title": "Small-area thorium features on the lunar surface",
       "firstAuthor": "Lawrence, D. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 162
     },
@@ -531,11 +600,13 @@
       "bibcode": "2012Icar..218..771F",
       "title": "Regolith thickness over the lunar nearside: Results from Earth-based 70-cm Arecibo radar observations",
       "firstAuthor": "Fa, Wenzhe",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 157
     }
   ],
   "papersFile": {
-    "rows": 298
+    "rows": 299
   }
 }

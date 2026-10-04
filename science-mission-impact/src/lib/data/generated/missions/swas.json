@@ -21,7 +21,10 @@
   "indices": {
     "h": 36,
     "m": 1.333,
-    "i100": 5
+    "i100": 5,
+    "g": 52,
+    "tori": 11.063,
+    "riq": 123
   },
   "facts": {
     "papers": 76,
@@ -200,6 +203,13 @@
     "bibcode": "2000ApJ...539L.129B",
     "title": "Implications of Submillimeter Wave Astronomy Satellite Observations for Interstellar Chemistry and Star Formation",
     "firstAuthor": "Bergin, E. A.",
+    "authors": [
+      "Bergin, E. A.",
+      "Melnick, G. J.",
+      "Stauffer, J. R.",
+      "Ashby, M. L. N."
+    ],
+    "authorCount": 20,
     "year": 2000,
     "citations": 145
   },
@@ -209,13 +219,13 @@
         3.356,
         6.394,
         5.297,
-        6.623,
-        13.155,
-        9.238,
-        4.937,
+        6.627,
+        13.153,
+        9.234,
+        4.94,
         3,
-        3.798,
-        0.202
+        3.793,
+        0.207
       ],
       "top1": 0
     },
@@ -236,14 +246,14 @@
     },
     "lifetime": {
       "bins": [
-        3.845,
-        7.155,
+        3.84,
+        7.16,
         2,
         6,
         6,
-        11.105,
+        11.092,
         18.769,
-        11.126,
+        11.139,
         6,
         4
       ],
@@ -273,6 +283,13 @@
       "status": "available",
       "months": 90,
       "citationBuckets": 11
+    },
+    "spread": {
+      "mean": 12.571,
+      "median": 10.5,
+      "uncited": 2,
+      "i10": 35,
+      "i100": 0
     }
   },
   "window": {
@@ -298,6 +315,13 @@
       "status": "available",
       "months": 48,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 13.909,
+      "median": 11,
+      "uncited": 2,
+      "i10": 22,
+      "i100": 0
     }
   },
   "lifetime": {
@@ -314,13 +338,20 @@
       "yearsFromFormulation": null,
       "bibcode": null,
       "date": null
+    },
+    "spread": {
+      "mean": 39.079,
+      "median": 34,
+      "uncited": 2,
+      "i10": 63,
+      "i100": 5
     }
   },
   "query": {
     "arms": "((=abs:\"Submillimeter Wave Astronomy Satellite\" OR (abs:SWAS AND abs:(observation OR submillimeter OR interstellar OR water OR oxygen) AND NOT abs:\"southwestern atlantic\")) AND collection:astronomy)",
     "filters": "property:refereed AND doctype:article AND pubdate:[1999-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Submillimeter+Wave+Astronomy+Satellite%22+OR+%28abs%3ASWAS+AND+abs%3A%28observation+OR+submillimeter+OR+interstellar+OR+water+OR+oxygen%29+AND+NOT+abs%3A%22southwestern+atlantic%22%29%29+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:33:25.560122+00:00",
+    "fetchedAt": "2026-09-30T18:15:34.758623+00:00",
     "reconciliation": {
       "adsReturned": 79,
       "curatedOut": 3,
@@ -382,6 +413,8 @@
       "bibcode": "2000ApJ...539L.129B",
       "title": "Implications of Submillimeter Wave Astronomy Satellite Observations for Interstellar Chemistry and Star Formation",
       "firstAuthor": "Bergin, E. A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 145
     },
@@ -389,6 +422,8 @@
       "bibcode": "2000ApJ...539L..77M",
       "title": "The Submillimeter Wave Astronomy Satellite: Science Objectives and Instrument Description",
       "firstAuthor": "Melnick, Gary J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 144
     },
@@ -396,6 +431,8 @@
       "bibcode": "2000ApJ...539L.101S",
       "title": "Water Abundance in Molecular Cloud Cores",
       "firstAuthor": "Snell, R. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 135
     },
@@ -403,6 +440,8 @@
       "bibcode": "2000ApJ...539L.123G",
       "title": "O₂ in Interstellar Molecular Clouds",
       "firstAuthor": "Goldsmith, P. F.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 118
     },
@@ -410,6 +449,8 @@
       "bibcode": "2001A&A...378.1024C",
       "title": "Gas-grain chemical models of star-forming molecular clouds as constrained by ISO and SWAS observations",
       "firstAuthor": "Charnley, S. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 106
     },
@@ -417,6 +458,8 @@
       "bibcode": "2003A&A...402L..77P",
       "title": "Low upper limits on the O₂ abundance from the Odin satellite",
       "firstAuthor": "Pagani, L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 95
     },
@@ -424,6 +467,8 @@
       "bibcode": "2012A&A...541A..73L",
       "title": "Multi-line detection of O₂ toward ρ Ophuichi A",
       "firstAuthor": "Liseau, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 91
     },
@@ -431,6 +476,8 @@
       "bibcode": "2002Icar..159..112L",
       "title": "The Origin of Water Vapor and Carbon Dioxide in Jupiter's Stratosphere",
       "firstAuthor": "Lellouch, E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 88
     },
@@ -438,6 +485,8 @@
       "bibcode": "2010A&A...518L.120N",
       "title": "Water cooling of shocks in protostellar outflows. Herschel-PACS map of L1157",
       "firstAuthor": "Nisini, B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 87
     },
@@ -445,6 +494,8 @@
       "bibcode": "2005ApJ...620..758S",
       "title": "Detection of Water in the Shocked Gas Associated with IC 443: Constraints on Shock Models",
       "firstAuthor": "Snell, R. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 71
     },
@@ -452,6 +503,8 @@
       "bibcode": "2003A&A...406..937B",
       "title": "Modeling gas-phase H₂O between 5 μ m and 540 μ m toward massive protostars",
       "firstAuthor": "Boonman, A. M. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 61
     },
@@ -459,6 +512,8 @@
       "bibcode": "2002A&A...395..233R",
       "title": "The abundance of gaseous H₂O and O₂ in cores of dense interstellar clouds",
       "firstAuthor": "Roberts, H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 59
     },
@@ -466,6 +521,8 @@
       "bibcode": "2000ApJ...539L..93S",
       "title": "Submillimeter Wave Astronomy Satellite Observations of Extended Water Emission in Orion",
       "firstAuthor": "Snell, R. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 55
     },
@@ -473,6 +530,8 @@
       "bibcode": "2000ApJ...539L..87M",
       "title": "Observations of Water Vapor toward Orion BN/KL",
       "firstAuthor": "Melnick, G. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 54
     },
@@ -480,6 +539,8 @@
       "bibcode": "2003A&A...403.1003B",
       "title": "Abundant gas-phase H₂O in absorption toward massive protostars",
       "firstAuthor": "Boonman, A. M. S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 53
     },
@@ -487,6 +548,8 @@
       "bibcode": "2001A&A...370..557V",
       "title": "Interstellar oxygen chemistry",
       "firstAuthor": "Viti, S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2001,
       "citations": 51
     },
@@ -494,6 +557,8 @@
       "bibcode": "2000ApJ...539L.133P",
       "title": "Large-scale ¹³CO J=5-->4 and [C I] Mapping of Orion A",
       "firstAuthor": "Plume, R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2000,
       "citations": 49
     },
@@ -501,6 +566,8 @@
       "bibcode": "2002ApJ...581L.105B",
       "title": "Sensitive Limits on the Water Abundance in Cold Low-Mass Molecular Cores",
       "firstAuthor": "Bergin, Edwin A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2002,
       "citations": 49
     },
@@ -508,6 +575,8 @@
       "bibcode": "2005A&A...440..559P",
       "title": "The excitation of water in the S140 photon dominated region",
       "firstAuthor": "Poelman, D. R.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 49
     },
@@ -515,6 +584,8 @@
       "bibcode": "2010A&A...521L..29C",
       "title": "Water vapor toward starless cores: The Herschel view",
       "firstAuthor": "Caselli, P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 47
     }

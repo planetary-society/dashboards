@@ -21,11 +21,14 @@
   "indices": {
     "h": 83,
     "m": 3.192,
-    "i100": 66
+    "i100": 66,
+    "g": 145,
+    "tori": 286.854,
+    "riq": 651
   },
   "facts": {
     "papers": 848,
-    "citations": 32403,
+    "citations": 32401,
     "publicationYears": [
       2001,
       2026
@@ -114,13 +117,13 @@
       2530,
       2554,
       2611,
-      1448
+      1446
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 32403,
-      "observed": 32403,
+      "expected": 32401,
+      "observed": 32401,
       "missing": 0
     }
   },
@@ -184,6 +187,12 @@
     "bibcode": "2009RSEnv.113..893C",
     "title": "Summary of current radiometric calibration coefficients for Landsat MSS, TM, ETM+, and EO-1 ALI sensors",
     "firstAuthor": "Chander, Gyanesh",
+    "authors": [
+      "Chander, Gyanesh",
+      "Markham, Brian L.",
+      "Helder, Dennis L."
+    ],
+    "authorCount": 3,
     "year": 2009,
     "citations": 1940
   },
@@ -192,9 +201,9 @@
       "bins": [
         85.691,
         86.146,
-        83.758,
-        76.86,
-        62.768,
+        83.737,
+        76.858,
+        62.79,
         65.214,
         64.843,
         52.425,
@@ -208,8 +217,8 @@
         10.405,
         7.591,
         1.792,
-        6.531,
-        6.84,
+        6.528,
+        6.843,
         1.675,
         3.426,
         1.948,
@@ -220,18 +229,18 @@
     },
     "lifetime": {
       "bins": [
-        48.929,
-        73.011,
-        63.519,
-        85.224,
-        99.112,
-        85.818,
-        104.574,
-        88.381,
-        103.466,
-        95.966
+        48.852,
+        72.985,
+        63.532,
+        85.257,
+        99.102,
+        85.807,
+        104.644,
+        88.35,
+        103.499,
+        95.972
       ],
-      "top1": 14.688
+      "top1": 14.7
     }
   },
   "full": {
@@ -257,6 +266,13 @@
       "status": "available",
       "months": 220,
       "citationBuckets": 23
+    },
+    "spread": {
+      "mean": 7.888,
+      "median": 5,
+      "uncited": 71,
+      "i10": 177,
+      "i100": 2
     }
   },
   "window": {
@@ -282,12 +298,19 @@
       "status": "available",
       "months": 36,
       "citationBuckets": 7
+    },
+    "spread": {
+      "mean": 5.907,
+      "median": 5,
+      "uncited": 9,
+      "i10": 9,
+      "i100": 0
     }
   },
   "lifetime": {
     "papers": 848,
     "outputBasis": "measured",
-    "citations": 32403,
+    "citations": 32401,
     "top10": 49.2,
     "top10ShareOfDivision": 0.01189,
     "top1": null,
@@ -298,13 +321,20 @@
       "yearsFromFormulation": 7.22,
       "bibcode": "2003ITGRS..41.1149U",
       "date": "2003-00-00"
+    },
+    "spread": {
+      "mean": 38.209,
+      "median": 17,
+      "uncited": 46,
+      "i10": 559,
+      "i100": 66
     }
   },
   "query": {
     "arms": "((=abs:\"Earth Observing-1\" OR =abs:\"Earth Observing 1\" OR =abs:\"Earth Observing One\" OR (abs:\"EO-1\" AND (abs:Hyperion OR =abs:\"Advanced Land Imager\" OR abs:Landsat OR abs:hyperspectral OR =abs:\"remote sensing\" OR abs:multispectral OR abs:\"ETM+\" OR abs:satellite OR =abs:\"Earth observation\" OR abs:AVIRIS)) OR (abs:Hyperion AND (abs:hyperspectral OR abs:Landsat OR =abs:\"remote sensing\")) OR =abs:\"Advanced Land Imager\" OR (abs:\"ALI\" AND (=abs:\"Advanced Land Imager\" OR abs:Landsat OR abs:Hyperion))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2000-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Earth+Observing-1%22+OR+%3Dabs%3A%22Earth+Observing+1%22+OR+%3Dabs%3A%22Earth+Observing+One%22+OR+%28abs%3A%22EO-1%22+AND+%28abs%3AHyperion+OR+%3Dabs%3A%22Advanced+Land+Imager%22+OR+abs%3ALandsat+OR+abs%3Ahyperspectral+OR+%3Dabs%3A%22remote+sensing%22+OR+abs%3Amultispectral+OR+abs%3A%22ETM%2B%22+OR+abs%3Asatellite+OR+%3Dabs%3A%22Earth+observation%22+OR+abs%3AAVIRIS%29%29+OR+%28abs%3AHyperion+AND+%28abs%3Ahyperspectral+OR+abs%3ALandsat+OR+%3Dabs%3A%22remote+sensing%22%29%29+OR+%3Dabs%3A%22Advanced+Land+Imager%22+OR+%28abs%3A%22ALI%22+AND+%28%3Dabs%3A%22Advanced+Land+Imager%22+OR+abs%3ALandsat+OR+abs%3AHyperion%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:20:58.022983+00:00",
+    "fetchedAt": "2026-09-30T17:59:19.274197+00:00",
     "reconciliation": {
       "adsReturned": 855,
       "curatedOut": 3,
@@ -365,6 +395,8 @@
       "bibcode": "2009RSEnv.113..893C",
       "title": "Summary of current radiometric calibration coefficients for Landsat MSS, TM, ETM+, and EO-1 ALI sensors",
       "firstAuthor": "Chander, Gyanesh",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 1940
     },
@@ -372,6 +404,8 @@
       "bibcode": "2005ITGRS..43..492H",
       "title": "Investigation of the Random Forest Framework for Classification of Hyperspectral Data",
       "firstAuthor": "Ham, JiSoo",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 798
     },
@@ -379,6 +413,8 @@
       "bibcode": "2008AgFM..148.1230W",
       "title": "Estimating chlorophyll content from hyperspectral vegetation indices: Modeling and validation",
       "firstAuthor": "Wu, Chaoyang",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 594
     },
@@ -386,6 +422,8 @@
       "bibcode": "2003ITGRS..41.1388K",
       "title": "Comparison of Airborne Hyperspectral Data and EO-1 Hyperion for Mineral Mapping",
       "firstAuthor": "Kruse, Fred A.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 517
     },
@@ -393,6 +431,8 @@
       "bibcode": "2008Geode.146..403G",
       "title": "Soil organic carbon prediction by hyperspectral remote sensing and field vis-NIR spectroscopy: An Australian case study",
       "firstAuthor": "Gomez, Cécile",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 397
     },
@@ -400,6 +440,8 @@
       "bibcode": "2008RSEnv.112.3846L",
       "title": "Calibration and validation of hyperspectral indices for the estimation of broadleaved forest leaf chlorophyll content, leaf mass per area, leaf area index and leaf canopy biomass",
       "firstAuthor": "le Maire, Guerric",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 369
     },
@@ -407,6 +449,8 @@
       "bibcode": "2003ITGRS..41.1378B",
       "title": "Satellite Hyperspectral Remote Sensing for Estimating Estuarine and Coastal Water Quality",
       "firstAuthor": "Brando, Vittorio E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 360
     },
@@ -414,13 +458,17 @@
       "bibcode": "2003ITGRS..41.1160P",
       "title": "Hyperion, a Space-Based Imaging Spectrometer",
       "firstAuthor": "Pearlman, Jay S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
-      "citations": 356
+      "citations": 355
     },
     {
       "bibcode": "2014RSEnv.154..102F",
       "title": "Importance of sample size, data type and prediction method for remote sensing-based estimations of aboveground forest biomass",
       "firstAuthor": "Fassnacht, F. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 333
     },
@@ -428,6 +476,8 @@
       "bibcode": "2009RSEnv.113..928G",
       "title": "Estimating fractional cover of photosynthetic vegetation, non-photosynthetic vegetation and bare soil in the Australian tropical savanna region upscaling the EO-1 Hyperion and MODIS sensors",
       "firstAuthor": "Guerschman, Juan Pablo",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 325
     },
@@ -435,6 +485,8 @@
       "bibcode": "2003ITGRS..41.1246D",
       "title": "Preprocessing Eo-1 Hyperion Hyperspectral Data to Support the Application of Agricultural Indexes",
       "firstAuthor": "Datt, Bisun",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 315
     },
@@ -442,6 +494,8 @@
       "bibcode": "2010ITGRS..48.4099M",
       "title": "Local Manifold Learning-Based k-Nearest-Neighbor for Hyperspectral Image Classification",
       "firstAuthor": "Ma, Li",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 314
     },
@@ -449,6 +503,8 @@
       "bibcode": "2005JPRS...59..185T",
       "title": "Satellite remote sensing of earthquake, volcano, flood, landslide and coastal inundation hazards",
       "firstAuthor": "Tralli, David M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 299
     },
@@ -456,6 +512,8 @@
       "bibcode": "2003ITGRS..41.1355G",
       "title": "Estimation of Forest Leaf Area Index Using Vegetation Indices Derived From Hyperion Hyperspectral Data",
       "firstAuthor": "Gong, Peng",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 291
     },
@@ -463,6 +521,8 @@
       "bibcode": "2004RSEnv..91..354T",
       "title": "Accuracy assessments of hyperspectral waveband performance for vegetation analysis applications",
       "firstAuthor": "Thenkabail, Prasad S.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 285
     },
@@ -470,6 +530,8 @@
       "bibcode": "2019IGRSL..16..241Q",
       "title": "Spectral-Spatial Graph Convolutional Networks for Semisupervised Hyperspectral Image Classification",
       "firstAuthor": "Qin, Anyong",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 281
     },
@@ -477,6 +539,8 @@
       "bibcode": "2013RemS....5.5530L",
       "title": "A Comparison of Land Surface Water Mapping Using the Normalized Difference Water Index from TM, ETM+ and ALI",
       "firstAuthor": "Li, Wenbo",
+      "authors": null,
+      "authorCount": null,
       "year": 2013,
       "citations": 279
     },
@@ -484,6 +548,8 @@
       "bibcode": "2004LimOc..49.2179K",
       "title": "Quantitative detection of chlorophyll in cyanobacterial blooms by satellite remote sensing",
       "firstAuthor": "Kutser, Tiit",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 271
     },
@@ -491,6 +557,8 @@
       "bibcode": "2005RSEnv..94..535K",
       "title": "Mapping lake CDOM by satellite remote sensing",
       "firstAuthor": "Kutser, Tiit",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 247
     },
@@ -498,6 +566,8 @@
       "bibcode": "2014IJAEO..26...49G",
       "title": "A framework for mapping tree species combining hyperspectral and LiDAR data: Role of selected classifiers and sensor across three spatial scales",
       "firstAuthor": "Ghosh, Aniruddha",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 244
     }

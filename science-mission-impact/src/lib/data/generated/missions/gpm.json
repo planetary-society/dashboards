@@ -21,10 +21,13 @@
   "indices": {
     "h": 88,
     "m": 6.769,
-    "i100": 67
+    "i100": 67,
+    "g": 144,
+    "tori": 167.593,
+    "riq": 924
   },
   "facts": {
-    "papers": 2798,
+    "papers": 2799,
     "citations": 51965,
     "publicationYears": [
       2014,
@@ -60,7 +63,7 @@
       347,
       323,
       406,
-      363
+      364
     ],
     "citations": [
       23,
@@ -174,6 +177,13 @@
     "bibcode": "2014BAMS...95..701H",
     "title": "The Global Precipitation Measurement Mission",
     "firstAuthor": "Hou, Arthur Y.",
+    "authors": [
+      "Hou, Arthur Y.",
+      "Kakar, Ramesh K.",
+      "Neeck, Steven",
+      "Azarbarzin, Ardeshir A."
+    ],
+    "authorCount": 9,
     "year": 2014,
     "citations": 2204
   },
@@ -182,9 +192,9 @@
       "bins": [
         66.097,
         112.703,
-        115.852,
-        146.232,
-        155.021,
+        115.824,
+        146.202,
+        155.079,
         178.189,
         197.264,
         220.2,
@@ -198,8 +208,8 @@
         15.057,
         28.126,
         30.295,
-        33.86,
-        31.193,
+        33.829,
+        31.225,
         36.961,
         55.902,
         52.033,
@@ -210,16 +220,16 @@
     },
     "lifetime": {
       "bins": [
-        479.602,
-        382.049,
-        360.181,
-        304.804,
-        253.244,
-        261.881,
-        227.914,
-        236.278,
-        171.114,
-        120.933
+        480.246,
+        381.818,
+        360.412,
+        304.972,
+        253.306,
+        261.807,
+        228.048,
+        236.289,
+        171.157,
+        120.944
       ],
       "top1": 7
     }
@@ -247,6 +257,13 @@
       "status": "available",
       "months": 117,
       "citationBuckets": 13
+    },
+    "spread": {
+      "mean": 15.586,
+      "median": 10,
+      "uncited": 48,
+      "i10": 902,
+      "i100": 12
     }
   },
   "window": {
@@ -272,13 +289,20 @@
       "status": "available",
       "months": 63,
       "citationBuckets": 9
+    },
+    "spread": {
+      "mean": 19.857,
+      "median": 12,
+      "uncited": 10,
+      "i10": 256,
+      "i100": 6
     }
   },
   "lifetime": {
-    "papers": 2798,
+    "papers": 2799,
     "outputBasis": "measured",
     "citations": 51965,
-    "top10": 161.437,
+    "top10": 161.466,
     "top10ShareOfDivision": 0.03902,
     "top1": null,
     "top1ShareOfDivision": null,
@@ -288,21 +312,28 @@
       "yearsFromFormulation": 11.833,
       "bibcode": "2014BAMS...95..701H",
       "date": "2014-05-00"
+    },
+    "spread": {
+      "mean": 18.566,
+      "median": 7,
+      "uncited": 467,
+      "i10": 1210,
+      "i100": 67
     }
   },
   "query": {
     "arms": "(((abs:IMERG AND abs:(precipitation OR rainfall OR satellite)) OR =abs:\"Global Precipitation Measurement\" OR (abs:GPM AND (abs:(precipitation OR rainfall OR satellite OR DPR OR GMI OR IMERG) OR =abs:\"Core Observatory\" OR =abs:\"Microwave Imager\") NOT (=abs:\"gas-permeable membrane\" OR =abs:\"Glaciar Perito Moreno\" OR =abs:\"groundwater potential\" OR =abs:\"gamma-pareto quantile mapping\" OR =abs:\"grid-preprocessed mosaicking\" OR =abs:\"Gauss pseudospectral\" OR =abs:\"Gaussian plume model\")) OR =abs:\"GPM Microwave Imager\" OR (=abs:\"Dual-frequency Precipitation Radar\" AND abs:(satellite OR GPM OR spaceborne) NOT abs:(FY-3G OR FY3G)) OR (abs:GMI AND abs:(precipitation OR rainfall OR microwave) NOT (=abs:\"Global Modeling Initiative\" OR =abs:\"giant magnetoimpedance\" OR =abs:\"giant magneto-impedance\" OR =abs:\"gradient meteorological instrument\" OR (abs:global AND abs:Moran))) OR (abs:DPR AND abs:(precipitation AND (satellite OR spaceborne OR GPM)) NOT =abs:\"DPR Korea\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3AIMERG+AND+abs%3A%28precipitation+OR+rainfall+OR+satellite%29%29+OR+%3Dabs%3A%22Global+Precipitation+Measurement%22+OR+%28abs%3AGPM+AND+%28abs%3A%28precipitation+OR+rainfall+OR+satellite+OR+DPR+OR+GMI+OR+IMERG%29+OR+%3Dabs%3A%22Core+Observatory%22+OR+%3Dabs%3A%22Microwave+Imager%22%29+NOT+%28%3Dabs%3A%22gas-permeable+membrane%22+OR+%3Dabs%3A%22Glaciar+Perito+Moreno%22+OR+%3Dabs%3A%22groundwater+potential%22+OR+%3Dabs%3A%22gamma-pareto+quantile+mapping%22+OR+%3Dabs%3A%22grid-preprocessed+mosaicking%22+OR+%3Dabs%3A%22Gauss+pseudospectral%22+OR+%3Dabs%3A%22Gaussian+plume+model%22%29%29+OR+%3Dabs%3A%22GPM+Microwave+Imager%22+OR+%28%3Dabs%3A%22Dual-frequency+Precipitation+Radar%22+AND+abs%3A%28satellite+OR+GPM+OR+spaceborne%29+NOT+abs%3A%28FY-3G+OR+FY3G%29%29+OR+%28abs%3AGMI+AND+abs%3A%28precipitation+OR+rainfall+OR+microwave%29+NOT+%28%3Dabs%3A%22Global+Modeling+Initiative%22+OR+%3Dabs%3A%22giant+magnetoimpedance%22+OR+%3Dabs%3A%22giant+magneto-impedance%22+OR+%3Dabs%3A%22gradient+meteorological+instrument%22+OR+%28abs%3Aglobal+AND+abs%3AMoran%29%29%29+OR+%28abs%3ADPR+AND+abs%3A%28precipitation+AND+%28satellite+OR+spaceborne+OR+GPM%29%29+NOT+%3Dabs%3A%22DPR+Korea%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:24:57.454362+00:00",
+    "fetchedAt": "2026-09-30T18:03:10.345721+00:00",
     "reconciliation": {
-      "adsReturned": 2802,
+      "adsReturned": 2803,
       "curatedOut": 1,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 3,
-      "final": 2798
+      "final": 2799
     }
   },
   "curation": {
@@ -323,6 +354,8 @@
       "bibcode": "2014BAMS...95..701H",
       "title": "The Global Precipitation Measurement Mission",
       "firstAuthor": "Hou, Arthur Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2014,
       "citations": 2204
     },
@@ -330,6 +363,8 @@
       "bibcode": "2017BAMS...98.1679S",
       "title": "The Global Precipitation Measurement (GPM) Mission for Science and Society",
       "firstAuthor": "Skofronick-Jackson, Gail",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 647
     },
@@ -337,6 +372,8 @@
       "bibcode": "2019HESS...23..207B",
       "title": "Daily evaluation of 26 precipitation datasets using Stage-IV gauge-radar data for the CONUS",
       "firstAuthor": "Beck, Hylke E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2019,
       "citations": 483
     },
@@ -344,6 +381,8 @@
       "bibcode": "2016JHyd..533..152T",
       "title": "Evaluation of GPM Day-1 IMERG and TMPA Version-7 legacy products over Mainland China at multiple spatiotemporal scales",
       "firstAuthor": "Tang, Guoqiang",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 468
     },
@@ -351,6 +390,8 @@
       "bibcode": "2020RSEnv.24011697T",
       "title": "Have satellite precipitation products improved over last two decades? A comprehensive comparison of GPM IMERG with nine satellite and reanalysis datasets",
       "firstAuthor": "Tang, Guoqiang",
+      "authors": null,
+      "authorCount": null,
       "year": 2020,
       "citations": 451
     },
@@ -358,6 +399,8 @@
       "bibcode": "2017JGRD..122..910X",
       "title": "Ground validation of GPM IMERG and TRMM 3B42V7 rainfall products over southern Tibetan Plateau based on a high-density rain gauge network",
       "firstAuthor": "Xu, Ran",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 347
     },
@@ -365,6 +408,8 @@
       "bibcode": "2016RemS....8..135S",
       "title": "Assessment of GPM-IMERG and Other Precipitation Products against Gauge Data under Different Topographic and Climatic Conditions in Iran: Preliminary Results",
       "firstAuthor": "Sharifi, Ehsan",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 299
     },
@@ -372,6 +417,8 @@
       "bibcode": "2021HESS...25...17B",
       "title": "Evaluation of 18 satellite- and model-based soil moisture products using in situ measurements from 826 sensors",
       "firstAuthor": "Beck, Hylke E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 270
     },
@@ -379,6 +426,8 @@
       "bibcode": "2022RSEnv.26812754P",
       "title": "Review of GPM IMERG performance: A global perspective",
       "firstAuthor": "Pradhan, Rajani K.",
+      "authors": null,
+      "authorCount": null,
       "year": 2022,
       "citations": 258
     },
@@ -386,6 +435,8 @@
       "bibcode": "2015WRR....51.7309L",
       "title": "Inroads of remote sensing into hydrologic science during the WRR era",
       "firstAuthor": "Lettenmaier, Dennis P.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 256
     },
@@ -393,6 +444,8 @@
       "bibcode": "2021JGRD..12634202F",
       "title": "A Global High Resolution Mesoscale Convective System Database Using Satellite Derived Cloud Tops, Surface Precipitation, and Tracking",
       "firstAuthor": "Feng, Zhe",
+      "authors": null,
+      "authorCount": null,
       "year": 2021,
       "citations": 254
     },
@@ -400,6 +453,8 @@
       "bibcode": "2017HESS...21.1295Z",
       "title": "Temporal and spatial evaluation of satellite-based rainfall estimates across the complex topographical and climatic gradients of Chile",
       "firstAuthor": "Zambrano-Bigiarini, Mauricio",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 239
     },
@@ -407,6 +462,8 @@
       "bibcode": "2018JHyd..556..865P",
       "title": "A preliminary assessment of GPM-based multi-satellite precipitation estimates over a monsoon dominated region",
       "firstAuthor": "Prakash, Satya",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 232
     },
@@ -414,6 +471,8 @@
       "bibcode": "2015IJSTA...8.3452D",
       "title": "The Global Precipitation Measurement (GPM) Microwave Imager (GMI): Instrument Overview and Early On-Orbit Performance",
       "firstAuthor": "Draper, David W.",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 230
     },
@@ -421,6 +480,8 @@
       "bibcode": "2016AdWR...88....1P",
       "title": "From TRMM to GPM: How well can heavy rainfall be detected from space?",
       "firstAuthor": "Prakash, Satya",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 225
     },
@@ -428,6 +489,8 @@
       "bibcode": "2018JHyd..558..214M",
       "title": "On the performance of satellite precipitation products in riverine flood modeling: A review",
       "firstAuthor": "Maggioni, Viviana",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 213
     },
@@ -435,6 +498,8 @@
       "bibcode": "2016JHyMe..17..121T",
       "title": "Statistical and Hydrological Comparisons between TRMM and GPM Level-3 Products over a Midlatitude Basin: Is Day-1 IMERG a Good Successor for TMPA 3B42V7?",
       "firstAuthor": "Tang, Guoqiang",
+      "authors": null,
+      "authorCount": null,
       "year": 2016,
       "citations": 209
     },
@@ -442,6 +507,8 @@
       "bibcode": "2017AtmRe.196..151W",
       "title": "Evaluation of the GPM IMERG satellite-based precipitation products and the hydrological utility",
       "firstAuthor": "Wang, Zhaoli",
+      "authors": null,
+      "authorCount": null,
       "year": 2017,
       "citations": 209
     },
@@ -449,6 +516,8 @@
       "bibcode": "2015BAMS...96..283Y",
       "title": "Global View Of Real-Time Trmm Multisatellite Precipitation Analysis: Implications For Its Successor Global Precipitation Measurement Mission",
       "firstAuthor": "Yong, Bin",
+      "authors": null,
+      "authorCount": null,
       "year": 2015,
       "citations": 207
     },
@@ -456,11 +525,13 @@
       "bibcode": "2018AtmRe.202...63T",
       "title": "Comparison of GPM IMERG, TMPA 3B42 and PERSIANN-CDR satellite precipitation products over Malaysia",
       "firstAuthor": "Tan, Mou Leong",
+      "authors": null,
+      "authorCount": null,
       "year": 2018,
       "citations": 207
     }
   ],
   "papersFile": {
-    "rows": 2798
+    "rows": 2799
   }
 }

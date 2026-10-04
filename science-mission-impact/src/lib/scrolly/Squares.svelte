@@ -13,8 +13,10 @@
 	 * loadImages: each square carries its mission's picture for the life of the page, so the
 	 *   state marks are drawn over it; false leaves the squares as plain marks
 	 * thumbnailBorders: show the state as a thin blue/red edge instead of a wash over the image
+	 * highlightId: the square washed in Rocket Flame (the skyline's pointed-at mission)
+	 * quietId: a square whose tip is left off because something else already names it
 	 */
-	let { tiles, items, shown = Infinity, interactive = true, loadImages = true, thumbnailBorders = false, selectedId = '', onselect = null } = $props();
+	let { tiles, items, shown = Infinity, interactive = true, loadImages = true, thumbnailBorders = false, selectedId = '', highlightId = null, quietId = null, onselect = null } = $props();
 
 	let tip = $state(null);
 	let tipEl = $state(null);
@@ -23,7 +25,7 @@
 	function showTip(event) {
 		const id = event.target.closest?.('[data-id]')?.dataset.id;
 		const it = id && items.get(id);
-		tip = it ? { name: it.label ?? event.target.closest('[data-id]').dataset.name, x: it.x + it.s / 2, y: it.y } : null;
+		tip = it ? { id, name: it.label ?? event.target.closest('[data-id]').dataset.name, x: it.x + it.s / 2, y: it.y } : null;
 	}
 	const hideTip = () => (tip = null);
 
@@ -58,6 +60,7 @@
 				class:filled={it.filled}
 				class:emph={it.emph}
 				class:selected={selectedId === t.id}
+				class:hot={highlightId === t.id}
 				type={onselect ? 'button' : undefined}
 				href={onselect ? undefined : missionHref(t.division, t.id)}
 				onclick={onselect ? () => onselect(t.id) : undefined}
@@ -81,7 +84,7 @@
 		{/if}
 	{/each}
 
-	{#if tip}
+	{#if tip && tip.id !== quietId}
 		<span class="tip" bind:this={tipEl} style:transform="translate(calc({tip.x}px - 50%), calc({tip.y}px - 100% - 6px))">{tip.name}</span>
 	{/if}
 </div>
@@ -246,6 +249,19 @@
 		max-width: 100%;
 		white-space: pre-line;
 		pointer-events: none;
+	}
+
+	/* the mission the reader is pointing at, on the skyline step */
+	.sq.hot {
+		z-index: 2;
+		--edge: var(--flame);
+		--wash: var(--flame);
+		outline: 1px solid var(--flame);
+		outline-offset: 1px;
+	}
+
+	.sq.hot::before {
+		--wash-opacity: 0.7;
 	}
 
 	/* a partial or total failure: the picture dimmed under a red X */

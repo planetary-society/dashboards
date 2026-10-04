@@ -21,11 +21,14 @@
   "indices": {
     "h": 79,
     "m": 3.292,
-    "i100": 57
+    "i100": 57,
+    "g": 118,
+    "tori": 133.091,
+    "riq": 480
   },
   "facts": {
     "papers": 1251,
-    "citations": 31746,
+    "citations": 31745,
     "publicationYears": [
       2003,
       2026
@@ -108,13 +111,13 @@
       2387,
       2666,
       2646,
-      1957
+      1956
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 31746,
-      "observed": 31746,
+      "expected": 31745,
+      "observed": 31745,
       "missing": 0
     }
   },
@@ -191,64 +194,71 @@
     "bibcode": "2005JGRA..110.1312W",
     "title": "Solar EUV Experiment (SEE): Mission overview and first results",
     "firstAuthor": "Woods, Thomas N.",
+    "authors": [
+      "Woods, Thomas N.",
+      "Eparvier, Francis G.",
+      "Bailey, Scott M.",
+      "Chamberlin, Phillip C."
+    ],
+    "authorCount": 9,
     "year": 2005,
     "citations": 439
   },
   "ranks": {
     "full": {
       "bins": [
-        83.263,
-        118.036,
-        146.188,
-        127.483,
-        132.388,
-        111.502,
-        97.95,
-        85.083,
-        71.347,
-        55.76
+        83.584,
+        118.191,
+        146.468,
+        127.232,
+        132.411,
+        111.52,
+        97.797,
+        85.024,
+        71.264,
+        55.508
       ],
       "top1": 3
     },
     "window": {
       "bins": [
-        6.817,
-        6.931,
-        10.164,
-        10.105,
-        6.037,
-        7.697,
-        5.604,
-        2.689,
-        1.956,
+        6.836,
+        6.922,
+        10.215,
+        10.077,
+        6.092,
+        7.599,
+        5.595,
+        2.686,
+        1.978,
         4
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        151.814,
-        130.88,
-        106.734,
-        138.947,
-        121.681,
-        158.101,
-        123.015,
-        121.694,
-        108.683,
-        89.45
+        151.309,
+        130.81,
+        106.388,
+        138.495,
+        121.923,
+        157.589,
+        123.904,
+        121.938,
+        108.859,
+        89.785
       ],
-      "top1": 5
+      "top1": 5.23
     }
   },
   "full": {
     "papers": 1029,
     "outputBasis": "measured",
     "citations": 9075,
-    "top10": 47.939,
-    "top10ShareOfDivision": 0.03323,
+    "top10": 47.614,
+    "top10ShareOfDivision": 0.03289,
     "top1": 3,
-    "top1ShareOfDivision": 0.0208,
+    "top1ShareOfDivision": 0.02073,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.856,
@@ -264,6 +274,13 @@
       "status": "available",
       "months": 263,
       "citationBuckets": 25
+    },
+    "spread": {
+      "mean": 8.819,
+      "median": 6,
+      "uncited": 45,
+      "i10": 329,
+      "i100": 0
     }
   },
   "window": {
@@ -271,7 +288,7 @@
     "outputBasis": "measured",
     "citations": 627,
     "top10": 4.95,
-    "top10ShareOfDivision": 0.0112,
+    "top10ShareOfDivision": 0.01116,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -289,14 +306,21 @@
       "status": "available",
       "months": 48,
       "citationBuckets": 8
+    },
+    "spread": {
+      "mean": 10.113,
+      "median": 7,
+      "uncited": 3,
+      "i10": 25,
+      "i100": 0
     }
   },
   "lifetime": {
     "papers": 1251,
     "outputBasis": "measured",
-    "citations": 31746,
-    "top10": 72.267,
-    "top10ShareOfDivision": 0.04607,
+    "citations": 31745,
+    "top10": 72.01,
+    "top10ShareOfDivision": 0.04578,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -305,13 +329,20 @@
       "yearsFromFormulation": 11.335,
       "bibcode": "2003GeoRL..30.2100M",
       "date": "2003-11-00"
+    },
+    "spread": {
+      "mean": 25.376,
+      "median": 14,
+      "uncited": 112,
+      "i10": 737,
+      "i100": 57
     }
   },
   "query": {
     "arms": "((=abs:\"Thermosphere Ionosphere Mesosphere Energetics and Dynamics\" OR (abs:TIMED AND (abs:SABER OR abs:GUVI OR abs:TIDI OR =abs:\"Solar EUV Experiment\" OR =abs:\"TIMED satellite\" OR =abs:\"TIMED spacecraft\" OR =abs:\"TIMED mission\" OR abs:\"TIMED SEE\" OR abs:irradiance OR abs:thermosphere OR abs:ionosphere OR abs:mesosphere)) OR (abs:SABER AND (abs:mesosphere OR abs:thermosphere OR abs:ionosphere OR abs:stratosphere OR abs:stratopause OR abs:mesopause OR abs:airglow OR abs:nightglow OR abs:ozone OR abs:hydroxyl OR abs:tides OR abs:tide OR =abs:\"middle atmosphere\" OR =abs:\"gravity wave\" OR =abs:\"gravity waves\" OR =abs:\"nitric oxide\")) OR (abs:GUVI AND (abs:thermosphere OR abs:ionosphere OR abs:aurora OR abs:auroral OR abs:airglow OR abs:dayglow)) OR (abs:TIDI AND (abs:mesosphere OR abs:thermosphere OR abs:winds OR abs:wind OR abs:tides OR abs:tide)) ))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2002-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Thermosphere+Ionosphere+Mesosphere+Energetics+and+Dynamics%22+OR+%28abs%3ATIMED+AND+%28abs%3ASABER+OR+abs%3AGUVI+OR+abs%3ATIDI+OR+%3Dabs%3A%22Solar+EUV+Experiment%22+OR+%3Dabs%3A%22TIMED+satellite%22+OR+%3Dabs%3A%22TIMED+spacecraft%22+OR+%3Dabs%3A%22TIMED+mission%22+OR+abs%3A%22TIMED+SEE%22+OR+abs%3Airradiance+OR+abs%3Athermosphere+OR+abs%3Aionosphere+OR+abs%3Amesosphere%29%29+OR+%28abs%3ASABER+AND+%28abs%3Amesosphere+OR+abs%3Athermosphere+OR+abs%3Aionosphere+OR+abs%3Astratosphere+OR+abs%3Astratopause+OR+abs%3Amesopause+OR+abs%3Aairglow+OR+abs%3Anightglow+OR+abs%3Aozone+OR+abs%3Ahydroxyl+OR+abs%3Atides+OR+abs%3Atide+OR+%3Dabs%3A%22middle+atmosphere%22+OR+%3Dabs%3A%22gravity+wave%22+OR+%3Dabs%3A%22gravity+waves%22+OR+%3Dabs%3A%22nitric+oxide%22%29%29+OR+%28abs%3AGUVI+AND+%28abs%3Athermosphere+OR+abs%3Aionosphere+OR+abs%3Aaurora+OR+abs%3Aauroral+OR+abs%3Aairglow+OR+abs%3Adayglow%29%29+OR+%28abs%3ATIDI+AND+%28abs%3Amesosphere+OR+abs%3Athermosphere+OR+abs%3Awinds+OR+abs%3Awind+OR+abs%3Atides+OR+abs%3Atide%29%29+%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:29:26.331865+00:00",
+    "fetchedAt": "2026-09-30T18:07:27.050325+00:00",
     "reconciliation": {
       "adsReturned": 1254,
       "curatedOut": 2,
@@ -356,6 +387,8 @@
       "bibcode": "2005JGRA..110.1312W",
       "title": "Solar EUV Experiment (SEE): Mission overview and first results",
       "firstAuthor": "Woods, Thomas N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 439
     },
@@ -363,6 +396,8 @@
       "bibcode": "2008JGRD..11317101R",
       "title": "Assessment of the quality of the Version 1.07 temperature-versus-pressure profiles of the middle atmosphere from TIMED/SABER",
       "firstAuthor": "Remsberg, E. E.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 380
     },
@@ -370,6 +405,8 @@
       "bibcode": "2008JGRD..11315S11S",
       "title": "Validation of the Aura Microwave Limb Sounder temperature and geopotential height measurements",
       "firstAuthor": "Schwartz, M. J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 346
     },
@@ -377,6 +414,8 @@
       "bibcode": "2008JGRA..113.2310F",
       "title": "Tidal variability in the ionospheric dynamo region",
       "firstAuthor": "Forbes, J. M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 318
     },
@@ -384,6 +423,8 @@
       "bibcode": "2003JGRA..108.1451C",
       "title": "Initial observations with the Global Ultraviolet Imager (GUVI) in the NASA TIMED satellite mission",
       "firstAuthor": "Christensen, A. B.",
+      "authors": null,
+      "authorCount": null,
       "year": 2003,
       "citations": 315
     },
@@ -391,6 +432,8 @@
       "bibcode": "2005JGRA..11010306S",
       "title": "Solar extreme-ultraviolet irradiance for general circulation models",
       "firstAuthor": "Solomon, Stanley C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 258
     },
@@ -398,6 +441,8 @@
       "bibcode": "2006GeoRL..3321105E",
       "title": "Longitudinal variation of the E-region electric fields caused by atmospheric tides",
       "firstAuthor": "England, S. L.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 228
     },
@@ -405,6 +450,8 @@
       "bibcode": "2008JASTP..70.1231Z",
       "title": "An empirical Kp-dependent global auroral model based on TIMED/GUVI FUV data",
       "firstAuthor": "Zhang, Y.",
+      "authors": null,
+      "authorCount": null,
       "year": 2008,
       "citations": 218
     },
@@ -412,6 +459,8 @@
       "bibcode": "2011JGRD..11619107E",
       "title": "Implications for atmospheric dynamics derived from global observations of gravity wave momentum flux in stratosphere and mesosphere",
       "firstAuthor": "Ern, M.",
+      "authors": null,
+      "authorCount": null,
       "year": 2011,
       "citations": 218
     },
@@ -419,6 +468,8 @@
       "bibcode": "2009JGRA..114.1312Q",
       "title": "Seasonal variation of thermospheric density and composition",
       "firstAuthor": "Qian, Liying",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 209
     },
@@ -426,6 +477,8 @@
       "bibcode": "2012JGRA..11710323J",
       "title": "Response of migrating tides to the stratospheric sudden warming in 2009 and their effects on the ionosphere studied by a whole atmosphere-ionosphere model GAIA with COSMIC and TIMED/SABER observations",
       "firstAuthor": "Jin, H.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 209
     },
@@ -433,6 +486,8 @@
       "bibcode": "2009JGRD..114.0I05O",
       "title": "Tropospheric tides from 80 to 400 km: Propagation, interannual variability, and solar cycle effects",
       "firstAuthor": "Oberheide, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
       "citations": 206
     },
@@ -440,6 +495,8 @@
       "bibcode": "2005GeoRL..32.3S09T",
       "title": "The October 28, 2003 extreme EUV solar flare and resultant extreme ionospheric effects: Comparison to other Halloween events and the Bastille Day event",
       "firstAuthor": "Tsurutani, B. T.",
+      "authors": null,
+      "authorCount": null,
       "year": 2005,
       "citations": 204
     },
@@ -447,6 +504,8 @@
       "bibcode": "2006JGRA..11110S08Z",
       "title": "Monthly tidal temperatures 20-120 km from TIMED/SABER",
       "firstAuthor": "Zhang, Xiaoli",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 198
     },
@@ -454,13 +513,17 @@
       "bibcode": "2009GeoRL..36.1101W",
       "title": "Solar Irradiance Reference Spectra (SIRS) for the 2008 Whole Heliosphere Interval (WHI)",
       "firstAuthor": "Woods, Thomas N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2009,
-      "citations": 196
+      "citations": 195
     },
     {
       "bibcode": "2012SGeo...33.1177S",
       "title": "Global Dynamics of the MLT",
       "firstAuthor": "Smith, Anne K.",
+      "authors": null,
+      "authorCount": null,
       "year": 2012,
       "citations": 194
     },
@@ -468,6 +531,8 @@
       "bibcode": "2010GeoRL..3716103S",
       "title": "Anomalously low solar extreme-ultraviolet irradiance and thermospheric density during solar minimum",
       "firstAuthor": "Solomon, Stanley C.",
+      "authors": null,
+      "authorCount": null,
       "year": 2010,
       "citations": 179
     },
@@ -475,6 +540,8 @@
       "bibcode": "2004GeoRL..3110802W",
       "title": "Solar irradiance variability during the October 2003 solar storm period",
       "firstAuthor": "Woods, Thomas N.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 177
     },
@@ -482,6 +549,8 @@
       "bibcode": "2004GeoRL..31.3105M",
       "title": "SABER observations of mesospheric temperatures and comparisons with falling sphere measurements taken during the 2002 summer MaCWAVE campaign",
       "firstAuthor": "Mertens, Christopher J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2004,
       "citations": 174
     },
@@ -489,6 +558,8 @@
       "bibcode": "2006JGRA..11110S03O",
       "title": "Diurnal nonmigrating tides from TIMED Doppler Interferometer wind data: Monthly climatologies and seasonal variations",
       "firstAuthor": "Oberheide, J.",
+      "authors": null,
+      "authorCount": null,
       "year": 2006,
       "citations": 174
     }

@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { compile } from 'svelte/compiler';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const components = ['AccumulationPair.svelte', 'LifetimeTimeline.svelte', 'CostCurve.svelte', 'DollarMinorTicks.svelte', 'IndexScatter.svelte', 'TopShareBars.svelte', 'TimeToScience.svelte', '../scrolly/Squares.svelte', '../ui/MissionTable.svelte', '../ui/Num.svelte', '../ui/Nav.svelte', '../ui/Choice.svelte', '../ui/ScopeSwitch.svelte', '../ui/MeasureTable.svelte', '../mission/PaperBrowser.svelte', '../mission/QueryBlock.svelte', '../mission/CurationLists.svelte', '../../routes/[division]/+page.svelte', '../../routes/[division]/[mission]/+page.svelte', '../../routes/+error.svelte'];
+const components = ['Accumulation.svelte', 'LifetimeTimeline.svelte', 'CostCurve.svelte', 'DollarMinorTicks.svelte', 'IndexScatter.svelte', 'TopShareBars.svelte', 'TimeToScience.svelte', '../scrolly/Squares.svelte', '../ui/MissionTable.svelte', '../ui/Num.svelte', '../ui/Nav.svelte', '../ui/Choice.svelte', '../ui/ScopeSwitch.svelte', '../ui/MeasureTable.svelte', '../mission/PaperBrowser.svelte', '../mission/QueryBlock.svelte', '../mission/CurationLists.svelte', '../../routes/[division]/+page.svelte', '../../routes/[division]/[mission]/+page.svelte', '../../routes/+error.svelte'];
 
 for (const name of components) {
 	for (const generate of ['client', 'server']) {

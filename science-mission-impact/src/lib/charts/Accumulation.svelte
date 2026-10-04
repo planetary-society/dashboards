@@ -1,19 +1,14 @@
 <script>
-	// Two views of the same accumulation. Lifetime: cumulative publications and citations by
-	// calendar year, each against its own axis, both topping out at that series' final total, so
-	// the lines meet at the final observed year and the gap between them is the lag.
-	// Early window: one horizontal bar per year since the start of science. Papers only count for
-	// the first few years, their citations keep arriving for several more, and two lines on one
-	// plot made that look like a mismatch. Here the publications are a column of figures that
-	// simply ends, and the citations are a bar that keeps growing.
+	// A mission's lifetime accumulation: cumulative publications and citations by calendar year,
+	// each against its own axis, both topping out at that series' final total, so the lines meet
+	// at the final observed year and the gap between them is the lag. Launch, prime end and
+	// mission end are marked; the scope dates themselves head the Key measures table.
 	import { scaleLinear } from 'd3-scale';
 	import { line } from 'd3-shape';
 	import { int, compact, plural, longDate } from '$lib/format.js';
-	import { windowLabel } from '$lib/copy/window.js';
-	import { lifetimeModel, windowModel, axes, lifetimeDomain, missionMilestones, layoutMilestones, stackLabels, box } from './accumulation.js';
+	import { lifetimeModel, axes, lifetimeDomain, missionMilestones, layoutMilestones, stackLabels, box } from './accumulation.js';
 
-	/** Missions pass lifecycle dates; divisions replace the window panel with a companion chart. */
-	let { lifetime, window: windowSeries, policy, windowNote, companion, dates = {} } = $props();
+	let { lifetime, dates = {} } = $props();
 
 	const HEIGHT = 300;
 
@@ -21,9 +16,6 @@
 	const milestones = $derived(missionMilestones(dates));
 	const incomplete = $derived(life?.citationCoverage.status === 'incomplete');
 	const coverageNote = $derived(incomplete ? `Citation timeline incomplete: ${int(life.citationCoverage.observed)} of ${int(life.citationCoverage.expected)} reported citations have dated records; ${int(life.citationCoverage.missing)} missing. Headline totals include all reported citations.` : '');
-	const win = $derived(windowModel(windowSeries, policy));
-	const windowState = $derived(windowSeries?.outputBasis && windowSeries.outputBasis !== 'measured' ? 'unavailable' : windowSeries ? windowSeries.status || 'available' : 'missing');
-	const windowTitle = $derived(windowLabel(policy));
 
 	/** Totals read as figures, not axis ticks, until they get long enough to need folding. */
 	const total = (n) => (n >= 1e6 ? compact(n) : int(n));
@@ -76,11 +68,6 @@
 				} ${coverageNote}`
 			: 'No lifetime series.'
 	);
-	const winLabel = $derived(
-		win
-			? `Cumulative tracked publications and citations within the ${windowTitle}, with ${policy.citationYears} subsequent citation years per paper: ${int(win.pubTotal)} tracked ${plural(win.pubTotal, 'publication')} and ${int(win.citeTotal)} ${plural(win.citeTotal, 'citation')} in total.`
-			: 'No window series.'
-	);
 
 	function scrub(event) {
 		if (!life || !L) return;
@@ -91,8 +78,8 @@
 	}
 </script>
 
-<section class="pair">
-	<figure class="panel">
+<section>
+	<figure>
 		<h2 class="chart-title">Lifetime</h2>
 		{#if incomplete}<p class="meta note">{coverageNote}</p>{/if}
 		<div class="plot">
@@ -170,70 +157,9 @@
 			<p class="meta note">Not available for this mission.</p>
 		{/if}
 	</figure>
-
-	{#if companion}
-		<div class="panel">{@render companion()}</div>
-	{:else}
-	<figure class="panel">
-		<h2 class="chart-title">{windowTitle}</h2>
-		{#if windowSeries?.start && windowSeries?.end}
-			<p class="meta note">Tracked publications from {longDate(windowSeries.start)} to {longDate(windowSeries.end)}{#if windowSeries.matureDate}; citations counted through {longDate(windowSeries.matureDate)}{/if}.</p>
-		{/if}
-		{#if windowState === 'available' && win}
-			<p class="readout meta">Running totals aligned to each publication window’s opening month. Citation rows use calendar-year offsets from its opening year.</p>
-			{#if windowSeries.missionsByYear}<p class="meta note">Windows have different durations. Coverage beside each row counts measured mission windows that reach any part of that publication year; closed windows add no later papers.</p>{/if}
-			<p class="sr-only">{winLabel}</p>
-			<ol class="years">
-				<li class="head meta" aria-hidden="true">
-					<span></span>
-					<span class="pubs">Papers</span>
-					<span class="cites">Citations to those papers</span>
-				</li>
-				{#each win.rows as row (row.year)}
-					<li class:first-closed={row.year === win.pubYears + 1}>
-						<span class="year">Year {row.year}{#if row.missions != null}{' '}<span class="coverage">{int(row.missions)} {plural(row.missions, 'mission')}</span>{/if}</span>
-						<span class="pubs">
-							{#if row.papers != null}{int(row.papers)}<span class="sr-only">{' '}tracked {plural(row.papers, 'publication')}</span>{:else if row.year === win.pubYears + 1}<span class="meta">window closed</span>{/if}
-						</span>
-						<span class="track">
-							<span class="bar" style:width="calc((100% - var(--val)) * {row.to})">
-								<span class="was" style:flex-grow={row.from}></span>
-								<span class="new" style:flex-grow={row.to - row.from}></span>
-							</span>
-							<span class="val">{total(row.cite)}<span class="sr-only">{' '}{plural(row.cite, 'citation')}</span></span>
-						</span>
-					</li>
-				{/each}
-			</ol>
-			{#if windowNote}
-				<p class="meta note">{@render windowNote()}</p>
-			{/if}
-		{:else}
-			<p class="meta note">
-				The {windowTitle} is not available for this mission{windowState === 'immature' ? ' yet' : ''}.
-			</p>
-		{/if}
-	</figure>
-	{/if}
 </section>
 
 <style>
-	.pair {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 40px;
-	}
-
-	.panel {
-		min-width: 0;
-	}
-
-	.readout {
-		min-height: 16px;
-		margin-top: 4px;
-		color: var(--dust);
-	}
-
 	.plot {
 		position: relative;
 		margin-top: 8px;
@@ -350,115 +276,5 @@
 		height: 1px;
 		border: 0;
 		opacity: 0;
-	}
-
-	/* Early window: a row per year. */
-	.years {
-		--val: 64px;
-		margin-top: 20px;
-	}
-
-	.years li {
-		display: grid;
-		grid-template-columns: 68px 80px minmax(0, 1fr);
-		column-gap: 16px;
-		align-items: center;
-		height: 34px;
-	}
-
-	.years .head {
-		height: 24px;
-		align-items: start;
-	}
-
-	.years .first-closed {
-		box-shadow: 0 -1px 0 var(--shadow);
-	}
-
-	.year {
-		color: var(--soil);
-		font-size: 12px;
-		line-height: 16px;
-	}
-
-	.coverage {
-		display: block;
-		font-size: 10px;
-		line-height: 12px;
-		white-space: nowrap;
-	}
-
-	.pubs {
-		text-align: right;
-		color: var(--white);
-		white-space: nowrap;
-	}
-
-	.head .pubs {
-		color: var(--dust);
-	}
-
-	.pubs .meta {
-		display: block;
-		white-space: normal;
-		line-height: 14px;
-	}
-
-	.head .cites {
-		color: var(--neptune-mid);
-	}
-
-	.track {
-		display: flex;
-		align-items: center;
-		min-width: 0;
-	}
-
-	.bar {
-		display: flex;
-		flex: none;
-		height: 14px;
-		min-width: 1px;
-	}
-
-	.was {
-		background: var(--neptune);
-		opacity: 0.45;
-	}
-
-	.new {
-		background: var(--neptune);
-	}
-
-	.val {
-		padding-left: 8px;
-		font-size: 12px;
-		color: var(--neptune-mid);
-		white-space: nowrap;
-	}
-
-	@media (max-width: 480px) {
-		.years {
-			--val: 56px;
-		}
-
-		.years li {
-			grid-template-columns: 60px 56px minmax(0, 1fr);
-			column-gap: 10px;
-		}
-
-		/* the citations heading wraps here */
-		.years .head {
-			height: auto;
-			min-height: 24px;
-			padding-bottom: 4px;
-		}
-	}
-
-	@media (max-width: 860px) {
-		.pair {
-			grid-template-columns: 1fr;
-			gap: 48px;
-		}
 	}
 </style>

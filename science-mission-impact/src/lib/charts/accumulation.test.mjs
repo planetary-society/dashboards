@@ -1,17 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { scaleLinear } from 'd3-scale';
-import { cumulate, lifetimeModel, windowModel, axes, xDomain, stackLabels, box, decimalYear, missionMilestones, lifetimeDomain, layoutMilestones, TICK_FRACTIONS, axisTicks } from './accumulation.js';
-
-const policy = { publicationYears: 3, citationYears: 3 };
-
-test('prime-window rows derive duration and coverage from the series, not a fixed policy length', () => {
-	const w = windowModel({ papersByMonth: Array(25).fill(1), citationsByYearOffset: [0, 1, 2, 3, 4, 5], missionsByYear: [2, 2, 1] }, { kind: 'prime', postPrimeYears: 2, citationYears: 3 });
-	assert.equal(w.pubYears, 3);
-	assert.equal(w.pubTotal, 25);
-	assert.deepEqual(w.rows.slice(0, 4).map((r) => r.papers), [12, 24, 25, null]);
-	assert.deepEqual(w.rows.slice(0, 3).map((r) => r.missions), [2, 2, 1]);
-});
+import { cumulate, lifetimeModel, axes, xDomain, stackLabels, box, decimalYear, missionMilestones, lifetimeDomain, layoutMilestones, TICK_FRACTIONS, axisTicks } from './accumulation.js';
 
 test('cumulate runs a total and tolerates junk', () => {
 	assert.deepEqual(cumulate([1, 2, 3]), [1, 3, 6]);
@@ -41,35 +31,6 @@ test('lifetimeModel reports no partial year when there is none', () => {
 	assert.equal(m.pubTotal, 4);
 	assert.equal(lifetimeModel(null), null);
 	assert.equal(lifetimeModel({ years: [] }), null);
-});
-
-test('windowModel accumulates publications by year and stops when the window closes', () => {
-	const papersByMonth = new Array(36).fill(0);
-	papersByMonth[0] = 2;
-	papersByMonth[35] = 1;
-	const w = windowModel({ papersByMonth, citationsByYearOffset: [0, 5, 10, 20, 30, 40, 50] }, policy);
-
-	assert.equal(w.pubYears, 3);
-	assert.equal(w.pubTotal, 3);
-	assert.deepEqual(w.rows.map((r) => r.year), [1, 2, 3, 4, 5, 6, 7]);
-	assert.deepEqual(w.rows.map((r) => r.papers), [2, 2, 3, null, null, null, null]);
-});
-
-test('windowModel splits each citation bar into what was there and what the year added', () => {
-	const w = windowModel({ papersByMonth: new Array(36).fill(1), citationsByYearOffset: [0, 5, 10, 20, 30, 40, 50] }, policy);
-	assert.equal(w.citeTotal, 155);
-	assert.deepEqual(w.rows.map((r) => r.cite), [0, 5, 15, 35, 65, 105, 155]);
-	assert.equal(w.rows[0].from, 0);
-	assert.equal(w.rows[2].from, 5 / 155);
-	assert.equal(w.rows[2].to, 15 / 155);
-	assert.equal(w.rows.at(-1).to, 1);
-	for (let i = 1; i < w.rows.length; i++) assert.equal(w.rows[i].from, w.rows[i - 1].to);
-	assert.equal(windowModel(null, policy), null);
-});
-
-test('windowModel draws empty bars, not NaN, when nothing was cited', () => {
-	const w = windowModel({ papersByMonth: new Array(36).fill(0), citationsByYearOffset: [0, 0, 0, 0, 0, 0, 0] }, policy);
-	assert.ok(w.rows.every((r) => r.from === 0 && r.to === 0));
 });
 
 test('both axes start at zero and end at their own total, on shared rows', () => {

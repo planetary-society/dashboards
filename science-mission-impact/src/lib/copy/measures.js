@@ -20,9 +20,11 @@ export function missionMeasureGroups(mission, scope, site) {
 	const s = mission[scope];
 	const sp = s?.spread;
 	const ix = mission.indices ?? {};
+	// A measured window names its publication dates beside the scope; lifetime has none.
+	const b = sp && s.bounds?.status === 'available' ? s.bounds : null;
 	return [
 		{
-			heading: scopeLabel(scope, site),
+			heading: b ? `${scopeLabel(scope, site)} · papers ${longDate(b.start)} to ${longDate(b.end)}` : scopeLabel(scope, site),
 			// Spread is null when the scope's output was not measured: no row may read as a zero then.
 			rows: sp
 				? [

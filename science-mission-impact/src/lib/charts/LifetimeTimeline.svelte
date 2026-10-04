@@ -17,7 +17,7 @@
 	const cx = $derived(layout && point ? layout.x(point.year) : 0);
 	const side = $derived(layout && cx > (layout.left + layout.right) / 2 ? -1 : 1);
 
-	// The same invisible scrubber as the mission page's AccumulationPair: the pointer picks a
+	// The same invisible scrubber as the mission page's Accumulation: the pointer picks a
 	// year as it moves, arrow keys step it, and leaving the plot returns to the latest year.
 	function scrub(event) {
 		const rect = event.currentTarget.getBoundingClientRect();

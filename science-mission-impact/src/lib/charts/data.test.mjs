@@ -9,7 +9,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { lifetimeModel, windowModel } from './accumulation.js';
+import { lifetimeModel } from './accumulation.js';
 import { curveFacts, curveChart } from './costcurve.js';
 import { scatterModel } from './indexscatter.js';
 
@@ -27,7 +27,7 @@ const VIEWS = [
 ];
 
 test('accumulation preserves source totals, explicit citation gaps and actual mission windows', opts, () => {
-	const { windowPolicy, citationHistory } = read('site.json');
+	const { citationHistory } = read('site.json');
 	for (const file of readdirSync(join(generated, 'divisions'))) {
 		const d = read('divisions/' + file);
 		const life = lifetimeModel(d.lifetimeSeries);
@@ -46,12 +46,6 @@ test('accumulation preserves source totals, explicit citation gaps and actual mi
 		assert.equal(d.windowSeries.citationsByYearOffset.length, Math.max(0, ...measured.map((m) => m.window.bounds.citationBuckets)));
 		assert.deepEqual(d.windowSeries.missionsByYear, Array.from({ length: Math.ceil(d.windowSeries.papersByMonth.length / 12) },
 			(_, i) => measured.filter((m) => m.window.bounds.months > i * 12).length));
-		const win = windowModel(d.windowSeries, windowPolicy);
-		if (win) {
-			assert.equal(win.rows.length, d.windowSeries.citationsByYearOffset.length, d.slug);
-			assert.equal(win.rows.at(-1).to, win.citeTotal > 0 ? 1 : 0, d.slug);
-			assert.equal(win.rows[win.pubYears - 1].papers, win.pubTotal, d.slug);
-		}
 		for (const row of d.missions) {
 			const m = read('missions/' + row.id + '.json');
 			if (m.lifetimeSeries) {

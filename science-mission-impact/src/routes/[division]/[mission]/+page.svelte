@@ -3,7 +3,7 @@
 	import EntityHeader from '$lib/ui/EntityHeader.svelte';
 	import MostCited from '$lib/ui/MostCited.svelte';
 	import ScopeSwitch from '$lib/ui/ScopeSwitch.svelte';
-	import AccumulationPair from '$lib/charts/AccumulationPair.svelte';
+	import Accumulation from '$lib/charts/Accumulation.svelte';
 	import MeasureTable from '$lib/ui/MeasureTable.svelte';
 	import QueryBlock from '$lib/mission/QueryBlock.svelte';
 	import CurationLists from '$lib/mission/CurationLists.svelte';
@@ -60,7 +60,7 @@
 	</EntityHeader>
 
 	{#if f.papers > 0}
-		<AccumulationPair lifetime={m.lifetimeSeries} window={m.windowSeries} policy={site.windowPolicy} dates={m.meta.dates} />
+		<Accumulation lifetime={m.lifetimeSeries} dates={m.meta.dates} />
 
 		<MostCited paper={m.mostCited} />
 	{/if}

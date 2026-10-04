@@ -1,8 +1,7 @@
 /**
- * Series math for AccumulationPair.
+ * Series math for Accumulation.svelte.
  *
- * Both panels follow one rule: each series is cumulative, starts at zero, and its own axis
- * tops out at its own final total. The two lines therefore end at the same point in the
+ * Each series is cumulative, starts at zero, and its own axis tops out at its own final total. The two lines therefore end at the same point in the
  * same final year and the chart reads as percent-of-final with two absolute scales — the gap
  * between the lines is how far citations trail publications.
  *
@@ -47,35 +46,6 @@ export function lifetimeModel(series) {
 		citationCoverage: series.citationCoverage ?? { status: 'complete', expected: last(cites), observed: last(cites), missing: 0 },
 		partialIndex
 	};
-}
-
-/**
- * WindowSeries -> one row per year since the start of science.
- *
- * Each row carries the running citation total, split into what was already there (`from`) and
- * what that year added (`to`), both as fractions of the final total, so a row draws as one bar
- * that visibly grows. Publications only accumulate while the window is open; after that the
- * row's `papers` is null, which the chart prints as nothing at all rather than a flat line.
- */
-export function windowModel(series, policy) {
-	if (!series) return null;
-	const months = series.papersByMonth ?? [];
-	const pubYears = Math.ceil(months.length / 12);
-	const perYear = Array.from({ length: pubYears }, (_, k) => months.slice(k * 12, (k + 1) * 12).reduce((a, v) => a + (Number(v) || 0), 0));
-	const cumPub = cumulate(perYear);
-	const cumCite = cumulate(series.citationsByYearOffset);
-	const pubTotal = last(cumPub);
-	const citeTotal = last(cumCite);
-	const frac = (v) => (citeTotal > 0 ? v / citeTotal : 0);
-	const rows = cumCite.map((cite, k) => ({
-		year: k + 1,
-		papers: k < pubYears ? cumPub[k] : null,
-		missions: series.missionsByYear?.[k] ?? null,
-		cite,
-		from: frac(k > 0 ? cumCite[k - 1] : 0),
-		to: frac(cite)
-	}));
-	return { rows, pubYears, pubTotal, citeTotal };
 }
 
 /** X domain for a year axis; a single year would otherwise collapse the scale. */

@@ -55,8 +55,6 @@ async function load(name, { scope = 'full', top = 10 } = {}) {
 	return (await import(await compiled(join(here, name), { scope, top }))).default;
 }
 
-const policy = { publicationYears: 3, citationYears: 3 };
-
 test('division timeline defaults to annual counts and keeps missing citations explicit', async () => {
 	const Component = await load('LifetimeTimeline.svelte');
 	const body = render(Component, { props: { lifetime: {
@@ -122,45 +120,25 @@ const lifetime = {
 	partialFromYear: 2003
 };
 
-const windowSeries = {
-	papersByMonth: Array.from({ length: 36 }, (_, i) => (i % 6 === 0 ? 2 : 0)),
-	citationsByYearOffset: [0, 30, 80, 120, 200, 260, 310],
-	missionsIncluded: 12,
-	missionsImmature: []
-};
-
-test('prime-window boundaries and incomplete citation coverage are present in prerendered text', async () => {
-	const Component = await load('AccumulationPair.svelte');
+test('incomplete citation coverage is present in prerendered text', async () => {
+	const Component = await load('Accumulation.svelte');
 	const { body } = render(Component, { props: {
-		lifetime: { ...lifetime, citationCoverage: { status: 'incomplete', expected: 1201, observed: 1200, missing: 1 } },
-		window: { ...windowSeries, start: '2000-02-01', end: '2004-03-01', matureDate: '2007-10-01', missionsByYear: [12, 10, 8] },
-		policy: { kind: 'prime', postPrimeYears: 2, citationYears: 3 }
+		lifetime: { ...lifetime, citationCoverage: { status: 'incomplete', expected: 1201, observed: 1200, missing: 1 } }
 	} });
-	assert.match(body, /Prime Mission Window/);
-	assert.match(body.replace(/<!--.*?-->/g, ''), /from February 1, 2000 to March 1, 2004; citations counted through October 1, 2007\./);
-	assert.doesNotMatch(body, /end exclusive|Maturity date/);
 	assert.match(body, /1,200 of 1,201 reported citations/);
 	assert.match(body, /1 missing/);
 	assert.doesNotMatch(body, /undefined/);
 });
 
-test('AccumulationPair prerenders both summaries and no chart', async () => {
-	const Component = await load('AccumulationPair.svelte');
-	const { body } = render(Component, { props: { lifetime, window: windowSeries, policy } });
+test('Accumulation prerenders the lifetime summary, no window panel and no chart', async () => {
+	const Component = await load('Accumulation.svelte');
+	const { body } = render(Component, { props: { lifetime } });
 	assert.match(body, /Lifetime/);
-	assert.match(body, /3-year window/);
 	assert.match(body, /65 tracked publications and 1,200 citations in total/);
-	assert.match(body, /12 tracked publications and 1,000 citations in total/);
+	assert.doesNotMatch(body, /Window|window closed/);
 	assert.ok(!body.includes('<svg'), 'no chart is drawn before the container is measured');
-});
-
-test('AccumulationPair says so when the window is missing or immature', async () => {
-	const Component = await load('AccumulationPair.svelte');
-	const missing = render(Component, { props: { lifetime, window: null, policy } }).body;
-	assert.match(missing, /not available for this mission\./);
-	const immature = render(Component, { props: { lifetime, window: { ...windowSeries, status: 'immature' }, policy } }).body;
-	assert.match(immature, /not available for this mission yet\./);
-	const noLifetime = render(Component, { props: { lifetime: null, window: windowSeries, policy } }).body;
+	const noLifetime = render(Component, { props: { lifetime: null } }).body;
+	assert.match(noLifetime, /Not available for this mission\./);
 	assert.ok(!noLifetime.includes('undefined'));
 });
 
@@ -265,22 +243,15 @@ test('IndexScatter says when a division has too few missions to correlate', asyn
 	assert.ok(!bare.includes('undefined'));
 });
 
-test('AccumulationPair names recorded lifecycle dates for screen readers', async () => {
-	const Component = await load('AccumulationPair.svelte');
+test('Accumulation names recorded lifecycle dates for screen readers', async () => {
+	const Component = await load('Accumulation.svelte');
 	const dates = { launch: '1997-10-15', primeEnd: '2002-06-30', missionEnd: '2017-09-15' };
-	const { body } = render(Component, { props: { lifetime, window: windowSeries, policy, dates } });
+	const { body } = render(Component, { props: { lifetime, dates } });
 	assert.match(body, /launch: October 15, 1997\./);
 	assert.match(body, /prime end: June 30, 2002\./);
 	assert.match(body, /mission end: September 15, 2017\./);
-	const ongoing = render(Component, { props: { lifetime, policy, dates: { launch: dates.launch } } }).body;
+	const ongoing = render(Component, { props: { lifetime, dates: { launch: dates.launch } } }).body;
 	assert.doesNotMatch(ongoing, /prime end:|mission end:/);
-});
-
-test('division companion replaces the prime-phase panel while retaining the lifetime summary', async () => {
-	const Component = await load('AccumulationPair.svelte');
-	const { body } = render(Component, { props: { lifetime, policy, companion: () => {} } });
-	assert.match(body, /65 tracked publications and 1,200 citations in total/);
-	assert.doesNotMatch(body, /3-year window|publication window is not available/);
 });
 
 test('TopShareBars prerenders selected-scope top-paper counts and unmeasured names', async () => {
@@ -327,7 +298,9 @@ const spread = { mean: 12.5, median: 4, uncited: 10, i10: 30, i100: 2 };
 const scope = { papers: 80, citations: 1000, top10: 6.5, top10ShareOfDivision: 0.031, top1: 0.5, top1ShareOfDivision: 0.012, spread };
 const mission = {
 	indices: { h: 15, g: 28, m: 0.6, i100: 2, tori: 12.34, riq: 140 },
-	full: scope, window: { ...scope, spread: null }, lifetime: { ...scope, top1: null, top1ShareOfDivision: null }
+	full: { ...scope, bounds: { start: '2004-04-01', end: '2019-10-01', status: 'available' } },
+	window: { ...scope, spread: null, bounds: { start: '2004-04-01', end: '2010-07-01', status: 'available' } },
+	lifetime: { ...scope, top1: null, top1ShareOfDivision: null }
 };
 // Each row's visible text: label, the hint's "i", value. Tips and screen-reader copies dropped.
 const rowsOf = (html) => [...html.matchAll(/<tr>([\s\S]*?)<\/tr>/g)].map(([, r]) =>
@@ -338,7 +311,7 @@ test('MeasureTable renders every measure of the selected scope and the dated lif
 	const Component = await load('../ui/MeasureTable.svelte');
 	const html = render(Component, { props: { groups: missionMeasureGroups(mission, 'full', site) } }).body;
 	assert.deepEqual(rowsOf(html), [
-		'Active Mission Window',
+		'Active Mission Window · papers April 1, 2004 to October 1, 2019',
 		'Tracked publicationsi80', 'Citationsi1,000', 'Mean citations per publicationi13', 'Median citations per publicationi4',
 		'Uncited publicationsi10 (13%)', 'Top-10% crediti6.5 · 3.1% of division', 'Top-1% crediti0.5 · 1.2% of division',
 		'Lifetime indices · every tracked publication to date, in any scope',

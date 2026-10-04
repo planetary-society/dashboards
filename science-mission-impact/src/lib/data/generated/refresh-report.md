@@ -54,16 +54,16 @@ Citation timelines are checked against reported counts. Only source-declared, sm
 
 ## Thumbnails
 
-ok 134 · failed 0 · no image URL 0 (from `static/img/missions/manifest.json`)
+ok 139 · failed 0 · no image URL 0 (from `static/img/missions/manifest.json`)
 
 ## Output
 
 | File                     | Bytes          |
 | ------------------------ | -------------- |
 | `generated/site.json`    | 69,220         |
-| `generated/index.json`   | 27,378         |
-| `generated/scrolly.json` | 145,148        |
-| `generated/divisions/`   | 541,721        |
-| `generated/missions/`    | 2,182,172      |
+| `generated/index.json`   | 27,373         |
+| `generated/scrolly.json` | 145,143        |
+| `generated/divisions/`   | 541,716        |
+| `generated/missions/`    | 2,182,167      |
 | `static/data/papers/`    | 31,166,099     |
-| **total**                | **34,131,738** |
+| **total**                | **34,131,718** |

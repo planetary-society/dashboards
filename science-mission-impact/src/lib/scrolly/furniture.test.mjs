@@ -193,9 +193,9 @@ const clps = {
 	start: '2024-01-08',
 	horizonMonths: 36,
 	missions: [
-		{ id: 'peregrine', name: 'Peregrine', papers: 3 },
-		{ id: 'im_1_odysseus', name: 'IM-1 Odysseus', papers: 5 },
-		{ id: 'cp_11', name: 'CP-11', papers: null }
+		{ id: 'peregrine', name: 'Peregrine', cost: 130.3, papers: 3 },
+		{ id: 'im_1_odysseus', name: 'IM-1 Odysseus', cost: 131.5, papers: 5 },
+		{ id: 'cp_11', name: 'CP-11', cost: 50.4, papers: null }
 	],
 	series: [...Array.from({ length: 32 }, (_, i) => Math.floor(i / 2)), 31, null, null, null, null],
 	comparators: [
@@ -207,21 +207,33 @@ const clps = {
 test('ClpsChart prerenders the running lines with end labels, stopping where the data stops', async () => {
 	const Component = await load('ClpsChart.svelte');
 	const { body } = render(Component, { props: { clps, draw: 1, drawComparators: 1, ...stage } });
-	for (const t of ['Peregrine,', 'Odysseus', '>31<', 'LCROSS 23', 'Mars Pathfinder 72', '36 months']) assert.ok(body.includes(t), t);
+	for (const t of ['Peregrine,', 'Odysseus', '>31 papers<', '>$312M<', '>LCROSS<', '>20 papers<', '>$120M<', '>Mars Pathfinder<', '>64 papers<', '>$400M<', '32 months'])
+		assert.ok(body.includes(t), t);
 	assert.ok(!body.includes('CLPS 31'), 'the CLPS label names its landers instead');
 	assert.ok(!body.includes('CP-11'), 'a lander with no papers is not named');
 	assert.ok(body.includes('>IM-1 Odysseus<'), 'a name is never broken across lines');
 	assert.equal((body.match(/<path /g) ?? []).length, 3);
+	assert.equal((body.match(/<circle[^>]*opacity="1"/g) ?? []).length, 3, 'every drawn line ends in a dot');
+	assert.ok(!body.includes('36 months') && !body.includes('72 papers'), 'the comparators stop at the CLPS line\'s last month');
 	clean(body);
 });
 
 test('ClpsChart on a phone before it draws', async () => {
 	const Component = await load('ClpsChart.svelte');
 	const { body } = render(Component, { props: { clps, draw: 0, drawComparators: 0, ...stage, compact: true } });
-	for (const t of ['Peregrine,', 'Odysseus', '>31<']) assert.ok(body.includes(t), t);
+	for (const t of ['Peregrine,', 'Odysseus', '>31 papers<', '>$312M<']) assert.ok(body.includes(t), t);
 	assert.ok(!body.includes('CLPS 31'));
 	assert.match(body, /stroke-dashoffset="1"/);
+	assert.ok(!/<circle[^>]*opacity="1"/.test(body), 'no dot before its line draws');
 	clean(body);
+});
+
+test('ClpsChart drops the CLPS cost line when any lander has no cost', async () => {
+	const Component = await load('ClpsChart.svelte');
+	const missions = clps.missions.map((p, i) => (i ? p : { ...p, cost: null }));
+	const { body } = render(Component, { props: { clps: { ...clps, missions }, draw: 1, drawComparators: 1, ...stage } });
+	assert.ok(body.includes('>31 papers<'));
+	assert.ok(!body.includes('$312M') && !body.includes('$182M'), 'a missing cost is not summed as zero');
 });
 
 // Poppins' glyph box is 1.4em: blocks closer than that touch even when their lines do not.

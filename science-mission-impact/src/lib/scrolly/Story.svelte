@@ -307,7 +307,7 @@
 		<!-- CLPS_COMPARE -->
 		<section data-step><div class="step">
 			<p>How does that stack up? Compare {spell(clps.comparators.length)} earlier NASA missions to the Moon and Mars: {listify(clps.comparators.map((c) => `${c.name} (${money(c.cost)})`))}.</p>
-			{#if clps.comparison}<p>At the same point in their lives, {listify(clps.comparison.comparators.map((c) => `${c.name} had ${int(c.papers)}`))} papers; by the {clps.horizonMonths}-month mark, {listify(clps.comparators.map((c) => int(c.series[clps.horizonMonths])))}. {#if clps.comparison.behindAll}So far, <strong>all the CLPS landers combined have fewer papers than either mission had alone</strong>.{:else}So far, the CLPS landers combined are keeping pace with those missions.{/if} It’s early, and that could change.</p>{/if}
+			{#if clps.comparison?.comparators.length}{@const [first, ...rest] = clps.comparison.comparators}<p>In their first {clps.comparison.month} months, {first.name} had {int(first.papers)} peer-reviewed papers published.{#each rest as c (c.id)}{' '}{c.name} had {int(c.papers)}.{/each} {#if clps.comparison.behindAll}At the same point, <strong>all {spell(landers)} CLPS landers combined have resulted in fewer papers than {clps.comparators.length === 2 ? 'either' : 'any'} mission had alone.</strong>{:else}At the same point, all {spell(landers)} CLPS landers combined are keeping pace with those missions.{/if}</p>{/if}
 		</div></section>
 		<!-- CLOSE: every mission back in the launch grid -->
 		<section data-step><div class="step">

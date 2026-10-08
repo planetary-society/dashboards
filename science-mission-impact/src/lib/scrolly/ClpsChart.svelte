@@ -4,7 +4,7 @@
 	// draws over its own step (draw), the two comparators together over the next (drawComparators).
 	import { scaleLinear } from 'd3-scale';
 	import { line, curveStepAfter } from 'd3-shape';
-	import { compact as short, int } from '$lib/format.js';
+	import { compact as short, int, money } from '$lib/format.js';
 
 	/** clps: Site.clps (series indexed by month, null until that month has elapsed). */
 	let { clps, draw = 0, drawComparators = 0, visible = false, compact = false, width, height } = $props();
@@ -12,31 +12,45 @@
 	const clamp01 = (v) => Math.max(0, Math.min(1, v));
 	const a = $derived(clamp01(draw));
 	const b = $derived(clamp01(drawComparators));
+	// The x-axis ends at the CLPS line's last elapsed month; the comparators are cut there too, so
+	// every end label reads at the same age.
+	const horizon = $derived(Math.max(1, clps.series.findLastIndex((v) => v != null)));
 	const all = $derived(
 		[{ id: 'clps', name: 'CLPS', series: clps.series, main: true }, ...clps.comparators.map((c) => ({ ...c, main: false }))].map((s) => {
-			const month = s.series.findLastIndex((v) => v != null);
-			return { ...s, last: month < 0 ? { month: 0, papers: 0 } : { month, papers: s.series[month] } };
+			const series = s.series.slice(0, horizon + 1);
+			const month = series.findLastIndex((v) => v != null);
+			return { ...s, series, last: month < 0 ? { month: 0, papers: 0 } : { month, papers: series[month] } };
 		})
 	);
-	// On a phone the right margin grows to hold the longest comparator label (~6.2px a character at
+	// Under each label: the line's value as "N papers", then the adjusted LCC (CLPS: the sum over
+	// every lander, shown only when every lander has a cost; a missing cost is not zero).
+	const total = (costs) => (costs.every((c) => c != null) ? costs.reduce((t, c) => t + c, 0) : null);
+	const tails = $derived(
+		all.map((s) => {
+			const cost = s.main ? total(clps.missions.map((p) => p.cost)) : s.cost;
+			return [`${int(s.last.papers)} papers`, ...(cost == null ? [] : [money(cost)])];
+		})
+	);
+	// On a phone the right margin grows to hold the longest comparator line (~6.2px a character at
 	// 11px, plus the 8px gap), but the plot keeps at least 55% of the width; past that cap a
-	// comparator's label drops to its last word ("Pathfinder 72"). The CLPS label wraps instead.
+	// comparator's name drops to its last word ("Pathfinder"). The CLPS names wrap instead.
 	const fit = (texts) => Math.max(...texts.map((t) => t.length)) * 6.2 + 8;
 	const cap = $derived(width * 0.45 - 34);
-	const texts = $derived.by(() => {
-		const full = all.map((s) => `${s.name} ${int(s.last.papers)}`);
-		if (!compact || fit(full.filter((_, i) => !all[i].main)) <= cap) return full;
-		return all.map((s, i) => (s.main ? full[i] : `${s.name.split(' ').at(-1)} ${int(s.last.papers)}`));
+	const sideLines = (names) => all.flatMap((s, i) => (s.main ? [] : [names[i], ...tails[i]]));
+	const names = $derived.by(() => {
+		const full = all.map((s) => s.name);
+		if (!compact || fit(sideLines(full)) <= cap) return full;
+		return all.map((s) => s.name.split(' ').at(-1));
 	});
 	const m = $derived({
 		l: compact ? 34 : 56,
-		r: compact ? Math.min(cap, Math.max(92, fit(texts.filter((_, i) => !all[i].main)))) : 148,
+		r: compact ? Math.min(cap, Math.max(92, fit(sideLines(names)))) : 148,
 		t: 20,
 		b: 28
 	});
 	const lineH = $derived(compact ? 13 : 15);
 	// The CLPS label: the short names of the landers that contributed papers, greedily wrapped to the
-	// margin at 11px, then the value on its own last line.
+	// margin at 11px.
 	const clpsLines = $derived.by(() => {
 		const max = Math.max(1, Math.floor((m.r - 8) / 6.2));
 		const out = [];
@@ -46,9 +60,9 @@
 			if (out.length && out.at(-1).length + 1 + w.length <= max) out[out.length - 1] += ` ${w}`;
 			else out.push(w);
 		}
-		return [...out, int(all[0].last.papers)];
+		return out;
 	});
-	const x = $derived(scaleLinear([0, clps.horizonMonths], [m.l, width - m.r]));
+	const x = $derived(scaleLinear([0, horizon], [m.l, width - m.r]));
 	const y = $derived(scaleLinear([0, Math.max(1, ...all.flatMap((s) => s.series.filter((v) => v != null)))], [height - m.b, m.t]).nice(4));
 	const path = $derived(
 		line()
@@ -58,24 +72,26 @@
 			.curve(curveStepAfter)
 	);
 	const lines = $derived(
-		all.map((s, i) => ({ ...s, text: texts[i], d: path(s.series.map((papers, month) => ({ month, papers }))), opacity: s.main ? a : b }))
+		all.map((s, i) => ({ ...s, head: s.main ? clpsLines : [names[i]], tail: tails[i], d: path(s.series.map((papers, month) => ({ month, papers }))), opacity: s.main ? a : b }))
 	);
 	// end labels in y order, each block's top line at least `apart` below the last line of the one
-	// above; y is the block's last line, the CLPS names stack above it. `apart` is Poppins' full
-	// glyph box (1.4em) at the label size, so blocks never touch, where lineH only packs one block.
+	// above; y is the "N papers" line, the names stack above it and the cost hangs below. `apart` is
+	// Poppins' full glyph box (1.4em) at the label size, so blocks never touch, where lineH only
+	// packs one block.
 	const apart = $derived(compact ? 16 : 19);
 	const labels = $derived.by(() => {
 		let prev = -Infinity;
 		return lines
-			.map((l) => ({ id: l.id, lines: l.main ? clpsLines : [l.text], y: y(l.last.papers), opacity: l.opacity, main: l.main }))
+			.map((l) => ({ id: l.id, head: l.head, tail: l.tail, y: y(l.last.papers), opacity: l.opacity, main: l.main }))
 			.sort((p, q) => p.y - q.y)
 			.map((l) => {
-				const ly = Math.max(l.y, prev + (l.lines.length - 1) * lineH + apart);
-				prev = ly;
+				const ly = Math.max(l.y, prev + l.head.length * lineH + apart);
+				prev = ly + (l.tail.length - 1) * lineH;
 				return { ...l, y: ly };
 			});
 	});
-	const xTicks = $derived([0, 12, 24, 36].filter((t) => t <= clps.horizonMonths));
+	// yearly ticks, then the last month, dropping a yearly tick that would crowd it
+	const xTicks = $derived([...[0, 12, 24, 36, 48, 60].filter((t) => t < horizon - 6), horizon]);
 </script>
 
 <div class="clps" class:visible class:compact aria-hidden="true">
@@ -89,11 +105,11 @@
 		{/each}
 		{#each lines as l (l.id)}
 			<path class:main={l.main} d={l.d} pathLength="1" stroke-dasharray="1" stroke-dashoffset={1 - l.opacity} />
-			{#if l.main}<circle cx={x(l.last.month)} cy={y(l.last.papers)} r="3" opacity={a >= 1 ? 1 : 0} />{/if}
+			<circle class:main={l.main} cx={x(l.last.month)} cy={y(l.last.papers)} r="3" opacity={l.opacity >= 1 ? 1 : 0} />
 		{/each}
 		{#each labels as l (l.id)}
-			<text class="label" class:main={l.main} x={width - m.r + 8} y={l.y - (l.lines.length - 1) * lineH} dy="0.32em" opacity={l.opacity}>
-				{#each l.lines as t, i (i)}<tspan class:names={i < l.lines.length - 1} x={width - m.r + 8} dy={i ? lineH : undefined}>{t}</tspan>{/each}
+			<text class="label" class:main={l.main} x={width - m.r + 8} y={l.y - l.head.length * lineH} dy="0.32em" opacity={l.opacity}>
+				{#each [...l.head, ...l.tail] as t, i (i)}<tspan class:names={l.main && i < l.head.length} class:cost={i > l.head.length} x={width - m.r + 8} dy={i ? lineH : undefined}>{t}</tspan>{/each}
 			</text>
 		{/each}
 	</svg>
@@ -140,6 +156,10 @@
 	}
 
 	circle {
+		fill: var(--dust);
+	}
+
+	circle.main {
 		fill: var(--neptune);
 	}
 
@@ -152,7 +172,8 @@
 		fill: var(--white);
 	}
 
-	.label .names {
+	.label .names,
+	.label .cost {
 		fill: var(--dust);
 		font-size: 11px;
 	}

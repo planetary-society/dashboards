@@ -64,7 +64,7 @@ test('division timeline defaults to annual counts and keeps missing citations ex
 	assert.match(body, /class="swatch pub[^>]*><\/i>Tracked publications/);
 	assert.match(body, /class="swatch cite[^>]*><\/i>Citations/);
 	assert.doesNotMatch(body, /<b[^>]*>2001/, 'no readout outside the plot');
-	assert.match(body, /Dashed: 2001 is not yet a full year/);
+	assert.doesNotMatch(body, /Dashed:|not yet a full year/);
 	assert.match(body, /12 of 13 reported citations/);
 	assert.doesNotMatch(body, /Tap or drag|Lifetime ·/);
 	assert.doesNotMatch(body, /NaN|undefined/);

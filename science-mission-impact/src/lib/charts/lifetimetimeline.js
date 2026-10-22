@@ -4,6 +4,15 @@ import { lifetimeModel, xDomain } from './accumulation.js';
 
 /** Keep annual observations and cumulative totals on the same recorded calendar years. */
 export function timelineModel(series, mode = 'annual') {
+	if (!series?.years?.length) return null;
+	const cutoff = Math.min(new Date().getFullYear(), series.partialFromYear ?? Infinity);
+	const end = series.years.findIndex((year) => year >= cutoff);
+	if (end >= 0) series = {
+		...series,
+		years: series.years.slice(0, end),
+		papers: series.papers.slice(0, end),
+		citations: series.citations.slice(0, end)
+	};
 	const life = lifetimeModel(series);
 	if (!life) return null;
 	const points = mode === 'cumulative' ? life.points : life.years.map((year, i) => ({

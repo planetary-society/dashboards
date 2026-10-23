@@ -22,13 +22,13 @@
     "h": 83,
     "m": 3.192,
     "i100": 66,
-    "g": 145,
-    "tori": 286.953,
-    "riq": 651
+    "g": 146,
+    "tori": 288.138,
+    "riq": 628
   },
   "facts": {
-    "papers": 848,
-    "citations": 32403,
+    "papers": 849,
+    "citations": 32468,
     "publicationYears": [
       2001,
       2026
@@ -89,7 +89,7 @@
       24,
       15,
       15,
-      12
+      13
     ],
     "citations": [
       0,
@@ -102,28 +102,28 @@
       388,
       384,
       526,
-      636,
-      768,
-      1134,
+      659,
+      792,
+      1135,
       1311,
       1481,
       1711,
-      1669,
+      1667,
       2095,
-      2518,
+      2519,
       2447,
-      2740,
-      2901,
-      2530,
-      2554,
-      2611,
-      1448
+      2741,
+      2903,
+      2531,
+      2552,
+      2616,
+      1459
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 32403,
-      "observed": 32403,
+      "expected": 32468,
+      "observed": 32468,
       "missing": 0
     }
   },
@@ -194,63 +194,63 @@
     ],
     "authorCount": 3,
     "year": 2009,
-    "citations": 1940
+    "citations": 1950
   },
   "ranks": {
     "full": {
       "bins": [
-        85.671,
-        86.153,
-        83.761,
-        76.866,
-        62.771,
-        65.219,
-        64.844,
-        52.426,
-        49.064,
-        27.224
+        88.266,
+        86.118,
+        83.841,
+        75.188,
+        62.76,
+        64.457,
+        63.516,
+        53.282,
+        49.023,
+        27.549
       ],
       "top1": 3
     },
     "window": {
       "bins": [
-        10.4,
-        7.593,
-        1.794,
-        6.532,
-        6.841,
-        1.675,
-        3.428,
-        1.966,
-        2.771,
+        10.815,
+        7.781,
+        1.447,
+        6.474,
+        6.77,
+        1.66,
+        3.444,
+        2.165,
+        2.443,
         0
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        48.935,
-        73.014,
-        63.511,
-        85.231,
-        99.124,
-        85.828,
-        104.545,
-        88.411,
-        103.449,
-        95.951
+        54.683,
+        75.573,
+        65.478,
+        86.816,
+        102.757,
+        84.546,
+        98.071,
+        91.018,
+        98.757,
+        91.301
       ],
-      "top1": 14.696
+      "top1": 13
     }
   },
   "full": {
     "papers": 654,
     "outputBasis": "measured",
-    "citations": 5159,
-    "top10": 30.48,
-    "top10ShareOfDivision": 0.00792,
+    "citations": 5174,
+    "top10": 31.544,
+    "top10ShareOfDivision": 0.00876,
     "top1": 2.5,
-    "top1ShareOfDivision": 0.0065,
+    "top1ShareOfDivision": 0.00695,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 2.606,
@@ -268,10 +268,10 @@
       "citationBuckets": 23
     },
     "spread": {
-      "mean": 7.888,
+      "mean": 7.911,
       "median": 5,
       "uncited": 71,
-      "i10": 177,
+      "i10": 178,
       "i100": 2
     }
   },
@@ -279,8 +279,8 @@
     "papers": 43,
     "outputBasis": "measured",
     "citations": 254,
-    "top10": 2,
-    "top10ShareOfDivision": 0.00193,
+    "top10": 1,
+    "top10ShareOfDivision": 0.00106,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -308,11 +308,11 @@
     }
   },
   "lifetime": {
-    "papers": 848,
+    "papers": 849,
     "outputBasis": "measured",
-    "citations": 32403,
-    "top10": 49.2,
-    "top10ShareOfDivision": 0.01189,
+    "citations": 32468,
+    "top10": 50.583,
+    "top10ShareOfDivision": 0.01313,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -323,9 +323,9 @@
       "date": "2003-00-00"
     },
     "spread": {
-      "mean": 38.211,
+      "mean": 38.243,
       "median": 17,
-      "uncited": 46,
+      "uncited": 47,
       "i10": 559,
       "i100": 66
     }
@@ -334,15 +334,15 @@
     "arms": "((=abs:\"Earth Observing-1\" OR =abs:\"Earth Observing 1\" OR =abs:\"Earth Observing One\" OR (abs:\"EO-1\" AND (abs:Hyperion OR =abs:\"Advanced Land Imager\" OR abs:Landsat OR abs:hyperspectral OR =abs:\"remote sensing\" OR abs:multispectral OR abs:\"ETM+\" OR abs:satellite OR =abs:\"Earth observation\" OR abs:AVIRIS)) OR (abs:Hyperion AND (abs:hyperspectral OR abs:Landsat OR =abs:\"remote sensing\")) OR =abs:\"Advanced Land Imager\" OR (abs:\"ALI\" AND (=abs:\"Advanced Land Imager\" OR abs:Landsat OR abs:Hyperion))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2000-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Earth+Observing-1%22+OR+%3Dabs%3A%22Earth+Observing+1%22+OR+%3Dabs%3A%22Earth+Observing+One%22+OR+%28abs%3A%22EO-1%22+AND+%28abs%3AHyperion+OR+%3Dabs%3A%22Advanced+Land+Imager%22+OR+abs%3ALandsat+OR+abs%3Ahyperspectral+OR+%3Dabs%3A%22remote+sensing%22+OR+abs%3Amultispectral+OR+abs%3A%22ETM%2B%22+OR+abs%3Asatellite+OR+%3Dabs%3A%22Earth+observation%22+OR+abs%3AAVIRIS%29%29+OR+%28abs%3AHyperion+AND+%28abs%3Ahyperspectral+OR+abs%3ALandsat+OR+%3Dabs%3A%22remote+sensing%22%29%29+OR+%3Dabs%3A%22Advanced+Land+Imager%22+OR+%28abs%3A%22ALI%22+AND+%28%3Dabs%3A%22Advanced+Land+Imager%22+OR+abs%3ALandsat+OR+abs%3AHyperion%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:20:58.022983+00:00",
+    "fetchedAt": "2026-10-19T17:10:06.891625+00:00",
     "reconciliation": {
-      "adsReturned": 855,
+      "adsReturned": 856,
       "curatedOut": 3,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 4,
-      "final": 848
+      "final": 849
     }
   },
   "curation": {
@@ -398,7 +398,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 1940
+      "citations": 1950
     },
     {
       "bibcode": "2005ITGRS..43..492H",
@@ -407,7 +407,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 798
+      "citations": 799
     },
     {
       "bibcode": "2008AgFM..148.1230W",
@@ -416,7 +416,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 594
+      "citations": 597
     },
     {
       "bibcode": "2003ITGRS..41.1388K",
@@ -425,7 +425,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 517
+      "citations": 518
     },
     {
       "bibcode": "2008Geode.146..403G",
@@ -434,7 +434,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 397
+      "citations": 400
     },
     {
       "bibcode": "2008RSEnv.112.3846L",
@@ -461,7 +461,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 356
+      "citations": 359
     },
     {
       "bibcode": "2014RSEnv.154..102F",
@@ -488,7 +488,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 315
+      "citations": 316
     },
     {
       "bibcode": "2010ITGRS..48.4099M",
@@ -515,7 +515,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 291
+      "citations": 292
     },
     {
       "bibcode": "2004RSEnv..91..354T",
@@ -524,16 +524,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 285
-    },
-    {
-      "bibcode": "2019IGRSL..16..241Q",
-      "title": "Spectral-Spatial Graph Convolutional Networks for Semisupervised Hyperspectral Image Classification",
-      "firstAuthor": "Qin, Anyong",
-      "authors": null,
-      "authorCount": null,
-      "year": 2019,
-      "citations": 281
+      "citations": 287
     },
     {
       "bibcode": "2013RemS....5.5530L",
@@ -542,7 +533,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 279
+      "citations": 280
+    },
+    {
+      "bibcode": "2019IGRSL..16..241Q",
+      "title": "Spectral-Spatial Graph Convolutional Networks for Semisupervised Hyperspectral Image Classification",
+      "firstAuthor": "Qin, Anyong",
+      "authors": null,
+      "authorCount": null,
+      "year": 2019,
+      "citations": 280
     },
     {
       "bibcode": "2004LimOc..49.2179K",
@@ -573,6 +573,6 @@
     }
   ],
   "papersFile": {
-    "rows": 848
+    "rows": 849
   }
 }

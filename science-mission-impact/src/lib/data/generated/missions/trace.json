@@ -21,14 +21,14 @@
   "indices": {
     "h": 103,
     "m": 3.552,
-    "i100": 108,
+    "i100": 107,
     "g": 162,
-    "tori": 347.694,
-    "riq": 665
+    "tori": 345.466,
+    "riq": 663
   },
   "facts": {
-    "papers": 714,
-    "citations": 39078,
+    "papers": 715,
+    "citations": 39159,
     "publicationYears": [
       1998,
       2025
@@ -70,7 +70,7 @@
       2,
       29,
       29,
-      34,
+      35,
       49,
       61,
       46,
@@ -102,37 +102,37 @@
       81,
       165,
       442,
-      621,
+      622,
       867,
-      913,
-      1165,
-      1551,
+      915,
+      1162,
+      1552,
       1834,
       1916,
       2050,
       1835,
-      2110,
-      2315,
+      2112,
+      2317,
       1997,
-      1739,
+      1738,
       1848,
       1817,
-      1554,
-      1510,
+      1553,
+      1511,
       1632,
       1395,
       1478,
       1437,
       1288,
       1369,
-      1233,
-      916
+      1232,
+      994
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 39078,
-      "observed": 39078,
+      "expected": 39159,
+      "observed": 39159,
       "missing": 0
     }
   },
@@ -208,58 +208,58 @@
   "ranks": {
     "full": {
       "bins": [
-        67.001,
-        48.027,
-        53.243,
-        64.16,
-        57.322,
-        63.706,
-        71.036,
-        70.871,
-        71.908,
-        86.725
+        66.916,
+        48.126,
+        54.741,
+        64.082,
+        57.749,
+        63.14,
+        71.498,
+        70.635,
+        71.761,
+        86.353
       ],
       "top1": 5
     },
     "window": {
       "bins": [
-        4.307,
-        6.766,
-        10.914,
-        9.129,
-        5.943,
-        3.695,
-        5.587,
-        5.689,
-        6.97,
+        4.315,
+        6.767,
+        10.91,
+        9.108,
+        5.964,
+        3.676,
+        5.595,
+        5.699,
+        6.964,
         13
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        42.504,
-        44.962,
-        37.764,
-        33.996,
-        64.695,
-        63.487,
-        75.338,
-        103.364,
-        88.17,
-        159.719
+        42.031,
+        44.594,
+        38.547,
+        35.173,
+        64.989,
+        64.139,
+        76.598,
+        101.614,
+        88.252,
+        159.064
       ],
       "top1": 18
     }
   },
   "full": {
-    "papers": 654,
+    "papers": 655,
     "outputBasis": "measured",
     "citations": 8283,
-    "top10": 96.108,
-    "top10ShareOfDivision": 0.06639,
+    "top10": 96.213,
+    "top10ShareOfDivision": 0.06674,
     "top1": 5,
-    "top1ShareOfDivision": 0.03454,
+    "top1ShareOfDivision": 0.03468,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.252,
@@ -277,10 +277,10 @@
       "citationBuckets": 18
     },
     "spread": {
-      "mean": 12.665,
+      "mean": 12.646,
       "median": 9,
       "uncited": 50,
-      "i10": 314,
+      "i10": 315,
       "i100": 2
     }
   },
@@ -288,10 +288,10 @@
     "papers": 72,
     "outputBasis": "measured",
     "citations": 1363,
-    "top10": 16.5,
-    "top10ShareOfDivision": 0.03717,
+    "top10": 16.7,
+    "top10ShareOfDivision": 0.03764,
     "top1": 2,
-    "top1ShareOfDivision": 0.04506,
+    "top1ShareOfDivision": 0.04508,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.252,
@@ -317,11 +317,11 @@
     }
   },
   "lifetime": {
-    "papers": 714,
+    "papers": 715,
     "outputBasis": "measured",
-    "citations": 39078,
-    "top10": 69.476,
-    "top10ShareOfDivision": 0.04417,
+    "citations": 39159,
+    "top10": 69.726,
+    "top10ShareOfDivision": 0.0445,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -332,26 +332,26 @@
       "date": "1998-08-00"
     },
     "spread": {
-      "mean": 54.731,
-      "median": 28.5,
+      "mean": 54.768,
+      "median": 28,
       "uncited": 28,
       "i10": 559,
-      "i100": 108
+      "i100": 107
     }
   },
   "query": {
     "arms": "((=abs:\"Transition Region and Coronal Explorer\" OR (abs:TRACE AND (abs:satellite OR abs:observation OR abs:observatory OR abs:telscope) AND (abs:(corona OR coronal OR flare OR flares OR chromosphere OR chromospheric OR prominence OR filament OR sunspot OR EUV) OR =abs:\"active region\" OR =abs:\"transition region\"))) AND NOT (abs:\"TRACE-P\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1998-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Transition+Region+and+Coronal+Explorer%22+OR+%28abs%3ATRACE+AND+%28abs%3Asatellite+OR+abs%3Aobservation+OR+abs%3Aobservatory+OR+abs%3Atelscope%29+AND+%28abs%3A%28corona+OR+coronal+OR+flare+OR+flares+OR+chromosphere+OR+chromospheric+OR+prominence+OR+filament+OR+sunspot+OR+EUV%29+OR+%3Dabs%3A%22active+region%22+OR+%3Dabs%3A%22transition+region%22%29%29%29+AND+NOT+%28abs%3A%22TRACE-P%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-04T03:40:36.839435+00:00",
+    "fetchedAt": "2026-10-19T17:13:04.295296+00:00",
     "reconciliation": {
-      "adsReturned": 718,
+      "adsReturned": 719,
       "curatedOut": 4,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 714
+      "final": 715
     }
   },
   "curation": {
@@ -424,7 +424,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 848
+      "citations": 851
     },
     {
       "bibcode": "1999ApJ...520..880A",
@@ -433,7 +433,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 832
+      "citations": 833
     },
     {
       "bibcode": "2012LRSP....9....3W",
@@ -442,7 +442,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 706
+      "citations": 712
     },
     {
       "bibcode": "2003SoPh..212..165S",
@@ -451,7 +451,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 681
+      "citations": 685
     },
     {
       "bibcode": "2017LRSP...14....2B",
@@ -460,7 +460,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 477
+      "citations": 483
     },
     {
       "bibcode": "2001A&A...372L..53N",
@@ -478,7 +478,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 431
+      "citations": 432
     },
     {
       "bibcode": "2002SSRv..101....1A",
@@ -487,7 +487,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 417
+      "citations": 418
     },
     {
       "bibcode": "1999SoPh..187..261S",
@@ -496,7 +496,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 369
+      "citations": 370
     },
     {
       "bibcode": "2009ApJ...700..559M",
@@ -532,7 +532,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 323
+      "citations": 324
     },
     {
       "bibcode": "2008LRSP....5....1B",
@@ -541,7 +541,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 281
+      "citations": 282
     },
     {
       "bibcode": "2005ApJ...618.1020G",
@@ -553,6 +553,15 @@
       "citations": 276
     },
     {
+      "bibcode": "2003ApJ...595L.135J",
+      "title": "Observations of the Failed Eruption of a Filament",
+      "firstAuthor": "Ji, Haisheng",
+      "authors": null,
+      "authorCount": null,
+      "year": 2003,
+      "citations": 275
+    },
+    {
       "bibcode": "2000ApJ...541.1059A",
       "title": "Evidence for Nonuniform Heating of Coronal Loops Inferred from Multithread Modeling of TRACE Data",
       "firstAuthor": "Aschwanden, Markus J.",
@@ -560,15 +569,6 @@
       "authorCount": null,
       "year": 2000,
       "citations": 274
-    },
-    {
-      "bibcode": "2003ApJ...595L.135J",
-      "title": "Observations of the Failed Eruption of a Filament",
-      "firstAuthor": "Ji, Haisheng",
-      "authors": null,
-      "authorCount": null,
-      "year": 2003,
-      "citations": 273
     },
     {
       "bibcode": "2004SoPh..223...77V",
@@ -586,10 +586,10 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 247
+      "citations": 249
     }
   ],
   "papersFile": {
-    "rows": 714
+    "rows": 715
   }
 }

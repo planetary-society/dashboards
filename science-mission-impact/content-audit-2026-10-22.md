@@ -51,6 +51,18 @@ The staffer said the last one alone would make them dismiss the work. The fixes 
    | Publication window | science start to 2 years after mission end | "through the lifetime of the mission" (slide 6) |
    | Impact measure | top-10% papers | N₅₀ weighted output (slides 17–21) |
 
+   **Why the mission counts differ** (traced 2026-10-22). The selection code did not change; three things did.
+   - **The dashboard is stale.** It was packaged from the 2026-10-04 `dist/fixed` (139 missions).
+   - **The upstream rerun on 2026-10-19/20 picked up three mission-sheet edits:**
+     - GRIFEX gained its prime-end and mission-end dates, so it now qualifies.
+     - CURIE changed from "Extended Mission" to "Failure", ended 2024-07-16, and now enters under the exception for failures with no papers.
+     - HETE 1's cost rose from $55.0M to $68.0M, or $158.6M adjusted, which crosses the $150M line. HETE 2's rose to $183.5M adjusted.
+   - **`d3/data` is a byte-identical copy of the rerun** (141 missions). Slide 8 matches it.
+   - **Slide 12 deliberately uses `dist/latest`** (186 missions, no maturity selection; `plot_focused_paper.py`). It therefore includes JWST, Europa Clipper and the CLPS landers.
+   - **Slides 17–18 (47 / 59 / 35) match neither run.** The current split is 46 / 60 / 35. The deck's figures fit GRIFEX and CURIE added with HETE 1 still at its old cost, a combination no committed chart CSV contains.
+
+   Refreshing the dashboard (`just smi-refresh`) should give 141 missions, 46 at or under $150M, and failures of about 14 of 46 against 8 of 95. Those failure counts are an estimate, since HETE 1 is a failure.
+
    Further deck problems:
    - Slide 13's title says "3–4 years", but its bars run 2.5–5.9 years.
    - Slide 16 puts Heliophysics' "steepest return" at $1.0–1.5B, while slide 21 puts its best ratio at $50–150M.

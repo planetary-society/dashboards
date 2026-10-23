@@ -23,12 +23,12 @@
     "m": 3.444,
     "i100": 85,
     "g": 146,
-    "tori": 165.14,
-    "riq": 475
+    "tori": 165.552,
+    "riq": 476
   },
   "facts": {
     "papers": 799,
-    "citations": 37658,
+    "citations": 37738,
     "publicationYears": [
       2000,
       2026
@@ -103,7 +103,7 @@
       2140,
       1611,
       1647,
-      1899,
+      1898,
       1626,
       1826,
       2009,
@@ -119,14 +119,14 @@
       1241,
       1217,
       1576,
-      1463,
-      1117
+      1460,
+      1201
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 37658,
-      "observed": 37658,
+      "expected": 37738,
+      "observed": 37738,
       "missing": 0
     }
   },
@@ -224,51 +224,51 @@
     ],
     "authorCount": 1,
     "year": 2009,
-    "citations": 906
+    "citations": 915
   },
   "ranks": {
     "full": {
       "bins": [
-        49.122,
-        60.134,
-        64.394,
-        69.694,
-        51.888,
-        59.912,
-        66.264,
-        51.516,
-        51.879,
-        31.196
+        49.195,
+        60.09,
+        64.36,
+        69.77,
+        51.71,
+        59.932,
+        66.261,
+        51.944,
+        51.44,
+        31.295
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        20.668,
-        34.164,
-        37.597,
-        34.128,
-        43.146,
-        40.34,
-        34.902,
-        26.121,
-        32.934,
+        20.609,
+        33.989,
+        37.329,
+        34.274,
+        42.834,
+        40.179,
+        35.207,
+        26.468,
+        33.113,
         12
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        38.452,
-        60.276,
-        77.096,
-        80.904,
-        105.349,
-        92.002,
-        94.423,
-        94.873,
-        84.653,
-        70.972
+        37.577,
+        61.142,
+        75.182,
+        81.039,
+        104.928,
+        94.006,
+        94.564,
+        94.882,
+        84.571,
+        71.109
       ],
       "top1": 4
     }
@@ -276,11 +276,11 @@
   "full": {
     "papers": 556,
     "outputBasis": "measured",
-    "citations": 9350,
+    "citations": 9349,
     "top10": 19.333,
-    "top10ShareOfDivision": 0.00388,
+    "top10ShareOfDivision": 0.00389,
     "top1": 2,
-    "top1ShareOfDivision": 0.00401,
+    "top1ShareOfDivision": 0.00402,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.583,
@@ -298,7 +298,7 @@
       "citationBuckets": 13
     },
     "spread": {
-      "mean": 16.817,
+      "mean": 16.815,
       "median": 12,
       "uncited": 24,
       "i10": 314,
@@ -310,9 +310,9 @@
     "outputBasis": "measured",
     "citations": 5923,
     "top10": 11.55,
-    "top10ShareOfDivision": 0.00594,
+    "top10ShareOfDivision": 0.00597,
     "top1": 2,
-    "top1ShareOfDivision": 0.01028,
+    "top1ShareOfDivision": 0.01034,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.583,
@@ -340,9 +340,9 @@
   "lifetime": {
     "papers": 799,
     "outputBasis": "measured",
-    "citations": 37658,
-    "top10": 30.114,
-    "top10ShareOfDivision": 0.00544,
+    "citations": 37738,
+    "top10": 29.833,
+    "top10ShareOfDivision": 0.0054,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -353,7 +353,7 @@
       "date": "2000-07-00"
     },
     "spread": {
-      "mean": 47.131,
+      "mean": 47.232,
       "median": 27,
       "uncited": 18,
       "i10": 656,
@@ -364,7 +364,7 @@
     "arms": "((=abs:\"Far Ultraviolet Spectroscopic Explorer\" OR =abs:\"Far Ultraviolet Spectrographic Explorer\" OR =abs:\"Far Ultraviolet Spectroscopy Explorer\" OR =abs:\"Far Ultraviolet Explorer\" OR facility:FUSE OR (abs:FUSE AND collection:astronomy AND NOT (=abs:\"file system\" OR =abs:\"file systems\" OR =abs:\"SIT-FUSE\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2000-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Far+Ultraviolet+Spectroscopic+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Spectrographic+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Spectroscopy+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Explorer%22+OR+facility%3AFUSE+OR+%28abs%3AFUSE+AND+collection%3Aastronomy+AND+NOT+%28%3Dabs%3A%22file+system%22+OR+%3Dabs%3A%22file+systems%22+OR+%3Dabs%3A%22SIT-FUSE%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-09-30T02:25:57.235435+00:00",
+    "fetchedAt": "2026-10-19T17:16:10.574044+00:00",
     "reconciliation": {
       "adsReturned": 802,
       "curatedOut": 4,
@@ -429,7 +429,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 906
+      "citations": 915
     },
     {
       "bibcode": "2000ApJ...538L...1M",
@@ -438,7 +438,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 647
+      "citations": 649
     },
     {
       "bibcode": "2003ApJS..146..165S",
@@ -447,7 +447,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 460
+      "citations": 461
     },
     {
       "bibcode": "2007MNRAS.381.1235V",
@@ -456,7 +456,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 458
+      "citations": 460
     },
     {
       "bibcode": "2000ApJ...538L...7S",
@@ -465,7 +465,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 442
+      "citations": 444
     },
     {
       "bibcode": "2006ApJ...637.1025F",
@@ -474,7 +474,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 359
+      "citations": 360
     },
     {
       "bibcode": "2002ApJ...577..221R",
@@ -492,7 +492,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 294
+      "citations": 295
     },
     {
       "bibcode": "2006ApJ...647.1106L",
@@ -501,7 +501,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 291
+      "citations": 293
     },
     {
       "bibcode": "2011ApJ...730....5H",
@@ -510,7 +510,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 289
+      "citations": 290
     },
     {
       "bibcode": "2008ApJS..177...39T",
@@ -528,7 +528,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 263
+      "citations": 264
     },
     {
       "bibcode": "2008ApJ...687.1075S",
@@ -564,7 +564,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 247
+      "citations": 249
     },
     {
       "bibcode": "2008ApJ...679..194D",

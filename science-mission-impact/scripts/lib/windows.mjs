@@ -53,6 +53,11 @@ export function missionWindow(cohort, policy, id) {
 	const end = cohort?.publication_end_date ?? null;
 	const months = monthOffset(end, start);
 	const validDate = (s) => /^\d{4}-\d{2}-\d{2}$/.test(s ?? '') && Number.isFinite(Date.parse(s)) && new Date(s).toISOString().slice(0, 10) === s;
+	// Upstream counts a failure with no papers as a measured zero even when its window, cut at the
+	// maturity ceiling, ends before it starts (CURIE): an empty window, with no dates to name.
+	if (cohort?.status === 'available' && cohort.failure_zero_mature_date != null && cohort.total_publications === 0 && !(months > 0)) {
+		return { start: null, end: null, matureDate: cohort.mature_date ?? null, status: 'available', months: 0, citationBuckets: 0 };
+	}
 	if (cohort?.status === 'available' && (!(months > 0) || !validDate(start) || !validDate(end))) {
 		throw new PackagingError(`${id}: available window requires valid increasing publication_start_date/publication_end_date`);
 	}

@@ -19,16 +19,16 @@
     }
   },
   "indices": {
-    "h": 24,
-    "m": 3.429,
+    "h": 25,
+    "m": 3.571,
     "i100": 0,
     "g": 36,
-    "tori": 6.875,
+    "tori": 6.865,
     "riq": 374
   },
   "facts": {
-    "papers": 210,
-    "citations": 2220,
+    "papers": 213,
+    "citations": 2242,
     "publicationYears": [
       2020,
       2026
@@ -51,7 +51,7 @@
       43,
       39,
       42,
-      22
+      25
     ],
     "citations": [
       1,
@@ -60,13 +60,13 @@
       466,
       529,
       574,
-      450
+      472
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 2220,
-      "observed": 2220,
+      "expected": 2242,
+      "observed": 2242,
       "missing": 0
     }
   },
@@ -135,7 +135,7 @@
       466,
       487,
       322,
-      105
+      112
     ]
   },
   "mostCited": {
@@ -155,45 +155,45 @@
   "ranks": {
     "full": {
       "bins": [
-        2.03,
-        7.151,
-        8.071,
-        8.001,
-        13.297,
-        13.306,
-        16.53,
-        11.508,
-        11.106,
-        16
+        2.025,
+        7.153,
+        8.131,
+        8.044,
+        13.342,
+        13.272,
+        16.453,
+        11.561,
+        10.019,
+        17
       ],
       "top1": 1
     },
     "window": {
       "bins": [
-        2.538,
-        10.609,
-        9.841,
-        15.158,
-        13.973,
-        16.259,
-        10.306,
-        10.347,
-        5.97,
+        2.544,
+        10.621,
+        9.828,
+        15.133,
+        14.004,
+        16.241,
+        10.302,
+        10.363,
+        5.964,
         12
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        46.878,
-        39.439,
-        26.191,
-        23.797,
-        21.54,
-        23.075,
-        11.994,
-        6.362,
-        9.722,
+        48.523,
+        39.102,
+        27.417,
+        24.328,
+        21.541,
+        22.175,
+        12.914,
+        6.421,
+        9.579,
         1
       ],
       "top1": 0
@@ -202,11 +202,11 @@
   "full": {
     "papers": 107,
     "outputBasis": "measured",
-    "citations": 1581,
-    "top10": 17,
-    "top10ShareOfDivision": 0.01174,
+    "citations": 1588,
+    "top10": 17.2,
+    "top10ShareOfDivision": 0.01193,
     "top1": 1,
-    "top1ShareOfDivision": 0.00691,
+    "top1ShareOfDivision": 0.00694,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.133,
@@ -224,7 +224,7 @@
       "citationBuckets": 7
     },
     "spread": {
-      "mean": 14.776,
+      "mean": 14.841,
       "median": 10,
       "uncited": 1,
       "i10": 57,
@@ -234,9 +234,9 @@
   "window": {
     "papers": 107,
     "outputBasis": "measured",
-    "citations": 1581,
+    "citations": 1588,
     "top10": 10.1,
-    "top10ShareOfDivision": 0.02275,
+    "top10ShareOfDivision": 0.02276,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -256,7 +256,7 @@
       "citationBuckets": 7
     },
     "spread": {
-      "mean": 14.776,
+      "mean": 14.841,
       "median": 10,
       "uncited": 1,
       "i10": 57,
@@ -264,11 +264,11 @@
     }
   },
   "lifetime": {
-    "papers": 210,
+    "papers": 213,
     "outputBasis": "measured",
-    "citations": 2220,
-    "top10": 19.192,
-    "top10ShareOfDivision": 0.0122,
+    "citations": 2242,
+    "top10": 18.918,
+    "top10ShareOfDivision": 0.01207,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -279,9 +279,9 @@
       "date": "2020-12-00"
     },
     "spread": {
-      "mean": 10.571,
+      "mean": 10.526,
       "median": 5,
-      "uncited": 36,
+      "uncited": 38,
       "i10": 76,
       "i100": 0
     }
@@ -290,15 +290,15 @@
     "arms": "(((=abs:\"Ionospheric Connection Explorer\" OR =abs:\"Ionospheric Connections Explorer\" OR =abs:\"ICON mission\" OR =abs:\"ICON satellite\" OR =abs:\"NASA ICON\" OR (abs:MIGHTI AND abs:(wind OR winds OR temperature OR thermosphere OR ICON)) OR (abs:ICON AND abs:(ionosphere OR ionospheric OR thermosphere OR IVM))) NOT (abs:(\"UA-ICON\" OR \"ICON-ART\" OR \"ICON-ESM\" OR \"ICON-LEM\" OR \"ICON-NWP\" OR \"ICON-Sapphire\" OR \"ICON general circulation model\" OR icosahedral) AND abs:(model OR models OR simulation OR simulations))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2020-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Ionospheric+Connection+Explorer%22+OR+%3Dabs%3A%22Ionospheric+Connections+Explorer%22+OR+%3Dabs%3A%22ICON+mission%22+OR+%3Dabs%3A%22ICON+satellite%22+OR+%3Dabs%3A%22NASA+ICON%22+OR+%28abs%3AMIGHTI+AND+abs%3A%28wind+OR+winds+OR+temperature+OR+thermosphere+OR+ICON%29%29+OR+%28abs%3AICON+AND+abs%3A%28ionosphere+OR+ionospheric+OR+thermosphere+OR+IVM%29%29%29+NOT+%28abs%3A%28%22UA-ICON%22+OR+%22ICON-ART%22+OR+%22ICON-ESM%22+OR+%22ICON-LEM%22+OR+%22ICON-NWP%22+OR+%22ICON-Sapphire%22+OR+%22ICON+general+circulation+model%22+OR+icosahedral%29+AND+abs%3A%28model+OR+models+OR+simulation+OR+simulations%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2020-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:31:34.666034+00:00",
+    "fetchedAt": "2026-10-19T17:14:06.051866+00:00",
     "reconciliation": {
-      "adsReturned": 214,
+      "adsReturned": 217,
       "curatedOut": 4,
       "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 1,
-      "final": 210
+      "final": 213
     }
   },
   "curation": {
@@ -540,7 +540,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 69
+      "citations": 70
     },
     {
       "bibcode": "2022JGRA..12730527A",
@@ -567,7 +567,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 63
+      "citations": 64
     },
     {
       "bibcode": "2021NatGe..14..893I",
@@ -588,6 +588,15 @@
       "citations": 54
     },
     {
+      "bibcode": "2023JGRA..12831375A",
+      "title": "Significant Mid- and Low-Latitude Ionospheric Disturbances Characterized by Dynamic EIA, EPBs, and SED Variations During the 13-14 March 2022 Geomagnetic Storm",
+      "firstAuthor": "Aa, Ercha",
+      "authors": null,
+      "authorCount": null,
+      "year": 2023,
+      "citations": 50
+    },
+    {
       "bibcode": "2022GeoRL..4900369O",
       "title": "Day-to-Day Variability of the Semidiurnal Tide in the F-Region Ionosphere During the January 2021 SSW From COSMIC-2 and ICON",
       "firstAuthor": "Oberheide, J.",
@@ -603,15 +612,6 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 47
-    },
-    {
-      "bibcode": "2023JGRA..12831375A",
-      "title": "Significant Mid- and Low-Latitude Ionospheric Disturbances Characterized by Dynamic EIA, EPBs, and SED Variations During the 13-14 March 2022 Geomagnetic Storm",
-      "firstAuthor": "Aa, Ercha",
-      "authors": null,
-      "authorCount": null,
-      "year": 2023,
       "citations": 47
     },
     {
@@ -633,6 +633,15 @@
       "citations": 39
     },
     {
+      "bibcode": "2021JGRA..12629059M",
+      "title": "The Thermospheric Column O/N₂ Ratio",
+      "firstAuthor": "Meier, R. R.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2021,
+      "citations": 38
+    },
+    {
       "bibcode": "2023SSRv..219...27E",
       "title": "Michelson Interferometer for Global High-Resolution Thermospheric Imaging (MIGHTI) On-Orbit Wind Observations: Data Analysis and Instrument Performance",
       "firstAuthor": "Englert, Christoph R.",
@@ -642,22 +651,13 @@
       "citations": 38
     },
     {
-      "bibcode": "2021JGRA..12629059M",
-      "title": "The Thermospheric Column O/N₂ Ratio",
-      "firstAuthor": "Meier, R. R.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2021,
-      "citations": 37
-    },
-    {
       "bibcode": "2021GeoRL..4893567Y",
       "title": "Neutral Wind Profiles During Periods of Eastward and Westward Equatorial Electrojet",
       "firstAuthor": "Yamazaki, Y.",
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 35
+      "citations": 36
     },
     {
       "bibcode": "2022JGRA..12730288F",
@@ -675,7 +675,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 31
+      "citations": 32
     },
     {
       "bibcode": "2021JGRA..12629904D",
@@ -706,6 +706,6 @@
     }
   ],
   "papersFile": {
-    "rows": 210
+    "rows": 213
   }
 }

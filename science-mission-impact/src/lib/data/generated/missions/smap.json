@@ -19,16 +19,16 @@
     }
   },
   "indices": {
-    "h": 91,
-    "m": 7.583,
+    "h": 92,
+    "m": 7.667,
     "i100": 81,
     "g": 135,
-    "tori": 128.301,
+    "tori": 128.357,
     "riq": 871
   },
   "facts": {
-    "papers": 1824,
-    "citations": 39630,
+    "papers": 1833,
+    "citations": 39696,
     "publicationYears": [
       2015,
       2026
@@ -61,27 +61,27 @@
       183,
       198,
       240,
-      232
+      241
     ],
     "citations": [
       29,
       116,
       523,
       1053,
-      2127,
+      2129,
       2770,
-      3842,
+      3845,
       5397,
       5086,
-      6025,
-      7119,
-      5543
+      6024,
+      7122,
+      5602
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 39630,
-      "observed": 39630,
+      "expected": 39696,
+      "observed": 39696,
       "missing": 0
     }
   },
@@ -163,9 +163,9 @@
       116,
       522,
       1050,
-      1984,
+      1986,
       2268,
-      2090,
+      2091,
       1622,
       407
     ]
@@ -187,46 +187,46 @@
   "ranks": {
     "full": {
       "bins": [
-        42.419,
-        67.056,
-        73.788,
-        98.151,
-        114.444,
-        123.225,
-        126.95,
-        147.212,
-        152.774,
-        207.982
+        44.261,
+        66.9,
+        74.367,
+        98.365,
+        113.124,
+        122.585,
+        125.726,
+        147.874,
+        151.971,
+        208.826
       ],
-      "top1": 23.172
+      "top1": 23.245
     },
     "window": {
       "bins": [
-        17.479,
-        25.097,
-        23.294,
-        42.274,
-        51.803,
-        54.579,
-        54.942,
-        62.676,
-        79.923,
-        96.934
+        18.807,
+        24.9,
+        24.725,
+        42.29,
+        53.179,
+        52.311,
+        55.442,
+        62.13,
+        79.554,
+        95.663
       ],
       "top1": 10
     },
     "lifetime": {
       "bins": [
-        272.328,
-        238.343,
-        224.221,
-        188.253,
-        180.224,
-        175.741,
-        144.215,
-        149.074,
-        127.794,
-        123.806
+        295.757,
+        250.247,
+        222.367,
+        189.006,
+        176.502,
+        167.84,
+        146.644,
+        143.025,
+        125.312,
+        116.301
       ],
       "top1": 5
     }
@@ -234,11 +234,11 @@
   "full": {
     "papers": 1154,
     "outputBasis": "measured",
-    "citations": 18807,
-    "top10": 141.919,
-    "top10ShareOfDivision": 0.03689,
-    "top1": 20.339,
-    "top1ShareOfDivision": 0.05287,
+    "citations": 18818,
+    "top10": 143.672,
+    "top10ShareOfDivision": 0.03991,
+    "top1": 20.412,
+    "top1ShareOfDivision": 0.05671,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.145,
@@ -256,21 +256,21 @@
       "citationBuckets": 12
     },
     "spread": {
-      "mean": 16.297,
+      "mean": 16.307,
       "median": 10,
       "uncited": 32,
-      "i10": 611,
+      "i10": 612,
       "i100": 11
     }
   },
   "window": {
     "papers": 509,
     "outputBasis": "measured",
-    "citations": 10087,
-    "top10": 66.42,
-    "top10ShareOfDivision": 0.06403,
+    "citations": 10090,
+    "top10": 60.575,
+    "top10ShareOfDivision": 0.06435,
     "top1": 9.5,
-    "top1ShareOfDivision": 0.09158,
+    "top1ShareOfDivision": 0.10092,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.145,
@@ -288,7 +288,7 @@
       "citationBuckets": 9
     },
     "spread": {
-      "mean": 19.817,
+      "mean": 19.823,
       "median": 13,
       "uncited": 13,
       "i10": 307,
@@ -296,11 +296,11 @@
     }
   },
   "lifetime": {
-    "papers": 1824,
+    "papers": 1833,
     "outputBasis": "measured",
-    "citations": 39630,
-    "top10": 145.12,
-    "top10ShareOfDivision": 0.03507,
+    "citations": 39696,
+    "top10": 145.378,
+    "top10ShareOfDivision": 0.03774,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -311,10 +311,10 @@
       "date": "2015-05-00"
     },
     "spread": {
-      "mean": 21.727,
+      "mean": 21.656,
       "median": 8,
-      "uncited": 263,
-      "i10": 856,
+      "uncited": 271,
+      "i10": 857,
       "i100": 81
     }
   },
@@ -322,15 +322,15 @@
     "arms": "((=abs:\"Soil Moisture Active Passive\" OR =abs:\"SMAP Reflectometry\" OR (abs:SMAP AND (abs:(satellite OR soil OR radiometer OR microwave OR ocean OR freeze OR thaw OR vegetation OR drought OR SAR) OR =abs:salinity OR =abs:\"remote sensing\" OR =abs:\"land surface\" OR =abs:\"gap filling\" OR abs:\"L-band\"))) AND NOT =abs:\"GIC-SMAP\")",
     "filters": "property:refereed AND doctype:article AND pubdate:[2015-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Soil+Moisture+Active+Passive%22+OR+%3Dabs%3A%22SMAP+Reflectometry%22+OR+%28abs%3ASMAP+AND+%28abs%3A%28satellite+OR+soil+OR+radiometer+OR+microwave+OR+ocean+OR+freeze+OR+thaw+OR+vegetation+OR+drought+OR+SAR%29+OR+%3Dabs%3Asalinity+OR+%3Dabs%3A%22remote+sensing%22+OR+%3Dabs%3A%22land+surface%22+OR+%3Dabs%3A%22gap+filling%22+OR+abs%3A%22L-band%22%29%29%29+AND+NOT+%3Dabs%3A%22GIC-SMAP%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2015-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:25:23.077991+00:00",
+    "fetchedAt": "2026-10-19T17:11:38.003959+00:00",
     "reconciliation": {
-      "adsReturned": 1827,
+      "adsReturned": 1836,
       "curatedOut": 3,
       "curatedIn": 2,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 2,
-      "final": 1824
+      "final": 1833
     }
   },
   "curation": {
@@ -477,7 +477,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 226
+      "citations": 227
     },
     {
       "bibcode": "2018RSEnv.214....1C",
@@ -516,6 +516,15 @@
       "citations": 208
     },
     {
+      "bibcode": "2018RSEnv.219....1P",
+      "title": "SMAP soil moisture improves global evapotranspiration",
+      "firstAuthor": "Purdy, Adam J.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2018,
+      "citations": 205
+    },
+    {
       "bibcode": "2019RSEnv.224..289A",
       "title": "Assessment and inter-comparison of recently developed/reprocessed microwave satellite soil moisture products using ISMN ground-based measurements",
       "firstAuthor": "Al-Yaari, A.",
@@ -534,13 +543,13 @@
       "citations": 204
     },
     {
-      "bibcode": "2018RSEnv.219....1P",
-      "title": "SMAP soil moisture improves global evapotranspiration",
-      "firstAuthor": "Purdy, Adam J.",
+      "bibcode": "2017GeoRL..4411030F",
+      "title": "Prolongation of SMAP to Spatiotemporally Seamless Coverage of Continental U.S. Using a Deep Learning Neural Network",
+      "firstAuthor": "Fang, Kuai",
       "authors": null,
       "authorCount": null,
-      "year": 2018,
-      "citations": 204
+      "year": 2017,
+      "citations": 196
     },
     {
       "bibcode": "2019RSEnv.23311380D",
@@ -550,18 +559,9 @@
       "authorCount": null,
       "year": 2019,
       "citations": 196
-    },
-    {
-      "bibcode": "2017GeoRL..4411030F",
-      "title": "Prolongation of SMAP to Spatiotemporally Seamless Coverage of Continental U.S. Using a Deep Learning Neural Network",
-      "firstAuthor": "Fang, Kuai",
-      "authors": null,
-      "authorCount": null,
-      "year": 2017,
-      "citations": 194
     }
   ],
   "papersFile": {
-    "rows": 1824
+    "rows": 1833
   }
 }

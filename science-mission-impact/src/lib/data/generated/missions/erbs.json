@@ -23,12 +23,12 @@
     "m": 2.093,
     "i100": 81,
     "g": 153,
-    "tori": 330.342,
-    "riq": 422
+    "tori": 331.143,
+    "riq": 423
   },
   "facts": {
     "papers": 843,
-    "citations": 35972,
+    "citations": 35992,
     "publicationYears": [
       1984,
       2026
@@ -142,9 +142,9 @@
       760,
       773,
       774,
-      754,
-      775,
-      1045,
+      752,
+      769,
+      1044,
       1040,
       865,
       951,
@@ -153,28 +153,28 @@
       1246,
       1149,
       1223,
-      1256,
-      1267,
+      1263,
+      1270,
       1371,
-      1364,
+      1367,
       1405,
       1335,
-      1151,
+      1152,
       1344,
       1256,
-      1209,
-      1237,
+      1208,
+      1238,
       1101,
-      1092,
-      1009,
+      1093,
+      1010,
       1026,
-      652
+      665
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 35972,
-      "observed": 35972,
+      "expected": 35992,
+      "observed": 35992,
       "missing": 0
     }
   },
@@ -259,33 +259,33 @@
     ],
     "authorCount": 7,
     "year": 1989,
-    "citations": 1281
+    "citations": 1282
   },
   "ranks": {
     "full": {
       "bins": [
-        114.545,
-        86.096,
-        89.944,
-        64.365,
-        68.502,
-        66.669,
-        58.784,
-        46.771,
-        44.324,
+        117.014,
+        87.212,
+        88.043,
+        64.144,
+        68.363,
+        65.928,
+        58.517,
+        46.044,
+        44.735,
         36
       ],
       "top1": 3
     },
     "window": {
       "bins": [
-        15.4,
-        5.198,
-        3.977,
-        4.585,
-        6.16,
-        3.351,
-        4.33,
+        15.815,
+        5.024,
+        4.248,
+        4.172,
+        6.316,
+        3.321,
+        4.105,
         1,
         0,
         2
@@ -294,28 +294,28 @@
     },
     "lifetime": {
       "bins": [
-        46.957,
-        53.864,
-        64.891,
-        75.641,
-        84.62,
-        85.825,
-        109.364,
-        97.437,
-        102.449,
-        121.951
+        50.122,
+        55.918,
+        68.813,
+        75.56,
+        84.829,
+        90.544,
+        100.652,
+        102.672,
+        96.356,
+        117.534
       ],
-      "top1": 15
+      "top1": 13
     }
   },
   "full": {
     "papers": 676,
     "outputBasis": "measured",
     "citations": 5296,
-    "top10": 58.562,
-    "top10ShareOfDivision": 0.01522,
-    "top1": 2.333,
-    "top1ShareOfDivision": 0.00607,
+    "top10": 59.404,
+    "top10ShareOfDivision": 0.0165,
+    "top1": 3,
+    "top1ShareOfDivision": 0.00833,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.569,
@@ -344,8 +344,8 @@
     "papers": 46,
     "outputBasis": "measured",
     "citations": 268,
-    "top10": 4.5,
-    "top10ShareOfDivision": 0.00434,
+    "top10": 5,
+    "top10ShareOfDivision": 0.00531,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -375,9 +375,9 @@
   "lifetime": {
     "papers": 843,
     "outputBasis": "measured",
-    "citations": 35972,
-    "top10": 72.633,
-    "top10ShareOfDivision": 0.01755,
+    "citations": 35992,
+    "top10": 73.404,
+    "top10ShareOfDivision": 0.01906,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -388,7 +388,7 @@
       "date": "1984-11-00"
     },
     "spread": {
-      "mean": 42.671,
+      "mean": 42.695,
       "median": 19,
       "uncited": 45,
       "i10": 587,
@@ -399,7 +399,7 @@
     "arms": "((=abs:(\"Earth Radiation Budget Satellite\" OR \"Stratospheric Aerosol and Gas Experiment II\") OR (=abs:\"Earth Radiation Budget Experiment\" NOT abs:Nimbus NOT =abs:(\"Geostationary Earth Radiation Budget\" OR \"Moon and Earth Radiation Budget\")) OR (abs:ERBS AND abs:(stratospher* OR troposph* OR ozone OR aerosol OR aerosols OR cloud OR clouds OR cloudiness OR radiative OR irradiance OR albedo OR longwave OR shortwave OR occultation OR volcanic OR =\"water vapor\" OR NO2 OR ERBE OR SAGE OR OLR OR nonscanner OR scanner OR =\"radiation budget\")) OR (abs:ERBE AND abs:(atmosphere OR atmospheric OR stratospher* OR troposph* OR mesospher* OR ozone OR aerosol OR aerosols OR cloud OR clouds OR cloudiness OR radiation OR radiative OR irradiance OR climate OR albedo OR flux OR fluxes OR longwave OR shortwave OR limb OR occultation OR volcanic OR =\"water vapor\" OR NO2 OR satellite)) OR (=abs:(\"SAGE II\" OR \"SAGE I and II\") AND abs:(atmosphere OR atmospheric OR stratospher* OR troposph* OR mesospher* OR ozone OR aerosol OR aerosols OR cloud OR clouds OR occultation OR extinction OR volcanic OR =\"water vapor\" OR NO2 OR limb OR climate))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1984-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Earth+Radiation+Budget+Satellite%22+OR+%22Stratospheric+Aerosol+and+Gas+Experiment+II%22%29+OR+%28%3Dabs%3A%22Earth+Radiation+Budget+Experiment%22+NOT+abs%3ANimbus+NOT+%3Dabs%3A%28%22Geostationary+Earth+Radiation+Budget%22+OR+%22Moon+and+Earth+Radiation+Budget%22%29%29+OR+%28abs%3AERBS+AND+abs%3A%28stratospher%2A+OR+troposph%2A+OR+ozone+OR+aerosol+OR+aerosols+OR+cloud+OR+clouds+OR+cloudiness+OR+radiative+OR+irradiance+OR+albedo+OR+longwave+OR+shortwave+OR+occultation+OR+volcanic+OR+%3D%22water+vapor%22+OR+NO2+OR+ERBE+OR+SAGE+OR+OLR+OR+nonscanner+OR+scanner+OR+%3D%22radiation+budget%22%29%29+OR+%28abs%3AERBE+AND+abs%3A%28atmosphere+OR+atmospheric+OR+stratospher%2A+OR+troposph%2A+OR+mesospher%2A+OR+ozone+OR+aerosol+OR+aerosols+OR+cloud+OR+clouds+OR+cloudiness+OR+radiation+OR+radiative+OR+irradiance+OR+climate+OR+albedo+OR+flux+OR+fluxes+OR+longwave+OR+shortwave+OR+limb+OR+occultation+OR+volcanic+OR+%3D%22water+vapor%22+OR+NO2+OR+satellite%29%29+OR+%28%3Dabs%3A%28%22SAGE+II%22+OR+%22SAGE+I+and+II%22%29+AND+abs%3A%28atmosphere+OR+atmospheric+OR+stratospher%2A+OR+troposph%2A+OR+mesospher%2A+OR+ozone+OR+aerosol+OR+aerosols+OR+cloud+OR+clouds+OR+occultation+OR+extinction+OR+volcanic+OR+%3D%22water+vapor%22+OR+NO2+OR+limb+OR+climate%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1984-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:17:04.006617+00:00",
+    "fetchedAt": "2026-10-19T17:08:08.718889+00:00",
     "reconciliation": {
       "adsReturned": 856,
       "curatedOut": 10,
@@ -503,7 +503,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1989,
-      "citations": 1281
+      "citations": 1282
     },
     {
       "bibcode": "1993JCli....6.1587K",
@@ -512,7 +512,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 1235
+      "citations": 1237
     },
     {
       "bibcode": "2004JGRD..10919105Z",
@@ -521,7 +521,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 834
+      "citations": 835
     },
     {
       "bibcode": "2001JCli...14.3433T",
@@ -530,7 +530,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 594
+      "citations": 597
     },
     {
       "bibcode": "1992JCli....5.1281H",
@@ -548,7 +548,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1990,
-      "citations": 430
+      "citations": 429
     },
     {
       "bibcode": "1990JGR....95.3599F",
@@ -566,7 +566,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1984,
-      "citations": 342
+      "citations": 343
     },
     {
       "bibcode": "1992GeoRL..19..155M",
@@ -584,7 +584,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1989,
-      "citations": 306
+      "citations": 307
     },
     {
       "bibcode": "1996JCli....9..270D",
@@ -629,7 +629,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 286
+      "citations": 288
     },
     {
       "bibcode": "1996JGR...10129407W",
@@ -638,7 +638,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 274
+      "citations": 275
     },
     {
       "bibcode": "1995JGR...10016519C",
@@ -656,7 +656,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1987,
-      "citations": 258
+      "citations": 260
     },
     {
       "bibcode": "1993Sci...259.1411M",

@@ -21,14 +21,14 @@
   "indices": {
     "h": 204,
     "m": 11.333,
-    "i100": 553,
-    "g": 322,
-    "tori": 657.981,
-    "riq": 1425
+    "i100": 557,
+    "g": 323,
+    "tori": 647.661,
+    "riq": 1413
   },
   "facts": {
-    "papers": 4573,
-    "citations": 232524,
+    "papers": 4587,
+    "citations": 233967,
     "publicationYears": [
       2009,
       2026
@@ -73,34 +73,34 @@
       229,
       232,
       256,
-      192
+      206
     ],
     "citations": [
       30,
       857,
       2665,
-      4413,
+      4421,
       7073,
       9184,
       10891,
-      12379,
-      13405,
+      12378,
+      13401,
       17397,
-      16981,
+      16977,
       17876,
       19234,
       19080,
-      18669,
+      18660,
       20905,
-      22617,
-      18867
+      22489,
+      20449
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
-      "status": "incomplete",
-      "expected": 232524,
-      "observed": 232523,
-      "missing": 1
+      "status": "complete",
+      "expected": 233967,
+      "observed": 233967,
+      "missing": 0
     }
   },
   "windowSeries": {
@@ -183,7 +183,7 @@
       30,
       834,
       2629,
-      4357,
+      4365,
       6855,
       7969,
       6969,
@@ -203,51 +203,51 @@
     ],
     "authorCount": 71,
     "year": 2010,
-    "citations": 3888
+    "citations": 3917
   },
   "ranks": {
     "full": {
       "bins": [
-        249.542,
-        247.226,
-        214.737,
-        260.58,
-        306.948,
-        290.61,
-        297.247,
-        354.612,
-        361.159,
-        442.339
+        249.898,
+        246.96,
+        214.633,
+        261.135,
+        305.963,
+        290.707,
+        296.941,
+        354.355,
+        360.39,
+        444.019
       ],
-      "top1": 47.375
+      "top1": 47.042
     },
     "window": {
       "bins": [
-        70.707,
-        79.927,
-        49.618,
-        77.973,
-        80.499,
-        93.527,
-        110.528,
-        115.147,
-        146.286,
-        184.787
+        70.536,
+        79.714,
+        49.293,
+        77.657,
+        79.882,
+        93.81,
+        109.784,
+        115.87,
+        146.492,
+        185.962
       ],
       "top1": 29
     },
     "lifetime": {
       "bins": [
-        538.627,
-        477.653,
-        470.854,
-        438.779,
-        475.586,
-        471.187,
-        403.338,
-        410.414,
-        429.647,
-        456.915
+        535.636,
+        476.024,
+        475.307,
+        442.727,
+        478.846,
+        470.017,
+        404.098,
+        410.709,
+        434.311,
+        459.326
       ],
       "top1": 40
     }
@@ -255,11 +255,11 @@
   "full": {
     "papers": 3025,
     "outputBasis": "measured",
-    "citations": 80484,
-    "top10": 425.5,
-    "top10ShareOfDivision": 0.08536,
-    "top1": 47.375,
-    "top1ShareOfDivision": 0.09504,
+    "citations": 80489,
+    "top10": 427.341,
+    "top10ShareOfDivision": 0.0859,
+    "top1": 47.042,
+    "top1ShareOfDivision": 0.09456,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.219,
@@ -277,7 +277,7 @@
       "citationBuckets": 15
     },
     "spread": {
-      "mean": 26.606,
+      "mean": 26.608,
       "median": 16,
       "uncited": 123,
       "i10": 2063,
@@ -287,11 +287,11 @@
   "window": {
     "papers": 1009,
     "outputBasis": "measured",
-    "citations": 36192,
-    "top10": 150.417,
-    "top10ShareOfDivision": 0.07732,
+    "citations": 36200,
+    "top10": 150.733,
+    "top10ShareOfDivision": 0.07792,
     "top1": 29,
-    "top1ShareOfDivision": 0.14908,
+    "top1ShareOfDivision": 0.14991,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.219,
@@ -309,7 +309,7 @@
       "citationBuckets": 9
     },
     "spread": {
-      "mean": 35.869,
+      "mean": 35.877,
       "median": 22,
       "uncited": 36,
       "i10": 770,
@@ -317,11 +317,11 @@
     }
   },
   "lifetime": {
-    "papers": 4573,
+    "papers": 4587,
     "outputBasis": "measured",
-    "citations": 232524,
-    "top10": 466.542,
-    "top10ShareOfDivision": 0.08421,
+    "citations": 233967,
+    "top10": 468.285,
+    "top10ShareOfDivision": 0.0847,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -332,26 +332,26 @@
       "date": "2009-06-00"
     },
     "spread": {
-      "mean": 50.847,
+      "mean": 51.007,
       "median": 22,
-      "uncited": 296,
-      "i10": 3191,
-      "i100": 553
+      "uncited": 298,
+      "i10": 3203,
+      "i100": 557
     }
   },
   "query": {
     "arms": "(((facility:\"Kepler\" OR (=abs:(\"Kepler mission\"~2 OR \"Kepler missions\"~2 OR \"Kepler spacecraft\"~2 OR \"Kepler satellite\"~2 OR \"Kepler telescope\"~3 OR \"Kepler photometry\"~2 OR \"Kepler data\"~2 OR \"Kepler observations\"~2 OR \"Kepler observed\"~2 OR \"Kepler light curve\"~3 OR \"Kepler light curves\"~3 OR \"Kepler targets\"~2 OR \"Kepler field\"~2 OR \"Kepler catalog\"~3 OR \"Kepler survey\"~2 OR \"Kepler candidates\"~2 OR \"Kepler sample\"~2 OR \"Kepler asteroseismology\"~3 OR \"Kepler asteroseismic\"~3 OR \"Kepler eclipsing\"~2 OR \"Kepler binary\"~2 OR \"Kepler binaries\"~2))) OR facility:K2 OR abs:/kepler[0-9]+[a-z]?/ OR ((=abs:(\"K2 mission\"~2 OR \"K2 campaign\"~3 OR \"K2 data\"~2 OR \"K2 photometry\"~2 OR \"K2 light curve\"~3 OR \"K2 observations\"~2 OR \"K2 observed\"~2 OR \"K2 TESS\"~3 OR \"K2 b\"~2 OR \"K2 planet\"~2 OR \"K2 planets\"~2) OR (abs:/k2[0-9]+[a-z]?/ AND abs:K2)) AND =abs:(star OR stars OR stellar OR planet OR planets OR planetary OR transit OR transits OR photometry OR asteroseismology OR \"light curve\" OR \"light curves\" OR Kepler OR EPIC))) AND NOT =abs:(\"Kepler supernova remnant\"~3 OR \"Kepler SNR\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2009-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28facility%3A%22Kepler%22+OR+%28%3Dabs%3A%28%22Kepler+mission%22~2+OR+%22Kepler+missions%22~2+OR+%22Kepler+spacecraft%22~2+OR+%22Kepler+satellite%22~2+OR+%22Kepler+telescope%22~3+OR+%22Kepler+photometry%22~2+OR+%22Kepler+data%22~2+OR+%22Kepler+observations%22~2+OR+%22Kepler+observed%22~2+OR+%22Kepler+light+curve%22~3+OR+%22Kepler+light+curves%22~3+OR+%22Kepler+targets%22~2+OR+%22Kepler+field%22~2+OR+%22Kepler+catalog%22~3+OR+%22Kepler+survey%22~2+OR+%22Kepler+candidates%22~2+OR+%22Kepler+sample%22~2+OR+%22Kepler+asteroseismology%22~3+OR+%22Kepler+asteroseismic%22~3+OR+%22Kepler+eclipsing%22~2+OR+%22Kepler+binary%22~2+OR+%22Kepler+binaries%22~2%29%29%29+OR+facility%3AK2+OR+abs%3A%2Fkepler%5B0-9%5D%2B%5Ba-z%5D%3F%2F+OR+%28%28%3Dabs%3A%28%22K2+mission%22~2+OR+%22K2+campaign%22~3+OR+%22K2+data%22~2+OR+%22K2+photometry%22~2+OR+%22K2+light+curve%22~3+OR+%22K2+observations%22~2+OR+%22K2+observed%22~2+OR+%22K2+TESS%22~3+OR+%22K2+b%22~2+OR+%22K2+planet%22~2+OR+%22K2+planets%22~2%29+OR+%28abs%3A%2Fk2%5B0-9%5D%2B%5Ba-z%5D%3F%2F+AND+abs%3AK2%29%29+AND+%3Dabs%3A%28star+OR+stars+OR+stellar+OR+planet+OR+planets+OR+planetary+OR+transit+OR+transits+OR+photometry+OR+asteroseismology+OR+%22light+curve%22+OR+%22light+curves%22+OR+Kepler+OR+EPIC%29%29%29+AND+NOT+%3Dabs%3A%28%22Kepler+supernova+remnant%22~3+OR+%22Kepler+SNR%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:38:26.955573+00:00",
+    "fetchedAt": "2026-10-19T17:18:39.573011+00:00",
     "reconciliation": {
-      "adsReturned": 4577,
+      "adsReturned": 4591,
       "curatedOut": 2,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 2,
-      "final": 4573
+      "final": 4587
     }
   },
   "curation": {
@@ -383,7 +383,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 3888
+      "citations": 3917
     },
     {
       "bibcode": "2013ApJS..208....4P",
@@ -392,7 +392,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 3608
+      "citations": 3640
     },
     {
       "bibcode": "2014PASP..126..398H",
@@ -401,7 +401,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 1805
+      "citations": 1817
     },
     {
       "bibcode": "2013ApJ...765..131K",
@@ -410,7 +410,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 1379
+      "citations": 1392
     },
     {
       "bibcode": "2017AJ....154..109F",
@@ -419,7 +419,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 1370
+      "citations": 1376
     },
     {
       "bibcode": "2010ApJ...713L..79K",
@@ -428,7 +428,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 1162
+      "citations": 1170
     },
     {
       "bibcode": "2012ApJS..201...15H",
@@ -437,7 +437,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 1083
+      "citations": 1088
     },
     {
       "bibcode": "2013ApJ...766...81F",
@@ -455,7 +455,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 1041
+      "citations": 1043
     },
     {
       "bibcode": "2012PASP..124.1000S",
@@ -464,7 +464,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 991
+      "citations": 996
     },
     {
       "bibcode": "2015ApJ...807...45D",
@@ -473,16 +473,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 963
-    },
-    {
-      "bibcode": "2011ApJ...736...19B",
-      "title": "Characteristics of Planetary Candidates Observed by Kepler. II. Analysis of the First Four Months of Data",
-      "firstAuthor": "Borucki, William J.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2011,
-      "citations": 953
+      "citations": 973
     },
     {
       "bibcode": "2017AJ....154..220F",
@@ -491,7 +482,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 948
+      "citations": 962
+    },
+    {
+      "bibcode": "2011ApJ...736...19B",
+      "title": "Characteristics of Planetary Candidates Observed by Kepler. II. Analysis of the First Four Months of Data",
+      "firstAuthor": "Borucki, William J.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2011,
+      "citations": 955
     },
     {
       "bibcode": "2012PASP..124..985S",
@@ -500,7 +500,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 862
+      "citations": 866
     },
     {
       "bibcode": "2017ApJ...847...29O",
@@ -509,7 +509,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 841
+      "citations": 845
     },
     {
       "bibcode": "2013ApJ...775..105O",
@@ -518,16 +518,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 833
-    },
-    {
-      "bibcode": "2013PASP..125..989A",
-      "title": "The NASA Exoplanet Archive: Data and Tools for Exoplanet Research",
-      "firstAuthor": "Akeson, R. L.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2013,
-      "citations": 816
+      "citations": 837
     },
     {
       "bibcode": "2011AJ....142..112B",
@@ -536,6 +527,15 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
+      "citations": 817
+    },
+    {
+      "bibcode": "2013PASP..125..989A",
+      "title": "The NASA Exoplanet Archive: Data and Tools for Exoplanet Research",
+      "firstAuthor": "Akeson, R. L.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
       "citations": 815
     },
     {
@@ -545,7 +545,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 758
+      "citations": 764
     },
     {
       "bibcode": "2014ApJ...790..146F",
@@ -554,10 +554,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 746
+      "citations": 748
     }
   ],
   "papersFile": {
-    "rows": 4573
+    "rows": 4587
   }
 }

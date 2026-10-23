@@ -21,14 +21,14 @@
   "indices": {
     "h": 53,
     "m": 1.767,
-    "i100": 23,
-    "g": 85,
-    "tori": 51.3,
-    "riq": 238
+    "i100": 22,
+    "g": 86,
+    "tori": 51.519,
+    "riq": 239
   },
   "facts": {
     "papers": 282,
-    "citations": 9574,
+    "citations": 9588,
     "publicationYears": [
       1997,
       2026
@@ -105,7 +105,7 @@
       105,
       165,
       301,
-      384,
+      383,
       261,
       247,
       351,
@@ -114,10 +114,10 @@
       497,
       325,
       387,
-      425,
-      491,
+      428,
+      492,
       386,
-      362,
+      360,
       383,
       389,
       348,
@@ -129,13 +129,13 @@
       260,
       371,
       329,
-      223
+      236
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 9574,
-      "observed": 9574,
+      "expected": 9588,
+      "observed": 9588,
       "missing": 0
     }
   },
@@ -212,46 +212,46 @@
   "ranks": {
     "full": {
       "bins": [
-        35.182,
-        26.362,
-        27.028,
-        27.725,
-        26.253,
-        16.698,
-        18.91,
-        7.842,
-        13.879,
-        12.121
+        35.151,
+        26.385,
+        27.278,
+        27.667,
+        26.214,
+        16.748,
+        18.819,
+        7.738,
+        13.941,
+        12.059
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        5.769,
-        1.613,
-        4.213,
-        1.434,
-        3.501,
-        5.848,
-        2.623,
+        5.772,
+        1.616,
+        4.209,
+        1.428,
+        3.507,
+        5.838,
+        2.63,
         2,
-        3.35,
-        5.65
+        3.358,
+        5.642
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        21.698,
-        19.365,
-        31.594,
-        27.418,
-        27.464,
-        36.423,
-        28.997,
-        26.32,
-        32.483,
-        30.24
+        21.512,
+        18.706,
+        32.389,
+        26.948,
+        27.223,
+        37.265,
+        28.992,
+        26.386,
+        32.536,
+        30.043
       ],
       "top1": 4
     }
@@ -259,11 +259,11 @@
   "full": {
     "papers": 212,
     "outputBasis": "measured",
-    "citations": 1706,
-    "top10": 14.325,
-    "top10ShareOfDivision": 0.0099,
+    "citations": 1705,
+    "top10": 14.292,
+    "top10ShareOfDivision": 0.00991,
     "top1": 2,
-    "top1ShareOfDivision": 0.01382,
+    "top1ShareOfDivision": 0.01387,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.777,
@@ -281,7 +281,7 @@
       "citationBuckets": 19
     },
     "spread": {
-      "mean": 8.047,
+      "mean": 8.042,
       "median": 5,
       "uncited": 29,
       "i10": 56,
@@ -293,7 +293,7 @@
     "outputBasis": "measured",
     "citations": 608,
     "top10": 7.25,
-    "top10ShareOfDivision": 0.01633,
+    "top10ShareOfDivision": 0.01634,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -323,9 +323,9 @@
   "lifetime": {
     "papers": 282,
     "outputBasis": "measured",
-    "citations": 9574,
-    "top10": 13.333,
-    "top10ShareOfDivision": 0.00848,
+    "citations": 9588,
+    "top10": 13.033,
+    "top10ShareOfDivision": 0.00832,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -336,18 +336,18 @@
       "date": "1998-06-00"
     },
     "spread": {
-      "mean": 33.95,
+      "mean": 34,
       "median": 16,
       "uncited": 16,
-      "i10": 185,
-      "i100": 23
+      "i10": 186,
+      "i100": 22
     }
   },
   "query": {
     "arms": "((=abs:\"Fast Auroral Snapshot\" OR =abs:\"Fast Auroral Snapshots\" OR (abs:FAST AND (abs:satellite OR abs:spacecraft OR abs:mission OR abs:probe) AND (abs:aurora OR abs:auroral)) OR (abs:FAST AND (abs:satellite OR abs:spacecraft) AND (abs:ionospher* OR abs:magnetospher* OR abs:photoelectron*))) AND NOT =abs:\"Aperture Spherical\" AND NOT =abs:\"FAST events\" AND NOT =abs:\"FAST perturbations\" AND NOT =abs:\"Swarm FAST\")",
     "filters": "property:refereed AND doctype:article AND pubdate:[1996-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Fast+Auroral+Snapshot%22+OR+%3Dabs%3A%22Fast+Auroral+Snapshots%22+OR+%28abs%3AFAST+AND+%28abs%3Asatellite+OR+abs%3Aspacecraft+OR+abs%3Amission+OR+abs%3Aprobe%29+AND+%28abs%3Aaurora+OR+abs%3Aauroral%29%29+OR+%28abs%3AFAST+AND+%28abs%3Asatellite+OR+abs%3Aspacecraft%29+AND+%28abs%3Aionospher%2A+OR+abs%3Amagnetospher%2A+OR+abs%3Aphotoelectron%2A%29%29%29+AND+NOT+%3Dabs%3A%22Aperture+Spherical%22+AND+NOT+%3Dabs%3A%22FAST+events%22+AND+NOT+%3Dabs%3A%22FAST+perturbations%22+AND+NOT+%3Dabs%3A%22Swarm+FAST%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:28:23.269056+00:00",
+    "fetchedAt": "2026-10-19T17:12:53.545195+00:00",
     "reconciliation": {
       "adsReturned": 286,
       "curatedOut": 4,
@@ -778,7 +778,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 180
+      "citations": 183
     },
     {
       "bibcode": "1998GeoRL..25.2061E",
@@ -787,7 +787,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 178
+      "citations": 179
     },
     {
       "bibcode": "2003AnGeo..21.1121M",
@@ -796,7 +796,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 171
+      "citations": 172
     },
     {
       "bibcode": "2006JGRA..11112216B",
@@ -814,7 +814,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 153
+      "citations": 154
     },
     {
       "bibcode": "1999GeoRL..26.1821G",
@@ -859,7 +859,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 116
+      "citations": 117
     },
     {
       "bibcode": "2005JGRA..110.2211C",

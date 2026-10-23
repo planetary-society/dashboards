@@ -23,12 +23,12 @@
     "m": 6.778,
     "i100": 23,
     "g": 98,
-    "tori": 49.483,
-    "riq": 781
+    "tori": 49.385,
+    "riq": 780
   },
   "facts": {
-    "papers": 1238,
-    "citations": 18553,
+    "papers": 1251,
+    "citations": 18560,
     "publicationYears": [
       2018,
       2026
@@ -55,24 +55,24 @@
       157,
       223,
       282,
-      223
+      236
     ],
     "citations": [
       0,
       59,
       325,
       950,
-      1763,
+      1765,
       2608,
-      3910,
-      5121,
-      3817
+      3908,
+      5120,
+      3825
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 18553,
-      "observed": 18553,
+      "expected": 18560,
+      "observed": 18560,
       "missing": 0
     }
   },
@@ -154,9 +154,9 @@
       59,
       325,
       948,
-      1732,
+      1734,
       2173,
-      2599,
+      2598,
       1807,
       580
     ]
@@ -173,51 +173,51 @@
     ],
     "authorCount": 21,
     "year": 2019,
-    "citations": 452
+    "citations": 453
   },
   "ranks": {
     "full": {
       "bins": [
-        15.552,
-        16.148,
-        17.2,
-        36.064,
-        51.496,
-        48.34,
-        50.644,
-        69.051,
-        85.435,
-        120.069
+        16.003,
+        16.236,
+        17.198,
+        36.584,
+        51.187,
+        48.01,
+        51.041,
+        67.599,
+        85.686,
+        120.458
       ],
       "top1": 14
     },
     "window": {
       "bins": [
-        16.359,
-        18.224,
-        24.073,
-        44.443,
-        52.41,
-        58.53,
-        48.376,
-        75.956,
-        74.418,
-        97.21
+        17.355,
+        18.675,
+        25.444,
+        44.798,
+        52.044,
+        58.422,
+        47.35,
+        76.031,
+        74.125,
+        95.757
       ],
       "top1": 11
     },
     "lifetime": {
       "bins": [
-        279.567,
-        195.295,
-        169.797,
-        125.964,
-        110.483,
-        101.227,
-        84.02,
-        70.648,
-        51.097,
-        49.903
+        304.805,
+        202.148,
+        170.207,
+        123.292,
+        106.92,
+        99.548,
+        80.346,
+        66.01,
+        50.189,
+        47.534
       ],
       "top1": 5
     }
@@ -225,11 +225,11 @@
   "full": {
     "papers": 510,
     "outputBasis": "measured",
-    "citations": 10223,
-    "top10": 96.494,
-    "top10ShareOfDivision": 0.02508,
+    "citations": 10224,
+    "top10": 97.431,
+    "top10ShareOfDivision": 0.02707,
     "top1": 13,
-    "top1ShareOfDivision": 0.03379,
+    "top1ShareOfDivision": 0.03612,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.129,
@@ -247,7 +247,7 @@
       "citationBuckets": 9
     },
     "spread": {
-      "mean": 20.045,
+      "mean": 20.047,
       "median": 13,
       "uncited": 13,
       "i10": 316,
@@ -257,11 +257,11 @@
   "window": {
     "papers": 510,
     "outputBasis": "measured",
-    "citations": 10223,
-    "top10": 72.7,
-    "top10ShareOfDivision": 0.07009,
+    "citations": 10224,
+    "top10": 72.538,
+    "top10ShareOfDivision": 0.07706,
     "top1": 11,
-    "top1ShareOfDivision": 0.10604,
+    "top1ShareOfDivision": 0.11686,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.129,
@@ -279,7 +279,7 @@
       "citationBuckets": 9
     },
     "spread": {
-      "mean": 20.045,
+      "mean": 20.047,
       "median": 13,
       "uncited": 13,
       "i10": 316,
@@ -287,11 +287,11 @@
     }
   },
   "lifetime": {
-    "papers": 1238,
+    "papers": 1251,
     "outputBasis": "measured",
-    "citations": 18553,
-    "top10": 102.794,
-    "top10ShareOfDivision": 0.02484,
+    "citations": 18560,
+    "top10": 104.383,
+    "top10ShareOfDivision": 0.0271,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -302,9 +302,9 @@
       "date": "2018-12-00"
     },
     "spread": {
-      "mean": 14.986,
+      "mean": 14.836,
       "median": 5,
-      "uncited": 272,
+      "uncited": 285,
       "i10": 439,
       "i100": 23
     }
@@ -313,15 +313,15 @@
     "arms": "((=abs:\"ICESat-2\" OR abs:\"ICESat 2\" OR abs:\"Ice, Cloud, and Land Elevation Satellite 2\" OR =abs:\"Advanced Topographic Laser Altimeter System\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2018-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22ICESat-2%22+OR+abs%3A%22ICESat+2%22+OR+abs%3A%22Ice%2C+Cloud%2C+and+Land+Elevation+Satellite+2%22+OR+%3Dabs%3A%22Advanced+Topographic+Laser+Altimeter+System%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:26:04.904350+00:00",
+    "fetchedAt": "2026-10-19T17:11:56.155657+00:00",
     "reconciliation": {
-      "adsReturned": 1243,
+      "adsReturned": 1256,
       "curatedOut": 2,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 3,
-      "final": 1238
+      "final": 1251
     }
   },
   "curation": {
@@ -353,7 +353,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 452
+      "citations": 453
     },
     {
       "bibcode": "2020Sci...368.1239S",
@@ -371,7 +371,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 388
+      "citations": 387
     },
     {
       "bibcode": "2021Natur.591...78C",
@@ -380,7 +380,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 373
+      "citations": 374
     },
     {
       "bibcode": "2019RemS...11.1634P",
@@ -479,7 +479,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 152
+      "citations": 153
     },
     {
       "bibcode": "2019GeoRL..4613072B",
@@ -497,7 +497,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 134
+      "citations": 135
     },
     {
       "bibcode": "2019RSEnv.224....1N",
@@ -528,6 +528,6 @@
     }
   ],
   "papersFile": {
-    "rows": 1238
+    "rows": 1251
   }
 }

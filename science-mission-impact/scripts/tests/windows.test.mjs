@@ -37,6 +37,14 @@ test('the full-mission policy opens at mission start and ends at mission end', (
 	assert.throws(() => fullMissionPolicy({ ...raw, citation_years: -1 }), /citation_years/);
 });
 
+test('a failure with no papers is a measured zero even when its cut window ends before it starts', () => {
+	const full = fullMissionPolicy({ post_prime_years: 2, citation_years: 3, anchor: 'mission_end', opens_at: 'mission_start', min_window_years: 2 });
+	const zero = { publication_start_date: '2024-08-01', publication_end_date: '2024-01-01', status: 'available', total_publications: 0, failure_zero_mature_date: '2026-07-16', mature_date: '2029-10-01' };
+	assert.deepEqual(missionWindow(zero, full, 'CURIE'), { start: null, end: null, matureDate: '2029-10-01', status: 'available', months: 0, citationBuckets: 0 });
+	assert.throws(() => missionWindow({ ...zero, total_publications: 1 }, full, 'has papers'), /increasing publication/);
+	assert.throws(() => missionWindow({ ...zero, failure_zero_mature_date: null }, full, 'not a failure zero'), /increasing publication/);
+});
+
 test('division series preserve long tails and report varying measured coverage', () => {
 	const series = (months, outputBasis = 'measured', status = 'available') => ({ papersByMonth: Array(months).fill(1), citationsByYearOffset: [1, 2, 3, 4], status, outputBasis });
 	const combined = combineWindows([series(12), series(25), series(40, 'unavailable'), series(40, 'measured', 'immature')]);

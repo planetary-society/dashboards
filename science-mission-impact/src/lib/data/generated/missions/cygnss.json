@@ -23,12 +23,12 @@
     "m": 4.5,
     "i100": 13,
     "g": 70,
-    "tori": 27.556,
-    "riq": 524
+    "tori": 27.584,
+    "riq": 525
   },
   "facts": {
-    "papers": 483,
-    "citations": 7987,
+    "papers": 485,
+    "citations": 7991,
     "publicationYears": [
       2017,
       2026
@@ -57,7 +57,7 @@
       72,
       71,
       74,
-      71
+      73
     ],
     "citations": [
       1,
@@ -69,13 +69,13 @@
       1159,
       1435,
       1798,
-      1248
+      1252
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 7987,
-      "observed": 7987,
+      "expected": 7991,
+      "observed": 7991,
       "missing": 0
     }
   },
@@ -187,46 +187,46 @@
   "ranks": {
     "full": {
       "bins": [
-        5.701,
-        11.882,
-        19.979,
-        15.419,
-        22.369,
-        24.211,
-        43.884,
-        35.375,
-        35.335,
-        52.845
+        6.002,
+        12.03,
+        20.231,
+        15.287,
+        22.071,
+        24.231,
+        43.368,
+        35.371,
+        35.499,
+        52.91
       ],
       "top1": 3
     },
     "window": {
       "bins": [
-        3.12,
-        9.269,
-        13.185,
-        15.701,
-        12.204,
-        25.046,
-        28.789,
-        19.529,
-        25.328,
-        38.829
+        3.452,
+        9.902,
+        12.733,
+        15.982,
+        11.793,
+        26.35,
+        27.746,
+        19.378,
+        25.381,
+        38.284
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        88.153,
-        61.656,
-        56.407,
-        60.8,
-        48.893,
-        60.025,
-        32.446,
-        27.421,
-        26.2,
-        21
+        93.634,
+        64.22,
+        58.524,
+        59.153,
+        49.755,
+        57.31,
+        31.843,
+        24.562,
+        26,
+        20
       ],
       "top1": 0
     }
@@ -234,11 +234,11 @@
   "full": {
     "papers": 267,
     "outputBasis": "measured",
-    "citations": 4445,
-    "top10": 35.332,
-    "top10ShareOfDivision": 0.00918,
+    "citations": 4446,
+    "top10": 35.319,
+    "top10ShareOfDivision": 0.00981,
     "top1": 1.5,
-    "top1ShareOfDivision": 0.0039,
+    "top1ShareOfDivision": 0.00417,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.374,
@@ -256,7 +256,7 @@
       "citationBuckets": 10
     },
     "spread": {
-      "mean": 16.648,
+      "mean": 16.652,
       "median": 11,
       "uncited": 4,
       "i10": 161,
@@ -268,9 +268,9 @@
     "outputBasis": "measured",
     "citations": 3570,
     "top10": 19.7,
-    "top10ShareOfDivision": 0.01899,
+    "top10ShareOfDivision": 0.02093,
     "top1": 0.5,
-    "top1ShareOfDivision": 0.00482,
+    "top1ShareOfDivision": 0.00531,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.374,
@@ -296,11 +296,11 @@
     }
   },
   "lifetime": {
-    "papers": 483,
+    "papers": 485,
     "outputBasis": "measured",
-    "citations": 7987,
-    "top10": 35.074,
-    "top10ShareOfDivision": 0.00848,
+    "citations": 7991,
+    "top10": 35.083,
+    "top10ShareOfDivision": 0.00911,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -311,9 +311,9 @@
       "date": "2018-05-00"
     },
     "spread": {
-      "mean": 16.536,
+      "mean": 16.476,
       "median": 7,
-      "uncited": 86,
+      "uncited": 88,
       "i10": 205,
       "i100": 13
     }
@@ -322,15 +322,15 @@
     "arms": "((=abs:\"Cyclone Global Navigation Satellite System\" OR (abs:CYGNSS AND (abs:satellite OR abs:GNSS OR abs:reflectometry OR abs:wind OR abs:soil OR abs:ocean OR abs:surface OR abs:data OR abs:retrieval OR abs:observations OR abs:cyclone OR abs:land OR abs:simulator OR abs:constellation OR abs:flood)) OR ((=abs:\"Delay Doppler Mapping Instrument\" OR abs:DDMI) AND (abs:CYGNSS OR abs:GNSS OR abs:reflectometry))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2017-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Cyclone+Global+Navigation+Satellite+System%22+OR+%28abs%3ACYGNSS+AND+%28abs%3Asatellite+OR+abs%3AGNSS+OR+abs%3Areflectometry+OR+abs%3Awind+OR+abs%3Asoil+OR+abs%3Aocean+OR+abs%3Asurface+OR+abs%3Adata+OR+abs%3Aretrieval+OR+abs%3Aobservations+OR+abs%3Acyclone+OR+abs%3Aland+OR+abs%3Asimulator+OR+abs%3Aconstellation+OR+abs%3Aflood%29%29+OR+%28%28%3Dabs%3A%22Delay+Doppler+Mapping+Instrument%22+OR+abs%3ADDMI%29+AND+%28abs%3ACYGNSS+OR+abs%3AGNSS+OR+abs%3Areflectometry%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2017-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:25:49.659333+00:00",
+    "fetchedAt": "2026-10-19T17:11:48.690345+00:00",
     "reconciliation": {
-      "adsReturned": 484,
+      "adsReturned": 486,
       "curatedOut": 1,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 483
+      "final": 485
     }
   },
   "curation": {
@@ -529,6 +529,6 @@
     }
   ],
   "papersFile": {
-    "rows": 483
+    "rows": 485
   }
 }

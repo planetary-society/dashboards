@@ -22,13 +22,13 @@
     "h": 159,
     "m": 4.297,
     "i100": 266,
-    "g": 314,
-    "tori": 924.671,
-    "riq": 821
+    "g": 315,
+    "tori": 920.486,
+    "riq": 819
   },
   "facts": {
-    "papers": 1413,
-    "citations": 125293,
+    "papers": 1416,
+    "citations": 125565,
     "publicationYears": [
       1990,
       2026
@@ -111,52 +111,52 @@
       13,
       13,
       25,
-      13
+      16
     ],
     "citations": [
       15,
       132,
       328,
       1269,
-      2287,
+      2288,
       2628,
       3046,
       3232,
-      3883,
+      3884,
       4870,
       4503,
-      4919,
+      4913,
       4748,
-      5188,
-      4765,
+      5186,
+      4766,
       4332,
-      4353,
+      4352,
       3704,
-      3635,
+      3634,
       3852,
-      3850,
-      4012,
-      3943,
+      3857,
+      4015,
+      3944,
       3872,
       3703,
       3607,
       3442,
-      3284,
+      3282,
       3295,
-      3126,
+      3125,
       2929,
-      3195,
+      3194,
       3152,
-      3177,
-      3685,
-      3930,
-      3402
+      3171,
+      3683,
+      3928,
+      3684
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 125293,
-      "observed": 125293,
+      "expected": 125565,
+      "observed": 125565,
       "missing": 0
     }
   },
@@ -221,63 +221,63 @@
     ],
     "authorCount": 3,
     "year": 1998,
-    "citations": 14188
+    "citations": 14221
   },
   "ranks": {
     "full": {
       "bins": [
-        86.903,
-        39.225,
-        38.788,
-        44.101,
-        49.636,
-        25.666,
-        29.714,
-        37.211,
-        38.757,
+        86.994,
+        39.149,
+        38.771,
+        44.211,
+        49.494,
+        25.675,
+        29.7,
+        37.138,
+        38.868,
         52
       ],
       "top1": 9
     },
     "window": {
       "bins": [
-        16.482,
-        9.063,
-        7.237,
-        6.663,
-        5.555,
+        16.449,
+        8.967,
+        7.276,
+        6.707,
+        5.6,
         0,
         1,
         4,
-        2.643,
-        3.357
+        2.408,
+        3.592
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        154.707,
-        135.568,
-        112.738,
-        129.715,
-        132.349,
-        116.344,
-        114.583,
-        129.308,
-        158.688,
-        229
+        155.744,
+        136.236,
+        113.65,
+        127.31,
+        133.713,
+        117.619,
+        113.995,
+        129.014,
+        159.164,
+        229.554
       ],
-      "top1": 43.95
+      "top1": 44
     }
   },
   "full": {
     "papers": 442,
     "outputBasis": "measured",
-    "citations": 10136,
+    "citations": 10137,
     "top10": 54.35,
-    "top10ShareOfDivision": 0.0109,
+    "top10ShareOfDivision": 0.01093,
     "top1": 9,
-    "top1ShareOfDivision": 0.01805,
+    "top1ShareOfDivision": 0.01809,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.441,
@@ -295,7 +295,7 @@
       "citationBuckets": 10
     },
     "spread": {
-      "mean": 22.932,
+      "mean": 22.934,
       "median": 10,
       "uncited": 50,
       "i10": 235,
@@ -307,9 +307,9 @@
     "outputBasis": "measured",
     "citations": 933,
     "top10": 5.25,
-    "top10ShareOfDivision": 0.0027,
+    "top10ShareOfDivision": 0.00271,
     "top1": 1,
-    "top1ShareOfDivision": 0.00514,
+    "top1ShareOfDivision": 0.00517,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.441,
@@ -335,11 +335,11 @@
     }
   },
   "lifetime": {
-    "papers": 1413,
+    "papers": 1416,
     "outputBasis": "measured",
-    "citations": 125293,
-    "top10": 166.367,
-    "top10ShareOfDivision": 0.03003,
+    "citations": 125565,
+    "top10": 166.175,
+    "top10ShareOfDivision": 0.03006,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -350,9 +350,9 @@
       "date": "1990-05-00"
     },
     "spread": {
-      "mean": 88.672,
+      "mean": 88.676,
       "median": 26,
-      "uncited": 85,
+      "uncited": 88,
       "i10": 1035,
       "i100": 266
     }
@@ -361,15 +361,15 @@
     "arms": "((=abs:(\"Cosmic Background Explorer\" OR \"Diffuse Infrared Background Experiment\" OR \"Far Infrared Absolute Spectrophotometer\" OR \"Differential Microwave Radiometer\" OR \"Differential Microwave Radiometers\") OR facility:COBE OR (abs:COBE AND (collection:astronomy OR (abs:(inflation OR inflationary OR microwave OR anisotropy OR anisotropies OR cosmological OR cosmology OR cosmic OR blackbody OR infrared OR spectrometer OR dewar OR cryogenic OR neutrino OR neutrinos) NOT =abs:\"sea surface\"))) OR (abs:(DIRBE OR FIRAS) AND (collection:astronomy OR abs:(blackbody OR CMB OR microwave OR infrared OR spectrometer OR spectrometry) OR =abs:\"background radiation\")) OR (abs:DMR AND collection:astronomy AND abs:(microwave OR CMB OR anisotropy OR anisotropies))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1989-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Cosmic+Background+Explorer%22+OR+%22Diffuse+Infrared+Background+Experiment%22+OR+%22Far+Infrared+Absolute+Spectrophotometer%22+OR+%22Differential+Microwave+Radiometer%22+OR+%22Differential+Microwave+Radiometers%22%29+OR+facility%3ACOBE+OR+%28abs%3ACOBE+AND+%28collection%3Aastronomy+OR+%28abs%3A%28inflation+OR+inflationary+OR+microwave+OR+anisotropy+OR+anisotropies+OR+cosmological+OR+cosmology+OR+cosmic+OR+blackbody+OR+infrared+OR+spectrometer+OR+dewar+OR+cryogenic+OR+neutrino+OR+neutrinos%29+NOT+%3Dabs%3A%22sea+surface%22%29%29%29+OR+%28abs%3A%28DIRBE+OR+FIRAS%29+AND+%28collection%3Aastronomy+OR+abs%3A%28blackbody+OR+CMB+OR+microwave+OR+infrared+OR+spectrometer+OR+spectrometry%29+OR+%3Dabs%3A%22background+radiation%22%29%29+OR+%28abs%3ADMR+AND+collection%3Aastronomy+AND+abs%3A%28microwave+OR+CMB+OR+anisotropy+OR+anisotropies%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1989-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:29:20.111100+00:00",
+    "fetchedAt": "2026-10-19T17:14:25.277330+00:00",
     "reconciliation": {
-      "adsReturned": 1417,
+      "adsReturned": 1420,
       "curatedOut": 4,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 1413
+      "final": 1416
     }
   },
   "curation": {
@@ -417,7 +417,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 14188
+      "citations": 14221
     },
     {
       "bibcode": "2003ApJS..148....1B",
@@ -426,7 +426,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 4893
+      "citations": 4888
     },
     {
       "bibcode": "1992ApJ...396L...1S",
@@ -435,7 +435,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1992,
-      "citations": 2792
+      "citations": 2794
     },
     {
       "bibcode": "1996ApJ...473..576F",
@@ -444,7 +444,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 1634
+      "citations": 1642
     },
     {
       "bibcode": "2001ApJ...554..778L",
@@ -453,7 +453,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 1281
+      "citations": 1289
     },
     {
       "bibcode": "1996ApJ...464L...1B",
@@ -462,7 +462,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 1187
+      "citations": 1186
     },
     {
       "bibcode": "2000PhR...331..283M",
@@ -471,16 +471,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 1049
-    },
-    {
-      "bibcode": "2001PhRvD..63f3002K",
-      "title": "Acoustic signatures in the primary microwave background bispectrum",
-      "firstAuthor": "Komatsu, Eiichiro",
-      "authors": null,
-      "authorCount": null,
-      "year": 2001,
-      "citations": 1016
+      "citations": 1058
     },
     {
       "bibcode": "2009ApJ...707..916F",
@@ -489,7 +480,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 1014
+      "citations": 1022
+    },
+    {
+      "bibcode": "2001PhRvD..63f3002K",
+      "title": "Acoustic signatures in the primary microwave background bispectrum",
+      "firstAuthor": "Komatsu, Eiichiro",
+      "authors": null,
+      "authorCount": null,
+      "year": 2001,
+      "citations": 1021
     },
     {
       "bibcode": "1998PhRvD..58b3503F",
@@ -498,7 +498,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 921
+      "citations": 923
     },
     {
       "bibcode": "2011ApJ...731...53M",
@@ -507,7 +507,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 907
+      "citations": 914
     },
     {
       "bibcode": "1998ApJ...508..483W",
@@ -516,7 +516,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 905
+      "citations": 908
     },
     {
       "bibcode": "2008A&A...487..837F",
@@ -525,7 +525,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 888
+      "citations": 894
     },
     {
       "bibcode": "1995ApJ...443..152W",
@@ -534,7 +534,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1995,
-      "citations": 883
+      "citations": 886
     },
     {
       "bibcode": "1994MNRAS.267.1020P",
@@ -543,7 +543,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1994,
-      "citations": 864
+      "citations": 868
     },
     {
       "bibcode": "1993PhR...231....1L",
@@ -552,7 +552,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 804
+      "citations": 806
     },
     {
       "bibcode": "1994ApJ...420..439M",
@@ -561,7 +561,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1994,
-      "citations": 798
+      "citations": 799
     },
     {
       "bibcode": "1994ApJ...427..822B",
@@ -570,7 +570,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1994,
-      "citations": 766
+      "citations": 768
     },
     {
       "bibcode": "2001ARA&A..39..249H",
@@ -579,7 +579,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 757
+      "citations": 759
     },
     {
       "bibcode": "1996A&A...308L...5P",
@@ -588,10 +588,10 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 730
+      "citations": 732
     }
   ],
   "papersFile": {
-    "rows": 1413
+    "rows": 1416
   }
 }

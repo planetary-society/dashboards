@@ -23,12 +23,12 @@
     "m": 2.185,
     "i100": 25,
     "g": 88,
-    "tori": 63.583,
+    "tori": 63.837,
     "riq": 295
   },
   "facts": {
     "papers": 495,
-    "citations": 13853,
+    "citations": 13881,
     "publicationYears": [
       2000,
       2026
@@ -96,7 +96,7 @@
     "citations": [
       2,
       37,
-      101,
+      99,
       246,
       267,
       417,
@@ -105,8 +105,8 @@
       611,
       587,
       681,
-      678,
-      609,
+      680,
+      610,
       651,
       650,
       606,
@@ -120,13 +120,13 @@
       620,
       572,
       662,
-      364
+      391
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 13853,
-      "observed": 13853,
+      "expected": 13881,
+      "observed": 13881,
       "missing": 0
     }
   },
@@ -191,7 +191,7 @@
     "citationsByYearOffset": [
       2,
       37,
-      101,
+      99,
       246,
       260,
       263,
@@ -211,51 +211,51 @@
     ],
     "authorCount": 4,
     "year": 2005,
-    "citations": 274
+    "citations": 275
   },
   "ranks": {
     "full": {
       "bins": [
-        38.425,
-        33.119,
-        29.844,
-        37.701,
-        23.453,
-        24.099,
-        18.517,
-        16.736,
-        21.743,
-        11.362
+        38.353,
+        33.183,
+        30.165,
+        37.555,
+        23.69,
+        23.972,
+        18.923,
+        16.14,
+        21.843,
+        11.176
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        17.691,
-        8.691,
-        14.593,
-        10.228,
-        14.445,
-        11.107,
-        6.929,
-        9.407,
-        8.91,
+        17.718,
+        8.67,
+        14.597,
+        10.191,
+        14.486,
+        11.709,
+        6.302,
+        10.399,
+        7.929,
         5
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        30.324,
-        40.248,
-        50.528,
-        63.358,
-        50.771,
-        55.534,
-        53.068,
-        55.724,
-        52.965,
-        42.479
+        29.521,
+        41.065,
+        50.411,
+        63.163,
+        51.396,
+        55.616,
+        52.887,
+        55.783,
+        53.115,
+        42.043
       ],
       "top1": 3
     }
@@ -263,9 +263,9 @@
   "full": {
     "papers": 255,
     "outputBasis": "measured",
-    "citations": 2050,
-    "top10": 20.019,
-    "top10ShareOfDivision": 0.01383,
+    "citations": 2048,
+    "top10": 19.988,
+    "top10ShareOfDivision": 0.01386,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -285,7 +285,7 @@
       "citationBuckets": 11
     },
     "spread": {
-      "mean": 8.039,
+      "mean": 8.031,
       "median": 5,
       "uncited": 24,
       "i10": 73,
@@ -295,9 +295,9 @@
   "window": {
     "papers": 107,
     "outputBasis": "measured",
-    "citations": 1121,
-    "top10": 10.133,
-    "top10ShareOfDivision": 0.02283,
+    "citations": 1119,
+    "top10": 9.933,
+    "top10ShareOfDivision": 0.02239,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -317,7 +317,7 @@
       "citationBuckets": 8
     },
     "spread": {
-      "mean": 10.477,
+      "mean": 10.458,
       "median": 8,
       "uncited": 10,
       "i10": 44,
@@ -327,9 +327,9 @@
   "lifetime": {
     "papers": 495,
     "outputBasis": "measured",
-    "citations": 13853,
-    "top10": 19,
-    "top10ShareOfDivision": 0.01208,
+    "citations": 13881,
+    "top10": 18.8,
+    "top10ShareOfDivision": 0.012,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -340,9 +340,9 @@
       "date": "2000-07-00"
     },
     "spread": {
-      "mean": 27.986,
+      "mean": 28.042,
       "median": 16,
-      "uncited": 21,
+      "uncited": 20,
       "i10": 314,
       "i100": 25
     }
@@ -351,7 +351,7 @@
     "arms": "((=abs:\"Imager for Magnetopause-to-Aurora Global Exploration\" OR =abs:\"Imager for Magnetopause to Aurora Global Exploration\" OR =abs:\"IMAGE mission\" OR (abs:\"IMAGE\" AND (abs:\"spacecraft\" OR abs:\"satellite\" OR abs:\"mission\") AND (abs:\"magnetosphere\" OR abs:\"magnetopause\" OR abs:\"aurora\" OR abs:\"plasmasphere\" OR abs:\"Radio Plasma Imager\" OR abs:\"Low Energy Neutral Atom\" OR abs:\"RPI\" OR abs:\"LENA\" OR abs:\"MENA\" OR abs:\"HENA\" OR abs:\"FUV\" OR abs:\"EUV\"))) AND NOT title:(\"image processing\" OR \"image reconstruction\" OR \"image analysis\" OR \"imaging algorithm\" OR \"medical imaging\" OR \"MAXI\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2000-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Imager+for+Magnetopause-to-Aurora+Global+Exploration%22+OR+%3Dabs%3A%22Imager+for+Magnetopause+to+Aurora+Global+Exploration%22+OR+%3Dabs%3A%22IMAGE+mission%22+OR+%28abs%3A%22IMAGE%22+AND+%28abs%3A%22spacecraft%22+OR+abs%3A%22satellite%22+OR+abs%3A%22mission%22%29+AND+%28abs%3A%22magnetosphere%22+OR+abs%3A%22magnetopause%22+OR+abs%3A%22aurora%22+OR+abs%3A%22plasmasphere%22+OR+abs%3A%22Radio+Plasma+Imager%22+OR+abs%3A%22Low+Energy+Neutral+Atom%22+OR+abs%3A%22RPI%22+OR+abs%3A%22LENA%22+OR+abs%3A%22MENA%22+OR+abs%3A%22HENA%22+OR+abs%3A%22FUV%22+OR+abs%3A%22EUV%22%29%29%29+AND+NOT+title%3A%28%22image+processing%22+OR+%22image+reconstruction%22+OR+%22image+analysis%22+OR+%22imaging+algorithm%22+OR+%22medical+imaging%22+OR+%22MAXI%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:29:11.825474+00:00",
+    "fetchedAt": "2026-10-19T17:13:07.872444+00:00",
     "reconciliation": {
       "adsReturned": 496,
       "curatedOut": 1,
@@ -391,7 +391,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 274
+      "citations": 275
     },
     {
       "bibcode": "2001JGR...106....7J",
@@ -427,7 +427,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 226
+      "citations": 228
     },
     {
       "bibcode": "2007GeoRL..3420109H",
@@ -472,7 +472,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 145
+      "citations": 146
     },
     {
       "bibcode": "2005JGRA..110.3201G",

@@ -51,6 +51,11 @@
 	const rankable = $derived(site.divisions.filter((d) => compared.has(d.slug)));
 	// Time to a first top-10% paper from science start, every division together: the packaged cost quarters and threshold sides.
 	const sci = $derived(story.scienceStart);
+	// Per dollar: a side drew "more" only where the packaged ordering survives dropping any one mission.
+	const dollarOver = $derived(story.perDollar.filter((d) => d.favors === 'over'));
+	const dollarUnder = $derived(story.perDollar.filter((d) => d.favors === 'under'));
+	const dollarClose = $derived(story.perDollar.filter((d) => !d.favors));
+	const rate = (d, key) => d.groups.find((g) => g.key === key).perHundredM;
 	// Paper kinds: every number and name binds to site.kinds.
 	const kinds = $derived(site.kinds);
 	const example = $derived(kinds.examples[0]);
@@ -265,8 +270,11 @@
 		</div></section>
 		<!-- DOLLAR -->
 		<section data-step><div class="step">
-			<p>When looking at citations per dollar, the story gets a bit more complex. Very low cost missions, even with relatively few citations, can keep pace given their low costs.</p>
-			<p>Some missions, like TRACE, excel in providing high-quality results. Low-cost missions can provide excellent value.</p>
+			<p>When looking at citations per dollar, the story gets a bit more complex.{#if dollarOver.length}{' '}Costlier missions drew more citations per $100M in {listify(dollarOver.map((d) => d.name))}.{/if}{#if dollarUnder.length}{' '}Missions at {money(reference)} or less drew more in {listify(dollarUnder.map((d) => d.name))}.{/if}</p>
+			{#each dollarClose as d (d.division)}
+				{@const lone = d.flipsOn.length === 1 && d.flipsOn[0].id === d.largestUnder?.id && rate(d, 'under') > rate(d, 'over') ? d.largestUnder : null}
+				<p>In {d.name}, neither side clearly leads.{#if lone}{' '}Missions at {money(reference)} or less drew more citations per $100M, but {lone.name} alone accounts for {pct(lone.share)} of their citations; without it, costlier missions lead.{/if}</p>
+			{/each}
 		</div></section>
 		{#if SHOW_KINDS}
 		<!-- KINDS -->

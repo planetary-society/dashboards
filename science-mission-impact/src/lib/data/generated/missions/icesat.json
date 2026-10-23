@@ -23,12 +23,12 @@
     "m": 3.917,
     "i100": 84,
     "g": 164,
-    "tori": 219.866,
+    "tori": 219.696,
     "riq": 617
   },
   "facts": {
-    "papers": 793,
-    "citations": 38398,
+    "papers": 786,
+    "citations": 38305,
     "publicationYears": [
       2003,
       2026
@@ -80,12 +80,12 @@
       38,
       47,
       43,
-      49,
-      33,
+      46,
+      31,
       16,
-      19,
-      29,
-      13
+      18,
+      27,
+      14
     ],
     "citations": [
       1,
@@ -97,27 +97,27 @@
       357,
       524,
       903,
-      1066,
-      1344,
-      1738,
-      1795,
-      2006,
-      2119,
-      2460,
-      2539,
-      2759,
-      3197,
-      3409,
-      3163,
-      3203,
-      3266,
-      1899
+      1070,
+      1347,
+      1743,
+      1796,
+      2009,
+      2118,
+      2459,
+      2540,
+      2760,
+      3198,
+      3397,
+      3137,
+      3181,
+      3229,
+      1886
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 38398,
-      "observed": 38398,
+      "expected": 38305,
+      "observed": 38305,
       "missing": 0
     }
   },
@@ -220,46 +220,46 @@
   "ranks": {
     "full": {
       "bins": [
-        22.552,
-        17.265,
-        21.745,
-        15.43,
-        19.945,
-        18.004,
-        29.663,
-        26.217,
-        33.335,
-        37.845
+        22.752,
+        17.296,
+        22.215,
+        14.973,
+        20.04,
+        17.893,
+        29.163,
+        26.259,
+        33.499,
+        37.91
       ],
       "top1": 4
     },
     "window": {
       "bins": [
-        6.84,
-        7.75,
-        12.377,
-        6.989,
-        10.203,
-        6.51,
-        8.644,
-        10.915,
-        7.771,
+        7.089,
+        8.345,
+        12.174,
+        6.943,
+        9.736,
+        6.608,
+        9.062,
+        10.6,
+        7.443,
         5
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        60.435,
-        42.963,
-        56.817,
-        66.392,
-        61.143,
-        80.738,
-        95.485,
-        84.226,
-        117.043,
-        127.757
+        62.415,
+        44.419,
+        60.9,
+        66.816,
+        61.779,
+        81.524,
+        89.242,
+        80.569,
+        117.034,
+        121.301
       ],
       "top1": 17
     }
@@ -267,11 +267,11 @@
   "full": {
     "papers": 242,
     "outputBasis": "measured",
-    "citations": 3603,
-    "top10": 48.216,
-    "top10ShareOfDivision": 0.01253,
+    "citations": 3607,
+    "top10": 49.124,
+    "top10ShareOfDivision": 0.01365,
     "top1": 4,
-    "top1ShareOfDivision": 0.0104,
+    "top1ShareOfDivision": 0.01111,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.55,
@@ -289,7 +289,7 @@
       "citationBuckets": 13
     },
     "spread": {
-      "mean": 14.888,
+      "mean": 14.905,
       "median": 10,
       "uncited": 20,
       "i10": 122,
@@ -300,16 +300,16 @@
     "papers": 83,
     "outputBasis": "measured",
     "citations": 870,
-    "top10": 7.6,
-    "top10ShareOfDivision": 0.00733,
+    "top10": 8,
+    "top10ShareOfDivision": 0.0085,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 1.55,
-      "yearsFromFormulation": 6.513,
-      "bibcode": "2004GeoRL..3116401K",
-      "date": "2004-08-00"
+      "yearsFromScienceStart": 1.634,
+      "yearsFromFormulation": 6.598,
+      "bibcode": "2004GeoRL..3118402S",
+      "date": "2004-09-00"
     },
     "status": "available",
     "bounds": {
@@ -329,11 +329,11 @@
     }
   },
   "lifetime": {
-    "papers": 793,
+    "papers": 786,
     "outputBasis": "measured",
-    "citations": 38398,
-    "top10": 77.162,
-    "top10ShareOfDivision": 0.01865,
+    "citations": 38305,
+    "top10": 78.936,
+    "top10ShareOfDivision": 0.02049,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -344,10 +344,10 @@
       "date": "2004-09-00"
     },
     "spread": {
-      "mean": 48.421,
+      "mean": 48.734,
       "median": 21,
       "uncited": 59,
-      "i10": 549,
+      "i10": 544,
       "i100": 84
     }
   },
@@ -355,15 +355,15 @@
     "arms": "((((abs:\"ICESat\" OR abs:\"ICESat-1\" OR abs:\"GLAS\" OR =abs:\"Geoscience Laser Altimeter System\") AND (abs:\"satellite\" OR abs:\"remote sensing\" OR abs:\"laser altimetry\" OR abs:\"laser altimeter\")) OR abs:\"Ice, Clouds and Land Elevation Satellite\" OR abs:\"Geoscience Laser Altimeter System\") AND NOT (abs:\"ICESat-2\" AND NOT (abs:\"ICESat-1\" OR abs:\"GLAS\" OR =abs:\"Geoscience Laser Altimeter System\" OR =abs:\"ICESat ICESat-2\" OR =abs:\"ICESat 2003\" OR =abs:\"ICESat data\" OR =abs:\"ICESat mission\" OR =abs:\"ICESat CryoSat\" OR =abs:\"ICESat Ice Cloud\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2003-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3A%22ICESat%22+OR+abs%3A%22ICESat-1%22+OR+abs%3A%22GLAS%22+OR+%3Dabs%3A%22Geoscience+Laser+Altimeter+System%22%29+AND+%28abs%3A%22satellite%22+OR+abs%3A%22remote+sensing%22+OR+abs%3A%22laser+altimetry%22+OR+abs%3A%22laser+altimeter%22%29%29+OR+abs%3A%22Ice%2C+Clouds+and+Land+Elevation+Satellite%22+OR+abs%3A%22Geoscience+Laser+Altimeter+System%22%29+AND+NOT+%28abs%3A%22ICESat-2%22+AND+NOT+%28abs%3A%22ICESat-1%22+OR+abs%3A%22GLAS%22+OR+%3Dabs%3A%22Geoscience+Laser+Altimeter+System%22+OR+%3Dabs%3A%22ICESat+ICESat-2%22+OR+%3Dabs%3A%22ICESat+2003%22+OR+%3Dabs%3A%22ICESat+data%22+OR+%3Dabs%3A%22ICESat+mission%22+OR+%3Dabs%3A%22ICESat+CryoSat%22+OR+%3Dabs%3A%22ICESat+Ice+Cloud%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:22:34.477521+00:00",
+    "fetchedAt": "2026-10-19T17:10:42.150780+00:00",
     "reconciliation": {
-      "adsReturned": 800,
+      "adsReturned": 793,
       "curatedOut": 0,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 7,
-      "final": 793
+      "final": 786
     }
   },
   "curation": {
@@ -387,7 +387,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 1049
+      "citations": 1048
     },
     {
       "bibcode": "2017RSEnv.190..260M",
@@ -405,7 +405,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 772
+      "citations": 773
     },
     {
       "bibcode": "2011TCry....5..271N",
@@ -450,7 +450,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 544
+      "citations": 550
     },
     {
       "bibcode": "2005GeoRL..3221S01S",
@@ -495,7 +495,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 355
+      "citations": 356
     },
     {
       "bibcode": "2013RSEnv.135...25S",
@@ -543,16 +543,16 @@
       "citations": 265
     },
     {
-      "bibcode": "2005GeoRL..3221S02A",
-      "title": "Geoscience Laser Altimeter System (GLAS) on the ICESat Mission: On-orbit measurement performance",
-      "firstAuthor": "Abshire, James B.",
+      "bibcode": "2008RSEnv.112.3876B",
+      "title": "Regional aboveground forest biomass using airborne and spaceborne LiDAR in Québec",
+      "firstAuthor": "Boudreau, Jonathan",
       "authors": null,
       "authorCount": null,
-      "year": 2005,
-      "citations": 261
+      "year": 2008,
+      "citations": 262
     }
   ],
   "papersFile": {
-    "rows": 793
+    "rows": 786
   }
 }

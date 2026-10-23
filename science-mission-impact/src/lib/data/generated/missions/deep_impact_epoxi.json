@@ -23,12 +23,12 @@
     "m": 2.545,
     "i100": 27,
     "g": 98,
-    "tori": 53.259,
-    "riq": 331
+    "tori": 52.649,
+    "riq": 329
   },
   "facts": {
     "papers": 314,
-    "citations": 12042,
+    "citations": 12062,
     "publicationYears": [
       2005,
       2026
@@ -90,8 +90,8 @@
       431,
       554,
       418,
-      600,
-      562,
+      597,
+      564,
       812,
       618,
       777,
@@ -102,16 +102,16 @@
       560,
       607,
       501,
-      548,
+      549,
       610,
-      536,
-      483
+      534,
+      505
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 12042,
-      "observed": 12042,
+      "expected": 12062,
+      "observed": 12062,
       "missing": 0
     }
   },
@@ -172,49 +172,49 @@
     ],
     "authorCount": 33,
     "year": 2005,
-    "citations": 712
+    "citations": 714
   },
   "ranks": {
     "full": {
       "bins": [
-        33.733,
-        43.81,
-        30.983,
-        29.767,
-        22.325,
-        17.587,
-        21.606,
-        22.373,
-        18.816,
-        35
+        33.375,
+        43.891,
+        31.03,
+        29.539,
+        22.583,
+        17.615,
+        21.583,
+        22.269,
+        19.086,
+        35.03
       ],
-      "top1": 4.014
+      "top1": 4.047
     },
     "window": {
       "bins": [
-        18.376,
-        34.797,
-        11.156,
-        14.731,
-        10.228,
-        7.042,
-        5.335,
-        2.335,
-        5.762,
-        13.238
+        18.215,
+        34.827,
+        11.254,
+        14.718,
+        10.247,
+        7.049,
+        5.329,
+        2.363,
+        5.706,
+        13.294
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        17.872,
-        43.162,
-        37.274,
-        31.156,
-        40.773,
-        19.151,
-        33.299,
-        27.312,
+        17.648,
+        43.355,
+        37.166,
+        31.028,
+        40.945,
+        18.996,
+        33.329,
+        27.533,
         30,
         34
       ],
@@ -224,11 +224,11 @@
   "full": {
     "papers": 276,
     "outputBasis": "measured",
-    "citations": 3940,
-    "top10": 29.99,
-    "top10ShareOfDivision": 0.02749,
-    "top1": 4.014,
-    "top1ShareOfDivision": 0.03679,
+    "citations": 3939,
+    "top10": 29.66,
+    "top10ShareOfDivision": 0.02714,
+    "top1": 4.047,
+    "top1ShareOfDivision": 0.03703,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.334,
@@ -246,7 +246,7 @@
       "citationBuckets": 14
     },
     "spread": {
-      "mean": 14.275,
+      "mean": 14.272,
       "median": 6,
       "uncited": 16,
       "i10": 108,
@@ -258,9 +258,9 @@
     "outputBasis": "measured",
     "citations": 1808,
     "top10": 15,
-    "top10ShareOfDivision": 0.03107,
+    "top10ShareOfDivision": 0.03108,
     "top1": 1,
-    "top1ShareOfDivision": 0.02071,
+    "top1ShareOfDivision": 0.02072,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.334,
@@ -288,9 +288,9 @@
   "lifetime": {
     "papers": 314,
     "outputBasis": "measured",
-    "citations": 12042,
-    "top10": 20.033,
-    "top10ShareOfDivision": 0.0147,
+    "citations": 12062,
+    "top10": 20.233,
+    "top10ShareOfDivision": 0.01487,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -301,7 +301,7 @@
       "date": "2005-10-00"
     },
     "spread": {
-      "mean": 38.35,
+      "mean": 38.414,
       "median": 15.5,
       "uncited": 10,
       "i10": 202,
@@ -312,7 +312,7 @@
     "arms": "(((=abs:\"Deep Impact\" AND (=abs:\"Tempel 1\" OR abs:Tempel OR abs:Hartley OR abs:EPOXI OR abs:EPOCh OR abs:lunar OR abs:Moon OR =abs:\"Deep Impact spacecraft\" OR =abs:\"Deep Impact mission\" OR =abs:\"Deep Impact flyby\" OR =abs:\"Deep Impact experiment\" OR =abs:\"Deep Impact encounter\")) OR (abs:EPOXI AND (abs:comet OR abs:Hartley OR abs:exoplanet OR abs:transit OR abs:Earth OR abs:lunar OR abs:Moon OR abs:planet)) OR (abs:DIXI AND abs:Hartley)))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2005-07 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Deep+Impact%22+AND+%28%3Dabs%3A%22Tempel+1%22+OR+abs%3ATempel+OR+abs%3AHartley+OR+abs%3AEPOXI+OR+abs%3AEPOCh+OR+abs%3Alunar+OR+abs%3AMoon+OR+%3Dabs%3A%22Deep+Impact+spacecraft%22+OR+%3Dabs%3A%22Deep+Impact+mission%22+OR+%3Dabs%3A%22Deep+Impact+flyby%22+OR+%3Dabs%3A%22Deep+Impact+experiment%22+OR+%3Dabs%3A%22Deep+Impact+encounter%22%29%29+OR+%28abs%3AEPOXI+AND+%28abs%3Acomet+OR+abs%3AHartley+OR+abs%3Aexoplanet+OR+abs%3Atransit+OR+abs%3AEarth+OR+abs%3Alunar+OR+abs%3AMoon+OR+abs%3Aplanet%29%29+OR+%28abs%3ADIXI+AND+abs%3AHartley%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2005-07+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-04T05:36:14.334270+00:00",
+    "fetchedAt": "2026-10-19T17:06:18.863277+00:00",
     "reconciliation": {
       "adsReturned": 316,
       "curatedOut": 5,
@@ -409,7 +409,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 712
+      "citations": 714
     },
     {
       "bibcode": "2011MNRAS.417.2166S",
@@ -418,7 +418,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 529
+      "citations": 528
     },
     {
       "bibcode": "2009Sci...326..565S",
@@ -427,7 +427,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 440
+      "citations": 441
     },
     {
       "bibcode": "2011Sci...332.1396A",
@@ -445,7 +445,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 293
+      "citations": 292
     },
     {
       "bibcode": "2006Sci...311.1453S",
@@ -472,7 +472,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 199
+      "citations": 200
     },
     {
       "bibcode": "2007Icar..190..357R",
@@ -490,7 +490,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 185
+      "citations": 187
     },
     {
       "bibcode": "2016A&A...592A..63D",
@@ -517,7 +517,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 164
+      "citations": 166
     },
     {
       "bibcode": "2005Sci...310..270M",

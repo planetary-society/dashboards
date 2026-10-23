@@ -21,14 +21,14 @@
   "indices": {
     "h": 82,
     "m": 4.316,
-    "i100": 62,
-    "g": 118,
-    "tori": 70.105,
-    "riq": 440
+    "i100": 63,
+    "g": 119,
+    "tori": 69.429,
+    "riq": 438
   },
   "facts": {
-    "papers": 763,
-    "citations": 26614,
+    "papers": 765,
+    "citations": 26748,
     "publicationYears": [
       2008,
       2026
@@ -75,34 +75,34 @@
       40,
       36,
       44,
-      35
+      37
     ],
     "citations": [
       65,
       274,
       414,
       527,
-      768,
-      919,
+      769,
+      921,
       1101,
       1662,
       1599,
       1340,
       1378,
-      1452,
-      2104,
+      1451,
+      2105,
       2233,
       2454,
       2191,
       2204,
-      2273,
-      1656
+      2267,
+      1793
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 26614,
-      "observed": 26614,
+      "expected": 26748,
+      "observed": 26748,
       "missing": 0
     }
   },
@@ -154,7 +154,7 @@
     "citationsByYearOffset": [
       55,
       347,
-      554,
+      555,
       728,
       699,
       336,
@@ -173,51 +173,51 @@
     ],
     "authorCount": 15,
     "year": 2011,
-    "citations": 431
+    "citations": 430
   },
   "ranks": {
     "full": {
       "bins": [
-        13.8,
-        19.366,
-        34.979,
-        24.237,
-        25.932,
-        33.892,
-        34.693,
-        26.286,
-        48.149,
-        39.667
+        13.723,
+        19.179,
+        35.069,
+        24.009,
+        25.908,
+        34.144,
+        34.552,
+        26.299,
+        47.995,
+        40.12
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        7.675,
-        7.542,
-        15.31,
-        17.784,
-        19.688,
-        8.995,
-        7.338,
-        19.511,
-        18.919,
-        17.238
+        7.643,
+        7.518,
+        15.312,
+        17.819,
+        19.709,
+        8.963,
+        7.356,
+        19.357,
+        19.03,
+        17.294
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        67.121,
-        74.133,
-        64.344,
-        69.483,
-        78.298,
-        78.399,
-        86.975,
-        85.367,
-        83.503,
-        75.377
+        67.217,
+        73.79,
+        65.208,
+        67.531,
+        78.821,
+        78.708,
+        88.592,
+        84.509,
+        84.803,
+        75.821
       ],
       "top1": 1
     }
@@ -225,11 +225,11 @@
   "full": {
     "papers": 301,
     "outputBasis": "measured",
-    "citations": 4938,
-    "top10": 42.6,
-    "top10ShareOfDivision": 0.03905,
+    "citations": 4939,
+    "top10": 42.78,
+    "top10ShareOfDivision": 0.03915,
     "top1": 2,
-    "top1ShareOfDivision": 0.01833,
+    "top1ShareOfDivision": 0.0183,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.411,
@@ -247,7 +247,7 @@
       "citationBuckets": 10
     },
     "spread": {
-      "mean": 16.405,
+      "mean": 16.409,
       "median": 11,
       "uncited": 10,
       "i10": 167,
@@ -257,11 +257,11 @@
   "window": {
     "papers": 140,
     "outputBasis": "measured",
-    "citations": 2759,
+    "citations": 2760,
     "top10": 12.2,
     "top10ShareOfDivision": 0.02527,
     "top1": 1,
-    "top1ShareOfDivision": 0.02071,
+    "top1ShareOfDivision": 0.02072,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.411,
@@ -279,7 +279,7 @@
       "citationBuckets": 7
     },
     "spread": {
-      "mean": 19.707,
+      "mean": 19.714,
       "median": 12,
       "uncited": 5,
       "i10": 81,
@@ -287,11 +287,11 @@
     }
   },
   "lifetime": {
-    "papers": 763,
+    "papers": 765,
     "outputBasis": "measured",
-    "citations": 26614,
-    "top10": 75.025,
-    "top10ShareOfDivision": 0.05504,
+    "citations": 26748,
+    "top10": 75.283,
+    "top10ShareOfDivision": 0.05531,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -302,26 +302,26 @@
       "date": "2008-03-00"
     },
     "spread": {
-      "mean": 34.881,
+      "mean": 34.965,
       "median": 19,
-      "uncited": 54,
-      "i10": 516,
-      "i100": 62
+      "uncited": 56,
+      "i10": 520,
+      "i100": 63
     }
   },
   "query": {
     "arms": "((((=abs:\"Mercury Surface, Space Environment, Geochemistry, and Ranging\" OR (abs:MESSENGER AND (abs:Mercury OR abs:hermean OR abs:mission OR abs:probe OR abs:spacecraft)) OR =abs:\"Mercury Dual Imaging System\" OR =abs:\"MESSENGER X-Ray Spectrometer\" OR =abs:\"MESSENGER Gamma-Ray Spectrometer\" OR =abs:\"MESSENGER Neutron Spectrometer\" OR =abs:\"MESSENGER Magnetometer\" OR =abs:\"Mercury Laser Altimeter\" OR =abs:\"MESSENGER Energetic Particle and Plasma Spectrometer\")) OR =abs:\"Mercury Atmospheric and Surface Composition Spectrometer\" OR ((abs:MASCS OR abs:MDIS OR abs:FIPS OR abs:EPPS OR =abs:\"Fast Imaging Plasma Spectrometer\") AND (abs:Mercury OR abs:hermean OR abs:MESSENGER)) OR facility:MESSENGER))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2011-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Mercury+Surface%2C+Space+Environment%2C+Geochemistry%2C+and+Ranging%22+OR+%28abs%3AMESSENGER+AND+%28abs%3AMercury+OR+abs%3Ahermean+OR+abs%3Amission+OR+abs%3Aprobe+OR+abs%3Aspacecraft%29%29+OR+%3Dabs%3A%22Mercury+Dual+Imaging+System%22+OR+%3Dabs%3A%22MESSENGER+X-Ray+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Gamma-Ray+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Neutron+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Magnetometer%22+OR+%3Dabs%3A%22Mercury+Laser+Altimeter%22+OR+%3Dabs%3A%22MESSENGER+Energetic+Particle+and+Plasma+Spectrometer%22%29%29+OR+%3Dabs%3A%22Mercury+Atmospheric+and+Surface+Composition+Spectrometer%22+OR+%28%28abs%3AMASCS+OR+abs%3AMDIS+OR+abs%3AFIPS+OR+abs%3AEPPS+OR+%3Dabs%3A%22Fast+Imaging+Plasma+Spectrometer%22%29+AND+%28abs%3AMercury+OR+abs%3Ahermean+OR+abs%3AMESSENGER%29%29+OR+facility%3AMESSENGER%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2011-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-04T05:36:04.578208+00:00",
+    "fetchedAt": "2026-10-19T17:06:15.427416+00:00",
     "reconciliation": {
-      "adsReturned": 702,
+      "adsReturned": 704,
       "curatedOut": 8,
       "curatedIn": 69,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 763
+      "final": 765
     }
   },
   "curation": {
@@ -994,7 +994,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 431
+      "citations": 430
     },
     {
       "bibcode": "2011Sci...333.1859A",
@@ -1003,7 +1003,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 281
+      "citations": 282
     },
     {
       "bibcode": "2012Sci...336..214S",
@@ -1012,7 +1012,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 267
+      "citations": 268
     },
     {
       "bibcode": "2011Sci...333.1853H",
@@ -1030,7 +1030,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 240
+      "citations": 244
     },
     {
       "bibcode": "2013JGRE..118.1204H",
@@ -1039,7 +1039,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 240
+      "citations": 241
     },
     {
       "bibcode": "2018CeMDA.130...22A",
@@ -1048,7 +1048,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 234
+      "citations": 235
     },
     {
       "bibcode": "2013JGRE..118..891D",
@@ -1075,7 +1075,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 215
+      "citations": 218
     },
     {
       "bibcode": "2011Sci...333.1850P",
@@ -1084,7 +1084,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 211
+      "citations": 210
     },
     {
       "bibcode": "2014NatGe...7..301B",
@@ -1111,7 +1111,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 180
+      "citations": 181
     },
     {
       "bibcode": "2008Sci...321...66R",
@@ -1129,7 +1129,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 173
+      "citations": 174
     },
     {
       "bibcode": "2013ApJ...767...41L",
@@ -1147,7 +1147,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 173
+      "citations": 172
     },
     {
       "bibcode": "2015E&PSL.416..109W",
@@ -1165,10 +1165,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 165
+      "citations": 166
     }
   ],
   "papersFile": {
-    "rows": 763
+    "rows": 765
   }
 }

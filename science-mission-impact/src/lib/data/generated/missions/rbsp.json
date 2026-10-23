@@ -22,13 +22,13 @@
     "h": 83,
     "m": 5.533,
     "i100": 57,
-    "g": 139,
-    "tori": 62.577,
+    "g": 140,
+    "tori": 62.683,
     "riq": 527
   },
   "facts": {
-    "papers": 1428,
-    "citations": 39013,
+    "papers": 1431,
+    "citations": 39204,
     "publicationYears": [
       2012,
       2026
@@ -67,7 +67,7 @@
       101,
       104,
       111,
-      69
+      72
     ],
     "citations": [
       0,
@@ -83,14 +83,14 @@
       4445,
       4189,
       4750,
-      4589,
-      2559
+      4588,
+      2751
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 39013,
-      "observed": 39013,
+      "expected": 39204,
+      "observed": 39204,
       "missing": 0
     }
   },
@@ -189,51 +189,51 @@
     ],
     "authorCount": 33,
     "year": 2013,
-    "citations": 1104
+    "citations": 1106
   },
   "ranks": {
     "full": {
       "bins": [
-        34.062,
-        57.45,
-        74.953,
-        76.771,
-        88.28,
-        111.226,
-        102.456,
-        97.693,
-        129.779,
-        123.328
+        33.966,
+        57.522,
+        75.644,
+        76.92,
+        88.646,
+        111.399,
+        102.098,
+        97.606,
+        129.553,
+        122.647
       ],
-      "top1": 19.721
+      "top1": 19.646
     },
     "window": {
       "bins": [
-        13.691,
-        31.44,
-        34.628,
-        35.85,
-        50.453,
-        35.71,
-        32.96,
-        51.539,
-        51.479,
-        51.25
+        13.718,
+        31.469,
+        34.589,
+        35.752,
+        50.587,
+        35.59,
+        32.986,
+        51.63,
+        51.468,
+        51.212
       ],
       "top1": 10
     },
     "lifetime": {
       "bins": [
-        165.297,
-        149.762,
-        148.928,
-        167.383,
-        149.55,
-        147.252,
-        142.448,
-        130.213,
-        123.927,
-        103.24
+        163.081,
+        151.566,
+        150.911,
+        165.031,
+        151.167,
+        146.974,
+        144.353,
+        129.602,
+        125.273,
+        103.043
       ],
       "top1": 12
     }
@@ -242,10 +242,10 @@
     "papers": 896,
     "outputBasis": "measured",
     "citations": 13246,
-    "top10": 106.689,
-    "top10ShareOfDivision": 0.0737,
-    "top1": 19.055,
-    "top1ShareOfDivision": 0.13162,
+    "top10": 106.189,
+    "top10ShareOfDivision": 0.07366,
+    "top1": 18.98,
+    "top1ShareOfDivision": 0.13165,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.424,
@@ -275,9 +275,9 @@
     "outputBasis": "measured",
     "citations": 7386,
     "top10": 45.467,
-    "top10ShareOfDivision": 0.10243,
+    "top10ShareOfDivision": 0.10247,
     "top1": 10,
-    "top1ShareOfDivision": 0.22528,
+    "top1ShareOfDivision": 0.22538,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.424,
@@ -303,11 +303,11 @@
     }
   },
   "lifetime": {
-    "papers": 1428,
+    "papers": 1431,
     "outputBasis": "measured",
-    "citations": 39013,
-    "top10": 141.374,
-    "top10ShareOfDivision": 0.08988,
+    "citations": 39204,
+    "top10": 140.936,
+    "top10ShareOfDivision": 0.08994,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -318,10 +318,10 @@
       "date": "2013-04-00"
     },
     "spread": {
-      "mean": 27.32,
+      "mean": 27.396,
       "median": 12,
-      "uncited": 128,
-      "i10": 812,
+      "uncited": 126,
+      "i10": 817,
       "i100": 57
     }
   },
@@ -329,15 +329,15 @@
     "arms": "((=abs:\"Van Allen Probes\" OR =abs:\"Van Allen Probe\" OR =abs:\"Radiation Belt Storm Probes\" OR (abs:RBSP AND abs:(ECT OR EMFISIS OR EFW OR RBSPICE OR MagEIS OR REPT OR magnetic OR plasma OR \"radiation belt\" OR mission))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2012-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Van+Allen+Probes%22+OR+%3Dabs%3A%22Van+Allen+Probe%22+OR+%3Dabs%3A%22Radiation+Belt+Storm+Probes%22+OR+%28abs%3ARBSP+AND+abs%3A%28ECT+OR+EMFISIS+OR+EFW+OR+RBSPICE+OR+MagEIS+OR+REPT+OR+magnetic+OR+plasma+OR+%22radiation+belt%22+OR+mission%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:31:09.017186+00:00",
+    "fetchedAt": "2026-10-19T17:13:52.547002+00:00",
     "reconciliation": {
-      "adsReturned": 1433,
+      "adsReturned": 1436,
       "curatedOut": 8,
       "curatedIn": 5,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 2,
-      "final": 1428
+      "final": 1431
     }
   },
   "curation": {
@@ -522,7 +522,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 1104
+      "citations": 1106
     },
     {
       "bibcode": "2013SSRv..179....3M",
@@ -531,7 +531,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 987
+      "citations": 989
     },
     {
       "bibcode": "2013Natur.504..411T",
@@ -540,7 +540,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 726
+      "citations": 730
     },
     {
       "bibcode": "2013SSRv..179..383B",
@@ -549,7 +549,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 571
+      "citations": 572
     },
     {
       "bibcode": "2013SSRv..179..311S",
@@ -558,7 +558,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 524
+      "citations": 525
     },
     {
       "bibcode": "2013Sci...341..991R",
@@ -567,7 +567,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 517
+      "citations": 519
     },
     {
       "bibcode": "2013SSRv..179..423F",
@@ -576,7 +576,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 487
+      "citations": 488
     },
     {
       "bibcode": "2013SSRv..179..183W",
@@ -585,7 +585,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 475
+      "citations": 476
     },
     {
       "bibcode": "2015JGRA..120..904K",
@@ -594,7 +594,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 474
+      "citations": 476
     },
     {
       "bibcode": "2013SSRv..179..337B",
@@ -603,7 +603,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 389
+      "citations": 390
     },
     {
       "bibcode": "2014GeoRL..41.1375U",
@@ -612,7 +612,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 330
+      "citations": 331
     },
     {
       "bibcode": "2015JGRA..120.7240J",
@@ -621,7 +621,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 275
+      "citations": 276
     },
     {
       "bibcode": "2019JGRA..124.8319L",
@@ -630,7 +630,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 243
+      "citations": 245
     },
     {
       "bibcode": "2015JGRA..120.7477S",
@@ -639,7 +639,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 229
+      "citations": 230
     },
     {
       "bibcode": "2013Sci...340..186B",
@@ -648,7 +648,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 221
+      "citations": 222
+    },
+    {
+      "bibcode": "2013JGRA..118.7740N",
+      "title": "Resonant scattering and resultant pitch angle evolution of relativistic electrons by plasmaspheric hiss",
+      "firstAuthor": "Ni, Binbin",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 215
     },
     {
       "bibcode": "2014JGRA..119.4681L",
@@ -660,22 +669,13 @@
       "citations": 215
     },
     {
-      "bibcode": "2013JGRA..118.7740N",
-      "title": "Resonant scattering and resultant pitch angle evolution of relativistic electrons by plasmaspheric hiss",
-      "firstAuthor": "Ni, Binbin",
-      "authors": null,
-      "authorCount": null,
-      "year": 2013,
-      "citations": 213
-    },
-    {
       "bibcode": "2015JGRA..120.3393L",
       "title": "Statistical properties of plasmaspheric hiss derived from Van Allen Probes data and their effects on radiation belt electron dynamics",
       "firstAuthor": "Li, W.",
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 207
+      "citations": 208
     },
     {
       "bibcode": "2016JGRA..121..397R",
@@ -684,19 +684,19 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 176
+      "citations": 178
     },
     {
-      "bibcode": "2014Natur.515..531B",
-      "title": "An impenetrable barrier to ultrarelativistic electrons in the Van Allen radiation belts",
-      "firstAuthor": "Baker, D. N.",
+      "bibcode": "2013GeoRL..40.4526L",
+      "title": "Constructing the global distribution of chorus wave intensity using measurements of electrons by the POES satellites and waves by the Van Allen Probes",
+      "firstAuthor": "Li, W.",
       "authors": null,
       "authorCount": null,
-      "year": 2014,
+      "year": 2013,
       "citations": 173
     }
   ],
   "papersFile": {
-    "rows": 1428
+    "rows": 1431
   }
 }

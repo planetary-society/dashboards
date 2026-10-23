@@ -19,16 +19,16 @@
     }
   },
   "indices": {
-    "h": 115,
-    "m": 3.194,
+    "h": 116,
+    "m": 3.222,
     "i100": 152,
     "g": 168,
-    "tori": 431.504,
+    "tori": 431.259,
     "riq": 561
   },
   "facts": {
-    "papers": 1579,
-    "citations": 63892,
+    "papers": 1585,
+    "citations": 64155,
     "publicationYears": [
       1991,
       2026
@@ -103,13 +103,13 @@
       28,
       27,
       27,
-      35,
+      36,
       37,
       43,
       33,
       40,
       51,
-      37
+      42
     ],
     "citations": [
       18,
@@ -128,32 +128,32 @@
       1848,
       2047,
       1503,
-      1577,
+      1578,
       1668,
       1557,
       2581,
-      1929,
-      1634,
-      1947,
+      1930,
+      1637,
+      1950,
       1893,
       2131,
       2249,
       2171,
       2186,
       2161,
-      2851,
+      2853,
       2632,
       2970,
-      3181,
-      3742,
-      3792,
-      2704
+      3182,
+      3744,
+      3796,
+      2950
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 63892,
-      "observed": 63892,
+      "expected": 64155,
+      "observed": 64155,
       "missing": 0
     }
   },
@@ -242,46 +242,46 @@
   "ranks": {
     "full": {
       "bins": [
-        137.833,
-        92.664,
-        92.989,
-        95.923,
-        66.063,
-        63.541,
-        65.507,
-        67.756,
-        58.224,
-        56.5
+        137.129,
+        92.579,
+        92.799,
+        95.872,
+        66.295,
+        63.909,
+        65.234,
+        68.01,
+        58.144,
+        57.03
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        70.383,
-        43.008,
-        41.269,
-        34.899,
-        34.595,
-        38.491,
-        40.686,
-        30.513,
-        32.918,
-        24.238
+        70.197,
+        43.005,
+        41.389,
+        34.865,
+        34.583,
+        38.467,
+        40.769,
+        30.402,
+        33.03,
+        24.294
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        136.489,
-        122.429,
-        125.951,
-        145.293,
-        151.312,
-        157.416,
-        168.084,
-        198.146,
-        186.377,
-        187.503
+        138.573,
+        124.438,
+        122.188,
+        147.842,
+        148.595,
+        160.549,
+        165.882,
+        201.403,
+        186.888,
+        188.642
       ],
       "top1": 13
     }
@@ -290,10 +290,10 @@
     "papers": 797,
     "outputBasis": "measured",
     "citations": 8223,
-    "top10": 41.625,
-    "top10ShareOfDivision": 0.03815,
+    "top10": 42.875,
+    "top10ShareOfDivision": 0.03923,
     "top1": 2,
-    "top1ShareOfDivision": 0.01833,
+    "top1ShareOfDivision": 0.0183,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.068,
@@ -323,7 +323,7 @@
     "outputBasis": "measured",
     "citations": 5113,
     "top10": 31,
-    "top10ShareOfDivision": 0.06421,
+    "top10ShareOfDivision": 0.06422,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -351,11 +351,11 @@
     }
   },
   "lifetime": {
-    "papers": 1579,
+    "papers": 1585,
     "outputBasis": "measured",
-    "citations": 63892,
-    "top10": 96.033,
-    "top10ShareOfDivision": 0.07046,
+    "citations": 64155,
+    "top10": 96.601,
+    "top10ShareOfDivision": 0.07098,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -366,9 +366,9 @@
       "date": "1992-09-00"
     },
     "spread": {
-      "mean": 40.464,
+      "mean": 40.476,
       "median": 22,
-      "uncited": 105,
+      "uncited": 109,
       "i10": 1115,
       "i100": 152
     }
@@ -377,15 +377,15 @@
     "arms": "(((=abs:Galileo AND abs:(Jupiter OR Jovian OR Io OR Europa OR Ganymede OR Callisto OR Amalthea OR Thebe OR Gaspra OR Dactyl OR \"Shoemaker-Levy\" OR =abs:(\"Galilean satellites\" OR \"Galilean satellite\" OR \"Galilean moons\" OR \"Galilean moon\")) NOT =abs:(\"Telescopio Nazionale Galileo\" OR \"Telescopio Nazinale Galileo\")) OR (=abs:Galileo AND collection:astronomy AND (abs:(spacecraft OR flyby OR asteroid OR magnetometer) OR =abs:(\"entry probe\" OR orbiter)) NOT (=abs:(\"navigation satellite\" OR \"satellite navigation\" OR \"positioning system\" OR \"Galileo Project\" OR \"Galileo FOC\" OR \"Galileo IOV\" OR \"Galileo constellation\" OR \"Galileo for Science\" OR \"Telescopio Nazionale Galileo\" OR \"Telescopio Nazinale Galileo\") OR abs:(GLONASS OR BeiDou))) OR =abs:\"Galileo probe\" OR (collection:astronomy AND (=abs:(\"Near-Infrared Mapping Spectrometer\" OR \"Near Infrared Mapping Spectrometer\" OR \"Photopolarimeter-Radiometer\" OR \"Solid State Imaging\" OR \"Energetic Particles Detector\" OR \"Heavy Ion Counter\" OR \"Dust Detector System\" OR \"Probe Mass Spectrometer\" OR \"Net Flux Radiometer\") OR abs:(NIMS OR SSI OR PPR OR EPD)) AND abs:(Jupiter OR Jovian OR Io OR Europa OR Ganymede OR Callisto OR Amalthea OR Gaspra OR Ida OR Dactyl))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1996-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3AGalileo+AND+abs%3A%28Jupiter+OR+Jovian+OR+Io+OR+Europa+OR+Ganymede+OR+Callisto+OR+Amalthea+OR+Thebe+OR+Gaspra+OR+Dactyl+OR+%22Shoemaker-Levy%22+OR+%3Dabs%3A%28%22Galilean+satellites%22+OR+%22Galilean+satellite%22+OR+%22Galilean+moons%22+OR+%22Galilean+moon%22%29%29+NOT+%3Dabs%3A%28%22Telescopio+Nazionale+Galileo%22+OR+%22Telescopio+Nazinale+Galileo%22%29%29+OR+%28%3Dabs%3AGalileo+AND+collection%3Aastronomy+AND+%28abs%3A%28spacecraft+OR+flyby+OR+asteroid+OR+magnetometer%29+OR+%3Dabs%3A%28%22entry+probe%22+OR+orbiter%29%29+NOT+%28%3Dabs%3A%28%22navigation+satellite%22+OR+%22satellite+navigation%22+OR+%22positioning+system%22+OR+%22Galileo+Project%22+OR+%22Galileo+FOC%22+OR+%22Galileo+IOV%22+OR+%22Galileo+constellation%22+OR+%22Galileo+for+Science%22+OR+%22Telescopio+Nazionale+Galileo%22+OR+%22Telescopio+Nazinale+Galileo%22%29+OR+abs%3A%28GLONASS+OR+BeiDou%29%29%29+OR+%3Dabs%3A%22Galileo+probe%22+OR+%28collection%3Aastronomy+AND+%28%3Dabs%3A%28%22Near-Infrared+Mapping+Spectrometer%22+OR+%22Near+Infrared+Mapping+Spectrometer%22+OR+%22Photopolarimeter-Radiometer%22+OR+%22Solid+State+Imaging%22+OR+%22Energetic+Particles+Detector%22+OR+%22Heavy+Ion+Counter%22+OR+%22Dust+Detector+System%22+OR+%22Probe+Mass+Spectrometer%22+OR+%22Net+Flux+Radiometer%22%29+OR+abs%3A%28NIMS+OR+SSI+OR+PPR+OR+EPD%29%29+AND+abs%3A%28Jupiter+OR+Jovian+OR+Io+OR+Europa+OR+Ganymede+OR+Callisto+OR+Amalthea+OR+Gaspra+OR+Ida+OR+Dactyl%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-04T05:34:14.414557+00:00",
+    "fetchedAt": "2026-10-19T17:04:55.914040+00:00",
     "reconciliation": {
-      "adsReturned": 1523,
+      "adsReturned": 1529,
       "curatedOut": 23,
       "curatedIn": 84,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 5,
-      "final": 1579
+      "final": 1585
     }
   },
   "curation": {
@@ -1283,7 +1283,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 513
+      "citations": 515
     },
     {
       "bibcode": "1998PhRvL..81.2858A",
@@ -1301,7 +1301,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 463
+      "citations": 464
     },
     {
       "bibcode": "2001Icar..149..133C",
@@ -1310,16 +1310,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 365
-    },
-    {
-      "bibcode": "1998Sci...281.2019A",
-      "title": "Europa's Differentiated Internal Structure: Inferences from Four Galileo Encounters",
-      "firstAuthor": "Anderson, J. D.",
-      "authors": null,
-      "authorCount": null,
-      "year": 1998,
-      "citations": 363
+      "citations": 366
     },
     {
       "bibcode": "2002Icar..157..507K",
@@ -1328,7 +1319,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 363
+      "citations": 366
+    },
+    {
+      "bibcode": "1998Sci...281.2019A",
+      "title": "Europa's Differentiated Internal Structure: Inferences from Four Galileo Encounters",
+      "firstAuthor": "Anderson, J. D.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1998,
+      "citations": 364
     },
     {
       "bibcode": "1999JGR...10424015P",
@@ -1337,7 +1337,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 360
+      "citations": 361
     },
     {
       "bibcode": "2000Icar..148..226K",
@@ -1346,7 +1346,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 356
+      "citations": 357
     },
     {
       "bibcode": "1998Natur.391..365P",
@@ -1355,7 +1355,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 348
+      "citations": 350
     },
     {
       "bibcode": "1998Sci...280.1242M",
@@ -1364,7 +1364,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 347
+      "citations": 350
     },
     {
       "bibcode": "1996Natur.384..537K",
@@ -1373,7 +1373,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 341
+      "citations": 343
     },
     {
       "bibcode": "2000Icar..147..329Z",
@@ -1382,7 +1382,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 334
+      "citations": 335
     },
     {
       "bibcode": "1993Natur.365..715S",
@@ -1418,7 +1418,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 297
+      "citations": 298
     },
     {
       "bibcode": "1999JGR...10411827M",
@@ -1427,7 +1427,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 290
+      "citations": 291
     },
     {
       "bibcode": "2004Icar..171..153W",
@@ -1436,7 +1436,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 288
+      "citations": 291
     },
     {
       "bibcode": "1998JGR...10322831N",
@@ -1445,10 +1445,10 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 283
+      "citations": 284
     }
   ],
   "papersFile": {
-    "rows": 1579
+    "rows": 1585
   }
 }

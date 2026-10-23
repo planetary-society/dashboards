@@ -54,8 +54,12 @@ export function curveChart(facts, width, { padTop, plotH, mark, gap, gutter, rig
 	const [x0, x1] = x.range();
 	const y = scaleLinear()
 		.domain([0, facts.total || 1])
-		.nice(3) // asking for three lands on four or five ticks across the packaged totals
+		.nice(3)
 		.range([padTop + plotH, padTop]);
+	// Three ticks are only zero, half and the top (a total just under 1,000 rounds up to it):
+	// quarters then, which d3's 1-2-5 steps never offer.
+	const halves = y.ticks(3);
+	const counts = halves.length === 3 ? [0, 1, 2, 3, 4].map((i) => (halves[2] * i) / 4) : halves;
 
 	const { levels, depth } = stackLevels(facts.points, (p) => x(p.cost) - mark / 2, mark, gap);
 	const rugTop = padTop + plotH + axisH;
@@ -78,7 +82,7 @@ export function curveChart(facts, width, { padTop, plotH, mark, gap, gutter, rig
 		axisY: padTop + plotH + axisH - 6,
 		ticks: costTicks(x),
 		// a fractional tick would print as a repeated whole number
-		yTicks: y.ticks(3).filter(Number.isInteger),
+		yTicks: counts.filter(Number.isInteger),
 		// rounded to a tenth of a pixel: a path string that does not change between renders is
 		// one the browser does not have to re-rasterise
 		path: facts.hasTop ? stepAfterPath(facts.points, { x, y, x0, x1, value: (p) => p.total, round: fix }) : null,

@@ -22,13 +22,13 @@
     "h": 79,
     "m": 2.926,
     "i100": 44,
-    "g": 117,
-    "tori": 243.948,
-    "riq": 578
+    "g": 118,
+    "tori": 245.172,
+    "riq": 579
   },
   "facts": {
     "papers": 827,
-    "citations": 26695,
+    "citations": 26765,
     "publicationYears": [
       2000,
       2026
@@ -96,7 +96,7 @@
     "citations": [
       1,
       10,
-      41,
+      40,
       86,
       156,
       231,
@@ -105,28 +105,28 @@
       710,
       725,
       833,
-      946,
-      1194,
-      1210,
-      1445,
-      1283,
-      1447,
-      1608,
-      1427,
-      1859,
-      1641,
+      951,
+      1200,
+      1217,
+      1449,
+      1286,
+      1454,
+      1612,
+      1431,
       1861,
-      1943,
-      1655,
-      1410,
+      1653,
+      1865,
+      1945,
+      1657,
+      1408,
       1394,
-      751
+      762
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 26695,
-      "observed": 26695,
+      "expected": 26765,
+      "observed": 26765,
       "missing": 0
     }
   },
@@ -203,7 +203,7 @@
       0,
       1,
       10,
-      41,
+      40,
       86,
       144,
       161,
@@ -228,58 +228,58 @@
   "ranks": {
     "full": {
       "bins": [
-        110.562,
-        122.129,
-        116.203,
-        93.533,
-        80.026,
-        80.669,
-        66.863,
-        49.908,
-        46.418,
-        20.69
+        114.021,
+        122.063,
+        116.231,
+        91.726,
+        80.408,
+        79.255,
+        66.554,
+        49.497,
+        46.426,
+        20.819
       ],
       "top1": 1
     },
     "window": {
       "bins": [
-        9.519,
-        18.459,
-        16.563,
-        10.256,
-        14.001,
-        8.037,
-        4.165,
-        5.614,
-        4.386,
+        10.266,
+        20.44,
+        14.988,
+        9.599,
+        14.143,
+        7.512,
+        4.053,
+        5.778,
+        4.222,
         3
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        26.153,
-        68.938,
-        70.616,
-        86.155,
-        85.113,
-        79.048,
-        104.141,
-        114.837,
-        102.049,
-        89.951
+        29.634,
+        72.426,
+        74.674,
+        86.444,
+        83.151,
+        79.726,
+        103.04,
+        114.292,
+        94.846,
+        88.767
       ],
-      "top1": 6
+      "top1": 5
     }
   },
   "full": {
     "papers": 787,
     "outputBasis": "measured",
-    "citations": 5122,
-    "top10": 35.907,
-    "top10ShareOfDivision": 0.00933,
+    "citations": 5123,
+    "top10": 35.206,
+    "top10ShareOfDivision": 0.00978,
     "top1": 1,
-    "top1ShareOfDivision": 0.0026,
+    "top1ShareOfDivision": 0.00278,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.038,
@@ -297,7 +297,7 @@
       "citationBuckets": 25
     },
     "spread": {
-      "mean": 6.508,
+      "mean": 6.51,
       "median": 4,
       "uncited": 91,
       "i10": 171,
@@ -307,9 +307,9 @@
   "window": {
     "papers": 94,
     "outputBasis": "measured",
-    "citations": 701,
-    "top10": 3.6,
-    "top10ShareOfDivision": 0.00347,
+    "citations": 700,
+    "top10": 3.5,
+    "top10ShareOfDivision": 0.00372,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -329,7 +329,7 @@
       "citationBuckets": 9
     },
     "spread": {
-      "mean": 7.457,
+      "mean": 7.447,
       "median": 4,
       "uncited": 7,
       "i10": 18,
@@ -339,9 +339,9 @@
   "lifetime": {
     "papers": 827,
     "outputBasis": "measured",
-    "citations": 26695,
+    "citations": 26765,
     "top10": 27.833,
-    "top10ShareOfDivision": 0.00673,
+    "top10ShareOfDivision": 0.00723,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -352,10 +352,10 @@
       "date": "2000-08-00"
     },
     "spread": {
-      "mean": 32.279,
-      "median": 18,
+      "mean": 32.364,
+      "median": 19,
       "uncited": 24,
-      "i10": 555,
+      "i10": 556,
       "i100": 44
     }
   },
@@ -363,7 +363,7 @@
     "arms": "((abs:\"QuikSCAT\" OR abs:QSCAT OR (=abs:\"SeaWinds\" AND NOT abs:(\"ADEOS\" OR \"Midori\" OR \"Advanced Earth Observing Satellite\" OR \"Blended SeaWinds\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1999-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22QuikSCAT%22+OR+abs%3AQSCAT+OR+%28%3Dabs%3A%22SeaWinds%22+AND+NOT+abs%3A%28%22ADEOS%22+OR+%22Midori%22+OR+%22Advanced+Earth+Observing+Satellite%22+OR+%22Blended+SeaWinds%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-02T04:18:52.895019+00:00",
+    "fetchedAt": "2026-10-19T17:09:03.572304+00:00",
     "reconciliation": {
       "adsReturned": 836,
       "curatedOut": 10,
@@ -485,7 +485,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 426
+      "citations": 427
     },
     {
       "bibcode": "2008JPO....38.2379R",
@@ -521,7 +521,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 288
+      "citations": 290
     },
     {
       "bibcode": "2005ITGRS..43.1229G",
@@ -530,7 +530,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 251
+      "citations": 253
+    },
+    {
+      "bibcode": "2002JAtOT..19.2049E",
+      "title": "Evaluation of Wind Vectors Observed by QuikSCAT/SeaWinds Using Ocean Buoy Data",
+      "firstAuthor": "Ebuchi, Naoto",
+      "authors": null,
+      "authorCount": null,
+      "year": 2002,
+      "citations": 247
     },
     {
       "bibcode": "2013RSPSB.28030171L",
@@ -542,22 +551,22 @@
       "citations": 246
     },
     {
-      "bibcode": "2002JAtOT..19.2049E",
-      "title": "Evaluation of Wind Vectors Observed by QuikSCAT/SeaWinds Using Ocean Buoy Data",
-      "firstAuthor": "Ebuchi, Naoto",
-      "authors": null,
-      "authorCount": null,
-      "year": 2002,
-      "citations": 244
-    },
-    {
       "bibcode": "2001ITGRS..39..291E",
       "title": "Image Reconstruction and Enhanced Resolution Imaging from Irregular Samples",
       "firstAuthor": "Early",
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 206
+      "citations": 207
+    },
+    {
+      "bibcode": "2009CSR....29..467J",
+      "title": "Numerical study on the summer upwelling system in the northern continental shelf of the South China Sea",
+      "firstAuthor": "Jing, Zhi-you",
+      "authors": null,
+      "authorCount": null,
+      "year": 2009,
+      "citations": 198
     },
     {
       "bibcode": "2003JCli...16.2340O",
@@ -567,15 +576,6 @@
       "authorCount": null,
       "year": 2003,
       "citations": 196
-    },
-    {
-      "bibcode": "2009CSR....29..467J",
-      "title": "Numerical study on the summer upwelling system in the northern continental shelf of the South China Sea",
-      "firstAuthor": "Jing, Zhi-you",
-      "authors": null,
-      "authorCount": null,
-      "year": 2009,
-      "citations": 195
     },
     {
       "bibcode": "2005JCli...18.2706O",
@@ -641,13 +641,13 @@
       "citations": 152
     },
     {
-      "bibcode": "2008JGRC..113.4035H",
-      "title": "Annual cycle of the South Indian Ocean (Seychelles-Chagos) thermocline ridge in a regional ocean model",
-      "firstAuthor": "Hermes, J. C.",
+      "bibcode": "2006JOce...62..559C",
+      "title": "Interannual variability of the Kuroshio intrusion in the South China Sea",
+      "firstAuthor": "Caruso, Michael J.",
       "authors": null,
       "authorCount": null,
-      "year": 2008,
-      "citations": 150
+      "year": 2006,
+      "citations": 151
     }
   ],
   "papersFile": {

@@ -22,13 +22,13 @@
     "h": 62,
     "m": 5.636,
     "i100": 27,
-    "g": 99,
-    "tori": 37.81,
-    "riq": 512
+    "g": 100,
+    "tori": 37.167,
+    "riq": 508
   },
   "facts": {
-    "papers": 824,
-    "citations": 18294,
+    "papers": 830,
+    "citations": 18582,
     "publicationYears": [
       2016,
       2026
@@ -58,8 +58,8 @@
       77,
       75,
       106,
-      112,
-      75
+      113,
+      80
     ],
     "citations": [
       4,
@@ -68,17 +68,17 @@
       778,
       1650,
       1647,
-      1966,
-      2308,
-      2818,
-      3383,
-      2593
+      1967,
+      2309,
+      2819,
+      3402,
+      2859
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 18294,
-      "observed": 18294,
+      "expected": 18582,
+      "observed": 18582,
       "missing": 0
     }
   },
@@ -182,11 +182,11 @@
       767,
       1616,
       1066,
-      1110,
+      1111,
       1169,
       1083,
       615,
-      148
+      160
     ]
   },
   "mostCited": {
@@ -201,63 +201,63 @@
     ],
     "authorCount": 4,
     "year": 2021,
-    "citations": 482
+    "citations": 491
   },
   "ranks": {
     "full": {
       "bins": [
-        17.5,
-        38.289,
-        34.692,
-        38.813,
-        60.716,
-        67.957,
-        74.831,
-        69.27,
-        65.351,
-        61.583
+        17.308,
+        38.231,
+        33.566,
+        38.729,
+        61.525,
+        66.368,
+        75.089,
+        68.599,
+        67.343,
+        62.241
       ],
       "top1": 6
     },
     "window": {
       "bins": [
-        17.363,
-        41.419,
-        48.273,
-        54.876,
-        65.088,
-        71.281,
-        58.024,
-        60.416,
-        41.785,
-        38.475
+        17.25,
+        41.371,
+        47.323,
+        55.815,
+        64.058,
+        71.267,
+        58.738,
+        60.529,
+        42.06,
+        38.588
       ],
       "top1": 3
     },
     "lifetime": {
       "bins": [
-        109.716,
-        117.017,
-        112.164,
-        87.005,
-        101.192,
-        90.406,
-        77.876,
-        56.623,
+        107.454,
+        113.467,
+        115.524,
+        92.85,
+        97.345,
+        94.635,
+        78.125,
+        58.6,
         36,
         36
       ],
-      "top1": 3
+      "top1": 4
     }
   },
   "full": {
     "papers": 529,
     "outputBasis": "measured",
-    "citations": 9064,
-    "top10": 73.058,
-    "top10ShareOfDivision": 0.06696,
+    "citations": 9089,
+    "top10": 73.425,
+    "top10ShareOfDivision": 0.06719,
     "top1": 6,
-    "top1ShareOfDivision": 0.055,
+    "top1ShareOfDivision": 0.0549,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.676,
@@ -275,7 +275,7 @@
       "citationBuckets": 11
     },
     "spread": {
-      "mean": 17.134,
+      "mean": 17.181,
       "median": 11,
       "uncited": 8,
       "i10": 315,
@@ -285,11 +285,11 @@
   "window": {
     "papers": 497,
     "outputBasis": "measured",
-    "citations": 8667,
+    "citations": 8680,
     "top10": 47.95,
-    "top10ShareOfDivision": 0.09932,
+    "top10ShareOfDivision": 0.09934,
     "top1": 3,
-    "top1ShareOfDivision": 0.06214,
+    "top1ShareOfDivision": 0.06215,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.676,
@@ -307,7 +307,7 @@
       "citationBuckets": 11
     },
     "spread": {
-      "mean": 17.439,
+      "mean": 17.465,
       "median": 12,
       "uncited": 8,
       "i10": 297,
@@ -315,11 +315,11 @@
     }
   },
   "lifetime": {
-    "papers": 824,
+    "papers": 830,
     "outputBasis": "measured",
-    "citations": 18294,
-    "top10": 77.608,
-    "top10ShareOfDivision": 0.05694,
+    "citations": 18582,
+    "top10": 78.106,
+    "top10ShareOfDivision": 0.05739,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -330,10 +330,10 @@
       "date": "2016-03-00"
     },
     "spread": {
-      "mean": 22.201,
+      "mean": 22.388,
       "median": 11,
       "uncited": 84,
-      "i10": 442,
+      "i10": 444,
       "i100": 27
     }
   },
@@ -341,15 +341,15 @@
     "arms": "((=abs:\"Juno mission\" OR =abs:\"Juno spacecraft\" OR =abs:\"Jupiter Near-polar Orbiter\" OR ((=abs:Juno OR abs:JIRAM OR =abs:JunoCam) AND (abs:Jupiter OR abs:Jovian OR abs:Io OR abs:Europa OR abs:Ganymede OR abs:Callisto OR abs:Thebe OR abs:Amalthea OR abs:Adrastea OR abs:Metis))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2016-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Juno+mission%22+OR+%3Dabs%3A%22Juno+spacecraft%22+OR+%3Dabs%3A%22Jupiter+Near-polar+Orbiter%22+OR+%28%28%3Dabs%3AJuno+OR+abs%3AJIRAM+OR+%3Dabs%3AJunoCam%29+AND+%28abs%3AJupiter+OR+abs%3AJovian+OR+abs%3AIo+OR+abs%3AEuropa+OR+abs%3AGanymede+OR+abs%3ACallisto+OR+abs%3AThebe+OR+abs%3AAmalthea+OR+abs%3AAdrastea+OR+abs%3AMetis%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2016-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-04T05:37:16.775444+00:00",
+    "fetchedAt": "2026-10-19T17:07:05.552142+00:00",
     "reconciliation": {
-      "adsReturned": 841,
+      "adsReturned": 847,
       "curatedOut": 19,
       "curatedIn": 3,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 1,
-      "final": 824
+      "final": 830
     }
   },
   "curation": {
@@ -582,7 +582,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 482
+      "citations": 491
     },
     {
       "bibcode": "2017SSRv..213....5B",
@@ -591,7 +591,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 339
+      "citations": 343
     },
     {
       "bibcode": "2017GeoRL..44.4649W",
@@ -600,7 +600,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 334
+      "citations": 338
     },
     {
       "bibcode": "2017SSRv..213...39C",
@@ -609,7 +609,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 323
+      "citations": 328
     },
     {
       "bibcode": "2018GeoRL..45.2590C",
@@ -618,7 +618,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 305
+      "citations": 307
     },
     {
       "bibcode": "2017Sci...356..821B",
@@ -627,7 +627,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 275
+      "citations": 276
     },
     {
       "bibcode": "2017SSRv..213..547M",
@@ -636,7 +636,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 269
+      "citations": 273
     },
     {
       "bibcode": "2017MNRAS.469.3994B",
@@ -645,7 +645,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 233
+      "citations": 234
     },
     {
       "bibcode": "2018Natur.555..223K",
@@ -654,7 +654,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 223
+      "citations": 226
     },
     {
       "bibcode": "2017SSRv..213..289M",
@@ -663,7 +663,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 200
+      "citations": 204
+    },
+    {
+      "bibcode": "2017SSRv..213..347K",
+      "title": "The Juno Waves Investigation",
+      "firstAuthor": "Kurth, W. S.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2017,
+      "citations": 186
     },
     {
       "bibcode": "2017SSRv..213..219B",
@@ -675,13 +684,13 @@
       "citations": 184
     },
     {
-      "bibcode": "2017SSRv..213..347K",
-      "title": "The Juno Waves Investigation",
-      "firstAuthor": "Kurth, W. S.",
+      "bibcode": "2019ApJ...872..100D",
+      "title": "New Models of Jupiter in the Context of Juno and Galileo",
+      "firstAuthor": "Debras, Florian",
       "authors": null,
       "authorCount": null,
-      "year": 2017,
-      "citations": 183
+      "year": 2019,
+      "citations": 184
     },
     {
       "bibcode": "2018Natur.555..220I",
@@ -693,22 +702,13 @@
       "citations": 183
     },
     {
-      "bibcode": "2019ApJ...872..100D",
-      "title": "New Models of Jupiter in the Context of Juno and Galileo",
-      "firstAuthor": "Debras, Florian",
-      "authors": null,
-      "authorCount": null,
-      "year": 2019,
-      "citations": 182
-    },
-    {
       "bibcode": "2022JGRE..12707055C",
       "title": "A New Model of Jupiter's Magnetic Field at the Completion of Juno's Prime Mission",
       "firstAuthor": "Connerney, J. E. P.",
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 178
+      "citations": 183
     },
     {
       "bibcode": "2018Natur.555..227G",
@@ -726,7 +726,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 149
+      "citations": 154
     },
     {
       "bibcode": "2017SSRv..213..393A",
@@ -735,7 +735,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 142
+      "citations": 144
     },
     {
       "bibcode": "2020NatAs...4..609L",
@@ -744,7 +744,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 140
+      "citations": 141
     },
     {
       "bibcode": "2017GeoRL..44.5317L",
@@ -753,10 +753,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 134
+      "citations": 137
     }
   ],
   "papersFile": {
-    "rows": 824
+    "rows": 830
   }
 }

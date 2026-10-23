@@ -23,12 +23,12 @@
     "m": 3.067,
     "i100": 21,
     "g": 83,
-    "tori": 25.799,
+    "tori": 25.723,
     "riq": 338
   },
   "facts": {
     "papers": 192,
-    "citations": 7532,
+    "citations": 7547,
     "publicationYears": [
       2012,
       2026
@@ -81,16 +81,16 @@
       510,
       549,
       640,
-      895,
+      896,
       898,
       818,
-      766
+      780
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 7532,
-      "observed": 7532,
+      "expected": 7547,
+      "observed": 7547,
       "missing": 0
     }
   },
@@ -159,29 +159,29 @@
   "ranks": {
     "full": {
       "bins": [
-        2.633,
-        3.367,
-        1.286,
-        2.714,
-        2.155,
-        2.845,
+        2.621,
+        3.379,
+        1.243,
+        2.757,
+        2.105,
+        2.895,
         4,
         3,
-        5,
-        10
+        4.97,
+        10.03
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        2.669,
-        2.331,
+        2.661,
+        2.339,
         4,
         2,
         2,
-        3.665,
-        1.668,
-        2.667,
+        3.654,
+        1.664,
+        2.681,
         3,
         9
       ],
@@ -189,14 +189,14 @@
     },
     "lifetime": {
       "bins": [
-        25.723,
-        26.866,
-        26.065,
-        14.373,
-        12.973,
-        15.834,
-        15.699,
-        13.468,
+        25.589,
+        26.143,
+        26.853,
+        14.331,
+        13.085,
+        15.455,
+        15.745,
+        13.8,
         16,
         25
       ],
@@ -207,10 +207,10 @@
     "papers": 37,
     "outputBasis": "measured",
     "citations": 1100,
-    "top10": 10.183,
-    "top10ShareOfDivision": 0.00933,
+    "top10": 10.233,
+    "top10ShareOfDivision": 0.00936,
     "top1": 2,
-    "top1ShareOfDivision": 0.01833,
+    "top1ShareOfDivision": 0.0183,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.906,
@@ -270,9 +270,9 @@
   "lifetime": {
     "papers": 192,
     "outputBasis": "measured",
-    "citations": 7532,
-    "top10": 21.667,
-    "top10ShareOfDivision": 0.0159,
+    "citations": 7547,
+    "top10": 22,
+    "top10ShareOfDivision": 0.01616,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -283,7 +283,7 @@
       "date": "2012-11-00"
     },
     "spread": {
-      "mean": 39.229,
+      "mean": 39.307,
       "median": 12,
       "uncited": 21,
       "i10": 106,
@@ -294,7 +294,7 @@
     "arms": "((=abs:\"Gravity Recovery and Interior Laboratory\" OR (abs:GRAIL AND (abs:Moon OR abs:lunar OR abs:gravity)) ))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2012-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Gravity+Recovery+and+Interior+Laboratory%22+OR+%28abs%3AGRAIL+AND+%28abs%3AMoon+OR+abs%3Alunar+OR+abs%3Agravity%29%29+%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-04T05:37:20.426023+00:00",
+    "fetchedAt": "2026-10-19T17:07:07.205218+00:00",
     "reconciliation": {
       "adsReturned": 192,
       "curatedOut": 0,
@@ -374,21 +374,21 @@
       "citations": 174
     },
     {
-      "bibcode": "2014GeoRL..41.3382L",
-      "title": "GRGM900C: A degree 900 lunar gravity model from GRAIL primary and extended mission data",
-      "firstAuthor": "Lemoine, Frank G.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2014,
-      "citations": 172
-    },
-    {
       "bibcode": "2017Icar..283..146W",
       "title": "Generation, ascent and eruption of magma on the Moon: New insights into source depths, magma supply, intrusions and effusive/explosive eruptions (Part 1: Theory)",
       "firstAuthor": "Wilson, Lionel",
       "authors": null,
       "authorCount": null,
       "year": 2017,
+      "citations": 173
+    },
+    {
+      "bibcode": "2014GeoRL..41.3382L",
+      "title": "GRGM900C: A degree 900 lunar gravity model from GRAIL primary and extended mission data",
+      "firstAuthor": "Lemoine, Frank G.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2014,
       "citations": 172
     },
     {
@@ -407,7 +407,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 155
+      "citations": 156
     },
     {
       "bibcode": "2015JGRE..120..869L",
@@ -434,7 +434,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 126
+      "citations": 127
     },
     {
       "bibcode": "2013Sci...342..724M",
@@ -443,7 +443,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 124
+      "citations": 125
     },
     {
       "bibcode": "2014GeoRL..41.1452K",
@@ -479,7 +479,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 117
+      "citations": 118
     },
     {
       "bibcode": "2014Natur.514...68A",

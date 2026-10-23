@@ -23,12 +23,12 @@
     "m": 3.688,
     "i100": 27,
     "g": 93,
-    "tori": 36.368,
-    "riq": 354
+    "tori": 35.95,
+    "riq": 352
   },
   "facts": {
-    "papers": 425,
-    "citations": 13482,
+    "papers": 426,
+    "citations": 13492,
     "publicationYears": [
       2011,
       2026
@@ -69,7 +69,7 @@
       10,
       13,
       16,
-      8
+      9
     ],
     "citations": [
       31,
@@ -83,17 +83,17 @@
       1607,
       1102,
       1152,
-      1237,
+      1236,
       853,
-      818,
-      908,
-      623
+      819,
+      906,
+      635
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 13482,
-      "observed": 13482,
+      "expected": 13492,
+      "observed": 13492,
       "missing": 0
     }
   },
@@ -216,50 +216,50 @@
     ],
     "authorCount": 28,
     "year": 2012,
-    "citations": 455
+    "citations": 456
   },
   "ranks": {
     "full": {
       "bins": [
-        16.7,
-        25.597,
-        31.038,
-        24.134,
-        26.534,
-        33.756,
-        35.414,
-        42.708,
-        47.368,
-        53.75
+        16.585,
+        25.408,
+        31.141,
+        23.992,
+        26.554,
+        33.757,
+        35.502,
+        42.593,
+        47.318,
+        54.151
       ],
-      "top1": 6.029
+      "top1": 6.093
     },
     "window": {
       "bins": [
-        10.006,
-        24.645,
-        20.612,
-        17.546,
-        22.863,
-        20.647,
-        25.009,
-        24.515,
-        28.919,
-        33.238
+        9.982,
+        24.499,
+        20.755,
+        17.498,
+        22.871,
+        20.628,
+        24.996,
+        24.446,
+        29.03,
+        33.294
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        30.922,
-        39.743,
-        40.616,
-        48.006,
-        50.761,
-        49.62,
-        50.177,
-        47.064,
-        35.091,
+        31.158,
+        40.481,
+        40.345,
+        47.945,
+        50.998,
+        49.438,
+        50.368,
+        46.548,
+        35.718,
         33
       ],
       "top1": 1
@@ -269,10 +269,10 @@
     "papers": 337,
     "outputBasis": "measured",
     "citations": 6462,
-    "top10": 60.892,
-    "top10ShareOfDivision": 0.05581,
-    "top1": 6.029,
-    "top1ShareOfDivision": 0.05526,
+    "top10": 61.158,
+    "top10ShareOfDivision": 0.05596,
+    "top1": 6.093,
+    "top1ShareOfDivision": 0.05576,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.378,
@@ -302,7 +302,7 @@
     "outputBasis": "measured",
     "citations": 5083,
     "top10": 28.6,
-    "top10ShareOfDivision": 0.05924,
+    "top10ShareOfDivision": 0.05925,
     "top1": 2,
     "top1ShareOfDivision": 0.04143,
     "first": {
@@ -330,11 +330,11 @@
     }
   },
   "lifetime": {
-    "papers": 425,
+    "papers": 426,
     "outputBasis": "measured",
-    "citations": 13482,
-    "top10": 40.15,
-    "top10ShareOfDivision": 0.02946,
+    "citations": 13492,
+    "top10": 40.083,
+    "top10ShareOfDivision": 0.02945,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -345,10 +345,10 @@
       "date": "2011-12-00"
     },
     "spread": {
-      "mean": 31.722,
+      "mean": 31.671,
       "median": 18,
-      "uncited": 22,
-      "i10": 283,
+      "uncited": 23,
+      "i10": 284,
       "i100": 27
     }
   },
@@ -356,15 +356,15 @@
     "arms": "((=abs:\"Dawn mission\" OR =abs:\"Dawn spacecraft\" OR ((=abs:Dawn OR abs:VIR) AND (abs:Vesta OR abs:Ceres))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2011-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Dawn+mission%22+OR+%3Dabs%3A%22Dawn+spacecraft%22+OR+%28%28%3Dabs%3ADawn+OR+abs%3AVIR%29+AND+%28abs%3AVesta+OR+abs%3ACeres%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2011-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-04T05:36:59.101126+00:00",
+    "fetchedAt": "2026-10-19T17:06:48.467707+00:00",
     "reconciliation": {
-      "adsReturned": 431,
+      "adsReturned": 432,
       "curatedOut": 6,
       "curatedIn": 2,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 2,
-      "final": 425
+      "final": 426
     }
   },
   "curation": {
@@ -453,7 +453,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 455
+      "citations": 456
     },
     {
       "bibcode": "2011SSRv..163..263S",
@@ -462,7 +462,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 280
+      "citations": 279
     },
     {
       "bibcode": "2012Sci...336..697D",
@@ -588,7 +588,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 152
+      "citations": 153
     },
     {
       "bibcode": "2016Sci...353.4279A",
@@ -615,7 +615,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 136
+      "citations": 137
     },
     {
       "bibcode": "2016Sci...353.4759H",
@@ -628,6 +628,6 @@
     }
   ],
   "papersFile": {
-    "rows": 425
+    "rows": 426
   }
 }

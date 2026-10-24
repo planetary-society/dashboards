@@ -1,5 +1,5 @@
 /**
- * Pure helpers behind PaperBrowser.
+ * Pure helpers behind PaperBrowser, plus the CSV of a division's mission table.
  *
  * The papers file is columnar and can hold ~19k rows, so nothing here ever
  * materialises an array of row objects: filtering and sorting work on an index
@@ -43,7 +43,7 @@ export function buildSearchIndex(columns) {
 }
 
 /**
- * Column keys per scope: citations counted in the scope, era-adjusted top-10% weight, pooled
+ * Column keys per scope: citations counted in the scope, top-10% weight, pooled
  * top-1% weight. Lifetime has no top 1%; the view never pairs them, and if asked it reads
  * the full-mission window.
  */
@@ -56,7 +56,7 @@ const keysFor = (scope) => SCOPE_COLUMNS[scope] ?? SCOPE_COLUMNS.full;
 
 /**
  * The tie-weight column that decides "is this paper a top paper" for a given
- * view: top 1% exists in the two windowed scopes only, top 10% is era-adjusted per scope.
+ * view: top 1% exists in the two windowed scopes only; top 10% exists in every scope.
  *
  * @param {import('../data/types.d.ts').PapersFile['columns']} columns
  * @param {import('../data/types.d.ts').Scope} scope
@@ -241,6 +241,34 @@ export function toCsv(columns, adsUrl = (b) => b, index = null) {
 			csvField(columns.i[i]),
 			csvField(adsUrl(columns.b[i]))
 		].join(',');
+	}
+	return lines.join('\r\n');
+}
+
+/** Scope keys as the CSV names them, after the reader-facing window names. */
+const MISSION_SCOPES = [['full', 'active'], ['window', 'prime'], ['lifetime', 'lifetime']];
+
+/**
+ * A division's missions as CSV, CRLF-delimited: every scope and both tiers, so a page that shows
+ * only the Active Mission Window hides nothing. Unmeasured output stays blank, never zero.
+ *
+ * @param {object[]} missions the division doc's missions
+ * @param {{ costBaseYear: number, url?: (id: string) => string }} opts
+ */
+export function missionsCsv(missions, { costBaseYear, url = (id) => id }) {
+	const header = ['mission', 'id', 'launch_year', 'type', `cost_millions_${costBaseYear}_usd`, 'size', 'outcome'];
+	for (const [, name] of MISSION_SCOPES) header.push(`${name}_papers`, `${name}_citations`, `${name}_top10`, `${name}_top1`);
+	header.push('h_index', 'g_index', 'url');
+	const lines = [header.join(',')];
+	for (const m of missions) {
+		const row = [m.name, m.id, m.launchYear, m.type, m.cost, { under: 'small', over: 'larger' }[m.size] ?? '', m.failed ? 'lost' : m.shortfall ? 'partial' : ''];
+		for (const [key] of MISSION_SCOPES) {
+			const s = m[key];
+			const measured = s && (s.status == null || s.status === 'available');
+			row.push(...(measured ? [s.papers, s.citations, s.top10, s.top1] : [null, null, null, null]));
+		}
+		row.push(m.indices?.h, m.indices?.g, url(m.id));
+		lines.push(row.map(csvField).join(','));
 	}
 	return lines.join('\r\n');
 }

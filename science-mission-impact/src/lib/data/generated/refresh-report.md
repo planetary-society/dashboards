@@ -38,7 +38,7 @@ No change in totals, cutoffs or story figures.
 
 ## Data notes
 
-- Missions with no ADS query: 18 — HETE 1 (`hete_1`), Glory (`glory`), Landsat 6 (`landsat_6`), MiRaTA (`mirata`), OCO (`oco`), Terriers (`terriers`), CeREs (`ceres`), CuSP (`cusp`), DAILI (`daili`), petitSat (`petitsat`), CONTOUR (`contour`), DS-2 (`ds_2`), Lunar IceCube (`lunar_icecube`), Mars Observer (`mars_observer`), MCO (`mco`), MPL (`mpl`), NEA Scout (`nea_scout`), Q-PACE (`q_pace`)
+- Missions with no ADS query: 18 — HETE 1 (`hete_1`), Glory (`glory`), Landsat 6 (`landsat_6`), MiRaTA (`mirata`), OCO (`oco`), Terriers (`terriers`), CeREs (`ceres`), CuSP (`cusp`), DAILI (`daili`), petitSat (`petitsat`), CONTOUR (`contour`), DS-2 (`ds_2`), Lunar IceCube (`lunar_icecube`), Mars Observer (`mars_observer`), Mars Climate Orbiter (`mco`), Mars Polar Lander (`mpl`), NEA Scout (`nea_scout`), Q-PACE (`q_pace`)
 - `merge_stats` reconciliation: balanced for every mission
 
 Citation timelines are checked against reported counts. Only source-declared, small missing sets within the configured limit are retained and visibly labelled incomplete. Excess or larger discrepancies are fatal.
@@ -60,10 +60,10 @@ ok 141 · failed 0 · no image URL 0 (from `static/img/missions/manifest.json`)
 
 | File                     | Bytes          |
 | ------------------------ | -------------- |
-| `generated/site.json`    | 70,010         |
-| `generated/index.json`   | 27,779         |
-| `generated/scrolly.json` | 147,186        |
-| `generated/divisions/`   | 547,554        |
-| `generated/missions/`    | 2,189,628      |
-| `static/data/papers/`    | 30,043,982     |
-| **total**                | **33,026,139** |
+| `generated/site.json`    | 98,916         |
+| `generated/index.json`   | 27,866         |
+| `generated/scrolly.json` | 114,403        |
+| `generated/divisions/`   | 531,363        |
+| `generated/missions/`    | 2,189,464      |
+| `static/data/papers/`    | 29,966,439     |
+| **total**                | **32,928,451** |

@@ -1,6 +1,6 @@
 /**
- * Model for CostCurve: one division's missions in cost order, with the running count of its top
- * papers as each costlier mission is added.
+ * Model for the overview's running total (focusLayout): one division's missions in cost order,
+ * with the running count of its top papers as each costlier mission is added.
  *
  * The packager writes the order and the cumulative shares (CostCurve in types.d.ts); the counts
  * come from each mission's own credit, summed here in that order. data.test.mjs holds the two to
@@ -27,13 +27,6 @@ export function curveFacts(curve, missions, scope, top) {
 		return { id: p.id, name: m?.name ?? p.id, cost: p.cost, credit, total, topShare: p.topShare, reached: credit > 0 };
 	});
 	return { points, total, hasTop: total > 0, unplaced: curve.unplaced?.length ?? 0 };
-}
-
-/** The running totals at the dearest mission costing no more than `cost`. */
-export function runningAt(points, cost) {
-	let last = null;
-	for (const p of points ?? []) if (p.cost <= cost) last = p;
-	return last;
 }
 
 /**

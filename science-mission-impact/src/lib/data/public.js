@@ -1,1 +1,1 @@
-export { underThreshold, buildDiscussion } from '../../../scripts/lib/public.mjs';
+export { underThreshold, buildDiscussion, divisionFacts } from '../../../scripts/lib/public.mjs';

@@ -106,7 +106,7 @@ describe('buildSite', () => {
 	it('reads the configured threshold and passes the CLPS facts through', () => {
 		assert.equal(site.story.referenceCost, 150);
 		assert.equal(site.story.threshold.missions, 0);
-		assert.deepEqual(site.story.failure.under, { missions: 0, failed: 0, rate: null });
+		assert.deepEqual(site.story.failure.under, { missions: 0, failed: 0, lost: 0, rate: null, interval: null, lostCostMax: null });
 		assert.equal(site.story.failure.higher, null);
 		assert.deepEqual(site.clps, { program: 'CLPS', series: [0, 1, null] });
 		assert.deepEqual(site.kinds, { scope: 'full', missions: [] });
@@ -145,7 +145,6 @@ describe('buildSite', () => {
 		assert.equal(site.story.pooledBand, null);
 		assert.deepEqual(site.story.perDollar, []);
 		assert.deepEqual(site.story.comparison.divisions, []);
-		assert.equal(site.story.comparison.unavailable, 0);
 		assert.deepEqual(site.story.comparison.groups.map((g) => g.key), ['under', 'over']);
 		for (const group of site.story.comparison.groups) {
 			assert.equal(group.missions, 0);

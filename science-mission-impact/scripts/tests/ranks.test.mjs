@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { rankHistograms, assertRanksMatchTiers, emptyRanks, RANK_BINS } from '../lib/ranks.mjs';
+import { rankHistograms, assertRanksMatchTiers, emptyRanks, citationHistogram, RANK_BINS } from '../lib/ranks.mjs';
 
 const keys = { citations: 'c', sharedBy: 's' };
 const sum = (a) => a.reduce((x, y) => x + y, 0);
@@ -48,5 +48,18 @@ describe('assertRanksMatchTiers', () => {
 
 	it('names the edge that drifted', () => {
 		assert.throws(() => assertRanksMatchTiers({ id: 'm', scope: 'window', ranks, tiers: [0.4, 5.6, 14, 20], bounds }), /top 10%/);
+	});
+});
+
+describe('citationHistogram', () => {
+	it('counts each distinct paper once by its citations, with the rest past the cap', () => {
+		const rows = [
+			{ mission: 'A', bibcode: 'x', c: 2, w: 0.5 },
+			{ mission: 'B', bibcode: 'x', c: 2, w: 0.5 },
+			{ mission: 'A', bibcode: 'y', c: 0, w: 0 },
+			{ mission: 'A', bibcode: 'z', c: 4, w: 1 },
+			{ mission: 'A', bibcode: 'w', c: 9, w: 1 }
+		];
+		assert.deepEqual(citationHistogram(rows, { citations: 'c', topWeight: 'w' }, 4), { counts: [1, 0, 1, 0], overflow: 2, top: [0, 0, 0.5, 0], topOverflow: 2, papers: 4 });
 	});
 });

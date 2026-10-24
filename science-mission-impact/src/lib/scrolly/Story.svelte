@@ -1,33 +1,35 @@
 <script>
-	// The overview as a scroll: a title, then eighteen steps over one stage of mission squares.
-	// Pairs of steps share one graphic state
-	// (KINDS/KINDS_ALL, CLOSE/CLOSE_LIMITS). Every figure in the copy comes from site.story (the
+	// The overview as a scroll: a title, then one argument over one stage of mission squares. The
+	// missions, the papers they produced and what a highly cited paper is; then the $150 million
+	// line, failures either side of it, one division's running total built up a step at a time,
+	// every compared division at once, per dollar, which missions ever had a top paper, CLPS and the close. Pairs of
+	// steps share a graphic state (PAPERS/TOP, SPLIT/FAILURE, ALL/DOLLAR), so long text is split
+	// across them. Every figure in the copy comes from site.story (the
 	// packager) or site itself; the component only lays out.
 	import Scroller from './Scroller.svelte';
 	import Squares from './Squares.svelte';
 	import Skyline from './Skyline.svelte';
-	import ComparisonLabels from './ComparisonLabels.svelte';
-	import FailureLabels from './FailureLabels.svelte';
-	import TimeScienceAxes from '$lib/charts/TimeScienceAxes.svelte';
-	import { timeScienceModel, timeScienceLayout } from '$lib/charts/timetoscience.js';
-	import PerDollarAxis from './PerDollarAxis.svelte';
+	import SplitLabels from './SplitLabels.svelte';
+	import Primer from './Primer.svelte';
+	import FocusChart from './FocusChart.svelte';
+	import LanesChart from './LanesChart.svelte';
 	import ClpsChart from './ClpsChart.svelte';
 	import KindBars from './KindBars.svelte';
 	import KindExample from './KindExample.svelte';
-	import Waffle from './Waffle.svelte';
-	import { gridLayout, rugLayout, skylineLayout, skylineHit, failureLayout, costLayout, perDollarLayout, kindsLayout, exampleLayout, waffleLayout } from './layouts.js';
-	import { exampleItems, failureItems, kindsItems, perDollarItems, withHidden } from './items.js';
-	import { int, listify, longDate, money, pct, plural, spell, upperFirst } from '$lib/format.js';
+	import { gridLayout, rugLayout, skylineLayout, skylineHit, splitLayout, focusLayout, costLayout, kindsLayout, exampleLayout } from './layouts.js';
+	import { exampleItems, failureItems, firstTopItems, kindsItems, withHidden } from './items.js';
+	import { apDate, int, listify, longDate, money, moneyWords, pct, plural, spell, upperFirst } from '$lib/format.js';
 	import { fullWindowLabel } from '$lib/copy/window.js';
-	import { asset } from '$lib/paths.js';
+	import { allSmall, carrier, loneFlip } from '$lib/copy/discussion.js';
+	import { asset, methodsHref } from '$lib/paths.js';
 
 	let { site, scrolly } = $props();
-	const TITLE = 0, MOTIVATION = 1, OVERVIEW = 2, CORPUS = 3, THRESHOLD = 4, PUBLICATIONS_ALL = 5, PUBLICATIONS = 6, COMPARE = 7, FAILURE = 8, TIMING = 9, DOLLAR = 10;
+	const TITLE = 0, MOTIVATION = 1, OVERVIEW = 2, CORPUS = 3, PAPERS = 4, TOP = 5, SPLIT = 6, FAILURE = 7, REACHED = 8, ONE = 9, BARS = 10, RUNNING = 11, ALL = 12, DOLLAR = 13;
 	// The paper-kinds run (KINDS…CITATIONS) is hidden for now: its sections stay out of the page and its
 	// indices match no step. Set SHOW_KINDS to bring the four steps back between DOLLAR and CLPS.
 	const SHOW_KINDS = false;
-	const [KINDS, KINDS_ALL, EXAMPLE, CITATIONS] = SHOW_KINDS ? [11, 12, 13, 14] : [-1, -1, -1, -1];
-	const CLPS = SHOW_KINDS ? 15 : 11, CLPS_COMPARE = CLPS + 1, CLOSE = CLPS + 2, CLOSE_LIMITS = CLPS + 3;
+	const [KINDS, KINDS_ALL, EXAMPLE, CITATIONS] = SHOW_KINDS ? [14, 15, 16, 17] : [-1, -1, -1, -1];
+	const CLPS = SHOW_KINDS ? 18 : 14, CLPS_COMPARE = CLPS + 1, CLOSE = CLPS + 2;
 	// Reduced motion: every scrubbed graphic renders complete.
 	const reduced = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
@@ -39,8 +41,6 @@
 	const failure = $derived(story.failure);
 	const clps = $derived(site.clps);
 	const landers = $derived(clps.missions.filter((p) => p.papers > 0).length);
-	const thresholdIds = $derived(new Set(threshold.ids));
-	const underTiles = $derived(tiles.filter((t) => thresholdIds.has(t.id)));
 	const comparison = $derived(story.comparison);
 	// The gap "holds" in a division only where both sides are measured and the smaller missions' side is lower.
 	const byDivision = $derived(comparison.byDivision ?? []);
@@ -49,13 +49,52 @@
 	// The divisions the cross-division figures cover. The others fade out when those come up.
 	const compared = $derived(new Set(comparison.divisions));
 	const rankable = $derived(site.divisions.filter((d) => compared.has(d.slug)));
-	// Time to a first top-10% paper from science start, every division together: the packaged cost quarters and threshold sides.
-	const sci = $derived(story.scienceStart);
-	// Per dollar: a side drew "more" only where the packaged ordering survives dropping any one mission.
+	const unranked = $derived(site.divisions.filter((d) => !compared.has(d.slug)));
+	// why they're out, as Methods says it: only when every one of a division's missions is small
+	const unrankedWhy = $derived(unranked.every((d) => story.divisions.some((r) => r.division === d.slug && allSmall(r))) ? `${unranked.length === 1 ? 'has' : 'have'} no missions over ${money(reference)}` : `${unranked.length === 1 ? 'is' : 'are'} not compared`);
+	// TPS style in running prose: "$150 million"; chart labels keep the short "$150M".
+	const line = $derived(moneyWords(reference));
+
+	// The walk-through division: its primer, then its running total built up over three steps.
+	const primer = $derived(story.primer);
+	const focus = $derived(byDivision.find((d) => d.division === story.focusDivision) ?? null);
+	const focusShares = $derived(story.divisions.find((d) => d.division === story.focusDivision) ?? null);
+	const focusName = $derived(focus?.name ?? '');
+	const field = $derived(focusName.toLowerCase()); // "planetary science" mid-sentence
+	const focusTotal = $derived(focus ? focus.under.top10 + focus.over.top10 : 0);
+	const tallest = $derived(focus?.over.largest && (!focus.under.largest || focus.over.largest.top10 >= focus.under.largest.top10) ? focus.over.largest : null);
+
+	// The compared divisions' small sides: their shares of missions, spending and top papers.
+	const shares = $derived(story.divisions.filter((d) => compared.has(d.division)));
+	// failure rates in whole percents: 8 of 95 is "about 8%", not 8.4%
+	const whole = (v) => (v == null ? '—' : `${Math.round(v * 100)}%`);
+	const missionRange = $derived([Math.min(...shares.map((d) => d.missionShare)), Math.max(...shares.map((d) => d.missionShare))]);
+	const underOne = $derived(shares.filter((d) => d.share != null && d.share < 0.01));
+	const overOne = $derived(shares.filter((d) => d.share != null && d.share >= 0.01).map((d) => ({ ...d, largest: carrier(byDivision.find((b) => b.division === d.division)?.under) })));
+	const laneNotes = $derived(Object.fromEntries(shares.map((d) => [d.division, { missions: `${pct(d.missionShare)} of missions`, top: `${pct(d.share)} of top-10% papers`, cited: `${pct(d.citationShare)} of citations`, cost: `${pct(d.costShare)} of spending` }])));
+
+	// Per dollar, in citations per $100M, as the chart draws it: a side drew "more" only where the
+	// packaged ordering survives dropping any one mission. A gap under a quarter is "small".
 	const dollarOver = $derived(story.perDollar.filter((d) => d.favors === 'over'));
 	const dollarUnder = $derived(story.perDollar.filter((d) => d.favors === 'under'));
 	const dollarClose = $derived(story.perDollar.filter((d) => !d.favors));
-	const rate = (d, key) => d.groups.find((g) => g.key === key).perHundredM;
+	const dollarNear = $derived(dollarOver.filter((d) => d.margin != null && d.margin < 0.25));
+	// a close division whose small side leads only because of its own largest mission
+	const closeLone = $derived(dollarClose.filter(loneFlip));
+	const closeRest = $derived(dollarClose.filter((d) => !loneFlip(d)));
+	// the close's headline needs both readings: fewer top-10% papers per mission everywhere, fewer citations per dollar in most
+	const verdict = $derived(everyLower && dollarOver.length * 2 > byDivision.length);
+
+	// Whether a mission ever produced a top-10% paper, either side of the line: the comparison's own
+	// groups (withTop), with failures counted apart so a lost mission is not counted twice.
+	const first = $derived(Object.fromEntries(comparison.groups.map((g) => [g.key, { missions: g.missions, reached: g.withTop, never: g.missions - g.withTop, lost: g.failed }])));
+	const worked = (s) => s.missions - s.lost;
+
+	// CLPS: what the landers cost together, and the ones that began work a year or more after the first launch.
+	const clpsCost = $derived(clps.missions.every((p) => p.cost != null) ? clps.missions.reduce((t, p) => t + p.cost, 0) : null);
+	const clpsLate = $derived(clps.missions.filter((p) => Date.parse(p.primeStart) - Date.parse(clps.start) > 365 * 864e5));
+	const clpsCompared = $derived((clps.comparison?.comparators ?? []).map((c) => ({ ...c, cost: clps.comparators.find((k) => k.id === c.id)?.cost ?? null })));
+
 	// Paper kinds: every number and name binds to site.kinds.
 	const kinds = $derived(site.kinds);
 	const example = $derived(kinds.examples[0]);
@@ -77,6 +116,16 @@
 	const exNamed = $derived(exL.top && exL.top.kind !== 'results' && exL.firstResult && exL.top.citations > exL.firstResult.citations ? exL.top.kind : null);
 	const solid = (pos) => new Map([...pos].map(([id, p]) => [id, { ...p, variant: 'solid' }]));
 
+	// The icon arrays: outright failures first, then partial outcomes, each in launch order, so the
+	// marks the failure step adds sit together at the head of each block. The REACHED step reorders
+	// the compared divisions' missions: those with a top-10% paper first, failures last.
+	const outcome = (t) => (t.failed ? 0 : t.shortfall ? 1 : 2);
+	const under = (t) => t.size === 'under';
+	const over = (t) => t.size === 'over';
+	const splitGroups = $derived([under, over].map((side, i) => ({ key: i ? 'over' : 'under', ids: tiles.filter(side).sort((a, b) => outcome(a) - outcome(b)).map((t) => t.id) })));
+	const reachedFirst = (t) => (t.first[scope].state === 'reached' ? 0 : t.failed ? 2 : 1);
+	const timeGroups = $derived([under, over].map((side, i) => ({ key: i ? 'over' : 'under', ids: tiles.filter((t) => compared.has(t.division) && side(t)).sort((a, b) => reachedFirst(a) - reachedFirst(b)).map((t) => t.id) })));
+
 	let index = $state(0);
 	let progress = $state(0);
 	let W = $state(0);
@@ -86,47 +135,55 @@
 	const grid = $derived(ready ? gridLayout(tiles, W, H) : null);
 	const rug = $derived(ready ? rugLayout(tiles, W, H, site.launchYears) : null);
 	const sky = $derived(rug ? skylineLayout(tiles, rug, { compact }) : null);
-	const small = $derived(ready ? gridLayout(underTiles, W, H, { top: compact ? 56 : 96 }) : null);
-	const failureL = $derived(ready ? failureLayout(tiles, W, H, { divisions: failure.byDivision, threshold: reference }) : null);
+	const headH = $derived(compact ? 76 : 104);
+	const split = $derived(ready ? splitLayout(W, H, splitGroups, { headH }) : null);
+	const timeSplit = $derived(ready ? splitLayout(W, H, timeGroups, { headH }) : null);
+	const focusL = $derived(ready && focus ? focusLayout(tiles, W, H, { division: focus.division }) : null);
 	const cost = $derived(ready ? costLayout(tiles.filter((t) => compared.has(t.division)), W, H, { divisions: rankable }) : null);
-	// the division pages' time-to-science plot, every division's missions together from their own science start
-	const timeModel = $derived(timeScienceModel(tiles, scope, (t) => t.first[scope]));
-	const time = $derived(ready ? timeScienceLayout(timeModel.points, W, H) : null);
-	const dollar = $derived(cost ? perDollarLayout(tiles, W, H, { divisions: rankable, x: cost.x, left: cost.left }) : null);
 	const kindsL = $derived(ready ? kindsLayout(kinds.missions, W, H, { compact }) : null);
 	const exampleL = $derived(ready ? exampleLayout(example.id, W, H, { compact }) : null);
-	const waffle = $derived(ready ? waffleLayout(threshold.papersAll, threshold.papers, W, H, { top: compact ? 56 : 96, compact }) : null);
 
+	// Scrubs run while a step's text holds still, between the fractions `a` and `b` of the step.
+	const span = (a, b) => (reduced ? 1 : Math.max(0, Math.min(1, (progress - a) / (b - a))));
 	const scrub = $derived(reduced ? 1 : Math.min(1, progress * 2.4));
 	// the title and the motivation photo stand alone; the squares arrive one by one with the overview, then stay
 	const shown = $derived(index <= MOTIVATION ? 0 : index === OVERVIEW ? Math.ceil(scrub * tiles.length) : tiles.length);
-	const comparing = $derived(index === COMPARE);
-	const timed = $derived(index === TIMING);
-	// the waffle builds grey over the whole corpus, then the threshold missions' papers turn blue
-	const waffled = $derived(index === PUBLICATIONS_ALL || index === PUBLICATIONS);
+	const primed = $derived(index === PAPERS || index === TOP);
+	const parted = $derived(index === SPLIT || index === FAILURE);
+	const focused = $derived(index === ONE || index === BARS || index === RUNNING);
+	const laned = $derived(index === ALL || index === DOLLAR);
+	const grow = $derived(index === BARS ? span(0.15, 0.45) : index > BARS ? 1 : 0);
+	const stack = $derived(index === RUNNING ? span(0.2, 0.5) : index > RUNNING ? 1 : 0);
+	const draw = $derived(index === RUNNING ? span(0.35, 0.65) : index > RUNNING ? 1 : 0);
 	const kindsShown = $derived(index === KINDS || index === KINDS_ALL || index === CITATIONS);
 	const items = $derived.by(() => {
 		if (!grid) return new Map();
 		if (index <= OVERVIEW || index >= CLOSE) return solid(grid.pos);
 		if (index === CORPUS) return withHidden(solid(rug.pos), tiles, grid.pos);
-		if (index === THRESHOLD) return withHidden(solid(small.pos), tiles, grid.pos);
-		if (waffled) return withHidden(new Map(), tiles, small.pos);
-		if (comparing) return withHidden(new Map(), tiles, new Map([...grid.pos, ...small.pos]));
-		if (index === FAILURE) return withHidden(failureItems(tiles, failureL), tiles, grid.pos);
-		if (timed && time) return withHidden(time.items, tiles, cost.pos);
-		if (index === DOLLAR) return withHidden(perDollarItems(tiles, dollar), tiles, cost.pos);
-		if (kindsShown) return withHidden(kindsItems(tiles, kindsL), tiles, dollar.pos);
+		if (primed) return withHidden(new Map(), tiles, rug.pos);
+		if (index === SPLIT) return withHidden(solid(split.pos), tiles, rug.pos);
+		if (index === FAILURE) return withHidden(failureItems(tiles, split), tiles, rug.pos);
+		if (index === REACHED) return withHidden(firstTopItems(tiles, timeSplit, scope), tiles, split.pos);
+		if (focused && focusL) return withHidden(failureItems(tiles, focusL), tiles, timeSplit.pos);
+		if (laned) return withHidden(solid(cost.pos), tiles, split.pos);
+		if (kindsShown) return withHidden(kindsItems(tiles, kindsL), tiles, cost.pos);
 		if (index === EXAMPLE) return withHidden(exampleItems(tiles, exampleL), tiles, kindsL.pos);
-		if (index >= CLPS) return withHidden(new Map(), tiles, kindsL.pos);
 		return withHidden(new Map(), tiles, cost.pos);
 	});
+	// each block's head: the figure, what it counts, then which side of the line the block is
+	const sides = $derived([`at ${money(reference)} or less`, `over ${money(reference)}`]);
+	const splitHeads = $derived(
+		[failure.under, failure.over].map((s, i) =>
+			index === FAILURE ? { figure: `${int(s.failed)} of ${int(s.missions)}`, label: 'failed or fell short', side: sides[i] } : { figure: int(s.missions), label: 'missions', side: sides[i] }
+		)
+	);
+	const timeHeads = $derived([first.under, first.over].map((s, i) => ({ figure: `${int(s.reached)} of ${int(s.missions)}`, label: 'had a top-10% paper', side: sides[i] })));
 	// the lines draw while the reader scrolls, not inside the 400 ms fade-in
 	const clpsDraw = $derived(reduced ? 1 : Math.max(0, Math.min(1, (progress - 0.1) / 0.6)));
 	// the CLPS step: its text settles first (about a third of the way through the step), then the
 	// chart fades in and the CLPS line draws
 	const clpsIn = $derived(reduced || index > CLPS || progress >= 0.3);
 	const clpsFirst = $derived(reduced ? 1 : Math.max(0, Math.min(1, (progress - 0.35) / 0.45)));
-	const waffleBuild = $derived(reduced ? 1 : Math.max(0, Math.min(1, (progress - 0.05) / 0.6)));
 
 	// The skyline step: pointing at a square or skimming the columns lights up that mission in both.
 	// A touch keeps its highlight after the finger lifts; a mouse clears it on leaving the stage.
@@ -157,55 +214,63 @@
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div class="stage" class:skimming={index === CORPUS} bind:clientWidth={W} bind:clientHeight={H} onpointerdown={skim} onpointermove={skim} onpointerleave={unskim} onclickcapture={holdClick}>
 				<img class="photo" class:visible={index === MOTIVATION} src={asset('img/story/im-1-odysseus.webp')} alt="" decoding="async" fetchpriority="low" />
-				{#if rug && cost}
+				{#if rug && cost && split}
 					<Skyline layout={sky} total={site.papersDistinct} rise={index === CORPUS ? scrub : index > CORPUS ? 1 : 0} visible={index === CORPUS} highlight={hot} {compact} width={W} height={H} />
-					<ComparisonLabels {comparison} referenceCost={reference} visible={comparing} {compact} />
-					<FailureLabels layout={failureL} {failure} referenceCost={reference} visible={index === FAILURE} {compact} />
-					{#if time}
-						<div class="plot" class:visible={timed}><TimeScienceAxes layout={time} width={W} height={H} /></div>
+					{#if primer}
+						<Primer {primer} years={site.fullPolicy.citationYears + 1} build={index === PAPERS ? span(0.15, 0.5) : index > PAPERS ? 1 : 0} highlight={index === TOP} visible={primed} {compact} width={W} height={H} />
 					{/if}
-					<PerDollarAxis layout={dollar} perDollar={story.perDollar} ticks={cost.ticks} referenceCost={reference} visible={index === DOLLAR} {compact} width={W} height={H} />
+					<SplitLabels layout={split} heads={splitHeads} visible={parted} {compact} />
+					{#if focusL}
+						<FocusChart layout={focusL} referenceCost={reference} largest={tallest} small={index === BARS && focusShares ? `${upperFirst(spell(focusShares.missions))} small missions: ${int(focus.under.top10)} papers` : ''} total={`${int(focusTotal)} top-10% papers`} {grow} {stack} {draw} bars={index >= BARS} visible={focused} {compact} width={W} height={H} />
+					{/if}
+					<LanesChart layout={cost} {scope} referenceCost={reference} notes={laneNotes} spending={index === DOLLAR} visible={laned} {compact} width={W} height={H} />
+					<SplitLabels layout={timeSplit} heads={timeHeads} visible={index === REACHED} {compact} />
 					<KindBars layout={kindsL} {kinds} mode={index === CITATIONS ? 'citations' : 'papers'} visible={kindsShown} {compact} />
 					<KindExample layout={exampleL} {example} {kinds} visible={index === EXAMPLE} {compact} />
 					<ClpsChart {clps} draw={index === CLPS ? clpsFirst : index > CLPS ? 1 : 0} drawComparators={index === CLPS_COMPARE ? clpsDraw : index > CLPS_COMPARE ? 1 : 0} visible={(index === CLPS && clpsIn) || index === CLPS_COMPARE} {compact} width={W} height={H} />
-					<Waffle layout={waffle} referenceCost={reference} build={index === PUBLICATIONS_ALL ? waffleBuild : index > PUBLICATIONS_ALL ? 1 : 0} highlight={index >= PUBLICATIONS} visible={waffled} {compact} width={W} height={H} />
 					<Squares {tiles} {items} {shown} interactive={false} highlightId={hot} quietId={skyNamed} />
 				{/if}
 				<div class="thesis" class:visible={index === TITLE}>
-					<p>The role of cost in the scientific productivity of NASA's space science missions</p>
-					<p class="byline">The Planetary Society · data as of {longDate(site.asOf)}</p>
+					<p>Can small missions replace NASA’s larger science missions?</p>
+					<p class="byline">A Planetary Society analysis of {int(site.missions)} NASA science missions. Data as of {apDate(site.asOf)}.</p>
 				</div>
-				<p class="figure" class:visible={index === THRESHOLD || waffled} aria-hidden="true">
-					{#if index === PUBLICATIONS_ALL}<b>{int(threshold.papersAll)}</b> <span>mission papers</span>{:else if index === PUBLICATIONS}<b>{int(threshold.papers)}</b> <span>of {int(threshold.papersAll)} mission papers</span>{:else}<b>{int(threshold.missions)}</b> <span>of {int(threshold.total)} missions</span>{/if}
-				</p>
+				<p class="cue" class:visible={index === TITLE} aria-hidden="true">Scroll to begin</p>
 			</div>
 			<div class="caption meta">
 				{#if index === OVERVIEW}
-					Missions in launch order, earliest first.
+					Each square is a mission, in launch order.
 				{:else if index === CORPUS}
-					Squares: missions by launch year. Columns: each mission’s publications to date, square-root scale.
+					Each column is one mission’s papers to date, rising from its launch year (square-root scale). {compact ? 'Touch' : 'Point at'} a column to see its name.
 				{:else if index === MOTIVATION}
-					IM-1’s Odysseus lander, which carried NASA instruments to the Moon under CLPS in 2024. Photo: Intuitive Machines.
-				{:else if index === THRESHOLD}
-					Missions at {money(reference)} or less in {site.costBaseYear} dollars, by launch date.
-				{:else if waffled}
-					Every mission paper in the study on the {fullWindowLabel} basis, one box per {int(waffle?.unit)}. {#if index === PUBLICATIONS}Blue: papers from missions at {money(reference)} or less.{/if}
+					IM-1’s Odysseus lander, which carried NASA instruments to the Moon in 2024 as a commercial delivery. Photo: Intuitive Machines.
+				{:else if primed && primer}
+					{focusName} papers published while its missions operated or up to {spell(site.fullPolicy.postEndYears)} years after, by citations in each paper’s first {spell(site.fullPolicy.citationYears + 1)} years. Papers with {int(primer?.counts.length)} or more share the last bar.
+				{:else if index === SPLIT}
+					Each square is a mission, grouped by inflation-adjusted cost in {site.costBaseYear} dollars.
 				{:else if index === FAILURE}
-					X: failure, partial failure or partial success. Costs in {site.costBaseYear} dollars.
-				{:else if timed}
-					All {int(timeModel.points.length)} missions with a top-10% paper and a known cost. Up: adjusted mission cost, log scale. Across: months from the start of science operations to the first top-10% paper. Dashed: best fit.
+					<i class="swatch mark-lost"></i>Failure <i class="swatch mark-partial"></i>Partial failure or partial success
+				{:else if index === ONE && focus}
+					{focusName} missions by inflation-adjusted cost. Each gridline is 10 times the one before. <i class="swatch mark-lost"></i>Failure
+				{:else if index === BARS && focus}
+					Each bar is one mission’s top-10% papers. A paper shared by two missions counts half for each.
+				{:else if index === RUNNING && focus}
+					Running total of the division’s top-10% papers, cheapest missions first.
+				{:else if index === ALL}
+					Each line adds up a division’s top-10% papers, cheapest missions first.
 				{:else if index === DOLLAR}
-					Citations per $100M of mission cost. {fullWindowLabel}. Dashed: best fit over missions with citations.
+					<span class="key"></span>Running share of all citations <span class="key spend"></span>Running share of spending
 				{:else if index === KINDS || index === KINDS_ALL}
 					Missions at {money(reference)} or less with publications in their {fullWindowLabel}, most first. Bars: each mission’s publications by kind.
 				{:else if index === EXAMPLE}
 					All {spell(exL.papers)} of {example.name}’s publications to date, most cited first; {spell(example.papers)} {plural(example.papers, 'falls', 'fall')} in its {fullWindowLabel}. {#if exResults > 0}Highlighted: its science {plural(exResults, 'result')}.{/if}
 				{:else if index === CITATIONS}
 					The same missions. Bars: each mission’s citations by kind, {fullWindowLabel}.
+				{:else if index === REACHED}
+					{#if unranked.length}Leaves out {listify(unranked.map((d) => d.name))}, which {unrankedWhy}.{/if} <i class="swatch mark-reached"></i>Had a top-10% paper <i class="swatch mark-outline"></i>None <i class="swatch mark-lost"></i>Failure
 				{:else if index === CLPS && clpsIn}
-					Refereed publications by CLPS missions, running total by month from {longDate(clps.start.slice(0, 7))}.
+					Peer-reviewed papers from CLPS landers, running total by month since {longDate(clps.start.slice(0, 7))}.
 				{:else if index === CLPS_COMPARE}
-					Refereed publications, running total by month: CLPS from {longDate(clps.start.slice(0, 7))}, the others from the start of their prime missions.
+					Peer-reviewed papers, running total by month. CLPS counts from {longDate(clps.start.slice(0, 7))}, the others from the start of their prime missions.
 				{:else if index >= CLOSE}
 					All {int(site.missions)} missions, in launch order. {compact ? 'Tap a square to open its mission page.' : 'Hover over a square for its name; click to open its page.'}
 				{:else}&nbsp;{/if}
@@ -218,63 +283,78 @@
 		<section data-step></section>
 		<!-- MOTIVATION: the photo alone on the stage -->
 		<section data-step><div class="step">
-			<p>With proposed science cuts of nearly 50%, <strong>NASA is shifting to smaller, higher-risk spacecraft</strong> and instruments, with greater reliance on commercial partners.</p>
-			<p><strong>Costlier missions</strong>, such as Mars Sample Return, VERITAS, and the Geospace Dynamics Constellation <strong>have been canceled or delayed indefinitely.</strong></p>
-			<p>Would such a change impact science output for the world’s leading space agency?</p>
-			<p><strong>The Planetary Society attempted to find out.</strong></p>
+			<p>The White House’s 2027 budget request would cut NASA science by 46% and end 53 missions. Mars Sample Return, VERITAS, and the Geospace Dynamics Constellation have been canceled or delayed indefinitely.</p>
+			<p><strong>NASA is shifting toward smaller, higher-risk spacecraft.</strong> We looked at whether they can make up for the science of larger missions.</p>
 		</div></section>
-		<!-- OVERVIEW -->
-		<section data-step><div class="step">
-			<p>To gain perspective, we looked at <strong> {int(site.missions)} NASA-led science missions launched by all {spell(site.divisions.length)} science divisions between {site.launchYears[0]} and {site.launchYears[1]}</strong>.</p>
+		<!-- OVERVIEW: the squares arrive one by one -->
+		<section data-step data-scrub><div class="step">
+			<p>We studied <strong>{int(site.missions)} NASA-led science missions</strong> launched from {site.launchYears[0]} to {site.launchYears[1]}, across all {spell(site.divisions.length)} of the agency’s science divisions.</p>
 		</div></section>
-		<!-- CORPUS -->
-		<section data-step><div class="step">
-			<p>We assembled a dataset of <b>{int(site.papersDistinct)} peer-reviewed publications</b> associated with these missions after the start of their science operations.</p>
-			<p>We also collected key metadata, including  inflation-adjusted life-cycle costs, launch and development milestones to gain a fuller picture of cost and time investments.</p>
-			
+		<!-- CORPUS: the skyline -->
+		<section data-step data-scrub><div class="step">
+			<p>We found <strong>{int(site.papersDistinct)} peer-reviewed papers</strong> from these missions.</p>
 		</div></section>
-		<!-- THRESHOLD -->
-		<section data-step><div class="step">
-			<p>We first looked at very low-cost science missions, those with an <b>inflation-adjusted life-cycle cost of less than {money(reference)}</b>.</p>
-			
-			<p>{int(threshold.missions)} of the total {int(threshold.total)} missions fall under this cost threshold.</p>
-
-			{#if threshold.launchMedian}<p>Half of them launched in {threshold.launchMedian} or later.</p>{/if}
-			
+		<!-- PAPERS: the focus division's papers by citations, grey -->
+		<section data-step data-scrub><div class="step">
+			<p>Scientists report what a mission finds in peer-reviewed papers. A new paper that builds on an earlier one <strong>cites</strong> it.</p>
+			{#if primer}<p>Take {field}. Most of its papers drew a few citations, and {int(primer.overflow)} drew {int(primer.counts.length)} or more.</p>{/if}
 		</div></section>
-		<!-- PUBLICATIONS_ALL: the whole corpus as a grey waffle -->
+		<!-- TOP: the same bars, the top 10% in blue -->
 		<section data-step><div class="step">
-			<p>Of the <b>{int(threshold.papersAll)}</b> peer-reviewed publications released during all missions’ operating lifetimes…</p>
-			<p class="aside">A mission’s {fullWindowLabel} runs from the start of its science operations to {spell(site.fullPolicy.postEndYears)} {plural(site.fullPolicy.postEndYears, 'year')} after it ended, cut where citations are mature. A paper shared by two missions counts once for each, so these are mission papers, not distinct papers.</p>
+			<p>We measure a mission’s science by its <strong>top-10% papers</strong>, the 10% most cited in its division. Fields cite at different rates, so each paper is ranked only within its own division.</p>
+			{#if primer}<p>In {field}, the cutoff is about {primer.cutoff} citations.</p>{/if}
+			<p class="aside">Citations show how much other scientists used a result, not a mission’s full value. <a href={methodsHref('citations')}>What citations miss</a></p>
 		</div></section>
-		<!-- PUBLICATIONS: the same waffle, the threshold missions' papers in blue -->
+		<!-- SPLIT: two icon arrays either side of the line -->
 		<section data-step><div class="step">
-			<p><b>{int(threshold.papers)}</b>, or {pct(threshold.papers / threshold.papersAll)}, came from missions at or below {money(reference)}. {#if kinds.citationRange}These publications range up to {int(kinds.citationRange.max)} citations accrued in a fixed {spell(site.fullPolicy.citationYears + 1)}-year window.{/if}</p>
+			<p>We call a mission <strong>small</strong> if it cost {line} or less, adjusted for inflation to {site.costBaseYear} dollars. Of the {int(threshold.total)} missions, {int(threshold.missions)} are small{#if threshold.costMedian != null}, and half of those cost less than {moneyWords(threshold.costMedian)}{/if}.</p>
+			<p class="aside">The line is our choice, not NASA’s. <a href={methodsHref('threshold')}>Why {line}</a></p>
 		</div></section>
-		<!-- COMPARE -->
+		<!-- FAILURE: the same arrays, failures marked -->
 		<section data-step><div class="step">
-			{#if byDivision.length}
-				<p>In each of the {spell(byDivision.length)} divisions, missions below {money(reference)} averaged significantly fewer top-10% papers per mission than their costlier counterparts.</p>
+			{#if failure.higher === 'under'}<p><strong>Small missions fail more often.</strong></p>{/if}
+			<p>Of the {int(failure.under.missions)} small missions, {int(failure.under.failed)} (about {whole(failure.under.rate)}) failed or fell short of their goals. Of the {int(failure.over.missions)} larger missions, {spell(failure.over.failed)} (about {whole(failure.over.rate)}) did.</p>
+			{#if failure.under.lostCostMax != null}<p>{failure.under.lost === 1 ? `The one outright failure cost ${moneyWords(failure.under.lostCostMax)}` : `All ${spell(failure.under.lost)} outright failures cost ${moneyWords(failure.under.lostCostMax)} or less`}. We count a failed mission as producing no science.</p>{/if}
+		</div></section>
+		<!-- REACHED: the compared divisions' arrays, by whether a mission ever had a top-10% paper -->
+		<section data-step><div class="step">
+			{#if first.under.never * 2 > first.under.missions}<p><strong>Most small missions produced no top-10% paper.</strong></p>{/if}
+			<p>Of the {int(worked(first.under))} small missions that worked, {int(first.under.reached)} had a top-10% paper, compared with {first.over.reached === worked(first.over) ? `all ${int(worked(first.over))}` : `${int(first.over.reached)} of the ${int(worked(first.over))}`} larger ones.</p>
+		</div></section>
+		<!-- ONE, BARS and RUNNING always render, so later steps keep their numbers; with no focus division they're blank -->
+		<!-- ONE: the focus division alone on the cost axis -->
+		<section data-step><div class="step">
+			{#if focus && focusShares}
+				<p>Back to <strong>{field}</strong>, now with each of its {int(focusShares.missionsAll)} missions placed by cost. The {spell(focusShares.missions)} left of the line are small.</p>
 			{/if}
 		</div></section>
-		<!-- FAILURE -->
-		<section data-step><div class="step">
-			<p>Of the {int(failure.under.missions)} missions at {money(reference)} or less, <b>{pct(failure.under.rate)}</b> failed or only partly succeeded. Of the {int(failure.over.missions)} costlier missions, {pct(failure.over.rate)} did.</p>
-		</div></section>
-		<!-- TIMING -->
-		<section data-step><div class="step">
-			{#if sci}
-				<p>The <strong>time to high-impact science is slower for lower cost missions</strong>. Measured from the start of science operations, lower cost missions, on average, take longer to result in a paper that draws enough citations to reach the top 10% of papers in its division.</p>
-				{#if sci.ratio >= 1.5}<p>The cheapest missions took about {spell(Math.round(sci.ratio))} times as long.</p>{/if}
+		<!-- BARS: each mission's top-10% papers -->
+		<section data-step data-scrub><div class="step">
+			{#if focus && focusShares}
+				<p>{#if tallest}{tallest.name} alone produced {int(tallest.top10)} <strong>top-10% papers</strong>. The {spell(focusShares.missions)} small missions produced about {spell(Math.round(focus.under.top10))} between them.{:else}The {spell(focusShares.missions)} small missions produced about {spell(Math.round(focus.under.top10))} <strong>top-10% papers</strong> between them.{/if}</p>
 			{/if}
 		</div></section>
-		<!-- DOLLAR -->
+		<!-- RUNNING: the bars stack into the running total -->
+		<section data-step data-scrub><div class="step">
+			{#if focus && focusShares}
+				<p>Stacked from cheapest to costliest, the bars add up to a <strong>running total</strong> of the division’s {int(focusTotal)} top-10% papers.</p>
+				{#if focusShares.share != null}<p>The {spell(focusShares.missions)} small missions make up {pct(focusShares.missionShare)} of its missions{focusShares.share < focusShares.missionShare ? ' but' : ' and'} account for <strong>{pct(focusShares.share)}</strong> of those papers.</p>{/if}
+			{/if}
+		</div></section>
+		<!-- ALL: every compared division's running share -->
 		<section data-step><div class="step">
-			<p>When looking at citations per dollar, the story gets a bit more complex.{#if dollarOver.length}{' '}Costlier missions drew more citations per $100M in {listify(dollarOver.map((d) => d.name))}.{/if}{#if dollarUnder.length}{' '}Missions at {money(reference)} or less drew more in {listify(dollarUnder.map((d) => d.name))}.{/if}</p>
-			{#each dollarClose as d (d.division)}
-				{@const lone = d.flipsOn.length === 1 && d.flipsOn[0].id === d.largestUnder?.id && rate(d, 'under') > rate(d, 'over') ? d.largestUnder : null}
-				<p>In {d.name}, neither side clearly leads.{#if lone}{' '}Missions at {money(reference)} or less drew more citations per $100M, but {lone.name} alone accounts for {pct(lone.share)} of their citations; without it, costlier missions lead.{/if}</p>
+			<p>Small missions make up {pct(missionRange[0])} to {pct(missionRange[1])} of each division’s missions{#if underOne.length}{' '}but produced less than 1% of the top-10% papers in {listify(underOne.map((d) => d.name))}{/if}.</p>
+			{#each overOne as d (d.division)}
+				<p>In {d.name}, they produced {pct(d.share)} of the top-10% papers{#if d.largest}, and {d.largest.name} alone produced {pct(d.largest.share)} of that share{/if}.</p>
 			{/each}
+		</div></section>
+		<!-- DOLLAR: the same lanes, now every citation against spending -->
+		<section data-step><div class="step">
+			<p>Small missions cost far less, so the fairer test is per dollar.{#if dollarOver.length}{' '}Counting every citation, <strong>larger missions drew more per dollar</strong> in {listify(dollarOver.map((d) => d.name))}, even with any one mission left out{#if dollarNear.length}; in {listify(dollarNear.map((d) => d.name))}, the gap is small{/if}.{/if}{#if dollarUnder.length}{' '}Small missions drew more per dollar in {listify(dollarUnder.map((d) => d.name))}.{/if}</p>
+			{#each closeLone as d (d.division)}
+				<p>In {d.name}, small missions lead only because of {loneFlip(d).name}; without it, larger missions do.</p>
+			{/each}
+			{#if closeRest.length}<p>In {listify(closeRest.map((d) => d.name))}, neither side clearly leads.</p>{/if}
 		</div></section>
 		{#if SHOW_KINDS}
 		<!-- KINDS -->
@@ -307,24 +387,25 @@
 		</div></section>
 		{/if}
 		<!-- CLPS -->
-		<section data-step><div class="step">
-			<p>NASA’s newest bet on low-cost science is <strong>CLPS, the Commercial Lunar Payload Services program</strong>. Instead of building its own landers, NASA buys rides for its instruments on commercial ones.</p>
-			<p>The first CLPS lander launched in {clps.start.slice(0, 4)}, too recently to judge by citations, so we counted publications instead.</p>
-			{#if clps.comparison}<p>In the {clps.comparison.month} months since, the {spell(landers)} landers with published results have produced <b>{int(clps.comparison.clps)} peer-reviewed papers</b> between them.</p>{/if}
+		<section data-step data-scrub><div class="step">
+			<p>Through <strong>CLPS, the Commercial Lunar Payload Services program</strong>, NASA buys rides for its instruments on commercial Moon landers instead of building its own.</p>
+			{#if clps.comparison}<p>The first launched in {clps.start.slice(0, 4)}, too recently for citations, so we counted papers. In {clps.comparison.month} months, {landers === clps.missions.length ? spell(landers) : `the ${spell(landers)}`} landers{landers === clps.missions.length ? '' : ' with published papers'} have produced <strong>{int(clps.comparison.clps)} peer-reviewed papers</strong>{#if clpsCost != null && landers === clps.missions.length}, at a combined cost of {moneyWords(clpsCost)}{/if}.</p>{/if}
 		</div></section>
 		<!-- CLPS_COMPARE -->
-		<section data-step><div class="step">
-			<p>How does that stack up? Compare {spell(clps.comparators.length)} earlier NASA missions to the Moon and Mars: {listify(clps.comparators.map((c) => `${c.name} (${money(c.cost)})`))}.</p>
-			{#if clps.comparison?.comparators.length}{@const [first, ...rest] = clps.comparison.comparators}<p>In their first {clps.comparison.month} months, {first.name} had {int(first.papers)} peer-reviewed papers published.{#each rest as c (c.id)}{' '}{c.name} had {int(c.papers)}.{/each} {#if clps.comparison.behindAll}At the same point, <strong>all {spell(landers)} CLPS landers combined have resulted in fewer papers than {clps.comparators.length === 2 ? 'either' : 'any'} mission had alone.</strong>{:else}At the same point, all {spell(landers)} CLPS landers combined are keeping pace with those missions.{/if}</p>{/if}
+		<section data-step data-scrub><div class="step">
+			{#if clpsCompared.length}
+				{#if clps.comparison.behindAll}<p><strong>{upperFirst(spell(clpsCompared.length))} earlier NASA missions to the Moon and Mars each had more papers on {clpsCompared.length === 1 ? 'its' : 'their'} own than all {spell(landers)} landers combined.</strong></p>{:else}<p>Compare {spell(clpsCompared.length)} earlier NASA missions to the Moon and Mars.</p>{/if}
+				<p>In their first {clps.comparison.month} months, {listify(clpsCompared.map((c) => `${c.name}${c.cost != null ? ` (${moneyWords(c.cost)})` : ''} had ${int(c.papers)}`))}.{#if !clps.comparison.behindAll}{' '}All {spell(landers)} CLPS landers combined are keeping pace.{/if}</p>
+			{/if}
+			{#if clpsLate.length}<p class="aside">{listify(clpsLate.map((p) => p.name))} began work more than a year after the first CLPS launch, so {clpsLate.length === 1 ? 'it has' : 'they’ve'} had less time to publish.</p>{/if}
 		</div></section>
-		<!-- CLOSE: every mission back in the launch grid -->
+		<!-- CLOSE: every mission back in the launch grid, the concession and the verdict -->
 		<section data-step><div class="step">
-			<p>There are many good reasons to fly small missions. They <strong>train the next generation</strong> of scientists and engineers, <strong>try out new technology</strong>, <strong>open access to space</strong> to more teams and institutions, and many are driven by <strong>genuine scientific questions</strong>.</p>
-		</div></section>
-		<!-- CLOSE_LIMITS: the same grid -->
-		<section data-step><div class="step">
-			{#if lower > 0}<p>But the data suggests <strong>small missions won’t replace dedicated mid- and large-class science missions</strong>. {#if everyLower}In all {spell(byDivision.length)} divisions we compared{:else}In {spell(lower)} of the {spell(byDivision.length)} divisions we compared{/if}, missions at {money(reference)} or less produced fewer top-10% papers per mission than their costlier counterparts.</p>{/if}
-			<p class="aside">With {int(threshold.missions)} missions at or under {money(reference)}, one mission can move a group’s numbers, and none of this sets a right price for a mission. Each division’s record is below, mission by mission.</p>
+			<p>Small missions are still worth flying. They train scientists and engineers, prove new technology, and give more teams a way into space.</p>
+			{#if lower > 0}
+				<p>{#if verdict}<strong>But they can’t make up for the science of larger missions.</strong>{' '}{/if}{#if dollarOver.length}Larger missions drew more citations per dollar in {dollarOver.length === byDivision.length ? `all ${spell(byDivision.length)}` : `${spell(dollarOver.length)} of the ${spell(byDivision.length)}`} divisions we compared{:else}Larger missions produced more top-10% papers per mission in {everyLower ? `all ${spell(byDivision.length)}` : `${spell(lower)} of the ${spell(byDivision.length)}`} divisions we compared{/if}{#if failure.higher === 'under'}, and small missions failed more often{/if}.</p>
+			{/if}
+			<p class="aside">None of this says what a mission should cost. See <a href={methodsHref()}>how we measured it</a> and each division’s record below.</p>
 		</div></section>
 	{/snippet}
 </Scroller>
@@ -335,17 +416,20 @@
 	/* a sideways finger skims the columns; an upward one still scrolls the page */
 	.stage.skimming { touch-action: pan-y; }
 	.caption { min-height: 28px; padding-block: 10px 4px; }
-	.thesis { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: center; margin: 0; font-weight: 300; font-size: clamp(36px, 6vw, 82px); line-height: 1.08; letter-spacing: -0.04em; text-shadow: 0 0 24px var(--black), 0 0 8px var(--black); opacity: 0; transition: opacity 400ms linear; pointer-events: none; }
+	/* legend swatches inline in the caption, drawn from the same .mark-* classes as the squares */
+	.caption :global(.swatch) { display: inline-block; width: 11px; height: 11px; margin: 0 5px -1px 10px; }
+	.caption :global(.swatch:first-child) { margin-left: 0; }
+	.key { display: inline-block; width: 18px; margin: 0 5px 4px 10px; border-top: 2px solid var(--neptune); }
+	.key:first-child { margin-left: 0; }
+	.key.spend { border-top: 1px dashed var(--dust); }
+	.thesis { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: center; margin: 0; font-weight: 300; font-size: clamp(34px, 5.4vw, 76px); line-height: 1.08; letter-spacing: -0.04em; text-shadow: 0 0 24px var(--black), 0 0 8px var(--black); opacity: 0; transition: opacity 400ms linear; pointer-events: none; }
 	.thesis.visible { opacity: 1; }
+	.cue { position: absolute; left: 0; bottom: 8px; z-index: 2; margin: 0; font-size: 14px; color: var(--dust); opacity: 0; transition: opacity 400ms linear; pointer-events: none; }
+	.cue.visible { opacity: 1; }
+	.cue::after { content: ''; display: block; width: 1px; height: 28px; margin-top: 8px; background: var(--dust); }
 	.byline { margin-top: 24px; font-weight: 400; font-size: 15px; line-height: 1.5; letter-spacing: 0; color: var(--dust); }
 	.photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; opacity: 0; transition: opacity 400ms linear; pointer-events: none; }
 	.photo.visible { opacity: 1; }
-	.plot { position: absolute; inset: 0; opacity: 0; transition: opacity 400ms linear; pointer-events: none; }
-	.plot.visible { opacity: 1; }
-	.figure { position: absolute; top: 0; left: 0; z-index: 2; margin: 0; opacity: 0; transition: opacity 400ms linear; pointer-events: none; }
-	.figure.visible { opacity: 1; }
-	.figure b { font-weight: 300; font-size: clamp(40px, 6vw, 68px); line-height: 1; letter-spacing: -0.04em; }
-	.figure span { font-size: clamp(15px, 1.6vw, 20px); color: var(--dust); }
 	.step { font-size: clamp(17px, 0.6vw + 11px, 19px); line-height: 1.5; }
 	.step p + p { margin-top: 1em; }
 	.step .aside { font-size: 15px; line-height: 1.5; color: var(--dust); }

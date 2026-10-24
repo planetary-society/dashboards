@@ -18,6 +18,7 @@ export function pct(share) {
 	if (share == null) return '—';
 	const p = share * 100;
 	if (p === 0) return '0%';
+	if (p < 0.01) return 'under 0.01%'; // two decimals would print a real share as "0.00%"
 	if (p < 1) return `${p.toFixed(2)}%`;
 	if (p < 10) return `${p.toFixed(1)}%`;
 	return `${Math.round(p)}%`;
@@ -32,6 +33,17 @@ export function money(millions) {
 	}
 	if (millions < 10) return `$${millions.toFixed(1)}M`;
 	return `$${Math.round(millions)}M`;
+}
+
+/** $M in running prose, TPS style: "$150 million", "$23.5 million", "$1.4 billion". */
+export function moneyWords(millions) {
+	if (millions == null) return '—';
+	if (millions >= 1000) {
+		const b = millions / 1000;
+		return `$${b >= 10 ? Math.round(b) : +b.toFixed(1)}\u00a0billion`;
+	}
+	// a no-break space: "$4" never ends one line with "billion" starting the next
+	return `$${millions < 10 ? +millions.toFixed(1) : Math.round(millions)}\u00a0million`;
 }
 
 /** Round axis values: "$1B", not "$1.0B". */
@@ -65,6 +77,14 @@ export function longDate(iso) {
 	return `${MONTHS[m - 1]} ${d}, ${y}`;
 }
 
+const AP_MONTHS = ['Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'];
+
+/** ISO date → "Oct. 20, 2026" (TPS/AP: abbreviate the long months only with a day). */
+export function apDate(iso) {
+	const [y, m, d] = (iso ?? '').slice(0, 10).split('-').map(Number);
+	return m && d ? `${AP_MONTHS[m - 1]} ${d}, ${y}` : longDate(iso);
+}
+
 /** "five" → "Five": sentence-cases a spelled number or any other opening word. */
 export const upperFirst = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
 
@@ -73,9 +93,9 @@ const NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'sev
 /** AP style: spell out whole numbers below 10. */
 export const spell = (n) => (Number.isInteger(n) && n >= 0 && n < 10 ? NUMBER_WORDS[n] : int(n));
 
-/** "a", "a and b", "a, b and c" (AP: no serial comma); `conj` swaps the "and". */
+/** "a", "a and b", "a, b, and c" (TPS keeps the serial comma); `conj` swaps the "and", and "&" (a byline) takes no serial comma. */
 export const listify = (items, conj = 'and') =>
-	items.length < 3 ? items.join(` ${conj} `) : `${items.slice(0, -1).join(', ')} ${conj} ${items.at(-1)}`;
+	items.length < 3 ? items.join(` ${conj} `) : `${items.slice(0, -1).join(', ')}${conj === '&' ? '' : ','} ${conj} ${items.at(-1)}`;
 
 /**
  * A paper's byline from ADS "Last, First" names: one author in full; two as "A & B"; up to four as

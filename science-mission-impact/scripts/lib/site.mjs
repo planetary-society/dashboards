@@ -6,7 +6,7 @@
  * the same inputs always give the same bytes.
  */
 
-import { buildDiscussion } from './public.mjs';
+import { buildDiscussion, divisionFacts } from './public.mjs';
 import { byText } from './util.mjs';
 
 /** Actual adjusted cost, then name; missions without a cost sort last. */
@@ -82,8 +82,9 @@ export function buildSite({
 		filters: snapshot.filters,
 		story: buildDiscussion(divisionDocs, {
 			thresholdCost: config.thresholdCost,
-			timingDivision: config.storyTimingDivision ?? null
+			focusDivision: config.storyDivision ?? null
 		}),
+		divisionFacts: divisionFacts(divisionDocs, { thresholdCost: config.thresholdCost }),
 		clps,
 		kinds
 	};

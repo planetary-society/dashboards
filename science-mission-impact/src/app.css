@@ -215,9 +215,6 @@ svg text {
   background: var(--square);
 }
 
-.mark-lit {
-  background: var(--dust);
-}
 
 .mark-outline {
   background: transparent;
@@ -228,37 +225,30 @@ svg text {
   background: var(--neptune);
 }
 
-.mark-none {
-  background: var(--flame);
-}
 
-.mark-no_papers {
-  background: transparent;
-  box-shadow: inset 0 0 0 1px var(--flame);
-}
 
-.mark-failure {
-  position: relative;
-  overflow: hidden;
-  background: transparent;
+
+
+/* The story's outcome marks: an outright failure is an X, a partial outcome one stroke. */
+.mark-lost,
+.mark-partial {
+  background: var(--square);
   box-shadow: inset 0 0 0 1px var(--soil);
 }
 
-.mark-unavailable {
-  background: transparent;
-  border: 1px dashed var(--soil);
+.mark-lost {
+  background:
+    linear-gradient(to top right, transparent calc(50% - 0.75px), var(--flame) 0 calc(50% + 0.75px), transparent 0),
+    linear-gradient(to top left, transparent calc(50% - 0.75px), var(--flame) 0 calc(50% + 0.75px), transparent 0),
+    var(--square);
 }
 
-.mark-failure::after {
-  content: "";
-  position: absolute;
-  left: -20%;
-  top: 50%;
-  width: 140%;
-  height: 1px;
-  background: var(--flame);
-  transform: rotate(-45deg);
+.mark-partial {
+  background:
+    linear-gradient(to top right, transparent calc(50% - 0.75px), var(--flame) 0 calc(50% + 0.75px), transparent 0),
+    var(--square);
 }
+
 
 /* Paper kinds. Shared by the kind bars and their legend. The two science kinds are the two
    blues; the four others are greys about 21 L* apart on black (92, 70, 49, 27), so adjacent

@@ -185,19 +185,3 @@ export function citationsByYearOffset(windowCitations, startYear, buckets) {
 	return out;
 }
 
-/**
- * Papers per year since science start for the mission-list strip: index 0 is
- * the science-start year, capped at `cap` entries and at the as-of year.
- */
-export function buildStrip({ papersByYear, startYear, asOfYear, cap }) {
-	if (!Number.isFinite(startYear)) return [];
-	const folded = foldYears(papersByYear, asOfYear);
-	const length = Math.min(cap, Math.max(0, asOfYear - startYear + 1));
-	const out = new Array(length).fill(0);
-	for (const [year, count] of folded) {
-		const index = year - startYear;
-		if (index < 0 || index >= length) continue;
-		out[index] += count;
-	}
-	return out;
-}

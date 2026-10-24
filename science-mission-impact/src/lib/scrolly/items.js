@@ -32,7 +32,7 @@ export function withHidden(items, tiles, fallbackPos) {
 }
 
 /** Mission marks on the continuous cost axis; missions at or under the threshold are emphasised. */
-export function costItems(tiles, layout, { scope, top, unranked, referenceCost }) {
+export function costItems(tiles, layout, { scope, top, unranked }) {
 	const rulers = divisionRulers(tiles, scope);
 	const items = new Map();
 	for (const t of tiles) {
@@ -45,30 +45,33 @@ export function costItems(tiles, layout, { scope, top, unranked, referenceCost }
 			variant: 'outline',
 			inner: innerSide(share, rulers.get(t.division), MIN_FILL_PX / p.s),
 			filled,
-			emph: filled && t.cost > 0 && t.cost <= referenceCost
+			emph: filled && t.size === 'under'
 		});
 	}
 	return items;
 }
 
-/** Partial or total failures carry the red X; every other placed mission stays solid. */
+/** An outright failure carries the red X, a partial failure or partial success one red stroke; every other placed mission stays solid. */
 export function failureItems(tiles, layout) {
 	const items = new Map();
 	for (const t of tiles) {
 		const p = layout.pos.get(t.id);
 		if (!p) continue;
-		items.set(t.id, { ...p, variant: t.shortfall ? 'shortfall' : 'solid' });
+		items.set(t.id, { ...p, variant: t.failed ? 'lost' : t.shortfall ? 'partial' : 'solid' });
 	}
 	return items;
 }
 
-/** Citations per dollar: a square with any citations is lit, one with none is empty, a failure is slashed. */
-export function perDollarItems(tiles, layout) {
+/**
+ * Whether a mission ever produced a top-10% paper: washed blue if it did; an empty square if it
+ * worked and didn't; the red X of an outright failure, carried over from the failure step.
+ */
+export function firstTopItems(tiles, layout, scope) {
 	const items = new Map();
 	for (const t of tiles) {
 		const p = layout.pos.get(t.id);
 		if (!p) continue;
-		items.set(t.id, { ...p, variant: t.failed ? 'failure' : (t.citations ?? 0) > 0 ? 'lit' : 'outline' });
+		items.set(t.id, { ...p, variant: t.first[scope].state === 'reached' ? 'reached' : t.failed ? 'lost' : 'outline' });
 	}
 	return items;
 }

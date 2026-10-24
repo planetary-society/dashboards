@@ -2,7 +2,7 @@
 	import Story from '$lib/scrolly/Story.svelte';
 	import Seo from '$lib/ui/Seo.svelte';
 	import { divisionHref } from '$lib/paths.js';
-	import { int, money, yearSpan } from '$lib/format.js';
+	import { int, moneyWords, yearSpan } from '$lib/format.js';
 
 	let { data } = $props();
 	// Divisions, adjusted dollar year and window policy come from the layout.
@@ -20,18 +20,18 @@
 
 <div class="wrap">
 	<section id="divisions" class="doors" aria-labelledby="divisions-title">
-		<h2 id="divisions-title">Explore Data for Each Division</h2>
+		<h2 id="divisions-title">Explore each division’s data</h2>
 		<ul>
 			{#each site.divisions as d (d.slug)}
 				<li>
 					<a href={divisionHref(d.slug)}>
 						<span class="name">{d.name}</span>
 						<span class="fact">
-							<b>{int(d.missions)}</b> missions, <b>{int(d.papers)}</b> tracked publications, <b>{int(d.citations)}</b> citations{#if d.publicationYears}, published {yearSpan(d.publicationYears)}{/if}
+							<b>{int(d.missions)}</b> missions, <b>{int(d.papers)}</b> tracked publications{#if d.publicationYears}{' '}({yearSpan(d.publicationYears)}){/if}, <b>{int(d.citations)}</b> citations
 						</span>
 						{#if bandOf.get(d.slug)?.p25 != null}
 							{@const b = bandOf.get(d.slug)}
-							<span class="fact">Counting its missions from cheapest to costliest, the middle half of its top-10% papers came from missions costing <b>{money(b.p25)}</b> to <b>{money(b.p75)}</b>.</span>
+							<span class="fact">Ranked by the cost of the mission that produced them, the middle half of its top-10% papers came from missions costing <b>{moneyWords(b.p25)}</b> to <b>{moneyWords(b.p75)}</b>.</span>
 						{/if}
 					</a>
 				</li>

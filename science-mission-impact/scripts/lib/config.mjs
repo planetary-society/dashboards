@@ -38,10 +38,10 @@ export function validateConfig(config) {
 		labels.add(d.statsLabel);
 	}
 
-	// Which division's time to a first top paper the story walks through is an
+	// Which division the story walks through (its citation primer and running total) is an
 	// editorial choice, so it is configuration too; it must name a division.
-	if (config.storyTimingDivision !== undefined && !slugs.has(config.storyTimingDivision)) {
-		fail(`storyTimingDivision must be a division slug, got ${JSON.stringify(config.storyTimingDivision)}`);
+	if (config.storyDivision !== undefined && !slugs.has(config.storyDivision)) {
+		fail(`storyDivision must be a division slug, got ${JSON.stringify(config.storyDivision)}`);
 	}
 
 	// The cost line the story compares either side of is an editorial choice ("$150M or less").

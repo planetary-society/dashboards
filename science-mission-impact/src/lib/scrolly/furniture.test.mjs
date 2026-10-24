@@ -17,7 +17,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { compile } from 'svelte/compiler';
 import { render } from 'svelte/server';
 import { scaleLinear, scaleLog } from 'd3-scale';
-import { waffleLayout } from './layouts.js';
+import { splitLayout, focusLayout, costLayout } from './layouts.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const lib = join(here, '..');
@@ -56,54 +56,6 @@ const referenceCost = 100;
 const costTicks = [10, 100, 1000, 10000];
 // the cost layout's x, as the later states borrow it: a log scale inside a 96px label gutter
 const x = scaleLog().domain([5, 20000]).range([105, 867]);
-
-// --- ComparisonLabels -----------------------------------------------------------------------
-
-const side = (missions, failed, withTop, top10) => ({ missions, failed, withTop, top10, top10PerMission: missions ? top10 / missions : null });
-const comparison = {
-	divisions: ['astrophysics', 'earth', 'heliophysics', 'planetary'],
-	unavailable: 0,
-	// the panels show each division apart, not the equal-weight averages or the pooled groups
-	equalWeight: { under: 3.637, over: 127.959 },
-	groups: [
-		{ key: 'under', missions: 35, failed: 7, withTop: 10, top10: 160.207, top10PerMission: 4.577 },
-		{ key: 'over', missions: 94, failed: 7, withTop: 87, top10: 11205.292, top10PerMission: 119.205 }
-	],
-	byDivision: [
-		{ division: 'astrophysics', name: 'Astrophysics', under: side(6, 1, 1, 1.15), over: side(19, 0, 19, 4983.749) },
-		{ division: 'earth', name: 'Earth Science', under: side(12, 2, 2, 1.333), over: side(28, 3, 25, 3845.667) },
-		{ division: 'heliophysics', name: 'Heliophysics', under: side(12, 2, 5, 148.274), over: side(17, 0, 17, 1294.226) },
-		{ division: 'planetary', name: 'Planetary Science', under: side(5, 2, 2, 9.45), over: side(30, 4, 26, 1081.65) }
-	]
-};
-
-test('ComparisonLabels prerenders one bar pair per division either side of the threshold, on one shared ruler', async () => {
-	const Component = await load('ComparisonLabels.svelte');
-	const { body } = render(Component, { props: { comparison, referenceCost: 150, visible: true } });
-	for (const t of ['Average number of top-10% papers contributed by a mission', '$150M or less', 'Over $150M']) assert.ok(body.includes(t), t);
-	for (const [name, under, over] of [
-		['Astrophysics', '0.2', '262'],
-		['Earth Science', '0.1', '137'],
-		['Heliophysics', '12', '76'],
-		['Planetary Science', '1.9', '36']
-	]) {
-		assert.match(body, new RegExp(`>${under}<[^]*?>${over}<[^]*?>${name}<`), `${name}: ${under} against ${over}`);
-	}
-	assert.ok(!body.includes('>3.6<') && !body.includes('>128<'), 'not the equal-weight averages');
-	assert.ok(!body.includes(' missions<') && !body.includes(' failed'), 'no mission or failure counts under the bars');
-	assert.equal((body.match(/height: max\(2px, 100%\)/g) ?? []).length, 1, 'only the tallest bar of all four fills its plot');
-	assert.match(body, /class="bars[^"]*\bvisible\b/);
-	clean(body);
-});
-
-test('ComparisonLabels shows a dash, not NaN, for a side with no missions', async () => {
-	const Component = await load('ComparisonLabels.svelte');
-	const empty = { ...comparison, byDivision: [{ ...comparison.byDivision[0], under: side(0, 0, 0, 0) }, comparison.byDivision[1]] };
-	const { body } = render(Component, { props: { layout: { blocks: [] }, comparison: empty, referenceCost: 150, compact: true } });
-	assert.match(body, />—</);
-	assert.equal((body.match(/height: max\(2px, 0%\)/g) ?? []).length, 4, 'hidden bars sit at their 2px floor');
-	clean(body);
-});
 
 // --- Skyline --------------------------------------------------------------------------------
 
@@ -146,43 +98,6 @@ test('Skyline before it rises: a zero count and flat columns', async () => {
 	const { body } = render(Component, { props: { layout: skyline, total: 146165, rise: 0, ...stage, compact: true } });
 	assert.match(body, />0</);
 	assert.match(body, /scaleY\(0\)/);
-	clean(body);
-});
-
-// --- FailureLabels --------------------------------------------------------------------------
-
-const failure = {
-	statuses: ['failure', 'partial failure', 'partial success'],
-	under: { missions: 40, failed: 9, rate: 0.225 },
-	over: { missions: 94, failed: 7, rate: 7 / 94 },
-	higher: 'under',
-	byDivision: [
-		{ division: 'astrophysics', name: 'Astrophysics', under: { missions: 12, failed: 3 }, over: { missions: 22, failed: 1 } },
-		{ division: 'earth', name: 'Earth Science', under: { missions: 0, failed: 0 }, over: { missions: 40, failed: 2 } }
-	]
-};
-const failureL = {
-	pos: new Map(),
-	s: 18,
-	stacked: false,
-	left: 236,
-	headH: 76,
-	bottomY: 300,
-	dividerX: 450,
-	underRight: 430,
-	overLeft: 470,
-	rows: [
-		{ division: 'astrophysics', label: 'Astrophysics', y: 76, h: 112, band: false, nameY: 81, figuresY: 170, under: 12, over: 22 },
-		{ division: 'earth', label: 'Earth Science', y: 188, h: 112, band: true, nameY: 193, figuresY: 282, under: 0, over: 40 }
-	]
-};
-
-test('FailureLabels prerenders both rates, the division names and n of m per side', async () => {
-	const Component = await load('FailureLabels.svelte');
-	const { body } = render(Component, { props: { layout: failureL, failure, referenceCost: 150, visible: true } });
-	for (const t of ['$150M or less', 'Over $150M', '>23%<', '>7.4%<', '>Astrophysics<', '>Earth Science<', '3 of 12', '1 of 22', '2 of 40']) assert.ok(body.includes(t), t);
-	assert.ok(!body.includes('0 of 0'), 'a side with no missions prints nothing');
-	assert.equal((body.match(/class="band[ "]/g) ?? []).length, 2);
 	clean(body);
 });
 
@@ -250,79 +165,6 @@ test('ClpsChart end-label blocks never touch, on a phone or not', async () => {
 		assert.equal(blocks.length, 3);
 		for (let i = 1; i < blocks.length; i++) assert.ok(blocks[i].top - blocks[i - 1].last >= apart - 1e-9, `compact=${compact}: block ${i} clears the one above`);
 	}
-});
-
-// --- PerDollarAxis --------------------------------------------------------------------------
-
-const scale = scaleLog().domain([7.46, 47132]).range([0, 1]).clamp(true);
-const dollar = {
-	pos: new Map(),
-	x,
-	left: 236,
-	top: 28,
-	bottomY: 568,
-	scale,
-	rateTicks: [10, 100, 1000, 10000],
-	rows: [
-		{ slug: 'astrophysics', label: 'Astrophysics', missions: 25, zeros: 1, y: 28, h: 180, band: false, shelfY: 202, curveTop: 40 },
-		{ slug: 'earth', label: 'Earth Science', missions: 40, zeros: 9, y: 208, h: 180, band: true, shelfY: 382, curveTop: 220 },
-		{ slug: 'planetary', label: 'Planetary Science', missions: 35, zeros: 7, y: 388, h: 180, band: false, shelfY: 562, curveTop: 400 }
-	]
-};
-
-const perDollar = [
-	{
-		division: 'astrophysics',
-		name: 'Astrophysics',
-		groups: [
-			{ key: 'under', missions: 3, cost: 38.9, citations: 178, perHundredM: 457.584 },
-			{ key: 'over', missions: 22, cost: 34440.6, citations: 1251426, perHundredM: 3633.578 }
-		]
-	},
-	// a side with no missions has no rate: it prints as a dash, never as a zero
-	{
-		division: 'earth',
-		name: 'Earth Science',
-		groups: [
-			{ key: 'under', missions: 0, cost: 0, citations: 0, perHundredM: null },
-			{ key: 'over', missions: 40, cost: 30716.5, citations: 595905, perHundredM: 1940.0 }
-		]
-	},
-	// a measured zero stays a zero
-	{
-		division: 'planetary',
-		name: 'Planetary Science',
-		groups: [
-			{ key: 'under', missions: 3, cost: 82.1, citations: 0, perHundredM: 0 },
-			{ key: 'over', missions: 32, cost: 38536.4, citations: 157632, perHundredM: 409.047 }
-		]
-	}
-];
-
-test('PerDollarAxis prerenders each division with its rate either side of the reference', async () => {
-	const Component = await load('PerDollarAxis.svelte');
-	const { body } = render(Component, { props: { layout: dollar, perDollar, referenceCost, ticks: costTicks, ...stage } });
-	for (const name of ['Astrophysics', 'Earth Science', 'Planetary Science']) assert.ok(body.includes(`>${name}<`), name);
-	assert.ok(body.includes('$100M or less: 458 · Over $100M: 3,634'));
-	assert.ok(body.includes('$100M or less: — · Over $100M: 1,940'));
-	assert.ok(body.includes('$100M or less: 0 · Over $100M: 409'));
-	// the rate scale is labelled once, on the first row
-	for (const r of ['10', '100', '1k', '10k']) assert.match(body, new RegExp(`class="rate-label[^"]*"[^>]*>${r}<`), r);
-	assert.equal((body.match(/class="rate-label[ "]/g) ?? []).length, 4);
-	assert.equal((body.match(/class="shelf[ "]/g) ?? []).length, 3, 'one shelf per row');
-	assert.match(body, /class="reference[ "]/);
-	clean(body);
-});
-
-test('PerDollarAxis on a phone: both rates in short form, each side named, one rate label', async () => {
-	const Component = await load('PerDollarAxis.svelte');
-	const { body } = render(Component, { props: { layout: { ...dollar, left: 0 }, perDollar, referenceCost, ticks: costTicks, ...stage, compact: true } });
-	assert.ok(body.includes('≤$100M 458 · over 3.6k'));
-	assert.ok(body.includes('≤$100M — · over 1.9k'));
-	assert.ok(body.includes('≤$100M 0 · over 409'));
-	assert.equal((body.match(/class="rate-label[ "]/g) ?? []).length, 1, 'the top rule only');
-	assert.match(body, /class="rate-label[^"]*\binside\b[^>]*>10k</);
-	clean(body);
 });
 
 // --- KindBars / KindExample -------------------------------------------------------------------
@@ -414,55 +256,56 @@ test('KindExample prerenders the name, the cost line, every title and a note', a
 	clean(body);
 });
 
-// --- Waffle ---------------------------------------------------------------------------------
+// --- SplitLabels / Primer / FocusChart / LanesChart: the packaged data on a real layout ------
 
-test('Waffle prerenders one box per unit, the threshold missions first in blue, a partial box and the legend', async () => {
-	const Component = await load('Waffle.svelte');
-	const layout = waffleLayout(135129, 1329, 704, 666, { top: 96 });
-	const { body } = render(Component, { props: { layout, referenceCost: 150, visible: true, width: 704, height: 666 } });
-	const rects = [...body.matchAll(/<rect class="(on|off)\b[^"]*" x="([\d.]+)" y="([\d.]+)" width="([\d.]+)" height="([\d.]+)"/g)].map(([, c, ...n]) => [c, ...n.map(Number)]);
-	// every cell, then the partial fill drawn over cell 13
-	assert.equal(rects.length, layout.cells + 1);
-	const cells = rects.slice(0, layout.cells);
-	assert.equal(cells.filter(([c]) => c === 'on').length, 13);
-	assert.ok(cells.every(([c], i) => (c === 'on') === (i < 13)), 'cells 0–12 blue, the rest grey');
-	const [c, x, y, , h] = rects.at(-1);
-	assert.ok(c === 'on' && x === cells[13][1], 'the partial fill sits on cell 13');
-	assert.ok(Math.abs(h - layout.size * 0.29) < 1e-9 && Math.abs(y + h - (cells[13][2] + layout.size)) < 1e-9, 'filled 29% from the bottom');
-	for (const t of ['Missions at $150M or less', 'All other missions', '1 box = 100 mission papers']) assert.ok(body.includes(t), t);
-	assert.match(body, /class="waffle[^"]*\bvisible\b/);
-	clean(body);
+const site = JSON.parse(await readFile(join(lib, 'data/generated/site.json'), 'utf8'));
+const { tiles } = JSON.parse(await readFile(join(lib, 'data/generated/scrolly.json'), 'utf8'));
+const story = site.story;
+const ref = story.referenceCost;
+
+test('SplitLabels prerenders each block\'s figure and label over its icon array', async () => {
+	const groups = [{ key: 'under', ids: story.threshold.ids }, { key: 'over', ids: tiles.filter((t) => t.cost > ref).map((t) => t.id) }];
+	for (const [width, height, compact] of [[900, 600, false], [358, 380, true]]) {
+		const layout = splitLayout(width, height, groups, { headH: compact ? 64 : 96 });
+		const { body } = render(await load('SplitLabels.svelte'), { props: { layout, heads: [{ figure: '14 of 46', label: 'failed or fell short' }, { figure: '8 of 95', label: 'costlier' }], visible: true, compact } });
+		clean(body);
+		assert.match(body, /14 of 46/);
+		assert.match(body, /8 of 95/);
+	}
 });
 
-test('Waffle before the highlight: every box grey, no ring, one legend swatch for all missions', async () => {
-	const Component = await load('Waffle.svelte');
-	const layout = waffleLayout(135129, 1329, 704, 666, { top: 96 });
-	const { body } = render(Component, { props: { layout, referenceCost: 150, highlight: false, visible: true, width: 704, height: 666 } });
-	const rects = [...body.matchAll(/<rect class="(on|off)\b/g)].map(([, c]) => c);
-	assert.equal(rects.length, layout.cells, 'no partial fill');
-	assert.ok(rects.every((c) => c === 'off'), 'all grey');
-	assert.doesNotMatch(body, /class="ring[^"]*\bdone\b/);
-	assert.ok(body.includes('All missions') && !body.includes('Missions at $150M or less'));
+test('Primer prerenders a bar per citation count, the overflow bar, their top-10% parts and the cutoff', async () => {
+	const { body } = render(await load('Primer.svelte'), { props: { ...stage, primer: story.primer, years: 4, highlight: true } });
 	clean(body);
+	const tops = [...story.primer.top, story.primer.topOverflow].filter((t) => t > 0).length;
+	assert.equal((body.match(/<rect/g) ?? []).length, story.primer.counts.length + 1 + tops);
+	assert.match(body, new RegExp(`${story.primer.counts.length}\\+`));
+	assert.match(body, new RegExp(`about ${story.primer.cutoff} or more citations`));
+	assert.match(body, /first four years/);
 });
 
-test('Waffle builds from the top-left: half built shows the blue boxes first; built shows the ring and the count', async () => {
-	const Component = await load('Waffle.svelte');
-	const layout = waffleLayout(135129, 1329, 704, 666, { top: 96 });
-	const props = { layout, referenceCost: 150, visible: true, width: 704, height: 666 };
-	const cellsOf = (body) => [...body.matchAll(/<rect class="(on|off)([^"]*)"/g)].slice(0, layout.cells).map(([, c, rest]) => ({ on: c === 'on', hidden: /\bhidden\b/.test(rest) }));
+test('FocusChart prerenders the axis, a bar per mission with top papers, the line and its labels', async () => {
+	const focus = story.comparison.byDivision.find((d) => d.division === story.focusDivision);
+	const total = focus.under.top10 + focus.over.top10;
+	const layout = focusLayout(tiles, 900, 600, { division: focus.division, total });
+	assert.ok(Math.abs(layout.facts.total - total) < 0.5, 'the shares add back up to the division total');
+	const { body } = render(await load('FocusChart.svelte'), { props: { ...stage, layout, referenceCost: ref, largest: focus.over.largest, small: 'Seven missions', total: '1,093 top-10% papers', grow: 1, stack: 0, draw: 0, bars: true } });
+	clean(body);
+	assert.equal((body.match(/class="bar[ "]/g) ?? []).length, layout.facts.points.filter((p) => p.credit > 0).length);
+	assert.match(body, new RegExp(`${focus.over.largest.name} \\d`));
+	assert.match(body, /\$150M/);
+});
 
-	const half = render(Component, { props: { ...props, build: 0.5 } }).body;
-	const cells = cellsOf(half);
-	const shown = Math.round(layout.cells / 2);
-	assert.equal(cells.filter((c) => c.hidden).length, layout.cells - shown, 'about half hidden');
-	assert.ok(cells.every((c, i) => c.hidden === i >= shown), 'the shown ones are the first in reading order');
-	assert.ok(cells.filter((c) => c.on).every((c) => !c.hidden), 'the blue boxes are in first');
-	assert.doesNotMatch(half, /class="ring[^"]*\bdone\b/, 'no ring during the build-out');
-
-	const built = render(Component, { props: { ...props, build: 1 } }).body;
-	assert.ok(!/<rect[^>]*\bhidden\b/.test(built), 'every box visible');
-	assert.match(built, new RegExp(`<path class="ring[^"]*\\bdone\\b[^"]*" d="${layout.ring.d}" pathLength="1" stroke-dasharray="1"`));
-	assert.match(built, /<text class="count[^"]*\bdone\b[^>]*x="248"[^>]*>1,329 papers<\/text>/);
-	clean(built);
+test('LanesChart prerenders a band per compared division with its notes and both running lines', async () => {
+	const compared = new Set(story.comparison.divisions);
+	const divisions = site.divisions.filter((d) => compared.has(d.slug));
+	const layout = costLayout(tiles.filter((t) => compared.has(t.division)), 900, 600, { divisions });
+	const notes = Object.fromEntries(divisions.map((d) => [d.slug, { missions: `${d.slug} missions`, top: 'top', cited: 'cited', cost: 'spend' }]));
+	const { body } = render(await load('LanesChart.svelte'), { props: { ...stage, layout, scope: story.scope, referenceCost: ref, notes, spending: true } });
+	clean(body);
+	for (const d of divisions) assert.match(body, new RegExp(`${d.slug} missions`));
+	assert.equal((body.match(/class="top[ "]/g) ?? []).length, divisions.length);
+	assert.equal((body.match(/class="cost[ "]/g) ?? []).length, divisions.length);
+	assert.equal((body.match(/class="cited[ "]/g) ?? []).length, divisions.length);
+	assert.match(body, /cited/, 'the spending step reads citations against spending');
 });

@@ -113,10 +113,18 @@
 
 	/* The gap also holds the graphic still, so the step itself can be shorter than it would
 	   otherwise need to be. */
+	/* A step that only changes the graphic holds for most of a screen; one whose graphic builds
+	   as the reader scrolls (data-scrub) holds longer, so its build, which runs over about half
+	   of the step, takes about half a screen of scrolling. */
 	.steps :global([data-step]) {
-		min-height: 130vh;
-		min-height: 130svh;
+		min-height: 90vh;
+		min-height: 90svh;
 		pointer-events: none;
+	}
+
+	.steps :global([data-step][data-scrub]) {
+		min-height: 115vh;
+		min-height: 115svh;
 	}
 
 	.steps :global([data-step]:not(:last-child)) {
@@ -162,9 +170,9 @@
 		}
 
 		.steps :global([data-step]) {
-			/* a shorter hold: a step too long for it scrolls normally (the safety net above) */
-			min-height: 125vh;
-			min-height: 125svh;
+			/* a step too long for the hold scrolls normally (the safety net above) */
+			min-height: 90vh;
+			min-height: 90svh;
 			padding: 28px var(--gutter) 0;
 			background: var(--black);
 		}

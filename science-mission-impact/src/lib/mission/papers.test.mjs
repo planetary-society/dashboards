@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, it } from 'node:test';
 
-import { CSV_HEADER, buildSearchIndex, csvField, filterIndex, journalFromBibcode, rowAt, rowsFor, sortIndex, toCsv, topColumn } from './papers.js';
+import { CSV_HEADER, buildSearchIndex, csvField, filterIndex, journalFromBibcode, missionsCsv, rowAt, rowsFor, sortIndex, toCsv, topColumn } from './papers.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const HST_PAPERS = path.join(here, '..', '..', '..', 'static', 'data', 'papers', 'hst.json');
@@ -364,5 +364,23 @@ describe('the real hst papers file', { skip: !fs.existsSync(HST_PAPERS) && 'stat
 	it('writes a CSV with one line per row', () => {
 		const lines = toCsv(file.columns, ads).split('\r\n');
 		assert.equal(lines.length, file.rows + 1);
+	});
+});
+
+describe('missionsCsv', () => {
+	it('writes every scope, sizes each mission, and leaves unmeasured output blank', () => {
+		const scope = (papers, top1 = 0.5) => ({ papers, citations: papers * 10, top10: 1.5, top1, status: 'available' });
+		const missions = [
+			{ id: 'a', name: 'Alpha, Jr.', launchYear: 2001, type: 'Orbiter', cost: 150, size: 'under', failed: false, shortfall: true, indices: { h: 3, g: 4 },
+				full: scope(4), window: { ...scope(2), status: 'unavailable' }, lifetime: scope(9, null) },
+			{ id: 'b', name: 'Beta', launchYear: 2010, type: 'Lander', cost: 151, size: 'over', failed: true, shortfall: true, indices: {},
+				full: scope(0), window: scope(0), lifetime: scope(0, null) }
+		];
+		const [header, a, b] = missionsCsv(missions, { costBaseYear: 2025, url: (id) => `/m/${id}/` }).split('\r\n');
+		assert.equal(header, 'mission,id,launch_year,type,cost_millions_2025_usd,size,outcome,active_papers,active_citations,active_top10,active_top1,prime_papers,prime_citations,prime_top10,prime_top1,lifetime_papers,lifetime_citations,lifetime_top10,lifetime_top1,h_index,g_index,url');
+		assert.equal(a, '"Alpha, Jr.",a,2001,Orbiter,150,small,partial,4,40,1.5,0.5,,,,,9,90,1.5,,3,4,/m/a/');
+		assert.equal(b, 'Beta,b,2010,Lander,151,larger,lost,0,0,1.5,0.5,0,0,1.5,0.5,0,0,1.5,,,,/m/b/');
+		const uncosted = missionsCsv([{ ...missions[1], cost: null, size: null }], { costBaseYear: 2025 }).split('\r\n')[1];
+		assert.match(uncosted, /^Beta,b,2010,Lander,,,lost,/, 'no cost, no size');
 	});
 });

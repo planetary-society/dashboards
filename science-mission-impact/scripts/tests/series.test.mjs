@@ -4,7 +4,6 @@ import { describe, it } from 'node:test';
 import {
 	accumulateCitationYears,
 	buildLifetimeSeries,
-	buildStrip,
 	citationsByYearOffset,
 	foldYears,
 	monthOffset,
@@ -208,23 +207,3 @@ describe('window series', () => {
 	});
 });
 
-describe('buildStrip', () => {
-	it('starts at the science-start year and caps its length', () => {
-		const strip = buildStrip({
-			papersByYear: new Map([
-				[1997, 9],
-				[1998, 2],
-				[2000, 5]
-			]),
-			startYear: 1998,
-			asOfYear: 2026,
-			cap: 4
-		});
-		// The 1997 papers predate science start and are not in the strip.
-		assert.deepEqual(strip, [2, 0, 5, 0]);
-	});
-
-	it('is empty without a start year', () => {
-		assert.deepEqual(buildStrip({ papersByYear: new Map(), startYear: null, asOfYear: 2026, cap: 20 }), []);
-	});
-});

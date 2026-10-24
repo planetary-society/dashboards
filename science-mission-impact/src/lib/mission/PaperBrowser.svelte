@@ -11,6 +11,7 @@
 	import { int, plural } from '$lib/format.js';
 	import { view } from '$lib/state/view.svelte.js';
 	import { buildSearchIndex, filterIndex, sortIndex, rowsFor, journalFromBibcode, toCsv } from './papers.js';
+	import { downloadText } from '$lib/download.js';
 
 	let { missionId, name, initial, file } = $props();
 
@@ -88,15 +89,7 @@
 
 	function downloadCsv() {
 		if (!columns) return;
-		const blob = new Blob([toCsv(columns, adsAbstract)], { type: 'text/csv;charset=utf-8' });
-		const href = URL.createObjectURL(blob);
-		const link = document.createElement('a');
-		link.href = href;
-		link.download = `${missionId}-publications.csv`;
-		document.body.appendChild(link);
-		link.click();
-		link.remove();
-		setTimeout(() => URL.revokeObjectURL(href), 0);
+		downloadText(toCsv(columns, adsAbstract), `${missionId}-publications.csv`);
 	}
 
 	function metaLine(r) {

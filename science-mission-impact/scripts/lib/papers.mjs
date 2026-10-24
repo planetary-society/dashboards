@@ -60,12 +60,12 @@ export function buildPapersFile({ id, asOf, lifetimeRows, windowRows, fullRows =
 		columns.a.push(row.first_author ?? null);
 		columns.c.push(Number(row.citations ?? 0));
 		columns.s.push(Number(row.shared_by ?? 1));
-		columns.e.push(weight(row.cohort_top10_weight));
+		columns.e.push(weight(row.top10_weight));
 		columns.f.push(fullRow ? Number(fullRow.window_citations ?? 0) : null);
-		columns.fe.push(fullRow ? weight(fullRow.window_cohort_top10_weight) : null);
+		columns.fe.push(fullRow ? weight(fullRow.window_top10_weight) : null);
 		columns.f1.push(fullRow ? weight(top1Weight(fullRow.window_citations, fullTop1Cutoff)) : null);
 		columns.w.push(windowRow ? Number(windowRow.window_citations ?? 0) : null);
-		columns.we.push(windowRow ? weight(windowRow.window_cohort_top10_weight) : null);
+		columns.we.push(windowRow ? weight(windowRow.window_top10_weight) : null);
 		columns.w1.push(windowRow ? weight(top1Weight(windowRow.window_citations, top1Cutoff)) : null);
 		columns.i.push(curatedBibcodes.has(row.bibcode) ? 1 : 0);
 	}

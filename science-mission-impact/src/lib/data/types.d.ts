@@ -75,6 +75,13 @@ export interface Site {
 	/** The mission-selection sentence per division, verbatim from each run's `run.filter.description`. */
 	filters: Record<DivisionSlug, string>;
 	story: StoryFacts;
+	/** Each division's own rows of the story, read in every scope, for the division page's scope switch. */
+	divisionFacts: Record<DivisionSlug, Record<Scope, {
+		divisions: StoryFacts['divisions'][number];
+		failure: StoryFacts['failure']['byDivision'][number];
+		comparison: StoryFacts['comparison']['byDivision'][number] | null;
+		perDollar: StoryFacts['perDollar'][number] | null;
+	}>>;
 	/** CLPS running publications from the upstream latest export (smi.config.json clps). */
 	clps: ClpsFacts;
 	/** Paper kinds, full-mission scope, for the missions at or under the threshold; the classifications are an input file (smi.config.json paperKinds). */
@@ -109,21 +116,25 @@ export interface StoryFacts {
 		total: number; // costed missions
 		ids: string[];
 		papers: number; // under-threshold mission papers
-		papersAll: number; // the same over every mission
-		unavailable: number; // under-threshold missions without measured output
-		launchMedian: number | null;
+		costMedian: number | null; // median adjusted $M of the missions at or under the threshold
 	};
 	/** Shortfalls (Failure, Partial Failure, Partial Success: MissionRow.shortfall) either side of the threshold, every costed mission of every division. */
 	failure: {
 		statuses: string[];
-		under: ShortfallSide;
-		over: ShortfallSide;
+		// Wilson 95% interval for failed / missions; the costliest outright failure on the side, $M
+		under: ShortfallSide & { interval: [number, number] | null; lostCostMax: number | null };
+		over: ShortfallSide & { interval: [number, number] | null; lostCostMax: number | null };
 		higher: 'under' | 'over' | null; // strictly higher rate; null on a tie or an empty side
 		byDivision: { division: DivisionSlug; name: string; under: Omit<ShortfallSide, 'rate'>; over: Omit<ShortfallSide, 'rate'> }[];
 	};
 	divisions: {
 		division: DivisionSlug; name: string; missions: number; measuredMissions: number;
-		top10: number; share: number | null; costTotal: number;
+		top10: number; share: number | null;
+		missionsAll: number; // the division's costed missions
+		/** the small side's shares, all over the same missions: costed, with output measured in the scope */
+		missionShare: number | null;
+		costShare: number | null;
+		citationShare: number | null; // rankable divisions only
 	}[];
 	bands: { division: DivisionSlug; name: string; p25: number | null; p50: number | null; p75: number | null }[];
 	/**
@@ -133,14 +144,9 @@ export interface StoryFacts {
 	 */
 	comparison: {
 		divisions: DivisionSlug[];
-		unavailable: number; // costed missions of those divisions whose output was not measured, so counted on neither side
-		/** over every costed mission of every division: the largest cost at or under the threshold, the smallest above it */
-		gap: { below: number | null; above: number | null };
 		groups: ComparisonGroup[];
 		/** the same groups one rankable division at a time (config order), failures as zeros */
 		byDivision: { division: DivisionSlug; name: string; under: ComparisonDivisionSide; over: ComparisonDivisionSide }[];
-		/** the plain mean over byDivision of each side's top10PerMission, over divisions with at least one mission on both sides; null when none */
-		equalWeight: { under: number | null; over: number | null };
 	};
 	/**
 	 * Where the middle half of top papers sits across the rankable divisions: each division's
@@ -151,23 +157,15 @@ export interface StoryFacts {
 	 * of spending / of costed missions at p25 ≤ cost ≤ p75 (read off its top-10% cost curve).
 	 */
 	pooledBand: { divisions: DivisionSlug[]; p25: number; p50: number; p75: number; costShare: number; missionShare: number } | null;
-	/** The division whose timing the story walks through (smi.config.json storyTimingDivision), when rankable. */
-	timingDivision: DivisionSlug | null;
-	/** Years from project start (formulation) to a first top-10% paper, one row per rankable division. */
-	timing: {
-		division: DivisionSlug; name: string;
-		missions: number; // measured, with a cost
-		reached: number; // with a dated first top-10% paper and a formulation date
-		never: number;
-		under: { missions: number; reached: number; failed: number }; // the same, at or under the threshold
-		fastest: { id: string; name: string; cost: number; years: number } | null;
-		medianYears: number | null; // over the missions that reached one
-		/** the reached missions by cost (then name), cut at round(n/3) and round(2n/3); an empty third has null range and medians */
-		byCostThird: {
-			key: 'low' | 'mid' | 'high'; missions: number; costRange: [number, number] | null;
-			medianYears: number | null; medianBuildYears: number | null; // formulation to first top paper / to launch
-		}[];
-	}[];
+	/** The division the story walks through (smi.config.json storyDivision), when rankable. */
+	focusDivision: DivisionSlug | null;
+	/**
+	 * The story's primer on the focus division: its distinct papers in the scope by citation count
+	 * (`counts[c]` drew exactly c; `overflow` drew counts.length or more), the era-adjusted top-10%
+	 * papers among each (`top`, `topOverflow`; `topPapers` their sum) and the pooled top-10% cutoff
+	 * over every era (`cutoff`). Null without a focus division.
+	 */
+	primer: { division: DivisionSlug; name: string; counts: number[]; overflow: number; top: number[]; topOverflow: number; papers: number; cutoff: number; topPapers: number } | null;
 	/** Citations per $100M either side of the threshold, one row per rankable division. */
 	perDollar: {
 		division: DivisionSlug; name: string;
@@ -179,7 +177,6 @@ export interface StoryFacts {
 		margin: number | null; // |under − over| ÷ the higher rate; null when a rate is null or both are 0
 		largestUnder: { id: string; name: string; share: number } | null; // most-cited under mission, its share of the under side's citations
 	}[];
-	missingCosts: number;
 }
 
 export type ComparisonKey = 'under' | 'over'; // at or under the threshold (0 < cost <= referenceCost) / above it
@@ -205,11 +202,12 @@ export interface ComparisonGroup {
 	topType: { type: string; missions: number } | null; // most common mission type, ties by name
 }
 
-export type ComparisonDivisionSide = Pick<ComparisonGroup, 'missions' | 'failed' | 'withTop' | 'top10' | 'top10PerMission'>;
+export type ComparisonDivisionSide = Pick<ComparisonGroup, 'missions' | 'failed' | 'withTop' | 'top10' | 'top10PerMission' | 'largest'>;
 
 export interface ShortfallSide {
 	missions: number;
-	failed: number;
+	failed: number; // shortfalls: Failure, Partial Failure or Partial Success
+	lost: number; // outright failures (MissionRow.failed) among them
 	rate: number | null; // null for an empty side
 }
 
@@ -281,6 +279,8 @@ export interface Division {
 	/** Pooled statistics of every paper from the division's missions, a shared paper once; null when a scope reports no pool. */
 	stats: Record<Scope, DivisionScopeStats | null>;
 	/** null when the division is not rankable. lifetime[1] is always null (top 1% needs a window). */
+	/** The full-mission papers by citation count, as StoryFacts.primer publishes them for the focus division. */
+	citationHistogram: { full: { counts: number[]; overflow: number; top: number[]; topOverflow: number; papers: number } };
 	costCurves: { full: { 10: CostCurve; 1: CostCurve }; window: { 10: CostCurve; 1: CostCurve }; lifetime: { 10: CostCurve; 1: null } } | null;
 	/** Spearman rank correlation of each index with adjusted cost, over non-failed missions with a cost. */
 	indexCorrelation: { m: { rho: number | null; n: number }; h: { rho: number | null; n: number } };
@@ -333,21 +333,22 @@ export interface MissionRow {
 	id: string;
 	name: string;
 	cost: number | null; // adjusted LCC, $M 2025
+	size: MissionSize;
 	launchYear: number | null;
 	failed: boolean;
 	shortfall: boolean; // Failure, Partial Failure or Partial Success
 	type: string | null; // mission_type, e.g. "Orbiter"
 	indices: MissionIndices;
-	yearsToBuild: number | null; // formulation start to launch
 	papers: number | null; // lifetime
 	citations: number | null; // lifetime
 	hasThumb: boolean;
 	full: MissionScopeStats & { status: string }; // available | ...
 	window: MissionScopeStats & { status: string }; // rolling status: available | immature | ...
 	lifetime: MissionScopeStats;
-	/** papers per year since science start (index 0 = first year), capped at 20 */
-	strip: number[];
 }
+
+/** The story's membership, stamped by the packager: 'under' is 0 < cost <= the threshold; null without a cost. */
+export type MissionSize = 'under' | 'over' | null;
 
 export interface MissionScopeStats {
 	outputBasis: string;
@@ -479,20 +480,21 @@ export interface ScrollyTile {
 	launchYear: number | null;
 	launchDate: string | null; // YYYY-MM-DD
 	cost: number | null; // adjusted $M
+	size: MissionSize;
 	papers: number | null; // full-mission window
 	papersLifetime: number | null; // every paper on record, the mission page headline
 	citations: number | null; // full-mission window; what the per-dollar step divides by cost
-	yearsToBuild: number | null; // formulation start to launch
+	top10: number | null; // full-mission top-10% credit; the focus division's bars
 	hasThumb: boolean;
 	failed: boolean;
 	shortfall: boolean; // Failure, Partial Failure or Partial Success
 	/** of division top papers */
 	share: { full: { 10: number | null; 1: number | null }; window: { 10: number | null; 1: number | null }; lifetime: { 10: number | null; 1: null } };
-	/** only what the layouts read; the full FirstTopPaper is on the mission doc */
+	/** only whether it reached a top paper; the full FirstTopPaper is on the mission doc */
 	first: Record<Scope, LaneFirst>;
 }
 
-export type LaneFirst = Pick<FirstTopPaper, 'state' | 'yearsFromScienceStart' | 'yearsFromFormulation'>;
+export type LaneFirst = Pick<FirstTopPaper, 'state'>;
 
 export type KindKey = 'results' | 'data' | 'mission' | 'review' | 'future' | 'other';
 type KindCounts = Record<KindKey, { papers: number; citations: number }>;

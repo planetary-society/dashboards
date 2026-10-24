@@ -1,4 +1,4 @@
-import { longDate } from '../format.js';
+import { longDate, spell } from '../format.js';
 
 export const windowLabel = (policy) => policy?.kind === 'prime'
 	? 'Prime Mission Window' : `${policy.publicationYears}-year window`;
@@ -23,10 +23,10 @@ const citationClause = (p) => `Citations are counted through the ${ordinal(p.cit
 
 /** Two sentences on what a scope covers, for the hint beside each scope option. */
 export function scopeGloss(scope, { windowPolicy, fullPolicy } = {}) {
-	if (scope === 'full') return `Papers published from the first full month after science operations begin through ${fullPolicy.postEndYears} years after the mission ends. ${citationClause(fullPolicy)}`;
+	if (scope === 'full') return `Papers published from the first full month after science operations begin through ${spell(fullPolicy.postEndYears)} years after the mission ends. ${citationClause(fullPolicy)}`;
 	if (scope === 'window') return `${windowPolicy?.kind === 'prime'
-		? `Papers published from the first full month after science operations begin through ${windowPolicy.postPrimeYears} years after the prime mission ends.`
-		: `Papers from the first ${windowPolicy.publicationYears} years after science starts.`} ${citationClause(windowPolicy)}`;
+		? `Papers published from the first full month after science operations begin through ${spell(windowPolicy.postPrimeYears)} years after the prime mission ends.`
+		: `Papers from the first ${spell(windowPolicy.publicationYears)} years after science starts.`} ${citationClause(windowPolicy)}`;
 	return 'Every tracked publication to date, with every citation to date.';
 }
 

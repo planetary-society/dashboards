@@ -148,7 +148,7 @@ export function buildKinds({ kindsFile, missions, examples, smallMax, warnings }
 			throw new Error(`paper kinds: ${m.id} in-window rows give ${top10} top-10% credit, the mission says ${m.top10}`);
 		}
 	}
-	// Top-10% credit by kind: the same tie-weighted, era-adjusted credit the comparison counts.
+	// Top-10% credit by kind: the same tie-weighted credit the comparison counts.
 	const creditByKind = Object.fromEntries(KINDS.map((k) => [k.key, sum(built.map((b) => b.credit[k.key]))]));
 	const creditTotal = sum(Object.values(creditByKind));
 	const creditNonScience = sum(KINDS.filter((k) => !k.science).map((k) => creditByKind[k.key]));

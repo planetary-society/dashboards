@@ -27,7 +27,7 @@ describe('buildPapersFile', () => {
 			first_author: 'Beta',
 			citations: 5,
 			shared_by: 2,
-			cohort_top10_weight: 0,
+			top10_weight: 0,
 			in_window: true
 		},
 		{
@@ -37,7 +37,7 @@ describe('buildPapersFile', () => {
 			first_author: 'Alpha',
 			citations: 500,
 			shared_by: 1,
-			cohort_top10_weight: 1,
+			top10_weight: 1,
 			in_window: true
 		},
 		{
@@ -47,18 +47,18 @@ describe('buildPapersFile', () => {
 			first_author: null,
 			citations: 5,
 			shared_by: 1,
-			cohort_top10_weight: null,
+			top10_weight: null,
 			in_window: false
 		}
 	];
 	const windowRows = new Map([
-		['A-high', { bibcode: 'A-high', window_citations: 200, window_cohort_top10_weight: 1 }],
-		['B-low', { bibcode: 'B-low', window_citations: 133, window_cohort_top10_weight: 0 }]
+		['A-high', { bibcode: 'A-high', window_citations: 200, window_top10_weight: 1 }],
+		['B-low', { bibcode: 'B-low', window_citations: 133, window_top10_weight: 0 }]
 	]);
 	// The full-mission table reuses the window_* field names for its own scope's values.
 	const fullRows = new Map([
-		['A-high', { bibcode: 'A-high', window_citations: 260, window_cohort_top10_weight: 1 }],
-		['B-low', { bibcode: 'B-low', window_citations: 140, window_cohort_top10_weight: 0 }]
+		['A-high', { bibcode: 'A-high', window_citations: 260, window_top10_weight: 1 }],
+		['B-low', { bibcode: 'B-low', window_citations: 140, window_top10_weight: 0 }]
 	]);
 	const file = buildPapersFile({
 		id: 'demo',

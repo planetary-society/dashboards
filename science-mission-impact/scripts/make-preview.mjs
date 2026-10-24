@@ -35,7 +35,7 @@ const unranked = new Set(site.divisions.filter((d) => !d.rankable).map((d) => d.
 // The squares come from the same modules the site renders the step with: the unranked set,
 // the per-division ruler and the inner-square area are all decided there, so the card cannot
 // drift from the chart it is a picture of.
-const items = costItems(tiles, layout, { scope: story.scope, top: 10, unranked, referenceCost: story.referenceCost });
+const items = costItems(tiles, layout, { scope: story.scope, top: 10, unranked });
 const bandOf = new Map(story.bands.map((b) => [b.division, b]));
 const [x0, x1] = layout.x.range();
 

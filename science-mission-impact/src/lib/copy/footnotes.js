@@ -1,8 +1,8 @@
 // One registry for every chart footnote, so a term is defined once and the same way everywhere.
-// Entries are functions of the run's window policy (plus fullPolicy, asOf, costBaseYear and
-// referenceCost) so no number is typed into copy. `anchor` is the section of /methods that explains it.
+// Entries are functions of the run's window policy (plus fullPolicy, asOf, costBaseYear,
+// referenceCost and the page's scope) so no number is typed into copy. `anchor` is the section of /methods that explains it.
 
-import { money } from '../format.js';
+import { moneyWords, spell } from '../format.js';
 import { fullWindowLabel, fullWindowText, ordinal, publicationWindowText, windowLabel } from './window.js';
 
 const calendarYears = (p) => p.citationYears + 1;
@@ -11,11 +11,11 @@ export const FOOTNOTES = {
 	top10: {
 		anchor: '',
 		text: () =>
-			'Top 10%: among the 10% most-cited papers from this division’s missions, ranked against papers published around the same time.'
+			'Top-10% papers: the 10% most-cited papers from this division’s missions, all publication years ranked together. They mark the results other scientists used most.'
 	},
 	top1: {
 		anchor: '',
-		text: () => 'Top 1%: among the 1% most-cited papers from this division’s missions within the selected window. Not adjusted for publication year.'
+		text: () => 'Top 1%: among the 1% most-cited papers from this division’s missions within the selected window, all publication years ranked together.'
 	},
 	full: {
 		anchor: 'full-window',
@@ -30,7 +30,7 @@ export const FOOTNOTES = {
 	lifetime: {
 		anchor: '',
 		text: () =>
-			'Lifetime: all tracked publications to date. The most recent publication years are too new to rank, so those papers count as tracked publications but carry no top-10% score.'
+			'Lifetime: all tracked publications and every citation they have drawn to date. Older papers have had longer to collect citations, so they fill most of the Lifetime top 10%.'
 	},
 	shared: {
 		anchor: '',
@@ -39,26 +39,13 @@ export const FOOTNOTES = {
 	},
 	publications: {
 		anchor: 'mission-papers',
-		text: () => 'Tracked publications: peer-reviewed research papers we found for the mission. The list may not be complete.'
-	},
-	firstTop: {
-		anchor: '',
 		text: () =>
-			'First top-10% paper: the earliest-published paper that ranks in its division’s top 10% today, measured from the start of science operations. A paper dated before that start was added by hand and comes from cruise or flyby science.'
-	},
-	never: {
-		anchor: 'missions',
-		text: () => 'A failed mission counts as zero and is marked with a slash; a mission whose output could not be measured is left out, not counted as zero.'
+			'Tracked publications: peer-reviewed papers we found that name the mission or its instruments in their titles, abstracts, or keywords. Papers that used the data without naming it are missed.'
 	},
 	cost: {
 		anchor: 'cost',
-		text: (p) => `Cost: life-cycle cost including partner contributions, in ${p.costBaseYear} dollars (NASA’s New Start Index).`
-	},
-	costAxis: {
-		anchor: 'cost',
 		text: (p) =>
-			'Missions sit at their own cost on a log scale. The line is the running total of the division’s top-10% papers, adding missions from cheapest to costliest.' +
-			(p?.referenceCost ? ` The dashed line at ${money(p.referenceCost)} is an editorial comparison point, not an inferred scientific threshold.` : '')
+			`Life-cycle cost: NASA’s reported cost to build, launch, and operate a mission through its prime mission, plus documented partner contributions, in ${p.costBaseYear} dollars. Extended missions are not included.`
 	},
 	mindex: {
 		anchor: '',
@@ -83,10 +70,31 @@ export const FOOTNOTES = {
 		text: () =>
 			'riq (research impact quotient): 1,000 times the square root of tori, divided by the years since the mission’s first paper. A rate, not a total, so it does not keep growing with age the way the h-index and tori do.'
 	},
-	citations: {
-		anchor: '',
+	small: {
+		anchor: 'threshold',
+		text: (p) =>
+			`Small missions: a life-cycle cost of ${moneyWords(p.referenceCost)} or less, in ${p.costBaseYear} dollars. The line is our choice, not a NASA category.`
+	},
+	perDollar: {
+		anchor: 'per-dollar',
 		text: () =>
-			'Citations received by the tracked publications in the selected scope. The two windowed scopes count each paper’s citations only within its citation window.'
+			`Citations per ${moneyWords(100)}: each group’s citations in the window chosen above, divided by its total cost. Costs cover the prime mission only.`
+	},
+	perDollarChart: {
+		anchor: 'per-dollar',
+		text: () =>
+			`Each square is a mission at its cost and its citations per ${moneyWords(100)}, both on log scales. The dashed line is the best fit through the missions with citations; missions with none sit on the bottom row.`
+	},
+	failed: {
+		anchor: 'failures',
+		text: () => 'Lost outright, or a partial failure or partial success. A lost mission counts as zero science; a partial one counts what it published.'
+	},
+	citations: {
+		anchor: 'windows',
+		text: (p) =>
+			p.scope === 'lifetime'
+				? 'Citations: every citation these publications have drawn to date. Older missions have had longer to collect them.'
+				: `Citations: how often other papers cited these publications. Each paper’s citations count over the year it appeared and the ${spell((p.scope === 'window' ? p : p.fullPolicy).citationYears)} years after, so older missions get no head start.`
 	},
 	meanCitations: {
 		anchor: '',
@@ -100,31 +108,18 @@ export const FOOTNOTES = {
 	uncited: {
 		anchor: '',
 		text: () => 'Uncited publications: papers with no citations in the selected scope.'
-	},
-	topDecileShare: {
-		anchor: '',
-		text: () =>
-			'The share of all citations in the selected scope that went to the 10% most-cited papers from this division’s missions. The higher it is, the more attention concentrates on a few papers.'
-	},
-	cutoff: {
-		anchor: '',
-		text: () =>
-			'Cutoff: the fewest citations a paper needs to rank in the top share named, among every paper from this division’s missions in the selected scope, ties included. The count beside it is the papers at or above that line. Not adjusted for publication year.'
-	},
-	strip: {
-		anchor: 'mission-papers',
-		text: () => 'Strip: tracked publications per year since the start of science operations.'
 	}
 };
 
-/** What every FOOTNOTES text reads, from the page's `site`. */
-export const notePolicy = (site) => ({
+/** What every FOOTNOTES text reads, from the page's `site` and the scope it shows. */
+export const notePolicy = (site, scope = 'full') => ({
 	...site.windowPolicy,
 	fullPolicy: site.fullPolicy,
 	asOf: site.asOf,
 	costBaseYear: site.costBaseYear,
-	referenceCost: site.referenceCost
+	referenceCost: site.referenceCost,
+	scope
 });
 
-/** The joined text of footnotes `ids`, read against `site`. */
-export const noteText = (ids, site) => ids.map((id) => FOOTNOTES[id].text(notePolicy(site))).join(' ');
+/** The joined text of footnotes `ids`, read against `site` in `scope`. */
+export const noteText = (ids, site, scope) => ids.map((id) => FOOTNOTES[id].text(notePolicy(site, scope))).join(' ');

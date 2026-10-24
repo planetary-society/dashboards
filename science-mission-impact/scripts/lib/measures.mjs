@@ -3,9 +3,9 @@
  *
  * Three scopes, each a prefix on the raw mission fields: `full` (full_mission_*,
  * the full-mission window), `window` (window_*, the prime-phase window) and
- * `lifetime` (lifetime_*). Top 10% is the era-adjusted (publication-year
- * cohort) measure in every scope: `<prefix>_cohort_top10`. Top 1% exists in the
- * two windowed scopes only, pooled and not era-adjusted: `<prefix>_top_k["1"]`.
+ * `lifetime` (lifetime_*). Top 10% ranks every paper against the division's whole
+ * corpus in the scope, every year together: `<prefix>_top_k["10"]`. Top 1% is the
+ * same ranking at 1%, in the two windowed scopes only: `<prefix>_top_k["1"]`.
  *
  * Every paper count is a fractional tie weight. They are summed, never counted.
  * null means unavailable; 0 means measured zero.
@@ -45,7 +45,7 @@ export function isShortfall(status) {
 
 /** The top-k value of one mission in one scope, as a raw (unrounded) number. */
 export function missionTop10(statsMission, scope) {
-	return num(scopeField(statsMission, scope, 'cohort_top10'));
+	return num(scopeField(statsMission, scope, 'top_k')?.['10']);
 }
 
 /** Pooled top-1% credit for one mission; the windowed scopes only. */
@@ -75,17 +75,17 @@ export function isRankable({ poolPapers, missions, rankingMinPapers, scope = 'fu
 }
 
 /**
- * The earliest-published paper with era-adjusted top-10% weight among one scope's rows (any
+ * The earliest-published paper with top-10% weight among one scope's rows (any
  * weight above zero, so a paper tied at the cutoff counts): the story's high-impact paper.
  * Dated by its ADS pubdate (month resolution, read by `parseDay`), ties in date broken by
  * bibcode so the pick is stable. Null when no row qualifies; throws on a qualifying row with
  * no date rather than skipping it.
  *
  * @param {Iterable<object>} rows one scope's paper rows of one mission
- * @param {string} weightKey the scope's era-adjusted weight field
+ * @param {string} weightKey the scope's top-10% weight field
  * @param {Map<string, string>} pubdates bibcode -> ADS pubdate
  */
-export function firstEraTop(rows, weightKey, pubdates) {
+export function firstTopRow(rows, weightKey, pubdates) {
 	let best = null;
 	for (const row of rows) {
 		if (!(Number(row[weightKey]) > 0)) continue;
@@ -98,7 +98,7 @@ export function firstEraTop(rows, weightKey, pubdates) {
 }
 
 /**
- * FirstTopPaper for one mission in one scope, from `firstEraTop`. Time runs from the start of
+ * FirstTopPaper for one mission in one scope, from `firstTopRow`. Time runs from the start of
  * science (the prime-mission start, else launch, as upstream reads it), and again from the start
  * of formulation when that date is on record: the same paper read from when the agency
  * committed to the project. How long the mission took to build is a separate figure
@@ -132,7 +132,7 @@ export function buildFirstTopPaper({ first, failed, papers, scienceStart = null,
  *
  * `divisionTop10` / `divisionTop1` are the sums of the same measure over every
  * mission of the division, so a mission's share is its own value over them.
- * `first` is the scope's `firstEraTop`; it must exist exactly when the mission
+ * `first` is the scope's `firstTopRow`; it must exist exactly when the mission
  * holds top-10% credit, or the paper rows and the mission measure disagree.
  */
 export function buildMissionScopeStats({
@@ -148,7 +148,7 @@ export function buildMissionScopeStats({
 	const top10 = missionTop10(statsMission, scope);
 	const top1 = missionTop1(statsMission, scope);
 	if (top10 !== null && (first !== null) !== top10 > 0) {
-		throw new Error(`${statsMission.short_title} (${scope}): top-10% credit ${top10} but ${first ? 'a' : 'no'} paper row with era-adjusted weight`);
+		throw new Error(`${statsMission.short_title} (${scope}): top-10% credit ${top10} but ${first ? 'a' : 'no'} paper row with top-10% weight`);
 	}
 	return {
 		papers,

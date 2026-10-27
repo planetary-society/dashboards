@@ -16,7 +16,8 @@ upstream curation files mark as mission or instrument overviews were given to th
 hints. 268 of 2,054 calls are marked `low`.
 
 To update after the corpus changes: run `npm run data`; it names every unclassified in-window
-paper. Classify those with the rubric below (title, abstract, venue), add them, and re-run.
+paper. Classify those with the rubric below (title, abstract, venue), add them, and re-run. It
+also fails on stale entries, papers upstream no longer attributes to the mission: delete those.
 
 ---
 

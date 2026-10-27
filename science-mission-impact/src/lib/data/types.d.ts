@@ -176,6 +176,13 @@ export interface StoryFacts {
 		flipsOn: { id: string; name: string; side: ComparisonKey }[];
 		margin: number | null; // |under − over| ÷ the higher rate; null when a rate is null or both are 0
 		largestUnder: { id: string; name: string; share: number } | null; // most-cited under mission, its share of the under side's citations
+		/**
+		 * The trend with cost, threshold ignored: least squares of log10(citations per $100M) on log10(cost) over the
+		 * measured missions with citations (`missions`; `zeros` those without), the line the story draws. `tenfold` =
+		 * 10^slope, the rate's multiple at ten times the cost; `holds`: no single fitted mission, dropped, reverses the
+		 * sign of `slope` (null with three, where a drop leaves no line). Null below three.
+		 */
+		fit: { missions: number; zeros: number; slope: number; intercept: number; tenfold: number; holds: boolean | null } | null;
 	}[];
 }
 

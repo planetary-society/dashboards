@@ -8,7 +8,9 @@
  * only once it has fully elapsed at the as-of date (null until then).
  *
  * Reads a second dataset (config.clps.rawDir, never a fallback), through the
- * same verified loader as the main package; it must share the site's as-of date.
+ * same verified loader as the main package. Its runs share one as-of date, at
+ * most a day from the site's: the two exports come from separate upstream runs,
+ * often one in the evening and the other the next morning.
  */
 
 import { displayNames } from './config.mjs';
@@ -17,6 +19,8 @@ import { assertSingleAsOfDate, PackagingError } from './invariants.mjs';
 import { byText, num } from './util.mjs';
 
 export const CLPS_PROGRAM = 'Commercial Lunar Payload Services (CLPS)';
+/** How far the CLPS export's as-of date may sit from the main package's, either way. */
+const MAX_AS_OF_LAG_DAYS = 1;
 /** Output bases whose records are a count; anything else (unavailable) is not zero. */
 const COUNTED = new Set(['measured', 'assumed_zero']);
 
@@ -113,14 +117,15 @@ export function clpsComparison({ series, comparators }) {
  * @param {object} args
  * @param {string} args.rawDir the resolved config.clps.rawDir
  * @param {object} args.config the validated smi.config.json
- * @param {string} args.asOf the main package's as-of date; the datasets must agree
+ * @param {string} args.asOf the main package's as-of date; the CLPS runs' must be within a day of it
  */
 export function loadClps({ rawDir, config, asOf }) {
 	const source = loadSourceCatalog(rawDir, config);
-	assertSingleAsOfDate([
-		{ label: 'main package', asOfDate: asOf },
-		...source.runs.map((r) => ({ label: `clps ${r.division.statsLabel}`, asOfDate: r.stats.run?.as_of_date }))
-	]);
+	const clpsAsOf = assertSingleAsOfDate(source.runs.map((r) => ({ label: `clps ${r.division.statsLabel}`, asOfDate: r.stats.run?.as_of_date })));
+	const lag = Math.abs(Date.parse(clpsAsOf) - Date.parse(asOf)) / 864e5;
+	if (!(lag <= MAX_AS_OF_LAG_DAYS)) {
+		throw new PackagingError(`clps: as_of_date ${clpsAsOf} is more than ${MAX_AS_OF_LAG_DAYS} day from the main package's ${asOf}`);
+	}
 	const { comparators, horizonMonths } = config.clps;
 	const missions = [...source.missions.values()]
 		.filter(({ id, statsMission }) => statsMission.program === CLPS_PROGRAM || comparators.includes(id))
@@ -134,5 +139,6 @@ export function loadClps({ rawDir, config, asOf }) {
 			cost: num(statsMission.adjusted_lcc),
 			records: COUNTED.has(statsMission.lifetime_output_basis) ? (source.readMission(id, 'records').records ?? []) : null
 		}));
-	return buildClps({ asOf, horizonMonths, comparators, missions });
+	// a month closes only on a date both exports cover: the earlier of the two
+	return buildClps({ asOf: clpsAsOf < asOf ? clpsAsOf : asOf, horizonMonths, comparators, missions });
 }

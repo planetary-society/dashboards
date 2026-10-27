@@ -3,7 +3,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { costLayout, costCurve, rugLayout, skylineLayout, skylineZoom, skylineHit, primerLayout, columnLabel, splitLayout, focusLayout, kindsLayout, exampleLayout } from './layouts.js';
+import { costLayout, costCurve, rugLayout, skylineLayout, skylineZoom, skylineHit, primerLayout, columnLabel, splitLayout, focusLayout, perDollarLayout, trendLine, kindsLayout, exampleLayout } from './layouts.js';
+import { logFit } from '../../../scripts/lib/util.mjs';
 
 const load = async (name) => JSON.parse(await readFile(new URL(`../data/generated/${name}.json`, import.meta.url), 'utf8'));
 const site = await load('site');
@@ -203,6 +204,32 @@ test('the focus division on the cost axis: its squares in the rug, the chart ins
 		assert.ok(Math.abs(facts.total - total) < 0.5, 'the bars add up to the division total');
 		const largest = facts.points.find((p) => p.id === focus.over.largest.id);
 		assert.ok(Math.abs(largest.credit - focus.over.largest.top10) < 0.5, 'the tallest bar is the packaged largest');
+	}
+});
+
+test('per dollar: every measured mission in its band, and each band’s cited squares are the packaged fit’s', () => {
+	const compared = site.divisions.filter((d) => site.story.comparison.divisions.includes(d.slug));
+	const focus = compared.filter((d) => d.slug === site.story.focusDivision);
+	const fits = new Map(site.story.perDollar.map((d) => [d.division, d.fit]));
+	for (const [W, H] of sizes) {
+		for (const divisions of [focus, compared]) {
+			const layout = perDollarLayout(tiles, W, H, { divisions, fits });
+			for (const row of layout.rows) {
+				const fit = fits.get(row.slug);
+				const members = tiles.filter((t) => t.division === row.slug && t.cost > 0 && t.citations != null && t.top10 != null);
+				const cited = members.filter((t) => t.citations > 0);
+				assert.deepEqual([cited.length, members.length - cited.length], [fit.missions, fit.zeros], `${row.slug}: the packager's missions`);
+				// the squares are the points the packaged line was fitted to
+				const line = logFit(cited.map((t) => ({ cost: t.cost, rate: (t.citations / t.cost) * 100 })));
+				assert.ok(Math.abs(line.slope - fit.slope) < 5e-4 && Math.abs(line.intercept - fit.intercept) < 5e-3, `${row.slug}: slope and intercept`);
+				for (const t of members) {
+					const p = layout.pos.get(t.id);
+					assert.ok(inStage(p, W, H) && p.y >= row.curveTop - p.s && p.y + p.s <= row.shelfY + 0.5, `${W}px ${row.slug}: ${t.id} inside its band`);
+				}
+				const { y1, y2 } = trendLine(layout, row, fit.slope);
+				assert.ok(fit.slope > 0 ? y2 < y1 : y2 >= y1, `${row.slug}: a rising fit is drawn rising`);
+			}
+		}
 	}
 });
 

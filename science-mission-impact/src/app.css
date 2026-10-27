@@ -34,7 +34,7 @@
 :root {
   --black: #000000;
   --white: #ffffff;
-  --neptune: #037cc2; /* marks, underlines, text >= 24px */
+  --neptune: #037cc2; /* marks, underlines, text >= 24px, .neptuneBlue emphasis */
   --neptune-mid: #80bde0; /* small text, links, focus */
   --neptune-light: #bfdef0;
   --flame: #ff5d47; /* true negatives only, plus the pointed-at column on the skyline and the citation primer */
@@ -210,11 +210,16 @@ svg text {
   top: 8px;
 }
 
+/* Emphasis in running text, in the Neptune of the marks it points at: 4.7:1 on black, so it
+   passes AA at body size. */
+.neptuneBlue {
+  color: var(--neptune);
+}
+
 /* Mission marks. Shared by the squares and the legend that explains them. */
 .mark-solid {
   background: var(--square);
 }
-
 
 .mark-outline {
   background: transparent;
@@ -225,10 +230,6 @@ svg text {
   background: var(--neptune);
 }
 
-
-
-
-
 /* The story's outcome marks: an outright failure is an X, a partial outcome one stroke. */
 .mark-lost,
 .mark-partial {
@@ -238,17 +239,31 @@ svg text {
 
 .mark-lost {
   background:
-    linear-gradient(to top right, transparent calc(50% - 0.75px), var(--flame) 0 calc(50% + 0.75px), transparent 0),
-    linear-gradient(to top left, transparent calc(50% - 0.75px), var(--flame) 0 calc(50% + 0.75px), transparent 0),
+    linear-gradient(
+      to top right,
+      transparent calc(50% - 0.75px),
+      var(--flame) 0 calc(50% + 0.75px),
+      transparent 0
+    ),
+    linear-gradient(
+      to top left,
+      transparent calc(50% - 0.75px),
+      var(--flame) 0 calc(50% + 0.75px),
+      transparent 0
+    ),
     var(--square);
 }
 
 .mark-partial {
   background:
-    linear-gradient(to top right, transparent calc(50% - 0.75px), var(--flame) 0 calc(50% + 0.75px), transparent 0),
+    linear-gradient(
+      to top right,
+      transparent calc(50% - 0.75px),
+      var(--flame) 0 calc(50% + 0.75px),
+      transparent 0
+    ),
     var(--square);
 }
-
 
 /* Paper kinds. Shared by the kind bars and their legend. The two science kinds are the two
    blues; the four others are greys about 21 L* apart on black (92, 70, 49, 27), so adjacent

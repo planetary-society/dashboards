@@ -136,12 +136,27 @@ test('citations per $100M keep each rankable division apart, null for an empty s
 			{ key: 'under', missions: 2, cost: 50, citations: 10, perHundredM: 20 },
 			{ key: 'over', missions: 1, cost: 300, citations: 7, perHundredM: 2.333 }
 		], favors: null, flipsOn: [{ id: 'u1', name: 'u1', side: 'under' }, { id: 'o1', name: 'o1', side: 'over' }],
-		margin: 0.88335, largestUnder: { id: 'u1', name: 'u1', share: 1 } },
+		margin: 0.88335, largestUnder: { id: 'u1', name: 'u1', share: 1 }, fit: null }, // two cited missions: no line
 		{ division: 'other', name: 'Other', groups: [
 			{ key: 'under', missions: 0, cost: 0, citations: 0, perHundredM: null },
 			{ key: 'over', missions: 1, cost: 150, citations: 10, perHundredM: 6.667 }
-		], favors: null, flipsOn: [], margin: null, largestUnder: null }
+		], favors: null, flipsOn: [], margin: null, largestUnder: null, fit: null }
 	]);
+});
+
+test('the per-dollar trend fits log rate on log cost over cited missions, and says whether one mission decides its direction', () => {
+	// Rates 10, 20, 40, 80 per $100M at $10M…$10B: doubling per tenfold cost, whichever mission is dropped.
+	const rising = division([cited(mission('r1', 10), 1), cited(mission('r2', 100), 20), cited(mission('r3', 1000), 400), cited(mission('r4', 10000), 8000), failure('rf', 50), unmeasured('rq', 60)]);
+	// Rates 10, 100, 80, 60: the line rises only because of the cheapest mission.
+	const leaning = { ...division([cited(mission('l1', 10), 1), cited(mission('l2', 100), 100), cited(mission('l3', 1000), 800), cited(mission('l4', 10000), 6000)]), slug: 'leaning', name: 'Leaning' };
+	// Three missions: dropping any one leaves no line, so robustness is untested.
+	const three = { ...division([cited(mission('t1', 10), 1), cited(mission('t2', 100), 20), cited(mission('t3', 1000), 400)]), slug: 'three', name: 'Three' };
+	const [a, b, c] = discuss([rising, leaning, three].map(packaged)).perDollar.map((row) => row.fit);
+	// the failure is a measured zero, left out of the line; the unmeasured mission is in neither count
+	assert.deepEqual(a, { missions: 4, zeros: 1, slope: 0.301, intercept: 0.699, tenfold: 2, holds: true });
+	assert.ok(b.slope > 0);
+	assert.deepEqual([b.missions, b.zeros, b.holds], [4, 0, false]);
+	assert.deepEqual([c.missions, c.holds], [3, null]);
 });
 
 test('each side of the comparison carries its medians, largest mission, cost and launch range and commonest type', () => {

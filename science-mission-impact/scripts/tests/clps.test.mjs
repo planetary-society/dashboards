@@ -101,8 +101,10 @@ describe('loadClps', () => {
 		assert.equal(clps.comparators[0].papers, 1);
 	});
 
-	it('refuses a dataset with a different as-of date', () => {
+	it('accepts a dataset a day either side of the main package, and refuses one further off', () => {
 		const f = sourceFixture(fs.mkdtempSync(path.join(root, 'raw-')));
-		assert.throws(() => loadClps({ rawDir: f.rawDir, config: config(f), asOf: '2026-09-01' }), /disagree on as_of_date/);
+		for (const asOf of ['2026-10-01', '2026-10-03']) assert.doesNotThrow(() => loadClps({ rawDir: f.rawDir, config: config(f), asOf }));
+		assert.throws(() => loadClps({ rawDir: f.rawDir, config: config(f), asOf: '2026-10-04' }), /more than 1 day from the main package's 2026-10-04/);
+		assert.throws(() => loadClps({ rawDir: f.rawDir, config: config(f), asOf: '2026-09-01' }), /more than 1 day/);
 	});
 });

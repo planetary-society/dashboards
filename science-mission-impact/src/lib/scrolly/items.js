@@ -63,15 +63,18 @@ export function failureItems(tiles, layout) {
 }
 
 /**
- * Whether a mission ever produced a top-10% paper: washed blue if it did; an empty square if it
- * worked and didn't; the red X of an outright failure, carried over from the failure step.
+ * The failure step's squares, where they were and as they were marked, with every mission that
+ * ever produced a top-10% paper washed blue instead (a partial outcome's stroke gives way to it).
+ * A division whose papers aren't ranked against larger missions (not in `ranked`) fades where it
+ * stands.
  */
-export function firstTopItems(tiles, layout, scope) {
-	const items = new Map();
+export function firstTopItems(tiles, layout, scope, ranked) {
+	const items = failureItems(tiles, layout);
 	for (const t of tiles) {
-		const p = layout.pos.get(t.id);
-		if (!p) continue;
-		items.set(t.id, { ...p, variant: t.first[scope].state === 'reached' ? 'reached' : t.failed ? 'lost' : 'outline' });
+		const it = items.get(t.id);
+		if (!it) continue;
+		if (!ranked.has(t.division)) it.opacity = 0.2;
+		else if (t.first[scope].state === 'reached') it.variant = 'reached';
 	}
 	return items;
 }

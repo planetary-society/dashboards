@@ -8,10 +8,10 @@
 	import DollarMinorTicks from './DollarMinorTicks.svelte';
 	import { perDollarChart } from './perdollar.js';
 
-	/** groups: the scope's perDollar.groups ({ key: 'under'|'over', perHundredM }) */
-	let { missions, slug, scope, referenceCost, groups = [] } = $props();
+	/** groups: the scope's perDollar.groups ({ key: 'under'|'over', perHundredM }); fit: its perDollar.fit */
+	let { missions, slug, scope, referenceCost, groups = [], fit = null } = $props();
 	let width = $state(0);
-	const c = $derived(perDollarChart(missions, scope, width));
+	const c = $derived(perDollarChart(missions, scope, width, fit));
 	const refX = $derived(c ? Math.min(c.right, Math.max(c.left, c.x(referenceCost))) : 0);
 	const combined = (key) => groups.find((g) => g.key === key)?.perHundredM ?? null;
 	const sides = $derived(

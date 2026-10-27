@@ -1,6 +1,6 @@
 // The discussion figures use actual adjusted costs, from the packaged division documents.
 import { pooledBand } from './costcurve.mjs';
-import { byText, median, round, share, sum } from './util.mjs';
+import { byText, logFit, median, round, share, sum } from './util.mjs';
 const hasCost = (mission) => Number.isFinite(mission.cost) && mission.cost > 0;
 /** Inside the threshold: a positive cost at or below it ($M, the snapshot's adjusted dollar year). */
 export const underThreshold = (cost) => (mission) => hasCost(mission) && mission.cost <= cost;
@@ -217,8 +217,26 @@ function perDollarFacts(division, members, stats, sides) {
 		favors: order !== null && breakers.length === 0 ? order : null,
 		flipsOn: breakers.map((m) => ({ id: m.id, name: m.name, side: sides[0][1](m) ? 'under' : 'over' })),
 		margin: under === null || over === null || Math.max(under, over) === 0 ? null : share(Math.abs(under - over) / Math.max(under, over)),
-		largestUnder: underCitations > 0 ? { id: top.id, name: top.name, share: share((stats(top).citations ?? 0) / underCitations) } : null
+		largestUnder: underCitations > 0 ? { id: top.id, name: top.name, share: share((stats(top).citations ?? 0) / underCitations) } : null,
+		fit: perDollarFit(members, stats)
 	};
+}
+
+/**
+ * The trend of citations per $100M with cost across a division's measured missions, threshold
+ * ignored: the least-squares line of log rate on log cost that its page and the story draw,
+ * over the missions with citations (a zero has no place on a log scale; `zeros` counts them).
+ * `tenfold` is the rate's multiple at ten times the cost; `holds` says no single fitted mission,
+ * dropped, reverses the line's direction, and is null when dropping one would leave too few
+ * for a line (untested, never robust). Null below three missions with citations.
+ */
+function perDollarFit(members, stats) {
+	const points = members.filter((m) => stats(m).citations > 0).map((m) => ({ cost: m.cost, rate: (stats(m).citations / m.cost) * 100 }));
+	const line = logFit(points);
+	if (!line) return null;
+	const reverses = (i) => Math.sign(logFit(points.filter((_, j) => j !== i)).slope) !== Math.sign(line.slope);
+	return { missions: points.length, zeros: members.length - points.length, slope: round(line.slope, 3), intercept: round(line.intercept, 3),
+		tenfold: round(10 ** line.slope, 2), holds: points.length < 4 ? null : !points.some((_, i) => reverses(i)) };
 }
 
 /**

@@ -1,10 +1,24 @@
 // Citations per $100M against cost for one division, one square per mission, both axes log: the
-// overview's old per-dollar row, given a page of its own. The trend is the least-squares line of
-// log rate on log cost over the missions with citations, across their cost range. A mission with
-// none sits on a shelf under the plot: zero has no place on a log scale, and any stand-in value
-// would set the slope. Geometry only; the figures the page prints come from the packager.
+// overview's old per-dollar row, given a page of its own. The trend is the packaged fit
+// (perDollar.fit: least squares of log rate on log cost over the missions with citations), drawn
+// across their cost range. A mission with none sits on a shelf under the plot: zero has no place
+// on a log scale, and any stand-in value would set the slope. Geometry only; the figures the page
+// prints come from the packager.
 import { scaleLog } from 'd3-scale';
 import { byCostThenId, costTicks, decadeTicks, stackLevels } from './costaxis.js';
+
+/**
+ * The stretch of log10 costs [a, b] over which the line log10(rate) = intercept + slope · log10(cost)
+ * stays inside the rate domain [lo, hi]. A line is cut there rather than clamped at its ends,
+ * which would change its tilt. Null when nothing is left.
+ */
+export function clipSpan({ intercept, slope }, [a, b], [lo, hi]) {
+	if (slope !== 0) {
+		const ends = [lo, hi].map((r) => (Math.log10(r) - intercept) / slope).sort((p, q) => p - q);
+		[a, b] = [Math.max(a, ends[0]), Math.min(b, ends[1])];
+	}
+	return b > a ? [a, b] : null;
+}
 
 /** A mission's citations per $100M of cost in `scope`; null when its output wasn't measured (the packager's measuredIn rule). */
 export function rate(m, scope) {
@@ -13,32 +27,15 @@ export function rate(m, scope) {
 	return (s.citations / m.cost) * 100;
 }
 
-/** Least squares of log10(rate) on log10(cost). Null below three points or with no spread in cost. */
-export function logFit(points) {
-	if (points.length < 3) return null;
-	const xs = points.map((p) => Math.log10(p.cost));
-	const ys = points.map((p) => Math.log10(p.rate));
-	const mx = xs.reduce((a, b) => a + b, 0) / xs.length;
-	const my = ys.reduce((a, b) => a + b, 0) / ys.length;
-	let sxx = 0;
-	let sxy = 0;
-	for (let i = 0; i < xs.length; i++) {
-		sxx += (xs[i] - mx) ** 2;
-		sxy += (xs[i] - mx) * (ys[i] - my);
-	}
-	if (sxx < 1e-12) return null;
-	const slope = sxy / sxx;
-	return { slope, intercept: my - slope * mx, n: points.length };
-}
-
 const WIDE = { left: 52, right: 16, top: 16, plotH: 300, s: 14, gap: 2, shelfGap: 12, axisH: 28 };
 const PHONE = { left: 40, right: 8, top: 16, plotH: 220, s: 10, gap: 2, shelfGap: 10, axisH: 28 };
 
 /**
  * The chart's geometry at `width`: scales, each mission's square, the shelf of missions without
- * citations, the fit as a segment and the ticks. Null with no width or nothing to place.
+ * citations, the packaged `fit` ({ slope, intercept }, or null) as a segment and the ticks. Null
+ * with no width or nothing to place.
  */
-export function perDollarChart(missions, scope, width) {
+export function perDollarChart(missions, scope, width, fit = null) {
 	if (!(width > 0)) return null;
 	const o = width < 560 ? PHONE : WIDE;
 	const placed = missions.filter((m) => rate(m, scope) != null).sort(byCostThenId);
@@ -63,15 +60,14 @@ export function perDollarChart(missions, scope, width) {
 		...cited.map((m) => ({ id: m.id, x: x(m.cost) - o.s / 2, y: y(rate(m, scope)) - o.s / 2, s: o.s })),
 		...zeros.map((m) => ({ id: m.id, x: x(m.cost) - o.s / 2, y: shelfY + levels.get(m.id) * (o.s + o.gap), s: o.s }))
 	];
-	const line = logFit(cited.map((m) => ({ cost: m.cost, rate: rate(m, scope) })));
-	const at = (c) => [x(c), y(10 ** (line.intercept + line.slope * Math.log10(c)))];
-	const [c1, c2] = [cited[0].cost, cited.at(-1).cost];
-	const fit = line && c2 > c1 ? { x1: at(c1)[0], y1: at(c1)[1], x2: at(c2)[0], y2: at(c2)[1], slope: line.slope } : null;
+	const span = fit && clipSpan(fit, [Math.log10(cited[0].cost), Math.log10(cited.at(-1).cost)], y.domain());
+	const [[x1, y1], [x2, y2]] = span ? span.map((c) => [x(10 ** c), y(10 ** (fit.intercept + fit.slope * c))]) : [[], []];
 
 	return {
 		x, y, left, right, top, bottom, shelfY, shelfH, zeros: zeros.length, axisY,
 		height: axisY + o.axisH - 16,
-		marks, fit,
+		marks,
+		fit: span ? { x1, y1, x2, y2 } : null,
 		ticks: costTicks(x),
 		yTicks: decadeTicks(...y.domain())
 	};

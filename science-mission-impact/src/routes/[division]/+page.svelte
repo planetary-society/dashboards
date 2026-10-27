@@ -86,7 +86,7 @@
 				{#if rows.length}
 					<div class="chart">
 						<h3 class="chart-title">Citations per {money(100)}, by mission<Hint label="this chart" {...tip('perDollarChart')} /></h3>
-						<PerDollarScatter missions={d.missions} slug={d.slug} scope={view.scope} referenceCost={site.referenceCost} groups={story.perDollar?.groups ?? []} />
+						<PerDollarScatter missions={d.missions} slug={d.slug} scope={view.scope} referenceCost={site.referenceCost} groups={story.perDollar?.groups ?? []} fit={story.perDollar?.fit ?? null} />
 					</div>
 				{/if}
 				<div class="chart">

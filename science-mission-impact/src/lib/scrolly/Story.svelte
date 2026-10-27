@@ -1,6 +1,6 @@
 <script>
 	// The overview as a scroll: a title, then one argument over one stage of mission squares. The
-	// missions, the papers they produced and what a highly cited paper is; then the $150 million
+	// missions, the papers they produced, the citations those drew and what a highly cited paper is; then the $150 million
 	// line, failures either side of it, one division's running total built up a step at a time,
 	// every compared division at once, per dollar, which missions ever had a top paper, CLPS and the close. Pairs of
 	// steps share a graphic state (PAPERS/TOP, SPLIT/FAILURE, ALL/DOLLAR), so long text is split
@@ -24,12 +24,12 @@
 	import { asset, methodsHref } from '$lib/paths.js';
 
 	let { site, scrolly } = $props();
-	const TITLE = 0, MOTIVATION = 1, OVERVIEW = 2, CORPUS = 3, PAPERS = 4, TOP = 5, SPLIT = 6, FAILURE = 7, REACHED = 8, ONE = 9, BARS = 10, RUNNING = 11, ALL = 12, DOLLAR = 13;
+	const TITLE = 0, MOTIVATION = 1, OVERVIEW = 2, CORPUS = 3, CITED = 4, PAPERS = 5, TOP = 6, SPLIT = 7, FAILURE = 8, REACHED = 9, ONE = 10, BARS = 11, RUNNING = 12, ALL = 13, DOLLAR = 14;
 	// The paper-kinds run (KINDS…CITATIONS) is hidden for now: its sections stay out of the page and its
 	// indices match no step. Set SHOW_KINDS to bring the four steps back between DOLLAR and CLPS.
 	const SHOW_KINDS = false;
-	const [KINDS, KINDS_ALL, EXAMPLE, CITATIONS] = SHOW_KINDS ? [14, 15, 16, 17] : [-1, -1, -1, -1];
-	const CLPS = SHOW_KINDS ? 18 : 14, CLPS_COMPARE = CLPS + 1, CLOSE = CLPS + 2;
+	const [KINDS, KINDS_ALL, EXAMPLE, CITATIONS] = SHOW_KINDS ? [15, 16, 17, 18] : [-1, -1, -1, -1];
+	const CLPS = SHOW_KINDS ? 19 : 15, CLPS_COMPARE = CLPS + 1, CLOSE = CLPS + 2;
 	// Reduced motion: every scrubbed graphic renders complete.
 	const reduced = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
@@ -57,7 +57,14 @@
 
 	// The walk-through division: its primer, then its running total built up over three steps.
 	const primer = $derived(story.primer);
-	const focus = $derived(byDivision.find((d) => d.division === story.focusDivision) ?? null);
+	// the fewest citations that half the primer's papers stay at or under
+	const primerMedian = $derived.by(() => {
+		if (!primer) return null;
+		let seen = 0;
+		const i = primer.counts.findIndex((n) => (seen += n) * 2 >= primer.papers);
+		return i < 0 ? null : i;
+	});
+	const focus =$derived(byDivision.find((d) => d.division === story.focusDivision) ?? null);
 	const focusShares = $derived(story.divisions.find((d) => d.division === story.focusDivision) ?? null);
 	const focusName = $derived(focus?.name ?? '');
 	const field = $derived(focusName.toLowerCase()); // "planetary science" mid-sentence
@@ -148,6 +155,10 @@
 	const scrub = $derived(reduced ? 1 : Math.min(1, progress * 2.4));
 	// the title and the motivation photo stand alone; the squares arrive one by one with the overview, then stay
 	const shown = $derived(index <= MOTIVATION ? 0 : index === OVERVIEW ? Math.ceil(scrub * tiles.length) : tiles.length);
+	// the skyline holds two steps: papers rise, then the chart zooms out and their citations rise
+	const skyline = $derived(index === CORPUS || index === CITED);
+	const zoom = $derived(index === CITED ? span(0.1, 0.35) : index > CITED ? 1 : 0);
+	const cite = $derived(index === CITED ? span(0.3, 0.65) : index > CITED ? 1 : 0);
 	const primed = $derived(index === PAPERS || index === TOP);
 	const parted = $derived(index === SPLIT || index === FAILURE);
 	const focused = $derived(index === ONE || index === BARS || index === RUNNING);
@@ -159,7 +170,7 @@
 	const items = $derived.by(() => {
 		if (!grid) return new Map();
 		if (index <= OVERVIEW || index >= CLOSE) return solid(grid.pos);
-		if (index === CORPUS) return withHidden(solid(rug.pos), tiles, grid.pos);
+		if (skyline) return withHidden(solid(rug.pos), tiles, grid.pos);
 		if (primed) return withHidden(new Map(), tiles, rug.pos);
 		if (index === SPLIT) return withHidden(solid(split.pos), tiles, rug.pos);
 		if (index === FAILURE) return withHidden(failureItems(tiles, split), tiles, rug.pos);
@@ -190,18 +201,18 @@
 	// A first tap on a square only highlights it; tapping it again opens its page, as a click does.
 	let pointed = $state(null);
 	let follow = true;
-	const hot = $derived(index === CORPUS ? pointed : null);
+	const hot = $derived(skyline ? pointed : null);
 	// the skyline names a mission with a column, so its square's own tip stays off
 	const skyNamed = $derived(hot && sky?.columns.some((c) => c.id === hot) ? hot : null);
 	function skim(e) {
-		if (index !== CORPUS || !sky) return;
+		if (!skyline || !sky) return;
 		const id = e.target.closest?.('[data-id]')?.dataset.id;
 		if (e.type === 'pointerdown') follow = e.pointerType === 'mouse' || (id != null && id === pointed);
 		const r = e.currentTarget.getBoundingClientRect();
 		pointed = id ?? skylineHit(sky, e.clientX - r.left, e.clientY - r.top);
 	}
 	const holdClick = (e) => {
-		if (index === CORPUS && !follow) e.preventDefault();
+		if (skyline && !follow) e.preventDefault();
 	};
 	const unskim = (e) => {
 		if (e.pointerType === 'mouse') pointed = null;
@@ -212,10 +223,9 @@
 	{#snippet graphic()}
 		<div class="frame">
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
-			<div class="stage" class:skimming={index === CORPUS} bind:clientWidth={W} bind:clientHeight={H} onpointerdown={skim} onpointermove={skim} onpointerleave={unskim} onclickcapture={holdClick}>
-				<img class="photo" class:visible={index === MOTIVATION} src={asset('img/story/im-1-odysseus.webp')} alt="" decoding="async" fetchpriority="low" />
+			<div class="stage" class:skimming={skyline} bind:clientWidth={W} bind:clientHeight={H} onpointerdown={skim} onpointermove={skim} onpointerleave={unskim} onclickcapture={holdClick}>
 				{#if rug && cost && split}
-					<Skyline layout={sky} total={site.papersDistinct} rise={index === CORPUS ? scrub : index > CORPUS ? 1 : 0} visible={index === CORPUS} highlight={hot} {compact} width={W} height={H} />
+					<Skyline layout={sky} total={site.papersDistinct} cited={site.citationsDistinct} rise={index === CORPUS ? scrub : index > CORPUS ? 1 : 0} {zoom} {cite} visible={skyline} highlight={hot} {compact} width={W} height={H} />
 					{#if primer}
 						<Primer {primer} years={site.fullPolicy.citationYears + 1} build={index === PAPERS ? span(0.15, 0.5) : index > PAPERS ? 1 : 0} highlight={index === TOP} visible={primed} {compact} width={W} height={H} />
 					{/if}
@@ -239,10 +249,10 @@
 			<div class="caption meta">
 				{#if index === OVERVIEW}
 					Each square is a mission, in launch order.
-				{:else if index === CORPUS}
+				{:else if index === CORPUS || (index === CITED && !cite)}
 					Each column is one mission’s papers to date, rising from its launch year (square-root scale). {compact ? 'Touch' : 'Point at'} a column to see its name.
-				{:else if index === MOTIVATION}
-					IM-1’s Odysseus lander, which carried NASA instruments to the Moon in 2024 as a commercial delivery. Photo: Intuitive Machines.
+				{:else if index === CITED}
+					Each column is now one mission’s citations to date, with its papers in darker blue on the same square-root scale.
 				{:else if primed && primer}
 					{focusName} papers published while its missions operated or up to {spell(site.fullPolicy.postEndYears)} years after, by citations in each paper’s first {spell(site.fullPolicy.citationYears + 1)} years. Papers with {int(primer?.counts.length)} or more share the last bar.
 				{:else if index === SPLIT}
@@ -281,23 +291,35 @@
 	{#snippet steps()}
 		<!-- TITLE: the question alone on the stage, no text beside it -->
 		<section data-step></section>
-		<!-- MOTIVATION: the photo alone on the stage -->
-		<section data-step><div class="step">
+		<!-- MOTIVATION: the photo edge to edge, drifting slower than the text that scrolls over it -->
+		<section data-step data-bleed class="motivation"><div class="step panel">
 			<p>The White House’s 2027 budget request would cut NASA science by 46% and end 53 missions. Mars Sample Return, VERITAS, and the Geospace Dynamics Constellation have been canceled or delayed indefinitely.</p>
 			<p><strong>NASA is shifting toward smaller, higher-risk spacecraft.</strong> We looked at whether they can make up for the science of larger missions.</p>
-		</div></section>
+		</div>
+			<img class="photo" src={asset('img/story/blue-ghost-4.webp')} alt="" decoding="async" fetchpriority="low" />
+			<p class="credit meta">Blue Ghost Mission 4 (artist’s concept). Credit: Firefly Aerospace</p>
+		</section>
 		<!-- OVERVIEW: the squares arrive one by one -->
 		<section data-step data-scrub><div class="step">
 			<p>We studied <strong>{int(site.missions)} NASA-led science missions</strong> launched from {site.launchYears[0]} to {site.launchYears[1]}, across all {spell(site.divisions.length)} of the agency’s science divisions.</p>
 		</div></section>
 		<!-- CORPUS: the skyline -->
 		<section data-step data-scrub><div class="step">
-			<p>We found <strong>{int(site.papersDistinct)} peer-reviewed papers</strong> from these missions.</p>
+			<p>We found <strong>{int(site.papersDistinct)} peer-reviewed papers</strong> associated with these missions over their active lifetimes.</p>
+			<p>A peer-reviewed paper is a proxy for <strong>scientific productivity</strong>.</p>
+		</div></section>
+		<!-- CITED: the same skyline zooms out, and each mission's citations rise behind its papers -->
+		<section data-step data-scrub><div class="step">
+			<p>Other scientists build on those papers. When one paper references another, it <strong>cites</strong> it.</p>
+			<p>Together, these papers have been cited <strong>{int(site.citationsDistinct)} times</strong>. Citations are a measure of <strong>scientific impact</strong>.</p>
 		</div></section>
 		<!-- PAPERS: the focus division's papers by citations, grey -->
 		<section data-step data-scrub><div class="step">
-			<p>Scientists report what a mission finds in peer-reviewed papers. A new paper that builds on an earlier one <strong>cites</strong> it.</p>
-			{#if primer}<p>Take {field}. Most of its papers drew a few citations, and {int(primer.overflow)} drew {int(primer.counts.length)} or more.</p>{/if}
+			{#if primer && primerMedian != null}
+				<p>Citations pile up unevenly. Take {field}: half of its {int(primer.papers)} papers drew {spell(primerMedian)} or fewer citations in their first {spell(site.fullPolicy.citationYears + 1)} years, and {int(primer.overflow)} drew {primer.counts.length} or more.</p>
+				<p>Those few, heavily cited papers are the ones other scientists build on most: the <strong>high-impact</strong> papers.</p>
+				<p class="aside">Counting only those first years keeps older papers from looking more impactful just for having had longer to collect citations.</p>
+			{/if}
 		</div></section>
 		<!-- TOP: the same bars, the top 10% in blue -->
 		<section data-step><div class="step">
@@ -428,8 +450,19 @@
 	.cue.visible { opacity: 1; }
 	.cue::after { content: ''; display: block; width: 1px; height: 28px; margin-top: 8px; background: var(--dust); }
 	.byline { margin-top: 24px; font-weight: 400; font-size: 15px; line-height: 1.5; letter-spacing: 0; color: var(--dust); }
-	.photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; opacity: 0; transition: opacity 400ms linear; pointer-events: none; }
-	.photo.visible { opacity: 1; }
+	/* MOTIVATION: the photo overhangs its band by 13% each way and drifts through that overhang
+	   as the band crosses the screen, so it moves a little slower than the text */
+	.motivation { position: relative; isolation: isolate; overflow: clip; }
+	.photo { position: absolute; top: -13%; left: 0; z-index: -1; width: 100%; height: 126%; object-fit: cover; }
+	@media (prefers-reduced-motion: no-preference) {
+		@supports (animation-timeline: view()) {
+			.photo { animation: drift linear both; animation-timeline: view(); }
+		}
+	}
+	@keyframes drift { from { transform: translateY(-10%); } to { transform: translateY(10%); } }
+	.panel { max-width: 34em; padding: clamp(24px, 3vw, 40px); background: color-mix(in srgb, var(--shadow) 85%, transparent); color: var(--white); }
+	/* the credit sits bottom right on a fade to black, which keeps it legible over the bright ground */
+	.credit { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px var(--gutter) 16px; text-align: right; color: var(--dust); background: linear-gradient(transparent, rgb(0 0 0 / 0.8) 70%); }
 	.step { font-size: clamp(17px, 0.6vw + 11px, 19px); line-height: 1.5; }
 	.step p + p { margin-top: 1em; }
 	.step .aside { font-size: 15px; line-height: 1.5; color: var(--dust); }

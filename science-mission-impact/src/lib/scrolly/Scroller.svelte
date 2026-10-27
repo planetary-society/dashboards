@@ -13,6 +13,7 @@
 	let { index = $bindable(0), progress = $bindable(0), graphic, steps } = $props();
 
 	let root;
+	let bare = $state(false);
 
 	onMount(() => {
 		const els = [...root.querySelectorAll('[data-step]')];
@@ -33,6 +34,7 @@
 				rect = r;
 			}
 			index = active;
+			bare = els[active].hasAttribute('data-bleed');
 			progress = Math.max(0, Math.min(1, (line - rect.top) / rect.height));
 		};
 		const onScroll = () => {
@@ -69,12 +71,14 @@
 	});
 </script>
 
-<div class="scroller" bind:this={root}>
-	<div class="graphic" aria-hidden="true">
-		{@render graphic()}
-	</div>
-	<div class="steps">
-		{@render steps()}
+<div class="full">
+	<div class="scroller" bind:this={root}>
+		<div class="graphic" class:bare aria-hidden="true">
+			{@render graphic()}
+		</div>
+		<div class="steps">
+			{@render steps()}
+		</div>
 	</div>
 </div>
 
@@ -84,13 +88,19 @@
 		   same scroll distance that brings a point this far below its bottom edge up to the
 		   bottom of the screen, whatever the text's height. */
 		--step-gap: calc(100vh - var(--nav-h)); /* svh in the @supports block below */
+		--max: 1480px;
 		position: relative;
 		display: grid;
 		grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr);
 		gap: clamp(24px, 4vw, 72px);
-		max-width: 1480px;
+		max-width: var(--max);
 		margin-inline: auto;
 		padding-inline: var(--gutter);
+	}
+
+	/* the page's full width, which a full-bleed step reads in cqw (vw would count a scrollbar) */
+	.full {
+		container-type: inline-size;
 	}
 
 	.graphic {
@@ -101,6 +111,13 @@
 		height: calc(100vh - var(--nav-h));
 		height: calc(100svh - var(--nav-h));
 		padding-block: 24px;
+		transition: opacity 400ms linear;
+	}
+
+	/* a full-bleed step has the screen to itself */
+	.graphic.bare {
+		opacity: 0;
+		pointer-events: none;
 	}
 
 	.steps {
@@ -132,8 +149,8 @@
 	}
 
 	/* The text rides up to a little above the middle, then holds there while the rest of its
-	   block scrolls by. */
-	.steps :global([data-step] > *) {
+	   block scrolls by. The text is the step's first child, the one fit() measures. */
+	.steps :global([data-step] > :first-child) {
 		position: sticky;
 		top: 36vh;
 		top: 36svh;
@@ -141,13 +158,29 @@
 	}
 
 	/* Scroller's safety net: text too tall for the hold scrolls with its step instead. */
-	.steps :global([data-step].overflows > *) {
+	.steps :global([data-step].overflows > :first-child) {
 		position: static;
 	}
 
 	.steps :global([data-step]:last-child) {
 		min-height: 120vh;
 		min-height: 120svh;
+	}
+
+	/* A full-bleed step (data-bleed) runs edge to edge across the page, taller than the screen,
+	   with its text centred and scrolling by rather than holding. The step dresses the band. */
+	.steps :global([data-step][data-bleed]) {
+		display: grid;
+		place-items: center;
+		width: 100cqw;
+		min-height: 130vh;
+		min-height: 130svh;
+		margin-left: calc(-1 * max(var(--gutter), (100cqw - var(--max)) / 2 + var(--gutter)));
+		padding: 96px var(--gutter);
+	}
+
+	.steps :global([data-step][data-bleed] > :first-child) {
+		position: static;
 	}
 
 	/* Phones: graphic pinned on top, steps pass beneath it as solid black bands. */
@@ -178,13 +211,19 @@
 		}
 
 		/* holds just under the pinned graphic */
-		.steps :global([data-step] > *) {
+		.steps :global([data-step] > :first-child) {
 			top: calc(var(--nav-h) + var(--graphic-h) + 28px);
 		}
 
 		.steps :global([data-step]:last-child) {
 			min-height: 100vh;
 			min-height: 100svh;
+		}
+
+		/* the steps are already full width here */
+		.steps :global([data-step][data-bleed]) {
+			width: auto;
+			margin-left: 0;
 		}
 	}
 

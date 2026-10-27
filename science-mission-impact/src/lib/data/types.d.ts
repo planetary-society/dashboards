@@ -483,6 +483,7 @@ export interface ScrollyTile {
 	size: MissionSize;
 	papers: number | null; // full-mission window
 	papersLifetime: number | null; // every paper on record, the mission page headline
+	citationsLifetime: number | null; // every citation of those papers; the corpus skyline's citation step
 	citations: number | null; // full-mission window; what the per-dollar step divides by cost
 	top10: number | null; // full-mission top-10% credit; the focus division's bars
 	hasThumb: boolean;

@@ -112,6 +112,16 @@ test('skyline columns rise from the ground inside their year, with headroom for 
 	}
 });
 
+test('the citation skyline fills the same headroom, and zoom puts the papers on its scale', () => {
+	const rug = rugLayout(tiles, 900, 640, site.launchYears);
+	const sky = skylineLayout(tiles, rug, { papers: papersOf });
+	const room = sky.ground - (sky.top + 2 * sky.lineH);
+	assert.ok(Math.abs(Math.max(...sky.columns.map((c) => c.hc)) - room) < 1e-9, 'the most cited column is full height');
+	assert.ok(sky.zoom > 0 && sky.zoom < 1, 'papers are fewer than citations');
+	// on one √ scale, a column's height ratio is the square root of its count ratio
+	for (const c of sky.columns.filter((d) => d.cited > 0 && d.h > 1)) assert.ok(Math.abs((c.h * sky.zoom) / c.hc - Math.sqrt(c.papers / c.cited)) < 1e-9, c.id);
+});
+
 test('skimming the skyline picks the nearest column, and nothing off the chart', () => {
 	for (const [W, H] of sizes) {
 		const rug = rugLayout(tiles, W, H, site.launchYears);

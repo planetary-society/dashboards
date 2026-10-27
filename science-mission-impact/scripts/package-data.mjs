@@ -683,6 +683,8 @@ export function buildMissionDoc({
 			papers: fullStats.papers,
 			// The mission page headline: every paper on record, for the overview's corpus graphic.
 			papersLifetime: missionDoc.facts.papers,
+			// ...and every citation of them, which the corpus graphic's citation step rises to.
+			citationsLifetime: missionDoc.facts.citations,
 			citations: fullStats.citations,
 			// full-mission top-10% credit, so the story's bars read it as published, not rebuilt from a share
 			top10: fullStats.top10,

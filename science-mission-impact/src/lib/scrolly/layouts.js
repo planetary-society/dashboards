@@ -68,15 +68,19 @@ export function rugLayout(tiles, W, H, yearDomain) {
  * The skyline over the hanging rug: one column per mission with papers, rising from the ground
  * inside its year's footprint, height ∝ √papers, with two lines of headroom for the hover label.
  * No names by default; the reader skims the columns or the squares to light one up.
- * papers: (tile) => count.
+ * Each column also has `hc`, its citations at full height, and `zoom` scales the paper heights
+ * onto that citation scale (both √, so one factor does it).
+ * papers, cited: (tile) => count.
  */
-export function skylineLayout(tiles, rug, { papers = (t) => t.papersLifetime, compact = false } = {}) {
+export function skylineLayout(tiles, rug, { papers = (t) => t.papersLifetime, cited = (t) => t.citationsLifetime ?? 0, compact = false } = {}) {
 	const lineH = compact ? 13 : 15;
 	const w = compact ? 1 : 2;
 	const { left, right, top, bottom: ground } = rug.chart;
 	const withPapers = tiles.filter((t) => rug.pos.has(t.id) && papers(t) > 0);
 	const most = Math.max(1, ...withPapers.map(papers));
+	const mostCited = Math.max(most, ...withPapers.map(cited));
 	const y = scaleSqrt().domain([0, most]).range([0, ground - (top + 2 * lineH)]);
+	const yc = y.copy().domain([0, mostCited]);
 
 	const byYear = new Map();
 	for (const t of withPapers) byYear.set(t.launchYear, [...(byYear.get(t.launchYear) ?? []), t]);
@@ -87,10 +91,10 @@ export function skylineLayout(tiles, rug, { papers = (t) => t.papersLifetime, co
 		group.forEach((t, i) => {
 			const cx = rug.x(year) + (i - (k - 1) / 2) * pitch;
 			const h = Math.max(1, y(papers(t)));
-			columns.push({ id: t.id, name: t.name, x: cx - w / 2, y: ground - h, w, h, papers: papers(t) });
+			columns.push({ id: t.id, name: t.name, x: cx - w / 2, y: ground - h, w, h, papers: papers(t), cited: cited(t), hc: yc(cited(t)) });
 		});
 	}
-	return { columns, ground, top, left, right, x: rug.x, lineH, reach: rug.s };
+	return { columns, ground, top, left, right, x: rug.x, lineH, reach: rug.s, zoom: Math.sqrt(most / mostCited) };
 }
 
 /**

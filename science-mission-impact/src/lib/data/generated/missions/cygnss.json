@@ -23,8 +23,8 @@
     "m": 4.5,
     "i100": 15,
     "g": 70,
-    "tori": 27.561,
-    "riq": 524
+    "tori": 27.956,
+    "riq": 528
   },
   "facts": {
     "papers": 489,
@@ -94,16 +94,16 @@
   "ranks": {
     "full": {
       "bins": [
-        5.991,
-        12.045,
-        20.24,
-        15.294,
-        22.064,
-        24.279,
-        43.364,
-        35.342,
-        35.476,
-        52.905
+        6.009,
+        12.044,
+        20.261,
+        15.292,
+        22.05,
+        24.281,
+        43.447,
+        35.253,
+        35.463,
+        52.901
       ],
       "top1": 3
     },
@@ -111,27 +111,27 @@
       "bins": [
         3.45,
         9.904,
-        12.746,
+        12.75,
         15.983,
-        11.798,
+        11.794,
         26.375,
         27.741,
-        19.331,
-        25.387,
+        19.357,
+        25.361,
         38.284
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        94.902,
-        66.02,
-        57.835,
-        60.323,
-        49.733,
-        57.548,
-        31.894,
-        24.745,
+        95.036,
+        66.027,
+        57.783,
+        60.277,
+        49.749,
+        57.532,
+        31.876,
+        24.719,
         26,
         20
       ],
@@ -142,7 +142,7 @@
     "papers": 267,
     "outputBasis": "measured",
     "citations": 4446,
-    "top10": 42.552,
+    "top10": 42.55,
     "top10ShareOfDivision": 0.01182,
     "top1": 1.5,
     "top1ShareOfDivision": 0.00417,
@@ -227,9 +227,9 @@
   },
   "query": {
     "arms": "((=abs:\"Cyclone Global Navigation Satellite System\" OR (abs:CYGNSS AND (abs:satellite OR abs:GNSS OR abs:reflectometry OR abs:wind OR abs:soil OR abs:ocean OR abs:surface OR abs:data OR abs:retrieval OR abs:observations OR abs:cyclone OR abs:land OR abs:simulator OR abs:constellation OR abs:flood)) OR ((=abs:\"Delay Doppler Mapping Instrument\" OR abs:DDMI) AND (abs:CYGNSS OR abs:GNSS OR abs:reflectometry))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2017-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Cyclone+Global+Navigation+Satellite+System%22+OR+%28abs%3ACYGNSS+AND+%28abs%3Asatellite+OR+abs%3AGNSS+OR+abs%3Areflectometry+OR+abs%3Awind+OR+abs%3Asoil+OR+abs%3Aocean+OR+abs%3Asurface+OR+abs%3Adata+OR+abs%3Aretrieval+OR+abs%3Aobservations+OR+abs%3Acyclone+OR+abs%3Aland+OR+abs%3Asimulator+OR+abs%3Aconstellation+OR+abs%3Aflood%29%29+OR+%28%28%3Dabs%3A%22Delay+Doppler+Mapping+Instrument%22+OR+abs%3ADDMI%29+AND+%28abs%3ACYGNSS+OR+abs%3AGNSS+OR+abs%3Areflectometry%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2017-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:16:19.537725+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2017-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Cyclone+Global+Navigation+Satellite+System%22+OR+%28abs%3ACYGNSS+AND+%28abs%3Asatellite+OR+abs%3AGNSS+OR+abs%3Areflectometry+OR+abs%3Awind+OR+abs%3Asoil+OR+abs%3Aocean+OR+abs%3Asurface+OR+abs%3Adata+OR+abs%3Aretrieval+OR+abs%3Aobservations+OR+abs%3Acyclone+OR+abs%3Aland+OR+abs%3Asimulator+OR+abs%3Aconstellation+OR+abs%3Aflood%29%29+OR+%28%28%3Dabs%3A%22Delay+Doppler+Mapping+Instrument%22+OR+abs%3ADDMI%29+AND+%28abs%3ACYGNSS+OR+abs%3AGNSS+OR+abs%3Areflectometry%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2017-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:59:39.649593+00:00",
     "reconciliation": {
       "adsReturned": 490,
       "curatedOut": 1,

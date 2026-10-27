@@ -23,12 +23,12 @@
     "m": 5.696,
     "i100": 205,
     "g": 193,
-    "tori": 333.425,
-    "riq": 793
+    "tori": 337.01,
+    "riq": 798
   },
   "facts": {
     "papers": 3015,
-    "citations": 98435,
+    "citations": 98434,
     "publicationYears": [
       2004,
       2026
@@ -102,19 +102,19 @@
       5267,
       6024,
       6371,
-      6990,
+      6989,
       8930,
       8233,
       7848,
       7719,
-      8132,
-      5425
+      8131,
+      5426
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 98435,
-      "observed": 98435,
+      "expected": 98434,
+      "observed": 98434,
       "missing": 0
     }
   },
@@ -135,16 +135,16 @@
   "ranks": {
     "full": {
       "bins": [
-        204.843,
-        219.221,
-        234.739,
-        252.114,
-        256.19,
-        281.671,
-        307.485,
-        291.072,
-        342.366,
-        297.299
+        205.155,
+        219.211,
+        234.808,
+        252.174,
+        256.116,
+        281.521,
+        307.866,
+        290.652,
+        342.274,
+        297.223
       ],
       "top1": 32
     },
@@ -152,29 +152,29 @@
       "bins": [
         63.223,
         68.144,
-        73.165,
-        80.624,
-        75.361,
+        73.2,
+        80.608,
+        75.342,
         98.45,
         97.622,
-        93.728,
-        103.304,
+        93.828,
+        103.203,
         70.379
       ],
       "top1": 6
     },
     "lifetime": {
       "bins": [
-        231.927,
-        274.965,
-        290.971,
-        268.337,
-        294.747,
-        306.726,
-        337.623,
-        361.944,
-        331.452,
-        316.308
+        232.417,
+        275.069,
+        290.773,
+        268.225,
+        294.794,
+        306.758,
+        337.489,
+        361.949,
+        331.571,
+        315.954
       ],
       "top1": 22
     }
@@ -183,8 +183,8 @@
     "papers": 2687,
     "outputBasis": "measured",
     "citations": 33913,
-    "top10": 266.954,
-    "top10ShareOfDivision": 0.07416,
+    "top10": 266.887,
+    "top10ShareOfDivision": 0.07414,
     "top1": 30.25,
     "top1ShareOfDivision": 0.08404,
     "first": {
@@ -246,9 +246,9 @@
   "lifetime": {
     "papers": 3015,
     "outputBasis": "measured",
-    "citations": 98435,
-    "top10": 276.092,
-    "top10ShareOfDivision": 0.05934,
+    "citations": 98434,
+    "top10": 275.738,
+    "top10ShareOfDivision": 0.05926,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -268,9 +268,9 @@
   },
   "query": {
     "arms": "(((abs:Aura AND abs:(HIRDLS OR MLS OR OMI OR TES OR satellite OR spacecraft OR ozone OR stratospher* OR tropospher* OR =\"remote sensing\")) OR =abs:\"Aura Earth-Observing\" OR =abs:\"EOS Aura\" OR =abs:\"eos-ch1\" OR =abs:\"EOS CH-1\" OR =abs:\"eos-chem1\" OR =abs:\"High Resolution Dynamics Limb Sounder\" OR (=abs:\"Ozone Monitoring Instrument\" AND NOT ((=abs:\"Global Ozone Monitoring Instrument\" OR =abs:\"Tropospheric Ozone Monitoring Instrument\") AND NOT abs:OMI)) OR =abs:\"Tropospheric Emission Spectrometer\" OR (abs:HIRDLS AND abs:(stratospher* OR ozone OR temperature OR satellite OR atmospheric)) OR (abs:OMI AND abs:(ozone OR =\"nitrogen dioxide\" OR NO2 OR SO2 OR aerosol* OR =\"sulfur dioxide\")) OR ((abs:MLS OR =abs:\"Microwave Limb Sounder\") AND abs:(Aura OR EOS))) AND NOT =abs:\"AURA Inc.\" AND NOT =abs:\"Cathartes aura\")",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2004-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3AAura+AND+abs%3A%28HIRDLS+OR+MLS+OR+OMI+OR+TES+OR+satellite+OR+spacecraft+OR+ozone+OR+stratospher%2A+OR+tropospher%2A+OR+%3D%22remote+sensing%22%29%29+OR+%3Dabs%3A%22Aura+Earth-Observing%22+OR+%3Dabs%3A%22EOS+Aura%22+OR+%3Dabs%3A%22eos-ch1%22+OR+%3Dabs%3A%22EOS+CH-1%22+OR+%3Dabs%3A%22eos-chem1%22+OR+%3Dabs%3A%22High+Resolution+Dynamics+Limb+Sounder%22+OR+%28%3Dabs%3A%22Ozone+Monitoring+Instrument%22+AND+NOT+%28%28%3Dabs%3A%22Global+Ozone+Monitoring+Instrument%22+OR+%3Dabs%3A%22Tropospheric+Ozone+Monitoring+Instrument%22%29+AND+NOT+abs%3AOMI%29%29+OR+%3Dabs%3A%22Tropospheric+Emission+Spectrometer%22+OR+%28abs%3AHIRDLS+AND+abs%3A%28stratospher%2A+OR+ozone+OR+temperature+OR+satellite+OR+atmospheric%29%29+OR+%28abs%3AOMI+AND+abs%3A%28ozone+OR+%3D%22nitrogen+dioxide%22+OR+NO2+OR+SO2+OR+aerosol%2A+OR+%3D%22sulfur+dioxide%22%29%29+OR+%28%28abs%3AMLS+OR+%3Dabs%3A%22Microwave+Limb+Sounder%22%29+AND+abs%3A%28Aura+OR+EOS%29%29%29+AND+NOT+%3Dabs%3A%22AURA+Inc.%22+AND+NOT+%3Dabs%3A%22Cathartes+aura%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:14:48.150193+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2004-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3AAura+AND+abs%3A%28HIRDLS+OR+MLS+OR+OMI+OR+TES+OR+satellite+OR+spacecraft+OR+ozone+OR+stratospher%2A+OR+tropospher%2A+OR+%3D%22remote+sensing%22%29%29+OR+%3Dabs%3A%22Aura+Earth-Observing%22+OR+%3Dabs%3A%22EOS+Aura%22+OR+%3Dabs%3A%22eos-ch1%22+OR+%3Dabs%3A%22EOS+CH-1%22+OR+%3Dabs%3A%22eos-chem1%22+OR+%3Dabs%3A%22High+Resolution+Dynamics+Limb+Sounder%22+OR+%28%3Dabs%3A%22Ozone+Monitoring+Instrument%22+AND+NOT+%28%28%3Dabs%3A%22Global+Ozone+Monitoring+Instrument%22+OR+%3Dabs%3A%22Tropospheric+Ozone+Monitoring+Instrument%22%29+AND+NOT+abs%3AOMI%29%29+OR+%3Dabs%3A%22Tropospheric+Emission+Spectrometer%22+OR+%28abs%3AHIRDLS+AND+abs%3A%28stratospher%2A+OR+ozone+OR+temperature+OR+satellite+OR+atmospheric%29%29+OR+%28abs%3AOMI+AND+abs%3A%28ozone+OR+%3D%22nitrogen+dioxide%22+OR+NO2+OR+SO2+OR+aerosol%2A+OR+%3D%22sulfur+dioxide%22%29%29+OR+%28%28abs%3AMLS+OR+%3Dabs%3A%22Microwave+Limb+Sounder%22%29+AND+abs%3A%28Aura+OR+EOS%29%29%29+AND+NOT+%3Dabs%3A%22AURA+Inc.%22+AND+NOT+%3Dabs%3A%22Cathartes+aura%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:57:38.907662+00:00",
     "reconciliation": {
       "adsReturned": 3017,
       "curatedOut": 1,

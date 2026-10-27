@@ -23,12 +23,12 @@
     "m": 7,
     "i100": 153,
     "g": 211,
-    "tori": 386.254,
-    "riq": 1156
+    "tori": 435.198,
+    "riq": 1158
   },
   "facts": {
-    "papers": 3991,
-    "citations": 108824,
+    "papers": 3997,
+    "citations": 109344,
     "publicationYears": [
       2010,
       2026
@@ -71,7 +71,7 @@
       284,
       294,
       302,
-      287
+      293
     ],
     "citations": [
       0,
@@ -81,22 +81,22 @@
       3582,
       4461,
       5623,
-      5917,
+      5914,
       7032,
       7846,
-      8210,
+      8209,
       9292,
       9337,
       9626,
       11145,
-      11476,
-      11117
+      11497,
+      11620
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 108824,
-      "observed": 108824,
+      "expected": 109344,
+      "observed": 109344,
       "missing": 0
     }
   },
@@ -117,46 +117,46 @@
   "ranks": {
     "full": {
       "bins": [
-        268.312,
-        262.577,
-        275.235,
-        282.553,
-        306.66,
-        293.216,
-        338.458,
-        358.146,
-        360.244,
-        362.598
+        267.798,
+        263.066,
+        273.974,
+        283.17,
+        306.512,
+        289.489,
+        339.994,
+        359.193,
+        361.675,
+        363.129
       ],
-      "top1": 35.574
+      "top1": 35.463
     },
     "window": {
       "bins": [
         111.36,
         133.998,
-        127.97,
-        138.364,
-        117.906,
-        152.074,
+        128.019,
+        138.325,
+        118.047,
+        151.925,
         148.064,
-        139.869,
-        132.256,
+        140.091,
+        132.035,
         138.138
       ],
       "top1": 12
     },
     "lifetime": {
       "bins": [
-        512.512,
-        465.232,
-        435.945,
-        443.143,
-        391.049,
-        374.848,
-        387.736,
-        375.065,
-        336.231,
-        269.238
+        501.995,
+        466.414,
+        438.736,
+        443.191,
+        390.17,
+        383.681,
+        385.977,
+        379.393,
+        338.568,
+        268.875
       ],
       "top1": 24
     }
@@ -164,11 +164,11 @@
   "full": {
     "papers": 3108,
     "outputBasis": "measured",
-    "citations": 40580,
-    "top10": 305,
-    "top10ShareOfDivision": 0.21156,
-    "top1": 29.824,
-    "top1ShareOfDivision": 0.20687,
+    "citations": 40674,
+    "top10": 305.594,
+    "top10ShareOfDivision": 0.21197,
+    "top1": 29.713,
+    "top1ShareOfDivision": 0.2061,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.419,
@@ -186,10 +186,10 @@
       "citationBuckets": 17
     },
     "spread": {
-      "mean": 13.057,
+      "mean": 13.087,
       "median": 9,
       "uncited": 185,
-      "i10": 1476,
+      "i10": 1482,
       "i100": 12
     }
   },
@@ -226,11 +226,11 @@
     }
   },
   "lifetime": {
-    "papers": 3991,
+    "papers": 3997,
     "outputBasis": "measured",
-    "citations": 108824,
-    "top10": 224.395,
-    "top10ShareOfDivision": 0.12251,
+    "citations": 109344,
+    "top10": 224.12,
+    "top10ShareOfDivision": 0.1223,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -241,26 +241,26 @@
       "date": "2010-10-00"
     },
     "spread": {
-      "mean": 27.267,
+      "mean": 27.357,
       "median": 11,
-      "uncited": 398,
-      "i10": 2178,
+      "uncited": 386,
+      "i10": 2196,
       "i100": 153
     }
   },
   "query": {
     "arms": "(((=abs:\"Solar Dynamics Observatory\" OR =abs:\"Solar Dynamic Observatory\" OR =abs:\"Atmospheric Imaging Assembly\" OR =abs:\"Atmosphere Imaging Assembly\" OR =abs:\"Helioseismic and Magnetic Imager\" OR =abs:\"Extreme Ultraviolet Variability Experiment\" OR =abs:\"EUV Variability Experiment\" OR ( abs:SDO AND abs:(solar OR Sun OR corona OR flare OR helioseismology) AND NOT ( abs:(subdwarf OR subdwarfs OR sdB) OR =abs:\"helium star\" OR =abs:\"white dwarf\" OR =abs:\"stripped star\" OR =abs:\"scattered disk\" OR =abs:\"scattered disc\" OR =abs:\"mass decretion\" OR =abs:\"Galactic Bulge Survey\" OR abs:(photovoltaic OR microgrid) OR =abs:\"supply demand\" OR =abs:\"sustainable development objective\" ) ) OR ( (abs:AIA OR abs:HMI) AND abs:(solar OR Sun OR corona OR flare OR sunspot OR photosphere OR chromosphere OR helioseismology) AND NOT (abs:(microgrid OR photovoltaic) OR =abs:\"active integrated\") ) OR ( abs:EVE AND abs:(solar OR Sun) AND abs:(EUV OR irradiance OR flare) AND NOT =abs:\"Evaporating Exoplanets\" )) OR facility:SDO OR =abs:\"Atmospheric Image Assembly\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2010-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Solar+Dynamics+Observatory%22+OR+%3Dabs%3A%22Solar+Dynamic+Observatory%22+OR+%3Dabs%3A%22Atmospheric+Imaging+Assembly%22+OR+%3Dabs%3A%22Atmosphere+Imaging+Assembly%22+OR+%3Dabs%3A%22Helioseismic+and+Magnetic+Imager%22+OR+%3Dabs%3A%22Extreme+Ultraviolet+Variability+Experiment%22+OR+%3Dabs%3A%22EUV+Variability+Experiment%22+OR+%28+abs%3ASDO+AND+abs%3A%28solar+OR+Sun+OR+corona+OR+flare+OR+helioseismology%29+AND+NOT+%28+abs%3A%28subdwarf+OR+subdwarfs+OR+sdB%29+OR+%3Dabs%3A%22helium+star%22+OR+%3Dabs%3A%22white+dwarf%22+OR+%3Dabs%3A%22stripped+star%22+OR+%3Dabs%3A%22scattered+disk%22+OR+%3Dabs%3A%22scattered+disc%22+OR+%3Dabs%3A%22mass+decretion%22+OR+%3Dabs%3A%22Galactic+Bulge+Survey%22+OR+abs%3A%28photovoltaic+OR+microgrid%29+OR+%3Dabs%3A%22supply+demand%22+OR+%3Dabs%3A%22sustainable+development+objective%22+%29+%29+OR+%28+%28abs%3AAIA+OR+abs%3AHMI%29+AND+abs%3A%28solar+OR+Sun+OR+corona+OR+flare+OR+sunspot+OR+photosphere+OR+chromosphere+OR+helioseismology%29+AND+NOT+%28abs%3A%28microgrid+OR+photovoltaic%29+OR+%3Dabs%3A%22active+integrated%22%29+%29+OR+%28+abs%3AEVE+AND+abs%3A%28solar+OR+Sun%29+AND+abs%3A%28EUV+OR+irradiance+OR+flare%29+AND+NOT+%3Dabs%3A%22Evaporating+Exoplanets%22+%29%29+OR+facility%3ASDO+OR+%3Dabs%3A%22Atmospheric+Image+Assembly%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2010-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:21:02.690764+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2010-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Solar+Dynamics+Observatory%22+OR+%3Dabs%3A%22Solar+Dynamic+Observatory%22+OR+%3Dabs%3A%22Atmospheric+Imaging+Assembly%22+OR+%3Dabs%3A%22Atmosphere+Imaging+Assembly%22+OR+%3Dabs%3A%22Helioseismic+and+Magnetic+Imager%22+OR+%3Dabs%3A%22Extreme+Ultraviolet+Variability+Experiment%22+OR+%3Dabs%3A%22EUV+Variability+Experiment%22+OR+%28+abs%3ASDO+AND+abs%3A%28solar+OR+Sun+OR+corona+OR+flare+OR+helioseismology%29+AND+NOT+%28+abs%3A%28subdwarf+OR+subdwarfs+OR+sdB%29+OR+%3Dabs%3A%22helium+star%22+OR+%3Dabs%3A%22white+dwarf%22+OR+%3Dabs%3A%22stripped+star%22+OR+%3Dabs%3A%22scattered+disk%22+OR+%3Dabs%3A%22scattered+disc%22+OR+%3Dabs%3A%22mass+decretion%22+OR+%3Dabs%3A%22Galactic+Bulge+Survey%22+OR+abs%3A%28photovoltaic+OR+microgrid%29+OR+%3Dabs%3A%22supply+demand%22+OR+%3Dabs%3A%22sustainable+development+objective%22+%29+%29+OR+%28+%28abs%3AAIA+OR+abs%3AHMI%29+AND+abs%3A%28solar+OR+Sun+OR+corona+OR+flare+OR+sunspot+OR+photosphere+OR+chromosphere+OR+helioseismology%29+AND+NOT+%28abs%3A%28microgrid+OR+photovoltaic%29+OR+%3Dabs%3A%22active+integrated%22%29+%29+OR+%28+abs%3AEVE+AND+abs%3A%28solar+OR+Sun%29+AND+abs%3A%28EUV+OR+irradiance+OR+flare%29+AND+NOT+%3Dabs%3A%22Evaporating+Exoplanets%22+%29%29+OR+facility%3ASDO+OR+%3Dabs%3A%22Atmospheric+Image+Assembly%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2010-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:05:21.769727+00:00",
     "reconciliation": {
-      "adsReturned": 3996,
+      "adsReturned": 4002,
       "curatedOut": 1,
       "curatedIn": 8,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 12,
-      "final": 3991
+      "final": 3997
     }
   },
   "curation": {
@@ -540,6 +540,6 @@
     }
   ],
   "papersFile": {
-    "rows": 3991
+    "rows": 3997
   }
 }

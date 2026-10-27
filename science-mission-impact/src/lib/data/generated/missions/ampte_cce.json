@@ -22,13 +22,13 @@
     "h": 66,
     "m": 1.571,
     "i100": 48,
-    "g": 109,
-    "tori": 129.622,
-    "riq": 277
+    "g": 110,
+    "tori": 130.506,
+    "riq": 278
   },
   "facts": {
     "papers": 286,
-    "citations": 14454,
+    "citations": 14458,
     "publicationYears": [
       1985,
       2025
@@ -165,13 +165,13 @@
       320,
       262,
       294,
-      164
+      168
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 14454,
-      "observed": 14454,
+      "expected": 14458,
+      "observed": 14458,
       "missing": 0
     }
   },
@@ -194,14 +194,14 @@
       "bins": [
         21.543,
         7.585,
-        6.768,
-        5.937,
-        13.38,
-        15.276,
-        12.793,
-        10.726,
-        12.837,
-        7.155
+        6.777,
+        5.942,
+        13.425,
+        15.255,
+        12.807,
+        10.727,
+        12.83,
+        7.109
       ],
       "top1": 0
     },
@@ -209,9 +209,9 @@
       "bins": [
         7,
         2.694,
-        2.104,
-        3.262,
-        5.94,
+        2.105,
+        3.261,
+        5.939,
         2,
         4,
         4,
@@ -222,15 +222,15 @@
     },
     "lifetime": {
       "bins": [
-        26.652,
-        18.925,
-        21.244,
-        15.456,
-        23.677,
-        22.142,
-        24.163,
-        35.846,
-        33.894,
+        27.087,
+        18.594,
+        21.414,
+        15.327,
+        23.946,
+        21.778,
+        24.327,
+        35.918,
+        33.608,
         64
       ],
       "top1": 5
@@ -240,8 +240,8 @@
     "papers": 114,
     "outputBasis": "measured",
     "citations": 1064,
-    "top10": 7.155,
-    "top10ShareOfDivision": 0.00496,
+    "top10": 7.109,
+    "top10ShareOfDivision": 0.00493,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -303,9 +303,9 @@
   "lifetime": {
     "papers": 286,
     "outputBasis": "measured",
-    "citations": 14454,
+    "citations": 14458,
     "top10": 64,
-    "top10ShareOfDivision": 0.03494,
+    "top10ShareOfDivision": 0.03492,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -316,7 +316,7 @@
       "date": "1985-05-00"
     },
     "spread": {
-      "mean": 50.538,
+      "mean": 50.552,
       "median": 26.5,
       "uncited": 18,
       "i10": 205,
@@ -325,9 +325,9 @@
   },
   "query": {
     "arms": "(((abs:(\"AMPTE CCE\" OR AMPTECCE) AND abs:(magnetosphere OR magnetospheric OR ions OR particles OR plasma OR \"ring current\" OR spacecraft OR satellite)) OR =abs:\"Charge Composition Explorer\" OR (abs:AMPTE AND =abs:\"Charged Particle Explorer\") OR (abs:CCE AND abs:(magnetosphere OR magnetospheric OR \"ring current\" OR magnetopause OR plasmasphere)) OR (abs:(CHEM OR MEPA OR HPCE) AND abs:(magnetosphere OR magnetospheric OR \"ring current\")) OR (abs:AMPTE AND =abs:(\"ring current\" OR \"ring currents\" OR plasmasphere OR plasmaspheric OR \"radiation belt\" OR \"radiation belts\" OR \"inner magnetosphere\") AND NOT abs:(IRM OR UKS OR \"Ion Release Module\" OR \"UK Subsatellite\" OR \"United Kingdom Subsatellite\"))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1984-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%28%22AMPTE+CCE%22+OR+AMPTECCE%29+AND+abs%3A%28magnetosphere+OR+magnetospheric+OR+ions+OR+particles+OR+plasma+OR+%22ring+current%22+OR+spacecraft+OR+satellite%29%29+OR+%3Dabs%3A%22Charge+Composition+Explorer%22+OR+%28abs%3AAMPTE+AND+%3Dabs%3A%22Charged+Particle+Explorer%22%29+OR+%28abs%3ACCE+AND+abs%3A%28magnetosphere+OR+magnetospheric+OR+%22ring+current%22+OR+magnetopause+OR+plasmasphere%29%29+OR+%28abs%3A%28CHEM+OR+MEPA+OR+HPCE%29+AND+abs%3A%28magnetosphere+OR+magnetospheric+OR+%22ring+current%22%29%29+OR+%28abs%3AAMPTE+AND+%3Dabs%3A%28%22ring+current%22+OR+%22ring+currents%22+OR+plasmasphere+OR+plasmaspheric+OR+%22radiation+belt%22+OR+%22radiation+belts%22+OR+%22inner+magnetosphere%22%29+AND+NOT+abs%3A%28IRM+OR+UKS+OR+%22Ion+Release+Module%22+OR+%22UK+Subsatellite%22+OR+%22United+Kingdom+Subsatellite%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1984-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:17:32.908448+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1984-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%28%22AMPTE+CCE%22+OR+AMPTECCE%29+AND+abs%3A%28magnetosphere+OR+magnetospheric+OR+ions+OR+particles+OR+plasma+OR+%22ring+current%22+OR+spacecraft+OR+satellite%29%29+OR+%3Dabs%3A%22Charge+Composition+Explorer%22+OR+%28abs%3AAMPTE+AND+%3Dabs%3A%22Charged+Particle+Explorer%22%29+OR+%28abs%3ACCE+AND+abs%3A%28magnetosphere+OR+magnetospheric+OR+%22ring+current%22+OR+magnetopause+OR+plasmasphere%29%29+OR+%28abs%3A%28CHEM+OR+MEPA+OR+HPCE%29+AND+abs%3A%28magnetosphere+OR+magnetospheric+OR+%22ring+current%22%29%29+OR+%28abs%3AAMPTE+AND+%3Dabs%3A%28%22ring+current%22+OR+%22ring+currents%22+OR+plasmasphere+OR+plasmaspheric+OR+%22radiation+belt%22+OR+%22radiation+belts%22+OR+%22inner+magnetosphere%22%29+AND+NOT+abs%3A%28IRM+OR+UKS+OR+%22Ion+Release+Module%22+OR+%22UK+Subsatellite%22+OR+%22United+Kingdom+Subsatellite%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1984-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:00:49.816550+00:00",
     "reconciliation": {
       "adsReturned": 289,
       "curatedOut": 3,

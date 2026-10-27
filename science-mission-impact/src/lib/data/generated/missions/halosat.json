@@ -19,16 +19,16 @@
     }
   },
   "indices": {
-    "h": 8,
-    "m": 1,
+    "h": 9,
+    "m": 1.125,
     "i100": 0,
     "g": 15,
-    "tori": 0.679,
-    "riq": 137
+    "tori": 1.737,
+    "riq": 219
   },
   "facts": {
     "papers": 15,
-    "citations": 279,
+    "citations": 286,
     "publicationYears": [
       2019,
       2024
@@ -63,13 +63,13 @@
       53,
       68,
       38,
-      45
+      52
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 279,
-      "observed": 279,
+      "expected": 286,
+      "observed": 286,
       "missing": 0
     }
   },
@@ -92,11 +92,11 @@
       "bins": [
         0,
         2,
-        1.424,
-        1.69,
-        2.886,
-        0.089,
-        0.911,
+        1.429,
+        1.693,
+        2.878,
+        0.1,
+        0.9,
         0,
         2,
         0
@@ -106,10 +106,10 @@
     "window": {
       "bins": [
         0,
-        2.236,
-        1.764,
-        2.81,
-        1.19,
+        2.238,
+        1.762,
+        2.817,
+        1.183,
         1,
         0,
         0,
@@ -120,9 +120,9 @@
     },
     "lifetime": {
       "bins": [
-        0.531,
-        3.18,
-        3.289,
+        0,
+        3.848,
+        3.152,
         3,
         1,
         1,
@@ -201,7 +201,7 @@
   "lifetime": {
     "papers": 15,
     "outputBasis": "measured",
-    "citations": 279,
+    "citations": 286,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": null,
@@ -214,7 +214,7 @@
       "date": null
     },
     "spread": {
-      "mean": 18.6,
+      "mean": 19.067,
       "median": 12,
       "uncited": 0,
       "i10": 8,
@@ -223,9 +223,9 @@
   },
   "query": {
     "arms": "(=abs:HaloSat AND collection:astronomy)",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2018-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%3Dabs%3AHaloSat+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:30:09.632208+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2018-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%3Dabs%3AHaloSat+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:20:39.730585+00:00",
     "reconciliation": {
       "adsReturned": 15,
       "curatedOut": 1,
@@ -283,7 +283,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 43
+      "citations": 45
     },
     {
       "bibcode": "2019ApJ...884..162K",
@@ -292,7 +292,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 38
+      "citations": 39
     },
     {
       "bibcode": "2020ApJ...904...54L",
@@ -301,7 +301,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 27
+      "citations": 29
     },
     {
       "bibcode": "2023CRPhy..23S...1L",
@@ -310,7 +310,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2023,
-      "citations": 18
+      "citations": 21
     },
     {
       "bibcode": "2021ApJ...916....2S",
@@ -319,7 +319,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 15
+      "citations": 16
+    },
+    {
+      "bibcode": "2021ApJ...918...41R",
+      "title": "HaloSat Observations of Heliospheric Solar Wind Charge Exchange",
+      "firstAuthor": "Ringuette, R.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2021,
+      "citations": 13
     },
     {
       "bibcode": "2020JATIS...6a4003L",
@@ -331,27 +340,18 @@
       "citations": 12
     },
     {
-      "bibcode": "2021ApJ...918...41R",
-      "title": "HaloSat Observations of Heliospheric Solar Wind Charge Exchange",
-      "firstAuthor": "Ringuette, R.",
+      "bibcode": "2020JATIS...6d4005Z",
+      "title": "On-ground calibration of the HaloSat science instrument",
+      "firstAuthor": "Zajczyk, Anna",
       "authors": null,
       "authorCount": null,
-      "year": 2021,
-      "citations": 12
+      "year": 2020,
+      "citations": 9
     },
     {
       "bibcode": "2020ApJ...905...91B",
       "title": "A HaloSat Analysis of the Cygnus Superbubble",
       "firstAuthor": "Bluem, Jesse",
-      "authors": null,
-      "authorCount": null,
-      "year": 2020,
-      "citations": 8
-    },
-    {
-      "bibcode": "2020JATIS...6d4005Z",
-      "title": "On-ground calibration of the HaloSat science instrument",
-      "firstAuthor": "Zajczyk, Anna",
       "authors": null,
       "authorCount": null,
       "year": 2020,
@@ -400,7 +400,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2024,
-      "citations": 2
+      "citations": 3
     }
   ],
   "papersFile": {

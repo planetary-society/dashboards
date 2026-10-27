@@ -23,12 +23,12 @@
     "m": 6.333,
     "i100": 87,
     "g": 150,
-    "tori": 96.606,
-    "riq": 614
+    "tori": 98.434,
+    "riq": 620
   },
   "facts": {
-    "papers": 1113,
-    "citations": 38993,
+    "papers": 1111,
+    "citations": 38989,
     "publicationYears": [
       2012,
       2026
@@ -59,7 +59,7 @@
       73,
       87,
       93,
-      87,
+      85,
       78,
       84,
       66,
@@ -77,10 +77,10 @@
       1813,
       2276,
       2511,
-      2708,
+      2707,
       3810,
       4006,
-      4810,
+      4807,
       3249,
       3931,
       4108,
@@ -89,8 +89,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 38993,
-      "observed": 38993,
+      "expected": 38989,
+      "observed": 38989,
       "missing": 0
     }
   },
@@ -111,58 +111,58 @@
   "ranks": {
     "full": {
       "bins": [
-        68.375,
-        88.568,
-        86.507,
-        96.806,
-        65.495,
-        85.864,
-        72.69,
-        100.039,
-        101.443,
-        131.213
+        70.93,
+        88.555,
+        86.062,
+        96.791,
+        63.958,
+        85.741,
+        71.85,
+        100.506,
+        100.489,
+        130.116
       ],
       "top1": 15
     },
     "window": {
       "bins": [
-        36.123,
-        37.926,
-        30.603,
-        23.413,
-        23.626,
-        23.959,
-        28.28,
-        26.857,
-        29.212,
+        38.742,
+        37.234,
+        30.367,
+        22.602,
+        23.839,
+        23.396,
+        28.551,
+        26.372,
+        28.898,
         37
       ],
-      "top1": 5.635
+      "top1": 5.44
     },
     "lifetime": {
       "bins": [
-        133.667,
-        124.859,
-        135.129,
-        102.994,
-        106.041,
-        101.774,
-        101.911,
-        99.147,
-        98.928,
-        108.55
+        137.379,
+        125.925,
+        132.722,
+        102.162,
+        105.003,
+        101.421,
+        102.793,
+        98.025,
+        98.057,
+        107.512
       ],
       "top1": 12
     }
   },
   "full": {
-    "papers": 897,
+    "papers": 895,
     "outputBasis": "measured",
-    "citations": 15275,
-    "top10": 126.403,
-    "top10ShareOfDivision": 0.11567,
+    "citations": 15274,
+    "top10": 125.316,
+    "top10ShareOfDivision": 0.11547,
     "top1": 15,
-    "top1ShareOfDivision": 0.13726,
+    "top1ShareOfDivision": 0.13821,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.071,
@@ -180,9 +180,9 @@
       "citationBuckets": 15
     },
     "spread": {
-      "mean": 17.029,
+      "mean": 17.066,
       "median": 10,
-      "uncited": 38,
+      "uncited": 37,
       "i10": 461,
       "i100": 15
     }
@@ -192,9 +192,9 @@
     "outputBasis": "measured",
     "citations": 6105,
     "top10": 36.5,
-    "top10ShareOfDivision": 0.07562,
-    "top1": 5.635,
-    "top1ShareOfDivision": 0.11674,
+    "top10ShareOfDivision": 0.07623,
+    "top1": 5.44,
+    "top1ShareOfDivision": 0.11362,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.071,
@@ -220,11 +220,11 @@
     }
   },
   "lifetime": {
-    "papers": 1113,
+    "papers": 1111,
     "outputBasis": "measured",
-    "citations": 38993,
-    "top10": 102.529,
-    "top10ShareOfDivision": 0.06508,
+    "citations": 38989,
+    "top10": 101.628,
+    "top10ShareOfDivision": 0.06491,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -235,26 +235,26 @@
       "date": "2012-09-00"
     },
     "spread": {
-      "mean": 35.034,
+      "mean": 35.094,
       "median": 14,
-      "uncited": 106,
+      "uncited": 105,
       "i10": 661,
       "i100": 87
     }
   },
   "query": {
     "arms": "((((=abs:\"Mars Science Laboratory\" OR =abs:\"Curiosity rover\" OR (=abs:Curiosity AND (abs:Mars OR abs:Gale OR abs:martian)) OR (abs:MSL AND (abs:Mars OR abs:Gale OR abs:martian)) OR (abs:Mars AND NOT (abs:Perseverance OR abs:Jezero OR =abs:\"Mars 2020\") AND (=abs:\"Radiation Assessment Detector\" OR =abs:ChemCam OR =abs:CheMin OR =abs:\"Sample Analysis at Mars\" OR =abs:\"Mast Camera\" OR =abs:Mastcam OR =abs:\"Mars Hand Lens Imager\" OR abs:MAHLI OR =abs:\"Rover Environmental Monitoring Station\" OR =abs:\"Dynamic Albedo of Neutrons\" OR (=abs:\"Alpha Particle X-ray Spectrometer\" AND abs:Gale))))) OR (=abs:\"Mars Descent Imager\" AND abs:(Mars OR martian OR Gale)) OR (abs:(REMS OR DAN) AND abs:Gale)))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2012-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Mars+Science+Laboratory%22+OR+%3Dabs%3A%22Curiosity+rover%22+OR+%28%3Dabs%3ACuriosity+AND+%28abs%3AMars+OR+abs%3AGale+OR+abs%3Amartian%29%29+OR+%28abs%3AMSL+AND+%28abs%3AMars+OR+abs%3AGale+OR+abs%3Amartian%29%29+OR+%28abs%3AMars+AND+NOT+%28abs%3APerseverance+OR+abs%3AJezero+OR+%3Dabs%3A%22Mars+2020%22%29+AND+%28%3Dabs%3A%22Radiation+Assessment+Detector%22+OR+%3Dabs%3AChemCam+OR+%3Dabs%3ACheMin+OR+%3Dabs%3A%22Sample+Analysis+at+Mars%22+OR+%3Dabs%3A%22Mast+Camera%22+OR+%3Dabs%3AMastcam+OR+%3Dabs%3A%22Mars+Hand+Lens+Imager%22+OR+abs%3AMAHLI+OR+%3Dabs%3A%22Rover+Environmental+Monitoring+Station%22+OR+%3Dabs%3A%22Dynamic+Albedo+of+Neutrons%22+OR+%28%3Dabs%3A%22Alpha+Particle+X-ray+Spectrometer%22+AND+abs%3AGale%29%29%29%29%29+OR+%28%3Dabs%3A%22Mars+Descent+Imager%22+AND+abs%3A%28Mars+OR+martian+OR+Gale%29%29+OR+%28abs%3A%28REMS+OR+DAN%29+AND+abs%3AGale%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:09:13.437932+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2012-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Mars+Science+Laboratory%22+OR+%3Dabs%3A%22Curiosity+rover%22+OR+%28%3Dabs%3ACuriosity+AND+%28abs%3AMars+OR+abs%3AGale+OR+abs%3Amartian%29%29+OR+%28abs%3AMSL+AND+%28abs%3AMars+OR+abs%3AGale+OR+abs%3Amartian%29%29+OR+%28abs%3AMars+AND+NOT+%28abs%3APerseverance+OR+abs%3AJezero+OR+%3Dabs%3A%22Mars+2020%22%29+AND+%28%3Dabs%3A%22Radiation+Assessment+Detector%22+OR+%3Dabs%3AChemCam+OR+%3Dabs%3ACheMin+OR+%3Dabs%3A%22Sample+Analysis+at+Mars%22+OR+%3Dabs%3A%22Mast+Camera%22+OR+%3Dabs%3AMastcam+OR+%3Dabs%3A%22Mars+Hand+Lens+Imager%22+OR+abs%3AMAHLI+OR+%3Dabs%3A%22Rover+Environmental+Monitoring+Station%22+OR+%3Dabs%3A%22Dynamic+Albedo+of+Neutrons%22+OR+%28%3Dabs%3A%22Alpha+Particle+X-ray+Spectrometer%22+AND+abs%3AGale%29%29%29%29%29+OR+%28%3Dabs%3A%22Mars+Descent+Imager%22+AND+abs%3A%28Mars+OR+martian+OR+Gale%29%29+OR+%28abs%3A%28REMS+OR+DAN%29+AND+abs%3AGale%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:48:33.847376+00:00",
     "reconciliation": {
       "adsReturned": 1170,
-      "curatedOut": 53,
+      "curatedOut": 55,
       "curatedIn": 2,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 6,
-      "final": 1113
+      "final": 1111
     }
   },
   "curation": {
@@ -716,6 +716,22 @@
         "reason": "Instrument description of the Psyche mission's multispectral imager; MSL is mentioned only as design heritage.",
         "authority": "agent",
         "date": "2026-10-03"
+      },
+      {
+        "bibcode": "2018Sci...360..944.",
+        "doi": "10.1126/science.360.6392.944",
+        "title": "News at a glance",
+        "reason": "Science weekly news roundup; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2018Sci...360.1054V",
+        "doi": "10.1126/science.360.6393.1054",
+        "title": "NASA Curiosity rover hits organic pay dirt on Mars",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
       }
     ]
   },
@@ -902,6 +918,6 @@
     }
   ],
   "papersFile": {
-    "rows": 1113
+    "rows": 1111
   }
 }

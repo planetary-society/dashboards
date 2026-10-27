@@ -23,8 +23,8 @@
     "m": 1.633,
     "i100": 24,
     "g": 81,
-    "tori": 52.933,
-    "riq": 242
+    "tori": 53.626,
+    "riq": 244
   },
   "facts": {
     "papers": 158,
@@ -156,45 +156,45 @@
   "ranks": {
     "full": {
       "bins": [
-        19.339,
-        8.846,
-        9.163,
-        3.651,
-        10.055,
-        7.203,
-        7.069,
-        11.322,
-        11.312,
-        12.039
+        19.948,
+        8.762,
+        8.961,
+        3.376,
+        10.088,
+        7.297,
+        7.229,
+        11.097,
+        11.369,
+        11.874
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        19.593,
-        11.571,
-        9.836,
-        6.628,
-        9.545,
-        5.815,
-        11.656,
-        10.356,
-        10,
+        20.51,
+        11.48,
+        9.01,
+        7.381,
+        9.065,
+        5.939,
+        11.525,
+        10.192,
+        9.898,
         5
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        16.176,
-        10.898,
-        8.926,
+        16.887,
+        10.811,
+        8.302,
         15,
-        12.756,
-        16.518,
-        15.539,
-        18.695,
-        16.493,
+        14.044,
+        15.468,
+        15.589,
+        19.042,
+        15.856,
         27
       ],
       "top1": 0
@@ -204,8 +204,8 @@
     "papers": 100,
     "outputBasis": "measured",
     "citations": 1345,
-    "top10": 12.039,
-    "top10ShareOfDivision": 0.01102,
+    "top10": 11.874,
+    "top10ShareOfDivision": 0.01094,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -237,7 +237,7 @@
     "outputBasis": "measured",
     "citations": 1345,
     "top10": 5,
-    "top10ShareOfDivision": 0.01036,
+    "top10ShareOfDivision": 0.01044,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -269,7 +269,7 @@
     "outputBasis": "measured",
     "citations": 7257,
     "top10": 26.25,
-    "top10ShareOfDivision": 0.01666,
+    "top10ShareOfDivision": 0.01677,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -289,9 +289,9 @@
   },
   "query": {
     "arms": "((=abs:\"NEAR Shoemaker\" OR =abs:\"Near Earth Asteroid Rendezvous\" OR =abs:\"NEAR spacecraft\" OR =abs:\"NEAR mission\" OR =abs:\"NEAR probe\" OR =abs:\"NEAR probes\" OR (=abs:\"NEAR flyby\" AND (title:Mathilde OR abs:Mathilde)) OR =abs:\"NEAR target 253 Mathilde\" OR =abs:\"NEAR observations\" OR =abs:\"NEAR results\" OR =abs:\"NEAR data\" OR =abs:\"NEAR images\" OR =abs:\"NEAR imaging\" OR =abs:\"NEAR found Eros\" OR =abs:\"NEAR space probe\" OR =abs:\"NEAR spacecraft images\" OR =abs:\"NEAR Doppler tracking\" OR =abs:\"NEAR Multispectral Imager\" OR =abs:\"NEAR multispectral imaging\" OR =title:\"NEAR at Eros\" OR =title:\"NEAR at Mathilde\" OR (abs:\"Near-Earth Asteroid Rendezvous\" AND (=title:\"433 Eros\" OR =title:\"253 Mathilde\"))) AND (title:Eros OR title:Mathilde OR =abs:\"433 Eros\" OR =abs:\"253 Mathilde\" OR (abs:Eros AND abs:asteroid) OR (abs:Mathilde AND abs:asteroid)))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1997-07 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22NEAR+Shoemaker%22+OR+%3Dabs%3A%22Near+Earth+Asteroid+Rendezvous%22+OR+%3Dabs%3A%22NEAR+spacecraft%22+OR+%3Dabs%3A%22NEAR+mission%22+OR+%3Dabs%3A%22NEAR+probe%22+OR+%3Dabs%3A%22NEAR+probes%22+OR+%28%3Dabs%3A%22NEAR+flyby%22+AND+%28title%3AMathilde+OR+abs%3AMathilde%29%29+OR+%3Dabs%3A%22NEAR+target+253+Mathilde%22+OR+%3Dabs%3A%22NEAR+observations%22+OR+%3Dabs%3A%22NEAR+results%22+OR+%3Dabs%3A%22NEAR+data%22+OR+%3Dabs%3A%22NEAR+images%22+OR+%3Dabs%3A%22NEAR+imaging%22+OR+%3Dabs%3A%22NEAR+found+Eros%22+OR+%3Dabs%3A%22NEAR+space+probe%22+OR+%3Dabs%3A%22NEAR+spacecraft+images%22+OR+%3Dabs%3A%22NEAR+Doppler+tracking%22+OR+%3Dabs%3A%22NEAR+Multispectral+Imager%22+OR+%3Dabs%3A%22NEAR+multispectral+imaging%22+OR+%3Dtitle%3A%22NEAR+at+Eros%22+OR+%3Dtitle%3A%22NEAR+at+Mathilde%22+OR+%28abs%3A%22Near-Earth+Asteroid+Rendezvous%22+AND+%28%3Dtitle%3A%22433+Eros%22+OR+%3Dtitle%3A%22253+Mathilde%22%29%29%29+AND+%28title%3AEros+OR+title%3AMathilde+OR+%3Dabs%3A%22433+Eros%22+OR+%3Dabs%3A%22253+Mathilde%22+OR+%28abs%3AEros+AND+abs%3Aasteroid%29+OR+%28abs%3AMathilde+AND+abs%3Aasteroid%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1997-07+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:05:32.383174+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1997-07 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22NEAR+Shoemaker%22+OR+%3Dabs%3A%22Near+Earth+Asteroid+Rendezvous%22+OR+%3Dabs%3A%22NEAR+spacecraft%22+OR+%3Dabs%3A%22NEAR+mission%22+OR+%3Dabs%3A%22NEAR+probe%22+OR+%3Dabs%3A%22NEAR+probes%22+OR+%28%3Dabs%3A%22NEAR+flyby%22+AND+%28title%3AMathilde+OR+abs%3AMathilde%29%29+OR+%3Dabs%3A%22NEAR+target+253+Mathilde%22+OR+%3Dabs%3A%22NEAR+observations%22+OR+%3Dabs%3A%22NEAR+results%22+OR+%3Dabs%3A%22NEAR+data%22+OR+%3Dabs%3A%22NEAR+images%22+OR+%3Dabs%3A%22NEAR+imaging%22+OR+%3Dabs%3A%22NEAR+found+Eros%22+OR+%3Dabs%3A%22NEAR+space+probe%22+OR+%3Dabs%3A%22NEAR+spacecraft+images%22+OR+%3Dabs%3A%22NEAR+Doppler+tracking%22+OR+%3Dabs%3A%22NEAR+Multispectral+Imager%22+OR+%3Dabs%3A%22NEAR+multispectral+imaging%22+OR+%3Dtitle%3A%22NEAR+at+Eros%22+OR+%3Dtitle%3A%22NEAR+at+Mathilde%22+OR+%28abs%3A%22Near-Earth+Asteroid+Rendezvous%22+AND+%28%3Dtitle%3A%22433+Eros%22+OR+%3Dtitle%3A%22253+Mathilde%22%29%29%29+AND+%28title%3AEros+OR+title%3AMathilde+OR+%3Dabs%3A%22433+Eros%22+OR+%3Dabs%3A%22253+Mathilde%22+OR+%28abs%3AEros+AND+abs%3Aasteroid%29+OR+%28abs%3AMathilde+AND+abs%3Aasteroid%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1997-07+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:40:55.286026+00:00",
     "reconciliation": {
       "adsReturned": 141,
       "curatedOut": 1,

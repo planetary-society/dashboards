@@ -23,8 +23,8 @@
     "m": 3.68,
     "i100": 86,
     "g": 150,
-    "tori": 231.406,
-    "riq": 608
+    "tori": 239.662,
+    "riq": 619
   },
   "facts": {
     "papers": 1038,
@@ -142,15 +142,15 @@
     "full": {
       "bins": [
         104.513,
-        99.142,
-        82.772,
-        67.504,
-        77.525,
-        92.396,
-        98.12,
-        91.063,
-        91.605,
-        104.361
+        99.144,
+        82.869,
+        67.475,
+        77.719,
+        92.615,
+        97.998,
+        90.929,
+        91.482,
+        104.255
       ],
       "top1": 10
     },
@@ -158,29 +158,29 @@
       "bins": [
         38.207,
         35.897,
-        27.485,
-        14.743,
-        26.375,
-        24.775,
+        27.492,
+        14.738,
+        26.392,
+        24.755,
         18.863,
-        21.868,
-        19.786,
+        21.946,
+        19.708,
         24
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        65.393,
-        96.398,
-        91.507,
-        89.894,
-        98.425,
-        95.541,
-        116.795,
-        127.206,
-        129.968,
-        126.873
+        66.52,
+        96.806,
+        91.303,
+        90.077,
+        98.217,
+        94.837,
+        116.979,
+        126.849,
+        129.716,
+        126.696
       ],
       "top1": 16
     }
@@ -189,8 +189,8 @@
     "papers": 909,
     "outputBasis": "measured",
     "citations": 10784,
-    "top10": 81.717,
-    "top10ShareOfDivision": 0.05668,
+    "top10": 81.629,
+    "top10ShareOfDivision": 0.05662,
     "top1": 7.667,
     "top1ShareOfDivision": 0.05318,
     "first": {
@@ -253,8 +253,8 @@
     "papers": 1038,
     "outputBasis": "measured",
     "citations": 40125,
-    "top10": 104.079,
-    "top10ShareOfDivision": 0.05682,
+    "top10": 103.991,
+    "top10ShareOfDivision": 0.05675,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -274,9 +274,9 @@
   },
   "query": {
     "arms": "(((abs:RHESSI AND abs:(solar OR flare OR X-ray OR gamma OR terrestrial OR electron OR photon OR polarization OR transient OR image)) OR (abs:HESSI AND abs:solar) OR =abs:\"High Energy Solar Spectroscopic Imager\" OR =abs:\"High Energy Solar Spectroscopy Imager\" OR facility:RHESSI))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2002-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ARHESSI+AND+abs%3A%28solar+OR+flare+OR+X-ray+OR+gamma+OR+terrestrial+OR+electron+OR+photon+OR+polarization+OR+transient+OR+image%29%29+OR+%28abs%3AHESSI+AND+abs%3Asolar%29+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopic+Imager%22+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopy+Imager%22+OR+facility%3ARHESSI%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:19:31.162884+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2002-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ARHESSI+AND+abs%3A%28solar+OR+flare+OR+X-ray+OR+gamma+OR+terrestrial+OR+electron+OR+photon+OR+polarization+OR+transient+OR+image%29%29+OR+%28abs%3AHESSI+AND+abs%3Asolar%29+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopic+Imager%22+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopy+Imager%22+OR+facility%3ARHESSI%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:03:42.101147+00:00",
     "reconciliation": {
       "adsReturned": 1048,
       "curatedOut": 9,

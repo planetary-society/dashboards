@@ -23,12 +23,12 @@
     "m": 2.926,
     "i100": 44,
     "g": 118,
-    "tori": 247.211,
-    "riq": 582
+    "tori": 249.707,
+    "riq": 585
   },
   "facts": {
     "papers": 827,
-    "citations": 26795,
+    "citations": 26794,
     "publicationYears": [
       2000,
       2026
@@ -96,7 +96,7 @@
     "citations": [
       1,
       10,
-      41,
+      40,
       86,
       156,
       231,
@@ -125,8 +125,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 26795,
-      "observed": 26795,
+      "expected": 26794,
+      "observed": 26794,
       "missing": 0
     }
   },
@@ -147,16 +147,16 @@
   "ranks": {
     "full": {
       "bins": [
-        113.651,
-        120.863,
-        117.781,
-        91.821,
-        79.396,
-        78.879,
-        67.916,
-        49.388,
-        46.494,
-        20.811
+        113.848,
+        121.414,
+        117.264,
+        91.721,
+        79.363,
+        78.827,
+        67.961,
+        49.31,
+        46.489,
+        20.803
       ],
       "top1": 1
     },
@@ -164,29 +164,29 @@
       "bins": [
         10.262,
         20.446,
-        15.018,
-        9.575,
-        14.166,
+        15.026,
+        9.57,
+        14.164,
         7.482,
         4.05,
-        5.776,
-        4.224,
+        5.785,
+        4.215,
         3
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        28.622,
-        72.402,
-        73.983,
-        87.383,
-        82.372,
-        79.853,
-        104.023,
-        114.482,
-        95.039,
-        88.842
+        28.748,
+        72.432,
+        74.84,
+        86.444,
+        82.373,
+        79.872,
+        103.992,
+        114.536,
+        94.942,
+        88.821
       ],
       "top1": 5
     }
@@ -194,8 +194,8 @@
   "full": {
     "papers": 787,
     "outputBasis": "measured",
-    "citations": 5133,
-    "top10": 18.978,
+    "citations": 5132,
+    "top10": 18.969,
     "top10ShareOfDivision": 0.00527,
     "top1": 1,
     "top1ShareOfDivision": 0.00278,
@@ -216,7 +216,7 @@
       "citationBuckets": 25
     },
     "spread": {
-      "mean": 6.522,
+      "mean": 6.521,
       "median": 4,
       "uncited": 91,
       "i10": 172,
@@ -258,8 +258,8 @@
   "lifetime": {
     "papers": 827,
     "outputBasis": "measured",
-    "citations": 26795,
-    "top10": 82.175,
+    "citations": 26794,
+    "top10": 82.154,
     "top10ShareOfDivision": 0.01766,
     "top1": null,
     "top1ShareOfDivision": null,
@@ -271,7 +271,7 @@
       "date": "2000-08-00"
     },
     "spread": {
-      "mean": 32.4,
+      "mean": 32.399,
       "median": 19,
       "uncited": 24,
       "i10": 556,
@@ -280,9 +280,9 @@
   },
   "query": {
     "arms": "((abs:\"QuikSCAT\" OR abs:QSCAT OR (=abs:\"SeaWinds\" AND NOT abs:(\"ADEOS\" OR \"Midori\" OR \"Advanced Earth Observing Satellite\" OR \"Blended SeaWinds\"))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1999-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22QuikSCAT%22+OR+abs%3AQSCAT+OR+%28%3Dabs%3A%22SeaWinds%22+AND+NOT+abs%3A%28%22ADEOS%22+OR+%22Midori%22+OR+%22Advanced+Earth+Observing+Satellite%22+OR+%22Blended+SeaWinds%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:11:42.702048+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1999-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22QuikSCAT%22+OR+abs%3AQSCAT+OR+%28%3Dabs%3A%22SeaWinds%22+AND+NOT+abs%3A%28%22ADEOS%22+OR+%22Midori%22+OR+%22Advanced+Earth+Observing+Satellite%22+OR+%22Blended+SeaWinds%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:53:36.182677+00:00",
     "reconciliation": {
       "adsReturned": 836,
       "curatedOut": 10,

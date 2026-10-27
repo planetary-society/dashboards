@@ -23,12 +23,12 @@
     "m": 10.826,
     "i100": 1070,
     "g": 402,
-    "tori": 1056.575,
-    "riq": 1354
+    "tori": 1121.368,
+    "riq": 1395
   },
   "facts": {
-    "papers": 6418,
-    "citations": 425324,
+    "papers": 6417,
+    "citations": 425322,
     "publicationYears": [
       2004,
       2026
@@ -66,7 +66,7 @@
       304,
       433,
       396,
-      491,
+      490,
       497,
       453,
       402,
@@ -105,16 +105,16 @@
       21217,
       21654,
       22752,
-      22611,
+      22610,
       25443,
       25841,
-      28154
+      28153
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 425324,
-      "observed": 425324,
+      "expected": 425322,
+      "observed": 425322,
       "missing": 0
     }
   },
@@ -135,56 +135,56 @@
   "ranks": {
     "full": {
       "bins": [
-        335.129,
-        489.624,
-        525.601,
-        555.503,
-        527.05,
-        610.776,
-        599.766,
-        616.399,
-        653.331,
-        715.821
+        334.675,
+        489.649,
+        526.164,
+        555.641,
+        527.746,
+        610.181,
+        599.329,
+        616.662,
+        654.079,
+        713.875
       ],
-      "top1": 56.892
+      "top1": 56.89
     },
     "window": {
       "bins": [
-        121.362,
-        205.583,
-        253.768,
-        232.597,
-        271.203,
-        302.146,
-        307.469,
-        285.926,
-        323.393,
-        323.555
+        120.436,
+        205.63,
+        253.942,
+        232.544,
+        271.034,
+        302.362,
+        307.341,
+        286.003,
+        323.436,
+        323.273
       ],
-      "top1": 22.29
+      "top1": 22.288
     },
     "lifetime": {
       "bins": [
-        304.107,
-        435.059,
-        521.384,
-        611.097,
-        636.742,
-        700.482,
-        717.661,
-        764.716,
-        859.155,
-        867.597
+        308.144,
+        435.302,
+        522.055,
+        611.327,
+        636.125,
+        698.646,
+        719.673,
+        763.934,
+        857.211,
+        864.582
       ],
-      "top1": 86.827
+      "top1": 86.407
     }
   },
   "full": {
-    "papers": 5629,
+    "papers": 5628,
     "outputBasis": "measured",
     "citations": 134892,
-    "top10": 591.799,
-    "top10ShareOfDivision": 0.11896,
+    "top10": 590.24,
+    "top10ShareOfDivision": 0.11865,
     "top1": 42.556,
     "top1ShareOfDivision": 0.08555,
     "first": {
@@ -204,21 +204,21 @@
       "citationBuckets": 22
     },
     "spread": {
-      "mean": 23.964,
+      "mean": 23.968,
       "median": 15,
-      "uncited": 129,
+      "uncited": 128,
       "i10": 3742,
       "i100": 150
     }
   },
   "window": {
-    "papers": 2627,
+    "papers": 2626,
     "outputBasis": "measured",
     "citations": 72754,
-    "top10": 310.221,
-    "top10ShareOfDivision": 0.16036,
-    "top1": 21.79,
-    "top1ShareOfDivision": 0.11264,
+    "top10": 309.939,
+    "top10ShareOfDivision": 0.16023,
+    "top1": 21.788,
+    "top1ShareOfDivision": 0.11263,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.706,
@@ -236,19 +236,19 @@
       "citationBuckets": 11
     },
     "spread": {
-      "mean": 27.695,
+      "mean": 27.705,
       "median": 18,
-      "uncited": 59,
+      "uncited": 58,
       "i10": 1909,
       "i100": 97
     }
   },
   "lifetime": {
-    "papers": 6418,
+    "papers": 6417,
     "outputBasis": "measured",
-    "citations": 425324,
-    "top10": 725.945,
-    "top10ShareOfDivision": 0.11436,
+    "citations": 425322,
+    "top10": 723.217,
+    "top10ShareOfDivision": 0.11392,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -259,26 +259,26 @@
       "date": "2004-03-00"
     },
     "spread": {
-      "mean": 66.27,
+      "mean": 66.281,
       "median": 33,
-      "uncited": 140,
+      "uncited": 139,
       "i10": 5306,
       "i100": 1070
     }
   },
   "query": {
     "arms": "(((=abs:Spitzer NOT =abs:(\"Spitzer value\" OR \"Spitzer values\" OR \"Spitzer resistivity\" OR \"Spitzer conductivity\" OR \"Spitzer conduction\" OR \"Spitzer conductive\" OR \"Spitzer thermal conduction\" OR \"Spitzer thermal conductivity\" OR \"Spitzer heat\" OR \"Spitzer Harm\" OR \"Spitzer Braginskii\" OR \"Spitzer-like\" OR \"Spitzer viscosity\" OR \"Spitzer instability\" OR \"Spitzer sheets\" OR \"Lyman Spitzer\" OR \"Spitzer Fellow\" OR \"Spitzer rate\" OR \"Spitzer diffusion\")) OR =abs:\"Infrared Array Camera\" OR =abs:\"GLIMPSE Survey\" OR abs:\"GOODS Survey\" OR abs:\"SWIRE Survey\" OR abs:\"SINGS Survey\" OR abs:\"SIMPLE Survey\" OR abs:\"SCOSMOS Survey\" OR abs:\"SEDS Survey\") AND collection:astronomy)",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2004-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3ASpitzer+NOT+%3Dabs%3A%28%22Spitzer+value%22+OR+%22Spitzer+values%22+OR+%22Spitzer+resistivity%22+OR+%22Spitzer+conductivity%22+OR+%22Spitzer+conduction%22+OR+%22Spitzer+conductive%22+OR+%22Spitzer+thermal+conduction%22+OR+%22Spitzer+thermal+conductivity%22+OR+%22Spitzer+heat%22+OR+%22Spitzer+Harm%22+OR+%22Spitzer+Braginskii%22+OR+%22Spitzer-like%22+OR+%22Spitzer+viscosity%22+OR+%22Spitzer+instability%22+OR+%22Spitzer+sheets%22+OR+%22Lyman+Spitzer%22+OR+%22Spitzer+Fellow%22+OR+%22Spitzer+rate%22+OR+%22Spitzer+diffusion%22%29%29+OR+%3Dabs%3A%22Infrared+Array+Camera%22+OR+%3Dabs%3A%22GLIMPSE+Survey%22+OR+abs%3A%22GOODS+Survey%22+OR+abs%3A%22SWIRE+Survey%22+OR+abs%3A%22SINGS+Survey%22+OR+abs%3A%22SIMPLE+Survey%22+OR+abs%3A%22SCOSMOS+Survey%22+OR+abs%3A%22SEDS+Survey%22%29+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:26:55.871699+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2004-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3ASpitzer+NOT+%3Dabs%3A%28%22Spitzer+value%22+OR+%22Spitzer+values%22+OR+%22Spitzer+resistivity%22+OR+%22Spitzer+conductivity%22+OR+%22Spitzer+conduction%22+OR+%22Spitzer+conductive%22+OR+%22Spitzer+thermal+conduction%22+OR+%22Spitzer+thermal+conductivity%22+OR+%22Spitzer+heat%22+OR+%22Spitzer+Harm%22+OR+%22Spitzer+Braginskii%22+OR+%22Spitzer-like%22+OR+%22Spitzer+viscosity%22+OR+%22Spitzer+instability%22+OR+%22Spitzer+sheets%22+OR+%22Lyman+Spitzer%22+OR+%22Spitzer+Fellow%22+OR+%22Spitzer+rate%22+OR+%22Spitzer+diffusion%22%29%29+OR+%3Dabs%3A%22Infrared+Array+Camera%22+OR+%3Dabs%3A%22GLIMPSE+Survey%22+OR+abs%3A%22GOODS+Survey%22+OR+abs%3A%22SWIRE+Survey%22+OR+abs%3A%22SINGS+Survey%22+OR+abs%3A%22SIMPLE+Survey%22+OR+abs%3A%22SCOSMOS+Survey%22+OR+abs%3A%22SEDS+Survey%22%29+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:16:00.198892+00:00",
     "reconciliation": {
-      "adsReturned": 6418,
+      "adsReturned": 6417,
       "curatedOut": 0,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 6418
+      "final": 6417
     }
   },
   "curation": {
@@ -525,6 +525,6 @@
     }
   ],
   "papersFile": {
-    "rows": 6418
+    "rows": 6417
   }
 }

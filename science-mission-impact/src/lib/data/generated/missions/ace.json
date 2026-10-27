@@ -21,14 +21,14 @@
   "indices": {
     "h": 105,
     "m": 3.621,
-    "i100": 119,
-    "g": 167,
-    "tori": 307.365,
-    "riq": 604
+    "i100": 120,
+    "g": 168,
+    "tori": 328.597,
+    "riq": 625
   },
   "facts": {
     "papers": 1508,
-    "citations": 53688,
+    "citations": 53791,
     "publicationYears": [
       1998,
       2026
@@ -100,7 +100,7 @@
     "citations": [
       54,
       64,
-      93,
+      94,
       270,
       223,
       431,
@@ -108,11 +108,11 @@
       783,
       1264,
       1370,
-      1496,
-      1770,
-      1502,
+      1490,
+      1773,
+      1503,
       1694,
-      2118,
+      2113,
       2205,
       2105,
       2355,
@@ -120,19 +120,19 @@
       2467,
       2591,
       2670,
-      3060,
+      3059,
       3732,
       3063,
       3370,
       3432,
-      3428,
-      3047
+      3440,
+      3145
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 53688,
-      "observed": 53688,
+      "expected": 53791,
+      "observed": 53791,
       "missing": 0
     }
   },
@@ -146,21 +146,21 @@
     ],
     "authorCount": 2,
     "year": 2005,
-    "citations": 1200
+    "citations": 1211
   },
   "ranks": {
     "full": {
       "bins": [
         188.712,
-        169.885,
-        163.255,
-        156.78,
-        127.157,
-        132.023,
-        101.014,
-        113.222,
-        122.334,
-        86.618
+        170.857,
+        162.448,
+        156.755,
+        127.445,
+        131.716,
+        101.734,
+        112.697,
+        122.198,
+        86.437
       ],
       "top1": 5
     },
@@ -168,29 +168,29 @@
       "bins": [
         48.435,
         41.691,
-        33.254,
-        23.952,
-        22.434,
-        12.345,
+        33.267,
+        23.941,
+        21.989,
+        12.788,
         19.234,
-        16.726,
-        17.929,
+        16.752,
+        17.903,
         5
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        129.099,
-        168,
-        141.413,
-        131.234,
-        158.795,
-        142.907,
-        148.592,
-        156.12,
-        142.222,
-        189.619
+        128.814,
+        167.556,
+        142.807,
+        131.427,
+        159.319,
+        142.131,
+        148.685,
+        154.849,
+        141.627,
+        190.786
       ],
       "top1": 16
     }
@@ -199,8 +199,8 @@
     "papers": 1361,
     "outputBasis": "measured",
     "citations": 12335,
-    "top10": 64.598,
-    "top10ShareOfDivision": 0.04481,
+    "top10": 64.457,
+    "top10ShareOfDivision": 0.04471,
     "top1": 2.417,
     "top1ShareOfDivision": 0.01676,
     "first": {
@@ -223,14 +223,14 @@
       "mean": 9.063,
       "median": 6,
       "uncited": 127,
-      "i10": 447,
+      "i10": 448,
       "i100": 1
     }
   },
   "window": {
     "papers": 241,
     "outputBasis": "measured",
-    "citations": 2024,
+    "citations": 2025,
     "top10": 5,
     "top10ShareOfDivision": 0.01127,
     "top1": 0,
@@ -252,19 +252,19 @@
       "citationBuckets": 10
     },
     "spread": {
-      "mean": 8.398,
+      "mean": 8.402,
       "median": 5,
       "uncited": 33,
-      "i10": 76,
+      "i10": 77,
       "i100": 0
     }
   },
   "lifetime": {
     "papers": 1508,
     "outputBasis": "measured",
-    "citations": 53688,
-    "top10": 148.006,
-    "top10ShareOfDivision": 0.0808,
+    "citations": 53791,
+    "top10": 149.349,
+    "top10ShareOfDivision": 0.0815,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -275,18 +275,18 @@
       "date": "1998-07-00"
     },
     "spread": {
-      "mean": 35.602,
+      "mean": 35.67,
       "median": 16,
-      "uncited": 95,
+      "uncited": 93,
       "i10": 954,
       "i100": 120
     }
   },
   "query": {
     "arms": "((((=abs:\"Advanced Composition Explorer\" OR =abs:\"Solar Wind Ion Mass Spectrometer\" OR =abs:\"Solar Wind Ion Composition Spectrometer\" OR =abs:\"Ultra-Low Energy Isotope Spectrometer\" OR =abs:\"Solar Energetic Particle Ionic Charge Analyzer\" OR =abs:\"Solar Isotope Spectrometer\" OR =abs:\"Cosmic Ray Isotope Spectrometer\" OR =abs:\"Solar Wind Electron, Proton, and Alpha Monitor\" OR =abs:\"Electron, Proton, and Alpha-Particle Monitor\" OR (abs:\"ACE\" AND (abs:\"solar\" OR abs:\"cosmic\") AND (abs:\"SWICS\" OR abs:\"SWIMS\" OR abs:\"ULEIS\" OR abs:\"SEPICA\" OR abs:\"CRIS\" OR abs:\"SWEPAM\" OR abs:\"EPAM\")))) OR (abs:ACE AND (=abs:\"solar wind\" OR =abs:\"cosmic ray\" OR abs:interplanetary OR abs:heliospher* OR abs:geomagnet* OR abs:magnetospher* OR abs:SWICS OR abs:SWIMS OR abs:ULEIS OR abs:SEPICA OR abs:CRIS OR abs:SWEPAM OR abs:EPAM)) OR ((abs:SWEPAM OR abs:ULEIS OR abs:SEPICA OR abs:EPAM) AND (abs:solar OR abs:interplanetary OR =abs:\"energetic particle\"))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1998-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Advanced+Composition+Explorer%22+OR+%3Dabs%3A%22Solar+Wind+Ion+Mass+Spectrometer%22+OR+%3Dabs%3A%22Solar+Wind+Ion+Composition+Spectrometer%22+OR+%3Dabs%3A%22Ultra-Low+Energy+Isotope+Spectrometer%22+OR+%3Dabs%3A%22Solar+Energetic+Particle+Ionic+Charge+Analyzer%22+OR+%3Dabs%3A%22Solar+Isotope+Spectrometer%22+OR+%3Dabs%3A%22Cosmic+Ray+Isotope+Spectrometer%22+OR+%3Dabs%3A%22Solar+Wind+Electron%2C+Proton%2C+and+Alpha+Monitor%22+OR+%3Dabs%3A%22Electron%2C+Proton%2C+and+Alpha-Particle+Monitor%22+OR+%28abs%3A%22ACE%22+AND+%28abs%3A%22solar%22+OR+abs%3A%22cosmic%22%29+AND+%28abs%3A%22SWICS%22+OR+abs%3A%22SWIMS%22+OR+abs%3A%22ULEIS%22+OR+abs%3A%22SEPICA%22+OR+abs%3A%22CRIS%22+OR+abs%3A%22SWEPAM%22+OR+abs%3A%22EPAM%22%29%29%29%29+OR+%28abs%3AACE+AND+%28%3Dabs%3A%22solar+wind%22+OR+%3Dabs%3A%22cosmic+ray%22+OR+abs%3Ainterplanetary+OR+abs%3Aheliospher%2A+OR+abs%3Ageomagnet%2A+OR+abs%3Amagnetospher%2A+OR+abs%3ASWICS+OR+abs%3ASWIMS+OR+abs%3AULEIS+OR+abs%3ASEPICA+OR+abs%3ACRIS+OR+abs%3ASWEPAM+OR+abs%3AEPAM%29%29+OR+%28%28abs%3ASWEPAM+OR+abs%3AULEIS+OR+abs%3ASEPICA+OR+abs%3AEPAM%29+AND+%28abs%3Asolar+OR+abs%3Ainterplanetary+OR+%3Dabs%3A%22energetic+particle%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:18:52.668737+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1998-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Advanced+Composition+Explorer%22+OR+%3Dabs%3A%22Solar+Wind+Ion+Mass+Spectrometer%22+OR+%3Dabs%3A%22Solar+Wind+Ion+Composition+Spectrometer%22+OR+%3Dabs%3A%22Ultra-Low+Energy+Isotope+Spectrometer%22+OR+%3Dabs%3A%22Solar+Energetic+Particle+Ionic+Charge+Analyzer%22+OR+%3Dabs%3A%22Solar+Isotope+Spectrometer%22+OR+%3Dabs%3A%22Cosmic+Ray+Isotope+Spectrometer%22+OR+%3Dabs%3A%22Solar+Wind+Electron%2C+Proton%2C+and+Alpha+Monitor%22+OR+%3Dabs%3A%22Electron%2C+Proton%2C+and+Alpha-Particle+Monitor%22+OR+%28abs%3A%22ACE%22+AND+%28abs%3A%22solar%22+OR+abs%3A%22cosmic%22%29+AND+%28abs%3A%22SWICS%22+OR+abs%3A%22SWIMS%22+OR+abs%3A%22ULEIS%22+OR+abs%3A%22SEPICA%22+OR+abs%3A%22CRIS%22+OR+abs%3A%22SWEPAM%22+OR+abs%3A%22EPAM%22%29%29%29%29+OR+%28abs%3AACE+AND+%28%3Dabs%3A%22solar+wind%22+OR+%3Dabs%3A%22cosmic+ray%22+OR+abs%3Ainterplanetary+OR+abs%3Aheliospher%2A+OR+abs%3Ageomagnet%2A+OR+abs%3Amagnetospher%2A+OR+abs%3ASWICS+OR+abs%3ASWIMS+OR+abs%3AULEIS+OR+abs%3ASEPICA+OR+abs%3ACRIS+OR+abs%3ASWEPAM+OR+abs%3AEPAM%29%29+OR+%28%28abs%3ASWEPAM+OR+abs%3AULEIS+OR+abs%3ASEPICA+OR+abs%3AEPAM%29+AND+%28abs%3Asolar+OR+abs%3Ainterplanetary+OR+%3Dabs%3A%22energetic+particle%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:02:30.780146+00:00",
     "reconciliation": {
       "adsReturned": 1547,
       "curatedOut": 39,
@@ -943,7 +943,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 1200
+      "citations": 1211
     },
     {
       "bibcode": "1998SSRv...86..563M",
@@ -961,7 +961,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 990
+      "citations": 992
     },
     {
       "bibcode": "1998SSRv...86..613S",
@@ -979,7 +979,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 711
+      "citations": 727
     },
     {
       "bibcode": "2004JGRA..109.8302T",
@@ -997,7 +997,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 392
+      "citations": 393
     },
     {
       "bibcode": "2005ApJ...625..474T",
@@ -1009,13 +1009,22 @@
       "citations": 385
     },
     {
+      "bibcode": "2005JGRA..110.1107G",
+      "title": "Direct evidence for magnetic reconnection in the solar wind near 1 AU",
+      "firstAuthor": "Gosling, J. T.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2005,
+      "citations": 362
+    },
+    {
       "bibcode": "1998SSRv...86..497G",
       "title": "Investigation of the composition of solar and interstellar matter using solar wind and pickup ion measurements with SWICS and SWIMS on the ACE spacecraft",
       "firstAuthor": "Gloeckler, G.",
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 360
+      "citations": 361
     },
     {
       "bibcode": "2005AnGeo..23.1033S",
@@ -1024,16 +1033,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 360
-    },
-    {
-      "bibcode": "2005JGRA..110.1107G",
-      "title": "Direct evidence for magnetic reconnection in the solar wind near 1 AU",
-      "firstAuthor": "Gosling, J. T.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2005,
-      "citations": 360
+      "citations": 361
     },
     {
       "bibcode": "2006SoPh..239..393J",
@@ -1042,7 +1042,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 345
+      "citations": 347
     },
     {
       "bibcode": "1998SSRv...86..541G",
@@ -1060,7 +1060,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 339
+      "citations": 340
     },
     {
       "bibcode": "2006ApJ...645L..85S",
@@ -1078,7 +1078,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 305
+      "citations": 307
     },
     {
       "bibcode": "2003GeoRL..30.1158K",
@@ -1105,7 +1105,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 245
+      "citations": 246
     },
     {
       "bibcode": "2004JGRA..10910104E",
@@ -1114,7 +1114,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 241
+      "citations": 242
     }
   ],
   "papersFile": {

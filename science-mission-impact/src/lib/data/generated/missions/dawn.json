@@ -23,12 +23,12 @@
     "m": 3.688,
     "i100": 27,
     "g": 93,
-    "tori": 37.215,
-    "riq": 358
+    "tori": 37.476,
+    "riq": 360
   },
   "facts": {
-    "papers": 426,
-    "citations": 13546,
+    "papers": 421,
+    "citations": 13535,
     "publicationYears": [
       2011,
       2026
@@ -58,10 +58,10 @@
       19,
       31,
       41,
-      41,
-      43,
+      38,
+      42,
       29,
-      45,
+      44,
       55,
       22,
       18,
@@ -76,24 +76,24 @@
       158,
       511,
       923,
-      1011,
-      804,
-      643,
+      1009,
+      802,
+      641,
+      1100,
+      1605,
       1101,
-      1607,
-      1102,
       1152,
       1236,
       853,
-      819,
+      818,
       910,
       685
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 13546,
-      "observed": 13546,
+      "expected": 13535,
+      "observed": 13535,
       "missing": 0
     }
   },
@@ -114,58 +114,58 @@
   "ranks": {
     "full": {
       "bins": [
-        16.579,
-        25.435,
-        31.207,
-        23.946,
-        26.543,
-        33.725,
-        35.555,
-        42.557,
-        47.356,
-        54.097
+        14.948,
+        25.085,
+        29.314,
+        23.794,
+        26.606,
+        33.989,
+        34.756,
+        42.812,
+        47.075,
+        53.621
       ],
-      "top1": 6.093
+      "top1": 6
     },
     "window": {
       "bins": [
-        9.968,
-        24.524,
-        20.745,
-        17.581,
-        22.787,
-        20.696,
-        24.951,
-        24.429,
-        29.024,
-        33.294
+        8.574,
+        24.398,
+        18.88,
+        18.346,
+        22.362,
+        20.799,
+        24.826,
+        24.121,
+        28.643,
+        33.05
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        31.352,
-        39.796,
-        40.512,
-        48.509,
-        50.119,
-        50.08,
-        49.444,
-        47.695,
-        35.493,
+        30.553,
+        38.504,
+        40.101,
+        48.425,
+        48.623,
+        50.357,
+        48.843,
+        47.738,
+        34.856,
         33
       ],
       "top1": 1
     }
   },
   "full": {
-    "papers": 337,
+    "papers": 332,
     "outputBasis": "measured",
-    "citations": 6462,
-    "top10": 54.097,
-    "top10ShareOfDivision": 0.0495,
-    "top1": 6.093,
-    "top1ShareOfDivision": 0.05576,
+    "citations": 6454,
+    "top10": 53.621,
+    "top10ShareOfDivision": 0.04941,
+    "top1": 6,
+    "top1ShareOfDivision": 0.05528,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.378,
@@ -183,21 +183,21 @@
       "citationBuckets": 13
     },
     "spread": {
-      "mean": 19.175,
-      "median": 12,
-      "uncited": 11,
+      "mean": 19.44,
+      "median": 12.5,
+      "uncited": 10,
       "i10": 201,
       "i100": 6
     }
   },
   "window": {
-    "papers": 228,
+    "papers": 224,
     "outputBasis": "measured",
-    "citations": 5083,
-    "top10": 33.294,
-    "top10ShareOfDivision": 0.06897,
+    "citations": 5076,
+    "top10": 33.05,
+    "top10ShareOfDivision": 0.06903,
     "top1": 2,
-    "top1ShareOfDivision": 0.04143,
+    "top1ShareOfDivision": 0.04177,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.378,
@@ -215,19 +215,19 @@
       "citationBuckets": 11
     },
     "spread": {
-      "mean": 22.294,
+      "mean": 22.661,
       "median": 14,
-      "uncited": 8,
+      "uncited": 7,
       "i10": 138,
       "i100": 6
     }
   },
   "lifetime": {
-    "papers": 426,
+    "papers": 421,
     "outputBasis": "measured",
-    "citations": 13546,
+    "citations": 13535,
     "top10": 33,
-    "top10ShareOfDivision": 0.02095,
+    "top10ShareOfDivision": 0.02108,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -238,26 +238,26 @@
       "date": "2011-12-00"
     },
     "spread": {
-      "mean": 31.798,
+      "mean": 32.15,
       "median": 18,
-      "uncited": 23,
+      "uncited": 22,
       "i10": 284,
       "i100": 27
     }
   },
   "query": {
     "arms": "((=abs:\"Dawn mission\" OR =abs:\"Dawn spacecraft\" OR ((=abs:Dawn OR abs:VIR) AND (abs:Vesta OR abs:Ceres))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2011-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Dawn+mission%22+OR+%3Dabs%3A%22Dawn+spacecraft%22+OR+%28%28%3Dabs%3ADawn+OR+abs%3AVIR%29+AND+%28abs%3AVesta+OR+abs%3ACeres%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2011-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:08:29.112346+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2011-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Dawn+mission%22+OR+%3Dabs%3A%22Dawn+spacecraft%22+OR+%28%28%3Dabs%3ADawn+OR+abs%3AVIR%29+AND+%28abs%3AVesta+OR+abs%3ACeres%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2011-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:46:22.527070+00:00",
     "reconciliation": {
       "adsReturned": 432,
-      "curatedOut": 6,
+      "curatedOut": 11,
       "curatedIn": 2,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 2,
-      "final": 426
+      "final": 421
     }
   },
   "curation": {
@@ -335,6 +335,46 @@
         "reason": "Describes Dawn's education and public outreach program; not a research paper.",
         "authority": "agent",
         "date": "2026-09-09"
+      },
+      {
+        "bibcode": "2015Natur.519..134.",
+        "doi": "10.1038/519134a",
+        "title": "Seven days: 6-12 March 2015",
+        "reason": "Nature weekly news roundup; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2015Natur.519..401W",
+        "doi": "10.1038/nature.2015.17139",
+        "title": "Bright spots on Ceres could be active ice",
+        "reason": "Nature staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2015Sci...347..813H",
+        "doi": null,
+        "title": "Dawn probe to look for a habitable ocean on Ceres",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2016Sci...353R1000S",
+        "doi": null,
+        "title": "Dawn explores the dwarf planet Ceres",
+        "reason": "Science editors' one-paragraph summary of a published paper; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2018Sci...362..275V",
+        "doi": "10.1126/science.362.6412.275",
+        "title": "NASA's asteroid explorer Dawn soon to go dark",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
       }
     ]
   },
@@ -521,6 +561,6 @@
     }
   ],
   "papersFile": {
-    "rows": 426
+    "rows": 421
   }
 }

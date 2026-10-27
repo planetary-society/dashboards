@@ -23,8 +23,8 @@
     "m": 3.444,
     "i100": 33,
     "g": 99,
-    "tori": 30.075,
-    "riq": 288
+    "tori": 30.351,
+    "riq": 289
   },
   "facts": {
     "papers": 373,
@@ -122,44 +122,44 @@
       "bins": [
         12.628,
         15.722,
-        18.178,
-        18.449,
-        32.145,
-        31.816,
-        36.044,
-        58.024,
-        40.789,
-        66.206
+        18.2,
+        18.45,
+        32.224,
+        31.917,
+        36.081,
+        57.818,
+        40.814,
+        66.146
       ],
-      "top1": 8.149
+      "top1": 7.927
     },
     "window": {
       "bins": [
         2.544,
         3.845,
-        3.41,
-        3.262,
-        4.469,
-        3.952,
+        3.411,
+        3.261,
+        4.472,
+        3.95,
         7.854,
-        3.699,
-        10.322,
+        3.712,
+        10.309,
         14.642
       ],
       "top1": 2.185
     },
     "lifetime": {
       "bins": [
-        21.598,
-        20.991,
-        30.035,
-        30.078,
-        34.191,
-        35.493,
-        44.047,
-        61.62,
-        46.074,
-        48.873
+        21.88,
+        21.058,
+        30.007,
+        29.953,
+        34.425,
+        35.264,
+        44.204,
+        61.406,
+        46.108,
+        48.696
       ],
       "top1": 2
     }
@@ -168,10 +168,10 @@
     "papers": 330,
     "outputBasis": "measured",
     "citations": 5751,
-    "top10": 65.206,
-    "top10ShareOfDivision": 0.04523,
-    "top1": 8.149,
-    "top1ShareOfDivision": 0.05652,
+    "top10": 65.146,
+    "top10ShareOfDivision": 0.04519,
+    "top1": 7.927,
+    "top1ShareOfDivision": 0.05498,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.496,
@@ -232,8 +232,8 @@
     "papers": 373,
     "outputBasis": "measured",
     "citations": 14468,
-    "top10": 48.873,
-    "top10ShareOfDivision": 0.02668,
+    "top10": 48.696,
+    "top10ShareOfDivision": 0.02657,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -253,9 +253,9 @@
   },
   "query": {
     "arms": "(((abs:\"IBEX-Hi\" OR abs:\"IBEX-Lo\" OR abs:\"Interstellar Boundary Explorer\" OR (abs:IBEX AND (abs:\"energetic neutral atom\" OR abs:\"electrostatic analyzer\" OR abs:(ENA OR ENAs OR heliosphere OR heliospheric OR heliosheath OR heliopause OR interstellar OR ribbon OR \"pickup ion\" OR \"pick-up ion\" OR \"solar wind\" OR magnetosphere OR magnetospheric OR \"bow shock\" OR lunar OR Moon))))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2009-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22IBEX-Hi%22+OR+abs%3A%22IBEX-Lo%22+OR+abs%3A%22Interstellar+Boundary+Explorer%22+OR+%28abs%3AIBEX+AND+%28abs%3A%22energetic+neutral+atom%22+OR+abs%3A%22electrostatic+analyzer%22+OR+abs%3A%28ENA+OR+ENAs+OR+heliosphere+OR+heliospheric+OR+heliosheath+OR+heliopause+OR+interstellar+OR+ribbon+OR+%22pickup+ion%22+OR+%22pick-up+ion%22+OR+%22solar+wind%22+OR+magnetosphere+OR+magnetospheric+OR+%22bow+shock%22+OR+lunar+OR+Moon%29%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:20:38.727290+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2009-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22IBEX-Hi%22+OR+abs%3A%22IBEX-Lo%22+OR+abs%3A%22Interstellar+Boundary+Explorer%22+OR+%28abs%3AIBEX+AND+%28abs%3A%22energetic+neutral+atom%22+OR+abs%3A%22electrostatic+analyzer%22+OR+abs%3A%28ENA+OR+ENAs+OR+heliosphere+OR+heliospheric+OR+heliosheath+OR+heliopause+OR+interstellar+OR+ribbon+OR+%22pickup+ion%22+OR+%22pick-up+ion%22+OR+%22solar+wind%22+OR+magnetosphere+OR+magnetospheric+OR+%22bow+shock%22+OR+lunar+OR+Moon%29%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:04:56.348901+00:00",
     "reconciliation": {
       "adsReturned": 380,
       "curatedOut": 8,

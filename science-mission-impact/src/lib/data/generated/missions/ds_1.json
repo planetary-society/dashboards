@@ -23,12 +23,12 @@
     "m": 0.821,
     "i100": 2,
     "g": 40,
-    "tori": 11.626,
+    "tori": 11.702,
     "riq": 136
   },
   "facts": {
     "papers": 57,
-    "citations": 1710,
+    "citations": 1712,
     "publicationYears": [
       1999,
       2023
@@ -123,13 +123,13 @@
       62,
       73,
       50,
-      30
+      32
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 1710,
-      "observed": 1710,
+      "expected": 1712,
+      "observed": 1712,
       "missing": 0
     }
   },
@@ -145,32 +145,32 @@
     ],
     "authorCount": 22,
     "year": 2002,
-    "citations": 184
+    "citations": 185
   },
   "ranks": {
     "full": {
       "bins": [
-        3.86,
-        5.14,
-        2.262,
-        4.6,
-        3.139,
-        1.258,
-        1.074,
-        2.318,
-        0.35,
+        4.121,
+        4.879,
+        2.503,
+        4.521,
+        2.977,
+        1.431,
+        0.984,
+        2.342,
+        0.242,
         1
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        1.656,
-        1.344,
-        1.059,
-        1.941,
-        0.087,
-        0.913,
+        1.787,
+        1.213,
+        1.213,
+        1.787,
+        0.223,
+        0.777,
         0,
         1,
         0,
@@ -181,13 +181,13 @@
     "lifetime": {
       "bins": [
         2,
-        5.43,
-        6.903,
-        6.09,
-        5.4,
-        11.451,
-        4.539,
-        5.188,
+        5.679,
+        6.965,
+        6.1,
+        5.3,
+        11.468,
+        4.488,
+        5,
         6,
         4
       ],
@@ -261,9 +261,9 @@
   "lifetime": {
     "papers": 57,
     "outputBasis": "measured",
-    "citations": 1710,
+    "citations": 1712,
     "top10": 4,
-    "top10ShareOfDivision": 0.00254,
+    "top10ShareOfDivision": 0.00255,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -274,7 +274,7 @@
       "date": "2001-06-00"
     },
     "spread": {
-      "mean": 30,
+      "mean": 30.035,
       "median": 18,
       "uncited": 2,
       "i10": 40,
@@ -283,9 +283,9 @@
   },
   "query": {
     "arms": "(((=abs:\"Deep Space 1\" OR =abs:\"Deep Space-1\" OR abs:DS1 OR abs:\"DS-1\" OR =abs:\"Miniature Integrated Camera and Spectrometer\" OR =abs:\"Plasma Experiment for Planetary Exploration\") AND (abs:comet* OR abs:asteroid* OR abs:Borrelly OR abs:Braille)) AND NOT (title:propulsion OR title:thruster OR title:telecommunications OR =title:\"pointing control\" OR =title:\"mission design\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1998-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Deep+Space+1%22+OR+%3Dabs%3A%22Deep+Space-1%22+OR+abs%3ADS1+OR+abs%3A%22DS-1%22+OR+%3Dabs%3A%22Miniature+Integrated+Camera+and+Spectrometer%22+OR+%3Dabs%3A%22Plasma+Experiment+for+Planetary+Exploration%22%29+AND+%28abs%3Acomet%2A+OR+abs%3Aasteroid%2A+OR+abs%3ABorrelly+OR+abs%3ABraille%29%29+AND+NOT+%28title%3Apropulsion+OR+title%3Athruster+OR+title%3Atelecommunications+OR+%3Dtitle%3A%22pointing+control%22+OR+%3Dtitle%3A%22mission+design%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:06:44.111428+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1998-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Deep+Space+1%22+OR+%3Dabs%3A%22Deep+Space-1%22+OR+abs%3ADS1+OR+abs%3A%22DS-1%22+OR+%3Dabs%3A%22Miniature+Integrated+Camera+and+Spectrometer%22+OR+%3Dabs%3A%22Plasma+Experiment+for+Planetary+Exploration%22%29+AND+%28abs%3Acomet%2A+OR+abs%3Aasteroid%2A+OR+abs%3ABorrelly+OR+abs%3ABraille%29%29+AND+NOT+%28title%3Apropulsion+OR+title%3Athruster+OR+title%3Atelecommunications+OR+%3Dtitle%3A%22pointing+control%22+OR+%3Dtitle%3A%22mission+design%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:43:10.898612+00:00",
     "reconciliation": {
       "adsReturned": 57,
       "curatedOut": 0,
@@ -390,7 +390,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 184
+      "citations": 185
     },
     {
       "bibcode": "2001Icar..151..139B",
@@ -471,7 +471,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 55
+      "citations": 56
     },
     {
       "bibcode": "2005SSRv..117..137B",

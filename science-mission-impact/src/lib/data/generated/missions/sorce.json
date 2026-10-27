@@ -22,13 +22,13 @@
     "h": 41,
     "m": 1.783,
     "i100": 17,
-    "g": 75,
-    "tori": 45.803,
-    "riq": 294
+    "g": 76,
+    "tori": 47.498,
+    "riq": 299
   },
   "facts": {
     "papers": 156,
-    "citations": 6352,
+    "citations": 6371,
     "publicationYears": [
       2004,
       2026
@@ -91,30 +91,30 @@
       53,
       48,
       60,
-      91,
+      92,
       131,
       218,
       262,
       327,
-      395,
+      396,
       398,
       385,
       380,
       351,
       340,
-      405,
+      406,
       468,
-      464,
+      463,
       417,
       391,
-      403,
-      282
+      405,
+      297
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 6352,
-      "observed": 6352,
+      "expected": 6371,
+      "observed": 6371,
       "missing": 0
     }
   },
@@ -128,21 +128,21 @@
     ],
     "authorCount": 2,
     "year": 2011,
-    "citations": 575
+    "citations": 578
   },
   "ranks": {
     "full": {
       "bins": [
-        9.987,
-        13.238,
-        7.562,
-        15.538,
-        11.65,
-        12.111,
-        17.884,
-        12.03,
-        12.095,
-        18.905
+        10.013,
+        13.224,
+        7.561,
+        15.548,
+        11.645,
+        12.11,
+        17.883,
+        12.016,
+        12.099,
+        18.901
       ],
       "top1": 2
     },
@@ -150,9 +150,9 @@
       "bins": [
         4.087,
         1.913,
-        2.05,
+        2.052,
         3.47,
-        3.479,
+        3.478,
         5.851,
         1.347,
         3.801,
@@ -163,16 +163,16 @@
     },
     "lifetime": {
       "bins": [
-        8.98,
-        17.857,
-        13.581,
-        13.532,
-        8.05,
-        23.574,
-        16.554,
-        14.096,
-        16.934,
-        22.842
+        9.007,
+        17.856,
+        13.488,
+        13.616,
+        8.032,
+        23.504,
+        16.067,
+        13.925,
+        17.684,
+        22.821
       ],
       "top1": 2
     }
@@ -180,8 +180,8 @@
   "full": {
     "papers": 131,
     "outputBasis": "measured",
-    "citations": 1805,
-    "top10": 18.405,
+    "citations": 1806,
+    "top10": 18.401,
     "top10ShareOfDivision": 0.00511,
     "top1": 2,
     "top1ShareOfDivision": 0.00556,
@@ -202,7 +202,7 @@
       "citationBuckets": 23
     },
     "spread": {
-      "mean": 13.779,
+      "mean": 13.786,
       "median": 9,
       "uncited": 7,
       "i10": 57,
@@ -244,9 +244,9 @@
   "lifetime": {
     "papers": 156,
     "outputBasis": "measured",
-    "citations": 6352,
-    "top10": 20.842,
-    "top10ShareOfDivision": 0.00448,
+    "citations": 6371,
+    "top10": 20.821,
+    "top10ShareOfDivision": 0.00447,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -257,7 +257,7 @@
       "date": "2004-05-00"
     },
     "spread": {
-      "mean": 40.718,
+      "mean": 40.84,
       "median": 18,
       "uncited": 8,
       "i10": 100,
@@ -266,9 +266,9 @@
   },
   "query": {
     "arms": "((=abs:\"Solar Radiation and Climate Experiment\" OR (abs:\"SORCE\" AND abs:(solar OR irradiance))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2003-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Solar+Radiation+and+Climate+Experiment%22+OR+%28abs%3A%22SORCE%22+AND+abs%3A%28solar+OR+irradiance%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:14:36.794758+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2003-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Solar+Radiation+and+Climate+Experiment%22+OR+%28abs%3A%22SORCE%22+AND+abs%3A%28solar+OR+irradiance%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:57:22.779234+00:00",
     "reconciliation": {
       "adsReturned": 157,
       "curatedOut": 1,
@@ -309,7 +309,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 575
+      "citations": 578
     },
     {
       "bibcode": "2013ACP....13.3945E",
@@ -339,6 +339,15 @@
       "citations": 235
     },
     {
+      "bibcode": "2009GeoRL..36.1101W",
+      "title": "Solar Irradiance Reference Spectra (SIRS) for the 2008 Whole Heliosphere Interval (WHI)",
+      "firstAuthor": "Woods, Thomas N.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2009,
+      "citations": 198
+    },
+    {
       "bibcode": "2010Natur.467..696H",
       "title": "An influence of solar spectral variations on radiative forcing of climate",
       "firstAuthor": "Haigh, Joanna D.",
@@ -348,22 +357,13 @@
       "citations": 198
     },
     {
-      "bibcode": "2009GeoRL..36.1101W",
-      "title": "Solar Irradiance Reference Spectra (SIRS) for the 2008 Whole Heliosphere Interval (WHI)",
-      "firstAuthor": "Woods, Thomas N.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2009,
-      "citations": 197
-    },
-    {
       "bibcode": "2005SoPh..230..129K",
       "title": "The Total Irradiance Monitor (TIM): Science Results",
       "firstAuthor": "Kopp, Greg",
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 189
+      "citations": 190
     },
     {
       "bibcode": "2009GeoRL..36.7801H",
@@ -417,7 +417,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 153
+      "citations": 154
     },
     {
       "bibcode": "2018ApJ...855...75R",
@@ -471,7 +471,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 88
+      "citations": 89
     },
     {
       "bibcode": "2012SGeo...33..453F",

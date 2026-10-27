@@ -23,12 +23,12 @@
     "m": 4.8,
     "i100": 92,
     "g": 163,
-    "tori": 190.628,
-    "riq": 657
+    "tori": 195.003,
+    "riq": 664
   },
   "facts": {
-    "papers": 1283,
-    "citations": 45660,
+    "papers": 1280,
+    "citations": 45654,
     "publicationYears": [
       2007,
       2026
@@ -59,9 +59,9 @@
     ],
     "papers": [
       22,
-      44,
+      43,
       54,
-      89,
+      88,
       62,
       63,
       60,
@@ -69,7 +69,7 @@
       60,
       66,
       67,
-      62,
+      61,
       54,
       68,
       53,
@@ -83,29 +83,29 @@
       43,
       260,
       683,
-      1280,
+      1278,
       1455,
-      1672,
+      1671,
       1919,
       1967,
       2256,
-      2390,
+      2389,
       2093,
       2480,
       2642,
       2732,
-      4029,
+      4028,
       4002,
       3125,
-      3831,
+      3830,
       3694,
       3107
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 45660,
-      "observed": 45660,
+      "expected": 45654,
+      "observed": 45654,
       "missing": 0
     }
   },
@@ -126,58 +126,58 @@
   "ranks": {
     "full": {
       "bins": [
-        99.954,
-        124.274,
-        126.698,
-        97.844,
-        99.402,
-        126.62,
-        91.508,
-        109.094,
-        83.45,
-        88.155
+        101.999,
+        125.519,
+        124.024,
+        99.054,
+        99.193,
+        125.553,
+        90.377,
+        108.403,
+        82.257,
+        87.621
       ],
       "top1": 8
     },
     "window": {
       "bins": [
-        25.186,
-        26.142,
-        24.859,
-        34.317,
-        32.274,
-        30.872,
-        44.246,
-        35.785,
-        36.73,
-        32.588
+        25.019,
+        25.96,
+        26.28,
+        32.248,
+        32.499,
+        30.968,
+        44.121,
+        35.109,
+        36.695,
+        32.1
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        163.497,
-        152.962,
-        149.857,
-        119.966,
-        116.696,
-        103.675,
-        132.284,
-        111.331,
-        120.594,
-        112.138
+        166.931,
+        153.769,
+        149.016,
+        117.588,
+        116.004,
+        104.404,
+        131.201,
+        109.946,
+        120.117,
+        111.024
       ],
-      "top1": 15.183
+      "top1": 15
     }
   },
   "full": {
-    "papers": 1047,
+    "papers": 1044,
     "outputBasis": "measured",
-    "citations": 13427,
-    "top10": 74.845,
-    "top10ShareOfDivision": 0.06849,
+    "citations": 13426,
+    "top10": 74.469,
+    "top10ShareOfDivision": 0.06862,
     "top1": 8,
-    "top1ShareOfDivision": 0.07321,
+    "top1ShareOfDivision": 0.07371,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.233,
@@ -195,21 +195,21 @@
       "citationBuckets": 21
     },
     "spread": {
-      "mean": 12.824,
+      "mean": 12.86,
       "median": 8,
-      "uncited": 64,
+      "uncited": 61,
       "i10": 444,
       "i100": 8
     }
   },
   "window": {
-    "papers": 323,
+    "papers": 321,
     "outputBasis": "measured",
-    "citations": 6132,
-    "top10": 31.588,
-    "top10ShareOfDivision": 0.06544,
+    "citations": 6131,
+    "top10": 31.1,
+    "top10ShareOfDivision": 0.06495,
     "top1": 2,
-    "top1ShareOfDivision": 0.04143,
+    "top1ShareOfDivision": 0.04177,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.476,
@@ -227,19 +227,19 @@
       "citationBuckets": 10
     },
     "spread": {
-      "mean": 18.985,
+      "mean": 19.1,
       "median": 12,
-      "uncited": 16,
+      "uncited": 14,
       "i10": 192,
       "i100": 5
     }
   },
   "lifetime": {
-    "papers": 1283,
+    "papers": 1280,
     "outputBasis": "measured",
-    "citations": 45660,
-    "top10": 91.685,
-    "top10ShareOfDivision": 0.05819,
+    "citations": 45654,
+    "top10": 90.925,
+    "top10ShareOfDivision": 0.05807,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -250,26 +250,26 @@
       "date": "2007-05-00"
     },
     "spread": {
-      "mean": 35.588,
+      "mean": 35.667,
       "median": 14,
-      "uncited": 128,
+      "uncited": 126,
       "i10": 753,
       "i100": 92
     }
   },
   "query": {
     "arms": "((=abs:\"Mars Reconnaissance Orbiter\" OR (abs:\"MRO\" AND abs:\"Mars\") OR (abs:\"HiRISE\" AND abs:\"Mars\") OR (abs:\"CRISM\" AND abs:\"Mars\") OR (abs:\"CTX\" AND abs:\"Mars\") OR (abs:\"SHARAD\" AND abs:\"Mars\")))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2006-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Reconnaissance+Orbiter%22+OR+%28abs%3A%22MRO%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22HiRISE%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22CRISM%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22CTX%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22SHARAD%22+AND+abs%3A%22Mars%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2006-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:07:59.177888+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2006-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Reconnaissance+Orbiter%22+OR+%28abs%3A%22MRO%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22HiRISE%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22CRISM%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22CTX%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22SHARAD%22+AND+abs%3A%22Mars%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2006-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:45:18.111229+00:00",
     "reconciliation": {
-      "adsReturned": 1288,
-      "curatedOut": 2,
+      "adsReturned": 1287,
+      "curatedOut": 4,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 3,
-      "final": 1283
+      "final": 1280
     }
   },
   "curation": {
@@ -290,6 +290,22 @@
         "reason": "Overview of the Mars Science Laboratory (Curiosity) mission; Mars Reconnaissance Orbiter is mentioned only in passing.",
         "authority": "agent",
         "date": "2026-10-03"
+      },
+      {
+        "bibcode": "2010NatGe...3..141.",
+        "doi": "10.1038/ngeo820",
+        "title": "The people's camera",
+        "reason": "Unsigned Nature Geoscience editorial on the mission; a news and opinion item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2018Sci...359..145V",
+        "doi": "10.1126/science.359.6372.145",
+        "title": "Cliffs of ice spied on Mars",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
       }
     ]
   },
@@ -476,6 +492,6 @@
     }
   ],
   "papersFile": {
-    "rows": 1283
+    "rows": 1280
   }
 }

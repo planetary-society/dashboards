@@ -23,12 +23,12 @@
     "m": 3.917,
     "i100": 84,
     "g": 164,
-    "tori": 221.033,
-    "riq": 619
+    "tori": 222.648,
+    "riq": 621
   },
   "facts": {
     "papers": 787,
-    "citations": 38303,
+    "citations": 38343,
     "publicationYears": [
       2003,
       2026
@@ -97,27 +97,27 @@
       357,
       524,
       903,
-      1089,
-      1345,
-      1738,
-      1795,
-      2006,
-      2119,
-      2460,
-      2539,
-      2759,
-      3196,
-      3393,
-      3142,
-      3179,
-      3227,
-      1881
+      1093,
+      1347,
+      1743,
+      1796,
+      2009,
+      2118,
+      2459,
+      2540,
+      2760,
+      3199,
+      3397,
+      3137,
+      3181,
+      3230,
+      1899
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 38303,
-      "observed": 38303,
+      "expected": 38343,
+      "observed": 38343,
       "missing": 0
     }
   },
@@ -138,16 +138,16 @@
   "ranks": {
     "full": {
       "bins": [
-        22.987,
-        17.464,
-        20.868,
-        15.466,
-        20.508,
-        17.925,
-        29.634,
-        25.767,
-        33.476,
-        37.905
+        22.762,
+        17.317,
+        21.275,
+        15.449,
+        20.516,
+        17.916,
+        29.195,
+        26.206,
+        33.463,
+        37.901
       ],
       "top1": 4
     },
@@ -155,29 +155,29 @@
       "bins": [
         7.087,
         8.348,
-        12.191,
-        6.937,
-        9.731,
+        12.195,
+        6.935,
+        9.728,
         6.607,
         9.097,
-        10.555,
-        7.447,
+        10.572,
+        7.43,
         5
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        62.941,
-        44.306,
-        59.761,
-        67.613,
-        62.074,
-        79.707,
-        91.236,
-        80.93,
-        117.907,
-        120.525
+        62.878,
+        44.458,
+        60.685,
+        66.257,
+        62.513,
+        80.621,
+        90.29,
+        80.783,
+        117.053,
+        121.463
       ],
       "top1": 17
     }
@@ -185,8 +185,8 @@
   "full": {
     "papers": 242,
     "outputBasis": "measured",
-    "citations": 3620,
-    "top10": 33.155,
+    "citations": 3624,
+    "top10": 33.151,
     "top10ShareOfDivision": 0.00921,
     "top1": 4,
     "top1ShareOfDivision": 0.01111,
@@ -207,7 +207,7 @@
       "citationBuckets": 13
     },
     "spread": {
-      "mean": 14.959,
+      "mean": 14.975,
       "median": 10,
       "uncited": 20,
       "i10": 122,
@@ -249,9 +249,9 @@
   "lifetime": {
     "papers": 787,
     "outputBasis": "measured",
-    "citations": 38303,
-    "top10": 104.442,
-    "top10ShareOfDivision": 0.02245,
+    "citations": 38343,
+    "top10": 105.379,
+    "top10ShareOfDivision": 0.02265,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -262,7 +262,7 @@
       "date": "2004-08-00"
     },
     "spread": {
-      "mean": 48.67,
+      "mean": 48.72,
       "median": 21,
       "uncited": 60,
       "i10": 545,
@@ -271,9 +271,9 @@
   },
   "query": {
     "arms": "((((abs:\"ICESat\" OR abs:\"ICESat-1\" OR abs:\"GLAS\" OR =abs:\"Geoscience Laser Altimeter System\") AND (abs:\"satellite\" OR abs:\"remote sensing\" OR abs:\"laser altimetry\" OR abs:\"laser altimeter\")) OR abs:\"Ice, Clouds and Land Elevation Satellite\" OR abs:\"Geoscience Laser Altimeter System\") AND NOT (abs:\"ICESat-2\" AND NOT (abs:\"ICESat-1\" OR abs:\"GLAS\" OR =abs:\"Geoscience Laser Altimeter System\" OR =abs:\"ICESat ICESat-2\" OR =abs:\"ICESat 2003\" OR =abs:\"ICESat data\" OR =abs:\"ICESat mission\" OR =abs:\"ICESat CryoSat\" OR =abs:\"ICESat Ice Cloud\")))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2003-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3A%22ICESat%22+OR+abs%3A%22ICESat-1%22+OR+abs%3A%22GLAS%22+OR+%3Dabs%3A%22Geoscience+Laser+Altimeter+System%22%29+AND+%28abs%3A%22satellite%22+OR+abs%3A%22remote+sensing%22+OR+abs%3A%22laser+altimetry%22+OR+abs%3A%22laser+altimeter%22%29%29+OR+abs%3A%22Ice%2C+Clouds+and+Land+Elevation+Satellite%22+OR+abs%3A%22Geoscience+Laser+Altimeter+System%22%29+AND+NOT+%28abs%3A%22ICESat-2%22+AND+NOT+%28abs%3A%22ICESat-1%22+OR+abs%3A%22GLAS%22+OR+%3Dabs%3A%22Geoscience+Laser+Altimeter+System%22+OR+%3Dabs%3A%22ICESat+ICESat-2%22+OR+%3Dabs%3A%22ICESat+2003%22+OR+%3Dabs%3A%22ICESat+data%22+OR+%3Dabs%3A%22ICESat+mission%22+OR+%3Dabs%3A%22ICESat+CryoSat%22+OR+%3Dabs%3A%22ICESat+Ice+Cloud%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:14:31.965208+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2003-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3A%22ICESat%22+OR+abs%3A%22ICESat-1%22+OR+abs%3A%22GLAS%22+OR+%3Dabs%3A%22Geoscience+Laser+Altimeter+System%22%29+AND+%28abs%3A%22satellite%22+OR+abs%3A%22remote+sensing%22+OR+abs%3A%22laser+altimetry%22+OR+abs%3A%22laser+altimeter%22%29%29+OR+abs%3A%22Ice%2C+Clouds+and+Land+Elevation+Satellite%22+OR+abs%3A%22Geoscience+Laser+Altimeter+System%22%29+AND+NOT+%28abs%3A%22ICESat-2%22+AND+NOT+%28abs%3A%22ICESat-1%22+OR+abs%3A%22GLAS%22+OR+%3Dabs%3A%22Geoscience+Laser+Altimeter+System%22+OR+%3Dabs%3A%22ICESat+ICESat-2%22+OR+%3Dabs%3A%22ICESat+2003%22+OR+%3Dabs%3A%22ICESat+data%22+OR+%3Dabs%3A%22ICESat+mission%22+OR+%3Dabs%3A%22ICESat+CryoSat%22+OR+%3Dabs%3A%22ICESat+Ice+Cloud%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:57:15.058917+00:00",
     "reconciliation": {
       "adsReturned": 794,
       "curatedOut": 0,
@@ -305,7 +305,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 1048
+      "citations": 1049
     },
     {
       "bibcode": "2017RSEnv.190..260M",
@@ -314,7 +314,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 975
+      "citations": 977
     },
     {
       "bibcode": "2011JGRG..116.4021S",
@@ -323,7 +323,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 772
+      "citations": 773
     },
     {
       "bibcode": "2011TCry....5..271N",
@@ -368,7 +368,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 544
+      "citations": 550
     },
     {
       "bibcode": "2005GeoRL..3221S01S",
@@ -377,7 +377,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 523
+      "citations": 524
     },
     {
       "bibcode": "2020Sci...368.1239S",
@@ -413,7 +413,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 354
+      "citations": 356
     },
     {
       "bibcode": "2011GeoRL..3810504R",
@@ -461,12 +461,12 @@
       "citations": 265
     },
     {
-      "bibcode": "2008RSEnv.112.3876B",
-      "title": "Regional aboveground forest biomass using airborne and spaceborne LiDAR in Québec",
-      "firstAuthor": "Boudreau, Jonathan",
+      "bibcode": "2005GeoRL..3221S02A",
+      "title": "Geoscience Laser Altimeter System (GLAS) on the ICESat Mission: On-orbit measurement performance",
+      "firstAuthor": "Abshire, James B.",
       "authors": null,
       "authorCount": null,
-      "year": 2008,
+      "year": 2005,
       "citations": 262
     }
   ],

@@ -23,12 +23,12 @@
     "m": 4.765,
     "i100": 64,
     "g": 133,
-    "tori": 139.075,
-    "riq": 655
+    "tori": 141.55,
+    "riq": 660
   },
   "facts": {
     "papers": 1015,
-    "citations": 29230,
+    "citations": 29229,
     "publicationYears": [
       2010,
       2026
@@ -85,7 +85,7 @@
       1484,
       1511,
       1805,
-      2171,
+      2170,
       2475,
       3450,
       3412,
@@ -95,8 +95,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 29230,
-      "observed": 29230,
+      "expected": 29229,
+      "observed": 29229,
       "missing": 0
     }
   },
@@ -117,58 +117,58 @@
   "ranks": {
     "full": {
       "bins": [
-        88.375,
-        106.846,
-        91.578,
-        90.219,
-        81.677,
-        76.29,
-        72.656,
-        55.607,
-        59.674,
-        45.077
+        92.637,
+        107.913,
+        90.668,
+        89.296,
+        80.649,
+        76.16,
+        71.736,
+        54.73,
+        59.338,
+        44.874
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        9.625,
-        10.679,
-        9.815,
-        4.633,
-        9.68,
-        13.206,
-        12.327,
-        9.717,
-        14.318,
+        10.148,
+        10.843,
+        9.435,
+        4.828,
+        9.861,
+        13.45,
+        11.801,
+        9.737,
+        13.898,
         11
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        170.755,
-        127.623,
-        136.609,
-        113.24,
-        77.641,
-        90.239,
-        82.581,
-        60.581,
-        81.594,
-        74.138
+        175.822,
+        127.425,
+        136.891,
+        111.306,
+        76.85,
+        91.393,
+        81.023,
+        60.149,
+        80.141,
+        74
       ],
-      "top1": 9
+      "top1": 8
     }
   },
   "full": {
     "papers": 768,
     "outputBasis": "measured",
     "citations": 8048,
-    "top10": 43.077,
-    "top10ShareOfDivision": 0.03942,
+    "top10": 42.874,
+    "top10ShareOfDivision": 0.0395,
     "top1": 2,
-    "top1ShareOfDivision": 0.0183,
+    "top1ShareOfDivision": 0.01843,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.296,
@@ -198,9 +198,9 @@
     "outputBasis": "measured",
     "citations": 1997,
     "top10": 9.5,
-    "top10ShareOfDivision": 0.01968,
+    "top10ShareOfDivision": 0.01984,
     "top1": 1,
-    "top1ShareOfDivision": 0.02072,
+    "top1ShareOfDivision": 0.02089,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.296,
@@ -228,9 +228,9 @@
   "lifetime": {
     "papers": 1015,
     "outputBasis": "measured",
-    "citations": 29230,
-    "top10": 68.569,
-    "top10ShareOfDivision": 0.04352,
+    "citations": 29229,
+    "top10": 68.5,
+    "top10ShareOfDivision": 0.04375,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -241,7 +241,7 @@
       "date": "2010-01-00"
     },
     "spread": {
-      "mean": 28.798,
+      "mean": 28.797,
       "median": 10,
       "uncited": 141,
       "i10": 523,
@@ -250,9 +250,9 @@
   },
   "query": {
     "arms": "((=abs:\"Lunar Reconnaissance Orbiter\" OR =abs:\"Lunar Reconnaissance Orbiter Camera\" OR =abs:\"Lunar Exploration Neutron Detector\" OR =abs:\"Lyman-Alpha Mapping Project\" OR =abs:\"Lunar Orbiter Laser Altimeter\" OR =abs:\"Cosmic Ray Telescope for the Effects of Radiation\" OR =abs:\"Diviner Lunar Radiometer\" OR ((=abs:Moon OR =abs:lunar) AND (abs:LRO OR =abs:LROC OR abs:LEND OR abs:LAMP OR abs:LOLA OR abs:CRaTER OR =abs:Diviner OR abs:\"Mini-RF\"))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2009-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Reconnaissance+Orbiter%22+OR+%3Dabs%3A%22Lunar+Reconnaissance+Orbiter+Camera%22+OR+%3Dabs%3A%22Lunar+Exploration+Neutron+Detector%22+OR+%3Dabs%3A%22Lyman-Alpha+Mapping+Project%22+OR+%3Dabs%3A%22Lunar+Orbiter+Laser+Altimeter%22+OR+%3Dabs%3A%22Cosmic+Ray+Telescope+for+the+Effects+of+Radiation%22+OR+%3Dabs%3A%22Diviner+Lunar+Radiometer%22+OR+%28%28%3Dabs%3AMoon+OR+%3Dabs%3Alunar%29+AND+%28abs%3ALRO+OR+%3Dabs%3ALROC+OR+abs%3ALEND+OR+abs%3ALAMP+OR+abs%3ALOLA+OR+abs%3ACRaTER+OR+%3Dabs%3ADiviner+OR+abs%3A%22Mini-RF%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:08:39.800890+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2009-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Reconnaissance+Orbiter%22+OR+%3Dabs%3A%22Lunar+Reconnaissance+Orbiter+Camera%22+OR+%3Dabs%3A%22Lunar+Exploration+Neutron+Detector%22+OR+%3Dabs%3A%22Lyman-Alpha+Mapping+Project%22+OR+%3Dabs%3A%22Lunar+Orbiter+Laser+Altimeter%22+OR+%3Dabs%3A%22Cosmic+Ray+Telescope+for+the+Effects+of+Radiation%22+OR+%3Dabs%3A%22Diviner+Lunar+Radiometer%22+OR+%28%28%3Dabs%3AMoon+OR+%3Dabs%3Alunar%29+AND+%28abs%3ALRO+OR+%3Dabs%3ALROC+OR+abs%3ALEND+OR+abs%3ALAMP+OR+abs%3ALOLA+OR+abs%3ACRaTER+OR+%3Dabs%3ADiviner+OR+abs%3A%22Mini-RF%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:46:35.611271+00:00",
     "reconciliation": {
       "adsReturned": 1031,
       "curatedOut": 16,

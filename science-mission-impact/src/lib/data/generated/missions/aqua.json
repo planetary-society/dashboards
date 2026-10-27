@@ -21,14 +21,14 @@
   "indices": {
     "h": 222,
     "m": 8.88,
-    "i100": 837,
+    "i100": 839,
     "g": 370,
-    "tori": 2445.939,
-    "riq": 1902
+    "tori": 2473.777,
+    "riq": 1912
   },
   "facts": {
     "papers": 12222,
-    "citations": 442064,
+    "citations": 442129,
     "publicationYears": [
       2002,
       2026
@@ -98,29 +98,29 @@
       2272,
       3523,
       4238,
-      5509,
-      7087,
-      8927,
-      11074,
-      13906,
-      16022,
+      5511,
+      7088,
+      8932,
+      11076,
+      13908,
+      16023,
       17670,
       20456,
       24551,
       29676,
-      32980,
-      40587,
-      44890,
-      40685,
-      42665,
-      44002,
-      28415
+      32979,
+      40588,
+      44891,
+      40681,
+      42645,
+      44001,
+      28491
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 442064,
-      "observed": 442064,
+      "expected": 442129,
+      "observed": 442129,
       "missing": 0
     }
   },
@@ -141,16 +141,16 @@
   "ranks": {
     "full": {
       "bins": [
-        746.021,
-        949.459,
-        1063.321,
-        1093.482,
-        1095.717,
-        1136.896,
-        1109.282,
-        1174.017,
-        1134.217,
-        1066.588
+        746.718,
+        949.982,
+        1061.946,
+        1094.819,
+        1095.353,
+        1136.945,
+        1110.467,
+        1172.689,
+        1133.769,
+        1066.311
       ],
       "top1": 94.137
     },
@@ -158,29 +158,29 @@
       "bins": [
         144.32,
         201.379,
-        196.898,
-        188.486,
-        190.707,
+        196.004,
+        189.433,
+        190.655,
         187.235,
         156.757,
-        174.417,
-        133.137,
+        174.56,
+        132.995,
         88.663
       ],
       "top1": 6.522
     },
     "lifetime": {
       "bins": [
-        839.984,
-        1026.871,
-        1206.353,
-        1249.823,
-        1274.367,
-        1298.85,
-        1295.713,
-        1339.267,
-        1350.889,
-        1339.883
+        836.907,
+        1029.866,
+        1204.198,
+        1252.185,
+        1276.656,
+        1297.618,
+        1295.138,
+        1340.261,
+        1349.831,
+        1339.342
       ],
       "top1": 142.28
     }
@@ -188,9 +188,9 @@
   "full": {
     "papers": 10569,
     "outputBasis": "measured",
-    "citations": 124097,
-    "top10": 565.919,
-    "top10ShareOfDivision": 0.15722,
+    "citations": 124105,
+    "top10": 565.804,
+    "top10ShareOfDivision": 0.15719,
     "top1": 46.652,
     "top1ShareOfDivision": 0.1296,
     "first": {
@@ -212,15 +212,15 @@
     "spread": {
       "mean": 11.742,
       "median": 7,
-      "uncited": 580,
-      "i10": 4288,
+      "uncited": 579,
+      "i10": 4287,
       "i100": 50
     }
   },
   "window": {
     "papers": 1662,
     "outputBasis": "measured",
-    "citations": 17493,
+    "citations": 17496,
     "top10": 63.243,
     "top10ShareOfDivision": 0.06719,
     "top1": 4.261,
@@ -242,7 +242,7 @@
       "citationBuckets": 12
     },
     "spread": {
-      "mean": 10.525,
+      "mean": 10.527,
       "median": 7,
       "uncited": 103,
       "i10": 610,
@@ -252,9 +252,9 @@
   "lifetime": {
     "papers": 12222,
     "outputBasis": "measured",
-    "citations": 442064,
-    "top10": 734.883,
-    "top10ShareOfDivision": 0.15794,
+    "citations": 442129,
+    "top10": 734.633,
+    "top10ShareOfDivision": 0.15789,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -265,18 +265,18 @@
       "date": "2002-06-00"
     },
     "spread": {
-      "mean": 36.17,
+      "mean": 36.175,
       "median": 16,
-      "uncited": 775,
-      "i10": 7769,
-      "i100": 837
+      "uncited": 770,
+      "i10": 7770,
+      "i100": 839
     }
   },
   "query": {
     "arms": "(((abs:\"Aqua\" AND (=abs:\"AIRS\" OR =abs:\"AMSU\" OR =abs:\"CERES\" OR =abs:\"MODIS\" OR =abs:\"AMSR-E\" OR =abs:\"HSB\")) OR =abs:\"Advanced Microwave Scanning Radiometer-EOS\" OR (=abs:\"Moderate Resolution Imaging Spectroradiometer\" AND abs:\"Aqua\") OR (=abs:\"Moderate Resolution Imaging Spectroradiometer\" AND NOT abs:\"Terra\") OR (=abs:\"Advanced Microwave Sounding Unit\" AND (abs:(Aqua OR AIRS OR \"AMSR-E\") OR =abs:\"Advanced Microwave Scanning Radiometer for the Earth Observing System\")) OR =abs:\"Humidity Sounder for Brazil\" OR =abs:\"Atmospheric Infrared Sounder\" OR (=abs:\"Clouds and the Earth's Radiant Energy System\" AND abs:\"Aqua\") OR (=abs:\"Clouds and the Earth's Radiant Energy System\" AND NOT abs:\"Terra\") OR abs:\"Aqua satellite\" OR abs:\"Aqua spacecraft\" OR abs:\"Aqua Earth-Observing\" OR abs:\"EOS-PM1\" OR abs:\"EOS PM-1\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2002-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22Aqua%22+AND+%28%3Dabs%3A%22AIRS%22+OR+%3Dabs%3A%22AMSU%22+OR+%3Dabs%3A%22CERES%22+OR+%3Dabs%3A%22MODIS%22+OR+%3Dabs%3A%22AMSR-E%22+OR+%3Dabs%3A%22HSB%22%29%29+OR+%3Dabs%3A%22Advanced+Microwave+Scanning+Radiometer-EOS%22+OR+%28%3Dabs%3A%22Moderate+Resolution+Imaging+Spectroradiometer%22+AND+abs%3A%22Aqua%22%29+OR+%28%3Dabs%3A%22Moderate+Resolution+Imaging+Spectroradiometer%22+AND+NOT+abs%3A%22Terra%22%29+OR+%28%3Dabs%3A%22Advanced+Microwave+Sounding+Unit%22+AND+%28abs%3A%28Aqua+OR+AIRS+OR+%22AMSR-E%22%29+OR+%3Dabs%3A%22Advanced+Microwave+Scanning+Radiometer+for+the+Earth+Observing+System%22%29%29+OR+%3Dabs%3A%22Humidity+Sounder+for+Brazil%22+OR+%3Dabs%3A%22Atmospheric+Infrared+Sounder%22+OR+%28%3Dabs%3A%22Clouds+and+the+Earth%27s+Radiant+Energy+System%22+AND+abs%3A%22Aqua%22%29+OR+%28%3Dabs%3A%22Clouds+and+the+Earth%27s+Radiant+Energy+System%22+AND+NOT+abs%3A%22Terra%22%29+OR+abs%3A%22Aqua+satellite%22+OR+abs%3A%22Aqua+spacecraft%22+OR+abs%3A%22Aqua+Earth-Observing%22+OR+abs%3A%22EOS-PM1%22+OR+abs%3A%22EOS+PM-1%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:14:08.764619+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2002-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22Aqua%22+AND+%28%3Dabs%3A%22AIRS%22+OR+%3Dabs%3A%22AMSU%22+OR+%3Dabs%3A%22CERES%22+OR+%3Dabs%3A%22MODIS%22+OR+%3Dabs%3A%22AMSR-E%22+OR+%3Dabs%3A%22HSB%22%29%29+OR+%3Dabs%3A%22Advanced+Microwave+Scanning+Radiometer-EOS%22+OR+%28%3Dabs%3A%22Moderate+Resolution+Imaging+Spectroradiometer%22+AND+abs%3A%22Aqua%22%29+OR+%28%3Dabs%3A%22Moderate+Resolution+Imaging+Spectroradiometer%22+AND+NOT+abs%3A%22Terra%22%29+OR+%28%3Dabs%3A%22Advanced+Microwave+Sounding+Unit%22+AND+%28abs%3A%28Aqua+OR+AIRS+OR+%22AMSR-E%22%29+OR+%3Dabs%3A%22Advanced+Microwave+Scanning+Radiometer+for+the+Earth+Observing+System%22%29%29+OR+%3Dabs%3A%22Humidity+Sounder+for+Brazil%22+OR+%3Dabs%3A%22Atmospheric+Infrared+Sounder%22+OR+%28%3Dabs%3A%22Clouds+and+the+Earth%27s+Radiant+Energy+System%22+AND+abs%3A%22Aqua%22%29+OR+%28%3Dabs%3A%22Clouds+and+the+Earth%27s+Radiant+Energy+System%22+AND+NOT+abs%3A%22Terra%22%29+OR+abs%3A%22Aqua+satellite%22+OR+abs%3A%22Aqua+spacecraft%22+OR+abs%3A%22Aqua+Earth-Observing%22+OR+abs%3A%22EOS-PM1%22+OR+abs%3A%22EOS+PM-1%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:56:08.752581+00:00",
     "reconciliation": {
       "adsReturned": 12238,
       "curatedOut": 4,
@@ -395,7 +395,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 1519
+      "citations": 1520
     },
     {
       "bibcode": "2006ITGRS..44.2207G",
@@ -431,7 +431,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 1300
+      "citations": 1307
     },
     {
       "bibcode": "2006IGRSL...3...68M",
@@ -440,7 +440,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 1287
+      "citations": 1288
     },
     {
       "bibcode": "2016RSEnv.185...46V",
@@ -503,7 +503,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 1059
+      "citations": 1061
     },
     {
       "bibcode": "2012RvGeo..50.3005G",

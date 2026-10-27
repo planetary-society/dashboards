@@ -23,12 +23,12 @@
     "m": 6.769,
     "i100": 67,
     "g": 144,
-    "tori": 170.643,
-    "riq": 933
+    "tori": 176.592,
+    "riq": 949
   },
   "facts": {
     "papers": 2834,
-    "citations": 52154,
+    "citations": 52195,
     "publicationYears": [
       2014,
       2026
@@ -73,18 +73,18 @@
       1705,
       2294,
       3237,
-      5079,
+      5081,
       6814,
       7319,
-      8036,
-      9293,
-      7234
+      8035,
+      9295,
+      7272
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 52154,
-      "observed": 52154,
+      "expected": 52195,
+      "observed": 52195,
       "missing": 0
     }
   },
@@ -100,21 +100,21 @@
     ],
     "authorCount": 9,
     "year": 2014,
-    "citations": 2204
+    "citations": 2208
   },
   "ranks": {
     "full": {
       "bins": [
-        68.659,
-        111.837,
-        117.714,
-        143.993,
-        156.479,
-        176.621,
-        196.744,
-        217.976,
-        244.395,
-        272.582
+        68.839,
+        111.791,
+        117.775,
+        144.028,
+        155.783,
+        177.193,
+        196.582,
+        218.167,
+        244.322,
+        272.519
       ],
       "top1": 27
     },
@@ -122,29 +122,29 @@
       "bins": [
         16.524,
         28.942,
-        30.512,
-        33.49,
-        31.231,
+        30.528,
+        33.224,
+        31.481,
         36.557,
         56.537,
-        51.195,
-        56.822,
+        51.271,
+        56.747,
         77.189
       ],
       "top1": 8.043
     },
     "lifetime": {
       "bins": [
-        523.711,
-        403.922,
-        359.067,
-        303.241,
-        245.364,
-        271.902,
-        221.144,
-        226.114,
-        163.695,
-        115.842
+        524.497,
+        403.624,
+        359.017,
+        303.036,
+        245.337,
+        271.121,
+        221.902,
+        225.435,
+        164.21,
+        115.821
       ],
       "top1": 7
     }
@@ -152,9 +152,9 @@
   "full": {
     "papers": 1707,
     "outputBasis": "measured",
-    "citations": 26641,
-    "top10": 253.76,
-    "top10ShareOfDivision": 0.0705,
+    "citations": 26643,
+    "top10": 253.701,
+    "top10ShareOfDivision": 0.07048,
     "top1": 25,
     "top1ShareOfDivision": 0.06945,
     "first": {
@@ -174,7 +174,7 @@
       "citationBuckets": 13
     },
     "spread": {
-      "mean": 15.607,
+      "mean": 15.608,
       "median": 10,
       "uncited": 48,
       "i10": 903,
@@ -184,7 +184,7 @@
   "window": {
     "papers": 419,
     "outputBasis": "measured",
-    "citations": 8321,
+    "citations": 8323,
     "top10": 76.626,
     "top10ShareOfDivision": 0.0814,
     "top1": 8.043,
@@ -206,7 +206,7 @@
       "citationBuckets": 9
     },
     "spread": {
-      "mean": 19.859,
+      "mean": 19.864,
       "median": 12,
       "uncited": 10,
       "i10": 256,
@@ -216,9 +216,9 @@
   "lifetime": {
     "papers": 2834,
     "outputBasis": "measured",
-    "citations": 52154,
-    "top10": 88.754,
-    "top10ShareOfDivision": 0.01908,
+    "citations": 52195,
+    "top10": 88.744,
+    "top10ShareOfDivision": 0.01907,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -229,7 +229,7 @@
       "date": "2014-05-00"
     },
     "spread": {
-      "mean": 18.403,
+      "mean": 18.417,
       "median": 7,
       "uncited": 495,
       "i10": 1217,
@@ -238,9 +238,9 @@
   },
   "query": {
     "arms": "(((abs:IMERG AND abs:(precipitation OR rainfall OR satellite)) OR =abs:\"Global Precipitation Measurement\" OR (abs:GPM AND (abs:(precipitation OR rainfall OR satellite OR DPR OR GMI OR IMERG) OR =abs:\"Core Observatory\" OR =abs:\"Microwave Imager\") NOT (=abs:\"gas-permeable membrane\" OR =abs:\"Glaciar Perito Moreno\" OR =abs:\"groundwater potential\" OR =abs:\"gamma-pareto quantile mapping\" OR =abs:\"grid-preprocessed mosaicking\" OR =abs:\"Gauss pseudospectral\" OR =abs:\"Gaussian plume model\")) OR =abs:\"GPM Microwave Imager\" OR (=abs:\"Dual-frequency Precipitation Radar\" AND abs:(satellite OR GPM OR spaceborne) NOT abs:(FY-3G OR FY3G)) OR (abs:GMI AND abs:(precipitation OR rainfall OR microwave) NOT (=abs:\"Global Modeling Initiative\" OR =abs:\"giant magnetoimpedance\" OR =abs:\"giant magneto-impedance\" OR =abs:\"gradient meteorological instrument\" OR (abs:global AND abs:Moran))) OR (abs:DPR AND abs:(precipitation AND (satellite OR spaceborne OR GPM)) NOT =abs:\"DPR Korea\")))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2014-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3AIMERG+AND+abs%3A%28precipitation+OR+rainfall+OR+satellite%29%29+OR+%3Dabs%3A%22Global+Precipitation+Measurement%22+OR+%28abs%3AGPM+AND+%28abs%3A%28precipitation+OR+rainfall+OR+satellite+OR+DPR+OR+GMI+OR+IMERG%29+OR+%3Dabs%3A%22Core+Observatory%22+OR+%3Dabs%3A%22Microwave+Imager%22%29+NOT+%28%3Dabs%3A%22gas-permeable+membrane%22+OR+%3Dabs%3A%22Glaciar+Perito+Moreno%22+OR+%3Dabs%3A%22groundwater+potential%22+OR+%3Dabs%3A%22gamma-pareto+quantile+mapping%22+OR+%3Dabs%3A%22grid-preprocessed+mosaicking%22+OR+%3Dabs%3A%22Gauss+pseudospectral%22+OR+%3Dabs%3A%22Gaussian+plume+model%22%29%29+OR+%3Dabs%3A%22GPM+Microwave+Imager%22+OR+%28%3Dabs%3A%22Dual-frequency+Precipitation+Radar%22+AND+abs%3A%28satellite+OR+GPM+OR+spaceborne%29+NOT+abs%3A%28FY-3G+OR+FY3G%29%29+OR+%28abs%3AGMI+AND+abs%3A%28precipitation+OR+rainfall+OR+microwave%29+NOT+%28%3Dabs%3A%22Global+Modeling+Initiative%22+OR+%3Dabs%3A%22giant+magnetoimpedance%22+OR+%3Dabs%3A%22giant+magneto-impedance%22+OR+%3Dabs%3A%22gradient+meteorological+instrument%22+OR+%28abs%3Aglobal+AND+abs%3AMoran%29%29%29+OR+%28abs%3ADPR+AND+abs%3A%28precipitation+AND+%28satellite+OR+spaceborne+OR+GPM%29%29+NOT+%3Dabs%3A%22DPR+Korea%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:15:37.944286+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2014-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3AIMERG+AND+abs%3A%28precipitation+OR+rainfall+OR+satellite%29%29+OR+%3Dabs%3A%22Global+Precipitation+Measurement%22+OR+%28abs%3AGPM+AND+%28abs%3A%28precipitation+OR+rainfall+OR+satellite+OR+DPR+OR+GMI+OR+IMERG%29+OR+%3Dabs%3A%22Core+Observatory%22+OR+%3Dabs%3A%22Microwave+Imager%22%29+NOT+%28%3Dabs%3A%22gas-permeable+membrane%22+OR+%3Dabs%3A%22Glaciar+Perito+Moreno%22+OR+%3Dabs%3A%22groundwater+potential%22+OR+%3Dabs%3A%22gamma-pareto+quantile+mapping%22+OR+%3Dabs%3A%22grid-preprocessed+mosaicking%22+OR+%3Dabs%3A%22Gauss+pseudospectral%22+OR+%3Dabs%3A%22Gaussian+plume+model%22%29%29+OR+%3Dabs%3A%22GPM+Microwave+Imager%22+OR+%28%3Dabs%3A%22Dual-frequency+Precipitation+Radar%22+AND+abs%3A%28satellite+OR+GPM+OR+spaceborne%29+NOT+abs%3A%28FY-3G+OR+FY3G%29%29+OR+%28abs%3AGMI+AND+abs%3A%28precipitation+OR+rainfall+OR+microwave%29+NOT+%28%3Dabs%3A%22Global+Modeling+Initiative%22+OR+%3Dabs%3A%22giant+magnetoimpedance%22+OR+%3Dabs%3A%22giant+magneto-impedance%22+OR+%3Dabs%3A%22gradient+meteorological+instrument%22+OR+%28abs%3Aglobal+AND+abs%3AMoran%29%29%29+OR+%28abs%3ADPR+AND+abs%3A%28precipitation+AND+%28satellite+OR+spaceborne+OR+GPM%29%29+NOT+%3Dabs%3A%22DPR+Korea%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:58:54.290937+00:00",
     "reconciliation": {
       "adsReturned": 2837,
       "curatedOut": 1,
@@ -281,7 +281,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 2204
+      "citations": 2208
     },
     {
       "bibcode": "2017BAMS...98.1679S",
@@ -290,7 +290,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 646
+      "citations": 647
     },
     {
       "bibcode": "2019HESS...23..207B",
@@ -299,7 +299,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 482
+      "citations": 483
     },
     {
       "bibcode": "2016JHyd..533..152T",
@@ -308,7 +308,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 468
+      "citations": 469
     },
     {
       "bibcode": "2020RSEnv.24011697T",
@@ -317,7 +317,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 450
+      "citations": 453
     },
     {
       "bibcode": "2017JGRD..122..910X",
@@ -335,7 +335,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 299
+      "citations": 300
     },
     {
       "bibcode": "2021HESS...25...17B",
@@ -344,7 +344,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 270
+      "citations": 271
     },
     {
       "bibcode": "2022RSEnv.26812754P",
@@ -371,7 +371,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 253
+      "citations": 254
     },
     {
       "bibcode": "2017HESS...21.1295Z",
@@ -380,7 +380,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 238
+      "citations": 240
     },
     {
       "bibcode": "2018JHyd..556..865P",
@@ -407,7 +407,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 225
+      "citations": 226
     },
     {
       "bibcode": "2018JHyd..558..214M",
@@ -416,7 +416,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 213
+      "citations": 214
     },
     {
       "bibcode": "2016JHyMe..17..121T",

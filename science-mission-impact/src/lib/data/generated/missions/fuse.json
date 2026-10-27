@@ -23,12 +23,12 @@
     "m": 3.481,
     "i100": 86,
     "g": 147,
-    "tori": 180.542,
-    "riq": 497
+    "tori": 185.13,
+    "riq": 503
   },
   "facts": {
     "papers": 799,
-    "citations": 38009,
+    "citations": 38008,
     "publicationYears": [
       2000,
       2026
@@ -103,7 +103,7 @@
       2140,
       1611,
       1648,
-      1900,
+      1899,
       1627,
       1826,
       2009,
@@ -125,8 +125,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 38009,
-      "observed": 38009,
+      "expected": 38008,
+      "observed": 38008,
       "missing": 0
     }
   },
@@ -144,45 +144,45 @@
   "ranks": {
     "full": {
       "bins": [
-        49.256,
-        60.239,
-        64.527,
-        69.578,
-        51.907,
-        60.096,
-        65.936,
-        52.087,
-        51.112,
-        31.262
+        49.319,
+        60.263,
+        64.568,
+        69.558,
+        52,
+        60.101,
+        65.799,
+        52.173,
+        51.032,
+        31.188
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        20.609,
-        33.989,
-        37.349,
-        34.292,
-        42.84,
-        40.198,
-        35.17,
-        26.448,
-        33.105,
+        20.621,
+        33.994,
+        37.401,
+        34.252,
+        42.822,
+        40.235,
+        35.145,
+        26.434,
+        33.097,
         12
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        38.565,
-        60.28,
-        73.488,
-        87.191,
-        105.995,
-        92.439,
-        89.13,
-        97.134,
-        84.779,
+        39.353,
+        60.038,
+        73.744,
+        87.587,
+        105.847,
+        92.146,
+        89.306,
+        96.772,
+        84.207,
         70
       ],
       "top1": 4
@@ -192,8 +192,8 @@
     "papers": 556,
     "outputBasis": "measured",
     "citations": 9350,
-    "top10": 24.596,
-    "top10ShareOfDivision": 0.00494,
+    "top10": 24.521,
+    "top10ShareOfDivision": 0.00493,
     "top1": 2,
     "top1ShareOfDivision": 0.00402,
     "first": {
@@ -255,7 +255,7 @@
   "lifetime": {
     "papers": 799,
     "outputBasis": "measured",
-    "citations": 38009,
+    "citations": 38008,
     "top10": 50.417,
     "top10ShareOfDivision": 0.00794,
     "top1": null,
@@ -268,7 +268,7 @@
       "date": "2000-07-00"
     },
     "spread": {
-      "mean": 47.571,
+      "mean": 47.569,
       "median": 27,
       "uncited": 15,
       "i10": 656,
@@ -277,9 +277,9 @@
   },
   "query": {
     "arms": "((=abs:\"Far Ultraviolet Spectroscopic Explorer\" OR =abs:\"Far Ultraviolet Spectrographic Explorer\" OR =abs:\"Far Ultraviolet Spectroscopy Explorer\" OR =abs:\"Far Ultraviolet Explorer\" OR facility:FUSE OR (abs:FUSE AND collection:astronomy AND NOT (=abs:\"file system\" OR =abs:\"file systems\" OR =abs:\"SIT-FUSE\"))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2000-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Far+Ultraviolet+Spectroscopic+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Spectrographic+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Spectroscopy+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Explorer%22+OR+facility%3AFUSE+OR+%28abs%3AFUSE+AND+collection%3Aastronomy+AND+NOT+%28%3Dabs%3A%22file+system%22+OR+%3Dabs%3A%22file+systems%22+OR+%3Dabs%3A%22SIT-FUSE%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:25:03.285864+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2000-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Far+Ultraviolet+Spectroscopic+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Spectrographic+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Spectroscopy+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Explorer%22+OR+facility%3AFUSE+OR+%28abs%3AFUSE+AND+collection%3Aastronomy+AND+NOT+%28%3Dabs%3A%22file+system%22+OR+%3Dabs%3A%22file+systems%22+OR+%3Dabs%3A%22SIT-FUSE%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:12:38.551425+00:00",
     "reconciliation": {
       "adsReturned": 802,
       "curatedOut": 4,

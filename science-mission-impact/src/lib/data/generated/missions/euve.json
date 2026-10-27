@@ -21,14 +21,14 @@
   "indices": {
     "h": 73,
     "m": 2.147,
-    "i100": 50,
+    "i100": 51,
     "g": 105,
-    "tori": 137.876,
-    "riq": 345
+    "tori": 143.558,
+    "riq": 352
   },
   "facts": {
     "papers": 473,
-    "citations": 18410,
+    "citations": 18437,
     "publicationYears": [
       1993,
       2026
@@ -141,13 +141,13 @@
       323,
       385,
       409,
-      400
+      427
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 18410,
-      "observed": 18410,
+      "expected": 18437,
+      "observed": 18437,
       "missing": 0
     }
   },
@@ -163,34 +163,34 @@
     ],
     "authorCount": 8,
     "year": 2002,
-    "citations": 422
+    "citations": 423
   },
   "ranks": {
     "full": {
       "bins": [
-        63.893,
-        51.42,
-        43.894,
-        38.736,
-        42.376,
-        30.661,
-        39.196,
-        31.559,
-        27.265,
+        63.953,
+        51.426,
+        43.911,
+        38.784,
+        42.329,
+        30.702,
+        39.13,
+        31.558,
+        27.207,
         20
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        28.58,
-        15.837,
-        20.44,
-        18.762,
-        11.417,
-        15.519,
-        14.424,
-        5.021,
+        28.583,
+        15.844,
+        20.464,
+        18.744,
+        11.407,
+        15.532,
+        14.415,
+        5.012,
         7,
         5
       ],
@@ -198,16 +198,16 @@
     },
     "lifetime": {
       "bins": [
-        43.439,
-        40.694,
-        50.31,
-        51.646,
-        52.829,
-        53.385,
-        42.72,
-        60.716,
-        41.646,
-        35.614
+        44.052,
+        40.491,
+        50.569,
+        51.545,
+        52.316,
+        53.837,
+        41.482,
+        61.639,
+        41.67,
+        35.399
       ],
       "top1": 0
     }
@@ -279,9 +279,9 @@
   "lifetime": {
     "papers": 473,
     "outputBasis": "measured",
-    "citations": 18410,
-    "top10": 27.364,
-    "top10ShareOfDivision": 0.00431,
+    "citations": 18437,
+    "top10": 27.149,
+    "top10ShareOfDivision": 0.00428,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -292,7 +292,7 @@
       "date": "1994-06-00"
     },
     "spread": {
-      "mean": 38.922,
+      "mean": 38.979,
       "median": 24,
       "uncited": 26,
       "i10": 349,
@@ -301,9 +301,9 @@
   },
   "query": {
     "arms": "((=abs:\"Extreme Ultraviolet Explorer\" OR facility:EUVE OR (abs:EUVE AND (collection:astronomy OR abs:(ultraviolet OR EUV OR star OR stars OR spectra OR spectrometer OR spacecraft)))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1992-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Extreme+Ultraviolet+Explorer%22+OR+facility%3AEUVE+OR+%28abs%3AEUVE+AND+%28collection%3Aastronomy+OR+abs%3A%28ultraviolet+OR+EUV+OR+star+OR+stars+OR+spectra+OR+spectrometer+OR+spacecraft%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1992-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:24:37.142285+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1992-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Extreme+Ultraviolet+Explorer%22+OR+facility%3AEUVE+OR+%28abs%3AEUVE+AND+%28collection%3Aastronomy+OR+abs%3A%28ultraviolet+OR+EUV+OR+star+OR+stars+OR+spectra+OR+spectrometer+OR+spacecraft%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1992-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:11:55.244622+00:00",
     "reconciliation": {
       "adsReturned": 477,
       "curatedOut": 4,
@@ -359,7 +359,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 422
+      "citations": 423
     },
     {
       "bibcode": "2002ApJ...564..981P",
@@ -386,7 +386,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 201
+      "citations": 202
     },
     {
       "bibcode": "2000ApJ...539L..41C",
@@ -395,7 +395,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 184
+      "citations": 185
     },
     {
       "bibcode": "2014ApJ...780...61L",
@@ -404,16 +404,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 179
-    },
-    {
-      "bibcode": "1995ApJ...453..464H",
-      "title": "Simultaneous Extreme-Ultraviolet Explorer and Optical Observations of AD Leonis: Evidence for Large Coronal Loops and the Neupert Effect in Stellar Flares",
-      "firstAuthor": "Hawley, Suzanne L.",
-      "authors": null,
-      "authorCount": null,
-      "year": 1995,
-      "citations": 172
+      "citations": 182
     },
     {
       "bibcode": "1999PASP..111..532S",
@@ -422,6 +413,15 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
+      "citations": 173
+    },
+    {
+      "bibcode": "1995ApJ...453..464H",
+      "title": "Simultaneous Extreme-Ultraviolet Explorer and Optical Observations of AD Leonis: Evidence for Large Coronal Loops and the Neupert Effect in Stellar Flares",
+      "firstAuthor": "Hawley, Suzanne L.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1995,
       "citations": 172
     },
     {
@@ -524,12 +524,12 @@
       "citations": 144
     },
     {
-      "bibcode": "1995ApJ...455..574D",
-      "title": "Hot White Dwarfs in the Local Interstellar Medium: Hydrogen and Helium Interstellar Column Densities and Stellar Effective Temperatures from Extreme-Ultraviolet Explorer Spectroscopy",
-      "firstAuthor": "Dupuis, Jean",
+      "bibcode": "1994ApJS...93..569B",
+      "title": "The First Extreme Ultraviolet Explorer Source Catalog",
+      "firstAuthor": "Bowyer, S.",
       "authors": null,
       "authorCount": null,
-      "year": 1995,
+      "year": 1994,
       "citations": 140
     }
   ],

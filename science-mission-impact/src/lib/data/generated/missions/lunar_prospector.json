@@ -23,11 +23,11 @@
     "m": 2.31,
     "i100": 39,
     "g": 109,
-    "tori": 121.89,
-    "riq": 380
+    "tori": 123.416,
+    "riq": 383
   },
   "facts": {
-    "papers": 299,
+    "papers": 297,
     "citations": 14653,
     "publicationYears": [
       1998,
@@ -67,7 +67,7 @@
       2026
     ],
     "papers": [
-      9,
+      8,
       12,
       17,
       16,
@@ -78,7 +78,7 @@
       14,
       8,
       14,
-      8,
+      7,
       10,
       18,
       16,
@@ -153,13 +153,13 @@
   "ranks": {
     "full": {
       "bins": [
-        15.86,
-        2.869,
-        3.359,
-        1.843,
-        1.124,
-        2.833,
-        2.113,
+        15.121,
+        2.783,
+        3.264,
+        1.844,
+        1.123,
+        3.013,
+        1.853,
         6,
         4,
         7
@@ -168,41 +168,41 @@
     },
     "window": {
       "bins": [
-        14.968,
-        2.892,
-        2.199,
-        1.941,
-        1.173,
-        2.49,
-        2.981,
-        3.25,
-        4.106,
+        14.361,
+        2.637,
+        2.215,
+        1.787,
+        1.446,
+        2.349,
+        3.115,
+        3.192,
+        3.898,
         5
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        25.176,
-        21.113,
-        28.041,
-        22.515,
-        25.266,
-        26.257,
-        32.881,
-        38.004,
-        31.609,
-        48.138
+        23.887,
+        21.151,
+        28.541,
+        21.91,
+        25.57,
+        26.504,
+        32.945,
+        37.065,
+        31.672,
+        47.756
       ],
       "top1": 3
     }
   },
   "full": {
-    "papers": 47,
+    "papers": 46,
     "outputBasis": "measured",
     "citations": 632,
     "top10": 7,
-    "top10ShareOfDivision": 0.00641,
+    "top10ShareOfDivision": 0.00645,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -222,19 +222,19 @@
       "citationBuckets": 7
     },
     "spread": {
-      "mean": 13.447,
-      "median": 6,
-      "uncited": 14,
+      "mean": 13.739,
+      "median": 6.5,
+      "uncited": 13,
       "i10": 21,
       "i100": 0
     }
   },
   "window": {
-    "papers": 41,
+    "papers": 40,
     "outputBasis": "measured",
     "citations": 579,
     "top10": 5,
-    "top10ShareOfDivision": 0.01036,
+    "top10ShareOfDivision": 0.01044,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -254,19 +254,19 @@
       "citationBuckets": 7
     },
     "spread": {
-      "mean": 14.122,
-      "median": 6,
-      "uncited": 13,
+      "mean": 14.475,
+      "median": 6.5,
+      "uncited": 12,
       "i10": 18,
       "i100": 0
     }
   },
   "lifetime": {
-    "papers": 299,
+    "papers": 297,
     "outputBasis": "measured",
     "citations": 14653,
-    "top10": 46.138,
-    "top10ShareOfDivision": 0.02928,
+    "top10": 45.756,
+    "top10ShareOfDivision": 0.02922,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -277,26 +277,26 @@
       "date": "1998-09-00"
     },
     "spread": {
-      "mean": 49.007,
+      "mean": 49.337,
       "median": 25,
-      "uncited": 21,
+      "uncited": 19,
       "i10": 215,
       "i100": 39
     }
   },
   "query": {
     "arms": "((=abs:\"Lunar Prospector\" OR (abs:LPNS AND abs:(lunar OR Moon OR neutron))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1998-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Prospector%22+OR+%28abs%3ALPNS+AND+abs%3A%28lunar+OR+Moon+OR+neutron%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:06:34.890576+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1998-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Prospector%22+OR+%28abs%3ALPNS+AND+abs%3A%28lunar+OR+Moon+OR+neutron%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:42:45.591287+00:00",
     "reconciliation": {
-      "adsReturned": 306,
-      "curatedOut": 7,
+      "adsReturned": 305,
+      "curatedOut": 8,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 299
+      "final": 297
     }
   },
   "curation": {
@@ -365,6 +365,14 @@
         "reason": "Simulation study for Chang'E-7's neutron spectrometer; cites Lunar Prospector only for comparison.",
         "authority": "agent",
         "date": "2026-09-08"
+      },
+      {
+        "bibcode": "1998Sci...281.1423.",
+        "doi": null,
+        "title": "PLANETARY SCIENCE:Lunar Prospector Probes Moon's Core Mysteries",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
       }
     ]
   },
@@ -551,6 +559,6 @@
     }
   ],
   "papersFile": {
-    "rows": 299
+    "rows": 297
   }
 }

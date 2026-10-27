@@ -23,12 +23,12 @@
     "m": 9.154,
     "i100": 647,
     "g": 494,
-    "tori": 1424.819,
-    "riq": 1451
+    "tori": 1476.433,
+    "riq": 1477
   },
   "facts": {
     "papers": 3297,
-    "citations": 342932,
+    "citations": 342928,
     "publicationYears": [
       2001,
       2026
@@ -108,22 +108,22 @@
       22256,
       18288,
       19529,
-      16090,
+      16087,
       16152,
       14504,
       13200,
       13311,
       12500,
-      12848,
-      13910,
+      12846,
+      13909,
       15326,
-      16071
+      16073
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 342932,
-      "observed": 342932,
+      "expected": 342928,
+      "observed": 342928,
       "missing": 0
     }
   },
@@ -144,46 +144,46 @@
   "ranks": {
     "full": {
       "bins": [
-        205.397,
-        198.725,
-        168.858,
-        144.534,
-        192.324,
-        199.969,
-        258.884,
-        247.185,
-        276.762,
-        404.361
+        205.616,
+        198.723,
+        168.963,
+        144.651,
+        192.572,
+        199.899,
+        258.611,
+        247.304,
+        276.972,
+        403.688
       ],
       "top1": 74
     },
     "window": {
       "bins": [
-        51.768,
-        45.482,
-        42.607,
-        27.595,
-        29.619,
-        54.428,
-        59.905,
-        67.965,
-        68.491,
-        125.141
+        51.786,
+        45.493,
+        42.611,
+        27.604,
+        29.588,
+        54.457,
+        59.907,
+        67.974,
+        68.477,
+        125.103
       ],
-      "top1": 23.29
+      "top1": 23.288
     },
     "lifetime": {
       "bins": [
-        203.196,
-        289.591,
-        289.764,
-        277.495,
-        277.549,
-        299.492,
-        329.209,
-        368.885,
-        408.133,
-        553.685
+        206.262,
+        289.621,
+        290.815,
+        275.746,
+        277.316,
+        299.695,
+        330.047,
+        367.016,
+        408.09,
+        552.392
       ],
       "top1": 87
     }
@@ -192,8 +192,8 @@
     "papers": 2297,
     "outputBasis": "measured",
     "citations": 95663,
-    "top10": 381.361,
-    "top10ShareOfDivision": 0.07666,
+    "top10": 380.688,
+    "top10ShareOfDivision": 0.07653,
     "top1": 66.833,
     "top1ShareOfDivision": 0.13435,
     "first": {
@@ -224,9 +224,9 @@
     "papers": 573,
     "outputBasis": "measured",
     "citations": 30314,
-    "top10": 121.141,
-    "top10ShareOfDivision": 0.06262,
-    "top1": 22.29,
+    "top10": 121.103,
+    "top10ShareOfDivision": 0.0626,
+    "top1": 22.288,
     "top1ShareOfDivision": 0.11522,
     "first": {
       "state": "reached",
@@ -255,9 +255,9 @@
   "lifetime": {
     "papers": 3297,
     "outputBasis": "measured",
-    "citations": 342932,
-    "top10": 513.851,
-    "top10ShareOfDivision": 0.08095,
+    "citations": 342928,
+    "top10": 512.559,
+    "top10ShareOfDivision": 0.08074,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -268,7 +268,7 @@
       "date": "2002-06-00"
     },
     "spread": {
-      "mean": 104.013,
+      "mean": 104.012,
       "median": 34,
       "uncited": 100,
       "i10": 2601,
@@ -277,9 +277,9 @@
   },
   "query": {
     "arms": "((=abs:\"Microwave Anisotropy Probe\" OR =title:\"Microwave Anisotropy Probe\" OR =abs:\"differencing assembly\" OR =abs:\"Pseudo-Correlation Radiometer\" OR ((abs:WMAP OR title:WMAP OR =abs:WMAP1 OR =abs:WMAP5 OR =abs:WMAP7 OR =abs:WMAP9 OR =title:WMAP1 OR =title:WMAP5 OR =title:WMAP7 OR =title:WMAP9) AND (=abs:\"WMAP satellite\" OR =abs:\"WMAP mission\" OR =abs:\"WMAP team\" OR =abs:\"WMAP instrument\" OR =abs:\"WMAP data\" OR =abs:\"WMAP observations\" OR =abs:\"cosmic microwave background\" OR abs:CMB OR =abs:cosmology OR =abs:cosmological OR =abs:anisotropy OR =abs:anisotropies OR =abs:\"power spectrum\" OR =abs:polarization OR =abs:polarisation OR =abs:foreground OR =abs:foregrounds OR =abs:inflation OR =abs:\"dark energy\" OR =abs:\"dark matter\" OR =abs:microwave OR =abs:sky OR =abs:map OR =abs:maps OR =abs:galactic OR =abs:emission OR =abs:universe OR =abs:haze OR =abs:reionization OR =abs:neutrino OR =abs:neutrinos OR =abs:baryon OR =abs:cosmic OR =abs:galaxies OR =abs:redshift))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2001-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Microwave+Anisotropy+Probe%22+OR+%3Dtitle%3A%22Microwave+Anisotropy+Probe%22+OR+%3Dabs%3A%22differencing+assembly%22+OR+%3Dabs%3A%22Pseudo-Correlation+Radiometer%22+OR+%28%28abs%3AWMAP+OR+title%3AWMAP+OR+%3Dabs%3AWMAP1+OR+%3Dabs%3AWMAP5+OR+%3Dabs%3AWMAP7+OR+%3Dabs%3AWMAP9+OR+%3Dtitle%3AWMAP1+OR+%3Dtitle%3AWMAP5+OR+%3Dtitle%3AWMAP7+OR+%3Dtitle%3AWMAP9%29+AND+%28%3Dabs%3A%22WMAP+satellite%22+OR+%3Dabs%3A%22WMAP+mission%22+OR+%3Dabs%3A%22WMAP+team%22+OR+%3Dabs%3A%22WMAP+instrument%22+OR+%3Dabs%3A%22WMAP+data%22+OR+%3Dabs%3A%22WMAP+observations%22+OR+%3Dabs%3A%22cosmic+microwave+background%22+OR+abs%3ACMB+OR+%3Dabs%3Acosmology+OR+%3Dabs%3Acosmological+OR+%3Dabs%3Aanisotropy+OR+%3Dabs%3Aanisotropies+OR+%3Dabs%3A%22power+spectrum%22+OR+%3Dabs%3Apolarization+OR+%3Dabs%3Apolarisation+OR+%3Dabs%3Aforeground+OR+%3Dabs%3Aforegrounds+OR+%3Dabs%3Ainflation+OR+%3Dabs%3A%22dark+energy%22+OR+%3Dabs%3A%22dark+matter%22+OR+%3Dabs%3Amicrowave+OR+%3Dabs%3Asky+OR+%3Dabs%3Amap+OR+%3Dabs%3Amaps+OR+%3Dabs%3Agalactic+OR+%3Dabs%3Aemission+OR+%3Dabs%3Auniverse+OR+%3Dabs%3Ahaze+OR+%3Dabs%3Areionization+OR+%3Dabs%3Aneutrino+OR+%3Dabs%3Aneutrinos+OR+%3Dabs%3Abaryon+OR+%3Dabs%3Acosmic+OR+%3Dabs%3Agalaxies+OR+%3Dabs%3Aredshift%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2001-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T02:26:10.516033+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2001-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Microwave+Anisotropy+Probe%22+OR+%3Dtitle%3A%22Microwave+Anisotropy+Probe%22+OR+%3Dabs%3A%22differencing+assembly%22+OR+%3Dabs%3A%22Pseudo-Correlation+Radiometer%22+OR+%28%28abs%3AWMAP+OR+title%3AWMAP+OR+%3Dabs%3AWMAP1+OR+%3Dabs%3AWMAP5+OR+%3Dabs%3AWMAP7+OR+%3Dabs%3AWMAP9+OR+%3Dtitle%3AWMAP1+OR+%3Dtitle%3AWMAP5+OR+%3Dtitle%3AWMAP7+OR+%3Dtitle%3AWMAP9%29+AND+%28%3Dabs%3A%22WMAP+satellite%22+OR+%3Dabs%3A%22WMAP+mission%22+OR+%3Dabs%3A%22WMAP+team%22+OR+%3Dabs%3A%22WMAP+instrument%22+OR+%3Dabs%3A%22WMAP+data%22+OR+%3Dabs%3A%22WMAP+observations%22+OR+%3Dabs%3A%22cosmic+microwave+background%22+OR+abs%3ACMB+OR+%3Dabs%3Acosmology+OR+%3Dabs%3Acosmological+OR+%3Dabs%3Aanisotropy+OR+%3Dabs%3Aanisotropies+OR+%3Dabs%3A%22power+spectrum%22+OR+%3Dabs%3Apolarization+OR+%3Dabs%3Apolarisation+OR+%3Dabs%3Aforeground+OR+%3Dabs%3Aforegrounds+OR+%3Dabs%3Ainflation+OR+%3Dabs%3A%22dark+energy%22+OR+%3Dabs%3A%22dark+matter%22+OR+%3Dabs%3Amicrowave+OR+%3Dabs%3Asky+OR+%3Dabs%3Amap+OR+%3Dabs%3Amaps+OR+%3Dabs%3Agalactic+OR+%3Dabs%3Aemission+OR+%3Dabs%3Auniverse+OR+%3Dabs%3Ahaze+OR+%3Dabs%3Areionization+OR+%3Dabs%3Aneutrino+OR+%3Dabs%3Aneutrinos+OR+%3Dabs%3Abaryon+OR+%3Dabs%3Acosmic+OR+%3Dabs%3Agalaxies+OR+%3Dabs%3Aredshift%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2001-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:14:35.386479+00:00",
     "reconciliation": {
       "adsReturned": 3299,
       "curatedOut": 0,

@@ -62,8 +62,8 @@ const x = scaleLog().domain([5, 20000]).range([105, 867]);
 const years = scaleLinear().domain([1980, 2021]).range([64, 828]);
 const skyline = {
 	columns: [
-		{ id: 'hubble', name: 'Hubble', x: 300, y: 80, w: 2, h: 400, papers: 16885, cited: 1164186, hc: 400 },
-		{ id: 'cubesat', name: 'CubeSat', x: 800, y: 470, w: 2, h: 10, papers: 12, cited: 40, hc: 2 }
+		{ id: 'hubble', name: 'Hubble', x: 300, y: 80, w: 2, h: 400, papers: 16885, cited: 1164186 },
+		{ id: 'cubesat', name: 'CubeSat', x: 800, y: 470, w: 2, h: 10, papers: 12, cited: 40 }
 	],
 	ground: 480,
 	top: 28,
@@ -71,7 +71,8 @@ const skyline = {
 	right: 828,
 	x: years,
 	lineH: 15,
-	zoom: 0.12
+	room: 400,
+	most: 16885
 };
 
 test('Skyline prerenders the columns, the year ticks and the running total, and no names', async () => {
@@ -94,15 +95,22 @@ test('Skyline names and lights only the highlighted column', async () => {
 	clean(body);
 });
 
-test('Skyline at its citation step: papers zoomed onto the citation scale, citations behind them', async () => {
+test('Skyline at its citation step: citations to the top of the chart, the papers shrunk under them', async () => {
 	const Component = await load('Skyline.svelte');
-	const { body } = render(Component, { props: { layout: skyline, total: 146165, cited: 6079430, rise: 1, zoom: 1, cite: 1, highlight: 'hubble', ...stage } });
+	const { body } = render(Component, { props: { layout: skyline, total: 146165, cited: 6079430, rise: 1, cite: 1, highlight: 'hubble', ...stage } });
 	assert.ok(body.includes('>6,079,430<'), 'the citation total once risen');
 	assert.ok(body.includes('citations of 146,165 publications'));
 	assert.equal((body.match(/<rect /g) ?? []).length, 4, 'a citation and a paper column per mission');
-	assert.match(body, /scaleY\(0\.12\)/, 'papers on the citation scale');
+	assert.equal((body.match(/height="400"/g) ?? []).length, 1, "only Hubble's citations fill the chart; its papers have shrunk");
 	assert.ok(body.includes('Hubble 1,164,186'), 'named with its citations');
 	assert.equal((body.match(/class="[^"]*\bhot\b/g) ?? []).length, 1, 'one column in flame');
+	clean(body);
+});
+
+test('Skyline midway: the count grows out of the publication total toward the citations', async () => {
+	const { body } = render(await load('Skyline.svelte'), { props: { layout: skyline, total: 146165, cited: 6079430, rise: 1, cite: 0.5, ...stage } });
+	const n = Number(body.match(/class="n[^"]*">([\d,]+)</)[1].replaceAll(',', ''));
+	assert.ok(n > 146165 && n < 6079430, `${n} lies between the two totals`);
 	clean(body);
 });
 

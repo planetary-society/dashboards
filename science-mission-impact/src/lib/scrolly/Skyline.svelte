@@ -2,40 +2,43 @@
 	// The corpus as a skyline: one Neptune column per mission rising from the ground line the
 	// rug hangs from, height ∝ √papers, and a running total that counts up as the columns rise.
 	// No names until the reader points: the highlighted column turns Rocket Flame and is named.
-	// The citation step zooms out: the paper columns sink onto the citation scale (`zoom`), then
-	// each mission's citations rise behind its papers (`cite`), both √ so the two read together.
+	// The citation step zooms out in one move (skylineZoom): each mission's citations grow out of
+	// its paper column while the √ scale widens to hold the tallest, shrinking the papers under them.
 	import { int } from '$lib/format.js';
-	import { columnLabel } from './layouts.js';
+	import { columnLabel, skylineZoom } from './layouts.js';
 
 	/**
 	 * layout: skylineLayout() result. total: distinct papers. cited: their citations. rise: 0..1
-	 * column growth. zoom: 0..1 from the paper scale to the citation scale. cite: 0..1 citation
-	 * growth. highlight: mission id.
+	 * column growth. cite: 0..1 from the paper skyline to citations on one scale. highlight: mission id.
 	 */
-	let { layout, total, cited = 0, rise = 1, zoom = 0, cite = 0, visible = false, compact = false, highlight = null, width, height } = $props();
+	let { layout, total, cited = 0, rise = 1, cite = 0, visible = false, compact = false, highlight = null, width, height } = $props();
 
 	const ticks = $derived(layout.x.ticks(compact ? 4 : 8));
 	const hot = $derived(layout.columns.find((c) => c.id === highlight) ?? null);
-	const papersK = $derived(rise * (1 + (layout.zoom - 1) * zoom));
+	const zoomed = $derived(cite > 0 ? skylineZoom(layout, cite) : null);
+	const hp = (c) => (zoomed ? zoomed.get(c.id).hp : c.h);
+	const hc = (c) => (zoomed ? zoomed.get(c.id).hc : 0);
 	const label = $derived(
-		hot && columnLabel(`${hot.name} ${int(cite > 0 ? hot.cited : hot.papers)}`, hot, { left: layout.left, right: layout.right, y: layout.ground - Math.max(hot.h * papersK, hot.hc * cite) - 4, compact })
+		hot && columnLabel(`${hot.name} ${int(cite > 0 ? hot.cited : hot.papers)}`, hot, { left: layout.left, right: layout.right, y: layout.ground - Math.max(hp(hot), hc(hot)) * rise - 4, compact })
 	);
 </script>
 
 <div class="skyline" class:visible class:compact aria-hidden="true">
 	<svg {width} {height}>
 		<line class="ground" x1={layout.left} x2={layout.right} y1={layout.ground + 0.5} y2={layout.ground + 0.5} />
-		{#if cite > 0}
-			<g class="cited" style:transform="scaleY({cite})" style:transform-origin="0 {layout.ground}px">
+		<g style:transform="scaleY({rise})" style:transform-origin="0 {layout.ground}px">
+			{#if zoomed}
+				<g class="cited">
+					{#each layout.columns as c (c.id)}
+						<rect class:hot={c.id === highlight} x={c.x} y={layout.ground - hc(c)} width={c.w} height={hc(c)} />
+					{/each}
+				</g>
+			{/if}
+			<g class="columns">
 				{#each layout.columns as c (c.id)}
-					<rect class:hot={c.id === highlight} x={c.x} y={layout.ground - c.hc} width={c.w} height={c.hc} />
+					<rect class:hot={c.id === highlight && !zoomed} x={c.x} y={layout.ground - hp(c)} width={c.w} height={hp(c)} />
 				{/each}
 			</g>
-		{/if}
-		<g class="columns" style:transform="scaleY({papersK})" style:transform-origin="0 {layout.ground}px">
-			{#each layout.columns as c (c.id)}
-				<rect class:hot={c.id === highlight && cite === 0} x={c.x} y={c.y} width={c.w} height={c.h} />
-			{/each}
 		</g>
 		{#if label && rise > 0.9}<text class="label" x={label.x} y={label.y} text-anchor={label.anchor}>{label.text}</text>{/if}
 		{#each ticks as t (t)}
@@ -44,7 +47,8 @@
 	</svg>
 	<p class="count" style:right="{width - layout.right}px" style:top="{layout.top}px">
 		{#if cite > 0}
-			<span class="n">{int(cite * cited)}</span>
+			<!-- grows with the columns, out of the publication total -->
+			<span class="n">{int(total ** (1 - cite) * cited ** cite)}</span>
 			<span>citations of {int(total)} publications</span>
 		{:else}
 			<span class="n">{int(rise * total)}</span>

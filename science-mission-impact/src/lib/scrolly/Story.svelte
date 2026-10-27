@@ -156,10 +156,11 @@
 	const scrub = $derived(reduced ? 1 : Math.min(1, progress * 2.4));
 	// the title and the motivation photo stand alone; the squares arrive one by one with the overview, then stay
 	const shown = $derived(index <= MOTIVATION ? 0 : index === OVERVIEW ? Math.ceil(scrub * tiles.length) : tiles.length);
-	// the skyline holds two steps: papers rise, then the chart zooms out and their citations rise
+	// the skyline holds two steps: papers rise, then citations grow out of them as the chart zooms
+	// out, in one move that eases in and out
 	const skyline = $derived(index === CORPUS || index === CITED);
-	const zoom = $derived(index === CITED ? span(0.1, 0.35) : index > CITED ? 1 : 0);
-	const cite = $derived(index === CITED ? span(0.3, 0.65) : index > CITED ? 1 : 0);
+	const ease = (t) => t * t * (3 - 2 * t);
+	const cite = $derived(index === CITED ? ease(span(0.1, 0.65)) : index > CITED ? 1 : 0);
 	const primed = $derived(index === PAPERS || index === TOP);
 	const parted = $derived(index === SPLIT || index === FAILURE);
 	const focused = $derived(index === ONE || index === BARS || index === RUNNING);
@@ -233,7 +234,7 @@
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div class="stage" class:skimming={skyline || primed} bind:clientWidth={W} bind:clientHeight={H} onpointerdown={skim} onpointermove={skim} onpointerleave={unskim} onclickcapture={holdClick}>
 				{#if rug && cost && split}
-					<Skyline layout={sky} total={site.papersDistinct} cited={site.citationsDistinct} rise={index === CORPUS ? scrub : index > CORPUS ? 1 : 0} {zoom} {cite} visible={skyline} highlight={hot} {compact} width={W} height={H} />
+					<Skyline layout={sky} total={site.papersDistinct} cited={site.citationsDistinct} rise={index === CORPUS ? scrub : index > CORPUS ? 1 : 0} {cite} visible={skyline} highlight={hot} {compact} width={W} height={H} />
 					{#if primerL}
 						<Primer layout={primerL} {primer} hot={hotBar} years={site.fullPolicy.citationYears + 1} build={index === PAPERS ? span(0.15, 0.5) : index > PAPERS ? 1 : 0} highlight={index === TOP} visible={primed} {compact} width={W} height={H} />
 					{/if}
@@ -316,7 +317,7 @@
 			<p>We found <strong>{int(site.papersDistinct)} peer-reviewed papers</strong> associated with these missions over their active lifetimes.</p>
 			<p>A peer-reviewed paper is a proxy for <strong>scientific productivity</strong>.</p>
 		</div></section>
-		<!-- CITED: the same skyline zooms out, and each mission's citations rise behind its papers -->
+		<!-- CITED: the same skyline zooms out as each mission's citations grow out of its papers -->
 		<section data-step data-scrub><div class="step">
 			<p>Other scientists build on those papers. When one paper references another, it <strong>cites</strong> it.</p>
 			<p>Together, these papers have been cited <strong>{int(site.citationsDistinct)} times</strong>. Citations are a measure of <strong>scientific impact</strong>.</p>

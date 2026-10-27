@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { costLayout, costCurve, rugLayout, skylineLayout, skylineHit, primerLayout, columnLabel, splitLayout, focusLayout, kindsLayout, exampleLayout } from './layouts.js';
+import { costLayout, costCurve, rugLayout, skylineLayout, skylineZoom, skylineHit, primerLayout, columnLabel, splitLayout, focusLayout, kindsLayout, exampleLayout } from './layouts.js';
 
 const load = async (name) => JSON.parse(await readFile(new URL(`../data/generated/${name}.json`, import.meta.url), 'utf8'));
 const site = await load('site');
@@ -112,14 +112,25 @@ test('skyline columns rise from the ground inside their year, with headroom for 
 	}
 });
 
-test('the citation skyline fills the same headroom, and zoom puts the papers on its scale', () => {
+test('the zoom to citations is one move: citations grow out of the papers as the scale draws out, no dip', () => {
 	const rug = rugLayout(tiles, 900, 640, site.launchYears);
 	const sky = skylineLayout(tiles, rug, { papers: papersOf });
-	const room = sky.ground - (sky.top + 2 * sky.lineH);
-	assert.ok(Math.abs(Math.max(...sky.columns.map((c) => c.hc)) - room) < 1e-9, 'the most cited column is full height');
-	assert.ok(sky.zoom > 0 && sky.zoom < 1, 'papers are fewer than citations');
-	// on one √ scale, a column's height ratio is the square root of its count ratio
-	for (const c of sky.columns.filter((d) => d.cited > 0 && d.h > 1)) assert.ok(Math.abs((c.h * sky.zoom) / c.hc - Math.sqrt(c.papers / c.cited)) < 1e-9, c.id);
+	const steps = Array.from({ length: 21 }, (_, i) => skylineZoom(sky, i / 20));
+	const start = steps[0];
+	for (const c of sky.columns) assert.ok(Math.abs(start.get(c.id).hp - c.h) < 1e-9, `${c.id}: starts as the paper skyline`);
+	steps.forEach((z, i) => {
+		const tallest = Math.max(...sky.columns.map((c) => Math.max(z.get(c.id).hp, z.get(c.id).hc)));
+		assert.ok(Math.abs(tallest - sky.room) < 1e-9, `step ${i}: the tallest column holds the top of the chart`);
+		if (i === 0) return;
+		for (const c of sky.columns) {
+			const now = z.get(c.id), before = steps[i - 1].get(c.id);
+			assert.ok(now.hp <= before.hp + 1e-9, `step ${i}: ${c.id}'s papers only shrink`);
+			if (c.cited >= c.papers) assert.ok(now.hc >= now.hp - 1e-9 || now.hp === 1, `step ${i}: ${c.id}'s citations stand on its papers`);
+		}
+	});
+	// at the end, one √ scale: a column's height ratio is the square root of its count ratio
+	const end = steps.at(-1);
+	for (const c of sky.columns.filter((d) => d.cited > 0 && end.get(d.id).hp > 1)) assert.ok(Math.abs(end.get(c.id).hp / end.get(c.id).hc - Math.sqrt(c.papers / c.cited)) < 1e-9, c.id);
 });
 
 test('the primer: a log-scale bar per count with papers, each found under a pointer', () => {

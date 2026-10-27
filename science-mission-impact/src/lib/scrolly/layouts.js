@@ -68,8 +68,7 @@ export function rugLayout(tiles, W, H, yearDomain) {
  * The skyline over the hanging rug: one column per mission with papers, rising from the ground
  * inside its year's footprint, height ∝ √papers, with two lines of headroom for the hover label.
  * No names by default; the reader skims the columns or the squares to light one up.
- * Each column also has `hc`, its citations at full height, and `zoom` scales the paper heights
- * onto that citation scale (both √, so one factor does it).
+ * Each column carries its citations too, for skylineZoom; `room` is the height the tallest fills.
  * papers, cited: (tile) => count.
  */
 export function skylineLayout(tiles, rug, { papers = (t) => t.papersLifetime, cited = (t) => t.citationsLifetime ?? 0, compact = false } = {}) {
@@ -78,9 +77,8 @@ export function skylineLayout(tiles, rug, { papers = (t) => t.papersLifetime, ci
 	const { left, right, top, bottom: ground } = rug.chart;
 	const withPapers = tiles.filter((t) => rug.pos.has(t.id) && papers(t) > 0);
 	const most = Math.max(1, ...withPapers.map(papers));
-	const mostCited = Math.max(most, ...withPapers.map(cited));
-	const y = scaleSqrt().domain([0, most]).range([0, ground - (top + 2 * lineH)]);
-	const yc = y.copy().domain([0, mostCited]);
+	const room = ground - (top + 2 * lineH);
+	const y = scaleSqrt().domain([0, most]).range([0, room]);
 
 	const byYear = new Map();
 	for (const t of withPapers) byYear.set(t.launchYear, [...(byYear.get(t.launchYear) ?? []), t]);
@@ -91,10 +89,24 @@ export function skylineLayout(tiles, rug, { papers = (t) => t.papersLifetime, ci
 		group.forEach((t, i) => {
 			const cx = rug.x(year) + (i - (k - 1) / 2) * pitch;
 			const h = Math.max(1, y(papers(t)));
-			columns.push({ id: t.id, name: t.name, x: cx - w / 2, y: ground - h, w, h, papers: papers(t), cited: cited(t), hc: yc(cited(t)) });
+			columns.push({ id: t.id, name: t.name, x: cx - w / 2, y: ground - h, w, h, papers: papers(t), cited: cited(t) });
 		});
 	}
-	return { columns, ground, top, left, right, x: rug.x, lineH, reach: rug.s, zoom: Math.sqrt(most / mostCited) };
+	return { columns, ground, top, left, right, x: rug.x, lineH, reach: rug.s, room, most };
+}
+
+/**
+ * The skyline zooming out from papers to citations, one move: at `p` (0..1) each column's count
+ * has grown from its papers toward its citations (geometrically, so the zoom runs at a steady
+ * rate), the √ scale has widened to keep the tallest column at the top of the chart, and the
+ * papers shrink on that same scale. The citations grow out of the paper columns while the scale
+ * draws out, with no dip between the two. p = 0 is the paper skyline; p = 1 is every citation to
+ * date on one √ scale with the papers. Returns each column's paper and citation heights by id.
+ */
+export function skylineZoom(sky, p) {
+	const grown = (c) => c.papers ** (1 - p) * c.cited ** p;
+	const k = sky.room / Math.sqrt(Math.max(sky.most, ...sky.columns.map(grown)));
+	return new Map(sky.columns.map((c) => [c.id, { hp: Math.max(1, k * Math.sqrt(c.papers)), hc: k * Math.sqrt(grown(c)) }]));
 }
 
 /**

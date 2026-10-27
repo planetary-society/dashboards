@@ -23,12 +23,12 @@
     "m": 0.429,
     "i100": 0,
     "g": 3,
-    "tori": 0.056,
-    "riq": 118
+    "tori": 0.079,
+    "riq": 140
   },
   "facts": {
     "papers": 3,
-    "citations": 43,
+    "citations": 46,
     "publicationYears": [
       2020,
       2021
@@ -60,62 +60,15 @@
       2,
       8,
       9,
-      6
+      9
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 43,
-      "observed": 43,
+      "expected": 46,
+      "observed": 46,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "2017-12-01",
-    "end": "2020-03-01",
-    "matureDate": "2023-10-01",
-    "status": "available",
-    "months": 27,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "citationsByYearOffset": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
   },
   "mostCited": {
     "bibcode": "2020AJ....160...23K",
@@ -129,18 +82,18 @@
     ],
     "authorCount": 22,
     "year": 2020,
-    "citations": 30
+    "citations": 32
   },
   "ranks": {
     "full": {
       "bins": [
-        0.36,
-        0.64,
+        0.363,
+        0.637,
         1,
         0,
         0,
-        0.059,
-        0.941,
+        0.089,
+        0.911,
         0,
         0,
         0
@@ -166,8 +119,8 @@
       "bins": [
         0,
         1,
-        1,
-        0,
+        0.444,
+        0.556,
         0,
         1,
         0,
@@ -245,7 +198,7 @@
   "lifetime": {
     "papers": 3,
     "outputBasis": "measured",
-    "citations": 43,
+    "citations": 46,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": null,
@@ -258,8 +211,8 @@
       "date": null
     },
     "spread": {
-      "mean": 14.333,
-      "median": 10,
+      "mean": 15.333,
+      "median": 11,
       "uncited": 0,
       "i10": 2,
       "i100": 0
@@ -269,7 +222,7 @@
     "arms": "((=abs:\"Arcsecond Space Telescope Enabling Research in Astrophysics\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2017-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Arcsecond+Space+Telescope+Enabling+Research+in+Astrophysics%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2017-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:19:09.285501+00:00",
+    "fetchedAt": "2026-10-27T02:29:44.653492+00:00",
     "reconciliation": {
       "adsReturned": 3,
       "curatedOut": 0,
@@ -325,7 +278,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 30
+      "citations": 32
     },
     {
       "bibcode": "2021AJ....161..117S",
@@ -334,7 +287,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 10
+      "citations": 11
     },
     {
       "bibcode": "2021AJ....161..275K",

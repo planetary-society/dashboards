@@ -98,8 +98,55 @@ export function skylineLayout(tiles, rug, { papers = (t) => t.papersLifetime, ci
 }
 
 /**
- * The column under a pointer skimming the skyline: the nearest by x, within one year's footprint,
- * anywhere between the top of the chart and the ground. Null off the chart or in an empty year.
+ * The citation primer: one bar per citation count, from none to the most cited paper, with papers
+ * on a log scale (gridlines at each power of ten) rising from half a paper so a lone paper still
+ * stands. `columns` are the bars with papers, in the skyline's shape, so skylineHit and columnLabel
+ * work on them too; a bar's `t` is its top-10% part, which reaches the level of its own count.
+ * `cut` is where the top 10% begins: the first bar that is mostly in.
+ */
+export function primerLayout(primer, W, H, { compact = false } = {}) {
+	const m = { l: compact ? 36 : 56, r: compact ? 6 : 16, t: compact ? 30 : 44, b: compact ? 42 : 52 };
+	const cap = primer.counts.length;
+	const x = scaleLinear().domain([0, cap]).range([m.l, W - m.r]);
+	const decades = Math.max(1, Math.ceil(Math.log10(Math.max(...primer.counts))));
+	const y = scaleLog().domain([0.5, 10 ** decades]).range([H - m.b, m.t]);
+	const ground = H - m.b;
+	const pitch = x(1) - x(0);
+	const w = Math.max(1, pitch - (pitch >= 3 ? 1 : 0));
+	const rise = (n) => Math.max(0, ground - y(Math.max(n, 0.5)));
+	const columns = [];
+	primer.counts.forEach((n, c) => {
+		const top = primer.top[c];
+		if (n > 0) columns.push({ id: c, x: x(c), w, h: rise(n), t: top >= n ? rise(n) : rise(top), papers: n, top });
+	});
+	const edge = columns.find((c) => c.top / c.papers >= 0.5)?.id ?? cap - 1;
+	return {
+		columns,
+		cap,
+		ground,
+		top: m.t,
+		left: m.l,
+		right: W - m.r,
+		cut: x(edge),
+		yTicks: Array.from({ length: decades + 1 }, (_, k) => ({ v: 10 ** k, y: y(10 ** k) })),
+		xTicks: x.ticks(compact ? 4 : 6).filter((c) => Number.isInteger(c) && c < cap).map((c) => ({ v: c, x: x(c) + w / 2 })),
+		// bars are a few pixels wide, so a pointer reaches a little past its own bar
+		reach: Math.max(pitch, compact ? 8 : 4)
+	};
+}
+
+/** A hover label over a column: centred on it unless that would run it off either end of the chart (width estimated per character). */
+export function columnLabel(text, column, { left, right, y, compact = false }) {
+	const cx = column.x + column.w / 2;
+	const half = ((text.length + 1) * (compact ? 6 : 7)) / 2;
+	const anchor = cx - half < left ? 'start' : cx + half > right ? 'end' : 'middle';
+	return { text, x: anchor === 'start' ? column.x : anchor === 'end' ? column.x + column.w : cx, y, anchor };
+}
+
+/**
+ * The column under a pointer skimming the skyline (or the primer's bars): the nearest by x, within
+ * `reach` (one year's footprint on the skyline), anywhere between the top of the chart and the
+ * ground. Null off the chart or where no column is in reach.
  */
 export function skylineHit(sky, px, py) {
 	if (py < sky.top || py > sky.ground) return null;

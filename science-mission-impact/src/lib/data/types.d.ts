@@ -161,11 +161,11 @@ export interface StoryFacts {
 	focusDivision: DivisionSlug | null;
 	/**
 	 * The story's primer on the focus division: its distinct papers in the scope by citation count
-	 * (`counts[c]` drew exactly c; `overflow` drew counts.length or more), the era-adjusted top-10%
-	 * papers among each (`top`, `topOverflow`; `topPapers` their sum) and the pooled top-10% cutoff
+	 * (`counts[c]` drew exactly c, up to the most cited paper), the era-adjusted top-10%
+	 * papers among each (`top`; `topPapers` their sum) and the pooled top-10% cutoff
 	 * over every era (`cutoff`). Null without a focus division.
 	 */
-	primer: { division: DivisionSlug; name: string; counts: number[]; overflow: number; top: number[]; topOverflow: number; papers: number; cutoff: number; topPapers: number } | null;
+	primer: { division: DivisionSlug; name: string; counts: number[]; top: number[]; papers: number; cutoff: number; topPapers: number } | null;
 	/** Citations per $100M either side of the threshold, one row per rankable division. */
 	perDollar: {
 		division: DivisionSlug; name: string;
@@ -271,8 +271,6 @@ export interface Division {
 	facts: { missions: number; papers: number; citations: number; publicationYears: [number, number] };
 	rankable: boolean;
 	lifetimeSeries: LifetimeSeries;
-	/** The prime-phase windows combined; the full-mission scope has no month-by-month companion. */
-	windowSeries: WindowSeries & { missionsIncluded: number; missionsImmature: string[] };
 	mostCited: PaperRef | null;
 	/** The ten most cited papers per scope, each paper once (windows count in-window citations). missions: ids sharing it, highest count first. */
 	topPapers: Record<Scope, (Omit<PaperRef, 'missionId'> & { missions: string[] })[]>;
@@ -280,7 +278,7 @@ export interface Division {
 	stats: Record<Scope, DivisionScopeStats | null>;
 	/** null when the division is not rankable. lifetime[1] is always null (top 1% needs a window). */
 	/** The full-mission papers by citation count, as StoryFacts.primer publishes them for the focus division. */
-	citationHistogram: { full: { counts: number[]; overflow: number; top: number[]; topOverflow: number; papers: number } };
+	citationHistogram: { full: { counts: number[]; top: number[]; papers: number } };
 	costCurves: { full: { 10: CostCurve; 1: CostCurve }; window: { 10: CostCurve; 1: CostCurve }; lifetime: { 10: CostCurve; 1: null } } | null;
 	/** Spearman rank correlation of each index with adjusted cost, over non-failed missions with a cost. */
 	indexCorrelation: { m: { rho: number | null; n: number }; h: { rho: number | null; n: number } };
@@ -319,15 +317,6 @@ export interface LifetimeSeries {
 	partialFromYear: number | null; // first incomplete year (the as-of year)
 }
 
-export interface WindowSeries extends Partial<WindowBounds> {
-	/** Monthly buckets from each actual publication-window opening, variable length. */
-	papersByMonth: number[];
-	/** Citing calendar-year offset from the publication-window opening year. */
-	citationsByYearOffset: number[];
-	outputBasis?: string;
-	/** Division only: measured mission windows covering any part of each elapsed publication year. */
-	missionsByYear?: number[];
-}
 
 export interface MissionRow {
 	id: string;
@@ -407,7 +396,6 @@ export interface Mission {
 	indices: MissionIndices;
 	facts: { papers: number | null; citations: number | null; publicationYears: [number, number] | null };
 	lifetimeSeries: LifetimeSeries | null;
-	windowSeries: (WindowSeries & { status: string }) | null;
 	mostCited: PaperRef | null;
 	/**
 	 * Papers by citation rank among all of the division's mission papers, in ten equal bins,

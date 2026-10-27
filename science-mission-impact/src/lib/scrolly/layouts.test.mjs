@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { costLayout, costCurve, rugLayout, skylineLayout, skylineHit, splitLayout, focusLayout, kindsLayout, exampleLayout } from './layouts.js';
+import { costLayout, costCurve, rugLayout, skylineLayout, skylineHit, primerLayout, columnLabel, splitLayout, focusLayout, kindsLayout, exampleLayout } from './layouts.js';
 
 const load = async (name) => JSON.parse(await readFile(new URL(`../data/generated/${name}.json`, import.meta.url), 'utf8'));
 const site = await load('site');
@@ -120,6 +120,29 @@ test('the citation skyline fills the same headroom, and zoom puts the papers on 
 	assert.ok(sky.zoom > 0 && sky.zoom < 1, 'papers are fewer than citations');
 	// on one √ scale, a column's height ratio is the square root of its count ratio
 	for (const c of sky.columns.filter((d) => d.cited > 0 && d.h > 1)) assert.ok(Math.abs((c.h * sky.zoom) / c.hc - Math.sqrt(c.papers / c.cited)) < 1e-9, c.id);
+});
+
+test('the primer: a log-scale bar per count with papers, each found under a pointer', () => {
+	const primer = site.story.primer;
+	for (const [W, H] of stages) {
+		const p = primerLayout(primer, W, H, { compact: W < 600 });
+		assert.deepEqual(p.columns.map((c) => c.id), primer.counts.flatMap((n, c) => (n > 0 ? [c] : [])), `${W}px: a bar for every count some paper drew`);
+		const byPapers = [...p.columns].sort((a, b) => a.papers - b.papers);
+		assert.ok(byPapers[0].h > 0, `${W}px: a lone paper still stands`);
+		for (let i = 1; i < byPapers.length; i++) assert.ok(byPapers[i].h >= byPapers[i - 1].h, `${W}px: more papers, no shorter`);
+		for (const c of p.columns) {
+			assert.ok(c.t <= c.h + 1e-9 && c.x + c.w <= p.right + 1e-9 && p.ground - c.h >= p.top - 1e-9, `${W}px: ${c.id} inside the chart`);
+			assert.equal(skylineHit(p, c.x + c.w / 2, p.ground - 1), c.id, `${W}px: the bar under the pointer`);
+		}
+		assert.deepEqual(p.yTicks.map((t) => t.v), [1, 10, 100, 1000], `${W}px: a gridline per power of ten`);
+	}
+});
+
+test('a column label stays inside the chart at either end', () => {
+	const bounds = { left: 50, right: 450, y: 10 };
+	assert.equal(columnLabel('Mid', { x: 250, w: 2 }, bounds).anchor, 'middle');
+	assert.deepEqual(columnLabel('A long name 1,234', { x: 52, w: 2 }, bounds), { text: 'A long name 1,234', x: 52, y: 10, anchor: 'start' });
+	assert.deepEqual(columnLabel('A long name 1,234', { x: 446, w: 2 }, bounds), { text: 'A long name 1,234', x: 448, y: 10, anchor: 'end' });
 });
 
 test('skimming the skyline picks the nearest column, and nothing off the chart', () => {

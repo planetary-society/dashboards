@@ -195,17 +195,17 @@ describe('dashboard compatibility preflight', () => {
 		assert.equal(mission(f.runs[1].id).meta.dates.missionEnd, null);
 	});
 
-	it('preflight reports inconsistent mission window totals across divisions together', () => {
+	it('preflight reports inconsistent mission totals across divisions together', () => {
 		const f = fixture();
 		for (const run of f.runs.slice(0, 2)) {
-			run.stats.missions[0].window_citations = 1;
+			run.stats.missions[0].lifetime_papers = 1;
 			f.write(run.statsPath, run.stats);
 		}
-		const out = path.join(root, 'bad-window-output');
+		const out = path.join(root, 'bad-totals-output');
 		const result = spawnSync(process.execPath, [packager(f), f.rawDir, '--check', '--out', out], { encoding: 'utf8' });
 		assert.equal(result.status, 1);
-		assert.match(result.stderr, /fixture_astro: window timeline has 0 citations, statistics report 1/);
-		assert.match(result.stderr, /fixture_bps: window timeline has 0 citations, statistics report 1/);
+		assert.match(result.stderr, /astrophysics: mission "fixture_astro" .*: papers\.json holds 0 rows but lifetime_papers is 1/);
+		assert.match(result.stderr, /biological-physical: mission "fixture_bps" .*: papers\.json holds 0 rows but lifetime_papers is 1/);
 		assert.equal(fs.existsSync(out), false);
 	});
 

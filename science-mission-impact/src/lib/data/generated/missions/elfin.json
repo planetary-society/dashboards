@@ -23,12 +23,12 @@
     "m": 2.714,
     "i100": 1,
     "g": 31,
-    "tori": 1.161,
-    "riq": 153
+    "tori": 1.366,
+    "riq": 166
   },
   "facts": {
     "papers": 70,
-    "citations": 1106,
+    "citations": 1115,
     "publicationYears": [
       2020,
       2026
@@ -60,76 +60,15 @@
       114,
       301,
       402,
-      230
+      239
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 1106,
-      "observed": 1106,
+      "expected": 1115,
+      "observed": 1115,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "2018-10-01",
-    "end": "2022-02-01",
-    "matureDate": "2025-10-01",
-    "status": "available",
-    "months": 40,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      2,
-      0,
-      0
-    ],
-    "citationsByYearOffset": [
-      0,
-      0,
-      0,
-      5,
-      38,
-      38,
-      28,
-      0
-    ]
   },
   "mostCited": {
     "bibcode": "2020SSRv..216..103A",
@@ -143,23 +82,23 @@
     ],
     "authorCount": 82,
     "year": 2020,
-    "citations": 119
+    "citations": 120
   },
   "ranks": {
     "full": {
       "bins": [
         0,
         0,
-        0.577,
-        1.423,
+        0.579,
+        1.421,
         0,
         1,
-        3.421,
-        1.57,
-        2.951,
-        12.059
+        2.854,
+        2.146,
+        2.948,
+        12.052
       ],
-      "top1": 0
+      "top1": 0.574
     },
     "window": {
       "bins": [
@@ -178,11 +117,11 @@
     },
     "lifetime": {
       "bins": [
-        9.505,
-        9.198,
-        14.862,
-        6.83,
-        5.605,
+        8.563,
+        9.296,
+        15.748,
+        6.819,
+        5.574,
         7,
         5,
         4,
@@ -195,11 +134,11 @@
   "full": {
     "papers": 23,
     "outputBasis": "measured",
-    "citations": 658,
-    "top10": 10.892,
-    "top10ShareOfDivision": 0.00756,
-    "top1": 0,
-    "top1ShareOfDivision": 0,
+    "citations": 661,
+    "top10": 10.885,
+    "top10ShareOfDivision": 0.00755,
+    "top1": 0.574,
+    "top1ShareOfDivision": 0.00398,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.793,
@@ -217,7 +156,7 @@
       "citationBuckets": 9
     },
     "spread": {
-      "mean": 28.609,
+      "mean": 28.739,
       "median": 26,
       "uncited": 0,
       "i10": 20,
@@ -259,7 +198,7 @@
   "lifetime": {
     "papers": 70,
     "outputBasis": "measured",
-    "citations": 1106,
+    "citations": 1115,
     "top10": 1,
     "top10ShareOfDivision": 0.00055,
     "top1": null,
@@ -272,9 +211,9 @@
       "date": "2020-07-00"
     },
     "spread": {
-      "mean": 15.8,
+      "mean": 15.929,
       "median": 7.5,
-      "uncited": 7,
+      "uncited": 5,
       "i10": 30,
       "i100": 1
     }
@@ -283,7 +222,7 @@
     "arms": "((=abs:\"Electron Losses and Fields Investigation\" OR =abs:\"Electron Loss and Fields Investigation\" OR =abs:\"Electron Losses and Fields Investigations\" OR (abs:ELFIN AND abs:(\"Van Allen\" OR \"magnetic field\" OR \"radiation belt\" OR \"electron precipitation\" OR magnetosphere OR \"energetic particle\" OR CubeSat))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2018-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Electron+Losses+and+Fields+Investigation%22+OR+%3Dabs%3A%22Electron+Loss+and+Fields+Investigation%22+OR+%3Dabs%3A%22Electron+Losses+and+Fields+Investigations%22+OR+%28abs%3AELFIN+AND+abs%3A%28%22Van+Allen%22+OR+%22magnetic+field%22+OR+%22radiation+belt%22+OR+%22electron+precipitation%22+OR+magnetosphere+OR+%22energetic+particle%22+OR+CubeSat%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:14:02.535114+00:00",
+    "fetchedAt": "2026-10-27T02:21:34.627881+00:00",
     "reconciliation": {
       "adsReturned": 71,
       "curatedOut": 1,
@@ -315,7 +254,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 119
+      "citations": 120
+    },
+    {
+      "bibcode": "2023SSRv..219...37A",
+      "title": "Energetic Electron Precipitation Driven by Electromagnetic Ion Cyclotron Waves from ELFIN's Low Altitude Perspective",
+      "firstAuthor": "Angelopoulos, V.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2023,
+      "citations": 61
     },
     {
       "bibcode": "2021JGRA..12629757M",
@@ -327,13 +275,13 @@
       "citations": 60
     },
     {
-      "bibcode": "2023SSRv..219...37A",
-      "title": "Energetic Electron Precipitation Driven by Electromagnetic Ion Cyclotron Waves from ELFIN's Low Altitude Perspective",
-      "firstAuthor": "Angelopoulos, V.",
+      "bibcode": "2023JGRA..12831774W",
+      "title": "Statistical Characteristics of the Electron Isotropy Boundary",
+      "firstAuthor": "Wilkins, C.",
       "authors": null,
       "authorCount": null,
       "year": 2023,
-      "citations": 60
+      "citations": 55
     },
     {
       "bibcode": "2022JGRA..12730509Z",
@@ -342,15 +290,6 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 54
-    },
-    {
-      "bibcode": "2023JGRA..12831774W",
-      "title": "Statistical Characteristics of the Electron Isotropy Boundary",
-      "firstAuthor": "Wilkins, C.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2023,
       "citations": 54
     },
     {

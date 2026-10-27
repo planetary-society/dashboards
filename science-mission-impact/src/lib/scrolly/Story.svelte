@@ -16,7 +16,7 @@
 	import ClpsChart from './ClpsChart.svelte';
 	import KindBars from './KindBars.svelte';
 	import KindExample from './KindExample.svelte';
-	import { gridLayout, rugLayout, skylineLayout, skylineHit, splitLayout, focusLayout, costLayout, kindsLayout, exampleLayout } from './layouts.js';
+	import { gridLayout, rugLayout, skylineLayout, skylineHit, primerLayout, splitLayout, focusLayout, costLayout, kindsLayout, exampleLayout } from './layouts.js';
 	import { exampleItems, failureItems, firstTopItems, kindsItems, withHidden } from './items.js';
 	import { apDate, int, listify, longDate, money, moneyWords, pct, plural, spell, upperFirst } from '$lib/format.js';
 	import { fullWindowLabel } from '$lib/copy/window.js';
@@ -142,6 +142,7 @@
 	const grid = $derived(ready ? gridLayout(tiles, W, H) : null);
 	const rug = $derived(ready ? rugLayout(tiles, W, H, site.launchYears) : null);
 	const sky = $derived(rug ? skylineLayout(tiles, rug, { compact }) : null);
+	const primerL = $derived(ready && primer ? primerLayout(primer, W, H, { compact }) : null);
 	const headH = $derived(compact ? 76 : 104);
 	const split = $derived(ready ? splitLayout(W, H, splitGroups, { headH }) : null);
 	const timeSplit = $derived(ready ? splitLayout(W, H, timeGroups, { headH }) : null);
@@ -196,26 +197,33 @@
 	const clpsIn = $derived(reduced || index > CLPS || progress >= 0.3);
 	const clpsFirst = $derived(reduced ? 1 : Math.max(0, Math.min(1, (progress - 0.35) / 0.45)));
 
-	// The skyline step: pointing at a square or skimming the columns lights up that mission in both.
+	// The skyline steps: pointing at a square or skimming the columns lights up that mission in both.
+	// The primer steps: skimming the bars names the count under the pointer, found the same way.
 	// A touch keeps its highlight after the finger lifts; a mouse clears it on leaving the stage.
 	// A first tap on a square only highlights it; tapping it again opens its page, as a click does.
 	let pointed = $state(null);
+	let pointedBar = $state(null);
 	let follow = true;
 	const hot = $derived(skyline ? pointed : null);
+	const hotBar = $derived(primed ? pointedBar : null);
 	// the skyline names a mission with a column, so its square's own tip stays off
 	const skyNamed = $derived(hot && sky?.columns.some((c) => c.id === hot) ? hot : null);
 	function skim(e) {
+		const r = e.currentTarget.getBoundingClientRect();
+		if (primed && primerL) {
+			pointedBar = skylineHit(primerL, e.clientX - r.left, e.clientY - r.top);
+			return;
+		}
 		if (!skyline || !sky) return;
 		const id = e.target.closest?.('[data-id]')?.dataset.id;
 		if (e.type === 'pointerdown') follow = e.pointerType === 'mouse' || (id != null && id === pointed);
-		const r = e.currentTarget.getBoundingClientRect();
 		pointed = id ?? skylineHit(sky, e.clientX - r.left, e.clientY - r.top);
 	}
 	const holdClick = (e) => {
 		if (skyline && !follow) e.preventDefault();
 	};
 	const unskim = (e) => {
-		if (e.pointerType === 'mouse') pointed = null;
+		if (e.pointerType === 'mouse') pointed = pointedBar = null;
 	};
 </script>
 
@@ -223,11 +231,11 @@
 	{#snippet graphic()}
 		<div class="frame">
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
-			<div class="stage" class:skimming={skyline} bind:clientWidth={W} bind:clientHeight={H} onpointerdown={skim} onpointermove={skim} onpointerleave={unskim} onclickcapture={holdClick}>
+			<div class="stage" class:skimming={skyline || primed} bind:clientWidth={W} bind:clientHeight={H} onpointerdown={skim} onpointermove={skim} onpointerleave={unskim} onclickcapture={holdClick}>
 				{#if rug && cost && split}
 					<Skyline layout={sky} total={site.papersDistinct} cited={site.citationsDistinct} rise={index === CORPUS ? scrub : index > CORPUS ? 1 : 0} {zoom} {cite} visible={skyline} highlight={hot} {compact} width={W} height={H} />
-					{#if primer}
-						<Primer {primer} years={site.fullPolicy.citationYears + 1} build={index === PAPERS ? span(0.15, 0.5) : index > PAPERS ? 1 : 0} highlight={index === TOP} visible={primed} {compact} width={W} height={H} />
+					{#if primerL}
+						<Primer layout={primerL} {primer} hot={hotBar} years={site.fullPolicy.citationYears + 1} build={index === PAPERS ? span(0.15, 0.5) : index > PAPERS ? 1 : 0} highlight={index === TOP} visible={primed} {compact} width={W} height={H} />
 					{/if}
 					<SplitLabels layout={split} heads={splitHeads} visible={parted} {compact} />
 					{#if focusL}
@@ -254,7 +262,7 @@
 				{:else if index === CITED}
 					Each column is now one mission’s citations to date, with its papers in darker blue on the same square-root scale.
 				{:else if primed && primer}
-					{focusName} papers published while its missions operated or up to {spell(site.fullPolicy.postEndYears)} years after, by citations in each paper’s first {spell(site.fullPolicy.citationYears + 1)} years. Papers with {int(primer?.counts.length)} or more share the last bar.
+					{focusName} papers published while its missions operated or up to {spell(site.fullPolicy.postEndYears)} years after, by citations in each paper’s first {spell(site.fullPolicy.citationYears + 1)} years. Each gridline is 10 times the one before.
 				{:else if index === SPLIT}
 					Each square is a mission, grouped by inflation-adjusted cost in {site.costBaseYear} dollars.
 				{:else if index === FAILURE}
@@ -316,7 +324,7 @@
 		<!-- PAPERS: the focus division's papers by citations, grey -->
 		<section data-step data-scrub><div class="step">
 			{#if primer && primerMedian != null}
-				<p>Citations pile up unevenly. Take {field}: half of its {int(primer.papers)} papers drew {spell(primerMedian)} or fewer citations in their first {spell(site.fullPolicy.citationYears + 1)} years, and {int(primer.overflow)} drew {primer.counts.length} or more.</p>
+				<p>Citations pile up unevenly. Take {field}: half of its {int(primer.papers)} papers drew {spell(primerMedian)} or fewer citations in their first {spell(site.fullPolicy.citationYears + 1)} years, and the most cited drew {int(primer.counts.length - 1)}.</p>
 				<p>Those few, heavily cited papers are the ones other scientists build on most: the <strong>high-impact</strong> papers.</p>
 				<p class="aside">Counting only those first years keeps older papers from looking more impactful just for having had longer to collect citations.</p>
 			{/if}

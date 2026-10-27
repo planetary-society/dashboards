@@ -23,12 +23,12 @@
     "m": 5.55,
     "i100": 137,
     "g": 170,
-    "tori": 235.1,
-    "riq": 766
+    "tori": 236.121,
+    "riq": 768
   },
   "facts": {
     "papers": 1897,
-    "citations": 66679,
+    "citations": 66894,
     "publicationYears": [
       2007,
       2026
@@ -83,104 +83,31 @@
       7,
       192,
       983,
-      1288,
+      1289,
       2185,
       2581,
       2741,
       3005,
       3532,
-      3698,
-      3916,
+      3699,
+      3924,
       3835,
-      4047,
+      4048,
       4585,
       5352,
-      4582,
+      4581,
       5227,
       5195,
-      5081,
-      4647
+      5086,
+      4847
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 66679,
-      "observed": 66679,
+      "expected": 66894,
+      "observed": 66894,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "2006-11-01",
-    "end": "2011-02-01",
-    "matureDate": "2014-10-01",
-    "status": "available",
-    "months": 51,
-    "citationBuckets": 9,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      3,
-      1,
-      1,
-      2,
-      1,
-      1,
-      0,
-      0,
-      3,
-      4,
-      0,
-      3,
-      6,
-      3,
-      3,
-      25,
-      2,
-      3,
-      4,
-      3,
-      3,
-      1,
-      5,
-      5,
-      6,
-      11,
-      6,
-      9,
-      31,
-      4,
-      5,
-      8,
-      9,
-      35,
-      5,
-      8,
-      13,
-      6,
-      6,
-      13,
-      12,
-      10,
-      10,
-      8,
-      9,
-      9,
-      5,
-      11,
-      6
-    ],
-    "citationsByYearOffset": [
-      0,
-      7,
-      188,
-      983,
-      1286,
-      1937,
-      1296,
-      460,
-      8
-    ]
   },
   "mostCited": {
     "bibcode": "2008SSRv..136...67H",
@@ -194,32 +121,32 @@
     ],
     "authorCount": 46,
     "year": 2008,
-    "citations": 1801
+    "citations": 1803
   },
   "ranks": {
     "full": {
       "bins": [
-        107.908,
-        116.92,
-        141.242,
-        157.681,
-        149.533,
-        167.698,
-        180.1,
-        171.624,
-        204.295,
-        228.999
+        107.513,
+        117.511,
+        140.617,
+        158.427,
+        149.298,
+        167.888,
+        180.117,
+        170.707,
+        205.048,
+        228.876
       ],
-      "top1": 25.292
+      "top1": 25.149
     },
     "window": {
       "bins": [
         20.576,
         25.834,
         33.164,
-        33.853,
-        36.961,
-        29.464,
+        33.939,
+        36.841,
+        29.497,
         38.493,
         29.939,
         40.788,
@@ -229,28 +156,28 @@
     },
     "lifetime": {
       "bins": [
-        151.085,
-        150.75,
-        160.635,
-        171.724,
-        194.117,
-        203.676,
-        205.319,
-        218.01,
-        224.578,
-        217.106
+        148.68,
+        153.419,
+        159.481,
+        172.868,
+        191.985,
+        203.594,
+        207.052,
+        217.819,
+        224.356,
+        217.746
       ],
-      "top1": 13.55
+      "top1": 13.585
     }
   },
   "full": {
     "papers": 1626,
     "outputBasis": "measured",
-    "citations": 22756,
-    "top10": 182.317,
-    "top10ShareOfDivision": 0.12646,
-    "top1": 20.542,
-    "top1ShareOfDivision": 0.14249,
+    "citations": 22764,
+    "top10": 182.221,
+    "top10ShareOfDivision": 0.12639,
+    "top1": 20.399,
+    "top1ShareOfDivision": 0.14149,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.098,
@@ -268,7 +195,7 @@
       "citationBuckets": 21
     },
     "spread": {
-      "mean": 13.995,
+      "mean": 14,
       "median": 10,
       "uncited": 71,
       "i10": 816,
@@ -310,9 +237,9 @@
   "lifetime": {
     "papers": 1897,
     "outputBasis": "measured",
-    "citations": 66679,
-    "top10": 172.689,
-    "top10ShareOfDivision": 0.09431,
+    "citations": 66894,
+    "top10": 172.839,
+    "top10ShareOfDivision": 0.09436,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -323,18 +250,18 @@
       "date": "2007-04-00"
     },
     "spread": {
-      "mean": 35.15,
+      "mean": 35.263,
       "median": 18,
-      "uncited": 112,
-      "i10": 1279,
-      "i100": 137
+      "uncited": 110,
+      "i10": 1280,
+      "i100": 138
     }
   },
   "query": {
     "arms": "((=abs:(\"Solar Terrestrial Relations Observatory\" OR \"Solar Terrestrial Relation Observatory\" OR \"Solar Terrestrial Relations Observatories\") OR =abs:\"STEREO spacecraft\" OR facility:STEREO OR (abs:STEREO AND (abs:(solar OR Sun OR coronal OR heliospheric OR SECCHI OR CME OR SWAVES OR Earth OR terrestrial OR magnetospheric OR radiation OR whistler OR plasma OR radio OR comet OR dust OR stellar OR star OR astrophysical OR photometric OR asteroid OR planetary OR Jupiter OR Jovian) OR =abs:\"heliospheric imager\") NOT title:neutrino NOT =abs:\"Internet of Things\") OR (=abs:(\"STEREO-A\" OR \"STEREO-B\") AND abs:(solar OR Sun OR heliospheric OR heliosphere OR interplanetary OR geomagnetic OR wind OR CME OR coronal OR plasma OR magnetic)) OR =abs:\"Sun Earth Connection Coronal and Heliospheric Investigation\" OR (abs:SECCHI AND abs:(solar OR Sun OR coronal OR heliospheric OR CME)) OR (abs:(COR1 OR COR2) AND =abs:(coronagraph OR coronagraphs OR coronal OR corona)) OR (abs:EUVI AND =abs:(coronal OR corona OR \"active region\" OR flare OR filament OR prominence) NOT =abs:(\"X-EUVI\" OR Fengyun OR \"FY-3E\")) OR (abs:SWAVES AND abs:(solar OR heliospheric OR radio OR plasma OR waves))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2006-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Solar+Terrestrial+Relations+Observatory%22+OR+%22Solar+Terrestrial+Relation+Observatory%22+OR+%22Solar+Terrestrial+Relations+Observatories%22%29+OR+%3Dabs%3A%22STEREO+spacecraft%22+OR+facility%3ASTEREO+OR+%28abs%3ASTEREO+AND+%28abs%3A%28solar+OR+Sun+OR+coronal+OR+heliospheric+OR+SECCHI+OR+CME+OR+SWAVES+OR+Earth+OR+terrestrial+OR+magnetospheric+OR+radiation+OR+whistler+OR+plasma+OR+radio+OR+comet+OR+dust+OR+stellar+OR+star+OR+astrophysical+OR+photometric+OR+asteroid+OR+planetary+OR+Jupiter+OR+Jovian%29+OR+%3Dabs%3A%22heliospheric+imager%22%29+NOT+title%3Aneutrino+NOT+%3Dabs%3A%22Internet+of+Things%22%29+OR+%28%3Dabs%3A%28%22STEREO-A%22+OR+%22STEREO-B%22%29+AND+abs%3A%28solar+OR+Sun+OR+heliospheric+OR+heliosphere+OR+interplanetary+OR+geomagnetic+OR+wind+OR+CME+OR+coronal+OR+plasma+OR+magnetic%29%29+OR+%3Dabs%3A%22Sun+Earth+Connection+Coronal+and+Heliospheric+Investigation%22+OR+%28abs%3ASECCHI+AND+abs%3A%28solar+OR+Sun+OR+coronal+OR+heliospheric+OR+CME%29%29+OR+%28abs%3A%28COR1+OR+COR2%29+AND+%3Dabs%3A%28coronagraph+OR+coronagraphs+OR+coronal+OR+corona%29%29+OR+%28abs%3AEUVI+AND+%3Dabs%3A%28coronal+OR+corona+OR+%22active+region%22+OR+flare+OR+filament+OR+prominence%29+NOT+%3Dabs%3A%28%22X-EUVI%22+OR+Fengyun+OR+%22FY-3E%22%29%29+OR+%28abs%3ASWAVES+AND+abs%3A%28solar+OR+heliospheric+OR+radio+OR+plasma+OR+waves%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2006-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:13:25.163517+00:00",
+    "fetchedAt": "2026-10-27T02:19:57.448106+00:00",
     "reconciliation": {
       "adsReturned": 1907,
       "curatedOut": 11,
@@ -615,7 +542,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 1801
+      "citations": 1803
     },
     {
       "bibcode": "2008SSRv..136....5K",
@@ -624,7 +551,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 1691
+      "citations": 1692
     },
     {
       "bibcode": "2012LRSP....9....3W",
@@ -633,7 +560,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 712
+      "citations": 711
     },
     {
       "bibcode": "2009SoPh..256..111T",
@@ -651,7 +578,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 526
+      "citations": 527
     },
     {
       "bibcode": "2008SSRv..136..437G",
@@ -669,7 +596,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 401
+      "citations": 402
     },
     {
       "bibcode": "2008SSRv..136..487B",
@@ -714,7 +641,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 310
+      "citations": 311
     },
     {
       "bibcode": "2012A&A...543A.110A",
@@ -777,7 +704,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 237
+      "citations": 236
     },
     {
       "bibcode": "2009ApJ...701..283R",

@@ -21,14 +21,14 @@
   "indices": {
     "h": 82,
     "m": 4.316,
-    "i100": 63,
+    "i100": 64,
     "g": 119,
-    "tori": 69.429,
-    "riq": 438
+    "tori": 73.635,
+    "riq": 451
   },
   "facts": {
-    "papers": 765,
-    "citations": 26748,
+    "papers": 767,
+    "citations": 26876,
     "publicationYears": [
       2008,
       2026
@@ -75,11 +75,11 @@
       40,
       36,
       44,
-      37
+      39
     ],
     "citations": [
       65,
-      274,
+      276,
       414,
       527,
       769,
@@ -95,71 +95,16 @@
       2454,
       2191,
       2204,
-      2267,
-      1793
+      2270,
+      1916
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 26748,
-      "observed": 26748,
+      "expected": 26876,
+      "observed": 26876,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "2011-05-01",
-    "end": "2014-04-01",
-    "matureDate": "2017-10-01",
-    "status": "available",
-    "months": 35,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      1,
-      0,
-      0,
-      1,
-      9,
-      3,
-      2,
-      23,
-      3,
-      1,
-      2,
-      5,
-      3,
-      2,
-      3,
-      2,
-      7,
-      6,
-      1,
-      9,
-      7,
-      1,
-      2,
-      5,
-      8,
-      5,
-      6,
-      0,
-      4,
-      2,
-      1,
-      4,
-      8,
-      2,
-      2
-    ],
-    "citationsByYearOffset": [
-      55,
-      347,
-      555,
-      728,
-      699,
-      336,
-      40
-    ]
   },
   "mostCited": {
     "bibcode": "2011Sci...333.1847N",
@@ -173,51 +118,51 @@
     ],
     "authorCount": 15,
     "year": 2011,
-    "citations": 430
+    "citations": 431
   },
   "ranks": {
     "full": {
       "bins": [
-        13.723,
-        19.179,
-        35.069,
-        24.009,
-        25.908,
-        34.144,
-        34.552,
-        26.299,
-        47.995,
-        40.12
+        13.719,
+        19.202,
+        35.126,
+        23.982,
+        25.901,
+        34.103,
+        34.622,
+        26.243,
+        48.025,
+        40.077
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        7.643,
-        7.518,
-        15.312,
-        17.819,
-        19.709,
-        8.963,
-        7.356,
-        19.357,
-        19.03,
+        7.625,
+        7.539,
+        15.311,
+        17.839,
+        19.686,
+        8.988,
+        7.334,
+        19.36,
+        19.024,
         17.294
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        67.217,
-        73.79,
-        65.208,
-        67.531,
-        78.821,
-        78.708,
-        88.592,
-        84.509,
-        84.803,
-        75.821
+        66.572,
+        74.583,
+        66.502,
+        64.78,
+        82.541,
+        77.759,
+        86.763,
+        86.769,
+        83.319,
+        77.413
       ],
       "top1": 1
     }
@@ -226,8 +171,8 @@
     "papers": 301,
     "outputBasis": "measured",
     "citations": 4939,
-    "top10": 39.62,
-    "top10ShareOfDivision": 0.03626,
+    "top10": 39.577,
+    "top10ShareOfDivision": 0.03622,
     "top1": 2,
     "top1ShareOfDivision": 0.0183,
     "first": {
@@ -287,11 +232,11 @@
     }
   },
   "lifetime": {
-    "papers": 765,
+    "papers": 767,
     "outputBasis": "measured",
-    "citations": 26748,
-    "top10": 73.571,
-    "top10ShareOfDivision": 0.04673,
+    "citations": 26876,
+    "top10": 75.163,
+    "top10ShareOfDivision": 0.04771,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -302,26 +247,26 @@
       "date": "2008-03-00"
     },
     "spread": {
-      "mean": 34.965,
-      "median": 19,
-      "uncited": 56,
+      "mean": 35.04,
+      "median": 20,
+      "uncited": 53,
       "i10": 520,
-      "i100": 63
+      "i100": 64
     }
   },
   "query": {
     "arms": "((((=abs:\"Mercury Surface, Space Environment, Geochemistry, and Ranging\" OR (abs:MESSENGER AND (abs:Mercury OR abs:hermean OR abs:mission OR abs:probe OR abs:spacecraft)) OR =abs:\"Mercury Dual Imaging System\" OR =abs:\"MESSENGER X-Ray Spectrometer\" OR =abs:\"MESSENGER Gamma-Ray Spectrometer\" OR =abs:\"MESSENGER Neutron Spectrometer\" OR =abs:\"MESSENGER Magnetometer\" OR =abs:\"Mercury Laser Altimeter\" OR =abs:\"MESSENGER Energetic Particle and Plasma Spectrometer\")) OR =abs:\"Mercury Atmospheric and Surface Composition Spectrometer\" OR ((abs:MASCS OR abs:MDIS OR abs:FIPS OR abs:EPPS OR =abs:\"Fast Imaging Plasma Spectrometer\") AND (abs:Mercury OR abs:hermean OR abs:MESSENGER)) OR facility:MESSENGER))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2011-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Mercury+Surface%2C+Space+Environment%2C+Geochemistry%2C+and+Ranging%22+OR+%28abs%3AMESSENGER+AND+%28abs%3AMercury+OR+abs%3Ahermean+OR+abs%3Amission+OR+abs%3Aprobe+OR+abs%3Aspacecraft%29%29+OR+%3Dabs%3A%22Mercury+Dual+Imaging+System%22+OR+%3Dabs%3A%22MESSENGER+X-Ray+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Gamma-Ray+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Neutron+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Magnetometer%22+OR+%3Dabs%3A%22Mercury+Laser+Altimeter%22+OR+%3Dabs%3A%22MESSENGER+Energetic+Particle+and+Plasma+Spectrometer%22%29%29+OR+%3Dabs%3A%22Mercury+Atmospheric+and+Surface+Composition+Spectrometer%22+OR+%28%28abs%3AMASCS+OR+abs%3AMDIS+OR+abs%3AFIPS+OR+abs%3AEPPS+OR+%3Dabs%3A%22Fast+Imaging+Plasma+Spectrometer%22%29+AND+%28abs%3AMercury+OR+abs%3Ahermean+OR+abs%3AMESSENGER%29%29+OR+facility%3AMESSENGER%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2011-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:06:15.427416+00:00",
+    "fetchedAt": "2026-10-27T02:07:44.157278+00:00",
     "reconciliation": {
-      "adsReturned": 704,
+      "adsReturned": 706,
       "curatedOut": 8,
       "curatedIn": 69,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 765
+      "final": 767
     }
   },
   "curation": {
@@ -994,7 +939,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 430
+      "citations": 431
     },
     {
       "bibcode": "2011Sci...333.1859A",
@@ -1003,7 +948,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 282
+      "citations": 283
     },
     {
       "bibcode": "2012Sci...336..214S",
@@ -1012,7 +957,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 268
+      "citations": 269
     },
     {
       "bibcode": "2011Sci...333.1853H",
@@ -1021,7 +966,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 246
+      "citations": 247
     },
     {
       "bibcode": "2009Sci...324..606S",
@@ -1039,7 +984,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 241
+      "citations": 243
     },
     {
       "bibcode": "2018CeMDA.130...22A",
@@ -1048,7 +993,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 235
+      "citations": 240
     },
     {
       "bibcode": "2013JGRE..118..891D",
@@ -1075,7 +1020,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 218
+      "citations": 220
     },
     {
       "bibcode": "2011Sci...333.1850P",
@@ -1084,7 +1029,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 210
+      "citations": 211
     },
     {
       "bibcode": "2014NatGe...7..301B",
@@ -1093,7 +1038,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 183
+      "citations": 185
     },
     {
       "bibcode": "2012Sci...336..217Z",
@@ -1159,16 +1104,16 @@
       "citations": 172
     },
     {
-      "bibcode": "2008Sci...321...82A",
-      "title": "The Structure of Mercury’s Magnetic Field from MESSENGER’s First Flyby",
-      "firstAuthor": "Anderson, Brian J.",
+      "bibcode": "2017AJ....153..121P",
+      "title": "Precession of Mercury’s Perihelion from Ranging to the MESSENGER Spacecraft",
+      "firstAuthor": "Park, Ryan S.",
       "authors": null,
       "authorCount": null,
-      "year": 2008,
-      "citations": 166
+      "year": 2017,
+      "citations": 169
     }
   ],
   "papersFile": {
-    "rows": 765
+    "rows": 767
   }
 }

@@ -237,11 +237,11 @@ test('the comparison per rankable division, a one-sided division included', () =
 
 test('the primer reads the focus division: its histogram and its top-10% cutoff', () => {
 	const d = { ...packaged(division([mission('a1', 10)])), slug: 'focus', name: 'Focus',
-		citationHistogram: { full: { counts: [3, 2, 1], overflow: 1, top: [0, 0.5, 1], topOverflow: 1, papers: 7 } },
+		citationHistogram: { full: { counts: [3, 2, 1, 0, 1], top: [0, 0.5, 1, 0, 1], papers: 7 } },
 		stats: { full: { cutoffs: [{ percent: 1, citations: 9, papers: 1 }, { percent: 10, citations: 2, papers: 2 }] } } };
 	const story = discuss([d], { focusDivision: 'focus' });
 	assert.equal(story.focusDivision, 'focus');
-	assert.deepEqual(story.primer, { division: 'focus', name: 'Focus', counts: [3, 2, 1], overflow: 1, top: [0, 0.5, 1], topOverflow: 1, papers: 7, cutoff: 2, topPapers: 2.5 });
+	assert.deepEqual(story.primer, { division: 'focus', name: 'Focus', counts: [3, 2, 1, 0, 1], top: [0, 0.5, 1, 0, 1], papers: 7, cutoff: 2, topPapers: 2.5 });
 	assert.equal(discuss([d], { focusDivision: 'nope' }).primer, null);
 });
 

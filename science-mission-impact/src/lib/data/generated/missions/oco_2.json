@@ -19,16 +19,16 @@
     }
   },
   "indices": {
-    "h": 64,
-    "m": 4.923,
+    "h": 65,
+    "m": 5,
     "i100": 39,
     "g": 115,
-    "tori": 56.419,
-    "riq": 536
+    "tori": 57.969,
+    "riq": 543
   },
   "facts": {
-    "papers": 704,
-    "citations": 19200,
+    "papers": 705,
+    "citations": 19238,
     "publicationYears": [
       2014,
       2026
@@ -63,7 +63,7 @@
       71,
       86,
       96,
-      74
+      75
     ],
     "citations": [
       0,
@@ -77,87 +77,16 @@
       2493,
       2706,
       3170,
-      3625,
-      2400
+      3629,
+      2434
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 19200,
-      "observed": 19200,
+      "expected": 19238,
+      "observed": 19238,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "2014-09-01",
-    "end": "2018-11-01",
-    "matureDate": "2021-10-01",
-    "status": "available",
-    "months": 50,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      1,
-      1,
-      0,
-      2,
-      1,
-      0,
-      1,
-      0,
-      0,
-      2,
-      0,
-      1,
-      0,
-      1,
-      2,
-      0,
-      3,
-      2,
-      1,
-      2,
-      0,
-      0,
-      2,
-      2,
-      2,
-      2,
-      3,
-      3,
-      3,
-      3,
-      2,
-      1,
-      5,
-      5,
-      1,
-      1,
-      10,
-      3,
-      2,
-      6,
-      1,
-      1,
-      3,
-      4,
-      3,
-      0,
-      2,
-      4,
-      3
-    ],
-    "citationsByYearOffset": [
-      0,
-      10,
-      43,
-      224,
-      427,
-      726,
-      765,
-      361
-    ]
   },
   "mostCited": {
     "bibcode": "2019RemS...11..517L",
@@ -174,45 +103,45 @@
   "ranks": {
     "full": {
       "bins": [
-        28.753,
-        19.692,
-        19.904,
-        31.278,
-        43.907,
-        38.878,
-        42.252,
-        51.682,
-        64.376,
-        107.278
+        28.734,
+        19.717,
+        19.911,
+        31.29,
+        43.592,
+        39.234,
+        42.254,
+        51.581,
+        64.443,
+        107.244
       ],
       "top1": 20
     },
     "window": {
       "bins": [
-        9.363,
-        4.314,
-        6.974,
-        9.642,
-        11.995,
-        5.555,
-        4.941,
-        9.996,
-        8.222,
+        9.362,
+        4.315,
+        6.999,
+        9.626,
+        11.992,
+        5.558,
+        4.948,
+        9.977,
+        8.224,
         26
       ],
       "top1": 7
     },
     "lifetime": {
       "bins": [
-        117.025,
-        88.839,
-        70.752,
-        70.542,
-        62.062,
-        72.904,
-        55.534,
-        56.452,
-        51.89,
+        116.582,
+        87.809,
+        72.449,
+        70.24,
+        61.733,
+        71.121,
+        58.012,
+        56.949,
+        52.104,
         58
       ],
       "top1": 12
@@ -221,9 +150,9 @@
   "full": {
     "papers": 448,
     "outputBasis": "measured",
-    "citations": 8910,
-    "top10": 97.739,
-    "top10ShareOfDivision": 0.02715,
+    "citations": 8919,
+    "top10": 97.708,
+    "top10ShareOfDivision": 0.02714,
     "top1": 19.333,
     "top1ShareOfDivision": 0.05371,
     "first": {
@@ -243,7 +172,7 @@
       "citationBuckets": 13
     },
     "spread": {
-      "mean": 19.888,
+      "mean": 19.908,
       "median": 12,
       "uncited": 25,
       "i10": 259,
@@ -283,11 +212,11 @@
     }
   },
   "lifetime": {
-    "papers": 704,
+    "papers": 705,
     "outputBasis": "measured",
-    "citations": 19200,
+    "citations": 19238,
     "top10": 53.583,
-    "top10ShareOfDivision": 0.01154,
+    "top10ShareOfDivision": 0.01152,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -298,10 +227,10 @@
       "date": "2015-01-00"
     },
     "spread": {
-      "mean": 27.273,
-      "median": 9.5,
-      "uncited": 109,
-      "i10": 352,
+      "mean": 27.288,
+      "median": 10,
+      "uncited": 110,
+      "i10": 353,
       "i100": 39
     }
   },
@@ -309,15 +238,15 @@
     "arms": "((=abs:\"Orbiting Carbon Observatory 2\" OR (=abs:\"Orbiting Carbon Observatory\" AND NOT (abs:\"OCO-3\" OR =abs:\"Orbiting Carbon Observatory 3\")) OR ((abs:\"OCO-2\" OR abs:OCO2) AND (=abs:xco2 OR abs:satellite OR abs:atmosphere OR abs:vegetation OR abs:photosynthesis OR abs:albedo OR abs:emissions OR abs:crop OR abs:terrestrial OR abs:concentration) AND NOT =abs:\"operational carbon dioxide\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Orbiting+Carbon+Observatory+2%22+OR+%28%3Dabs%3A%22Orbiting+Carbon+Observatory%22+AND+NOT+%28abs%3A%22OCO-3%22+OR+%3Dabs%3A%22Orbiting+Carbon+Observatory+3%22%29%29+OR+%28%28abs%3A%22OCO-2%22+OR+abs%3AOCO2%29+AND+%28%3Dabs%3Axco2+OR+abs%3Asatellite+OR+abs%3Aatmosphere+OR+abs%3Avegetation+OR+abs%3Aphotosynthesis+OR+abs%3Aalbedo+OR+abs%3Aemissions+OR+abs%3Acrop+OR+abs%3Aterrestrial+OR+abs%3Aconcentration%29+AND+NOT+%3Dabs%3A%22operational+carbon+dioxide%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:11:30.637044+00:00",
+    "fetchedAt": "2026-10-27T02:15:46.450139+00:00",
     "reconciliation": {
-      "adsReturned": 704,
+      "adsReturned": 705,
       "curatedOut": 0,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 704
+      "final": 705
     }
   },
   "curation": {
@@ -404,7 +333,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 322
+      "citations": 323
     },
     {
       "bibcode": "2019RemS...11.2563L",
@@ -440,7 +369,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 256
+      "citations": 257
     },
     {
       "bibcode": "2017GeoRL..4410045N",
@@ -467,7 +396,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 200
+      "citations": 201
     },
     {
       "bibcode": "2017AMT....10..549E",
@@ -503,10 +432,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 168
+      "citations": 169
     }
   ],
   "papersFile": {
-    "rows": 704
+    "rows": 705
   }
 }

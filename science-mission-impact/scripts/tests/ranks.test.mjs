@@ -52,7 +52,7 @@ describe('assertRanksMatchTiers', () => {
 });
 
 describe('citationHistogram', () => {
-	it('counts each distinct paper once by its citations, with the rest past the cap', () => {
+	it('counts each distinct paper once by its citations, up to the most cited', () => {
 		const rows = [
 			{ mission: 'A', bibcode: 'x', c: 2, w: 0.5 },
 			{ mission: 'B', bibcode: 'x', c: 2, w: 0.5 },
@@ -60,6 +60,6 @@ describe('citationHistogram', () => {
 			{ mission: 'A', bibcode: 'z', c: 4, w: 1 },
 			{ mission: 'A', bibcode: 'w', c: 9, w: 1 }
 		];
-		assert.deepEqual(citationHistogram(rows, { citations: 'c', topWeight: 'w' }, 4), { counts: [1, 0, 1, 0], overflow: 2, top: [0, 0, 0.5, 0], topOverflow: 2, papers: 4 });
+		assert.deepEqual(citationHistogram(rows, { citations: 'c', topWeight: 'w' }), { counts: [1, 0, 1, 0, 1, 0, 0, 0, 0, 1], top: [0, 0, 0.5, 0, 1, 0, 0, 0, 0, 1], papers: 4 });
 	});
 });

@@ -23,12 +23,12 @@
     "m": 2.639,
     "i100": 88,
     "g": 143,
-    "tori": 321.624,
+    "tori": 321.64,
     "riq": 498
   },
   "facts": {
     "papers": 1358,
-    "citations": 47031,
+    "citations": 47036,
     "publicationYears": [
       1991,
       2026
@@ -123,17 +123,17 @@
       1794,
       1495,
       1440,
-      1835,
+      1836,
       1643,
       1342,
-      1379,
+      1378,
       1904,
       1674,
       1999,
       1739,
       1705,
       1794,
-      1896,
+      1901,
       1814,
       1566,
       1777,
@@ -141,83 +141,21 @@
       1356,
       1514,
       1308,
-      1216,
-      1426,
+      1215,
+      1425,
       1152,
-      1162,
+      1161,
       1169,
-      1132,
+      1135,
       778
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 47031,
-      "observed": 47031,
+      "expected": 47036,
+      "observed": 47036,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "1991-11-01",
-    "end": "1995-04-01",
-    "matureDate": "1998-10-01",
-    "status": "available",
-    "months": 41,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      1,
-      0,
-      1,
-      1,
-      1,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      2,
-      1,
-      3,
-      0,
-      1,
-      2,
-      0,
-      38,
-      2,
-      2,
-      1,
-      1,
-      0,
-      5,
-      4,
-      1,
-      0,
-      1,
-      1,
-      5,
-      1,
-      6,
-      11,
-      20,
-      3,
-      3,
-      10,
-      6,
-      4
-    ],
-    "citationsByYearOffset": [
-      0,
-      3,
-      61,
-      284,
-      498,
-      698,
-      283,
-      74
-    ]
   },
   "mostCited": {
     "bibcode": "1993JGR....9810777R",
@@ -236,46 +174,46 @@
   "ranks": {
     "full": {
       "bins": [
-        120.021,
-        120.253,
-        93.994,
-        131.714,
-        107.311,
-        123.019,
-        116.166,
-        105.97,
-        86.004,
-        78.549
+        119.899,
+        120.407,
+        94.01,
+        131.775,
+        107.309,
+        123.076,
+        116.106,
+        105.967,
+        85.923,
+        78.527
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        16.992,
-        12.523,
-        9.093,
-        8.943,
-        11.171,
-        15.067,
-        13.384,
-        16.383,
-        20.254,
+        16.987,
+        12.529,
+        9.11,
+        8.937,
+        11.2,
+        15.039,
+        13.397,
+        16.354,
+        20.258,
         15.189
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        72.025,
-        83.035,
-        95.052,
-        112.576,
-        136.993,
-        157.701,
-        179.152,
-        190.795,
-        184.836,
-        145.835
+        70.582,
+        83.442,
+        94.489,
+        113.237,
+        136.791,
+        157.901,
+        179.45,
+        190.794,
+        185.104,
+        146.208
       ],
       "top1": 10
     }
@@ -283,9 +221,9 @@
   "full": {
     "papers": 1083,
     "outputBasis": "measured",
-    "citations": 9939,
-    "top10": 76.049,
-    "top10ShareOfDivision": 0.02113,
+    "citations": 9940,
+    "top10": 76.027,
+    "top10ShareOfDivision": 0.02112,
     "top1": 2,
     "top1ShareOfDivision": 0.00556,
     "first": {
@@ -305,7 +243,7 @@
       "citationBuckets": 20
     },
     "spread": {
-      "mean": 9.177,
+      "mean": 9.178,
       "median": 6,
       "uncited": 97,
       "i10": 370,
@@ -347,9 +285,9 @@
   "lifetime": {
     "papers": 1358,
     "outputBasis": "measured",
-    "citations": 47031,
-    "top10": 132.785,
-    "top10ShareOfDivision": 0.02859,
+    "citations": 47036,
+    "top10": 133.121,
+    "top10ShareOfDivision": 0.02861,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -360,7 +298,7 @@
       "date": "1992-01-00"
     },
     "spread": {
-      "mean": 34.633,
+      "mean": 34.636,
       "median": 20,
       "uncited": 64,
       "i10": 986,
@@ -371,7 +309,7 @@
     "arms": "((=abs:(\"Upper Atmosphere Research Satellite\" OR \"Upper Atmospheric Research Satellite\" OR \"Halogen Occultation Experiment\" OR \"Cryogenic Limb Array Etalon Spectrometer\" OR \"Improved Stratospheric and Mesospheric Sounder\" OR \"High Resolution Doppler Imager\" OR \"Particle Environment Monitor\") OR (abs:UARS AND abs:(atmosphere OR atmospheric OR stratospher* OR mesospher* OR thermospher* OR mesopause OR ozone OR irradiance OR limb OR wind OR winds OR aerosol OR aerosols OR airglow OR dayglow OR tide OR tides OR radar OR radars OR auroral OR aurora OR ionospher* OR solar OR spacecraft OR satellite OR MLS OR SOLSTICE OR ACRIM OR PEM)) OR (abs:(HALOE OR CLAES OR ISAMS) AND abs:(atmosphere OR atmospheric OR stratospher* OR mesospher* OR thermospher* OR ozone OR aerosol OR aerosols OR limb OR tropopause OR vortex OR =\"water vapor\" OR methane OR tracer OR tracers OR transport)) OR (abs:(HRDI OR WINDII) AND abs:(atmosphere OR atmospheric OR stratospher* OR mesospher* OR thermospher* OR mesopause OR wind OR winds OR tide OR tides OR airglow OR dayglow OR nightglow OR ozone)) OR (=abs:\"Wind Imaging Interferometer\" AND abs:(atmosphere OR atmospheric OR stratospher* OR mesospher* OR thermospher* OR mesopause OR wind OR winds OR tide OR tides OR airglow OR dayglow OR nightglow OR ozone) NOT abs:(static OR polarization OR polarizing OR birefringent OR \"four-quadrant\")) OR (abs:SUSIM AND abs:(irradiance OR ultraviolet OR UV) NOT abs:(ATLAS OR Spacelab))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1991-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Upper+Atmosphere+Research+Satellite%22+OR+%22Upper+Atmospheric+Research+Satellite%22+OR+%22Halogen+Occultation+Experiment%22+OR+%22Cryogenic+Limb+Array+Etalon+Spectrometer%22+OR+%22Improved+Stratospheric+and+Mesospheric+Sounder%22+OR+%22High+Resolution+Doppler+Imager%22+OR+%22Particle+Environment+Monitor%22%29+OR+%28abs%3AUARS+AND+abs%3A%28atmosphere+OR+atmospheric+OR+stratospher%2A+OR+mesospher%2A+OR+thermospher%2A+OR+mesopause+OR+ozone+OR+irradiance+OR+limb+OR+wind+OR+winds+OR+aerosol+OR+aerosols+OR+airglow+OR+dayglow+OR+tide+OR+tides+OR+radar+OR+radars+OR+auroral+OR+aurora+OR+ionospher%2A+OR+solar+OR+spacecraft+OR+satellite+OR+MLS+OR+SOLSTICE+OR+ACRIM+OR+PEM%29%29+OR+%28abs%3A%28HALOE+OR+CLAES+OR+ISAMS%29+AND+abs%3A%28atmosphere+OR+atmospheric+OR+stratospher%2A+OR+mesospher%2A+OR+thermospher%2A+OR+ozone+OR+aerosol+OR+aerosols+OR+limb+OR+tropopause+OR+vortex+OR+%3D%22water+vapor%22+OR+methane+OR+tracer+OR+tracers+OR+transport%29%29+OR+%28abs%3A%28HRDI+OR+WINDII%29+AND+abs%3A%28atmosphere+OR+atmospheric+OR+stratospher%2A+OR+mesospher%2A+OR+thermospher%2A+OR+mesopause+OR+wind+OR+winds+OR+tide+OR+tides+OR+airglow+OR+dayglow+OR+nightglow+OR+ozone%29%29+OR+%28%3Dabs%3A%22Wind+Imaging+Interferometer%22+AND+abs%3A%28atmosphere+OR+atmospheric+OR+stratospher%2A+OR+mesospher%2A+OR+thermospher%2A+OR+mesopause+OR+wind+OR+winds+OR+tide+OR+tides+OR+airglow+OR+dayglow+OR+nightglow+OR+ozone%29+NOT+abs%3A%28static+OR+polarization+OR+polarizing+OR+birefringent+OR+%22four-quadrant%22%29%29+OR+%28abs%3ASUSIM+AND+abs%3A%28irradiance+OR+ultraviolet+OR+UV%29+NOT+abs%3A%28ATLAS+OR+Spacelab%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1991-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:08:21.674267+00:00",
+    "fetchedAt": "2026-10-27T02:10:46.667138+00:00",
     "reconciliation": {
       "adsReturned": 1362,
       "curatedOut": 3,
@@ -437,7 +375,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 548
+      "citations": 549
     },
     {
       "bibcode": "1997JGR...10229849R",
@@ -446,7 +384,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 391
+      "citations": 392
     },
     {
       "bibcode": "1996BAMS...77...19W",
@@ -455,7 +393,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 386
+      "citations": 385
     },
     {
       "bibcode": "2008JGRD..11315S11S",
@@ -554,7 +492,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1994,
-      "citations": 235
+      "citations": 234
     },
     {
       "bibcode": "1994JGR....99.8183L",

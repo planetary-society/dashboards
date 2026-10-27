@@ -23,12 +23,12 @@
     "m": 1.923,
     "i100": 3,
     "g": 40,
-    "tori": 10.73,
-    "riq": 251
+    "tori": 10.755,
+    "riq": 252
   },
   "facts": {
     "papers": 75,
-    "citations": 1743,
+    "citations": 1746,
     "publicationYears": [
       2014,
       2026
@@ -78,63 +78,15 @@
       261,
       206,
       176,
-      149
+      152
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 1743,
-      "observed": 1743,
+      "expected": 1746,
+      "observed": 1746,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "2013-12-01",
-    "end": "2016-04-01",
-    "matureDate": "2019-10-01",
-    "status": "available",
-    "months": 28,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      2,
-      0,
-      0,
-      0,
-      2,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      6,
-      1,
-      0,
-      0,
-      1,
-      1,
-      2,
-      3,
-      0,
-      0,
-      0,
-      0,
-      1,
-      3,
-      0,
-      0
-    ],
-    "citationsByYearOffset": [
-      0,
-      9,
-      35,
-      93,
-      45,
-      37,
-      12
-    ]
   },
   "mostCited": {
     "bibcode": "2018P&SS..156...71P",
@@ -153,11 +105,11 @@
   "ranks": {
     "full": {
       "bins": [
-        4.621,
-        2.106,
-        1.273,
-        1.854,
-        3.146,
+        4.62,
+        2.109,
+        1.271,
+        1.861,
+        3.139,
         2,
         2,
         3,
@@ -168,14 +120,14 @@
     },
     "window": {
       "bins": [
-        4.661,
-        2.199,
+        4.656,
+        2.205,
         0.199,
-        3.371,
-        2.57,
-        1.654,
-        1.983,
-        4.363,
+        3.379,
+        2.562,
+        1.663,
+        1.981,
+        4.356,
         1,
         0
       ],
@@ -183,15 +135,15 @@
     },
     "lifetime": {
       "bins": [
-        12.02,
-        9.162,
-        8.818,
-        6.183,
-        5.602,
-        8.442,
-        7.773,
-        6.094,
-        5.906,
+        11.566,
+        9.649,
+        8.785,
+        6.211,
+        5.611,
+        8.451,
+        7.726,
+        6.254,
+        5.746,
         5
       ],
       "top1": 0
@@ -264,7 +216,7 @@
   "lifetime": {
     "papers": 75,
     "outputBasis": "measured",
-    "citations": 1743,
+    "citations": 1746,
     "top10": 4.5,
     "top10ShareOfDivision": 0.00286,
     "top1": null,
@@ -277,9 +229,9 @@
       "date": "2014-12-00"
     },
     "spread": {
-      "mean": 23.24,
+      "mean": 23.28,
       "median": 14,
-      "uncited": 11,
+      "uncited": 10,
       "i10": 42,
       "i100": 3
     }
@@ -288,7 +240,7 @@
     "arms": "((=abs:\"Lunar Atmosphere and Dust Environment Explorer\" OR ((abs:LADEE OR abs:LDEX OR =abs:\"Lunar Dust Experiment\") AND abs:(Moon OR lunar OR dust))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2013-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Atmosphere+and+Dust+Environment+Explorer%22+OR+%28%28abs%3ALADEE+OR+abs%3ALDEX+OR+%3Dabs%3A%22Lunar+Dust+Experiment%22%29+AND+abs%3A%28Moon+OR+lunar+OR+dust%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2013-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:07:14.043223+00:00",
+    "fetchedAt": "2026-10-27T02:09:17.114164+00:00",
     "reconciliation": {
       "adsReturned": 78,
       "curatedOut": 3,

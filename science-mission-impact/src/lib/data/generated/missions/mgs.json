@@ -23,12 +23,12 @@
     "m": 4.4,
     "i100": 192,
     "g": 207,
-    "tori": 666.286,
+    "tori": 666.89,
     "riq": 860
   },
   "facts": {
     "papers": 1425,
-    "citations": 77213,
+    "citations": 77231,
     "publicationYears": [
       1997,
       2026
@@ -110,101 +110,34 @@
       1922,
       2249,
       2839,
-      3204,
-      3076,
-      3354,
-      3762,
-      3348,
-      3319,
-      3013,
-      2902,
-      3767,
-      3141,
-      2894,
-      3101,
+      3199,
+      3069,
+      3357,
+      3763,
+      3344,
+      3333,
+      3007,
+      2896,
+      3764,
+      3138,
+      2893,
+      3100,
       3251,
       2758,
       3826,
       3834,
-      3477,
+      3475,
       3320,
-      3440,
-      2554
+      3441,
+      2591
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 77213,
-      "observed": 77213,
+      "expected": 77231,
+      "observed": 77231,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "1999-04-01",
-    "end": "2003-02-01",
-    "matureDate": "2006-10-01",
-    "status": "available",
-    "months": 46,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      2,
-      5,
-      2,
-      1,
-      1,
-      2,
-      3,
-      2,
-      1,
-      7,
-      0,
-      5,
-      18,
-      5,
-      5,
-      4,
-      2,
-      2,
-      2,
-      3,
-      2,
-      10,
-      4,
-      2,
-      4,
-      2,
-      7,
-      4,
-      4,
-      4,
-      29,
-      11,
-      8,
-      6,
-      2,
-      2,
-      9,
-      7,
-      7,
-      5,
-      4,
-      8,
-      12,
-      7,
-      8,
-      9
-    ],
-    "citationsByYearOffset": [
-      28,
-      242,
-      894,
-      1080,
-      1385,
-      830,
-      344,
-      32
-    ]
   },
   "mostCited": {
     "bibcode": "2001JGR...10623689S",
@@ -218,61 +151,61 @@
     ],
     "authorCount": 24,
     "year": 2001,
-    "citations": 1304
+    "citations": 1306
   },
   "ranks": {
     "full": {
       "bins": [
-        80.026,
-        74.505,
-        73.303,
-        72.961,
-        86.564,
-        76.143,
-        91.637,
-        74.334,
-        76.285,
-        84.241
+        79.995,
+        74.576,
+        73.482,
+        71.965,
+        87.404,
+        76.08,
+        91.803,
+        74.841,
+        76.699,
+        83.155
       ],
       "top1": 10.047
     },
     "window": {
       "bins": [
-        22.929,
-        22.812,
-        27.732,
-        26.971,
-        23.682,
-        26.146,
-        23.366,
-        23.147,
-        26.922,
+        22.874,
+        22.872,
+        27.729,
+        27.03,
+        23.621,
+        26.189,
+        23.33,
+        23.144,
+        26.918,
         25.294
       ],
       "top1": 5
     },
     "lifetime": {
       "bins": [
-        85.454,
-        110.288,
-        102.995,
-        135.656,
-        118.388,
-        124.631,
-        144.655,
-        158.591,
-        203.427,
-        240.916
+        86.013,
+        110.513,
+        102.796,
+        134.961,
+        118.874,
+        124.95,
+        143.206,
+        160.464,
+        203.261,
+        239.962
       ],
-      "top1": 26.22
+      "top1": 26.183
     }
   },
   "full": {
     "papers": 790,
     "outputBasis": "measured",
-    "citations": 11413,
-    "top10": 74.641,
-    "top10ShareOfDivision": 0.0683,
+    "citations": 11395,
+    "top10": 73.573,
+    "top10ShareOfDivision": 0.06732,
     "top1": 10.047,
     "top1ShareOfDivision": 0.09194,
     "first": {
@@ -292,7 +225,7 @@
       "citationBuckets": 13
     },
     "spread": {
-      "mean": 14.447,
+      "mean": 14.424,
       "median": 9,
       "uncited": 49,
       "i10": 378,
@@ -334,9 +267,9 @@
   "lifetime": {
     "papers": 1425,
     "outputBasis": "measured",
-    "citations": 77213,
-    "top10": 209.259,
-    "top10ShareOfDivision": 0.13291,
+    "citations": 77231,
+    "top10": 208.442,
+    "top10ShareOfDivision": 0.1323,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -347,7 +280,7 @@
       "date": "1998-03-00"
     },
     "spread": {
-      "mean": 54.185,
+      "mean": 54.197,
       "median": 27,
       "uncited": 62,
       "i10": 1067,
@@ -358,7 +291,7 @@
     "arms": "((=abs:\"Mars Global Surveyor\" OR (abs:MGS AND abs:Mars) OR ((=abs:Mars OR =abs:Martian) AND (abs:MOLA OR =abs:\"Mars Orbiter Laser Altimeter\" OR abs:MOC OR =abs:\"Mars Orbiter Camera\" OR ((abs:TES OR =abs:\"Thermal Emission Spectrometer\") NOT (abs:\"Mini-TES\" OR =abs:\"Miniature Thermal Emission Spectrometer\"))))) NOT (=abs:simulant OR =abs:simulants OR =abs:\"thermal energy storage\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1999-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Global+Surveyor%22+OR+%28abs%3AMGS+AND+abs%3AMars%29+OR+%28%28%3Dabs%3AMars+OR+%3Dabs%3AMartian%29+AND+%28abs%3AMOLA+OR+%3Dabs%3A%22Mars+Orbiter+Laser+Altimeter%22+OR+abs%3AMOC+OR+%3Dabs%3A%22Mars+Orbiter+Camera%22+OR+%28%28abs%3ATES+OR+%3Dabs%3A%22Thermal+Emission+Spectrometer%22%29+NOT+%28abs%3A%22Mini-TES%22+OR+%3Dabs%3A%22Miniature+Thermal+Emission+Spectrometer%22%29%29%29%29%29+NOT+%28%3Dabs%3Asimulant+OR+%3Dabs%3Asimulants+OR+%3Dabs%3A%22thermal+energy+storage%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:05:12.487138+00:00",
+    "fetchedAt": "2026-10-27T02:05:41.114677+00:00",
     "reconciliation": {
       "adsReturned": 1407,
       "curatedOut": 12,
@@ -759,7 +692,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 1304
+      "citations": 1306
     },
     {
       "bibcode": "1999Sci...284..790A",
@@ -795,7 +728,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 771
+      "citations": 772
     },
     {
       "bibcode": "2001JGR...10623429M",
@@ -807,22 +740,22 @@
       "citations": 735
     },
     {
-      "bibcode": "2004Icar..167..148S",
-      "title": "Interannual variability in TES atmospheric observations of Mars during 1999-2003",
-      "firstAuthor": "Smith, Michael D.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2004,
-      "citations": 685
-    },
-    {
       "bibcode": "1998Sci...279.1676A",
       "title": "Magnetic Field and Plasma Observations at Mars: Initial Results of the Mars Global Surveyor Mission",
       "firstAuthor": "Acuna, M. H.",
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 684
+      "citations": 689
+    },
+    {
+      "bibcode": "2004Icar..167..148S",
+      "title": "Interannual variability in TES atmospheric observations of Mars during 1999-2003",
+      "firstAuthor": "Smith, Michael D.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2004,
+      "citations": 686
     },
     {
       "bibcode": "2000Sci...287.1626B",

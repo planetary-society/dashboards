@@ -223,14 +223,14 @@ function perDollarFacts(division, members, stats, sides) {
 
 /**
  * The story's primer on one division: its papers by citation count in the scope (one bar per
- * count, then the rest), how many in each bar are top-10% papers (papers tied at the cutoff
+ * count, up to the most cited), how many in each bar are top-10% papers (papers tied at the cutoff
  * share the last places, so that bar is only partly in), and the cutoff. `topPapers` sums them:
  * the division's top-10% total, as the running total counts it.
  */
 function primerFacts(division, scope) {
 	const histogram = division.citationHistogram?.[scope];
 	const cut = division.stats?.[scope]?.cutoffs?.find((c) => c.percent === 10);
-	return histogram && cut ? { division: division.slug, name: division.name, ...histogram, cutoff: cut.citations, topPapers: round(sum(histogram.top) + histogram.topOverflow, 3) } : null;
+	return histogram && cut ? { division: division.slug, name: division.name, ...histogram, cutoff: cut.citations, topPapers: round(sum(histogram.top), 3) } : null;
 }
 
 /** The median launch year of the missions that have one, as a whole year; null when none does. */

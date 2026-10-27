@@ -23,12 +23,12 @@
     "m": 3.444,
     "i100": 33,
     "g": 99,
-    "tori": 28.355,
-    "riq": 280
+    "tori": 30.075,
+    "riq": 288
   },
   "facts": {
     "papers": 373,
-    "citations": 14383,
+    "citations": 14468,
     "publicationYears": [
       2009,
       2026
@@ -89,76 +89,19 @@
       1152,
       813,
       715,
-      1333,
-      1218,
+      1334,
+      1225,
       670,
-      1304,
-      840
+      1307,
+      914
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 14383,
-      "observed": 14383,
+      "expected": 14468,
+      "observed": 14468,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "2009-03-01",
-    "end": "2012-04-01",
-    "matureDate": "2015-10-01",
-    "status": "available",
-    "months": 37,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      1,
-      1,
-      0,
-      1,
-      0,
-      10,
-      0,
-      0,
-      5,
-      0,
-      2,
-      0,
-      0,
-      1,
-      0,
-      3,
-      1,
-      3,
-      2,
-      0,
-      1,
-      2,
-      0,
-      2,
-      1,
-      1,
-      0,
-      2,
-      2,
-      0,
-      2,
-      0,
-      3,
-      1,
-      2,
-      6,
-      3
-    ],
-    "citationsByYearOffset": [
-      36,
-      146,
-      234,
-      403,
-      260,
-      197,
-      121
-    ]
   },
   "mostCited": {
     "bibcode": "2009Sci...326..959M",
@@ -172,32 +115,32 @@
     ],
     "authorCount": 36,
     "year": 2009,
-    "citations": 505
+    "citations": 507
   },
   "ranks": {
     "full": {
       "bins": [
-        12.613,
-        15.714,
-        18.177,
-        19.427,
-        32.735,
-        30.201,
-        36.019,
-        57.999,
-        40.879,
-        66.235
+        12.628,
+        15.722,
+        18.178,
+        18.449,
+        32.145,
+        31.816,
+        36.044,
+        58.024,
+        40.789,
+        66.206
       ],
-      "top1": 8.292
+      "top1": 8.149
     },
     "window": {
       "bins": [
         2.544,
         3.845,
         3.41,
-        3.252,
-        4.482,
-        3.95,
+        3.262,
+        4.469,
+        3.952,
         7.854,
         3.699,
         10.322,
@@ -207,16 +150,16 @@
     },
     "lifetime": {
       "bins": [
-        22.512,
-        21.855,
-        31.675,
-        27.143,
-        33.504,
-        35.483,
-        43.887,
-        61.783,
-        46.137,
-        49.021
+        21.598,
+        20.991,
+        30.035,
+        30.078,
+        34.191,
+        35.493,
+        44.047,
+        61.62,
+        46.074,
+        48.873
       ],
       "top1": 2
     }
@@ -224,11 +167,11 @@
   "full": {
     "papers": 330,
     "outputBasis": "measured",
-    "citations": 5745,
-    "top10": 65.235,
-    "top10ShareOfDivision": 0.04525,
-    "top1": 8.292,
-    "top1ShareOfDivision": 0.05752,
+    "citations": 5751,
+    "top10": 65.206,
+    "top10ShareOfDivision": 0.04523,
+    "top1": 8.149,
+    "top1ShareOfDivision": 0.05652,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.496,
@@ -246,7 +189,7 @@
       "citationBuckets": 18
     },
     "spread": {
-      "mean": 17.409,
+      "mean": 17.427,
       "median": 13,
       "uncited": 8,
       "i10": 209,
@@ -288,9 +231,9 @@
   "lifetime": {
     "papers": 373,
     "outputBasis": "measured",
-    "citations": 14383,
-    "top10": 49.021,
-    "top10ShareOfDivision": 0.02677,
+    "citations": 14468,
+    "top10": 48.873,
+    "top10ShareOfDivision": 0.02668,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -301,10 +244,10 @@
       "date": "2009-06-00"
     },
     "spread": {
-      "mean": 38.56,
+      "mean": 38.788,
       "median": 24,
-      "uncited": 17,
-      "i10": 271,
+      "uncited": 16,
+      "i10": 272,
       "i100": 33
     }
   },
@@ -312,7 +255,7 @@
     "arms": "(((abs:\"IBEX-Hi\" OR abs:\"IBEX-Lo\" OR abs:\"Interstellar Boundary Explorer\" OR (abs:IBEX AND (abs:\"energetic neutral atom\" OR abs:\"electrostatic analyzer\" OR abs:(ENA OR ENAs OR heliosphere OR heliospheric OR heliosheath OR heliopause OR interstellar OR ribbon OR \"pickup ion\" OR \"pick-up ion\" OR \"solar wind\" OR magnetosphere OR magnetospheric OR \"bow shock\" OR lunar OR Moon))))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2009-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22IBEX-Hi%22+OR+abs%3A%22IBEX-Lo%22+OR+abs%3A%22Interstellar+Boundary+Explorer%22+OR+%28abs%3AIBEX+AND+%28abs%3A%22energetic+neutral+atom%22+OR+abs%3A%22electrostatic+analyzer%22+OR+abs%3A%28ENA+OR+ENAs+OR+heliosphere+OR+heliospheric+OR+heliosheath+OR+heliopause+OR+interstellar+OR+ribbon+OR+%22pickup+ion%22+OR+%22pick-up+ion%22+OR+%22solar+wind%22+OR+magnetosphere+OR+magnetospheric+OR+%22bow+shock%22+OR+lunar+OR+Moon%29%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:13:37.865681+00:00",
+    "fetchedAt": "2026-10-27T02:20:38.727290+00:00",
     "reconciliation": {
       "adsReturned": 380,
       "curatedOut": 8,
@@ -457,7 +400,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 505
+      "citations": 507
     },
     {
       "bibcode": "2009SSRv..146...11M",
@@ -466,7 +409,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 372
+      "citations": 374
+    },
+    {
+      "bibcode": "2012Sci...336.1291M",
+      "title": "The Heliosphere’s Interstellar Interaction: No Bow Shock",
+      "firstAuthor": "McComas, D. J.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2012,
+      "citations": 250
     },
     {
       "bibcode": "2010ApJ...708L.126H",
@@ -478,22 +430,13 @@
       "citations": 248
     },
     {
-      "bibcode": "2012Sci...336.1291M",
-      "title": "The Heliosphere’s Interstellar Interaction: No Bow Shock",
-      "firstAuthor": "McComas, D. J.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2012,
-      "citations": 248
-    },
-    {
       "bibcode": "2009Sci...326..966S",
       "title": "Comparison of Interstellar Boundary Explorer Observations with 3D Global Heliospheric Models",
       "firstAuthor": "Schwadron, N. A.",
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 245
+      "citations": 246
     },
     {
       "bibcode": "2009SSRv..146...75F",
@@ -502,7 +445,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 221
+      "citations": 223
     },
     {
       "bibcode": "2009Sci...326..964F",
@@ -511,7 +454,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 215
+      "citations": 217
     },
     {
       "bibcode": "2009SSRv..146..117F",
@@ -520,7 +463,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 203
+      "citations": 206
     },
     {
       "bibcode": "2016ApJ...818L..18Z",
@@ -529,7 +472,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 195
+      "citations": 199
     },
     {
       "bibcode": "2010ApJ...708.1092Z",
@@ -565,7 +508,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 172
+      "citations": 173
     },
     {
       "bibcode": "2013ApJ...763...20Z",
@@ -583,7 +526,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 159
+      "citations": 160
     },
     {
       "bibcode": "2015ApJS..220...22M",
@@ -601,7 +544,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 152
+      "citations": 153
     },
     {
       "bibcode": "2015ARA&A..53..449Z",

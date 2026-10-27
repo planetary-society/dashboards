@@ -35,16 +35,9 @@ test('accumulation preserves source totals, explicit citation gaps and actual mi
 		assert.equal(coverage.expected, d.facts.citations, d.slug);
 		assert.equal(coverage.observed, life.citeTotal, d.slug);
 		assert.equal(coverage.missing, coverage.expected - coverage.observed, d.slug);
-		assert.ok(coverage.missing >= 0 && coverage.missing <= citationHistory.maxMissing);
-		assert.ok(coverage.missing === 0 || coverage.missing / coverage.expected <= citationHistory.maxMissingFraction);
+		assert.ok(coverage.missing >= 0 && coverage.missing <= Math.max(citationHistory.maxMissing, Math.floor(coverage.expected * citationHistory.maxMissingFraction)));
 		assert.equal(coverage.status, coverage.missing ? 'incomplete' : 'complete');
 		assert.ok(life.partialIndex === -1 || life.partialIndex === life.years.length - 1, d.slug);
-		const measured = d.missions.filter((m) => m.window.status === 'available' && m.window.outputBasis === 'measured');
-		assert.equal(d.windowSeries.missionsIncluded, measured.length);
-		assert.equal(d.windowSeries.papersByMonth.length, Math.max(0, ...measured.map((m) => m.window.bounds.months)));
-		assert.equal(d.windowSeries.citationsByYearOffset.length, Math.max(0, ...measured.map((m) => m.window.bounds.citationBuckets)));
-		assert.deepEqual(d.windowSeries.missionsByYear, Array.from({ length: Math.ceil(d.windowSeries.papersByMonth.length / 12) },
-			(_, i) => measured.filter((m) => m.window.bounds.months > i * 12).length));
 		for (const row of d.missions) {
 			const m = read('missions/' + row.id + '.json');
 			if (m.lifetimeSeries) {
@@ -52,10 +45,6 @@ test('accumulation preserves source totals, explicit citation gaps and actual mi
 				assert.equal(model.pubTotal, m.facts.papers, m.id);
 				assert.equal(model.citeTotal, model.citationCoverage.observed, m.id);
 				assert.equal(model.citationCoverage.expected, m.facts.citations, m.id);
-			}
-			if (row.window.outputBasis === 'measured' && row.window.status === 'available') {
-				assert.equal(m.windowSeries.papersByMonth.reduce((a, b) => a + b, 0), row.window.papers, m.id);
-				assert.equal(m.windowSeries.citationsByYearOffset.reduce((a, b) => a + b, 0), row.window.citations, m.id);
 			}
 		}
 	}

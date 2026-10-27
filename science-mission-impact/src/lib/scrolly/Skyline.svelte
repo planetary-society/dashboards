@@ -5,6 +5,7 @@
 	// The citation step zooms out: the paper columns sink onto the citation scale (`zoom`), then
 	// each mission's citations rise behind its papers (`cite`), both √ so the two read together.
 	import { int } from '$lib/format.js';
+	import { columnLabel } from './layouts.js';
 
 	/**
 	 * layout: skylineLayout() result. total: distinct papers. cited: their citations. rise: 0..1
@@ -16,16 +17,9 @@
 	const ticks = $derived(layout.x.ticks(compact ? 4 : 8));
 	const hot = $derived(layout.columns.find((c) => c.id === highlight) ?? null);
 	const papersK = $derived(rise * (1 + (layout.zoom - 1) * zoom));
-	// centred over its column unless that would run it off either end of the chart (width estimated per character)
-	const label = $derived.by(() => {
-		if (!hot) return null;
-		const text = `${hot.name} ${int(cite > 0 ? hot.cited : hot.papers)}`;
-		const cx = hot.x + hot.w / 2;
-		const half = ((text.length + 1) * (compact ? 6 : 7)) / 2;
-		const anchor = cx - half < layout.left ? 'start' : cx + half > layout.right ? 'end' : 'middle';
-		const y = layout.ground - Math.max(hot.h * papersK, hot.hc * cite) - 4;
-		return { text, x: anchor === 'start' ? hot.x : anchor === 'end' ? hot.x + hot.w : cx, y, anchor };
-	});
+	const label = $derived(
+		hot && columnLabel(`${hot.name} ${int(cite > 0 ? hot.cited : hot.papers)}`, hot, { left: layout.left, right: layout.right, y: layout.ground - Math.max(hot.h * papersK, hot.hc * cite) - 4, compact })
+	);
 </script>
 
 <div class="skyline" class:visible class:compact aria-hidden="true">

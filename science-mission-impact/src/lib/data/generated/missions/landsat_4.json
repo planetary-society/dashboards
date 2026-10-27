@@ -23,12 +23,12 @@
     "m": 0.795,
     "i100": 16,
     "g": 78,
-    "tori": 92.193,
+    "tori": 92.797,
     "riq": 218
   },
   "facts": {
     "papers": 187,
-    "citations": 6529,
+    "citations": 6539,
     "publicationYears": [
       1983,
       2026
@@ -157,11 +157,11 @@
       80,
       80,
       77,
-      73,
+      77,
       112,
       105,
       110,
-      184,
+      185,
       211,
       274,
       375,
@@ -170,91 +170,16 @@
       609,
       579,
       649,
-      719,
-      522
+      721,
+      525
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 6529,
-      "observed": 6529,
+      "expected": 6539,
+      "observed": 6539,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "1983-02-01",
-    "end": "1987-08-01",
-    "matureDate": "1990-10-01",
-    "status": "available",
-    "months": 54,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      2,
-      0,
-      0,
-      1,
-      1,
-      0,
-      4,
-      0,
-      0,
-      0,
-      12,
-      0,
-      0,
-      2,
-      0,
-      0,
-      1,
-      0,
-      6,
-      0,
-      0,
-      0,
-      1,
-      1,
-      1,
-      1,
-      0,
-      0,
-      1,
-      1,
-      3,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      2,
-      0,
-      1,
-      0,
-      0,
-      0,
-      1
-    ],
-    "citationsByYearOffset": [
-      0,
-      11,
-      29,
-      14,
-      38,
-      11,
-      4,
-      5
-    ]
   },
   "mostCited": {
     "bibcode": "2015RSEnv.159..269Z",
@@ -267,18 +192,18 @@
     ],
     "authorCount": 3,
     "year": 2015,
-    "citations": 1194
+    "citations": 1196
   },
   "ranks": {
     "full": {
       "bins": [
-        26.752,
-        10.057,
-        6.93,
+        26.738,
+        10.073,
+        6.934,
         5.878,
-        3.71,
-        3.355,
-        3.317,
+        3.707,
+        3.366,
+        3.304,
         0,
         2,
         0
@@ -287,13 +212,13 @@
     },
     "window": {
       "bins": [
-        19.54,
-        6.298,
-        5.248,
-        4.431,
-        2.77,
-        3.66,
-        1.053,
+        19.537,
+        6.301,
+        5.262,
+        4.42,
+        2.773,
+        3.657,
+        1.05,
         0,
         0,
         0
@@ -302,13 +227,13 @@
     },
     "lifetime": {
       "bins": [
-        30.39,
-        27.434,
-        18.246,
-        25.95,
-        18.046,
-        12.867,
-        10.067,
+        29.961,
+        27.449,
+        18.343,
+        25.967,
+        18.263,
+        12.91,
+        10.107,
         18,
         7,
         19
@@ -383,7 +308,7 @@
   "lifetime": {
     "papers": 187,
     "outputBasis": "measured",
-    "citations": 6529,
+    "citations": 6539,
     "top10": 9.583,
     "top10ShareOfDivision": 0.00206,
     "top1": null,
@@ -396,7 +321,7 @@
       "date": "1984-05-00"
     },
     "spread": {
-      "mean": 34.914,
+      "mean": 34.968,
       "median": 8,
       "uncited": 28,
       "i10": 82,
@@ -407,7 +332,7 @@
     "arms": "((=abs:\"Landsat-4\" OR =abs:\"Landsat 4-5\" OR =abs:\"Landsats 4\" OR =abs:\"Landsat TM 4 5\" OR =abs:\"Landsat missions 4\" OR =abs:\"Landsat 1 4\" OR =abs:\"Landsat 1 5\" OR =abs:\"Landsats 1 5\" OR =abs:\"Landsat 1 8\" OR =abs:\"Landsat 1 9\" OR =abs:\"Landsat-D\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1983-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Landsat-4%22+OR+%3Dabs%3A%22Landsat+4-5%22+OR+%3Dabs%3A%22Landsats+4%22+OR+%3Dabs%3A%22Landsat+TM+4+5%22+OR+%3Dabs%3A%22Landsat+missions+4%22+OR+%3Dabs%3A%22Landsat+1+4%22+OR+%3Dabs%3A%22Landsat+1+5%22+OR+%3Dabs%3A%22Landsats+1+5%22+OR+%3Dabs%3A%22Landsat+1+8%22+OR+%3Dabs%3A%22Landsat+1+9%22+OR+%3Dabs%3A%22Landsat-D%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1983-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:07:51.152661+00:00",
+    "fetchedAt": "2026-10-27T02:10:11.658381+00:00",
     "reconciliation": {
       "adsReturned": 183,
       "curatedOut": 2,
@@ -520,7 +445,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 1194
+      "citations": 1196
     },
     {
       "bibcode": "2003ITGRS..41.2674C",
@@ -538,7 +463,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 450
+      "citations": 453
     },
     {
       "bibcode": "2019RSEnv.23111205Q",
@@ -556,7 +481,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 238
+      "citations": 239
     },
     {
       "bibcode": "2012RSEnv.122...30M",
@@ -610,7 +535,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 126
+      "citations": 128
     },
     {
       "bibcode": "2001RSEnv..78...55V",
@@ -691,7 +616,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 72
+      "citations": 73
     }
   ],
   "papersFile": {

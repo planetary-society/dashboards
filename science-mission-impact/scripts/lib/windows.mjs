@@ -65,20 +65,3 @@ export function missionWindow(cohort, policy, id) {
 		months: months > 0 ? months : 0,
 		citationBuckets: months > 0 ? new Date(Date.parse(end) - 1).getUTCFullYear() - Number(start.slice(0, 4)) + policy.citationYears + 1 : 0 };
 }
-
-/** Each elapsed-year cell reports how many measured mission windows still cover it. */
-export function combineWindows(series) {
-	const included = series.filter((s) => s?.status === 'available' && s.outputBasis === 'measured');
-	const months = Math.max(0, ...included.map((s) => s.papersByMonth.length));
-	const buckets = Math.max(0, ...included.map((s) => s.citationsByYearOffset.length));
-	const papersByMonth = new Array(months).fill(0);
-	const citationsByYearOffset = new Array(buckets).fill(0);
-	const missionsByYear = new Array(Math.ceil(months / 12)).fill(0);
-	for (const s of included) {
-		for (let i = 0; i < s.papersByMonth.length; i++) papersByMonth[i] += s.papersByMonth[i];
-		for (let i = 0; i < s.citationsByYearOffset.length; i++) citationsByYearOffset[i] += s.citationsByYearOffset[i];
-		for (let i = 0; i < Math.ceil(s.papersByMonth.length / 12); i++) missionsByYear[i]++;
-	}
-	return { papersByMonth, citationsByYearOffset, missionsByYear, missionsIncluded: included.length,
-		status: included.length ? 'available' : 'unavailable' };
-}

@@ -23,12 +23,12 @@
     "m": 2.737,
     "i100": 22,
     "g": 91,
-    "tori": 50.173,
+    "tori": 50.137,
     "riq": 372
   },
   "facts": {
     "papers": 237,
-    "citations": 10270,
+    "citations": 10281,
     "publicationYears": [
       2008,
       2026
@@ -80,13 +80,13 @@
     "citations": [
       91,
       148,
-      475,
+      483,
       455,
-      431,
-      539,
-      551,
+      430,
+      538,
+      550,
       491,
-      593,
+      594,
       570,
       583,
       684,
@@ -96,61 +96,15 @@
       635,
       754,
       654,
-      520
+      525
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 10270,
-      "observed": 10270,
+      "expected": 10281,
+      "observed": 10281,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "2008-06-01",
-    "end": "2010-09-01",
-    "matureDate": "2013-10-01",
-    "status": "available",
-    "months": 27,
-    "citationBuckets": 6,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      7,
-      4,
-      3,
-      3,
-      7,
-      3,
-      0,
-      4,
-      2,
-      2,
-      1,
-      1,
-      0,
-      6,
-      1,
-      2,
-      3,
-      4,
-      3,
-      6,
-      3,
-      4,
-      4,
-      5,
-      4,
-      0,
-      8
-    ],
-    "citationsByYearOffset": [
-      91,
-      147,
-      466,
-      419,
-      299,
-      113
-    ]
   },
   "mostCited": {
     "bibcode": "2009Sci...325...64H",
@@ -169,54 +123,54 @@
   "ranks": {
     "full": {
       "bins": [
-        11.103,
-        8.351,
-        6.871,
-        6.458,
-        8.48,
-        8.368,
-        8.017,
-        17.648,
-        9.705,
+        12.1,
+        7.358,
+        5.979,
+        7.356,
+        8.427,
+        8.41,
+        7.035,
+        18.285,
+        10.051,
         12
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        8.982,
-        8.598,
-        7.597,
-        8.544,
-        9.365,
-        7.568,
-        14.62,
-        10.618,
-        7.108,
+        9.968,
+        7.614,
+        7.596,
+        8.574,
+        9.334,
+        6.913,
+        14.966,
+        10.928,
+        7.106,
         7
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        17.609,
-        15.12,
-        18.856,
-        21.88,
-        20.463,
-        29.528,
-        38.478,
-        22.161,
-        28.359,
-        24.547
+        17.742,
+        15.117,
+        18.806,
+        21.814,
+        20.632,
+        30.162,
+        37.976,
+        22.004,
+        28.471,
+        24.275
       ],
-      "top1": 3.22
+      "top1": 3.183
     }
   },
   "full": {
     "papers": 97,
     "outputBasis": "measured",
-    "citations": 1579,
+    "citations": 1585,
     "top10": 8.867,
     "top10ShareOfDivision": 0.00811,
     "top1": 2,
@@ -238,17 +192,17 @@
       "citationBuckets": 6
     },
     "spread": {
-      "mean": 16.278,
+      "mean": 16.34,
       "median": 10,
-      "uncited": 8,
-      "i10": 51,
+      "uncited": 9,
+      "i10": 52,
       "i100": 2
     }
   },
   "window": {
     "papers": 90,
     "outputBasis": "measured",
-    "citations": 1535,
+    "citations": 1541,
     "top10": 6,
     "top10ShareOfDivision": 0.01243,
     "top1": 2,
@@ -270,19 +224,19 @@
       "citationBuckets": 6
     },
     "spread": {
-      "mean": 17.056,
+      "mean": 17.122,
       "median": 12,
-      "uncited": 7,
-      "i10": 50,
+      "uncited": 8,
+      "i10": 51,
       "i100": 2
     }
   },
   "lifetime": {
     "papers": 237,
     "outputBasis": "measured",
-    "citations": 10270,
-    "top10": 19.307,
-    "top10ShareOfDivision": 0.01226,
+    "citations": 10281,
+    "top10": 19.171,
+    "top10ShareOfDivision": 0.01217,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -293,7 +247,7 @@
       "date": "2008-10-00"
     },
     "spread": {
-      "mean": 43.333,
+      "mean": 43.38,
       "median": 23,
       "uncited": 12,
       "i10": 175,
@@ -304,7 +258,7 @@
     "arms": "((=abs:\"Phoenix lander\" OR =abs:\"Phoenix landers\" OR =abs:\"Phoenix landing\" OR =abs:\"Mars Phoenix\" OR =abs:\"Phoenix Mars\" OR =abs:\"Phoenix Robotic Arm\" OR =abs:\"Phoenix MET\" OR (abs:(Mars OR Martian) AND (=abs:\"Phoenix mission\" OR =abs:\"Phoenix Scout\" OR =abs:\"Phoenix site\" OR =abs:\"Phoenix lidar\" OR =abs:\"detected by Phoenix\" OR =abs:\"measured by Phoenix\" OR =abs:\"observed by Phoenix\" OR =abs:\"Phoenix surface pressure\" OR =title:Phoenix OR =abs:\"Surface Stereo Imager\" OR (=abs:\"Thermal and Evolved Gas Analyzer\" AND =abs:Phoenix) OR =abs:\"Wet Chemistry Lab\" OR =abs:\"Wet Chemistry Laboratory\" OR =abs:\"Thermal and Electrical Conductivity Probe\" OR =abs:\"Microscopy, Electrochemistry, and Conductivity Analyzer\" OR abs:TEGA OR abs:MECA OR abs:TECP OR abs:WCL OR (=abs:Phoenix AND (abs:SSI OR abs:RAC OR abs:MARDI OR =abs:lidar OR =abs:\"MET station\" OR =abs:\"surface pressure\"))))) AND NOT bibstem:(JSpRo OR PhT))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2008-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Phoenix+lander%22+OR+%3Dabs%3A%22Phoenix+landers%22+OR+%3Dabs%3A%22Phoenix+landing%22+OR+%3Dabs%3A%22Mars+Phoenix%22+OR+%3Dabs%3A%22Phoenix+Mars%22+OR+%3Dabs%3A%22Phoenix+Robotic+Arm%22+OR+%3Dabs%3A%22Phoenix+MET%22+OR+%28abs%3A%28Mars+OR+Martian%29+AND+%28%3Dabs%3A%22Phoenix+mission%22+OR+%3Dabs%3A%22Phoenix+Scout%22+OR+%3Dabs%3A%22Phoenix+site%22+OR+%3Dabs%3A%22Phoenix+lidar%22+OR+%3Dabs%3A%22detected+by+Phoenix%22+OR+%3Dabs%3A%22measured+by+Phoenix%22+OR+%3Dabs%3A%22observed+by+Phoenix%22+OR+%3Dabs%3A%22Phoenix+surface+pressure%22+OR+%3Dtitle%3APhoenix+OR+%3Dabs%3A%22Surface+Stereo+Imager%22+OR+%28%3Dabs%3A%22Thermal+and+Evolved+Gas+Analyzer%22+AND+%3Dabs%3APhoenix%29+OR+%3Dabs%3A%22Wet+Chemistry+Lab%22+OR+%3Dabs%3A%22Wet+Chemistry+Laboratory%22+OR+%3Dabs%3A%22Thermal+and+Electrical+Conductivity+Probe%22+OR+%3Dabs%3A%22Microscopy%2C+Electrochemistry%2C+and+Conductivity+Analyzer%22+OR+abs%3ATEGA+OR+abs%3AMECA+OR+abs%3ATECP+OR+abs%3AWCL+OR+%28%3Dabs%3APhoenix+AND+%28abs%3ASSI+OR+abs%3ARAC+OR+abs%3AMARDI+OR+%3Dabs%3Alidar+OR+%3Dabs%3A%22MET+station%22+OR+%3Dabs%3A%22surface+pressure%22%29%29%29%29%29+AND+NOT+bibstem%3A%28JSpRo+OR+PhT%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2008-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:06:45.747276+00:00",
+    "fetchedAt": "2026-10-27T02:08:25.382415+00:00",
     "reconciliation": {
       "adsReturned": 243,
       "curatedOut": 5,
@@ -507,7 +461,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 402
+      "citations": 403
     },
     {
       "bibcode": "2008JGRE..113.0A24K",
@@ -516,7 +470,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 326
+      "citations": 327
     },
     {
       "bibcode": "2009Sci...325...61B",
@@ -534,7 +488,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 280
+      "citations": 279
     },
     {
       "bibcode": "2009JGRE..114.1007L",
@@ -564,21 +518,21 @@
       "citations": 171
     },
     {
-      "bibcode": "2008Icar..197..470P",
-      "title": "Mojave Mars simulant—Characterization of a new geologic Mars analog",
-      "firstAuthor": "Peters, Gregory H.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2008,
-      "citations": 160
-    },
-    {
       "bibcode": "2009Sci...325...68W",
       "title": "Mars Water-Ice Clouds and Precipitation",
       "firstAuthor": "Whiteway, J. A.",
       "authors": null,
       "authorCount": null,
       "year": 2009,
+      "citations": 161
+    },
+    {
+      "bibcode": "2008Icar..197..470P",
+      "title": "Mojave Mars simulant—Characterization of a new geologic Mars analog",
+      "firstAuthor": "Peters, Gregory H.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2008,
       "citations": 160
     },
     {

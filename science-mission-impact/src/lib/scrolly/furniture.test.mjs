@@ -17,7 +17,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { compile } from 'svelte/compiler';
 import { render } from 'svelte/server';
 import { scaleLinear, scaleLog } from 'd3-scale';
-import { splitLayout, focusLayout, costLayout } from './layouts.js';
+import { splitLayout, focusLayout, costLayout, primerLayout } from './layouts.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const lib = join(here, '..');
@@ -287,14 +287,29 @@ test('SplitLabels prerenders each block\'s figure and label over its icon array'
 	}
 });
 
-test('Primer prerenders a bar per citation count, the overflow bar, their top-10% parts and the cutoff', async () => {
-	const { body } = render(await load('Primer.svelte'), { props: { ...stage, primer: story.primer, years: 4, highlight: true } });
+test('Primer prerenders a bar per citation count up to the most cited, their top-10% parts and the cutoff', async () => {
+	const layout = primerLayout(story.primer, stage.width, stage.height);
+	const { body } = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, years: 4, highlight: true } });
 	clean(body);
-	const tops = [...story.primer.top, story.primer.topOverflow].filter((t) => t > 0).length;
-	assert.equal((body.match(/<rect/g) ?? []).length, story.primer.counts.length + 1 + tops);
-	assert.match(body, new RegExp(`${story.primer.counts.length}\\+`));
+	const tops = story.primer.top.filter((t) => t > 0).length;
+	assert.equal((body.match(/<rect/g) ?? []).length, story.primer.counts.filter((n) => n > 0).length + tops, 'no bar for a count no paper drew');
+	assert.ok(story.primer.counts.at(-1) > 0, 'the axis ends at the most cited paper');
 	assert.match(body, new RegExp(`about ${story.primer.cutoff} or more citations`));
 	assert.match(body, /first four years/);
+	assert.match(body, />1,000</, 'log gridlines at powers of ten');
+	assert.ok(!body.includes('class="label'), 'no count until the reader points');
+});
+
+test('Primer lights the pointed-at bar and names its count', async () => {
+	const layout = primerLayout(story.primer, stage.width, stage.height);
+	const most = story.primer.counts.length - 1;
+	const { body } = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, years: 4, hot: most } });
+	clean(body);
+	const n = story.primer.counts[most];
+	assert.ok(body.includes(`>${n} ${n === 1 ? 'paper' : 'papers'} cited ${most} times<`), 'the most cited bar, named');
+	assert.ok((body.match(/class="[^"]*\bhot\b/g) ?? []).length >= 1, 'its bar in flame');
+	const none = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, years: 4, hot: 0 } }).body;
+	assert.ok(none.includes(`${story.primer.counts[0].toLocaleString('en-US')} papers with no citations`));
 });
 
 test('FocusChart prerenders the axis, a bar per mission with top papers, the line and its labels', async () => {

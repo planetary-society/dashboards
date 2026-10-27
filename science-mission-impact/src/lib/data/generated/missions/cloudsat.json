@@ -23,12 +23,12 @@
     "m": 3.762,
     "i100": 49,
     "g": 127,
-    "tori": 129.643,
-    "riq": 517
+    "tori": 130.871,
+    "riq": 519
   },
   "facts": {
     "papers": 984,
-    "citations": 28758,
+    "citations": 28786,
     "publicationYears": [
       2006,
       2026
@@ -86,9 +86,9 @@
       6,
       127,
       217,
-      431,
+      432,
       552,
-      712,
+      715,
       855,
       1046,
       1257,
@@ -101,83 +101,16 @@
       2505,
       2481,
       2605,
-      2732,
-      1732
+      2738,
+      1750
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 28758,
-      "observed": 28758,
+      "expected": 28786,
+      "observed": 28786,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "2006-05-01",
-    "end": "2010-03-01",
-    "matureDate": "2013-10-01",
-    "status": "available",
-    "months": 46,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      2,
-      0,
-      0,
-      0,
-      1,
-      1,
-      2,
-      1,
-      0,
-      1,
-      1,
-      1,
-      0,
-      0,
-      10,
-      3,
-      1,
-      18,
-      2,
-      0,
-      2,
-      3,
-      1,
-      2,
-      1,
-      2,
-      5,
-      4,
-      3,
-      9,
-      5,
-      2,
-      0,
-      1,
-      3,
-      1,
-      1,
-      1,
-      15,
-      2
-    ],
-    "citationsByYearOffset": [
-      0,
-      6,
-      124,
-      217,
-      418,
-      439,
-      210,
-      66
-    ]
   },
   "mostCited": {
     "bibcode": "2010BAMS...91.1211W",
@@ -191,51 +124,51 @@
     ],
     "authorCount": 19,
     "year": 2010,
-    "citations": 869
+    "citations": 872
   },
   "ranks": {
     "full": {
       "bins": [
-        56.263,
-        76.518,
-        87.271,
-        81.911,
-        105.004,
-        101.738,
-        91.961,
-        96.11,
-        79.587,
-        57.639
+        56.188,
+        76.614,
+        87.302,
+        81.93,
+        105.038,
+        101.753,
+        91.392,
+        96.638,
+        79.523,
+        57.622
       ],
       "top1": 4
     },
     "window": {
       "bins": [
-        4.903,
-        7.854,
-        9.329,
-        9.206,
-        14.282,
-        11.005,
-        16.986,
-        11.213,
-        11.222,
+        4.9,
+        7.858,
+        9.343,
+        9.201,
+        14.285,
+        11.016,
+        16.595,
+        11.578,
+        11.224,
         11
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        86.025,
-        103.467,
-        89.431,
-        108.923,
-        111.418,
-        89.86,
-        111.411,
-        114.408,
-        77.757,
-        91.301
+        84.582,
+        102.586,
+        89.508,
+        109.333,
+        112.429,
+        90.175,
+        110.714,
+        115.015,
+        78.131,
+        91.525
       ],
       "top1": 9
     }
@@ -243,8 +176,8 @@
   "full": {
     "papers": 834,
     "outputBasis": "measured",
-    "citations": 8473,
-    "top10": 48.161,
+    "citations": 8476,
+    "top10": 48.149,
     "top10ShareOfDivision": 0.01338,
     "top1": 3.5,
     "top1ShareOfDivision": 0.00972,
@@ -265,7 +198,7 @@
       "citationBuckets": 21
     },
     "spread": {
-      "mean": 10.159,
+      "mean": 10.163,
       "median": 7,
       "uncited": 42,
       "i10": 313,
@@ -275,7 +208,7 @@
   "window": {
     "papers": 107,
     "outputBasis": "measured",
-    "citations": 1480,
+    "citations": 1482,
     "top10": 10.5,
     "top10ShareOfDivision": 0.01115,
     "top1": 0,
@@ -297,7 +230,7 @@
       "citationBuckets": 8
     },
     "spread": {
-      "mean": 13.832,
+      "mean": 13.85,
       "median": 10,
       "uncited": 2,
       "i10": 58,
@@ -307,8 +240,8 @@
   "lifetime": {
     "papers": 984,
     "outputBasis": "measured",
-    "citations": 28758,
-    "top10": 74.606,
+    "citations": 28786,
+    "top10": 74.706,
     "top10ShareOfDivision": 0.01606,
     "top1": null,
     "top1ShareOfDivision": null,
@@ -320,7 +253,7 @@
       "date": "2007-05-00"
     },
     "spread": {
-      "mean": 29.226,
+      "mean": 29.254,
       "median": 13,
       "uncited": 78,
       "i10": 582,
@@ -331,7 +264,7 @@
     "arms": "(=abs:\"CloudSat\")",
     "filters": "property:refereed AND doctype:article AND pubdate:[2006-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%3Dabs%3A%22CloudSat%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2006-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:10:56.724257+00:00",
+    "fetchedAt": "2026-10-27T02:14:52.562691+00:00",
     "reconciliation": {
       "adsReturned": 989,
       "curatedOut": 5,
@@ -395,7 +328,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 869
+      "citations": 872
     },
     {
       "bibcode": "2008JGRD..113.0A18S",
@@ -422,7 +355,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 435
+      "citations": 436
     },
     {
       "bibcode": "2008JGRD..113.0A12S",
@@ -431,7 +364,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 402
+      "citations": 403
     },
     {
       "bibcode": "2018JCli...31.4501K",
@@ -521,7 +454,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 263
+      "citations": 264
     },
     {
       "bibcode": "2011JGRD..11619209K",
@@ -548,7 +481,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 195
+      "citations": 196
     },
     {
       "bibcode": "2007GeoRL..34.9808M",

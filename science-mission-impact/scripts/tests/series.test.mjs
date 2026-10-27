@@ -4,10 +4,8 @@ import { describe, it } from 'node:test';
 import {
 	accumulateCitationYears,
 	buildLifetimeSeries,
-	citationsByYearOffset,
 	foldYears,
 	monthOffset,
-	papersByMonth,
 	papersByYearMap
 } from '../lib/series.mjs';
 
@@ -182,28 +180,6 @@ describe('window series', () => {
 		assert.equal(monthOffset('2004-07-01T00:00:00Z', '2004-04-14'), 3);
 		assert.equal(monthOffset('2005-04-00', '2004-04-14'), 12);
 		assert.equal(monthOffset(null, '2004-04-14'), null);
-	});
-
-	it('clamps papers to the first and last month bucket', () => {
-		const months = papersByMonth(
-			[{ date: '2004-03-01' }, { date: '2004-04-20' }, { date: '2007-05-01' }, { pubdate: '2004-05-00' }],
-			'2004-04-14',
-			36
-		);
-		assert.equal(months.length, 36);
-		assert.equal(months[0], 2); // the pre-start record clamps into month 0
-		assert.equal(months[1], 1);
-		assert.equal(months[35], 1); // the post-end record clamps into the last month
-		assert.equal(months.reduce((a, b) => a + b, 0), 4);
-	});
-
-	it('bins window citations by citing year minus the start year', () => {
-		const offsets = citationsByYearOffset(
-			{ a: ['2004X', '2005X', '2011X'], b: ['2003X'] },
-			2004,
-			7
-		);
-		assert.deepEqual(offsets, [2, 1, 0, 0, 0, 0, 1]);
 	});
 });
 

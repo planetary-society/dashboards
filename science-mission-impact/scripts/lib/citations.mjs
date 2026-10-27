@@ -41,15 +41,19 @@ export function citationRepresentatives(sources, expectedCounts, options = {}) {
 	return { lists, coverage, gaps };
 }
 
-/** A small, source-declared shortfall remains visible; totals are never rewritten. */
+/**
+ * A small shortfall remains visible as `incomplete`; totals are never rewritten. ADS can report a
+ * paper's count and its citing list a citation or two apart whatever the source declares, so any
+ * gap up to the larger of the two limits passes; one past it is a broken file, not drift.
+ */
 export function citationCoverage({ expected, observed, historyStatus, limits = {} }) {
 	if (![expected, observed].every((n) => Number.isSafeInteger(n) && n >= 0)) {
 		throw new PackagingError(`Citation history requires nonnegative integer totals: expected=${expected}, observed=${observed}`);
 	}
 	const missing = expected - observed;
 	if (missing === 0) return { status: 'complete', expected, observed, missing: 0 };
-	if (missing < 0 || historyStatus !== 'incomplete_citation_histories' ||
-		missing > (limits.maxMissing ?? 0) || missing / expected > (limits.maxMissingFraction ?? 0)) {
+	const allowed = Math.max(limits.maxMissing ?? 0, Math.floor(expected * (limits.maxMissingFraction ?? 0)));
+	if (missing < 0 || missing > allowed) {
 		throw new PackagingError(`Citation history: ${observed} dated edges vs ${expected} reported citations (${missing} missing); source status ${historyStatus ?? 'unknown'}. Outside the permitted small-gap limit. Repair upstream citation companions.`);
 	}
 	return { status: 'incomplete', expected, observed, missing };

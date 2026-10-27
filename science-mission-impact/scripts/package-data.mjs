@@ -38,7 +38,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { combineWindows, fullMissionPolicy, missionWindow, windowPolicy } from './lib/windows.mjs';
+import { fullMissionPolicy, missionWindow, windowPolicy } from './lib/windows.mjs';
 import { assertKnownIds, displayNames, loadConfig, resolveRawDir, tierBounds } from './lib/config.mjs';
 import { citationCoverage, citationRepresentatives } from './lib/citations.mjs';
 import { buildCostCurve } from './lib/costcurve.mjs';
@@ -79,8 +79,6 @@ import { splitQuery } from './lib/query.mjs';
 import {
 	accumulateCitationYears,
 	buildLifetimeSeries,
-	citationsByYearOffset,
-	papersByMonth,
 	papersByYearMap
 } from './lib/series.mjs';
 import { buildSite, byCost, byLaunch, tileSort } from './lib/site.mjs';
@@ -88,7 +86,7 @@ import { loadClps } from './lib/clps.mjs';
 import { buildKinds, loadPaperKinds } from './lib/kinds.mjs';
 import { underThreshold } from './lib/public.mjs';
 import { cleanTitle } from './lib/text.mjs';
-import { byText, groupBy, int, num, weight, yearOf } from './lib/util.mjs';
+import { groupBy, int, num, weight, yearOf } from './lib/util.mjs';
 
 const APP_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const GENERATED_REL = join('src', 'lib', 'data', 'generated');
@@ -356,9 +354,9 @@ export function loadRuns(rawDir, config, warnings, source = loadSourceCatalog(ra
  * @param {{rawDir: string, generatedDir: string, papersDir: string}} args.paths
  * @param {object} args.run per-division blocks: scopes, summary and share denominators
  * @param {{into: Map<number, number>, seen: Set<string>}} args.divisionCitations
- * @param {Map<string, string[]>} args.citationOverrides rebuilt citing lists
+ * @param {Map<string, string[]>} args.citationOverrides the representative citing list of every division paper
  * @param {{cited: string[], curated: Set<string>, pubdates: Map<string, string>, authors: Map<string, object>}} args.ownCitations the mission's
- *   own cited bibcodes (file order, packaged papers only), its curated records, every record's ADS pubdate and byline authors
+ *   packaged papers, its curated records, every record's ADS pubdate and byline authors
  */
 export function buildMissionDoc({
 	mission,
@@ -439,33 +437,10 @@ export function buildMissionDoc({
 		if (count !== statsMission.lifetime_papers) throw new PackagingError(`${id}: lifetime publication timeline has ${count} papers, statistics report ${statsMission.lifetime_papers}`);
 	}
 
-	// --- window series --------------------------------------------------------
+	// --- prime window --------------------------------------------------------
 	const windowCohort = statsMission.window_cohort;
 	const bounds = missionWindow(windowCohort, snapshot.windowPolicy, id);
 	const windowStatus = statsMission.window_status ?? windowCohort?.status ?? 'unknown';
-	const windowStart = windowCohort?.publication_start_date ?? null;
-	let windowSeries = null;
-	if (windowStart && bounds.months > 0) {
-		const recordsWindow = paths.source.readMission(id, 'records_window');
-		const citationsWindow = paths.source.readMission(id, 'citations_window');
-		windowSeries = {
-			...bounds,
-			outputBasis: statsMission.window_output_basis ?? (statsMission.window_papers == null ? 'unavailable' : 'measured'),
-			papersByMonth: papersByMonth(recordsWindow?.records ?? [], windowStart, bounds.months),
-			citationsByYearOffset: citationsByYearOffset(
-				citationsWindow?.window_citations ?? {},
-				yearOf(windowStart),
-				bounds.citationBuckets
-			),
-			status: windowStatus
-		};
-		if (windowSeries.status === 'available' && windowSeries.outputBasis === 'measured') {
-			for (const [metric, values] of [['papers', windowSeries.papersByMonth], ['citations', windowSeries.citationsByYearOffset]]) {
-				const count = values.reduce((a, b) => a + b, 0);
-				if (count !== statsMission[`window_${metric}`]) throw new PackagingError(`${id}: window timeline has ${count} ${metric}, statistics report ${statsMission[`window_${metric}`]}. Repair the window companions and re-export.`);
-			}
-		}
-	}
 
 	// --- measures --------------------------------------------------------------
 	// The agency commits at formulation, and formulation dates cover more of the
@@ -611,7 +586,6 @@ export function buildMissionDoc({
 			publicationYears: publicationYearsPair(byMissionSummary?.publication_years, asOfYear)
 		},
 		lifetimeSeries,
-		windowSeries,
 		mostCited: paperRefFromTopCited(corpus.corpus?.top_cited?.[0], ownCitations.authors),
 		ranks,
 		full: { ...fullStats, spread: spreads.full },
@@ -713,7 +687,6 @@ export function buildMissionDoc({
 		})),
 		// What the division folds in afterwards.
 		divisionEdges,
-		windowSeries,
 		bytes: { missions: missionBytes, papers: papersBytes },
 		notes: {
 			unbalanced: balanced ? null : `${id} (${name})`,
@@ -860,7 +833,9 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 				...Object.values(topByScope).flatMap((list) => list.map((p) => p.bibcode))
 			]);
 			ownCitations.set(id, {
-				cited: Object.keys(citations).filter((bibcode) => included.has(bibcode)),
+				// Every packaged paper, not only those with a list in this file: ADS can give one mission's
+				// copy of a shared paper no citations while another's has some, and the statistics count the larger.
+				cited: [...included],
 				curated: new Set(records.filter((r) => r?.source && r.source !== 'query').map((r) => r.bibcode)),
 				pubdates: new Map(records.map((r) => [r.bibcode, r.pubdate])),
 				authors: new Map(records.filter((r) => bylined.has(r.bibcode)).map((r) => [r.bibcode, recordAuthors(r)]))
@@ -874,8 +849,6 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 	// Accumulators for the division's own series.
 	const citationSink = { into: new Map(), seen: new Set() };
 	let divisionEdges = 0;
-	const windowSeries = [];
-	const missionsImmature = [];
 
 	const missionRows = [];
 	const indexEntries = [];
@@ -922,10 +895,6 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 		bytes.papers += built.bytes.papers;
 		if (built.notes.unbalanced) unbalanced.push(built.notes.unbalanced);
 		if (built.notes.missingQuery) missionsWithoutQuery.push(built.notes.missingQuery);
-
-		const series = built.windowSeries;
-		if (series) windowSeries.push(series);
-		if (built.missionRow.window.status !== 'available') missionsImmature.push(built.missionRow.id);
 	}
 
 
@@ -987,10 +956,6 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 		},
 		rankable,
 		lifetimeSeries: divisionLifetimeSeries,
-		windowSeries: {
-			...combineWindows(windowSeries),
-			missionsImmature: [...missionsImmature].sort(byText)
-		},
 		mostCited: mostCitedRow
 			? {
 					bibcode: mostCitedRow.bibcode,

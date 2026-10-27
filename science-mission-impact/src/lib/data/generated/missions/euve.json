@@ -23,12 +23,12 @@
     "m": 2.147,
     "i100": 50,
     "g": 105,
-    "tori": 137.81,
+    "tori": 137.876,
     "riq": 345
   },
   "facts": {
     "papers": 473,
-    "citations": 18387,
+    "citations": 18410,
     "publicationYears": [
       1993,
       2026
@@ -124,15 +124,15 @@
       728,
       661,
       538,
-      594,
-      459,
+      595,
+      460,
       403,
       493,
       411,
       452,
       447,
       331,
-      310,
+      309,
       352,
       362,
       356,
@@ -141,84 +141,15 @@
       323,
       385,
       409,
-      378
+      400
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 18387,
-      "observed": 18387,
+      "expected": 18410,
+      "observed": 18410,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "1992-08-01",
-    "end": "1996-08-01",
-    "matureDate": "1999-10-01",
-    "status": "available",
-    "months": 48,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      1,
-      0,
-      3,
-      24,
-      0,
-      2,
-      3,
-      4,
-      2,
-      2,
-      1,
-      1,
-      3,
-      1,
-      1,
-      3,
-      1,
-      7,
-      1,
-      2,
-      1,
-      4,
-      5,
-      6,
-      6,
-      4,
-      11,
-      1,
-      3,
-      4,
-      2,
-      6,
-      4,
-      4,
-      4,
-      4,
-      4,
-      6
-    ],
-    "citationsByYearOffset": [
-      0,
-      0,
-      85,
-      288,
-      479,
-      546,
-      305,
-      143
-    ]
   },
   "mostCited": {
     "bibcode": "2002ApJ...568..610E",
@@ -237,15 +168,15 @@
   "ranks": {
     "full": {
       "bins": [
-        63.836,
-        51.317,
-        43.809,
-        38.759,
-        42.439,
-        30.488,
-        39.342,
-        31.61,
-        27.401,
+        63.893,
+        51.42,
+        43.894,
+        38.736,
+        42.376,
+        30.661,
+        39.196,
+        31.559,
+        27.265,
         20
       ],
       "top1": 0
@@ -254,12 +185,12 @@
       "bins": [
         28.58,
         15.837,
-        20.431,
-        18.752,
-        11.415,
-        15.516,
-        14.436,
-        5.032,
+        20.44,
+        18.762,
+        11.417,
+        15.519,
+        14.424,
+        5.021,
         7,
         5
       ],
@@ -267,16 +198,16 @@
     },
     "lifetime": {
       "bins": [
-        41.583,
-        41.047,
-        49.099,
-        52.144,
-        52.631,
-        52.768,
-        44.166,
-        61.721,
-        41.286,
-        36.554
+        43.439,
+        40.694,
+        50.31,
+        51.646,
+        52.829,
+        53.385,
+        42.72,
+        60.716,
+        41.646,
+        35.614
       ],
       "top1": 0
     }
@@ -348,9 +279,9 @@
   "lifetime": {
     "papers": 473,
     "outputBasis": "measured",
-    "citations": 18387,
-    "top10": 27.935,
-    "top10ShareOfDivision": 0.0044,
+    "citations": 18410,
+    "top10": 27.364,
+    "top10ShareOfDivision": 0.00431,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -361,18 +292,18 @@
       "date": "1994-06-00"
     },
     "spread": {
-      "mean": 38.873,
+      "mean": 38.922,
       "median": 24,
       "uncited": 26,
       "i10": 349,
-      "i100": 50
+      "i100": 51
     }
   },
   "query": {
     "arms": "((=abs:\"Extreme Ultraviolet Explorer\" OR facility:EUVE OR (abs:EUVE AND (collection:astronomy OR abs:(ultraviolet OR EUV OR star OR stars OR spectra OR spectrometer OR spacecraft)))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1992-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Extreme+Ultraviolet+Explorer%22+OR+facility%3AEUVE+OR+%28abs%3AEUVE+AND+%28collection%3Aastronomy+OR+abs%3A%28ultraviolet+OR+EUV+OR+star+OR+stars+OR+spectra+OR+spectrometer+OR+spacecraft%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1992-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:15:55.944725+00:00",
+    "fetchedAt": "2026-10-27T02:24:37.142285+00:00",
     "reconciliation": {
       "adsReturned": 477,
       "curatedOut": 4,

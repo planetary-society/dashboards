@@ -23,12 +23,12 @@
     "m": 1.8,
     "i100": 23,
     "g": 105,
-    "tori": 70.917,
-    "riq": 366
+    "tori": 71.719,
+    "riq": 368
   },
   "facts": {
     "papers": 127,
-    "citations": 11058,
+    "citations": 11124,
     "publicationYears": [
       2002,
       2024
@@ -94,11 +94,11 @@
       154,
       480,
       702,
-      969,
+      970,
       813,
       708,
-      659,
-      524,
+      660,
+      526,
       526,
       538,
       450,
@@ -113,78 +113,16 @@
       286,
       330,
       318,
-      406,
-      396
+      408,
+      456
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 11058,
-      "observed": 11058,
+      "expected": 11124,
+      "observed": 11124,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "2001-03-01",
-    "end": "2004-09-01",
-    "matureDate": "2007-10-01",
-    "status": "available",
-    "months": 42,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      3,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      2,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      0,
-      2,
-      1,
-      2,
-      1,
-      1,
-      0,
-      2,
-      2,
-      1,
-      0,
-      0
-    ],
-    "citationsByYearOffset": [
-      0,
-      8,
-      153,
-      464,
-      473,
-      431,
-      35
-    ]
   },
   "mostCited": {
     "bibcode": "2004RvMP...76.1143P",
@@ -195,20 +133,20 @@
     ],
     "authorCount": 1,
     "year": 2004,
-    "citations": 1810
+    "citations": 1812
   },
   "ranks": {
     "full": {
       "bins": [
-        21.238,
-        14.391,
-        6.19,
-        4.282,
-        6.708,
-        9.426,
-        11.096,
-        6.202,
-        11.467,
+        21.265,
+        14.384,
+        6.198,
+        4.266,
+        6.755,
+        9.487,
+        11.006,
+        6.216,
+        11.422,
         20
       ],
       "top1": 4
@@ -217,10 +155,10 @@
       "bins": [
         1,
         1,
-        0.231,
-        0.769,
-        1.003,
-        5.997,
+        0.232,
+        0.768,
+        1.007,
+        5.993,
         2,
         1,
         4,
@@ -230,14 +168,14 @@
     },
     "lifetime": {
       "bins": [
-        16.994,
-        17.369,
-        7.81,
-        11.021,
-        8.021,
-        11.785,
-        11.61,
-        9.39,
+        17.657,
+        16.484,
+        8.304,
+        11.242,
+        7.873,
+        11.44,
+        12,
+        9,
         13,
         20
       ],
@@ -247,7 +185,7 @@
   "full": {
     "papers": 111,
     "outputBasis": "measured",
-    "citations": 3627,
+    "citations": 3628,
     "top10": 17,
     "top10ShareOfDivision": 0.00342,
     "top1": 4,
@@ -269,7 +207,7 @@
       "citationBuckets": 13
     },
     "spread": {
-      "mean": 32.676,
+      "mean": 32.685,
       "median": 14,
       "uncited": 14,
       "i10": 65,
@@ -279,7 +217,7 @@
   "window": {
     "papers": 24,
     "outputBasis": "measured",
-    "citations": 1564,
+    "citations": 1565,
     "top10": 7,
     "top10ShareOfDivision": 0.00362,
     "top1": 2,
@@ -301,7 +239,7 @@
       "citationBuckets": 7
     },
     "spread": {
-      "mean": 65.167,
+      "mean": 65.208,
       "median": 28,
       "uncited": 1,
       "i10": 21,
@@ -311,7 +249,7 @@
   "lifetime": {
     "papers": 127,
     "outputBasis": "measured",
-    "citations": 11058,
+    "citations": 11124,
     "top10": 14.333,
     "top10ShareOfDivision": 0.00226,
     "top1": null,
@@ -324,7 +262,7 @@
       "date": "2003-03-00"
     },
     "spread": {
-      "mean": 87.071,
+      "mean": 87.591,
       "median": 26,
       "uncited": 7,
       "i10": 87,
@@ -335,7 +273,7 @@
     "arms": "((abs:\"HETE-2\" OR abs:\"HETE-II\" OR =abs:\"High Energy Transient Explorer 2\" OR =abs:\"High Energy Transient Explorer II\" OR (abs:HETE AND abs:(\"gamma-ray burst\" OR \"gamma-ray bursts\" OR GRB OR GRBs OR \"X-ray flash\" OR \"X-ray flashes\" OR XRF OR XRFs OR WXM OR FREGATE OR SXC OR \"soft gamma repeater\" OR SGR) NOT abs:\"J1900.1-2455\")) AND collection:astronomy)",
     "filters": "property:refereed AND doctype:article AND pubdate:[2001-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22HETE-2%22+OR+abs%3A%22HETE-II%22+OR+%3Dabs%3A%22High+Energy+Transient+Explorer+2%22+OR+%3Dabs%3A%22High+Energy+Transient+Explorer+II%22+OR+%28abs%3AHETE+AND+abs%3A%28%22gamma-ray+burst%22+OR+%22gamma-ray+bursts%22+OR+GRB+OR+GRBs+OR+%22X-ray+flash%22+OR+%22X-ray+flashes%22+OR+XRF+OR+XRFs+OR+WXM+OR+FREGATE+OR+SXC+OR+%22soft+gamma+repeater%22+OR+SGR%29+NOT+abs%3A%22J1900.1-2455%22%29%29+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2001-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:16:42.359465+00:00",
+    "fetchedAt": "2026-10-27T02:25:47.381722+00:00",
     "reconciliation": {
       "adsReturned": 132,
       "curatedOut": 12,
@@ -576,7 +514,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 1810
+      "citations": 1812
     },
     {
       "bibcode": "2003Natur.423..847H",
@@ -585,7 +523,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 1392
+      "citations": 1400
     },
     {
       "bibcode": "2003ApJ...591L..17S",
@@ -594,7 +532,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 1188
+      "citations": 1195
     },
     {
       "bibcode": "2005Natur.437..845F",
@@ -603,7 +541,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 496
+      "citations": 497
     },
     {
       "bibcode": "2006ApJ...643..266N",
@@ -648,7 +586,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 241
+      "citations": 242
     },
     {
       "bibcode": "2011ApJS..195....2S",
@@ -675,7 +613,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 152
+      "citations": 153
     },
     {
       "bibcode": "2003A&A...400.1021B",
@@ -684,7 +622,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 145
+      "citations": 146
     },
     {
       "bibcode": "2004ApJ...606..994S",
@@ -693,7 +631,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 138
+      "citations": 141
     },
     {
       "bibcode": "2006MNRAS.372.1034D",

@@ -23,12 +23,12 @@
     "m": 3.688,
     "i100": 27,
     "g": 93,
-    "tori": 35.95,
-    "riq": 352
+    "tori": 37.215,
+    "riq": 358
   },
   "facts": {
     "papers": 426,
-    "citations": 13492,
+    "citations": 13546,
     "publicationYears": [
       2011,
       2026
@@ -86,123 +86,16 @@
       1236,
       853,
       819,
-      906,
-      635
+      910,
+      685
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 13492,
-      "observed": 13492,
+      "expected": 13546,
+      "observed": 13546,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "2011-08-01",
-    "end": "2018-07-01",
-    "matureDate": "2021-10-01",
-    "status": "available",
-    "months": 83,
-    "citationBuckets": 11,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      2,
-      1,
-      12,
-      4,
-      0,
-      0,
-      0,
-      6,
-      1,
-      0,
-      1,
-      2,
-      3,
-      1,
-      1,
-      0,
-      1,
-      0,
-      1,
-      0,
-      0,
-      2,
-      1,
-      6,
-      1,
-      19,
-      0,
-      2,
-      0,
-      1,
-      1,
-      1,
-      2,
-      1,
-      0,
-      12,
-      2,
-      8,
-      11,
-      0,
-      5,
-      4,
-      0,
-      1,
-      1,
-      1,
-      3,
-      8,
-      11,
-      3,
-      4,
-      4,
-      5,
-      6,
-      0,
-      2,
-      1,
-      4,
-      0,
-      10,
-      0,
-      0,
-      11,
-      3,
-      6,
-      3,
-      1,
-      4,
-      1,
-      1,
-      0,
-      2,
-      6,
-      2,
-      0,
-      2,
-      1,
-      2,
-      1,
-      2,
-      1
-    ],
-    "citationsByYearOffset": [
-      31,
-      157,
-      511,
-      920,
-      897,
-      505,
-      414,
-      629,
-      750,
-      216,
-      53
-    ]
   },
   "mostCited": {
     "bibcode": "2012Sci...336..684R",
@@ -216,50 +109,50 @@
     ],
     "authorCount": 28,
     "year": 2012,
-    "citations": 456
+    "citations": 457
   },
   "ranks": {
     "full": {
       "bins": [
-        16.585,
-        25.408,
-        31.141,
-        23.992,
-        26.554,
-        33.757,
-        35.502,
-        42.593,
-        47.318,
-        54.151
+        16.579,
+        25.435,
+        31.207,
+        23.946,
+        26.543,
+        33.725,
+        35.555,
+        42.557,
+        47.356,
+        54.097
       ],
       "top1": 6.093
     },
     "window": {
       "bins": [
-        9.982,
-        24.499,
-        20.755,
-        17.498,
-        22.871,
-        20.628,
-        24.996,
-        24.446,
-        29.03,
+        9.968,
+        24.524,
+        20.745,
+        17.581,
+        22.787,
+        20.696,
+        24.951,
+        24.429,
+        29.024,
         33.294
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        31.158,
-        40.481,
-        40.345,
-        47.945,
-        50.998,
-        49.438,
-        50.368,
-        46.548,
-        35.718,
+        31.352,
+        39.796,
+        40.512,
+        48.509,
+        50.119,
+        50.08,
+        49.444,
+        47.695,
+        35.493,
         33
       ],
       "top1": 1
@@ -269,8 +162,8 @@
     "papers": 337,
     "outputBasis": "measured",
     "citations": 6462,
-    "top10": 54.151,
-    "top10ShareOfDivision": 0.04955,
+    "top10": 54.097,
+    "top10ShareOfDivision": 0.0495,
     "top1": 6.093,
     "top1ShareOfDivision": 0.05576,
     "first": {
@@ -332,9 +225,9 @@
   "lifetime": {
     "papers": 426,
     "outputBasis": "measured",
-    "citations": 13492,
+    "citations": 13546,
     "top10": 33,
-    "top10ShareOfDivision": 0.02096,
+    "top10ShareOfDivision": 0.02095,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -345,7 +238,7 @@
       "date": "2011-12-00"
     },
     "spread": {
-      "mean": 31.671,
+      "mean": 31.798,
       "median": 18,
       "uncited": 23,
       "i10": 284,
@@ -356,7 +249,7 @@
     "arms": "((=abs:\"Dawn mission\" OR =abs:\"Dawn spacecraft\" OR ((=abs:Dawn OR abs:VIR) AND (abs:Vesta OR abs:Ceres))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2011-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Dawn+mission%22+OR+%3Dabs%3A%22Dawn+spacecraft%22+OR+%28%28%3Dabs%3ADawn+OR+abs%3AVIR%29+AND+%28abs%3AVesta+OR+abs%3ACeres%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2011-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:06:48.467707+00:00",
+    "fetchedAt": "2026-10-27T02:08:29.112346+00:00",
     "reconciliation": {
       "adsReturned": 432,
       "curatedOut": 6,
@@ -453,7 +346,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 456
+      "citations": 457
     },
     {
       "bibcode": "2011SSRv..163..263S",
@@ -462,7 +355,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 279
+      "citations": 280
     },
     {
       "bibcode": "2012Sci...336..697D",
@@ -492,6 +385,15 @@
       "citations": 217
     },
     {
+      "bibcode": "2011SSRv..163....3R",
+      "title": "The Dawn Mission to Vesta and Ceres",
+      "firstAuthor": "Russell, C. T.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2011,
+      "citations": 212
+    },
+    {
       "bibcode": "2012Sci...336..687J",
       "title": "Vesta’s Shape and Morphology",
       "firstAuthor": "Jaumann, R.",
@@ -501,13 +403,13 @@
       "citations": 212
     },
     {
-      "bibcode": "2011SSRv..163....3R",
-      "title": "The Dawn Mission to Vesta and Ceres",
+      "bibcode": "2016Sci...353.1008R",
+      "title": "Dawn arrives at Ceres: Exploration of a small, volatile-rich world",
       "firstAuthor": "Russell, C. T.",
       "authors": null,
       "authorCount": null,
-      "year": 2011,
-      "citations": 210
+      "year": 2016,
+      "citations": 187
     },
     {
       "bibcode": "2012Sci...336..694S",
@@ -516,15 +418,6 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 185
-    },
-    {
-      "bibcode": "2016Sci...353.1008R",
-      "title": "Dawn arrives at Ceres: Exploration of a small, volatile-rich world",
-      "firstAuthor": "Russell, C. T.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2016,
       "citations": 185
     },
     {
@@ -552,7 +445,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 175
+      "citations": 177
     },
     {
       "bibcode": "2012Sci...336..700R",
@@ -570,7 +463,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 162
+      "citations": 164
     },
     {
       "bibcode": "2017Sci...355...55P",
@@ -579,7 +472,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 160
+      "citations": 162
     },
     {
       "bibcode": "2017Sci...355..719D",
@@ -588,7 +481,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 153
+      "citations": 154
     },
     {
       "bibcode": "2016Sci...353.4279A",
@@ -597,7 +490,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 147
+      "citations": 149
     },
     {
       "bibcode": "2013M&PS...48.2333M",
@@ -615,15 +508,15 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 137
+      "citations": 138
     },
     {
-      "bibcode": "2016Sci...353.4759H",
-      "title": "Cratering on Ceres: Implications for its crust and evolution",
-      "firstAuthor": "Hiesinger, H.",
+      "bibcode": "2012ApJ...758L..36D",
+      "title": "Detection of Widespread Hydrated Materials on Vesta by the VIR Imaging Spectrometer on board the Dawn Mission",
+      "firstAuthor": "De Sanctis, M. C.",
       "authors": null,
       "authorCount": null,
-      "year": 2016,
+      "year": 2012,
       "citations": 124
     }
   ],

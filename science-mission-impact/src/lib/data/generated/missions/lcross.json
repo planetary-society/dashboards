@@ -23,12 +23,12 @@
     "m": 1.353,
     "i100": 5,
     "g": 54,
-    "tori": 12.271,
+    "tori": 12.299,
     "riq": 206
   },
   "facts": {
     "papers": 57,
-    "citations": 2923,
+    "citations": 2931,
     "publicationYears": [
       2010,
       2026
@@ -78,70 +78,27 @@
       109,
       203,
       122,
-      144,
-      139,
+      143,
+      140,
       137,
-      107,
+      108,
       129,
       122,
-      146,
-      178,
+      147,
+      180,
       239,
       308,
       304,
       253,
-      257
+      261
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 2923,
-      "observed": 2923,
+      "expected": 2931,
+      "observed": 2931,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "2009-11-01",
-    "end": "2011-11-01",
-    "matureDate": "2014-10-01",
-    "status": "available",
-    "months": 24,
-    "citationBuckets": 6,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      6,
-      0,
-      3,
-      2,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      1,
-      0,
-      1
-    ],
-    "citationsByYearOffset": [
-      0,
-      26,
-      109,
-      193,
-      101,
-      3
-    ]
   },
   "mostCited": {
     "bibcode": "2010Sci...330..463C",
@@ -155,19 +112,19 @@
     ],
     "authorCount": 17,
     "year": 2010,
-    "citations": 730
+    "citations": 731
   },
   "ranks": {
     "full": {
       "bins": [
         0,
-        3.363,
-        1.637,
+        3.364,
+        1.636,
         0,
         1,
         0,
-        1.323,
-        1.677,
+        1.332,
+        1.668,
         0,
         5
       ],
@@ -176,10 +133,10 @@
     "window": {
       "bins": [
         0,
-        3.86,
-        1.14,
-        0.43,
-        0.57,
+        3.861,
+        1.139,
+        0.438,
+        0.562,
         1,
         2,
         0,
@@ -190,16 +147,16 @@
     },
     "lifetime": {
       "bins": [
-        5.039,
-        10.507,
-        3.454,
-        4.183,
-        5.817,
+        5.088,
+        10.556,
+        3.356,
+        4.211,
+        5.789,
         7,
         5,
         4,
-        7,
-        5
+        6.863,
+        5.138
       ],
       "top1": 2
     }
@@ -271,9 +228,9 @@
   "lifetime": {
     "papers": 57,
     "outputBasis": "measured",
-    "citations": 2923,
-    "top10": 3.5,
-    "top10ShareOfDivision": 0.00222,
+    "citations": 2931,
+    "top10": 3.569,
+    "top10ShareOfDivision": 0.00227,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -284,7 +241,7 @@
       "date": "2010-10-00"
     },
     "spread": {
-      "mean": 51.281,
+      "mean": 51.421,
       "median": 16,
       "uncited": 3,
       "i10": 37,
@@ -295,7 +252,7 @@
     "arms": "((=abs:\"Lunar CRater Observation and Sensing Satellite\" OR (abs:\"LCROSS\" AND (abs:\"Moon\" OR abs:\"lunar\" OR abs:\"impact\" OR abs:\"crater\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2009-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+CRater+Observation+and+Sensing+Satellite%22+OR+%28abs%3A%22LCROSS%22+AND+%28abs%3A%22Moon%22+OR+abs%3A%22lunar%22+OR+abs%3A%22impact%22+OR+abs%3A%22crater%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:06:55.796627+00:00",
+    "fetchedAt": "2026-10-27T02:08:45.057675+00:00",
     "reconciliation": {
       "adsReturned": 60,
       "curatedOut": 3,
@@ -351,7 +308,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 730
+      "citations": 731
     },
     {
       "bibcode": "2010Sci...330..479P",
@@ -360,7 +317,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 468
+      "citations": 469
     },
     {
       "bibcode": "2010Sci...330..483M",
@@ -387,7 +344,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 151
+      "citations": 152
     },
     {
       "bibcode": "2010EM&P..107...65A",
@@ -396,7 +353,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 85
+      "citations": 86
     },
     {
       "bibcode": "2010Sci...330..477H",
@@ -459,7 +416,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 49
+      "citations": 51
     },
     {
       "bibcode": "2022Icar..37714874B",

@@ -23,12 +23,12 @@
     "m": 1.333,
     "i100": 5,
     "g": 52,
-    "tori": 11.065,
+    "tori": 11.081,
     "riq": 123
   },
   "facts": {
     "papers": 76,
-    "citations": 2972,
+    "citations": 2973,
     "publicationYears": [
       2000,
       2026
@@ -120,84 +120,15 @@
       51,
       73,
       51,
-      40
+      41
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 2972,
-      "observed": 2972,
+      "expected": 2973,
+      "observed": 2973,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "1999-02-01",
-    "end": "2003-02-01",
-    "matureDate": "2006-10-01",
-    "status": "available",
-    "months": 48,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      14,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      1,
-      1,
-      1,
-      0,
-      1,
-      0,
-      0,
-      1,
-      1,
-      3,
-      1,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      2,
-      0,
-      3,
-      1,
-      1
-    ],
-    "citationsByYearOffset": [
-      0,
-      50,
-      83,
-      109,
-      121,
-      56,
-      40,
-      0
-    ]
   },
   "mostCited": {
     "bibcode": "2000ApJ...539L.129B",
@@ -216,16 +147,16 @@
   "ranks": {
     "full": {
       "bins": [
-        3.36,
-        6.393,
-        5.295,
-        6.661,
-        13.101,
-        9.249,
-        4.941,
+        3.363,
+        6.404,
+        5.353,
+        6.68,
+        13.069,
+        9.22,
+        4.911,
         3,
-        3.705,
-        0.295
+        3.738,
+        0.262
       ],
       "top1": 0
     },
@@ -234,8 +165,8 @@
         2.29,
         2.71,
         5,
-        7.2,
-        6.8,
+        7.214,
+        6.786,
         2,
         3,
         1,
@@ -246,14 +177,14 @@
     },
     "lifetime": {
       "bins": [
-        3.196,
-        7.804,
+        3.063,
+        7.937,
         2,
         6,
         6,
-        11.068,
-        18.761,
-        11.171,
+        11.826,
+        19.186,
+        9.988,
         6,
         4
       ],
@@ -264,8 +195,8 @@
     "papers": 56,
     "outputBasis": "measured",
     "citations": 704,
-    "top10": 0.295,
-    "top10ShareOfDivision": 0.00006,
+    "top10": 0.262,
+    "top10ShareOfDivision": 0.00005,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -327,7 +258,7 @@
   "lifetime": {
     "papers": 76,
     "outputBasis": "measured",
-    "citations": 2972,
+    "citations": 2973,
     "top10": 4,
     "top10ShareOfDivision": 0.00063,
     "top1": null,
@@ -340,7 +271,7 @@
       "date": "2000-08-00"
     },
     "spread": {
-      "mean": 39.105,
+      "mean": 39.118,
       "median": 34,
       "uncited": 2,
       "i10": 63,
@@ -351,7 +282,7 @@
     "arms": "((=abs:\"Submillimeter Wave Astronomy Satellite\" OR (abs:SWAS AND abs:(observation OR submillimeter OR interstellar OR water OR oxygen) AND NOT abs:\"southwestern atlantic\")) AND collection:astronomy)",
     "filters": "property:refereed AND doctype:article AND pubdate:[1999-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Submillimeter+Wave+Astronomy+Satellite%22+OR+%28abs%3ASWAS+AND+abs%3A%28observation+OR+submillimeter+OR+interstellar+OR+water+OR+oxygen%29+AND+NOT+abs%3A%22southwestern+atlantic%22%29%29+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:16:05.224482+00:00",
+    "fetchedAt": "2026-10-27T02:24:52.800027+00:00",
     "reconciliation": {
       "adsReturned": 79,
       "curatedOut": 3,

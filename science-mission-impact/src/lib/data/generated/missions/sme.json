@@ -23,12 +23,12 @@
     "m": 1.022,
     "i100": 8,
     "g": 69,
-    "tori": 82.979,
+    "tori": 83.156,
     "riq": 239
   },
   "facts": {
     "papers": 179,
-    "citations": 6150,
+    "citations": 6155,
     "publicationYears": [
       1982,
       2019
@@ -174,71 +174,15 @@
       82,
       125,
       88,
-      58
+      63
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 6150,
-      "observed": 6150,
+      "expected": 6155,
+      "observed": 6155,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "1981-11-01",
-    "end": "1984-11-01",
-    "matureDate": "1987-10-01",
-    "status": "available",
-    "months": 36,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      1,
-      1,
-      0,
-      8,
-      0,
-      1,
-      0,
-      0,
-      2,
-      0,
-      3,
-      0,
-      2,
-      1,
-      0,
-      0,
-      0,
-      0,
-      1,
-      1,
-      2,
-      1
-    ],
-    "citationsByYearOffset": [
-      0,
-      0,
-      58,
-      91,
-      65,
-      99,
-      34
-    ]
   },
   "mostCited": {
     "bibcode": "2000JGR...10527195W",
@@ -252,21 +196,21 @@
     ],
     "authorCount": 4,
     "year": 2000,
-    "citations": 291
+    "citations": 292
   },
   "ranks": {
     "full": {
       "bins": [
-        16.076,
-        7.103,
-        8.708,
-        11.565,
-        6.522,
-        12.994,
-        12.874,
-        12.131,
-        12.97,
-        4.059
+        16.086,
+        7.105,
+        8.704,
+        11.563,
+        6.603,
+        12.924,
+        12.87,
+        12.153,
+        12.941,
+        4.052
       ],
       "top1": 0
     },
@@ -275,9 +219,9 @@
         5.544,
         0.456,
         1.798,
-        1.227,
-        2.507,
-        3.468,
+        1.232,
+        2.499,
+        3.47,
         1.336,
         6.699,
         2.964,
@@ -287,16 +231,16 @@
     },
     "lifetime": {
       "bins": [
-        10.508,
-        9.899,
-        13.941,
-        15.628,
-        23.936,
-        14.175,
-        19.938,
-        21.819,
-        22.137,
-        27.021
+        10.563,
+        9.873,
+        13.975,
+        15.718,
+        23.842,
+        14.224,
+        19.98,
+        21.88,
+        22.074,
+        26.873
       ],
       "top1": 1
     }
@@ -305,8 +249,8 @@
     "papers": 105,
     "outputBasis": "measured",
     "citations": 1016,
-    "top10": 4.059,
-    "top10ShareOfDivision": 0.00282,
+    "top10": 4.052,
+    "top10ShareOfDivision": 0.00281,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -368,20 +312,20 @@
   "lifetime": {
     "papers": 179,
     "outputBasis": "measured",
-    "citations": 6150,
-    "top10": 27.021,
-    "top10ShareOfDivision": 0.01476,
+    "citations": 6155,
+    "top10": 26.873,
+    "top10ShareOfDivision": 0.01467,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 0.567,
-      "yearsFromFormulation": 5.832,
-      "bibcode": "1982GeoRL...9..587R",
-      "date": "1982-05-00"
+      "yearsFromScienceStart": 1.238,
+      "yearsFromFormulation": 6.502,
+      "bibcode": "1983GeoRL..10...24L",
+      "date": "1983-01-00"
     },
     "spread": {
-      "mean": 34.358,
+      "mean": 34.385,
       "median": 21,
       "uncited": 7,
       "i10": 131,
@@ -392,7 +336,7 @@
     "arms": "((=abs:\"Solar Mesosphere Explorer\" OR =abs:\"Solar Mesospheric Explorer\" OR =abs:\"SME satellite\" OR (abs:SME AND (abs:(mesosphere OR mesospheric OR stratosphere OR stratospheric OR airglow OR lyman OR mesopause OR UARS) OR =abs:\"middle atmosphere\" OR =abs:\"polar mesospheric\" OR (=abs:irradiance AND abs:solar) OR (abs:ozone AND abs:(SBUV OR SAGE OR LIMS OR Nimbus OR satellite))))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1981-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Solar+Mesosphere+Explorer%22+OR+%3Dabs%3A%22Solar+Mesospheric+Explorer%22+OR+%3Dabs%3A%22SME+satellite%22+OR+%28abs%3ASME+AND+%28abs%3A%28mesosphere+OR+mesospheric+OR+stratosphere+OR+stratospheric+OR+airglow+OR+lyman+OR+mesopause+OR+UARS%29+OR+%3Dabs%3A%22middle+atmosphere%22+OR+%3Dabs%3A%22polar+mesospheric%22+OR+%28%3Dabs%3Airradiance+AND+abs%3Asolar%29+OR+%28abs%3Aozone+AND+abs%3A%28SBUV+OR+SAGE+OR+LIMS+OR+Nimbus+OR+satellite%29%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1981-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:12:21.789772+00:00",
+    "fetchedAt": "2026-10-27T02:17:23.531622+00:00",
     "reconciliation": {
       "adsReturned": 187,
       "curatedOut": 7,
@@ -472,7 +416,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 291
+      "citations": 292
     },
     {
       "bibcode": "1986JGR....9113613R",
@@ -481,7 +425,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1986,
-      "citations": 246
+      "citations": 247
     },
     {
       "bibcode": "1997JGR...10226019G",
@@ -565,6 +509,15 @@
       "citations": 92
     },
     {
+      "bibcode": "1983GeoRL..10..257S",
+      "title": "Mesospheric ozone depletion during the Solar Proton Event of July 13, 1982 Part II. Comparison between theory and measurements",
+      "firstAuthor": "Solomon, S.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1983,
+      "citations": 91
+    },
+    {
       "bibcode": "1985P&SS...33.1209T",
       "title": "On the mean particle size and water content of polar mesospheric clouds",
       "firstAuthor": "Thomas, G. E.",
@@ -572,15 +525,6 @@
       "authorCount": null,
       "year": 1985,
       "citations": 91
-    },
-    {
-      "bibcode": "1983GeoRL..10..257S",
-      "title": "Mesospheric ozone depletion during the Solar Proton Event of July 13, 1982 Part II. Comparison between theory and measurements",
-      "firstAuthor": "Solomon, S.",
-      "authors": null,
-      "authorCount": null,
-      "year": 1983,
-      "citations": 90
     },
     {
       "bibcode": "1988AdSpR...8g..53R",
@@ -616,7 +560,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 88
+      "citations": 89
     },
     {
       "bibcode": "1990GeoRL..17..571B",

@@ -23,12 +23,12 @@
     "m": 3.571,
     "i100": 0,
     "g": 36,
-    "tori": 6.865,
-    "riq": 374
+    "tori": 7.24,
+    "riq": 384
   },
   "facts": {
     "papers": 213,
-    "citations": 2242,
+    "citations": 2248,
     "publicationYears": [
       2020,
       2026
@@ -60,83 +60,15 @@
       466,
       529,
       574,
-      472
+      478
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 2242,
-      "observed": 2242,
+      "expected": 2248,
+      "observed": 2248,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "2020-01-01",
-    "end": "2024-01-01",
-    "matureDate": "2026-10-01",
-    "status": "available",
-    "months": 48,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      1,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      1,
-      1,
-      0,
-      2,
-      2,
-      1,
-      0,
-      3,
-      2,
-      3,
-      3,
-      1,
-      3,
-      4,
-      1,
-      0,
-      2,
-      0,
-      3,
-      4,
-      2,
-      3,
-      7,
-      1,
-      4,
-      8,
-      2,
-      3,
-      5,
-      8,
-      2,
-      4,
-      2,
-      3,
-      7,
-      2,
-      1,
-      4
-    ],
-    "citationsByYearOffset": [
-      1,
-      35,
-      165,
-      466,
-      487,
-      322,
-      112
-    ]
   },
   "mostCited": {
     "bibcode": "2022GeoRL..4998577H",
@@ -155,15 +87,15 @@
   "ranks": {
     "full": {
       "bins": [
-        2.025,
-        7.153,
-        8.131,
-        8.044,
-        13.342,
-        13.272,
-        16.453,
-        11.561,
-        10.019,
+        2.029,
+        7.162,
+        8.125,
+        8.058,
+        13.384,
+        13.227,
+        16.443,
+        11.575,
+        9.997,
         17
       ],
       "top1": 1
@@ -173,9 +105,9 @@
         2.544,
         10.621,
         9.828,
-        15.133,
-        14.004,
-        16.241,
+        15.159,
+        13.967,
+        16.252,
         10.302,
         10.363,
         5.964,
@@ -185,15 +117,15 @@
     },
     "lifetime": {
       "bins": [
-        48.523,
-        39.102,
-        27.417,
-        24.328,
-        21.541,
-        22.175,
-        12.914,
-        6.421,
-        9.579,
+        48.197,
+        39.546,
+        27.488,
+        24.323,
+        21.416,
+        22.224,
+        12.807,
+        6,
+        10,
         1
       ],
       "top1": 0
@@ -202,7 +134,7 @@
   "full": {
     "papers": 107,
     "outputBasis": "measured",
-    "citations": 1588,
+    "citations": 1589,
     "top10": 16.5,
     "top10ShareOfDivision": 0.01144,
     "top1": 1,
@@ -224,7 +156,7 @@
       "citationBuckets": 7
     },
     "spread": {
-      "mean": 14.841,
+      "mean": 14.85,
       "median": 10,
       "uncited": 1,
       "i10": 57,
@@ -234,7 +166,7 @@
   "window": {
     "papers": 107,
     "outputBasis": "measured",
-    "citations": 1588,
+    "citations": 1589,
     "top10": 12,
     "top10ShareOfDivision": 0.02705,
     "top1": 0,
@@ -256,7 +188,7 @@
       "citationBuckets": 7
     },
     "spread": {
-      "mean": 14.841,
+      "mean": 14.85,
       "median": 10,
       "uncited": 1,
       "i10": 57,
@@ -266,7 +198,7 @@
   "lifetime": {
     "papers": 213,
     "outputBasis": "measured",
-    "citations": 2242,
+    "citations": 2248,
     "top10": 1,
     "top10ShareOfDivision": 0.00055,
     "top1": null,
@@ -279,9 +211,9 @@
       "date": "2022-05-00"
     },
     "spread": {
-      "mean": 10.526,
+      "mean": 10.554,
       "median": 5,
-      "uncited": 38,
+      "uncited": 37,
       "i10": 76,
       "i100": 0
     }
@@ -290,7 +222,7 @@
     "arms": "(((=abs:\"Ionospheric Connection Explorer\" OR =abs:\"Ionospheric Connections Explorer\" OR =abs:\"ICON mission\" OR =abs:\"ICON satellite\" OR =abs:\"NASA ICON\" OR (abs:MIGHTI AND abs:(wind OR winds OR temperature OR thermosphere OR ICON)) OR (abs:ICON AND abs:(ionosphere OR ionospheric OR thermosphere OR IVM))) NOT (abs:(\"UA-ICON\" OR \"ICON-ART\" OR \"ICON-ESM\" OR \"ICON-LEM\" OR \"ICON-NWP\" OR \"ICON-Sapphire\" OR \"ICON general circulation model\" OR icosahedral) AND abs:(model OR models OR simulation OR simulations))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2020-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Ionospheric+Connection+Explorer%22+OR+%3Dabs%3A%22Ionospheric+Connections+Explorer%22+OR+%3Dabs%3A%22ICON+mission%22+OR+%3Dabs%3A%22ICON+satellite%22+OR+%3Dabs%3A%22NASA+ICON%22+OR+%28abs%3AMIGHTI+AND+abs%3A%28wind+OR+winds+OR+temperature+OR+thermosphere+OR+ICON%29%29+OR+%28abs%3AICON+AND+abs%3A%28ionosphere+OR+ionospheric+OR+thermosphere+OR+IVM%29%29%29+NOT+%28abs%3A%28%22UA-ICON%22+OR+%22ICON-ART%22+OR+%22ICON-ESM%22+OR+%22ICON-LEM%22+OR+%22ICON-NWP%22+OR+%22ICON-Sapphire%22+OR+%22ICON+general+circulation+model%22+OR+icosahedral%29+AND+abs%3A%28model+OR+models+OR+simulation+OR+simulations%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2020-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:14:06.051866+00:00",
+    "fetchedAt": "2026-10-27T02:21:40.710471+00:00",
     "reconciliation": {
       "adsReturned": 217,
       "curatedOut": 4,
@@ -603,7 +535,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 48
+      "citations": 49
     },
     {
       "bibcode": "2020PEPS....7...18C",
@@ -621,7 +553,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2023,
-      "citations": 43
+      "citations": 44
     },
     {
       "bibcode": "2023E&SS...1002962Y",

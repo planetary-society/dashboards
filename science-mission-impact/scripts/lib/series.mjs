@@ -147,41 +147,4 @@ export function monthOffset(dateValue, startDate) {
 	return (date.y - start.y) * 12 + (date.m - start.m);
 }
 
-/**
- * Papers per month since science start, length `months`. Records outside the
- * range are clamped into the first/last bucket (the window's edges are
- * day-precise while the dates are not).
- */
-export function papersByMonth(records, startDate, months) {
-	const out = new Array(months).fill(0);
-	if (!Array.isArray(records) || months <= 0) return out;
-	for (const record of records) {
-		const offset = monthOffset(record?.date ?? record?.pubdate, startDate);
-		if (offset === null) continue;
-		const index = Math.min(months - 1, Math.max(0, offset));
-		out[index] += 1;
-	}
-	return out;
-}
-
-/**
- * Citations per calendar-year offset from the science-start year, length
- * `buckets`. Offsets outside the range are clamped.
- */
-export function citationsByYearOffset(windowCitations, startYear, buckets) {
-	const out = new Array(buckets).fill(0);
-	if (!windowCitations || typeof windowCitations !== 'object' || buckets <= 0) return out;
-	if (!Number.isFinite(startYear)) return out;
-	for (const citing of Object.values(windowCitations)) {
-		if (!Array.isArray(citing)) continue;
-		for (const bibcode of citing) {
-			if (typeof bibcode !== 'string' || bibcode.length < 4) continue;
-			const year = Number.parseInt(bibcode.slice(0, 4), 10);
-			if (!Number.isFinite(year)) continue;
-			const index = Math.min(buckets - 1, Math.max(0, year - startYear));
-			out[index] += 1;
-		}
-	}
-	return out;
-}
 

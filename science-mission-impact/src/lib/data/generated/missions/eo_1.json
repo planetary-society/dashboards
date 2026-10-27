@@ -23,12 +23,12 @@
     "m": 3.192,
     "i100": 66,
     "g": 146,
-    "tori": 288.138,
-    "riq": 628
+    "tori": 291.221,
+    "riq": 632
   },
   "facts": {
-    "papers": 849,
-    "citations": 32468,
+    "papers": 850,
+    "citations": 32532,
     "publicationYears": [
       2001,
       2026
@@ -89,7 +89,7 @@
       24,
       15,
       15,
-      13
+      14
     ],
     "citations": [
       0,
@@ -103,12 +103,12 @@
       384,
       526,
       659,
-      792,
+      831,
       1135,
       1311,
       1481,
       1711,
-      1667,
+      1668,
       2095,
       2519,
       2447,
@@ -116,72 +116,16 @@
       2903,
       2531,
       2552,
-      2616,
-      1459
+      2621,
+      1478
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 32468,
-      "observed": 32468,
+      "expected": 32532,
+      "observed": 32532,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "2000-12-01",
-    "end": "2003-12-01",
-    "matureDate": "2006-10-01",
-    "status": "available",
-    "months": 36,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      1,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      2,
-      0,
-      0,
-      1,
-      34,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      1,
-      1,
-      0
-    ],
-    "citationsByYearOffset": [
-      0,
-      0,
-      2,
-      48,
-      37,
-      80,
-      87
-    ]
   },
   "mostCited": {
     "bibcode": "2009RSEnv.113..893C",
@@ -194,51 +138,51 @@
     ],
     "authorCount": 3,
     "year": 2009,
-    "citations": 1950
+    "citations": 1953
   },
   "ranks": {
     "full": {
       "bins": [
-        88.266,
-        86.118,
-        83.841,
-        75.188,
-        62.76,
-        64.457,
-        63.516,
-        53.282,
-        49.023,
-        27.549
+        87.926,
+        85.48,
+        84.826,
+        74.314,
+        63.673,
+        63.562,
+        63.465,
+        54.219,
+        49.007,
+        27.527
       ],
       "top1": 3
     },
     "window": {
       "bins": [
-        10.815,
-        7.781,
-        1.447,
-        6.474,
-        6.77,
-        1.66,
-        3.444,
-        2.165,
-        2.443,
+        10.812,
+        7.784,
+        1.454,
+        6.47,
+        6.773,
+        1.657,
+        3.449,
+        2.153,
+        2.447,
         0
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        54.683,
-        75.573,
-        65.478,
-        86.816,
-        102.757,
-        84.546,
-        98.071,
-        91.018,
-        98.757,
-        91.301
+        53.302,
+        76.987,
+        65.635,
+        86.286,
+        102.382,
+        85.49,
+        97.683,
+        91.802,
+        98.066,
+        92.367
       ],
       "top1": 13
     }
@@ -246,9 +190,9 @@
   "full": {
     "papers": 654,
     "outputBasis": "measured",
-    "citations": 5174,
-    "top10": 22.881,
-    "top10ShareOfDivision": 0.00636,
+    "citations": 5191,
+    "top10": 22.867,
+    "top10ShareOfDivision": 0.00635,
     "top1": 2.5,
     "top1ShareOfDivision": 0.00695,
     "first": {
@@ -268,10 +212,10 @@
       "citationBuckets": 23
     },
     "spread": {
-      "mean": 7.911,
+      "mean": 7.937,
       "median": 5,
       "uncited": 71,
-      "i10": 178,
+      "i10": 179,
       "i100": 2
     }
   },
@@ -308,11 +252,11 @@
     }
   },
   "lifetime": {
-    "papers": 849,
+    "papers": 850,
     "outputBasis": "measured",
-    "citations": 32468,
-    "top10": 76.951,
-    "top10ShareOfDivision": 0.01657,
+    "citations": 32532,
+    "top10": 77.942,
+    "top10ShareOfDivision": 0.01675,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -323,10 +267,10 @@
       "date": "2002-12-00"
     },
     "spread": {
-      "mean": 38.243,
+      "mean": 38.273,
       "median": 17,
       "uncited": 47,
-      "i10": 559,
+      "i10": 560,
       "i100": 66
     }
   },
@@ -334,15 +278,15 @@
     "arms": "((=abs:\"Earth Observing-1\" OR =abs:\"Earth Observing 1\" OR =abs:\"Earth Observing One\" OR (abs:\"EO-1\" AND (abs:Hyperion OR =abs:\"Advanced Land Imager\" OR abs:Landsat OR abs:hyperspectral OR =abs:\"remote sensing\" OR abs:multispectral OR abs:\"ETM+\" OR abs:satellite OR =abs:\"Earth observation\" OR abs:AVIRIS)) OR (abs:Hyperion AND (abs:hyperspectral OR abs:Landsat OR =abs:\"remote sensing\")) OR =abs:\"Advanced Land Imager\" OR (abs:\"ALI\" AND (=abs:\"Advanced Land Imager\" OR abs:Landsat OR abs:Hyperion))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2000-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Earth+Observing-1%22+OR+%3Dabs%3A%22Earth+Observing+1%22+OR+%3Dabs%3A%22Earth+Observing+One%22+OR+%28abs%3A%22EO-1%22+AND+%28abs%3AHyperion+OR+%3Dabs%3A%22Advanced+Land+Imager%22+OR+abs%3ALandsat+OR+abs%3Ahyperspectral+OR+%3Dabs%3A%22remote+sensing%22+OR+abs%3Amultispectral+OR+abs%3A%22ETM%2B%22+OR+abs%3Asatellite+OR+%3Dabs%3A%22Earth+observation%22+OR+abs%3AAVIRIS%29%29+OR+%28abs%3AHyperion+AND+%28abs%3Ahyperspectral+OR+abs%3ALandsat+OR+%3Dabs%3A%22remote+sensing%22%29%29+OR+%3Dabs%3A%22Advanced+Land+Imager%22+OR+%28abs%3A%22ALI%22+AND+%28%3Dabs%3A%22Advanced+Land+Imager%22+OR+abs%3ALandsat+OR+abs%3AHyperion%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:10:06.891625+00:00",
+    "fetchedAt": "2026-10-27T02:13:07.962783+00:00",
     "reconciliation": {
-      "adsReturned": 856,
+      "adsReturned": 857,
       "curatedOut": 3,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 4,
-      "final": 849
+      "final": 850
     }
   },
   "curation": {
@@ -398,7 +342,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 1950
+      "citations": 1953
     },
     {
       "bibcode": "2005ITGRS..43..492H",
@@ -407,7 +351,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 799
+      "citations": 806
     },
     {
       "bibcode": "2008AgFM..148.1230W",
@@ -425,7 +369,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 518
+      "citations": 519
     },
     {
       "bibcode": "2008Geode.146..403G",
@@ -446,6 +390,15 @@
       "citations": 369
     },
     {
+      "bibcode": "2003ITGRS..41.1160P",
+      "title": "Hyperion, a Space-Based Imaging Spectrometer",
+      "firstAuthor": "Pearlman, Jay S.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2003,
+      "citations": 361
+    },
+    {
       "bibcode": "2003ITGRS..41.1378B",
       "title": "Satellite Hyperspectral Remote Sensing for Estimating Estuarine and Coastal Water Quality",
       "firstAuthor": "Brando, Vittorio E.",
@@ -455,22 +408,13 @@
       "citations": 360
     },
     {
-      "bibcode": "2003ITGRS..41.1160P",
-      "title": "Hyperion, a Space-Based Imaging Spectrometer",
-      "firstAuthor": "Pearlman, Jay S.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2003,
-      "citations": 359
-    },
-    {
       "bibcode": "2014RSEnv.154..102F",
       "title": "Importance of sample size, data type and prediction method for remote sensing-based estimations of aboveground forest biomass",
       "firstAuthor": "Fassnacht, F. E.",
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 333
+      "citations": 334
     },
     {
       "bibcode": "2009RSEnv.113..928G",
@@ -479,7 +423,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 325
+      "citations": 326
     },
     {
       "bibcode": "2003ITGRS..41.1246D",
@@ -488,7 +432,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 316
+      "citations": 317
     },
     {
       "bibcode": "2010ITGRS..48.4099M",
@@ -497,7 +441,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 314
+      "citations": 315
     },
     {
       "bibcode": "2005JPRS...59..185T",
@@ -560,7 +504,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 247
+      "citations": 248
     },
     {
       "bibcode": "2014IJAEO..26...49G",
@@ -573,6 +517,6 @@
     }
   ],
   "papersFile": {
-    "rows": 849
+    "rows": 850
   }
 }

@@ -28,7 +28,7 @@
   },
   "facts": {
     "papers": 349,
-    "citations": 15265,
+    "citations": 15269,
     "publicationYears": [
       2003,
       2026
@@ -92,7 +92,7 @@
       44,
       66,
       146,
-      282,
+      281,
       602,
       1010,
       511,
@@ -102,7 +102,7 @@
       911,
       937,
       736,
-      903,
+      904,
       694,
       897,
       779,
@@ -111,84 +111,15 @@
       635,
       865,
       606,
-      512
+      516
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 15265,
-      "observed": 15265,
+      "expected": 15269,
+      "observed": 15269,
       "missing": 0
     }
-  },
-  "windowSeries": {
-    "start": "2004-02-01",
-    "end": "2008-02-01",
-    "matureDate": "2011-10-01",
-    "status": "available",
-    "months": 48,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      1,
-      0,
-      0,
-      0,
-      4,
-      0,
-      1,
-      1,
-      1,
-      0,
-      6,
-      0,
-      1,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      2,
-      1,
-      4,
-      5,
-      0,
-      0,
-      3,
-      0,
-      0,
-      0,
-      2,
-      1,
-      1,
-      7,
-      2,
-      0,
-      2,
-      1,
-      2,
-      1,
-      0,
-      0,
-      2,
-      2,
-      0,
-      0,
-      4
-    ],
-    "citationsByYearOffset": [
-      37,
-      62,
-      143,
-      282,
-      483,
-      528,
-      40,
-      18
-    ]
   },
   "mostCited": {
     "bibcode": "2006Sci...314.1711B",
@@ -207,28 +138,28 @@
   "ranks": {
     "full": {
       "bins": [
-        25.446,
-        18.733,
-        15.549,
-        22.179,
-        31.615,
-        20.252,
-        19.103,
-        29.417,
-        27.555,
-        23.151
+        25.439,
+        18.747,
+        15.6,
+        22.175,
+        31.587,
+        20.228,
+        19.208,
+        29.317,
+        27.604,
+        23.097
       ],
       "top1": 4
     },
     "window": {
       "bins": [
-        8.625,
-        7.095,
+        8.593,
+        7.128,
         2.516,
-        7.916,
-        5.848,
-        1.654,
-        4.346,
+        7.953,
+        5.81,
+        1.663,
+        4.337,
         4,
         4,
         12
@@ -237,16 +168,16 @@
     },
     "lifetime": {
       "bins": [
-        25.138,
-        26.683,
-        27.702,
-        32.392,
-        36.368,
-        42.081,
-        44.835,
-        36.988,
-        36.538,
-        40.274
+        25.308,
+        26.84,
+        27.516,
+        32.393,
+        36.522,
+        42.064,
+        44.795,
+        37.07,
+        36.355,
+        40.138
       ],
       "top1": 6
     }
@@ -254,9 +185,9 @@
   "full": {
     "papers": 233,
     "outputBasis": "measured",
-    "citations": 3725,
-    "top10": 22.635,
-    "top10ShareOfDivision": 0.02071,
+    "citations": 3724,
+    "top10": 22.587,
+    "top10ShareOfDivision": 0.02067,
     "top1": 4,
     "top1ShareOfDivision": 0.0366,
     "first": {
@@ -276,7 +207,7 @@
       "citationBuckets": 13
     },
     "spread": {
-      "mean": 15.987,
+      "mean": 15.983,
       "median": 9,
       "uncited": 18,
       "i10": 110,
@@ -286,7 +217,7 @@
   "window": {
     "papers": 58,
     "outputBasis": "measured",
-    "citations": 1593,
+    "citations": 1592,
     "top10": 12,
     "top10ShareOfDivision": 0.02486,
     "top1": 3,
@@ -308,7 +239,7 @@
       "citationBuckets": 8
     },
     "spread": {
-      "mean": 27.466,
+      "mean": 27.448,
       "median": 8.5,
       "uncited": 4,
       "i10": 28,
@@ -318,9 +249,9 @@
   "lifetime": {
     "papers": 349,
     "outputBasis": "measured",
-    "citations": 15265,
-    "top10": 38.274,
-    "top10ShareOfDivision": 0.02431,
+    "citations": 15269,
+    "top10": 38.138,
+    "top10ShareOfDivision": 0.02421,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -331,7 +262,7 @@
       "date": "2004-06-00"
     },
     "spread": {
-      "mean": 43.739,
+      "mean": 43.751,
       "median": 22,
       "uncited": 18,
       "i10": 252,
@@ -342,7 +273,7 @@
     "arms": "((((=abs:\"Stardust\" AND (abs:\"Wild 2\" OR abs:\"Tempel 1\" OR abs:\"aerogel\" OR abs:\"sample return\" OR abs:\"cometary coma\" OR abs:\"Dust Flux Monitor\" OR abs:\"CIDA\")) OR (=abs:\"Stardust-NExT\" OR =title:\"Stardust-NExT\")) OR =abs:\"Stardust spacecraft\" OR (=abs:\"Wild 2\" AND abs:comet AND (abs:sample OR abs:aerogel OR (abs:organic AND abs:solid) OR (abs:particle AND abs:mineral)))) AND NOT title:(\"interstellar medium\" OR \"ISM\" OR \"star formation\" OR \"reddening\" OR \"supernova\") NOT title:(\"David Bowie\" OR \"Ziggy\" OR \"movie\" OR \"entertainment\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2004-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Stardust%22+AND+%28abs%3A%22Wild+2%22+OR+abs%3A%22Tempel+1%22+OR+abs%3A%22aerogel%22+OR+abs%3A%22sample+return%22+OR+abs%3A%22cometary+coma%22+OR+abs%3A%22Dust+Flux+Monitor%22+OR+abs%3A%22CIDA%22%29%29+OR+%28%3Dabs%3A%22Stardust-NExT%22+OR+%3Dtitle%3A%22Stardust-NExT%22%29%29+OR+%3Dabs%3A%22Stardust+spacecraft%22+OR+%28%3Dabs%3A%22Wild+2%22+AND+abs%3Acomet+AND+%28abs%3Asample+OR+abs%3Aaerogel+OR+%28abs%3Aorganic+AND+abs%3Asolid%29+OR+%28abs%3Aparticle+AND+abs%3Amineral%29%29%29%29+AND+NOT+title%3A%28%22interstellar+medium%22+OR+%22ISM%22+OR+%22star+formation%22+OR+%22reddening%22+OR+%22supernova%22%29+NOT+title%3A%28%22David+Bowie%22+OR+%22Ziggy%22+OR+%22movie%22+OR+%22entertainment%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:05:51.549323+00:00",
+    "fetchedAt": "2026-10-27T02:06:57.056861+00:00",
     "reconciliation": {
       "adsReturned": 347,
       "curatedOut": 0,

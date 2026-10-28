@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 169,
+    "lcc": 87,
     "type": "Remote Sensing Observatory",
+    "program": "Small-class Explorers (SMEX)",
+    "target": "Sun",
+    "launchVehicle": "Pegasus XL",
     "dates": {
       "formulation": "1997-10-16",
       "launch": "2002-02-05",
@@ -23,8 +27,8 @@
     "m": 3.68,
     "i100": 86,
     "g": 150,
-    "tori": 239.662,
-    "riq": 619
+    "tori": 230.292,
+    "riq": 607
   },
   "facts": {
     "papers": 1038,
@@ -122,6 +126,43 @@
       "expected": 40125,
       "observed": 40125,
       "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 1038,
+    "us": {
+      "mapped": 502,
+      "top": [
+        {
+          "name": "University of California, Berkeley",
+          "papers": 180
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 144
+        },
+        {
+          "name": "New Jersey Institute of Technology",
+          "papers": 73
+        }
+      ]
+    },
+    "world": {
+      "mapped": 970,
+      "top": [
+        {
+          "name": "University of California, Berkeley",
+          "papers": 180
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 144
+        },
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 121
+        }
+      ]
     }
   },
   "mostCited": {
@@ -276,7 +317,7 @@
     "arms": "(((abs:RHESSI AND abs:(solar OR flare OR X-ray OR gamma OR terrestrial OR electron OR photon OR polarization OR transient OR image)) OR (abs:HESSI AND abs:solar) OR =abs:\"High Energy Solar Spectroscopic Imager\" OR =abs:\"High Energy Solar Spectroscopy Imager\" OR facility:RHESSI))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2002-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ARHESSI+AND+abs%3A%28solar+OR+flare+OR+X-ray+OR+gamma+OR+terrestrial+OR+electron+OR+photon+OR+polarization+OR+transient+OR+image%29%29+OR+%28abs%3AHESSI+AND+abs%3Asolar%29+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopic+Imager%22+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopy+Imager%22+OR+facility%3ARHESSI%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T06:03:42.101147+00:00",
+    "fetchedAt": "2026-10-27T17:24:58.698450+00:00",
     "reconciliation": {
       "adsReturned": 1048,
       "curatedOut": 9,

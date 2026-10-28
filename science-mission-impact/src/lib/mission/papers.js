@@ -45,11 +45,10 @@ export function buildSearchIndex(columns) {
 /**
  * Column keys per scope: citations counted in the scope, top-10% weight, pooled
  * top-1% weight. Lifetime has no top 1%; the view never pairs them, and if asked it reads
- * the full-mission window.
+ * the full-mission window. The files carry no prime-window columns, so that scope reads full too.
  */
 const SCOPE_COLUMNS = {
 	full: { cited: 'f', top10: 'fe', top1: 'f1' },
-	window: { cited: 'w', top10: 'we', top1: 'w1' },
 	lifetime: { cited: 'c', top10: 'e', top1: 'f1' }
 };
 const keysFor = (scope) => SCOPE_COLUMNS[scope] ?? SCOPE_COLUMNS.full;
@@ -192,10 +191,7 @@ export const CSV_HEADER = [
 	'title',
 	'first_author',
 	'citations',
-	'window_citations',
 	'top10_weight_lifetime',
-	'top10_weight_window',
-	'top1_weight_window',
 	'full_window_citations',
 	'top10_weight_full',
 	'top1_weight_full',
@@ -230,10 +226,7 @@ export function toCsv(columns, adsUrl = (b) => b, index = null) {
 			csvField(columns.t[i]),
 			csvField(columns.a[i]),
 			csvField(columns.c[i]),
-			csvField(columns.w[i]),
 			csvField(columns.e[i]),
-			csvField(columns.we[i]),
-			csvField(columns.w1[i]),
 			csvField(columns.f[i]),
 			csvField(columns.fe[i]),
 			csvField(columns.f1[i]),
@@ -245,12 +238,14 @@ export function toCsv(columns, adsUrl = (b) => b, index = null) {
 	return lines.join('\r\n');
 }
 
-/** Scope keys as the CSV names them, after the reader-facing window names. */
-const MISSION_SCOPES = [['full', 'active'], ['window', 'prime'], ['lifetime', 'lifetime']];
+/** The reader's scopes as the CSV names them, after the reader-facing names. */
+const MISSION_SCOPES = [['full', 'active'], ['lifetime', 'lifetime']];
+/** A mission's figures in one scope count only when the scope is measured: the packager's own rule for its fits and totals. */
+export const measured = (s) => s != null && (s.status ?? 'available') === 'available';
 
 /**
- * A division's missions as CSV, CRLF-delimited: every scope and both tiers, so a page that shows
- * only the Active Mission Window hides nothing. Unmeasured output stays blank, never zero.
+ * A division's missions as CSV, CRLF-delimited: both scopes and both tiers, so a page that shows
+ * one scope at a time hides nothing. Unmeasured output stays blank, never zero.
  *
  * @param {object[]} missions the division doc's missions
  * @param {{ costBaseYear: number, url?: (id: string) => string }} opts
@@ -264,8 +259,7 @@ export function missionsCsv(missions, { costBaseYear, url = (id) => id }) {
 		const row = [m.name, m.id, m.launchYear, m.type, m.cost, { under: 'small', over: 'larger' }[m.size] ?? '', m.failed ? 'lost' : m.shortfall ? 'partial' : ''];
 		for (const [key] of MISSION_SCOPES) {
 			const s = m[key];
-			const measured = s && (s.status == null || s.status === 'available');
-			row.push(...(measured ? [s.papers, s.citations, s.top10, s.top1] : [null, null, null, null]));
+			row.push(...(measured(s) ? [s.papers, s.citations, s.top10, s.top1] : [null, null, null, null]));
 		}
 		row.push(m.indices?.h, m.indices?.g, url(m.id));
 		lines.push(row.map(csvField).join(','));

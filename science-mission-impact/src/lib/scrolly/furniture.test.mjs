@@ -17,7 +17,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { compile } from 'svelte/compiler';
 import { render } from 'svelte/server';
 import { scaleLinear, scaleLog } from 'd3-scale';
-import { splitLayout, focusLayout, costLayout, primerLayout } from './layouts.js';
+import { splitLayout, focusLayout, costLayout, primerLayout, perDollarLayout, varyLayout } from './layouts.js';
+import { flat, soft } from '../copy/discussion.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const lib = join(here, '..');
@@ -344,4 +345,42 @@ test('LanesChart prerenders a band per compared division with its notes and both
 	assert.equal((body.match(/class="cost[ "]/g) ?? []).length, divisions.length);
 	assert.equal((body.match(/class="cited[ "]/g) ?? []).length, divisions.length);
 	assert.match(body, /cited/, 'the spending step reads citations against spending');
+});
+
+test('LanesChart marks each division’s cost floor, at the packaged cost, only when given', async () => {
+	const compared = new Set(story.comparison.divisions);
+	const divisions = site.divisions.filter((d) => compared.has(d.slug));
+	const layout = costLayout(tiles.filter((t) => compared.has(t.division)), 900, 600, { divisions });
+	const floors = Object.fromEntries(story.bands.map((b) => [b.division, b.p25]));
+	const props = { ...stage, layout, scope: story.scope, referenceCost: ref, notes: {} };
+	const marked = render(await load('LanesChart.svelte'), { props: { ...props, floors } }).body;
+	clean(marked);
+	assert.equal((marked.match(/class="floor[ "]/g) ?? []).length, story.bands.length);
+	for (const b of story.bands) assert.match(marked, new RegExp(`cx="${layout.x(b.p25)}"`), `${b.division} at its p25`);
+	assert.doesNotMatch(render(await load('LanesChart.svelte'), { props }).body, /class="floor/);
+});
+
+test('VaryChart prerenders both panels, each division in each, a ring and a dot per side, counts on the rings', async () => {
+	const compared = new Set(story.comparison.divisions);
+	const divisions = site.divisions.filter((d) => compared.has(d.slug));
+	const layout = varyLayout(story, divisions, 900, 600);
+	const { body } = render(await load('VaryChart.svelte'), { props: { ...stage, layout } });
+	clean(body);
+	for (const t of ['Share that failed or fell short', 'Share with a top-10% paper']) assert.ok(body.includes(t), t);
+	for (const d of divisions) assert.equal(body.split(`>${d.name}<`).length - 1, 2, `${d.name} in both panels`);
+	assert.equal((body.match(/<circle /g) ?? []).length, divisions.length * 2 * 2);
+	const failed = story.failure.byDivision.find((d) => d.division === 'planetary').under;
+	assert.ok(body.includes(`>${failed.failed}/${failed.missions}<`), 'the ring carries its count');
+});
+
+test('DollarChart dashes the fits the copy won’t call a trend', async () => {
+	const compared = new Set(story.comparison.divisions);
+	const divisions = site.divisions.filter((d) => compared.has(d.slug));
+	const fits = new Map(story.perDollar.map((d) => [d.division, d.fit]));
+	const layout = perDollarLayout(tiles, 900, 600, { divisions, fits });
+	const softRows = story.perDollar.filter((d) => soft(d.fit));
+	const { body } = render(await load('DollarChart.svelte'), { props: { ...stage, layout, referenceCost: ref } });
+	clean(body);
+	assert.equal((body.match(/class="fit[^"]*soft/g) ?? []).length, softRows.length);
+	assert.equal((body.match(/Nearly flat/g) ?? []).length, softRows.filter((d) => flat(d.fit)).length);
 });

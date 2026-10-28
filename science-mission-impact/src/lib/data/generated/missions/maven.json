@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 971.4,
+    "lcc": 676,
     "type": "Orbiter",
+    "program": "Mars Scout",
+    "target": "Mars",
+    "launchVehicle": "Atlas V 401",
     "dates": {
       "formulation": "2008-09-01",
       "launch": "2013-11-18",
@@ -23,8 +27,8 @@
     "m": 5.667,
     "i100": 40,
     "g": 112,
-    "tori": 31.568,
-    "riq": 468
+    "tori": 29.104,
+    "riq": 449
   },
   "facts": {
     "papers": 957,
@@ -83,6 +87,43 @@
       "expected": 23061,
       "observed": 23061,
       "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 957,
+    "us": {
+      "mapped": 625,
+      "top": [
+        {
+          "name": "University of Colorado, Boulder",
+          "papers": 419
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 353
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 349
+        }
+      ]
+    },
+    "world": {
+      "mapped": 914,
+      "top": [
+        {
+          "name": "University of Colorado, Boulder",
+          "papers": 419
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 353
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 349
+        }
+      ]
     }
   },
   "mostCited": {
@@ -237,7 +278,7 @@
     "arms": "((=abs:\"Mars Atmosphere and Volatile Evolution\" OR =abs:\"Mars Atmospheric and Volatile Evolution\" OR (abs:MAVEN AND (abs:solar OR abs:heliosphere)) OR ((abs:MAVEN OR abs:SWEA OR abs:SWIA OR abs:STATIC OR abs:IUVS OR abs:NGIMS OR =abs:\"Solar Wind Electron Analyzer\" OR =abs:\"Solar Wind Ion Analyzer\" OR =abs:\"Suprathermal and Thermal Ion Composition\" OR =abs:\"Imaging Ultraviolet Spectrometer\" OR =abs:\"Imaging Ultraviolet Spectrograph\" OR =abs:\"Langmuir Probe and Waves\" OR =abs:\"Neutral Gas and Ion Mass Spectrometer\") AND (abs:Mars OR abs:martian))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Atmosphere+and+Volatile+Evolution%22+OR+%3Dabs%3A%22Mars+Atmospheric+and+Volatile+Evolution%22+OR+%28abs%3AMAVEN+AND+%28abs%3Asolar+OR+abs%3Aheliosphere%29%29+OR+%28%28abs%3AMAVEN+OR+abs%3ASWEA+OR+abs%3ASWIA+OR+abs%3ASTATIC+OR+abs%3AIUVS+OR+abs%3ANGIMS+OR+%3Dabs%3A%22Solar+Wind+Electron+Analyzer%22+OR+%3Dabs%3A%22Solar+Wind+Ion+Analyzer%22+OR+%3Dabs%3A%22Suprathermal+and+Thermal+Ion+Composition%22+OR+%3Dabs%3A%22Imaging+Ultraviolet+Spectrometer%22+OR+%3Dabs%3A%22Imaging+Ultraviolet+Spectrograph%22+OR+%3Dabs%3A%22Langmuir+Probe+and+Waves%22+OR+%3Dabs%3A%22Neutral+Gas+and+Ion+Mass+Spectrometer%22%29+AND+%28abs%3AMars+OR+abs%3Amartian%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:49:11.365481+00:00",
+    "fetchedAt": "2026-10-27T17:13:10.716823+00:00",
     "reconciliation": {
       "adsReturned": 964,
       "curatedOut": 7,

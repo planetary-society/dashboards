@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 36.2,
+    "lcc": 17.5,
     "type": "Orbiter",
+    "program": "Earth Observing System (EOS)",
+    "target": "Sun",
+    "launchVehicle": "Taurus",
     "dates": {
       "formulation": "1995-02-03",
       "launch": "1999-12-21",
@@ -23,7 +27,7 @@
     "m": 0.417,
     "i100": 1,
     "g": 12,
-    "tori": 6.114,
+    "tori": 6.115,
     "riq": 190
   },
   "facts": {
@@ -119,6 +123,43 @@
       "expected": 428,
       "observed": 428,
       "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 12,
+    "us": {
+      "mapped": 6,
+      "top": [
+        {
+          "name": "California State University System",
+          "papers": 2
+        },
+        {
+          "name": "Duke University, North Carolina",
+          "papers": 2
+        },
+        {
+          "name": "Columbia University, New York",
+          "papers": 1
+        }
+      ]
+    },
+    "world": {
+      "mapped": 9,
+      "top": [
+        {
+          "name": "California State University System",
+          "papers": 2
+        },
+        {
+          "name": "Duke University, North Carolina",
+          "papers": 2
+        },
+        {
+          "name": "Australian National University, Canberra",
+          "papers": 1
+        }
+      ]
     }
   },
   "mostCited": {
@@ -271,7 +312,7 @@
     "arms": "((abs:\"ACRIMSAT\" OR abs:\"Active Cavity Radiometer Irradiance Monitor Satellite\" OR abs:\"ACRIM3\" OR abs:\"ACRIM-3\" OR abs:\"ACRIM 3\" OR abs:\"ACRIM III\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2000-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22ACRIMSAT%22+OR+abs%3A%22Active+Cavity+Radiometer+Irradiance+Monitor+Satellite%22+OR+abs%3A%22ACRIM3%22+OR+abs%3A%22ACRIM-3%22+OR+abs%3A%22ACRIM+3%22+OR+abs%3A%22ACRIM+III%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:55:11.475254+00:00",
+    "fetchedAt": "2026-10-27T17:17:43.690340+00:00",
     "reconciliation": {
       "adsReturned": 11,
       "curatedOut": 1,

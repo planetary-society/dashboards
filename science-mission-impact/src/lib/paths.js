@@ -12,6 +12,9 @@ export const asset = (path) => resolve('/') + path.replace(/^\//, '');
 
 export const thumbSrc = (id) => asset(`img/missions/${id}.webp`);
 export const papersUrl = (id) => asset(`data/papers/${id}.json`);
+/** `kind` is 'missions' or 'divisions'. */
+export const mapsUrl = (kind, id) => asset(`data/maps/${kind}/${id}.json`);
+export const basemapSrc = (key) => asset(`img/maps/${key}.svg`);
 
 export const adsAbstract = (bibcode) => `https://scixplorer.org/abs/${encodeURIComponent(bibcode)}/abstract`;
 

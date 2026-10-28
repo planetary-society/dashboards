@@ -1,7 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { scaleLinear } from 'd3-scale';
-import { cumulate, lifetimeModel, axes, xDomain, stackLabels, box, decimalYear, missionMilestones, lifetimeDomain, layoutMilestones, TICK_FRACTIONS, axisTicks } from './accumulation.js';
+import { cumulate, lifetimeModel } from './accumulation.js';
 
 test('cumulate runs a total and tolerates junk', () => {
 	assert.deepEqual(cumulate([1, 2, 3]), [1, 3, 6]);
@@ -31,92 +30,4 @@ test('lifetimeModel reports no partial year when there is none', () => {
 	assert.equal(m.pubTotal, 4);
 	assert.equal(lifetimeModel(null), null);
 	assert.equal(lifetimeModel({ years: [] }), null);
-});
-
-test('both axes start at zero and end at their own total, on shared rows', () => {
-	const { yPub, yCite, pubTicks, citeTicks } = axes({ pubTotal: 63114, citeTotal: 3400000, top: 46, bottom: 272 });
-	assert.equal(yPub(0), 272);
-	assert.equal(yCite(0), 272);
-	// the dual-axis rule: the two series' final points are the same pixel
-	assert.equal(yPub(63114), 46);
-	assert.equal(yCite(3400000), 46);
-	assert.equal(pubTicks.length, TICK_FRACTIONS.length + 1);
-	assert.deepEqual(pubTicks.map((t) => t.y), [272, 215.5, 159, 102.5, 46]);
-	assert.deepEqual(citeTicks.map((t) => t.y), pubTicks.map((t) => t.y));
-	assert.equal(pubTicks[2].v, 63114 / 2);
-	assert.equal(citeTicks[2].v, 1700000);
-});
-
-test('a small total gets whole-number ticks from zero, never repeats', () => {
-	assert.deepEqual(axisTicks(0), [0]);
-	assert.deepEqual(axisTicks(1), [0, 1]);
-	assert.deepEqual(axisTicks(3), [0, 1, 2, 3]);
-	assert.deepEqual(axisTicks(7), [0, 2, 4, 6]);
-	assert.deepEqual(axisTicks(100), [0, 25, 50, 75, 100]);
-	const { pubTicks, citeTicks, yPub } = axes({ pubTotal: 3, citeTotal: 400, top: 0, bottom: 300 });
-	assert.deepEqual(pubTicks.map((t) => t.v), [0, 1, 2, 3]);
-	assert.equal(pubTicks[1].y, yPub(1));
-	assert.deepEqual(citeTicks.map((t) => t.v), [0, 100, 200, 300, 400]);
-});
-
-test('a zero total still gives a usable scale', () => {
-	const { yPub } = axes({ pubTotal: 0, citeTotal: 10, top: 0, bottom: 100 });
-	assert.equal(yPub(0), 100);
-});
-
-test('xDomain widens a single-year axis', () => {
-	assert.deepEqual(xDomain([1999, 2000, 2001]), [1999, 2001]);
-	assert.deepEqual(xDomain([2001]), [2000.5, 2001.5]);
-});
-
-test('stackLabels stacks above the shared endpoint without overlapping', () => {
-	assert.deepEqual(stackLabels(46, 2), [22, 40]);
-	const rows = stackLabels(46, 2);
-	assert.ok(rows[1] - rows[0] >= 18);
-	// clamped rather than drawn off the top
-	assert.deepEqual(stackLabels(10, 2, { minTop: 12 }), [12, 30]);
-});
-
-test('decimalYear places a date inside its year, and degrades with the date', () => {
-	assert.equal(decimalYear('2008-01-01'), 2008);
-	const mid = decimalYear('2008-06-30');
-	assert.ok(mid > 2008.4 && mid < 2008.6);
-	assert.equal(decimalYear('2008-00-00'), 2008); // ADS writes unknown parts as 00
-	assert.equal(decimalYear(null), null);
-	assert.equal(decimalYear('not-a-date'), null);
-});
-
-test('lifecycle markers use recorded dates, including launch before the first publication', () => {
-	const markers = missionMilestones({ launch: '1997-10-15', primeEnd: '2008-06-30', missionEnd: '2017-09-15' });
-	assert.deepEqual(markers.map((m) => m.label), ['launch', 'prime end', 'mission end']);
-	assert.ok(Math.abs(markers[1].year - 2008.5) < 0.02);
-	assert.deepEqual(lifetimeDomain([2004, 2005, 2026], markers), [1997, 2026]);
-	assert.deepEqual(lifetimeDomain([2004, 2005], markers), [1997, 2018]);
-	assert.deepEqual(missionMilestones({ launch: null, primeEnd: 'not-a-date' }), []);
-	assert.deepEqual(missionMilestones({ launch: '2000-01-01' }).map((m) => m.key), ['launch'], 'no inferred mission end');
-	assert.deepEqual(lifetimeDomain([2004], []), xDomain([2004]));
-});
-
-test('nearby lifecycle labels remain separate and inside a narrow chart', () => {
-	const b = box(280, 300);
-	const dates = { launch: '2000-01-01', primeEnd: '2000-01-01', missionEnd: '2000-01-02' };
-	const markers = missionMilestones(dates);
-	for (const domain of [[2000, 2026], [1970, 2001]]) {
-		const x = scaleLinear().domain(domain).range([b.left, b.right]);
-		const layout = layoutMilestones(markers, x, b);
-		assert.equal(new Set(layout.markers.map((m) => m.labelY)).size, 3);
-		for (const m of layout.markers) {
-			assert.equal(m.x, x(decimalYear(m.date)), 'rules retain exact dates even when labels move');
-			assert.ok(m.labelX >= b.left && m.labelX + m.label.length * 7 <= b.right);
-			assert.ok(m.labelY < b.top + layout.height);
-		}
-	}
-});
-
-test('box leaves room for both axes and keeps a positive plot', () => {
-	const b = box(600, 300);
-	assert.ok(b.right > b.left);
-	assert.ok(b.bottom > b.top);
-	assert.equal(b.right, 548);
-	assert.ok(box(320, 300).right > box(320, 300).left);
 });

@@ -1,8 +1,8 @@
 <script>
-	import { fullWindowLabel, windowLabel } from '$lib/copy/window.js';
+	import { fullWindowLabel } from '$lib/copy/window.js';
 	import Seo from '$lib/ui/Seo.svelte';
 	import EntityHeader from '$lib/ui/EntityHeader.svelte';
-	import { apDate, int, moneyWords, listify, pct, spell } from '$lib/format.js';
+	import { apDate, int, moneyWords, listify, pct, plural, spell } from '$lib/format.js';
 	import { allSmall } from '$lib/copy/discussion.js';
 
 	let { data } = $props();
@@ -19,6 +19,8 @@
 	const under = $derived(story.comparison.groups.find((g) => g.key === 'under'));
 	const over = $derived(story.comparison.groups.find((g) => g.key === 'over'));
 	const unranked = $derived(story.divisions.filter((d) => d.share == null && allSmall(d)));
+	// a map grid's square in words: "half a degree", "two degrees"
+	const degrees = (cell) => (cell === 0.5 ? 'half a degree' : `${spell(cell)} ${plural(cell, 'degree')}`);
 	// Organization contact, as in docs/shared/js/constants.js CONTACT.
 	const CONTACT_EMAIL = 'casey.dreier@planetary.org';
 	const furtherReading = [
@@ -174,7 +176,7 @@
 				point: numbers should support judgment, not replace it.</p>
 			<p>A top-10% paper is one of the 10% most cited of all its division’s papers in the selected window,
 				every publication year ranked together. Fields cite at different rates, so each paper is ranked only
-				against papers from its own division. In the two windowed views, every paper’s citations are counted over the same
+				against papers from its own division. In the {fullWindowLabel}, every paper’s citations are counted over the same
 				span of years, so an older paper has no head start; in the Lifetime view it does, and older papers
 				fill more of the top 10%. Papers tied at the cutoff share the last places, so a division’s top 10%
 				is exactly a tenth of its papers. Papers that describe a mission or its instruments count like any
@@ -201,12 +203,20 @@
 				start date is published. That cuts down on prelaunch and overview papers, though it doesn’t weed
 				out every false match. For missions with long cruises or flyby results, we also include results
 				published before the prime mission began.</p>
+			<h3 id="affiliations">Where the authors worked</h3>
+			<p>The affiliation maps use the institutions ADS assigns to each paper’s authors, located through the
+				<a href="https://ror.org/">Research Organization Registry</a> (or a parent organization’s entry).
+				Each square, {degrees(data.cells.us)} of latitude and longitude on the US map and {degrees(data.cells.world)} on the world map,
+				counts the tracked publications with at least one author at an institution inside it, each paper
+				once. Affiliations are as printed on the paper, so they show where the work was done, not where its
+				authors are now. Papers whose institutions couldn’t be located are left off, and the US map leaves
+				out Puerto Rico and the US Virgin Islands, which appear on the world map.</p>
 		</section>
 
 		<section id="windows">
 			<h2>Comparison windows</h2>
-			<p>Older papers have had more time to collect citations. The two windows give every paper the same
-				citation period; lifetime totals show everything to date.</p>
+			<p>Older papers have had more time to collect citations. The {fullWindowLabel} gives every paper the
+				same citation period; lifetime totals show everything to date.</p>
 			<h3 id="full-window">{fullWindowLabel}</h3>
 			<p>The default comparison covers publications from a mission’s operating life and allows
 				{spell(fullPolicy.postEndYears)} years after mission end for results to appear. Each paper’s
@@ -217,9 +227,6 @@
 				mission still operating, or one that ended too recently, the window stops at the latest date that
 				has matured{#if fullPolicy.minWindowYears}; a window cut to less than
 				{spell(fullPolicy.minWindowYears)} years isn’t scored{/if}.</p>
-			<h3 id="early-window">{windowLabel(policy)}</h3>
-			<p>This comparison follows the prime phase, with {spell(policy.postPrimeYears)} years after prime mission
-				end for results to appear. Its length varies by mission.</p>
 			<h3>Lifetime</h3>
 			<p>All tracked publications and their reported citations to date.</p>
 		</section>

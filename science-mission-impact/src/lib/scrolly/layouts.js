@@ -5,7 +5,10 @@
 import { scaleLinear, scaleLog, scaleSqrt } from 'd3-scale';
 import { byCostThenId, decadeTicks, stackLevels, stepAfterPath } from '../charts/costaxis.js';
 import { curveFacts, curveChart } from '../charts/costcurve.js';
-import { clipSpan } from '../charts/perdollar.js';
+import { perDollarLayout, trendLine, rowGutter, rowLabel } from '../charts/perdollar.js';
+
+// The per-dollar states live beside their chart, so the division pages load them without the rest
+export { perDollarLayout, trendLine };
 
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
 
@@ -172,11 +175,6 @@ export function skylineHit(sky, px, py) {
 	return best?.id ?? null;
 }
 
-/** Label gutter on the left of the row-based states: none on a phone, where names move into the band. */
-const rowGutter = (W) => (W < 600 ? 0 : W < 900 ? 96 : 236);
-/** The short name only in the narrow side gutter; a phone puts the full name above its band. */
-const rowLabel = (d, W) => (W >= 600 && W < 900 ? d.nav : d.name);
-
 /**
  * The bins dissolve: division rows stay, and each square sits at its own cost on one log axis,
  * rising where neighbours would overlap. The space above each shelf carries that division's
@@ -248,96 +246,6 @@ export function costCurve(members, share) {
 		top += share(t) ?? 0;
 		return { id: t.id, cost: t.cost, topShare: topTotal ? top / topTotal : 0, costShare: cost / costTotal };
 	});
-}
-
-/**
- * Citations per $100M of cost against cost, both log: one band per division, or one band filling
- * the stage for a single division. Bands share one rate scale and one floor, so a line's tilt
- * means the same in each. A measured mission with no citations sits on its band's floor, lifted
- * only off a neighbour: zero has no place on a log scale. `x` reuses another layout's cost axis,
- * so squares keep their x between states. `fits` (division slug → packaged perDollar fit) gives
- * each row its fit, the cost range of its cited missions and a pivot on the fitted line midway
- * along that range; trendLine() draws a line through the pivot at any slope.
- */
-export function perDollarLayout(tiles, W, H, { divisions, fits, x = null }) {
-	const compact = W < 600;
-	const single = divisions.length === 1;
-	const top = compact ? 22 : 28;
-	const bottom = compact ? 4 : 6;
-	const right = compact ? 8 : 24;
-	const s = single ? (compact ? 9 : 14) : compact ? 5 : 9;
-	const gap = 1;
-	const lift = 2;
-	const nameH = !single && compact ? 18 : 0;
-	const padTop = single ? 8 : compact ? 4 : 12;
-	const shelfPad = single ? (compact ? 6 : 10) : compact ? 4 : 6;
-
-	// measured as the packager reads it: a cost, and full-window output that isn't missing
-	const slugs = new Set(divisions.map((d) => d.slug));
-	const placed = tiles.filter((t) => slugs.has(t.division) && t.cost > 0 && t.citations != null && t.top10 != null).sort(byCostThenId);
-	const rate = (t) => (t.citations / t.cost) * 100;
-	const rates = placed.filter((t) => t.citations > 0).map(rate);
-	const left = single ? (compact ? 36 : 52) : rowGutter(W);
-	x ??= scaleLog()
-		.domain(placed.length ? [placed[0].cost * 0.8, placed.at(-1).cost * 1.25] : [1, 10])
-		.range([left + s, W - right - s]);
-	// 0..1 up the band, with air above and below the data
-	const scale = scaleLog()
-		.domain(rates.length ? [Math.min(...rates) / 1.5, Math.max(...rates) * 1.5] : [1, 10])
-		.range([0, 1])
-		.clamp(true);
-
-	const members = divisions.map((d) => placed.filter((t) => t.division === d.slug));
-	const shelves = members.map((list) => stackLevels(list.filter((t) => !(t.citations > 0)), (t) => x(t.cost) - s / 2, s, gap));
-	// the deepest stack of zeros sets every band's floor, so the rate scale lands on the same pixels in each
-	const floorH = lift + Math.max(0, ...shelves.map((k) => k.depth)) * (s + gap) + (single ? 8 : 4);
-	const rh = (H - top - bottom) / divisions.length;
-
-	const pos = new Map();
-	const rows = divisions.map((d, r) => {
-		const y = top + r * rh;
-		const shelfY = Math.round(y + rh - shelfPad);
-		const curveTop = y + nameH + padTop;
-		// a stage too short for the zeros' stack squeezes the rates flat rather than turning them upside down
-		const floorY = Math.max(curveTop + 1, shelfY - floorH);
-		const rateY = (v) => floorY - scale(v) * (floorY - curveTop);
-		const { levels } = shelves[r];
-		for (const t of members[r]) {
-			const level = levels.get(t.id);
-			pos.set(t.id, { x: x(t.cost) - s / 2, y: level == null ? rateY(rate(t)) - s / 2 : shelfY - lift - (level + 1) * (s + gap) + gap, s });
-		}
-		const costs = members[r].filter((t) => t.citations > 0).map((t) => Math.log10(t.cost));
-		// log10 cost and rate: the cited missions' range, and the point on the fitted line midway along it
-		const span = costs.length ? [Math.min(...costs), Math.max(...costs)] : null;
-		const fit = fits.get(d.slug) ?? null;
-		const mid = span && (span[0] + span[1]) / 2;
-		return {
-			slug: d.slug,
-			label: rowLabel(d, W),
-			y,
-			h: rh,
-			band: r % 2 === 1,
-			shelfY,
-			curveTop,
-			floorY,
-			rateY,
-			fit,
-			span,
-			pivot: fit && span ? { cost: mid, rate: fit.intercept + fit.slope * mid } : null
-		};
-	});
-
-	return { pos, x, scale, rows, left, top, bottomY: top + divisions.length * rh, ticks: decadeTicks(...x.domain()), rateTicks: decadeTicks(...scale.domain()) };
-}
-
-/** A line of `slope` (log rate per log cost) through a row's pivot, across its cited missions' costs, cut to the rate scale; null with no pivot or nothing on the scale. */
-export function trendLine(layout, row, slope) {
-	if (!row.pivot) return null;
-	const line = { slope, intercept: row.pivot.rate - slope * row.pivot.cost };
-	const span = clipSpan(line, row.span, layout.scale.domain());
-	if (!span) return null;
-	const [[x1, y1], [x2, y2]] = span.map((c) => [layout.x(10 ** c), row.rateY(10 ** (line.intercept + slope * c))]);
-	return { x1, y1, x2, y2 };
 }
 
 /**
@@ -444,6 +352,52 @@ export function splitLayout(W, H, groups, { headH }) {
 		return block;
 	});
 	return { pos, s, blocks, headH };
+}
+
+/**
+ * Small against larger missions in each compared division, as two stacked panels of shares on
+ * one 0–100% scale: those that failed or fell short (failure.byDivision) and those that had a
+ * top-10% paper (comparison.byDivision; a failure counts as none). One row per division, in the
+ * order given, in both panels. Each side is { v, x, n, of }, null where it has no missions; a
+ * small side also carries `label`, its count placed on the side away from its dot unless that
+ * would run into the names (width estimated per character).
+ */
+export function varyLayout(story, divisions, W, H, { compact = false } = {}) {
+	const left = compact ? 84 : 156;
+	const right = compact ? 34 : 56; // room for a ring's label at 100%
+	const titleH = compact ? 22 : 30;
+	const axisH = compact ? 16 : 20;
+	const gapH = compact ? 12 : 28;
+	const r = compact ? 5 : 6;
+	const x = scaleLinear().domain([0, 1]).range([left, W - right]);
+	const side = (g, count) => (g && g.missions > 0 ? { v: count(g) / g.missions, x: x(count(g) / g.missions), n: count(g), of: g.missions } : null);
+	const label = (u, o) => {
+		const text = `${u.n}/${u.of}`;
+		const before = o && o.x > u.x && u.x - r - 4 - text.length * 6 > left;
+		return { text, x: before ? u.x - r - 4 : u.x + r + 4, anchor: before ? 'end' : 'start' };
+	};
+	const rowsOf = (list, count) =>
+		divisions.map((d) => {
+			const row = list.find((e) => e.division === d.slug);
+			const under = side(row?.under, count);
+			const over = side(row?.over, count);
+			return { slug: d.slug, label: compact ? d.nav : d.name, under: under && { ...under, label: label(under, over) }, over };
+		});
+	const measures = [
+		{ key: 'failed', rows: rowsOf(story.failure.byDivision, (g) => g.failed) },
+		{ key: 'reached', rows: rowsOf(story.comparison.byDivision, (g) => g.withTop) }
+	];
+	const room = (H - gapH * (measures.length - 1)) / measures.length;
+	const pitch = Math.min(compact ? 30 : 44, (room - titleH - axisH) / divisions.length);
+	// the panels sit together, the pair centred on the stage
+	const h = titleH + pitch * divisions.length + axisH;
+	const y0 = Math.max(0, (H - h * measures.length - gapH * (measures.length - 1)) / 2);
+	const ticks = (compact ? [0, 0.5, 1] : [0, 0.25, 0.5, 0.75, 1]).map((v) => ({ v, x: x(v) }));
+	const panels = measures.map((m, i) => {
+		const top = y0 + i * (h + gapH) + titleH;
+		return { key: m.key, top, axisY: top + pitch * divisions.length, ticks, rows: m.rows.map((row, k) => ({ ...row, y: top + (k + 0.5) * pitch })) };
+	});
+	return { panels, left, right: W - right, pitch, r };
 }
 
 /**

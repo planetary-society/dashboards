@@ -11,7 +11,6 @@ export function load() {
 			divisions: site.divisions,
 			referenceCost: site.story.referenceCost,
 			costBaseYear: site.costBaseYear,
-			windowPolicy: site.windowPolicy,
 			fullPolicy: site.fullPolicy
 		}
 	};

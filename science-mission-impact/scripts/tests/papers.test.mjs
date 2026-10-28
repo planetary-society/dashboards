@@ -51,10 +51,6 @@ describe('buildPapersFile', () => {
 			in_window: false
 		}
 	];
-	const windowRows = new Map([
-		['A-high', { bibcode: 'A-high', window_citations: 200, window_top10_weight: 1 }],
-		['B-low', { bibcode: 'B-low', window_citations: 133, window_top10_weight: 0 }]
-	]);
 	// The full-mission table reuses the window_* field names for its own scope's values.
 	const fullRows = new Map([
 		['A-high', { bibcode: 'A-high', window_citations: 260, window_top10_weight: 1 }],
@@ -64,10 +60,8 @@ describe('buildPapersFile', () => {
 		id: 'demo',
 		asOf: '2026-09-18',
 		lifetimeRows,
-		windowRows,
 		fullRows,
 		curatedBibcodes: new Set(['C-tie']),
-		top1Cutoff: cutoff,
 		fullTop1Cutoff: cutoff
 	});
 
@@ -76,13 +70,13 @@ describe('buildPapersFile', () => {
 	});
 
 	it('writes the columns in the contract order', () => {
-		assert.deepEqual(Object.keys(file.columns), ['b', 'y', 't', 'a', 'c', 's', 'e', 'f', 'fe', 'f1', 'w', 'we', 'w1', 'i']);
+		assert.deepEqual(Object.keys(file.columns), ['b', 'y', 't', 'a', 'c', 's', 'e', 'f', 'fe', 'f1', 'i']);
 	});
 
 	it('fills the full-mission columns from the full-mission table and its own cutoff', () => {
 		assert.deepEqual(file.columns.f, [260, 140, null]);
 		assert.deepEqual(file.columns.fe, [1, 0, null]);
-		// 140 is above the 133 cutoff here, while the same paper's 133 window citations only tie it.
+		// 140 is above the 133 cutoff here.
 		assert.deepEqual(file.columns.f1, [1, 1, null]);
 	});
 
@@ -91,27 +85,15 @@ describe('buildPapersFile', () => {
 			id: 'demo',
 			asOf: '2026-09-18',
 			lifetimeRows,
-			windowRows,
-			curatedBibcodes: new Set(),
-			top1Cutoff: cutoff
+			curatedBibcodes: new Set()
 		});
 		for (const column of ['f', 'fe', 'f1']) assert.deepEqual(bare.columns[column], [null, null, null]);
-		assert.deepEqual(bare.columns.w, [200, 133, null]);
 	});
 
 	it('keeps every column the same length', () => {
 		assert.equal(file.rows, 3);
 		for (const values of Object.values(file.columns)) assert.equal(values.length, 3);
 		assertColumnLengths(file);
-	});
-
-	it('derives the window top-1% weight from the pooled window cutoff', () => {
-		assert.deepEqual(file.columns.w1, [1, 0.47, null]);
-	});
-
-	it('leaves window columns null for papers outside the cohort', () => {
-		assert.deepEqual(file.columns.w, [200, 133, null]);
-		assert.deepEqual(file.columns.we, [1, 0, null]);
 	});
 
 	it('keeps a null era-adjusted weight distinct from a measured zero', () => {

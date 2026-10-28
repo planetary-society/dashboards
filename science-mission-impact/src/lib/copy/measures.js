@@ -1,8 +1,8 @@
 // Rows for the key-measures tables, one builder per page. Pure (no $lib, no $app) so node can
 // test it: a hint carries its methods anchor and the table turns that into a link.
 import { FOOTNOTES, noteText } from './footnotes.js';
-import { scopeLabel } from './window.js';
-import { int, weight, pct, longDate } from '../format.js';
+import { fullWindowLabel, scopeLabel } from './window.js';
+import { int, money, weight, pct, longDate } from '../format.js';
 
 /** h-index is a count; m-index runs 0–12 and needs its decimal. */
 export function indexValue(index, v) {
@@ -19,6 +19,34 @@ const rowsFor = (site, scope) => (label, ids, value, note = null) => ({
 const share = (s) => (s == null ? null : `${pct(s)} of division`);
 const uncited = (n, papers) => (papers && n != null ? `${int(n)} (${pct(n / papers)})` : int(n));
 
+/** What the mission is and what it cost, from its catalog entry; no scope changes these. A fact the catalog leaves blank drops out. */
+export function missionFactGroups(mission, site) {
+	const row = rowsFor(site);
+	const { meta } = mission;
+	const d = meta.dates;
+	return [
+		{
+			heading: 'Mission',
+			rows: [
+				row('Program', null, meta.program),
+				row('Type', null, meta.type),
+				row('Target', null, meta.target),
+				row('Status', null, meta.status),
+				row('Launch', null, d.launch && longDate(d.launch), meta.launchVehicle),
+				row('Prime mission', null, d.scienceStart && d.primeEnd && `${longDate(d.scienceStart)} to ${longDate(d.primeEnd)}`),
+				row('Mission end', null, d.missionEnd && longDate(d.missionEnd))
+			].filter((r) => r.value)
+		},
+		{
+			heading: 'Life-cycle cost · through the prime mission, with partner contributions',
+			rows: [
+				row('As reported', null, money(meta.lcc), 'nominal dollars'),
+				row(`Adjusted to ${site.costBaseYear} dollars`, ['cost'], money(meta.cost))
+			]
+		}
+	];
+}
+
 /** A mission's selected-scope counts, then the lifetime indices, which no scope changes. */
 export function missionMeasureGroups(mission, scope, site) {
 	const row = rowsFor(site, scope);
@@ -29,7 +57,7 @@ export function missionMeasureGroups(mission, scope, site) {
 	const b = sp && s.bounds?.status === 'available' && s.bounds.start ? s.bounds : null;
 	return [
 		{
-			heading: b ? `${scopeLabel(scope, site)} · papers ${longDate(b.start)} to ${longDate(b.end)}` : scopeLabel(scope, site),
+			heading: b ? `${scopeLabel(scope)} · papers ${longDate(b.start)} to ${longDate(b.end)}` : scopeLabel(scope),
 			// Spread is null when the scope's output was not measured: no row may read as a zero then.
 			rows: sp
 				? [
@@ -40,7 +68,7 @@ export function missionMeasureGroups(mission, scope, site) {
 						row('Uncited publications', ['uncited'], uncited(sp.uncited, s.papers)),
 						row('Top-10% credit', ['top10', 'shared'], weight(s.top10), share(s.top10ShareOfDivision)),
 						scope === 'lifetime'
-							? row('Top-1% credit', ['top1', 'shared'], '—', 'windowed scopes only')
+							? row('Top-1% credit', ['top1', 'shared'], '—', `${fullWindowLabel} only`)
 							: row('Top-1% credit', ['top1', 'shared'], weight(s.top1), share(s.top1ShareOfDivision))
 					]
 				: []

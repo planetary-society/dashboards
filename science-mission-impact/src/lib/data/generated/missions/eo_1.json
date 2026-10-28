@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 404.2,
+    "lcc": 200,
     "type": "Orbiter",
+    "program": "New Millennium Program",
+    "target": "Earth",
+    "launchVehicle": "Delta II",
     "dates": {
       "formulation": "1996-04-11",
       "launch": "2000-11-21",
@@ -23,8 +27,8 @@
     "m": 3.192,
     "i100": 66,
     "g": 146,
-    "tori": 293.811,
-    "riq": 634
+    "tori": 291.221,
+    "riq": 632
   },
   "facts": {
     "papers": 850,
@@ -125,6 +129,43 @@
       "expected": 32532,
       "observed": 32532,
       "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 850,
+    "us": {
+      "mapped": 249,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 29
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 23
+        },
+        {
+          "name": "U.S. Geological Survey",
+          "papers": 20
+        }
+      ]
+    },
+    "world": {
+      "mapped": 629,
+      "top": [
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 42
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 29
+        },
+        {
+          "name": "Chinese Academy of Sciences",
+          "papers": 24
+        }
+      ]
     }
   },
   "mostCited": {
@@ -278,7 +319,7 @@
     "arms": "((=abs:\"Earth Observing-1\" OR =abs:\"Earth Observing 1\" OR =abs:\"Earth Observing One\" OR (abs:\"EO-1\" AND (abs:Hyperion OR =abs:\"Advanced Land Imager\" OR abs:Landsat OR abs:hyperspectral OR =abs:\"remote sensing\" OR abs:multispectral OR abs:\"ETM+\" OR abs:satellite OR =abs:\"Earth observation\" OR abs:AVIRIS)) OR (abs:Hyperion AND (abs:hyperspectral OR abs:Landsat OR =abs:\"remote sensing\")) OR =abs:\"Advanced Land Imager\" OR (abs:\"ALI\" AND (=abs:\"Advanced Land Imager\" OR abs:Landsat OR abs:Hyperion))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2000-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Earth+Observing-1%22+OR+%3Dabs%3A%22Earth+Observing+1%22+OR+%3Dabs%3A%22Earth+Observing+One%22+OR+%28abs%3A%22EO-1%22+AND+%28abs%3AHyperion+OR+%3Dabs%3A%22Advanced+Land+Imager%22+OR+abs%3ALandsat+OR+abs%3Ahyperspectral+OR+%3Dabs%3A%22remote+sensing%22+OR+abs%3Amultispectral+OR+abs%3A%22ETM%2B%22+OR+abs%3Asatellite+OR+%3Dabs%3A%22Earth+observation%22+OR+abs%3AAVIRIS%29%29+OR+%28abs%3AHyperion+AND+%28abs%3Ahyperspectral+OR+abs%3ALandsat+OR+%3Dabs%3A%22remote+sensing%22%29%29+OR+%3Dabs%3A%22Advanced+Land+Imager%22+OR+%28abs%3A%22ALI%22+AND+%28%3Dabs%3A%22Advanced+Land+Imager%22+OR+abs%3ALandsat+OR+abs%3AHyperion%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:55:23.376409+00:00",
+    "fetchedAt": "2026-10-27T17:17:51.864542+00:00",
     "reconciliation": {
       "adsReturned": 857,
       "curatedOut": 3,

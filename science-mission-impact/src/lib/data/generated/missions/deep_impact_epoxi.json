@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 623.5,
+    "lcc": 342,
     "type": "Impactor",
+    "program": "Discovery",
+    "target": "Comet 9P/Tempel 1",
+    "launchVehicle": "Delta II",
     "dates": {
       "formulation": "1999-11-01",
       "launch": "2005-01-12",
@@ -23,8 +27,8 @@
     "m": 2.545,
     "i100": 27,
     "g": 99,
-    "tori": 57.014,
-    "riq": 343
+    "tori": 55.563,
+    "riq": 338
   },
   "facts": {
     "papers": 314,
@@ -113,6 +117,43 @@
       "expected": 12136,
       "observed": 12136,
       "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 314,
+    "us": {
+      "mapped": 221,
+      "top": [
+        {
+          "name": "University of Maryland, College Park",
+          "papers": 110
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 71
+        },
+        {
+          "name": "University of Hawaii, Manoa",
+          "papers": 56
+        }
+      ]
+    },
+    "world": {
+      "mapped": 299,
+      "top": [
+        {
+          "name": "University of Maryland, College Park",
+          "papers": 110
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 71
+        },
+        {
+          "name": "University of Hawaii, Manoa",
+          "papers": 56
+        }
+      ]
     }
   },
   "mostCited": {
@@ -267,7 +308,7 @@
     "arms": "(((=abs:\"Deep Impact\" AND (=abs:\"Tempel 1\" OR abs:Tempel OR abs:Hartley OR abs:EPOXI OR abs:EPOCh OR abs:lunar OR abs:Moon OR =abs:\"Deep Impact spacecraft\" OR =abs:\"Deep Impact mission\" OR =abs:\"Deep Impact flyby\" OR =abs:\"Deep Impact experiment\" OR =abs:\"Deep Impact encounter\")) OR (abs:EPOXI AND (abs:comet OR abs:Hartley OR abs:exoplanet OR abs:transit OR abs:Earth OR abs:lunar OR abs:Moon OR abs:planet)) OR (abs:DIXI AND abs:Hartley)))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2005-07 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Deep+Impact%22+AND+%28%3Dabs%3A%22Tempel+1%22+OR+abs%3ATempel+OR+abs%3AHartley+OR+abs%3AEPOXI+OR+abs%3AEPOCh+OR+abs%3Alunar+OR+abs%3AMoon+OR+%3Dabs%3A%22Deep+Impact+spacecraft%22+OR+%3Dabs%3A%22Deep+Impact+mission%22+OR+%3Dabs%3A%22Deep+Impact+flyby%22+OR+%3Dabs%3A%22Deep+Impact+experiment%22+OR+%3Dabs%3A%22Deep+Impact+encounter%22%29%29+OR+%28abs%3AEPOXI+AND+%28abs%3Acomet+OR+abs%3AHartley+OR+abs%3Aexoplanet+OR+abs%3Atransit+OR+abs%3AEarth+OR+abs%3Alunar+OR+abs%3AMoon+OR+abs%3Aplanet%29%29+OR+%28abs%3ADIXI+AND+abs%3AHartley%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2005-07+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:45:04.160951+00:00",
+    "fetchedAt": "2026-10-27T17:11:41.696029+00:00",
     "reconciliation": {
       "adsReturned": 316,
       "curatedOut": 5,

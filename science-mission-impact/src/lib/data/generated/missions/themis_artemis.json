@@ -9,7 +9,11 @@
     "status": "Extended Mission",
     "failed": false,
     "cost": 301.3,
+    "lcc": 180,
     "type": "Constellation",
+    "program": "Medium-class Explorers (MIDEX)",
+    "target": "Sun-Earth interaction",
+    "launchVehicle": "Delta II 7925",
     "dates": {
       "formulation": "2003-03-20",
       "launch": "2007-02-17",
@@ -23,8 +27,8 @@
     "m": 4.25,
     "i100": 64,
     "g": 145,
-    "tori": 132.298,
-    "riq": 575
+    "tori": 129.175,
+    "riq": 568
   },
   "facts": {
     "papers": 923,
@@ -107,6 +111,43 @@
       "expected": 34240,
       "observed": 34240,
       "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 923,
+    "us": {
+      "mapped": 698,
+      "top": [
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 486
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 222
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 114
+        }
+      ]
+    },
+    "world": {
+      "mapped": 876,
+      "top": [
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 486
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 222
+        },
+        {
+          "name": "Technical University of Braunschweig, Germany",
+          "papers": 125
+        }
+      ]
     }
   },
   "mostCited": {
@@ -258,7 +299,7 @@
     "arms": "((abs:\"Time History of Events and Macroscale Interactions during Substorms\" OR abs:\"Acceleration, Reconnection, Turbulence and Electrodynamics of Moon's Interaction with the Sun\" OR (title:THEMIS AND title:substorm) OR (abs:\"THEMIS\" AND (abs:\"mission\" OR abs:\"spacecraft\" OR abs:\"probe\") AND (abs:\"substorm\" OR abs:\"magnetosphere\" OR abs:\"reconnection\" OR abs:\"aurora\")) OR (abs:\"ARTEMIS mission\" AND (abs:\"P1\" OR abs:\"P2\" OR abs:\"probes\" OR abs:\"libration\" OR abs:\"magnetotail\")) OR (abs:\"Fluxgate Magnetometer\" AND (abs:THEMIS OR abs:ARTEMIS)) OR (abs:\"Electrostatic Analyzer\" AND (abs:THEMIS OR abs:ARTEMIS)) ) AND ( abs:\"plasma\" OR abs:\"magnetic field\" OR abs:\"dipolarization\" OR abs:\"ion\" OR abs:\"electron\" ) AND NOT title:(\"Mars\" OR \"Thermal Emission\" OR \"Odyssey\" OR \"geology\" OR \"crater\") NOT title:(\"Artemis I\" OR \"Artemis II\" OR \"Artemis III\" OR \"human\" OR \"crew\" OR \"landing system\" OR \"Gateway\" OR \"SLS\" OR \"Orion\" OR \"astronaut\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2007-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22Time+History+of+Events+and+Macroscale+Interactions+during+Substorms%22+OR+abs%3A%22Acceleration%2C+Reconnection%2C+Turbulence+and+Electrodynamics+of+Moon%27s+Interaction+with+the+Sun%22+OR+%28title%3ATHEMIS+AND+title%3Asubstorm%29+OR+%28abs%3A%22THEMIS%22+AND+%28abs%3A%22mission%22+OR+abs%3A%22spacecraft%22+OR+abs%3A%22probe%22%29+AND+%28abs%3A%22substorm%22+OR+abs%3A%22magnetosphere%22+OR+abs%3A%22reconnection%22+OR+abs%3A%22aurora%22%29%29+OR+%28abs%3A%22ARTEMIS+mission%22+AND+%28abs%3A%22P1%22+OR+abs%3A%22P2%22+OR+abs%3A%22probes%22+OR+abs%3A%22libration%22+OR+abs%3A%22magnetotail%22%29%29+OR+%28abs%3A%22Fluxgate+Magnetometer%22+AND+%28abs%3ATHEMIS+OR+abs%3AARTEMIS%29%29+OR+%28abs%3A%22Electrostatic+Analyzer%22+AND+%28abs%3ATHEMIS+OR+abs%3AARTEMIS%29%29+%29+AND+%28+abs%3A%22plasma%22+OR+abs%3A%22magnetic+field%22+OR+abs%3A%22dipolarization%22+OR+abs%3A%22ion%22+OR+abs%3A%22electron%22+%29+AND+NOT+title%3A%28%22Mars%22+OR+%22Thermal+Emission%22+OR+%22Odyssey%22+OR+%22geology%22+OR+%22crater%22%29+NOT+title%3A%28%22Artemis+I%22+OR+%22Artemis+II%22+OR+%22Artemis+III%22+OR+%22human%22+OR+%22crew%22+OR+%22landing+system%22+OR+%22Gateway%22+OR+%22SLS%22+OR+%22Orion%22+OR+%22astronaut%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2007-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T06:04:27.195218+00:00",
+    "fetchedAt": "2026-10-27T17:25:31.366853+00:00",
     "reconciliation": {
       "adsReturned": 926,
       "curatedOut": 7,

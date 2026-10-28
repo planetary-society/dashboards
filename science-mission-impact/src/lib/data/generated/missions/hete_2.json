@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 183.5,
+    "lcc": 94.5,
     "type": "Survey Observatory",
+    "program": "University-class Explorers (UNEX)",
+    "target": "Gamma Ray Bursts",
+    "launchVehicle": "Pegasus-H",
     "dates": {
       "formulation": "1997-07-01",
       "launch": "2000-10-09",
@@ -23,8 +27,8 @@
     "m": 1.8,
     "i100": 23,
     "g": 105,
-    "tori": 79.935,
-    "riq": 388
+    "tori": 77.191,
+    "riq": 381
   },
   "facts": {
     "papers": 127,
@@ -122,6 +126,43 @@
       "expected": 11148,
       "observed": 11148,
       "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 127,
+    "us": {
+      "mapped": 71,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 27
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 27
+        },
+        {
+          "name": "MIT, Center for Space Research/Kavli Institute",
+          "papers": 26
+        }
+      ]
+    },
+    "world": {
+      "mapped": 107,
+      "top": [
+        {
+          "name": "Astronomical Observatory of Bologna",
+          "papers": 27
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 27
+        },
+        {
+          "name": "RIKEN, Institute of Physical and Chemical Research, Japan",
+          "papers": 27
+        }
+      ]
     }
   },
   "mostCited": {
@@ -273,7 +314,7 @@
     "arms": "((abs:\"HETE-2\" OR abs:\"HETE-II\" OR =abs:\"High Energy Transient Explorer 2\" OR =abs:\"High Energy Transient Explorer II\" OR (abs:HETE AND abs:(\"gamma-ray burst\" OR \"gamma-ray bursts\" OR GRB OR GRBs OR \"X-ray flash\" OR \"X-ray flashes\" OR XRF OR XRFs OR WXM OR FREGATE OR SXC OR \"soft gamma repeater\" OR SGR) NOT abs:\"J1900.1-2455\")) AND collection:astronomy)",
     "filters": "property:refereed AND doctype:article AND pubdate:[2001-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22HETE-2%22+OR+abs%3A%22HETE-II%22+OR+%3Dabs%3A%22High+Energy+Transient+Explorer+2%22+OR+%3Dabs%3A%22High+Energy+Transient+Explorer+II%22+OR+%28abs%3AHETE+AND+abs%3A%28%22gamma-ray+burst%22+OR+%22gamma-ray+bursts%22+OR+GRB+OR+GRBs+OR+%22X-ray+flash%22+OR+%22X-ray+flashes%22+OR+XRF+OR+XRFs+OR+WXM+OR+FREGATE+OR+SXC+OR+%22soft+gamma+repeater%22+OR+SGR%29+NOT+abs%3A%22J1900.1-2455%22%29%29+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2001-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T06:14:01.213809+00:00",
+    "fetchedAt": "2026-10-27T17:32:01.211741+00:00",
     "reconciliation": {
       "adsReturned": 132,
       "curatedOut": 12,

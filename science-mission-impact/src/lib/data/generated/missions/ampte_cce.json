@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 242,
+    "lcc": 67.8,
     "type": "In-Situ Probe",
+    "program": "AMPTE",
+    "target": "Earth's Magnetosphere",
+    "launchVehicle": "Delta 3924",
     "dates": {
       "formulation": "1980-10-01",
       "launch": "1984-08-16",
@@ -23,7 +27,7 @@
     "m": 1.571,
     "i100": 48,
     "g": 110,
-    "tori": 130.506,
+    "tori": 129.955,
     "riq": 278
   },
   "facts": {
@@ -173,6 +177,43 @@
       "expected": 14458,
       "observed": 14458,
       "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 286,
+    "us": {
+      "mapped": 176,
+      "top": [
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 107
+        },
+        {
+          "name": "University of Maryland, College Park",
+          "papers": 38
+        },
+        {
+          "name": "Lockheed Martin Corporation",
+          "papers": 33
+        }
+      ]
+    },
+    "world": {
+      "mapped": 208,
+      "top": [
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 107
+        },
+        {
+          "name": "University of Maryland, College Park",
+          "papers": 38
+        },
+        {
+          "name": "Lockheed Martin Corporation",
+          "papers": 33
+        }
+      ]
     }
   },
   "mostCited": {
@@ -327,7 +368,7 @@
     "arms": "(((abs:(\"AMPTE CCE\" OR AMPTECCE) AND abs:(magnetosphere OR magnetospheric OR ions OR particles OR plasma OR \"ring current\" OR spacecraft OR satellite)) OR =abs:\"Charge Composition Explorer\" OR (abs:AMPTE AND =abs:\"Charged Particle Explorer\") OR (abs:CCE AND abs:(magnetosphere OR magnetospheric OR \"ring current\" OR magnetopause OR plasmasphere)) OR (abs:(CHEM OR MEPA OR HPCE) AND abs:(magnetosphere OR magnetospheric OR \"ring current\")) OR (abs:AMPTE AND =abs:(\"ring current\" OR \"ring currents\" OR plasmasphere OR plasmaspheric OR \"radiation belt\" OR \"radiation belts\" OR \"inner magnetosphere\") AND NOT abs:(IRM OR UKS OR \"Ion Release Module\" OR \"UK Subsatellite\" OR \"United Kingdom Subsatellite\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1984-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%28%22AMPTE+CCE%22+OR+AMPTECCE%29+AND+abs%3A%28magnetosphere+OR+magnetospheric+OR+ions+OR+particles+OR+plasma+OR+%22ring+current%22+OR+spacecraft+OR+satellite%29%29+OR+%3Dabs%3A%22Charge+Composition+Explorer%22+OR+%28abs%3AAMPTE+AND+%3Dabs%3A%22Charged+Particle+Explorer%22%29+OR+%28abs%3ACCE+AND+abs%3A%28magnetosphere+OR+magnetospheric+OR+%22ring+current%22+OR+magnetopause+OR+plasmasphere%29%29+OR+%28abs%3A%28CHEM+OR+MEPA+OR+HPCE%29+AND+abs%3A%28magnetosphere+OR+magnetospheric+OR+%22ring+current%22%29%29+OR+%28abs%3AAMPTE+AND+%3Dabs%3A%28%22ring+current%22+OR+%22ring+currents%22+OR+plasmasphere+OR+plasmaspheric+OR+%22radiation+belt%22+OR+%22radiation+belts%22+OR+%22inner+magnetosphere%22%29+AND+NOT+abs%3A%28IRM+OR+UKS+OR+%22Ion+Release+Module%22+OR+%22UK+Subsatellite%22+OR+%22United+Kingdom+Subsatellite%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1984-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T06:00:49.816550+00:00",
+    "fetchedAt": "2026-10-27T17:22:47.552242+00:00",
     "reconciliation": {
       "adsReturned": 289,
       "curatedOut": 3,

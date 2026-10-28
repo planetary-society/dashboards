@@ -278,6 +278,8 @@ export interface Division {
 	facts: { missions: number; papers: number; citations: number; publicationYears: [number, number] };
 	rankable: boolean;
 	lifetimeSeries: LifetimeSeries;
+	/** The division's papers counted once each; cells in static/data/maps/divisions/<slug>.json. */
+	affiliations: AffiliationSummary | null;
 	mostCited: PaperRef | null;
 	/** The ten most cited papers per scope, each paper once (windows count in-window citations). missions: ids sharing it, highest count first. */
 	topPapers: Record<Scope, (Omit<PaperRef, 'missionId'> & { missions: string[] })[]>;
@@ -397,12 +399,18 @@ export interface Mission {
 		status: string;
 		failed: boolean;
 		cost: number | null; // adjusted $M 2025
+		lcc: number | null; // $M as the catalog reports it, before adjustment
 		type: string | null;
+		program: string | null;
+		target: string | null;
+		launchVehicle: string | null;
 		dates: { formulation: string | null; launch: string | null; scienceStart: string | null; primeEnd: string | null; missionEnd: string | null };
 	};
 	indices: MissionIndices;
 	facts: { papers: number | null; citations: number | null; publicationYears: [number, number] | null };
 	lifetimeSeries: LifetimeSeries | null;
+	/** Cells in static/data/maps/missions/<id>.json; null when no paper has a mapped institution. */
+	affiliations: AffiliationSummary | null;
 	mostCited: PaperRef | null;
 	/**
 	 * Papers by citation rank among all of the division's mission papers, in ten equal bins,
@@ -456,11 +464,35 @@ export interface PapersFile {
 		f: (number | null)[]; // citations within the full-mission window
 		fe: (number | null)[]; // era-adjusted top-10% weight, full-mission window
 		f1: (number | null)[]; // top-1% weight, full-mission window, pooled
-		w: (number | null)[]; // citations within the prime-phase window
-		we: (number | null)[]; // era-adjusted top-10% weight, prime-phase window
-		w1: (number | null)[]; // top-1% weight, prime-phase window, pooled
 		i: (0 | 1)[]; // 1 = added by curation rather than the query
 	};
+}
+
+/**
+ * Where the authors of every tracked paper (lifetime) worked: upstream's ADS canonical
+ * affiliations, located through ROR (scripts/lib/affiliations.mjs). The US map takes US
+ * institutions inside its projection; the world map every located one.
+ */
+export type AffiliationMapKey = 'us' | 'world';
+export interface AffiliationSummary {
+	papers: number; // every packaged paper
+	us: AffiliationMapSummary;
+	world: AffiliationMapSummary;
+}
+export interface AffiliationMapSummary {
+	mapped: number; // papers with at least one institution on this map
+	top: { name: string; papers: number }[]; // the three institutions with the most papers
+}
+/** static/data/maps/{missions/<id>,divisions/<slug>}.json */
+export interface AffiliationFile {
+	places: string[]; // each cell's institution with the most papers, shared by both maps
+	us: AffiliationGrid;
+	world: AffiliationGrid;
+}
+export interface AffiliationGrid {
+	cell: number; // degrees per side
+	/** [west, south, papers with an author in the cell (each once), index into places, institutions in the cell], most papers first */
+	cells: [number, number, number, number, number][];
 }
 
 /** generated/scrolly.json */

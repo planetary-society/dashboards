@@ -3,35 +3,35 @@
 	import EntityHeader from '$lib/ui/EntityHeader.svelte';
 	import MostCited from '$lib/ui/MostCited.svelte';
 	import ScopeSwitch from '$lib/ui/ScopeSwitch.svelte';
-	import Accumulation from '$lib/charts/Accumulation.svelte';
+	import LifetimeTimeline from '$lib/charts/LifetimeTimeline.svelte';
+	import AffiliationMap from '$lib/charts/AffiliationMap.svelte';
+	import Hint from '$lib/ui/Hint.svelte';
 	import MeasureTable from '$lib/ui/MeasureTable.svelte';
 	import QueryBlock from '$lib/mission/QueryBlock.svelte';
 	import CurationLists from '$lib/mission/CurationLists.svelte';
 	import PaperBrowser from '$lib/mission/PaperBrowser.svelte';
 	import { hasReconciliation } from '$lib/mission/query.js';
-	import { divisionHref, thumbSrc } from '$lib/paths.js';
-	import { int, money, yearSpan, plural, longDate, weight } from '$lib/format.js';
+	import { divisionHref, thumbSrc, mapsUrl, methodsHref } from '$lib/paths.js';
+	import { FOOTNOTES, noteText } from '$lib/copy/footnotes.js';
+	import { int, yearSpan, plural, longDate, weight } from '$lib/format.js';
 	import { fullWindowLabel } from '$lib/copy/window.js';
 	import { view } from '$lib/state/view.svelte.js';
-	import { missionMeasureGroups } from '$lib/copy/measures.js';
+	import { missionFactGroups, missionMeasureGroups } from '$lib/copy/measures.js';
 
 	let { data } = $props();
 	const m = $derived(data.mission);
 	const site = $derived(data.site);
 	const f = $derived(m.facts);
-	const launchYear = $derived(m.meta.dates.launch?.slice(0, 4));
 	const description = $derived(
 		`${m.fullName}: ${int(f.papers)} tracked peer-reviewed publications and ${int(f.citations)} citations${f.publicationYears ? `, ${yearSpan(f.publicationYears)}` : ''}.`
 	);
 	// Secondary measures, in the paper's terms. Each part drops out when the mission has no
-	// qualifying papers or the figure is not on record, and the separator goes with it.
-	const primeEndYear = $derived(m.meta.dates.primeEnd?.slice(0, 4));
+	// qualifying papers or the figure is not on record, and the separator goes with it. Type,
+	// launch and cost are in the Mission facts table.
 	const second = $derived(
 		[
-			m.meta.type,
 			f.papers > 0 && m.indices.h != null ? `h-index ${int(m.indices.h)}` : null,
-			f.papers > 0 && m.indices.i100 ? `${int(m.indices.i100)} ${plural(m.indices.i100, 'paper')} with 100+ citations` : null,
-			primeEndYear ? `prime mission ended ${primeEndYear}` : null
+			f.papers > 0 && m.indices.i100 ? `${int(m.indices.i100)} ${plural(m.indices.i100, 'paper')} with 100+ citations` : null
 		]
 			.filter(Boolean)
 			.join(' · ')
@@ -53,15 +53,32 @@
 	<EntityHeader name={m.name} crumb={{ href: divisionHref(m.division), label: m.divisionName }} thumb={m.hasThumb ? thumbSrc(m.id) : null} {second}>
 		{#if f.papers > 0}<b>{int(f.papers)}</b> tracked {plural(f.papers, 'publication')} and <b>{int(f.citations)}</b> {plural(f.citations, 'citation')}{f.publicationYears ? ` from ${yearSpan(f.publicationYears)}` : ''}.{:else if noSearch}{m.name} was lost before returning science, so no publication search was run; it counts as zero in the comparisons.{:else if f.papers === 0}No tracked publications found.{:else}Tracked publication data is unavailable.{/if}
 		{#if m.name !== m.fullName}{m.fullName}.{/if}
-		{#if launchYear}Launched {launchYear}.{/if}
-		{#if m.meta.cost != null}Life-cycle cost: <b>{money(m.meta.cost)}</b> in {site.costBaseYear} dollars.{/if}
 		{#if active}{fullWindowLabel} {longDate(active.bounds.start)} to {longDate(active.bounds.end)}: {int(active.papers)} {plural(active.papers, 'publication')}, {weight(active.top10)} top-10% credit.{/if}
 		{#if shortfall}Status: {m.meta.status}.{m.meta.failed && !noSearch && m.full?.outputBasis === 'assumed_zero' ? ' With no measured output, it counts as zero in the comparisons.' : ''}{/if}
 	</EntityHeader>
 
-	{#if f.papers > 0}
-		<Accumulation lifetime={m.lifetimeSeries} dates={m.meta.dates} />
+	<section>
+		<h2 class="chart-title">Mission facts</h2>
+		<MeasureTable groups={missionFactGroups(m, site)} />
+	</section>
 
+	{#if f.papers > 0}
+		<section>
+			<h2 class="chart-title">Publications and citations by year</h2>
+			<p class="meta">Every tracked publication to date, whatever window is chosen below.</p>
+			<LifetimeTimeline lifetime={m.lifetimeSeries} />
+		</section>
+	{/if}
+
+	{#if m.affiliations}
+		<section>
+			<h2 class="chart-title">Where the authors worked<Hint label="this map" text={noteText(['affiliations'], site)} href={methodsHref(FOOTNOTES.affiliations.anchor)} /></h2>
+			<p class="meta">Every tracked publication to date.</p>
+			<AffiliationMap summary={m.affiliations} url={mapsUrl('missions', m.id)} />
+		</section>
+	{/if}
+
+	{#if f.papers > 0}
 		<MostCited paper={m.mostCited} />
 	{/if}
 

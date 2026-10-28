@@ -1,7 +1,8 @@
 <script>
-	// The division's missions in two groups either side of the small-mission line, cheapest first.
-	// Every figure follows the page's scope, so the rows match the stats above; top 1% and the
-	// indices are in the CSV, which carries every scope.
+	// The division's missions in one list, earliest launch first. Cost is the prime-mission
+	// life-cycle cost (adjusted_lcc), never extended-mission spending. Every figure follows the
+	// page's scope, so the rows match the stats above; top 1% and the indices are in the CSV,
+	// which carries both selectable scopes.
 	import Num from './Num.svelte';
 	import Hint from './Hint.svelte';
 	import { FOOTNOTES, noteText } from '$lib/copy/footnotes.js';
@@ -9,16 +10,16 @@
 	import { methodsHref, missionHref, thumbSrc } from '$lib/paths.js';
 	import { missionsCsv } from '$lib/mission/papers.js';
 	import { downloadText } from '$lib/download.js';
-	import { int, weight, money, plural } from '$lib/format.js';
+	import { int, weight, money } from '$lib/format.js';
 
-	// rankable: false for a division too small to rank, which has no top-10% papers or groups to show
+	// rankable: false for a division too small to rank, which has no top-10% papers to show
 	let { missions, slug, site, scope = 'full', rankable = true } = $props();
 
-	let sort = $state({ key: 'cost', dir: 1 });
+	let sort = $state({ key: 'launch', dir: 1 });
 
 	const value = {
 		name: (m) => m.name.toLowerCase(),
-		launch: (m) => m.launchYear,
+		launch: (m) => m.launchDate ?? (m.launchYear == null ? null : String(m.launchYear)),
 		type: (m) => m.type?.toLowerCase() ?? null,
 		cost: (m) => m.cost,
 		papers: (m) => m[scope].papers,
@@ -40,23 +41,12 @@
 		});
 	}
 
-	const ref = $derived(site.referenceCost);
-	const groups = $derived(
-		rankable
-			? [
-					// the packaged membership (MissionRow.size); a mission without a cost is neither
-					{ key: 'under', label: `Small: ${money(ref)} or less`, rows: sorted(missions.filter((m) => m.size === 'under')) },
-					{ key: 'over', label: `Larger: over ${money(ref)}`, rows: sorted(missions.filter((m) => m.size === 'over')) },
-					{ key: 'none', label: 'Cost not known', rows: sorted(missions.filter((m) => m.size == null)) }
-				].filter((g) => g.rows.length)
-			: [{ key: 'all', label: null, rows: sorted(missions) }]
-	);
+	const rows = $derived(sorted(missions));
 	const maxTop = $derived(Math.max(1e-9, ...missions.map((m) => m[scope].top10 ?? 0)));
-	const columns = $derived(rankable ? 8 : 7);
-	const basis = $derived(scope === 'lifetime' ? 'Every tracked paper and citation to date.' : `Papers and citations in the ${scopeLabel(scope, site)}.`);
+	const basis = $derived(scope === 'lifetime' ? 'Every tracked paper and citation to date.' : `Papers and citations in the ${scopeLabel(scope)}.`);
 
 	function setSort(key) {
-		sort = sort.key === key ? { key, dir: -sort.dir } : { key, dir: key === 'name' || key === 'cost' ? 1 : -1 };
+		sort = sort.key === key ? { key, dir: -sort.dir } : { key, dir: ['name', 'launch', 'cost'].includes(key) ? 1 : -1 };
 	}
 	const ariaSort = (key) => (sort.key !== key ? 'none' : sort.dir === 1 ? 'ascending' : 'descending');
 
@@ -78,7 +68,7 @@
 </div>
 
 <table>
-	<caption class="sr-only">{rankable ? 'Missions by cost, small missions first' : 'Missions by cost'}</caption>
+	<caption class="sr-only">Missions, earliest launch first</caption>
 	<thead>
 		<tr>
 			<th class="thumb"><span class="sr-only">Image</span></th>
@@ -91,38 +81,31 @@
 			{#if rankable}{@render th('top', 'Top-10% papers', 'num top', ['top10', 'shared'])}{/if}
 		</tr>
 	</thead>
-	{#each groups as g (g.key)}
-		<tbody>
-			{#if g.label}
-				<tr class="group">
-					<th scope="colgroup" colspan={columns}>{g.label} <span class="meta">{int(g.rows.length)} {plural(g.rows.length, 'mission')}</span></th>
-				</tr>
-			{/if}
-			{#each g.rows as m (m.id)}
-				{@const top = m[scope].top10}
-				<tr class="row">
-					<td class="thumb">
-						{#if m.hasThumb}<img src={thumbSrc(m.id)} alt="" width="32" height="32" loading="lazy" />{:else}<span class="blank"></span>{/if}
+	<tbody>
+		{#each rows as m (m.id)}
+			{@const top = m[scope].top10}
+			<tr class="row">
+				<td class="thumb">
+					{#if m.hasThumb}<img src={thumbSrc(m.id)} alt="" width="32" height="32" loading="lazy" />{:else}<span class="blank"></span>{/if}
+				</td>
+				<td class="name">
+					<a href={missionHref(slug, m.id)}>{m.name}</a>{#if m.failed}{' '}<span class="tag">Lost</span>{:else if m.shortfall}{' '}<span class="tag">Partial</span>{/if}
+					<span class="sub meta">{money(m.cost)}, {m.launchYear ?? '—'}</span>
+				</td>
+				<td class="num wide"><Num value={m.launchYear ?? '—'} /></td>
+				<td class="type wide">{m.type ?? '—'}</td>
+				<td class="num mid"><Num value={money(m.cost)} /></td>
+				<td class={rankable ? 'num mid' : 'num'}><Num value={int(m[scope].papers)} /></td>
+				<td class="num"><Num value={int(m[scope].citations)} /></td>
+				{#if rankable}
+					<td class="num top">
+						<span class="bar" style:width="{((top ?? 0) / maxTop) * 100}%"></span>
+						<span class="topv" class:nil={!top}><Num value={top == null ? '—' : weight(top)} /></span>
 					</td>
-					<td class="name">
-						<a href={missionHref(slug, m.id)}>{m.name}</a>{#if m.failed}{' '}<span class="tag">Lost</span>{:else if m.shortfall}{' '}<span class="tag">Partial</span>{/if}
-						<span class="sub meta">{money(m.cost)}, {m.launchYear ?? '—'}</span>
-					</td>
-					<td class="num wide"><Num value={m.launchYear ?? '—'} /></td>
-					<td class="type wide">{m.type ?? '—'}</td>
-					<td class="num mid"><Num value={money(m.cost)} /></td>
-					<td class={rankable ? 'num mid' : 'num'}><Num value={int(m[scope].papers)} /></td>
-					<td class="num"><Num value={int(m[scope].citations)} /></td>
-					{#if rankable}
-						<td class="num top">
-							<span class="bar" style:width="{((top ?? 0) / maxTop) * 100}%"></span>
-							<span class="topv" class:nil={!top}><Num value={top == null ? '—' : weight(top)} /></span>
-						</td>
-					{/if}
-				</tr>
-			{/each}
-		</tbody>
-	{/each}
+				{/if}
+			</tr>
+		{/each}
+	</tbody>
 </table>
 
 <style>
@@ -197,21 +180,8 @@
 		flex-direction: row-reverse;
 	}
 
-	.group th {
-		padding: 28px 0 8px;
+	thead tr {
 		border-bottom: 1px solid var(--shadow);
-		text-align: left;
-		font-weight: 500;
-		font-size: 15px;
-	}
-
-	tbody:first-of-type .group th {
-		padding-top: 12px;
-	}
-
-	.group .meta {
-		margin-left: 8px;
-		font-weight: 400;
 	}
 
 	.row {

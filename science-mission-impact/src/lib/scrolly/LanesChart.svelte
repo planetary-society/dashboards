@@ -12,9 +12,11 @@
 
 	/**
 	 * layout: costLayout() over the compared divisions. scope: the story scope. referenceCost: the
-	 * threshold. notes: per division slug, the lines the story wrote for that band.
+	 * threshold. notes: per division slug, the lines the story wrote for that band. floors: per
+	 * division slug, the cost by which its cheapest quarter of top-10% papers came in (story.bands'
+	 * p25), marked where the line passes a quarter; null marks none.
 	 */
-	let { layout, scope, referenceCost, notes, spending = false, visible = false, compact = false, width, height } = $props();
+	let { layout, scope, referenceCost, notes, floors = null, spending = false, visible = false, compact = false, width, height } = $props();
 
 	const [x0, x1] = $derived(layout.x.range());
 	const refX = $derived(layout.x(referenceCost));
@@ -52,6 +54,12 @@
 			<path class="cost" d={row.cost} />
 			<path class="top" d={row.top} />
 			<path class="cited" d={row.cited} />
+			{#if floors?.[row.slug] != null}
+				{@const fx = layout.x(floors[row.slug])}
+				{@const fy = row.shelfY - 0.25 * (row.shelfY - row.curveTop)}
+				<circle class="floor" cx={fx} cy={fy} r={compact ? 3.5 : 4.5} />
+				<text class="floor-label" x={fx + (compact ? 6 : 9)} y={fy} dy="0.32em">{money(floors[row.slug])}</text>
+			{/if}
 		{/each}
 	</svg>
 	<span class="tick strong" style:left="{refX}px">{money(referenceCost)}</span>
@@ -168,6 +176,26 @@
 
 	.spending path.cited {
 		opacity: 1;
+	}
+
+	/* the cost floor: where a division's line passes a quarter of its top-10% papers */
+	.floor {
+		fill: var(--white);
+		stroke: var(--black);
+		stroke-width: 1.5;
+	}
+
+	.floor-label {
+		fill: var(--white);
+		font: 500 12px var(--sans);
+		paint-order: stroke;
+		stroke: var(--black);
+		stroke-width: 3px;
+		stroke-linejoin: round;
+	}
+
+	.compact .floor-label {
+		font-size: 10px;
 	}
 
 	/* the spending line arrives on its own step, under the papers line */

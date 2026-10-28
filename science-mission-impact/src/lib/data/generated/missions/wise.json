@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 484.2,
+    "lcc": 310,
     "type": "Survey Observatory",
+    "program": "Medium-class Explorers (MIDEX)",
+    "target": "Universe",
+    "launchVehicle": "Delta II",
     "dates": {
       "formulation": "2003-03-01",
       "launch": "2009-12-14",
@@ -23,8 +27,8 @@
     "m": 7.706,
     "i100": 224,
     "g": 236,
-    "tori": 335.148,
-    "riq": 1017
+    "tori": 301.647,
+    "riq": 964
   },
   "facts": {
     "papers": 2604,
@@ -98,6 +102,43 @@
       "expected": 106977,
       "observed": 106977,
       "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 2604,
+    "us": {
+      "mapped": 1557,
+      "top": [
+        {
+          "name": "California Institute of Technology",
+          "papers": 395
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 256
+        },
+        {
+          "name": "Harvard Smithsonian Center for Astrophysics",
+          "papers": 213
+        }
+      ]
+    },
+    "world": {
+      "mapped": 2520,
+      "top": [
+        {
+          "name": "California Institute of Technology",
+          "papers": 395
+        },
+        {
+          "name": "Max Planck Society for the Advancement of Science, Germany",
+          "papers": 321
+        },
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 307
+        }
+      ]
     }
   },
   "mostCited": {
@@ -229,8 +270,8 @@
     "papers": 2604,
     "outputBasis": "measured",
     "citations": 106977,
-    "top10": 126.596,
-    "top10ShareOfDivision": 0.01994,
+    "top10": 126.763,
+    "top10ShareOfDivision": 0.01997,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -252,7 +293,7 @@
     "arms": "(((((=abs:\"Wide-field Infrared Survey Explorer\" OR =abs:\"Wide-field Infrared Space Explorer\" OR (abs:WISE AND (abs:infrared OR abs:observatory OR abs:NEOWISE OR abs:asteroid OR abs:\"all-sky\")) OR facility:WISE OR =abs:\"WISE satellite\" OR ((=abs:AllWISE OR =abs:unWISE OR =abs:CatWISE) AND (abs:infrared OR abs:catalog OR abs:photometry OR abs:survey OR abs:WISE)) OR (abs:NEOWISE AND NOT (abs:asteroid OR abs:comet OR =abs:NEOs OR =abs:\"near-Earth objects\" OR =abs:\"minor planet\" OR =abs:\"minor planets\" OR =abs:\"small body\" OR =abs:\"small bodies\" OR abs:trojan OR =abs:\"planetary defense\" OR =abs:\"Kuiper belt\" OR =abs:\"trans-Neptunian\" OR abs:Neptune OR abs:regolith OR =abs:\"Planet Nine\")) OR (abs:NEOWISE AND (abs:AGN OR abs:quasar OR abs:YSO OR abs:protostar OR abs:\"tidal disruption event\" OR abs:supernova OR abs:\"brown dwarf\" OR abs:\"white dwarf\" OR abs:maser OR abs:\"star-forming\" OR abs:\"black hole\"))) AND NOT (=abs:\"C 2020 F3 NEOWISE\" OR =abs:\"comet NEOWISE\" OR =abs:\"C 2014 N3 NEOWISE\")) AND NOT (abs:NEOWISE AND (abs:asteroid OR abs:comet OR =abs:NEOs OR =abs:\"near-Earth objects\" OR =abs:\"minor planet\" OR =abs:\"minor planets\" OR =abs:\"small body\" OR =abs:\"small bodies\" OR abs:trojan OR =abs:\"planetary defense\" OR =abs:\"Kuiper belt\" OR =abs:\"trans-Neptunian\" OR abs:Neptune OR abs:regolith OR =abs:\"Planet Nine\") AND NOT (abs:AGN OR abs:quasar OR abs:YSO OR abs:protostar OR abs:\"tidal disruption event\" OR abs:supernova OR abs:\"brown dwarf\" OR abs:\"white dwarf\" OR abs:maser OR abs:\"star-forming\" OR abs:\"black hole\") AND NOT =abs:WISE AND NOT facility:WISE)) AND collection:astronomy))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2010-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28%28%3Dabs%3A%22Wide-field+Infrared+Survey+Explorer%22+OR+%3Dabs%3A%22Wide-field+Infrared+Space+Explorer%22+OR+%28abs%3AWISE+AND+%28abs%3Ainfrared+OR+abs%3Aobservatory+OR+abs%3ANEOWISE+OR+abs%3Aasteroid+OR+abs%3A%22all-sky%22%29%29+OR+facility%3AWISE+OR+%3Dabs%3A%22WISE+satellite%22+OR+%28%28%3Dabs%3AAllWISE+OR+%3Dabs%3AunWISE+OR+%3Dabs%3ACatWISE%29+AND+%28abs%3Ainfrared+OR+abs%3Acatalog+OR+abs%3Aphotometry+OR+abs%3Asurvey+OR+abs%3AWISE%29%29+OR+%28abs%3ANEOWISE+AND+NOT+%28abs%3Aasteroid+OR+abs%3Acomet+OR+%3Dabs%3ANEOs+OR+%3Dabs%3A%22near-Earth+objects%22+OR+%3Dabs%3A%22minor+planet%22+OR+%3Dabs%3A%22minor+planets%22+OR+%3Dabs%3A%22small+body%22+OR+%3Dabs%3A%22small+bodies%22+OR+abs%3Atrojan+OR+%3Dabs%3A%22planetary+defense%22+OR+%3Dabs%3A%22Kuiper+belt%22+OR+%3Dabs%3A%22trans-Neptunian%22+OR+abs%3ANeptune+OR+abs%3Aregolith+OR+%3Dabs%3A%22Planet+Nine%22%29%29+OR+%28abs%3ANEOWISE+AND+%28abs%3AAGN+OR+abs%3Aquasar+OR+abs%3AYSO+OR+abs%3Aprotostar+OR+abs%3A%22tidal+disruption+event%22+OR+abs%3Asupernova+OR+abs%3A%22brown+dwarf%22+OR+abs%3A%22white+dwarf%22+OR+abs%3Amaser+OR+abs%3A%22star-forming%22+OR+abs%3A%22black+hole%22%29%29%29+AND+NOT+%28%3Dabs%3A%22C+2020+F3+NEOWISE%22+OR+%3Dabs%3A%22comet+NEOWISE%22+OR+%3Dabs%3A%22C+2014+N3+NEOWISE%22%29%29+AND+NOT+%28abs%3ANEOWISE+AND+%28abs%3Aasteroid+OR+abs%3Acomet+OR+%3Dabs%3ANEOs+OR+%3Dabs%3A%22near-Earth+objects%22+OR+%3Dabs%3A%22minor+planet%22+OR+%3Dabs%3A%22minor+planets%22+OR+%3Dabs%3A%22small+body%22+OR+%3Dabs%3A%22small+bodies%22+OR+abs%3Atrojan+OR+%3Dabs%3A%22planetary+defense%22+OR+%3Dabs%3A%22Kuiper+belt%22+OR+%3Dabs%3A%22trans-Neptunian%22+OR+abs%3ANeptune+OR+abs%3Aregolith+OR+%3Dabs%3A%22Planet+Nine%22%29+AND+NOT+%28abs%3AAGN+OR+abs%3Aquasar+OR+abs%3AYSO+OR+abs%3Aprotostar+OR+abs%3A%22tidal+disruption+event%22+OR+abs%3Asupernova+OR+abs%3A%22brown+dwarf%22+OR+abs%3A%22white+dwarf%22+OR+abs%3Amaser+OR+abs%3A%22star-forming%22+OR+abs%3A%22black+hole%22%29+AND+NOT+%3Dabs%3AWISE+AND+NOT+facility%3AWISE%29%29+AND+collection%3Aastronomy%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2010-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T06:19:47.890381+00:00",
+    "fetchedAt": "2026-10-27T17:35:37.899849+00:00",
     "reconciliation": {
       "adsReturned": 2610,
       "curatedOut": 7,

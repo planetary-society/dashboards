@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { costLayout, costCurve, rugLayout, skylineLayout, skylineZoom, skylineHit, primerLayout, columnLabel, splitLayout, focusLayout, perDollarLayout, trendLine, kindsLayout, exampleLayout } from './layouts.js';
+import { costLayout, costCurve, rugLayout, skylineLayout, skylineZoom, skylineHit, primerLayout, columnLabel, splitLayout, focusLayout, perDollarLayout, trendLine, varyLayout, kindsLayout, exampleLayout } from './layouts.js';
 import { logFit } from '../../../scripts/lib/util.mjs';
 
 const load = async (name) => JSON.parse(await readFile(new URL(`../data/generated/${name}.json`, import.meta.url), 'utf8'));
@@ -231,6 +231,39 @@ test('per dollar: every measured mission in its band, and each band’s cited sq
 			}
 		}
 	}
+});
+
+test('small against larger by division: two panels of shares, every mark inside, as packaged', () => {
+	const compared = site.divisions.filter((d) => site.story.comparison.divisions.includes(d.slug));
+	// 351×262: a phone in Safari, whose toolbars leave the stage a little over 250px
+	for (const [W, H] of [...sizes, [351, 262]]) {
+		const layout = varyLayout(site.story, compared, W, H, { compact: W < 600 });
+		assert.deepEqual(layout.panels.map((p) => p.key), ['failed', 'reached']);
+		const [a, b] = layout.panels;
+		assert.ok(a.axisY < b.top && b.axisY <= H, `${W}×${H}: panels apart and on the stage`);
+		assert.ok(layout.pitch >= 2 * layout.r + 4, `${W}×${H}: rows ${layout.pitch}px apart`);
+		for (const p of layout.panels) {
+			assert.deepEqual(p.rows.map((r) => r.slug), compared.map((d) => d.slug), 'one row per division, same order');
+			for (const r of p.rows) {
+				for (const m of [r.under, r.over].filter(Boolean)) {
+					assert.ok(m.x >= layout.left && m.x <= layout.right, `${W}px ${p.key} ${r.slug}: inside the plot`);
+					assert.ok(r.y > p.top && r.y < p.axisY);
+				}
+				if (r.under && r.over) assert.equal(r.under.v < r.over.v, r.under.x < r.over.x, 'x follows the share');
+				// a ring's count stays clear of the names and on the stage, at about 6px a character
+				if (r.under) {
+					const { x, anchor, text } = r.under.label;
+					const [from, to] = anchor === 'end' ? [x - text.length * 6, x] : [x, x + text.length * 6];
+					assert.ok(from > layout.left && to <= W, `${W}px ${p.key} ${r.slug}: count label inside the plot`);
+				}
+			}
+		}
+	}
+	const planetary = (key) => varyLayout(site.story, compared, 900, 640).panels.find((p) => p.key === key).rows.find((r) => r.slug === 'planetary');
+	const failed = site.story.failure.byDivision.find((d) => d.division === 'planetary').under;
+	assert.deepEqual([planetary('failed').under.n, planetary('failed').under.of], [failed.failed, failed.missions]);
+	const reached = site.story.comparison.byDivision.find((d) => d.division === 'planetary').over;
+	assert.equal(planetary('reached').over.v, reached.withTop / reached.missions);
 });
 
 // --- paper kinds ----------------------------------------------------------------------------

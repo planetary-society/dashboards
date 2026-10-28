@@ -9,7 +9,11 @@
     "status": "Extended Mission",
     "failed": false,
     "cost": 248.2,
+    "lcc": 170,
     "type": "Pointed Observatory",
+    "program": "Small-class Explorers (SMEX)",
+    "target": "Universe",
+    "launchVehicle": "Pegasus XL",
     "dates": {
       "formulation": "2008-02-25",
       "launch": "2012-06-13",
@@ -23,8 +27,8 @@
     "m": 6.267,
     "i100": 83,
     "g": 155,
-    "tori": 126.198,
-    "riq": 702
+    "tori": 112.205,
+    "riq": 662
   },
   "facts": {
     "papers": 1935,
@@ -92,6 +96,43 @@
       "expected": 54574,
       "observed": 54574,
       "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 1935,
+    "us": {
+      "mapped": 1140,
+      "top": [
+        {
+          "name": "California Institute of Technology",
+          "papers": 503
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 446
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 332
+        }
+      ]
+    },
+    "world": {
+      "mapped": 1881,
+      "top": [
+        {
+          "name": "California Institute of Technology",
+          "papers": 503
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 446
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 332
+        }
+      ]
     }
   },
   "mostCited": {
@@ -246,7 +287,7 @@
     "arms": "(((abs:\"NuSTAR\" NOT (=abs:\"Facility for Antiproton and Ion Research\" OR =abs:\"Facility for Anti-proton and Ion Research\" OR =abs:\"Nuclear Structure Astrophysics and Reactions\" OR =abs:\"radioactive beam\" OR =abs:\"radioactive beams\" OR =abs:\"radioactive ion beam\" OR =abs:\"radioactive ion beams\" OR =abs:\"exotic nuclei\" OR abs:((DESPEC OR GSI) AND (nuclear OR nuclei OR isotope OR detector OR beam)))) OR =abs:\"Nuclear Spectroscopic Telescope Array\" OR facility:\"NuSTAR\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2012-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22NuSTAR%22+NOT+%28%3Dabs%3A%22Facility+for+Antiproton+and+Ion+Research%22+OR+%3Dabs%3A%22Facility+for+Anti-proton+and+Ion+Research%22+OR+%3Dabs%3A%22Nuclear+Structure+Astrophysics+and+Reactions%22+OR+%3Dabs%3A%22radioactive+beam%22+OR+%3Dabs%3A%22radioactive+beams%22+OR+%3Dabs%3A%22radioactive+ion+beam%22+OR+%3Dabs%3A%22radioactive+ion+beams%22+OR+%3Dabs%3A%22exotic+nuclei%22+OR+abs%3A%28%28DESPEC+OR+GSI%29+AND+%28nuclear+OR+nuclei+OR+isotope+OR+detector+OR+beam%29%29%29%29+OR+%3Dabs%3A%22Nuclear+Spectroscopic+Telescope+Array%22+OR+facility%3A%22NuSTAR%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T06:20:05.610237+00:00",
+    "fetchedAt": "2026-10-27T17:35:48.634143+00:00",
     "reconciliation": {
       "adsReturned": 1944,
       "curatedOut": 10,

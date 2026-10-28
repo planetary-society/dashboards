@@ -14,7 +14,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { compile } from 'svelte/compiler';
 import { render } from 'svelte/server';
-import { missionMeasureGroups } from '../copy/measures.js';
+import { missionFactGroups, missionMeasureGroups } from '../copy/measures.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const lib = join(here, '..');
@@ -27,9 +27,10 @@ const PATHS_STUB = dataUrl(`
 	export const missionHref = (slug, id) => \`/\${slug}/\${id}/\`;
 	export const thumbSrc = (id) => \`/img/missions/\${id}.webp\`;
 	export const methodsHref = (anchor = '') => '/methods/' + (anchor ? '#' + anchor : '');
+	export const basemapSrc = (key) => \`/img/maps/\${key}.svg\`;
 `);
 
-const viewStub = (scope, top) => dataUrl(`export const view = { scope: ${JSON.stringify(scope)}, top: ${top} }; export const setScope = () => {}; export const setTop = () => {};`);
+const viewStub = (scope, top) => dataUrl(`export const SCOPES = ['full', 'lifetime']; export const view = { scope: ${JSON.stringify(scope)}, top: ${top} }; export const setScope = () => {}; export const setTop = () => {};`);
 
 /** One specifier as something node can import. A component a chart uses is compiled in turn. */
 async function resolveSpec(spec, dir, ctx) {
@@ -70,6 +71,26 @@ test('division timeline labels annual publications and cumulative citations and 
 	assert.doesNotMatch(body, /NaN|undefined/);
 });
 
+test('affiliation map prerenders its sized frame, toggle and summary; the basemap waits for the reader', async () => {
+	const Component = await load('AffiliationMap.svelte');
+	const top = [{ name: 'NASA Goddard Space Flight Center, Maryland', papers: 203 }, { name: 'JPL', papers: 150 }];
+	const summary = { papers: 1508, us: { mapped: 980, top }, world: { mapped: 1349, top } };
+	const body = render(Component, { props: { summary, url: '/data/maps/missions/ace.json' } }).body;
+	assert.match(body, /aria-pressed="true"[^>]*>.*United States/s);
+	assert.match(body, />World</);
+	// the land and the squares load when the reader nears the map; the frame already holds their space
+	assert.doesNotMatch(body, /<image/);
+	assert.match(body, /aspect-ratio: 975 \/ 610/);
+	assert.match(body, /Institutions on the most papers: NASA Goddard Space Flight Center, Maryland \(203\); JPL \(150\)\./);
+	assert.match(body, /980 of 1,508 tracked publications have an author at a US institution on this map/);
+	assert.match(body, /Loading the map/);
+	// No US author: the map opens on the world.
+	const abroad = render(Component, { props: { summary: { ...summary, us: { mapped: 0, top: [] } }, url: '/x.json' } }).body;
+	assert.match(abroad, /aspect-ratio: 960 \/ 468/);
+	assert.match(abroad, /aria-pressed="true"[^>]*>.*World/s);
+	assert.doesNotMatch(body + abroad, /NaN|undefined/);
+});
+
 test('mission squares link to their mission pages and carry their labels', async () => {
 	const Component = await load('../scrolly/Squares.svelte');
 	const props = { tiles: [{ id: 'alpha', name: 'Alpha', division: 'earth' }], items: new Map([['alpha', { x: 0, y: 0, s: 8, label: 'Alpha: selected facts' }]]) };
@@ -78,66 +99,25 @@ test('mission squares link to their mission pages and carry their labels', async
 	assert.match(link, /aria-label="Alpha: selected facts"/);
 });
 
-const lifetime = {
-	years: [2000, 2001, 2002, 2003],
-	papers: [10, 20, 30, 5],
-	citations: [0, 100, 900, 200],
-	partialFromYear: 2003
-};
-
-test('incomplete citation coverage is present in prerendered text', async () => {
-	const Component = await load('Accumulation.svelte');
-	const { body } = render(Component, { props: {
-		lifetime: { ...lifetime, citationCoverage: { status: 'incomplete', expected: 1201, observed: 1200, missing: 1 } }
-	} });
-	assert.match(body, /1,200 of 1,201 reported citations/);
-	assert.match(body, /1 missing/);
-	assert.doesNotMatch(body, /undefined/);
-});
-
-test('Accumulation prerenders the lifetime summary, no window panel and no chart', async () => {
-	const Component = await load('Accumulation.svelte');
-	const { body } = render(Component, { props: { lifetime } });
-	assert.match(body, /Lifetime/);
-	assert.match(body, /65 tracked publications and 1,200 citations in total/);
-	assert.doesNotMatch(body, /Window|window closed/);
-	assert.ok(!body.includes('<svg'), 'no chart is drawn before the container is measured');
-	const noLifetime = render(Component, { props: { lifetime: null } }).body;
-	assert.match(noLifetime, /Not available for this mission\./);
-	assert.ok(!noLifetime.includes('undefined'));
-});
-
-test('Accumulation names recorded lifecycle dates for screen readers', async () => {
-	const Component = await load('Accumulation.svelte');
-	const dates = { launch: '1997-10-15', primeEnd: '2002-06-30', missionEnd: '2017-09-15' };
-	const { body } = render(Component, { props: { lifetime, dates } });
-	assert.match(body, /launch: October 15, 1997\./);
-	assert.match(body, /prime end: June 30, 2002\./);
-	assert.match(body, /mission end: September 15, 2017\./);
-	const ongoing = render(Component, { props: { lifetime, dates: { launch: dates.launch } } }).body;
-	assert.doesNotMatch(ongoing, /prime end:|mission end:/);
-});
-
-test('MissionTable groups missions by size, cheapest first, and drops top-10% papers for a division too small to rank', async () => {
+test('MissionTable lists every mission together, earliest launch first, and drops top-10% papers for a division too small to rank', async () => {
 	const Component = await load('../ui/MissionTable.svelte');
 	const full = { papers: 4, citations: 30, top10: 0.5, top1: 0, status: 'available' };
 	const missions = [
-		{ id: 'b', name: 'Beta', launchYear: 2005, type: 'Orbiter', cost: 900, size: 'over', full },
-		{ id: 'a', name: 'Alpha', launchYear: 2001, type: 'Lander', cost: 120, size: 'under', failed: true, shortfall: true, full },
-		{ id: 'c', name: 'Gamma', launchYear: 2010, type: 'Lander', cost: null, size: null, full }
+		{ id: 'b', name: 'Beta', launchYear: 2001, launchDate: '2001-11-02', type: 'Orbiter', cost: 900, size: 'over', full },
+		{ id: 'a', name: 'Alpha', launchYear: 2001, launchDate: '2001-03-20', type: 'Lander', cost: 120, size: 'under', failed: true, shortfall: true, full },
+		{ id: 'c', name: 'Gamma', launchYear: 1995, launchDate: '1995-06-01', type: 'Lander', cost: null, size: null, full }
 	];
 	const props = { missions, slug: 'planetary', site };
 	const ranked = render(Component, { props }).body;
-	assert.match(ranked, /Small: \$150M or less/);
-	assert.match(ranked, /Larger: over \$150M/);
-	assert.ok(ranked.indexOf('>Alpha<') < ranked.indexOf('>Beta<'), 'small group first');
+	assert.doesNotMatch(ranked, /Small:|Larger:|Cost not known/, 'no size groups');
+	const at = (name) => ranked.indexOf(`>${name}<`);
+	assert.ok(at('Gamma') < at('Alpha') && at('Alpha') < at('Beta'), 'by launch date, not year then name');
+	assert.match(ranked, /aria-sort="ascending"[^>]*>[\s\S]*?Launch/);
 	assert.match(ranked, /class="tag[^"]*">Lost</);
-	assert.match(ranked, /Cost not known/, 'a mission without a cost is neither small nor larger');
 	assert.match(ranked, /class="num top/);
 	const unranked = render(Component, { props: { ...props, rankable: false } }).body;
 	assert.ok(!/Top-10%/.test(unranked), 'no top-10% wording');
 	assert.ok(!/class="num top/.test(unranked), 'no top-10% column');
-	assert.ok(!/Small:/.test(unranked), 'no size groups');
 });
 
 const site = { asOf: '2026-09-18', windowPolicy: { kind: 'prime', postPrimeYears: 3, citationYears: 3 },
@@ -171,34 +151,50 @@ test('MeasureTable renders every measure of the selected scope and the dated lif
 	assert.match(html, /aria-label="What is m-index\?"/);
 });
 
+test('MeasureTable renders the mission facts, both life-cycle costs, and drops what the catalog leaves blank', async () => {
+	const Component = await load('../ui/MeasureTable.svelte');
+	const meta = { status: 'Completed', type: 'Orbiter', program: 'Discovery', target: null, launchVehicle: 'Delta II', lcc: 244, cost: 538,
+		dates: { launch: '1997-08-25', scienceStart: '1997-12-12', primeEnd: '2002-09-01', missionEnd: null } };
+	assert.deepEqual(rowsOf(render(Component, { props: { groups: missionFactGroups({ meta }, site) } }).body), [
+		'Mission', 'ProgramDiscovery', 'TypeOrbiter', 'StatusCompleted', 'LaunchAugust 25, 1997 · Delta II', 'Prime missionDecember 12, 1997 to September 1, 2002',
+		'Life-cycle cost · through the prime mission, with partner contributions',
+		'As reported$244M · nominal dollars', 'Adjusted to 2025 dollarsi$538M'
+	]);
+	const lost = { ...meta, lcc: null, cost: null, dates: { launch: null, scienceStart: null, primeEnd: null, missionEnd: '1993-08-21' } };
+	const rows = rowsOf(render(Component, { props: { groups: missionFactGroups({ meta: lost }, site) } }).body);
+	assert.ok(rows.includes('Mission endAugust 21, 1993') && !rows.some((r) => /^Launch|^Prime mission/.test(r)));
+	assert.ok(rows.includes('As reported— · nominal dollars'), 'an unknown cost is a dash, never a zero');
+});
+
 test('MeasureTable leaves top 1% out of the lifetime scope', async () => {
 	const Component = await load('../ui/MeasureTable.svelte');
 	const rows = rowsOf(render(Component, { props: { groups: missionMeasureGroups(mission, 'lifetime', site) } }).body);
 	assert.equal(rows[0], 'Lifetime');
-	assert.ok(rows.includes('Top-1% crediti— · windowed scopes only'));
+	assert.ok(rows.includes('Top-1% crediti— · Active Mission Window only'));
 });
 
 test('MeasureTable says when a scope was not measured and still shows the lifetime indices', async () => {
 	const Component = await load('../ui/MeasureTable.svelte');
-	const sparse = { ...mission, indices: { h: 3, g: null, m: null, i100: 0, tori: null, riq: null } };
-	assert.deepEqual(rowsOf(render(Component, { props: { groups: missionMeasureGroups(sparse, 'window', site) } }).body), [
-		'Prime Mission Window', 'Not available for this view.',
+	const sparse = { ...mission, full: { ...mission.full, spread: null }, indices: { h: 3, g: null, m: null, i100: 0, tori: null, riq: null } };
+	assert.deepEqual(rowsOf(render(Component, { props: { groups: missionMeasureGroups(sparse, 'full', site) } }).body), [
+		'Active Mission Window', 'Not available for this view.',
 		'Lifetime indices · every tracked publication to date, in any scope',
 		'h-indexi3', 'g-indexi—', 'm-index, as of September 18, 2026i—', 'torii—', 'riqi—'
 	]);
 });
 
-test('ScopeSwitch prerenders the three scopes, short forms, the pressed one and a hint per scope', async () => {
-	const Component = await load('../ui/ScopeSwitch.svelte', { scope: 'window' });
+test('ScopeSwitch prerenders the active window and lifetime, short forms, the pressed one and a hint per scope', async () => {
+	const Component = await load('../ui/ScopeSwitch.svelte', { scope: 'lifetime' });
 	const html = render(Component, { props: { site } }).body;
-	for (const label of ['Active Mission Window', 'Prime Mission Window', 'Lifetime', '>Active<', '>Prime<']) assert.ok(html.includes(label), label);
-	assert.match(html, /aria-pressed="true"[^>]*>(<!--[^>]*-->)*<span class="long[^"]*">Prime Mission Window/);
+	for (const label of ['Active Mission Window', 'Lifetime', '>Active<']) assert.ok(html.includes(label), label);
+	assert.doesNotMatch(html, /Prime/, 'no prime-phase option');
+	assert.match(html, /aria-pressed="true"[^>]*>(<!--[^>]*-->)*<span class="long[^"]*">Lifetime/);
 	assert.equal(html.match(/aria-pressed="true"/g).length, 1);
-	assert.equal(html.match(/role="tooltip"/g).length, 3);
-	assert.match(html, /role="tooltip"[^>]*>Papers published from the first full month after science operations begin through three years after the prime mission ends\. Citations are counted through the third calendar year after each paper appears\./);
+	assert.equal(html.match(/role="tooltip"/g).length, 2);
 	assert.match(html, /through three years after the mission ends\. Citations are counted through the third calendar year/);
 	assert.match(html, /Every tracked publication to date, with every citation to date\./);
-	for (const anchor of ['full-window', 'early-window']) assert.ok(html.includes(`href="/methods/#${anchor}"`), anchor);
+	assert.ok(html.includes('href="/methods/#full-window"'));
+	assert.ok(!html.includes('href="/methods/#early-window"'));
 	assert.ok(html.includes('href="/methods/"'));
 	assert.ok(!html.includes('href="/methods/#high-impact"'));
 });

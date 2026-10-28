@@ -1,12 +1,7 @@
 import { longDate, spell } from '../format.js';
 
-export const windowLabel = (policy) => policy?.kind === 'prime'
-	? 'Prime Mission Window' : `${policy.publicationYears}-year window`;
-
-export const publicationWindowText = (policy) => policy?.kind === 'prime'
-	? `Mission-specific publication windows, from the month after science starts through the month ${policy.postPrimeYears} years after prime mission end. The source uses launch when science start is missing, and mission end for failures or missing prime end dates. Exact exported boundaries are shown on each mission page.`
-	: `Papers published in the ${policy.publicationYears} years beginning one month after science starts.`;
-
+// Reader-facing copy for the two scopes a reader can pick (SCOPES in state/view.svelte.js). The
+// prime-phase `window` scope stays in the packaged data only, so it has no name here.
 export const fullWindowLabel = 'Active Mission Window';
 
 /** `asOf`, when given, names the snapshot date instead of just referring to it. */
@@ -18,21 +13,14 @@ export function ordinal(n) {
 	return words[n] ?? `${n}th`;
 }
 
-/** Both windows cap each paper's citations the same way; the number comes from the run, not copy. */
+/** The window caps each paper's citations; the number comes from the run, not copy. */
 const citationClause = (p) => `Citations are counted through the ${ordinal(p.citationYears)} calendar year after each paper appears.`;
 
 /** Two sentences on what a scope covers, for the hint beside each scope option. */
-export function scopeGloss(scope, { windowPolicy, fullPolicy } = {}) {
+export function scopeGloss(scope, { fullPolicy } = {}) {
 	if (scope === 'full') return `Papers published from the first full month after science operations begin through ${spell(fullPolicy.postEndYears)} years after the mission ends. ${citationClause(fullPolicy)}`;
-	if (scope === 'window') return `${windowPolicy?.kind === 'prime'
-		? `Papers published from the first full month after science operations begin through ${spell(windowPolicy.postPrimeYears)} years after the prime mission ends.`
-		: `Papers from the first ${spell(windowPolicy.publicationYears)} years after science starts.`} ${citationClause(windowPolicy)}`;
 	return 'Every tracked publication to date, with every citation to date.';
 }
 
-/** Display name of any scope; the two windows are proper nouns. */
-export function scopeLabel(scope, { windowPolicy } = {}) {
-	if (scope === 'full') return fullWindowLabel;
-	if (scope === 'window') return windowLabel(windowPolicy);
-	return 'Lifetime';
-}
+/** Display name of a scope; the window is a proper noun. */
+export const scopeLabel = (scope) => (scope === 'full' ? fullWindowLabel : 'Lifetime');

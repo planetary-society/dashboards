@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 374.8,
+    "lcc": 200,
     "type": "Orbiter",
+    "program": "Earth Observing System (EOS)",
+    "target": "Earth",
+    "launchVehicle": "Delta II",
     "dates": {
       "formulation": "1998-01-26",
       "launch": "2003-01-13",
@@ -23,8 +27,8 @@
     "m": 3.917,
     "i100": 84,
     "g": 164,
-    "tori": 222.648,
-    "riq": 621
+    "tori": 221.935,
+    "riq": 620
   },
   "facts": {
     "papers": 787,
@@ -119,6 +123,43 @@
       "expected": 38343,
       "observed": 38343,
       "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 787,
+    "us": {
+      "mapped": 311,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 83
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 45
+        },
+        {
+          "name": "University of Maryland, College Park",
+          "papers": 40
+        }
+      ]
+    },
+    "world": {
+      "mapped": 633,
+      "top": [
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 90
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 83
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 45
+        }
+      ]
     }
   },
   "mostCited": {
@@ -273,7 +314,7 @@
     "arms": "((((abs:\"ICESat\" OR abs:\"ICESat-1\" OR abs:\"GLAS\" OR =abs:\"Geoscience Laser Altimeter System\") AND (abs:\"satellite\" OR abs:\"remote sensing\" OR abs:\"laser altimetry\" OR abs:\"laser altimeter\")) OR abs:\"Ice, Clouds and Land Elevation Satellite\" OR abs:\"Geoscience Laser Altimeter System\") AND NOT (abs:\"ICESat-2\" AND NOT (abs:\"ICESat-1\" OR abs:\"GLAS\" OR =abs:\"Geoscience Laser Altimeter System\" OR =abs:\"ICESat ICESat-2\" OR =abs:\"ICESat 2003\" OR =abs:\"ICESat data\" OR =abs:\"ICESat mission\" OR =abs:\"ICESat CryoSat\" OR =abs:\"ICESat Ice Cloud\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2003-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3A%22ICESat%22+OR+abs%3A%22ICESat-1%22+OR+abs%3A%22GLAS%22+OR+%3Dabs%3A%22Geoscience+Laser+Altimeter+System%22%29+AND+%28abs%3A%22satellite%22+OR+abs%3A%22remote+sensing%22+OR+abs%3A%22laser+altimetry%22+OR+abs%3A%22laser+altimeter%22%29%29+OR+abs%3A%22Ice%2C+Clouds+and+Land+Elevation+Satellite%22+OR+abs%3A%22Geoscience+Laser+Altimeter+System%22%29+AND+NOT+%28abs%3A%22ICESat-2%22+AND+NOT+%28abs%3A%22ICESat-1%22+OR+abs%3A%22GLAS%22+OR+%3Dabs%3A%22Geoscience+Laser+Altimeter+System%22+OR+%3Dabs%3A%22ICESat+ICESat-2%22+OR+%3Dabs%3A%22ICESat+2003%22+OR+%3Dabs%3A%22ICESat+data%22+OR+%3Dabs%3A%22ICESat+mission%22+OR+%3Dabs%3A%22ICESat+CryoSat%22+OR+%3Dabs%3A%22ICESat+Ice+Cloud%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:57:15.058917+00:00",
+    "fetchedAt": "2026-10-27T17:19:18.200541+00:00",
     "reconciliation": {
       "adsReturned": 794,
       "curatedOut": 0,

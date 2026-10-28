@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 455.8,
+    "lcc": 250,
     "type": "Pointed Observatory",
+    "program": "Medium-class Explorers (MIDEX)",
+    "target": "Gamma Ray Bursts",
+    "launchVehicle": "Delta II",
     "dates": {
       "formulation": "1999-10-14",
       "launch": "2004-11-20",
@@ -23,8 +27,8 @@
     "m": 8.409,
     "i100": 489,
     "g": 293,
-    "tori": 649.387,
-    "riq": 1107
+    "tori": 598.113,
+    "riq": 1063
   },
   "facts": {
     "papers": 5518,
@@ -113,6 +117,43 @@
       "expected": 231944,
       "observed": 231944,
       "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 5518,
+    "us": {
+      "mapped": 3128,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 963
+        },
+        {
+          "name": "Pennsylvania State University",
+          "papers": 699
+        },
+        {
+          "name": "California Institute of Technology",
+          "papers": 524
+        }
+      ]
+    },
+    "world": {
+      "mapped": 5274,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 963
+        },
+        {
+          "name": "Italian National Institute of Astrophysics",
+          "papers": 915
+        },
+        {
+          "name": "Max Planck Society for the Advancement of Science, Germany",
+          "papers": 724
+        }
+      ]
     }
   },
   "mostCited": {
@@ -267,7 +308,7 @@
     "arms": "((=abs:\"Neil Gehrels Swift Observatory\" OR =abs:\"Swift satellite\" OR =abs:\"Swift observatory\" OR =abs:\"Swift mission\" OR =abs:\"Swift spacecraft\" OR =abs:\"Swift telescope\" OR =abs:\"Swift observations\" OR =abs:\"Swift observation\" OR =abs:\"Swift data\" OR =abs:\"Swift monitoring\" OR (abs:Swift AND (abs:GRB OR =abs:\"gamma-ray burst\" OR =abs:\"gamma-ray bursts\" OR abs:BAT OR abs:XRT OR abs:UVOT OR =abs:\"X-ray\" OR =abs:\"X-rays\" OR =abs:ultraviolet OR =abs:UV OR =abs:\"gamma-ray\" OR =abs:\"gamma-rays\" OR =abs:afterglow OR =abs:afterglows) AND NOT (=abs:\"swift heavy ion\" OR =abs:\"swift heavy ions\" OR =abs:\"swift ions\")) OR =abs:\"Burst Alert Telescope\" OR (abs:UVOT AND (=abs:ultraviolet OR =abs:UV OR =abs:optical OR =abs:photometry)) OR (abs:BAT AND (=abs:\"hard X-ray\" OR =abs:\"hard X-rays\" OR abs:AGN OR abs:GRB OR =abs:\"gamma-ray burst\" OR =abs:\"gamma-ray bursts\" OR =abs:\"X-ray\" OR =abs:\"X-rays\")) OR (abs:XRT AND (abs:UVOT OR abs:BAT)) OR facility:Swift) AND collection:astronomy)",
     "filters": "property:refereed AND doctype:article AND pubdate:[2005-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Neil+Gehrels+Swift+Observatory%22+OR+%3Dabs%3A%22Swift+satellite%22+OR+%3Dabs%3A%22Swift+observatory%22+OR+%3Dabs%3A%22Swift+mission%22+OR+%3Dabs%3A%22Swift+spacecraft%22+OR+%3Dabs%3A%22Swift+telescope%22+OR+%3Dabs%3A%22Swift+observations%22+OR+%3Dabs%3A%22Swift+observation%22+OR+%3Dabs%3A%22Swift+data%22+OR+%3Dabs%3A%22Swift+monitoring%22+OR+%28abs%3ASwift+AND+%28abs%3AGRB+OR+%3Dabs%3A%22gamma-ray+burst%22+OR+%3Dabs%3A%22gamma-ray+bursts%22+OR+abs%3ABAT+OR+abs%3AXRT+OR+abs%3AUVOT+OR+%3Dabs%3A%22X-ray%22+OR+%3Dabs%3A%22X-rays%22+OR+%3Dabs%3Aultraviolet+OR+%3Dabs%3AUV+OR+%3Dabs%3A%22gamma-ray%22+OR+%3Dabs%3A%22gamma-rays%22+OR+%3Dabs%3Aafterglow+OR+%3Dabs%3Aafterglows%29+AND+NOT+%28%3Dabs%3A%22swift+heavy+ion%22+OR+%3Dabs%3A%22swift+heavy+ions%22+OR+%3Dabs%3A%22swift+ions%22%29%29+OR+%3Dabs%3A%22Burst+Alert+Telescope%22+OR+%28abs%3AUVOT+AND+%28%3Dabs%3Aultraviolet+OR+%3Dabs%3AUV+OR+%3Dabs%3Aoptical+OR+%3Dabs%3Aphotometry%29%29+OR+%28abs%3ABAT+AND+%28%3Dabs%3A%22hard+X-ray%22+OR+%3Dabs%3A%22hard+X-rays%22+OR+abs%3AAGN+OR+abs%3AGRB+OR+%3Dabs%3A%22gamma-ray+burst%22+OR+%3Dabs%3A%22gamma-ray+bursts%22+OR+%3Dabs%3A%22X-ray%22+OR+%3Dabs%3A%22X-rays%22%29%29+OR+%28abs%3AXRT+AND+%28abs%3AUVOT+OR+abs%3ABAT%29%29+OR+facility%3ASwift%29+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2005-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T06:16:50.547900+00:00",
+    "fetchedAt": "2026-10-27T17:33:53.356211+00:00",
     "reconciliation": {
       "adsReturned": 5521,
       "curatedOut": 4,

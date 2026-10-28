@@ -9,7 +9,11 @@
     "status": "Extended Mission",
     "failed": false,
     "cost": 1345.5,
+    "lcc": 780,
     "type": "Survey Observatory",
+    "program": "GLAST",
+    "target": "Universe",
+    "launchVehicle": "Delta II",
     "dates": {
       "formulation": "1999-01-01",
       "launch": "2008-06-11",
@@ -23,8 +27,8 @@
     "m": 11,
     "i100": 561,
     "g": 358,
-    "tori": 969.871,
-    "riq": 1557
+    "tori": 902.964,
+    "riq": 1502
   },
   "facts": {
     "papers": 6642,
@@ -104,6 +108,43 @@
       "expected": 294654,
       "observed": 294654,
       "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 6642,
+    "us": {
+      "mapped": 2829,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 740
+        },
+        {
+          "name": "Kavli Institute for Particle Astrophysics and Cosmology, California",
+          "papers": 523
+        },
+        {
+          "name": "U.S. Department of the Navy, Naval Research Laboratory, Washington DC",
+          "papers": 445
+        }
+      ]
+    },
+    "world": {
+      "mapped": 6291,
+      "top": [
+        {
+          "name": "Max Planck Society for the Advancement of Science, Germany",
+          "papers": 1018
+        },
+        {
+          "name": "Italian National Institute of Nuclear Physics, Rome",
+          "papers": 799
+        },
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 798
+        }
+      ]
     }
   },
   "mostCited": {
@@ -258,7 +299,7 @@
     "arms": "((facility:Fermi OR =abs:(\"Fermi Gamma-ray Space Telescope\" OR \"Fermi telescope\" OR \"Fermi observatory\" OR \"Fermi satellite\" OR \"Fermi spacecraft\" OR \"Fermi bubble\" OR \"Fermi bubbles\" OR \"Fermi LAT\" OR \"Fermi GBM\" OR \"Fermi data\" OR \"Fermi observations\" OR \"Large Area Telescope\" OR \"Gamma-ray Burst Monitor\" OR \"Gamma-ray Large Area Space Telescope\" OR \"GLAST Burst Monitor\") OR (=abs:glast AND abs:(gamma OR telescope OR LAT OR GBM)) OR (abs:(LAT OR GBM) AND (=abs:(\"gamma-ray\" OR \"gamma-rays\") OR abs:(GRB OR blazar OR pulsar))) OR (collection:astronomy AND =abs:Fermi AND (=abs:(\"gamma-ray\" OR \"gamma-rays\" OR \"X-ray\" OR \"X-rays\") OR abs:(GRB OR blazar OR pulsar OR flare OR HESS OR \"dark matter\" OR \"BL Lac\" OR telescope OR satellite OR observatory OR spacecraft)) AND NOT =abs:(\"free-electron laser\" OR \"free electron laser\" OR \"FERMI FEL\" OR \"Fermi first order\" OR Fermilab OR \"Fermi scale\" OR \"Fermi ball\" OR \"Fermi balls\" OR \"Fermi liquids\" OR \"Fermi and betatron\" OR \"Fermi energy\" OR \"Fermi surface\" OR \"Fermi surfaces\" OR \"Fermi gas\" OR \"Fermi liquid\" OR \"Fermi statistics\" OR \"Fermi-Dirac\" OR \"Fermi paradox\" OR \"Fermi-Walker\" OR \"Fermi coordinates\" OR \"Fermi normal\" OR \"Fermi frame\" OR \"Fermi sea\" OR \"Fermi level\" OR \"Fermi momentum\" OR \"Fermi velocity\" OR \"Fermi arc\" OR \"Fermi arcs\" OR \"Fermi acceleration\" OR \"Fermi process\" OR \"Fermi mechanism\" OR \"first-order Fermi\" OR \"second-order Fermi\" OR \"Fermi-I\" OR \"Fermi-II\" OR \"fast-Fermi\" OR \"Fermi-like\" OR \"Thomas-Fermi\" OR \"Chandrasekhar-Fermi\" OR \"Fermi contact\" OR \"Fermi edge\" OR \"Fermi sphere\" OR \"Fermi spheres\" OR \"Fermi energization\" OR \"Fermi golden rule\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2008-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28facility%3AFermi+OR+%3Dabs%3A%28%22Fermi+Gamma-ray+Space+Telescope%22+OR+%22Fermi+telescope%22+OR+%22Fermi+observatory%22+OR+%22Fermi+satellite%22+OR+%22Fermi+spacecraft%22+OR+%22Fermi+bubble%22+OR+%22Fermi+bubbles%22+OR+%22Fermi+LAT%22+OR+%22Fermi+GBM%22+OR+%22Fermi+data%22+OR+%22Fermi+observations%22+OR+%22Large+Area+Telescope%22+OR+%22Gamma-ray+Burst+Monitor%22+OR+%22Gamma-ray+Large+Area+Space+Telescope%22+OR+%22GLAST+Burst+Monitor%22%29+OR+%28%3Dabs%3Aglast+AND+abs%3A%28gamma+OR+telescope+OR+LAT+OR+GBM%29%29+OR+%28abs%3A%28LAT+OR+GBM%29+AND+%28%3Dabs%3A%28%22gamma-ray%22+OR+%22gamma-rays%22%29+OR+abs%3A%28GRB+OR+blazar+OR+pulsar%29%29%29+OR+%28collection%3Aastronomy+AND+%3Dabs%3AFermi+AND+%28%3Dabs%3A%28%22gamma-ray%22+OR+%22gamma-rays%22+OR+%22X-ray%22+OR+%22X-rays%22%29+OR+abs%3A%28GRB+OR+blazar+OR+pulsar+OR+flare+OR+HESS+OR+%22dark+matter%22+OR+%22BL+Lac%22+OR+telescope+OR+satellite+OR+observatory+OR+spacecraft%29%29+AND+NOT+%3Dabs%3A%28%22free-electron+laser%22+OR+%22free+electron+laser%22+OR+%22FERMI+FEL%22+OR+%22Fermi+first+order%22+OR+Fermilab+OR+%22Fermi+scale%22+OR+%22Fermi+ball%22+OR+%22Fermi+balls%22+OR+%22Fermi+liquids%22+OR+%22Fermi+and+betatron%22+OR+%22Fermi+energy%22+OR+%22Fermi+surface%22+OR+%22Fermi+surfaces%22+OR+%22Fermi+gas%22+OR+%22Fermi+liquid%22+OR+%22Fermi+statistics%22+OR+%22Fermi-Dirac%22+OR+%22Fermi+paradox%22+OR+%22Fermi-Walker%22+OR+%22Fermi+coordinates%22+OR+%22Fermi+normal%22+OR+%22Fermi+frame%22+OR+%22Fermi+sea%22+OR+%22Fermi+level%22+OR+%22Fermi+momentum%22+OR+%22Fermi+velocity%22+OR+%22Fermi+arc%22+OR+%22Fermi+arcs%22+OR+%22Fermi+acceleration%22+OR+%22Fermi+process%22+OR+%22Fermi+mechanism%22+OR+%22first-order+Fermi%22+OR+%22second-order+Fermi%22+OR+%22Fermi-I%22+OR+%22Fermi-II%22+OR+%22fast-Fermi%22+OR+%22Fermi-like%22+OR+%22Thomas-Fermi%22+OR+%22Chandrasekhar-Fermi%22+OR+%22Fermi+contact%22+OR+%22Fermi+edge%22+OR+%22Fermi+sphere%22+OR+%22Fermi+spheres%22+OR+%22Fermi+energization%22+OR+%22Fermi+golden+rule%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2008-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T06:18:01.314869+00:00",
+    "fetchedAt": "2026-10-27T17:34:28.782076+00:00",
     "reconciliation": {
       "adsReturned": 6667,
       "curatedOut": 22,

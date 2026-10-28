@@ -4,22 +4,25 @@
 	// band's cited missions: one the story imagines (`would`, dashed, in the lone band only), or the
 	// best fit, which `turn` swings up from flat to its packaged slope (0–1). Bands share one rate
 	// scale, so a line's tilt reads the same in each; the figures beside them come from the
-	// packaged fits (each layout row's `fit`).
+	// packaged fits (each layout row's `fit`). A fit the copy won't call a trend (nearly flat, or
+	// reversed by leaving out one mission) is drawn dashed grey, by the copy's own rule.
 	import { compact as short, money, moneyTick } from '$lib/format.js';
 	import { minorDollarTicks } from '$lib/charts/costaxis.js';
 	import DollarMinorTicks from '$lib/charts/DollarMinorTicks.svelte';
-	import { trendLine } from './layouts.js';
+	import { flat, soft } from '$lib/copy/discussion.js';
+	import { trendLine } from '$lib/charts/perdollar.js';
 
 	/**
 	 * layout: perDollarLayout(). would: the imagined line, { slope, label, shown }; it keeps its
 	 * slope while hidden, so it fades where it stands. turn: how far the best fit has swung from
-	 * flat to its slope; null draws none.
+	 * flat to its slope; null draws none. referenceCost: the threshold line and its shaded side; null
+	 * draws neither (the division pages).
 	 */
-	let { layout, referenceCost, would = null, turn = 1, visible = false, compact = false, width, height } = $props();
+	let { layout, referenceCost = null, would = null, turn = 1, visible = false, compact = false, width, height } = $props();
 
 	const single = $derived(layout.rows.length === 1);
 	const [x0, x1] = $derived(layout.x.range());
-	const refX = $derived(layout.x(referenceCost));
+	const refX = $derived(referenceCost == null ? null : layout.x(referenceCost));
 	const imagined = $derived(single && would ? layout.rows.map((row) => trendLine(layout, row, would.slope)) : []);
 	const best = $derived(layout.rows.map((row) => (row.fit && turn != null ? trendLine(layout, row, row.fit.slope * turn) : null)));
 </script>
@@ -34,15 +37,15 @@
 	<DollarMinorTicks positions={minorDollarTicks(...layout.x.domain()).map(layout.x)} />
 	{#each layout.ticks as t (t)}
 		<!-- a decade label that would touch the threshold's own label gives way to it -->
-		{#if Math.abs(layout.x(t) - refX) > (compact ? 34 : 44)}<span class="tick" style:left="{layout.x(t)}px">{moneyTick(t)}</span>{/if}
+		{#if refX == null || Math.abs(layout.x(t) - refX) > (compact ? 34 : 44)}<span class="tick" style:left="{layout.x(t)}px">{moneyTick(t)}</span>{/if}
 	{/each}
 
 	<svg {width} {height}>
-		<rect class="zone" x={x0} y={layout.top} width={Math.max(0, refX - x0)} height={layout.bottomY - layout.top} />
+		{#if refX != null}<rect class="zone" x={x0} y={layout.top} width={Math.max(0, refX - x0)} height={layout.bottomY - layout.top} />{/if}
 		{#each layout.ticks as t (t)}
 			<line class="grid" x1={layout.x(t)} x2={layout.x(t)} y1={layout.top} y2={layout.bottomY} />
 		{/each}
-		<line class="reference" x1={refX} x2={refX} y1={layout.top} y2={layout.bottomY} />
+		{#if refX != null}<line class="reference" x1={refX} x2={refX} y1={layout.top} y2={layout.bottomY} />{/if}
 		{#each layout.rows as row, i (row.slug)}
 			{#each layout.rateTicks as r (r)}
 				<line class="rate" x1={x0} x2={x1} y1={row.rateY(r)} y2={row.rateY(r)} />
@@ -64,18 +67,18 @@
 				</g>
 			{/if}
 			{#if best[i]}
-				<line class="fit" x1={best[i].x1} y1={best[i].y1} x2={best[i].x2} y2={best[i].y2} />
-				{#if single && turn > 0.9}<text class="callout fit-label" x={best[i].x2} y={best[i].y2 - 10} text-anchor="end">Best fit</text>{/if}
+				<line class="fit" class:soft={soft(row.fit)} x1={best[i].x1} y1={best[i].y1} x2={best[i].x2} y2={best[i].y2} />
+				{#if single && turn > 0.9}<text class="callout fit-label" class:soft={soft(row.fit)} x={best[i].x2} y={best[i].y2 - 10} text-anchor="end">Best fit</text>{/if}
 			{/if}
 		{/each}
 	</svg>
-	<span class="tick strong" style:left="{refX}px">{money(referenceCost)}</span>
+	{#if refX != null}<span class="tick strong" style:left="{refX}px">{money(referenceCost)}</span>{/if}
 
 	{#if !single}
 		{#each layout.rows as row (row.slug)}
 			<span class="row" class:alt={row.band} style:top="{row.y}px" style:width={compact ? null : `${layout.left - 12}px`}>
 				<span class="name">{row.label}</span>
-				{#if row.fit}<span class="meta"><span>{row.fit.tenfold.toFixed(1)}× per dollar</span> <span>at 10× the cost</span></span>{/if}
+				{#if row.fit}<span class="meta">{#if flat(row.fit)}<span>Nearly flat</span>{:else}<span>{row.fit.tenfold.toFixed(1)}× per dollar</span> <span>at 10× the cost</span>{/if}</span>{/if}
 			</span>
 		{/each}
 	{/if}
@@ -206,6 +209,16 @@
 
 	.compact:not(.single) .fit {
 		stroke-width: 2;
+	}
+
+	.fit.soft {
+		stroke: var(--soil);
+		stroke-width: 2;
+		stroke-dasharray: 5 4;
+	}
+
+	text.fit-label.soft {
+		fill: var(--soil);
 	}
 
 	text.fit-label {

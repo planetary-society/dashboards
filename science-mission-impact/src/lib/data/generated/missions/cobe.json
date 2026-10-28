@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 588.7,
+    "lcc": 192.7,
     "type": "Survey Observatory",
+    "program": "Explorer Program",
+    "target": "Cosmic Background",
+    "launchVehicle": "Delta",
     "dates": {
       "formulation": "1982-06-01",
       "launch": "1989-11-18",
@@ -19,16 +23,16 @@
     }
   },
   "indices": {
-    "h": 160,
-    "m": 4.324,
-    "i100": 266,
-    "g": 316,
-    "tori": 996.708,
-    "riq": 853
+    "h": 159,
+    "m": 4.297,
+    "i100": 264,
+    "g": 305,
+    "tori": 967.024,
+    "riq": 840
   },
   "facts": {
-    "papers": 1418,
-    "citations": 126532,
+    "papers": 1416,
+    "citations": 120695,
     "publicationYears": [
       1990,
       2026
@@ -88,7 +92,7 @@
       72,
       72,
       50,
-      50,
+      49,
       34,
       14,
       24,
@@ -96,7 +100,7 @@
       11,
       20,
       17,
-      19,
+      18,
       13,
       16,
       19,
@@ -127,37 +131,74 @@
       4503,
       4913,
       4748,
-      5186,
-      4766,
-      4332,
-      4352,
-      3705,
-      3637,
-      3878,
-      3874,
-      4019,
-      3949,
-      3872,
-      3705,
-      3607,
-      3443,
-      3282,
-      3296,
-      3125,
-      2929,
-      3194,
-      3152,
-      3172,
-      3684,
-      3981,
-      4536
+      4855,
+      4141,
+      3713,
+      3860,
+      3378,
+      3375,
+      3646,
+      3688,
+      3803,
+      3752,
+      3698,
+      3545,
+      3467,
+      3300,
+      3149,
+      3143,
+      2968,
+      2771,
+      3035,
+      2984,
+      3000,
+      3466,
+      3779,
+      4323
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 126532,
-      "observed": 126532,
+      "expected": 120695,
+      "observed": 120695,
       "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 1416,
+    "us": {
+      "mapped": 613,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 107
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 101
+        },
+        {
+          "name": "Princeton University, New Jersey",
+          "papers": 83
+        }
+      ]
+    },
+    "world": {
+      "mapped": 1141,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 107
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 101
+        },
+        {
+          "name": "Max Planck Society for the Advancement of Science, Germany",
+          "papers": 83
+        }
+      ]
     }
   },
   "mostCited": {
@@ -215,9 +256,9 @@
         111.649,
         132.989,
         155.153,
-        228.399
+        226.399
       ],
-      "top1": 43.407
+      "top1": 41.407
     }
   },
   "full": {
@@ -285,11 +326,11 @@
     }
   },
   "lifetime": {
-    "papers": 1418,
+    "papers": 1416,
     "outputBasis": "measured",
-    "citations": 126532,
-    "top10": 208.399,
-    "top10ShareOfDivision": 0.03283,
+    "citations": 120695,
+    "top10": 207.565,
+    "top10ShareOfDivision": 0.0327,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -300,26 +341,26 @@
       "date": "1990-05-00"
     },
     "spread": {
-      "mean": 89.233,
+      "mean": 85.237,
       "median": 26,
       "uncited": 90,
-      "i10": 1039,
-      "i100": 266
+      "i10": 1037,
+      "i100": 264
     }
   },
   "query": {
     "arms": "((=abs:(\"Cosmic Background Explorer\" OR \"Diffuse Infrared Background Experiment\" OR \"Far Infrared Absolute Spectrophotometer\" OR \"Differential Microwave Radiometer\" OR \"Differential Microwave Radiometers\") OR facility:COBE OR (abs:COBE AND (collection:astronomy OR (abs:(inflation OR inflationary OR microwave OR anisotropy OR anisotropies OR cosmological OR cosmology OR cosmic OR blackbody OR infrared OR spectrometer OR dewar OR cryogenic OR neutrino OR neutrinos) NOT =abs:\"sea surface\"))) OR (abs:(DIRBE OR FIRAS) AND (collection:astronomy OR abs:(blackbody OR CMB OR microwave OR infrared OR spectrometer OR spectrometry) OR =abs:\"background radiation\")) OR (abs:DMR AND collection:astronomy AND abs:(microwave OR CMB OR anisotropy OR anisotropies))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1989-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Cosmic+Background+Explorer%22+OR+%22Diffuse+Infrared+Background+Experiment%22+OR+%22Far+Infrared+Absolute+Spectrophotometer%22+OR+%22Differential+Microwave+Radiometer%22+OR+%22Differential+Microwave+Radiometers%22%29+OR+facility%3ACOBE+OR+%28abs%3ACOBE+AND+%28collection%3Aastronomy+OR+%28abs%3A%28inflation+OR+inflationary+OR+microwave+OR+anisotropy+OR+anisotropies+OR+cosmological+OR+cosmology+OR+cosmic+OR+blackbody+OR+infrared+OR+spectrometer+OR+dewar+OR+cryogenic+OR+neutrino+OR+neutrinos%29+NOT+%3Dabs%3A%22sea+surface%22%29%29%29+OR+%28abs%3A%28DIRBE+OR+FIRAS%29+AND+%28collection%3Aastronomy+OR+abs%3A%28blackbody+OR+CMB+OR+microwave+OR+infrared+OR+spectrometer+OR+spectrometry%29+OR+%3Dabs%3A%22background+radiation%22%29%29+OR+%28abs%3ADMR+AND+collection%3Aastronomy+AND+abs%3A%28microwave+OR+CMB+OR+anisotropy+OR+anisotropies%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1989-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T06:06:48.709655+00:00",
+    "fetchedAt": "2026-10-27T17:27:55.781385+00:00",
     "reconciliation": {
       "adsReturned": 1422,
-      "curatedOut": 4,
+      "curatedOut": 6,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 1418
+      "final": 1416
     }
   },
   "curation": {
@@ -356,6 +397,22 @@
         "reason": "Mission description of WMAP; mentions COBE only as a predecessor.",
         "authority": "agent",
         "date": "2026-10-03"
+      },
+      {
+        "bibcode": "2011ApJ...731...53M",
+        "doi": "10.1088/0004-637X/731/1/53",
+        "title": "Preliminary Results from NEOWISE: An Enhancement to the Wide-field Infrared Survey Explorer for Solar System Science",
+        "reason": "Preliminary NEOWISE results from WISE; mentions COBE only as a predecessor.",
+        "authority": "human",
+        "date": "2026-10-27"
+      },
+      {
+        "bibcode": "2003ApJS..148....1B",
+        "doi": "10.1086/377253",
+        "title": "First-Year Wilkinson Microwave Anisotropy Probe (WMAP) Observations: Preliminary Maps and Basic Results",
+        "reason": "First-year WMAP maps and results; mentions COBE only for comparison.",
+        "authority": "human",
+        "date": "2026-10-27"
       }
     ]
   },
@@ -368,15 +425,6 @@
       "authorCount": null,
       "year": 1998,
       "citations": 14325
-    },
-    {
-      "bibcode": "2003ApJS..148....1B",
-      "title": "First-Year Wilkinson Microwave Anisotropy Probe (WMAP) Observations: Preliminary Maps and Basic Results",
-      "firstAuthor": "Bennett, C. L.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2003,
-      "citations": 4911
     },
     {
       "bibcode": "1992ApJ...396L...1S",
@@ -449,15 +497,6 @@
       "authorCount": null,
       "year": 1998,
       "citations": 930
-    },
-    {
-      "bibcode": "2011ApJ...731...53M",
-      "title": "Preliminary Results from NEOWISE: An Enhancement to the Wide-field Infrared Survey Explorer for Solar System Science",
-      "firstAuthor": "Mainzer, A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2011,
-      "citations": 926
     },
     {
       "bibcode": "1998ApJ...508..483W",
@@ -539,9 +578,27 @@
       "authorCount": null,
       "year": 1996,
       "citations": 741
+    },
+    {
+      "bibcode": "1998ApJ...508..123F",
+      "title": "The Spectrum of the Extragalactic Far-Infrared Background from the COBE FIRAS Observations",
+      "firstAuthor": "Fixsen, D. J.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1998,
+      "citations": 723
+    },
+    {
+      "bibcode": "2004ApJ...605...14E",
+      "title": "Asymmetries in the Cosmic Microwave Background Anisotropy Field",
+      "firstAuthor": "Eriksen, H. K.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2004,
+      "citations": 719
     }
   ],
   "papersFile": {
-    "rows": 1418
+    "rows": 1416
   }
 }

@@ -89,7 +89,7 @@ describe('loadClps', () => {
 		const f = sourceFixture(fs.mkdtempSync(path.join(root, 'raw-')));
 		// One refereed paper two months after the astro comparator's launch.
 		const astro = f.runs[0];
-		const records = { kind: 'mission_records', schema_version: 5, mission_id: astro.id, scope: 'lifetime',
+		const records = { kind: 'mission_records', schema_version: 6, mission_id: astro.id, scope: 'lifetime',
 			provenance: astro.corpus.provenance, records: [paper('a1', '2000-03-01')] };
 		astro.corpus.files.records = f.write('payload/astro/records-with-paper.json', records);
 		repin(f, 0);

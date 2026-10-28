@@ -13,6 +13,7 @@
  *   src/lib/data/generated/missions/<id>.json
  *   src/lib/data/generated/refresh-report.md
  *   static/data/papers/<id>.json
+ *   static/data/maps/{missions/<id>,divisions/<slug>}.json
  *
  * `--out <dir>` (or $SMI_OUT_DIR) puts all of that under another root, keeping
  * the same relative layout. It exists so a doctored input can be packaged for
@@ -83,6 +84,7 @@ import {
 } from './lib/series.mjs';
 import { buildSite, byCost, byLaunch, tileSort } from './lib/site.mjs';
 import { loadClps } from './lib/clps.mjs';
+import { affiliationMaps } from './lib/affiliations.mjs';
 import { buildKinds, loadPaperKinds } from './lib/kinds.mjs';
 import { underThreshold } from './lib/public.mjs';
 import { cleanTitle } from './lib/text.mjs';
@@ -91,6 +93,7 @@ import { groupBy, int, num, weight, yearOf } from './lib/util.mjs';
 const APP_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const GENERATED_REL = join('src', 'lib', 'data', 'generated');
 const PAPERS_REL = join('static', 'data', 'papers');
+const MAPS_REL = join('static', 'data', 'maps');
 const THUMBS_DIR = join(APP_ROOT, 'static', 'img', 'missions');
 const REPORT_NAME = 'refresh-report.md';
 const TOP_CITED_LIMIT = 20;
@@ -516,18 +519,21 @@ export function buildMissionDoc({
 		id,
 		asOf,
 		lifetimeRows,
-		windowRows,
 		fullRows,
 		curatedBibcodes,
-		top1Cutoff: scopeWindow.pooled_cutoffs?.weights?.['1'] ?? null,
 		fullTop1Cutoff: scopeFull.pooled_cutoffs?.weights?.['1'] ?? null
 	});
 	assertColumnLengths(papersFile);
-	// Per-paper citations by scope; null in f/w marks a row outside that cohort.
-	const columnOf = { lifetime: 'c', full: 'f', window: 'w' };
+	// Per-paper citations by scope; null in f marks a row outside that cohort. The prime window is in
+	// the packaged docs but no page reads it per paper, so its citations come from its own table.
+	const inScope = {
+		lifetime: papersFile.columns.c,
+		full: papersFile.columns.f.filter((c) => c !== null),
+		window: lifetimeRows.flatMap((row) => (windowRows.has(row.bibcode) ? [Number(windowRows.get(row.bibcode).window_citations ?? 0)] : []))
+	};
 	const spreads = {};
 	for (const scope of SCOPES) {
-		const citations = papersFile.columns[columnOf[scope]].filter((c) => c !== null);
+		const citations = inScope[scope];
 		const papers = missionPapers(statsMission, scope);
 		// The median and uncited count come from the rows, so they must be the rows the totals count.
 		if (papers !== null && scopeField(statsMission, scope, 'output_basis') === 'measured' && citations.length !== papers) {
@@ -570,7 +576,12 @@ export function buildMissionDoc({
 			status: statsMission.mission_status ?? corpus.mission?.mission_status ?? 'unknown',
 			failed,
 			cost: num(statsMission.adjusted_lcc),
+			// the catalog's life-cycle cost as reported, before cost is adjusted to the base year
+			lcc: num(corpus.mission?.lcc),
 			type: corpus.mission?.mission_type ?? statsMission.mission_type ?? null,
+			program: corpus.mission?.program ?? null,
+			target: corpus.mission?.mission_target ?? null,
+			launchVehicle: corpus.mission?.launch_vehicle ?? null,
 			dates: {
 				formulation,
 				launch: launchDate,
@@ -586,6 +597,7 @@ export function buildMissionDoc({
 			publicationYears: publicationYearsPair(byMissionSummary?.publication_years, asOfYear)
 		},
 		lifetimeSeries,
+		affiliations: ownCitations.maps?.summary ?? null,
 		mostCited: paperRefFromTopCited(corpus.corpus?.top_cited?.[0], ownCitations.authors),
 		ranks,
 		full: { ...fullStats, spread: spreads.full },
@@ -615,6 +627,7 @@ export function buildMissionDoc({
 	const missionBytes = writeJson(join(paths.generatedDir, 'missions', `${id}.json`), missionDoc, {
 		pretty: true
 	});
+	if (ownCitations.maps) writeJson(join(paths.mapsDir, 'missions', `${id}.json`), ownCitations.maps.file, { pretty: false });
 
 	// --- rows shared with the division, index, scrolly and story ------------------
 	return {
@@ -821,11 +834,21 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 	// Follow the upstream representative-record rule, including deterministic ties.
 	// The one read of each mission's records and citations; buildMissionDoc gets what it needs from here.
 	const ownCitations = new Map();
+	// The division's papers once each, with their institutions, for its affiliation map.
+	const divisionInstitutions = new Map();
+	const divisionAffiliations = new Map();
+	// where each institution record falls on the maps, worked out once for the missions and reused by the division
+	const placed = new WeakMap();
 	function* citationSources() {
 		for (const { id, shortTitle } of resolved) {
 			const included = new Set((rowsByMission.get(shortTitle) ?? []).map((row) => row.bibcode));
 			const records = paths.source.readMission(id, 'records').records ?? [];
 			const citations = paths.source.readMission(id, 'citations').citations ?? {};
+			const institutions = new Map((paths.source.readMission(id, 'institutions').institutions ?? []).map((inst) => [inst.id, inst]));
+			const affiliations = new Map([...included].map((bibcode) => [bibcode, []]));
+			for (const r of records) if (included.has(r.bibcode)) affiliations.set(r.bibcode, r.institution_ids ?? []);
+			for (const [bibcode, ids] of affiliations) divisionAffiliations.set(bibcode, [...(divisionAffiliations.get(bibcode) ?? []), ...ids]);
+			for (const [key, inst] of institutions) divisionInstitutions.set(key, inst);
 			// Bylines are read only for the mission's and the division's most-cited paper.
 			const bylined = new Set([
 				paths.source.readMission(id).corpus?.top_cited?.[0]?.bibcode,
@@ -838,7 +861,8 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 				cited: [...included],
 				curated: new Set(records.filter((r) => r?.source && r.source !== 'query').map((r) => r.bibcode)),
 				pubdates: new Map(records.map((r) => [r.bibcode, r.pubdate])),
-				authors: new Map(records.filter((r) => bylined.has(r.bibcode)).map((r) => [r.bibcode, recordAuthors(r)]))
+				authors: new Map(records.filter((r) => bylined.has(r.bibcode)).map((r) => [r.bibcode, recordAuthors(r)])),
+				maps: affiliationMaps(affiliations, institutions, id, placed)
 			});
 			yield { name: shortTitle, records: records.filter((r) => included.has(r.bibcode)), citations };
 		}
@@ -925,6 +949,8 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 	});
 
 	if (divisionLifetimeSeries) divisionLifetimeSeries.citationCoverage = coverage;
+	const divisionMaps = affiliationMaps(divisionAffiliations, divisionInstitutions, division.slug, placed);
+	if (divisionMaps) writeJson(join(paths.mapsDir, 'divisions', `${division.slug}.json`), divisionMaps.file, { pretty: false });
 
 	missionRows.sort(byCost);
 
@@ -956,6 +982,7 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 		},
 		rankable,
 		lifetimeSeries: divisionLifetimeSeries,
+		affiliations: divisionMaps?.summary ?? null,
 		mostCited: mostCitedRow
 			? {
 					bibcode: mostCitedRow.bibcode,
@@ -1074,7 +1101,8 @@ function main() {
 	const paths = {
 		rawDir,
 		generatedDir: join(outRoot, GENERATED_REL),
-		papersDir: join(outRoot, PAPERS_REL)
+		papersDir: join(outRoot, PAPERS_REL),
+		mapsDir: join(outRoot, MAPS_REL)
 	};
 	if (!existsSync(rawDir)) {
 		throw new PackagingError(`raw data directory not found: ${rawDir}`);
@@ -1192,7 +1220,7 @@ function main() {
 
 
 	// Every calculation and serialization passed before replacing generated files.
-	for (const dir of [paths.generatedDir, paths.papersDir]) rmSync(dir, { recursive: true, force: true });
+	for (const dir of [paths.generatedDir, paths.papersDir, paths.mapsDir]) rmSync(dir, { recursive: true, force: true });
 	for (const [file, text] of pendingFiles) {
 		mkdirSync(dirname(file), { recursive: true });
 		writeFileSync(file, text);

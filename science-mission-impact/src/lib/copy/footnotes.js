@@ -3,7 +3,7 @@
 // referenceCost and the page's scope) so no number is typed into copy. `anchor` is the section of /methods that explains it.
 
 import { moneyWords, spell } from '../format.js';
-import { fullWindowLabel, fullWindowText, ordinal, publicationWindowText, windowLabel } from './window.js';
+import { fullWindowLabel, fullWindowText, ordinal } from './window.js';
 
 const calendarYears = (p) => p.citationYears + 1;
 
@@ -21,11 +21,6 @@ export const FOOTNOTES = {
 		anchor: 'full-window',
 		text: (p) =>
 			`${fullWindowLabel}: ${fullWindowText(p.fullPolicy, p.asOf)} Citations count from the year a paper appeared through the ${ordinal(p.fullPolicy.citationYears)} calendar year after it (${calendarYears(p.fullPolicy)} calendar years in all).`
-	},
-	window: {
-		anchor: 'early-window',
-		text: (p) =>
-			`${windowLabel(p)}: ${publicationWindowText(p)} Citations count from the year a paper appeared through the ${ordinal(p.citationYears)} calendar year after it (${calendarYears(p)} calendar years in all).`
 	},
 	lifetime: {
 		anchor: '',
@@ -78,12 +73,12 @@ export const FOOTNOTES = {
 	perDollar: {
 		anchor: 'per-dollar',
 		text: () =>
-			`Citations per ${moneyWords(100)}: each group’s citations in the window chosen above, divided by its total cost. Costs cover the prime mission only.`
+			`Citations per ${moneyWords(100)}: the missions’ citations in the window chosen above, divided by their total cost. Costs cover the prime mission only.`
 	},
 	perDollarChart: {
 		anchor: 'per-dollar',
 		text: () =>
-			`Each square is a mission at its cost and its citations per ${moneyWords(100)}, both on log scales. The dashed line is the best fit through the missions with citations; missions with none sit on the bottom row.`
+			`Each square is a mission at its cost and its citations per ${moneyWords(100)}, both on log scales. The line is the best fit through the missions with citations, drawn dashed grey when it is nearly flat or leaving out one mission would reverse it; missions with none sit on the bottom row.`
 	},
 	failed: {
 		anchor: 'failures',
@@ -94,7 +89,7 @@ export const FOOTNOTES = {
 		text: (p) =>
 			p.scope === 'lifetime'
 				? 'Citations: every citation these publications have drawn to date. Older missions have had longer to collect them.'
-				: `Citations: how often other papers cited these publications. Each paper’s citations count over the year it appeared and the ${spell((p.scope === 'window' ? p : p.fullPolicy).citationYears)} years after, so older missions get no head start.`
+				: `Citations: how often other papers cited these publications. Each paper’s citations count over the year it appeared and the ${spell(p.fullPolicy.citationYears)} years after, so older missions get no head start.`
 	},
 	meanCitations: {
 		anchor: '',
@@ -108,12 +103,16 @@ export const FOOTNOTES = {
 	uncited: {
 		anchor: '',
 		text: () => 'Uncited publications: papers with no citations in the selected scope.'
+	},
+	affiliations: {
+		anchor: 'affiliations',
+		text: () =>
+			'The institutions ADS lists for each paper’s authors, as printed on the paper, located through the Research Organization Registry. A square counts a paper once, however many of its authors worked there.'
 	}
 };
 
 /** What every FOOTNOTES text reads, from the page's `site` and the scope it shows. */
 export const notePolicy = (site, scope = 'full') => ({
-	...site.windowPolicy,
 	fullPolicy: site.fullPolicy,
 	asOf: site.asOf,
 	costBaseYear: site.costBaseYear,

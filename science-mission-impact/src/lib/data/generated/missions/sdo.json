@@ -9,7 +9,11 @@
     "status": "Extended Mission",
     "failed": false,
     "cost": 1456.4,
+    "lcc": 870,
     "type": "Remote Sensing Observatory",
+    "program": "Living With a Star (LWS)",
+    "target": "Sun",
+    "launchVehicle": "Atlas V",
     "dates": {
       "formulation": "2002-09-01",
       "launch": "2010-02-11",
@@ -23,8 +27,8 @@
     "m": 7,
     "i100": 153,
     "g": 211,
-    "tori": 435.198,
-    "riq": 1158
+    "tori": 405.983,
+    "riq": 1119
   },
   "facts": {
     "papers": 3997,
@@ -98,6 +102,43 @@
       "expected": 109344,
       "observed": 109344,
       "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 3997,
+    "us": {
+      "mapped": 1657,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 311
+        },
+        {
+          "name": "Stanford University, California",
+          "papers": 217
+        },
+        {
+          "name": "Lockheed Martin Corporation",
+          "papers": 205
+        }
+      ]
+    },
+    "world": {
+      "mapped": 3756,
+      "top": [
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 661
+        },
+        {
+          "name": "Max Planck Society for the Advancement of Science, Germany",
+          "papers": 328
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 311
+        }
+      ]
     }
   },
   "mostCited": {
@@ -252,7 +293,7 @@
     "arms": "(((=abs:\"Solar Dynamics Observatory\" OR =abs:\"Solar Dynamic Observatory\" OR =abs:\"Atmospheric Imaging Assembly\" OR =abs:\"Atmosphere Imaging Assembly\" OR =abs:\"Helioseismic and Magnetic Imager\" OR =abs:\"Extreme Ultraviolet Variability Experiment\" OR =abs:\"EUV Variability Experiment\" OR ( abs:SDO AND abs:(solar OR Sun OR corona OR flare OR helioseismology) AND NOT ( abs:(subdwarf OR subdwarfs OR sdB) OR =abs:\"helium star\" OR =abs:\"white dwarf\" OR =abs:\"stripped star\" OR =abs:\"scattered disk\" OR =abs:\"scattered disc\" OR =abs:\"mass decretion\" OR =abs:\"Galactic Bulge Survey\" OR abs:(photovoltaic OR microgrid) OR =abs:\"supply demand\" OR =abs:\"sustainable development objective\" ) ) OR ( (abs:AIA OR abs:HMI) AND abs:(solar OR Sun OR corona OR flare OR sunspot OR photosphere OR chromosphere OR helioseismology) AND NOT (abs:(microgrid OR photovoltaic) OR =abs:\"active integrated\") ) OR ( abs:EVE AND abs:(solar OR Sun) AND abs:(EUV OR irradiance OR flare) AND NOT =abs:\"Evaporating Exoplanets\" )) OR facility:SDO OR =abs:\"Atmospheric Image Assembly\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2010-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Solar+Dynamics+Observatory%22+OR+%3Dabs%3A%22Solar+Dynamic+Observatory%22+OR+%3Dabs%3A%22Atmospheric+Imaging+Assembly%22+OR+%3Dabs%3A%22Atmosphere+Imaging+Assembly%22+OR+%3Dabs%3A%22Helioseismic+and+Magnetic+Imager%22+OR+%3Dabs%3A%22Extreme+Ultraviolet+Variability+Experiment%22+OR+%3Dabs%3A%22EUV+Variability+Experiment%22+OR+%28+abs%3ASDO+AND+abs%3A%28solar+OR+Sun+OR+corona+OR+flare+OR+helioseismology%29+AND+NOT+%28+abs%3A%28subdwarf+OR+subdwarfs+OR+sdB%29+OR+%3Dabs%3A%22helium+star%22+OR+%3Dabs%3A%22white+dwarf%22+OR+%3Dabs%3A%22stripped+star%22+OR+%3Dabs%3A%22scattered+disk%22+OR+%3Dabs%3A%22scattered+disc%22+OR+%3Dabs%3A%22mass+decretion%22+OR+%3Dabs%3A%22Galactic+Bulge+Survey%22+OR+abs%3A%28photovoltaic+OR+microgrid%29+OR+%3Dabs%3A%22supply+demand%22+OR+%3Dabs%3A%22sustainable+development+objective%22+%29+%29+OR+%28+%28abs%3AAIA+OR+abs%3AHMI%29+AND+abs%3A%28solar+OR+Sun+OR+corona+OR+flare+OR+sunspot+OR+photosphere+OR+chromosphere+OR+helioseismology%29+AND+NOT+%28abs%3A%28microgrid+OR+photovoltaic%29+OR+%3Dabs%3A%22active+integrated%22%29+%29+OR+%28+abs%3AEVE+AND+abs%3A%28solar+OR+Sun%29+AND+abs%3A%28EUV+OR+irradiance+OR+flare%29+AND+NOT+%3Dabs%3A%22Evaporating+Exoplanets%22+%29%29+OR+facility%3ASDO+OR+%3Dabs%3A%22Atmospheric+Image+Assembly%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2010-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T06:05:21.769727+00:00",
+    "fetchedAt": "2026-10-27T17:26:23.019492+00:00",
     "reconciliation": {
       "adsReturned": 4002,
       "curatedOut": 1,

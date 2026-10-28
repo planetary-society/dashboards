@@ -69,7 +69,7 @@ describe('loadConfig', () => {
 		assert.equal('smallestClass' in loaded, false);
 		assert.equal(loaded.rawDirDefault, '../../science-mission-citations/dist/fixed');
 		assert.deepEqual(loaded.divisions.map((d) => d.statsLabel), ['astro', 'bps', 'earth', 'helio', 'psd']);
-		assert.deepEqual(loaded.schemaVersions, { mission: 5, stats: 11 });
+		assert.deepEqual(loaded.schemaVersions, { mission: 6, stats: 11 });
 	});
 
 	it('fails loudly on a config that is not there', () => {

@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 1372.5,
+    "lcc": 275,
     "type": "Orbiter",
+    "program": "Landsat",
+    "target": "Earth",
+    "launchVehicle": "Delta 3920",
     "dates": {
       "formulation": "1976-10-01",
       "launch": "1982-07-16",
@@ -23,8 +27,8 @@
     "m": 0.795,
     "i100": 16,
     "g": 78,
-    "tori": 93.355,
-    "riq": 219
+    "tori": 92.797,
+    "riq": 218
   },
   "facts": {
     "papers": 187,
@@ -181,6 +185,43 @@
       "missing": 0
     }
   },
+  "affiliations": {
+    "papers": 187,
+    "us": {
+      "mapped": 56,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 8
+        },
+        {
+          "name": "South Dakota State University",
+          "papers": 7
+        },
+        {
+          "name": "University of Arizona",
+          "papers": 4
+        }
+      ]
+    },
+    "world": {
+      "mapped": 114,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 8
+        },
+        {
+          "name": "South Dakota State University",
+          "papers": 7
+        },
+        {
+          "name": "University of Arizona",
+          "papers": 4
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2015RSEnv.159..269Z",
     "title": "Improvement and expansion of the Fmask algorithm: cloud, cloud shadow, and snow detection for Landsats 4-7, 8, and Sentinel 2 images",
@@ -332,7 +373,7 @@
     "arms": "((=abs:\"Landsat-4\" OR =abs:\"Landsat 4-5\" OR =abs:\"Landsats 4\" OR =abs:\"Landsat TM 4 5\" OR =abs:\"Landsat missions 4\" OR =abs:\"Landsat 1 4\" OR =abs:\"Landsat 1 5\" OR =abs:\"Landsats 1 5\" OR =abs:\"Landsat 1 8\" OR =abs:\"Landsat 1 9\" OR =abs:\"Landsat-D\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1983-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Landsat-4%22+OR+%3Dabs%3A%22Landsat+4-5%22+OR+%3Dabs%3A%22Landsats+4%22+OR+%3Dabs%3A%22Landsat+TM+4+5%22+OR+%3Dabs%3A%22Landsat+missions+4%22+OR+%3Dabs%3A%22Landsat+1+4%22+OR+%3Dabs%3A%22Landsat+1+5%22+OR+%3Dabs%3A%22Landsats+1+5%22+OR+%3Dabs%3A%22Landsat+1+8%22+OR+%3Dabs%3A%22Landsat+1+9%22+OR+%3Dabs%3A%22Landsat-D%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1983-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:50:41.848518+00:00",
+    "fetchedAt": "2026-10-27T17:13:48.022901+00:00",
     "reconciliation": {
       "adsReturned": 183,
       "curatedOut": 2,

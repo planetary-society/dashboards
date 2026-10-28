@@ -27,14 +27,11 @@ function fixture() {
 		f: [400, 150, null, 30, 8],
 		fe: [0, 1, null, 0.5, 0],
 		f1: [0, 1, null, 0, 0],
-		w: [120, null, 80, 5, null],
-		we: [1, null, 0.25, 0, null],
-		w1: [1, null, 0, 0, null],
 		i: [0, 0, 0, 1, 0]
 	};
 }
 
-const SCOPES = ['full', 'window', 'lifetime'];
+const SCOPES = ['full', 'lifetime'];
 
 describe('journalFromBibcode', () => {
 	it('takes characters 4-8 and strips the padding dots', () => {
@@ -58,8 +55,9 @@ describe('topColumn', () => {
 		const c = fixture();
 		assert.equal(topColumn(c, 'full', 10), c.fe);
 		assert.equal(topColumn(c, 'full', 1), c.f1);
-		assert.equal(topColumn(c, 'window', 10), c.we);
-		assert.equal(topColumn(c, 'window', 1), c.w1);
+		// the files carry no prime-window columns, so that scope reads the full-mission window
+		assert.equal(topColumn(c, 'window', 10), c.fe);
+		assert.equal(topColumn(c, 'window', 1), c.f1);
 		assert.equal(topColumn(c, 'lifetime', 10), c.e);
 	});
 
@@ -108,8 +106,8 @@ describe('filterIndex', () => {
 		assert.deepEqual(filterIndex(c, { topOnly: true, scope: 'lifetime', top: 10 }), [0, 1]);
 		assert.deepEqual(filterIndex(c, { topOnly: true, scope: 'full', top: 10 }), [1, 3]);
 		assert.deepEqual(filterIndex(c, { topOnly: true, scope: 'full', top: 1 }), [1]);
-		assert.deepEqual(filterIndex(c, { topOnly: true, scope: 'window', top: 10 }), [0, 2]);
-		assert.deepEqual(filterIndex(c, { topOnly: true, scope: 'window', top: 1 }), [0]);
+		assert.deepEqual(filterIndex(c, { topOnly: true, scope: 'window', top: 10 }), [1, 3]);
+		assert.deepEqual(filterIndex(c, { topOnly: true, scope: 'window', top: 1 }), [1]);
 	});
 
 	it('defaults to the full-mission window', () => {
@@ -121,7 +119,7 @@ describe('filterIndex', () => {
 		const c = fixture();
 		assert.deepEqual(filterIndex(c, { search: 'dust', topOnly: true, scope: 'lifetime', top: 10 }), [1]);
 		assert.deepEqual(filterIndex(c, { search: 'dust', topOnly: true, scope: 'full', top: 10 }), [1]);
-		assert.deepEqual(filterIndex(c, { search: 'dust', topOnly: true, scope: 'window', top: 10 }), []);
+		assert.deepEqual(filterIndex(c, { search: 'dust', topOnly: true, scope: 'window', top: 10 }), [1]);
 	});
 
 	it('accepts a prebuilt haystack', () => {
@@ -184,10 +182,8 @@ describe('rowAt', () => {
 		});
 	});
 
-	it('reads the window weight in the window scope', () => {
-		assert.equal(rowAt(fixture(), 1, 'window').top10, 0);
-		assert.equal(rowAt(fixture(), 0, 'window').top1, true);
-		assert.equal(rowAt(fixture(), 0, 'window').windowCitations, 120);
+	it('reads the full-mission columns for the prime window, which the files no longer carry', () => {
+		for (const i of [0, 1, 2]) assert.deepEqual(rowAt(fixture(), i, 'window'), rowAt(fixture(), i, 'full'));
 	});
 
 	it('reads the full-mission columns in the full scope, and by default', () => {
@@ -246,7 +242,7 @@ describe('toCsv', () => {
 		assert.equal(lines[0], CSV_HEADER.join(','));
 		assert.equal(
 			lines[0],
-			'bibcode,year,title,first_author,citations,window_citations,top10_weight_lifetime,top10_weight_window,top1_weight_window,full_window_citations,top10_weight_full,top1_weight_full,shared_by,added_by_hand,ads_url'
+			'bibcode,year,title,first_author,citations,top10_weight_lifetime,full_window_citations,top10_weight_full,top1_weight_full,shared_by,added_by_hand,ads_url'
 		);
 	});
 
@@ -255,13 +251,12 @@ describe('toCsv', () => {
 		assert.equal(lines.length, 6);
 		assert.equal(
 			lines[1],
-			'2004Sci...305..842P,2004,Cassini at Saturn,"Porco, C.",900,120,1,1,1,400,0,0,1,0,https://scixplorer.org/abs/2004Sci...305..842P/abstract'
+			'2004Sci...305..842P,2004,Cassini at Saturn,"Porco, C.",900,1,400,0,0,1,0,https://scixplorer.org/abs/2004Sci...305..842P/abstract'
 		);
 		// row 2: outside the full-mission cohort
-		assert.match(lines[3], /,300,80,0,0\.25,0,,,,1,0,https:/);
+		assert.match(lines[3], /,300,0,,,,1,0,https:/);
 		// row 3: no year, no title, no lifetime weight
-		assert.equal(lines[4], '2001AJ....121.2431A,,,"Adams, J.",50,5,,0,0,30,0.5,0,1,1,https://scixplorer.org/abs/2001AJ....121.2431A/abstract');
-	});
+		assert.equal(lines[4], '2001AJ....121.2431A,,,"Adams, J.",50,,30,0.5,0,1,1,https://scixplorer.org/abs/2001AJ....121.2431A/abstract');	});
 
 	it('quotes a title holding a comma and a quote', () => {
 		const lines = toCsv(fixture(), ads).split('\r\n');
@@ -295,7 +290,7 @@ describe('toCsv', () => {
 describe('performance', () => {
 	/** 20k synthetic rows, shaped like the real hst file. */
 	function bigColumns(n = 20000) {
-		const c = { b: [], y: [], t: [], a: [], c: [], s: [], e: [], f: [], fe: [], f1: [], w: [], we: [], w1: [], i: [] };
+		const c = { b: [], y: [], t: [], a: [], c: [], s: [], e: [], f: [], fe: [], f1: [], i: [] };
 		for (let k = 0; k < n; k += 1) {
 			const year = 1990 + (k % 35);
 			c.b.push(`${year}ApJ...${String(100 + (k % 900))}..${String(100 + (k % 800))}A`);
@@ -308,9 +303,6 @@ describe('performance', () => {
 			c.f.push(k % 5 === 0 ? null : (k * 7907) % 2000);
 			c.fe.push(k % 5 === 0 ? null : k % 9 === 0 ? 0.5 : 0);
 			c.f1.push(k % 5 === 0 ? null : k % 97 === 0 ? 1 : 0);
-			c.w.push(k % 3 === 0 ? null : (k * 104729) % 900);
-			c.we.push(k % 3 === 0 ? null : k % 11 === 0 ? 0.5 : 0);
-			c.w1.push(k % 3 === 0 ? null : k % 101 === 0 ? 1 : 0);
 			c.i.push(k % 997 === 0 ? 1 : 0);
 		}
 		return c;
@@ -342,7 +334,7 @@ describe('the real hst papers file', { skip: !fs.existsSync(HST_PAPERS) && 'stat
 	const file = JSON.parse(fs.readFileSync(HST_PAPERS, 'utf8'));
 
 	it('has the columns this module reads, all the declared length', () => {
-		for (const key of ['b', 'y', 't', 'a', 'c', 's', 'e', 'f', 'fe', 'f1', 'w', 'we', 'w1', 'i']) {
+		for (const key of ['b', 'y', 't', 'a', 'c', 's', 'e', 'f', 'fe', 'f1', 'i']) {
 			assert.equal(file.columns[key]?.length, file.rows, `column ${key}`);
 		}
 	});
@@ -368,18 +360,18 @@ describe('the real hst papers file', { skip: !fs.existsSync(HST_PAPERS) && 'stat
 });
 
 describe('missionsCsv', () => {
-	it('writes every scope, sizes each mission, and leaves unmeasured output blank', () => {
+	it('writes both reader scopes, sizes each mission, and leaves unmeasured output blank', () => {
 		const scope = (papers, top1 = 0.5) => ({ papers, citations: papers * 10, top10: 1.5, top1, status: 'available' });
 		const missions = [
 			{ id: 'a', name: 'Alpha, Jr.', launchYear: 2001, type: 'Orbiter', cost: 150, size: 'under', failed: false, shortfall: true, indices: { h: 3, g: 4 },
-				full: scope(4), window: { ...scope(2), status: 'unavailable' }, lifetime: scope(9, null) },
+				full: { ...scope(4), status: 'unavailable' }, lifetime: scope(9, null) },
 			{ id: 'b', name: 'Beta', launchYear: 2010, type: 'Lander', cost: 151, size: 'over', failed: true, shortfall: true, indices: {},
-				full: scope(0), window: scope(0), lifetime: scope(0, null) }
+				full: scope(0), lifetime: scope(0, null) }
 		];
 		const [header, a, b] = missionsCsv(missions, { costBaseYear: 2025, url: (id) => `/m/${id}/` }).split('\r\n');
-		assert.equal(header, 'mission,id,launch_year,type,cost_millions_2025_usd,size,outcome,active_papers,active_citations,active_top10,active_top1,prime_papers,prime_citations,prime_top10,prime_top1,lifetime_papers,lifetime_citations,lifetime_top10,lifetime_top1,h_index,g_index,url');
-		assert.equal(a, '"Alpha, Jr.",a,2001,Orbiter,150,small,partial,4,40,1.5,0.5,,,,,9,90,1.5,,3,4,/m/a/');
-		assert.equal(b, 'Beta,b,2010,Lander,151,larger,lost,0,0,1.5,0.5,0,0,1.5,0.5,0,0,1.5,,,,/m/b/');
+		assert.equal(header, 'mission,id,launch_year,type,cost_millions_2025_usd,size,outcome,active_papers,active_citations,active_top10,active_top1,lifetime_papers,lifetime_citations,lifetime_top10,lifetime_top1,h_index,g_index,url');
+		assert.equal(a, '"Alpha, Jr.",a,2001,Orbiter,150,small,partial,,,,,9,90,1.5,,3,4,/m/a/');
+		assert.equal(b, 'Beta,b,2010,Lander,151,larger,lost,0,0,1.5,0.5,0,0,1.5,,,,/m/b/');
 		const uncosted = missionsCsv([{ ...missions[1], cost: null, size: null }], { costBaseYear: 2025 }).split('\r\n')[1];
 		assert.match(uncosted, /^Beta,b,2010,Lander,,,lost,/, 'no cost, no size');
 	});

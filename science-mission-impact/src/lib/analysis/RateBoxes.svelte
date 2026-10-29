@@ -8,10 +8,11 @@
 	/**
 	 * clusters: [{ label, boxes: [{ key, label?, tone: 'light' | 'mid' | 'dark' | 'competed' | 'directed',
 	 * spread: RateSpread, values: number[] }] }]; `values` are the raw rates (failures as 0) that `spread` summarizes.
+	 * zeros: false leaves out the zero-count labels (the hidden table keeps them, and the medians).
 	 */
-	let { clusters, yLabel = 'N50 per $1M (log scale)' } = $props();
+	let { clusters, yLabel = 'N50 per $1M (log scale)', zeros = true } = $props();
 	let width = $state(0);
-	const layout = $derived(width > 0 ? rateBoxesLayout(clusters, width) : null);
+	const layout = $derived(width > 0 ? rateBoxesLayout(clusters, width, { zeros }) : null);
 	// a key only when clusters hold several boxes; the tones then carry the box labels
 	const legend = $derived(
 		clusters.some((c) => c.boxes.length > 1) ? [...new Map(clusters.flatMap((c) => c.boxes).filter((b) => b.label).map((b) => [b.tone, b])).values()] : []
@@ -22,7 +23,7 @@
 		return s.missions ? `median ${rateText(s.median)}, ${s.missions} missions, ${s.zeros} at 0` : 'no missions';
 	};
 	const aria = $derived(`Box plots of ${yLabel}, every mission a dot. ${clusters.flatMap((c) => c.boxes.map((b) => `${name(c, b)}: ${summary(b)}`)).join('; ')}.`);
-	const HEADS = { n: 'n', median: 'median', zeros: 'at 0' };
+	const HEADS = { zeros: 'at 0' };
 </script>
 
 <div class="rate-boxes">
@@ -70,7 +71,7 @@
 					{#each layout.boxes as b (b.id)}
 						{@const s = b.spread}
 						<text class="row {row.kind} {b.tone}" x={b.x} y={row.y} text-anchor="middle">
-							{#if row.kind === 'label'}{b.label ?? ''}{:else if row.kind === 'n'}{layout.inline ? `n=${s.missions}` : s.missions}{:else if row.kind === 'median'}{layout.inline ? `median ${rateText(s.median)}` : rateText(s.median)}{:else}{layout.inline ? (s.zeros ? `${s.zeros} at 0` : '') : s.zeros}{/if}
+							{#if row.kind === 'label'}{b.label ?? ''}{:else}{layout.inline ? (s.zeros ? `${s.zeros} at 0` : '') : s.zeros}{/if}
 						</text>
 					{/each}
 				{/each}
@@ -200,11 +201,6 @@
 	.row {
 		font-size: 11px;
 		fill: var(--dust);
-	}
-
-	.row.median {
-		font-size: 12px;
-		fill: var(--white);
 	}
 
 	.row.label {

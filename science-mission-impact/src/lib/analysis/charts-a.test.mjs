@@ -46,7 +46,6 @@ test('time bars share one axis from zero with room for every value label', () =>
 		assert.ok(first.formulation.h > first.science.h && first.science.y >= first.formulation.y + first.formulation.h);
 	}
 	const layout = timeLayout(tiers, time, 460);
-	assert.deepEqual(layout.rows.map((r) => r.meta), ['6 missions · 20 without one yet', '4 without one yet', '16 missions']);
 	assert.deepEqual([layout.rows[1].none, layout.rows[1].formulation], [true, null]);
 	// the height doesn't depend on width, so the server can reserve it
 	assert.equal(timeLayout(tiers, time, 0).height, layout.height);

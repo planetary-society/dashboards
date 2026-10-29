@@ -10,7 +10,7 @@
 	 * tiers: AnalysisFacts.tiers; time: AnalysisFacts.time. only: 'formulation' or 'science' fades the
 	 * other measure out (the story's one step each), and the science bars, alone, are hatched so they
 	 * read as the other measure; height: fit into this many px (the story's stage): rows tighten from
-	 * 54 to 28px, and below 50 each row's mission count is left off. title: the story's, top right
+	 * 54 to 28px. title: the story's, top right
 	 * over the plot like its other charts, in place of the key.
 	 */
 	let { tiers, time, only = null, height = null, title = null } = $props();
@@ -19,7 +19,6 @@
 	// the key (or title) above the bars, as measured, then 66px for the gap under it and the axis
 	let head = $state(16);
 	const pitch = $derived(height ? Math.max(28, Math.min(54, Math.floor((height - head - 66) / tiers.length))) : 54);
-	const counts = $derived(pitch >= 50);
 	const layout = $derived(timeLayout(tiers, time, width, { pitch, only }));
 	const off = (key) => only != null && only !== key;
 	const yr = (v) => `${years(v)} yr`;
@@ -63,7 +62,6 @@
 							{/if}
 						{/each}
 					{/if}
-					{#if counts}<text class="meta" x={layout.x(0)} y={row.metaY}>{row.meta}</text>{/if}
 				{/each}
 				<text class="title" x={(layout.left + layout.x.range()[1]) / 2} y={layout.height - 4} text-anchor="middle">Years</text>
 			</svg>
@@ -116,12 +114,11 @@
 	text { font: 12px var(--sans); }
 	.tick { font-size: 11px; fill: var(--soil); }
 	.label, .title { fill: var(--dust); }
-	/* a black halo keeps values and counts legible where a gridline runs under them */
-	.value, .meta, .none { paint-order: stroke; stroke: var(--black); stroke-width: 3px; stroke-linejoin: round; }
+	/* a black halo keeps values legible where a gridline runs under them */
+	.value, .none { paint-order: stroke; stroke: var(--black); stroke-width: 3px; stroke-linejoin: round; }
 	.value { fill: var(--white); }
 	.value.thin { fill: var(--neptune-mid); }
 	.none { fill: var(--dust); }
-	.meta { font-size: 11px; fill: var(--soil); }
 	.grid { stroke: var(--shadow); }
 	.bar { fill: var(--neptune); }
 	.bar.thin { fill: var(--neptune-mid); }

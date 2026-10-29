@@ -26,8 +26,7 @@
 	import OutcomeChart from './OutcomeChart.svelte';
 	import { gridLayout, rugLayout, skylineLayout, skylineHit, laneHit, primerLayout, tierOutcomeLayout, focusLayout, costLayout, perDollarLayout } from './layouts.js';
 	import { failureItems, highlightDivision, withHidden } from './items.js';
-	import { int, listify, longDate, money, moneyWords, spell, upperFirst, weight, years } from '$lib/format.js';
-	import { fullWindowLabel } from '$lib/copy/window.js';
+	import { int, listify, money, moneyWords, spell, upperFirst, weight, years } from '$lib/format.js';
 	import { flat, soft, firm, direction, times, tenfold, TIPS } from '$lib/copy/discussion.js';
 	import { asset, methodsHref } from '$lib/paths.js';
 	import { MIN_REACHED, apart, clearlyHigher, divisionShortfalls, edgeWords, scienceOrder, shortestTier, slowestBuild as slowest, tierWords } from '$lib/copy/analysis.js';
@@ -115,7 +114,6 @@
 	const dollarFit = $derived(fits.get(DOLLAR_DIVISION) ?? null);
 	const dollarName = $derived(story.perDollar.find((d) => d.division === DOLLAR_DIVISION)?.name ?? '');
 	const dollarField = $derived(dollarName.toLowerCase()); // "astrophysics" mid-sentence
-	const dollarA = $derived(/^[aeiou]/.test(dollarField) ? 'an' : 'a'); // "an astrophysics mission", "a heliophysics mission"
 	// CITES: how many times the citations at ten times the cost, from the packaged fit; whole above 10
 	const citesTimes = $derived(!(dollarFit?.citesTenfold > 1) ? null : dollarFit.citesTenfold >= 10 ? `${int(dollarFit.citesTenfold)} times` : times(dollarFit.citesTenfold));
 	// the rises the copy sizes with no caveat; every other line is named with its direction
@@ -277,69 +275,40 @@
 	};
 </script>
 
-<!-- the key to failureItems' marks, on every caption over squares that carry them -->
-{#snippet failKey()}<span class="item"><i class="swatch mark-lost"></i>Failure</span> <span class="item"><i class="swatch mark-partial"></i>Partial failure or partial success</span>{/snippet}
-
-<!-- step i's chart caption: under the stage on a wide screen, at the foot of the step's own box on a
-     phone (note), where the pinned graphic has no room to spare for it -->
-{#snippet caption(i)}
-	{@const div = i >= FAIL_BY && i <= FAIL_LAST ? site.divisions[i - FAIL_BY] : null}
-	{#if i === FAILURE || div}
-		Under each cost range, the share that failed or fell short, all divisions. {#if div}<span class="item"><i class="swatch tint"></i>{div.name}</span>{' '}{/if}{@render failKey()}
-	{:else if i === ONE && focus}
-		{focusName} missions by inflation-adjusted cost. Each gridline is 10 times the one before. {@render failKey()}
-	{:else if i === BARS && focus}
-		Each bar is one mission’s top-10% papers a year, from its prime-mission start through {rate?.through}. A paper shared by two missions counts half for each. {@render failKey()}
-	{:else if i === CITES && citesL}
-		Each square is {dollarA} {dollarField} mission. Across: inflation-adjusted cost. Up: citations to its papers from its {fullWindowLabel}, each over its first {spell(site.fullPolicy.citationYears + 1)} years. Both log scales. {@render failKey()}
-	{:else if i >= SCATTER && i <= FIT && dollarOne}
-		Each square is {dollarA} {dollarField} mission. Across: inflation-adjusted cost. Up: citations per {money(100)} of cost. Both log scales. {@render failKey()}{#if i === DOWN || i === FLAT}{' '}<span class="item"><span class="key spend"></span>Imagined trend</span>{:else if i === FIT}{' '}<span class="item"><span class="key"></span>Best fit</span>{/if}
-	{:else if i === FITS}
-		Each band is a division. Across: inflation-adjusted cost. Up: citations per {money(100)}. Log scales. {@render failKey()} <span class="item"><span class="key"></span>Best fit</span>
-	{:else if i === CLPS}
-		Peer-reviewed papers from CLPS landers, running total by month since {longDate(clps.start.slice(0, 7))}.
-	{:else}&nbsp;{/if}
-{/snippet}
-{#snippet note(i)}<p class="note meta">{@render caption(i)}</p>{/snippet}
-
 <Scroller bind:index bind:progress>
 	{#snippet graphic()}
-		<div class="frame">
-			<!-- svelte-ignore a11y_no_static_element_interactions -->
-			<div class="stage" class:skimming={skyline || primed || index === FLOORS} bind:clientWidth={W} bind:clientHeight={H} onpointerdown={skim} onpointermove={skim} onpointerleave={unskim} onclickcapture={holdClick}>
-				{#if rug && cost && outcomeL}
-					<Skyline layout={sky} total={site.papersDistinct} cited={site.citationsDistinct} rise={index === CORPUS ? scrub : index > CORPUS ? 1 : 0} {cite} visible={skyline} highlight={hot} {compact} width={W} height={H} />
-					{#if primerL}
-						<Primer layout={primerL} {primer} hot={hotBar} build={index === PAPERS ? span(0.15, 0.5) : index > PAPERS ? 1 : 0} highlight={index === TOP} visible={primed} {compact} width={W} height={H} />
-					{/if}
-					<OutcomeChart layout={outcomeL} failures={site.failureTiers} visible={index === FAILURE || failDiv != null} {compact} width={W} height={H} />
-					<div class="time-panel" class:visible={timed} aria-hidden="true">
-						<TimeBars tiers={site.tiers} time={site.time} only={index === TIME_SCI ? 'science' : 'formulation'} title="Median time to first high-impact paper from {index === TIME_SCI ? 'start of science operations' : 'project start'}" height={H} />
-					</div>
-					{#if focusL}
-						<FocusChart layout={focusL} name={focusName} largest={tallest} {grow} bars={index >= BARS} visible={focused} {compact} width={W} height={H} />
-					{/if}
-					<!-- the lanes draw the focus chart's bars too, so at FLOORS they move into their band -->
-					<LanesChart layout={cost} title="High-impact papers published per year, by division and mission" focus={focusL} {focused} {grow} hot={hotLane} cursor={laneCursor} visible={index === FLOORS} {compact} width={W} height={H} />
-					{#if dollarOne}
-						<DollarChart layout={dollarOne} title="Citations per {money(100)} in {dollarName}" {would} {turn} visible={plotted} {compact} width={W} height={H} />
-					{/if}
-					{#if citesL}
-						<DollarChart layout={citesL} title="Citations per mission in {dollarName}" visible={index === CITES} {compact} width={W} height={H} />
-					{/if}
-					{#if dollarAll}
-						<DollarChart layout={dollarAll} title="Citations per {money(100)} by division" visible={index === FITS} {compact} width={W} height={H} />
-					{/if}
-					<ClpsChart {clps} title="Total papers published after science operations start" draw={index === CLPS ? clpsFirst : index > CLPS ? 1 : 0} drawComparators={index === CLPS_COMPARE ? clpsDraw : index > CLPS_COMPARE ? 1 : 0} visible={(index === CLPS && clpsIn) || index === CLPS_COMPARE} {compact} width={W} height={H} />
-					<Squares {tiles} {items} {shown} interactive={false} highlightId={hot} quietId={skyNamed} />
+		<!-- svelte-ignore a11y_no_static_element_interactions -->
+		<div class="stage" class:skimming={skyline || primed || index === FLOORS} bind:clientWidth={W} bind:clientHeight={H} onpointerdown={skim} onpointermove={skim} onpointerleave={unskim} onclickcapture={holdClick}>
+			{#if rug && cost && outcomeL}
+				<Skyline layout={sky} total={site.papersDistinct} cited={site.citationsDistinct} rise={index === CORPUS ? scrub : index > CORPUS ? 1 : 0} {cite} visible={skyline} highlight={hot} {compact} width={W} height={H} />
+				{#if primerL}
+					<Primer layout={primerL} {primer} hot={hotBar} build={index === PAPERS ? span(0.15, 0.5) : index > PAPERS ? 1 : 0} highlight={index === TOP} visible={primed} {compact} width={W} height={H} />
 				{/if}
-				<div class="thesis" class:visible={index === TITLE}>
-					<p>Exploring the scientific productivity of NASA's science missions</p>
+				<OutcomeChart layout={outcomeL} failures={site.failureTiers} visible={index === FAILURE || failDiv != null} {compact} width={W} height={H} />
+				<div class="time-panel" class:visible={timed} aria-hidden="true">
+					<TimeBars tiers={site.tiers} time={site.time} only={index === TIME_SCI ? 'science' : 'formulation'} title="Median time to first high-impact paper from {index === TIME_SCI ? 'start of science operations' : 'project start'}" height={H} />
 				</div>
-				<p class="cue" class:visible={index === TITLE} aria-hidden="true">Scroll to begin</p>
+				{#if focusL}
+					<FocusChart layout={focusL} name={focusName} largest={tallest} {grow} bars={index >= BARS} visible={focused} {compact} width={W} height={H} />
+				{/if}
+				<!-- the lanes draw the focus chart's bars too, so at FLOORS they move into their band -->
+				<LanesChart layout={cost} title="High-impact papers published per year, by division and mission" focus={focusL} {focused} {grow} hot={hotLane} cursor={laneCursor} visible={index === FLOORS} {compact} width={W} height={H} />
+				{#if dollarOne}
+					<DollarChart layout={dollarOne} title="Citations per {money(100)} in {dollarName}" {would} {turn} visible={plotted} {compact} width={W} height={H} />
+				{/if}
+				{#if citesL}
+					<DollarChart layout={citesL} title="Citations per mission in {dollarName}" visible={index === CITES} {compact} width={W} height={H} />
+				{/if}
+				{#if dollarAll}
+					<DollarChart layout={dollarAll} title="Citations per {money(100)} by division" visible={index === FITS} {compact} width={W} height={H} />
+				{/if}
+				<ClpsChart {clps} title="Total papers published after science operations start" draw={index === CLPS ? clpsFirst : index > CLPS ? 1 : 0} drawComparators={index === CLPS_COMPARE ? clpsDraw : index > CLPS_COMPARE ? 1 : 0} visible={(index === CLPS && clpsIn) || index === CLPS_COMPARE} {compact} width={W} height={H} />
+				<Squares {tiles} {items} {shown} interactive={false} highlightId={hot} quietId={skyNamed} />
+			{/if}
+			<div class="thesis" class:visible={index === TITLE}>
+				<p>Exploring the scientific productivity of NASA's science missions</p>
 			</div>
-			<!-- the CLPS caption waits for its chart to fade in -->
-			<div class="caption meta">{@render caption(index === CLPS && !clpsIn ? -1 : index)}</div>
+			<p class="cue" class:visible={index === TITLE} aria-hidden="true">Scroll to begin</p>
 		</div>
 	{/snippet}
 
@@ -402,14 +371,12 @@
 			{#if focus && focusShares}
 				<p>Midsize and larger mission classes contribute the overwhelming volume of high impact papers.</p>
 				<p>On this chart, the {int(focusShares.missionsAll)} <strong>{field}</strong> missions are ordered by their cost, adjusted for inflation.</p>
-				{@render note(ONE)}
 			{/if}
 		</div></section>
 		<!-- BARS: each mission's top-10% papers a year -->
 		<section data-step data-scrub><div class="step">
 			{#if focus && focusShares && rate}
 				<p>Each bar is a mission’s average yearly output of high impact papers, counting every paper from the start of its prime mission through {rate.through}.</p>{#if tallest}<p>{tallest.name} produced the most: about {weight(tallest.perYear)} <strong>top-10% papers</strong> a year.</p>{/if}
-				{@render note(BARS)}
 			{/if}
 		</div></section>
 		<!-- FLOORS: the same yearly rate for every compared division, a band each on the lanes' cost axis -->
@@ -425,7 +392,6 @@
 				<p>Here each {dollarField} mission is placed by its cost and by how often its papers were cited.</p>
 				{#if citesTimes}<p><strong>Costlier missions drew more citations:</strong> a mission that cost 10 times as much drew about {citesTimes} as many.</p>{/if}
 				<p>They cost more, too. To compare what each dollar bought, we divide each mission’s citations by its cost: <strong>citations per dollar</strong>.</p>
-				{@render note(CITES)}
 			{/if}
 		</div></section>
 		<!-- SCATTER, DOWN, FLAT and FIT always render, so later steps keep their numbers; with no DOLLAR_DIVISION fit they're blank -->
@@ -433,48 +399,41 @@
 		<section data-step><div class="step">
 			{#if dollarFit}
 				<p>Here, each {dollarField} mission is placed by its cost and by the citations it drew for every {moneyWords(100)}.</p>
-				{@render note(SCATTER)}
 			{/if}
 		</div></section>
 		<!-- DOWN: the line the missions would follow if small ones got more for their money -->
 		<section data-step><div class="step">
 			{#if dollarFit}
 				<p>If small missions had greater productivity for their money, the trend line would slope downward.</p>
-				{@render note(DOWN)}
 			{/if}
 		</div></section>
 		<!-- FLAT: the same line swings flat, for missions that got the same per dollar whatever their size -->
 		<section data-step data-scrub><div class="step">
 			{#if dollarFit}
 				<p>If size made no difference, the line would be flat: overall citations per dollar would be the same.</p>
-				{@render note(FLAT)}
 			{/if}
 		</div></section>
 		<!-- FIT: the best fit takes the flat line's place and swings up off it -->
 		<section data-step data-scrub><div class="step">
 			{#if dollarFit}
 				<p>The best-fit line through the {spell(dollarFit.missions)} {dollarField} missions with citations is <strong class="neptuneBlue">{direction(dollarFit)}</strong>.{#if firm(dollarFit)}{' '}More expensive missions, on average, resulted in more citations per dollar.{/if}</p>
-				{@render note(FIT)}
 			{/if}
 		</div></section>
 		<!-- FITS: every compared division's missions and best fit, one band each -->
 		<section data-step><div class="step">
 			<p>The overall trendlines show a modestly positive relationship between cost and citations per dollar across all four major divisions.</p>
-			{@render note(FITS)}
 		</div></section>
 		<!-- FAILURE: every division's missions by cost tier, up if they met their goals, down if they failed or fell short -->
 		<section data-step><div class="step">
 			{#if failure.higher === 'under'}<p>Cheaper missions fail more often than more expensive ones.</p>{/if}
 			<p>Of the {int(failure.under.missions)} costing {moneyWords(story.referenceCost)} or less, {int(failure.under.failed)} (about {whole(failure.under.rate)}) failed or fell short of their goals. More expensive missions failed {spell(failure.over.failed)} times (about {whole(failure.over.rate)}).</p>
 			<p>Failure rates vary across NASA's science divisions.</p>
-			{@render note(FAILURE)}
 		</div></section>
 		<!-- FAIL_BY…: the same chart, one division's squares washed per step -->
-		{#each failByDivision as f, k (f.slug)}
+		{#each failByDivision as f (f.slug)}
 			<section data-step><div class="step">
 				<p>{f.all.short ? upperFirst(spell(f.all.short)) : 'None'} out of {spell(f.all.missions)} <strong class="neptuneBlue">{f.name}</strong> missions failed or fell short of {f.all.short === 1 ? 'its' : 'their'} goals.</p>
 				{#if f.note}<p><strong>Below {edgeWords(FAIL_NOTE.edge)}, {f.name}</strong> {f.below.short} out of {spell(f.below.missions)} failed.</p>{/if}
-				{@render note(FAIL_BY + k)}
 			</div></section>
 		{/each}
 		<!-- TIME_FORM: years to a first top-10% paper, counted from the start of formulation -->
@@ -491,7 +450,6 @@
 		<section data-step data-scrub><div class="step">
 			<p>NASA's <strong>Commercial Lunar Payload Services</strong> program purchases space on commercial lunar landers for science instruments.</p>
 			{#if clps.comparison}<p>The first mission launched in {clps.start.slice(0, 4)}, too recent to evaluate scientific impact through citations. So instead, we looked at scientific productivity.</p><p>In the {clps.comparison.month} months since the first attempt, <strong>{int(clps.comparison.clps)} peer-reviewed papers</strong> were published.</p>{/if}
-			{@render note(CLPS)}
 		</div></section>
 		<!-- CLPS_COMPARE -->
 		<section data-step data-scrub><div class="step">
@@ -512,35 +470,14 @@
 </Scroller>
 
 <style>
-	.frame { display: flex; flex-direction: column; height: 100%; }
-	.stage { position: relative; flex: 1; min-height: 0; width: 100%; }
+	/* the stage is the graphic's whole height: no caption under it, so every chart gets the room */
+	.stage { position: relative; height: 100%; width: 100%; }
 	/* a sideways finger skims the columns; an upward one still scrolls the page */
 	.stage.skimming { touch-action: pan-y; }
-	/* a fixed height (the longest caption: three 16px lines), so the stage's H, and every layout built
-	   from it, stays put from step to step whatever the caption says */
-	.caption { height: 62px; padding-block: 10px 4px; }
-	/* Phones (Scroller's pinned graphic): the caption moves to the foot of its step's box, so the stage
-	   has the graphic's whole height and no empty caption band opens between chart and text */
-	.note { display: none; }
+	/* Phones: the box's --panel fill drops Neptune emphasis to 4.2:1; a quarter of --neptune-mid lifts it past 5:1 */
 	@media (max-width: 860px) {
-		.caption { display: none; }
-		.step .note { display: block; }
-		/* the box's --panel fill drops Neptune emphasis to 4.2:1; a quarter of --neptune-mid lifts it past 5:1 */
 		section:not([data-bleed]) > .step :global(.neptuneBlue) { color: color-mix(in srgb, var(--neptune) 75%, var(--neptune-mid)); }
 	}
-	/* legend swatches inline in the caption, drawn from the same .mark-* classes as the squares */
-	:is(.caption, .note) :global(.swatch) { display: inline-block; width: 11px; height: 11px; margin: 0 5px -1px 10px; }
-	:is(.caption, .note) :global(.swatch:first-child) { margin-left: 0; }
-	/* a key entry never wraps between its swatch and its label */
-	:is(.caption, .note) :global(.item) { white-space: nowrap; }
-	:is(.caption, .note) :global(.item .swatch) { margin-left: 10px; }
-	.key { display: inline-block; width: 18px; margin: 0 5px 4px 10px; border-top: 2px solid var(--neptune); }
-	.key:first-child { margin-left: 0; }
-	.item > .key { margin-left: 10px; }
-	.key.spend { border-top: 1px dashed var(--dust); }
-	/* the solid square has no edge of its own; on black it needs one to read as a swatch */
-	/* the FAIL_BY steps' division: the squares' wash, and its name in the text */
-	:is(.caption, .note) :global(.swatch.tint) { background: var(--neptune); }
 	/* TIME_FORM/TIME_SCI: the Analysis page's time bars, centred on the stage */
 	.time-panel { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; opacity: 0; transition: opacity 400ms linear; pointer-events: none; }
 	.time-panel.visible { opacity: 1; }

@@ -66,13 +66,14 @@ export function boxMarks(spread, at, floor = at(0)) {
 
 /**
  * Box plots of rates in clusters (cost groups) of one or more boxes. Every value is a dot,
- * jittered across its box by a key of cluster, box and index. Under each box go the box label
- * (several per cluster, when it fits), n and the median, then the cluster label. Labels that
- * don't fit fall back: the zero count moves from beside the zero lane to the rows under the box,
- * and when "median 1.73" is wider than a box's room the rows lose their words to a header in the
- * left gutter ("n", "median"); box labels that don't fit are left to the legend.
+ * jittered across its box by a key of cluster, box and index. Under each box goes the box label
+ * (several per cluster, when it fits), then the cluster label; the median line is left to speak
+ * for itself. Labels that don't fit fall back: the zero count moves from beside the zero lane to a
+ * row under the box, and when "3 at 0" is wider than a box's room that row loses its words to a
+ * header in the left gutter ("at 0"); box labels that don't fit are left to the legend.
+ * `zeros: false` leaves the zero counts out.
  */
-export function rateBoxesLayout(clusters, W) {
+export function rateBoxesLayout(clusters, W, { zeros = true } = {}) {
 	const most = Math.max(1, ...clusters.map((c) => c.boxes.length));
 	const compact = W < 420;
 	const left = 46;
@@ -103,12 +104,12 @@ export function rateBoxesLayout(clusters, W) {
 
 	// room to the right of each box, up to the next box or the chart's edge
 	const room = boxes.map((b, i) => (i + 1 < boxes.length ? boxes[i + 1].x - bw / 2 : W) - (b.x + bw / 2));
-	const beside = boxes.every((b, i) => !b.spread.zeros || room[i] - 5 >= textWidth(`${b.spread.zeros} at 0`, 11));
-	const inline = boxes.every((b) => textWidth(`median ${rateText(b.spread.median)}`, 12) <= pitch - 6);
+	const beside = zeros && boxes.every((b, i) => !b.spread.zeros || room[i] - 5 >= textWidth(`${b.spread.zeros} at 0`, 11));
+	const inline = boxes.every((b) => textWidth(`${b.spread.zeros} at 0`, 11) <= pitch - 6);
 	const boxLabels = most > 1 && boxes.every((b) => !b.label || textWidth(b.label, 11) <= pitch - 4);
 
 	const line = 15;
-	const kinds = [...(boxLabels ? ['label'] : []), 'n', 'median', ...(!beside && boxes.some((b) => b.spread.zeros) ? ['zeros'] : [])];
+	const kinds = [...(boxLabels ? ['label'] : []), ...(zeros && !beside && boxes.some((b) => b.spread.zeros) ? ['zeros'] : [])];
 	const rows = kinds.map((kind, i) => ({ kind, y: plotBottom + 18 + i * line }));
 	const clusterY = plotBottom + 18 + kinds.length * line + 8;
 	return {
@@ -134,9 +135,6 @@ const ramp = piecewise(interpolateLab, ['#0b1c29', '#037cc2', '#bfdef0']);
 
 /** A ratio's cell colour, as "rgb(r, g, b)". */
 export const heatColor = (ratio) => ramp(Math.min(1, Math.max(0, ratio / 2)));
-
-/** CSS gradient stops for the legend, sampled from the same ramp so the bar matches the cells. */
-export const heatStops = (n = 9) => Array.from({ length: n }, (_, i) => heatColor((2 * i) / (n - 1))).join(', ');
 
 const channel = (c) => {
 	const s = c / 255;

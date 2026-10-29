@@ -5,7 +5,7 @@
 	// (short division names, smaller text) so it needs no measured width.
 	import { pct } from '$lib/format.js';
 	import { tierLabel } from './tiers.js';
-	import { heatColor, heatStops, textOn } from './charts-b.js';
+	import { heatColor, textOn } from './charts-b.js';
 
 	/** tiers: AnalysisFacts.tiers. efficiency: AnalysisFacts.efficiency. divisions: [{ slug, name, nav }] for the short row labels. */
 	let { tiers, efficiency, divisions } = $props();
@@ -42,12 +42,6 @@
 			{/each}
 		</tbody>
 	</table>
-	<div class="legend">
-		<div class="ramp" style:background="linear-gradient(to right, {heatStops()})"></div>
-		<div class="ends" aria-hidden="true"><span>0×</span><span>1×</span><span>≥2×</span></div>
-		<p class="note">1× = the tier's share of output equals its share of spending.</p>
-		<p class="note"><span class="swatch outlined"></span>The division's highest <span class="swatch hatched"></span>No missions</p>
-	</div>
 </div>
 
 <style>
@@ -101,63 +95,13 @@
 		box-shadow: inset 0 0 0 2px var(--white);
 	}
 
-	.empty,
-	.hatched {
+	.empty {
 		background: repeating-linear-gradient(135deg, #1c1c1c 0 4px, #2b2b2b 4px 8px);
 		color: var(--soil);
 	}
 
 	.short {
 		display: none;
-	}
-
-	.legend {
-		max-width: 320px;
-		margin-top: 12px;
-	}
-
-	.ramp {
-		height: 10px;
-	}
-
-	.ends {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		margin-top: 4px;
-		font-size: 11px;
-		color: var(--soil);
-	}
-
-	.ends span:nth-child(2) {
-		text-align: center;
-	}
-
-	.ends span:last-child {
-		text-align: right;
-	}
-
-	.note {
-		margin-top: 6px;
-		font-size: 12px;
-		line-height: 1.45;
-		color: var(--dust);
-	}
-
-	.swatch {
-		display: inline-block;
-		width: 12px;
-		height: 12px;
-		margin-right: 6px;
-		vertical-align: -1px;
-	}
-
-	.note .hatched {
-		margin-left: 14px;
-	}
-
-	.outlined {
-		box-shadow: inset 0 0 0 2px var(--white);
-		background: var(--neptune);
 	}
 
 	@container (max-width: 440px) {

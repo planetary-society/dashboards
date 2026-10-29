@@ -3,7 +3,6 @@
 // draw what these return.
 
 import { scaleLinear } from 'd3-scale';
-import { plural } from '../format.js';
 import { tierLabel } from './tiers.js';
 
 /**
@@ -55,7 +54,6 @@ export function timeLayout(tiers, time, width, { pitch = 54, only = null } = {})
 			return { median, x: Math.min(a, b), w: Math.abs(b - a), y, h, cy: y + h / 2, tx: out ? b - 5 : b + 5, anchor: out ? 'end' : 'start' };
 		};
 		const none = t.reached === 0;
-		const meta = none ? `${t.without} without one yet` : `${t.reached} ${plural(t.reached, 'mission')}${t.without > 0 ? ` · ${t.without} without one yet` : ''}`;
 		// one measure alone (the story's steps): both draw as the same thick bar in the same place
 		const h = only ? thick : thick + gap + thin;
 		return {
@@ -63,9 +61,7 @@ export function timeLayout(tiers, time, width, { pitch = 54, only = null } = {})
 			none,
 			labelY: y0 + h / 2,
 			formulation: none ? null : bar(t.formulation.median, y0, thick),
-			science: none ? null : only ? bar(t.science.median, y0, thick) : bar(t.science.median, y0 + thick + gap, thin),
-			meta,
-			metaY: y0 + h + 15
+			science: none ? null : only ? bar(t.science.median, y0, thick) : bar(t.science.median, y0 + thick + gap, thin)
 		};
 	});
 	const bottom = top + tiers.length * pitch - 8;

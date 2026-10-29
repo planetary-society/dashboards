@@ -61,11 +61,14 @@ test('box dots stay inside their box and the zero lane; labels fall back when bo
 		label: `G${i}`,
 		boxes: ['directed', 'competed'].map((k) => ({ key: k, label: k === 'directed' ? 'Directed' : 'Competed', tone: k, spread: spread(values), values }))
 	}));
-	const narrow = rateBoxesLayout(two, 340);
+	const narrow = rateBoxesLayout(two, 300);
 	assert.equal(narrow.beside, false); // no room between a cluster's two boxes
 	assert.equal(narrow.inline, false);
-	assert.deepEqual(narrow.rows.map((r) => r.kind), ['n', 'median', 'zeros']); // box labels left to the legend
+	assert.deepEqual(narrow.rows.map((r) => r.kind), ['zeros']); // box labels left to the legend
 	assert.ok(rateBoxesLayout(two, 760).rows.some((r) => r.kind === 'label'));
+	// without zero counts only the box labels stay: none beside the lane or under it
+	const bare = rateBoxesLayout(two, 760, { zeros: false });
+	assert.deepEqual([bare.beside, bare.rows.map((r) => r.kind)], [false, ['label']]);
 });
 
 test('rates print two decimals below 10, one above, and never a false zero', () => {

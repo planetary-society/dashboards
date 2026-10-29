@@ -22,11 +22,6 @@
 	const site = $derived(data.full);
 	const a = $derived(site.analysis);
 	const ref = $derived(moneyWords(a.referenceCost));
-	// The divisions with the highest and lowest N_c divisor, for the weighted-output panel's "fields cite at different rates".
-	const citeRange = $derived.by(() => {
-		const byC = [...a.nc.divisions].sort((x, y) => y.c - x.c);
-		return { hi: byC[0], lo: byC.at(-1) };
-	});
 
 	// Time to science
 	const time = $derived(a.time);
@@ -182,12 +177,10 @@
 			</div>
 			<div class="way" role="group" aria-labelledby="ic-way">
 				<header class="way-head">
-					<p class="way-title" id="ic-way">Breakthrough count</p>
+					<p class="way-title" id="ic-way">High impact thresholds</p>
 					<p class="formula">
 						<span>i<sub>c</sub></span><span>=</span><span>papers with citations &gt; <i>c</i></span>
 					</p>
-					<p>Credits field-defining results. Each division sets <i>c</i> from its own papers: the citations at its
-						top 1%, 10% or 50%. Figure 1 counts top-10% papers.</p>
 				</header>
 				<figure>
 					<table class="by-division">
@@ -212,8 +205,6 @@
 							{/each}
 						</tbody>
 					</table>
-					<figcaption>Table 1. The cutoffs <i>c</i>: the citations a paper needs in its four-year window to reach
-						its division’s top 50%, 10% or 1%. The top-50% cutoff is also the {@render nc()} divisor.</figcaption>
 				</figure>
 			</div>
 			<div class="way" role="group" aria-labelledby="nc-way">
@@ -223,8 +214,6 @@
 						<span class="sr-only">N sub c equals papers plus citations divided by c</span>
 						<span aria-hidden="true">{@render nc()}</span><span aria-hidden="true">=</span><span aria-hidden="true">papers</span><span aria-hidden="true">+</span><span class="frac" aria-hidden="true"><span>citations</span><span><i>c</i></span></span>
 					</p>
-					<p>Credits the whole body of work. Each refereed paper counts once, and each of its citations in its
-						four-year window adds 1/<i>c</i> of a paper.</p>
 				</header>
 				<div class="way-body">
 					<figure>
@@ -250,14 +239,8 @@
 								{/each}
 							</tbody>
 						</table>
-						<figcaption>Table 2. What one paper at each of Table 1’s cutoffs counts for, 1 + its citations ÷ <i>c</i>,
-							with <i>c</i> set to the division’s top-50% cutoff ({@render nc('50')}). An uncited paper counts
-							as 1.</figcaption>
+
 					</figure>
-					<p>It credits every paper, not only breakouts, and each division’s own <i>c</i> puts fields that cite at
-						different rates ({citeRange.hi.c} citations at the line in {citeRange.hi.name}, {citeRange.lo.c} in
-						{citeRange.lo.name}) on one scale. Divided by life-cycle cost, it gives the {@render nc('50')} per
-						$1M in Figures 2, 5 and 6.</p>
 				</div>
 			</div>
 		</section>
@@ -410,7 +393,7 @@
 				</div>
 				<figure>
 					<p class="chart-title">Competed and directed missions</p>
-					<RateBoxes clusters={selectionClusters} />
+					<RateBoxes clusters={selectionClusters} zeros={false} />
 					<figcaption>Figure 6. Comparison of competed vs. directed missions. Citation-weighted publications
 						({@render nc('50')}) per million dollars spent for small, medium, and large
 						missions.{#if sel.unclassified}{' '}{upperFirst(spell(sel.unclassified))} {sel.unclassified === 1 ? 'mission' : 'missions'}
@@ -592,8 +575,7 @@
 		border-bottom: 1px solid var(--shadow);
 	}
 
-	.way-head > * + *,
-	.way-body > * + * {
+	.way-head > * + * {
 		margin-top: 12px;
 	}
 

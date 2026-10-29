@@ -65,7 +65,6 @@
 	const story = $derived(site.story);
 	const failure = $derived(story.failure);
 	const clps = $derived(site.clps);
-	const landers = $derived(clps.missions.filter((p) => p.papers > 0).length);
 	const comparison = $derived(story.comparison);
 	// The gap "holds" in a division only where both sides are measured and the smaller missions' side is lower.
 	const byDivision = $derived(comparison.byDivision ?? []);
@@ -141,8 +140,7 @@
 	const endsRanked = $derived(timeFirst.reached >= MIN_REACHED && timeLast.reached >= MIN_REACHED);
 	const findingFour = $derived(`The science output of NASA’s commercial lunar missions ${clps.comparison?.behindAll ? 'has not matched the productivity of' : 'is keeping pace with'} science-focused missions.`);
 
-	// CLPS: what the landers cost together, and the ones that began work a year or more after the first launch.
-	const clpsCost = $derived(clps.missions.every((p) => p.cost != null) ? clps.missions.reduce((t, p) => t + p.cost, 0) : null);
+	// CLPS: the landers that began work a year or more after the first launch.
 	const clpsLate = $derived(clps.missions.filter((p) => Date.parse(p.primeStart) - Date.parse(clps.start) > 365 * 864e5));
 	const clpsCompared = $derived((clps.comparison?.comparators ?? []).map((c) => ({ ...c, cost: clps.comparators.find((k) => k.id === c.id)?.cost ?? null })));
 
@@ -282,6 +280,28 @@
 <!-- the key to failureItems' marks, on every caption over squares that carry them -->
 {#snippet failKey()}<span class="item"><i class="swatch mark-lost"></i>Failure</span> <span class="item"><i class="swatch mark-partial"></i>Partial failure or partial success</span>{/snippet}
 
+<!-- step i's chart caption: under the stage on a wide screen, at the foot of the step's own box on a
+     phone (note), where the pinned graphic has no room to spare for it -->
+{#snippet caption(i)}
+	{@const div = i >= FAIL_BY && i <= FAIL_LAST ? site.divisions[i - FAIL_BY] : null}
+	{#if i === FAILURE || div}
+		Under each cost range, the share that failed or fell short, all divisions. {#if div}<span class="item"><i class="swatch tint"></i>{div.name}</span>{' '}{/if}{@render failKey()}
+	{:else if i === ONE && focus}
+		{focusName} missions by inflation-adjusted cost. Each gridline is 10 times the one before. {@render failKey()}
+	{:else if i === BARS && focus}
+		Each bar is one mission’s top-10% papers a year, from its prime-mission start through {rate?.through}. A paper shared by two missions counts half for each. {@render failKey()}
+	{:else if i === CITES && citesL}
+		Each square is {dollarA} {dollarField} mission. Across: inflation-adjusted cost. Up: citations to its papers from its {fullWindowLabel}, each over its first {spell(site.fullPolicy.citationYears + 1)} years. Both log scales. {@render failKey()}
+	{:else if i >= SCATTER && i <= FIT && dollarOne}
+		Each square is {dollarA} {dollarField} mission. Across: inflation-adjusted cost. Up: citations per {money(100)} of cost. Both log scales. {@render failKey()}{#if i === DOWN || i === FLAT}{' '}<span class="item"><span class="key spend"></span>Imagined trend</span>{:else if i === FIT}{' '}<span class="item"><span class="key"></span>Best fit</span>{/if}
+	{:else if i === FITS}
+		Each band is a division. Across: inflation-adjusted cost. Up: citations per {money(100)}. Log scales. {@render failKey()} <span class="item"><span class="key"></span>Best fit</span>
+	{:else if i === CLPS}
+		Peer-reviewed papers from CLPS landers, running total by month since {longDate(clps.start.slice(0, 7))}.
+	{:else}&nbsp;{/if}
+{/snippet}
+{#snippet note(i)}<p class="note meta">{@render caption(i)}</p>{/snippet}
+
 <Scroller bind:index bind:progress>
 	{#snippet graphic()}
 		<div class="frame">
@@ -318,23 +338,8 @@
 				</div>
 				<p class="cue" class:visible={index === TITLE} aria-hidden="true">Scroll to begin</p>
 			</div>
-			<div class="caption meta">
-				{#if index === FAILURE || failDiv}
-					Under each cost range, the share that failed or fell short, all divisions. {#if failDiv}<span class="item"><i class="swatch tint"></i>{failDiv.name}</span>{' '}{/if}{@render failKey()}
-				{:else if index === ONE && focus}
-					{focusName} missions by inflation-adjusted cost. Each gridline is 10 times the one before. {@render failKey()}
-				{:else if index === BARS && focus}
-					Each bar is one mission’s top-10% papers a year, from its prime-mission start through {rate?.through}. A paper shared by two missions counts half for each. {@render failKey()}
-				{:else if index === CITES && citesL}
-					Each square is {dollarA} {dollarField} mission. Across: inflation-adjusted cost. Up: citations to its papers from its {fullWindowLabel}, each over its first {spell(site.fullPolicy.citationYears + 1)} years. Both log scales. {@render failKey()}
-				{:else if plotted && dollarOne}
-					Each square is {dollarA} {dollarField} mission. Across: inflation-adjusted cost. Up: citations per {money(100)} of cost. Both log scales. {@render failKey()}{#if index === DOWN || index === FLAT}{' '}<span class="item"><span class="key spend"></span>Imagined trend</span>{:else if index === FIT}{' '}<span class="item"><span class="key"></span>Best fit</span>{/if}
-				{:else if index === FITS}
-					Each band is a division. Across: inflation-adjusted cost. Up: citations per {money(100)}. Log scales. {@render failKey()} <span class="item"><span class="key"></span>Best fit</span>
-				{:else if index === CLPS && clpsIn}
-					Peer-reviewed papers from CLPS landers, running total by month since {longDate(clps.start.slice(0, 7))}.
-				{:else}&nbsp;{/if}
-			</div>
+			<!-- the CLPS caption waits for its chart to fade in -->
+			<div class="caption meta">{@render caption(index === CLPS && !clpsIn ? -1 : index)}</div>
 		</div>
 	{/snippet}
 
@@ -397,12 +402,14 @@
 			{#if focus && focusShares}
 				<p>Midsize and larger mission classes contribute the overwhelming volume of high impact papers.</p>
 				<p>On this chart, the {int(focusShares.missionsAll)} <strong>{field}</strong> missions are ordered by their cost, adjusted for inflation.</p>
+				{@render note(ONE)}
 			{/if}
 		</div></section>
 		<!-- BARS: each mission's top-10% papers a year -->
 		<section data-step data-scrub><div class="step">
 			{#if focus && focusShares && rate}
 				<p>Each bar is a mission’s average yearly output of high impact papers, counting every paper from the start of its prime mission through {rate.through}.</p>{#if tallest}<p>{tallest.name} produced the most: about {weight(tallest.perYear)} <strong>top-10% papers</strong> a year.</p>{/if}
+				{@render note(BARS)}
 			{/if}
 		</div></section>
 		<!-- FLOORS: the same yearly rate for every compared division, a band each on the lanes' cost axis -->
@@ -418,6 +425,7 @@
 				<p>Here each {dollarField} mission is placed by its cost and by how often its papers were cited.</p>
 				{#if citesTimes}<p><strong>Costlier missions drew more citations:</strong> a mission that cost 10 times as much drew about {citesTimes} as many.</p>{/if}
 				<p>They cost more, too. To compare what each dollar bought, we divide each mission’s citations by its cost: <strong>citations per dollar</strong>.</p>
+				{@render note(CITES)}
 			{/if}
 		</div></section>
 		<!-- SCATTER, DOWN, FLAT and FIT always render, so later steps keep their numbers; with no DOLLAR_DIVISION fit they're blank -->
@@ -425,41 +433,48 @@
 		<section data-step><div class="step">
 			{#if dollarFit}
 				<p>Here, each {dollarField} mission is placed by its cost and by the citations it drew for every {moneyWords(100)}.</p>
+				{@render note(SCATTER)}
 			{/if}
 		</div></section>
 		<!-- DOWN: the line the missions would follow if small ones got more for their money -->
 		<section data-step><div class="step">
 			{#if dollarFit}
 				<p>If small missions had greater productivity for their money, the trend line would slope downward.</p>
+				{@render note(DOWN)}
 			{/if}
 		</div></section>
 		<!-- FLAT: the same line swings flat, for missions that got the same per dollar whatever their size -->
 		<section data-step data-scrub><div class="step">
 			{#if dollarFit}
 				<p>If size made no difference, the line would be flat: overall citations per dollar would be the same.</p>
+				{@render note(FLAT)}
 			{/if}
 		</div></section>
 		<!-- FIT: the best fit takes the flat line's place and swings up off it -->
 		<section data-step data-scrub><div class="step">
 			{#if dollarFit}
 				<p>The best-fit line through the {spell(dollarFit.missions)} {dollarField} missions with citations is <strong class="neptuneBlue">{direction(dollarFit)}</strong>.{#if firm(dollarFit)}{' '}More expensive missions, on average, resulted in more citations per dollar.{/if}</p>
+				{@render note(FIT)}
 			{/if}
 		</div></section>
 		<!-- FITS: every compared division's missions and best fit, one band each -->
 		<section data-step><div class="step">
 			<p>The overall trendlines show a modestly positive relationship between cost and citations per dollar across all four major divisions.</p>
+			{@render note(FITS)}
 		</div></section>
 		<!-- FAILURE: every division's missions by cost tier, up if they met their goals, down if they failed or fell short -->
 		<section data-step><div class="step">
 			{#if failure.higher === 'under'}<p>Cheaper missions fail more often than more expensive ones.</p>{/if}
 			<p>Of the {int(failure.under.missions)} costing {moneyWords(story.referenceCost)} or less, {int(failure.under.failed)} (about {whole(failure.under.rate)}) failed or fell short of their goals. More expensive missions failed {spell(failure.over.failed)} times (about {whole(failure.over.rate)}).</p>
 			<p>Failure rates vary across NASA's science divisions.</p>
+			{@render note(FAILURE)}
 		</div></section>
 		<!-- FAIL_BY…: the same chart, one division's squares washed per step -->
-		{#each failByDivision as f (f.slug)}
+		{#each failByDivision as f, k (f.slug)}
 			<section data-step><div class="step">
 				<p>{f.all.short ? upperFirst(spell(f.all.short)) : 'None'} out of {spell(f.all.missions)} <strong class="neptuneBlue">{f.name}</strong> missions failed or fell short of {f.all.short === 1 ? 'its' : 'their'} goals.</p>
 				{#if f.note}<p><strong>Below {edgeWords(FAIL_NOTE.edge)}, {f.name}</strong> {f.below.short} out of {spell(f.below.missions)} failed.</p>{/if}
+				{@render note(FAIL_BY + k)}
 			</div></section>
 		{/each}
 		<!-- TIME_FORM: years to a first top-10% paper, counted from the start of formulation -->
@@ -475,7 +490,8 @@
 		<!-- CLPS -->
 		<section data-step data-scrub><div class="step">
 			<p>NASA's <strong>Commercial Lunar Payload Services</strong> program purchases space on commercial lunar landers for science instruments.</p>
-			{#if clps.comparison}<p>The first mission launched in {clps.start.slice(0, 4)}, to recent to evaluate scientific impact through citations. So instead, we looked at scientific productivity.</p><p>In the {clps.comparison.month} months since the first attempt, {landers === clps.missions.length ? spell(landers) : `the ${spell(landers)}`} <strong>{int(clps.comparison.clps)} peer-reviewed papers</strong>{#if clpsCost != null && landers === clps.missions.length} were published{/if}.</p>{/if}
+			{#if clps.comparison}<p>The first mission launched in {clps.start.slice(0, 4)}, too recent to evaluate scientific impact through citations. So instead, we looked at scientific productivity.</p><p>In the {clps.comparison.month} months since the first attempt, <strong>{int(clps.comparison.clps)} peer-reviewed papers</strong> were published.</p>{/if}
+			{@render note(CLPS)}
 		</div></section>
 		<!-- CLPS_COMPARE -->
 		<section data-step data-scrub><div class="step">
@@ -500,23 +516,31 @@
 	.stage { position: relative; flex: 1; min-height: 0; width: 100%; }
 	/* a sideways finger skims the columns; an upward one still scrolls the page */
 	.stage.skimming { touch-action: pan-y; }
-	/* a fixed height (the longest caption: three 16px lines, five on a phone), so the stage's H, and
-	   every layout built from it, stays put from step to step whatever the caption says */
+	/* a fixed height (the longest caption: three 16px lines), so the stage's H, and every layout built
+	   from it, stays put from step to step whatever the caption says */
 	.caption { height: 62px; padding-block: 10px 4px; }
-	@media (max-width: 600px) { .caption { height: 94px; } }
+	/* Phones (Scroller's pinned graphic): the caption moves to the foot of its step's box, so the stage
+	   has the graphic's whole height and no empty caption band opens between chart and text */
+	.note { display: none; }
+	@media (max-width: 860px) {
+		.caption { display: none; }
+		.step .note { display: block; }
+		/* the box's --panel fill drops Neptune emphasis to 4.2:1; a quarter of --neptune-mid lifts it past 5:1 */
+		section:not([data-bleed]) > .step :global(.neptuneBlue) { color: color-mix(in srgb, var(--neptune) 75%, var(--neptune-mid)); }
+	}
 	/* legend swatches inline in the caption, drawn from the same .mark-* classes as the squares */
-	.caption :global(.swatch) { display: inline-block; width: 11px; height: 11px; margin: 0 5px -1px 10px; }
-	.caption :global(.swatch:first-child) { margin-left: 0; }
+	:is(.caption, .note) :global(.swatch) { display: inline-block; width: 11px; height: 11px; margin: 0 5px -1px 10px; }
+	:is(.caption, .note) :global(.swatch:first-child) { margin-left: 0; }
 	/* a key entry never wraps between its swatch and its label */
-	.caption :global(.item) { white-space: nowrap; }
-	.caption :global(.item .swatch) { margin-left: 10px; }
+	:is(.caption, .note) :global(.item) { white-space: nowrap; }
+	:is(.caption, .note) :global(.item .swatch) { margin-left: 10px; }
 	.key { display: inline-block; width: 18px; margin: 0 5px 4px 10px; border-top: 2px solid var(--neptune); }
 	.key:first-child { margin-left: 0; }
 	.item > .key { margin-left: 10px; }
 	.key.spend { border-top: 1px dashed var(--dust); }
 	/* the solid square has no edge of its own; on black it needs one to read as a swatch */
 	/* the FAIL_BY steps' division: the squares' wash, and its name in the text */
-	.caption :global(.swatch.tint) { background: var(--neptune); }
+	:is(.caption, .note) :global(.swatch.tint) { background: var(--neptune); }
 	/* TIME_FORM/TIME_SCI: the Analysis page's time bars, centred on the stage */
 	.time-panel { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; opacity: 0; transition: opacity 400ms linear; pointer-events: none; }
 	.time-panel.visible { opacity: 1; }

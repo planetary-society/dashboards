@@ -225,13 +225,17 @@
 		filter: grayscale(1);
 	}
 
+	/* one unbreakable box, so "Partial success" never splits its border across two lines */
 	.tag {
-		margin-left: 8px;
-		padding: 0 6px;
+		display: inline-block;
+		margin-left: 6px;
+		padding: 0 4px;
 		border: 1px solid var(--flame);
 		color: var(--flame);
-		font-size: 12px;
-		line-height: 18px;
+		font-size: 11px;
+		line-height: 14px;
+		white-space: nowrap;
+		vertical-align: 1px;
 	}
 
 	/* cost and launch year under the name, once their own columns are gone */
@@ -291,6 +295,13 @@
 
 		.sub {
 			display: block;
+		}
+
+		/* the tag gets its own line under the name, left-aligned like the cost line below it */
+		.tag {
+			display: block;
+			width: fit-content;
+			margin: 3px 0;
 		}
 
 		thead th {

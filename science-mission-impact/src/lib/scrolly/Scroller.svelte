@@ -191,12 +191,15 @@
 		padding-block: 48px;
 	}
 
-	/* Phones: graphic pinned on top, steps pass beneath it as solid black bands. */
+	/* Phones: graphic pinned on top, each step's text a highlighted box that rides up beneath it and
+	   holds just under it. No rule between them: the box's own edge does that job. */
 	@media (max-width: 860px) {
 		.scroller {
 			/* the text leaves under the pinned graphic rather than the nav */
 			--graphic-h: 50vh;
-			--step-gap: calc(100vh - var(--nav-h) - var(--graphic-h) - 28px);
+			/* the gap between the graphic and the box holding under it */
+			--lead: 12px;
+			--step-gap: calc(100vh - var(--nav-h) - var(--graphic-h) - var(--lead));
 			display: block;
 			padding-inline: 0;
 		}
@@ -207,20 +210,30 @@
 			padding: 8px 8px 0;
 			background: var(--black);
 			z-index: 2;
-			border-bottom: 1px solid var(--shadow);
 		}
 
 		.steps :global([data-step]) {
 			/* a step too long for the hold scrolls normally (the safety net above) */
 			min-height: 90vh;
 			min-height: 90svh;
-			padding: 28px var(--gutter) 0;
-			background: var(--black);
+			padding: var(--lead) 12px 0;
+		}
+
+		/* the site's highlighted block (--panel, Neptune left rule); a full-bleed step's text already
+		   sits in its own panel over the photo, and a step left blank shows no empty box */
+		.steps :global([data-step]:not([data-bleed]) > :first-child) {
+			padding: 16px 18px;
+			background: var(--panel);
+			border-left: 2px solid var(--neptune);
+		}
+
+		.steps :global([data-step] > :first-child:empty) {
+			display: none;
 		}
 
 		/* holds just under the pinned graphic */
 		.steps :global([data-step] > :first-child) {
-			top: calc(var(--nav-h) + var(--graphic-h) + 28px);
+			top: calc(var(--nav-h) + var(--graphic-h) + var(--lead));
 		}
 
 		.steps :global([data-step]:last-child) {
@@ -245,7 +258,7 @@
 		@media (max-width: 860px) {
 			.scroller {
 				--graphic-h: 50svh;
-				--step-gap: calc(100svh - var(--nav-h) - var(--graphic-h) - 28px);
+				--step-gap: calc(100svh - var(--nav-h) - var(--graphic-h) - var(--lead));
 			}
 		}
 	}

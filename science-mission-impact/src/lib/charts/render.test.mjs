@@ -14,7 +14,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { compile } from 'svelte/compiler';
 import { render } from 'svelte/server';
-import { missionFactGroups, missionMeasureGroups } from '../copy/measures.js';
+import { missionFacts, missionMeasureGroups } from '../copy/measures.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const lib = join(here, '..');
@@ -58,7 +58,7 @@ async function load(name, { scope = 'full', top = 10 } = {}) {
 
 test('division timeline labels annual publications and cumulative citations and keeps missing citations explicit', async () => {
 	const Component = await load('LifetimeTimeline.svelte');
-	const body = render(Component, { props: { lifetime: {
+	const body = render(Component, { props: { series: {
 		years: [2000, 2001], papers: [2, 3], citations: [5, 7], partialFromYear: 2001,
 		citationCoverage: { status: 'incomplete', expected: 13, observed: 12, missing: 1 }
 	} } }).body;
@@ -81,8 +81,10 @@ test('affiliation map prerenders its sized frame, toggle and summary; the basema
 	// the land and the squares load when the reader nears the map; the frame already holds their space
 	assert.doesNotMatch(body, /<image/);
 	assert.match(body, /aspect-ratio: 975 \/ 610/);
-	assert.match(body, /Institutions on the most papers: NASA Goddard Space Flight Center, Maryland \(203\); JPL \(150\)\./);
-	assert.match(body, /980 of 1,508 tracked publications have an author at a US institution on this map/);
+	assert.match(body, /aria-label="[^"]*Institutions on the most papers: NASA Goddard Space Flight Center, Maryland \(203\); JPL \(150\)\./, 'the leaders, for screen readers');
+	assert.doesNotMatch(body, /<p class="readout/, 'no caption under the map');
+	assert.doesNotMatch(body, /class="tip/, 'no pop-up until a square is pointed at');
+	assert.doesNotMatch(body, /have an author at a US institution/, 'no mapped-share line under the map');
 	assert.match(body, /Loading the map/);
 	// No US author: the map opens on the world.
 	const abroad = render(Component, { props: { summary: { ...summary, us: { mapped: 0, top: [] } }, url: '/x.json' } }).body;
@@ -104,7 +106,7 @@ test('MissionTable lists every mission together, earliest launch first, and drop
 	const full = { papers: 4, citations: 30, top10: 0.5, top1: 0, status: 'available' };
 	const missions = [
 		{ id: 'b', name: 'Beta', launchYear: 2001, launchDate: '2001-11-02', type: 'Orbiter', cost: 900, size: 'over', full },
-		{ id: 'a', name: 'Alpha', launchYear: 2001, launchDate: '2001-03-20', type: 'Lander', cost: 120, size: 'under', failed: true, shortfall: true, full },
+		{ id: 'a', name: 'Alpha', launchYear: 2001, launchDate: '2001-03-20', type: 'Lander', cost: 120, size: 'under', failed: true, shortfall: true, outcome: 'Failure', full },
 		{ id: 'c', name: 'Gamma', launchYear: 1995, launchDate: '1995-06-01', type: 'Lander', cost: null, size: null, full }
 	];
 	const props = { missions, slug: 'planetary', site };
@@ -113,7 +115,7 @@ test('MissionTable lists every mission together, earliest launch first, and drop
 	const at = (name) => ranked.indexOf(`>${name}<`);
 	assert.ok(at('Gamma') < at('Alpha') && at('Alpha') < at('Beta'), 'by launch date, not year then name');
 	assert.match(ranked, /aria-sort="ascending"[^>]*>[\s\S]*?Launch/);
-	assert.match(ranked, /class="tag[^"]*">Lost</);
+	assert.match(ranked, /class="tag[^"]*">Failure</);
 	assert.match(ranked, /class="num top/);
 	const unranked = render(Component, { props: { ...props, rankable: false } }).body;
 	assert.ok(!/Top-10%/.test(unranked), 'no top-10% wording');
@@ -126,7 +128,7 @@ const spread = { mean: 12.5, median: 4, uncited: 10, i10: 30, i100: 2 };
 const scope = { papers: 80, citations: 1000, top10: 6.5, top10ShareOfDivision: 0.031, top1: 0.5, top1ShareOfDivision: 0.012, spread };
 const mission = {
 	indices: { h: 15, g: 28, m: 0.6, i100: 2, tori: 12.34, riq: 140 },
-	full: { ...scope, bounds: { start: '2004-04-01', end: '2019-10-01', status: 'available' } },
+	full: { ...scope, bounds: { start: '2004-04-01', end: '2019-10-01', status: 'available' }, indices: { h: 9, g: 14, m: 0.581 } },
 	window: { ...scope, spread: null, bounds: { start: '2004-04-01', end: '2010-07-01', status: 'available' } },
 	lifetime: { ...scope, top1: null, top1ShareOfDivision: null }
 };
@@ -135,51 +137,48 @@ const rowsOf = (html) => [...html.matchAll(/<tr>([\s\S]*?)<\/tr>/g)].map(([, r])
 	r.replace(/<span role="tooltip"[\s\S]*?<\/span>|<span class="sr-only[^"]*">[\s\S]*?<\/span>/g, '')
 		.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim());
 
-test('MeasureTable renders every measure of the selected scope and the dated lifetime indices', async () => {
+test('MeasureTable renders every measure of the selected scope, its own h, g and m, and lifetime tori and riq', async () => {
 	const Component = await load('../ui/MeasureTable.svelte');
 	const html = render(Component, { props: { groups: missionMeasureGroups(mission, 'full', site) } }).body;
 	assert.deepEqual(rowsOf(html), [
 		'Active Mission Window · papers April 1, 2004 to October 1, 2019',
-		'Tracked publicationsi80', 'Citationsi1,000', 'Mean citations per publicationi13', 'Median citations per publicationi4',
-		'Uncited publicationsi10 (13%)', 'Top-10% crediti6.5 · 3.1% of division', 'Top-1% crediti0.5 · 1.2% of division',
-		'Lifetime indices · every tracked publication to date, in any scope',
-		'h-indexi15', 'g-indexi28', 'm-index, as of September 18, 2026i0.6', 'torii12', 'riqi140'
+		'Tracked publicationsi80', 'Citationsi1,000', 'Top-10% papersi6.5', 'Top-1% papersi0.5',
+		'Citation indices',
+		'h-indexi9', 'g-indexi14', 'm-indexi0.6', 'torii12', 'riqi140'
 	]);
+	assert.match(html, /role="tooltip"[^>]*>m-index: the window’s h-index divided by the window’s length/);
 	assert.match(html, /role="tooltip"[^>]*>g-index: the largest g/);
 	assert.match(html, /role="tooltip"[^>]*>Top-10% papers: [^<]*A paper naming several missions/);
 	assert.match(html, /h-index[\s\S]*?href="\/methods\/"/, 'index hints link to the methods page itself');
 	assert.match(html, /aria-label="What is m-index\?"/);
 });
 
-test('MeasureTable renders the mission facts, both life-cycle costs, and drops what the catalog leaves blank', async () => {
-	const Component = await load('../ui/MeasureTable.svelte');
-	const meta = { status: 'Completed', type: 'Orbiter', program: 'Discovery', target: null, launchVehicle: 'Delta II', lcc: 244, cost: 538,
-		dates: { launch: '1997-08-25', scienceStart: '1997-12-12', primeEnd: '2002-09-01', missionEnd: null } };
-	assert.deepEqual(rowsOf(render(Component, { props: { groups: missionFactGroups({ meta }, site) } }).body), [
-		'Mission', 'ProgramDiscovery', 'TypeOrbiter', 'StatusCompleted', 'LaunchAugust 25, 1997 · Delta II', 'Prime missionDecember 12, 1997 to September 1, 2002',
-		'Life-cycle cost · through the prime mission, with partner contributions',
-		'As reported$244M · nominal dollars', 'Adjusted to 2025 dollarsi$538M'
-	]);
-	const lost = { ...meta, lcc: null, cost: null, dates: { launch: null, scienceStart: null, primeEnd: null, missionEnd: '1993-08-21' } };
-	const rows = rowsOf(render(Component, { props: { groups: missionFactGroups({ meta: lost }, site) } }).body);
-	assert.ok(rows.includes('Mission endAugust 21, 1993') && !rows.some((r) => /^Launch|^Prime mission/.test(r)));
-	assert.ok(rows.includes('As reported— · nominal dollars'), 'an unknown cost is a dash, never a zero');
+test('missionFacts: launch date, the prime mission by month, both life-cycle costs, and nothing the catalog leaves blank', () => {
+	const meta = { lcc: 244, cost: 538, dates: { launch: '1997-08-25', scienceStart: '1997-12-12', primeEnd: '2002-09-01', missionEnd: null } };
+	const facts = (m) => missionFacts({ meta: m }, site).map((r) => `${r.label}: ${r.value}`);
+	assert.deepEqual(facts(meta), ['Launch date: August 25, 1997', 'Prime mission: December 1997 to September 2002', 'Life-cycle cost: $244M/$538M (2025 $)']);
+	assert.ok(missionFacts({ meta }, site).at(-1).hint.text.startsWith('Life-cycle cost:'), 'the cost carries its definition');
+	assert.deepEqual(facts({ lcc: null, cost: 538, dates: { launch: null, scienceStart: null, primeEnd: null } }), ['Life-cycle cost: —/$538M (2025 $)'], 'an unknown cost is a dash, never a zero');
+	assert.deepEqual(facts({ lcc: null, cost: null, dates: { launch: null, scienceStart: '1997-12-12', primeEnd: null } }), []);
 });
 
-test('MeasureTable leaves top 1% out of the lifetime scope', async () => {
+test('MeasureTable leaves top 1% out of the lifetime scope and dates the lifetime m-index in its hint', async () => {
 	const Component = await load('../ui/MeasureTable.svelte');
-	const rows = rowsOf(render(Component, { props: { groups: missionMeasureGroups(mission, 'lifetime', site) } }).body);
+	const html = render(Component, { props: { groups: missionMeasureGroups(mission, 'lifetime', site) } }).body;
+	const rows = rowsOf(html);
 	assert.equal(rows[0], 'Lifetime');
-	assert.ok(rows.includes('Top-1% crediti— · Active Mission Window only'));
+	assert.ok(!rows.some((r) => r.startsWith('Top-1%')), 'no top-1% row');
+	assert.deepEqual(rows.slice(-5), ['h-indexi15', 'g-indexi28', 'm-indexi0.6', 'torii12', 'riqi140']);
+	assert.match(html, /role="tooltip"[^>]*>m-index: [^<]*as of September 18, 2026/);
 });
 
-test('MeasureTable says when a scope was not measured and still shows the lifetime indices', async () => {
+test('MeasureTable says when a scope was not measured and still lists the citation indices', async () => {
 	const Component = await load('../ui/MeasureTable.svelte');
-	const sparse = { ...mission, full: { ...mission.full, spread: null }, indices: { h: 3, g: null, m: null, i100: 0, tori: null, riq: null } };
+	const sparse = { ...mission, full: { ...mission.full, spread: null, indices: null }, indices: { h: 3, g: null, m: null, i100: 0, tori: null, riq: null } };
 	assert.deepEqual(rowsOf(render(Component, { props: { groups: missionMeasureGroups(sparse, 'full', site) } }).body), [
 		'Active Mission Window', 'Not available for this view.',
-		'Lifetime indices · every tracked publication to date, in any scope',
-		'h-indexi3', 'g-indexi—', 'm-index, as of September 18, 2026i—', 'torii—', 'riqi—'
+		'Citation indices',
+		'h-indexi—', 'g-indexi—', 'm-indexi—', 'torii—', 'riqi—'
 	]);
 });
 
@@ -193,8 +192,7 @@ test('ScopeSwitch prerenders the active window and lifetime, short forms, the pr
 	assert.equal(html.match(/role="tooltip"/g).length, 2);
 	assert.match(html, /through three years after the mission ends\. Citations are counted through the third calendar year/);
 	assert.match(html, /Every tracked publication to date, with every citation to date\./);
-	assert.ok(html.includes('href="/methods/#full-window"'));
+	assert.equal(html.match(/href="\/methods\/#windows"/g).length, 2, 'both scopes’ hints link to the windows section');
 	assert.ok(!html.includes('href="/methods/#early-window"'));
-	assert.ok(html.includes('href="/methods/"'));
 	assert.ok(!html.includes('href="/methods/#high-impact"'));
 });

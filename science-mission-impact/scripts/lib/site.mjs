@@ -6,6 +6,7 @@
  * the same inputs always give the same bytes.
  */
 
+import { buildAnalysis } from './analysis.mjs';
 import { buildDiscussion, divisionFacts } from './public.mjs';
 import { byText } from './util.mjs';
 
@@ -47,12 +48,16 @@ export function buildSite({
 	papersDistinct,
 	citationsDistinct,
 	yearCohortMinN,
-	clps = null,
-	kinds = null
+	clps = null
 }) {
 	const launchYears = indexEntries.map((e) => e.launchYear).filter((y) => y !== null);
 	const pubYearPairs = divisionSummaries.map((d) => d.publicationYears).filter(Boolean);
 	const attribution = snapshot.attribution ?? {};
+	const story = buildDiscussion(divisionDocs, {
+		thresholdCost: config.thresholdCost,
+		focusDivision: config.storyDivision ?? null,
+		rateEnd: snapshot.dataEnd
+	});
 
 	const site = {
 		asOf: snapshot.asOf,
@@ -80,13 +85,17 @@ export function buildSite({
 			missionMetadataSource: attribution.mission_metadata_source ?? ''
 		},
 		filters: snapshot.filters,
-		story: buildDiscussion(divisionDocs, {
-			thresholdCost: config.thresholdCost,
-			focusDivision: config.storyDivision ?? null
-		}),
+		story,
 		divisionFacts: divisionFacts(divisionDocs, { thresholdCost: config.thresholdCost }),
 		clps,
-		kinds
+		// The Analysis page reads the story's focus division, so the two are null together.
+		analysis: buildAnalysis(divisionDocs, {
+			thresholdCost: config.thresholdCost,
+			costTiers: config.analysis.costTiers,
+			costGroups: config.analysis.costGroups,
+			focusDivision: story.focusDivision,
+			divisions: config.divisions
+		})
 	};
 	return site;
 }

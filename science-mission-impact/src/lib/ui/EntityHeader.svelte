@@ -1,7 +1,7 @@
 <script>
-	// Header shared by division and mission pages: the name, then one sentence of facts.
-	/** second: an optional quieter line under it, already assembled — secondary measures, no emphasis. */
-	let { name, crumb = null, thumb = null, children, second = null } = $props();
+	// Header shared by division and mission pages: the name, then one sentence of facts when given.
+	/** second: an optional quieter line under it, already assembled, no emphasis. rule: the closing hairline. */
+	let { name, crumb = null, thumb = null, children, second = null, rule = true } = $props();
 </script>
 
 <header class="entity">
@@ -12,9 +12,9 @@
 		{#if thumb}<img src={thumb} alt="" width="64" height="64" />{/if}
 		<h1 class="page-name">{name}</h1>
 	</div>
-	<p class="fact">{@render children()}</p>
+	{#if children}<p class="fact">{@render children()}</p>{/if}
 	{#if second}<p class="second">{second}</p>{/if}
-	<hr class="rule" />
+	{#if rule}<hr class="rule" />{/if}
 </header>
 
 <style>

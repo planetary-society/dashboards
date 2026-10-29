@@ -3,7 +3,8 @@
 // No DOM, no Svelte: the scrolly and the preview image render from these.
 
 import { scaleLinear, scaleLog, scaleSqrt } from 'd3-scale';
-import { byCostThenId, decadeTicks, stackLevels, stepAfterPath } from '../charts/costaxis.js';
+import { byCostThenId, costDomain, decadeTicks, stackLevels } from '../charts/costaxis.js';
+import { inTier } from '../data/public.js';
 import { curveFacts, curveChart } from '../charts/costcurve.js';
 import { perDollarLayout, trendLine, rowGutter, rowLabel } from '../charts/perdollar.js';
 
@@ -176,16 +177,39 @@ export function skylineHit(sky, px, py) {
 }
 
 /**
+ * The bar under a pointer on the division lanes (costLayout): in the band the pointer is over, the
+ * mission with top-10% papers whose bar is nearest by x, within `reach` px. Null between bands or
+ * where no bar is in reach.
+ */
+export function laneHit(lanes, px, py, reach = 12) {
+	const row = lanes.rows.find((r) => py >= r.y && py < r.y + r.h);
+	let best = null;
+	let dist = reach;
+	for (const t of row?.members ?? []) {
+		if (!(t.top10PerYear > 0)) continue;
+		const d = Math.abs(lanes.x(t.cost) - px);
+		if (d <= dist) [best, dist] = [t, d];
+	}
+	return best?.id ?? null;
+}
+
+/** A yearly-rate scale's top: the first multiple of 10 above the highest of the tiles' `top10PerYear`. */
+export const rateTop = (tiles) => (Math.floor(Math.max(0, ...tiles.map((t) => t.top10PerYear ?? 0)) / 10) + 1) * 10;
+
+/**
  * The bins dissolve: division rows stay, and each square sits at its own cost on one log axis,
  * rising where neighbours would overlap. The space above each shelf carries that division's
- * running share of top papers (see costCurve), read against the same x.
+ * missions' top-10% papers a year as bars, up to the row's own `rateTop`, against the same x.
+ * `titled` keeps a strip over the lanes for the chart's title, as perDollarLayout's does; on a
+ * phone it holds two lines, since LanesChart breaks its title there.
  */
-export function costLayout(tiles, W, H, { divisions }) {
+export function costLayout(tiles, W, H, { divisions, titled = false }) {
 	const compact = W < 600;
 	const left = rowGutter(W);
 	const right = compact ? 8 : 24;
-	const top = compact ? 22 : 28;
-	const bottom = compact ? 4 : 6;
+	// the cost labels sit under the lanes, in the bottom margin
+	const top = (compact ? 4 : 6) + (titled ? (compact ? 38 : 28) : 0);
+	const bottom = compact ? 22 : 28;
 	const rh = (H - top - bottom) / divisions.length;
 	const nameH = compact ? 18 : 0;
 	const figuresH = compact ? 15 : 22;
@@ -194,10 +218,9 @@ export function costLayout(tiles, W, H, { divisions }) {
 	const gap = 1;
 	const lift = 2;
 
-	const costs = tiles.map((t) => t.cost).filter((c) => c > 0);
-	// a little air either side of the data; ticks are the decades that fall inside
+	// ticks are the decades that fall inside
 	const x = scaleLog()
-		.domain(costs.length ? [Math.min(...costs) * 0.8, Math.max(...costs) * 1.25] : [1, 10])
+		.domain(costDomain(tiles))
 		.range([left + s, W - right - s]);
 
 	// one pass to bucket the costed missions by division, rather than a filter per row
@@ -223,29 +246,13 @@ export function costLayout(tiles, W, H, { divisions }) {
 			h: rh,
 			band: r % 2 === 1,
 			shelfY,
-			curveTop: y + nameH + padTop
+			curveTop: y + nameH + padTop,
+			// the rates step's own scale for this division's bars, shelf to curveTop
+			rateTop: rateTop(members)
 		};
 	});
 
 	return { pos, x, rows, ticks: decadeTicks(...x.domain()), left, top, bottomY: top + divisions.length * rh };
-}
-
-/**
- * One division's missions in cost order with running shares of its top papers and of its
- * spending: the step lines the cost layout draws. `members` is a costLayout row's own list, so
- * the line and the squares under it can never fall out of step. share: (tile) => share of
- * division top papers.
- */
-export function costCurve(members, share) {
-	const costTotal = members.reduce((sum, t) => sum + t.cost, 0);
-	const topTotal = members.reduce((sum, t) => sum + (share(t) ?? 0), 0);
-	let cost = 0;
-	let top = 0;
-	return members.map((t) => {
-		cost += t.cost;
-		top += share(t) ?? 0;
-		return { id: t.id, cost: t.cost, topShare: topTotal ? top / topTotal : 0, costShare: cost / costTotal };
-	});
 }
 
 /**
@@ -258,169 +265,79 @@ export function innerSide(share, maxShare, floor) {
 }
 
 /**
- * Paper kinds for the missions at or under the threshold: one row per mission with papers (a
- * square, then its bar), in the given order; missions without papers in a strip underneath.
+ * Mission outcomes by cost tier, every division pooled: a column per tier (`tiers`, lo < cost <= hi,
+ * the Analysis page's own), each a block of squares several wide. Missions that met their goals
+ * stack up from the zero line, those that failed or fell short (`tile.shortfall`) hang below it;
+ * both grouped by division (slug order, Site.divisions'), so a division the story highlights is one
+ * block in each column, outright failures before partial outcomes, then cheapest first. The block
+ * width and square size are picked together for the largest squares that fit.
  */
-export function kindsLayout(missions, W, H, { compact = false } = {}) {
-	const rowIds = missions.filter((m) => m.papers > 0).map((m) => m.id);
-	const emptyIds = missions.filter((m) => !(m.papers > 0)).map((m) => m.id);
-	const headH = compact ? 56 : 44;
-	const gap = compact ? 2 : 3;
-	const left = compact ? 6 : 24;
-	const nameW = compact ? 88 : 110; // "Lunar Prospector" whole at the 9–10px a phone row gets
-	const valueW = compact ? 30 : 44;
-	const right = compact ? 6 : 24;
-	const x = left + nameW + 8;
-	const label = 16;
-	const n = Math.max(1, rowIds.length);
-
-	const fit = (lines) => {
-		const sh = emptyIds.length ? 8 + label + lines * 30 : 0; // first guess at the largest square
-		const pitch0 = clamp(Math.floor((H - headH - sh) / n), 10, 30);
-		const s0 = pitch0 - gap;
-		const stripH = emptyIds.length ? 8 + label + lines * (s0 + gap) : 0;
-		const pitch = clamp(Math.floor((H - headH - stripH) / n), 10, 30);
-		const s = pitch - gap;
-		const barX = x + s + 8;
-		const perLine = Math.max(1, Math.floor((W - right - barX + gap) / (s + gap)));
-		return { pitch, s, barX, perLine, lines: Math.ceil(emptyIds.length / perLine) || 1 };
-	};
-	let g = fit(1);
-	if (g.lines > 1) g = fit(g.lines); // recompute once
-	const { pitch, s, barX, perLine } = g;
-	const barW = W - barX - valueW - right;
-
-	const pos = new Map();
-	const rows = rowIds.map((id, i) => {
-		const y = headH + i * pitch;
-		pos.set(id, { x, y, s });
-		return { id, y, h: s };
-	});
-	let strip = null;
-	if (emptyIds.length) {
-		const y = headH + rowIds.length * pitch + 8 + label;
-		emptyIds.forEach((id, i) => pos.set(id, { x: barX + (i % perLine) * (s + gap), y: y + Math.floor(i / perLine) * (s + gap), s }));
-		strip = { y, ids: emptyIds };
-	}
-	return { rows, pos, s, pitch, headH, left, nameW, barX, barW, valueW, valueX: barX + barW + 6, strip, fontPx: clamp(s - 2, 9, 12) };
-}
-
-/**
- * One mission's square at the top left, its paper list underneath. On a phone the rows have
- * fixed pitches, `row` for a faded one-line paper and `hit` for a highlighted one (two-line
- * title and its meta line), which KindExample applies, so a list's height is known here.
- */
-export function exampleLayout(id, W, H, { compact = false } = {}) {
-	const s = compact ? 36 : 64;
-	const x = compact ? 6 : 24;
-	const y = compact ? 6 : 16;
-	const rows = compact ? { row: 24, hit: 54 } : {};
-	return { pos: new Map([[id, { x, y, s }]]), s, left: x, top: y, headRight: x + s + (compact ? 10 : 12), listY: y + s + (compact ? 8 : 22), ...rows };
-}
-
-/**
- * Icon arrays side by side, one per group: the same square size and the same number of rows,
- * so each block is as wide as its count is large. `groups` in display order, each with its ids
- * in reading order. The blocks sit `headH` below the top of the stage, which their labels use;
- * the whole is centred vertically when the stage has room to spare.
- */
-export function splitLayout(W, H, groups, { headH }) {
+export function tierOutcomeLayout(tiles, tiers, W, H) {
 	const compact = W < 600;
-	const pad = compact ? 4 : 24;
-	const gapX = compact ? 20 : 56;
-	const gap = compact ? 2 : 3;
-	const availW = W - pad * 2 - gapX * (groups.length - 1);
-	const availH = H - headH - pad;
-	let best = { pitch: 0, rows: 1, cols: groups.map((g) => g.ids.length) };
-	for (let rows = 1; rows <= Math.max(1, ...groups.map((g) => g.ids.length)); rows++) {
-		const cols = groups.map((g) => Math.max(1, Math.ceil(g.ids.length / rows)));
-		const pitch = Math.floor(Math.min(availW / cols.reduce((a, b) => a + b, 0), availH / rows));
-		if (pitch > best.pitch) best = { pitch, rows, cols };
+	const pad = compact ? 4 : 16;
+	const axis = compact ? 16 : 22; // a gutter left of the columns for the Success/Failure labels
+	const padTop = compact ? 28 : 38; // the title's strip, then air over the tallest stack
+	const footH = 52; // under each column: its cost range (two lines on a phone) and failure rate
+	const mid = compact ? 6 : 10; // between the up and down stacks, where the zero line runs
+	const gap = compact ? 1 : 2;
+	const colW = (W - pad * 2 - axis) / tiers.length;
+	const inner = colW - (compact ? 6 : 16); // air between neighbouring tiers
+	const order = (a, b) => a.division.localeCompare(b.division) || (a.failed ? 0 : 1) - (b.failed ? 0 : 1) || byCostThenId(a, b);
+	const columns = tiers.map(({ lo, hi }) => {
+		const members = tiles.filter((t) => inTier({ lo, hi }, t.cost)).sort(order);
+		return { lo, hi, up: members.filter((t) => !t.shortfall), down: members.filter((t) => t.shortfall) };
+	});
+	const avail = H - padTop - footH - mid;
+	// the deepest stack on each side, in rows, at `per` squares wide
+	const rowsFor = (per, side) => Math.max(...columns.map((c) => Math.ceil(c[side].length / per)));
+	let best = { s: 0, per: 1 };
+	for (let per = 2; per <= 8; per++) {
+		const rows = rowsFor(per, 'up') + rowsFor(per, 'down');
+		const s = Math.floor(Math.min((inner + gap) / per, (avail + gap * 2) / Math.max(1, rows))) - gap;
+		if (s > best.s) best = { s, per };
 	}
-	const pitch = Math.min(best.pitch, compact ? 32 : 52);
-	const s = pitch - gap;
-	const widths = best.cols.map((c) => c * pitch - gap);
-	const blockH = best.rows * pitch - gap;
-	const y = headH + Math.max(0, Math.floor((availH - blockH) / 2));
-	let x = Math.round((W - widths.reduce((a, b) => a + b, 0) - gapX * (groups.length - 1)) / 2);
+	const { per } = best;
+	const s = Math.min(best.s, compact ? 16 : 32);
+	const pitch = s + gap;
+	const upRows = rowsFor(per, 'up');
+	const downRows = rowsFor(per, 'down');
+	const blockH = (upRows + downRows) * pitch - gap * 2 + mid;
+	// stacks and footers kept together, the group centred on the stage
+	const top = Math.round(padTop + Math.max(0, (avail + mid - blockH) / 2));
+	const zeroY = top + upRows * pitch - gap + mid / 2;
 	const pos = new Map();
-	const blocks = groups.map((g, i) => {
-		const cols = best.cols[i];
-		g.ids.forEach((id, k) => pos.set(id, { x: x + (k % cols) * pitch, y: y + Math.floor(k / cols) * pitch, s }));
-		const block = { key: g.key, x, y, w: widths[i], h: blockH, n: g.ids.length };
-		x += widths[i] + gapX;
-		return block;
+	const cols = columns.map((c, i) => {
+		const cx = pad + axis + colW * (i + 0.5);
+		const x0 = Math.round(cx - (per * pitch - gap) / 2);
+		c.up.forEach((t, k) => pos.set(t.id, { x: x0 + (k % per) * pitch, y: zeroY - mid / 2 - (Math.floor(k / per) + 1) * pitch + gap, s }));
+		c.down.forEach((t, k) => pos.set(t.id, { x: x0 + (k % per) * pitch, y: zeroY + mid / 2 + Math.floor(k / per) * pitch, s }));
+		return { lo: c.lo, hi: c.hi, cx, x: pad + axis + colW * i, w: colW, ok: c.up.length, short: c.down.length };
 	});
-	return { pos, s, blocks, headH };
+	// top: where the tallest stack starts; footY: under the deepest, over the footers
+	return { pos, zeroY, cols, left: pad + axis, right: W - pad, top, footY: top + blockH };
 }
 
 /**
- * Small against larger missions in each compared division, as two stacked panels of shares on
- * one 0–100% scale: those that failed or fell short (failure.byDivision) and those that had a
- * top-10% paper (comparison.byDivision; a failure counts as none). One row per division, in the
- * order given, in both panels. Each side is { v, x, n, of }, null where it has no missions; a
- * small side also carries `label`, its count placed on the side away from its dot unless that
- * would run into the names (width estimated per character).
- */
-export function varyLayout(story, divisions, W, H, { compact = false } = {}) {
-	const left = compact ? 84 : 156;
-	const right = compact ? 34 : 56; // room for a ring's label at 100%
-	const titleH = compact ? 22 : 30;
-	const axisH = compact ? 16 : 20;
-	const gapH = compact ? 12 : 28;
-	const r = compact ? 5 : 6;
-	const x = scaleLinear().domain([0, 1]).range([left, W - right]);
-	const side = (g, count) => (g && g.missions > 0 ? { v: count(g) / g.missions, x: x(count(g) / g.missions), n: count(g), of: g.missions } : null);
-	const label = (u, o) => {
-		const text = `${u.n}/${u.of}`;
-		const before = o && o.x > u.x && u.x - r - 4 - text.length * 6 > left;
-		return { text, x: before ? u.x - r - 4 : u.x + r + 4, anchor: before ? 'end' : 'start' };
-	};
-	const rowsOf = (list, count) =>
-		divisions.map((d) => {
-			const row = list.find((e) => e.division === d.slug);
-			const under = side(row?.under, count);
-			const over = side(row?.over, count);
-			return { slug: d.slug, label: compact ? d.nav : d.name, under: under && { ...under, label: label(under, over) }, over };
-		});
-	const measures = [
-		{ key: 'failed', rows: rowsOf(story.failure.byDivision, (g) => g.failed) },
-		{ key: 'reached', rows: rowsOf(story.comparison.byDivision, (g) => g.withTop) }
-	];
-	const room = (H - gapH * (measures.length - 1)) / measures.length;
-	const pitch = Math.min(compact ? 30 : 44, (room - titleH - axisH) / divisions.length);
-	// the panels sit together, the pair centred on the stage
-	const h = titleH + pitch * divisions.length + axisH;
-	const y0 = Math.max(0, (H - h * measures.length - gapH * (measures.length - 1)) / 2);
-	const ticks = (compact ? [0, 0.5, 1] : [0, 0.25, 0.5, 0.75, 1]).map((v) => ({ v, x: x(v) }));
-	const panels = measures.map((m, i) => {
-		const top = y0 + i * (h + gapH) + titleH;
-		return { key: m.key, top, axisY: top + pitch * divisions.length, ticks, rows: m.rows.map((row, k) => ({ ...row, y: top + (k + 0.5) * pitch })) };
-	});
-	return { panels, left, right: W - right, pitch, r };
-}
-
-/**
- * One division's running total of top-10% papers on the cost axis (curveChart), sized to fill
- * the stage. Each bar is the mission's own packaged credit (`tile.top10`). Squares hang in the
- * rug under the cost axis.
+ * One division's top-10% papers a year on the cost axis (curveChart), sized to fill the stage.
+ * Given the same tiles as costLayout it spans the lanes' costs. Each bar is the mission's own
+ * packaged rate (`tile.top10PerYear`); the scale runs to `rateTop`. Squares hang in the rug
+ * under the cost axis.
  */
 export function focusLayout(tiles, W, H, { division }) {
 	const members = tiles.filter((t) => t.division === division && t.cost > 0).sort(byCostThenId);
 	const facts = curveFacts(
 		{ points: members.map((t) => ({ id: t.id, cost: t.cost })) },
-		members.map((t) => ({ id: t.id, name: t.name, full: { top10: t.top10 ?? 0 } })),
+		members.map((t) => ({ id: t.id, name: t.name, full: { top10: t.top10PerYear ?? 0 } })),
 		'full',
 		10
 	);
 	const options = W < 600
-		? { padTop: 40, mark: 9, gap: 2, gutter: 36, rightPad: 10, axisH: 22 }
+		? { padTop: 55, mark: 9, gap: 2, gutter: 36, rightPad: 10, axisH: 22 } // room for FocusChart's two-line title
 		: { padTop: 56, mark: 15, gap: 2, gutter: 52, rightPad: 24, axisH: 26 };
+	const domain = costDomain(tiles);
 	// the rug's depth is only known once the squares are placed: measure it, then give the plot the rest
-	const rug = curveChart(facts, W, { ...options, plotH: 100 }).height - 100;
-	const chart = curveChart(facts, W, { ...options, plotH: Math.max(80, H - rug - 6) });
-	// a closer count scale than the division page's three ticks, so the bars use the height
-	const y = scaleLinear().domain([0, facts.total || 1]).nice(6).range(chart.y.range());
-	const path = facts.hasTop ? stepAfterPath(facts.points, { x: chart.x, y, x0: chart.x0, x1: chart.x1, value: (p) => p.total, round: (n) => Math.round(n * 10) / 10 }) : null;
-	return { facts, chart: { ...chart, y, yTicks: y.ticks(6), path }, pos: new Map(chart.marks.map((m) => [m.id, { x: m.x, y: m.y, s: m.s }])) };
+	const rug = curveChart(facts, W, { ...options, plotH: 100, domain }).height - 100;
+	const chart = curveChart(facts, W, { ...options, plotH: Math.max(80, H - rug - 6), domain });
+	const y = scaleLinear().domain([0, rateTop(members)]).range(chart.y.range());
+	return { division, facts, chart: { ...chart, y, yTicks: y.ticks(4) }, pos: new Map(chart.marks.map((m) => [m.id, { x: m.x, y: m.y, s: m.s }])) };
 }

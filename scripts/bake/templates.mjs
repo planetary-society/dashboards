@@ -431,6 +431,7 @@ export const FIXED_URLS = [
     { path: '/appropriations-guide/', priority: '0.8', dated: false },
     { path: '/cancellations/districts/', priority: '0.6', dated: true },
     { path: '/science-mission-impact/', priority: '0.9', dated: false },
+    { path: '/science-mission-impact/analysis/', priority: '0.8', dated: false },
     { path: '/science-mission-impact/methods/', priority: '0.5', dated: false },
 ];
 

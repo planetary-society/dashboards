@@ -6,7 +6,6 @@
 	import Num from './Num.svelte';
 	import Hint from './Hint.svelte';
 	import { FOOTNOTES, noteText } from '$lib/copy/footnotes.js';
-	import { scopeLabel } from '$lib/copy/window.js';
 	import { methodsHref, missionHref, thumbSrc } from '$lib/paths.js';
 	import { missionsCsv } from '$lib/mission/papers.js';
 	import { downloadText } from '$lib/download.js';
@@ -43,7 +42,6 @@
 
 	const rows = $derived(sorted(missions));
 	const maxTop = $derived(Math.max(1e-9, ...missions.map((m) => m[scope].top10 ?? 0)));
-	const basis = $derived(scope === 'lifetime' ? 'Every tracked paper and citation to date.' : `Papers and citations in the ${scopeLabel(scope)}.`);
 
 	function setSort(key) {
 		sort = sort.key === key ? { key, dir: -sort.dir } : { key, dir: ['name', 'launch', 'cost'].includes(key) ? 1 : -1 };
@@ -63,7 +61,6 @@
 {/snippet}
 
 <div class="tools">
-	<p class="meta">{basis} Lost missions count as zero.</p>
 	<button type="button" class="link" onclick={downloadCsv}>Download CSV</button>
 </div>
 
@@ -75,7 +72,7 @@
 			{@render th('name', 'Mission', 'name')}
 			{@render th('launch', 'Launch', 'num wide')}
 			{@render th('type', 'Type', 'type wide')}
-			{@render th('cost', 'Cost', 'num mid', ['cost'])}
+			{@render th('cost', `LCC (${site.costBaseYear} $)`, 'num mid', ['cost'])}
 			{@render th('papers', 'Publications', rankable ? 'num mid' : 'num', ['publications'])}
 			{@render th('citations', 'Citations', 'num', ['citations'])}
 			{#if rankable}{@render th('top', 'Top-10% papers', 'num top', ['top10', 'shared'])}{/if}
@@ -89,7 +86,7 @@
 					{#if m.hasThumb}<img src={thumbSrc(m.id)} alt="" width="32" height="32" loading="lazy" />{:else}<span class="blank"></span>{/if}
 				</td>
 				<td class="name">
-					<a href={missionHref(slug, m.id)}>{m.name}</a>{#if m.failed}{' '}<span class="tag">Lost</span>{:else if m.shortfall}{' '}<span class="tag">Partial</span>{/if}
+					<a href={missionHref(slug, m.id)}>{m.name}</a>{#if m.outcome}{' '}<span class="tag">{m.outcome[0] + m.outcome.slice(1).toLowerCase()}</span>{/if}
 					<span class="sub meta">{money(m.cost)}, {m.launchYear ?? '—'}</span>
 				</td>
 				<td class="num wide"><Num value={m.launchYear ?? '—'} /></td>
@@ -113,7 +110,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: baseline;
-		justify-content: space-between;
+		justify-content: flex-end;
 		gap: 8px 24px;
 		margin-bottom: 8px;
 	}
@@ -231,8 +228,8 @@
 	.tag {
 		margin-left: 8px;
 		padding: 0 6px;
-		border: 1px solid var(--outline-filled);
-		color: var(--dust);
+		border: 1px solid var(--flame);
+		color: var(--flame);
 		font-size: 12px;
 		line-height: 18px;
 	}

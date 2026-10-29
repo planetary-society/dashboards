@@ -6,8 +6,18 @@
 	import { line, curveStepAfter } from 'd3-shape';
 	import { compact as short, int, money } from '$lib/format.js';
 
-	/** clps: Site.clps (series indexed by month, null until that month has elapsed). */
-	let { clps, draw = 0, drawComparators = 0, visible = false, compact = false, width, height } = $props();
+	/** clps: Site.clps (series indexed by month, null until that month has elapsed). title: top right over the plot. */
+	let { clps, title = null, draw = 0, drawComparators = 0, visible = false, compact = false, width, height } = $props();
+
+	// a phone is too narrow for the title on one line beside the end labels: it breaks at the space
+	// nearest its middle
+	const titleLines = $derived.by(() => {
+		if (!title || !compact) return title ? [title] : [];
+		const spaces = [...title.matchAll(/ /g)].map((s) => s.index);
+		if (!spaces.length) return [title];
+		const at = spaces.reduce((p, q) => (Math.abs(q - title.length / 2) < Math.abs(p - title.length / 2) ? q : p));
+		return [title.slice(0, at), title.slice(at + 1)];
+	});
 
 	const clamp01 = (v) => Math.max(0, Math.min(1, v));
 	const a = $derived(clamp01(draw));
@@ -45,7 +55,8 @@
 	const m = $derived({
 		l: compact ? 34 : 56,
 		r: compact ? Math.min(cap, Math.max(92, fit(sideLines(names)))) : 148,
-		t: 20,
+		// a strip over the plot for the title's lines
+		t: 20 + (titleLines.length ? 15 * titleLines.length + 13 : 0),
 		b: 28
 	});
 	const lineH = $derived(compact ? 13 : 15);
@@ -81,7 +92,7 @@
 	const apart = $derived(compact ? 16 : 19);
 	const labels = $derived.by(() => {
 		let prev = -Infinity;
-		return lines
+		const placed = lines
 			.map((l) => ({ id: l.id, head: l.head, tail: l.tail, y: y(l.last.papers), opacity: l.opacity, main: l.main }))
 			.sort((p, q) => p.y - q.y)
 			.map((l) => {
@@ -89,6 +100,15 @@
 				prev = ly + (l.tail.length - 1) * lineH;
 				return { ...l, y: ly };
 			});
+		// then back up from the bottom: blocks pushed down past the plot's floor would run into the
+		// month ticks (on a phone, "33 months" reaches under the labels), so each rises as needed
+		let floor = height - m.b;
+		for (let i = placed.length - 1; i >= 0; i--) {
+			const l = placed[i];
+			l.y = Math.min(l.y, floor - (l.tail.length - 1) * lineH);
+			floor = l.y - l.head.length * lineH - apart;
+		}
+		return placed;
 	});
 	// yearly ticks, then the last month, dropping a yearly tick that would crowd it
 	const xTicks = $derived([...[0, 12, 24, 36, 48, 60].filter((t) => t < horizon - 6), horizon]);
@@ -96,6 +116,8 @@
 
 <div class="clps" class:visible class:compact aria-hidden="true">
 	<svg {width} {height}>
+		<!-- the chart's title, top right like the overview's other charts -->
+		{#each titleLines as line, i (i)}<text class="stage-title" x={width - m.r} y={m.t - 14 - (titleLines.length - 1 - i) * 15} text-anchor="end">{line}</text>{/each}
 		{#each y.ticks(4) as t (t)}
 			<line class="grid" x1={m.l} x2={width - m.r} y1={y(t)} y2={y(t)} />
 			<text class="tick" x={m.l - 8} y={y(t)} dy="0.32em" text-anchor="end">{short(t)}</text>

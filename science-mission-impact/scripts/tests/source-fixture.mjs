@@ -53,7 +53,11 @@ export function sourceFixture(rawDir, { compatible = true } = {}) {
 				cost_bin: compatible ? '< $100M' : '< $50M', window_cohort: cohort, lifetime_papers: 0, lifetime_citations: 0, window_papers: 0, window_citations: 0, window_status: 'available', window_output_basis: 'measured',
 				full_mission_cohort: { ...cohort }, full_mission_papers: 0, full_mission_citations: 0, full_mission_status: 'available', full_mission_output_basis: 'measured' }],
 			summary: { lifetime: { [division.name]: { papers: 0, citations_total: 0 } }, window: { [division.name]: { papers: 0, citations_total: 0 } }, full_mission: { [division.name]: { papers: 0, citations_total: 0 } } },
-			scopes: { lifetime: { divisions: { [division.name]: {} } }, window: { divisions: { [division.name]: {} } }, full_mission: { divisions: { [division.name]: {} } } },
+			// The full-mission pool carries its cutoffs: the Analysis page's N50 divides by the top-50% one.
+			scopes: { lifetime: { divisions: { [division.name]: {} } }, window: { divisions: { [division.name]: {} } }, full_mission: { divisions: { [division.name]: {
+				pooled: { n: 0, total: 0, cutoffs: { ks: config.tierPercents, cutoffs: config.tierPercents.map(() => 1) } },
+				pooled_cutoffs: { top_k_distinct_counts: Object.fromEntries(config.tierPercents.map((p) => [p, 0])) }
+			} } } },
 			companion_exports: { requested: { missions: true, csv: false }, missions: { [shortTitle]: ref } },
 			files: {}
 		};
@@ -94,11 +98,7 @@ export function fixtureApp(f, dir, clps = {}) {
 	const generated = path.join(APP_DIR, 'src/lib/data/generated');
 	fs.cpSync(path.join(APP_DIR, 'src/lib'), path.join(dir, 'src/lib'), { recursive: true, filter: (src) => !src.startsWith(generated) });
 	fs.symlinkSync(path.join(APP_DIR, 'node_modules'), path.join(dir, 'node_modules'));
-	// Every fixture mission is under the threshold with no papers, so an empty classification is complete.
-	const paperKinds = { file: 'data/paper-kinds.json', examples: [f.runs[0].id], smallMax: 10 };
-	fs.mkdirSync(path.join(dir, 'data'), { recursive: true });
-	fs.writeFileSync(path.join(dir, paperKinds.file), JSON.stringify({ asOf: '2026-10-02', method: 'Fixture.', papers: [] }));
-	const config = { ...f.config, paperKinds, clps: { rawDir: f.rawDir, comparators: [f.runs[0].id], horizonMonths: 3, ...clps } };
+	const config = { ...f.config, clps: { rawDir: f.rawDir, comparators: [f.runs[0].id], surface: [f.runs[0].id], horizonMonths: 3, ...clps } };
 	fs.writeFileSync(path.join(dir, 'smi.config.json'), JSON.stringify(config, null, 2));
 	return dir;
 }

@@ -98,6 +98,66 @@ export function firstTopRow(rows, weightKey, pubdates) {
 }
 
 /**
+ * h- and g-index over one scope's citation counts, by upstream's rule (it reproduces every
+ * mission's lifetime h_index and g_index): h papers with at least h citations each; g the most
+ * papers whose citations sum to at least g², counting only cited papers.
+ *
+ * @param {Iterable<number|null>} citations one count per paper
+ */
+export function hgIndex(citations) {
+	const c = [...citations].map((v) => Number(v) || 0).sort((a, b) => b - a);
+	let h = 0;
+	while (h < c.length && c[h] >= h + 1) h++;
+	let total = 0;
+	let g = 0;
+	for (let i = 0; i < c.length && c[i] > 0; i++) {
+		total += c[i];
+		if (total >= (i + 1) ** 2) g = i + 1;
+	}
+	return { h, g };
+}
+
+/**
+ * A windowed scope's h, g and m: h and g over each paper's windowed citations, m the h over the
+ * window's span in years (Casey's rule: citations stop counting a few years after each paper, so
+ * a closed window's h stops growing and its span is its length). Null without a dated window.
+ *
+ * @param {Iterable<object>} rows the scope's paper rows, each with `window_citations`
+ * @param {{start: string|null, end: string|null}|null} bounds
+ */
+export function windowIndices(rows, bounds) {
+	const years = bounds?.start && bounds?.end ? yearsBetween(bounds.start, bounds.end) : null;
+	if (!(years > 0)) return null;
+	const { h, g } = hgIndex([...rows].map((row) => row.window_citations));
+	return { h, g, m: weight(h / years) };
+}
+
+/**
+ * A mission's top-10% papers a year: the lifetime top-10% credit (each row's `top10_weight`
+ * split among the missions sharing it, as the lifetime count sums it) of the papers published
+ * from the start of science up to `end` (exclusive), divided by the years between. Null
+ * without a start date or when science starts at or after `end`; throws on a credited row with
+ * no date, as `firstTopRow` does.
+ *
+ * @param {Iterable<object>} rows the mission's lifetime paper rows
+ * @param {{start: string|null, end: string, pubdates: Map<string, string>}} span
+ */
+export function yearlyTopRate(rows, { start, end, pubdates }) {
+	const from = parseDay(start);
+	const to = parseDay(end);
+	if (from === null || to === null || !(to > from)) return null;
+	let credit = 0;
+	for (const row of rows) {
+		const w = Number(row.top10_weight);
+		if (!(w > 0)) continue;
+		const day = parseDay(pubdates.get(row.bibcode) ?? null);
+		if (day === null) throw new Error(`top-10% rate: ${row.mission} ${row.bibcode} has no publication date`);
+		if (day >= from && day < to) credit += w / (Number(row.shared_by) || 1);
+	}
+	return weight(credit / ((to - from) / 86400000 / 365.25));
+}
+
+/**
  * FirstTopPaper for one mission in one scope, from `firstTopRow`. Time runs from the start of
  * science (the prime-mission start, else launch, as upstream reads it), and again from the start
  * of formulation when that date is on record: the same paper read from when the agency

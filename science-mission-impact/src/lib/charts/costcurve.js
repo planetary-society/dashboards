@@ -33,16 +33,16 @@ export function curveFacts(curve, missions, scope, top) {
  * Geometry for one measured width. The plot proper is `plotH` tall; the cost ticks and then the
  * rug of mission marks hang below it, so the stage is as tall as the deepest stack needs.
  */
-export function curveChart(facts, width, { padTop, plotH, mark, gap, gutter, rightPad, axisH }) {
+export function curveChart(facts, width, { padTop, plotH, mark, gap, gutter, rightPad, axisH, domain = null }) {
 	if (!facts || !(width > 0)) return null;
 	const left = gutter;
 	const right = Math.max(left + mark * 4, width - rightPad);
 
 	// Half a decade of padding either side: the cheapest and dearest missions sit inside the
-	// plot rather than on its edges.
+	// plot rather than on its edges. A caller sharing another chart's cost axis passes `domain`.
 	const costs = facts.points.map((p) => p.cost);
 	const x = scaleLog()
-		.domain([Math.min(...costs) / 1.5, Math.max(...costs) * 1.5])
+		.domain(domain ?? [Math.min(...costs) / 1.5, Math.max(...costs) * 1.5])
 		.range([left + mark / 2, right - mark / 2]);
 	const [x0, x1] = x.range();
 	const y = scaleLinear()

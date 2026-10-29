@@ -62,41 +62,11 @@ export function failureItems(tiles, layout) {
 	return items;
 }
 
-/**
- * The failure step's squares, where they were and as they were marked, with every mission that
- * ever produced a top-10% paper washed blue instead (a partial outcome's stroke gives way to it).
- * A division whose papers aren't ranked against larger missions (not in `ranked`) fades where it
- * stands.
- */
-export function firstTopItems(tiles, layout, scope, ranked) {
-	const items = failureItems(tiles, layout);
+/** One division's squares washed in the highlight colour over whatever marks they carry; the rest dimmed. Edits `items` in place. */
+export function highlightDivision(items, tiles, division) {
 	for (const t of tiles) {
 		const it = items.get(t.id);
-		if (!it) continue;
-		if (!ranked.has(t.division)) it.opacity = 0.2;
-		else if (t.first[scope].state === 'reached') it.variant = 'reached';
-	}
-	return items;
-}
-
-/** Paper kinds: every placed mission solid; the strip of missions without papers dimmed. */
-export function kindsItems(tiles, layout) {
-	const empty = new Set(layout.strip?.ids ?? []);
-	const items = new Map();
-	for (const t of tiles) {
-		const p = layout.pos.get(t.id);
-		if (!p) continue;
-		items.set(t.id, empty.has(t.id) ? { ...p, variant: 'solid', opacity: 0.55 } : { ...p, variant: 'solid' });
-	}
-	return items;
-}
-
-/** The worked example: its one square, emphasised. */
-export function exampleItems(tiles, layout) {
-	const items = new Map();
-	for (const t of tiles) {
-		const p = layout.pos.get(t.id);
-		if (p) items.set(t.id, { ...p, variant: 'solid', emph: true });
+		if (it) items.set(t.id, t.division === division ? { ...it, tint: true } : { ...it, opacity: 0.25 });
 	}
 	return items;
 }

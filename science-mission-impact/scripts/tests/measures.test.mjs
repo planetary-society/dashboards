@@ -16,7 +16,10 @@ import {
 	missionTop10,
 	scopeField,
 	SCOPES,
-	WINDOWED_SCOPES
+	WINDOWED_SCOPES,
+	hgIndex,
+	windowIndices,
+	yearlyTopRate
 } from '../lib/measures.mjs';
 
 const measured = {
@@ -135,6 +138,45 @@ describe('firstTopRow', () => {
 		const tie = [{ bibcode: 'b', w: 1 }, { bibcode: 'a', w: 1 }];
 		assert.equal(firstTopRow(tie, 'w', new Map([['a', '2001-02-00'], ['b', '2001-02-00']])).bibcode, 'a');
 		assert.throws(() => firstTopRow([{ mission: 'M', bibcode: 'x', w: 1 }], 'w', new Map()), /M x has no publication date/);
+	});
+});
+
+describe('hgIndex and windowIndices', () => {
+	it('counts h papers with h citations each, and g over cited papers only (upstream’s rule)', () => {
+		assert.deepEqual(hgIndex([10, 8, 5, 4, 3]), { h: 4, g: 5 });
+		// the 0s would let g reach 4 (17 ≥ 16); upstream stops at the last cited paper
+		assert.deepEqual(hgIndex([13, 3, 1, 0, 0, 0]), { h: 2, g: 3 });
+		assert.deepEqual(hgIndex([]), { h: 0, g: 0 });
+	});
+
+	it('reads windowed citations and divides h by the window’s span; null without dates', () => {
+		const rows = [{ window_citations: 9 }, { window_citations: 4 }, { window_citations: 2 }, { window_citations: null }];
+		assert.deepEqual(windowIndices(rows, { start: '2000-01-01', end: '2004-01-01' }), { h: 2, g: 3, m: 0.5 });
+		assert.equal(windowIndices(rows, { start: null, end: '2004-01-01' }), null);
+		assert.equal(windowIndices(rows, null), null);
+	});
+});
+
+describe('yearlyTopRate', () => {
+	const rows = [
+		{ mission: 'M', bibcode: 'early', top10_weight: 1 }, // before science starts: out
+		{ mission: 'M', bibcode: 'a', top10_weight: 1 },
+		{ mission: 'M', bibcode: 'shared', top10_weight: 1, shared_by: 2 }, // half is this mission's
+		{ mission: 'M', bibcode: 'none', top10_weight: 0 },
+		{ mission: 'M', bibcode: 'late', top10_weight: 1 } // at or after `end`: out
+	];
+	const pubdates = new Map([['early', '2009-06-00'], ['a', '2011-03-00'], ['shared', '2012-00-00'], ['none', '2012-05-00'], ['late', '2013-01-00']]);
+	const end = '2013-01-01';
+
+	it('divides the credit published from the start up to the end by the years between', () => {
+		// 1.5 papers over 2010-01-01 to 2013-01-01
+		assert.equal(yearlyTopRate(rows, { start: '2010-01-01', end, pubdates }), 0.5);
+	});
+
+	it('is null without a start or when science starts at or after the end, and throws on an undated credited row', () => {
+		assert.equal(yearlyTopRate(rows, { start: null, end, pubdates }), null);
+		assert.equal(yearlyTopRate(rows, { start: '2013-06-01', end, pubdates }), null);
+		assert.throws(() => yearlyTopRate(rows, { start: '2010-01-01', end, pubdates: new Map() }), /M early has no publication date/);
 	});
 });
 

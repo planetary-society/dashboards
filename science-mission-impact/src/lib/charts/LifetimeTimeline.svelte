@@ -2,10 +2,10 @@
 	import { int, compact } from '$lib/format.js';
 	import { timelineModel, timelineLayout } from './lifetimetimeline.js';
 
-	let { lifetime } = $props();
+	let { series } = $props();
 	let width = $state(0);
 	let hover = $state(null); // index under the pointer; the latest year otherwise
-	const model = $derived(timelineModel(lifetime));
+	const model = $derived(timelineModel(series));
 	const layout = $derived(width > 0 ? timelineLayout(model, width) : null);
 	const point = $derived(model?.points[Math.min(hover ?? model.points.length - 1, model.points.length - 1)]);
 	const coverage = $derived(model?.citationCoverage);
@@ -25,15 +25,10 @@
 </script>
 
 <figure>
-	<div class="toolbar">
-		{#if model}
-			<p class="key"><span><i class="swatch pub"></i>Publications per year</span> <span><i class="swatch cite"></i>Cumulative citations</span></p>
-		{:else}
-			<p class="meta">No recorded years</p>
-		{/if}
-	</div>
 	{#if model}
 		<div class="stage" bind:clientWidth={width}>
+			<!-- the key in the plot's top-left corner, one series a line; before the width is known it assumes the wide gutter -->
+			<p class="key" style:left="{(layout?.left ?? 52) + 8}px"><span><i class="swatch pub"></i>Publications per year</span><span><i class="swatch cite"></i>Cumulative citations</span></p>
 			{#if layout}
 				{@const [pub] = layout.panels}
 				<svg {width} height={layout.height} role="img" aria-label={`Annual publication bars (left scale) and cumulative citation line (right scale) by calendar year, ${model.years[0]} to ${model.years.at(-1)}.`}>
@@ -58,9 +53,8 @@
 						<circle class="dot {panel.key}" cx={layout.x(point.year)} cy={panel.y(point[panel.key])} r="3" />
 					{/each}
 					{#each layout.xTicks as year (year)}
-						<text class="tick" x={layout.x(year)} y={layout.height - 25} text-anchor="middle">{year}</text>
+						<text class="tick" x={layout.x(year)} y={layout.height - 8} text-anchor="middle">{year}</text>
 					{/each}
-					<text class="tick" x={(layout.left + layout.right) / 2} y={layout.height - 5} text-anchor="middle">Calendar year</text>
 				</svg>
 				<input
 					class="scrub"
@@ -89,13 +83,12 @@
 
 <style>
 	figure { min-width: 0; }
-	.toolbar { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; margin-top: 12px; color: var(--dust); }
-	.toolbar p, .explanation { font-size: 14px; line-height: 1.5; }
-	.explanation { margin-top: 12px; color: var(--dust); }
-	.key { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+	.explanation { margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--dust); }
+	/* top: timelineLayout's plot top (30) plus air; a dark backing keeps it legible over a tall early bar */
+	.key { position: absolute; top: 34px; z-index: 1; display: flex; flex-direction: column; margin: 0; padding: 2px 6px 2px 0; font-size: 12px; line-height: 16px; color: var(--dust); background: rgb(0 0 0 / 0.75); pointer-events: none; }
 	.key span { white-space: nowrap; }
-	.swatch { display: inline-block; width: 14px; margin-right: 6px; vertical-align: middle; border-top: 2px solid var(--white); }
-	.swatch.pub { height: 10px; border: 0; background: var(--white); opacity: 0.65; }
+	.swatch { display: inline-block; width: 12px; margin-right: 6px; vertical-align: middle; border-top: 2px solid var(--white); }
+	.swatch.pub { height: 8px; border: 0; background: var(--white); opacity: 0.65; }
 	.swatch.cite { border-color: var(--neptune); }
 	.stage { position: relative; min-height: 300px; margin-top: 12px; }
 	svg { display: block; overflow: visible; }

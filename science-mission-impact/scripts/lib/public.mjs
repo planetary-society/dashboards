@@ -1,6 +1,6 @@
 // The discussion figures use actual adjusted costs, from the packaged division documents.
 import { pooledBand } from './costcurve.mjs';
-import { byText, logFit, median, round, share, sum } from './util.mjs';
+import { byText, logFit, median, parseDay, round, share, sum } from './util.mjs';
 const hasCost = (mission) => Number.isFinite(mission.cost) && mission.cost > 0;
 /** Inside the threshold: a positive cost at or below it ($M, the snapshot's adjusted dollar year). */
 export const underThreshold = (cost) => (mission) => hasCost(mission) && mission.cost <= cost;
@@ -40,9 +40,11 @@ export function wilson(k, n, z = 1.96) {
  * @param {number} options.thresholdCost the editorial line ($M): under is `0 < cost <= thresholdCost`, over is above it
  * @param {'full'|'window'|'lifetime'} [options.scope] the scope every figure is read in
  * @param {string|null} [options.focusDivision] the division the story walks through (its
- *   citation primer and running total); null leaves `focusDivision` and `primer` null
+ *   citation primer and yearly-rate chart); null leaves `focusDivision` and `primer` null
+ * @param {string|null} [options.rateEnd] the data's end point the missions' `top10PerYear` runs to
+ *   (exclusive); null leaves `rate` null
  */
-export function buildDiscussion(divisions, { thresholdCost, scope = 'full', focusDivision = null } = {}) {
+export function buildDiscussion(divisions, { thresholdCost, scope = 'full', focusDivision = null, rateEnd = null } = {}) {
 	if (!(thresholdCost > 0)) throw new Error(`buildDiscussion: thresholdCost must be a positive number, got ${JSON.stringify(thresholdCost)}`);
 	const under = underThreshold(thresholdCost);
 	const over = (m) => hasCost(m) && !under(m);
@@ -129,6 +131,7 @@ export function buildDiscussion(divisions, { thresholdCost, scope = 'full', focu
 		} : null,
 		focusDivision: focus?.slug ?? null,
 		primer: focus ? primerFacts(focus, scope) : null,
+		rate: rateEnd ? rateFacts(rankable, rateEnd, under) : null,
 		perDollar: rankable.map((d) => perDollarFacts(d, d.missions.filter(measured), stats, sides))
 	};
 }
@@ -181,6 +184,40 @@ const higherRate = (under, over) => (under === null || over === null || under ==
 const largestBy = (members, value) =>
 	members.slice().sort((a, b) => (value(b) ?? 0) - (value(a) ?? 0) || byText(a.name, b.name) || byText(a.id, b.id))[0] ?? null;
 
+/**
+ * The yearly-rate charts' facts: the rate's end point (`end`, exclusive; `through`, the last
+ * publication year it counts), then per compared division, kept apart (each ranks its own top
+ * 10%): the costed mission with the highest `top10PerYear` and its side of the line, each side's
+ * mission count, how many had no top-10% papers and its median rate, and the small side's best
+ * with how many larger missions it out-produced.
+ */
+function rateFacts(divisions, end, under) {
+	const rate = (m) => m.top10PerYear ?? 0;
+	const named = (m) => (m && rate(m) > 0 ? { id: m.id, name: m.name, perYear: rate(m) } : null);
+	const side = (list) => ({ missions: list.length, none: list.filter((m) => !(rate(m) > 0)).length, median: list.length ? round(median(list.map(rate)), 3) : null });
+	return {
+		end,
+		through: new Date(parseDay(end) - 86400000).getUTCFullYear(), // parseDay, as yearlyTopRate reads the same end
+		divisions: divisions.map((d) => {
+			// a null rate (no science start, or none before `end`) is unmeasured, never a measured zero
+			const costed = d.missions.filter((m) => hasCost(m) && m.top10PerYear != null);
+			const small = costed.filter(under);
+			const larger = costed.filter((m) => !under(m));
+			const leader = largestBy(costed, rate);
+			const lead = named(leader);
+			const best = named(largestBy(small, rate));
+			return {
+				division: d.slug,
+				name: d.name,
+				largest: lead && { ...lead, size: under(leader) ? 'under' : 'over' },
+				small: side(small),
+				larger: side(larger),
+				bestSmall: best && { ...best, above: larger.filter((m) => rate(m) < best.perYear).length }
+			};
+		})
+	};
+}
+
 /** The most common non-null value and how many members carry it, ties broken by name; null when none. */
 function mostCommon(values) {
 	const counts = new Map();
@@ -226,7 +263,8 @@ function perDollarFacts(division, members, stats, sides) {
  * The trend of citations per $100M with cost across a division's measured missions, threshold
  * ignored: the least-squares line of log rate on log cost that its page and the story draw,
  * over the missions with citations (a zero has no place on a log scale; `zeros` counts them).
- * `tenfold` is the rate's multiple at ten times the cost; `holds` says no single fitted mission,
+ * `tenfold` is the rate's multiple at ten times the cost, `citesTenfold` the citations' own (the
+ * same line before dividing by cost: its slope plus one); `holds` says no single fitted mission,
  * dropped, reverses the line's direction, and is null when dropping one would leave too few
  * for a line (untested, never robust). Null below three missions with citations.
  */
@@ -236,7 +274,7 @@ function perDollarFit(members, stats) {
 	if (!line) return null;
 	const reverses = (i) => Math.sign(logFit(points.filter((_, j) => j !== i)).slope) !== Math.sign(line.slope);
 	return { missions: points.length, zeros: members.length - points.length, slope: round(line.slope, 3), intercept: round(line.intercept, 3),
-		tenfold: round(10 ** line.slope, 2), holds: points.length < 4 ? null : !points.some((_, i) => reverses(i)) };
+		tenfold: round(10 ** line.slope, 2), citesTenfold: round(10 ** (line.slope + 1), 2), holds: points.length < 4 ? null : !points.some((_, i) => reverses(i)) };
 }
 
 /**

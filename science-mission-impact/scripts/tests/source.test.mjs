@@ -186,8 +186,6 @@ describe('dashboard compatibility preflight', () => {
 		const script = packager(f);
 		const result = spawnSync(process.execPath, [script, f.rawDir, '--out', out], { encoding: 'utf8' });
 		assert.equal(result.status, 0, result.stdout + result.stderr);
-		// the classification input is published byte-for-byte
-		assert.deepEqual(fs.readFileSync(path.join(out, 'static/data/paper-kinds.json')), fs.readFileSync(path.join(script, '../../data/paper-kinds.json')));
 		const mission = (id) => JSON.parse(fs.readFileSync(path.join(out, 'src/lib/data/generated/missions', `${id}.json`), 'utf8'));
 		assert.equal(mission(f.runs[0].id).meta.dates.launch, '2000-01-01');
 		assert.equal(mission(f.runs[0].id).meta.dates.primeEnd, '2001-02-03');

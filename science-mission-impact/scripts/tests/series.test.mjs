@@ -4,6 +4,7 @@ import { describe, it } from 'node:test';
 import {
 	accumulateCitationYears,
 	buildLifetimeSeries,
+	buildWindowSeries,
 	foldYears,
 	monthOffset,
 	papersByYearMap
@@ -183,3 +184,17 @@ describe('window series', () => {
 	});
 });
 
+describe('buildWindowSeries', () => {
+	it('counts a shared paper once and each citation only inside its paper\'s citation window', () => {
+		const rows = [{ bibcode: 'A', year: 2000 }, { bibcode: 'A', year: 2000 }, { bibcode: 'B', year: '2001' }];
+		const citations = new Map([
+			['A', ['1999x', '2000x', '2002x', '2003x']], // 1999 predates the paper; 2003 is past 2000 + 2
+			['B', ['2003x', '2004x', 'bad']]
+		]);
+		const { series, edges } = buildWindowSeries({ rows, citations, citationYears: 2, asOfYear: 2005 });
+		assert.equal(edges, 3);
+		assert.deepEqual(series.years, [2000, 2001, 2002, 2003, 2004, 2005]);
+		assert.deepEqual(series.papers, [1, 1, 0, 0, 0, 0]);
+		assert.deepEqual(series.citations, [1, 0, 1, 1, 0, 0]);
+	});
+});

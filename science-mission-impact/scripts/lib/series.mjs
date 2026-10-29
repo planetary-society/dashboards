@@ -49,6 +49,13 @@ export function papersByYearMap(source) {
 	return out;
 }
 
+/** A citing bibcode's year (its first four characters); null when it has none. */
+function citingYear(bibcode) {
+	if (typeof bibcode !== 'string' || bibcode.length < 4) return null;
+	const year = Number.parseInt(bibcode.slice(0, 4), 10);
+	return Number.isFinite(year) ? year : null;
+}
+
 /**
  * Add one mission's citing years into every sink, in a single pass over the
  * citation map. A mission's citation list is the largest object the packager
@@ -91,9 +98,8 @@ export function accumulateCitationYears({ citations, paperYears, asOfYear, sinks
 		if (!Array.isArray(citing)) continue;
 		const paperYear = paperYears.get(cited);
 		for (const bibcode of citing) {
-			if (typeof bibcode !== 'string' || bibcode.length < 4) continue;
-			let year = Number.parseInt(bibcode.slice(0, 4), 10);
-			if (!Number.isFinite(year)) continue;
+			let year = citingYear(bibcode);
+			if (year == null) continue;
 			// A citing paper cannot predate the paper it cites; ADS bibcode years
 			// occasionally say otherwise (preprint vs journal year), so clamp up.
 			if (paperYear !== null && paperYear !== undefined && year < paperYear) year = paperYear;
@@ -133,6 +139,41 @@ export function buildLifetimeSeries({ papers, citations, asOfYear }) {
 		citations: citationsOut,
 		partialFromYear: asOfYear >= firstYear && asOfYear <= lastYear ? asOfYear : null
 	};
+}
+
+/**
+ * A windowed scope's by-year series: each paper once (a shared paper is one row per mission),
+ * binned by publication year, its citations counted from that year through `citationYears`
+ * calendar years after, the scope's own rule. Unlike the lifetime series, a citing year before the
+ * paper's is dropped, not clamped up: upstream's WindowedPublication counts Y <= year <= Y + C only.
+ * Years past the as-of year fold into it in buildLifetimeSeries.
+ *
+ * @param {object} args
+ * @param {{bibcode: string, year: number|string}[]} args.rows the scope's paper rows
+ * @param {Map<string, string[]>} args.citations bibcode -> its representative citing list
+ * @param {number} args.citationYears calendar years after publication that still count
+ * @param {number} args.asOfYear
+ * @returns {{series: object|null, edges: number}} the series, and the citations counted into it
+ */
+export function buildWindowSeries({ rows, citations, citationYears, asOfYear }) {
+	const papers = new Map();
+	const cites = new Map();
+	const seen = new Set();
+	let edges = 0;
+	for (const { bibcode, year: rawYear } of rows) {
+		if (seen.has(bibcode)) continue;
+		seen.add(bibcode);
+		const year = Number(rawYear);
+		if (!Number.isFinite(year)) continue;
+		papers.set(year, (papers.get(year) ?? 0) + 1);
+		for (const citing of citations.get(bibcode) ?? []) {
+			const y = citingYear(citing);
+			if (y == null || y < year || y > year + citationYears) continue;
+			cites.set(y, (cites.get(y) ?? 0) + 1);
+			edges += 1;
+		}
+	}
+	return { series: buildLifetimeSeries({ papers, citations: cites, asOfYear }), edges };
 }
 
 /**

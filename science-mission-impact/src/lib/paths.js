@@ -8,6 +8,7 @@ export const home = () => resolve('/');
 export const divisionHref = (slug) => resolve(withSlash(`/${slug}`));
 export const missionHref = (slug, id) => resolve(withSlash(`/${slug}/${id}`));
 export const methodsHref = (anchor = '') => resolve('/methods/') + (anchor ? `#${anchor}` : '');
+export const analysisHref = (anchor = '') => resolve('/analysis/') + (anchor ? `#${anchor}` : '');
 export const asset = (path) => resolve('/') + path.replace(/^\//, '');
 
 export const thumbSrc = (id) => asset(`img/missions/${id}.webp`);

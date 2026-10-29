@@ -17,8 +17,9 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { compile } from 'svelte/compiler';
 import { render } from 'svelte/server';
 import { scaleLinear, scaleLog } from 'd3-scale';
-import { splitLayout, focusLayout, costLayout, primerLayout, perDollarLayout, varyLayout } from './layouts.js';
-import { flat, soft } from '../copy/discussion.js';
+import { focusLayout, costLayout, primerLayout, perDollarLayout, tierOutcomeLayout } from './layouts.js';
+import { money } from '../format.js';
+import { flat } from '../copy/discussion.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const lib = join(here, '..');
@@ -100,7 +101,7 @@ test('Skyline at its citation step: citations to the top of the chart, the paper
 	const Component = await load('Skyline.svelte');
 	const { body } = render(Component, { props: { layout: skyline, total: 146165, cited: 6079430, rise: 1, cite: 1, highlight: 'hubble', ...stage } });
 	assert.ok(body.includes('>6,079,430<'), 'the citation total once risen');
-	assert.ok(body.includes('citations of 146,165 publications'));
+	assert.ok(body.includes('citations of <span class="neptuneBlue">146,165 publications</span>'), 'the publications in the columns\' blue');
 	assert.equal((body.match(/<rect /g) ?? []).length, 4, 'a citation and a paper column per mission');
 	assert.equal((body.match(/height="400"/g) ?? []).length, 1, "only Hubble's citations fill the chart; its papers have shrunk");
 	assert.ok(body.includes('Hubble 1,164,186'), 'named with its citations');
@@ -189,122 +190,22 @@ test('ClpsChart end-label blocks never touch, on a phone or not', async () => {
 	}
 });
 
-// --- KindBars / KindExample -------------------------------------------------------------------
-
-const kindKeys = [
-	['results', 'Science results', true, 'Science'],
-	['data', 'Data and calibration', true, 'Data'],
-	['mission', 'Mission and instrument', false, 'Mission'],
-	['review', 'Reviews and commentary', false, 'Reviews'],
-	['future', 'Planned or expected results', false, 'Planned'],
-	['other', 'Mentions only', false, 'Mentions']
-];
-const byKind = (o) => Object.fromEntries(kindKeys.map(([k]) => [k, { papers: o[k]?.[0] ?? 0, citations: o[k]?.[1] ?? 0 }]));
-const kindMission = (id, name, cost, o) => {
-	const b = byKind(o);
-	const papers = Object.values(b).reduce((a, v) => a + v.papers, 0);
-	const citations = Object.values(b).reduce((a, v) => a + v.citations, 0);
-	return { id, name, division: 'earth', cost, papers, citations, byKind: b, nonScienceShare: null };
-};
-const raincube = {
-	...kindMission('raincube', 'RainCube', 13.2, { mission: [3, 40], review: [1, 120], results: [1, 9] }),
-	fullName: 'Radar in a CubeSat',
-	lifetime: {
-		papers: 4,
-		citations: 172,
-		byKind: byKind({ mission: [3, 43], review: [1, 120], results: [1, 9] }),
-		list: [
-			{ bibcode: '2020b', title: 'Small satellites for weather: a review', year: 2020, firstAuthor: 'Smith', citations: 120, inScope: true, kind: 'review', note: 'one review, most of the citations' },
-			{ bibcode: '2019a', title: 'RainCube: the first radar in a CubeSat', year: 2019, firstAuthor: 'Peral', citations: 40, inScope: true, kind: 'mission', note: '' },
-			{ bibcode: '2021c', title: 'Precipitation profiles from RainCube', year: 2021, firstAuthor: 'Lee', citations: 9, inScope: true, kind: 'results', note: '' },
-			{ bibcode: '2024d', title: 'RainCube lessons learned', year: 2024, firstAuthor: 'Ng', citations: 3, inScope: false, kind: 'mission', note: '' }
-		],
-		top: { bibcode: '2020b', title: 'Small satellites for weather: a review', citations: 120, kind: 'review', note: '', citationShare: 0.69767 },
-		firstResult: { bibcode: '2021c', title: 'Precipitation profiles from RainCube', citations: 9, citationShare: 0.05233 }
-	}
-};
-const kinds = {
-	scope: 'full',
-	asOf: '2026-09-18',
-	method: '',
-	kinds: kindKeys.map(([key, label, science, short]) => ({ key, label, short, science })),
-	missions: [raincube, kindMission('cubesat2', 'TwoSat', 20, { results: [2, 1234] }), kindMission('empty', 'Nothing', 5, {})],
-	withPapers: 2,
-	withoutPapers: 1,
-	total: { papers: 7, citations: 1403, byKind: byKind({ mission: [3, 40], review: [1, 120], results: [3, 1243] }) },
-	nonScience: { papers: 4, paperShare: 0.57, citations: 160, citationShare: 0.11 },
-	majorityNonScience: 1,
-	examples: [raincube]
-};
-const kindsL = {
-	rows: [
-		{ id: 'raincube', y: 44, h: 27 },
-		{ id: 'cubesat2', y: 74, h: 27 }
-	],
-	s: 27,
-	pitch: 30,
-	headH: 44,
-	left: 24,
-	nameW: 110,
-	barX: 177,
-	barW: 655,
-	valueW: 44,
-	valueX: 838,
-	strip: { y: 128, ids: ['empty'] },
-	fontPx: 12
-};
-
-test('KindBars prerenders names, the non-zero legend, counts per mode and the strip label', async () => {
-	const Component = await load('KindBars.svelte');
-	const papers = render(Component, { props: { layout: kindsL, kinds, visible: true } }).body;
-	for (const t of ['>RainCube<', '>TwoSat<', 'Science results', 'Mission and instrument', 'Reviews and commentary', '>Papers<', '>5<', '>2<', '1 with no publications in their window']) assert.ok(papers.includes(t), t);
-	for (const t of ['Data and calibration', 'Planned or expected results', 'Mentions only']) assert.ok(!papers.includes(t), `no ${t}`);
-	assert.match(papers, /kind-review[^"]*" style="width: 20%;"/, 'a fifth of the papers');
-	clean(papers);
-	const cites = render(Component, { props: { layout: kindsL, kinds, mode: 'citations', visible: true, compact: true } }).body;
-	for (const t of ['>Citations<', '>169<', '>1,234<', 'Reviews<', 'Science<']) assert.ok(cites.includes(t), t);
-	assert.ok(!cites.includes('Reviews and commentary'), 'compact uses short labels');
-	clean(cites);
-});
-
-test('KindExample prerenders the name, the cost line, every title and a note', async () => {
-	const Component = await load('KindExample.svelte');
-	const layout = { pos: new Map(), s: 64, left: 24, top: 16, headRight: 100, listY: 102 };
-	const { body } = render(Component, { props: { layout, example: raincube, kinds, visible: true } });
-	for (const t of ['>RainCube<', '$13M · 4 papers to date · 172 citations', ...raincube.lifetime.list.map((p) => p.title), 'one review, most of the citations', 'Reviews and commentary', '3 citations · Mission and instrument · outside its Active Mission Window']) assert.ok(body.includes(t), t);
-	const rowOf = (title) => body.slice(body.lastIndexOf('<li', body.indexOf(title)), body.indexOf(title));
-	assert.match(rowOf('Precipitation profiles from RainCube'), /class="[^"]*\bhit\b/);
-	assert.match(rowOf('RainCube lessons learned'), /class="[^"]*\bdim\b/);
-	clean(body);
-});
-
-// --- SplitLabels / Primer / FocusChart / LanesChart: the packaged data on a real layout ------
+// --- Primer / FocusChart / LanesChart: the packaged data on a real layout ------
 
 const site = JSON.parse(await readFile(join(lib, 'data/generated/site.json'), 'utf8'));
 const { tiles } = JSON.parse(await readFile(join(lib, 'data/generated/scrolly.json'), 'utf8'));
 const story = site.story;
 const ref = story.referenceCost;
 
-test('SplitLabels prerenders each block\'s figure and label over its icon array', async () => {
-	const groups = [{ key: 'under', ids: story.threshold.ids }, { key: 'over', ids: tiles.filter((t) => t.cost > ref).map((t) => t.id) }];
-	for (const [width, height, compact] of [[900, 600, false], [358, 380, true]]) {
-		const layout = splitLayout(width, height, groups, { headH: compact ? 64 : 96 });
-		const { body } = render(await load('SplitLabels.svelte'), { props: { layout, heads: [{ figure: '14 of 46', label: 'failed or fell short' }, { figure: '8 of 95', label: 'costlier' }], visible: true, compact } });
-		clean(body);
-		assert.match(body, /14 of 46/);
-		assert.match(body, /8 of 95/);
-	}
-});
-
 test('Primer prerenders a bar per citation count up to the most cited, their top-10% parts and the cutoff', async () => {
 	const layout = primerLayout(story.primer, stage.width, stage.height);
-	const { body } = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, years: 4, highlight: true } });
+	const { body } = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, highlight: true } });
 	clean(body);
 	const tops = story.primer.top.filter((t) => t > 0).length;
 	assert.equal((body.match(/<rect/g) ?? []).length, story.primer.counts.filter((n) => n > 0).length + tops, 'no bar for a count no paper drew');
 	assert.ok(story.primer.counts.at(-1) > 0, 'the axis ends at the most cited paper');
-	assert.match(body, new RegExp(`about ${story.primer.cutoff} or more citations`));
-	assert.match(body, /first four years/);
+	assert.match(body, /High impact papers/, "the cutoff's label");
+	assert.match(body, /Citation counts of Planetary Science mission papers/, 'the header names the division');
 	assert.match(body, />1,000</, 'log gridlines at powers of ten');
 	assert.ok(!body.includes('class="label'), 'no count until the reader points');
 });
@@ -312,75 +213,100 @@ test('Primer prerenders a bar per citation count up to the most cited, their top
 test('Primer lights the pointed-at bar and names its count', async () => {
 	const layout = primerLayout(story.primer, stage.width, stage.height);
 	const most = story.primer.counts.length - 1;
-	const { body } = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, years: 4, hot: most } });
+	const { body } = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, hot: most } });
 	clean(body);
 	const n = story.primer.counts[most];
 	assert.ok(body.includes(`>${n} ${n === 1 ? 'paper' : 'papers'} cited ${most} times<`), 'the most cited bar, named');
 	assert.ok((body.match(/class="[^"]*\bhot\b/g) ?? []).length >= 1, 'its bar in flame');
-	const none = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, years: 4, hot: 0 } }).body;
+	const none = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, hot: 0 } }).body;
 	assert.ok(none.includes(`${story.primer.counts[0].toLocaleString('en-US')} papers with no citations`));
 });
 
-test('FocusChart prerenders the axis, a bar per mission with top papers, the line and its labels', async () => {
-	const focus = story.comparison.byDivision.find((d) => d.division === story.focusDivision);
-	const total = focus.under.top10 + focus.over.top10;
-	const layout = focusLayout(tiles, 900, 600, { division: focus.division, total });
-	assert.ok(Math.abs(layout.facts.total - total) < 0.5, 'the shares add back up to the division total');
-	const { body } = render(await load('FocusChart.svelte'), { props: { ...stage, layout, referenceCost: ref, largest: focus.over.largest, small: 'Seven missions', total: '1,093 top-10% papers', grow: 1, stack: 0, draw: 0, bars: true } });
+test('FocusChart prerenders the axis, its title and the largest named, leaving its bars to LanesChart', async () => {
+	const largest = story.rate.divisions.find((d) => d.division === story.focusDivision).largest;
+	const layout = focusLayout(tiles, 900, 600, { division: story.focusDivision });
+	const { body } = render(await load('FocusChart.svelte'), { props: { ...stage, layout, name: 'Planetary Science', largest, grow: 1, bars: true } });
 	clean(body);
-	assert.equal((body.match(/class="bar[ "]/g) ?? []).length, layout.facts.points.filter((p) => p.credit > 0).length);
-	assert.match(body, new RegExp(`${focus.over.largest.name} \\d`));
-	assert.match(body, /\$150M/);
+	assert.ok(!body.includes('class="bar'), 'LanesChart draws the bars, so they can move into their band');
+	assert.match(body, new RegExp(`${largest.name} \\d`));
+	assert.match(body, /class="stage-title[^>]*text-anchor="end">High-impact papers published per year in Planetary Science, by mission</);
+	assert.ok(!body.includes('$150M'), 'no threshold line');
+	assert.ok(!body.includes('<path'), 'no running total');
 });
 
-test('LanesChart prerenders a band per compared division with its notes and both running lines', async () => {
+test('LanesChart: a band per compared division, a bar per mission with top papers, no labels until a bar is pointed at', async () => {
 	const compared = new Set(story.comparison.divisions);
 	const divisions = site.divisions.filter((d) => compared.has(d.slug));
 	const layout = costLayout(tiles.filter((t) => compared.has(t.division)), 900, 600, { divisions });
-	const notes = Object.fromEntries(divisions.map((d) => [d.slug, { missions: `${d.slug} missions`, top: 'top', cited: 'cited', cost: 'spend' }]));
-	const { body } = render(await load('LanesChart.svelte'), { props: { ...stage, layout, scope: story.scope, referenceCost: ref, notes, spending: true } });
+	const Lanes = await load('LanesChart.svelte');
+	const { body } = render(Lanes, { props: { ...stage, layout } });
 	clean(body);
-	for (const d of divisions) assert.match(body, new RegExp(`${d.slug} missions`));
-	assert.equal((body.match(/class="top[ "]/g) ?? []).length, divisions.length);
-	assert.equal((body.match(/class="cost[ "]/g) ?? []).length, divisions.length);
-	assert.equal((body.match(/class="cited[ "]/g) ?? []).length, divisions.length);
-	assert.match(body, /cited/, 'the spending step reads citations against spending');
+	assert.equal((body.match(/class="shelf[ "]/g) ?? []).length, divisions.length);
+	assert.ok(!body.includes('<path'), 'no running lines');
+	assert.equal((body.match(/class="bar[ "]/g) ?? []).length, layout.rows.flatMap((r) => r.members).filter((t) => t.top10PerYear > 0).length);
+	assert.ok(!body.includes(' a year<'), 'no scale or leader labels');
+	assert.ok(!body.includes('class="label'), 'nothing named until pointed at');
+	const lead = story.rate.divisions[0].largest;
+	const pointed = render(Lanes, { props: { ...stage, layout, hot: lead.id } }).body;
+	assert.equal((pointed.match(/class="bar[^"]*\bhot\b/g) ?? []).length, 1, 'the pointed-at bar lit');
+	assert.match(pointed, new RegExp(`class="label[^>]*>${lead.name}: \\d[\\d.,]* top-10% papers a year<`), 'its mission and rate');
+	const leadTile = tiles.find((t) => t.id === lead.id);
+	assert.equal((pointed.match(/class="cursor/g) ?? []).length, 1, 'one cursor through every band');
+	assert.match(pointed, new RegExp(`class="tick reading[^>]*>\\$${money(leadTile.cost).slice(1)}<`), 'the cursor snaps to the bar and reads its cost');
+	const free = render(Lanes, { props: { ...stage, layout, cursor: layout.x(1000) } }).body;
+	assert.match(free, /class="tick reading[^>]*>\$1\.0B</, 'off a bar, it reads the cost under the pointer');
+	assert.ok(!free.includes('class="label'), 'and names no mission');
+	assert.ok(!render(Lanes, { props: { ...stage, layout, cursor: 0 } }).body.includes('class="cursor'), 'none left of the plot');
 });
 
-test('LanesChart marks each division’s cost floor, at the packaged cost, only when given', async () => {
+test('LanesChart carries the focus division’s bars: on the focus chart’s axes while it is up, then in their own band, under the title', async () => {
 	const compared = new Set(story.comparison.divisions);
 	const divisions = site.divisions.filter((d) => compared.has(d.slug));
-	const layout = costLayout(tiles.filter((t) => compared.has(t.division)), 900, 600, { divisions });
-	const floors = Object.fromEntries(story.bands.map((b) => [b.division, b.p25]));
-	const props = { ...stage, layout, scope: story.scope, referenceCost: ref, notes: {} };
-	const marked = render(await load('LanesChart.svelte'), { props: { ...props, floors } }).body;
-	clean(marked);
-	assert.equal((marked.match(/class="floor[ "]/g) ?? []).length, story.bands.length);
-	for (const b of story.bands) assert.match(marked, new RegExp(`cx="${layout.x(b.p25)}"`), `${b.division} at its p25`);
-	assert.doesNotMatch(render(await load('LanesChart.svelte'), { props }).body, /class="floor/);
+	const comparedTiles = tiles.filter((t) => compared.has(t.division));
+	const layout = costLayout(comparedTiles, 900, 600, { divisions, titled: true });
+	const focus = focusLayout(comparedTiles, 900, 600, { division: story.focusDivision });
+	const Lanes = await load('LanesChart.svelte');
+	const row = layout.rows.find((r) => r.slug === story.focusDivision);
+	const carried = row.members.filter((t) => t.top10PerYear > 0).length;
+	const all = layout.rows.flatMap((r) => r.members).filter((t) => t.top10PerYear > 0).length;
+	// each carried bar's translate ends on its baseline: the focus chart's axis, or the band's bottom edge
+	const on = (body, y) => body.split(`px, ${y}px) scale(`).length - 1;
+	const up = render(Lanes, { props: { ...stage, layout, focus, focused: true, grow: 1 } }).body;
+	clean(up);
+	assert.equal((up.match(/class="bar[ "]/g) ?? []).length, all, 'every bar drawn once');
+	assert.equal(on(up, focus.chart.y(0)), carried, 'on the focus chart’s axis');
+	const lanes = render(Lanes, { props: { ...stage, layout, focus, title: 'High-impact papers published per year, by division and mission', visible: true } }).body;
+	assert.equal((lanes.match(/class="bar[ "]/g) ?? []).length, all, 'still once each');
+	assert.equal(on(lanes, Math.round(row.y + row.h)), carried, 'in their own band');
+	assert.match(lanes, /class="stage-title[^>]*text-anchor="end">High-impact papers published per year, by division and mission</);
+	assert.ok(layout.top >= 28, 'a titled layout keeps a strip over the lanes');
 });
 
-test('VaryChart prerenders both panels, each division in each, a ring and a dot per side, counts on the rings', async () => {
-	const compared = new Set(story.comparison.divisions);
-	const divisions = site.divisions.filter((d) => compared.has(d.slug));
-	const layout = varyLayout(story, divisions, 900, 600);
-	const { body } = render(await load('VaryChart.svelte'), { props: { ...stage, layout } });
-	clean(body);
-	for (const t of ['Share that failed or fell short', 'Share with a top-10% paper']) assert.ok(body.includes(t), t);
-	for (const d of divisions) assert.equal(body.split(`>${d.name}<`).length - 1, 2, `${d.name} in both panels`);
-	assert.equal((body.match(/<circle /g) ?? []).length, divisions.length * 2 * 2);
-	const failed = story.failure.byDivision.find((d) => d.division === 'planetary').under;
-	assert.ok(body.includes(`>${failed.failed}/${failed.missions}<`), 'the ring carries its count');
-});
-
-test('DollarChart dashes the fits the copy won’t call a trend', async () => {
+test('DollarChart draws every fit alike and labels the nearly flat', async () => {
 	const compared = new Set(story.comparison.divisions);
 	const divisions = site.divisions.filter((d) => compared.has(d.slug));
 	const fits = new Map(story.perDollar.map((d) => [d.division, d.fit]));
 	const layout = perDollarLayout(tiles, 900, 600, { divisions, fits });
-	const softRows = story.perDollar.filter((d) => soft(d.fit));
 	const { body } = render(await load('DollarChart.svelte'), { props: { ...stage, layout, referenceCost: ref } });
 	clean(body);
-	assert.equal((body.match(/class="fit[^"]*soft/g) ?? []).length, softRows.length);
-	assert.equal((body.match(/Nearly flat/g) ?? []).length, softRows.filter((d) => flat(d.fit)).length);
+	assert.equal((body.match(/class="fit[ "]/g) ?? []).length, story.perDollar.filter((d) => d.fit).length, 'one line a fit');
+	assert.ok(!body.includes('soft'), 'none set apart');
+	assert.equal((body.match(/Nearly flat/g) ?? []).length, story.perDollar.filter((d) => d.fit && flat(d.fit)).length);
+	assert.ok(!body.includes('stage-title'), 'no title unless given one');
+	const titled = perDollarLayout(tiles, 900, 600, { divisions, fits, titled: true });
+	assert.ok(titled.top >= 28, 'a titled layout keeps a strip over the plot');
+	const headed = render(await load('DollarChart.svelte'), { props: { ...stage, layout: titled, title: 'Citations per $100M by division' } }).body;
+	assert.match(headed, /class="stage-title[^>]*text-anchor="end">Citations per \$100M by division</);
+});
+
+test('OutcomeChart: titled, Success over the zero line and Failure under it, each tier’s rate with no count', async () => {
+	const { tiers, failures } = site.analysis;
+	const layout = tierOutcomeLayout(tiles, tiers, 900, 600);
+	const { body } = render(await load('OutcomeChart.svelte'), { props: { ...stage, layout, failures: failures.tiers } });
+	clean(body);
+	assert.match(body, /class="stage-title[^>]*>Mission success and failures by cost</);
+	assert.match(body, />Success<[\s\S]*>Failure</);
+	assert.equal((body.match(/class="rate/g) ?? []).length, tiers.length);
+	assert.ok(!/\d of \d/.test(body), 'no "X of Y" counts');
+	assert.ok(layout.top >= 28, 'room for the title over the stacks');
 });

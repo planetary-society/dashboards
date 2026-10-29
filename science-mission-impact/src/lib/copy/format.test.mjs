@@ -22,12 +22,17 @@ test('byline: one author in full, two with &, up to four by last name, then et a
 
 test('prose money, AP dates and serial lists, TPS style', async () => {
 	const { moneyWords, apDate, listify } = await import('../format.js');
-	assert.equal(moneyWords(150), '$150\u00a0million');
-	assert.equal(moneyWords(23.5), '$24\u00a0million'); // rounded as money() rounds it, so prose and labels agree
-	assert.equal(moneyWords(5.84), '$5.8\u00a0million');
-	assert.equal(moneyWords(1361.2), '$1.4\u00a0billion');
-	assert.equal(moneyWords(1000), '$1\u00a0billion');
-	assert.equal(moneyWords(13890.2), '$14\u00a0billion');
+	assert.equal(moneyWords(150), '$150M');
+	assert.equal(moneyWords(23.5), '$24M'); // rounded as money() rounds it, so prose and labels agree
+	assert.equal(moneyWords(5.84), '$5.8M');
+	assert.equal(moneyWords(1361.2), '$1.4B');
+	assert.equal(moneyWords(1000), '$1B');
+	assert.equal(moneyWords(13890.2), '$14B');
+	// a value just under a unit or precision step rounds into it, never "$1000M" or "$10.0B"
+	assert.equal(moneyWords(999.7), '$1B');
+	assert.equal(moneyWords(9960), '$10B');
+	assert.equal(moneyWords(9.97), '$10M');
+	assert.equal(moneyWords(999.4), '$999M');
 	assert.equal(apDate('2026-10-20'), 'Oct. 20, 2026');
 	assert.equal(apDate('2026-03-02'), 'March 2, 2026');
 	assert.equal(apDate('2026-09'), 'September 2026');

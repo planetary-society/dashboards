@@ -1,1 +1,2 @@
-export { underThreshold, buildDiscussion, divisionFacts } from '../../../scripts/lib/public.mjs';
+export { underThreshold, buildDiscussion, divisionFacts, wilson } from '../../../scripts/lib/public.mjs';
+export { inTier } from '../../../scripts/lib/analysis.mjs';

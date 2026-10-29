@@ -1,8 +1,8 @@
 // Rows for the key-measures tables, one builder per page. Pure (no $lib, no $app) so node can
 // test it: a hint carries its methods anchor and the table turns that into a link.
 import { FOOTNOTES, noteText } from './footnotes.js';
-import { fullWindowLabel, scopeLabel } from './window.js';
-import { int, money, weight, pct, longDate } from '../format.js';
+import { scopeLabel } from './window.js';
+import { int, money, weight, longDate } from '../format.js';
 
 /** h-index is a count; m-index runs 0–12 and needs its decimal. */
 export function indexValue(index, v) {
@@ -16,43 +16,33 @@ const rowsFor = (site, scope) => (label, ids, value, note = null) => ({
 	note,
 	hint: ids && { text: noteText(ids, site, scope), anchor: FOOTNOTES[ids[0]].anchor }
 });
-const share = (s) => (s == null ? null : `${pct(s)} of division`);
-const uncited = (n, papers) => (papers && n != null ? `${int(n)} (${pct(n / papers)})` : int(n));
 
-/** What the mission is and what it cost, from its catalog entry; no scope changes these. A fact the catalog leaves blank drops out. */
-export function missionFactGroups(mission, site) {
+/** The prime mission by month, "April 1990 to April 2005", or null when the catalog lacks either end. */
+export const primeSpan = ({ scienceStart, primeEnd }) => (scienceStart && primeEnd ? `${longDate(scienceStart.slice(0, 7))} to ${longDate(primeEnd.slice(0, 7))}` : null);
+
+/** When it launched, its prime mission, and what it cost as reported and adjusted; no scope changes these. A fact the catalog leaves blank drops out. */
+export function missionFacts(mission, site) {
 	const row = rowsFor(site);
 	const { meta } = mission;
-	const d = meta.dates;
 	return [
-		{
-			heading: 'Mission',
-			rows: [
-				row('Program', null, meta.program),
-				row('Type', null, meta.type),
-				row('Target', null, meta.target),
-				row('Status', null, meta.status),
-				row('Launch', null, d.launch && longDate(d.launch), meta.launchVehicle),
-				row('Prime mission', null, d.scienceStart && d.primeEnd && `${longDate(d.scienceStart)} to ${longDate(d.primeEnd)}`),
-				row('Mission end', null, d.missionEnd && longDate(d.missionEnd))
-			].filter((r) => r.value)
-		},
-		{
-			heading: 'Life-cycle cost · through the prime mission, with partner contributions',
-			rows: [
-				row('As reported', null, money(meta.lcc), 'nominal dollars'),
-				row(`Adjusted to ${site.costBaseYear} dollars`, ['cost'], money(meta.cost))
-			]
-		}
-	];
+		row('Launch date', null, meta.dates.launch && longDate(meta.dates.launch)),
+		row('Prime mission', null, primeSpan(meta.dates)),
+		// an unknown side is a dash, never a zero
+		row('Life-cycle cost', ['cost'], (meta.lcc != null || meta.cost != null) && `${money(meta.lcc)}/${money(meta.cost)} (${site.costBaseYear} $)`)
+	].filter((r) => r.value);
 }
 
-/** A mission's selected-scope counts, then the lifetime indices, which no scope changes. */
+/**
+ * A mission's selected-scope counts, then its citation indices: h, g and m in the selected scope
+ * (a window's own, from `windowIndices`), tori and riq always lifetime (Casey's choice; upstream
+ * has no window citation graph). Top 1% is measured in the windows only, so Lifetime has no row.
+ */
 export function missionMeasureGroups(mission, scope, site) {
 	const row = rowsFor(site, scope);
 	const s = mission[scope];
 	const sp = s?.spread;
-	const ix = mission.indices ?? {};
+	const life = mission.indices ?? {};
+	const ix = scope === 'lifetime' ? life : (s?.indices ?? {});
 	// A measured window names its publication dates beside the scope; lifetime and empty windows have none.
 	const b = sp && s.bounds?.status === 'available' && s.bounds.start ? s.bounds : null;
 	return [
@@ -63,24 +53,19 @@ export function missionMeasureGroups(mission, scope, site) {
 				? [
 						row('Tracked publications', ['publications'], int(s.papers)),
 						row('Citations', ['citations'], int(s.citations)),
-						row('Mean citations per publication', ['meanCitations'], weight(sp.mean)),
-						row('Median citations per publication', ['medianCitations'], weight(sp.median)),
-						row('Uncited publications', ['uncited'], uncited(sp.uncited, s.papers)),
-						row('Top-10% credit', ['top10', 'shared'], weight(s.top10), share(s.top10ShareOfDivision)),
-						scope === 'lifetime'
-							? row('Top-1% credit', ['top1', 'shared'], '—', `${fullWindowLabel} only`)
-							: row('Top-1% credit', ['top1', 'shared'], weight(s.top1), share(s.top1ShareOfDivision))
-					]
+						row('Top-10% papers', ['top10', 'shared'], weight(s.top10)),
+						scope !== 'lifetime' && row('Top-1% papers', ['top1', 'shared'], weight(s.top1))
+					].filter(Boolean)
 				: []
 		},
 		{
-			heading: 'Lifetime indices · every tracked publication to date, in any scope',
+			heading: 'Citation indices',
 			rows: [
 				row('h-index', ['hindex'], int(ix.h)),
 				row('g-index', ['gindex'], int(ix.g)),
-				row(`m-index, as of ${longDate(site.asOf)}`, ['mindex'], indexValue('m', ix.m)), // one decimal, as the division chart prints it
-				row('tori', ['tori'], weight(ix.tori)),
-				row('riq', ['riq'], int(ix.riq))
+				row('m-index', ['mindex'], indexValue('m', ix.m)), // one decimal, as the division chart prints it; a lifetime one's date is in the hint
+				row('tori', ['tori'], weight(life.tori)),
+				row('riq', ['riq'], int(life.riq))
 			]
 		}
 	];

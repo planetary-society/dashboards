@@ -508,10 +508,10 @@ test('renderSitemap emits the fixed URLs plus one per district and Science Missi
     assert.equal((xml.match(/<loc>/g) || []).length, expected);
 });
 
-test('renderSitemap lists the Science Mission Impact overview, methods, divisions and missions', () => {
+test('renderSitemap lists the Science Mission Impact overview, analysis, methods, divisions and missions', () => {
     const xml = renderSitemap({ districtCodes: ['CA-16'], smiDivisions: SMI_DIVISIONS, smiMissions: SMI_MISSIONS });
     const paths = [
-        '', 'methods/', ...SMI_DIVISIONS.map((slug) => `${slug}/`), 'astrophysics/hst/', 'planetary/msl/'
+        '', 'analysis/', 'methods/', ...SMI_DIVISIONS.map((slug) => `${slug}/`), 'astrophysics/hst/', 'planetary/msl/'
     ];
 
     for (const p of paths) {

@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { costLayout, costCurve, rugLayout, skylineLayout, skylineZoom, skylineHit, primerLayout, columnLabel, splitLayout, focusLayout, perDollarLayout, trendLine, varyLayout, kindsLayout, exampleLayout } from './layouts.js';
+import { costLayout, rugLayout, skylineLayout, skylineZoom, skylineHit, laneHit, primerLayout, columnLabel, tierOutcomeLayout, focusLayout, perDollarLayout, trendLine } from './layouts.js';
 import { logFit } from '../../../scripts/lib/util.mjs';
 
 const load = async (name) => JSON.parse(await readFile(new URL(`../data/generated/${name}.json`, import.meta.url), 'utf8'));
@@ -29,39 +29,10 @@ test('cost layout places every costed mission on the stage without overlap', () 
 	}
 });
 
-/** The cost layout's own rows, keyed by division: what the browser actually draws from. */
-const costRows = (W = 900, H = 640) =>
-	new Map(costLayout(tiles, W, H, { divisions: site.divisions }).rows.map((r) => [r.slug, r]));
-
-test('cost curves run from nothing to everything in cost order', () => {
-	const rows = costRows();
-	for (const d of site.divisions.filter((d) => d.rankable)) {
-		const points = costCurve(rows.get(d.slug).members, (t) => t.share.full[10]);
-		assert.ok(points.length > 0);
-		for (let i = 1; i < points.length; i++) {
-			assert.ok(points[i].cost >= points[i - 1].cost);
-			assert.ok(points[i].topShare >= points[i - 1].topShare - 1e-12);
-		}
-		assert.ok(Math.abs(points.at(-1).topShare - 1) < 1e-9);
-		assert.ok(Math.abs(points.at(-1).costShare - 1) < 1e-9);
-	}
-});
-
-// The story's band sentence quotes the packaged p25/p50/p75; the line beside it is drawn in the
-// browser from the layout's own rows. If those ever parted, the words would name a cost the
-// reader cannot find on the chart.
-test('the drawn curve reaches each quarter of the top papers at the packaged cost', () => {
-	const rows = costRows();
-	for (const band of site.story.bands) {
-		const points = costCurve(rows.get(band.division).members, (t) => t.share.full[10]);
-		for (const [key, level] of [
-			['p25', 0.25],
-			['p50', 0.5],
-			['p75', 0.75]
-		]) {
-			const first = points.find((p) => p.topShare >= level - 1e-9);
-			assert.equal(first?.cost, band[key], `${band.division} ${key}`);
-		}
+test('each lane’s rate scale is the first multiple of 10 above its highest rate', () => {
+	for (const row of costLayout(tiles, 900, 640, { divisions: site.divisions }).rows) {
+		const top = Math.max(0, ...row.members.map((t) => t.top10PerYear ?? 0));
+		assert.ok(row.rateTop > top && row.rateTop - top <= 10 && row.rateTop % 10 === 0, `${row.slug}: ${row.rateTop} over ${top}`);
 	}
 });
 
@@ -80,6 +51,21 @@ const sizes = [
 	[351, 370]
 ];
 const papersOf = (t) => t.papersLifetime;
+
+test('pointing at the lanes picks the nearest bar in the band under the pointer, and nothing between bands or bars', () => {
+	for (const [W, H] of sizes) {
+		const lanes = storyCost(W, H);
+		for (const row of lanes.rows) {
+			const lead = row.members.reduce((a, t) => ((t.top10PerYear ?? 0) > (a.top10PerYear ?? 0) ? t : a));
+			const id = laneHit(lanes, lanes.x(lead.cost), row.shelfY - 2);
+			assert.equal(byId.get(id).division, row.slug, `${W}px: ${row.slug}’s own band`);
+			assert.equal(lanes.x(byId.get(id).cost), lanes.x(lead.cost), `${W}px: the bar under the pointer`);
+			assert.ok(byId.get(id).top10PerYear > 0, `${W}px: only missions with a bar`);
+		}
+		assert.equal(laneHit(lanes, W / 2, lanes.rows[0].y - 1), null, `${W}px: above the bands`);
+		assert.equal(laneHit(lanes, -100, lanes.rows[0].shelfY - 2), null, `${W}px: no bar in reach`);
+	}
+});
 
 test('the rug hangs from the ground: first square of each year just under it, deepest at the floor', () => {
 	for (const [W, H] of sizes) {
@@ -173,37 +159,42 @@ test('skimming the skyline picks the nearest column, and nothing off the chart',
 	}
 });
 
-test('the icon arrays: each side of the line in its own block, one square size, equal rows, inside the stage', () => {
-	const ref = site.story.referenceCost;
-	const groups = [{ key: 'under', ids: site.story.threshold.ids }, { key: 'over', ids: tiles.filter((m) => m.cost > ref).map((m) => m.id) }];
-	assert.equal(groups[1].ids.length, site.story.failure.over.missions);
+test('the tier outcome plot: every costed mission once, in its tier’s column, up if it met its goals and down if not, the counts the Analysis page’s', () => {
+	const { tiers, failures } = site.analysis;
+	const costed = tiles.filter((t) => t.cost > 0);
 	for (const [W, H] of sizes) {
-		const headH = W < 600 ? 64 : 96;
-		const layout = splitLayout(W, H, groups, { headH });
-		assert.equal(layout.pos.size, site.story.threshold.total, `${W}px: every costed mission once`);
-		const [a, b] = layout.blocks;
-		assert.ok(a.x + a.w < b.x, `${W}px: the blocks side by side`);
-		assert.equal(a.h, b.h, `${W}px: equal rows`);
-		for (const [id, p] of layout.pos) {
-			assert.ok(inStage(p, W, H) && p.y >= headH, `${W}px: ${id} inside the stage, under the labels`);
-			const block = groups[0].ids.includes(id) ? a : b;
-			assert.ok(p.x >= block.x && p.x + p.s <= block.x + block.w + 0.5, `${W}px: ${id} inside its block`);
+		const layout = tierOutcomeLayout(tiles, tiers, W, H);
+		assert.equal(layout.pos.size, costed.length, `${W}px: every costed mission once`);
+		layout.cols.forEach((c, i) => {
+			assert.equal(c.ok + c.short, failures.tiers[i].missions, `${W}px: tier ${i} missions`);
+			assert.equal(c.short, failures.tiers[i].failed + failures.tiers[i].partial, `${W}px: tier ${i} shortfalls`);
+		});
+		for (const t of costed) {
+			const p = layout.pos.get(t.id);
+			const c = layout.cols.find((col) => t.cost > col.lo && (col.hi == null || t.cost <= col.hi));
+			assert.ok(inStage(p, W, H) && p.y >= layout.top && p.y + p.s <= layout.footY, `${W}px: ${t.id} inside the plot`);
+			assert.ok(p.x >= c.x && p.x + p.s <= c.x + c.w, `${W}px: ${t.id} inside its tier’s column`);
+			assert.ok(t.shortfall ? p.y >= layout.zeroY : p.y + p.s <= layout.zeroY, `${W}px: ${t.id} on its side of zero`);
 		}
-		assert.ok(layout.s >= (W < 600 ? 12 : 20), `${W}px: squares big enough to read the marks (${layout.s}px)`);
+		const boxes = [...layout.pos.values()];
+		for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) assert.ok(!overlaps(boxes[i], boxes[j]), `${W}px: no overlap`);
 	}
 });
 
-test('the focus division on the cost axis: its squares in the rug, the chart inside the stage, the credit adding up', () => {
-	const focus = site.story.comparison.byDivision.find((d) => d.division === site.story.focusDivision);
-	const total = focus.under.top10 + focus.over.top10;
+test('the focus division on the lanes’ cost axis: its squares in the rug, the chart inside the stage, the scale just over the tallest bar', () => {
+	const { focusDivision } = site.story;
+	const leader = site.story.rate.divisions.find((d) => d.division === focusDivision).largest;
+	const comparedTiles = tiles.filter((t) => site.story.comparison.divisions.includes(t.division));
 	for (const [W, H] of sizes) {
-		const { chart, facts, pos } = focusLayout(tiles, W, H, { division: focus.division });
-		assert.equal(pos.size, tiles.filter((m) => m.division === focus.division && m.cost > 0).length);
+		const { chart, facts, pos } = focusLayout(comparedTiles, W, H, { division: focusDivision });
+		assert.equal(pos.size, tiles.filter((m) => m.division === focusDivision && m.cost > 0).length);
 		assert.ok(chart.height <= H, `${W}px: ${chart.height} of ${H}`);
 		for (const [id, p] of pos) assert.ok(inStage(p, W, H) && p.y > chart.y(0), `${W}px: ${id} under the axis`);
-		assert.ok(Math.abs(facts.total - total) < 0.5, 'the bars add up to the division total');
-		const largest = facts.points.find((p) => p.id === focus.over.largest.id);
-		assert.ok(Math.abs(largest.credit - focus.over.largest.top10) < 0.5, 'the tallest bar is the packaged largest');
+		assert.deepEqual(chart.x.domain(), costLayout(comparedTiles, W, H, { divisions: site.divisions.filter((d) => site.story.comparison.divisions.includes(d.slug)) }).x.domain(), 'the same costs as the lanes');
+		const largest = facts.points.find((p) => p.id === leader.id);
+		assert.equal(largest.credit, Math.max(...facts.points.map((p) => p.credit)), 'the tallest bar is the packaged largest');
+		assert.ok(Math.abs(largest.credit - leader.perYear) < 0.01);
+		assert.equal(chart.y.domain()[1], (Math.floor(largest.credit / 10) + 1) * 10, 'the first multiple of 10 above it');
 	}
 });
 
@@ -233,79 +224,18 @@ test('per dollar: every measured mission in its band, and each band’s cited sq
 	}
 });
 
-test('small against larger by division: two panels of shares, every mark inside, as packaged', () => {
-	const compared = site.divisions.filter((d) => site.story.comparison.divisions.includes(d.slug));
-	// 351×262: a phone in Safari, whose toolbars leave the stage a little over 250px
-	for (const [W, H] of [...sizes, [351, 262]]) {
-		const layout = varyLayout(site.story, compared, W, H, { compact: W < 600 });
-		assert.deepEqual(layout.panels.map((p) => p.key), ['failed', 'reached']);
-		const [a, b] = layout.panels;
-		assert.ok(a.axisY < b.top && b.axisY <= H, `${W}×${H}: panels apart and on the stage`);
-		assert.ok(layout.pitch >= 2 * layout.r + 4, `${W}×${H}: rows ${layout.pitch}px apart`);
-		for (const p of layout.panels) {
-			assert.deepEqual(p.rows.map((r) => r.slug), compared.map((d) => d.slug), 'one row per division, same order');
-			for (const r of p.rows) {
-				for (const m of [r.under, r.over].filter(Boolean)) {
-					assert.ok(m.x >= layout.left && m.x <= layout.right, `${W}px ${p.key} ${r.slug}: inside the plot`);
-					assert.ok(r.y > p.top && r.y < p.axisY);
-				}
-				if (r.under && r.over) assert.equal(r.under.v < r.over.v, r.under.x < r.over.x, 'x follows the share');
-				// a ring's count stays clear of the names and on the stage, at about 6px a character
-				if (r.under) {
-					const { x, anchor, text } = r.under.label;
-					const [from, to] = anchor === 'end' ? [x - text.length * 6, x] : [x, x + text.length * 6];
-					assert.ok(from > layout.left && to <= W, `${W}px ${p.key} ${r.slug}: count label inside the plot`);
-				}
-			}
-		}
+test('citations against cost: the squares by their own citations, no line, and the copy’s multiple their own fit’s', () => {
+	const focus = site.divisions.filter((d) => d.slug === site.story.focusDivision);
+	const fits = new Map(site.story.perDollar.map((d) => [d.division, d.fit]));
+	const fit = fits.get(focus[0].slug);
+	const cited = tiles.filter((t) => t.division === focus[0].slug && t.cost > 0 && t.citations > 0 && t.top10 != null);
+	const line = logFit(cited.map((t) => ({ cost: t.cost, rate: t.citations })));
+	assert.ok(Math.abs(10 ** line.slope - fit.citesTenfold) < 0.01, 'citesTenfold is the citations’ own multiple at ten times the cost');
+	for (const [W, H] of sizes) {
+		const [row] = perDollarLayout(tiles, W, H, { divisions: focus, fits, citations: true }).rows;
+		assert.equal(row.fit, null, 'no line');
+		const most = cited.reduce((a, b) => (b.citations > a.citations ? b : a));
+		const least = cited.reduce((a, b) => (b.citations < a.citations ? b : a));
+		assert.ok(row.rateY(most.citations) < row.rateY(least.citations), 'more citations sit higher');
 	}
-	const planetary = (key) => varyLayout(site.story, compared, 900, 640).panels.find((p) => p.key === key).rows.find((r) => r.slug === 'planetary');
-	const failed = site.story.failure.byDivision.find((d) => d.division === 'planetary').under;
-	assert.deepEqual([planetary('failed').under.n, planetary('failed').under.of], [failed.failed, failed.missions]);
-	const reached = site.story.comparison.byDivision.find((d) => d.division === 'planetary').over;
-	assert.equal(planetary('reached').over.v, reached.withTop / reached.missions);
-});
-
-// --- paper kinds ----------------------------------------------------------------------------
-
-const kindMissions = [
-	{ id: 'a', papers: 40 },
-	{ id: 'b', papers: 12 },
-	{ id: 'c', papers: 5 },
-	{ id: 'd', papers: 1 },
-	{ id: 'e', papers: 0 },
-	{ id: 'f', papers: 0 }
-];
-
-test('kinds layout: a row per mission with papers, the empties in a strip under them', () => {
-	for (const [W, H] of stages) {
-		for (const compact of [false, true]) {
-			const l = kindsLayout(kindMissions, W, H, { compact });
-			assert.deepEqual(l.rows.map((r) => r.id), ['a', 'b', 'c', 'd']);
-			for (const [id, p] of l.pos) assert.ok(p.x >= 0 && p.x + p.s <= W && p.y >= 0 && p.y + p.s <= H, `${W}px: ${id} inside the stage`);
-			assert.ok(l.rows[0].y >= l.headH, `${W}px: rows under the head`);
-			for (let i = 1; i < l.rows.length; i++) assert.ok(l.rows[i].y >= l.rows[i - 1].y + l.rows[i - 1].h, `${W}px: rows apart`);
-			assert.ok(l.barW > 0 && l.barX + l.barW + l.valueW <= W, `${W}px: bar and value fit`);
-			assert.deepEqual(l.strip.ids, ['e', 'f']);
-			const last = l.rows.at(-1);
-			for (const id of l.strip.ids) assert.ok(l.pos.get(id).y >= last.y + last.h, `${W}px: ${id} below the last row`);
-		}
-		const none = kindsLayout(kindMissions.slice(0, 4), W, H);
-		assert.equal(none.strip, null);
-		assert.equal(none.pos.size, 4);
-	}
-});
-
-test('example layout: the square inside the stage, the list under it', () => {
-	for (const [W, H] of stages) {
-		const l = exampleLayout('raincube', W, H, { compact: W < 600 });
-		const p = l.pos.get('raincube');
-		assert.ok(p.x >= 0 && p.x + p.s <= W && p.y >= 0 && p.y + p.s <= H);
-		assert.ok(l.listY > l.top + l.s);
-	}
-});
-
-test('example layout: a phone stage holds all seven RainCube papers, one highlighted', () => {
-	const l = exampleLayout('raincube', 351, 262, { compact: true });
-	assert.ok(l.listY + l.hit + 6 * l.row <= 262, `${l.listY + l.hit + 6 * l.row}px of 262`);
 });

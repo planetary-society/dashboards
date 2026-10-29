@@ -2,7 +2,7 @@
 // apart from scrolly/layouts.js (which re-exports it) so a division page loads only this.
 
 import { scaleLog } from 'd3-scale';
-import { byCostThenId, decadeTicks, stackLevels } from './costaxis.js';
+import { byCostThenId, costDomain, decadeTicks, stackLevels } from './costaxis.js';
 
 
 /**
@@ -30,13 +30,17 @@ export const rowLabel = (d, W) => (W >= 600 && W < 900 ? d.nav : d.name);
  * only off a neighbour: zero has no place on a log scale. `x` reuses another layout's cost axis,
  * so squares keep their x between states. `fits` (division slug → packaged perDollar fit) gives
  * each row its fit, the cost range of its cited missions and a pivot on the fitted line midway
- * along that range; trendLine() draws a line through the pivot at any slope.
+ * along that range; trendLine() draws a line through the pivot at any slope. `citations` plots
+ * each mission's citations themselves instead, with no fit: the scatter alone, before per dollar.
+ * `titled` keeps a strip over the plot for the chart's title (the overview's; a division page
+ * heads its chart itself).
  */
-export function perDollarLayout(tiles, W, H, { divisions, fits, x = null }) {
+export function perDollarLayout(tiles, W, H, { divisions, fits, x = null, citations = false, titled = false }) {
 	const compact = W < 600;
 	const single = divisions.length === 1;
-	const top = compact ? 22 : 28;
-	const bottom = compact ? 4 : 6;
+	// the cost labels sit under the plot, in the bottom margin
+	const top = (compact ? 4 : 6) + (titled ? (compact ? 22 : 28) : 0);
+	const bottom = compact ? 22 : 28;
 	const right = compact ? 8 : 24;
 	const s = single ? (compact ? 9 : 14) : compact ? 5 : 9;
 	const gap = 1;
@@ -48,11 +52,11 @@ export function perDollarLayout(tiles, W, H, { divisions, fits, x = null }) {
 	// measured as the packager reads it: a cost, and full-window output that isn't missing
 	const slugs = new Set(divisions.map((d) => d.slug));
 	const placed = tiles.filter((t) => slugs.has(t.division) && t.cost > 0 && t.citations != null && t.top10 != null).sort(byCostThenId);
-	const rate = (t) => (t.citations / t.cost) * 100;
+	const rate = (t) => (citations ? t.citations : (t.citations / t.cost) * 100);
 	const rates = placed.filter((t) => t.citations > 0).map(rate);
 	const left = single ? (compact ? 36 : 52) : rowGutter(W);
 	x ??= scaleLog()
-		.domain(placed.length ? [placed[0].cost * 0.8, placed.at(-1).cost * 1.25] : [1, 10])
+		.domain(costDomain(placed))
 		.range([left + s, W - right - s]);
 	// 0..1 up the band, with air above and below the data
 	const scale = scaleLog()
@@ -82,7 +86,7 @@ export function perDollarLayout(tiles, W, H, { divisions, fits, x = null }) {
 		const costs = members[r].filter((t) => t.citations > 0).map((t) => Math.log10(t.cost));
 		// log10 cost and rate: the cited missions' range, and the point on the fitted line midway along it
 		const span = costs.length ? [Math.min(...costs), Math.max(...costs)] : null;
-		const fit = fits.get(d.slug) ?? null;
+		const fit = citations ? null : (fits.get(d.slug) ?? null);
 		const mid = span && (span[0] + span[1]) / 2;
 		return {
 			slug: d.slug,

@@ -1,11 +1,12 @@
 <script>
 	import { page } from '$app/state';
-	import { home, divisionHref, methodsHref, asset } from '$lib/paths.js';
+	import { home, divisionHref, methodsHref, analysisHref, asset } from '$lib/paths.js';
 
 	let { divisions } = $props();
 
 	const path = $derived(page.url.pathname);
 	const homePath = home();
+	const analysisPath = analysisHref();
 	const methodsPath = methodsHref();
 	const isHome = $derived(path === homePath);
 	const inDivision = (slug) => path.startsWith(divisionHref(slug));
@@ -41,6 +42,7 @@
 		</a>
 		<ul bind:this={list}>
 			<li><a href={homePath} aria-current={isHome ? 'page' : undefined}>Overview</a></li>
+			<li><a href={analysisPath} aria-current={path === analysisPath ? 'page' : undefined}>Analysis</a></li>
 			{#each divisions as d (d.slug)}
 				<li>
 					<a href={divisionHref(d.slug)} aria-current={inDivision(d.slug) ? 'page' : undefined}>{d.nav}</a>

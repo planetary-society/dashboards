@@ -49,7 +49,8 @@
 		{#if cite > 0}
 			<!-- grows with the columns, out of the publication total -->
 			<span class="n">{int(total ** (1 - cite) * cited ** cite)}</span>
-			<span>citations of {int(total)} publications</span>
+			<!-- the publications in the columns' own blue, the citations staying white -->
+			<span>citations of <span class="neptuneBlue">{int(total)} publications</span></span>
 		{:else}
 			<span class="n">{int(rise * total)}</span>
 			<span>publications</span>

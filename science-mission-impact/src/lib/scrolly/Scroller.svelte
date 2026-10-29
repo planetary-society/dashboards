@@ -43,13 +43,16 @@
 
 		// Safety net: text taller than the room below its sticky top would be clipped while it
 		// holds (on a phone, under the pinned graphic), so that step's text scrolls normally
-		// instead. The sticky top is read back from the CSS, so the two cannot disagree.
+		// instead. The sticky top is read back from the CSS, so the two cannot disagree. A
+		// full-bleed step's frame fills that room by design (to a pixel of rounding), so it
+		// overflows only when its text grows it past the screen.
 		const fit = () => {
 			for (const el of els) {
 				const text = el.firstElementChild;
 				if (!text) continue;
 				el.classList.remove('overflows');
-				const room = window.innerHeight - parseFloat(getComputedStyle(text).top) - 8;
+				const margin = el.hasAttribute('data-bleed') ? -1 : 8;
+				const room = window.innerHeight - parseFloat(getComputedStyle(text).top) - margin;
 				if (text.offsetHeight > room) el.classList.add('overflows');
 			}
 		};
@@ -167,20 +170,25 @@
 		min-height: 120svh;
 	}
 
-	/* A full-bleed step (data-bleed) runs edge to edge across the page, taller than the screen,
-	   with its text centred and scrolling by rather than holding. The step dresses the band. */
+	/* A full-bleed step (data-bleed) runs edge to edge across the page, taller than the screen. Its
+	   first child is a frame the height of the screen under the nav with the text centred in it,
+	   which holds while the band covers the screen: a short pause (the band's height less the
+	   frame's) before the text scrolls on. The step dresses the band. */
 	.steps :global([data-step][data-bleed]) {
-		display: grid;
-		place-items: center;
 		width: 100cqw;
 		min-height: 130vh;
 		min-height: 130svh;
 		margin-left: calc(-1 * max(var(--gutter), (100cqw - var(--max)) / 2 + var(--gutter)));
-		padding: 96px var(--gutter);
+		padding: 0 var(--gutter);
 	}
 
 	.steps :global([data-step][data-bleed] > :first-child) {
-		position: static;
+		top: var(--nav-h);
+		display: grid;
+		place-items: center;
+		min-height: calc(100vh - var(--nav-h));
+		min-height: calc(100svh - var(--nav-h));
+		padding-block: 48px;
 	}
 
 	/* Phones: graphic pinned on top, steps pass beneath it as solid black bands. */

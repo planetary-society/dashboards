@@ -8,11 +8,11 @@
 	// as the skyline does a column.
 	// ponytail: one bar per count suits planetary science (most cited: a few hundred); a focus
 	// division cited into the thousands would want bars binned by more than one citation.
-	import { int, plural, spell } from '$lib/format.js';
+	import { int, plural } from '$lib/format.js';
 	import { columnLabel } from './layouts.js';
 
-	/** layout: primerLayout() result. primer: StoryFacts.primer. years: the citation window, in calendar years. highlight: top 10% in blue. hot: the pointed-at bar's citation count. */
-	let { layout, primer, years, build = 1, highlight = false, hot = null, visible = false, compact = false, width, height } = $props();
+	/** layout: primerLayout() result. primer: StoryFacts.primer. highlight: top 10% in blue. hot: the pointed-at bar's citation count. */
+	let { layout, primer, build = 1, highlight = false, hot = null, visible = false, compact = false, width, height } = $props();
 
 	const clamp01 = (v) => Math.max(0, Math.min(1, v));
 	// the sweep: the leftmost bar starts first and every bar is full by build = 1
@@ -40,12 +40,11 @@
 		{#each layout.xTicks as t (t.v)}
 			<text x={t.x} y={layout.ground + 18} text-anchor="middle">{t.v}</text>
 		{/each}
-		<text x={layout.left} y={layout.top - 14}>Papers</text>
-		<text x={layout.right} y={layout.ground + 38} text-anchor="end">Citations in a paper’s first {spell(years)} years</text>
+		<!-- the chart's header, top right like the skyline's count -->
+		<text class="stage-title" x={layout.right} y={layout.top - 14} text-anchor="end">Citation counts of {primer.name} mission papers</text>
 		<g class="cut">
 			<line x1={layout.cut - 1} x2={layout.cut - 1} y1={layout.top} y2={layout.ground} />
-			<text class="strong" x={layout.cut + 6} y={layout.top + 14}>Top 10%: {int(primer.topPapers)} papers</text>
-			<text x={layout.cut + 6} y={layout.top + (compact ? 30 : 32)}>about {primer.cutoff} or more citations</text>
+			<text class="strong" x={layout.cut + 6} y={layout.top + 14}>High impact papers</text>
 		</g>
 		{#if label && build > 0.9}<text class="label" x={label.x} y={label.y} text-anchor={label.anchor}>{label.text}</text>{/if}
 	</svg>

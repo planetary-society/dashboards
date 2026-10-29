@@ -27,8 +27,8 @@
     "m": 6.769,
     "i100": 67,
     "g": 144,
-    "tori": 171.986,
-    "riq": 936
+    "tori": 168.141,
+    "riq": 926
   },
   "facts": {
     "papers": 2834,
@@ -214,6 +214,11 @@
       "months": 117,
       "citationBuckets": 13
     },
+    "indices": {
+      "h": 56,
+      "g": 81,
+      "m": 5.742
+    },
     "spread": {
       "mean": 15.608,
       "median": 10,
@@ -245,6 +250,11 @@
       "status": "available",
       "months": 63,
       "citationBuckets": 9
+    },
+    "indices": {
+      "h": 44,
+      "g": 64,
+      "m": 8.384
     },
     "spread": {
       "mean": 19.864,
@@ -281,7 +291,7 @@
     "arms": "(((abs:IMERG AND abs:(precipitation OR rainfall OR satellite)) OR =abs:\"Global Precipitation Measurement\" OR (abs:GPM AND (abs:(precipitation OR rainfall OR satellite OR DPR OR GMI OR IMERG) OR =abs:\"Core Observatory\" OR =abs:\"Microwave Imager\") NOT (=abs:\"gas-permeable membrane\" OR =abs:\"Glaciar Perito Moreno\" OR =abs:\"groundwater potential\" OR =abs:\"gamma-pareto quantile mapping\" OR =abs:\"grid-preprocessed mosaicking\" OR =abs:\"Gauss pseudospectral\" OR =abs:\"Gaussian plume model\")) OR =abs:\"GPM Microwave Imager\" OR (=abs:\"Dual-frequency Precipitation Radar\" AND abs:(satellite OR GPM OR spaceborne) NOT abs:(FY-3G OR FY3G)) OR (abs:GMI AND abs:(precipitation OR rainfall OR microwave) NOT (=abs:\"Global Modeling Initiative\" OR =abs:\"giant magnetoimpedance\" OR =abs:\"giant magneto-impedance\" OR =abs:\"gradient meteorological instrument\" OR (abs:global AND abs:Moran))) OR (abs:DPR AND abs:(precipitation AND (satellite OR spaceborne OR GPM)) NOT =abs:\"DPR Korea\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3AIMERG+AND+abs%3A%28precipitation+OR+rainfall+OR+satellite%29%29+OR+%3Dabs%3A%22Global+Precipitation+Measurement%22+OR+%28abs%3AGPM+AND+%28abs%3A%28precipitation+OR+rainfall+OR+satellite+OR+DPR+OR+GMI+OR+IMERG%29+OR+%3Dabs%3A%22Core+Observatory%22+OR+%3Dabs%3A%22Microwave+Imager%22%29+NOT+%28%3Dabs%3A%22gas-permeable+membrane%22+OR+%3Dabs%3A%22Glaciar+Perito+Moreno%22+OR+%3Dabs%3A%22groundwater+potential%22+OR+%3Dabs%3A%22gamma-pareto+quantile+mapping%22+OR+%3Dabs%3A%22grid-preprocessed+mosaicking%22+OR+%3Dabs%3A%22Gauss+pseudospectral%22+OR+%3Dabs%3A%22Gaussian+plume+model%22%29%29+OR+%3Dabs%3A%22GPM+Microwave+Imager%22+OR+%28%3Dabs%3A%22Dual-frequency+Precipitation+Radar%22+AND+abs%3A%28satellite+OR+GPM+OR+spaceborne%29+NOT+abs%3A%28FY-3G+OR+FY3G%29%29+OR+%28abs%3AGMI+AND+abs%3A%28precipitation+OR+rainfall+OR+microwave%29+NOT+%28%3Dabs%3A%22Global+Modeling+Initiative%22+OR+%3Dabs%3A%22giant+magnetoimpedance%22+OR+%3Dabs%3A%22giant+magneto-impedance%22+OR+%3Dabs%3A%22gradient+meteorological+instrument%22+OR+%28abs%3Aglobal+AND+abs%3AMoran%29%29%29+OR+%28abs%3ADPR+AND+abs%3A%28precipitation+AND+%28satellite+OR+spaceborne+OR+GPM%29%29+NOT+%3Dabs%3A%22DPR+Korea%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:20:44.938092+00:00",
+    "fetchedAt": "2026-10-27T05:58:54.290937+00:00",
     "reconciliation": {
       "adsReturned": 2837,
       "curatedOut": 1,

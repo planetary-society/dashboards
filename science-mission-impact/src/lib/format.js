@@ -27,27 +27,20 @@ export function pct(share) {
 /** $M (2025 dollars) → "$74M" / "$3.3B". */
 export function money(millions) {
 	if (millions == null) return '—';
-	if (millions >= 1000) {
+	// unit and precision follow the value as rounded, so 999.7 reads "$1.0B", not "$1000M"
+	if (millions >= 999.5) {
 		const b = millions / 1000;
-		return `$${b >= 10 ? Math.round(b) : b.toFixed(1)}B`;
+		return `$${b >= 9.95 ? Math.round(b) : b.toFixed(1)}B`;
 	}
-	if (millions < 10) return `$${millions.toFixed(1)}M`;
+	if (millions < 9.95) return `$${millions.toFixed(1)}M`;
 	return `$${Math.round(millions)}M`;
-}
-
-/** $M in running prose, TPS style: "$150 million", "$23.5 million", "$1.4 billion". */
-export function moneyWords(millions) {
-	if (millions == null) return '—';
-	if (millions >= 1000) {
-		const b = millions / 1000;
-		return `$${b >= 10 ? Math.round(b) : +b.toFixed(1)}\u00a0billion`;
-	}
-	// a no-break space: "$4" never ends one line with "billion" starting the next
-	return `$${millions < 10 ? +millions.toFixed(1) : Math.round(millions)}\u00a0million`;
 }
 
 /** Round axis values: "$1B", not "$1.0B". */
 export const moneyTick = (millions) => money(millions).replace(/\.0(?=[MB]$)/, '');
+
+/** $M in running prose, in the charts' own short style so text and labels read alike: "$150M", "$5.8M", "$1.4B". */
+export const moneyWords = moneyTick;
 
 /** Years, signed, one decimal. */
 export const years = (y) => (y == null ? '—' : `${y < 0 ? '−' : ''}${Math.abs(y).toFixed(1)}`);

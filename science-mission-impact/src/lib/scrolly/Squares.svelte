@@ -5,9 +5,10 @@
 
 	/**
 	 * tiles: ScrollyTile[]
-	 * items: Map<id, { x, y, s, opacity?, inner?, variant?, emph?, label? }>
+	 * items: Map<id, { x, y, s, opacity?, inner?, variant?, emph?, tint?, label? }>
+	 *   tint: washed in Neptune Blue, over the variant's marks (the division a step points at)
 	 *   label: optional detailed hover/focus and accessible text; defaults to the short name
-	 *   variant: 'solid' | 'outline' | 'reached' | 'lost' | 'partial'
+	 *   variant: 'solid' | 'outline' | 'lost' | 'partial'
 	 * shown: only the first `shown` tiles are visible (the grid step reveals them on scroll)
 	 * interactive: squares are in the tab order (false inside the aria-hidden story graphic)
 	 * highlightId: the square washed in Rocket Flame (the skyline's pointed-at mission)
@@ -55,6 +56,7 @@
 				class="sq mark-{it.variant ?? 'solid'}"
 				class:filled={it.filled}
 				class:emph={it.emph}
+				class:tint={it.tint}
 				class:hot={highlightId === t.id}
 				href={missionHref(t.division, t.id)}
 				tabindex={interactive && opacity >= 0.05 ? 0 : -1}
@@ -131,10 +133,6 @@
 		--picture: 0.4;
 	}
 
-	.sq.mark-reached {
-		--wash: var(--neptune);
-	}
-
 	/* The hairlines are drawn on this overlay rather than on the square itself: an inset shadow
 	   paints under the picture, and the edges have to stay on top of it. Same colours as the
 	   .mark-* classes and the legend. */
@@ -149,10 +147,6 @@
 		transition:
 			background-color 400ms linear,
 			box-shadow 400ms linear;
-	}
-
-	.sq.mark-reached::before {
-		--wash-opacity: 0.7;
 	}
 
 	/* every state has an edge, so a bright picture never reads as a square without a mark */
@@ -212,6 +206,16 @@
 
 	.sq.hot::before {
 		--wash-opacity: 0.7;
+	}
+
+	/* the division a step points at: its colour washed over the picture, under any failure marks
+	   (they are the ::after, drawn above this wash) */
+	.sq.tint {
+		--wash: var(--neptune);
+	}
+
+	.sq.tint::before {
+		--wash-opacity: 0.6;
 	}
 
 	/* an outright failure: the picture dimmed under a red X; a partial outcome: one red stroke */

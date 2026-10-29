@@ -27,8 +27,8 @@
     "m": 9.568,
     "i100": 2816,
     "g": 596,
-    "tori": 4627.9,
-    "riq": 1838
+    "tori": 4265.549,
+    "riq": 1765
   },
   "facts": {
     "papers": 18915,
@@ -285,6 +285,11 @@
       "months": 404,
       "citationBuckets": 37
     },
+    "indices": {
+      "h": 158,
+      "g": 259,
+      "m": 4.693
+    },
     "spread": {
       "mean": 23.325,
       "median": 14,
@@ -316,6 +321,11 @@
       "status": "available",
       "months": 204,
       "citationBuckets": 21
+    },
+    "indices": {
+      "h": 108,
+      "g": 167,
+      "m": 6.353
     },
     "spread": {
       "mean": 20.564,
@@ -352,7 +362,7 @@
     "arms": "((=abs:(\"Hubble Space Telescope\" OR \"Hubble Space\" OR \"Hubble telescope\" OR \"Hubble imaging\" OR \"Hubble images\" OR \"Hubble image\" OR \"Hubble imagery\" OR \"Hubble photometry\" OR \"Hubble archive\" OR \"Hubble Legacy\" OR \"Hubble Deep Field\" OR \"Hubble Deep Fields\" OR \"Hubble Ultra Deep Field\" OR \"Hubble Ultradeep Field\" OR \"Hubble eXtreme Deep Field\" OR \"Hubble Frontier Fields\" OR \"Hubble Frontier Field\" OR \"Hubble Frontiers Fields\" OR \"Hubble Source Catalog\" OR \"Hubble Source Catalogue\" OR \"Hubble Key Project\" OR \"Hubble ultraviolet\" OR \"Hubble UV Legacy\" OR \"Hubble UV Globular Cluster\" OR \"Hubble Spectroscopic Legacy\" OR \"Hubble Tarantula Treasury\" OR \"Carnegie Hubble Program\" OR \"Galaxy zoo: Hubble\" OR \"Lensing and Supernova survey with Hubble\" OR \"Lensing and Supernovae survey with Hubble\" OR \"Lensing and Supernova with Hubble\" OR \"Hubble WFC3\" OR \"Hubble STIS\" OR \"Hubble ACS\" OR \"Hubble COS\" OR \"Hubble Wide Field Camera\" OR \"Hubble and Spitzer\" OR \"Hubble and James Webb\" OR \"Space Telescope Imaging Spectrograph\" OR \"Advanced Camera for Surveys\" OR \"Wide Field Camera 3\" OR \"Wide Field and Planetary Camera\" OR \"Near Infrared Camera and Multi-Object Spectrometer\" OR \"Cosmic Origins Spectrograph\" OR \"Goddard High Resolution Spectrograph\") OR ((abs:HST OR abs:STIS OR abs:NICMOS OR abs:WFPC OR abs:WFPC2 OR abs:WFC3) AND (abs:telescope OR abs:imaging OR abs:images OR abs:observations OR abs:observed OR abs:photometry OR abs:spectroscopy OR abs:spectra OR abs:spectrum OR abs:ultraviolet OR abs:UV OR abs:optical OR abs:infrared OR abs:archival OR abs:survey OR abs:resolution OR abs:galaxies OR abs:galaxy OR abs:stars OR abs:star OR abs:cluster OR abs:clusters) AND collection:astronomy) OR (abs:GHRS AND (abs:ultraviolet OR abs:UV OR abs:spectrograph) AND collection:astronomy AND NOT (=abs:\"giant HII\" OR =abs:\"giant H II\")) OR facility:HST))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1990-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Hubble+Space+Telescope%22+OR+%22Hubble+Space%22+OR+%22Hubble+telescope%22+OR+%22Hubble+imaging%22+OR+%22Hubble+images%22+OR+%22Hubble+image%22+OR+%22Hubble+imagery%22+OR+%22Hubble+photometry%22+OR+%22Hubble+archive%22+OR+%22Hubble+Legacy%22+OR+%22Hubble+Deep+Field%22+OR+%22Hubble+Deep+Fields%22+OR+%22Hubble+Ultra+Deep+Field%22+OR+%22Hubble+Ultradeep+Field%22+OR+%22Hubble+eXtreme+Deep+Field%22+OR+%22Hubble+Frontier+Fields%22+OR+%22Hubble+Frontier+Field%22+OR+%22Hubble+Frontiers+Fields%22+OR+%22Hubble+Source+Catalog%22+OR+%22Hubble+Source+Catalogue%22+OR+%22Hubble+Key+Project%22+OR+%22Hubble+ultraviolet%22+OR+%22Hubble+UV+Legacy%22+OR+%22Hubble+UV+Globular+Cluster%22+OR+%22Hubble+Spectroscopic+Legacy%22+OR+%22Hubble+Tarantula+Treasury%22+OR+%22Carnegie+Hubble+Program%22+OR+%22Galaxy+zoo%3A+Hubble%22+OR+%22Lensing+and+Supernova+survey+with+Hubble%22+OR+%22Lensing+and+Supernovae+survey+with+Hubble%22+OR+%22Lensing+and+Supernova+with+Hubble%22+OR+%22Hubble+WFC3%22+OR+%22Hubble+STIS%22+OR+%22Hubble+ACS%22+OR+%22Hubble+COS%22+OR+%22Hubble+Wide+Field+Camera%22+OR+%22Hubble+and+Spitzer%22+OR+%22Hubble+and+James+Webb%22+OR+%22Space+Telescope+Imaging+Spectrograph%22+OR+%22Advanced+Camera+for+Surveys%22+OR+%22Wide+Field+Camera+3%22+OR+%22Wide+Field+and+Planetary+Camera%22+OR+%22Near+Infrared+Camera+and+Multi-Object+Spectrometer%22+OR+%22Cosmic+Origins+Spectrograph%22+OR+%22Goddard+High+Resolution+Spectrograph%22%29+OR+%28%28abs%3AHST+OR+abs%3ASTIS+OR+abs%3ANICMOS+OR+abs%3AWFPC+OR+abs%3AWFPC2+OR+abs%3AWFC3%29+AND+%28abs%3Atelescope+OR+abs%3Aimaging+OR+abs%3Aimages+OR+abs%3Aobservations+OR+abs%3Aobserved+OR+abs%3Aphotometry+OR+abs%3Aspectroscopy+OR+abs%3Aspectra+OR+abs%3Aspectrum+OR+abs%3Aultraviolet+OR+abs%3AUV+OR+abs%3Aoptical+OR+abs%3Ainfrared+OR+abs%3Aarchival+OR+abs%3Asurvey+OR+abs%3Aresolution+OR+abs%3Agalaxies+OR+abs%3Agalaxy+OR+abs%3Astars+OR+abs%3Astar+OR+abs%3Acluster+OR+abs%3Aclusters%29+AND+collection%3Aastronomy%29+OR+%28abs%3AGHRS+AND+%28abs%3Aultraviolet+OR+abs%3AUV+OR+abs%3Aspectrograph%29+AND+collection%3Aastronomy+AND+NOT+%28%3Dabs%3A%22giant+HII%22+OR+%3Dabs%3A%22giant+H+II%22%29%29+OR+facility%3AHST%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1990-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:29:46.452658+00:00",
+    "fetchedAt": "2026-10-27T06:09:22.463365+00:00",
     "reconciliation": {
       "adsReturned": 18919,
       "curatedOut": 1,

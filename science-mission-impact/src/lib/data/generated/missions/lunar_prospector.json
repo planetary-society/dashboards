@@ -25,14 +25,14 @@
   "indices": {
     "h": 67,
     "m": 2.31,
-    "i100": 39,
+    "i100": 38,
     "g": 109,
-    "tori": 121.89,
-    "riq": 380
+    "tori": 119.622,
+    "riq": 377
   },
   "facts": {
-    "papers": 297,
-    "citations": 14653,
+    "papers": 296,
+    "citations": 14476,
     "publicationYears": [
       1998,
       2026
@@ -86,7 +86,7 @@
       10,
       18,
       16,
-      7,
+      6,
       12,
       12,
       10,
@@ -117,33 +117,33 @@
       610,
       666,
       812,
-      584,
-      669,
-      795,
-      574,
-      502,
-      541,
-      573,
-      623,
-      720,
-      736,
-      1112,
-      940,
-      937,
-      834
+      581,
+      643,
+      775,
+      559,
+      494,
+      525,
+      567,
+      612,
+      708,
+      725,
+      1106,
+      926,
+      922,
+      820
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 14653,
-      "observed": 14653,
+      "expected": 14476,
+      "observed": 14476,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 297,
+    "papers": 296,
     "us": {
-      "mapped": 153,
+      "mapped": 152,
       "top": [
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
@@ -160,7 +160,7 @@
       ]
     },
     "world": {
-      "mapped": 232,
+      "mapped": 231,
       "top": [
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
@@ -226,14 +226,14 @@
       "bins": [
         23.887,
         21.151,
-        28.541,
-        21.91,
+        28.557,
+        21.894,
         25.57,
-        26.504,
-        32.945,
+        26.517,
+        32.931,
         37.065,
         31.672,
-        47.756
+        46.756
       ],
       "top1": 3
     }
@@ -261,6 +261,11 @@
       "status": "available",
       "months": 42,
       "citationBuckets": 7
+    },
+    "indices": {
+      "h": 16,
+      "g": 24,
+      "m": 4.577
     },
     "spread": {
       "mean": 13.739,
@@ -294,6 +299,11 @@
       "months": 36,
       "citationBuckets": 7
     },
+    "indices": {
+      "h": 15,
+      "g": 23,
+      "m": 4.998
+    },
     "spread": {
       "mean": 14.475,
       "median": 6.5,
@@ -303,11 +313,11 @@
     }
   },
   "lifetime": {
-    "papers": 297,
+    "papers": 296,
     "outputBasis": "measured",
-    "citations": 14653,
-    "top10": 45.756,
-    "top10ShareOfDivision": 0.02922,
+    "citations": 14476,
+    "top10": 45.256,
+    "top10ShareOfDivision": 0.0289,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -318,31 +328,39 @@
       "date": "1998-09-00"
     },
     "spread": {
-      "mean": 49.337,
+      "mean": 48.905,
       "median": 25,
       "uncited": 19,
-      "i10": 215,
-      "i100": 39
+      "i10": 214,
+      "i100": 38
     }
   },
   "query": {
     "arms": "((=abs:\"Lunar Prospector\" OR (abs:LPNS AND abs:(lunar OR Moon OR neutron))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1998-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Prospector%22+OR+%28abs%3ALPNS+AND+abs%3A%28lunar+OR+Moon+OR+neutron%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:10:39.894186+00:00",
+    "fetchedAt": "2026-10-27T05:42:45.591287+00:00",
     "reconciliation": {
       "adsReturned": 305,
-      "curatedOut": 8,
+      "curatedOut": 9,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 297
+      "final": 296
     }
   },
   "curation": {
     "includes": [],
     "excludes": [
+      {
+        "bibcode": "2013JGRE..118.1415K",
+        "doi": "10.1002/jgre.20097",
+        "title": "The JPL lunar gravity field to spherical harmonic degree 660 from the GRAIL Primary Mission",
+        "reason": "GRAIL results paper. Mentions Lunar Prospector merely by what it didn't do.",
+        "authority": "human",
+        "date": "2026-10-28"
+      },
       {
         "bibcode": "2002AcAau..50..379B",
         "doi": "10.1016/S0094-5765(01)00184-9",
@@ -545,15 +563,6 @@
       "citations": 181
     },
     {
-      "bibcode": "2013JGRE..118.1415K",
-      "title": "The JPL lunar gravity field to spherical harmonic degree 660 from the GRAIL Primary Mission",
-      "firstAuthor": "Konopliv, Alex S.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2013,
-      "citations": 177
-    },
-    {
       "bibcode": "2006Natur.443..835C",
       "title": "No evidence for thick deposits of ice at the lunar south pole",
       "firstAuthor": "Campbell, Donald B.",
@@ -597,9 +606,18 @@
       "authorCount": null,
       "year": 2012,
       "citations": 157
+    },
+    {
+      "bibcode": "1998Sci...281.1475B",
+      "title": "Lunar Prospector: Overview",
+      "firstAuthor": "Binder, Alan B.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1998,
+      "citations": 154
     }
   ],
   "papersFile": {
-    "rows": 297
+    "rows": 296
   }
 }

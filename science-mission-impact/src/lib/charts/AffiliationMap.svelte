@@ -11,10 +11,11 @@
 	import { scaleSequentialLog } from 'd3-scale';
 	import { interpolateLab, piecewise } from 'd3-interpolate';
 
-	let { summary, url } = $props();
+	/** maxHeight: the most the map itself may stand, in px, so it can match a chart beside it; its width follows. */
+	let { summary, url, maxHeight = null } = $props();
 	const uid = $props.id();
 	let chosen = $state(null);
-	// raw: the fetched grid and the hovered cell are replaced, never mutated, so neither needs a deep proxy
+	// raw: the fetched grid and the pointed-at cell are replaced, never mutated, so neither needs a deep proxy
 	let grid = $state.raw(null);
 	let failed = $state(false);
 	let hover = $state.raw(null);
@@ -59,20 +60,21 @@
 	// Cells arrive most papers first; a log scale keeps one big centre from washing out the rest.
 	const top = $derived(Math.max(cells[0]?.papers ?? 1, 10));
 	const color = $derived(scaleSequentialLog(piecewise(interpolateLab, HEAT)).domain([1, top]));
-	const ticks = $derived(decadeTicks(1, top));
+	// the decades, then the top end itself at the ramp's right edge; a decade that would crowd its label steps aside
+	const ticks = $derived([...decadeTicks(1, top).filter((t) => Math.log(t) / Math.log(top) < 0.7), top]);
+	// for the screen-reader label only; no caption shows them
 	const leaders = $derived(facts.top.map((t) => `${t.name} (${int(t.papers)})`).join('; '));
-	const readout = $derived(
-		hover
-			? `${int(hover.papers)} ${plural(hover.papers, 'paper')} with an author in this square, ${hover.count > 1 ? `led by ${hover.place} (1 of ${int(hover.count)} institutions here)` : `at ${hover.place}`}.`
-			: facts.top.length
-				? `Institutions on the most papers: ${leaders}.`
-				: 'No tracked publication has an author at an institution on this map.'
-	);
 
+	// The pointed-at square and where the pointer is on the map (x, y), for the pop-up. A tap is a
+	// pointerdown, so a touch picks a square too; it stays until the next tap, since a lifted
+	// finger also fires pointerleave, which clears only a mouse's.
 	function pick(event) {
 		const i = event.target.dataset?.i;
-		hover = i == null ? null : cells[i];
+		const r = event.currentTarget.getBoundingClientRect();
+		hover = i == null ? null : { ...cells[i], x: event.clientX - r.left, y: event.clientY - r.top, w: r.width };
 	}
+	// the pop-up hangs off the pointer's side with room: its left edge near the left, its right near the right
+	const shift = (h) => (h.x < h.w / 3 ? '-12px' : h.x > (h.w * 2) / 3 ? 'calc(12px - 100%)' : '-50%');
 </script>
 
 <figure bind:this={figure}>
@@ -83,17 +85,17 @@
 			<span class="ticks">
 				{#each ticks as t (t)}<span style:left="{(Math.log(t) / Math.log(top)) * 100}%">{int(t)}</span>{/each}
 			</span>
-			<span class="unit">papers with an author in the square</span>
+			<span class="unit">papers</span>
 		</div>
 	</div>
-	<div class="stage" style:aspect-ratio="{map.width} / {map.height}">
+	<div class="stage" style:aspect-ratio="{map.width} / {map.height}" style:max-width={maxHeight ? `${Math.min(960, (maxHeight * map.width) / map.height)}px` : null}>
 		<svg
 			viewBox="0 0 {map.width} {map.height}"
 			role="img"
 			aria-label="Heat map of where the authors worked, {map.label}: {int(facts.mapped)} of {int(summary.papers)} tracked publications have an author on this map.{leaders ? ` Institutions on the most papers: ${leaders}.` : ''}"
 			onpointermove={pick}
 			onpointerdown={pick}
-			onpointerleave={() => (hover = null)}
+			onpointerleave={(e) => e.pointerType === 'mouse' && (hover = null)}
 		>
 			<!-- A soft halo under each square: the busiest places glow like city lights, and a lone square on a phone still shows. -->
 			<filter id="{uid}-glow" x="-10%" y="-10%" width="120%" height="120%">
@@ -108,27 +110,33 @@
 			</g>
 			{#if hover}<path class="hovered" d={hover.d} />{/if}
 		</svg>
+		<!-- the square's leading institution, how many others share it, and its papers; under the pointer's top edge, it drops below -->
+		{#if hover}
+			<p class="tip" class:below={hover.y < 64} style:left="{hover.x}px" style:top="{hover.y}px" style:--shift={shift(hover)}>
+				<strong>{hover.place}</strong>{#if hover.count > 1}{' '}and {int(hover.count - 1)} {plural(hover.count - 1, 'other')}{/if}
+				<span>{int(hover.papers)} {plural(hover.papers, 'paper')}</span>
+			</p>
+		{/if}
 		{#if !grid}<p class="status meta">{failed ? 'The map’s data didn’t load. Reload the page to try again.' : 'Loading the map…'}</p>{/if}
 	</div>
-	<p class="readout">{readout}</p>
-	<p class="meta">
-		{int(facts.mapped)} of {int(summary.papers)} tracked {plural(summary.papers, 'publication')} {plural(facts.mapped, 'has', 'have')} an author at {key === 'us' ? 'a US institution on this map' : 'an institution we could locate'}.
-	</p>
 </figure>
 
 <style>
 	figure { min-width: 0; }
-	.toolbar { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px 32px; max-width: 960px; margin-top: 16px; font-size: 14px; }
+	.toolbar { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px 32px; max-width: 960px; margin-top: 12px; font-size: 14px; }
 	.legend { display: grid; grid-template-columns: 160px auto; column-gap: 12px; align-items: center; color: var(--dust); font-size: 12px; line-height: 16px; }
 	.ramp { height: 8px; border-radius: 1px; }
 	.ticks { position: relative; grid-row: 2; height: 16px; margin-top: 2px; }
 	.ticks span { position: absolute; transform: translateX(-50%); font-variant-numeric: tabular-nums; }
 	.ticks span:first-child { transform: none; }
+	.ticks span:last-child { transform: translateX(-100%); }
 	.unit { grid-row: 1 / span 2; grid-column: 2; max-width: 11em; }
-	.stage { position: relative; max-width: 960px; margin-top: 16px; }
+	.stage { position: relative; max-width: 960px; margin-top: 12px; }
 	svg { display: block; width: 100%; height: auto; cursor: crosshair; touch-action: pan-y; }
 	.hovered { fill: none; stroke: var(--white); stroke-width: 1.5px; vector-effect: non-scaling-stroke; pointer-events: none; }
 	.status { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; }
-	.readout { min-height: 40px; max-width: 48em; margin-top: 12px; font-size: 14px; line-height: 20px; }
-	.meta { margin-top: 4px; color: var(--dust); }
+	.tip { position: absolute; z-index: 2; margin: 0; padding: 6px 10px; transform: translate(var(--shift), calc(-100% - 12px)); width: max-content; max-width: 240px; background: var(--black); border: 1px solid var(--shadow); font-size: 13px; line-height: 18px; pointer-events: none; }
+	.tip.below { transform: translate(var(--shift), 16px); }
+	.tip strong { font-weight: 500; }
+	.tip span { display: block; color: var(--dust); }
 </style>

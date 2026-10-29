@@ -16,6 +16,7 @@ const config = {
 	costBaseYear: 2025,
 	smallestClass: 'small',
 	thresholdCost: 150,
+	analysis: { costTiers: [50, 150], costGroups: [150] },
 	rankingMinPapers: 50,
 	tierPercents: [10, 50]
 };
@@ -99,8 +100,7 @@ describe('buildSite', () => {
 		papersDistinct: 90,
 		citationsDistinct: 1234,
 		yearCohortMinN: snapshot.yearCohortMinN,
-		clps: { program: 'CLPS', series: [0, 1, null] },
-		kinds: { scope: 'full', missions: [] }
+		clps: { program: 'CLPS', series: [0, 1, null] }
 	});
 
 	it('reads the configured threshold and passes the CLPS facts through', () => {
@@ -109,7 +109,6 @@ describe('buildSite', () => {
 		assert.deepEqual(site.story.failure.under, { missions: 0, failed: 0, lost: 0, rate: null, interval: null, lostCostMax: null });
 		assert.equal(site.story.failure.higher, null);
 		assert.deepEqual(site.clps, { program: 'CLPS', series: [0, 1, null] });
-		assert.deepEqual(site.kinds, { scope: 'full', missions: [] });
 	});
 
 	it('spans the launch) and publication years of what was packaged', () => {

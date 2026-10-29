@@ -35,7 +35,7 @@ export function timelineLayout(model, width, height = 300) {
 		if (year > first && year < last && x(year) - x(xTicks.at(-1)) >= 52 && x(last) - x(year) >= 52) xTicks.push(year);
 	}
 	if (last !== first) xTicks.push(last);
-	const top = 30, bottom = height - 40;
+	const top = 30, bottom = height - 26; // the year ticks hang under the plot, with no axis title
 	const panels = [['pub', 'Publications per year', 'left'], ['cite', 'Cumulative citations', 'right']].map(([key, label, side]) => {
 		const y = scaleLinear().domain([0, Math.max(1, ...model.points.map((p) => p[key]))]).nice(4).range([bottom, top]);
 		const path = line().x((p) => x(p.year)).y((p) => y(p[key]));

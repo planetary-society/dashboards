@@ -4,25 +4,25 @@
 	// band's cited missions: one the story imagines (`would`, dashed, in the lone band only), or the
 	// best fit, which `turn` swings up from flat to its packaged slope (0–1). Bands share one rate
 	// scale, so a line's tilt reads the same in each; the figures beside them come from the
-	// packaged fits (each layout row's `fit`). A fit the copy won't call a trend (nearly flat, or
-	// reversed by leaving out one mission) is drawn dashed grey, by the copy's own rule.
-	import { compact as short, money, moneyTick } from '$lib/format.js';
+	// packaged fits (each layout row's `fit`). Every fit is drawn alike, flat or not; a nearly flat
+	// one says so in its band's label.
+	import { compact as short, moneyTick } from '$lib/format.js';
 	import { minorDollarTicks } from '$lib/charts/costaxis.js';
 	import DollarMinorTicks from '$lib/charts/DollarMinorTicks.svelte';
-	import { flat, soft } from '$lib/copy/discussion.js';
+	import { flat } from '$lib/copy/discussion.js';
 	import { trendLine } from '$lib/charts/perdollar.js';
 
 	/**
 	 * layout: perDollarLayout(). would: the imagined line, { slope, label, shown }; it keeps its
 	 * slope while hidden, so it fades where it stands. turn: how far the best fit has swung from
-	 * flat to its slope; null draws none. referenceCost: the threshold line and its shaded side; null
-	 * draws neither (the division pages).
+	 * flat to its slope; null draws none. title: the chart's title, over a layout made `titled`.
 	 */
-	let { layout, referenceCost = null, would = null, turn = 1, visible = false, compact = false, width, height } = $props();
+	let { layout, title = null, would = null, turn = 1, visible = false, compact = false, width, height } = $props();
 
 	const single = $derived(layout.rows.length === 1);
 	const [x0, x1] = $derived(layout.x.range());
-	const refX = $derived(referenceCost == null ? null : layout.x(referenceCost));
+	// a lone band on a shared axis with no gutter (a phone's lanes) labels its scale inside the plot
+	const inside = $derived(single && x0 < 30);
 	const imagined = $derived(single && would ? layout.rows.map((row) => trendLine(layout, row, would.slope)) : []);
 	const best = $derived(layout.rows.map((row) => (row.fit && turn != null ? trendLine(layout, row, row.fit.slope * turn) : null)));
 </script>
@@ -34,45 +34,49 @@
 		{/each}
 		<span class="band" style:top="{layout.bottomY}px"></span>
 	{/if}
-	<DollarMinorTicks positions={minorDollarTicks(...layout.x.domain()).map(layout.x)} />
+	<DollarMinorTicks positions={minorDollarTicks(...layout.x.domain()).map(layout.x)} top={layout.bottomY} />
 	{#each layout.ticks as t (t)}
-		<!-- a decade label that would touch the threshold's own label gives way to it -->
-		{#if refX == null || Math.abs(layout.x(t) - refX) > (compact ? 34 : 44)}<span class="tick" style:left="{layout.x(t)}px">{moneyTick(t)}</span>{/if}
+		<span class="tick" style:left="{layout.x(t)}px" style:top="{layout.bottomY + 5}px">{moneyTick(t)}</span>
 	{/each}
 
 	<svg {width} {height}>
-		{#if refX != null}<rect class="zone" x={x0} y={layout.top} width={Math.max(0, refX - x0)} height={layout.bottomY - layout.top} />{/if}
+		<!-- the chart's title, top right like the overview's other charts -->
+		{#if title}<text class="stage-title" x={x1} y={layout.top - 12} text-anchor="end">{title}</text>{/if}
 		{#each layout.ticks as t (t)}
 			<line class="grid" x1={layout.x(t)} x2={layout.x(t)} y1={layout.top} y2={layout.bottomY} />
 		{/each}
-		{#if refX != null}<line class="reference" x1={refX} x2={refX} y1={layout.top} y2={layout.bottomY} />{/if}
 		{#each layout.rows as row, i (row.slug)}
 			{#each layout.rateTicks as r (r)}
 				<line class="rate" x1={x0} x2={x1} y1={row.rateY(r)} y2={row.rateY(r)} />
 				<!-- the rate scale is labelled once: down the gutter of a lone band, on the first of several -->
 				{#if single}
-					<text x={x0 - 10} y={row.rateY(r)} dy="0.32em" text-anchor="end">{short(r)}</text>
+					<text class:callout={inside} x={inside ? x0 + 4 : x0 - 10} y={row.rateY(r)} dy={inside ? '-0.4em' : '0.32em'} text-anchor={inside ? 'start' : 'end'}>{short(r)}</text>
 				{:else if i === 0 && (!compact || r === layout.rateTicks.at(-1))}
 					<text class="rate-label" x={compact ? x1 : x1 + 6} y={row.rateY(r)} dy={compact ? '-0.4em' : '0.32em'} text-anchor={compact ? 'end' : 'start'}>{short(r)}</text>
 				{/if}
 			{/each}
 			<line class="shelf" x1={x0} x2={x1} y1={row.shelfY} y2={row.shelfY} />
-			{#if single}<text x={x0 - 10} y={(row.shelfY + row.floorY) / 2} dy="0.32em" text-anchor="end">None</text>{/if}
+			{#if single}<text class:callout={inside} x={inside ? x0 + 4 : x0 - 10} y={inside ? row.floorY : (row.shelfY + row.floorY) / 2} dy={inside ? '-0.4em' : '0.32em'} text-anchor={inside ? 'start' : 'end'}>None</text>{/if}
 			{@const line = imagined[i]}
 			{#if line}
 				<g class="would" class:shown={would.shown}>
 					<line x1={line.x1} y1={line.y1} x2={line.x2} y2={line.y2} />
-					<!-- labelled at the cheap end, above the line, where cited missions are fewest -->
-					{#if would.label}<text class="callout" x={line.x1} y={line.y1 - 10}>{would.label}</text>{/if}
 				</g>
 			{/if}
 			{#if best[i]}
-				<line class="fit" class:soft={soft(row.fit)} x1={best[i].x1} y1={best[i].y1} x2={best[i].x2} y2={best[i].y2} />
-				{#if single && turn > 0.9}<text class="callout fit-label" class:soft={soft(row.fit)} x={best[i].x2} y={best[i].y2 - 10} text-anchor="end">Best fit</text>{/if}
+				<line class="fit" x1={best[i].x1} y1={best[i].y1} x2={best[i].x2} y2={best[i].y2} />
 			{/if}
 		{/each}
 	</svg>
-	{#if refX != null}<span class="tick strong" style:left="{refX}px">{money(referenceCost)}</span>{/if}
+
+	<!-- the lone band's line labels, in HTML so they sit over the squares the stage draws after this
+	     chart: the imagined line's at its cheap end, the best fit's at its costly end, both above the line -->
+	{#if single && imagined[0] && would.label}
+		<span class="label would-label" class:shown={would.shown} style:left="{imagined[0].x1 - 4}px" style:top="{imagined[0].y1 - 6}px">{would.label}</span>
+	{/if}
+	{#if single && best[0] && turn > 0.9}
+		<span class="label fit-label" style:left="{best[0].x2 + 4}px" style:top="{best[0].y2 - 6}px">Best fit</span>
+	{/if}
 
 	{#if !single}
 		{#each layout.rows as row (row.slug)}
@@ -127,7 +131,6 @@
 	}
 
 	.tick {
-		top: 0;
 		transform: translateX(-50%);
 		font-size: 12px;
 		line-height: 16px;
@@ -135,23 +138,9 @@
 		white-space: nowrap;
 	}
 
-	/* the lanes' threshold label, so the axis doesn't shift when the lanes hand over to the bands */
-	.tick.strong {
-		color: var(--white);
-		font-weight: 500;
-		background: var(--black);
-		padding-inline: 4px;
-	}
-
 	.compact .tick {
 		font-size: 10px;
 		line-height: 13px;
-	}
-
-	/* the threshold side of the axis */
-	.zone {
-		fill: var(--strip-empty);
-		opacity: 0.8;
 	}
 
 	.grid {
@@ -167,11 +156,6 @@
 	.rate-label {
 		font-size: 10px;
 		fill: var(--soil);
-	}
-
-	.reference {
-		stroke: var(--white);
-		stroke-dasharray: 4 4;
 	}
 
 	.shelf {
@@ -211,18 +195,35 @@
 		stroke-width: 2;
 	}
 
-	.fit.soft {
-		stroke: var(--soil);
-		stroke-width: 2;
-		stroke-dasharray: 5 4;
+	/* over the squares (z-index), on a black backing so a thumbnail under it can't break it up */
+	.label {
+		z-index: 3;
+		padding: 0 4px;
+		transform: translateY(-100%);
+		font-size: 12px;
+		line-height: 16px;
+		color: var(--dust);
+		background: var(--black);
+		white-space: nowrap;
 	}
 
-	text.fit-label.soft {
-		fill: var(--soil);
+	.compact .label {
+		font-size: 11px;
+		line-height: 14px;
 	}
 
-	text.fit-label {
-		fill: var(--neptune);
+	.would-label {
+		opacity: 0;
+		transition: opacity 400ms linear;
+	}
+
+	.would-label.shown {
+		opacity: 1;
+	}
+
+	.fit-label {
+		transform: translate(-100%, -100%);
+		color: var(--neptune);
 		font-weight: 500;
 	}
 

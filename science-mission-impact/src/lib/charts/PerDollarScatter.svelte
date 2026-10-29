@@ -7,7 +7,6 @@
 	import { perDollarLayout } from '$lib/charts/perdollar.js';
 	import { failureItems } from '$lib/scrolly/items.js';
 	import { int, money, plural } from '$lib/format.js';
-	import { soft } from '$lib/copy/discussion.js';
 	import { measured } from '$lib/mission/papers.js';
 
 	/** fit: the scope's perDollar.fit, or null */
@@ -35,36 +34,13 @@
 			<Squares {tiles} {items} />
 		{/if}
 	</div>
-	<p class="meta key">Each square is a mission. Point at one for its figures. Across: inflation-adjusted cost. Up: citations per {money(100)} of cost. Both log scales. <span class="swatch" class:soft={fit && soft(fit)}></span>Best fit</p>
 </figure>
 
 <style>
+	/* the by-year chart's height beside it, so the pair lines up */
 	.stage {
 		position: relative;
-		height: 400px;
+		height: 300px;
 		margin-top: 12px;
-	}
-
-	.key {
-		margin-top: 8px;
-	}
-
-	.swatch {
-		display: inline-block;
-		width: 16px;
-		margin: 0 4px 0 6px;
-		vertical-align: middle;
-		border-top: 3px solid var(--neptune);
-	}
-
-	/* DollarChart's dashed grey line for a fit that isn't a clear trend */
-	.swatch.soft {
-		border-top: 2px dashed var(--soil);
-	}
-
-	@media (max-width: 600px) {
-		.stage {
-			height: 320px;
-		}
 	}
 </style>

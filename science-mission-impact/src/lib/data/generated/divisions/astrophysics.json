@@ -4,7 +4,7 @@
   "facts": {
     "missions": 25,
     "papers": 63485,
-    "citations": 3468217,
+    "citations": 3468218,
     "publicationYears": [
       1983,
       2026
@@ -148,13 +148,160 @@
       181045,
       210674,
       229152,
-      260938
+      260939
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 3468217,
-      "observed": 3468217,
+      "expected": 3468218,
+      "observed": 3468218,
+      "missing": 0
+    }
+  },
+  "fullSeries": {
+    "years": [
+      1983,
+      1984,
+      1985,
+      1986,
+      1987,
+      1988,
+      1989,
+      1990,
+      1991,
+      1992,
+      1993,
+      1994,
+      1995,
+      1996,
+      1997,
+      1998,
+      1999,
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
+      3,
+      21,
+      7,
+      0,
+      0,
+      0,
+      0,
+      45,
+      122,
+      197,
+      481,
+      575,
+      733,
+      754,
+      764,
+      790,
+      987,
+      946,
+      1054,
+      1167,
+      1328,
+      1476,
+      1546,
+      1776,
+      1796,
+      1656,
+      2100,
+      2245,
+      2401,
+      2429,
+      2070,
+      2006,
+      2068,
+      2057,
+      2087,
+      2093,
+      2047,
+      2090,
+      1898,
+      1964,
+      1966,
+      0,
+      0,
+      0
+    ],
+    "citations": [
+      1,
+      51,
+      84,
+      131,
+      95,
+      39,
+      0,
+      30,
+      309,
+      923,
+      3054,
+      5473,
+      8314,
+      10783,
+      11468,
+      12813,
+      16654,
+      15906,
+      19724,
+      19207,
+      25308,
+      32448,
+      32151,
+      38486,
+      41168,
+      39594,
+      46638,
+      47768,
+      51326,
+      59321,
+      57099,
+      51884,
+      49411,
+      45405,
+      44833,
+      46409,
+      44025,
+      41680,
+      38505,
+      37276,
+      35864,
+      35643,
+      25790,
+      13168
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 1106259,
+      "observed": 1106259,
       "missing": 0
     }
   },
@@ -818,8 +965,8 @@
     "lifetime": {
       "missions": 25,
       "papers": 63485,
-      "citations": 3468217,
-      "mean": 54.63,
+      "citations": 3468218,
+      "mean": 54.631,
       "median": 24,
       "uncited": 3269,
       "hIndex": 512,
@@ -10844,17 +10991,20 @@
       "launchYear": 2018,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Survey Observatory",
+      "selection": "competed",
       "indices": {
         "h": 9,
         "m": 1.125,
         "i100": 0,
         "g": 15,
-        "tori": 1.484,
-        "riq": 203
+        "tori": 0.974,
+        "riq": 164
       },
       "papers": 15,
       "citations": 286,
+      "top10PerYear": 0,
       "hasThumb": true,
       "full": {
         "papers": 11,
@@ -10879,6 +11029,11 @@
           "status": "available",
           "months": 47,
           "citationBuckets": 8
+        },
+        "indices": {
+          "h": 7,
+          "g": 11,
+          "m": 1.788
         }
       },
       "window": {
@@ -10904,6 +11059,11 @@
           "status": "available",
           "months": 35,
           "citationBuckets": 7
+        },
+        "indices": {
+          "h": 7,
+          "g": 10,
+          "m": 2.401
         }
       },
       "lifetime": {
@@ -10931,17 +11091,20 @@
       "launchYear": 2017,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Pointed Observatory",
+      "selection": "directed",
       "indices": {
         "h": 3,
         "m": 0.429,
         "i100": 0,
         "g": 3,
-        "tori": 0.079,
-        "riq": 140
+        "tori": 0.062,
+        "riq": 124
       },
       "papers": 3,
       "citations": 46,
+      "top10PerYear": 0,
       "hasThumb": true,
       "full": {
         "papers": 3,
@@ -10966,6 +11129,11 @@
           "status": "available",
           "months": 51,
           "citationBuckets": 9
+        },
+        "indices": {
+          "h": 2,
+          "g": 3,
+          "m": 0.471
         }
       },
       "window": {
@@ -10991,6 +11159,11 @@
           "status": "available",
           "months": 27,
           "citationBuckets": 7
+        },
+        "indices": {
+          "h": 0,
+          "g": 0,
+          "m": 0
         }
       },
       "lifetime": {
@@ -11018,7 +11191,9 @@
       "launchYear": 2003,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Survey Observatory",
+      "selection": "competed",
       "indices": {
         "h": 4,
         "m": 0.167,
@@ -11029,6 +11204,7 @@
       },
       "papers": 4,
       "citations": 82,
+      "top10PerYear": 0,
       "hasThumb": true,
       "full": {
         "papers": 3,
@@ -11053,6 +11229,11 @@
           "status": "available",
           "months": 87,
           "citationBuckets": 11
+        },
+        "indices": {
+          "h": 2,
+          "g": 3,
+          "m": 0.276
         }
       },
       "window": {
@@ -11078,6 +11259,11 @@
           "status": "available",
           "months": 36,
           "citationBuckets": 7
+        },
+        "indices": {
+          "h": 1,
+          "g": 2,
+          "m": 0.333
         }
       },
       "lifetime": {
@@ -11105,17 +11291,20 @@
       "launchYear": 1998,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Survey Observatory",
+      "selection": "competed",
       "indices": {
         "h": 36,
         "m": 1.333,
         "i100": 5,
         "g": 52,
-        "tori": 11.502,
-        "riq": 125
+        "tori": 11.101,
+        "riq": 123
       },
       "papers": 76,
       "citations": 2982,
+      "top10PerYear": 0.16,
       "hasThumb": true,
       "full": {
         "papers": 56,
@@ -11140,6 +11329,11 @@
           "status": "available",
           "months": 90,
           "citationBuckets": 11
+        },
+        "indices": {
+          "h": 15,
+          "g": 21,
+          "m": 2.001
         }
       },
       "window": {
@@ -11165,6 +11359,11 @@
           "status": "available",
           "months": 48,
           "citationBuckets": 8
+        },
+        "indices": {
+          "h": 12,
+          "g": 19,
+          "m": 3
         }
       },
       "lifetime": {
@@ -11192,17 +11391,20 @@
       "launchYear": 1999,
       "failed": false,
       "shortfall": true,
+      "outcome": "Partial Success",
       "type": "Survey Observatory",
+      "selection": "competed",
       "indices": {
         "h": 16,
         "m": 0.593,
         "i100": 4,
         "g": 23,
-        "tori": 5.313,
-        "riq": 92
+        "tori": 5.093,
+        "riq": 90
       },
       "papers": 24,
-      "citations": 986,
+      "citations": 987,
+      "top10PerYear": 0.122,
       "hasThumb": true,
       "full": {
         "papers": 5,
@@ -11227,6 +11429,11 @@
           "status": "available",
           "months": 40,
           "citationBuckets": 7
+        },
+        "indices": {
+          "h": 5,
+          "g": 5,
+          "m": 1.499
         }
       },
       "window": {
@@ -11252,12 +11459,17 @@
           "status": "available",
           "months": 40,
           "citationBuckets": 7
+        },
+        "indices": {
+          "h": 5,
+          "g": 5,
+          "m": 1.499
         }
       },
       "lifetime": {
         "papers": 24,
         "outputBasis": "measured",
-        "citations": 986,
+        "citations": 987,
         "top10": 3,
         "top10ShareOfDivision": 0.00047,
         "top1": null,
@@ -11279,7 +11491,9 @@
       "launchYear": 1996,
       "failed": true,
       "shortfall": true,
+      "outcome": "Failure",
       "type": "Survey Observatory",
+      "selection": null,
       "indices": {
         "h": 0,
         "m": null,
@@ -11290,6 +11504,7 @@
       },
       "papers": 0,
       "citations": 0,
+      "top10PerYear": 0,
       "hasThumb": true,
       "full": {
         "papers": 0,
@@ -11314,6 +11529,11 @@
           "status": "available",
           "months": 24,
           "citationBuckets": 6
+        },
+        "indices": {
+          "h": 0,
+          "g": 0,
+          "m": 0
         }
       },
       "window": {
@@ -11339,6 +11559,11 @@
           "status": "available",
           "months": 24,
           "citationBuckets": 6
+        },
+        "indices": {
+          "h": 0,
+          "g": 0,
+          "m": 0
         }
       },
       "lifetime": {
@@ -11366,17 +11591,20 @@
       "launchYear": 2000,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Survey Observatory",
+      "selection": "directed",
       "indices": {
         "h": 45,
         "m": 1.8,
         "i100": 23,
         "g": 105,
-        "tori": 77.191,
-        "riq": 381
+        "tori": 72.156,
+        "riq": 369
       },
       "papers": 127,
       "citations": 11148,
+      "top10PerYear": 0.626,
       "hasThumb": true,
       "full": {
         "papers": 111,
@@ -11401,6 +11629,11 @@
           "status": "available",
           "months": 109,
           "citationBuckets": 13
+        },
+        "indices": {
+          "h": 31,
+          "g": 58,
+          "m": 3.413
         }
       },
       "window": {
@@ -11426,6 +11659,11 @@
           "status": "available",
           "months": 42,
           "citationBuckets": 7
+        },
+        "indices": {
+          "h": 17,
+          "g": 23,
+          "m": 4.852
         }
       },
       "lifetime": {
@@ -11453,17 +11691,20 @@
       "launchYear": 2012,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Pointed Observatory",
+      "selection": "competed",
       "indices": {
         "h": 94,
         "m": 6.267,
         "i100": 83,
         "g": 155,
-        "tori": 112.205,
-        "riq": 662
+        "tori": 82.864,
+        "riq": 568
       },
       "papers": 1935,
       "citations": 54574,
+      "top10PerYear": 3.587,
       "hasThumb": true,
       "full": {
         "papers": 1388,
@@ -11488,6 +11729,11 @@
           "status": "available",
           "months": 136,
           "citationBuckets": 15
+        },
+        "indices": {
+          "h": 55,
+          "g": 93,
+          "m": 4.854
         }
       },
       "window": {
@@ -11513,6 +11759,11 @@
           "status": "available",
           "months": 47,
           "citationBuckets": 8
+        },
+        "indices": {
+          "h": 39,
+          "g": 57,
+          "m": 9.962
         }
       },
       "lifetime": {
@@ -11540,17 +11791,20 @@
       "launchYear": 2003,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Survey Observatory",
+      "selection": "competed",
       "indices": {
         "h": 140,
         "m": 5.833,
         "i100": 207,
         "g": 252,
-        "tori": 250.009,
-        "riq": 658
+        "tori": 212.828,
+        "riq": 607
       },
       "papers": 1581,
       "citations": 93655,
+      "top10PerYear": 6.308,
       "hasThumb": true,
       "full": {
         "papers": 780,
@@ -11575,6 +11829,11 @@
           "status": "available",
           "months": 142,
           "citationBuckets": 16
+        },
+        "indices": {
+          "h": 61,
+          "g": 85,
+          "m": 5.156
         }
       },
       "window": {
@@ -11600,6 +11859,11 @@
           "status": "available",
           "months": 53,
           "citationBuckets": 9
+        },
+        "indices": {
+          "h": 33,
+          "g": 59,
+          "m": 7.468
         }
       },
       "lifetime": {
@@ -11627,17 +11891,20 @@
       "launchYear": 1999,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Pointed Observatory",
+      "selection": "competed",
       "indices": {
         "h": 94,
         "m": 3.481,
         "i100": 86,
         "g": 147,
-        "tori": 180.347,
-        "riq": 497
+        "tori": 167.338,
+        "riq": 479
       },
       "papers": 799,
       "citations": 38008,
+      "top10PerYear": 2.093,
       "hasThumb": true,
       "full": {
         "papers": 556,
@@ -11662,6 +11929,11 @@
           "status": "available",
           "months": 118,
           "citationBuckets": 13
+        },
+        "indices": {
+          "h": 41,
+          "g": 57,
+          "m": 4.169
         }
       },
       "window": {
@@ -11687,6 +11959,11 @@
           "status": "available",
           "months": 63,
           "citationBuckets": 9
+        },
+        "indices": {
+          "h": 37,
+          "g": 52,
+          "m": 7.05
         }
       },
       "lifetime": {
@@ -11714,17 +11991,20 @@
       "launchYear": 2001,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Survey Observatory",
+      "selection": "competed",
       "indices": {
         "h": 238,
         "m": 9.154,
         "i100": 647,
         "g": 494,
-        "tori": 1424.809,
-        "riq": 1451
+        "tori": 1316.48,
+        "riq": 1395
       },
       "papers": 3297,
       "citations": 342928,
+      "top10PerYear": 22.641,
       "hasThumb": true,
       "full": {
         "papers": 2297,
@@ -11749,6 +12029,11 @@
           "status": "available",
           "months": 134,
           "citationBuckets": 15
+        },
+        "indices": {
+          "h": 111,
+          "g": 238,
+          "m": 9.939
         }
       },
       "window": {
@@ -11774,6 +12059,11 @@
           "status": "available",
           "months": 48,
           "citationBuckets": 8
+        },
+        "indices": {
+          "h": 78,
+          "g": 153,
+          "m": 19.5
         }
       },
       "lifetime": {
@@ -11801,17 +12091,20 @@
       "launchYear": 2018,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Survey Observatory",
+      "selection": "competed",
       "indices": {
         "h": 91,
         "m": 10.111,
         "i100": 75,
         "g": 142,
-        "tori": 195.882,
-        "riq": 1399
+        "tori": 119.561,
+        "riq": 1093
       },
       "papers": 3595,
       "citations": 66342,
+      "top10PerYear": 8.098,
       "hasThumb": true,
       "full": {
         "papers": 1864,
@@ -11836,6 +12129,11 @@
           "status": "available",
           "months": 65,
           "citationBuckets": 9
+        },
+        "indices": {
+          "h": 64,
+          "g": 95,
+          "m": 11.812
         }
       },
       "window": {
@@ -11861,6 +12159,11 @@
           "status": "available",
           "months": 48,
           "citationBuckets": 8
+        },
+        "indices": {
+          "h": 61,
+          "g": 89,
+          "m": 15.25
         }
       },
       "lifetime": {
@@ -11888,17 +12191,20 @@
       "launchYear": 2004,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Pointed Observatory",
+      "selection": "competed",
       "indices": {
         "h": 185,
         "m": 8.409,
         "i100": 489,
         "g": 293,
-        "tori": 598.113,
-        "riq": 1063
+        "tori": 505.204,
+        "riq": 977
       },
       "papers": 5518,
       "citations": 231944,
+      "top10PerYear": 16.081,
       "hasThumb": true,
       "full": {
         "papers": 4504,
@@ -11923,6 +12229,11 @@
           "status": "available",
           "months": 224,
           "citationBuckets": 22
+        },
+        "indices": {
+          "h": 93,
+          "g": 137,
+          "m": 4.982
         }
       },
       "window": {
@@ -11948,6 +12259,11 @@
           "status": "available",
           "months": 45,
           "citationBuckets": 8
+        },
+        "indices": {
+          "h": 60,
+          "g": 89,
+          "m": 15.974
         }
       },
       "lifetime": {
@@ -11975,17 +12291,20 @@
       "launchYear": 2009,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Survey Observatory",
+      "selection": "competed",
       "indices": {
         "h": 131,
         "m": 7.706,
         "i100": 224,
         "g": 236,
-        "tori": 301.647,
-        "riq": 964
+        "tori": 234.615,
+        "riq": 850
       },
       "papers": 2604,
       "citations": 106977,
+      "top10PerYear": 8.744,
       "hasThumb": true,
       "full": {
         "papers": 190,
@@ -12010,6 +12329,11 @@
           "status": "available",
           "months": 37,
           "citationBuckets": 7
+        },
+        "indices": {
+          "h": 36,
+          "g": 61,
+          "m": 11.7
         }
       },
       "window": {
@@ -12035,6 +12359,11 @@
           "status": "available",
           "months": 37,
           "citationBuckets": 7
+        },
+        "indices": {
+          "h": 36,
+          "g": 61,
+          "m": 11.7
         }
       },
       "lifetime": {
@@ -12062,17 +12391,20 @@
       "launchYear": 1995,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Survey Observatory",
+      "selection": "competed",
       "indices": {
         "h": 146,
         "m": 4.71,
         "i100": 292,
         "g": 222,
-        "tori": 652.137,
-        "riq": 798
+        "tori": 607.308,
+        "riq": 770
       },
       "papers": 2577,
       "citations": 121860,
+      "top10PerYear": 7.342,
       "hasThumb": true,
       "full": {
         "papers": 2003,
@@ -12097,6 +12429,11 @@
           "status": "available",
           "months": 216,
           "citationBuckets": 22
+        },
+        "indices": {
+          "h": 60,
+          "g": 79,
+          "m": 3.333
         }
       },
       "window": {
@@ -12122,6 +12459,11 @@
           "status": "available",
           "months": 48,
           "citationBuckets": 8
+        },
+        "indices": {
+          "h": 42,
+          "g": 60,
+          "m": 10.5
         }
       },
       "lifetime": {
@@ -12149,17 +12491,20 @@
       "launchYear": 1989,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Survey Observatory",
+      "selection": "competed",
       "indices": {
         "h": 159,
         "m": 4.297,
         "i100": 264,
         "g": 305,
-        "tori": 967.024,
-        "riq": 840
+        "tori": 921.82,
+        "riq": 820
       },
       "papers": 1416,
       "citations": 120695,
+      "top10PerYear": 6.07,
       "hasThumb": true,
       "full": {
         "papers": 442,
@@ -12184,6 +12529,11 @@
           "status": "available",
           "months": 73,
           "citationBuckets": 10
+        },
+        "indices": {
+          "h": 49,
+          "g": 81,
+          "m": 8.054
         }
       },
       "window": {
@@ -12209,6 +12559,11 @@
           "status": "available",
           "months": 30,
           "citationBuckets": 7
+        },
+        "indices": {
+          "h": 13,
+          "g": 29,
+          "m": 5.2
         }
       },
       "lifetime": {
@@ -12236,17 +12591,20 @@
       "launchYear": 1992,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Survey Observatory",
+      "selection": "competed",
       "indices": {
         "h": 73,
         "m": 2.147,
         "i100": 51,
         "g": 105,
-        "tori": 140.121,
-        "riq": 348
+        "tori": 138.143,
+        "riq": 345
       },
       "papers": 473,
       "citations": 18437,
+      "top10PerYear": 0.864,
       "hasThumb": true,
       "full": {
         "papers": 389,
@@ -12271,6 +12629,11 @@
           "status": "available",
           "months": 126,
           "citationBuckets": 15
+        },
+        "indices": {
+          "h": 35,
+          "g": 46,
+          "m": 3.333
         }
       },
       "window": {
@@ -12296,6 +12659,11 @@
           "status": "available",
           "months": 48,
           "citationBuckets": 8
+        },
+        "indices": {
+          "h": 22,
+          "g": 33,
+          "m": 5.5
         }
       },
       "lifetime": {
@@ -12323,17 +12691,20 @@
       "launchYear": 1983,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Pointed Observatory",
+      "selection": "competed",
       "indices": {
         "h": 70,
         "m": 1.591,
         "i100": 46,
         "g": 133,
-        "tori": 149.293,
-        "riq": 277
+        "tori": 144.453,
+        "riq": 273
       },
       "papers": 371,
       "citations": 20871,
+      "top10PerYear": 0.862,
       "hasThumb": true,
       "full": {
         "papers": 31,
@@ -12358,6 +12729,11 @@
           "status": "available",
           "months": 33,
           "citationBuckets": 6
+        },
+        "indices": {
+          "h": 11,
+          "g": 20,
+          "m": 3.994
         }
       },
       "window": {
@@ -12383,6 +12759,11 @@
           "status": "available",
           "months": 30,
           "citationBuckets": 6
+        },
+        "indices": {
+          "h": 11,
+          "g": 20,
+          "m": 4.391
         }
       },
       "lifetime": {
@@ -12410,17 +12791,20 @@
       "launchYear": 2009,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Survey Observatory",
+      "selection": "competed",
       "indices": {
         "h": 206,
         "m": 11.444,
         "i100": 566,
         "g": 326,
-        "tori": 814.506,
-        "riq": 1502
+        "tori": 673.035,
+        "riq": 1365
       },
       "papers": 4591,
       "citations": 238075,
+      "top10PerYear": 30.608,
       "hasThumb": true,
       "full": {
         "papers": 3025,
@@ -12445,6 +12829,11 @@
           "status": "available",
           "months": 137,
           "citationBuckets": 15
+        },
+        "indices": {
+          "h": 104,
+          "g": 150,
+          "m": 9.107
         }
       },
       "window": {
@@ -12470,6 +12859,11 @@
           "status": "available",
           "months": 66,
           "citationBuckets": 9
+        },
+        "indices": {
+          "h": 83,
+          "g": 130,
+          "m": 15.091
         }
       },
       "lifetime": {
@@ -12497,17 +12891,20 @@
       "launchYear": 2008,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Survey Observatory",
+      "selection": "directed",
       "indices": {
         "h": 209,
         "m": 11,
         "i100": 561,
         "g": 358,
-        "tori": 902.964,
-        "riq": 1502
+        "tori": 760.455,
+        "riq": 1378
       },
       "papers": 6642,
       "citations": 294654,
+      "top10PerYear": 26.594,
       "hasThumb": true,
       "full": {
         "papers": 5460,
@@ -12532,6 +12929,11 @@
           "status": "available",
           "months": 184,
           "citationBuckets": 19
+        },
+        "indices": {
+          "h": 117,
+          "g": 202,
+          "m": 7.631
         }
       },
       "window": {
@@ -12557,6 +12959,11 @@
           "status": "available",
           "months": 84,
           "citationBuckets": 11
+        },
+        "indices": {
+          "h": 100,
+          "g": 155,
+          "m": 14.29
         }
       },
       "lifetime": {
@@ -12584,17 +12991,20 @@
       "launchYear": 2004,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Pointed Observatory",
+      "selection": "directed",
       "indices": {
         "h": 29,
         "m": 1.261,
         "i100": 5,
         "g": 58,
-        "tori": 37.233,
-        "riq": 265
+        "tori": 34.847,
+        "riq": 256
       },
       "papers": 124,
       "citations": 3782,
+      "top10PerYear": 0.207,
       "hasThumb": true,
       "full": {
         "papers": 61,
@@ -12619,6 +13029,11 @@
           "status": "available",
           "months": 100,
           "citationBuckets": 12
+        },
+        "indices": {
+          "h": 12,
+          "g": 23,
+          "m": 1.44
         }
       },
       "window": {
@@ -12644,6 +13059,11 @@
           "status": "available",
           "months": 40,
           "citationBuckets": 7
+        },
+        "indices": {
+          "h": 8,
+          "g": 14,
+          "m": 2.401
         }
       },
       "lifetime": {
@@ -12671,17 +13091,20 @@
       "launchYear": 2003,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Pointed Observatory",
+      "selection": "directed",
       "indices": {
         "h": 249,
         "m": 10.826,
         "i100": 1070,
         "g": 402,
-        "tori": 1054.238,
-        "riq": 1352
+        "tori": 936.25,
+        "riq": 1274
       },
       "papers": 6417,
       "citations": 425322,
+      "top10PerYear": 35.967,
       "hasThumb": true,
       "full": {
         "papers": 5628,
@@ -12706,6 +13129,11 @@
           "status": "available",
           "months": 217,
           "citationBuckets": 22
+        },
+        "indices": {
+          "h": 111,
+          "g": 152,
+          "m": 6.137
         }
       },
       "window": {
@@ -12731,6 +13159,11 @@
           "status": "available",
           "months": 89,
           "citationBuckets": 11
+        },
+        "indices": {
+          "h": 98,
+          "g": 135,
+          "m": 13.218
         }
       },
       "lifetime": {
@@ -12758,17 +13191,20 @@
       "launchYear": 1991,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Survey Observatory",
+      "selection": "directed",
       "indices": {
         "h": 169,
         "m": 4.694,
         "i100": 341,
         "g": 290,
-        "tori": 1099.35,
-        "riq": 921
+        "tori": 1066.021,
+        "riq": 906
       },
       "papers": 2769,
       "citations": 150146,
+      "top10PerYear": 7.869,
       "hasThumb": true,
       "full": {
         "papers": 1664,
@@ -12793,6 +13229,11 @@
           "status": "available",
           "months": 134,
           "citationBuckets": 15
+        },
+        "indices": {
+          "h": 61,
+          "g": 87,
+          "m": 5.462
         }
       },
       "window": {
@@ -12818,6 +13259,11 @@
           "status": "available",
           "months": 48,
           "citationBuckets": 8
+        },
+        "indices": {
+          "h": 44,
+          "g": 66,
+          "m": 11
         }
       },
       "lifetime": {
@@ -12845,17 +13291,20 @@
       "launchYear": 1999,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Pointed Observatory",
+      "selection": "directed",
       "indices": {
         "h": 244,
         "m": 8.714,
         "i100": 1114,
         "g": 371,
-        "tori": 1656.942,
-        "riq": 1403
+        "tori": 1511.304,
+        "riq": 1340
       },
       "papers": 9221,
       "citations": 463109,
+      "top10PerYear": 29.856,
       "hasThumb": true,
       "full": {
         "papers": 8286,
@@ -12880,6 +13329,11 @@
           "status": "available",
           "months": 292,
           "citationBuckets": 28
+        },
+        "indices": {
+          "h": 108,
+          "g": 155,
+          "m": 4.438
         }
       },
       "window": {
@@ -12905,6 +13359,11 @@
           "status": "available",
           "months": 83,
           "citationBuckets": 11
+        },
+        "indices": {
+          "h": 86,
+          "g": 115,
+          "m": 12.435
         }
       },
       "lifetime": {
@@ -12932,17 +13391,20 @@
       "launchYear": 1990,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Pointed Observatory",
+      "selection": "directed",
       "indices": {
         "h": 354,
         "m": 9.568,
         "i100": 2816,
         "g": 596,
-        "tori": 4627.9,
-        "riq": 1838
+        "tori": 4265.549,
+        "riq": 1765
       },
       "papers": 18915,
       "citations": 1179261,
+      "top10PerYear": 60.039,
       "hasThumb": true,
       "full": {
         "papers": 16885,
@@ -12967,6 +13429,11 @@
           "status": "available",
           "months": 404,
           "citationBuckets": 37
+        },
+        "indices": {
+          "h": 158,
+          "g": 259,
+          "m": 4.693
         }
       },
       "window": {
@@ -12992,6 +13459,11 @@
           "status": "available",
           "months": 204,
           "citationBuckets": 21
+        },
+        "indices": {
+          "h": 108,
+          "g": 167,
+          "m": 6.353
         }
       },
       "lifetime": {

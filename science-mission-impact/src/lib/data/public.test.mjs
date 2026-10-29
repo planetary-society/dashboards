@@ -152,8 +152,9 @@ test('the per-dollar trend fits log rate on log cost over cited missions, and sa
 	// Three missions: dropping any one leaves no line, so robustness is untested.
 	const three = { ...division([cited(mission('t1', 10), 1), cited(mission('t2', 100), 20), cited(mission('t3', 1000), 400)]), slug: 'three', name: 'Three' };
 	const [a, b, c] = discuss([rising, leaning, three].map(packaged)).perDollar.map((row) => row.fit);
-	// the failure is a measured zero, left out of the line; the unmeasured mission is in neither count
-	assert.deepEqual(a, { missions: 4, zeros: 1, slope: 0.301, intercept: 0.699, tenfold: 2, holds: true });
+	// the failure is a measured zero, left out of the line; the unmeasured mission is in neither count.
+	// Citations 1, 20, 400, 8,000: twenty times as many at ten times the cost (citesTenfold)
+	assert.deepEqual(a, { missions: 4, zeros: 1, slope: 0.301, intercept: 0.699, tenfold: 2, citesTenfold: 20, holds: true });
 	assert.ok(b.slope > 0);
 	assert.deepEqual([b.missions, b.zeros, b.holds], [4, 0, false]);
 	assert.deepEqual([c.missions, c.holds], [3, null]);
@@ -309,7 +310,7 @@ test('the packaged story is the discussion over the packaged divisions', () => {
 	divisions.sort((a, b) => order.indexOf(a.slug) - order.indexOf(b.slug));
 	const ref = site.story.referenceCost;
 	assert.equal(ref, loadConfig(new URL('../../../', import.meta.url).pathname).thresholdCost);
-	const story = buildDiscussion(divisions, { thresholdCost: ref, scope: site.story.scope, focusDivision: site.story.focusDivision });
+	const story = buildDiscussion(divisions, { thresholdCost: ref, scope: site.story.scope, focusDivision: site.story.focusDivision, rateEnd: site.story.rate.end });
 	const all = divisions.flatMap((d) => d.missions);
 	const selected = all.filter(underThreshold(ref));
 	assert.equal(story.threshold.missions, selected.length);
@@ -324,8 +325,6 @@ test('the packaged story is the discussion over the packaged divisions', () => {
 		assert.deepEqual(site.divisionFacts[d.slug].lifetime.divisions, life.divisions.find((r) => r.division === d.slug));
 		assert.deepEqual(site.divisionFacts[d.slug].full.perDollar ?? null, site.story.perDollar.find((r) => r.division === d.slug) ?? null);
 	}
-	// ponytail: conditional until data/paper-kinds.json has been packaged; make it unconditional after.
-	assert.deepEqual(new Set(site.kinds.missions.map((m) => m.id)), new Set(site.story.threshold.ids));
 });
 
 test('every smi.config.json names override reaches the packaged tiles, index, mission docs and CLPS', () => {

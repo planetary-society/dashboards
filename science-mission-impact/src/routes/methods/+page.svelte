@@ -2,8 +2,8 @@
 	import { fullWindowLabel } from '$lib/copy/window.js';
 	import Seo from '$lib/ui/Seo.svelte';
 	import EntityHeader from '$lib/ui/EntityHeader.svelte';
-	import { apDate, int, moneyWords, listify, pct, plural, spell } from '$lib/format.js';
-	import { allSmall } from '$lib/copy/discussion.js';
+	import { int, longDate, money, listify, spell } from '$lib/format.js';
+	import { analysisHref } from '$lib/paths.js';
 
 	let { data } = $props();
 	const site = $derived(data.full);
@@ -11,16 +11,7 @@
 	const fullPolicy = $derived(site.fullPolicy);
 	const grace = $derived(policy.maturityGraceMonths ?? 0);
 	const revisions = $derived(site.codeRevision?.split('+').filter(Boolean).map((r) => r.slice(0, 7)) ?? []);
-	const story = $derived(site.story);
-	const ref = $derived(moneyWords(story.referenceCost));
-	const failure = $derived(story.failure);
-	const range = (side) => `${pct(side.interval[0])} and ${pct(side.interval[1])}`;
-	const apart = $derived(failure.under.interval && failure.over.interval && failure.under.interval[0] > failure.over.interval[1]);
-	const under = $derived(story.comparison.groups.find((g) => g.key === 'under'));
-	const over = $derived(story.comparison.groups.find((g) => g.key === 'over'));
-	const unranked = $derived(story.divisions.filter((d) => d.share == null && allSmall(d)));
-	// a map grid's square in words: "half a degree", "two degrees"
-	const degrees = (cell) => (cell === 0.5 ? 'half a degree' : `${spell(cell)} ${plural(cell, 'degree')}`);
+	const threshold = $derived(money(site.story.referenceCost));
 	// Organization contact, as in docs/shared/js/constants.js CONTACT.
 	const CONTACT_EMAIL = 'casey.dreier@planetary.org';
 	const furtherReading = [
@@ -55,9 +46,9 @@
 			publication: 'Journal of the American Society for Information Science and Technology, 64(2), 372–379', href: 'https://doi.org/10.1002/asi.22775'
 		},
 		{
-			title: 'ESA Science Programme Missions: Contributions and Exploitation — ESA Mission Publications',
+			title: 'ESA Mission Publications and Their Impact',
 			authors: 'De Marchi, G., & Parmar, A. N.', year: 2024,
-			publication: 'arXiv:2402.12818', href: 'https://arxiv.org/abs/2402.12818'
+			publication: 'In ESA Science Programme Missions: Contributions and Exploitation, ISSI Scientific Report Series. Springer Nature Switzerland', href: 'https://doi.org/10.1007/978-3-031-69004-4'
 		},
 		{
 			title: 'Bibliometrics: The Leiden Manifesto for research metrics',
@@ -74,190 +65,106 @@
 <Seo title="Methods" {description} />
 
 <div class="wrap page">
-	<EntityHeader name="Methods" second={`Data as of ${apDate(site.asOf)}.`}>
+	<EntityHeader name="Methods" second={`Data as of ${longDate(site.asOf)}.`}>
 		How we compare mission costs with tracked publications and citations.
 	</EntityHeader>
 
 	<div class="body">
 		<section id="challenges">
-			<h2>Why it’s hard to count a mission’s science</h2>
+			<h2>The challenges of bibliometrics for space science missions</h2>
 			<p>Space is hard, as the saying goes. So is measuring a space mission’s scientific output.</p>
-			<p>No list of a mission’s science publications is perfect; some are just more complete than others.
-				Large missions, like the Hubble Space Telescope, assign staff to identify science papers and
-				separate results from engineering descriptions and speculative work. A
-				<a href="https://arxiv.org/abs/2402.12818">team studying the European Space Agency’s science
-				missions</a> describes a move from manual review to machine learning and natural language
-				processing, with scientists still checking the selections. Reviews like these can require the
-				full text of many papers, often behind paywalls.</p>
-			<p>What counts as “science” varies, and it takes many judgment calls. We used a simpler approach, one
-				used in many peer-reviewed studies such as
-				<a href="https://doi.org/10.1016/j.spacepol.2025.101713">Fiore and Elvis (2026)</a>: we searched
-				NASA’s Astrophysics Data System (ADS), the leading database of space science papers and citations,
-				for each mission’s name and the names of its main instruments. Publications stand in for
-				scientific productivity, and citations to them stand in for impact.</p>
-			<p>We tailor each search to weed out obvious false matches from shared names and acronyms: TRACE,
-				for example, is both a space mission and a very common word. We also checked our results against
-				the hand-curated publication lists that several missions keep. They generally agree within 10% to
-				25%. The one exception is GALEX, which differs widely because many papers don’t name the mission
-				in their abstracts. Since we’re comparing mission costs that differ by orders of magnitude, that is
-				well within acceptable limits, and rerunning our comparisons with the curated lists gave the same
-				overall results.</p>
-			<p>We’re looking for broad patterns, not a perfect count. That’s why we call these records “tracked
-				publications”: they are the papers we found, and the list may have gaps.</p>
+			<p>There is no perfect collection of science publications associated with a mission; there are
+				only degrees of correctness. Large missions, like the Hubble Space Telescope, dedicate staff
+				time to identifying science papers and distinguishing results from engineering descriptions
+				and speculative work. A <a href="https://doi.org/10.1007/978-3-031-69004-4">European team studying ESA’s
+				space science missions</a> describes a transition from manual review to machine learning and
+				natural language processing, with scientists still validating the selections. Such assessments
+				can require access to the full text of large numbers of publications, often shielded by paywalls.</p>
+			<p>Exactly how one defines “science” varies, and many judgment calls are required. For this study,
+				we used a simpler approach also used in many peer-reviewed publications, such as
+				<a href="https://doi.org/10.1016/j.spacepol.2025.101713">Fiore &amp; Elvis (2026)</a>: querying
+				NASA’s Astrophysics Data System (ADS)/SciXplorer database by mission name and the names of its
+				primary instruments. ADS is the leading repository of space science publication and citation
+				references. This approach assesses the signal of a mission within the abstract literature,
+				using publications as a proxy for scientific productivity and citations to those publications
+				as a proxy for impact.</p>
+			<p>We tailor each query to filter out obvious false positives from name or acronym collisions:
+				TRACE, for example, is both a space mission and a very common word. We also compared our query
+				outcomes to the managed collections of several missions with hand-curated publication sets. They
+				generally agree within 10%–25% of publication records, with a single exception, GALEX, differing
+				by a wide amount due to the pattern of not reporting the mission name in many abstracts. Since we’re
+				primarily comparing mission costs across orders of magnitude, this is well within acceptable limits.
+				We tested our outcomes with curated mission collections and found the overall comparative outcomes
+				remained consistent.</p>
+			<p>Our aim is to identify broad patterns in the research associated with these missions. We call
+				these records “tracked publications” to make their scope clear: they capture the papers we found,
+				while leaving room for omissions and corrections.</p>
 		</section>
 
 		<section id="missions">
 			<h2>What we included</h2>
-			<p>The study covers <b>{int(site.missions)}</b> missions, launched from {site.launchYears[0]} to
-				{site.launchYears[1]}, that NASA’s science directorate primarily built and funded, across
-				{spell(data.site.divisions.length)} of its divisions. It focuses on U.S.-led, free-flying missions whose
-				publication records are complete enough to compare. By default, each paper collects citations over
-				its publication year and the {spell(fullPolicy.citationYears)} calendar years after.</p>
-			<h3 id="selection">When a mission joins the study</h3>
-			<p>A mission joins once its record has matured. Its prime mission has to be over, and
-				{spell(policy.postPrimeYears)} more years must pass for its results to reach print. Then the last of
-				those papers need their own citation window: the year each appeared and the
-				{spell(policy.citationYears)} calendar years after it. We admit a mission {spell(grace)} months before
-				that final year closes. A mission lost with no papers joins {spell(policy.postPrimeYears)} years after
-				it ended, since it has no citations to wait for.</p>
-			<p>That rule leaves out recent missions for now, including OSIRIS-REx, DART, the James Webb Space
-				Telescope, Mars 2020, and Parker Solar Probe. Each will join as its record matures. Entry depends on
-				the prime mission, not the {fullWindowLabel}, so missions whose prime missions ended only recently,
-				such as OSIRIS-REx, Mars 2020, and Parker Solar Probe, have to wait.</p>
+			<p>This dataset contains data related to <b>{int(site.missions)}</b> projects built or funded by
+				NASA’s science directorate between
+				{site.launchYears[0]} to {site.launchYears[1]},  spanning all {spell(data.site.divisions.length)} divisions.</p>
+				<p>The default
+				comparison allows papers the publication year and {spell(fullPolicy.citationYears)} following
+				calendar years to accrue citations.</p>
 			<p>Comparisons stay within each division. Research communities differ in size, publishing practices,
 				and citation rates, so a higher count in one field does not mean its science is more valuable.</p>
-			{#if unranked.length}
-				<h3 id="not-compared">Why {listify(unranked.map((d) => d.name))} {unranked.length === 1 ? 'isn’t' : 'aren’t'} compared</h3>
-				{#each unranked as d (d.division)}
-					<p>All {spell(d.missions)} of its missions cost {ref} or less, so there are no costlier missions to
-						compare them with. They count in the study’s mission totals and failure figures, but not in the
-						cost comparisons.</p>
-				{/each}
-			{/if}
-			<h3 id="recency">Small missions are newer</h3>
-			<p>In the compared divisions, half the missions at {ref} or less launched in {under.launchMedian} or
-				later; half the costlier ones launched by {over.launchMedian}. Giving every paper the same citation
-				window accounts for how long it has had to collect citations, but the two groups still come from
-				different eras of NASA’s science program.</p>
-		</section>
-
-		<section id="threshold">
-			<h2>The {ref} line</h2>
-			<p>We split missions at {ref} in {site.costBaseYear} dollars, counting a mission at exactly that cost
-				as small. It is an editorial line, chosen to set apart the very small missions NASA is now leaning on.
-				It is not a threshold found in the data, and nothing here says what a mission should cost.</p>
-			<p>Most of the groups we compare hold few missions. When a division has only a handful of small
-				missions, one of them can move the group’s numbers, which is why each division page names the missions its figures
-				rest on.</p>
-		</section>
-
-		<section id="failures">
-			<h2>Failures and partial outcomes</h2>
-			<p>We count a mission as having failed or fallen short when our records list it as a
-				{listify(failure.statuses.map((s) => s.toLowerCase()), 'or')}. A failure counts as zero output in
-				every comparison; a partial failure or partial success counts whatever it published.</p>
-			<p>Across all divisions, {spell(failure.under.failed)} of the {int(failure.under.missions)} missions at
-				{ref} or less failed or fell short, {failure.under.lost ? spell(failure.under.lost) : 'none'} of them
-				lost outright. Of the {int(failure.over.missions)} costlier missions,
-				{failure.over.failed ? spell(failure.over.failed) : 'none'} did.
-				{#if failure.under.interval && failure.over.interval}Allowing for chance in groups this size (a 95%
-				Wilson interval), the underlying rate plausibly lies between {range(failure.under)} for the small
-				missions and between {range(failure.over)} for the costlier ones{#if apart}; the two ranges don’t
-				overlap{/if}.{/if}</p>
-			<p>Within a single division the counts are too small to compare rates this way, so division pages give
-				counts, not percentages.</p>
-		</section>
-
-		<section id="citations">
-			<h2>What citations measure, and what they don’t</h2>
-			<p>A citation shows that other scientists used a result. It doesn’t measure a mission’s value to the
-				public, the technology it proved, or the people it trained. The
-				<a href="https://doi.org/10.1038/520429a">Leiden Manifesto</a> for research metrics makes the same
-				point: numbers should support judgment, not replace it.</p>
-			<p>A top-10% paper is one of the 10% most cited of all its division’s papers in the selected window,
-				every publication year ranked together. Fields cite at different rates, so each paper is ranked only
-				against papers from its own division. In the {fullWindowLabel}, every paper’s citations are counted over the same
-				span of years, so an older paper has no head start; in the Lifetime view it does, and older papers
-				fill more of the top 10%. Papers tied at the cutoff share the last places, so a division’s top 10%
-				is exactly a tenth of its papers. Papers that describe a mission or its instruments count like any
-				other; for a mission with few papers they can hold much of its citation count.</p>
 		</section>
 
 		<section id="mission-papers">
 			<h2>Tracked publications</h2>
-			<p><b>Tracked publications are the peer-reviewed research papers we found for each mission.</b>
-				They are not necessarily its full publication record. The study includes
-				{int(site.papersDistinct)} distinct tracked publications.</p>
-			<p>We use mission-specific searches in NASA’s Astrophysics Data System (ADS), now available through
-				<a href="https://scixplorer.org/">SciX</a>. Searches look for mission and instrument names in titles,
-				abstracts, and keywords, with topic restrictions to distinguish ambiguous acronyms. Mission
-				bibliographies help identify omissions, and we review each addition and exclusion individually.</p>
-			<p>This approach misses papers that use a mission’s data without naming it in those fields, and a
-				name match alone doesn’t show that a paper used the data. In effect, we measure how strongly a
-				mission’s name shows up in paper titles, abstracts, and keywords.</p>
+			<p>The publications we tracked are the peer-reviewed research papers associated with each mission using a set of keywords in their abstract, title, and keywords via NASA's <a href="https://scixplorer.org/">Science Explorer digital library</a> (SciX). Publications are time-gated by the start of mission operations and continue through the full mission's lifetime, plus two years to accomodate general publication times.</p>
+			<p>Our SciX queries use mission and major instrument names along with topic restrictions to distinguish ambiguous acronyms. The query for each mission is listed in the mission's overview page.</p>
+			<p> This approach will miss papers that use mission data without naming the source in those fields.
+				A name match alone also does not establish that a paper used the data.</p><p>In essence, we are measuring the signal strength of a mission's name in the SciX abstract fields. That is a common approach to bibliometrics, though more complex approaches are possible (see <a href="https://doi.org/10.1007/978-3-031-69004-4">De Marchi, G., & Parmar, A. N., 2024)</a>.</p>
 			<h3 id="removed">What we exclude</h3>
-			<p>We exclude non-refereed material, conference proceedings, news articles, and records for datasets
-				or catalogs.</p>
-			<h3 id="start">When tracking begins</h3>
-			<p>Searches start with the first full month after prime science operations begin, or at launch if no
-				start date is published. That cuts down on prelaunch and overview papers, though it doesn’t weed
-				out every false match. For missions with long cruises or flyby results, we also include results
-				published before the prime mission began.</p>
-			<h3 id="affiliations">Where the authors worked</h3>
-			<p>The affiliation maps use the institutions ADS assigns to each paper’s authors, located through the
-				<a href="https://ror.org/">Research Organization Registry</a> (or a parent organization’s entry).
-				Each square, {degrees(data.cells.us)} of latitude and longitude on the US map and {degrees(data.cells.world)} on the world map,
-				counts the tracked publications with at least one author at an institution inside it, each paper
-				once. Affiliations are as printed on the paper, so they show where the work was done, not where its
-				authors are now. Papers whose institutions couldn’t be located are left off, and the US map leaves
-				out Puerto Rico and the US Virgin Islands, which appear on the world map.</p>
+			<p>We have general exclusions for non-refereed material, conference proceedings, news articles, and records for
+				datasets or data catalogs. We have mission-by-mission exclusions based on known false positives reviewed with AI and human oversight.</p>
 		</section>
 
 		<section id="windows">
-			<h2>Comparison windows</h2>
-			<p>Older papers have had more time to collect citations. The {fullWindowLabel} gives every paper the
-				same citation period; lifetime totals show everything to date.</p>
-			<h3 id="full-window">{fullWindowLabel}</h3>
-			<p>The default comparison covers publications from a mission’s operating life and allows
-				{spell(fullPolicy.postEndYears)} years after mission end for results to appear. Each paper’s
-				citations count from its publication year through the {spell(fullPolicy.citationYears)} calendar
-				years that follow. A window counts as mature {spell(grace)} months before its last citation year
-				ends, so the most recent papers’ final citation year is counted only through the as-of date (at
-				least {spell(12 - grace)} of its 12 months), and their counts can still grow slightly. For a
-				mission still operating, or one that ended too recently, the window stops at the latest date that
-				has matured{#if fullPolicy.minWindowYears}; a window cut to less than
-				{spell(fullPolicy.minWindowYears)} years isn’t scored{/if}.</p>
-			<h3>Lifetime</h3>
-			<p>All tracked publications and their reported citations to date.</p>
+			<h2>Citation comparison windows</h2>
+			<p>Older papers have had more time to collect citations, which would artificially inflate their metrics compared to more recent ones. To account for this, all metrics in this dashboard (except for the explicit lifetime metrics) use windowed citation counts of {spell(fullPolicy.citationYears)} years, inclusive, from the publish date of each paper.</p>
+			<p>This means that missions launched after the full citation comparison window are not included in this study. A
+				mission still operating limits publications to those have were published within this citation window.</p>
 		</section>
 
 		<section id="cost">
 			<h2>Mission costs</h2>
-			<p>Costs come from NASA’s reported life-cycle costs at launch. We include documented partner
-				contributions where available. These costs generally cover development, payloads, launch, and prime
+			<p>Costs come from the NASA's reported life-cycle costs at launch. We include documented partner
+				contributions where available. These generally cover development, payloads, launch, and prime
 				operations. Values are adjusted to <b>{site.costBaseYear} dollars</b> using NASA’s
 				<a href="https://www.nasa.gov/wp-content/uploads/2024/11/nnsi-faqs-2024.pdf">New Start Inflation Index</a>.</p>
-			<h3 id="cost-coverage">Costs and citations cover different spans</h3>
-			<p>Costs stop at the end of prime operations, while the default comparison counts papers from a
-				mission’s whole operating life, extended missions included. That is deliberate: much of a mission’s
-				longevity is paid for up front, in how it is designed and built. Extended-operations costs may be
-				added in a later version.</p>
-			<h3 id="per-dollar">Citations per dollar</h3>
-			<p>To get citations per {moneyWords(100)}, we divide each group’s citations in the {fullWindowLabel} by
-				its total cost. We say one side leads only when it stays ahead with any single mission left out.
-				Otherwise, we name the mission the result rests on, or say neither side clearly leads.</p>
+		</section>
+
+		<section id="nc">
+			<h2>Citation-weighted output (N<sub>50</sub>)</h2>
+			<p>Our <a href={analysisHref()}>analysis</a> uses both threshold counts to determine high-impact papers and a citation-weighted count, defined as: N<sub>c</sub> = papers + citations ÷ c, where c is a citation
+				cutoff. We set c to each division’s top-50% cutoff in the {fullWindowLabel} and call the result
+				N<sub>50</sub>. Because each division has its
+				own c, N<sub>50</sub> normalizes outputs across different divisions.</p>
+		</section>
+
+
+		<section id="ai">
+			<h2>How we used AI in this project</h2>
+			<p>AI was used extensively in this project to help write and review code, to refine and improve our SciX queries, and to identify papers for exclusion based on our internal criteria. According to Planetary Society policy, AI was not used write our analysis: that was led by the authors. All AI-driven query suggestions and exclusions were reviewed by humans as well. Our public facing text is written by the authors using AI for copyediting. Some descriptive, functional text such as tool-tips on this dashboard are AI-generated.</p>
 		</section>
 
 		<section id="citing">
 			<h2>Corrections</h2>
 			<p>If you find a missing or misattributed paper, a wrong date or cost, or any other error, write to
-				<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Mission pages list the query and every
-				tracked publication, which makes a specific correction easy to check.</p>
+				<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
 		</section>
-
+		<section id="thanks">
+			<h2>Special Thanks</h2>
+			<p>The authors wish to acknowledge the staff and services of NASA's Science Explorer Digital Library, who provided feedback on early drafts of this project and increased API access to build out our datasets. We are grateful for their work and the data provided by this service.</p>
+		</section>
 		<section id="image-credits">
 			<h2>Image credits</h2>
-			<p>NASA/ESA. Overview photo of IM-1’s Odysseus lander: Intuitive Machines.</p>
+			<p>NASA/ESA.</p>
 		</section>
 
 		<section id="further-reading">
@@ -266,7 +173,7 @@
 				{#each furtherReading as reference (reference.href)}
 					<li>
 						<a href={reference.href}>{reference.title}</a>
-						<p>{reference.authors} ({reference.year}). {reference.publication}.</p>
+						<p>{reference.authors} ({reference.year}). <i>{reference.publication}</i>.</p>
 					</li>
 				{/each}
 			</ul>

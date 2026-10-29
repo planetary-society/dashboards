@@ -4,6 +4,7 @@ import { describe, it } from 'node:test';
 import {
 	groupBy,
 	int,
+	logFit,
 	median,
 	num,
 	papers,
@@ -153,5 +154,17 @@ describe('groupBy', () => {
 			[1, 3]
 		);
 		assert.deepEqual([...grouped.keys()], ['a', 'b']);
+	});
+});
+
+describe('logFit', () => {
+	it('recovers a power law exactly, and needs three points with a spread in cost', () => {
+		// rate = 10 * cost^0.5
+		const points = [1, 10, 100, 1000].map((cost) => ({ cost, rate: 10 * cost ** 0.5 }));
+		const fit = logFit(points);
+		assert.ok(Math.abs(fit.slope - 0.5) < 1e-9);
+		assert.ok(Math.abs(fit.intercept - 1) < 1e-9);
+		assert.equal(logFit(points.slice(0, 2)), null);
+		assert.equal(logFit([1, 1, 1].map((cost) => ({ cost, rate: cost }))), null);
 	});
 });

@@ -9,7 +9,11 @@
     "status": "Extended Mission",
     "failed": false,
     "cost": 1242,
+    "lcc": 720,
     "type": "Flyby",
+    "program": "New Frontiers",
+    "target": "Pluto",
+    "launchVehicle": "Atlas V 551",
     "dates": {
       "formulation": "2001-11-29",
       "launch": "2006-01-19",
@@ -22,13 +26,13 @@
     "h": 52,
     "m": 2.6,
     "i100": 15,
-    "g": 76,
-    "tori": 25.826,
-    "riq": 254
+    "g": 77,
+    "tori": 26.423,
+    "riq": 257
   },
   "facts": {
-    "papers": 447,
-    "citations": 10247,
+    "papers": 435,
+    "citations": 10353,
     "publicationYears": [
       2007,
       2026
@@ -66,17 +70,17 @@
       3,
       2,
       5,
-      25,
-      38,
+      19,
+      37,
       49,
       40,
-      40,
-      34,
+      37,
+      33,
       47,
       35,
       22,
       22,
-      36,
+      35,
       25
     ],
     "citations": [
@@ -94,85 +98,57 @@
       683,
       766,
       798,
-      1280,
+      1277,
       1039,
       1055,
       971,
-      1509,
-      989
+      1515,
+      1092
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 10247,
-      "observed": 10247,
+      "expected": 10353,
+      "observed": 10353,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2015-02-01",
-    "end": "2018-11-01",
-    "matureDate": "2021-10-01",
-    "status": "available",
-    "months": 45,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      6,
-      2,
-      1,
-      4,
-      3,
-      5,
-      2,
-      0,
-      1,
-      6,
-      0,
-      9,
-      4,
-      1,
-      5,
-      2,
-      1,
-      2,
-      3,
-      3,
-      2,
-      3,
-      2,
-      1,
-      3,
-      22,
-      2,
-      5,
-      4,
-      2,
-      2,
-      2,
-      1,
-      6,
-      3,
-      4,
-      0,
-      0,
-      5,
-      3,
-      4,
-      1,
-      3
-    ],
-    "citationsByYearOffset": [
-      13,
-      177,
-      362,
-      595,
-      503,
-      282,
-      129
-    ]
+  "affiliations": {
+    "papers": 435,
+    "us": {
+      "mapped": 363,
+      "top": [
+        {
+          "name": "Southwest Research Institute, Texas",
+          "papers": 222
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 172
+        },
+        {
+          "name": "NASA Ames Research Center",
+          "papers": 121
+        }
+      ]
+    },
+    "world": {
+      "mapped": 409,
+      "top": [
+        {
+          "name": "Southwest Research Institute, Texas",
+          "papers": 222
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 172
+        },
+        {
+          "name": "NASA Ames Research Center",
+          "papers": 121
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2015Sci...350.1815S",
@@ -191,58 +167,58 @@
   "ranks": {
     "full": {
       "bins": [
-        42.411,
-        30.676,
-        25.453,
-        26.733,
-        37.722,
-        36.039,
-        27.613,
-        28.648,
-        37.555,
-        36.151
+        33.138,
+        30.185,
+        25.861,
+        26.002,
+        38.23,
+        35.308,
+        27.105,
+        28.685,
+        37.485,
+        36
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        19.982,
-        17.759,
-        13.495,
-        14.929,
-        17.008,
-        7.135,
-        12.966,
-        10.726,
-        16,
+        13.361,
+        18.623,
+        12.867,
+        15.91,
+        15.684,
+        7.144,
+        13.231,
+        10.282,
+        15.898,
         10
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        60.786,
-        47.581,
-        49.909,
-        50.92,
-        54.731,
-        51.665,
-        44.608,
-        34.8,
-        29.453,
-        22.547
+        52.106,
+        45.65,
+        48.258,
+        51.825,
+        55.294,
+        50.505,
+        44.566,
+        34.797,
+        29.244,
+        22.756
       ],
-      "top1": 0.22
+      "top1": 0
     }
   },
   "full": {
-    "papers": 329,
+    "papers": 318,
     "outputBasis": "measured",
-    "citations": 4585,
-    "top10": 39.233,
-    "top10ShareOfDivision": 0.0359,
+    "citations": 4599,
+    "top10": 35.2,
+    "top10ShareOfDivision": 0.03243,
     "top1": 2,
-    "top1ShareOfDivision": 0.0183,
+    "top1ShareOfDivision": 0.01843,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.627,
@@ -259,20 +235,25 @@
       "months": 107,
       "citationBuckets": 12
     },
+    "indices": {
+      "h": 33,
+      "g": 46,
+      "m": 3.702
+    },
     "spread": {
-      "mean": 13.936,
+      "mean": 14.462,
       "median": 9,
-      "uncited": 30,
-      "i10": 148,
+      "uncited": 19,
+      "i10": 149,
       "i100": 2
     }
   },
   "window": {
-    "papers": 140,
+    "papers": 133,
     "outputBasis": "measured",
     "citations": 2061,
-    "top10": 10.05,
-    "top10ShareOfDivision": 0.02082,
+    "top10": 9.5,
+    "top10ShareOfDivision": 0.01984,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -291,20 +272,25 @@
       "months": 45,
       "citationBuckets": 7
     },
+    "indices": {
+      "h": 26,
+      "g": 37,
+      "m": 6.937
+    },
     "spread": {
-      "mean": 14.721,
-      "median": 8,
-      "uncited": 18,
+      "mean": 15.496,
+      "median": 9,
+      "uncited": 11,
       "i10": 62,
       "i100": 2
     }
   },
   "lifetime": {
-    "papers": 447,
+    "papers": 435,
     "outputBasis": "measured",
-    "citations": 10247,
-    "top10": 38.25,
-    "top10ShareOfDivision": 0.0281,
+    "citations": 10353,
+    "top10": 20.956,
+    "top10ShareOfDivision": 0.01338,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -315,26 +301,26 @@
       "date": "2007-10-00"
     },
     "spread": {
-      "mean": 22.924,
+      "mean": 23.8,
       "median": 13,
-      "uncited": 46,
-      "i10": 262,
+      "uncited": 35,
+      "i10": 266,
       "i100": 15
     }
   },
   "query": {
     "arms": "((((=abs:\"New Horizons\" OR =abs:\"New Horizon\") AND (=abs:Pluto OR =abs:Charon OR =abs:Arrokoth OR abs:MU69 OR =abs:\"Kuiper belt\" OR abs:Jupiter OR abs:Europa OR abs:Io OR abs:Rosetta OR abs:flyby OR abs:heliosphere OR abs:heliospheric OR =abs:\"solar wind\" OR =abs:\"cosmic optical background\" OR abs:LORRI OR abs:PEPSSI OR abs:MVIC OR abs:LEISA OR abs:VBSDC OR abs:REX OR =abs:\"radio science\")) OR =abs:\"New Horizons Alice\" OR =abs:\"New Horizons spacecrafts\" OR =abs:\"New Horizons spacecraft\" OR =abs:\"New Horizons observations\" OR =abs:\"New Horizons mission\" OR =abs:\"New Horizons probe\" OR (=abs:\"NH flyby\" AND (=abs:Pluto OR =abs:Charon OR =abs:Arrokoth)) OR ((abs:LORRI OR abs:MVIC OR abs:LEISA OR abs:PEPSSI OR =abs:\"Long Range Reconnaissance Imager\" OR =abs:\"Multispectral Visible Imaging Camera\" OR =abs:\"Multicolor Visible Imaging Camera\" OR =abs:\"Linear Etalon Imaging Spectral Array\") AND (=abs:Pluto OR =abs:Charon OR =abs:Arrokoth OR abs:MU69 OR =abs:\"Kuiper belt\" OR =abs:\"New Horizons\" OR =abs:\"cosmic optical background\")) OR ((abs:SWAP OR abs:SDC OR abs:VBSDC) AND (=abs:\"New Horizons\" OR =abs:Pluto OR =abs:\"Kuiper belt\")) OR ((=abs:Alice OR =abs:Ralph OR abs:REX OR =abs:\"Radio Science Experiment\") AND (=abs:Pluto OR =abs:Charon OR =abs:Arrokoth)) OR =abs:\"Solar Wind Around Pluto\" OR =abs:\"Solar Wind at Pluto\" OR =abs:\"Pluto Energetic Particle Spectrometer Science Investigation\" OR =abs:\"Pluto Exploration Remote Sensing Investigation\" OR =abs:\"Venetia Burney Student Dust Counter\" OR (=abs:\"Student Dust Counter\" AND (abs:dust OR abs:interplanetary))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2015-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22New+Horizons%22+OR+%3Dabs%3A%22New+Horizon%22%29+AND+%28%3Dabs%3APluto+OR+%3Dabs%3ACharon+OR+%3Dabs%3AArrokoth+OR+abs%3AMU69+OR+%3Dabs%3A%22Kuiper+belt%22+OR+abs%3AJupiter+OR+abs%3AEuropa+OR+abs%3AIo+OR+abs%3ARosetta+OR+abs%3Aflyby+OR+abs%3Aheliosphere+OR+abs%3Aheliospheric+OR+%3Dabs%3A%22solar+wind%22+OR+%3Dabs%3A%22cosmic+optical+background%22+OR+abs%3ALORRI+OR+abs%3APEPSSI+OR+abs%3AMVIC+OR+abs%3ALEISA+OR+abs%3AVBSDC+OR+abs%3AREX+OR+%3Dabs%3A%22radio+science%22%29%29+OR+%3Dabs%3A%22New+Horizons+Alice%22+OR+%3Dabs%3A%22New+Horizons+spacecrafts%22+OR+%3Dabs%3A%22New+Horizons+spacecraft%22+OR+%3Dabs%3A%22New+Horizons+observations%22+OR+%3Dabs%3A%22New+Horizons+mission%22+OR+%3Dabs%3A%22New+Horizons+probe%22+OR+%28%3Dabs%3A%22NH+flyby%22+AND+%28%3Dabs%3APluto+OR+%3Dabs%3ACharon+OR+%3Dabs%3AArrokoth%29%29+OR+%28%28abs%3ALORRI+OR+abs%3AMVIC+OR+abs%3ALEISA+OR+abs%3APEPSSI+OR+%3Dabs%3A%22Long+Range+Reconnaissance+Imager%22+OR+%3Dabs%3A%22Multispectral+Visible+Imaging+Camera%22+OR+%3Dabs%3A%22Multicolor+Visible+Imaging+Camera%22+OR+%3Dabs%3A%22Linear+Etalon+Imaging+Spectral+Array%22%29+AND+%28%3Dabs%3APluto+OR+%3Dabs%3ACharon+OR+%3Dabs%3AArrokoth+OR+abs%3AMU69+OR+%3Dabs%3A%22Kuiper+belt%22+OR+%3Dabs%3A%22New+Horizons%22+OR+%3Dabs%3A%22cosmic+optical+background%22%29%29+OR+%28%28abs%3ASWAP+OR+abs%3ASDC+OR+abs%3AVBSDC%29+AND+%28%3Dabs%3A%22New+Horizons%22+OR+%3Dabs%3APluto+OR+%3Dabs%3A%22Kuiper+belt%22%29%29+OR+%28%28%3Dabs%3AAlice+OR+%3Dabs%3ARalph+OR+abs%3AREX+OR+%3Dabs%3A%22Radio+Science+Experiment%22%29+AND+%28%3Dabs%3APluto+OR+%3Dabs%3ACharon+OR+%3Dabs%3AArrokoth%29%29+OR+%3Dabs%3A%22Solar+Wind+Around+Pluto%22+OR+%3Dabs%3A%22Solar+Wind+at+Pluto%22+OR+%3Dabs%3A%22Pluto+Energetic+Particle+Spectrometer+Science+Investigation%22+OR+%3Dabs%3A%22Pluto+Exploration+Remote+Sensing+Investigation%22+OR+%3Dabs%3A%22Venetia+Burney+Student+Dust+Counter%22+OR+%28%3Dabs%3A%22Student+Dust+Counter%22+AND+%28abs%3Adust+OR+abs%3Ainterplanetary%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2015-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:06:37.604611+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2015-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22New+Horizons%22+OR+%3Dabs%3A%22New+Horizon%22%29+AND+%28%3Dabs%3APluto+OR+%3Dabs%3ACharon+OR+%3Dabs%3AArrokoth+OR+abs%3AMU69+OR+%3Dabs%3A%22Kuiper+belt%22+OR+abs%3AJupiter+OR+abs%3AEuropa+OR+abs%3AIo+OR+abs%3ARosetta+OR+abs%3Aflyby+OR+abs%3Aheliosphere+OR+abs%3Aheliospheric+OR+%3Dabs%3A%22solar+wind%22+OR+%3Dabs%3A%22cosmic+optical+background%22+OR+abs%3ALORRI+OR+abs%3APEPSSI+OR+abs%3AMVIC+OR+abs%3ALEISA+OR+abs%3AVBSDC+OR+abs%3AREX+OR+%3Dabs%3A%22radio+science%22%29%29+OR+%3Dabs%3A%22New+Horizons+Alice%22+OR+%3Dabs%3A%22New+Horizons+spacecrafts%22+OR+%3Dabs%3A%22New+Horizons+spacecraft%22+OR+%3Dabs%3A%22New+Horizons+observations%22+OR+%3Dabs%3A%22New+Horizons+mission%22+OR+%3Dabs%3A%22New+Horizons+probe%22+OR+%28%3Dabs%3A%22NH+flyby%22+AND+%28%3Dabs%3APluto+OR+%3Dabs%3ACharon+OR+%3Dabs%3AArrokoth%29%29+OR+%28%28abs%3ALORRI+OR+abs%3AMVIC+OR+abs%3ALEISA+OR+abs%3APEPSSI+OR+%3Dabs%3A%22Long+Range+Reconnaissance+Imager%22+OR+%3Dabs%3A%22Multispectral+Visible+Imaging+Camera%22+OR+%3Dabs%3A%22Multicolor+Visible+Imaging+Camera%22+OR+%3Dabs%3A%22Linear+Etalon+Imaging+Spectral+Array%22%29+AND+%28%3Dabs%3APluto+OR+%3Dabs%3ACharon+OR+%3Dabs%3AArrokoth+OR+abs%3AMU69+OR+%3Dabs%3A%22Kuiper+belt%22+OR+%3Dabs%3A%22New+Horizons%22+OR+%3Dabs%3A%22cosmic+optical+background%22%29%29+OR+%28%28abs%3ASWAP+OR+abs%3ASDC+OR+abs%3AVBSDC%29+AND+%28%3Dabs%3A%22New+Horizons%22+OR+%3Dabs%3APluto+OR+%3Dabs%3A%22Kuiper+belt%22%29%29+OR+%28%28%3Dabs%3AAlice+OR+%3Dabs%3ARalph+OR+abs%3AREX+OR+%3Dabs%3A%22Radio+Science+Experiment%22%29+AND+%28%3Dabs%3APluto+OR+%3Dabs%3ACharon+OR+%3Dabs%3AArrokoth%29%29+OR+%3Dabs%3A%22Solar+Wind+Around+Pluto%22+OR+%3Dabs%3A%22Solar+Wind+at+Pluto%22+OR+%3Dabs%3A%22Pluto+Energetic+Particle+Spectrometer+Science+Investigation%22+OR+%3Dabs%3A%22Pluto+Exploration+Remote+Sensing+Investigation%22+OR+%3Dabs%3A%22Venetia+Burney+Student+Dust+Counter%22+OR+%28%3Dabs%3A%22Student+Dust+Counter%22+AND+%28abs%3Adust+OR+abs%3Ainterplanetary%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2015-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:45:57.923458+00:00",
     "reconciliation": {
       "adsReturned": 416,
-      "curatedOut": 3,
+      "curatedOut": 16,
       "curatedIn": 35,
       "libraryOut": 0,
       "otherOut": 0,
-      "duplicates": 1,
-      "final": 447
+      "duplicates": 0,
+      "final": 435
     }
   },
   "curation": {
@@ -652,6 +638,110 @@
         "reason": "Instrument description of the IMAP SWAPI instrument; New Horizons is mentioned only as design heritage.",
         "authority": "agent",
         "date": "2026-10-03"
+      },
+      {
+        "bibcode": "2015NatGe...8..666G",
+        "doi": "10.1038/ngeo2528",
+        "title": "Pluto: Glaciology's new horizon",
+        "reason": "Nature Geoscience research highlight summarizing another paper; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2015Natur.521...14W",
+        "doi": "10.1038/521014a",
+        "title": "Pluto-bound craft hunts for hazardous moons",
+        "reason": "Nature staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2015Natur.523..140W",
+        "doi": "10.1038/523140a",
+        "title": "Pluto fly-by: a graphical guide to the historic mission",
+        "reason": "Nature staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2015Natur.523..260.",
+        "doi": "10.1038/523260a",
+        "title": "The week in science: 10-16 July 2015",
+        "reason": "Nature weekly news roundup; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2015Natur.525...13W",
+        "doi": "10.1038/525013a",
+        "title": "Pluto snow forecast poses atmospheric conundrum",
+        "reason": "Nature staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2015Sci...350T.288S",
+        "doi": null,
+        "title": "New Horizons' views of Pluto",
+        "reason": "Science editors' one-paragraph summary of a published paper; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2016Sci...351S1276S",
+        "doi": null,
+        "title": "New Horizons unveils the Pluto system",
+        "reason": "Science editors' one-paragraph summary of a published paper; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2019Sci...363..115V",
+        "doi": "10.1126/science.363.6423.115",
+        "title": "New Horizons inspects a distant time capsule",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2019Sci...363..434.",
+        "doi": "10.1126/science.363.6426.434",
+        "title": "News at a glance",
+        "reason": "Science weekly news roundup; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2019Sci...364S.645S",
+        "doi": "10.1126/science.364.6441.645-m",
+        "title": "New Horizons flies past MU₆₉",
+        "reason": "Science editors' one-paragraph summary of a published paper; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2020Natur.582..472C",
+        "doi": "10.1038/d41586-020-01699-6",
+        "title": "Pluto probe offers eye-popping view of neighbouring star Proxima Centauri",
+        "reason": "Nature staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2025Natur.643..611.",
+        "doi": "10.1038/d41586-025-02108-6",
+        "title": "Lonely spacecraft can navigate the stars",
+        "reason": "Nature research highlight summarizing another paper; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2025Natur.643R.611.",
+        "doi": "10.1038/d41586-025-02108-6",
+        "title": "Lonely spacecraft can navigate the stars",
+        "reason": "Nature research highlight summarizing another paper; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
       }
     ]
   },
@@ -672,7 +762,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 221
+      "citations": 222
     },
     {
       "bibcode": "2016Sci...351.9189G",
@@ -681,7 +771,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 216
+      "citations": 217
     },
     {
       "bibcode": "2016Sci...351.8866G",
@@ -690,7 +780,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 187
+      "citations": 191
     },
     {
       "bibcode": "2019Sci...364.9771S",
@@ -699,7 +789,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 161
+      "citations": 162
     },
     {
       "bibcode": "2019Sci...363..955S",
@@ -708,7 +798,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 143
+      "citations": 146
+    },
+    {
+      "bibcode": "2016Icar..264..369P",
+      "title": "An improved model for interplanetary dust fluxes in the outer Solar System",
+      "firstAuthor": "Poppe, Andrew R.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2016,
+      "citations": 129
     },
     {
       "bibcode": "2007Sci...318..240S",
@@ -718,15 +817,6 @@
       "authorCount": null,
       "year": 2007,
       "citations": 127
-    },
-    {
-      "bibcode": "2016Icar..264..369P",
-      "title": "An improved model for interplanetary dust fluxes in the outer Solar System",
-      "firstAuthor": "Poppe, Andrew R.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2016,
-      "citations": 126
     },
     {
       "bibcode": "2018ApJ...869...23Z",
@@ -780,7 +870,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 104
+      "citations": 105
     },
     {
       "bibcode": "2020ApJ...903...48S",
@@ -807,7 +897,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 91
+      "citations": 92
     },
     {
       "bibcode": "2017Icar..286..289L",
@@ -828,16 +918,16 @@
       "citations": 89
     },
     {
-      "bibcode": "2018ARA&A..56..357S",
-      "title": "The Pluto System After New Horizons",
-      "firstAuthor": "Stern, S. Alan",
+      "bibcode": "2020NatAs...4..675O",
+      "title": "A small and round heliosphere suggested by magnetohydrodynamic modelling of pick-up ions",
+      "firstAuthor": "Opher, Merav",
       "authors": null,
       "authorCount": null,
-      "year": 2018,
-      "citations": 88
+      "year": 2020,
+      "citations": 89
     }
   ],
   "papersFile": {
-    "rows": 447
+    "rows": 435
   }
 }

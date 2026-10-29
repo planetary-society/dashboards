@@ -13,6 +13,7 @@
  *   src/lib/data/generated/missions/<id>.json
  *   src/lib/data/generated/refresh-report.md
  *   static/data/papers/<id>.json
+ *   static/data/maps/{missions/<id>,divisions/<slug>}.json
  *
  * `--out <dir>` (or $SMI_OUT_DIR) puts all of that under another root, keeping
  * the same relative layout. It exists so a doctored input can be packaged for
@@ -38,7 +39,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { combineWindows, fullMissionPolicy, missionWindow, windowPolicy } from './lib/windows.mjs';
+import { fullMissionPolicy, missionWindow, windowPolicy } from './lib/windows.mjs';
 import { assertKnownIds, displayNames, loadConfig, resolveRawDir, tierBounds } from './lib/config.mjs';
 import { citationCoverage, citationRepresentatives } from './lib/citations.mjs';
 import { buildCostCurve } from './lib/costcurve.mjs';
@@ -60,7 +61,7 @@ import {
 	buildDivisionScopeStats,
 	buildMissionScopeStats,
 	buildTiers,
-	firstEraTop,
+	firstTopRow,
 	divisionTotal,
 	isFailure,
 	isRankable,
@@ -70,33 +71,35 @@ import {
 	missionTop1,
 	missionTop10,
 	scopeField,
-	SCOPES
+	SCOPES,
+	hgIndex,
+	windowIndices,
+	yearlyTopRate
 } from './lib/measures.mjs';
 import { assertColumnLengths, buildPapersFile, topPapers } from './lib/papers.mjs';
-import { assertRanksMatchTiers, emptyRanks, publicRanks, rankHistograms } from './lib/ranks.mjs';
+import { assertRanksMatchTiers, citationHistogram, emptyRanks, publicRanks, rankHistograms } from './lib/ranks.mjs';
 import { buildReconciliation } from './lib/reconcile.mjs';
 import { splitQuery } from './lib/query.mjs';
 import {
 	accumulateCitationYears,
 	buildLifetimeSeries,
-	buildStrip,
-	citationsByYearOffset,
-	papersByMonth,
+	buildWindowSeries,
 	papersByYearMap
 } from './lib/series.mjs';
 import { buildSite, byCost, byLaunch, tileSort } from './lib/site.mjs';
 import { loadClps } from './lib/clps.mjs';
-import { buildKinds, loadPaperKinds } from './lib/kinds.mjs';
+import { affiliationMaps } from './lib/affiliations.mjs';
 import { underThreshold } from './lib/public.mjs';
+import { selectionOf } from './lib/analysis.mjs';
 import { cleanTitle } from './lib/text.mjs';
-import { byText, groupBy, int, num, weight, yearOf, yearsBetween } from './lib/util.mjs';
+import { groupBy, int, num, weight, yearOf } from './lib/util.mjs';
 
 const APP_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const GENERATED_REL = join('src', 'lib', 'data', 'generated');
 const PAPERS_REL = join('static', 'data', 'papers');
+const MAPS_REL = join('static', 'data', 'maps');
 const THUMBS_DIR = join(APP_ROOT, 'static', 'img', 'missions');
 const REPORT_NAME = 'refresh-report.md';
-const STRIP_CAP = 20;
 const TOP_CITED_LIMIT = 20;
 
 /** `[rawDir] [--check] [--out <dir>] [--allow-broken-claims]`. */
@@ -226,16 +229,6 @@ function curationItem(entry, titleByBibcode) {
 	};
 }
 
-/** A scrolly tile's slice of a FirstTopPaper: only what the two layouts read. */
-const laneFirst = (first) => ({
-	state: first.state,
-	yearsFromScienceStart: first.yearsFromScienceStart,
-	yearsFromFormulation: first.yearsFromFormulation
-});
-
-/** One full-mission paper row's top-10% credit to its mission: the era-adjusted weight split between the missions sharing it. */
-const fullCredit = (row) => Number(row.window_cohort_top10_weight ?? 0) / (Number(row.window_shared_by) || 1);
-
 /** One division's cost curve at one scope and percentile. */
 function costCurveFor(resolved, slug, scope, top, config) {
 	const credit = top === 1 ? missionTop1 : missionTop10;
@@ -308,6 +301,13 @@ export function loadRuns(rawDir, config, warnings, source = loadSourceCatalog(ra
 		warnings.add(`stats runs were produced by different code revisions: ${revisions.join(', ')}`);
 	}
 
+	// The data's end point: the latest full-mission window end in any run, where upstream cuts the
+	// windows of missions still operating (its maturity ceiling). The yearly top-10% rate stops there.
+	const dataEnd = runs.flatMap((r) => r.stats.missions ?? [])
+		.filter((m) => m.full_mission_cohort?.status === 'available')
+		.map((m) => m.full_mission_cohort.publication_end_date).filter(Boolean).sort().at(-1) ?? null;
+	if (!dataEnd) throw new PackagingError('no available full-mission window to take the data’s end point from');
+
 	// The mission-selection sentence, verbatim per run. /methods prints it as the
 	// authoritative statement of what is in and out of each division.
 	const filters = {};
@@ -328,6 +328,7 @@ export function loadRuns(rawDir, config, warnings, source = loadSourceCatalog(ra
 			asOfYear: Number(asOf.slice(0, 4)),
 			windowPolicy: policies[0],
 			fullPolicy: fullPolicies[0],
+			dataEnd,
 			codeRevision: revisions.join('+'),
 			codeRevisionDirty: runs.some((r) => Boolean(r.stats.provenance?.code?.working_tree_dirty)),
 			attribution: runs[0].stats.attribution ?? {},
@@ -362,9 +363,9 @@ export function loadRuns(rawDir, config, warnings, source = loadSourceCatalog(ra
  * @param {{rawDir: string, generatedDir: string, papersDir: string}} args.paths
  * @param {object} args.run per-division blocks: scopes, summary and share denominators
  * @param {{into: Map<number, number>, seen: Set<string>}} args.divisionCitations
- * @param {Map<string, string[]>} args.citationOverrides rebuilt citing lists
+ * @param {Map<string, string[]>} args.citationOverrides the representative citing list of every division paper
  * @param {{cited: string[], curated: Set<string>, pubdates: Map<string, string>, authors: Map<string, object>}} args.ownCitations the mission's
- *   own cited bibcodes (file order, packaged papers only), its curated records, every record's ADS pubdate and byline authors
+ *   packaged papers, its curated records, every record's ADS pubdate and byline authors
  */
 export function buildMissionDoc({
 	mission,
@@ -445,33 +446,10 @@ export function buildMissionDoc({
 		if (count !== statsMission.lifetime_papers) throw new PackagingError(`${id}: lifetime publication timeline has ${count} papers, statistics report ${statsMission.lifetime_papers}`);
 	}
 
-	// --- window series --------------------------------------------------------
+	// --- prime window --------------------------------------------------------
 	const windowCohort = statsMission.window_cohort;
 	const bounds = missionWindow(windowCohort, snapshot.windowPolicy, id);
 	const windowStatus = statsMission.window_status ?? windowCohort?.status ?? 'unknown';
-	const windowStart = windowCohort?.publication_start_date ?? null;
-	let windowSeries = null;
-	if (windowStart && bounds.months > 0) {
-		const recordsWindow = paths.source.readMission(id, 'records_window');
-		const citationsWindow = paths.source.readMission(id, 'citations_window');
-		windowSeries = {
-			...bounds,
-			outputBasis: statsMission.window_output_basis ?? (statsMission.window_papers == null ? 'unavailable' : 'measured'),
-			papersByMonth: papersByMonth(recordsWindow?.records ?? [], windowStart, bounds.months),
-			citationsByYearOffset: citationsByYearOffset(
-				citationsWindow?.window_citations ?? {},
-				yearOf(windowStart),
-				bounds.citationBuckets
-			),
-			status: windowStatus
-		};
-		if (windowSeries.status === 'available' && windowSeries.outputBasis === 'measured') {
-			for (const [metric, values] of [['papers', windowSeries.papersByMonth], ['citations', windowSeries.citationsByYearOffset]]) {
-				const count = values.reduce((a, b) => a + b, 0);
-				if (count !== statsMission[`window_${metric}`]) throw new PackagingError(`${id}: window timeline has ${count} ${metric}, statistics report ${statsMission[`window_${metric}`]}. Repair the window companions and re-export.`);
-			}
-		}
-	}
 
 	// --- measures --------------------------------------------------------------
 	// The agency commits at formulation, and formulation dates cover more of the
@@ -485,13 +463,14 @@ export function buildMissionDoc({
 	const pvLifetime = percentileView(scopeLifetime);
 	const pvWindow = percentileView(scopeWindow);
 	const pvFull = percentileView(scopeFull);
-	// A first top-10% paper is era-adjusted like every top-10% count: read from the paper rows,
-	// not from the pooled view's first_qualifying (which ranks against the division's pooled cutoff).
+	// A first top-10% paper is read from the paper rows, with the same weights every top-10% count sums.
 	const firstTop = {
-		full: firstEraTop(fullRows.values(), 'window_cohort_top10_weight', pubdates),
-		window: firstEraTop(windowRows.values(), 'window_cohort_top10_weight', pubdates),
-		lifetime: firstEraTop(lifetimeRows, 'cohort_top10_weight', pubdates)
+		full: firstTopRow(fullRows.values(), 'window_top10_weight', pubdates),
+		window: firstTopRow(windowRows.values(), 'window_top10_weight', pubdates),
+		lifetime: firstTopRow(lifetimeRows, 'top10_weight', pubdates)
 	};
+	// The focus chart's measure: lifetime top-10% papers a year, from science start to the data's end
+	const top10PerYear = yearlyTopRate(lifetimeRows, { start: scienceStart, end: snapshot.dataEnd, pubdates });
 	const scopeStats = (scope) =>
 		buildMissionScopeStats({
 			statsMission,
@@ -503,7 +482,7 @@ export function buildMissionDoc({
 			formulation
 		});
 	const lifetimeStats = scopeStats('lifetime');
-	const windowStats = { ...scopeStats('window'), status: windowStatus, bounds };
+	const windowStats = { ...scopeStats('window'), status: windowStatus, bounds, indices: windowIndices(windowRows.values(), bounds) };
 	// The full-mission window has no month-by-month companions: its cohort dates and measures only.
 	const fullCohort = statsMission.full_mission_cohort;
 	const fullStats = {
@@ -511,12 +490,22 @@ export function buildMissionDoc({
 		status: statsMission.full_mission_status ?? fullCohort?.status ?? 'unknown',
 		bounds: missionWindow(fullCohort, snapshot.fullPolicy, `${id} (full-mission window)`)
 	};
+	fullStats.indices = windowIndices(fullRows.values(), fullStats.bounds);
 
 	const failed = isFailure(statsMission.mission_status);
 	const shortfall = isShortfall(statsMission.mission_status);
 	const launchYear = yearOf(launchDate);
 	const hasThumb = existsSync(join(THUMBS_DIR, `${id}.webp`));
-	const yearsToBuild = yearsBetween(formulation, launchDate);
+	const cost = num(statsMission.adjusted_lcc);
+	// the story's membership rule, stamped once so no page re-derives it: 'under' is 0 < cost <= the line
+	const size = !(cost > 0) ? null : underThreshold(config.thresholdCost)({ cost }) ? 'under' : 'over';
+	// The windowed scopes' h and g (windowIndices) use the rule that reproduces these from the
+	// lifetime rows; a drift between the two fails here rather than skewing one scope.
+	const lifetimeHg = hgIndex(lifetimeRows.map((row) => row.citations));
+	for (const k of ['h', 'g']) {
+		const upstream = num(corpus.metrics?.lifetime?.local?.[`${k}_index`]);
+		if (upstream != null && upstream !== lifetimeHg[k]) throw new PackagingError(`${id}: lifetime ${k}-index ${lifetimeHg[k]} from the paper rows, upstream reports ${upstream}`);
+	}
 	const indices = {
 		h: num(corpus.metrics?.lifetime?.local?.h_index),
 		m: weight(corpus.metrics?.lifetime?.local?.m_index),
@@ -546,18 +535,21 @@ export function buildMissionDoc({
 		id,
 		asOf,
 		lifetimeRows,
-		windowRows,
 		fullRows,
 		curatedBibcodes,
-		top1Cutoff: scopeWindow.pooled_cutoffs?.weights?.['1'] ?? null,
 		fullTop1Cutoff: scopeFull.pooled_cutoffs?.weights?.['1'] ?? null
 	});
 	assertColumnLengths(papersFile);
-	// Per-paper citations by scope; null in f/w marks a row outside that cohort.
-	const columnOf = { lifetime: 'c', full: 'f', window: 'w' };
+	// Per-paper citations by scope; null in f marks a row outside that cohort. The prime window is in
+	// the packaged docs but no page reads it per paper, so its citations come from its own table.
+	const inScope = {
+		lifetime: papersFile.columns.c,
+		full: papersFile.columns.f.filter((c) => c !== null),
+		window: lifetimeRows.flatMap((row) => (windowRows.has(row.bibcode) ? [Number(windowRows.get(row.bibcode).window_citations ?? 0)] : []))
+	};
 	const spreads = {};
 	for (const scope of SCOPES) {
-		const citations = papersFile.columns[columnOf[scope]].filter((c) => c !== null);
+		const citations = inScope[scope];
 		const papers = missionPapers(statsMission, scope);
 		// The median and uncited count come from the rows, so they must be the rows the totals count.
 		if (papers !== null && scopeField(statsMission, scope, 'output_basis') === 'measured' && citations.length !== papers) {
@@ -587,7 +579,6 @@ export function buildMissionDoc({
 	const { arms, filters: queryFilters } = splitQuery(corpus.query?.source_query);
 
 	const byMissionSummary = summaryLifetime.by_mission?.[shortTitle] ?? null;
-	const scienceStartYear = yearOf(corpus.mission?.prime_mission_start_date) ?? num(byMissionSummary?.publication_years?.first);
 
 	// --- generated/missions/<id>.json ---------------------------------------------
 	const missionDoc = {
@@ -601,7 +592,12 @@ export function buildMissionDoc({
 			status: statsMission.mission_status ?? corpus.mission?.mission_status ?? 'unknown',
 			failed,
 			cost: num(statsMission.adjusted_lcc),
+			// the catalog's life-cycle cost as reported, before cost is adjusted to the base year
+			lcc: num(corpus.mission?.lcc),
 			type: corpus.mission?.mission_type ?? statsMission.mission_type ?? null,
+			program: corpus.mission?.program ?? null,
+			target: corpus.mission?.mission_target ?? null,
+			launchVehicle: corpus.mission?.launch_vehicle ?? null,
 			dates: {
 				formulation,
 				launch: launchDate,
@@ -617,7 +613,7 @@ export function buildMissionDoc({
 			publicationYears: publicationYearsPair(byMissionSummary?.publication_years, asOfYear)
 		},
 		lifetimeSeries,
-		windowSeries,
+		affiliations: ownCitations.maps?.summary ?? null,
 		mostCited: paperRefFromTopCited(corpus.corpus?.top_cited?.[0], ownCitations.authors),
 		ranks,
 		full: { ...fullStats, spread: spreads.full },
@@ -647,32 +643,31 @@ export function buildMissionDoc({
 	const missionBytes = writeJson(join(paths.generatedDir, 'missions', `${id}.json`), missionDoc, {
 		pretty: true
 	});
+	if (ownCitations.maps) writeJson(join(paths.mapsDir, 'missions', `${id}.json`), ownCitations.maps.file, { pretty: false });
 
 	// --- rows shared with the division, index, scrolly and story ------------------
 	return {
-		missionDoc,
 		missionRow: {
 			id,
 			name,
-			cost: num(statsMission.adjusted_lcc),
+			cost,
+			size,
 			launchYear,
 			failed,
 			shortfall,
+			// which shortfall, as the catalog words it ('Failure', 'Partial Failure', 'Partial Success'); null otherwise
+			outcome: shortfall ? statsMission.mission_status.trim() : null,
 			type: missionDoc.meta.type,
+			// read like the type; an older label fails here, before any output changes
+			selection: selectionOf(corpus.mission?.selection_strategy ?? statsMission.selection_strategy, id),
 			indices,
-			yearsToBuild,
 			papers: missionDoc.facts.papers,
 			citations: missionDoc.facts.citations,
+			top10PerYear,
 			hasThumb,
 			full: fullStats,
 			window: windowStats,
-			lifetime: lifetimeStats,
-			strip: buildStrip({
-				papersByYear: missionPapersByYear,
-				startYear: scienceStartYear,
-				asOfYear,
-				cap: STRIP_CAP
-			})
+			lifetime: lifetimeStats
 		},
 		indexEntry: {
 			id,
@@ -689,13 +684,19 @@ export function buildMissionDoc({
 			division: division.slug,
 			launchYear,
 			launchDate,
-			cost: num(statsMission.adjusted_lcc),
+			cost,
+			size,
 			// The story reads output in its default scope; the per-dollar step divides these citations by cost.
 			papers: fullStats.papers,
 			// The mission page headline: every paper on record, for the overview's corpus graphic.
 			papersLifetime: missionDoc.facts.papers,
+			// ...and every citation of them, which the corpus graphic's citation step rises to.
+			citationsLifetime: missionDoc.facts.citations,
 			citations: fullStats.citations,
-			yearsToBuild,
+			// full-mission top-10% credit as published (the per-dollar scatter reads it)
+			top10: fullStats.top10,
+			// the focus chart's bars: lifetime top-10% papers a year, as packaged
+			top10PerYear,
 			hasThumb,
 			failed,
 			shortfall,
@@ -703,26 +704,10 @@ export function buildMissionDoc({
 				full: { 10: fullStats.top10ShareOfDivision, 1: fullStats.top1ShareOfDivision },
 				window: { 10: windowStats.top10ShareOfDivision, 1: windowStats.top1ShareOfDivision },
 				lifetime: { 10: lifetimeStats.top10ShareOfDivision, 1: null }
-			},
-			// The story's squares and lanes only ever ask a tile which state it is in
-			// and how long it took; the bibcode and date live on the mission page.
-			first: { full: laneFirst(fullStats.first), window: laneFirst(windowStats.first), lifetime: laneFirst(lifetimeStats.first) }
+			}
 		},
-		// Every lifetime paper with its full-scope standing, for site.kinds; never written to the mission doc.
-		kindRows: lifetimeRows.map((row) => ({
-			bibcode: row.bibcode,
-			title: row.title ?? null,
-			year: num(row.year),
-			firstAuthor: row.first_author ?? null,
-			inScope: fullRows.has(row.bibcode),
-			citations: fullRows.has(row.bibcode) ? Number(fullRows.get(row.bibcode).window_citations ?? 0) : null,
-			// The mission's share of the paper's era-adjusted top-10% weight: summed, these are full.top10.
-			top10Credit: fullRows.has(row.bibcode) ? fullCredit(fullRows.get(row.bibcode)) : null,
-			citationsLifetime: Number(row.citations ?? 0)
-		})),
 		// What the division folds in afterwards.
 		divisionEdges,
-		windowSeries,
 		bytes: { missions: missionBytes, papers: papersBytes },
 		notes: {
 			unbalanced: balanced ? null : `${id} (${name})`,
@@ -857,11 +842,21 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 	// Follow the upstream representative-record rule, including deterministic ties.
 	// The one read of each mission's records and citations; buildMissionDoc gets what it needs from here.
 	const ownCitations = new Map();
+	// The division's papers once each, with their institutions, for its affiliation map.
+	const divisionInstitutions = new Map();
+	const divisionAffiliations = new Map();
+	// where each institution record falls on the maps, worked out once for the missions and reused by the division
+	const placed = new WeakMap();
 	function* citationSources() {
 		for (const { id, shortTitle } of resolved) {
 			const included = new Set((rowsByMission.get(shortTitle) ?? []).map((row) => row.bibcode));
 			const records = paths.source.readMission(id, 'records').records ?? [];
 			const citations = paths.source.readMission(id, 'citations').citations ?? {};
+			const institutions = new Map((paths.source.readMission(id, 'institutions').institutions ?? []).map((inst) => [inst.id, inst]));
+			const affiliations = new Map([...included].map((bibcode) => [bibcode, []]));
+			for (const r of records) if (included.has(r.bibcode)) affiliations.set(r.bibcode, r.institution_ids ?? []);
+			for (const [bibcode, ids] of affiliations) divisionAffiliations.set(bibcode, [...(divisionAffiliations.get(bibcode) ?? []), ...ids]);
+			for (const [key, inst] of institutions) divisionInstitutions.set(key, inst);
 			// Bylines are read only for the mission's and the division's most-cited paper.
 			const bylined = new Set([
 				paths.source.readMission(id).corpus?.top_cited?.[0]?.bibcode,
@@ -869,10 +864,13 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 				...Object.values(topByScope).flatMap((list) => list.map((p) => p.bibcode))
 			]);
 			ownCitations.set(id, {
-				cited: Object.keys(citations).filter((bibcode) => included.has(bibcode)),
+				// Every packaged paper, not only those with a list in this file: ADS can give one mission's
+				// copy of a shared paper no citations while another's has some, and the statistics count the larger.
+				cited: [...included],
 				curated: new Set(records.filter((r) => r?.source && r.source !== 'query').map((r) => r.bibcode)),
 				pubdates: new Map(records.map((r) => [r.bibcode, r.pubdate])),
-				authors: new Map(records.filter((r) => bylined.has(r.bibcode)).map((r) => [r.bibcode, recordAuthors(r)]))
+				authors: new Map(records.filter((r) => bylined.has(r.bibcode)).map((r) => [r.bibcode, recordAuthors(r)])),
+				maps: affiliationMaps(affiliations, institutions, id, placed)
 			});
 			yield { name: shortTitle, records: records.filter((r) => included.has(r.bibcode)), citations };
 		}
@@ -883,13 +881,10 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 	// Accumulators for the division's own series.
 	const citationSink = { into: new Map(), seen: new Set() };
 	let divisionEdges = 0;
-	const windowSeries = [];
-	const missionsImmature = [];
 
 	const missionRows = [];
 	const indexEntries = [];
 	const scrollyTiles = [];
-	const kindInputs = new Map(); // mission id -> { fullName, top10, rows } for site.kinds
 	const unbalanced = [];
 	const missionsWithoutQuery = [];
 	const bytes = { missions: 0, papers: 0 };
@@ -925,16 +920,11 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 		missionRows.push(built.missionRow);
 		indexEntries.push(built.indexEntry);
 		scrollyTiles.push(built.scrollyTile);
-		kindInputs.set(built.scrollyTile.id, { fullName: built.missionDoc.fullName, top10: built.missionRow.full.top10, rows: built.kindRows });
 		divisionEdges += built.divisionEdges;
 		bytes.missions += built.bytes.missions;
 		bytes.papers += built.bytes.papers;
 		if (built.notes.unbalanced) unbalanced.push(built.notes.unbalanced);
 		if (built.notes.missingQuery) missionsWithoutQuery.push(built.notes.missingQuery);
-
-		const series = built.windowSeries;
-		if (series) windowSeries.push(series);
-		if (built.missionRow.window.status !== 'available') missionsImmature.push(built.missionRow.id);
 	}
 
 
@@ -965,6 +955,20 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 	});
 
 	if (divisionLifetimeSeries) divisionLifetimeSeries.citationCoverage = coverage;
+	// The same chart in the Active Mission Window: its papers, and each paper's citations through its
+	// citation window. Checked against the scope's reported total like the lifetime series.
+	const { series: divisionFullSeries, edges: fullEdges } = buildWindowSeries({
+		rows: fullPapersJson.papers,
+		citations: citationOverrides,
+		citationYears: snapshot.fullPolicy.citationYears,
+		asOfYear
+	});
+	if (divisionFullSeries) {
+		divisionFullSeries.citationCoverage = citationCoverage({ expected: summaryFull.citations_total, observed: fullEdges,
+			historyStatus: scopeFull.history_status, limits: config.citationHistory });
+	}
+	const divisionMaps = affiliationMaps(divisionAffiliations, divisionInstitutions, division.slug, placed);
+	if (divisionMaps) writeJson(join(paths.mapsDir, 'divisions', `${division.slug}.json`), divisionMaps.file, { pretty: false });
 
 	missionRows.sort(byCost);
 
@@ -974,6 +978,11 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 		window: buildDivisionScopeStats({ summary: summaryWindow, scopeBlock: scopeWindow, tierPercents }),
 		lifetime: buildDivisionScopeStats({ summary: summaryLifetime, scopeBlock: scopeLifetime, tierPercents })
 	};
+	// The story's primer: the full-mission papers by citation count, the same pool the full stats describe.
+	const histogram = citationHistogram(fullPapersJson.papers, { ...windowed, topWeight: 'window_top10_weight' });
+	if (divisionStats.full && histogram.papers !== divisionStats.full.papers) {
+		throw new PackagingError(`${division.slug}: full-mission histogram has ${histogram.papers} papers, the full stats report ${divisionStats.full.papers}`);
+	}
 	// The same lifetime pool reported twice; a difference means the blocks drifted.
 	const pool = divisionStats.lifetime;
 	if (pool && (pool.papers !== num(summaryLifetime.papers) || pool.citations !== num(summaryLifetime.citations_total))) {
@@ -991,10 +1000,8 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 		},
 		rankable,
 		lifetimeSeries: divisionLifetimeSeries,
-		windowSeries: {
-			...combineWindows(windowSeries),
-			missionsImmature: [...missionsImmature].sort(byText)
-		},
+		fullSeries: divisionFullSeries,
+		affiliations: divisionMaps?.summary ?? null,
 		mostCited: mostCitedRow
 			? {
 					bibcode: mostCitedRow.bibcode,
@@ -1026,6 +1033,7 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 			])
 		),
 		stats: divisionStats,
+		citationHistogram: { full: histogram },
 		costCurves,
 		indexCorrelation: buildIndexCorrelation(missionRows),
 		missions: missionRows
@@ -1050,7 +1058,6 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 		},
 		indexEntries,
 		scrollyTiles,
-		kindInputs,
 		citationGap: {
 			slug: division.slug,
 			...citationGap({ edges: divisionEdges, citationsTotal: summaryLifetime.citations_total }),
@@ -1112,7 +1119,8 @@ function main() {
 	const paths = {
 		rawDir,
 		generatedDir: join(outRoot, GENERATED_REL),
-		papersDir: join(outRoot, PAPERS_REL)
+		papersDir: join(outRoot, PAPERS_REL),
+		mapsDir: join(outRoot, MAPS_REL)
 	};
 	if (!existsSync(rawDir)) {
 		throw new PackagingError(`raw data directory not found: ${rawDir}`);
@@ -1122,7 +1130,6 @@ function main() {
 	// The CLPS chart's dataset is checked with everything else, before any output changes.
 	const clps = loadClps({ rawDir: resolve(APP_ROOT, config.clps.rawDir), config, asOf: snapshot.asOf });
 	assertKnownIds('names', Object.keys(config.names ?? {}), new Set([...source.missions.keys(), ...clps.missions.map((m) => m.id), ...clps.comparators.map((m) => m.id)]));
-	const kindsFile = loadPaperKinds(resolve(APP_ROOT, config.paperKinds.file));
 	paths.source = source;
 	const byTitle = source.byTitle;
 	pendingFiles.clear();
@@ -1160,24 +1167,6 @@ function main() {
 	let citationsDistinct = 0;
 	for (const value of globalBest.values()) citationsDistinct += value;
 
-	// ---- paper kinds: missions at or under the threshold, full-mission scope ----
-	const kindInputs = new Map(built.flatMap((d) => [...d.kindInputs]));
-	const kinds = buildKinds({
-		kindsFile,
-		missions: scrollyTiles.filter(underThreshold(config.thresholdCost)).map((t) => ({
-			id: t.id,
-			name: t.name,
-			division: t.division,
-			cost: t.cost,
-			papers: t.papers,
-			citations: t.citations,
-			...kindInputs.get(t.id)
-		})),
-		examples: config.paperKinds.examples,
-		smallMax: config.paperKinds.smallMax,
-		warnings
-	});
-
 	const site = buildSite({
 		snapshot,
 		config,
@@ -1187,9 +1176,10 @@ function main() {
 		papersDistinct: globalBest.size,
 		citationsDistinct,
 		yearCohortMinN: snapshot.yearCohortMinN,
-		clps,
-		kinds
+		clps
 	});
+	// The overview's walk-through steps read this division; one that can't be ranked leaves them blank.
+	if (config.storyDivision && !site.story.focusDivision) warnings.add(`storyDivision "${config.storyDivision}" is not rankable in the full scope: the overview's focus steps will be blank`);
 	bytes.site = writeJson(join(paths.generatedDir, 'site.json'), site, { pretty: true });
 	bytes.index = writeJson(join(paths.generatedDir, 'index.json'), indexEntries, { pretty: true });
 	bytes.scrolly = writeJson(
@@ -1205,8 +1195,6 @@ function main() {
 		return;
 	}
 	const previous = readPreviousPackage();
-	// The classification input, published byte-for-byte for the methods page; overwritten each run.
-	pendingFiles.set(join(outRoot, 'static', 'data', 'paper-kinds.json'), readFileSync(resolve(APP_ROOT, config.paperKinds.file)));
 
 	// ---- refresh-report.md -------------------------------------------------
 	const reportPath = join(paths.generatedDir, REPORT_NAME);
@@ -1228,7 +1216,7 @@ function main() {
 
 
 	// Every calculation and serialization passed before replacing generated files.
-	for (const dir of [paths.generatedDir, paths.papersDir]) rmSync(dir, { recursive: true, force: true });
+	for (const dir of [paths.generatedDir, paths.papersDir, paths.mapsDir]) rmSync(dir, { recursive: true, force: true });
 	for (const [file, text] of pendingFiles) {
 		mkdirSync(dirname(file), { recursive: true });
 		writeFileSync(file, text);

@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 724.5,
+    "lcc": 496.2,
     "type": "Orbiter",
+    "program": "Discovery",
+    "target": "Moon",
+    "launchVehicle": "Delta II",
     "dates": {
       "formulation": "2007-12-11",
       "launch": "2011-09-10",
@@ -23,12 +27,12 @@
     "m": 3.067,
     "i100": 21,
     "g": 83,
-    "tori": 25.723,
+    "tori": 25.836,
     "riq": 338
   },
   "facts": {
     "papers": 192,
-    "citations": 7547,
+    "citations": 7585,
     "publicationYears": [
       2012,
       2026
@@ -83,64 +87,53 @@
       640,
       896,
       898,
-      818,
-      780
+      821,
+      815
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 7547,
-      "observed": 7547,
+      "expected": 7585,
+      "observed": 7585,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2012-04-01",
-    "end": "2014-09-01",
-    "matureDate": "2017-10-01",
-    "status": "available",
-    "months": 29,
-    "citationBuckets": 6,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      2,
-      1,
-      0,
-      1,
-      0,
-      1,
-      3,
-      0,
-      0,
-      0,
-      1,
-      1,
-      2,
-      4,
-      1,
-      2,
-      1,
-      1,
-      2,
-      2,
-      0,
-      2,
-      2,
-      2,
-      2
-    ],
-    "citationsByYearOffset": [
-      1,
-      133,
-      286,
-      296,
-      262,
-      70
-    ]
+  "affiliations": {
+    "papers": 192,
+    "us": {
+      "mapped": 102,
+      "top": [
+        {
+          "name": "Massachusetts Institute of Technology",
+          "papers": 47
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 31
+        },
+        {
+          "name": "Brown University, Rhode Island",
+          "papers": 28
+        }
+      ]
+    },
+    "world": {
+      "mapped": 176,
+      "top": [
+        {
+          "name": "Massachusetts Institute of Technology",
+          "papers": 47
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 31
+        },
+        {
+          "name": "Brown University, Rhode Island",
+          "papers": 28
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2013Sci...339..671W",
@@ -154,34 +147,34 @@
     ],
     "authorCount": 16,
     "year": 2013,
-    "citations": 872
+    "citations": 876
   },
   "ranks": {
     "full": {
       "bins": [
-        2.621,
-        3.379,
-        1.243,
-        2.757,
-        2.105,
-        2.895,
+        2.707,
+        3.293,
+        1.503,
+        2.521,
+        2.245,
+        2.731,
         4,
         3,
-        4.97,
-        10.03
+        5,
+        10
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        2.661,
-        2.339,
+        2.787,
+        2.213,
         4,
         2,
         2,
-        3.654,
-        1.664,
-        2.681,
+        3.795,
+        1.66,
+        2.545,
         3,
         9
       ],
@@ -189,16 +182,16 @@
     },
     "lifetime": {
       "bins": [
-        25.589,
-        26.143,
-        26.853,
-        14.331,
-        13.085,
-        15.455,
-        15.745,
-        13.8,
-        16,
-        25
+        26.498,
+        27.597,
+        25.202,
+        14.564,
+        12.154,
+        16.016,
+        16.172,
+        11.797,
+        17.244,
+        24.756
       ],
       "top1": 2
     }
@@ -207,10 +200,10 @@
     "papers": 37,
     "outputBasis": "measured",
     "citations": 1100,
-    "top10": 10.233,
-    "top10ShareOfDivision": 0.00936,
+    "top10": 9.5,
+    "top10ShareOfDivision": 0.00875,
     "top1": 2,
-    "top1ShareOfDivision": 0.0183,
+    "top1ShareOfDivision": 0.01843,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.906,
@@ -227,6 +220,11 @@
       "months": 33,
       "citationBuckets": 6
     },
+    "indices": {
+      "h": 17,
+      "g": 33,
+      "m": 6.177
+    },
     "spread": {
       "mean": 29.73,
       "median": 14,
@@ -239,10 +237,10 @@
     "papers": 33,
     "outputBasis": "measured",
     "citations": 1048,
-    "top10": 6.275,
-    "top10ShareOfDivision": 0.013,
+    "top10": 9,
+    "top10ShareOfDivision": 0.0188,
     "top1": 2,
-    "top1ShareOfDivision": 0.04143,
+    "top1ShareOfDivision": 0.04177,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.906,
@@ -259,6 +257,11 @@
       "months": 29,
       "citationBuckets": 6
     },
+    "indices": {
+      "h": 16,
+      "g": 31,
+      "m": 6.617
+    },
     "spread": {
       "mean": 31.758,
       "median": 14,
@@ -270,9 +273,9 @@
   "lifetime": {
     "papers": 192,
     "outputBasis": "measured",
-    "citations": 7547,
-    "top10": 22,
-    "top10ShareOfDivision": 0.01616,
+    "citations": 7585,
+    "top10": 22.256,
+    "top10ShareOfDivision": 0.01421,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -283,7 +286,7 @@
       "date": "2012-11-00"
     },
     "spread": {
-      "mean": 39.307,
+      "mean": 39.505,
       "median": 12,
       "uncited": 21,
       "i10": 106,
@@ -292,9 +295,9 @@
   },
   "query": {
     "arms": "((=abs:\"Gravity Recovery and Interior Laboratory\" OR (abs:GRAIL AND (abs:Moon OR abs:lunar OR abs:gravity)) ))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2012-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Gravity+Recovery+and+Interior+Laboratory%22+OR+%28abs%3AGRAIL+AND+%28abs%3AMoon+OR+abs%3Alunar+OR+abs%3Agravity%29%29+%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:07:07.205218+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2012-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Gravity+Recovery+and+Interior+Laboratory%22+OR+%28abs%3AGRAIL+AND+%28abs%3AMoon+OR+abs%3Alunar+OR+abs%3Agravity%29%29+%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:48:05.461866+00:00",
     "reconciliation": {
       "adsReturned": 192,
       "curatedOut": 0,
@@ -317,7 +320,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 872
+      "citations": 876
     },
     {
       "bibcode": "2013Sci...339..668Z",
@@ -326,7 +329,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 443
+      "citations": 445
     },
     {
       "bibcode": "2015SciA....1E0852N",
@@ -335,7 +338,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 232
+      "citations": 233
     },
     {
       "bibcode": "2014JGRE..119.1546W",
@@ -347,22 +350,22 @@
       "citations": 207
     },
     {
-      "bibcode": "2013Sci...339..675A",
-      "title": "Ancient Igneous Intrusions and Early Expansion of the Moon Revealed by GRAIL Gravity Gradiometry",
-      "firstAuthor": "Andrews-Hanna, Jeffrey C.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2013,
-      "citations": 178
-    },
-    {
       "bibcode": "2013Sci...340.1552M",
       "title": "The Origin of Lunar Mascon Basins",
       "firstAuthor": "Melosh, H. J.",
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 178
+      "citations": 180
+    },
+    {
+      "bibcode": "2013Sci...339..675A",
+      "title": "Ancient Igneous Intrusions and Early Expansion of the Moon Revealed by GRAIL Gravity Gradiometry",
+      "firstAuthor": "Andrews-Hanna, Jeffrey C.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 179
     },
     {
       "bibcode": "2013JGRE..118.1415K",
@@ -371,16 +374,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 174
-    },
-    {
-      "bibcode": "2017Icar..283..146W",
-      "title": "Generation, ascent and eruption of magma on the Moon: New insights into source depths, magma supply, intrusions and effusive/explosive eruptions (Part 1: Theory)",
-      "firstAuthor": "Wilson, Lionel",
-      "authors": null,
-      "authorCount": null,
-      "year": 2017,
-      "citations": 173
+      "citations": 177
     },
     {
       "bibcode": "2014GeoRL..41.3382L",
@@ -389,7 +383,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 172
+      "citations": 176
+    },
+    {
+      "bibcode": "2017Icar..283..146W",
+      "title": "Generation, ascent and eruption of magma on the Moon: New insights into source depths, magma supply, intrusions and effusive/explosive eruptions (Part 1: Theory)",
+      "firstAuthor": "Wilson, Lionel",
+      "authors": null,
+      "authorCount": null,
+      "year": 2017,
+      "citations": 175
     },
     {
       "bibcode": "2014GeoRL..41.5771B",
@@ -407,7 +410,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 156
+      "citations": 157
     },
     {
       "bibcode": "2015JGRE..120..869L",
@@ -416,7 +419,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 137
+      "citations": 139
     },
     {
       "bibcode": "2013JGRE..118.1676L",
@@ -434,7 +437,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 127
+      "citations": 129
     },
     {
       "bibcode": "2013Sci...342..724M",
@@ -443,7 +446,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 125
+      "citations": 126
     },
     {
       "bibcode": "2014GeoRL..41.1452K",
@@ -452,7 +455,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 124
+      "citations": 125
     },
     {
       "bibcode": "2013JGRE..118.1789Z",
@@ -470,7 +473,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 119
+      "citations": 120
     },
     {
       "bibcode": "2018M&PS...53.1432R",

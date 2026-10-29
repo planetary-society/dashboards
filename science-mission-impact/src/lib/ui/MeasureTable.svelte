@@ -15,7 +15,7 @@
 			<tbody>
 				{#each g.rows as r (r.label)}
 					<tr>
-						<th scope="row" class:hi={r.highlight}
+						<th scope="row"
 							>{r.label}{#if r.hint}<Hint label={r.label.replace(/,.*/, '')} text={r.hint.text} href={methodsHref(r.hint.anchor)} />{/if}</th
 						>
 						<td class="num"><Num value={r.value} />{#if r.note}{' '}<span class="meta">· {r.note}</span>{/if}</td>
@@ -57,17 +57,6 @@
 		padding-left: 16px;
 	}
 
-	/* A line to read others against: the cutoffs. */
-	.hi {
-		border-left: 2px solid var(--neptune);
-		padding-left: 10px;
-	}
-
-	.hi,
-	.hi + td {
-		color: var(--white);
-		font-weight: 500;
-	}
 
 	.none {
 		color: var(--dust);

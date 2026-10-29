@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 184.1,
+    "lcc": 78.9,
     "type": "Orbiter",
+    "program": "Earth Probe",
+    "target": "Earth",
+    "launchVehicle": "Pegasus XL",
     "dates": {
       "formulation": "1989-01-01",
       "launch": "1996-07-02",
@@ -23,12 +27,12 @@
     "m": 1.333,
     "i100": 13,
     "g": 69,
-    "tori": 35.927,
+    "tori": 35.948,
     "riq": 230
   },
   "facts": {
     "papers": 142,
-    "citations": 5321,
+    "citations": 5323,
     "publicationYears": [
       1997,
       2022
@@ -115,7 +119,7 @@
       227,
       237,
       302,
-      241,
+      243,
       256,
       256,
       228,
@@ -128,85 +132,53 @@
       206,
       182,
       215,
-      186,
-      92
+      185,
+      93
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 5321,
-      "observed": 5321,
+      "expected": 5323,
+      "observed": 5323,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "1996-08-01",
-    "end": "2000-08-01",
-    "matureDate": "2003-10-01",
-    "status": "available",
-    "months": 48,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      1,
-      0,
-      2,
-      1,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      1,
-      0,
-      0,
-      1,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      2,
-      0,
-      1,
-      0,
-      1,
-      0,
-      1,
-      0,
-      0
-    ],
-    "citationsByYearOffset": [
-      0,
-      0,
-      10,
-      42,
-      27,
-      45,
-      17,
-      12
-    ]
+  "affiliations": {
+    "papers": 142,
+    "us": {
+      "mapped": 51,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 24
+        },
+        {
+          "name": "Joint Center for Earth Systems Technology, UMD, Baltimore",
+          "papers": 11
+        },
+        {
+          "name": "Science Systems and Applications Inc., Maryland",
+          "papers": 11
+        }
+      ]
+    },
+    "world": {
+      "mapped": 99,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 24
+        },
+        {
+          "name": "Joint Center for Earth Systems Technology, UMD, Baltimore",
+          "papers": 11
+        },
+        {
+          "name": "Science Systems and Applications Inc., Maryland",
+          "papers": 11
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2002JAtS...59..398T",
@@ -220,19 +192,19 @@
     ],
     "authorCount": 6,
     "year": 2002,
-    "citations": 416
+    "citations": 417
   },
   "ranks": {
     "full": {
       "bins": [
-        18.002,
-        12.634,
-        14.888,
-        7.634,
-        4.826,
-        7.578,
-        4.883,
-        3.556,
+        18.009,
+        12.649,
+        14.898,
+        7.617,
+        4.823,
+        7.571,
+        4.91,
+        3.523,
         9,
         7
       ],
@@ -240,9 +212,9 @@
     },
     "window": {
       "bins": [
-        3.363,
+        3.362,
         3.395,
-        1.243,
+        1.242,
         0,
         1,
         1,
@@ -255,13 +227,13 @@
     },
     "lifetime": {
       "bins": [
-        6.854,
-        13.156,
-        10.584,
-        21.053,
-        11.418,
-        10.867,
-        15.067,
+        6.719,
+        13.144,
+        10.576,
+        20.903,
+        11.646,
+        10.912,
+        15.099,
         16,
         14,
         23
@@ -273,8 +245,8 @@
     "papers": 90,
     "outputBasis": "measured",
     "citations": 767,
-    "top10": 11.767,
-    "top10ShareOfDivision": 0.00327,
+    "top10": 5.667,
+    "top10ShareOfDivision": 0.00157,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -293,6 +265,11 @@
       "months": 137,
       "citationBuckets": 15
     },
+    "indices": {
+      "h": 16,
+      "g": 24,
+      "m": 1.401
+    },
     "spread": {
       "mean": 8.522,
       "median": 3,
@@ -305,8 +282,8 @@
     "papers": 16,
     "outputBasis": "measured",
     "citations": 153,
-    "top10": 2.2,
-    "top10ShareOfDivision": 0.00234,
+    "top10": 1,
+    "top10ShareOfDivision": 0.00106,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -325,6 +302,11 @@
       "months": 48,
       "citationBuckets": 8
     },
+    "indices": {
+      "h": 7,
+      "g": 12,
+      "m": 1.75
+    },
     "spread": {
       "mean": 9.563,
       "median": 5,
@@ -336,9 +318,9 @@
   "lifetime": {
     "papers": 142,
     "outputBasis": "measured",
-    "citations": 5321,
-    "top10": 7.1,
-    "top10ShareOfDivision": 0.00184,
+    "citations": 5323,
+    "top10": 15.75,
+    "top10ShareOfDivision": 0.00339,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -349,7 +331,7 @@
       "date": "1997-11-00"
     },
     "spread": {
-      "mean": 37.472,
+      "mean": 37.486,
       "median": 16.5,
       "uncited": 6,
       "i10": 87,
@@ -358,9 +340,9 @@
   },
   "query": {
     "arms": "(((=abs:\"Earth Probe\" AND (abs:TOMS OR =abs:\"Total Ozone Mapping Spectrometer\")) OR ((abs:\"TOMS-EP\" OR abs:\"EP-TOMS\" OR abs:EPTOMS) AND abs:(ozone OR aerosol OR ultraviolet OR UV OR SO2 OR volcanic OR satellite))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1996-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Earth+Probe%22+AND+%28abs%3ATOMS+OR+%3Dabs%3A%22Total+Ozone+Mapping+Spectrometer%22%29%29+OR+%28%28abs%3A%22TOMS-EP%22+OR+abs%3A%22EP-TOMS%22+OR+abs%3AEPTOMS%29+AND+abs%3A%28ozone+OR+aerosol+OR+ultraviolet+OR+UV+OR+SO2+OR+volcanic+OR+satellite%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:08:31.243620+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1996-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Earth+Probe%22+AND+%28abs%3ATOMS+OR+%3Dabs%3A%22Total+Ozone+Mapping+Spectrometer%22%29%29+OR+%28%28abs%3A%22TOMS-EP%22+OR+abs%3A%22EP-TOMS%22+OR+abs%3AEPTOMS%29+AND+abs%3A%28ozone+OR+aerosol+OR+ultraviolet+OR+UV+OR+SO2+OR+volcanic+OR+satellite%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:52:30.467951+00:00",
     "reconciliation": {
       "adsReturned": 141,
       "curatedOut": 0,
@@ -392,7 +374,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 416
+      "citations": 417
     },
     {
       "bibcode": "2003JGRD..108.8238T",

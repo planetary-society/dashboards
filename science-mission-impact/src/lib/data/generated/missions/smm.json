@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 581.4,
+    "lcc": 98.7,
     "type": "Solar Observatory",
+    "program": "Solar Maximum Mission",
+    "target": "Sun",
+    "launchVehicle": "Delta 3910",
     "dates": {
       "formulation": "1973-04-01",
       "launch": "1980-02-14",
@@ -19,16 +23,16 @@
     }
   },
   "indices": {
-    "h": 91,
-    "m": 1.936,
+    "h": 92,
+    "m": 1.957,
     "i100": 79,
     "g": 154,
-    "tori": 539.079,
+    "tori": 540.132,
     "riq": 494
   },
   "facts": {
     "papers": 1016,
-    "citations": 39703,
+    "citations": 39804,
     "publicationYears": [
       1980,
       2026
@@ -163,10 +167,10 @@
       1032,
       839,
       762,
-      850,
-      782,
+      857,
+      785,
       835,
-      833,
+      834,
       763,
       852,
       886,
@@ -179,85 +183,53 @@
       896,
       862,
       859,
-      855,
-      805
+      869,
+      881
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 39703,
-      "observed": 39703,
+      "expected": 39804,
+      "observed": 39804,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "1980-03-01",
-    "end": "1984-03-01",
-    "matureDate": "1987-10-01",
-    "status": "available",
-    "months": 48,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      1,
-      3,
-      1,
-      1,
-      1,
-      0,
-      0,
-      7,
-      1,
-      17,
-      2,
-      0,
-      1,
-      0,
-      4,
-      1,
-      0,
-      3,
-      4,
-      17,
-      2,
-      5,
-      2,
-      5,
-      4,
-      4,
-      1,
-      2,
-      3,
-      3,
-      5,
-      5,
-      5,
-      3,
-      9,
-      2,
-      3,
-      19,
-      2,
-      3,
-      4,
-      3,
-      5,
-      38,
-      4
-    ],
-    "citationsByYearOffset": [
-      2,
-      96,
-      205,
-      386,
-      512,
-      446,
-      242,
-      43
-    ]
+  "affiliations": {
+    "papers": 1016,
+    "us": {
+      "mapped": 622,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 170
+        },
+        {
+          "name": "Lockheed Martin Corporation",
+          "papers": 100
+        },
+        {
+          "name": "U.S. Department of the Navy, Naval Research Laboratory, Washington DC",
+          "papers": 95
+        }
+      ]
+    },
+    "world": {
+      "mapped": 915,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 170
+        },
+        {
+          "name": "Lockheed Martin Corporation",
+          "papers": 100
+        },
+        {
+          "name": "U.S. Department of the Navy, Naval Research Laboratory, Washington DC",
+          "papers": 95
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2002JGRA..107.1468P",
@@ -271,21 +243,21 @@
     ],
     "authorCount": 4,
     "year": 2002,
-    "citations": 2615
+    "citations": 2624
   },
   "ranks": {
     "full": {
       "bins": [
-        139.782,
-        90.588,
-        68.3,
-        71.872,
-        53.516,
-        52.778,
-        61.313,
-        55.775,
-        48.782,
-        35.294
+        139.885,
+        90.581,
+        68.348,
+        71.879,
+        53.803,
+        52.681,
+        61.379,
+        55.606,
+        48.656,
+        35.182
       ],
       "top1": 3
     },
@@ -293,29 +265,29 @@
       "bins": [
         54.522,
         26.724,
-        20.537,
-        14.292,
-        13.119,
+        20.548,
+        14.297,
+        13.103,
         19.029,
         15.786,
-        18.062,
-        13.644,
+        18.088,
+        13.618,
         9.285
       ],
       "top1": 0.185
     },
     "lifetime": {
       "bins": [
-        111.551,
-        93.401,
-        80.609,
-        87.128,
-        84.377,
-        96.534,
-        94.505,
-        108.578,
-        127.273,
-        132.043
+        112.589,
+        93.799,
+        78.995,
+        89.054,
+        84.209,
+        95.408,
+        95.369,
+        107.969,
+        127.823,
+        130.786
       ],
       "top1": 18
     }
@@ -324,8 +296,8 @@
     "papers": 678,
     "outputBasis": "measured",
     "citations": 5446,
-    "top10": 60.533,
-    "top10ShareOfDivision": 0.04199,
+    "top10": 35.182,
+    "top10ShareOfDivision": 0.0244,
     "top1": 3,
     "top1ShareOfDivision": 0.02081,
     "first": {
@@ -344,6 +316,11 @@
       "months": 142,
       "citationBuckets": 15
     },
+    "indices": {
+      "h": 28,
+      "g": 36,
+      "m": 2.366
+    },
     "spread": {
       "mean": 8.032,
       "median": 5,
@@ -356,8 +333,8 @@
     "papers": 205,
     "outputBasis": "measured",
     "citations": 1932,
-    "top10": 16.567,
-    "top10ShareOfDivision": 0.03734,
+    "top10": 9.285,
+    "top10ShareOfDivision": 0.02093,
     "top1": 0.185,
     "top1ShareOfDivision": 0.00417,
     "first": {
@@ -376,6 +353,11 @@
       "months": 48,
       "citationBuckets": 8
     },
+    "indices": {
+      "h": 23,
+      "g": 30,
+      "m": 5.75
+    },
     "spread": {
       "mean": 9.424,
       "median": 5,
@@ -387,20 +369,20 @@
   "lifetime": {
     "papers": 1016,
     "outputBasis": "measured",
-    "citations": 39703,
-    "top10": 83.5,
-    "top10ShareOfDivision": 0.05329,
+    "citations": 39804,
+    "top10": 129.786,
+    "top10ShareOfDivision": 0.07082,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 0.966,
-      "yearsFromFormulation": 7.838,
-      "bibcode": "1981Sci...211..700W",
-      "date": "1981-02-00"
+      "yearsFromScienceStart": 0.463,
+      "yearsFromFormulation": 7.335,
+      "bibcode": "1980SoPh...67..285S",
+      "date": "1980-08-00"
     },
     "spread": {
-      "mean": 39.078,
+      "mean": 39.177,
       "median": 17,
       "uncited": 88,
       "i10": 652,
@@ -409,9 +391,9 @@
   },
   "query": {
     "arms": "((=abs:\"Solar Maximum Mission\" OR facility:SMM OR (abs:SMM AND collection:astronomy NOT abs:(submillimeter OR submillimetre OR submm OR SCUBA OR protostar OR protostars OR protostellar OR Serpens OR lensed OR multifragmentation OR ULIRG) NOT =abs:\"molecular gas\" NOT =abs:\"high redshift\" NOT =abs:\"high-redshift\" NOT =abs:\"mixture modeling\") OR (=abs:\"Solar Max\" AND abs:(ACRIM OR blankets OR louver OR repair OR \"space shuttle\")) OR ((abs:HXIS OR =abs:\"Hard X-ray Imaging Spectrometer\") AND abs:(flare OR flares OR solar OR sun OR coronal OR arch OR arches) NOT abs:(STIX OR \"Solar Orbiter\" OR \"ASO-S\" OR Hitomi OR NuSTAR)) OR ((abs:HXRBS OR =abs:\"Hard X-ray Burst Spectrometer\") AND (abs:(flare OR flares OR solar OR sun OR \"gamma-ray\") OR =abs:\"gamma rays\") NOT abs:binaries) OR ((abs:UVSP OR =abs:\"Ultraviolet Spectrometer and Polarimeter\") AND abs:(solar OR sun OR flare OR flares OR ozone OR filament OR \"transition region\") NOT abs:Mars) OR ((abs:XRP OR =abs:\"X-Ray Polychromator\") AND abs:(flare OR flares OR \"active region\") NOT abs:pulsar) OR (=abs:\"Coronagraph/Polarimeter\" AND abs:(CME OR CMEs)) OR =abs:\"ACRIM I\" OR (abs:(ACRIM1 OR \"ACRIM-1\") AND abs:(irradiance OR TSI OR solar))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1980-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Solar+Maximum+Mission%22+OR+facility%3ASMM+OR+%28abs%3ASMM+AND+collection%3Aastronomy+NOT+abs%3A%28submillimeter+OR+submillimetre+OR+submm+OR+SCUBA+OR+protostar+OR+protostars+OR+protostellar+OR+Serpens+OR+lensed+OR+multifragmentation+OR+ULIRG%29+NOT+%3Dabs%3A%22molecular+gas%22+NOT+%3Dabs%3A%22high+redshift%22+NOT+%3Dabs%3A%22high-redshift%22+NOT+%3Dabs%3A%22mixture+modeling%22%29+OR+%28%3Dabs%3A%22Solar+Max%22+AND+abs%3A%28ACRIM+OR+blankets+OR+louver+OR+repair+OR+%22space+shuttle%22%29%29+OR+%28%28abs%3AHXIS+OR+%3Dabs%3A%22Hard+X-ray+Imaging+Spectrometer%22%29+AND+abs%3A%28flare+OR+flares+OR+solar+OR+sun+OR+coronal+OR+arch+OR+arches%29+NOT+abs%3A%28STIX+OR+%22Solar+Orbiter%22+OR+%22ASO-S%22+OR+Hitomi+OR+NuSTAR%29%29+OR+%28%28abs%3AHXRBS+OR+%3Dabs%3A%22Hard+X-ray+Burst+Spectrometer%22%29+AND+%28abs%3A%28flare+OR+flares+OR+solar+OR+sun+OR+%22gamma-ray%22%29+OR+%3Dabs%3A%22gamma+rays%22%29+NOT+abs%3Abinaries%29+OR+%28%28abs%3AUVSP+OR+%3Dabs%3A%22Ultraviolet+Spectrometer+and+Polarimeter%22%29+AND+abs%3A%28solar+OR+sun+OR+flare+OR+flares+OR+ozone+OR+filament+OR+%22transition+region%22%29+NOT+abs%3AMars%29+OR+%28%28abs%3AXRP+OR+%3Dabs%3A%22X-Ray+Polychromator%22%29+AND+abs%3A%28flare+OR+flares+OR+%22active+region%22%29+NOT+abs%3Apulsar%29+OR+%28%3Dabs%3A%22Coronagraph%2FPolarimeter%22+AND+abs%3A%28CME+OR+CMEs%29%29+OR+%3Dabs%3A%22ACRIM+I%22+OR+%28abs%3A%28ACRIM1+OR+%22ACRIM-1%22%29+AND+abs%3A%28irradiance+OR+TSI+OR+solar%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1980-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:12:15.824337+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1980-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Solar+Maximum+Mission%22+OR+facility%3ASMM+OR+%28abs%3ASMM+AND+collection%3Aastronomy+NOT+abs%3A%28submillimeter+OR+submillimetre+OR+submm+OR+SCUBA+OR+protostar+OR+protostars+OR+protostellar+OR+Serpens+OR+lensed+OR+multifragmentation+OR+ULIRG%29+NOT+%3Dabs%3A%22molecular+gas%22+NOT+%3Dabs%3A%22high+redshift%22+NOT+%3Dabs%3A%22high-redshift%22+NOT+%3Dabs%3A%22mixture+modeling%22%29+OR+%28%3Dabs%3A%22Solar+Max%22+AND+abs%3A%28ACRIM+OR+blankets+OR+louver+OR+repair+OR+%22space+shuttle%22%29%29+OR+%28%28abs%3AHXIS+OR+%3Dabs%3A%22Hard+X-ray+Imaging+Spectrometer%22%29+AND+abs%3A%28flare+OR+flares+OR+solar+OR+sun+OR+coronal+OR+arch+OR+arches%29+NOT+abs%3A%28STIX+OR+%22Solar+Orbiter%22+OR+%22ASO-S%22+OR+Hitomi+OR+NuSTAR%29%29+OR+%28%28abs%3AHXRBS+OR+%3Dabs%3A%22Hard+X-ray+Burst+Spectrometer%22%29+AND+%28abs%3A%28flare+OR+flares+OR+solar+OR+sun+OR+%22gamma-ray%22%29+OR+%3Dabs%3A%22gamma+rays%22%29+NOT+abs%3Abinaries%29+OR+%28%28abs%3AUVSP+OR+%3Dabs%3A%22Ultraviolet+Spectrometer+and+Polarimeter%22%29+AND+abs%3A%28solar+OR+sun+OR+flare+OR+flares+OR+ozone+OR+filament+OR+%22transition+region%22%29+NOT+abs%3AMars%29+OR+%28%28abs%3AXRP+OR+%3Dabs%3A%22X-Ray+Polychromator%22%29+AND+abs%3A%28flare+OR+flares+OR+%22active+region%22%29+NOT+abs%3Apulsar%29+OR+%28%3Dabs%3A%22Coronagraph%2FPolarimeter%22+AND+abs%3A%28CME+OR+CMEs%29%29+OR+%3Dabs%3A%22ACRIM+I%22+OR+%28abs%3A%28ACRIM1+OR+%22ACRIM-1%22%29+AND+abs%3A%28irradiance+OR+TSI+OR+solar%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1980-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:00:29.894725+00:00",
     "reconciliation": {
       "adsReturned": 1030,
       "curatedOut": 13,
@@ -539,7 +521,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 2615
+      "citations": 2624
     },
     {
       "bibcode": "1993JGR....9813177H",
@@ -548,7 +530,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 493
+      "citations": 494
     },
     {
       "bibcode": "1993SoPh..143..275C",
@@ -557,7 +539,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 492
+      "citations": 494
     },
     {
       "bibcode": "1997JGR...10214631M",
@@ -566,7 +548,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 450
+      "citations": 452
     },
     {
       "bibcode": "1984Natur.312..623R",
@@ -575,7 +557,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1984,
-      "citations": 443
+      "citations": 447
     },
     {
       "bibcode": "1985SoPh..100..465D",
@@ -584,7 +566,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1985,
-      "citations": 436
+      "citations": 437
     },
     {
       "bibcode": "2015JCAP...02..006P",
@@ -593,7 +575,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 393
+      "citations": 401
     },
     {
       "bibcode": "1982SoPh...78..107A",
@@ -602,7 +584,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1982,
-      "citations": 351
+      "citations": 352
     },
     {
       "bibcode": "1981Sci...211..700W",
@@ -620,7 +602,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1985,
-      "citations": 334
+      "citations": 336
     },
     {
       "bibcode": "1993SoPh..146..177D",
@@ -629,7 +611,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 304
+      "citations": 305
     },
     {
       "bibcode": "1987SoPh..108..383W",
@@ -647,7 +629,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1986,
-      "citations": 289
+      "citations": 291
     },
     {
       "bibcode": "1988ApJ...328..347F",
@@ -665,7 +647,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1991,
-      "citations": 282
+      "citations": 283
     },
     {
       "bibcode": "1995JGR...100.3355F",
@@ -692,7 +674,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1988,
-      "citations": 267
+      "citations": 269
     },
     {
       "bibcode": "1985Natur.318..449W",
@@ -701,7 +683,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1985,
-      "citations": 252
+      "citations": 253
     },
     {
       "bibcode": "1988Natur.332..810W",

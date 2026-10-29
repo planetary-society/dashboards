@@ -9,7 +9,11 @@
     "status": "Extended Mission",
     "failed": false,
     "cost": 172.4,
+    "lcc": 120,
     "type": "Remote Sensing Observatory",
+    "program": "Small-class Explorers (SMEX)",
+    "target": "Sun-Earth Interaction",
+    "launchVehicle": "Pegasus XL",
     "dates": {
       "formulation": "2009-06-19",
       "launch": "2013-06-28",
@@ -22,13 +26,13 @@
     "h": 65,
     "m": 4.643,
     "i100": 27,
-    "g": 98,
-    "tori": 47.229,
-    "riq": 490
+    "g": 99,
+    "tori": 48.51,
+    "riq": 497
   },
   "facts": {
-    "papers": 674,
-    "citations": 18737,
+    "papers": 676,
+    "citations": 19020,
     "publicationYears": [
       2013,
       2026
@@ -65,118 +69,68 @@
       57,
       54,
       36,
-      43
+      45
     ],
     "citations": [
       7,
       82,
       487,
       808,
-      1053,
+      1052,
       1346,
       1676,
       1456,
       2115,
-      2020,
+      2021,
       1841,
       2064,
-      1906,
-      1876
+      1910,
+      2155
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 18737,
-      "observed": 18737,
+      "expected": 19020,
+      "observed": 19020,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2013-08-01",
-    "end": "2019-01-01",
-    "matureDate": "2021-10-01",
-    "status": "available",
-    "months": 65,
-    "citationBuckets": 9,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      2,
-      2,
-      0,
-      0,
-      2,
-      2,
-      0,
-      1,
-      1,
-      1,
-      0,
-      2,
-      1,
-      4,
-      8,
-      0,
-      2,
-      3,
-      3,
-      1,
-      3,
-      4,
-      7,
-      4,
-      7,
-      7,
-      15,
-      5,
-      2,
-      5,
-      4,
-      2,
-      3,
-      9,
-      1,
-      2,
-      8,
-      5,
-      8,
-      8,
-      6,
-      2,
-      9,
-      3,
-      3,
-      3,
-      7,
-      6,
-      5,
-      6,
-      8,
-      3,
-      3,
-      4,
-      8,
-      7,
-      8,
-      4,
-      4,
-      4,
-      2,
-      6,
-      6,
-      3,
-      7
-    ],
-    "citationsByYearOffset": [
-      7,
-      82,
-      486,
-      807,
-      1008,
-      1036,
-      888,
-      465,
-      293
-    ]
+  "affiliations": {
+    "papers": 676,
+    "us": {
+      "mapped": 323,
+      "top": [
+        {
+          "name": "Lockheed Martin Corporation",
+          "papers": 131
+        },
+        {
+          "name": "Bay Area Environmental Research Institute, California",
+          "papers": 89
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 69
+        }
+      ]
+    },
+    "world": {
+      "mapped": 646,
+      "top": [
+        {
+          "name": "University of Oslo, Norway",
+          "papers": 136
+        },
+        {
+          "name": "Lockheed Martin Corporation",
+          "papers": 131
+        },
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 95
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2014SoPh..289.2733D",
@@ -190,21 +144,21 @@
     ],
     "authorCount": 88,
     "year": 2014,
-    "citations": 1283
+    "citations": 1287
   },
   "ranks": {
     "full": {
       "bins": [
-        19.126,
-        23.559,
-        35.016,
-        37.969,
-        53.083,
-        52.1,
-        60.661,
-        90.364,
-        81.594,
-        87.529
+        19.143,
+        22.622,
+        36.013,
+        36.838,
+        51.833,
+        52.71,
+        62.508,
+        90.697,
+        81.307,
+        87.328
       ],
       "top1": 3
     },
@@ -212,29 +166,29 @@
       "bins": [
         6.772,
         11.392,
-        16.224,
-        24.014,
-        30.857,
+        16.232,
+        24.09,
+        30.773,
         27.669,
         43.099,
-        40.08,
-        37.251,
+        40.119,
+        37.212,
         33.642
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        53.031,
-        55.555,
-        69.106,
-        65.654,
-        68.033,
-        80.966,
-        82.821,
-        81.362,
-        69.431,
-        48.043
+        52.898,
+        53.659,
+        68.374,
+        65.762,
+        71.815,
+        79.373,
+        83.491,
+        80.021,
+        71.215,
+        49.393
       ],
       "top1": 2
     }
@@ -242,9 +196,9 @@
   "full": {
     "papers": 541,
     "outputBasis": "measured",
-    "citations": 8414,
-    "top10": 61.838,
-    "top10ShareOfDivision": 0.04289,
+    "citations": 8443,
+    "top10": 66.366,
+    "top10ShareOfDivision": 0.04603,
     "top1": 3,
     "top1ShareOfDivision": 0.02081,
     "first": {
@@ -263,20 +217,25 @@
       "months": 125,
       "citationBuckets": 14
     },
+    "indices": {
+      "h": 36,
+      "g": 49,
+      "m": 3.456
+    },
     "spread": {
-      "mean": 15.553,
+      "mean": 15.606,
       "median": 12,
       "uncited": 14,
-      "i10": 329,
+      "i10": 331,
       "i100": 1
     }
   },
   "window": {
     "papers": 271,
     "outputBasis": "measured",
-    "citations": 5072,
-    "top10": 31.5,
-    "top10ShareOfDivision": 0.07099,
+    "citations": 5071,
+    "top10": 28.142,
+    "top10ShareOfDivision": 0.06343,
     "top1": 1,
     "top1ShareOfDivision": 0.02254,
     "first": {
@@ -295,8 +254,13 @@
       "months": 65,
       "citationBuckets": 9
     },
+    "indices": {
+      "h": 33,
+      "g": 47,
+      "m": 6.091
+    },
     "spread": {
-      "mean": 18.716,
+      "mean": 18.712,
       "median": 15,
       "uncited": 6,
       "i10": 186,
@@ -304,11 +268,11 @@
     }
   },
   "lifetime": {
-    "papers": 674,
+    "papers": 676,
     "outputBasis": "measured",
-    "citations": 18737,
-    "top10": 58.651,
-    "top10ShareOfDivision": 0.03743,
+    "citations": 19020,
+    "top10": 39.06,
+    "top10ShareOfDivision": 0.02131,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -319,26 +283,26 @@
       "date": "2013-08-00"
     },
     "spread": {
-      "mean": 27.8,
+      "mean": 28.136,
       "median": 16,
       "uncited": 39,
-      "i10": 435,
+      "i10": 441,
       "i100": 27
     }
   },
   "query": {
     "arms": "((=abs:\"Interface Region Imaging Spectrograph\" OR (abs:\"IRIS\" AND NOT =abs:Voyager AND NOT =abs:\"IRIS rocket\" AND NOT =abs:\"coronas-f\" AND NOT =abs:\"koronas-f\" AND (=abs:sun OR abs:chromosphere OR abs:corona OR abs:flare))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2013-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Interface+Region+Imaging+Spectrograph%22+OR+%28abs%3A%22IRIS%22+AND+NOT+%3Dabs%3AVoyager+AND+NOT+%3Dabs%3A%22IRIS+rocket%22+AND+NOT+%3Dabs%3A%22coronas-f%22+AND+NOT+%3Dabs%3A%22koronas-f%22+AND+%28%3Dabs%3Asun+OR+abs%3Achromosphere+OR+abs%3Acorona+OR+abs%3Aflare%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2013-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:13:54.685334+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2013-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Interface+Region+Imaging+Spectrograph%22+OR+%28abs%3A%22IRIS%22+AND+NOT+%3Dabs%3AVoyager+AND+NOT+%3Dabs%3A%22IRIS+rocket%22+AND+NOT+%3Dabs%3A%22coronas-f%22+AND+NOT+%3Dabs%3A%22koronas-f%22+AND+%28%3Dabs%3Asun+OR+abs%3Achromosphere+OR+abs%3Acorona+OR+abs%3Aflare%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2013-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:05:39.459851+00:00",
     "reconciliation": {
-      "adsReturned": 676,
+      "adsReturned": 678,
       "curatedOut": 2,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 674
+      "final": 676
     }
   },
   "curation": {
@@ -490,7 +454,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 1283
+      "citations": 1287
     },
     {
       "bibcode": "2014Sci...346A.315T",
@@ -499,7 +463,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 264
+      "citations": 268
     },
     {
       "bibcode": "2013ApJ...772...90L",
@@ -508,16 +472,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 237
-    },
-    {
-      "bibcode": "2017Sci...356.1269M",
-      "title": "On the generation of solar spicules and Alfvénic waves",
-      "firstAuthor": "Martínez-Sykora, J.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2017,
-      "citations": 197
+      "citations": 241
     },
     {
       "bibcode": "2014Sci...346C.315P",
@@ -526,7 +481,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 195
+      "citations": 200
+    },
+    {
+      "bibcode": "2017Sci...356.1269M",
+      "title": "On the generation of solar spicules and Alfvénic waves",
+      "firstAuthor": "Martínez-Sykora, J.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2017,
+      "citations": 200
     },
     {
       "bibcode": "2013ApJ...772...89L",
@@ -535,7 +499,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 176
+      "citations": 179
     },
     {
       "bibcode": "2014ApJ...792L..15P",
@@ -544,7 +508,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 162
+      "citations": 163
     },
     {
       "bibcode": "2014Sci...346B.315T",
@@ -553,7 +517,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 149
+      "citations": 151
     },
     {
       "bibcode": "2015ApJ...807L..22G",
@@ -562,7 +526,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 146
+      "citations": 149
     },
     {
       "bibcode": "2014ApJ...797L..14T",
@@ -574,22 +538,31 @@
       "citations": 139
     },
     {
-      "bibcode": "2015ApJ...812...11V",
-      "title": "Ellerman Bombs at High Resolution. III. Simultaneous Observations with IRIS and SST",
-      "firstAuthor": "Vissers, G. J. M.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2015,
-      "citations": 137
-    },
-    {
       "bibcode": "2015ApJ...811..139T",
       "title": "Temporal Evolution of Chromospheric Evaporation: Case Studies of the M1.1 Flare on 2014 September 6 and X1.6 Flare on 2014 September 10",
       "firstAuthor": "Tian, Hui",
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 136
+      "citations": 139
+    },
+    {
+      "bibcode": "2015ApJ...812...11V",
+      "title": "Ellerman Bombs at High Resolution. III. Simultaneous Observations with IRIS and SST",
+      "firstAuthor": "Vissers, G. J. M.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2015,
+      "citations": 138
+    },
+    {
+      "bibcode": "2016ApJ...823...41D",
+      "title": "Slipping Magnetic Reconnection, Chromospheric Evaporation, Implosion, and Precursors in the 2014 September 10 X1.6-Class Solar Flare",
+      "firstAuthor": "Dudík, Jaroslav",
+      "authors": null,
+      "authorCount": null,
+      "year": 2016,
+      "citations": 133
     },
     {
       "bibcode": "2015ApJ...809...72A",
@@ -601,22 +574,13 @@
       "citations": 131
     },
     {
-      "bibcode": "2016ApJ...823...41D",
-      "title": "Slipping Magnetic Reconnection, Chromospheric Evaporation, Implosion, and Precursors in the 2014 September 10 X1.6-Class Solar Flare",
-      "firstAuthor": "Dudík, Jaroslav",
-      "authors": null,
-      "authorCount": null,
-      "year": 2016,
-      "citations": 131
-    },
-    {
       "bibcode": "2013ApJ...778..143P",
       "title": "The Formation of IRIS Diagnostics. III. Near-ultraviolet Spectra and Images",
       "firstAuthor": "Pereira, T. M. D.",
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 123
+      "citations": 125
     },
     {
       "bibcode": "2016ApJ...824...96T",
@@ -625,7 +589,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 123
+      "citations": 124
+    },
+    {
+      "bibcode": "2017ApJ...836...12K",
+      "title": "The Atmospheric Response to High Nonthermal Electron Beam Fluxes in Solar Flares. I. Modeling the Brightest NUV Footpoints in the X1 Solar Flare of 2014 March 29",
+      "firstAuthor": "Kowalski, Adam F.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2017,
+      "citations": 121
     },
     {
       "bibcode": "2014ApJ...786..137T",
@@ -637,22 +610,13 @@
       "citations": 119
     },
     {
-      "bibcode": "2017ApJ...836...12K",
-      "title": "The Atmospheric Response to High Nonthermal Electron Beam Fluxes in Solar Flares. I. Modeling the Brightest NUV Footpoints in the X1 Solar Flare of 2014 March 29",
-      "firstAuthor": "Kowalski, Adam F.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2017,
-      "citations": 119
-    },
-    {
       "bibcode": "2015ApJ...801...83C",
       "title": "Homologous Helical Jets: Observations By IRIS, SDO, and Hinode and Magnetic Modeling With Data-Driven Simulations",
       "firstAuthor": "Cheung, Mark C. M.",
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 118
+      "citations": 119
     },
     {
       "bibcode": "2017ApJ...839...22H",
@@ -661,10 +625,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 114
+      "citations": 116
     }
   ],
   "papersFile": {
-    "rows": 674
+    "rows": 676
   }
 }

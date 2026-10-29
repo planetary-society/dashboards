@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 36.2,
+    "lcc": 17.5,
     "type": "Orbiter",
+    "program": "Earth Observing System (EOS)",
+    "target": "Sun",
+    "launchVehicle": "Taurus",
     "dates": {
       "formulation": "1995-02-03",
       "launch": "1999-12-21",
@@ -23,12 +27,12 @@
     "m": 0.417,
     "i100": 1,
     "g": 12,
-    "tori": 6.015,
-    "riq": 188
+    "tori": 6.115,
+    "riq": 190
   },
   "facts": {
     "papers": 12,
-    "citations": 427,
+    "citations": 428,
     "publicationYears": [
       2003,
       2015
@@ -97,7 +101,7 @@
       17,
       17,
       21,
-      19,
+      20,
       24,
       30,
       32,
@@ -116,119 +120,47 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 427,
-      "observed": 427,
+      "expected": 428,
+      "observed": 428,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2000-01-01",
-    "end": "2007-02-01",
-    "matureDate": "2010-10-01",
-    "status": "available",
-    "months": 85,
-    "citationBuckets": 11,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "citationsByYearOffset": [
-      0,
-      0,
-      0,
-      1,
-      12,
-      17,
-      13,
-      1,
-      0,
-      0,
-      0
-    ]
+  "affiliations": {
+    "papers": 12,
+    "us": {
+      "mapped": 6,
+      "top": [
+        {
+          "name": "California State University System",
+          "papers": 2
+        },
+        {
+          "name": "Duke University, North Carolina",
+          "papers": 2
+        },
+        {
+          "name": "Columbia University, New York",
+          "papers": 1
+        }
+      ]
+    },
+    "world": {
+      "mapped": 9,
+      "top": [
+        {
+          "name": "California State University System",
+          "papers": 2
+        },
+        {
+          "name": "Duke University, North Carolina",
+          "papers": 2
+        },
+        {
+          "name": "Australian National University, Canberra",
+          "papers": 1
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2003GeoRL..30.1199W",
@@ -240,19 +172,19 @@
     ],
     "authorCount": 2,
     "year": 2003,
-    "citations": 209
+    "citations": 210
   },
   "ranks": {
     "full": {
       "bins": [
-        1.25,
-        0.75,
+        1.251,
+        0.749,
         0,
-        1.618,
-        2.382,
-        1.122,
-        1.841,
-        2.037,
+        1.63,
+        2.37,
+        1.134,
+        1.851,
+        2.016,
         0,
         1
       ],
@@ -260,8 +192,8 @@
     },
     "window": {
       "bins": [
-        1.363,
-        0.637,
+        1.362,
+        0.638,
         0,
         1,
         0,
@@ -275,14 +207,14 @@
     },
     "lifetime": {
       "bins": [
-        0.171,
-        0.829,
+        0.144,
+        0.856,
         0,
         1,
         3,
-        1.933,
-        1.677,
-        1.39,
+        1.901,
+        1.669,
+        1.43,
         1,
         1
       ],
@@ -312,6 +244,11 @@
       "status": "available",
       "months": 192,
       "citationBuckets": 19
+    },
+    "indices": {
+      "h": 6,
+      "g": 10,
+      "m": 0.375
     },
     "spread": {
       "mean": 9.667,
@@ -345,6 +282,11 @@
       "months": 85,
       "citationBuckets": 11
     },
+    "indices": {
+      "h": 2,
+      "g": 3,
+      "m": 0.282
+    },
     "spread": {
       "mean": 11,
       "median": 3,
@@ -356,9 +298,9 @@
   "lifetime": {
     "papers": 12,
     "outputBasis": "measured",
-    "citations": 427,
+    "citations": 428,
     "top10": 0.5,
-    "top10ShareOfDivision": 0.00013,
+    "top10ShareOfDivision": 0.00011,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -369,7 +311,7 @@
       "date": "2003-03-00"
     },
     "spread": {
-      "mean": 35.583,
+      "mean": 35.667,
       "median": 18,
       "uncited": 0,
       "i10": 10,
@@ -378,9 +320,9 @@
   },
   "query": {
     "arms": "((abs:\"ACRIMSAT\" OR abs:\"Active Cavity Radiometer Irradiance Monitor Satellite\" OR abs:\"ACRIM3\" OR abs:\"ACRIM-3\" OR abs:\"ACRIM 3\" OR abs:\"ACRIM III\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2000-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22ACRIMSAT%22+OR+abs%3A%22Active+Cavity+Radiometer+Irradiance+Monitor+Satellite%22+OR+abs%3A%22ACRIM3%22+OR+abs%3A%22ACRIM-3%22+OR+abs%3A%22ACRIM+3%22+OR+abs%3A%22ACRIM+III%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:10:02.119834+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2000-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22ACRIMSAT%22+OR+abs%3A%22Active+Cavity+Radiometer+Irradiance+Monitor+Satellite%22+OR+abs%3A%22ACRIM3%22+OR+abs%3A%22ACRIM-3%22+OR+abs%3A%22ACRIM+3%22+OR+abs%3A%22ACRIM+III%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:55:11.475254+00:00",
     "reconciliation": {
       "adsReturned": 11,
       "curatedOut": 1,
@@ -429,7 +371,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 209
+      "citations": 210
     },
     {
       "bibcode": "2014Ap&SS.350..421S",

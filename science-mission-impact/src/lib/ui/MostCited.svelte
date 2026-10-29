@@ -1,22 +1,22 @@
 <script>
-	import { adsAbstract, missionHref } from '$lib/paths.js';
+	import { adsAbstract } from '$lib/paths.js';
 	import { byline, int } from '$lib/format.js';
 
-	let { paper, slug = null, missionName = null } = $props();
+	let { paper } = $props();
 </script>
 
 {#if paper}
 	<aside class="most" aria-labelledby="most-cited-label">
 		<div class="text">
-			<h2 id="most-cited-label" class="chart-title">Most cited paper</h2>
+			<h2 id="most-cited-label" class="chart-title">Most cited paper to date</h2>
 			<a class="title" href={adsAbstract(paper.bibcode)} rel="noopener">{paper.title}</a>
 			<p class="meta">
-				{byline(paper.authors, paper.authorCount ?? undefined) || (paper.firstAuthor ?? '')}{paper.year ? ` (${paper.year})` : ''}{#if paper.missionId && slug}, <a href={missionHref(slug, paper.missionId)}>{missionName ?? 'mission page'}</a>{/if}
+				{byline(paper.authors, paper.authorCount ?? undefined) || (paper.firstAuthor ?? '')}{paper.year ? ` (${paper.year})` : ''}
 			</p>
 		</div>
 		<p class="count">
 			<b>{int(paper.citations)}</b>
-			<span class="meta">citations</span>
+			<span class="meta">citations to date</span>
 		</p>
 	</aside>
 {/if}

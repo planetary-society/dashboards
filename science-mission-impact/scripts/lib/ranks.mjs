@@ -87,3 +87,24 @@ export function assertRanksMatchTiers({ id, scope, ranks, tiers, bounds, toleran
 		}
 	}
 }
+
+/**
+ * A division's distinct papers by citation count, for the story's primer: `counts[c]` papers
+ * drew exactly c citations, from 0 up to the most cited paper's count. A shared paper counts
+ * once, at the count the ranking read for it. `top` holds how many of those papers are top-10%
+ * papers (`topWeight`, fractional where a tie straddles the cutoff), so the primer shades
+ * exactly the papers the story counts.
+ */
+export function citationHistogram(rows, { citations, topWeight }) {
+	const byBibcode = new Map();
+	for (const row of rows) byBibcode.set(row.bibcode, [Number(row[citations] ?? 0), Number(row[topWeight] ?? 0)]);
+	let most = 0;
+	for (const [c] of byBibcode.values()) most = Math.max(most, c);
+	const counts = new Array(most + 1).fill(0);
+	const top = new Array(most + 1).fill(0);
+	for (const [c, w] of byBibcode.values()) {
+		counts[c] += 1;
+		top[c] += w;
+	}
+	return { counts, top: top.map(weight), papers: byBibcode.size };
+}

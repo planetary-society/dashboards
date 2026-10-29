@@ -18,6 +18,7 @@ export function pct(share) {
 	if (share == null) return '—';
 	const p = share * 100;
 	if (p === 0) return '0%';
+	if (p < 0.01) return 'under 0.01%'; // two decimals would print a real share as "0.00%"
 	if (p < 1) return `${p.toFixed(2)}%`;
 	if (p < 10) return `${p.toFixed(1)}%`;
 	return `${Math.round(p)}%`;
@@ -26,16 +27,20 @@ export function pct(share) {
 /** $M (2025 dollars) → "$74M" / "$3.3B". */
 export function money(millions) {
 	if (millions == null) return '—';
-	if (millions >= 1000) {
+	// unit and precision follow the value as rounded, so 999.7 reads "$1.0B", not "$1000M"
+	if (millions >= 999.5) {
 		const b = millions / 1000;
-		return `$${b >= 10 ? Math.round(b) : b.toFixed(1)}B`;
+		return `$${b >= 9.95 ? Math.round(b) : b.toFixed(1)}B`;
 	}
-	if (millions < 10) return `$${millions.toFixed(1)}M`;
+	if (millions < 9.95) return `$${millions.toFixed(1)}M`;
 	return `$${Math.round(millions)}M`;
 }
 
 /** Round axis values: "$1B", not "$1.0B". */
 export const moneyTick = (millions) => money(millions).replace(/\.0(?=[MB]$)/, '');
+
+/** $M in running prose, in the charts' own short style so text and labels read alike: "$150M", "$5.8M", "$1.4B". */
+export const moneyWords = moneyTick;
 
 /** Years, signed, one decimal. */
 export const years = (y) => (y == null ? '—' : `${y < 0 ? '−' : ''}${Math.abs(y).toFixed(1)}`);
@@ -65,6 +70,14 @@ export function longDate(iso) {
 	return `${MONTHS[m - 1]} ${d}, ${y}`;
 }
 
+const AP_MONTHS = ['Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'];
+
+/** ISO date → "Oct. 20, 2026" (TPS/AP: abbreviate the long months only with a day). */
+export function apDate(iso) {
+	const [y, m, d] = (iso ?? '').slice(0, 10).split('-').map(Number);
+	return m && d ? `${AP_MONTHS[m - 1]} ${d}, ${y}` : longDate(iso);
+}
+
 /** "five" → "Five": sentence-cases a spelled number or any other opening word. */
 export const upperFirst = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
 
@@ -73,9 +86,9 @@ const NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'sev
 /** AP style: spell out whole numbers below 10. */
 export const spell = (n) => (Number.isInteger(n) && n >= 0 && n < 10 ? NUMBER_WORDS[n] : int(n));
 
-/** "a", "a and b", "a, b and c" (AP: no serial comma); `conj` swaps the "and". */
+/** "a", "a and b", "a, b, and c" (TPS keeps the serial comma); `conj` swaps the "and", and "&" (a byline) takes no serial comma. */
 export const listify = (items, conj = 'and') =>
-	items.length < 3 ? items.join(` ${conj} `) : `${items.slice(0, -1).join(', ')} ${conj} ${items.at(-1)}`;
+	items.length < 3 ? items.join(` ${conj} `) : `${items.slice(0, -1).join(', ')}${conj === '&' ? '' : ','} ${conj} ${items.at(-1)}`;
 
 /**
  * A paper's byline from ADS "Last, First" names: one author in full; two as "A & B"; up to four as

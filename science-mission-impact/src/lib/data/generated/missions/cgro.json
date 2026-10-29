@@ -1,6 +1,6 @@
 {
   "id": "cgro",
-  "name": "CGRO",
+  "name": "Compton",
   "fullName": "Compton Gamma Ray Observatory",
   "division": "astrophysics",
   "divisionName": "Astrophysics",
@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 1962.1,
+    "lcc": 617,
     "type": "Survey Observatory",
+    "program": "Great Observatories",
+    "target": null,
+    "launchVehicle": "Shuttle",
     "dates": {
       "formulation": "1979-10-01",
       "launch": "1991-04-05",
@@ -21,14 +25,14 @@
   "indices": {
     "h": 169,
     "m": 4.694,
-    "i100": 340,
-    "g": 289,
-    "tori": 1056.369,
-    "riq": 902
+    "i100": 341,
+    "g": 290,
+    "tori": 1066.021,
+    "riq": 906
   },
   "facts": {
     "papers": 2769,
-    "citations": 149353,
+    "citations": 150146,
     "publicationYears": [
       1991,
       2026
@@ -127,104 +131,72 @@
       4438,
       5105,
       5139,
-      5544,
+      5546,
       5629,
-      6120,
-      7059,
-      6030,
-      6605,
-      5817,
+      6132,
+      7131,
+      6066,
+      6604,
+      5819,
       5398,
       4420,
       4756,
       4140,
-      4213,
-      4063,
+      4214,
+      4062,
       3995,
       3502,
       3950,
       4039,
       3702,
       3928,
-      4160,
-      3645
+      4194,
+      4281
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 149353,
-      "observed": 149353,
+      "expected": 150146,
+      "observed": 150146,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "1991-05-01",
-    "end": "1995-05-01",
-    "matureDate": "1998-10-01",
-    "status": "available",
-    "months": 48,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      1,
-      1,
-      2,
-      1,
-      1,
-      0,
-      4,
-      4,
-      2,
-      6,
-      2,
-      3,
-      1,
-      3,
-      5,
-      5,
-      3,
-      5,
-      35,
-      2,
-      4,
-      6,
-      7,
-      12,
-      7,
-      10,
-      20,
-      11,
-      9,
-      22,
-      10,
-      17,
-      6,
-      10,
-      13,
-      28,
-      16,
-      9,
-      11,
-      10,
-      14,
-      10,
-      24,
-      11,
-      14,
-      7
-    ],
-    "citationsByYearOffset": [
-      2,
-      126,
-      641,
-      1366,
-      2565,
-      2191,
-      1010,
-      291
-    ]
+  "affiliations": {
+    "papers": 2769,
+    "us": {
+      "mapped": 1293,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 373
+        },
+        {
+          "name": "NASA Marshall Space Flight Center",
+          "papers": 168
+        },
+        {
+          "name": "University of Alabama, Huntsville",
+          "papers": 144
+        }
+      ]
+    },
+    "world": {
+      "mapped": 2175,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 373
+        },
+        {
+          "name": "Max Planck Society for the Advancement of Science, Germany",
+          "papers": 325
+        },
+        {
+          "name": "NASA Marshall Space Flight Center",
+          "papers": 168
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "1993ApJ...413..281B",
@@ -238,61 +210,61 @@
     ],
     "authorCount": 15,
     "year": 1993,
-    "citations": 2346
+    "citations": 2370
   },
   "ranks": {
     "full": {
       "bins": [
-        363.374,
-        232.96,
-        184.235,
-        153.706,
-        142.631,
-        140.33,
-        107.388,
-        122.372,
-        118.347,
-        98.657
+        364.084,
+        232.939,
+        184.706,
+        153.834,
+        142.35,
+        140.196,
+        107.457,
+        122.396,
+        118.35,
+        97.688
       ],
       "top1": 7
     },
     "window": {
       "bins": [
-        52.666,
-        55.111,
-        49.303,
-        48.519,
-        28.427,
-        29.419,
-        35.424,
-        37.676,
-        33.861,
-        33.592
+        52.699,
+        55.105,
+        49.394,
+        48.479,
+        28.397,
+        29.465,
+        35.413,
+        37.661,
+        33.835,
+        33.552
       ],
       "top1": 3
     },
     "lifetime": {
       "bins": [
-        361.88,
-        336.45,
-        275.66,
-        272.987,
-        226.825,
-        238.345,
-        258.265,
-        234.99,
-        270.043,
-        293.554
+        374.667,
+        335.904,
+        278.548,
+        266.918,
+        223.127,
+        235.432,
+        261.154,
+        237.422,
+        264.03,
+        291.797
       ],
-      "top1": 35
+      "top1": 34.407
     }
   },
   "full": {
     "papers": 1664,
     "outputBasis": "measured",
     "citations": 24571,
-    "top10": 118.9,
-    "top10ShareOfDivision": 0.0239,
+    "top10": 94.688,
+    "top10ShareOfDivision": 0.01903,
     "top1": 7,
     "top1ShareOfDivision": 0.01407,
     "first": {
@@ -311,6 +283,11 @@
       "months": 134,
       "citationBuckets": 15
     },
+    "indices": {
+      "h": 61,
+      "g": 87,
+      "m": 5.462
+    },
     "spread": {
       "mean": 14.766,
       "median": 8,
@@ -323,8 +300,8 @@
     "papers": 404,
     "outputBasis": "measured",
     "citations": 8192,
-    "top10": 49.6,
-    "top10ShareOfDivision": 0.02564,
+    "top10": 33.552,
+    "top10ShareOfDivision": 0.01734,
     "top1": 3,
     "top1ShareOfDivision": 0.01551,
     "first": {
@@ -343,6 +320,11 @@
       "months": 48,
       "citationBuckets": 8
     },
+    "indices": {
+      "h": 44,
+      "g": 66,
+      "m": 11
+    },
     "spread": {
       "mean": 20.277,
       "median": 10.5,
@@ -354,9 +336,9 @@
   "lifetime": {
     "papers": 2769,
     "outputBasis": "measured",
-    "citations": 149353,
-    "top10": 185.413,
-    "top10ShareOfDivision": 0.03354,
+    "citations": 150146,
+    "top10": 257.631,
+    "top10ShareOfDivision": 0.04058,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -367,18 +349,18 @@
       "date": "1992-01-00"
     },
     "spread": {
-      "mean": 53.938,
+      "mean": 54.224,
       "median": 20,
-      "uncited": 195,
-      "i10": 1857,
-      "i100": 340
+      "uncited": 194,
+      "i10": 1860,
+      "i100": 341
     }
   },
   "query": {
     "arms": "((=abs:\"Compton Gamma Ray Observatory\" OR =abs:\"Compton Observatory\" OR =abs:\"Compton GRO\" OR (=abs:\"Gamma Ray Observatory\" AND =abs:GRO) OR facility:CGRO OR =abs:\"Burst and Transient Source Experiment\" OR =abs:\"Energetic Gamma Ray Experiment Telescope\" OR =abs:\"Oriented Scintillation Spectrometer Experiment\" OR ((=abs:CGRO OR abs:BATSE OR =abs:EGRET OR abs:COMPTEL) AND (collection:astronomy OR =abs:\"gamma ray\" OR =abs:\"gamma rays\") NOT =abs:\"Egret Member\") OR (=abs:OSSE AND (=abs:\"gamma ray\" OR =abs:\"gamma rays\" OR (collection:astronomy AND abs:(Compton OR CGRO OR keV OR annihilation OR positron))))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1991-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Compton+Gamma+Ray+Observatory%22+OR+%3Dabs%3A%22Compton+Observatory%22+OR+%3Dabs%3A%22Compton+GRO%22+OR+%28%3Dabs%3A%22Gamma+Ray+Observatory%22+AND+%3Dabs%3AGRO%29+OR+facility%3ACGRO+OR+%3Dabs%3A%22Burst+and+Transient+Source+Experiment%22+OR+%3Dabs%3A%22Energetic+Gamma+Ray+Experiment+Telescope%22+OR+%3Dabs%3A%22Oriented+Scintillation+Spectrometer+Experiment%22+OR+%28%28%3Dabs%3ACGRO+OR+abs%3ABATSE+OR+%3Dabs%3AEGRET+OR+abs%3ACOMPTEL%29+AND+%28collection%3Aastronomy+OR+%3Dabs%3A%22gamma+ray%22+OR+%3Dabs%3A%22gamma+rays%22%29+NOT+%3Dabs%3A%22Egret+Member%22%29+OR+%28%3Dabs%3AOSSE+AND+%28%3Dabs%3A%22gamma+ray%22+OR+%3Dabs%3A%22gamma+rays%22+OR+%28collection%3Aastronomy+AND+abs%3A%28Compton+OR+CGRO+OR+keV+OR+annihilation+OR+positron%29%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1991-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:15:51.466708+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1991-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Compton+Gamma+Ray+Observatory%22+OR+%3Dabs%3A%22Compton+Observatory%22+OR+%3Dabs%3A%22Compton+GRO%22+OR+%28%3Dabs%3A%22Gamma+Ray+Observatory%22+AND+%3Dabs%3AGRO%29+OR+facility%3ACGRO+OR+%3Dabs%3A%22Burst+and+Transient+Source+Experiment%22+OR+%3Dabs%3A%22Energetic+Gamma+Ray+Experiment+Telescope%22+OR+%3Dabs%3A%22Oriented+Scintillation+Spectrometer+Experiment%22+OR+%28%28%3Dabs%3ACGRO+OR+abs%3ABATSE+OR+%3Dabs%3AEGRET+OR+abs%3ACOMPTEL%29+AND+%28collection%3Aastronomy+OR+%3Dabs%3A%22gamma+ray%22+OR+%3Dabs%3A%22gamma+rays%22%29+NOT+%3Dabs%3A%22Egret+Member%22%29+OR+%28%3Dabs%3AOSSE+AND+%28%3Dabs%3A%22gamma+ray%22+OR+%3Dabs%3A%22gamma+rays%22+OR+%28collection%3Aastronomy+AND+abs%3A%28Compton+OR+CGRO+OR+keV+OR+annihilation+OR+positron%29%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1991-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:10:11.587550+00:00",
     "reconciliation": {
       "adsReturned": 2847,
       "curatedOut": 77,
@@ -1026,7 +1008,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 2346
+      "citations": 2370
     },
     {
       "bibcode": "1993ApJ...413L.101K",
@@ -1035,7 +1017,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 2101
+      "citations": 2120
     },
     {
       "bibcode": "2004RvMP...76.1143P",
@@ -1044,7 +1026,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 1810
+      "citations": 1835
     },
     {
       "bibcode": "1999ApJS..123...79H",
@@ -1053,7 +1035,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 1783
+      "citations": 1790
     },
     {
       "bibcode": "2009PhRvD..79a5014A",
@@ -1062,7 +1044,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 1751
+      "citations": 1777
     },
     {
       "bibcode": "1999PhR...314..575P",
@@ -1071,7 +1053,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 1535
+      "citations": 1542
     },
     {
       "bibcode": "1994ApJ...421..153S",
@@ -1080,7 +1062,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1994,
-      "citations": 1356
+      "citations": 1363
     },
     {
       "bibcode": "1996ApJ...461..396M",
@@ -1089,7 +1071,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 1196
+      "citations": 1202
     },
     {
       "bibcode": "1992Natur.357..472U",
@@ -1098,7 +1080,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1992,
-      "citations": 1090
+      "citations": 1097
     },
     {
       "bibcode": "2010ApJ...716...30A",
@@ -1107,7 +1089,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 1022
+      "citations": 1029
     },
     {
       "bibcode": "1992Natur.358..477P",
@@ -1116,7 +1098,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1992,
-      "citations": 827
+      "citations": 829
     },
     {
       "bibcode": "1996MNRAS.283..193Z",
@@ -1125,7 +1107,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 789
+      "citations": 804
     },
     {
       "bibcode": "1998ApJ...493..694M",
@@ -1134,16 +1116,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 770
-    },
-    {
-      "bibcode": "1992Natur.355..143M",
-      "title": "Spatial distribution of γ-ray bursts observed by BATSE",
-      "firstAuthor": "Meegan, C. A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 1992,
-      "citations": 758
+      "citations": 774
     },
     {
       "bibcode": "1997ApJ...481..205H",
@@ -1152,7 +1125,16 @@
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 755
+      "citations": 760
+    },
+    {
+      "bibcode": "1992Natur.355..143M",
+      "title": "Spatial distribution of γ-ray bursts observed by BATSE",
+      "firstAuthor": "Meegan, C. A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1992,
+      "citations": 759
     },
     {
       "bibcode": "1998ApJ...494..523S",
@@ -1161,7 +1143,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 752
+      "citations": 758
     },
     {
       "bibcode": "2001ApJ...550..410M",
@@ -1170,7 +1152,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 743
+      "citations": 745
     },
     {
       "bibcode": "1997ApJS..113..367B",
@@ -1179,7 +1161,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 725
+      "citations": 730
     },
     {
       "bibcode": "2004ApJ...609..935Y",
@@ -1188,7 +1170,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 706
+      "citations": 712
     },
     {
       "bibcode": "1994Sci...264.1313F",
@@ -1197,7 +1179,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1994,
-      "citations": 663
+      "citations": 668
     }
   ],
   "papersFile": {

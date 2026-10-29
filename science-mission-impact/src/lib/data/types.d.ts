@@ -75,10 +75,146 @@ export interface Site {
 	/** The mission-selection sentence per division, verbatim from each run's `run.filter.description`. */
 	filters: Record<DivisionSlug, string>;
 	story: StoryFacts;
+	/** Each division's own rows of the story, read in every scope, for the division page's scope switch. */
+	divisionFacts: Record<DivisionSlug, Record<Scope, {
+		divisions: StoryFacts['divisions'][number];
+		failure: StoryFacts['failure']['byDivision'][number];
+		comparison: StoryFacts['comparison']['byDivision'][number] | null;
+		perDollar: StoryFacts['perDollar'][number] | null;
+	}>>;
 	/** CLPS running publications from the upstream latest export (smi.config.json clps). */
 	clps: ClpsFacts;
-	/** Paper kinds, full-mission scope, for the missions at or under the threshold; the classifications are an input file (smi.config.json paperKinds). */
-	kinds: KindFacts;
+	/** The Analysis page's figures (`buildAnalysis` in scripts/lib/analysis.mjs), from the packaged division documents. */
+	analysis: AnalysisFacts;
+}
+
+/** How a mission was chosen, from upstream `selection_strategy`: 'Competed' / 'Directed'; null for 'Unknown' or blank. */
+export type Selection = 'competed' | 'directed' | null;
+
+/** A cost tier ($M, the snapshot's adjusted dollar year): membership is lo < cost <= hi. The first tier's lo is 0; the last tier's hi is null (open). */
+export interface CostTier {
+	lo: number;
+	hi: number | null;
+}
+
+/**
+ * One distribution of N50-per-$M values, failures included at what they published (mostly zero). Quartiles by linear
+ * interpolation between order statistics (numpy's default); whiskers at the most extreme values
+ * within 1.5 IQR of the box (Tukey). Null fields when `missions` is 0.
+ */
+export interface RateSpread {
+	missions: number;
+	zeros: number; // missions whose N50 is 0
+	median: number | null;
+	q1: number | null;
+	q3: number | null;
+	whiskers: [number, number] | null;
+}
+
+/** One mission on the Analysis page: costed, with measured full-scope output (a failure with no papers is a measured zero). */
+export interface AnalysisMission {
+	id: string;
+	name: string;
+	division: DivisionSlug;
+	cost: number; // adjusted LCC, $M, > 0
+	tier: number; // index into AnalysisFacts.tiers
+	group: number; // index into AnalysisFacts.groups
+	failed: boolean;
+	shortfall: boolean;
+	selection: Selection;
+	n50: number; // full scope: papers + citations / its division's c (nc.divisions[].c)
+	rate: number; // n50 / cost: N50 per $M
+}
+
+export type AnalysisSpreadGroup = RateSpread & { shortfall: number; failed: number };
+
+export interface AnalysisFastest {
+	id: string;
+	name: string;
+	division: DivisionSlug;
+	years: number; // formulation start to the first top-10% paper
+}
+
+export interface EfficiencyCell {
+	missions: number;
+	n50Share: number; // the tier's share of the division's N50
+	costShare: number; // the tier's share of the division's cost
+	ratio: number; // n50Share / costShare
+}
+
+export interface AnalysisFacts {
+	scope: 'full'; // N50, failures, efficiency, selection, standouts
+	timeScope: 'lifetime'; // time to the first top-10% paper: each paper ranked on its lifetime citations
+	referenceCost: number; // = story.referenceCost; both tiers and groups have an edge at it
+	tiers: CostTier[]; // smi.config.json analysis.costTiers
+	groups: CostTier[]; // smi.config.json analysis.costGroups
+	/** N_c = papers + citations / c, where c is the division's top-50% citation cutoff in the full scope (so N50). */
+	nc: {
+		percent: 50;
+		focus: DivisionSlug | null; // story.focusDivision; its paper histogram is story.primer.counts
+		divisions: {
+			division: DivisionSlug;
+			name: string;
+			papers: number; // the division's full-scope papers
+			c: number; // = cutoffs['50']
+			cutoffs: { '50': number; '10': number; '1': number }; // citations at the top-k% line, full scope
+		}[];
+	};
+	missions: AnalysisMission[]; // every division, by cost then id
+	excluded: { noCost: number; unmeasured: number }; // left off `missions`: no positive cost / output not measured
+	failures: {
+		/** One per tier; byDivision lists every configured division in config order, zeros kept. */
+		tiers: {
+			missions: number;
+			ok: number; // not a shortfall
+			failed: number; // outright failure
+			partial: number; // shortfall but not failed (partial failure or partial success)
+			rate: number | null; // (failed + partial) / missions
+			byDivision: { division: DivisionSlug; ok: number; failed: number; partial: number }[];
+		}[];
+		under: { missions: number; shortfall: number; rate: number | null }; // 0 < cost <= referenceCost
+		over: { missions: number; shortfall: number; rate: number | null };
+		/** How much more each successful small mission would have to produce to match the larger missions' expected output per mission flown: (1 - over.rate) / (1 - under.rate) - 1. */
+		successPremium: number | null;
+	};
+	/** N50 per $M in each cost group, every division together (N50 is already relative to each division's own c). */
+	groupRates: AnalysisSpreadGroup[];
+	/** Years to each mission's first top-10% paper in the lifetime ranking (MissionRow.lifetime.first), by tier. Failures are left out: they have no time to the event. */
+	time: {
+		tiers: {
+			missions: number; // in the tier, failures left out
+			reached: number; // with a first top-10% paper
+			without: number; // missions - reached
+			undated: number; // reached, but no formulation date on record
+			formulation: { median: number | null; min: number | null }; // years from formulation start
+			science: { median: number | null; min: number | null }; // years from the start of science
+		}[];
+		failedExcluded: number;
+		fastest: AnalysisFastest | null; // shortest from formulation, any tier (ties: cost, then id)
+		byDivision: { division: DivisionSlug; name: string; fastest: AnalysisFastest | null }[]; // config order
+	};
+	/** Within each rankable division: each tier's share of the division's N50 over its share of the division's cost. */
+	efficiency: {
+		divisions: {
+			division: DivisionSlug;
+			name: string;
+			cells: (EfficiencyCell | null)[]; // per tier; null = no missions in it
+			under: { missions: number; ratio: number | null; top10: number }; // at or under referenceCost; top10 = their full-scope top-10% credit
+			best: { tier: number; ratio: number; holds: boolean } | null; // highest ratio; holds = still highest whichever single mission is left out
+		}[];
+	};
+	/** N50 per $M by how missions were selected, in each cost group. */
+	selection: {
+		groups: { competed: RateSpread; directed: RateSpread }[];
+		unclassified: number; // missions with selection null
+	};
+	/** Per rankable division: missions at or under referenceCost whose N50 per $M beats the median of the division's costlier missions, highest first. */
+	standouts: {
+		division: DivisionSlug;
+		name: string;
+		overMedian: number | null;
+		missions: { id: string; name: string; cost: number; rate: number }[];
+	}[];
 }
 
 export interface DivisionSummary {
@@ -109,21 +245,25 @@ export interface StoryFacts {
 		total: number; // costed missions
 		ids: string[];
 		papers: number; // under-threshold mission papers
-		papersAll: number; // the same over every mission
-		unavailable: number; // under-threshold missions without measured output
-		launchMedian: number | null;
+		costMedian: number | null; // median adjusted $M of the missions at or under the threshold
 	};
 	/** Shortfalls (Failure, Partial Failure, Partial Success: MissionRow.shortfall) either side of the threshold, every costed mission of every division. */
 	failure: {
 		statuses: string[];
-		under: ShortfallSide;
-		over: ShortfallSide;
+		// Wilson 95% interval for failed / missions; the costliest outright failure on the side, $M
+		under: ShortfallSide & { interval: [number, number] | null; lostCostMax: number | null };
+		over: ShortfallSide & { interval: [number, number] | null; lostCostMax: number | null };
 		higher: 'under' | 'over' | null; // strictly higher rate; null on a tie or an empty side
 		byDivision: { division: DivisionSlug; name: string; under: Omit<ShortfallSide, 'rate'>; over: Omit<ShortfallSide, 'rate'> }[];
 	};
 	divisions: {
 		division: DivisionSlug; name: string; missions: number; measuredMissions: number;
-		top10: number; share: number | null; costTotal: number;
+		top10: number; share: number | null;
+		missionsAll: number; // the division's costed missions
+		/** the small side's shares, all over the same missions: costed, with output measured in the scope */
+		missionShare: number | null;
+		costShare: number | null;
+		citationShare: number | null; // rankable divisions only
 	}[];
 	bands: { division: DivisionSlug; name: string; p25: number | null; p50: number | null; p75: number | null }[];
 	/**
@@ -133,14 +273,9 @@ export interface StoryFacts {
 	 */
 	comparison: {
 		divisions: DivisionSlug[];
-		unavailable: number; // costed missions of those divisions whose output was not measured, so counted on neither side
-		/** over every costed mission of every division: the largest cost at or under the threshold, the smallest above it */
-		gap: { below: number | null; above: number | null };
 		groups: ComparisonGroup[];
 		/** the same groups one rankable division at a time (config order), failures as zeros */
 		byDivision: { division: DivisionSlug; name: string; under: ComparisonDivisionSide; over: ComparisonDivisionSide }[];
-		/** the plain mean over byDivision of each side's top10PerMission, over divisions with at least one mission on both sides; null when none */
-		equalWeight: { under: number | null; over: number | null };
 	};
 	/**
 	 * Where the middle half of top papers sits across the rankable divisions: each division's
@@ -151,23 +286,35 @@ export interface StoryFacts {
 	 * of spending / of costed missions at p25 ≤ cost ≤ p75 (read off its top-10% cost curve).
 	 */
 	pooledBand: { divisions: DivisionSlug[]; p25: number; p50: number; p75: number; costShare: number; missionShare: number } | null;
-	/** The division whose timing the story walks through (smi.config.json storyTimingDivision), when rankable. */
-	timingDivision: DivisionSlug | null;
-	/** Years from project start (formulation) to a first top-10% paper, one row per rankable division. */
-	timing: {
-		division: DivisionSlug; name: string;
-		missions: number; // measured, with a cost
-		reached: number; // with a dated first top-10% paper and a formulation date
-		never: number;
-		under: { missions: number; reached: number; failed: number }; // the same, at or under the threshold
-		fastest: { id: string; name: string; cost: number; years: number } | null;
-		medianYears: number | null; // over the missions that reached one
-		/** the reached missions by cost (then name), cut at round(n/3) and round(2n/3); an empty third has null range and medians */
-		byCostThird: {
-			key: 'low' | 'mid' | 'high'; missions: number; costRange: [number, number] | null;
-			medianYears: number | null; medianBuildYears: number | null; // formulation to first top paper / to launch
+	/** The division the story walks through (smi.config.json storyDivision), when rankable. */
+	focusDivision: DivisionSlug | null;
+	/**
+	 * The story's primer on the focus division: its distinct papers in the scope by citation count
+	 * (`counts[c]` drew exactly c, up to the most cited paper), the era-adjusted top-10%
+	 * papers among each (`top`; `topPapers` their sum) and the pooled top-10% cutoff
+	 * over every era (`cutoff`). Null without a focus division.
+	 */
+	primer: { division: DivisionSlug; name: string; counts: number[]; top: number[]; papers: number; cutoff: number; topPapers: number } | null;
+	/**
+	 * The yearly-rate charts' `top10PerYear` facts: `end`, the data's end point every rate runs to
+	 * (exclusive; the latest full-mission window end in the runs), `through` the last publication
+	 * year that counts, then one row per rankable division, kept apart: its costed mission with the
+	 * highest rate and that mission's side of the threshold; each side's missions, how many had
+	 * no top-10% papers (`none`) and its median rate; and the small side's best with how many
+	 * larger missions it out-produced (`above`).
+	 */
+	rate: {
+		end: string;
+		through: number;
+		divisions: {
+			division: DivisionSlug;
+			name: string;
+			largest: { id: string; name: string; perYear: number; size: 'under' | 'over' } | null;
+			small: { missions: number; none: number; median: number | null };
+			larger: { missions: number; none: number; median: number | null };
+			bestSmall: { id: string; name: string; perYear: number; above: number } | null;
 		}[];
-	}[];
+	} | null;
 	/** Citations per $100M either side of the threshold, one row per rankable division. */
 	perDollar: {
 		division: DivisionSlug; name: string;
@@ -178,8 +325,15 @@ export interface StoryFacts {
 		flipsOn: { id: string; name: string; side: ComparisonKey }[];
 		margin: number | null; // |under − over| ÷ the higher rate; null when a rate is null or both are 0
 		largestUnder: { id: string; name: string; share: number } | null; // most-cited under mission, its share of the under side's citations
+		/**
+		 * The trend with cost, threshold ignored: least squares of log10(citations per $100M) on log10(cost) over the
+		 * measured missions with citations (`missions`; `zeros` those without), the line the story draws. `tenfold` =
+		 * 10^slope, the rate's multiple at ten times the cost; `citesTenfold` = 10^(slope + 1), the citations' own (the
+		 * same line before dividing by cost); `holds`: no single fitted mission, dropped, reverses the
+		 * sign of `slope` (null with three, where a drop leaves no line). Null below three.
+		 */
+		fit: { missions: number; zeros: number; slope: number; intercept: number; tenfold: number; citesTenfold: number; holds: boolean | null } | null;
 	}[];
-	missingCosts: number;
 }
 
 export type ComparisonKey = 'under' | 'over'; // at or under the threshold (0 < cost <= referenceCost) / above it
@@ -205,11 +359,12 @@ export interface ComparisonGroup {
 	topType: { type: string; missions: number } | null; // most common mission type, ties by name
 }
 
-export type ComparisonDivisionSide = Pick<ComparisonGroup, 'missions' | 'failed' | 'withTop' | 'top10' | 'top10PerMission'>;
+export type ComparisonDivisionSide = Pick<ComparisonGroup, 'missions' | 'failed' | 'withTop' | 'top10' | 'top10PerMission' | 'largest'>;
 
 export interface ShortfallSide {
 	missions: number;
-	failed: number;
+	failed: number; // shortfalls: Failure, Partial Failure or Partial Success
+	lost: number; // outright failures (MissionRow.failed) among them
 	rate: number | null; // null for an empty side
 }
 
@@ -226,6 +381,23 @@ export interface ClpsFacts {
 	comparators: { id: string; name: string; fullName: string; start: string; cost: number | null; papers: number; series: (number | null)[] }[];
 	/** at the last month CLPS has a value for: each line's running total; behindAll = every comparator strictly ahead (null with none) */
 	comparison: { month: number; clps: number; comparators: { id: string; name: string; papers: number }[]; behindAll: boolean | null };
+	/**
+	 * The Analysis page's papers per dollar: smi.config.json clps.surface's missions (config order) at
+	 * `month` (= comparison.month), each from its prime-mission start (launch when absent); a failure
+	 * with no records counts 0.
+	 */
+	surface: {
+		month: number;
+		/** papers = comparison.clps (pooled); cost = the landers' costs summed, $M, null when any lacks one */
+		clps: { papers: number; cost: number | null };
+		missions: { id: string; name: string; fullName: string; start: string; cost: number | null; selection: Selection; failed: boolean; papers: number }[];
+		/**
+		 * Over the successful missions: total = every one strictly ahead in papers; perDollar = every
+		 * costed one strictly ahead in papers per dollar (null when clps.cost is null or none has a cost).
+		 * null when no mission succeeded.
+		 */
+		behind: { total: boolean; perDollar: boolean | null } | null;
+	};
 }
 
 
@@ -273,14 +445,18 @@ export interface Division {
 	facts: { missions: number; papers: number; citations: number; publicationYears: [number, number] };
 	rankable: boolean;
 	lifetimeSeries: LifetimeSeries;
-	/** The prime-phase windows combined; the full-mission scope has no month-by-month companion. */
-	windowSeries: WindowSeries & { missionsIncluded: number; missionsImmature: string[] };
+	/** The same series in the Active Mission Window: its papers, each cited through its citation window. */
+	fullSeries: LifetimeSeries | null;
+	/** The division's papers counted once each; cells in static/data/maps/divisions/<slug>.json. */
+	affiliations: AffiliationSummary | null;
 	mostCited: PaperRef | null;
 	/** The ten most cited papers per scope, each paper once (windows count in-window citations). missions: ids sharing it, highest count first. */
 	topPapers: Record<Scope, (Omit<PaperRef, 'missionId'> & { missions: string[] })[]>;
 	/** Pooled statistics of every paper from the division's missions, a shared paper once; null when a scope reports no pool. */
 	stats: Record<Scope, DivisionScopeStats | null>;
 	/** null when the division is not rankable. lifetime[1] is always null (top 1% needs a window). */
+	/** The full-mission papers by citation count, as StoryFacts.primer publishes them for the focus division. */
+	citationHistogram: { full: { counts: number[]; top: number[]; papers: number } };
 	costCurves: { full: { 10: CostCurve; 1: CostCurve }; window: { 10: CostCurve; 1: CostCurve }; lifetime: { 10: CostCurve; 1: null } } | null;
 	/** Spearman rank correlation of each index with adjusted cost, over non-failed missions with a cost. */
 	indexCorrelation: { m: { rho: number | null; n: number }; h: { rho: number | null; n: number } };
@@ -295,6 +471,13 @@ export interface MissionIndices {
 	g: number | null; // largest g such that the g most-cited papers together hold at least g² citations
 	tori: number | null; // total research impact (reference- and author-normalised citations, self-citations removed), from the local citation graph; weight()-rounded
 	riq: number | null; // research impact quotient: 1000 × √tori ÷ years since the first paper
+}
+
+/** A windowed scope's own h, g and m (`windowIndices` in scripts/lib/measures.mjs): h and g over each paper's windowed citations, by the rule that reproduces upstream's lifetime figures; m = h ÷ the window's span in years. Null without a dated window. */
+export interface WindowIndices {
+	h: number;
+	g: number;
+	m: number;
 }
 
 /** Mission doc only: the shape of one scope's citation distribution. */
@@ -319,35 +502,30 @@ export interface LifetimeSeries {
 	partialFromYear: number | null; // first incomplete year (the as-of year)
 }
 
-export interface WindowSeries extends Partial<WindowBounds> {
-	/** Monthly buckets from each actual publication-window opening, variable length. */
-	papersByMonth: number[];
-	/** Citing calendar-year offset from the publication-window opening year. */
-	citationsByYearOffset: number[];
-	outputBasis?: string;
-	/** Division only: measured mission windows covering any part of each elapsed publication year. */
-	missionsByYear?: number[];
-}
 
 export interface MissionRow {
 	id: string;
 	name: string;
 	cost: number | null; // adjusted LCC, $M 2025
+	size: MissionSize;
 	launchYear: number | null;
 	failed: boolean;
 	shortfall: boolean; // Failure, Partial Failure or Partial Success
 	type: string | null; // mission_type, e.g. "Orbiter"
+	selection: Selection;
 	indices: MissionIndices;
-	yearsToBuild: number | null; // formulation start to launch
 	papers: number | null; // lifetime
 	citations: number | null; // lifetime
+	// lifetime top-10% papers a year, prime start to story.rate.end (yearlyTopRate in measures.mjs); null without a start
+	top10PerYear: number | null;
 	hasThumb: boolean;
 	full: MissionScopeStats & { status: string }; // available | ...
 	window: MissionScopeStats & { status: string }; // rolling status: available | immature | ...
 	lifetime: MissionScopeStats;
-	/** papers per year since science start (index 0 = first year), capped at 20 */
-	strip: number[];
 }
+
+/** The story's membership, stamped by the packager: 'under' is 0 < cost <= the threshold; null without a cost. */
+export type MissionSize = 'under' | 'over' | null;
 
 export interface MissionScopeStats {
 	outputBasis: string;
@@ -400,13 +578,18 @@ export interface Mission {
 		status: string;
 		failed: boolean;
 		cost: number | null; // adjusted $M 2025
+		lcc: number | null; // $M as the catalog reports it, before adjustment
 		type: string | null;
+		program: string | null;
+		target: string | null;
+		launchVehicle: string | null;
 		dates: { formulation: string | null; launch: string | null; scienceStart: string | null; primeEnd: string | null; missionEnd: string | null };
 	};
 	indices: MissionIndices;
 	facts: { papers: number | null; citations: number | null; publicationYears: [number, number] | null };
 	lifetimeSeries: LifetimeSeries | null;
-	windowSeries: (WindowSeries & { status: string }) | null;
+	/** Cells in static/data/maps/missions/<id>.json; null when no paper has a mapped institution. */
+	affiliations: AffiliationSummary | null;
 	mostCited: PaperRef | null;
 	/**
 	 * Papers by citation rank among all of the division's mission papers, in ten equal bins,
@@ -415,8 +598,8 @@ export interface Mission {
 	 */
 	ranks: Record<Scope, RankHistogram | null>;
 	// spread is null when the scope's papers is null (unavailable is never a measured zero)
-	full: MissionScopeStats & { status: string; spread: CitationSpread | null };
-	window: MissionScopeStats & { status: string; spread: CitationSpread | null };
+	full: MissionScopeStats & { status: string; spread: CitationSpread | null; indices: WindowIndices | null };
+	window: MissionScopeStats & { status: string; spread: CitationSpread | null; indices: WindowIndices | null };
 	lifetime: MissionScopeStats & { spread: CitationSpread | null };
 	query: {
 		arms: string | null; // the mission-specific part of source_query
@@ -460,11 +643,35 @@ export interface PapersFile {
 		f: (number | null)[]; // citations within the full-mission window
 		fe: (number | null)[]; // era-adjusted top-10% weight, full-mission window
 		f1: (number | null)[]; // top-1% weight, full-mission window, pooled
-		w: (number | null)[]; // citations within the prime-phase window
-		we: (number | null)[]; // era-adjusted top-10% weight, prime-phase window
-		w1: (number | null)[]; // top-1% weight, prime-phase window, pooled
 		i: (0 | 1)[]; // 1 = added by curation rather than the query
 	};
+}
+
+/**
+ * Where the authors of every tracked paper (lifetime) worked: upstream's ADS canonical
+ * affiliations, located through ROR (scripts/lib/affiliations.mjs). The US map takes US
+ * institutions inside its projection; the world map every located one.
+ */
+export type AffiliationMapKey = 'us' | 'world';
+export interface AffiliationSummary {
+	papers: number; // every packaged paper
+	us: AffiliationMapSummary;
+	world: AffiliationMapSummary;
+}
+export interface AffiliationMapSummary {
+	mapped: number; // papers with at least one institution on this map
+	top: { name: string; papers: number }[]; // the three institutions with the most papers
+}
+/** static/data/maps/{missions/<id>,divisions/<slug>}.json */
+export interface AffiliationFile {
+	places: string[]; // each cell's institution with the most papers, shared by both maps
+	us: AffiliationGrid;
+	world: AffiliationGrid;
+}
+export interface AffiliationGrid {
+	cell: number; // degrees per side
+	/** [west, south, papers with an author in the cell (each once), index into places, institutions in the cell], most papers first */
+	cells: [number, number, number, number, number][];
 }
 
 /** generated/scrolly.json */
@@ -479,85 +686,16 @@ export interface ScrollyTile {
 	launchYear: number | null;
 	launchDate: string | null; // YYYY-MM-DD
 	cost: number | null; // adjusted $M
+	size: MissionSize;
 	papers: number | null; // full-mission window
 	papersLifetime: number | null; // every paper on record, the mission page headline
+	citationsLifetime: number | null; // every citation of those papers; the corpus skyline's citation step
 	citations: number | null; // full-mission window; what the per-dollar step divides by cost
-	yearsToBuild: number | null; // formulation start to launch
+	top10: number | null; // full-mission top-10% credit, as published
+	top10PerYear: number | null; // the mission row's; the focus division's running-total bars
 	hasThumb: boolean;
 	failed: boolean;
 	shortfall: boolean; // Failure, Partial Failure or Partial Success
 	/** of division top papers */
 	share: { full: { 10: number | null; 1: number | null }; window: { 10: number | null; 1: number | null }; lifetime: { 10: number | null; 1: null } };
-	/** only what the layouts read; the full FirstTopPaper is on the mission doc */
-	first: Record<Scope, LaneFirst>;
-}
-
-export type LaneFirst = Pick<FirstTopPaper, 'state' | 'yearsFromScienceStart' | 'yearsFromFormulation'>;
-
-export type KindKey = 'results' | 'data' | 'mission' | 'review' | 'future' | 'other';
-type KindCounts = Record<KindKey, { papers: number; citations: number }>;
-
-/** One mission at or under the threshold; counts are in-window (full-mission scope) papers only. */
-export interface KindMission {
-	id: string;
-	name: string;
-	division: DivisionSlug;
-	cost: number | null;
-	papers: number;
-	citations: number;
-	byKind: KindCounts;
-	nonScienceShare: number | null; // null when papers is 0
-}
-
-export interface KindExample extends KindMission {
-	fullName: string;
-	/**
-	 * The whole record (every classified row, any scope, lifetime citations): the example lists
-	 * the whole record because the mission page does. The bars either side stay in-window.
-	 */
-	lifetime: {
-		papers: number;
-		citations: number;
-		byKind: KindCounts;
-		/** citations desc, then bibcode */
-		list: { bibcode: string; title: string | null; year: number | null; firstAuthor: string | null; citations: number; inScope: boolean; kind: KindKey; note: string }[];
-		/** first of list */
-		top: { bibcode: string; title: string | null; citations: number; kind: KindKey; note: string; citationShare: number | null } | null;
-		/** most-cited row of kind 'results' */
-		firstResult: { bibcode: string; title: string | null; citations: number; citationShare: number | null } | null;
-	};
-}
-
-/** site.kinds: what role each mission's flight data play in its papers (scripts/lib/kinds.mjs). */
-export interface KindFacts {
-	scope: 'full';
-	asOf: string;
-	method: string;
-	kinds: { key: KindKey; label: string; short: string; science: boolean }[];
-	/** papers desc, then citations desc, then name; zero-paper missions included */
-	missions: KindMission[];
-	withPapers: number;
-	withoutPapers: number;
-	total: { papers: number; citations: number; byKind: KindCounts };
-	/** fewest and most in-window citations of one mission paper; null with no papers */
-	citationRange: { min: number; max: number } | null;
-	nonScience: { papers: number; paperShare: number | null; citations: number; citationShare: number | null };
-	/** The smallest corpora (0 < papers <= maxPapers, smi.config.json paperKinds.smallMax), where a single review can dominate the citations. */
-	small: {
-		maxPapers: number;
-		missions: number;
-		papers: number;
-		citations: number;
-		nonScience: { papers: number; paperShare: number | null; citations: number; citationShare: number | null };
-	};
-	/** missions with papers whose non-science papers outnumber their science papers */
-	majorityNonScience: number;
-	/**
-	 * Top-10% credit (tie-weighted, era-adjusted: the credit `StoryFacts.comparison` counts) of the
-	 * classified in-window papers, split by kind; per mission it sums to the mission's full.top10.
-	 * share = nonScience / total, null when total is 0.
-	 */
-	topCredit: { total: number; nonScience: number; share: number | null; byKind: Record<KindKey, number> };
-	/** smi.config.json paperKinds.examples order */
-	examples: KindExample[];
 }

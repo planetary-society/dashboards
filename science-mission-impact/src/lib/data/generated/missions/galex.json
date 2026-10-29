@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 282.2,
+    "lcc": 150.6,
     "type": "Survey Observatory",
+    "program": "Small-class Explorers (SMEX)",
+    "target": "Universe",
+    "launchVehicle": "Pegasus XL",
     "dates": {
       "formulation": "1998-01-08",
       "launch": "2003-04-28",
@@ -21,14 +25,14 @@
   "indices": {
     "h": 140,
     "m": 5.833,
-    "i100": 202,
-    "g": 250,
-    "tori": 206.194,
-    "riq": 598
+    "i100": 207,
+    "g": 252,
+    "tori": 212.828,
+    "riq": 607
   },
   "facts": {
-    "papers": 1579,
-    "citations": 92221,
+    "papers": 1581,
+    "citations": 93655,
     "publicationYears": [
       2003,
       2026
@@ -85,7 +89,7 @@
       59,
       91,
       69,
-      68
+      70
     ],
     "citations": [
       0,
@@ -93,108 +97,70 @@
       358,
       357,
       1037,
-      1001,
-      1729,
-      2280,
+      1003,
+      1731,
+      2281,
       3298,
-      4156,
+      4157,
       4113,
       4630,
       4804,
       4860,
-      5154,
+      5155,
       5191,
-      5269,
+      5273,
       5518,
-      5388,
-      5903,
-      5717,
-      7063,
-      7275,
-      7115
+      5389,
+      5905,
+      5718,
+      7064,
+      7293,
+      8515
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 92221,
-      "observed": 92221,
+      "expected": 93655,
+      "observed": 93655,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2003-09-01",
-    "end": "2008-02-01",
-    "matureDate": "2011-10-01",
-    "status": "available",
-    "months": 53,
-    "citationBuckets": 9,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      31,
-      2,
-      0,
-      3,
-      0,
-      0,
-      2,
-      2,
-      2,
-      1,
-      2,
-      0,
-      4,
-      0,
-      0,
-      2,
-      1,
-      4,
-      2,
-      6,
-      0,
-      2,
-      2,
-      2,
-      0,
-      2,
-      0,
-      5,
-      4,
-      2,
-      7,
-      0,
-      3,
-      3,
-      1,
-      28,
-      3
-    ],
-    "citationsByYearOffset": [
-      0,
-      5,
-      355,
-      357,
-      1025,
-      930,
-      824,
-      666,
-      1
-    ]
+  "affiliations": {
+    "papers": 1581,
+    "us": {
+      "mapped": 1019,
+      "top": [
+        {
+          "name": "Johns Hopkins University, Maryland",
+          "papers": 257
+        },
+        {
+          "name": "California Institute of Technology",
+          "papers": 250
+        },
+        {
+          "name": "Carnegie Institution of Washington",
+          "papers": 167
+        }
+      ]
+    },
+    "world": {
+      "mapped": 1538,
+      "top": [
+        {
+          "name": "Johns Hopkins University, Maryland",
+          "papers": 257
+        },
+        {
+          "name": "California Institute of Technology",
+          "papers": 250
+        },
+        {
+          "name": "Max Planck Society for the Advancement of Science, Germany",
+          "papers": 209
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2005ApJ...619L...1M",
@@ -208,51 +174,51 @@
     ],
     "authorCount": 26,
     "year": 2005,
-    "citations": 2426
+    "citations": 2471
   },
   "ranks": {
     "full": {
       "bins": [
-        67.634,
-        65.899,
-        84.113,
-        83.58,
-        75.171,
-        63.485,
-        86.752,
-        78.497,
-        86.573,
-        88.295
+        67.783,
+        66.027,
+        84.34,
+        83.412,
+        75.446,
+        63.499,
+        86.825,
+        78.058,
+        86.422,
+        88.188
       ],
-      "top1": 9
+      "top1": 8.78
     },
     "window": {
       "bins": [
         12,
-        6.472,
-        10.683,
-        14.045,
-        8.803,
-        15.146,
-        16.786,
-        14.951,
-        12.113,
+        6.475,
+        10.706,
+        13.453,
+        9.374,
+        14.564,
+        17.403,
+        14.927,
+        12.097,
         20
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        155.732,
-        179.427,
-        186.547,
-        151.72,
-        169.228,
-        148.221,
-        136.612,
-        149.154,
-        128.251,
-        174.109
+        161.059,
+        177.498,
+        187.337,
+        150.673,
+        169.624,
+        148.43,
+        130.13,
+        151.904,
+        128.946,
+        175.399
       ],
       "top1": 25
     }
@@ -260,11 +226,11 @@
   "full": {
     "papers": 780,
     "outputBasis": "measured",
-    "citations": 17525,
-    "top10": 53.551,
-    "top10ShareOfDivision": 0.01076,
-    "top1": 6.75,
-    "top1ShareOfDivision": 0.01357,
+    "citations": 17530,
+    "top10": 65.646,
+    "top10ShareOfDivision": 0.0132,
+    "top1": 6.612,
+    "top1ShareOfDivision": 0.01329,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.418,
@@ -281,8 +247,13 @@
       "months": 142,
       "citationBuckets": 16
     },
+    "indices": {
+      "h": 61,
+      "g": 85,
+      "m": 5.156
+    },
     "spread": {
-      "mean": 22.468,
+      "mean": 22.474,
       "median": 13,
       "uncited": 35,
       "i10": 481,
@@ -292,7 +263,7 @@
   "window": {
     "papers": 131,
     "outputBasis": "measured",
-    "citations": 4163,
+    "citations": 4167,
     "top10": 17.833,
     "top10ShareOfDivision": 0.00922,
     "top1": 2,
@@ -313,20 +284,25 @@
       "months": 53,
       "citationBuckets": 9
     },
+    "indices": {
+      "h": 33,
+      "g": 59,
+      "m": 7.468
+    },
     "spread": {
-      "mean": 31.779,
-      "median": 18,
+      "mean": 31.809,
+      "median": 19,
       "uncited": 9,
       "i10": 93,
       "i100": 11
     }
   },
   "lifetime": {
-    "papers": 1579,
+    "papers": 1581,
     "outputBasis": "measured",
-    "citations": 92221,
-    "top10": 105.269,
-    "top10ShareOfDivision": 0.01904,
+    "citations": 93655,
+    "top10": 129.783,
+    "top10ShareOfDivision": 0.02044,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -337,26 +313,26 @@
       "date": "2004-06-00"
     },
     "spread": {
-      "mean": 58.405,
-      "median": 21,
-      "uncited": 82,
-      "i10": 1110,
-      "i100": 202
+      "mean": 59.238,
+      "median": 22,
+      "uncited": 77,
+      "i10": 1114,
+      "i100": 207
     }
   },
   "query": {
     "arms": "((facility:GALEX OR =abs:\"Galaxy Evolution Explorer\" OR abs:GALEX))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2003-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28facility%3AGALEX+OR+%3Dabs%3A%22Galaxy+Evolution+Explorer%22+OR+abs%3AGALEX%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:17:06.220719+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2003-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28facility%3AGALEX+OR+%3Dabs%3A%22Galaxy+Evolution+Explorer%22+OR+abs%3AGALEX%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:15:09.683997+00:00",
     "reconciliation": {
-      "adsReturned": 1580,
+      "adsReturned": 1582,
       "curatedOut": 1,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 1579
+      "final": 1581
     }
   },
   "curation": {
@@ -380,7 +356,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 2426
+      "citations": 2471
     },
     {
       "bibcode": "2007ApJ...660L..43N",
@@ -389,7 +365,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 1884
+      "citations": 1905
     },
     {
       "bibcode": "2008AJ....136.2782L",
@@ -398,7 +374,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 1836
+      "citations": 1865
     },
     {
       "bibcode": "2008AJ....136.2846B",
@@ -407,7 +383,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 1723
+      "citations": 1737
     },
     {
       "bibcode": "2007ApJS..173..267S",
@@ -416,7 +392,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 1632
+      "citations": 1653
     },
     {
       "bibcode": "2007AJ....133..734B",
@@ -425,7 +401,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 1551
+      "citations": 1563
     },
     {
       "bibcode": "2006ApJS..166..470R",
@@ -434,7 +410,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 1224
+      "citations": 1242
     },
     {
       "bibcode": "2009ApJ...690.1236I",
@@ -443,7 +419,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 1184
+      "citations": 1192
     },
     {
       "bibcode": "2007ApJS..173..682M",
@@ -452,7 +428,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 1082
+      "citations": 1093
     },
     {
       "bibcode": "2007ApJS..173..185G",
@@ -461,7 +437,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 778
+      "citations": 780
     },
     {
       "bibcode": "2014MNRAS.440..889S",
@@ -470,7 +446,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 705
+      "citations": 720
     },
     {
       "bibcode": "2018ApJ...859...11S",
@@ -479,7 +455,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 625
+      "citations": 656
     },
     {
       "bibcode": "2020ApJS..250....8L",
@@ -488,7 +464,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 602
+      "citations": 628
     },
     {
       "bibcode": "2017ApJS..233...17R",
@@ -497,7 +473,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 594
+      "citations": 611
     },
     {
       "bibcode": "2022ApJS..258...11W",
@@ -506,7 +482,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 577
+      "citations": 606
     },
     {
       "bibcode": "2007ApJ...660L...1D",
@@ -515,7 +491,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 576
+      "citations": 584
     },
     {
       "bibcode": "2012MNRAS.419.2095M",
@@ -524,7 +500,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 567
+      "citations": 579
     },
     {
       "bibcode": "2009ApJ...706..599L",
@@ -533,7 +509,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 557
+      "citations": 566
     },
     {
       "bibcode": "2017ApJS..233...22S",
@@ -542,7 +518,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 529
+      "citations": 540
     },
     {
       "bibcode": "2009MNRAS.400.2070S",
@@ -551,10 +527,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 522
+      "citations": 535
     }
   ],
   "papersFile": {
-    "rows": 1579
+    "rows": 1581
   }
 }

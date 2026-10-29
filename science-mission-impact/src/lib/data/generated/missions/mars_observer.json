@@ -9,7 +9,11 @@
     "status": "Failure",
     "failed": true,
     "cost": 2502.3,
+    "lcc": 904,
     "type": "Orbiter",
+    "program": "Observer",
+    "target": "Mars",
+    "launchVehicle": "Titan III",
     "dates": {
       "formulation": "1984-10-01",
       "launch": "1992-09-25",
@@ -139,60 +143,42 @@
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "1992-10-01",
-    "end": "1995-09-01",
-    "matureDate": "1998-10-01",
-    "status": "available",
-    "months": 35,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "citationsByYearOffset": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
+  "affiliations": {
+    "papers": 4,
+    "us": {
+      "mapped": 3,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 3
+        },
+        {
+          "name": "University of Arizona",
+          "papers": 2
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 2
+        }
+      ]
+    },
+    "world": {
+      "mapped": 3,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 3
+        },
+        {
+          "name": "L'Institut de Recherche en Astrophysique et Planetologie",
+          "papers": 2
+        },
+        {
+          "name": "University of Arizona",
+          "papers": 2
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "1997ApJS..110..157L",
@@ -245,8 +231,8 @@
         1,
         0,
         0,
-        1,
-        2,
+        1.015,
+        1.985,
         0,
         0,
         0,
@@ -279,6 +265,11 @@
       "months": 35,
       "citationBuckets": 7
     },
+    "indices": {
+      "h": 0,
+      "g": 0,
+      "m": 0
+    },
     "spread": {
       "mean": null,
       "median": null,
@@ -310,6 +301,11 @@
       "status": "available",
       "months": 35,
       "citationBuckets": 7
+    },
+    "indices": {
+      "h": 0,
+      "g": 0,
+      "m": 0
     },
     "spread": {
       "mean": null,

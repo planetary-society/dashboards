@@ -38,32 +38,40 @@ export function validateConfig(config) {
 		labels.add(d.statsLabel);
 	}
 
-	// Which division's time to a first top paper the story walks through is an
+	// Which division the story walks through (its citation primer and running total) is an
 	// editorial choice, so it is configuration too; it must name a division.
-	if (config.storyTimingDivision !== undefined && !slugs.has(config.storyTimingDivision)) {
-		fail(`storyTimingDivision must be a division slug, got ${JSON.stringify(config.storyTimingDivision)}`);
+	if (config.storyDivision !== undefined && !slugs.has(config.storyDivision)) {
+		fail(`storyDivision must be a division slug, got ${JSON.stringify(config.storyDivision)}`);
 	}
 
 	// The cost line the story compares either side of is an editorial choice ("$150M or less").
 	if (!Number.isFinite(config.thresholdCost) || config.thresholdCost <= 0) {
 		fail(`thresholdCost must be a positive number ($M), got ${JSON.stringify(config.thresholdCost)}`);
 	}
+	// The Analysis page's cost tiers and groups ($M edges): both split at the threshold too.
+	for (const key of ['costTiers', 'costGroups']) {
+		const edges = config.analysis?.[key];
+		if (!Array.isArray(edges) || edges.length === 0 || edges.some((e, i) => !Number.isFinite(e) || e <= 0 || (i > 0 && !(e > edges[i - 1])))) {
+			fail(`analysis.${key} must be a non-empty array of strictly ascending positive numbers ($M), got ${JSON.stringify(edges)}`);
+		}
+		if (!edges.includes(config.thresholdCost)) fail(`analysis.${key} must include thresholdCost (${config.thresholdCost}), got ${JSON.stringify(edges)}`);
+	}
+	// The Analysis page reads the first cost group as the missions at or under the threshold
+	if (config.analysis.costGroups[0] !== config.thresholdCost) {
+		fail(`analysis.costGroups must start at thresholdCost (${config.thresholdCost}), got ${JSON.stringify(config.analysis.costGroups)}`);
+	}
 	// The CLPS chart reads a second dataset, named explicitly: never a fallback.
 	const clps = config.clps;
 	if (typeof clps?.rawDir !== 'string' || clps.rawDir === '') fail('clps.rawDir must be a non-empty string');
-	if (!Array.isArray(clps.comparators) || clps.comparators.some((id) => typeof id !== 'string' || id === '')) {
-		fail('clps.comparators must be an array of non-empty mission ids');
+	// comparators: the story's CLPS lines; surface: the Analysis page's papers-per-dollar figure
+	for (const key of ['comparators', 'surface']) {
+		if (!Array.isArray(clps[key]) || clps[key].some((id) => typeof id !== 'string' || id === '')) {
+			fail(`clps.${key} must be an array of non-empty mission ids`);
+		}
 	}
 	if (!Number.isInteger(clps.horizonMonths) || clps.horizonMonths < 1) {
 		fail(`clps.horizonMonths must be a whole number of at least 1, got ${JSON.stringify(clps.horizonMonths)}`);
 	}
-	// The paper-kinds classification is an input file, like costs.
-	const kinds = config.paperKinds;
-	if (typeof kinds?.file !== 'string' || kinds.file === '') fail('paperKinds.file must be a non-empty string');
-	if (!Array.isArray(kinds.examples) || kinds.examples.length === 0 || kinds.examples.some((id) => typeof id !== 'string' || id === '')) {
-		fail('paperKinds.examples must be a non-empty array of non-empty mission ids');
-	}
-	if (!Number.isInteger(kinds.smallMax) || kinds.smallMax < 1) fail('paperKinds.smallMax must be an integer >= 1');
 	// Display names for published output; upstream titles stay the lookup keys.
 	const names = config.names ?? {};
 	if (typeof names !== 'object' || Array.isArray(names)) fail('names must be an object keyed by mission id');

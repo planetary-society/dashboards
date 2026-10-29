@@ -56,7 +56,6 @@
 		font: 500 10px/14px var(--sans);
 		text-align: center;
 		vertical-align: 1px;
-		opacity: 0.55; /* a quiet mark beside every term; full strength only when pointed at */
 	}
 
 	button:hover,
@@ -104,7 +103,8 @@
 		height: 8px;
 	}
 
-	.hint:focus-within .tip,
+	/* Keyboard focus only: a tapped button keeps focus in Chromium, which would stop a second tap closing it. */
+	.hint:has(:focus-visible) .tip,
 	.open .tip {
 		display: block;
 	}

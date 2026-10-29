@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 169,
+    "lcc": 87,
     "type": "Remote Sensing Observatory",
+    "program": "Small-class Explorers (SMEX)",
+    "target": "Sun",
+    "launchVehicle": "Pegasus XL",
     "dates": {
       "formulation": "1997-10-16",
       "launch": "2002-02-05",
@@ -23,12 +27,12 @@
     "m": 3.68,
     "i100": 86,
     "g": 150,
-    "tori": 217.51,
-    "riq": 589
+    "tori": 219.125,
+    "riq": 592
   },
   "facts": {
     "papers": 1038,
-    "citations": 39868,
+    "citations": 40125,
     "publicationYears": [
       2002,
       2026
@@ -94,117 +98,72 @@
       180,
       383,
       536,
-      872,
+      874,
       867,
       1104,
-      1375,
-      1293,
+      1380,
+      1295,
       2123,
-      1829,
+      1830,
       1990,
       1574,
       1904,
-      2182,
+      2183,
       2092,
-      2173,
+      2174,
       2275,
       2284,
       2149,
-      2148,
+      2149,
       2172,
       2239,
-      2215,
-      1858
+      2225,
+      2092
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 39868,
-      "observed": 39868,
+      "expected": 40125,
+      "observed": 40125,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2002-04-01",
-    "end": "2007-04-01",
-    "matureDate": "2010-10-01",
-    "status": "available",
-    "months": 60,
-    "citationBuckets": 9,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      26,
-      2,
-      10,
-      0,
-      0,
-      0,
-      1,
-      0,
-      1,
-      1,
-      2,
-      17,
-      4,
-      1,
-      6,
-      3,
-      2,
-      5,
-      5,
-      4,
-      0,
-      1,
-      3,
-      3,
-      3,
-      2,
-      20,
-      3,
-      2,
-      4,
-      5,
-      4,
-      7,
-      4,
-      2,
-      0,
-      3,
-      1,
-      10,
-      8,
-      2,
-      2,
-      4,
-      7,
-      5,
-      6,
-      4,
-      11,
-      3,
-      15,
-      13,
-      4,
-      1
-    ],
-    "citationsByYearOffset": [
-      51,
-      180,
-      381,
-      536,
-      659,
-      542,
-      484,
-      351,
-      33
-    ]
+  "affiliations": {
+    "papers": 1038,
+    "us": {
+      "mapped": 502,
+      "top": [
+        {
+          "name": "University of California, Berkeley",
+          "papers": 180
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 144
+        },
+        {
+          "name": "New Jersey Institute of Technology",
+          "papers": 73
+        }
+      ]
+    },
+    "world": {
+      "mapped": 970,
+      "top": [
+        {
+          "name": "University of California, Berkeley",
+          "papers": 180
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 144
+        },
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 121
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2002SoPh..210....3L",
@@ -218,21 +177,21 @@
     ],
     "authorCount": 66,
     "year": 2002,
-    "citations": 1679
+    "citations": 1686
   },
   "ranks": {
     "full": {
       "bins": [
-        104.395,
-        99.153,
-        82.78,
-        67.468,
-        77.206,
-        92.685,
-        98.723,
-        90.447,
-        91.731,
-        104.411
+        104.513,
+        99.144,
+        82.869,
+        67.475,
+        77.719,
+        92.615,
+        97.998,
+        90.929,
+        91.482,
+        104.255
       ],
       "top1": 10
     },
@@ -240,29 +199,29 @@
       "bins": [
         38.207,
         35.897,
-        27.485,
-        14.687,
-        26.45,
+        27.492,
+        14.738,
+        26.392,
         24.755,
         18.863,
-        21.868,
-        19.786,
+        21.946,
+        19.708,
         24
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        66.048,
-        95.42,
-        92.006,
-        92.166,
-        97.383,
-        94.664,
-        117.466,
-        127.11,
-        128.694,
-        127.043
+        66.52,
+        96.806,
+        91.303,
+        90.077,
+        98.217,
+        94.837,
+        116.979,
+        126.849,
+        129.716,
+        126.696
       ],
       "top1": 16
     }
@@ -270,9 +229,9 @@
   "full": {
     "papers": 909,
     "outputBasis": "measured",
-    "citations": 10780,
-    "top10": 75.555,
-    "top10ShareOfDivision": 0.05241,
+    "citations": 10784,
+    "top10": 81.629,
+    "top10ShareOfDivision": 0.05662,
     "top1": 7.667,
     "top1ShareOfDivision": 0.05318,
     "first": {
@@ -291,8 +250,13 @@
       "months": 221,
       "citationBuckets": 22
     },
+    "indices": {
+      "h": 40,
+      "g": 51,
+      "m": 2.172
+    },
     "spread": {
-      "mean": 11.859,
+      "mean": 11.864,
       "median": 8,
       "uncited": 68,
       "i10": 404,
@@ -302,9 +266,9 @@
   "window": {
     "papers": 252,
     "outputBasis": "measured",
-    "citations": 3217,
-    "top10": 32.733,
-    "top10ShareOfDivision": 0.07377,
+    "citations": 3218,
+    "top10": 24,
+    "top10ShareOfDivision": 0.05409,
     "top1": 1,
     "top1ShareOfDivision": 0.02254,
     "first": {
@@ -323,8 +287,13 @@
       "months": 60,
       "citationBuckets": 9
     },
+    "indices": {
+      "h": 28,
+      "g": 39,
+      "m": 5.601
+    },
     "spread": {
-      "mean": 12.766,
+      "mean": 12.77,
       "median": 8,
       "uncited": 22,
       "i10": 113,
@@ -334,9 +303,9 @@
   "lifetime": {
     "papers": 1038,
     "outputBasis": "measured",
-    "citations": 39868,
-    "top10": 70.31,
-    "top10ShareOfDivision": 0.04487,
+    "citations": 40125,
+    "top10": 103.991,
+    "top10ShareOfDivision": 0.05675,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -347,18 +316,18 @@
       "date": "2002-11-00"
     },
     "spread": {
-      "mean": 38.408,
+      "mean": 38.656,
       "median": 20,
-      "uncited": 44,
-      "i10": 705,
+      "uncited": 43,
+      "i10": 708,
       "i100": 86
     }
   },
   "query": {
     "arms": "(((abs:RHESSI AND abs:(solar OR flare OR X-ray OR gamma OR terrestrial OR electron OR photon OR polarization OR transient OR image)) OR (abs:HESSI AND abs:solar) OR =abs:\"High Energy Solar Spectroscopic Imager\" OR =abs:\"High Energy Solar Spectroscopy Imager\" OR facility:RHESSI))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2002-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ARHESSI+AND+abs%3A%28solar+OR+flare+OR+X-ray+OR+gamma+OR+terrestrial+OR+electron+OR+photon+OR+polarization+OR+transient+OR+image%29%29+OR+%28abs%3AHESSI+AND+abs%3Asolar%29+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopic+Imager%22+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopy+Imager%22+OR+facility%3ARHESSI%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:13:16.322642+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2002-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ARHESSI+AND+abs%3A%28solar+OR+flare+OR+X-ray+OR+gamma+OR+terrestrial+OR+electron+OR+photon+OR+polarization+OR+transient+OR+image%29%29+OR+%28abs%3AHESSI+AND+abs%3Asolar%29+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopic+Imager%22+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopy+Imager%22+OR+facility%3ARHESSI%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:03:42.101147+00:00",
     "reconciliation": {
       "adsReturned": 1048,
       "curatedOut": 9,
@@ -487,7 +456,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 1679
+      "citations": 1686
     },
     {
       "bibcode": "2011SSRv..159...19F",
@@ -496,7 +465,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 815
+      "citations": 825
     },
     {
       "bibcode": "2002SoPh..210...61H",
@@ -505,7 +474,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 523
+      "citations": 526
     },
     {
       "bibcode": "2017LRSP...14....2B",
@@ -514,7 +483,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 483
+      "citations": 493
     },
     {
       "bibcode": "2006ApJ...647..483L",
@@ -523,7 +492,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 383
+      "citations": 384
     },
     {
       "bibcode": "2005Sci...307.1085S",
@@ -532,7 +501,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 380
+      "citations": 382
     },
     {
       "bibcode": "2003ApJ...595L..69L",
@@ -541,7 +510,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 379
+      "citations": 381
     },
     {
       "bibcode": "2011SSRv..159..107H",
@@ -550,7 +519,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 350
+      "citations": 353
     },
     {
       "bibcode": "2012A&A...539A.146H",
@@ -559,7 +528,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 340
+      "citations": 345
     },
     {
       "bibcode": "2002SoPh..210...33S",
@@ -568,7 +537,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 329
+      "citations": 331
     },
     {
       "bibcode": "2005ApJ...622.1251L",
@@ -577,7 +546,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 322
+      "citations": 323
     },
     {
       "bibcode": "2003ApJ...596L.251S",
@@ -595,16 +564,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 282
-    },
-    {
-      "bibcode": "2003ApJ...595L..97H",
-      "title": "Electron Bremsstrahlung Hard X-Ray Spectra, Electron Distributions, and Energetics in the 2002 July 23 Solar Flare",
-      "firstAuthor": "Holman, Gordon D.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2003,
-      "citations": 277
+      "citations": 285
     },
     {
       "bibcode": "2003ApJ...595L.135J",
@@ -613,7 +573,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 275
+      "citations": 280
+    },
+    {
+      "bibcode": "2003ApJ...595L..97H",
+      "title": "Electron Bremsstrahlung Hard X-Ray Spectra, Electron Distributions, and Energetics in the 2002 July 23 Solar Flare",
+      "firstAuthor": "Holman, Gordon D.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2003,
+      "citations": 278
     },
     {
       "bibcode": "2003ApJ...597..998L",
@@ -622,7 +591,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 265
+      "citations": 267
     },
     {
       "bibcode": "2005GeoRL..3222804D",
@@ -631,25 +600,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 254
-    },
-    {
-      "bibcode": "2010ApJ...714.1108K",
-      "title": "Measurements of the Coronal Acceleration Region of a Solar Flare",
-      "firstAuthor": "Krucker, Säm",
-      "authors": null,
-      "authorCount": null,
-      "year": 2010,
-      "citations": 242
-    },
-    {
-      "bibcode": "2004JGRA..10910104E",
-      "title": "Energy partition in two solar flare/CME events",
-      "firstAuthor": "Emslie, A. G.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2004,
-      "citations": 241
+      "citations": 255
     },
     {
       "bibcode": "2008A&ARv..16..155K",
@@ -658,7 +609,25 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 239
+      "citations": 245
+    },
+    {
+      "bibcode": "2010ApJ...714.1108K",
+      "title": "Measurements of the Coronal Acceleration Region of a Solar Flare",
+      "firstAuthor": "Krucker, Säm",
+      "authors": null,
+      "authorCount": null,
+      "year": 2010,
+      "citations": 243
+    },
+    {
+      "bibcode": "2004JGRA..10910104E",
+      "title": "Energy partition in two solar flare/CME events",
+      "firstAuthor": "Emslie, A. G.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2004,
+      "citations": 242
     }
   ],
   "papersFile": {

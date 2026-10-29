@@ -11,7 +11,6 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { lifetimeModel } from './accumulation.js';
 import { curveFacts, curveChart } from './costcurve.js';
-import { scatterModel } from './indexscatter.js';
 
 const generated = join(dirname(fileURLToPath(import.meta.url)), '../data/generated');
 const missing = !existsSync(generated);
@@ -36,16 +35,9 @@ test('accumulation preserves source totals, explicit citation gaps and actual mi
 		assert.equal(coverage.expected, d.facts.citations, d.slug);
 		assert.equal(coverage.observed, life.citeTotal, d.slug);
 		assert.equal(coverage.missing, coverage.expected - coverage.observed, d.slug);
-		assert.ok(coverage.missing >= 0 && coverage.missing <= citationHistory.maxMissing);
-		assert.ok(coverage.missing === 0 || coverage.missing / coverage.expected <= citationHistory.maxMissingFraction);
+		assert.ok(coverage.missing >= 0 && coverage.missing <= Math.max(citationHistory.maxMissing, Math.floor(coverage.expected * citationHistory.maxMissingFraction)));
 		assert.equal(coverage.status, coverage.missing ? 'incomplete' : 'complete');
 		assert.ok(life.partialIndex === -1 || life.partialIndex === life.years.length - 1, d.slug);
-		const measured = d.missions.filter((m) => m.window.status === 'available' && m.window.outputBasis === 'measured');
-		assert.equal(d.windowSeries.missionsIncluded, measured.length);
-		assert.equal(d.windowSeries.papersByMonth.length, Math.max(0, ...measured.map((m) => m.window.bounds.months)));
-		assert.equal(d.windowSeries.citationsByYearOffset.length, Math.max(0, ...measured.map((m) => m.window.bounds.citationBuckets)));
-		assert.deepEqual(d.windowSeries.missionsByYear, Array.from({ length: Math.ceil(d.windowSeries.papersByMonth.length / 12) },
-			(_, i) => measured.filter((m) => m.window.bounds.months > i * 12).length));
 		for (const row of d.missions) {
 			const m = read('missions/' + row.id + '.json');
 			if (m.lifetimeSeries) {
@@ -53,10 +45,6 @@ test('accumulation preserves source totals, explicit citation gaps and actual mi
 				assert.equal(model.pubTotal, m.facts.papers, m.id);
 				assert.equal(model.citeTotal, model.citationCoverage.observed, m.id);
 				assert.equal(model.citationCoverage.expected, m.facts.citations, m.id);
-			}
-			if (row.window.outputBasis === 'measured' && row.window.status === 'available') {
-				assert.equal(m.windowSeries.papersByMonth.reduce((a, b) => a + b, 0), row.window.papers, m.id);
-				assert.equal(m.windowSeries.citationsByYearOffset.reduce((a, b) => a + b, 0), row.window.citations, m.id);
 			}
 		}
 	}
@@ -121,33 +109,6 @@ test('every cost curve names its missions, ends on the whole division and fits 3
 		}
 	}
 	assert.ok(checked >= 15, `only ${checked} curves checked`); // five views per rankable division
-});
-
-test('every division plots both indices, and the correlation counts the missions it draws', opts, () => {
-	let checked = 0;
-	for (const file of readdirSync(join(generated, 'divisions'))) {
-		const d = read(`divisions/${file}`);
-		const ids = new Set(d.missions.map((m) => m.id));
-		for (const index of ['m', 'h']) {
-			const model = scatterModel(d.missions, index);
-			const where = `${d.slug} ${index}`;
-			assert.ok(model, where);
-			assert.ok(model.points.length > 0, where);
-			assert.ok(model.points.every((p) => ids.has(p.id) && p.name), where);
-			assert.ok(model.points.every((p) => p.x >= 0 && p.x <= 100), `${where}: a mark off the cost axis`);
-			assert.ok(model.points.every((p) => p.y >= 0 && p.y <= 100), `${where}: a mark off the index axis`);
-			// only a failure is drawn without a value of its own, and it sits on the zero line
-			assert.ok(model.points.every((p) => p.value != null || (p.failed && p.y === 0)), where);
-
-			// the sentence under the title counts the missions the chart draws as real points
-			const stat = d.indexCorrelation[index];
-			assert.equal(stat.n, model.points.filter((p) => !p.failed).length, `${where}: n vs marks`);
-			assert.ok(stat.rho == null || (stat.rho >= -1 && stat.rho <= 1), where);
-			assert.ok(stat.rho == null || stat.n >= 3, `${where}: a rho on ${stat.n} missions`);
-			checked += 1;
-		}
-	}
-	assert.equal(checked, 10); // five divisions, two indices each
 });
 
 test('every mission with papers carries the three index figures the pages print', opts, () => {

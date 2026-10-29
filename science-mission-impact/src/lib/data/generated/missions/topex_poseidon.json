@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 1508.5,
+    "lcc": 520,
     "type": "Orbiter",
+    "program": "Ocean Topography Experiment",
+    "target": "Earth",
+    "launchVehicle": "Ariane 42P",
     "dates": {
       "formulation": "1984-01-01",
       "launch": "1992-08-10",
@@ -23,12 +27,12 @@
     "m": 3.143,
     "i100": 133,
     "g": 189,
-    "tori": 811.679,
-    "riq": 813
+    "tori": 813.598,
+    "riq": 814
   },
   "facts": {
     "papers": 1640,
-    "citations": 66156,
+    "citations": 66200,
     "publicationYears": [
       1992,
       2026
@@ -127,15 +131,15 @@
       1996,
       1997,
       2172,
-      2195,
-      2557,
+      2197,
+      2561,
       2398,
-      2597,
+      2615,
       2577,
       2604,
       2758,
       2742,
-      2551,
+      2552,
       2852,
       3124,
       3189,
@@ -143,96 +147,53 @@
       3337,
       3319,
       2942,
-      2936,
-      1840
+      2937,
+      1858
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 66156,
-      "observed": 66156,
+      "expected": 66200,
+      "observed": 66200,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "1992-11-01",
-    "end": "1997-09-01",
-    "matureDate": "2000-10-01",
-    "status": "available",
-    "months": 58,
-    "citationBuckets": 9,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      1,
-      0,
-      1,
-      0,
-      7,
-      0,
-      1,
-      1,
-      0,
-      1,
-      0,
-      1,
-      2,
-      0,
-      1,
-      1,
-      0,
-      2,
-      1,
-      1,
-      1,
-      0,
-      3,
-      0,
-      1,
-      48,
-      21,
-      3,
-      3,
-      2,
-      2,
-      0,
-      2,
-      14,
-      3,
-      2,
-      2,
-      33,
-      5,
-      4,
-      3,
-      4,
-      3,
-      7,
-      1,
-      3,
-      5,
-      2,
-      5,
-      3,
-      23,
-      4,
-      7,
-      6,
-      6,
-      5,
-      4,
-      3
-    ],
-    "citationsByYearOffset": [
-      0,
-      3,
-      140,
-      413,
-      291,
-      506,
-      346,
-      188,
-      85
-    ]
+  "affiliations": {
+    "papers": 1640,
+    "us": {
+      "mapped": 445,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 89
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 75
+        },
+        {
+          "name": "University of Texas, Austin",
+          "papers": 39
+        }
+      ]
+    },
+    "world": {
+      "mapped": 1055,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 89
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 75
+        },
+        {
+          "name": "Observatoire Mid Pyrenees, LEGOS, Laboratoire d'Etudes en Geophysique et Oceanographie Spatiales",
+          "papers": 70
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "1998DSRI...45.1977M",
@@ -244,50 +205,50 @@
     ],
     "authorCount": 2,
     "year": 1998,
-    "citations": 1262
+    "citations": 1263
   },
   "ranks": {
     "full": {
       "bins": [
-        248.037,
-        213.447,
-        175.27,
-        120.915,
-        114.056,
-        96.831,
-        89.072,
-        58.719,
-        43.834,
-        41.819
+        248.176,
+        213.611,
+        175.325,
+        120.827,
+        113.99,
+        96.877,
+        89.038,
+        58.574,
+        43.78,
+        41.803
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        54.799,
-        42.937,
-        33.609,
-        22.016,
-        21.084,
-        31.819,
-        18.867,
-        13.647,
-        13.222,
+        54.786,
+        42.954,
+        33.677,
+        21.975,
+        21.133,
+        31.781,
+        18.891,
+        13.588,
+        13.215,
         12
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        95.39,
-        140.935,
-        157.143,
-        140.75,
-        169.528,
-        160.904,
-        179.664,
-        170.905,
-        206.78,
+        93.914,
+        140.566,
+        157.562,
+        140.919,
+        169.596,
+        161.457,
+        179.827,
+        171.138,
+        207.02,
         218
       ],
       "top1": 27
@@ -297,8 +258,8 @@
     "papers": 1202,
     "outputBasis": "measured",
     "citations": 7021,
-    "top10": 68.372,
-    "top10ShareOfDivision": 0.01899,
+    "top10": 41.803,
+    "top10ShareOfDivision": 0.01161,
     "top1": 2,
     "top1ShareOfDivision": 0.00556,
     "first": {
@@ -317,6 +278,11 @@
       "months": 183,
       "citationBuckets": 20
     },
+    "indices": {
+      "h": 31,
+      "g": 40,
+      "m": 2.033
+    },
     "spread": {
       "mean": 5.841,
       "median": 3,
@@ -329,8 +295,8 @@
     "papers": 264,
     "outputBasis": "measured",
     "citations": 1972,
-    "top10": 22.4,
-    "top10ShareOfDivision": 0.0238,
+    "top10": 12,
+    "top10ShareOfDivision": 0.01275,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -349,6 +315,11 @@
       "months": 58,
       "citationBuckets": 9
     },
+    "indices": {
+      "h": 21,
+      "g": 29,
+      "m": 4.346
+    },
     "spread": {
       "mean": 7.47,
       "median": 4,
@@ -360,9 +331,9 @@
   "lifetime": {
     "papers": 1640,
     "outputBasis": "measured",
-    "citations": 66156,
-    "top10": 116.517,
-    "top10ShareOfDivision": 0.03025,
+    "citations": 66200,
+    "top10": 216.833,
+    "top10ShareOfDivision": 0.0466,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -373,7 +344,7 @@
       "date": "1993-06-00"
     },
     "spread": {
-      "mean": 40.339,
+      "mean": 40.366,
       "median": 17,
       "uncited": 86,
       "i10": 1092,
@@ -382,9 +353,9 @@
   },
   "query": {
     "arms": "((((abs:TOPEX OR abs:\"TOPEX/Poseidon\") AND abs:(altimeter OR altimetry OR ocean OR sea OR satellite OR radiometer OR ionosphere OR electron OR geoid OR tide OR wave OR wind OR orbit OR data OR Poseidon OR Jason) -abs:\"topographic exposure\") OR =abs:\"Ocean Topography Experiment\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1992-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3ATOPEX+OR+abs%3A%22TOPEX%2FPoseidon%22%29+AND+abs%3A%28altimeter+OR+altimetry+OR+ocean+OR+sea+OR+satellite+OR+radiometer+OR+ionosphere+OR+electron+OR+geoid+OR+tide+OR+wave+OR+wind+OR+orbit+OR+data+OR+Poseidon+OR+Jason%29+-abs%3A%22topographic+exposure%22%29+OR+%3Dabs%3A%22Ocean+Topography+Experiment%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1992-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:08:26.530757+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1992-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3ATOPEX+OR+abs%3A%22TOPEX%2FPoseidon%22%29+AND+abs%3A%28altimeter+OR+altimetry+OR+ocean+OR+sea+OR+satellite+OR+radiometer+OR+ionosphere+OR+electron+OR+geoid+OR+tide+OR+wave+OR+wind+OR+orbit+OR+data+OR+Poseidon+OR+Jason%29+-abs%3A%22topographic+exposure%22%29+OR+%3Dabs%3A%22Ocean+Topography+Experiment%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1992-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:52:16.104223+00:00",
     "reconciliation": {
       "adsReturned": 1646,
       "curatedOut": 4,
@@ -449,7 +420,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 1262
+      "citations": 1263
     },
     {
       "bibcode": "2000JGR...10519477D",
@@ -485,7 +456,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 905
+      "citations": 906
     },
     {
       "bibcode": "2018PNAS..115.2022N",
@@ -494,7 +465,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 675
+      "citations": 676
     },
     {
       "bibcode": "2000Natur.405..775E",
@@ -503,7 +474,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 608
+      "citations": 611
     },
     {
       "bibcode": "1996Sci...272..234C",
@@ -530,7 +501,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 513
+      "citations": 514
     },
     {
       "bibcode": "1994JGR....9924369F",
@@ -614,13 +585,13 @@
       "citations": 341
     },
     {
-      "bibcode": "2001GeoRL..28..811J",
-      "title": "Parameterizing tidal dissipation over rough topography",
-      "firstAuthor": "Jayne, Steven R.",
+      "bibcode": "2003LRR.....6....1A",
+      "title": "Relativity in the Global Positioning System",
+      "firstAuthor": "Ashby, Neil",
       "authors": null,
       "authorCount": null,
-      "year": 2001,
-      "citations": 336
+      "year": 2003,
+      "citations": 340
     }
   ],
   "papersFile": {

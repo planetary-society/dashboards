@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 1365.5,
+    "lcc": 993.8,
     "type": "Lander",
+    "program": "Discovery",
+    "target": "Mars",
+    "launchVehicle": "Atlas V 401",
     "dates": {
       "formulation": "2012-08-20",
       "launch": "2018-05-05",
@@ -23,12 +27,12 @@
     "m": 4.778,
     "i100": 15,
     "g": 75,
-    "tori": 11.442,
-    "riq": 338
+    "tori": 11.69,
+    "riq": 341
   },
   "facts": {
     "papers": 366,
-    "citations": 8078,
+    "citations": 8143,
     "publicationYears": [
       2018,
       2026
@@ -48,102 +52,70 @@
     ],
     "papers": [
       7,
-      22,
+      23,
       46,
       69,
       51,
       62,
-      34,
+      33,
       42,
       33
     ],
     "citations": [
       4,
-      44,
-      336,
-      900,
-      1244,
-      1662,
-      1117,
-      1535,
-      1236
+      45,
+      343,
+      910,
+      1250,
+      1667,
+      1124,
+      1536,
+      1264
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 8078,
-      "observed": 8078,
+      "expected": 8143,
+      "observed": 8143,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2018-12-01",
-    "end": "2022-12-01",
-    "matureDate": "2025-10-01",
-    "status": "available",
-    "months": 48,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      7,
-      6,
-      2,
-      1,
-      0,
-      1,
-      3,
-      0,
-      1,
-      2,
-      0,
-      5,
-      1,
-      4,
-      7,
-      3,
-      4,
-      4,
-      2,
-      5,
-      4,
-      4,
-      6,
-      1,
-      2,
-      6,
-      7,
-      3,
-      8,
-      4,
-      3,
-      5,
-      6,
-      3,
-      4,
-      7,
-      13,
-      6,
-      2,
-      1,
-      6,
-      3,
-      2,
-      0,
-      6,
-      7,
-      5,
-      5
-    ],
-    "citationsByYearOffset": [
-      4,
-      42,
-      336,
-      896,
-      1205,
-      1297,
-      458,
-      282
-    ]
+  "affiliations": {
+    "papers": 366,
+    "us": {
+      "mapped": 228,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 156
+        },
+        {
+          "name": "Cornell University, New York",
+          "papers": 35
+        },
+        {
+          "name": "Planetary Science Institute, Arizona",
+          "papers": 34
+        }
+      ]
+    },
+    "world": {
+      "mapped": 320,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 156
+        },
+        {
+          "name": "Institut de Physique du Globe de Paris",
+          "papers": 125
+        },
+        {
+          "name": "Eidgenossische Technische Hochschule, Zurich, Switzerland",
+          "papers": 86
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2020NatGe..13..183B",
@@ -162,64 +134,64 @@
   "ranks": {
     "full": {
       "bins": [
-        13.205,
-        18.881,
-        25.805,
-        24.017,
-        15.72,
-        22.405,
-        26.613,
-        26.885,
-        35.348,
-        48.12
+        14.069,
+        19.254,
+        25.521,
+        24.25,
+        15.518,
+        22.114,
+        26.105,
+        27.473,
+        35.823,
+        47.874
       ],
       "top1": 9
     },
     "window": {
       "bins": [
-        8.625,
-        15.696,
-        20.447,
-        19.954,
-        18.884,
-        20.357,
-        13.356,
-        18.465,
-        25.922,
-        25.294
+        9.51,
+        16.47,
+        20.789,
+        18.485,
+        19.307,
+        19.824,
+        13.07,
+        19.75,
+        25.745,
+        25.05
       ],
       "top1": 7
     },
     "lifetime": {
       "bins": [
-        57.276,
-        55.456,
-        46.437,
-        41.211,
-        42.333,
-        33.425,
-        29.863,
-        24.188,
-        16.812,
+        59.106,
+        54.65,
+        45.664,
+        42.047,
+        41.637,
+        31.989,
+        30.111,
+        25.941,
+        15.856,
         19
       ],
       "top1": 1
     }
   },
   "full": {
-    "papers": 257,
+    "papers": 258,
     "outputBasis": "measured",
-    "citations": 5692,
-    "top10": 57.733,
-    "top10ShareOfDivision": 0.05283,
+    "citations": 5718,
+    "top10": 47.374,
+    "top10ShareOfDivision": 0.04365,
     "top1": 9,
-    "top1ShareOfDivision": 0.08236,
+    "top1ShareOfDivision": 0.08293,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 0.014,
-      "yearsFromFormulation": 6.281,
-      "bibcode": "2018SSRv..214..132D",
-      "date": "2018-12-00"
+      "yearsFromScienceStart": 0.099,
+      "yearsFromFormulation": 6.366,
+      "bibcode": "2019SSRv..215....3S",
+      "date": "2019-01-00"
     },
     "status": "available",
     "bounds": {
@@ -230,22 +202,27 @@
       "months": 61,
       "citationBuckets": 9
     },
+    "indices": {
+      "h": 37,
+      "g": 61,
+      "m": 7.278
+    },
     "spread": {
-      "mean": 22.148,
+      "mean": 22.163,
       "median": 12,
       "uncited": 7,
-      "i10": 148,
+      "i10": 149,
       "i100": 9
     }
   },
   "window": {
-    "papers": 187,
+    "papers": 188,
     "outputBasis": "measured",
-    "citations": 4520,
-    "top10": 32.95,
-    "top10ShareOfDivision": 0.06826,
+    "citations": 4544,
+    "top10": 25.05,
+    "top10ShareOfDivision": 0.05232,
     "top1": 7,
-    "top1ShareOfDivision": 0.14502,
+    "top1ShareOfDivision": 0.1462,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.099,
@@ -262,20 +239,25 @@
       "months": 48,
       "citationBuckets": 8
     },
+    "indices": {
+      "h": 34,
+      "g": 58,
+      "m": 8.5
+    },
     "spread": {
-      "mean": 24.171,
+      "mean": 24.17,
       "median": 12,
       "uncited": 4,
-      "i10": 110,
+      "i10": 111,
       "i100": 8
     }
   },
   "lifetime": {
     "papers": 366,
     "outputBasis": "measured",
-    "citations": 8078,
-    "top10": 58.933,
-    "top10ShareOfDivision": 0.0433,
+    "citations": 8143,
+    "top10": 18.5,
+    "top10ShareOfDivision": 0.01182,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -286,18 +268,18 @@
       "date": "2019-01-00"
     },
     "spread": {
-      "mean": 22.071,
-      "median": 9,
-      "uncited": 43,
-      "i10": 182,
+      "mean": 22.249,
+      "median": 10,
+      "uncited": 42,
+      "i10": 184,
       "i100": 15
     }
   },
   "query": {
     "arms": "((=abs:\"Interior Exploration using Seismic Investigations, Geodesy and Heat Transport\" OR =abs:\"InSight lander\" OR =abs:\"InSight mission\" OR =abs:\"InSight landing\" OR =abs:\"Mars InSight\" OR =abs:\"NASA InSight\" OR =abs:\"InSight spacecraft\" OR =abs:\"InSight seismometer\" OR =abs:\"InSight seismometers\" OR =abs:\"InSight SEIS\" OR =abs:\"InSight HP3\" OR =abs:\"InSight sols\" OR ((=abs:\"InSight seismic\" OR =abs:\"InSight data\" OR =abs:\"InSight observations\" OR =abs:\"InSight measurements\" OR =abs:\"InSight pressure\" OR =abs:\"InSight wind\" OR =abs:\"InSight site\" OR =abs:\"InSight sites\" OR =abs:\"InSight probe\" OR =abs:\"InSight operations\" OR =abs:\"InSight team\" OR abs:SEIS OR abs:HP3 OR abs:APSS) AND (abs:Mars OR abs:martian OR abs:marsquake OR =abs:marsquakes)) OR ((abs:marsquake OR =abs:marsquakes) AND (abs:InSight OR abs:SEIS OR abs:seismometer OR abs:recorded OR abs:detected OR abs:S1222a)) OR ((abs:InSight AND (abs:Mars OR abs:martian OR abs:marsquake OR =abs:marsquakes) AND (abs:seismic OR abs:seismometer OR abs:RISE OR =abs:\"Rotation and Interior Structure Experiment\" OR =abs:\"Seismic Experiment for Interior Structure\" OR =abs:\"Heat Flow and Physical Properties Package\" OR =abs:\"Auxiliary Payload Sensor Subsystem\" OR =abs:\"Instrument Deployment Camera\" OR =abs:\"Instrument Context Camera\")) NOT =abs:insights)))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2018-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Interior+Exploration+using+Seismic+Investigations%2C+Geodesy+and+Heat+Transport%22+OR+%3Dabs%3A%22InSight+lander%22+OR+%3Dabs%3A%22InSight+mission%22+OR+%3Dabs%3A%22InSight+landing%22+OR+%3Dabs%3A%22Mars+InSight%22+OR+%3Dabs%3A%22NASA+InSight%22+OR+%3Dabs%3A%22InSight+spacecraft%22+OR+%3Dabs%3A%22InSight+seismometer%22+OR+%3Dabs%3A%22InSight+seismometers%22+OR+%3Dabs%3A%22InSight+SEIS%22+OR+%3Dabs%3A%22InSight+HP3%22+OR+%3Dabs%3A%22InSight+sols%22+OR+%28%28%3Dabs%3A%22InSight+seismic%22+OR+%3Dabs%3A%22InSight+data%22+OR+%3Dabs%3A%22InSight+observations%22+OR+%3Dabs%3A%22InSight+measurements%22+OR+%3Dabs%3A%22InSight+pressure%22+OR+%3Dabs%3A%22InSight+wind%22+OR+%3Dabs%3A%22InSight+site%22+OR+%3Dabs%3A%22InSight+sites%22+OR+%3Dabs%3A%22InSight+probe%22+OR+%3Dabs%3A%22InSight+operations%22+OR+%3Dabs%3A%22InSight+team%22+OR+abs%3ASEIS+OR+abs%3AHP3+OR+abs%3AAPSS%29+AND+%28abs%3AMars+OR+abs%3Amartian+OR+abs%3Amarsquake+OR+%3Dabs%3Amarsquakes%29%29+OR+%28%28abs%3Amarsquake+OR+%3Dabs%3Amarsquakes%29+AND+%28abs%3AInSight+OR+abs%3ASEIS+OR+abs%3Aseismometer+OR+abs%3Arecorded+OR+abs%3Adetected+OR+abs%3AS1222a%29%29+OR+%28%28abs%3AInSight+AND+%28abs%3AMars+OR+abs%3Amartian+OR+abs%3Amarsquake+OR+%3Dabs%3Amarsquakes%29+AND+%28abs%3Aseismic+OR+abs%3Aseismometer+OR+abs%3ARISE+OR+%3Dabs%3A%22Rotation+and+Interior+Structure+Experiment%22+OR+%3Dabs%3A%22Seismic+Experiment+for+Interior+Structure%22+OR+%3Dabs%3A%22Heat+Flow+and+Physical+Properties+Package%22+OR+%3Dabs%3A%22Auxiliary+Payload+Sensor+Subsystem%22+OR+%3Dabs%3A%22Instrument+Deployment+Camera%22+OR+%3Dabs%3A%22Instrument+Context+Camera%22%29%29+NOT+%3Dabs%3Ainsights%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:07:31.509403+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2018-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Interior+Exploration+using+Seismic+Investigations%2C+Geodesy+and+Heat+Transport%22+OR+%3Dabs%3A%22InSight+lander%22+OR+%3Dabs%3A%22InSight+mission%22+OR+%3Dabs%3A%22InSight+landing%22+OR+%3Dabs%3A%22Mars+InSight%22+OR+%3Dabs%3A%22NASA+InSight%22+OR+%3Dabs%3A%22InSight+spacecraft%22+OR+%3Dabs%3A%22InSight+seismometer%22+OR+%3Dabs%3A%22InSight+seismometers%22+OR+%3Dabs%3A%22InSight+SEIS%22+OR+%3Dabs%3A%22InSight+HP3%22+OR+%3Dabs%3A%22InSight+sols%22+OR+%28%28%3Dabs%3A%22InSight+seismic%22+OR+%3Dabs%3A%22InSight+data%22+OR+%3Dabs%3A%22InSight+observations%22+OR+%3Dabs%3A%22InSight+measurements%22+OR+%3Dabs%3A%22InSight+pressure%22+OR+%3Dabs%3A%22InSight+wind%22+OR+%3Dabs%3A%22InSight+site%22+OR+%3Dabs%3A%22InSight+sites%22+OR+%3Dabs%3A%22InSight+probe%22+OR+%3Dabs%3A%22InSight+operations%22+OR+%3Dabs%3A%22InSight+team%22+OR+abs%3ASEIS+OR+abs%3AHP3+OR+abs%3AAPSS%29+AND+%28abs%3AMars+OR+abs%3Amartian+OR+abs%3Amarsquake+OR+%3Dabs%3Amarsquakes%29%29+OR+%28%28abs%3Amarsquake+OR+%3Dabs%3Amarsquakes%29+AND+%28abs%3AInSight+OR+abs%3ASEIS+OR+abs%3Aseismometer+OR+abs%3Arecorded+OR+abs%3Adetected+OR+abs%3AS1222a%29%29+OR+%28%28abs%3AInSight+AND+%28abs%3AMars+OR+abs%3Amartian+OR+abs%3Amarsquake+OR+%3Dabs%3Amarsquakes%29+AND+%28abs%3Aseismic+OR+abs%3Aseismometer+OR+abs%3ARISE+OR+%3Dabs%3A%22Rotation+and+Interior+Structure+Experiment%22+OR+%3Dabs%3A%22Seismic+Experiment+for+Interior+Structure%22+OR+%3Dabs%3A%22Heat+Flow+and+Physical+Properties+Package%22+OR+%3Dabs%3A%22Auxiliary+Payload+Sensor+Subsystem%22+OR+%3Dabs%3A%22Instrument+Deployment+Camera%22+OR+%3Dabs%3A%22Instrument+Context+Camera%22%29%29+NOT+%3Dabs%3Ainsights%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:49:41.264934+00:00",
     "reconciliation": {
       "adsReturned": 389,
       "curatedOut": 30,
@@ -393,14 +375,6 @@
         "date": "2026-09-08"
       },
       {
-        "bibcode": "2019E&PSL.505...51S",
-        "doi": "10.1016/j.epsl.2018.10.008",
-        "title": "Recent seismicity in Valles Marineris, Mars: Insights from young faults, landslides, boulder falls and possible mud volcanoes",
-        "reason": "Orbital study of Valles Marineris; mentions InSight only as a future seismometer.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
-      {
         "bibcode": "2021E&PSL.57117109H",
         "doi": "10.1016/j.epsl.2021.117109",
         "title": "Enhanced water loss from the martian atmosphere during a regional-scale dust storm and implications for long-term water loss",
@@ -428,7 +402,7 @@
         "bibcode": "2023SeiRL..94.2655G",
         "doi": "10.1785/0220230124",
         "title": "Identification of Repeating Earthquakes: Controversy and Rectification",
-        "reason": "Earthquake study; mentions marsquakes only as a possible future application.",
+        "reason": "Earthquake study that does not name InSight; \"insight\" is an ordinary word here.",
         "authority": "agent",
         "date": "2026-09-08"
       },
@@ -639,6 +613,14 @@
         "reason": "Instrument description of the TRACERS fluxgate magnetometer; InSight is mentioned only as electronics heritage.",
         "authority": "agent",
         "date": "2026-10-03"
+      },
+      {
+        "bibcode": "2024AdAnS.179..681A",
+        "doi": "10.1007/978-3-031-51928-4_40",
+        "title": "a Gps-Free Navigation System for Earth-Orbiting Small Satellites",
+        "reason": "Navigation study for Earth-orbiting small satellites; \"insight\" is an ordinary word here.",
+        "authority": "agent",
+        "date": "2026-10-26"
       }
     ]
   },
@@ -659,7 +641,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 277
+      "citations": 278
     },
     {
       "bibcode": "2021Sci...373..443S",
@@ -668,7 +650,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 274
+      "citations": 276
     },
     {
       "bibcode": "2020NatGe..13..213L",
@@ -686,7 +668,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 229
+      "citations": 230
     },
     {
       "bibcode": "2020NatGe..13..205G",
@@ -704,7 +686,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 198
+      "citations": 199
     },
     {
       "bibcode": "2021Sci...373..434K",
@@ -731,7 +713,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 113
+      "citations": 115
     },
     {
       "bibcode": "2021PEPI..31006595C",
@@ -758,7 +740,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2023,
-      "citations": 108
+      "citations": 109
     },
     {
       "bibcode": "2020SSRv..216...89N",
@@ -767,7 +749,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 103
+      "citations": 105
     },
     {
       "bibcode": "2019SSRv..215....3S",
@@ -794,7 +776,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 92
+      "citations": 93
     },
     {
       "bibcode": "2023Natur.622..718K",
@@ -803,7 +785,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2023,
-      "citations": 92
+      "citations": 93
     },
     {
       "bibcode": "2020NatGe..13..199J",

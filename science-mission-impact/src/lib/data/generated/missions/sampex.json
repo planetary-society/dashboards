@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 127.8,
+    "lcc": 50,
     "type": "In-Situ Probe",
+    "program": "Small-class Explorers (SMEX)",
+    "target": null,
+    "launchVehicle": "Scout",
     "dates": {
       "formulation": "1989-04-04",
       "launch": "1992-07-03",
@@ -22,13 +26,13 @@
     "h": 55,
     "m": 1.618,
     "i100": 24,
-    "g": 89,
-    "tori": 54.658,
+    "g": 90,
+    "tori": 54.722,
     "riq": 217
   },
   "facts": {
     "papers": 214,
-    "citations": 9423,
+    "citations": 9436,
     "publicationYears": [
       1993,
       2026
@@ -124,7 +128,7 @@
       301,
       325,
       278,
-      271,
+      272,
       298,
       270,
       318,
@@ -141,70 +145,52 @@
       370,
       413,
       437,
-      253
+      265
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 9423,
-      "observed": 9423,
+      "expected": 9436,
+      "observed": 9436,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "1992-11-01",
-    "end": "1995-10-01",
-    "matureDate": "1998-10-01",
-    "status": "available",
-    "months": 35,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      6,
-      0,
-      0,
-      0,
-      1,
-      1,
-      0,
-      2,
-      0,
-      0,
-      1,
-      1,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      2,
-      0,
-      3,
-      0,
-      1,
-      1,
-      1,
-      1,
-      1,
-      0
-    ],
-    "citationsByYearOffset": [
-      0,
-      31,
-      22,
-      75,
-      111,
-      31,
-      26
-    ]
+  "affiliations": {
+    "papers": 214,
+    "us": {
+      "mapped": 127,
+      "top": [
+        {
+          "name": "Aerospace Corporation, California",
+          "papers": 56
+        },
+        {
+          "name": "University of Colorado, Boulder",
+          "papers": 47
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 40
+        }
+      ]
+    },
+    "world": {
+      "mapped": 167,
+      "top": [
+        {
+          "name": "Aerospace Corporation, California",
+          "papers": 56
+        },
+        {
+          "name": "University of Colorado, Boulder",
+          "papers": 47
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 40
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2006JGRA..11111214S",
@@ -223,16 +209,16 @@
   "ranks": {
     "full": {
       "bins": [
-        25.126,
-        13.172,
+        25.143,
+        13.176,
         13.166,
-        11.566,
-        14.387,
-        9.042,
-        10.803,
-        5.738,
-        13.941,
-        12.059
+        11.592,
+        14.399,
+        9.067,
+        10.789,
+        5.727,
+        13.903,
+        12.036
       ],
       "top1": 0
     },
@@ -240,8 +226,8 @@
       "bins": [
         2,
         2.388,
-        1.41,
-        2.202,
+        1.411,
+        2.201,
         3.065,
         2.306,
         0.63,
@@ -253,16 +239,16 @@
     },
     "lifetime": {
       "bins": [
-        12.009,
-        20.507,
-        19.527,
-        14.748,
-        17.077,
-        19.348,
-        16.821,
-        18.386,
-        37.579,
-        38
+        11.811,
+        21.127,
+        19.706,
+        14.305,
+        17.19,
+        19.448,
+        16.887,
+        18.124,
+        37.706,
+        37.696
       ],
       "top1": 3
     }
@@ -271,8 +257,8 @@
     "papers": 129,
     "outputBasis": "measured",
     "citations": 1174,
-    "top10": 12.975,
-    "top10ShareOfDivision": 0.009,
+    "top10": 10.036,
+    "top10ShareOfDivision": 0.00696,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -291,6 +277,11 @@
       "months": 164,
       "citationBuckets": 18
     },
+    "indices": {
+      "h": 20,
+      "g": 25,
+      "m": 1.464
+    },
     "spread": {
       "mean": 9.101,
       "median": 6,
@@ -303,16 +294,16 @@
     "papers": 23,
     "outputBasis": "measured",
     "citations": 296,
-    "top10": 3,
-    "top10ShareOfDivision": 0.00676,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
-      "state": "reached",
-      "yearsFromScienceStart": 0.58,
-      "yearsFromFormulation": 4.074,
-      "bibcode": "1993ITGRS..31..531B",
-      "date": "1993-05-00"
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
     },
     "status": "available",
     "bounds": {
@@ -322,6 +313,11 @@
       "status": "available",
       "months": 35,
       "citationBuckets": 7
+    },
+    "indices": {
+      "h": 11,
+      "g": 16,
+      "m": 3.776
     },
     "spread": {
       "mean": 12.87,
@@ -334,9 +330,9 @@
   "lifetime": {
     "papers": 214,
     "outputBasis": "measured",
-    "citations": 9423,
-    "top10": 18.067,
-    "top10ShareOfDivision": 0.01153,
+    "citations": 9436,
+    "top10": 32.363,
+    "top10ShareOfDivision": 0.01766,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -347,18 +343,18 @@
       "date": "1993-05-00"
     },
     "spread": {
-      "mean": 44.033,
-      "median": 21,
-      "uncited": 8,
+      "mean": 44.093,
+      "median": 21.5,
+      "uncited": 7,
       "i10": 148,
       "i100": 24
     }
   },
   "query": {
     "arms": "(((abs:SAMPEX AND abs:(particle OR particles OR electron OR electrons OR proton OR protons OR ion OR ions OR cosmic OR magnetosphere OR magnetospheric OR radiation OR spacecraft OR satellite OR precipitation OR solar)) OR =abs:\"Solar Anomalous and Magnetospheric Particle Explorer\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1992-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ASAMPEX+AND+abs%3A%28particle+OR+particles+OR+electron+OR+electrons+OR+proton+OR+protons+OR+ion+OR+ions+OR+cosmic+OR+magnetosphere+OR+magnetospheric+OR+radiation+OR+spacecraft+OR+satellite+OR+precipitation+OR+solar%29%29+OR+%3Dabs%3A%22Solar+Anomalous+and+Magnetospheric+Particle+Explorer%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1992-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:12:29.162763+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1992-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ASAMPEX+AND+abs%3A%28particle+OR+particles+OR+electron+OR+electrons+OR+proton+OR+protons+OR+ion+OR+ions+OR+cosmic+OR+magnetosphere+OR+magnetospheric+OR+radiation+OR+spacecraft+OR+satellite+OR+precipitation+OR+solar%29%29+OR+%3Dabs%3A%22Solar+Anomalous+and+Magnetospheric+Particle+Explorer%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1992-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:00:54.249384+00:00",
     "reconciliation": {
       "adsReturned": 219,
       "curatedOut": 5,
@@ -512,7 +508,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 174
+      "citations": 175
     },
     {
       "bibcode": "2006JGRA..11112216B",
@@ -530,7 +526,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 164
+      "citations": 166
     },
     {
       "bibcode": "2009JGRA..114.3222M",
@@ -548,7 +544,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 147
+      "citations": 148
     },
     {
       "bibcode": "2008JGRA..113.3S08F",

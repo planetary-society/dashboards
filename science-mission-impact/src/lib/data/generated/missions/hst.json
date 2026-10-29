@@ -1,6 +1,6 @@
 {
   "id": "hst",
-  "name": "HST",
+  "name": "Hubble",
   "fullName": "Hubble Space Telescope",
   "division": "astrophysics",
   "divisionName": "Astrophysics",
@@ -9,7 +9,11 @@
     "status": "Extended Mission",
     "failed": false,
     "cost": 13890.2,
+    "lcc": 4240,
     "type": "Pointed Observatory",
+    "program": "Great Observatories",
+    "target": "Universe",
+    "launchVehicle": "Shuttle",
     "dates": {
       "formulation": "1977-10-01",
       "launch": "1990-04-25",
@@ -19,16 +23,16 @@
     }
   },
   "indices": {
-    "h": 350,
-    "m": 9.459,
-    "i100": 2784,
-    "g": 591,
-    "tori": 4194.889,
-    "riq": 1750
+    "h": 354,
+    "m": 9.568,
+    "i100": 2816,
+    "g": 596,
+    "tori": 4265.549,
+    "riq": 1765
   },
   "facts": {
-    "papers": 18904,
-    "citations": 1164186,
+    "papers": 18915,
+    "citations": 1179261,
     "publicationYears": [
       1990,
       2026
@@ -111,7 +115,7 @@
       661,
       702,
       724,
-      593
+      604
     ],
     "citations": [
       15,
@@ -130,273 +134,72 @@
       23318,
       25165,
       25696,
-      28483,
-      31969,
-      31468,
-      33864,
-      34286,
-      36246,
-      41397,
+      28484,
+      31968,
+      31517,
+      33954,
+      34346,
+      36249,
+      41401,
       41001,
       42279,
-      43714,
-      44602,
-      47977,
+      43715,
+      44605,
+      47984,
       49560,
-      50519,
+      50521,
       50322,
       51105,
-      54017,
+      54018,
       57404,
-      69614,
-      74765,
-      71600
+      69620,
+      75056,
+      86158
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 1164186,
-      "observed": 1164186,
+      "expected": 1179261,
+      "observed": 1179261,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "1990-05-01",
-    "end": "2007-05-01",
-    "matureDate": "2010-10-01",
-    "status": "available",
-    "months": 204,
-    "citationBuckets": 21,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      4,
-      8,
-      12,
-      2,
-      0,
-      2,
-      5,
-      2,
-      15,
-      5,
-      15,
-      8,
-      0,
-      3,
-      3,
-      21,
-      2,
-      6,
-      4,
-      4,
-      14,
-      3,
-      5,
-      3,
-      7,
-      8,
-      9,
-      5,
-      14,
-      9,
-      12,
-      10,
-      19,
-      10,
-      13,
-      23,
-      20,
-      14,
-      9,
-      15,
-      22,
-      19,
-      15,
-      14,
-      25,
-      21,
-      24,
-      17,
-      25,
-      16,
-      22,
-      14,
-      12,
-      24,
-      48,
-      15,
-      39,
-      30,
-      37,
-      20,
-      29,
-      31,
-      34,
-      32,
-      32,
-      30,
-      16,
-      26,
-      51,
-      26,
-      26,
-      34,
-      27,
-      33,
-      33,
-      44,
-      38,
-      42,
-      33,
-      30,
-      48,
-      48,
-      36,
-      23,
-      53,
-      33,
-      50,
-      36,
-      33,
-      37,
-      55,
-      40,
-      74,
-      33,
-      47,
-      40,
-      51,
-      35,
-      50,
-      40,
-      41,
-      33,
-      45,
-      38,
-      73,
-      44,
-      56,
-      48,
-      35,
-      30,
-      47,
-      47,
-      31,
-      57,
-      53,
-      64,
-      50,
-      60,
-      49,
-      38,
-      43,
-      39,
-      38,
-      48,
-      54,
-      64,
-      37,
-      45,
-      40,
-      44,
-      58,
-      47,
-      50,
-      41,
-      48,
-      48,
-      46,
-      46,
-      43,
-      45,
-      58,
-      44,
-      56,
-      34,
-      64,
-      48,
-      55,
-      49,
-      49,
-      32,
-      49,
-      66,
-      40,
-      40,
-      41,
-      56,
-      32,
-      50,
-      53,
-      37,
-      46,
-      54,
-      41,
-      43,
-      84,
-      44,
-      40,
-      34,
-      42,
-      35,
-      42,
-      51,
-      41,
-      44,
-      32,
-      42,
-      56,
-      48,
-      51,
-      45,
-      43,
-      45,
-      49,
-      32,
-      42,
-      49,
-      58,
-      45,
-      57,
-      35,
-      58,
-      47,
-      42,
-      49,
-      35,
-      50,
-      35,
-      42,
-      54,
-      46,
-      58,
-      37,
-      35,
-      56
-    ],
-    "citationsByYearOffset": [
-      15,
-      175,
-      469,
-      1145,
-      1819,
-      2925,
-      5142,
-      6717,
-      8625,
-      11688,
-      11163,
-      12398,
-      10584,
-      12084,
-      12498,
-      11989,
-      12624,
-      11368,
-      7724,
-      4569,
-      1093
-    ]
+  "affiliations": {
+    "papers": 18915,
+    "us": {
+      "mapped": 13429,
+      "top": [
+        {
+          "name": "Space Telescope Science Institute, Baltimore, Maryland",
+          "papers": 4240
+        },
+        {
+          "name": "University of Arizona",
+          "papers": 1954
+        },
+        {
+          "name": "California Institute of Technology",
+          "papers": 1910
+        }
+      ]
+    },
+    "world": {
+      "mapped": 17556,
+      "top": [
+        {
+          "name": "Space Telescope Science Institute, Baltimore, Maryland",
+          "papers": 4240
+        },
+        {
+          "name": "Max Planck Society for the Advancement of Science, Germany",
+          "papers": 2142
+        },
+        {
+          "name": "University of Arizona",
+          "papers": 1954
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "1998ApJ...500..525S",
@@ -409,63 +212,63 @@
     ],
     "authorCount": 3,
     "year": 1998,
-    "citations": 14221
+    "citations": 14325
   },
   "ranks": {
     "full": {
       "bins": [
-        1541.063,
-        1567.53,
-        1629.471,
-        1665.742,
-        1675.549,
-        1674.944,
-        1733.201,
-        1792.455,
-        1762.103,
-        1842.943
+        1543.374,
+        1566.484,
+        1628.019,
+        1669.735,
+        1673.894,
+        1675.784,
+        1733.53,
+        1783.964,
+        1768.091,
+        1842.125
       ],
-      "top1": 186.209
+      "top1": 186.78
     },
     "window": {
       "bins": [
-        847.605,
-        826.742,
-        791.703,
-        807.15,
-        739.407,
-        711.918,
-        663.211,
-        649.031,
-        576.164,
-        528.069
+        848.006,
+        826.791,
+        791.236,
+        808.187,
+        739.389,
+        712.395,
+        661.824,
+        649.755,
+        576.041,
+        527.376
       ],
-      "top1": 41.98
+      "top1": 42.288
     },
     "lifetime": {
       "bins": [
-        1360.718,
-        1475.509,
-        1642.12,
-        1730.145,
-        1998.939,
-        1907.976,
-        2117.167,
-        2168.239,
-        2227.993,
-        2275.194
+        1369.863,
+        1467.251,
+        1645.262,
+        1740.264,
+        1988.678,
+        1911.007,
+        2125.41,
+        2155.127,
+        2228.372,
+        2283.766
       ],
-      "top1": 228.74
+      "top1": 227.814
     }
   },
   "full": {
     "papers": 16885,
     "outputBasis": "measured",
-    "citations": 392548,
-    "top10": 1710.125,
-    "top10ShareOfDivision": 0.34377,
-    "top1": 163.765,
-    "top1ShareOfDivision": 0.3292,
+    "citations": 393845,
+    "top10": 1651.002,
+    "top10ShareOfDivision": 0.33189,
+    "top1": 164.446,
+    "top1ShareOfDivision": 0.33058,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.099,
@@ -482,22 +285,27 @@
       "months": 404,
       "citationBuckets": 37
     },
+    "indices": {
+      "h": 158,
+      "g": 259,
+      "m": 4.693
+    },
     "spread": {
-      "mean": 23.248,
-      "median": 13,
+      "mean": 23.325,
+      "median": 14,
       "uncited": 784,
-      "i10": 10541,
-      "i100": 430
+      "i10": 10549,
+      "i100": 431
     }
   },
   "window": {
     "papers": 7141,
     "outputBasis": "measured",
-    "citations": 146814,
-    "top10": 572.418,
-    "top10ShareOfDivision": 0.2959,
-    "top1": 38.98,
-    "top1ShareOfDivision": 0.2015,
+    "citations": 146847,
+    "top10": 493.767,
+    "top10ShareOfDivision": 0.25526,
+    "top1": 39.288,
+    "top1ShareOfDivision": 0.2031,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.099,
@@ -514,8 +322,13 @@
       "months": 204,
       "citationBuckets": 21
     },
+    "indices": {
+      "h": 108,
+      "g": 167,
+      "m": 6.353
+    },
     "spread": {
-      "mean": 20.559,
+      "mean": 20.564,
       "median": 12,
       "uncited": 492,
       "i10": 4208,
@@ -523,11 +336,11 @@
     }
   },
   "lifetime": {
-    "papers": 18904,
+    "papers": 18915,
     "outputBasis": "measured",
-    "citations": 1164186,
-    "top10": 1777.807,
-    "top10ShareOfDivision": 0.32156,
+    "citations": 1179261,
+    "top10": 2060.235,
+    "top10ShareOfDivision": 0.32452,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -538,26 +351,26 @@
       "date": "1990-05-00"
     },
     "spread": {
-      "mean": 61.584,
+      "mean": 62.345,
       "median": 30,
-      "uncited": 750,
-      "i10": 14813,
-      "i100": 2784
+      "uncited": 702,
+      "i10": 14922,
+      "i100": 2816
     }
   },
   "query": {
     "arms": "((=abs:(\"Hubble Space Telescope\" OR \"Hubble Space\" OR \"Hubble telescope\" OR \"Hubble imaging\" OR \"Hubble images\" OR \"Hubble image\" OR \"Hubble imagery\" OR \"Hubble photometry\" OR \"Hubble archive\" OR \"Hubble Legacy\" OR \"Hubble Deep Field\" OR \"Hubble Deep Fields\" OR \"Hubble Ultra Deep Field\" OR \"Hubble Ultradeep Field\" OR \"Hubble eXtreme Deep Field\" OR \"Hubble Frontier Fields\" OR \"Hubble Frontier Field\" OR \"Hubble Frontiers Fields\" OR \"Hubble Source Catalog\" OR \"Hubble Source Catalogue\" OR \"Hubble Key Project\" OR \"Hubble ultraviolet\" OR \"Hubble UV Legacy\" OR \"Hubble UV Globular Cluster\" OR \"Hubble Spectroscopic Legacy\" OR \"Hubble Tarantula Treasury\" OR \"Carnegie Hubble Program\" OR \"Galaxy zoo: Hubble\" OR \"Lensing and Supernova survey with Hubble\" OR \"Lensing and Supernovae survey with Hubble\" OR \"Lensing and Supernova with Hubble\" OR \"Hubble WFC3\" OR \"Hubble STIS\" OR \"Hubble ACS\" OR \"Hubble COS\" OR \"Hubble Wide Field Camera\" OR \"Hubble and Spitzer\" OR \"Hubble and James Webb\" OR \"Space Telescope Imaging Spectrograph\" OR \"Advanced Camera for Surveys\" OR \"Wide Field Camera 3\" OR \"Wide Field and Planetary Camera\" OR \"Near Infrared Camera and Multi-Object Spectrometer\" OR \"Cosmic Origins Spectrograph\" OR \"Goddard High Resolution Spectrograph\") OR ((abs:HST OR abs:STIS OR abs:NICMOS OR abs:WFPC OR abs:WFPC2 OR abs:WFC3) AND (abs:telescope OR abs:imaging OR abs:images OR abs:observations OR abs:observed OR abs:photometry OR abs:spectroscopy OR abs:spectra OR abs:spectrum OR abs:ultraviolet OR abs:UV OR abs:optical OR abs:infrared OR abs:archival OR abs:survey OR abs:resolution OR abs:galaxies OR abs:galaxy OR abs:stars OR abs:star OR abs:cluster OR abs:clusters) AND collection:astronomy) OR (abs:GHRS AND (abs:ultraviolet OR abs:UV OR abs:spectrograph) AND collection:astronomy AND NOT (=abs:\"giant HII\" OR =abs:\"giant H II\")) OR facility:HST))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1990-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Hubble+Space+Telescope%22+OR+%22Hubble+Space%22+OR+%22Hubble+telescope%22+OR+%22Hubble+imaging%22+OR+%22Hubble+images%22+OR+%22Hubble+image%22+OR+%22Hubble+imagery%22+OR+%22Hubble+photometry%22+OR+%22Hubble+archive%22+OR+%22Hubble+Legacy%22+OR+%22Hubble+Deep+Field%22+OR+%22Hubble+Deep+Fields%22+OR+%22Hubble+Ultra+Deep+Field%22+OR+%22Hubble+Ultradeep+Field%22+OR+%22Hubble+eXtreme+Deep+Field%22+OR+%22Hubble+Frontier+Fields%22+OR+%22Hubble+Frontier+Field%22+OR+%22Hubble+Frontiers+Fields%22+OR+%22Hubble+Source+Catalog%22+OR+%22Hubble+Source+Catalogue%22+OR+%22Hubble+Key+Project%22+OR+%22Hubble+ultraviolet%22+OR+%22Hubble+UV+Legacy%22+OR+%22Hubble+UV+Globular+Cluster%22+OR+%22Hubble+Spectroscopic+Legacy%22+OR+%22Hubble+Tarantula+Treasury%22+OR+%22Carnegie+Hubble+Program%22+OR+%22Galaxy+zoo%3A+Hubble%22+OR+%22Lensing+and+Supernova+survey+with+Hubble%22+OR+%22Lensing+and+Supernovae+survey+with+Hubble%22+OR+%22Lensing+and+Supernova+with+Hubble%22+OR+%22Hubble+WFC3%22+OR+%22Hubble+STIS%22+OR+%22Hubble+ACS%22+OR+%22Hubble+COS%22+OR+%22Hubble+Wide+Field+Camera%22+OR+%22Hubble+and+Spitzer%22+OR+%22Hubble+and+James+Webb%22+OR+%22Space+Telescope+Imaging+Spectrograph%22+OR+%22Advanced+Camera+for+Surveys%22+OR+%22Wide+Field+Camera+3%22+OR+%22Wide+Field+and+Planetary+Camera%22+OR+%22Near+Infrared+Camera+and+Multi-Object+Spectrometer%22+OR+%22Cosmic+Origins+Spectrograph%22+OR+%22Goddard+High+Resolution+Spectrograph%22%29+OR+%28%28abs%3AHST+OR+abs%3ASTIS+OR+abs%3ANICMOS+OR+abs%3AWFPC+OR+abs%3AWFPC2+OR+abs%3AWFC3%29+AND+%28abs%3Atelescope+OR+abs%3Aimaging+OR+abs%3Aimages+OR+abs%3Aobservations+OR+abs%3Aobserved+OR+abs%3Aphotometry+OR+abs%3Aspectroscopy+OR+abs%3Aspectra+OR+abs%3Aspectrum+OR+abs%3Aultraviolet+OR+abs%3AUV+OR+abs%3Aoptical+OR+abs%3Ainfrared+OR+abs%3Aarchival+OR+abs%3Asurvey+OR+abs%3Aresolution+OR+abs%3Agalaxies+OR+abs%3Agalaxy+OR+abs%3Astars+OR+abs%3Astar+OR+abs%3Acluster+OR+abs%3Aclusters%29+AND+collection%3Aastronomy%29+OR+%28abs%3AGHRS+AND+%28abs%3Aultraviolet+OR+abs%3AUV+OR+abs%3Aspectrograph%29+AND+collection%3Aastronomy+AND+NOT+%28%3Dabs%3A%22giant+HII%22+OR+%3Dabs%3A%22giant+H+II%22%29%29+OR+facility%3AHST%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1990-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:15:22.927136+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1990-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Hubble+Space+Telescope%22+OR+%22Hubble+Space%22+OR+%22Hubble+telescope%22+OR+%22Hubble+imaging%22+OR+%22Hubble+images%22+OR+%22Hubble+image%22+OR+%22Hubble+imagery%22+OR+%22Hubble+photometry%22+OR+%22Hubble+archive%22+OR+%22Hubble+Legacy%22+OR+%22Hubble+Deep+Field%22+OR+%22Hubble+Deep+Fields%22+OR+%22Hubble+Ultra+Deep+Field%22+OR+%22Hubble+Ultradeep+Field%22+OR+%22Hubble+eXtreme+Deep+Field%22+OR+%22Hubble+Frontier+Fields%22+OR+%22Hubble+Frontier+Field%22+OR+%22Hubble+Frontiers+Fields%22+OR+%22Hubble+Source+Catalog%22+OR+%22Hubble+Source+Catalogue%22+OR+%22Hubble+Key+Project%22+OR+%22Hubble+ultraviolet%22+OR+%22Hubble+UV+Legacy%22+OR+%22Hubble+UV+Globular+Cluster%22+OR+%22Hubble+Spectroscopic+Legacy%22+OR+%22Hubble+Tarantula+Treasury%22+OR+%22Carnegie+Hubble+Program%22+OR+%22Galaxy+zoo%3A+Hubble%22+OR+%22Lensing+and+Supernova+survey+with+Hubble%22+OR+%22Lensing+and+Supernovae+survey+with+Hubble%22+OR+%22Lensing+and+Supernova+with+Hubble%22+OR+%22Hubble+WFC3%22+OR+%22Hubble+STIS%22+OR+%22Hubble+ACS%22+OR+%22Hubble+COS%22+OR+%22Hubble+Wide+Field+Camera%22+OR+%22Hubble+and+Spitzer%22+OR+%22Hubble+and+James+Webb%22+OR+%22Space+Telescope+Imaging+Spectrograph%22+OR+%22Advanced+Camera+for+Surveys%22+OR+%22Wide+Field+Camera+3%22+OR+%22Wide+Field+and+Planetary+Camera%22+OR+%22Near+Infrared+Camera+and+Multi-Object+Spectrometer%22+OR+%22Cosmic+Origins+Spectrograph%22+OR+%22Goddard+High+Resolution+Spectrograph%22%29+OR+%28%28abs%3AHST+OR+abs%3ASTIS+OR+abs%3ANICMOS+OR+abs%3AWFPC+OR+abs%3AWFPC2+OR+abs%3AWFC3%29+AND+%28abs%3Atelescope+OR+abs%3Aimaging+OR+abs%3Aimages+OR+abs%3Aobservations+OR+abs%3Aobserved+OR+abs%3Aphotometry+OR+abs%3Aspectroscopy+OR+abs%3Aspectra+OR+abs%3Aspectrum+OR+abs%3Aultraviolet+OR+abs%3AUV+OR+abs%3Aoptical+OR+abs%3Ainfrared+OR+abs%3Aarchival+OR+abs%3Asurvey+OR+abs%3Aresolution+OR+abs%3Agalaxies+OR+abs%3Agalaxy+OR+abs%3Astars+OR+abs%3Astar+OR+abs%3Acluster+OR+abs%3Aclusters%29+AND+collection%3Aastronomy%29+OR+%28abs%3AGHRS+AND+%28abs%3Aultraviolet+OR+abs%3AUV+OR+abs%3Aspectrograph%29+AND+collection%3Aastronomy+AND+NOT+%28%3Dabs%3A%22giant+HII%22+OR+%3Dabs%3A%22giant+H+II%22%29%29+OR+facility%3AHST%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1990-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:09:22.463365+00:00",
     "reconciliation": {
-      "adsReturned": 18908,
+      "adsReturned": 18919,
       "curatedOut": 1,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 3,
-      "final": 18904
+      "final": 18915
     }
   },
   "curation": {
@@ -581,7 +394,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 14221
+      "citations": 14325
     },
     {
       "bibcode": "2007ApJS..170..377S",
@@ -590,7 +403,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 7637
+      "citations": 7675
     },
     {
       "bibcode": "2013ARA&A..51..511K",
@@ -599,7 +412,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 4361
+      "citations": 4471
     },
     {
       "bibcode": "2004ApJ...607..665R",
@@ -608,7 +421,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 4047
+      "citations": 4057
     },
     {
       "bibcode": "1998AJ....115.2285M",
@@ -617,7 +430,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 3907
+      "citations": 3942
     },
     {
       "bibcode": "2000ApJ...539L..13G",
@@ -626,7 +439,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 3783
+      "citations": 3809
     },
     {
       "bibcode": "2002PhRvD..66j3511L",
@@ -635,7 +448,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 3471
+      "citations": 3495
     },
     {
       "bibcode": "2001ApJ...553...47F",
@@ -644,25 +457,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 3254
-    },
-    {
-      "bibcode": "2018ApJ...859..101S",
-      "title": "The Complete Light-curve Sample of Spectroscopically Confirmed SNe Ia from Pan-STARRS1 and Cosmological Constraints from the Combined Pantheon Sample",
-      "firstAuthor": "Scolnic, D. M.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2018,
-      "citations": 2707
-    },
-    {
-      "bibcode": "2002AJ....124..266P",
-      "title": "Detailed Structural Decomposition of Galaxy Images",
-      "firstAuthor": "Peng, Chien Y.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2002,
-      "citations": 2651
+      "citations": 3275
     },
     {
       "bibcode": "2022ApJ...934L...7R",
@@ -671,7 +466,25 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 2599
+      "citations": 2785
+    },
+    {
+      "bibcode": "2018ApJ...859..101S",
+      "title": "The Complete Light-curve Sample of Spectroscopically Confirmed SNe Ia from Pan-STARRS1 and Cosmological Constraints from the Combined Pantheon Sample",
+      "firstAuthor": "Scolnic, D. M.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2018,
+      "citations": 2738
+    },
+    {
+      "bibcode": "2002AJ....124..266P",
+      "title": "Detailed Structural Decomposition of Galaxy Images",
+      "firstAuthor": "Peng, Chien Y.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2002,
+      "citations": 2682
     },
     {
       "bibcode": "1998A&A...337..403B",
@@ -680,25 +493,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 2452
-    },
-    {
-      "bibcode": "2011ApJS..197...35G",
-      "title": "CANDELS: The Cosmic Assembly Near-infrared Deep Extragalactic Legacy Survey",
-      "firstAuthor": "Grogin, Norman A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2011,
-      "citations": 2160
-    },
-    {
-      "bibcode": "2011ApJS..197...36K",
-      "title": "CANDELS: The Cosmic Assembly Near-infrared Deep Extragalactic Legacy Survey—The Hubble Space Telescope Observations, Imaging Data Products, and Mosaics",
-      "firstAuthor": "Koekemoer, Anton M.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2011,
-      "citations": 2152
+      "citations": 2455
     },
     {
       "bibcode": "2006ApJ...648L.109C",
@@ -707,7 +502,25 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 2143
+      "citations": 2218
+    },
+    {
+      "bibcode": "2011ApJS..197...35G",
+      "title": "CANDELS: The Cosmic Assembly Near-infrared Deep Extragalactic Legacy Survey",
+      "firstAuthor": "Grogin, Norman A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2011,
+      "citations": 2189
+    },
+    {
+      "bibcode": "2011ApJS..197...36K",
+      "title": "CANDELS: The Cosmic Assembly Near-infrared Deep Extragalactic Legacy Survey—The Hubble Space Telescope Observations, Imaging Data Products, and Mosaics",
+      "firstAuthor": "Koekemoer, Anton M.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2011,
+      "citations": 2181
     },
     {
       "bibcode": "2019ApJ...876...85R",
@@ -716,7 +529,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 2091
+      "citations": 2111
     },
     {
       "bibcode": "2016ApJ...826...56R",
@@ -725,7 +538,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 2086
+      "citations": 2104
     },
     {
       "bibcode": "1996MNRAS.283.1388M",
@@ -734,7 +547,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 2043
+      "citations": 2048
     },
     {
       "bibcode": "2010ApJ...721..193P",
@@ -743,7 +556,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 2007
+      "citations": 2040
     },
     {
       "bibcode": "2007ApJS..172....1S",
@@ -752,10 +565,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 2004
+      "citations": 2030
     }
   ],
   "papersFile": {
-    "rows": 18904
+    "rows": 18915
   }
 }

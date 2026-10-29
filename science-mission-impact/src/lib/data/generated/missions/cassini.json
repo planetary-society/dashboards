@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 7605.6,
+    "lcc": 3260,
     "type": "Orbiter",
+    "program": "Outer Planets",
+    "target": "Saturn",
+    "launchVehicle": "Titan IV-Centaur",
     "dates": {
       "formulation": "1990-10-01",
       "launch": "1997-10-15",
@@ -19,16 +23,16 @@
     }
   },
   "indices": {
-    "h": 131,
-    "m": 4.852,
-    "i100": 205,
-    "g": 204,
-    "tori": 413.23,
-    "riq": 726
+    "h": 132,
+    "m": 4.889,
+    "i100": 209,
+    "g": 205,
+    "tori": 416.928,
+    "riq": 729
   },
   "facts": {
-    "papers": 3420,
-    "citations": 120258,
+    "papers": 3399,
+    "citations": 120895,
     "publicationYears": [
       2000,
       2026
@@ -69,22 +73,22 @@
       11,
       6,
       10,
-      80,
-      161,
-      166,
+      79,
+      156,
+      165,
       168,
       200,
       230,
       215,
       176,
-      183,
+      182,
       147,
-      153,
+      152,
       128,
-      186,
-      131,
-      165,
-      158,
+      185,
+      124,
+      164,
+      155,
       148,
       115,
       103,
@@ -100,133 +104,72 @@
       36,
       202,
       648,
-      1419,
-      2130,
-      3442,
-      4255,
-      6481,
-      4823,
+      1418,
+      2129,
+      3445,
+      4271,
+      6483,
+      4825,
       5667,
-      5330,
+      5329,
       5838,
       5850,
-      7220,
+      7222,
       5763,
-      7186,
-      6999,
-      7237,
-      6673,
+      7185,
+      6997,
+      7235,
+      6672,
       6387,
       6035,
-      7030,
-      7606,
-      5967
+      7029,
+      7622,
+      6573
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 120258,
-      "observed": 120258,
+      "expected": 120895,
+      "observed": 120895,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2004-04-01",
-    "end": "2010-07-01",
-    "matureDate": "2013-10-01",
-    "status": "available",
-    "months": 75,
-    "citationBuckets": 10,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      5,
-      3,
-      2,
-      7,
-      9,
-      23,
-      4,
-      13,
-      10,
-      17,
-      18,
-      7,
-      9,
-      20,
-      26,
-      10,
-      6,
-      9,
-      7,
-      10,
-      22,
-      15,
-      4,
-      27,
-      10,
-      10,
-      12,
-      14,
-      16,
-      8,
-      16,
-      15,
-      19,
-      19,
-      12,
-      6,
-      8,
-      15,
-      15,
-      11,
-      9,
-      6,
-      17,
-      37,
-      13,
-      23,
-      26,
-      18,
-      23,
-      12,
-      14,
-      21,
-      7,
-      12,
-      18,
-      13,
-      13,
-      14,
-      21,
-      20,
-      12,
-      11,
-      14,
-      19,
-      22,
-      16,
-      12,
-      21,
-      48,
-      9,
-      14,
-      10,
-      29,
-      16,
-      20
-    ],
-    "citationsByYearOffset": [
-      75,
-      523,
-      1300,
-      1978,
-      2944,
-      2998,
-      3723,
-      2097,
-      1303,
-      322
-    ]
+  "affiliations": {
+    "papers": 3399,
+    "us": {
+      "mapped": 2457,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 697
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 496
+        },
+        {
+          "name": "Southwest Research Institute, Texas",
+          "papers": 389
+        }
+      ]
+    },
+    "world": {
+      "mapped": 3198,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 697
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 496
+        },
+        {
+          "name": "Southwest Research Institute, Texas",
+          "papers": 389
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2003Natur.425..374B",
@@ -239,63 +182,63 @@
     ],
     "authorCount": 3,
     "year": 2003,
-    "citations": 1746
+    "citations": 1788
   },
   "ranks": {
     "full": {
       "bins": [
-        237.254,
-        237.968,
-        261.331,
-        304.704,
-        279.391,
-        261.005,
-        304.583,
-        252.128,
-        268.914,
-        196.723
+        232.136,
+        235.063,
+        260.115,
+        305.182,
+        276.008,
+        260.347,
+        303.29,
+        248.862,
+        267.64,
+        194.359
       ],
-      "top1": 14
+      "top1": 13.765
     },
     "window": {
       "bins": [
-        115.394,
-        98.911,
-        121.943,
-        119.133,
-        106.341,
-        130.326,
-        104.731,
-        112.494,
-        107.14,
-        82.588
+        115.206,
+        98.698,
+        123.383,
+        117.139,
+        105.382,
+        128.474,
+        102.999,
+        113.946,
+        104.672,
+        82.1
       ],
-      "top1": 5.635
+      "top1": 5.44
     },
     "lifetime": {
       "bins": [
-        251.793,
-        304.42,
-        304.123,
-        371.857,
-        377.075,
-        397.742,
-        370.791,
-        400.891,
-        371.12,
-        270.189
+        243.365,
+        300.3,
+        306.755,
+        369.494,
+        378.939,
+        396.333,
+        365.162,
+        399.23,
+        370.375,
+        269.047
       ],
-      "top1": 31
+      "top1": 30.785
     }
   },
   "full": {
-    "papers": 2604,
+    "papers": 2583,
     "outputBasis": "measured",
-    "citations": 33000,
-    "top10": 175.819,
-    "top10ShareOfDivision": 0.16089,
-    "top1": 14,
-    "top1ShareOfDivision": 0.12811,
+    "citations": 33007,
+    "top10": 192.559,
+    "top10ShareOfDivision": 0.17742,
+    "top1": 13.765,
+    "top1ShareOfDivision": 0.12683,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.468,
@@ -312,28 +255,33 @@
       "months": 186,
       "citationBuckets": 19
     },
+    "indices": {
+      "h": 56,
+      "g": 75,
+      "m": 3.613
+    },
     "spread": {
-      "mean": 12.673,
+      "mean": 12.779,
       "median": 8,
-      "uncited": 151,
+      "uncited": 136,
       "i10": 1181,
       "i100": 13
     }
   },
   "window": {
-    "papers": 1099,
+    "papers": 1092,
     "outputBasis": "measured",
-    "citations": 17263,
-    "top10": 79.8,
-    "top10ShareOfDivision": 0.16532,
-    "top1": 5.635,
-    "top1ShareOfDivision": 0.11674,
+    "citations": 17276,
+    "top10": 82.1,
+    "top10ShareOfDivision": 0.17147,
+    "top1": 5.44,
+    "top1ShareOfDivision": 0.11362,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 0.887,
-      "yearsFromFormulation": 14.338,
-      "bibcode": "2005Sci...307.1226P",
-      "date": "2005-02-00"
+      "yearsFromScienceStart": 0.468,
+      "yearsFromFormulation": 13.919,
+      "bibcode": "2004SSRv..114....1Y",
+      "date": "2004-09-00"
     },
     "status": "available",
     "bounds": {
@@ -344,20 +292,25 @@
       "months": 75,
       "citationBuckets": 10
     },
+    "indices": {
+      "h": 51,
+      "g": 71,
+      "m": 8.163
+    },
     "spread": {
-      "mean": 15.708,
+      "mean": 15.821,
       "median": 10,
-      "uncited": 85,
+      "uncited": 79,
       "i10": 578,
       "i100": 11
     }
   },
   "lifetime": {
-    "papers": 3420,
+    "papers": 3399,
     "outputBasis": "measured",
-    "citations": 120258,
-    "top10": 205.792,
-    "top10ShareOfDivision": 0.15121,
+    "citations": 120895,
+    "top10": 263.497,
+    "top10ShareOfDivision": 0.16829,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -368,26 +321,26 @@
       "date": "2002-02-00"
     },
     "spread": {
-      "mean": 35.163,
+      "mean": 35.568,
       "median": 19,
-      "uncited": 185,
-      "i10": 2364,
-      "i100": 205
+      "uncited": 167,
+      "i10": 2375,
+      "i100": 209
     }
   },
   "query": {
     "arms": "((((abs:Cassini OR abs:(VIMS OR CIRS OR UVIS OR INMS OR RPWS OR CAPS OR CDA OR MIMI)) AND abs:(Saturn OR Saturnian OR Titan OR Enceladus OR Iapetus OR Rhea OR Dione OR Hyperion OR Mimas OR Tethys OR Phoebe)) OR (abs:Cassini AND abs:(Jupiter OR Jovian OR Io OR INCA OR heliosphere OR heliosheath OR heliospheric OR \"energetic neutral\" OR \"interplanetary shock\" OR \"interstellar dust\" OR \"radio science\" OR \"radio tracking\" OR \"solar conjunction\" OR \"Earth flyby\" OR \"Venus flyby\" OR \"solar wind\") NOT abs:\"Cassini state\") OR (abs:Cassini AND abs:VIMS AND abs:(lunar OR Moon)) OR (abs:Huygens AND abs:Titan)))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2004-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3ACassini+OR+abs%3A%28VIMS+OR+CIRS+OR+UVIS+OR+INMS+OR+RPWS+OR+CAPS+OR+CDA+OR+MIMI%29%29+AND+abs%3A%28Saturn+OR+Saturnian+OR+Titan+OR+Enceladus+OR+Iapetus+OR+Rhea+OR+Dione+OR+Hyperion+OR+Mimas+OR+Tethys+OR+Phoebe%29%29+OR+%28abs%3ACassini+AND+abs%3A%28Jupiter+OR+Jovian+OR+Io+OR+INCA+OR+heliosphere+OR+heliosheath+OR+heliospheric+OR+%22energetic+neutral%22+OR+%22interplanetary+shock%22+OR+%22interstellar+dust%22+OR+%22radio+science%22+OR+%22radio+tracking%22+OR+%22solar+conjunction%22+OR+%22Earth+flyby%22+OR+%22Venus+flyby%22+OR+%22solar+wind%22%29+NOT+abs%3A%22Cassini+state%22%29+OR+%28abs%3ACassini+AND+abs%3AVIMS+AND+abs%3A%28lunar+OR+Moon%29%29+OR+%28abs%3AHuygens+AND+abs%3ATitan%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:05:34.634969+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2004-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3ACassini+OR+abs%3A%28VIMS+OR+CIRS+OR+UVIS+OR+INMS+OR+RPWS+OR+CAPS+OR+CDA+OR+MIMI%29%29+AND+abs%3A%28Saturn+OR+Saturnian+OR+Titan+OR+Enceladus+OR+Iapetus+OR+Rhea+OR+Dione+OR+Hyperion+OR+Mimas+OR+Tethys+OR+Phoebe%29%29+OR+%28abs%3ACassini+AND+abs%3A%28Jupiter+OR+Jovian+OR+Io+OR+INCA+OR+heliosphere+OR+heliosheath+OR+heliospheric+OR+%22energetic+neutral%22+OR+%22interplanetary+shock%22+OR+%22interstellar+dust%22+OR+%22radio+science%22+OR+%22radio+tracking%22+OR+%22solar+conjunction%22+OR+%22Earth+flyby%22+OR+%22Venus+flyby%22+OR+%22solar+wind%22%29+NOT+abs%3A%22Cassini+state%22%29+OR+%28abs%3ACassini+AND+abs%3AVIMS+AND+abs%3A%28lunar+OR+Moon%29%29+OR+%28abs%3AHuygens+AND+abs%3ATitan%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:42:25.843413+00:00",
     "reconciliation": {
-      "adsReturned": 3400,
-      "curatedOut": 13,
+      "adsReturned": 3398,
+      "curatedOut": 32,
       "curatedIn": 36,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 3,
-      "final": 3420
+      "final": 3399
     }
   },
   "curation": {
@@ -881,6 +834,158 @@
         "reason": "Pre-arrival review of Titan organic chemistry and Cassini-Huygens goals; reports no mission results.",
         "authority": "agent",
         "date": "2026-09-09"
+      },
+      {
+        "bibcode": "2004Sci...305..165K",
+        "doi": "10.1126/science.305.5681.165",
+        "title": "Cassini's Magnificent Machines Run Rings Around Saturn",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2005Natur.438.....L",
+        "doi": "10.1038/7069xia",
+        "title": "Making the papers",
+        "reason": "Nature's Making the Paper feature, an interview about a published paper; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2005Natur.438..538.",
+        "doi": "10.1038/438538a",
+        "title": "Titan: tapping the flood of data",
+        "reason": "Unsigned Nature editorial on the mission; a news and opinion item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2005Sci...309..859K",
+        "doi": "10.1126/science.309.5736.859a",
+        "title": "Cassini Catches Mysterious Hot Spot on Icy-Cold Enceladus",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2006Natur.440..261P",
+        "doi": "10.1038/440261a",
+        "title": "Signs of warm water on Saturn's moon",
+        "reason": "Nature staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2012Sci...336.1629K",
+        "doi": null,
+        "title": "Cassini Spies an Ocean Inside Saturn's Icy, Gassy Moon Titan",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2014Sci...344...17K",
+        "doi": null,
+        "title": "Cassini Plumbs the Depths of the Enceladus Sea",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2016Sci...352Q.304S",
+        "doi": null,
+        "title": "Cassini detects interstellar dust grains",
+        "reason": "Science editors' one-paragraph summary of a published paper; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2017Natur.544..149W",
+        "doi": "10.1038/544149a",
+        "title": "Saturn spacecraft begins science swan-song",
+        "reason": "Nature staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2017Natur.548..512W",
+        "doi": "10.1038/548512a",
+        "title": "Cassini’s 13 years of stunning Saturn science — in pictures",
+        "reason": "Nature staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2017Natur.549..317W",
+        "doi": "10.1038/nature.2017.22619",
+        "title": "Cassini crashes into Saturn — but could still deliver big discoveries",
+        "reason": "Nature staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2017Sci...356..120V",
+        "doi": null,
+        "title": "Cassini embarks on twilight mission at Saturn",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2017Sci...357.1219V",
+        "doi": "10.1126/science.357.6357.1219",
+        "title": "A fiery finish to Cassini's long run at Saturn",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2017Sci...357.1220V",
+        "doi": "10.1126/science.357.6357.1220",
+        "title": "A legacy of discovery",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2017Sci...358.1513V",
+        "doi": "10.1126/science.358.6370.1513",
+        "title": "Saturn's rings are solar system newcomers",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2018Sci...359Q..43S",
+        "doi": "10.1126/science.359.6371.43-a",
+        "title": "Cassini enters Saturn's ionosphere",
+        "reason": "Science editors' one-paragraph summary of a published paper; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2019Sci...363..214V",
+        "doi": "10.1126/science.363.6424.214",
+        "title": "Dueling spacecraft look deep into Saturn and Jupiter",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2019Sci...364R1043S",
+        "doi": "10.1126/science.364.6445.1043-j",
+        "title": "Cassini's last look at Saturn's rings",
+        "reason": "Science editors' one-paragraph summary of a published paper; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2019Sci...365...15V",
+        "doi": "10.1126/science.365.6448.15-a",
+        "title": "NASA to fly drone on Titan",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
       }
     ]
   },
@@ -892,7 +997,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 1746
+      "citations": 1788
     },
     {
       "bibcode": "2006Sci...311.1393P",
@@ -901,7 +1006,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 1031
+      "citations": 1035
     },
     {
       "bibcode": "2005Natur.438..779N",
@@ -910,7 +1015,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 788
+      "citations": 791
     },
     {
       "bibcode": "2006Sci...311.1419W",
@@ -919,7 +1024,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 584
+      "citations": 585
     },
     {
       "bibcode": "2005Natur.438..785F",
@@ -928,7 +1033,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 581
+      "citations": 584
     },
     {
       "bibcode": "2007Sci...316..870W",
@@ -937,7 +1042,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 548
+      "citations": 551
     },
     {
       "bibcode": "2006Sci...311.1401S",
@@ -946,16 +1051,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 527
-    },
-    {
-      "bibcode": "2006Sci...311.1422H",
-      "title": "Enceladus' Water Vapor Plume",
-      "firstAuthor": "Hansen, Candice J.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2006,
-      "citations": 498
+      "citations": 528
     },
     {
       "bibcode": "2021AJ....161..105P",
@@ -964,7 +1060,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 491
+      "citations": 512
+    },
+    {
+      "bibcode": "2006Sci...311.1422H",
+      "title": "Enceladus' Water Vapor Plume",
+      "firstAuthor": "Hansen, Candice J.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2006,
+      "citations": 501
     },
     {
       "bibcode": "2007Natur.445...61S",
@@ -973,7 +1078,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 483
+      "citations": 485
     },
     {
       "bibcode": "2004SSRv..114..395G",
@@ -1018,7 +1123,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 445
+      "citations": 447
     },
     {
       "bibcode": "2011Natur.474..620P",
@@ -1027,7 +1132,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 409
+      "citations": 411
     },
     {
       "bibcode": "2009Sci...326..562C",
@@ -1045,7 +1150,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 387
+      "citations": 388
     },
     {
       "bibcode": "2005Sci...308..982W",
@@ -1054,7 +1159,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 387
+      "citations": 388
     },
     {
       "bibcode": "2007GeoRL..3422103C",
@@ -1067,6 +1172,6 @@
     }
   ],
   "papersFile": {
-    "rows": 3420
+    "rows": 3399
   }
 }

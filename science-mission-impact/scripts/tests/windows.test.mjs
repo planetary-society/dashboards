@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { combineWindows, fullMissionPolicy, missionWindow, windowPolicy } from '../lib/windows.mjs';
+import { fullMissionPolicy, missionWindow, windowPolicy } from '../lib/windows.mjs';
 
 const policy = windowPolicy({ post_prime_years: 2, citation_years: 3, maturity_grace_months: 3 });
 test('window dimensions follow mission dates, including the exclusive end year', () => {
@@ -43,14 +43,4 @@ test('a failure with no papers is a measured zero even when its cut window ends 
 	assert.deepEqual(missionWindow(zero, full, 'CURIE'), { start: null, end: null, matureDate: '2029-10-01', status: 'available', months: 0, citationBuckets: 0 });
 	assert.throws(() => missionWindow({ ...zero, total_publications: 1 }, full, 'has papers'), /increasing publication/);
 	assert.throws(() => missionWindow({ ...zero, failure_zero_mature_date: null }, full, 'not a failure zero'), /increasing publication/);
-});
-
-test('division series preserve long tails and report varying measured coverage', () => {
-	const series = (months, outputBasis = 'measured', status = 'available') => ({ papersByMonth: Array(months).fill(1), citationsByYearOffset: [1, 2, 3, 4], status, outputBasis });
-	const combined = combineWindows([series(12), series(25), series(40, 'unavailable'), series(40, 'measured', 'immature')]);
-	assert.equal(combined.missionsIncluded, 2);
-	assert.deepEqual(combined.missionsByYear, [2, 1, 1]);
-	assert.equal(combined.papersByMonth.reduce((a, b) => a + b, 0), 37);
-	assert.deepEqual(combined.citationsByYearOffset, [2, 4, 6, 8]);
-	assert.equal(combineWindows([series(12, 'unavailable')]).status, 'unavailable');
 });

@@ -6,7 +6,7 @@ import {
 	buildDivisionScopeStats,
 	buildFirstTopPaper,
 	buildMissionScopeStats,
-	firstEraTop,
+	firstTopRow,
 	buildTiers,
 	divisionTotal,
 	isFailure,
@@ -16,7 +16,10 @@ import {
 	missionTop10,
 	scopeField,
 	SCOPES,
-	WINDOWED_SCOPES
+	WINDOWED_SCOPES,
+	hgIndex,
+	windowIndices,
+	yearlyTopRate
 } from '../lib/measures.mjs';
 
 const measured = {
@@ -25,18 +28,16 @@ const measured = {
 	cost_bin: '$1B - $2.5B',
 	lifetime_papers: 100,
 	lifetime_citations: 5000,
-	lifetime_cohort_top10: 20,
+	lifetime_top_k: { 10: 20 },
 	window_status: 'available',
 	window_papers: 40,
 	window_citations: 900,
-	window_cohort_top10: 8,
-	window_top_k: { 1: 2, 10: 9 },
+	window_top_k: { 1: 2, 10: 8 },
 	full_mission_status: 'available',
 	full_mission_output_basis: 'measured',
 	full_mission_papers: 70,
 	full_mission_citations: 2000,
-	full_mission_cohort_top10: 14,
-	full_mission_top_k: { 1: 3, 10: 15 }
+	full_mission_top_k: { 1: 3, 10: 14 }
 };
 
 const unavailable = {
@@ -45,16 +46,14 @@ const unavailable = {
 	cost_bin: '< $100M',
 	lifetime_papers: null,
 	lifetime_citations: null,
-	lifetime_cohort_top10: null,
+	lifetime_top_k: { 10: null },
 	window_status: 'available',
 	window_papers: null,
 	window_citations: null,
-	window_cohort_top10: null,
 	window_top_k: { 1: null, 10: null },
 	full_mission_status: 'available',
 	full_mission_papers: null,
 	full_mission_citations: null,
-	full_mission_cohort_top10: null,
 	full_mission_top_k: { 1: null, 10: null }
 };
 
@@ -98,7 +97,7 @@ describe('isFailure', () => {
 
 
 describe('isRankable', () => {
-	const mission = { adjusted_lcc: 10, window_status: 'available', window_output_basis: 'measured', window_cohort_top10: 1, cost_bin: 'anything' };
+	const mission = { adjusted_lcc: 10, window_status: 'available', window_output_basis: 'measured', window_top_k: { 10: 1 }, cost_bin: 'anything' };
 	it('uses measured mission coverage and the paper minimum without bins', () => {
 		const scope = 'window';
 		assert.equal(isRankable({ poolPapers: 5, missions: [mission, mission], rankingMinPapers: 50, scope }), false);
@@ -108,16 +107,16 @@ describe('isRankable', () => {
 	});
 
 	it('reads the full-mission fields by default', () => {
-		const full = { adjusted_lcc: 10, full_mission_status: 'available', full_mission_output_basis: 'measured', full_mission_cohort_top10: 1 };
+		const full = { adjusted_lcc: 10, full_mission_status: 'available', full_mission_output_basis: 'measured', full_mission_top_k: { 10: 1 } };
 		assert.equal(isRankable({ poolPapers: 50, missions: [full, full], rankingMinPapers: 50 }), true);
 		assert.equal(isRankable({ poolPapers: 50, missions: [full, { ...full, full_mission_status: 'immature' }], rankingMinPapers: 50 }), false);
-		assert.equal(isRankable({ poolPapers: 50, missions: [full, { ...full, full_mission_cohort_top10: null }], rankingMinPapers: 50 }), false);
+		assert.equal(isRankable({ poolPapers: 50, missions: [full, { ...full, full_mission_top_k: { 10: null } }], rankingMinPapers: 50 }), false);
 		// Window-only coverage does not make a division rankable in the full-mission scope.
 		assert.equal(isRankable({ poolPapers: 50, missions: [mission, mission], rankingMinPapers: 50 }), false);
 	});
 });
 
-describe('firstEraTop', () => {
+describe('firstTopRow', () => {
 	const rows = [
 		{ mission: 'M', bibcode: '2006b', w: 1 },
 		{ mission: 'M', bibcode: '2005late', w: 0.4 }, // tied at the cutoff: still qualifies
@@ -127,18 +126,57 @@ describe('firstEraTop', () => {
 	];
 	const pubdates = new Map([['2006b', '2006-01-00'], ['2005late', '2005-03-00'], ['2004none', '2004-01-00'], ['2005year', '2005-00-00']]);
 
-	it('picks the earliest-published paper with any era-adjusted weight', () => {
-		assert.deepEqual(firstEraTop(rows, 'w', pubdates), { bibcode: '2005late', date: '2005-03-00' });
+	it('picks the earliest-published paper with any top-10% weight', () => {
+		assert.deepEqual(firstTopRow(rows, 'w', pubdates), { bibcode: '2005late', date: '2005-03-00' });
 		// A year-only date reads as 1 July, so it is later than March.
-		assert.deepEqual(firstEraTop(rows.slice(0, 2).concat(rows[4]), 'w', new Map([...pubdates, ['2005late', '2005-09-00']])),
+		assert.deepEqual(firstTopRow(rows.slice(0, 2).concat(rows[4]), 'w', new Map([...pubdates, ['2005late', '2005-09-00']])),
 			{ bibcode: '2005year', date: '2005-00-00' });
-		assert.equal(firstEraTop(rows.slice(2, 4), 'w', pubdates), null);
+		assert.equal(firstTopRow(rows.slice(2, 4), 'w', pubdates), null);
 	});
 
 	it('breaks a date tie by bibcode and throws on a qualifying row with no date', () => {
 		const tie = [{ bibcode: 'b', w: 1 }, { bibcode: 'a', w: 1 }];
-		assert.equal(firstEraTop(tie, 'w', new Map([['a', '2001-02-00'], ['b', '2001-02-00']])).bibcode, 'a');
-		assert.throws(() => firstEraTop([{ mission: 'M', bibcode: 'x', w: 1 }], 'w', new Map()), /M x has no publication date/);
+		assert.equal(firstTopRow(tie, 'w', new Map([['a', '2001-02-00'], ['b', '2001-02-00']])).bibcode, 'a');
+		assert.throws(() => firstTopRow([{ mission: 'M', bibcode: 'x', w: 1 }], 'w', new Map()), /M x has no publication date/);
+	});
+});
+
+describe('hgIndex and windowIndices', () => {
+	it('counts h papers with h citations each, and g over cited papers only (upstream’s rule)', () => {
+		assert.deepEqual(hgIndex([10, 8, 5, 4, 3]), { h: 4, g: 5 });
+		// the 0s would let g reach 4 (17 ≥ 16); upstream stops at the last cited paper
+		assert.deepEqual(hgIndex([13, 3, 1, 0, 0, 0]), { h: 2, g: 3 });
+		assert.deepEqual(hgIndex([]), { h: 0, g: 0 });
+	});
+
+	it('reads windowed citations and divides h by the window’s span; null without dates', () => {
+		const rows = [{ window_citations: 9 }, { window_citations: 4 }, { window_citations: 2 }, { window_citations: null }];
+		assert.deepEqual(windowIndices(rows, { start: '2000-01-01', end: '2004-01-01' }), { h: 2, g: 3, m: 0.5 });
+		assert.equal(windowIndices(rows, { start: null, end: '2004-01-01' }), null);
+		assert.equal(windowIndices(rows, null), null);
+	});
+});
+
+describe('yearlyTopRate', () => {
+	const rows = [
+		{ mission: 'M', bibcode: 'early', top10_weight: 1 }, // before science starts: out
+		{ mission: 'M', bibcode: 'a', top10_weight: 1 },
+		{ mission: 'M', bibcode: 'shared', top10_weight: 1, shared_by: 2 }, // half is this mission's
+		{ mission: 'M', bibcode: 'none', top10_weight: 0 },
+		{ mission: 'M', bibcode: 'late', top10_weight: 1 } // at or after `end`: out
+	];
+	const pubdates = new Map([['early', '2009-06-00'], ['a', '2011-03-00'], ['shared', '2012-00-00'], ['none', '2012-05-00'], ['late', '2013-01-00']]);
+	const end = '2013-01-01';
+
+	it('divides the credit published from the start up to the end by the years between', () => {
+		// 1.5 papers over 2010-01-01 to 2013-01-01
+		assert.equal(yearlyTopRate(rows, { start: '2010-01-01', end, pubdates }), 0.5);
+	});
+
+	it('is null without a start or when science starts at or after the end, and throws on an undated credited row', () => {
+		assert.equal(yearlyTopRate(rows, { start: null, end, pubdates }), null);
+		assert.equal(yearlyTopRate(rows, { start: '2013-06-01', end, pubdates }), null);
+		assert.throws(() => yearlyTopRate(rows, { start: '2010-01-01', end, pubdates: new Map() }), /M early has no publication date/);
 	});
 });
 
@@ -226,7 +264,7 @@ describe('buildMissionScopeStats', () => {
 	it('throws when the paper rows and the mission credit disagree about any top-10% paper', () => {
 		const args = { statsMission: measured, scope: 'full', divisionTop10: 56, divisionTop1: 12 };
 		assert.throws(() => buildMissionScopeStats({ ...args, first: null }), /Big \(full\): top-10% credit 14 but no paper row/);
-		assert.throws(() => buildMissionScopeStats({ ...args, statsMission: { ...measured, full_mission_cohort_top10: 0 }, first }), /credit 0 but a paper row/);
+		assert.throws(() => buildMissionScopeStats({ ...args, statsMission: { ...measured, full_mission_top_k: { ...measured.full_mission_top_k, 10: 0 } }, first }), /credit 0 but a paper row/);
 	});
 
 	it('has no top 1% in the lifetime scope', () => {
@@ -259,7 +297,7 @@ describe('buildMissionScopeStats', () => {
 
 	it('yields a null share when the division has no top papers at all', () => {
 		const stats = buildMissionScopeStats({
-			statsMission: { ...measured, window_cohort_top10: 0 },
+			statsMission: { ...measured, window_top_k: { ...measured.window_top_k, 10: 0 } },
 			scope: 'window',
 			first: null,
 			divisionTop10: 0,

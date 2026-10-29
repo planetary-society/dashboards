@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 135.8,
+    "lcc": 60,
     "type": "Survey Observatory",
+    "program": "Small-class Explorers (SMEX)",
+    "target": "Universe",
+    "launchVehicle": "Pegasus XL",
     "dates": {
       "formulation": "1992-02-01",
       "launch": "1998-12-06",
@@ -23,12 +27,12 @@
     "m": 1.333,
     "i100": 5,
     "g": 52,
-    "tori": 11.065,
+    "tori": 11.101,
     "riq": 123
   },
   "facts": {
     "papers": 76,
-    "citations": 2972,
+    "citations": 2982,
     "publicationYears": [
       2000,
       2026
@@ -102,7 +106,7 @@
       173,
       135,
       185,
-      169,
+      170,
       147,
       163,
       188,
@@ -120,84 +124,52 @@
       51,
       73,
       51,
-      40
+      49
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 2972,
-      "observed": 2972,
+      "expected": 2982,
+      "observed": 2982,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "1999-02-01",
-    "end": "2003-02-01",
-    "matureDate": "2006-10-01",
-    "status": "available",
-    "months": 48,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      14,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      1,
-      1,
-      1,
-      0,
-      1,
-      0,
-      0,
-      1,
-      1,
-      3,
-      1,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      2,
-      0,
-      3,
-      1,
-      1
-    ],
-    "citationsByYearOffset": [
-      0,
-      50,
-      83,
-      109,
-      121,
-      56,
-      40,
-      0
-    ]
+  "affiliations": {
+    "papers": 76,
+    "us": {
+      "mapped": 59,
+      "top": [
+        {
+          "name": "Harvard Smithsonian Center for Astrophysics",
+          "papers": 46
+        },
+        {
+          "name": "Johns Hopkins University, Maryland",
+          "papers": 30
+        },
+        {
+          "name": "Cornell University, New York",
+          "papers": 25
+        }
+      ]
+    },
+    "world": {
+      "mapped": 76,
+      "top": [
+        {
+          "name": "Harvard Smithsonian Center for Astrophysics",
+          "papers": 46
+        },
+        {
+          "name": "Johns Hopkins University, Maryland",
+          "papers": 30
+        },
+        {
+          "name": "Cornell University, New York",
+          "papers": 25
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2000ApJ...539L.129B",
@@ -216,26 +188,26 @@
   "ranks": {
     "full": {
       "bins": [
-        3.36,
-        6.393,
-        5.295,
-        6.661,
-        13.101,
-        9.249,
-        4.941,
-        3,
-        3.705,
-        0.295
+        3.366,
+        6.406,
+        5.372,
+        6.71,
+        13.047,
+        9.199,
+        4.272,
+        3.628,
+        3.813,
+        0.188
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        2.29,
-        2.71,
+        2.291,
+        2.709,
         5,
-        7.2,
-        6.8,
+        7.225,
+        6.775,
         2,
         3,
         1,
@@ -246,14 +218,14 @@
     },
     "lifetime": {
       "bins": [
-        3.196,
-        7.804,
+        3.15,
+        7.85,
         2,
-        6,
-        6,
-        11.068,
-        18.761,
-        11.171,
+        5.406,
+        6.594,
+        11.953,
+        19.193,
+        9.854,
         6,
         4
       ],
@@ -263,9 +235,9 @@
   "full": {
     "papers": 56,
     "outputBasis": "measured",
-    "citations": 704,
-    "top10": 1.15,
-    "top10ShareOfDivision": 0.00023,
+    "citations": 705,
+    "top10": 0.188,
+    "top10ShareOfDivision": 0.00004,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -284,8 +256,13 @@
       "months": 90,
       "citationBuckets": 11
     },
+    "indices": {
+      "h": 15,
+      "g": 21,
+      "m": 2.001
+    },
     "spread": {
-      "mean": 12.571,
+      "mean": 12.589,
       "median": 10.5,
       "uncited": 2,
       "i10": 35,
@@ -316,6 +293,11 @@
       "months": 48,
       "citationBuckets": 8
     },
+    "indices": {
+      "h": 12,
+      "g": 19,
+      "m": 3
+    },
     "spread": {
       "mean": 13.909,
       "median": 11,
@@ -327,20 +309,20 @@
   "lifetime": {
     "papers": 76,
     "outputBasis": "measured",
-    "citations": 2972,
-    "top10": 0,
-    "top10ShareOfDivision": 0,
+    "citations": 2982,
+    "top10": 4,
+    "top10ShareOfDivision": 0.00063,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
-      "state": "none",
-      "yearsFromScienceStart": null,
-      "yearsFromFormulation": null,
-      "bibcode": null,
-      "date": null
+      "state": "reached",
+      "yearsFromScienceStart": 1.522,
+      "yearsFromFormulation": 8.498,
+      "bibcode": "2000ApJ...539L..77M",
+      "date": "2000-08-00"
     },
     "spread": {
-      "mean": 39.105,
+      "mean": 39.237,
       "median": 34,
       "uncited": 2,
       "i10": 63,
@@ -349,9 +331,9 @@
   },
   "query": {
     "arms": "((=abs:\"Submillimeter Wave Astronomy Satellite\" OR (abs:SWAS AND abs:(observation OR submillimeter OR interstellar OR water OR oxygen) AND NOT abs:\"southwestern atlantic\")) AND collection:astronomy)",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1999-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Submillimeter+Wave+Astronomy+Satellite%22+OR+%28abs%3ASWAS+AND+abs%3A%28observation+OR+submillimeter+OR+interstellar+OR+water+OR+oxygen%29+AND+NOT+abs%3A%22southwestern+atlantic%22%29%29+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:16:05.224482+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1999-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Submillimeter+Wave+Astronomy+Satellite%22+OR+%28abs%3ASWAS+AND+abs%3A%28observation+OR+submillimeter+OR+interstellar+OR+water+OR+oxygen%29+AND+NOT+abs%3A%22southwestern+atlantic%22%29%29+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:12:20.769279+00:00",
     "reconciliation": {
       "adsReturned": 79,
       "curatedOut": 3,
@@ -554,6 +536,15 @@
       "citations": 51
     },
     {
+      "bibcode": "2005A&A...440..559P",
+      "title": "The excitation of water in the S140 photon dominated region",
+      "firstAuthor": "Poelman, D. R.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2005,
+      "citations": 50
+    },
+    {
       "bibcode": "2000ApJ...539L.133P",
       "title": "Large-scale ¹³CO J=5-->4 and [C I] Mapping of Orion A",
       "firstAuthor": "Plume, R.",
@@ -569,15 +560,6 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 49
-    },
-    {
-      "bibcode": "2005A&A...440..559P",
-      "title": "The excitation of water in the S140 photon dominated region",
-      "firstAuthor": "Poelman, D. R.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2005,
       "citations": 49
     },
     {

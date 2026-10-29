@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 183.5,
+    "lcc": 94.5,
     "type": "Survey Observatory",
+    "program": "University-class Explorers (UNEX)",
+    "target": "Gamma Ray Bursts",
+    "launchVehicle": "Pegasus-H",
     "dates": {
       "formulation": "1997-07-01",
       "launch": "2000-10-09",
@@ -23,12 +27,12 @@
     "m": 1.8,
     "i100": 23,
     "g": 105,
-    "tori": 70.917,
-    "riq": 366
+    "tori": 72.156,
+    "riq": 369
   },
   "facts": {
     "papers": 127,
-    "citations": 11058,
+    "citations": 11148,
     "publicationYears": [
       2002,
       2024
@@ -94,11 +98,11 @@
       154,
       480,
       702,
-      969,
+      970,
       813,
       708,
-      659,
-      524,
+      661,
+      526,
       526,
       538,
       450,
@@ -113,78 +117,53 @@
       286,
       330,
       318,
-      406,
-      396
+      408,
+      479
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 11058,
-      "observed": 11058,
+      "expected": 11148,
+      "observed": 11148,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2001-03-01",
-    "end": "2004-09-01",
-    "matureDate": "2007-10-01",
-    "status": "available",
-    "months": 42,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      3,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      2,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      0,
-      2,
-      1,
-      2,
-      1,
-      1,
-      0,
-      2,
-      2,
-      1,
-      0,
-      0
-    ],
-    "citationsByYearOffset": [
-      0,
-      8,
-      153,
-      464,
-      473,
-      431,
-      35
-    ]
+  "affiliations": {
+    "papers": 127,
+    "us": {
+      "mapped": 71,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 27
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 27
+        },
+        {
+          "name": "MIT, Center for Space Research/Kavli Institute",
+          "papers": 26
+        }
+      ]
+    },
+    "world": {
+      "mapped": 107,
+      "top": [
+        {
+          "name": "Astronomical Observatory of Bologna",
+          "papers": 27
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 27
+        },
+        {
+          "name": "RIKEN, Institute of Physical and Chemical Research, Japan",
+          "papers": 27
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2004RvMP...76.1143P",
@@ -195,20 +174,20 @@
     ],
     "authorCount": 1,
     "year": 2004,
-    "citations": 1810
+    "citations": 1835
   },
   "ranks": {
     "full": {
       "bins": [
-        21.238,
-        14.391,
-        6.19,
-        4.282,
-        6.708,
-        9.426,
-        11.096,
-        6.202,
-        11.467,
+        21.294,
+        14.365,
+        6.2,
+        4.264,
+        6.779,
+        9.501,
+        10.971,
+        6.225,
+        11.402,
         20
       ],
       "top1": 4
@@ -217,10 +196,10 @@
       "bins": [
         1,
         1,
-        0.231,
-        0.769,
-        1.003,
-        5.997,
+        0.236,
+        0.764,
+        1.008,
+        5.992,
         2,
         1,
         4,
@@ -230,14 +209,14 @@
     },
     "lifetime": {
       "bins": [
-        16.994,
-        17.369,
-        7.81,
-        11.021,
-        8.021,
-        11.785,
-        11.61,
-        9.39,
+        17.876,
+        15.74,
+        8.407,
+        11.79,
+        7.809,
+        11.378,
+        10.292,
+        10.708,
         13,
         20
       ],
@@ -247,9 +226,9 @@
   "full": {
     "papers": 111,
     "outputBasis": "measured",
-    "citations": 3627,
-    "top10": 15,
-    "top10ShareOfDivision": 0.00302,
+    "citations": 3628,
+    "top10": 17,
+    "top10ShareOfDivision": 0.00342,
     "top1": 4,
     "top1ShareOfDivision": 0.00804,
     "first": {
@@ -268,8 +247,13 @@
       "months": 109,
       "citationBuckets": 13
     },
+    "indices": {
+      "h": 31,
+      "g": 58,
+      "m": 3.413
+    },
     "spread": {
-      "mean": 32.676,
+      "mean": 32.685,
       "median": 14,
       "uncited": 14,
       "i10": 65,
@@ -279,9 +263,9 @@
   "window": {
     "papers": 24,
     "outputBasis": "measured",
-    "citations": 1564,
-    "top10": 6.32,
-    "top10ShareOfDivision": 0.00327,
+    "citations": 1565,
+    "top10": 7,
+    "top10ShareOfDivision": 0.00362,
     "top1": 2,
     "top1ShareOfDivision": 0.01034,
     "first": {
@@ -300,8 +284,13 @@
       "months": 42,
       "citationBuckets": 7
     },
+    "indices": {
+      "h": 17,
+      "g": 23,
+      "m": 4.852
+    },
     "spread": {
-      "mean": 65.167,
+      "mean": 65.208,
       "median": 28,
       "uncited": 1,
       "i10": 21,
@@ -311,20 +300,20 @@
   "lifetime": {
     "papers": 127,
     "outputBasis": "measured",
-    "citations": 11058,
-    "top10": 8.167,
-    "top10ShareOfDivision": 0.00148,
+    "citations": 11148,
+    "top10": 14.333,
+    "top10ShareOfDivision": 0.00226,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 2.313,
-      "yearsFromFormulation": 5.916,
-      "bibcode": "2003Natur.423..847H",
-      "date": "2003-06-00"
+      "yearsFromScienceStart": 2.062,
+      "yearsFromFormulation": 5.665,
+      "bibcode": "2003A&A...400.1021B",
+      "date": "2003-03-00"
     },
     "spread": {
-      "mean": 87.071,
+      "mean": 87.78,
       "median": 26,
       "uncited": 7,
       "i10": 87,
@@ -333,9 +322,9 @@
   },
   "query": {
     "arms": "((abs:\"HETE-2\" OR abs:\"HETE-II\" OR =abs:\"High Energy Transient Explorer 2\" OR =abs:\"High Energy Transient Explorer II\" OR (abs:HETE AND abs:(\"gamma-ray burst\" OR \"gamma-ray bursts\" OR GRB OR GRBs OR \"X-ray flash\" OR \"X-ray flashes\" OR XRF OR XRFs OR WXM OR FREGATE OR SXC OR \"soft gamma repeater\" OR SGR) NOT abs:\"J1900.1-2455\")) AND collection:astronomy)",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2001-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22HETE-2%22+OR+abs%3A%22HETE-II%22+OR+%3Dabs%3A%22High+Energy+Transient+Explorer+2%22+OR+%3Dabs%3A%22High+Energy+Transient+Explorer+II%22+OR+%28abs%3AHETE+AND+abs%3A%28%22gamma-ray+burst%22+OR+%22gamma-ray+bursts%22+OR+GRB+OR+GRBs+OR+%22X-ray+flash%22+OR+%22X-ray+flashes%22+OR+XRF+OR+XRFs+OR+WXM+OR+FREGATE+OR+SXC+OR+%22soft+gamma+repeater%22+OR+SGR%29+NOT+abs%3A%22J1900.1-2455%22%29%29+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2001-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:16:42.359465+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2001-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22HETE-2%22+OR+abs%3A%22HETE-II%22+OR+%3Dabs%3A%22High+Energy+Transient+Explorer+2%22+OR+%3Dabs%3A%22High+Energy+Transient+Explorer+II%22+OR+%28abs%3AHETE+AND+abs%3A%28%22gamma-ray+burst%22+OR+%22gamma-ray+bursts%22+OR+GRB+OR+GRBs+OR+%22X-ray+flash%22+OR+%22X-ray+flashes%22+OR+XRF+OR+XRFs+OR+WXM+OR+FREGATE+OR+SXC+OR+%22soft+gamma+repeater%22+OR+SGR%29+NOT+abs%3A%22J1900.1-2455%22%29%29+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2001-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:14:01.213809+00:00",
     "reconciliation": {
       "adsReturned": 132,
       "curatedOut": 12,
@@ -576,7 +565,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 1810
+      "citations": 1835
     },
     {
       "bibcode": "2003Natur.423..847H",
@@ -585,7 +574,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 1392
+      "citations": 1400
     },
     {
       "bibcode": "2003ApJ...591L..17S",
@@ -594,7 +583,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 1188
+      "citations": 1195
     },
     {
       "bibcode": "2005Natur.437..845F",
@@ -603,7 +592,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 496
+      "citations": 497
     },
     {
       "bibcode": "2006ApJ...643..266N",
@@ -612,7 +601,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 476
+      "citations": 479
     },
     {
       "bibcode": "2006ApJ...648.1110B",
@@ -621,7 +610,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 300
+      "citations": 301
     },
     {
       "bibcode": "2005Natur.437..859H",
@@ -639,7 +628,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 279
+      "citations": 280
     },
     {
       "bibcode": "2005ApJ...629..311S",
@@ -648,7 +637,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 241
+      "citations": 247
     },
     {
       "bibcode": "2011ApJS..195....2S",
@@ -675,7 +664,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 152
+      "citations": 154
     },
     {
       "bibcode": "2003A&A...400.1021B",
@@ -684,7 +673,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 145
+      "citations": 147
     },
     {
       "bibcode": "2004ApJ...606..994S",
@@ -693,7 +682,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 138
+      "citations": 141
     },
     {
       "bibcode": "2006MNRAS.372.1034D",
@@ -702,7 +691,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 136
+      "citations": 137
     },
     {
       "bibcode": "2006A&A...453..823G",
@@ -711,7 +700,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 134
+      "citations": 135
     },
     {
       "bibcode": "2009ApJ...690..163R",
@@ -723,21 +712,21 @@
       "citations": 129
     },
     {
-      "bibcode": "2003ApJ...588..945B",
-      "title": "Comparison of the Gamma-Ray Burst Sensitivity of Different Detectors",
-      "firstAuthor": "Band, David L.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2003,
-      "citations": 123
-    },
-    {
       "bibcode": "2004ApJ...602..875S",
       "title": "High Energy Transient Explorer 2 Observations of the Extremely Soft X-Ray Flash XRF 020903",
       "firstAuthor": "Sakamoto, T.",
       "authors": null,
       "authorCount": null,
       "year": 2004,
+      "citations": 124
+    },
+    {
+      "bibcode": "2003ApJ...588..945B",
+      "title": "Comparison of the Gamma-Ray Burst Sensitivity of Different Detectors",
+      "firstAuthor": "Band, David L.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2003,
       "citations": 123
     },
     {

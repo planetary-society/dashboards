@@ -10,7 +10,7 @@ export const APP_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url))
 export function sourceFixture(rawDir, { compatible = true } = {}) {
 	// The real config, less its per-mission maps: they name real missions, not the fixture's.
 	const { names, thumbnails, ...config } = loadConfig(APP_DIR);
-	const index = { kind: 'mission_index', schema_version: 5, missions: [] };
+	const index = { kind: 'mission_index', schema_version: 6, missions: [] };
 	const runs = [];
 	const write = (relative, doc) => {
 		const file = path.join(rawDir, relative);
@@ -26,14 +26,14 @@ export function sourceFixture(rawDir, { compatible = true } = {}) {
 		const provenance = { as_of_date: '2026-10-02', input_fingerprint: `envelope-${label}` };
 		const cohort = { publication_start_date: '2000-01-01', publication_end_date: '2003-01-01', status: 'available' };
 		const corpus = {
-			kind: 'mission_corpus', schema_version: 5, mission_id: id, short_title: shortTitle,
+			kind: 'mission_corpus', schema_version: 6, mission_id: id, short_title: shortTitle,
 			division: division.name, image_url: label === 'bps' ? null : `https://example.test/${id}.jpg`,
 			provenance, mission: { mission_launch_date: '2000-01-01' }, files: {}
 		};
-		for (const kind of ['records', 'citations', 'records_window', 'citations_window']) {
-			const scope = kind.endsWith('_window') ? 'window' : 'lifetime';
+		for (const kind of ['records', 'citations', 'records_window', 'citations_window', 'institutions']) {
+			const scope = kind === 'institutions' ? undefined : kind.endsWith('_window') ? 'window' : 'lifetime';
 			corpus.files[kind] = write(`payload/${label}/${kind}.json`, {
-				kind: `mission_${kind}`, schema_version: 5, mission_id: id, scope, provenance,
+				kind: `mission_${kind}`, schema_version: 6, mission_id: id, scope, provenance,
 				window: { ...cohort, citation_window_years: 3, ...(compatible ? {} : { post_prime_years: 2 }) }, records: [], citations: {}, window_citations: {}
 			});
 		}
@@ -53,7 +53,11 @@ export function sourceFixture(rawDir, { compatible = true } = {}) {
 				cost_bin: compatible ? '< $100M' : '< $50M', window_cohort: cohort, lifetime_papers: 0, lifetime_citations: 0, window_papers: 0, window_citations: 0, window_status: 'available', window_output_basis: 'measured',
 				full_mission_cohort: { ...cohort }, full_mission_papers: 0, full_mission_citations: 0, full_mission_status: 'available', full_mission_output_basis: 'measured' }],
 			summary: { lifetime: { [division.name]: { papers: 0, citations_total: 0 } }, window: { [division.name]: { papers: 0, citations_total: 0 } }, full_mission: { [division.name]: { papers: 0, citations_total: 0 } } },
-			scopes: { lifetime: { divisions: { [division.name]: {} } }, window: { divisions: { [division.name]: {} } }, full_mission: { divisions: { [division.name]: {} } } },
+			// The full-mission pool carries its cutoffs: the Analysis page's N50 divides by the top-50% one.
+			scopes: { lifetime: { divisions: { [division.name]: {} } }, window: { divisions: { [division.name]: {} } }, full_mission: { divisions: { [division.name]: {
+				pooled: { n: 0, total: 0, cutoffs: { ks: config.tierPercents, cutoffs: config.tierPercents.map(() => 1) } },
+				pooled_cutoffs: { top_k_distinct_counts: Object.fromEntries(config.tierPercents.map((p) => [p, 0])) }
+			} } } },
 			companion_exports: { requested: { missions: true, csv: false }, missions: { [shortTitle]: ref } },
 			files: {}
 		};
@@ -89,11 +93,12 @@ export function repin(f, i = 0) {
  */
 export function fixtureApp(f, dir, clps = {}) {
 	fs.cpSync(path.join(APP_DIR, 'scripts'), path.join(dir, 'scripts'), { recursive: true });
-	// Every fixture mission is under the threshold with no papers, so an empty classification is complete.
-	const paperKinds = { file: 'data/paper-kinds.json', examples: [f.runs[0].id], smallMax: 10 };
-	fs.mkdirSync(path.join(dir, 'data'), { recursive: true });
-	fs.writeFileSync(path.join(dir, paperKinds.file), JSON.stringify({ asOf: '2026-10-02', method: 'Fixture.', papers: [] }));
-	const config = { ...f.config, paperKinds, clps: { rawDir: f.rawDir, comparators: [f.runs[0].id], horizonMonths: 3, ...clps } };
+	// The packager shares modules with the page (the affiliation maps' projections, for one), so the
+	// fixture carries the page's library too, all but its generated data.
+	const generated = path.join(APP_DIR, 'src/lib/data/generated');
+	fs.cpSync(path.join(APP_DIR, 'src/lib'), path.join(dir, 'src/lib'), { recursive: true, filter: (src) => !src.startsWith(generated) });
+	fs.symlinkSync(path.join(APP_DIR, 'node_modules'), path.join(dir, 'node_modules'));
+	const config = { ...f.config, clps: { rawDir: f.rawDir, comparators: [f.runs[0].id], surface: [f.runs[0].id], horizonMonths: 3, ...clps } };
 	fs.writeFileSync(path.join(dir, 'smi.config.json'), JSON.stringify(config, null, 2));
 	return dir;
 }

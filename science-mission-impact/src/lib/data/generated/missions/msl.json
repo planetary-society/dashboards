@@ -1,6 +1,6 @@
 {
   "id": "msl",
-  "name": "MSL",
+  "name": "Curiosity",
   "fullName": "Mars Science Laboratory Curiosity",
   "division": "planetary",
   "divisionName": "Planetary Science",
@@ -9,7 +9,11 @@
     "status": "Extended Mission",
     "failed": false,
     "cost": 4020.6,
+    "lcc": 2574,
     "type": "Rover",
+    "program": "Mars Exploration Program (MEP)",
+    "target": "Mars",
+    "launchVehicle": "Atlas V",
     "dates": {
       "formulation": "2003-09-01",
       "launch": "2011-11-26",
@@ -23,12 +27,12 @@
     "m": 6.333,
     "i100": 87,
     "g": 150,
-    "tori": 95.012,
-    "riq": 609
+    "tori": 95.377,
+    "riq": 610
   },
   "facts": {
     "papers": 1111,
-    "citations": 38903,
+    "citations": 38989,
     "publicationYears": [
       2012,
       2026
@@ -59,7 +63,7 @@
       73,
       87,
       93,
-      87,
+      85,
       78,
       84,
       66,
@@ -67,7 +71,7 @@
       61,
       76,
       67,
-      71
+      73
     ],
     "citations": [
       35,
@@ -77,89 +81,59 @@
       1813,
       2276,
       2511,
-      2708,
+      2707,
       3810,
       4006,
-      4810,
-      3248,
-      3932,
-      4100,
-      3102
+      4807,
+      3249,
+      3931,
+      4108,
+      3184
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 38903,
-      "observed": 38903,
+      "expected": 38989,
+      "observed": 38989,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2012-09-01",
-    "end": "2016-07-01",
-    "matureDate": "2019-10-01",
-    "status": "available",
-    "months": 46,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      16,
-      4,
-      2,
-      0,
-      4,
-      0,
-      4,
-      2,
-      6,
-      8,
-      6,
-      2,
-      5,
-      2,
-      6,
-      5,
-      19,
-      9,
-      9,
-      4,
-      2,
-      14,
-      29,
-      7,
-      6,
-      2,
-      7,
-      2,
-      7,
-      8,
-      11,
-      7,
-      6,
-      8,
-      3,
-      6,
-      3,
-      3,
-      8,
-      3,
-      9,
-      4,
-      12,
-      4,
-      5,
-      8
-    ],
-    "citationsByYearOffset": [
-      35,
-      282,
-      1023,
-      1233,
-      1550,
-      1253,
-      583,
-      146
-    ]
+  "affiliations": {
+    "papers": 1111,
+    "us": {
+      "mapped": 805,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 345
+        },
+        {
+          "name": "California Institute of Technology",
+          "papers": 200
+        },
+        {
+          "name": "NASA Johnson Space Center",
+          "papers": 181
+        }
+      ]
+    },
+    "world": {
+      "mapped": 990,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 345
+        },
+        {
+          "name": "California Institute of Technology",
+          "papers": 200
+        },
+        {
+          "name": "NASA Johnson Space Center",
+          "papers": 181
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2014Sci...343A.386G",
@@ -178,58 +152,58 @@
   "ranks": {
     "full": {
       "bins": [
-        68.406,
-        88.485,
-        86.32,
-        96.929,
-        65.533,
-        85.942,
-        72.525,
-        100.16,
-        101.399,
-        131.301
+        70.93,
+        88.555,
+        86.062,
+        96.791,
+        63.958,
+        85.741,
+        71.85,
+        100.506,
+        100.489,
+        130.116
       ],
       "top1": 15
     },
     "window": {
       "bins": [
-        36.215,
-        37.827,
-        30.608,
-        23.363,
-        23.68,
-        23.925,
-        28.294,
-        26.873,
-        29.216,
+        38.742,
+        37.234,
+        30.367,
+        22.602,
+        23.839,
+        23.396,
+        28.551,
+        26.372,
+        28.898,
         37
       ],
-      "top1": 5.635
+      "top1": 5.44
     },
     "lifetime": {
       "bins": [
-        133.043,
-        123.517,
-        134.531,
-        102.936,
-        107.184,
-        101.837,
-        100.486,
-        99.936,
-        98.436,
-        109.095
+        137.379,
+        125.925,
+        132.778,
+        102.107,
+        105.003,
+        101.446,
+        102.769,
+        98.025,
+        98.057,
+        107.512
       ],
       "top1": 12
     }
   },
   "full": {
-    "papers": 897,
+    "papers": 895,
     "outputBasis": "measured",
-    "citations": 15271,
-    "top10": 139.756,
-    "top10ShareOfDivision": 0.12789,
+    "citations": 15274,
+    "top10": 125.316,
+    "top10ShareOfDivision": 0.11547,
     "top1": 15,
-    "top1ShareOfDivision": 0.13726,
+    "top1ShareOfDivision": 0.13821,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.071,
@@ -246,10 +220,15 @@
       "months": 136,
       "citationBuckets": 15
     },
+    "indices": {
+      "h": 51,
+      "g": 75,
+      "m": 4.501
+    },
     "spread": {
-      "mean": 17.025,
+      "mean": 17.066,
       "median": 10,
-      "uncited": 38,
+      "uncited": 37,
       "i10": 461,
       "i100": 15
     }
@@ -258,10 +237,10 @@
     "papers": 297,
     "outputBasis": "measured",
     "citations": 6105,
-    "top10": 35.925,
-    "top10ShareOfDivision": 0.07443,
-    "top1": 5.635,
-    "top1ShareOfDivision": 0.11674,
+    "top10": 36.5,
+    "top10ShareOfDivision": 0.07623,
+    "top1": 5.44,
+    "top1ShareOfDivision": 0.11362,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.071,
@@ -278,6 +257,11 @@
       "months": 46,
       "citationBuckets": 8
     },
+    "indices": {
+      "h": 38,
+      "g": 64,
+      "m": 9.922
+    },
     "spread": {
       "mean": 20.556,
       "median": 10,
@@ -289,9 +273,9 @@
   "lifetime": {
     "papers": 1111,
     "outputBasis": "measured",
-    "citations": 38903,
-    "top10": 146.757,
-    "top10ShareOfDivision": 0.10783,
+    "citations": 38989,
+    "top10": 101.628,
+    "top10ShareOfDivision": 0.06491,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -302,7 +286,7 @@
       "date": "2012-09-00"
     },
     "spread": {
-      "mean": 35.016,
+      "mean": 35.094,
       "median": 14,
       "uncited": 105,
       "i10": 661,
@@ -311,12 +295,12 @@
   },
   "query": {
     "arms": "((((=abs:\"Mars Science Laboratory\" OR =abs:\"Curiosity rover\" OR (=abs:Curiosity AND (abs:Mars OR abs:Gale OR abs:martian)) OR (abs:MSL AND (abs:Mars OR abs:Gale OR abs:martian)) OR (abs:Mars AND NOT (abs:Perseverance OR abs:Jezero OR =abs:\"Mars 2020\") AND (=abs:\"Radiation Assessment Detector\" OR =abs:ChemCam OR =abs:CheMin OR =abs:\"Sample Analysis at Mars\" OR =abs:\"Mast Camera\" OR =abs:Mastcam OR =abs:\"Mars Hand Lens Imager\" OR abs:MAHLI OR =abs:\"Rover Environmental Monitoring Station\" OR =abs:\"Dynamic Albedo of Neutrons\" OR (=abs:\"Alpha Particle X-ray Spectrometer\" AND abs:Gale))))) OR (=abs:\"Mars Descent Imager\" AND abs:(Mars OR martian OR Gale)) OR (abs:(REMS OR DAN) AND abs:Gale)))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2012-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Mars+Science+Laboratory%22+OR+%3Dabs%3A%22Curiosity+rover%22+OR+%28%3Dabs%3ACuriosity+AND+%28abs%3AMars+OR+abs%3AGale+OR+abs%3Amartian%29%29+OR+%28abs%3AMSL+AND+%28abs%3AMars+OR+abs%3AGale+OR+abs%3Amartian%29%29+OR+%28abs%3AMars+AND+NOT+%28abs%3APerseverance+OR+abs%3AJezero+OR+%3Dabs%3A%22Mars+2020%22%29+AND+%28%3Dabs%3A%22Radiation+Assessment+Detector%22+OR+%3Dabs%3AChemCam+OR+%3Dabs%3ACheMin+OR+%3Dabs%3A%22Sample+Analysis+at+Mars%22+OR+%3Dabs%3A%22Mast+Camera%22+OR+%3Dabs%3AMastcam+OR+%3Dabs%3A%22Mars+Hand+Lens+Imager%22+OR+abs%3AMAHLI+OR+%3Dabs%3A%22Rover+Environmental+Monitoring+Station%22+OR+%3Dabs%3A%22Dynamic+Albedo+of+Neutrons%22+OR+%28%3Dabs%3A%22Alpha+Particle+X-ray+Spectrometer%22+AND+abs%3AGale%29%29%29%29%29+OR+%28%3Dabs%3A%22Mars+Descent+Imager%22+AND+abs%3A%28Mars+OR+martian+OR+Gale%29%29+OR+%28abs%3A%28REMS+OR+DAN%29+AND+abs%3AGale%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:07:12.308662+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2012-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Mars+Science+Laboratory%22+OR+%3Dabs%3A%22Curiosity+rover%22+OR+%28%3Dabs%3ACuriosity+AND+%28abs%3AMars+OR+abs%3AGale+OR+abs%3Amartian%29%29+OR+%28abs%3AMSL+AND+%28abs%3AMars+OR+abs%3AGale+OR+abs%3Amartian%29%29+OR+%28abs%3AMars+AND+NOT+%28abs%3APerseverance+OR+abs%3AJezero+OR+%3Dabs%3A%22Mars+2020%22%29+AND+%28%3Dabs%3A%22Radiation+Assessment+Detector%22+OR+%3Dabs%3AChemCam+OR+%3Dabs%3ACheMin+OR+%3Dabs%3A%22Sample+Analysis+at+Mars%22+OR+%3Dabs%3A%22Mast+Camera%22+OR+%3Dabs%3AMastcam+OR+%3Dabs%3A%22Mars+Hand+Lens+Imager%22+OR+abs%3AMAHLI+OR+%3Dabs%3A%22Rover+Environmental+Monitoring+Station%22+OR+%3Dabs%3A%22Dynamic+Albedo+of+Neutrons%22+OR+%28%3Dabs%3A%22Alpha+Particle+X-ray+Spectrometer%22+AND+abs%3AGale%29%29%29%29%29+OR+%28%3Dabs%3A%22Mars+Descent+Imager%22+AND+abs%3A%28Mars+OR+martian+OR+Gale%29%29+OR+%28abs%3A%28REMS+OR+DAN%29+AND+abs%3AGale%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:48:33.847376+00:00",
     "reconciliation": {
-      "adsReturned": 1168,
-      "curatedOut": 53,
+      "adsReturned": 1170,
+      "curatedOut": 55,
       "curatedIn": 2,
       "libraryOut": 0,
       "otherOut": 0,
@@ -783,6 +767,22 @@
         "reason": "Instrument description of the Psyche mission's multispectral imager; MSL is mentioned only as design heritage.",
         "authority": "agent",
         "date": "2026-10-03"
+      },
+      {
+        "bibcode": "2018Sci...360..944.",
+        "doi": "10.1126/science.360.6392.944",
+        "title": "News at a glance",
+        "reason": "Science weekly news roundup; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2018Sci...360.1054V",
+        "doi": "10.1126/science.360.6393.1054",
+        "title": "NASA Curiosity rover hits organic pay dirt on Mars",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
       }
     ]
   },
@@ -803,7 +803,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 577
+      "citations": 578
     },
     {
       "bibcode": "2015Sci...350.7575G",
@@ -821,7 +821,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 465
+      "citations": 468
     },
     {
       "bibcode": "2012SSRv..170..167W",
@@ -830,7 +830,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 464
+      "citations": 466
     },
     {
       "bibcode": "2014Sci...343B.386V",
@@ -848,7 +848,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 412
+      "citations": 413
     },
     {
       "bibcode": "2018Sci...360.1096E",
@@ -857,7 +857,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 396
+      "citations": 398
     },
     {
       "bibcode": "2014Sci...343D.386H",
@@ -866,7 +866,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 380
+      "citations": 381
     },
     {
       "bibcode": "2015JGRE..120..495F",
@@ -875,7 +875,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 360
+      "citations": 362
     },
     {
       "bibcode": "2013Sci...340.1080Z",
@@ -884,7 +884,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 353
+      "citations": 355
     },
     {
       "bibcode": "2013Sci...340.1068W",
@@ -902,7 +902,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 319
+      "citations": 320
     },
     {
       "bibcode": "2015Sci...347..415W",
@@ -911,7 +911,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 308
+      "citations": 310
     },
     {
       "bibcode": "2013Sci...341E...3L",
@@ -929,7 +929,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 299
+      "citations": 300
     },
     {
       "bibcode": "2017E&PSL.471..172R",
@@ -941,6 +941,15 @@
       "citations": 293
     },
     {
+      "bibcode": "2013Sci...341..263M",
+      "title": "Abundance and Isotopic Composition of Gases in the Martian Atmosphere from the Curiosity Rover",
+      "firstAuthor": "Mahaffy, Paul R.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 270
+    },
+    {
       "bibcode": "2015NatGe...8..357M",
       "title": "Transient liquid water and water activity at Gale crater on Mars",
       "firstAuthor": "Martín-Torres, F. Javier",
@@ -948,15 +957,6 @@
       "authorCount": null,
       "year": 2015,
       "citations": 270
-    },
-    {
-      "bibcode": "2013Sci...341..263M",
-      "title": "Abundance and Isotopic Composition of Gases in the Martian Atmosphere from the Curiosity Rover",
-      "firstAuthor": "Mahaffy, Paul R.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2013,
-      "citations": 269
     },
     {
       "bibcode": "2014Sci...343C.386M",

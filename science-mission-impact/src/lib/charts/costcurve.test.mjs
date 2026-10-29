@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { curveFacts, runningAt, curveChart } from './costcurve.js';
+import { curveFacts, curveChart } from './costcurve.js';
 
 // Four placed missions, two of them holding top papers; the packager's order and shares.
 const curve = {
@@ -43,14 +43,6 @@ test('curveFacts is null for a view with no curve, and names fall back to ids', 
 	const f = curveFacts(curve, [], 'full', 10);
 	assert.equal(f.points[0].name, 'a');
 	assert.equal(f.hasTop, false);
-});
-
-test('runningAt reads the totals at the dearest mission within a cost', () => {
-	const f = curveFacts(curve, missions, 'full', 10);
-	assert.equal(runningAt(f.points, 7), null); // nothing that cheap
-	assert.equal(runningAt(f.points, 8).id, 'a');
-	assert.equal(runningAt(f.points, 150).total, 3);
-	assert.equal(runningAt(f.points, 1e6).id, 'd');
 });
 
 test('a division with no top papers in the view still places its missions', () => {

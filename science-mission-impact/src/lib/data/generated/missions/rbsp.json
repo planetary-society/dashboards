@@ -1,6 +1,6 @@
 {
   "id": "rbsp",
-  "name": "RBSP",
+  "name": "Van Allen Probes",
   "fullName": "Van Allen Probes",
   "division": "heliophysics",
   "divisionName": "Heliophysics",
@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 1015.3,
+    "lcc": 686,
     "type": "In-Situ Probe",
+    "program": "Living With a Star (LWS)",
+    "target": "Earth",
+    "launchVehicle": "Atlas V 401",
     "dates": {
       "formulation": "2006-06-01",
       "launch": "2012-08-30",
@@ -23,12 +27,12 @@
     "m": 5.533,
     "i100": 57,
     "g": 140,
-    "tori": 62.683,
-    "riq": 527
+    "tori": 62.936,
+    "riq": 528
   },
   "facts": {
-    "papers": 1431,
-    "citations": 39204,
+    "papers": 1432,
+    "citations": 39248,
     "publicationYears": [
       2012,
       2026
@@ -67,7 +71,7 @@
       101,
       104,
       111,
-      72
+      73
     ],
     "citations": [
       0,
@@ -83,99 +87,53 @@
       4445,
       4189,
       4750,
-      4588,
-      2751
+      4590,
+      2793
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 39204,
-      "observed": 39204,
+      "expected": 39248,
+      "observed": 39248,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2012-11-01",
-    "end": "2017-12-01",
-    "matureDate": "2020-10-01",
-    "status": "available",
-    "months": 61,
-    "citationBuckets": 9,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      1,
-      0,
-      0,
-      0,
-      2,
-      0,
-      0,
-      1,
-      4,
-      3,
-      1,
-      15,
-      5,
-      8,
-      7,
-      9,
-      4,
-      1,
-      4,
-      0,
-      6,
-      6,
-      4,
-      4,
-      6,
-      2,
-      8,
-      9,
-      6,
-      6,
-      9,
-      6,
-      8,
-      12,
-      7,
-      5,
-      9,
-      9,
-      7,
-      4,
-      8,
-      12,
-      15,
-      14,
-      11,
-      12,
-      7,
-      6,
-      10,
-      12,
-      8,
-      8,
-      4,
-      8,
-      7,
-      6,
-      12,
-      9,
-      12,
-      10
-    ],
-    "citationsByYearOffset": [
-      0,
-      118,
-      504,
-      1088,
-      1739,
-      1440,
-      1228,
-      913,
-      356
-    ]
+  "affiliations": {
+    "papers": 1432,
+    "us": {
+      "mapped": 1040,
+      "top": [
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 359
+        },
+        {
+          "name": "Los Alamos National Laboratory, New Mexico",
+          "papers": 336
+        },
+        {
+          "name": "University of Iowa",
+          "papers": 304
+        }
+      ]
+    },
+    "world": {
+      "mapped": 1368,
+      "top": [
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 359
+        },
+        {
+          "name": "Los Alamos National Laboratory, New Mexico",
+          "papers": 336
+        },
+        {
+          "name": "University of Iowa",
+          "papers": 304
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2013SSRv..179..127K",
@@ -194,46 +152,46 @@
   "ranks": {
     "full": {
       "bins": [
-        33.966,
-        57.522,
-        75.644,
-        76.92,
-        88.646,
-        111.399,
-        102.098,
-        97.606,
-        129.553,
-        122.647
+        34.028,
+        57.565,
+        75.706,
+        77.011,
+        89.206,
+        111.418,
+        101.956,
+        97.617,
+        129.093,
+        122.401
       ],
-      "top1": 19.646
+      "top1": 19.463
     },
     "window": {
       "bins": [
         13.718,
         31.469,
-        34.589,
-        35.752,
-        50.587,
+        34.606,
+        35.846,
+        50.477,
         35.59,
         32.986,
-        51.63,
-        51.468,
+        51.747,
+        51.351,
         51.212
       ],
       "top1": 10
     },
     "lifetime": {
       "bins": [
-        163.081,
-        151.566,
-        150.911,
-        165.031,
-        151.167,
-        146.974,
-        144.353,
-        129.602,
-        125.273,
-        103.043
+        165.556,
+        152.645,
+        151.564,
+        164.633,
+        150.078,
+        147.017,
+        142.771,
+        130.127,
+        124.608,
+        103
       ],
       "top1": 12
     }
@@ -242,10 +200,10 @@
     "papers": 896,
     "outputBasis": "measured",
     "citations": 13246,
-    "top10": 106.189,
-    "top10ShareOfDivision": 0.07366,
-    "top1": 18.98,
-    "top1ShareOfDivision": 0.13165,
+    "top10": 118.216,
+    "top10ShareOfDivision": 0.082,
+    "top1": 18.797,
+    "top1ShareOfDivision": 0.13038,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.424,
@@ -262,6 +220,11 @@
       "months": 108,
       "citationBuckets": 13
     },
+    "indices": {
+      "h": 41,
+      "g": 61,
+      "m": 4.556
+    },
     "spread": {
       "mean": 14.783,
       "median": 10,
@@ -274,8 +237,8 @@
     "papers": 389,
     "outputBasis": "measured",
     "citations": 7386,
-    "top10": 45.467,
-    "top10ShareOfDivision": 0.10247,
+    "top10": 51.212,
+    "top10ShareOfDivision": 0.11542,
     "top1": 10,
     "top1ShareOfDivision": 0.22538,
     "first": {
@@ -294,6 +257,11 @@
       "months": 61,
       "citationBuckets": 9
     },
+    "indices": {
+      "h": 37,
+      "g": 58,
+      "m": 7.282
+    },
     "spread": {
       "mean": 18.987,
       "median": 12,
@@ -303,11 +271,11 @@
     }
   },
   "lifetime": {
-    "papers": 1431,
+    "papers": 1432,
     "outputBasis": "measured",
-    "citations": 39204,
-    "top10": 140.936,
-    "top10ShareOfDivision": 0.08994,
+    "citations": 39248,
+    "top10": 99.167,
+    "top10ShareOfDivision": 0.05412,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -318,26 +286,26 @@
       "date": "2013-04-00"
     },
     "spread": {
-      "mean": 27.396,
+      "mean": 27.408,
       "median": 12,
       "uncited": 126,
-      "i10": 817,
+      "i10": 818,
       "i100": 57
     }
   },
   "query": {
     "arms": "((=abs:\"Van Allen Probes\" OR =abs:\"Van Allen Probe\" OR =abs:\"Radiation Belt Storm Probes\" OR (abs:RBSP AND abs:(ECT OR EMFISIS OR EFW OR RBSPICE OR MagEIS OR REPT OR magnetic OR plasma OR \"radiation belt\" OR mission))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2012-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Van+Allen+Probes%22+OR+%3Dabs%3A%22Van+Allen+Probe%22+OR+%3Dabs%3A%22Radiation+Belt+Storm+Probes%22+OR+%28abs%3ARBSP+AND+abs%3A%28ECT+OR+EMFISIS+OR+EFW+OR+RBSPICE+OR+MagEIS+OR+REPT+OR+magnetic+OR+plasma+OR+%22radiation+belt%22+OR+mission%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:13:52.547002+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2012-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Van+Allen+Probes%22+OR+%3Dabs%3A%22Van+Allen+Probe%22+OR+%3Dabs%3A%22Radiation+Belt+Storm+Probes%22+OR+%28abs%3ARBSP+AND+abs%3A%28ECT+OR+EMFISIS+OR+EFW+OR+RBSPICE+OR+MagEIS+OR+REPT+OR+magnetic+OR+plasma+OR+%22radiation+belt%22+OR+mission%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:05:32.908366+00:00",
     "reconciliation": {
-      "adsReturned": 1436,
+      "adsReturned": 1437,
       "curatedOut": 8,
       "curatedIn": 5,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 2,
-      "final": 1431
+      "final": 1432
     }
   },
   "curation": {
@@ -531,7 +499,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 989
+      "citations": 990
     },
     {
       "bibcode": "2013Natur.504..411T",
@@ -540,7 +508,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 730
+      "citations": 731
     },
     {
       "bibcode": "2013SSRv..179..383B",
@@ -567,7 +535,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 519
+      "citations": 520
     },
     {
       "bibcode": "2013SSRv..179..423F",
@@ -603,7 +571,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 390
+      "citations": 391
     },
     {
       "bibcode": "2014GeoRL..41.1375U",
@@ -612,7 +580,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 331
+      "citations": 332
     },
     {
       "bibcode": "2015JGRA..120.7240J",
@@ -630,7 +598,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 245
+      "citations": 247
     },
     {
       "bibcode": "2015JGRA..120.7477S",
@@ -693,10 +661,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 173
+      "citations": 174
     }
   ],
   "papersFile": {
-    "rows": 1431
+    "rows": 1432
   }
 }

@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { buildCostCurve, pooledBand } from '../../../scripts/lib/costcurve.mjs';
 import { loadConfig } from '../../../scripts/lib/config.mjs';
-import { buildDiscussion, underThreshold } from './public.js';
+import { buildDiscussion, divisionFacts, underThreshold } from './public.js';
+import { wilson } from '../../../scripts/lib/public.mjs';
 
 /** The fixtures are on a $100M scale; a mission at exactly 100 exercises the inclusive edge. */
 const discuss = (divisions, options = {}) => buildDiscussion(divisions, { thresholdCost: 100, ...options });
@@ -18,12 +19,6 @@ const mission = (id, cost, top10 = 1, extra = {}) => ({
 /** The same mission with its full-mission citations set. */
 const cited = (m, citations) => {
 	m.full.citations = citations;
-	return m;
-};
-/** A mission whose first top-10% paper came `years` after formulation. */
-const reaching = (id, cost, years, yearsToBuild = null) => {
-	const m = mission(id, cost, 1, { yearsToBuild });
-	m.full.first = { state: 'reached', yearsFromFormulation: years };
 	return m;
 };
 /** A launch failure: measured, with nothing to show in any scope. */
@@ -86,7 +81,6 @@ test('each division keeps its own denominator and unavailable output stays disti
 	const story = discuss([packaged(a), packaged(b)]);
 	assert.deepEqual(story.divisions.map((d) => d.share), [0.2, 0.9]);
 	assert.equal(story.threshold.missions, 3);
-	assert.equal(story.threshold.unavailable, 1);
 });
 
 test('the comparison splits at-or-below and above the threshold over rankable divisions', () => {
@@ -98,9 +92,6 @@ test('the comparison splits at-or-below and above the threshold over rankable di
 	const tiny = { ...division([mission('skip', 10, 9)]), slug: 'tiny', name: 'Tiny', rankable: false };
 	const story = discuss([packaged(a), packaged(b), packaged(tiny)]);
 	assert.deepEqual(story.comparison.divisions, ['test', 'other']);
-	assert.equal(story.comparison.unavailable, 1);
-	// The nearest costs either side come from every costed mission; $100M exactly is at or below.
-	assert.deepEqual(story.comparison.gap, { below: 100, above: 500 });
 	const none = { launchYears: null, launchMedian: null, topType: null };
 	assert.deepEqual(story.comparison.groups, [
 		// cheap, failed (a measured zero), edge at exactly $100M and o1 at $99.999M
@@ -110,7 +101,6 @@ test('the comparison splits at-or-below and above the threshold over rankable di
 		{ key: 'over', missions: 2, failed: 0, withTop: 2, top10: 9.5, top10PerMission: 4.75, top1: 0, top1PerMission: 0, cost: 1500, citations: 10,
 			median: 4.75, papersMedian: 2, noPapers: 0, largest: { id: 'o2', name: 'o2', top10: 5, share: 0.52632 }, costMin: 500, costMax: 1000, ...none }
 	]);
-	assert.equal(story.missingCosts, 1);
 });
 
 test('the pooled band weights each rankable division with credit equally', () => {
@@ -146,21 +136,28 @@ test('citations per $100M keep each rankable division apart, null for an empty s
 			{ key: 'under', missions: 2, cost: 50, citations: 10, perHundredM: 20 },
 			{ key: 'over', missions: 1, cost: 300, citations: 7, perHundredM: 2.333 }
 		], favors: null, flipsOn: [{ id: 'u1', name: 'u1', side: 'under' }, { id: 'o1', name: 'o1', side: 'over' }],
-		margin: 0.88335, largestUnder: { id: 'u1', name: 'u1', share: 1 } },
+		margin: 0.88335, largestUnder: { id: 'u1', name: 'u1', share: 1 }, fit: null }, // two cited missions: no line
 		{ division: 'other', name: 'Other', groups: [
 			{ key: 'under', missions: 0, cost: 0, citations: 0, perHundredM: null },
 			{ key: 'over', missions: 1, cost: 150, citations: 10, perHundredM: 6.667 }
-		], favors: null, flipsOn: [], margin: null, largestUnder: null }
+		], favors: null, flipsOn: [], margin: null, largestUnder: null, fit: null }
 	]);
 });
 
-test('the gap around the threshold spans every division, and a side with no mission is null', () => {
-	const a = division([mission('a1', 40), mission('above', 101), mission('nocost', null), unmeasured('lost', 99.5)]);
-	const tiny = { ...division([mission('t1', 99.9), mission('t2', 150)]), slug: 'tiny', name: 'Tiny', rankable: false };
-	// $99.9M is in a division that is not even rankable.
-	assert.deepEqual(discuss([packaged(a), packaged(tiny)]).comparison.gap, { below: 99.9, above: 101 });
-	assert.deepEqual(discuss([packaged(a), packaged(tiny)], { thresholdCost: 99.9 }).comparison.gap, { below: 99.9, above: 101 });
-	assert.deepEqual(discuss([packaged(division([mission('x', 20), mission('y', 0)]))]).comparison.gap, { below: 20, above: null });
+test('the per-dollar trend fits log rate on log cost over cited missions, and says whether one mission decides its direction', () => {
+	// Rates 10, 20, 40, 80 per $100M at $10M…$10B: doubling per tenfold cost, whichever mission is dropped.
+	const rising = division([cited(mission('r1', 10), 1), cited(mission('r2', 100), 20), cited(mission('r3', 1000), 400), cited(mission('r4', 10000), 8000), failure('rf', 50), unmeasured('rq', 60)]);
+	// Rates 10, 100, 80, 60: the line rises only because of the cheapest mission.
+	const leaning = { ...division([cited(mission('l1', 10), 1), cited(mission('l2', 100), 100), cited(mission('l3', 1000), 800), cited(mission('l4', 10000), 6000)]), slug: 'leaning', name: 'Leaning' };
+	// Three missions: dropping any one leaves no line, so robustness is untested.
+	const three = { ...division([cited(mission('t1', 10), 1), cited(mission('t2', 100), 20), cited(mission('t3', 1000), 400)]), slug: 'three', name: 'Three' };
+	const [a, b, c] = discuss([rising, leaning, three].map(packaged)).perDollar.map((row) => row.fit);
+	// the failure is a measured zero, left out of the line; the unmeasured mission is in neither count.
+	// Citations 1, 20, 400, 8,000: twenty times as many at ten times the cost (citesTenfold)
+	assert.deepEqual(a, { missions: 4, zeros: 1, slope: 0.301, intercept: 0.699, tenfold: 2, citesTenfold: 20, holds: true });
+	assert.ok(b.slope > 0);
+	assert.deepEqual([b.missions, b.zeros, b.holds], [4, 0, false]);
+	assert.deepEqual([c.missions, c.holds], [3, null]);
 });
 
 test('each side of the comparison carries its medians, largest mission, cost and launch range and commonest type', () => {
@@ -193,15 +190,6 @@ test('each side of the comparison carries its medians, largest mission, cost and
 		[empty.median, empty.papersMedian, empty.noPapers, empty.largest, empty.costMin, empty.costMax, empty.launchYears, empty.launchMedian, empty.topType],
 		[null, null, 0, null, null, null, null, null, null]
 	);
-});
-
-test('the threshold facts carry the median launch year of every under-reference mission, as a whole year', () => {
-	const lost = unmeasured('lost', 30);
-	const a = division([mission('a1', 10, 1, { launchYear: 1990 }), mission('big', 200, 1, { launchYear: 2020 }), lost]);
-	const tiny = { ...division([mission('t1', 5, 1, { launchYear: 1997 })]), slug: 'tiny', name: 'Tiny', rankable: false };
-	// 1990 and 1997, the unrankable one included and the unmeasured one's missing year left out: 1993.5.
-	assert.equal(discuss([packaged(a), packaged(tiny)]).threshold.launchMedian, 1994);
-	assert.equal(discuss([packaged(division([mission('n', 10)]))]).threshold.launchMedian, null);
 });
 
 test('the pooled band says how much spending and how many missions sit inside it, divisions weighted equally', () => {
@@ -242,64 +230,41 @@ test('per-dollar favors a side only when no single mission decides it', () => {
 	for (const row of rows) assert.equal(row.favors !== null, row.flipsOn.length === 0 && row.margin !== null);
 });
 
-test('the comparison per rankable division, and its equal-weight mean over divisions with both sides', () => {
+test('the comparison per rankable division, a one-sided division included', () => {
 	// Test: under a1 (2) and a failure (0); over b1 (6).
 	const a = division([mission('a1', 50, 2), failure('af', 60), mission('b1', 500, 6), unmeasured('lost', 70)]);
 	// Other: under o1 (1); over o2 (3) and o3 (5).
 	const b = { ...division([mission('o1', 100, 1), mission('o2', 200, 3), mission('o3', 900, 5)]), slug: 'other', name: 'Other' };
-	// One-sided: present in byDivision, left out of the mean.
+	// One-sided: present in byDivision.
 	const c = { ...division([mission('c1', 20, 4), mission('c2', 30, 0)]), slug: 'cheap', name: 'Cheap' };
 	const tiny = { ...division([mission('skip', 10, 9)]), slug: 'tiny', name: 'Tiny', rankable: false };
 	const { comparison } = discuss([a, b, c, tiny].map(packaged));
 	assert.deepEqual(comparison.byDivision, [
-		{ division: 'test', name: 'Test', under: { missions: 2, failed: 1, withTop: 1, top10: 2, top10PerMission: 1 },
-			over: { missions: 1, failed: 0, withTop: 1, top10: 6, top10PerMission: 6 } },
-		{ division: 'other', name: 'Other', under: { missions: 1, failed: 0, withTop: 1, top10: 1, top10PerMission: 1 },
-			over: { missions: 2, failed: 0, withTop: 2, top10: 8, top10PerMission: 4 } },
-		{ division: 'cheap', name: 'Cheap', under: { missions: 2, failed: 0, withTop: 1, top10: 4, top10PerMission: 2 },
-			over: { missions: 0, failed: 0, withTop: 0, top10: 0, top10PerMission: null } }
+		{ division: 'test', name: 'Test', under: { missions: 2, failed: 1, withTop: 1, top10: 2, top10PerMission: 1, largest: { id: 'a1', name: 'a1', top10: 2, share: 1 } },
+			over: { missions: 1, failed: 0, withTop: 1, top10: 6, top10PerMission: 6, largest: { id: 'b1', name: 'b1', top10: 6, share: 1 } } },
+		{ division: 'other', name: 'Other', under: { missions: 1, failed: 0, withTop: 1, top10: 1, top10PerMission: 1, largest: { id: 'o1', name: 'o1', top10: 1, share: 1 } },
+			over: { missions: 2, failed: 0, withTop: 2, top10: 8, top10PerMission: 4, largest: { id: 'o3', name: 'o3', top10: 5, share: 0.625 } } },
+		{ division: 'cheap', name: 'Cheap', under: { missions: 2, failed: 0, withTop: 1, top10: 4, top10PerMission: 2, largest: { id: 'c1', name: 'c1', top10: 4, share: 1 } },
+			over: { missions: 0, failed: 0, withTop: 0, top10: 0, top10PerMission: null, largest: null } }
 	]);
-	// (1 + 1) / 2 and (6 + 4) / 2; the pooled groups instead read 7 / 5 and 14 / 3.
-	assert.deepEqual(comparison.equalWeight, { under: 1, over: 5 });
+	// The pooled groups read 7 / 5 and 14 / 3.
 	assert.deepEqual(comparison.groups.map((g) => g.top10PerMission), [1.4, 4.667]);
-	assert.deepEqual(discuss([packaged(c)]).comparison.equalWeight, { under: null, over: null });
 });
 
-test('timing cuts the reached missions into cost thirds at round(n/3) and round(2n/3)', () => {
-	const pad = (i) => String(i).padStart(2, '0');
-	// $10M to $260M, i years to a first top paper and i/2 to build.
-	const reached = Array.from({ length: 26 }, (_, k) => reaching(`m${pad(k + 1)}`, (k + 1) * 10, k + 1, (k + 1) / 2));
-	const d = division([...reached.reverse(), failure('crash', 50), mission('quiet', 500)]);
-	const [row] = discuss([packaged(d)]).timing;
-	assert.deepEqual([row.missions, row.reached, row.never], [28, 26, 2]);
-	assert.deepEqual(row.under, { missions: 11, reached: 10, failed: 1 }); // m01 to m10 ($100M inclusive) and the crash
-	assert.deepEqual(row.byCostThird, [
-		{ key: 'low', missions: 9, costRange: [10, 90], medianYears: 5, medianBuildYears: 2.5 },
-		{ key: 'mid', missions: 8, costRange: [100, 170], medianYears: 13.5, medianBuildYears: 6.75 },
-		{ key: 'high', missions: 9, costRange: [180, 260], medianYears: 22, medianBuildYears: 11 }
-	]);
-	// n = 2 cuts at 1 and 1: the middle third is empty, and a missing build time stays null.
-	const [pair] = discuss([packaged(division([reaching('r2', 300, 5), reaching('r1', 10, 3, 2)]))]).timing;
-	assert.deepEqual(pair.byCostThird, [
-		{ key: 'low', missions: 1, costRange: [10, 10], medianYears: 3, medianBuildYears: 2 },
-		{ key: 'mid', missions: 0, costRange: null, medianYears: null, medianBuildYears: null },
-		{ key: 'high', missions: 1, costRange: [300, 300], medianYears: 5, medianBuildYears: null }
-	]);
+test('the primer reads the focus division: its histogram and its top-10% cutoff', () => {
+	const d = { ...packaged(division([mission('a1', 10)])), slug: 'focus', name: 'Focus',
+		citationHistogram: { full: { counts: [3, 2, 1, 0, 1], top: [0, 0.5, 1, 0, 1], papers: 7 } },
+		stats: { full: { cutoffs: [{ percent: 1, citations: 9, papers: 1 }, { percent: 10, citations: 2, papers: 2 }] } } };
+	const story = discuss([d], { focusDivision: 'focus' });
+	assert.equal(story.focusDivision, 'focus');
+	assert.deepEqual(story.primer, { division: 'focus', name: 'Focus', counts: [3, 2, 1, 0, 1], top: [0, 0.5, 1, 0, 1], papers: 7, cutoff: 2, topPapers: 2.5 });
+	assert.equal(discuss([d], { focusDivision: 'nope' }).primer, null);
 });
 
-test('science-start timing: cost quarters over every division together, and the ratio', () => {
-	const at = (id, cost, months) => {
-		const m = mission(id, cost);
-		m.full.first = { state: 'reached', yearsFromScienceStart: months / 12 };
-		return m;
-	};
-	const a = division([at('a1', 10, 30), at('a2', 20, 24), at('a3', 50, 18), at('a4', 100, 12), at('a5', 200, 9), at('a6', 300, 6)]);
-	const b = { ...division([at('b1', 400, 6), at('b2', 500, 3), at('b3', 600, 3), at('b4', 700, 3), at('b5', 800, 0), at('b6', 900, 3), failure('bf', 5)]), slug: 'other' };
-	const t = discuss([packaged(a), packaged(b)]).scienceStart;
-	assert.equal(t.missions, 12, 'both divisions; the failure left out');
-	assert.deepEqual(t.groups.map((g) => [g.lo, g.hi, g.missions, g.months]), [[10, 50, 3, 24], [100, 300, 3, 9], [400, 600, 3, 3], [700, 900, 3, 3]]);
-	assert.equal(t.ratio, 8);
-	assert.equal(discuss([packaged(division([at('x', 10, 1), at('y', 20, 2)]))]).scienceStart, null, 'too few missions for four groups');
+test('the Wilson interval brackets k of n, and an empty side has none', () => {
+	assert.deepEqual(wilson(14, 46), [0.1908, 0.44806]);
+	assert.deepEqual(wilson(0, 17)[0], 0);
+	assert.equal(wilson(0, 0), null);
 });
 
 test('failure facts count shortfalls either side of the threshold, every costed mission of every division', () => {
@@ -309,16 +274,22 @@ test('failure facts count shortfalls either side of the threshold, every costed 
 	// Not rankable, still counted: failure is not a citation measure.
 	const tiny = { ...division([mission('o3', 300)]), slug: 'tiny', name: 'Tiny', rankable: false };
 	const { failure } = discuss([packaged(a), packaged(tiny)]);
-	assert.deepEqual(failure.under, { missions: 3, failed: 2, rate: 0.66667 });
-	assert.deepEqual(failure.over, { missions: 3, failed: 1, rate: 0.33333 });
+	assert.deepEqual(failure.under, { missions: 3, failed: 2, lost: 0, rate: 0.66667, interval: [0.20765, 0.93851], lostCostMax: null });
+	assert.deepEqual(failure.over, { missions: 3, failed: 1, lost: 0, rate: 0.33333, interval: wilson(1, 3), lostCostMax: null });
+
 	assert.equal(failure.higher, 'under');
 	assert.deepEqual(failure.byDivision, [
-		{ division: 'test', name: 'Test', under: { missions: 3, failed: 2 }, over: { missions: 2, failed: 1 } },
-		{ division: 'tiny', name: 'Tiny', under: { missions: 0, failed: 0 }, over: { missions: 1, failed: 0 } }
+		{ division: 'test', name: 'Test', under: { missions: 3, failed: 2, lost: 0 }, over: { missions: 2, failed: 1, lost: 0 } },
+		{ division: 'tiny', name: 'Tiny', under: { missions: 0, failed: 0, lost: 0 }, over: { missions: 1, failed: 0, lost: 0 } }
 	]);
 	// Equal rates, or an empty side, name no side.
 	assert.equal(discuss([packaged(division([short(mission('x', 10)), short(mission('y', 500))]))]).failure.higher, null);
 	assert.equal(discuss([packaged(division([short(mission('x', 10))]))]).failure.higher, null);
+});
+
+test('each side names its costliest outright failure, by cost', () => {
+	const lost = discuss([packaged(division([failure('f1', 20), failure('f2', 60), failure('f3', 400), mission('ok', 90)]))]).failure;
+	assert.deepEqual([lost.under.lost, lost.under.lostCostMax, lost.over.lostCostMax], [2, 60, 400]);
 });
 
 test('threshold facts count the missions at or below it and their mission papers', () => {
@@ -327,8 +298,7 @@ test('threshold facts count the missions at or below it and their mission papers
 		mission('big', 200, 1, { launchYear: 2020 }), lost, mission('nocost', null)]);
 	a.missions[0].full.papers = 7;
 	const { threshold } = discuss([packaged(a)]);
-	assert.deepEqual(threshold, { missions: 3, total: 4, ids: ['a1', 'edge', 'lost'], papers: 9, papersAll: 13,
-		unavailable: 1, launchMedian: 1993 });
+	assert.deepEqual(threshold, { missions: 3, total: 4, ids: ['a1', 'edge', 'lost'], papers: 9, costMedian: 30 });
 });
 
 test('the packaged story is the discussion over the packaged divisions', () => {
@@ -340,17 +310,21 @@ test('the packaged story is the discussion over the packaged divisions', () => {
 	divisions.sort((a, b) => order.indexOf(a.slug) - order.indexOf(b.slug));
 	const ref = site.story.referenceCost;
 	assert.equal(ref, loadConfig(new URL('../../../', import.meta.url).pathname).thresholdCost);
-	const story = buildDiscussion(divisions, { thresholdCost: ref, scope: site.story.scope, timingDivision: site.story.timingDivision });
+	const story = buildDiscussion(divisions, { thresholdCost: ref, scope: site.story.scope, focusDivision: site.story.focusDivision, rateEnd: site.story.rate.end });
 	const all = divisions.flatMap((d) => d.missions);
 	const selected = all.filter(underThreshold(ref));
 	assert.equal(story.threshold.missions, selected.length);
-	assert.equal(story.failure.under.missions + story.failure.over.missions + story.missingCosts, all.length);
+	assert.equal(story.failure.under.missions + story.failure.over.missions + all.filter((m) => !(m.cost > 0)).length, all.length);
 	const { tiles } = read('scrolly.json');
 	assert.equal(tiles.filter((t) => t.shortfall && t.cost > 0 && t.cost <= ref).length, story.failure.under.failed);
 	assert.ok(story.bands.every((b) => Number.isFinite(b.p25) && b.p25 <= b.p75));
 	assert.deepEqual(story, site.story);
-	// ponytail: conditional until data/paper-kinds.json has been packaged; make it unconditional after.
-	assert.deepEqual(new Set(site.kinds.missions.map((m) => m.id)), new Set(site.story.threshold.ids));
+	assert.deepEqual(site.divisionFacts, divisionFacts(divisions, { thresholdCost: ref }));
+	for (const d of divisions) {
+		const life = buildDiscussion(divisions, { thresholdCost: ref, scope: 'lifetime' });
+		assert.deepEqual(site.divisionFacts[d.slug].lifetime.divisions, life.divisions.find((r) => r.division === d.slug));
+		assert.deepEqual(site.divisionFacts[d.slug].full.perDollar ?? null, site.story.perDollar.find((r) => r.division === d.slug) ?? null);
+	}
 });
 
 test('every smi.config.json names override reaches the packaged tiles, index, mission docs and CLPS', () => {
@@ -375,4 +349,12 @@ test('every smi.config.json names override reaches the packaged tiles, index, mi
 	}
 	// The overridden tile in the example: MarCo is published as MarCO.
 	assert.equal(tiles.find((t) => t.id === 'marco')?.name, names.marco.name);
+});
+
+test('each division names its small side’s share of citations, measured missions only', () => {
+	const d = division([cited(mission('a1', 50), 10), cited(mission('a2', 90), 30), cited(mission('b1', 500), 60), unmeasured('lost', 70)]);
+	const [row] = discuss([packaged(d)]).divisions;
+	assert.equal(row.citationShare, 0.4);
+	const tiny = { ...division([cited(mission('t1', 10), 5)]), slug: 'tiny', rankable: false };
+	assert.equal(discuss([packaged(tiny)]).divisions[0].citationShare, null, 'an unranked division has no share');
 });

@@ -1,29 +1,29 @@
 <script>
-	// One sortable list of missions, initially ordered by launch year, earliest first.
+	// The division's missions in one list, earliest launch first. Cost is the prime-mission
+	// life-cycle cost (adjusted_lcc), never extended-mission spending. Every figure follows the
+	// page's scope, so the rows match the stats above; top 1% and the indices are in the CSV,
+	// which carries both selectable scopes.
 	import Num from './Num.svelte';
 	import Hint from './Hint.svelte';
-	import { FOOTNOTES } from '$lib/copy/footnotes.js';
-	import { methodsHref } from '$lib/paths.js';
-	import PubStrip from '$lib/charts/PubStrip.svelte';
-	import { missionHref, thumbSrc } from '$lib/paths.js';
+	import { FOOTNOTES, noteText } from '$lib/copy/footnotes.js';
+	import { methodsHref, missionHref, thumbSrc } from '$lib/paths.js';
+	import { missionsCsv } from '$lib/mission/papers.js';
+	import { downloadText } from '$lib/download.js';
 	import { int, weight, money } from '$lib/format.js';
-	import { view } from '$lib/state/view.svelte.js';
 
-	// rankable: false for a division too small to rank, which has no top-10% credit to show
-	let { missions, slug, costBaseYear, rankable = true, selectedId = '', scopeLabel = '' } = $props();
+	// rankable: false for a division too small to rank, which has no top-10% papers to show
+	let { missions, slug, site, scope = 'full', rankable = true } = $props();
 
 	let sort = $state({ key: 'launch', dir: 1 });
 
-	const topOf = (m) => (view.top === 1 ? m[view.scope].top1 : m[view.scope].top10);
 	const value = {
 		name: (m) => m.name.toLowerCase(),
-		launch: (m) => m.launchYear,
+		launch: (m) => m.launchDate ?? (m.launchYear == null ? null : String(m.launchYear)),
 		type: (m) => m.type?.toLowerCase() ?? null,
 		cost: (m) => m.cost,
-		papers: (m) => m.papers,
-		citations: (m) => m.citations,
-		hindex: (m) => m.indices?.h ?? null,
-		top: (m) => topOf(m)
+		papers: (m) => m[scope].papers,
+		citations: (m) => m[scope].citations,
+		top: (m) => m[scope].top10
 	};
 
 	function sorted(list) {
@@ -41,77 +41,88 @@
 	}
 
 	const rows = $derived(sorted(missions));
-	const maxTop = $derived(Math.max(1e-9, ...missions.map((m) => topOf(m) ?? 0)));
-	const maxStrip = $derived(Math.max(1, ...missions.flatMap((m) => m.strip)));
-	const topLabel = $derived(`Top-${view.top}% credit`);
+	const maxTop = $derived(Math.max(1e-9, ...missions.map((m) => m[scope].top10 ?? 0)));
 
 	function setSort(key) {
-		sort = sort.key === key ? { key, dir: -sort.dir } : { key, dir: key === 'name' ? 1 : -1 };
+		sort = sort.key === key ? { key, dir: -sort.dir } : { key, dir: ['name', 'launch', 'cost'].includes(key) ? 1 : -1 };
 	}
 	const ariaSort = (key) => (sort.key !== key ? 'none' : sort.dir === 1 ? 'ascending' : 'descending');
 
+	const downloadCsv = () =>
+		downloadText(missionsCsv(missions, { costBaseYear: site.costBaseYear, url: (id) => new URL(missionHref(slug, id), location.origin).href }), `${slug}-missions.csv`);
 </script>
 
-{#snippet th(key, label, cls = '', note = null)}
+{#snippet th(key, label, cls = '', notes = null)}
 	<th class={cls} aria-sort={ariaSort(key)}>
 		<span class="head"><button type="button" onclick={() => setSort(key)}>
 			{label}<span class="arrow" aria-hidden="true">{sort.key === key ? (sort.dir === 1 ? '↑' : '↓') : ''}</span>
-		</button>{#if note}<Hint {label} text={FOOTNOTES[note].text({ costBaseYear })} href={methodsHref(FOOTNOTES[note].anchor)} />{/if}</span>
+		</button>{#if notes}<Hint {label} text={noteText(notes, site, scope)} href={methodsHref(FOOTNOTES[notes[0]].anchor)} />{/if}</span>
 	</th>
 {/snippet}
 
+<div class="tools">
+	<button type="button" class="link" onclick={downloadCsv}>Download CSV</button>
+</div>
+
 <table>
-	<caption>Lifetime totals{#if rankable}; Top-{view.top}% credit follows the scope above ({scopeLabel}){/if}.</caption>
+	<caption class="sr-only">Missions, earliest launch first</caption>
 	<thead>
 		<tr>
 			<th class="thumb"><span class="sr-only">Image</span></th>
 			{@render th('name', 'Mission', 'name')}
 			{@render th('launch', 'Launch', 'num wide')}
 			{@render th('type', 'Type', 'type wide')}
-			{@render th('cost', `Cost (${costBaseYear} $)`, 'num', 'cost')}
-			{@render th('papers', 'Tracked publications', 'num', 'publications')}
-			{@render th('citations', 'Citations', 'num wide')}
-			{@render th('hindex', 'h-index', 'num wide', 'hindex')}
-			{#if rankable}{@render th('top', topLabel, 'num top', view.top === 1 ? 'top1' : 'top10')}{/if}
-			<th class="strip wide">Tracked publications per year<Hint label="publications per year" text={FOOTNOTES.strip.text()} href={methodsHref(FOOTNOTES.strip.anchor)} /></th>
+			{@render th('cost', `LCC (${site.costBaseYear} $)`, 'num mid', ['cost'])}
+			{@render th('papers', 'Publications', rankable ? 'num mid' : 'num', ['publications'])}
+			{@render th('citations', 'Citations', 'num', ['citations'])}
+			{#if rankable}{@render th('top', 'Top-10% papers', 'num top', ['top10', 'shared'])}{/if}
 		</tr>
 	</thead>
-		<tbody>
-			{#each rows as m (m.id)}
-				{@const top = topOf(m)}
-				<tr class="row" class:selected={selectedId === m.id}>
-					<td class="thumb">
-						{#if m.hasThumb}
-							<img src={thumbSrc(m.id)} alt="" width="32" height="32" loading="lazy" />
-						{:else}
-							<span class="blank"></span>
-						{/if}
+	<tbody>
+		{#each rows as m (m.id)}
+			{@const top = m[scope].top10}
+			<tr class="row">
+				<td class="thumb">
+					{#if m.hasThumb}<img src={thumbSrc(m.id)} alt="" width="32" height="32" loading="lazy" />{:else}<span class="blank"></span>{/if}
+				</td>
+				<td class="name">
+					<a href={missionHref(slug, m.id)}>{m.name}</a>{#if m.outcome}{' '}<span class="tag">{m.outcome[0] + m.outcome.slice(1).toLowerCase()}</span>{/if}
+					<span class="sub meta">{money(m.cost)}, {m.launchYear ?? '—'}</span>
+				</td>
+				<td class="num wide"><Num value={m.launchYear ?? '—'} /></td>
+				<td class="type wide">{m.type ?? '—'}</td>
+				<td class="num mid"><Num value={money(m.cost)} /></td>
+				<td class={rankable ? 'num mid' : 'num'}><Num value={int(m[scope].papers)} /></td>
+				<td class="num"><Num value={int(m[scope].citations)} /></td>
+				{#if rankable}
+					<td class="num top">
+						<span class="bar" style:width="{((top ?? 0) / maxTop) * 100}%"></span>
+						<span class="topv" class:nil={!top}><Num value={top == null ? '—' : weight(top)} /></span>
 					</td>
-					<td class="name">
-						<a href={missionHref(slug, m.id)}>{m.name}</a>
-						{#if m.failed}<span class="meta">{' '}failed</span>{/if}
-					</td>
-					<td class="num wide"><Num value={m.launchYear ?? '—'} /></td>
-					<td class="type wide">{m.type ?? '—'}</td>
-					<td class="num"><Num value={money(m.cost)} /></td>
-					<td class="num"><Num value={int(m.papers)} /></td>
-					<td class="num wide"><Num value={int(m.citations)} /></td>
-					<td class="num wide"><Num value={m.indices?.h == null ? '—' : int(m.indices.h)} /></td>
-					{#if rankable}
-						<td class="num top">
-							<span class="bar" style:width="{((top ?? 0) / maxTop) * 100}%"></span>
-							<span class="topv" class:nil={!top}><Num value={top == null ? '—' : weight(top)} /></span>
-						</td>
-					{/if}
-					<td class="strip wide"><PubStrip values={m.strip} max={maxStrip} /></td>
-				</tr>
-			{/each}
-		</tbody>
+				{/if}
+			</tr>
+		{/each}
+	</tbody>
 </table>
 
 <style>
-	caption { text-align: left; padding: 8px 0 16px; font-size: 12px; color: var(--dust); }
-	.row.selected td { background: var(--row-hover); }
+	.tools {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: flex-end;
+		gap: 8px 24px;
+		margin-bottom: 8px;
+	}
+
+	.tools .link {
+		min-height: 44px;
+		color: var(--neptune-mid);
+		font-size: 14px;
+		text-decoration: underline;
+		text-underline-offset: 3px;
+	}
+
 	table {
 		width: 100%;
 		border-collapse: collapse;
@@ -124,9 +135,9 @@
 		font-weight: 400;
 		font-size: 12px;
 		color: var(--soil);
-		padding: 0 12px 10px 0;
+		padding: 0 12px 6px 0;
 		white-space: nowrap;
-		vertical-align: middle;
+		vertical-align: bottom;
 	}
 
 	/* The sort button is a flex box; the "i" beside it has to share its line. */
@@ -158,8 +169,16 @@
 		text-align: right;
 	}
 
+	thead .num .head {
+		justify-content: flex-end;
+	}
+
 	thead .num button {
 		flex-direction: row-reverse;
+	}
+
+	thead tr {
+		border-bottom: 1px solid var(--shadow);
 	}
 
 	.row {
@@ -169,6 +188,7 @@
 	.row td {
 		padding: 8px 12px 8px 0;
 		vertical-align: middle;
+		border-bottom: 1px solid var(--band);
 	}
 
 	.row:hover td {
@@ -205,9 +225,23 @@
 		filter: grayscale(1);
 	}
 
+	.tag {
+		margin-left: 8px;
+		padding: 0 6px;
+		border: 1px solid var(--flame);
+		color: var(--flame);
+		font-size: 12px;
+		line-height: 18px;
+	}
+
+	/* cost and launch year under the name, once their own columns are gone */
+	.sub {
+		display: none;
+	}
+
 	/* mission types run to "Pointed Observatory"; the column takes what it needs and no more */
 	.type {
-		max-width: 140px;
+		max-width: 160px;
 		color: var(--dust);
 	}
 
@@ -219,27 +253,21 @@
 
 	.top {
 		position: relative;
-		width: 150px;
+		width: 200px;
 	}
 
 	.bar {
 		position: absolute;
-		right: 60px;
+		right: 64px;
 		top: 50%;
 		height: 8px;
-		max-width: calc(100% - 72px);
+		max-width: calc(100% - 76px);
 		transform: translateY(-50%);
 		background: var(--neptune);
-		transition: width 400ms var(--ease);
 	}
 
 	.topv.nil {
 		color: var(--soil);
-	}
-
-	.strip {
-		width: 210px;
-		padding-right: 0 !important;
 	}
 
 	@media (max-width: 860px) {
@@ -257,8 +285,14 @@
 	}
 
 	@media (max-width: 560px) {
-		/* Reclaim every pixel the four remaining columns need: let a two-word heading
-		   ("Top 10% papers") stack, and stop reserving width the bar no longer uses. */
+		.mid {
+			display: none;
+		}
+
+		.sub {
+			display: block;
+		}
+
 		thead th {
 			white-space: normal;
 			padding-right: 8px;

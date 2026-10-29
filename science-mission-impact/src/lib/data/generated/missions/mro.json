@@ -9,7 +9,11 @@
     "status": "Extended Mission",
     "failed": false,
     "cost": 1361.2,
+    "lcc": 763,
     "type": "Orbiter",
+    "program": "Mars Exploration Program (MEP)",
+    "target": "Mars",
+    "launchVehicle": "Atlas V 401",
     "dates": {
       "formulation": "2001-10-03",
       "launch": "2005-08-12",
@@ -23,12 +27,12 @@
     "m": 4.8,
     "i100": 92,
     "g": 163,
-    "tori": 187.71,
-    "riq": 652
+    "tori": 188.678,
+    "riq": 654
   },
   "facts": {
-    "papers": 1281,
-    "citations": 45565,
+    "papers": 1280,
+    "citations": 45654,
     "publicationYears": [
       2007,
       2026
@@ -59,9 +63,9 @@
     ],
     "papers": [
       22,
-      44,
+      43,
       54,
-      89,
+      88,
       62,
       63,
       60,
@@ -69,7 +73,7 @@
       60,
       66,
       67,
-      62,
+      61,
       54,
       68,
       53,
@@ -77,7 +81,7 @@
       67,
       89,
       75,
-      70
+      72
     ],
     "citations": [
       43,
@@ -85,7 +89,7 @@
       683,
       1278,
       1455,
-      1667,
+      1671,
       1919,
       1967,
       2256,
@@ -97,110 +101,54 @@
       4028,
       4002,
       3125,
-      3831,
-      3691,
-      3024
+      3830,
+      3694,
+      3107
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 45565,
-      "observed": 45565,
+      "expected": 45654,
+      "observed": 45654,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2006-12-01",
-    "end": "2012-10-01",
-    "matureDate": "2015-10-01",
-    "status": "available",
-    "months": 70,
-    "citationBuckets": 10,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      1,
-      2,
-      0,
-      0,
-      7,
-      2,
-      2,
-      0,
-      5,
-      1,
-      1,
-      1,
-      0,
-      1,
-      2,
-      3,
-      5,
-      3,
-      4,
-      6,
-      4,
-      2,
-      7,
-      7,
-      3,
-      5,
-      2,
-      3,
-      3,
-      4,
-      5,
-      9,
-      2,
-      4,
-      7,
-      7,
-      22,
-      0,
-      4,
-      7,
-      10,
-      10,
-      9,
-      7,
-      4,
-      5,
-      8,
-      3,
-      13,
-      5,
-      3,
-      6,
-      3,
-      3,
-      6,
-      7,
-      2,
-      4,
-      5,
-      5,
-      6,
-      3,
-      9,
-      4,
-      6,
-      2,
-      7,
-      4,
-      11
-    ],
-    "citationsByYearOffset": [
-      0,
-      43,
-      260,
-      682,
-      1275,
-      1221,
-      1080,
-      919,
-      456,
-      192
-    ]
+  "affiliations": {
+    "papers": 1280,
+    "us": {
+      "mapped": 785,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 219
+        },
+        {
+          "name": "Planetary Science Institute, Arizona",
+          "papers": 137
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 132
+        }
+      ]
+    },
+    "world": {
+      "mapped": 1179,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 219
+        },
+        {
+          "name": "Planetary Science Institute, Arizona",
+          "papers": 137
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 132
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2007JGRE..112.5S02M",
@@ -214,69 +162,69 @@
     ],
     "authorCount": 15,
     "year": 2007,
-    "citations": 1247
+    "citations": 1249
   },
   "ranks": {
     "full": {
       "bins": [
-        99.991,
-        124.167,
-        126.568,
-        98.833,
-        99.423,
-        125.813,
-        91.993,
-        108.572,
-        83.401,
-        88.241
+        101.999,
+        125.519,
+        124.024,
+        99.054,
+        99.193,
+        125.553,
+        90.377,
+        108.403,
+        82.257,
+        87.621
       ],
       "top1": 8
     },
     "window": {
       "bins": [
-        25.25,
-        26.071,
-        24.919,
-        35.203,
-        31.336,
-        31.492,
-        43.596,
-        35.809,
-        36.736,
-        32.588
+        25.019,
+        25.96,
+        26.28,
+        32.248,
+        32.499,
+        30.968,
+        44.121,
+        35.109,
+        36.695,
+        32.1
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        163.161,
-        150.766,
-        149.563,
-        120.085,
-        118.776,
-        101.97,
-        131.745,
-        113.215,
-        120.444,
-        111.274
+        166.931,
+        153.769,
+        149.097,
+        117.507,
+        116.004,
+        104.45,
+        131.154,
+        109.946,
+        120.117,
+        111.024
       ],
-      "top1": 15.22
+      "top1": 15
     }
   },
   "full": {
-    "papers": 1047,
+    "papers": 1044,
     "outputBasis": "measured",
-    "citations": 13422,
-    "top10": 80.407,
-    "top10ShareOfDivision": 0.07358,
+    "citations": 13426,
+    "top10": 74.469,
+    "top10ShareOfDivision": 0.06862,
     "top1": 8,
-    "top1ShareOfDivision": 0.07321,
+    "top1ShareOfDivision": 0.07371,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 0.476,
-      "yearsFromFormulation": 5.574,
-      "bibcode": "2007JGRE..112.5S02M",
-      "date": "2007-05-00"
+      "yearsFromScienceStart": 0.233,
+      "yearsFromFormulation": 5.331,
+      "bibcode": "2007Sci...315..983O",
+      "date": "2007-02-00"
     },
     "status": "available",
     "bounds": {
@@ -287,22 +235,27 @@
       "months": 205,
       "citationBuckets": 21
     },
+    "indices": {
+      "h": 44,
+      "g": 65,
+      "m": 2.576
+    },
     "spread": {
-      "mean": 12.819,
+      "mean": 12.86,
       "median": 8,
-      "uncited": 64,
+      "uncited": 61,
       "i10": 444,
       "i100": 8
     }
   },
   "window": {
-    "papers": 323,
+    "papers": 321,
     "outputBasis": "measured",
-    "citations": 6128,
-    "top10": 36.6,
-    "top10ShareOfDivision": 0.07582,
+    "citations": 6131,
+    "top10": 31.1,
+    "top10ShareOfDivision": 0.06495,
     "top1": 2,
-    "top1ShareOfDivision": 0.04143,
+    "top1ShareOfDivision": 0.04177,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.476,
@@ -319,20 +272,25 @@
       "months": 70,
       "citationBuckets": 10
     },
+    "indices": {
+      "h": 37,
+      "g": 56,
+      "m": 6.342
+    },
     "spread": {
-      "mean": 18.972,
+      "mean": 19.1,
       "median": 12,
-      "uncited": 16,
+      "uncited": 14,
       "i10": 192,
       "i100": 5
     }
   },
   "lifetime": {
-    "papers": 1281,
+    "papers": 1280,
     "outputBasis": "measured",
-    "citations": 45565,
-    "top10": 86.587,
-    "top10ShareOfDivision": 0.06362,
+    "citations": 45654,
+    "top10": 90.925,
+    "top10ShareOfDivision": 0.05807,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -343,26 +301,26 @@
       "date": "2007-05-00"
     },
     "spread": {
-      "mean": 35.57,
+      "mean": 35.667,
       "median": 14,
-      "uncited": 129,
-      "i10": 752,
+      "uncited": 126,
+      "i10": 753,
       "i100": 92
     }
   },
   "query": {
     "arms": "((=abs:\"Mars Reconnaissance Orbiter\" OR (abs:\"MRO\" AND abs:\"Mars\") OR (abs:\"HiRISE\" AND abs:\"Mars\") OR (abs:\"CRISM\" AND abs:\"Mars\") OR (abs:\"CTX\" AND abs:\"Mars\") OR (abs:\"SHARAD\" AND abs:\"Mars\")))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2006-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Reconnaissance+Orbiter%22+OR+%28abs%3A%22MRO%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22HiRISE%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22CRISM%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22CTX%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22SHARAD%22+AND+abs%3A%22Mars%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2006-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:06:23.680974+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2006-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Reconnaissance+Orbiter%22+OR+%28abs%3A%22MRO%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22HiRISE%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22CRISM%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22CTX%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22SHARAD%22+AND+abs%3A%22Mars%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2006-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:45:18.111229+00:00",
     "reconciliation": {
-      "adsReturned": 1286,
-      "curatedOut": 2,
+      "adsReturned": 1287,
+      "curatedOut": 4,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 3,
-      "final": 1281
+      "final": 1280
     }
   },
   "curation": {
@@ -383,6 +341,22 @@
         "reason": "Overview of the Mars Science Laboratory (Curiosity) mission; Mars Reconnaissance Orbiter is mentioned only in passing.",
         "authority": "agent",
         "date": "2026-10-03"
+      },
+      {
+        "bibcode": "2010NatGe...3..141.",
+        "doi": "10.1038/ngeo820",
+        "title": "The people's camera",
+        "reason": "Unsigned Nature Geoscience editorial on the mission; a news and opinion item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2018Sci...359..145V",
+        "doi": "10.1126/science.359.6372.145",
+        "title": "Cliffs of ice spied on Mars",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
       }
     ]
   },
@@ -394,7 +368,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 1247
+      "citations": 1249
     },
     {
       "bibcode": "2007JGRE..112.5S04M",
@@ -412,7 +386,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 789
+      "citations": 791
     },
     {
       "bibcode": "2008Natur.454..305M",
@@ -448,7 +422,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 438
+      "citations": 439
     },
     {
       "bibcode": "2015Icar..251...65M",
@@ -457,7 +431,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 425
+      "citations": 429
     },
     {
       "bibcode": "2011Sci...333..740M",
@@ -538,7 +512,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 320
+      "citations": 324
     },
     {
       "bibcode": "2008Sci...322.1235H",
@@ -569,6 +543,6 @@
     }
   ],
   "papersFile": {
-    "rows": 1281
+    "rows": 1280
   }
 }

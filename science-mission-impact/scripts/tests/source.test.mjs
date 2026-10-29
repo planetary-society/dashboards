@@ -186,8 +186,6 @@ describe('dashboard compatibility preflight', () => {
 		const script = packager(f);
 		const result = spawnSync(process.execPath, [script, f.rawDir, '--out', out], { encoding: 'utf8' });
 		assert.equal(result.status, 0, result.stdout + result.stderr);
-		// the classification input is published byte-for-byte
-		assert.deepEqual(fs.readFileSync(path.join(out, 'static/data/paper-kinds.json')), fs.readFileSync(path.join(script, '../../data/paper-kinds.json')));
 		const mission = (id) => JSON.parse(fs.readFileSync(path.join(out, 'src/lib/data/generated/missions', `${id}.json`), 'utf8'));
 		assert.equal(mission(f.runs[0].id).meta.dates.launch, '2000-01-01');
 		assert.equal(mission(f.runs[0].id).meta.dates.primeEnd, '2001-02-03');
@@ -195,17 +193,17 @@ describe('dashboard compatibility preflight', () => {
 		assert.equal(mission(f.runs[1].id).meta.dates.missionEnd, null);
 	});
 
-	it('preflight reports inconsistent mission window totals across divisions together', () => {
+	it('preflight reports inconsistent mission totals across divisions together', () => {
 		const f = fixture();
 		for (const run of f.runs.slice(0, 2)) {
-			run.stats.missions[0].window_citations = 1;
+			run.stats.missions[0].lifetime_papers = 1;
 			f.write(run.statsPath, run.stats);
 		}
-		const out = path.join(root, 'bad-window-output');
+		const out = path.join(root, 'bad-totals-output');
 		const result = spawnSync(process.execPath, [packager(f), f.rawDir, '--check', '--out', out], { encoding: 'utf8' });
 		assert.equal(result.status, 1);
-		assert.match(result.stderr, /fixture_astro: window timeline has 0 citations, statistics report 1/);
-		assert.match(result.stderr, /fixture_bps: window timeline has 0 citations, statistics report 1/);
+		assert.match(result.stderr, /astrophysics: mission "fixture_astro" .*: papers\.json holds 0 rows but lifetime_papers is 1/);
+		assert.match(result.stderr, /biological-physical: mission "fixture_bps" .*: papers\.json holds 0 rows but lifetime_papers is 1/);
 		assert.equal(fs.existsSync(out), false);
 	});
 

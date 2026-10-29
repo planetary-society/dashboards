@@ -1,8 +1,9 @@
 <script>
-	import { fullWindowLabel, windowLabel } from '$lib/copy/window.js';
+	import { fullWindowLabel } from '$lib/copy/window.js';
 	import Seo from '$lib/ui/Seo.svelte';
 	import EntityHeader from '$lib/ui/EntityHeader.svelte';
 	import { int, longDate, money, listify, spell } from '$lib/format.js';
+	import { analysisHref } from '$lib/paths.js';
 
 	let { data } = $props();
 	const site = $derived(data.full);
@@ -45,9 +46,9 @@
 			publication: 'Journal of the American Society for Information Science and Technology, 64(2), 372–379', href: 'https://doi.org/10.1002/asi.22775'
 		},
 		{
-			title: 'ESA Science Programme Missions: Contributions and Exploitation — ESA Mission Publications',
+			title: 'ESA Mission Publications and Their Impact',
 			authors: 'De Marchi, G., & Parmar, A. N.', year: 2024,
-			publication: 'arXiv:2402.12818', href: 'https://arxiv.org/abs/2402.12818'
+			publication: 'In ESA Science Programme Missions: Contributions and Exploitation, ISSI Scientific Report Series. Springer Nature Switzerland', href: 'https://doi.org/10.1007/978-3-031-69004-4'
 		},
 		{
 			title: 'Bibliometrics: The Leiden Manifesto for research metrics',
@@ -75,7 +76,7 @@
 			<p>There is no perfect collection of science publications associated with a mission; there are
 				only degrees of correctness. Large missions, like the Hubble Space Telescope, dedicate staff
 				time to identifying science papers and distinguishing results from engineering descriptions
-				and speculative work. A <a href="https://arxiv.org/abs/2402.12818">European team studying ESA’s
+				and speculative work. A <a href="https://doi.org/10.1007/978-3-031-69004-4">European team studying ESA’s
 				space science missions</a> describes a transition from manual review to machine learning and
 				natural language processing, with scientists still validating the selections. Such assessments
 				can require access to the full text of large numbers of publications, often shielded by paywalls.</p>
@@ -102,10 +103,10 @@
 
 		<section id="missions">
 			<h2>What we included</h2>
-			<p>This dataset contains <b>{int(site.missions)}</b> projects primarily built and funded by
-				NASA’s science directorate, launched from
-				{site.launchYears[0]} to {site.launchYears[1]}, spanning {spell(site.divisions.length)} divisions.
-				It focuses on US-led, free-flying missions with mature publication windows. The default
+			<p>This dataset contains data related to <b>{int(site.missions)}</b> projects built or funded by
+				NASA’s science directorate between
+				{site.launchYears[0]} to {site.launchYears[1]},  spanning all {spell(data.site.divisions.length)} divisions.</p>
+				<p>The default
 				comparison allows papers the publication year and {spell(fullPolicy.citationYears)} following
 				calendar years to accrue citations.</p>
 			<p>Comparisons stay within each division. Research communities differ in size, publishing practices,
@@ -114,44 +115,20 @@
 
 		<section id="mission-papers">
 			<h2>Tracked publications</h2>
-			<p><b>Tracked publications are the peer-reviewed research papers we found for each mission.</b>
-				They are not necessarily its full publication record. The snapshot contains
-				{int(site.papersDistinct)} distinct tracked publications across the study.</p>
-			<p>We use mission-specific searches in NASA’s Astrophysics Data System (ADS), now available through
-				<a href="https://scixplorer.org/">SciX</a>. Searches look for mission and instrument names in titles,
-				abstracts, and keywords, with topic restrictions to distinguish ambiguous acronyms. Mission
-				bibliographies help identify omissions; additions and exclusions are reviewed individually.</p>
+			<p>The publications we tracked are the peer-reviewed research papers associated with each mission using a set of keywords in their abstract, title, and keywords via NASA's <a href="https://scixplorer.org/">Science Explorer digital library</a> (SciX). Publications are time-gated by the start of mission operations and continue through the full mission's lifetime, plus two years to accomodate general publication times.</p>
+			<p>Our SciX queries use mission and major instrument names along with topic restrictions to distinguish ambiguous acronyms. The query for each mission is listed in the mission's overview page.</p>
 			<p> This approach will miss papers that use mission data without naming the source in those fields.
-				A name match alone also does not establish that a paper used the data. In essence, we are measuring the signal strength of a mission's name in the ADS's abstract fields.</p>
+				A name match alone also does not establish that a paper used the data.</p><p>In essence, we are measuring the signal strength of a mission's name in the SciX abstract fields. That is a common approach to bibliometrics, though more complex approaches are possible (see <a href="https://doi.org/10.1007/978-3-031-69004-4">De Marchi, G., & Parmar, A. N., 2024)</a>.</p>
 			<h3 id="removed">What we exclude</h3>
 			<p>We have general exclusions for non-refereed material, conference proceedings, news articles, and records for
-				datasets or catalogs.</p>
-			<h3 id="start">When tracking begins</h3>
-			<p>Queries are time-bound by the first full month after prime science operations start, or launch
-				date if no prime mission start is published. This reduces pre-launch and overview material; it does not eliminate
-				every false match. For missions with long cruises or flyby results, we include results published
-				before the prime mission start.</p>
+				datasets or data catalogs. We have mission-by-mission exclusions based on known false positives reviewed with AI and human oversight.</p>
 		</section>
 
 		<section id="windows">
-			<h2>Comparison windows</h2>
-			<p>Older papers have had more time to collect citations. Windowed comparisons give each paper
-				a defined citation period, while lifetime totals show the accumulated record.</p>
-			<h3 id="full-window">{fullWindowLabel}</h3>
-			<p>The default comparison covers publications from a mission’s operating life and allows
-				{spell(fullPolicy.postEndYears)} years after mission end for results to appear. Each paper’s
-				citations count from its publication year through the {spell(fullPolicy.citationYears)} calendar
-				years that follow. A window counts as mature {spell(grace)} months before its last citation year
-				ends, so the most recent papers’ final citation year is counted only through the as-of date (at
-				least {spell(12 - grace)} of its twelve months), and their counts can still grow slightly. A
-				mission still operating, or one that ended too recently, is cut at the latest window end that is
-				mature on the as-of date{#if fullPolicy.minWindowYears}; a cut window shorter than
-				{spell(fullPolicy.minWindowYears)} years is not scored{/if}.</p>
-			<h3 id="early-window">{windowLabel(policy)}</h3>
-			<p>This comparison follows the prime phase, with {spell(policy.postPrimeYears)} years after prime mission
-				end for results to appear. Its length varies by mission.</p>
-			<h3>Lifetime</h3>
-			<p>All tracked publications and their reported citations to date.</p>
+			<h2>Citation comparison windows</h2>
+			<p>Older papers have had more time to collect citations, which would artificially inflate their metrics compared to more recent ones. To account for this, all metrics in this dashboard (except for the explicit lifetime metrics) use windowed citation counts of {spell(fullPolicy.citationYears)} years, inclusive, from the publish date of each paper.</p>
+			<p>This means that missions launched after the full citation comparison window are not included in this study. A
+				mission still operating limits publications to those have were published within this citation window.</p>
 		</section>
 
 		<section id="cost">
@@ -159,16 +136,32 @@
 			<p>Costs come from the NASA's reported life-cycle costs at launch. We include documented partner
 				contributions where available. These generally cover development, payloads, launch, and prime
 				operations. Values are adjusted to <b>{site.costBaseYear} dollars</b> using NASA’s
-				<a href="https://www.nasa.gov/wp-content/uploads/2024/11/nnsi-faqs-2024.pdf">New Start Inflation Index</a>.
+				<a href="https://www.nasa.gov/wp-content/uploads/2024/11/nnsi-faqs-2024.pdf">New Start Inflation Index</a>.</p>
+		</section>
+
+		<section id="nc">
+			<h2>Citation-weighted output (N<sub>50</sub>)</h2>
+			<p>Our <a href={analysisHref()}>analysis</a> uses both threshold counts to determine high-impact papers and a citation-weighted count, defined as: N<sub>c</sub> = papers + citations ÷ c, where c is a citation
+				cutoff. We set c to each division’s top-50% cutoff in the {fullWindowLabel} and call the result
+				N<sub>50</sub>. Because each division has its
+				own c, N<sub>50</sub> normalizes outputs across different divisions.</p>
+		</section>
+
+
+		<section id="ai">
+			<h2>How we used AI in this project</h2>
+			<p>AI was used extensively in this project to help write and review code, to refine and improve our SciX queries, and to identify papers for exclusion based on our internal criteria. According to Planetary Society policy, AI was not used write our analysis: that was led by the authors. All AI-driven query suggestions and exclusions were reviewed by humans as well. Our public facing text is written by the authors using AI for copyediting. Some descriptive, functional text such as tool-tips on this dashboard are AI-generated.</p>
 		</section>
 
 		<section id="citing">
 			<h2>Corrections</h2>
 			<p>If you find a missing or misattributed paper, a wrong date or cost, or any other error, write to
-				<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Mission pages list the query and every
-				tracked publication, which makes a specific correction easy to check.</p>
+				<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
 		</section>
-
+		<section id="thanks">
+			<h2>Special Thanks</h2>
+			<p>The authors wish to acknowledge the staff and services of NASA's Science Explorer Digital Library, who provided feedback on early drafts of this project and increased API access to build out our datasets. We are grateful for their work and the data provided by this service.</p>
+		</section>
 		<section id="image-credits">
 			<h2>Image credits</h2>
 			<p>NASA/ESA.</p>

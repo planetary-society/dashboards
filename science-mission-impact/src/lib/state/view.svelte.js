@@ -5,11 +5,12 @@ import { replaceState } from '$app/navigation';
 // shared, and in module state so it carries across pages. Pages are prerendered, so the
 // URL is only read in the browser.
 const DEFAULTS = { scope: 'full', top: 10 };
-const SCOPES = ['full', 'window', 'lifetime'];
+/** The scopes a reader can pick, in switch order; the prime-phase `window` stays in the packaged data only. */
+export const SCOPES = ['full', 'lifetime'];
 
 export const view = $state({ ...DEFAULTS });
 
-/** Top 1% exists only for the two windowed scopes, so choosing one can move the other. */
+/** Top 1% exists only for the windowed scope, so choosing one can move the other. */
 export function setScope(scope) {
 	view.scope = scope;
 	if (scope === 'lifetime') view.top = 10;

@@ -13,7 +13,8 @@ const siblings = {
 	records: ['mission_records', 'lifetime'],
 	citations: ['mission_citations', 'lifetime'],
 	records_window: ['mission_records_window', 'window'],
-	citations_window: ['mission_citations_window', 'window']
+	citations_window: ['mission_citations_window', 'window'],
+	institutions: ['mission_institutions'] // no scope: every paper's institutions
 };
 /** The per-paper tables of a run, by the scope name the packager uses. */
 const papersFiles = {

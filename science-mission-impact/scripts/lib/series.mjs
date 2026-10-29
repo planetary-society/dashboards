@@ -49,6 +49,13 @@ export function papersByYearMap(source) {
 	return out;
 }
 
+/** A citing bibcode's year (its first four characters); null when it has none. */
+function citingYear(bibcode) {
+	if (typeof bibcode !== 'string' || bibcode.length < 4) return null;
+	const year = Number.parseInt(bibcode.slice(0, 4), 10);
+	return Number.isFinite(year) ? year : null;
+}
+
 /**
  * Add one mission's citing years into every sink, in a single pass over the
  * citation map. A mission's citation list is the largest object the packager
@@ -91,9 +98,8 @@ export function accumulateCitationYears({ citations, paperYears, asOfYear, sinks
 		if (!Array.isArray(citing)) continue;
 		const paperYear = paperYears.get(cited);
 		for (const bibcode of citing) {
-			if (typeof bibcode !== 'string' || bibcode.length < 4) continue;
-			let year = Number.parseInt(bibcode.slice(0, 4), 10);
-			if (!Number.isFinite(year)) continue;
+			let year = citingYear(bibcode);
+			if (year == null) continue;
 			// A citing paper cannot predate the paper it cites; ADS bibcode years
 			// occasionally say otherwise (preprint vs journal year), so clamp up.
 			if (paperYear !== null && paperYear !== undefined && year < paperYear) year = paperYear;
@@ -136,6 +142,41 @@ export function buildLifetimeSeries({ papers, citations, asOfYear }) {
 }
 
 /**
+ * A windowed scope's by-year series: each paper once (a shared paper is one row per mission),
+ * binned by publication year, its citations counted from that year through `citationYears`
+ * calendar years after, the scope's own rule. Unlike the lifetime series, a citing year before the
+ * paper's is dropped, not clamped up: upstream's WindowedPublication counts Y <= year <= Y + C only.
+ * Years past the as-of year fold into it in buildLifetimeSeries.
+ *
+ * @param {object} args
+ * @param {{bibcode: string, year: number|string}[]} args.rows the scope's paper rows
+ * @param {Map<string, string[]>} args.citations bibcode -> its representative citing list
+ * @param {number} args.citationYears calendar years after publication that still count
+ * @param {number} args.asOfYear
+ * @returns {{series: object|null, edges: number}} the series, and the citations counted into it
+ */
+export function buildWindowSeries({ rows, citations, citationYears, asOfYear }) {
+	const papers = new Map();
+	const cites = new Map();
+	const seen = new Set();
+	let edges = 0;
+	for (const { bibcode, year: rawYear } of rows) {
+		if (seen.has(bibcode)) continue;
+		seen.add(bibcode);
+		const year = Number(rawYear);
+		if (!Number.isFinite(year)) continue;
+		papers.set(year, (papers.get(year) ?? 0) + 1);
+		for (const citing of citations.get(bibcode) ?? []) {
+			const y = citingYear(citing);
+			if (y == null || y < year || y > year + citationYears) continue;
+			cites.set(y, (cites.get(y) ?? 0) + 1);
+			edges += 1;
+		}
+	}
+	return { series: buildLifetimeSeries({ papers, citations: cites, asOfYear }), edges };
+}
+
+/**
  * Month offset of a publication date from the window's science start, by plain
  * calendar months (the raw dates are month-precision, so day arithmetic would
  * invent precision the data does not have). Null when either date is unusable.
@@ -147,57 +188,4 @@ export function monthOffset(dateValue, startDate) {
 	return (date.y - start.y) * 12 + (date.m - start.m);
 }
 
-/**
- * Papers per month since science start, length `months`. Records outside the
- * range are clamped into the first/last bucket (the window's edges are
- * day-precise while the dates are not).
- */
-export function papersByMonth(records, startDate, months) {
-	const out = new Array(months).fill(0);
-	if (!Array.isArray(records) || months <= 0) return out;
-	for (const record of records) {
-		const offset = monthOffset(record?.date ?? record?.pubdate, startDate);
-		if (offset === null) continue;
-		const index = Math.min(months - 1, Math.max(0, offset));
-		out[index] += 1;
-	}
-	return out;
-}
 
-/**
- * Citations per calendar-year offset from the science-start year, length
- * `buckets`. Offsets outside the range are clamped.
- */
-export function citationsByYearOffset(windowCitations, startYear, buckets) {
-	const out = new Array(buckets).fill(0);
-	if (!windowCitations || typeof windowCitations !== 'object' || buckets <= 0) return out;
-	if (!Number.isFinite(startYear)) return out;
-	for (const citing of Object.values(windowCitations)) {
-		if (!Array.isArray(citing)) continue;
-		for (const bibcode of citing) {
-			if (typeof bibcode !== 'string' || bibcode.length < 4) continue;
-			const year = Number.parseInt(bibcode.slice(0, 4), 10);
-			if (!Number.isFinite(year)) continue;
-			const index = Math.min(buckets - 1, Math.max(0, year - startYear));
-			out[index] += 1;
-		}
-	}
-	return out;
-}
-
-/**
- * Papers per year since science start for the mission-list strip: index 0 is
- * the science-start year, capped at `cap` entries and at the as-of year.
- */
-export function buildStrip({ papersByYear, startYear, asOfYear, cap }) {
-	if (!Number.isFinite(startYear)) return [];
-	const folded = foldYears(papersByYear, asOfYear);
-	const length = Math.min(cap, Math.max(0, asOfYear - startYear + 1));
-	const out = new Array(length).fill(0);
-	for (const [year, count] of folded) {
-		const index = year - startYear;
-		if (index < 0 || index >= length) continue;
-		out[index] += count;
-	}
-	return out;
-}

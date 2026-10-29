@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 6.2,
+    "lcc": 4.9,
     "type": "Orbiter",
+    "program": "ESTO In-space Validation of Earth Science Technologies (InVEST)",
+    "target": "Earth",
+    "launchVehicle": "Falcon 9 (Dragon CRS-19)",
     "dates": {
       "formulation": "2016-01-11",
       "launch": "2019-12-05",
@@ -58,51 +62,7 @@
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2021-02-01",
-    "end": "2023-04-01",
-    "matureDate": "2026-10-01",
-    "status": "available",
-    "months": 26,
-    "citationBuckets": 6,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "citationsByYearOffset": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ]
-  },
+  "affiliations": null,
   "mostCited": {
     "bibcode": "2024ITGRS..6202679O",
     "title": "Absolute Radiometric Calibration and Uncertainty Validation for a CubeSat Thermal Infrared Radiometric Imager in Low Earth Orbit",
@@ -150,8 +110,8 @@
     },
     "lifetime": {
       "bins": [
-        0.171,
-        0.829,
+        0.144,
+        0.856,
         0,
         0,
         0,
@@ -188,6 +148,11 @@
       "months": 35,
       "citationBuckets": 6
     },
+    "indices": {
+      "h": 0,
+      "g": 0,
+      "m": 0
+    },
     "spread": {
       "mean": null,
       "median": null,
@@ -219,6 +184,11 @@
       "status": "available",
       "months": 26,
       "citationBuckets": 6
+    },
+    "indices": {
+      "h": 0,
+      "g": 0,
+      "m": 0
     },
     "spread": {
       "mean": null,
@@ -253,9 +223,9 @@
   },
   "query": {
     "arms": "((=abs:\"Compact Infrared Radiometer in Space\" OR (abs:CIRiS AND abs:(CubeSat OR radiometer OR evapotranspiration))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2021-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Compact+Infrared+Radiometer+in+Space%22+OR+%28abs%3ACIRiS+AND+abs%3A%28CubeSat+OR+radiometer+OR+evapotranspiration%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2021-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:11:59.703902+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2021-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Compact+Infrared+Radiometer+in+Space%22+OR+%28abs%3ACIRiS+AND+abs%3A%28CubeSat+OR+radiometer+OR+evapotranspiration%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2021-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:00:09.410562+00:00",
     "reconciliation": {
       "adsReturned": 1,
       "curatedOut": 0,

@@ -1,13 +1,12 @@
 <script>
 	import Story from '$lib/scrolly/Story.svelte';
 	import Seo from '$lib/ui/Seo.svelte';
-	import { divisionHref } from '$lib/paths.js';
-	import { int, money, yearSpan } from '$lib/format.js';
+	import { analysisHref, divisionHref } from '$lib/paths.js';
+	import { int, yearSpan } from '$lib/format.js';
 
 	let { data } = $props();
 	// Divisions, adjusted dollar year and window policy come from the layout.
 	const site = $derived({ ...data.site, ...data.facts });
-	const bandOf = $derived(new Map(site.story.bands.map((b) => [b.division, b])));
 	const description = $derived(`Explore ${int(site.missions)} NASA-led science missions and ${int(site.papersDistinct)} tracked peer-reviewed publications by actual mission cost, within each science division.`);
 </script>
 
@@ -20,19 +19,16 @@
 
 <div class="wrap">
 	<section id="divisions" class="doors" aria-labelledby="divisions-title">
-		<h2 id="divisions-title">Explore Data for Each Division</h2>
+		<h2 id="divisions-title">Explore each division’s data</h2>
+		<p class="fact deeper">For failure rates, time to science and output per dollar in more depth, read the <a href={analysisHref()}>full analysis</a>.</p>
 		<ul>
 			{#each site.divisions as d (d.slug)}
 				<li>
 					<a href={divisionHref(d.slug)}>
 						<span class="name">{d.name}</span>
 						<span class="fact">
-							<b>{int(d.missions)}</b> missions, <b>{int(d.papers)}</b> tracked publications, <b>{int(d.citations)}</b> citations{#if d.publicationYears}, published {yearSpan(d.publicationYears)}{/if}
+							<b>{int(d.missions)}</b> missions, <b>{int(d.papers)}</b> tracked publications{#if d.publicationYears}{' '}({yearSpan(d.publicationYears)}){/if}, <b>{int(d.citations)}</b> citations
 						</span>
-						{#if bandOf.get(d.slug)?.p25 != null}
-							{@const b = bandOf.get(d.slug)}
-							<span class="fact">Counting its missions from cheapest to costliest, the middle half of its top-10% papers came from missions costing <b>{money(b.p25)}</b> to <b>{money(b.p75)}</b>.</span>
-						{/if}
 					</a>
 				</li>
 			{/each}
@@ -54,11 +50,16 @@
 		letter-spacing: -0.03em;
 	}
 
+	.doors .deeper {
+		margin: -16px 0 40px;
+	}
+
 	.doors li {
 		border-top: 1px solid var(--shadow);
 	}
 
-	.doors a {
+	/* the division cards' links only: the inline link in .deeper stays a plain link */
+	.doors li > a {
 		display: grid;
 		grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
 		gap: 24px;
@@ -67,7 +68,7 @@
 		color: var(--white);
 	}
 
-	.doors a:hover {
+	.doors li > a:hover {
 		text-decoration: none;
 	}
 
@@ -91,7 +92,7 @@
 	}
 
 	@media (max-width: 720px) {
-		.doors a {
+		.doors li > a {
 			grid-template-columns: minmax(0, 1fr);
 			gap: 8px;
 		}

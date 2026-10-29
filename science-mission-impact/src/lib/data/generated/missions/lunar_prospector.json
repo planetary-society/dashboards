@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 131.4,
+    "lcc": 63.5,
     "type": "Orbiter",
+    "program": "Discovery",
+    "target": "Moon",
+    "launchVehicle": "Athena 2",
     "dates": {
       "formulation": "1995-05-01",
       "launch": "1998-01-07",
@@ -23,12 +27,12 @@
     "m": 2.31,
     "i100": 38,
     "g": 109,
-    "tori": 119.957,
+    "tori": 119.622,
     "riq": 377
   },
   "facts": {
-    "papers": 299,
-    "citations": 14603,
+    "papers": 296,
+    "citations": 14476,
     "publicationYears": [
       1998,
       2026
@@ -67,7 +71,7 @@
       2026
     ],
     "papers": [
-      9,
+      8,
       12,
       17,
       16,
@@ -78,11 +82,11 @@
       14,
       8,
       14,
-      8,
+      7,
       10,
       18,
       16,
-      7,
+      6,
       12,
       12,
       10,
@@ -108,89 +112,70 @@
       228,
       247,
       289,
-      380,
-      298,
+      381,
+      299,
       610,
       666,
-      811,
-      584,
-      669,
-      795,
-      574,
-      502,
-      541,
-      573,
-      623,
-      720,
-      736,
-      1112,
-      939,
-      936,
-      789
+      812,
+      581,
+      643,
+      775,
+      559,
+      494,
+      525,
+      567,
+      612,
+      708,
+      725,
+      1106,
+      926,
+      922,
+      820
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 14603,
-      "observed": 14603,
+      "expected": 14476,
+      "observed": 14476,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "1998-02-01",
-    "end": "2001-02-01",
-    "matureDate": "2004-10-01",
-    "status": "available",
-    "months": 36,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      8,
-      0,
-      0,
-      0,
-      1,
-      1,
-      1,
-      0,
-      1,
-      1,
-      0,
-      1,
-      4,
-      0,
-      1,
-      1,
-      5,
-      6,
-      0,
-      2,
-      1,
-      0,
-      1,
-      0,
-      0,
-      1,
-      1,
-      0,
-      3
-    ],
-    "citationsByYearOffset": [
-      10,
-      62,
-      140,
-      177,
-      116,
-      73,
-      1
-    ]
+  "affiliations": {
+    "papers": 296,
+    "us": {
+      "mapped": 152,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 37
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 27
+        },
+        {
+          "name": "NASA Ames Research Center",
+          "papers": 21
+        }
+      ]
+    },
+    "world": {
+      "mapped": 231,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 37
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 27
+        },
+        {
+          "name": "NASA Ames Research Center",
+          "papers": 21
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2000JGR...105.4197J",
@@ -209,13 +194,13 @@
   "ranks": {
     "full": {
       "bins": [
-        15.862,
-        2.865,
-        3.354,
-        1.846,
-        1.125,
-        2.835,
-        2.113,
+        15.121,
+        2.783,
+        3.264,
+        1.844,
+        1.123,
+        3.013,
+        1.853,
         6,
         4,
         7
@@ -224,41 +209,41 @@
     },
     "window": {
       "bins": [
-        14.982,
-        2.878,
-        2.199,
-        1.941,
-        1.173,
-        2.481,
-        2.983,
-        3.255,
-        4.108,
+        14.361,
+        2.637,
+        2.215,
+        1.787,
+        1.446,
+        2.349,
+        3.115,
+        3.192,
+        3.898,
         5
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        25.079,
-        21.014,
-        28.076,
-        22.563,
-        25.41,
-        26.996,
-        31.796,
-        39.161,
-        30.632,
-        48.274
+        23.887,
+        21.151,
+        28.557,
+        21.894,
+        25.57,
+        26.517,
+        32.931,
+        37.065,
+        31.672,
+        46.756
       ],
       "top1": 3
     }
   },
   "full": {
-    "papers": 47,
+    "papers": 46,
     "outputBasis": "measured",
     "citations": 632,
-    "top10": 5.75,
-    "top10ShareOfDivision": 0.00526,
+    "top10": 7,
+    "top10ShareOfDivision": 0.00645,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -277,20 +262,25 @@
       "months": 42,
       "citationBuckets": 7
     },
+    "indices": {
+      "h": 16,
+      "g": 24,
+      "m": 4.577
+    },
     "spread": {
-      "mean": 13.447,
-      "median": 6,
-      "uncited": 14,
+      "mean": 13.739,
+      "median": 6.5,
+      "uncited": 13,
       "i10": 21,
       "i100": 0
     }
   },
   "window": {
-    "papers": 41,
+    "papers": 40,
     "outputBasis": "measured",
     "citations": 579,
     "top10": 5,
-    "top10ShareOfDivision": 0.01036,
+    "top10ShareOfDivision": 0.01044,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -309,55 +299,68 @@
       "months": 36,
       "citationBuckets": 7
     },
+    "indices": {
+      "h": 15,
+      "g": 23,
+      "m": 4.998
+    },
     "spread": {
-      "mean": 14.122,
-      "median": 6,
-      "uncited": 13,
+      "mean": 14.475,
+      "median": 6.5,
+      "uncited": 12,
       "i10": 18,
       "i100": 0
     }
   },
   "lifetime": {
-    "papers": 299,
+    "papers": 296,
     "outputBasis": "measured",
-    "citations": 14603,
-    "top10": 24.95,
-    "top10ShareOfDivision": 0.01833,
+    "citations": 14476,
+    "top10": 45.256,
+    "top10ShareOfDivision": 0.0289,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.627,
       "yearsFromFormulation": 3.337,
-      "bibcode": "1998Sci...281.1476K",
+      "bibcode": "1998Sci...281.1475B",
       "date": "1998-09-00"
     },
     "spread": {
-      "mean": 48.839,
+      "mean": 48.905,
       "median": 25,
-      "uncited": 21,
+      "uncited": 19,
       "i10": 214,
       "i100": 38
     }
   },
   "query": {
     "arms": "((=abs:\"Lunar Prospector\" OR (abs:LPNS AND abs:(lunar OR Moon OR neutron))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1998-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Prospector%22+OR+%28abs%3ALPNS+AND+abs%3A%28lunar+OR+Moon+OR+neutron%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:05:39.041824+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1998-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Prospector%22+OR+%28abs%3ALPNS+AND+abs%3A%28lunar+OR+Moon+OR+neutron%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:42:45.591287+00:00",
     "reconciliation": {
-      "adsReturned": 306,
-      "curatedOut": 7,
+      "adsReturned": 305,
+      "curatedOut": 9,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 299
+      "final": 296
     }
   },
   "curation": {
     "includes": [],
     "excludes": [
+      {
+        "bibcode": "2013JGRE..118.1415K",
+        "doi": "10.1002/jgre.20097",
+        "title": "The JPL lunar gravity field to spherical harmonic degree 660 from the GRAIL Primary Mission",
+        "reason": "GRAIL results paper. Mentions Lunar Prospector merely by what it didn't do.",
+        "authority": "human",
+        "date": "2026-10-28"
+      },
       {
         "bibcode": "2002AcAau..50..379B",
         "doi": "10.1016/S0094-5765(01)00184-9",
@@ -421,6 +424,14 @@
         "reason": "Simulation study for Chang'E-7's neutron spectrometer; cites Lunar Prospector only for comparison.",
         "authority": "agent",
         "date": "2026-09-08"
+      },
+      {
+        "bibcode": "1998Sci...281.1423.",
+        "doi": null,
+        "title": "PLANETARY SCIENCE:Lunar Prospector Probes Moon's Core Mysteries",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
       }
     ]
   },
@@ -441,7 +452,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 533
+      "citations": 535
     },
     {
       "bibcode": "2006JGRE..11112007P",
@@ -450,7 +461,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 351
+      "citations": 353
     },
     {
       "bibcode": "1998Sci...281.1484L",
@@ -459,7 +470,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 314
+      "citations": 315
     },
     {
       "bibcode": "2001Icar..150....1K",
@@ -468,7 +479,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 290
+      "citations": 291
     },
     {
       "bibcode": "2001JGR...10623231F",
@@ -477,7 +488,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 270
+      "citations": 271
     },
     {
       "bibcode": "2011P&SS...59.1326S",
@@ -486,7 +497,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 259
+      "citations": 260
     },
     {
       "bibcode": "2000JGR...105.4175F",
@@ -531,7 +542,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 213
+      "citations": 216
     },
     {
       "bibcode": "2002JGRE..107.5130L",
@@ -552,15 +563,6 @@
       "citations": 181
     },
     {
-      "bibcode": "2013JGRE..118.1415K",
-      "title": "The JPL lunar gravity field to spherical harmonic degree 660 from the GRAIL Primary Mission",
-      "firstAuthor": "Konopliv, Alex S.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2013,
-      "citations": 174
-    },
-    {
       "bibcode": "2006Natur.443..835C",
       "title": "No evidence for thick deposits of ice at the lunar south pole",
       "firstAuthor": "Campbell, Donald B.",
@@ -579,21 +581,21 @@
       "citations": 164
     },
     {
-      "bibcode": "2001JGR...10627825H",
-      "title": "Initial mapping and interpretation of lunar crustal magnetic anomalies using Lunar Prospector magnetometer data",
-      "firstAuthor": "Hood, L. L.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2001,
-      "citations": 162
-    },
-    {
       "bibcode": "2003JGRE..108.5102L",
       "title": "Small-area thorium features on the lunar surface",
       "firstAuthor": "Lawrence, D. J.",
       "authors": null,
       "authorCount": null,
       "year": 2003,
+      "citations": 163
+    },
+    {
+      "bibcode": "2001JGR...10627825H",
+      "title": "Initial mapping and interpretation of lunar crustal magnetic anomalies using Lunar Prospector magnetometer data",
+      "firstAuthor": "Hood, L. L.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2001,
       "citations": 162
     },
     {
@@ -604,9 +606,18 @@
       "authorCount": null,
       "year": 2012,
       "citations": 157
+    },
+    {
+      "bibcode": "1998Sci...281.1475B",
+      "title": "Lunar Prospector: Overview",
+      "firstAuthor": "Binder, Alan B.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1998,
+      "citations": 154
     }
   ],
   "papersFile": {
-    "rows": 299
+    "rows": 296
   }
 }

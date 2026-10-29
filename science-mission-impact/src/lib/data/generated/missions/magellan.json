@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 1683.3,
+    "lcc": 551,
     "type": "Orbiter",
+    "program": null,
+    "target": "Venus",
+    "launchVehicle": "Shuttle-Inertial Upper Stage",
     "dates": {
       "formulation": "1983-10-01",
       "launch": "1989-05-04",
@@ -23,12 +27,12 @@
     "m": 1.703,
     "i100": 35,
     "g": 101,
-    "tori": 177.129,
+    "tori": 176.991,
     "riq": 359
   },
   "facts": {
-    "papers": 384,
-    "citations": 14083,
+    "papers": 380,
+    "citations": 14106,
     "publicationYears": [
       1990,
       2026
@@ -75,11 +79,11 @@
       2026
     ],
     "papers": [
-      3,
-      20,
+      2,
+      18,
       50,
       27,
-      48,
+      47,
       26,
       20,
       10,
@@ -115,8 +119,8 @@
     ],
     "citations": [
       0,
-      75,
-      330,
+      74,
+      328,
       335,
       658,
       504,
@@ -136,11 +140,11 @@
       227,
       271,
       248,
-      354,
+      355,
       235,
       256,
       471,
-      299,
+      298,
       346,
       439,
       285,
@@ -150,68 +154,52 @@
       807,
       834,
       789,
-      572
+      598
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 14083,
-      "observed": 14083,
+      "expected": 14106,
+      "observed": 14106,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "1990-09-01",
-    "end": "1993-06-01",
-    "matureDate": "1996-10-01",
-    "status": "available",
-    "months": 33,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      1,
-      1,
-      1,
-      4,
-      0,
-      1,
-      9,
-      0,
-      2,
-      0,
-      0,
-      1,
-      1,
-      2,
-      0,
-      2,
-      0,
-      1,
-      1,
-      0,
-      1,
-      1,
-      26,
-      1,
-      16,
-      0,
-      1,
-      2,
-      1,
-      5,
-      3,
-      2
-    ],
-    "citationsByYearOffset": [
-      0,
-      75,
-      330,
-      330,
-      567,
-      328,
-      26
-    ]
+  "affiliations": {
+    "papers": 380,
+    "us": {
+      "mapped": 242,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 65
+        },
+        {
+          "name": "Brown University, Rhode Island",
+          "papers": 40
+        },
+        {
+          "name": "University of Arizona",
+          "papers": 25
+        }
+      ]
+    },
+    "world": {
+      "mapped": 303,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 65
+        },
+        {
+          "name": "Brown University, Rhode Island",
+          "papers": 40
+        },
+        {
+          "name": "Russian Academy of Sciences, Moscow, Russia",
+          "papers": 31
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "1992JGR....9713257S",
@@ -225,63 +213,63 @@
     ],
     "authorCount": 10,
     "year": 1992,
-    "citations": 424
+    "citations": 425
   },
   "ranks": {
     "full": {
       "bins": [
-        49.411,
-        28.402,
-        20.754,
-        8.287,
-        17.25,
-        7.412,
-        7.099,
-        13.384,
-        23,
-        18
+        48.431,
+        26.796,
+        19.947,
+        7.909,
+        17.187,
+        7.594,
+        7.213,
+        12.924,
+        23.252,
+        17.748
       ],
       "top1": 1
     },
     "window": {
       "bins": [
-        17.304,
-        8.997,
-        5.7,
-        5.722,
-        4.452,
-        3.827,
-        4.637,
-        10.147,
-        12.922,
-        12.294
+        16.148,
+        7.843,
+        5.009,
+        6.254,
+        4.192,
+        3.554,
+        4.91,
+        10.192,
+        12.848,
+        12.05
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        46.648,
-        29.902,
-        40.85,
-        38.699,
-        31.043,
-        34.996,
-        31.596,
-        46.548,
-        42.444,
-        41.274
+        45.553,
+        29.202,
+        40.137,
+        38.341,
+        30.855,
+        35.003,
+        31.72,
+        46.904,
+        41.528,
+        40.756
       ],
       "top1": 3
     }
   },
   "full": {
-    "papers": 193,
+    "papers": 189,
     "outputBasis": "measured",
-    "citations": 2250,
-    "top10": 14.8,
-    "top10ShareOfDivision": 0.01354,
+    "citations": 2247,
+    "top10": 17.748,
+    "top10ShareOfDivision": 0.01635,
     "top1": 1,
-    "top1ShareOfDivision": 0.00915,
+    "top1ShareOfDivision": 0.00921,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.641,
@@ -298,20 +286,25 @@
       "months": 74,
       "citationBuckets": 10
     },
+    "indices": {
+      "h": 26,
+      "g": 38,
+      "m": 4.215
+    },
     "spread": {
-      "mean": 11.658,
-      "median": 4,
-      "uncited": 37,
+      "mean": 11.889,
+      "median": 5,
+      "uncited": 35,
       "i10": 67,
       "i100": 1
     }
   },
   "window": {
-    "papers": 86,
+    "papers": 83,
     "outputBasis": "measured",
-    "citations": 1656,
-    "top10": 7.3,
-    "top10ShareOfDivision": 0.01512,
+    "citations": 1653,
+    "top10": 12.05,
+    "top10ShareOfDivision": 0.02517,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -330,50 +323,55 @@
       "months": 33,
       "citationBuckets": 7
     },
+    "indices": {
+      "h": 25,
+      "g": 38,
+      "m": 9.094
+    },
     "spread": {
-      "mean": 19.256,
-      "median": 11,
-      "uncited": 14,
+      "mean": 19.916,
+      "median": 12,
+      "uncited": 13,
       "i10": 46,
       "i100": 1
     }
   },
   "lifetime": {
-    "papers": 384,
+    "papers": 380,
     "outputBasis": "measured",
-    "citations": 14083,
-    "top10": 23.6,
-    "top10ShareOfDivision": 0.01734,
+    "citations": 14106,
+    "top10": 40.756,
+    "top10ShareOfDivision": 0.02603,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 1.977,
-      "yearsFromFormulation": 8.835,
-      "bibcode": "1992JGR....9713067S",
-      "date": "1992-08-00"
+      "yearsFromScienceStart": 0.641,
+      "yearsFromFormulation": 7.499,
+      "bibcode": "1991Sci...252..260P",
+      "date": "1991-04-00"
     },
     "spread": {
-      "mean": 36.674,
-      "median": 18,
-      "uncited": 39,
+      "mean": 37.121,
+      "median": 18.5,
+      "uncited": 37,
       "i10": 249,
       "i100": 35
     }
   },
   "query": {
     "arms": "(abs:(=Magellan AND Venus) NOT =abs:(\"Las Campanas\" OR \"Magellan Telescope\" OR \"Magellan Telescopes\" OR \"Magellan 6.5\" OR \"Magellan Province\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1990-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28abs%3A%28%3DMagellan+AND+Venus%29+NOT+%3Dabs%3A%28%22Las+Campanas%22+OR+%22Magellan+Telescope%22+OR+%22Magellan+Telescopes%22+OR+%22Magellan+6.5%22+OR+%22Magellan+Province%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1990-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:04:47.635738+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1990-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28abs%3A%28%3DMagellan+AND+Venus%29+NOT+%3Dabs%3A%28%22Las+Campanas%22+OR+%22Magellan+Telescope%22+OR+%22Magellan+Telescopes%22+OR+%22Magellan+6.5%22+OR+%22Magellan+Province%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1990-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:39:48.128008+00:00",
     "reconciliation": {
       "adsReturned": 390,
-      "curatedOut": 6,
+      "curatedOut": 10,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 384
+      "final": 380
     }
   },
   "curation": {
@@ -450,6 +448,38 @@
         "reason": "Uses the Magellan Clay Telescope in Chile; not the Magellan spacecraft.",
         "authority": "agent",
         "date": "2026-09-14"
+      },
+      {
+        "bibcode": "1990Natur.348..676M",
+        "doi": "10.1038/348676a0",
+        "title": "Around Venus in 37 days",
+        "reason": "Nature News & Views commentary on a published paper; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "1991Sci...251.1026K",
+        "doi": "10.1126/science.251.4997.1026",
+        "title": "Magellan Paints a Portrait of Venus",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "1991Sci...254..803K",
+        "doi": "10.1126/science.254.5033.803",
+        "title": "Magellan Finds a Flock of Venusian Volcanoes",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "1994Natur.371Q.544.",
+        "doi": "10.1038/371544a0",
+        "title": "Magellan's success",
+        "reason": "Unsigned Nature editorial on the mission; a news and opinion item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
       }
     ]
   },
@@ -461,7 +491,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1992,
-      "citations": 424
+      "citations": 425
     },
     {
       "bibcode": "1992JGR....9713153H",
@@ -479,7 +509,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 332
+      "citations": 341
+    },
+    {
+      "bibcode": "1996JGR...101.4595M",
+      "title": "Ground-based near-infrared observations of the Venus nightside: The thermal structure and water abundance near the surface",
+      "firstAuthor": "Meadows, V. S.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1996,
+      "citations": 309
     },
     {
       "bibcode": "1992JGR....9713199S",
@@ -491,22 +530,13 @@
       "citations": 306
     },
     {
-      "bibcode": "1996JGR...101.4595M",
-      "title": "Ground-based near-infrared observations of the Venus nightside: The thermal structure and water abundance near the surface",
-      "firstAuthor": "Meadows, V. S.",
-      "authors": null,
-      "authorCount": null,
-      "year": 1996,
-      "citations": 306
-    },
-    {
       "bibcode": "2016GeoRL..43.8376W",
       "title": "Was Venus the first habitable world of our solar system?",
       "firstAuthor": "Way, M. J.",
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 268
+      "citations": 270
     },
     {
       "bibcode": "1992JGR....9713103F",
@@ -542,7 +572,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1992,
-      "citations": 163
+      "citations": 164
     },
     {
       "bibcode": "1992JGR....9716183S",
@@ -569,7 +599,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 160
+      "citations": 161
     },
     {
       "bibcode": "2011P&SS...59.1559I",
@@ -636,6 +666,6 @@
     }
   ],
   "papersFile": {
-    "rows": 384
+    "rows": 380
   }
 }

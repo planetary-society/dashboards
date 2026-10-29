@@ -9,7 +9,11 @@
     "status": "Extended Mission",
     "failed": false,
     "cost": 1268.4,
+    "lcc": 857,
     "type": "Orbiter",
+    "program": "Landsat",
+    "target": "Earth",
+    "launchVehicle": "Atlas V 401",
     "dates": {
       "formulation": "2005-12-01",
       "launch": "2013-02-11",
@@ -23,12 +27,12 @@
     "m": 9.857,
     "i100": 246,
     "g": 222,
-    "tori": 861.571,
-    "riq": 1956
+    "tori": 863.324,
+    "riq": 1958
   },
   "facts": {
-    "papers": 6673,
-    "citations": 152744,
+    "papers": 6690,
+    "citations": 152884,
     "publicationYears": [
       2013,
       2026
@@ -65,139 +69,68 @@
       713,
       707,
       663,
-      524
+      541
     ],
     "citations": [
       0,
       73,
       412,
       1066,
-      2122,
+      2121,
       4166,
       7222,
       10945,
-      15254,
+      15256,
       20644,
-      20888,
+      20893,
       24466,
-      27406,
-      18080
+      27427,
+      18193
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 152744,
-      "observed": 152744,
+      "expected": 152884,
+      "observed": 152884,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2013-06-01",
-    "end": "2020-06-01",
-    "matureDate": "2023-10-01",
-    "status": "available",
-    "months": 84,
-    "citationBuckets": 11,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      1,
-      4,
-      3,
-      3,
-      6,
-      3,
-      4,
-      4,
-      2,
-      5,
-      9,
-      14,
-      11,
-      24,
-      8,
-      7,
-      19,
-      8,
-      13,
-      11,
-      8,
-      12,
-      12,
-      5,
-      26,
-      26,
-      12,
-      22,
-      18,
-      14,
-      58,
-      11,
-      19,
-      21,
-      33,
-      31,
-      16,
-      36,
-      23,
-      32,
-      24,
-      28,
-      20,
-      21,
-      24,
-      34,
-      34,
-      42,
-      34,
-      75,
-      27,
-      25,
-      57,
-      35,
-      47,
-      33,
-      42,
-      38,
-      46,
-      50,
-      49,
-      77,
-      44,
-      54,
-      40,
-      43,
-      39,
-      48,
-      29,
-      26,
-      52,
-      49,
-      49,
-      94,
-      65,
-      52,
-      58,
-      43
-    ],
-    "citationsByYearOffset": [
-      0,
-      73,
-      411,
-      1063,
-      2094,
-      3421,
-      5529,
-      7180,
-      7351,
-      5508,
-      1811
-    ]
+  "affiliations": {
+    "papers": 6690,
+    "us": {
+      "mapped": 820,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 83
+        },
+        {
+          "name": "U.S. Geological Survey",
+          "papers": 55
+        },
+        {
+          "name": "South Dakota State University",
+          "papers": 50
+        }
+      ]
+    },
+    "world": {
+      "mapped": 4605,
+      "top": [
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 488
+        },
+        {
+          "name": "Chinese Academy of Sciences",
+          "papers": 260
+        },
+        {
+          "name": "Wuhan University, China",
+          "papers": 156
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2014RSEnv.145..154R",
@@ -211,51 +144,51 @@
     ],
     "authorCount": 34,
     "year": 2014,
-    "citations": 1816
+    "citations": 1821
   },
   "ranks": {
     "full": {
       "bins": [
-        402.81,
-        361.251,
-        396.758,
-        421.688,
-        450.322,
-        442.631,
-        501.777,
-        540.044,
-        561.969,
-        699.749
+        403.786,
+        360.816,
+        397.119,
+        421.801,
+        450.512,
+        443.263,
+        501.342,
+        539.189,
+        561.727,
+        699.446
       ],
-      "top1": 83.98
+      "top1": 83.549
     },
     "window": {
       "bins": [
-        238.905,
-        205.422,
-        221.652,
-        197.817,
-        193.596,
-        204.978,
-        242.328,
-        209.868,
-        243.919,
+        239.482,
+        204.863,
+        222.149,
+        197.599,
+        193.817,
+        204.67,
+        242.596,
+        209.521,
+        243.788,
         283.514
       ],
       "top1": 37.043
     },
     "lifetime": {
       "bins": [
-        980.855,
-        825.949,
-        753.532,
-        746.246,
-        701.493,
-        665.248,
-        576.107,
-        505.003,
-        504.431,
-        414.136
+        986.281,
+        827.271,
+        752.435,
+        752.039,
+        700.496,
+        666.849,
+        578.716,
+        504.08,
+        507.267,
+        414.567
       ],
       "top1": 30
     }
@@ -263,11 +196,11 @@
   "full": {
     "papers": 4779,
     "outputBasis": "measured",
-    "citations": 68554,
-    "top10": 481.854,
-    "top10ShareOfDivision": 0.13386,
-    "top1": 70.068,
-    "top1ShareOfDivision": 0.19466,
+    "citations": 68562,
+    "top10": 588.445,
+    "top10ShareOfDivision": 0.16348,
+    "top1": 69.745,
+    "top1ShareOfDivision": 0.19376,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.507,
@@ -284,28 +217,33 @@
       "months": 127,
       "citationBuckets": 14
     },
+    "indices": {
+      "h": 77,
+      "g": 109,
+      "m": 7.274
+    },
     "spread": {
-      "mean": 14.345,
+      "mean": 14.347,
       "median": 9,
-      "uncited": 336,
-      "i10": 2210,
+      "uncited": 337,
+      "i10": 2209,
       "i100": 47
     }
   },
   "window": {
     "papers": 2242,
     "outputBasis": "measured",
-    "citations": 34441,
-    "top10": 195.692,
-    "top10ShareOfDivision": 0.2079,
+    "citations": 34440,
+    "top10": 281.8,
+    "top10ShareOfDivision": 0.29937,
     "top1": 37.043,
     "top1ShareOfDivision": 0.39353,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 0.753,
-      "yearsFromFormulation": 8.246,
-      "bibcode": "2014Senso..14.5768R",
-      "date": "2014-03-00"
+      "yearsFromScienceStart": 0.507,
+      "yearsFromFormulation": 8,
+      "bibcode": "2013RemS....6..310L",
+      "date": "2013-12-00"
     },
     "status": "available",
     "bounds": {
@@ -316,20 +254,25 @@
       "months": 84,
       "citationBuckets": 11
     },
+    "indices": {
+      "h": 67,
+      "g": 98,
+      "m": 9.57
+    },
     "spread": {
-      "mean": 15.362,
+      "mean": 15.361,
       "median": 9,
-      "uncited": 191,
+      "uncited": 192,
       "i10": 1045,
       "i100": 30
     }
   },
   "lifetime": {
-    "papers": 6673,
+    "papers": 6690,
     "outputBasis": "measured",
-    "citations": 152744,
-    "top10": 492.762,
-    "top10ShareOfDivision": 0.12793,
+    "citations": 152884,
+    "top10": 337.032,
+    "top10ShareOfDivision": 0.07244,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -340,26 +283,26 @@
       "date": "2013-12-00"
     },
     "spread": {
-      "mean": 22.89,
+      "mean": 22.853,
       "median": 9,
-      "uncited": 910,
-      "i10": 3299,
+      "uncited": 927,
+      "i10": 3298,
       "i100": 246
     }
   },
   "query": {
     "arms": "((=abs:\"Landsat-8\" OR =abs:\"Landsat Data Continuity\" OR (abs:LDCM AND abs:(Landsat OR satellite OR imagery)) OR ((=abs:\"Operational Land Imager\" OR (=abs:\"Thermal Infrared Sensor\" AND abs:(Landsat OR OLI)) OR (abs:(OLI OR TIRS) AND (abs:(Landsat OR multispectral OR albedo OR MODIS OR NDVI) OR =abs:\"remote sensing\" OR =abs:\"satellite imagery\" OR =abs:\"satellite images\"))) AND NOT (=abs:\"Landsat-9\" OR abs:MEDA))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2013-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Landsat-8%22+OR+%3Dabs%3A%22Landsat+Data+Continuity%22+OR+%28abs%3ALDCM+AND+abs%3A%28Landsat+OR+satellite+OR+imagery%29%29+OR+%28%28%3Dabs%3A%22Operational+Land+Imager%22+OR+%28%3Dabs%3A%22Thermal+Infrared+Sensor%22+AND+abs%3A%28Landsat+OR+OLI%29%29+OR+%28abs%3A%28OLI+OR+TIRS%29+AND+%28abs%3A%28Landsat+OR+multispectral+OR+albedo+OR+MODIS+OR+NDVI%29+OR+%3Dabs%3A%22remote+sensing%22+OR+%3Dabs%3A%22satellite+imagery%22+OR+%3Dabs%3A%22satellite+images%22%29%29%29+AND+NOT+%28%3Dabs%3A%22Landsat-9%22+OR+abs%3AMEDA%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2013-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:11:11.758596+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2013-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Landsat-8%22+OR+%3Dabs%3A%22Landsat+Data+Continuity%22+OR+%28abs%3ALDCM+AND+abs%3A%28Landsat+OR+satellite+OR+imagery%29%29+OR+%28%28%3Dabs%3A%22Operational+Land+Imager%22+OR+%28%3Dabs%3A%22Thermal+Infrared+Sensor%22+AND+abs%3A%28Landsat+OR+OLI%29%29+OR+%28abs%3A%28OLI+OR+TIRS%29+AND+%28abs%3A%28Landsat+OR+multispectral+OR+albedo+OR+MODIS+OR+NDVI%29+OR+%3Dabs%3A%22remote+sensing%22+OR+%3Dabs%3A%22satellite+imagery%22+OR+%3Dabs%3A%22satellite+images%22%29%29%29+AND+NOT+%28%3Dabs%3A%22Landsat-9%22+OR+abs%3AMEDA%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2013-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:58:20.473754+00:00",
     "reconciliation": {
-      "adsReturned": 6700,
+      "adsReturned": 6717,
       "curatedOut": 2,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 25,
-      "final": 6673
+      "final": 6690
     }
   },
   "curation": {
@@ -391,7 +334,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 1816
+      "citations": 1821
     },
     {
       "bibcode": "2016RSEnv.185...46V",
@@ -409,7 +352,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 1067
+      "citations": 1076
     },
     {
       "bibcode": "2017IGRSL..14..778K",
@@ -418,7 +361,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 999
+      "citations": 1002
     },
     {
       "bibcode": "2016RSEnv.185...57R",
@@ -427,7 +370,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 964
+      "citations": 965
     },
     {
       "bibcode": "2017ScTEn.577..349E",
@@ -445,7 +388,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 922
+      "citations": 924
     },
     {
       "bibcode": "2019RSEnv.225..127W",
@@ -454,7 +397,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 830
+      "citations": 832
     },
     {
       "bibcode": "2018RemS...11...48Z",
@@ -463,7 +406,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 733
+      "citations": 734
     },
     {
       "bibcode": "2014IGRSL..11.1840J",
@@ -490,7 +433,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 577
+      "citations": 579
     },
     {
       "bibcode": "2019ScTEn.655..707D",
@@ -566,6 +509,6 @@
     }
   ],
   "papersFile": {
-    "rows": 6673
+    "rows": 6690
   }
 }

@@ -1,7 +1,7 @@
 {
   "rawDirDefault": "../../science-mission-citations/dist/fixed",
   "schemaVersions": {
-    "mission": 5,
+    "mission": 6,
     "stats": 11
   },
   "divisions": [
@@ -37,16 +37,30 @@
     }
   ],
   "costBaseYear": 2025,
-  "storyTimingDivision": "planetary",
+  "storyDivision": "planetary",
   "thresholdCost": 150,
+  "analysis": {
+    "costTiers": [50, 150, 350, 750, 1550],
+    "costGroups": [150, 1000]
+  },
   "clps": {
     "rawDir": "../../science-mission-citations/dist/latest",
     "comparators": ["lcross", "mars_pathfinder"],
+    "surface": ["dart", "deep_impact_epoxi", "lcross", "mars_pathfinder", "spirit", "opportunity", "phx", "insight", "msl", "mars_2020", "ds_2", "mpl"],
     "horizonMonths": 36
   },
-  "paperKinds": { "file": "data/paper-kinds.json", "examples": ["raincube", "marco"], "smallMax": 10 },
   "names": {
     "marco": { "name": "MarCO" },
+    "hst": { "name": "Hubble" },
+    "sirtf": { "name": "Spitzer" },
+    "cgro": { "name": "Compton" },
+    "msl": { "name": "Curiosity" },
+    "ody": { "name": "Mars Odyssey" },
+    "phx": { "name": "Phoenix" },
+    "mgs": { "name": "Mars Global Surveyor" },
+    "mco": { "name": "Mars Climate Orbiter" },
+    "mpl": { "name": "Mars Polar Lander" },
+    "rbsp": { "name": "Van Allen Probes" },
     "ceres": { "fullName": "Compact Radiation belt Explorer (CeREs)" },
     "m1": { "name": "Blue Ghost M1" }
   },

@@ -41,18 +41,15 @@ function comparePapers(a, b) {
  * @param {string} args.id mission id
  * @param {string} args.asOf run as-of date
  * @param {object[]} args.lifetimeRows rows of stats papers.json for this mission
- * @param {Map<string, object>} args.windowRows bibcode -> row of papers.window.json
  * @param {Map<string, object>} [args.fullRows] bibcode -> row of papers.full_mission.json,
  *   whose `window_*` values are the full-mission scope's
  * @param {Set<string>} args.curatedBibcodes bibcodes the query did not return
- * @param {object|null} args.top1Cutoff pooled_cutoffs.weights["1"] of the window scope
- * @param {object|null} [args.fullTop1Cutoff] the same for the full-mission scope
+ * @param {object|null} [args.fullTop1Cutoff] pooled_cutoffs.weights["1"] of the full-mission scope
  */
-export function buildPapersFile({ id, asOf, lifetimeRows, windowRows, fullRows = new Map(), curatedBibcodes, top1Cutoff, fullTop1Cutoff = null }) {
+export function buildPapersFile({ id, asOf, lifetimeRows, fullRows = new Map(), curatedBibcodes, fullTop1Cutoff = null }) {
 	const rows = [...lifetimeRows].sort(comparePapers);
-	const columns = { b: [], y: [], t: [], a: [], c: [], s: [], e: [], f: [], fe: [], f1: [], w: [], we: [], w1: [], i: [] };
+	const columns = { b: [], y: [], t: [], a: [], c: [], s: [], e: [], f: [], fe: [], f1: [], i: [] };
 	for (const row of rows) {
-		const windowRow = windowRows.get(row.bibcode) ?? null;
 		const fullRow = fullRows.get(row.bibcode) ?? null;
 		columns.b.push(row.bibcode);
 		columns.y.push(row.year ?? null);
@@ -60,13 +57,10 @@ export function buildPapersFile({ id, asOf, lifetimeRows, windowRows, fullRows =
 		columns.a.push(row.first_author ?? null);
 		columns.c.push(Number(row.citations ?? 0));
 		columns.s.push(Number(row.shared_by ?? 1));
-		columns.e.push(weight(row.cohort_top10_weight));
+		columns.e.push(weight(row.top10_weight));
 		columns.f.push(fullRow ? Number(fullRow.window_citations ?? 0) : null);
-		columns.fe.push(fullRow ? weight(fullRow.window_cohort_top10_weight) : null);
+		columns.fe.push(fullRow ? weight(fullRow.window_top10_weight) : null);
 		columns.f1.push(fullRow ? weight(top1Weight(fullRow.window_citations, fullTop1Cutoff)) : null);
-		columns.w.push(windowRow ? Number(windowRow.window_citations ?? 0) : null);
-		columns.we.push(windowRow ? weight(windowRow.window_cohort_top10_weight) : null);
-		columns.w1.push(windowRow ? weight(top1Weight(windowRow.window_citations, top1Cutoff)) : null);
 		columns.i.push(curatedBibcodes.has(row.bibcode) ? 1 : 0);
 	}
 	return { id, asOf, rows: rows.length, columns };

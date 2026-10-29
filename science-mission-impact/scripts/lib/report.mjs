@@ -110,21 +110,6 @@ export function buildFigures({ site, divisions }) {
 		for (const c of clps.comparators) out.set(`clps · ${c.name} · month ${clps.horizonMonths}`, num(c.series.at(-1)));
 		if (clps.comparison) out.set('clps · behind every comparator', String(clps.comparison.behindAll));
 	}
-	const kinds = site.kinds;
-	if (kinds) {
-		out.set('kinds · papers at or under threshold', num(kinds.total.papers));
-		out.set('kinds · non-science share of papers', num(kinds.nonScience.paperShare));
-		out.set('kinds · non-science share of citations', num(kinds.nonScience.citationShare));
-		if (kinds.small) {
-			out.set(`kinds · missions with ≤${kinds.small.maxPapers} papers`, num(kinds.small.missions));
-			out.set('kinds · their non-science share of citations', num(kinds.small.nonScience.citationShare));
-		}
-		out.set('kinds · missions with mostly non-science papers', num(kinds.majorityNonScience));
-		for (const e of kinds.examples) {
-			for (const k of kinds.kinds) if (e.byKind[k.key].papers) out.set(`kinds · ${e.name} · ${k.label}`, e.byKind[k.key].papers);
-			if (e.lifetime) out.set(`kinds · ${e.name} · papers to date`, e.lifetime.papers);
-		}
-	}
 	return out;
 }
 

@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 5.2,
+    "lcc": 4,
     "type": "Survey Observatory",
+    "program": "Astrophysics R&A Program (APRA)",
+    "target": "Galactic halo",
+    "launchVehicle": "Antares 230",
     "dates": {
       "formulation": "2016-01-01",
       "launch": "2018-05-21",
@@ -19,16 +23,16 @@
     }
   },
   "indices": {
-    "h": 8,
-    "m": 1,
+    "h": 9,
+    "m": 1.125,
     "i100": 0,
     "g": 15,
-    "tori": 0.659,
-    "riq": 135
+    "tori": 0.974,
+    "riq": 164
   },
   "facts": {
     "papers": 15,
-    "citations": 273,
+    "citations": 286,
     "publicationYears": [
       2019,
       2024
@@ -63,70 +67,52 @@
       53,
       68,
       38,
-      39
+      52
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 273,
-      "observed": 273,
+      "expected": 286,
+      "observed": 286,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2018-11-01",
-    "end": "2021-10-01",
-    "matureDate": "2024-10-01",
-    "status": "available",
-    "months": 35,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      2,
-      1,
-      1,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      1
-    ],
-    "citationsByYearOffset": [
-      0,
-      0,
-      14,
-      27,
-      34,
-      28,
-      8
-    ]
+  "affiliations": {
+    "papers": 15,
+    "us": {
+      "mapped": 14,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 14
+        },
+        {
+          "name": "University of Iowa",
+          "papers": 14
+        },
+        {
+          "name": "Johns Hopkins University, Maryland",
+          "papers": 10
+        }
+      ]
+    },
+    "world": {
+      "mapped": 14,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 14
+        },
+        {
+          "name": "University of Iowa",
+          "papers": 14
+        },
+        {
+          "name": "Johns Hopkins University, Maryland",
+          "papers": 10
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2020NatAs...4.1072K",
@@ -140,18 +126,18 @@
     ],
     "authorCount": 10,
     "year": 2020,
-    "citations": 69
+    "citations": 70
   },
   "ranks": {
     "full": {
       "bins": [
         0,
         2,
-        1.409,
-        1.692,
-        2.899,
-        0.059,
-        0.941,
+        1.429,
+        1.693,
+        2.878,
+        0.1,
+        0.9,
         0,
         2,
         0
@@ -161,10 +147,10 @@
     "window": {
       "bins": [
         0,
-        2.236,
-        1.764,
-        2.8,
-        1.2,
+        2.238,
+        1.762,
+        2.817,
+        1.183,
         1,
         0,
         0,
@@ -175,9 +161,9 @@
     },
     "lifetime": {
       "bins": [
-        0.399,
-        2.69,
-        3.911,
+        0,
+        3.848,
+        3.152,
         3,
         1,
         1,
@@ -213,6 +199,11 @@
       "months": 47,
       "citationBuckets": 8
     },
+    "indices": {
+      "h": 7,
+      "g": 11,
+      "m": 1.788
+    },
     "spread": {
       "mean": 13.182,
       "median": 10,
@@ -245,6 +236,11 @@
       "months": 35,
       "citationBuckets": 7
     },
+    "indices": {
+      "h": 7,
+      "g": 10,
+      "m": 2.401
+    },
     "spread": {
       "mean": 11.1,
       "median": 9.5,
@@ -256,20 +252,20 @@
   "lifetime": {
     "papers": 15,
     "outputBasis": "measured",
-    "citations": 273,
-    "top10": 1,
-    "top10ShareOfDivision": 0.00018,
+    "citations": 286,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
-      "state": "reached",
-      "yearsFromScienceStart": 1.963,
-      "yearsFromFormulation": 4.75,
-      "bibcode": "2020NatAs...4.1072K",
-      "date": "2020-10-00"
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
     },
     "spread": {
-      "mean": 18.2,
+      "mean": 19.067,
       "median": 12,
       "uncited": 0,
       "i10": 8,
@@ -278,9 +274,9 @@
   },
   "query": {
     "arms": "(=abs:HaloSat AND collection:astronomy)",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2018-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%3Dabs%3AHaloSat+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:19:18.764134+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2018-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%3Dabs%3AHaloSat+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:20:39.730585+00:00",
     "reconciliation": {
       "adsReturned": 15,
       "curatedOut": 1,
@@ -329,7 +325,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 69
+      "citations": 70
     },
     {
       "bibcode": "2022ApJ...936...72B",
@@ -338,7 +334,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 43
+      "citations": 45
     },
     {
       "bibcode": "2019ApJ...884..162K",
@@ -347,7 +343,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 38
+      "citations": 39
     },
     {
       "bibcode": "2020ApJ...904...54L",
@@ -356,7 +352,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 27
+      "citations": 29
     },
     {
       "bibcode": "2023CRPhy..23S...1L",
@@ -365,7 +361,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2023,
-      "citations": 18
+      "citations": 21
     },
     {
       "bibcode": "2021ApJ...916....2S",
@@ -374,7 +370,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 15
+      "citations": 16
+    },
+    {
+      "bibcode": "2021ApJ...918...41R",
+      "title": "HaloSat Observations of Heliospheric Solar Wind Charge Exchange",
+      "firstAuthor": "Ringuette, R.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2021,
+      "citations": 13
     },
     {
       "bibcode": "2020JATIS...6a4003L",
@@ -386,27 +391,18 @@
       "citations": 12
     },
     {
-      "bibcode": "2021ApJ...918...41R",
-      "title": "HaloSat Observations of Heliospheric Solar Wind Charge Exchange",
-      "firstAuthor": "Ringuette, R.",
+      "bibcode": "2020JATIS...6d4005Z",
+      "title": "On-ground calibration of the HaloSat science instrument",
+      "firstAuthor": "Zajczyk, Anna",
       "authors": null,
       "authorCount": null,
-      "year": 2021,
-      "citations": 12
+      "year": 2020,
+      "citations": 9
     },
     {
       "bibcode": "2020ApJ...905...91B",
       "title": "A HaloSat Analysis of the Cygnus Superbubble",
       "firstAuthor": "Bluem, Jesse",
-      "authors": null,
-      "authorCount": null,
-      "year": 2020,
-      "citations": 8
-    },
-    {
-      "bibcode": "2020JATIS...6d4005Z",
-      "title": "On-ground calibration of the HaloSat science instrument",
-      "firstAuthor": "Zajczyk, Anna",
       "authors": null,
       "authorCount": null,
       "year": 2020,
@@ -455,7 +451,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2024,
-      "citations": 2
+      "citations": 3
     }
   ],
   "papersFile": {

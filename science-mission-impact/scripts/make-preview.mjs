@@ -7,7 +7,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
-import { costLayout, costCurve } from '../src/lib/scrolly/layouts.js';
+import { costLayout } from '../src/lib/scrolly/layouts.js';
 import { minorDollarTicks, stepAfterPath } from '../src/lib/charts/costaxis.js';
 import { costItems } from '../src/lib/scrolly/items.js';
 import { money, moneyTick } from '../src/lib/format.js';
@@ -35,7 +35,7 @@ const unranked = new Set(site.divisions.filter((d) => !d.rankable).map((d) => d.
 // The squares come from the same modules the site renders the step with: the unranked set,
 // the per-division ruler and the inner-square area are all decided there, so the card cannot
 // drift from the chart it is a picture of.
-const items = costItems(tiles, layout, { scope: story.scope, top: 10, unranked, referenceCost: story.referenceCost });
+const items = costItems(tiles, layout, { scope: story.scope, top: 10, unranked });
 const bandOf = new Map(story.bands.map((b) => [b.division, b]));
 const [x0, x1] = layout.x.range();
 
@@ -62,7 +62,8 @@ for (const row of layout.rows) {
 		parts.push(`<text x="${layout.x(span.p25)}" y="${row.shelfY + 17}" fill="#fff" font-size="13">${esc(`${money(span.p25)} to ${money(span.p75)}`)}</text>`);
 	}
 	const y = (v) => row.shelfY - v * (row.shelfY - row.curveTop);
-	const points = costCurve(row.members, (t) => t.share[story.scope][10]);
+	// The packager's own running shares for this division, so the card's lines are the published curve.
+	const points = read(`src/lib/data/generated/divisions/${row.slug}.json`).costCurves[story.scope][10].points;
 	for (const [key, stroke, width] of [['costShare', '#8C8C8C', 1], ['topShare', NEPTUNE, 2]]) {
 		const d = stepAfterPath(points, { x: layout.x, y, x0, x1, value: (p) => p[key] });
 		parts.push(`<path d="${d}" fill="none" stroke="${stroke}" stroke-width="${width}"/>`);

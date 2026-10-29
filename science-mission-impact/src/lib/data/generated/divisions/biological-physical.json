@@ -4,7 +4,7 @@
   "facts": {
     "missions": 5,
     "papers": 15,
-    "citations": 236,
+    "citations": 237,
     "publicationYears": [
       2011,
       2021
@@ -64,32 +64,38 @@
       24,
       15,
       17,
-      13
+      14
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 236,
-      "observed": 236,
+      "expected": 237,
+      "observed": 237,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
+  "fullSeries": {
+    "years": [
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
       1,
-      1,
+      2,
       0,
       0,
       0,
@@ -97,33 +103,76 @@
       0,
       0,
       0,
-      1,
-      0,
-      0,
-      0,
+      2,
+      2,
       0,
       0,
       0,
       0,
       0
     ],
-    "citationsByYearOffset": [
-      0,
+    "citations": [
       0,
       5,
       1,
       16,
       9,
+      0,
+      0,
+      0,
+      0,
+      2,
+      4,
+      15,
+      4,
+      0,
+      0,
       0
     ],
-    "missionsByYear": [
-      5,
-      5,
-      5
-    ],
-    "missionsIncluded": 5,
-    "status": "available",
-    "missionsImmature": []
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 56,
+      "observed": 56,
+      "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 15,
+    "us": {
+      "mapped": 10,
+      "top": [
+        {
+          "name": "NASA Ames Research Center",
+          "papers": 9
+        },
+        {
+          "name": "SETI Institute, California",
+          "papers": 3
+        },
+        {
+          "name": "Bay Area Environmental Research Institute, California",
+          "papers": 2
+        }
+      ]
+    },
+    "world": {
+      "mapped": 11,
+      "top": [
+        {
+          "name": "NASA Ames Research Center",
+          "papers": 9
+        },
+        {
+          "name": "SETI Institute, California",
+          "papers": 3
+        },
+        {
+          "name": "Bay Area Environmental Research Institute, California",
+          "papers": 2
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2011AsBio..11..951N",
@@ -376,7 +425,7 @@
         ],
         "authorCount": 13,
         "year": 2020,
-        "citations": 25,
+        "citations": 26,
         "missions": [
           "ecamsat"
         ]
@@ -573,8 +622,8 @@
     "lifetime": {
       "missions": 5,
       "papers": 15,
-      "citations": 236,
-      "mean": 15.733,
+      "citations": 237,
+      "mean": 15.8,
       "median": 13,
       "uncited": 0,
       "hIndex": 9,
@@ -602,7 +651,7 @@
         },
         {
           "percent": 25,
-          "citations": 25,
+          "citations": 26,
           "papers": 4
         },
         {
@@ -611,6 +660,49 @@
           "papers": 8
         }
       ]
+    }
+  },
+  "citationHistogram": {
+    "full": {
+      "counts": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "top": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.7
+      ],
+      "papers": 7
     }
   },
   "costCurves": null,
@@ -629,21 +721,24 @@
       "id": "ecamsat",
       "name": "EcAMSat",
       "cost": 2,
+      "size": "under",
       "launchYear": 2017,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Orbiter",
+      "selection": "competed",
       "indices": {
         "h": 2,
         "m": 0.286,
         "i100": 0,
         "g": 4,
-        "tori": 0.26,
-        "riq": 255
+        "tori": 0.264,
+        "riq": 256
       },
-      "yearsToBuild": 7.368,
       "papers": 4,
-      "citations": 40,
+      "citations": 41,
+      "top10PerYear": 0,
       "hasThumb": true,
       "full": {
         "papers": 4,
@@ -668,6 +763,11 @@
           "status": "available",
           "months": 73,
           "citationBuckets": 10
+        },
+        "indices": {
+          "h": 2,
+          "g": 4,
+          "m": 0.329
         }
       },
       "window": {
@@ -693,12 +793,17 @@
           "status": "available",
           "months": 25,
           "citationBuckets": 6
+        },
+        "indices": {
+          "h": 0,
+          "g": 0,
+          "m": 0
         }
       },
       "lifetime": {
         "papers": 4,
         "outputBasis": "measured",
-        "citations": 40,
+        "citations": 41,
         "top10": 0,
         "top10ShareOfDivision": 0,
         "top1": null,
@@ -710,28 +815,19 @@
           "bibcode": null,
           "date": null
         }
-      },
-      "strip": [
-        0,
-        0,
-        0,
-        2,
-        2,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
+      }
     },
     {
       "id": "genesat",
       "name": "GeneSat",
       "cost": 6,
+      "size": "under",
       "launchYear": 2006,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Orbiter",
+      "selection": "directed",
       "indices": {
         "h": 0,
         "m": null,
@@ -740,9 +836,9 @@
         "tori": null,
         "riq": null
       },
-      "yearsToBuild": 3.956,
       "papers": 0,
       "citations": 0,
+      "top10PerYear": 0,
       "hasThumb": true,
       "full": {
         "papers": 0,
@@ -767,6 +863,11 @@
           "status": "available",
           "months": 68,
           "citationBuckets": 9
+        },
+        "indices": {
+          "h": 0,
+          "g": 0,
+          "m": 0
         }
       },
       "window": {
@@ -792,6 +893,11 @@
           "status": "available",
           "months": 25,
           "citationBuckets": 6
+        },
+        "indices": {
+          "h": 0,
+          "g": 0,
+          "m": 0
         }
       },
       "lifetime": {
@@ -809,38 +915,19 @@
           "bibcode": null,
           "date": null
         }
-      },
-      "strip": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
+      }
     },
     {
       "id": "pharmasat",
       "name": "PharmaSat",
       "cost": 6.8,
+      "size": "under",
       "launchYear": 2009,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Orbiter",
+      "selection": "competed",
       "indices": {
         "h": 0,
         "m": null,
@@ -849,9 +936,9 @@
         "tori": null,
         "riq": null
       },
-      "yearsToBuild": 2.278,
       "papers": 0,
       "citations": 0,
+      "top10PerYear": 0,
       "hasThumb": true,
       "full": {
         "papers": 0,
@@ -876,6 +963,11 @@
           "status": "available",
           "months": 63,
           "citationBuckets": 9
+        },
+        "indices": {
+          "h": 0,
+          "g": 0,
+          "m": 0
         }
       },
       "window": {
@@ -901,6 +993,11 @@
           "status": "available",
           "months": 30,
           "citationBuckets": 6
+        },
+        "indices": {
+          "h": 0,
+          "g": 0,
+          "m": 0
         }
       },
       "lifetime": {
@@ -918,36 +1015,19 @@
           "bibcode": null,
           "date": null
         }
-      },
-      "strip": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
+      }
     },
     {
       "id": "o_oreos",
       "name": "O/OREOS",
       "cost": 8.1,
+      "size": "under",
       "launchYear": 2010,
       "failed": false,
       "shortfall": false,
+      "outcome": null,
       "type": "Orbiter",
+      "selection": "competed",
       "indices": {
         "h": 8,
         "m": 0.5,
@@ -956,9 +1036,9 @@
         "tori": 0.811,
         "riq": 90
       },
-      "yearsToBuild": 2.385,
       "papers": 11,
       "citations": 196,
+      "top10PerYear": 0.114,
       "hasThumb": true,
       "full": {
         "papers": 3,
@@ -983,6 +1063,11 @@
           "status": "available",
           "months": 30,
           "citationBuckets": 7
+        },
+        "indices": {
+          "h": 3,
+          "g": 3,
+          "m": 1.2
         }
       },
       "window": {
@@ -1008,6 +1093,11 @@
           "status": "available",
           "months": 30,
           "citationBuckets": 7
+        },
+        "indices": {
+          "h": 3,
+          "g": 3,
+          "m": 1.2
         }
       },
       "lifetime": {
@@ -1025,35 +1115,19 @@
           "bibcode": "2011AsBio..11..951N",
           "date": "2011-12-00"
         }
-      },
-      "strip": [
-        0,
-        1,
-        2,
-        0,
-        4,
-        1,
-        0,
-        1,
-        0,
-        1,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
+      }
     },
     {
       "id": "sporesat",
       "name": "SporeSat",
       "cost": 14.7,
+      "size": "under",
       "launchYear": 2014,
       "failed": false,
       "shortfall": true,
+      "outcome": "Partial Failure",
       "type": "Orbiter",
+      "selection": "competed",
       "indices": {
         "h": 0,
         "m": null,
@@ -1062,9 +1136,9 @@
         "tori": null,
         "riq": null
       },
-      "yearsToBuild": 3.294,
       "papers": 0,
       "citations": 0,
+      "top10PerYear": 0,
       "hasThumb": true,
       "full": {
         "papers": 0,
@@ -1089,6 +1163,11 @@
           "status": "available",
           "months": 116,
           "citationBuckets": 13
+        },
+        "indices": {
+          "h": 0,
+          "g": 0,
+          "m": 0
         }
       },
       "window": {
@@ -1114,6 +1193,11 @@
           "status": "available",
           "months": 25,
           "citationBuckets": 6
+        },
+        "indices": {
+          "h": 0,
+          "g": 0,
+          "m": 0
         }
       },
       "lifetime": {
@@ -1131,22 +1215,7 @@
           "bibcode": null,
           "date": null
         }
-      },
-      "strip": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
+      }
     }
   ]
 }

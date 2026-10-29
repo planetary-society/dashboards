@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 2353.5,
+    "lcc": 1040,
     "type": "Orbiter",
+    "program": "Mission to Planet Earth",
+    "target": "Earth",
+    "launchVehicle": "H-2",
     "dates": {
       "formulation": "1987-01-01",
       "launch": "1997-11-27",
@@ -23,12 +27,12 @@
     "m": 4.966,
     "i100": 253,
     "g": 247,
-    "tori": 815.866,
-    "riq": 984
+    "tori": 817.921,
+    "riq": 986
   },
   "facts": {
     "papers": 3032,
-    "citations": 127823,
+    "citations": 127901,
     "publicationYears": [
       1998,
       2026
@@ -112,119 +116,66 @@
       1932,
       2079,
       2296,
-      2773,
+      2804,
       3233,
       3897,
-      4622,
+      4623,
       5293,
-      6193,
+      6194,
       7969,
       8758,
       10195,
-      11850,
+      11849,
       12433,
       10650,
-      10311,
-      10070,
-      6282
+      10310,
+      10075,
+      6324
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 127823,
-      "observed": 127823,
+      "expected": 127901,
+      "observed": 127901,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "1998-01-01",
-    "end": "2003-09-01",
-    "matureDate": "2006-10-01",
-    "status": "available",
-    "months": 68,
-    "citationBuckets": 9,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      1,
-      0,
-      2,
-      2,
-      3,
-      0,
-      0,
-      0,
-      0,
-      0,
-      2,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      2,
-      0,
-      1,
-      0,
-      1,
-      3,
-      1,
-      1,
-      2,
-      0,
-      3,
-      3,
-      1,
-      1,
-      1,
-      1,
-      28,
-      10,
-      1,
-      3,
-      7,
-      3,
-      1,
-      2,
-      4,
-      2,
-      2,
-      5,
-      1,
-      9,
-      4,
-      1,
-      3,
-      3,
-      4,
-      4,
-      6,
-      1,
-      14,
-      0,
-      8,
-      13,
-      6,
-      2,
-      7,
-      3,
-      5,
-      6,
-      7
-    ],
-    "citationsByYearOffset": [
-      5,
-      7,
-      64,
-      182,
-      414,
-      479,
-      372,
-      335,
-      167
-    ]
+  "affiliations": {
+    "papers": 3032,
+    "us": {
+      "mapped": 911,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 115
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 56
+        },
+        {
+          "name": "University of Oklahoma, Norman",
+          "papers": 56
+        }
+      ]
+    },
+    "world": {
+      "mapped": 2276,
+      "top": [
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 184
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 115
+        },
+        {
+          "name": "Ministry of Earth Science, India",
+          "papers": 85
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2007JHyMe...8...38H",
@@ -238,51 +189,51 @@
     ],
     "authorCount": 9,
     "year": 2007,
-    "citations": 5483
+    "citations": 5485
   },
   "ranks": {
     "full": {
       "bins": [
-        206.285,
-        196.151,
-        172.188,
-        165.84,
-        162.054,
-        155.085,
-        143.726,
-        152.282,
-        156.021,
-        124.368
+        205.666,
+        197.043,
+        172.283,
+        164.874,
+        162.342,
+        155.7,
+        143.319,
+        151.608,
+        156.857,
+        124.309
       ],
       "top1": 14
     },
     "window": {
       "bins": [
-        25.355,
-        21.432,
-        28.558,
-        26.016,
-        30.649,
-        17.78,
-        15.341,
-        15.982,
-        10.792,
+        25.349,
+        21.44,
+        28.627,
+        25.975,
+        30.664,
+        17.746,
+        15.395,
+        15.943,
+        10.766,
         15.095
       ],
       "top1": 0.522
     },
     "lifetime": {
       "bins": [
-        158.196,
-        251.024,
-        258.263,
-        280.837,
-        289.064,
-        318.986,
-        336.746,
-        349.323,
-        394.192,
-        395.369
+        152.993,
+        252.376,
+        258.769,
+        281.159,
+        290.063,
+        319.769,
+        336.256,
+        350.574,
+        394.116,
+        395.925
       ],
       "top1": 45
     }
@@ -290,9 +241,9 @@
   "full": {
     "papers": 1634,
     "outputBasis": "measured",
-    "citations": 16473,
-    "top10": 160.677,
-    "top10ShareOfDivision": 0.04464,
+    "citations": 16487,
+    "top10": 107.058,
+    "top10ShareOfDivision": 0.02974,
     "top1": 9.417,
     "top1ShareOfDivision": 0.02616,
     "first": {
@@ -311,10 +262,15 @@
       "months": 232,
       "citationBuckets": 23
     },
+    "indices": {
+      "h": 43,
+      "g": 65,
+      "m": 2.225
+    },
     "spread": {
-      "mean": 10.081,
+      "mean": 10.09,
       "median": 6,
-      "uncited": 168,
+      "uncited": 167,
       "i10": 554,
       "i100": 8
     }
@@ -323,8 +279,8 @@
     "papers": 207,
     "outputBasis": "measured",
     "citations": 2025,
-    "top10": 21.625,
-    "top10ShareOfDivision": 0.02297,
+    "top10": 14.095,
+    "top10ShareOfDivision": 0.01497,
     "top1": 0.522,
     "top1ShareOfDivision": 0.00554,
     "first": {
@@ -343,6 +299,11 @@
       "months": 68,
       "citationBuckets": 9
     },
+    "indices": {
+      "h": 22,
+      "g": 32,
+      "m": 3.883
+    },
     "spread": {
       "mean": 9.783,
       "median": 6,
@@ -354,9 +315,9 @@
   "lifetime": {
     "papers": 3032,
     "outputBasis": "measured",
-    "citations": 127823,
-    "top10": 239.259,
-    "top10ShareOfDivision": 0.06211,
+    "citations": 127901,
+    "top10": 339.167,
+    "top10ShareOfDivision": 0.0729,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -367,18 +328,18 @@
       "date": "1998-06-00"
     },
     "spread": {
-      "mean": 42.158,
+      "mean": 42.184,
       "median": 18,
-      "uncited": 136,
+      "uncited": 134,
       "i10": 2055,
       "i100": 253
     }
   },
   "query": {
     "arms": "(((abs:\"TRMM\" AND abs:\"satellite\") OR =abs:\"Tropical Rainfall Measuring Mission\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1998-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22TRMM%22+AND+abs%3A%22satellite%22%29+OR+%3Dabs%3A%22Tropical+Rainfall+Measuring+Mission%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:08:37.699136+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1998-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22TRMM%22+AND+abs%3A%22satellite%22%29+OR+%3Dabs%3A%22Tropical+Rainfall+Measuring+Mission%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:52:48.867100+00:00",
     "reconciliation": {
       "adsReturned": 3037,
       "curatedOut": 0,
@@ -401,7 +362,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 5483
+      "citations": 5485
     },
     {
       "bibcode": "2010ACP....1011707V",
@@ -410,7 +371,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 2090
+      "citations": 2091
     },
     {
       "bibcode": "1998JAtOT..15..809K",
@@ -428,7 +389,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 1196
+      "citations": 1199
     },
     {
       "bibcode": "2013JGRG..118..317G",
@@ -446,7 +407,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 954
+      "citations": 956
     },
     {
       "bibcode": "2000BAMS...81.2035S",
@@ -482,7 +443,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 671
+      "citations": 672
     },
     {
       "bibcode": "2007ITGRS..45.2259K",
@@ -500,7 +461,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 583
+      "citations": 584
     },
     {
       "bibcode": "2003JCli...16.1456N",
@@ -509,7 +470,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 573
+      "citations": 574
     },
     {
       "bibcode": "1999GeoRL..26.3105R",
@@ -536,7 +497,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 493
+      "citations": 494
     },
     {
       "bibcode": "2006GeoRL..33.8405B",
@@ -545,7 +506,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 484
+      "citations": 485
     },
     {
       "bibcode": "2016JHyd..533..152T",
@@ -554,7 +515,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 468
+      "citations": 469
     },
     {
       "bibcode": "2010BGeo....7.1171G",
@@ -563,7 +524,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 459
+      "citations": 460
     },
     {
       "bibcode": "2020RSEnv.24011697T",
@@ -572,7 +533,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 452
+      "citations": 453
     }
   ],
   "papersFile": {

@@ -1,6 +1,6 @@
 /**
- * Model for CostCurve: one division's missions in cost order, with the running count of its top
- * papers as each costlier mission is added.
+ * Model for the overview's running total (focusLayout): one division's missions in cost order,
+ * with the running count of its top papers as each costlier mission is added.
  *
  * The packager writes the order and the cumulative shares (CostCurve in types.d.ts); the counts
  * come from each mission's own credit, summed here in that order. data.test.mjs holds the two to
@@ -29,27 +29,20 @@ export function curveFacts(curve, missions, scope, top) {
 	return { points, total, hasTop: total > 0, unplaced: curve.unplaced?.length ?? 0 };
 }
 
-/** The running totals at the dearest mission costing no more than `cost`. */
-export function runningAt(points, cost) {
-	let last = null;
-	for (const p of points ?? []) if (p.cost <= cost) last = p;
-	return last;
-}
-
 /**
  * Geometry for one measured width. The plot proper is `plotH` tall; the cost ticks and then the
  * rug of mission marks hang below it, so the stage is as tall as the deepest stack needs.
  */
-export function curveChart(facts, width, { padTop, plotH, mark, gap, gutter, rightPad, axisH }) {
+export function curveChart(facts, width, { padTop, plotH, mark, gap, gutter, rightPad, axisH, domain = null }) {
 	if (!facts || !(width > 0)) return null;
 	const left = gutter;
 	const right = Math.max(left + mark * 4, width - rightPad);
 
 	// Half a decade of padding either side: the cheapest and dearest missions sit inside the
-	// plot rather than on its edges.
+	// plot rather than on its edges. A caller sharing another chart's cost axis passes `domain`.
 	const costs = facts.points.map((p) => p.cost);
 	const x = scaleLog()
-		.domain([Math.min(...costs) / 1.5, Math.max(...costs) * 1.5])
+		.domain(domain ?? [Math.min(...costs) / 1.5, Math.max(...costs) * 1.5])
 		.range([left + mark / 2, right - mark / 2]);
 	const [x0, x1] = x.range();
 	const y = scaleLinear()

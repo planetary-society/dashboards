@@ -9,7 +9,11 @@
     "status": "Extended Mission",
     "failed": false,
     "cost": 1356.5,
+    "lcc": 558,
     "type": "In-Situ Probe",
+    "program": "Global Geospace Science Program (GGS)",
+    "target": "Sun-Earth Interaction",
+    "launchVehicle": "Delta II 7925",
     "dates": {
       "formulation": "1988-10-01",
       "launch": "1994-11-01",
@@ -21,14 +25,14 @@
   "indices": {
     "h": 119,
     "m": 3.719,
-    "i100": 154,
+    "i100": 156,
     "g": 191,
-    "tori": 359.549,
-    "riq": 592
+    "tori": 362.122,
+    "riq": 594
   },
   "facts": {
-    "papers": 1781,
-    "citations": 69001,
+    "papers": 1782,
+    "citations": 69424,
     "publicationYears": [
       1995,
       2026
@@ -101,7 +105,7 @@
       63,
       60,
       73,
-      76
+      77
     ],
     "citations": [
       8,
@@ -117,10 +121,10 @@
       1271,
       1610,
       1594,
-      2013,
-      1941,
-      1730,
-      2051,
+      2014,
+      1945,
+      1732,
+      2052,
       2210,
       2287,
       2431,
@@ -131,100 +135,56 @@
       3350,
       3851,
       4597,
-      3602,
+      3603,
       4047,
       4322,
-      4496,
-      3849
+      4514,
+      4245
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 69001,
-      "observed": 69001,
+      "expected": 69424,
+      "observed": 69424,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "1994-12-01",
-    "end": "1999-11-01",
-    "matureDate": "2002-10-01",
-    "status": "available",
-    "months": 59,
-    "citationBuckets": 9,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      8,
-      1,
-      0,
-      1,
-      0,
-      2,
-      0,
-      2,
-      0,
-      0,
-      0,
-      2,
-      0,
-      1,
-      0,
-      26,
-      2,
-      1,
-      1,
-      1,
-      0,
-      1,
-      3,
-      9,
-      0,
-      3,
-      16,
-      3,
-      4,
-      3,
-      2,
-      18,
-      3,
-      2,
-      6,
-      16,
-      4,
-      3,
-      4,
-      5,
-      3,
-      16,
-      15,
-      6,
-      4,
-      3,
-      4,
-      7,
-      1,
-      3,
-      4,
-      4,
-      3,
-      10,
-      6,
-      1,
-      7
-    ],
-    "citationsByYearOffset": [
-      0,
-      8,
-      58,
-      195,
-      499,
-      484,
-      628,
-      470,
-      126
-    ]
+  "affiliations": {
+    "papers": 1782,
+    "us": {
+      "mapped": 1001,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 433
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 273
+        },
+        {
+          "name": "University of New Hampshire",
+          "papers": 101
+        }
+      ]
+    },
+    "world": {
+      "mapped": 1486,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 433
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 273
+        },
+        {
+          "name": "University of New Hampshire",
+          "papers": 101
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "1995SSRv...71..207L",
@@ -238,21 +198,21 @@
     ],
     "authorCount": 15,
     "year": 1995,
-    "citations": 1467
+    "citations": 1473
   },
   "ranks": {
     "full": {
       "bins": [
-        216.152,
-        197.45,
-        171.086,
-        166.259,
-        136.975,
-        131.618,
-        139.702,
-        128.531,
-        146.64,
-        137.588
+        215.855,
+        198.001,
+        170.581,
+        166.952,
+        137.67,
+        129.472,
+        141.248,
+        126.728,
+        148.129,
+        137.364
       ],
       "top1": 18
     },
@@ -260,29 +220,29 @@
       "bins": [
         44.207,
         40.979,
-        32.589,
-        27.476,
-        21.943,
+        32.606,
+        27.512,
+        21.89,
         20.029,
         14.123,
-        21.69,
-        15.964,
+        21.703,
+        15.951,
         11
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        173.586,
-        168.506,
-        170.248,
-        150.459,
-        171.956,
-        160.06,
-        177.349,
-        177.204,
-        189.525,
-        242.106
+        174.16,
+        169.36,
+        170.396,
+        148.957,
+        170.557,
+        158.65,
+        181.133,
+        177.571,
+        188.824,
+        242.393
       ],
       "top1": 29
     }
@@ -290,9 +250,9 @@
   "full": {
     "papers": 1572,
     "outputBasis": "measured",
-    "citations": 16131,
-    "top10": 111.121,
-    "top10ShareOfDivision": 0.07708,
+    "citations": 16151,
+    "top10": 110.754,
+    "top10ShareOfDivision": 0.07682,
     "top1": 14.75,
     "top1ShareOfDivision": 0.10231,
     "first": {
@@ -311,11 +271,16 @@
       "months": 349,
       "citationBuckets": 33
     },
+    "indices": {
+      "h": 42,
+      "g": 57,
+      "m": 1.444
+    },
     "spread": {
-      "mean": 10.261,
+      "mean": 10.274,
       "median": 6,
       "uncited": 149,
-      "i10": 580,
+      "i10": 584,
       "i100": 3
     }
   },
@@ -323,8 +288,8 @@
     "papers": 250,
     "outputBasis": "measured",
     "citations": 2468,
-    "top10": 20.85,
-    "top10ShareOfDivision": 0.04699,
+    "top10": 11,
+    "top10ShareOfDivision": 0.02479,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -343,6 +308,11 @@
       "months": 59,
       "citationBuckets": 9
     },
+    "indices": {
+      "h": 24,
+      "g": 33,
+      "m": 4.881
+    },
     "spread": {
       "mean": 9.872,
       "median": 6,
@@ -352,11 +322,11 @@
     }
   },
   "lifetime": {
-    "papers": 1781,
+    "papers": 1782,
     "outputBasis": "measured",
-    "citations": 69001,
-    "top10": 147.589,
-    "top10ShareOfDivision": 0.09419,
+    "citations": 69424,
+    "top10": 196.971,
+    "top10ShareOfDivision": 0.10749,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -367,26 +337,26 @@
       "date": "1995-02-00"
     },
     "spread": {
-      "mean": 38.743,
+      "mean": 38.958,
       "median": 16,
-      "uncited": 134,
-      "i10": 1134,
-      "i100": 154
+      "uncited": 133,
+      "i10": 1140,
+      "i100": 156
     }
   },
   "query": {
     "arms": "(((((=abs:\"Wind spacecraft\" OR =abs:\"Konus-Wind\" OR =abs:\"Wind/Konus\" OR =abs:\"Transient Gamma-Ray Spectrometer\" OR ((=abs:\"Wind satellite\" OR (=abs:\"Wind observations\" AND NOT abs:(\"solar wind observations\" OR \"polar wind\" OR \"stellar wind\" OR \"neutral wind\" OR \"wind speed\" OR \"wind field\")) OR =abs:\"Wind/3DP\" OR =abs:\"Wind/MFI\" OR =abs:\"Wind/SWE\" OR =abs:\"Wind/EPACT\" OR =abs:\"Wind/STICS\" OR (=abs:\"Wind/WAVES\" AND NOT =abs:\"solar wind waves\") OR abstract:WIND OR title:WIND OR abs:EPACT OR abs:3DP) AND abs:(=\"solar wind\" OR interplanetary OR magnetosphere OR magnetosheath OR heliosphere OR \"bow shock\" OR =foreshock OR \"gamma-ray burst\" OR GRB OR \"radio burst\" OR \"magnetic cloud\")) OR (abs:TGRS AND abs:(positron OR annihilation OR \"gamma-ray line\" OR \"gamma-ray burst\")) OR ((=abs:\"ACE and Wind\" OR =abs:\"Wind and ACE\" OR =abs:\"Explorer and Wind\" OR =abs:\"Wind and Advanced Composition Explorer\" OR =abs:\"Wind and Geotail\" OR =abs:\"Geotail and Wind\" OR =abs:\"Wind and IMP\" OR =abs:\"IMP-8 and Wind\" OR =abs:\"Ulysses and Wind\" OR =abs:\"Wind and Ulysses\" OR =abs:\"STEREO and Wind\" OR =abs:\"Wind and STEREO\" OR =abs:\"SOHO and Wind\" OR =abs:\"Wind and SOHO\" OR =abs:\"Wind and DSCOVR\" OR =abs:\"DSCOVR and Wind\" OR =abs:\"Helios and Wind\" OR =abs:\"Wind and Helios\" OR =abs:\"PSP and Wind\" OR =abs:\"Wind and PSP\" OR =abs:\"Parker Solar Probe and Wind\" OR =abs:\"Wind and Parker Solar Probe\") AND NOT (=abs:\"solar wind and ACE\" OR =abs:\"solar wind and Advanced\" OR =abs:\"solar wind and Geotail\" OR =abs:\"solar wind and IMP\" OR =abs:\"solar wind and Ulysses\" OR =abs:\"solar wind and STEREO\" OR =abs:\"solar wind and SOHO\" OR =abs:\"solar wind and Helios\" OR =abs:\"solar wind and PSP\" OR =abs:\"solar wind and Parker\") AND abs:(=\"solar wind\" OR interplanetary OR magnetosphere OR magnetosheath OR heliosphere OR \"bow shock\" OR =foreshock OR \"magnetic cloud\"))))) OR facility:Wind OR =abs:\"Wind 3D Plasma\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1994-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%28%28%3Dabs%3A%22Wind+spacecraft%22+OR+%3Dabs%3A%22Konus-Wind%22+OR+%3Dabs%3A%22Wind%2FKonus%22+OR+%3Dabs%3A%22Transient+Gamma-Ray+Spectrometer%22+OR+%28%28%3Dabs%3A%22Wind+satellite%22+OR+%28%3Dabs%3A%22Wind+observations%22+AND+NOT+abs%3A%28%22solar+wind+observations%22+OR+%22polar+wind%22+OR+%22stellar+wind%22+OR+%22neutral+wind%22+OR+%22wind+speed%22+OR+%22wind+field%22%29%29+OR+%3Dabs%3A%22Wind%2F3DP%22+OR+%3Dabs%3A%22Wind%2FMFI%22+OR+%3Dabs%3A%22Wind%2FSWE%22+OR+%3Dabs%3A%22Wind%2FEPACT%22+OR+%3Dabs%3A%22Wind%2FSTICS%22+OR+%28%3Dabs%3A%22Wind%2FWAVES%22+AND+NOT+%3Dabs%3A%22solar+wind+waves%22%29+OR+abstract%3AWIND+OR+title%3AWIND+OR+abs%3AEPACT+OR+abs%3A3DP%29+AND+abs%3A%28%3D%22solar+wind%22+OR+interplanetary+OR+magnetosphere+OR+magnetosheath+OR+heliosphere+OR+%22bow+shock%22+OR+%3Dforeshock+OR+%22gamma-ray+burst%22+OR+GRB+OR+%22radio+burst%22+OR+%22magnetic+cloud%22%29%29+OR+%28abs%3ATGRS+AND+abs%3A%28positron+OR+annihilation+OR+%22gamma-ray+line%22+OR+%22gamma-ray+burst%22%29%29+OR+%28%28%3Dabs%3A%22ACE+and+Wind%22+OR+%3Dabs%3A%22Wind+and+ACE%22+OR+%3Dabs%3A%22Explorer+and+Wind%22+OR+%3Dabs%3A%22Wind+and+Advanced+Composition+Explorer%22+OR+%3Dabs%3A%22Wind+and+Geotail%22+OR+%3Dabs%3A%22Geotail+and+Wind%22+OR+%3Dabs%3A%22Wind+and+IMP%22+OR+%3Dabs%3A%22IMP-8+and+Wind%22+OR+%3Dabs%3A%22Ulysses+and+Wind%22+OR+%3Dabs%3A%22Wind+and+Ulysses%22+OR+%3Dabs%3A%22STEREO+and+Wind%22+OR+%3Dabs%3A%22Wind+and+STEREO%22+OR+%3Dabs%3A%22SOHO+and+Wind%22+OR+%3Dabs%3A%22Wind+and+SOHO%22+OR+%3Dabs%3A%22Wind+and+DSCOVR%22+OR+%3Dabs%3A%22DSCOVR+and+Wind%22+OR+%3Dabs%3A%22Helios+and+Wind%22+OR+%3Dabs%3A%22Wind+and+Helios%22+OR+%3Dabs%3A%22PSP+and+Wind%22+OR+%3Dabs%3A%22Wind+and+PSP%22+OR+%3Dabs%3A%22Parker+Solar+Probe+and+Wind%22+OR+%3Dabs%3A%22Wind+and+Parker+Solar+Probe%22%29+AND+NOT+%28%3Dabs%3A%22solar+wind+and+ACE%22+OR+%3Dabs%3A%22solar+wind+and+Advanced%22+OR+%3Dabs%3A%22solar+wind+and+Geotail%22+OR+%3Dabs%3A%22solar+wind+and+IMP%22+OR+%3Dabs%3A%22solar+wind+and+Ulysses%22+OR+%3Dabs%3A%22solar+wind+and+STEREO%22+OR+%3Dabs%3A%22solar+wind+and+SOHO%22+OR+%3Dabs%3A%22solar+wind+and+Helios%22+OR+%3Dabs%3A%22solar+wind+and+PSP%22+OR+%3Dabs%3A%22solar+wind+and+Parker%22%29+AND+abs%3A%28%3D%22solar+wind%22+OR+interplanetary+OR+magnetosphere+OR+magnetosheath+OR+heliosphere+OR+%22bow+shock%22+OR+%3Dforeshock+OR+%22magnetic+cloud%22%29%29%29%29%29+OR+facility%3AWind+OR+%3Dabs%3A%22Wind+3D+Plasma%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1994-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:12:42.285224+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1994-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%28%28%3Dabs%3A%22Wind+spacecraft%22+OR+%3Dabs%3A%22Konus-Wind%22+OR+%3Dabs%3A%22Wind%2FKonus%22+OR+%3Dabs%3A%22Transient+Gamma-Ray+Spectrometer%22+OR+%28%28%3Dabs%3A%22Wind+satellite%22+OR+%28%3Dabs%3A%22Wind+observations%22+AND+NOT+abs%3A%28%22solar+wind+observations%22+OR+%22polar+wind%22+OR+%22stellar+wind%22+OR+%22neutral+wind%22+OR+%22wind+speed%22+OR+%22wind+field%22%29%29+OR+%3Dabs%3A%22Wind%2F3DP%22+OR+%3Dabs%3A%22Wind%2FMFI%22+OR+%3Dabs%3A%22Wind%2FSWE%22+OR+%3Dabs%3A%22Wind%2FEPACT%22+OR+%3Dabs%3A%22Wind%2FSTICS%22+OR+%28%3Dabs%3A%22Wind%2FWAVES%22+AND+NOT+%3Dabs%3A%22solar+wind+waves%22%29+OR+abstract%3AWIND+OR+title%3AWIND+OR+abs%3AEPACT+OR+abs%3A3DP%29+AND+abs%3A%28%3D%22solar+wind%22+OR+interplanetary+OR+magnetosphere+OR+magnetosheath+OR+heliosphere+OR+%22bow+shock%22+OR+%3Dforeshock+OR+%22gamma-ray+burst%22+OR+GRB+OR+%22radio+burst%22+OR+%22magnetic+cloud%22%29%29+OR+%28abs%3ATGRS+AND+abs%3A%28positron+OR+annihilation+OR+%22gamma-ray+line%22+OR+%22gamma-ray+burst%22%29%29+OR+%28%28%3Dabs%3A%22ACE+and+Wind%22+OR+%3Dabs%3A%22Wind+and+ACE%22+OR+%3Dabs%3A%22Explorer+and+Wind%22+OR+%3Dabs%3A%22Wind+and+Advanced+Composition+Explorer%22+OR+%3Dabs%3A%22Wind+and+Geotail%22+OR+%3Dabs%3A%22Geotail+and+Wind%22+OR+%3Dabs%3A%22Wind+and+IMP%22+OR+%3Dabs%3A%22IMP-8+and+Wind%22+OR+%3Dabs%3A%22Ulysses+and+Wind%22+OR+%3Dabs%3A%22Wind+and+Ulysses%22+OR+%3Dabs%3A%22STEREO+and+Wind%22+OR+%3Dabs%3A%22Wind+and+STEREO%22+OR+%3Dabs%3A%22SOHO+and+Wind%22+OR+%3Dabs%3A%22Wind+and+SOHO%22+OR+%3Dabs%3A%22Wind+and+DSCOVR%22+OR+%3Dabs%3A%22DSCOVR+and+Wind%22+OR+%3Dabs%3A%22Helios+and+Wind%22+OR+%3Dabs%3A%22Wind+and+Helios%22+OR+%3Dabs%3A%22PSP+and+Wind%22+OR+%3Dabs%3A%22Wind+and+PSP%22+OR+%3Dabs%3A%22Parker+Solar+Probe+and+Wind%22+OR+%3Dabs%3A%22Wind+and+Parker+Solar+Probe%22%29+AND+NOT+%28%3Dabs%3A%22solar+wind+and+ACE%22+OR+%3Dabs%3A%22solar+wind+and+Advanced%22+OR+%3Dabs%3A%22solar+wind+and+Geotail%22+OR+%3Dabs%3A%22solar+wind+and+IMP%22+OR+%3Dabs%3A%22solar+wind+and+Ulysses%22+OR+%3Dabs%3A%22solar+wind+and+STEREO%22+OR+%3Dabs%3A%22solar+wind+and+SOHO%22+OR+%3Dabs%3A%22solar+wind+and+Helios%22+OR+%3Dabs%3A%22solar+wind+and+PSP%22+OR+%3Dabs%3A%22solar+wind+and+Parker%22%29+AND+abs%3A%28%3D%22solar+wind%22+OR+interplanetary+OR+magnetosphere+OR+magnetosheath+OR+heliosphere+OR+%22bow+shock%22+OR+%3Dforeshock+OR+%22magnetic+cloud%22%29%29%29%29%29+OR+facility%3AWind+OR+%3Dabs%3A%22Wind+3D+Plasma%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1994-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:01:29.001276+00:00",
     "reconciliation": {
-      "adsReturned": 1797,
+      "adsReturned": 1798,
       "curatedOut": 13,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 3,
-      "final": 1781
+      "final": 1782
     }
   },
   "curation": {
@@ -586,7 +556,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1995,
-      "citations": 1467
+      "citations": 1473
     },
     {
       "bibcode": "2005JGRA..110.2104K",
@@ -595,7 +565,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 1199
+      "citations": 1211
     },
     {
       "bibcode": "1995SSRv...71...55O",
@@ -604,7 +574,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1995,
-      "citations": 1181
+      "citations": 1185
     },
     {
       "bibcode": "1995SSRv...71..125L",
@@ -613,7 +583,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1995,
-      "citations": 892
+      "citations": 896
     },
     {
       "bibcode": "1995SSRv...71..231B",
@@ -622,16 +592,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1995,
-      "citations": 862
-    },
-    {
-      "bibcode": "2000JGR...10510465A",
-      "title": "Improvement in the prediction of solar wind conditions using near-real time solar magnetic field updates",
-      "firstAuthor": "Arge, C. N.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2000,
-      "citations": 719
+      "citations": 866
     },
     {
       "bibcode": "2012LRSP....9....3W",
@@ -640,7 +601,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 712
+      "citations": 727
+    },
+    {
+      "bibcode": "2000JGR...10510465A",
+      "title": "Improvement in the prediction of solar wind conditions using near-real time solar magnetic field updates",
+      "firstAuthor": "Arge, C. N.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2000,
+      "citations": 723
     },
     {
       "bibcode": "1998JGR...103.4775L",
@@ -649,7 +619,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 694
+      "citations": 700
     },
     {
       "bibcode": "2001Natur.412..414O",
@@ -658,7 +628,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 473
+      "citations": 474
     },
     {
       "bibcode": "2006GeoRL..33.9101H",
@@ -667,7 +637,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 469
+      "citations": 474
     },
     {
       "bibcode": "2001JGR...10629207G",
@@ -676,7 +646,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 392
+      "citations": 393
     },
     {
       "bibcode": "2005ApJ...625..474T",
@@ -694,7 +664,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 380
+      "citations": 382
     },
     {
       "bibcode": "2005AnGeo..23.1033S",
@@ -703,7 +673,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 360
+      "citations": 361
     },
     {
       "bibcode": "2006SoPh..239..393J",
@@ -712,7 +682,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 345
+      "citations": 347
     },
     {
       "bibcode": "1999JGR...104.9809L",
@@ -721,7 +691,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 335
+      "citations": 336
     },
     {
       "bibcode": "2004JASTP..66.1295A",
@@ -739,7 +709,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 328
+      "citations": 329
     },
     {
       "bibcode": "1999JGR...10422331L",
@@ -757,10 +727,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 310
+      "citations": 312
     }
   ],
   "papersFile": {
-    "rows": 1781
+    "rows": 1782
   }
 }

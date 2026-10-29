@@ -4,11 +4,9 @@ import { describe, it } from 'node:test';
 import {
 	accumulateCitationYears,
 	buildLifetimeSeries,
-	buildStrip,
-	citationsByYearOffset,
+	buildWindowSeries,
 	foldYears,
 	monthOffset,
-	papersByMonth,
 	papersByYearMap
 } from '../lib/series.mjs';
 
@@ -184,47 +182,19 @@ describe('window series', () => {
 		assert.equal(monthOffset('2005-04-00', '2004-04-14'), 12);
 		assert.equal(monthOffset(null, '2004-04-14'), null);
 	});
-
-	it('clamps papers to the first and last month bucket', () => {
-		const months = papersByMonth(
-			[{ date: '2004-03-01' }, { date: '2004-04-20' }, { date: '2007-05-01' }, { pubdate: '2004-05-00' }],
-			'2004-04-14',
-			36
-		);
-		assert.equal(months.length, 36);
-		assert.equal(months[0], 2); // the pre-start record clamps into month 0
-		assert.equal(months[1], 1);
-		assert.equal(months[35], 1); // the post-end record clamps into the last month
-		assert.equal(months.reduce((a, b) => a + b, 0), 4);
-	});
-
-	it('bins window citations by citing year minus the start year', () => {
-		const offsets = citationsByYearOffset(
-			{ a: ['2004X', '2005X', '2011X'], b: ['2003X'] },
-			2004,
-			7
-		);
-		assert.deepEqual(offsets, [2, 1, 0, 0, 0, 0, 1]);
-	});
 });
 
-describe('buildStrip', () => {
-	it('starts at the science-start year and caps its length', () => {
-		const strip = buildStrip({
-			papersByYear: new Map([
-				[1997, 9],
-				[1998, 2],
-				[2000, 5]
-			]),
-			startYear: 1998,
-			asOfYear: 2026,
-			cap: 4
-		});
-		// The 1997 papers predate science start and are not in the strip.
-		assert.deepEqual(strip, [2, 0, 5, 0]);
-	});
-
-	it('is empty without a start year', () => {
-		assert.deepEqual(buildStrip({ papersByYear: new Map(), startYear: null, asOfYear: 2026, cap: 20 }), []);
+describe('buildWindowSeries', () => {
+	it('counts a shared paper once and each citation only inside its paper\'s citation window', () => {
+		const rows = [{ bibcode: 'A', year: 2000 }, { bibcode: 'A', year: 2000 }, { bibcode: 'B', year: '2001' }];
+		const citations = new Map([
+			['A', ['1999x', '2000x', '2002x', '2003x']], // 1999 predates the paper; 2003 is past 2000 + 2
+			['B', ['2003x', '2004x', 'bad']]
+		]);
+		const { series, edges } = buildWindowSeries({ rows, citations, citationYears: 2, asOfYear: 2005 });
+		assert.equal(edges, 3);
+		assert.deepEqual(series.years, [2000, 2001, 2002, 2003, 2004, 2005]);
+		assert.deepEqual(series.papers, [1, 1, 0, 0, 0, 0]);
+		assert.deepEqual(series.citations, [1, 0, 1, 1, 0, 0]);
 	});
 });

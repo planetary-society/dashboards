@@ -17,7 +17,9 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { compile } from 'svelte/compiler';
 import { render } from 'svelte/server';
 import { scaleLinear, scaleLog } from 'd3-scale';
-import { waffleLayout } from './layouts.js';
+import { focusLayout, costLayout, primerLayout, perDollarLayout, tierOutcomeLayout } from './layouts.js';
+import { money } from '../format.js';
+import { flat } from '../copy/discussion.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const lib = join(here, '..');
@@ -57,68 +59,22 @@ const costTicks = [10, 100, 1000, 10000];
 // the cost layout's x, as the later states borrow it: a log scale inside a 96px label gutter
 const x = scaleLog().domain([5, 20000]).range([105, 867]);
 
-// --- ComparisonLabels -----------------------------------------------------------------------
-
-const side = (missions, failed, withTop, top10) => ({ missions, failed, withTop, top10, top10PerMission: missions ? top10 / missions : null });
-const comparison = {
-	divisions: ['astrophysics', 'earth', 'heliophysics', 'planetary'],
-	unavailable: 0,
-	// the panels show each division apart, not the equal-weight averages or the pooled groups
-	equalWeight: { under: 3.637, over: 127.959 },
-	groups: [
-		{ key: 'under', missions: 35, failed: 7, withTop: 10, top10: 160.207, top10PerMission: 4.577 },
-		{ key: 'over', missions: 94, failed: 7, withTop: 87, top10: 11205.292, top10PerMission: 119.205 }
-	],
-	byDivision: [
-		{ division: 'astrophysics', name: 'Astrophysics', under: side(6, 1, 1, 1.15), over: side(19, 0, 19, 4983.749) },
-		{ division: 'earth', name: 'Earth Science', under: side(12, 2, 2, 1.333), over: side(28, 3, 25, 3845.667) },
-		{ division: 'heliophysics', name: 'Heliophysics', under: side(12, 2, 5, 148.274), over: side(17, 0, 17, 1294.226) },
-		{ division: 'planetary', name: 'Planetary Science', under: side(5, 2, 2, 9.45), over: side(30, 4, 26, 1081.65) }
-	]
-};
-
-test('ComparisonLabels prerenders one bar pair per division either side of the threshold, on one shared ruler', async () => {
-	const Component = await load('ComparisonLabels.svelte');
-	const { body } = render(Component, { props: { comparison, referenceCost: 150, visible: true } });
-	for (const t of ['Average number of top-10% papers contributed by a mission', '$150M or less', 'Over $150M']) assert.ok(body.includes(t), t);
-	for (const [name, under, over] of [
-		['Astrophysics', '0.2', '262'],
-		['Earth Science', '0.1', '137'],
-		['Heliophysics', '12', '76'],
-		['Planetary Science', '1.9', '36']
-	]) {
-		assert.match(body, new RegExp(`>${under}<[^]*?>${over}<[^]*?>${name}<`), `${name}: ${under} against ${over}`);
-	}
-	assert.ok(!body.includes('>3.6<') && !body.includes('>128<'), 'not the equal-weight averages');
-	assert.ok(!body.includes(' missions<') && !body.includes(' failed'), 'no mission or failure counts under the bars');
-	assert.equal((body.match(/height: max\(2px, 100%\)/g) ?? []).length, 1, 'only the tallest bar of all four fills its plot');
-	assert.match(body, /class="bars[^"]*\bvisible\b/);
-	clean(body);
-});
-
-test('ComparisonLabels shows a dash, not NaN, for a side with no missions', async () => {
-	const Component = await load('ComparisonLabels.svelte');
-	const empty = { ...comparison, byDivision: [{ ...comparison.byDivision[0], under: side(0, 0, 0, 0) }, comparison.byDivision[1]] };
-	const { body } = render(Component, { props: { layout: { blocks: [] }, comparison: empty, referenceCost: 150, compact: true } });
-	assert.match(body, />—</);
-	assert.equal((body.match(/height: max\(2px, 0%\)/g) ?? []).length, 4, 'hidden bars sit at their 2px floor');
-	clean(body);
-});
-
 // --- Skyline --------------------------------------------------------------------------------
 
 const years = scaleLinear().domain([1980, 2021]).range([64, 828]);
 const skyline = {
 	columns: [
-		{ id: 'hubble', name: 'Hubble', x: 300, y: 80, w: 2, h: 400, papers: 16885 },
-		{ id: 'cubesat', name: 'CubeSat', x: 800, y: 470, w: 2, h: 10, papers: 12 }
+		{ id: 'hubble', name: 'Hubble', x: 300, y: 80, w: 2, h: 400, papers: 16885, cited: 1164186 },
+		{ id: 'cubesat', name: 'CubeSat', x: 800, y: 470, w: 2, h: 10, papers: 12, cited: 40 }
 	],
 	ground: 480,
 	top: 28,
 	left: 64,
 	right: 828,
 	x: years,
-	lineH: 15
+	lineH: 15,
+	room: 400,
+	most: 16885
 };
 
 test('Skyline prerenders the columns, the year ticks and the running total, and no names', async () => {
@@ -141,48 +97,30 @@ test('Skyline names and lights only the highlighted column', async () => {
 	clean(body);
 });
 
+test('Skyline at its citation step: citations to the top of the chart, the papers shrunk under them', async () => {
+	const Component = await load('Skyline.svelte');
+	const { body } = render(Component, { props: { layout: skyline, total: 146165, cited: 6079430, rise: 1, cite: 1, highlight: 'hubble', ...stage } });
+	assert.ok(body.includes('>6,079,430<'), 'the citation total once risen');
+	assert.ok(body.includes('citations of <span class="neptuneBlue">146,165 publications</span>'), 'the publications in the columns\' blue');
+	assert.equal((body.match(/<rect /g) ?? []).length, 4, 'a citation and a paper column per mission');
+	assert.equal((body.match(/height="400"/g) ?? []).length, 1, "only Hubble's citations fill the chart; its papers have shrunk");
+	assert.ok(body.includes('Hubble 1,164,186'), 'named with its citations');
+	assert.equal((body.match(/class="[^"]*\bhot\b/g) ?? []).length, 1, 'one column in flame');
+	clean(body);
+});
+
+test('Skyline midway: the count grows out of the publication total toward the citations', async () => {
+	const { body } = render(await load('Skyline.svelte'), { props: { layout: skyline, total: 146165, cited: 6079430, rise: 1, cite: 0.5, ...stage } });
+	const n = Number(body.match(/class="n[^"]*">([\d,]+)</)[1].replaceAll(',', ''));
+	assert.ok(n > 146165 && n < 6079430, `${n} lies between the two totals`);
+	clean(body);
+});
+
 test('Skyline before it rises: a zero count and flat columns', async () => {
 	const Component = await load('Skyline.svelte');
 	const { body } = render(Component, { props: { layout: skyline, total: 146165, rise: 0, ...stage, compact: true } });
 	assert.match(body, />0</);
 	assert.match(body, /scaleY\(0\)/);
-	clean(body);
-});
-
-// --- FailureLabels --------------------------------------------------------------------------
-
-const failure = {
-	statuses: ['failure', 'partial failure', 'partial success'],
-	under: { missions: 40, failed: 9, rate: 0.225 },
-	over: { missions: 94, failed: 7, rate: 7 / 94 },
-	higher: 'under',
-	byDivision: [
-		{ division: 'astrophysics', name: 'Astrophysics', under: { missions: 12, failed: 3 }, over: { missions: 22, failed: 1 } },
-		{ division: 'earth', name: 'Earth Science', under: { missions: 0, failed: 0 }, over: { missions: 40, failed: 2 } }
-	]
-};
-const failureL = {
-	pos: new Map(),
-	s: 18,
-	stacked: false,
-	left: 236,
-	headH: 76,
-	bottomY: 300,
-	dividerX: 450,
-	underRight: 430,
-	overLeft: 470,
-	rows: [
-		{ division: 'astrophysics', label: 'Astrophysics', y: 76, h: 112, band: false, nameY: 81, figuresY: 170, under: 12, over: 22 },
-		{ division: 'earth', label: 'Earth Science', y: 188, h: 112, band: true, nameY: 193, figuresY: 282, under: 0, over: 40 }
-	]
-};
-
-test('FailureLabels prerenders both rates, the division names and n of m per side', async () => {
-	const Component = await load('FailureLabels.svelte');
-	const { body } = render(Component, { props: { layout: failureL, failure, referenceCost: 150, visible: true } });
-	for (const t of ['$150M or less', 'Over $150M', '>23%<', '>7.4%<', '>Astrophysics<', '>Earth Science<', '3 of 12', '1 of 22', '2 of 40']) assert.ok(body.includes(t), t);
-	assert.ok(!body.includes('0 of 0'), 'a side with no missions prints nothing');
-	assert.equal((body.match(/class="band[ "]/g) ?? []).length, 2);
 	clean(body);
 });
 
@@ -252,217 +190,123 @@ test('ClpsChart end-label blocks never touch, on a phone or not', async () => {
 	}
 });
 
-// --- PerDollarAxis --------------------------------------------------------------------------
+// --- Primer / FocusChart / LanesChart: the packaged data on a real layout ------
 
-const scale = scaleLog().domain([7.46, 47132]).range([0, 1]).clamp(true);
-const dollar = {
-	pos: new Map(),
-	x,
-	left: 236,
-	top: 28,
-	bottomY: 568,
-	scale,
-	rateTicks: [10, 100, 1000, 10000],
-	rows: [
-		{ slug: 'astrophysics', label: 'Astrophysics', missions: 25, zeros: 1, y: 28, h: 180, band: false, shelfY: 202, curveTop: 40 },
-		{ slug: 'earth', label: 'Earth Science', missions: 40, zeros: 9, y: 208, h: 180, band: true, shelfY: 382, curveTop: 220 },
-		{ slug: 'planetary', label: 'Planetary Science', missions: 35, zeros: 7, y: 388, h: 180, band: false, shelfY: 562, curveTop: 400 }
-	]
-};
+const site = JSON.parse(await readFile(join(lib, 'data/generated/site.json'), 'utf8'));
+const { tiles } = JSON.parse(await readFile(join(lib, 'data/generated/scrolly.json'), 'utf8'));
+const story = site.story;
+const ref = story.referenceCost;
 
-const perDollar = [
-	{
-		division: 'astrophysics',
-		name: 'Astrophysics',
-		groups: [
-			{ key: 'under', missions: 3, cost: 38.9, citations: 178, perHundredM: 457.584 },
-			{ key: 'over', missions: 22, cost: 34440.6, citations: 1251426, perHundredM: 3633.578 }
-		]
-	},
-	// a side with no missions has no rate: it prints as a dash, never as a zero
-	{
-		division: 'earth',
-		name: 'Earth Science',
-		groups: [
-			{ key: 'under', missions: 0, cost: 0, citations: 0, perHundredM: null },
-			{ key: 'over', missions: 40, cost: 30716.5, citations: 595905, perHundredM: 1940.0 }
-		]
-	},
-	// a measured zero stays a zero
-	{
-		division: 'planetary',
-		name: 'Planetary Science',
-		groups: [
-			{ key: 'under', missions: 3, cost: 82.1, citations: 0, perHundredM: 0 },
-			{ key: 'over', missions: 32, cost: 38536.4, citations: 157632, perHundredM: 409.047 }
-		]
-	}
-];
-
-test('PerDollarAxis prerenders each division with its rate either side of the reference', async () => {
-	const Component = await load('PerDollarAxis.svelte');
-	const { body } = render(Component, { props: { layout: dollar, perDollar, referenceCost, ticks: costTicks, ...stage } });
-	for (const name of ['Astrophysics', 'Earth Science', 'Planetary Science']) assert.ok(body.includes(`>${name}<`), name);
-	assert.ok(body.includes('$100M or less: 458 · Over $100M: 3,634'));
-	assert.ok(body.includes('$100M or less: — · Over $100M: 1,940'));
-	assert.ok(body.includes('$100M or less: 0 · Over $100M: 409'));
-	// the rate scale is labelled once, on the first row
-	for (const r of ['10', '100', '1k', '10k']) assert.match(body, new RegExp(`class="rate-label[^"]*"[^>]*>${r}<`), r);
-	assert.equal((body.match(/class="rate-label[ "]/g) ?? []).length, 4);
-	assert.equal((body.match(/class="shelf[ "]/g) ?? []).length, 3, 'one shelf per row');
-	assert.match(body, /class="reference[ "]/);
+test('Primer prerenders a bar per citation count up to the most cited, their top-10% parts and the cutoff', async () => {
+	const layout = primerLayout(story.primer, stage.width, stage.height);
+	const { body } = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, highlight: true } });
 	clean(body);
+	const tops = story.primer.top.filter((t) => t > 0).length;
+	assert.equal((body.match(/<rect/g) ?? []).length, story.primer.counts.filter((n) => n > 0).length + tops, 'no bar for a count no paper drew');
+	assert.ok(story.primer.counts.at(-1) > 0, 'the axis ends at the most cited paper');
+	assert.match(body, /High impact papers/, "the cutoff's label");
+	assert.match(body, /Citation counts of Planetary Science mission papers/, 'the header names the division');
+	assert.match(body, />1,000</, 'log gridlines at powers of ten');
+	assert.ok(!body.includes('class="label'), 'no count until the reader points');
 });
 
-test('PerDollarAxis on a phone: both rates in short form, each side named, one rate label', async () => {
-	const Component = await load('PerDollarAxis.svelte');
-	const { body } = render(Component, { props: { layout: { ...dollar, left: 0 }, perDollar, referenceCost, ticks: costTicks, ...stage, compact: true } });
-	assert.ok(body.includes('≤$100M 458 · over 3.6k'));
-	assert.ok(body.includes('≤$100M — · over 1.9k'));
-	assert.ok(body.includes('≤$100M 0 · over 409'));
-	assert.equal((body.match(/class="rate-label[ "]/g) ?? []).length, 1, 'the top rule only');
-	assert.match(body, /class="rate-label[^"]*\binside\b[^>]*>10k</);
+test('Primer lights the pointed-at bar and names its count', async () => {
+	const layout = primerLayout(story.primer, stage.width, stage.height);
+	const most = story.primer.counts.length - 1;
+	const { body } = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, hot: most } });
 	clean(body);
+	const n = story.primer.counts[most];
+	assert.ok(body.includes(`>${n} ${n === 1 ? 'paper' : 'papers'} cited ${most} times<`), 'the most cited bar, named');
+	assert.ok((body.match(/class="[^"]*\bhot\b/g) ?? []).length >= 1, 'its bar in flame');
+	const none = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, hot: 0 } }).body;
+	assert.ok(none.includes(`${story.primer.counts[0].toLocaleString('en-US')} papers with no citations`));
 });
 
-// --- KindBars / KindExample -------------------------------------------------------------------
-
-const kindKeys = [
-	['results', 'Science results', true, 'Science'],
-	['data', 'Data and calibration', true, 'Data'],
-	['mission', 'Mission and instrument', false, 'Mission'],
-	['review', 'Reviews and commentary', false, 'Reviews'],
-	['future', 'Planned or expected results', false, 'Planned'],
-	['other', 'Mentions only', false, 'Mentions']
-];
-const byKind = (o) => Object.fromEntries(kindKeys.map(([k]) => [k, { papers: o[k]?.[0] ?? 0, citations: o[k]?.[1] ?? 0 }]));
-const kindMission = (id, name, cost, o) => {
-	const b = byKind(o);
-	const papers = Object.values(b).reduce((a, v) => a + v.papers, 0);
-	const citations = Object.values(b).reduce((a, v) => a + v.citations, 0);
-	return { id, name, division: 'earth', cost, papers, citations, byKind: b, nonScienceShare: null };
-};
-const raincube = {
-	...kindMission('raincube', 'RainCube', 13.2, { mission: [3, 40], review: [1, 120], results: [1, 9] }),
-	fullName: 'Radar in a CubeSat',
-	lifetime: {
-		papers: 4,
-		citations: 172,
-		byKind: byKind({ mission: [3, 43], review: [1, 120], results: [1, 9] }),
-		list: [
-			{ bibcode: '2020b', title: 'Small satellites for weather: a review', year: 2020, firstAuthor: 'Smith', citations: 120, inScope: true, kind: 'review', note: 'one review, most of the citations' },
-			{ bibcode: '2019a', title: 'RainCube: the first radar in a CubeSat', year: 2019, firstAuthor: 'Peral', citations: 40, inScope: true, kind: 'mission', note: '' },
-			{ bibcode: '2021c', title: 'Precipitation profiles from RainCube', year: 2021, firstAuthor: 'Lee', citations: 9, inScope: true, kind: 'results', note: '' },
-			{ bibcode: '2024d', title: 'RainCube lessons learned', year: 2024, firstAuthor: 'Ng', citations: 3, inScope: false, kind: 'mission', note: '' }
-		],
-		top: { bibcode: '2020b', title: 'Small satellites for weather: a review', citations: 120, kind: 'review', note: '', citationShare: 0.69767 },
-		firstResult: { bibcode: '2021c', title: 'Precipitation profiles from RainCube', citations: 9, citationShare: 0.05233 }
-	}
-};
-const kinds = {
-	scope: 'full',
-	asOf: '2026-09-18',
-	method: '',
-	kinds: kindKeys.map(([key, label, science, short]) => ({ key, label, short, science })),
-	missions: [raincube, kindMission('cubesat2', 'TwoSat', 20, { results: [2, 1234] }), kindMission('empty', 'Nothing', 5, {})],
-	withPapers: 2,
-	withoutPapers: 1,
-	total: { papers: 7, citations: 1403, byKind: byKind({ mission: [3, 40], review: [1, 120], results: [3, 1243] }) },
-	nonScience: { papers: 4, paperShare: 0.57, citations: 160, citationShare: 0.11 },
-	majorityNonScience: 1,
-	examples: [raincube]
-};
-const kindsL = {
-	rows: [
-		{ id: 'raincube', y: 44, h: 27 },
-		{ id: 'cubesat2', y: 74, h: 27 }
-	],
-	s: 27,
-	pitch: 30,
-	headH: 44,
-	left: 24,
-	nameW: 110,
-	barX: 177,
-	barW: 655,
-	valueW: 44,
-	valueX: 838,
-	strip: { y: 128, ids: ['empty'] },
-	fontPx: 12
-};
-
-test('KindBars prerenders names, the non-zero legend, counts per mode and the strip label', async () => {
-	const Component = await load('KindBars.svelte');
-	const papers = render(Component, { props: { layout: kindsL, kinds, visible: true } }).body;
-	for (const t of ['>RainCube<', '>TwoSat<', 'Science results', 'Mission and instrument', 'Reviews and commentary', '>Papers<', '>5<', '>2<', '1 with no publications in their window']) assert.ok(papers.includes(t), t);
-	for (const t of ['Data and calibration', 'Planned or expected results', 'Mentions only']) assert.ok(!papers.includes(t), `no ${t}`);
-	assert.match(papers, /kind-review[^"]*" style="width: 20%;"/, 'a fifth of the papers');
-	clean(papers);
-	const cites = render(Component, { props: { layout: kindsL, kinds, mode: 'citations', visible: true, compact: true } }).body;
-	for (const t of ['>Citations<', '>169<', '>1,234<', 'Reviews<', 'Science<']) assert.ok(cites.includes(t), t);
-	assert.ok(!cites.includes('Reviews and commentary'), 'compact uses short labels');
-	clean(cites);
-});
-
-test('KindExample prerenders the name, the cost line, every title and a note', async () => {
-	const Component = await load('KindExample.svelte');
-	const layout = { pos: new Map(), s: 64, left: 24, top: 16, headRight: 100, listY: 102 };
-	const { body } = render(Component, { props: { layout, example: raincube, kinds, visible: true } });
-	for (const t of ['>RainCube<', '$13M · 4 papers to date · 172 citations', ...raincube.lifetime.list.map((p) => p.title), 'one review, most of the citations', 'Reviews and commentary', '3 citations · Mission and instrument · outside its Active Mission Window']) assert.ok(body.includes(t), t);
-	const rowOf = (title) => body.slice(body.lastIndexOf('<li', body.indexOf(title)), body.indexOf(title));
-	assert.match(rowOf('Precipitation profiles from RainCube'), /class="[^"]*\bhit\b/);
-	assert.match(rowOf('RainCube lessons learned'), /class="[^"]*\bdim\b/);
+test('FocusChart prerenders the axis, its title and the largest named, leaving its bars to LanesChart', async () => {
+	const largest = story.rate.divisions.find((d) => d.division === story.focusDivision).largest;
+	const layout = focusLayout(tiles, 900, 600, { division: story.focusDivision });
+	const { body } = render(await load('FocusChart.svelte'), { props: { ...stage, layout, name: 'Planetary Science', largest, grow: 1, bars: true } });
 	clean(body);
+	assert.ok(!body.includes('class="bar'), 'LanesChart draws the bars, so they can move into their band');
+	assert.match(body, new RegExp(`${largest.name} \\d`));
+	assert.match(body, /class="stage-title[^>]*text-anchor="end">High-impact papers published per year in Planetary Science, by mission</);
+	assert.ok(!body.includes('$150M'), 'no threshold line');
+	assert.ok(!body.includes('<path'), 'no running total');
 });
 
-// --- Waffle ---------------------------------------------------------------------------------
-
-test('Waffle prerenders one box per unit, the threshold missions first in blue, a partial box and the legend', async () => {
-	const Component = await load('Waffle.svelte');
-	const layout = waffleLayout(135129, 1329, 704, 666, { top: 96 });
-	const { body } = render(Component, { props: { layout, referenceCost: 150, visible: true, width: 704, height: 666 } });
-	const rects = [...body.matchAll(/<rect class="(on|off)\b[^"]*" x="([\d.]+)" y="([\d.]+)" width="([\d.]+)" height="([\d.]+)"/g)].map(([, c, ...n]) => [c, ...n.map(Number)]);
-	// every cell, then the partial fill drawn over cell 13
-	assert.equal(rects.length, layout.cells + 1);
-	const cells = rects.slice(0, layout.cells);
-	assert.equal(cells.filter(([c]) => c === 'on').length, 13);
-	assert.ok(cells.every(([c], i) => (c === 'on') === (i < 13)), 'cells 0–12 blue, the rest grey');
-	const [c, x, y, , h] = rects.at(-1);
-	assert.ok(c === 'on' && x === cells[13][1], 'the partial fill sits on cell 13');
-	assert.ok(Math.abs(h - layout.size * 0.29) < 1e-9 && Math.abs(y + h - (cells[13][2] + layout.size)) < 1e-9, 'filled 29% from the bottom');
-	for (const t of ['Missions at $150M or less', 'All other missions', '1 box = 100 mission papers']) assert.ok(body.includes(t), t);
-	assert.match(body, /class="waffle[^"]*\bvisible\b/);
+test('LanesChart: a band per compared division, a bar per mission with top papers, no labels until a bar is pointed at', async () => {
+	const compared = new Set(story.comparison.divisions);
+	const divisions = site.divisions.filter((d) => compared.has(d.slug));
+	const layout = costLayout(tiles.filter((t) => compared.has(t.division)), 900, 600, { divisions });
+	const Lanes = await load('LanesChart.svelte');
+	const { body } = render(Lanes, { props: { ...stage, layout } });
 	clean(body);
+	assert.equal((body.match(/class="shelf[ "]/g) ?? []).length, divisions.length);
+	assert.ok(!body.includes('<path'), 'no running lines');
+	assert.equal((body.match(/class="bar[ "]/g) ?? []).length, layout.rows.flatMap((r) => r.members).filter((t) => t.top10PerYear > 0).length);
+	assert.ok(!body.includes(' a year<'), 'no scale or leader labels');
+	assert.ok(!body.includes('class="label'), 'nothing named until pointed at');
+	const lead = story.rate.divisions[0].largest;
+	const pointed = render(Lanes, { props: { ...stage, layout, hot: lead.id } }).body;
+	assert.equal((pointed.match(/class="bar[^"]*\bhot\b/g) ?? []).length, 1, 'the pointed-at bar lit');
+	assert.match(pointed, new RegExp(`class="label[^>]*>${lead.name}: \\d[\\d.,]* top-10% papers a year<`), 'its mission and rate');
+	const leadTile = tiles.find((t) => t.id === lead.id);
+	assert.equal((pointed.match(/class="cursor/g) ?? []).length, 1, 'one cursor through every band');
+	assert.match(pointed, new RegExp(`class="tick reading[^>]*>\\$${money(leadTile.cost).slice(1)}<`), 'the cursor snaps to the bar and reads its cost');
+	const free = render(Lanes, { props: { ...stage, layout, cursor: layout.x(1000) } }).body;
+	assert.match(free, /class="tick reading[^>]*>\$1\.0B</, 'off a bar, it reads the cost under the pointer');
+	assert.ok(!free.includes('class="label'), 'and names no mission');
+	assert.ok(!render(Lanes, { props: { ...stage, layout, cursor: 0 } }).body.includes('class="cursor'), 'none left of the plot');
 });
 
-test('Waffle before the highlight: every box grey, no ring, one legend swatch for all missions', async () => {
-	const Component = await load('Waffle.svelte');
-	const layout = waffleLayout(135129, 1329, 704, 666, { top: 96 });
-	const { body } = render(Component, { props: { layout, referenceCost: 150, highlight: false, visible: true, width: 704, height: 666 } });
-	const rects = [...body.matchAll(/<rect class="(on|off)\b/g)].map(([, c]) => c);
-	assert.equal(rects.length, layout.cells, 'no partial fill');
-	assert.ok(rects.every((c) => c === 'off'), 'all grey');
-	assert.doesNotMatch(body, /class="ring[^"]*\bdone\b/);
-	assert.ok(body.includes('All missions') && !body.includes('Missions at $150M or less'));
+test('LanesChart carries the focus division’s bars: on the focus chart’s axes while it is up, then in their own band, under the title', async () => {
+	const compared = new Set(story.comparison.divisions);
+	const divisions = site.divisions.filter((d) => compared.has(d.slug));
+	const comparedTiles = tiles.filter((t) => compared.has(t.division));
+	const layout = costLayout(comparedTiles, 900, 600, { divisions, titled: true });
+	const focus = focusLayout(comparedTiles, 900, 600, { division: story.focusDivision });
+	const Lanes = await load('LanesChart.svelte');
+	const row = layout.rows.find((r) => r.slug === story.focusDivision);
+	const carried = row.members.filter((t) => t.top10PerYear > 0).length;
+	const all = layout.rows.flatMap((r) => r.members).filter((t) => t.top10PerYear > 0).length;
+	// each carried bar's translate ends on its baseline: the focus chart's axis, or the band's bottom edge
+	const on = (body, y) => body.split(`px, ${y}px) scale(`).length - 1;
+	const up = render(Lanes, { props: { ...stage, layout, focus, focused: true, grow: 1 } }).body;
+	clean(up);
+	assert.equal((up.match(/class="bar[ "]/g) ?? []).length, all, 'every bar drawn once');
+	assert.equal(on(up, focus.chart.y(0)), carried, 'on the focus chart’s axis');
+	const lanes = render(Lanes, { props: { ...stage, layout, focus, title: 'High-impact papers published per year, by division and mission', visible: true } }).body;
+	assert.equal((lanes.match(/class="bar[ "]/g) ?? []).length, all, 'still once each');
+	assert.equal(on(lanes, Math.round(row.y + row.h)), carried, 'in their own band');
+	assert.match(lanes, /class="stage-title[^>]*text-anchor="end">High-impact papers published per year, by division and mission</);
+	assert.ok(layout.top >= 28, 'a titled layout keeps a strip over the lanes');
+});
+
+test('DollarChart draws every fit alike and labels the nearly flat', async () => {
+	const compared = new Set(story.comparison.divisions);
+	const divisions = site.divisions.filter((d) => compared.has(d.slug));
+	const fits = new Map(story.perDollar.map((d) => [d.division, d.fit]));
+	const layout = perDollarLayout(tiles, 900, 600, { divisions, fits });
+	const { body } = render(await load('DollarChart.svelte'), { props: { ...stage, layout, referenceCost: ref } });
 	clean(body);
+	assert.equal((body.match(/class="fit[ "]/g) ?? []).length, story.perDollar.filter((d) => d.fit).length, 'one line a fit');
+	assert.ok(!body.includes('soft'), 'none set apart');
+	assert.equal((body.match(/Nearly flat/g) ?? []).length, story.perDollar.filter((d) => d.fit && flat(d.fit)).length);
+	assert.ok(!body.includes('stage-title'), 'no title unless given one');
+	const titled = perDollarLayout(tiles, 900, 600, { divisions, fits, titled: true });
+	assert.ok(titled.top >= 28, 'a titled layout keeps a strip over the plot');
+	const headed = render(await load('DollarChart.svelte'), { props: { ...stage, layout: titled, title: 'Citations per $100M by division' } }).body;
+	assert.match(headed, /class="stage-title[^>]*text-anchor="end">Citations per \$100M by division</);
 });
 
-test('Waffle builds from the top-left: half built shows the blue boxes first; built shows the ring and the count', async () => {
-	const Component = await load('Waffle.svelte');
-	const layout = waffleLayout(135129, 1329, 704, 666, { top: 96 });
-	const props = { layout, referenceCost: 150, visible: true, width: 704, height: 666 };
-	const cellsOf = (body) => [...body.matchAll(/<rect class="(on|off)([^"]*)"/g)].slice(0, layout.cells).map(([, c, rest]) => ({ on: c === 'on', hidden: /\bhidden\b/.test(rest) }));
-
-	const half = render(Component, { props: { ...props, build: 0.5 } }).body;
-	const cells = cellsOf(half);
-	const shown = Math.round(layout.cells / 2);
-	assert.equal(cells.filter((c) => c.hidden).length, layout.cells - shown, 'about half hidden');
-	assert.ok(cells.every((c, i) => c.hidden === i >= shown), 'the shown ones are the first in reading order');
-	assert.ok(cells.filter((c) => c.on).every((c) => !c.hidden), 'the blue boxes are in first');
-	assert.doesNotMatch(half, /class="ring[^"]*\bdone\b/, 'no ring during the build-out');
-
-	const built = render(Component, { props: { ...props, build: 1 } }).body;
-	assert.ok(!/<rect[^>]*\bhidden\b/.test(built), 'every box visible');
-	assert.match(built, new RegExp(`<path class="ring[^"]*\\bdone\\b[^"]*" d="${layout.ring.d}" pathLength="1" stroke-dasharray="1"`));
-	assert.match(built, /<text class="count[^"]*\bdone\b[^>]*x="248"[^>]*>1,329 papers<\/text>/);
-	clean(built);
+test('OutcomeChart: titled, Success over the zero line and Failure under it, each tier’s rate with no count', async () => {
+	const { tiers, failures } = site.analysis;
+	const layout = tierOutcomeLayout(tiles, tiers, 900, 600);
+	const { body } = render(await load('OutcomeChart.svelte'), { props: { ...stage, layout, failures: failures.tiers } });
+	clean(body);
+	assert.match(body, /class="stage-title[^>]*>Mission success and failures by cost</);
+	assert.match(body, />Success<[\s\S]*>Failure</);
+	assert.equal((body.match(/class="rate/g) ?? []).length, tiers.length);
+	assert.ok(!/\d of \d/.test(body), 'no "X of Y" counts');
+	assert.ok(layout.top >= 28, 'room for the title over the stacks');
 });

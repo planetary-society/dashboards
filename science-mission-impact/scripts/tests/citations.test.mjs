@@ -18,9 +18,14 @@ test('small declared shortfalls preserve observed histories and reported totals 
 	assert.equal(result.lists.get('paper').length, 999);
 	assert.equal(result.gaps[0].missing, 1);
 });
-test('excess, unannounced incompleteness and either limit still fail', () => {
-	for (const [expected, observed, historyStatus] of [[1000, 1001, 'incomplete_citation_histories'], [1000, 999, 'complete'], [100, 99, 'incomplete_citation_histories'], [100000, 99994, 'incomplete_citation_histories']]) {
-		assert.throws(() => citationCoverage({ expected, observed, historyStatus, limits }), /Outside the permitted/);
+test('a small gap passes whatever the source declares, a small mission included', () => {
+	for (const [expected, observed] of [[1000, 999], [100, 95], [100000, 99900]]) {
+		assert.deepEqual(citationCoverage({ expected, observed, historyStatus: 'complete', limits }), { status: 'incomplete', expected, observed, missing: expected - observed });
+	}
+});
+test('excess and a gap past the larger limit still fail', () => {
+	for (const [expected, observed] of [[1000, 1001], [100, 94], [100000, 99899]]) {
+		assert.throws(() => citationCoverage({ expected, observed, historyStatus: 'incomplete_citation_histories', limits }), /Outside the permitted/);
 	}
 	assert.throws(() => citationRepresentatives([source('A', 2, ['2000a'])], new Map([['paper', 3]])), /do not reconcile/);
 	for (const expected of [null, NaN, -1, 0.5]) assert.throws(() => citationCoverage({ expected, observed: 0 }), /integer totals/);

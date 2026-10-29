@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 816.1,
+    "lcc": 199.3,
     "type": "Pointed Observatory",
+    "program": "Explorer Program",
+    "target": "Universe",
+    "launchVehicle": "Delta 3910",
     "dates": {
       "formulation": "1977-01-01",
       "launch": "1983-01-26",
@@ -23,12 +27,12 @@
     "m": 1.591,
     "i100": 46,
     "g": 133,
-    "tori": 143.629,
-    "riq": 272
+    "tori": 144.453,
+    "riq": 273
   },
   "facts": {
     "papers": 371,
-    "citations": 20712,
+    "citations": 20871,
     "publicationYears": [
       1983,
       2026
@@ -154,7 +158,7 @@
       372,
       410,
       397,
-      460,
+      465,
       592,
       665,
       742,
@@ -164,71 +168,59 @@
       734,
       737,
       753,
-      762,
+      766,
       678,
-      665,
-      732,
-      669,
-      835,
-      823,
-      819
+      666,
+      734,
+      670,
+      836,
+      826,
+      961
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 20712,
-      "observed": 20712,
+      "expected": 20871,
+      "observed": 20871,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "1983-03-01",
-    "end": "1985-09-01",
-    "matureDate": "1988-10-01",
-    "status": "available",
-    "months": 30,
-    "citationBuckets": 6,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      1,
-      0,
-      0,
-      1,
-      0,
-      1,
-      0,
-      0,
-      1,
-      1,
-      4,
-      3,
-      2,
-      1,
-      2,
-      3,
-      1,
-      2,
-      0,
-      1,
-      1,
-      0,
-      2,
-      0,
-      0,
-      0,
-      3,
-      0
-    ],
-    "citationsByYearOffset": [
-      1,
-      51,
-      84,
-      131,
-      95,
-      39
-    ]
+  "affiliations": {
+    "papers": 371,
+    "us": {
+      "mapped": 207,
+      "top": [
+        {
+          "name": "California Institute of Technology",
+          "papers": 45
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 34
+        },
+        {
+          "name": "University of Arizona",
+          "papers": 26
+        }
+      ]
+    },
+    "world": {
+      "mapped": 334,
+      "top": [
+        {
+          "name": "California Institute of Technology",
+          "papers": 45
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 34
+        },
+        {
+          "name": "University of Arizona",
+          "papers": 26
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "1984ApJ...278L...1N",
@@ -242,32 +234,32 @@
     ],
     "authorCount": 28,
     "year": 1984,
-    "citations": 1172
+    "citations": 1177
   },
   "ranks": {
     "full": {
       "bins": [
-        14.079,
-        3.797,
-        0.124,
+        14.098,
+        3.788,
+        0.114,
         1,
-        3.27,
-        3.73,
+        3.3,
+        3.7,
         0,
-        1.533,
-        1.467,
+        1.598,
+        1.402,
         2
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        12.87,
-        4.13,
-        0.231,
-        1.169,
-        4.603,
-        1.997,
+        12.874,
+        4.126,
+        0.236,
+        1.172,
+        4.6,
+        1.992,
         1,
         1,
         1,
@@ -277,26 +269,26 @@
     },
     "lifetime": {
       "bins": [
-        52.988,
-        34.279,
-        36.462,
-        33.756,
-        38.375,
-        34.811,
-        31.768,
-        36.721,
-        30.84,
+        54.327,
+        35.216,
+        34.592,
+        34.303,
+        39.048,
+        33.442,
+        31.509,
+        37.424,
+        30.138,
         41
       ],
-      "top1": 6.74
+      "top1": 5.814
     }
   },
   "full": {
     "papers": 31,
     "outputBasis": "measured",
     "citations": 401,
-    "top10": 3,
-    "top10ShareOfDivision": 0.0006,
+    "top10": 2,
+    "top10ShareOfDivision": 0.0004,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -315,6 +307,11 @@
       "months": 33,
       "citationBuckets": 6
     },
+    "indices": {
+      "h": 11,
+      "g": 20,
+      "m": 3.994
+    },
     "spread": {
       "mean": 12.935,
       "median": 2,
@@ -327,8 +324,8 @@
     "papers": 30,
     "outputBasis": "measured",
     "citations": 401,
-    "top10": 3,
-    "top10ShareOfDivision": 0.00155,
+    "top10": 2,
+    "top10ShareOfDivision": 0.00103,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -347,6 +344,11 @@
       "months": 30,
       "citationBuckets": 6
     },
+    "indices": {
+      "h": 11,
+      "g": 20,
+      "m": 4.391
+    },
     "spread": {
       "mean": 13.367,
       "median": 2.5,
@@ -358,9 +360,9 @@
   "lifetime": {
     "papers": 371,
     "outputBasis": "measured",
-    "citations": 20712,
-    "top10": 26.733,
-    "top10ShareOfDivision": 0.00484,
+    "citations": 20871,
+    "top10": 35.2,
+    "top10ShareOfDivision": 0.00554,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -371,18 +373,18 @@
       "date": "1984-03-00"
     },
     "spread": {
-      "mean": 55.827,
+      "mean": 56.256,
       "median": 22,
-      "uncited": 32,
-      "i10": 260,
+      "uncited": 30,
+      "i10": 261,
       "i100": 46
     }
   },
   "query": {
     "arms": "((=abs:\"Infrared Astronomical Satellite\" OR facility:IRAS OR =abs:\"IRAS mission\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1983-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Infrared+Astronomical+Satellite%22+OR+facility%3AIRAS+OR+%3Dabs%3A%22IRAS+mission%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1983-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:14:16.015741+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1983-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Infrared+Astronomical+Satellite%22+OR+facility%3AIRAS+OR+%3Dabs%3A%22IRAS+mission%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1983-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:06:30.596108+00:00",
     "reconciliation": {
       "adsReturned": 416,
       "curatedOut": 45,
@@ -798,7 +800,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1984,
-      "citations": 1172
+      "citations": 1177
     },
     {
       "bibcode": "1999ApJ...521...64M",
@@ -807,7 +809,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 1089
+      "citations": 1094
     },
     {
       "bibcode": "2011ApJ...731...53M",
@@ -816,7 +818,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 914
+      "citations": 926
     },
     {
       "bibcode": "2002ApJ...576..159D",
@@ -825,7 +827,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 815
+      "citations": 818
     },
     {
       "bibcode": "2017ApJS..233...17R",
@@ -834,7 +836,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 594
+      "citations": 611
     },
     {
       "bibcode": "2005ApJS..157..302M",
@@ -843,7 +845,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 456
+      "citations": 459
     },
     {
       "bibcode": "2010ApJ...713..816N",
@@ -852,7 +854,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 454
+      "citations": 459
     },
     {
       "bibcode": "1992ApJS...83...29S",
@@ -861,7 +863,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1992,
-      "citations": 428
+      "citations": 429
     },
     {
       "bibcode": "1991Natur.349...32S",
@@ -879,7 +881,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1995,
-      "citations": 337
+      "citations": 338
     },
     {
       "bibcode": "1985Natur.314..240D",
@@ -906,7 +908,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1994,
-      "citations": 231
+      "citations": 234
     },
     {
       "bibcode": "1993ApJ...402...42F",
@@ -945,21 +947,21 @@
       "citations": 197
     },
     {
-      "bibcode": "1987ApJ...319..723D",
-      "title": "Molecular and Atomic Clouds Associated with Infrared Cirrus in Ursa Major",
-      "firstAuthor": "de Vries, Hendrik Willem",
-      "authors": null,
-      "authorCount": null,
-      "year": 1987,
-      "citations": 186
-    },
-    {
       "bibcode": "2012ApJ...748..123S",
       "title": "The Herschel Reference Survey: Dust in Early-type Galaxies and across the Hubble Sequence",
       "firstAuthor": "Smith, M. W. L.",
       "authors": null,
       "authorCount": null,
       "year": 2012,
+      "citations": 187
+    },
+    {
+      "bibcode": "1987ApJ...319..723D",
+      "title": "Molecular and Atomic Clouds Associated with Infrared Cirrus in Ursa Major",
+      "firstAuthor": "de Vries, Hendrik Willem",
+      "authors": null,
+      "authorCount": null,
+      "year": 1987,
       "citations": 186
     },
     {

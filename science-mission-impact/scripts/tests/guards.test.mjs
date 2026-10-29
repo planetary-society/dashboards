@@ -17,8 +17,8 @@ const config = {
 	schemaVersions: { mission: 3, stats: 7 },
 	divisions: [{ slug: 'alpha', name: 'Alpha', nav: 'A', statsLabel: 'us_alpha' }],
 	thresholdCost: 150,
-	clps: { rawDir: '../latest', comparators: ['lcross'], horizonMonths: 36 },
-	paperKinds: { file: 'data/paper-kinds.json', examples: ['raincube'], smallMax: 10 },
+	analysis: { costTiers: [50, 150, 350], costGroups: [150, 1000] },
+	clps: { rawDir: '../latest', comparators: ['lcross'], surface: ['lcross', 'mpl'], horizonMonths: 36 },
 	rankingMinPapers: 50,
 	topPercents: [10, 1],
 	tierPercents: [0.1, 1, 5, 10, 25, 50]
@@ -39,21 +39,27 @@ describe('validateConfig', () => {
 		assert.throws(() => validateConfig(clps({ rawDir: '' })), /clps.rawDir/);
 		assert.throws(() => validateConfig(clps({ comparators: 'lcross' })), /clps.comparators/);
 		assert.throws(() => validateConfig(clps({ comparators: ['lcross', ''] })), /clps.comparators/);
+		for (const surface of [undefined, 'lcross', ['lcross', ''], [7]]) {
+			assert.throws(() => validateConfig(clps({ surface })), /clps.surface must be an array of non-empty mission ids/);
+		}
+		assert.doesNotThrow(() => validateConfig(clps({ surface: [] })));
 		for (const horizonMonths of [0, 2.5, undefined]) {
 			assert.throws(() => validateConfig(clps({ horizonMonths })), /clps.horizonMonths/);
 		}
 	});
 
-	it('requires a paperKinds file and non-empty examples', () => {
-		const kinds = (o) => ({ ...config, paperKinds: { ...config.paperKinds, ...o } });
-		assert.throws(() => validateConfig({ ...config, paperKinds: undefined }), /paperKinds.file/);
-		assert.throws(() => validateConfig(kinds({ file: '' })), /paperKinds.file/);
-		for (const examples of [[], 'raincube', ['raincube', ''], undefined]) {
-			assert.throws(() => validateConfig(kinds({ examples })), /paperKinds.examples/);
+	it('requires ascending positive analysis tiers and groups that both split at the threshold', () => {
+		const analysis = (o) => ({ ...config, analysis: { ...config.analysis, ...o } });
+		assert.throws(() => validateConfig({ ...config, analysis: undefined }), /analysis.costTiers/);
+		for (const key of ['costTiers', 'costGroups']) {
+			for (const edges of [undefined, [], 'x', [150, 150], [350, 150], [0, 150], [-5, 150], [150, Infinity], [150, NaN], ['150']]) {
+				assert.throws(() => validateConfig(analysis({ [key]: edges })), new RegExp(`analysis.${key}`), JSON.stringify(edges));
+			}
+			assert.throws(() => validateConfig(analysis({ [key]: [50, 100, 200] })), new RegExp(`analysis.${key} must include thresholdCost \\(150\\)`));
 		}
-		for (const smallMax of [0, 2.5, '10', undefined]) {
-			assert.throws(() => validateConfig(kinds({ smallMax })), /paperKinds.smallMax/);
-		}
+		assert.doesNotThrow(() => validateConfig(analysis({ costGroups: [150] })));
+		// the first group is the missions at or under the threshold
+		assert.throws(() => validateConfig(analysis({ costGroups: [50, 150, 1000] })), /analysis.costGroups must start at thresholdCost \(150\)/);
 	});
 
 	it('rejects duplicate division slugs and unsorted tiers', () => {

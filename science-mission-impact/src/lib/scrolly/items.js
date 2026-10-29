@@ -32,7 +32,7 @@ export function withHidden(items, tiles, fallbackPos) {
 }
 
 /** Mission marks on the continuous cost axis; missions at or under the threshold are emphasised. */
-export function costItems(tiles, layout, { scope, top, unranked, referenceCost }) {
+export function costItems(tiles, layout, { scope, top, unranked }) {
 	const rulers = divisionRulers(tiles, scope);
 	const items = new Map();
 	for (const t of tiles) {
@@ -45,52 +45,28 @@ export function costItems(tiles, layout, { scope, top, unranked, referenceCost }
 			variant: 'outline',
 			inner: innerSide(share, rulers.get(t.division), MIN_FILL_PX / p.s),
 			filled,
-			emph: filled && t.cost > 0 && t.cost <= referenceCost
+			emph: filled && t.size === 'under'
 		});
 	}
 	return items;
 }
 
-/** Partial or total failures carry the red X; every other placed mission stays solid. */
+/** An outright failure carries the red X, a partial failure or partial success one red stroke; every other placed mission stays solid. */
 export function failureItems(tiles, layout) {
 	const items = new Map();
 	for (const t of tiles) {
 		const p = layout.pos.get(t.id);
 		if (!p) continue;
-		items.set(t.id, { ...p, variant: t.shortfall ? 'shortfall' : 'solid' });
+		items.set(t.id, { ...p, variant: t.failed ? 'lost' : t.shortfall ? 'partial' : 'solid' });
 	}
 	return items;
 }
 
-/** Citations per dollar: a square with any citations is lit, one with none is empty, a failure is slashed. */
-export function perDollarItems(tiles, layout) {
-	const items = new Map();
+/** One division's squares washed in the highlight colour over whatever marks they carry; the rest dimmed. Edits `items` in place. */
+export function highlightDivision(items, tiles, division) {
 	for (const t of tiles) {
-		const p = layout.pos.get(t.id);
-		if (!p) continue;
-		items.set(t.id, { ...p, variant: t.failed ? 'failure' : (t.citations ?? 0) > 0 ? 'lit' : 'outline' });
-	}
-	return items;
-}
-
-/** Paper kinds: every placed mission solid; the strip of missions without papers dimmed. */
-export function kindsItems(tiles, layout) {
-	const empty = new Set(layout.strip?.ids ?? []);
-	const items = new Map();
-	for (const t of tiles) {
-		const p = layout.pos.get(t.id);
-		if (!p) continue;
-		items.set(t.id, empty.has(t.id) ? { ...p, variant: 'solid', opacity: 0.55 } : { ...p, variant: 'solid' });
-	}
-	return items;
-}
-
-/** The worked example: its one square, emphasised. */
-export function exampleItems(tiles, layout) {
-	const items = new Map();
-	for (const t of tiles) {
-		const p = layout.pos.get(t.id);
-		if (p) items.set(t.id, { ...p, variant: 'solid', emph: true });
+		const it = items.get(t.id);
+		if (it) items.set(t.id, t.division === division ? { ...it, tint: true } : { ...it, opacity: 0.25 });
 	}
 	return items;
 }

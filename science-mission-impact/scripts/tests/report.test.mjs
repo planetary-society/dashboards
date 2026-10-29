@@ -202,28 +202,6 @@ describe('buildFigures', () => {
 		assert.equal(compared.get('clps · behind every comparator'), 'true');
 	});
 
-	it('covers the paper-kinds figures when site.kinds exists', () => {
-		assert.equal(figures.has('kinds · papers at or under threshold'), false);
-		const byKind = { results: { papers: 2, citations: 9 }, review: { papers: 0, citations: 0 } };
-		const kinds = {
-			kinds: [{ key: 'results', label: 'Science results' }, { key: 'review', label: 'Reviews and commentary' }],
-			total: { papers: 10 },
-			nonScience: { paperShare: 0.4, citationShare: 0.25 },
-			small: { maxPapers: 10, missions: 4, nonScience: { citationShare: 0.5 } },
-			majorityNonScience: 3,
-			examples: [{ name: 'RainCube', byKind }]
-		};
-		const got = buildFigures({ site: { ...site, kinds }, divisions: {} });
-		assert.equal(got.get('kinds · papers at or under threshold'), 10);
-		assert.equal(got.get('kinds · non-science share of papers'), 0.4);
-		assert.equal(got.get('kinds · non-science share of citations'), 0.25);
-		assert.equal(got.get('kinds · missions with mostly non-science papers'), 3);
-		assert.equal(got.get('kinds · missions with ≤10 papers'), 4);
-		assert.equal(got.get('kinds · their non-science share of citations'), 0.5);
-		assert.equal(got.get('kinds · RainCube · Science results'), 2);
-		assert.equal(got.has('kinds · RainCube · Reviews and commentary'), false);
-	});
-
 	it('leaves the pooled band out when no division holds top credit', () => {
 		const none = buildFigures({ site: { ...site, story: { ...site.story, pooledBand: null } }, divisions: {} });
 		assert.equal(none.has('story · pooled top-paper band'), false);

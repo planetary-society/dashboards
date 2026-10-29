@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 234.4,
+    "lcc": 140,
     "type": "Remote Sensing Observatory",
+    "program": "Small-class Explorers (SMEX)",
+    "target": "Earth",
+    "launchVehicle": "Pegasus XL",
     "dates": {
       "formulation": "2002-07-11",
       "launch": "2007-04-25",
@@ -23,12 +27,12 @@
     "m": 1.778,
     "i100": 3,
     "g": 47,
-    "tori": 7.974,
+    "tori": 7.985,
     "riq": 156
   },
   "facts": {
     "papers": 157,
-    "citations": 3308,
+    "citations": 3313,
     "publicationYears": [
       2009,
       2026
@@ -93,86 +97,52 @@
       223,
       270,
       179,
-      164
+      169
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 3308,
-      "observed": 3308,
+      "expected": 3313,
+      "observed": 3313,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2007-06-01",
-    "end": "2011-08-01",
-    "matureDate": "2014-10-01",
-    "status": "available",
-    "months": 50,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      11,
-      0,
-      0,
-      0,
-      0,
-      1,
-      2,
-      2,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      1,
-      1,
-      2,
-      2,
-      1,
-      0,
-      1,
-      1,
-      0,
-      1,
-      0,
-      1,
-      2,
-      0
-    ],
-    "citationsByYearOffset": [
-      0,
-      0,
-      104,
-      89,
-      94,
-      87,
-      39,
-      6
-    ]
+  "affiliations": {
+    "papers": 157,
+    "us": {
+      "mapped": 104,
+      "top": [
+        {
+          "name": "GATS Inc., United States",
+          "papers": 55
+        },
+        {
+          "name": "University of Colorado, Boulder",
+          "papers": 53
+        },
+        {
+          "name": "Virginia Polytechnic Institute and State University",
+          "papers": 48
+        }
+      ]
+    },
+    "world": {
+      "mapped": 124,
+      "top": [
+        {
+          "name": "GATS Inc., United States",
+          "papers": 55
+        },
+        {
+          "name": "University of Colorado, Boulder",
+          "papers": 53
+        },
+        {
+          "name": "Virginia Polytechnic Institute and State University",
+          "papers": 48
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2009JASTP..71..289R",
@@ -191,15 +161,15 @@
   "ranks": {
     "full": {
       "bins": [
-        11.664,
-        16.634,
-        17.784,
-        14.85,
-        20.041,
-        17.47,
-        16.819,
-        14.7,
-        9.038,
+        11.686,
+        16.633,
+        17.813,
+        14.869,
+        20.112,
+        17.45,
+        16.772,
+        14.748,
+        8.919,
         4
       ],
       "top1": 0
@@ -208,8 +178,8 @@
       "bins": [
         2.315,
         3.379,
-        2.104,
-        4.202,
+        2.105,
+        4.201,
         2.065,
         5.306,
         2.302,
@@ -221,15 +191,15 @@
     },
     "lifetime": {
       "bins": [
-        11.508,
-        14.75,
-        18.09,
-        18.233,
-        16.287,
-        19.262,
-        23.883,
-        17.83,
-        10.158,
+        11.742,
+        14.727,
+        18.079,
+        18.35,
+        16.195,
+        18.494,
+        24.571,
+        18.038,
+        9.804,
         7
       ],
       "top1": 0
@@ -239,8 +209,8 @@
     "papers": 143,
     "outputBasis": "measured",
     "citations": 1207,
-    "top10": 3,
-    "top10ShareOfDivision": 0.00208,
+    "top10": 3.5,
+    "top10ShareOfDivision": 0.00243,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -259,6 +229,11 @@
       "months": 199,
       "citationBuckets": 20
     },
+    "indices": {
+      "h": 17,
+      "g": 22,
+      "m": 1.025
+    },
     "spread": {
       "mean": 8.441,
       "median": 7,
@@ -271,8 +246,8 @@
     "papers": 31,
     "outputBasis": "measured",
     "citations": 419,
-    "top10": 1.05,
-    "top10ShareOfDivision": 0.00237,
+    "top10": 3,
+    "top10ShareOfDivision": 0.00676,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -291,6 +266,11 @@
       "months": 50,
       "citationBuckets": 8
     },
+    "indices": {
+      "h": 12,
+      "g": 19,
+      "m": 2.88
+    },
     "spread": {
       "mean": 13.516,
       "median": 11,
@@ -302,9 +282,9 @@
   "lifetime": {
     "papers": 157,
     "outputBasis": "measured",
-    "citations": 3308,
-    "top10": 2,
-    "top10ShareOfDivision": 0.00128,
+    "citations": 3313,
+    "top10": 6,
+    "top10ShareOfDivision": 0.00327,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -315,7 +295,7 @@
       "date": "2009-03-00"
     },
     "spread": {
-      "mean": 21.07,
+      "mean": 21.102,
       "median": 14,
       "uncited": 8,
       "i10": 96,
@@ -324,9 +304,9 @@
   },
   "query": {
     "arms": "((=abs:\"Aeronomy of Ice in the Mesosphere\" OR =abs:\"Cloud Imaging and Particle Size\" OR =abs:\"Solar Occultation for Ice Experiment\" OR (abs:CIPS AND (abs:(mesosphere OR noctilucent) OR =abs:\"gravity wave\" OR =abs:\"gravity waves\")) OR (abs:SOFIE AND (abs:(mesosphere OR stratosphere OR thermosphere OR occultation OR meteoric) OR =abs:\"middle atmospheric\" OR =abs:\"middle atmosphere\")) OR (abs:AIM AND (abs:noctilucent OR =abs:\"polar mesospheric\") AND abs:(satellite OR spacecraft))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2007-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Aeronomy+of+Ice+in+the+Mesosphere%22+OR+%3Dabs%3A%22Cloud+Imaging+and+Particle+Size%22+OR+%3Dabs%3A%22Solar+Occultation+for+Ice+Experiment%22+OR+%28abs%3ACIPS+AND+%28abs%3A%28mesosphere+OR+noctilucent%29+OR+%3Dabs%3A%22gravity+wave%22+OR+%3Dabs%3A%22gravity+waves%22%29%29+OR+%28abs%3ASOFIE+AND+%28abs%3A%28mesosphere+OR+stratosphere+OR+thermosphere+OR+occultation+OR+meteoric%29+OR+%3Dabs%3A%22middle+atmospheric%22+OR+%3Dabs%3A%22middle+atmosphere%22%29%29+OR+%28abs%3AAIM+AND+%28abs%3Anoctilucent+OR+%3Dabs%3A%22polar+mesospheric%22%29+AND+abs%3A%28satellite+OR+spacecraft%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2007-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:13:35.018855+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2007-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Aeronomy+of+Ice+in+the+Mesosphere%22+OR+%3Dabs%3A%22Cloud+Imaging+and+Particle+Size%22+OR+%3Dabs%3A%22Solar+Occultation+for+Ice+Experiment%22+OR+%28abs%3ACIPS+AND+%28abs%3A%28mesosphere+OR+noctilucent%29+OR+%3Dabs%3A%22gravity+wave%22+OR+%3Dabs%3A%22gravity+waves%22%29%29+OR+%28abs%3ASOFIE+AND+%28abs%3A%28mesosphere+OR+stratosphere+OR+thermosphere+OR+occultation+OR+meteoric%29+OR+%3Dabs%3A%22middle+atmospheric%22+OR+%3Dabs%3A%22middle+atmosphere%22%29%29+OR+%28abs%3AAIM+AND+%28abs%3Anoctilucent+OR+%3Dabs%3A%22polar+mesospheric%22%29+AND+abs%3A%28satellite+OR+spacecraft%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2007-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:04:41.120297+00:00",
     "reconciliation": {
       "adsReturned": 157,
       "curatedOut": 0,
@@ -515,7 +495,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 77
+      "citations": 79
     },
     {
       "bibcode": "2013JGRD..118.5803S",

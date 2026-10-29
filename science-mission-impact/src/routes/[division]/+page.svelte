@@ -1,117 +1,125 @@
 <script>
+	// What the division does; then, under one scope switch, the by-year chart, the per-dollar chart and
+	// the mission table, all following the switch. The affiliation map, every paper to date, comes
+	// after the switch lets go.
 	import Seo from '$lib/ui/Seo.svelte';
 	import EntityHeader from '$lib/ui/EntityHeader.svelte';
-	import MostCited from '$lib/ui/MostCited.svelte';
-	import TopPapers from '$lib/ui/TopPapers.svelte';
 	import MissionTable from '$lib/ui/MissionTable.svelte';
 	import ScopeSwitch from '$lib/ui/ScopeSwitch.svelte';
-	import MeasureTable from '$lib/ui/MeasureTable.svelte';
-	import Choice from '$lib/ui/Choice.svelte';
 	import Hint from '$lib/ui/Hint.svelte';
+	import PerDollarScatter from '$lib/charts/PerDollarScatter.svelte';
 	import LifetimeTimeline from '$lib/charts/LifetimeTimeline.svelte';
-	import TopShareBars from '$lib/charts/TopShareBars.svelte';
-	import CostCurve from '$lib/charts/CostCurve.svelte';
-	import TimeToScience from '$lib/charts/TimeToScience.svelte';
-	import { int, yearSpan, plural } from '$lib/format.js';
+	import AffiliationMap from '$lib/charts/AffiliationMap.svelte';
+	import { int, money, yearSpan } from '$lib/format.js';
 	import { view } from '$lib/state/view.svelte.js';
-	import { scopeLabel } from '$lib/copy/window.js';
-	import { divisionMeasureGroups } from '$lib/copy/measures.js';
 	import { divisionIntro } from '$lib/copy/divisions.js';
-	import { noteText } from '$lib/copy/footnotes.js';
-	import { methodsHref } from '$lib/paths.js';
+	import { FOOTNOTES, noteText } from '$lib/copy/footnotes.js';
+	import { methodsHref, mapsUrl } from '$lib/paths.js';
 
 	let { data } = $props();
-	let picked = $state('');
-	// Which tier the two top-paper charts show. Page-local on purpose: the Explore table keeps
-	// its top-10% column whatever is chosen here. Lifetime has no top 1%.
-	let pickedTop = $state(10);
-	const top = $derived(view.scope === 'lifetime' ? 10 : pickedTop);
-	const tiers = $derived(view.scope === 'lifetime' ? [{ value: 10, label: '10%' }] : [{ value: 10, label: '10%' }, { value: 1, label: '1%' }]);
 	const d = $derived(data.division);
 	const site = $derived(data.site);
 	const f = $derived(d.facts);
-	const selectedId = $derived(d.missions.some((m) => m.id === picked) ? picked : '');
-	const selectMission = (id) => { picked = id; };
-	const scopeName = $derived(scopeLabel(view.scope, site));
-	// Every definition a chart leans on sits behind an "i" by its title; nothing is folded away.
-	const note = (...ids) => noteText(ids, site);
-	const paperMission = $derived(d.missions.find((m) => m.id === d.mostCited?.missionId)?.name);
+	const story = $derived(data.scopes[view.scope]);
+	/** Props for the "i" beside a term: one definition each. */
+	const tip = (id) => ({ text: noteText([id], site), href: methodsHref(FOOTNOTES[id].anchor) });
 	const description = $derived(
 		`${int(f.missions)} NASA ${d.name} missions with ${int(f.papers)} tracked peer-reviewed publications and ${int(f.citations)} citations, ${yearSpan(f.publicationYears)}.`
 	);
 </script>
 
-{#snippet tier(label)}
-	<div class="threshold">Top <Choice {label} value={top} onchange={(v) => (pickedTop = v)} options={tiers} /></div>
-{/snippet}
-
 <Seo title={d.name} {description} />
 
 <div class="wrap page">
-	<EntityHeader name={d.name} second={divisionIntro[d.slug]}>
-		<b>{int(f.missions)}</b> {plural(f.missions, 'mission')} in this study.
-		<b>{int(f.papers)}</b> tracked publications and <b>{int(f.citations)}</b> citations over their lifetimes.
+	<EntityHeader name={d.name} rule={false}>
+		<span class="intro">{divisionIntro[d.slug]}</span>
 	</EntityHeader>
 
-	<section aria-labelledby="research-title">
-		<h2 id="research-title" class="chart-title">Research over time</h2>
-		<LifetimeTimeline lifetime={d.lifetimeSeries} />
-	</section>
-
+	<!-- The scope bar sticks over every section that reads view.scope. -->
 	<div class="scoped">
 		<ScopeSwitch {site} />
 
-		<section aria-labelledby="measures-title">
-			<h2 id="measures-title" class="chart-title">Key measures</h2>
-			<MeasureTable groups={divisionMeasureGroups(d, view.scope, site)} />
-		</section>
-
-		<MostCited paper={d.mostCited} slug={d.slug} missionName={paperMission} />
-
-		<section aria-labelledby="share-title">
-			<div class="section-heading">
-				<h2 id="share-title" class="chart-title">{d.rankable ? 'Highly cited papers per mission' : 'Publications per mission'}<Hint label="this chart" text={d.rankable ? note(top === 1 ? 'top1' : 'top10', 'shared', 'never') : note('publications')} href={methodsHref(d.rankable ? '' : 'mission-papers')} /></h2>
-				{#if d.rankable}{@render tier('Highly cited share percentile')}{/if}
+		<section id="stats" class="part pair" aria-label="Output and cost">
+			<div class="chart">
+				<h3 class="chart-title">Publications and citations by year</h3>
+				<LifetimeTimeline series={d.series[view.scope]} />
 			</div>
-			<TopShareBars missions={d.missions} slug={d.slug} rankable={d.rankable} {top} {selectedId} onselect={selectMission} />
+
+			<!-- A division with nothing to compare (no comparison rows) gets the by-year chart only. -->
+			{#if story.comparison}
+				<div class="chart">
+					<h3 class="chart-title">Citations per {money(100)}, by mission<Hint label="this chart" {...tip('perDollarChart')} /></h3>
+					<PerDollarScatter missions={d.missions} slug={d.slug} scope={view.scope} fit={story.perDollar?.fit ?? null} />
+				</div>
+			{/if}
 		</section>
 
-		{#if d.rankable}
-			<section aria-labelledby="timing-title">
-				<h2 id="timing-title" class="chart-title">Time to a first top-10% paper<Hint label="this chart" text={note('firstTop', 'never', 'cost')} href={methodsHref()} /></h2>
-				<TimeToScience missions={d.missions} slug={d.slug} {selectedId} onselect={selectMission} />
-			</section>
-		{/if}
-
-		{#if d.costCurves}
-			<section aria-labelledby="cost-title">
-				<h2 id="cost-title" class="chart-title">Running total of all top <Choice label="Cost curve percentile" value={top} onchange={(v) => (pickedTop = v)} options={tiers} /> papers, contributed by mission<Hint label="this chart" text={note(top === 1 ? 'top1' : 'top10', 'costAxis', 'cost')} href={methodsHref('cost')} /></h2>
-				<CostCurve costCurves={d.costCurves} missions={d.missions} slug={d.slug} referenceCost={site.referenceCost} {top} {selectedId} onselect={selectMission} />
-			</section>
-		{/if}
-
-		{#if d.topPapers?.[view.scope]?.length}
-			<section aria-labelledby="papers-title">
-				<h2 id="papers-title" class="chart-title">Most cited publications</h2>
-				<p class="meta caption">{view.scope === 'lifetime' ? 'Every tracked publication, ranked by citations to date.' : `Publications from the ${scopeName}, ranked by the citations counted in it.`}</p>
-				<TopPapers papers={d.topPapers[view.scope]} missions={d.missions} slug={d.slug} label="{d.name} most cited publications, {scopeName}" />
-			</section>
-		{/if}
-
-		<section aria-labelledby="missions-title">
-			<h2 id="missions-title" class="chart-title">Explore missions</h2>
+		<section id="missions" class="part" aria-labelledby="missions-title">
+			<h2 id="missions-title" class="part-title">Missions</h2>
 			<div class="table">
-				<MissionTable missions={d.missions} slug={d.slug} costBaseYear={site.costBaseYear} rankable={d.rankable} {selectedId} scopeLabel={scopeName} />
+				<MissionTable missions={d.missions} slug={d.slug} {site} scope={view.scope} rankable={d.rankable} />
 			</div>
+			<p class="meta source">How we found the papers, counted citations, and set costs: <a href={methodsHref()}>Methods</a>.</p>
 		</section>
 	</div>
+
+	{#if d.affiliations}
+		<section id="affiliations" class="part" aria-labelledby="affiliations-title">
+			<h2 id="affiliations-title" class="part-title">Institutional contributions<Hint label="this map" {...tip('affiliations')} /></h2>
+			<p class="meta">Every tracked publication to date, each counted once however many {d.name} missions it names.</p>
+			<AffiliationMap summary={d.affiliations} url={mapsUrl('divisions', d.slug)} />
+		</section>
+	{/if}
 </div>
 
 <style>
-	.page > section, .scoped, .scoped > section { margin-top: 56px; }
-	.scoped > section:first-of-type { margin-top: 32px; }
-	.section-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; }
-	.threshold { color: var(--dust); font-size: 14px; }
-	.caption { margin-top: 4px; color: var(--dust); }
-	.table { margin-top: 8px; overflow-x: auto; overscroll-behavior-x: contain; }
+	.intro {
+		display: block;
+		max-width: 36em;
+		color: var(--white);
+		font-size: clamp(18px, 1.7vw, 22px);
+		line-height: 1.5;
+	}
+
+	.part {
+		margin-top: 64px;
+	}
+
+	.scoped {
+		margin-top: 64px;
+	}
+
+	.scoped > .part:first-of-type {
+		margin-top: 32px;
+	}
+
+	.part-title {
+		font-weight: 300;
+		font-size: clamp(26px, 3vw, 34px);
+		line-height: 1.15;
+		letter-spacing: -0.015em;
+	}
+
+	/* the by-year and per-dollar charts side by side where both fit, stacked on a narrow screen */
+	.pair {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
+		gap: 56px 48px;
+		align-items: start;
+	}
+
+	.table {
+		margin-top: 20px;
+	}
+
+	.source {
+		margin-top: 20px;
+	}
+
+	@media (max-width: 600px) {
+		.part,
+		.scoped {
+			margin-top: 48px;
+		}
+	}
 </style>

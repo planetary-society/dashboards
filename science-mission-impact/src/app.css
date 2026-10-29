@@ -34,10 +34,10 @@
 :root {
   --black: #000000;
   --white: #ffffff;
-  --neptune: #037cc2; /* marks, underlines, text >= 24px */
+  --neptune: #037cc2; /* marks, underlines, text >= 24px, .neptuneBlue emphasis, the division a story step washes */
   --neptune-mid: #80bde0; /* small text, links, focus */
   --neptune-light: #bfdef0;
-  --flame: #ff5d47; /* true negatives only, plus the skyline step's pointed-at mission */
+  --flame: #ff5d47; /* true negatives only, plus the pointed-at column on the skyline and the citation primer */
   --dust: #c3c3c3; /* secondary text */
   --soil: #8c8c8c; /* tertiary text, axes */
   --shadow: #414141; /* rules only, never text */
@@ -210,13 +210,26 @@ svg text {
   top: 8px;
 }
 
+/* Emphasis in running text, in the Neptune of the marks it points at: 4.7:1 on black, so it
+   passes AA at body size. */
+.neptuneBlue {
+  color: var(--neptune);
+}
+
+/* The overview's chart titles, one style for every stage chart: top right over the plot
+   (text-anchor end at the plot's right edge), in the secondary grey. */
+svg text.stage-title {
+  font-size: 15px;
+  fill: var(--dust);
+}
+
+.compact svg text.stage-title {
+  font-size: 13px;
+}
+
 /* Mission marks. Shared by the squares and the legend that explains them. */
 .mark-solid {
   background: var(--square);
-}
-
-.mark-lit {
-  background: var(--dust);
 }
 
 .mark-outline {
@@ -224,67 +237,39 @@ svg text {
   box-shadow: inset 0 0 0 1px var(--outline);
 }
 
-.mark-reached {
-  background: var(--neptune);
-}
-
-.mark-none {
-  background: var(--flame);
-}
-
-.mark-no_papers {
-  background: transparent;
-  box-shadow: inset 0 0 0 1px var(--flame);
-}
-
-.mark-failure {
-  position: relative;
-  overflow: hidden;
-  background: transparent;
+/* The story's outcome marks: an outright failure is an X, a partial outcome one stroke. */
+.mark-lost,
+.mark-partial {
+  background: var(--square);
   box-shadow: inset 0 0 0 1px var(--soil);
 }
 
-.mark-unavailable {
-  background: transparent;
-  border: 1px dashed var(--soil);
+.mark-lost {
+  background:
+    linear-gradient(
+      to top right,
+      transparent calc(50% - 0.75px),
+      var(--flame) 0 calc(50% + 0.75px),
+      transparent 0
+    ),
+    linear-gradient(
+      to top left,
+      transparent calc(50% - 0.75px),
+      var(--flame) 0 calc(50% + 0.75px),
+      transparent 0
+    ),
+    var(--square);
 }
 
-.mark-failure::after {
-  content: "";
-  position: absolute;
-  left: -20%;
-  top: 50%;
-  width: 140%;
-  height: 1px;
-  background: var(--flame);
-  transform: rotate(-45deg);
-}
-
-/* Paper kinds. Shared by the kind bars and their legend. The two science kinds are the two
-   blues; the four others are greys about 21 L* apart on black (92, 70, 49, 27), so adjacent
-   segments and the small legend swatches stay distinguishable. */
-.kind-results {
-  background: var(--neptune);
-}
-
-.kind-data {
-  background: var(--neptune-mid);
-}
-
-.kind-mission {
-  background: #e6e6e6;
-}
-
-.kind-review {
-  background: #ababab;
-}
-
-.kind-future {
-  background: #737373;
-}
-
-.kind-other {
-  background: #404040;
+.mark-partial {
+  background:
+    linear-gradient(
+      to top right,
+      transparent calc(50% - 0.75px),
+      var(--flame) 0 calc(50% + 0.75px),
+      transparent 0
+    ),
+    var(--square);
 }
 
 @media (prefers-reduced-motion: reduce) {

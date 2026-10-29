@@ -2,31 +2,43 @@
 	// The corpus as a skyline: one Neptune column per mission rising from the ground line the
 	// rug hangs from, height ∝ √papers, and a running total that counts up as the columns rise.
 	// No names until the reader points: the highlighted column turns Rocket Flame and is named.
+	// The citation step zooms out in one move (skylineZoom): each mission's citations grow out of
+	// its paper column while the √ scale widens to hold the tallest, shrinking the papers under them.
 	import { int } from '$lib/format.js';
+	import { columnLabel, skylineZoom } from './layouts.js';
 
-	/** layout: skylineLayout() result. total: distinct papers. rise: 0..1 column growth. highlight: mission id. */
-	let { layout, total, rise = 1, visible = false, compact = false, highlight = null, width, height } = $props();
+	/**
+	 * layout: skylineLayout() result. total: distinct papers. cited: their citations. rise: 0..1
+	 * column growth. cite: 0..1 from the paper skyline to citations on one scale. highlight: mission id.
+	 */
+	let { layout, total, cited = 0, rise = 1, cite = 0, visible = false, compact = false, highlight = null, width, height } = $props();
 
 	const ticks = $derived(layout.x.ticks(compact ? 4 : 8));
 	const hot = $derived(layout.columns.find((c) => c.id === highlight) ?? null);
-	// centred over its column unless that would run it off either end of the chart (width estimated per character)
-	const label = $derived.by(() => {
-		if (!hot) return null;
-		const text = `${hot.name} ${int(hot.papers)}`;
-		const cx = hot.x + hot.w / 2;
-		const half = ((text.length + 1) * (compact ? 6 : 7)) / 2;
-		const anchor = cx - half < layout.left ? 'start' : cx + half > layout.right ? 'end' : 'middle';
-		return { text, x: anchor === 'start' ? hot.x : anchor === 'end' ? hot.x + hot.w : cx, y: hot.y - 4, anchor };
-	});
+	const zoomed = $derived(cite > 0 ? skylineZoom(layout, cite) : null);
+	const hp = (c) => (zoomed ? zoomed.get(c.id).hp : c.h);
+	const hc = (c) => (zoomed ? zoomed.get(c.id).hc : 0);
+	const label = $derived(
+		hot && columnLabel(`${hot.name} ${int(cite > 0 ? hot.cited : hot.papers)}`, hot, { left: layout.left, right: layout.right, y: layout.ground - Math.max(hp(hot), hc(hot)) * rise - 4, compact })
+	);
 </script>
 
 <div class="skyline" class:visible class:compact aria-hidden="true">
 	<svg {width} {height}>
 		<line class="ground" x1={layout.left} x2={layout.right} y1={layout.ground + 0.5} y2={layout.ground + 0.5} />
-		<g class="columns" style:transform="scaleY({rise})" style:transform-origin="0 {layout.ground}px">
-			{#each layout.columns as c (c.id)}
-				<rect class:hot={c.id === highlight} x={c.x} y={c.y} width={c.w} height={c.h} />
-			{/each}
+		<g style:transform="scaleY({rise})" style:transform-origin="0 {layout.ground}px">
+			{#if zoomed}
+				<g class="cited">
+					{#each layout.columns as c (c.id)}
+						<rect class:hot={c.id === highlight} x={c.x} y={layout.ground - hc(c)} width={c.w} height={hc(c)} />
+					{/each}
+				</g>
+			{/if}
+			<g class="columns">
+				{#each layout.columns as c (c.id)}
+					<rect class:hot={c.id === highlight && !zoomed} x={c.x} y={layout.ground - hp(c)} width={c.w} height={hp(c)} />
+				{/each}
+			</g>
 		</g>
 		{#if label && rise > 0.9}<text class="label" x={label.x} y={label.y} text-anchor={label.anchor}>{label.text}</text>{/if}
 		{#each ticks as t (t)}
@@ -34,8 +46,15 @@
 		{/each}
 	</svg>
 	<p class="count" style:right="{width - layout.right}px" style:top="{layout.top}px">
-		<span class="n">{int(rise * total)}</span>
-		<span>publications</span>
+		{#if cite > 0}
+			<!-- grows with the columns, out of the publication total -->
+			<span class="n">{int(total ** (1 - cite) * cited ** cite)}</span>
+			<!-- the publications in the columns' own blue, the citations staying white -->
+			<span>citations of <span class="neptuneBlue">{int(total)} publications</span></span>
+		{:else}
+			<span class="n">{int(rise * total)}</span>
+			<span>publications</span>
+		{/if}
 	</p>
 </div>
 
@@ -67,7 +86,13 @@
 		fill: var(--neptune);
 	}
 
-	.columns rect.hot {
+	/* the citations a paper column carries: the same blue, lighter */
+	.cited rect {
+		fill: var(--neptune-light);
+	}
+
+	.columns rect.hot,
+	.cited rect.hot {
 		fill: var(--flame);
 	}
 

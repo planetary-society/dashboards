@@ -8,10 +8,14 @@ export const home = () => resolve('/');
 export const divisionHref = (slug) => resolve(withSlash(`/${slug}`));
 export const missionHref = (slug, id) => resolve(withSlash(`/${slug}/${id}`));
 export const methodsHref = (anchor = '') => resolve('/methods/') + (anchor ? `#${anchor}` : '');
+export const analysisHref = (anchor = '') => resolve('/analysis/') + (anchor ? `#${anchor}` : '');
 export const asset = (path) => resolve('/') + path.replace(/^\//, '');
 
 export const thumbSrc = (id) => asset(`img/missions/${id}.webp`);
 export const papersUrl = (id) => asset(`data/papers/${id}.json`);
+/** `kind` is 'missions' or 'divisions'. */
+export const mapsUrl = (kind, id) => asset(`data/maps/${kind}/${id}.json`);
+export const basemapSrc = (key) => asset(`img/maps/${key}.svg`);
 
 export const adsAbstract = (bibcode) => `https://scixplorer.org/abs/${encodeURIComponent(bibcode)}/abstract`;
 

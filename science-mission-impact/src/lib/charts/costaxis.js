@@ -80,3 +80,9 @@ export function stepAfterPath(points, { x, y, x0, x1, value, round = (n) => n })
 	for (const p of points) d += `H${round(x(p.cost))}V${round(y(value(p)))}`;
 	return `${d}H${round(x1)}`;
 }
+
+/** The story's shared cost axis: every costed mission, with a little air either side. */
+export function costDomain(tiles) {
+	const costs = tiles.map((t) => t.cost).filter((c) => c > 0);
+	return costs.length ? [Math.min(...costs) * 0.8, Math.max(...costs) * 1.25] : [1, 10];
+}

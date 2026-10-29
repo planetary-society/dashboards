@@ -9,7 +9,11 @@
     "status": "Extended Mission",
     "failed": false,
     "cost": 248.2,
+    "lcc": 170,
     "type": "Pointed Observatory",
+    "program": "Small-class Explorers (SMEX)",
+    "target": "Universe",
+    "launchVehicle": "Pegasus XL",
     "dates": {
       "formulation": "2008-02-25",
       "launch": "2012-06-13",
@@ -19,16 +23,16 @@
     }
   },
   "indices": {
-    "h": 93,
-    "m": 6.2,
-    "i100": 75,
-    "g": 153,
-    "tori": 77.766,
-    "riq": 551
+    "h": 94,
+    "m": 6.267,
+    "i100": 83,
+    "g": 155,
+    "tori": 82.864,
+    "riq": 568
   },
   "facts": {
-    "papers": 1933,
-    "citations": 53052,
+    "papers": 1935,
+    "citations": 54574,
     "publicationYears": [
       2012,
       2026
@@ -67,7 +71,7 @@
       183,
       181,
       174,
-      190
+      192
     ],
     "citations": [
       0,
@@ -75,92 +79,61 @@
       529,
       1206,
       1664,
-      2464,
+      2465,
       2872,
       3538,
       3799,
-      4307,
-      5096,
-      5859,
-      6902,
-      7318,
-      7395
+      4310,
+      5100,
+      5860,
+      6905,
+      7354,
+      8869
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 53052,
-      "observed": 53052,
+      "expected": 54574,
+      "observed": 54574,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2012-09-01",
-    "end": "2016-08-01",
-    "matureDate": "2019-10-01",
-    "status": "available",
-    "months": 47,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      2,
-      0,
-      0,
-      1,
-      2,
-      2,
-      2,
-      3,
-      1,
-      2,
-      2,
-      1,
-      1,
-      9,
-      5,
-      5,
-      4,
-      9,
-      6,
-      4,
-      6,
-      3,
-      6,
-      6,
-      1,
-      5,
-      7,
-      12,
-      8,
-      3,
-      9,
-      5,
-      13,
-      9,
-      7,
-      4,
-      5,
-      10,
-      9,
-      7,
-      12,
-      5,
-      18,
-      10,
-      13
-    ],
-    "citationsByYearOffset": [
-      0,
-      99,
-      528,
-      1194,
-      1625,
-      1591,
-      956,
-      307
-    ]
+  "affiliations": {
+    "papers": 1935,
+    "us": {
+      "mapped": 1140,
+      "top": [
+        {
+          "name": "California Institute of Technology",
+          "papers": 503
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 446
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 332
+        }
+      ]
+    },
+    "world": {
+      "mapped": 1881,
+      "top": [
+        {
+          "name": "California Institute of Technology",
+          "papers": 503
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 446
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 332
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2022ApJ...930L..12E",
@@ -174,50 +147,50 @@
     ],
     "authorCount": 389,
     "year": 2022,
-    "citations": 2269
+    "citations": 2392
   },
   "ranks": {
     "full": {
       "bins": [
-        94.989,
-        144.459,
-        161.759,
-        181.663,
-        168.163,
-        184.38,
-        128.874,
-        119.643,
-        126.775,
-        77.295
+        94.297,
+        142.752,
+        160.825,
+        183.958,
+        166.991,
+        183.89,
+        130.599,
+        121.054,
+        126.447,
+        77.188
       ],
       "top1": 5
     },
     "window": {
       "bins": [
-        12.159,
-        17.021,
-        17.512,
-        24.107,
-        30.23,
+        12.165,
+        17.024,
+        17.52,
+        24.151,
+        30.222,
         29.884,
-        28.021,
-        42.611,
-        35.453,
+        28.01,
+        42.637,
+        35.387,
         17
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        281.291,
-        291.669,
-        277.511,
-        243.633,
-        226.698,
-        182.606,
-        137.468,
-        125.404,
-        109.719,
+        266.066,
+        298.512,
+        276.564,
+        242.928,
+        235.095,
+        177.622,
+        141.527,
+        129.204,
+        110.483,
         57
       ],
       "top1": 3
@@ -226,9 +199,9 @@
   "full": {
     "papers": 1388,
     "outputBasis": "measured",
-    "citations": 25676,
-    "top10": 69.189,
-    "top10ShareOfDivision": 0.01391,
+    "citations": 25803,
+    "top10": 53.794,
+    "top10ShareOfDivision": 0.01081,
     "top1": 2.667,
     "top1ShareOfDivision": 0.00536,
     "first": {
@@ -247,20 +220,25 @@
       "months": 136,
       "citationBuckets": 15
     },
+    "indices": {
+      "h": 55,
+      "g": 93,
+      "m": 4.854
+    },
     "spread": {
-      "mean": 18.499,
+      "mean": 18.59,
       "median": 12,
-      "uncited": 27,
-      "i10": 811,
-      "i100": 13
+      "uncited": 26,
+      "i10": 813,
+      "i100": 15
     }
   },
   "window": {
     "papers": 254,
     "outputBasis": "measured",
-    "citations": 6300,
-    "top10": 21.3,
-    "top10ShareOfDivision": 0.01101,
+    "citations": 6301,
+    "top10": 16.5,
+    "top10ShareOfDivision": 0.00853,
     "top1": 1,
     "top1ShareOfDivision": 0.00517,
     "first": {
@@ -279,8 +257,13 @@
       "months": 47,
       "citationBuckets": 8
     },
+    "indices": {
+      "h": 39,
+      "g": 57,
+      "m": 9.962
+    },
     "spread": {
-      "mean": 24.803,
+      "mean": 24.807,
       "median": 18,
       "uncited": 2,
       "i10": 194,
@@ -288,11 +271,11 @@
     }
   },
   "lifetime": {
-    "papers": 1933,
+    "papers": 1935,
     "outputBasis": "measured",
-    "citations": 53052,
-    "top10": 75.196,
-    "top10ShareOfDivision": 0.0136,
+    "citations": 54574,
+    "top10": 40.95,
+    "top10ShareOfDivision": 0.00645,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -303,26 +286,26 @@
       "date": "2013-02-00"
     },
     "spread": {
-      "mean": 27.445,
-      "median": 13,
-      "uncited": 134,
-      "i10": 1148,
-      "i100": 75
+      "mean": 28.204,
+      "median": 14,
+      "uncited": 109,
+      "i10": 1171,
+      "i100": 83
     }
   },
   "query": {
     "arms": "(((abs:\"NuSTAR\" NOT (=abs:\"Facility for Antiproton and Ion Research\" OR =abs:\"Facility for Anti-proton and Ion Research\" OR =abs:\"Nuclear Structure Astrophysics and Reactions\" OR =abs:\"radioactive beam\" OR =abs:\"radioactive beams\" OR =abs:\"radioactive ion beam\" OR =abs:\"radioactive ion beams\" OR =abs:\"exotic nuclei\" OR abs:((DESPEC OR GSI) AND (nuclear OR nuclei OR isotope OR detector OR beam)))) OR =abs:\"Nuclear Spectroscopic Telescope Array\" OR facility:\"NuSTAR\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2012-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22NuSTAR%22+NOT+%28%3Dabs%3A%22Facility+for+Antiproton+and+Ion+Research%22+OR+%3Dabs%3A%22Facility+for+Anti-proton+and+Ion+Research%22+OR+%3Dabs%3A%22Nuclear+Structure+Astrophysics+and+Reactions%22+OR+%3Dabs%3A%22radioactive+beam%22+OR+%3Dabs%3A%22radioactive+beams%22+OR+%3Dabs%3A%22radioactive+ion+beam%22+OR+%3Dabs%3A%22radioactive+ion+beams%22+OR+%3Dabs%3A%22exotic+nuclei%22+OR+abs%3A%28%28DESPEC+OR+GSI%29+AND+%28nuclear+OR+nuclei+OR+isotope+OR+detector+OR+beam%29%29%29%29+OR+%3Dabs%3A%22Nuclear+Spectroscopic+Telescope+Array%22+OR+facility%3A%22NuSTAR%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:19:07.106663+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2012-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22NuSTAR%22+NOT+%28%3Dabs%3A%22Facility+for+Antiproton+and+Ion+Research%22+OR+%3Dabs%3A%22Facility+for+Anti-proton+and+Ion+Research%22+OR+%3Dabs%3A%22Nuclear+Structure+Astrophysics+and+Reactions%22+OR+%3Dabs%3A%22radioactive+beam%22+OR+%3Dabs%3A%22radioactive+beams%22+OR+%3Dabs%3A%22radioactive+ion+beam%22+OR+%3Dabs%3A%22radioactive+ion+beams%22+OR+%3Dabs%3A%22exotic+nuclei%22+OR+abs%3A%28%28DESPEC+OR+GSI%29+AND+%28nuclear+OR+nuclei+OR+isotope+OR+detector+OR+beam%29%29%29%29+OR+%3Dabs%3A%22Nuclear+Spectroscopic+Telescope+Array%22+OR+facility%3A%22NuSTAR%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:20:05.610237+00:00",
     "reconciliation": {
-      "adsReturned": 1942,
+      "adsReturned": 1944,
       "curatedOut": 10,
       "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 1933
+      "final": 1935
     }
   },
   "curation": {
@@ -427,7 +410,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 2269
+      "citations": 2392
     },
     {
       "bibcode": "2013ApJ...770..103H",
@@ -436,7 +419,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 2124
+      "citations": 2152
     },
     {
       "bibcode": "2017Sci...358.1565E",
@@ -445,7 +428,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 539
+      "citations": 558
     },
     {
       "bibcode": "2022ApJ...930L..13E",
@@ -454,7 +437,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 440
+      "citations": 451
     },
     {
       "bibcode": "2016ApJ...831L..14F",
@@ -463,7 +446,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 368
+      "citations": 380
     },
     {
       "bibcode": "2015MNRAS.451.4375F",
@@ -472,7 +455,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 354
+      "citations": 360
     },
     {
       "bibcode": "2015A&ARv..23....1B",
@@ -481,7 +464,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 335
+      "citations": 345
     },
     {
       "bibcode": "2019ApJ...872...18M",
@@ -490,7 +473,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 298
+      "citations": 308
     },
     {
       "bibcode": "2015ApJS..220....8M",
@@ -499,7 +482,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 293
+      "citations": 297
     },
     {
       "bibcode": "2018ApJ...864...84K",
@@ -508,16 +491,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 291
-    },
-    {
-      "bibcode": "2015A&A...583A..99F",
-      "title": "The multi-phase winds of Markarian 231: from the hot, nuclear, ultra-fast wind to the galaxy-scale, molecular outflow",
-      "firstAuthor": "Feruglio, C.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2015,
-      "citations": 287
+      "citations": 296
     },
     {
       "bibcode": "2018MNRAS.476L..45C",
@@ -526,7 +500,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 281
+      "citations": 290
+    },
+    {
+      "bibcode": "2015A&A...583A..99F",
+      "title": "The multi-phase winds of Markarian 231: from the hot, nuclear, ultra-fast wind to the galaxy-scale, molecular outflow",
+      "firstAuthor": "Feruglio, C.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2015,
+      "citations": 288
     },
     {
       "bibcode": "2018MNRAS.478L..18T",
@@ -535,7 +518,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 272
+      "citations": 275
     },
     {
       "bibcode": "2013Natur.494..449R",
@@ -553,7 +536,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 249
+      "citations": 251
     },
     {
       "bibcode": "2013ApJ...770L..23M",
@@ -562,7 +545,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 244
+      "citations": 245
     },
     {
       "bibcode": "2014ApJ...792...48W",
@@ -571,7 +554,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 232
+      "citations": 235
     },
     {
       "bibcode": "2018ApJ...854...42B",
@@ -580,7 +563,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 226
+      "citations": 228
+    },
+    {
+      "bibcode": "2020ApJ...898L...1R",
+      "title": "The Destruction and Recreation of the X-Ray Corona in a Changing-look Active Galactic Nucleus",
+      "firstAuthor": "Ricci, C.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2020,
+      "citations": 207
     },
     {
       "bibcode": "2015ApJ...807...79H",
@@ -590,18 +582,9 @@
       "authorCount": null,
       "year": 2015,
       "citations": 199
-    },
-    {
-      "bibcode": "2020ApJ...898L...1R",
-      "title": "The Destruction and Recreation of the X-Ray Corona in a Changing-look Active Galactic Nucleus",
-      "firstAuthor": "Ricci, C.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2020,
-      "citations": 199
     }
   ],
   "papersFile": {
-    "rows": 1933
+    "rows": 1935
   }
 }

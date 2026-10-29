@@ -9,7 +9,11 @@
     "status": "Extended Mission",
     "failed": false,
     "cost": 3847.7,
+    "lcc": 1745,
     "type": "Orbiter",
+    "program": "Earth Observing System (EOS)",
+    "target": "Earth",
+    "launchVehicle": "Atlas-2 AS",
     "dates": {
       "formulation": "1988-10-01",
       "launch": "1999-12-18",
@@ -21,14 +25,14 @@
   "indices": {
     "h": 244,
     "m": 9.037,
-    "i100": 1113,
+    "i100": 1115,
     "g": 418,
-    "tori": 3231.336,
-    "riq": 2030
+    "tori": 3247.717,
+    "riq": 2035
   },
   "facts": {
-    "papers": 15057,
-    "citations": 569203,
+    "papers": 15079,
+    "citations": 569784,
     "publicationYears": [
       2000,
       2026
@@ -91,7 +95,7 @@
       767,
       755,
       728,
-      542
+      564
     ],
     "citations": [
       14,
@@ -106,149 +110,66 @@
       6975,
       8320,
       10640,
-      12496,
+      12795,
       15553,
       18999,
       21911,
-      23261,
-      26071,
-      31446,
+      23265,
+      26070,
+      31447,
       37393,
       41803,
-      50420,
-      55647,
-      49911,
-      52448,
-      54231,
-      34960
+      50421,
+      55648,
+      49914,
+      52450,
+      54270,
+      35192
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 569203,
-      "observed": 569203,
+      "expected": 569784,
+      "observed": 569784,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2000-03-01",
-    "end": "2008-02-01",
-    "matureDate": "2011-10-01",
-    "status": "available",
-    "months": 95,
-    "citationBuckets": 12,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      3,
-      1,
-      5,
-      0,
-      5,
-      2,
-      4,
-      2,
-      1,
-      2,
-      27,
-      0,
-      2,
-      1,
-      0,
-      3,
-      2,
-      2,
-      1,
-      0,
-      1,
-      1,
-      67,
-      3,
-      0,
-      2,
-      3,
-      3,
-      0,
-      1,
-      4,
-      2,
-      1,
-      4,
-      60,
-      4,
-      2,
-      2,
-      3,
-      1,
-      10,
-      6,
-      3,
-      10,
-      6,
-      9,
-      73,
-      4,
-      12,
-      5,
-      3,
-      13,
-      11,
-      12,
-      10,
-      9,
-      7,
-      14,
-      119,
-      8,
-      12,
-      20,
-      22,
-      18,
-      9,
-      11,
-      15,
-      17,
-      16,
-      16,
-      114,
-      14,
-      18,
-      13,
-      6,
-      17,
-      11,
-      14,
-      14,
-      20,
-      13,
-      15,
-      155,
-      6,
-      24,
-      11,
-      22,
-      33,
-      16,
-      10,
-      15,
-      18,
-      30,
-      16,
-      146
-    ],
-    "citationsByYearOffset": [
-      14,
-      50,
-      243,
-      634,
-      1005,
-      1754,
-      1810,
-      2505,
-      3115,
-      2525,
-      1614,
-      641
-    ]
+  "affiliations": {
+    "papers": 15079,
+    "us": {
+      "mapped": 4632,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 742
+        },
+        {
+          "name": "University of Maryland, College Park",
+          "papers": 411
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 408
+        }
+      ]
+    },
+    "world": {
+      "mapped": 11650,
+      "top": [
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 1317
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 742
+        },
+        {
+          "name": "Chinese Academy of Sciences",
+          "papers": 524
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2002RSEnv..83..195H",
@@ -262,95 +183,63 @@
     ],
     "authorCount": 6,
     "year": 2002,
-    "citations": 7007
+    "citations": 7016
   },
   "ranks": {
     "full": {
       "bins": [
-        1059.703,
-        1249.378,
-        1308.776,
-        1329.295,
-        1332.597,
-        1399.941,
-        1328.335,
-        1384.615,
-        1364.03,
-        1275.332
+        1058.963,
+        1249.05,
+        1309.726,
+        1328.235,
+        1332.012,
+        1400.722,
+        1327.132,
+        1385.041,
+        1365.598,
+        1275.522
       ],
-      "top1": 119.49
+      "top1": 119.274
     },
     "window": {
       "bins": [
-        160.187,
-        195.302,
-        171.447,
-        172.779,
-        161.372,
-        149.336,
-        142.884,
-        138.925,
-        111.011,
+        160.132,
+        195.374,
+        171.936,
+        172.475,
+        161.587,
+        149.067,
+        143.015,
+        138.757,
+        110.9,
         94.757
       ],
       "top1": 8.522
     },
     "lifetime": {
       "bins": [
-        1069.71,
-        1299.487,
-        1450.727,
-        1458.496,
-        1532.708,
-        1553.17,
-        1586.603,
-        1658.849,
-        1719.472,
-        1727.777
+        1072.353,
+        1300.006,
+        1452.323,
+        1460.37,
+        1535.293,
+        1555.914,
+        1588.28,
+        1661,
+        1722.194,
+        1731.267
       ],
-      "top1": 187.44
+      "top1": 187.28
     }
   },
   "full": {
     "papers": 13032,
     "outputBasis": "measured",
-    "citations": 148620,
-    "top10": 747.429,
-    "top10ShareOfDivision": 0.20764,
-    "top1": 72.328,
-    "top1ShareOfDivision": 0.20093,
-    "first": {
-      "state": "reached",
-      "yearsFromScienceStart": 0.238,
-      "yearsFromFormulation": 11.581,
-      "bibcode": "2000JGR...10511721R",
-      "date": "2000-05-00"
-    },
-    "status": "available",
-    "bounds": {
-      "start": "2000-03-01",
-      "end": "2024-01-01",
-      "matureDate": "2026-10-01",
-      "status": "available",
-      "months": 286,
-      "citationBuckets": 27
-    },
-    "spread": {
-      "mean": 11.404,
-      "median": 7,
-      "uncited": 835,
-      "i10": 5120,
-      "i100": 61
-    }
-  },
-  "window": {
-    "papers": 1498,
-    "outputBasis": "measured",
-    "citations": 15910,
-    "top10": 116.285,
-    "top10ShareOfDivision": 0.12354,
-    "top1": 6.261,
-    "top1ShareOfDivision": 0.06651,
+    "citations": 148727,
+    "top10": 755.044,
+    "top10ShareOfDivision": 0.20976,
+    "top1": 72.22,
+    "top1ShareOfDivision": 0.20063,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.909,
@@ -361,11 +250,53 @@
     "status": "available",
     "bounds": {
       "start": "2000-03-01",
+      "end": "2024-01-01",
+      "matureDate": "2026-10-01",
+      "status": "available",
+      "months": 286,
+      "citationBuckets": 27
+    },
+    "indices": {
+      "h": 84,
+      "g": 119,
+      "m": 3.524
+    },
+    "spread": {
+      "mean": 11.412,
+      "median": 7,
+      "uncited": 834,
+      "i10": 5125,
+      "i100": 61
+    }
+  },
+  "window": {
+    "papers": 1498,
+    "outputBasis": "measured",
+    "citations": 15910,
+    "top10": 69.885,
+    "top10ShareOfDivision": 0.07424,
+    "top1": 6.261,
+    "top1ShareOfDivision": 0.06651,
+    "first": {
+      "state": "reached",
+      "yearsFromScienceStart": 1.405,
+      "yearsFromFormulation": 12.747,
+      "bibcode": "2001RSEnv..77..173S",
+      "date": "2001-00-00"
+    },
+    "status": "available",
+    "bounds": {
+      "start": "2000-03-01",
       "end": "2008-02-01",
       "matureDate": "2011-10-01",
       "status": "available",
       "months": 95,
       "citationBuckets": 12
+    },
+    "indices": {
+      "h": 44,
+      "g": 63,
+      "m": 5.555
     },
     "spread": {
       "mean": 10.621,
@@ -376,41 +307,41 @@
     }
   },
   "lifetime": {
-    "papers": 15057,
+    "papers": 15079,
     "outputBasis": "measured",
-    "citations": 569203,
-    "top10": 824.325,
-    "top10ShareOfDivision": 0.214,
+    "citations": 569784,
+    "top10": 1093.475,
+    "top10ShareOfDivision": 0.23501,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.238,
       "yearsFromFormulation": 11.581,
-      "bibcode": "2000JGR...10511767B",
+      "bibcode": "2000ITGRS..38.1399M",
       "date": "2000-05-00"
     },
     "spread": {
-      "mean": 37.803,
+      "mean": 37.787,
       "median": 16,
-      "uncited": 963,
-      "i10": 9643,
-      "i100": 1113
+      "uncited": 983,
+      "i10": 9646,
+      "i100": 1115
     }
   },
   "query": {
     "arms": "(((abs:Terra AND abs:(ASTER OR CERES OR MODIS OR MISR OR MOPITT)) OR =abs:\"Terra Earth-Observing\" OR =abs:\"Terra Earth Observing\" OR =abs:\"Terra spacecraft\" OR =abs:\"Terra satellite\" OR =abs:\"Terra satellites\" OR =abs:\"Terra and Aqua\" OR =abs:\"Aqua and Terra\" OR (abs:\"EOS-AM1\" AND abs:(Terra OR satellite OR MODIS OR ASTER OR MISR OR MOPITT OR CERES)) OR =abs:\"EOS AM-1\" OR =abs:\"Measurements of Pollution in the Troposphere\" OR =abs:\"Measurement of Pollution in the Troposphere\" OR =abs:\"Advanced Spaceborne Thermal Emission and Reflection Radiometer\" OR =abs:\"Multi-angle Imaging SpectroRadiometer\" OR =abs:\"Multiangle Imaging Spectroradiometer\" OR (abs:MOPITT AND abs:(carbon OR monoxide OR troposphere OR pollution)) OR (abs:MISR AND abs:(aerosol OR cloud OR radiance OR satellite OR reflectance OR smoke)) OR (abs:ASTER AND abs:(satellite OR radiometer OR thermal OR elevation OR remote)) OR ((=abs:\"Moderate Resolution Imaging Spectroradiometer\" OR =abs:\"Clouds and the Earth's Radiant Energy System\") AND abs:Terra) OR ((=abs:\"Moderate Resolution Imaging Spectroradiometer\" OR =abs:\"Clouds and the Earth's Radiant Energy System\") AND NOT abs:Aqua)))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2000-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ATerra+AND+abs%3A%28ASTER+OR+CERES+OR+MODIS+OR+MISR+OR+MOPITT%29%29+OR+%3Dabs%3A%22Terra+Earth-Observing%22+OR+%3Dabs%3A%22Terra+Earth+Observing%22+OR+%3Dabs%3A%22Terra+spacecraft%22+OR+%3Dabs%3A%22Terra+satellite%22+OR+%3Dabs%3A%22Terra+satellites%22+OR+%3Dabs%3A%22Terra+and+Aqua%22+OR+%3Dabs%3A%22Aqua+and+Terra%22+OR+%28abs%3A%22EOS-AM1%22+AND+abs%3A%28Terra+OR+satellite+OR+MODIS+OR+ASTER+OR+MISR+OR+MOPITT+OR+CERES%29%29+OR+%3Dabs%3A%22EOS+AM-1%22+OR+%3Dabs%3A%22Measurements+of+Pollution+in+the+Troposphere%22+OR+%3Dabs%3A%22Measurement+of+Pollution+in+the+Troposphere%22+OR+%3Dabs%3A%22Advanced+Spaceborne+Thermal+Emission+and+Reflection+Radiometer%22+OR+%3Dabs%3A%22Multi-angle+Imaging+SpectroRadiometer%22+OR+%3Dabs%3A%22Multiangle+Imaging+Spectroradiometer%22+OR+%28abs%3AMOPITT+AND+abs%3A%28carbon+OR+monoxide+OR+troposphere+OR+pollution%29%29+OR+%28abs%3AMISR+AND+abs%3A%28aerosol+OR+cloud+OR+radiance+OR+satellite+OR+reflectance+OR+smoke%29%29+OR+%28abs%3AASTER+AND+abs%3A%28satellite+OR+radiometer+OR+thermal+OR+elevation+OR+remote%29%29+OR+%28%28%3Dabs%3A%22Moderate+Resolution+Imaging+Spectroradiometer%22+OR+%3Dabs%3A%22Clouds+and+the+Earth%27s+Radiant+Energy+System%22%29+AND+abs%3ATerra%29+OR+%28%28%3Dabs%3A%22Moderate+Resolution+Imaging+Spectroradiometer%22+OR+%3Dabs%3A%22Clouds+and+the+Earth%27s+Radiant+Energy+System%22%29+AND+NOT+abs%3AAqua%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:09:36.526854+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2000-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ATerra+AND+abs%3A%28ASTER+OR+CERES+OR+MODIS+OR+MISR+OR+MOPITT%29%29+OR+%3Dabs%3A%22Terra+Earth-Observing%22+OR+%3Dabs%3A%22Terra+Earth+Observing%22+OR+%3Dabs%3A%22Terra+spacecraft%22+OR+%3Dabs%3A%22Terra+satellite%22+OR+%3Dabs%3A%22Terra+satellites%22+OR+%3Dabs%3A%22Terra+and+Aqua%22+OR+%3Dabs%3A%22Aqua+and+Terra%22+OR+%28abs%3A%22EOS-AM1%22+AND+abs%3A%28Terra+OR+satellite+OR+MODIS+OR+ASTER+OR+MISR+OR+MOPITT+OR+CERES%29%29+OR+%3Dabs%3A%22EOS+AM-1%22+OR+%3Dabs%3A%22Measurements+of+Pollution+in+the+Troposphere%22+OR+%3Dabs%3A%22Measurement+of+Pollution+in+the+Troposphere%22+OR+%3Dabs%3A%22Advanced+Spaceborne+Thermal+Emission+and+Reflection+Radiometer%22+OR+%3Dabs%3A%22Multi-angle+Imaging+SpectroRadiometer%22+OR+%3Dabs%3A%22Multiangle+Imaging+Spectroradiometer%22+OR+%28abs%3AMOPITT+AND+abs%3A%28carbon+OR+monoxide+OR+troposphere+OR+pollution%29%29+OR+%28abs%3AMISR+AND+abs%3A%28aerosol+OR+cloud+OR+radiance+OR+satellite+OR+reflectance+OR+smoke%29%29+OR+%28abs%3AASTER+AND+abs%3A%28satellite+OR+radiometer+OR+thermal+OR+elevation+OR+remote%29%29+OR+%28%28%3Dabs%3A%22Moderate+Resolution+Imaging+Spectroradiometer%22+OR+%3Dabs%3A%22Clouds+and+the+Earth%27s+Radiant+Energy+System%22%29+AND+abs%3ATerra%29+OR+%28%28%3Dabs%3A%22Moderate+Resolution+Imaging+Spectroradiometer%22+OR+%3Dabs%3A%22Clouds+and+the+Earth%27s+Radiant+Energy+System%22%29+AND+NOT+abs%3AAqua%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:54:47.069532+00:00",
     "reconciliation": {
-      "adsReturned": 15084,
+      "adsReturned": 15106,
       "curatedOut": 3,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 24,
-      "final": 15057
+      "final": 15079
     }
   },
   "curation": {
@@ -514,7 +445,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 7007
+      "citations": 7016
     },
     {
       "bibcode": "2001BAMS...82.2415B",
@@ -523,7 +454,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 2809
+      "citations": 2810
     },
     {
       "bibcode": "2005JAtS...62..947R",
@@ -532,7 +463,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 2311
+      "citations": 2314
     },
     {
       "bibcode": "2010ACP....1011707V",
@@ -541,7 +472,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 2090
+      "citations": 2091
     },
     {
       "bibcode": "2002RSEnv..83..287F",
@@ -550,7 +481,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 2021
+      "citations": 2025
     },
     {
       "bibcode": "2003RSEnv..84..471Z",
@@ -559,7 +490,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 1893
+      "citations": 1902
     },
     {
       "bibcode": "2002RSEnv..83..135S",
@@ -568,7 +499,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 1878
+      "citations": 1887
     },
     {
       "bibcode": "2004RSEnv..91..332C",
@@ -577,7 +508,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 1712
+      "citations": 1717
     },
     {
       "bibcode": "2013AMT.....6.2989L",
@@ -595,7 +526,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 1526
+      "citations": 1529
     },
     {
       "bibcode": "2008RSEnv.112.3833J",
@@ -604,7 +535,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 1517
+      "citations": 1520
     },
     {
       "bibcode": "2002RSEnv..83..214M",
@@ -613,7 +544,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 1492
+      "citations": 1495
     },
     {
       "bibcode": "2006ITGRS..44.2207G",
@@ -622,7 +553,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 1449
+      "citations": 1452
     },
     {
       "bibcode": "2003ITGRS..41..459P",
@@ -631,7 +562,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 1418
+      "citations": 1420
     },
     {
       "bibcode": "2004BiSci..54..547R",
@@ -640,7 +571,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 1353
+      "citations": 1354
     },
     {
       "bibcode": "2007RSEnv.111..519M",
@@ -649,7 +580,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 1307
+      "citations": 1308
     },
     {
       "bibcode": "2010RSEnv.114..106V",
@@ -658,7 +589,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 1299
+      "citations": 1307
     },
     {
       "bibcode": "2006IGRSL...3...68M",
@@ -685,10 +616,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 1233
+      "citations": 1235
     }
   ],
   "papersFile": {
-    "rows": 15057
+    "rows": 15079
   }
 }

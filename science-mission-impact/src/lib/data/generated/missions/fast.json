@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 116.7,
+    "lcc": 50,
     "type": "In-Situ Probe",
+    "program": "Small-class Explorers (SMEX)",
+    "target": "Earth",
+    "launchVehicle": "Pegasus XL",
     "dates": {
       "formulation": "1989-04-04",
       "launch": "1996-08-21",
@@ -23,12 +27,12 @@
     "m": 1.767,
     "i100": 22,
     "g": 86,
-    "tori": 51.519,
+    "tori": 51.601,
     "riq": 239
   },
   "facts": {
-    "papers": 282,
-    "citations": 9588,
+    "papers": 283,
+    "citations": 9602,
     "publicationYears": [
       1997,
       2026
@@ -97,7 +101,7 @@
       0,
       2,
       3,
-      3
+      4
     ],
     "citations": [
       1,
@@ -112,10 +116,10 @@
       354,
       433,
       497,
-      325,
-      387,
+      326,
+      388,
       428,
-      492,
+      495,
       386,
       360,
       383,
@@ -129,71 +133,52 @@
       260,
       371,
       329,
-      236
+      245
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 9588,
-      "observed": 9588,
+      "expected": 9602,
+      "observed": 9602,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "1996-09-01",
-    "end": "1999-09-01",
-    "matureDate": "2002-10-01",
-    "status": "available",
-    "months": 36,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      2,
-      0,
-      0,
-      0,
-      2,
-      0,
-      0,
-      0,
-      0,
-      13,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      4,
-      1,
-      3,
-      1,
-      1,
-      2,
-      4,
-      2
-    ],
-    "citationsByYearOffset": [
-      0,
-      1,
-      18,
-      105,
-      155,
-      239,
-      90
-    ]
+  "affiliations": {
+    "papers": 283,
+    "us": {
+      "mapped": 159,
+      "top": [
+        {
+          "name": "University of California, Berkeley",
+          "papers": 98
+        },
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 55
+        },
+        {
+          "name": "University of Colorado, Boulder",
+          "papers": 43
+        }
+      ]
+    },
+    "world": {
+      "mapped": 199,
+      "top": [
+        {
+          "name": "University of California, Berkeley",
+          "papers": 98
+        },
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 55
+        },
+        {
+          "name": "University of Colorado, Boulder",
+          "papers": 43
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "1998GeoRL..25.2041E",
@@ -207,21 +192,21 @@
     ],
     "authorCount": 19,
     "year": 1998,
-    "citations": 512
+    "citations": 513
   },
   "ranks": {
     "full": {
       "bins": [
-        35.151,
-        26.385,
-        27.278,
-        27.667,
-        26.214,
-        16.748,
-        18.819,
-        7.738,
-        13.941,
-        12.059
+        35.171,
+        26.402,
+        27.301,
+        27.665,
+        26.256,
+        16.767,
+        18.772,
+        7.687,
+        13.943,
+        12.036
       ],
       "top1": 2
     },
@@ -229,9 +214,9 @@
       "bins": [
         5.772,
         1.616,
-        4.209,
-        1.428,
-        3.507,
+        4.211,
+        1.431,
+        3.502,
         5.838,
         2.63,
         2,
@@ -242,16 +227,16 @@
     },
     "lifetime": {
       "bins": [
-        21.512,
-        18.706,
-        32.389,
-        26.948,
-        27.223,
-        37.265,
-        28.992,
-        26.386,
-        32.536,
-        30.043
+        22.88,
+        18.845,
+        31.768,
+        27.777,
+        27.284,
+        36.593,
+        29.327,
+        26.124,
+        32.402,
+        30
       ],
       "top1": 4
     }
@@ -260,8 +245,8 @@
     "papers": 212,
     "outputBasis": "measured",
     "citations": 1705,
-    "top10": 14.292,
-    "top10ShareOfDivision": 0.00991,
+    "top10": 12.036,
+    "top10ShareOfDivision": 0.00835,
     "top1": 2,
     "top1ShareOfDivision": 0.01387,
     "first": {
@@ -280,6 +265,11 @@
       "months": 177,
       "citationBuckets": 19
     },
+    "indices": {
+      "h": 20,
+      "g": 28,
+      "m": 1.356
+    },
     "spread": {
       "mean": 8.042,
       "median": 5,
@@ -292,8 +282,8 @@
     "papers": 36,
     "outputBasis": "measured",
     "citations": 608,
-    "top10": 7.25,
-    "top10ShareOfDivision": 0.01634,
+    "top10": 5.642,
+    "top10ShareOfDivision": 0.01272,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -312,6 +302,11 @@
       "months": 36,
       "citationBuckets": 7
     },
+    "indices": {
+      "h": 13,
+      "g": 24,
+      "m": 4.336
+    },
     "spread": {
       "mean": 16.889,
       "median": 11,
@@ -321,11 +316,11 @@
     }
   },
   "lifetime": {
-    "papers": 282,
+    "papers": 283,
     "outputBasis": "measured",
-    "citations": 9588,
-    "top10": 13.033,
-    "top10ShareOfDivision": 0.00832,
+    "citations": 9602,
+    "top10": 27.333,
+    "top10ShareOfDivision": 0.01492,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -336,26 +331,26 @@
       "date": "1998-06-00"
     },
     "spread": {
-      "mean": 34,
+      "mean": 33.929,
       "median": 16,
-      "uncited": 16,
+      "uncited": 17,
       "i10": 186,
       "i100": 22
     }
   },
   "query": {
     "arms": "((=abs:\"Fast Auroral Snapshot\" OR =abs:\"Fast Auroral Snapshots\" OR (abs:FAST AND (abs:satellite OR abs:spacecraft OR abs:mission OR abs:probe) AND (abs:aurora OR abs:auroral)) OR (abs:FAST AND (abs:satellite OR abs:spacecraft) AND (abs:ionospher* OR abs:magnetospher* OR abs:photoelectron*))) AND NOT =abs:\"Aperture Spherical\" AND NOT =abs:\"FAST events\" AND NOT =abs:\"FAST perturbations\" AND NOT =abs:\"Swarm FAST\")",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1996-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Fast+Auroral+Snapshot%22+OR+%3Dabs%3A%22Fast+Auroral+Snapshots%22+OR+%28abs%3AFAST+AND+%28abs%3Asatellite+OR+abs%3Aspacecraft+OR+abs%3Amission+OR+abs%3Aprobe%29+AND+%28abs%3Aaurora+OR+abs%3Aauroral%29%29+OR+%28abs%3AFAST+AND+%28abs%3Asatellite+OR+abs%3Aspacecraft%29+AND+%28abs%3Aionospher%2A+OR+abs%3Amagnetospher%2A+OR+abs%3Aphotoelectron%2A%29%29%29+AND+NOT+%3Dabs%3A%22Aperture+Spherical%22+AND+NOT+%3Dabs%3A%22FAST+events%22+AND+NOT+%3Dabs%3A%22FAST+perturbations%22+AND+NOT+%3Dabs%3A%22Swarm+FAST%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:12:53.545195+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1996-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Fast+Auroral+Snapshot%22+OR+%3Dabs%3A%22Fast+Auroral+Snapshots%22+OR+%28abs%3AFAST+AND+%28abs%3Asatellite+OR+abs%3Aspacecraft+OR+abs%3Amission+OR+abs%3Aprobe%29+AND+%28abs%3Aaurora+OR+abs%3Aauroral%29%29+OR+%28abs%3AFAST+AND+%28abs%3Asatellite+OR+abs%3Aspacecraft%29+AND+%28abs%3Aionospher%2A+OR+abs%3Amagnetospher%2A+OR+abs%3Aphotoelectron%2A%29%29%29+AND+NOT+%3Dabs%3A%22Aperture+Spherical%22+AND+NOT+%3Dabs%3A%22FAST+events%22+AND+NOT+%3Dabs%3A%22FAST+perturbations%22+AND+NOT+%3Dabs%3A%22Swarm+FAST%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:02:12.527640+00:00",
     "reconciliation": {
-      "adsReturned": 286,
+      "adsReturned": 287,
       "curatedOut": 4,
       "curatedIn": 39,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 39,
-      "final": 282
+      "final": 283
     }
   },
   "curation": {
@@ -724,7 +719,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 512
+      "citations": 513
     },
     {
       "bibcode": "1998GeoRL..25.2017C",
@@ -751,7 +746,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 260
+      "citations": 261
     },
     {
       "bibcode": "2005JGRA..110.3221S",
@@ -778,7 +773,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 183
+      "citations": 185
     },
     {
       "bibcode": "1998GeoRL..25.2061E",
@@ -787,7 +782,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 179
+      "citations": 181
     },
     {
       "bibcode": "2003AnGeo..21.1121M",
@@ -835,21 +830,21 @@
       "citations": 135
     },
     {
-      "bibcode": "1999JGR...10414453M",
-      "title": "Microstructure of the auroral acceleration region as observed by FAST",
-      "firstAuthor": "McFadden, J. P.",
-      "authors": null,
-      "authorCount": null,
-      "year": 1999,
-      "citations": 124
-    },
-    {
       "bibcode": "2002PhPl....9.3685E",
       "title": "Parallel electric fields in the upward current region of the aurora: Indirect and direct observations",
       "firstAuthor": "Ergun, R. E.",
       "authors": null,
       "authorCount": null,
       "year": 2002,
+      "citations": 125
+    },
+    {
+      "bibcode": "1999JGR...10414453M",
+      "title": "Microstructure of the auroral acceleration region as observed by FAST",
+      "firstAuthor": "McFadden, J. P.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1999,
       "citations": 124
     },
     {
@@ -877,7 +872,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 112
+      "citations": 113
     },
     {
       "bibcode": "2006AdSpR..37..315R",
@@ -899,6 +894,6 @@
     }
   ],
   "papersFile": {
-    "rows": 282
+    "rows": 283
   }
 }

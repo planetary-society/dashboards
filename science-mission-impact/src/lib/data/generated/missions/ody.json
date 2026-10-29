@@ -1,6 +1,6 @@
 {
   "id": "ody",
-  "name": "ODY",
+  "name": "Mars Odyssey",
   "fullName": "Mars Odyssey",
   "division": "planetary",
   "divisionName": "Planetary Science",
@@ -9,7 +9,11 @@
     "status": "Extended Mission",
     "failed": false,
     "cost": 448.7,
+    "lcc": 222,
     "type": "Orbiter",
+    "program": "Mars Exploration Program (MEP)",
+    "target": "Mars",
+    "launchVehicle": "Delta II 7425",
     "dates": {
       "formulation": "1996-10-01",
       "launch": "2001-04-07",
@@ -21,14 +25,14 @@
   "indices": {
     "h": 84,
     "m": 3.36,
-    "i100": 57,
+    "i100": 58,
     "g": 139,
-    "tori": 209.007,
+    "tori": 209.495,
     "riq": 578
   },
   "facts": {
-    "papers": 615,
-    "citations": 28160,
+    "papers": 613,
+    "citations": 28202,
     "publicationYears": [
       2002,
       2026
@@ -64,9 +68,9 @@
     ],
     "papers": [
       14,
-      32,
+      31,
       40,
-      51,
+      50,
       57,
       41,
       31,
@@ -81,13 +85,13 @@
       27,
       14,
       19,
-      16,
+      15,
       13,
       15,
       13,
       14,
       18,
-      19
+      20
     ],
     "citations": [
       21,
@@ -97,15 +101,15 @@
       716,
       1073,
       1008,
-      1237,
+      1239,
       1323,
       1347,
-      1320,
+      1322,
       1336,
       1199,
-      1327,
+      1328,
       1296,
-      1091,
+      1092,
       1360,
       1334,
       1223,
@@ -113,91 +117,53 @@
       1718,
       1392,
       1389,
-      1488,
-      1161
+      1492,
+      1193
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 28160,
-      "observed": 28160,
+      "expected": 28202,
+      "observed": 28202,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2002-03-01",
-    "end": "2006-09-01",
-    "matureDate": "2009-10-01",
-    "status": "available",
-    "months": 54,
-    "citationBuckets": 8,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      0,
-      0,
-      5,
-      4,
-      0,
-      1,
-      4,
-      0,
-      0,
-      2,
-      2,
-      0,
-      0,
-      1,
-      2,
-      7,
-      1,
-      6,
-      2,
-      2,
-      7,
-      14,
-      2,
-      1,
-      2,
-      3,
-      2,
-      3,
-      3,
-      2,
-      4,
-      1,
-      3,
-      5,
-      2,
-      0,
-      6,
-      15,
-      2,
-      3,
-      1,
-      3,
-      3,
-      7,
-      4,
-      9,
-      6,
-      6,
-      3,
-      2,
-      5,
-      1,
-      2
-    ],
-    "citationsByYearOffset": [
-      21,
-      239,
-      322,
-      541,
-      596,
-      664,
-      278,
-      111
-    ]
+  "affiliations": {
+    "papers": 613,
+    "us": {
+      "mapped": 422,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 83
+        },
+        {
+          "name": "Arizona State University",
+          "papers": 77
+        },
+        {
+          "name": "University of Arizona",
+          "papers": 75
+        }
+      ]
+    },
+    "world": {
+      "mapped": 540,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 83
+        },
+        {
+          "name": "Arizona State University",
+          "papers": 77
+        },
+        {
+          "name": "University of Arizona",
+          "papers": 75
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2004SSRv..110...85C",
@@ -211,63 +177,63 @@
     ],
     "authorCount": 11,
     "year": 2004,
-    "citations": 883
+    "citations": 884
   },
   "ranks": {
     "full": {
       "bins": [
-        65.821,
-        70.527,
-        69.514,
-        41.535,
-        62.648,
-        44.391,
-        61.118,
-        49.682,
-        45.643,
-        53.12
+        66.275,
+        71.049,
+        67.531,
+        41.542,
+        62.289,
+        44.049,
+        60.247,
+        49.806,
+        45.717,
+        52.495
       ],
       "top1": 4
     },
     "window": {
       "bins": [
-        23.268,
-        25.053,
-        23.974,
-        17.148,
-        8.99,
-        17.801,
-        14.085,
-        11.681,
-        12.706,
-        16.294
+        22.658,
+        25.321,
+        23.086,
+        17.443,
+        8.607,
+        18.245,
+        13.096,
+        11.545,
+        12.95,
+        16.05
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        53.727,
-        47.916,
-        63.572,
-        57.165,
-        53.977,
-        45.918,
-        64.859,
-        69.055,
-        81.991,
-        76.821
+        54.44,
+        48.013,
+        64.682,
+        55.331,
+        52.622,
+        48.064,
+        64.456,
+        66.679,
+        82.713,
+        76
       ],
       "top1": 11
     }
   },
   "full": {
-    "papers": 564,
+    "papers": 561,
     "outputBasis": "measured",
-    "citations": 7180,
-    "top10": 32.2,
-    "top10ShareOfDivision": 0.02947,
+    "citations": 7183,
+    "top10": 37.499,
+    "top10ShareOfDivision": 0.03455,
     "top1": 4,
-    "top1ShareOfDivision": 0.0366,
+    "top1ShareOfDivision": 0.03686,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.361,
@@ -284,22 +250,27 @@
       "months": 262,
       "citationBuckets": 25
     },
+    "indices": {
+      "h": 37,
+      "g": 54,
+      "m": 1.694
+    },
     "spread": {
-      "mean": 12.73,
-      "median": 7,
-      "uncited": 41,
+      "mean": 12.804,
+      "median": 8,
+      "uncited": 38,
       "i10": 235,
       "i100": 3
     }
   },
   "window": {
-    "papers": 171,
+    "papers": 169,
     "outputBasis": "measured",
     "citations": 2772,
-    "top10": 12.1,
-    "top10ShareOfDivision": 0.02507,
+    "top10": 16.05,
+    "top10ShareOfDivision": 0.03352,
     "top1": 2,
-    "top1ShareOfDivision": 0.04143,
+    "top1ShareOfDivision": 0.04177,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.361,
@@ -316,20 +287,25 @@
       "months": 54,
       "citationBuckets": 8
     },
+    "indices": {
+      "h": 28,
+      "g": 45,
+      "m": 6.217
+    },
     "spread": {
-      "mean": 16.211,
-      "median": 7,
-      "uncited": 16,
+      "mean": 16.402,
+      "median": 8,
+      "uncited": 14,
       "i10": 74,
       "i100": 2
     }
   },
   "lifetime": {
-    "papers": 615,
+    "papers": 613,
     "outputBasis": "measured",
-    "citations": 28160,
-    "top10": 36.25,
-    "top10ShareOfDivision": 0.02663,
+    "citations": 28202,
+    "top10": 50.117,
+    "top10ShareOfDivision": 0.03201,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -340,26 +316,26 @@
       "date": "2002-07-00"
     },
     "spread": {
-      "mean": 45.789,
+      "mean": 46.007,
       "median": 22,
-      "uncited": 42,
-      "i10": 418,
-      "i100": 57
+      "uncited": 41,
+      "i10": 419,
+      "i100": 58
     }
   },
   "query": {
     "arms": "((=abs:\"Mars Odyssey\" OR ((abs:Odyssey OR abs:ODY OR abs:THEMIS OR abs:GRS OR =abs:\"Gamma Ray Spectrometer\" OR =abs:\"Thermal Emission Imaging System\") AND (abs:Mars OR abs:Martian)) OR (abs:HEND AND (abs:Mars OR abs:Odyssey)) OR =abs:\"Odyssey data\" OR =abs:\"Odyssey observations\" OR =abs:\"Odyssey spacecraft\" OR =abs:\"Gamma-Ray Spectrometer on Odyssey\" OR =abs:\"Odyssey Gamma-Ray Spectrometer\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2002-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Odyssey%22+OR+%28%28abs%3AOdyssey+OR+abs%3AODY+OR+abs%3ATHEMIS+OR+abs%3AGRS+OR+%3Dabs%3A%22Gamma+Ray+Spectrometer%22+OR+%3Dabs%3A%22Thermal+Emission+Imaging+System%22%29+AND+%28abs%3AMars+OR+abs%3AMartian%29%29+OR+%28abs%3AHEND+AND+%28abs%3AMars+OR+abs%3AOdyssey%29%29+OR+%3Dabs%3A%22Odyssey+data%22+OR+%3Dabs%3A%22Odyssey+observations%22+OR+%3Dabs%3A%22Odyssey+spacecraft%22+OR+%3Dabs%3A%22Gamma-Ray+Spectrometer+on+Odyssey%22+OR+%3Dabs%3A%22Odyssey+Gamma-Ray+Spectrometer%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:05:54.706358+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2002-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Odyssey%22+OR+%28%28abs%3AOdyssey+OR+abs%3AODY+OR+abs%3ATHEMIS+OR+abs%3AGRS+OR+%3Dabs%3A%22Gamma+Ray+Spectrometer%22+OR+%3Dabs%3A%22Thermal+Emission+Imaging+System%22%29+AND+%28abs%3AMars+OR+abs%3AMartian%29%29+OR+%28abs%3AHEND+AND+%28abs%3AMars+OR+abs%3AOdyssey%29%29+OR+%3Dabs%3A%22Odyssey+data%22+OR+%3Dabs%3A%22Odyssey+observations%22+OR+%3Dabs%3A%22Odyssey+spacecraft%22+OR+%3Dabs%3A%22Gamma-Ray+Spectrometer+on+Odyssey%22+OR+%3Dabs%3A%22Odyssey+Gamma-Ray+Spectrometer%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:43:45.066528+00:00",
     "reconciliation": {
-      "adsReturned": 630,
-      "curatedOut": 14,
+      "adsReturned": 629,
+      "curatedOut": 15,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 1,
-      "final": 615
+      "final": 613
     }
   },
   "curation": {
@@ -580,6 +556,14 @@
         "reason": "Mission design of the Phoenix lander; Mars Odyssey is mentioned only as context for the landing site.",
         "authority": "agent",
         "date": "2026-10-03"
+      },
+      {
+        "bibcode": "2020Natur.583..499G",
+        "doi": "10.1038/d41586-020-02170-2",
+        "title": "Arab world's first Mars probe takes to the skies",
+        "reason": "Nature staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
       }
     ]
   },
@@ -591,7 +575,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 883
+      "citations": 884
     },
     {
       "bibcode": "2002Sci...297...81B",
@@ -600,7 +584,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 805
+      "citations": 806
     },
     {
       "bibcode": "2002Sci...297...75F",
@@ -612,22 +596,22 @@
       "citations": 476
     },
     {
-      "bibcode": "2008Sci...319.1651O",
-      "title": "Chloride-Bearing Materials in the Southern Highlands of Mars",
-      "firstAuthor": "Osterloo, M. M.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2008,
-      "citations": 426
-    },
-    {
       "bibcode": "2015Icar..251...65M",
       "title": "Eight-year climatology of dust optical depth on Mars",
       "firstAuthor": "Montabone, L.",
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 425
+      "citations": 429
+    },
+    {
+      "bibcode": "2008Sci...319.1651O",
+      "title": "Chloride-Bearing Materials in the Southern Highlands of Mars",
+      "firstAuthor": "Osterloo, M. M.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2008,
+      "citations": 427
     },
     {
       "bibcode": "2009JGRE..114.0D06M",
@@ -699,7 +683,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 320
+      "citations": 324
     },
     {
       "bibcode": "2006JGRE..11112004F",
@@ -735,7 +719,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 258
+      "citations": 260
     },
     {
       "bibcode": "2004Natur.428..627B",
@@ -744,7 +728,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 254
+      "citations": 255
     },
     {
       "bibcode": "2011JGRE..11610008E",
@@ -766,6 +750,6 @@
     }
   ],
   "papersFile": {
-    "rows": 615
+    "rows": 613
   }
 }

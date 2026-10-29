@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 4586,
+    "lcc": 1354,
     "type": "Orbiter",
+    "program": "Outer Planets",
+    "target": "Jupiter System",
+    "launchVehicle": "Shuttle-Inertial Upper Stage",
     "dates": {
       "formulation": "1977-10-01",
       "launch": "1989-10-18",
@@ -22,13 +26,13 @@
     "h": 116,
     "m": 3.222,
     "i100": 152,
-    "g": 168,
-    "tori": 431.259,
-    "riq": 561
+    "g": 169,
+    "tori": 426.45,
+    "riq": 558
   },
   "facts": {
-    "papers": 1585,
-    "citations": 64155,
+    "papers": 1554,
+    "citations": 64193,
     "publicationYears": [
       1991,
       2026
@@ -79,33 +83,33 @@
       21,
       21,
       29,
-      92,
-      94,
-      118,
+      85,
+      93,
+      117,
       87,
-      87,
-      106,
-      59,
-      44,
-      59,
+      85,
+      105,
+      58,
+      42,
+      58,
       73,
       27,
       37,
       44,
+      26,
+      33,
       29,
-      37,
-      30,
-      23,
+      22,
       18,
       30,
       24,
       19,
       28,
-      27,
-      27,
+      25,
+      26,
       36,
-      37,
-      43,
+      36,
+      41,
       33,
       40,
       51,
@@ -117,113 +121,82 @@
       77,
       156,
       252,
-      520,
-      761,
-      1147,
-      1316,
-      1516,
+      518,
+      760,
+      1145,
+      1315,
+      1515,
       1895,
-      1750,
-      1519,
-      1848,
-      2047,
-      1503,
-      1578,
-      1668,
-      1557,
-      2581,
-      1930,
-      1637,
-      1950,
-      1893,
-      2131,
-      2249,
-      2171,
-      2186,
-      2161,
-      2853,
-      2632,
-      2970,
-      3182,
-      3744,
-      3796,
-      2950
+      1747,
+      1514,
+      1837,
+      2043,
+      1496,
+      1576,
+      1673,
+      1575,
+      2577,
+      1918,
+      1633,
+      1935,
+      1881,
+      2125,
+      2242,
+      2165,
+      2177,
+      2158,
+      2834,
+      2625,
+      2957,
+      3167,
+      3733,
+      3788,
+      3155
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 64155,
-      "observed": 64155,
+      "expected": 64193,
+      "observed": 64193,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "1996-01-01",
-    "end": "2000-01-01",
-    "matureDate": "2002-10-01",
-    "status": "available",
-    "months": 48,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      12,
-      9,
-      12,
-      2,
-      15,
-      4,
-      6,
-      2,
-      1,
-      15,
-      5,
-      9,
-      10,
-      2,
-      2,
-      5,
-      17,
-      4,
-      5,
-      5,
-      18,
-      14,
-      5,
-      7,
-      13,
-      3,
-      8,
-      10,
-      4,
-      3,
-      3,
-      2,
-      52,
-      4,
-      5,
-      11,
-      18,
-      4,
-      3,
-      4,
-      6,
-      3,
-      7,
-      14,
-      3,
-      14,
-      9,
-      2
-    ],
-    "citationsByYearOffset": [
-      213,
-      500,
-      949,
-      1155,
-      1116,
-      902,
-      278
-    ]
+  "affiliations": {
+    "papers": 1554,
+    "us": {
+      "mapped": 913,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 297
+        },
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 147
+        },
+        {
+          "name": "Southwest Research Institute, Texas",
+          "papers": 106
+        }
+      ]
+    },
+    "world": {
+      "mapped": 1194,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 297
+        },
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 147
+        },
+        {
+          "name": "Max Planck Society for the Advancement of Science, Germany",
+          "papers": 115
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2000Sci...289.1340K",
@@ -237,63 +210,63 @@
     ],
     "authorCount": 6,
     "year": 2000,
-    "citations": 529
+    "citations": 534
   },
   "ranks": {
     "full": {
       "bins": [
-        137.129,
-        92.579,
-        92.799,
-        95.872,
-        66.295,
-        63.909,
-        65.234,
-        68.01,
-        58.144,
-        57.03
+        131.878,
+        90.414,
+        92.937,
+        92.145,
+        65.789,
+        61.15,
+        65.16,
+        67.345,
+        57.939,
+        56.243
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        70.197,
-        43.005,
-        41.389,
-        34.865,
-        34.583,
-        38.467,
-        40.769,
-        30.402,
-        33.03,
-        24.294
+        67.103,
+        39.864,
+        40.163,
+        35.322,
+        34.223,
+        38.659,
+        39.487,
+        30.487,
+        32.643,
+        24.05
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        138.573,
-        124.438,
-        122.188,
-        147.842,
-        148.595,
-        160.549,
-        165.882,
-        201.403,
-        186.888,
-        188.642
+        130.433,
+        116.455,
+        121.261,
+        146.389,
+        146.756,
+        152.404,
+        167.824,
+        199.337,
+        186.117,
+        187.024
       ],
       "top1": 13
     }
   },
   "full": {
-    "papers": 797,
+    "papers": 781,
     "outputBasis": "measured",
-    "citations": 8223,
-    "top10": 42.875,
-    "top10ShareOfDivision": 0.03923,
+    "citations": 8193,
+    "top10": 55.743,
+    "top10ShareOfDivision": 0.05136,
     "top1": 2,
-    "top1ShareOfDivision": 0.0183,
+    "top1ShareOfDivision": 0.01843,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.068,
@@ -310,20 +283,25 @@
       "months": 117,
       "citationBuckets": 13
     },
+    "indices": {
+      "h": 37,
+      "g": 48,
+      "m": 3.795
+    },
     "spread": {
-      "mean": 10.317,
+      "mean": 10.49,
       "median": 6,
-      "uncited": 103,
-      "i10": 282,
+      "uncited": 93,
+      "i10": 281,
       "i100": 2
     }
   },
   "window": {
-    "papers": 391,
+    "papers": 382,
     "outputBasis": "measured",
-    "citations": 5113,
-    "top10": 31,
-    "top10ShareOfDivision": 0.06422,
+    "citations": 5106,
+    "top10": 24.05,
+    "top10ShareOfDivision": 0.05023,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -342,50 +320,55 @@
       "months": 48,
       "citationBuckets": 7
     },
+    "indices": {
+      "h": 36,
+      "g": 46,
+      "m": 9
+    },
     "spread": {
-      "mean": 13.077,
-      "median": 8,
-      "uncited": 55,
+      "mean": 13.366,
+      "median": 9,
+      "uncited": 49,
       "i10": 179,
       "i100": 2
     }
   },
   "lifetime": {
-    "papers": 1585,
+    "papers": 1554,
     "outputBasis": "measured",
-    "citations": 64155,
-    "top10": 96.601,
-    "top10ShareOfDivision": 0.07098,
+    "citations": 64193,
+    "top10": 181.774,
+    "top10ShareOfDivision": 0.1161,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": -3.264,
-      "yearsFromFormulation": 14.919,
-      "bibcode": "1992Sci...257.1647B",
-      "date": "1992-09-00"
+      "yearsFromScienceStart": -4.266,
+      "yearsFromFormulation": 13.916,
+      "bibcode": "1991Sci...253.1531B",
+      "date": "1991-09-00"
     },
     "spread": {
-      "mean": 40.476,
-      "median": 22,
-      "uncited": 109,
-      "i10": 1115,
+      "mean": 41.308,
+      "median": 23,
+      "uncited": 95,
+      "i10": 1107,
       "i100": 152
     }
   },
   "query": {
-    "arms": "(((=abs:Galileo AND abs:(Jupiter OR Jovian OR Io OR Europa OR Ganymede OR Callisto OR Amalthea OR Thebe OR Gaspra OR Dactyl OR \"Shoemaker-Levy\" OR =abs:(\"Galilean satellites\" OR \"Galilean satellite\" OR \"Galilean moons\" OR \"Galilean moon\")) NOT =abs:(\"Telescopio Nazionale Galileo\" OR \"Telescopio Nazinale Galileo\")) OR (=abs:Galileo AND collection:astronomy AND (abs:(spacecraft OR flyby OR asteroid OR magnetometer) OR =abs:(\"entry probe\" OR orbiter)) NOT (=abs:(\"navigation satellite\" OR \"satellite navigation\" OR \"positioning system\" OR \"Galileo Project\" OR \"Galileo FOC\" OR \"Galileo IOV\" OR \"Galileo constellation\" OR \"Galileo for Science\" OR \"Telescopio Nazionale Galileo\" OR \"Telescopio Nazinale Galileo\") OR abs:(GLONASS OR BeiDou))) OR =abs:\"Galileo probe\" OR (collection:astronomy AND (=abs:(\"Near-Infrared Mapping Spectrometer\" OR \"Near Infrared Mapping Spectrometer\" OR \"Photopolarimeter-Radiometer\" OR \"Solid State Imaging\" OR \"Energetic Particles Detector\" OR \"Heavy Ion Counter\" OR \"Dust Detector System\" OR \"Probe Mass Spectrometer\" OR \"Net Flux Radiometer\") OR abs:(NIMS OR SSI OR PPR OR EPD)) AND abs:(Jupiter OR Jovian OR Io OR Europa OR Ganymede OR Callisto OR Amalthea OR Gaspra OR Ida OR Dactyl))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1996-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3AGalileo+AND+abs%3A%28Jupiter+OR+Jovian+OR+Io+OR+Europa+OR+Ganymede+OR+Callisto+OR+Amalthea+OR+Thebe+OR+Gaspra+OR+Dactyl+OR+%22Shoemaker-Levy%22+OR+%3Dabs%3A%28%22Galilean+satellites%22+OR+%22Galilean+satellite%22+OR+%22Galilean+moons%22+OR+%22Galilean+moon%22%29%29+NOT+%3Dabs%3A%28%22Telescopio+Nazionale+Galileo%22+OR+%22Telescopio+Nazinale+Galileo%22%29%29+OR+%28%3Dabs%3AGalileo+AND+collection%3Aastronomy+AND+%28abs%3A%28spacecraft+OR+flyby+OR+asteroid+OR+magnetometer%29+OR+%3Dabs%3A%28%22entry+probe%22+OR+orbiter%29%29+NOT+%28%3Dabs%3A%28%22navigation+satellite%22+OR+%22satellite+navigation%22+OR+%22positioning+system%22+OR+%22Galileo+Project%22+OR+%22Galileo+FOC%22+OR+%22Galileo+IOV%22+OR+%22Galileo+constellation%22+OR+%22Galileo+for+Science%22+OR+%22Telescopio+Nazionale+Galileo%22+OR+%22Telescopio+Nazinale+Galileo%22%29+OR+abs%3A%28GLONASS+OR+BeiDou%29%29%29+OR+%3Dabs%3A%22Galileo+probe%22+OR+%28collection%3Aastronomy+AND+%28%3Dabs%3A%28%22Near-Infrared+Mapping+Spectrometer%22+OR+%22Near+Infrared+Mapping+Spectrometer%22+OR+%22Photopolarimeter-Radiometer%22+OR+%22Solid+State+Imaging%22+OR+%22Energetic+Particles+Detector%22+OR+%22Heavy+Ion+Counter%22+OR+%22Dust+Detector+System%22+OR+%22Probe+Mass+Spectrometer%22+OR+%22Net+Flux+Radiometer%22%29+OR+abs%3A%28NIMS+OR+SSI+OR+PPR+OR+EPD%29%29+AND+abs%3A%28Jupiter+OR+Jovian+OR+Io+OR+Europa+OR+Ganymede+OR+Callisto+OR+Amalthea+OR+Gaspra+OR+Ida+OR+Dactyl%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:04:55.914040+00:00",
+    "arms": "((((=abs:Galileo AND abs:(Jupiter OR Jovian OR Io OR Europa OR Ganymede OR Callisto OR Amalthea OR Thebe OR Gaspra OR Dactyl OR \"Shoemaker-Levy\" OR =abs:(\"Galilean satellites\" OR \"Galilean satellite\" OR \"Galilean moons\" OR \"Galilean moon\")) NOT =abs:(\"Telescopio Nazionale Galileo\" OR \"Telescopio Nazinale Galileo\")) OR (=abs:Galileo AND collection:astronomy AND (abs:(spacecraft OR flyby OR asteroid OR magnetometer) OR =abs:(\"entry probe\" OR orbiter)) NOT (=abs:(\"navigation satellite\" OR \"satellite navigation\" OR \"positioning system\" OR \"Galileo Project\" OR \"Galileo FOC\" OR \"Galileo IOV\" OR \"Galileo constellation\" OR \"Galileo for Science\" OR \"Telescopio Nazionale Galileo\" OR \"Telescopio Nazinale Galileo\") OR abs:(GLONASS OR BeiDou))) OR =abs:\"Galileo probe\" OR (collection:astronomy AND (=abs:(\"Near-Infrared Mapping Spectrometer\" OR \"Near Infrared Mapping Spectrometer\" OR \"Photopolarimeter-Radiometer\" OR \"Solid State Imaging\" OR \"Energetic Particles Detector\" OR \"Heavy Ion Counter\" OR \"Dust Detector System\" OR \"Probe Mass Spectrometer\" OR \"Net Flux Radiometer\") OR abs:(NIMS OR SSI OR PPR OR EPD)) AND abs:(Jupiter OR Jovian OR Io OR Europa OR Ganymede OR Callisto OR Amalthea OR Gaspra OR Ida OR Dactyl))) NOT =abs:(Galilei OR \"Sidereus Nuncius\" OR \"Galileo Avionica\")))",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1996-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3AGalileo+AND+abs%3A%28Jupiter+OR+Jovian+OR+Io+OR+Europa+OR+Ganymede+OR+Callisto+OR+Amalthea+OR+Thebe+OR+Gaspra+OR+Dactyl+OR+%22Shoemaker-Levy%22+OR+%3Dabs%3A%28%22Galilean+satellites%22+OR+%22Galilean+satellite%22+OR+%22Galilean+moons%22+OR+%22Galilean+moon%22%29%29+NOT+%3Dabs%3A%28%22Telescopio+Nazionale+Galileo%22+OR+%22Telescopio+Nazinale+Galileo%22%29%29+OR+%28%3Dabs%3AGalileo+AND+collection%3Aastronomy+AND+%28abs%3A%28spacecraft+OR+flyby+OR+asteroid+OR+magnetometer%29+OR+%3Dabs%3A%28%22entry+probe%22+OR+orbiter%29%29+NOT+%28%3Dabs%3A%28%22navigation+satellite%22+OR+%22satellite+navigation%22+OR+%22positioning+system%22+OR+%22Galileo+Project%22+OR+%22Galileo+FOC%22+OR+%22Galileo+IOV%22+OR+%22Galileo+constellation%22+OR+%22Galileo+for+Science%22+OR+%22Telescopio+Nazionale+Galileo%22+OR+%22Telescopio+Nazinale+Galileo%22%29+OR+abs%3A%28GLONASS+OR+BeiDou%29%29%29+OR+%3Dabs%3A%22Galileo+probe%22+OR+%28collection%3Aastronomy+AND+%28%3Dabs%3A%28%22Near-Infrared+Mapping+Spectrometer%22+OR+%22Near+Infrared+Mapping+Spectrometer%22+OR+%22Photopolarimeter-Radiometer%22+OR+%22Solid+State+Imaging%22+OR+%22Energetic+Particles+Detector%22+OR+%22Heavy+Ion+Counter%22+OR+%22Dust+Detector+System%22+OR+%22Probe+Mass+Spectrometer%22+OR+%22Net+Flux+Radiometer%22%29+OR+abs%3A%28NIMS+OR+SSI+OR+PPR+OR+EPD%29%29+AND+abs%3A%28Jupiter+OR+Jovian+OR+Io+OR+Europa+OR+Ganymede+OR+Callisto+OR+Amalthea+OR+Gaspra+OR+Ida+OR+Dactyl%29%29%29+NOT+%3Dabs%3A%28Galilei+OR+%22Sidereus+Nuncius%22+OR+%22Galileo+Avionica%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T05:40:15.687249+00:00",
     "reconciliation": {
-      "adsReturned": 1529,
-      "curatedOut": 23,
+      "adsReturned": 1510,
+      "curatedOut": 35,
       "curatedIn": 84,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 5,
-      "final": 1585
+      "final": 1554
     }
   },
   "curation": {
@@ -1098,16 +1081,16 @@
       },
       {
         "bibcode": "2000CQGra..17.2347N",
-        "doi": "10.1088/0264-9381/17/12/306",
-        "title": "`Galileo Galilei' (GG) small-satellite project: an alternative to the torsion balance for testing the equivalence principle on Earth and in space",
+        "doi": null,
+        "title": null,
         "reason": "Proposal for the Galileo Galilei physics satellite; not the Galileo Jupiter mission.",
         "authority": "agent",
         "date": "2026-09-14"
       },
       {
         "bibcode": "2006OLEB...36..587B",
-        "doi": "10.1007/s11084-006-9038-1",
-        "title": "Galileo Avionica's Technologies and Instruments for Planetary Exploration",
+        "doi": null,
+        "title": null,
         "reason": "Overview of instruments built by the company Galileo Avionica; not the Galileo mission.",
         "authority": "agent",
         "date": "2026-09-14"
@@ -1115,7 +1098,7 @@
       {
         "bibcode": "2010Gerb....1..198M",
         "doi": null,
-        "title": "Sylvester II Bukowiec Observatory: a \"piece de theatre\" for the inauguration day",
+        "title": null,
         "reason": "Observatory inauguration play about Galileo Galilei; not the Galileo mission.",
         "authority": "agent",
         "date": "2026-09-14"
@@ -1146,8 +1129,8 @@
       },
       {
         "bibcode": "2018PhRvD..98d2002N",
-        "doi": "10.1103/PhysRevD.98.042002",
-        "title": "Testing the equivalence principle in space after the MICROSCOPE mission",
+        "doi": null,
+        "title": null,
         "reason": "Equivalence-principle experiment named after Galileo Galilei; not the Galileo Jupiter mission.",
         "authority": "agent",
         "date": "2026-09-14"
@@ -1162,8 +1145,8 @@
       },
       {
         "bibcode": "2021JAHH...24..405D",
-        "doi": "10.48550/arXiv.2101.04760",
-        "title": "European longitude prizes. 2: Astronomy, religion and engineering solutions in the Dutch Republic",
+        "doi": null,
+        "title": null,
         "reason": "History of longitude prizes involving Galileo Galilei; not the Galileo mission.",
         "authority": "agent",
         "date": "2026-09-14"
@@ -1178,8 +1161,8 @@
       },
       {
         "bibcode": "2025JHA....56..466V",
-        "doi": "10.1177/00218286251353244",
-        "title": "Calculating the periods of Galilean satellites from the Sidereus nuncius data",
+        "doi": null,
+        "title": null,
         "reason": "History of Galileo Galilei's Jupiter satellite observations; not the Galileo mission.",
         "authority": "agent",
         "date": "2026-09-14"
@@ -1226,8 +1209,8 @@
       },
       {
         "bibcode": "2006AcAau..59..956H",
-        "doi": "10.1016/j.actaastro.2005.07.059",
-        "title": "Star tracker scan mode capability for the New Horizons mission",
+        "doi": null,
+        "title": null,
         "reason": "Describes a New Horizons star tracker built by Galileo Avionica; not the Galileo mission.",
         "authority": "agent",
         "date": "2026-09-14"
@@ -1263,6 +1246,262 @@
         "reason": "instrument_description: \"The Hera Saturn entry probe mission\" — another mission's concept overview.",
         "authority": "human",
         "date": "2026-09-14"
+      },
+      {
+        "bibcode": "1996CQGra..13A.197N",
+        "doi": null,
+        "title": null,
+        "reason": "Proposal for the Galileo Galilei equivalence-principle satellite; not the Galileo Jupiter mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "1998NewA....3..175N",
+        "doi": null,
+        "title": null,
+        "reason": "Proposal for the Galileo Galilei equivalence-principle satellite; not the Galileo Jupiter mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2018PhLA..382.2205N",
+        "doi": null,
+        "title": null,
+        "reason": "Review of equivalence-principle tests naming Galileo Galilei and the GG satellite; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2002Sc&Ed..11....1L",
+        "doi": null,
+        "title": null,
+        "reason": "Science-education study of Galileo Galilei's discovery of Jupiter's moons; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2003Sc&Ed..12..315A",
+        "doi": "10.1023/A:1024064409773",
+        "title": "Lawson's Shoehorn, or Should the Philosophy of Science Be Rated `X'?",
+        "reason": "Critique of an account of Galileo Galilei's discovery of Jupiter's moons; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2003Sc&Ed..12..331L",
+        "doi": "10.1023/A:1024090727385",
+        "title": "Allchin's Shoehorn, or Why Science is Hypothetico-Deductive",
+        "reason": "Reply on Galileo Galilei's discovery of Jupiter's moons and scientific reasoning; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2010SciEd..94..336L",
+        "doi": "10.1002/sce.20357",
+        "title": "Basic inferences of scientific reasoning, argumentation, and discovery",
+        "reason": "Science-education paper using Galileo Galilei's discovery of Jupiter's moons as a case history; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2011JHA....42..259G",
+        "doi": "10.1177/002182861104200208",
+        "title": "How Galileo Constructed the Moons of Jupiter",
+        "reason": "History of how Galileo Galilei worked out the moons of Jupiter; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2012JBAA..122..169B",
+        "doi": null,
+        "title": null,
+        "reason": "Re-analysis of Galileo Galilei's 1610 observations of Jupiter's satellites; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2019JAHH...22...78A",
+        "doi": null,
+        "title": null,
+        "reason": "History of four centuries of Galilean-satellite astrometry since Galileo Galilei; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2021JAHH...24..728D",
+        "doi": null,
+        "title": null,
+        "reason": "History of an alleged Venetian longitude prize involving Galileo Galilei; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2022JAHH...25..227B",
+        "doi": "10.48550/arXiv.2207.06097",
+        "title": "Systematic errors in Galileo's astronomical observations and alleged anomalies in the position of Neptune",
+        "reason": "Analysis of errors in Galileo Galilei's 1612-13 observations of Neptune; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2000JAHH....3...89D",
+        "doi": null,
+        "title": "Galileo's Planet: Observing Jupiter Before Photography (Th. Hockey)",
+        "reason": "Book review of a history of observing Jupiter before photography; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2009AN....330..526H",
+        "doi": null,
+        "title": null,
+        "reason": "History of Kepler, Galileo Galilei and the early telescope; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2009RELEA...8...37I",
+        "doi": null,
+        "title": null,
+        "reason": "Astronomy-teaching activity on observing the Galilean moons as Galileo Galilei did; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2010Natur.466..575B",
+        "doi": "10.1038/nature09215",
+        "title": "The four hundred years of planetary science since Galileo and Kepler",
+        "reason": "Essay on four centuries of planetary science since Galileo Galilei and Kepler; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2001EM&P...85..363P",
+        "doi": null,
+        "title": null,
+        "reason": "Article on the lunar farside whose title refers to Galileo Galilei; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "1996PhyEd..31......",
+        "doi": "10.1088/0031-9120/31/1/002",
+        "title": "The 26th International Physics Olympiad: On top down under!",
+        "reason": "Report on the 1995 International Physics Olympiad; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2025SECM....3...31S",
+        "doi": "10.29327/5728440",
+        "title": "The Use of the Physics Teaching Laboratory (ptl) to Determine a Person's Reaction Time",
+        "reason": "Physics-teaching experiment framed by Galileo Galilei's experimental method; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2009AcAau..65...61R",
+        "doi": null,
+        "title": null,
+        "reason": "Performance of a New Horizons star tracker built by the company Galileo Avionica; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2004P&SS...52...47B",
+        "doi": null,
+        "title": null,
+        "reason": "Overview of planetary instruments built by the company Galileo Avionica; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2010MNRAS.405.2372G",
+        "doi": null,
+        "title": null,
+        "reason": "Gamma-ray burst afterglow study that names Galileo only in an author's street address; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2022A&A...665A..83B",
+        "doi": "10.1051/0004-6361/202244099",
+        "title": "Composition of inner main-belt planetesimals",
+        "reason": "Asteroid spectroscopy with the Telescopio Nazionale Galileo; not the Galileo mission.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2000P&SS...48..615G",
+        "doi": "10.1016/S0032-0633(00)00030-1",
+        "title": "The Jovian system after Galileo. The Saturnian system before Cassini-Huygens. Proceedings. Nantes Symposium Part II, Nantes (France), 11 - 15 May 1998.",
+        "reason": "Conference proceedings volume record; not a research paper.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "1997AdSpR..19.1147Z",
+        "doi": "10.1016/S0273-1177(97)00265-2",
+        "title": "Planetary atmospheres and ionospheres and reference atmospheres. Proceedings. C3.1 Symposium of COSPAR Scientific Commission C which was held during the Thirty-first COSPAR Scientific Assembly, Birmingham (UK), 14 - 21 Jul 1996.",
+        "reason": "Conference proceedings volume record; not a research paper.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "1996Sci...271..593K",
+        "doi": "10.1126/science.271.5249.593",
+        "title": "Galileo Hits a Strange Spot on Jupiter",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "1996Sci...272.1589K",
+        "doi": "10.1126/science.272.5268.1589",
+        "title": "Galileo Suggests Deep Roots To Jupiter's Fierce Winds",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "1996Sci...273..311K",
+        "doi": "10.1126/science.273.5273.311",
+        "title": "Galileo Finds Mysterious Magnetic Field at Ganymede",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "1996Sci...273.1048V",
+        "doi": "10.1126/science.273.5278.1048",
+        "title": "Galileo Gazes at Jupiter and Its Moons",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "1996Sci...274..341K",
+        "doi": "10.1126/science.274.5286.341",
+        "title": "Galileo Turns Geology Upside Down on Jupiter's Icy Moons",
+        "reason": "Science staff news article reporting mission results; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2018Natur.557Q.470.",
+        "doi": "10.1038/d41586-018-05183-0",
+        "title": "A geyser spurts from one of Jupiter's icy moons",
+        "reason": "Nature research highlight summarizing another paper; a news item, not research.",
+        "authority": "agent",
+        "date": "2026-10-26"
+      },
+      {
+        "bibcode": "2010Natur.468Q...6.",
+        "doi": "10.1038/468006a",
+        "title": "Galileo's send-off",
+        "reason": "Short Nature news item; a news item, not research.",
+        "authority": "human",
+        "date": "2026-10-26"
       }
     ]
   },
@@ -1274,7 +1513,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 529
+      "citations": 534
     },
     {
       "bibcode": "1998Natur.395..777K",
@@ -1283,7 +1522,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 515
+      "citations": 517
     },
     {
       "bibcode": "1998PhRvL..81.2858A",
@@ -1292,7 +1531,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 466
+      "citations": 469
     },
     {
       "bibcode": "1998Natur.391..363C",
@@ -1301,7 +1540,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 464
+      "citations": 465
     },
     {
       "bibcode": "2001Icar..149..133C",
@@ -1310,7 +1549,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 366
+      "citations": 367
     },
     {
       "bibcode": "2002Icar..157..507K",
@@ -1319,7 +1558,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 366
+      "citations": 367
     },
     {
       "bibcode": "1998Sci...281.2019A",
@@ -1355,7 +1594,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 350
+      "citations": 351
     },
     {
       "bibcode": "1998Sci...280.1242M",
@@ -1364,7 +1603,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 350
+      "citations": 351
     },
     {
       "bibcode": "1996Natur.384..537K",
@@ -1373,7 +1612,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 343
+      "citations": 345
     },
     {
       "bibcode": "2000Icar..147..329Z",
@@ -1382,7 +1621,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 335
+      "citations": 337
     },
     {
       "bibcode": "1993Natur.365..715S",
@@ -1391,7 +1630,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 321
+      "citations": 327
     },
     {
       "bibcode": "1999Sci...286...97C",
@@ -1400,7 +1639,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 321
+      "citations": 322
     },
     {
       "bibcode": "2005RPPh...68.1935V",
@@ -1421,6 +1660,15 @@
       "citations": 298
     },
     {
+      "bibcode": "2004Icar..171..153W",
+      "title": "Updated Galileo probe mass spectrometer measurements of carbon, oxygen, nitrogen, and sulfur on Jupiter",
+      "firstAuthor": "Wong, Michael H.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2004,
+      "citations": 294
+    },
+    {
       "bibcode": "1999JGR...10411827M",
       "title": "Hydrated salt minerals on Europa's surface from the Galileo near-infrared mapping spectrometer (NIMS) investigation",
       "firstAuthor": "McCord, Thomas B.",
@@ -1430,25 +1678,16 @@
       "citations": 291
     },
     {
-      "bibcode": "2004Icar..171..153W",
-      "title": "Updated Galileo probe mass spectrometer measurements of carbon, oxygen, nitrogen, and sulfur on Jupiter",
-      "firstAuthor": "Wong, Michael H.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2004,
-      "citations": 291
-    },
-    {
       "bibcode": "1998JGR...10322831N",
       "title": "The composition of the Jovian atmosphere as determined by the Galileo probe mass spectrometer",
       "firstAuthor": "Niemann, H. B.",
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 284
+      "citations": 286
     }
   ],
   "papersFile": {
-    "rows": 1585
+    "rows": 1554
   }
 }

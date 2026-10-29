@@ -57,6 +57,28 @@ export function median(values) {
 	return sorted.length % 2 === 1 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
 }
 
+/**
+ * Least squares of log10(rate) on log10(cost) over `{ cost, rate }` points, both positive: the
+ * per-dollar trend the packager reports (perDollar.fit) and the division pages and story draw.
+ * Null below three points or with no spread in cost.
+ */
+export function logFit(points) {
+	if (points.length < 3) return null;
+	const xs = points.map((p) => Math.log10(p.cost));
+	const ys = points.map((p) => Math.log10(p.rate));
+	const mx = xs.reduce((a, b) => a + b, 0) / xs.length;
+	const my = ys.reduce((a, b) => a + b, 0) / ys.length;
+	let sxx = 0;
+	let sxy = 0;
+	for (let i = 0; i < xs.length; i++) {
+		sxx += (xs[i] - mx) ** 2;
+		sxy += (xs[i] - mx) * (ys[i] - my);
+	}
+	if (sxx < 1e-12) return null;
+	const slope = sxy / sxx;
+	return { slope, intercept: my - slope * mx };
+}
+
 /** a / b as a share, or null when the denominator is missing or zero. */
 export function ratio(a, b) {
 	const top = num(a);

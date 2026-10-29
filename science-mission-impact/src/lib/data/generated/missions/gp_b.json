@@ -9,7 +9,11 @@
     "status": "Completed",
     "failed": false,
     "cost": 1432.9,
+    "lcc": 709,
     "type": "Pointed Observatory",
+    "program": "Flagship",
+    "target": "Spacetime",
+    "launchVehicle": "Delta II",
     "dates": {
       "formulation": "1992-10-01",
       "launch": "2004-04-20",
@@ -19,16 +23,16 @@
     }
   },
   "indices": {
-    "h": 28,
-    "m": 1.217,
+    "h": 29,
+    "m": 1.261,
     "i100": 5,
     "g": 58,
-    "tori": 34.48,
-    "riq": 255
+    "tori": 34.847,
+    "riq": 256
   },
   "facts": {
     "papers": 124,
-    "citations": 3740,
+    "citations": 3782,
     "publicationYears": [
       2004,
       2026
@@ -92,7 +96,7 @@
       57,
       83,
       88,
-      102,
+      105,
       147,
       187,
       165,
@@ -107,76 +111,53 @@
       219,
       225,
       223,
-      237,
-      184
+      238,
+      222
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 3740,
-      "observed": 3740,
+      "expected": 3782,
+      "observed": 3782,
       "missing": 0
     }
   },
-  "windowSeries": {
-    "start": "2004-09-01",
-    "end": "2008-01-01",
-    "matureDate": "2010-10-01",
-    "status": "available",
-    "months": 40,
-    "citationBuckets": 7,
-    "outputBasis": "measured",
-    "papersByMonth": [
-      0,
-      1,
-      0,
-      0,
-      3,
-      1,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      1,
-      0,
-      1,
-      2,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      2,
-      1,
-      0,
-      0,
-      1,
-      1,
-      0,
-      0,
-      0,
-      1,
-      1,
-      3
-    ],
-    "citationsByYearOffset": [
-      3,
-      23,
-      23,
-      53,
-      56,
-      30,
-      35
-    ]
+  "affiliations": {
+    "papers": 124,
+    "us": {
+      "mapped": 58,
+      "top": [
+        {
+          "name": "Stanford University, California",
+          "papers": 29
+        },
+        {
+          "name": "Harvard Smithsonian Center for Astrophysics",
+          "papers": 9
+        },
+        {
+          "name": "Lockheed Martin Corporation",
+          "papers": 9
+        }
+      ]
+    },
+    "world": {
+      "mapped": 106,
+      "top": [
+        {
+          "name": "Stanford University, California",
+          "papers": 29
+        },
+        {
+          "name": "Harvard Smithsonian Center for Astrophysics",
+          "papers": 9
+        },
+        {
+          "name": "Italian National Institute of Nuclear Physics, Rome",
+          "papers": 9
+        }
+      ]
+    }
   },
   "mostCited": {
     "bibcode": "2011PhRvL.106v1101E",
@@ -190,18 +171,18 @@
     ],
     "authorCount": 27,
     "year": 2011,
-    "citations": 745
+    "citations": 750
   },
   "ranks": {
     "full": {
       "bins": [
-        15.72,
-        9.785,
-        5.133,
-        11.666,
-        7.966,
-        1.789,
-        3.941,
+        15.732,
+        9.812,
+        5.171,
+        11.651,
+        7.934,
+        1.8,
+        3.9,
         2,
         1,
         2
@@ -210,13 +191,13 @@
     },
     "window": {
       "bins": [
-        7.29,
+        7.291,
         2.946,
-        3.764,
+        3.762,
         1,
         2,
-        1.383,
-        0.617,
+        1.393,
+        0.607,
         2,
         0,
         1
@@ -225,15 +206,15 @@
     },
     "lifetime": {
       "bins": [
-        13.595,
-        22.583,
-        22.513,
-        20.697,
-        14.612,
-        5.534,
-        7.076,
-        5.711,
-        7.68,
+        14.301,
+        22.779,
+        22.965,
+        20.581,
+        13.374,
+        5.976,
+        6.024,
+        6.931,
+        7.069,
         4
       ],
       "top1": 1
@@ -262,6 +243,11 @@
       "status": "available",
       "months": 100,
       "citationBuckets": 12
+    },
+    "indices": {
+      "h": 12,
+      "g": 23,
+      "m": 1.44
     },
     "spread": {
       "mean": 11.098,
@@ -295,6 +281,11 @@
       "months": 40,
       "citationBuckets": 7
     },
+    "indices": {
+      "h": 8,
+      "g": 14,
+      "m": 2.401
+    },
     "spread": {
       "mean": 10.136,
       "median": 5.5,
@@ -306,9 +297,9 @@
   "lifetime": {
     "papers": 124,
     "outputBasis": "measured",
-    "citations": 3740,
+    "citations": 3782,
     "top10": 4,
-    "top10ShareOfDivision": 0.00072,
+    "top10ShareOfDivision": 0.00063,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -319,18 +310,18 @@
       "date": "2004-10-00"
     },
     "spread": {
-      "mean": 30.161,
+      "mean": 30.5,
       "median": 11.5,
       "uncited": 9,
-      "i10": 69,
+      "i10": 70,
       "i100": 5
     }
   },
   "query": {
     "arms": "((=abs:\"Gravity Probe B\" OR (=abs:\"GP B\" AND abs:(gyroscope OR relativity))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2004-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Gravity+Probe+B%22+OR+%28%3Dabs%3A%22GP+B%22+AND+abs%3A%28gyroscope+OR+relativity%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-19T17:17:35.655124+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2004-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Gravity+Probe+B%22+OR+%28%3Dabs%3A%22GP+B%22+AND+abs%3A%28gyroscope+OR+relativity%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-10-27T06:16:14.978426+00:00",
     "reconciliation": {
       "adsReturned": 136,
       "curatedOut": 12,
@@ -538,7 +529,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 745
+      "citations": 750
     },
     {
       "bibcode": "2004Natur.431..958C",
@@ -547,7 +538,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 413
+      "citations": 419
     },
     {
       "bibcode": "2011JCAP...07..020A",
@@ -574,7 +565,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 105
+      "citations": 107
     },
     {
       "bibcode": "2007PhRvD..76j4029M",
@@ -583,7 +574,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 97
+      "citations": 99
     },
     {
       "bibcode": "2010PhRvD..81j4003N",
@@ -592,7 +583,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 91
+      "citations": 92
     },
     {
       "bibcode": "2016Univ....2...30H",
@@ -604,31 +595,22 @@
       "citations": 89
     },
     {
-      "bibcode": "2007PhRvL..99x1101A",
-      "title": "New Post-Newtonian Parameter to Test Chern-Simons Gravity",
-      "firstAuthor": "Alexander, Stephon",
-      "authors": null,
-      "authorCount": null,
-      "year": 2007,
-      "citations": 85
-    },
-    {
       "bibcode": "2013PhLA..377.1775H",
       "title": "On Poincaré gauge theory of gravity, its equations of motion, and Gravity Probe B",
       "firstAuthor": "Hehl, Friedrich W.",
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 84
+      "citations": 88
     },
     {
-      "bibcode": "2014PhRvD..90l2009S",
-      "title": "New pulsar limit on local Lorentz invariance violation of gravity in the standard-model extension",
-      "firstAuthor": "Shao, Lijing",
+      "bibcode": "2007PhRvL..99x1101A",
+      "title": "New Post-Newtonian Parameter to Test Chern-Simons Gravity",
+      "firstAuthor": "Alexander, Stephon",
       "authors": null,
       "authorCount": null,
-      "year": 2014,
-      "citations": 68
+      "year": 2007,
+      "citations": 86
     },
     {
       "bibcode": "2015PhRvD..91d4012C",
@@ -637,6 +619,15 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
+      "citations": 70
+    },
+    {
+      "bibcode": "2014PhRvD..90l2009S",
+      "title": "New pulsar limit on local Lorentz invariance violation of gravity in the standard-model extension",
+      "firstAuthor": "Shao, Lijing",
+      "authors": null,
+      "authorCount": null,
+      "year": 2014,
       "citations": 68
     },
     {
@@ -682,7 +673,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 47
+      "citations": 49
+    },
+    {
+      "bibcode": "2024EPJC...84.1257J",
+      "title": "Spontaneous Lorentz symmetry-breaking constraints in Kalb-Ramond gravity",
+      "firstAuthor": "Junior, Ednaldo L. B.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2024,
+      "citations": 49
     },
     {
       "bibcode": "2013JCAP...12..020L",
@@ -700,15 +700,6 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 43
-    },
-    {
-      "bibcode": "2024EPJC...84.1257J",
-      "title": "Spontaneous Lorentz symmetry-breaking constraints in Kalb-Ramond gravity",
-      "firstAuthor": "Junior, Ednaldo L. B.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2024,
       "citations": 43
     }
   ],

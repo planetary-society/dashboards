@@ -3,7 +3,8 @@
 	// missions, then the four findings in one box over a photo; then how we measured them: the
 	// papers the missions produced, the citations those drew and what a highly cited paper is, then
 	// that division's missions by cost and each one's highly cited papers a year. Finding 1 then
-	// widens that to every division: each one's missions' top-10% papers a year, then one
+	// widens that to every division: each one's missions' top-10% papers a year (then the same lanes
+	// with the threshold marked, SMALL), then one
 	// division's citations against cost to set up per dollar (DOLLAR_DIVISION), then its missions per dollar (the
 	// line they would follow if small missions did better, then as well, then the line they do
 	// follow), then each division's per-dollar trend. Finding 2: failures by cost tier, then each
@@ -37,16 +38,17 @@
 	// how we measured: the papers, the citations they drew, and the highly cited ones; then the focus
 	// division's missions by cost, and each one's highly cited papers a year
 	const CORPUS = 4, CITED = 5, PAPERS = 6, TOP = 7, ONE = 8, BARS = 9;
-	// finding 1, every division after the focus division's walk-through: the rate lanes, then per dollar
+	// finding 1, every division after the focus division's walk-through: the rate lanes (SMALL: the same
+	// lanes, the threshold dashed through them and washed down to the axis's left edge), then per dollar
 	// (CITES: DOLLAR_DIVISION's citations against cost, setting up per dollar; SCATTER…FIT: its
 	// missions per dollar, one line per step; FITS: every compared division's line)
-	const FLOORS = 10, CITES = 11, SCATTER = 12, DOWN = 13, FLAT = 14, FIT = 15, FITS = 16;
+	const FLOORS = 10, SMALL = 11, CITES = 12, SCATTER = 13, DOWN = 14, FLAT = 15, FIT = 16, FITS = 17;
 	// the per-dollar walk-through's own division, apart from the focus division the primer and bars follow;
 	// one that isn't compared leaves CITES…FIT blank, as a missing focus division blanks ONE and BARS
 	const DOLLAR_DIVISION = 'astrophysics';
 	// finding 2: failures by cost tier (FAILURE), then one step per division (FAIL_BY…FAIL_LAST)
 	// washing that division's squares over the same chart
-	const FAILURE = 17, FAIL_BY = 18;
+	const FAILURE = 18, FAIL_BY = 19;
 	// the step count is fixed at build time, like the rest of the packaged props
 	// svelte-ignore state_referenced_locally
 	const FAIL_LAST = FAIL_BY + site.divisions.length - 1;
@@ -126,8 +128,8 @@
 	// the second only under `failsMore`, the third only when the median wait from the start of
 	// science to a first top-10% paper shortens with cost (`scienceOrder`, the Analysis page's gate),
 	// the fourth's "not matching" only when CLPS is behind every comparator.
-	const FINDING_ONE = 'Replacing larger missions with more low-cost missions will not maintain scientific output.';
-	const FINDING_THREE = 'Once science operations begin, larger missions produce high-impact science faster than smaller missions.';
+	const FINDING_ONE = 'On average, very low-cost missions produce less impactful scientific results than more expensive ones.';
+	const FINDING_THREE = 'From start to finish, mid-sized missions produce high-impact science the fastest.';
 	const faster = $derived(scienceOrder(site.time) != null);
 	// TIME_FORM and TIME_SCI: the Analysis page's own gates and figures (src/lib/copy/analysis.js)
 	const timed = $derived(index === TIME_FORM || index === TIME_SCI);
@@ -136,7 +138,7 @@
 	const slowestBuild = $derived(slowest(site.time));
 	// TIME_SCI singles out the cheapest and costliest tiers' medians only when each rests on MIN_REACHED missions
 	const endsRanked = $derived(timeFirst.reached >= MIN_REACHED && timeLast.reached >= MIN_REACHED);
-	const findingFour = $derived(`The science output of NASA’s commercial lunar missions ${clps.comparison?.behindAll ? 'has not matched the productivity of' : 'is keeping pace with'} science-focused missions.`);
+	const findingFour = $derived(`The scientific productivity of commercial lunar missions ${clps.comparison?.behindAll ? 'is falling short of' : 'is keeping pace with'} NASA's science-focused missions.`);
 
 	// CLPS: the landers that began work a year or more after the first launch.
 	const clpsLate = $derived(clps.missions.filter((p) => Date.parse(p.primeStart) - Date.parse(clps.start) > 365 * 864e5));
@@ -182,7 +184,7 @@
 	);
 	// FINDING_TWO names a division only where its FAIL_BY note holds (Wilson intervals apart at FAIL_NOTE's edge)
 	const failNoted = $derived(failByDivision.find((f) => f.note) ?? null);
-	const findingTwo = $derived(`Small missions fail at higher rates than large ones${failNoted ? `, particularly in ${failNoted.name}` : ''}.`);
+	const findingTwo = $derived(`Low cost missions fail at higher rates than large ones${failNoted ? `, particularly in ${failNoted.name}` : ''}.`);
 
 	// Scrubs run while a step's text holds still, between the fractions `a` and `b` of the step.
 	const span = (a, b) => (reduced ? 1 : Math.max(0, Math.min(1, (progress - a) / (b - a))));
@@ -196,6 +198,7 @@
 	const cite = $derived(index === CITED ? ease(span(0.1, 0.65)) : index > CITED ? 1 : 0);
 	const primed = $derived(index === PAPERS || index === TOP);
 	const focused = $derived(index === ONE || index === BARS);
+	const laned = $derived(index === FLOORS || index === SMALL);
 	const plotted = $derived(index >= SCATTER && index <= FIT);
 	// One line at a time over DOLLAR_DIVISION's scatter: the imagined one slopes down at DOWN and
 	// swings flat while the FLAT text holds; at FIT the best fit takes its place and swings up off
@@ -222,7 +225,7 @@
 		// the other divisions wait, hidden, on the lanes FLOORS draws
 		if (focused && focusL) return withHidden(failureItems(tiles, focusL), tiles, cost.pos);
 		// the rates' bars rise from the shelves the squares sit on: the squares wait there, hidden
-		if (index === FLOORS) return withHidden(new Map(), tiles, cost.pos);
+		if (laned) return withHidden(new Map(), tiles, cost.pos);
 		// the other divisions stay hidden on the cost axis the bands share
 		if (plotted) return withHidden(dollarOne ? failureItems(tiles, dollarOne) : new Map(), tiles, dollarAll.pos);
 		// the other divisions wait, hidden, where FITS brings them in
@@ -241,7 +244,7 @@
 
 	// The skyline steps: pointing at a square or skimming the columns lights up that mission in both.
 	// The primer steps: skimming the bars names the count under the pointer, found the same way;
-	// FLOORS: pointing at a bar names its mission and rate (laneHit), and anywhere over the lanes a
+	// FLOORS and SMALL: pointing at a bar names its mission and rate (laneHit), and anywhere over the lanes a
 	// dashed cursor reads off the cost under the pointer. Only one of them is up at a time.
 	// A touch keeps its highlight after the finger lifts; a mouse clears it on leaving the stage.
 	// A first tap on a square only highlights it; tapping it again opens its page, as a click does.
@@ -251,8 +254,8 @@
 	let follow = true;
 	const hot = $derived(skyline ? pointed : null);
 	const hotBar = $derived(primed ? pointedBar : null);
-	const hotLane = $derived(index === FLOORS ? pointedBar : null);
-	const laneCursor = $derived(index === FLOORS ? pointedX : null);
+	const hotLane = $derived(laned ? pointedBar : null);
+	const laneCursor = $derived(laned ? pointedX : null);
 	// the skyline names a mission with a column, so its square's own tip stays off
 	const skyNamed = $derived(hot && sky?.columns.some((c) => c.id === hot) ? hot : null);
 	function skim(e) {
@@ -261,7 +264,7 @@
 			pointedBar = skylineHit(primerL, e.clientX - r.left, e.clientY - r.top);
 			return;
 		}
-		if (index === FLOORS && cost) {
+		if (laned && cost) {
 			const [px, py] = [e.clientX - r.left, e.clientY - r.top];
 			pointedBar = laneHit(cost, px, py);
 			pointedX = py >= cost.top && py <= cost.bottomY ? px : null;
@@ -283,7 +286,7 @@
 <Scroller bind:index bind:progress>
 	{#snippet graphic()}
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<div class="stage" class:skimming={skyline || primed || index === FLOORS} bind:clientWidth={W} bind:clientHeight={H} onpointerdown={skim} onpointermove={skim} onpointerleave={unskim} onclickcapture={holdClick}>
+		<div class="stage" class:skimming={skyline || primed || laned} bind:clientWidth={W} bind:clientHeight={H} onpointerdown={skim} onpointermove={skim} onpointerleave={unskim} onclickcapture={holdClick}>
 			{#if rug && cost && outcomeL}
 				{#if reached >= FINDINGS}
 					<Skyline layout={sky} total={site.papersDistinct} cited={site.citationsDistinct} rise={index === CORPUS ? scrub : index > CORPUS ? 1 : 0} {cite} visible={skyline} highlight={hot} {compact} width={W} height={H} />
@@ -304,12 +307,12 @@
 				{/if}
 				<!-- the lanes draw the focus chart's bars too, so at FLOORS they move into their band -->
 				{#if reached >= TOP}
-					<LanesChart layout={cost} title="High-impact papers published per year, by division and mission" focus={focusL} {focused} {grow} hot={hotLane} cursor={laneCursor} visible={index === FLOORS} {compact} width={W} height={H} />
+					<LanesChart layout={cost} title="High-impact papers published per year, by division and mission" focus={focusL} {focused} {grow} hot={hotLane} cursor={laneCursor} threshold={story.referenceCost} marked={index === SMALL} visible={laned} {compact} width={W} height={H} />
 				{/if}
 				{#if reached >= CITES && dollarOne}
 					<DollarChart layout={dollarOne} title="Citations per {money(100)} in {dollarName}" {would} {turn} visible={plotted} {compact} width={W} height={H} />
 				{/if}
-				{#if reached >= FLOORS && citesL}
+				{#if reached >= SMALL && citesL}
 					<DollarChart layout={citesL} title="Citations per mission in {dollarName}" visible={index === CITES} {compact} width={W} height={H} />
 				{/if}
 				{#if reached >= FIT && dollarAll}
@@ -384,65 +387,71 @@
 		<!-- ONE: the focus division alone on the cost axis -->
 		<section data-step><div class="step">
 			{#if focus && focusShares}
-				<p>Midsize and larger mission classes contribute the overwhelming volume of high impact papers.</p>
-				<p>On this chart, the {int(focusShares.missionsAll)} <strong>{field}</strong> missions are ordered by their cost, adjusted for inflation.</p>
+				<p><strong class="neptuneBlue">High-impact paper production by cost</strong></p>
+				<p>On this chart, the {int(focusShares.missionsAll)} <strong>{field}</strong> missions in our dataset are ordered by their cost, adjusted for inflation.</p>
 			{/if}
 		</div></section>
 		<!-- BARS: each mission's top-10% papers a year -->
 		<section data-step data-scrub><div class="step">
 			{#if focus && focusShares && rate}
-				<p>Each bar is a mission’s average yearly output of high impact papers, counting every paper from the start of its prime mission through {rate.through}.</p>{#if tallest}<p>{tallest.name} produced the most: about {weight(tallest.perYear)} <strong>top-10% papers</strong> a year.</p>{/if}
+				<p>Each bar is a mission’s average annual output of high-impact papers, as measured from the start of science operations.</p>
 			{/if}
 		</div></section>
 		<!-- FLOORS: the same yearly rate for every compared division, a band each on the lanes' cost axis -->
 		<section data-step><div class="step">
 			{#if rateRows.length > 1}
-				{#if leadsLarger}<p>Larger missions <strong>generate more high impact papers per year </strong> in every science division.</p>{/if}
-				{#if smallMostlyNone}<p>Most small missions in each division produced no top-10% papers at all.</p>{/if}
+				{#if leadsLarger}<p>Larger missions tend to <strong>produce more high-impact papers per year </strong> across every science division.</p>{/if}
+
 			{/if}
+		</div></section>
+		<!-- SMALL: the same lanes, the threshold dashed through them; a division is named as the exception
+		     only while its best small mission beats its larger missions' median (smallStandouts) -->
+		<section data-step><div class="step">
+			{#if smallMostlyNone}<p><strong>For very low cost missions (below $150 million), the output of high-impact papers is almost nonexistent</strong>{#if smallStandouts.length}, save for NASA's {listify(smallStandouts.map((d) => `${d.name} missions`))}{/if}.</p>{/if}
 		</div></section>
 		<!-- CITES: DOLLAR_DIVISION's missions by cost and by the citations they drew, before per dollar -->
 		<section data-step><div class="step">
 			{#if citesL}
-				<p>Here each {dollarField} mission is placed by its cost and by how often its papers were cited.</p>
-				{#if citesTimes}<p><strong>Costlier missions drew more citations:</strong> a mission that cost 10 times as much drew about {citesTimes} as many.</p>{/if}
-				<p>They cost more, too. To compare what each dollar bought, we divide each mission’s citations by its cost: <strong>citations per dollar</strong>.</p>
+			    <p><span class="neptuneBlue"><strong>Scientific impact: citations per mission</strong></span></p>
+				<p>Here each {dollarField} mission is plotted by inflation-adjusted cost and total citations count.</p>
+				{#if citesTimes}<p><strong>There is a clear trend: more expensive missions produce papers that garner lots of citations.</strong></p>{/if}
 			{/if}
 		</div></section>
 		<!-- SCATTER, DOWN, FLAT and FIT always render, so later steps keep their numbers; with no DOLLAR_DIVISION fit they're blank -->
 		<!-- SCATTER: DOLLAR_DIVISION, each mission by cost and by citations per dollar -->
 		<section data-step><div class="step">
 			{#if dollarFit}
-				<p>Here, each {dollarField} mission is placed by its cost and by the citations it drew for every {moneyWords(100)}.</p>
+				<p>When dividing by cost, however, the relationship is less obvious.</p>
 			{/if}
 		</div></section>
 		<!-- DOWN: the line the missions would follow if small ones got more for their money -->
 		<section data-step><div class="step">
 			{#if dollarFit}
-				<p>If small missions had greater productivity for their money, the trend line would slope downward.</p>
+				<p>If small missions produced greater citation impact per dollar than large ones, the trend line would slope downward.</p>
 			{/if}
 		</div></section>
 		<!-- FLAT: the same line swings flat, for missions that got the same per dollar whatever their size -->
 		<section data-step data-scrub><div class="step">
 			{#if dollarFit}
-				<p>If size made no difference, the line would be flat: overall citations per dollar would be the same.</p>
+				<p>If cost made no difference, the trend line fitting citations per dollar would be flat.</p>
 			{/if}
 		</div></section>
 		<!-- FIT: the best fit takes the flat line's place and swings up off it -->
 		<section data-step data-scrub><div class="step">
 			{#if dollarFit}
-				<p>The best-fit line through the {spell(dollarFit.missions)} {dollarField} missions with citations is <strong class="neptuneBlue">{direction(dollarFit)}</strong>.{#if firm(dollarFit)}{' '}More expensive missions, on average, resulted in more citations per dollar.{/if}</p>
+				<p>The actual best-fit line for {dollarField} is <strong class="neptuneBlue">{direction(dollarFit)}</strong>.</p>{#if firm(dollarFit)}<p>More expensive missions, on average, resulted in more citations per dollar.</p>{/if}
 			{/if}
 		</div></section>
 		<!-- FITS: every compared division's missions and best fit, one band each -->
 		<section data-step><div class="step">
-			<p>The overall trendlines show a modestly positive relationship between cost and citations per dollar across all four major divisions.</p>
+			<p><strong class="neptuneBlue">This is true for missions across all of NASA's science divisions.</strong></p><p>Historically, there is a positive, though modest, relationship between cost and citations per dollar.</p>
 		</div></section>
 		<!-- FAILURE: every division's missions by cost tier, up if they met their goals, down if they failed or fell short -->
 		<section data-step><div class="step">
+			<p><strong class="neptuneBlue">Mission failure rates and cost</strong></p>
 			{#if failure.higher === 'under'}<p>Cheaper missions fail more often than more expensive ones.</p>{/if}
-			<p>Of the {int(failure.under.missions)} costing {moneyWords(story.referenceCost)} or less, {int(failure.under.failed)} (about {whole(failure.under.rate)}) failed or fell short of their goals. More expensive missions failed {spell(failure.over.failed)} times (about {whole(failure.over.rate)}).</p>
-			<p>Failure rates vary across NASA's science divisions.</p>
+			<p>Missions costing {moneyWords(story.referenceCost)} or less failed about {whole(failure.under.rate)} of the time. Above that amount, the failure rate is {whole(failure.over.rate)}.</p>
+			<p>Different science divisions have different failure rates.</p>
 		</div></section>
 		<!-- FAIL_BY…: the same chart, one division's squares washed per step -->
 		{#each failByDivision as f (f.slug)}

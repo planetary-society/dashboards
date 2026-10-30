@@ -11,6 +11,8 @@
     "cost": 756.4,
     "lcc": 424,
     "type": "Rover",
+    "selection": "directed",
+    "management": "agency",
     "program": "Mars Exploration Program (MEP)",
     "target": "Martian Surface",
     "launchVehicle": "Delta II 7925",
@@ -27,12 +29,12 @@
     "m": 3.609,
     "i100": 65,
     "g": 136,
-    "tori": 118.135,
+    "tori": 118.327,
     "riq": 472
   },
   "facts": {
     "papers": 451,
-    "citations": 23510,
+    "citations": 23527,
     "publicationYears": [
       2004,
       2026
@@ -92,33 +94,33 @@
     "citations": [
       100,
       486,
-      1075,
+      1077,
       851,
       1133,
       831,
-      1040,
+      1055,
       1042,
       965,
-      1217,
-      1222,
+      1216,
+      1221,
       1212,
-      1178,
+      1179,
       1101,
-      1178,
+      1179,
       1038,
       1076,
-      1392,
-      1292,
+      1393,
+      1293,
       1089,
       1107,
-      1099,
+      1097,
       786
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 23510,
-      "observed": 23510,
+      "expected": 23527,
+      "observed": 23527,
       "missing": 0
     }
   },
@@ -176,46 +178,46 @@
   "ranks": {
     "full": {
       "bins": [
-        60.672,
-        52.329,
-        43.021,
-        41.188,
-        31.938,
-        35.292,
-        26.465,
-        33.882,
-        31.717,
-        54.495
+        61.688,
+        51.322,
+        43.056,
+        41.238,
+        31.739,
+        35.418,
+        26.525,
+        33.908,
+        31.685,
+        54.42
       ],
       "top1": 9
     },
     "window": {
       "bins": [
-        11.148,
-        5.848,
-        7.216,
-        5.35,
-        5.437,
-        3.59,
-        2.231,
-        5.282,
-        11.848,
-        26.05
+        11.141,
+        5.857,
+        7.214,
+        5.349,
+        5.439,
+        3.607,
+        2.241,
+        5.3,
+        11.77,
+        26.082
       ],
       "top1": 4
     },
     "lifetime": {
       "bins": [
-        30.72,
-        37.035,
-        55.961,
-        35.145,
-        44.198,
-        33.002,
-        48.04,
-        41.899,
-        43.244,
-        81.756
+        30.706,
+        36.584,
+        56.275,
+        35.296,
+        44.241,
+        33.477,
+        47.569,
+        41.853,
+        43.406,
+        81.594
       ],
       "top1": 10
     }
@@ -223,11 +225,11 @@
   "full": {
     "papers": 411,
     "outputBasis": "measured",
-    "citations": 6329,
-    "top10": 34.936,
-    "top10ShareOfDivision": 0.03219,
+    "citations": 6333,
+    "top10": 34.945,
+    "top10ShareOfDivision": 0.03214,
     "top1": 7,
-    "top1ShareOfDivision": 0.0645,
+    "top1ShareOfDivision": 0.06437,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.35,
@@ -250,10 +252,10 @@
       "m": 2.401
     },
     "spread": {
-      "mean": 15.399,
+      "mean": 15.409,
       "median": 7,
-      "uncited": 43,
-      "i10": 168,
+      "uncited": 44,
+      "i10": 169,
       "i100": 8
     }
   },
@@ -261,10 +263,10 @@
     "papers": 84,
     "outputBasis": "measured",
     "citations": 2854,
-    "top10": 19.025,
-    "top10ShareOfDivision": 0.03973,
+    "top10": 19.041,
+    "top10ShareOfDivision": 0.03972,
     "top1": 3.5,
-    "top1ShareOfDivision": 0.0731,
+    "top1ShareOfDivision": 0.07301,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.35,
@@ -297,9 +299,9 @@
   "lifetime": {
     "papers": 451,
     "outputBasis": "measured",
-    "citations": 23510,
-    "top10": 48.785,
-    "top10ShareOfDivision": 0.03116,
+    "citations": 23527,
+    "top10": 48.565,
+    "top10ShareOfDivision": 0.03092,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -310,7 +312,7 @@
       "date": "2004-06-00"
     },
     "spread": {
-      "mean": 52.129,
+      "mean": 52.166,
       "median": 23,
       "uncited": 24,
       "i10": 314,
@@ -321,7 +323,7 @@
     "arms": "(((=abs:\"Mars Exploration Rover\" OR =abs:\"Mars Exploration Rovers\" OR =abs:\"Spirit rover\" OR =abs:\"Opportunity rover\" OR (abs:Spirit AND (abs:\"MER-A\" OR =abs:\"Mars Rover\" OR =abs:\"Mars Rovers\" OR =abs:\"Mars roving\" OR abs:Gusev)) OR (abs:Opportunity AND (abs:\"MER-B\" OR =abs:\"Mars Rover\" OR =abs:\"Mars Rovers\" OR =abs:\"Mars roving\" OR =abs:\"Meridiani Planum\")) OR (((abs:Pancam AND NOT abs:ExoMars) OR =abs:\"Mini-TES\" OR =abs:\"Microscopic Imager\" OR =abs:\"Rock Abrasion Tool\") AND (abs:Gusev OR =abs:Meridiani OR =abs:\"Columbia Hills\" OR =abs:\"Home Plate\" OR =abs:\"Victoria crater\" OR =abs:\"Endeavour crater\" OR =abs:\"Endurance crater\"))) AND ((=abs:\"Opportunity rover\" OR =abs:\"Opportunity rovers\" OR =abs:\"rover Opportunity\" OR =abs:\"rovers Opportunity\" OR =abs:\"Spirit and Opportunity\" OR =abs:\"Opportunity and Spirit\" OR =abs:\"MER Opportunity\" OR =abs:\"Opportunity Mars Exploration Rover\" OR =abs:\"Opportunity Mars Exploration Rovers\" OR =abs:\"Opportunity Mars rover\" OR =abs:\"Opportunity MER\" OR =abs:\"Opportunity tracking\" OR abs:\"MER-B\" OR =abs:\"Opportunity site\" OR =abs:\"Opportunity landing\" OR =abs:\"Opportunity mission\" OR =abs:\"Opportunity missions\" OR =abs:\"Opportunity traverse\" OR =abs:\"Opportunity data\" OR =abs:\"Opportunity Mini-TES\" OR =abs:\"Opportunity Mössbauer\" OR =abs:Meridiani OR =abs:\"Burns formation\" OR =abs:\"Endeavour crater\" OR =abs:\"Eagle crater\" OR =abs:\"Endurance crater\" OR =abs:\"Victoria crater\" OR =abs:\"hematite spherules\" OR =abs:\"Marathon Valley\" OR =abs:\"Perseverance Valley\" OR =abs:\"Erebus crater\" OR =abs:\"Bounce Rock\" OR =abs:\"Cape York\") OR (=abs:\"Mars Exploration Rovers\" AND NOT ((abs:Spirit AND NOT =abs:\"Spirit of St. Louis\") OR abs:\"MER-A\" OR abs:Gusev OR =abs:\"Columbia Hills\" OR =abs:\"Husband Hill\" OR =abs:\"Home Plate\" OR abs:Wishstone OR =abs:\"Columbia Memorial Station\")))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2004-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Mars+Exploration+Rover%22+OR+%3Dabs%3A%22Mars+Exploration+Rovers%22+OR+%3Dabs%3A%22Spirit+rover%22+OR+%3Dabs%3A%22Opportunity+rover%22+OR+%28abs%3ASpirit+AND+%28abs%3A%22MER-A%22+OR+%3Dabs%3A%22Mars+Rover%22+OR+%3Dabs%3A%22Mars+Rovers%22+OR+%3Dabs%3A%22Mars+roving%22+OR+abs%3AGusev%29%29+OR+%28abs%3AOpportunity+AND+%28abs%3A%22MER-B%22+OR+%3Dabs%3A%22Mars+Rover%22+OR+%3Dabs%3A%22Mars+Rovers%22+OR+%3Dabs%3A%22Mars+roving%22+OR+%3Dabs%3A%22Meridiani+Planum%22%29%29+OR+%28%28%28abs%3APancam+AND+NOT+abs%3AExoMars%29+OR+%3Dabs%3A%22Mini-TES%22+OR+%3Dabs%3A%22Microscopic+Imager%22+OR+%3Dabs%3A%22Rock+Abrasion+Tool%22%29+AND+%28abs%3AGusev+OR+%3Dabs%3AMeridiani+OR+%3Dabs%3A%22Columbia+Hills%22+OR+%3Dabs%3A%22Home+Plate%22+OR+%3Dabs%3A%22Victoria+crater%22+OR+%3Dabs%3A%22Endeavour+crater%22+OR+%3Dabs%3A%22Endurance+crater%22%29%29%29+AND+%28%28%3Dabs%3A%22Opportunity+rover%22+OR+%3Dabs%3A%22Opportunity+rovers%22+OR+%3Dabs%3A%22rover+Opportunity%22+OR+%3Dabs%3A%22rovers+Opportunity%22+OR+%3Dabs%3A%22Spirit+and+Opportunity%22+OR+%3Dabs%3A%22Opportunity+and+Spirit%22+OR+%3Dabs%3A%22MER+Opportunity%22+OR+%3Dabs%3A%22Opportunity+Mars+Exploration+Rover%22+OR+%3Dabs%3A%22Opportunity+Mars+Exploration+Rovers%22+OR+%3Dabs%3A%22Opportunity+Mars+rover%22+OR+%3Dabs%3A%22Opportunity+MER%22+OR+%3Dabs%3A%22Opportunity+tracking%22+OR+abs%3A%22MER-B%22+OR+%3Dabs%3A%22Opportunity+site%22+OR+%3Dabs%3A%22Opportunity+landing%22+OR+%3Dabs%3A%22Opportunity+mission%22+OR+%3Dabs%3A%22Opportunity+missions%22+OR+%3Dabs%3A%22Opportunity+traverse%22+OR+%3Dabs%3A%22Opportunity+data%22+OR+%3Dabs%3A%22Opportunity+Mini-TES%22+OR+%3Dabs%3A%22Opportunity+M%C3%B6ssbauer%22+OR+%3Dabs%3AMeridiani+OR+%3Dabs%3A%22Burns+formation%22+OR+%3Dabs%3A%22Endeavour+crater%22+OR+%3Dabs%3A%22Eagle+crater%22+OR+%3Dabs%3A%22Endurance+crater%22+OR+%3Dabs%3A%22Victoria+crater%22+OR+%3Dabs%3A%22hematite+spherules%22+OR+%3Dabs%3A%22Marathon+Valley%22+OR+%3Dabs%3A%22Perseverance+Valley%22+OR+%3Dabs%3A%22Erebus+crater%22+OR+%3Dabs%3A%22Bounce+Rock%22+OR+%3Dabs%3A%22Cape+York%22%29+OR+%28%3Dabs%3A%22Mars+Exploration+Rovers%22+AND+NOT+%28%28abs%3ASpirit+AND+NOT+%3Dabs%3A%22Spirit+of+St.+Louis%22%29+OR+abs%3A%22MER-A%22+OR+abs%3AGusev+OR+%3Dabs%3A%22Columbia+Hills%22+OR+%3Dabs%3A%22Husband+Hill%22+OR+%3Dabs%3A%22Home+Plate%22+OR+abs%3AWishstone+OR+%3Dabs%3A%22Columbia+Memorial+Station%22%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:44:22.031456+00:00",
+    "fetchedAt": "2026-10-30T20:10:29.188918+00:00",
     "reconciliation": {
       "adsReturned": 460,
       "curatedOut": 9,
@@ -442,7 +444,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 659
+      "citations": 658
     },
     {
       "bibcode": "2005E&PSL.240...11G",
@@ -451,7 +453,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 505
+      "citations": 506
     },
     {
       "bibcode": "2015Icar..251...65M",
@@ -469,7 +471,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 421
+      "citations": 422
     },
     {
       "bibcode": "2005Natur.436...49Y",
@@ -523,7 +525,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 326
+      "citations": 327
     },
     {
       "bibcode": "2011Icar..214..413T",
@@ -559,7 +561,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 276
+      "citations": 277
     },
     {
       "bibcode": "2005E&PSL.240..149F",
@@ -604,7 +606,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 225
+      "citations": 224
     }
   ],
   "papersFile": {

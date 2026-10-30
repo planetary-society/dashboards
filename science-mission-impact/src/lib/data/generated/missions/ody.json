@@ -11,6 +11,8 @@
     "cost": 448.7,
     "lcc": 222,
     "type": "Orbiter",
+    "selection": "directed",
+    "management": "agency",
     "program": "Mars Exploration Program (MEP)",
     "target": "Mars",
     "launchVehicle": "Delta II 7425",
@@ -27,12 +29,12 @@
     "m": 3.36,
     "i100": 58,
     "g": 139,
-    "tori": 209.495,
-    "riq": 578
+    "tori": 209.543,
+    "riq": 579
   },
   "facts": {
     "papers": 613,
-    "citations": 28202,
+    "citations": 28205,
     "publicationYears": [
       2002,
       2026
@@ -102,29 +104,29 @@
       1073,
       1008,
       1239,
-      1323,
+      1326,
       1347,
-      1322,
+      1323,
       1336,
-      1199,
+      1196,
       1328,
       1296,
-      1092,
-      1360,
+      1093,
+      1359,
       1334,
       1223,
       1695,
       1718,
       1392,
-      1389,
+      1390,
       1492,
-      1193
+      1194
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 28202,
-      "observed": 28202,
+      "expected": 28205,
+      "observed": 28205,
       "missing": 0
     }
   },
@@ -182,45 +184,45 @@
   "ranks": {
     "full": {
       "bins": [
-        66.275,
-        71.049,
-        67.531,
-        41.542,
-        62.289,
-        44.049,
-        60.247,
-        49.806,
-        45.717,
-        52.495
+        66.302,
+        70.585,
+        68.011,
+        41.695,
+        62.133,
+        44.045,
+        60.351,
+        49.774,
+        45.878,
+        52.227
       ],
       "top1": 4
     },
     "window": {
       "bins": [
-        22.658,
-        25.321,
-        23.086,
-        17.443,
-        8.607,
-        18.245,
-        13.096,
-        11.545,
-        12.95,
-        16.05
+        22.638,
+        25.352,
+        23.07,
+        17.425,
+        8.662,
+        18.28,
+        13.035,
+        11.538,
+        12.918,
+        16.082
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        54.44,
-        48.013,
-        64.682,
-        55.331,
-        52.622,
-        48.064,
-        64.456,
-        66.679,
-        82.713,
+        54.412,
+        47.858,
+        64.903,
+        55.293,
+        52.687,
+        48.109,
+        64.623,
+        67.15,
+        81.965,
         76
       ],
       "top1": 11
@@ -229,11 +231,11 @@
   "full": {
     "papers": 561,
     "outputBasis": "measured",
-    "citations": 7183,
-    "top10": 37.499,
-    "top10ShareOfDivision": 0.03455,
+    "citations": 7185,
+    "top10": 37.348,
+    "top10ShareOfDivision": 0.03435,
     "top1": 4,
-    "top1ShareOfDivision": 0.03686,
+    "top1ShareOfDivision": 0.03678,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.361,
@@ -256,7 +258,7 @@
       "m": 1.694
     },
     "spread": {
-      "mean": 12.804,
+      "mean": 12.807,
       "median": 8,
       "uncited": 38,
       "i10": 235,
@@ -267,10 +269,10 @@
     "papers": 169,
     "outputBasis": "measured",
     "citations": 2772,
-    "top10": 16.05,
-    "top10ShareOfDivision": 0.03352,
+    "top10": 16.082,
+    "top10ShareOfDivision": 0.03355,
     "top1": 2,
-    "top1ShareOfDivision": 0.04177,
+    "top1ShareOfDivision": 0.04172,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.361,
@@ -303,9 +305,9 @@
   "lifetime": {
     "papers": 613,
     "outputBasis": "measured",
-    "citations": 28202,
-    "top10": 50.117,
-    "top10ShareOfDivision": 0.03201,
+    "citations": 28205,
+    "top10": 48.95,
+    "top10ShareOfDivision": 0.03117,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -316,7 +318,7 @@
       "date": "2002-07-00"
     },
     "spread": {
-      "mean": 46.007,
+      "mean": 46.011,
       "median": 22,
       "uncited": 41,
       "i10": 419,
@@ -327,7 +329,7 @@
     "arms": "((=abs:\"Mars Odyssey\" OR ((abs:Odyssey OR abs:ODY OR abs:THEMIS OR abs:GRS OR =abs:\"Gamma Ray Spectrometer\" OR =abs:\"Thermal Emission Imaging System\") AND (abs:Mars OR abs:Martian)) OR (abs:HEND AND (abs:Mars OR abs:Odyssey)) OR =abs:\"Odyssey data\" OR =abs:\"Odyssey observations\" OR =abs:\"Odyssey spacecraft\" OR =abs:\"Gamma-Ray Spectrometer on Odyssey\" OR =abs:\"Odyssey Gamma-Ray Spectrometer\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2002-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Odyssey%22+OR+%28%28abs%3AOdyssey+OR+abs%3AODY+OR+abs%3ATHEMIS+OR+abs%3AGRS+OR+%3Dabs%3A%22Gamma+Ray+Spectrometer%22+OR+%3Dabs%3A%22Thermal+Emission+Imaging+System%22%29+AND+%28abs%3AMars+OR+abs%3AMartian%29%29+OR+%28abs%3AHEND+AND+%28abs%3AMars+OR+abs%3AOdyssey%29%29+OR+%3Dabs%3A%22Odyssey+data%22+OR+%3Dabs%3A%22Odyssey+observations%22+OR+%3Dabs%3A%22Odyssey+spacecraft%22+OR+%3Dabs%3A%22Gamma-Ray+Spectrometer+on+Odyssey%22+OR+%3Dabs%3A%22Odyssey+Gamma-Ray+Spectrometer%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:43:45.066528+00:00",
+    "fetchedAt": "2026-10-30T20:09:58.137508+00:00",
     "reconciliation": {
       "adsReturned": 629,
       "curatedOut": 15,
@@ -358,14 +360,6 @@
         "date": "2026-09-03"
       },
       {
-        "bibcode": "2021PhDT........10A",
-        "doi": null,
-        "title": null,
-        "reason": "Refers to the Earth-orbiting THEMIS mission; not Mars Odyssey's THEMIS camera.",
-        "authority": "agent",
-        "date": "2026-09-03"
-      },
-      {
         "bibcode": "2006AcAau..59..113P",
         "doi": "10.1016/j.actaastro.2006.02.055",
         "title": "Proposal on application of Russian technical facilities for International Mars Research Program for 2009 2015",
@@ -378,14 +372,6 @@
         "doi": "10.1016/j.asr.2007.10.001",
         "title": "Planetary protection implementation on Mars Reconnaissance Orbiter mission",
         "reason": "Describes planetary protection for Mars Reconnaissance Orbiter; Odyssey is only a comparison.",
-        "authority": "agent",
-        "date": "2026-09-04"
-      },
-      {
-        "bibcode": "2018PhDT........11V",
-        "doi": null,
-        "title": null,
-        "reason": "Designs infrared instruments for other missions; cites Odyssey's THEMIS only as heritage.",
         "authority": "agent",
         "date": "2026-09-04"
       },
@@ -422,38 +408,6 @@
         "date": "2026-09-04"
       },
       {
-        "bibcode": "2007pds..data...36T",
-        "doi": null,
-        "title": null,
-        "reason": "Data archive record, not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-04"
-      },
-      {
-        "bibcode": "2007pds..data...37T",
-        "doi": null,
-        "title": null,
-        "reason": "Data archive record, not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-04"
-      },
-      {
-        "bibcode": "2007pds..data...38T",
-        "doi": null,
-        "title": null,
-        "reason": "Data archive record, not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-04"
-      },
-      {
-        "bibcode": "2009pds..data...36W",
-        "doi": null,
-        "title": null,
-        "reason": "Data archive record, not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-04"
-      },
-      {
         "bibcode": "2021ApJ...919...19A",
         "doi": "10.3847/1538-4357/ac0af5",
         "title": "The Evolution of Compressible Solar Wind Turbulence in the Inner Heliosphere: PSP, THEMIS, and MAVEN Observations",
@@ -462,66 +416,10 @@
         "date": "2026-09-04"
       },
       {
-        "bibcode": "2022pds..data...54M",
-        "doi": null,
-        "title": null,
-        "reason": "Data archive record, not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-04"
-      },
-      {
         "bibcode": "2025IJSTA..1821129W",
         "doi": "10.1109/JSTARS.2025.3597739",
         "title": "A Novel Flexible Architecture Based on SAM for Automatic Extraction of Rampart Craters From Martian High-Resolution Images",
         "reason": "Crater-mapping method; does not mention Mars Odyssey or its instruments.",
-        "authority": "agent",
-        "date": "2026-09-04"
-      },
-      {
-        "bibcode": "2025pds..data...32B",
-        "doi": null,
-        "title": null,
-        "reason": "Data archive record, not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-04"
-      },
-      {
-        "bibcode": "2025pds..data...33B",
-        "doi": null,
-        "title": null,
-        "reason": "Data archive record, not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-04"
-      },
-      {
-        "bibcode": "2025pds..data...34B",
-        "doi": null,
-        "title": null,
-        "reason": "Data archive record, not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-04"
-      },
-      {
-        "bibcode": "2025pds..data...37B",
-        "doi": null,
-        "title": null,
-        "reason": "Data archive record, not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-04"
-      },
-      {
-        "bibcode": "2025pds..data...38B",
-        "doi": null,
-        "title": null,
-        "reason": "Data archive record, not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-04"
-      },
-      {
-        "bibcode": "2026pds..data....7B",
-        "doi": null,
-        "title": null,
-        "reason": "Data archive record, not a research paper.",
         "authority": "agent",
         "date": "2026-09-04"
       },
@@ -674,7 +572,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 325
+      "citations": 324
     },
     {
       "bibcode": "2011Icar..211..401K",
@@ -683,7 +581,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 324
+      "citations": 323
     },
     {
       "bibcode": "2006JGRE..11112004F",

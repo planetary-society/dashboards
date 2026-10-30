@@ -11,6 +11,8 @@
     "cost": 806,
     "lcc": 516,
     "type": "Orbiter",
+    "selection": "directed",
+    "management": "agency",
     "program": "Lunar Precursor Robotic Program",
     "target": "Moon",
     "launchVehicle": "Atlas V 401",
@@ -26,13 +28,13 @@
     "h": 81,
     "m": 4.765,
     "i100": 64,
-    "g": 133,
-    "tori": 133.092,
-    "riq": 640
+    "g": 134,
+    "tori": 133.746,
+    "riq": 642
   },
   "facts": {
-    "papers": 1015,
-    "citations": 29229,
+    "papers": 1016,
+    "citations": 29252,
     "publicationYears": [
       2010,
       2026
@@ -75,7 +77,7 @@
       58,
       94,
       67,
-      86
+      87
     ],
     "citations": [
       69,
@@ -83,29 +85,29 @@
       610,
       666,
       943,
-      976,
+      983,
       1251,
       1175,
       1484,
-      1511,
+      1513,
       1805,
-      2170,
+      2173,
       2475,
       3450,
       3412,
-      3696,
-      3283
+      3697,
+      3293
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 29229,
-      "observed": 29229,
+      "expected": 29252,
+      "observed": 29252,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 1015,
+    "papers": 1016,
     "us": {
       "mapped": 546,
       "top": [
@@ -153,63 +155,63 @@
     ],
     "authorCount": 23,
     "year": 2010,
-    "citations": 1053
+    "citations": 1055
   },
   "ranks": {
     "full": {
       "bins": [
-        92.637,
-        107.913,
-        90.668,
-        89.296,
-        80.649,
-        76.16,
-        71.736,
-        54.73,
-        59.338,
-        44.874
+        92.669,
+        107.9,
+        90.751,
+        89.469,
+        80.435,
+        75.444,
+        72.587,
+        54.64,
+        59.298,
+        44.807
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        10.148,
-        10.843,
-        9.435,
-        4.828,
-        9.861,
-        13.45,
-        11.801,
-        9.737,
-        13.898,
+        10.141,
+        10.855,
+        9.428,
+        4.819,
+        9.904,
+        13.477,
+        11.762,
+        9.762,
+        13.852,
         11
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        175.822,
-        127.425,
-        136.956,
-        111.241,
-        76.85,
-        91.435,
-        80.981,
-        60.149,
-        80.141,
-        74
+        176.749,
+        127.12,
+        137.39,
+        111.555,
+        76.643,
+        91.961,
+        80.614,
+        60.003,
+        79.371,
+        74.594
       ],
-      "top1": 8
+      "top1": 8.53
     }
   },
   "full": {
     "papers": 768,
     "outputBasis": "measured",
-    "citations": 8048,
-    "top10": 42.874,
-    "top10ShareOfDivision": 0.0395,
+    "citations": 8055,
+    "top10": 42.807,
+    "top10ShareOfDivision": 0.03937,
     "top1": 2,
-    "top1ShareOfDivision": 0.01843,
+    "top1ShareOfDivision": 0.01839,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.296,
@@ -232,7 +234,7 @@
       "m": 2.456
     },
     "spread": {
-      "mean": 10.479,
+      "mean": 10.488,
       "median": 7,
       "uncited": 58,
       "i10": 280,
@@ -244,9 +246,9 @@
     "outputBasis": "measured",
     "citations": 1997,
     "top10": 9.5,
-    "top10ShareOfDivision": 0.01984,
+    "top10ShareOfDivision": 0.01982,
     "top1": 1,
-    "top1ShareOfDivision": 0.02089,
+    "top1ShareOfDivision": 0.02086,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.296,
@@ -277,11 +279,11 @@
     }
   },
   "lifetime": {
-    "papers": 1015,
+    "papers": 1016,
     "outputBasis": "measured",
-    "citations": 29229,
-    "top10": 68.5,
-    "top10ShareOfDivision": 0.04375,
+    "citations": 29252,
+    "top10": 68.797,
+    "top10ShareOfDivision": 0.0438,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -292,9 +294,9 @@
       "date": "2010-01-00"
     },
     "spread": {
-      "mean": 28.797,
+      "mean": 28.791,
       "median": 10,
-      "uncited": 141,
+      "uncited": 142,
       "i10": 523,
       "i100": 64
     }
@@ -303,36 +305,19 @@
     "arms": "((=abs:\"Lunar Reconnaissance Orbiter\" OR =abs:\"Lunar Reconnaissance Orbiter Camera\" OR =abs:\"Lunar Exploration Neutron Detector\" OR =abs:\"Lyman-Alpha Mapping Project\" OR =abs:\"Lunar Orbiter Laser Altimeter\" OR =abs:\"Cosmic Ray Telescope for the Effects of Radiation\" OR =abs:\"Diviner Lunar Radiometer\" OR ((=abs:Moon OR =abs:lunar) AND (abs:LRO OR =abs:LROC OR abs:LEND OR abs:LAMP OR abs:LOLA OR abs:CRaTER OR =abs:Diviner OR abs:\"Mini-RF\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2009-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Reconnaissance+Orbiter%22+OR+%3Dabs%3A%22Lunar+Reconnaissance+Orbiter+Camera%22+OR+%3Dabs%3A%22Lunar+Exploration+Neutron+Detector%22+OR+%3Dabs%3A%22Lyman-Alpha+Mapping+Project%22+OR+%3Dabs%3A%22Lunar+Orbiter+Laser+Altimeter%22+OR+%3Dabs%3A%22Cosmic+Ray+Telescope+for+the+Effects+of+Radiation%22+OR+%3Dabs%3A%22Diviner+Lunar+Radiometer%22+OR+%28%28%3Dabs%3AMoon+OR+%3Dabs%3Alunar%29+AND+%28abs%3ALRO+OR+%3Dabs%3ALROC+OR+abs%3ALEND+OR+abs%3ALAMP+OR+abs%3ALOLA+OR+abs%3ACRaTER+OR+%3Dabs%3ADiviner+OR+abs%3A%22Mini-RF%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:46:35.611271+00:00",
+    "fetchedAt": "2026-10-30T20:11:27.156865+00:00",
     "reconciliation": {
-      "adsReturned": 1031,
+      "adsReturned": 1032,
       "curatedOut": 16,
-      "curatedIn": 2,
+      "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
-      "duplicates": 2,
-      "final": 1015
+      "duplicates": 0,
+      "final": 1016
     }
   },
   "curation": {
-    "includes": [
-      {
-        "bibcode": "2016SSRv..200..431H",
-        "doi": null,
-        "title": "Flight Calibration of the LROC Narrow Angle Camera",
-        "reason": "In-flight calibration of the LROC Narrow Angle Camera using LRO flight data.",
-        "authority": "agent",
-        "date": "2026-10-02"
-      },
-      {
-        "bibcode": "2016SSRv..200..393M",
-        "doi": null,
-        "title": "Inflight Calibration of the Lunar Reconnaissance Orbiter Camera Wide Angle Camera",
-        "reason": "In-flight calibration of the LROC Wide Angle Camera using LRO flight data.",
-        "authority": "agent",
-        "date": "2026-10-02"
-      }
-    ],
+    "includes": [],
     "excludes": [
       {
         "bibcode": "2018ISPAr42.3..271D",
@@ -363,22 +348,6 @@
         "doi": "10.5194/isprs-archives-XLII-3-1117-2018",
         "title": "An Integrated Photogrammetric and Photoclinometric Approach for Pixel-Resolution 3d Modelling of Lunar Surface",
         "reason": "Duplicate record of 2018ISPAr.423.1117L (same paper).",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2010SSRv..150....1V",
-        "doi": null,
-        "title": null,
-        "reason": "Editorial preface to a journal special issue; not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2010SSRv..150....3M",
-        "doi": null,
-        "title": null,
-        "reason": "Editorial foreword to a journal special issue; not a research paper.",
         "authority": "agent",
         "date": "2026-09-08"
       },
@@ -504,7 +473,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 1053
+      "citations": 1055
     },
     {
       "bibcode": "2010SSRv..150..209S",
@@ -522,7 +491,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 483
+      "citations": 484
     },
     {
       "bibcode": "2010Sci...330..479P",
@@ -531,7 +500,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 469
+      "citations": 470
     },
     {
       "bibcode": "2010GeoRL..3718204S",
@@ -543,6 +512,15 @@
       "citations": 446
     },
     {
+      "bibcode": "2018PNAS..115.8907L",
+      "title": "Direct evidence of surface exposed water ice in the lunar polar regions",
+      "firstAuthor": "Li, Shuai",
+      "authors": null,
+      "authorCount": null,
+      "year": 2018,
+      "citations": 422
+    },
+    {
       "bibcode": "2010SSRv..150..125P",
       "title": "The Lunar Reconnaissance Orbiter Diviner Lunar Radiometer Experiment",
       "firstAuthor": "Paige, D. A.",
@@ -552,22 +530,13 @@
       "citations": 421
     },
     {
-      "bibcode": "2018PNAS..115.8907L",
-      "title": "Direct evidence of surface exposed water ice in the lunar polar regions",
-      "firstAuthor": "Li, Shuai",
-      "authors": null,
-      "authorCount": null,
-      "year": 2018,
-      "citations": 421
-    },
-    {
       "bibcode": "2017Icar..283..300W",
       "title": "The global surface temperatures of the Moon as measured by the Diviner Lunar Radiometer Experiment",
       "firstAuthor": "Williams, J.-P.",
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 368
+      "citations": 370
     },
     {
       "bibcode": "2017JGRE..122.2371H",
@@ -657,7 +626,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 207
+      "citations": 208
     },
     {
       "bibcode": "2012JGRE..117.0H17S",
@@ -679,6 +648,6 @@
     }
   ],
   "papersFile": {
-    "rows": 1015
+    "rows": 1016
   }
 }

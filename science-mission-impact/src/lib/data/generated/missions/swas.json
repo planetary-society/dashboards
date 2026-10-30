@@ -11,6 +11,8 @@
     "cost": 135.8,
     "lcc": 60,
     "type": "Survey Observatory",
+    "selection": "competed",
+    "management": "agency",
     "program": "Small-class Explorers (SMEX)",
     "target": "Universe",
     "launchVehicle": "Pegasus XL",
@@ -337,40 +339,23 @@
     "reconciliation": {
       "adsReturned": 79,
       "curatedOut": 3,
-      "curatedIn": 1,
+      "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
-      "duplicates": 1,
+      "duplicates": 0,
       "final": 76
     }
   },
   "curation": {
-    "includes": [
-      {
-        "bibcode": "2004ApJS..152..137T",
-        "doi": null,
-        "title": "Submillimeter Wave Astronomy Satellite Performance on the ground and in orbit",
-        "reason": "Ground and in-orbit performance of the SWAS instrument.",
-        "authority": "agent",
-        "date": "2026-10-02"
-      }
-    ],
+    "includes": [],
     "excludes": [
       {
         "bibcode": "1999ApJ...527..795K",
         "doi": "10.1086/308102",
         "title": "Far-Infrared and Submillimeter Emission from Galactic and Extragalactic Photodissociation Regions",
-        "reason": "incidental: General PDR model grid (Kaufman et al. 1999) applied to ISO and ground-based data; SWAS is one of five facilities for which the plots 'will be useful', a prospective relevance claim, not a scientific output of the mission. The acknowledgement is a funding line (NASA RTOP 399-25-01, which supports SWAS), not evidence of involvement. Owner decision 2026-09-07.",
+        "reason": "General photodissociation-region model grid; names SWAS only among facilities that may use it.",
         "authority": "human",
         "date": "2026-09-07"
-      },
-      {
-        "bibcode": "2004GeoRL..3124303P",
-        "doi": null,
-        "title": null,
-        "reason": "SWAS here is the Southwestern Atlantic Shelf; an ocean circulation study.",
-        "authority": "agent",
-        "date": "2026-09-06"
       },
       {
         "bibcode": "2007ITAP...55.2957S",

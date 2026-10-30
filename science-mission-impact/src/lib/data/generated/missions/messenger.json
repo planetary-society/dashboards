@@ -11,6 +11,8 @@
     "cost": 778.4,
     "lcc": 427,
     "type": "Orbiter",
+    "selection": "competed",
+    "management": "pi",
     "program": "Discovery",
     "target": "Mercury",
     "launchVehicle": "Delta II 7925",
@@ -27,12 +29,12 @@
     "m": 4.316,
     "i100": 64,
     "g": 119,
-    "tori": 70.136,
-    "riq": 440
+    "tori": 70.487,
+    "riq": 441
   },
   "facts": {
     "papers": 767,
-    "citations": 26876,
+    "citations": 26873,
     "publicationYears": [
       2008,
       2026
@@ -88,7 +90,7 @@
       527,
       769,
       921,
-      1101,
+      1087,
       1662,
       1599,
       1340,
@@ -99,14 +101,14 @@
       2454,
       2191,
       2204,
-      2270,
-      1916
+      2269,
+      1928
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 26876,
-      "observed": 26876,
+      "expected": 26873,
+      "observed": 26873,
       "missing": 0
     }
   },
@@ -159,51 +161,51 @@
     ],
     "authorCount": 15,
     "year": 2011,
-    "citations": 431
+    "citations": 430
   },
   "ranks": {
     "full": {
       "bins": [
-        14.241,
-        20.34,
-        34.43,
-        24.152,
-        26.119,
-        33.442,
-        34.596,
-        26.224,
-        47.959,
-        39.495
+        14.245,
+        20.342,
+        34.446,
+        24.236,
+        26.911,
+        32.564,
+        34.67,
+        26.26,
+        48.099,
+        39.227
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        8.148,
-        7.841,
-        15.714,
-        16.987,
-        19.31,
-        9.385,
-        7.07,
-        19.852,
-        18.643,
-        17.05
+        8.141,
+        7.854,
+        15.7,
+        17.987,
+        18.318,
+        9.41,
+        7.052,
+        19.981,
+        19.392,
+        16.165
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        68.884,
-        75.268,
-        66.983,
-        64.681,
-        82.331,
-        77.005,
-        86.761,
-        85.946,
-        82.629,
-        76.512
+        68.851,
+        75.069,
+        67.253,
+        64.642,
+        82.44,
+        77.007,
+        87.918,
+        85.855,
+        81.183,
+        76.782
       ],
       "top1": 1
     }
@@ -211,11 +213,11 @@
   "full": {
     "papers": 301,
     "outputBasis": "measured",
-    "citations": 4939,
-    "top10": 39.058,
-    "top10ShareOfDivision": 0.03599,
+    "citations": 4929,
+    "top10": 38.823,
+    "top10ShareOfDivision": 0.0357,
     "top1": 2,
-    "top1ShareOfDivision": 0.01843,
+    "top1ShareOfDivision": 0.01839,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.411,
@@ -238,7 +240,7 @@
       "m": 5.666
     },
     "spread": {
-      "mean": 16.409,
+      "mean": 16.375,
       "median": 11,
       "uncited": 10,
       "i10": 167,
@@ -248,11 +250,11 @@
   "window": {
     "papers": 140,
     "outputBasis": "measured",
-    "citations": 2760,
-    "top10": 17.05,
-    "top10ShareOfDivision": 0.03561,
+    "citations": 2750,
+    "top10": 16.165,
+    "top10ShareOfDivision": 0.03372,
     "top1": 1,
-    "top1ShareOfDivision": 0.02089,
+    "top1ShareOfDivision": 0.02086,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.411,
@@ -275,7 +277,7 @@
       "m": 9.935
     },
     "spread": {
-      "mean": 19.714,
+      "mean": 19.643,
       "median": 12,
       "uncited": 5,
       "i10": 81,
@@ -285,9 +287,9 @@
   "lifetime": {
     "papers": 767,
     "outputBasis": "measured",
-    "citations": 26876,
-    "top10": 74.262,
-    "top10ShareOfDivision": 0.04743,
+    "citations": 26873,
+    "top10": 74.532,
+    "top10ShareOfDivision": 0.04745,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -298,7 +300,7 @@
       "date": "2008-03-00"
     },
     "spread": {
-      "mean": 35.04,
+      "mean": 35.037,
       "median": 20,
       "uncited": 53,
       "i10": 520,
@@ -309,7 +311,7 @@
     "arms": "((((=abs:\"Mercury Surface, Space Environment, Geochemistry, and Ranging\" OR (abs:MESSENGER AND (abs:Mercury OR abs:hermean OR abs:mission OR abs:probe OR abs:spacecraft)) OR =abs:\"Mercury Dual Imaging System\" OR =abs:\"MESSENGER X-Ray Spectrometer\" OR =abs:\"MESSENGER Gamma-Ray Spectrometer\" OR =abs:\"MESSENGER Neutron Spectrometer\" OR =abs:\"MESSENGER Magnetometer\" OR =abs:\"Mercury Laser Altimeter\" OR =abs:\"MESSENGER Energetic Particle and Plasma Spectrometer\")) OR =abs:\"Mercury Atmospheric and Surface Composition Spectrometer\" OR ((abs:MASCS OR abs:MDIS OR abs:FIPS OR abs:EPPS OR =abs:\"Fast Imaging Plasma Spectrometer\") AND (abs:Mercury OR abs:hermean OR abs:MESSENGER)) OR facility:MESSENGER))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2011-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Mercury+Surface%2C+Space+Environment%2C+Geochemistry%2C+and+Ranging%22+OR+%28abs%3AMESSENGER+AND+%28abs%3AMercury+OR+abs%3Ahermean+OR+abs%3Amission+OR+abs%3Aprobe+OR+abs%3Aspacecraft%29%29+OR+%3Dabs%3A%22Mercury+Dual+Imaging+System%22+OR+%3Dabs%3A%22MESSENGER+X-Ray+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Gamma-Ray+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Neutron+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Magnetometer%22+OR+%3Dabs%3A%22Mercury+Laser+Altimeter%22+OR+%3Dabs%3A%22MESSENGER+Energetic+Particle+and+Plasma+Spectrometer%22%29%29+OR+%3Dabs%3A%22Mercury+Atmospheric+and+Surface+Composition+Spectrometer%22+OR+%28%28abs%3AMASCS+OR+abs%3AMDIS+OR+abs%3AFIPS+OR+abs%3AEPPS+OR+%3Dabs%3A%22Fast+Imaging+Plasma+Spectrometer%22%29+AND+%28abs%3AMercury+OR+abs%3Ahermean+OR+abs%3AMESSENGER%29%29+OR+facility%3AMESSENGER%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2011-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:44:48.493896+00:00",
+    "fetchedAt": "2026-10-30T20:10:39.945229+00:00",
     "reconciliation": {
       "adsReturned": 706,
       "curatedOut": 8,
@@ -947,38 +949,6 @@
         "reason": "Duplicate record of 2018ISPAr42.3.1389P (same paper).",
         "authority": "agent",
         "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2007SSRv..131....1D",
-        "doi": null,
-        "title": null,
-        "reason": "Foreword to a journal special issue; not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-09"
-      },
-      {
-        "bibcode": "2007SSRv..131...41H",
-        "doi": null,
-        "title": null,
-        "reason": "Review of Mercury geology before MESSENGER; names the mission only as future work.",
-        "authority": "agent",
-        "date": "2026-09-09"
-      },
-      {
-        "bibcode": "2007SSRv..131..161D",
-        "doi": null,
-        "title": null,
-        "reason": "Review of Mercury's exosphere from earlier data; uses no MESSENGER data.",
-        "authority": "agent",
-        "date": "2026-09-09"
-      },
-      {
-        "bibcode": "2007SSRv..131..105Z",
-        "doi": null,
-        "title": null,
-        "reason": "Review of Mercury geophysics before MESSENGER; anticipates its results but uses no data.",
-        "authority": "agent",
-        "date": "2026-09-09"
       }
     ]
   },
@@ -990,7 +960,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 431
+      "citations": 430
     },
     {
       "bibcode": "2011Sci...333.1859A",
@@ -999,7 +969,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 283
+      "citations": 282
     },
     {
       "bibcode": "2012Sci...336..214S",
@@ -1008,7 +978,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 269
+      "citations": 268
     },
     {
       "bibcode": "2011Sci...333.1853H",
@@ -1017,7 +987,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 247
+      "citations": 246
     },
     {
       "bibcode": "2009Sci...324..606S",
@@ -1044,7 +1014,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 240
+      "citations": 241
     },
     {
       "bibcode": "2013JGRE..118..891D",
@@ -1062,7 +1032,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 224
+      "citations": 223
     },
     {
       "bibcode": "2013JGRA..118.2213W",
@@ -1080,7 +1050,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 211
+      "citations": 210
     },
     {
       "bibcode": "2014NatGe...7..301B",
@@ -1092,21 +1062,21 @@
       "citations": 185
     },
     {
-      "bibcode": "2012Sci...336..217Z",
-      "title": "Topography of the Northern Hemisphere of Mercury from MESSENGER Laser Altimetry",
-      "firstAuthor": "Zuber, Maria T.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2012,
-      "citations": 182
-    },
-    {
       "bibcode": "2008Sci...321...69H",
       "title": "Volcanism on Mercury: Evidence from the First MESSENGER Flyby",
       "firstAuthor": "Head, James W.",
       "authors": null,
       "authorCount": null,
       "year": 2008,
+      "citations": 181
+    },
+    {
+      "bibcode": "2012Sci...336..217Z",
+      "title": "Topography of the Northern Hemisphere of Mercury from MESSENGER Laser Altimetry",
+      "firstAuthor": "Zuber, Maria T.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2012,
       "citations": 181
     },
     {
@@ -1125,7 +1095,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 174
+      "citations": 173
     },
     {
       "bibcode": "2013ApJ...767...41L",

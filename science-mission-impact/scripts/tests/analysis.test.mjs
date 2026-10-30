@@ -1,7 +1,7 @@
 import { strict as assert } from 'node:assert';
 import { describe, it } from 'node:test';
 
-import { buildAnalysis, rateSpread, selectionOf } from '../lib/analysis.mjs';
+import { buildAnalysis, managementOf, rateSpread, selectionOf } from '../lib/analysis.mjs';
 import { buildSite } from '../lib/site.mjs';
 
 /** A packaged mission row with only what the Analysis page reads. */
@@ -52,6 +52,16 @@ describe('selectionOf', () => {
 		for (const label of ['PI led', 'Strategic', 'competed', 'constructor']) {
 			assert.throws(() => selectionOf(label, 'juno'), (e) => e.name === 'PackagingError' && e.message.includes('juno') && e.message.includes(JSON.stringify(label)) && /predates the Competed\/Directed classification/.test(e.message));
 		}
+	});
+});
+
+describe('managementOf', () => {
+	it('maps the three models, reads Unknown or blank as unclassified and refuses anything else', () => {
+		assert.equal(managementOf('Agency-led', 'x'), 'agency');
+		assert.equal(managementOf('PI-led', 'x'), 'pi');
+		assert.equal(managementOf('Commercial-led', 'x'), 'commercial');
+		for (const label of ['Unknown', '', null, undefined]) assert.equal(managementOf(label, 'x'), null);
+		for (const label of ['PI led', 'Strategic', 'agency-led']) assert.throws(() => managementOf(label, 'juno'), (e) => e.name === 'PackagingError' && e.message.includes('juno'));
 	});
 });
 

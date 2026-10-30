@@ -11,6 +11,8 @@
     "cost": 463.7,
     "lcc": 218.5,
     "type": "Sample Return",
+    "selection": "competed",
+    "management": "pi",
     "program": "Discovery",
     "target": "Asteroids, Comets",
     "launchVehicle": "Delta II 7426",
@@ -27,12 +29,12 @@
     "m": 2.542,
     "i100": 32,
     "g": 108,
-    "tori": 72.84,
+    "tori": 72.875,
     "riq": 355
   },
   "facts": {
     "papers": 340,
-    "citations": 15225,
+    "citations": 15224,
     "publicationYears": [
       2003,
       2026
@@ -96,14 +98,14 @@
       44,
       66,
       146,
-      281,
+      280,
       602,
       1010,
       511,
       769,
       1093,
       806,
-      908,
+      907,
       932,
       731,
       896,
@@ -115,13 +117,13 @@
       633,
       858,
       597,
-      546
+      547
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 15225,
-      "observed": 15225,
+      "expected": 15224,
+      "observed": 15224,
       "missing": 0
     }
   },
@@ -179,28 +181,28 @@
   "ranks": {
     "full": {
       "bins": [
-        21.483,
-        18.227,
-        15.631,
-        21.776,
-        31.226,
-        19.951,
-        19.688,
-        28.533,
-        27.611,
-        22.874
+        21.49,
+        18.221,
+        15.644,
+        21.824,
+        31.183,
+        19.945,
+        19.813,
+        28.437,
+        27.635,
+        22.807
       ],
       "top1": 4
     },
     "window": {
       "bins": [
-        8.51,
-        6.487,
-        1.855,
-        7.965,
-        5.183,
-        1.795,
-        4.205,
+        8.497,
+        6.501,
+        1.849,
+        7.955,
+        5.197,
+        1.803,
+        4.197,
         4,
         4,
         12
@@ -209,16 +211,16 @@
     },
     "lifetime": {
       "bins": [
-        20.331,
-        27.066,
-        26.374,
-        32.091,
-        35.257,
-        42.974,
-        44.416,
-        36.636,
-        35.344,
-        39.512
+        20.316,
+        26.984,
+        26.482,
+        32.078,
+        35.343,
+        42.953,
+        44.58,
+        36.78,
+        35.295,
+        39.188
       ],
       "top1": 6
     }
@@ -226,11 +228,11 @@
   "full": {
     "papers": 227,
     "outputBasis": "measured",
-    "citations": 3724,
-    "top10": 22.374,
-    "top10ShareOfDivision": 0.02062,
+    "citations": 3723,
+    "top10": 22.307,
+    "top10ShareOfDivision": 0.02051,
     "top1": 4,
-    "top1ShareOfDivision": 0.03686,
+    "top1ShareOfDivision": 0.03678,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.413,
@@ -253,7 +255,7 @@
       "m": 3.165
     },
     "spread": {
-      "mean": 16.405,
+      "mean": 16.401,
       "median": 9,
       "uncited": 13,
       "i10": 110,
@@ -263,11 +265,11 @@
   "window": {
     "papers": 56,
     "outputBasis": "measured",
-    "citations": 1591,
+    "citations": 1590,
     "top10": 12,
-    "top10ShareOfDivision": 0.02506,
+    "top10ShareOfDivision": 0.02503,
     "top1": 3,
-    "top1ShareOfDivision": 0.06266,
+    "top1ShareOfDivision": 0.06258,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.413,
@@ -290,7 +292,7 @@
       "m": 5
     },
     "spread": {
-      "mean": 28.411,
+      "mean": 28.393,
       "median": 9.5,
       "uncited": 3,
       "i10": 28,
@@ -300,9 +302,9 @@
   "lifetime": {
     "papers": 340,
     "outputBasis": "measured",
-    "citations": 15225,
-    "top10": 37.512,
-    "top10ShareOfDivision": 0.02396,
+    "citations": 15224,
+    "top10": 37.188,
+    "top10ShareOfDivision": 0.02368,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -313,10 +315,10 @@
       "date": "2004-06-00"
     },
     "spread": {
-      "mean": 44.779,
+      "mean": 44.776,
       "median": 22,
       "uncited": 13,
-      "i10": 250,
+      "i10": 251,
       "i100": 32
     }
   },
@@ -324,7 +326,7 @@
     "arms": "((((=abs:\"Stardust\" AND (abs:\"Wild 2\" OR abs:\"Tempel 1\" OR =abs:\"aerogel\" OR abs:\"sample return\" OR abs:\"cometary coma\" OR abs:\"Dust Flux Monitor\" OR abs:\"CIDA\")) OR (=abs:\"Stardust-NExT\" OR =title:\"Stardust-NExT\")) OR =abs:\"Stardust spacecraft\" OR (=abs:\"Wild 2\" AND abs:comet AND (abs:sample OR =abs:aerogel OR (abs:organic AND abs:solid) OR (abs:particle AND abs:mineral)))) AND NOT title:(\"interstellar medium\" OR \"ISM\" OR \"star formation\" OR \"reddening\" OR \"supernova\") NOT title:(\"David Bowie\" OR \"Ziggy\" OR \"movie\" OR \"entertainment\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2004-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Stardust%22+AND+%28abs%3A%22Wild+2%22+OR+abs%3A%22Tempel+1%22+OR+%3Dabs%3A%22aerogel%22+OR+abs%3A%22sample+return%22+OR+abs%3A%22cometary+coma%22+OR+abs%3A%22Dust+Flux+Monitor%22+OR+abs%3A%22CIDA%22%29%29+OR+%28%3Dabs%3A%22Stardust-NExT%22+OR+%3Dtitle%3A%22Stardust-NExT%22%29%29+OR+%3Dabs%3A%22Stardust+spacecraft%22+OR+%28%3Dabs%3A%22Wild+2%22+AND+abs%3Acomet+AND+%28abs%3Asample+OR+%3Dabs%3Aaerogel+OR+%28abs%3Aorganic+AND+abs%3Asolid%29+OR+%28abs%3Aparticle+AND+abs%3Amineral%29%29%29%29+AND+NOT+title%3A%28%22interstellar+medium%22+OR+%22ISM%22+OR+%22star+formation%22+OR+%22reddening%22+OR+%22supernova%22%29+NOT+title%3A%28%22David+Bowie%22+OR+%22Ziggy%22+OR+%22movie%22+OR+%22entertainment%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:43:25.783286+00:00",
+    "fetchedAt": "2026-10-30T20:09:48.598240+00:00",
     "reconciliation": {
       "adsReturned": 342,
       "curatedOut": 4,
@@ -355,14 +357,6 @@
       }
     ],
     "excludes": [
-      {
-        "bibcode": "2006ScTEn.362..266G",
-        "doi": null,
-        "title": null,
-        "reason": "River-sediment study from an EU research project named Stardust, not the NASA comet mission.",
-        "authority": "agent",
-        "date": "2026-10-26"
-      },
       {
         "bibcode": "2018AdSpR..62.1921J",
         "doi": "10.1016/j.asr.2018.02.032",
@@ -450,7 +444,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 363
+      "citations": 362
     },
     {
       "bibcode": "2006Sci...314.1716H",

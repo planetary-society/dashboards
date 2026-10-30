@@ -11,6 +11,8 @@
     "cost": 188,
     "lcc": 93,
     "type": "Orbiter",
+    "selection": "directed",
+    "management": "agency",
     "program": "Advanced Earth Observing Satellite",
     "target": "Earth",
     "launchVehicle": "Titan II",
@@ -360,7 +362,7 @@
         "bibcode": "2000ITGRS..38.1893F",
         "doi": "10.1109/36.851772",
         "title": "On the assimilation of Ku-band scatterometer winds for weather analysis and forecasting",
-        "reason": "Owner exclusion (2026-10-02): Figa and Stoffelen's \"On the assimilation of Ku-band scatterometer winds for weather analysis and forecasting\" (doi:10.1109/36.851772) was written before QuikSCAT returned data. Its assimilation and quality-control results use NSCAT winds, with ERS comparisons; QuikSCAT is discussed as a future application, not a source of measured science results. Supporting review: var/first_science_publications/results/056.json; author manuscript: https://knmi-scatterometer-website-prd.s3-eu-west-1.amazonaws.com/publications/nscat_paper.pdf",
+        "reason": "Scatterometer wind assimilation study written before QuikSCAT returned data; uses NSCAT and ERS winds.",
         "authority": "human",
         "date": "2026-10-02"
       },
@@ -368,7 +370,7 @@
         "bibcode": "2000ITGRS..38...89S",
         "doi": "10.1109/36.823904",
         "title": "Improved resolution backscatter measurements with the SeaWinds pencil-beam scatterometer",
-        "reason": "Calibration paper (owner call, 2026-09-09). Describes the SeaWinds pencil-beam signal-processing hardware modification (deramp processing for range discrimination) and demonstrates it on a synthetic backscatter scene; no science result. Note this is the mission CSV's first_lifetime_n10_publication and first_lifetime_n100_publication (doi:10.1109/36.823904), so both fields move on the next export.",
+        "reason": "Signal-processing design for the SeaWinds scatterometer, demonstrated on a synthetic scene; no science result.",
         "authority": "human",
         "date": "2026-09-09"
       },

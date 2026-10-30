@@ -11,6 +11,8 @@
     "cost": 1670.9,
     "lcc": 1129,
     "type": "Orbiter",
+    "selection": "competed",
+    "management": "pi",
     "program": "New Frontiers",
     "target": "Jupiter",
     "launchVehicle": "Atlas V",
@@ -27,12 +29,12 @@
     "m": 5.636,
     "i100": 27,
     "g": 100,
-    "tori": 38.589,
-    "riq": 517
+    "tori": 38.665,
+    "riq": 518
   },
   "facts": {
     "papers": 829,
-    "citations": 18871,
+    "citations": 18876,
     "publicationYears": [
       2016,
       2026
@@ -67,22 +69,22 @@
     ],
     "citations": [
       4,
-      548,
+      566,
       599,
       778,
       1650,
       1647,
-      1967,
-      2309,
-      2821,
+      1966,
+      2308,
+      2820,
       3410,
-      3138
+      3128
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 18871,
-      "observed": 18871,
+      "expected": 18876,
+      "observed": 18876,
       "missing": 0
     }
   },
@@ -135,63 +137,63 @@
     ],
     "authorCount": 4,
     "year": 2021,
-    "citations": 512
+    "citations": 510
   },
   "ranks": {
     "full": {
       "bins": [
-        16.603,
-        38.075,
-        34.512,
-        38.184,
-        62.118,
-        64.969,
-        76.013,
-        67.618,
-        66.54,
-        62.369
+        16.613,
+        38.07,
+        34.553,
+        38.338,
+        61.969,
+        64.971,
+        76.168,
+        67.667,
+        66.618,
+        62.033
       ],
       "top1": 6
     },
     "window": {
       "bins": [
-        17.019,
-        41.951,
-        47.437,
-        56.242,
-        64.032,
-        71.217,
-        57.563,
-        57.846,
-        43.593,
-        38.1
+        16.994,
+        41.992,
+        47.405,
+        56.185,
+        64.24,
+        71.251,
+        57.476,
+        57.753,
+        43.54,
+        38.165
       ],
       "top1": 3
     },
     "lifetime": {
       "bins": [
-        105.102,
-        114.484,
-        115.792,
-        90.809,
-        98.018,
-        96.37,
-        76.83,
-        59.594,
+        105.653,
+        114.216,
+        115.563,
+        90.754,
+        98.17,
+        96.275,
+        76.959,
+        59.41,
         36,
         36
       ],
-      "top1": 3.785
+      "top1": 3.53
     }
   },
   "full": {
     "papers": 527,
     "outputBasis": "measured",
     "citations": 9111,
-    "top10": 61.869,
-    "top10ShareOfDivision": 0.05701,
+    "top10": 61.533,
+    "top10ShareOfDivision": 0.05659,
     "top1": 6,
-    "top1ShareOfDivision": 0.05528,
+    "top1ShareOfDivision": 0.05518,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.433,
@@ -225,10 +227,10 @@
     "papers": 495,
     "outputBasis": "measured",
     "citations": 8692,
-    "top10": 38.1,
-    "top10ShareOfDivision": 0.07957,
+    "top10": 38.165,
+    "top10ShareOfDivision": 0.07961,
     "top1": 3,
-    "top1ShareOfDivision": 0.06266,
+    "top1ShareOfDivision": 0.06258,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.676,
@@ -261,9 +263,9 @@
   "lifetime": {
     "papers": 829,
     "outputBasis": "measured",
-    "citations": 18871,
+    "citations": 18876,
     "top10": 34,
-    "top10ShareOfDivision": 0.02172,
+    "top10ShareOfDivision": 0.02165,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -274,10 +276,10 @@
       "date": "2016-03-00"
     },
     "spread": {
-      "mean": 22.764,
+      "mean": 22.77,
       "median": 11,
       "uncited": 77,
-      "i10": 445,
+      "i10": 446,
       "i100": 27
     }
   },
@@ -285,14 +287,14 @@
     "arms": "((=abs:\"Juno mission\" OR =abs:\"Juno spacecraft\" OR =abs:\"Jupiter Near-polar Orbiter\" OR ((=abs:Juno OR abs:JIRAM OR =abs:JunoCam) AND (abs:Jupiter OR abs:Jovian OR abs:Io OR abs:Europa OR abs:Ganymede OR abs:Callisto OR abs:Thebe OR abs:Amalthea OR abs:Adrastea OR abs:Metis))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2016-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Juno+mission%22+OR+%3Dabs%3A%22Juno+spacecraft%22+OR+%3Dabs%3A%22Jupiter+Near-polar+Orbiter%22+OR+%28%28%3Dabs%3AJuno+OR+abs%3AJIRAM+OR+%3Dabs%3AJunoCam%29+AND+%28abs%3AJupiter+OR+abs%3AJovian+OR+abs%3AIo+OR+abs%3AEuropa+OR+abs%3AGanymede+OR+abs%3ACallisto+OR+abs%3AThebe+OR+abs%3AAmalthea+OR+abs%3AAdrastea+OR+abs%3AMetis%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2016-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:47:31.336459+00:00",
+    "fetchedAt": "2026-10-30T20:11:57.190587+00:00",
     "reconciliation": {
       "adsReturned": 848,
       "curatedOut": 21,
-      "curatedIn": 3,
+      "curatedIn": 2,
       "libraryOut": 0,
       "otherOut": 0,
-      "duplicates": 1,
+      "duplicates": 0,
       "final": 829
     }
   },
@@ -302,17 +304,9 @@
         "bibcode": "2016ApJ...819...72L",
         "doi": null,
         "title": "Longitudinal Properties of a Widespread Solar Energetic Particle Event on 2014 February 25: Evolution of the Associated CME Shock",
-        "reason": "cruise, energetic-particle observations (instrument not named in the abstract): Analyzes the 2014 February 25 SEP event using multipoint particle observations that include the Juno spacecraft at 2.11 au, 48 degrees east of Earth, during cruise.",
+        "reason": "Multi-spacecraft study of a 2014 solar energetic particle event that includes Juno cruise observations.",
         "authority": "human",
         "date": "2026-09-06"
-      },
-      {
-        "bibcode": "2017SSRv..213..187S",
-        "doi": null,
-        "title": "High-Precision Laboratory Measurements Supporting Retrieval of Water Vapor, Gaseous Ammonia, and Aqueous Ammonia Clouds with the Juno Microwave Radiometer (MWR)",
-        "reason": "Laboratory gas absorption measurements made to support Juno microwave radiometer retrievals.",
-        "authority": "agent",
-        "date": "2026-10-02"
       },
       {
         "bibcode": "2016Ap&SS.361..272A",
@@ -349,26 +343,10 @@
         "date": "2026-09-04"
       },
       {
-        "bibcode": "2017SSRv..213....1B",
-        "doi": null,
-        "title": null,
-        "reason": "Editorial introduction to a journal topical collection; not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-04"
-      },
-      {
         "bibcode": null,
         "doi": "10.1002/2016JE005080",
         "title": "Understanding Jupiter's interior",
         "reason": "Review of Jupiter interior models; mentions Juno only as a future source of measurements.",
-        "authority": "agent",
-        "date": "2026-09-04"
-      },
-      {
-        "bibcode": "2016JGRA..12112068H",
-        "doi": null,
-        "title": null,
-        "reason": "General review of search coil magnetometers; does not name Juno.",
         "authority": "agent",
         "date": "2026-09-04"
       },
@@ -384,7 +362,7 @@
         "bibcode": "2017PhPl...24d1401S",
         "doi": "10.1063/1.4978618",
         "title": "Properties of hydrogen, helium, and silicon dioxide mixtures in giant planet interiors",
-        "reason": "pre_science_cutoff: Published before Juno's first mission science papers on 2017-05-25; excluded by the human-approved chronology gate so pre-results theory, predictions, context, and mission news cannot register as returned science.",
+        "reason": "Published before Juno's first science results; a pre-results paper.",
         "authority": "human",
         "date": "2026-09-05"
       },
@@ -392,7 +370,7 @@
         "bibcode": "2017JGRA..122.2210E",
         "doi": "10.1002/2016JA023189",
         "title": "Applications of the Jupiter Global Ionosphere-Thermosphere Model: A case study of auroral electron energy deposition",
-        "reason": "pre_science_cutoff: Published before Juno's first mission science papers on 2017-05-25; excluded by the human-approved chronology gate so pre-results theory, predictions, context, and mission news cannot register as returned science.",
+        "reason": "Published before Juno's first science results; a pre-results paper.",
         "authority": "human",
         "date": "2026-09-05"
       },
@@ -400,7 +378,7 @@
         "bibcode": "2017JGRA..122.1763M",
         "doi": null,
         "title": null,
-        "reason": "pre_science_cutoff: Published before Juno's first mission science papers on 2017-05-25; excluded by the human-approved chronology gate so pre-results theory, predictions, context, and mission news cannot register as returned science.",
+        "reason": "Published before Juno's first science results; a pre-results paper.",
         "authority": "human",
         "date": "2026-09-05"
       },
@@ -408,7 +386,7 @@
         "bibcode": "2017MNRAS.464.4282A",
         "doi": "10.1093/mnras/stw2651",
         "title": "A pebbles accretion model with chemistry and implications for the Solar system",
-        "reason": "pre_science_cutoff: Published before Juno's first mission science papers on 2017-05-25; excluded by the human-approved chronology gate so pre-results theory, predictions, context, and mission news cannot register as returned science.",
+        "reason": "Published before Juno's first science results; a pre-results paper.",
         "authority": "human",
         "date": "2026-09-05"
       },
@@ -416,7 +394,7 @@
         "bibcode": "2017Ap&SS.362...42A",
         "doi": "10.1007/s10509-017-3025-z",
         "title": "The flyby anomaly: a multivariate analysis approach",
-        "reason": "pre_science_cutoff: Published before Juno's first mission science papers on 2017-05-25; excluded by the human-approved chronology gate so pre-results theory, predictions, context, and mission news cannot register as returned science.",
+        "reason": "Published before Juno's first science results; a pre-results paper.",
         "authority": "human",
         "date": "2026-09-05"
       },
@@ -424,7 +402,7 @@
         "bibcode": "2017ApJ...836..227L",
         "doi": "10.3847/1538-4357/836/2/227",
         "title": "Jupiter’s Formation and Its Primordial Internal Structure",
-        "reason": "pre_science_cutoff: Published before Juno's first mission science papers on 2017-05-25; excluded by the human-approved chronology gate so pre-results theory, predictions, context, and mission news cannot register as returned science.",
+        "reason": "Published before Juno's first science results; a pre-results paper.",
         "authority": "human",
         "date": "2026-09-05"
       },
@@ -432,7 +410,7 @@
         "bibcode": "2017AnGeo..35..239T",
         "doi": "10.5194/angeo-35-239-2017",
         "title": "The generation of Ganymede's diffuse aurora through pitch angle scattering",
-        "reason": "pre_science_cutoff: Published before Juno's first mission science papers on 2017-05-25; excluded by the human-approved chronology gate so pre-results theory, predictions, context, and mission news cannot register as returned science.",
+        "reason": "Published before Juno's first science results; a pre-results paper.",
         "authority": "human",
         "date": "2026-09-05"
       },
@@ -440,7 +418,7 @@
         "bibcode": "2017NatAs...1E..10I",
         "doi": "10.1038/s41550-016-0010",
         "title": "Three eras of planetary exploration",
-        "reason": "pre_science_cutoff: Published before Juno's first mission science papers on 2017-05-25; excluded by the human-approved chronology gate so pre-results theory, predictions, context, and mission news cannot register as returned science.",
+        "reason": "Published before Juno's first science results; a pre-results paper.",
         "authority": "human",
         "date": "2026-09-05"
       },
@@ -448,7 +426,7 @@
         "bibcode": "2016ApJ...832..172S",
         "doi": "10.3847/0004-637X/832/2/172",
         "title": "Diffuse Aurora on Ganymede Driven by Electrostatic Waves",
-        "reason": "pre_science_cutoff: Published before Juno's first mission science papers on 2017-05-25; excluded by the human-approved chronology gate so pre-results theory, predictions, context, and mission news cannot register as returned science.",
+        "reason": "Published before Juno's first science results; a pre-results paper.",
         "authority": "human",
         "date": "2026-09-05"
       },
@@ -456,7 +434,7 @@
         "bibcode": "2016A&A...596A.114M",
         "doi": "10.1051/0004-6361/201629732",
         "title": "Jupiter internal structure: the effect of different equations of state",
-        "reason": "pre_science_cutoff: Published before Juno's first mission science papers on 2017-05-25; excluded by the human-approved chronology gate so pre-results theory, predictions, context, and mission news cannot register as returned science.",
+        "reason": "Published before Juno's first science results; a pre-results paper.",
         "authority": "human",
         "date": "2026-09-05"
       },
@@ -464,7 +442,7 @@
         "bibcode": "2016GeoRL..4311558A",
         "doi": "10.1002/2016GL070787",
         "title": "Mapping of hydrocarbons and H₃⁺ emissions at Jupiter's north pole using Galileo/NIMS data",
-        "reason": "pre_science_cutoff: Published before Juno's first mission science papers on 2017-05-25; excluded by the human-approved chronology gate so pre-results theory, predictions, context, and mission news cannot register as returned science.",
+        "reason": "Published before Juno's first science results; a pre-results paper.",
         "authority": "human",
         "date": "2026-09-05"
       },
@@ -472,7 +450,7 @@
         "bibcode": "2016GeoRL..4310611O",
         "doi": "10.1002/2016GL071188",
         "title": "Slantwise convection on fluid planets",
-        "reason": "pre_science_cutoff: Published before Juno's first mission science papers on 2017-05-25; excluded by the human-approved chronology gate so pre-results theory, predictions, context, and mission news cannot register as returned science.",
+        "reason": "Published before Juno's first science results; a pre-results paper.",
         "authority": "human",
         "date": "2026-09-05"
       },
@@ -480,7 +458,7 @@
         "bibcode": "2016ApJ...829..118V",
         "doi": "10.3847/0004-637X/829/2/118",
         "title": "The Evolution and Internal Structure of Jupiter and Saturn with Compositional Gradients",
-        "reason": "pre_science_cutoff: Published before Juno's first mission science papers on 2017-05-25; excluded by the human-approved chronology gate so pre-results theory, predictions, context, and mission news cannot register as returned science.",
+        "reason": "Published before Juno's first science results; a pre-results paper.",
         "authority": "human",
         "date": "2026-09-05"
       },
@@ -488,7 +466,7 @@
         "bibcode": "2016Icar..276...21W",
         "doi": "10.1016/j.icarus.2016.04.027",
         "title": "Modeling the disequilibrium species for Jupiter and Saturn: Implications for Juno and Saturn entry probe",
-        "reason": "pre_science_cutoff: Published before Juno's first mission science papers on 2017-05-25; excluded by the human-approved chronology gate so pre-results theory, predictions, context, and mission news cannot register as returned science.",
+        "reason": "Published before Juno's first science results; a pre-results paper.",
         "authority": "human",
         "date": "2026-09-05"
       },
@@ -497,22 +475,6 @@
         "doi": "10.3390/s26072250",
         "title": "Tests of HgCdTe Photodetectors Performances for Implementation on the MIST-A Instrument",
         "reason": "Tests detectors for a future asteroid-mission instrument; mentions JIRAM only as heritage.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2022JGRE..12707323K",
-        "doi": null,
-        "title": null,
-        "reason": "Ground-based mapping of Ganymede; does not name Juno or its instruments.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2022JGRA..12730581S",
-        "doi": null,
-        "title": null,
-        "reason": "Models Io's oxygen torus from Hisaki observations; does not name Juno.",
         "authority": "agent",
         "date": "2026-09-08"
       },
@@ -542,7 +504,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 512
+      "citations": 510
     },
     {
       "bibcode": "2017GeoRL..44.4649W",
@@ -569,7 +531,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 330
+      "citations": 328
     },
     {
       "bibcode": "2018GeoRL..45.2590C",
@@ -581,6 +543,15 @@
       "citations": 311
     },
     {
+      "bibcode": "2017SSRv..213..547M",
+      "title": "The Jovian Auroral Distributions Experiment (JADE) on the Juno Mission to Jupiter",
+      "firstAuthor": "McComas, D. J.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2017,
+      "citations": 281
+    },
+    {
       "bibcode": "2017Sci...356..821B",
       "title": "Jupiter's interior and deep atmosphere: The initial pole-to-pole passes with the Juno spacecraft",
       "firstAuthor": "Bolton, S. J.",
@@ -588,15 +559,6 @@
       "authorCount": null,
       "year": 2017,
       "citations": 278
-    },
-    {
-      "bibcode": "2017SSRv..213..547M",
-      "title": "The Jovian Auroral Distributions Experiment (JADE) on the Juno Mission to Jupiter",
-      "firstAuthor": "McComas, D. J.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2017,
-      "citations": 274
     },
     {
       "bibcode": "2017MNRAS.469.3994B",
@@ -614,7 +576,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 229
+      "citations": 228
     },
     {
       "bibcode": "2017SSRv..213..289M",
@@ -623,7 +585,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 204
+      "citations": 205
+    },
+    {
+      "bibcode": "2017SSRv..213..219B",
+      "title": "Magnetospheric Science Objectives of the Juno Mission",
+      "firstAuthor": "Bagenal, F.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2017,
+      "citations": 190
     },
     {
       "bibcode": "2017SSRv..213..347K",
@@ -632,7 +603,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 188
+      "citations": 187
     },
     {
       "bibcode": "2019ApJ...872..100D",
@@ -653,22 +624,13 @@
       "citations": 185
     },
     {
-      "bibcode": "2017SSRv..213..219B",
-      "title": "Magnetospheric Science Objectives of the Juno Mission",
-      "firstAuthor": "Bagenal, F.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2017,
-      "citations": 184
-    },
-    {
       "bibcode": "2018Natur.555..220I",
       "title": "Measurement of Jupiter’s asymmetric gravity field",
       "firstAuthor": "Iess, L.",
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 183
+      "citations": 182
     },
     {
       "bibcode": "2018Natur.555..227G",
@@ -686,7 +648,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 156
+      "citations": 155
     },
     {
       "bibcode": "2017SSRv..213..393A",
@@ -695,7 +657,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 144
+      "citations": 145
     },
     {
       "bibcode": "2020NatAs...4..609L",
@@ -713,7 +675,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 138
+      "citations": 139
     }
   ],
   "papersFile": {

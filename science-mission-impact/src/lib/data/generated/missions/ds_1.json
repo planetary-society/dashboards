@@ -11,6 +11,8 @@
     "cost": 314.6,
     "lcc": 152,
     "type": "Flyby",
+    "selection": "directed",
+    "management": "agency",
     "program": "New Millennium Program (NMP)",
     "target": "Near-Earth Asteroid 9660 Braille",
     "launchVehicle": "Delta II 7326",
@@ -27,12 +29,12 @@
     "m": 0.821,
     "i100": 2,
     "g": 40,
-    "tori": 11.633,
+    "tori": 11.655,
     "riq": 136
   },
   "facts": {
     "papers": 57,
-    "citations": 1712,
+    "citations": 1713,
     "publicationYears": [
       1999,
       2023
@@ -127,13 +129,13 @@
       62,
       73,
       50,
-      32
+      33
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 1712,
-      "observed": 1712,
+      "expected": 1713,
+      "observed": 1713,
       "missing": 0
     }
   },
@@ -191,27 +193,27 @@
   "ranks": {
     "full": {
       "bins": [
-        4.121,
-        4.879,
-        2.503,
-        4.521,
-        2.977,
-        1.431,
-        0.984,
-        2.342,
-        0.242,
+        4.123,
+        4.877,
+        2.508,
+        4.528,
+        2.964,
+        1.436,
+        0.991,
+        2.352,
+        0.221,
         1
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        1.787,
-        1.213,
-        1.213,
-        1.787,
-        0.223,
-        0.777,
+        1.785,
+        1.215,
+        1.212,
+        1.788,
+        0.229,
+        0.771,
         0,
         1,
         0,
@@ -222,12 +224,12 @@
     "lifetime": {
       "bins": [
         2,
-        5.679,
-        6.969,
-        6.096,
-        5.3,
-        11.471,
-        4.485,
+        5.66,
+        6.992,
+        6.092,
+        5.332,
+        11.45,
+        4.474,
         5,
         6,
         4
@@ -312,7 +314,7 @@
   "lifetime": {
     "papers": 57,
     "outputBasis": "measured",
-    "citations": 1712,
+    "citations": 1713,
     "top10": 4,
     "top10ShareOfDivision": 0.00255,
     "top1": null,
@@ -325,7 +327,7 @@
       "date": "2001-06-00"
     },
     "spread": {
-      "mean": 30.035,
+      "mean": 30.053,
       "median": 18,
       "uncited": 2,
       "i10": 40,
@@ -336,102 +338,20 @@
     "arms": "(((=abs:\"Deep Space 1\" OR =abs:\"Deep Space-1\" OR abs:DS1 OR abs:\"DS-1\" OR =abs:\"Miniature Integrated Camera and Spectrometer\" OR =abs:\"Plasma Experiment for Planetary Exploration\") AND (abs:comet* OR abs:asteroid* OR abs:Borrelly OR abs:Braille)) AND NOT (title:propulsion OR title:thruster OR title:telecommunications OR =title:\"pointing control\" OR =title:\"mission design\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1998-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Deep+Space+1%22+OR+%3Dabs%3A%22Deep+Space-1%22+OR+abs%3ADS1+OR+abs%3A%22DS-1%22+OR+%3Dabs%3A%22Miniature+Integrated+Camera+and+Spectrometer%22+OR+%3Dabs%3A%22Plasma+Experiment+for+Planetary+Exploration%22%29+AND+%28abs%3Acomet%2A+OR+abs%3Aasteroid%2A+OR+abs%3ABorrelly+OR+abs%3ABraille%29%29+AND+NOT+%28title%3Apropulsion+OR+title%3Athruster+OR+title%3Atelecommunications+OR+%3Dtitle%3A%22pointing+control%22+OR+%3Dtitle%3A%22mission+design%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:43:10.898612+00:00",
+    "fetchedAt": "2026-10-30T20:09:38.062176+00:00",
     "reconciliation": {
       "adsReturned": 57,
       "curatedOut": 0,
-      "curatedIn": 7,
+      "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
-      "duplicates": 7,
+      "duplicates": 0,
       "final": 57
     }
   },
   "curation": {
-    "includes": [
-      {
-        "bibcode": "2003AdSpR..31.2519D",
-        "doi": null,
-        "title": "Models of P/Borrelly: Activity and dust mantle formation",
-        "reason": "Thermal model of comet Borrelly built on Deep Space 1 flyby observations.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2003GeoRL..30.2134T",
-        "doi": null,
-        "title": "Dust impacts at Comet P/Borrelly",
-        "reason": "Dust impacts at comet Borrelly detected by Deep Space 1's plasma wave antennas.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2004Icar..167...70O",
-        "doi": null,
-        "title": "The nucleus of Comet Borrelly: a study of morphology and surface brightness",
-        "reason": "Nucleus topography of comet Borrelly from Deep Space 1 stereo images.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2004Icar..167...89T",
-        "doi": null,
-        "title": "Plasma clouds associated with Comet P/Borrelly dust impacts",
-        "reason": "Dust-impact plasma clouds measured by Deep Space 1 at comet Borrelly.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2005SoSyR..39...73S",
-        "doi": null,
-        "title": "Spacecraft exploration of asteroids",
-        "reason": "Review of asteroid results from spacecraft, including Deep Space 1.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2007AdSpR..39..428M",
-        "doi": null,
-        "title": "Properties of 19P/Borrelly",
-        "reason": "Models comet Borrelly's activity and compares it with Deep Space 1 results.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2013P&SS...75...17T",
-        "doi": null,
-        "title": "SLAMS at comet 19P/Borrelly: DS1 observations",
-        "reason": "Deep Space 1 observations of plasma waves and the bow shock at comet Borrelly.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      }
-    ],
-    "excludes": [
-      {
-        "bibcode": "1999TMOPR.137D...1M",
-        "doi": null,
-        "title": null,
-        "reason": "Mars Global Surveyor communications experiment; does not name Deep Space 1.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2001AcAau..48..439F",
-        "doi": null,
-        "title": null,
-        "reason": "Maintenance plans for reusable launch vehicles; mentions Deep Space 1 only as technology heritage.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2003AcAau..52..309B",
-        "doi": null,
-        "title": null,
-        "reason": "Ion propulsion study for a proposed comet sample return mission; mentions Deep Space 1 only as heritage.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      }
-    ]
+    "includes": [],
+    "excludes": []
   },
   "topCited": [
     {
@@ -549,7 +469,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 43
+      "citations": 44
     },
     {
       "bibcode": "2001GeoRL..28.1913R",

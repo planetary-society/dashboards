@@ -91,6 +91,9 @@ export interface Site {
 /** How a mission was chosen, from upstream `selection_strategy`: 'Competed' / 'Directed'; null for 'Unknown' or blank. */
 export type Selection = 'competed' | 'directed' | null;
 
+/** Who ran a mission, from upstream `management_model`: 'Agency-led' / 'PI-led' / 'Commercial-led'; null for 'Unknown' or blank. */
+export type Management = 'agency' | 'pi' | 'commercial' | null;
+
 /** A cost tier ($M, the snapshot's adjusted dollar year): membership is lo < cost <= hi. The first tier's lo is 0; the last tier's hi is null (open). */
 export interface CostTier {
 	lo: number;
@@ -513,6 +516,7 @@ export interface MissionRow {
 	shortfall: boolean; // Failure, Partial Failure or Partial Success
 	type: string | null; // mission_type, e.g. "Orbiter"
 	selection: Selection;
+	management: Management; // packaged for later analysis; no page reads it yet
 	indices: MissionIndices;
 	papers: number | null; // lifetime
 	citations: number | null; // lifetime

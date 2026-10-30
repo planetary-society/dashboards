@@ -11,6 +11,8 @@
     "cost": 484.2,
     "lcc": 310,
     "type": "Survey Observatory",
+    "selection": "competed",
+    "management": "pi",
     "program": "Medium-class Explorers (MIDEX)",
     "target": "Universe",
     "launchVehicle": "Delta II",
@@ -307,31 +309,15 @@
     "reconciliation": {
       "adsReturned": 2610,
       "curatedOut": 7,
-      "curatedIn": 3,
+      "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
-      "duplicates": 2,
+      "duplicates": 0,
       "final": 2604
     }
   },
   "curation": {
     "includes": [
-      {
-        "bibcode": "2012ApJS..201...19D",
-        "doi": null,
-        "title": "The Hawaii Infrared Parallax Program. I. Ultracool Binaries and the L/T Transition",
-        "reason": "Parallax study of ultracool dwarfs that analyses WISE photometry in its body.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2017AJ....154..201K",
-        "doi": null,
-        "title": "Infrared Photometric Properties of 709 Candidate Stellar Bowshock Nebulae",
-        "reason": "Infrared photometry of bowshock nebulae measured from WISE images.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
       {
         "bibcode": "2014PASP..126..605S",
         "doi": null,
@@ -394,7 +380,7 @@
         "bibcode": "2019AJ....158...97M",
         "doi": "10.3847/1538-3881/ab31a6",
         "title": "Thermophysical Modeling of NEOWISE Observations of DESTINY⁺ Targets Phaethon and 2005 UD",
-        "reason": "NEOWISE-mission thermophysical study of Phaethon and 2005 UD; WISE appears only inside \"Near-Earth Object WISE (NEOWISE)\". Planetary NEOWISE science stays in the NEOWISE corpus (DESIGN_DECISIONS section 1, data-product collision).",
+        "reason": "NEOWISE study of asteroids Phaethon and 2005 UD; WISE appears only within the NEOWISE name.",
         "authority": "human",
         "date": "2026-09-23"
       }

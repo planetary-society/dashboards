@@ -11,6 +11,8 @@
     "cost": 377.9,
     "lcc": 263,
     "type": "Orbiter",
+    "selection": "directed",
+    "management": "agency",
     "program": "Lunar Quest",
     "target": "Moon",
     "launchVehicle": "Minotaur V",
@@ -146,11 +148,11 @@
   "ranks": {
     "full": {
       "bins": [
-        4.707,
+        4.708,
         2.196,
-        1.097,
-        2.023,
-        2.977,
+        1.096,
+        2.036,
+        2.964,
         2,
         2,
         3,
@@ -161,14 +163,14 @@
     },
     "window": {
       "bins": [
-        4.787,
-        2.211,
-        0.215,
-        3.35,
-        2.437,
-        1.795,
-        2.115,
-        4.09,
+        4.785,
+        2.214,
+        0.213,
+        3.349,
+        2.439,
+        1.803,
+        2.12,
+        4.076,
         1,
         0
       ],
@@ -176,15 +178,15 @@
     },
     "lifetime": {
       "bins": [
-        11.833,
-        9.507,
-        8.485,
-        6.548,
+        11.829,
+        9.501,
+        8.496,
+        6.546,
         5.628,
-        8.515,
-        7.485,
-        6.572,
-        5.428,
+        8.526,
+        7.474,
+        6.759,
+        5.241,
         5
       ],
       "top1": 0
@@ -291,7 +293,7 @@
     "arms": "((=abs:\"Lunar Atmosphere and Dust Environment Explorer\" OR ((abs:LADEE OR abs:LDEX OR =abs:\"Lunar Dust Experiment\") AND abs:(Moon OR lunar OR dust))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2013-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Atmosphere+and+Dust+Environment+Explorer%22+OR+%28%28abs%3ALADEE+OR+abs%3ALDEX+OR+%3Dabs%3A%22Lunar+Dust+Experiment%22%29+AND+abs%3A%28Moon+OR+lunar+OR+dust%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2013-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:48:44.426974+00:00",
+    "fetchedAt": "2026-10-30T20:12:18.989658+00:00",
     "reconciliation": {
       "adsReturned": 78,
       "curatedOut": 3,
@@ -309,7 +311,7 @@
         "bibcode": "2011SSRv..165....3A",
         "doi": null,
         "title": null,
-        "reason": "Angelopoulos 2011, \"The ARTEMIS Mission\" (doi 10.1007/s11214-010-9687-2). An ARTEMIS mission overview, not an LADEE paper: it reaches the LADEE corpus through the abs:\"LADEE\" arm paired with the lunar/Moon co-term, but the only LRO mention is the incidental \"ARTEMIS is synergistic with concurrent NASA missions LRO and LADEE\", which names LADEE as a contemporaneous mission and draws no data, product or result from it.",
+        "reason": "Overview of the ARTEMIS mission; mentions LADEE only as a concurrent mission.",
         "authority": "human",
         "date": "2026-09-08"
       },

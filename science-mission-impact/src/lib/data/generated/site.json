@@ -1,12 +1,12 @@
 {
-  "asOf": "2026-10-28",
-  "fetchedMin": "2026-10-27T05:39:48.128008+00:00",
-  "fetchedMax": "2026-10-27T06:21:19.576234+00:00",
-  "codeRevision": "b34d1509fbf6c03229a83ee58dc497f3d629c088",
+  "asOf": "2026-10-30",
+  "fetchedMin": "2026-10-27T05:50:32.879439+00:00",
+  "fetchedMax": "2026-10-30T20:12:43.453997+00:00",
+  "codeRevision": "6f7f4733a371c6e6755d2b78f53d4600c9256c66",
   "codeRevisionDirty": true,
   "missions": 141,
-  "papersDistinct": 142738,
-  "citationsDistinct": 6131659,
+  "papersDistinct": 142787,
+  "citationsDistinct": 6134403,
   "launchYears": [
     1980,
     2024
@@ -38,7 +38,7 @@
       "nav": "Astrophysics",
       "missions": 25,
       "papers": 63485,
-      "citations": 3468218,
+      "citations": 3468220,
       "publicationYears": [
         1983,
         2026
@@ -89,8 +89,8 @@
       "name": "Planetary Science",
       "nav": "Planetary",
       "missions": 37,
-      "papers": 15657,
-      "citations": 586687,
+      "papers": 15706,
+      "citations": 589419,
       "publicationYears": [
         1990,
         2026
@@ -106,11 +106,11 @@
     "missionMetadataSource": "The Planetary Society NASA science mission database"
   },
   "filters": {
-    "astrophysics": "Launch Date <= 2026-10-28 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Astrophysics\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-28 or failure 2 years after mission end with no recorded publications AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"SOFIA\"}",
-    "biological-physical": "Launch Date <= 2026-10-28 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Biological & Physical Sciences\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-28 or failure 2 years after mission end with no recorded publications AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"}",
-    "earth": "Launch Date <= 2026-10-28 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Earth Science\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-28 or failure 2 years after mission end with no recorded publications AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"Geosat\"}",
-    "heliophysics": "Launch Date <= 2026-10-28 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Heliophysics\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-28 or failure 2 years after mission end with no recorded publications AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"DICE\"}",
-    "planetary": "Launch Date <= 2026-10-28 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Planetary Science\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-28 or failure 2 years after mission end with no recorded publications AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"Clementine\"}"
+    "astrophysics": "Launch Date <= 2026-10-30 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Astrophysics\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-30 or failure 2 years after mission end with no recorded publications AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"SOFIA\"}",
+    "biological-physical": "Launch Date <= 2026-10-30 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Biological & Physical Sciences\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-30 or failure 2 years after mission end with no recorded publications AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"}",
+    "earth": "Launch Date <= 2026-10-30 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Earth Science\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-30 or failure 2 years after mission end with no recorded publications AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"Geosat\"}",
+    "heliophysics": "Launch Date <= 2026-10-30 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Heliophysics\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-30 or failure 2 years after mission end with no recorded publications AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"DICE\"}",
+    "planetary": "Launch Date <= 2026-10-30 (launched missions only) AND Excluding hosted-payload missions AND Division = \"Planetary Science\" AND Launch Date > 1980-01-01 AND Publication window mature by 2026-10-30 or failure 2 years after mission end with no recorded publications AND Nation in {\"United States*\"} AND Mission Type not in {\"Hosted Instrument\"} AND Mission Type not in {\"Instrument\"} AND Short Title not in {\"Clementine\"}"
   },
   "story": {
     "referenceCost": 150,
@@ -326,11 +326,11 @@
         "missions": 7,
         "measuredMissions": 7,
         "top10": 10.5,
-        "share": 0.009674726481661325,
+        "share": 0.009656051447442112,
         "missionsAll": 37,
         "missionShare": 0.18919,
         "costShare": 0.01005,
-        "citationShare": 0.00649
+        "citationShare": 0.00646
       }
     ],
     "bands": [
@@ -378,10 +378,10 @@
           "withTop": 11,
           "top10": 131.699,
           "top10PerMission": 3.212,
-          "top1": 8.463,
-          "top1PerMission": 0.206,
+          "top1": 8.396,
+          "top1PerMission": 0.205,
           "cost": 1416.6,
-          "citations": 15513,
+          "citations": 15512,
           "median": 0,
           "papersMedian": 1,
           "noPapers": 17,
@@ -408,12 +408,12 @@
           "missions": 95,
           "failed": 8,
           "withTop": 84,
-          "top10": 10969.402,
-          "top10PerMission": 115.467,
-          "top1": 1101.648,
-          "top1PerMission": 11.596,
+          "top10": 10971.501,
+          "top10PerMission": 115.489,
+          "top1": 1101.923,
+          "top1PerMission": 11.599,
           "cost": 113927.2,
-          "citations": 2155322,
+          "citations": 2155857,
           "median": 42.55,
           "papersMedian": 541,
           "noPapers": 8,
@@ -421,7 +421,7 @@
             "id": "hst",
             "name": "Hubble",
             "top10": 1651.002,
-            "share": 0.15051
+            "share": 0.15048
           },
           "costMin": 158.6,
           "costMax": 13890.2,
@@ -547,13 +547,13 @@
             "missions": 30,
             "failed": 4,
             "withTop": 24,
-            "top10": 1074.802,
-            "top10PerMission": 35.827,
+            "top10": 1076.901,
+            "top10PerMission": 35.897,
             "largest": {
               "id": "cassini",
               "name": "Cassini",
-              "top10": 192.559,
-              "share": 0.17916
+              "top10": 191.687,
+              "share": 0.178
             }
           }
         }
@@ -566,159 +566,156 @@
         "heliophysics",
         "planetary"
       ],
-      "p25": 757.1,
+      "p25": 756.4,
       "p50": 1361.2,
       "p75": 2353.5,
-      "costShare": 0.46788,
-      "missionShare": 0.25229
+      "costShare": 0.47767,
+      "missionShare": 0.2658
     },
     "focusDivision": "planetary",
     "primer": {
       "division": "planetary",
       "name": "Planetary Science",
       "counts": [
-        664,
-        596,
-        622,
+        665,
+        597,
+        624,
         639,
-        633,
-        608,
-        573,
-        531,
-        499,
-        458,
-        419,
-        377,
-        302,
-        319,
-        245,
-        270,
+        634,
+        609,
+        572,
+        535,
+        500,
+        455,
+        423,
+        378,
+        301,
+        313,
+        252,
+        269,
         222,
-        218,
-        178,
-        195,
-        151,
+        219,
+        180,
+        193,
+        153,
         146,
-        163,
-        123,
-        111,
-        81,
-        84,
+        164,
+        125,
+        108,
+        83,
+        82,
         78,
         88,
-        75,
+        76,
         92,
-        61,
-        59,
-        46,
+        60,
+        60,
+        47,
         54,
-        33,
-        45,
-        41,
-        38,
-        28,
+        37,
+        44,
+        39,
+        40,
+        29,
         30,
         25,
-        26,
-        22,
-        26,
+        25,
+        21,
+        27,
         22,
         24,
-        14,
+        15,
+        18,
         19,
+        25,
         20,
-        23,
-        21,
         10,
         15,
+        15,
+        8,
+        20,
+        8,
+        15,
         14,
+        11,
+        10,
+        10,
+        6,
+        3,
+        3,
+        6,
+        11,
         9,
-        19,
-        7,
-        17,
-        13,
-        10,
-        11,
-        8,
-        6,
-        4,
-        3,
-        6,
-        10,
-        11,
-        8,
-        4,
-        3,
-        6,
         9,
-        11,
+        4,
+        3,
+        6,
         10,
+        11,
+        9,
         5,
-        3,
-        4,
+        2,
+        5,
         1,
         2,
         2,
         6,
         6,
+        3,
+        8,
+        2,
+        4,
+        2,
+        4,
+        4,
+        6,
+        2,
+        3,
+        2,
+        4,
         3,
         7,
+        2,
+        2,
+        1,
+        1,
         3,
-        4,
+        0,
         2,
         3,
-        6,
+        3,
+        3,
+        2,
         5,
-        2,
-        3,
-        2,
-        4,
-        4,
-        6,
-        2,
-        2,
-        1,
-        2,
-        2,
-        0,
-        2,
-        3,
-        3,
         3,
         1,
-        7,
-        1,
-        2,
-        4,
         3,
-        4,
-        1,
-        1,
-        2,
-        1,
         3,
+        5,
         1,
+        2,
+        1,
+        1,
+        2,
+        2,
         2,
         2,
         0,
         1,
         2,
         1,
-        2,
         1,
         2,
-        0,
-        1,
-        1,
-        0,
-        2,
-        1,
-        0,
-        0,
         2,
         0,
+        1,
+        1,
+        0,
+        3,
         0,
         0,
+        0,
+        1,
         1,
         0,
         0,
@@ -726,6 +723,9 @@
         0,
         0,
         1,
+        0,
+        1,
+        0,
         5,
         1,
         0,
@@ -744,8 +744,8 @@
         0,
         0,
         0,
-        1,
         0,
+        1,
         0,
         0,
         1,
@@ -776,18 +776,7 @@
         0,
         0,
         0,
-        0,
         1,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
         0,
         0,
         1,
@@ -797,6 +786,17 @@
         0,
         0,
         0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         1,
         0,
@@ -813,25 +813,25 @@
         0,
         1,
         0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
         0,
         0,
         0,
@@ -871,117 +871,114 @@
         0,
         0,
         0,
-        53.3,
-        59,
-        46,
+        48.4,
+        60,
+        47,
         54,
-        33,
-        45,
-        41,
-        38,
-        28,
+        37,
+        44,
+        39,
+        40,
+        29,
         30,
         25,
-        26,
-        22,
-        26,
+        25,
+        21,
+        27,
         22,
         24,
-        14,
+        15,
+        18,
         19,
+        25,
         20,
-        23,
-        21,
         10,
         15,
+        15,
+        8,
+        20,
+        8,
+        15,
         14,
+        11,
+        10,
+        10,
+        6,
+        3,
+        3,
+        6,
+        11,
         9,
-        19,
-        7,
-        17,
-        13,
-        10,
-        11,
-        8,
-        6,
-        4,
-        3,
-        6,
-        10,
-        11,
-        8,
-        4,
-        3,
-        6,
         9,
-        11,
+        4,
+        3,
+        6,
         10,
+        11,
+        9,
         5,
-        3,
-        4,
+        2,
+        5,
         1,
         2,
         2,
         6,
         6,
+        3,
+        8,
+        2,
+        4,
+        2,
+        4,
+        4,
+        6,
+        2,
+        3,
+        2,
+        4,
         3,
         7,
+        2,
+        2,
+        1,
+        1,
         3,
-        4,
+        0,
         2,
         3,
-        6,
+        3,
+        3,
+        2,
         5,
-        2,
-        3,
-        2,
-        4,
-        4,
-        6,
-        2,
-        2,
-        1,
-        2,
-        2,
-        0,
-        2,
-        3,
-        3,
         3,
         1,
-        7,
-        1,
-        2,
-        4,
         3,
-        4,
-        1,
-        1,
-        2,
-        1,
         3,
+        5,
         1,
+        2,
+        1,
+        1,
+        2,
+        2,
         2,
         2,
         0,
         1,
         2,
         1,
-        2,
         1,
         2,
-        0,
-        1,
-        1,
-        0,
-        2,
-        1,
-        0,
-        0,
         2,
         0,
+        1,
+        1,
+        0,
+        3,
         0,
         0,
+        0,
+        1,
         1,
         0,
         0,
@@ -989,6 +986,9 @@
         0,
         0,
         1,
+        0,
+        1,
+        0,
         5,
         1,
         0,
@@ -1007,8 +1007,8 @@
         0,
         0,
         0,
-        1,
         0,
+        1,
         0,
         0,
         1,
@@ -1039,18 +1039,7 @@
         0,
         0,
         0,
-        0,
         1,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
         0,
         0,
         1,
@@ -1060,6 +1049,17 @@
         0,
         0,
         0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         1,
         0,
@@ -1076,25 +1076,25 @@
         0,
         1,
         0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
         0,
         0,
         0,
@@ -1102,9 +1102,9 @@
         0,
         1
       ],
-      "papers": 10853,
+      "papers": 10874,
       "cutoff": 31,
-      "topPapers": 1085.3
+      "topPapers": 1087.4
     },
     "rate": {
       "end": "2024-01-01",
@@ -1194,7 +1194,7 @@
           "largest": {
             "id": "cassini",
             "name": "Cassini",
-            "perYear": 13.03,
+            "perYear": 13.015,
             "size": "over"
           },
           "small": {
@@ -1205,13 +1205,13 @@
           "larger": {
             "missions": 30,
             "none": 4,
-            "median": 2.055
+            "median": 2.012
           },
           "bestSmall": {
             "id": "lunar_prospector",
             "name": "Lunar Prospector",
-            "perYear": 1.743,
-            "above": 13
+            "perYear": 1.718,
+            "above": 12
           }
         }
       ]
@@ -1306,8 +1306,8 @@
             "key": "over",
             "missions": 17,
             "cost": 10863.4,
-            "citations": 178738,
-            "perHundredM": 1645.323
+            "citations": 178739,
+            "perHundredM": 1645.332
           }
         ],
         "favors": null,
@@ -1318,7 +1318,7 @@
             "side": "under"
           }
         ],
-        "margin": 0.28277,
+        "margin": 0.28276,
         "largestUnder": {
           "id": "trace",
           "name": "TRACE",
@@ -1342,32 +1342,32 @@
             "key": "under",
             "missions": 7,
             "cost": 388.5,
-            "citations": 1073,
-            "perHundredM": 276.19
+            "citations": 1072,
+            "perHundredM": 275.933
           },
           {
             "key": "over",
             "missions": 30,
             "cost": 38266,
-            "citations": 164349,
-            "perHundredM": 429.491
+            "citations": 164883,
+            "perHundredM": 430.886
           }
         ],
         "favors": "over",
         "flipsOn": [],
-        "margin": 0.35694,
+        "margin": 0.35961,
         "largestUnder": {
           "id": "lunar_prospector",
           "name": "Lunar Prospector",
-          "share": 0.589
+          "share": 0.58862
         },
         "fit": {
           "missions": 29,
           "zeros": 8,
           "slope": 0.302,
-          "intercept": 1.666,
+          "intercept": 1.667,
           "tenfold": 2,
-          "citesTenfold": 20.05,
+          "citesTenfold": 20.04,
           "holds": true
         }
       }
@@ -1632,8 +1632,8 @@
               "key": "over",
               "missions": 20,
               "cost": 34211.3,
-              "citations": 3981788,
-              "perHundredM": 11638.809
+              "citations": 3981790,
+              "perHundredM": 11638.815
             }
           ],
           "favors": "over",
@@ -2108,8 +2108,8 @@
               "key": "over",
               "missions": 17,
               "cost": 10863.4,
-              "citations": 178738,
-              "perHundredM": 1645.323
+              "citations": 178739,
+              "perHundredM": 1645.332
             }
           ],
           "favors": null,
@@ -2120,7 +2120,7 @@
               "side": "under"
             }
           ],
-          "margin": 0.28277,
+          "margin": 0.28276,
           "largestUnder": {
             "id": "trace",
             "name": "TRACE",
@@ -2342,11 +2342,11 @@
           "missions": 7,
           "measuredMissions": 7,
           "top10": 10.5,
-          "share": 0.009674726481661325,
+          "share": 0.009656051447442112,
           "missionsAll": 37,
           "missionShare": 0.18919,
           "costShare": 0.01005,
-          "citationShare": 0.00649
+          "citationShare": 0.00646
         },
         "failure": {
           "division": "planetary",
@@ -2382,13 +2382,13 @@
             "missions": 30,
             "failed": 4,
             "withTop": 24,
-            "top10": 1074.802,
-            "top10PerMission": 35.827,
+            "top10": 1076.901,
+            "top10PerMission": 35.897,
             "largest": {
               "id": "cassini",
               "name": "Cassini",
-              "top10": 192.559,
-              "share": 0.17916
+              "top10": 191.687,
+              "share": 0.178
             }
           }
         },
@@ -2400,32 +2400,32 @@
               "key": "under",
               "missions": 7,
               "cost": 388.5,
-              "citations": 1073,
-              "perHundredM": 276.19
+              "citations": 1072,
+              "perHundredM": 275.933
             },
             {
               "key": "over",
               "missions": 30,
               "cost": 38266,
-              "citations": 164349,
-              "perHundredM": 429.491
+              "citations": 164883,
+              "perHundredM": 430.886
             }
           ],
           "favors": "over",
           "flipsOn": [],
-          "margin": 0.35694,
+          "margin": 0.35961,
           "largestUnder": {
             "id": "lunar_prospector",
             "name": "Lunar Prospector",
-            "share": 0.589
+            "share": 0.58862
           },
           "fit": {
             "missions": 29,
             "zeros": 8,
             "slope": 0.302,
-            "intercept": 1.666,
+            "intercept": 1.667,
             "tenfold": 2,
-            "citesTenfold": 20.05,
+            "citesTenfold": 20.04,
             "holds": true
           }
         }
@@ -2437,11 +2437,11 @@
           "missions": 7,
           "measuredMissions": 7,
           "top10": 7.5,
-          "share": 0.015664160401002505,
+          "share": 0.01564458832830273,
           "missionsAll": 37,
           "missionShare": 0.18919,
           "costShare": 0.01005,
-          "citationShare": 0.0114
+          "citationShare": 0.01137
         },
         "failure": {
           "division": "planetary",
@@ -2477,13 +2477,13 @@
             "missions": 30,
             "failed": 4,
             "withTop": 23,
-            "top10": 471.3,
-            "top10PerMission": 15.71,
+            "top10": 471.899,
+            "top10PerMission": 15.73,
             "largest": {
               "id": "cassini",
               "name": "Cassini",
-              "top10": 82.1,
-              "share": 0.1742
+              "top10": 82.165,
+              "share": 0.17412
             }
           }
         },
@@ -2495,15 +2495,15 @@
               "key": "under",
               "missions": 7,
               "cost": 388.5,
-              "citations": 1020,
-              "perHundredM": 262.548
+              "citations": 1019,
+              "perHundredM": 262.291
             },
             {
               "key": "over",
               "missions": 30,
               "cost": 38266,
-              "citations": 88436,
-              "perHundredM": 231.109
+              "citations": 88581,
+              "perHundredM": 231.487
             }
           ],
           "favors": null,
@@ -2514,11 +2514,11 @@
               "side": "under"
             }
           ],
-          "margin": 0.11975,
+          "margin": 0.11744,
           "largestUnder": {
             "id": "lunar_prospector",
             "name": "Lunar Prospector",
-            "share": 0.56765
+            "share": 0.56722
           },
           "fit": {
             "missions": 29,
@@ -2526,7 +2526,7 @@
             "slope": 0.193,
             "intercept": 1.771,
             "tenfold": 1.56,
-            "citesTenfold": 15.61,
+            "citesTenfold": 15.6,
             "holds": true
           }
         }
@@ -2537,12 +2537,12 @@
           "name": "Planetary Science",
           "missions": 7,
           "measuredMissions": 7,
-          "top10": 48.756,
-          "share": 0.031140045257683303,
+          "top10": 48.391,
+          "share": 0.030810479039247367,
           "missionsAll": 37,
           "missionShare": 0.18919,
           "costShare": 0.01005,
-          "citationShare": 0.02658
+          "citationShare": 0.02631
         },
         "failure": {
           "division": "planetary",
@@ -2565,26 +2565,26 @@
             "missions": 7,
             "failed": 4,
             "withTop": 2,
-            "top10": 48.756,
-            "top10PerMission": 6.965,
+            "top10": 48.391,
+            "top10PerMission": 6.913,
             "largest": {
               "id": "lunar_prospector",
               "name": "Lunar Prospector",
-              "top10": 45.256,
-              "share": 0.92821
+              "top10": 44.594,
+              "share": 0.92153
             }
           },
           "over": {
             "missions": 30,
             "failed": 4,
             "withTop": 26,
-            "top10": 1516.945,
-            "top10PerMission": 50.565,
+            "top10": 1522.211,
+            "top10PerMission": 50.74,
             "largest": {
               "id": "cassini",
               "name": "Cassini",
-              "top10": 263.497,
-              "share": 0.1737
+              "top10": 263.202,
+              "share": 0.17291
             }
           }
         },
@@ -2596,15 +2596,15 @@
               "key": "under",
               "missions": 7,
               "cost": 388.5,
-              "citations": 17432,
-              "perHundredM": 4487.001
+              "citations": 17377,
+              "perHundredM": 4472.844
             },
             {
               "key": "over",
               "missions": 30,
               "cost": 38266,
-              "citations": 638283,
-              "perHundredM": 1668.016
+              "citations": 643163,
+              "perHundredM": 1680.769
             }
           ],
           "favors": null,
@@ -2615,19 +2615,19 @@
               "side": "under"
             }
           ],
-          "margin": 0.62826,
+          "margin": 0.62423,
           "largestUnder": {
             "id": "lunar_prospector",
             "name": "Lunar Prospector",
-            "share": 0.83043
+            "share": 0.8296
           },
           "fit": {
             "missions": 30,
             "zeros": 7,
             "slope": -0.091,
-            "intercept": 3.371,
+            "intercept": 3.373,
             "tenfold": 0.81,
-            "citesTenfold": 8.12,
+            "citesTenfold": 8.11,
             "holds": false
           }
         }
@@ -3061,7 +3061,7 @@
         {
           "division": "planetary",
           "name": "Planetary Science",
-          "papers": 10853,
+          "papers": 10874,
           "c": 9,
           "cutoffs": {
             "1": 98,
@@ -3615,8 +3615,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "competed",
-        "n50": 116.222,
-        "rate": 0.88449
+        "n50": 116.111,
+        "rate": 0.88365
       },
       {
         "id": "swas",
@@ -3901,8 +3901,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "competed",
-        "n50": 2021.25,
-        "rate": 6.70843
+        "n50": 2021.375,
+        "rate": 6.70885
       },
       {
         "id": "wmap",
@@ -4083,8 +4083,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "directed",
-        "n50": 1359.111,
-        "rate": 3.029
+        "n50": 1359.333,
+        "rate": 3.02949
       },
       {
         "id": "swift",
@@ -4109,8 +4109,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "competed",
-        "n50": 640.778,
-        "rate": 1.38188
+        "n50": 640.667,
+        "rate": 1.38164
       },
       {
         "id": "neowise",
@@ -4213,8 +4213,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "directed",
-        "n50": 2058.333,
-        "rate": 3.7397
+        "n50": 2147.889,
+        "rate": 3.90241
       },
       {
         "id": "smm",
@@ -4265,8 +4265,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "directed",
-        "n50": 177,
-        "rate": 0.28874
+        "n50": 176.889,
+        "rate": 0.28856
       },
       {
         "id": "deep_impact_epoxi",
@@ -4278,8 +4278,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "competed",
-        "n50": 713.667,
-        "rate": 1.14461
+        "n50": 713.778,
+        "rate": 1.14479
       },
       {
         "id": "oco_2",
@@ -4330,8 +4330,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "competed",
-        "n50": 159.222,
-        "rate": 0.21977
+        "n50": 159,
+        "rate": 0.21946
       },
       {
         "id": "opportunity",
@@ -4343,8 +4343,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "directed",
-        "n50": 1114.222,
-        "rate": 1.47306
+        "n50": 1114.667,
+        "rate": 1.47365
       },
       {
         "id": "spirit",
@@ -4356,8 +4356,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "directed",
-        "n50": 885.333,
-        "rate": 1.17046
+        "n50": 885.667,
+        "rate": 1.1709
       },
       {
         "id": "polar",
@@ -4382,8 +4382,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "competed",
-        "n50": 849.778,
-        "rate": 1.0917
+        "n50": 848.667,
+        "rate": 1.09027
       },
       {
         "id": "lro",
@@ -4395,8 +4395,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "directed",
-        "n50": 1662.222,
-        "rate": 2.06231
+        "n50": 1663,
+        "rate": 2.06328
       },
       {
         "id": "iras",
@@ -4421,8 +4421,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "competed",
-        "n50": 271.333,
-        "rate": 0.31209
+        "n50": 272,
+        "rate": 0.31286
       },
       {
         "id": "dawn",
@@ -4434,8 +4434,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "competed",
-        "n50": 1049.111,
-        "rate": 1.18785
+        "n50": 1048.667,
+        "rate": 1.18735
       },
       {
         "id": "maven",
@@ -4447,8 +4447,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "competed",
-        "n50": 1678,
-        "rate": 1.7274
+        "n50": 1678.444,
+        "rate": 1.72786
       },
       {
         "id": "rbsp",
@@ -4512,8 +4512,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "competed",
-        "n50": 829,
-        "rate": 0.66747
+        "n50": 828.889,
+        "rate": 0.66738
       },
       {
         "id": "landsat_8",
@@ -4577,8 +4577,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "directed",
-        "n50": 2535.778,
-        "rate": 1.8629
+        "n50": 2536,
+        "rate": 1.86306
       },
       {
         "id": "insight",
@@ -4590,8 +4590,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "competed",
-        "n50": 893.333,
-        "rate": 0.65422
+        "n50": 894,
+        "rate": 0.65471
       },
       {
         "id": "landsat_4",
@@ -4746,8 +4746,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "directed",
-        "n50": 438.667,
-        "rate": 0.2606
+        "n50": 438.778,
+        "rate": 0.26067
       },
       {
         "id": "aura",
@@ -4850,8 +4850,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "directed",
-        "n50": 2592.111,
-        "rate": 0.64471
+        "n50": 2591.778,
+        "rate": 0.64462
       },
       {
         "id": "galileo",
@@ -4889,8 +4889,8 @@
         "failed": false,
         "shortfall": false,
         "selection": "directed",
-        "n50": 6250.444,
-        "rate": 0.82182
+        "n50": 6249.667,
+        "rate": 0.82172
       },
       {
         "id": "hst",
@@ -5176,7 +5176,7 @@
       {
         "missions": 60,
         "zeros": 7,
-        "median": 1.58736,
+        "median": 1.58765,
         "q1": 0.46659,
         "q3": 4.31544,
         "whiskers": [
@@ -5190,7 +5190,7 @@
         "missions": 35,
         "zeros": 1,
         "median": 1.81136,
-        "q1": 0.74465,
+        "q1": 0.74455,
         "q3": 4.10779,
         "whiskers": [
           0,
@@ -5468,7 +5468,7 @@
               "missions": 8,
               "n50Share": 0.20561,
               "costShare": 0.17015,
-              "ratio": 1.20839
+              "ratio": 1.2084
             },
             {
               "missions": 3,
@@ -5491,7 +5491,7 @@
           ],
           "under": {
             "missions": 16,
-            "ratio": 1.38715,
+            "ratio": 1.38714,
             "top10": 119.178
           },
           "best": {
@@ -5508,47 +5508,47 @@
               "missions": 4,
               "n50Share": 0.00007,
               "costShare": 0.00155,
-              "ratio": 0.04274
+              "ratio": 0.04261
             },
             {
               "missions": 3,
-              "n50Share": 0.00592,
+              "n50Share": 0.0059,
               "costShare": 0.0085,
-              "ratio": 0.69702
+              "ratio": 0.69451
             },
             {
               "missions": 4,
               "n50Share": 0.00157,
               "costShare": 0.03167,
-              "ratio": 0.04966
+              "ratio": 0.04951
             },
             {
               "missions": 10,
-              "n50Share": 0.18569,
+              "n50Share": 0.1881,
               "costShare": 0.13409,
-              "ratio": 1.38484
+              "ratio": 1.40279
             },
             {
               "missions": 10,
-              "n50Share": 0.39102,
+              "n50Share": 0.38991,
               "costShare": 0.25327,
-              "ratio": 1.54389
+              "ratio": 1.53952
             },
             {
               "missions": 6,
-              "n50Share": 0.41573,
+              "n50Share": 0.41445,
               "costShare": 0.57092,
-              "ratio": 0.72817
+              "ratio": 0.72594
             }
           ],
           "under": {
             "missions": 7,
-            "ratio": 0.59581,
+            "ratio": 0.59366,
             "top10": 10.5
           },
           "best": {
             "tier": 4,
-            "ratio": 1.54389,
+            "ratio": 1.53952,
             "holds": false
           }
         }
@@ -5585,8 +5585,8 @@
             "missions": 35,
             "zeros": 2,
             "median": 1.84543,
-            "q1": 1.10564,
-            "q3": 6.20518,
+            "q1": 1.10493,
+            "q3": 6.20539,
             "whiskers": [
               0,
               13.58923
@@ -5595,8 +5595,8 @@
           "directed": {
             "missions": 24,
             "zeros": 4,
-            "median": 1.30071,
-            "q1": 0.25417,
+            "median": 1.30093,
+            "q1": 0.25404,
             "q3": 2.37928,
             "whiskers": [
               0,
@@ -5608,19 +5608,19 @@
           "competed": {
             "missions": 4,
             "zeros": 0,
-            "median": 0.79437,
-            "q1": 0.66416,
+            "median": 0.79432,
+            "q1": 0.66421,
             "q3": 2.74393,
             "whiskers": [
-              0.65422,
+              0.65471,
               0.92126
             ]
           },
           "directed": {
             "missions": 31,
             "zeros": 1,
-            "median": 1.8629,
-            "q1": 0.99387,
+            "median": 1.86306,
+            "q1": 0.99381,
             "q3": 4.10779,
             "whiskers": [
               0,
@@ -5685,13 +5685,13 @@
       {
         "division": "planetary",
         "name": "Planetary Science",
-        "overMedian": 0.64946,
+        "overMedian": 0.64966,
         "missions": [
           {
             "id": "lunar_prospector",
             "name": "Lunar Prospector",
             "cost": 131.4,
-            "rate": 0.88449
+            "rate": 0.88365
           }
         ]
       }

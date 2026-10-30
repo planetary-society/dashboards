@@ -1,7 +1,6 @@
 // Rows for the key-measures tables, one builder per page. Pure (no $lib, no $app) so node can
 // test it: a hint carries its methods anchor and the table turns that into a link.
 import { FOOTNOTES, noteText } from './footnotes.js';
-import { scopeLabel } from './window.js';
 import { int, money, weight, longDate } from '../format.js';
 
 /** h-index is a count; m-index runs 0–12 and needs its decimal. */
@@ -17,19 +16,40 @@ const rowsFor = (site, scope) => (label, ids, value, note = null) => ({
 	hint: ids && { text: noteText(ids, site, scope), anchor: FOOTNOTES[ids[0]].anchor }
 });
 
-/** The prime mission by month, "April 1990 to April 2005", or null when the catalog lacks either end. */
-export const primeSpan = ({ scienceStart, primeEnd }) => (scienceStart && primeEnd ? `${longDate(scienceStart.slice(0, 7))} to ${longDate(primeEnd.slice(0, 7))}` : null);
+const SELECTION = { competed: 'Competed', directed: 'Directed' };
+const MANAGEMENT = { agency: 'Agency-led', pi: 'PI-led', commercial: 'Commercial-led' };
 
-/** When it launched, its prime mission, and what it cost as reported and adjusted; no scope changes these. A fact the catalog leaves blank drops out. */
-export function missionFacts(mission, site) {
-	const row = rowsFor(site);
-	const { meta } = mission;
-	return [
-		row('Launch date', null, meta.dates.launch && longDate(meta.dates.launch)),
-		row('Prime mission', null, primeSpan(meta.dates)),
-		// an unknown side is a dash, never a zero
-		row('Life-cycle cost', ['cost'], (meta.lcc != null || meta.cost != null) && `${money(meta.lcc)}/${money(meta.cost)} (${site.costBaseYear} $)`)
-	].filter((r) => r.value);
+/**
+ * The quiet line under a mission's name: type, selection, management, launch, status, then the
+ * life-cycle cost as reported and adjusted (an unknown side a dash, never a zero). A part the
+ * catalog leaves blank drops out. The cost comes apart from the lead (which ends on its separator)
+ * so the page can keep it on one line with its definition.
+ */
+export function missionLine(meta, site) {
+	const status = meta.status?.trim();
+	const parts = [
+		meta.type,
+		SELECTION[meta.selection],
+		MANAGEMENT[meta.management],
+		meta.dates.launch && `Launched on ${longDate(meta.dates.launch)}`,
+		status && status !== 'unknown' && status
+	].filter(Boolean);
+	const cost = meta.lcc != null || meta.cost != null ? `LCC: ${money(meta.lcc)}/${money(meta.cost)} (${site.costBaseYear} $)` : null;
+	return { lead: parts.join(' · ') + (cost && parts.length ? ' · ' : ''), cost };
+}
+
+/**
+ * The mission's own publication dates for each scope, added to the scope switch's hints: a
+ * measured window's exported bounds, and the lifetime from the first publication year to the
+ * data's as-of date. A scope with nothing measured gets none.
+ */
+export function scopeSpans(mission, site) {
+	const b = mission.full?.spread && mission.full.bounds?.status === 'available' && mission.full.bounds.start ? mission.full.bounds : null;
+	const first = mission.facts?.publicationYears?.[0];
+	return {
+		full: b && `For ${mission.name}, papers published ${longDate(b.start)} to ${longDate(b.end)}.`,
+		lifetime: first && `For ${mission.name}, papers published from ${first} to ${longDate(site.asOf)}.`
+	};
 }
 
 /**
@@ -43,11 +63,10 @@ export function missionMeasureGroups(mission, scope, site) {
 	const sp = s?.spread;
 	const life = mission.indices ?? {};
 	const ix = scope === 'lifetime' ? life : (s?.indices ?? {});
-	// A measured window names its publication dates beside the scope; lifetime and empty windows have none.
-	const b = sp && s.bounds?.status === 'available' && s.bounds.start ? s.bounds : null;
 	return [
 		{
-			heading: b ? `${scopeLabel(scope)} · papers ${longDate(b.start)} to ${longDate(b.end)}` : scopeLabel(scope),
+			// the scope switch names the scope and its dates (`scopeSpans`), so the counts go unheaded
+			heading: null,
 			// Spread is null when the scope's output was not measured: no row may read as a zero then.
 			rows: sp
 				? [

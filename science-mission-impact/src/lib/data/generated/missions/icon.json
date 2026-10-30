@@ -11,6 +11,8 @@
     "cost": 340.4,
     "lcc": 252.7,
     "type": "Remote Sensing Observatory",
+    "selection": "competed",
+    "management": "pi",
     "program": "Medium-class Explorers (MIDEX)",
     "target": "Earth",
     "launchVehicle": "Pegasus XL",
@@ -277,24 +279,15 @@
     "reconciliation": {
       "adsReturned": 217,
       "curatedOut": 4,
-      "curatedIn": 1,
+      "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
-      "duplicates": 1,
+      "duplicates": 0,
       "final": 213
     }
   },
   "curation": {
-    "includes": [
-      {
-        "bibcode": "2020SSRv..216...33B",
-        "doi": null,
-        "title": "IDA4D: Ionospheric Data Assimilation for the ICON Mission",
-        "reason": "Data assimilation system built to ingest ICON's ionospheric data products.",
-        "authority": "agent",
-        "date": "2026-10-02"
-      }
-    ],
+    "includes": [],
     "excludes": [
       {
         "bibcode": "2020JASTP.20705363H",
@@ -306,30 +299,6 @@
       },
       {
         "bibcode": "2021ACP....2113855S",
-        "doi": null,
-        "title": null,
-        "reason": "Uses the UA-ICON weather model, not the ICON spacecraft.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
-        "bibcode": "2022AMT....15.5769S",
-        "doi": null,
-        "title": null,
-        "reason": "Uses the UA-ICON weather model, not the ICON spacecraft.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
-        "bibcode": "2022JASTP.24105967K",
-        "doi": null,
-        "title": null,
-        "reason": "Uses the UA-ICON weather model, not the ICON spacecraft.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
-        "bibcode": "2022JGRD..12736039C",
         "doi": null,
         "title": null,
         "reason": "Uses the UA-ICON weather model, not the ICON spacecraft.",
@@ -385,34 +354,10 @@
         "date": "2026-09-05"
       },
       {
-        "bibcode": "2025ASAJ..157A.314K",
-        "doi": null,
-        "title": null,
-        "reason": "Uses the UA-ICON weather model, not the ICON spacecraft.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
         "bibcode": "2025GMD....18.3359K",
         "doi": null,
         "title": null,
         "reason": "Describes the UA-ICON weather model, not the ICON spacecraft.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
-        "bibcode": "2025GMD....18.7891R",
-        "doi": null,
-        "title": null,
-        "reason": "Uses the ICON-ART chemistry model, not the ICON spacecraft.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
-        "bibcode": "2025JGRD..13043363G",
-        "doi": null,
-        "title": null,
-        "reason": "Uses the UA-ICON weather model, not the ICON spacecraft.",
         "authority": "agent",
         "date": "2026-09-05"
       },
@@ -441,14 +386,6 @@
         "date": "2026-09-05"
       },
       {
-        "bibcode": "2026AMT....19.4277H",
-        "doi": null,
-        "title": null,
-        "reason": "Uses the UA-ICON weather model, not the ICON spacecraft.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
         "bibcode": "2026AnGp...69P.214B",
         "doi": "10.4401/ag-9594",
         "title": "Preface on the Special Issue \"International Reference Ionosphere: Improvement and Evaluation of a Global Standard\"",
@@ -473,36 +410,12 @@
         "date": "2026-09-05"
       },
       {
-        "bibcode": "2026JGRD..13145270B",
-        "doi": null,
-        "title": null,
-        "reason": "Uses the UA-ICON weather model, not the ICON spacecraft.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
         "bibcode": "2026JGRD..13145506K",
         "doi": "10.1029/2025JD045506",
         "title": "Impact of Non-Classical Gravity-Wave Dynamics on Middle-Atmosphere Mean Flow and Solar Tides",
         "reason": "Uses the ICON weather and climate model, not the ICON spacecraft.",
         "authority": "agent",
         "date": "2026-09-05"
-      },
-      {
-        "bibcode": "2017SSRv..212.1897T",
-        "doi": null,
-        "title": null,
-        "reason": "Describes the CaSSIS camera on ExoMars Trace Gas Orbiter; not an ICON paper.",
-        "authority": "agent",
-        "date": "2026-09-09"
-      },
-      {
-        "bibcode": "2017SSRv..212.1871R",
-        "doi": null,
-        "title": null,
-        "reason": "Ground calibration of the CaSSIS camera on ExoMars Trace Gas Orbiter; not an ICON paper.",
-        "authority": "agent",
-        "date": "2026-09-09"
       }
     ]
   },

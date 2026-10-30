@@ -27,7 +27,6 @@
 		grid-template-columns: minmax(0, 1fr) auto;
 		gap: 16px 48px;
 		align-items: end;
-		margin-top: 56px;
 		padding: 28px 32px 30px;
 		background: var(--panel);
 		border-left: 3px solid var(--neptune);

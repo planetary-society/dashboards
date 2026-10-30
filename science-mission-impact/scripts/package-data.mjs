@@ -90,7 +90,7 @@ import { buildSite, byCost, byLaunch, tileSort } from './lib/site.mjs';
 import { loadClps } from './lib/clps.mjs';
 import { affiliationMaps } from './lib/affiliations.mjs';
 import { underThreshold } from './lib/public.mjs';
-import { selectionOf } from './lib/analysis.mjs';
+import { managementOf, selectionOf } from './lib/analysis.mjs';
 import { cleanTitle } from './lib/text.mjs';
 import { groupBy, int, num, weight, yearOf } from './lib/util.mjs';
 
@@ -595,6 +595,9 @@ export function buildMissionDoc({
 			// the catalog's life-cycle cost as reported, before cost is adjusted to the base year
 			lcc: num(corpus.mission?.lcc),
 			type: corpus.mission?.mission_type ?? statsMission.mission_type ?? null,
+			// read like the type; an older label fails here, before any output changes
+			selection: selectionOf(corpus.mission?.selection_strategy ?? statsMission.selection_strategy, id),
+			management: managementOf(corpus.mission?.management_model, id),
 			program: corpus.mission?.program ?? null,
 			target: corpus.mission?.mission_target ?? null,
 			launchVehicle: corpus.mission?.launch_vehicle ?? null,
@@ -658,8 +661,8 @@ export function buildMissionDoc({
 			// which shortfall, as the catalog words it ('Failure', 'Partial Failure', 'Partial Success'); null otherwise
 			outcome: shortfall ? statsMission.mission_status.trim() : null,
 			type: missionDoc.meta.type,
-			// read like the type; an older label fails here, before any output changes
-			selection: selectionOf(corpus.mission?.selection_strategy ?? statsMission.selection_strategy, id),
+			selection: missionDoc.meta.selection,
+			management: missionDoc.meta.management,
 			indices,
 			papers: missionDoc.facts.papers,
 			citations: missionDoc.facts.citations,

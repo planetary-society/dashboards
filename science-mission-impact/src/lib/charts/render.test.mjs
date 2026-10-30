@@ -14,7 +14,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { compile } from 'svelte/compiler';
 import { render } from 'svelte/server';
-import { missionFacts, missionMeasureGroups } from '../copy/measures.js';
+import { missionLine, missionMeasureGroups, scopeSpans } from '../copy/measures.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const lib = join(here, '..');
@@ -156,7 +156,7 @@ test('MeasureTable renders every measure of the selected scope, its own h, g and
 	const Component = await load('../ui/MeasureTable.svelte');
 	const html = render(Component, { props: { groups: missionMeasureGroups(mission, 'full', site) } }).body;
 	assert.deepEqual(rowsOf(html), [
-		'Active Mission Window · papers April 1, 2004 to October 1, 2019',
+		'',
 		'Tracked publicationsi80', 'Citationsi1,000', 'Top-10% papersi6.5', 'Top-1% papersi0.5',
 		'Citation indices',
 		'h-indexi9', 'g-indexi14', 'm-indexi0.6', 'torii12', 'riqi140'
@@ -168,20 +168,19 @@ test('MeasureTable renders every measure of the selected scope, its own h, g and
 	assert.match(html, /aria-label="What is m-index\?"/);
 });
 
-test('missionFacts: launch date, the prime mission by month, both life-cycle costs, and nothing the catalog leaves blank', () => {
-	const meta = { lcc: 244, cost: 538, dates: { launch: '1997-08-25', scienceStart: '1997-12-12', primeEnd: '2002-09-01', missionEnd: null } };
-	const facts = (m) => missionFacts({ meta: m }, site).map((r) => `${r.label}: ${r.value}`);
-	assert.deepEqual(facts(meta), ['Launch date: August 25, 1997', 'Prime mission: December 1997 to September 2002', 'Life-cycle cost: $244M/$538M (2025 $)']);
-	assert.ok(missionFacts({ meta }, site).at(-1).hint.text.startsWith('Life-cycle cost:'), 'the cost carries its definition');
-	assert.deepEqual(facts({ lcc: null, cost: 538, dates: { launch: null, scienceStart: null, primeEnd: null } }), ['Life-cycle cost: —/$538M (2025 $)'], 'an unknown cost is a dash, never a zero');
-	assert.deepEqual(facts({ lcc: null, cost: null, dates: { launch: null, scienceStart: '1997-12-12', primeEnd: null } }), []);
+test('missionLine: type, selection, management, launch, status and both life-cycle costs, dropping what the catalog leaves blank', () => {
+	const meta = { type: 'Orbiter', selection: 'competed', management: 'pi', status: 'Completed', lcc: 244, cost: 538, dates: { launch: '1997-08-25' } };
+	assert.deepEqual(missionLine(meta, site), { lead: 'Orbiter · Competed · PI-led · Launched on August 25, 1997 · Completed · ', cost: 'LCC: $244M/$538M (2025 $)' });
+	assert.deepEqual(missionLine({ ...meta, type: null, selection: null, lcc: null }, site), { lead: 'PI-led · Launched on August 25, 1997 · Completed · ', cost: 'LCC: —/$538M (2025 $)' }, 'an unknown cost is a dash, never a zero');
+	assert.deepEqual(missionLine({ status: 'unknown', lcc: 95, cost: null, dates: { launch: null } }, site), { lead: '', cost: 'LCC: $95M/— (2025 $)' }, 'a lone cost has no separator');
+	assert.deepEqual(missionLine({ status: 'unknown', lcc: null, cost: null, dates: { launch: null } }, site), { lead: '', cost: null });
 });
 
 test('MeasureTable leaves top 1% out of the lifetime scope and dates the lifetime m-index in its hint', async () => {
 	const Component = await load('../ui/MeasureTable.svelte');
 	const html = render(Component, { props: { groups: missionMeasureGroups(mission, 'lifetime', site) } }).body;
 	const rows = rowsOf(html);
-	assert.equal(rows[0], 'Lifetime');
+	assert.equal(rows[0], '', 'the counts go unheaded');
 	assert.ok(!rows.some((r) => r.startsWith('Top-1%')), 'no top-1% row');
 	assert.deepEqual(rows.slice(-5), ['h-indexi15', 'g-indexi28', 'm-indexi0.6', 'torii12', 'riqi140']);
 	assert.match(html, /role="tooltip"[^>]*>m-index: [^<]*as of September 18, 2026/);
@@ -191,7 +190,7 @@ test('MeasureTable says when a scope was not measured and still lists the citati
 	const Component = await load('../ui/MeasureTable.svelte');
 	const sparse = { ...mission, full: { ...mission.full, spread: null, indices: null }, indices: { h: 3, g: null, m: null, i100: 0, tori: null, riq: null } };
 	assert.deepEqual(rowsOf(render(Component, { props: { groups: missionMeasureGroups(sparse, 'full', site) } }).body), [
-		'Active Mission Window', 'Not available for this view.',
+		'', 'Not available for this view.',
 		'Citation indices',
 		'h-indexi—', 'g-indexi—', 'm-indexi—', 'torii—', 'riqi—'
 	]);
@@ -210,4 +209,17 @@ test('ScopeSwitch prerenders the active window and lifetime, short forms, the pr
 	assert.equal(html.match(/href="\/methods\/#windows"/g).length, 2, 'both scopes’ hints link to the windows section');
 	assert.ok(!html.includes('href="/methods/#early-window"'));
 	assert.ok(!html.includes('href="/methods/#high-impact"'));
+});
+
+test('scopeSpans dates each scope for the scope switch: the window\'s bounds, then first paper to the as-of date', async () => {
+	const named = { ...mission, name: 'HETE 2', facts: { publicationYears: [2002, 2024] } };
+	assert.deepEqual(scopeSpans(named, site), {
+		full: 'For HETE 2, papers published April 1, 2004 to October 1, 2019.',
+		lifetime: 'For HETE 2, papers published from 2002 to September 18, 2026.'
+	});
+	const unmeasured = scopeSpans({ ...named, full: { ...named.full, spread: null }, facts: {} }, site);
+	assert.ok(!unmeasured.full && !unmeasured.lifetime, 'an unmeasured window and no papers get no dates');
+	const Component = await load('../ui/ScopeSwitch.svelte', { scope: 'full' });
+	const html = render(Component, { props: { site, spans: scopeSpans(named, site) } }).body;
+	assert.match(html, /role="tooltip"[^>]*>Papers published from the first full month[^<]*For HETE 2, papers published April 1, 2004 to October 1, 2019\./);
 });

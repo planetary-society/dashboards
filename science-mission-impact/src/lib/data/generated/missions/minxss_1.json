@@ -11,6 +11,8 @@
     "cost": 2.1,
     "lcc": 1.6,
     "type": "Orbiter",
+    "selection": "competed",
+    "management": "pi",
     "program": "Heliophysics Technology and Instrument Development for Science (HTIDS)",
     "target": "Sun",
     "launchVehicle": "Atlas V",
@@ -286,10 +288,10 @@
     "reconciliation": {
       "adsReturned": 11,
       "curatedOut": 1,
-      "curatedIn": 2,
+      "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
-      "duplicates": 1,
+      "duplicates": 0,
       "final": 11
     }
   },
@@ -302,49 +304,9 @@
         "reason": "Uses MinXSS-1 flare spectra to check flare energies; credits the mission only in acknowledgements.",
         "authority": "agent",
         "date": "2026-09-07"
-      },
-      {
-        "bibcode": "2017JSSat...6..651M",
-        "doi": null,
-        "title": "MinXSS-1 CubeSat On-Orbit Pointing and Power Performance: The First Flight of the Blue Canyon Technologies XACT 3-axis Attitude Determination and Control System",
-        "reason": "On-orbit pointing and power performance of the MinXSS-1 spacecraft.",
-        "authority": "agent",
-        "date": "2026-10-02"
       }
     ],
     "excludes": [
-      {
-        "bibcode": "2025ApJ...993...95T",
-        "doi": null,
-        "title": null,
-        "reason": "Analyzes data from the third-generation instrument (MinXSS-3/DAXSS); does not name MinXSS-1.",
-        "authority": "agent",
-        "date": "2026-09-07"
-      },
-      {
-        "bibcode": "2026A&A...708A.151J",
-        "doi": null,
-        "title": null,
-        "reason": "Analyzes data from the third-generation instrument (MinXSS-3/DAXSS); does not name MinXSS-1.",
-        "authority": "agent",
-        "date": "2026-09-07"
-      },
-      {
-        "bibcode": "2023ApJ...956...94W",
-        "doi": null,
-        "title": null,
-        "reason": "First results from MinXSS-3 (DAXSS); names MinXSS-1 only as an earlier generation.",
-        "authority": "agent",
-        "date": "2026-10-01"
-      },
-      {
-        "bibcode": "2024ApJ...966..198T",
-        "doi": null,
-        "title": null,
-        "reason": "Analyzes MinXSS-3 (DAXSS) flare spectra; not MinXSS-1 data.",
-        "authority": "agent",
-        "date": "2026-10-01"
-      },
       {
         "bibcode": "2020AdSpR..66....3M",
         "doi": "10.1016/j.asr.2019.02.011",

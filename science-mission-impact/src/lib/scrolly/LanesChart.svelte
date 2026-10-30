@@ -16,8 +16,9 @@
 	 * layout: costLayout() over the compared divisions. hot: the pointed-at bar's mission id. cursor: the pointer's x over the lanes.
 	 * title: the chart's title, over a layout made `titled`. focus: the focus chart's focusLayout(), whose division's bars
 	 * this chart carries. focused: the focus chart is up, so those bars stand on its axes, `grow` (0–1) of their height.
+	 * threshold: a cost ($M) that, while `marked`, gets a dashed line through every band and a wash from it to the axis's left edge.
 	 */
-	let { layout, title = null, focus = null, focused = false, grow = 1, hot = null, cursor = null, visible = false, compact = false, width, height } = $props();
+	let { layout, title = null, focus = null, focused = false, grow = 1, hot = null, cursor = null, threshold = null, marked = false, visible = false, compact = false, width, height } = $props();
 
 	const [x0, x1] = $derived(layout.x.range());
 	const bw = $derived(compact ? 3 : 4);
@@ -62,6 +63,10 @@
 	});
 	// the cursor snaps to the pointed-at bar, so it reads that mission's cost; otherwise it follows the pointer
 	const cx = $derived(pointed ? pointed.b.x : cursor != null && cursor >= x0 && cursor <= x1 ? cursor : null);
+	const tx = $derived(threshold > 0 ? layout.x(threshold) : null);
+	// a tick label within reach of the cursor's or the threshold's reading steps aside; the cursor's wins over the threshold's
+	const near = (a, b) => a != null && Math.abs(a - b) < (compact ? 34 : 42);
+	const txShown = $derived(marked && tx != null && !near(cx, tx));
 	const label = $derived(
 		pointed && columnLabel(`${pointed.b.name}: ${weight(pointed.b.rate)} top-10% papers a year`, { x: pointed.b.x - bw / 2, w: bw }, { left: x0, right: x1, y: pointed.row.base - pointed.b.h - 6, compact })
 	);
@@ -74,14 +79,22 @@
 	<span class="band closing" style:top="{floor}px"></span>
 	<DollarMinorTicks positions={minorDollarTicks(...layout.x.domain()).map(layout.x)} top={floor} />
 	{#each layout.ticks as t (t)}
-		<span class="tick" class:covered={cx != null && Math.abs(layout.x(t) - cx) < (compact ? 34 : 42)} style:left="{layout.x(t)}px" style:top="{floor + 5}px">{moneyTick(t)}</span>
+		<span class="tick" class:covered={near(cx, layout.x(t)) || (txShown && near(tx, layout.x(t)))} style:left="{layout.x(t)}px" style:top="{floor + 5}px">{moneyTick(t)}</span>
 	{/each}
 	<!-- the cursor's cost, on the axis; a tick label it would run into steps aside -->
 	{#if cx != null}<span class="tick reading" style:left="{cx}px" style:top="{floor + 5}px">{money(layout.x.invert(cx))}</span>{/if}
+	{#if tx != null}<span class="tick reading mark" class:shown={txShown} style:left="{tx}px" style:top="{floor + 5}px">{moneyTick(threshold)}</span>{/if}
 
 	<svg {width} {height}>
 		<!-- the chart's title, top right like the overview's other charts -->
 		{#each titleLines as line, i (i)}<text class="stage-title" x={x1} y={layout.top - 12 - (titleLines.length - 1 - i) * 15} text-anchor="end">{line}</text>{/each}
+		<!-- the threshold: a wash from the plot's left edge (a log axis never reaches $0) to its dashed line, under the grid and bars -->
+		{#if tx != null}
+			<g class="mark" class:shown={marked}>
+				<rect class="wash" x={layout.left} y={rows[0].top} width={Math.max(0, tx - layout.left)} height={floor - rows[0].top} />
+				<line class="threshold" x1={tx} x2={tx} y1={rows[0].top} y2={floor} />
+			</g>
+		{/if}
 		{#each layout.ticks as t (t)}
 			<line class="grid" x1={layout.x(t)} x2={layout.x(t)} y1={layout.top} y2={floor} />
 		{/each}
@@ -190,6 +203,25 @@
 
 	.reading {
 		color: var(--white);
+	}
+
+	.mark {
+		opacity: 0;
+		transition: opacity 400ms linear;
+	}
+
+	.mark.shown {
+		opacity: 1;
+	}
+
+	.wash {
+		fill: var(--white);
+		opacity: 0.07;
+	}
+
+	.threshold {
+		stroke: var(--white);
+		stroke-dasharray: 5 4;
 	}
 
 	.tick.covered {

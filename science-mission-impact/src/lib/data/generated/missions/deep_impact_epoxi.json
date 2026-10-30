@@ -11,6 +11,8 @@
     "cost": 623.5,
     "lcc": 342,
     "type": "Impactor",
+    "selection": "competed",
+    "management": "pi",
     "program": "Discovery",
     "target": "Comet 9P/Tempel 1",
     "launchVehicle": "Delta II",
@@ -27,12 +29,12 @@
     "m": 2.545,
     "i100": 27,
     "g": 99,
-    "tori": 53.231,
-    "riq": 331
+    "tori": 53.393,
+    "riq": 332
   },
   "facts": {
     "papers": 314,
-    "citations": 12136,
+    "citations": 12137,
     "publicationYears": [
       2005,
       2026
@@ -94,10 +96,10 @@
       431,
       554,
       418,
-      597,
+      600,
       564,
       812,
-      618,
+      612,
       777,
       708,
       629,
@@ -106,16 +108,16 @@
       560,
       607,
       501,
-      549,
+      548,
       610,
       537,
-      576
+      581
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 12136,
-      "observed": 12136,
+      "expected": 12137,
+      "observed": 12137,
       "missing": 0
     }
   },
@@ -168,49 +170,49 @@
     ],
     "authorCount": 33,
     "year": 2005,
-    "citations": 716
+    "citations": 715
   },
   "ranks": {
     "full": {
       "bins": [
-        35.793,
-        43.24,
-        30.649,
-        29.459,
-        21.934,
-        17.651,
-        21.351,
-        22.47,
-        18.454,
+        35.811,
+        43.228,
+        30.672,
+        29.504,
+        21.875,
+        17.654,
+        21.39,
+        22.541,
+        18.325,
         35
       ],
-      "top1": 3.765
+      "top1": 3.87
     },
     "window": {
       "bins": [
-        20.742,
-        34.234,
-        10.089,
-        14.879,
-        9.725,
-        6.921,
-        5.32,
-        2.192,
-        5.848,
-        13.05
+        20.705,
+        34.283,
+        10.072,
+        14.865,
+        9.764,
+        6.919,
+        5.317,
+        2.224,
+        5.77,
+        13.082
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        18.553,
-        42.202,
-        38.015,
-        31.324,
-        39.95,
-        19.017,
-        34.243,
-        26.696,
+        18.535,
+        42.085,
+        38.162,
+        30.939,
+        40.355,
+        19.028,
+        34.338,
+        26.558,
         30,
         34
       ],
@@ -220,11 +222,11 @@
   "full": {
     "papers": 276,
     "outputBasis": "measured",
-    "citations": 3939,
+    "citations": 3940,
     "top10": 34.5,
-    "top10ShareOfDivision": 0.03179,
-    "top1": 3.765,
-    "top1ShareOfDivision": 0.03469,
+    "top10ShareOfDivision": 0.03173,
+    "top1": 3.87,
+    "top1ShareOfDivision": 0.03559,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.334,
@@ -247,7 +249,7 @@
       "m": 3.219
     },
     "spread": {
-      "mean": 14.272,
+      "mean": 14.275,
       "median": 6,
       "uncited": 16,
       "i10": 108,
@@ -258,10 +260,10 @@
     "papers": 123,
     "outputBasis": "measured",
     "citations": 1808,
-    "top10": 13.05,
-    "top10ShareOfDivision": 0.02726,
+    "top10": 13.082,
+    "top10ShareOfDivision": 0.02729,
     "top1": 1,
-    "top1ShareOfDivision": 0.02089,
+    "top1ShareOfDivision": 0.02086,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.334,
@@ -294,9 +296,9 @@
   "lifetime": {
     "papers": 314,
     "outputBasis": "measured",
-    "citations": 12136,
+    "citations": 12137,
     "top10": 32,
-    "top10ShareOfDivision": 0.02044,
+    "top10ShareOfDivision": 0.02037,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -307,7 +309,7 @@
       "date": "2005-10-00"
     },
     "spread": {
-      "mean": 38.65,
+      "mean": 38.653,
       "median": 15.5,
       "uncited": 10,
       "i10": 203,
@@ -318,7 +320,7 @@
     "arms": "(((=abs:\"Deep Impact\" AND (=abs:\"Tempel 1\" OR abs:Tempel OR abs:Hartley OR abs:EPOXI OR abs:EPOCh OR abs:lunar OR abs:Moon OR =abs:\"Deep Impact spacecraft\" OR =abs:\"Deep Impact mission\" OR =abs:\"Deep Impact flyby\" OR =abs:\"Deep Impact experiment\" OR =abs:\"Deep Impact encounter\")) OR (abs:EPOXI AND (abs:comet OR abs:Hartley OR abs:exoplanet OR abs:transit OR abs:Earth OR abs:lunar OR abs:Moon OR abs:planet)) OR (abs:DIXI AND abs:Hartley)))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2005-07 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Deep+Impact%22+AND+%28%3Dabs%3A%22Tempel+1%22+OR+abs%3ATempel+OR+abs%3AHartley+OR+abs%3AEPOXI+OR+abs%3AEPOCh+OR+abs%3Alunar+OR+abs%3AMoon+OR+%3Dabs%3A%22Deep+Impact+spacecraft%22+OR+%3Dabs%3A%22Deep+Impact+mission%22+OR+%3Dabs%3A%22Deep+Impact+flyby%22+OR+%3Dabs%3A%22Deep+Impact+experiment%22+OR+%3Dabs%3A%22Deep+Impact+encounter%22%29%29+OR+%28abs%3AEPOXI+AND+%28abs%3Acomet+OR+abs%3AHartley+OR+abs%3Aexoplanet+OR+abs%3Atransit+OR+abs%3AEarth+OR+abs%3Alunar+OR+abs%3AMoon+OR+abs%3Aplanet%29%29+OR+%28abs%3ADIXI+AND+abs%3AHartley%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2005-07+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:45:04.160951+00:00",
+    "fetchedAt": "2026-10-30T20:10:47.417532+00:00",
     "reconciliation": {
       "adsReturned": 316,
       "curatedOut": 5,
@@ -361,7 +363,7 @@
         "bibcode": "2005Natur.436..158P",
         "doi": "10.1038/436158a",
         "title": "Deep Impact: sifting through the debris",
-        "reason": "incidental: Nature news article by a staff journalist (Peplow, \"Deep Impact: sifting through the debris\"); reports the mission, presents no result. News articles are excluded as a general rule (owner decision 2026-09-07).",
+        "reason": "Nature news article about the mission; not a research paper.",
         "authority": "human",
         "date": "2026-09-07"
       },
@@ -415,7 +417,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 716
+      "citations": 715
     },
     {
       "bibcode": "2011MNRAS.417.2166S",
@@ -424,7 +426,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 531
+      "citations": 532
     },
     {
       "bibcode": "2009Sci...326..565S",
@@ -433,7 +435,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 441
+      "citations": 440
     },
     {
       "bibcode": "2011Sci...332.1396A",
@@ -451,7 +453,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 294
+      "citations": 295
     },
     {
       "bibcode": "2006Sci...311.1453S",
@@ -496,7 +498,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 189
+      "citations": 188
     },
     {
       "bibcode": "2011AsBio..11..393R",
@@ -532,7 +534,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 146
+      "citations": 145
     },
     {
       "bibcode": "2005Natur.437..987K",
@@ -550,7 +552,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 125
+      "citations": 126
     },
     {
       "bibcode": "2013Icar..222..634K",

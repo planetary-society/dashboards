@@ -11,6 +11,8 @@
     "cost": 971.4,
     "lcc": 676,
     "type": "Orbiter",
+    "selection": "competed",
+    "management": "pi",
     "program": "Mars Scout",
     "target": "Mars",
     "launchVehicle": "Atlas V 401",
@@ -27,12 +29,12 @@
     "m": 5.667,
     "i100": 40,
     "g": 112,
-    "tori": 27.788,
-    "riq": 439
+    "tori": 28.435,
+    "riq": 444
   },
   "facts": {
-    "papers": 957,
-    "citations": 23061,
+    "papers": 958,
+    "citations": 23094,
     "publicationYears": [
       2015,
       2026
@@ -65,7 +67,7 @@
       99,
       103,
       100,
-      98
+      99
     ],
     "citations": [
       341,
@@ -78,19 +80,19 @@
       2444,
       3119,
       3100,
-      3180,
-      2975
+      3181,
+      3007
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 23061,
-      "observed": 23061,
+      "expected": 23094,
+      "observed": 23094,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 957,
+    "papers": 958,
     "us": {
       "mapped": 625,
       "top": [
@@ -109,7 +111,7 @@
       ]
     },
     "world": {
-      "mapped": 914,
+      "mapped": 915,
       "top": [
         {
           "name": "University of Colorado, Boulder",
@@ -138,51 +140,51 @@
     ],
     "authorCount": 71,
     "year": 2015,
-    "citations": 781
+    "citations": 783
   },
   "ranks": {
     "full": {
       "bins": [
-        25.431,
-        43.667,
-        56.439,
-        67.919,
-        83.842,
-        84.741,
-        74.757,
-        104.054,
-        59.782,
-        55.369
+        25.443,
+        43.664,
+        56.502,
+        68.091,
+        83.661,
+        84.743,
+        74.992,
+        104.032,
+        59.839,
+        55.033
       ],
       "top1": 3
     },
     "window": {
       "bins": [
-        9.935,
-        15.056,
-        18.925,
-        21.845,
-        33.245,
-        25.968,
-        38.487,
-        33.743,
-        25.795,
+        9.926,
+        15.069,
+        18.911,
+        21.82,
+        33.337,
+        25.953,
+        38.526,
+        33.753,
+        25.705,
         22
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        152.375,
-        125.948,
-        122.934,
-        114.164,
-        103.785,
-        81.855,
-        76.751,
-        73.904,
-        59.528,
-        45.756
+        150.674,
+        128.155,
+        122.648,
+        114.57,
+        104.309,
+        81.275,
+        77.549,
+        73.338,
+        59.889,
+        45.594
       ],
       "top1": 3
     }
@@ -190,11 +192,11 @@
   "full": {
     "papers": 656,
     "outputBasis": "measured",
-    "citations": 9198,
-    "top10": 53.069,
-    "top10ShareOfDivision": 0.0489,
+    "citations": 9202,
+    "top10": 52.733,
+    "top10ShareOfDivision": 0.04849,
     "top1": 3,
-    "top1ShareOfDivision": 0.02764,
+    "top1ShareOfDivision": 0.02759,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.211,
@@ -217,7 +219,7 @@
       "m": 3.963
     },
     "spread": {
-      "mean": 14.021,
+      "mean": 14.027,
       "median": 10,
       "uncited": 12,
       "i10": 351,
@@ -229,9 +231,9 @@
     "outputBasis": "measured",
     "citations": 4615,
     "top10": 21,
-    "top10ShareOfDivision": 0.04386,
+    "top10ShareOfDivision": 0.0438,
     "top1": 1,
-    "top1ShareOfDivision": 0.02089,
+    "top1ShareOfDivision": 0.02086,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.211,
@@ -262,11 +264,11 @@
     }
   },
   "lifetime": {
-    "papers": 957,
+    "papers": 958,
     "outputBasis": "measured",
-    "citations": 23061,
-    "top10": 43.456,
-    "top10ShareOfDivision": 0.02775,
+    "citations": 23094,
+    "top10": 43.294,
+    "top10ShareOfDivision": 0.02757,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -277,9 +279,9 @@
       "date": "2015-02-00"
     },
     "spread": {
-      "mean": 24.097,
+      "mean": 24.106,
       "median": 10,
-      "uncited": 109,
+      "uncited": 108,
       "i10": 496,
       "i100": 40
     }
@@ -288,15 +290,15 @@
     "arms": "((=abs:\"Mars Atmosphere and Volatile Evolution\" OR =abs:\"Mars Atmospheric and Volatile Evolution\" OR (abs:MAVEN AND (abs:solar OR abs:heliosphere)) OR ((abs:MAVEN OR abs:SWEA OR abs:SWIA OR abs:STATIC OR abs:IUVS OR abs:NGIMS OR =abs:\"Solar Wind Electron Analyzer\" OR =abs:\"Solar Wind Ion Analyzer\" OR =abs:\"Suprathermal and Thermal Ion Composition\" OR =abs:\"Imaging Ultraviolet Spectrometer\" OR =abs:\"Imaging Ultraviolet Spectrograph\" OR =abs:\"Langmuir Probe and Waves\" OR =abs:\"Neutral Gas and Ion Mass Spectrometer\") AND (abs:Mars OR abs:martian))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Atmosphere+and+Volatile+Evolution%22+OR+%3Dabs%3A%22Mars+Atmospheric+and+Volatile+Evolution%22+OR+%28abs%3AMAVEN+AND+%28abs%3Asolar+OR+abs%3Aheliosphere%29%29+OR+%28%28abs%3AMAVEN+OR+abs%3ASWEA+OR+abs%3ASWIA+OR+abs%3ASTATIC+OR+abs%3AIUVS+OR+abs%3ANGIMS+OR+%3Dabs%3A%22Solar+Wind+Electron+Analyzer%22+OR+%3Dabs%3A%22Solar+Wind+Ion+Analyzer%22+OR+%3Dabs%3A%22Suprathermal+and+Thermal+Ion+Composition%22+OR+%3Dabs%3A%22Imaging+Ultraviolet+Spectrometer%22+OR+%3Dabs%3A%22Imaging+Ultraviolet+Spectrograph%22+OR+%3Dabs%3A%22Langmuir+Probe+and+Waves%22+OR+%3Dabs%3A%22Neutral+Gas+and+Ion+Mass+Spectrometer%22%29+AND+%28abs%3AMars+OR+abs%3Amartian%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:49:11.365481+00:00",
+    "fetchedAt": "2026-10-30T20:12:25.575076+00:00",
     "reconciliation": {
-      "adsReturned": 964,
+      "adsReturned": 965,
       "curatedOut": 7,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 957
+      "final": 958
     }
   },
   "curation": {
@@ -307,14 +309,6 @@
         "doi": "10.1063/1.5048926",
         "title": "A hybrid electrostatic retarding potential analyzer for the measurement of plasmas at extremely high energy resolution",
         "reason": "Laboratory prototype of a new plasma analyzer; mentions MAVEN's STATIC only as heritage.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2019ApJS..242....1S",
-        "doi": null,
-        "title": null,
-        "reason": "Solar-corona spectral modelling tool; MAVEN is not named.",
         "authority": "agent",
         "date": "2026-09-08"
       },
@@ -376,7 +370,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 781
+      "citations": 783
     },
     {
       "bibcode": "2015SSRv..195..257C",
@@ -385,7 +379,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 544
+      "citations": 545
     },
     {
       "bibcode": "2015SSRv..195..125H",
@@ -394,7 +388,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 439
+      "citations": 440
     },
     {
       "bibcode": "2016SSRv..200..495M",
@@ -412,16 +406,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 316
-    },
-    {
-      "bibcode": "2015SSRv..195...49M",
-      "title": "The Neutral Gas and Ion Mass Spectrometer on the Mars Atmosphere and Volatile Evolution Mission",
-      "firstAuthor": "Mahaffy, Paul R.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2015,
-      "citations": 296
+      "citations": 317
     },
     {
       "bibcode": "2018Icar..315..146J",
@@ -430,6 +415,15 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
+      "citations": 297
+    },
+    {
+      "bibcode": "2015SSRv..195...49M",
+      "title": "The Neutral Gas and Ion Mass Spectrometer on the Mars Atmosphere and Volatile Evolution Mission",
+      "firstAuthor": "Mahaffy, Paul R.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2015,
       "citations": 296
     },
     {
@@ -466,7 +460,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 231
+      "citations": 232
     },
     {
       "bibcode": "2015GeoRL..42.8942D",
@@ -475,7 +469,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 213
+      "citations": 214
     },
     {
       "bibcode": "2015Sci...350.0210J",
@@ -532,6 +526,15 @@
       "citations": 157
     },
     {
+      "bibcode": "2015GeoRL..42.9142B",
+      "title": "The spatial distribution of planetary ion fluxes near Mars observed by MAVEN",
+      "firstAuthor": "Brain, D. A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2015,
+      "citations": 145
+    },
+    {
       "bibcode": "2017JGRA..122.1831X",
       "title": "Martian low-altitude magnetic topology deduced from MAVEN/SWEA observations",
       "firstAuthor": "Xu, Shaosui",
@@ -539,18 +542,9 @@
       "authorCount": null,
       "year": 2017,
       "citations": 145
-    },
-    {
-      "bibcode": "2015GeoRL..42.9142B",
-      "title": "The spatial distribution of planetary ion fluxes near Mars observed by MAVEN",
-      "firstAuthor": "Brain, D. A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2015,
-      "citations": 144
     }
   ],
   "papersFile": {
-    "rows": 957
+    "rows": 958
   }
 }

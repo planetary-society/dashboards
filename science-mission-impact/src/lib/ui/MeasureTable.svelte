@@ -9,9 +9,10 @@
 </script>
 
 <div class="groups">
-	{#each groups as g (g.heading)}
+	{#each groups as g, i (i)}
 		<table>
-			<thead><tr><th colspan="2" class="meta">{g.heading}</th></tr></thead>
+			<!-- an unheaded group keeps a blank header row, so its rows line up with a headed one beside it -->
+			<thead class:blank={!g.heading} aria-hidden={g.heading ? undefined : 'true'}><tr><th colspan="2" class="meta">{g.heading ?? ''}</th></tr></thead>
 			<tbody>
 				{#each g.rows as r (r.label)}
 					<tr>
@@ -34,6 +35,14 @@
 		grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
 		gap: 32px 48px;
 		margin-top: 16px;
+		container-type: inline-size;
+	}
+
+	/* stacked (too narrow for two 340px columns plus the gap), nothing sits beside it to line up with */
+	@container (max-width: 727px) {
+		.blank {
+			display: none;
+		}
 	}
 
 	table {

@@ -11,6 +11,8 @@
     "cost": 1456.4,
     "lcc": 870,
     "type": "Remote Sensing Observatory",
+    "selection": "directed",
+    "management": "agency",
     "program": "Living With a Star (LWS)",
     "target": "Sun",
     "launchVehicle": "Atlas V",
@@ -169,7 +171,7 @@
         361.675,
         363.129
       ],
-      "top1": 35.463
+      "top1": 35.396
     },
     "window": {
       "bins": [
@@ -208,8 +210,8 @@
     "citations": 40674,
     "top10": 305.594,
     "top10ShareOfDivision": 0.21197,
-    "top1": 29.713,
-    "top1ShareOfDivision": 0.2061,
+    "top1": 29.646,
+    "top1ShareOfDivision": 0.20563,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.419,
@@ -307,102 +309,21 @@
     "reconciliation": {
       "adsReturned": 4002,
       "curatedOut": 1,
-      "curatedIn": 8,
+      "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
-      "duplicates": 12,
+      "duplicates": 4,
       "final": 3997
     }
   },
   "curation": {
-    "includes": [
-      {
-        "bibcode": "2012SoPh..275..357C",
-        "doi": null,
-        "title": "Implementation and Comparison of Acoustic Travel-Time Measurement Procedures for the Solar Dynamics Observatory/Helioseismic and Magnetic Imager Time - Distance Helioseismology Pipeline",
-        "reason": "Travel-time measurement methods for the HMI helioseismology data pipeline.",
-        "authority": "agent",
-        "date": "2026-10-02"
-      },
-      {
-        "bibcode": "2012SoPh..275..327S",
-        "doi": null,
-        "title": "Polarization Calibration of the Helioseismic and Magnetic Imager (HMI) onboard the Solar Dynamics Observatory (SDO)",
-        "reason": "Polarization calibration of SDO's Helioseismic and Magnetic Imager.",
-        "authority": "agent",
-        "date": "2026-10-02"
-      },
-      {
-        "bibcode": "2012SoPh..275..285C",
-        "doi": null,
-        "title": "Wavelength Dependence of the Helioseismic and Magnetic Imager (HMI) Instrument onboard the Solar Dynamics Observatory (SDO)",
-        "reason": "Wavelength calibration of SDO's Helioseismic and Magnetic Imager.",
-        "authority": "agent",
-        "date": "2026-10-02"
-      },
-      {
-        "bibcode": "2012SoPh..275..261W",
-        "doi": null,
-        "title": "Image Quality of the Helioseismic and Magnetic Imager (HMI) Onboard the Solar Dynamics Observatory (SDO)",
-        "reason": "Image-quality calibration of SDO's Helioseismic and Magnetic Imager.",
-        "authority": "agent",
-        "date": "2026-10-02"
-      },
-      {
-        "bibcode": "2012SoPh..275..179D",
-        "doi": null,
-        "title": "EUV SpectroPhotometer (ESP) in Extreme Ultraviolet Variability Experiment (EVE): Algorithms and Calibrations",
-        "reason": "Algorithms and calibration of the EVE EUV SpectroPhotometer on SDO.",
-        "authority": "agent",
-        "date": "2026-10-02"
-      },
-      {
-        "bibcode": "2012SoPh..275...79M",
-        "doi": null,
-        "title": "Computer Vision for the Solar Dynamics Observatory (SDO)",
-        "reason": "Automated feature-recognition software built to analyse SDO images.",
-        "authority": "agent",
-        "date": "2026-10-02"
-      },
-      {
-        "bibcode": "2012SoPh..275...67H",
-        "doi": null,
-        "title": "Heliophysics Event Knowledgebase for the Solar Dynamics Observatory (SDO) and Beyond",
-        "reason": "Event catalogue and data-mining system built for SDO data.",
-        "authority": "agent",
-        "date": "2026-10-02"
-      },
-      {
-        "bibcode": "2012SoPh..275...41B",
-        "doi": null,
-        "title": "Initial Calibration of the Atmospheric Imaging Assembly (AIA) on the Solar Dynamics Observatory (SDO)",
-        "reason": "Initial photometric calibration of SDO's Atmospheric Imaging Assembly.",
-        "authority": "agent",
-        "date": "2026-10-02"
-      }
-    ],
+    "includes": [],
     "excludes": [
-      {
-        "bibcode": "2005JGRA..110.1312W",
-        "doi": null,
-        "title": null,
-        "reason": "Results from TIMED's solar EUV instrument; does not name SDO or its instruments.",
-        "authority": "agent",
-        "date": "2026-09-09"
-      },
       {
         "bibcode": "2012SoPh..275..391D",
         "doi": "10.1007/s11207-011-9917-0",
         "title": "The Solar Dynamics Observatory (SDO) Education and Outreach (E/PO) Program: Changing Perceptions One Program at a Time",
         "reason": "Description of SDO's education and public outreach programme; not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-09"
-      },
-      {
-        "bibcode": "2012SoPh..275....1F",
-        "doi": null,
-        "title": null,
-        "reason": "Editorial preface to a journal special issue; not a research paper.",
         "authority": "agent",
         "date": "2026-09-09"
       }

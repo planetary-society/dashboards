@@ -11,6 +11,8 @@
     "cost": 1683.3,
     "lcc": 551,
     "type": "Orbiter",
+    "selection": "directed",
+    "management": "agency",
     "program": null,
     "target": "Venus",
     "launchVehicle": "Shuttle-Inertial Upper Stage",
@@ -27,12 +29,12 @@
     "m": 1.703,
     "i100": 35,
     "g": 101,
-    "tori": 176.991,
+    "tori": 177.066,
     "riq": 359
   },
   "facts": {
     "papers": 380,
-    "citations": 14106,
+    "citations": 14102,
     "publicationYears": [
       1990,
       2026
@@ -124,7 +126,7 @@
       335,
       658,
       504,
-      522,
+      523,
       318,
       328,
       345,
@@ -142,7 +144,7 @@
       248,
       355,
       235,
-      256,
+      251,
       471,
       298,
       346,
@@ -151,16 +153,16 @@
       498,
       588,
       555,
-      807,
+      806,
       834,
       789,
-      598
+      599
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 14106,
-      "observed": 14106,
+      "expected": 14102,
+      "observed": 14102,
       "missing": 0
     }
   },
@@ -218,46 +220,46 @@
   "ranks": {
     "full": {
       "bins": [
-        48.431,
-        26.796,
-        19.947,
-        7.909,
-        17.187,
-        7.594,
-        7.213,
-        12.924,
-        23.252,
-        17.748
+        47.736,
+        27.496,
+        19.955,
+        7.939,
+        17.147,
+        7.599,
+        7.262,
+        12.866,
+        23.387,
+        17.613
       ],
       "top1": 1
     },
     "window": {
       "bins": [
-        16.148,
-        7.843,
-        5.009,
-        6.254,
-        4.192,
-        3.554,
-        4.91,
-        10.192,
-        12.848,
-        12.05
+        16.141,
+        7.855,
+        5.004,
+        6.242,
+        4.216,
+        3.541,
+        4.924,
+        10.224,
+        12.77,
+        12.082
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        45.553,
-        29.202,
-        40.137,
-        38.341,
-        30.855,
-        35.003,
-        31.72,
-        46.904,
-        41.528,
-        40.756
+        45.535,
+        29.085,
+        40.467,
+        38.146,
+        30.92,
+        35.004,
+        32.023,
+        47.097,
+        41.724,
+        40
       ],
       "top1": 3
     }
@@ -265,11 +267,11 @@
   "full": {
     "papers": 189,
     "outputBasis": "measured",
-    "citations": 2247,
-    "top10": 17.748,
-    "top10ShareOfDivision": 0.01635,
+    "citations": 2248,
+    "top10": 17.613,
+    "top10ShareOfDivision": 0.0162,
     "top1": 1,
-    "top1ShareOfDivision": 0.00921,
+    "top1ShareOfDivision": 0.0092,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.641,
@@ -292,7 +294,7 @@
       "m": 4.215
     },
     "spread": {
-      "mean": 11.889,
+      "mean": 11.894,
       "median": 5,
       "uncited": 35,
       "i10": 67,
@@ -303,8 +305,8 @@
     "papers": 83,
     "outputBasis": "measured",
     "citations": 1653,
-    "top10": 12.05,
-    "top10ShareOfDivision": 0.02517,
+    "top10": 12.082,
+    "top10ShareOfDivision": 0.0252,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -339,9 +341,9 @@
   "lifetime": {
     "papers": 380,
     "outputBasis": "measured",
-    "citations": 14106,
-    "top10": 40.756,
-    "top10ShareOfDivision": 0.02603,
+    "citations": 14102,
+    "top10": 40,
+    "top10ShareOfDivision": 0.02547,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -352,7 +354,7 @@
       "date": "1991-04-00"
     },
     "spread": {
-      "mean": 37.121,
+      "mean": 37.111,
       "median": 18.5,
       "uncited": 37,
       "i10": 249,
@@ -363,7 +365,7 @@
     "arms": "(abs:(=Magellan AND Venus) NOT =abs:(\"Las Campanas\" OR \"Magellan Telescope\" OR \"Magellan Telescopes\" OR \"Magellan 6.5\" OR \"Magellan Province\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1990-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28abs%3A%28%3DMagellan+AND+Venus%29+NOT+%3Dabs%3A%28%22Las+Campanas%22+OR+%22Magellan+Telescope%22+OR+%22Magellan+Telescopes%22+OR+%22Magellan+6.5%22+OR+%22Magellan+Province%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1990-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:39:48.128008+00:00",
+    "fetchedAt": "2026-10-30T20:08:20.078326+00:00",
     "reconciliation": {
       "adsReturned": 390,
       "curatedOut": 10,
@@ -378,22 +380,6 @@
     "includes": [],
     "excludes": [
       {
-        "bibcode": "1991AirSp...6...52F",
-        "doi": null,
-        "title": null,
-        "reason": "Popular magazine feature on a Magellan flyover video; not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-14"
-      },
-      {
-        "bibcode": "1991AeAm...29...40L",
-        "doi": null,
-        "title": null,
-        "reason": "Magazine news feature on Magellan's first Venus images; not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-14"
-      },
-      {
         "bibcode": "1991Natur.351..173.",
         "doi": null,
         "title": "Venus from Magellan",
@@ -406,14 +392,6 @@
         "doi": "10.1126/science.252.5003.213",
         "title": "Magellan: No Venusian Plate Tectonics Seen",
         "reason": "Science news item on early Magellan findings; not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-14"
-      },
-      {
-        "bibcode": "1992A&R....29...12S",
-        "doi": null,
-        "title": null,
-        "reason": "Popular-astronomy magazine article on Magellan results; not a research paper.",
         "authority": "agent",
         "date": "2026-09-14"
       },
@@ -509,7 +487,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 341
+      "citations": 340
     },
     {
       "bibcode": "1996JGR...101.4595M",
@@ -536,7 +514,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 270
+      "citations": 271
     },
     {
       "bibcode": "1992JGR....9713103F",
@@ -563,7 +541,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1992,
-      "citations": 166
+      "citations": 165
     },
     {
       "bibcode": "1992JGR....9713067S",
@@ -599,7 +577,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 161
+      "citations": 160
     },
     {
       "bibcode": "2011P&SS...59.1559I",
@@ -608,7 +586,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 160
+      "citations": 159
     },
     {
       "bibcode": "1992JGR....9713421B",

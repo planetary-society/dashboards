@@ -8,11 +8,12 @@
 	import { methodsHref } from '$lib/paths.js';
 	import { view, setScope, SCOPES } from '$lib/state/view.svelte.js';
 
-	let { site } = $props();
+	/** spans: optional per-scope sentences (the mission page's own dates) appended to each hint. */
+	let { site, spans = {} } = $props();
 	const SHORT = { full: 'Active', lifetime: 'Lifetime' };
 	const options = $derived(SCOPES.map((value) => ({
 		value, short: SHORT[value], label: scopeLabel(value),
-		hint: { text: scopeGloss(value, site), href: methodsHref(FOOTNOTES[value].anchor) }
+		hint: { text: [scopeGloss(value, site), spans[value]].filter(Boolean).join(' '), href: methodsHref(FOOTNOTES[value].anchor) }
 	})));
 </script>
 

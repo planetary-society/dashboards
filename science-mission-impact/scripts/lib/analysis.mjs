@@ -15,7 +15,8 @@ const SELECTIONS = new Map([['Competed', 'competed'], ['Directed', 'directed']])
 /**
  * A mission's upstream `selection_strategy` as published: 'Competed' / 'Directed', null for
  * 'Unknown' or blank. Any other label means the export predates the classification; the older
- * 'PI led' / 'Strategic' labels described management, not selection, so they are never mapped.
+ * 'PI led' / 'Strategic' labels described management, not selection, so they are never mapped
+ * here (management has its own field: `managementOf`).
  */
 export function selectionOf(label, id) {
 	if (label == null || label === '' || label === 'Unknown') return null;
@@ -23,6 +24,20 @@ export function selectionOf(label, id) {
 		throw new PackagingError(`${id}: selection_strategy ${JSON.stringify(label)} is not Competed, Directed or Unknown; the export predates the Competed/Directed classification (re-export upstream at mission schema 6)`);
 	}
 	return SELECTIONS.get(label);
+}
+
+const MANAGEMENTS = new Map([['Agency-led', 'agency'], ['PI-led', 'pi'], ['Commercial-led', 'commercial']]);
+
+/**
+ * A mission's upstream `management_model`: 'Agency-led' / 'PI-led' / 'Commercial-led',
+ * null for 'Unknown' or blank. Shown in the mission page's header line; no chart, CSV or analysis reads it.
+ */
+export function managementOf(label, id) {
+	if (label == null || label === '' || label === 'Unknown') return null;
+	if (!MANAGEMENTS.has(label)) {
+		throw new PackagingError(`${id}: management_model ${JSON.stringify(label)} is not Agency-led, PI-led, Commercial-led or Unknown`);
+	}
+	return MANAGEMENTS.get(label);
 }
 
 /** $M edges -> ranges: lo < cost <= hi, the first from 0, the last open (hi null). */

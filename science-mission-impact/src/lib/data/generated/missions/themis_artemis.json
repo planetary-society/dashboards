@@ -11,6 +11,8 @@
     "cost": 301.3,
     "lcc": 180,
     "type": "Constellation",
+    "selection": "competed",
+    "management": "pi",
     "program": "Medium-class Explorers (MIDEX)",
     "target": "Sun-Earth interaction",
     "launchVehicle": "Delta II 7925",
@@ -27,12 +29,12 @@
     "m": 4.25,
     "i100": 64,
     "g": 145,
-    "tori": 127.257,
+    "tori": 127.26,
     "riq": 564
   },
   "facts": {
     "papers": 923,
-    "citations": 34240,
+    "citations": 34241,
     "publicationYears": [
       2007,
       2026
@@ -91,7 +93,7 @@
       889,
       1208,
       1296,
-      1678,
+      1679,
       1957,
       1955,
       2144,
@@ -108,8 +110,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 34240,
-      "observed": 34240,
+      "expected": 34241,
+      "observed": 34241,
       "missing": 0
     }
   },
@@ -175,7 +177,7 @@
         72.563,
         74.255
       ],
-      "top1": 13.927
+      "top1": 14.396
     },
     "window": {
       "bins": [
@@ -205,17 +207,17 @@
         99.804,
         108
       ],
-      "top1": 13
+      "top1": 13.125
     }
   },
   "full": {
     "papers": 824,
     "outputBasis": "measured",
-    "citations": 9578,
+    "citations": 9579,
     "top10": 66.802,
     "top10ShareOfDivision": 0.04634,
-    "top1": 12.427,
-    "top1ShareOfDivision": 0.08619,
+    "top1": 12.896,
+    "top1ShareOfDivision": 0.08945,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.202,
@@ -238,7 +240,7 @@
       "m": 2.138
     },
     "spread": {
-      "mean": 11.624,
+      "mean": 11.625,
       "median": 8,
       "uncited": 26,
       "i10": 353,
@@ -285,7 +287,7 @@
   "lifetime": {
     "papers": 923,
     "outputBasis": "measured",
-    "citations": 34240,
+    "citations": 34241,
     "top10": 101.393,
     "top10ShareOfDivision": 0.05533,
     "top1": null,
@@ -298,7 +300,7 @@
       "date": "2008-04-00"
     },
     "spread": {
-      "mean": 37.096,
+      "mean": 37.098,
       "median": 16,
       "uncited": 46,
       "i10": 619,
@@ -357,50 +359,10 @@
     ],
     "excludes": [
       {
-        "bibcode": "2009AdSpR..43..600C",
-        "doi": null,
-        "title": null,
-        "reason": "ARTEMIS here is the Greek ARTEMIS IV radioheliograph; not the lunar probes.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
-        "bibcode": "2010SoPh..262...35G",
-        "doi": null,
-        "title": null,
-        "reason": "THEMIS here is a ground-based solar telescope; not the spacecraft.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
-        "bibcode": "2011ITCE...57.1612B",
-        "doi": null,
-        "title": null,
-        "reason": "ARTEMIS here is a European research funding programme; unrelated lighting study.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
         "bibcode": "2011SSRv..165....1R",
         "doi": null,
         "title": null,
         "reason": "Foreword to a journal special issue; not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
-        "bibcode": "2011SpWea...9.3003K",
-        "doi": null,
-        "title": null,
-        "reason": "Magazine interview with a scientist; not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
-        "bibcode": "2012A&A...547A..38M",
-        "doi": null,
-        "title": null,
-        "reason": "THEMIS here is a ground-based solar telescope; not the spacecraft.",
         "authority": "agent",
         "date": "2026-09-05"
       },
@@ -417,14 +379,6 @@
         "doi": "10.1186/s40562-017-0092-5",
         "title": "Introduction to the thematic series \"Coupling of the magnetosphere-ionosphere system\"",
         "reason": "Editorial introduction to a thematic series; not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
-        "bibcode": "2017JGRA..122...50L",
-        "doi": null,
-        "title": null,
-        "reason": "ARTEMIS here is a catalogue of solar coronal mass ejections; not the lunar probes.",
         "authority": "agent",
         "date": "2026-09-05"
       },
@@ -453,22 +407,6 @@
         "date": "2026-09-05"
       },
       {
-        "bibcode": "2021PhDT........10A",
-        "doi": null,
-        "title": null,
-        "reason": "Thesis on a new electron instrument; names THEMIS only as a similar flown instrument.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
-        "bibcode": "2023A&A...679A...7K",
-        "doi": null,
-        "title": null,
-        "reason": "THEMIS here is an interstellar dust model; not the spacecraft.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
         "bibcode": "2024AdSpR..73.5383K",
         "doi": null,
         "title": null,
@@ -485,44 +423,12 @@
         "date": "2026-09-05"
       },
       {
-        "bibcode": "2025BAAA...66..297G",
-        "doi": null,
-        "title": null,
-        "reason": "ARTEMIS here is a suite of galaxy simulations; not the lunar probes.",
-        "authority": "agent",
-        "date": "2026-09-05"
-      },
-      {
-        "bibcode": "2025ITAES..61.8594W",
-        "doi": null,
-        "title": null,
-        "reason": "Aviation navigation study that names THEMIS only in the acknowledgements.",
-        "authority": "agent",
-        "date": "2026-09-07"
-      },
-      {
         "bibcode": "2025Univ...11..153S",
         "doi": "10.3390/universe11050153",
         "title": "THEMIS Vector Magnetograph in Canary Islands",
         "reason": "THEMIS here is a solar telescope in the Canary Islands; not the spacecraft.",
         "authority": "agent",
         "date": "2026-09-05"
-      },
-      {
-        "bibcode": "2026NextE..1200680B",
-        "doi": null,
-        "title": null,
-        "reason": "Unrelated materials chemistry paper; THEMIS here is a different facility or programme.",
-        "authority": "agent",
-        "date": "2026-09-07"
-      },
-      {
-        "bibcode": "2008SSRv..141..557P",
-        "doi": null,
-        "title": null,
-        "reason": "Describes the THEMIS education and public outreach programme; not a research paper.",
-        "authority": "agent",
-        "date": "2026-09-09"
       },
       {
         "bibcode": "2008SSRv..141..413M",
@@ -659,7 +565,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 258
+      "citations": 259
     },
     {
       "bibcode": "2012JGRA..11710218U",

@@ -1,6 +1,6 @@
 <script>
 	// Header shared by division and mission pages: the name, then one sentence of facts when given.
-	/** second: an optional quieter line under it, already assembled, no emphasis. rule: the closing hairline. */
+	/** second: an optional quieter line under it, a string or a snippet, no emphasis. rule: the closing hairline. */
 	let { name, crumb = null, thumb = null, children, second = null, rule = true } = $props();
 </script>
 
@@ -13,7 +13,7 @@
 		<h1 class="page-name">{name}</h1>
 	</div>
 	{#if children}<p class="fact">{@render children()}</p>{/if}
-	{#if second}<p class="second">{second}</p>{/if}
+	{#if second}<p class="second">{#if typeof second === 'function'}{@render second()}{:else}{second}{/if}</p>{/if}
 	{#if rule}<hr class="rule" />{/if}
 </header>
 
@@ -45,7 +45,6 @@
 
 	.second {
 		margin-top: 12px;
-		max-width: 46em;
 		color: var(--soil);
 	}
 

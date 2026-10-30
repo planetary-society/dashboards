@@ -11,6 +11,8 @@
     "cost": 486.2,
     "lcc": 220.5,
     "type": "Orbiter",
+    "selection": "directed",
+    "management": "agency",
     "program": "Discovery",
     "target": "Asteroid Eros",
     "launchVehicle": "Delta II 7925",
@@ -27,12 +29,12 @@
     "m": 1.633,
     "i100": 24,
     "g": 81,
-    "tori": 51.966,
+    "tori": 52.089,
     "riq": 240
   },
   "facts": {
     "papers": 158,
-    "citations": 7257,
+    "citations": 7259,
     "publicationYears": [
       1997,
       2026
@@ -119,7 +121,7 @@
       244,
       219,
       252,
-      258,
+      259,
       201,
       344,
       378,
@@ -133,13 +135,13 @@
       210,
       255,
       252,
-      237
+      238
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 7257,
-      "observed": 7257,
+      "expected": 7259,
+      "observed": 7259,
       "missing": 0
     }
   },
@@ -197,45 +199,45 @@
   "ranks": {
     "full": {
       "bins": [
-        19.948,
-        8.762,
-        8.961,
-        3.376,
-        10.088,
-        7.297,
-        7.229,
-        11.097,
-        11.369,
-        11.874
+        19.953,
+        8.759,
+        8.966,
+        3.394,
+        10.064,
+        7.3,
+        7.271,
+        11.072,
+        11.414,
+        11.807
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        20.51,
-        11.48,
-        9.01,
-        7.381,
-        9.065,
-        5.939,
-        11.525,
-        10.192,
-        9.898,
+        20.497,
+        11.498,
+        9.005,
+        7.363,
+        9.095,
+        5.951,
+        11.514,
+        10.224,
+        9.852,
         5
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        16.887,
-        10.811,
-        8.302,
+        16.877,
+        10.773,
+        8.35,
         15,
-        14.044,
-        15.471,
-        15.586,
-        19.042,
-        15.856,
+        14.076,
+        15.45,
+        15.621,
+        19.37,
+        15.483,
         27
       ],
       "top1": 0
@@ -245,8 +247,8 @@
     "papers": 100,
     "outputBasis": "measured",
     "citations": 1345,
-    "top10": 11.874,
-    "top10ShareOfDivision": 0.01094,
+    "top10": 11.807,
+    "top10ShareOfDivision": 0.01086,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -283,7 +285,7 @@
     "outputBasis": "measured",
     "citations": 1345,
     "top10": 5,
-    "top10ShareOfDivision": 0.01044,
+    "top10ShareOfDivision": 0.01043,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -318,9 +320,9 @@
   "lifetime": {
     "papers": 158,
     "outputBasis": "measured",
-    "citations": 7257,
+    "citations": 7259,
     "top10": 26.25,
-    "top10ShareOfDivision": 0.01677,
+    "top10ShareOfDivision": 0.01671,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -331,7 +333,7 @@
       "date": "1997-12-00"
     },
     "spread": {
-      "mean": 45.93,
+      "mean": 45.943,
       "median": 24,
       "uncited": 12,
       "i10": 118,
@@ -342,14 +344,14 @@
     "arms": "((=abs:\"NEAR Shoemaker\" OR =abs:\"Near Earth Asteroid Rendezvous\" OR =abs:\"NEAR spacecraft\" OR =abs:\"NEAR mission\" OR =abs:\"NEAR probe\" OR =abs:\"NEAR probes\" OR (=abs:\"NEAR flyby\" AND (title:Mathilde OR abs:Mathilde)) OR =abs:\"NEAR target 253 Mathilde\" OR =abs:\"NEAR observations\" OR =abs:\"NEAR results\" OR =abs:\"NEAR data\" OR =abs:\"NEAR images\" OR =abs:\"NEAR imaging\" OR =abs:\"NEAR found Eros\" OR =abs:\"NEAR space probe\" OR =abs:\"NEAR spacecraft images\" OR =abs:\"NEAR Doppler tracking\" OR =abs:\"NEAR Multispectral Imager\" OR =abs:\"NEAR multispectral imaging\" OR =title:\"NEAR at Eros\" OR =title:\"NEAR at Mathilde\" OR (abs:\"Near-Earth Asteroid Rendezvous\" AND (=title:\"433 Eros\" OR =title:\"253 Mathilde\"))) AND (title:Eros OR title:Mathilde OR =abs:\"433 Eros\" OR =abs:\"253 Mathilde\" OR (abs:Eros AND abs:asteroid) OR (abs:Mathilde AND abs:asteroid)))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1997-07 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22NEAR+Shoemaker%22+OR+%3Dabs%3A%22Near+Earth+Asteroid+Rendezvous%22+OR+%3Dabs%3A%22NEAR+spacecraft%22+OR+%3Dabs%3A%22NEAR+mission%22+OR+%3Dabs%3A%22NEAR+probe%22+OR+%3Dabs%3A%22NEAR+probes%22+OR+%28%3Dabs%3A%22NEAR+flyby%22+AND+%28title%3AMathilde+OR+abs%3AMathilde%29%29+OR+%3Dabs%3A%22NEAR+target+253+Mathilde%22+OR+%3Dabs%3A%22NEAR+observations%22+OR+%3Dabs%3A%22NEAR+results%22+OR+%3Dabs%3A%22NEAR+data%22+OR+%3Dabs%3A%22NEAR+images%22+OR+%3Dabs%3A%22NEAR+imaging%22+OR+%3Dabs%3A%22NEAR+found+Eros%22+OR+%3Dabs%3A%22NEAR+space+probe%22+OR+%3Dabs%3A%22NEAR+spacecraft+images%22+OR+%3Dabs%3A%22NEAR+Doppler+tracking%22+OR+%3Dabs%3A%22NEAR+Multispectral+Imager%22+OR+%3Dabs%3A%22NEAR+multispectral+imaging%22+OR+%3Dtitle%3A%22NEAR+at+Eros%22+OR+%3Dtitle%3A%22NEAR+at+Mathilde%22+OR+%28abs%3A%22Near-Earth+Asteroid+Rendezvous%22+AND+%28%3Dtitle%3A%22433+Eros%22+OR+%3Dtitle%3A%22253+Mathilde%22%29%29%29+AND+%28title%3AEros+OR+title%3AMathilde+OR+%3Dabs%3A%22433+Eros%22+OR+%3Dabs%3A%22253+Mathilde%22+OR+%28abs%3AEros+AND+abs%3Aasteroid%29+OR+%28abs%3AMathilde+AND+abs%3Aasteroid%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1997-07+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:40:55.286026+00:00",
+    "fetchedAt": "2026-10-30T20:08:50.380004+00:00",
     "reconciliation": {
       "adsReturned": 141,
       "curatedOut": 1,
-      "curatedIn": 26,
+      "curatedIn": 18,
       "libraryOut": 0,
       "otherOut": 0,
-      "duplicates": 8,
+      "duplicates": 0,
       "final": 158
     }
   },
@@ -367,7 +369,7 @@
         "bibcode": "1999JSpRo..36...87B",
         "doi": null,
         "title": "Near Earth Asteroid Rendezvous (NEAR) Spacecraft Solar Conjunction Experiment",
-        "reason": "NEAR spacecraft solar conjunction experiment (January 1997 cruise, pre-prime). No abstract in ADS; verified acceptable by the owner.",
+        "reason": "NEAR solar conjunction experiment during the 1997 cruise.",
         "authority": "human",
         "date": "2026-09-11"
       },
@@ -484,70 +486,6 @@
         "date": "2026-09-11"
       },
       {
-        "bibcode": "1999Icar..140...66M",
-        "doi": null,
-        "title": "Inflight Calibration of the NEAR Multispectral Imager",
-        "reason": "In-flight calibration of the NEAR Multispectral Imager.",
-        "authority": "agent",
-        "date": "2026-09-11"
-      },
-      {
-        "bibcode": "2002Icar..155..229M",
-        "doi": null,
-        "title": "Inflight Calibration of the NEAR Multispectral Imager. II. Results from Eros Approach and Orbit",
-        "reason": "In-flight calibration of the NEAR Multispectral Imager during Eros approach and orbit.",
-        "authority": "agent",
-        "date": "2026-09-11"
-      },
-      {
-        "bibcode": "2002Icar..155..244L",
-        "doi": null,
-        "title": "Preliminary Remediation of Scattered Light in NEAR MSI Images",
-        "reason": "Corrects scattered light in NEAR Multispectral Imager images.",
-        "authority": "agent",
-        "date": "2026-09-11"
-      },
-      {
-        "bibcode": "2000Icar..148..550I",
-        "doi": null,
-        "title": "In-Flight Calibration of the Near Earth Asteroid Rendezvous Mission's Near Infrared Spectrometer. I. Initial Calibrations",
-        "reason": "In-flight calibration of the NEAR Near Infrared Spectrometer.",
-        "authority": "agent",
-        "date": "2026-09-11"
-      },
-      {
-        "bibcode": "2000Icar..147..498S",
-        "doi": null,
-        "title": "Instrument Calibrations and Data Analysis Procedures for the NEAR X-Ray Spectrometer",
-        "reason": "Calibration and data analysis procedures for the NEAR X-ray spectrometer.",
-        "authority": "agent",
-        "date": "2026-09-11"
-      },
-      {
-        "bibcode": "2000Icar..148...95E",
-        "doi": null,
-        "title": "Calibration of the NEAR Gamma-Ray Spectrometer",
-        "reason": "Calibration of the NEAR gamma-ray spectrometer.",
-        "authority": "agent",
-        "date": "2026-09-11"
-      },
-      {
-        "bibcode": "2001ITGRS..39..907A",
-        "doi": null,
-        "title": "In-Flight Calibration of the NEAR Magnetometer",
-        "reason": "In-flight calibration of the NEAR magnetometer.",
-        "authority": "agent",
-        "date": "2026-09-11"
-      },
-      {
-        "bibcode": "1999NIMPA.422..577F",
-        "doi": null,
-        "title": "Radiation effects on the proportional counter X-ray detectors on board the NEAR spacecraft",
-        "reason": "In-flight radiation effects on NEAR's X-ray proportional counters during cruise.",
-        "authority": "agent",
-        "date": "2026-09-11"
-      },
-      {
         "bibcode": "1999NIMPA.428..209S",
         "doi": null,
         "title": "Radiation effects in the Si-PIN detector on the Near Earth Asteroid Rendezvous mission",
@@ -565,14 +503,6 @@
       }
     ],
     "excludes": [
-      {
-        "bibcode": "2012ExA....33..645B",
-        "doi": null,
-        "title": null,
-        "reason": "Describes the proposed ESA MarcoPolo-R mission; not NEAR.",
-        "authority": "agent",
-        "date": "2026-09-04"
-      },
       {
         "bibcode": "2001Natur.413..369A",
         "doi": "10.1038/35096660",
@@ -627,7 +557,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 182
+      "citations": 183
     },
     {
       "bibcode": "2001Natur.413..396R",
@@ -672,7 +602,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 157
+      "citations": 158
     },
     {
       "bibcode": "2001Sci...292..484V",
@@ -753,7 +683,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 122
+      "citations": 123
     },
     {
       "bibcode": "2000Sci...289.2101T",

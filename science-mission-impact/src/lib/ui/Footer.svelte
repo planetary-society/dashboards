@@ -79,7 +79,7 @@
 			<div class="brand">
 				<div>
 					<a href={TPS} aria-label="The Planetary Society">
-						<img class="logo" src={asset('img/footer/tps-logo-3stack-white.svg')} alt="" width="192" height="100" />
+						<img class="logo" src={asset('img/footer/tps-logo-3stack-white.svg')} alt="" width="192" height="100" loading="lazy" />
 					</a>
 					<p class="tagline">Empowering the world's citizens to advance space science and exploration.</p>
 				</div>
@@ -87,7 +87,7 @@
 					{#each social as [name, href, icon] (icon)}
 						<li>
 							<a {href} aria-label={name}>
-								<img src={asset(`img/footer/${icon}.svg`)} alt="" width="16" height="16" />
+								<img src={asset(`img/footer/${icon}.svg`)} alt="" width="16" height="16" loading="lazy" />
 							</a>
 						</li>
 					{/each}
@@ -102,10 +102,10 @@
 				</p>
 				<p class="badges">
 					<a href="https://www.charitynavigator.org/ein/953423566" target="_blank" rel="noopener noreferrer">
-						<img src={asset('img/footer/charity-navigator-4star.png')} alt="Charity Navigator four stars" height="80" />
+						<img src={asset('img/footer/charity-navigator-4star.png')} alt="Charity Navigator four stars" height="80" loading="lazy" />
 					</a>
 					<a href="https://app.candid.org/profile/8444271/the-planetary-society/" target="_blank" rel="noopener noreferrer">
-						<img src={asset('img/footer/guidestar.png')} alt="Guidestar" height="60" />
+						<img src={asset('img/footer/guidestar.png')} alt="Guidestar" height="60" loading="lazy" />
 					</a>
 				</p>
 				<p class="small">Give with confidence. The Planetary Society is a registered 501(c)(3) nonprofit organization.</p>

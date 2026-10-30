@@ -13,8 +13,9 @@
 	 * interactive: squares are in the tab order (false inside the aria-hidden story graphic)
 	 * highlightId: the square washed in Rocket Flame (the skyline's pointed-at mission)
 	 * quietId: a square whose tip is left off because something else already names it
+	 * loadImages: defer thumbnails while the story's introductory steps hide the squares
 	 */
-	let { tiles, items, shown = Infinity, interactive = true, highlightId = null, quietId = null } = $props();
+	let { tiles, items, shown = Infinity, interactive = true, highlightId = null, quietId = null, loadImages = true } = $props();
 
 	let tip = $state(null);
 	let tipEl = $state(null);
@@ -43,6 +44,7 @@
 <!-- svelte-ignore a11y_no_static_element_interactions, a11y_mouse_events_have_key_events -->
 <div
 	class="squares"
+	data-sveltekit-preload-data="tap"
 	onmouseover={showTip}
 	onmouseout={hideTip}
 	onfocusin={showTip}
@@ -70,7 +72,7 @@
 				style:pointer-events={opacity < 0.05 ? 'none' : 'auto'}
 				style:--inner={it.inner ?? 0}
 			>
-				{#if t.hasThumb}
+					{#if loadImages && t.hasThumb}
 					<img src={thumbSrc(t.id)} alt="" decoding="async" fetchpriority="low" />
 				{/if}
 				<span class="fill"></span>

@@ -47,14 +47,16 @@
 		// full-bleed step's frame fills that room by design (to a pixel of rounding), so it
 		// overflows only when its text grows it past the screen.
 		const fit = () => {
-			for (const el of els) {
+			// Keep geometry reads together so each step does not force another layout.
+			for (const el of els) el.classList.remove('overflows');
+			const overflowing = els.filter((el) => {
 				const text = el.firstElementChild;
-				if (!text) continue;
-				el.classList.remove('overflows');
+				if (!text) return false;
 				const margin = el.hasAttribute('data-bleed') ? -1 : 8;
 				const room = window.innerHeight - parseFloat(getComputedStyle(text).top) - margin;
-				if (text.offsetHeight > room) el.classList.add('overflows');
-			}
+				return text.offsetHeight > room;
+			});
+			for (const el of overflowing) el.classList.add('overflows');
 		};
 		const onResize = () => {
 			fit();

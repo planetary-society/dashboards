@@ -145,6 +145,11 @@
 	const solid = (pos) => new Map([...pos].map(([id, p]) => [id, { ...p, variant: 'solid' }]));
 
 	let index = $state(0);
+	let reached = $state(0);
+	// Mount each chart just before its first use, then keep its nodes for reverse scrolling.
+	$effect(() => {
+		if (index > reached) reached = index;
+	});
 	let progress = $state(0);
 	let W = $state(0);
 	let H = $state(0);
@@ -280,30 +285,40 @@
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div class="stage" class:skimming={skyline || primed || index === FLOORS} bind:clientWidth={W} bind:clientHeight={H} onpointerdown={skim} onpointermove={skim} onpointerleave={unskim} onclickcapture={holdClick}>
 			{#if rug && cost && outcomeL}
-				<Skyline layout={sky} total={site.papersDistinct} cited={site.citationsDistinct} rise={index === CORPUS ? scrub : index > CORPUS ? 1 : 0} {cite} visible={skyline} highlight={hot} {compact} width={W} height={H} />
-				{#if primerL}
+				{#if reached >= FINDINGS}
+					<Skyline layout={sky} total={site.papersDistinct} cited={site.citationsDistinct} rise={index === CORPUS ? scrub : index > CORPUS ? 1 : 0} {cite} visible={skyline} highlight={hot} {compact} width={W} height={H} />
+				{/if}
+				{#if reached >= CITED && primerL}
 					<Primer layout={primerL} {primer} hot={hotBar} build={index === PAPERS ? span(0.15, 0.5) : index > PAPERS ? 1 : 0} highlight={index === TOP} visible={primed} {compact} width={W} height={H} />
 				{/if}
-				<OutcomeChart layout={outcomeL} failures={site.failureTiers} visible={index === FAILURE || failDiv != null} {compact} width={W} height={H} />
-				<div class="time-panel" class:visible={timed} aria-hidden="true">
-					<TimeBars tiers={site.tiers} time={site.time} only={index === TIME_SCI ? 'science' : 'formulation'} title="Median time to first high-impact paper from {index === TIME_SCI ? 'start of science operations' : 'project start'}" height={H} />
-				</div>
-				{#if focusL}
+				{#if reached >= FITS}
+					<OutcomeChart layout={outcomeL} failures={site.failureTiers} visible={index === FAILURE || failDiv != null} {compact} width={W} height={H} />
+				{/if}
+				{#if reached >= FAIL_LAST}
+					<div class="time-panel" class:visible={timed} aria-hidden="true">
+						<TimeBars tiers={site.tiers} time={site.time} only={index === TIME_SCI ? 'science' : 'formulation'} title="Median time to first high-impact paper from {index === TIME_SCI ? 'start of science operations' : 'project start'}" height={H} />
+					</div>
+				{/if}
+				{#if reached >= TOP && focusL}
 					<FocusChart layout={focusL} name={focusName} largest={tallest} {grow} bars={index >= BARS} visible={focused} {compact} width={W} height={H} />
 				{/if}
 				<!-- the lanes draw the focus chart's bars too, so at FLOORS they move into their band -->
-				<LanesChart layout={cost} title="High-impact papers published per year, by division and mission" focus={focusL} {focused} {grow} hot={hotLane} cursor={laneCursor} visible={index === FLOORS} {compact} width={W} height={H} />
-				{#if dollarOne}
+				{#if reached >= TOP}
+					<LanesChart layout={cost} title="High-impact papers published per year, by division and mission" focus={focusL} {focused} {grow} hot={hotLane} cursor={laneCursor} visible={index === FLOORS} {compact} width={W} height={H} />
+				{/if}
+				{#if reached >= CITES && dollarOne}
 					<DollarChart layout={dollarOne} title="Citations per {money(100)} in {dollarName}" {would} {turn} visible={plotted} {compact} width={W} height={H} />
 				{/if}
-				{#if citesL}
+				{#if reached >= FLOORS && citesL}
 					<DollarChart layout={citesL} title="Citations per mission in {dollarName}" visible={index === CITES} {compact} width={W} height={H} />
 				{/if}
-				{#if dollarAll}
+				{#if reached >= FIT && dollarAll}
 					<DollarChart layout={dollarAll} title="Citations per {money(100)} by division" visible={index === FITS} {compact} width={W} height={H} />
 				{/if}
-				<ClpsChart {clps} title="Total papers published after science operations start" draw={index === CLPS ? clpsFirst : index > CLPS ? 1 : 0} drawComparators={index === CLPS_COMPARE ? clpsDraw : index > CLPS_COMPARE ? 1 : 0} visible={(index === CLPS && clpsIn) || index === CLPS_COMPARE} {compact} width={W} height={H} />
-				<Squares {tiles} {items} {shown} interactive={false} highlightId={hot} quietId={skyNamed} />
+				{#if reached >= TIME_SCI}
+					<ClpsChart {clps} title="Total papers published after science operations start" draw={index === CLPS ? clpsFirst : index > CLPS ? 1 : 0} drawComparators={index === CLPS_COMPARE ? clpsDraw : index > CLPS_COMPARE ? 1 : 0} visible={(index === CLPS && clpsIn) || index === CLPS_COMPARE} {compact} width={W} height={H} />
+				{/if}
+				<Squares {tiles} {items} {shown} interactive={false} highlightId={hot} quietId={skyNamed} loadImages={reached >= MOTIVATION} />
 			{/if}
 			<div class="thesis" class:visible={index === TITLE}>
 				<p>Exploring the scientific productivity of NASA's science missions</p>
@@ -320,7 +335,7 @@
 		<section data-step data-bleed class="motivation"><div><div class="step panel">
 			<p><strong>NASA policy is moving to smaller, higher-risk, commercial-supported science missions.</strong></p><p>We decided to investigate: Can smaller missions produce high scientific productivity? Can they return science faster? Can they replace larger projects?</p>
 		</div></div>
-			<img class="photo" src={asset('img/story/blue-ghost-4.webp')} alt="" decoding="async" fetchpriority="low" />
+			<img class="photo" src={asset('img/story/blue-ghost-4.webp')} alt="" loading="lazy" decoding="async" fetchpriority="low" />
 			<p class="credit meta">Blue Ghost Mission 4 (artist’s concept). Credit: Firefly Aerospace</p>
 		</section>
 		<!-- OVERVIEW: the squares arrive one by one -->
@@ -339,7 +354,7 @@
 				{#if clps.comparison}<li><strong>{findingFour}</strong></li>{/if}
 			</ol>
 		</div></div>
-			<img class="photo" src={asset('img/story/cubesats-iss.webp')} alt="" decoding="async" fetchpriority="low" />
+			<img class="photo" src={asset('img/story/cubesats-iss.webp')} alt="" loading="lazy" decoding="async" fetchpriority="low" />
 			<p class="credit meta">CubeSats deployed from the International Space Station, Feb. 3, 2026. Credit: NASA</p>
 		</section>
 		<!-- CORPUS: the skyline, where the explanation of how we measured begins -->

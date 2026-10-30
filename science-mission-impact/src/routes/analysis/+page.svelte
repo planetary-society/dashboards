@@ -177,7 +177,7 @@
 			</div>
 			<div class="way" role="group" aria-labelledby="ic-way">
 				<header class="way-head">
-					<p class="way-title" id="ic-way">High impact thresholds</p>
+					<p class="way-title" id="ic-way">high-impact thresholds</p>
 					<p class="formula">
 						<span>i<sub>c</sub></span><span>=</span><span>papers with citations &gt; <i>c</i></span>
 					</p>

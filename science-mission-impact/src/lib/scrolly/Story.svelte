@@ -318,7 +318,7 @@
 		<!-- MOTIVATION: the photo edge to edge, drifting slower than the text that scrolls over it; the
 		     text pauses in the step's frame while the photo covers the screen -->
 		<section data-step data-bleed class="motivation"><div><div class="step panel">
-			<p><strong>NASA policy is moving to smaller, higher-risk, commercial-supported science missions.</strong></p><p>We decided to investigate: can smaller missions produce high scientific productivity? Can they return science faster? Can they replace larger projects?</p>
+			<p><strong>NASA policy is moving to smaller, higher-risk, commercial-supported science missions.</strong></p><p>We decided to investigate: Can smaller missions produce high scientific productivity? Can they return science faster? Can they replace larger projects?</p>
 		</div></div>
 			<img class="photo" src={asset('img/story/blue-ghost-4.webp')} alt="" decoding="async" fetchpriority="low" />
 			<p class="credit meta">Blue Ghost Mission 4 (artist’s concept). Credit: Firefly Aerospace</p>
@@ -362,7 +362,7 @@
 		</div></section>
 		<!-- TOP: the same bars, the top 10% in blue -->
 		<section data-step><div class="step">
-			<p>A paper is considered <span class="neptuneBlue"><strong><em>high impact</em></strong></span> if it has more citations than 90% of its peers.</p>
+			<p>A paper is considered <span class="neptuneBlue"><strong><em>high-impact</em></strong></span> if it has more citations than 90% of its peers.</p>
 			{#if primer}<p>For example, in {field}, papers with {primer.cutoff} or more citations within their first {spell(site.fullPolicy.citationYears + 1)} years are <span class="neptuneBlue"><strong><em>high impact</em></strong></span>.</p>{/if}
 		</div></section>
 		<!-- ONE and BARS always render, so later steps keep their numbers; with no focus division they're blank -->

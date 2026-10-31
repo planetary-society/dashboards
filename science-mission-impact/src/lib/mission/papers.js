@@ -240,7 +240,7 @@ export function toCsv(columns, adsUrl = (b) => b, index = null) {
 
 /** The reader's scopes as the CSV names them, after the reader-facing names. */
 const MISSION_SCOPES = [['full', 'active'], ['lifetime', 'lifetime']];
-/** A mission's figures in one scope count only when the scope is measured: the packager's own rule for its fits and totals. */
+/** A mission's figures in one scope count only when the scope is measured: the packager's own rule for its averages and totals. */
 export const measured = (s) => s != null && (s.status ?? 'available') === 'available';
 
 /**

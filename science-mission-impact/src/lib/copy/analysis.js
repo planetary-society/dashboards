@@ -8,9 +8,6 @@ import { wilson } from '../data/public.js';
 /** Fewer missions than this in a tier and its median is shown but never singled out in prose. */
 export const MIN_REACHED = 3;
 
-/** A time tier (AnalysisFacts.time.tiers) where only some missions have a first top-10% paper, so its medians stand on those alone. */
-export const partlyReached = (tier) => tier.reached < tier.missions;
-
 /** A time tier where most missions have no first top-10% paper yet. */
 export const mostUnreached = (tier) => tier.reached * 2 < tier.missions;
 
@@ -145,12 +142,6 @@ export const apart = (a, b) => a != null && b != null && a[0] > b[1];
 
 /** `a` fell short at a clearly higher rate than `b` (`{ missions, short }` each): their Wilson intervals apart. */
 export const clearlyHigher = (a, b) => a != null && b != null && apart(wilson(a.short, a.missions), wilson(b.short, b.missions));
-
-/** A p value's digits: "< 0.001", "0.002", "0.52"; one just under 0.05 keeps its packaged places ("0.0496"), never rounding up to the copy's cutoff. */
-export const pValue = (p) => (p == null ? '—' : p < 0.001 ? '< 0.001' : p < 0.01 ? p.toFixed(3) : p < 0.05 && p >= 0.045 ? p.toFixed(4) : p.toFixed(2));
-
-/** A p value in prose: "p < 0.001", "p = 0.02". */
-export const pWords = (p) => (p != null && p < 0.001 ? 'p < 0.001' : `p = ${pValue(p)}`);
 
 /** "About" in a cost comparison: within a quarter either way. */
 const about = (a, b) => a > 0 && b > 0 && Math.abs(a / b - 1) < 0.25;

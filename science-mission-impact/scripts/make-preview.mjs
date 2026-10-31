@@ -32,7 +32,7 @@ const innerH = H - PAD.top - PAD.bottom;
 const compared = new Set(story.comparison.divisions);
 const divisions = site.divisions.filter((d) => compared.has(d.slug));
 const averages = new Map(story.perDollar.map((d) => [d.division, d.runningMean]));
-// perDollarLayout places only measured missions: no outcome-only tile (no citations)
+// perDollarLayout places only measured missions
 const layout = perDollarLayout(scrolly.tiles, innerW, innerH, { divisions, averages });
 // DollarChart's grid labels: every decade, or every other one when a panel is too narrow for each
 const costLabels = costTicks(layout.x).filter((t) => t.grid && t.label).map((t) => t.value);

@@ -333,7 +333,7 @@
 		<section data-step></section>
 		<!-- MOTIVATION: the text rises over the title's thumbnails, still drifting, and takes the title's
 		     place; it pauses in the step's frame, centred on the screen. -->
-		<section data-step data-bleed data-clear><div><div class="step panel">
+		<section data-step data-bleed><div><div class="step panel">
 			<p>NASA has repeatedly experimented with <strong class="neptuneBlue">smaller, cheaper, and riskier science missions</strong>.</p>
 			<p>The agency currently faces severe budget cuts to science and has delayed or cancelled major missions. Commercial partnerships (CLPS) are sending small instruments to the Moon.</p>
 			<p>But no broad survey of scientific performance has been done to validate these changes.</p>
@@ -341,7 +341,7 @@
 		</section>
 		<!-- QUESTIONS: the four questions in their own box, over the same drift. They are the four parts'
 		     headers and the four answers, in the same order. -->
-		<section data-step data-bleed data-clear><div><div class="step panel">
+		<section data-step data-bleed><div><div class="step panel">
 			<p>We asked four questions:</p>
 			<ol class="questions">
 				<li>Is there a relationship between mission cost and scientific impact?</li>
@@ -486,7 +486,7 @@
 		</div></section>
 		<!-- FINDINGS: the four answers in one box over the opening's rising thumbnails, in the questions' order; each gated line has a
 		     neutral form for when its gate fails, so every question QUESTIONS asks gets an answer -->
-		<section id="what-we-found" data-step data-bleed data-clear><div><div class="step panel">
+		<section id="what-we-found" data-step data-bleed><div><div class="step panel">
 			<p class="neptuneBlue"><strong>What we found</strong></p>
 
 			<ul class="answers">
@@ -511,7 +511,7 @@
 		</section>
 		<!-- CLOSE: over the same thumbnails, the concession, then under `verdict` what the record does and
 		     doesn't show (nothing suggests replacement) -->
-		<section data-step data-bleed data-clear><div><div class="step panel">
+		<section data-step data-bleed><div><div class="step panel">
 			<p><strong>Very low cost missions are worth doing:</strong> they help train future mission leaders, prove out new technology, and can return good science.</p>
 			{#if verdict}<p><strong>But nothing in this record demonstrates they can <em>replace</em> the scientific impact of more complex and costly missions.</strong></p>{/if}
 			<p>Conversely, flagship missions are worth doing, too. Citation efficiency is not the only measure of value. Larger missions tend to break new ground, provide unique data, and develop technologies that enable subsequent smaller missions.</p>

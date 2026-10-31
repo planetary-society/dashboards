@@ -13,8 +13,7 @@
 	let { index = $bindable(0), progress = $bindable(0), graphic, steps } = $props();
 
 	let root;
-	let bare = $state(false);
-	// a clear full-bleed step (data-clear) has no picture of its own: the graphic shows through behind its text
+	// a full-bleed step (data-bleed) has no picture of its own: the graphic shows through behind its text
 	let clear = $state(false);
 
 	onMount(() => {
@@ -36,8 +35,7 @@
 				rect = r;
 			}
 			index = active;
-			clear = els[active].hasAttribute('data-clear');
-			bare = els[active].hasAttribute('data-bleed') && !clear;
+			clear = els[active].hasAttribute('data-bleed');
 			progress = Math.max(0, Math.min(1, (line - rect.top) / rect.height));
 		};
 		const onScroll = () => {
@@ -85,7 +83,7 @@
 
 <div class="full">
 	<div class="scroller" bind:this={root}>
-		<div class="graphic" class:bare class:clear aria-hidden="true">
+		<div class="graphic" class:clear aria-hidden="true">
 			{@render graphic()}
 		</div>
 		<div class="steps">
@@ -127,12 +125,6 @@
 		height: calc(100svh - var(--nav-h));
 		padding-block: 24px;
 		transition: opacity 400ms linear;
-	}
-
-	/* a full-bleed step has the screen to itself, unless it is clear (data-clear) */
-	.graphic.bare {
-		opacity: 0;
-		pointer-events: none;
 	}
 
 	.steps {
@@ -185,7 +177,7 @@
 	/* A full-bleed step (data-bleed) runs edge to edge across the page, taller than the screen. Its
 	   first child is a frame the height of the screen under the nav with the text centred in it,
 	   which holds while the band covers the screen: a short pause (the band's height less the
-	   frame's) before the text scrolls on. The step dresses the band. */
+	   frame's) before the text scrolls on. The graphic shows through the band. */
 	.steps :global([data-step][data-bleed]) {
 		width: 100cqw;
 		min-height: 130vh;
@@ -227,7 +219,7 @@
 				background-color 400ms linear;
 		}
 
-		/* a clear step's text passes over the graphic rather than under it; leaving that step, the
+		/* a full-bleed step's text passes over the graphic rather than under it; leaving that step, the
 		   graphic's ground fades back in over whatever text is still in the top half */
 		.graphic.clear {
 			z-index: 0;

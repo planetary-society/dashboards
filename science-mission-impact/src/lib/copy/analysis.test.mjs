@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { clearlyHigher, clpsCosts, divisionShortfalls, edgeWords, favorsOver, mostUnreached, noFirmLeader, notLinear, partlyReached, pValue, pWords, rate, scienceOrder, selectionContrast, series, shortestTier, smallLowest, tierWords, topUnder } from './analysis.js';
+import { clearlyHigher, clpsCosts, divisionShortfalls, edgeWords, favorsOver, mostUnreached, noFirmLeader, notLinear, rate, scienceOrder, selectionContrast, series, shortestTier, smallLowest, tierWords, topUnder } from './analysis.js';
 import { range } from '../format.js';
 
 test('notLinear, topUnder and favorsOver gate the summary’s own sentences', () => {
@@ -102,12 +102,9 @@ test('divisionShortfalls splits one division at a tier edge, and clearlyHigher n
 	assert.ok(!clearlyHigher({ missions: 0, short: 0 }, f.above), 'an empty side claims nothing');
 });
 
-test('p values and ranges print as the notes show them', () => {
-	assert.deepEqual([0.00075, 0, 0.002, 0.019, 0.0496, 0.05, 0.524].map(pValue), ['< 0.001', '< 0.001', '0.002', '0.02', '0.0496', '0.05', '0.52']);
-	assert.equal(pWords(0.00075), 'p < 0.001');
-	assert.equal(pWords(0.019), 'p = 0.02');
+test('ranges print with their own formatter', () => {
 	assert.equal(range([0.42, 10.7], rate), '0.42–10.7');
-	assert.equal(range(null, pValue), '—');
+	assert.equal(range(null, rate), '—');
 	assert.equal(range([1.25, 3], (v) => v.toFixed(1), ' to '), '1.3 to 3.0');
 });
 
@@ -125,8 +122,7 @@ test('clpsCosts names a comparator only when it cost about as much as one lander
 	assert.equal(clpsCosts({ comparison: { ...clps.comparison, comparators: comparators.slice(0, 1) } }).either, 'each of them');
 });
 
-test('partlyReached and mostUnreached read a time tier\'s coverage', () => {
+test('mostUnreached reads a time tier\'s coverage', () => {
 	const t = (reached, missions) => ({ reached, missions });
-	assert.deepEqual([t(6, 26), t(13, 26), t(14, 26), t(4, 4), t(0, 0)].map(partlyReached), [true, true, true, false, false]);
 	assert.deepEqual([t(6, 26), t(13, 26), t(14, 26), t(4, 4), t(0, 0)].map(mostUnreached), [true, false, false, false, false]);
 });

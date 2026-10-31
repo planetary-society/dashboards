@@ -1,6 +1,6 @@
 <script>
-	// The title's backdrop: mission thumbnails rising slowly behind the question, edge to edge across the
-	// page. Its frame is only the graphic's column, so the field measures how far the frame sits from the
+	// The story's backdrop: mission thumbnails rising slowly behind the title, the motivation, the questions,
+	// the findings and the close, edge to edge across the page. Its frame is only the graphic's column, so the field measures how far the frame sits from the
 	// screen's left edge and reaches out to it. Three depths, the far ones small, faint and slow, so the
 	// field reads as depth rather than a conveyor belt, and only as many thumbnails as keep it airy at this
 	// screen's size. CSS animations on transforms alone, paused while hidden; reduced motion leaves them
@@ -73,7 +73,7 @@
 </div>
 
 <style>
-	/* fades in and out with the title; hidden, it stops animating */
+	/* fades in and out with the backdrop steps; hidden, it stops animating */
 	.drift {
 		position: absolute;
 		top: 0;

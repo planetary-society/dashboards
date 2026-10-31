@@ -47,7 +47,6 @@ async function main() {
 		console.warn('         Re-run as: NODE_USE_ENV_PROXY=1 node scripts/fetch-thumbs.mjs');
 	}
 
-	// the failure chart's outcome-only missions come from the CLPS dataset, as the packager reads them
 	const { missions, unmatched } = loadMissionScope({ rawDir, config });
 	if (unmatched.length) {
 		// A short_title in a stats run with no index.json entry means the two

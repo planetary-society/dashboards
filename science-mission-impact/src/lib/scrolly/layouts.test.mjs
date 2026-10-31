@@ -209,7 +209,6 @@ test('per dollar: every measured mission in its band, and each band’s squares 
 	for (const [W, H] of sizes) {
 		for (const divisions of [focus, compared]) {
 			const layout = perDollarLayout(tiles, W, H, { divisions, averages });
-			assert.deepEqual([...perDollarLayout(tiles, W, H, { divisions, averages }).pos.keys()], [...layout.pos.keys()], `${W}px: no outcome-only tile placed`);
 			for (const row of layout.rows) {
 				const { comparison, points } = averages.get(row.slug);
 				const members = membersOf(row.slug);

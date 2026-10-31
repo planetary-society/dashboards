@@ -3,8 +3,8 @@ import { site, scrolly } from '$lib/data/server.js';
 export function load() {
 	const { missions, papersDistinct, citationsDistinct, launchYears, story, clps, analysis } = site;
 	// Keep shared packaged data intact for the division pages, Analysis and reports. The story reads
-	// neither each lander at its own age (the Analysis page's notes do),
-	// nor the per-division small-side shares and failure counts (FAIL_NOTE reads analysis.failures.tiers).
+	// neither each lander at its own age nor the per-division small-side shares and failure counts
+	// (FAIL_NOTE reads analysis.failures.tiers).
 	const { threshold, bands, pooledBand, scope, divisions, failure: { byDivision, ...failure }, ...storyRest } = story;
 	const homeStory = { ...storyRest, failure };
 	const { surface, comparison, ...rest } = clps;

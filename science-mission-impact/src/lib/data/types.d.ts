@@ -167,8 +167,7 @@ export interface AnalysisFacts {
 	/** left off `missions`: no positive cost / output not measured */
 	excluded: { noCost: number; unmeasured: number };
 	/**
-	 * Outcomes over every costed packaged mission, measured or not (the same missions as StoryFacts.failure,
-	 * whose Fisher test the page reads).
+	 * Outcomes over every costed packaged mission, measured or not (the same missions as StoryFacts.failure).
 	 */
 	failures: {
 		/** One per tier; byDivision lists every configured division in config order, zeros kept. */
@@ -722,7 +721,7 @@ export interface AffiliationGrid {
 
 /** generated/scrolly.json */
 export interface Scrolly {
-	/** every analysed mission, then the failure chart's outcome-only missions, in one launch order (date, then name; undated last) */
+	/** every packaged mission, in launch order (date, then name; undated last) */
 	tiles: ScrollyTile[];
 }
 

@@ -5,8 +5,8 @@
 	// is); then 1 of 4, science for the money: the walk-through division's missions by cost and each
 	// one's high-impact papers a year, every division's (then the threshold marked, SMALL), then
 	// DOLLAR_DIVISION's citations against cost and per dollar (the line they would follow if small
-	// missions did better, then as well, then the line they do follow), then every division's per-dollar
-	// trend. 2 of 4, failures by cost tier, then one division's split (FAIL_NOTE). 3 of 4, time to
+	// missions did better, then as well, then their running average), then every division's running
+	// average. 2 of 4, failures by cost tier, then one division's split (FAIL_NOTE). 3 of 4, time to
 	// science: the Analysis page's time bars, from project start, then from the start of science. 4 of 4,
 	// CLPS. Then the four answers (FINDINGS) and the close over the opening's rising thumbnails.
 	// Steps share a graphic state (PAPERS/TOP, FAILURE/FAIL_NOTE, SCATTER/DOWN/FLAT/FIT), so long text
@@ -29,8 +29,7 @@
 	import { largerAnnualMedians, noClearSmallAdvantage, significant } from '$lib/copy/discussion.js';
 	import { calendarYears } from '$lib/copy/window.js';
 	import { analysisHref, methodsHref } from '$lib/paths.js';
-	import { CLOSE_YEARS, clearlyHigher, clpsCosts, divisionShortfalls, mostUnreached, scienceOrder, slowestBuild as slowest } from '$lib/copy/analysis.js';
-    import { papers } from '../../../scripts/lib/util.mjs';
+	import { CLOSE_YEARS, clearlyHigher, clpsCosts, divisionShortfalls, mostUnreached, scienceOrder } from '$lib/copy/analysis.js';
 
 	let { site, scrolly } = $props();
 	const TITLE = 0, MOTIVATION = 1, QUESTIONS = 2, OVERVIEW = 3;
@@ -48,7 +47,7 @@
 	// with its split at one tier edge ($M) stated only when its intervals say the rates differ (clearlyHigher)
 	const FAILURE = 18, FAIL_NOTE = 19;
 	const NOTE = { division: 'planetary', edge: 350 };
-	// 3 of 4, time to science; 4 of 4, CLPS; then the four answers and the close over the launch grid
+	// 3 of 4, time to science; 4 of 4, CLPS; then the four answers and the close over the opening's drift
 	const TIME_FORM = 20, TIME_SCI = 21, CLPS = 22, CLPS_COMPARE = 23, FINDINGS = 24, CLOSE = 25;
 	// Reduced motion: every scrubbed graphic renders complete.
 	const reduced = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
@@ -91,8 +90,6 @@
 	const tallest = $derived(rateRows.find((d) => d.division === story.focusDivision)?.largest ?? null);
 	// FLOORS compares annual medians; SMALL names standouts on the same annual measure.
 	const leadsLarger = $derived(largerAnnualMedians(rankable.map((d) => rateRows.find((r) => r.division === d.slug))));
-	// FINDINGS' "far fewer" compares total high-impact papers per mission, not annual output.
-	const farFewer = $derived(byDivision.length > 0 && byDivision.every((d) => d.under.top10PerMission != null && d.over.top10PerMission > 0 && d.under.top10PerMission * 5 < d.over.top10PerMission));
 	const smallStandouts = $derived(rateRows.filter((d) => d.bestSmall && d.larger.median != null && d.bestSmall.perYear > d.larger.median));
 
 	// failure rates in whole percents: 8 of 95 is "8%", not 8.4%
@@ -111,18 +108,15 @@
 	// The headline tests the small/larger group difference, not the running curve's shape or ribbon.
 	const noneSmallBetter = $derived(noClearSmallAdvantage(rankable.map((d) => averages.get(d.slug)?.comparison)));
 	// The first answer: fewer high-impact papers per mission in every division, and no division where small
-	// missions did clearly better per dollar. It also earns the short answer and the close's last line.
+	// missions did clearly better per dollar. It gates the close's line on replacing larger missions.
 	const verdict = $derived(everyLower && noneSmallBetter);
 
 	// TIME_FORM and TIME_SCI: the Analysis page's own tiers and gates (src/lib/copy/analysis.js)
 	const timed = $derived(index === TIME_FORM || index === TIME_SCI);
 	const timeFirst = $derived(site.time.tiers[0]);
-	const slowestBuild = $derived(slowest(site.time));
 	const science = $derived(scienceOrder(site.time) != null);
 	// most of the cheapest tier's missions that flew have no high-impact paper yet (the time bars read the lifetime ranking)
 	const mostNone = $derived(mostUnreached(timeFirst));
-	// the costliest tier's first high-impact paper can come before science starts (a flagship's cruise results)
-	const earlyPapers = $derived(site.time.tiers.at(-1).science.min < 0);
 	// the cheapest missions that reached one took about as long from project start as mid-size missions:
 	// the cheapest tier's median within CLOSE_YEARS of the quickest of the tiers below the costliest two
 	const cheapAsQuick = $derived.by(() => {
@@ -135,10 +129,8 @@
 
 	// CLPS: each lander against each comparator at the same age (packaged), and which comparator cost
 	// about as much as one lander or all of them ("about": within a quarter either way)
-	const { compared: clpsCompared, likeOne, likeAll, either } = $derived(clpsCosts(clps));
+	const { compared: clpsCompared, likeOne } = $derived(clpsCosts(clps));
 	const behindEach = $derived(clps.comparison?.behindEach === true);
-	// the landers that fully met their goals (no shortfall: the others failed or fell short)
-	const fullSuccess = $derived(clps.missions.filter((m) => !m.shortfall));
 
 	// FAIL_NOTE: NOTE's division across every tier, and either side of its edge
 	const note = $derived.by(() => {
@@ -146,12 +138,6 @@
 		// an edge that is no longer a tier edge leaves below/above null: the split drops, never the step
 		return { ...f, name: site.divisions.find((d) => d.slug === NOTE.division)?.name ?? '', split: clearlyHigher(f.below, f.above) };
 	});
-	// the chart's columns at or under NOTE's edge, which the step points at
-	const noteColumns = $derived(site.tiers.filter((t) => t.hi != null && t.hi <= NOTE.edge).length);
-	// NOTE's shortfalls at or under its edge, counted by era: NASA's 1990s "faster, better, cheaper" launches, and those since 2020
-	const noteShort = $derived(tiles.filter((t) => t.division === NOTE.division && t.shortfall && t.cost > 0 && t.cost <= NOTE.edge));
-	const fbcLosses = $derived(noteShort.filter((t) => t.launchYear >= 1992 && t.launchYear <= 1999).length);
-	const recentLosses = $derived(noteShort.filter((t) => t.launchYear >= 2020).length);
 
 	const solid = (pos) => new Map([...pos].map(([id, p]) => [id, { ...p, variant: 'solid', opacity: 1 }]));
 
@@ -221,7 +207,7 @@
 	const squaresOpacity = $derived(backdrop ? 0 : index === OVERVIEW ? scrub : 1);
 	const items = $derived.by(() => {
 		if (!grid) return new Map();
-		// the mosaic; the answers' box covers the stage, so the grid holds under it and into the close
+		// the mosaic, held unseen under the drift from the title to the questions and from the findings into the close
 		if (index <= OVERVIEW || index >= FINDINGS) return hidden(solid(grid.pos), grid.pos);
 		if (skyline) return hidden(solid(rug.pos), grid.pos);
 		if (primed) return hidden(new Map(), rug.pos);
@@ -343,7 +329,7 @@
 	{/snippet}
 
 	{#snippet steps()}
-		<!-- TITLE: the question over the rising thumbnails, no text beside it -->
+		<!-- TITLE: the title over the rising thumbnails, no text beside it -->
 		<section data-step></section>
 		<!-- MOTIVATION: the text rises over the title's thumbnails, still drifting, and takes the title's
 		     place; it pauses in the step's frame, centred on the screen. -->
@@ -365,7 +351,7 @@
 			</ol>
 		</div></div>
 		</section>
-		<!-- OVERVIEW: the mosaic fades in; the short answer only under the first answer's gate -->
+		<!-- OVERVIEW: the mosaic fades in under what we studied -->
 		<section data-step data-scrub><div class="step">
 			<p>To find out, we studied the output of <strong>{int(site.missions)} NASA-led science missions</strong> launched from {site.launchYears[0]} to {site.launchYears[1]}, across all {spell(site.divisions.length)} of the agency’s science divisions.</p>
 		</div></section>
@@ -462,7 +448,7 @@
 				<p class="aside">Shading shows a 95% interval for the average at each cost.</p>
 			{/if}
 		</div></section>
-		<!-- FAILURE: every eligible launched mission by cost tier, up if it met its goals, down if it failed or fell short -->
+		<!-- FAILURE: every costed mission by cost tier, up if it met its goals, down if it failed or fell short -->
 		<section data-step><div class="step">
 			<p class="part neptuneBlue"><strong>Mission failure rates
 			</strong></p>
@@ -498,9 +484,9 @@
 				{#if behindEach && likeOne}<p><strong>So far, CLPS landers are trailing in scientific productivity</strong>.</p>{/if}
 			{/if}
 		</div></section>
-		<!-- FINDINGS: the four answers in one box over the opening's rising thumbnails, in the questions' order; each line has a
-		     neutral form for when its gate fails, so every question the motivation asks gets an answer -->
-		<section id="what-we-found" data-step data-bleed data-clear class="findings"><div><div class="step panel">
+		<!-- FINDINGS: the four answers in one box over the opening's rising thumbnails, in the questions' order; each gated line has a
+		     neutral form for when its gate fails, so every question QUESTIONS asks gets an answer -->
+		<section id="what-we-found" data-step data-bleed data-clear><div><div class="step panel">
 			<p class="neptuneBlue"><strong>What we found</strong></p>
 
 			<ul class="answers">
@@ -524,7 +510,7 @@
 		</div></div>
 		</section>
 		<!-- CLOSE: over the same thumbnails, the concession, then under `verdict` what the record does and
-		     doesn't show (nothing suggests replacement; no claim of what a mission should cost) -->
+		     doesn't show (nothing suggests replacement) -->
 		<section data-step data-bleed data-clear><div><div class="step panel">
 			<p><strong>Very low cost missions are worth doing:</strong> they help train future mission leaders, prove out new technology, and can return good science.</p>
 			{#if verdict}<p><strong>But nothing in this record demonstrates they can <em>replace</em> the scientific impact of more complex and costly missions.</strong></p>{/if}
@@ -539,7 +525,7 @@
 	.stage { position: relative; height: 100%; width: 100%; }
 	/* a sideways finger skims the columns; an upward one still scrolls the page */
 	.stage.skimming { touch-action: pan-y; }
-	/* the unseen mosaic under the title, the motivation and the questions is backdrop: no tips, no clicks
+	/* the unseen mosaic under the drift (the title to the questions, the findings and the close) is backdrop: no tips, no clicks
 	   (Squares sets pointer-events inline only on a square it hides) */
 	.stage.resting :global(.sq) { pointer-events: none; }
 	/* Phones: the box's --panel fill drops Neptune emphasis to 4.2:1; a quarter of --neptune-mid lifts it past 5:1 */
@@ -549,7 +535,7 @@
 	/* TIME_FORM/TIME_SCI: the Analysis page's time bars, centred on the stage */
 	.time-panel { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; opacity: 0; transition: opacity 400ms linear; pointer-events: none; }
 	.time-panel.visible { opacity: 1; }
-	/* a soft shade under the question keeps the thumbnails rising behind it from crossing the type */
+	/* a soft shade under the title keeps the thumbnails rising behind it from crossing the type */
 	.thesis { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: center; gap: 0.6em; margin: 0; background: radial-gradient(ellipse 62% 42% at 42% 50%, rgb(0 0 0 / 0.78), rgb(0 0 0 / 0.4) 55%, transparent); text-shadow: 0 0 24px var(--black), 0 0 8px var(--black); opacity: 0; transition: opacity 400ms linear; pointer-events: none; }
 	.thesis .title { max-width: 14em; font-weight: 300; font-size: clamp(34px, 5.4vw, 76px); line-height: 1.08; letter-spacing: -0.04em; }
 	.thesis .sub { max-width: 32em; font-size: clamp(17px, 0.6vw + 11px, 20px); line-height: 1.45; }

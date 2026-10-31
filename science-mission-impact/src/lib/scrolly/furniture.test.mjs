@@ -207,7 +207,7 @@ test('Primer prerenders a bar per citation count up to the most cited, their top
 	const tops = story.primer.top.filter((t) => t > 0).length;
 	assert.equal((body.match(/<rect/g) ?? []).length, story.primer.counts.filter((n) => n > 0).length + tops, 'no bar for a count no paper drew');
 	assert.ok(story.primer.counts.at(-1) > 0, 'the axis ends at the most cited paper');
-	assert.match(body, /High impact papers/, "the cutoff's label");
+	assert.match(body, /High-impact papers/, "the cutoff's label");
 	assert.match(body, /Citation counts of Planetary Science mission papers/, 'the header names the division');
 	assert.match(body, />1,000</, 'log gridlines at powers of ten');
 	assert.ok(!body.includes('class="label'), 'no count until the reader points');
@@ -372,7 +372,7 @@ test('OutcomeChart: titled, Success over the zero line and Failure under it, eac
 	const layout = tierOutcomeLayout(tiles, tiers, 900, 600);
 	const { body } = render(await load('OutcomeChart.svelte'), { props: { ...stage, layout, failures: failures.tiers } });
 	clean(body);
-	assert.match(body, /class="stage-title[^>]*>Mission success and failures by cost</);
+	assert.match(body, /class="stage-title[^>]*>Mission successes and failures by cost</);
 	assert.match(body, />Success<[\s\S]*>Failure</);
 	assert.equal((body.match(/class="rate/g) ?? []).length, tiers.length);
 	assert.ok(!/\d of \d/.test(body), 'no "X of Y" counts');

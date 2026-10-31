@@ -7,7 +7,7 @@
 	// first hundred rows are ever built into objects, so the list stays quick.
 	import Num from '$lib/ui/Num.svelte';
 	import Choice from '$lib/ui/Choice.svelte';
-	import { adsAbstract, papersUrl } from '$lib/paths.js';
+	import { scixAbstract, papersUrl } from '$lib/paths.js';
 	import { int, plural } from '$lib/format.js';
 	import { view } from '$lib/state/view.svelte.js';
 	import { buildSearchIndex, filterIndex, sortIndex, rowsFor, journalFromBibcode, toCsv } from './papers.js';
@@ -89,7 +89,7 @@
 
 	function downloadCsv() {
 		if (!columns) return;
-		downloadText(toCsv(columns, adsAbstract), `${missionId}-publications.csv`);
+		downloadText(toCsv(columns, scixAbstract), `${missionId}-publications.csv`);
 	}
 
 	function metaLine(r) {
@@ -144,7 +144,7 @@
 						<span class="tier" class:on={r.top10 > 0} class:partial={r.top10 > 0 && r.top10 < 1} class:one={r.top1} aria-hidden="true"></span>
 						{#if r.top1}<span class="sr-only">Top-1% paper.</span>{:else if r.top10 > 0}<span class="sr-only">Top-10% paper.</span>{/if}
 					{/if}
-					<a class="title" href={adsAbstract(r.bibcode)} target="_blank" rel="noopener">{r.title ?? r.bibcode}</a>
+					<a class="title" href={scixAbstract(r.bibcode)} target="_blank" rel="noopener">{r.title ?? r.bibcode}</a>
 				</p>
 				<p class="meta">{metaLine(r)}</p>
 				<p class="cites">

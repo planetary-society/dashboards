@@ -1,6 +1,6 @@
 <script>
 	// Papers a person or an agent added to, or removed from, what the query returned.
-	import { adsAbstract } from '$lib/paths.js';
+	import { scixAbstract } from '$lib/paths.js';
 	import { int } from '$lib/format.js';
 
 	let { curation } = $props();
@@ -12,7 +12,7 @@
 
 	let showAll = $state({ includes: false, excludes: false });
 
-	const href = (item) => (item.bibcode ? adsAbstract(item.bibcode) : item.doi ? `https://doi.org/${item.doi}` : null);
+	const href = (item) => (item.bibcode ? scixAbstract(item.bibcode) : item.doi ? `https://doi.org/${item.doi}` : null);
 	const reviewer = (item) => (item.authority === 'agent' ? ['🤖', 'AI-assisted review'] : ['👨', 'Reviewed by hand']);
 </script>
 

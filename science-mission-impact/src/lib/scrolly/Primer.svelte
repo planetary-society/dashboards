@@ -49,7 +49,7 @@
 		<text x="0" y={layout.papersY}>Papers</text>
 		<g class="cut">
 			<line x1={layout.cut - 1} x2={layout.cut - 1} y1={layout.top} y2={layout.ground} />
-			<text class="strong" x={layout.cut + 6} y={layout.top + 14}>High impact papers</text>
+			<text class="strong" x={layout.cut + 6} y={layout.top + 14}>High-impact papers</text>
 		</g>
 		{#if label && build > 0.9}<text class="label" x={label.x} y={label.y} text-anchor={label.anchor}>{label.text}</text>{/if}
 	</svg>

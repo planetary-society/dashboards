@@ -20,7 +20,7 @@
 <div class="outcome" class:visible class:compact aria-hidden="true">
 	<svg {width} {height}>
 		<!-- the chart's title, top right like the overview's other charts -->
-		<text class="stage-title" x={layout.right} y={layout.top - (compact ? 14 : 18)} text-anchor="end">Mission success and failures by cost</text>
+		<text class="stage-title" x={layout.right} y={layout.top - (compact ? 14 : 18)} text-anchor="end">Mission successes and failures by cost</text>
 		{#each layout.cols as c, i (i)}
 			{#if i > 0}<line class="divider" x1={c.x} x2={c.x} y1={layout.top - (compact ? 6 : 10)} y2={layout.footY + at.end} />{/if}
 			<text class="head" x={c.cx} y={layout.footY + at.head} text-anchor="middle">{#each lines(c) as line, j (j)}<tspan x={c.cx} dy={j ? '1.2em' : 0}>{line}</tspan>{/each}</text>

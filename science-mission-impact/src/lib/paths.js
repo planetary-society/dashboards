@@ -17,7 +17,7 @@ export const papersUrl = (id) => asset(`data/papers/${id}.json`);
 export const mapsUrl = (kind, id) => asset(`data/maps/${kind}/${id}.json`);
 export const basemapSrc = (key) => asset(`img/maps/${key}.svg`);
 
-export const adsAbstract = (bibcode) => `https://scixplorer.org/abs/${encodeURIComponent(bibcode)}/abstract`;
+export const scixAbstract = (bibcode) => `https://scixplorer.org/abs/${encodeURIComponent(bibcode)}/abstract`;
 
 export const SITE_ORIGIN = 'https://dashboards.planetary.org';
 export const canonical = (pathname) => SITE_ORIGIN + pathname;

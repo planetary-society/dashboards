@@ -242,7 +242,7 @@ describe('toCsv', () => {
 		assert.equal(lines[0], CSV_HEADER.join(','));
 		assert.equal(
 			lines[0],
-			'bibcode,year,title,first_author,citations,top10_weight_lifetime,full_window_citations,top10_weight_full,top1_weight_full,shared_by,added_by_hand,ads_url'
+			'bibcode,year,title,first_author,citations,top10_weight_lifetime,full_window_citations,top10_weight_full,top1_weight_full,shared_by,added_by_hand,scix_url'
 		);
 	});
 

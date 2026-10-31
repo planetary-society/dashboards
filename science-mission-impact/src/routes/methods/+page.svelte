@@ -83,8 +83,8 @@
 			<p>Exactly how one defines “science” varies, and many judgment calls are required. For this study,
 				we used a simpler approach also used in many peer-reviewed publications, such as
 				<a href="https://doi.org/10.1016/j.spacepol.2025.101713">Fiore &amp; Elvis (2026)</a>: querying
-				NASA’s Astrophysics Data System (ADS)/SciXplorer database by mission name and the names of its
-				primary instruments. ADS is the leading repository of space science publication and citation
+				NASA’s Science Explorer (SciX) database by mission name and the names of its
+				primary instruments. SciX is the leading repository of space science publication and citation
 				references. This approach assesses the signal of a mission within the abstract literature,
 				using publications as a proxy for scientific productivity and citations to those publications
 				as a proxy for impact.</p>

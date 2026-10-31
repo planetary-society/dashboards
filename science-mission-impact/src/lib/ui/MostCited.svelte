@@ -1,5 +1,5 @@
 <script>
-	import { adsAbstract } from '$lib/paths.js';
+	import { scixAbstract } from '$lib/paths.js';
 	import { byline, int } from '$lib/format.js';
 
 	let { paper } = $props();
@@ -9,7 +9,7 @@
 	<aside class="most" aria-labelledby="most-cited-label">
 		<div class="text">
 			<h2 id="most-cited-label" class="chart-title">Most cited paper to date</h2>
-			<a class="title" href={adsAbstract(paper.bibcode)} rel="noopener">{paper.title}</a>
+			<a class="title" href={scixAbstract(paper.bibcode)} rel="noopener">{paper.title}</a>
 			<p class="meta">
 				{byline(paper.authors, paper.authorCount ?? undefined) || (paper.firstAuthor ?? '')}{paper.year ? ` (${paper.year})` : ''}
 			</p>

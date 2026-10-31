@@ -62,7 +62,7 @@ export const FOOTNOTES = {
 	tori: {
 		anchor: '',
 		text: () =>
-			'tori (total research impact, from ADS): for every paper citing one of the mission’s papers, 1 divided by the citing paper’s reference count times the cited paper’s author count, summed, with self-citations removed. It favors citations from papers with short reference lists and from outside the mission’s own authors. Computed over the tracked citation graph, which can be slightly incomplete. Always over every tracked publication to date, whichever scope is chosen.'
+			'tori (total research impact, from SciX): for every paper citing one of the mission’s papers, 1 divided by the citing paper’s reference count times the cited paper’s author count, summed, with self-citations removed. It favors citations from papers with short reference lists and from outside the mission’s own authors. Computed over the tracked citation graph, which can be slightly incomplete. Always over every tracked publication to date, whichever scope is chosen.'
 	},
 	riq: {
 		anchor: '',
@@ -111,7 +111,7 @@ export const FOOTNOTES = {
 	affiliations: {
 		anchor: '',
 		text: () =>
-			'The institutions ADS lists for each paper’s authors, as printed on the paper, located through the Research Organization Registry. A square counts a paper once, however many of its authors worked there.'
+			'The institutions SciX lists for each paper’s authors, as printed on the paper, located through the Research Organization Registry. A square counts a paper once, however many of its authors worked there.'
 	}
 };
 

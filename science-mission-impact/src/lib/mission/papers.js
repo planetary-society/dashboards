@@ -197,7 +197,7 @@ export const CSV_HEADER = [
 	'top1_weight_full',
 	'shared_by',
 	'added_by_hand',
-	'ads_url'
+	'scix_url'
 ];
 
 /** RFC 4180 field: quote when it holds a quote, comma or newline; double the quotes. */

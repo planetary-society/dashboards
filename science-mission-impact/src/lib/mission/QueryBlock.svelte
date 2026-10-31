@@ -1,5 +1,5 @@
 <script>
-	// The ADS query behind a mission's paper list, shown rather than described.
+	// The SciX query behind a mission's paper list, shown rather than described.
 		import { onDestroy } from 'svelte';
 	import { fullQuery } from './query.js';
 
@@ -55,7 +55,7 @@
 
 <div class="query">
 	{#if arms}
-		<p class="lead">We searched NASA’s Astrophysics Data System (ADS) for peer-reviewed articles naming {name} in the title, abstract or keywords; standard filters drop articles that are not peer-reviewed and magazine pieces. SciX is ADS’s current interface.</p>
+		<p class="lead">We searched NASA’s Science Explorer (SciX) for peer-reviewed articles naming {name} in the title, abstract or keywords; standard filters drop articles that are not peer-reviewed and magazine pieces.</p>
 		<p class="arms">{fullQuery(query)}</p>
 
 		<p class="actions">
@@ -64,7 +64,7 @@
 		</p>
 		<span class="sr-only" role="status">{copyLabel === 'Copy query' ? '' : copyLabel}</span>
 	{:else}
-		<p class="hand">This mission has no ADS query; its tracked publications were added by hand.</p>
+		<p class="hand">This mission has no SciX query; its tracked publications were added by hand.</p>
 	{/if}
 
 </div>

@@ -320,8 +320,8 @@
 			<div class="opening" style:opacity={ending ? 1 - ending : null}>
 				<Drift tiles={drifting} visible={backdrop} />
 				<div class="thesis" class:visible={index === TITLE}>
-					<p class="title">The impact and productivity of NASA's science missions</p>
-					<p class="sub">What can {int(site.missions)} NASA missions launched since {site.launchYears[0]} reveal about cost and scientific output?</p>
+					<p class="title">The impact and productivity of NASA’s science missions</p>
+					<p class="sub">What can {int(site.missions)} NASA missions tell us about the relationship of cost to scientific output?</p>
 				</div>
 				<p class="cue" class:visible={index === TITLE} aria-hidden="true">Scroll to begin</p>
 			</div>
@@ -335,8 +335,7 @@
 		     place; it pauses in the step's frame, centred on the screen. -->
 		<section data-step data-bleed><div><div class="step panel">
 			<p>NASA has repeatedly experimented with <strong class="neptuneBlue">smaller, cheaper, and riskier science missions</strong>.</p>
-			<p>The agency currently faces severe budget cuts to science and has delayed or cancelled major missions. Commercial partnerships (CLPS) are sending small instruments to the Moon.</p>
-			<p>But no broad survey of scientific performance has been done to validate these changes.</p>
+			<p>But no broad survey of scientific performance had been done to validate these efforts.</p>
 		</div></div>
 		</section>
 		<!-- QUESTIONS: the four questions in their own box, over the same drift. They are the four parts'
@@ -346,19 +345,19 @@
 			<ol class="questions">
 				<li>Is there a relationship between mission cost and scientific impact?</li>
 				<li>Does lower cost mean more mission failures?</li>
-				<li>Does time-to-science scale with cost?</li>
+				<li>Does time to science scale with cost?</li>
 				<li>Are commercial lunar landers producing similar science to NASA-led missions?</li>
 			</ol>
 		</div></div>
 		</section>
 		<!-- OVERVIEW: the mosaic fades in under what we studied -->
 		<section data-step data-scrub><div class="step">
-			<p>To find out, we studied the output of <strong>{int(site.missions)} NASA-led science missions</strong> launched from {site.launchYears[0]} to {site.launchYears[1]}, across all {spell(site.divisions.length)} of the agency’s science divisions.</p>
+			<p>To answer them, we studied the output of <strong>{int(site.missions)} NASA-led science missions</strong> launched from {site.launchYears[0]} to {site.launchYears[1]}, across all {spell(site.divisions.length)} of the agency’s science divisions.</p>
 		</div></section>
 		<!-- CORPUS: the skyline, where the explanation of how we measured begins -->
 		<section data-step data-scrub><div class="step">
 			<p class="neptuneBlue"><strong>What we did</strong></p>
-			<p>We assembled a set of <strong>{int(site.papersDistinct)} peer-reviewed papers</strong> associated with these {int(site.missions)} science missions.</p>
+			<p>We assembled a set of <strong>{int(site.papersDistinct)} peer-reviewed papers</strong> associated with these science missions.</p>
 			<p>Papers published in peer-reviewed academic journals are a proxy for <span class="neptuneBlue"><strong><em>scientific productivity</em></strong></span>.</p>
 		</div></section>
 		<!-- CITED: the same skyline zooms out as each mission's citations grow out of its papers (lifetime
@@ -382,8 +381,8 @@
 		<!-- ONE: the focus division alone on the cost axis; the first chart with failure marks, so the key is here -->
 		<section data-step><div class="step">
 			{#if focus && focusCount}
-				<p class="part neptuneBlue"><strong>Cost and Scientific Productivity</strong></p>
-				<p>Here {int(focusCount)} {field} missions are ordered by life-cycle cost, adjusted for inflation.</p>
+				<p class="part neptuneBlue"><strong>Cost and scientific productivity</strong></p>
+				<p>Here, {int(focusCount)} {field} missions are ordered by life-cycle cost, adjusted for inflation.</p>
 				<p class="key-line"><span class="key mark-lost" role="img" aria-label="A red X"></span> denotes a total mission failure; <span class="key mark-partial" role="img" aria-label="a single red stroke"></span> denotes a partial failure.</p>
 			{/if}
 		</div></section>
@@ -403,7 +402,7 @@
 		<section data-step><div class="step">
 			<p>Missions below {moneyWords(story.referenceCost)} are considered very low cost.</p>
 			{#if smallStandouts.length}<p>Some stand out: {listify(smallStandouts.map((d) => `${d.bestSmall.name} (${d.name})`))} produced high-impact papers at a rate comparable to much more expensive missions.</p>{/if}
-			<p>Most produce <strong>little or no high-impact papers.</strong></p>
+			<p>Most produce <strong>few or no high-impact papers.</strong></p>
 		</div></section>
 		<!-- CITES: DOLLAR_DIVISION's missions by cost and by the citations they drew, before per dollar -->
 		<section data-step><div class="step">
@@ -416,7 +415,7 @@
 		<!-- SCATTER: DOLLAR_DIVISION, each mission by cost and by citations per dollar -->
 		<section data-step><div class="step">
 			{#if dollarAverage}
-				<p>Dividing each mission’s citations by cost compares citations by {moneyWords(100)} spent. This can be thought of as <strong>scientific impact per dollar</strong>.</p>
+				<p>Dividing each mission’s citations by cost compares citations per {moneyWords(100)} spent. This can be thought of as <strong>scientific impact per dollar</strong>.</p>
 			{/if}
 		</div></section>
 		<!-- DOWN: the line the missions would follow if small ones got more for their money -->
@@ -434,7 +433,7 @@
 		<!-- FIT: the running average fades in over the same mission squares -->
 		<section data-step data-scrub><div class="step">
 			{#if dollarAverage}
-				<p>This is the actual running average of impact per dollar. In {dollarField}, very low cost missions returned poor results, primarily due to mission failures.</p>
+				<p>This is the actual running average of impact per dollar. In {dollarField}, very low-cost missions returned poor results, primarily due to mission failures.</p>
 				<p class="aside"><a href={methodsHref('running-averages')}>How we calculate the averages</a></p>
 			{/if}
 		</div></section>
@@ -442,8 +441,8 @@
 		<section data-step><div class="step">
 			{#if averaged.length}
 				{#if noneSmallBetter}
-					<p><strong class="neptuneBlue">In no science division did very low cost missions demonstrate better impact per dollar than larger ones.</strong></p>
-					<p>Conversely, NASA's most expensive science missions did not consistently demonstrate an advantage, either.</p>
+					<p><strong class="neptuneBlue">In no science division did very low-cost missions demonstrate better impact per dollar than larger ones.</strong></p>
+					<p>Conversely, NASA’s most expensive science missions did not consistently demonstrate an advantage, either.</p>
 				{/if}
 				<p class="aside">Shading shows a 95% interval for the average at each cost.</p>
 			{/if}
@@ -452,12 +451,12 @@
 		<section data-step><div class="step">
 			<p class="part neptuneBlue"><strong>Mission failure rates
 			</strong></p>
-			<p>Very low cost missions (the first {spell(smallColumns)} columns) have full or partial failure rates of {whole(failure.under.rate)}.</p><p>For more expensive missions, that rate is {whole(failure.over.rate)}.</p>
+			<p>Very low-cost missions (the first {spell(smallColumns)} columns) have a full or partial failure rate of {whole(failure.under.rate)}.</p><p>For more expensive missions, that rate is {whole(failure.over.rate)}.</p>
 		</div></section>
 		<!-- FAIL_NOTE: the same chart, NOTE's division washed; its split either side of the edge only under clearlyHigher -->
 		<section data-step><div class="step">
 			{#if note.split}
-				<p>{note.name} has one of the highest failure rates for very low cost missions.</p><p>Below {moneyWords(NOTE.edge)}, {spell(note.below.short)} out of {spell(note.below.missions)} {note.name} missions between {site.launchYears[0]} and {site.launchYears[1]} failed.</p><p>The program's most expensive failure, Mars Observer, succumbed to a hardware issue traced to the use of a commercial spacecraft bus designed for Earth orbit.</p>
+				<p>{note.name} has one of the highest failure rates for very low-cost missions.</p><p>Below {moneyWords(NOTE.edge)}, {spell(note.below.short)} out of {spell(note.below.missions)} {note.name} missions between {site.launchYears[0]} and {site.launchYears[1]} failed.</p><p>The program’s most expensive failure, Mars Observer, succumbed to a hardware issue traced to the use of a commercial spacecraft bus designed for Earth orbit.</p>
 			{:else}
 				<p>{upperFirst(spell(note.all.short))} of {spell(note.all.missions)} <strong class="neptuneBlue">{note.name}</strong> missions failed or fell short of their goals.</p>
 			{/if}
@@ -465,7 +464,7 @@
 		<!-- TIME_FORM: years to a first high-impact paper, counted from the start of formulation -->
 		<section data-step><div class="step">
 			<p class="part neptuneBlue"><strong>Time to high-impact science</strong></p>
-			<p>Lower cost missions commonly take about 5 1/2 years to produce a high-impact science paper, when measured from the start of project formulation to the paper's publication date.</p>
+			<p>Lower-cost missions commonly take about 5 1/2 years to produce a high-impact science paper, when measured from the start of project formulation to the paper’s publication date.</p>
 			<p>More expensive missions tend to take longer due to longer development and transit times before science operations can begin.</p>
 		</div></section>
 		<!-- TIME_SCI: the same tiers, counted from the start of science operations -->
@@ -475,12 +474,12 @@
 		<!-- CLPS: the commercial case study the motivation names -->
 		<section data-step data-scrub><div class="step">
 			<p class="part neptuneBlue"><strong>Scientific productivity of CLPS missions</strong></p>
-			{#if clps.comparison}<p>The {spell(clps.missions.length)} CLPS missions flew too recently to compare scientific impact using citations.</p><p>Instead, we can compare their <strong>scientific productivity</strong> by counting the number of papers published since their first launch.</p>{/if}
+			{#if clps.comparison}<p>The {spell(clps.missions.length)} Commercial Lunar Payload Services (CLPS) missions flew too recently to compare scientific impact using citations.</p><p>Instead, we can compare their <strong>scientific productivity</strong> by counting the number of papers published since launch.</p>{/if}
 		</div></section>
 		<!-- CLPS_COMPARE: the comparators by cost and purpose, then each lander at the same age -->
 		<section data-step data-scrub><div class="step">
 			{#if clpsCompared.length}
-				<p>Compare CLPS output to {spell(clpsCompared.length)} science-first NASA missions. These also had short mission durations and mixed experimental technology demonstration and science.</p>
+				<p>Compare CLPS output with {spell(clpsCompared.length)} science-first NASA missions. These also had short mission durations and mixed experimental technology demonstration and science.</p>
 				{#if behindEach && likeOne}<p><strong>So far, CLPS landers are trailing in scientific productivity</strong>.</p>{/if}
 			{/if}
 		</div></section>
@@ -492,19 +491,19 @@
 			<ul class="answers">
 				<li>
 					<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M15 8.5c-.6-.9-1.7-1.5-3-1.5-1.9 0-3 1-3 2.4 0 3.2 6 1.8 6 5 0 1.4-1.2 2.6-3 2.6-1.4 0-2.6-.6-3.2-1.6M12 5v2M12 17v2" /></svg>
-					<span><strong>Very low cost missions do not provide an advantage in science per dollar, and neither do very expensive ones.</strong> Mid-cost missions tend to be the most efficient in terms of citations.</span>
+					<span><strong>Very low-cost missions do not provide a clear advantage in science per dollar, and neither do very expensive ones.</strong> For most divisions, the mid-cost missions tend to return excellent efficiency.</span>
 				</li>
 				<li>
 					<span class="icon key mark-lost" aria-hidden="true"></span>
-					<span>{#if failsMore}<strong>High failure rates.</strong> {whole(failure.under.rate)} of missions below {moneyWords(story.referenceCost)} failed. Only {whole(failure.over.rate)} of larger ones did.{:else if failure.higher === 'under'}<strong>Somewhat more failures:</strong> {whole(failure.under.rate)} of small missions against {whole(failure.over.rate)} of larger ones.{:else if failure.higher === 'over'}<strong>No more failures:</strong> {whole(failure.under.rate)} of small missions against {whole(failure.over.rate)} of larger ones.{:else}<strong>Similar failure rates</strong> for small and larger missions.{/if} Failure rates may not be the same across scientific divisions.</span>
+					<span>{#if failsMore}<strong>High failure rates.</strong> Of missions below {moneyWords(story.referenceCost)}, {whole(failure.under.rate)} failed. Only {whole(failure.over.rate)} of larger ones did.{:else if failure.higher === 'under'}<strong>Somewhat more failures:</strong> {whole(failure.under.rate)} of small missions against {whole(failure.over.rate)} of larger ones.{:else if failure.higher === 'over'}<strong>No more failures:</strong> {whole(failure.under.rate)} of small missions against {whole(failure.over.rate)} of larger ones.{:else}<strong>Similar failure rates</strong> for small and larger missions.{/if} Failure rates vary across scientific divisions.</span>
 				</li>
 				<li>
 					<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13.5" r="7.5" /><path d="M12 13.5V9.5M10 3h4M12 3v3M18 7l1.5-1.5" /></svg>
-					<span>{#if mostNone}<strong>Not reliably faster.</strong> Most low cost missions generate no high-impact science papers. {#if cheapAsQuick}Those that do often take as long as mid-size missions.{/if}{:else if science}<strong>Not faster.</strong> Once science begins, larger missions reach a high-impact paper sooner.{:else}<strong>Speed</strong> varies with cost in no simple way.{/if}</span>
+					<span>{#if mostNone}<strong>Not reliably faster.</strong> Most low-cost missions generate no high-impact science papers. {#if cheapAsQuick}Those that do often take as long as mid-size missions.{/if}{:else if science}<strong>Not faster.</strong> Once science begins, larger missions reach a high-impact paper sooner.{:else}<strong>Speed</strong> varies with cost in no simple way.{/if}</span>
 				</li>
 				<li>
 					<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 10h8l1.5 5h-11zM12 10V6M10 6h4M7 15l-2.5 4M17 15l2.5 4M3 19h4M17 19h4" /></svg>
-					<span>{#if behindEach}<strong>CLPS has yet to demonstrate significant scientific productivity.</strong> Each mission has, so far, produced fewer papers than comparable NASA-led science missions. {:else if clps.comparison?.behindAll}<strong>Commercial landers trail so far.</strong> Together they have fewer papers than comparable NASA missions at the same age.{:else if clps.comparison?.behindAll === false}<strong>Commercial landers are keeping pace</strong> with comparable NASA missions so far.{:else}<strong>Commercial landers</strong> are too new to compare with NASA missions yet.{/if}</span>
+					<span>{#if behindEach}<strong>CLPS has yet to demonstrate significant scientific productivity.</strong> Each mission has, so far, produced fewer papers than comparable NASA-led science missions. {:else if clps.comparison?.behindAll}<strong>Commercial landers trail so far.</strong> Together, they have fewer papers than comparable NASA missions at the same age.{:else if clps.comparison?.behindAll === false}<strong>Commercial landers are keeping pace</strong> with comparable NASA missions so far.{:else}<strong>Commercial landers</strong> are too new to compare with NASA missions yet.{/if}</span>
 				</li>
 			</ul>
 		</div></div>
@@ -512,7 +511,7 @@
 		<!-- CLOSE: over the same thumbnails, the concession, then under `verdict` what the record does and
 		     doesn't show (nothing suggests replacement) -->
 		<section data-step data-bleed><div><div class="step panel">
-			<p><strong>Very low cost missions are worth doing:</strong> they help train future mission leaders, prove out new technology, and can return good science.</p>
+			<p><strong>Very low-cost missions are worth doing:</strong> They help train future mission leaders, prove out new technology, and can return good science.</p>
 			{#if verdict}<p><strong>But nothing in this record demonstrates they can <em>replace</em> the scientific impact of more complex and costly missions.</strong></p>{/if}
 			<p>Conversely, flagship missions are worth doing, too. Citation efficiency is not the only measure of value. Larger missions tend to break new ground, provide unique data, and develop technologies that enable subsequent smaller missions.</p>
 			<p>Explore the data yourself. Scroll down to access our entire dataset by division.</p>

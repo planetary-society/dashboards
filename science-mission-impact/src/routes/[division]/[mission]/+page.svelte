@@ -26,7 +26,7 @@
 	);
 	// Under the name, one quiet line of catalog facts, the cost last with its definition.
 	const line = $derived(missionLine(m.meta, site));
-	// Failed missions with no ADS query and no papers were lost before returning science:
+	// Failed missions with no SciX query and no papers were lost before returning science:
 	// nothing was searched. (Mars Observer has no query either, but hand-added papers.)
 	const noSearch = $derived(m.meta.failed && m.query.arms == null && f.papers === 0);
 	// Why a page has no charts, or why a failure counts as zero; a mission with measured papers needs no note.

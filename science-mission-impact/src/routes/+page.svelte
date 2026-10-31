@@ -7,7 +7,7 @@
 	let { data } = $props();
 	// Divisions, adjusted dollar year and window policy come from the layout.
 	const site = $derived({ ...data.site, ...data.facts });
-	const description = $derived(`Can smaller, cheaper missions do the science of big ones? ${int(site.missions)} NASA-led science missions and ${int(site.papersDistinct)} peer-reviewed papers, by mission cost, within each science division.`);
+	const description = $derived(`Can smaller, cheaper missions do the science of big ones? A look at ${int(site.missions)} NASA-led science missions and ${int(site.papersDistinct)} peer-reviewed papers, by mission cost, within each science division.`);
 </script>
 
 <Seo title="Science Mission Impact" {description} />
@@ -20,7 +20,7 @@
 <div class="wrap">
 	<section id="divisions" class="doors" aria-labelledby="divisions-title">
 		<h2 id="divisions-title">Explore each division’s data</h2>
-		<p class="fact deeper">For failure rates, time to science and output per dollar in more depth, read the <a href={analysisHref()}>full analysis</a>.</p>
+		<p class="fact deeper">For failure rates, time to science, and output per dollar in more depth, read the <a href={analysisHref()}>full analysis</a>.</p>
 		<ul>
 			{#each site.divisions as d (d.slug)}
 				<li>

@@ -261,15 +261,6 @@ export function costLayout(tiles, W, H, { divisions, titled = false }) {
 }
 
 /**
- * Inner-square side as a fraction of the outer square: area is proportional to share. `floor`
- * keeps the smallest real contribution visible; it is the only departure from proportion.
- */
-export function innerSide(share, maxShare, floor) {
-	if (!share || !maxShare) return 0;
-	return clamp(Math.sqrt(share / maxShare), floor, 1);
-}
-
-/**
  * Mission outcomes by cost tier, every division pooled: a column per tier (`tiers`, lo < cost <= hi,
  * the Analysis page's own), each a block of squares several wide. Missions that met their goals
  * stack up from the zero line, those that failed or fell short (`tile.shortfall`) hang below it;

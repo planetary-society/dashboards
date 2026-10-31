@@ -5,10 +5,10 @@
 
 	/**
 	 * tiles: ScrollyTile[]
-	 * items: Map<id, { x, y, s, opacity?, inner?, variant?, emph?, tint?, label? }>
+	 * items: Map<id, { x, y, s, opacity?, variant?, tint?, label? }>
 	 *   tint: washed in Neptune Blue, over the variant's marks (the division a step points at)
 	 *   label: optional detailed hover/focus and accessible text; defaults to the short name
-	 *   variant: 'solid' | 'outline' | 'lost' | 'partial'
+	 *   variant: 'solid' | 'lost' | 'partial'
 	 * interactive: squares are in the tab order (false inside the aria-hidden story graphic)
 	 * highlightId: the square washed in Rocket Flame (the skyline's pointed-at mission)
 	 * quietId: a square whose tip is left off because something else already names it
@@ -56,8 +56,6 @@
 			{@const opacity = it.opacity ?? 1}
 			<a
 				class="sq mark-{it.variant ?? 'solid'}"
-				class:filled={it.filled}
-				class:emph={it.emph}
 				class:tint={it.tint}
 				class:hot={highlightId === t.id}
 				href={missionHref(t.division, t.id)}
@@ -70,12 +68,10 @@
 				style:height="{it.s}px"
 				style:opacity
 				style:pointer-events={opacity < 0.05 ? 'none' : null}
-				style:--inner={it.inner ?? 0}
 			>
 				{#if t.hasThumb}
 					<img src={thumbSrc(t.id)} alt="" decoding="async" fetchpriority="low" />
 				{/if}
-				<span class="fill"></span>
 			</a>
 		{/if}
 	{/each}
@@ -119,9 +115,7 @@
 	}
 
 
-	/* The picture stays in the square from one step to the next; the state is drawn over it. A
-	   square with something in it keeps its picture bright, an empty one dims it, and the two
-	   solid states wash it in their colour, so the legend's flat swatches still read true. */
+	/* The picture stays in the square from one step to the next; the state is drawn over it. */
 	img {
 		position: absolute;
 		inset: 0;
@@ -131,10 +125,6 @@
 		filter: grayscale(1) contrast(1.05);
 		opacity: var(--picture, 1);
 		transition: opacity 400ms linear;
-	}
-
-	.sq.mark-outline {
-		--picture: 0.4;
 	}
 
 	/* The hairlines are drawn on this overlay rather than on the square itself: an inset shadow
@@ -154,33 +144,8 @@
 	}
 
 	/* every state has an edge, so a bright picture never reads as a square without a mark */
-	.sq.mark-solid,
-	.sq.mark-outline {
+	.sq.mark-solid {
 		--edge: var(--outline);
-	}
-
-	/* a square with something in it is a little brighter than an empty one; the ones the
-	   copy points at are white */
-	.sq.filled {
-		--edge: var(--outline-filled);
-	}
-
-	.sq.emph {
-		--edge: var(--white);
-	}
-
-	.fill {
-		position: absolute;
-		z-index: 2;
-		left: 50%;
-		top: 50%;
-		width: calc(var(--inner) * 100%);
-		height: calc(var(--inner) * 100%);
-		transform: translate(-50%, -50%);
-		background: var(--neptune);
-		transition:
-			width var(--move) var(--ease),
-			height var(--move) var(--ease);
 	}
 
 	.tip {

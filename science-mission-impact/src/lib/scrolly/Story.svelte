@@ -2,11 +2,11 @@
 	// The overview as a scroll: a title over the missions' thumbnails rising behind it, then four questions about NASA's
 	// shift toward smaller, cheaper missions, answered over one stage of mission squares. The missions;
 	// how we measured them (the papers they produced, the citations those drew, what a high-impact paper
-	// is); then 1 of 4, science for the money: the walk-through division's missions by cost and each
+	// is); then 1 of 4, cost and scientific productivity: the walk-through division's missions by cost and each
 	// one's high-impact papers a year, every division's (then the threshold marked, SMALL), then
 	// DOLLAR_DIVISION's citations against cost and per dollar (the line they would follow if small
 	// missions did better, then as well, then their running average), then every division's running
-	// average. 2 of 4, failures by cost tier, then one division's split (FAIL_NOTE). 3 of 4, time to
+	// average. 2 of 4, failure rates by cost tier, then one division's split (FAIL_NOTE). 3 of 4, time to
 	// science: the Analysis page's time bars, from project start, then from the start of science. 4 of 4,
 	// CLPS. Then the four answers (FINDINGS) and the close over the opening's rising thumbnails.
 	// Steps share a graphic state (PAPERS/TOP, FAILURE/FAIL_NOTE, SCATTER/DOWN/FLAT/FIT), so long text
@@ -107,8 +107,8 @@
 	const dollarField = $derived(dollarName.toLowerCase()); // "planetary science" mid-sentence
 	// The headline tests the small/larger group difference, not the running curve's shape or ribbon.
 	const noneSmallBetter = $derived(noClearSmallAdvantage(rankable.map((d) => averages.get(d.slug)?.comparison)));
-	// The first answer: fewer high-impact papers per mission in every division, and no division where small
-	// missions did clearly better per dollar. It gates the close's line on replacing larger missions.
+	// Fewer high-impact papers per mission in every division, and no division where small missions did
+	// clearly better per dollar. It gates only the close's line on replacing larger missions.
 	const verdict = $derived(everyLower && noneSmallBetter);
 
 	// TIME_FORM and TIME_SCI: the Analysis page's own tiers and gates (src/lib/copy/analysis.js)
@@ -398,7 +398,7 @@
 			{#if leadsLarger}<p>Across the {spell(rankable.length)} divisions shown, larger missions tend to <strong>produce more high-impact papers per year</strong>.</p>{/if}
 			{#if leftOut.length}<p class="aside">The {listify(leftOut.map((d) => d.name))} division {leftOut.length === 1 ? 'has' : 'have'} too few missions, so {leftOut.length === 1 ? 'it isn’t' : 'they aren’t'} shown here.</p>{/if}
 		</div></section>
-		<!-- SMALL: the same lanes, the threshold dashed through them; where "small" is defined. A division is
+		<!-- SMALL: the same lanes, the threshold dashed through them; where "very low cost" is defined. A division is
 		     named as the exception only while its best small mission beats its larger missions' median (smallStandouts) -->
 		<section data-step><div class="step">
 			<p>Missions below {moneyWords(story.referenceCost)} are considered very low cost.</p>
@@ -409,7 +409,7 @@
 		<section data-step><div class="step">
 			{#if citesL}
 				<p><span class="neptuneBlue"><strong>Scientific impact per dollar</strong></span></p>
-				<p>Plotting missions by cost and total citations in each the publication window shows a clear relationship between total cost and total scientific impact.</p><p>Missions in {dollarField} are shown here.</p>
+				<p>Plotting missions by cost and total citations in each publication window shows a clear relationship between total cost and total scientific impact.</p><p>Missions in {dollarField} are shown here.</p>
 			{/if}
 		</div></section>
 		<!-- SCATTER, DOWN, FLAT and FIT always render, so later steps keep their numbers; without DOLLAR_DIVISION data they're blank -->
@@ -422,7 +422,7 @@
 		<!-- DOWN: the line the missions would follow if small ones got more for their money -->
 		<section data-step><div class="step">
 			{#if dollarAverage}
-				<p>If lower-cost missions consistently returned more impact per dollar, we would expect the average citations to be higher on the left side the plot.</p>
+				<p>If lower-cost missions consistently returned more impact per dollar, we would expect the average citations to be higher on the left side of the plot.</p>
 			{/if}
 		</div></section>
 		<!-- FLAT: the same line swings flat, for missions that got the same per dollar whatever their size -->
@@ -457,7 +457,7 @@
 		<!-- FAIL_NOTE: the same chart, NOTE's division washed; its split either side of the edge only under clearlyHigher -->
 		<section data-step><div class="step">
 			{#if note.split}
-				<p>{note.name} has the highest failure rate for very low cost missions.</p><p>Below {moneyWords(NOTE.edge)}, {spell(note.below.short)} out of {spell(note.below.missions)} {note.name} missions between 1980 and 2024 failed.</p><p>The program's most expensive failure, Mars Observer, succumbed to a hardware issue traced to the use of a commercial spacecraft bus designed for Earth orbit.</p>
+				<p>{note.name} has the highest failure rate for very low cost missions.</p><p>Below {moneyWords(NOTE.edge)}, {spell(note.below.short)} out of {spell(note.below.missions)} {note.name} missions between {site.launchYears[0]} and {site.launchYears[1]} failed.</p><p>The program's most expensive failure, Mars Observer, succumbed to a hardware issue traced to the use of a commercial spacecraft bus designed for Earth orbit.</p>
 			{:else}
 				<p>{upperFirst(spell(note.all.short))} of {spell(note.all.missions)} <strong class="neptuneBlue">{note.name}</strong> missions failed or fell short of their goals.</p>
 			{/if}
@@ -496,11 +496,11 @@
 				</li>
 				<li>
 					<span class="icon key mark-lost" aria-hidden="true"></span>
-					<span>{#if failsMore}<strong>High failure rates.</strong> {whole(failure.under.rate)} of missions below $150 million failed. Only {whole(failure.over.rate)} of larger ones did.{:else if failure.higher === 'under'}<strong>Somewhat more failures:</strong> {whole(failure.under.rate)} of small missions against {whole(failure.over.rate)} of larger ones.{:else if failure.higher === 'over'}<strong>No more failures:</strong> {whole(failure.under.rate)} of small missions against {whole(failure.over.rate)} of larger ones.{:else}<strong>Similar failure rates</strong> for small and larger missions.{/if} Failure rates are not the same across scientific divisions.</span>
+					<span>{#if failsMore}<strong>High failure rates.</strong> {whole(failure.under.rate)} of missions below {moneyWords(story.referenceCost)} failed. Only {whole(failure.over.rate)} of larger ones did.{:else if failure.higher === 'under'}<strong>Somewhat more failures:</strong> {whole(failure.under.rate)} of small missions against {whole(failure.over.rate)} of larger ones.{:else if failure.higher === 'over'}<strong>No more failures:</strong> {whole(failure.under.rate)} of small missions against {whole(failure.over.rate)} of larger ones.{:else}<strong>Similar failure rates</strong> for small and larger missions.{/if} Failure rates are not the same across scientific divisions.</span>
 				</li>
 				<li>
 					<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13.5" r="7.5" /><path d="M12 13.5V9.5M10 3h4M12 3v3M18 7l1.5-1.5" /></svg>
-					<span>{#if mostNone}<strong>Not reliably faster.</strong> Most low cost missions generate no high-impact science papers. {#if cheapAsQuick} Those that do often take as long as mid-size missions{/if}.{:else if science}<strong>Not faster.</strong> Once science begins, larger missions reach a high-impact paper sooner.{:else}<strong>Speed</strong> varies with cost in no simple way.{/if}</span>
+					<span>{#if mostNone}<strong>Not reliably faster.</strong> Most low cost missions generate no high-impact science papers. {#if cheapAsQuick}Those that do often take as long as mid-size missions.{/if}{:else if science}<strong>Not faster.</strong> Once science begins, larger missions reach a high-impact paper sooner.{:else}<strong>Speed</strong> varies with cost in no simple way.{/if}</span>
 				</li>
 				<li>
 					<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 10h8l1.5 5h-11zM12 10V6M10 6h4M7 15l-2.5 4M17 15l2.5 4M3 19h4M17 19h4" /></svg>

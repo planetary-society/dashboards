@@ -85,9 +85,6 @@ export function topUnder(efficiency) {
 /** Of the divisions the story compares per dollar, those where costlier missions drew more citations per dollar (packaged `favors`). */
 export const favorsOver = (perDollar) => perDollar.filter((p) => p.favors === 'over');
 
-/** True when no division's leading tier survives leaving out any one mission. */
-export const noFirmLeader = (efficiency) => efficiency.divisions.every((d) => !d.best || d.best.holds === false);
-
 /**
  * The cost group where both selection methods are common enough to compare, with which side's
  * median N50 per dollar is higher; null when no group qualifies or the medians tie.

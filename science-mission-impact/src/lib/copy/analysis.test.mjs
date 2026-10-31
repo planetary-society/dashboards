@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { clearlyHigher, clpsCosts, divisionShortfalls, edgeWords, favorsOver, mostUnreached, noFirmLeader, notLinear, rate, scienceOrder, selectionContrast, series, shortestTier, smallLowest, tierWords, topUnder } from './analysis.js';
+import { clearlyHigher, clpsCosts, divisionShortfalls, edgeWords, favorsOver, mostUnreached, notLinear, rate, scienceOrder, selectionContrast, series, shortestTier, smallLowest, tierWords, topUnder } from './analysis.js';
 import { range } from '../format.js';
 
 test('notLinear, topUnder and favorsOver gate the summary’s own sentences', () => {
@@ -45,18 +45,6 @@ test('scienceOrder claims only the order the medians show', () => {
 	assert.equal(scienceOrder({ tiers: [tier(1, 2.2), tier(null, null, 0)] }), null);
 	// a tier with too few first papers can't carry the order
 	assert.equal(scienceOrder({ tiers: [tier(1, 2.3, 2), tier(1, 1.1), tier(1, 0.2)] }), null);
-});
-
-test('division gates read the packaged efficiency rows', () => {
-	const row = (division, under, holds = false) => ({ division, name: division, under, best: { tier: 2, ratio: 2, holds } });
-	const efficiency = { divisions: [
-		row('helio', { missions: 16, ratio: 1.39, top10: 20 }),
-		row('astro', { missions: 5, ratio: 0.11, top10: 0 }),
-		row('earth', { missions: 0, ratio: null, top10: 0 })
-	] };
-	assert.equal(noFirmLeader(efficiency), true);
-	efficiency.divisions[0].best.holds = true;
-	assert.equal(noFirmLeader(efficiency), false);
 });
 
 test('selectionContrast compares only a group where both methods are common', () => {

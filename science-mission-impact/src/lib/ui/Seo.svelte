@@ -8,7 +8,7 @@
 	const fullTitle = $derived(title === SITE ? `${SITE} | The Planetary Society` : `${title} | ${SITE}`);
 	const url = $derived(canonical(page.url.pathname));
 	const image = `${SITE_ORIGIN}/img/tps-science-mission-impact-preview.png`;
-	const imageAlt = 'NASA science missions as squares, placed at their actual adjusted costs within each division and filled by their share of top-cited papers';
+	const imageAlt = 'NASA science missions as squares by cost and citations per $100M in four divisions, each with its running average';
 </script>
 
 <svelte:head>

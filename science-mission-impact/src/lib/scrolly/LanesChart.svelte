@@ -10,6 +10,7 @@
 	import { money, moneyTick, weight } from '$lib/format.js';
 	import { minorDollarTicks } from '$lib/charts/costaxis.js';
 	import DollarMinorTicks from '$lib/charts/DollarMinorTicks.svelte';
+	import CostAxisLabel from '$lib/charts/CostAxisLabel.svelte';
 	import { columnLabel } from './layouts.js';
 
 	/**
@@ -84,6 +85,7 @@
 	<!-- the cursor's cost, on the axis; a tick label it would run into steps aside -->
 	{#if cx != null}<span class="tick reading" style:left="{cx}px" style:top="{floor + 5}px">{money(layout.x.invert(cx))}</span>{/if}
 	{#if tx != null}<span class="tick reading mark" class:shown={txShown} style:left="{tx}px" style:top="{floor + 5}px">{moneyTick(threshold)}</span>{/if}
+	<CostAxisLabel {x0} {x1} {floor} {compact} />
 
 	<svg {width} {height}>
 		<!-- the chart's title, top right like the overview's other charts -->

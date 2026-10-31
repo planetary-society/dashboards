@@ -18,8 +18,10 @@ import { compile } from 'svelte/compiler';
 import { render } from 'svelte/server';
 import { scaleLinear, scaleLog } from 'd3-scale';
 import { focusLayout, costLayout, primerLayout, perDollarLayout, tierOutcomeLayout } from './layouts.js';
-import { money } from '../format.js';
-import { flat } from '../copy/discussion.js';
+import { money, spell } from '../format.js';
+import { fitLabel } from '../copy/discussion.js';
+import { COST_AXIS_LABEL } from '../charts/costaxis.js';
+import { calendarYears } from '../copy/window.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const lib = join(here, '..');
@@ -199,8 +201,10 @@ const ref = story.referenceCost;
 
 test('Primer prerenders a bar per citation count up to the most cited, their top-10% parts and the cutoff', async () => {
 	const layout = primerLayout(story.primer, stage.width, stage.height);
-	const { body } = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, highlight: true } });
+	const { body } = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, years: calendarYears(site.fullPolicy), highlight: true } });
 	clean(body);
+	assert.match(body, new RegExp(`>Citations in first ${spell(site.fullPolicy.citationYears + 1)} years<`), 'the count axis, its window spelled out');
+	assert.match(body, /<text x="0"[^>]*>Papers</, 'the papers scale, top left');
 	const tops = story.primer.top.filter((t) => t > 0).length;
 	assert.equal((body.match(/<rect/g) ?? []).length, story.primer.counts.filter((n) => n > 0).length + tops, 'no bar for a count no paper drew');
 	assert.ok(story.primer.counts.at(-1) > 0, 'the axis ends at the most cited paper');
@@ -213,12 +217,12 @@ test('Primer prerenders a bar per citation count up to the most cited, their top
 test('Primer lights the pointed-at bar and names its count', async () => {
 	const layout = primerLayout(story.primer, stage.width, stage.height);
 	const most = story.primer.counts.length - 1;
-	const { body } = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, hot: most } });
+	const { body } = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, years: calendarYears(site.fullPolicy), hot: most } });
 	clean(body);
 	const n = story.primer.counts[most];
 	assert.ok(body.includes(`>${n} ${n === 1 ? 'paper' : 'papers'} cited ${most} times<`), 'the most cited bar, named');
 	assert.ok((body.match(/class="[^"]*\bhot\b/g) ?? []).length >= 1, 'its bar in flame');
-	const none = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, hot: 0 } }).body;
+	const none = render(await load('Primer.svelte'), { props: { ...stage, layout, primer: story.primer, years: calendarYears(site.fullPolicy), hot: 0 } }).body;
 	assert.ok(none.includes(`${story.primer.counts[0].toLocaleString('en-US')} papers with no citations`));
 });
 
@@ -232,6 +236,8 @@ test('FocusChart prerenders the axis, its title and the largest named, leaving i
 	assert.match(body, /class="stage-title[^>]*text-anchor="end">High-impact papers published per year in Planetary Science, by mission</);
 	assert.ok(!body.includes('$150M'), 'no threshold line');
 	assert.ok(!body.includes('<path'), 'no running total');
+	assert.ok(body.includes(`>${COST_AXIS_LABEL}<`), 'the cost axis labelled');
+	assert.ok(layout.chart.tickY < layout.chart.axisY && layout.chart.axisY < layout.chart.rugTop, 'ticks, then the label, then the rug');
 });
 
 test('LanesChart: a band per compared division, a bar per mission with top papers, no labels until a bar is pointed at', async () => {
@@ -245,6 +251,7 @@ test('LanesChart: a band per compared division, a bar per mission with top paper
 	assert.ok(!body.includes('<path'), 'no running lines');
 	assert.equal((body.match(/class="bar[ "]/g) ?? []).length, layout.rows.flatMap((r) => r.members).filter((t) => t.top10PerYear > 0).length);
 	assert.ok(!body.includes(' a year<'), 'no scale or leader labels');
+	assert.equal(body.split(`>${COST_AXIS_LABEL}<`).length - 1, 1, 'the cost axis labelled once');
 	assert.ok(!body.includes('class="label'), 'nothing named until pointed at');
 	const lead = story.rate.divisions[0].largest;
 	const pointed = render(Lanes, { props: { ...stage, layout, hot: lead.id } }).body;
@@ -282,7 +289,7 @@ test('LanesChart carries the focus division’s bars: on the focus chart’s axe
 	assert.ok(layout.top >= 28, 'a titled layout keeps a strip over the lanes');
 });
 
-test('DollarChart draws every fit alike and labels the nearly flat', async () => {
+test('DollarChart draws every fit alike, names each in words and labels its cost axis', async () => {
 	const compared = new Set(story.comparison.divisions);
 	const divisions = site.divisions.filter((d) => compared.has(d.slug));
 	const fits = new Map(story.perDollar.map((d) => [d.division, d.fit]));
@@ -291,12 +298,75 @@ test('DollarChart draws every fit alike and labels the nearly flat', async () =>
 	clean(body);
 	assert.equal((body.match(/class="fit[ "]/g) ?? []).length, story.perDollar.filter((d) => d.fit).length, 'one line a fit');
 	assert.ok(!body.includes('soft'), 'none set apart');
-	assert.equal((body.match(/Nearly flat/g) ?? []).length, story.perDollar.filter((d) => d.fit && flat(d.fit)).length);
+	const labels = [...body.matchAll(/class="meta[^>]*>([^<]*)</g)].map((m) => m[1]);
+	assert.deepEqual(labels, layout.rows.filter((r) => r.fit).map((r) => fitLabel(r.fit)), 'each band names its fit in words');
+	assert.ok(!body.includes('×'), 'no multiples on the chart');
+	assert.ok(body.includes(`>${COST_AXIS_LABEL}<`), 'the cost axis labelled');
 	assert.ok(!body.includes('stage-title'), 'no title unless given one');
 	const titled = perDollarLayout(tiles, 900, 600, { divisions, fits, titled: true });
 	assert.ok(titled.top >= 28, 'a titled layout keeps a strip over the plot');
 	const headed = render(await load('DollarChart.svelte'), { props: { ...stage, layout: titled, title: 'Citations per $100M by division' } }).body;
 	assert.match(headed, /class="stage-title[^>]*text-anchor="end">Citations per \$100M by division</);
+});
+
+test('DollarChart shades only opted-in completed fits, with one clipped ribbon behind each line', async () => {
+	const divisions = site.divisions.filter((d) => story.comparison.divisions.includes(d.slug));
+	const fits = new Map(story.perDollar.map((d) => [d.division, { ...d.fit, band: [[1, 1, 100], [10000, 100, 10000]] }]));
+	const layout = perDollarLayout(tiles, 900, 600, { divisions, fits });
+	const Component = await load('DollarChart.svelte');
+	const draw = (props = {}) => render(Component, { props: { ...stage, layout, ...props } }).body;
+	const paths = (body) => [...body.matchAll(/<path class="confidence[^>]*clip-path="url\(#([^)]*)\)"/g)];
+	const body = draw({ confidence: true });
+	clean(body);
+	assert.equal(paths(body).length, divisions.length);
+	const ids = [...body.matchAll(/<clipPath id="([^"]*)"/g)].map((m) => m[1]);
+	assert.equal(new Set(ids).size, divisions.length);
+	assert.deepEqual(paths(body).map((m) => m[1]), ids, 'each ribbon uses its own clip');
+	for (const path of paths(body)) assert.ok(body.indexOf('class="fit', path.index) > path.index, 'the best-fit line draws after the ribbon');
+	assert.equal(paths(draw()).length, 0, 'off by default');
+	assert.equal(paths(draw({ confidence: true, turn: 0.5 })).length, 0, 'no ribbon around a rotating line');
+	const single = perDollarLayout(tiles, 900, 600, { divisions: divisions.slice(0, 1), fits });
+	assert.equal(paths(draw({ confidence: true, layout: single })).length, 1, 'single-division charts can opt in too');
+	assert.equal(paths(draw({ layout: single })).length, 0, 'single-division overview steps remain unshaded by default');
+	assert.equal((body.match(/class="fit[ "]/g) ?? []).length, divisions.length, 'best-fit lines are retained');
+});
+
+test('DollarChart shares running-average paths and optional intervals across single and multiple divisions', async () => {
+	const divisions = site.divisions.filter((d) => story.comparison.divisions.includes(d.slug));
+	const averages = new Map(divisions.map((d) => [d.slug, { points: [[10, 0, 0, 10], [100, 10, 0, 30], [1000, 30, 10, 100]] }]));
+	const Component = await load('DollarChart.svelte');
+	for (const [width, height] of [[900, 600], [351, 400]]) {
+		const layout = perDollarLayout(tiles, width, height, { divisions, averages });
+		const draw = (props = {}) => render(Component, { props: { width, height, compact: width < 600, layout, ...props } }).body;
+		const body = draw({ confidence: true });
+		clean(body);
+		assert.equal((body.match(/<span class="band[ "]/g) ?? []).length, divisions.length, 'one bordered panel per division');
+		assert.ok(!/class="shelf[ "]/.test(body), 'panel borders provide the baseline without a second horizontal line');
+		assert.equal((body.match(/<path class="fit[ "]/g) ?? []).length, divisions.length, 'one running curve per division');
+		assert.ok(!/<line class="fit/.test(body), 'no fitted lines');
+		assert.ok(!body.includes('>Running average<'), 'grid panels only name their division');
+		assert.ok(!/>Weak<|>Nearly flat<|>Modest /.test(body), 'no slope labels on averages');
+		assert.equal((body.match(/<path class="confidence/g) ?? []).length, divisions.length, 'the comparison step has intervals');
+		assert.ok(!draw().includes('<path class="confidence'), 'intervals are opt-in');
+		const halfway = draw({ turn: 0.5, confidence: true });
+		assert.ok(!halfway.includes('<path class="confidence'), 'no interval during the reveal');
+		const curves = (html) => [...html.matchAll(/<path class="fit[^"]*" d="([^"]*)" opacity="([^"]*)"/g)];
+		assert.deepEqual(curves(halfway).map((m) => m[1]), curves(body).map((m) => m[1]), 'the curve fades without changing its geometry');
+		assert.ok(curves(halfway).every((m) => m[2] === '0.5'));
+		assert.ok(!draw({ turn: null }).includes('<path class="fit'), 'earlier scatter has no average');
+		const single = perDollarLayout(tiles, width, height, { divisions: divisions.slice(0, 1), averages });
+		const division = draw({ layout: single, confidence: true });
+		clean(division);
+		assert.equal((division.match(/class="shelf[ "]/g) ?? []).length, 1, 'the single-division chart retains its baseline');
+		assert.equal(curves(division).length, 1, 'division pages use the same running curve');
+		assert.match(division, />Running average</);
+		assert.equal((division.match(/<path class="confidence/g) ?? []).length, 1, 'division pages show its interval');
+		assert.ok(!/<line class="fit/.test(division), 'no regression line on the division chart');
+		assert.ok(!draw({ layout: single }).includes('<path class="confidence'), 'overview single-division reveal remains unshaded');
+		const imagined = draw({ layout: single, confidence: true, turn: null, would: { slope: -0.5, shown: true, label: 'If small missions did better' } });
+		assert.match(imagined, /class="would[^>]*>[\s\S]*?<line /, 'the hypothetical works without a fitted model');
+		assert.ok(!imagined.includes('<path class="confidence'), 'hypothetical steps stay unshaded');
+	}
 });
 
 test('OutcomeChart: titled, Success over the zero line and Failure under it, each tier’s rate with no count', async () => {

@@ -163,8 +163,13 @@ export interface AnalysisFacts {
 			cutoffs: { '50': number; '10': number; '1': number }; // citations at the top-k% line, full scope
 		}[];
 	};
-	missions: AnalysisMission[]; // every division, by cost then id
-	excluded: { noCost: number; unmeasured: number }; // left off `missions`: no positive cost / output not measured
+	missions: AnalysisMission[]; // every division, by cost then id; eligible empty failures included
+	/** left off `missions`: no positive cost / output not measured */
+	excluded: { noCost: number; unmeasured: number };
+	/**
+	 * Outcomes over every costed packaged mission, measured or not (the same missions as StoryFacts.failure,
+	 * whose Fisher test the page reads).
+	 */
 	failures: {
 		/** One per tier; byDivision lists every configured division in config order, zeros kept. */
 		tiers: {
@@ -189,8 +194,8 @@ export interface AnalysisFacts {
 			reached: number; // with a first top-10% paper
 			without: number; // missions - reached
 			undated: number; // reached, but no formulation date on record
-			formulation: { median: number | null; min: number | null }; // years from formulation start
-			science: { median: number | null; min: number | null }; // years from the start of science
+			formulation: MedianYears; // years from formulation start
+			science: MedianYears; // years from the start of science
 		}[];
 		failedExcluded: number;
 		fastest: AnalysisFastest | null; // shortest from formulation, any tier (ties: cost, then id)
@@ -218,6 +223,13 @@ export interface AnalysisFacts {
 		overMedian: number | null;
 		missions: { id: string; name: string; cost: number; rate: number }[];
 	}[];
+}
+
+/** Years over the reached missions: the median, the minimum and the median's distribution-free 95% interval (`medianInterval` in analysis.mjs: order statistics; null below six missions). */
+export interface MedianYears {
+	median: number | null;
+	min: number | null;
+	ci: [number, number] | null;
 }
 
 export interface DivisionSummary {
@@ -250,19 +262,22 @@ export interface StoryFacts {
 		papers: number; // under-threshold mission papers
 		costMedian: number | null; // median adjusted $M of the missions at or under the threshold
 	};
-	/** Shortfalls (Failure, Partial Failure, Partial Success: MissionRow.shortfall) either side of the threshold, every costed mission of every division. */
+	/**
+	 * Shortfalls (Failure, Partial Failure, Partial Success: MissionRow.shortfall) either side of the threshold, over
+	 * every costed packaged mission, whatever its output.
+	 */
 	failure: {
 		statuses: string[];
 		// Wilson 95% interval for failed / missions; the costliest outright failure on the side, $M
 		under: ShortfallSide & { interval: [number, number] | null; lostCostMax: number | null };
 		over: ShortfallSide & { interval: [number, number] | null; lostCostMax: number | null };
 		higher: 'under' | 'over' | null; // strictly higher rate; null on a tie or an empty side
+		fisherP: number | null; // two-sided Fisher exact test, under against over shortfall counts; null when a side is empty
 		byDivision: { division: DivisionSlug; name: string; under: Omit<ShortfallSide, 'rate'>; over: Omit<ShortfallSide, 'rate'> }[];
 	};
 	divisions: {
 		division: DivisionSlug; name: string; missions: number; measuredMissions: number;
 		top10: number; share: number | null;
-		missionsAll: number; // the division's costed missions
 		/** the small side's shares, all over the same missions: costed, with output measured in the scope */
 		missionShare: number | null;
 		costShare: number | null;
@@ -299,16 +314,13 @@ export interface StoryFacts {
 	 */
 	primer: { division: DivisionSlug; name: string; counts: number[]; top: number[]; papers: number; cutoff: number; topPapers: number } | null;
 	/**
-	 * The yearly-rate charts' `top10PerYear` facts: `end`, the data's end point every rate runs to
-	 * (exclusive; the latest full-mission window end in the runs), `through` the last publication
-	 * year that counts, then one row per rankable division, kept apart: its costed mission with the
-	 * highest rate and that mission's side of the threshold; each side's missions, how many had
-	 * no top-10% papers (`none`) and its median rate; and the small side's best with how many
-	 * larger missions it out-produced (`above`).
+	 * The yearly-rate charts' `top10PerYear` facts (full-scope top-10% credit over the full window's
+	 * years), one row per rankable division, kept apart: its costed mission with the highest rate and
+	 * that mission's side of the threshold; each side's missions, how many had no top-10% papers
+	 * (`none`) and its median rate; and the small side's best with how many larger missions it
+	 * out-produced (`above`).
 	 */
 	rate: {
-		end: string;
-		through: number;
 		divisions: {
 			division: DivisionSlug;
 			name: string;
@@ -317,7 +329,7 @@ export interface StoryFacts {
 			larger: { missions: number; none: number; median: number | null };
 			bestSmall: { id: string; name: string; perYear: number; above: number } | null;
 		}[];
-	} | null;
+	};
 	/** Citations per $100M either side of the threshold, one row per rankable division. */
 	perDollar: {
 		division: DivisionSlug; name: string;
@@ -328,15 +340,53 @@ export interface StoryFacts {
 		flipsOn: { id: string; name: string; side: ComparisonKey }[];
 		margin: number | null; // |under − over| ÷ the higher rate; null when a rate is null or both are 0
 		largestUnder: { id: string; name: string; share: number } | null; // most-cited under mission, its share of the under side's citations
-		/**
-		 * The trend with cost, threshold ignored: least squares of log10(citations per $100M) on log10(cost) over the
-		 * measured missions with citations (`missions`; `zeros` those without), the line the story draws. `tenfold` =
-		 * 10^slope, the rate's multiple at ten times the cost; `citesTenfold` = 10^(slope + 1), the citations' own (the
-		 * same line before dividing by cost); `holds`: no single fitted mission, dropped, reverses the
-		 * sign of `slope` (null with three, where a drop leaves no line). Null below three.
-		 */
-		fit: { missions: number; zeros: number; slope: number; intercept: number; tenfold: number; citesTenfold: number; holds: boolean | null } | null;
+		/** The trend with cost, threshold ignored; null below three measured missions with citations or when the fit fails. */
+		fit: PerDollarFit | null;
+		/** Overview and division charts: local arithmetic mean mission rates, plus the overview's independent threshold comparison. */
+		runningMean: PerDollarRunningMean;
 	}[];
+}
+
+export interface PerDollarRunningMean {
+	/** Tricube half-width in log10 cost; the window spans costs within 10^halfWidth. */
+	halfWidth: number;
+	resamples: number;
+	/** Mean citations per $100M and 95% pointwise bootstrap bounds; unsupported windows stay null, true zeros stay zero. */
+	points: [cost: number, mean: number | null, lower: number | null, upper: number | null][];
+	/** Independently resampled within the threshold groups; null with fewer than three missions on either side. */
+	comparison: {
+		under: { missions: number; mean: number };
+		over: { missions: number; mean: number };
+		difference: number; // under mean minus over mean
+		ci: [number, number]; // 95% percentile bootstrap interval for the difference
+		holds: boolean; // every single-mission removal preserves the observed direction
+		favors: ComparisonKey | null; // interval excludes zero and holds is true
+	} | null;
+}
+
+/**
+ * A division's per-dollar trend (`perDollarFit` in scripts/lib/public.mjs): a negative binomial regression of each
+ * measured mission's citations on log cost (ln E[citations] = a + b ln cost, dispersion estimated), every measured
+ * mission counted, one with no citations (mostly failures) as zero. The line the charts draw is its mean:
+ * log10(citations per $100M) = intercept + slope · log10(cost), slope = b − 1.
+ */
+export interface PerDollarFit {
+	missions: number; // measured missions with citations
+	zeros: number; // measured missions without
+	slope: number; // b − 1, log rate per log cost
+	intercept: number; // a / ln 10 + 2
+	tenfold: number; // 10^slope: the rate's multiple at ten times the cost
+	citesTenfold: number; // 10^(slope + 1): the citations' own multiple (the same line before dividing by cost)
+	p: number; // two-sided Wald test of a flat rate (b = 1)
+	ci: [number, number]; // 95% Wald interval for `tenfold`
+	/** 95% pointwise Wald interval for the mean citations per $100M, sampled across observed costs; not a prediction interval. */
+	band: [cost: number, lowerRate: number, upperRate: number][];
+	/** leaving out each measured mission in turn: no fit reverses the sign of `slope`; null below four with citations or when a fit fails */
+	holds: boolean | null;
+	pRange: [number, number] | null; // the lowest and highest p over those fits; null exactly when `holds` is
+	noFailures: { tenfold: number; p: number } | null; // the same fit without the outright failures; null when it can't be fitted
+	/** full-scope fits only: the prime-mission (window-scope) refit, which fitKind requires to agree before calling a line clear */
+	prime?: { slope: number; tenfold: number; p: number; pRange: [number, number] | null; holds: boolean | null };
 }
 
 export type ComparisonKey = 'under' | 'over'; // at or under the threshold (0 < cost <= referenceCost) / above it
@@ -377,13 +427,27 @@ export interface ClpsFacts {
 	start: string; // YYYY-MM-DD, the first CLPS launch
 	horizonMonths: number;
 	/** launch order. papers: refereed papers on record; null when output is unavailable (not zero) */
-	missions: { id: string; name: string; fullName: string; launchDate: string | null; primeStart: string | null; status: string | null; cost: number | null; papers: number | null }[];
+	missions: { id: string; name: string; fullName: string; failed: boolean; shortfall: boolean; cost: number | null; papers: number | null }[];
 	/** every lander pooled, a shared paper once; index = month, length horizonMonths + 1 */
 	series: (number | null)[];
 	/** aligned by months since their prime-mission start (launch when absent); always reach the horizon */
 	comparators: { id: string; name: string; fullName: string; start: string; cost: number | null; papers: number; series: (number | null)[] }[];
-	/** at the last month CLPS has a value for: each line's running total; behindAll = every comparator strictly ahead (null with none) */
-	comparison: { month: number; clps: number; comparators: { id: string; name: string; papers: number }[]; behindAll: boolean | null };
+	/**
+	 * At the last month CLPS has a value for: each line's running total (each comparator with its cost, $M); behindAll =
+	 * every comparator strictly ahead (null with none). `landers`: each lander with records (launch order) at its own age,
+	 * whole months elapsed at the as-of date since its prime start (launch when absent), its refereed papers at that age
+	 * and each comparator's at the same age (a paper dated before its prime start counts from month 0). A lander whose
+	 * prime start is after the as-of date is not listed. behindEach = every listed lander behind every comparator,
+	 * each strictly ahead (null with no lander or no comparator). cost = every lander's cost summed, $M, null when any
+	 * lacks one; costEach = that cost over the landers.
+	 */
+	comparison: {
+		month: number; clps: number; comparators: { id: string; name: string; cost: number | null; papers: number }[]; behindAll: boolean | null;
+		landers: { id: string; name: string; age: number; papers: number; comparators: { id: string; papers: number }[] }[];
+		behindEach: boolean | null;
+		cost: number | null;
+		costEach: number | null;
+	};
 	/**
 	 * The Analysis page's papers per dollar: smi.config.json clps.surface's missions (config order) at
 	 * `month` (= comparison.month), each from its prime-mission start (launch when absent); a failure
@@ -393,11 +457,16 @@ export interface ClpsFacts {
 		month: number;
 		/** papers = comparison.clps (pooled); cost = the landers' costs summed, $M, null when any lacks one */
 		clps: { papers: number; cost: number | null };
+		/**
+		 * What `behind` tests: only the landers that did not fail outright, pooled (a shared paper once) on the
+		 * program's clock (from `start`, at `month`), and their costs summed ($M; null when one lacks a cost)
+		 */
+		flown: { papers: number; cost: number | null };
 		missions: { id: string; name: string; fullName: string; start: string; cost: number | null; selection: Selection; failed: boolean; papers: number }[];
 		/**
-		 * Over the successful missions: total = every one strictly ahead in papers; perDollar = every
-		 * costed one strictly ahead in papers per dollar (null when clps.cost is null or none has a cost).
-		 * null when no mission succeeded.
+		 * Over the successful missions against `flown`: total = every one strictly ahead in papers;
+		 * perDollar = every costed one strictly ahead in papers per dollar (null when `flown` lacks a
+		 * cost or no mission has one). null when no mission succeeded.
 		 */
 		behind: { total: boolean; perDollar: boolean | null } | null;
 	};
@@ -520,7 +589,7 @@ export interface MissionRow {
 	indices: MissionIndices;
 	papers: number | null; // lifetime
 	citations: number | null; // lifetime
-	// lifetime top-10% papers a year, prime start to story.rate.end (yearlyTopRate in measures.mjs); null without a start
+	// full-scope top-10% credit over the full window's years (yearlyTopRate in measures.mjs); null when the full scope is unavailable or the window has no length
 	top10PerYear: number | null;
 	hasThumb: boolean;
 	full: MissionScopeStats & { status: string }; // available | ...
@@ -680,7 +749,8 @@ export interface AffiliationGrid {
 
 /** generated/scrolly.json */
 export interface Scrolly {
-	tiles: ScrollyTile[]; // every analysed mission, launch order (date, then name; undated last)
+	/** every analysed mission, then the failure chart's outcome-only missions, in one launch order (date, then name; undated last) */
+	tiles: ScrollyTile[];
 }
 
 export interface ScrollyTile {
@@ -696,7 +766,7 @@ export interface ScrollyTile {
 	citationsLifetime: number | null; // every citation of those papers; the corpus skyline's citation step
 	citations: number | null; // full-mission window; what the per-dollar step divides by cost
 	top10: number | null; // full-mission top-10% credit, as published
-	top10PerYear: number | null; // the mission row's; the focus division's running-total bars
+	top10PerYear: number | null; // the mission row's; the rate bars
 	hasThumb: boolean;
 	failed: boolean;
 	shortfall: boolean; // Failure, Partial Failure or Partial Success

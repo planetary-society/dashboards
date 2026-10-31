@@ -4,7 +4,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { costLayout, rugLayout, skylineLayout, skylineZoom, skylineHit, laneHit, primerLayout, columnLabel, tierOutcomeLayout, focusLayout, perDollarLayout, trendLine } from './layouts.js';
-import { logFit } from '../../../scripts/lib/util.mjs';
+import { nbFit } from '../../../scripts/lib/util.mjs';
+import { runningLine, trendBand } from '../charts/perdollar.js';
 
 const load = async (name) => JSON.parse(await readFile(new URL(`../data/generated/${name}.json`, import.meta.url), 'utf8'));
 const site = await load('site');
@@ -133,6 +134,9 @@ test('the primer: a log-scale bar per count with papers, each found under a poin
 			assert.equal(skylineHit(p, c.x + c.w / 2, p.ground - 1), c.id, `${W}px: the bar under the pointer`);
 		}
 		assert.deepEqual(p.yTicks.map((t) => t.v), [1, 10, 100, 1000], `${W}px: a gridline per power of ten`);
+		// the axis labels: papers over the top gridline's label, its own line under the title on a phone; citations under the ticks, on the stage
+		assert.ok(p.titleY > 12 && p.papersY <= p.top - 12 && p.citesY >= p.ground + 30 && p.citesY <= H - 4, `${W}px: labels placed`);
+		if (W < 600) assert.ok(p.papersY - p.titleY >= 16, `${W}px: papers clear of the title`);
 	}
 });
 
@@ -202,21 +206,27 @@ test('per dollar: every measured mission in its band, and each band’s cited sq
 	const compared = site.divisions.filter((d) => site.story.comparison.divisions.includes(d.slug));
 	const focus = compared.filter((d) => d.slug === site.story.focusDivision);
 	const fits = new Map(site.story.perDollar.map((d) => [d.division, d.fit]));
+	const membersOf = (slug) => tiles.filter((t) => t.division === slug && t.cost > 0 && t.citations != null && t.top10 != null);
+	// the squares are the points the packaged line was fitted to, zeros included: refitted once per division
+	const lines = new Map(compared.map((d) => [d.slug, nbFit(membersOf(d.slug).map((t) => ({ cost: t.cost, citations: t.citations })))]));
 	for (const [W, H] of sizes) {
 		for (const divisions of [focus, compared]) {
 			const layout = perDollarLayout(tiles, W, H, { divisions, fits });
+			assert.deepEqual([...perDollarLayout(tiles, W, H, { divisions, fits }).pos.keys()], [...layout.pos.keys()], `${W}px: no outcome-only tile placed`);
 			for (const row of layout.rows) {
 				const fit = fits.get(row.slug);
-				const members = tiles.filter((t) => t.division === row.slug && t.cost > 0 && t.citations != null && t.top10 != null);
-				const cited = members.filter((t) => t.citations > 0);
-				assert.deepEqual([cited.length, members.length - cited.length], [fit.missions, fit.zeros], `${row.slug}: the packager's missions`);
-				// the squares are the points the packaged line was fitted to
-				const line = logFit(cited.map((t) => ({ cost: t.cost, rate: (t.citations / t.cost) * 100 })));
-				assert.ok(Math.abs(line.slope - fit.slope) < 5e-4 && Math.abs(line.intercept - fit.intercept) < 5e-3, `${row.slug}: slope and intercept`);
+				const members = membersOf(row.slug);
+				const withCitations = members.filter((t) => t.citations > 0);
+				assert.deepEqual([withCitations.length, members.length - withCitations.length], [fit.missions, fit.zeros], `${row.slug}: the packager's missions`);
+				const line = lines.get(row.slug);
+				assert.ok(Math.abs(line.b - 1 - fit.slope) < 5e-4 && Math.abs(line.a / Math.LN10 + 2 - fit.intercept) < 5e-3, `${row.slug}: slope and intercept`);
 				for (const t of members) {
 					const p = layout.pos.get(t.id);
 					assert.ok(inStage(p, W, H) && p.y >= row.curveTop - p.s && p.y + p.s <= row.shelfY + 0.5, `${W}px ${row.slug}: ${t.id} inside its band`);
 				}
+				const logs = members.map((t) => Math.log10(t.cost));
+				assert.deepEqual(row.span, [Math.min(...logs), Math.max(...logs)], `${row.slug}: the line spans every measured mission, the zeros included`);
+				assert.ok(Math.abs(row.pivot.cost - (row.span[0] + row.span[1]) / 2) < 1e-12, `${row.slug}: pivot midway along it`);
 				const { y1, y2 } = trendLine(layout, row, fit.slope);
 				assert.ok(fit.slope > 0 ? y2 < y1 : y2 >= y1, `${row.slug}: a rising fit is drawn rising`);
 			}
@@ -224,16 +234,68 @@ test('per dollar: every measured mission in its band, and each band’s cited sq
 	}
 });
 
-test('citations against cost: the squares by their own citations, no line, and the copy’s multiple their own fit’s', () => {
+test('per-dollar charts retain selected empty failures but exclude unavailable output', () => {
+	const failure = { id: 'selected', division: 'test', cost: 20, citations: 0, top10: 0, failed: true, launchYear: 2024 };
+	const candidates = [failure, { ...failure, id: 'unavailable', citations: null, top10: null }];
+	const layout = perDollarLayout(candidates, 800, 500, { divisions: [{ slug: 'test' }], fits: new Map() });
+	assert.deepEqual([...layout.pos.keys()], ['selected']);
+});
+
+test('confidence ribbons keep unclamped log geometry and clip above the zero shelf over observed costs', () => {
+	const points = [10, 100, 1000].map((cost) => ({ id: `${cost}`, division: 'test', cost, citations: cost, top10: 1 }));
+	points.push({ id: 'failed', division: 'test', cost: 20, citations: 0, top10: 0 });
+	const fit = { slope: 0, intercept: 2, band: [[10, 1, 10000], [100, 90, 110], [1000, 1, 10000]] };
+	for (const [W, H] of sizes) {
+		const layout = perDollarLayout(points, W, H, { divisions: [{ slug: 'test' }], fits: new Map([['test', fit]]) });
+		const row = layout.rows[0];
+		const band = trendBand(layout, row);
+		assert.deepEqual([band.x, band.width, band.y, band.height], [layout.x(10), layout.x(1000) - layout.x(10), row.curveTop, row.floorY - row.curveTop]);
+		assert.ok(band.y + band.height < row.shelfY, 'the clipping rectangle excludes the zero shelf');
+		const vertices = [...band.path.matchAll(/(-?[\d.]+),(-?[\d.]+)/g)].map((m) => [Number(m[1]), Number(m[2])]);
+		assert.ok(vertices.every(([x]) => x >= band.x - 0.001 && x <= band.x + band.width + 0.001), 'no extrapolation beyond observed costs');
+		assert.ok(Math.min(...vertices.map(([, y]) => y)) < row.curveTop && Math.max(...vertices.map(([, y]) => y)) > row.floorY, 'out-of-range bounds stay unclamped until SVG clipping');
+		assert.match(band.path, /Z$/, 'the ribbon is a closed area');
+		assert.equal(trendBand(layout, { ...row, fit: null }), null);
+		assert.equal(trendBand(layout, { ...row, fit: { ...fit, band: [] } }), null);
+	}
+});
+
+test('running averages keep gaps, low positive means and true zeros distinct at desktop and phone widths', () => {
+	const missions = [10, 100, 1000].map((cost) => ({ id: `${cost}`, division: 'test', cost, citations: cost, top10: 1 }));
+	missions.push({ id: 'failed', division: 'test', cost: 20, citations: 0, top10: 0 });
+	const average = { points: [[10, 0, 0, 5], [40, 0.1, 0, 1], [100, null, null, null], [500, 10, 1, 100], [1000, 20, 2, 200]] };
+	for (const [W, H] of sizes) {
+		const layout = perDollarLayout(missions, W, H, { divisions: [{ slug: 'test' }], averages: new Map([['test', average]]) });
+		const row = layout.rows[0];
+		assert.equal(row.fit, null, 'the overview needs no NB fit');
+		assert.equal(row.average, average);
+		assert.ok(layout.scale.domain()[0] < 0.1, 'the average can be below every positive observation');
+		assert.ok(row.rateY(0.1) < row.floorY && row.rateY(0.1) > row.curveTop, 'a low positive mean stays in the positive plot');
+		assert.equal(10 ** row.pivot.rate, 0.1, 'the hypothetical guide pivots on a supported average');
+		assert.ok(trendLine(layout, row, 0), 'the flat hypothetical still draws');
+		const curve = runningLine(layout, row);
+		assert.equal((curve.path.match(/M/g) ?? []).length, 2, 'unsupported windows break the curve');
+		assert.equal(Number(curve.path.match(/^M[^,]+,([\d.]+)/)[1]), row.shelfY, 'a true zero mean is on the zero shelf');
+		const band = trendBand(layout, row, average.points.map(([cost, , lo, hi]) => [cost, lo, hi]));
+		assert.equal((band.path.match(/M/g) ?? []).length, 2, 'the interval has the same gap');
+		assert.ok(!/NaN|Infinity/.test(band.path), 'zero bounds never enter a logarithm');
+		assert.ok(band.path.includes(`,${Math.round(row.floorY * 1000) / 1000}`), 'a zero bound reaches the positive plot floor');
+		assert.ok(band.y + band.height < row.shelfY, 'the interval is clipped above the zero shelf');
+		assert.equal(runningLine(layout, { ...row, average: { points: [[10, null, null, null]] } }), null);
+		assert.equal(trendBand(layout, row, [[10, null, null]]), null);
+	}
+});
+
+test('citations against cost plots each mission’s citations with neither an average nor a fitted line', () => {
 	const focus = site.divisions.filter((d) => d.slug === site.story.focusDivision);
 	const fits = new Map(site.story.perDollar.map((d) => [d.division, d.fit]));
-	const fit = fits.get(focus[0].slug);
-	const cited = tiles.filter((t) => t.division === focus[0].slug && t.cost > 0 && t.citations > 0 && t.top10 != null);
-	const line = logFit(cited.map((t) => ({ cost: t.cost, rate: t.citations })));
-	assert.ok(Math.abs(10 ** line.slope - fit.citesTenfold) < 0.01, 'citesTenfold is the citations’ own multiple at ten times the cost');
+	const averages = new Map([[focus[0].slug, { points: [[100, 10, 1, 100]] }]]);
+	const members = tiles.filter((t) => t.division === focus[0].slug && t.cost > 0 && t.citations != null && t.top10 != null);
+	const cited = members.filter((t) => t.citations > 0);
 	for (const [W, H] of sizes) {
-		const [row] = perDollarLayout(tiles, W, H, { divisions: focus, fits, citations: true }).rows;
-		assert.equal(row.fit, null, 'no line');
+		const [row] = perDollarLayout(tiles, W, H, { divisions: focus, fits, averages, citations: true }).rows;
+		assert.equal(row.fit, null, 'no fit');
+		assert.equal(row.average, null, 'no average');
 		const most = cited.reduce((a, b) => (b.citations > a.citations ? b : a));
 		const least = cited.reduce((a, b) => (b.citations < a.citations ? b : a));
 		assert.ok(row.rateY(most.citations) < row.rateY(least.citations), 'more citations sit higher');

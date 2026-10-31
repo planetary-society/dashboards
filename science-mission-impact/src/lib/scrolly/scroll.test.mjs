@@ -16,7 +16,8 @@ test('Scroller measures all steps before applying overflow, preserving the phone
 			get offsetHeight() {
 				calls.push('read');
 				return heights[i];
-			}
+			},
+			style: { setProperty(name, value) { calls.push('write'); els[i].h = [name, value]; } }
 		},
 		hasAttribute: () => i >= 3,
 		classList: {
@@ -33,6 +34,8 @@ test('Scroller measures all steps before applying overflow, preserving the phone
 	assert.deepEqual(els.map((el) => el.overflows), [false, false, true, false, true]);
 	assert.ok(calls.lastIndexOf('remove') < calls.indexOf('read'), 'all old overflow classes are cleared before measuring');
 	assert.ok(calls.lastIndexOf('read') < calls.indexOf('add'), 'every step is measured before a class is added');
+	assert.ok(calls.lastIndexOf('read') < calls.indexOf('write'), 'every height is read before any is written');
+	assert.deepEqual(els[1].h, ['--h', '336px'], 'each text publishes its height for the phone centring');
 
 	viewport.innerHeight = 900;
 	calls.length = 0;

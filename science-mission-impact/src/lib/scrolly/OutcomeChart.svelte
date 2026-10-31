@@ -11,8 +11,8 @@
 	const lines = (c) => (compact && c.lo > 0 && c.hi != null ? [`${edgeMoney(c.lo)}–`, edgeMoney(c.hi)] : [tierLabel(c, { short: true })]);
 	// whole percents, as the story's copy prints them: 1 of 17 is "6%", not 5.9%
 	const whole = (v) => `${Math.round(v * 100)}%`;
-	// offsets under footY, inside the layout's footH: the range, the rate
-	const at = $derived(compact ? { head: 14, rate: 46, end: 50 } : { head: 20, rate: 44, end: 50 });
+	// offsets under footY, inside the layout's footH: the range, the rate (the figure the chart is for, so read at a glance)
+	const at = $derived(compact ? { head: 14, rate: 50, end: 54 } : { head: 20, rate: 52, end: 60 });
 	// the axis labels' baseline, in the gutter; turned to read upwards, the letters sit left of it
 	const lx = $derived(layout.left - (compact ? 5 : 7));
 </script>
@@ -63,7 +63,7 @@
 	}
 
 	.rate {
-		font-size: 18px;
+		font-size: 30px;
 		font-weight: 500;
 		fill: var(--flame);
 	}
@@ -86,7 +86,7 @@
 	}
 
 	.compact .rate {
-		font-size: 14px;
+		font-size: 22px;
 	}
 
 	.compact .axis {

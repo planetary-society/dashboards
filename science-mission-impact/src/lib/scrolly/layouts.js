@@ -3,7 +3,7 @@
 // No DOM, no Svelte: the scrolly and the preview image render from these.
 
 import { scaleLinear, scaleLog, scaleSqrt } from 'd3-scale';
-import { byCostThenId, costDomain, decadeTicks, stackLevels } from '../charts/costaxis.js';
+import { byCostThenId, costAxisBottom, costDomain, decadeTicks, stackLevels } from '../charts/costaxis.js';
 import { inTier } from '../data/public.js';
 import { curveFacts, curveChart } from '../charts/costcurve.js';
 import { perDollarLayout, trendLine, rowGutter, rowLabel } from '../charts/perdollar.js';
@@ -119,10 +119,12 @@ export function skylineZoom(sky, p) {
  * on a log scale (gridlines at each power of ten) rising from half a paper so a lone paper still
  * stands. `columns` are the bars with papers, in the skyline's shape, so skylineHit and columnLabel
  * work on them too; a bar's `t` is its top-10% part, which reaches the level of its own count.
- * `cut` is where the top 10% begins: the first bar that is mostly in.
+ * `cut` is where the top 10% begins: the first bar that is mostly in. Baselines for the title (top
+ * right), the papers label (top left: beside the title, or on a phone, where the title runs nearly
+ * the stage's width, a line under it) and the citations label under the count ticks.
  */
 export function primerLayout(primer, W, H, { compact = false } = {}) {
-	const m = { l: compact ? 36 : 56, r: compact ? 6 : 16, t: compact ? 30 : 44, b: compact ? 42 : 52 };
+	const m = { l: compact ? 36 : 56, r: compact ? 6 : 16, t: compact ? 46 : 44, b: compact ? 42 : 52 };
 	const cap = primer.counts.length;
 	const x = scaleLinear().domain([0, cap]).range([m.l, W - m.r]);
 	const decades = Math.max(1, Math.ceil(Math.log10(Math.max(...primer.counts))));
@@ -145,6 +147,9 @@ export function primerLayout(primer, W, H, { compact = false } = {}) {
 		left: m.l,
 		right: W - m.r,
 		cut: x(edge),
+		titleY: m.t - (compact ? 30 : 14),
+		papersY: m.t - (compact ? 12 : 14),
+		citesY: H - m.b + (compact ? 34 : 38),
 		yTicks: Array.from({ length: decades + 1 }, (_, k) => ({ v: 10 ** k, y: y(10 ** k) })),
 		xTicks: x.ticks(compact ? 4 : 6).filter((c) => Number.isInteger(c) && c < cap).map((c) => ({ v: c, x: x(c) + w / 2 })),
 		// bars are a few pixels wide, so a pointer reaches a little past its own bar
@@ -207,9 +212,9 @@ export function costLayout(tiles, W, H, { divisions, titled = false }) {
 	const compact = W < 600;
 	const left = rowGutter(W);
 	const right = compact ? 8 : 24;
-	// the cost labels sit under the lanes, in the bottom margin
+	// the cost ticks and the axis label under them sit in the bottom margin, perDollarLayout's too, so the axis stays put between the two
 	const top = (compact ? 4 : 6) + (titled ? (compact ? 38 : 28) : 0);
-	const bottom = compact ? 22 : 28;
+	const bottom = costAxisBottom(compact);
 	const rh = (H - top - bottom) / divisions.length;
 	const nameH = compact ? 18 : 0;
 	const figuresH = compact ? 15 : 22;
@@ -277,7 +282,7 @@ export function tierOutcomeLayout(tiles, tiers, W, H) {
 	const pad = compact ? 4 : 16;
 	const axis = compact ? 16 : 22; // a gutter left of the columns for the Success/Failure labels
 	const padTop = compact ? 28 : 38; // the title's strip, then air over the tallest stack
-	const footH = 52; // under each column: its cost range (two lines on a phone) and failure rate
+	const footH = compact ? 54 : 60; // under each column: its cost range (two lines on a phone), then its failure rate, large
 	const mid = compact ? 6 : 10; // between the up and down stacks, where the zero line runs
 	const gap = compact ? 1 : 2;
 	const colW = (W - pad * 2 - axis) / tiers.length;
@@ -321,7 +326,7 @@ export function tierOutcomeLayout(tiles, tiers, W, H) {
  * One division's top-10% papers a year on the cost axis (curveChart), sized to fill the stage.
  * Given the same tiles as costLayout it spans the lanes' costs. Each bar is the mission's own
  * packaged rate (`tile.top10PerYear`); the scale runs to `rateTop`. Squares hang in the rug
- * under the cost axis.
+ * under the cost axis and its label.
  */
 export function focusLayout(tiles, W, H, { division }) {
 	const members = tiles.filter((t) => t.division === division && t.cost > 0).sort(byCostThenId);
@@ -331,13 +336,16 @@ export function focusLayout(tiles, W, H, { division }) {
 		'full',
 		10
 	);
+	// the axis band holds the cost ticks, then the axis label's line (`labelH`) over the rug
+	const labelH = W < 600 ? 14 : 16;
 	const options = W < 600
-		? { padTop: 55, mark: 9, gap: 2, gutter: 36, rightPad: 10, axisH: 22 } // room for FocusChart's two-line title
-		: { padTop: 56, mark: 15, gap: 2, gutter: 52, rightPad: 24, axisH: 26 };
+		? { padTop: 55, mark: 9, gap: 2, gutter: 36, rightPad: 10, axisH: 22 + labelH } // room for FocusChart's two-line title
+		: { padTop: 56, mark: 15, gap: 2, gutter: 52, rightPad: 24, axisH: 26 + labelH };
 	const domain = costDomain(tiles);
 	// the rug's depth is only known once the squares are placed: measure it, then give the plot the rest
 	const rug = curveChart(facts, W, { ...options, plotH: 100, domain }).height - 100;
 	const chart = curveChart(facts, W, { ...options, plotH: Math.max(80, H - rug - 6), domain });
 	const y = scaleLinear().domain([0, rateTop(members)]).range(chart.y.range());
-	return { division, facts, chart: { ...chart, y, yTicks: y.ticks(4) }, pos: new Map(chart.marks.map((m) => [m.id, { x: m.x, y: m.y, s: m.s }])) };
+	// tickY: the cost ticks' baseline; the axis label's is the chart's axisY, a line under them
+	return { division, facts, chart: { ...chart, y, yTicks: y.ticks(4), tickY: chart.axisY - labelH }, pos: new Map(chart.marks.map((m) => [m.id, { x: m.x, y: m.y, s: m.s }])) };
 }

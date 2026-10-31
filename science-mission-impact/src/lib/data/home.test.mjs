@@ -23,8 +23,11 @@ test('the homepage omits unused data without changing retained facts or shared s
 	});
 	for (const tile of expected.scrolly.tiles)
 		for (const key of ['share', 'papers', 'launchDate', 'size']) delete tile[key];
-	for (const key of ['threshold', 'bands', 'pooledBand', 'scope']) delete expected.facts.story[key];
+	for (const key of ['threshold', 'bands', 'pooledBand', 'scope', 'divisions']) delete expected.facts.story[key];
+	delete expected.facts.story.failure.byDivision;
+	for (const row of expected.facts.story.perDollar) delete row.fit;
 	delete expected.facts.clps.surface;
+	delete expected.facts.clps.comparison.landers;
 
 	assert.deepEqual(load(), expected);
 	assert.equal(JSON.stringify({ site, scrolly }), before, 'other routes still receive complete packaged data');

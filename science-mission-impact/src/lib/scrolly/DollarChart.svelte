@@ -1,61 +1,75 @@
 <script>
 	// Citations per dollar against cost, both log (geometry in perDollarLayout): one division
-	// filling the stage, or every compared division a band each. At most one line through each
-	// band's cited missions: one the story imagines (`would`, dashed, in the lone band only), or the
-	// best fit, which `turn` swings up from flat to its packaged slope (0–1). Bands share one rate
-	// scale, so a line's tilt reads the same in each; the figures beside them come from the
-	// packaged fits (each layout row's `fit`). Every fit is drawn alike, flat or not; a nearly flat
-	// one says so in its band's label.
+	// filling the stage, or every compared division in a two-column grid. At most one line across each
+	// band's measured missions, the zeros on its shelf included: one the story imagines (`would`,
+	// dashed, in the lone band only), or the best fit, which `turn` swings up from flat, or an overview
+	// running mean, which it fades in. Bands share one rate scale; division pages use the same running means.
 	import { compact as short, moneyTick } from '$lib/format.js';
-	import { minorDollarTicks } from '$lib/charts/costaxis.js';
+	import { costTicks, minorDollarTicks } from '$lib/charts/costaxis.js';
 	import DollarMinorTicks from '$lib/charts/DollarMinorTicks.svelte';
-	import { flat } from '$lib/copy/discussion.js';
-	import { trendLine } from '$lib/charts/perdollar.js';
+	import CostAxisLabel from '$lib/charts/CostAxisLabel.svelte';
+	import { fitLabel } from '$lib/copy/discussion.js';
+	import { runningLine, trendBand, trendLine } from '$lib/charts/perdollar.js';
 
 	/**
 	 * layout: perDollarLayout(). would: the imagined line, { slope, label, shown }; it keeps its
 	 * slope while hidden, so it fades where it stands. turn: how far the best fit has swung from
 	 * flat to its slope; null draws none. title: the chart's title, over a layout made `titled`.
+	 * confidence: shade the packaged 95% intervals on completed curves.
 	 */
-	let { layout, title = null, would = null, turn = 1, visible = false, compact = false, width, height } = $props();
+	let { layout, title = null, would = null, turn = 1, confidence = false, visible = false, compact = false, width, height } = $props();
+	const uid = $props.id();
 
 	const single = $derived(layout.rows.length === 1);
 	const [x0, x1] = $derived(layout.x.range());
+	const costLabels = $derived(single ? layout.ticks : costTicks(layout.x).filter((t) => t.grid && t.label).map((t) => t.value));
 	// a lone band on a shared axis with no gutter (a phone's lanes) labels its scale inside the plot
 	const inside = $derived(single && x0 < 30);
 	const imagined = $derived(single && would ? layout.rows.map((row) => trendLine(layout, row, would.slope)) : []);
-	const best = $derived(layout.rows.map((row) => (row.fit && turn != null ? trendLine(layout, row, row.fit.slope * turn) : null)));
+	const best = $derived(layout.rows.map((row) => turn == null ? null : row.average ? runningLine(layout, row)
+		: row.fit ? trendLine(layout, row, row.fit.slope * turn) : null));
+	const bands = $derived(confidence && turn === 1 ? layout.rows.map((row) =>
+		trendBand(layout, row, row.average ? row.average.points.map(([cost, , lo, hi]) => [cost, lo, hi]) : row.fit?.band)) : []);
 </script>
 
 <div class="dollar" class:visible class:compact class:single aria-hidden="true">
 	{#if !single}
 		{#each layout.rows as row (row.slug)}
-			<span class="band" class:alt={row.band} style:top="{row.y}px" style:height="{row.h}px"></span>
+			<span class="band" style:left="{row.left}px" style:width="{row.width}px" style:top="{row.y}px" style:height="{row.h}px"></span>
 		{/each}
-		<span class="band" style:top="{layout.bottomY}px"></span>
 	{/if}
-	<DollarMinorTicks positions={minorDollarTicks(...layout.x.domain()).map(layout.x)} top={layout.bottomY} />
-	{#each layout.ticks as t (t)}
-		<span class="tick" style:left="{layout.x(t)}px" style:top="{layout.bottomY + 5}px">{moneyTick(t)}</span>
+	{#each layout.rows as row (row.slug)}
+		{@const floor = single ? layout.bottomY : row.shelfY}
+		<DollarMinorTicks positions={minorDollarTicks(...row.x.domain()).map(row.x)} top={floor} />
+		{#each costLabels as t (t)}
+			<span class="tick" style:left="{row.x(t)}px" style:top="{floor + 5}px">{moneyTick(t)}</span>
+		{/each}
 	{/each}
+	<CostAxisLabel x0={single ? x0 : 0} x1={single ? x1 : width} floor={layout.bottomY} {compact} />
 
 	<svg {width} {height}>
 		<!-- the chart's title, top right like the overview's other charts -->
-		{#if title}<text class="stage-title" x={x1} y={layout.top - 12} text-anchor="end">{title}</text>{/if}
-		{#each layout.ticks as t (t)}
-			<line class="grid" x1={layout.x(t)} x2={layout.x(t)} y1={layout.top} y2={layout.bottomY} />
-		{/each}
+		{#if title}<text class="stage-title" x={single ? x1 : width - 8} y={layout.top - 12} text-anchor="end">{title}</text>{/if}
 		{#each layout.rows as row, i (row.slug)}
+			{@const [rx0, rx1] = row.x.range()}
+			{@const band = bands[i]}
+			{#each layout.ticks as t (t)}
+				<line class="grid" x1={row.x(t)} x2={row.x(t)} y1={single ? layout.top : row.curveTop} y2={single ? layout.bottomY : row.shelfY} />
+			{/each}
+			{#if band}
+				<defs><clipPath id="{uid}-confidence-{i}"><rect x={band.x} y={band.y} width={band.width} height={band.height} /></clipPath></defs>
+				<path class="confidence" d={band.path} clip-path="url(#{uid}-confidence-{i})" />
+			{/if}
 			{#each layout.rateTicks as r (r)}
-				<line class="rate" x1={x0} x2={x1} y1={row.rateY(r)} y2={row.rateY(r)} />
-				<!-- the rate scale is labelled once: down the gutter of a lone band, on the first of several -->
+				<line class="rate" x1={rx0} x2={rx1} y1={row.rateY(r)} y2={row.rateY(r)} />
 				{#if single}
 					<text class:callout={inside} x={inside ? x0 + 4 : x0 - 10} y={row.rateY(r)} dy={inside ? '-0.4em' : '0.32em'} text-anchor={inside ? 'start' : 'end'}>{short(r)}</text>
-				{:else if i === 0 && (!compact || r === layout.rateTicks.at(-1))}
-					<text class="rate-label" x={compact ? x1 : x1 + 6} y={row.rateY(r)} dy={compact ? '-0.4em' : '0.32em'} text-anchor={compact ? 'end' : 'start'}>{short(r)}</text>
+				{:else}
+					<text class="rate-label" x={rx0 - 6} y={row.rateY(r)} dy="0.32em" text-anchor="end">{short(r)}</text>
 				{/if}
 			{/each}
-			<line class="shelf" x1={x0} x2={x1} y1={row.shelfY} y2={row.shelfY} />
+			<!-- Each grid panel uses its bottom border as the baseline. -->
+			{#if single}<line class="shelf" x1={x0} x2={x1} y1={row.shelfY} y2={row.shelfY} />{/if}
 			{#if single}<text class:callout={inside} x={inside ? x0 + 4 : x0 - 10} y={inside ? row.floorY : (row.shelfY + row.floorY) / 2} dy={inside ? '-0.4em' : '0.32em'} text-anchor={inside ? 'start' : 'end'}>None</text>{/if}
 			{@const line = imagined[i]}
 			{#if line}
@@ -64,7 +78,8 @@
 				</g>
 			{/if}
 			{#if best[i]}
-				<line class="fit" x1={best[i].x1} y1={best[i].y1} x2={best[i].x2} y2={best[i].y2} />
+				{#if row.average}<path class="fit" d={best[i].path} opacity={turn} />
+				{:else}<line class="fit" x1={best[i].x1} y1={best[i].y1} x2={best[i].x2} y2={best[i].y2} />{/if}
 			{/if}
 		{/each}
 	</svg>
@@ -75,14 +90,14 @@
 		<span class="label would-label" class:shown={would.shown} style:left="{imagined[0].x1 - 4}px" style:top="{imagined[0].y1 - 6}px">{would.label}</span>
 	{/if}
 	{#if single && best[0] && turn > 0.9}
-		<span class="label fit-label" style:left="{best[0].x2 + 4}px" style:top="{best[0].y2 - 6}px">Best fit</span>
+		<span class="label fit-label" style:left="{best[0].x2 + 4}px" style:top="{best[0].y2 - 6}px">{layout.rows[0].average ? 'Running average' : 'Average trend'}</span>
 	{/if}
 
 	{#if !single}
 		{#each layout.rows as row (row.slug)}
-			<span class="row" class:alt={row.band} style:top="{row.y}px" style:width={compact ? null : `${layout.left - 12}px`}>
+			<span class="row" style:left="{row.left}px" style:top="{row.y}px" style:width="{row.width}px">
 				<span class="name">{row.label}</span>
-				{#if row.fit}<span class="meta">{#if flat(row.fit)}<span>Nearly flat</span>{:else}<span>{row.fit.tenfold.toFixed(1)}× per dollar</span> <span>at 10× the cost</span>{/if}</span>{/if}
+				{#if row.fit}<span class="meta">{fitLabel(row.fit)}</span>{/if}
 			</span>
 		{/each}
 	{/if}
@@ -121,12 +136,7 @@
 	}
 
 	.band {
-		left: 0;
-		right: 0;
-		border-top: 1px solid var(--shadow);
-	}
-
-	.band.alt {
+		border-bottom: 1px solid var(--shadow);
 		background: var(--band);
 	}
 
@@ -158,6 +168,10 @@
 		fill: var(--soil);
 	}
 
+	.compact .rate-label {
+		font-size: 9px;
+	}
+
 	.shelf {
 		stroke: var(--soil);
 	}
@@ -185,7 +199,13 @@
 		stroke-dasharray: 6 5;
 	}
 
+	.confidence {
+		fill: var(--neptune);
+		fill-opacity: 0.14;
+	}
+
 	.fit {
+		fill: none;
 		stroke: var(--neptune);
 		stroke-width: 3;
 		stroke-linecap: round;
@@ -228,11 +248,10 @@
 	}
 
 	.row {
-		left: 0;
 		display: flex;
 		flex-direction: column;
 		gap: 2px;
-		padding: 10px 12px 0 0;
+		padding: 6px 4px 0;
 	}
 
 	.name {
@@ -242,38 +261,25 @@
 		color: var(--white);
 	}
 
-	/* two unbroken lines, which fit the narrow side gutter */
 	.meta {
 		font-size: 11px;
 		line-height: 15px;
 		color: var(--dust);
-	}
-
-	.meta > span {
-		display: block;
 		white-space: nowrap;
 	}
 
-	.compact .meta > span {
-		display: inline;
-	}
-
-	/* on a phone the label sits inside the plot, on a backing of its band's colour */
 	.compact .row {
-		flex-direction: row;
-		align-items: baseline;
-		gap: 8px;
-		margin-top: 1px;
-		padding: 1px 6px 2px 4px;
-		background: var(--black);
-	}
-
-	.compact .row.alt {
-		background: var(--band);
+		gap: 0;
+		padding-top: 3px;
 	}
 
 	.compact .name {
 		font-size: 12px;
 		line-height: 16px;
+	}
+
+	.compact .meta {
+		font-size: 10px;
+		line-height: 13px;
 	}
 </style>

@@ -49,7 +49,7 @@
 			{#if story.comparison}
 				<div class="chart">
 					<h3 class="chart-title">Citations per {money(100)}, by mission<Hint label="this chart" {...tip('perDollarChart')} /></h3>
-					<PerDollarScatter missions={d.missions} slug={d.slug} scope={view.scope} fit={story.perDollar?.fit ?? null} />
+					<PerDollarScatter missions={d.missions} slug={d.slug} scope={view.scope} average={story.perDollar?.runningMean ?? null} />
 				</div>
 			{/if}
 		</section>

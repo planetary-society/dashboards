@@ -45,8 +45,11 @@ export const moneyWords = moneyTick;
 /** Years, signed, one decimal. */
 export const years = (y) => (y == null ? '—' : `${y < 0 ? '−' : ''}${Math.abs(y).toFixed(1)}`);
 
+/** A [low, high] pair, each end through `format`, joined by `sep`: "0.47–4.33", "1.2 to 3.4"; '—' without one. */
+export const range = (pair, format = String, sep = '–') => (pair == null ? '—' : `${format(pair[0])}${sep}${format(pair[1])}`);
+
 /** [1990, 2026] → "1990–2026"; one year prints once. */
-export const yearSpan = (range) => (!range ? '' : range[0] === range[1] ? String(range[0]) : `${range[0]}–${range[1]}`);
+export const yearSpan = (span) => (!span ? '' : span[0] === span[1] ? String(span[0]) : range(span));
 
 /** Compact axis ticks: 1200 → 1.2k, 3400000 → 3.4M. */
 export function compact(n) {

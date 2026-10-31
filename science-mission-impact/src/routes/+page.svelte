@@ -7,12 +7,12 @@
 	let { data } = $props();
 	// Divisions, adjusted dollar year and window policy come from the layout.
 	const site = $derived({ ...data.site, ...data.facts });
-	const description = $derived(`Explore ${int(site.missions)} NASA-led science missions and ${int(site.papersDistinct)} tracked peer-reviewed publications by actual mission cost, within each science division.`);
+	const description = $derived(`Can smaller, cheaper missions do the science of big ones? ${int(site.missions)} NASA-led science missions and ${int(site.papersDistinct)} peer-reviewed papers, by mission cost, within each science division.`);
 </script>
 
 <Seo title="Science Mission Impact" {description} />
 
-<h1 class="sr-only">Science Mission Impact: how does science impact and productivity scale with cost?</h1>
+<h1 class="sr-only">Science Mission Impact: can smaller, cheaper missions do the science of big ones?</h1>
 <a class="skip" href="#divisions">Skip to divisions</a>
 
 <Story {site} scrolly={data.scrolly} />

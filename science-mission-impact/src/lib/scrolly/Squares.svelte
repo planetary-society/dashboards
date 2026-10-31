@@ -9,13 +9,12 @@
 	 *   tint: washed in Neptune Blue, over the variant's marks (the division a step points at)
 	 *   label: optional detailed hover/focus and accessible text; defaults to the short name
 	 *   variant: 'solid' | 'outline' | 'lost' | 'partial'
-	 * shown: only the first `shown` tiles are visible (the grid step reveals them on scroll)
 	 * interactive: squares are in the tab order (false inside the aria-hidden story graphic)
 	 * highlightId: the square washed in Rocket Flame (the skyline's pointed-at mission)
 	 * quietId: a square whose tip is left off because something else already names it
-	 * loadImages: defer thumbnails while the story's introductory steps hide the squares
+	 * opacity: every square at once, over each one's own (the story's mosaic fading in as it scrolls)
 	 */
-	let { tiles, items, shown = Infinity, interactive = true, highlightId = null, quietId = null, loadImages = true } = $props();
+	let { tiles, items, interactive = true, highlightId = null, quietId = null, opacity: all = 1 } = $props();
 
 	let tip = $state(null);
 	let tipEl = $state(null);
@@ -44,16 +43,17 @@
 <!-- svelte-ignore a11y_no_static_element_interactions, a11y_mouse_events_have_key_events -->
 <div
 	class="squares"
+	style:opacity={all < 1 ? all : null}
 	data-sveltekit-preload-data="tap"
 	onmouseover={showTip}
 	onmouseout={hideTip}
 	onfocusin={showTip}
 	onfocusout={hideTip}
 >
-	{#each tiles as t, i (t.id)}
+	{#each tiles as t (t.id)}
 		{@const it = items.get(t.id)}
 		{#if it}
-			{@const opacity = i < shown ? (it.opacity ?? 1) : 0}
+			{@const opacity = it.opacity ?? 1}
 			<a
 				class="sq mark-{it.variant ?? 'solid'}"
 				class:filled={it.filled}
@@ -69,26 +69,28 @@
 				style:width="{it.s}px"
 				style:height="{it.s}px"
 				style:opacity
-				style:pointer-events={opacity < 0.05 ? 'none' : 'auto'}
+				style:pointer-events={opacity < 0.05 ? 'none' : null}
 				style:--inner={it.inner ?? 0}
 			>
-					{#if loadImages && t.hasThumb}
+				{#if t.hasThumb}
 					<img src={thumbSrc(t.id)} alt="" decoding="async" fetchpriority="low" />
 				{/if}
 				<span class="fill"></span>
 			</a>
 		{/if}
 	{/each}
-
-	{#if tip && tip.id !== quietId}
-		<span class="tip" bind:this={tipEl} style:transform="translate(calc({tip.x}px - 50%), calc({tip.y}px - 100% - 6px))">{tip.name}</span>
-	{/if}
 </div>
+<!-- the tip sits beside the squares, not in them, so the squares' `opacity` never dims it; .squares fills
+     its positioned parent, so the coordinates are the same -->
+{#if tip && tip.id !== quietId}
+	<span class="tip" bind:this={tipEl} style:transform="translate(calc({tip.x}px - 50%), calc({tip.y}px - 100% - 6px))">{tip.name}</span>
+{/if}
 
 <style>
 	.squares {
 		position: absolute;
 		inset: 0;
+		transition: opacity 400ms linear;
 	}
 
 	/* Fills and outlines per variant are the shared .mark-* classes in app.css, so any legend

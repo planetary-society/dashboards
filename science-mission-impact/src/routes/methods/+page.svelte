@@ -119,7 +119,7 @@
 			<p>Our SciX queries use mission and major instrument names along with topic restrictions to distinguish ambiguous acronyms. The query for each mission is listed in the mission's overview page.</p>
 			<p> This approach will miss papers that use mission data without naming the source in those fields.
 				A name match alone also does not establish that a paper used the data.</p><p>In essence, we are measuring the signal strength of a mission's name in the SciX abstract fields. That is a common approach to bibliometrics, though more complex approaches are possible (see <a href="https://doi.org/10.1007/978-3-031-69004-4">De Marchi, G., & Parmar, A. N., 2024)</a>.</p>
-			<h3 id="removed">What we exclude</h3>
+			<h3 id="removed" class="subhead">What we exclude</h3>
 			<p>We have general exclusions for non-refereed material, conference proceedings, news articles, and records for
 				datasets or data catalogs. We have mission-by-mission exclusions based on known false positives reviewed with AI and human oversight.</p>
 		</section>
@@ -185,7 +185,7 @@
 	.body { max-width: 68ch; font-size: 16px; line-height: 1.8; }
 	section { margin-top: 56px; }
 	h2 { font-size: 24px; font-weight: 400; line-height: 1.4; margin-bottom: 16px; }
-	h3 { font-size: 17px; font-weight: 500; margin: 24px 0 8px; }
+	h3 { margin-top: 24px; }
 	p + p { margin-top: 16px; }
 	dl { margin-top: 16px; }
 	dt { margin-top: 16px; color: var(--white); }

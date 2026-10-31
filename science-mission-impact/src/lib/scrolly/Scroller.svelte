@@ -14,6 +14,8 @@
 
 	let root;
 	let bare = $state(false);
+	// a clear full-bleed step (data-clear) has no picture of its own: the graphic shows through behind its text
+	let clear = $state(false);
 
 	onMount(() => {
 		const els = [...root.querySelectorAll('[data-step]')];
@@ -34,7 +36,8 @@
 				rect = r;
 			}
 			index = active;
-			bare = els[active].hasAttribute('data-bleed');
+			clear = els[active].hasAttribute('data-clear');
+			bare = els[active].hasAttribute('data-bleed') && !clear;
 			progress = Math.max(0, Math.min(1, (line - rect.top) / rect.height));
 		};
 		const onScroll = () => {
@@ -45,16 +48,20 @@
 		// holds (on a phone, under the pinned graphic), so that step's text scrolls normally
 		// instead. The sticky top is read back from the CSS, so the two cannot disagree. A
 		// full-bleed step's frame fills that room by design (to a pixel of rounding), so it
-		// overflows only when its text grows it past the screen.
+		// overflows only when its text grows it past the screen. Each text's height goes to the CSS
+		// as --h, which a phone uses to centre the text in the room under the pinned graphic.
 		const fit = () => {
 			// Keep geometry reads together so each step does not force another layout.
 			for (const el of els) el.classList.remove('overflows');
-			const overflowing = els.filter((el) => {
-				const text = el.firstElementChild;
+			const texts = els.map((el) => el.firstElementChild);
+			const heights = texts.map((text) => text?.offsetHeight ?? 0);
+			texts.forEach((text, i) => text?.style.setProperty('--h', `${heights[i]}px`));
+			const overflowing = els.filter((el, i) => {
+				const text = texts[i];
 				if (!text) return false;
 				const margin = el.hasAttribute('data-bleed') ? -1 : 8;
 				const room = window.innerHeight - parseFloat(getComputedStyle(text).top) - margin;
-				return text.offsetHeight > room;
+				return heights[i] > room;
 			});
 			for (const el of overflowing) el.classList.add('overflows');
 		};
@@ -78,7 +85,7 @@
 
 <div class="full">
 	<div class="scroller" bind:this={root}>
-		<div class="graphic" class:bare aria-hidden="true">
+		<div class="graphic" class:bare class:clear aria-hidden="true">
 			{@render graphic()}
 		</div>
 		<div class="steps">
@@ -101,6 +108,9 @@
 		max-width: var(--max);
 		margin-inline: auto;
 		padding-inline: var(--gutter);
+		/* what the graphic draws past its own box (a phone's full-screen backdrop) ends with the story;
+		   clip, unlike hidden, keeps the sticky graphic working and the full-bleed steps' sides visible */
+		overflow-y: clip;
 	}
 
 	/* the page's full width, which a full-bleed step reads in cqw (vw would count a scrollbar) */
@@ -119,7 +129,7 @@
 		transition: opacity 400ms linear;
 	}
 
-	/* a full-bleed step has the screen to itself */
+	/* a full-bleed step has the screen to itself, unless it is clear (data-clear) */
 	.graphic.bare {
 		opacity: 0;
 		pointer-events: none;
@@ -193,8 +203,8 @@
 		padding-block: 48px;
 	}
 
-	/* Phones: graphic pinned on top, each step's text a highlighted box that rides up beneath it and
-	   holds just under it. No rule between them: the box's own edge does that job. */
+	/* Phones: graphic pinned on top, each step's text a box that rides up beneath it and holds centred
+	   in the room below it. No rule between them: the box's own edge does that job. */
 	@media (max-width: 860px) {
 		.scroller {
 			/* the text leaves under the pinned graphic rather than the nav */
@@ -212,6 +222,16 @@
 			padding: 8px 8px 0;
 			background: var(--black);
 			z-index: 2;
+			transition:
+				opacity 400ms linear,
+				background-color 400ms linear;
+		}
+
+		/* a clear step's text passes over the graphic rather than under it; leaving that step, the
+		   graphic's ground fades back in over whatever text is still in the top half */
+		.graphic.clear {
+			z-index: 0;
+			background-color: transparent;
 		}
 
 		.steps :global([data-step]) {
@@ -221,21 +241,21 @@
 			padding: var(--lead) 12px 0;
 		}
 
-		/* the site's highlighted block (--panel, Neptune left rule); a full-bleed step's text already
-		   sits in its own panel over the photo, and a step left blank shows no empty box */
+		/* a plain --panel box; a full-bleed step's text already sits in its own panel, and a step left
+		   blank shows no empty box */
 		.steps :global([data-step]:not([data-bleed]) > :first-child) {
 			padding: 16px 18px;
 			background: var(--panel);
-			border-left: 2px solid var(--neptune);
 		}
 
 		.steps :global([data-step] > :first-child:empty) {
 			display: none;
 		}
 
-		/* holds just under the pinned graphic */
+		/* holds centred in the room under the pinned graphic (--step-gap + --lead tall), never closer to
+		   the graphic than --lead; until fit() publishes the text's height (--h), just under it */
 		.steps :global([data-step] > :first-child) {
-			top: calc(var(--nav-h) + var(--graphic-h) + var(--lead));
+			top: calc(var(--nav-h) + var(--graphic-h) + max(var(--lead), (var(--step-gap) + var(--lead) - var(--h, 100vh)) / 2));
 		}
 
 		.steps :global([data-step]:last-child) {

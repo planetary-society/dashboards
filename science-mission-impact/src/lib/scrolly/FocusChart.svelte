@@ -4,7 +4,7 @@
 	// the axis (`grow`, 0–1), the largest named on its bar, under the chart's title. LanesChart
 	// draws the bars, on these axes, so the same bars can move into their band on the lanes.
 	import { compact as short, moneyTick, weight } from '$lib/format.js';
-	import { minorDollarTicks } from '$lib/charts/costaxis.js';
+	import { COST_AXIS_LABEL, minorDollarTicks } from '$lib/charts/costaxis.js';
 	import DollarMinorTicks from '$lib/charts/DollarMinorTicks.svelte';
 
 	/** layout: focusLayout(). name: the division's, for the title. largest: the mission the copy names on its bar ({ id, name }). */
@@ -32,8 +32,9 @@
 		</g>
 		<line class="base" x1={c.left} x2={c.right} y1={c.y(0)} y2={c.y(0)} />
 		{#each c.ticks as t (t.value)}
-			{#if t.label}<text x={c.x(t.value)} y={c.axisY} text-anchor="middle">{moneyTick(t.value)}</text>{/if}
+			{#if t.label}<text x={c.x(t.value)} y={c.tickY} text-anchor="middle">{moneyTick(t.value)}</text>{/if}
 		{/each}
+		<text x={(c.x0 + c.x1) / 2} y={c.axisY} text-anchor="middle">{COST_AXIS_LABEL}</text>
 		{#if top && grow > 0.5}
 			<text class="strong callout" x={c.x(top.cost)} y={c.y(top.credit) - 8} text-anchor="middle">{top.name} {weight(top.credit)}</text>
 		{/if}

@@ -340,8 +340,6 @@ export interface StoryFacts {
 		flipsOn: { id: string; name: string; side: ComparisonKey }[];
 		margin: number | null; // |under − over| ÷ the higher rate; null when a rate is null or both are 0
 		largestUnder: { id: string; name: string; share: number } | null; // most-cited under mission, its share of the under side's citations
-		/** The trend with cost, threshold ignored; null below three measured missions with citations or when the fit fails. */
-		fit: PerDollarFit | null;
 		/** Overview and division charts: local arithmetic mean mission rates, plus the overview's independent threshold comparison. */
 		runningMean: PerDollarRunningMean;
 	}[];
@@ -362,31 +360,6 @@ export interface PerDollarRunningMean {
 		holds: boolean; // every single-mission removal preserves the observed direction
 		favors: ComparisonKey | null; // interval excludes zero and holds is true
 	} | null;
-}
-
-/**
- * A division's per-dollar trend (`perDollarFit` in scripts/lib/public.mjs): a negative binomial regression of each
- * measured mission's citations on log cost (ln E[citations] = a + b ln cost, dispersion estimated), every measured
- * mission counted, one with no citations (mostly failures) as zero. The line the charts draw is its mean:
- * log10(citations per $100M) = intercept + slope · log10(cost), slope = b − 1.
- */
-export interface PerDollarFit {
-	missions: number; // measured missions with citations
-	zeros: number; // measured missions without
-	slope: number; // b − 1, log rate per log cost
-	intercept: number; // a / ln 10 + 2
-	tenfold: number; // 10^slope: the rate's multiple at ten times the cost
-	citesTenfold: number; // 10^(slope + 1): the citations' own multiple (the same line before dividing by cost)
-	p: number; // two-sided Wald test of a flat rate (b = 1)
-	ci: [number, number]; // 95% Wald interval for `tenfold`
-	/** 95% pointwise Wald interval for the mean citations per $100M, sampled across observed costs; not a prediction interval. */
-	band: [cost: number, lowerRate: number, upperRate: number][];
-	/** leaving out each measured mission in turn: no fit reverses the sign of `slope`; null below four with citations or when a fit fails */
-	holds: boolean | null;
-	pRange: [number, number] | null; // the lowest and highest p over those fits; null exactly when `holds` is
-	noFailures: { tenfold: number; p: number } | null; // the same fit without the outright failures; null when it can't be fitted
-	/** full-scope fits only: the prime-mission (window-scope) refit, which fitKind requires to agree before calling a line clear */
-	prime?: { slope: number; tenfold: number; p: number; pRange: [number, number] | null; holds: boolean | null };
 }
 
 export type ComparisonKey = 'under' | 'over'; // at or under the threshold (0 < cost <= referenceCost) / above it

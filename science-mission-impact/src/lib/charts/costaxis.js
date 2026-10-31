@@ -86,3 +86,9 @@ export function costDomain(tiles) {
 	const costs = tiles.map((t) => t.cost).filter((c) => c > 0);
 	return costs.length ? [Math.min(...costs) * 0.8, Math.max(...costs) * 1.25] : [1, 10];
 }
+
+/** The label under every story cost axis (and the division pages' per-dollar scatter and the preview image's). */
+export const COST_AXIS_LABEL = 'Mission cost (inflation-adjusted, log scale)';
+
+/** The bottom margin under a story cost axis: room for its ticks and COST_AXIS_LABEL (CostAxisLabel) under them. */
+export const costAxisBottom = (compact) => (compact ? 36 : 42);

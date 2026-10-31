@@ -25,7 +25,6 @@ test('the homepage omits unused data without changing retained facts or shared s
 		for (const key of ['share', 'papers', 'launchDate', 'size']) delete tile[key];
 	for (const key of ['threshold', 'bands', 'pooledBand', 'scope', 'divisions']) delete expected.facts.story[key];
 	delete expected.facts.story.failure.byDivision;
-	for (const row of expected.facts.story.perDollar) delete row.fit;
 	delete expected.facts.clps.surface;
 	delete expected.facts.clps.comparison.landers;
 

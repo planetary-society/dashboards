@@ -13,6 +13,9 @@ export function ordinal(n) {
 	return words[n] ?? `${n}th`;
 }
 
+/** The calendar years a paper's citations count over: the year it appeared and `citationYears` after. */
+export const calendarYears = (p) => p.citationYears + 1;
+
 /** The window caps each paper's citations; the number comes from the run, not copy. */
 const citationClause = (p) => `Citations are counted through the ${ordinal(p.citationYears)} calendar year after each paper appears.`;
 

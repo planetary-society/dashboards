@@ -139,54 +139,14 @@ test('citations per $100M keep each rankable division apart, null for an empty s
 			{ key: 'under', missions: 2, cost: 50, citations: 10, perHundredM: 20 },
 			{ key: 'over', missions: 1, cost: 300, citations: 7, perHundredM: 2.333 }
 		], favors: null, flipsOn: [{ id: 'u1', name: 'u1', side: 'under' }, { id: 'o1', name: 'o1', side: 'over' }],
-		margin: 0.88335, largestUnder: { id: 'u1', name: 'u1', share: 1 }, fit: null,
+		margin: 0.88335, largestUnder: { id: 'u1', name: 'u1', share: 1 },
 		runningMean: { halfWidth: 1, resamples: 2000, points: 81, comparison: null } }, // three measured missions, including the failure
 		{ division: 'other', name: 'Other', groups: [
 			{ key: 'under', missions: 0, cost: 0, citations: 0, perHundredM: null },
 			{ key: 'over', missions: 1, cost: 150, citations: 10, perHundredM: 6.667 }
-		], favors: null, flipsOn: [], margin: null, largestUnder: null, fit: null,
+		], favors: null, flipsOn: [], margin: null, largestUnder: null,
 		runningMean: { halfWidth: 1, resamples: 2000, points: 0, comparison: null } }
 	]);
-});
-
-test('the per-dollar trend is a negative binomial fit over every measured mission, zeros counted, and says whether one mission decides it', () => {
-	// Citations 1, 20, 400, 8,000 at $10M…$10B: rates 10, 20, 40, 80 per $100M, doubling per tenfold cost exactly.
-	const power = () => [cited(mission('r1', 10), 1), cited(mission('r2', 100), 20), cited(mission('r3', 1000), 400), cited(mission('r4', 10000), 8000)];
-	// the unmeasured mission is in neither count
-	const exact = division([...power(), unmeasured('rq', 60)]);
-	// a failure is a measured zero and pulls the line (statsmodels: b 1.31702); without it the line is exact again
-	const zero = { ...division([...power(), failure('rf', 50)]), slug: 'zero', name: 'Zero' };
-	// Rates 10, 100, 80, 60: the line rises only because of the cheapest mission (statsmodels: b 1.05188, se 0.12058).
-	const leaning = { ...division([cited(mission('l1', 10), 1), cited(mission('l2', 100), 100), cited(mission('l3', 1000), 800), cited(mission('l4', 10000), 6000)]), slug: 'leaning', name: 'Leaning' };
-	// Three missions with citations: dropping any one leaves too few for a line, so robustness is untested.
-	const three = { ...division([cited(mission('t1', 10), 1), cited(mission('t2', 100), 20), cited(mission('t3', 1000), 400)]), slug: 'three', name: 'Three' };
-	const [a, z, b, c] = discuss([exact, zero, leaning, three].map(packaged)).perDollar.map((row) => row.fit);
-	// no overdispersion: the Poisson interval; twenty times the citations at ten times the cost (citesTenfold); every p to 4 dp
-	const { band, ...line } = a;
-	assert.deepEqual(line, { missions: 4, zeros: 0, slope: 0.301, intercept: 0.699, tenfold: 2, citesTenfold: 20, p: 0, ci: [1.83, 2.19], holds: true, pRange: [0, 0.0009], noFailures: { tenfold: 2, p: 0 } });
-	assert.equal(band.length, 41);
-	assert.deepEqual([z.missions, z.zeros, z.slope, z.tenfold, z.noFailures], [4, 1, 0.317, 2.08, { tenfold: 2, p: 0 }]);
-	assert.deepEqual([b.slope, b.p, b.holds, b.pRange[1]], [0.052, 0.667, false, 0.6397]);
-	assert.deepEqual([c.missions, c.holds, c.pRange], [3, null, null]);
-	// below three missions with citations there is no line
-	assert.equal(discuss([packaged(division([cited(mission('u1', 10), 1), cited(mission('u2', 100), 20), failure('u3', 50)]))]).perDollar[0].fit, null);
-});
-
-test('the per-dollar mean confidence band matches independent NB2 intervals and stays within observed costs', () => {
-	const rows = [[1, 0], [2, 3], [5, 1], [10, 30], [20, 15], [50, 300], [100, 80]];
-	const d = packaged(division(rows.map(([cost, citations], i) => cited(mission(`band${i}`, cost), citations))));
-	const fit = discuss([d]).perDollar[0].fit;
-	// SciPy fit and full observed covariance, including dispersion: costs at the ends and log midpoint.
-	const expected = [[1, 11.5671805, 343.9786522], [10, 71.7860971, 331.0265720], [100, 98.8132731, 1436.2568381]];
-	[0, 20, 40].forEach((index, i) => fit.band[index].forEach((value, j) =>
-		assert.ok(Math.abs(value / expected[i][j] - 1) < 0.005, `band ${index},${j}: ${value}`)));
-	assert.equal(fit.band.length, 41);
-	assert.deepEqual([fit.band[0][0], fit.band.at(-1)[0]], [1, 100]);
-	for (const [i, [cost, low, high]] of fit.band.entries()) {
-		assert.ok([cost, low, high].every(Number.isFinite) && cost > 0 && low > 0 && low < high);
-		assert.ok(i === 0 || cost > fit.band[i - 1][0]);
-	}
-	assert.ok(!('covariance' in fit) && !('logCostMean' in fit), 'the client receives sampled intervals, not covariance');
 });
 
 test('an upstream-selected empty failure stays in citation figures even when launched after the successes', () => {
@@ -196,7 +156,6 @@ test('an upstream-selected empty failure stays in citation figures even when lau
 	const story = discuss([packaged(division([...base, late, unmeasured('unknown', 30)]))]);
 	assert.deepEqual([story.comparison.groups[0].missions, story.comparison.groups[0].failed], [2, 1]);
 	assert.deepEqual(story.perDollar[0].groups[0], { key: 'under', missions: 2, cost: 70, citations: 5, perHundredM: 7.143 });
-	assert.deepEqual([story.perDollar[0].fit.missions, story.perDollar[0].fit.zeros], [3, 1]);
 	assert.deepEqual(story.rate.divisions[0].small, { missions: 2, none: 1, median: 1 });
 	assert.equal(story.divisions[0].measuredMissions, 2);
 	assert.deepEqual([story.failure.under.missions, story.failure.under.lost], [3, 1]);
@@ -376,15 +335,13 @@ test('the packaged story is the discussion over the packaged divisions', () => {
 	// Every costed, measured fixed-cohort mission contributes, including every selected empty failure.
 	for (const d of divisions.filter((d) => story.perDollar.some((p) => p.division === d.slug))) {
 		const members = d.missions.filter((m) => m.cost > 0 && m.full.status === 'available' && m.full.top10 != null);
-		const fit = story.perDollar.find((p) => p.division === d.slug).fit;
-		assert.equal(fit.missions + fit.zeros, members.length, `${d.slug}: the full selected cohort`);
-		assert.equal(fit.zeros, members.filter((m) => m.full.citations === 0).length, `${d.slug}: every empty mission`);
-		assert.equal(fit.band.length, 41);
-		assert.deepEqual([fit.band[0][0], fit.band.at(-1)[0]], [Math.min(...members.map((m) => m.cost)), Math.max(...members.map((m) => m.cost))]);
-		assert.ok(fit.band.every(([cost, low, high]) => [cost, low, high].every(Number.isFinite) && low > 0 && low < high), `${d.slug}: positive finite mean intervals`);
+		const { points, comparison } = story.perDollar.find((p) => p.division === d.slug).runningMean;
+		assert.deepEqual([comparison.under.missions, comparison.over.missions], [members.filter(underThreshold(ref)).length, members.filter((m) => m.cost > ref).length], `${d.slug}: the full selected cohort`);
+		assert.equal(points.length, 81);
+		assert.deepEqual([points[0][0], points.at(-1)[0]], [Math.min(...members.map((m) => m.cost)), Math.max(...members.map((m) => m.cost))], `${d.slug}: the curve spans the cohort's costs`);
 	}
 	assert.ok(story.bands.every((b) => Number.isFinite(b.p25) && b.p25 <= b.p75));
-	// divisionFacts gives the story's full-scope fits their prime-mission refits, as packaging does
+	// divisionFacts reuses the story as its full scope, as packaging does
 	const facts = divisionFacts(divisions, { thresholdCost: ref, full: story });
 	assert.deepEqual(story, site.story);
 	assert.deepEqual(site.divisionFacts, facts);

@@ -47,6 +47,9 @@ test('time bars share one axis from zero with room for every value label', () =>
 	}
 	const layout = timeLayout(tiers, time, 460);
 	assert.deepEqual([layout.rows[1].none, layout.rows[1].formulation], [true, null]);
+	// a label is the tier alone, however many of its missions have a first top-10% paper; the gutter makes room
+	assert.ok(layout.rows.every((r) => !r.label.includes(' of ')));
+	assert.ok(layout.left >= Math.ceil(layout.rows[0].label.length * 7.6));
 	// the height doesn't depend on width, so the server can reserve it
 	assert.equal(timeLayout(tiers, time, 0).height, layout.height);
 });

@@ -1,7 +1,7 @@
 import { strict as assert } from 'node:assert';
 import { describe, it } from 'node:test';
 
-import { buildAnalysis, managementOf, rateSpread, selectionOf } from '../lib/analysis.mjs';
+import { buildAnalysis, managementOf, medianInterval, rateSpread, selectionOf } from '../lib/analysis.mjs';
 import { buildSite } from '../lib/site.mjs';
 
 /** A packaged mission row with only what the Analysis page reads. */
@@ -17,6 +17,8 @@ const doc = (slug, c, missions, rankable = true) => ({
 	stats: { full: { papers: 1000, cutoffs: [{ percent: 1, citations: 100, papers: 10 }, { percent: 10, citations: 40, papers: 100 }, { percent: 50, citations: c, papers: 500 }] } }
 });
 const options = { thresholdCost: 150, costTiers: [50, 150, 350], costGroups: [150, 1000] };
+/** buildAnalysis with the test options. */
+const analyse = (docs, extra = {}) => buildAnalysis(docs, { ...options, ...extra });
 
 // N50 = papers + citations / c. Rates: b1 .2, c1 1/6, a1 .25, a2 0, b4 .1, a3 2/15, b2 .2, a4 .2, a5 .25, b3 .25.
 const docs = [
@@ -39,7 +41,7 @@ const docs = [
 	doc('c', 3, [row('c1', 10, { papers: 1, citations: 2, first: reached(2, 1) })], false) // N50 5/3
 ];
 const divisions = [...docs.map(({ slug, name }) => ({ slug, name })), { slug: 'd', name: 'D' }]; // d: configured, never packaged
-const facts = buildAnalysis(docs, { ...options, focusDivision: 'a', divisions });
+const facts = analyse(docs, { focusDivision: 'a', divisions });
 
 describe('selectionOf', () => {
 	it('maps Competed and Directed, and reads Unknown or blank as unclassified', () => {
@@ -105,12 +107,28 @@ describe('buildAnalysis', () => {
 				{ division: 'd', ok: 0, failed: 0, partial: 0 }
 			]
 		});
-		assert.deepEqual([t1.missions, t1.ok, t1.failed, t1.partial, t1.rate], [2, 1, 0, 1, 0.5]);
+		// a7 has no measured output but an outcome all the same: it counts
+		assert.deepEqual([t1.missions, t1.ok, t1.failed, t1.partial, t1.rate], [3, 2, 0, 1, 0.33333]);
 		assert.deepEqual([t2.rate, t3.rate], [0, 0]);
-		assert.deepEqual(facts.failures.under, { missions: 6, shortfall: 2, rate: 0.33333 });
+		assert.deepEqual(facts.failures.under, { missions: 7, shortfall: 2, rate: 0.28571 });
 		assert.deepEqual(facts.failures.over, { missions: 4, shortfall: 0, rate: 0 });
-		// (1 - 0) / (1 - 1/3) - 1, from the unrounded rates
-		assert.equal(facts.failures.successPremium, 0.5);
+		// (1 - 0) / (1 - 2/7) - 1, from the unrounded rates
+		assert.equal(facts.failures.successPremium, 0.4);
+	});
+
+	it('keeps upstream-selected failures and their output, and counts them in the failure rates', () => {
+		const failure = row('r1', 30, { failed: true, papers: 1, citations: 4, first: reached(1, 0) });
+		failure.launchDate = '2021-09-27';
+		const withFailure = [doc('a', 10, [...docs[0].missions, failure]), ...docs.slice(1)];
+		const plain = analyse(docs, { divisions });
+		const included = analyse(withFailure, { divisions });
+		assert.deepEqual(included.excluded, { noCost: 1, unmeasured: 1 });
+		assert.equal(included.missions.length, plain.missions.length + 1);
+		const measuredFailure = included.missions.find((m) => m.id === failure.id);
+		assert.deepEqual([measuredFailure.failed, measuredFailure.n50, measuredFailure.rate], [true, 1.4, 0.04667]);
+		assert.equal(included.groupRates[0].missions, plain.groupRates[0].missions + 1);
+		assert.deepEqual(included.time.tiers, plain.time.tiers); // failures still have no time-to-science comparison
+		assert.deepEqual(included.failures.under, { missions: 8, shortfall: 3, rate: 0.375 });
 	});
 
 	it('spreads N50 per $M in each cost group, failures as zeros', () => {
@@ -123,10 +141,11 @@ describe('buildAnalysis', () => {
 	it('times first top-10% papers without the failures, counting the undated', () => {
 		const { tiers, failedExcluded, fastest, byDivision } = facts.time;
 		assert.equal(failedExcluded, 1);
-		assert.deepEqual(tiers[0], { missions: 3, reached: 3, without: 0, undated: 0, formulation: { median: 2, min: 2 }, science: { median: 1, min: 0.5 } });
-		assert.deepEqual(tiers[1], { missions: 2, reached: 2, without: 0, undated: 1, formulation: { median: 5, min: 5 }, science: { median: 2, min: 2 } });
-		assert.deepEqual(tiers[2], { missions: 2, reached: 2, without: 0, undated: 0, formulation: { median: 3, min: 2 }, science: { median: 1.25, min: 1 } });
-		assert.deepEqual(tiers[3], { missions: 2, reached: 1, without: 1, undated: 0, formulation: { median: 6.26, min: 6.26 }, science: { median: 3, min: 3 } });
+		// too few reached missions for a 95% interval on any median here (medianInterval needs six)
+		assert.deepEqual(tiers[0], { missions: 3, reached: 3, without: 0, undated: 0, formulation: { median: 2, min: 2, ci: null }, science: { median: 1, min: 0.5, ci: null } });
+		assert.deepEqual(tiers[1], { missions: 2, reached: 2, without: 0, undated: 1, formulation: { median: 5, min: 5, ci: null }, science: { median: 2, min: 2, ci: null } });
+		assert.deepEqual(tiers[2], { missions: 2, reached: 2, without: 0, undated: 0, formulation: { median: 3, min: 2, ci: null }, science: { median: 1.25, min: 1, ci: null } });
+		assert.deepEqual(tiers[3], { missions: 2, reached: 1, without: 1, undated: 0, formulation: { median: 6.26, min: 6.26, ci: null }, science: { median: 3, min: 3, ci: null } });
 		// b1, c1 and b2 all take 2 years: b1 and c1 cost the same, so the id decides; the failed a2 never counts
 		assert.deepEqual(fastest, { id: 'b1', name: 'B1', division: 'b', years: 2 });
 		assert.deepEqual(byDivision.map((d) => [d.division, d.name, d.fastest?.id ?? null, d.fastest?.years ?? null]),
@@ -155,7 +174,7 @@ describe('buildAnalysis', () => {
 			row('u3', 10, { papers: 3 }), row('u2', 50, { papers: 25 }), row('u1', 100, { papers: 30 }), row('u4', 150, { papers: 30 }) // .3 .5 .3 .2
 		]);
 		const t = doc('t', 1, [row('t1', 10, { papers: 9 })]);
-		const { standouts } = buildAnalysis([s, t], options);
+		const { standouts } = analyse([s, t]);
 		assert.deepEqual(standouts[0].missions.map((m) => [m.id, m.rate]), [['u2', 0.5], ['u1', 0.3], ['u3', 0.3]]);
 		assert.deepEqual(standouts[1], { division: 't', name: 'T', overMedian: null, missions: [] });
 	});
@@ -164,7 +183,7 @@ describe('buildAnalysis', () => {
 		// c = 1, so N50 = papers. e: N50 100 over $650M; f: N50 180 over $1,230M.
 		const e = doc('e', 1, [row('e1', 10, { papers: 10, top10: 0.5 }), row('e2', 40, { papers: 10, top10: 0.25 }), row('e3', 100, { papers: 20, top10: 1.125 }), row('e4', 500, { papers: 60, top10: 3 })]);
 		const f = doc('f', 1, [row('f1', 10, { papers: 50 }), row('f2', 100, { papers: 20 }), row('f3', 120, { papers: 10 }), row('f4', 1000, { papers: 100 })]);
-		const [de, df] = buildAnalysis([e, f], options).efficiency.divisions;
+		const [de, df] = analyse([e, f]).efficiency.divisions;
 		assert.deepEqual(de.cells, [
 			{ missions: 2, n50Share: 0.2, costShare: 0.07692, ratio: 2.6 },
 			{ missions: 1, n50Share: 0.2, costShare: 0.15385, ratio: 1.3 },
@@ -186,11 +205,22 @@ describe('buildAnalysis', () => {
 
 	it('has no success premium when every small mission fell short, and needs a cutoff only for measured missions', () => {
 		const lost = doc('l', 1, [row('l1', 10, { failed: true }), row('l2', 200, { papers: 5 })]);
-		assert.equal(buildAnalysis([lost], options).failures.successPremium, null);
+		assert.equal(analyse([lost]).failures.successPremium, null);
 		const noCutoff = { ...doc('n', 1, [row('n1', 10, { papers: 1 })]), stats: { full: null } };
-		assert.throws(() => buildAnalysis([noCutoff], options), /n: no positive full-scope top-50% citation cutoff/);
+		assert.throws(() => analyse([noCutoff]), /n: no positive full-scope top-50% citation cutoff/);
 		const unmeasured = { ...noCutoff, missions: [row('n1', null), row('n2', 10, { papers: null, status: 'unavailable' })] };
-		assert.deepEqual(buildAnalysis([unmeasured], options).excluded, { noCost: 1, unmeasured: 1 });
+		assert.deepEqual(analyse([unmeasured]).excluded, { noCost: 1, unmeasured: 1 });
+	});
+});
+
+describe('medianInterval', () => {
+	it('takes the narrowest order statistics whose binomial coverage reaches 95%, and none below six values', () => {
+		const n = (count) => Array.from({ length: count }, (_, i) => count - i); // count..1, unsorted
+		assert.equal(medianInterval(n(5)), null); // (x1, x5) covers 1 - 2/32 = 93.75%
+		assert.deepEqual(medianInterval(n(6)), [1, 6]); // 1 - 2/64 = 96.9%
+		assert.deepEqual(medianInterval(n(9)), [2, 8]); // k = 2: 96.1%; k = 3: 82.0%
+		assert.deepEqual(medianInterval(n(20)), [6, 15]); // the textbook k = 6 for n = 20 (95.9%)
+		assert.equal(medianInterval([]), null);
 	});
 });
 

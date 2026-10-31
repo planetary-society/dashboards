@@ -158,25 +158,20 @@ describe('hgIndex and windowIndices', () => {
 });
 
 describe('yearlyTopRate', () => {
-	const rows = [
-		{ mission: 'M', bibcode: 'early', top10_weight: 1 }, // before science starts: out
-		{ mission: 'M', bibcode: 'a', top10_weight: 1 },
-		{ mission: 'M', bibcode: 'shared', top10_weight: 1, shared_by: 2 }, // half is this mission's
-		{ mission: 'M', bibcode: 'none', top10_weight: 0 },
-		{ mission: 'M', bibcode: 'late', top10_weight: 1 } // at or after `end`: out
-	];
-	const pubdates = new Map([['early', '2009-06-00'], ['a', '2011-03-00'], ['shared', '2012-00-00'], ['none', '2012-05-00'], ['late', '2013-01-00']]);
-	const end = '2013-01-01';
+	const full = (extra = {}) => ({ top10: 1.5, status: 'available', bounds: { start: '2010-01-01', end: '2013-01-01' }, ...extra });
 
-	it('divides the credit published from the start up to the end by the years between', () => {
-		// 1.5 papers over 2010-01-01 to 2013-01-01
-		assert.equal(yearlyTopRate(rows, { start: '2010-01-01', end, pubdates }), 0.5);
+	it('divides the full-scope top-10% credit by the full window\'s years', () => {
+		// 1.5 papers over 2010-01-01 to 2013-01-01 (1,096 days)
+		assert.equal(yearlyTopRate(full()), 0.5);
+		assert.equal(yearlyTopRate(full({ top10: 0 })), 0); // measured none: a zero, not null
 	});
 
-	it('is null without a start or when science starts at or after the end, and throws on an undated credited row', () => {
-		assert.equal(yearlyTopRate(rows, { start: null, end, pubdates }), null);
-		assert.equal(yearlyTopRate(rows, { start: '2013-06-01', end, pubdates }), null);
-		assert.throws(() => yearlyTopRate(rows, { start: '2010-01-01', end, pubdates: new Map() }), /M early has no publication date/);
+	it('is null when the full scope is unavailable or unmeasured, or the window has no length', () => {
+		assert.equal(yearlyTopRate(full({ status: 'immature' })), null);
+		assert.equal(yearlyTopRate(full({ top10: null })), null);
+		assert.equal(yearlyTopRate(full({ bounds: { start: null, end: null } })), null); // a failure's empty window
+		assert.equal(yearlyTopRate(full({ bounds: { start: '2013-01-01', end: '2013-01-01' } })), null);
+		assert.equal(yearlyTopRate(full({ bounds: null })), null);
 	});
 });
 

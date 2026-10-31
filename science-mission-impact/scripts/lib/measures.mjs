@@ -133,28 +133,18 @@ export function windowIndices(rows, bounds) {
 }
 
 /**
- * A mission's top-10% papers a year: the lifetime top-10% credit (each row's `top10_weight`
- * split among the missions sharing it, as the lifetime count sums it) of the papers published
- * from the start of science up to `end` (exclusive), divided by the years between. Null
- * without a start date or when science starts at or after `end`; throws on a credited row with
- * no date, as `firstTopRow` does.
+ * A mission's top-10% papers a year: its full-scope top-10% credit (the ranking whose cutoff the
+ * story's primer shows) over the length in years of its full-mission window (the exported bounds
+ * the mission page's scope switch names). Null when the full scope isn't available, its credit is
+ * unmeasured, or the window has no length.
  *
- * @param {Iterable<object>} rows the mission's lifetime paper rows
- * @param {{start: string|null, end: string, pubdates: Map<string, string>}} span
+ * @param {{top10: number|null, status: string, bounds: {start: string|null, end: string|null}|null}} full
  */
-export function yearlyTopRate(rows, { start, end, pubdates }) {
-	const from = parseDay(start);
-	const to = parseDay(end);
-	if (from === null || to === null || !(to > from)) return null;
-	let credit = 0;
-	for (const row of rows) {
-		const w = Number(row.top10_weight);
-		if (!(w > 0)) continue;
-		const day = parseDay(pubdates.get(row.bibcode) ?? null);
-		if (day === null) throw new Error(`top-10% rate: ${row.mission} ${row.bibcode} has no publication date`);
-		if (day >= from && day < to) credit += w / (Number(row.shared_by) || 1);
-	}
-	return weight(credit / ((to - from) / 86400000 / 365.25));
+export function yearlyTopRate({ top10, status, bounds }) {
+	const from = parseDay(bounds?.start ?? null);
+	const to = parseDay(bounds?.end ?? null);
+	if (status !== 'available' || num(top10) === null || from === null || to === null || !(to > from)) return null;
+	return weight(num(top10) / ((to - from) / 86400000 / 365.25));
 }
 
 /**

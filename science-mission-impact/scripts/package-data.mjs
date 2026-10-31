@@ -46,12 +46,11 @@ import { buildCostCurve } from './lib/costcurve.mjs';
 import { formatReport } from './lib/report.mjs';
 import { buildIndexCorrelation } from './lib/stats.mjs';
 import { resolveRunMissions } from './lib/join.mjs';
-import { assertDashboardCompatibility, loadSourceCatalog } from './lib/source.mjs';
+import { assertDashboardCompatibility, launchDateOf, loadSourceCatalog, sourceAsOf } from './lib/source.mjs';
 import {
 	assertDivisionTotals,
 	assertMissionPaperRows,
 	assertSchemaVersion,
-	assertSingleAsOfDate,
 	citationGap,
 	PackagingError,
 	Warnings
@@ -99,6 +98,10 @@ const GENERATED_REL = join('src', 'lib', 'data', 'generated');
 const PAPERS_REL = join('static', 'data', 'papers');
 const MAPS_REL = join('static', 'data', 'maps');
 const THUMBS_DIR = join(APP_ROOT, 'static', 'img', 'missions');
+/** Whether a mission's cropped thumbnail is cached. */
+const thumbExists = (id) => existsSync(join(THUMBS_DIR, `${id}.webp`));
+/** The story's membership rule, stamped once so no page re-derives it: 'under' is 0 < cost <= the line; null without a cost. */
+const sizeOf = (cost, thresholdCost) => (!(cost > 0) ? null : underThreshold(thresholdCost)({ cost }) ? 'under' : 'over');
 const REPORT_NAME = 'refresh-report.md';
 const TOP_CITED_LIMIT = 20;
 
@@ -274,9 +277,7 @@ export function loadRuns(rawDir, config, warnings, source = loadSourceCatalog(ra
 		}
 	}
 
-	const asOf = assertSingleAsOfDate(
-		runs.map((r) => ({ label: r.division.statsLabel, asOfDate: r.stats.run?.as_of_date }))
-	);
+	const asOf = sourceAsOf(source);
 
 
 	const policies = runs.map((r) => windowPolicy(r.stats.run.policy, r.division.statsLabel));
@@ -301,13 +302,6 @@ export function loadRuns(rawDir, config, warnings, source = loadSourceCatalog(ra
 		warnings.add(`stats runs were produced by different code revisions: ${revisions.join(', ')}`);
 	}
 
-	// The data's end point: the latest full-mission window end in any run, where upstream cuts the
-	// windows of missions still operating (its maturity ceiling). The yearly top-10% rate stops there.
-	const dataEnd = runs.flatMap((r) => r.stats.missions ?? [])
-		.filter((m) => m.full_mission_cohort?.status === 'available')
-		.map((m) => m.full_mission_cohort.publication_end_date).filter(Boolean).sort().at(-1) ?? null;
-	if (!dataEnd) throw new PackagingError('no available full-mission window to take the data’s end point from');
-
 	// The mission-selection sentence, verbatim per run. /methods prints it as the
 	// authoritative statement of what is in and out of each division.
 	const filters = {};
@@ -328,7 +322,6 @@ export function loadRuns(rawDir, config, warnings, source = loadSourceCatalog(ra
 			asOfYear: Number(asOf.slice(0, 4)),
 			windowPolicy: policies[0],
 			fullPolicy: fullPolicies[0],
-			dataEnd,
 			codeRevision: revisions.join('+'),
 			codeRevisionDirty: runs.some((r) => Boolean(r.stats.provenance?.code?.working_tree_dirty)),
 			attribution: runs[0].stats.attribution ?? {},
@@ -456,7 +449,7 @@ export function buildMissionDoc({
 	// set than implementation dates do: build time and the project-start reading
 	// of a first top paper both run from here.
 	const formulation = corpus.mission?.formulation_start_date ?? null;
-	const launchDate = corpus.mission?.mission_launch_date ?? indexEntry.mission_launch_date ?? null;
+	const launchDate = launchDateOf({ corpus, indexEntry });
 	// Science starts at the prime-mission start, else at launch, as upstream reads it.
 	const scienceStart = corpus.mission?.prime_mission_start_date ?? launchDate;
 	const percentileView = (block) => block.percentile_view?.mission_stats?.[shortTitle] ?? null;
@@ -469,8 +462,6 @@ export function buildMissionDoc({
 		window: firstTopRow(windowRows.values(), 'window_top10_weight', pubdates),
 		lifetime: firstTopRow(lifetimeRows, 'top10_weight', pubdates)
 	};
-	// The focus chart's measure: lifetime top-10% papers a year, from science start to the data's end
-	const top10PerYear = yearlyTopRate(lifetimeRows, { start: scienceStart, end: snapshot.dataEnd, pubdates });
 	const scopeStats = (scope) =>
 		buildMissionScopeStats({
 			statsMission,
@@ -491,14 +482,15 @@ export function buildMissionDoc({
 		bounds: missionWindow(fullCohort, snapshot.fullPolicy, `${id} (full-mission window)`)
 	};
 	fullStats.indices = windowIndices(fullRows.values(), fullStats.bounds);
+	// The focus chart's measure: full-scope top-10% papers a year over the full window's years
+	const top10PerYear = yearlyTopRate({ top10: missionTop10(statsMission, 'full'), status: fullStats.status, bounds: fullStats.bounds });
 
 	const failed = isFailure(statsMission.mission_status);
 	const shortfall = isShortfall(statsMission.mission_status);
 	const launchYear = yearOf(launchDate);
-	const hasThumb = existsSync(join(THUMBS_DIR, `${id}.webp`));
+	const hasThumb = thumbExists(id);
 	const cost = num(statsMission.adjusted_lcc);
-	// the story's membership rule, stamped once so no page re-derives it: 'under' is 0 < cost <= the line
-	const size = !(cost > 0) ? null : underThreshold(config.thresholdCost)({ cost }) ? 'under' : 'over';
+	const size = sizeOf(cost, config.thresholdCost);
 	// The windowed scopes' h and g (windowIndices) use the rule that reproduces these from the
 	// lifetime rows; a drift between the two fails here rather than skewing one scope.
 	const lifetimeHg = hgIndex(lifetimeRows.map((row) => row.citations));
@@ -698,7 +690,7 @@ export function buildMissionDoc({
 			citations: fullStats.citations,
 			// full-mission top-10% credit as published (the per-dollar scatter reads it)
 			top10: fullStats.top10,
-			// the focus chart's bars: lifetime top-10% papers a year, as packaged
+			// the focus chart's bars: full-scope top-10% papers a year, as packaged
 			top10PerYear,
 			hasThumb,
 			failed,
@@ -934,7 +926,7 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 	const coverage = citationCoverage({ expected: summaryLifetime.citations_total, observed: divisionEdges,
 		historyStatus: scopeLifetime.history_status, limits: config.citationHistory });
 
-	// Continuous costs and per-mission credit; upstream bins are not consumed.
+	// Continuous costs and per-mission credit over the upstream fixed set; upstream bins are not consumed.
 	const costCurves = rankable
 		? {
 				full: {

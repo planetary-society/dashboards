@@ -2,19 +2,18 @@
 	// Citations per dollar against cost, both log (geometry in perDollarLayout): one division
 	// filling the stage, or every compared division in a two-column grid. At most one line across each
 	// band's measured missions, the zeros on its shelf included: one the story imagines (`would`,
-	// dashed, in the lone band only), or the best fit, which `turn` swings up from flat, or an overview
-	// running mean, which it fades in. Bands share one rate scale; division pages use the same running means.
+	// dashed, in the lone band only), or the packaged running mean, which `turn` fades in. Bands share
+	// one rate scale; division pages use the same running means.
 	import { compact as short, moneyTick } from '$lib/format.js';
 	import { costTicks, minorDollarTicks } from '$lib/charts/costaxis.js';
 	import DollarMinorTicks from '$lib/charts/DollarMinorTicks.svelte';
 	import CostAxisLabel from '$lib/charts/CostAxisLabel.svelte';
-	import { fitLabel } from '$lib/copy/discussion.js';
 	import { runningLine, trendBand, trendLine } from '$lib/charts/perdollar.js';
 
 	/**
 	 * layout: perDollarLayout(). would: the imagined line, { slope, label, shown }; it keeps its
-	 * slope while hidden, so it fades where it stands. turn: how far the best fit has swung from
-	 * flat to its slope; null draws none. title: the chart's title, over a layout made `titled`.
+	 * slope while hidden, so it fades where it stands. turn: the running mean's opacity, 0 to 1;
+	 * null draws none. title: the chart's title, over a layout made `titled`.
 	 * confidence: shade the packaged 95% intervals on completed curves.
 	 */
 	let { layout, title = null, would = null, turn = 1, confidence = false, visible = false, compact = false, width, height } = $props();
@@ -26,10 +25,9 @@
 	// a lone band on a shared axis with no gutter (a phone's lanes) labels its scale inside the plot
 	const inside = $derived(single && x0 < 30);
 	const imagined = $derived(single && would ? layout.rows.map((row) => trendLine(layout, row, would.slope)) : []);
-	const best = $derived(layout.rows.map((row) => turn == null ? null : row.average ? runningLine(layout, row)
-		: row.fit ? trendLine(layout, row, row.fit.slope * turn) : null));
+	const best = $derived(layout.rows.map((row) => turn == null ? null : runningLine(layout, row)));
 	const bands = $derived(confidence && turn === 1 ? layout.rows.map((row) =>
-		trendBand(layout, row, row.average ? row.average.points.map(([cost, , lo, hi]) => [cost, lo, hi]) : row.fit?.band)) : []);
+		trendBand(layout, row, row.average?.points.map(([cost, , lo, hi]) => [cost, lo, hi]))) : []);
 </script>
 
 <div class="dollar" class:visible class:compact class:single aria-hidden="true">
@@ -77,27 +75,23 @@
 					<line x1={line.x1} y1={line.y1} x2={line.x2} y2={line.y2} />
 				</g>
 			{/if}
-			{#if best[i]}
-				{#if row.average}<path class="fit" d={best[i].path} opacity={turn} />
-				{:else}<line class="fit" x1={best[i].x1} y1={best[i].y1} x2={best[i].x2} y2={best[i].y2} />{/if}
-			{/if}
+			{#if best[i]}<path class="fit" d={best[i].path} opacity={turn} />{/if}
 		{/each}
 	</svg>
 
 	<!-- the lone band's line labels, in HTML so they sit over the squares the stage draws after this
-	     chart: the imagined line's at its cheap end, the best fit's at its costly end, both above the line -->
+	     chart: the imagined line's at its cheap end, the running average's at its costly end, both above the line -->
 	{#if single && imagined[0] && would.label}
 		<span class="label would-label" class:shown={would.shown} style:left="{imagined[0].x1 - 4}px" style:top="{imagined[0].y1 - 6}px">{would.label}</span>
 	{/if}
 	{#if single && best[0] && turn > 0.9}
-		<span class="label fit-label" style:left="{best[0].x2 + 4}px" style:top="{best[0].y2 - 6}px">{layout.rows[0].average ? 'Running average' : 'Average trend'}</span>
+		<span class="label fit-label" style:left="{best[0].x2 + 4}px" style:top="{best[0].y2 - 6}px">Running average</span>
 	{/if}
 
 	{#if !single}
 		{#each layout.rows as row (row.slug)}
 			<span class="row" style:left="{row.left}px" style:top="{row.y}px" style:width="{row.width}px">
 				<span class="name">{row.label}</span>
-				{#if row.fit}<span class="meta">{fitLabel(row.fit)}</span>{/if}
 			</span>
 		{/each}
 	{/if}
@@ -183,7 +177,7 @@
 		stroke-linejoin: round;
 	}
 
-	/* the imagined line fades in and out; the best fit takes its place rather than joining it */
+	/* the imagined line fades in and out; the running average takes its place rather than joining it */
 	.would {
 		opacity: 0;
 		transition: opacity 400ms linear;
@@ -261,13 +255,6 @@
 		color: var(--white);
 	}
 
-	.meta {
-		font-size: 11px;
-		line-height: 15px;
-		color: var(--dust);
-		white-space: nowrap;
-	}
-
 	.compact .row {
 		gap: 0;
 		padding-top: 3px;
@@ -276,10 +263,5 @@
 	.compact .name {
 		font-size: 12px;
 		line-height: 16px;
-	}
-
-	.compact .meta {
-		font-size: 10px;
-		line-height: 13px;
 	}
 </style>

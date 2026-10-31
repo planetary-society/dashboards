@@ -3,9 +3,7 @@
 // referenceCost and the page's scope) so no number is typed into copy. `anchor` is the section of /methods that explains it.
 
 import { longDate, moneyWords, spell } from '../format.js';
-import { fullWindowLabel, fullWindowText, ordinal } from './window.js';
-
-const calendarYears = (p) => p.citationYears + 1;
+import { calendarYears, fullWindowLabel, fullWindowText, ordinal } from './window.js';
 
 export const FOOTNOTES = {
 	top10: {
@@ -84,7 +82,7 @@ export const FOOTNOTES = {
 	perDollarChart: {
 		anchor: 'cost',
 		text: () =>
-			`Each square is a mission at its cost and its citations per ${moneyWords(100)}, both on log scales. The line is the best fit through the missions with citations; missions with none sit on the bottom row.`
+			`Each square is a mission at its cost and its citations per ${moneyWords(100)}, both on log scales. The running average combines mission rates across a broad range of nearby costs, giving closer missions more weight. Missions with no citations remain included and sit on the bottom row. Shading shows a 95% interval for the average at each cost.`
 	},
 	failed: {
 		anchor: '',

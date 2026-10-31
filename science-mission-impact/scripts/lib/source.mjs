@@ -4,7 +4,7 @@ import { readFileSync, realpathSync } from 'node:fs';
 import path from 'node:path';
 
 import { buildTitleIndex, resolveRunMissions } from './join.mjs';
-import { assertSchemaVersion, PackagingError } from './invariants.mjs';
+import { assertSchemaVersion, assertSingleAsOfDate, PackagingError } from './invariants.mjs';
 
 import { fullMissionPolicy, missionWindow, windowPolicy } from './windows.mjs';
 
@@ -65,6 +65,12 @@ export function readReferencedJson(rawDir, reference, label) {
 	}
 	return parse(bytes, file);
 }
+
+/** The one as-of date a loaded dataset's runs share (`assertSingleAsOfDate`); `prefix` heads each run's label in the error. */
+export const sourceAsOf = (source, prefix = '') => assertSingleAsOfDate(source.runs.map((r) => ({ label: `${prefix}${r.division.statsLabel}`, asOfDate: r.stats.run?.as_of_date })));
+
+/** A loaded mission's launch date: its envelope's, else the index's; null when neither has one. */
+export const launchDateOf = ({ corpus, indexEntry }) => corpus?.mission?.mission_launch_date ?? indexEntry?.mission_launch_date ?? null;
 
 /** Shared membership/identity loader for packaging and thumbnails; performs no writes. */
 export function loadSourceCatalog(rawDir, config) {

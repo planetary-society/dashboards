@@ -38,6 +38,7 @@ export function tileSort({ config }) {
  * @param {number} args.papersDistinct globally distinct bibcodes
  * @param {number} args.citationsDistinct citations of those papers
  * @param {number|null} args.yearCohortMinN from the first run's config block
+ * @param {object|null} [args.clps] site.clps (loadClps)
  */
 export function buildSite({
 	snapshot,
@@ -55,8 +56,7 @@ export function buildSite({
 	const attribution = snapshot.attribution ?? {};
 	const story = buildDiscussion(divisionDocs, {
 		thresholdCost: config.thresholdCost,
-		focusDivision: config.storyDivision ?? null,
-		rateEnd: snapshot.dataEnd
+		focusDivision: config.storyDivision ?? null
 	});
 
 	const site = {
@@ -86,7 +86,7 @@ export function buildSite({
 		},
 		filters: snapshot.filters,
 		story,
-		divisionFacts: divisionFacts(divisionDocs, { thresholdCost: config.thresholdCost }),
+		divisionFacts: divisionFacts(divisionDocs, { thresholdCost: config.thresholdCost, full: story }),
 		clps,
 		// The Analysis page reads the story's focus division, so the two are null together.
 		analysis: buildAnalysis(divisionDocs, {

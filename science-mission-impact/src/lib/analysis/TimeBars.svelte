@@ -2,7 +2,7 @@
 	// Median years to each tier's first top-10% paper, two ways on one axis: from the start of
 	// formulation (thick) and from the start of science (thin). Geometry in timeLayout; its height
 	// doesn't depend on width, so the server reserves the stage and nothing shifts on hydration.
-	import { int, years } from '$lib/format.js';
+	import { int, range, years } from '$lib/format.js';
 	import { timeLayout } from './charts-a.js';
 	import { tierLabel } from './tiers.js';
 
@@ -22,6 +22,8 @@
 	const layout = $derived(timeLayout(tiers, time, width, { pitch, only }));
 	const off = (key) => only != null && only !== key;
 	const yr = (v) => `${years(v)} yr`;
+	// a median's 95% interval, for the screen-reader table only (the bars draw no whiskers)
+	const interval = (ci) => range(ci, years, ' to ');
 </script>
 
 <div class="time-bars">
@@ -77,8 +79,10 @@
 				<th scope="col">With a top-10% paper</th>
 				<th scope="col">Without one yet</th>
 				<th scope="col">Median years from formulation start</th>
+				<th scope="col">95% interval for that median</th>
 				<th scope="col">Fewest years from formulation start</th>
 				<th scope="col">Median years from the start of science</th>
+				<th scope="col">95% interval for that median</th>
 				<th scope="col">Fewest years from the start of science</th>
 			</tr>
 		</thead>
@@ -90,8 +94,10 @@
 					<td>{int(t.reached)}{#if t.undated > 0}, {t.undated} with no formulation date on record{/if}</td>
 					<td>{int(t.without)}</td>
 					<td>{years(t.formulation.median)}</td>
+					<td>{interval(t.formulation.ci)}</td>
 					<td>{years(t.formulation.min)}</td>
 					<td>{years(t.science.median)}</td>
+					<td>{interval(t.science.ci)}</td>
 					<td>{years(t.science.min)}</td>
 				</tr>
 			{/each}

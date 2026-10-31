@@ -139,6 +139,17 @@
 				<a href="https://www.nasa.gov/wp-content/uploads/2024/11/nnsi-faqs-2024.pdf">New Start Inflation Index</a>.</p>
 		</section>
 
+		<section id="running-averages">
+			<h2>Running averages</h2>
+			<p>The citations-per-dollar charts on the overview and division pages show a running average. Each mission’s
+				rate is its windowed citations per {money(100)} of its cost, and a mission that failed or published nothing
+				counts as zero. At each cost, we average the rates of missions within a factor of 10 of that cost, weighting
+				the closest missions most heavily. We only draw the average where at least three missions contribute.</p>
+			<p>The shaded band is a 95% range from resampling the missions. To compare small and larger missions, we
+				average the rates on each side of {threshold} and only say one side did better when the 95% range of the
+				difference excludes zero and the result holds with any single mission left out.</p>
+		</section>
+
 		<section id="nc">
 			<h2>Citation-weighted output (N<sub>50</sub>)</h2>
 			<p>Our <a href={analysisHref()}>analysis</a> uses both threshold counts to determine high-impact papers and a citation-weighted count, defined as: N<sub>c</sub> = papers + citations ÷ c, where c is a citation

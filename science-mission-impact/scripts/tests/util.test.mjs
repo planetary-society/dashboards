@@ -2,9 +2,10 @@ import { strict as assert } from 'node:assert';
 import { describe, it } from 'node:test';
 
 import {
+	fisherExact,
+	fisherP,
 	groupBy,
 	int,
-	logFit,
 	median,
 	num,
 	papers,
@@ -52,6 +53,9 @@ describe('round', () => {
 		assert.equal(round(0.123456789, 5), 0.12346);
 		assert.equal(round(1.0005, 3), 1.001);
 		assert.equal(round(14.666666666, 3), 14.667);
+		// a value small enough to print in exponent form ("8.07e-7") still rounds
+		assert.equal(round(8.0676e-7, 3), 0);
+		assert.equal(round(2.5e-6, 6), 0.000003);
 	});
 
 	it('keeps null as null: a missing measure is not zero', () => {
@@ -157,14 +161,16 @@ describe('groupBy', () => {
 	});
 });
 
-describe('logFit', () => {
-	it('recovers a power law exactly, and needs three points with a spread in cost', () => {
-		// rate = 10 * cost^0.5
-		const points = [1, 10, 100, 1000].map((cost) => ({ cost, rate: 10 * cost ** 0.5 }));
-		const fit = logFit(points);
-		assert.ok(Math.abs(fit.slope - 0.5) < 1e-9);
-		assert.ok(Math.abs(fit.intercept - 1) < 1e-9);
-		assert.equal(logFit(points.slice(0, 2)), null);
-		assert.equal(logFit([1, 1, 1].map((cost) => ({ cost, rate: cost }))), null);
+describe('fisherExact', () => {
+	it('matches scipy.stats.fisher_exact, two-sided', () => {
+		for (const [table, p] of [[[16, 40, 8, 99], 0.0007465478392527918], [[3, 1, 1, 3], 0.48571428571428565], [[1, 9, 11, 3], 0.0027594561852200836], [[0, 5, 5, 0], 0.007936507936507938], [[2, 2, 2, 2], 1]]) {
+			assert.ok(Math.abs(fisherExact(...table) - p) < 1e-12, `${table}: ${fisherExact(...table)}`);
+		}
+	});
+
+	it('fisherP: k of n against k of n, as a share; null when a side is empty', () => {
+		assert.equal(fisherP(16, 56, 8, 107), share(0.0007465478392527918));
+		assert.equal(fisherP(0, 0, 8, 107), null);
+		assert.equal(fisherP(3, 10, 0, 0), null);
 	});
 });

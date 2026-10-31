@@ -1,11 +1,12 @@
 // The discussion figures use actual adjusted costs, from the packaged division documents.
 import { pooledBand } from './costcurve.mjs';
-import { byText, logFit, median, parseDay, round, share, sum } from './util.mjs';
+import { runningMean } from './running-mean.mjs';
+import { byText, fisherP, median, round, share, sum } from './util.mjs';
 const hasCost = (mission) => Number.isFinite(mission.cost) && mission.cost > 0;
 /** Inside the threshold: a positive cost at or below it ($M, the snapshot's adjusted dollar year). */
 export const underThreshold = (cost) => (mission) => hasCost(mission) && mission.cost <= cost;
 
-/** A costed mission whose output in the scope was measured: a failure counts, as a zero; unavailable output does not. */
+/** A costed mission whose output in the scope was measured: failures retain their recorded output or zero; unavailable output does not count. */
 const measuredIn = (scope) => (m) => hasCost(m) && (m[scope]?.status ?? 'available') === 'available' && m[scope]?.top10 != null;
 
 /** Missions and shortfalls (failure, partial failure, partial success) on one side, with the rate; `lost` counts the outright failures among them. */
@@ -35,16 +36,16 @@ export function wilson(k, n, z = 1.96) {
  * either keep them apart (`perDollar`), weight them equally (`pooledBand`) or count papers
  * that were already ranked within their own field (`comparison`).
  *
+ * Failure rates count every costed mission, whatever its output: an outcome is not a citation measure.
+ *
  * @param {object[]} divisions the packaged Division documents, config order
  * @param {object} options
  * @param {number} options.thresholdCost the editorial line ($M): under is `0 < cost <= thresholdCost`, over is above it
  * @param {'full'|'window'|'lifetime'} [options.scope] the scope every figure is read in
  * @param {string|null} [options.focusDivision] the division the story walks through (its
  *   citation primer and yearly-rate chart); null leaves `focusDivision` and `primer` null
- * @param {string|null} [options.rateEnd] the data's end point the missions' `top10PerYear` runs to
- *   (exclusive); null leaves `rate` null
  */
-export function buildDiscussion(divisions, { thresholdCost, scope = 'full', focusDivision = null, rateEnd = null } = {}) {
+export function buildDiscussion(divisions, { thresholdCost, scope = 'full', focusDivision = null } = {}) {
 	if (!(thresholdCost > 0)) throw new Error(`buildDiscussion: thresholdCost must be a positive number, got ${JSON.stringify(thresholdCost)}`);
 	const under = underThreshold(thresholdCost);
 	const over = (m) => hasCost(m) && !under(m);
@@ -56,7 +57,6 @@ export function buildDiscussion(divisions, { thresholdCost, scope = 'full', focu
 	const measured = measuredIn(scope);
 	const breakdown = divisions.map((d) => {
 		const pool = d.missions.filter(under);
-		const costedAll = d.missions.filter(hasCost);
 		const eligible = d.missions.filter(measured);
 		const small = eligible.filter(under);
 		const top = sum(small.map((m) => stats(m).top10));
@@ -66,7 +66,6 @@ export function buildDiscussion(divisions, { thresholdCost, scope = 'full', focu
 		return { division: d.slug, name: d.name, missions: pool.length,
 			measuredMissions: small.length, top10: round(top, 6),
 			share: d.rankable && total > 0 ? top / total : null,
-			missionsAll: costedAll.length,
 			// the small side's shares of missions, spending, citations and top papers all count the
 			// same missions, costed with output measured in the scope, so they can be read against each other
 			missionShare: eligible.length ? share(small.length / eligible.length) : null,
@@ -111,6 +110,7 @@ export function buildDiscussion(divisions, { thresholdCost, scope = 'full', focu
 			under: { ...failureUnder, interval: wilson(failureUnder.failed, failureUnder.missions), lostCostMax: lostCostMax(costed.filter(under)) },
 			over: { ...failureOver, interval: wilson(failureOver.failed, failureOver.missions), lostCostMax: lostCostMax(costed.filter(over)) },
 			higher: higherRate(failureUnder.rate, failureOver.rate),
+			fisherP: fisherP(failureUnder.failed, failureUnder.missions, failureOver.failed, failureOver.missions),
 			byDivision: divisions.map((d) => {
 				const pool = d.missions.filter(hasCost);
 				const side = (fn) => { const { missions, failed, lost } = shortfalls(pool.filter(fn)); return { missions, failed, lost }; };
@@ -131,21 +131,22 @@ export function buildDiscussion(divisions, { thresholdCost, scope = 'full', focu
 		} : null,
 		focusDivision: focus?.slug ?? null,
 		primer: focus ? primerFacts(focus, scope) : null,
-		rate: rateEnd ? rateFacts(rankable, rateEnd, under) : null,
-		perDollar: rankable.map((d) => perDollarFacts(d, d.missions.filter(measured), stats, sides))
+		rate: rateFacts(rankable, under),
+		perDollar: rankable.map((d) => perDollarFacts(d, d.missions.filter(measured), stats, sides, thresholdCost))
 	};
 }
 
 /**
  * A division page's small-vs-larger figures in every scope: each division's own rows of the
  * discussion read in that scope. The page's scope switch picks one; nothing is recomputed there.
+ * `full` is the full-scope discussion when the caller has already built it (site.story).
  *
  * @returns {Record<string, Record<'full'|'window'|'lifetime', {divisions: object, failure: object, comparison: object|null, perDollar: object|null}>>}
  */
-export function divisionFacts(divisions, { thresholdCost }) {
+export function divisionFacts(divisions, { thresholdCost, full = buildDiscussion(divisions, { thresholdCost }) }) {
 	const out = Object.fromEntries(divisions.map((d) => [d.slug, {}]));
-	for (const scope of ['full', 'window', 'lifetime']) {
-		const s = buildDiscussion(divisions, { thresholdCost, scope });
+	const built = { full, window: buildDiscussion(divisions, { thresholdCost, scope: 'window' }), lifetime: buildDiscussion(divisions, { thresholdCost, scope: 'lifetime' }) };
+	for (const [scope, s] of Object.entries(built)) {
 		const row = (list, slug) => list.find((r) => r.division === slug) ?? null;
 		for (const d of divisions) {
 			out[d.slug][scope] = { divisions: row(s.divisions, d.slug), failure: row(s.failure.byDivision, d.slug),
@@ -185,21 +186,19 @@ const largestBy = (members, value) =>
 	members.slice().sort((a, b) => (value(b) ?? 0) - (value(a) ?? 0) || byText(a.name, b.name) || byText(a.id, b.id))[0] ?? null;
 
 /**
- * The yearly-rate charts' facts: the rate's end point (`end`, exclusive; `through`, the last
- * publication year it counts), then per compared division, kept apart (each ranks its own top
- * 10%): the costed mission with the highest `top10PerYear` and its side of the line, each side's
- * mission count, how many had no top-10% papers and its median rate, and the small side's best
- * with how many larger missions it out-produced.
+ * The yearly-rate charts' facts (`top10PerYear`: full-scope top-10% credit over the full window's
+ * years), per compared division, kept apart (each ranks its own top 10%): the costed mission with
+ * the highest rate and its side of the line, each side's mission count, how many had no top-10%
+ * papers and its median rate, and the small side's best with how many larger missions it
+ * out-produced.
  */
-function rateFacts(divisions, end, under) {
+function rateFacts(divisions, under) {
 	const rate = (m) => m.top10PerYear ?? 0;
 	const named = (m) => (m && rate(m) > 0 ? { id: m.id, name: m.name, perYear: rate(m) } : null);
 	const side = (list) => ({ missions: list.length, none: list.filter((m) => !(rate(m) > 0)).length, median: list.length ? round(median(list.map(rate)), 3) : null });
 	return {
-		end,
-		through: new Date(parseDay(end) - 86400000).getUTCFullYear(), // parseDay, as yearlyTopRate reads the same end
 		divisions: divisions.map((d) => {
-			// a null rate (no science start, or none before `end`) is unmeasured, never a measured zero
+			// a null rate (no measured full window, or one with no length) is unmeasured, never a measured zero
 			const costed = d.missions.filter((m) => hasCost(m) && m.top10PerYear != null);
 			const small = costed.filter(under);
 			const larger = costed.filter((m) => !under(m));
@@ -233,7 +232,7 @@ function mostCommon(values) {
  * `flipsOn` names the missions it does not survive dropping; empty exactly when `favors` is set,
  * or when there is no order to keep (a tie or an empty side).
  */
-function perDollarFacts(division, members, stats, sides) {
+function perDollarFacts(division, members, stats, sides, thresholdCost) {
 	const groups = sides.map(([key, side]) => {
 		const group = members.filter(side);
 		return { key, missions: group.length, cost: round(sum(group.map((m) => m.cost)), 3),
@@ -255,26 +254,8 @@ function perDollarFacts(division, members, stats, sides) {
 		flipsOn: breakers.map((m) => ({ id: m.id, name: m.name, side: sides[0][1](m) ? 'under' : 'over' })),
 		margin: under === null || over === null || Math.max(under, over) === 0 ? null : share(Math.abs(under - over) / Math.max(under, over)),
 		largestUnder: underCitations > 0 ? { id: top.id, name: top.name, share: share((stats(top).citations ?? 0) / underCitations) } : null,
-		fit: perDollarFit(members, stats)
+		runningMean: runningMean(members.map((m) => ({ id: m.id, cost: m.cost, citations: Number(stats(m).citations ?? 0) })), thresholdCost)
 	};
-}
-
-/**
- * The trend of citations per $100M with cost across a division's measured missions, threshold
- * ignored: the least-squares line of log rate on log cost that its page and the story draw,
- * over the missions with citations (a zero has no place on a log scale; `zeros` counts them).
- * `tenfold` is the rate's multiple at ten times the cost, `citesTenfold` the citations' own (the
- * same line before dividing by cost: its slope plus one); `holds` says no single fitted mission,
- * dropped, reverses the line's direction, and is null when dropping one would leave too few
- * for a line (untested, never robust). Null below three missions with citations.
- */
-function perDollarFit(members, stats) {
-	const points = members.filter((m) => stats(m).citations > 0).map((m) => ({ cost: m.cost, rate: (stats(m).citations / m.cost) * 100 }));
-	const line = logFit(points);
-	if (!line) return null;
-	const reverses = (i) => Math.sign(logFit(points.filter((_, j) => j !== i)).slope) !== Math.sign(line.slope);
-	return { missions: points.length, zeros: members.length - points.length, slope: round(line.slope, 3), intercept: round(line.intercept, 3),
-		tenfold: round(10 ** line.slope, 2), citesTenfold: round(10 ** (line.slope + 1), 2), holds: points.length < 4 ? null : !points.some((_, i) => reverses(i)) };
 }
 
 /**

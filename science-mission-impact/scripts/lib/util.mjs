@@ -23,7 +23,9 @@ export function round(value, dp) {
 	if (value === null || value === undefined) return null;
 	const n = Number(value);
 	if (!Number.isFinite(n)) return null;
-	const shifted = Number(`${n}e${dp}`);
+	// shift the exponent, not the text: a tiny value prints as "8e-7", and "8e-7e3" is not a number
+	const [mantissa, exponent = '0'] = String(n).split('e');
+	const shifted = Number(`${mantissa}e${Number(exponent) + dp}`);
 	if (!Number.isFinite(shifted)) return n;
 	const r = Number(`${Math.round(shifted)}e-${dp}`);
 	if (!Number.isFinite(r)) return n;
@@ -57,27 +59,35 @@ export function median(values) {
 	return sorted.length % 2 === 1 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
 }
 
+// ---------------------------------------------------------------- statistics
+
 /**
- * Least squares of log10(rate) on log10(cost) over `{ cost, rate }` points, both positive: the
- * per-dollar trend the packager reports (perDollar.fit) and the division pages and story draw.
- * Null below three points or with no spread in cost.
+ * Two-sided Fisher exact test of the 2×2 table [[a, b], [c, d]] (counts): the summed hypergeometric
+ * probability of every table with the same margins that is no likelier than this one, within a 1e-7
+ * relative tolerance so equally likely tables tie (scipy's rule). Log-factorials by running sums.
  */
-export function logFit(points) {
-	if (points.length < 3) return null;
-	const xs = points.map((p) => Math.log10(p.cost));
-	const ys = points.map((p) => Math.log10(p.rate));
-	const mx = xs.reduce((a, b) => a + b, 0) / xs.length;
-	const my = ys.reduce((a, b) => a + b, 0) / ys.length;
-	let sxx = 0;
-	let sxy = 0;
-	for (let i = 0; i < xs.length; i++) {
-		sxx += (xs[i] - mx) ** 2;
-		sxy += (xs[i] - mx) * (ys[i] - my);
+export function fisherExact(a, b, c, d) {
+	const n = a + b + c + d;
+	const row = a + b;
+	const col = a + c;
+	const lf = [0];
+	for (let i = 1; i <= n; i++) lf[i] = lf[i - 1] + Math.log(i);
+	const fixed = lf[row] + lf[n - row] + lf[col] + lf[n - col] - lf[n];
+	const pmf = (x) => Math.exp(fixed - lf[x] - lf[row - x] - lf[col - x] - lf[n - row - col + x]);
+	const observed = pmf(a);
+	let p = 0;
+	for (let x = Math.max(0, row + col - n); x <= Math.min(row, col); x++) {
+		const q = pmf(x);
+		if (q <= observed * (1 + 1e-7)) p += q;
 	}
-	if (sxx < 1e-12) return null;
-	const slope = sxy / sxx;
-	return { slope, intercept: my - slope * mx };
+	return Math.min(1, p);
 }
+
+/**
+ * The two-sided Fisher exact p (`fisherExact`, as a share) of k1 of n1 against k2 of n2: the one test
+ * the failure rates' two sides get, story and Analysis page alike. Null when a side is empty.
+ */
+export const fisherP = (k1, n1, k2, n2) => (n1 > 0 && n2 > 0 ? share(fisherExact(k1, n1 - k1, k2, n2 - k2)) : null);
 
 /** a / b as a share, or null when the denominator is missing or zero. */
 export function ratio(a, b) {

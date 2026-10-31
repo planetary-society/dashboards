@@ -8,7 +8,8 @@
  * only once it has fully elapsed at the as-of date (null until then).
  *
  * `surface` (the Analysis page's papers-per-dollar figure) holds config.clps.surface's missions
- * at the CLPS line's last elapsed month, each from its own prime-mission start.
+ * at the CLPS line's last elapsed month, each from its own prime-mission start. `comparison.landers`
+ * holds each lander against the comparators at its own age.
  *
  * Reads a second dataset (config.clps.rawDir, never a fallback), through the
  * same verified loader as the main package. Its runs share one as-of date, at
@@ -18,9 +19,9 @@
 
 import { selectionOf } from './analysis.mjs';
 import { displayNames } from './config.mjs';
-import { isFailure } from './measures.mjs';
-import { loadSourceCatalog } from './source.mjs';
-import { assertSingleAsOfDate, PackagingError } from './invariants.mjs';
+import { isFailure, isShortfall } from './measures.mjs';
+import { launchDateOf, loadSourceCatalog, sourceAsOf } from './source.mjs';
+import { PackagingError } from './invariants.mjs';
 import { byText, num, sum } from './util.mjs';
 
 export const CLPS_PROGRAM = 'Commercial Lunar Payload Services (CLPS)';
@@ -55,6 +56,28 @@ export function runningTotal(dates, start, asOf, horizon, label = 'series') {
 /** Refereed, dated records only, as upstream counts them. */
 const refereed = (records) => records.filter((r) => r?.refereed === true && r.date);
 
+/** Whole calendar months elapsed from `start` to `asOf` (YYYY-MM-DD): the last m with start + m months on or before it. */
+export function monthsElapsed(start, asOf) {
+	let m = 0;
+	while (addMonths(start, m + 1) <= asOf) m += 1;
+	return m;
+}
+
+/** Summed costs ($M), null when any is missing or there are none. */
+const totalCost = (costs) => (costs.length && costs.every((c) => c > 0) ? Number(sum(costs).toPrecision(12)) : null);
+
+/** The landers' refereed papers pooled, a paper two of them claim once at its earliest date: one date per paper. */
+function pooledDates(landers) {
+	const pooled = new Map();
+	for (const m of landers) {
+		for (const r of refereed(m.records ?? [])) {
+			const date = r.date.slice(0, 10);
+			if (!pooled.has(r.bibcode) || date < pooled.get(r.bibcode)) pooled.set(r.bibcode, date);
+		}
+	}
+	return [...pooled.values()];
+}
+
 /**
  * site.clps from loaded missions. Pure.
  *
@@ -64,8 +87,8 @@ const refereed = (records) => records.filter((r) => r?.refereed === true && r.da
  * @param {string[]} args.comparators mission ids, in display order
  * @param {string[]} [args.surface] mission ids for the papers-per-dollar comparison, in display order
  * @param {{id: string, name: string, fullName: string, program: string|null, launchDate: string|null,
- *   primeStart: string|null, status: string|null, cost: number|null, selection?: 'competed'|'directed'|null,
- *   failed?: boolean, records: object[]|null}[]} args.missions
+ *   primeStart: string|null, cost: number|null, selection?: 'competed'|'directed'|null,
+ *   failed?: boolean, shortfall?: boolean, records: object[]|null}[]} args.missions
  *   every candidate; `records` null when the mission's output is unavailable
  */
 export function buildClps({ asOf, horizonMonths, comparators, surface = [], missions }) {
@@ -74,15 +97,7 @@ export function buildClps({ asOf, horizonMonths, comparators, surface = [], miss
 	if (!clps.length) throw new PackagingError(`clps: no missions in program "${CLPS_PROGRAM}"`);
 	const start = clps.map((m) => m.launchDate).filter(Boolean).sort()[0];
 	if (!start) throw new PackagingError('clps: no CLPS mission has a launch date');
-	// A paper two landers claim counts once, at its earliest date.
-	const pooled = new Map();
-	for (const m of clps) {
-		for (const r of refereed(m.records ?? [])) {
-			const date = r.date.slice(0, 10);
-			if (!pooled.has(r.bibcode) || date < pooled.get(r.bibcode)) pooled.set(r.bibcode, date);
-		}
-	}
-	const series = runningTotal([...pooled.values()], start, asOf, horizonMonths, 'clps');
+	const series = runningTotal(pooledDates(clps), start, asOf, horizonMonths, 'clps');
 	// A mission's running total over months 0..months from its prime-mission start (launch when absent).
 	const aligned = (id, role, months) => {
 		const m = missions.find((c) => c.id === id);
@@ -99,8 +114,7 @@ export function buildClps({ asOf, horizonMonths, comparators, surface = [], miss
 		start,
 		horizonMonths,
 		missions: clps.map((m) => ({
-			id: m.id, name: m.name, fullName: m.fullName, launchDate: m.launchDate, primeStart: m.primeStart,
-			status: m.status, cost: m.cost, papers: m.records ? refereed(m.records).length : null
+			id: m.id, name: m.name, fullName: m.fullName, failed: m.failed === true, shortfall: m.shortfall === true, cost: m.cost, papers: m.records ? refereed(m.records).length : null
 		})),
 		series,
 		comparators: comparators.map((id) => {
@@ -108,22 +122,48 @@ export function buildClps({ asOf, horizonMonths, comparators, surface = [], miss
 			return { id, name: m.name, fullName: m.fullName, start: from, cost: m.cost, papers: refereed(m.records).length, series };
 		})
 	};
-	const comparison = clpsComparison(result);
+	// Each lander at its own age (whole months from its prime start, launch as fallback) against
+	// every comparator at that age. A lander whose prime start is after the as-of date has no age yet
+	// and is left out. Unlike a comparator's, a lander's paper dated before its prime start (in
+	// transit, say) counts from month 0, not an error.
+	const landers = clps.filter((m) => m.records).flatMap((m) => {
+		const from = m.primeStart ?? m.launchDate;
+		if (!from) throw new PackagingError(`clps: lander ${m.id} has no prime-mission start or launch date`);
+		if (from > asOf) return [];
+		const age = monthsElapsed(from, asOf);
+		const end = addMonths(from, age); // on or before asOf: that month has elapsed
+		const papers = refereed(m.records).filter((r) => r.date.slice(0, 10) < end).length;
+		const others = comparators.map((id) => ({ id, papers: aligned(id, 'comparator', age).series[age] }));
+		return [{ id: m.id, name: m.name, age, papers, comparators: others }];
+	});
+	const cost = totalCost(clps.map((m) => m.cost));
+	const comparison = {
+		...clpsComparison(result),
+		landers,
+		// every lander behind every comparator (each strictly ahead) at the lander's own age
+		behindEach: landers.length && comparators.length ? landers.every((l) => l.comparators.every((c) => c.papers > l.papers)) : null,
+		cost,
+		costEach: cost === null ? null : Number((cost / clps.length).toPrecision(12))
+	};
 	// The Analysis page's papers per dollar: every surface mission at CLPS's age, against the landers pooled.
 	const { month } = comparison;
-	const costs = clps.map((m) => m.cost);
-	const together = { papers: comparison.clps, cost: costs.every((c) => c > 0) ? Number(sum(costs).toPrecision(12)) : null };
+	const together = { papers: comparison.clps, cost: comparison.cost };
 	const rows = surface.map((id) => {
 		const { m, from, series } = aligned(id, 'surface mission', month);
 		return { id, name: m.name, fullName: m.fullName, start: from, cost: m.cost, selection: m.selection ?? null, failed: m.failed === true, papers: series[month] };
 	});
-	return { ...result, comparison, surface: { month, clps: together, missions: rows, behind: surfaceBehind(together, rows) } };
+	// Failures are left out of the test on both sides: the CLPS side pools only the landers that did not
+	// fail outright, papers and cost, on the program's clock (from the first CLPS launch, at `month`).
+	const landed = clps.filter((m) => !m.failed);
+	const flown = { papers: runningTotal(pooledDates(landed), start, asOf, month, 'clps flown')[month], cost: totalCost(landed.map((m) => m.cost)) };
+	return { ...result, comparison, surface: { month, clps: together, flown, missions: rows, behind: surfaceBehind(flown, rows) } };
 }
 
 /**
  * Whether the pooled landers trail every successful surface mission at the same age: in papers
  * (`total`), and in papers per dollar over the costed ones (`perDollar`; null when CLPS or none of
- * them has a cost). Failures are left out; null when no mission succeeded.
+ * them has a cost). Failures are left out; null when no mission succeeded. buildClps passes as `clps`
+ * the landers that did not fail outright (`surface.flown`), so failures are left out on both sides.
  */
 export function surfaceBehind(clps, missions) {
 	const flown = missions.filter((m) => !m.failed);
@@ -142,7 +182,7 @@ export function surfaceBehind(clps, missions) {
 export function clpsComparison({ series, comparators }) {
 	const month = series.findLastIndex((v) => v !== null);
 	const clps = series[month];
-	const others = comparators.map((c) => ({ id: c.id, name: c.name, papers: c.series[month] }));
+	const others = comparators.map((c) => ({ id: c.id, name: c.name, cost: c.cost ?? null, papers: c.series[month] }));
 	return { month, clps, comparators: others, behindAll: others.length ? others.every((c) => c.papers > clps) : null };
 }
 
@@ -151,13 +191,13 @@ export function clpsComparison({ series, comparators }) {
  * read through loadSourceCatalog, so bytes, SHA-256, schema and identity are checked.
  *
  * @param {object} args
- * @param {string} args.rawDir the resolved config.clps.rawDir
+ * @param {string} [args.rawDir] the resolved config.clps.rawDir
  * @param {object} args.config the validated smi.config.json
  * @param {string} args.asOf the main package's as-of date; the CLPS runs' must be within a day of it
+ * @param {object} [args.source] that dataset already loaded
  */
-export function loadClps({ rawDir, config, asOf }) {
-	const source = loadSourceCatalog(rawDir, config);
-	const clpsAsOf = assertSingleAsOfDate(source.runs.map((r) => ({ label: `clps ${r.division.statsLabel}`, asOfDate: r.stats.run?.as_of_date })));
+export function loadClps({ rawDir, config, asOf, source = loadSourceCatalog(rawDir, config) }) {
+	const clpsAsOf = sourceAsOf(source, 'clps ');
 	const lag = Math.abs(Date.parse(clpsAsOf) - Date.parse(asOf)) / 864e5;
 	if (!(lag <= MAX_AS_OF_LAG_DAYS)) {
 		throw new PackagingError(`clps: as_of_date ${clpsAsOf} is more than ${MAX_AS_OF_LAG_DAYS} day from the main package's ${asOf}`);
@@ -165,17 +205,17 @@ export function loadClps({ rawDir, config, asOf }) {
 	const { comparators, surface, horizonMonths } = config.clps;
 	const missions = [...source.missions.values()]
 		.filter(({ id, statsMission }) => statsMission.program === CLPS_PROGRAM || comparators.includes(id) || surface.includes(id))
-		.map(({ id, shortTitle, statsMission, corpus }) => ({
+		.map(({ id, shortTitle, indexEntry, statsMission, corpus }) => ({
 			id,
 			...displayNames(config, id, { name: shortTitle, fullName: corpus.full_name ?? statsMission.full_name ?? shortTitle }),
 			program: statsMission.program ?? null,
-			launchDate: corpus.mission?.mission_launch_date ?? null,
+			launchDate: launchDateOf({ corpus, indexEntry }),
 			primeStart: corpus.mission?.prime_mission_start_date ?? null,
-			status: statsMission.mission_status ?? null,
 			cost: num(statsMission.adjusted_lcc),
 			// read exactly as package-data.mjs reads a mission row's
 			selection: selectionOf(corpus.mission?.selection_strategy ?? statsMission.selection_strategy, id),
 			failed: isFailure(statsMission.mission_status),
+			shortfall: isShortfall(statsMission.mission_status),
 			records: COUNTED.has(statsMission.lifetime_output_basis) ? (source.readMission(id, 'records').records ?? []) : null
 		}));
 	// a month closes only on a date both exports cover: the earlier of the two

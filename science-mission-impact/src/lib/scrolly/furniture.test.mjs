@@ -19,7 +19,6 @@ import { render } from 'svelte/server';
 import { scaleLinear, scaleLog } from 'd3-scale';
 import { focusLayout, costLayout, primerLayout, perDollarLayout, tierOutcomeLayout } from './layouts.js';
 import { money, spell } from '../format.js';
-import { fitLabel } from '../copy/discussion.js';
 import { COST_AXIS_LABEL } from '../charts/costaxis.js';
 import { calendarYears } from '../copy/window.js';
 
@@ -289,30 +288,29 @@ test('LanesChart carries the focus division’s bars: on the focus chart’s axe
 	assert.ok(layout.top >= 28, 'a titled layout keeps a strip over the lanes');
 });
 
-test('DollarChart draws every fit alike, names each in words and labels its cost axis', async () => {
+test('DollarChart draws every packaged running average alike, names only the divisions and labels its cost axis', async () => {
 	const compared = new Set(story.comparison.divisions);
 	const divisions = site.divisions.filter((d) => compared.has(d.slug));
-	const fits = new Map(story.perDollar.map((d) => [d.division, d.fit]));
-	const layout = perDollarLayout(tiles, 900, 600, { divisions, fits });
+	const averages = new Map(story.perDollar.map((d) => [d.division, d.runningMean]));
+	const layout = perDollarLayout(tiles, 900, 600, { divisions, averages });
 	const { body } = render(await load('DollarChart.svelte'), { props: { ...stage, layout, referenceCost: ref } });
 	clean(body);
-	assert.equal((body.match(/class="fit[ "]/g) ?? []).length, story.perDollar.filter((d) => d.fit).length, 'one line a fit');
+	assert.equal((body.match(/class="fit[ "]/g) ?? []).length, layout.rows.filter((r) => r.average?.points.some(([, mean]) => mean != null)).length, 'one curve an average');
 	assert.ok(!body.includes('soft'), 'none set apart');
-	const labels = [...body.matchAll(/class="meta[^>]*>([^<]*)</g)].map((m) => m[1]);
-	assert.deepEqual(labels, layout.rows.filter((r) => r.fit).map((r) => fitLabel(r.fit)), 'each band names its fit in words');
+	assert.deepEqual([...body.matchAll(/class="name[^>]*>([^<]*)</g)].map((m) => m[1]), layout.rows.map((r) => r.label), 'each band names only its division');
 	assert.ok(!body.includes('×'), 'no multiples on the chart');
 	assert.ok(body.includes(`>${COST_AXIS_LABEL}<`), 'the cost axis labelled');
 	assert.ok(!body.includes('stage-title'), 'no title unless given one');
-	const titled = perDollarLayout(tiles, 900, 600, { divisions, fits, titled: true });
+	const titled = perDollarLayout(tiles, 900, 600, { divisions, averages, titled: true });
 	assert.ok(titled.top >= 28, 'a titled layout keeps a strip over the plot');
 	const headed = render(await load('DollarChart.svelte'), { props: { ...stage, layout: titled, title: 'Citations per $100M by division' } }).body;
 	assert.match(headed, /class="stage-title[^>]*text-anchor="end">Citations per \$100M by division</);
 });
 
-test('DollarChart shades only opted-in completed fits, with one clipped ribbon behind each line', async () => {
+test('DollarChart shades only opted-in completed averages, with one clipped ribbon behind each curve', async () => {
 	const divisions = site.divisions.filter((d) => story.comparison.divisions.includes(d.slug));
-	const fits = new Map(story.perDollar.map((d) => [d.division, { ...d.fit, band: [[1, 1, 100], [10000, 100, 10000]] }]));
-	const layout = perDollarLayout(tiles, 900, 600, { divisions, fits });
+	const averages = new Map(story.perDollar.map((d) => [d.division, { ...d.runningMean, points: [[1, 10, 1, 100], [10000, 1000, 100, 10000]] }]));
+	const layout = perDollarLayout(tiles, 900, 600, { divisions, averages });
 	const Component = await load('DollarChart.svelte');
 	const draw = (props = {}) => render(Component, { props: { ...stage, layout, ...props } }).body;
 	const paths = (body) => [...body.matchAll(/<path class="confidence[^>]*clip-path="url\(#([^)]*)\)"/g)];
@@ -322,13 +320,13 @@ test('DollarChart shades only opted-in completed fits, with one clipped ribbon b
 	const ids = [...body.matchAll(/<clipPath id="([^"]*)"/g)].map((m) => m[1]);
 	assert.equal(new Set(ids).size, divisions.length);
 	assert.deepEqual(paths(body).map((m) => m[1]), ids, 'each ribbon uses its own clip');
-	for (const path of paths(body)) assert.ok(body.indexOf('class="fit', path.index) > path.index, 'the best-fit line draws after the ribbon');
+	for (const path of paths(body)) assert.ok(body.indexOf('class="fit', path.index) > path.index, 'the curve draws after the ribbon');
 	assert.equal(paths(draw()).length, 0, 'off by default');
-	assert.equal(paths(draw({ confidence: true, turn: 0.5 })).length, 0, 'no ribbon around a rotating line');
-	const single = perDollarLayout(tiles, 900, 600, { divisions: divisions.slice(0, 1), fits });
+	assert.equal(paths(draw({ confidence: true, turn: 0.5 })).length, 0, 'no ribbon while the curve fades in');
+	const single = perDollarLayout(tiles, 900, 600, { divisions: divisions.slice(0, 1), averages });
 	assert.equal(paths(draw({ confidence: true, layout: single })).length, 1, 'single-division charts can opt in too');
 	assert.equal(paths(draw({ layout: single })).length, 0, 'single-division overview steps remain unshaded by default');
-	assert.equal((body.match(/class="fit[ "]/g) ?? []).length, divisions.length, 'best-fit lines are retained');
+	assert.equal((body.match(/class="fit[ "]/g) ?? []).length, divisions.length, 'the curves are retained');
 });
 
 test('DollarChart shares running-average paths and optional intervals across single and multiple divisions', async () => {

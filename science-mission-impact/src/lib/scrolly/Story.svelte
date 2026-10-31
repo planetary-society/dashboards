@@ -449,7 +449,7 @@
 		<section data-step data-scrub><div class="step">
 			{#if dollarAverage}
 				<p>This is the actual running average of impact per dollar. In {dollarField}, very low cost missions returned poor results, primarily due to mission failures.</p>
-				<p class="aside"><a href={analysisHref('trend-lines')}>How we calculate the averages</a></p>
+				<p class="aside"><a href={methodsHref('running-averages')}>How we calculate the averages</a></p>
 			{/if}
 		</div></section>
 		<!-- FITS: every compared division's missions, running average and uncertainty -->

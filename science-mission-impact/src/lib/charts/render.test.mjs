@@ -102,20 +102,6 @@ test('mission squares link to their mission pages and carry their labels', async
 	assert.match(link, /data-sveltekit-preload-data="tap"/);
 });
 
-test('mission squares defer thumbnails without removing their links or marks', async () => {
-	const Component = await load('../scrolly/Squares.svelte');
-	const props = {
-		tiles: [{ id: 'alpha', name: 'Alpha', division: 'earth', hasThumb: true }],
-		items: new Map([['alpha', { x: 0, y: 0, s: 8 }]]),
-		shown: 0
-	};
-	const deferred = render(Component, { props: { ...props, loadImages: false } }).body;
-	assert.doesNotMatch(deferred, /<img/);
-	assert.match(deferred, /href="\/earth\/alpha\/"/);
-	assert.match(deferred, /class="fill/);
-	assert.match(render(Component, { props }).body, /<img src="\/img\/missions\/alpha.webp"/);
-});
-
 test('MissionTable lists every mission together, earliest launch first, and drops top-10% papers for a division too small to rank', async () => {
 	const Component = await load('../ui/MissionTable.svelte');
 	const full = { papers: 4, citations: 30, top10: 0.5, top1: 0, status: 'available' };

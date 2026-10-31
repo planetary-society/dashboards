@@ -1,5 +1,5 @@
 // Social preview (1200×675): the story's per-dollar step (FITS), drawn from the same layout code and
-// packaged fits the site uses, so the card always matches the current numbers. No browser needed.
+// packaged running averages the site uses, so the card always matches the current numbers. No browser needed.
 //
 //   node scripts/make-preview.mjs            → ../docs/img/tps-science-mission-impact-preview.png
 
@@ -7,9 +7,8 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
-import { perDollarLayout, trendLine } from '../src/lib/charts/perdollar.js';
-import { minorDollarTicks } from '../src/lib/charts/costaxis.js';
-import { flat } from '../src/lib/copy/discussion.js';
+import { perDollarLayout, runningLine, trendBand } from '../src/lib/charts/perdollar.js';
+import { COST_AXIS_LABEL, costTicks, minorDollarTicks } from '../src/lib/charts/costaxis.js';
 import { compact, money, moneyTick } from '../src/lib/format.js';
 
 const APP = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -29,47 +28,50 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
 const innerW = W - PAD.left - PAD.right;
 const innerH = H - PAD.top - PAD.bottom;
-// The story's FITS step: the compared divisions, a band each, with their packaged fits.
+// The story's FITS step: the compared divisions in a 2×2 grid, each with its packaged running average.
 const compared = new Set(story.comparison.divisions);
 const divisions = site.divisions.filter((d) => compared.has(d.slug));
-const fits = new Map(story.perDollar.map((d) => [d.division, d.fit]));
-const layout = perDollarLayout(scrolly.tiles, innerW, innerH, { divisions, fits });
-const [x0, x1] = layout.x.range();
+const averages = new Map(story.perDollar.map((d) => [d.division, d.runningMean]));
+// perDollarLayout places only measured missions: no outcome-only tile (no citations)
+const layout = perDollarLayout(scrolly.tiles, innerW, innerH, { divisions, averages });
+// DollarChart's grid labels: every decade, or every other one when a panel is too narrow for each
+const costLabels = costTicks(layout.x).filter((t) => t.grid && t.label).map((t) => t.value);
 
-// Bands, cost axis, rate scale and fits as DollarChart draws them; the squares go under the
-// fits here (the stage draws them over), so the lines read at card size.
+// Panels, cost axes, rate scales, bootstrap bands and averages as DollarChart draws them; the
+// squares go under the averages here (the stage draws them over), so the curves read at card size.
 const parts = [];
-for (const row of layout.rows) {
-	if (row.band) parts.push(`<rect x="0" y="${row.y}" width="${innerW}" height="${row.h}" fill="#0D0D0D"/>`);
-	parts.push(`<line x1="0" x2="${innerW}" y1="${row.y + 0.5}" y2="${row.y + 0.5}" stroke="#414141"/>`);
-}
-parts.push(`<line x1="0" x2="${innerW}" y1="${layout.bottomY + 0.5}" y2="${layout.bottomY + 0.5}" stroke="#414141"/>`);
-for (const t of minorDollarTicks(...layout.x.domain())) {
-	parts.push(`<line x1="${layout.x(t)}" x2="${layout.x(t)}" y1="${layout.bottomY}" y2="${layout.bottomY + 4}" stroke="#8C8C8C"/>`);
-}
-for (const t of layout.ticks) {
-	parts.push(`<line x1="${layout.x(t)}" x2="${layout.x(t)}" y1="${layout.top}" y2="${layout.bottomY}" stroke="#414141" opacity="0.6"/>`);
-	parts.push(`<text x="${layout.x(t)}" y="${layout.bottomY + 18}" fill="#C3C3C3" font-size="13" text-anchor="middle">${esc(moneyTick(t))}</text>`);
-}
 layout.rows.forEach((row, i) => {
+	const [rx0, rx1] = row.x.range();
+	parts.push(`<rect x="${row.left}" y="${row.y}" width="${row.width}" height="${row.h}" fill="#0D0D0D"/>`);
+	parts.push(`<line x1="${row.left}" x2="${row.left + row.width}" y1="${row.shelfY - 0.5}" y2="${row.shelfY - 0.5}" stroke="#414141"/>`);
+	for (const t of minorDollarTicks(...row.x.domain())) {
+		parts.push(`<line x1="${row.x(t)}" x2="${row.x(t)}" y1="${row.shelfY}" y2="${row.shelfY + 4}" stroke="#8C8C8C"/>`);
+	}
+	for (const t of costLabels) {
+		parts.push(`<text x="${row.x(t)}" y="${row.shelfY + 18}" fill="#C3C3C3" font-size="12" text-anchor="middle">${esc(moneyTick(t))}</text>`);
+	}
+	for (const t of layout.ticks) {
+		parts.push(`<line x1="${row.x(t)}" x2="${row.x(t)}" y1="${row.curveTop}" y2="${row.shelfY}" stroke="#414141" opacity="0.6"/>`);
+	}
+	// the pointwise 95% bootstrap band, clipped to the observed costs above the zero shelf
+	const band = trendBand(layout, row, row.average?.points.map(([cost, , lo, hi]) => [cost, lo, hi]));
+	if (band) {
+		parts.push(`<defs><clipPath id="band-${i}"><rect x="${band.x}" y="${band.y}" width="${band.width}" height="${band.height}"/></clipPath></defs>`);
+		parts.push(`<path d="${band.path}" fill="${NEPTUNE}" fill-opacity="0.14" clip-path="url(#band-${i})"/>`);
+	}
 	for (const r of layout.rateTicks) {
-		parts.push(`<line x1="${x0}" x2="${x1}" y1="${row.rateY(r)}" y2="${row.rateY(r)}" stroke="#414141" opacity="0.7"/>`);
-		// the rate scale is labelled once, on the first band
-		if (i === 0) parts.push(`<text x="${x1 + 6}" y="${row.rateY(r)}" dy="0.32em" fill="#8C8C8C" font-size="11">${esc(compact(r))}</text>`);
+		parts.push(`<line x1="${rx0}" x2="${rx1}" y1="${row.rateY(r)}" y2="${row.rateY(r)}" stroke="#414141" opacity="0.7"/>`);
+		parts.push(`<text x="${rx0 - 6}" y="${row.rateY(r)}" dy="0.32em" fill="#8C8C8C" font-size="11" text-anchor="end">${esc(compact(r))}</text>`);
 	}
-	parts.push(`<line x1="${x0}" x2="${x1}" y1="${row.shelfY + 0.5}" y2="${row.shelfY + 0.5}" stroke="#8C8C8C"/>`);
-	parts.push(`<text x="0" y="${row.y + 28}" fill="#fff" font-size="16" font-weight="500">${esc(row.label)}</text>`);
-	if (row.fit) {
-		const meta = flat(row.fit) ? ['Nearly flat'] : [`${row.fit.tenfold.toFixed(1)}× per dollar`, 'at 10× the cost'];
-		meta.forEach((m, k) => parts.push(`<text x="0" y="${row.y + 48 + k * 17}" fill="#C3C3C3" font-size="13">${esc(m)}</text>`));
-	}
+	parts.push(`<text x="${row.left + 4}" y="${row.y + 22}" fill="#fff" font-size="16" font-weight="500">${esc(row.label)}</text>`);
 });
+parts.push(`<text x="${innerW / 2}" y="${layout.bottomY + 34}" fill="#C3C3C3" font-size="13" text-anchor="middle">${esc(COST_AXIS_LABEL)}</text>`);
 for (const { x, y, s } of layout.pos.values()) {
 	parts.push(`<rect x="${x + 0.5}" y="${y + 0.5}" width="${s - 1}" height="${s - 1}" fill="#262626" stroke="#8C8C8C"/>`);
 }
 for (const row of layout.rows) {
-	const line = row.fit && trendLine(layout, row, row.fit.slope);
-	if (line) parts.push(`<line x1="${line.x1}" y1="${line.y1}" x2="${line.x2}" y2="${line.y2}" stroke="${NEPTUNE}" stroke-width="3" stroke-linecap="round"/>`);
+	const curve = runningLine(layout, row);
+	if (curve) parts.push(`<path d="${curve.path}" fill="none" stroke="${NEPTUNE}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`);
 }
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="${FONT}">

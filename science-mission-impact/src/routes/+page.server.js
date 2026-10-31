@@ -6,7 +6,7 @@ export function load() {
 	// neither each lander at its own age (the Analysis page's notes do),
 	// nor the per-division small-side shares and failure counts (FAIL_NOTE reads analysis.failures.tiers).
 	const { threshold, bands, pooledBand, scope, divisions, failure: { byDivision, ...failure }, ...storyRest } = story;
-	const homeStory = { ...storyRest, perDollar: storyRest.perDollar.map(({ fit, ...row }) => row), failure };
+	const homeStory = { ...storyRest, failure };
 	const { surface, comparison, ...rest } = clps;
 	const { landers, ...homeComparison } = comparison;
 	const homeClps = { ...rest, comparison: homeComparison };

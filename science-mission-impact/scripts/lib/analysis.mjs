@@ -2,6 +2,8 @@
  * The Analysis page's figures (site.analysis, `AnalysisFacts` in src/lib/data/types.d.ts): each
  * mission's citation-weighted output N50 per $M by cost tier and group, failure rates, time to a
  * first top-10% paper, each tier's share of output against its share of cost, and selection.
+ * Every figure reads the upstream-selected fixed set, as the story does; the failure rates count
+ * each costed mission whatever its output.
  *
  * Pure: the packaged division documents in, the facts out. Every statistic is computed from
  * unrounded values; only what is published is rounded.
@@ -65,10 +67,31 @@ export function rateSpread(values) {
 	return { missions: sorted.length, zeros: sorted.filter((v) => v === 0).length, median: share(mid), q1: share(q1), q3: share(q3), whiskers: [share(low), share(high)] };
 }
 
-/** Median and minimum of the non-null values, in years (2 dp). */
+/**
+ * The distribution-free 95% interval for a median: the narrowest pair of order statistics
+ * (x_(k), x_(n+1−k)) whose binomial(n, ½) coverage, 1 − 2·P(B < k), is at least 95%; null when even
+ * (x_(1), x_(n)) falls short (fewer than six values).
+ */
+export function medianInterval(values) {
+	const x = values.slice().sort((a, b) => a - b);
+	const n = x.length;
+	let pmf = 0.5 ** n; // P(B = 0)
+	let below = 0; // P(B < k)
+	let k = 0;
+	for (let j = 1; 2 * j <= n; j++) {
+		below += pmf;
+		if (1 - 2 * below < 0.95) break;
+		k = j;
+		pmf *= (n - j + 1) / j; // P(B = j)
+	}
+	return k ? [x[k - 1], x[n - k]] : null;
+}
+
+/** Median, minimum and the median's 95% interval (`medianInterval`) of the non-null values, in years (2 dp). */
 function years(values) {
 	const known = values.filter((v) => v != null);
-	return { median: round(median(known), 2), min: known.length ? round(Math.min(...known), 2) : null };
+	const ci = medianInterval(known);
+	return { median: round(median(known), 2), min: known.length ? round(Math.min(...known), 2) : null, ci: ci && ci.map((v) => round(v, 2)) };
 }
 
 /** The shortest time from formulation to a first top-10% paper (ties: cost, then id); null when none is dated. */
@@ -126,12 +149,14 @@ export function buildAnalysis(divisionDocs, { thresholdCost, costTiers, costGrou
 		}
 	}
 	missions.sort((a, b) => a.cost - b.cost || byText(a.id, b.id));
+	// the failure rates' missions: every costed one, measured or not, each in its tier
+	const outcomeRows = divisionDocs.flatMap((d) => d.missions.filter(hasCost).map((m) => ({ division: d.slug, cost: m.cost, failed: m.failed, shortfall: m.shortfall, tier: rangeOf(tiers, m.cost) })));
 	const ofTier = (list, t) => list.filter((m) => m.tier === t);
 	const ofDivision = (list, slug) => list.filter((m) => m.division === slug);
 	const rankable = divisionDocs.filter((d) => d.rankable);
 
-	const under = shortfallSide(missions.filter((m) => m.cost <= thresholdCost));
-	const over = shortfallSide(missions.filter((m) => m.cost > thresholdCost));
+	const under = shortfallSide(outcomeRows.filter((m) => m.cost <= thresholdCost));
+	const over = shortfallSide(outcomeRows.filter((m) => m.cost > thresholdCost));
 	const flown = missions.filter((m) => !m.failed); // a failure has no time to a first paper
 
 	return {
@@ -157,7 +182,7 @@ export function buildAnalysis(divisionDocs, { thresholdCost, costTiers, costGrou
 		excluded,
 		failures: {
 			tiers: tiers.map((_, t) => {
-				const members = ofTier(missions, t);
+				const members = ofTier(outcomeRows, t);
 				const counts = outcomes(members);
 				return {
 					missions: members.length,

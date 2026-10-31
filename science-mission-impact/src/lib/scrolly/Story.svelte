@@ -443,7 +443,7 @@
 			{#if averaged.length}
 				{#if noneSmallBetter}
 					<p><strong class="neptuneBlue">In no science division did very low cost missions demonstrate better impact per dollar than larger ones.</strong></p>
-					<p>Conversely, NASA's most expensive science missions did not demonstrate an advantage, either.</p>
+					<p>Conversely, NASA's most expensive science missions did not consistently demonstrate an advantage, either.</p>
 				{/if}
 				<p class="aside">Shading shows a 95% interval for the average at each cost.</p>
 			{/if}
@@ -457,7 +457,7 @@
 		<!-- FAIL_NOTE: the same chart, NOTE's division washed; its split either side of the edge only under clearlyHigher -->
 		<section data-step><div class="step">
 			{#if note.split}
-				<p>{note.name} has the highest failure rate for very low cost missions.</p><p>Below {moneyWords(NOTE.edge)}, {spell(note.below.short)} out of {spell(note.below.missions)} {note.name} missions between {site.launchYears[0]} and {site.launchYears[1]} failed.</p><p>The program's most expensive failure, Mars Observer, succumbed to a hardware issue traced to the use of a commercial spacecraft bus designed for Earth orbit.</p>
+				<p>{note.name} has one of the highest failure rates for very low cost missions.</p><p>Below {moneyWords(NOTE.edge)}, {spell(note.below.short)} out of {spell(note.below.missions)} {note.name} missions between {site.launchYears[0]} and {site.launchYears[1]} failed.</p><p>The program's most expensive failure, Mars Observer, succumbed to a hardware issue traced to the use of a commercial spacecraft bus designed for Earth orbit.</p>
 			{:else}
 				<p>{upperFirst(spell(note.all.short))} of {spell(note.all.missions)} <strong class="neptuneBlue">{note.name}</strong> missions failed or fell short of their goals.</p>
 			{/if}
@@ -496,7 +496,7 @@
 				</li>
 				<li>
 					<span class="icon key mark-lost" aria-hidden="true"></span>
-					<span>{#if failsMore}<strong>High failure rates.</strong> {whole(failure.under.rate)} of missions below {moneyWords(story.referenceCost)} failed. Only {whole(failure.over.rate)} of larger ones did.{:else if failure.higher === 'under'}<strong>Somewhat more failures:</strong> {whole(failure.under.rate)} of small missions against {whole(failure.over.rate)} of larger ones.{:else if failure.higher === 'over'}<strong>No more failures:</strong> {whole(failure.under.rate)} of small missions against {whole(failure.over.rate)} of larger ones.{:else}<strong>Similar failure rates</strong> for small and larger missions.{/if} Failure rates are not the same across scientific divisions.</span>
+					<span>{#if failsMore}<strong>High failure rates.</strong> {whole(failure.under.rate)} of missions below {moneyWords(story.referenceCost)} failed. Only {whole(failure.over.rate)} of larger ones did.{:else if failure.higher === 'under'}<strong>Somewhat more failures:</strong> {whole(failure.under.rate)} of small missions against {whole(failure.over.rate)} of larger ones.{:else if failure.higher === 'over'}<strong>No more failures:</strong> {whole(failure.under.rate)} of small missions against {whole(failure.over.rate)} of larger ones.{:else}<strong>Similar failure rates</strong> for small and larger missions.{/if} Failure rates may not be the same across scientific divisions.</span>
 				</li>
 				<li>
 					<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13.5" r="7.5" /><path d="M12 13.5V9.5M10 3h4M12 3v3M18 7l1.5-1.5" /></svg>

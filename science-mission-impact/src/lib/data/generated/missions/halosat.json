@@ -25,16 +25,16 @@
     }
   },
   "indices": {
-    "h": 9,
-    "m": 1.125,
+    "h": 8,
+    "m": 1,
     "i100": 0,
-    "g": 15,
-    "tori": 0.974,
-    "riq": 164
+    "g": 14,
+    "tori": 1.373,
+    "riq": 195
   },
   "facts": {
-    "papers": 15,
-    "citations": 286,
+    "papers": 14,
+    "citations": 216,
     "publicationYears": [
       2019,
       2024
@@ -53,7 +53,7 @@
     ],
     "papers": [
       1,
-      6,
+      5,
       3,
       1,
       3,
@@ -63,72 +63,72 @@
     ],
     "citations": [
       0,
-      14,
-      27,
-      34,
-      53,
-      68,
-      38,
-      52
+      12,
+      16,
+      23,
+      42,
+      55,
+      30,
+      38
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 286,
-      "observed": 286,
+      "expected": 216,
+      "observed": 216,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 15,
+    "papers": 14,
     "us": {
-      "mapped": 14,
+      "mapped": 13,
       "top": [
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
-          "papers": 14
+          "papers": 13
         },
         {
           "name": "University of Iowa",
-          "papers": 14
+          "papers": 13
         },
         {
           "name": "Johns Hopkins University, Maryland",
-          "papers": 10
+          "papers": 9
         }
       ]
     },
     "world": {
-      "mapped": 14,
+      "mapped": 13,
       "top": [
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
-          "papers": 14
+          "papers": 13
         },
         {
           "name": "University of Iowa",
-          "papers": 14
+          "papers": 13
         },
         {
           "name": "Johns Hopkins University, Maryland",
-          "papers": 10
+          "papers": 9
         }
       ]
     }
   },
   "mostCited": {
-    "bibcode": "2020NatAs...4.1072K",
-    "title": "A disk-dominated and clumpy circumgalactic medium of the Milky Way seen in X-ray emission",
-    "firstAuthor": "Kaaret, P.",
+    "bibcode": "2022ApJ...936...72B",
+    "title": "Widespread Detection of Two Components in the Hot Circumgalactic Medium of the Milky Way",
+    "firstAuthor": "Bluem, Jesse",
     "authors": [
-      "Kaaret, P.",
-      "Koutroumpa, D.",
+      "Bluem, Jesse",
+      "Kaaret, Philip",
       "Kuntz, K. D.",
-      "Jahoda, K."
+      "Jahoda, Keith M."
     ],
-    "authorCount": 10,
-    "year": 2020,
-    "citations": 70
+    "authorCount": 9,
+    "year": 2022,
+    "citations": 45
   },
   "ranks": {
     "full": {
@@ -141,7 +141,7 @@
         0.1,
         0.9,
         0,
-        2,
+        1,
         0
       ],
       "top1": 0
@@ -149,14 +149,14 @@
     "window": {
       "bins": [
         0,
-        2.238,
-        1.762,
-        2.817,
-        1.183,
+        2.237,
+        1.763,
+        2.816,
+        1.184,
         1,
         0,
         0,
-        1,
+        0,
         0
       ],
       "top1": 0
@@ -164,23 +164,23 @@
     "lifetime": {
       "bins": [
         0,
-        3.848,
-        3.152,
+        3.849,
+        3.151,
         3,
         1,
         1,
         2,
         0,
-        1,
+        0,
         0
       ],
       "top1": 0
     }
   },
   "full": {
-    "papers": 11,
+    "papers": 10,
     "outputBasis": "measured",
-    "citations": 145,
+    "citations": 110,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": 0,
@@ -203,21 +203,21 @@
     },
     "indices": {
       "h": 7,
-      "g": 11,
+      "g": 10,
       "m": 1.788
     },
     "spread": {
-      "mean": 13.182,
-      "median": 10,
+      "mean": 11,
+      "median": 9.5,
       "uncited": 0,
-      "i10": 6,
+      "i10": 5,
       "i100": 0
     }
   },
   "window": {
-    "papers": 10,
+    "papers": 9,
     "outputBasis": "measured",
-    "citations": 111,
+    "citations": 76,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": 0,
@@ -239,22 +239,22 @@
       "citationBuckets": 7
     },
     "indices": {
-      "h": 7,
-      "g": 10,
-      "m": 2.401
+      "h": 6,
+      "g": 8,
+      "m": 2.058
     },
     "spread": {
-      "mean": 11.1,
-      "median": 9.5,
+      "mean": 8.444,
+      "median": 9,
       "uncited": 0,
-      "i10": 5,
+      "i10": 4,
       "i100": 0
     }
   },
   "lifetime": {
-    "papers": 15,
+    "papers": 14,
     "outputBasis": "measured",
-    "citations": 286,
+    "citations": 216,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": null,
@@ -267,10 +267,10 @@
       "date": null
     },
     "spread": {
-      "mean": 19.067,
-      "median": 12,
+      "mean": 15.429,
+      "median": 10.5,
       "uncited": 0,
-      "i10": 8,
+      "i10": 7,
       "i100": 0
     }
   },
@@ -278,49 +278,31 @@
     "arms": "(=abs:HaloSat AND collection:astronomy)",
     "filters": "property:refereed AND doctype:article AND pubdate:[2018-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%3Dabs%3AHaloSat+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T06:20:39.730585+00:00",
+    "fetchedAt": "2026-10-27T17:36:16.018582+00:00",
     "reconciliation": {
       "adsReturned": 15,
       "curatedOut": 1,
-      "curatedIn": 1,
+      "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 15
+      "final": 14
     }
   },
   "curation": {
-    "includes": [
-      {
-        "bibcode": "2020NatAs...4.1072K",
-        "doi": null,
-        "title": "A disk-dominated and clumpy circumgalactic medium of the Milky Way seen in X-ray emission",
-        "reason": "HaloSat team's survey of the Milky Way's hot gas halo from HaloSat data.",
-        "authority": "agent",
-        "date": "2026-09-08"
-      }
-    ],
+    "includes": [],
     "excludes": [
       {
         "bibcode": "2024JATIS..10c6001P",
         "doi": "10.1117/1.JATIS.10.3.036001",
         "title": "Soft X-ray quantum efficiency of a commercial CMOS imaging sensor",
-        "reason": "Lab test of a CMOS sensor for future missions; cites HaloSat only for comparison.",
+        "reason": "Lab test of a CMOS sensor for future missions; names HaloSat only for comparison.",
         "authority": "agent",
         "date": "2026-09-08"
       }
     ]
   },
   "topCited": [
-    {
-      "bibcode": "2020NatAs...4.1072K",
-      "title": "A disk-dominated and clumpy circumgalactic medium of the Milky Way seen in X-ray emission",
-      "firstAuthor": "Kaaret, P.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2020,
-      "citations": 70
-    },
     {
       "bibcode": "2022ApJ...936...72B",
       "title": "Widespread Detection of Two Components in the Hot Circumgalactic Medium of the Milky Way",
@@ -449,6 +431,6 @@
     }
   ],
   "papersFile": {
-    "rows": 15
+    "rows": 14
   }
 }

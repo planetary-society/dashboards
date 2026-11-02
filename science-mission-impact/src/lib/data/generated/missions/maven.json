@@ -29,12 +29,12 @@
     "m": 5.667,
     "i100": 40,
     "g": 112,
-    "tori": 28.435,
-    "riq": 444
+    "tori": 29.094,
+    "riq": 449
   },
   "facts": {
-    "papers": 958,
-    "citations": 23094,
+    "papers": 957,
+    "citations": 23071,
     "publicationYears": [
       2015,
       2026
@@ -67,7 +67,7 @@
       99,
       103,
       100,
-      99
+      98
     ],
     "citations": [
       341,
@@ -80,19 +80,19 @@
       2444,
       3119,
       3100,
-      3181,
-      3007
+      3180,
+      2985
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 23094,
-      "observed": 23094,
+      "expected": 23071,
+      "observed": 23071,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 958,
+    "papers": 957,
     "us": {
       "mapped": 625,
       "top": [
@@ -111,7 +111,7 @@
       ]
     },
     "world": {
-      "mapped": 915,
+      "mapped": 914,
       "top": [
         {
           "name": "University of Colorado, Boulder",
@@ -140,51 +140,51 @@
     ],
     "authorCount": 71,
     "year": 2015,
-    "citations": 783
+    "citations": 781
   },
   "ranks": {
     "full": {
       "bins": [
-        25.443,
-        43.664,
-        56.502,
-        68.091,
-        83.661,
-        84.743,
-        74.992,
-        104.032,
-        59.839,
-        55.033
+        25.526,
+        43.691,
+        56.536,
+        67.967,
+        83.877,
+        84.937,
+        74.82,
+        103.961,
+        59.711,
+        54.975
       ],
       "top1": 3
     },
     "window": {
       "bins": [
-        9.926,
-        15.069,
-        18.911,
-        21.82,
-        33.337,
-        25.953,
-        38.526,
-        33.753,
-        25.705,
+        9.981,
+        15.083,
+        18.93,
+        21.904,
+        33.323,
+        25.862,
+        38.672,
+        33.57,
+        25.674,
         22
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        150.674,
-        128.155,
-        122.648,
-        114.57,
-        104.309,
-        81.275,
-        77.549,
-        73.338,
-        59.889,
-        45.594
+        153.209,
+        125.102,
+        123.682,
+        114.489,
+        103.189,
+        81.605,
+        77.641,
+        73.569,
+        59.017,
+        45.497
       ],
       "top1": 3
     }
@@ -192,11 +192,11 @@
   "full": {
     "papers": 656,
     "outputBasis": "measured",
-    "citations": 9202,
-    "top10": 52.733,
-    "top10ShareOfDivision": 0.04849,
+    "citations": 9198,
+    "top10": 52.675,
+    "top10ShareOfDivision": 0.04847,
     "top1": 3,
-    "top1ShareOfDivision": 0.02759,
+    "top1ShareOfDivision": 0.02761,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.211,
@@ -219,7 +219,7 @@
       "m": 3.963
     },
     "spread": {
-      "mean": 14.027,
+      "mean": 14.021,
       "median": 10,
       "uncited": 12,
       "i10": 351,
@@ -231,9 +231,9 @@
     "outputBasis": "measured",
     "citations": 4615,
     "top10": 21,
-    "top10ShareOfDivision": 0.0438,
+    "top10ShareOfDivision": 0.04384,
     "top1": 1,
-    "top1ShareOfDivision": 0.02086,
+    "top1ShareOfDivision": 0.02088,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.211,
@@ -264,11 +264,11 @@
     }
   },
   "lifetime": {
-    "papers": 958,
+    "papers": 957,
     "outputBasis": "measured",
-    "citations": 23094,
-    "top10": 43.294,
-    "top10ShareOfDivision": 0.02757,
+    "citations": 23071,
+    "top10": 43.197,
+    "top10ShareOfDivision": 0.02753,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -279,9 +279,9 @@
       "date": "2015-02-00"
     },
     "spread": {
-      "mean": 24.106,
+      "mean": 24.108,
       "median": 10,
-      "uncited": 108,
+      "uncited": 109,
       "i10": 496,
       "i100": 40
     }
@@ -290,15 +290,15 @@
     "arms": "((=abs:\"Mars Atmosphere and Volatile Evolution\" OR =abs:\"Mars Atmospheric and Volatile Evolution\" OR (abs:MAVEN AND (abs:solar OR abs:heliosphere)) OR ((abs:MAVEN OR abs:SWEA OR abs:SWIA OR abs:STATIC OR abs:IUVS OR abs:NGIMS OR =abs:\"Solar Wind Electron Analyzer\" OR =abs:\"Solar Wind Ion Analyzer\" OR =abs:\"Suprathermal and Thermal Ion Composition\" OR =abs:\"Imaging Ultraviolet Spectrometer\" OR =abs:\"Imaging Ultraviolet Spectrograph\" OR =abs:\"Langmuir Probe and Waves\" OR =abs:\"Neutral Gas and Ion Mass Spectrometer\") AND (abs:Mars OR abs:martian))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Atmosphere+and+Volatile+Evolution%22+OR+%3Dabs%3A%22Mars+Atmospheric+and+Volatile+Evolution%22+OR+%28abs%3AMAVEN+AND+%28abs%3Asolar+OR+abs%3Aheliosphere%29%29+OR+%28%28abs%3AMAVEN+OR+abs%3ASWEA+OR+abs%3ASWIA+OR+abs%3ASTATIC+OR+abs%3AIUVS+OR+abs%3ANGIMS+OR+%3Dabs%3A%22Solar+Wind+Electron+Analyzer%22+OR+%3Dabs%3A%22Solar+Wind+Ion+Analyzer%22+OR+%3Dabs%3A%22Suprathermal+and+Thermal+Ion+Composition%22+OR+%3Dabs%3A%22Imaging+Ultraviolet+Spectrometer%22+OR+%3Dabs%3A%22Imaging+Ultraviolet+Spectrograph%22+OR+%3Dabs%3A%22Langmuir+Probe+and+Waves%22+OR+%3Dabs%3A%22Neutral+Gas+and+Ion+Mass+Spectrometer%22%29+AND+%28abs%3AMars+OR+abs%3Amartian%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-30T20:12:25.575076+00:00",
+    "fetchedAt": "2026-10-27T17:13:10.716823+00:00",
     "reconciliation": {
-      "adsReturned": 965,
+      "adsReturned": 964,
       "curatedOut": 7,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 958
+      "final": 957
     }
   },
   "curation": {
@@ -370,7 +370,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 783
+      "citations": 781
     },
     {
       "bibcode": "2015SSRv..195..257C",
@@ -379,7 +379,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 545
+      "citations": 544
     },
     {
       "bibcode": "2015SSRv..195..125H",
@@ -388,7 +388,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 440
+      "citations": 439
     },
     {
       "bibcode": "2016SSRv..200..495M",
@@ -406,16 +406,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 317
-    },
-    {
-      "bibcode": "2018Icar..315..146J",
-      "title": "Loss of the Martian atmosphere to space: Present-day loss rates determined from MAVEN observations and integrated loss through time",
-      "firstAuthor": "Jakosky, B. M.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2018,
-      "citations": 297
+      "citations": 316
     },
     {
       "bibcode": "2015SSRv..195...49M",
@@ -424,6 +415,15 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
+      "citations": 296
+    },
+    {
+      "bibcode": "2018Icar..315..146J",
+      "title": "Loss of the Martian atmosphere to space: Present-day loss rates determined from MAVEN observations and integrated loss through time",
+      "firstAuthor": "Jakosky, B. M.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2018,
       "citations": 296
     },
     {
@@ -460,7 +460,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 232
+      "citations": 231
     },
     {
       "bibcode": "2015GeoRL..42.8942D",
@@ -469,7 +469,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 214
+      "citations": 213
     },
     {
       "bibcode": "2015Sci...350.0210J",
@@ -526,15 +526,6 @@
       "citations": 157
     },
     {
-      "bibcode": "2015GeoRL..42.9142B",
-      "title": "The spatial distribution of planetary ion fluxes near Mars observed by MAVEN",
-      "firstAuthor": "Brain, D. A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2015,
-      "citations": 145
-    },
-    {
       "bibcode": "2017JGRA..122.1831X",
       "title": "Martian low-altitude magnetic topology deduced from MAVEN/SWEA observations",
       "firstAuthor": "Xu, Shaosui",
@@ -542,9 +533,18 @@
       "authorCount": null,
       "year": 2017,
       "citations": 145
+    },
+    {
+      "bibcode": "2015GeoRL..42.9142B",
+      "title": "The spatial distribution of planetary ion fluxes near Mars observed by MAVEN",
+      "firstAuthor": "Brain, D. A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2015,
+      "citations": 144
     }
   ],
   "papersFile": {
-    "rows": 958
+    "rows": 957
   }
 }

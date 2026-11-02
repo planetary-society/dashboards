@@ -29,12 +29,12 @@
     "m": 8.714,
     "i100": 1114,
     "g": 371,
-    "tori": 1511.304,
-    "riq": 1340
+    "tori": 1652.544,
+    "riq": 1401
   },
   "facts": {
-    "papers": 9221,
-    "citations": 463109,
+    "papers": 9220,
+    "citations": 463108,
     "publicationYears": [
       1999,
       2026
@@ -97,7 +97,7 @@
       283,
       280,
       266,
-      320,
+      319,
       328,
       287
     ],
@@ -128,21 +128,21 @@
       21380,
       21822,
       24743,
-      26855,
+      26854,
       31336
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 463109,
-      "observed": 463109,
+      "expected": 463108,
+      "observed": 463108,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 9221,
+    "papers": 9220,
     "us": {
-      "mapped": 6657,
+      "mapped": 6656,
       "top": [
         {
           "name": "Harvard Smithsonian Center for Astrophysics",
@@ -159,7 +159,7 @@
       ]
     },
     "world": {
-      "mapped": 8985,
+      "mapped": 8984,
       "top": [
         {
           "name": "Harvard Smithsonian Center for Astrophysics",
@@ -192,46 +192,46 @@
   "ranks": {
     "full": {
       "bins": [
-        739.325,
-        872.046,
-        958.452,
-        954.214,
-        888.163,
-        853.386,
-        792.559,
-        796.071,
-        744.972,
-        686.813
+        739.307,
+        872.029,
+        958.421,
+        954.212,
+        888.147,
+        853.366,
+        792.537,
+        796.073,
+        745.113,
+        686.794
       ],
-      "top1": 50.89
+      "top1": 50.888
     },
     "window": {
       "bins": [
-        203.135,
-        218.505,
-        253.786,
-        224.943,
-        251.054,
-        242.696,
-        250.724,
-        246.706,
-        266.59,
-        249.861
+        203.123,
+        218.495,
+        253.772,
+        224.933,
+        251.047,
+        242.688,
+        250.72,
+        246.693,
+        266.679,
+        249.85
       ],
       "top1": 14
     },
     "lifetime": {
       "bins": [
-        714.288,
-        829.664,
-        939.586,
-        986.425,
-        964.021,
-        1032.525,
-        990.953,
-        934.4,
-        943.556,
-        885.582
+        713.389,
+        829.644,
+        939.566,
+        986.393,
+        963.99,
+        1032.49,
+        990.923,
+        934.374,
+        943.683,
+        885.547
       ],
       "top1": 69
     }
@@ -240,9 +240,9 @@
     "papers": 8286,
     "outputBasis": "measured",
     "citations": 159198,
-    "top10": 563.783,
+    "top10": 563.767,
     "top10ShareOfDivision": 0.11333,
-    "top1": 36.723,
+    "top1": 36.722,
     "top1ShareOfDivision": 0.07382,
     "first": {
       "state": "reached",
@@ -277,7 +277,7 @@
     "papers": 2408,
     "outputBasis": "measured",
     "citations": 57349,
-    "top10": 225.418,
+    "top10": 225.408,
     "top10ShareOfDivision": 0.11653,
     "top1": 11.5,
     "top1ShareOfDivision": 0.05945,
@@ -311,11 +311,11 @@
     }
   },
   "lifetime": {
-    "papers": 9221,
+    "papers": 9220,
     "outputBasis": "measured",
-    "citations": 463109,
-    "top10": 736.65,
-    "top10ShareOfDivision": 0.11604,
+    "citations": 463108,
+    "top10": 736.615,
+    "top10ShareOfDivision": 0.11603,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -326,7 +326,7 @@
       "date": "2000-01-00"
     },
     "spread": {
-      "mean": 50.223,
+      "mean": 50.229,
       "median": 26,
       "uncited": 357,
       "i10": 7009,
@@ -337,15 +337,15 @@
     "arms": "((=abs:\"Chandra X-ray\" OR =abs:\"Chandra observations\" OR =abs:\"Chandra observation\" OR =abs:\"Chandra data\" OR (abs:Chandra AND (=abs:\"X-ray\" OR =abs:\"X-rays\" OR =abs:xray OR =abs:xrays) AND NOT (abs:Chandrayaan OR abs:Chandrayan OR =abs:\"Himalayan Chandra Telescope\")) OR (abs:Chandra AND collection:astronomy AND NOT (=abs:\"Himalayan Chandra Telescope\" OR =abs:\"Harish-Chandra\" OR =abs:\"Harish Chandra\" OR =abs:\"Chandra Wickramasinghe\" OR abs:Chandrayaan OR abs:Chandrayan OR abs:glacier OR abs:glaciers OR =abs:\"Chandra basin\" OR =abs:\"Chandra valley\")) OR ((abs:ACIS OR abs:HETG OR abs:HETGS OR abs:LETG OR abs:LETGS OR abs:CXO) AND (=abs:\"X-ray\" OR =abs:\"X-rays\" OR =abs:xray OR =abs:xrays) AND collection:astronomy) OR (abs:HRC AND (abs:ACIS OR abs:HETG OR abs:HETGS OR abs:LETG OR abs:LETGS)) OR =abs:\"Advanced CCD Imaging Spectrometer\" OR =abs:\"High Energy Transmission Grating\" OR =abs:\"High Energy Transmission Gratings\" OR =abs:\"Low Energy Transmission Grating\" OR =abs:\"Low Energy Transmission Gratings\" OR facility:CXO OR facility:Chandra))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1999-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Chandra+X-ray%22+OR+%3Dabs%3A%22Chandra+observations%22+OR+%3Dabs%3A%22Chandra+observation%22+OR+%3Dabs%3A%22Chandra+data%22+OR+%28abs%3AChandra+AND+%28%3Dabs%3A%22X-ray%22+OR+%3Dabs%3A%22X-rays%22+OR+%3Dabs%3Axray+OR+%3Dabs%3Axrays%29+AND+NOT+%28abs%3AChandrayaan+OR+abs%3AChandrayan+OR+%3Dabs%3A%22Himalayan+Chandra+Telescope%22%29%29+OR+%28abs%3AChandra+AND+collection%3Aastronomy+AND+NOT+%28%3Dabs%3A%22Himalayan+Chandra+Telescope%22+OR+%3Dabs%3A%22Harish-Chandra%22+OR+%3Dabs%3A%22Harish+Chandra%22+OR+%3Dabs%3A%22Chandra+Wickramasinghe%22+OR+abs%3AChandrayaan+OR+abs%3AChandrayan+OR+abs%3Aglacier+OR+abs%3Aglaciers+OR+%3Dabs%3A%22Chandra+basin%22+OR+%3Dabs%3A%22Chandra+valley%22%29%29+OR+%28%28abs%3AACIS+OR+abs%3AHETG+OR+abs%3AHETGS+OR+abs%3ALETG+OR+abs%3ALETGS+OR+abs%3ACXO%29+AND+%28%3Dabs%3A%22X-ray%22+OR+%3Dabs%3A%22X-rays%22+OR+%3Dabs%3Axray+OR+%3Dabs%3Axrays%29+AND+collection%3Aastronomy%29+OR+%28abs%3AHRC+AND+%28abs%3AACIS+OR+abs%3AHETG+OR+abs%3AHETGS+OR+abs%3ALETG+OR+abs%3ALETGS%29%29+OR+%3Dabs%3A%22Advanced+CCD+Imaging+Spectrometer%22+OR+%3Dabs%3A%22High+Energy+Transmission+Grating%22+OR+%3Dabs%3A%22High+Energy+Transmission+Gratings%22+OR+%3Dabs%3A%22Low+Energy+Transmission+Grating%22+OR+%3Dabs%3A%22Low+Energy+Transmission+Gratings%22+OR+facility%3ACXO+OR+facility%3AChandra%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T06:13:32.873913+00:00",
+    "fetchedAt": "2026-10-27T17:31:42.983372+00:00",
     "reconciliation": {
       "adsReturned": 9224,
-      "curatedOut": 4,
+      "curatedOut": 5,
       "curatedIn": 2,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 1,
-      "final": 9221
+      "final": 9220
     }
   },
   "curation": {
@@ -399,6 +399,14 @@
         "reason": "Mission concept for ESA's NewAthena X-ray observatory; mentions Chandra only as context.",
         "authority": "agent",
         "date": "2026-10-03"
+      },
+      {
+        "bibcode": "2024JATIS..10c6001P",
+        "doi": "10.1117/1.JATIS.10.3.036001",
+        "title": "Soft X-ray quantum efficiency of a commercial CMOS imaging sensor",
+        "reason": "Lab test of a CMOS sensor for future missions; names Chandra only for comparison.",
+        "authority": "agent",
+        "date": "2026-11-01"
       }
     ]
   },
@@ -585,6 +593,6 @@
     }
   ],
   "papersFile": {
-    "rows": 9221
+    "rows": 9220
   }
 }

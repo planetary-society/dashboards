@@ -27,14 +27,14 @@
   "indices": {
     "h": 67,
     "m": 2.31,
-    "i100": 38,
+    "i100": 39,
     "g": 109,
-    "tori": 118.693,
-    "riq": 375
+    "tori": 120.431,
+    "riq": 378
   },
   "facts": {
-    "papers": 286,
-    "citations": 14416,
+    "papers": 287,
+    "citations": 14533,
     "publicationYears": [
       1998,
       2026
@@ -94,7 +94,7 @@
       10,
       8,
       5,
-      10,
+      11,
       3,
       12,
       6,
@@ -107,7 +107,7 @@
       10,
       62,
       140,
-      178,
+      179,
       214,
       214,
       157,
@@ -120,40 +120,40 @@
       659,
       800,
       579,
-      653,
-      788,
+      657,
+      784,
       570,
       487,
       535,
-      558,
-      612,
-      703,
-      719,
-      1095,
-      923,
-      927,
-      816
+      560,
+      625,
+      725,
+      735,
+      1110,
+      938,
+      943,
+      833
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 14416,
-      "observed": 14416,
+      "expected": 14533,
+      "observed": 14533,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 286,
+    "papers": 287,
     "us": {
-      "mapped": 145,
+      "mapped": 146,
       "top": [
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
-          "papers": 36
+          "papers": 37
         },
         {
           "name": "Johns Hopkins University, Applied Physics Laboratory",
-          "papers": 27
+          "papers": 28
         },
         {
           "name": "University of California, Berkeley",
@@ -162,15 +162,15 @@
       ]
     },
     "world": {
-      "mapped": 221,
+      "mapped": 222,
       "top": [
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
-          "papers": 36
+          "papers": 37
         },
         {
           "name": "Johns Hopkins University, Applied Physics Laboratory",
-          "papers": 27
+          "papers": 28
         },
         {
           "name": "University of California, Berkeley",
@@ -196,13 +196,13 @@
   "ranks": {
     "full": {
       "bins": [
-        15.123,
-        2.781,
-        3.266,
-        1.848,
-        1.118,
-        3.018,
-        1.846,
+        15.136,
+        2.776,
+        3.262,
+        1.845,
+        1.125,
+        3.056,
+        1.8,
         6,
         4,
         7
@@ -211,31 +211,31 @@
     },
     "window": {
       "bins": [
-        14.356,
-        2.643,
-        2.213,
-        1.788,
-        1.459,
-        2.345,
-        3.12,
-        3.224,
-        3.852,
+        14.389,
+        2.63,
+        2.203,
+        1.778,
+        1.494,
+        2.323,
+        3.143,
+        3.204,
+        3.837,
         5
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        21.877,
-        20.103,
-        24.976,
-        21.532,
-        25.613,
-        27.477,
-        31.011,
-        35.169,
-        31.647,
-        46.594
+        21.981,
+        20.132,
+        24.997,
+        21.531,
+        25.551,
+        26.653,
+        32.114,
+        34.87,
+        31.674,
+        47.497
       ],
       "top1": 3
     }
@@ -243,7 +243,7 @@
   "full": {
     "papers": 46,
     "outputBasis": "measured",
-    "citations": 631,
+    "citations": 632,
     "top10": 7,
     "top10ShareOfDivision": 0.00644,
     "top1": 0,
@@ -270,7 +270,7 @@
       "m": 4.577
     },
     "spread": {
-      "mean": 13.717,
+      "mean": 13.739,
       "median": 6.5,
       "uncited": 13,
       "i10": 21,
@@ -280,9 +280,9 @@
   "window": {
     "papers": 40,
     "outputBasis": "measured",
-    "citations": 578,
+    "citations": 579,
     "top10": 5,
-    "top10ShareOfDivision": 0.01043,
+    "top10ShareOfDivision": 0.01044,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -307,7 +307,7 @@
       "m": 4.998
     },
     "spread": {
-      "mean": 14.45,
+      "mean": 14.475,
       "median": 6.5,
       "uncited": 12,
       "i10": 18,
@@ -315,11 +315,11 @@
     }
   },
   "lifetime": {
-    "papers": 286,
+    "papers": 287,
     "outputBasis": "measured",
-    "citations": 14416,
-    "top10": 44.594,
-    "top10ShareOfDivision": 0.02839,
+    "citations": 14533,
+    "top10": 44.83,
+    "top10ShareOfDivision": 0.02857,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -330,26 +330,26 @@
       "date": "1998-09-00"
     },
     "spread": {
-      "mean": 50.406,
-      "median": 25.5,
+      "mean": 50.638,
+      "median": 26,
       "uncited": 17,
       "i10": 212,
-      "i100": 38
+      "i100": 39
     }
   },
   "query": {
     "arms": "((=abs:\"Lunar Prospector\" OR (abs:LPNS AND abs:(lunar OR Moon OR neutron))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1998-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Prospector%22+OR+%28abs%3ALPNS+AND+abs%3A%28lunar+OR+Moon+OR+neutron%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-30T20:09:31.699940+00:00",
+    "fetchedAt": "2026-10-27T17:10:39.894186+00:00",
     "reconciliation": {
       "adsReturned": 305,
-      "curatedOut": 19,
+      "curatedOut": 18,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 286
+      "final": 287
     }
   },
   "curation": {
@@ -386,22 +386,6 @@
         "reason": "Describes an alpha-ray detector for Japan's SELENE orbiter; cites Lunar Prospector as background.",
         "authority": "agent",
         "date": "2026-09-08"
-      },
-      {
-        "bibcode": "2012ExA....33..587S",
-        "doi": null,
-        "title": null,
-        "reason": "Owner-directed exclusion: Lunar Net is a proposal and design overview for a different mission, not a Lunar Prospector science paper.",
-        "authority": "human",
-        "date": "2026-10-02"
-      },
-      {
-        "bibcode": "2019NatGe..12..333B",
-        "doi": "10.1038/s41561-019-0345-3",
-        "title": "Lunar soil hydration constrained by exospheric water liberated by meteoroid impacts",
-        "reason": "Lunar hydration study based on LADEE data; mentions Lunar Prospector only among earlier water observations.",
-        "authority": "human",
-        "date": "2026-10-02"
       },
       {
         "bibcode": "2019E&SS....6.2605L",
@@ -534,7 +518,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 536
+      "citations": 535
     },
     {
       "bibcode": "2006JGRE..11112007P",
@@ -597,7 +581,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 231
+      "citations": 232
     },
     {
       "bibcode": "1998Sci...281.1480L",
@@ -660,7 +644,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 166
+      "citations": 165
     },
     {
       "bibcode": "2004GeCoA..68.3791G",
@@ -700,6 +684,6 @@
     }
   ],
   "papersFile": {
-    "rows": 286
+    "rows": 287
   }
 }

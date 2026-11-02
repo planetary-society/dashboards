@@ -29,12 +29,12 @@
     "m": 5.636,
     "i100": 27,
     "g": 100,
-    "tori": 38.665,
-    "riq": 518
+    "tori": 45.455,
+    "riq": 561
   },
   "facts": {
     "papers": 829,
-    "citations": 18876,
+    "citations": 18872,
     "publicationYears": [
       2016,
       2026
@@ -69,22 +69,22 @@
     ],
     "citations": [
       4,
-      566,
+      548,
       599,
       778,
       1650,
       1647,
-      1966,
-      2308,
-      2820,
+      1967,
+      2309,
+      2821,
       3410,
-      3128
+      3139
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 18876,
-      "observed": 18876,
+      "expected": 18872,
+      "observed": 18872,
       "missing": 0
     }
   },
@@ -137,63 +137,63 @@
     ],
     "authorCount": 4,
     "year": 2021,
-    "citations": 510
+    "citations": 512
   },
   "ranks": {
     "full": {
       "bins": [
-        16.613,
+        16.678,
         38.07,
-        34.553,
-        38.338,
-        61.969,
-        64.971,
-        76.168,
-        67.667,
-        66.618,
-        62.033
+        34.581,
+        38.262,
+        62.144,
+        65.132,
+        75.993,
+        67.661,
+        66.504,
+        61.975
       ],
       "top1": 6
     },
     "window": {
       "bins": [
-        16.994,
-        41.992,
-        47.405,
-        56.185,
-        64.24,
-        71.251,
-        57.476,
-        57.753,
-        43.54,
-        38.165
+        17.148,
+        42.027,
+        47.371,
+        56.401,
+        64.237,
+        71.15,
+        57.422,
+        57.733,
+        43.512,
+        38
       ],
       "top1": 3
     },
     "lifetime": {
       "bins": [
-        105.653,
-        114.216,
-        115.563,
-        90.754,
-        98.17,
-        96.275,
-        76.959,
-        59.41,
+        105.642,
+        114.443,
+        116.165,
+        90.771,
+        97.65,
+        96.174,
+        77.114,
+        59.042,
         36,
         36
       ],
-      "top1": 3.53
+      "top1": 3.297
     }
   },
   "full": {
     "papers": 527,
     "outputBasis": "measured",
     "citations": 9111,
-    "top10": 61.533,
-    "top10ShareOfDivision": 0.05659,
+    "top10": 61.475,
+    "top10ShareOfDivision": 0.05657,
     "top1": 6,
-    "top1ShareOfDivision": 0.05518,
+    "top1ShareOfDivision": 0.05521,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.433,
@@ -227,10 +227,10 @@
     "papers": 495,
     "outputBasis": "measured",
     "citations": 8692,
-    "top10": 38.165,
-    "top10ShareOfDivision": 0.07961,
+    "top10": 38,
+    "top10ShareOfDivision": 0.07933,
     "top1": 3,
-    "top1ShareOfDivision": 0.06258,
+    "top1ShareOfDivision": 0.06263,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.676,
@@ -263,9 +263,9 @@
   "lifetime": {
     "papers": 829,
     "outputBasis": "measured",
-    "citations": 18876,
+    "citations": 18872,
     "top10": 34,
-    "top10ShareOfDivision": 0.02165,
+    "top10ShareOfDivision": 0.02167,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -276,10 +276,10 @@
       "date": "2016-03-00"
     },
     "spread": {
-      "mean": 22.77,
+      "mean": 22.765,
       "median": 11,
       "uncited": 77,
-      "i10": 446,
+      "i10": 445,
       "i100": 27
     }
   },
@@ -287,7 +287,7 @@
     "arms": "((=abs:\"Juno mission\" OR =abs:\"Juno spacecraft\" OR =abs:\"Jupiter Near-polar Orbiter\" OR ((=abs:Juno OR abs:JIRAM OR =abs:JunoCam) AND (abs:Jupiter OR abs:Jovian OR abs:Io OR abs:Europa OR abs:Ganymede OR abs:Callisto OR abs:Thebe OR abs:Amalthea OR abs:Adrastea OR abs:Metis))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2016-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Juno+mission%22+OR+%3Dabs%3A%22Juno+spacecraft%22+OR+%3Dabs%3A%22Jupiter+Near-polar+Orbiter%22+OR+%28%28%3Dabs%3AJuno+OR+abs%3AJIRAM+OR+%3Dabs%3AJunoCam%29+AND+%28abs%3AJupiter+OR+abs%3AJovian+OR+abs%3AIo+OR+abs%3AEuropa+OR+abs%3AGanymede+OR+abs%3ACallisto+OR+abs%3AThebe+OR+abs%3AAmalthea+OR+abs%3AAdrastea+OR+abs%3AMetis%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2016-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-30T20:11:57.190587+00:00",
+    "fetchedAt": "2026-10-27T17:12:44.760554+00:00",
     "reconciliation": {
       "adsReturned": 848,
       "curatedOut": 21,
@@ -504,7 +504,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 510
+      "citations": 512
     },
     {
       "bibcode": "2017GeoRL..44.4649W",
@@ -531,7 +531,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 328
+      "citations": 330
     },
     {
       "bibcode": "2018GeoRL..45.2590C",
@@ -543,15 +543,6 @@
       "citations": 311
     },
     {
-      "bibcode": "2017SSRv..213..547M",
-      "title": "The Jovian Auroral Distributions Experiment (JADE) on the Juno Mission to Jupiter",
-      "firstAuthor": "McComas, D. J.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2017,
-      "citations": 281
-    },
-    {
       "bibcode": "2017Sci...356..821B",
       "title": "Jupiter's interior and deep atmosphere: The initial pole-to-pole passes with the Juno spacecraft",
       "firstAuthor": "Bolton, S. J.",
@@ -559,6 +550,15 @@
       "authorCount": null,
       "year": 2017,
       "citations": 278
+    },
+    {
+      "bibcode": "2017SSRv..213..547M",
+      "title": "The Jovian Auroral Distributions Experiment (JADE) on the Juno Mission to Jupiter",
+      "firstAuthor": "McComas, D. J.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2017,
+      "citations": 274
     },
     {
       "bibcode": "2017MNRAS.469.3994B",
@@ -576,7 +576,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 228
+      "citations": 229
     },
     {
       "bibcode": "2017SSRv..213..289M",
@@ -585,16 +585,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 205
-    },
-    {
-      "bibcode": "2017SSRv..213..219B",
-      "title": "Magnetospheric Science Objectives of the Juno Mission",
-      "firstAuthor": "Bagenal, F.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2017,
-      "citations": 190
+      "citations": 204
     },
     {
       "bibcode": "2017SSRv..213..347K",
@@ -603,7 +594,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 187
+      "citations": 188
     },
     {
       "bibcode": "2019ApJ...872..100D",
@@ -624,13 +615,22 @@
       "citations": 185
     },
     {
+      "bibcode": "2017SSRv..213..219B",
+      "title": "Magnetospheric Science Objectives of the Juno Mission",
+      "firstAuthor": "Bagenal, F.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2017,
+      "citations": 184
+    },
+    {
       "bibcode": "2018Natur.555..220I",
       "title": "Measurement of Jupiter’s asymmetric gravity field",
       "firstAuthor": "Iess, L.",
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 182
+      "citations": 183
     },
     {
       "bibcode": "2018Natur.555..227G",
@@ -648,7 +648,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 155
+      "citations": 156
     },
     {
       "bibcode": "2017SSRv..213..393A",
@@ -657,7 +657,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 145
+      "citations": 144
     },
     {
       "bibcode": "2020NatAs...4..609L",
@@ -675,7 +675,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 139
+      "citations": 138
     }
   ],
   "papersFile": {

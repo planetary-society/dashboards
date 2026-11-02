@@ -273,7 +273,7 @@ export function tierOutcomeLayout(tiles, tiers, W, H) {
 	const pad = compact ? 4 : 16;
 	const axis = compact ? 16 : 22; // a gutter left of the columns for the Success/Failure labels
 	const padTop = compact ? 28 : 38; // the title's strip, then air over the tallest stack
-	const footH = compact ? 54 : 60; // under each column: its cost range (two lines on a phone), then its failure rate, large
+	const footH = compact ? 36 : 30; // under each column: its cost range (two lines on a phone)
 	const mid = compact ? 6 : 10; // between the up and down stacks, where the zero line runs
 	const gap = compact ? 1 : 2;
 	const colW = (W - pad * 2 - axis) / tiers.length;

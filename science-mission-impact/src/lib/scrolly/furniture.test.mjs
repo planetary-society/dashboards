@@ -367,14 +367,14 @@ test('DollarChart shares running-average paths and optional intervals across sin
 	}
 });
 
-test('OutcomeChart: titled, Success over the zero line and Failure under it, each tier’s rate with no count', async () => {
-	const { tiers, failures } = site.analysis;
+test('OutcomeChart: titled, Success over the zero line and Failure under it, no rates or counts', async () => {
+	const { tiers } = site.analysis;
 	const layout = tierOutcomeLayout(tiles, tiers, 900, 600);
-	const { body } = render(await load('OutcomeChart.svelte'), { props: { ...stage, layout, failures: failures.tiers } });
+	const { body } = render(await load('OutcomeChart.svelte'), { props: { ...stage, layout } });
 	clean(body);
 	assert.match(body, /class="stage-title[^>]*>Mission successes and failures by cost</);
 	assert.match(body, />Success<[\s\S]*>Failure</);
-	assert.equal((body.match(/class="rate/g) ?? []).length, tiers.length);
+	assert.ok(!/\d%/.test(body), 'no per-tier rates');
 	assert.ok(!/\d of \d/.test(body), 'no "X of Y" counts');
 	assert.ok(layout.top >= 28, 'room for the title over the stacks');
 });

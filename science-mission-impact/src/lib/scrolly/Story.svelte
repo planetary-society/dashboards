@@ -47,6 +47,8 @@
 	// with its split at one tier edge ($M) stated only when its intervals say the rates differ (clearlyHigher)
 	const FAILURE = 18, FAIL_NOTE = 19;
 	const NOTE = { division: 'planetary', edge: 350 };
+	// FAILURE's comparison side: the tiers from this edge ($M) up, pooled from the packaged per-tier counts
+	const FAIL_SPLIT = { over: 350 };
 	// 3 of 4, time to science; 4 of 4, CLPS; then the four answers and the close over the opening's drift
 	const TIME_FORM = 20, TIME_SCI = 21, CLPS = 22, CLPS_COMPARE = 23, FINDINGS = 24, CLOSE = 25;
 	// Reduced motion: every scrubbed graphic renders complete.
@@ -94,6 +96,7 @@
 
 	// failure rates in whole percents: 8 of 95 is "8%", not 8.4%
 	const whole = (v) => (v == null ? '—' : `${Math.round(v * 100)}%`);
+	const tenths = (v) => (v == null ? '—' : `${(v * 100).toFixed(1)}%`);
 	// The failure answer's gate: small missions fall short more often than larger ones beyond chance (the
 	// packaged two-sided Fisher exact test, over every costed mission). Pooled only: per-division
 	// rates are too small to compare, so only NOTE's own split is ever stated.
@@ -126,6 +129,11 @@
 	});
 	// FAILURE points at the small side's columns: the tiers at or under the threshold
 	const smallColumns = $derived(site.tiers.filter((t) => t.hi != null && t.hi <= story.referenceCost).length);
+	const overRate = $derived.by(() => {
+		const above = site.failureTiers.filter((_, i) => site.tiers[i].lo != null && site.tiers[i].lo >= FAIL_SPLIT.over);
+		const n = above.reduce((s, t) => s + t.missions, 0);
+		return n ? above.reduce((s, t) => s + t.failed + t.partial, 0) / n : null;
+	});
 
 	// CLPS: each lander against each comparator at the same age (packaged), and which comparator cost
 	// about as much as one lander or all of them ("about": within a quarter either way)
@@ -288,7 +296,7 @@
 					<Primer layout={primerL} {primer} years={calendarYears(site.fullPolicy)} hot={hotBar} build={index === PAPERS ? span(0.15, 0.5) : index > PAPERS ? 1 : 0} highlight={index === TOP} visible={primed} {compact} width={W} height={H} />
 				{/if}
 				{#if reached >= FITS}
-					<OutcomeChart layout={outcomeL} failures={site.failureTiers} visible={index === FAILURE || index === FAIL_NOTE} {compact} width={W} height={H} />
+					<OutcomeChart layout={outcomeL} visible={index === FAILURE || index === FAIL_NOTE} {compact} width={W} height={H} />
 				{/if}
 				{#if reached >= FAIL_NOTE}
 					<div class="time-panel" class:visible={timed} aria-hidden="true">
@@ -451,7 +459,7 @@
 		<section data-step><div class="step">
 			<p class="part neptuneBlue"><strong>Mission failure rates
 			</strong></p>
-			<p>Very low-cost missions (the first {spell(smallColumns)} columns) have a full or partial failure rate of {whole(failure.under.rate)}.</p><p>For missions costing above {moneyWords(story.referenceCost)}, that rate is {whole(failure.over.rate)}.</p>
+			<p>Very low-cost missions (the first {spell(smallColumns)} columns) have a full or partial failure rate of {tenths(failure.under.rate)}.</p><p>For missions costing above {moneyWords(FAIL_SPLIT.over)}, that rate is {tenths(overRate)}.</p>
 		</div></section>
 		<!-- FAIL_NOTE: the same chart, NOTE's division washed; its split either side of the edge only under clearlyHigher -->
 		<section data-step><div class="step">

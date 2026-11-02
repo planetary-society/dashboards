@@ -5,6 +5,7 @@ import path from 'node:path';
 
 import { buildTitleIndex, resolveRunMissions } from './join.mjs';
 import { assertSchemaVersion, assertSingleAsOfDate, PackagingError } from './invariants.mjs';
+import { num } from './util.mjs';
 
 import { fullMissionPolicy, missionWindow, windowPolicy } from './windows.mjs';
 
@@ -71,6 +72,12 @@ export const sourceAsOf = (source, prefix = '') => assertSingleAsOfDate(source.r
 
 /** A loaded mission's launch date: its envelope's, else the index's; null when neither has one. */
 export const launchDateOf = ({ corpus, indexEntry }) => corpus?.mission?.mission_launch_date ?? indexEntry?.mission_launch_date ?? null;
+
+/** A loaded mission's catalog status (upstream mission_status), as the mission rows and the CLPS file both read it. */
+export const statusOf = ({ statsMission, corpus }) => statsMission.mission_status ?? corpus?.mission?.mission_status ?? 'unknown';
+
+/** A loaded mission's life-cycle cost as the catalog reports it ($M, before adjustment to the base year). */
+export const lccOf = ({ corpus }) => num(corpus?.mission?.lcc);
 
 /** Shared membership/identity loader for packaging and thumbnails; performs no writes. */
 export function loadSourceCatalog(rawDir, config) {

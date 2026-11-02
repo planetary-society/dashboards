@@ -549,12 +549,17 @@ export interface LifetimeSeries {
 
 export interface MissionRow {
 	id: string;
+	shortTitle: string; // upstream short_title: the CSVs’ `mission` column
 	name: string;
 	cost: number | null; // adjusted LCC, $M 2025
+	lcc: number | null; // the catalog’s LCC as reported, $M, before adjustment
 	size: MissionSize;
 	launchYear: number | null;
+	/** what every duration runs from, as the measures read them: scienceStart is the prime-mission start, else launch (unlike Mission.meta.dates) */
+	dates: { formulation: string | null; launch: string | null; scienceStart: string | null };
 	failed: boolean;
 	shortfall: boolean; // Failure, Partial Failure or Partial Success
+	status: string; // upstream mission_status, e.g. "Completed", "Failure"
 	type: string | null; // mission_type, e.g. "Orbiter"
 	selection: Selection;
 	management: Management; // packaged for later analysis; no page reads it yet
@@ -680,6 +685,7 @@ export interface PapersFile {
 	columns: {
 		b: string[]; // bibcode
 		y: (number | null)[]; // year
+		d: (string | null)[]; // ADS pubdate, month resolution ("2003-01-00"); what a first top-10% paper is dated by
 		t: (string | null)[]; // title
 		a: (string | null)[]; // first author
 		c: number[]; // lifetime citations
@@ -690,6 +696,18 @@ export interface PapersFile {
 		f1: (number | null)[]; // top-1% weight, full-mission window, pooled
 		i: (0 | 1)[]; // 1 = added by curation rather than the query
 	};
+}
+
+/**
+ * generated/clps.json — the download page's CLPS file: each lander (launch order, as site.clps.missions)
+ * with exactly the refereed papers site.clps counts for it, by pubdate then bibcode.
+ */
+export interface ClpsLander {
+	shortTitle: string; name: string; launchDate: string | null;
+	lcc: number | null; cost: number | null; // as reported and adjusted, $M
+	status: string; // upstream mission_status
+	/** bibcode, ADS pubdate, cleaned title; null when output is unavailable (not zero) */
+	papers: { b: string[]; d: (string | null)[]; t: (string | null)[] } | null;
 }
 
 /**

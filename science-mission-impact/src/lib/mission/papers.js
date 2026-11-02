@@ -1,5 +1,6 @@
 /**
- * Pure helpers behind PaperBrowser, plus the CSV of a division's mission table.
+ * Pure helpers behind PaperBrowser, plus the CSV of a division's mission table and the
+ * download page's joins of several CSVs into one.
  *
  * The papers file is columnar and can hold ~19k rows, so nothing here ever
  * materialises an array of row objects: filtering and sorting work on an index
@@ -188,6 +189,7 @@ export function rowsFor(columns, index, start, end, scope = 'full') {
 export const CSV_HEADER = [
 	'bibcode',
 	'year',
+	'pubdate',
 	'title',
 	'first_author',
 	'citations',
@@ -196,7 +198,6 @@ export const CSV_HEADER = [
 	'top10_weight_full',
 	'top1_weight_full',
 	'shared_by',
-	'added_by_hand',
 	'scix_url'
 ];
 
@@ -223,6 +224,7 @@ export function toCsv(columns, adsUrl = (b) => b, index = null) {
 		lines[k + 1] = [
 			csvField(columns.b[i]),
 			csvField(columns.y[i]),
+			csvField(columns.d[i]),
 			csvField(columns.t[i]),
 			csvField(columns.a[i]),
 			csvField(columns.c[i]),
@@ -231,7 +233,6 @@ export function toCsv(columns, adsUrl = (b) => b, index = null) {
 			csvField(columns.fe[i]),
 			csvField(columns.f1[i]),
 			csvField(columns.s[i]),
-			csvField(columns.i[i]),
 			csvField(adsUrl(columns.b[i]))
 		].join(',');
 	}
@@ -245,24 +246,82 @@ export const measured = (s) => s != null && (s.status ?? 'available') === 'avail
 
 /**
  * A division's missions as CSV, CRLF-delimited: both scopes and both tiers, so a page that shows
- * one scope at a time hides nothing. Unmeasured output stays blank, never zero.
+ * one scope at a time hides nothing. Unmeasured output stays blank, never zero. Each mission is named
+ * by its upstream short title (`mission`, the key every CSV shares), then by its name on the site. Costs
+ * are the catalog's life-cycle cost as reported (`lcc`) and in base-year dollars (`adjusted_lcc`), both
+ * $M, and `status` is upstream's mission_status, as every CSV writes them.
  *
  * @param {object[]} missions the division doc's missions
- * @param {{ costBaseYear: number, url?: (id: string) => string }} opts
+ * @param {{ url?: (id: string) => string }} [opts]
  */
-export function missionsCsv(missions, { costBaseYear, url = (id) => id }) {
-	const header = ['mission', 'id', 'launch_year', 'type', `cost_millions_${costBaseYear}_usd`, 'size', 'outcome'];
+export function missionsCsv(missions, { url = (id) => id } = {}) {
+	const header = ['mission', 'name', 'launch_year', 'type', 'lcc', 'adjusted_lcc', 'status',
+		'selection', 'formulation_start', 'launch_date', 'science_start', 'active_window_start', 'active_window_end'];
 	for (const [, name] of MISSION_SCOPES) header.push(`${name}_papers`, `${name}_citations`, `${name}_top10`, `${name}_top1`);
 	header.push('h_index', 'g_index', 'url');
 	const lines = [header.join(',')];
 	for (const m of missions) {
-		const row = [m.name, m.id, m.launchYear, m.type, m.cost, { under: 'small', over: 'larger' }[m.size] ?? '', m.failed ? 'lost' : m.shortfall ? 'partial' : ''];
+		const row = [m.shortTitle, m.name, m.launchYear, m.type, m.lcc, m.cost, m.status,
+			m.selection, m.dates?.formulation, m.dates?.launch, m.dates?.scienceStart, m.full?.bounds?.start, m.full?.bounds?.end];
 		for (const [key] of MISSION_SCOPES) {
 			const s = m[key];
 			row.push(...(measured(s) ? [s.papers, s.citations, s.top10, s.top1] : [null, null, null, null]));
 		}
 		row.push(m.indices?.h, m.indices?.g, url(m.id));
 		lines.push(row.map(csvField).join(','));
+	}
+	return lines.join('\r\n');
+}
+
+/**
+ * The CLPS landers (generated/clps.json) as CSV, CRLF-delimited: the landers in launch order, one row
+ * per lander and paper, and a single row with the paper fields blank for a lander with none.
+ *
+ * @param {import('../data/types.d.ts').ClpsLander[]} landers
+ * @param {(bibcode: string) => string} adsUrl
+ */
+export function clpsCsv(landers, adsUrl) {
+	const lines = [['mission', 'name', 'launch_date', 'lcc', 'adjusted_lcc', 'status', 'papers', 'bibcode', 'pubdate', 'title', 'scix_url'].join(',')];
+	for (const m of landers) {
+		// papers blank when the output is unavailable, so it never reads as a measured zero
+		const lead = [m.shortTitle, m.name, m.launchDate, m.lcc, m.cost, m.status, m.papers ? m.papers.b.length : null];
+		const { b = [], d, t } = m.papers ?? {};
+		if (!b.length) lines.push([...lead, null, null, null, null].map(csvField).join(','));
+		b.forEach((bibcode, i) => lines.push([...lead, bibcode, d[i], t[i], adsUrl(bibcode)].map(csvField).join(',')));
+	}
+	return lines.join('\r\n');
+}
+
+/** A mission's paper file holds one row per lifetime paper, so a mission without any has no file. */
+export const hasPapers = (m) => m.lifetime?.papers > 0;
+
+/** Every division's mission table (`tables`, in `divisions` order) under a leading `division` column. */
+export const allMissionsCsv = (divisions, tables) => joinCsv(['division'], divisions.map((d, k) => ({ lead: [d.slug], csv: tables[k] })));
+
+/**
+ * Every paper of `divisions`' missions that have a paper file, in division order then each division's
+ * own mission order, under `division,mission` (the mission’s upstream short title). `csvOf(id)` is the mission's `toCsv` output.
+ */
+export const publicationsCsv = (divisions, csvOf) =>
+	joinCsv(['division', 'mission'], divisions.flatMap((d) => d.missions.filter(hasPapers).map((m) => ({ lead: [d.slug, m.shortTitle], csv: csvOf(m.id) }))));
+
+/**
+ * Several CSVs that share one header as a single CSV, each row led by its part's own fields
+ * (named by `leadHeader`). CRLF-delimited, like the rest.
+ *
+ * Rows are split on CRLF, which holds for every CSV here: no field has a line break (`cleanTitle`
+ * collapses whitespace in titles and authors). A field that could hold one would need a quote-aware split.
+ *
+ * @param {string[]} leadHeader
+ * @param {{ lead: unknown[], csv: string }[]} parts at least one; each `csv` starts with the shared header line
+ */
+export function joinCsv(leadHeader, parts) {
+	const lines = [];
+	for (const { lead, csv } of parts) {
+		const rows = csv.split('\r\n');
+		if (!lines.length) lines.push([...leadHeader, rows[0]].join(','));
+		const prefix = lead.map(csvField).join(',');
+		for (let k = 1; k < rows.length; k += 1) lines.push(`${prefix},${rows[k]}`);
 	}
 	return lines.join('\r\n');
 }

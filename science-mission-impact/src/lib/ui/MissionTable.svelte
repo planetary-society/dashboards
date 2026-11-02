@@ -6,7 +6,7 @@
 	import Num from './Num.svelte';
 	import Hint from './Hint.svelte';
 	import { FOOTNOTES, noteText } from '$lib/copy/footnotes.js';
-	import { methodsHref, missionHref, thumbSrc } from '$lib/paths.js';
+	import { canonical, methodsHref, missionHref, thumbSrc } from '$lib/paths.js';
 	import { missionsCsv } from '$lib/mission/papers.js';
 	import { downloadText } from '$lib/download.js';
 	import { int, weight, money } from '$lib/format.js';
@@ -18,7 +18,7 @@
 
 	const value = {
 		name: (m) => m.name.toLowerCase(),
-		launch: (m) => m.launchDate ?? (m.launchYear == null ? null : String(m.launchYear)),
+		launch: (m) => m.dates?.launch ?? null,
 		type: (m) => m.type?.toLowerCase() ?? null,
 		cost: (m) => m.cost,
 		papers: (m) => m[scope].papers,
@@ -48,8 +48,8 @@
 	}
 	const ariaSort = (key) => (sort.key !== key ? 'none' : sort.dir === 1 ? 'ascending' : 'descending');
 
-	const downloadCsv = () =>
-		downloadText(missionsCsv(missions, { costBaseYear: site.costBaseYear, url: (id) => new URL(missionHref(slug, id), location.origin).href }), `${slug}-missions.csv`);
+	// links on the live site, as the download page's copy of this file has them
+	const downloadCsv = () => downloadText(missionsCsv(missions, { url: (id) => canonical(missionHref(slug, id)) }), `${slug}-missions.csv`);
 </script>
 
 {#snippet th(key, label, cls = '', notes = null)}
@@ -86,7 +86,7 @@
 					{#if m.hasThumb}<img src={thumbSrc(m.id)} alt="" width="32" height="32" loading="lazy" />{:else}<span class="blank"></span>{/if}
 				</td>
 				<td class="name">
-					<a href={missionHref(slug, m.id)}>{m.name}</a>{#if m.outcome}{' '}<span class="tag">{m.outcome[0] + m.outcome.slice(1).toLowerCase()}</span>{/if}
+					<a href={missionHref(slug, m.id)}>{m.name}</a>{#if m.shortfall}{' '}<span class="tag">{m.status[0] + m.status.slice(1).toLowerCase()}</span>{/if}
 					<span class="sub meta">{money(m.cost)}, {m.launchYear ?? '—'}</span>
 				</td>
 				<td class="num wide"><Num value={m.launchYear ?? '—'} /></td>

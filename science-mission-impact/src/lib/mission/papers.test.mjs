@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, it } from 'node:test';
 
-import { CSV_HEADER, buildSearchIndex, csvField, filterIndex, journalFromBibcode, missionsCsv, rowAt, rowsFor, sortIndex, toCsv, topColumn } from './papers.js';
+import { CSV_HEADER, buildSearchIndex, clpsCsv, csvField, filterIndex, joinCsv, journalFromBibcode, missionsCsv, publicationsCsv, rowAt, rowsFor, sortIndex, toCsv, topColumn } from './papers.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const HST_PAPERS = path.join(here, '..', '..', '..', 'static', 'data', 'papers', 'hst.json');
@@ -19,6 +19,7 @@ function fixture() {
 	return {
 		b: ['2004Sci...305..842P', '1998ApJ...500..525S', '2017Natur.545..456D', '2001AJ....121.2431A', '1995Icar..118....1B'],
 		y: [2004, 1998, 2017, null, 1995],
+		d: ['2004-07-00', '1998-00-00', '2017-05-00', null, '1995-11-00'],
 		t: ['Cassini at Saturn', 'Maps of dust', 'A "quoted, comma" title', null, 'Icy moons'],
 		a: ['Porco, C.', 'Schlegel, D.', null, 'Adams, J.', 'Brown, R.'],
 		c: [900, 900, 300, 50, 10],
@@ -242,7 +243,7 @@ describe('toCsv', () => {
 		assert.equal(lines[0], CSV_HEADER.join(','));
 		assert.equal(
 			lines[0],
-			'bibcode,year,title,first_author,citations,top10_weight_lifetime,full_window_citations,top10_weight_full,top1_weight_full,shared_by,added_by_hand,scix_url'
+			'bibcode,year,pubdate,title,first_author,citations,top10_weight_lifetime,full_window_citations,top10_weight_full,top1_weight_full,shared_by,scix_url'
 		);
 	});
 
@@ -251,12 +252,12 @@ describe('toCsv', () => {
 		assert.equal(lines.length, 6);
 		assert.equal(
 			lines[1],
-			'2004Sci...305..842P,2004,Cassini at Saturn,"Porco, C.",900,1,400,0,0,1,0,https://scixplorer.org/abs/2004Sci...305..842P/abstract'
+			'2004Sci...305..842P,2004,2004-07-00,Cassini at Saturn,"Porco, C.",900,1,400,0,0,1,https://scixplorer.org/abs/2004Sci...305..842P/abstract'
 		);
 		// row 2: outside the full-mission cohort
-		assert.match(lines[3], /,300,0,,,,1,0,https:/);
-		// row 3: no year, no title, no lifetime weight
-		assert.equal(lines[4], '2001AJ....121.2431A,,,"Adams, J.",50,,30,0.5,0,1,1,https://scixplorer.org/abs/2001AJ....121.2431A/abstract');	});
+		assert.match(lines[3], /,300,0,,,,1,https:/);
+		// row 3: no year, no pubdate, no title, no lifetime weight
+		assert.equal(lines[4], '2001AJ....121.2431A,,,,"Adams, J.",50,,30,0.5,0,1,https://scixplorer.org/abs/2001AJ....121.2431A/abstract');	});
 
 	it('quotes a title holding a comma and a quote', () => {
 		const lines = toCsv(fixture(), ads).split('\r\n');
@@ -334,7 +335,7 @@ describe('the real hst papers file', { skip: !fs.existsSync(HST_PAPERS) && 'stat
 	const file = JSON.parse(fs.readFileSync(HST_PAPERS, 'utf8'));
 
 	it('has the columns this module reads, all the declared length', () => {
-		for (const key of ['b', 'y', 't', 'a', 'c', 's', 'e', 'f', 'fe', 'f1', 'i']) {
+		for (const key of ['b', 'y', 'd', 't', 'a', 'c', 's', 'e', 'f', 'fe', 'f1', 'i']) {
 			assert.equal(file.columns[key]?.length, file.rows, `column ${key}`);
 		}
 	});
@@ -363,16 +364,76 @@ describe('missionsCsv', () => {
 	it('writes both reader scopes, sizes each mission, and leaves unmeasured output blank', () => {
 		const scope = (papers, top1 = 0.5) => ({ papers, citations: papers * 10, top10: 1.5, top1, status: 'available' });
 		const missions = [
-			{ id: 'a', name: 'Alpha, Jr.', launchYear: 2001, type: 'Orbiter', cost: 150, size: 'under', failed: false, shortfall: true, indices: { h: 3, g: 4 },
-				full: { ...scope(4), status: 'unavailable' }, lifetime: scope(9, null) },
-			{ id: 'b', name: 'Beta', launchYear: 2010, type: 'Lander', cost: 151, size: 'over', failed: true, shortfall: true, indices: {},
+			{ id: 'a', shortTitle: 'ALPHA', name: 'Alpha, Jr.', launchYear: 2001, type: 'Orbiter', lcc: 90, cost: 150, status: 'Partial Success', indices: { h: 3, g: 4 },
+				selection: 'competed', dates: { formulation: '1996-10-01', launch: '2001-04-07', scienceStart: '2002-02-01' },
+				full: { ...scope(4), status: 'unavailable', bounds: { start: '2002-03-01', end: '2008-03-01' } }, lifetime: scope(9, null) },
+			{ id: 'b', shortTitle: 'BETA', name: 'Beta', launchYear: 2010, type: 'Lander', lcc: 120.5, cost: 151, status: 'Failure', indices: {},
 				full: scope(0), lifetime: scope(0, null) }
 		];
-		const [header, a, b] = missionsCsv(missions, { costBaseYear: 2025, url: (id) => `/m/${id}/` }).split('\r\n');
-		assert.equal(header, 'mission,id,launch_year,type,cost_millions_2025_usd,size,outcome,active_papers,active_citations,active_top10,active_top1,lifetime_papers,lifetime_citations,lifetime_top10,lifetime_top1,h_index,g_index,url');
-		assert.equal(a, '"Alpha, Jr.",a,2001,Orbiter,150,small,partial,,,,,9,90,1.5,,3,4,/m/a/');
-		assert.equal(b, 'Beta,b,2010,Lander,151,larger,lost,0,0,1.5,0.5,0,0,1.5,,,,/m/b/');
-		const uncosted = missionsCsv([{ ...missions[1], cost: null, size: null }], { costBaseYear: 2025 }).split('\r\n')[1];
-		assert.match(uncosted, /^Beta,b,2010,Lander,,,lost,/, 'no cost, no size');
+		const [header, a, b] = missionsCsv(missions, { url: (id) => `/m/${id}/` }).split('\r\n');
+		assert.equal(header, 'mission,name,launch_year,type,lcc,adjusted_lcc,status,selection,formulation_start,launch_date,science_start,active_window_start,active_window_end,active_papers,active_citations,active_top10,active_top1,lifetime_papers,lifetime_citations,lifetime_top10,lifetime_top1,h_index,g_index,url');
+		// the dates and window print even where the scope's output is unmeasured; absent ones stay blank
+		assert.equal(a, 'ALPHA,"Alpha, Jr.",2001,Orbiter,90,150,Partial Success,competed,1996-10-01,2001-04-07,2002-02-01,2002-03-01,2008-03-01,,,,,9,90,1.5,,3,4,/m/a/');
+		assert.equal(b, 'BETA,Beta,2010,Lander,120.5,151,Failure,,,,,,,0,0,1.5,0.5,0,0,1.5,,,,/m/b/');
+		const uncosted = missionsCsv([{ ...missions[1], lcc: null, cost: null }]).split('\r\n')[1];
+		assert.match(uncosted, /^BETA,Beta,2010,Lander,,,Failure,/, 'no costs');
+	});
+});
+
+describe('clpsCsv', () => {
+	it('writes the landers, a row per lander and paper and one for a lander with none', () => {
+		const mission = (id, name, cost, status, papers) => ({ id, shortTitle: name.toUpperCase(), name, fullName: name, lcc: cost && Math.floor(cost), cost, status, papers });
+		const landers = [
+				{ ...mission('peregrine', 'Peregrine', 130.3, 'Failure', { b: ['2024A', '2025B'], d: ['2024-09-00', '2025-01-00'], t: ['One, two', null] }), launchDate: '2024-01-08' },
+				{ ...mission('m1', 'Blue Ghost M1', 174.3, 'Completed', { b: [], d: [], t: [] }), launchDate: '2025-01-15' },
+				{ ...mission('x', 'X', null, 'Partial Success', null), launchDate: null }
+		];
+		assert.deepEqual(clpsCsv(landers, ads).split('\r\n'), [
+			'mission,name,launch_date,lcc,adjusted_lcc,status,papers,bibcode,pubdate,title,scix_url',
+			`PEREGRINE,Peregrine,2024-01-08,130,130.3,Failure,2,2024A,2024-09-00,"One, two",${ads('2024A')}`,
+			`PEREGRINE,Peregrine,2024-01-08,130,130.3,Failure,2,2025B,2025-01-00,,${ads('2025B')}`,
+			'BLUE GHOST M1,Blue Ghost M1,2025-01-15,174,174.3,Completed,0,,,,',
+			// unavailable output: papers blank, not 0
+			'X,X,,,,Partial Success,,,,,'
+		]);
+	});
+});
+
+describe('publicationsCsv', () => {
+	it('names each mission by its upstream short title, skipping missions without a paper file', () => {
+		const m = (id, shortTitle, papers) => ({ id, shortTitle, name: id, lifetime: { papers } });
+		const divisions = [{ slug: 'astrophysics', missions: [m('hst', 'HST', 2), m('none', 'NONE', 0)] }, { slug: 'planetary', missions: [m('msl', 'MSL', 1)] }];
+		const out = publicationsCsv(divisions, (id) => `x\r\n${id}-row`).split('\r\n');
+		assert.deepEqual(out, ['division,mission,x', 'astrophysics,HST,hst-row', 'planetary,MSL,msl-row']);
+	});
+});
+
+describe('joinCsv', () => {
+	const csv = (...rows) => ['x,y', ...rows].join('\r\n');
+
+	it('leads the shared header with its own fields, once', () => {
+		const lines = joinCsv(['division', 'mission_id'], [{ lead: ['a', 'm1'], csv: csv('1,2') }, { lead: ['b', 'm2'], csv: csv('3,4') }]).split('\r\n');
+		assert.equal(lines[0], 'division,mission_id,x,y');
+		assert.equal(lines.filter((l) => l.endsWith('x,y')).length, 1);
+	});
+
+	it('leads every row with its part’s fields, quoted when they need it', () => {
+		const out = joinCsv(['division'], [{ lead: ['Earth, Science'], csv: csv('1,2', '"a, b",3') }]);
+		assert.equal(out, 'division,x,y\r\n"Earth, Science",1,2\r\n"Earth, Science","a, b",3');
+	});
+
+	it('keeps rows in part order, and a header-only part adds none', () => {
+		const out = joinCsv(['d'], [{ lead: ['empty'], csv: csv() }, { lead: ['a'], csv: csv('1,2', '3,4') }, { lead: ['none'], csv: csv() }, { lead: ['b'], csv: csv('5,6') }]);
+		assert.equal(out, 'd,x,y\r\na,1,2\r\na,3,4\r\nb,5,6');
+		assert.equal(joinCsv(['d'], [{ lead: ['a'], csv: csv() }]), 'd,x,y');
+	});
+
+	it('joins real paper CSVs line for line', () => {
+		const one = toCsv(fixture(), ads);
+		const lines = joinCsv(['division', 'mission_id'], [{ lead: ['planetary', 'cassini'], csv: one }, { lead: ['astrophysics', 'hst'], csv: one }]).split('\r\n');
+		assert.equal(lines[0], `division,mission_id,${CSV_HEADER.join(',')}`);
+		assert.equal(lines.length, 1 + 2 * 5);
+		assert.equal(lines[1], `planetary,cassini,${one.split('\r\n')[1]}`);
+		assert.equal(lines[6], `astrophysics,hst,${one.split('\r\n')[1]}`);
 	});
 });

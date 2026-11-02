@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/state';
-	import { home, divisionHref, methodsHref, analysisHref, asset } from '$lib/paths.js';
+	import { home, divisionHref, methodsHref, analysisHref, downloadHref, asset } from '$lib/paths.js';
 
 	let { divisions } = $props();
 
@@ -8,6 +8,7 @@
 	const homePath = home();
 	const analysisPath = analysisHref();
 	const methodsPath = methodsHref();
+	const downloadPath = downloadHref();
 	const isHome = $derived(path === homePath);
 	const inDivision = (slug) => path.startsWith(divisionHref(slug));
 
@@ -49,6 +50,7 @@
 				</li>
 			{/each}
 			<li><a href={methodsPath} aria-current={path === methodsPath ? 'page' : undefined}>Methods</a></li>
+			<li><a href={downloadPath} aria-current={path === downloadPath ? 'page' : undefined}>Download</a></li>
 		</ul>
 	</nav>
 </header>

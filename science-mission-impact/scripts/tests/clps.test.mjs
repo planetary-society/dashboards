@@ -4,12 +4,12 @@ import os from 'node:os';
 import path from 'node:path';
 import { after, describe, it } from 'node:test';
 
-import { addMonths, buildClps, clpsComparison, CLPS_PROGRAM, loadClps, monthsElapsed, runningTotal, surfaceBehind } from '../lib/clps.mjs';
+import { addMonths, buildClps, buildClpsFile, clpsComparison, CLPS_PROGRAM, loadClps, monthsElapsed, runningTotal, surfaceBehind } from '../lib/clps.mjs';
 import { repin, sourceFixture } from './source-fixture.mjs';
 
 const paper = (bibcode, date, refereed = true) => ({ bibcode, date: `${date}T00:00:00Z`, refereed });
 const lander = (id, launchDate, records, extra = {}) => ({
-	id, name: id, fullName: id, program: CLPS_PROGRAM, launchDate, primeStart: launchDate, cost: 100, records, ...extra
+	id, shortTitle: id.toUpperCase(), name: id, fullName: id, program: CLPS_PROGRAM, launchDate, primeStart: launchDate, lcc: 80, cost: 100, status: 'Completed', records, ...extra
 });
 
 describe('addMonths', () => {
@@ -104,6 +104,31 @@ describe('buildClps', () => {
 		assert.throws(() => buildClps({ asOf: '2024-04-08', horizonMonths: 3, comparators: ['old'], missions: [lander('a', '2024-01-08', []), { ...comparator, records: null }] }),
 			/comparator old has no measured output/);
 		assert.throws(() => base([lander('a', '2024-01-08', [])], { asOf: '1997-09-01' }), /comparator old has not reached month 3/);
+	});
+});
+
+describe('buildClpsFile', () => {
+	const dated = (bibcode, pubdate, title, refereed = true) => ({ bibcode, date: `${pubdate.replace(/-00/g, '-01')}T00:00:00Z`, pubdate, title, refereed });
+	const missions = [
+		lander('b', '2024-02-01', [dated('b2', '2024-05-00', ['Second &amp; <SUP>3</SUP>He']), dated('b1', '2024-03-00', ['First']), dated('bx', '2024-04-00', ['Unrefereed'], false)],
+			{ failed: true, shortfall: true, status: 'Failure' }),
+		lander('a', '2024-01-08', []),
+		lander('cp', '2026-10-01', null),
+		{ ...lander('old', '1997-07-04', [dated('c1', '1997-08-00', ['Comparator'])]), program: 'Discovery', launchDate: '1996-12-04' },
+		{ ...lander('far', '2005-01-12', [dated('f1', '2005-07-00', ['Far'])]), program: 'Discovery', primeStart: null, failed: true, status: 'Failure' }
+	];
+	const landers = buildClpsFile(missions);
+
+	it('lists the landers in launch order with exactly the papers the series counts, by pubdate', () => {
+		assert.deepEqual(landers.map((l) => l.name), ['a', 'b', 'cp']);
+		const [, b] = landers;
+		assert.deepEqual(b, { shortTitle: 'B', name: 'b', launchDate: '2024-02-01', lcc: 80, cost: 100, status: 'Failure',
+			papers: { b: ['b1', 'b2'], d: ['2024-03-00', '2024-05-00'], t: ['First', 'Second & ³He'] } });
+		// as many papers per lander as site.clps counts, and null (not none) for unavailable output
+		const facts = buildClps({ asOf: '2026-10-08', horizonMonths: 3, comparators: [], missions });
+		assert.deepEqual(landers.map((l) => l.papers?.b.length ?? null), facts.missions.map((m) => m.papers));
+		assert.deepEqual(landers[0].papers, { b: [], d: [], t: [] });
+		assert.equal(landers[2].papers, null);
 	});
 });
 
@@ -212,9 +237,11 @@ describe('loadClps', () => {
 			provenance: astro.corpus.provenance, records: [paper('a1', '2000-03-01')] };
 		astro.corpus.files.records = f.write('payload/astro/records-with-paper.json', records);
 		repin(f, 0);
-		const clps = loadClps({ rawDir: f.rawDir, config: { ...config(f), names: { fixture_psd: { name: 'Lander One' } } }, asOf: '2026-10-02' });
+		const { facts: clps, file } = loadClps({ rawDir: f.rawDir, config: { ...config(f), names: { fixture_psd: { name: 'Lander One' } } }, asOf: '2026-10-02' });
 		assert.deepEqual(clps.missions.map((m) => m.id), ['fixture_psd']);
 		assert.equal(clps.missions[0].name, 'Lander One'); // the smi.config.json names override
+		// the download file lists the same landers and papers
+		assert.deepEqual(file.map((l) => [l.name, l.papers?.b.length ?? null]), clps.missions.map((m) => [m.name, m.papers]));
 		assert.equal(clps.start, '2000-01-01');
 		assert.deepEqual(clps.comparators[0].series, [0, 0, 0, 1]);
 		assert.equal(clps.comparators[0].papers, 1);

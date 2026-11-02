@@ -2,7 +2,15 @@
 // (src/lib/**/*.test.mjs, expanded by sh) only reaches one directory level.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { byline, pct, yearSpan } from '../format.js';
+import { byline, fileSize, pct, yearSpan } from '../format.js';
+
+test('fileSize: whole KB, then MB with one decimal under 10', () => {
+	assert.equal(fileSize(120), '1 KB');
+	assert.equal(fileSize(48_400), '48 KB');
+	assert.equal(fileSize(999_600), '1.0 MB');
+	assert.equal(fileSize(3_240_000), '3.2 MB');
+	assert.equal(fileSize(41_700_000), '42 MB');
+});
 
 test('yearSpan prints one year once and a range with an en dash', () => {
 	assert.equal(yearSpan([2024, 2024]), '2024');

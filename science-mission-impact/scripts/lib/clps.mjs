@@ -20,8 +20,9 @@
 import { selectionOf } from './analysis.mjs';
 import { displayNames } from './config.mjs';
 import { isFailure, isShortfall } from './measures.mjs';
-import { launchDateOf, loadSourceCatalog, sourceAsOf } from './source.mjs';
+import { launchDateOf, lccOf, loadSourceCatalog, sourceAsOf, statusOf } from './source.mjs';
 import { PackagingError } from './invariants.mjs';
+import { cleanTitle } from './text.mjs';
 import { byText, num, sum } from './util.mjs';
 
 export const CLPS_PROGRAM = 'Commercial Lunar Payload Services (CLPS)';
@@ -56,6 +57,10 @@ export function runningTotal(dates, start, asOf, horizon, label = 'series') {
 /** Refereed, dated records only, as upstream counts them. */
 const refereed = (records) => records.filter((r) => r?.refereed === true && r.date);
 
+/** The CLPS landers among `missions`, in launch order (undated last), then by name. */
+const landersOf = (missions) => missions.filter((m) => m.program === CLPS_PROGRAM)
+	.sort((a, b) => byText(a.launchDate ?? '\uffff', b.launchDate ?? '\uffff') || byText(a.name, b.name));
+
 /** Whole calendar months elapsed from `start` to `asOf` (YYYY-MM-DD): the last m with start + m months on or before it. */
 export function monthsElapsed(start, asOf) {
 	let m = 0;
@@ -86,14 +91,13 @@ function pooledDates(landers) {
  * @param {number} args.horizonMonths
  * @param {string[]} args.comparators mission ids, in display order
  * @param {string[]} [args.surface] mission ids for the papers-per-dollar comparison, in display order
- * @param {{id: string, name: string, fullName: string, program: string|null, launchDate: string|null,
- *   primeStart: string|null, cost: number|null, selection?: 'competed'|'directed'|null,
+ * @param {{id: string, shortTitle?: string, name: string, fullName: string, program: string|null, launchDate: string|null,
+ *   primeStart: string|null, cost: number|null, lcc?: number|null, status?: string, selection?: 'competed'|'directed'|null,
  *   failed?: boolean, shortfall?: boolean, records: object[]|null}[]} args.missions
  *   every candidate; `records` null when the mission's output is unavailable
  */
 export function buildClps({ asOf, horizonMonths, comparators, surface = [], missions }) {
-	const clps = missions.filter((m) => m.program === CLPS_PROGRAM)
-		.sort((a, b) => byText(a.launchDate ?? '￿', b.launchDate ?? '￿') || byText(a.name, b.name));
+	const clps = landersOf(missions);
 	if (!clps.length) throw new PackagingError(`clps: no missions in program "${CLPS_PROGRAM}"`);
 	const start = clps.map((m) => m.launchDate).filter(Boolean).sort()[0];
 	if (!start) throw new PackagingError('clps: no CLPS mission has a launch date');
@@ -159,6 +163,23 @@ export function buildClps({ asOf, horizonMonths, comparators, surface = [], miss
 	return { ...result, comparison, surface: { month, clps: together, flown, missions: rows, behind: surfaceBehind(flown, rows) } };
 }
 
+/** A mission's refereed, dated records (the ones every CLPS count reads) by pubdate then bibcode, as columns; null for unavailable output. */
+function paperColumns(records) {
+	const papers = records && refereed(records).sort((a, b) => byText(a.pubdate ?? '', b.pubdate ?? '') || byText(a.bibcode, b.bibcode));
+	// records carry the title as ADS's one-element list
+	return papers && { b: papers.map((r) => r.bibcode), d: papers.map((r) => r.pubdate ?? null), t: papers.map((r) => cleanTitle(Array.isArray(r.title) ? r.title[0] : r.title)) };
+}
+
+/**
+ * generated/clps.json, for the download page's CSV: each lander (launch order) with exactly the papers
+ * `buildClps` counts for it, as bibcode, ADS pubdate and cleaned title; null when output is unavailable,
+ * as site.clps.missions[].papers is. Pure.
+ *
+ * @param {object[]} missions as buildClps takes them
+ */
+export const buildClpsFile = (missions) =>
+	landersOf(missions).map((m) => ({ shortTitle: m.shortTitle, name: m.name, launchDate: m.launchDate, lcc: m.lcc, cost: m.cost, status: m.status, papers: paperColumns(m.records) }));
+
 /**
  * Whether the pooled landers trail every successful surface mission at the same age: in papers
  * (`total`), and in papers per dollar over the costed ones (`perDollar`; null when CLPS or none of
@@ -187,8 +208,8 @@ export function clpsComparison({ series, comparators }) {
 }
 
 /**
- * Load the CLPS dataset and build site.clps. Every envelope and records file is
- * read through loadSourceCatalog, so bytes, SHA-256, schema and identity are checked.
+ * Load the CLPS dataset and build site.clps (`facts`) and generated/clps.json (`file`). Every
+ * envelope and records file is read through loadSourceCatalog, so bytes, SHA-256, schema and identity are checked.
  *
  * @param {object} args
  * @param {string} [args.rawDir] the resolved config.clps.rawDir
@@ -207,17 +228,22 @@ export function loadClps({ rawDir, config, asOf, source = loadSourceCatalog(rawD
 		.filter(({ id, statsMission }) => statsMission.program === CLPS_PROGRAM || comparators.includes(id) || surface.includes(id))
 		.map(({ id, shortTitle, indexEntry, statsMission, corpus }) => ({
 			id,
+			shortTitle,
 			...displayNames(config, id, { name: shortTitle, fullName: corpus.full_name ?? statsMission.full_name ?? shortTitle }),
 			program: statsMission.program ?? null,
 			launchDate: launchDateOf({ corpus, indexEntry }),
 			primeStart: corpus.mission?.prime_mission_start_date ?? null,
 			cost: num(statsMission.adjusted_lcc),
 			// read exactly as package-data.mjs reads a mission row's
+			lcc: lccOf({ corpus }),
+			status: statusOf({ statsMission, corpus }),
 			selection: selectionOf(corpus.mission?.selection_strategy ?? statsMission.selection_strategy, id),
 			failed: isFailure(statsMission.mission_status),
 			shortfall: isShortfall(statsMission.mission_status),
 			records: COUNTED.has(statsMission.lifetime_output_basis) ? (source.readMission(id, 'records').records ?? []) : null
 		}));
 	// a month closes only on a date both exports cover: the earlier of the two
-	return buildClps({ asOf: clpsAsOf < asOf ? clpsAsOf : asOf, horizonMonths, comparators, surface, missions });
+	const closes = clpsAsOf < asOf ? clpsAsOf : asOf;
+	const facts = buildClps({ asOf: closes, horizonMonths, comparators, surface, missions });
+	return { facts, file: buildClpsFile(missions) };
 }

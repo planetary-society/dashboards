@@ -11,6 +11,7 @@
  *   src/lib/data/generated/scrolly.json
  *   src/lib/data/generated/divisions/<slug>.json
  *   src/lib/data/generated/missions/<id>.json
+ *   src/lib/data/generated/clps.json
  *   src/lib/data/generated/refresh-report.md
  *   static/data/papers/<id>.json
  *   static/data/maps/{missions/<id>,divisions/<slug>}.json
@@ -46,7 +47,7 @@ import { buildCostCurve } from './lib/costcurve.mjs';
 import { formatReport } from './lib/report.mjs';
 import { buildIndexCorrelation } from './lib/stats.mjs';
 import { resolveRunMissions } from './lib/join.mjs';
-import { assertDashboardCompatibility, launchDateOf, loadSourceCatalog, sourceAsOf } from './lib/source.mjs';
+import { assertDashboardCompatibility, launchDateOf, lccOf, loadSourceCatalog, sourceAsOf, statusOf } from './lib/source.mjs';
 import {
 	assertDivisionTotals,
 	assertMissionPaperRows,
@@ -529,7 +530,8 @@ export function buildMissionDoc({
 		lifetimeRows,
 		fullRows,
 		curatedBibcodes,
-		fullTop1Cutoff: scopeFull.pooled_cutoffs?.weights?.['1'] ?? null
+		fullTop1Cutoff: scopeFull.pooled_cutoffs?.weights?.['1'] ?? null,
+		pubdates
 	});
 	assertColumnLengths(papersFile);
 	// Per-paper citations by scope; null in f marks a row outside that cohort. The prime window is in
@@ -581,11 +583,11 @@ export function buildMissionDoc({
 		divisionName: division.name,
 		hasThumb,
 		meta: {
-			status: statsMission.mission_status ?? corpus.mission?.mission_status ?? 'unknown',
+			status: statusOf({ statsMission, corpus }),
 			failed,
 			cost: num(statsMission.adjusted_lcc),
 			// the catalog's life-cycle cost as reported, before cost is adjusted to the base year
-			lcc: num(corpus.mission?.lcc),
+			lcc: lccOf({ corpus }),
 			type: corpus.mission?.mission_type ?? statsMission.mission_type ?? null,
 			// read like the type; an older label fails here, before any output changes
 			selection: selectionOf(corpus.mission?.selection_strategy ?? statsMission.selection_strategy, id),
@@ -644,14 +646,20 @@ export function buildMissionDoc({
 	return {
 		missionRow: {
 			id,
+			// upstream short_title, the key the CSVs name each mission by
+			shortTitle,
 			name,
 			cost,
+			// the catalog's life-cycle cost as reported, before cost is adjusted to the base year
+			lcc: missionDoc.meta.lcc,
 			size,
 			launchYear,
+			// the dates every duration runs from, as the measures read them (science start falls back to launch)
+			dates: { formulation, launch: launchDate, scienceStart },
 			failed,
 			shortfall,
-			// which shortfall, as the catalog words it ('Failure', 'Partial Failure', 'Partial Success'); null otherwise
-			outcome: shortfall ? statsMission.mission_status.trim() : null,
+			// upstream mission_status, as the mission page shows it ('Completed', 'Extended Mission', 'Failure', …)
+			status: missionDoc.meta.status,
 			type: missionDoc.meta.type,
 			selection: missionDoc.meta.selection,
 			management: missionDoc.meta.management,
@@ -1123,7 +1131,7 @@ function main() {
 	const source = loadSourceCatalog(rawDir, config);
 	const { runs, snapshot } = loadRuns(rawDir, config, warnings, source);
 	// The CLPS chart's dataset is checked with everything else, before any output changes.
-	const clps = loadClps({ rawDir: resolve(APP_ROOT, config.clps.rawDir), config, asOf: snapshot.asOf });
+	const { facts: clps, file: clpsFile } = loadClps({ rawDir: resolve(APP_ROOT, config.clps.rawDir), config, asOf: snapshot.asOf });
 	assertKnownIds('names', Object.keys(config.names ?? {}), new Set([...source.missions.keys(), ...clps.missions.map((m) => m.id), ...clps.comparators.map((m) => m.id)]));
 	paths.source = source;
 	const byTitle = source.byTitle;
@@ -1182,6 +1190,8 @@ function main() {
 		{ tiles: scrollyTiles },
 		{ pretty: true }
 	);
+	// the landers' papers, for the download page's CLPS file
+	writeJson(join(paths.generatedDir, 'clps.json'), clpsFile, { pretty: false });
 
 
 	if (opts.check) {

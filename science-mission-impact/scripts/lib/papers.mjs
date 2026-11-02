@@ -45,14 +45,16 @@ function comparePapers(a, b) {
  *   whose `window_*` values are the full-mission scope's
  * @param {Set<string>} args.curatedBibcodes bibcodes the query did not return
  * @param {object|null} [args.fullTop1Cutoff] pooled_cutoffs.weights["1"] of the full-mission scope
+ * @param {Map<string, string>} [args.pubdates] bibcode -> ADS pubdate, the date a first top-10% paper is read by
  */
-export function buildPapersFile({ id, asOf, lifetimeRows, fullRows = new Map(), curatedBibcodes, fullTop1Cutoff = null }) {
+export function buildPapersFile({ id, asOf, lifetimeRows, fullRows = new Map(), curatedBibcodes, fullTop1Cutoff = null, pubdates = new Map() }) {
 	const rows = [...lifetimeRows].sort(comparePapers);
-	const columns = { b: [], y: [], t: [], a: [], c: [], s: [], e: [], f: [], fe: [], f1: [], i: [] };
+	const columns = { b: [], y: [], d: [], t: [], a: [], c: [], s: [], e: [], f: [], fe: [], f1: [], i: [] };
 	for (const row of rows) {
 		const fullRow = fullRows.get(row.bibcode) ?? null;
 		columns.b.push(row.bibcode);
 		columns.y.push(row.year ?? null);
+		columns.d.push(pubdates.get(row.bibcode) ?? null);
 		columns.t.push(row.title ?? null);
 		columns.a.push(row.first_author ?? null);
 		columns.c.push(Number(row.citations ?? 0));

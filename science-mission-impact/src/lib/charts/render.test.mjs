@@ -25,6 +25,7 @@ const dataUrl = (code) => `data:text/javascript,${encodeURIComponent(code).repla
 
 const PATHS_STUB = dataUrl(`
 	export const missionHref = (slug, id) => \`/\${slug}/\${id}/\`;
+	export const canonical = (pathname) => 'https://example.test' + pathname;
 	export const thumbSrc = (id) => \`/img/missions/\${id}.webp\`;
 	export const methodsHref = (anchor = '') => '/methods/' + (anchor ? '#' + anchor : '');
 	export const basemapSrc = (key) => \`/img/maps/\${key}.svg\`;
@@ -106,9 +107,9 @@ test('MissionTable lists every mission together, earliest launch first, and drop
 	const Component = await load('../ui/MissionTable.svelte');
 	const full = { papers: 4, citations: 30, top10: 0.5, top1: 0, status: 'available' };
 	const missions = [
-		{ id: 'b', name: 'Beta', launchYear: 2001, launchDate: '2001-11-02', type: 'Orbiter', cost: 900, size: 'over', full },
-		{ id: 'a', name: 'Alpha', launchYear: 2001, launchDate: '2001-03-20', type: 'Lander', cost: 120, size: 'under', failed: true, shortfall: true, outcome: 'Failure', full },
-		{ id: 'c', name: 'Gamma', launchYear: 1995, launchDate: '1995-06-01', type: 'Lander', cost: null, size: null, full }
+		{ id: 'b', name: 'Beta', launchYear: 2001, dates: { launch: '2001-11-02' }, type: 'Orbiter', cost: 900, full },
+		{ id: 'a', name: 'Alpha', launchYear: 2001, dates: { launch: '2001-03-20' }, type: 'Lander', cost: 120, failed: true, shortfall: true, status: 'Failure', full },
+		{ id: 'c', name: 'Gamma', launchYear: 1995, dates: { launch: '1995-06-01' }, type: 'Lander', cost: null, full }
 	];
 	const props = { missions, slug: 'planetary', site };
 	const ranked = render(Component, { props }).body;

@@ -451,7 +451,7 @@
 		<section data-step><div class="step">
 			<p class="part neptuneBlue"><strong>Mission failure rates
 			</strong></p>
-			<p>Very low-cost missions (the first {spell(smallColumns)} columns) have a full or partial failure rate of {whole(failure.under.rate)}.</p><p>For more expensive missions, that rate is {whole(failure.over.rate)}.</p>
+			<p>Very low-cost missions (the first {spell(smallColumns)} columns) have a full or partial failure rate of {whole(failure.under.rate)}.</p><p>For missions costing above {moneyWords(story.referenceCost)}, that rate is {whole(failure.over.rate)}.</p>
 		</div></section>
 		<!-- FAIL_NOTE: the same chart, NOTE's division washed; its split either side of the edge only under clearlyHigher -->
 		<section data-step><div class="step">

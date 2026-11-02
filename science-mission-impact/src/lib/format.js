@@ -36,6 +36,13 @@ export function money(millions) {
 	return `$${Math.round(millions)}M`;
 }
 
+/** Bytes → "48 KB" / "3.2 MB", in decimal units as the Finder counts them; 999,600 bytes reads "1.0 MB", not "1000 KB". */
+export function fileSize(bytes) {
+	if (bytes < 999_500) return `${Math.max(1, Math.round(bytes / 1e3))} KB`;
+	const mb = bytes / 1e6;
+	return `${mb >= 9.95 ? Math.round(mb) : mb.toFixed(1)} MB`;
+}
+
 /** Round axis values: "$1B", not "$1.0B". */
 export const moneyTick = (millions) => money(millions).replace(/\.0(?=[MB]$)/, '');
 

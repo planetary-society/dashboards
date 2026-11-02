@@ -62,7 +62,8 @@ describe('buildPapersFile', () => {
 		lifetimeRows,
 		fullRows,
 		curatedBibcodes: new Set(['C-tie']),
-		fullTop1Cutoff: cutoff
+		fullTop1Cutoff: cutoff,
+		pubdates: new Map([['A-high', '2005-03-00'], ['B-low', '2006-00-00']])
 	});
 
 	it('sorts by citations descending, then bibcode', () => {
@@ -70,7 +71,11 @@ describe('buildPapersFile', () => {
 	});
 
 	it('writes the columns in the contract order', () => {
-		assert.deepEqual(Object.keys(file.columns), ['b', 'y', 't', 'a', 'c', 's', 'e', 'f', 'fe', 'f1', 'i']);
+		assert.deepEqual(Object.keys(file.columns), ['b', 'y', 'd', 't', 'a', 'c', 's', 'e', 'f', 'fe', 'f1', 'i']);
+	});
+
+	it('writes each paper’s ADS pubdate as given, null when unknown', () => {
+		assert.deepEqual(file.columns.d, ['2005-03-00', '2006-00-00', null]);
 	});
 
 	it('fills the full-mission columns from the full-mission table and its own cutoff', () => {

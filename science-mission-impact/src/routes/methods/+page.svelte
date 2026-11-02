@@ -148,6 +148,12 @@
 			<p>The shaded band is a 95% range from resampling the missions. To compare small and larger missions, we
 				average the rates on each side of {threshold} and only say one side did better when the 95% range of the
 				difference excludes zero and the result holds with any single mission left out.</p>
+			<p>To recreate the averages: a mission’s weight is (1 − d³)³, where d is its distance from the cost being
+				averaged on a logarithmic scale, in factors of 10, so the weight falls to zero at 10 times the cost or a tenth
+				of it. We compute the average at 81 evenly spaced points on that scale, from the cheapest mission to the most
+				expensive, and leave a point blank unless at least three missions contribute and no single mission dominates
+				(an effective sample size of at least two). The band and the small-versus-larger comparison each use 2,000
+				resamples of the missions.</p>
 		</section>
 
 		<section id="nc">
@@ -156,6 +162,10 @@
 				cutoff. We set c to each division’s top-50% cutoff in the {fullWindowLabel} and call the result
 				N<sub>50</sub>. Because each division has its
 				own c, N<sub>50</sub> normalizes outputs across different divisions.</p>
+			<p>Each division’s cutoffs rank its distinct papers in the {fullWindowLabel} by their citations in that window. A
+				cutoff is the citation count of the paper at that point in the list, rounding the rank up: halfway down for c, and
+				a tenth and a hundredth of the way down for the top-10% and top-1% cutoffs that define high-impact papers. Papers
+				tied at a cutoff share the places left, so each counts as a fraction of a paper.</p>
 		</section>
 
 

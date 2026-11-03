@@ -171,7 +171,7 @@
 
 		<section id="ai">
 			<h2>How we used AI in this project</h2>
-			<p>AI was used extensively in this project to help write and review code, to refine and improve our SciX queries, and to identify papers for exclusion based on our internal criteria. According to Planetary Society policy, AI was not used write our analysis: that was led by the authors. All AI-driven query suggestions and exclusions were reviewed by humans as well. Our public facing text is written by the authors using AI for copyediting. Some descriptive, functional text such as tool-tips on this dashboard are AI-generated.</p>
+			<p>AI was used extensively in this project to help write and review code, to refine and improve our SciX queries, and to identify papers for exclusion based on our internal criteria. All AI-driven query suggestions and exclusions were reviewed by humans. According to Planetary Society policy, beyond basic copyediting, AI was not used to write our analysis or narrative text. Some descriptive, functional text such as tool-tips on this dashboard are AI-generated.</p>
 		</section>
 
 		<section id="citing">

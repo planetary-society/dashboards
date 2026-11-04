@@ -1,6 +1,6 @@
 // The discussion figures use actual adjusted costs, from the packaged division documents.
 import { pooledBand } from './costcurve.mjs';
-import { runningMean } from './running-mean.mjs';
+import { groupMeans, runningMean } from './running-mean.mjs';
 import { byText, fisherP, median, round, share, sum } from './util.mjs';
 const hasCost = (mission) => Number.isFinite(mission.cost) && mission.cost > 0;
 /** Inside the threshold: a positive cost at or below it ($M, the snapshot's adjusted dollar year). */
@@ -41,11 +41,12 @@ export function wilson(k, n, z = 1.96) {
  * @param {object[]} divisions the packaged Division documents, config order
  * @param {object} options
  * @param {number} options.thresholdCost the editorial line ($M): under is `0 < cost <= thresholdCost`, over is above it
+ * @param {number[]} options.costGroups ascending $M edges (analysis.costGroups) for `perDollar.bins`
  * @param {'full'|'window'|'lifetime'} [options.scope] the scope every figure is read in
  * @param {string|null} [options.focusDivision] the division the story walks through (its
  *   citation primer and yearly-rate chart); null leaves `focusDivision` and `primer` null
  */
-export function buildDiscussion(divisions, { thresholdCost, scope = 'full', focusDivision = null } = {}) {
+export function buildDiscussion(divisions, { thresholdCost, costGroups, scope = 'full', focusDivision = null } = {}) {
 	if (!(thresholdCost > 0)) throw new Error(`buildDiscussion: thresholdCost must be a positive number, got ${JSON.stringify(thresholdCost)}`);
 	const under = underThreshold(thresholdCost);
 	const over = (m) => hasCost(m) && !under(m);
@@ -132,7 +133,7 @@ export function buildDiscussion(divisions, { thresholdCost, scope = 'full', focu
 		focusDivision: focus?.slug ?? null,
 		primer: focus ? primerFacts(focus, scope) : null,
 		rate: rateFacts(rankable, under),
-		perDollar: rankable.map((d) => perDollarFacts(d, d.missions.filter(measured), stats, sides, thresholdCost))
+		perDollar: rankable.map((d) => perDollarFacts(d, d.missions.filter(measured), stats, sides, thresholdCost, costGroups))
 	};
 }
 
@@ -143,9 +144,9 @@ export function buildDiscussion(divisions, { thresholdCost, scope = 'full', focu
  *
  * @returns {Record<string, Record<'full'|'window'|'lifetime', {divisions: object, failure: object, comparison: object|null, perDollar: object|null}>>}
  */
-export function divisionFacts(divisions, { thresholdCost, full = buildDiscussion(divisions, { thresholdCost }) }) {
+export function divisionFacts(divisions, { thresholdCost, costGroups, full = buildDiscussion(divisions, { thresholdCost, costGroups }) }) {
 	const out = Object.fromEntries(divisions.map((d) => [d.slug, {}]));
-	const built = { full, window: buildDiscussion(divisions, { thresholdCost, scope: 'window' }), lifetime: buildDiscussion(divisions, { thresholdCost, scope: 'lifetime' }) };
+	const built = { full, window: buildDiscussion(divisions, { thresholdCost, costGroups, scope: 'window' }), lifetime: buildDiscussion(divisions, { thresholdCost, costGroups, scope: 'lifetime' }) };
 	for (const [scope, s] of Object.entries(built)) {
 		const row = (list, slug) => list.find((r) => r.division === slug) ?? null;
 		for (const d of divisions) {
@@ -230,9 +231,10 @@ function mostCommon(values) {
  * the higher rate only when that ordering survives dropping any one measured mission from the
  * division (both rates recomputed without it; a side left empty counts as not surviving).
  * `flipsOn` names the missions it does not survive dropping; empty exactly when `favors` is set,
- * or when there is no order to keep (a tie or an empty side).
+ * or when there is no order to keep (a tie or an empty side). `bins` are the mean mission rates in
+ * the cost groups (`groupMeans`), and `best` the mission with the highest rate.
  */
-function perDollarFacts(division, members, stats, sides, thresholdCost) {
+function perDollarFacts(division, members, stats, sides, thresholdCost, costGroups) {
 	const groups = sides.map(([key, side]) => {
 		const group = members.filter(side);
 		return { key, missions: group.length, cost: round(sum(group.map((m) => m.cost)), 3),
@@ -246,6 +248,9 @@ function perDollarFacts(division, members, stats, sides, thresholdCost) {
 	const underSide = members.filter(sides[0][1]);
 	const underCitations = sum(underSide.map((m) => stats(m).citations));
 	const top = largestBy(underSide, (m) => stats(m).citations);
+	const points = members.map((m) => ({ id: m.id, cost: m.cost, citations: Number(stats(m).citations ?? 0) }));
+	const rate = (m) => perHundredM([m], stats);
+	const best = largestBy(members, rate);
 	return {
 		division: division.slug,
 		name: division.name,
@@ -254,7 +259,9 @@ function perDollarFacts(division, members, stats, sides, thresholdCost) {
 		flipsOn: breakers.map((m) => ({ id: m.id, name: m.name, side: sides[0][1](m) ? 'under' : 'over' })),
 		margin: under === null || over === null || Math.max(under, over) === 0 ? null : share(Math.abs(under - over) / Math.max(under, over)),
 		largestUnder: underCitations > 0 ? { id: top.id, name: top.name, share: share((stats(top).citations ?? 0) / underCitations) } : null,
-		runningMean: runningMean(members.map((m) => ({ id: m.id, cost: m.cost, citations: Number(stats(m).citations ?? 0) })), thresholdCost)
+		best: best && rate(best) > 0 ? { id: best.id, name: best.name, cost: best.cost, perHundredM: rate(best) } : null,
+		runningMean: runningMean(points, thresholdCost),
+		bins: groupMeans(points, costGroups)
 	};
 }
 

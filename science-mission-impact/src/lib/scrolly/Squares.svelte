@@ -5,8 +5,7 @@
 
 	/**
 	 * tiles: ScrollyTile[]
-	 * items: Map<id, { x, y, s, opacity?, variant?, tint?, label? }>
-	 *   tint: washed in Neptune Blue, over the variant's marks (the division a step points at)
+	 * items: Map<id, { x, y, s, opacity?, variant?, label? }>
 	 *   label: optional detailed hover/focus and accessible text; defaults to the short name
 	 *   variant: 'solid' | 'lost' | 'partial'
 	 * interactive: squares are in the tab order (false inside the aria-hidden story graphic)
@@ -56,7 +55,6 @@
 			{@const opacity = it.opacity ?? 1}
 			<a
 				class="sq mark-{it.variant ?? 'solid'}"
-				class:tint={it.tint}
 				class:hot={highlightId === t.id}
 				href={missionHref(t.division, t.id)}
 				tabindex={interactive && opacity >= 0.05 ? 0 : -1}
@@ -175,16 +173,6 @@
 
 	.sq.hot::before {
 		--wash-opacity: 0.7;
-	}
-
-	/* the division a step points at: its colour washed over the picture, under any failure marks
-	   (they are the ::after, drawn above this wash) */
-	.sq.tint {
-		--wash: var(--neptune);
-	}
-
-	.sq.tint::before {
-		--wash-opacity: 0.6;
 	}
 
 	/* an outright failure: the picture dimmed under a red X; a partial outcome: one red stroke */

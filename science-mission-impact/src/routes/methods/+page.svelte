@@ -1,9 +1,10 @@
 <script>
-	import { fullWindowLabel } from '$lib/copy/window.js';
+	import { calendarYears, fullWindowLabel } from '$lib/copy/window.js';
 	import Seo from '$lib/ui/Seo.svelte';
 	import EntityHeader from '$lib/ui/EntityHeader.svelte';
 	import { int, longDate, money, listify, spell } from '$lib/format.js';
 	import { analysisHref } from '$lib/paths.js';
+	import { tierLabel } from '$lib/analysis/tiers.js';
 
 	let { data } = $props();
 	const site = $derived(data.full);
@@ -129,6 +130,7 @@
 			<p>Older papers have had more time to collect citations, which would artificially inflate their metrics compared to more recent ones. To account for this, all metrics in this dashboard (except for the explicit lifetime metrics) use windowed citation counts of {spell(fullPolicy.citationYears)} years, inclusive, from the publish date of each paper.</p>
 			<p>This means that missions launched after the full citation comparison window are not included in this study. A
 				mission still operating limits publications to those have were published within this citation window.</p>
+			<p>The count runs by calendar year: a paper collects citations from papers dated its own publication year through {spell(fullPolicy.citationYears)} years later, so every paper gets {spell(calendarYears(fullPolicy))} calendar years of exposure, from just over {spell(fullPolicy.citationYears)} years for a December paper to almost {spell(calendarYears(fullPolicy))} for a January one. Counting this way also keeps the figures stable: a paper's lifetime total grows every time the citation database is queried, while its windowed count is fixed once its window closes. The length is a trade-off. A longer window would count more of each paper's citations but exclude more recent missions, since a mission's papers count only once their windows have closed.</p>
 		</section>
 
 		<section id="cost">
@@ -148,6 +150,10 @@
 			<p>The shaded band is a 95% range from resampling the missions. To compare small and larger missions, we
 				average the rates on each side of {threshold} and only say one side did better when the 95% range of the
 				difference excludes zero and the result holds with any single mission left out.</p>
+			<p>The overview also shows the same rates in the three cost groups our analysis uses ({listify(data.groups.map((g) => tierLabel(g)))}).
+				Each bar is the plain average of the missions in its group, failures counted as zero, with a 95% range from
+				2,000 resamples of that group’s missions; a group is drawn only when at least three missions fall in it. We
+				say one group did better than the next only when that ordering holds with any single mission left out.</p>
 			<p>To recreate the averages: a mission’s weight is (1 − d³)³, where d is its distance from the cost being
 				averaged on a logarithmic scale, in factors of 10, so the weight falls to zero at 10 times the cost or a tenth
 				of it. We compute the average at 81 evenly spaced points on that scale, from the cheapest mission to the most

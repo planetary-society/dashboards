@@ -17,7 +17,8 @@ test('the homepage omits unused data without changing retained facts or shared s
 		facts: {
 			missions: site.missions, papersDistinct: site.papersDistinct, citationsDistinct: site.citationsDistinct,
 			launchYears: site.launchYears, story: site.story, clps: site.clps,
-			time: site.analysis.time, tiers: site.analysis.tiers, failureTiers: site.analysis.failures.tiers
+			// the story reads the three cost groups as its tiers
+			time: { tiers: site.analysis.time.groups }, tiers: site.analysis.groups, failureTiers: site.analysis.failures.groups
 		},
 		scrolly
 	});

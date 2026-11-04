@@ -96,6 +96,15 @@ describe('buildAnalysis', () => {
 		assert.deepEqual([byId.a2.n50, byId.a2.rate, byId.a2.failed], [0, 0, true]);
 	});
 
+	it('publishes the tier failure and time figures per cost group too, over the same missions', () => {
+		const total = (list, value) => list.reduce((a, cell) => a + value(cell), 0);
+		const { failures, time } = facts;
+		assert.deepEqual([failures.groups.length, time.groups.length], [facts.groups.length, facts.groups.length]);
+		for (const value of [(c) => c.missions, (c) => c.failed + c.partial]) assert.equal(total(failures.groups, value), total(failures.tiers, value));
+		for (const value of [(c) => c.missions, (c) => c.reached]) assert.equal(total(time.groups, value), total(time.tiers, value));
+		for (const cell of failures.groups) assert.deepEqual(cell.byDivision.map((r) => r.division), divisions.map((d) => d.slug));
+	});
+
 	it('counts outcomes per tier and either side of the threshold, every configured division kept', () => {
 		const [t0, t1, t2, t3] = facts.failures.tiers;
 		assert.deepEqual(t0, {

@@ -22,12 +22,3 @@ export function failureItems(tiles, layout) {
 	}
 	return items;
 }
-
-/** One division's squares washed in the highlight colour over whatever marks they carry; the rest dimmed. Edits `items` in place. */
-export function highlightDivision(items, tiles, division) {
-	for (const t of tiles) {
-		const it = items.get(t.id);
-		if (it) items.set(t.id, t.division === division ? { ...it, tint: true } : { ...it, opacity: 0.25 });
-	}
-	return items;
-}

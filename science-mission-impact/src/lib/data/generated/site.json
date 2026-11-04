@@ -1238,6 +1238,12 @@
           "name": "SWAS",
           "share": 0.75806
         },
+        "best": {
+          "id": "wmap",
+          "name": "WMAP",
+          "cost": 303.1,
+          "perHundredM": 31561.531
+        },
         "runningMean": {
           "halfWidth": 1,
           "resamples": 2000,
@@ -1746,6 +1752,49 @@
             "holds": true,
             "favors": "over"
           }
+        },
+        "bins": {
+          "groups": [
+            {
+              "lo": 0,
+              "hi": 150,
+              "missions": 5,
+              "mean": 627.994,
+              "ci": [
+                128.329,
+                1391.442
+              ]
+            },
+            {
+              "lo": 150,
+              "hi": 1000,
+              "missions": 13,
+              "mean": 7076.889,
+              "ci": [
+                2757.984,
+                12498.544
+              ]
+            },
+            {
+              "lo": 1000,
+              "hi": null,
+              "missions": 7,
+              "mean": 4511.465,
+              "ci": [
+                2047.078,
+                7169.595
+              ]
+            }
+          ],
+          "best": 1,
+          "pairs": [
+            {
+              "higher": 1
+            },
+            {
+              "higher": 1
+            }
+          ]
         }
       },
       {
@@ -1774,6 +1823,12 @@
           "id": "acrimsat",
           "name": "ACRIMSAT",
           "share": 0.32591
+        },
+        "best": {
+          "id": "landsat_8",
+          "name": "Landsat 8",
+          "cost": 1268.4,
+          "perHundredM": 5405.393
         },
         "runningMean": {
           "halfWidth": 1,
@@ -2283,6 +2338,49 @@
             "holds": true,
             "favors": "over"
           }
+        },
+        "bins": {
+          "groups": [
+            {
+              "lo": 0,
+              "hi": 150,
+              "missions": 13,
+              "mean": 223.12,
+              "ci": [
+                74.425,
+                403.609
+              ]
+            },
+            {
+              "lo": 150,
+              "hi": 1000,
+              "missions": 14,
+              "mean": 1176.849,
+              "ci": [
+                688.454,
+                1705.643
+              ]
+            },
+            {
+              "lo": 1000,
+              "hi": null,
+              "missions": 14,
+              "mean": 1846.546,
+              "ci": [
+                971.891,
+                2846.021
+              ]
+            }
+          ],
+          "best": 2,
+          "pairs": [
+            {
+              "higher": 1
+            },
+            {
+              "higher": 2
+            }
+          ]
         }
       },
       {
@@ -2317,6 +2415,12 @@
           "id": "trace",
           "name": "TRACE",
           "share": 0.6317
+        },
+        "best": {
+          "id": "elfin",
+          "name": "ELFIN",
+          "cost": 5.4,
+          "perHundredM": 12240.741
         },
         "runningMean": {
           "halfWidth": 1,
@@ -2826,6 +2930,49 @@
             "holds": false,
             "favors": null
           }
+        },
+        "bins": {
+          "groups": [
+            {
+              "lo": 0,
+              "hi": 150,
+              "missions": 16,
+              "mean": 1745.945,
+              "ci": [
+                407.86,
+                3490.897
+              ]
+            },
+            {
+              "lo": 150,
+              "hi": 1000,
+              "missions": 12,
+              "mean": 2078.192,
+              "ci": [
+                1106.361,
+                3237.901
+              ]
+            },
+            {
+              "lo": 1000,
+              "hi": null,
+              "missions": 5,
+              "mean": 1664.131,
+              "ci": [
+                1118.355,
+                2283.659
+              ]
+            }
+          ],
+          "best": 1,
+          "pairs": [
+            {
+              "higher": null
+            },
+            {
+              "higher": 1
+            }
+          ]
         }
       },
       {
@@ -2854,6 +3001,12 @@
           "id": "lunar_prospector",
           "name": "Lunar Prospector",
           "share": 0.589
+        },
+        "best": {
+          "id": "mgs",
+          "name": "Mars Global Surveyor",
+          "cost": 550.4,
+          "perHundredM": 2178.961
         },
         "runningMean": {
           "halfWidth": 1,
@@ -3363,6 +3516,49 @@
             "holds": true,
             "favors": "over"
           }
+        },
+        "bins": {
+          "groups": [
+            {
+              "lo": 0,
+              "hi": 150,
+              "missions": 7,
+              "mean": 118.58,
+              "ci": [
+                5.471,
+                276.089
+              ]
+            },
+            {
+              "lo": 150,
+              "hi": 1000,
+              "missions": 21,
+              "mean": 530.33,
+              "ci": [
+                306.265,
+                798.537
+              ]
+            },
+            {
+              "lo": 1000,
+              "hi": null,
+              "missions": 9,
+              "mean": 383.077,
+              "ci": [
+                220.119,
+                574.057
+              ]
+            }
+          ],
+          "best": 1,
+          "pairs": [
+            {
+              "higher": 1
+            },
+            {
+              "higher": 1
+            }
+          ]
         }
       }
     ]
@@ -3451,6 +3647,12 @@
             "id": "swas",
             "name": "SWAS",
             "share": 0.75806
+          },
+          "best": {
+            "id": "wmap",
+            "name": "WMAP",
+            "cost": 303.1,
+            "perHundredM": 31561.531
           },
           "runningMean": {
             "halfWidth": 1,
@@ -3960,6 +4162,49 @@
               "holds": true,
               "favors": "over"
             }
+          },
+          "bins": {
+            "groups": [
+              {
+                "lo": 0,
+                "hi": 150,
+                "missions": 5,
+                "mean": 627.994,
+                "ci": [
+                  128.329,
+                  1391.442
+                ]
+              },
+              {
+                "lo": 150,
+                "hi": 1000,
+                "missions": 13,
+                "mean": 7076.889,
+                "ci": [
+                  2757.984,
+                  12498.544
+                ]
+              },
+              {
+                "lo": 1000,
+                "hi": null,
+                "missions": 7,
+                "mean": 4511.465,
+                "ci": [
+                  2047.078,
+                  7169.595
+                ]
+              }
+            ],
+            "best": 1,
+            "pairs": [
+              {
+                "higher": 1
+              },
+              {
+                "higher": 1
+              }
+            ]
           }
         }
       },
@@ -4040,6 +4285,12 @@
             "id": "swas",
             "name": "SWAS",
             "share": 0.73913
+          },
+          "best": {
+            "id": "wmap",
+            "name": "WMAP",
+            "cost": 303.1,
+            "perHundredM": 10001.32
           },
           "runningMean": {
             "halfWidth": 1,
@@ -4549,6 +4800,49 @@
               "holds": true,
               "favors": "over"
             }
+          },
+          "bins": {
+            "groups": [
+              {
+                "lo": 0,
+                "hi": 150,
+                "missions": 5,
+                "mean": 383.472,
+                "ci": [
+                  29.341,
+                  953.382
+                ]
+              },
+              {
+                "lo": 150,
+                "hi": 1000,
+                "missions": 13,
+                "mean": 2306.821,
+                "ci": [
+                  911.784,
+                  4097.161
+                ]
+              },
+              {
+                "lo": 1000,
+                "hi": null,
+                "missions": 7,
+                "mean": 2169.286,
+                "ci": [
+                  845.235,
+                  3649.227
+                ]
+              }
+            ],
+            "best": 1,
+            "pairs": [
+              {
+                "higher": 1
+              },
+              {
+                "higher": null
+              }
+            ]
           }
         }
       },
@@ -4634,6 +4928,12 @@
             "id": "swas",
             "name": "SWAS",
             "share": 0.6914
+          },
+          "best": {
+            "id": "wmap",
+            "name": "WMAP",
+            "cost": 303.1,
+            "perHundredM": 113140.218
           },
           "runningMean": {
             "halfWidth": 1,
@@ -5143,6 +5443,49 @@
               "holds": true,
               "favors": "over"
             }
+          },
+          "bins": {
+            "groups": [
+              {
+                "lo": 0,
+                "hi": 150,
+                "missions": 5,
+                "mean": 1604.26,
+                "ci": [
+                  527.093,
+                  2991.777
+                ]
+              },
+              {
+                "lo": 150,
+                "hi": 1000,
+                "missions": 13,
+                "mean": 25215.641,
+                "ci": [
+                  12485.242,
+                  43257.106
+                ]
+              },
+              {
+                "lo": 1000,
+                "hi": null,
+                "missions": 7,
+                "mean": 13256.939,
+                "ci": [
+                  6745.684,
+                  20094.261
+                ]
+              }
+            ],
+            "best": 1,
+            "pairs": [
+              {
+                "higher": 1
+              },
+              {
+                "higher": 1
+              }
+            ]
           }
         }
       }
@@ -5319,6 +5662,12 @@
             "id": "acrimsat",
             "name": "ACRIMSAT",
             "share": 0.32591
+          },
+          "best": {
+            "id": "landsat_8",
+            "name": "Landsat 8",
+            "cost": 1268.4,
+            "perHundredM": 5405.393
           },
           "runningMean": {
             "halfWidth": 1,
@@ -5828,6 +6177,49 @@
               "holds": true,
               "favors": "over"
             }
+          },
+          "bins": {
+            "groups": [
+              {
+                "lo": 0,
+                "hi": 150,
+                "missions": 13,
+                "mean": 223.12,
+                "ci": [
+                  74.425,
+                  403.609
+                ]
+              },
+              {
+                "lo": 150,
+                "hi": 1000,
+                "missions": 14,
+                "mean": 1176.849,
+                "ci": [
+                  688.454,
+                  1705.643
+                ]
+              },
+              {
+                "lo": 1000,
+                "hi": null,
+                "missions": 14,
+                "mean": 1846.546,
+                "ci": [
+                  971.891,
+                  2846.021
+                ]
+              }
+            ],
+            "best": 2,
+            "pairs": [
+              {
+                "higher": 1
+              },
+              {
+                "higher": 2
+              }
+            ]
           }
         }
       },
@@ -5913,6 +6305,12 @@
             "id": "raincube",
             "name": "RainCube",
             "share": 0.35268
+          },
+          "best": {
+            "id": "landsat_8",
+            "name": "Landsat 8",
+            "cost": 1268.4,
+            "perHundredM": 2715.232
           },
           "runningMean": {
             "halfWidth": 1,
@@ -6422,6 +6820,49 @@
               "holds": true,
               "favors": "over"
             }
+          },
+          "bins": {
+            "groups": [
+              {
+                "lo": 0,
+                "hi": 150,
+                "missions": 13,
+                "mean": 160.381,
+                "ci": [
+                  36.791,
+                  315.821
+                ]
+              },
+              {
+                "lo": 150,
+                "hi": 1000,
+                "missions": 14,
+                "mean": 305.945,
+                "ci": [
+                  135.215,
+                  546.934
+                ]
+              },
+              {
+                "lo": 1000,
+                "hi": null,
+                "missions": 14,
+                "mean": 531.437,
+                "ci": [
+                  258.436,
+                  917.452
+                ]
+              }
+            ],
+            "best": 2,
+            "pairs": [
+              {
+                "higher": 1
+              },
+              {
+                "higher": 2
+              }
+            ]
           }
         }
       },
@@ -6507,6 +6948,12 @@
             "id": "acrimsat",
             "name": "ACRIMSAT",
             "share": 0.51316
+          },
+          "best": {
+            "id": "erbs",
+            "name": "ERBS",
+            "cost": 163.8,
+            "perHundredM": 21980.464
           },
           "runningMean": {
             "halfWidth": 1,
@@ -7016,6 +7463,49 @@
               "holds": true,
               "favors": "over"
             }
+          },
+          "bins": {
+            "groups": [
+              {
+                "lo": 0,
+                "hi": 150,
+                "missions": 13,
+                "mean": 434.842,
+                "ci": [
+                  160.716,
+                  767.941
+                ]
+              },
+              {
+                "lo": 150,
+                "hi": 1000,
+                "missions": 14,
+                "mean": 5942.806,
+                "ci": [
+                  3066.386,
+                  9301.519
+                ]
+              },
+              {
+                "lo": 1000,
+                "hi": null,
+                "missions": 14,
+                "mean": 6518.501,
+                "ci": [
+                  3443.397,
+                  9934.171
+                ]
+              }
+            ],
+            "best": 2,
+            "pairs": [
+              {
+                "higher": 1
+              },
+              {
+                "higher": null
+              }
+            ]
           }
         }
       }
@@ -7109,6 +7599,12 @@
             "id": "trace",
             "name": "TRACE",
             "share": 0.6317
+          },
+          "best": {
+            "id": "elfin",
+            "name": "ELFIN",
+            "cost": 5.4,
+            "perHundredM": 12240.741
           },
           "runningMean": {
             "halfWidth": 1,
@@ -7618,6 +8114,49 @@
               "holds": false,
               "favors": null
             }
+          },
+          "bins": {
+            "groups": [
+              {
+                "lo": 0,
+                "hi": 150,
+                "missions": 16,
+                "mean": 1745.945,
+                "ci": [
+                  407.86,
+                  3490.897
+                ]
+              },
+              {
+                "lo": 150,
+                "hi": 1000,
+                "missions": 12,
+                "mean": 2078.192,
+                "ci": [
+                  1106.361,
+                  3237.901
+                ]
+              },
+              {
+                "lo": 1000,
+                "hi": null,
+                "missions": 5,
+                "mean": 1664.131,
+                "ci": [
+                  1118.355,
+                  2283.659
+                ]
+              }
+            ],
+            "best": 1,
+            "pairs": [
+              {
+                "higher": null
+              },
+              {
+                "higher": 1
+              }
+            ]
           }
         }
       },
@@ -7709,6 +8248,12 @@
             "id": "trace",
             "name": "TRACE",
             "share": 0.47976
+          },
+          "best": {
+            "id": "iris",
+            "name": "IRIS",
+            "cost": 172.4,
+            "perHundredM": 2941.415
           },
           "runningMean": {
             "halfWidth": 1,
@@ -8218,6 +8763,49 @@
               "holds": true,
               "favors": null
             }
+          },
+          "bins": {
+            "groups": [
+              {
+                "lo": 0,
+                "hi": 150,
+                "missions": 16,
+                "mean": 511.856,
+                "ci": [
+                  191.15,
+                  897.994
+                ]
+              },
+              {
+                "lo": 150,
+                "hi": 1000,
+                "missions": 12,
+                "mean": 722.121,
+                "ci": [
+                  316.005,
+                  1231.691
+                ]
+              },
+              {
+                "lo": 1000,
+                "hi": null,
+                "missions": 5,
+                "mean": 692.028,
+                "ci": [
+                  370.33,
+                  1124.26
+                ]
+              }
+            ],
+            "best": 1,
+            "pairs": [
+              {
+                "higher": 1
+              },
+              {
+                "higher": null
+              }
+            ]
           }
         }
       },
@@ -8303,6 +8891,12 @@
             "id": "trace",
             "name": "TRACE",
             "share": 0.57909
+          },
+          "best": {
+            "id": "trace",
+            "name": "TRACE",
+            "cost": 104,
+            "perHundredM": 37798.077
           },
           "runningMean": {
             "halfWidth": 1,
@@ -8812,6 +9406,49 @@
               "holds": false,
               "favors": null
             }
+          },
+          "bins": {
+            "groups": [
+              {
+                "lo": 0,
+                "hi": 150,
+                "missions": 16,
+                "mean": 6204.923,
+                "ci": [
+                  2073.152,
+                  11733.833
+                ]
+              },
+              {
+                "lo": 150,
+                "hi": 1000,
+                "missions": 12,
+                "mean": 7714.623,
+                "ci": [
+                  4761.513,
+                  11339.809
+                ]
+              },
+              {
+                "lo": 1000,
+                "hi": null,
+                "missions": 5,
+                "mean": 4952.651,
+                "ci": [
+                  3356.811,
+                  6548.491
+                ]
+              }
+            ],
+            "best": 1,
+            "pairs": [
+              {
+                "higher": 1
+              },
+              {
+                "higher": 1
+              }
+            ]
           }
         }
       }
@@ -8899,6 +9536,12 @@
             "id": "lunar_prospector",
             "name": "Lunar Prospector",
             "share": 0.589
+          },
+          "best": {
+            "id": "mgs",
+            "name": "Mars Global Surveyor",
+            "cost": 550.4,
+            "perHundredM": 2178.961
           },
           "runningMean": {
             "halfWidth": 1,
@@ -9408,6 +10051,49 @@
               "holds": true,
               "favors": "over"
             }
+          },
+          "bins": {
+            "groups": [
+              {
+                "lo": 0,
+                "hi": 150,
+                "missions": 7,
+                "mean": 118.58,
+                "ci": [
+                  5.471,
+                  276.089
+                ]
+              },
+              {
+                "lo": 150,
+                "hi": 1000,
+                "missions": 21,
+                "mean": 530.33,
+                "ci": [
+                  306.265,
+                  798.537
+                ]
+              },
+              {
+                "lo": 1000,
+                "hi": null,
+                "missions": 9,
+                "mean": 383.077,
+                "ci": [
+                  220.119,
+                  574.057
+                ]
+              }
+            ],
+            "best": 1,
+            "pairs": [
+              {
+                "higher": 1
+              },
+              {
+                "higher": 1
+              }
+            ]
           }
         }
       },
@@ -9499,6 +10185,12 @@
             "id": "lunar_prospector",
             "name": "Lunar Prospector",
             "share": 0.56765
+          },
+          "best": {
+            "id": "mgs",
+            "name": "Mars Global Surveyor",
+            "cost": 550.4,
+            "perHundredM": 905.16
           },
           "runningMean": {
             "halfWidth": 1,
@@ -10008,6 +10700,49 @@
               "holds": true,
               "favors": null
             }
+          },
+          "bins": {
+            "groups": [
+              {
+                "lo": 0,
+                "hi": 150,
+                "missions": 7,
+                "mean": 112.818,
+                "ci": [
+                  5.471,
+                  259.093
+                ]
+              },
+              {
+                "lo": 150,
+                "hi": 1000,
+                "missions": 21,
+                "mean": 263.767,
+                "ci": [
+                  169.256,
+                  374.692
+                ]
+              },
+              {
+                "lo": 1000,
+                "hi": null,
+                "missions": 9,
+                "mean": 228.652,
+                "ci": [
+                  129.355,
+                  340.258
+                ]
+              }
+            ],
+            "best": 1,
+            "pairs": [
+              {
+                "higher": 1
+              },
+              {
+                "higher": 1
+              }
+            ]
           }
         }
       },
@@ -10099,6 +10834,12 @@
             "id": "lunar_prospector",
             "name": "Lunar Prospector",
             "share": 0.83098
+          },
+          "best": {
+            "id": "mgs",
+            "name": "Mars Global Surveyor",
+            "cost": 550.4,
+            "perHundredM": 15009.629
           },
           "runningMean": {
             "halfWidth": 1,
@@ -10608,6 +11349,49 @@
               "holds": false,
               "favors": null
             }
+          },
+          "bins": {
+            "groups": [
+              {
+                "lo": 0,
+                "hi": 150,
+                "missions": 7,
+                "mean": 1893.923,
+                "ci": [
+                  12.158,
+                  5343.547
+                ]
+              },
+              {
+                "lo": 150,
+                "hi": 1000,
+                "missions": 21,
+                "mean": 2457.596,
+                "ci": [
+                  1340.41,
+                  4013.372
+                ]
+              },
+              {
+                "lo": 1000,
+                "hi": null,
+                "missions": 9,
+                "mean": 1191.392,
+                "ci": [
+                  687.032,
+                  1842.445
+                ]
+              }
+            ],
+            "best": 1,
+            "pairs": [
+              {
+                "higher": null
+              },
+              {
+                "higher": 1
+              }
+            ]
           }
         }
       }
@@ -13197,6 +13981,125 @@
           ]
         }
       ],
+      "groups": [
+        {
+          "missions": 46,
+          "ok": 32,
+          "failed": 12,
+          "partial": 2,
+          "rate": 0.30435,
+          "byDivision": [
+            {
+              "division": "astrophysics",
+              "ok": 4,
+              "failed": 0,
+              "partial": 1
+            },
+            {
+              "division": "biological-physical",
+              "ok": 4,
+              "failed": 0,
+              "partial": 1
+            },
+            {
+              "division": "earth",
+              "ok": 11,
+              "failed": 2,
+              "partial": 0
+            },
+            {
+              "division": "heliophysics",
+              "ok": 10,
+              "failed": 6,
+              "partial": 0
+            },
+            {
+              "division": "planetary",
+              "ok": 3,
+              "failed": 4,
+              "partial": 0
+            }
+          ]
+        },
+        {
+          "missions": 60,
+          "ok": 53,
+          "failed": 7,
+          "partial": 0,
+          "rate": 0.11667,
+          "byDivision": [
+            {
+              "division": "astrophysics",
+              "ok": 12,
+              "failed": 1,
+              "partial": 0
+            },
+            {
+              "division": "biological-physical",
+              "ok": 0,
+              "failed": 0,
+              "partial": 0
+            },
+            {
+              "division": "earth",
+              "ok": 11,
+              "failed": 3,
+              "partial": 0
+            },
+            {
+              "division": "heliophysics",
+              "ok": 12,
+              "failed": 0,
+              "partial": 0
+            },
+            {
+              "division": "planetary",
+              "ok": 18,
+              "failed": 3,
+              "partial": 0
+            }
+          ]
+        },
+        {
+          "missions": 35,
+          "ok": 34,
+          "failed": 1,
+          "partial": 0,
+          "rate": 0.02857,
+          "byDivision": [
+            {
+              "division": "astrophysics",
+              "ok": 7,
+              "failed": 0,
+              "partial": 0
+            },
+            {
+              "division": "biological-physical",
+              "ok": 0,
+              "failed": 0,
+              "partial": 0
+            },
+            {
+              "division": "earth",
+              "ok": 14,
+              "failed": 0,
+              "partial": 0
+            },
+            {
+              "division": "heliophysics",
+              "ok": 5,
+              "failed": 0,
+              "partial": 0
+            },
+            {
+              "division": "planetary",
+              "ok": 8,
+              "failed": 1,
+              "partial": 0
+            }
+          ]
+        }
+      ],
       "under": {
         "missions": 46,
         "shortfall": 14,
@@ -13381,6 +14284,74 @@
             "ci": [
               0.01,
               0.48
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "missions": 34,
+          "reached": 14,
+          "without": 20,
+          "undated": 0,
+          "formulation": {
+            "median": 5.8,
+            "min": 3.34,
+            "ci": [
+              3.88,
+              8.07
+            ]
+          },
+          "science": {
+            "median": 1.65,
+            "min": 0.25,
+            "ci": [
+              0.63,
+              2.59
+            ]
+          }
+        },
+        {
+          "missions": 53,
+          "reached": 53,
+          "without": 0,
+          "undated": 0,
+          "formulation": {
+            "median": 5.92,
+            "min": 2.7,
+            "ci": [
+              5.39,
+              6.92
+            ]
+          },
+          "science": {
+            "median": 0.55,
+            "min": -3.09,
+            "ci": [
+              0.41,
+              1.01
+            ]
+          }
+        },
+        {
+          "missions": 34,
+          "reached": 34,
+          "without": 0,
+          "undated": 0,
+          "formulation": {
+            "median": 9.41,
+            "min": 5.57,
+            "ci": [
+              7.58,
+              11.41
+            ]
+          },
+          "science": {
+            "median": 0.25,
+            "min": -7.29,
+            "ci": [
+              0.1,
+              0.43
             ]
           }
         }

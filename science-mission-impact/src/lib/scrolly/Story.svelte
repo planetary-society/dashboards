@@ -6,10 +6,11 @@
 	// one's high-impact papers a year, every division's (then the threshold marked, SMALL), then
 	// DOLLAR_DIVISION's citations against cost and per dollar (the line they would follow if small
 	// missions did better, then as well, then their running average), then every division's running
-	// average. 2 of 4, failure rates by cost tier, then one division's split (FAIL_NOTE). 3 of 4, time to
-	// science: the Analysis page's time bars, from project start, then from the start of science. 4 of 4,
+	// average, then the same rates as a bar per cost group (BINS). 2 of 4, failure rates by cost group
+	// (FAILURE). 3 of 4, time to science: the Analysis page's time bars over the same groups, from
+	// project start, then from the start of science. 4 of 4,
 	// CLPS. Then the four answers (FINDINGS) and the close over the opening's rising thumbnails.
-	// Steps share a graphic state (PAPERS/TOP, FAILURE/FAIL_NOTE, SCATTER/DOWN/FLAT/FIT), so long text
+	// Steps share a graphic state (PAPERS/TOP, SCATTER/DOWN/FLAT/FIT), so long text
 	// is split across them. Every figure in the copy comes from site.story (the packager) or site itself;
 	// the component only lays out.
 	import Scroller from './Scroller.svelte';
@@ -20,16 +21,17 @@
 	import FocusChart from './FocusChart.svelte';
 	import LanesChart from './LanesChart.svelte';
 	import DollarChart from './DollarChart.svelte';
+	import BinsChart from './BinsChart.svelte';
 	import ClpsChart from './ClpsChart.svelte';
 	import TimeBars from '$lib/analysis/TimeBars.svelte';
 	import OutcomeChart from './OutcomeChart.svelte';
-	import { gridLayout, rugLayout, skylineLayout, skylineHit, laneHit, primerLayout, tierOutcomeLayout, focusLayout, costLayout, perDollarLayout } from './layouts.js';
-	import { failureItems, highlightDivision, withHidden } from './items.js';
-	import { int, listify, money, moneyWords, spell, upperFirst } from '$lib/format.js';
+	import { gridLayout, rugLayout, skylineLayout, skylineHit, laneHit, primerLayout, tierOutcomeLayout, focusLayout, costLayout, perDollarLayout, binsLayout } from './layouts.js';
+	import { failureItems, withHidden } from './items.js';
+	import { int, listify, money, moneyWords, spell, years } from '$lib/format.js';
 	import { largerAnnualMedians, noClearSmallAdvantage, significant } from '$lib/copy/discussion.js';
 	import { calendarYears } from '$lib/copy/window.js';
 	import { analysisHref, methodsHref } from '$lib/paths.js';
-	import { CLOSE_YEARS, clearlyHigher, clpsCosts, divisionShortfalls, mostUnreached, scienceOrder } from '$lib/copy/analysis.js';
+	import { CLOSE_YEARS, clpsCosts, mostUnreached, scienceOrder } from '$lib/copy/analysis.js';
 
 	let { site, scrolly } = $props();
 	const TITLE = 0, MOTIVATION = 1, QUESTIONS = 2, OVERVIEW = 3;
@@ -38,17 +40,14 @@
 	// 1 of 4: the walk-through division's missions by cost and their high-impact papers a year (ONE,
 	// BARS), every compared division's (FLOORS; SMALL: the threshold dashed through them and washed down
 	// to the axis's left edge), then per dollar (CITES: DOLLAR_DIVISION's citations against cost;
-	// SCATTER…FIT: its missions per dollar, one line per step; FITS: every compared division's line)
-	const ONE = 8, BARS = 9, FLOORS = 10, SMALL = 11, CITES = 12, SCATTER = 13, DOWN = 14, FLAT = 15, FIT = 16, FITS = 17;
+	// SCATTER…FIT: its missions per dollar, one line per step; FITS: every compared division's line;
+	// BINS: the same rates in three cost groups)
+	const ONE = 8, BARS = 9, FLOORS = 10, SMALL = 11, CITES = 12, SCATTER = 13, DOWN = 14, FLAT = 15, FIT = 16, FITS = 17, BINS = 18;
 	// the per-dollar walk-through's division; the primer and the bars follow story.focusDivision (also
 	// Planetary). One that isn't compared leaves CITES…FIT blank, as a missing focus division blanks ONE and BARS
 	const DOLLAR_DIVISION = 'planetary';
-	// 2 of 4: failures by cost tier (FAILURE), then one division washed on the same chart (FAIL_NOTE),
-	// with its split at one tier edge ($M) stated only when its intervals say the rates differ (clearlyHigher)
-	const FAILURE = 18, FAIL_NOTE = 19;
-	const NOTE = { division: 'planetary', edge: 350 };
-	// FAILURE's comparison side: the tiers from this edge ($M) up, pooled from the packaged per-tier counts
-	const FAIL_SPLIT = { over: 350 };
+	// 2 of 4: failures by cost group (FAILURE; site.tiers are the Analysis page's three groups here, BINS's)
+	const FAILURE = 19;
 	// 3 of 4, time to science; 4 of 4, CLPS; then the four answers and the close over the opening's drift
 	const TIME_FORM = 20, TIME_SCI = 21, CLPS = 22, CLPS_COMPARE = 23, FINDINGS = 24, CLOSE = 25;
 	// Reduced motion: every scrubbed graphic renders complete.
@@ -89,7 +88,6 @@
 	// active mission window, with per-division facts
 	const rate = $derived(story.rate);
 	const rateRows = $derived(rate?.divisions ?? []);
-	const tallest = $derived(rateRows.find((d) => d.division === story.focusDivision)?.largest ?? null);
 	// FLOORS compares annual medians; SMALL names standouts on the same annual measure.
 	const leadsLarger = $derived(largerAnnualMedians(rankable.map((d) => rateRows.find((r) => r.division === d.slug))));
 	const smallStandouts = $derived(rateRows.filter((d) => d.bestSmall && d.larger.median != null && d.bestSmall.perYear > d.larger.median));
@@ -99,53 +97,49 @@
 	const tenths = (v) => (v == null ? '—' : `${(v * 100).toFixed(1)}%`);
 	// The failure answer's gate: small missions fall short more often than larger ones beyond chance (the
 	// packaged two-sided Fisher exact test, over every costed mission). Pooled only: per-division
-	// rates are too small to compare, so only NOTE's own split is ever stated.
+	// rates are too small to compare.
 	const failsMore = $derived(failure.higher === 'under' && significant(failure.fisherP));
 
 	// Each mission's citations per dollar, including zeros, averaged across nearby costs.
 	const averages = $derived(new Map(story.perDollar.map((d) => [d.division, d.runningMean])));
 	const averaged = $derived(story.perDollar.filter((d) => d.runningMean));
-	const dollarAverage = $derived(averages.get(DOLLAR_DIVISION) ?? null);
-	const dollarName = $derived(story.perDollar.find((d) => d.division === DOLLAR_DIVISION)?.name ?? '');
+	// DOLLAR_DIVISION's packaged per-dollar facts: its running average, best return (SCATTER) and cost groups
+	const dollarRow = $derived(story.perDollar.find((d) => d.division === DOLLAR_DIVISION) ?? null);
+	const dollarAverage = $derived(dollarRow?.runningMean ?? null);
+	const dollarName = $derived(dollarRow?.name ?? '');
 	const dollarField = $derived(dollarName.toLowerCase()); // "planetary science" mid-sentence
 	// The headline tests the small/larger group difference, not the running curve's shape or ribbon.
 	const noneSmallBetter = $derived(noClearSmallAdvantage(rankable.map((d) => averages.get(d.slug)?.comparison)));
 	// Fewer high-impact papers per mission in every division, and no division where small missions did
 	// clearly better per dollar. It gates only the close's line on replacing larger missions.
 	const verdict = $derived(everyLower && noneSmallBetter);
+	// FIT's "peaks in the mid-cost range": DOLLAR_DIVISION's middle cost group over both its neighbours with any one
+	// mission left out (bins.pairs), the test BINS states next; the running curve's own peak is not read
+	const dollarMiddle = $derived(dollarRow?.bins?.groups.length === 3 && dollarRow.bins.pairs.every((p) => p.higher === 1));
+	// SCATTER names DOLLAR_DIVISION's highest return per dollar, packaged as perDollar.best
+	const dollarBest = $derived(dollarRow?.best ?? null);
 
-	// TIME_FORM and TIME_SCI: the Analysis page's own tiers and gates (src/lib/copy/analysis.js)
+	// TIME_FORM and TIME_SCI: the Analysis page's gates (src/lib/copy/analysis.js) over the three cost groups
 	const timed = $derived(index === TIME_FORM || index === TIME_SCI);
 	const timeFirst = $derived(site.time.tiers[0]);
 	const science = $derived(scienceOrder(site.time) != null);
-	// most of the cheapest tier's missions that flew have no high-impact paper yet (the time bars read the lifetime ranking)
+	// most of the cheapest group's missions that flew have no high-impact paper yet (the time bars read the lifetime ranking)
 	const mostNone = $derived(mostUnreached(timeFirst));
 	// the cheapest missions that reached one took about as long from project start as mid-size missions:
-	// the cheapest tier's median within CLOSE_YEARS of the quickest of the tiers below the costliest two
+	// the cheapest group's median within CLOSE_YEARS of the quickest of the groups below the costliest
 	const cheapAsQuick = $derived.by(() => {
-		const [first, ...mid] = site.time.tiers.slice(0, -2).map((t) => t.formulation.median);
+		const [first, ...mid] = site.time.tiers.slice(0, -1).map((t) => t.formulation.median);
 		const known = mid.filter((m) => m != null);
 		return first != null && known.length > 0 && Math.abs(first - Math.min(...known)) < CLOSE_YEARS;
 	});
-	// FAILURE points at the small side's columns: the tiers at or under the threshold
-	const smallColumns = $derived(site.tiers.filter((t) => t.hi != null && t.hi <= story.referenceCost).length);
-	const overRate = $derived.by(() => {
-		const above = site.failureTiers.filter((_, i) => site.tiers[i].lo != null && site.tiers[i].lo >= FAIL_SPLIT.over);
-		const n = above.reduce((s, t) => s + t.missions, 0);
-		return n ? above.reduce((s, t) => s + t.failed + t.partial, 0) / n : null;
-	});
+	// the middle cost group, named in BINS and FAILURE (the first group is the small side, at or under the
+	// threshold, so FAILURE's "the first column")
+	const mid = $derived(site.tiers[1]);
 
 	// CLPS: each lander against each comparator at the same age (packaged), and which comparator cost
 	// about as much as one lander or all of them ("about": within a quarter either way)
 	const { compared: clpsCompared, likeOne } = $derived(clpsCosts(clps));
 	const behindEach = $derived(clps.comparison?.behindEach === true);
-
-	// FAIL_NOTE: NOTE's division across every tier, and either side of its edge
-	const note = $derived.by(() => {
-		const f = divisionShortfalls(site.tiers, site.failureTiers, NOTE.division, NOTE.edge);
-		// an edge that is no longer a tier edge leaves below/above null: the split drops, never the step
-		return { ...f, name: site.divisions.find((d) => d.slug === NOTE.division)?.name ?? '', split: clearlyHigher(f.below, f.above) };
-	});
 
 	const solid = (pos) => new Map([...pos].map(([id, p]) => [id, { ...p, variant: 'solid', opacity: 1 }]));
 
@@ -172,9 +166,19 @@
 	// dollarAverage is set only for a compared division, so the find always lands
 	const dollarOne = $derived(ready && dollarAverage ? perDollarLayout(tiles, W, H, { divisions: rankable.filter((d) => d.slug === DOLLAR_DIVISION), averages, titled: true }) : null);
 	const dollarAll = $derived(cost ? perDollarLayout(tiles, W, H, { divisions: rankable, averages, x: cost.x, titled: true }) : null);
+	// BINS: the same panels, a bar per cost group (a division without packaged bins keeps an empty panel)
+	const bins = $derived(new Map(story.perDollar.map((d) => [d.division, d.bins ?? null])));
+	const binsL = $derived(dollarAll ? binsLayout(dollarAll, bins, { compact }) : null);
+	// BINS copy: the compared divisions' three packaged cost groups; the middle group stands over the costliest
+	// only where the packaged pair ordering survived dropping any one mission (bins.pairs), and a division
+	// where the costliest group led is named as the exception
+	const binRows = $derived(rankable.map((d) => ({ name: d.name, ...bins.get(d.slug) })).filter((b) => b.groups?.length === 3));
+	const midOverLarge = $derived(binRows.filter((b) => b.pairs?.[1]?.higher === 1));
+	const largeOverMid = $derived(binRows.filter((b) => b.pairs?.[1]?.higher === 2));
+	const midMost = $derived(binRows.length > 0 && midOverLarge.length * 2 > binRows.length);
 	// CITES: DOLLAR_DIVISION's citations themselves, on the lanes' cost axis, before dividing by cost
 	const citesL = $derived(cost && dollarAverage ? perDollarLayout(tiles, W, H, { divisions: rankable.filter((d) => d.slug === DOLLAR_DIVISION), averages, x: cost.x, citations: true, titled: true }) : null);
-	// FAILURE: every costed mission by cost tier, up if it met its goals, down if not
+	// FAILURE: every costed mission by cost group, up if it met its goals, down if not
 	const outcomeL = $derived(ready ? tierOutcomeLayout(tiles, site.tiers, W, H) : null);
 	// Hidden squares wait where the failure chart has them,
 	// unless `fallback` places them first; withHidden only looks positions up, so no merged Map is built
@@ -219,10 +223,7 @@
 		if (index <= OVERVIEW || index >= FINDINGS) return hidden(solid(grid.pos), grid.pos);
 		if (skyline) return hidden(solid(rug.pos), grid.pos);
 		if (primed) return hidden(new Map(), rug.pos);
-		if (index === FAILURE || index === FAIL_NOTE) {
-			const marked = failureItems(tiles, outcomeL);
-			return hidden(index === FAIL_NOTE ? highlightDivision(marked, tiles, NOTE.division) : marked, rug.pos);
-		}
+		if (index === FAILURE) return hidden(failureItems(tiles, outcomeL), rug.pos);
 		// the other divisions wait, hidden, on the lanes FLOORS draws
 		if (focused && focusL) return hidden(failureItems(tiles, focusL), cost.pos);
 		// the rates' bars rise from the shelves the squares sit on: the squares wait there, hidden
@@ -231,6 +232,8 @@
 		if (plotted) return hidden(dollarOne ? failureItems(tiles, dollarOne) : new Map(), dollarAll.pos);
 		// the other divisions wait, hidden, where FITS brings them in
 		if (index === CITES && citesL) return hidden(failureItems(tiles, citesL), dollarAll.pos);
+		// BINS draws no squares: they fade where FITS left them
+		if (index === BINS) return hidden(new Map(), dollarAll.pos);
 		// the missions FITS leaves out wait, hidden, where FAILURE's tier chart brings them in
 		if (index === FITS) return hidden(failureItems(tiles, dollarAll), outcomeL.pos);
 		// the time steps and CLPS: no squares, each fades where the tier chart left it
@@ -295,16 +298,16 @@
 				{#if reached >= CITED && primerL}
 					<Primer layout={primerL} {primer} years={calendarYears(site.fullPolicy)} hot={hotBar} build={index === PAPERS ? span(0.15, 0.5) : index > PAPERS ? 1 : 0} highlight={index === TOP} visible={primed} {compact} width={W} height={H} />
 				{/if}
-				{#if reached >= FITS}
-					<OutcomeChart layout={outcomeL} visible={index === FAILURE || index === FAIL_NOTE} {compact} width={W} height={H} />
+				{#if reached >= BINS}
+					<OutcomeChart layout={outcomeL} visible={index === FAILURE} {compact} width={W} height={H} />
 				{/if}
-				{#if reached >= FAIL_NOTE}
+				{#if reached >= FAILURE}
 					<div class="time-panel" class:visible={timed} aria-hidden="true">
 						<TimeBars tiers={site.tiers} time={site.time} only={index === TIME_SCI ? 'science' : 'formulation'} title="Median time to first high-impact paper from {index === TIME_SCI ? 'start of science operations' : 'project start'}" height={H} />
 					</div>
 				{/if}
 				{#if reached >= TOP && focusL}
-					<FocusChart layout={focusL} name={focusName} largest={tallest} {grow} bars={index >= BARS} visible={focused} {compact} width={W} height={H} />
+					<FocusChart layout={focusL} name={focusName} {grow} bars={index >= BARS} visible={focused} {compact} width={W} height={H} />
 				{/if}
 				<!-- the lanes draw the focus chart's bars too, so at FLOORS they move into their band -->
 				{#if reached >= TOP}
@@ -318,6 +321,9 @@
 				{/if}
 				{#if reached >= FIT && dollarAll}
 					<DollarChart layout={dollarAll} title="Citations per {money(100)} by division" confidence visible={index === FITS} {compact} width={W} height={H} />
+				{/if}
+				{#if reached >= FITS && binsL}
+					<BinsChart layout={binsL} title="Citations per {money(100)} by cost group" visible={index === BINS} {compact} width={W} height={H} />
 				{/if}
 				{#if reached >= TIME_SCI}
 					<ClpsChart {clps} title="Total papers by month since each mission’s start" draw={index === CLPS ? clpsFirst : index > CLPS ? 1 : 0} drawComparators={index === CLPS_COMPARE ? clpsDraw : index > CLPS_COMPARE ? 1 : 0} visible={(index === CLPS && clpsIn) || index === CLPS_COMPARE} {compact} width={W} height={H} />
@@ -342,8 +348,8 @@
 		<!-- MOTIVATION: the text rises over the title's thumbnails, still drifting, and takes the title's
 		     place; it pauses in the step's frame, centred on the screen. -->
 		<section data-step data-bleed><div><div class="step panel">
-			<p>NASA has repeatedly experimented with <strong class="neptuneBlue">smaller, cheaper, and riskier science missions</strong>.</p>
-			<p>But no broad survey of scientific performance had been done to validate these efforts.</p>
+			<p>As historic proposed cuts lead to delays and mission cancelations, NASA is again looking to <strong class="neptuneBlue">smaller and cheaper projects</strong> to replace them.</p>
+			<p>Could that work?</p>
 		</div></div>
 		</section>
 		<!-- QUESTIONS: the four questions in their own box, over the same drift. They are the four parts'
@@ -351,20 +357,19 @@
 		<section data-step data-bleed><div><div class="step panel">
 			<p>We asked four questions:</p>
 			<ol class="questions">
-				<li>Is there a relationship between mission cost and scientific impact?</li>
-				<li>Does lower cost mean more mission failures?</li>
-				<li>Does time to science scale with cost?</li>
-				<li>Are commercial lunar landers producing similar science to NASA-led missions?</li>
+				<li>Does scientific impact per-dollar vary with mission cost?</li>
+				<li>Do lower cost missions fail more often?</li>
+				<li>How does time to science with cost?</li>
+				<li>What is the scientific productivity of commercial lunar landers?</li>
 			</ol>
 		</div></div>
 		</section>
 		<!-- OVERVIEW: the mosaic fades in under what we studied -->
 		<section data-step data-scrub><div class="step">
-			<p>To answer them, we studied the output of <strong>{int(site.missions)} NASA-led science missions</strong> launched from {site.launchYears[0]} to {site.launchYears[1]}, across all {spell(site.divisions.length)} of the agency’s science divisions.</p>
+			<p>To answer these questions, we studied the publication outputs of <strong>{int(site.missions)} NASA-led science missions</strong> launched from {site.launchYears[0]} to {site.launchYears[1]}, across all {spell(site.divisions.length)} of the agency’s science divisions.</p>
 		</div></section>
 		<!-- CORPUS: the skyline, where the explanation of how we measured begins -->
 		<section data-step data-scrub><div class="step">
-			<p class="neptuneBlue"><strong>What we did</strong></p>
 			<p>We assembled a set of <strong>{int(site.papersDistinct)} peer-reviewed papers</strong> associated with these science missions.</p>
 			<p>Papers published in peer-reviewed academic journals are a proxy for <span class="neptuneBlue"><strong><em>scientific productivity</em></strong></span>.</p>
 		</div></section>
@@ -376,47 +381,47 @@
 		<!-- PAPERS: the focus division's papers by citations, grey -->
 		<section data-step data-scrub><div class="step">
 			{#if primer && primerMedian != null}
-				<p>Science papers are not cited equally.</p>
-				<p>For example, half of all {field} papers in our database accrued {spell(primerMedian)} or fewer citations in their first {spell(calendarYears(site.fullPolicy))} years.</p><p>The most cited paper received {int(primer.counts.length - 1)}.</p>
+				<p>Papers are not cited equally.</p>
+				<p>In <strong>{field}</strong>, the most cited paper had {int(primer.counts.length - 1)} citations. But half accrued {spell(primerMedian)} or fewer citations in their first {spell(calendarYears(site.fullPolicy))} years.</p><p class="aside">Citations are counted within {spell(site.fullPolicy.citationYears)} years of a paper’s publication date. <a href={methodsHref('windows')}>Why?</a></p>
 			{/if}
 		</div></section>
 		<!-- TOP: the same bars, the top 10% in blue; the one definition every high-impact chart but the time bars uses -->
 		<section data-step><div class="step">
-			<p>We call a paper <span class="neptuneBlue"><strong><em>high-impact</em></strong></span> when it drew more citations in its first {spell(calendarYears(site.fullPolicy))} years than 90% of the mission papers in its field.</p>
-			{#if primer}<p>In {field}, that means {primer.cutoff} or more.</p>{/if}
+			<p>We consider a paper to be <span class="neptuneBlue"><strong><em>high-impact</em></strong></span> when it has more citations than 90% of the other papers in its field in our data set.</p>
+			{#if primer}<p class="aside">In {field}, that means papers with {primer.cutoff} citations or more are high-impact.</p>{/if}
 		</div></section>
 		<!-- ONE and BARS always render, so later steps keep their numbers; with no focus division they're blank -->
 		<!-- ONE: the focus division alone on the cost axis; the first chart with failure marks, so the key is here -->
 		<section data-step><div class="step">
 			{#if focus && focusCount}
-				<p class="part neptuneBlue"><strong>Cost and scientific productivity</strong></p>
-				<p>Here, {int(focusCount)} {field} missions are ordered by life-cycle cost, adjusted for inflation.</p>
-				<p class="key-line"><span class="key mark-lost" role="img" aria-label="A red X"></span> denotes a total mission failure; <span class="key mark-partial" role="img" aria-label="a single red stroke"></span> denotes a partial failure.</p>
+				<p class="part neptuneBlue"><strong>The rate of high-impact papers by cost</strong></p>
+				<p>Here, {int(focusCount)} {field} missions are ordered left-to-right by their total cost, adjusted for inflation.</p>
+				<p class="aside"><span class="key mark-lost" role="img" aria-label="A red X"></span> denotes a total mission failure; <span class="key mark-partial" role="img" aria-label="a single red stroke"></span> denotes a partial failure.</p>
 			{/if}
 		</div></section>
 		<!-- BARS: each mission's high-impact papers a year -->
 		<section data-step data-scrub><div class="step">
 			{#if focus && rate}
-				<p>Each bar shows a mission’s average high-impact papers per year over its measured publication window.</p>
+				<p>Each bar shows a mission’s average number of high-impact papers published per year over its measured publication window.</p>
 			{/if}
 		</div></section>
 		<!-- FLOORS: the same yearly rate for every compared division, a band each on the lanes' cost axis -->
 		<section data-step><div class="step">
-			{#if leadsLarger}<p>Across the {spell(rankable.length)} divisions shown, larger missions tend to <strong>produce more high-impact papers per year</strong>.</p>{/if}
+			{#if leadsLarger}<p>Across the {spell(rankable.length)} divisions shown, larger missions tend to <strong>produce more high-impact papers per year</strong>, as you would expect.</p><p>The question is what they produce per dollar.</p>{/if}
 			{#if leftOut.length}<p class="aside">The {listify(leftOut.map((d) => d.name))} division {leftOut.length === 1 ? 'has' : 'have'} too few missions, so {leftOut.length === 1 ? 'it isn’t' : 'they aren’t'} shown here.</p>{/if}
 		</div></section>
 		<!-- SMALL: the same lanes, the threshold dashed through them; where "very low cost" is defined. A division is
 		     named as the exception only while its best small mission beats its larger missions' median (smallStandouts) -->
 		<section data-step><div class="step">
 			<p>Missions below {moneyWords(story.referenceCost)} are considered very low cost.</p>
-			{#if smallStandouts.length}<p>Some stand out: {listify(smallStandouts.map((d) => `${d.bestSmall.name} (${d.name})`))} produced high-impact papers at a rate comparable to much more expensive missions.</p>{/if}
+			{#if smallStandouts.length}<p>Some stand out: {listify(smallStandouts.map((d) => `${d.bestSmall.name} (${d.name})`))} <strong>produced high-impact papers at a rate comparable to much more expensive missions</strong>.</p>{/if}
 			<p>Most produce <strong>few or no high-impact papers.</strong></p>
 		</div></section>
 		<!-- CITES: DOLLAR_DIVISION's missions by cost and by the citations they drew, before per dollar -->
 		<section data-step><div class="step">
 			{#if citesL}
 				<p><span class="neptuneBlue"><strong>Scientific impact per dollar</strong></span></p>
-				<p>Plotting missions by cost and total citations in each publication window shows a clear relationship between total cost and total scientific impact.</p><p>Missions in {dollarField} are shown here.</p>
+				<p>Plotting missions by cost and total citations in each publication window shows a clear relationship between total cost and total scientific impact.</p><p>Missions in {dollarField} are shown here.</p><p>Bigger budgets buy more science in total. What they buy per dollar is the next question.</p>
 			{/if}
 		</div></section>
 		<!-- SCATTER, DOWN, FLAT and FIT always render, so later steps keep their numbers; without DOLLAR_DIVISION data they're blank -->
@@ -424,6 +429,7 @@
 		<section data-step><div class="step">
 			{#if dollarAverage}
 				<p>Dividing each mission’s citations by cost compares citations per {moneyWords(100)} spent. This can be thought of as <strong>scientific impact per dollar</strong>.</p>
+				{#if dollarBest}<p>The highest return per dollar in {dollarField} came from {dollarBest.name}, a {moneyWords(dollarBest.cost)} mission.</p>{/if}
 			{/if}
 		</div></section>
 		<!-- DOWN: the line the missions would follow if small ones got more for their money -->
@@ -442,6 +448,7 @@
 		<section data-step data-scrub><div class="step">
 			{#if dollarAverage}
 				<p>This is the actual running average of impact per dollar. In {dollarField}, very low-cost missions returned poor results, primarily due to mission failures.</p>
+				{#if dollarMiddle}<p>The average peaks in the mid-cost range.</p>{/if}
 				<p class="aside"><a href={methodsHref('running-averages')}>How we calculate the averages</a></p>
 			{/if}
 		</div></section>
@@ -455,29 +462,30 @@
 				<p class="aside">Shading shows a 95% interval for the average at each cost.</p>
 			{/if}
 		</div></section>
-		<!-- FAILURE: every costed mission by cost tier, up if it met its goals, down if it failed or fell short -->
+		<!-- BINS: the same rates in the Analysis page's three cost groups, a bar each per division -->
+		<section data-step><div class="step">
+			{#if binRows.length}
+				<p>The same missions, grouped by cost.</p>
+				{#if midOverLarge.length}<p><strong class="neptuneBlue">Mid-cost missions, between {moneyWords(mid.lo)} and {moneyWords(mid.hi)}, matched or beat the most expensive missions on impact per dollar in {midOverLarge.length === binRows.length ? 'every division' : `${spell(midOverLarge.length)} of the ${spell(binRows.length)} divisions`}.</strong></p>{/if}
+				{#if largeOverMid.length}<p>In {listify(largeOverMid.map((b) => b.name))}, the most expensive missions led.</p>{/if}
+				<p class="aside">Bars are averages of the missions in each group, failures counted as zero, with 95% intervals.</p>
+			{/if}
+		</div></section>
+		<!-- FAILURE: every costed mission by cost group, up if it met its goals, down if it failed or fell short -->
 		<section data-step><div class="step">
 			<p class="part neptuneBlue"><strong>Mission failure rates
 			</strong></p>
-			<p>Very low-cost missions (the first {spell(smallColumns)} columns) have a full or partial failure rate of {tenths(failure.under.rate)}.</p><p>For missions costing above {moneyWords(FAIL_SPLIT.over)}, that rate is {tenths(overRate)}.</p>
-		</div></section>
-		<!-- FAIL_NOTE: the same chart, NOTE's division washed; its split either side of the edge only under clearlyHigher -->
-		<section data-step><div class="step">
-			{#if note.split}
-				<p>{note.name} has one of the highest failure rates for very low-cost missions.</p><p>Below {moneyWords(NOTE.edge)}, {spell(note.below.short)} out of {spell(note.below.missions)} {note.name} missions between {site.launchYears[0]} and {site.launchYears[1]} failed.</p><p>The program’s most expensive failure, Mars Observer, succumbed to a hardware issue traced to the use of a commercial spacecraft bus designed for Earth orbit.</p>
-			{:else}
-				<p>{upperFirst(spell(note.all.short))} of {spell(note.all.missions)} <strong class="neptuneBlue">{note.name}</strong> missions failed or fell short of their goals.</p>
-			{/if}
+			<p>Very low-cost missions (the first column) have a full or partial failure rate of {tenths(failure.under.rate)}.</p><p>For mid-cost missions, between {moneyWords(mid.lo)} and {moneyWords(mid.hi)}, it is {tenths(site.failureTiers[1].rate)}; above {moneyWords(mid.hi)}, {tenths(site.failureTiers[2].rate)}.</p>
 		</div></section>
 		<!-- TIME_FORM: years to a first high-impact paper, counted from the start of formulation -->
 		<section data-step><div class="step">
 			<p class="part neptuneBlue"><strong>Time to high-impact science</strong></p>
-			<p>Lower-cost missions commonly take about 5 1/2 years to produce a high-impact science paper, when measured from the start of project formulation to the paper’s publication date.</p>
+			<p>Lower-cost missions commonly take about {years(timeFirst.formulation.median)} years to produce a high-impact science paper, when measured from the start of project formulation to the paper’s publication date.</p>
 			<p>More expensive missions tend to take longer due to longer development and transit times before science operations can begin.</p>
 		</div></section>
-		<!-- TIME_SCI: the same tiers, counted from the start of science operations -->
+		<!-- TIME_SCI: the same groups, counted from the start of science operations -->
 		<section data-step><div class="step">
-			{#if science}<p>If you measure from the start of science operations, more expensive missions tend to lead to high-impact papers almost immediately.</p>{/if}
+			{#if science}<p>If you measure from the start of science operations, more expensive missions tend to lead to high-impact papers almost immediately.</p><p>Both clocks matter: one counts the wait from a project’s approval, the other from its first data.</p>{/if}
 		</div></section>
 		<!-- CLPS: the commercial case study the motivation names -->
 		<section data-step data-scrub><div class="step">
@@ -499,7 +507,7 @@
 			<ul class="answers">
 				<li>
 					<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M15 8.5c-.6-.9-1.7-1.5-3-1.5-1.9 0-3 1-3 2.4 0 3.2 6 1.8 6 5 0 1.4-1.2 2.6-3 2.6-1.4 0-2.6-.6-3.2-1.6M12 5v2M12 17v2" /></svg>
-					<span><strong>Very low-cost missions do not provide a clear advantage in science per dollar, and neither do very expensive ones.</strong> For most divisions, the mid-cost missions tend to return excellent efficiency.</span>
+					<span>{#if midMost}<strong>Mid-cost missions tend to return the best efficiency:</strong> in most divisions they matched or beat the most expensive missions on science per dollar. Very low-cost missions do not provide a clear advantage, and neither do very expensive ones.{:else}<strong>Very low-cost missions do not provide a clear advantage in science per dollar, and neither do very expensive ones.</strong>{/if}</span>
 				</li>
 				<li>
 					<span class="icon key mark-lost" aria-hidden="true"></span>
@@ -511,7 +519,7 @@
 				</li>
 				<li>
 					<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 10h8l1.5 5h-11zM12 10V6M10 6h4M7 15l-2.5 4M17 15l2.5 4M3 19h4M17 19h4" /></svg>
-					<span>{#if behindEach}<strong>CLPS has yet to demonstrate significant scientific productivity.</strong> Each mission has, so far, produced fewer papers than comparable NASA-led science missions. {:else if clps.comparison?.behindAll}<strong>Commercial landers trail so far.</strong> Together, they have fewer papers than comparable NASA missions at the same age.{:else if clps.comparison?.behindAll === false}<strong>Commercial landers are keeping pace</strong> with comparable NASA missions so far.{:else}<strong>Commercial landers</strong> are too new to compare with NASA missions yet.{/if}</span>
+					<span>{#if behindEach}<strong>CLPS has yet to demonstrate comparable scientific productivity.</strong> Each mission has, so far, produced fewer papers than comparable NASA-led science missions. {:else if clps.comparison?.behindAll}<strong>Commercial landers trail so far.</strong> Together, they have fewer papers than comparable NASA missions at the same age.{:else if clps.comparison?.behindAll === false}<strong>Commercial landers are keeping pace</strong> with comparable NASA missions so far.{:else}<strong>Commercial landers</strong> are too new to compare with NASA missions yet.{/if}</span>
 				</li>
 			</ul>
 		</div></div>
@@ -520,8 +528,9 @@
 		     doesn't show (nothing suggests replacement) -->
 		<section data-step data-bleed><div><div class="step panel">
 			<p><strong>Very low-cost missions are worth doing:</strong> They help train future mission leaders, prove out new technology, and can return good science.</p>
-			{#if verdict}<p><strong>But nothing in this record demonstrates they can <em>replace</em> the scientific impact of more complex and costly missions.</strong></p>{/if}
+			{#if verdict}<p>But nothing in this record demonstrates they can <em>replace</em> the scientific impact of more complex and costly missions.</p>{/if}
 			<p>Conversely, flagship missions are worth doing, too. Citation efficiency is not the only measure of value. Larger missions tend to break new ground, provide unique data, and develop technologies that enable subsequent smaller missions.</p>
+			{#if midMost}<p>The strongest returns per dollar in this record came from the middle of the cost range: Discovery- and Explorer-class missions, when implemented well.</p>{/if}
 			<p>Explore the data yourself. Scroll down to access our entire dataset by division.</p>
 		</div></div></section>
 	{/snippet}

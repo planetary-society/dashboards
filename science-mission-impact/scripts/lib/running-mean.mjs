@@ -1,5 +1,5 @@
-import { quantile } from './analysis.mjs';
-import { byText } from './util.mjs';
+import { inTier, quantile, ranges } from './analysis.mjs';
+import { byText, round } from './util.mjs';
 
 const HALF_WIDTH = 1; // one log10-cost unit: neighbours within a factor of ten
 const RESAMPLES = 2000;
@@ -18,6 +18,27 @@ const interval = (values) => {
 	values.sort((a, b) => a - b);
 	return [quantile(values, 0.025), quantile(values, 0.975)];
 };
+/** The mean of one resample (with replacement) of `values`. */
+const sampledMean = (values, draw) => {
+	let total = 0;
+	for (let i = 0; i < values.length; i++) total += values[Math.floor(draw() * values.length)];
+	return total / values.length;
+};
+
+/** Each mission's citations per $100M, validated, in cost then id order. */
+const rated = (points) => points.map(({ id, cost, citations }) => {
+	const rate = citations / cost * 100;
+	if (typeof id !== 'string' || !(cost > 0) || !Number.isFinite(cost) || !Number.isFinite(citations) || citations < 0 || !Number.isFinite(rate)) {
+		throw new Error(`running mean: invalid mission ${id}`);
+	}
+	return { id, cost, rate, x: Math.log10(cost) };
+}).sort((a, b) => a.cost - b.cost || byText(a.id, b.id));
+
+/** A sign function over `rates`' differences: roundoff between equal fractional rates is not a direction of effect. */
+const directionWithin = (rates) => {
+	const tolerance = 8 * Number.EPSILON * Math.max(1, ...rates);
+	return (v) => (Math.abs(v) <= tolerance ? 0 : Math.sign(v));
+};
 
 /** Arithmetic mean mission rates either side of the editorial threshold; resample missions within each group. */
 function compare(missions, thresholdCost) {
@@ -25,23 +46,57 @@ function compare(missions, thresholdCost) {
 	const over = missions.filter((m) => m.cost > thresholdCost).map((m) => m.rate);
 	if (under.length < 3 || over.length < 3) return null;
 	const u = mean(under), o = mean(over), difference = u - o;
-	// Roundoff between equal fractional rates is not a direction of effect.
-	const tolerance = 8 * Number.EPSILON * Math.max(1, ...under, ...over);
-	const direction = (v) => Math.abs(v) <= tolerance ? 0 : Math.sign(v);
+	const direction = directionWithin([...under, ...over]);
 	const sign = direction(difference);
 	const holds = sign !== 0 && under.every((_, i) => direction(mean(under.filter((__, j) => j !== i)) - o) === sign)
 		&& over.every((_, i) => direction(u - mean(over.filter((__, j) => j !== i))) === sign);
 	const draw = random();
-	const sampledMean = (values) => {
-		let total = 0;
-		for (let i = 0; i < values.length; i++) total += values[Math.floor(draw() * values.length)];
-		return total / values.length;
-	};
-	const ci = interval(Array.from({ length: RESAMPLES }, () => sampledMean(under) - sampledMean(over)));
+	const ci = interval(Array.from({ length: RESAMPLES }, () => sampledMean(under, draw) - sampledMean(over, draw)));
 	return {
 		under: { missions: under.length, mean: u }, over: { missions: over.length, mean: o }, difference, ci, holds,
 		favors: holds && direction(ci[0]) > 0 ? 'under' : holds && direction(ci[1]) < 0 ? 'over' : null
 	};
+}
+
+/**
+ * Arithmetic mean mission citations per $100M in each cost group (lo < cost <= hi, the Analysis
+ * page's groups from `edges`), zeros included, with a 95% percentile interval from resampling the
+ * group's own missions. A group under three missions has no mean. `best` is the group with the
+ * highest mean, null unless two groups have one. `pairs[i].higher` is the higher of groups i and
+ * i + 1, set only when both have a mean and dropping any one mission keeps that order.
+ */
+export function groupMeans(points, edges) {
+	if (!Array.isArray(edges) || edges.some((e, i) => !Number.isFinite(e) || e <= 0 || (i > 0 && e <= edges[i - 1]))) {
+		throw new Error(`group means: edges must be ascending positive numbers, got ${JSON.stringify(edges)}`);
+	}
+	const missions = rated(points);
+	const bins = ranges(edges);
+	const members = (list) => bins.map((r) => list.filter((m) => inTier(r, m.cost)));
+	const means = (list) => members(list).map((group) => group.length >= MIN_MISSIONS ? mean(group.map((m) => m.rate)) : null);
+	const bestOf = (values) => {
+		const present = values.filter((v) => v !== null);
+		return present.length < 2 ? null : values.indexOf(Math.max(...present));
+	};
+	const observed = means(missions);
+	const best = bestOf(observed);
+	const draw = random();
+	const groups = members(missions).map((group, i) => {
+		const rates = group.map((m) => m.rate);
+		const ci = observed[i] === null ? null : interval(Array.from({ length: RESAMPLES }, () => sampledMean(rates, draw)));
+		return { lo: bins[i].lo, hi: bins[i].hi, missions: group.length,
+			mean: observed[i] === null ? null : round(observed[i], 3), ci: ci && ci.map((v) => round(v, 3)) };
+	});
+	const direction = directionWithin(missions.map((m) => m.rate));
+	const higherOf = (values, i) => {
+		const sign = values[i] === null || values[i + 1] === null ? 0 : direction(values[i] - values[i + 1]);
+		return sign === 0 ? null : sign > 0 ? i : i + 1;
+	};
+	const dropped = missions.map((d) => means(missions.filter((m) => m !== d)));
+	const pairs = bins.slice(1).map((_, i) => {
+		const higher = higherOf(observed, i);
+		return { higher: higher !== null && dropped.every((values) => higherOf(values, i) === higher) ? higher : null };
+	});
+	return { groups, best, pairs };
 }
 
 /**
@@ -54,13 +109,7 @@ function compare(missions, thresholdCost) {
  */
 export function runningMean(points, thresholdCost) {
 	if (!(thresholdCost > 0) || !Number.isFinite(thresholdCost)) throw new Error('running mean: thresholdCost must be positive and finite');
-	const missions = points.map(({ id, cost, citations }) => {
-		const rate = citations / cost * 100;
-		if (typeof id !== 'string' || !(cost > 0) || !Number.isFinite(cost) || !Number.isFinite(citations) || citations < 0 || !Number.isFinite(rate)) {
-			throw new Error(`running mean: invalid mission ${id}`);
-		}
-		return { id, cost, rate, x: Math.log10(cost) };
-	}).sort((a, b) => a.cost - b.cost || byText(a.id, b.id));
+	const missions = rated(points);
 	const comparison = compare(missions, thresholdCost);
 	const result = { halfWidth: HALF_WIDTH, resamples: RESAMPLES, points: [], comparison };
 	if (missions.length < MIN_MISSIONS || missions[0].cost === missions.at(-1).cost) return result;

@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { costLayout, rugLayout, skylineLayout, skylineZoom, skylineHit, laneHit, primerLayout, columnLabel, tierOutcomeLayout, focusLayout, perDollarLayout, trendLine } from './layouts.js';
+import { costLayout, rugLayout, skylineLayout, skylineZoom, skylineHit, laneHit, primerLayout, columnLabel, tierOutcomeLayout, focusLayout, perDollarLayout, trendLine, binsLayout } from './layouts.js';
 import { runningLine, trendBand } from '../charts/perdollar.js';
 
 const load = async (name) => JSON.parse(await readFile(new URL(`../data/generated/${name}.json`, import.meta.url), 'utf8'));
@@ -41,7 +41,7 @@ test('each lane’s rate scale is the first multiple of 10 above its highest rat
 const { scope } = site.story;
 const compared = new Set(site.story.comparison.divisions);
 const rankable = site.divisions.filter((d) => compared.has(d.slug));
-const storyCost = (W, H) => costLayout(tiles.filter((t) => compared.has(t.division)), W, H, { divisions: rankable });
+const storyCost = (W, H, options) => costLayout(tiles.filter((t) => compared.has(t.division)), W, H, { divisions: rankable, ...options });
 const byId = new Map(tiles.map((t) => [t.id, t]));
 const inStage = (p, W, H) => p.x >= 0 && p.x + p.s <= W && p.y >= 0 && p.y + p.s <= H;
 
@@ -162,15 +162,16 @@ test('skimming the skyline picks the nearest column, and nothing off the chart',
 	}
 });
 
-test('the tier outcome plot: every costed mission once, in its tier’s column, up if it met its goals and down if not, the counts the Analysis page’s', () => {
-	const { tiers, failures } = site.analysis;
+test('the tier outcome plot: every costed mission once, in its cost group’s column, up if it met its goals and down if not, the counts the packaged groups’', () => {
+	// the story draws the three cost groups, not the Analysis page's six tiers
+	const { groups: tiers, failures } = site.analysis;
 	const costed = tiles.filter((t) => t.cost > 0);
 	for (const [W, H] of sizes) {
 		const layout = tierOutcomeLayout(tiles, tiers, W, H);
 		assert.equal(layout.pos.size, costed.length, `${W}px: every costed mission once`);
 		layout.cols.forEach((c, i) => {
-			assert.equal(c.ok + c.short, failures.tiers[i].missions, `${W}px: tier ${i} missions`);
-			assert.equal(c.short, failures.tiers[i].failed + failures.tiers[i].partial, `${W}px: tier ${i} shortfalls`);
+			assert.equal(c.ok + c.short, failures.groups[i].missions, `${W}px: group ${i} missions`);
+			assert.equal(c.short, failures.groups[i].failed + failures.groups[i].partial, `${W}px: group ${i} shortfalls`);
 		});
 		for (const t of costed) {
 			const p = layout.pos.get(t.id);
@@ -294,5 +295,45 @@ test('citations against cost plots each mission’s citations with no average', 
 		const most = cited.reduce((a, b) => (b.citations > a.citations ? b : a));
 		const least = cited.reduce((a, b) => (b.citations < a.citations ? b : a));
 		assert.ok(row.rateY(most.citations) < row.rateY(least.citations), 'more citations sit higher');
+	}
+});
+
+test('cost-group bars stay inside the FITS panels, apart, with their labels clear of each other and of the panel below', () => {
+	const averages = new Map(site.story.perDollar.map((d) => [d.division, d.runningMean]));
+	// hand-built bins: a group too small for a mean, a tall interval, and one division with none
+	const group = (lo, hi, missions, mean, ci) => ({ lo, hi, missions, mean, ci });
+	const fixture = (k) => ({
+		groups: [group(0, 150, 2, null, null), group(150, 1000, 21, 530.1 * (k + 1), [410.2 * (k + 1), 702.9 * (k + 1)]), group(1000, null, 9, 383.4, [201.5, 580])],
+		best: 1
+	});
+	const bins = new Map(rankable.map((d, k) => [d.slug, k === rankable.length - 1 ? null : fixture(k)]));
+	for (const [W, H] of stages) {
+		const compact = W < 600;
+		const cost = storyCost(W, H, { titled: true });
+		const grid = perDollarLayout(tiles, W, H, { divisions: rankable, averages, x: cost.x, titled: true });
+		const layout = binsLayout(grid, bins, { compact });
+		// BinsChart's footer type: 9px on a phone, 12px otherwise, at about 0.6em a character
+		const em = (compact ? 9 : 12) * 0.6;
+		layout.rows.forEach((row, r) => {
+			const panel = grid.rows[r];
+			assert.deepEqual([row.left, row.width, row.y, row.h], [panel.left, panel.width, panel.y, panel.h], `${W}px ${row.slug}: the FITS panel`);
+			if (!bins.get(row.slug)) return assert.equal(row.bars.length, 0, `${W}px ${row.slug}: no bins, no bars`);
+			const [x0, x1] = panel.x.range();
+			row.bars.forEach((b, i) => {
+				assert.ok(b.x >= x0 && b.x + b.w <= x1 + 1e-9, `${W}px ${row.slug}: bar ${i} over the squares' span`);
+				assert.ok(panel.curveTop <= b.y && b.y + b.h <= panel.shelfY + 1e-9, `${W}px ${row.slug}: bar ${i} inside its panel`);
+				if (b.mean == null) assert.deepEqual([b.h, b.y, b.ciY0, b.ciY1], [0, panel.shelfY, null, null], `${W}px ${row.slug}: too few missions, no bar`);
+				else assert.ok(panel.curveTop + 12 <= b.ciY1 && b.ciY1 <= b.y && b.y <= b.ciY0 && b.ciY0 <= panel.shelfY, `${W}px ${row.slug}: bar ${i}'s whisker inside, room for its value over it`);
+				assert.equal(b.best, i === 1);
+				const next = row.bars[i + 1];
+				if (!next) return;
+				assert.ok(b.x + b.w < next.x, `${W}px ${row.slug}: bars ${i} and ${i + 1} apart`);
+				for (const text of [(c) => c.label, (c) => `n = ${c.missions}`]) {
+					assert.ok((text(b).length + text(next).length) * em / 2 < next.x + next.w / 2 - (b.x + b.w / 2), `${W}px ${row.slug}: ${text(b)} clear of ${text(next)}`);
+				}
+			});
+			const below = layout.rows[r + grid.columns];
+			assert.ok(row.footY > panel.shelfY && row.footY + layout.lineH <= (below ? below.y : H) - 2, `${W}px ${row.slug}: the footer under the border, above the next panel or the stage's foot`);
+		});
 	}
 });

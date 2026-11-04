@@ -179,6 +179,8 @@ export interface AnalysisFacts {
 			rate: number | null; // (failed + partial) / missions
 			byDivision: { division: DivisionSlug; ok: number; failed: number; partial: number }[];
 		}[];
+		/** The same figures per cost group (`groups`), for the overview's failure chart. */
+		groups: AnalysisFacts['failures']['tiers'];
 		under: { missions: number; shortfall: number; rate: number | null }; // 0 < cost <= referenceCost
 		over: { missions: number; shortfall: number; rate: number | null };
 		/** How much more each successful small mission would have to produce to match the larger missions' expected output per mission flown: (1 - over.rate) / (1 - under.rate) - 1. */
@@ -196,6 +198,8 @@ export interface AnalysisFacts {
 			formulation: MedianYears; // years from formulation start
 			science: MedianYears; // years from the start of science
 		}[];
+		/** The same figures per cost group (`groups`), for the overview's time bars. */
+		groups: AnalysisFacts['time']['tiers'];
 		failedExcluded: number;
 		fastest: AnalysisFastest | null; // shortest from formulation, any tier (ties: cost, then id)
 		byDivision: { division: DivisionSlug; name: string; fastest: AnalysisFastest | null }[]; // config order
@@ -339,8 +343,17 @@ export interface StoryFacts {
 		flipsOn: { id: string; name: string; side: ComparisonKey }[];
 		margin: number | null; // |under − over| ÷ the higher rate; null when a rate is null or both are 0
 		largestUnder: { id: string; name: string; share: number } | null; // most-cited under mission, its share of the under side's citations
+		best: { id: string; name: string; cost: number; perHundredM: number } | null; // the measured mission with the most citations per $100M; null when none has citations
 		/** Overview and division charts: local arithmetic mean mission rates, plus the overview's independent threshold comparison. */
 		runningMean: PerDollarRunningMean;
+		/** Mean mission citations per $100M in the Analysis cost groups (lo < cost <= hi), zeros included, each resampled within the group. */
+		bins: {
+			/** null mean and ci for a group under three missions */
+			groups: { lo: number; hi: number | null; missions: number; mean: number | null; ci: [number, number] | null }[];
+			best: number | null; // index of the highest-mean group; null unless two groups have a mean
+			/** pairs[i] compares groups i and i + 1: the higher mean's index, set only when both have a mean and the order survives dropping any one measured mission */
+			pairs: { higher: number | null }[];
+		};
 	}[];
 }
 

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { runningMean } from '../lib/running-mean.mjs';
+import { groupMeans, runningMean } from '../lib/running-mean.mjs';
 
 const points = (rows) => rows.map(([cost, citations], i) => ({ id: `m${i}`, cost, citations }));
 const fixture = points([[1, 0], [2, 3], [5, 1], [10, 30], [20, 15], [50, 300], [100, 80]]);
@@ -67,6 +67,28 @@ test('the independent threshold comparison uses mission means and needs interval
 	near(arithmetic.comparison.under.mean, 200 / 3);
 	assert.equal(arithmetic.comparison.over.mean, 20);
 	assert.equal(runningMean(fixture, 2).comparison, null, 'fewer than three missions on either side cannot support a comparison');
+});
+
+test('cost-group means count zeros, need three missions, and order a pair only when no one mission carries it', () => {
+	// [cost, rates per $100M] for each group's missions
+	const rows = (groups) => points(groups.flatMap(([cost, rates]) => rates.map((rate) => [cost, rate * cost / 100])));
+	const clear = rows([[1, [100, 50]], [20, [0, 30, 60, 30]], [200, [5, 5, 5, 5]]]);
+	const result = groupMeans(clear, [10, 100]);
+	assert.deepEqual(result.groups.map(({ lo, hi, missions, mean }) => ({ lo, hi, missions, mean })), [
+		{ lo: 0, hi: 10, missions: 2, mean: null },
+		{ lo: 10, hi: 100, missions: 4, mean: 30 }, // 40 without the zero
+		{ lo: 100, hi: null, missions: 4, mean: 5 }
+	]);
+	assert.equal(result.groups[0].ci, null);
+	assert.ok(result.groups[1].ci[0] <= 30 && 30 <= result.groups[1].ci[1]);
+	assert.deepEqual(result.groups[2].ci, [5, 5]);
+	// the first pair has a group too small for a mean; the second keeps its order with any mission dropped
+	assert.deepEqual([result.best, result.pairs], [1, [{ higher: null }, { higher: 1 }]]);
+	assert.deepEqual(groupMeans(clear, [10, 100]), result);
+	const carried = groupMeans(rows([[20, [0, 0, 0, 100]], [200, [10, 10, 10, 10]]]), [10, 100]);
+	assert.deepEqual([carried.best, carried.pairs[1]], [1, { higher: null }], 'without its one cited mission the middle group reads zero');
+	assert.throws(() => groupMeans([{ id: 'bad', cost: 0, citations: 1 }], [10]), /invalid mission/);
+	assert.throws(() => groupMeans(clear, [100, 10]), /ascending/);
 });
 
 test('is deterministic in cost/id order, retains equal-rate ties, and rejects invalid source values', () => {

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { clearlyHigher, clpsCosts, divisionShortfalls, edgeWords, favorsOver, mostUnreached, notLinear, rate, scienceOrder, selectionContrast, series, shortestTier, smallLowest, tierWords, topUnder } from './analysis.js';
+import { clpsCosts, edgeWords, favorsOver, mostUnreached, notLinear, rate, scienceOrder, selectionContrast, series, shortestTier, smallLowest, tierWords, topUnder } from './analysis.js';
 import { range } from '../format.js';
 
 test('notLinear, topUnder and favorsOver gate the summary’s own sentences', () => {
@@ -71,23 +71,6 @@ test('smallLowest needs the small group below every other', () => {
 	assert.equal(smallLowest([{ median: 0.18 }, { median: 1.59 }, { median: 1.81 }]), true);
 	assert.equal(smallLowest([{ median: 0.18 }, { median: 0.1 }]), false);
 	assert.equal(smallLowest([{ median: null }, { median: 1 }]), false);
-});
-
-test('divisionShortfalls splits one division at a tier edge, and clearlyHigher needs the intervals apart', () => {
-	const tiers = [{ lo: 0, hi: 50 }, { lo: 50, hi: 350 }, { lo: 350, hi: null }];
-	const row = (division, ok, failed, partial) => ({ division, ok, failed, partial });
-	const failureTiers = [
-		{ byDivision: [row('planetary', 1, 3, 0), row('earth', 5, 0, 0)] },
-		{ byDivision: [row('planetary', 2, 3, 1)] },
-		{ byDivision: [row('planetary', 25, 1, 0)] }
-	];
-	const f = divisionShortfalls(tiers, failureTiers, 'planetary', 350);
-	assert.deepEqual(f, { all: { missions: 36, short: 8 }, below: { missions: 10, short: 7 }, above: { missions: 26, short: 1 } });
-	assert.deepEqual(divisionShortfalls(tiers, failureTiers, 'planetary', 300), { all: f.all, below: null, above: null }, 'not a tier edge: totals, no split');
-	assert.ok(!clearlyHigher(null, f.above), 'no split claims nothing');
-	assert.ok(clearlyHigher(f.below, f.above));
-	assert.ok(!clearlyHigher({ missions: 3, short: 1 }, { missions: 4, short: 0 }), 'too few to tell');
-	assert.ok(!clearlyHigher({ missions: 0, short: 0 }, f.above), 'an empty side claims nothing');
 });
 
 test('ranges print with their own formatter', () => {

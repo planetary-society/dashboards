@@ -1,19 +1,18 @@
 <script>
 	// One division's top-10% papers a year by cost, in two steps over the same axes: first the
 	// cost axis alone, the squares hanging under it; then each mission's rate as a bar rising from
-	// the axis (`grow`, 0–1), the largest named on its bar, under the chart's title. LanesChart
-	// draws the bars, on these axes, so the same bars can move into their band on the lanes.
-	import { compact as short, moneyTick, weight } from '$lib/format.js';
+	// the axis (`grow`, 0–1), under the chart's title; no bar is named. LanesChart draws the bars,
+	// on these axes, so the same bars can move into their band on the lanes.
+	import { compact as short, moneyTick } from '$lib/format.js';
 	import { COST_AXIS_LABEL, minorDollarTicks } from '$lib/charts/costaxis.js';
 	import DollarMinorTicks from '$lib/charts/DollarMinorTicks.svelte';
 
-	/** layout: focusLayout(). name: the division's, for the title. largest: the mission the copy names on its bar ({ id, name }). */
-	let { layout, name, largest = null, grow = 0, bars = false, visible = false, compact = false, width, height } = $props();
+	/** layout: focusLayout(). name: the division's, for the title. */
+	let { layout, name, grow = 0, bars = false, visible = false, compact = false, width, height } = $props();
 
 	const c = $derived(layout.chart);
 	// a phone is too narrow for the title on one line: it breaks before the division's name
 	const titleLines = $derived(compact ? ['High-impact papers published per year', `in ${name}, by mission`] : [`High-impact papers published per year in ${name}, by mission`]);
-	const top = $derived(layout.facts.points.find((p) => p.credit > 0 && p.id === largest?.id));
 </script>
 
 <div class="focus" class:visible class:bars class:compact aria-hidden="true">
@@ -35,9 +34,6 @@
 			{#if t.label}<text x={c.x(t.value)} y={c.tickY} text-anchor="middle">{moneyTick(t.value)}</text>{/if}
 		{/each}
 		<text x={(c.x0 + c.x1) / 2} y={c.axisY} text-anchor="middle">{COST_AXIS_LABEL}</text>
-		{#if top && grow > 0.5}
-			<text class="strong callout" x={c.x(top.cost)} y={c.y(top.credit) - 8} text-anchor="middle">{top.name} {weight(top.credit)}</text>
-		{/if}
 	</svg>
 </div>
 
@@ -67,18 +63,6 @@
 
 	.compact text {
 		font-size: 11px;
-	}
-
-	text.strong {
-		fill: var(--white);
-		font-weight: 500;
-	}
-
-	.callout {
-		paint-order: stroke;
-		stroke: var(--black);
-		stroke-width: 3px;
-		stroke-linejoin: round;
 	}
 
 	.grid,

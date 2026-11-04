@@ -7,7 +7,7 @@ import { buildDiscussion, divisionFacts, underThreshold } from './public.js';
 import { wilson } from '../../../scripts/lib/public.mjs';
 
 /** The fixtures are on a $100M scale; a mission at exactly 100 exercises the inclusive edge. */
-const discuss = (divisions, options = {}) => buildDiscussion(divisions, { thresholdCost: 100, ...options });
+const discuss = (divisions, options = {}) => buildDiscussion(divisions, { thresholdCost: 100, costGroups: [100, 500], ...options });
 
 const mission = (id, cost, top10 = 1, extra = {}) => ({
 	id, name: id, cost, failed: false,
@@ -133,20 +133,32 @@ test('citations per $100M keep each rankable division apart, null for an empty s
 	const average = story.perDollar[0].runningMean;
 	assert.ok(average.points.some((p) => p[1] !== null), 'the zero-output failure counts toward the three-mission minimum');
 	assert.deepEqual(average.points[0], [20, null, null, null], 'only two missions contribute at the low-cost end');
-	assert.deepEqual(story.perDollar.map((row) => ({ ...row, runningMean: { ...row.runningMean, points: row.runningMean.points.length } })), [
+	assert.deepEqual(story.perDollar.map((row) => ({ ...row, runningMean: { ...row.runningMean, points: row.runningMean.points.length }, bins: row.bins.groups.map((g) => g.missions) })), [
 		// Without u1 the under side reads 0 per $100M, so its lead does not survive.
 		{ division: 'test', name: 'Test', groups: [
 			{ key: 'under', missions: 2, cost: 50, citations: 10, perHundredM: 20 },
 			{ key: 'over', missions: 1, cost: 300, citations: 7, perHundredM: 2.333 }
 		], favors: null, flipsOn: [{ id: 'u1', name: 'u1', side: 'under' }, { id: 'o1', name: 'o1', side: 'over' }],
-		margin: 0.88335, largestUnder: { id: 'u1', name: 'u1', share: 1 },
-		runningMean: { halfWidth: 1, resamples: 2000, points: 81, comparison: null } }, // three measured missions, including the failure
+		margin: 0.88335, largestUnder: { id: 'u1', name: 'u1', share: 1 }, best: { id: 'u1', name: 'u1', cost: 30, perHundredM: 33.333 },
+		runningMean: { halfWidth: 1, resamples: 2000, points: 81, comparison: null }, bins: [2, 1, 0] }, // three measured missions, including the failure
 		{ division: 'other', name: 'Other', groups: [
 			{ key: 'under', missions: 0, cost: 0, citations: 0, perHundredM: null },
 			{ key: 'over', missions: 1, cost: 150, citations: 10, perHundredM: 6.667 }
-		], favors: null, flipsOn: [], margin: null, largestUnder: null,
-		runningMean: { halfWidth: 1, resamples: 2000, points: 0, comparison: null } }
+		], favors: null, flipsOn: [], margin: null, largestUnder: null, best: { id: 'o2', name: 'o2', cost: 150, perHundredM: 6.667 },
+		runningMean: { halfWidth: 1, resamples: 2000, points: 0, comparison: null }, bins: [0, 1, 0] }
 	]);
+});
+
+test('each perDollar row carries its measured missions in the cost groups and its best mission per dollar', () => {
+	const rows = [failure('f', 20), unmeasured('lost', 50),
+		...[[40, 4], [60, 30], [100, 10], [200, 120], [300, 30], [400, 8], [900, 90]].map(([cost, c]) => cited(mission(`m${cost}`, cost), c))];
+	const [row] = discuss([packaged(division(rows))]).perDollar;
+	// 100 is inclusive; the failure counts as a zero, the unmeasured mission not at all
+	assert.deepEqual(row.bins.groups.map((g) => [g.lo, g.hi, g.missions, g.mean]),
+		[[0, 100, 4, 17.5], [100, 500, 3, 24], [500, null, 1, null]]);
+	// dropping any mission of the middle group leaves it under three, so its lead over the first does not survive
+	assert.deepEqual([row.bins.best, row.bins.pairs], [1, [{ higher: null }, { higher: null }]]);
+	assert.deepEqual(row.best, { id: 'm200', name: 'm200', cost: 200, perHundredM: 60 });
 });
 
 test('an upstream-selected empty failure stays in citation figures even when launched after the successes', () => {
@@ -322,8 +334,10 @@ test('the packaged story is the discussion over the packaged divisions', () => {
 	const order = site.divisions.map((d) => d.slug);
 	divisions.sort((a, b) => order.indexOf(a.slug) - order.indexOf(b.slug));
 	const ref = site.story.referenceCost;
-	assert.equal(ref, loadConfig(new URL('../../../', import.meta.url).pathname).thresholdCost);
-	const story = buildDiscussion(divisions, { thresholdCost: ref, scope: site.story.scope, focusDivision: site.story.focusDivision });
+	const config = loadConfig(new URL('../../../', import.meta.url).pathname);
+	assert.equal(ref, config.thresholdCost);
+	const { costGroups } = config.analysis;
+	const story = buildDiscussion(divisions, { thresholdCost: ref, costGroups, scope: site.story.scope, focusDivision: site.story.focusDivision });
 	const all = divisions.flatMap((d) => d.missions);
 	const selected = all.filter(underThreshold(ref));
 	assert.equal(story.threshold.missions, selected.length);
@@ -342,10 +356,10 @@ test('the packaged story is the discussion over the packaged divisions', () => {
 	}
 	assert.ok(story.bands.every((b) => Number.isFinite(b.p25) && b.p25 <= b.p75));
 	// divisionFacts reuses the story as its full scope, as packaging does
-	const facts = divisionFacts(divisions, { thresholdCost: ref, full: story });
+	const facts = divisionFacts(divisions, { thresholdCost: ref, costGroups, full: story });
 	assert.deepEqual(story, site.story);
 	assert.deepEqual(site.divisionFacts, facts);
-	const life = buildDiscussion(divisions, { thresholdCost: ref, scope: 'lifetime' });
+	const life = buildDiscussion(divisions, { thresholdCost: ref, costGroups, scope: 'lifetime' });
 	for (const d of divisions) {
 		assert.deepEqual(site.divisionFacts[d.slug].lifetime.divisions, life.divisions.find((r) => r.division === d.slug));
 		assert.deepEqual(site.divisionFacts[d.slug].full.perDollar ?? null, site.story.perDollar.find((r) => r.division === d.slug) ?? null);

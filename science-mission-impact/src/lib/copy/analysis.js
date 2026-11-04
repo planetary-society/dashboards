@@ -3,7 +3,6 @@
 // drops the sentence instead of leaving it wrong. Pure: facts in, facts out.
 import { listify } from '../format.js';
 import { edgeMoney } from '../analysis/tiers.js';
-import { wilson } from '../data/public.js';
 
 /** Fewer missions than this in a tier and its median is shown but never singled out in prose. */
 export const MIN_REACHED = 3;
@@ -108,37 +107,6 @@ export function smallLowest(groupRates) {
 	const [small, ...rest] = groupRates;
 	return small.median != null && rest.length > 0 && rest.every((g) => g.median != null && small.median < g.median);
 }
-
-/**
- * One division's missions and shortfalls (failed + partial) in all, at or under a tier edge and
- * over it, summed from the packaged per-tier counts (`failures.tiers[].byDivision`, in `tiers`
- * order). `below` and `above` are null for an `edge` that is not a tier's upper edge, so a
- * mistyped edge drops the comparison but never the totals.
- */
-export function divisionShortfalls(tiers, failureTiers, division, edge) {
-	const split = tiers.some((t) => t.hi === edge);
-	const side = () => ({ missions: 0, short: 0 });
-	const out = { all: side(), below: split ? side() : null, above: split ? side() : null };
-	failureTiers.forEach((t, i) => {
-		const d = t.byDivision.find((row) => row.division === division);
-		if (!d) return;
-		const n = d.ok + d.failed + d.partial;
-		const k = d.failed + d.partial;
-		const sides = [out.all];
-		if (split) sides.push(tiers[i].hi != null && tiers[i].hi <= edge ? out.below : out.above);
-		for (const s of sides) {
-			s.missions += n;
-			s.short += k;
-		}
-	});
-	return out;
-}
-
-/** Two Wilson 95% intervals ([low, high] shares) with `a` wholly above `b`; false when either is missing. */
-export const apart = (a, b) => a != null && b != null && a[0] > b[1];
-
-/** `a` fell short at a clearly higher rate than `b` (`{ missions, short }` each): their Wilson intervals apart. */
-export const clearlyHigher = (a, b) => a != null && b != null && apart(wilson(a.short, a.missions), wilson(b.short, b.missions));
 
 /** "About" in a cost comparison: within a quarter either way. */
 const about = (a, b) => a > 0 && b > 0 && Math.abs(a / b - 1) < 0.25;

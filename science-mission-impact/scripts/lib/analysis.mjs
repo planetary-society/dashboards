@@ -43,7 +43,7 @@ export function managementOf(label, id) {
 }
 
 /** $M edges -> ranges: lo < cost <= hi, the first from 0, the last open (hi null). */
-const ranges = (edges) => [0, ...edges].map((lo, i) => ({ lo, hi: edges[i] ?? null }));
+export const ranges = (edges) => [0, ...edges].map((lo, i) => ({ lo, hi: edges[i] ?? null }));
 /** Whether a cost falls in a range (lo < cost <= hi, an open hi null): the one tier rule, shared with the story's tier chart. */
 export const inTier = (r, cost) => cost > r.lo && (r.hi == null || cost <= r.hi);
 const rangeOf = (list, cost) => list.findIndex((r) => inTier(r, cost));
@@ -108,6 +108,32 @@ const outcomes = (list) => ({
 	partial: list.filter((m) => m.shortfall && !m.failed).length
 });
 
+const ofDivision = (list, slug) => list.filter((m) => m.division === slug);
+
+/** One cost range's outcomes over its costed missions, with each configured division's counts. */
+function failureCell(members, divisions) {
+	const counts = outcomes(members);
+	return {
+		missions: members.length,
+		...counts,
+		rate: members.length ? share((counts.failed + counts.partial) / members.length) : null,
+		byDivision: divisions.map((d) => ({ division: d.slug, ...outcomes(ofDivision(members, d.slug)) }))
+	};
+}
+
+/** One cost range's time to a first top-10% paper over its flown missions. */
+function timeCell(members) {
+	const reached = members.filter((m) => m.first.state === 'reached');
+	return {
+		missions: members.length,
+		reached: reached.length,
+		without: members.length - reached.length,
+		undated: reached.filter((m) => m.first.yearsFromFormulation == null).length,
+		formulation: years(reached.map((m) => m.first.yearsFromFormulation)),
+		science: years(reached.map((m) => m.first.yearsFromScienceStart))
+	};
+}
+
 /** Missions and shortfalls on one side of the threshold, the rate unrounded. */
 const shortfallSide = (list) => {
 	const shortfall = list.filter((m) => m.shortfall).length;
@@ -149,10 +175,10 @@ export function buildAnalysis(divisionDocs, { thresholdCost, costTiers, costGrou
 		}
 	}
 	missions.sort((a, b) => a.cost - b.cost || byText(a.id, b.id));
-	// the failure rates' missions: every costed one, measured or not, each in its tier
-	const outcomeRows = divisionDocs.flatMap((d) => d.missions.filter(hasCost).map((m) => ({ division: d.slug, cost: m.cost, failed: m.failed, shortfall: m.shortfall, tier: rangeOf(tiers, m.cost) })));
+	// the failure rates' missions: every costed one, measured or not, each in its tier and group
+	const outcomeRows = divisionDocs.flatMap((d) => d.missions.filter(hasCost).map((m) => ({ division: d.slug, cost: m.cost, failed: m.failed, shortfall: m.shortfall, tier: rangeOf(tiers, m.cost), group: rangeOf(groups, m.cost) })));
 	const ofTier = (list, t) => list.filter((m) => m.tier === t);
-	const ofDivision = (list, slug) => list.filter((m) => m.division === slug);
+	const ofGroup = (list, g) => list.filter((m) => m.group === g);
 	const rankable = divisionDocs.filter((d) => d.rankable);
 
 	const under = shortfallSide(outcomeRows.filter((m) => m.cost <= thresholdCost));
@@ -181,37 +207,19 @@ export function buildAnalysis(divisionDocs, { thresholdCost, costTiers, costGrou
 		})),
 		excluded,
 		failures: {
-			tiers: tiers.map((_, t) => {
-				const members = ofTier(outcomeRows, t);
-				const counts = outcomes(members);
-				return {
-					missions: members.length,
-					...counts,
-					rate: members.length ? share((counts.failed + counts.partial) / members.length) : null,
-					byDivision: divisions.map((d) => ({ division: d.slug, ...outcomes(ofDivision(members, d.slug)) }))
-				};
-			}),
+			tiers: tiers.map((_, t) => failureCell(ofTier(outcomeRows, t), divisions)),
+			groups: groups.map((_, g) => failureCell(ofGroup(outcomeRows, g), divisions)),
 			under: { ...under, rate: share(under.rate) },
 			over: { ...over, rate: share(over.rate) },
 			successPremium: under.rate === null || over.rate === null || under.rate === 1 ? null : share((1 - over.rate) / (1 - under.rate) - 1)
 		},
 		groupRates: groups.map((_, g) => {
-			const members = missions.filter((m) => m.group === g);
+			const members = ofGroup(missions, g);
 			return { ...rateSpread(members.map((m) => m.rate)), shortfall: members.filter((m) => m.shortfall).length, failed: members.filter((m) => m.failed).length };
 		}),
 		time: {
-			tiers: tiers.map((_, t) => {
-				const members = ofTier(flown, t);
-				const reached = members.filter((m) => m.first.state === 'reached');
-				return {
-					missions: members.length,
-					reached: reached.length,
-					without: members.length - reached.length,
-					undated: reached.filter((m) => m.first.yearsFromFormulation == null).length,
-					formulation: years(reached.map((m) => m.first.yearsFromFormulation)),
-					science: years(reached.map((m) => m.first.yearsFromScienceStart))
-				};
-			}),
+			tiers: tiers.map((_, t) => timeCell(ofTier(flown, t))),
+			groups: groups.map((_, g) => timeCell(ofGroup(flown, g))),
 			failedExcluded: missions.length - flown.length,
 			fastest: fastestOf(flown),
 			byDivision: divisions.map((d) => ({ division: d.slug, name: d.name, fastest: fastestOf(ofDivision(flown, d.slug)) }))
@@ -239,7 +247,7 @@ export function buildAnalysis(divisionDocs, { thresholdCost, costTiers, costGrou
 		},
 		selection: {
 			groups: groups.map((_, g) => {
-				const members = missions.filter((m) => m.group === g);
+				const members = ofGroup(missions, g);
 				const spreadOf = (key) => rateSpread(members.filter((m) => m.selection === key).map((m) => m.rate));
 				return { competed: spreadOf('competed'), directed: spreadOf('directed') };
 			}),

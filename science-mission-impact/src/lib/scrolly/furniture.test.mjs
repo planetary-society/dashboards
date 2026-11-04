@@ -17,7 +17,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { compile } from 'svelte/compiler';
 import { render } from 'svelte/server';
 import { scaleLinear, scaleLog } from 'd3-scale';
-import { focusLayout, costLayout, primerLayout, perDollarLayout, tierOutcomeLayout } from './layouts.js';
+import { focusLayout, costLayout, primerLayout, perDollarLayout, tierOutcomeLayout, binsLayout } from './layouts.js';
 import { money, spell } from '../format.js';
 import { COST_AXIS_LABEL } from '../charts/costaxis.js';
 import { calendarYears } from '../copy/window.js';
@@ -225,13 +225,13 @@ test('Primer lights the pointed-at bar and names its count', async () => {
 	assert.ok(none.includes(`${story.primer.counts[0].toLocaleString('en-US')} papers with no citations`));
 });
 
-test('FocusChart prerenders the axis, its title and the largest named, leaving its bars to LanesChart', async () => {
+test('FocusChart prerenders the axis and its title, naming no bar, leaving the bars to LanesChart', async () => {
 	const largest = story.rate.divisions.find((d) => d.division === story.focusDivision).largest;
 	const layout = focusLayout(tiles, 900, 600, { division: story.focusDivision });
-	const { body } = render(await load('FocusChart.svelte'), { props: { ...stage, layout, name: 'Planetary Science', largest, grow: 1, bars: true } });
+	const { body } = render(await load('FocusChart.svelte'), { props: { ...stage, layout, name: 'Planetary Science', grow: 1, bars: true } });
 	clean(body);
 	assert.ok(!body.includes('class="bar'), 'LanesChart draws the bars, so they can move into their band');
-	assert.match(body, new RegExp(`${largest.name} \\d`));
+	assert.ok(!body.includes(largest.name), 'no mission named on its bar');
 	assert.match(body, /class="stage-title[^>]*text-anchor="end">High-impact papers published per year in Planetary Science, by mission</);
 	assert.ok(!body.includes('$150M'), 'no threshold line');
 	assert.ok(!body.includes('<path'), 'no running total');
@@ -368,7 +368,7 @@ test('DollarChart shares running-average paths and optional intervals across sin
 });
 
 test('OutcomeChart: titled, Success over the zero line and Failure under it, no rates or counts', async () => {
-	const { tiers } = site.analysis;
+	const { groups: tiers } = site.analysis; // the story's columns are the three cost groups
 	const layout = tierOutcomeLayout(tiles, tiers, 900, 600);
 	const { body } = render(await load('OutcomeChart.svelte'), { props: { ...stage, layout } });
 	clean(body);
@@ -377,4 +377,24 @@ test('OutcomeChart: titled, Success over the zero line and Failure under it, no 
 	assert.ok(!/\d%/.test(body), 'no per-tier rates');
 	assert.ok(!/\d of \d/.test(body), 'no "X of Y" counts');
 	assert.ok(layout.top >= 28, 'room for the title over the stacks');
+});
+
+test('BinsChart: titled, a bar per group with a mean, each group labelled with its missions under the panel', async () => {
+	const divisions = site.divisions.filter((d) => story.comparison.divisions.includes(d.slug));
+	const grid = perDollarLayout(tiles, 900, 600, { divisions, titled: true });
+	const groups = [
+		{ lo: 0, hi: 150, missions: 2, mean: null, ci: null },
+		{ lo: 150, hi: 1000, missions: 21, mean: 530.1, ci: [410.2, 702.9] },
+		{ lo: 1000, hi: null, missions: 9, mean: 383.4, ci: [201.5, 580] }
+	];
+	// the first division has bins; the rest have none yet and keep an empty panel
+	const layout = binsLayout(grid, new Map([[divisions[0].slug, { groups, best: 1, pairs: [{ higher: null }, { higher: 1 }] }]]));
+	const { body } = render(await load('BinsChart.svelte'), { props: { ...stage, layout, title: 'Citations per $100M by cost group' } });
+	clean(body);
+	assert.match(body, /class="stage-title[^>]*text-anchor="end">Citations per \$100M by cost group</);
+	assert.deepEqual([...body.matchAll(/class="name[^>]*>([^<]*)</g)].map((m) => m[1]), divisions.map((d) => d.name), 'every panel named');
+	assert.equal((body.match(/<rect class="bar/g) ?? []).length, 2, 'no bar for the group too small for a mean');
+	assert.equal((body.match(/<rect class="bar[^"]*\bbest\b/g) ?? []).length, 1, 'the leading group set apart');
+	for (const t of ['>≤$150M<', '>$150M–$1B<', '>&gt;$1B<|>>$1B<', '>530<', '>383<', '>n = 2<', '>n = 21<']) assert.match(body, new RegExp(t.replace(/\$/g, '\\$')), t);
+	assert.ok(!body.includes('Mission cost'), 'no cost axis');
 });

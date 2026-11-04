@@ -56,6 +56,7 @@ export function buildSite({
 	const attribution = snapshot.attribution ?? {};
 	const story = buildDiscussion(divisionDocs, {
 		thresholdCost: config.thresholdCost,
+		costGroups: config.analysis.costGroups,
 		focusDivision: config.storyDivision ?? null
 	});
 
@@ -86,7 +87,7 @@ export function buildSite({
 		},
 		filters: snapshot.filters,
 		story,
-		divisionFacts: divisionFacts(divisionDocs, { thresholdCost: config.thresholdCost, full: story }),
+		divisionFacts: divisionFacts(divisionDocs, { thresholdCost: config.thresholdCost, costGroups: config.analysis.costGroups, full: story }),
 		clps,
 		// The Analysis page reads the story's focus division, so the two are null together.
 		analysis: buildAnalysis(divisionDocs, {

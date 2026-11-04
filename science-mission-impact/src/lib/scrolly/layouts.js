@@ -7,6 +7,7 @@ import { byCostThenId, costAxisBottom, costDomain, decadeTicks, stackLevels } fr
 import { inTier } from '../data/public.js';
 import { curveFacts, curveChart } from '../charts/costcurve.js';
 import { perDollarLayout, trendLine, rowGutter, rowLabel } from '../charts/perdollar.js';
+import { tierLabel } from '../analysis/tiers.js';
 
 // The per-dollar states live beside their chart, so the division pages load them without the rest
 export { perDollarLayout, trendLine };
@@ -339,4 +340,42 @@ export function focusLayout(tiles, W, H, { division }) {
 	const y = scaleLinear().domain([0, rateTop(members)]).range(chart.y.range());
 	// tickY: the cost ticks' baseline; the axis label's is the chart's axisY, a line under them
 	return { division, facts, chart: { ...chart, y, yTicks: y.ticks(4), tickY: chart.axisY - labelH }, pos: new Map(chart.marks.map((m) => [m.id, { x: m.x, y: m.y, s: m.s }])) };
+}
+
+/**
+ * The FITS grid's panels (`grid`, perDollarLayout made `titled`) with a bar per Analysis cost
+ * group in place of each running average: `bins` maps a slug to its story.perDollar `bins`, each
+ * group's mean citations per $100M and 95% interval. Each panel has its own linear scale from 0 at
+ * its bottom border up to its highest interval, under room for the value label; the bars share
+ * the squares' span. A group too small for a mean (or a panel without bins) draws no bar. Under
+ * each border, in the room the grid keeps for its cost ticks: the group label on `footY`, its
+ * missions a `lineH` lower (two lines only: the top panels have just the row gap under them).
+ */
+export function binsLayout(grid, bins, { compact = false } = {}) {
+	const side = compact ? 2 : 12;
+	const gap = compact ? 6 : 24;
+	const labelH = compact ? 12 : 14;
+	const rows = grid.rows.map((row) => {
+		const { groups = [], best = null } = bins.get(row.slug) ?? {};
+		const [x0, x1] = row.x.range();
+		const w = (x1 - x0 - 2 * side - (groups.length - 1) * gap) / groups.length;
+		const most = Math.max(0, ...groups.map((g) => g.ci?.[1] ?? g.mean ?? 0)) || 1;
+		const rateY = scaleLinear().domain([0, most]).range([row.shelfY, row.curveTop + labelH]);
+		const bars = groups.map((g, i) => ({
+			lo: g.lo,
+			label: tierLabel(g),
+			x: x0 + side + i * (w + gap),
+			w,
+			y: g.mean == null ? row.shelfY : rateY(g.mean),
+			h: g.mean == null ? 0 : row.shelfY - rateY(g.mean),
+			ciY0: g.ci ? rateY(g.ci[0]) : null,
+			ciY1: g.ci ? rateY(g.ci[1]) : null,
+			mean: g.mean,
+			missions: g.missions,
+			best: i === best
+		}));
+		const { slug, label, left, width, y, h, shelfY } = row;
+		return { slug, label, left, width, y, h, footY: shelfY + (compact ? 12 : 15), bars };
+	});
+	return { rows, top: grid.top, lineH: compact ? 10 : 14 };
 }

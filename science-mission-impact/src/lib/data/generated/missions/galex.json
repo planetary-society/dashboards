@@ -27,14 +27,14 @@
   "indices": {
     "h": 140,
     "m": 5.833,
-    "i100": 207,
-    "g": 252,
-    "tori": 247.923,
-    "riq": 656
+    "i100": 208,
+    "g": 253,
+    "tori": 260.813,
+    "riq": 672
   },
   "facts": {
-    "papers": 1581,
-    "citations": 93655,
+    "papers": 1582,
+    "citations": 94172,
     "publicationYears": [
       2003,
       2026
@@ -91,46 +91,46 @@
       59,
       91,
       69,
-      70
+      71
     ],
     "citations": [
       0,
       5,
-      358,
       357,
+      358,
       1037,
       1003,
       1731,
-      2281,
-      3298,
+      2280,
+      3299,
       4157,
-      4113,
+      4115,
       4630,
       4804,
       4860,
       5155,
-      5191,
-      5273,
-      5518,
-      5389,
-      5905,
-      5718,
-      7064,
-      7293,
-      8515
+      5192,
+      5278,
+      5520,
+      5395,
+      5908,
+      5726,
+      7068,
+      7305,
+      8989
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 93655,
-      "observed": 93655,
+      "expected": 94172,
+      "observed": 94172,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 1581,
+    "papers": 1582,
     "us": {
-      "mapped": 1019,
+      "mapped": 1020,
       "top": [
         {
           "name": "Johns Hopkins University, Maryland",
@@ -147,7 +147,7 @@
       ]
     },
     "world": {
-      "mapped": 1538,
+      "mapped": 1539,
       "top": [
         {
           "name": "Johns Hopkins University, Maryland",
@@ -176,51 +176,51 @@
     ],
     "authorCount": 26,
     "year": 2005,
-    "citations": 2471
+    "citations": 2483
   },
   "ranks": {
     "full": {
       "bins": [
-        67.782,
-        66.025,
-        84.339,
-        83.411,
-        75.444,
-        63.497,
-        86.818,
-        78.067,
-        86.43,
-        88.187
+        67.852,
+        66.121,
+        84.967,
+        81.816,
+        77.197,
+        62.873,
+        86.729,
+        77.921,
+        86.402,
+        88.121
       ],
-      "top1": 8.776
+      "top1": 7.989
     },
     "window": {
       "bins": [
         12,
-        6.475,
-        10.704,
-        13.452,
-        9.376,
-        14.56,
-        17.399,
-        14.932,
-        12.102,
+        6.479,
+        10.739,
+        13.474,
+        9.32,
+        14.577,
+        17.456,
+        14.86,
+        12.096,
         20
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        161.083,
-        177.489,
-        187.334,
-        150.666,
-        169.619,
-        148.424,
-        130.122,
-        151.903,
-        128.963,
-        175.396
+        159.802,
+        179.231,
+        187.469,
+        148.736,
+        171.982,
+        148.024,
+        132.01,
+        149.761,
+        128.895,
+        176.09
       ],
       "top1": 25
     }
@@ -228,11 +228,11 @@
   "full": {
     "papers": 780,
     "outputBasis": "measured",
-    "citations": 17530,
-    "top10": 65.646,
-    "top10ShareOfDivision": 0.0132,
-    "top1": 6.61,
-    "top1ShareOfDivision": 0.01329,
+    "citations": 17531,
+    "top10": 65.624,
+    "top10ShareOfDivision": 0.01319,
+    "top1": 6.118,
+    "top1ShareOfDivision": 0.0123,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.418,
@@ -255,10 +255,10 @@
       "m": 5.156
     },
     "spread": {
-      "mean": 22.474,
+      "mean": 22.476,
       "median": 13,
       "uncited": 35,
-      "i10": 481,
+      "i10": 482,
       "i100": 23
     }
   },
@@ -300,11 +300,11 @@
     }
   },
   "lifetime": {
-    "papers": 1581,
+    "papers": 1582,
     "outputBasis": "measured",
-    "citations": 93655,
-    "top10": 129.782,
-    "top10ShareOfDivision": 0.02044,
+    "citations": 94172,
+    "top10": 130.073,
+    "top10ShareOfDivision": 0.02047,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -315,26 +315,26 @@
       "date": "2004-06-00"
     },
     "spread": {
-      "mean": 59.238,
+      "mean": 59.527,
       "median": 22,
-      "uncited": 77,
-      "i10": 1114,
-      "i100": 207
+      "uncited": 76,
+      "i10": 1117,
+      "i100": 208
     }
   },
   "query": {
     "arms": "((facility:GALEX OR =abs:\"Galaxy Evolution Explorer\" OR abs:GALEX))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2003-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28facility%3AGALEX+OR+%3Dabs%3A%22Galaxy+Evolution+Explorer%22+OR+abs%3AGALEX%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:32:43.604338+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2003-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28facility%3AGALEX+OR+%3Dabs%3A%22Galaxy+Evolution+Explorer%22+OR+abs%3AGALEX%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:42:18.094293+00:00",
     "reconciliation": {
-      "adsReturned": 1582,
+      "adsReturned": 1583,
       "curatedOut": 1,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 1581
+      "final": 1582
     }
   },
   "curation": {
@@ -358,7 +358,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 2471
+      "citations": 2483
     },
     {
       "bibcode": "2007ApJ...660L..43N",
@@ -367,7 +367,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 1905
+      "citations": 1910
     },
     {
       "bibcode": "2008AJ....136.2782L",
@@ -376,7 +376,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 1865
+      "citations": 1869
     },
     {
       "bibcode": "2008AJ....136.2846B",
@@ -385,7 +385,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 1737
+      "citations": 1744
     },
     {
       "bibcode": "2007ApJS..173..267S",
@@ -394,7 +394,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 1653
+      "citations": 1657
     },
     {
       "bibcode": "2007AJ....133..734B",
@@ -403,7 +403,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 1563
+      "citations": 1569
     },
     {
       "bibcode": "2006ApJS..166..470R",
@@ -412,7 +412,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 1242
+      "citations": 1246
     },
     {
       "bibcode": "2009ApJ...690.1236I",
@@ -421,7 +421,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 1192
+      "citations": 1193
     },
     {
       "bibcode": "2007ApJS..173..682M",
@@ -430,7 +430,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 1093
+      "citations": 1098
     },
     {
       "bibcode": "2007ApJS..173..185G",
@@ -439,7 +439,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 780
+      "citations": 781
     },
     {
       "bibcode": "2014MNRAS.440..889S",
@@ -448,7 +448,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 720
+      "citations": 726
     },
     {
       "bibcode": "2018ApJ...859...11S",
@@ -457,6 +457,15 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
+      "citations": 659
+    },
+    {
+      "bibcode": "2017ApJS..233...17R",
+      "title": "BAT AGN Spectroscopic Survey. V. X-Ray Properties of the Swift/BAT 70-month AGN Catalog",
+      "firstAuthor": "Ricci, C.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2017,
       "citations": 656
     },
     {
@@ -466,16 +475,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 628
-    },
-    {
-      "bibcode": "2017ApJS..233...17R",
-      "title": "BAT AGN Spectroscopic Survey. V. X-Ray Properties of the Swift/BAT 70-month AGN Catalog",
-      "firstAuthor": "Ricci, C.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2017,
-      "citations": 611
+      "citations": 637
     },
     {
       "bibcode": "2022ApJS..258...11W",
@@ -484,7 +484,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 606
+      "citations": 613
     },
     {
       "bibcode": "2007ApJ...660L...1D",
@@ -493,7 +493,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 584
+      "citations": 586
     },
     {
       "bibcode": "2012MNRAS.419.2095M",
@@ -511,7 +511,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 566
+      "citations": 568
     },
     {
       "bibcode": "2017ApJS..233...22S",
@@ -520,7 +520,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 540
+      "citations": 544
     },
     {
       "bibcode": "2009MNRAS.400.2070S",
@@ -529,10 +529,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 535
+      "citations": 540
     }
   ],
   "papersFile": {
-    "rows": 1581
+    "rows": 1582
   }
 }

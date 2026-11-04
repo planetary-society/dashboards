@@ -28,13 +28,13 @@
     "h": 67,
     "m": 2.31,
     "i100": 39,
-    "g": 109,
-    "tori": 120.431,
-    "riq": 378
+    "g": 110,
+    "tori": 126.111,
+    "riq": 387
   },
   "facts": {
     "papers": 287,
-    "citations": 14533,
+    "citations": 14658,
     "publicationYears": [
       1998,
       2026
@@ -111,13 +111,13 @@
       214,
       214,
       157,
-      222,
-      240,
-      283,
-      375,
+      225,
+      247,
+      286,
+      378,
       292,
       605,
-      659,
+      669,
       800,
       579,
       657,
@@ -131,14 +131,14 @@
       735,
       1110,
       938,
-      943,
-      833
+      944,
+      931
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 14533,
-      "observed": 14533,
+      "expected": 14658,
+      "observed": 14658,
       "missing": 0
     }
   },
@@ -191,18 +191,18 @@
     ],
     "authorCount": 5,
     "year": 2000,
-    "citations": 884
+    "citations": 891
   },
   "ranks": {
     "full": {
       "bins": [
-        15.136,
-        2.776,
-        3.262,
+        15.16,
+        2.773,
+        3.256,
         1.845,
-        1.125,
-        3.056,
-        1.8,
+        1.136,
+        3.212,
+        1.618,
         6,
         4,
         7
@@ -211,31 +211,31 @@
     },
     "window": {
       "bins": [
-        14.389,
-        2.63,
-        2.203,
-        1.778,
-        1.494,
-        2.323,
-        3.143,
-        3.204,
-        3.837,
+        14.386,
+        2.66,
+        2.2,
+        1.754,
+        1.547,
+        2.36,
+        3.152,
+        3.179,
+        3.762,
         5
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        21.981,
-        20.132,
-        24.997,
-        21.531,
-        25.551,
-        26.653,
-        32.114,
-        34.87,
-        31.674,
-        47.497
+        21.872,
+        20.471,
+        25.495,
+        20.477,
+        25.737,
+        27.103,
+        33.01,
+        34.137,
+        32.021,
+        46.677
       ],
       "top1": 3
     }
@@ -317,9 +317,9 @@
   "lifetime": {
     "papers": 287,
     "outputBasis": "measured",
-    "citations": 14533,
-    "top10": 44.83,
-    "top10ShareOfDivision": 0.02857,
+    "citations": 14658,
+    "top10": 44.01,
+    "top10ShareOfDivision": 0.02799,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -330,18 +330,18 @@
       "date": "1998-09-00"
     },
     "spread": {
-      "mean": 50.638,
+      "mean": 51.073,
       "median": 26,
-      "uncited": 17,
+      "uncited": 16,
       "i10": 212,
       "i100": 39
     }
   },
   "query": {
     "arms": "((=abs:\"Lunar Prospector\" OR (abs:LPNS AND abs:(lunar OR Moon OR neutron))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1998-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Prospector%22+OR+%28abs%3ALPNS+AND+abs%3A%28lunar+OR+Moon+OR+neutron%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:10:39.894186+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1998-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Prospector%22+OR+%28abs%3ALPNS+AND+abs%3A%28lunar+OR+Moon+OR+neutron%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:26:25.227946+00:00",
     "reconciliation": {
       "adsReturned": 305,
       "curatedOut": 18,
@@ -509,7 +509,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 884
+      "citations": 891
     },
     {
       "bibcode": "1998Sci...281.1496F",
@@ -518,7 +518,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 535
+      "citations": 543
     },
     {
       "bibcode": "2006JGRE..11112007P",
@@ -527,7 +527,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 353
+      "citations": 355
     },
     {
       "bibcode": "1998Sci...281.1484L",
@@ -536,7 +536,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 315
+      "citations": 317
     },
     {
       "bibcode": "2001Icar..150....1K",
@@ -545,7 +545,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 291
+      "citations": 297
     },
     {
       "bibcode": "2001JGR...10623231F",
@@ -554,7 +554,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 271
+      "citations": 272
     },
     {
       "bibcode": "2011P&SS...59.1326S",
@@ -563,7 +563,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 260
+      "citations": 264
     },
     {
       "bibcode": "2000JGR...105.4175F",
@@ -572,7 +572,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 233
+      "citations": 238
     },
     {
       "bibcode": "1998Sci...281.1476K",
@@ -581,7 +581,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 232
+      "citations": 233
     },
     {
       "bibcode": "1998Sci...281.1480L",
@@ -590,7 +590,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 227
+      "citations": 230
     },
     {
       "bibcode": "2000JGR...10520307L",
@@ -599,7 +599,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 222
+      "citations": 223
     },
     {
       "bibcode": "2017Icar..296..216S",
@@ -608,7 +608,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 216
+      "citations": 219
     },
     {
       "bibcode": "2002JGRE..107.5130L",
@@ -617,7 +617,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 211
+      "citations": 212
     },
     {
       "bibcode": "2008Icar..194..401M",
@@ -635,7 +635,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 177
+      "citations": 178
     },
     {
       "bibcode": "2006Natur.443..835C",
@@ -644,7 +644,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 165
+      "citations": 166
     },
     {
       "bibcode": "2004GeCoA..68.3791G",
@@ -653,7 +653,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 164
+      "citations": 165
+    },
+    {
+      "bibcode": "2001JGR...10627825H",
+      "title": "Initial mapping and interpretation of lunar crustal magnetic anomalies using Lunar Prospector magnetometer data",
+      "firstAuthor": "Hood, L. L.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2001,
+      "citations": 163
     },
     {
       "bibcode": "2003JGRE..108.5102L",
@@ -665,22 +674,13 @@
       "citations": 163
     },
     {
-      "bibcode": "2001JGR...10627825H",
-      "title": "Initial mapping and interpretation of lunar crustal magnetic anomalies using Lunar Prospector magnetometer data",
-      "firstAuthor": "Hood, L. L.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2001,
-      "citations": 162
-    },
-    {
       "bibcode": "2012Icar..218..771F",
       "title": "Regolith thickness over the lunar nearside: Results from Earth-based 70-cm Arecibo radar observations",
       "firstAuthor": "Fa, Wenzhe",
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 157
+      "citations": 159
     }
   ],
   "papersFile": {

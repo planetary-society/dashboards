@@ -27,14 +27,14 @@
   "indices": {
     "h": 84,
     "m": 3.36,
-    "i100": 59,
-    "g": 139,
-    "tori": 215.061,
-    "riq": 586
+    "i100": 60,
+    "g": 140,
+    "tori": 219.292,
+    "riq": 592
   },
   "facts": {
     "papers": 611,
-    "citations": 28247,
+    "citations": 28436,
     "publicationYears": [
       2002,
       2026
@@ -100,33 +100,33 @@
       238,
       322,
       541,
-      716,
-      1082,
+      721,
+      1101,
       1006,
       1238,
       1317,
-      1344,
-      1320,
-      1333,
+      1346,
+      1325,
+      1334,
       1199,
-      1328,
-      1296,
-      1094,
-      1365,
-      1335,
-      1220,
-      1686,
-      1714,
-      1391,
+      1329,
+      1298,
+      1098,
+      1369,
+      1340,
+      1221,
+      1690,
+      1725,
+      1393,
       1385,
-      1483,
-      1273
+      1485,
+      1394
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 28247,
-      "observed": 28247,
+      "expected": 28436,
+      "observed": 28436,
       "missing": 0
     }
   },
@@ -179,34 +179,34 @@
     ],
     "authorCount": 11,
     "year": 2004,
-    "citations": 884
+    "citations": 888
   },
   "ranks": {
     "full": {
       "bins": [
-        66.475,
-        70.578,
-        67.929,
-        41.645,
-        61.102,
-        44.271,
-        60.24,
-        48.727,
-        45.853,
-        52.18
+        66.8,
+        70.191,
+        68.364,
+        41.781,
+        61.101,
+        43.673,
+        60.776,
+        48.804,
+        45.784,
+        51.726
       ],
-      "top1": 4
+      "top1": 3.893
     },
     "window": {
       "bins": [
-        22.759,
-        25.351,
-        22.998,
-        16.916,
-        8.21,
-        18.116,
-        13.13,
-        11.52,
+        22.749,
+        25.526,
+        22.955,
+        16.929,
+        8.207,
+        18.701,
+        12.462,
+        11.471,
         13,
         16
       ],
@@ -214,16 +214,16 @@
     },
     "lifetime": {
       "bins": [
-        53.699,
-        48.992,
-        64.044,
-        55.776,
-        52.777,
-        46.97,
-        61.659,
-        69.226,
-        81.857,
-        76
+        53.147,
+        50.756,
+        63.504,
+        54.961,
+        54.212,
+        47.733,
+        62.02,
+        66.484,
+        81.83,
+        76.353
       ],
       "top1": 11
     }
@@ -231,11 +231,11 @@
   "full": {
     "papers": 559,
     "outputBasis": "measured",
-    "citations": 7171,
-    "top10": 37.322,
-    "top10ShareOfDivision": 0.03434,
-    "top1": 4,
-    "top1ShareOfDivision": 0.03681,
+    "citations": 7196,
+    "top10": 37.067,
+    "top10ShareOfDivision": 0.03411,
+    "top1": 3.893,
+    "top1ShareOfDivision": 0.03582,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.361,
@@ -258,8 +258,8 @@
       "m": 1.694
     },
     "spread": {
-      "mean": 12.828,
-      "median": 7,
+      "mean": 12.873,
+      "median": 8,
       "uncited": 38,
       "i10": 235,
       "i100": 3
@@ -268,7 +268,7 @@
   "window": {
     "papers": 168,
     "outputBasis": "measured",
-    "citations": 2775,
+    "citations": 2787,
     "top10": 16,
     "top10ShareOfDivision": 0.0334,
     "top1": 2,
@@ -295,7 +295,7 @@
       "m": 6.217
     },
     "spread": {
-      "mean": 16.518,
+      "mean": 16.589,
       "median": 7.5,
       "uncited": 14,
       "i10": 75,
@@ -305,9 +305,9 @@
   "lifetime": {
     "papers": 611,
     "outputBasis": "measured",
-    "citations": 28247,
-    "top10": 48.95,
-    "top10ShareOfDivision": 0.0312,
+    "citations": 28436,
+    "top10": 49.465,
+    "top10ShareOfDivision": 0.03146,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -318,18 +318,18 @@
       "date": "2002-07-00"
     },
     "spread": {
-      "mean": 46.231,
+      "mean": 46.54,
       "median": 22,
-      "uncited": 40,
-      "i10": 418,
-      "i100": 59
+      "uncited": 37,
+      "i10": 420,
+      "i100": 60
     }
   },
   "query": {
     "arms": "((=abs:\"Mars Odyssey\" OR ((abs:Odyssey OR abs:ODY OR abs:THEMIS OR abs:GRS OR =abs:\"Gamma Ray Spectrometer\" OR =abs:\"Thermal Emission Imaging System\") AND (abs:Mars OR abs:Martian)) OR (abs:HEND AND (abs:Mars OR abs:Odyssey)) OR =abs:\"Odyssey data\" OR =abs:\"Odyssey observations\" OR =abs:\"Odyssey spacecraft\" OR =abs:\"Gamma-Ray Spectrometer on Odyssey\" OR =abs:\"Odyssey Gamma-Ray Spectrometer\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2002-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Odyssey%22+OR+%28%28abs%3AOdyssey+OR+abs%3AODY+OR+abs%3ATHEMIS+OR+abs%3AGRS+OR+%3Dabs%3A%22Gamma+Ray+Spectrometer%22+OR+%3Dabs%3A%22Thermal+Emission+Imaging+System%22%29+AND+%28abs%3AMars+OR+abs%3AMartian%29%29+OR+%28abs%3AHEND+AND+%28abs%3AMars+OR+abs%3AOdyssey%29%29+OR+%3Dabs%3A%22Odyssey+data%22+OR+%3Dabs%3A%22Odyssey+observations%22+OR+%3Dabs%3A%22Odyssey+spacecraft%22+OR+%3Dabs%3A%22Gamma-Ray+Spectrometer+on+Odyssey%22+OR+%3Dabs%3A%22Odyssey+Gamma-Ray+Spectrometer%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:10:56.765259+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2002-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Odyssey%22+OR+%28%28abs%3AOdyssey+OR+abs%3AODY+OR+abs%3ATHEMIS+OR+abs%3AGRS+OR+%3Dabs%3A%22Gamma+Ray+Spectrometer%22+OR+%3Dabs%3A%22Thermal+Emission+Imaging+System%22%29+AND+%28abs%3AMars+OR+abs%3AMartian%29%29+OR+%28abs%3AHEND+AND+%28abs%3AMars+OR+abs%3AOdyssey%29%29+OR+%3Dabs%3A%22Odyssey+data%22+OR+%3Dabs%3A%22Odyssey+observations%22+OR+%3Dabs%3A%22Odyssey+spacecraft%22+OR+%3Dabs%3A%22Gamma-Ray+Spectrometer+on+Odyssey%22+OR+%3Dabs%3A%22Odyssey+Gamma-Ray+Spectrometer%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:26:45.224220+00:00",
     "reconciliation": {
       "adsReturned": 629,
       "curatedOut": 17,
@@ -489,7 +489,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 884
+      "citations": 888
     },
     {
       "bibcode": "2002Sci...297...81B",
@@ -498,7 +498,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 806
+      "citations": 815
     },
     {
       "bibcode": "2002Sci...297...75F",
@@ -507,7 +507,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 476
+      "citations": 479
     },
     {
       "bibcode": "2015Icar..251...65M",
@@ -525,7 +525,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 427
+      "citations": 433
     },
     {
       "bibcode": "2009JGRE..114.0D06M",
@@ -537,6 +537,15 @@
       "citations": 420
     },
     {
+      "bibcode": "2004Icar..172..537K",
+      "title": "Detection of methane in the martian atmosphere: evidence for life?",
+      "firstAuthor": "Krasnopolsky, Vladimir A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2004,
+      "citations": 419
+    },
+    {
       "bibcode": "2003Sci...302.1931M",
       "title": "Evidence for Persistent Flow and Aqueous Sedimentation on Early Mars",
       "firstAuthor": "Malin, Michael C.",
@@ -546,22 +555,13 @@
       "citations": 411
     },
     {
-      "bibcode": "2004Icar..172..537K",
-      "title": "Detection of methane in the martian atmosphere: evidence for life?",
-      "firstAuthor": "Krasnopolsky, Vladimir A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2004,
-      "citations": 411
-    },
-    {
       "bibcode": "2003Sci...300.2056C",
       "title": "Morphology and Composition of the Surface of Mars: Mars Odyssey THEMIS Results",
       "firstAuthor": "Christensen, Philip R.",
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 339
+      "citations": 340
     },
     {
       "bibcode": "2002Sci...297...78M",
@@ -570,7 +570,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 335
+      "citations": 337
     },
     {
       "bibcode": "2004JGRE..109.9006F",
@@ -579,7 +579,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 334
+      "citations": 336
     },
     {
       "bibcode": "2004Icar..169..324M",
@@ -606,7 +606,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 288
+      "citations": 289
     },
     {
       "bibcode": "2004Natur.431..663V",
@@ -615,7 +615,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 275
+      "citations": 279
     },
     {
       "bibcode": "2006Icar..182...23K",
@@ -660,7 +660,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 245
+      "citations": 249
     }
   ],
   "papersFile": {

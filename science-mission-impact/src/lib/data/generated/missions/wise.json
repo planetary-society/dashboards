@@ -25,16 +25,16 @@
     }
   },
   "indices": {
-    "h": 131,
-    "m": 7.706,
-    "i100": 224,
-    "g": 236,
-    "tori": 299.859,
-    "riq": 962
+    "h": 132,
+    "m": 7.765,
+    "i100": 225,
+    "g": 237,
+    "tori": 323.482,
+    "riq": 999
   },
   "facts": {
-    "papers": 2604,
-    "citations": 106977,
+    "papers": 2607,
+    "citations": 107904,
     "publicationYears": [
       2010,
       2026
@@ -77,7 +77,7 @@
       197,
       206,
       237,
-      210
+      213
     ],
     "citations": [
       42,
@@ -86,30 +86,30 @@
       1884,
       2939,
       3540,
-      4457,
-      5151,
+      4439,
+      5150,
       6115,
-      6345,
-      7113,
-      8020,
-      8288,
-      9410,
-      11579,
-      13703,
-      17160
+      6351,
+      7116,
+      8026,
+      8293,
+      9417,
+      11583,
+      13735,
+      18043
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 106977,
-      "observed": 106977,
+      "expected": 107904,
+      "observed": 107904,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 2604,
+    "papers": 2607,
     "us": {
-      "mapped": 1557,
+      "mapped": 1560,
       "top": [
         {
           "name": "California Institute of Technology",
@@ -121,12 +121,12 @@
         },
         {
           "name": "Harvard Smithsonian Center for Astrophysics",
-          "papers": 213
+          "papers": 214
         }
       ]
     },
     "world": {
-      "mapped": 2520,
+      "mapped": 2523,
       "top": [
         {
           "name": "California Institute of Technology",
@@ -134,7 +134,7 @@
         },
         {
           "name": "Max Planck Society for the Advancement of Science, Germany",
-          "papers": 321
+          "papers": 323
         },
         {
           "name": "Chinese Academy of Sciences, Beijing",
@@ -155,51 +155,51 @@
     ],
     "authorCount": 38,
     "year": 2010,
-    "citations": 8059
+    "citations": 8104
   },
   "ranks": {
     "full": {
       "bins": [
-        8.098,
-        14.876,
+        8.107,
+        14.921,
         17.599,
-        17.037,
-        13.892,
-        20.999,
-        25.615,
-        21.673,
-        31.026,
-        19.187
+        17.031,
+        13.91,
+        21.042,
+        25.548,
+        21.701,
+        31.021,
+        19.121
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        7.873,
-        16.839,
-        21.174,
-        18.561,
-        19.567,
-        20.727,
-        24.733,
-        22.322,
-        21.204,
+        7.88,
+        16.838,
+        21.23,
+        18.59,
+        19.485,
+        20.757,
+        24.754,
+        22.275,
+        21.192,
         17
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        357.892,
-        346.1,
-        321.727,
-        296.392,
-        241.053,
-        248.282,
-        224.001,
-        201.121,
-        202.243,
-        165.189
+        357.855,
+        344.592,
+        323.508,
+        296.498,
+        243.005,
+        248.494,
+        221.992,
+        198.505,
+        207.19,
+        165.36
       ],
       "top1": 12
     }
@@ -208,8 +208,8 @@
     "papers": 190,
     "outputBasis": "measured",
     "citations": 5254,
-    "top10": 14.854,
-    "top10ShareOfDivision": 0.00299,
+    "top10": 14.788,
+    "top10ShareOfDivision": 0.00297,
     "top1": 2,
     "top1ShareOfDivision": 0.00402,
     "first": {
@@ -279,10 +279,10 @@
     }
   },
   "lifetime": {
-    "papers": 2604,
+    "papers": 2607,
     "outputBasis": "measured",
-    "citations": 106977,
-    "top10": 126.755,
+    "citations": 107904,
+    "top10": 126.927,
     "top10ShareOfDivision": 0.01997,
     "top1": null,
     "top1ShareOfDivision": null,
@@ -294,26 +294,26 @@
       "date": "2010-02-00"
     },
     "spread": {
-      "mean": 41.082,
-      "median": 16,
-      "uncited": 184,
-      "i10": 1670,
-      "i100": 224
+      "mean": 41.39,
+      "median": 17,
+      "uncited": 181,
+      "i10": 1680,
+      "i100": 225
     }
   },
   "query": {
     "arms": "(((((=abs:\"Wide-field Infrared Survey Explorer\" OR =abs:\"Wide-field Infrared Space Explorer\" OR (abs:WISE AND (abs:infrared OR abs:observatory OR abs:NEOWISE OR abs:asteroid OR abs:\"all-sky\")) OR facility:WISE OR =abs:\"WISE satellite\" OR ((=abs:AllWISE OR =abs:unWISE OR =abs:CatWISE) AND (abs:infrared OR abs:catalog OR abs:photometry OR abs:survey OR abs:WISE)) OR (abs:NEOWISE AND NOT (abs:asteroid OR abs:comet OR =abs:NEOs OR =abs:\"near-Earth objects\" OR =abs:\"minor planet\" OR =abs:\"minor planets\" OR =abs:\"small body\" OR =abs:\"small bodies\" OR abs:trojan OR =abs:\"planetary defense\" OR =abs:\"Kuiper belt\" OR =abs:\"trans-Neptunian\" OR abs:Neptune OR abs:regolith OR =abs:\"Planet Nine\")) OR (abs:NEOWISE AND (abs:AGN OR abs:quasar OR abs:YSO OR abs:protostar OR abs:\"tidal disruption event\" OR abs:supernova OR abs:\"brown dwarf\" OR abs:\"white dwarf\" OR abs:maser OR abs:\"star-forming\" OR abs:\"black hole\"))) AND NOT (=abs:\"C 2020 F3 NEOWISE\" OR =abs:\"comet NEOWISE\" OR =abs:\"C 2014 N3 NEOWISE\")) AND NOT (abs:NEOWISE AND (abs:asteroid OR abs:comet OR =abs:NEOs OR =abs:\"near-Earth objects\" OR =abs:\"minor planet\" OR =abs:\"minor planets\" OR =abs:\"small body\" OR =abs:\"small bodies\" OR abs:trojan OR =abs:\"planetary defense\" OR =abs:\"Kuiper belt\" OR =abs:\"trans-Neptunian\" OR abs:Neptune OR abs:regolith OR =abs:\"Planet Nine\") AND NOT (abs:AGN OR abs:quasar OR abs:YSO OR abs:protostar OR abs:\"tidal disruption event\" OR abs:supernova OR abs:\"brown dwarf\" OR abs:\"white dwarf\" OR abs:maser OR abs:\"star-forming\" OR abs:\"black hole\") AND NOT =abs:WISE AND NOT facility:WISE)) AND collection:astronomy))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2010-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%28%28%3Dabs%3A%22Wide-field+Infrared+Survey+Explorer%22+OR+%3Dabs%3A%22Wide-field+Infrared+Space+Explorer%22+OR+%28abs%3AWISE+AND+%28abs%3Ainfrared+OR+abs%3Aobservatory+OR+abs%3ANEOWISE+OR+abs%3Aasteroid+OR+abs%3A%22all-sky%22%29%29+OR+facility%3AWISE+OR+%3Dabs%3A%22WISE+satellite%22+OR+%28%28%3Dabs%3AAllWISE+OR+%3Dabs%3AunWISE+OR+%3Dabs%3ACatWISE%29+AND+%28abs%3Ainfrared+OR+abs%3Acatalog+OR+abs%3Aphotometry+OR+abs%3Asurvey+OR+abs%3AWISE%29%29+OR+%28abs%3ANEOWISE+AND+NOT+%28abs%3Aasteroid+OR+abs%3Acomet+OR+%3Dabs%3ANEOs+OR+%3Dabs%3A%22near-Earth+objects%22+OR+%3Dabs%3A%22minor+planet%22+OR+%3Dabs%3A%22minor+planets%22+OR+%3Dabs%3A%22small+body%22+OR+%3Dabs%3A%22small+bodies%22+OR+abs%3Atrojan+OR+%3Dabs%3A%22planetary+defense%22+OR+%3Dabs%3A%22Kuiper+belt%22+OR+%3Dabs%3A%22trans-Neptunian%22+OR+abs%3ANeptune+OR+abs%3Aregolith+OR+%3Dabs%3A%22Planet+Nine%22%29%29+OR+%28abs%3ANEOWISE+AND+%28abs%3AAGN+OR+abs%3Aquasar+OR+abs%3AYSO+OR+abs%3Aprotostar+OR+abs%3A%22tidal+disruption+event%22+OR+abs%3Asupernova+OR+abs%3A%22brown+dwarf%22+OR+abs%3A%22white+dwarf%22+OR+abs%3Amaser+OR+abs%3A%22star-forming%22+OR+abs%3A%22black+hole%22%29%29%29+AND+NOT+%28%3Dabs%3A%22C+2020+F3+NEOWISE%22+OR+%3Dabs%3A%22comet+NEOWISE%22+OR+%3Dabs%3A%22C+2014+N3+NEOWISE%22%29%29+AND+NOT+%28abs%3ANEOWISE+AND+%28abs%3Aasteroid+OR+abs%3Acomet+OR+%3Dabs%3ANEOs+OR+%3Dabs%3A%22near-Earth+objects%22+OR+%3Dabs%3A%22minor+planet%22+OR+%3Dabs%3A%22minor+planets%22+OR+%3Dabs%3A%22small+body%22+OR+%3Dabs%3A%22small+bodies%22+OR+abs%3Atrojan+OR+%3Dabs%3A%22planetary+defense%22+OR+%3Dabs%3A%22Kuiper+belt%22+OR+%3Dabs%3A%22trans-Neptunian%22+OR+abs%3ANeptune+OR+abs%3Aregolith+OR+%3Dabs%3A%22Planet+Nine%22%29+AND+NOT+%28abs%3AAGN+OR+abs%3Aquasar+OR+abs%3AYSO+OR+abs%3Aprotostar+OR+abs%3A%22tidal+disruption+event%22+OR+abs%3Asupernova+OR+abs%3A%22brown+dwarf%22+OR+abs%3A%22white+dwarf%22+OR+abs%3Amaser+OR+abs%3A%22star-forming%22+OR+abs%3A%22black+hole%22%29+AND+NOT+%3Dabs%3AWISE+AND+NOT+facility%3AWISE%29%29+AND+collection%3Aastronomy%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2010-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:35:37.899849+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2010-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%28%28%3Dabs%3A%22Wide-field+Infrared+Survey+Explorer%22+OR+%3Dabs%3A%22Wide-field+Infrared+Space+Explorer%22+OR+%28abs%3AWISE+AND+%28abs%3Ainfrared+OR+abs%3Aobservatory+OR+abs%3ANEOWISE+OR+abs%3Aasteroid+OR+abs%3A%22all-sky%22%29%29+OR+facility%3AWISE+OR+%3Dabs%3A%22WISE+satellite%22+OR+%28%28%3Dabs%3AAllWISE+OR+%3Dabs%3AunWISE+OR+%3Dabs%3ACatWISE%29+AND+%28abs%3Ainfrared+OR+abs%3Acatalog+OR+abs%3Aphotometry+OR+abs%3Asurvey+OR+abs%3AWISE%29%29+OR+%28abs%3ANEOWISE+AND+NOT+%28abs%3Aasteroid+OR+abs%3Acomet+OR+%3Dabs%3ANEOs+OR+%3Dabs%3A%22near-Earth+objects%22+OR+%3Dabs%3A%22minor+planet%22+OR+%3Dabs%3A%22minor+planets%22+OR+%3Dabs%3A%22small+body%22+OR+%3Dabs%3A%22small+bodies%22+OR+abs%3Atrojan+OR+%3Dabs%3A%22planetary+defense%22+OR+%3Dabs%3A%22Kuiper+belt%22+OR+%3Dabs%3A%22trans-Neptunian%22+OR+abs%3ANeptune+OR+abs%3Aregolith+OR+%3Dabs%3A%22Planet+Nine%22%29%29+OR+%28abs%3ANEOWISE+AND+%28abs%3AAGN+OR+abs%3Aquasar+OR+abs%3AYSO+OR+abs%3Aprotostar+OR+abs%3A%22tidal+disruption+event%22+OR+abs%3Asupernova+OR+abs%3A%22brown+dwarf%22+OR+abs%3A%22white+dwarf%22+OR+abs%3Amaser+OR+abs%3A%22star-forming%22+OR+abs%3A%22black+hole%22%29%29%29+AND+NOT+%28%3Dabs%3A%22C+2020+F3+NEOWISE%22+OR+%3Dabs%3A%22comet+NEOWISE%22+OR+%3Dabs%3A%22C+2014+N3+NEOWISE%22%29%29+AND+NOT+%28abs%3ANEOWISE+AND+%28abs%3Aasteroid+OR+abs%3Acomet+OR+%3Dabs%3ANEOs+OR+%3Dabs%3A%22near-Earth+objects%22+OR+%3Dabs%3A%22minor+planet%22+OR+%3Dabs%3A%22minor+planets%22+OR+%3Dabs%3A%22small+body%22+OR+%3Dabs%3A%22small+bodies%22+OR+abs%3Atrojan+OR+%3Dabs%3A%22planetary+defense%22+OR+%3Dabs%3A%22Kuiper+belt%22+OR+%3Dabs%3A%22trans-Neptunian%22+OR+abs%3ANeptune+OR+abs%3Aregolith+OR+%3Dabs%3A%22Planet+Nine%22%29+AND+NOT+%28abs%3AAGN+OR+abs%3Aquasar+OR+abs%3AYSO+OR+abs%3Aprotostar+OR+abs%3A%22tidal+disruption+event%22+OR+abs%3Asupernova+OR+abs%3A%22brown+dwarf%22+OR+abs%3A%22white+dwarf%22+OR+abs%3Amaser+OR+abs%3A%22star-forming%22+OR+abs%3A%22black+hole%22%29+AND+NOT+%3Dabs%3AWISE+AND+NOT+facility%3AWISE%29%29+AND+collection%3Aastronomy%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2010-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:44:35.296311+00:00",
     "reconciliation": {
-      "adsReturned": 2610,
+      "adsReturned": 2613,
       "curatedOut": 7,
       "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 2604
+      "final": 2607
     }
   },
   "curation": {
@@ -394,7 +394,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 8059
+      "citations": 8104
     },
     {
       "bibcode": "2019AJ....157..168D",
@@ -403,7 +403,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 2418
+      "citations": 2469
     },
     {
       "bibcode": "2011ApJ...731...53M",
@@ -412,7 +412,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 926
+      "citations": 931
     },
     {
       "bibcode": "2012ApJ...753...30S",
@@ -421,7 +421,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 908
+      "citations": 914
     },
     {
       "bibcode": "2014ApJ...792...30M",
@@ -430,7 +430,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 808
+      "citations": 815
     },
     {
       "bibcode": "2011ApJ...735..112J",
@@ -439,7 +439,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 725
+      "citations": 729
     },
     {
       "bibcode": "2026AJ....171..285D",
@@ -448,7 +448,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2026,
-      "citations": 692
+      "citations": 725
     },
     {
       "bibcode": "2018ApJ...859...11S",
@@ -457,6 +457,15 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
+      "citations": 659
+    },
+    {
+      "bibcode": "2017ApJS..233...17R",
+      "title": "BAT AGN Spectroscopic Survey. V. X-Ray Properties of the Swift/BAT 70-month AGN Catalog",
+      "firstAuthor": "Ricci, C.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2017,
       "citations": 656
     },
     {
@@ -466,16 +475,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 628
-    },
-    {
-      "bibcode": "2017ApJS..233...17R",
-      "title": "BAT AGN Spectroscopic Survey. V. X-Ray Properties of the Swift/BAT 70-month AGN Catalog",
-      "firstAuthor": "Ricci, C.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2017,
-      "citations": 611
+      "citations": 637
     },
     {
       "bibcode": "2012ApJS..201...19D",
@@ -484,7 +484,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 567
+      "citations": 569
     },
     {
       "bibcode": "2019ApJ...877..116W",
@@ -493,7 +493,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 530
+      "citations": 537
     },
     {
       "bibcode": "2014ApJS..212....1A",
@@ -502,7 +502,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 453
+      "citations": 455
     },
     {
       "bibcode": "2016ApJS..227....2S",
@@ -511,16 +511,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 443
-    },
-    {
-      "bibcode": "2011PASP..123.1218A",
-      "title": "Common-Resolution Convolution Kernels for Space- and Ground-Based Telescopes",
-      "firstAuthor": "Aniano, G.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2011,
-      "citations": 438
+      "citations": 445
     },
     {
       "bibcode": "2019ApJS..240...30S",
@@ -529,6 +520,15 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
+      "citations": 440
+    },
+    {
+      "bibcode": "2011PASP..123.1218A",
+      "title": "Common-Resolution Convolution Kernels for Space- and Ground-Based Telescopes",
+      "firstAuthor": "Aniano, G.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2011,
       "citations": 438
     },
     {
@@ -547,7 +547,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 411
+      "citations": 414
     },
     {
       "bibcode": "2011ApJ...741...68M",
@@ -556,7 +556,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 403
+      "citations": 405
     },
     {
       "bibcode": "2014AJ....147..108L",
@@ -565,10 +565,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 403
+      "citations": 405
     }
   ],
   "papersFile": {
-    "rows": 2604
+    "rows": 2607
   }
 }

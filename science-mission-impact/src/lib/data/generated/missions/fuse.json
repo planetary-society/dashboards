@@ -27,14 +27,14 @@
   "indices": {
     "h": 94,
     "m": 3.481,
-    "i100": 86,
+    "i100": 87,
     "g": 147,
-    "tori": 180.301,
-    "riq": 497
+    "tori": 188.943,
+    "riq": 509
   },
   "facts": {
     "papers": 799,
-    "citations": 38008,
+    "citations": 38180,
     "publicationYears": [
       2000,
       2026
@@ -105,17 +105,17 @@
       686,
       1119,
       1426,
-      1553,
-      2140,
-      1611,
-      1648,
-      1899,
+      1560,
+      2145,
+      1630,
+      1651,
+      1944,
       1627,
-      1826,
-      2009,
+      1827,
+      2018,
       1532,
       1553,
-      1421,
+      1428,
       1489,
       1675,
       1430,
@@ -125,14 +125,14 @@
       1241,
       1217,
       1576,
-      1461,
-      1467
+      1462,
+      1542
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 38008,
-      "observed": 38008,
+      "expected": 38180,
+      "observed": 38180,
       "missing": 0
     }
   },
@@ -182,51 +182,51 @@
     ],
     "authorCount": 1,
     "year": 2009,
-    "citations": 935
+    "citations": 938
   },
   "ranks": {
     "full": {
       "bins": [
-        49.318,
-        60.26,
-        64.567,
-        69.559,
-        51.997,
-        60.097,
-        65.803,
-        52.166,
-        51.046,
-        31.187
+        49.008,
+        60.749,
+        64.184,
+        69.028,
+        52.671,
+        58.674,
+        67.386,
+        51.016,
+        51.163,
+        32.121
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        20.62,
-        33.992,
-        37.397,
-        34.254,
-        42.816,
-        40.23,
-        35.149,
-        26.441,
-        33.102,
+        20.346,
+        34.285,
+        37.506,
+        34.244,
+        41.752,
+        41.233,
+        35.188,
+        26.349,
+        33.096,
         12
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        39.361,
-        60.035,
-        73.743,
-        87.587,
-        105.843,
-        92.142,
-        89.302,
-        96.771,
-        84.216,
-        70
+        40.267,
+        59.528,
+        73.127,
+        88.761,
+        106.291,
+        90.424,
+        90.219,
+        96.527,
+        83.675,
+        70.18
       ],
       "top1": 4
     }
@@ -234,9 +234,9 @@
   "full": {
     "papers": 556,
     "outputBasis": "measured",
-    "citations": 9350,
-    "top10": 24.52,
-    "top10ShareOfDivision": 0.00493,
+    "citations": 9392,
+    "top10": 25.455,
+    "top10ShareOfDivision": 0.00512,
     "top1": 2,
     "top1ShareOfDivision": 0.00402,
     "first": {
@@ -261,17 +261,17 @@
       "m": 4.169
     },
     "spread": {
-      "mean": 16.817,
+      "mean": 16.892,
       "median": 12,
       "uncited": 24,
-      "i10": 314,
+      "i10": 315,
       "i100": 3
     }
   },
   "window": {
     "papers": 316,
     "outputBasis": "measured",
-    "citations": 5923,
+    "citations": 5934,
     "top10": 10,
     "top10ShareOfDivision": 0.00517,
     "top1": 2,
@@ -298,19 +298,19 @@
       "m": 7.05
     },
     "spread": {
-      "mean": 18.744,
+      "mean": 18.778,
       "median": 13,
       "uncited": 11,
-      "i10": 201,
+      "i10": 202,
       "i100": 3
     }
   },
   "lifetime": {
     "papers": 799,
     "outputBasis": "measured",
-    "citations": 38008,
-    "top10": 50.417,
-    "top10ShareOfDivision": 0.00794,
+    "citations": 38180,
+    "top10": 50.537,
+    "top10ShareOfDivision": 0.00795,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -321,18 +321,18 @@
       "date": "2000-07-00"
     },
     "spread": {
-      "mean": 47.569,
+      "mean": 47.785,
       "median": 27,
       "uncited": 15,
-      "i10": 656,
-      "i100": 86
+      "i10": 657,
+      "i100": 87
     }
   },
   "query": {
     "arms": "((=abs:\"Far Ultraviolet Spectroscopic Explorer\" OR =abs:\"Far Ultraviolet Spectrographic Explorer\" OR =abs:\"Far Ultraviolet Spectroscopy Explorer\" OR =abs:\"Far Ultraviolet Explorer\" OR facility:FUSE OR (abs:FUSE AND collection:astronomy AND NOT (=abs:\"file system\" OR =abs:\"file systems\" OR =abs:\"SIT-FUSE\"))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2000-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Far+Ultraviolet+Spectroscopic+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Spectrographic+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Spectroscopy+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Explorer%22+OR+facility%3AFUSE+OR+%28abs%3AFUSE+AND+collection%3Aastronomy+AND+NOT+%28%3Dabs%3A%22file+system%22+OR+%3Dabs%3A%22file+systems%22+OR+%3Dabs%3A%22SIT-FUSE%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:30:59.066056+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2000-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Far+Ultraviolet+Spectroscopic+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Spectrographic+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Spectroscopy+Explorer%22+OR+%3Dabs%3A%22Far+Ultraviolet+Explorer%22+OR+facility%3AFUSE+OR+%28abs%3AFUSE+AND+collection%3Aastronomy+AND+NOT+%28%3Dabs%3A%22file+system%22+OR+%3Dabs%3A%22file+systems%22+OR+%3Dabs%3A%22SIT-FUSE%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:41:28.234844+00:00",
     "reconciliation": {
       "adsReturned": 802,
       "curatedOut": 4,
@@ -397,7 +397,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 935
+      "citations": 938
     },
     {
       "bibcode": "2000ApJ...538L...1M",
@@ -406,7 +406,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 652
+      "citations": 654
+    },
+    {
+      "bibcode": "2007MNRAS.381.1235V",
+      "title": "Piecing together the X-ray background: bolometric corrections for active galactic nuclei",
+      "firstAuthor": "Vasudevan, R. V.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2007,
+      "citations": 466
     },
     {
       "bibcode": "2003ApJS..146..165S",
@@ -418,22 +427,13 @@
       "citations": 464
     },
     {
-      "bibcode": "2007MNRAS.381.1235V",
-      "title": "Piecing together the X-ray background: bolometric corrections for active galactic nuclei",
-      "firstAuthor": "Vasudevan, R. V.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2007,
-      "citations": 464
-    },
-    {
       "bibcode": "2000ApJ...538L...7S",
       "title": "On-Orbit Performance of the Far Ultraviolet Spectroscopic Explorer Satellite",
       "firstAuthor": "Sahnow, D. J.",
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 445
+      "citations": 446
     },
     {
       "bibcode": "2006ApJ...637.1025F",
@@ -442,7 +442,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 362
+      "citations": 363
     },
     {
       "bibcode": "2002ApJ...577..221R",
@@ -460,7 +460,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 300
+      "citations": 303
     },
     {
       "bibcode": "2006ApJ...647.1106L",
@@ -469,7 +469,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 294
+      "citations": 301
     },
     {
       "bibcode": "2011ApJ...730....5H",
@@ -496,7 +496,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 265
+      "citations": 266
     },
     {
       "bibcode": "2008ApJ...687.1075S",
@@ -505,7 +505,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 259
+      "citations": 260
     },
     {
       "bibcode": "2013ApJ...763..148S",
@@ -514,7 +514,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 257
+      "citations": 258
     },
     {
       "bibcode": "2003ApJ...596...47S",
@@ -559,7 +559,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 216
+      "citations": 217
     },
     {
       "bibcode": "2002ApJ...566..857T",

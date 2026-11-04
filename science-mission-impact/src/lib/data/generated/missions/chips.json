@@ -29,12 +29,12 @@
     "m": 0.167,
     "i100": 0,
     "g": 4,
-    "tori": 0.612,
-    "riq": 97
+    "tori": 1.012,
+    "riq": 125
   },
   "facts": {
     "papers": 4,
-    "citations": 82,
+    "citations": 88,
     "publicationYears": [
       2003,
       2010
@@ -98,9 +98,9 @@
       1,
       1,
       9,
+      7,
       6,
-      6,
-      18,
+      23,
       5,
       3,
       4,
@@ -122,8 +122,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 82,
-      "observed": 82,
+      "expected": 88,
+      "observed": 88,
       "missing": 0
     }
   },
@@ -175,7 +175,7 @@
     ],
     "authorCount": 3,
     "year": 2005,
-    "citations": 56
+    "citations": 62
   },
   "ranks": {
     "full": {
@@ -200,8 +200,8 @@
         0,
         0,
         0,
-        0.392,
-        0.608,
+        0,
+        1,
         0,
         0,
         0
@@ -227,7 +227,7 @@
   "full": {
     "papers": 3,
     "outputBasis": "measured",
-    "citations": 25,
+    "citations": 26,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": 0,
@@ -254,7 +254,7 @@
       "m": 0.276
     },
     "spread": {
-      "mean": 8.333,
+      "mean": 8.667,
       "median": 5,
       "uncited": 0,
       "i10": 1,
@@ -264,7 +264,7 @@
   "window": {
     "papers": 2,
     "outputBasis": "measured",
-    "citations": 20,
+    "citations": 21,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": 0,
@@ -291,8 +291,8 @@
       "m": 0.333
     },
     "spread": {
-      "mean": 10,
-      "median": 10,
+      "mean": 10.5,
+      "median": 10.5,
       "uncited": 0,
       "i10": 1,
       "i100": 0
@@ -301,7 +301,7 @@
   "lifetime": {
     "papers": 4,
     "outputBasis": "measured",
-    "citations": 82,
+    "citations": 88,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": null,
@@ -314,7 +314,7 @@
       "date": null
     },
     "spread": {
-      "mean": 20.5,
+      "mean": 22,
       "median": 9,
       "uncited": 0,
       "i10": 2,
@@ -323,9 +323,9 @@
   },
   "query": {
     "arms": "((=abs:\"Cosmic Hot Interstellar Plasma Spectrometer\" OR (abs:CHIPS AND (=abs:\"Local Bubble\" OR =abs:\"extreme ultraviolet\" OR abs:EUV OR =abs:\"soft X-ray\" OR =abs:\"hot plasma\" OR =abs:\"interstellar medium\" OR =abs:\"diffuse background\" OR =abs:\"iron line\" OR =abs:\"Fe lines\" OR =abs:\"Fe emission\"))) NOT =abs:circumstellar)",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2003-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Cosmic+Hot+Interstellar+Plasma+Spectrometer%22+OR+%28abs%3ACHIPS+AND+%28%3Dabs%3A%22Local+Bubble%22+OR+%3Dabs%3A%22extreme+ultraviolet%22+OR+abs%3AEUV+OR+%3Dabs%3A%22soft+X-ray%22+OR+%3Dabs%3A%22hot+plasma%22+OR+%3Dabs%3A%22interstellar+medium%22+OR+%3Dabs%3A%22diffuse+background%22+OR+%3Dabs%3A%22iron+line%22+OR+%3Dabs%3A%22Fe+lines%22+OR+%3Dabs%3A%22Fe+emission%22%29%29%29+NOT+%3Dabs%3Acircumstellar%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:32:36.975742+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2003-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Cosmic+Hot+Interstellar+Plasma+Spectrometer%22+OR+%28abs%3ACHIPS+AND+%28%3Dabs%3A%22Local+Bubble%22+OR+%3Dabs%3A%22extreme+ultraviolet%22+OR+abs%3AEUV+OR+%3Dabs%3A%22soft+X-ray%22+OR+%3Dabs%3A%22hot+plasma%22+OR+%3Dabs%3A%22interstellar+medium%22+OR+%3Dabs%3A%22diffuse+background%22+OR+%3Dabs%3A%22iron+line%22+OR+%3Dabs%3A%22Fe+lines%22+OR+%3Dabs%3A%22Fe+emission%22%29%29%29+NOT+%3Dabs%3Acircumstellar%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:42:13.016692+00:00",
     "reconciliation": {
       "adsReturned": 4,
       "curatedOut": 0,
@@ -348,7 +348,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 56
+      "citations": 62
     },
     {
       "bibcode": "2006ApJ...650..461S",

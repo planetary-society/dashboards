@@ -29,12 +29,12 @@
     "m": 1.333,
     "i100": 5,
     "g": 52,
-    "tori": 11.502,
-    "riq": 125
+    "tori": 11.692,
+    "riq": 126
   },
   "facts": {
     "papers": 76,
-    "citations": 2982,
+    "citations": 2992,
     "publicationYears": [
       2000,
       2026
@@ -105,11 +105,11 @@
       109,
       139,
       138,
-      173,
-      135,
+      174,
+      136,
       185,
       170,
-      147,
+      149,
       163,
       188,
       181,
@@ -121,18 +121,18 @@
       68,
       58,
       78,
-      66,
+      67,
       45,
       51,
       73,
       51,
-      49
+      54
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 2982,
-      "observed": 2982,
+      "expected": 2992,
+      "observed": 2992,
       "missing": 0
     }
   },
@@ -190,26 +190,26 @@
   "ranks": {
     "full": {
       "bins": [
-        3.366,
-        6.406,
-        5.371,
-        6.709,
-        13.048,
-        9.2,
-        4.272,
-        3.628,
-        3.813,
-        0.187
+        3.369,
+        6.307,
+        5.512,
+        6.731,
+        13.021,
+        9.182,
+        3.878,
+        4,
+        3.879,
+        0.121
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        2.291,
-        2.709,
+        2.293,
+        2.707,
         5,
-        7.223,
-        6.777,
+        7.268,
+        6.732,
         2,
         3,
         1,
@@ -220,14 +220,14 @@
     },
     "lifetime": {
       "bins": [
-        3.151,
-        7.849,
-        2,
-        5.407,
-        6.593,
-        11.952,
-        19.193,
-        9.855,
+        3.252,
+        6.748,
+        3,
+        5,
+        7,
+        12.311,
+        19.016,
+        9.673,
         6,
         4
       ],
@@ -237,9 +237,9 @@
   "full": {
     "papers": 56,
     "outputBasis": "measured",
-    "citations": 705,
-    "top10": 0.187,
-    "top10ShareOfDivision": 0.00004,
+    "citations": 708,
+    "top10": 0.121,
+    "top10ShareOfDivision": 0.00002,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -264,7 +264,7 @@
       "m": 2.001
     },
     "spread": {
-      "mean": 12.589,
+      "mean": 12.643,
       "median": 10.5,
       "uncited": 2,
       "i10": 35,
@@ -274,7 +274,7 @@
   "window": {
     "papers": 33,
     "outputBasis": "measured",
-    "citations": 459,
+    "citations": 460,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": 0,
@@ -301,7 +301,7 @@
       "m": 3
     },
     "spread": {
-      "mean": 13.909,
+      "mean": 13.939,
       "median": 11,
       "uncited": 2,
       "i10": 22,
@@ -311,7 +311,7 @@
   "lifetime": {
     "papers": 76,
     "outputBasis": "measured",
-    "citations": 2982,
+    "citations": 2992,
     "top10": 4,
     "top10ShareOfDivision": 0.00063,
     "top1": null,
@@ -324,7 +324,7 @@
       "date": "2000-08-00"
     },
     "spread": {
-      "mean": 39.237,
+      "mean": 39.368,
       "median": 34,
       "uncited": 2,
       "i10": 63,
@@ -333,9 +333,9 @@
   },
   "query": {
     "arms": "((=abs:\"Submillimeter Wave Astronomy Satellite\" OR (abs:SWAS AND abs:(observation OR submillimeter OR interstellar OR water OR oxygen) AND NOT abs:\"southwestern atlantic\")) AND collection:astronomy)",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1999-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Submillimeter+Wave+Astronomy+Satellite%22+OR+%28abs%3ASWAS+AND+abs%3A%28observation+OR+submillimeter+OR+interstellar+OR+water+OR+oxygen%29+AND+NOT+abs%3A%22southwestern+atlantic%22%29%29+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:30:47.958808+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1999-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Submillimeter+Wave+Astronomy+Satellite%22+OR+%28abs%3ASWAS+AND+abs%3A%28observation+OR+submillimeter+OR+interstellar+OR+water+OR+oxygen%29+AND+NOT+abs%3A%22southwestern+atlantic%22%29%29+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:41:20.927875+00:00",
     "reconciliation": {
       "adsReturned": 79,
       "curatedOut": 3,
@@ -401,7 +401,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 135
+      "citations": 136
     },
     {
       "bibcode": "2000ApJ...539L.123G",
@@ -431,6 +431,15 @@
       "citations": 95
     },
     {
+      "bibcode": "2002Icar..159..112L",
+      "title": "The Origin of Water Vapor and Carbon Dioxide in Jupiter's Stratosphere",
+      "firstAuthor": "Lellouch, E.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2002,
+      "citations": 91
+    },
+    {
       "bibcode": "2012A&A...541A..73L",
       "title": "Multi-line detection of O₂ toward ρ Ophuichi A",
       "firstAuthor": "Liseau, R.",
@@ -438,15 +447,6 @@
       "authorCount": null,
       "year": 2012,
       "citations": 91
-    },
-    {
-      "bibcode": "2002Icar..159..112L",
-      "title": "The Origin of Water Vapor and Carbon Dioxide in Jupiter's Stratosphere",
-      "firstAuthor": "Lellouch, E.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2002,
-      "citations": 88
     },
     {
       "bibcode": "2010A&A...518L.120N",
@@ -491,7 +491,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 55
+      "citations": 56
     },
     {
       "bibcode": "2000ApJ...539L..87M",

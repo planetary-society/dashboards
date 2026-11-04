@@ -27,14 +27,14 @@
   "indices": {
     "h": 159,
     "m": 4.297,
-    "i100": 264,
-    "g": 305,
-    "tori": 966.061,
-    "riq": 840
+    "i100": 265,
+    "g": 306,
+    "tori": 988.996,
+    "riq": 849
   },
   "facts": {
-    "papers": 1416,
-    "citations": 120695,
+    "papers": 1417,
+    "citations": 120966,
     "publicationYears": [
       1990,
       2026
@@ -117,7 +117,7 @@
       13,
       13,
       25,
-      18
+      19
     ],
     "citations": [
       15,
@@ -125,51 +125,51 @@
       328,
       1269,
       2288,
-      2628,
+      2629,
       3046,
       3232,
-      3884,
-      4870,
+      3883,
+      4872,
       4503,
       4913,
       4748,
-      4855,
+      4850,
       4141,
       3713,
-      3860,
+      3870,
       3378,
-      3375,
-      3646,
-      3688,
+      3381,
+      3665,
+      3690,
       3803,
-      3752,
-      3698,
-      3545,
-      3467,
-      3300,
-      3149,
+      3754,
+      3701,
+      3536,
+      3455,
+      3291,
       3143,
-      2968,
-      2771,
-      3035,
-      2984,
-      3000,
-      3466,
-      3779,
-      4323
+      3135,
+      2964,
+      2765,
+      3034,
+      2982,
+      2997,
+      3463,
+      3780,
+      4617
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 120695,
-      "observed": 120695,
+      "expected": 120966,
+      "observed": 120966,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 1416,
+    "papers": 1417,
     "us": {
-      "mapped": 613,
+      "mapped": 614,
       "top": [
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
@@ -186,7 +186,7 @@
       ]
     },
     "world": {
-      "mapped": 1141,
+      "mapped": 1142,
       "top": [
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
@@ -214,31 +214,31 @@
     ],
     "authorCount": 3,
     "year": 1998,
-    "citations": 14325
+    "citations": 14346
   },
   "ranks": {
     "full": {
       "bins": [
-        87.147,
-        39.142,
-        38.855,
-        44.413,
-        49.244,
-        25.699,
-        29.615,
-        37.269,
-        38.617,
+        87.221,
+        39.157,
+        38.873,
+        44.505,
+        49.123,
+        25.729,
+        29.548,
+        37.32,
+        38.523,
         52
       ],
       "top1": 9
     },
     "window": {
       "bins": [
-        16.455,
+        16.467,
         8.969,
-        7.283,
-        6.701,
-        5.592,
+        7.295,
+        6.693,
+        5.577,
         0,
         1,
         4,
@@ -249,18 +249,18 @@
     },
     "lifetime": {
       "bins": [
-        164.205,
-        135.902,
-        110.684,
-        125.936,
-        135.952,
-        117.13,
-        111.64,
-        132.977,
-        155.179,
-        226.396
+        164.794,
+        138.179,
+        109.653,
+        125.59,
+        135.004,
+        119.024,
+        111.356,
+        132.416,
+        155.805,
+        225.18
       ],
-      "top1": 41.404
+      "top1": 41
     }
   },
   "full": {
@@ -338,11 +338,11 @@
     }
   },
   "lifetime": {
-    "papers": 1416,
+    "papers": 1417,
     "outputBasis": "measured",
-    "citations": 120695,
-    "top10": 207.563,
-    "top10ShareOfDivision": 0.0327,
+    "citations": 120966,
+    "top10": 206.347,
+    "top10ShareOfDivision": 0.03247,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -353,26 +353,26 @@
       "date": "1990-05-00"
     },
     "spread": {
-      "mean": 85.237,
+      "mean": 85.368,
       "median": 26,
       "uncited": 90,
       "i10": 1037,
-      "i100": 264
+      "i100": 265
     }
   },
   "query": {
     "arms": "((=abs:(\"Cosmic Background Explorer\" OR \"Diffuse Infrared Background Experiment\" OR \"Far Infrared Absolute Spectrophotometer\" OR \"Differential Microwave Radiometer\" OR \"Differential Microwave Radiometers\") OR facility:COBE OR (abs:COBE AND (collection:astronomy OR (abs:(inflation OR inflationary OR microwave OR anisotropy OR anisotropies OR cosmological OR cosmology OR cosmic OR blackbody OR infrared OR spectrometer OR dewar OR cryogenic OR neutrino OR neutrinos) NOT =abs:\"sea surface\"))) OR (abs:(DIRBE OR FIRAS) AND (collection:astronomy OR abs:(blackbody OR CMB OR microwave OR infrared OR spectrometer OR spectrometry) OR =abs:\"background radiation\")) OR (abs:DMR AND collection:astronomy AND abs:(microwave OR CMB OR anisotropy OR anisotropies))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1989-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Cosmic+Background+Explorer%22+OR+%22Diffuse+Infrared+Background+Experiment%22+OR+%22Far+Infrared+Absolute+Spectrophotometer%22+OR+%22Differential+Microwave+Radiometer%22+OR+%22Differential+Microwave+Radiometers%22%29+OR+facility%3ACOBE+OR+%28abs%3ACOBE+AND+%28collection%3Aastronomy+OR+%28abs%3A%28inflation+OR+inflationary+OR+microwave+OR+anisotropy+OR+anisotropies+OR+cosmological+OR+cosmology+OR+cosmic+OR+blackbody+OR+infrared+OR+spectrometer+OR+dewar+OR+cryogenic+OR+neutrino+OR+neutrinos%29+NOT+%3Dabs%3A%22sea+surface%22%29%29%29+OR+%28abs%3A%28DIRBE+OR+FIRAS%29+AND+%28collection%3Aastronomy+OR+abs%3A%28blackbody+OR+CMB+OR+microwave+OR+infrared+OR+spectrometer+OR+spectrometry%29+OR+%3Dabs%3A%22background+radiation%22%29%29+OR+%28abs%3ADMR+AND+collection%3Aastronomy+AND+abs%3A%28microwave+OR+CMB+OR+anisotropy+OR+anisotropies%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1989-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:27:55.781385+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1989-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Cosmic+Background+Explorer%22+OR+%22Diffuse+Infrared+Background+Experiment%22+OR+%22Far+Infrared+Absolute+Spectrophotometer%22+OR+%22Differential+Microwave+Radiometer%22+OR+%22Differential+Microwave+Radiometers%22%29+OR+facility%3ACOBE+OR+%28abs%3ACOBE+AND+%28collection%3Aastronomy+OR+%28abs%3A%28inflation+OR+inflationary+OR+microwave+OR+anisotropy+OR+anisotropies+OR+cosmological+OR+cosmology+OR+cosmic+OR+blackbody+OR+infrared+OR+spectrometer+OR+dewar+OR+cryogenic+OR+neutrino+OR+neutrinos%29+NOT+%3Dabs%3A%22sea+surface%22%29%29%29+OR+%28abs%3A%28DIRBE+OR+FIRAS%29+AND+%28collection%3Aastronomy+OR+abs%3A%28blackbody+OR+CMB+OR+microwave+OR+infrared+OR+spectrometer+OR+spectrometry%29+OR+%3Dabs%3A%22background+radiation%22%29%29+OR+%28abs%3ADMR+AND+collection%3Aastronomy+AND+abs%3A%28microwave+OR+CMB+OR+anisotropy+OR+anisotropies%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1989-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:39:42.833746+00:00",
     "reconciliation": {
-      "adsReturned": 1422,
+      "adsReturned": 1423,
       "curatedOut": 6,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 1416
+      "final": 1417
     }
   },
   "curation": {
@@ -436,7 +436,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 14325
+      "citations": 14346
     },
     {
       "bibcode": "1992ApJ...396L...1S",
@@ -445,7 +445,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1992,
-      "citations": 2818
+      "citations": 2832
     },
     {
       "bibcode": "1996ApJ...473..576F",
@@ -454,7 +454,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 1656
+      "citations": 1670
     },
     {
       "bibcode": "2001ApJ...554..778L",
@@ -463,7 +463,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 1297
+      "citations": 1301
     },
     {
       "bibcode": "1996ApJ...464L...1B",
@@ -472,7 +472,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 1193
+      "citations": 1195
     },
     {
       "bibcode": "2000PhR...331..283M",
@@ -481,7 +481,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 1077
+      "citations": 1087
     },
     {
       "bibcode": "2009ApJ...707..916F",
@@ -490,7 +490,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 1048
+      "citations": 1061
     },
     {
       "bibcode": "2001PhRvD..63f3002K",
@@ -499,7 +499,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 1028
+      "citations": 1031
     },
     {
       "bibcode": "1998PhRvD..58b3503F",
@@ -508,7 +508,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 930
+      "citations": 936
     },
     {
       "bibcode": "1998ApJ...508..483W",
@@ -517,7 +517,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 912
+      "citations": 916
     },
     {
       "bibcode": "2008A&A...487..837F",
@@ -526,7 +526,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 904
+      "citations": 907
     },
     {
       "bibcode": "1995ApJ...443..152W",
@@ -535,7 +535,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1995,
-      "citations": 896
+      "citations": 904
     },
     {
       "bibcode": "1994MNRAS.267.1020P",
@@ -544,7 +544,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1994,
-      "citations": 870
+      "citations": 871
     },
     {
       "bibcode": "1993PhR...231....1L",
@@ -553,7 +553,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 809
+      "citations": 810
     },
     {
       "bibcode": "1994ApJ...420..439M",
@@ -562,7 +562,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1994,
-      "citations": 799
+      "citations": 805
     },
     {
       "bibcode": "1994ApJ...427..822B",
@@ -571,7 +571,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1994,
-      "citations": 771
+      "citations": 777
     },
     {
       "bibcode": "2001ARA&A..39..249H",
@@ -580,7 +580,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 766
+      "citations": 767
     },
     {
       "bibcode": "1996A&A...308L...5P",
@@ -607,10 +607,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 719
+      "citations": 720
     }
   ],
   "papersFile": {
-    "rows": 1416
+    "rows": 1417
   }
 }

@@ -25,16 +25,16 @@
     }
   },
   "indices": {
-    "h": 45,
-    "m": 4.5,
+    "h": 46,
+    "m": 4.6,
     "i100": 15,
-    "g": 70,
-    "tori": 27.561,
-    "riq": 524
+    "g": 71,
+    "tori": 34.707,
+    "riq": 589
   },
   "facts": {
-    "papers": 489,
-    "citations": 7996,
+    "papers": 490,
+    "citations": 8414,
     "publicationYears": [
       2017,
       2026
@@ -63,7 +63,7 @@
       72,
       71,
       74,
-      77
+      78
     ],
     "citations": [
       1,
@@ -71,22 +71,22 @@
       168,
       439,
       626,
-      1084,
+      1086,
       1159,
-      1435,
+      1434,
       1799,
-      1256
+      1673
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 7996,
-      "observed": 7996,
+      "expected": 8414,
+      "observed": 8414,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 489,
+    "papers": 490,
     "us": {
       "mapped": 154,
       "top": [
@@ -105,7 +105,7 @@
       ]
     },
     "world": {
-      "mapped": 394,
+      "mapped": 395,
       "top": [
         {
           "name": "University of Michigan",
@@ -132,50 +132,50 @@
     ],
     "authorCount": 2,
     "year": 2018,
-    "citations": 273
+    "citations": 283
   },
   "ranks": {
     "full": {
       "bins": [
-        6.009,
-        12.044,
-        20.261,
-        15.292,
-        22.05,
-        24.281,
-        43.447,
-        35.253,
-        35.463,
-        52.901
+        5.743,
+        11.815,
+        17.48,
+        19.732,
+        20.542,
+        24.148,
+        44.134,
+        35.893,
+        34.513,
+        53
       ],
-      "top1": 3
+      "top1": 2
     },
     "window": {
       "bins": [
-        3.45,
-        9.904,
-        12.75,
-        15.983,
-        11.794,
-        26.375,
-        27.741,
-        19.357,
-        25.361,
-        38.284
+        3.523,
+        10.204,
+        12.652,
+        16.726,
+        11.347,
+        27.469,
+        26.925,
+        19.033,
+        25.552,
+        37.57
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        95.036,
-        66.027,
-        57.783,
-        60.277,
-        49.749,
-        57.532,
-        31.876,
-        24.719,
-        26,
+        87.443,
+        66.947,
+        60.791,
+        58.175,
+        53.327,
+        58.487,
+        30.612,
+        27.406,
+        26.811,
         20
       ],
       "top1": 0
@@ -184,11 +184,11 @@
   "full": {
     "papers": 267,
     "outputBasis": "measured",
-    "citations": 4446,
-    "top10": 42.55,
-    "top10ShareOfDivision": 0.01182,
-    "top1": 1.5,
-    "top1ShareOfDivision": 0.00417,
+    "citations": 4511,
+    "top10": 42.583,
+    "top10ShareOfDivision": 0.01089,
+    "top1": 1,
+    "top1ShareOfDivision": 0.00256,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.374,
@@ -206,26 +206,26 @@
       "citationBuckets": 10
     },
     "indices": {
-      "h": 33,
+      "h": 34,
       "g": 46,
-      "m": 4.716
+      "m": 4.859
     },
     "spread": {
-      "mean": 16.652,
+      "mean": 16.895,
       "median": 11,
       "uncited": 4,
-      "i10": 161,
+      "i10": 165,
       "i100": 0
     }
   },
   "window": {
     "papers": 191,
     "outputBasis": "measured",
-    "citations": 3570,
-    "top10": 33.554,
-    "top10ShareOfDivision": 0.03565,
+    "citations": 3571,
+    "top10": 32.939,
+    "top10ShareOfDivision": 0.033,
     "top1": 0.5,
-    "top1ShareOfDivision": 0.00531,
+    "top1ShareOfDivision": 0.00501,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.374,
@@ -248,7 +248,7 @@
       "m": 5.411
     },
     "spread": {
-      "mean": 18.691,
+      "mean": 18.696,
       "median": 12,
       "uncited": 2,
       "i10": 125,
@@ -256,11 +256,11 @@
     }
   },
   "lifetime": {
-    "papers": 489,
+    "papers": 490,
     "outputBasis": "measured",
-    "citations": 7996,
+    "citations": 8414,
     "top10": 15.083,
-    "top10ShareOfDivision": 0.00324,
+    "top10ShareOfDivision": 0.00289,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -271,26 +271,26 @@
       "date": "2018-05-00"
     },
     "spread": {
-      "mean": 16.352,
-      "median": 7,
-      "uncited": 90,
-      "i10": 205,
+      "mean": 17.171,
+      "median": 8,
+      "uncited": 75,
+      "i10": 216,
       "i100": 15
     }
   },
   "query": {
     "arms": "((=abs:\"Cyclone Global Navigation Satellite System\" OR (abs:CYGNSS AND (abs:satellite OR abs:GNSS OR abs:reflectometry OR abs:wind OR abs:soil OR abs:ocean OR abs:surface OR abs:data OR abs:retrieval OR abs:observations OR abs:cyclone OR abs:land OR abs:simulator OR abs:constellation OR abs:flood)) OR ((=abs:\"Delay Doppler Mapping Instrument\" OR abs:DDMI) AND (abs:CYGNSS OR abs:GNSS OR abs:reflectometry))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2017-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Cyclone+Global+Navigation+Satellite+System%22+OR+%28abs%3ACYGNSS+AND+%28abs%3Asatellite+OR+abs%3AGNSS+OR+abs%3Areflectometry+OR+abs%3Awind+OR+abs%3Asoil+OR+abs%3Aocean+OR+abs%3Asurface+OR+abs%3Adata+OR+abs%3Aretrieval+OR+abs%3Aobservations+OR+abs%3Acyclone+OR+abs%3Aland+OR+abs%3Asimulator+OR+abs%3Aconstellation+OR+abs%3Aflood%29%29+OR+%28%28%3Dabs%3A%22Delay+Doppler+Mapping+Instrument%22+OR+abs%3ADDMI%29+AND+%28abs%3ACYGNSS+OR+abs%3AGNSS+OR+abs%3Areflectometry%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2017-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:21:26.729989+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2017-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Cyclone+Global+Navigation+Satellite+System%22+OR+%28abs%3ACYGNSS+AND+%28abs%3Asatellite+OR+abs%3AGNSS+OR+abs%3Areflectometry+OR+abs%3Awind+OR+abs%3Asoil+OR+abs%3Aocean+OR+abs%3Asurface+OR+abs%3Adata+OR+abs%3Aretrieval+OR+abs%3Aobservations+OR+abs%3Acyclone+OR+abs%3Aland+OR+abs%3Asimulator+OR+abs%3Aconstellation+OR+abs%3Aflood%29%29+OR+%28%28%3Dabs%3A%22Delay+Doppler+Mapping+Instrument%22+OR+abs%3ADDMI%29+AND+%28abs%3ACYGNSS+OR+abs%3AGNSS+OR+abs%3Areflectometry%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2017-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:33:53.477752+00:00",
     "reconciliation": {
-      "adsReturned": 490,
+      "adsReturned": 491,
       "curatedOut": 1,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 489
+      "final": 490
     }
   },
   "curation": {
@@ -314,7 +314,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 273
+      "citations": 283
     },
     {
       "bibcode": "2019IJSTA..12.2227C",
@@ -323,7 +323,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 209
+      "citations": 217
     },
     {
       "bibcode": "2018NatSR...8.8782R",
@@ -332,7 +332,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 195
+      "citations": 202
     },
     {
       "bibcode": "2019ITGRS..57.4322A",
@@ -341,7 +341,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 182
+      "citations": 188
     },
     {
       "bibcode": "2018GeoRL..45.8272K",
@@ -350,7 +350,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 172
+      "citations": 175
     },
     {
       "bibcode": "2019RemS...11.2272E",
@@ -359,7 +359,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 148
+      "citations": 155
     },
     {
       "bibcode": "2019IJSTA..12...66R",
@@ -368,16 +368,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 142
-    },
-    {
-      "bibcode": "2020RSEnv.24711944Y",
-      "title": "Pan-tropical soil moisture mapping based on a three-layer model from CYGNSS GNSS-R data",
-      "firstAuthor": "Yan, Qingyun",
-      "authors": null,
-      "authorCount": null,
-      "year": 2020,
-      "citations": 132
+      "citations": 145
     },
     {
       "bibcode": "2020RemS...12.1558C",
@@ -386,7 +377,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 132
+      "citations": 138
+    },
+    {
+      "bibcode": "2020RSEnv.24711944Y",
+      "title": "Pan-tropical soil moisture mapping based on a three-layer model from CYGNSS GNSS-R data",
+      "firstAuthor": "Yan, Qingyun",
+      "authors": null,
+      "authorCount": null,
+      "year": 2020,
+      "citations": 137
     },
     {
       "bibcode": "2020ITGRS..58..238L",
@@ -395,7 +395,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 124
+      "citations": 125
     },
     {
       "bibcode": "2018NatSR...8.9336C",
@@ -404,7 +404,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 118
+      "citations": 123
     },
     {
       "bibcode": "2019IJSTA..12...87R",
@@ -413,7 +413,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 107
+      "citations": 111
     },
     {
       "bibcode": "2020RemS...12.1168S",
@@ -422,7 +422,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 104
+      "citations": 107
     },
     {
       "bibcode": "2019BAMS..100.2009R",
@@ -431,7 +431,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 100
+      "citations": 104
     },
     {
       "bibcode": "2019IJSTA..12...37G",
@@ -440,7 +440,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 100
+      "citations": 102
     },
     {
       "bibcode": "2020RemS...12.1368C",
@@ -449,7 +449,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 85
+      "citations": 87
     },
     {
       "bibcode": "2022ITGRS..6035989Y",
@@ -458,7 +458,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 80
+      "citations": 83
+    },
+    {
+      "bibcode": "2019ITGRS..57.9756L",
+      "title": "Application of Neural Network to GNSS-R Wind Speed Retrieval",
+      "firstAuthor": "Liu, Yunxiang",
+      "authors": null,
+      "authorCount": null,
+      "year": 2019,
+      "citations": 81
     },
     {
       "bibcode": "2019RSEnv.23311417M",
@@ -467,7 +476,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 79
+      "citations": 81
     },
     {
       "bibcode": "2018GeoRL..4513332L",
@@ -477,18 +486,9 @@
       "authorCount": null,
       "year": 2018,
       "citations": 77
-    },
-    {
-      "bibcode": "2019ITGRS..57.9756L",
-      "title": "Application of Neural Network to GNSS-R Wind Speed Retrieval",
-      "firstAuthor": "Liu, Yunxiang",
-      "authors": null,
-      "authorCount": null,
-      "year": 2019,
-      "citations": 77
     }
   ],
   "papersFile": {
-    "rows": 489
+    "rows": 490
   }
 }

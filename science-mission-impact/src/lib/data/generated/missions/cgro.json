@@ -25,16 +25,16 @@
     }
   },
   "indices": {
-    "h": 169,
-    "m": 4.694,
-    "i100": 341,
+    "h": 170,
+    "m": 4.722,
+    "i100": 342,
     "g": 290,
-    "tori": 1097.375,
-    "riq": 920
+    "tori": 1119.961,
+    "riq": 929
   },
   "facts": {
     "papers": 2769,
-    "citations": 150146,
+    "citations": 150525,
     "publicationYears": [
       1991,
       2026
@@ -122,44 +122,44 @@
       126,
       641,
       1366,
-      2658,
+      2661,
       3496,
-      3484,
+      3486,
       3740,
       4859,
       4318,
       5148,
       4118,
-      4438,
+      4439,
       5105,
-      5139,
-      5546,
-      5629,
-      6132,
-      7131,
-      6066,
-      6604,
-      5819,
-      5398,
-      4420,
-      4756,
+      5167,
+      5555,
+      5636,
+      6139,
+      7130,
+      6079,
+      6616,
+      5817,
+      5397,
+      4419,
+      4755,
       4140,
       4214,
-      4062,
-      3995,
-      3502,
+      4070,
+      3994,
+      3503,
       3950,
-      4039,
-      3702,
+      4040,
+      3705,
       3928,
-      4194,
-      4281
+      4195,
+      4571
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 150146,
-      "observed": 150146,
+      "expected": 150525,
+      "observed": 150525,
       "missing": 0
     }
   },
@@ -212,61 +212,61 @@
     ],
     "authorCount": 15,
     "year": 1993,
-    "citations": 2370
+    "citations": 2377
   },
   "ranks": {
     "full": {
       "bins": [
-        364.078,
-        232.938,
-        184.704,
-        153.828,
-        142.353,
-        140.196,
-        107.448,
-        122.392,
-        118.38,
-        97.682
+        364.418,
+        233.016,
+        184.824,
+        153.881,
+        142.201,
+        140.217,
+        107.313,
+        122.419,
+        118.62,
+        97.092
       ],
       "top1": 7
     },
     "window": {
       "bins": [
-        52.695,
-        55.103,
-        49.388,
-        48.483,
-        28.394,
-        29.461,
-        35.407,
-        37.66,
-        33.858,
+        52.746,
+        55.082,
+        49.527,
+        48.45,
+        28.295,
+        29.473,
+        35.515,
+        37.528,
+        33.834,
         33.55
       ],
       "top1": 3
     },
     "lifetime": {
       "bins": [
-        374.712,
-        335.884,
-        278.542,
-        266.907,
-        223.119,
-        235.426,
-        261.146,
-        237.4,
-        264.071,
-        291.792
+        378.596,
+        335.674,
+        276.201,
+        267.918,
+        221.573,
+        236.079,
+        258.195,
+        240.36,
+        263.225,
+        291.18
       ],
-      "top1": 34.404
+      "top1": 34
     }
   },
   "full": {
     "papers": 1664,
     "outputBasis": "measured",
-    "citations": 24571,
-    "top10": 94.682,
-    "top10ShareOfDivision": 0.01903,
+    "citations": 24575,
+    "top10": 94.092,
+    "top10ShareOfDivision": 0.01891,
     "top1": 7,
     "top1ShareOfDivision": 0.01407,
     "first": {
@@ -291,9 +291,9 @@
       "m": 5.462
     },
     "spread": {
-      "mean": 14.766,
+      "mean": 14.769,
       "median": 8,
-      "uncited": 209,
+      "uncited": 208,
       "i10": 736,
       "i100": 18
     }
@@ -338,9 +338,9 @@
   "lifetime": {
     "papers": 2769,
     "outputBasis": "measured",
-    "citations": 150146,
-    "top10": 257.626,
-    "top10ShareOfDivision": 0.04058,
+    "citations": 150525,
+    "top10": 257.013,
+    "top10ShareOfDivision": 0.04044,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -351,18 +351,18 @@
       "date": "1992-01-00"
     },
     "spread": {
-      "mean": 54.224,
+      "mean": 54.361,
       "median": 20,
-      "uncited": 194,
-      "i10": 1860,
-      "i100": 341
+      "uncited": 192,
+      "i10": 1862,
+      "i100": 342
     }
   },
   "query": {
     "arms": "((=abs:\"Compton Gamma Ray Observatory\" OR =abs:\"Compton Observatory\" OR =abs:\"Compton GRO\" OR (=abs:\"Gamma Ray Observatory\" AND =abs:GRO) OR facility:CGRO OR =abs:\"Burst and Transient Source Experiment\" OR =abs:\"Energetic Gamma Ray Experiment Telescope\" OR =abs:\"Oriented Scintillation Spectrometer Experiment\" OR ((=abs:CGRO OR abs:BATSE OR =abs:EGRET OR abs:COMPTEL) AND (collection:astronomy OR =abs:\"gamma ray\" OR =abs:\"gamma rays\") NOT =abs:\"Egret Member\") OR (=abs:OSSE AND (=abs:\"gamma ray\" OR =abs:\"gamma rays\" OR (collection:astronomy AND abs:(Compton OR CGRO OR keV OR annihilation OR positron))))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1991-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Compton+Gamma+Ray+Observatory%22+OR+%3Dabs%3A%22Compton+Observatory%22+OR+%3Dabs%3A%22Compton+GRO%22+OR+%28%3Dabs%3A%22Gamma+Ray+Observatory%22+AND+%3Dabs%3AGRO%29+OR+facility%3ACGRO+OR+%3Dabs%3A%22Burst+and+Transient+Source+Experiment%22+OR+%3Dabs%3A%22Energetic+Gamma+Ray+Experiment+Telescope%22+OR+%3Dabs%3A%22Oriented+Scintillation+Spectrometer+Experiment%22+OR+%28%28%3Dabs%3ACGRO+OR+abs%3ABATSE+OR+%3Dabs%3AEGRET+OR+abs%3ACOMPTEL%29+AND+%28collection%3Aastronomy+OR+%3Dabs%3A%22gamma+ray%22+OR+%3Dabs%3A%22gamma+rays%22%29+NOT+%3Dabs%3A%22Egret+Member%22%29+OR+%28%3Dabs%3AOSSE+AND+%28%3Dabs%3A%22gamma+ray%22+OR+%3Dabs%3A%22gamma+rays%22+OR+%28collection%3Aastronomy+AND+abs%3A%28Compton+OR+CGRO+OR+keV+OR+annihilation+OR+positron%29%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1991-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:30:21.933117+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1991-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Compton+Gamma+Ray+Observatory%22+OR+%3Dabs%3A%22Compton+Observatory%22+OR+%3Dabs%3A%22Compton+GRO%22+OR+%28%3Dabs%3A%22Gamma+Ray+Observatory%22+AND+%3Dabs%3AGRO%29+OR+facility%3ACGRO+OR+%3Dabs%3A%22Burst+and+Transient+Source+Experiment%22+OR+%3Dabs%3A%22Energetic+Gamma+Ray+Experiment+Telescope%22+OR+%3Dabs%3A%22Oriented+Scintillation+Spectrometer+Experiment%22+OR+%28%28%3Dabs%3ACGRO+OR+abs%3ABATSE+OR+%3Dabs%3AEGRET+OR+abs%3ACOMPTEL%29+AND+%28collection%3Aastronomy+OR+%3Dabs%3A%22gamma+ray%22+OR+%3Dabs%3A%22gamma+rays%22%29+NOT+%3Dabs%3A%22Egret+Member%22%29+OR+%28%3Dabs%3AOSSE+AND+%28%3Dabs%3A%22gamma+ray%22+OR+%3Dabs%3A%22gamma+rays%22+OR+%28collection%3Aastronomy+AND+abs%3A%28Compton+OR+CGRO+OR+keV+OR+annihilation+OR+positron%29%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1991-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:41:07.129571+00:00",
     "reconciliation": {
       "adsReturned": 2847,
       "curatedOut": 77,
@@ -1002,7 +1002,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 2370
+      "citations": 2377
     },
     {
       "bibcode": "1993ApJ...413L.101K",
@@ -1011,7 +1011,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 2120
+      "citations": 2131
     },
     {
       "bibcode": "2004RvMP...76.1143P",
@@ -1020,7 +1020,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 1835
+      "citations": 1844
     },
     {
       "bibcode": "1999ApJS..123...79H",
@@ -1029,7 +1029,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 1790
+      "citations": 1792
     },
     {
       "bibcode": "2009PhRvD..79a5014A",
@@ -1038,7 +1038,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 1777
+      "citations": 1785
     },
     {
       "bibcode": "1999PhR...314..575P",
@@ -1047,7 +1047,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 1542
+      "citations": 1544
     },
     {
       "bibcode": "1994ApJ...421..153S",
@@ -1056,7 +1056,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1994,
-      "citations": 1363
+      "citations": 1368
     },
     {
       "bibcode": "1996ApJ...461..396M",
@@ -1065,7 +1065,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 1202
+      "citations": 1205
     },
     {
       "bibcode": "1992Natur.357..472U",
@@ -1074,7 +1074,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1992,
-      "citations": 1097
+      "citations": 1099
     },
     {
       "bibcode": "2010ApJ...716...30A",
@@ -1083,7 +1083,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 1029
+      "citations": 1034
     },
     {
       "bibcode": "1992Natur.358..477P",
@@ -1101,7 +1101,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 804
+      "citations": 807
     },
     {
       "bibcode": "1998ApJ...493..694M",
@@ -1110,16 +1110,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 774
-    },
-    {
-      "bibcode": "1997ApJ...481..205H",
-      "title": "EGRET Observations of the Diffuse Gamma-Ray Emission from the Galactic Plane",
-      "firstAuthor": "Hunter, S. D.",
-      "authors": null,
-      "authorCount": null,
-      "year": 1997,
-      "citations": 760
+      "citations": 777
     },
     {
       "bibcode": "1992Natur.355..143M",
@@ -1128,7 +1119,16 @@
       "authors": null,
       "authorCount": null,
       "year": 1992,
-      "citations": 759
+      "citations": 761
+    },
+    {
+      "bibcode": "1997ApJ...481..205H",
+      "title": "EGRET Observations of the Diffuse Gamma-Ray Emission from the Galactic Plane",
+      "firstAuthor": "Hunter, S. D.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1997,
+      "citations": 761
     },
     {
       "bibcode": "1998ApJ...494..523S",
@@ -1137,7 +1137,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 758
+      "citations": 760
     },
     {
       "bibcode": "2001ApJ...550..410M",
@@ -1146,7 +1146,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 745
+      "citations": 748
     },
     {
       "bibcode": "1997ApJS..113..367B",
@@ -1155,7 +1155,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 730
+      "citations": 733
     },
     {
       "bibcode": "2004ApJ...609..935Y",
@@ -1164,7 +1164,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 712
+      "citations": 718
     },
     {
       "bibcode": "1994Sci...264.1313F",
@@ -1173,7 +1173,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1994,
-      "citations": 668
+      "citations": 678
     }
   ],
   "papersFile": {

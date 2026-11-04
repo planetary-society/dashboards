@@ -25,16 +25,16 @@
     }
   },
   "indices": {
-    "h": 4,
-    "m": 0.571,
+    "h": 5,
+    "m": 0.714,
     "i100": 0,
-    "g": 8,
-    "tori": 0.404,
-    "riq": 127
+    "g": 9,
+    "tori": 0.62,
+    "riq": 157
   },
   "facts": {
     "papers": 9,
-    "citations": 76,
+    "citations": 84,
     "publicationYears": [
       2020,
       2024
@@ -66,13 +66,13 @@
       9,
       15,
       22,
-      6
+      14
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 76,
-      "observed": 76,
+      "expected": 84,
+      "observed": 84,
       "missing": 0
     }
   },
@@ -125,20 +125,20 @@
     ],
     "authorCount": 9,
     "year": 2021,
-    "citations": 25
+    "citations": 26
   },
   "ranks": {
     "full": {
       "bins": [
-        0.502,
-        1.498,
-        1.919,
-        0.081,
+        0.581,
+        1.419,
         1,
-        0.567,
-        0.433,
-        1.927,
-        0.073,
+        0.698,
+        1.302,
+        0.805,
+        0.195,
+        2,
+        0,
         0
       ],
       "top1": 0
@@ -148,8 +148,8 @@
         0,
         0,
         0,
-        0.261,
-        0.739,
+        0.388,
+        0.612,
         0,
         0,
         0,
@@ -160,11 +160,11 @@
     },
     "lifetime": {
       "bins": [
-        0.288,
-        3.085,
-        1.627,
-        0.594,
-        1.406,
+        0.319,
+        2.273,
+        2.408,
+        0.946,
+        1.054,
         0,
         2,
         0,
@@ -177,7 +177,7 @@
   "full": {
     "papers": 8,
     "outputBasis": "measured",
-    "citations": 52,
+    "citations": 54,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": 0,
@@ -199,13 +199,13 @@
       "citationBuckets": 9
     },
     "indices": {
-      "h": 4,
+      "h": 5,
       "g": 7,
-      "m": 0.843
+      "m": 1.053
     },
     "spread": {
-      "mean": 6.5,
-      "median": 4.5,
+      "mean": 6.75,
+      "median": 5.5,
       "uncited": 0,
       "i10": 2,
       "i100": 0
@@ -251,7 +251,7 @@
   "lifetime": {
     "papers": 9,
     "outputBasis": "measured",
-    "citations": 76,
+    "citations": 84,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": null,
@@ -264,8 +264,8 @@
       "date": null
     },
     "spread": {
-      "mean": 8.444,
-      "median": 4,
+      "mean": 9.333,
+      "median": 5,
       "uncited": 0,
       "i10": 3,
       "i100": 0
@@ -273,9 +273,9 @@
   },
   "query": {
     "arms": "((=abs:\"Temporal Experiment for Storms and Tropical Systems\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2018-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Temporal+Experiment+for+Storms+and+Tropical+Systems%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:21:37.542744+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2018-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Temporal+Experiment+for+Storms+and+Tropical+Systems%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:33:59.045403+00:00",
     "reconciliation": {
       "adsReturned": 13,
       "curatedOut": 4,
@@ -331,7 +331,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 25
+      "citations": 26
     },
     {
       "bibcode": "2021ITGRS..59.4904B",
@@ -340,7 +340,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 21
+      "citations": 24
     },
     {
       "bibcode": "2020JAtOT..37..197S",
@@ -361,6 +361,15 @@
       "citations": 9
     },
     {
+      "bibcode": "2023JAtOT..40..669B",
+      "title": "Single-Point Calibration for Microwave Sounders: Application to TEMPEST-D",
+      "firstAuthor": "Brown, Shannon T.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2023,
+      "citations": 5
+    },
+    {
       "bibcode": "2022IJSTA..15.7826R",
       "title": "Cross Validation of TEMPEST-D and RainCube Observations Over Precipitation Systems",
       "firstAuthor": "Radhakrishnan, Chandrasekar",
@@ -370,12 +379,12 @@
       "citations": 4
     },
     {
-      "bibcode": "2023JAtOT..40..669B",
-      "title": "Single-Point Calibration for Microwave Sounders: Application to TEMPEST-D",
-      "firstAuthor": "Brown, Shannon T.",
+      "bibcode": "2022ITGRS..6059698C",
+      "title": "Correcting Calibration Drifts Using Solar and Lunar Intrusions for Miniaturized Microwave Radiometers",
+      "firstAuthor": "Crews, Angela",
       "authors": null,
       "authorCount": null,
-      "year": 2023,
+      "year": 2022,
       "citations": 3
     },
     {
@@ -386,15 +395,6 @@
       "authorCount": null,
       "year": 2024,
       "citations": 2
-    },
-    {
-      "bibcode": "2022ITGRS..6059698C",
-      "title": "Correcting Calibration Drifts Using Solar and Lunar Intrusions for Miniaturized Microwave Radiometers",
-      "firstAuthor": "Crews, Angela",
-      "authors": null,
-      "authorCount": null,
-      "year": 2022,
-      "citations": 1
     },
     {
       "bibcode": "2023IJSTA..16.7422R",

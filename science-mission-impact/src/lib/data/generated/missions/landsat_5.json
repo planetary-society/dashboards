@@ -25,16 +25,16 @@
     }
   },
   "indices": {
-    "h": 79,
-    "m": 1.881,
-    "i100": 50,
-    "g": 139,
-    "tori": 283.012,
-    "riq": 400
+    "h": 80,
+    "m": 1.905,
+    "i100": 51,
+    "g": 140,
+    "tori": 322.012,
+    "riq": 427
   },
   "facts": {
-    "papers": 995,
-    "citations": 30283,
+    "papers": 996,
+    "citations": 31071,
     "publicationYears": [
       1985,
       2026
@@ -127,7 +127,7 @@
       59,
       63,
       45,
-      41
+      42
     ],
     "citations": [
       0,
@@ -151,38 +151,38 @@
       139,
       195,
       174,
-      226,
-      243,
-      382,
+      228,
+      244,
+      383,
       406,
-      467,
+      468,
       538,
-      565,
-      724,
+      571,
+      734,
       829,
-      977,
-      1120,
-      1255,
-      1496,
-      1819,
-      2256,
-      2506,
+      978,
+      1121,
+      1260,
+      1512,
+      1833,
+      2270,
+      2507,
       2831,
-      2617,
-      2937,
-      3101,
-      2040
+      2622,
+      2941,
+      3104,
+      2743
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 30283,
-      "observed": 30283,
+      "expected": 31071,
+      "observed": 31071,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 995,
+    "papers": 996,
     "us": {
       "mapped": 179,
       "top": [
@@ -230,33 +230,33 @@
     ],
     "authorCount": 5,
     "year": 2012,
-    "citations": 1798
+    "citations": 1842
   },
   "ranks": {
     "full": {
       "bins": [
-        119.822,
-        82.256,
-        67.943,
-        44.93,
-        30.027,
-        34.391,
-        27.045,
-        22.295,
-        14.39,
-        10.901
+        122.464,
+        83.95,
+        67.606,
+        44.333,
+        29.732,
+        33.571,
+        27.939,
+        20.595,
+        13.2,
+        10.611
       ],
       "top1": 1
     },
     "window": {
       "bins": [
-        7.45,
-        6.227,
-        4.901,
-        1.683,
-        0.739,
-        0,
-        1,
+        7.523,
+        6.341,
+        4.921,
+        1.604,
+        0.612,
+        0.102,
+        0.898,
         0,
         0,
         0
@@ -265,28 +265,28 @@
     },
     "lifetime": {
       "bins": [
-        122.05,
-        107.721,
-        114.304,
-        101.576,
-        101.104,
-        90.954,
-        90.422,
-        90.106,
-        90.3,
-        86.463
+        120.91,
+        107.359,
+        116.557,
+        99.995,
+        102.236,
+        89.192,
+        95.623,
+        89.264,
+        88.475,
+        86.389
       ],
-      "top1": 10
+      "top1": 9
     }
   },
   "full": {
     "papers": 454,
     "outputBasis": "measured",
-    "citations": 2308,
-    "top10": 8.55,
-    "top10ShareOfDivision": 0.00238,
+    "citations": 2315,
+    "top10": 8.505,
+    "top10ShareOfDivision": 0.00218,
     "top1": 1,
-    "top1ShareOfDivision": 0.00278,
+    "top1ShareOfDivision": 0.00256,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 17.32,
@@ -309,10 +309,10 @@
       "m": 0.608
     },
     "spread": {
-      "mean": 5.084,
+      "mean": 5.099,
       "median": 3,
       "uncited": 103,
-      "i10": 69,
+      "i10": 70,
       "i100": 1
     }
   },
@@ -354,11 +354,11 @@
     }
   },
   "lifetime": {
-    "papers": 995,
+    "papers": 996,
     "outputBasis": "measured",
-    "citations": 30283,
-    "top10": 61.065,
-    "top10ShareOfDivision": 0.01312,
+    "citations": 31071,
+    "top10": 61.125,
+    "top10ShareOfDivision": 0.01171,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -369,26 +369,26 @@
       "date": "1987-00-00"
     },
     "spread": {
-      "mean": 30.435,
+      "mean": 31.196,
       "median": 11,
-      "uncited": 115,
-      "i10": 540,
-      "i100": 50
+      "uncited": 104,
+      "i10": 550,
+      "i100": 51
     }
   },
   "query": {
     "arms": "((=abs:\"Landsat-5\" OR =abs:\"Landsat 4-5\" OR =abs:\"Landsats 5\" OR =abs:\"Landsats 4 5\" OR =abs:\"Landsat TM5\" OR =abs:\"Landsat TM 5\" OR =abs:\"Thematic Mapper 5\" OR =abs:\"Thematic Mapper TM 5\" OR =abs:\"Landsat satellites 5\" OR =abs:\"Landsat satellite 5\" OR =abs:\"Landsat missions 5\" OR =abs:\"Landsat series 5\" OR =abs:\"Landsat 2 5\" OR =abs:\"Landsat 7 5\" OR =abs:\"Landsat 8 5\" OR =abs:\"Landsat 1 5\" OR =abs:\"Landsat 4 7\" OR =abs:\"Landsat 4 8\" OR =abs:\"Landsats 4 8\" OR =abs:\"Landsat 4 9\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1984-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Landsat-5%22+OR+%3Dabs%3A%22Landsat+4-5%22+OR+%3Dabs%3A%22Landsats+5%22+OR+%3Dabs%3A%22Landsats+4+5%22+OR+%3Dabs%3A%22Landsat+TM5%22+OR+%3Dabs%3A%22Landsat+TM+5%22+OR+%3Dabs%3A%22Thematic+Mapper+5%22+OR+%3Dabs%3A%22Thematic+Mapper+TM+5%22+OR+%3Dabs%3A%22Landsat+satellites+5%22+OR+%3Dabs%3A%22Landsat+satellite+5%22+OR+%3Dabs%3A%22Landsat+missions+5%22+OR+%3Dabs%3A%22Landsat+series+5%22+OR+%3Dabs%3A%22Landsat+2+5%22+OR+%3Dabs%3A%22Landsat+7+5%22+OR+%3Dabs%3A%22Landsat+8+5%22+OR+%3Dabs%3A%22Landsat+1+5%22+OR+%3Dabs%3A%22Landsat+4+7%22+OR+%3Dabs%3A%22Landsat+4+8%22+OR+%3Dabs%3A%22Landsats+4+8%22+OR+%3Dabs%3A%22Landsat+4+9%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1984-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:13:54.096082+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1984-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Landsat-5%22+OR+%3Dabs%3A%22Landsat+4-5%22+OR+%3Dabs%3A%22Landsats+5%22+OR+%3Dabs%3A%22Landsats+4+5%22+OR+%3Dabs%3A%22Landsat+TM5%22+OR+%3Dabs%3A%22Landsat+TM+5%22+OR+%3Dabs%3A%22Thematic+Mapper+5%22+OR+%3Dabs%3A%22Thematic+Mapper+TM+5%22+OR+%3Dabs%3A%22Landsat+satellites+5%22+OR+%3Dabs%3A%22Landsat+satellite+5%22+OR+%3Dabs%3A%22Landsat+missions+5%22+OR+%3Dabs%3A%22Landsat+series+5%22+OR+%3Dabs%3A%22Landsat+2+5%22+OR+%3Dabs%3A%22Landsat+7+5%22+OR+%3Dabs%3A%22Landsat+8+5%22+OR+%3Dabs%3A%22Landsat+1+5%22+OR+%3Dabs%3A%22Landsat+4+7%22+OR+%3Dabs%3A%22Landsat+4+8%22+OR+%3Dabs%3A%22Landsats+4+8%22+OR+%3Dabs%3A%22Landsat+4+9%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1984-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:29:50.469424+00:00",
     "reconciliation": {
-      "adsReturned": 999,
+      "adsReturned": 1000,
       "curatedOut": 4,
       "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 1,
-      "final": 995
+      "final": 996
     }
   },
   "curation": {
@@ -445,7 +445,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 1798
+      "citations": 1842
     },
     {
       "bibcode": "2004RSEnv..90..434S",
@@ -454,7 +454,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 1527
+      "citations": 1577
     },
     {
       "bibcode": "2003ITGRS..41.2674C",
@@ -463,7 +463,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 611
+      "citations": 613
     },
     {
       "bibcode": "2016RSEnv.185..271W",
@@ -472,7 +472,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 579
+      "citations": 593
     },
     {
       "bibcode": "2018RemS...10.1669B",
@@ -481,7 +481,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 490
+      "citations": 506
     },
     {
       "bibcode": "2009ITGRS..47..339J",
@@ -490,7 +490,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 453
+      "citations": 467
     },
     {
       "bibcode": "2008RSEnv.112..955W",
@@ -499,7 +499,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 407
+      "citations": 415
     },
     {
       "bibcode": "2012RSEnv.122...22L",
@@ -508,7 +508,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 332
+      "citations": 339
     },
     {
       "bibcode": "2019RSEnv.23111205Q",
@@ -517,7 +517,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 306
+      "citations": 319
     },
     {
       "bibcode": "2015AppGe..63..101H",
@@ -526,7 +526,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 298
+      "citations": 303
     },
     {
       "bibcode": "2001RSEnv..78...39T",
@@ -535,7 +535,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 267
+      "citations": 269
     },
     {
       "bibcode": "2002RSEnv..82..123D",
@@ -544,16 +544,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 252
-    },
-    {
-      "bibcode": "2004ITGRS..42.2691M",
-      "title": "Landsat Sensor Performance: History and Current Status",
-      "firstAuthor": "Markham, Brian L.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2004,
-      "citations": 239
+      "citations": 255
     },
     {
       "bibcode": "2000ITGRS..38..754N",
@@ -562,7 +553,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 228
+      "citations": 242
+    },
+    {
+      "bibcode": "2004ITGRS..42.2691M",
+      "title": "Landsat Sensor Performance: History and Current Status",
+      "firstAuthor": "Markham, Brian L.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2004,
+      "citations": 241
     },
     {
       "bibcode": "2008RSEnv.112.3413P",
@@ -571,7 +571,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 226
+      "citations": 228
     },
     {
       "bibcode": "2012RSEnv.117..381W",
@@ -580,7 +580,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 226
+      "citations": 228
     },
     {
       "bibcode": "2012RSEnv.122...30M",
@@ -589,7 +589,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 200
+      "citations": 206
     },
     {
       "bibcode": "2015RSEnv.169..390C",
@@ -598,7 +598,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 195
+      "citations": 199
     },
     {
       "bibcode": "1997RSEnv..61..229F",
@@ -607,7 +607,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 190
+      "citations": 191
     },
     {
       "bibcode": "2001ScTEn.268..197D",
@@ -616,10 +616,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 181
+      "citations": 184
     }
   ],
   "papersFile": {
-    "rows": 995
+    "rows": 996
   }
 }

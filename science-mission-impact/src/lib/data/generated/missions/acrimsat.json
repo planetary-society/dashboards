@@ -29,12 +29,12 @@
     "m": 0.417,
     "i100": 1,
     "g": 12,
-    "tori": 6.215,
-    "riq": 191
+    "tori": 6.331,
+    "riq": 193
   },
   "facts": {
     "papers": 12,
-    "citations": 429,
+    "citations": 431,
     "publicationYears": [
       2003,
       2015
@@ -97,7 +97,7 @@
       1,
       12,
       17,
-      14,
+      15,
       7,
       6,
       17,
@@ -117,13 +117,13 @@
       21,
       17,
       14,
-      4
+      5
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 429,
-      "observed": 429,
+      "expected": 431,
+      "observed": 431,
       "missing": 0
     }
   },
@@ -179,14 +179,14 @@
   "ranks": {
     "full": {
       "bins": [
-        1.251,
-        0.749,
+        1.291,
+        0.709,
         0,
-        1.63,
-        2.37,
-        1.134,
-        1.851,
-        2.016,
+        1.396,
+        2.604,
+        1.609,
+        1.953,
+        1.437,
         0,
         1
       ],
@@ -194,11 +194,11 @@
     },
     "window": {
       "bins": [
-        1.362,
-        0.638,
+        1.381,
+        0.619,
         0,
-        1,
-        0,
+        0.388,
+        0.612,
         0,
         0,
         0,
@@ -209,14 +209,14 @@
     },
     "lifetime": {
       "bins": [
-        0.144,
-        0.856,
+        0.319,
+        0.681,
         0,
         1,
         3,
-        1.901,
-        1.669,
-        1.43,
+        2,
+        1.261,
+        1.739,
         1,
         1
       ],
@@ -226,9 +226,9 @@
   "full": {
     "papers": 12,
     "outputBasis": "measured",
-    "citations": 117,
+    "citations": 118,
     "top10": 0.5,
-    "top10ShareOfDivision": 0.00014,
+    "top10ShareOfDivision": 0.00013,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -253,7 +253,7 @@
       "m": 0.375
     },
     "spread": {
-      "mean": 9.75,
+      "mean": 9.833,
       "median": 7.5,
       "uncited": 1,
       "i10": 4,
@@ -263,9 +263,9 @@
   "window": {
     "papers": 4,
     "outputBasis": "measured",
-    "citations": 45,
+    "citations": 46,
     "top10": 1,
-    "top10ShareOfDivision": 0.00106,
+    "top10ShareOfDivision": 0.001,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -290,8 +290,8 @@
       "m": 0.282
     },
     "spread": {
-      "mean": 11.25,
-      "median": 3,
+      "mean": 11.5,
+      "median": 3.5,
       "uncited": 1,
       "i10": 1,
       "i100": 0
@@ -300,9 +300,9 @@
   "lifetime": {
     "papers": 12,
     "outputBasis": "measured",
-    "citations": 429,
+    "citations": 431,
     "top10": 0.5,
-    "top10ShareOfDivision": 0.00011,
+    "top10ShareOfDivision": 0.0001,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -313,7 +313,7 @@
       "date": "2003-03-00"
     },
     "spread": {
-      "mean": 35.75,
+      "mean": 35.917,
       "median": 18,
       "uncited": 0,
       "i10": 10,
@@ -322,9 +322,9 @@
   },
   "query": {
     "arms": "((abs:\"ACRIMSAT\" OR abs:\"Active Cavity Radiometer Irradiance Monitor Satellite\" OR abs:\"ACRIM3\" OR abs:\"ACRIM-3\" OR abs:\"ACRIM 3\" OR abs:\"ACRIM III\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2000-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22ACRIMSAT%22+OR+abs%3A%22Active+Cavity+Radiometer+Irradiance+Monitor+Satellite%22+OR+abs%3A%22ACRIM3%22+OR+abs%3A%22ACRIM-3%22+OR+abs%3A%22ACRIM+3%22+OR+abs%3A%22ACRIM+III%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:17:43.690340+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2000-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22ACRIMSAT%22+OR+abs%3A%22Active+Cavity+Radiometer+Irradiance+Monitor+Satellite%22+OR+abs%3A%22ACRIM3%22+OR+abs%3A%22ACRIM-3%22+OR+abs%3A%22ACRIM+3%22+OR+abs%3A%22ACRIM+III%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:31:25.344842+00:00",
     "reconciliation": {
       "adsReturned": 11,
       "curatedOut": 1,
@@ -400,7 +400,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 28
+      "citations": 29
     },
     {
       "bibcode": "2009GeoRL..3611102W",
@@ -430,6 +430,15 @@
       "citations": 17
     },
     {
+      "bibcode": "2004AdSpR..34..237D",
+      "title": "Solar irradiance variability: progress in measurement and empirical analysis",
+      "firstAuthor": "de Toma, G.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2004,
+      "citations": 11
+    },
+    {
       "bibcode": "2015JASTP.132...64L",
       "title": "The 27-day rotational variations in total solar irradiance observations: From SORCE/TIM, ACRIMSAT/ACRIM III, and SOHO/VIRGO",
       "firstAuthor": "Lee, Jae N.",
@@ -437,15 +446,6 @@
       "authorCount": null,
       "year": 2015,
       "citations": 11
-    },
-    {
-      "bibcode": "2004AdSpR..34..237D",
-      "title": "Solar irradiance variability: progress in measurement and empirical analysis",
-      "firstAuthor": "de Toma, G.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2004,
-      "citations": 10
     },
     {
       "bibcode": "2006ApJ...641..565S",

@@ -29,12 +29,12 @@
     "m": 1.923,
     "i100": 3,
     "g": 40,
-    "tori": 11.09,
-    "riq": 256
+    "tori": 12.4,
+    "riq": 270
   },
   "facts": {
     "papers": 75,
-    "citations": 1751,
+    "citations": 1775,
     "publicationYears": [
       2014,
       2026
@@ -84,13 +84,13 @@
       261,
       206,
       176,
-      157
+      181
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 1751,
-      "observed": 1751,
+      "expected": 1775,
+      "observed": 1775,
       "missing": 0
     }
   },
@@ -143,16 +143,16 @@
     ],
     "authorCount": 4,
     "year": 2018,
-    "citations": 116
+    "citations": 118
   },
   "ranks": {
     "full": {
       "bins": [
-        4.712,
-        2.2,
-        1.089,
-        2.037,
-        2.963,
+        4.72,
+        2.213,
+        1.067,
+        2.069,
+        2.931,
         2,
         2,
         3,
@@ -163,14 +163,14 @@
     },
     "window": {
       "bins": [
-        4.796,
-        2.204,
-        0.222,
-        3.353,
-        2.425,
-        1.817,
-        2.143,
-        4.041,
+        4.795,
+        2.205,
+        0.246,
+        3.348,
+        2.406,
+        1.907,
+        2.152,
+        3.941,
         1,
         0
       ],
@@ -178,16 +178,16 @@
     },
     "lifetime": {
       "bins": [
-        11.868,
-        9.484,
-        8.499,
-        6.558,
-        5.59,
-        8.569,
-        7.431,
-        6.829,
-        5.171,
-        5
+        11.202,
+        9.798,
+        8,
+        7.579,
+        3.948,
+        10.305,
+        7.169,
+        7,
+        5.647,
+        4.353
       ],
       "top1": 0
     }
@@ -269,9 +269,9 @@
   "lifetime": {
     "papers": 75,
     "outputBasis": "measured",
-    "citations": 1751,
-    "top10": 4.333,
-    "top10ShareOfDivision": 0.00276,
+    "citations": 1775,
+    "top10": 3.687,
+    "top10ShareOfDivision": 0.00234,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -282,18 +282,18 @@
       "date": "2014-12-00"
     },
     "spread": {
-      "mean": 23.347,
+      "mean": 23.667,
       "median": 14,
-      "uncited": 10,
+      "uncited": 9,
       "i10": 42,
       "i100": 3
     }
   },
   "query": {
     "arms": "((=abs:\"Lunar Atmosphere and Dust Environment Explorer\" OR ((abs:LADEE OR abs:LDEX OR =abs:\"Lunar Dust Experiment\") AND abs:(Moon OR lunar OR dust))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2013-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Atmosphere+and+Dust+Environment+Explorer%22+OR+%28%28abs%3ALADEE+OR+abs%3ALDEX+OR+%3Dabs%3A%22Lunar+Dust+Experiment%22%29+AND+abs%3A%28Moon+OR+lunar+OR+dust%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2013-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:13:00.411181+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2013-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Atmosphere+and+Dust+Environment+Explorer%22+OR+%28%28abs%3ALADEE+OR+abs%3ALDEX+OR+%3Dabs%3A%22Lunar+Dust+Experiment%22%29+AND+abs%3A%28Moon+OR+lunar+OR+dust%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2013-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:28:16.394977+00:00",
     "reconciliation": {
       "adsReturned": 78,
       "curatedOut": 3,
@@ -349,7 +349,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 116
+      "citations": 118
     },
     {
       "bibcode": "2019NatGe..12..333B",
@@ -358,7 +358,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 115
+      "citations": 117
     },
     {
       "bibcode": "2014SSRv..185...93H",
@@ -388,22 +388,22 @@
       "citations": 88
     },
     {
-      "bibcode": "2016Sci...351..249C",
-      "title": "How surface composition and meteoroid impacts mediate sodium and potassium in the lunar exosphere",
-      "firstAuthor": "Colaprete, A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2016,
-      "citations": 67
-    },
-    {
       "bibcode": "2014SSRv..185....3E",
       "title": "The Lunar Atmosphere and Dust Environment Explorer Mission",
       "firstAuthor": "Elphic, R. C.",
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 66
+      "citations": 68
+    },
+    {
+      "bibcode": "2016Sci...351..249C",
+      "title": "How surface composition and meteoroid impacts mediate sodium and potassium in the lunar exosphere",
+      "firstAuthor": "Colaprete, A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2016,
+      "citations": 68
     },
     {
       "bibcode": "2019Reach..1300026K",
@@ -448,7 +448,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 49
+      "citations": 50
     },
     {
       "bibcode": "2015GeoRL..42.5162H",
@@ -493,7 +493,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 38
+      "citations": 39
     },
     {
       "bibcode": "2017JETPL.105..635P",
@@ -502,16 +502,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 33
-    },
-    {
-      "bibcode": "2015Icar..255..135G",
-      "title": "Lunar exospheric argon modeling",
-      "firstAuthor": "Grava, Cesare",
-      "authors": null,
-      "authorCount": null,
-      "year": 2015,
-      "citations": 31
+      "citations": 34
     },
     {
       "bibcode": "2016GeoRL..43.6096S",
@@ -520,6 +511,15 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
+      "citations": 32
+    },
+    {
+      "bibcode": "2015Icar..255..135G",
+      "title": "Lunar exospheric argon modeling",
+      "firstAuthor": "Grava, Cesare",
+      "authors": null,
+      "authorCount": null,
+      "year": 2015,
       "citations": 31
     }
   ],

@@ -25,16 +25,16 @@
     }
   },
   "indices": {
-    "h": 35,
-    "m": 0.795,
+    "h": 36,
+    "m": 0.818,
     "i100": 16,
-    "g": 78,
-    "tori": 92.739,
-    "riq": 218
+    "g": 79,
+    "tori": 102.426,
+    "riq": 230
   },
   "facts": {
-    "papers": 187,
-    "citations": 6539,
+    "papers": 188,
+    "citations": 6712,
     "publicationYears": [
       1983,
       2026
@@ -131,7 +131,7 @@
       17,
       13,
       12,
-      18
+      19
     ],
     "citations": [
       0,
@@ -169,26 +169,26 @@
       110,
       185,
       211,
-      274,
-      375,
-      499,
+      275,
+      378,
+      502,
       490,
       609,
-      579,
-      649,
+      580,
+      650,
       721,
-      525
+      689
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 6539,
-      "observed": 6539,
+      "expected": 6712,
+      "observed": 6712,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 187,
+    "papers": 188,
     "us": {
       "mapped": 56,
       "top": [
@@ -235,18 +235,18 @@
     ],
     "authorCount": 3,
     "year": 2015,
-    "citations": 1196
+    "citations": 1232
   },
   "ranks": {
     "full": {
       "bins": [
-        26.762,
-        10.054,
-        6.942,
-        5.872,
-        3.702,
-        3.369,
-        3.3,
+        27.196,
+        9.866,
+        7.316,
+        5.716,
+        3.445,
+        3.875,
+        2.586,
         0,
         2,
         0
@@ -255,13 +255,13 @@
     },
     "window": {
       "bins": [
-        19.537,
-        6.301,
-        5.266,
-        4.418,
-        2.772,
-        3.657,
-        1.05,
+        19.665,
+        6.267,
+        5.447,
+        4.397,
+        2.708,
+        3.618,
+        0.898,
         0,
         0,
         0
@@ -270,14 +270,14 @@
     },
     "lifetime": {
       "bins": [
-        30.014,
-        27.458,
-        18.319,
-        25.958,
-        18.24,
-        12.912,
-        10.099,
-        18,
+        31.467,
+        26.453,
+        18.882,
+        24.823,
+        20.124,
+        12.251,
+        10.522,
+        17.478,
         7,
         19
       ],
@@ -359,11 +359,11 @@
     }
   },
   "lifetime": {
-    "papers": 187,
+    "papers": 188,
     "outputBasis": "measured",
-    "citations": 6539,
+    "citations": 6712,
     "top10": 9.583,
-    "top10ShareOfDivision": 0.00206,
+    "top10ShareOfDivision": 0.00184,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -374,26 +374,26 @@
       "date": "1984-05-00"
     },
     "spread": {
-      "mean": 34.968,
+      "mean": 35.702,
       "median": 8,
-      "uncited": 28,
-      "i10": 82,
+      "uncited": 27,
+      "i10": 86,
       "i100": 16
     }
   },
   "query": {
     "arms": "((=abs:\"Landsat-4\" OR =abs:\"Landsat 4-5\" OR =abs:\"Landsats 4\" OR =abs:\"Landsat TM 4 5\" OR =abs:\"Landsat missions 4\" OR =abs:\"Landsat 1 4\" OR =abs:\"Landsat 1 5\" OR =abs:\"Landsats 1 5\" OR =abs:\"Landsat 1 8\" OR =abs:\"Landsat 1 9\" OR =abs:\"Landsat-D\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1983-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Landsat-4%22+OR+%3Dabs%3A%22Landsat+4-5%22+OR+%3Dabs%3A%22Landsats+4%22+OR+%3Dabs%3A%22Landsat+TM+4+5%22+OR+%3Dabs%3A%22Landsat+missions+4%22+OR+%3Dabs%3A%22Landsat+1+4%22+OR+%3Dabs%3A%22Landsat+1+5%22+OR+%3Dabs%3A%22Landsats+1+5%22+OR+%3Dabs%3A%22Landsat+1+8%22+OR+%3Dabs%3A%22Landsat+1+9%22+OR+%3Dabs%3A%22Landsat-D%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1983-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:13:48.022901+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1983-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Landsat-4%22+OR+%3Dabs%3A%22Landsat+4-5%22+OR+%3Dabs%3A%22Landsats+4%22+OR+%3Dabs%3A%22Landsat+TM+4+5%22+OR+%3Dabs%3A%22Landsat+missions+4%22+OR+%3Dabs%3A%22Landsat+1+4%22+OR+%3Dabs%3A%22Landsat+1+5%22+OR+%3Dabs%3A%22Landsats+1+5%22+OR+%3Dabs%3A%22Landsat+1+8%22+OR+%3Dabs%3A%22Landsat+1+9%22+OR+%3Dabs%3A%22Landsat-D%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1983-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:29:44.588759+00:00",
     "reconciliation": {
-      "adsReturned": 183,
+      "adsReturned": 184,
       "curatedOut": 2,
       "curatedIn": 6,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 187
+      "final": 188
     }
   },
   "curation": {
@@ -474,7 +474,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 1196
+      "citations": 1232
     },
     {
       "bibcode": "2003ITGRS..41.2674C",
@@ -483,7 +483,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 611
+      "citations": 613
     },
     {
       "bibcode": "2009ITGRS..47..339J",
@@ -492,7 +492,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 453
+      "citations": 467
     },
     {
       "bibcode": "2019RSEnv.23111205Q",
@@ -501,7 +501,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 306
+      "citations": 319
     },
     {
       "bibcode": "2004ITGRS..42.2691M",
@@ -510,7 +510,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 239
+      "citations": 241
     },
     {
       "bibcode": "2012RSEnv.122...30M",
@@ -519,7 +519,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 200
+      "citations": 206
     },
     {
       "bibcode": "1985IJRS....6..697M",
@@ -537,7 +537,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 161
+      "citations": 164
     },
     {
       "bibcode": "2016RemS....8..575P",
@@ -546,7 +546,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 149
+      "citations": 150
     },
     {
       "bibcode": "2019EJRSS..22..203C",
@@ -555,7 +555,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 133
+      "citations": 134
     },
     {
       "bibcode": "2018RSEnv.214..135Z",
@@ -564,7 +564,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 128
+      "citations": 130
     },
     {
       "bibcode": "2001RSEnv..78...55V",
@@ -573,7 +573,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 124
+      "citations": 126
     },
     {
       "bibcode": "1984ITGRS..22..323D",
@@ -582,7 +582,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1984,
-      "citations": 120
+      "citations": 121
     },
     {
       "bibcode": "2017RSEnv.199..107Q",
@@ -591,7 +591,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 113
+      "citations": 116
     },
     {
       "bibcode": "2021EnvCh...400192F",
@@ -600,7 +600,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 107
+      "citations": 110
     },
     {
       "bibcode": "2018RemS...10.1503P",
@@ -609,7 +609,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 100
+      "citations": 104
     },
     {
       "bibcode": "2022BuEnv.21709066K",
@@ -618,7 +618,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 89
+      "citations": 92
     },
     {
       "bibcode": "1987RSEnv..22...39M",
@@ -627,7 +627,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1987,
-      "citations": 83
+      "citations": 84
     },
     {
       "bibcode": "2018IJGI....7..438S",
@@ -636,7 +636,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 79
+      "citations": 81
     },
     {
       "bibcode": "2004ITGRS..42.2777T",
@@ -649,6 +649,6 @@
     }
   ],
   "papersFile": {
-    "rows": 187
+    "rows": 188
   }
 }

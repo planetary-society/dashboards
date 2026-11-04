@@ -29,15 +29,15 @@
     "m": 1,
     "i100": 0,
     "g": 14,
-    "tori": 1.373,
-    "riq": 195
+    "tori": 1.386,
+    "riq": 147
   },
   "facts": {
-    "papers": 14,
-    "citations": 216,
+    "papers": 15,
+    "citations": 217,
     "publicationYears": [
       2019,
-      2024
+      2026
     ]
   },
   "lifetimeSeries": {
@@ -59,7 +59,7 @@
       3,
       1,
       0,
-      0
+      1
     ],
     "citations": [
       0,
@@ -69,24 +69,24 @@
       42,
       55,
       30,
-      38
+      39
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 216,
-      "observed": 216,
+      "expected": 217,
+      "observed": 217,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 14,
+    "papers": 15,
     "us": {
-      "mapped": 13,
+      "mapped": 14,
       "top": [
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
-          "papers": 13
+          "papers": 14
         },
         {
           "name": "University of Iowa",
@@ -94,16 +94,16 @@
         },
         {
           "name": "Johns Hopkins University, Maryland",
-          "papers": 9
+          "papers": 10
         }
       ]
     },
     "world": {
-      "mapped": 13,
+      "mapped": 14,
       "top": [
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
-          "papers": 13
+          "papers": 14
         },
         {
           "name": "University of Iowa",
@@ -111,7 +111,7 @@
         },
         {
           "name": "Johns Hopkins University, Maryland",
-          "papers": 9
+          "papers": 10
         }
       ]
     }
@@ -135,11 +135,11 @@
       "bins": [
         0,
         2,
-        1.429,
-        1.693,
-        2.878,
-        0.1,
-        0.9,
+        1.438,
+        1.694,
+        2.869,
+        0.122,
+        0.878,
         0,
         1,
         0
@@ -149,10 +149,10 @@
     "window": {
       "bins": [
         0,
-        2.237,
-        1.763,
-        2.816,
-        1.184,
+        2.239,
+        1.761,
+        2.846,
+        1.154,
         1,
         0,
         0,
@@ -163,9 +163,9 @@
     },
     "lifetime": {
       "bins": [
-        0,
-        3.849,
-        3.151,
+        1,
+        4.03,
+        2.97,
         3,
         1,
         1,
@@ -252,9 +252,9 @@
     }
   },
   "lifetime": {
-    "papers": 14,
+    "papers": 15,
     "outputBasis": "measured",
-    "citations": 216,
+    "citations": 217,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": null,
@@ -267,26 +267,26 @@
       "date": null
     },
     "spread": {
-      "mean": 15.429,
-      "median": 10.5,
-      "uncited": 0,
+      "mean": 14.467,
+      "median": 9,
+      "uncited": 1,
       "i10": 7,
       "i100": 0
     }
   },
   "query": {
     "arms": "(=abs:HaloSat AND collection:astronomy)",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2018-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%3Dabs%3AHaloSat+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:36:16.018582+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2018-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%3Dabs%3AHaloSat+AND+collection%3Aastronomy%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:45:01.640898+00:00",
     "reconciliation": {
-      "adsReturned": 15,
+      "adsReturned": 16,
       "curatedOut": 1,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 14
+      "final": 15
     }
   },
   "curation": {
@@ -319,7 +319,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 39
+      "citations": 40
     },
     {
       "bibcode": "2020ApJ...904...54L",
@@ -428,9 +428,18 @@
       "authorCount": null,
       "year": 2024,
       "citations": 3
+    },
+    {
+      "bibcode": "2026ApJ..1011...55A",
+      "title": "Probing the All-sky Distribution of Soft X-Ray Emission Associated with the Milky Way",
+      "firstAuthor": "Ampuku, Kazuki",
+      "authors": null,
+      "authorCount": null,
+      "year": 2026,
+      "citations": 0
     }
   ],
   "papersFile": {
-    "rows": 14
+    "rows": 15
   }
 }

@@ -29,12 +29,12 @@
     "m": 1.703,
     "i100": 35,
     "g": 101,
-    "tori": 178.151,
-    "riq": 360
+    "tori": 183.638,
+    "riq": 366
   },
   "facts": {
-    "papers": 380,
-    "citations": 14107,
+    "papers": 381,
+    "citations": 14205,
     "publicationYears": [
       1990,
       2026
@@ -83,7 +83,7 @@
     "papers": [
       2,
       18,
-      50,
+      51,
       27,
       47,
       26,
@@ -126,7 +126,7 @@
       335,
       658,
       504,
-      522,
+      523,
       318,
       328,
       345,
@@ -136,38 +136,38 @@
       256,
       233,
       220,
-      283,
-      482,
-      270,
-      227,
+      288,
+      487,
+      271,
+      231,
       271,
       248,
-      356,
-      235,
+      357,
+      236,
       256,
       471,
       298,
-      346,
+      347,
       439,
-      285,
+      289,
       498,
       588,
       555,
       807,
       834,
-      789,
-      598
+      788,
+      674
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 14107,
-      "observed": 14107,
+      "expected": 14205,
+      "observed": 14205,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 380,
+    "papers": 381,
     "us": {
       "mapped": 242,
       "top": [
@@ -215,61 +215,61 @@
     ],
     "authorCount": 10,
     "year": 1992,
-    "citations": 425
+    "citations": 426
   },
   "ranks": {
     "full": {
       "bins": [
-        48.526,
-        26.766,
-        19.92,
-        7.917,
-        17.158,
-        7.646,
-        7.25,
-        12.817,
-        23.41,
-        17.59
+        48.96,
+        27.503,
+        19.862,
+        7.916,
+        17.1,
+        7.835,
+        7.409,
+        12.415,
+        23.637,
+        17.363
       ],
       "top1": 1
     },
     "window": {
       "bins": [
-        16.185,
-        7.842,
-        4.972,
-        6.3,
-        4.194,
-        3.506,
-        4.959,
-        10.204,
-        12.837,
+        17.181,
+        7.887,
+        4.931,
+        6.377,
+        4.17,
+        3.453,
+        5.059,
+        10.179,
+        12.762,
         12
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        45.717,
-        29.213,
-        40.289,
-        38.241,
-        30.827,
-        35.126,
-        31.743,
-        47.33,
-        41.017,
-        40.497
+        46.542,
+        31.019,
+        39.117,
+        37.639,
+        31.264,
+        35.576,
+        33.176,
+        45.274,
+        40.718,
+        40.677
       ],
       "top1": 3
     }
   },
   "full": {
-    "papers": 189,
+    "papers": 190,
     "outputBasis": "measured",
-    "citations": 2247,
-    "top10": 17.59,
-    "top10ShareOfDivision": 0.01619,
+    "citations": 2248,
+    "top10": 17.363,
+    "top10ShareOfDivision": 0.01598,
     "top1": 1,
     "top1ShareOfDivision": 0.0092,
     "first": {
@@ -294,15 +294,15 @@
       "m": 4.215
     },
     "spread": {
-      "mean": 11.889,
-      "median": 5,
-      "uncited": 35,
+      "mean": 11.832,
+      "median": 4.5,
+      "uncited": 36,
       "i10": 67,
       "i100": 1
     }
   },
   "window": {
-    "papers": 83,
+    "papers": 84,
     "outputBasis": "measured",
     "citations": 1653,
     "top10": 12,
@@ -331,19 +331,19 @@
       "m": 9.094
     },
     "spread": {
-      "mean": 19.916,
-      "median": 12,
-      "uncited": 13,
+      "mean": 19.679,
+      "median": 11.5,
+      "uncited": 14,
       "i10": 46,
       "i100": 1
     }
   },
   "lifetime": {
-    "papers": 380,
+    "papers": 381,
     "outputBasis": "measured",
-    "citations": 14107,
-    "top10": 40.497,
-    "top10ShareOfDivision": 0.02581,
+    "citations": 14205,
+    "top10": 40.677,
+    "top10ShareOfDivision": 0.02587,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -354,26 +354,26 @@
       "date": "1991-04-00"
     },
     "spread": {
-      "mean": 37.124,
-      "median": 18.5,
+      "mean": 37.283,
+      "median": 19,
       "uncited": 37,
-      "i10": 249,
+      "i10": 250,
       "i100": 35
     }
   },
   "query": {
     "arms": "(abs:(=Magellan AND Venus) NOT =abs:(\"Las Campanas\" OR \"Magellan Telescope\" OR \"Magellan Telescopes\" OR \"Magellan 6.5\" OR \"Magellan Province\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1990-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28abs%3A%28%3DMagellan+AND+Venus%29+NOT+%3Dabs%3A%28%22Las+Campanas%22+OR+%22Magellan+Telescope%22+OR+%22Magellan+Telescopes%22+OR+%22Magellan+6.5%22+OR+%22Magellan+Province%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1990-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T05:14:31.791467+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1990-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28abs%3A%28%3DMagellan+AND+Venus%29+NOT+%3Dabs%3A%28%22Las+Campanas%22+OR+%22Magellan+Telescope%22+OR+%22Magellan+Telescopes%22+OR+%22Magellan+6.5%22+OR+%22Magellan+Province%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1990-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:25:38.616644+00:00",
     "reconciliation": {
-      "adsReturned": 390,
+      "adsReturned": 391,
       "curatedOut": 10,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 380
+      "final": 381
     }
   },
   "curation": {
@@ -469,7 +469,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1992,
-      "citations": 425
+      "citations": 426
     },
     {
       "bibcode": "1992JGR....9713153H",
@@ -478,7 +478,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1992,
-      "citations": 394
+      "citations": 395
     },
     {
       "bibcode": "2018P&SS..150....9A",
@@ -487,7 +487,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 341
+      "citations": 349
     },
     {
       "bibcode": "1996JGR...101.4595M",
@@ -496,7 +496,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 309
+      "citations": 313
     },
     {
       "bibcode": "1992JGR....9713199S",
@@ -514,7 +514,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 270
+      "citations": 276
     },
     {
       "bibcode": "1992JGR....9713103F",
@@ -532,7 +532,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 218
+      "citations": 220
     },
     {
       "bibcode": "1992JGR....9713611S",
@@ -550,7 +550,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1992,
-      "citations": 164
+      "citations": 165
     },
     {
       "bibcode": "1992JGR....9716183S",
@@ -559,6 +559,24 @@
       "authors": null,
       "authorCount": null,
       "year": 1992,
+      "citations": 163
+    },
+    {
+      "bibcode": "2001Icar..150...19B",
+      "title": "The Recent Evolution of Climate on Venus",
+      "firstAuthor": "Bullock, Mark A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2001,
+      "citations": 163
+    },
+    {
+      "bibcode": "2011P&SS...59.1559I",
+      "title": "Global geological map of Venus",
+      "firstAuthor": "Ivanov, Mikhail A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2011,
       "citations": 163
     },
     {
@@ -571,24 +589,6 @@
       "citations": 162
     },
     {
-      "bibcode": "2001Icar..150...19B",
-      "title": "The Recent Evolution of Climate on Venus",
-      "firstAuthor": "Bullock, Mark A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2001,
-      "citations": 161
-    },
-    {
-      "bibcode": "2011P&SS...59.1559I",
-      "title": "Global geological map of Venus",
-      "firstAuthor": "Ivanov, Mikhail A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2011,
-      "citations": 160
-    },
-    {
       "bibcode": "1992JGR....9713421B",
       "title": "Channels and valleys on Venus: Preliminary analysis of Magellan data",
       "firstAuthor": "Baker, V. R.",
@@ -598,22 +598,22 @@
       "citations": 150
     },
     {
-      "bibcode": "1992JGR....9713395S",
-      "title": "Regional topographic rises on Venus: Geology of western Eistla Regio and comparison to Beta Regio and Atla Regio",
-      "firstAuthor": "Senske, D. A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 1992,
-      "citations": 146
-    },
-    {
       "bibcode": "1991Sci...252..276H",
       "title": "Venus Volcanism: Initial Analysis from Magellan Data",
       "firstAuthor": "Head, J. W.",
       "authors": null,
       "authorCount": null,
       "year": 1991,
-      "citations": 145
+      "citations": 147
+    },
+    {
+      "bibcode": "1992JGR....9713395S",
+      "title": "Regional topographic rises on Venus: Geology of western Eistla Regio and comparison to Beta Regio and Atla Regio",
+      "firstAuthor": "Senske, D. A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1992,
+      "citations": 147
     },
     {
       "bibcode": "2007Icar..191...25K",
@@ -622,7 +622,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 137
+      "citations": 139
     },
     {
       "bibcode": "1996JGR...10114861I",
@@ -631,7 +631,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 134
+      "citations": 135
     },
     {
       "bibcode": "1992JGR....9716055J",
@@ -640,10 +640,10 @@
       "authors": null,
       "authorCount": null,
       "year": 1992,
-      "citations": 130
+      "citations": 131
     }
   ],
   "papersFile": {
-    "rows": 380
+    "rows": 381
   }
 }

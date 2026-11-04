@@ -28,13 +28,13 @@
     "h": 92,
     "m": 3.68,
     "i100": 86,
-    "g": 150,
-    "tori": 230.028,
-    "riq": 606
+    "g": 151,
+    "tori": 239.723,
+    "riq": 619
   },
   "facts": {
     "papers": 1038,
-    "citations": 40125,
+    "citations": 40324,
     "publicationYears": [
       2002,
       2026
@@ -99,34 +99,34 @@
       51,
       180,
       383,
-      536,
-      874,
-      867,
+      550,
+      876,
+      868,
       1104,
-      1380,
+      1381,
       1295,
-      2123,
-      1830,
+      2138,
+      1829,
       1990,
       1574,
       1904,
       2183,
       2092,
-      2174,
+      2179,
       2275,
-      2284,
+      2290,
       2149,
-      2149,
-      2172,
+      2150,
+      2178,
       2239,
-      2225,
-      2092
+      2227,
+      2239
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 40125,
-      "observed": 40125,
+      "expected": 40324,
+      "observed": 40324,
       "missing": 0
     }
   },
@@ -179,51 +179,51 @@
     ],
     "authorCount": 66,
     "year": 2002,
-    "citations": 1686
+    "citations": 1689
   },
   "ranks": {
     "full": {
       "bins": [
-        104.513,
-        99.144,
-        82.869,
-        67.475,
-        77.719,
-        92.615,
-        97.998,
-        90.929,
-        91.482,
-        104.255
+        105.151,
+        99.449,
+        83.069,
+        67.136,
+        76.29,
+        93.609,
+        97.862,
+        90.906,
+        90.795,
+        104.732
       ],
-      "top1": 10
+      "top1": 10.285
     },
     "window": {
       "bins": [
-        38.207,
-        35.897,
-        27.492,
-        14.738,
-        26.392,
-        24.755,
-        18.863,
-        21.946,
-        19.708,
+        38.513,
+        35.874,
+        27.462,
+        13.707,
+        27.363,
+        23.538,
+        19.469,
+        22.473,
+        19.6,
         24
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        66.52,
-        96.806,
-        91.303,
-        90.077,
-        98.217,
-        94.837,
-        116.979,
-        126.849,
-        129.716,
-        126.696
+        68.567,
+        96.599,
+        87.117,
+        92.9,
+        98.732,
+        95.979,
+        112.941,
+        129.578,
+        128.381,
+        127.206
       ],
       "top1": 16
     }
@@ -231,11 +231,11 @@
   "full": {
     "papers": 909,
     "outputBasis": "measured",
-    "citations": 10784,
-    "top10": 81.629,
-    "top10ShareOfDivision": 0.05662,
-    "top1": 7.667,
-    "top1ShareOfDivision": 0.05318,
+    "citations": 10809,
+    "top10": 82.182,
+    "top10ShareOfDivision": 0.05702,
+    "top1": 7.809,
+    "top1ShareOfDivision": 0.05418,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.619,
@@ -258,17 +258,17 @@
       "m": 2.172
     },
     "spread": {
-      "mean": 11.864,
+      "mean": 11.891,
       "median": 8,
       "uncited": 68,
-      "i10": 404,
+      "i10": 406,
       "i100": 2
     }
   },
   "window": {
     "papers": 252,
     "outputBasis": "measured",
-    "citations": 3218,
+    "citations": 3234,
     "top10": 24,
     "top10ShareOfDivision": 0.05409,
     "top1": 1,
@@ -291,11 +291,11 @@
     },
     "indices": {
       "h": 28,
-      "g": 39,
+      "g": 40,
       "m": 5.601
     },
     "spread": {
-      "mean": 12.77,
+      "mean": 12.833,
       "median": 8,
       "uncited": 22,
       "i10": 113,
@@ -305,9 +305,9 @@
   "lifetime": {
     "papers": 1038,
     "outputBasis": "measured",
-    "citations": 40125,
-    "top10": 103.991,
-    "top10ShareOfDivision": 0.05675,
+    "citations": 40324,
+    "top10": 104.78,
+    "top10ShareOfDivision": 0.05709,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -318,18 +318,18 @@
       "date": "2002-11-00"
     },
     "spread": {
-      "mean": 38.656,
+      "mean": 38.848,
       "median": 20,
-      "uncited": 43,
-      "i10": 708,
+      "uncited": 42,
+      "i10": 709,
       "i100": 86
     }
   },
   "query": {
     "arms": "(((abs:RHESSI AND abs:(solar OR flare OR X-ray OR gamma OR terrestrial OR electron OR photon OR polarization OR transient OR image)) OR (abs:HESSI AND abs:solar) OR =abs:\"High Energy Solar Spectroscopic Imager\" OR =abs:\"High Energy Solar Spectroscopy Imager\" OR facility:RHESSI))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2002-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ARHESSI+AND+abs%3A%28solar+OR+flare+OR+X-ray+OR+gamma+OR+terrestrial+OR+electron+OR+photon+OR+polarization+OR+transient+OR+image%29%29+OR+%28abs%3AHESSI+AND+abs%3Asolar%29+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopic+Imager%22+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopy+Imager%22+OR+facility%3ARHESSI%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:24:58.698450+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2002-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ARHESSI+AND+abs%3A%28solar+OR+flare+OR+X-ray+OR+gamma+OR+terrestrial+OR+electron+OR+photon+OR+polarization+OR+transient+OR+image%29%29+OR+%28abs%3AHESSI+AND+abs%3Asolar%29+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopic+Imager%22+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopy+Imager%22+OR+facility%3ARHESSI%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:37:09.889973+00:00",
     "reconciliation": {
       "adsReturned": 1048,
       "curatedOut": 9,
@@ -458,7 +458,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 1686
+      "citations": 1689
     },
     {
       "bibcode": "2011SSRv..159...19F",
@@ -467,7 +467,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 825
+      "citations": 833
     },
     {
       "bibcode": "2002SoPh..210...61H",
@@ -485,7 +485,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 493
+      "citations": 507
     },
     {
       "bibcode": "2006ApJ...647..483L",
@@ -494,7 +494,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 384
+      "citations": 385
     },
     {
       "bibcode": "2005Sci...307.1085S",
@@ -503,7 +503,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 382
+      "citations": 384
     },
     {
       "bibcode": "2003ApJ...595L..69L",
@@ -521,7 +521,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 353
+      "citations": 354
     },
     {
       "bibcode": "2012A&A...539A.146H",
@@ -530,7 +530,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 345
+      "citations": 348
     },
     {
       "bibcode": "2002SoPh..210...33S",
@@ -539,7 +539,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 331
+      "citations": 332
     },
     {
       "bibcode": "2005ApJ...622.1251L",
@@ -557,7 +557,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 295
+      "citations": 296
     },
     {
       "bibcode": "2008LRSP....5....1B",
@@ -584,7 +584,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 278
+      "citations": 279
     },
     {
       "bibcode": "2003ApJ...597..998L",
@@ -611,7 +611,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 245
+      "citations": 246
     },
     {
       "bibcode": "2010ApJ...714.1108K",
@@ -620,7 +620,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 243
+      "citations": 245
     },
     {
       "bibcode": "2004JGRA..10910104E",

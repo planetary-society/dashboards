@@ -25,16 +25,16 @@
     }
   },
   "indices": {
-    "h": 70,
-    "m": 5.833,
+    "h": 71,
+    "m": 5.917,
     "i100": 30,
-    "g": 128,
-    "tori": 48.638,
-    "riq": 581
+    "g": 129,
+    "tori": 57.814,
+    "riq": 633
   },
   "facts": {
-    "papers": 1440,
-    "citations": 32550,
+    "papers": 1442,
+    "citations": 32926,
     "publicationYears": [
       2015,
       2026
@@ -67,32 +67,32 @@
       140,
       154,
       159,
-      99
+      101
     ],
     "citations": [
       0,
       591,
       999,
-      1539,
-      2217,
+      1548,
+      2220,
       2822,
       3809,
-      3752,
-      3886,
+      3753,
+      3887,
       4356,
-      5149,
-      3430
+      5150,
+      3791
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 32550,
-      "observed": 32550,
+      "expected": 32926,
+      "observed": 32926,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 1440,
+    "papers": 1442,
     "us": {
       "mapped": 958,
       "top": [
@@ -111,7 +111,7 @@
       ]
     },
     "world": {
-      "mapped": 1379,
+      "mapped": 1381,
       "top": [
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
@@ -140,51 +140,51 @@
     ],
     "authorCount": 4,
     "year": 2016,
-    "citations": 1486
+    "citations": 1493
   },
   "ranks": {
     "full": {
       "bins": [
-        42.542,
-        68.051,
-        83.837,
-        101.341,
-        117.286,
-        124.928,
-        108.681,
-        144.677,
-        117.109,
-        119.547
+        41.837,
+        69.563,
+        82.876,
+        101.496,
+        116.351,
+        124.636,
+        109.808,
+        144.222,
+        118.681,
+        118.531
       ],
       "top1": 13
     },
     "window": {
       "bins": [
-        16.489,
-        15.675,
-        30.026,
-        43.387,
-        41.876,
-        35.511,
-        53.391,
-        40.229,
-        55.847,
-        50.569
+        15.863,
+        15.695,
+        30.482,
+        43.84,
+        41.958,
+        35.438,
+        53.421,
+        40.036,
+        55.941,
+        50.326
       ],
       "top1": 9
     },
     "lifetime": {
       "bins": [
-        183.592,
-        190.29,
-        188.376,
-        173.615,
-        159.419,
-        139.495,
-        130.11,
-        102.485,
-        108.922,
-        63.696
+        178.037,
+        196.045,
+        185.021,
+        177.17,
+        161.132,
+        138.123,
+        132.339,
+        102.349,
+        107.646,
+        64.138
       ],
       "top1": 9
     }
@@ -192,11 +192,11 @@
   "full": {
     "papers": 1028,
     "outputBasis": "measured",
-    "citations": 14833,
-    "top10": 117.195,
-    "top10ShareOfDivision": 0.08129,
+    "citations": 14880,
+    "top10": 116.198,
+    "top10ShareOfDivision": 0.08062,
     "top1": 11.833,
-    "top1ShareOfDivision": 0.08208,
+    "top1ShareOfDivision": 0.0821,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.498,
@@ -219,19 +219,19 @@
       "m": 4.847
     },
     "spread": {
-      "mean": 14.429,
+      "mean": 14.475,
       "median": 10,
       "uncited": 23,
-      "i10": 518,
+      "i10": 520,
       "i100": 8
     }
   },
   "window": {
     "papers": 383,
     "outputBasis": "measured",
-    "citations": 8016,
-    "top10": 50.569,
-    "top10ShareOfDivision": 0.11397,
+    "citations": 8028,
+    "top10": 50.326,
+    "top10ShareOfDivision": 0.11342,
     "top1": 9,
     "top1ShareOfDivision": 0.20284,
     "first": {
@@ -256,7 +256,7 @@
       "m": 9
     },
     "spread": {
-      "mean": 20.93,
+      "mean": 20.961,
       "median": 14,
       "uncited": 8,
       "i10": 243,
@@ -264,11 +264,11 @@
     }
   },
   "lifetime": {
-    "papers": 1440,
+    "papers": 1442,
     "outputBasis": "measured",
-    "citations": 32550,
-    "top10": 62.53,
-    "top10ShareOfDivision": 0.03412,
+    "citations": 32926,
+    "top10": 62.971,
+    "top10ShareOfDivision": 0.03431,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -279,26 +279,26 @@
       "date": "2016-02-00"
     },
     "spread": {
-      "mean": 22.604,
+      "mean": 22.834,
       "median": 10,
-      "uncited": 128,
-      "i10": 725,
+      "uncited": 119,
+      "i10": 730,
       "i100": 30
     }
   },
   "query": {
     "arms": "((=abs:\"Magnetospheric Multiscale\" OR =abs:\"Magnetospheric Multi-scale\" OR (abs:MMS AND abs:(magnetos* OR magnetopause OR magnetotail OR \"magnetic reconnection\" OR \"plasma sheet\" OR \"current sheet\" OR \"bow shock\" OR \"solar wind\" OR whistler OR chorus))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2015-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Magnetospheric+Multiscale%22+OR+%3Dabs%3A%22Magnetospheric+Multi-scale%22+OR+%28abs%3AMMS+AND+abs%3A%28magnetos%2A+OR+magnetopause+OR+magnetotail+OR+%22magnetic+reconnection%22+OR+%22plasma+sheet%22+OR+%22current+sheet%22+OR+%22bow+shock%22+OR+%22solar+wind%22+OR+whistler+OR+chorus%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2015-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:26:41.761713+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2015-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Magnetospheric+Multiscale%22+OR+%3Dabs%3A%22Magnetospheric+Multi-scale%22+OR+%28abs%3AMMS+AND+abs%3A%28magnetos%2A+OR+magnetopause+OR+magnetotail+OR+%22magnetic+reconnection%22+OR+%22plasma+sheet%22+OR+%22current+sheet%22+OR+%22bow+shock%22+OR+%22solar+wind%22+OR+whistler+OR+chorus%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2015-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:38:24.167103+00:00",
     "reconciliation": {
-      "adsReturned": 1441,
+      "adsReturned": 1443,
       "curatedOut": 5,
       "curatedIn": 4,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 1440
+      "final": 1442
     }
   },
   "curation": {
@@ -387,7 +387,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 1486
+      "citations": 1493
     },
     {
       "bibcode": "2016SSRv..199..331P",
@@ -396,7 +396,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 1317
+      "citations": 1326
     },
     {
       "bibcode": "2016SSRv..199..189R",
@@ -405,7 +405,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 1221
+      "citations": 1229
     },
     {
       "bibcode": "2016SSRv..199..137L",
@@ -414,7 +414,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 707
+      "citations": 712
     },
     {
       "bibcode": "2016Sci...352.2939B",
@@ -423,7 +423,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 650
+      "citations": 657
     },
     {
       "bibcode": "2016SSRv..199..167E",
@@ -432,7 +432,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 642
+      "citations": 647
     },
     {
       "bibcode": "2016SSRv..199..105T",
@@ -441,7 +441,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 460
+      "citations": 461
     },
     {
       "bibcode": "2018Sci...362.1391T",
@@ -450,7 +450,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 300
+      "citations": 305
     },
     {
       "bibcode": "2016SSRv..199..257L",
@@ -459,7 +459,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 266
+      "citations": 268
     },
     {
       "bibcode": "2016SSRv..199..407Y",
@@ -468,7 +468,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 201
+      "citations": 203
     },
     {
       "bibcode": "2016SSRv..199...77F",
@@ -477,7 +477,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 160
+      "citations": 162
     },
     {
       "bibcode": "2016GeoRL..43.8327B",
@@ -486,7 +486,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 158
+      "citations": 159
     },
     {
       "bibcode": "2020JGRA..12525935H",
@@ -495,7 +495,25 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 148
+      "citations": 150
+    },
+    {
+      "bibcode": "2016GeoRL..43.5606E",
+      "title": "Magnetospheric Multiscale observations of magnetic reconnection associated with Kelvin-Helmholtz waves",
+      "firstAuthor": "Eriksson, S.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2016,
+      "citations": 143
+    },
+    {
+      "bibcode": "2020JGRA..12526735R",
+      "title": "Particle Dynamics in the Earth's Radiation Belts: Review of Current Research and Open Questions",
+      "firstAuthor": "Ripoll, J.-F.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2020,
+      "citations": 143
     },
     {
       "bibcode": "2016SSRv..199..309B",
@@ -505,24 +523,6 @@
       "authorCount": null,
       "year": 2016,
       "citations": 142
-    },
-    {
-      "bibcode": "2016GeoRL..43.5606E",
-      "title": "Magnetospheric Multiscale observations of magnetic reconnection associated with Kelvin-Helmholtz waves",
-      "firstAuthor": "Eriksson, S.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2016,
-      "citations": 141
-    },
-    {
-      "bibcode": "2020JGRA..12526735R",
-      "title": "Particle Dynamics in the Earth's Radiation Belts: Review of Current Research and Open Questions",
-      "firstAuthor": "Ripoll, J.-F.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2020,
-      "citations": 137
     },
     {
       "bibcode": "2016SSRv..199..471M",
@@ -549,7 +549,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 119
+      "citations": 121
     },
     {
       "bibcode": "2016PhRvL.117p5101J",
@@ -558,10 +558,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 118
+      "citations": 120
     }
   ],
   "papersFile": {
-    "rows": 1440
+    "rows": 1442
   }
 }

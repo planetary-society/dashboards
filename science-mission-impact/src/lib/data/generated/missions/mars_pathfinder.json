@@ -29,12 +29,12 @@
     "m": 1.833,
     "i100": 25,
     "g": 90,
-    "tori": 73.102,
-    "riq": 284
+    "tori": 74.047,
+    "riq": 286
   },
   "facts": {
     "papers": 154,
-    "citations": 8746,
+    "citations": 8792,
     "publicationYears": [
       1997,
       2026
@@ -115,33 +115,33 @@
       435,
       380,
       356,
-      475,
-      446,
+      476,
+      457,
       376,
-      322,
+      328,
       311,
       291,
-      269,
+      270,
       214,
       260,
       270,
       291,
-      269,
-      245,
-      251,
+      270,
+      246,
+      253,
       248,
-      317,
+      318,
       305,
-      280,
+      281,
       243,
       230,
-      177
+      198
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 8746,
-      "observed": 8746,
+      "expected": 8792,
+      "observed": 8792,
       "missing": 0
     }
   },
@@ -194,34 +194,34 @@
     ],
     "authorCount": 9,
     "year": 1997,
-    "citations": 367
+    "citations": 372
   },
   "ranks": {
     "full": {
       "bins": [
-        8.424,
-        3.488,
-        2.608,
-        3.499,
-        7.125,
-        2.59,
-        5.267,
+        8.44,
+        3.493,
+        2.635,
+        3.466,
+        7.136,
+        2.624,
+        5.206,
         7,
-        6.205,
-        10.795
+        6.319,
+        10.681
       ],
       "top1": 1
     },
     "window": {
       "bins": [
-        6.593,
-        4.417,
-        4.212,
-        5.228,
-        4.798,
-        5.386,
-        6.846,
-        3.52,
+        6.591,
+        4.432,
+        4.223,
+        5.319,
+        4.708,
+        5.54,
+        6.716,
+        3.471,
         5,
         8
       ],
@@ -229,16 +229,16 @@
     },
     "lifetime": {
       "bins": [
-        13.113,
-        5.943,
-        9.498,
-        7.265,
-        18.228,
-        11.521,
-        10.389,
-        22.042,
-        26.509,
-        29.491
+        12.936,
+        6.47,
+        9.513,
+        7.239,
+        17.369,
+        12.305,
+        10.876,
+        21.595,
+        27.021,
+        28.677
       ],
       "top1": 1
     }
@@ -247,8 +247,8 @@
     "papers": 57,
     "outputBasis": "measured",
     "citations": 1080,
-    "top10": 10.795,
-    "top10ShareOfDivision": 0.00993,
+    "top10": 10.681,
+    "top10ShareOfDivision": 0.00983,
     "top1": 1,
     "top1ShareOfDivision": 0.0092,
     "first": {
@@ -320,9 +320,9 @@
   "lifetime": {
     "papers": 154,
     "outputBasis": "measured",
-    "citations": 8746,
-    "top10": 27.076,
-    "top10ShareOfDivision": 0.01726,
+    "citations": 8792,
+    "top10": 26.51,
+    "top10ShareOfDivision": 0.01686,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -333,7 +333,7 @@
       "date": "1997-12-00"
     },
     "spread": {
-      "mean": 56.792,
+      "mean": 57.091,
       "median": 36,
       "uncited": 10,
       "i10": 120,
@@ -342,9 +342,9 @@
   },
   "query": {
     "arms": "((=abs:\"Mars Pathfinder\" OR ((=abs:Sojourner OR =abs:\"Pathfinder rover\" OR =abs:\"Pathfinder microrover\" OR =abs:\"Imager for Pathfinder\") AND abs:Mars)) AND NOT =title:(navigation OR \"orbit determination\" OR heatshield OR \"heat shield\" OR airbag OR aeroheating OR \"gas dynamics\" OR aerothermodynamics OR \"entry vehicles\" OR \"flow field\" OR \"thermal analysis\" OR thermochemical OR dsmc OR \"solar power\" OR \"radioisotope power\" OR \"radioactive sources\" OR \"alpha sources\" OR electronics OR \"force balances\" OR \"chromatic calibration\" OR \"lander cameras\" OR NetLander OR \"Surface Stereo Imager\" OR \"Mars Polar Lander\" OR \"parachute drag\" OR \"entry descent and landing scenario\" OR \"entry descent and landing systems\" OR \"ascent propulsion\" OR \"mission proposal\" OR management OR \"project manager\" OR \"media coverage\" OR \"manage to budget\" OR \"robotic exploration program\" OR \"Mars exploration rover project\" OR \"Mars exploration rover mission\" OR \"lunar base\" OR communications OR \"heat flux\" OR \"flow properties\" OR \"laminar turbulent\" OR \"design approach\" OR \"interaction framework\" OR pseudolite OR localization OR \"motion planning\" OR educator OR \"limited by cost\" OR \"Discovery Program\" OR \"angular rates\" OR Goldstone OR \"superpressure balloon\" OR \"Mars Pathfinder vehicle\" OR proceedings) AND NOT (=title:instruments AND =title:\"Magnetic Properties\") AND NOT (=title:\"solar cells\" AND =title:performance) AND NOT =abs:bibliometric)",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1997-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Pathfinder%22+OR+%28%28%3Dabs%3ASojourner+OR+%3Dabs%3A%22Pathfinder+rover%22+OR+%3Dabs%3A%22Pathfinder+microrover%22+OR+%3Dabs%3A%22Imager+for+Pathfinder%22%29+AND+abs%3AMars%29%29+AND+NOT+%3Dtitle%3A%28navigation+OR+%22orbit+determination%22+OR+heatshield+OR+%22heat+shield%22+OR+airbag+OR+aeroheating+OR+%22gas+dynamics%22+OR+aerothermodynamics+OR+%22entry+vehicles%22+OR+%22flow+field%22+OR+%22thermal+analysis%22+OR+thermochemical+OR+dsmc+OR+%22solar+power%22+OR+%22radioisotope+power%22+OR+%22radioactive+sources%22+OR+%22alpha+sources%22+OR+electronics+OR+%22force+balances%22+OR+%22chromatic+calibration%22+OR+%22lander+cameras%22+OR+NetLander+OR+%22Surface+Stereo+Imager%22+OR+%22Mars+Polar+Lander%22+OR+%22parachute+drag%22+OR+%22entry+descent+and+landing+scenario%22+OR+%22entry+descent+and+landing+systems%22+OR+%22ascent+propulsion%22+OR+%22mission+proposal%22+OR+management+OR+%22project+manager%22+OR+%22media+coverage%22+OR+%22manage+to+budget%22+OR+%22robotic+exploration+program%22+OR+%22Mars+exploration+rover+project%22+OR+%22Mars+exploration+rover+mission%22+OR+%22lunar+base%22+OR+communications+OR+%22heat+flux%22+OR+%22flow+properties%22+OR+%22laminar+turbulent%22+OR+%22design+approach%22+OR+%22interaction+framework%22+OR+pseudolite+OR+localization+OR+%22motion+planning%22+OR+educator+OR+%22limited+by+cost%22+OR+%22Discovery+Program%22+OR+%22angular+rates%22+OR+Goldstone+OR+%22superpressure+balloon%22+OR+%22Mars+Pathfinder+vehicle%22+OR+proceedings%29+AND+NOT+%28%3Dtitle%3Ainstruments+AND+%3Dtitle%3A%22Magnetic+Properties%22%29+AND+NOT+%28%3Dtitle%3A%22solar+cells%22+AND+%3Dtitle%3Aperformance%29+AND+NOT+%3Dabs%3Abibliometric%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1997-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:10:12.198018+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1997-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Pathfinder%22+OR+%28%28%3Dabs%3ASojourner+OR+%3Dabs%3A%22Pathfinder+rover%22+OR+%3Dabs%3A%22Pathfinder+microrover%22+OR+%3Dabs%3A%22Imager+for+Pathfinder%22%29+AND+abs%3AMars%29%29+AND+NOT+%3Dtitle%3A%28navigation+OR+%22orbit+determination%22+OR+heatshield+OR+%22heat+shield%22+OR+airbag+OR+aeroheating+OR+%22gas+dynamics%22+OR+aerothermodynamics+OR+%22entry+vehicles%22+OR+%22flow+field%22+OR+%22thermal+analysis%22+OR+thermochemical+OR+dsmc+OR+%22solar+power%22+OR+%22radioisotope+power%22+OR+%22radioactive+sources%22+OR+%22alpha+sources%22+OR+electronics+OR+%22force+balances%22+OR+%22chromatic+calibration%22+OR+%22lander+cameras%22+OR+NetLander+OR+%22Surface+Stereo+Imager%22+OR+%22Mars+Polar+Lander%22+OR+%22parachute+drag%22+OR+%22entry+descent+and+landing+scenario%22+OR+%22entry+descent+and+landing+systems%22+OR+%22ascent+propulsion%22+OR+%22mission+proposal%22+OR+management+OR+%22project+manager%22+OR+%22media+coverage%22+OR+%22manage+to+budget%22+OR+%22robotic+exploration+program%22+OR+%22Mars+exploration+rover+project%22+OR+%22Mars+exploration+rover+mission%22+OR+%22lunar+base%22+OR+communications+OR+%22heat+flux%22+OR+%22flow+properties%22+OR+%22laminar+turbulent%22+OR+%22design+approach%22+OR+%22interaction+framework%22+OR+pseudolite+OR+localization+OR+%22motion+planning%22+OR+educator+OR+%22limited+by+cost%22+OR+%22Discovery+Program%22+OR+%22angular+rates%22+OR+Goldstone+OR+%22superpressure+balloon%22+OR+%22Mars+Pathfinder+vehicle%22+OR+proceedings%29+AND+NOT+%28%3Dtitle%3Ainstruments+AND+%3Dtitle%3A%22Magnetic+Properties%22%29+AND+NOT+%28%3Dtitle%3A%22solar+cells%22+AND+%3Dtitle%3Aperformance%29+AND+NOT+%3Dabs%3Abibliometric%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1997-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:26:10.185151+00:00",
     "reconciliation": {
       "adsReturned": 161,
       "curatedOut": 9,
@@ -457,7 +457,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 367
+      "citations": 372
     },
     {
       "bibcode": "1999JGR...104.8987T",
@@ -493,7 +493,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 255
+      "citations": 260
     },
     {
       "bibcode": "1997Sci...278.1758S",
@@ -502,7 +502,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 253
+      "citations": 255
     },
     {
       "bibcode": "2000JGR...105.1721B",
@@ -520,7 +520,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 222
+      "citations": 223
     },
     {
       "bibcode": "1999JGR...104.8957H",
@@ -529,7 +529,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 205
+      "citations": 206
     },
     {
       "bibcode": "2004JGRE..109.5003T",
@@ -538,7 +538,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 191
+      "citations": 192
     },
     {
       "bibcode": "1997Sci...278.1743G",
@@ -547,7 +547,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 187
+      "citations": 189
     },
     {
       "bibcode": "2001Icar..151..228R",
@@ -565,7 +565,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 167
+      "citations": 170
     },
     {
       "bibcode": "1999GeoRL..26.2781M",
@@ -574,21 +574,21 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 159
-    },
-    {
-      "bibcode": "1999JGR...104.8729M",
-      "title": "Soil-like deposits observed by Sojourner, the Pathfinder rover",
-      "firstAuthor": "Moore, Henry J.",
-      "authors": null,
-      "authorCount": null,
-      "year": 1999,
-      "citations": 126
+      "citations": 161
     },
     {
       "bibcode": "1999JGR...104.8943M",
       "title": "Results of the Mars Pathfinder atmospheric structure investigation",
       "firstAuthor": "Magalhães, Julio A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1999,
+      "citations": 127
+    },
+    {
+      "bibcode": "1999JGR...104.8729M",
+      "title": "Soil-like deposits observed by Sojourner, the Pathfinder rover",
+      "firstAuthor": "Moore, Henry J.",
       "authors": null,
       "authorCount": null,
       "year": 1999,
@@ -601,7 +601,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 122
+      "citations": 124
     },
     {
       "bibcode": "2000GeCoA..64.2155M",

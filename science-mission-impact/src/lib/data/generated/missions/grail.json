@@ -27,14 +27,14 @@
   "indices": {
     "h": 46,
     "m": 3.067,
-    "i100": 21,
-    "g": 83,
-    "tori": 26.634,
-    "riq": 344
+    "i100": 22,
+    "g": 84,
+    "tori": 30.881,
+    "riq": 370
   },
   "facts": {
     "papers": 192,
-    "citations": 7585,
+    "citations": 7703,
     "publicationYears": [
       2012,
       2026
@@ -89,14 +89,14 @@
       640,
       896,
       898,
-      821,
-      815
+      822,
+      932
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 7585,
-      "observed": 7585,
+      "expected": 7703,
+      "observed": 7703,
       "missing": 0
     }
   },
@@ -149,17 +149,17 @@
     ],
     "authorCount": 16,
     "year": 2013,
-    "citations": 876
+    "citations": 888
   },
   "ranks": {
     "full": {
       "bins": [
-        2.712,
-        3.288,
-        1.519,
-        2.517,
-        2.25,
-        2.713,
+        2.72,
+        3.28,
+        1.568,
+        2.501,
+        2.272,
+        2.659,
         4,
         3,
         5,
@@ -169,14 +169,14 @@
     },
     "window": {
       "bins": [
-        2.796,
-        2.213,
-        3.991,
+        2.795,
+        2.228,
+        3.977,
         2,
         2,
-        3.817,
-        1.663,
-        2.52,
+        3.907,
+        1.623,
+        2.471,
         3,
         9
       ],
@@ -184,16 +184,16 @@
     },
     "lifetime": {
       "bins": [
-        26.604,
-        27.678,
-        25.124,
-        14.644,
-        11.998,
-        16.09,
-        16.341,
-        11.521,
-        17.503,
-        24.497
+        27.34,
+        26.283,
+        26.242,
+        14.45,
+        11.948,
+        15.399,
+        16.338,
+        12.303,
+        17.344,
+        24.353
       ],
       "top1": 2
     }
@@ -275,9 +275,9 @@
   "lifetime": {
     "papers": 192,
     "outputBasis": "measured",
-    "citations": 7585,
-    "top10": 21.497,
-    "top10ShareOfDivision": 0.0137,
+    "citations": 7703,
+    "top10": 21.353,
+    "top10ShareOfDivision": 0.01358,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -288,18 +288,18 @@
       "date": "2012-11-00"
     },
     "spread": {
-      "mean": 39.505,
-      "median": 12,
-      "uncited": 21,
-      "i10": 106,
-      "i100": 21
+      "mean": 40.12,
+      "median": 12.5,
+      "uncited": 20,
+      "i10": 107,
+      "i100": 22
     }
   },
   "query": {
     "arms": "((=abs:\"Gravity Recovery and Interior Laboratory\" OR (abs:GRAIL AND (abs:Moon OR abs:lunar OR abs:gravity)) ))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2012-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Gravity+Recovery+and+Interior+Laboratory%22+OR+%28abs%3AGRAIL+AND+%28abs%3AMoon+OR+abs%3Alunar+OR+abs%3Agravity%29%29+%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:12:48.748342+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2012-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Gravity+Recovery+and+Interior+Laboratory%22+OR+%28abs%3AGRAIL+AND+%28abs%3AMoon+OR+abs%3Alunar+OR+abs%3Agravity%29%29+%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:28:02.492487+00:00",
     "reconciliation": {
       "adsReturned": 192,
       "curatedOut": 0,
@@ -322,7 +322,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 876
+      "citations": 888
     },
     {
       "bibcode": "2013Sci...339..668Z",
@@ -331,7 +331,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 445
+      "citations": 450
     },
     {
       "bibcode": "2015SciA....1E0852N",
@@ -340,7 +340,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 233
+      "citations": 237
     },
     {
       "bibcode": "2014JGRE..119.1546W",
@@ -349,7 +349,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 207
+      "citations": 209
+    },
+    {
+      "bibcode": "2013Sci...339..675A",
+      "title": "Ancient Igneous Intrusions and Early Expansion of the Moon Revealed by GRAIL Gravity Gradiometry",
+      "firstAuthor": "Andrews-Hanna, Jeffrey C.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 182
     },
     {
       "bibcode": "2013Sci...340.1552M",
@@ -361,12 +370,12 @@
       "citations": 180
     },
     {
-      "bibcode": "2013Sci...339..675A",
-      "title": "Ancient Igneous Intrusions and Early Expansion of the Moon Revealed by GRAIL Gravity Gradiometry",
-      "firstAuthor": "Andrews-Hanna, Jeffrey C.",
+      "bibcode": "2014GeoRL..41.3382L",
+      "title": "GRGM900C: A degree 900 lunar gravity model from GRAIL primary and extended mission data",
+      "firstAuthor": "Lemoine, Frank G.",
       "authors": null,
       "authorCount": null,
-      "year": 2013,
+      "year": 2014,
       "citations": 179
     },
     {
@@ -376,16 +385,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 177
-    },
-    {
-      "bibcode": "2014GeoRL..41.3382L",
-      "title": "GRGM900C: A degree 900 lunar gravity model from GRAIL primary and extended mission data",
-      "firstAuthor": "Lemoine, Frank G.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2014,
-      "citations": 176
+      "citations": 178
     },
     {
       "bibcode": "2017Icar..283..146W",
@@ -394,16 +394,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 175
-    },
-    {
-      "bibcode": "2014GeoRL..41.5771B",
-      "title": "GRAIL gravity constraints on the vertical and lateral density structure of the lunar crust",
-      "firstAuthor": "Besserer, Jonathan",
-      "authors": null,
-      "authorCount": null,
-      "year": 2014,
-      "citations": 160
+      "citations": 178
     },
     {
       "bibcode": "2018GeCoA.234...50C",
@@ -412,7 +403,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 157
+      "citations": 163
+    },
+    {
+      "bibcode": "2014GeoRL..41.5771B",
+      "title": "GRAIL gravity constraints on the vertical and lateral density structure of the lunar crust",
+      "firstAuthor": "Besserer, Jonathan",
+      "authors": null,
+      "authorCount": null,
+      "year": 2014,
+      "citations": 161
     },
     {
       "bibcode": "2015JGRE..120..869L",
@@ -421,7 +421,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 139
+      "citations": 140
     },
     {
       "bibcode": "2013JGRE..118.1676L",
@@ -430,7 +430,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 136
+      "citations": 139
     },
     {
       "bibcode": "2012JGRE..11711005J",
@@ -439,7 +439,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 129
+      "citations": 130
     },
     {
       "bibcode": "2013Sci...342..724M",
@@ -448,7 +448,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 126
+      "citations": 127
     },
     {
       "bibcode": "2014GeoRL..41.1452K",
@@ -457,7 +457,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 125
+      "citations": 127
     },
     {
       "bibcode": "2013JGRE..118.1789Z",
@@ -466,7 +466,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 120
+      "citations": 121
+    },
+    {
+      "bibcode": "2018M&PS...53.1432R",
+      "title": "Fractional crystallization of the lunar magma ocean: Updating the dominant paradigm",
+      "firstAuthor": "Rapp, J. F.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2018,
+      "citations": 121
     },
     {
       "bibcode": "2013SSRv..178....3Z",
@@ -478,22 +487,13 @@
       "citations": 120
     },
     {
-      "bibcode": "2018M&PS...53.1432R",
-      "title": "Fractional crystallization of the lunar magma ocean: Updating the dominant paradigm",
-      "firstAuthor": "Rapp, J. F.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2018,
-      "citations": 118
-    },
-    {
-      "bibcode": "2014Natur.514...68A",
-      "title": "Structure and evolution of the lunar Procellarum region as revealed by GRAIL gravity data",
-      "firstAuthor": "Andrews-Hanna, Jeffrey C.",
+      "bibcode": "2014JGRE..119.1516D",
+      "title": "Global assessment of pure crystalline plagioclase across the Moon and implications for the evolution of the primary crust",
+      "firstAuthor": "Donaldson Hanna, K. L.",
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 110
+      "citations": 111
     }
   ],
   "papersFile": {

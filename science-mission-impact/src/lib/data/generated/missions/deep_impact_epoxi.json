@@ -29,12 +29,12 @@
     "m": 2.545,
     "i100": 27,
     "g": 99,
-    "tori": 55.587,
-    "riq": 338
+    "tori": 57.982,
+    "riq": 346
   },
   "facts": {
     "papers": 314,
-    "citations": 12139,
+    "citations": 12211,
     "publicationYears": [
       2005,
       2026
@@ -91,12 +91,12 @@
     ],
     "citations": [
       25,
-      137,
+      140,
       844,
       431,
-      554,
+      559,
       418,
-      597,
+      601,
       564,
       812,
       618,
@@ -107,17 +107,17 @@
       535,
       560,
       607,
-      501,
+      502,
       549,
       610,
       537,
-      577
+      636
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 12139,
-      "observed": 12139,
+      "expected": 12211,
+      "observed": 12211,
       "missing": 0
     }
   },
@@ -170,50 +170,50 @@
     ],
     "authorCount": 33,
     "year": 2005,
-    "citations": 716
+    "citations": 720
   },
   "ranks": {
     "full": {
       "bins": [
-        35.932,
-        43.183,
-        30.655,
-        29.451,
-        21.928,
-        17.718,
-        21.317,
-        22.577,
-        18.239,
+        36.16,
+        43.169,
+        30.7,
+        27.453,
+        23.711,
+        18.159,
+        20.75,
+        23.287,
+        17.612,
         35
       ],
-      "top1": 3.835
+      "top1": 3
     },
     "window": {
       "bins": [
-        20.926,
-        34.148,
-        10.034,
-        14.916,
-        9.716,
-        6.893,
-        5.326,
-        2.204,
-        5.837,
+        20.907,
+        34.277,
+        9.8,
+        15.175,
+        9.661,
+        6.087,
+        6.152,
+        2.179,
+        5.762,
         13
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        18.717,
-        42.213,
-        38.031,
-        31.55,
-        39.633,
-        19.132,
-        34.443,
-        26.281,
-        30,
+        20.276,
+        41.816,
+        37.72,
+        31.978,
+        38.737,
+        18.967,
+        34.589,
+        26.825,
+        29.092,
         34
       ],
       "top1": 4
@@ -222,11 +222,11 @@
   "full": {
     "papers": 276,
     "outputBasis": "measured",
-    "citations": 3941,
+    "citations": 3949,
     "top10": 34.5,
-    "top10ShareOfDivision": 0.03175,
-    "top1": 3.835,
-    "top1ShareOfDivision": 0.03529,
+    "top10ShareOfDivision": 0.03174,
+    "top1": 3,
+    "top1ShareOfDivision": 0.0276,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.334,
@@ -249,17 +249,17 @@
       "m": 3.219
     },
     "spread": {
-      "mean": 14.279,
-      "median": 6,
+      "mean": 14.308,
+      "median": 7,
       "uncited": 16,
-      "i10": 108,
+      "i10": 109,
       "i100": 3
     }
   },
   "window": {
     "papers": 123,
     "outputBasis": "measured",
-    "citations": 1810,
+    "citations": 1816,
     "top10": 13,
     "top10ShareOfDivision": 0.02714,
     "top1": 1,
@@ -286,19 +286,19 @@
       "m": 9.225
     },
     "spread": {
-      "mean": 14.715,
+      "mean": 14.764,
       "median": 4,
       "uncited": 5,
-      "i10": 36,
+      "i10": 37,
       "i100": 1
     }
   },
   "lifetime": {
     "papers": 314,
     "outputBasis": "measured",
-    "citations": 12139,
+    "citations": 12211,
     "top10": 31.833,
-    "top10ShareOfDivision": 0.02029,
+    "top10ShareOfDivision": 0.02025,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -309,8 +309,8 @@
       "date": "2005-10-00"
     },
     "spread": {
-      "mean": 38.659,
-      "median": 15.5,
+      "mean": 38.889,
+      "median": 16,
       "uncited": 10,
       "i10": 203,
       "i100": 27
@@ -318,9 +318,9 @@
   },
   "query": {
     "arms": "(((=abs:\"Deep Impact\" AND (=abs:\"Tempel 1\" OR abs:Tempel OR abs:Hartley OR abs:EPOXI OR abs:EPOCh OR abs:lunar OR abs:Moon OR =abs:\"Deep Impact spacecraft\" OR =abs:\"Deep Impact mission\" OR =abs:\"Deep Impact flyby\" OR =abs:\"Deep Impact experiment\" OR =abs:\"Deep Impact encounter\")) OR (abs:EPOXI AND (abs:comet OR abs:Hartley OR abs:exoplanet OR abs:transit OR abs:Earth OR abs:lunar OR abs:Moon OR abs:planet)) OR (abs:DIXI AND abs:Hartley)))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2005-07 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Deep+Impact%22+AND+%28%3Dabs%3A%22Tempel+1%22+OR+abs%3ATempel+OR+abs%3AHartley+OR+abs%3AEPOXI+OR+abs%3AEPOCh+OR+abs%3Alunar+OR+abs%3AMoon+OR+%3Dabs%3A%22Deep+Impact+spacecraft%22+OR+%3Dabs%3A%22Deep+Impact+mission%22+OR+%3Dabs%3A%22Deep+Impact+flyby%22+OR+%3Dabs%3A%22Deep+Impact+experiment%22+OR+%3Dabs%3A%22Deep+Impact+encounter%22%29%29+OR+%28abs%3AEPOXI+AND+%28abs%3Acomet+OR+abs%3AHartley+OR+abs%3Aexoplanet+OR+abs%3Atransit+OR+abs%3AEarth+OR+abs%3Alunar+OR+abs%3AMoon+OR+abs%3Aplanet%29%29+OR+%28abs%3ADIXI+AND+abs%3AHartley%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2005-07+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:11:41.696029+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2005-07 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Deep+Impact%22+AND+%28%3Dabs%3A%22Tempel+1%22+OR+abs%3ATempel+OR+abs%3AHartley+OR+abs%3AEPOXI+OR+abs%3AEPOCh+OR+abs%3Alunar+OR+abs%3AMoon+OR+%3Dabs%3A%22Deep+Impact+spacecraft%22+OR+%3Dabs%3A%22Deep+Impact+mission%22+OR+%3Dabs%3A%22Deep+Impact+flyby%22+OR+%3Dabs%3A%22Deep+Impact+experiment%22+OR+%3Dabs%3A%22Deep+Impact+encounter%22%29%29+OR+%28abs%3AEPOXI+AND+%28abs%3Acomet+OR+abs%3AHartley+OR+abs%3Aexoplanet+OR+abs%3Atransit+OR+abs%3AEarth+OR+abs%3Alunar+OR+abs%3AMoon+OR+abs%3Aplanet%29%29+OR+%28abs%3ADIXI+AND+abs%3AHartley%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2005-07+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:27:11.377113+00:00",
     "reconciliation": {
       "adsReturned": 316,
       "curatedOut": 5,
@@ -417,7 +417,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 716
+      "citations": 720
     },
     {
       "bibcode": "2011MNRAS.417.2166S",
@@ -426,7 +426,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 531
+      "citations": 534
     },
     {
       "bibcode": "2009Sci...326..565S",
@@ -435,7 +435,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 441
+      "citations": 447
     },
     {
       "bibcode": "2011Sci...332.1396A",
@@ -444,7 +444,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 436
+      "citations": 438
     },
     {
       "bibcode": "2006Sci...313..635L",
@@ -453,7 +453,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 294
+      "citations": 298
     },
     {
       "bibcode": "2006Sci...311.1453S",
@@ -462,7 +462,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 235
+      "citations": 238
     },
     {
       "bibcode": "2007Icar..187..345H",
@@ -480,7 +480,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 200
+      "citations": 201
     },
     {
       "bibcode": "2007Icar..190..357R",
@@ -501,21 +501,21 @@
       "citations": 189
     },
     {
-      "bibcode": "2011AsBio..11..393R",
-      "title": "Earth as an Extrasolar Planet: Earth Model Validation Using EPOXI Earth Observations",
-      "firstAuthor": "Robinson, Tyler D.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2011,
-      "citations": 170
-    },
-    {
       "bibcode": "2016A&A...592A..63D",
       "title": "The primordial nucleus of comet 67P/Churyumov-Gerasimenko",
       "firstAuthor": "Davidsson, B. J. R.",
       "authors": null,
       "authorCount": null,
       "year": 2016,
+      "citations": 172
+    },
+    {
+      "bibcode": "2011AsBio..11..393R",
+      "title": "Earth as an Extrasolar Planet: Earth Model Validation Using EPOXI Earth Observations",
+      "firstAuthor": "Robinson, Tyler D.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2011,
       "citations": 170
     },
     {
@@ -552,7 +552,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 125
+      "citations": 126
     },
     {
       "bibcode": "2013Icar..222..634K",
@@ -588,7 +588,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 115
+      "citations": 117
     }
   ],
   "papersFile": {

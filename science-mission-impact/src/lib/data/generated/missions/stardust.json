@@ -28,13 +28,13 @@
     "h": 61,
     "m": 2.542,
     "i100": 32,
-    "g": 108,
-    "tori": 74.529,
-    "riq": 359
+    "g": 109,
+    "tori": 78.535,
+    "riq": 369
   },
   "facts": {
-    "papers": 340,
-    "citations": 15227,
+    "papers": 339,
+    "citations": 15340,
     "publicationYears": [
       2003,
       2026
@@ -71,7 +71,7 @@
       1,
       15,
       5,
-      21,
+      20,
       12,
       45,
       43,
@@ -97,40 +97,40 @@
       2,
       44,
       66,
-      148,
-      281,
+      152,
+      280,
       602,
-      1010,
-      511,
+      1013,
+      510,
       769,
-      1093,
+      1092,
       806,
-      908,
+      907,
       932,
       731,
       896,
       689,
-      890,
-      777,
-      777,
-      661,
-      633,
+      891,
+      780,
+      783,
+      668,
+      632,
       858,
-      597,
-      546
+      599,
+      638
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 15227,
-      "observed": 15227,
+      "expected": 15340,
+      "observed": 15340,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 340,
+    "papers": 339,
     "us": {
-      "mapped": 195,
+      "mapped": 194,
       "top": [
         {
           "name": "University of Washington, Seattle",
@@ -147,7 +147,7 @@
       ]
     },
     "world": {
-      "mapped": 251,
+      "mapped": 250,
       "top": [
         {
           "name": "University of Washington, Seattle",
@@ -176,33 +176,33 @@
     ],
     "authorCount": 183,
     "year": 2006,
-    "citations": 818
+    "citations": 823
   },
   "ranks": {
     "full": {
       "bins": [
-        21.542,
-        18.192,
-        15.651,
-        21.799,
-        31.252,
-        19.964,
-        19.84,
-        28.347,
-        27.618,
-        22.795
+        20.92,
+        17.879,
+        15.716,
+        21.83,
+        31.359,
+        20.06,
+        20.439,
+        27.593,
+        27.204,
+        23
       ],
       "top1": 4
     },
     "window": {
       "bins": [
-        8.574,
-        6.426,
-        1.886,
-        7.988,
-        5.126,
-        1.817,
-        4.183,
+        7.772,
+        6.228,
+        1.984,
+        7.987,
+        5.029,
+        1.907,
+        4.093,
         4,
         4,
         12
@@ -211,26 +211,26 @@
     },
     "lifetime": {
       "bins": [
-        20.472,
-        27.049,
-        26.44,
-        32.089,
-        35.333,
-        42.599,
-        45.216,
-        36.459,
-        35.349,
-        38.994
+        21.808,
+        26.41,
+        24.621,
+        32.056,
+        36.948,
+        41.976,
+        45.43,
+        36.054,
+        36.021,
+        37.677
       ],
       "top1": 6
     }
   },
   "full": {
-    "papers": 227,
+    "papers": 226,
     "outputBasis": "measured",
-    "citations": 3724,
-    "top10": 22.295,
-    "top10ShareOfDivision": 0.02052,
+    "citations": 3730,
+    "top10": 22.5,
+    "top10ShareOfDivision": 0.0207,
     "top1": 4,
     "top1ShareOfDivision": 0.03681,
     "first": {
@@ -255,7 +255,7 @@
       "m": 3.165
     },
     "spread": {
-      "mean": 16.405,
+      "mean": 16.504,
       "median": 9,
       "uncited": 13,
       "i10": 110,
@@ -263,9 +263,9 @@
     }
   },
   "window": {
-    "papers": 56,
+    "papers": 55,
     "outputBasis": "measured",
-    "citations": 1591,
+    "citations": 1597,
     "top10": 12,
     "top10ShareOfDivision": 0.02505,
     "top1": 3,
@@ -292,19 +292,19 @@
       "m": 5
     },
     "spread": {
-      "mean": 28.411,
-      "median": 9.5,
+      "mean": 29.036,
+      "median": 10,
       "uncited": 3,
       "i10": 28,
       "i100": 4
     }
   },
   "lifetime": {
-    "papers": 340,
+    "papers": 339,
     "outputBasis": "measured",
-    "citations": 15227,
-    "top10": 36.994,
-    "top10ShareOfDivision": 0.02358,
+    "citations": 15340,
+    "top10": 35.677,
+    "top10ShareOfDivision": 0.02269,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -315,26 +315,26 @@
       "date": "2004-06-00"
     },
     "spread": {
-      "mean": 44.785,
-      "median": 22,
+      "mean": 45.251,
+      "median": 23,
       "uncited": 13,
-      "i10": 250,
+      "i10": 251,
       "i100": 32
     }
   },
   "query": {
     "arms": "((((=abs:\"Stardust\" AND (abs:\"Wild 2\" OR abs:\"Tempel 1\" OR =abs:\"aerogel\" OR abs:\"sample return\" OR abs:\"cometary coma\" OR abs:\"Dust Flux Monitor\" OR abs:\"CIDA\")) OR (=abs:\"Stardust-NExT\" OR =title:\"Stardust-NExT\")) OR =abs:\"Stardust spacecraft\" OR (=abs:\"Wild 2\" AND abs:comet AND (abs:sample OR =abs:aerogel OR (abs:organic AND abs:solid) OR (abs:particle AND abs:mineral)))) AND NOT title:(\"interstellar medium\" OR \"ISM\" OR \"star formation\" OR \"reddening\" OR \"supernova\") NOT title:(\"David Bowie\" OR \"Ziggy\" OR \"movie\" OR \"entertainment\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2004-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Stardust%22+AND+%28abs%3A%22Wild+2%22+OR+abs%3A%22Tempel+1%22+OR+%3Dabs%3A%22aerogel%22+OR+abs%3A%22sample+return%22+OR+abs%3A%22cometary+coma%22+OR+abs%3A%22Dust+Flux+Monitor%22+OR+abs%3A%22CIDA%22%29%29+OR+%28%3Dabs%3A%22Stardust-NExT%22+OR+%3Dtitle%3A%22Stardust-NExT%22%29%29+OR+%3Dabs%3A%22Stardust+spacecraft%22+OR+%28%3Dabs%3A%22Wild+2%22+AND+abs%3Acomet+AND+%28abs%3Asample+OR+%3Dabs%3Aaerogel+OR+%28abs%3Aorganic+AND+abs%3Asolid%29+OR+%28abs%3Aparticle+AND+abs%3Amineral%29%29%29%29+AND+NOT+title%3A%28%22interstellar+medium%22+OR+%22ISM%22+OR+%22star+formation%22+OR+%22reddening%22+OR+%22supernova%22%29+NOT+title%3A%28%22David+Bowie%22+OR+%22Ziggy%22+OR+%22movie%22+OR+%22entertainment%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:10:48.822454+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2004-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Stardust%22+AND+%28abs%3A%22Wild+2%22+OR+abs%3A%22Tempel+1%22+OR+%3Dabs%3A%22aerogel%22+OR+abs%3A%22sample+return%22+OR+abs%3A%22cometary+coma%22+OR+abs%3A%22Dust+Flux+Monitor%22+OR+abs%3A%22CIDA%22%29%29+OR+%28%3Dabs%3A%22Stardust-NExT%22+OR+%3Dtitle%3A%22Stardust-NExT%22%29%29+OR+%3Dabs%3A%22Stardust+spacecraft%22+OR+%28%3Dabs%3A%22Wild+2%22+AND+abs%3Acomet+AND+%28abs%3Asample+OR+%3Dabs%3Aaerogel+OR+%28abs%3Aorganic+AND+abs%3Asolid%29+OR+%28abs%3Aparticle+AND+abs%3Amineral%29%29%29%29+AND+NOT+title%3A%28%22interstellar+medium%22+OR+%22ISM%22+OR+%22star+formation%22+OR+%22reddening%22+OR+%22supernova%22%29+NOT+title%3A%28%22David+Bowie%22+OR+%22Ziggy%22+OR+%22movie%22+OR+%22entertainment%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:26:37.918946+00:00",
     "reconciliation": {
-      "adsReturned": 342,
+      "adsReturned": 341,
       "curatedOut": 4,
       "curatedIn": 2,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 340
+      "final": 339
     }
   },
   "curation": {
@@ -399,7 +399,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 818
+      "citations": 823
     },
     {
       "bibcode": "2006Sci...314.1735Z",
@@ -408,7 +408,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 622
+      "citations": 625
     },
     {
       "bibcode": "2006Sci...314.1720S",
@@ -417,7 +417,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 467
+      "citations": 471
     },
     {
       "bibcode": "2016SciA....2E0285A",
@@ -426,7 +426,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 448
+      "citations": 456
     },
     {
       "bibcode": "2009M&PS...44.1323E",
@@ -435,7 +435,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 399
+      "citations": 410
     },
     {
       "bibcode": "2006Sci...314.1724M",
@@ -453,7 +453,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 299
+      "citations": 302
     },
     {
       "bibcode": "2004Sci...304.1764B",
@@ -462,7 +462,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 268
+      "citations": 270
     },
     {
       "bibcode": "2008Sci...321.1664N",
@@ -471,7 +471,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 251
+      "citations": 252
     },
     {
       "bibcode": "2007Sci...318..613C",
@@ -480,7 +480,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 243
+      "citations": 244
     },
     {
       "bibcode": "2008Sci...319..447I",
@@ -498,7 +498,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 200
+      "citations": 201
     },
     {
       "bibcode": "2011PNAS..10819171C",
@@ -507,7 +507,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 188
+      "citations": 189
     },
     {
       "bibcode": "2006Sci...314.1731F",
@@ -525,7 +525,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 170
+      "citations": 172
     },
     {
       "bibcode": "2010Sci...328..742D",
@@ -534,7 +534,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 162
+      "citations": 163
     },
     {
       "bibcode": "2014Sci...345..786W",
@@ -543,7 +543,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 160
+      "citations": 162
     },
     {
       "bibcode": "2011ApJ...743..129N",
@@ -552,7 +552,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 153
+      "citations": 154
     },
     {
       "bibcode": "2014AREPS..42..179B",
@@ -561,19 +561,19 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 150
+      "citations": 152
     },
     {
-      "bibcode": "2008M&PS...43..261Z",
-      "title": "Comparing Wild 2 particles to chondrites and IDPs",
-      "firstAuthor": "Zolensky, M.",
+      "bibcode": "2008M&PS...43..353C",
+      "title": "Quantitative organic and light-element analysis of comet 81P/Wild 2 particles using C-, N-, and O-μ-XANES",
+      "firstAuthor": "Cody, G. D.",
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 147
+      "citations": 149
     }
   ],
   "papersFile": {
-    "rows": 340
+    "rows": 339
   }
 }

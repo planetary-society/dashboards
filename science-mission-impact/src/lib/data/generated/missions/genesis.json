@@ -25,16 +25,16 @@
     }
   },
   "indices": {
-    "h": 29,
-    "m": 1.208,
-    "i100": 7,
-    "g": 62,
-    "tori": 23.6,
-    "riq": 202
+    "h": 30,
+    "m": 1.25,
+    "i100": 8,
+    "g": 63,
+    "tori": 26.535,
+    "riq": 214
   },
   "facts": {
     "papers": 70,
-    "citations": 3928,
+    "citations": 3985,
     "publicationYears": [
       2003,
       2026
@@ -98,7 +98,7 @@
       17,
       12,
       30,
-      103,
+      120,
       54,
       84,
       67,
@@ -116,14 +116,14 @@
       223,
       255,
       342,
-      430,
-      464
+      434,
+      500
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 3928,
-      "observed": 3928,
+      "expected": 3985,
+      "observed": 3985,
       "missing": 0
     }
   },
@@ -175,21 +175,21 @@
     ],
     "authorCount": 3,
     "year": 2021,
-    "citations": 915
+    "citations": 935
   },
   "ranks": {
     "full": {
       "bins": [
         0,
-        2.456,
-        0.544,
-        0.018,
-        2.982,
+        2.466,
+        0.534,
+        0.034,
+        2.966,
         1,
         1,
         0,
-        2,
-        0
+        1,
+        1
       ],
       "top1": 0
     },
@@ -198,10 +198,10 @@
         0,
         3,
         0,
-        2.15,
-        1.85,
-        1,
-        0,
+        2.188,
+        1.812,
+        0.907,
+        0.093,
         0,
         2,
         0
@@ -210,16 +210,16 @@
     },
     "lifetime": {
       "bins": [
-        3.868,
-        5.484,
-        3.648,
-        8.41,
-        7.686,
-        7.904,
+        4.202,
+        5.267,
+        3.531,
+        8.579,
+        7.948,
+        7.473,
         7,
-        6,
-        11,
-        9
+        6.303,
+        9.344,
+        10.353
       ],
       "top1": 1
     }
@@ -227,17 +227,17 @@
   "full": {
     "papers": 10,
     "outputBasis": "measured",
-    "citations": 108,
-    "top10": 0,
-    "top10ShareOfDivision": 0,
+    "citations": 114,
+    "top10": 1,
+    "top10ShareOfDivision": 0.00092,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
-      "state": "none",
-      "yearsFromScienceStart": null,
-      "yearsFromFormulation": null,
-      "bibcode": null,
-      "date": null
+      "state": "reached",
+      "yearsFromScienceStart": 2.125,
+      "yearsFromFormulation": 6.251,
+      "bibcode": "2004SSRv..110..307G",
+      "date": "2004-01-00"
     },
     "status": "available",
     "bounds": {
@@ -254,7 +254,7 @@
       "m": 1.449
     },
     "spread": {
-      "mean": 10.8,
+      "mean": 11.4,
       "median": 8,
       "uncited": 0,
       "i10": 4,
@@ -264,7 +264,7 @@
   "window": {
     "papers": 10,
     "outputBasis": "measured",
-    "citations": 108,
+    "citations": 114,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": 0,
@@ -291,7 +291,7 @@
       "m": 1.75
     },
     "spread": {
-      "mean": 10.8,
+      "mean": 11.4,
       "median": 8,
       "uncited": 0,
       "i10": 4,
@@ -301,9 +301,9 @@
   "lifetime": {
     "papers": 70,
     "outputBasis": "measured",
-    "citations": 3928,
-    "top10": 9,
-    "top10ShareOfDivision": 0.00574,
+    "citations": 3985,
+    "top10": 10.353,
+    "top10ShareOfDivision": 0.00658,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -314,18 +314,18 @@
       "date": "2003-01-00"
     },
     "spread": {
-      "mean": 56.114,
-      "median": 21.5,
+      "mean": 56.929,
+      "median": 22,
       "uncited": 2,
       "i10": 51,
-      "i100": 7
+      "i100": 8
     }
   },
   "query": {
     "arms": "(((=abs:\"Genesis mission\" OR =abs:\"Genesis space mission\" OR =abs:\"Genesis spacecraft\" OR =abs:\"Genesis sample return\" OR =abs:\"Genesis Discovery mission\" OR =abs:\"Genesis solar wind\" OR =abs:\"Genesis solar-wind\" OR =abs:\"Genesis probe\" OR =abs:\"Genesis collector\" OR =abs:\"Genesis collectors\" OR =abs:\"Genesis concentrator\" OR =abs:\"Genesis target\" OR =abs:\"Genesis targets\" OR =abs:\"Genesis samples\" OR =abs:\"Genesis capsule\" OR =abs:\"Genesis array\" OR =abs:\"Genesis regime\") AND (abs:\"solar\" OR =abs:\"Ion Monitor\" OR =abs:\"Electron Monitor\" OR =abs:\"space weather\")))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2001-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Genesis+mission%22+OR+%3Dabs%3A%22Genesis+space+mission%22+OR+%3Dabs%3A%22Genesis+spacecraft%22+OR+%3Dabs%3A%22Genesis+sample+return%22+OR+%3Dabs%3A%22Genesis+Discovery+mission%22+OR+%3Dabs%3A%22Genesis+solar+wind%22+OR+%3Dabs%3A%22Genesis+solar-wind%22+OR+%3Dabs%3A%22Genesis+probe%22+OR+%3Dabs%3A%22Genesis+collector%22+OR+%3Dabs%3A%22Genesis+collectors%22+OR+%3Dabs%3A%22Genesis+concentrator%22+OR+%3Dabs%3A%22Genesis+target%22+OR+%3Dabs%3A%22Genesis+targets%22+OR+%3Dabs%3A%22Genesis+samples%22+OR+%3Dabs%3A%22Genesis+capsule%22+OR+%3Dabs%3A%22Genesis+array%22+OR+%3Dabs%3A%22Genesis+regime%22%29+AND+%28abs%3A%22solar%22+OR+%3Dabs%3A%22Ion+Monitor%22+OR+%3Dabs%3A%22Electron+Monitor%22+OR+%3Dabs%3A%22space+weather%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2001-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:11:05.948774+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2001-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Genesis+mission%22+OR+%3Dabs%3A%22Genesis+space+mission%22+OR+%3Dabs%3A%22Genesis+spacecraft%22+OR+%3Dabs%3A%22Genesis+sample+return%22+OR+%3Dabs%3A%22Genesis+Discovery+mission%22+OR+%3Dabs%3A%22Genesis+solar+wind%22+OR+%3Dabs%3A%22Genesis+solar-wind%22+OR+%3Dabs%3A%22Genesis+probe%22+OR+%3Dabs%3A%22Genesis+collector%22+OR+%3Dabs%3A%22Genesis+collectors%22+OR+%3Dabs%3A%22Genesis+concentrator%22+OR+%3Dabs%3A%22Genesis+target%22+OR+%3Dabs%3A%22Genesis+targets%22+OR+%3Dabs%3A%22Genesis+samples%22+OR+%3Dabs%3A%22Genesis+capsule%22+OR+%3Dabs%3A%22Genesis+array%22+OR+%3Dabs%3A%22Genesis+regime%22%29+AND+%28abs%3A%22solar%22+OR+%3Dabs%3A%22Ion+Monitor%22+OR+%3Dabs%3A%22Electron+Monitor%22+OR+%3Dabs%3A%22space+weather%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2001-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:26:47.656274+00:00",
     "reconciliation": {
       "adsReturned": 81,
       "curatedOut": 11,
@@ -453,7 +453,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 915
+      "citations": 935
     },
     {
       "bibcode": "2011Sci...332.1528M",
@@ -462,7 +462,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 322
+      "citations": 325
     },
     {
       "bibcode": "2011Sci...332.1533M",
@@ -471,7 +471,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 248
+      "citations": 251
     },
     {
       "bibcode": "2009GeCoA..73.7414H",
@@ -480,7 +480,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 194
+      "citations": 196
     },
     {
       "bibcode": "2015NatGe...8..515F",
@@ -489,7 +489,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 169
+      "citations": 171
     },
     {
       "bibcode": "2003SSRv..105..509B",
@@ -498,7 +498,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 157
+      "citations": 161
     },
     {
       "bibcode": "2006Sci...314.1133G",
@@ -507,7 +507,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 117
+      "citations": 119
     },
     {
       "bibcode": "2014GeCoA.127..326M",
@@ -516,7 +516,25 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 98
+      "citations": 101
+    },
+    {
+      "bibcode": "2019M&PS...54.1647K",
+      "title": "Refractory inclusions in carbonaceous chondrites: Records of early solar system processes",
+      "firstAuthor": "Krot, Alexander N.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2019,
+      "citations": 89
+    },
+    {
+      "bibcode": "2004SSRv..110..307G",
+      "title": "The Apollo SWC Experiment: Results, Conclusions, Consequences",
+      "firstAuthor": "Geiss, J.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2004,
+      "citations": 88
     },
     {
       "bibcode": "2010ApJ...713.1159K",
@@ -537,15 +555,6 @@
       "citations": 86
     },
     {
-      "bibcode": "2019M&PS...54.1647K",
-      "title": "Refractory inclusions in carbonaceous chondrites: Records of early solar system processes",
-      "firstAuthor": "Krot, Alexander N.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2019,
-      "citations": 86
-    },
-    {
       "bibcode": "2010GeCoA..74..340M",
       "title": "Nitrogen isotopes in the recent solar wind from the analysis of Genesis targets: Evidence for large scale isotope heterogeneity in the early solar system",
       "firstAuthor": "Marty, Bernard",
@@ -555,22 +564,22 @@
       "citations": 84
     },
     {
-      "bibcode": "2004SSRv..110..307G",
-      "title": "The Apollo SWC Experiment: Results, Conclusions, Consequences",
-      "firstAuthor": "Geiss, J.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2004,
-      "citations": 83
-    },
-    {
       "bibcode": "2003SSRv..105..535J",
       "title": "The Genesis Solar-Wind Collector Materials",
       "firstAuthor": "Jurewicz, A. J. G.",
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 75
+      "citations": 76
+    },
+    {
+      "bibcode": "2003SSRv..105..661N",
+      "title": "Genesis on-board determination of the solar wind flow regime",
+      "firstAuthor": "Neugebauer, M.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2003,
+      "citations": 70
     },
     {
       "bibcode": "2018NatCo...9..908L",
@@ -580,15 +589,6 @@
       "authorCount": null,
       "year": 2018,
       "citations": 70
-    },
-    {
-      "bibcode": "2003SSRv..105..661N",
-      "title": "Genesis on-board determination of the solar wind flow regime",
-      "firstAuthor": "Neugebauer, M.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2003,
-      "citations": 69
     },
     {
       "bibcode": "2007SSRv..130...79R",

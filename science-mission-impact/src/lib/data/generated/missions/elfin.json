@@ -25,16 +25,16 @@
     }
   },
   "indices": {
-    "h": 19,
-    "m": 2.714,
+    "h": 20,
+    "m": 2.857,
     "i100": 1,
     "g": 31,
-    "tori": 1.366,
-    "riq": 166
+    "tori": 1.811,
+    "riq": 192
   },
   "facts": {
     "papers": 70,
-    "citations": 1115,
+    "citations": 1151,
     "publicationYears": [
       2020,
       2026
@@ -66,13 +66,13 @@
       114,
       301,
       402,
-      239
+      275
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 1115,
-      "observed": 1115,
+      "expected": 1151,
+      "observed": 1151,
       "missing": 0
     }
   },
@@ -125,23 +125,23 @@
     ],
     "authorCount": 82,
     "year": 2020,
-    "citations": 120
+    "citations": 123
   },
   "ranks": {
     "full": {
       "bins": [
         0,
         0,
-        0.581,
-        1.419,
+        0.601,
+        1.399,
         0,
         1,
-        2.889,
-        2.111,
-        2.964,
-        12.036
+        3.006,
+        0.994,
+        3.134,
+        12.866
       ],
-      "top1": 0.463
+      "top1": 1
     },
     "window": {
       "bins": [
@@ -160,15 +160,15 @@
     },
     "lifetime": {
       "bins": [
-        8.742,
-        9.152,
-        15.805,
-        6.776,
-        5.618,
-        6.908,
-        5,
-        4,
-        7,
+        8.542,
+        9.374,
+        14.753,
+        7.486,
+        6.031,
+        6.19,
+        5.624,
+        3.902,
+        7.098,
         1
       ],
       "top1": 0
@@ -177,11 +177,11 @@
   "full": {
     "papers": 23,
     "outputBasis": "measured",
-    "citations": 661,
-    "top10": 10.87,
-    "top10ShareOfDivision": 0.00754,
-    "top1": 0.463,
-    "top1ShareOfDivision": 0.00321,
+    "citations": 669,
+    "top10": 11.699,
+    "top10ShareOfDivision": 0.00812,
+    "top1": 1,
+    "top1ShareOfDivision": 0.00694,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.793,
@@ -204,7 +204,7 @@
       "m": 3.047
     },
     "spread": {
-      "mean": 28.739,
+      "mean": 29.087,
       "median": 26,
       "uncited": 0,
       "i10": 20,
@@ -251,9 +251,9 @@
   "lifetime": {
     "papers": 70,
     "outputBasis": "measured",
-    "citations": 1115,
+    "citations": 1151,
     "top10": 1,
-    "top10ShareOfDivision": 0.00055,
+    "top10ShareOfDivision": 0.00054,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -264,18 +264,18 @@
       "date": "2020-07-00"
     },
     "spread": {
-      "mean": 15.929,
+      "mean": 16.443,
       "median": 7.5,
       "uncited": 5,
-      "i10": 30,
+      "i10": 31,
       "i100": 1
     }
   },
   "query": {
     "arms": "((=abs:\"Electron Losses and Fields Investigation\" OR =abs:\"Electron Loss and Fields Investigation\" OR =abs:\"Electron Losses and Fields Investigations\" OR (abs:ELFIN AND abs:(\"Van Allen\" OR \"magnetic field\" OR \"radiation belt\" OR \"electron precipitation\" OR magnetosphere OR \"energetic particle\" OR CubeSat))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2018-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Electron+Losses+and+Fields+Investigation%22+OR+%3Dabs%3A%22Electron+Loss+and+Fields+Investigation%22+OR+%3Dabs%3A%22Electron+Losses+and+Fields+Investigations%22+OR+%28abs%3AELFIN+AND+abs%3A%28%22Van+Allen%22+OR+%22magnetic+field%22+OR+%22radiation+belt%22+OR+%22electron+precipitation%22+OR+magnetosphere+OR+%22energetic+particle%22+OR+CubeSat%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:26:52.644904+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2018-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Electron+Losses+and+Fields+Investigation%22+OR+%3Dabs%3A%22Electron+Loss+and+Fields+Investigation%22+OR+%3Dabs%3A%22Electron+Losses+and+Fields+Investigations%22+OR+%28abs%3AELFIN+AND+abs%3A%28%22Van+Allen%22+OR+%22magnetic+field%22+OR+%22radiation+belt%22+OR+%22electron+precipitation%22+OR+magnetosphere+OR+%22energetic+particle%22+OR+CubeSat%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:38:32.099884+00:00",
     "reconciliation": {
       "adsReturned": 71,
       "curatedOut": 1,
@@ -307,16 +307,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 120
-    },
-    {
-      "bibcode": "2023SSRv..219...37A",
-      "title": "Energetic Electron Precipitation Driven by Electromagnetic Ion Cyclotron Waves from ELFIN's Low Altitude Perspective",
-      "firstAuthor": "Angelopoulos, V.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2023,
-      "citations": 61
+      "citations": 123
     },
     {
       "bibcode": "2021JGRA..12629757M",
@@ -325,16 +316,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 60
+      "citations": 62
     },
     {
-      "bibcode": "2023JGRA..12831774W",
-      "title": "Statistical Characteristics of the Electron Isotropy Boundary",
-      "firstAuthor": "Wilkins, C.",
+      "bibcode": "2023SSRv..219...37A",
+      "title": "Energetic Electron Precipitation Driven by Electromagnetic Ion Cyclotron Waves from ELFIN's Low Altitude Perspective",
+      "firstAuthor": "Angelopoulos, V.",
       "authors": null,
       "authorCount": null,
       "year": 2023,
-      "citations": 55
+      "citations": 62
     },
     {
       "bibcode": "2022JGRA..12730509Z",
@@ -343,7 +334,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 54
+      "citations": 56
+    },
+    {
+      "bibcode": "2023JGRA..12831774W",
+      "title": "Statistical Characteristics of the Electron Isotropy Boundary",
+      "firstAuthor": "Wilkins, C.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2023,
+      "citations": 56
     },
     {
       "bibcode": "2023GeoRL..5003519C",
@@ -352,7 +352,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2023,
-      "citations": 52
+      "citations": 53
     },
     {
       "bibcode": "2022JGRA..12730338T",
@@ -361,7 +361,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 50
+      "citations": 51
     },
     {
       "bibcode": "2022GeoRL..4999994G",
@@ -370,7 +370,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 49
+      "citations": 50
     },
     {
       "bibcode": "2021JGRA..12629851A",
@@ -379,7 +379,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 42
+      "citations": 43
     },
     {
       "bibcode": "2022JGRA..12730705A",
@@ -397,7 +397,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 36
+      "citations": 37
     },
     {
       "bibcode": "2023JGRA..12831087Z",
@@ -415,7 +415,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2024,
-      "citations": 28
+      "citations": 29
     },
     {
       "bibcode": "2024JGRA..12931863A",
@@ -424,7 +424,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2024,
-      "citations": 26
+      "citations": 27
     },
     {
       "bibcode": "2023JGRA..12832200A",
@@ -433,6 +433,15 @@
       "authors": null,
       "authorCount": null,
       "year": 2023,
+      "citations": 26
+    },
+    {
+      "bibcode": "2024SpWea..2204062S",
+      "title": "Picturing Global Substorm Dynamics in the Magnetotail Using Low-Altitude ELFIN Measurements and Data Mining-Based Magnetic Field Reconstructions",
+      "firstAuthor": "Shi, Xiaofei",
+      "authors": null,
+      "authorCount": null,
+      "year": 2024,
       "citations": 25
     },
     {
@@ -442,16 +451,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2024,
-      "citations": 23
-    },
-    {
-      "bibcode": "2024SpWea..2204062S",
-      "title": "Picturing Global Substorm Dynamics in the Magnetotail Using Low-Altitude ELFIN Measurements and Data Mining-Based Magnetic Field Reconstructions",
-      "firstAuthor": "Shi, Xiaofei",
-      "authors": null,
-      "authorCount": null,
-      "year": 2024,
-      "citations": 23
+      "citations": 24
     },
     {
       "bibcode": "2023GeoRL..5001682S",
@@ -460,7 +460,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2023,
-      "citations": 20
+      "citations": 21
     },
     {
       "bibcode": "2023JGRA..12831578T",
@@ -469,7 +469,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2023,
-      "citations": 19
+      "citations": 20
     },
     {
       "bibcode": "2024JGRA..12933231A",
@@ -478,7 +478,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2024,
-      "citations": 19
+      "citations": 20
     }
   ],
   "papersFile": {

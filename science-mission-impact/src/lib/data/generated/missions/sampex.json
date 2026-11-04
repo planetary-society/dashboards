@@ -25,16 +25,16 @@
     }
   },
   "indices": {
-    "h": 55,
-    "m": 1.618,
+    "h": 56,
+    "m": 1.647,
     "i100": 24,
     "g": 90,
-    "tori": 55.116,
-    "riq": 218
+    "tori": 59.737,
+    "riq": 227
   },
   "facts": {
     "papers": 214,
-    "citations": 9436,
+    "citations": 9531,
     "publicationYears": [
       1993,
       2026
@@ -128,18 +128,18 @@
       131,
       188,
       301,
-      325,
-      278,
-      272,
+      340,
+      279,
+      279,
       298,
-      270,
+      296,
       318,
       369,
       344,
       407,
       418,
       401,
-      404,
+      410,
       392,
       384,
       482,
@@ -147,13 +147,13 @@
       370,
       413,
       437,
-      265
+      305
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 9436,
-      "observed": 9436,
+      "expected": 9531,
+      "observed": 9531,
       "missing": 0
     }
   },
@@ -206,33 +206,33 @@
     ],
     "authorCount": 7,
     "year": 2006,
-    "citations": 335
+    "citations": 337
   },
   "ranks": {
     "full": {
       "bins": [
-        25.143,
-        13.176,
-        13.166,
-        11.592,
-        14.399,
-        9.067,
-        10.789,
-        5.727,
-        13.903,
-        12.036
+        25.233,
+        13.267,
+        13.107,
+        11.715,
+        14.253,
+        9.138,
+        10.796,
+        4.912,
+        14.646,
+        11.933
       ],
       "top1": 0
     },
     "window": {
       "bins": [
         2,
-        2.388,
-        1.411,
-        2.201,
-        3.065,
-        2.306,
-        0.63,
+        2.423,
+        1.412,
+        2.164,
+        3.12,
+        2.29,
+        0.59,
         4,
         5,
         0
@@ -241,16 +241,16 @@
     },
     "lifetime": {
       "bins": [
-        11.811,
-        21.127,
-        19.706,
-        14.305,
-        17.19,
-        19.448,
-        16.887,
-        18.124,
-        37.706,
-        37.696
+        12.313,
+        21.27,
+        19.822,
+        13.328,
+        17.639,
+        17.38,
+        17.892,
+        19.062,
+        38.225,
+        37.069
       ],
       "top1": 3
     }
@@ -258,9 +258,9 @@
   "full": {
     "papers": 129,
     "outputBasis": "measured",
-    "citations": 1174,
-    "top10": 10.036,
-    "top10ShareOfDivision": 0.00696,
+    "citations": 1177,
+    "top10": 9.933,
+    "top10ShareOfDivision": 0.00689,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -285,7 +285,7 @@
       "m": 1.464
     },
     "spread": {
-      "mean": 9.101,
+      "mean": 9.124,
       "median": 6,
       "uncited": 20,
       "i10": 45,
@@ -332,9 +332,9 @@
   "lifetime": {
     "papers": 214,
     "outputBasis": "measured",
-    "citations": 9436,
-    "top10": 32.363,
-    "top10ShareOfDivision": 0.01766,
+    "citations": 9531,
+    "top10": 31.735,
+    "top10ShareOfDivision": 0.01729,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -345,18 +345,18 @@
       "date": "1993-05-00"
     },
     "spread": {
-      "mean": 44.093,
-      "median": 21.5,
+      "mean": 44.537,
+      "median": 22,
       "uncited": 7,
-      "i10": 148,
+      "i10": 149,
       "i100": 24
     }
   },
   "query": {
     "arms": "(((abs:SAMPEX AND abs:(particle OR particles OR electron OR electrons OR proton OR protons OR ion OR ions OR cosmic OR magnetosphere OR magnetospheric OR radiation OR spacecraft OR satellite OR precipitation OR solar)) OR =abs:\"Solar Anomalous and Magnetospheric Particle Explorer\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1992-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ASAMPEX+AND+abs%3A%28particle+OR+particles+OR+electron+OR+electrons+OR+proton+OR+protons+OR+ion+OR+ions+OR+cosmic+OR+magnetosphere+OR+magnetospheric+OR+radiation+OR+spacecraft+OR+satellite+OR+precipitation+OR+solar%29%29+OR+%3Dabs%3A%22Solar+Anomalous+and+Magnetospheric+Particle+Explorer%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1992-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:22:52.333892+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1992-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ASAMPEX+AND+abs%3A%28particle+OR+particles+OR+electron+OR+electrons+OR+proton+OR+protons+OR+ion+OR+ions+OR+cosmic+OR+magnetosphere+OR+magnetospheric+OR+radiation+OR+spacecraft+OR+satellite+OR+precipitation+OR+solar%29%29+OR+%3Dabs%3A%22Solar+Anomalous+and+Magnetospheric+Particle+Explorer%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1992-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:36:14.937942+00:00",
     "reconciliation": {
       "adsReturned": 219,
       "curatedOut": 5,
@@ -420,7 +420,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 335
+      "citations": 337
     },
     {
       "bibcode": "2005JGRA..110.9202T",
@@ -429,7 +429,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 303
+      "citations": 306
     },
     {
       "bibcode": "2003GeoRL..30.1527H",
@@ -438,7 +438,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 262
+      "citations": 263
     },
     {
       "bibcode": "1997JGR...10214123L",
@@ -447,7 +447,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 257
+      "citations": 258
     },
     {
       "bibcode": "2007JGRA..112.8214M",
@@ -465,7 +465,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 228
+      "citations": 231
     },
     {
       "bibcode": "2003JGRA..108.1329O",
@@ -474,16 +474,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 228
-    },
-    {
-      "bibcode": "1994GeoRL..21..409B",
-      "title": "Relativistic electron acceleration and decay time scales in the inner and outer radiation belts: SAMPEX",
-      "firstAuthor": "Baker, D. N.",
-      "authors": null,
-      "authorCount": null,
-      "year": 1994,
-      "citations": 215
+      "citations": 231
     },
     {
       "bibcode": "1998GeoRL..25.3701R",
@@ -492,7 +483,16 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 215
+      "citations": 218
+    },
+    {
+      "bibcode": "1994GeoRL..21..409B",
+      "title": "Relativistic electron acceleration and decay time scales in the inner and outer radiation belts: SAMPEX",
+      "firstAuthor": "Baker, D. N.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1994,
+      "citations": 216
     },
     {
       "bibcode": "1993ITGRS..31..531B",
@@ -501,7 +501,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 208
+      "citations": 209
     },
     {
       "bibcode": "2012SSRv..171...97M",
@@ -510,7 +510,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 175
+      "citations": 176
     },
     {
       "bibcode": "2006JGRA..11112216B",
@@ -519,7 +519,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 169
+      "citations": 170
     },
     {
       "bibcode": "2005JGRA..110.9S18M",
@@ -528,7 +528,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 166
+      "citations": 167
     },
     {
       "bibcode": "2009JGRA..114.3222M",
@@ -546,7 +546,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 148
+      "citations": 150
     },
     {
       "bibcode": "2008JGRA..113.3S08F",
@@ -555,7 +555,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 132
+      "citations": 134
     },
     {
       "bibcode": "1998JGR...10317279B",
@@ -564,7 +564,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 129
+      "citations": 131
     },
     {
       "bibcode": "2005SpWea...3.1001I",
@@ -573,7 +573,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 118
+      "citations": 120
     },
     {
       "bibcode": "2014JGRA..119.1960T",
@@ -582,7 +582,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 113
+      "citations": 114
     },
     {
       "bibcode": "1998GeoRL..25.2975B",
@@ -591,7 +591,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 110
+      "citations": 111
     }
   ],
   "papersFile": {

@@ -25,16 +25,16 @@
     }
   },
   "indices": {
-    "h": 87,
-    "m": 1.891,
-    "i100": 79,
+    "h": 88,
+    "m": 1.913,
+    "i100": 80,
     "g": 144,
-    "tori": 404.939,
-    "riq": 447
+    "tori": 417.03,
+    "riq": 453
   },
   "facts": {
     "papers": 797,
-    "citations": 33359,
+    "citations": 33537,
     "publicationYears": [
       1981,
       2025
@@ -148,48 +148,48 @@
       1284,
       708,
       924,
-      1097,
+      1099,
       832,
       976,
       903,
       1173,
       978,
-      937,
+      940,
       1124,
       943,
       881,
       938,
       758,
       665,
-      483,
-      633,
-      726,
+      484,
+      639,
+      735,
       712,
       825,
       698,
-      678,
-      709,
+      679,
+      772,
       769,
       597,
       590,
       765,
       714,
       648,
-      735,
-      660,
-      723,
+      737,
+      663,
+      724,
       847,
       816,
       671,
-      697,
+      696,
       748,
-      477
+      565
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 33359,
-      "observed": 33359,
+      "expected": 33537,
+      "observed": 33537,
       "missing": 0
     }
   },
@@ -239,51 +239,51 @@
     ],
     "authorCount": 1,
     "year": 1987,
-    "citations": 1479
+    "citations": 1487
   },
   "ranks": {
     "full": {
       "bins": [
-        85.537,
-        43.621,
-        43.51,
-        43.259,
-        54.365,
-        51.344,
-        46.778,
-        36.858,
-        35.025,
-        37.704
+        86.877,
+        44.734,
+        44.653,
+        44.764,
+        55.062,
+        49.588,
+        45.916,
+        36.488,
+        34.002,
+        35.916
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        23.725,
-        6.791,
-        12.219,
-        21.136,
-        23.186,
-        14.547,
-        13.796,
-        15.6,
-        24,
-        17
+        23.761,
+        7.034,
+        12.557,
+        21.916,
+        23.119,
+        13.919,
+        13.262,
+        15.431,
+        24.215,
+        16.785
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        72.892,
-        57.562,
-        56.479,
-        73.531,
-        50.396,
-        71.048,
-        87.793,
-        95.278,
-        107.275,
-        124.746
+        78.529,
+        56.718,
+        57.497,
+        73.238,
+        49.577,
+        71.519,
+        89.056,
+        93.624,
+        107.854,
+        119.389
       ],
       "top1": 7
     }
@@ -292,10 +292,10 @@
     "papers": 478,
     "outputBasis": "measured",
     "citations": 4273,
-    "top10": 37.704,
-    "top10ShareOfDivision": 0.01047,
+    "top10": 35.916,
+    "top10ShareOfDivision": 0.00919,
     "top1": 2,
-    "top1ShareOfDivision": 0.00556,
+    "top1ShareOfDivision": 0.00512,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.079,
@@ -329,8 +329,8 @@
     "papers": 172,
     "outputBasis": "measured",
     "citations": 2061,
-    "top10": 17,
-    "top10ShareOfDivision": 0.01806,
+    "top10": 16.785,
+    "top10ShareOfDivision": 0.01682,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -365,9 +365,9 @@
   "lifetime": {
     "papers": 797,
     "outputBasis": "measured",
-    "citations": 33359,
-    "top10": 123.835,
-    "top10ShareOfDivision": 0.02662,
+    "citations": 33537,
+    "top10": 118.792,
+    "top10ShareOfDivision": 0.02276,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -378,18 +378,18 @@
       "date": "1981-12-00"
     },
     "spread": {
-      "mean": 41.856,
+      "mean": 42.079,
       "median": 21,
       "uncited": 68,
-      "i10": 528,
-      "i100": 79
+      "i10": 530,
+      "i100": 80
     }
   },
   "query": {
     "arms": "((=abs:(\"Dynamics Explorer\" OR \"Dynamics Explorers\") OR ((=abs:(\"DE 1\" OR \"DE 2\" OR \"DE-1\" OR \"DE-2\") OR abs:(DE1 OR DE2)) AND =abs:(magnetosphere OR magnetospheres OR magnetospheric OR ionosphere OR ionospheres OR ionospheric OR thermosphere OR thermospheric OR aurora OR auroras OR aurorae OR auroral OR plasmasphere OR plasmaspheric OR plasmapause OR geocorona OR geocoronal OR cusp OR substorm OR substorms OR dayglow OR airglow OR \"polar cap\") NOT (abs:(nonmigrating OR \"non-migrating\" OR Mars OR Martian OR DE3) OR =abs:(\"DE 3\" OR \"DE-3\")))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[1981-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Dynamics+Explorer%22+OR+%22Dynamics+Explorers%22%29+OR+%28%28%3Dabs%3A%28%22DE+1%22+OR+%22DE+2%22+OR+%22DE-1%22+OR+%22DE-2%22%29+OR+abs%3A%28DE1+OR+DE2%29%29+AND+%3Dabs%3A%28magnetosphere+OR+magnetospheres+OR+magnetospheric+OR+ionosphere+OR+ionospheres+OR+ionospheric+OR+thermosphere+OR+thermospheric+OR+aurora+OR+auroras+OR+aurorae+OR+auroral+OR+plasmasphere+OR+plasmaspheric+OR+plasmapause+OR+geocorona+OR+geocoronal+OR+cusp+OR+substorm+OR+substorms+OR+dayglow+OR+airglow+OR+%22polar+cap%22%29+NOT+%28abs%3A%28nonmigrating+OR+%22non-migrating%22+OR+Mars+OR+Martian+OR+DE3%29+OR+%3Dabs%3A%28%22DE+3%22+OR+%22DE-3%22%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1981-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:13:43.469206+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[1981-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Dynamics+Explorer%22+OR+%22Dynamics+Explorers%22%29+OR+%28%28%3Dabs%3A%28%22DE+1%22+OR+%22DE+2%22+OR+%22DE-1%22+OR+%22DE-2%22%29+OR+abs%3A%28DE1+OR+DE2%29%29+AND+%3Dabs%3A%28magnetosphere+OR+magnetospheres+OR+magnetospheric+OR+ionosphere+OR+ionospheres+OR+ionospheric+OR+thermosphere+OR+thermospheric+OR+aurora+OR+auroras+OR+aurorae+OR+auroral+OR+plasmasphere+OR+plasmaspheric+OR+plasmapause+OR+geocorona+OR+geocoronal+OR+cusp+OR+substorm+OR+substorms+OR+dayglow+OR+airglow+OR+%22polar+cap%22%29+NOT+%28abs%3A%28nonmigrating+OR+%22non-migrating%22+OR+Mars+OR+Martian+OR+DE3%29+OR+%3Dabs%3A%28%22DE+3%22+OR+%22DE-3%22%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1981-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:29:42.681742+00:00",
     "reconciliation": {
       "adsReturned": 800,
       "curatedOut": 3,
@@ -437,7 +437,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1987,
-      "citations": 1479
+      "citations": 1487
     },
     {
       "bibcode": "1987JGR....92.4467H",
@@ -446,7 +446,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1987,
-      "citations": 926
+      "citations": 929
     },
     {
       "bibcode": "1994JGR....99.8981R",
@@ -455,7 +455,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1994,
-      "citations": 838
+      "citations": 847
     },
     {
       "bibcode": "1991JGR....96.7657H",
@@ -464,7 +464,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1991,
-      "citations": 566
+      "citations": 569
     },
     {
       "bibcode": "1995JGR...10019595W",
@@ -473,7 +473,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1995,
-      "citations": 391
+      "citations": 392
     },
     {
       "bibcode": "2002JGRA..107.1176T",
@@ -482,7 +482,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 377
+      "citations": 384
     },
     {
       "bibcode": "1984JGR....89.1683W",
@@ -500,7 +500,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1984,
-      "citations": 281
+      "citations": 285
     },
     {
       "bibcode": "1982GeoRL...9.1001F",
@@ -509,7 +509,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1982,
-      "citations": 267
+      "citations": 269
     },
     {
       "bibcode": "1985JGR....90.8417Y",
@@ -518,7 +518,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1985,
-      "citations": 263
+      "citations": 264
     },
     {
       "bibcode": "1986JGR....91.3177F",
@@ -527,7 +527,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1986,
-      "citations": 261
+      "citations": 262
     },
     {
       "bibcode": "1986JGR....9113613R",
@@ -536,7 +536,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1986,
-      "citations": 247
+      "citations": 248
     },
     {
       "bibcode": "1993JGR....98.6069A",
@@ -545,7 +545,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 240
+      "citations": 241
     },
     {
       "bibcode": "1991JGR....96.5785A",
@@ -554,7 +554,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1991,
-      "citations": 237
+      "citations": 238
     },
     {
       "bibcode": "1985JGR....90.9736L",
@@ -599,7 +599,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1985,
-      "citations": 209
+      "citations": 211
     },
     {
       "bibcode": "1984JGR....89.8971G",

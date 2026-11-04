@@ -29,12 +29,12 @@
     "m": 4.25,
     "i100": 64,
     "g": 145,
-    "tori": 129.302,
-    "riq": 568
+    "tori": 139.721,
+    "riq": 591
   },
   "facts": {
     "papers": 923,
-    "citations": 34248,
+    "citations": 34547,
     "publicationYears": [
       2007,
       2026
@@ -90,28 +90,28 @@
       118,
       310,
       417,
-      893,
+      936,
       1208,
       1296,
       1678,
       1957,
       1955,
-      2144,
-      2181,
-      2169,
+      2145,
+      2219,
+      2173,
       2423,
       2976,
-      2765,
-      2579,
+      2766,
+      2580,
       2652,
-      2768,
-      1759
+      2769,
+      1969
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 34248,
-      "observed": 34248,
+      "expected": 34547,
+      "observed": 34547,
       "missing": 0
     }
   },
@@ -161,63 +161,63 @@
     ],
     "authorCount": 1,
     "year": 2008,
-    "citations": 1330
+    "citations": 1344
   },
   "ranks": {
     "full": {
       "bins": [
-        50.171,
-        92.295,
-        74.156,
-        97.995,
-        88.58,
-        90.191,
-        101.945,
-        81.848,
-        72.563,
-        74.255
+        50.593,
+        91.757,
+        75.313,
+        95.561,
+        89.063,
+        90.588,
+        101.183,
+        81.099,
+        74.245,
+        74.598
       ],
-      "top1": 13.927
+      "top1": 13.569
     },
     "window": {
       "bins": [
-        8.087,
-        18.465,
-        17.242,
-        26.327,
-        16.734,
-        18.997,
-        20.82,
-        12.522,
-        15.163,
-        19.642
+        8.145,
+        18.26,
+        16.115,
+        27.573,
+        15.626,
+        18.92,
+        21.132,
+        12.563,
+        16.085,
+        19.581
       ],
       "top1": 4
     },
     "lifetime": {
       "bins": [
-        66.312,
-        72.819,
-        85.949,
-        90.778,
-        113.109,
-        96.938,
-        99.516,
-        89.773,
-        99.804,
-        108
+        66.024,
+        72.767,
+        85.624,
+        91.612,
+        113.075,
+        96.793,
+        99.685,
+        90.03,
+        98.254,
+        109.137
       ],
-      "top1": 13.625
+      "top1": 12.507
     }
   },
   "full": {
     "papers": 824,
     "outputBasis": "measured",
-    "citations": 9582,
-    "top10": 66.802,
-    "top10ShareOfDivision": 0.04634,
-    "top1": 12.427,
-    "top1ShareOfDivision": 0.08619,
+    "citations": 9646,
+    "top10": 67.182,
+    "top10ShareOfDivision": 0.04661,
+    "top1": 12.069,
+    "top1ShareOfDivision": 0.08374,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.202,
@@ -235,24 +235,24 @@
       "citationBuckets": 20
     },
     "indices": {
-      "h": 36,
+      "h": 37,
       "g": 52,
-      "m": 2.138
+      "m": 2.197
     },
     "spread": {
-      "mean": 11.629,
+      "mean": 11.706,
       "median": 8,
       "uncited": 26,
-      "i10": 353,
+      "i10": 355,
       "i100": 4
     }
   },
   "window": {
     "papers": 174,
     "outputBasis": "measured",
-    "citations": 2988,
-    "top10": 19.642,
-    "top10ShareOfDivision": 0.04427,
+    "citations": 3031,
+    "top10": 19.581,
+    "top10ShareOfDivision": 0.04413,
     "top1": 4,
     "top1ShareOfDivision": 0.09015,
     "first": {
@@ -277,19 +277,19 @@
       "m": 5.887
     },
     "spread": {
-      "mean": 17.172,
+      "mean": 17.42,
       "median": 10,
       "uncited": 5,
-      "i10": 93,
+      "i10": 95,
       "i100": 4
     }
   },
   "lifetime": {
     "papers": 923,
     "outputBasis": "measured",
-    "citations": 34248,
-    "top10": 101.393,
-    "top10ShareOfDivision": 0.05533,
+    "citations": 34547,
+    "top10": 102.03,
+    "top10ShareOfDivision": 0.0556,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -300,18 +300,18 @@
       "date": "2008-04-00"
     },
     "spread": {
-      "mean": 37.105,
+      "mean": 37.429,
       "median": 16,
-      "uncited": 46,
-      "i10": 619,
+      "uncited": 43,
+      "i10": 622,
       "i100": 64
     }
   },
   "query": {
     "arms": "((abs:\"Time History of Events and Macroscale Interactions during Substorms\" OR abs:\"Acceleration, Reconnection, Turbulence and Electrodynamics of Moon's Interaction with the Sun\" OR (title:THEMIS AND title:substorm) OR (abs:\"THEMIS\" AND (abs:\"mission\" OR abs:\"spacecraft\" OR abs:\"probe\") AND (abs:\"substorm\" OR abs:\"magnetosphere\" OR abs:\"reconnection\" OR abs:\"aurora\")) OR (abs:\"ARTEMIS mission\" AND (abs:\"P1\" OR abs:\"P2\" OR abs:\"probes\" OR abs:\"libration\" OR abs:\"magnetotail\")) OR (abs:\"Fluxgate Magnetometer\" AND (abs:THEMIS OR abs:ARTEMIS)) OR (abs:\"Electrostatic Analyzer\" AND (abs:THEMIS OR abs:ARTEMIS)) ) AND ( abs:\"plasma\" OR abs:\"magnetic field\" OR abs:\"dipolarization\" OR abs:\"ion\" OR abs:\"electron\" ) AND NOT title:(\"Mars\" OR \"Thermal Emission\" OR \"Odyssey\" OR \"geology\" OR \"crater\") NOT title:(\"Artemis I\" OR \"Artemis II\" OR \"Artemis III\" OR \"human\" OR \"crew\" OR \"landing system\" OR \"Gateway\" OR \"SLS\" OR \"Orion\" OR \"astronaut\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2007-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22Time+History+of+Events+and+Macroscale+Interactions+during+Substorms%22+OR+abs%3A%22Acceleration%2C+Reconnection%2C+Turbulence+and+Electrodynamics+of+Moon%27s+Interaction+with+the+Sun%22+OR+%28title%3ATHEMIS+AND+title%3Asubstorm%29+OR+%28abs%3A%22THEMIS%22+AND+%28abs%3A%22mission%22+OR+abs%3A%22spacecraft%22+OR+abs%3A%22probe%22%29+AND+%28abs%3A%22substorm%22+OR+abs%3A%22magnetosphere%22+OR+abs%3A%22reconnection%22+OR+abs%3A%22aurora%22%29%29+OR+%28abs%3A%22ARTEMIS+mission%22+AND+%28abs%3A%22P1%22+OR+abs%3A%22P2%22+OR+abs%3A%22probes%22+OR+abs%3A%22libration%22+OR+abs%3A%22magnetotail%22%29%29+OR+%28abs%3A%22Fluxgate+Magnetometer%22+AND+%28abs%3ATHEMIS+OR+abs%3AARTEMIS%29%29+OR+%28abs%3A%22Electrostatic+Analyzer%22+AND+%28abs%3ATHEMIS+OR+abs%3AARTEMIS%29%29+%29+AND+%28+abs%3A%22plasma%22+OR+abs%3A%22magnetic+field%22+OR+abs%3A%22dipolarization%22+OR+abs%3A%22ion%22+OR+abs%3A%22electron%22+%29+AND+NOT+title%3A%28%22Mars%22+OR+%22Thermal+Emission%22+OR+%22Odyssey%22+OR+%22geology%22+OR+%22crater%22%29+NOT+title%3A%28%22Artemis+I%22+OR+%22Artemis+II%22+OR+%22Artemis+III%22+OR+%22human%22+OR+%22crew%22+OR+%22landing+system%22+OR+%22Gateway%22+OR+%22SLS%22+OR+%22Orion%22+OR+%22astronaut%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2007-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:25:31.366853+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2007-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22Time+History+of+Events+and+Macroscale+Interactions+during+Substorms%22+OR+abs%3A%22Acceleration%2C+Reconnection%2C+Turbulence+and+Electrodynamics+of+Moon%27s+Interaction+with+the+Sun%22+OR+%28title%3ATHEMIS+AND+title%3Asubstorm%29+OR+%28abs%3A%22THEMIS%22+AND+%28abs%3A%22mission%22+OR+abs%3A%22spacecraft%22+OR+abs%3A%22probe%22%29+AND+%28abs%3A%22substorm%22+OR+abs%3A%22magnetosphere%22+OR+abs%3A%22reconnection%22+OR+abs%3A%22aurora%22%29%29+OR+%28abs%3A%22ARTEMIS+mission%22+AND+%28abs%3A%22P1%22+OR+abs%3A%22P2%22+OR+abs%3A%22probes%22+OR+abs%3A%22libration%22+OR+abs%3A%22magnetotail%22%29%29+OR+%28abs%3A%22Fluxgate+Magnetometer%22+AND+%28abs%3ATHEMIS+OR+abs%3AARTEMIS%29%29+OR+%28abs%3A%22Electrostatic+Analyzer%22+AND+%28abs%3ATHEMIS+OR+abs%3AARTEMIS%29%29+%29+AND+%28+abs%3A%22plasma%22+OR+abs%3A%22magnetic+field%22+OR+abs%3A%22dipolarization%22+OR+abs%3A%22ion%22+OR+abs%3A%22electron%22+%29+AND+NOT+title%3A%28%22Mars%22+OR+%22Thermal+Emission%22+OR+%22Odyssey%22+OR+%22geology%22+OR+%22crater%22%29+NOT+title%3A%28%22Artemis+I%22+OR+%22Artemis+II%22+OR+%22Artemis+III%22+OR+%22human%22+OR+%22crew%22+OR+%22landing+system%22+OR+%22Gateway%22+OR+%22SLS%22+OR+%22Orion%22+OR+%22astronaut%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2007-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:37:41.800720+00:00",
     "reconciliation": {
       "adsReturned": 926,
       "curatedOut": 7,
@@ -448,7 +448,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 1330
+      "citations": 1344
     },
     {
       "bibcode": "2008SSRv..141..235A",
@@ -457,7 +457,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 1213
+      "citations": 1221
     },
     {
       "bibcode": "2008SSRv..141..277M",
@@ -466,7 +466,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 1048
+      "citations": 1054
     },
     {
       "bibcode": "2008Sci...321..931A",
@@ -484,7 +484,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 545
+      "citations": 549
     },
     {
       "bibcode": "2008SSRv..141..303B",
@@ -493,7 +493,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 453
+      "citations": 456
     },
     {
       "bibcode": "2011SSRv..165....3A",
@@ -502,7 +502,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 337
+      "citations": 343
     },
     {
       "bibcode": "2009GeoRL..36.9104L",
@@ -511,7 +511,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 331
+      "citations": 335
     },
     {
       "bibcode": "2011JGRA..116.5216R",
@@ -529,7 +529,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 307
+      "citations": 308
     },
     {
       "bibcode": "2008SSRv..141..357M",
@@ -538,7 +538,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 293
+      "citations": 296
     },
     {
       "bibcode": "2010Sci...330...81N",
@@ -547,7 +547,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 286
+      "citations": 292
     },
     {
       "bibcode": "2012JGRA..117.5219M",
@@ -583,7 +583,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 228
+      "citations": 230
     },
     {
       "bibcode": "2011JGRA..116.1210B",
@@ -601,7 +601,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 219
+      "citations": 220
     },
     {
       "bibcode": "2014JGRA..119.2512G",
@@ -619,7 +619,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 197
+      "citations": 198
     }
   ],
   "papersFile": {

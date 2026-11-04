@@ -27,14 +27,14 @@
   "indices": {
     "h": 29,
     "m": 1.261,
-    "i100": 5,
+    "i100": 6,
     "g": 58,
-    "tori": 37.233,
-    "riq": 265
+    "tori": 39.155,
+    "riq": 272
   },
   "facts": {
     "papers": 124,
-    "citations": 3782,
+    "citations": 3813,
     "publicationYears": [
       2004,
       2026
@@ -109,18 +109,18 @@
       165,
       232,
       188,
-      248,
+      249,
       219,
       225,
-      223,
+      222,
       238,
-      222
+      253
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 3782,
-      "observed": 3782,
+      "expected": 3813,
+      "observed": 3813,
       "missing": 0
     }
   },
@@ -173,18 +173,18 @@
     ],
     "authorCount": 27,
     "year": 2011,
-    "citations": 750
+    "citations": 757
   },
   "ranks": {
     "full": {
       "bins": [
-        15.732,
-        9.812,
-        5.171,
-        11.651,
-        7.935,
-        1.8,
-        3.9,
+        15.738,
+        9.83,
+        5.183,
+        11.643,
+        7.92,
+        1.808,
+        3.878,
         2,
         1,
         2
@@ -193,13 +193,13 @@
     },
     "window": {
       "bins": [
-        7.291,
+        7.293,
         2.946,
-        3.763,
+        3.761,
         1,
         2,
-        1.392,
-        0.608,
+        1.397,
+        0.603,
         2,
         0,
         1
@@ -208,15 +208,15 @@
     },
     "lifetime": {
       "bins": [
-        14.302,
-        22.779,
-        22.965,
-        20.58,
-        13.374,
-        5.976,
-        6.024,
-        6.928,
-        7.072,
+        14.504,
+        22.202,
+        22.95,
+        21.387,
+        12.957,
+        6.155,
+        5.845,
+        6.145,
+        7.855,
         4
       ],
       "top1": 1
@@ -299,7 +299,7 @@
   "lifetime": {
     "papers": 124,
     "outputBasis": "measured",
-    "citations": 3782,
+    "citations": 3813,
     "top10": 4,
     "top10ShareOfDivision": 0.00063,
     "top1": null,
@@ -312,18 +312,18 @@
       "date": "2004-10-00"
     },
     "spread": {
-      "mean": 30.5,
+      "mean": 30.75,
       "median": 11.5,
       "uncited": 9,
       "i10": 70,
-      "i100": 5
+      "i100": 6
     }
   },
   "query": {
     "arms": "((=abs:\"Gravity Probe B\" OR (=abs:\"GP B\" AND abs:(gyroscope OR relativity))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2004-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Gravity+Probe+B%22+OR+%28%3Dabs%3A%22GP+B%22+AND+abs%3A%28gyroscope+OR+relativity%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:33:17.963254+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2004-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Gravity+Probe+B%22+OR+%28%3Dabs%3A%22GP+B%22+AND+abs%3A%28gyroscope+OR+relativity%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:42:36.703352+00:00",
     "reconciliation": {
       "adsReturned": 136,
       "curatedOut": 12,
@@ -443,7 +443,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 750
+      "citations": 757
     },
     {
       "bibcode": "2004Natur.431..958C",
@@ -452,7 +452,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 419
+      "citations": 424
     },
     {
       "bibcode": "2011JCAP...07..020A",
@@ -461,7 +461,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 200
+      "citations": 202
     },
     {
       "bibcode": "2015CQGra..32v4001E",
@@ -488,7 +488,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 99
+      "citations": 100
     },
     {
       "bibcode": "2010PhRvD..81j4003N",
@@ -506,7 +506,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 89
+      "citations": 90
     },
     {
       "bibcode": "2013PhLA..377.1775H",
@@ -515,7 +515,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 88
+      "citations": 89
     },
     {
       "bibcode": "2007PhRvL..99x1101A",
@@ -542,7 +542,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 68
+      "citations": 69
     },
     {
       "bibcode": "2007PhRvD..75l4016F",
@@ -560,7 +560,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 60
+      "citations": 59
+    },
+    {
+      "bibcode": "2013PhRvD..88j2001B",
+      "title": "Limits on violations of Lorentz symmetry from Gravity Probe B",
+      "firstAuthor": "Bailey, Quentin G.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 59
     },
     {
       "bibcode": "2007PhRvL..98g1102M",
@@ -572,13 +581,13 @@
       "citations": 58
     },
     {
-      "bibcode": "2013PhRvD..88j2001B",
-      "title": "Limits on violations of Lorentz symmetry from Gravity Probe B",
-      "firstAuthor": "Bailey, Quentin G.",
+      "bibcode": "2024EPJC...84.1257J",
+      "title": "Spontaneous Lorentz symmetry-breaking constraints in Kalb-Ramond gravity",
+      "firstAuthor": "Junior, Ednaldo L. B.",
       "authors": null,
       "authorCount": null,
-      "year": 2013,
-      "citations": 58
+      "year": 2024,
+      "citations": 53
     },
     {
       "bibcode": "2005IJMPD..14..901N",
@@ -587,15 +596,6 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 49
-    },
-    {
-      "bibcode": "2024EPJC...84.1257J",
-      "title": "Spontaneous Lorentz symmetry-breaking constraints in Kalb-Ramond gravity",
-      "firstAuthor": "Junior, Ednaldo L. B.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2024,
       "citations": 49
     },
     {
@@ -614,7 +614,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 43
+      "citations": 44
     }
   ],
   "papersFile": {

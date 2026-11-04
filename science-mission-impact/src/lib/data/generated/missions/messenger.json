@@ -28,13 +28,13 @@
     "h": 83,
     "m": 4.368,
     "i100": 64,
-    "g": 119,
-    "tori": 74.262,
-    "riq": 453
+    "g": 120,
+    "tori": 82.567,
+    "riq": 478
   },
   "facts": {
-    "papers": 766,
-    "citations": 26878,
+    "papers": 767,
+    "citations": 27240,
     "publicationYears": [
       2008,
       2026
@@ -81,7 +81,7 @@
       40,
       36,
       44,
-      39
+      40
     ],
     "citations": [
       65,
@@ -102,18 +102,18 @@
       2190,
       2200,
       2262,
-      1942
+      2304
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 26878,
-      "observed": 26878,
+      "expected": 27240,
+      "observed": 27240,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 766,
+    "papers": 767,
     "us": {
       "mapped": 537,
       "top": [
@@ -161,51 +161,51 @@
     ],
     "authorCount": 15,
     "year": 2011,
-    "citations": 431
+    "citations": 435
   },
   "ranks": {
     "full": {
       "bins": [
-        14.271,
-        20.388,
-        34.419,
-        24.181,
-        26.184,
-        33.425,
-        34.627,
-        26.267,
-        48.059,
-        39.18
+        14.32,
+        20.543,
+        34.409,
+        24.21,
+        26.414,
+        33.456,
+        34.784,
+        26.253,
+        47.886,
+        38.726
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        8.185,
-        7.879,
-        15.708,
-        16.952,
-        19.275,
-        9.45,
-        7.03,
-        20.009,
-        18.512,
-        17
+        8.181,
+        7.979,
+        15.807,
+        16.815,
+        19.217,
+        9.72,
+        6.809,
+        20.185,
+        18.815,
+        16.471
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        69.189,
-        75.262,
-        67.283,
-        64.877,
-        81.868,
-        77.21,
-        86.467,
-        85.987,
-        81.863,
-        75.994
+        68.753,
+        74.367,
+        71.233,
+        63.646,
+        79.897,
+        76.754,
+        85.931,
+        87.63,
+        81.113,
+        77.677
       ],
       "top1": 1
     }
@@ -214,8 +214,8 @@
     "papers": 301,
     "outputBasis": "measured",
     "citations": 4939,
-    "top10": 38.783,
-    "top10ShareOfDivision": 0.03569,
+    "top10": 38.385,
+    "top10ShareOfDivision": 0.03532,
     "top1": 2,
     "top1ShareOfDivision": 0.0184,
     "first": {
@@ -251,8 +251,8 @@
     "papers": 140,
     "outputBasis": "measured",
     "citations": 2760,
-    "top10": 17,
-    "top10ShareOfDivision": 0.03549,
+    "top10": 16.471,
+    "top10ShareOfDivision": 0.03439,
     "top1": 1,
     "top1ShareOfDivision": 0.02088,
     "first": {
@@ -285,11 +285,11 @@
     }
   },
   "lifetime": {
-    "papers": 766,
+    "papers": 767,
     "outputBasis": "measured",
-    "citations": 26878,
-    "top10": 73.744,
-    "top10ShareOfDivision": 0.047,
+    "citations": 27240,
+    "top10": 75.427,
+    "top10ShareOfDivision": 0.04797,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -300,26 +300,26 @@
       "date": "2008-03-00"
     },
     "spread": {
-      "mean": 35.089,
+      "mean": 35.515,
       "median": 20,
-      "uncited": 53,
-      "i10": 519,
+      "uncited": 46,
+      "i10": 520,
       "i100": 64
     }
   },
   "query": {
     "arms": "((((=abs:\"Mercury Surface, Space Environment, Geochemistry, and Ranging\" OR (abs:MESSENGER AND (abs:Mercury OR abs:hermean OR abs:mission OR abs:probe OR abs:spacecraft)) OR =abs:\"Mercury Dual Imaging System\" OR =abs:\"MESSENGER X-Ray Spectrometer\" OR =abs:\"MESSENGER Gamma-Ray Spectrometer\" OR =abs:\"MESSENGER Neutron Spectrometer\" OR =abs:\"MESSENGER Magnetometer\" OR =abs:\"Mercury Laser Altimeter\" OR =abs:\"MESSENGER Energetic Particle and Plasma Spectrometer\")) OR =abs:\"Mercury Atmospheric and Surface Composition Spectrometer\" OR ((abs:MASCS OR abs:MDIS OR abs:FIPS OR abs:EPPS OR =abs:\"Fast Imaging Plasma Spectrometer\") AND (abs:Mercury OR abs:hermean OR abs:MESSENGER)) OR facility:MESSENGER))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2011-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Mercury+Surface%2C+Space+Environment%2C+Geochemistry%2C+and+Ranging%22+OR+%28abs%3AMESSENGER+AND+%28abs%3AMercury+OR+abs%3Ahermean+OR+abs%3Amission+OR+abs%3Aprobe+OR+abs%3Aspacecraft%29%29+OR+%3Dabs%3A%22Mercury+Dual+Imaging+System%22+OR+%3Dabs%3A%22MESSENGER+X-Ray+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Gamma-Ray+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Neutron+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Magnetometer%22+OR+%3Dabs%3A%22Mercury+Laser+Altimeter%22+OR+%3Dabs%3A%22MESSENGER+Energetic+Particle+and+Plasma+Spectrometer%22%29%29+OR+%3Dabs%3A%22Mercury+Atmospheric+and+Surface+Composition+Spectrometer%22+OR+%28%28abs%3AMASCS+OR+abs%3AMDIS+OR+abs%3AFIPS+OR+abs%3AEPPS+OR+%3Dabs%3A%22Fast+Imaging+Plasma+Spectrometer%22%29+AND+%28abs%3AMercury+OR+abs%3Ahermean+OR+abs%3AMESSENGER%29%29+OR+facility%3AMESSENGER%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2011-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:11:33.145521+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2011-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Mercury+Surface%2C+Space+Environment%2C+Geochemistry%2C+and+Ranging%22+OR+%28abs%3AMESSENGER+AND+%28abs%3AMercury+OR+abs%3Ahermean+OR+abs%3Amission+OR+abs%3Aprobe+OR+abs%3Aspacecraft%29%29+OR+%3Dabs%3A%22Mercury+Dual+Imaging+System%22+OR+%3Dabs%3A%22MESSENGER+X-Ray+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Gamma-Ray+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Neutron+Spectrometer%22+OR+%3Dabs%3A%22MESSENGER+Magnetometer%22+OR+%3Dabs%3A%22Mercury+Laser+Altimeter%22+OR+%3Dabs%3A%22MESSENGER+Energetic+Particle+and+Plasma+Spectrometer%22%29%29+OR+%3Dabs%3A%22Mercury+Atmospheric+and+Surface+Composition+Spectrometer%22+OR+%28%28abs%3AMASCS+OR+abs%3AMDIS+OR+abs%3AFIPS+OR+abs%3AEPPS+OR+%3Dabs%3A%22Fast+Imaging+Plasma+Spectrometer%22%29+AND+%28abs%3AMercury+OR+abs%3Ahermean+OR+abs%3AMESSENGER%29%29+OR+facility%3AMESSENGER%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2011-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:27:06.633534+00:00",
     "reconciliation": {
-      "adsReturned": 706,
+      "adsReturned": 707,
       "curatedOut": 9,
       "curatedIn": 69,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 766
+      "final": 767
     }
   },
   "curation": {
@@ -968,7 +968,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 431
+      "citations": 435
     },
     {
       "bibcode": "2011Sci...333.1859A",
@@ -977,7 +977,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 283
+      "citations": 290
     },
     {
       "bibcode": "2012Sci...336..214S",
@@ -986,7 +986,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 269
+      "citations": 271
     },
     {
       "bibcode": "2011Sci...333.1853H",
@@ -995,7 +995,25 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
+      "citations": 250
+    },
+    {
+      "bibcode": "2013JGRE..118.1204H",
+      "title": "The curious case of Mercury's internal structure",
+      "firstAuthor": "Hauck, Steven A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
       "citations": 247
+    },
+    {
+      "bibcode": "2018CeMDA.130...22A",
+      "title": "Report of the IAU Working Group on Cartographic Coordinates and Rotational Elements: 2015",
+      "firstAuthor": "Archinal, B. A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2018,
+      "citations": 246
     },
     {
       "bibcode": "2009Sci...324..606S",
@@ -1007,31 +1025,13 @@
       "citations": 244
     },
     {
-      "bibcode": "2013JGRE..118.1204H",
-      "title": "The curious case of Mercury's internal structure",
-      "firstAuthor": "Hauck, Steven A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2013,
-      "citations": 243
-    },
-    {
-      "bibcode": "2018CeMDA.130...22A",
-      "title": "Report of the IAU Working Group on Cartographic Coordinates and Rotational Elements: 2015",
-      "firstAuthor": "Archinal, B. A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2018,
-      "citations": 240
-    },
-    {
       "bibcode": "2013JGRE..118..891D",
       "title": "The distribution and origin of smooth plains on Mercury",
       "firstAuthor": "Denevi, Brett W.",
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 232
+      "citations": 234
     },
     {
       "bibcode": "2009Sci...324..613D",
@@ -1049,7 +1049,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 220
+      "citations": 223
     },
     {
       "bibcode": "2011Sci...333.1850P",
@@ -1058,7 +1058,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 211
+      "citations": 213
     },
     {
       "bibcode": "2014NatGe...7..301B",
@@ -1067,7 +1067,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 185
+      "citations": 190
     },
     {
       "bibcode": "2012Sci...336..217Z",
@@ -1106,13 +1106,22 @@
       "citations": 176
     },
     {
+      "bibcode": "2015E&PSL.416..109W",
+      "title": "Evidence for geochemical terranes on Mercury: Global mapping of major elements with MESSENGER's X-Ray Spectrometer",
+      "firstAuthor": "Weider, Shoshana Z.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2015,
+      "citations": 176
+    },
+    {
       "bibcode": "2013ApJ...767...41L",
       "title": "Longitudinal and Radial Dependence of Solar Energetic Particle Peak Intensities: STEREO, ACE, SOHO, GOES, and MESSENGER Observations",
       "firstAuthor": "Lario, D.",
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 173
+      "citations": 174
     },
     {
       "bibcode": "2013Sci...339..292L",
@@ -1121,16 +1130,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 172
-    },
-    {
-      "bibcode": "2015E&PSL.416..109W",
-      "title": "Evidence for geochemical terranes on Mercury: Global mapping of major elements with MESSENGER's X-Ray Spectrometer",
-      "firstAuthor": "Weider, Shoshana Z.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2015,
-      "citations": 172
+      "citations": 173
     },
     {
       "bibcode": "2017AJ....153..121P",
@@ -1139,10 +1139,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 169
+      "citations": 170
     }
   ],
   "papersFile": {
-    "rows": 766
+    "rows": 767
   }
 }

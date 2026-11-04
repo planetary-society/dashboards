@@ -25,16 +25,16 @@
     }
   },
   "indices": {
-    "h": 81,
-    "m": 4.765,
+    "h": 83,
+    "m": 4.882,
     "i100": 64,
-    "g": 133,
-    "tori": 138.143,
-    "riq": 652
+    "g": 135,
+    "tori": 160.145,
+    "riq": 703
   },
   "facts": {
-    "papers": 1013,
-    "citations": 29193,
+    "papers": 1016,
+    "citations": 29816,
     "publicationYears": [
       2010,
       2026
@@ -77,7 +77,7 @@
       58,
       94,
       67,
-      85
+      88
     ],
     "citations": [
       69,
@@ -89,27 +89,27 @@
       1250,
       1173,
       1481,
-      1510,
-      1804,
-      2167,
-      2470,
-      3443,
-      3408,
-      3695,
-      3278
+      1512,
+      1805,
+      2170,
+      2471,
+      3444,
+      3409,
+      3723,
+      3864
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 29193,
-      "observed": 29193,
+      "expected": 29816,
+      "observed": 29816,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 1013,
+    "papers": 1016,
     "us": {
-      "mapped": 544,
+      "mapped": 545,
       "top": [
         {
           "name": "Johns Hopkins University, Applied Physics Laboratory",
@@ -126,7 +126,7 @@
       ]
     },
     "world": {
-      "mapped": 912,
+      "mapped": 914,
       "top": [
         {
           "name": "Johns Hopkins University, Applied Physics Laboratory",
@@ -155,61 +155,61 @@
     ],
     "authorCount": 23,
     "year": 2010,
-    "citations": 1053
+    "citations": 1071
   },
   "ranks": {
     "full": {
       "bins": [
-        92.882,
-        107.463,
-        90.178,
-        89.289,
-        80.641,
-        76.347,
-        71.623,
-        54.544,
-        59.238,
-        44.795
+        92.56,
+        107.894,
+        89.58,
+        90.48,
+        79.938,
+        76.192,
+        72.144,
+        53.703,
+        59.828,
+        44.681
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        10.185,
-        9.861,
-        9.397,
-        4.856,
-        9.935,
-        13.482,
-        11.722,
-        9.724,
-        13.837,
+        10.181,
+        9.933,
+        9.377,
+        4.885,
+        9.99,
+        13.981,
+        11.241,
+        9.65,
+        13.762,
         11
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        175.492,
-        127.242,
-        137.369,
-        111.099,
-        76.757,
-        91.575,
-        80.904,
-        59.705,
-        78.857,
-        74
+        169.24,
+        135.16,
+        135.63,
+        108.706,
+        82.739,
+        89.005,
+        78.768,
+        61.173,
+        80.578,
+        75
       ],
-      "top1": 8
+      "top1": 9
     }
   },
   "full": {
     "papers": 767,
     "outputBasis": "measured",
-    "citations": 8045,
-    "top10": 42.795,
-    "top10ShareOfDivision": 0.03938,
+    "citations": 8077,
+    "top10": 42.681,
+    "top10ShareOfDivision": 0.03927,
     "top1": 2,
     "top1ShareOfDivision": 0.0184,
     "first": {
@@ -234,7 +234,7 @@
       "m": 2.456
     },
     "spread": {
-      "mean": 10.489,
+      "mean": 10.531,
       "median": 7,
       "uncited": 58,
       "i10": 280,
@@ -279,11 +279,11 @@
     }
   },
   "lifetime": {
-    "papers": 1013,
+    "papers": 1016,
     "outputBasis": "measured",
-    "citations": 29193,
-    "top10": 68.5,
-    "top10ShareOfDivision": 0.04366,
+    "citations": 29816,
+    "top10": 69,
+    "top10ShareOfDivision": 0.04388,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -294,26 +294,26 @@
       "date": "2010-01-00"
     },
     "spread": {
-      "mean": 28.818,
+      "mean": 29.346,
       "median": 10,
-      "uncited": 140,
-      "i10": 522,
+      "uncited": 123,
+      "i10": 526,
       "i100": 64
     }
   },
   "query": {
     "arms": "((=abs:\"Lunar Reconnaissance Orbiter\" OR =abs:\"Lunar Reconnaissance Orbiter Camera\" OR =abs:\"Lunar Exploration Neutron Detector\" OR =abs:\"Lyman-Alpha Mapping Project\" OR =abs:\"Lunar Orbiter Laser Altimeter\" OR =abs:\"Cosmic Ray Telescope for the Effects of Radiation\" OR =abs:\"Diviner Lunar Radiometer\" OR ((=abs:Moon OR =abs:lunar) AND (abs:LRO OR =abs:LROC OR abs:LEND OR abs:LAMP OR abs:LOLA OR abs:CRaTER OR =abs:Diviner OR abs:\"Mini-RF\"))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2009-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"AIASJ\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"E&S\" OR \"ENews\" OR \"GeCAS\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NewSc\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SciAm\" OR \"SpFl\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Reconnaissance+Orbiter%22+OR+%3Dabs%3A%22Lunar+Reconnaissance+Orbiter+Camera%22+OR+%3Dabs%3A%22Lunar+Exploration+Neutron+Detector%22+OR+%3Dabs%3A%22Lyman-Alpha+Mapping+Project%22+OR+%3Dabs%3A%22Lunar+Orbiter+Laser+Altimeter%22+OR+%3Dabs%3A%22Cosmic+Ray+Telescope+for+the+Effects+of+Radiation%22+OR+%3Dabs%3A%22Diviner+Lunar+Radiometer%22+OR+%28%28%3Dabs%3AMoon+OR+%3Dabs%3Alunar%29+AND+%28abs%3ALRO+OR+%3Dabs%3ALROC+OR+abs%3ALEND+OR+abs%3ALAMP+OR+abs%3ALOLA+OR+abs%3ACRaTER+OR+%3Dabs%3ADiviner+OR+abs%3A%22Mini-RF%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22AIASJ%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22GeCAS%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NewSc%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-10-27T17:12:26.246905+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2009-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Reconnaissance+Orbiter%22+OR+%3Dabs%3A%22Lunar+Reconnaissance+Orbiter+Camera%22+OR+%3Dabs%3A%22Lunar+Exploration+Neutron+Detector%22+OR+%3Dabs%3A%22Lyman-Alpha+Mapping+Project%22+OR+%3Dabs%3A%22Lunar+Orbiter+Laser+Altimeter%22+OR+%3Dabs%3A%22Cosmic+Ray+Telescope+for+the+Effects+of+Radiation%22+OR+%3Dabs%3A%22Diviner+Lunar+Radiometer%22+OR+%28%28%3Dabs%3AMoon+OR+%3Dabs%3Alunar%29+AND+%28abs%3ALRO+OR+%3Dabs%3ALROC+OR+abs%3ALEND+OR+abs%3ALAMP+OR+abs%3ALOLA+OR+abs%3ACRaTER+OR+%3Dabs%3ADiviner+OR+abs%3A%22Mini-RF%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-03T23:27:41.309802+00:00",
     "reconciliation": {
-      "adsReturned": 1031,
+      "adsReturned": 1034,
       "curatedOut": 14,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 4,
-      "final": 1013
+      "final": 1016
     }
   },
   "curation": {
@@ -441,7 +441,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 1053
+      "citations": 1071
     },
     {
       "bibcode": "2010SSRv..150..209S",
@@ -450,7 +450,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 484
+      "citations": 489
     },
     {
       "bibcode": "2016Icar..273..346B",
@@ -459,7 +459,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 483
+      "citations": 488
     },
     {
       "bibcode": "2010Sci...330..479P",
@@ -468,7 +468,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 469
+      "citations": 474
     },
     {
       "bibcode": "2010GeoRL..3718204S",
@@ -477,16 +477,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 446
-    },
-    {
-      "bibcode": "2010SSRv..150..125P",
-      "title": "The Lunar Reconnaissance Orbiter Diviner Lunar Radiometer Experiment",
-      "firstAuthor": "Paige, D. A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2010,
-      "citations": 421
+      "citations": 452
     },
     {
       "bibcode": "2018PNAS..115.8907L",
@@ -495,7 +486,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 421
+      "citations": 436
+    },
+    {
+      "bibcode": "2010SSRv..150..125P",
+      "title": "The Lunar Reconnaissance Orbiter Diviner Lunar Radiometer Experiment",
+      "firstAuthor": "Paige, D. A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2010,
+      "citations": 426
     },
     {
       "bibcode": "2017Icar..283..300W",
@@ -504,7 +504,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 368
+      "citations": 381
     },
     {
       "bibcode": "2017JGRE..122.2371H",
@@ -513,7 +513,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 328
+      "citations": 336
     },
     {
       "bibcode": "2011Icar..211.1066M",
@@ -522,7 +522,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 318
+      "citations": 326
     },
     {
       "bibcode": "2010Sci...330..483M",
@@ -531,7 +531,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 308
+      "citations": 312
     },
     {
       "bibcode": "2011JGRE..116.0H02B",
@@ -540,7 +540,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 294
+      "citations": 299
     },
     {
       "bibcode": "2015Icar..255...58H",
@@ -549,7 +549,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 263
+      "citations": 269
     },
     {
       "bibcode": "2011P&SS...59.1326S",
@@ -558,7 +558,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 260
+      "citations": 264
     },
     {
       "bibcode": "2012JGRE..117.0H18V",
@@ -567,7 +567,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 221
+      "citations": 226
     },
     {
       "bibcode": "2010Sci...329.1507G",
@@ -576,7 +576,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 217
+      "citations": 221
     },
     {
       "bibcode": "2017Icar..296..216S",
@@ -585,7 +585,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 216
+      "citations": 219
     },
     {
       "bibcode": "2010Sci...329.1510G",
@@ -594,7 +594,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 207
+      "citations": 210
     },
     {
       "bibcode": "2012JGRE..117.0H17S",
@@ -603,7 +603,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 184
+      "citations": 187
     },
     {
       "bibcode": "2014NatGe...7..787B",
@@ -612,10 +612,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 179
+      "citations": 180
     }
   ],
   "papersFile": {
-    "rows": 1013
+    "rows": 1016
   }
 }

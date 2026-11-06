@@ -65,6 +65,6 @@ Failed: `calipso`. These render as flat squares; re-run `node scripts/fetch-thum
 | `generated/index.json`   | 28,292         |
 | `generated/scrolly.json` | 95,526         |
 | `generated/divisions/`   | 734,201        |
-| `generated/missions/`    | 2,259,538      |
-| `static/data/papers/`    | 31,309,661     |
-| **total**                | **34,803,212** |
+| `generated/missions/`    | 2,268,697      |
+| `static/data/papers/`    | 31,033,680     |
+| **total**                | **34,536,390** |

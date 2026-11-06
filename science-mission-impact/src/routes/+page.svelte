@@ -10,7 +10,7 @@
 	const description = $derived(`Can smaller, cheaper missions do the science of big ones? A look at ${int(site.missions)} NASA-led science missions and ${int(site.papersDistinct)} peer-reviewed papers, by mission cost, within each science division.`);
 </script>
 
-<Seo title="Science Mission Impact" {description} />
+<Seo title="NASA Mission Costs and Scientific Impact" {description} />
 
 <h1 class="sr-only">Science Mission Impact: can smaller, cheaper missions do the science of big ones?</h1>
 <a class="skip" href="#divisions">Skip to divisions</a>

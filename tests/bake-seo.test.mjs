@@ -493,30 +493,27 @@ test('renderDistrictsIndex canonical points at the districts directory', () => {
 
 // --- renderSitemap ----------------------------------------------------------
 
-/** Science Mission Impact division slugs, in configured order */
-const SMI_DIVISIONS = ['astrophysics', 'earth', 'planetary'];
-const SMI_MISSIONS = [{ division: 'planetary', id: 'msl' }, { division: 'astrophysics', id: 'hst' }];
+const SMI_PAGES = ['', 'analysis/', 'methods/', 'download/', 'planetary/', 'planetary/lifetime/',
+    'astrophysics/hst/', 'astrophysics/hst/lifetime/', 'planetary/msl/']
+    .map((path) => `/science-mission-impact/${path}`);
 
 test('renderSitemap emits the fixed URLs plus one per district and Science Mission Impact page', () => {
     const codes = ['CA-16', 'TX-22', 'AL-05'];
     const xml = renderSitemap({
-        districtCodes: codes, smiDivisions: SMI_DIVISIONS, smiMissions: SMI_MISSIONS, lastUpdated: '2026-08-20'
+        districtCodes: codes, smiPages: SMI_PAGES, lastUpdated: '2026-08-20'
     });
-    const expected = FIXED_URLS.length + codes.length + SMI_DIVISIONS.length + SMI_MISSIONS.length;
+    const expected = FIXED_URLS.length + codes.length + SMI_PAGES.length;
 
     assert.equal((xml.match(/<url>/g) || []).length, expected);
     assert.equal((xml.match(/<loc>/g) || []).length, expected);
 });
 
-test('renderSitemap lists the Science Mission Impact overview, analysis, methods, divisions and missions', () => {
-    const xml = renderSitemap({ districtCodes: ['CA-16'], smiDivisions: SMI_DIVISIONS, smiMissions: SMI_MISSIONS });
-    const paths = [
-        '', 'analysis/', 'methods/', ...SMI_DIVISIONS.map((slug) => `${slug}/`), 'astrophysics/hst/', 'planetary/msl/'
-    ];
-
-    for (const p of paths) {
-        assert.ok(xml.includes(`<loc>${SITE_BASE}/science-mission-impact/${p}</loc>`), `sitemap missing ${p || 'overview'}`);
+test('renderSitemap lists supplied Science Mission Impact pages, including downloads and lifetime views', () => {
+    const xml = renderSitemap({ districtCodes: ['CA-16'], smiPages: SMI_PAGES });
+    for (const p of SMI_PAGES) {
+        assert.ok(xml.includes(`<loc>${SITE_BASE}${p}</loc>`), `sitemap missing ${p}`);
     }
+    assert.equal((xml.match(/<loc>[^<]*\/science-mission-impact\//g) || []).length, SMI_PAGES.length);
     assert.ok(xml.indexOf('/astrophysics/hst/') < xml.indexOf('/planetary/msl/'), 'mission URLs sorted');
 });
 

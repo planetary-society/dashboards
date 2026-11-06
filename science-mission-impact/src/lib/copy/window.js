@@ -1,6 +1,6 @@
 import { longDate, spell } from '../format.js';
 
-// Reader-facing copy for the two scopes a reader can pick (SCOPES in state/view.svelte.js). The
+// Reader-facing copy for the two scopes a reader can pick (SCOPES in state/scope.js). The
 // prime-phase `window` scope stays in the packaged data only, so it has no name here.
 export const fullWindowLabel = 'Active Mission Window';
 

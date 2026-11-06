@@ -67,22 +67,27 @@ describe('buildPapersFile', () => {
 	});
 
 	it('sorts by citations descending, then bibcode', () => {
-		assert.deepEqual(file.columns.b, ['A-high', 'B-low', 'C-tie']);
+		assert.deepEqual(file.columns.bibcode, ['A-high', 'B-low', 'C-tie']);
 	});
 
 	it('writes the columns in the contract order', () => {
-		assert.deepEqual(Object.keys(file.columns), ['b', 'y', 'd', 't', 'a', 'c', 's', 'e', 'f', 'fe', 'f1', 'i']);
+		assert.deepEqual(Object.keys(file.columns), ['bibcode', 'year', 'pubdate', 'title', 'first_author', 'citations', 'shared_by', 'full_window_citations', 'top10_weight_full', 'top1_weight_full', 'curated']); // no lifetime top-10% column
+	});
+
+	it('describes itself and links the dictionary that defines its columns', () => {
+		assert.match(file.about, /Columnar/);
+		assert.match(file.dictionary, /^https:\/\/.+\/data\/exports\/dictionary\.json$/);
 	});
 
 	it('writes each paper’s ADS pubdate as given, null when unknown', () => {
-		assert.deepEqual(file.columns.d, ['2005-03-00', '2006-00-00', null]);
+		assert.deepEqual(file.columns.pubdate, ['2005-03-00', '2006-00-00', null]);
 	});
 
 	it('fills the full-mission columns from the full-mission table and its own cutoff', () => {
-		assert.deepEqual(file.columns.f, [260, 140, null]);
-		assert.deepEqual(file.columns.fe, [1, 0, null]);
+		assert.deepEqual(file.columns.full_window_citations, [260, 140, null]);
+		assert.deepEqual(file.columns.top10_weight_full, [1, 0, null]);
 		// 140 is above the 133 cutoff here.
-		assert.deepEqual(file.columns.f1, [1, 1, null]);
+		assert.deepEqual(file.columns.top1_weight_full, [1, 1, null]);
 	});
 
 	it('leaves the full-mission columns null when no full-mission table is given', () => {
@@ -92,7 +97,7 @@ describe('buildPapersFile', () => {
 			lifetimeRows,
 			curatedBibcodes: new Set()
 		});
-		for (const column of ['f', 'fe', 'f1']) assert.deepEqual(bare.columns[column], [null, null, null]);
+		for (const column of ['full_window_citations', 'top10_weight_full', 'top1_weight_full']) assert.deepEqual(bare.columns[column], [null, null, null]);
 	});
 
 	it('keeps every column the same length', () => {
@@ -101,17 +106,13 @@ describe('buildPapersFile', () => {
 		assertColumnLengths(file);
 	});
 
-	it('keeps a null era-adjusted weight distinct from a measured zero', () => {
-		assert.deepEqual(file.columns.e, [1, 0, null]);
-	});
-
 	it('flags papers the query did not return', () => {
-		assert.deepEqual(file.columns.i, [0, 0, 1]);
+		assert.deepEqual(file.columns.curated, [0, 0, 1]);
 	});
 
 	it('throws when a column length drifts', () => {
-		const broken = { ...file, columns: { ...file.columns, b: ['only-one'] } };
-		assert.throws(() => assertColumnLengths(broken), /column "b"/);
+		const broken = { ...file, columns: { ...file.columns, bibcode: ['only-one'] } };
+		assert.throws(() => assertColumnLengths(broken), /column "bibcode"/);
 	});
 });
 

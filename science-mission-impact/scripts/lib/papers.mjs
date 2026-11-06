@@ -7,6 +7,13 @@
 
 import { weight } from './util.mjs';
 
+/** The production dictionary: the field definitions, scopes, license and source terms these files share. */
+export const DICTIONARY_URL = 'https://dashboards.planetary.org/science-mission-impact/data/exports/dictionary.json';
+export const PAPERS_ABOUT = 'Tracked peer-reviewed publications of one NASA science mission (id is the site mission ID), from Science Mission Impact by The Planetary Society. '
+	+ 'Columnar: each key in columns is an array of rows values, and one index is one paper in every column. Sorted by lifetime citations, most cited first, then bibcode. '
+	+ 'null means unavailable or outside the Active Mission Window, never zero; curated is 1 for a paper added by human-reviewed curation rather than returned by the query. '
+	+ 'Every column is defined in the dictionary.';
+
 /**
  * Top-1% tie weight of a single paper against the division's pooled window
  * cutoff: above the cutoff scores 1, exactly at it scores the cutoff's tie
@@ -49,23 +56,25 @@ function comparePapers(a, b) {
  */
 export function buildPapersFile({ id, asOf, lifetimeRows, fullRows = new Map(), curatedBibcodes, fullTop1Cutoff = null, pubdates = new Map() }) {
 	const rows = [...lifetimeRows].sort(comparePapers);
-	const columns = { b: [], y: [], d: [], t: [], a: [], c: [], s: [], e: [], f: [], fe: [], f1: [], i: [] };
+	// Named as the CSV columns and the dictionary name them, so the file explains itself. No lifetime
+	// top-10% column: the site publishes high-impact measures for the active window only.
+	const columns = { bibcode: [], year: [], pubdate: [], title: [], first_author: [], citations: [], shared_by: [],
+		full_window_citations: [], top10_weight_full: [], top1_weight_full: [], curated: [] };
 	for (const row of rows) {
 		const fullRow = fullRows.get(row.bibcode) ?? null;
-		columns.b.push(row.bibcode);
-		columns.y.push(row.year ?? null);
-		columns.d.push(pubdates.get(row.bibcode) ?? null);
-		columns.t.push(row.title ?? null);
-		columns.a.push(row.first_author ?? null);
-		columns.c.push(Number(row.citations ?? 0));
-		columns.s.push(Number(row.shared_by ?? 1));
-		columns.e.push(weight(row.top10_weight));
-		columns.f.push(fullRow ? Number(fullRow.window_citations ?? 0) : null);
-		columns.fe.push(fullRow ? weight(fullRow.window_top10_weight) : null);
-		columns.f1.push(fullRow ? weight(top1Weight(fullRow.window_citations, fullTop1Cutoff)) : null);
-		columns.i.push(curatedBibcodes.has(row.bibcode) ? 1 : 0);
+		columns.bibcode.push(row.bibcode);
+		columns.year.push(row.year ?? null);
+		columns.pubdate.push(pubdates.get(row.bibcode) ?? null);
+		columns.title.push(row.title ?? null);
+		columns.first_author.push(row.first_author ?? null);
+		columns.citations.push(Number(row.citations ?? 0));
+		columns.shared_by.push(Number(row.shared_by ?? 1));
+		columns.full_window_citations.push(fullRow ? Number(fullRow.window_citations ?? 0) : null);
+		columns.top10_weight_full.push(fullRow ? weight(fullRow.window_top10_weight) : null);
+		columns.top1_weight_full.push(fullRow ? weight(top1Weight(fullRow.window_citations, fullTop1Cutoff)) : null);
+		columns.curated.push(curatedBibcodes.has(row.bibcode) ? 1 : 0);
 	}
-	return { id, asOf, rows: rows.length, columns };
+	return { about: PAPERS_ABOUT, dictionary: DICTIONARY_URL, id, asOf, rows: rows.length, columns };
 }
 
 /** Throw unless every column of a PapersFile has the same length. */

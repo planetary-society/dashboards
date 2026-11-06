@@ -13,7 +13,7 @@
 	 * quietId: a square whose tip is left off because something else already names it
 	 * opacity: every square at once, over each one's own (the story's mosaic fading in as it scrolls)
 	 */
-	let { tiles, items, interactive = true, highlightId = null, quietId = null, opacity: all = 1 } = $props();
+	let { tiles, items, interactive = true, highlightId = null, quietId = null, opacity: all = 1, scope = 'full' } = $props();
 
 	let tip = $state(null);
 	let tipEl = $state(null);
@@ -56,7 +56,7 @@
 			<a
 				class="sq mark-{it.variant ?? 'solid'}"
 				class:hot={highlightId === t.id}
-				href={missionHref(t.division, t.id)}
+				href={missionHref(t.division, t.id, scope)}
 				tabindex={interactive && opacity >= 0.05 ? 0 : -1}
 				aria-label={it.label ?? t.name}
 				data-id={t.id}

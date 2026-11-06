@@ -72,7 +72,8 @@ export function missionMeasureGroups(mission, scope, site) {
 				? [
 						row('Tracked publications', ['publications'], int(s.papers)),
 						row('Citations', ['citations'], int(s.citations)),
-						row('Top-10% papers', ['top10', 'shared'], weight(s.top10)),
+						// high-impact measures are the active window's only; lifetime counts favor older papers
+						scope !== 'lifetime' && row('Top-10% papers', ['top10', 'shared'], weight(s.top10)),
 						scope !== 'lifetime' && row('Top-1% papers', ['top1', 'shared'], weight(s.top1))
 					].filter(Boolean)
 				: []

@@ -646,6 +646,7 @@ export interface Mission {
 		program: string | null;
 		target: string | null;
 		launchVehicle: string | null;
+		wikipedia: string | null; // https Wikipedia article URL, checked by the packager
 		dates: { formulation: string | null; launch: string | null; scienceStart: string | null; primeEnd: string | null; missionEnd: string | null };
 	};
 	indices: MissionIndices;
@@ -692,22 +693,24 @@ export interface CurationItem {
  * A null in a windowed column means the paper is outside that cohort.
  */
 export interface PapersFile {
+	about: string; // what the file is and how to read it
+	dictionary: string; // the dataset dictionary, which defines every column
 	id: string;
 	asOf: string;
 	rows: number;
+	// named as the CSV columns are
 	columns: {
-		b: string[]; // bibcode
-		y: (number | null)[]; // year
-		d: (string | null)[]; // ADS pubdate, month resolution ("2003-01-00"); what a first top-10% paper is dated by
-		t: (string | null)[]; // title
-		a: (string | null)[]; // first author
-		c: number[]; // lifetime citations
-		s: number[]; // shared_by (missions in the division claiming it)
-		e: (number | null)[]; // era-adjusted top-10% weight, lifetime (null = year not scored)
-		f: (number | null)[]; // citations within the full-mission window
-		fe: (number | null)[]; // era-adjusted top-10% weight, full-mission window
-		f1: (number | null)[]; // top-1% weight, full-mission window, pooled
-		i: (0 | 1)[]; // 1 = added by curation rather than the query
+		bibcode: string[];
+		year: (number | null)[];
+		pubdate: (string | null)[]; // ADS pubdate, month resolution ("2003-01-00"); what a first top-10% paper is dated by
+		title: (string | null)[];
+		first_author: (string | null)[];
+		citations: number[]; // lifetime
+		shared_by: number[]; // missions in the division claiming it
+		full_window_citations: (number | null)[];
+		top10_weight_full: (number | null)[];
+		top1_weight_full: (number | null)[]; // pooled
+		curated: (0 | 1)[]; // 1 = added by curation rather than the query
 	};
 }
 

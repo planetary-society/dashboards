@@ -6,7 +6,7 @@ import { after, describe, it } from 'node:test';
 
 import { loadConfig, resolveRawDir } from '../lib/config.mjs';
 import * as fetchThumbs from '../fetch-thumbs.mjs';
-import { parseArgs as parsePackageArgs } from '../package-data.mjs';
+import { parseArgs as parsePackageArgs, wikipediaOf } from '../package-data.mjs';
 import { parseArgs, pipelineTestFiles, summaryLines, testFiles } from '../refresh.mjs';
 
 const TMP_ROOT = fs.mkdtempSync(path.join(os.tmpdir(), 'smi-pipeline-'));
@@ -232,5 +232,18 @@ describe('summaryLines', () => {
 		assert.equal(lines.length, 5);
 		assert.match(lines[0], /snapshot —/);
 		assert.match(lines[3], /ok 0 · failed 0 · no image 0/);
+	});
+});
+
+describe('wikipediaOf', () => {
+	it('keeps an https Wikipedia article, in any language, and reads blank as none', () => {
+		assert.equal(wikipediaOf('https://fr.wikipedia.org/wiki/HaloSat', 'halosat'), 'https://fr.wikipedia.org/wiki/HaloSat');
+		assert.equal(wikipediaOf(undefined, 'x'), null);
+		assert.equal(wikipediaOf('', 'x'), null);
+	});
+	it('fails on anything else, since the page links it', () => {
+		for (const bad of ['http://en.wikipedia.org/wiki/X', 'javascript:alert(1)', 'https://evil.example/wiki/X', 'https://en.wikipedia.org.evil.example/wiki/X']) {
+			assert.throws(() => wikipediaOf(bad, 'x'), /not a Wikipedia article/);
+		}
 	});
 });

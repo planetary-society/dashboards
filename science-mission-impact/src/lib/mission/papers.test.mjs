@@ -17,18 +17,17 @@ const ads = (b) => `https://scixplorer.org/abs/${encodeURIComponent(b)}/abstract
  */
 function fixture() {
 	return {
-		b: ['2004Sci...305..842P', '1998ApJ...500..525S', '2017Natur.545..456D', '2001AJ....121.2431A', '1995Icar..118....1B'],
-		y: [2004, 1998, 2017, null, 1995],
-		d: ['2004-07-00', '1998-00-00', '2017-05-00', null, '1995-11-00'],
-		t: ['Cassini at Saturn', 'Maps of dust', 'A "quoted, comma" title', null, 'Icy moons'],
-		a: ['Porco, C.', 'Schlegel, D.', null, 'Adams, J.', 'Brown, R.'],
-		c: [900, 900, 300, 50, 10],
-		s: [1, 3, 1, 1, 2],
-		e: [1, 0.5, 0, null, 0],
-		f: [400, 150, null, 30, 8],
-		fe: [0, 1, null, 0.5, 0],
-		f1: [0, 1, null, 0, 0],
-		i: [0, 0, 0, 1, 0]
+		bibcode: ['2004Sci...305..842P', '1998ApJ...500..525S', '2017Natur.545..456D', '2001AJ....121.2431A', '1995Icar..118....1B'],
+		year: [2004, 1998, 2017, null, 1995],
+		pubdate: ['2004-07-00', '1998-00-00', '2017-05-00', null, '1995-11-00'],
+		title: ['Cassini at Saturn', 'Maps of dust', 'A "quoted, comma" title', null, 'Icy moons'],
+		first_author: ['Porco, C.', 'Schlegel, D.', null, 'Adams, J.', 'Brown, R.'],
+		citations: [900, 900, 300, 50, 10],
+		shared_by: [1, 3, 1, 1, 2],
+		full_window_citations: [400, 150, null, 30, 8],
+		top10_weight_full: [0, 1, null, 0.5, 0],
+		top1_weight_full: [0, 1, null, 0, 0],
+		curated: [0, 0, 0, 1, 0]
 	};
 }
 
@@ -54,17 +53,17 @@ describe('journalFromBibcode', () => {
 describe('topColumn', () => {
 	it('picks the weight column that matches the view', () => {
 		const c = fixture();
-		assert.equal(topColumn(c, 'full', 10), c.fe);
-		assert.equal(topColumn(c, 'full', 1), c.f1);
+		assert.equal(topColumn(c, 'full', 10), c.top10_weight_full);
+		assert.equal(topColumn(c, 'full', 1), c.top1_weight_full);
 		// the files carry no prime-window columns, so that scope reads the full-mission window
-		assert.equal(topColumn(c, 'window', 10), c.fe);
-		assert.equal(topColumn(c, 'window', 1), c.f1);
-		assert.equal(topColumn(c, 'lifetime', 10), c.e);
+		assert.equal(topColumn(c, 'window', 10), c.top10_weight_full);
+		assert.equal(topColumn(c, 'window', 1), c.top1_weight_full);
 	});
 
-	it('has no lifetime top 1%, so falls back to the full-mission window', () => {
+	it('has no lifetime top-k column', () => {
 		const c = fixture();
-		assert.equal(topColumn(c, 'lifetime', 1), c.f1);
+		assert.equal(topColumn(c, 'lifetime', 10), undefined);
+		assert.equal(topColumn(c, 'lifetime', 1), undefined);
 	});
 });
 
@@ -73,7 +72,7 @@ describe('filterIndex', () => {
 		const c = fixture();
 		for (const sort of ['cited', 'oldest', 'newest']) {
 			for (const scope of SCOPES) {
-				const order = sortIndex(c.b.map((_, i) => i), c, { sort, scope });
+				const order = sortIndex(c.bibcode.map((_, i) => i), c, { sort, scope });
 				const opts = { topOnly: true, scope, top: 10 };
 				assert.deepEqual(filterIndex(c, { ...opts, order }), sortIndex(filterIndex(c, opts), c, { sort, scope }));
 			}
@@ -104,7 +103,8 @@ describe('filterIndex', () => {
 
 	it('top-only follows scope and threshold, counting only weights above zero', () => {
 		const c = fixture();
-		assert.deepEqual(filterIndex(c, { topOnly: true, scope: 'lifetime', top: 10 }), [0, 1]);
+		// lifetime publishes no top-k, so a top-only filter passes every row
+		assert.deepEqual(filterIndex(c, { topOnly: true, scope: 'lifetime', top: 10 }), [0, 1, 2, 3, 4]);
 		assert.deepEqual(filterIndex(c, { topOnly: true, scope: 'full', top: 10 }), [1, 3]);
 		assert.deepEqual(filterIndex(c, { topOnly: true, scope: 'full', top: 1 }), [1]);
 		assert.deepEqual(filterIndex(c, { topOnly: true, scope: 'window', top: 10 }), [1, 3]);
@@ -178,8 +178,8 @@ describe('rowAt', () => {
 			sharedWith: 2,
 			addedByHand: false,
 			journal: 'ApJ',
-			top10: 0.5,
-			top1: true // lifetime has no top 1%; the marker reads the full-mission window
+			top10: 0, // lifetime publishes no top-k
+			top1: false
 		});
 	});
 
@@ -202,7 +202,7 @@ describe('rowAt', () => {
 	it('has no window citations in the lifetime scope', () => {
 		const r = rowAt(fixture(), 0, 'lifetime');
 		assert.equal(r.windowCitations, null);
-		assert.equal(r.top10, 1);
+		assert.equal(r.top10, 0);
 	});
 
 	it('marks hand-added papers and unshared papers', () => {
@@ -243,7 +243,7 @@ describe('toCsv', () => {
 		assert.equal(lines[0], CSV_HEADER.join(','));
 		assert.equal(
 			lines[0],
-			'bibcode,year,pubdate,title,first_author,citations,top10_weight_lifetime,full_window_citations,top10_weight_full,top1_weight_full,shared_by,scix_url'
+			'bibcode,year,pubdate,title,first_author,citations,full_window_citations,top10_weight_full,top1_weight_full,shared_by,scix_url'
 		);
 	});
 
@@ -252,12 +252,12 @@ describe('toCsv', () => {
 		assert.equal(lines.length, 6);
 		assert.equal(
 			lines[1],
-			'2004Sci...305..842P,2004,2004-07-00,Cassini at Saturn,"Porco, C.",900,1,400,0,0,1,https://scixplorer.org/abs/2004Sci...305..842P/abstract'
+			'2004Sci...305..842P,2004,2004-07-00,Cassini at Saturn,"Porco, C.",900,400,0,0,1,https://scixplorer.org/abs/2004Sci...305..842P/abstract'
 		);
 		// row 2: outside the full-mission cohort
-		assert.match(lines[3], /,300,0,,,,1,https:/);
-		// row 3: no year, no pubdate, no title, no lifetime weight
-		assert.equal(lines[4], '2001AJ....121.2431A,,,,"Adams, J.",50,,30,0.5,0,1,https://scixplorer.org/abs/2001AJ....121.2431A/abstract');	});
+		assert.match(lines[3], /,300,,,,1,https:/);
+		// row 3: no year, no pubdate, no title
+		assert.equal(lines[4], '2001AJ....121.2431A,,,,"Adams, J.",50,30,0.5,0,1,https://scixplorer.org/abs/2001AJ....121.2431A/abstract');	});
 
 	it('quotes a title holding a comma and a quote', () => {
 		const lines = toCsv(fixture(), ads).split('\r\n');
@@ -291,20 +291,19 @@ describe('toCsv', () => {
 describe('performance', () => {
 	/** 20k synthetic rows, shaped like the real hst file. */
 	function bigColumns(n = 20000) {
-		const c = { b: [], y: [], t: [], a: [], c: [], s: [], e: [], f: [], fe: [], f1: [], i: [] };
+		const c = { bibcode: [], year: [], title: [], first_author: [], citations: [], shared_by: [], full_window_citations: [], top10_weight_full: [], top1_weight_full: [], curated: [] };
 		for (let k = 0; k < n; k += 1) {
 			const year = 1990 + (k % 35);
-			c.b.push(`${year}ApJ...${String(100 + (k % 900))}..${String(100 + (k % 800))}A`);
-			c.y.push(k % 97 === 0 ? null : year);
-			c.t.push(`Observations of target ${k} with the telescope`);
-			c.a.push(`Author${k % 5000}, ${String.fromCharCode(65 + (k % 26))}.`);
-			c.c.push((k * 7919) % 5000);
-			c.s.push(1 + (k % 3));
-			c.e.push(k % 10 === 0 ? 1 : 0);
-			c.f.push(k % 5 === 0 ? null : (k * 7907) % 2000);
-			c.fe.push(k % 5 === 0 ? null : k % 9 === 0 ? 0.5 : 0);
-			c.f1.push(k % 5 === 0 ? null : k % 97 === 0 ? 1 : 0);
-			c.i.push(k % 997 === 0 ? 1 : 0);
+			c.bibcode.push(`${year}ApJ...${String(100 + (k % 900))}..${String(100 + (k % 800))}A`);
+			c.year.push(k % 97 === 0 ? null : year);
+			c.title.push(`Observations of target ${k} with the telescope`);
+			c.first_author.push(`Author${k % 5000}, ${String.fromCharCode(65 + (k % 26))}.`);
+			c.citations.push((k * 7919) % 5000);
+			c.shared_by.push(1 + (k % 3));
+			c.full_window_citations.push(k % 5 === 0 ? null : (k * 7907) % 2000);
+			c.top10_weight_full.push(k % 5 === 0 ? null : k % 9 === 0 ? 0.5 : 0);
+			c.top1_weight_full.push(k % 5 === 0 ? null : k % 97 === 0 ? 1 : 0);
+			c.curated.push(k % 997 === 0 ? 1 : 0);
 		}
 		return c;
 	}
@@ -335,7 +334,7 @@ describe('the real hst papers file', { skip: !fs.existsSync(HST_PAPERS) && 'stat
 	const file = JSON.parse(fs.readFileSync(HST_PAPERS, 'utf8'));
 
 	it('has the columns this module reads, all the declared length', () => {
-		for (const key of ['b', 'y', 'd', 't', 'a', 'c', 's', 'e', 'f', 'fe', 'f1', 'i']) {
+		for (const key of ['bibcode', 'year', 'pubdate', 'title', 'first_author', 'citations', 'shared_by', 'full_window_citations', 'top10_weight_full', 'top1_weight_full', 'curated']) {
 			assert.equal(file.columns[key]?.length, file.rows, `column ${key}`);
 		}
 	});
@@ -350,7 +349,7 @@ describe('the real hst papers file', { skip: !fs.existsSync(HST_PAPERS) && 'stat
 	});
 
 	it('derives a journal for nearly every bibcode', () => {
-		const missing = file.columns.b.filter((b) => journalFromBibcode(b) === '').length;
+		const missing = file.columns.bibcode.filter((b) => journalFromBibcode(b) === '').length;
 		assert.ok(missing / file.rows < 0.01, `${missing} of ${file.rows} bibcodes gave no journal`);
 	});
 
@@ -371,10 +370,10 @@ describe('missionsCsv', () => {
 				full: scope(0), lifetime: scope(0, null) }
 		];
 		const [header, a, b] = missionsCsv(missions, { url: (id) => `/m/${id}/` }).split('\r\n');
-		assert.equal(header, 'mission,name,launch_year,type,lcc,adjusted_lcc,status,selection,formulation_start,launch_date,science_start,active_window_start,active_window_end,active_papers,active_citations,active_top10,active_top1,lifetime_papers,lifetime_citations,lifetime_top10,lifetime_top1,h_index,g_index,url');
+		assert.equal(header, 'mission,name,launch_year,type,lcc,adjusted_lcc,status,selection,formulation_start,launch_date,science_start,active_window_start,active_window_end,active_papers,active_citations,active_top10,active_top1,lifetime_papers,lifetime_citations,h_index,g_index,url');
 		// the dates and window print even where the scope's output is unmeasured; absent ones stay blank
-		assert.equal(a, 'ALPHA,"Alpha, Jr.",2001,Orbiter,90,150,Partial Success,competed,1996-10-01,2001-04-07,2002-02-01,2002-03-01,2008-03-01,,,,,9,90,1.5,,3,4,/m/a/');
-		assert.equal(b, 'BETA,Beta,2010,Lander,120.5,151,Failure,,,,,,,0,0,1.5,0.5,0,0,1.5,,,,/m/b/');
+		assert.equal(a, 'ALPHA,"Alpha, Jr.",2001,Orbiter,90,150,Partial Success,competed,1996-10-01,2001-04-07,2002-02-01,2002-03-01,2008-03-01,,,,,9,90,3,4,/m/a/');
+		assert.equal(b, 'BETA,Beta,2010,Lander,120.5,151,Failure,,,,,,,0,0,1.5,0.5,0,0,,,/m/b/');
 		const uncosted = missionsCsv([{ ...missions[1], lcc: null, cost: null }]).split('\r\n')[1];
 		assert.match(uncosted, /^BETA,Beta,2010,Lander,,,Failure,/, 'no costs');
 	});
@@ -389,7 +388,7 @@ describe('clpsCsv', () => {
 				{ ...mission('x', 'X', null, 'Partial Success', null), launchDate: null }
 		];
 		assert.deepEqual(clpsCsv(landers, ads).split('\r\n'), [
-			'mission,name,launch_date,lcc,adjusted_lcc,status,papers,bibcode,pubdate,title,scix_url',
+			'mission,name,launch_date,lcc,adjusted_lcc,status,lifetime_papers,bibcode,pubdate,title,scix_url',
 			`PEREGRINE,Peregrine,2024-01-08,130,130.3,Failure,2,2024A,2024-09-00,"One, two",${ads('2024A')}`,
 			`PEREGRINE,Peregrine,2024-01-08,130,130.3,Failure,2,2025B,2025-01-00,,${ads('2025B')}`,
 			'BLUE GHOST M1,Blue Ghost M1,2025-01-15,174,174.3,Completed,0,,,,',

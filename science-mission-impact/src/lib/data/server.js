@@ -27,7 +27,8 @@ export async function loadMission(slug, id) {
 	return mission;
 }
 
-const scopeFields = ({ papers, citations, top10, top1, status }) => ({ papers, citations, top10, top1, status });
+const countFields = ({ papers, citations, status }) => ({ papers, citations, status });
+const scopeFields = (s) => ({ ...countFields(s), top10: s.top10, top1: s.top1 });
 /**
  * A division doc's mission row, trimmed to what the division page (its table, charts and CSV) and the
  * download page read: of the window bounds only the full window's dates (the CSV's), and no first-paper details.
@@ -37,7 +38,8 @@ export const missionFields = (m) => ({
 	failed: m.failed, shortfall: m.shortfall, status: m.status, hasThumb: m.hasThumb, selection: m.selection, dates: m.dates,
 	indices: { h: m.indices?.h ?? null, g: m.indices?.g ?? null },
 	full: { ...scopeFields(m.full), bounds: { start: m.full.bounds?.start ?? null, end: m.full.bounds?.end ?? null } },
-	lifetime: scopeFields(m.lifetime)
+	// lifetime publishes counts only: no top-10% or top-1% measure
+	lifetime: countFields(m.lifetime)
 });
 
 export const divisionEntries = () => site.divisions.map((d) => ({ division: d.slug }));

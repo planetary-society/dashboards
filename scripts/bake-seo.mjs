@@ -27,7 +27,7 @@
  * silently degraded page.
  */
 
-import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 import { escapeHtml, groupBy, parseCSV } from '../docs/shared/js/utils.js';
@@ -41,6 +41,7 @@ import { formatIsoDayLong } from '../docs/cancellations/js/chart-common.js';
 import { metaDescription } from '../docs/cancellations/js/panel-views.js';
 import { injectMarker, setJsonLdDateModified, setMetaDescription } from './bake/inject.mjs';
 import { SITE_TITLE, renderDistrictPage, renderDistrictsIndex, renderSitemap } from './bake/templates.mjs';
+import { scienceMissionPaths } from './bake/smi-pages.mjs';
 
 const repoRoot = fileURLToPath(new URL('..', import.meta.url));
 const path = (rel) => `${repoRoot}${rel}`;
@@ -210,25 +211,9 @@ if (!awards.columns.districts && !doge.columns.district) {
 
 // --- Sitemap -------------------------------------------------------------
 
-// Science Mission Impact pages come from the app's committed config and packaged
-// mission index, kept only where the committed build actually has the page.
-const readJson = (rel) => JSON.parse(readFileSync(path(rel), 'utf8'));
-const smiBuilt = (...parts) => existsSync(path(`docs/science-mission-impact/${parts.join('/')}/index.html`));
-const smiListed = [
-    ...readJson('science-mission-impact/smi.config.json').divisions.map((d) => [d.slug]),
-    ...readJson('science-mission-impact/src/lib/data/generated/index.json').map((m) => [m.division, m.id])
-];
-const smiMissing = smiListed.filter((parts) => !smiBuilt(...parts));
-if (smiMissing.length) {
-    const prefix = process.env.GITHUB_ACTIONS ? '::warning::' : 'WARNING: ';
-    console.log(`${prefix}${smiMissing.length} Science Mission Impact page(s) not built, left out of the sitemap: ${smiMissing.map((p) => p.join('/')).join(', ')}`);
-}
-const smiPages = smiListed.filter((parts) => smiBuilt(...parts));
-
 const sitemap = renderSitemap({
     districtCodes,
-    smiDivisions: smiPages.filter((p) => p.length === 1).map(([slug]) => slug),
-    smiMissions: smiPages.filter((p) => p.length === 2).map(([division, id]) => ({ division, id })),
+    smiPages: scienceMissionPaths(repoRoot),
     lastUpdated
 });
 writeFileSync(path('docs/sitemap.xml'), sitemap);

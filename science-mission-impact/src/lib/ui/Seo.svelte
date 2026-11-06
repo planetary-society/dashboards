@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/state';
-	import { canonical, SITE_ORIGIN } from '$lib/paths.js';
+	import { asset, canonical, SITE_ORIGIN } from '$lib/paths.js';
 
 	let { title, description } = $props();
 
@@ -15,6 +15,7 @@
 	<title>{fullTitle}</title>
 	<meta name="description" content={description} />
 	<link rel="canonical" href={url} />
+	<link rel="describedby" href={asset('llms.txt')} type="text/plain" />
 	<meta name="twitter:title" content={fullTitle} />
 	<meta name="twitter:description" content={description} />
 	<meta name="twitter:image" content={image} />

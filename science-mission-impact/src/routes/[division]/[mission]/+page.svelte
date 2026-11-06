@@ -11,18 +11,21 @@
 	import CurationLists from '$lib/mission/CurationLists.svelte';
 	import PaperBrowser from '$lib/mission/PaperBrowser.svelte';
 	import { hasReconciliation } from '$lib/mission/query.js';
+	import { measured } from '$lib/mission/papers.js';
 	import { divisionHref, thumbSrc, mapsUrl, methodsHref } from '$lib/paths.js';
 	import { FOOTNOTES, noteText } from '$lib/copy/footnotes.js';
-	import { int, yearSpan } from '$lib/format.js';
-	import { view } from '$lib/state/view.svelte.js';
+	import { int } from '$lib/format.js';
+	import { scopeLabel } from '$lib/copy/window.js';
 	import { missionLine, missionMeasureGroups, scopeSpans } from '$lib/copy/measures.js';
 
 	let { data } = $props();
 	const m = $derived(data.mission);
 	const site = $derived(data.site);
 	const f = $derived(m.facts);
+	const scoped = $derived(m[data.scope]);
+	const heading = $derived(m.fullName.toLowerCase().includes(m.name.toLowerCase()) ? m.fullName : `${m.fullName} (${m.name})`);
 	const description = $derived(
-		`${m.fullName}: ${int(f.papers)} tracked peer-reviewed publications and ${int(f.citations)} citations${f.publicationYears ? `, ${yearSpan(f.publicationYears)}` : ''}.`
+		`${m.fullName}: ${!measured(scoped) || scoped.papers == null || scoped.citations == null ? 'publication and citation measures unavailable' : `${int(scoped.papers)} tracked peer-reviewed publications and ${int(scoped.citations)} citations`} in the ${scopeLabel(data.scope)} scope. Data as of ${site.asOf}.`
 	);
 	// Under the name, one quiet line of catalog facts, the cost last with its definition.
 	const line = $derived(missionLine(m.meta, site));
@@ -46,21 +49,20 @@
 	);
 </script>
 
-<Seo title={m.name} {description} />
+<Seo title={`${m.fullName}: Cost, Publications and Citations — ${scopeLabel(data.scope)}`} {description} />
 
 <div class="wrap page">
-	<EntityHeader name={m.name} crumb={{ href: divisionHref(m.division), label: m.divisionName }} thumb={m.hasThumb ? thumbSrc(m.id) : null} second={line.lead || line.cost ? secondLine : null} rule={false} children={note ? noteLine : null} />
+	<EntityHeader name={heading} crumb={{ href: divisionHref(m.division, data.scope), label: m.divisionName }} thumb={m.hasThumb ? thumbSrc(m.id) : null} second={line.lead || line.cost || m.meta.wikipedia ? secondLine : null} rule={false} children={note ? noteLine : null} />
 	{#snippet noteLine()}{note}{/snippet}
 	<!-- the cost and its "i" never wrap apart -->
-	{#snippet secondLine()}{line.lead}{#if line.cost}<span class="nowrap">{line.cost}<Hint label="life-cycle cost" text={noteText(['cost'], site)} href={methodsHref(FOOTNOTES.cost.anchor)} /></span>{/if}{/snippet}
+	{#snippet secondLine()}{line.lead}{#if line.cost}<span class="nowrap">{line.cost}<Hint label="life-cycle cost" text={noteText(['cost'], site)} href={methodsHref(FOOTNOTES.cost.anchor)} /></span>{/if}{#if m.meta.wikipedia}{line.lead || line.cost ? ' · ' : ''}<a href={m.meta.wikipedia} rel="external">Wikipedia</a>{/if}{/snippet}
 
-	<!-- The scope bar sticks over the whole column; the charts and provenance don't read view.scope and simply scroll under it. -->
+	<!-- The scope bar sticks over the whole column; the charts and provenance don’t read the scope and simply scroll under it. -->
 	<div class="scoped">
+		<ScopeSwitch {site} spans={scopeSpans(m, site)} />
 		{#if f.papers > 0}
-			<ScopeSwitch {site} spans={scopeSpans(m, site)} />
-
-			<section class="measures" aria-label="Key measures">
-				<MeasureTable groups={missionMeasureGroups(m, view.scope, site)} />
+			<section class="measures" aria-label={`Key measures: ${scopeLabel(data.scope)}`}>
+				<MeasureTable groups={missionMeasureGroups(m, data.scope, site)} />
 			</section>
 		{/if}
 
@@ -69,13 +71,13 @@
 			<div class="pair">
 				{#if f.papers > 0}
 					<section>
-						<h2 class="chart-title">Publications and citations by year</h2>
+						<h2 class="chart-title">Publications and citations by year (lifetime)</h2>
 						<LifetimeTimeline series={m.lifetimeSeries} />
 					</section>
 				{/if}
 				{#if m.affiliations}
 					<section>
-						<h2 class="chart-title">Institutional contributions<Hint label="this map" text={noteText(['affiliations'], site)} href={methodsHref(FOOTNOTES.affiliations.anchor)} /></h2>
+						<h2 class="chart-title">Institutional contributions (lifetime)<Hint label="this map" text={noteText(['affiliations'], site)} href={methodsHref(FOOTNOTES.affiliations.anchor)} /></h2>
 						<!-- the by-year chart's 300px beside it, less the map's toggle row and its gaps -->
 						<AffiliationMap summary={m.affiliations} url={mapsUrl('missions', m.id)} maxHeight={262} />
 					</section>
@@ -87,7 +89,7 @@
 			<MostCited paper={m.mostCited} />
 
 			<section>
-				<h2 class="chart-title">Tracked publications ({int(f.papers)})</h2>
+				<h2 class="chart-title">Tracked publications over the lifetime ({int(f.papers)})</h2>
 				<PaperBrowser missionId={m.id} name={m.name} initial={m.topCited} file={m.papersFile} />
 			</section>
 		{/if}

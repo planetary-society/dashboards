@@ -63,7 +63,7 @@
 	// docs/CORPUS_STATS.md, docs/metrics.md and the packaged snapshot, not draft totals.
 </script>
 
-<Seo title="Methods" {description} />
+<Seo title="NASA Mission Impact: Data and Methods" {description} />
 
 <div class="wrap page">
 	<EntityHeader name="Methods" second={`Data as of ${longDate(site.asOf)}.`}>

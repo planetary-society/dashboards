@@ -56,9 +56,9 @@ export function perDollarLayout(tiles, W, H, { divisions, averages = null, x = n
 	const padTop = single ? 8 : compact ? 4 : 12;
 
 	// measured as the packager reads it (`measuredIn`): a tile with a cost and output that isn't
-	// missing; eligible empty failures remain measured zeros
+	// missing (citations null exactly when the scope is unmeasured); eligible empty failures remain measured zeros
 	const slugs = new Set(divisions.map((d) => d.slug));
-	const placed = tiles.filter((t) => slugs.has(t.division) && t.cost > 0 && t.citations != null && t.top10 != null).sort(byCostThenId);
+	const placed = tiles.filter((t) => slugs.has(t.division) && t.cost > 0 && t.citations != null).sort(byCostThenId);
 	const rate = (t) => (citations ? t.citations : (t.citations / t.cost) * 100);
 	const rates = placed.filter((t) => t.citations > 0).map(rate);
 	if (!citations && averages) rates.push(...divisions.flatMap((d) => (averages.get(d.slug)?.points ?? []).map((p) => p[1]).filter((v) => v > 0)));

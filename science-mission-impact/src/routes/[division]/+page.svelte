@@ -10,8 +10,8 @@
 	import PerDollarScatter from '$lib/charts/PerDollarScatter.svelte';
 	import LifetimeTimeline from '$lib/charts/LifetimeTimeline.svelte';
 	import AffiliationMap from '$lib/charts/AffiliationMap.svelte';
-	import { int, money, yearSpan } from '$lib/format.js';
-	import { view } from '$lib/state/view.svelte.js';
+	import { int, money } from '$lib/format.js';
+	import { scopeLabel } from '$lib/copy/window.js';
 	import { divisionIntro } from '$lib/copy/divisions.js';
 	import { FOOTNOTES, noteText } from '$lib/copy/footnotes.js';
 	import { methodsHref, mapsUrl } from '$lib/paths.js';
@@ -20,36 +20,36 @@
 	const d = $derived(data.division);
 	const site = $derived(data.site);
 	const f = $derived(d.facts);
-	const story = $derived(data.scopes[view.scope]);
+	const stats = $derived(d.stats); // this scope only, like the series
 	/** Props for the "i" beside a term: one definition each. */
 	const tip = (id) => ({ text: noteText([id], site), href: methodsHref(FOOTNOTES[id].anchor) });
 	const description = $derived(
-		`${int(f.missions)} NASA ${d.name} missions with ${int(f.papers)} tracked peer-reviewed publications and ${int(f.citations)} citations, ${yearSpan(f.publicationYears)}.`
+		`${int(f.missions)} NASA ${d.name} missions: ${int(stats.papers)} tracked peer-reviewed publications and ${int(stats.citations)} citations in the ${scopeLabel(data.scope)} scope. Data as of ${site.asOf}.`
 	);
 </script>
 
-<Seo title={d.name} {description} />
+<Seo title={`${d.name} Mission Costs and Scientific Impact — ${scopeLabel(data.scope)}`} {description} />
 
 <div class="wrap page">
 	<EntityHeader name={d.name} rule={false}>
 		<span class="intro">{divisionIntro[d.slug]}</span>
 	</EntityHeader>
 
-	<!-- The scope bar sticks over every section that reads view.scope. -->
+	<!-- The scope bar sticks over every section that reads the scope. -->
 	<div class="scoped">
 		<ScopeSwitch {site} />
 
 		<section id="stats" class="part pair" aria-label="Output and cost">
 			<div class="chart">
 				<h3 class="chart-title">Publications and citations by year</h3>
-				<LifetimeTimeline series={d.series[view.scope]} />
+				<LifetimeTimeline series={d.series} />
 			</div>
 
 			<!-- A division with nothing to compare (no comparison rows) gets the by-year chart only. -->
-			{#if story.comparison}
+			{#if data.compare}
 				<div class="chart">
 					<h3 class="chart-title">Citations per {money(100)}, by mission<Hint label="this chart" {...tip('perDollarChart')} /></h3>
-					<PerDollarScatter missions={d.missions} slug={d.slug} scope={view.scope} average={story.perDollar?.runningMean ?? null} />
+					<PerDollarScatter missions={d.missions} slug={d.slug} scope={data.scope} average={data.compare.average} />
 				</div>
 			{/if}
 		</section>
@@ -57,7 +57,7 @@
 		<section id="missions" class="part" aria-labelledby="missions-title">
 			<h2 id="missions-title" class="part-title">Missions</h2>
 			<div class="table">
-				<MissionTable missions={d.missions} slug={d.slug} {site} scope={view.scope} rankable={d.rankable} />
+				<MissionTable missions={d.missions} slug={d.slug} {site} scope={data.scope} rankable={d.rankable} />
 			</div>
 			<p class="meta source">How we found the papers, counted citations, and set costs: <a href={methodsHref()}>Methods</a>.</p>
 		</section>

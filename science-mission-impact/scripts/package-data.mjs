@@ -336,6 +336,13 @@ export function loadRuns(rawDir, config, warnings, source = loadSourceCatalog(ra
 
 // ----------------------------------------------------------- mission stage
 
+/** The catalog's Wikipedia article, linked from the mission page; anything but an https Wikipedia article fails packaging. */
+export function wikipediaOf(url, id) {
+	if (url == null || url === '') return null;
+	if (!/^https:\/\/[a-z-]+\.wikipedia\.org\/wiki\/[^\s"<>]+$/.test(url)) throw new PackagingError(`${id}: wikipedia_url is not a Wikipedia article: ${url}`);
+	return url;
+}
+
 /**
  * One mission: its generated/missions/<id>.json (written here, because the
  * document is the biggest thing in the run and nothing else needs it in
@@ -534,11 +541,11 @@ export function buildMissionDoc({
 		pubdates
 	});
 	assertColumnLengths(papersFile);
-	// Per-paper citations by scope; null in f marks a row outside that cohort. The prime window is in
+	// Per-paper citations by scope; null in full_window_citations marks a row outside that cohort. The prime window is in
 	// the packaged docs but no page reads it per paper, so its citations come from its own table.
 	const inScope = {
-		lifetime: papersFile.columns.c,
-		full: papersFile.columns.f.filter((c) => c !== null),
+		lifetime: papersFile.columns.citations,
+		full: papersFile.columns.full_window_citations.filter((c) => c !== null),
 		window: lifetimeRows.flatMap((row) => (windowRows.has(row.bibcode) ? [Number(windowRows.get(row.bibcode).window_citations ?? 0)] : []))
 	};
 	const spreads = {};
@@ -595,6 +602,7 @@ export function buildMissionDoc({
 			program: corpus.mission?.program ?? null,
 			target: corpus.mission?.mission_target ?? null,
 			launchVehicle: corpus.mission?.launch_vehicle ?? null,
+			wikipedia: wikipediaOf(corpus.mission?.wikipedia_url, id),
 			dates: {
 				formulation,
 				launch: launchDate,

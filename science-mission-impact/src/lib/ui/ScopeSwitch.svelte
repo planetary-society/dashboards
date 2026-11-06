@@ -3,23 +3,27 @@
 	// nav while the sections it drives scroll, and lets go when the wrapper ends. The division and
 	// mission pages both mount this one control, so the options are the view's own SCOPES.
 	import Choice from './Choice.svelte';
+	import { browser } from '$app/environment';
+	import { page } from '$app/state';
 	import { scopeLabel, scopeGloss } from '$lib/copy/window.js';
 	import { FOOTNOTES } from '$lib/copy/footnotes.js';
 	import { methodsHref } from '$lib/paths.js';
-	import { view, setScope, SCOPES } from '$lib/state/view.svelte.js';
+	import { view } from '$lib/state/view.svelte.js';
+	import { SCOPES, scopeLocation, scopePath } from '$lib/state/scope.js';
 
 	/** spans: optional per-scope sentences (the mission page's own dates) appended to each hint. */
 	let { site, spans = {} } = $props();
 	const SHORT = { full: 'Active', lifetime: 'Lifetime' };
 	const options = $derived(SCOPES.map((value) => ({
 		value, short: SHORT[value], label: scopeLabel(value),
+		href: browser ? scopeLocation(page.url, value) : scopePath(page.url.pathname, value),
 		hint: { text: [scopeGloss(value, site), spans[value]].filter(Boolean).join(' '), href: methodsHref(FOOTNOTES[value].anchor) }
 	})));
 </script>
 
 <div class="bar">
 	<span class="label">Scope</span>
-	<Choice label="Scope" value={view.scope} onchange={setScope} {options} />
+	<Choice label="Scope" value={view.scope} {options} />
 </div>
 
 <style>

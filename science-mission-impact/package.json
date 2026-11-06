@@ -12,6 +12,7 @@
     "data": "node scripts/package-data.mjs",
     "thumbs": "NODE_USE_ENV_PROXY=1 node scripts/fetch-thumbs.mjs",
     "test": "node --test \"scripts/tests/*.test.mjs\" \"src/lib/**/*.test.mjs\"",
+    "check:site": "node scripts/check-site.mjs",
     "refresh": "node scripts/refresh.mjs"
   },
   "devDependencies": {

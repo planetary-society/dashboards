@@ -1,3 +1,9 @@
+<script module>
+	// The active and lifetime views are separate routes, so a scope switch remounts this list. The
+	// last loaded file and the reader's search and filters outlive that, one mission at a time.
+	let kept = null;
+</script>
+
 <script>
 	// Every publication behind a mission's numbers.
 	//
@@ -5,27 +11,30 @@
 	// On request: the whole columnar file (up to ~19k rows), fetched once and kept
 	// columnar. Filtering and sorting run over an index of integers and only the
 	// first hundred rows are ever built into objects, so the list stays quick.
+	import { untrack } from 'svelte';
 	import Num from '$lib/ui/Num.svelte';
 	import Choice from '$lib/ui/Choice.svelte';
-	import { scixAbstract, papersUrl } from '$lib/paths.js';
+	import { exportUrl, scixAbstract, papersUrl } from '$lib/paths.js';
 	import { int, plural } from '$lib/format.js';
 	import { view } from '$lib/state/view.svelte.js';
-	import { buildSearchIndex, filterIndex, sortIndex, rowsFor, journalFromBibcode, toCsv } from './papers.js';
-	import { downloadText } from '$lib/download.js';
+	import { buildSearchIndex, filterIndex, sortIndex, rowsFor, journalFromBibcode } from './papers.js';
 
 	let { missionId, name, initial, file } = $props();
 
 	const PAGE = 100;
 	const uid = $props.id();
 
-	let columns = $state.raw(null); // raw: 15 arrays of ~19k values, never a reactive proxy
-	let total = $state(0);
-	let status = $state('idle'); // idle | loading | error | ready
+	// A remounted list (same mission, other scope) starts where the reader left it.
+	const saved = untrack(() => (kept?.missionId === missionId ? kept : null));
 
-	let typed = $state('');
-	let search = $state(''); // debounced
-	let sort = $state('cited');
-	let topOnly = $state(false);
+	let columns = $state.raw(saved?.columns ?? null); // raw: 15 arrays of ~19k values, never a reactive proxy
+	let total = $state(saved?.total ?? 0);
+	let status = $state(saved ? 'ready' : 'idle'); // idle | loading | error | ready
+
+	let typed = $state(saved?.search ?? '');
+	let search = $state(saved?.search ?? ''); // debounced
+	let sort = $state(saved?.sort ?? 'cited');
+	let topOnly = $state(saved?.topOnly ?? false);
 	let limit = $state(PAGE);
 
 	let debounce;
@@ -47,24 +56,33 @@
 		}))
 	);
 
+	// Deriveds, so an unrelated URL change (a hash) does not re-filter the list.
+	const scope = $derived(view.scope);
+	const top = $derived(view.top);
 	const haystack = $derived(columns ? buildSearchIndex(columns) : null);
 	// Sorted once per sort change; each keystroke only filters that order.
-	const order = $derived(columns ? sortIndex(columns.b.map((_, i) => i), columns, { sort }) : null);
+	const order = $derived(columns ? sortIndex(columns.bibcode.map((_, i) => i), columns, { sort }) : null);
 	const result = $derived(
-		columns ? filterIndex(columns, { search, topOnly, scope: view.scope, top: view.top, haystack, order }) : []
+		columns ? filterIndex(columns, { search, topOnly, scope, top, haystack, order }) : []
 	);
-	const rows = $derived(columns ? rowsFor(columns, result, 0, limit, view.scope) : initialRows);
+	const rows = $derived(columns ? rowsFor(columns, result, 0, limit, scope) : initialRows);
 
-	const showWindow = $derived(loaded && view.scope !== 'lifetime');
-	// Even a short list loads its file: that is where search, the top-10% marks and the CSV live.
+	// The active window has window citations and top-paper marks; lifetime shows lifetime citations only.
+	const windowed = $derived(scope !== 'lifetime');
+	const showWindow = $derived(loaded && windowed);
+	// Even a short list loads its file: that is where search and the top-10% marks live.
 	const canLoadAll = $derived(!!file);
 	const hasMore = $derived(file && file.rows > (initial?.length ?? 0));
 
 	// Any change to what the list contains starts the reader back at the first hundred.
-	const resultKey = $derived(`${search}|${sort}|${topOnly}|${view.scope}|${view.top}`);
+	const resultKey = $derived(`${search}|${sort}|${topOnly}|${scope}|${top}`);
 	$effect(() => {
 		void resultKey;
 		limit = PAGE;
+	});
+
+	$effect(() => {
+		if (columns) kept = { missionId, columns, total, search, sort, topOnly };
 	});
 
 	async function loadAll() {
@@ -74,7 +92,7 @@
 			if (!response.ok) throw new Error(`HTTP ${response.status}`);
 			const papers = await response.json();
 			columns = papers.columns;
-			total = papers.rows ?? papers.columns.b.length;
+			total = papers.rows ?? papers.columns.bibcode.length;
 			status = 'ready';
 		} catch {
 			status = 'error';
@@ -85,11 +103,6 @@
 		typed = event.currentTarget.value;
 		clearTimeout(debounce);
 		debounce = setTimeout(() => (search = typed), 120);
-	}
-
-	function downloadCsv() {
-		if (!columns) return;
-		downloadText(toCsv(columns, scixAbstract), `${missionId}-publications.csv`);
 	}
 
 	function metaLine(r) {
@@ -104,6 +117,9 @@
 </script>
 
 <div class="browser">
+	{#if file}
+		<p class="downloads"><a class="link" href={exportUrl(`${missionId}-publications.csv`)} download>All publications CSV</a> · <a class="link" href={papersUrl(missionId)} download>JSON</a></p>
+	{/if}
 	{#if loaded}
 		<div class="controls">
 			<div class="field">
@@ -122,16 +138,17 @@
 				]}
 			/>
 
-			<button type="button" class="toggle" aria-pressed={topOnly} onclick={() => (topOnly = !topOnly)}>Top-{view.top}% papers only</button>
+			{#if windowed}<button type="button" class="toggle" aria-pressed={topOnly} onclick={() => (topOnly = !topOnly)}>Top-{top}% papers only</button>{/if}
 
 			<p class="meta readout" aria-live="polite">{int(result.length)} of {int(total)}</p>
 
-			<button type="button" class="link csv" onclick={downloadCsv}>Download CSV</button>
 		</div>
 		<p class="meta legend" aria-hidden="true">
-			<span><span class="tier on"></span>Top-10% paper</span>
-			<span><span class="tier on partial"></span>Partial top-10% credit</span>
-			<span><span class="tier on one"></span>Top-1% paper</span>
+			{#if windowed}
+				<span><span class="tier on"></span>Top-10% paper</span>
+				<span><span class="tier on partial"></span>Partial top-10% credit</span>
+				<span><span class="tier on one"></span>Top-1% paper</span>
+			{/if}
 			<span>Citations: lifetime{showWindow ? ', and within the window' : ''}</span>
 		</p>
 	{/if}
@@ -148,7 +165,7 @@
 				</p>
 				<p class="meta">{metaLine(r)}</p>
 				<p class="cites">
-					<Num value={int(r.citations)} /><span class="unit meta">{' '}{plural(r.citations, 'citation')}</span>
+					<Num value={int(r.citations)} /><span class="unit meta">{' '}lifetime {plural(r.citations, 'citation')}</span>
 					{#if showWindow}
 						<span class="meta win"><Num value={r.windowCitations == null ? '—' : int(r.windowCitations)} /> in window</span>
 					{/if}
@@ -170,7 +187,7 @@
 				<button type="button" class="link" onclick={loadAll}>Try again.</button>
 			{:else}
 				<button type="button" class="link" disabled={status === 'loading'} onclick={loadAll}>
-					{status === 'loading' ? 'Loading…' : hasMore ? `Show all ${int(file.rows)} tracked publications` : 'Search, mark top-10% papers or download CSV'}
+					{status === 'loading' ? 'Loading…' : hasMore ? `Show all ${int(file.rows)} tracked publications` : windowed ? 'Search or mark top-10% papers' : 'Search tracked publications'}
 				</button>
 			{/if}
 		</p>
@@ -181,6 +198,7 @@
 	.browser {
 		margin-top: 20px;
 	}
+	.downloads { margin-bottom: 16px; }
 
 	.controls {
 		display: flex;

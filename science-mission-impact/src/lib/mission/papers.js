@@ -31,8 +31,8 @@ export function journalFromBibcode(bibcode) {
  * @returns {string[]}
  */
 export function buildSearchIndex(columns) {
-	const titles = columns.t;
-	const authors = columns.a;
+	const titles = columns.title;
+	const authors = columns.first_author;
 	const n = titles.length;
 	const out = new Array(n);
 	for (let i = 0; i < n; i += 1) {
@@ -44,19 +44,20 @@ export function buildSearchIndex(columns) {
 }
 
 /**
- * Column keys per scope: citations counted in the scope, top-10% weight, pooled
- * top-1% weight. Lifetime has no top 1%; the view never pairs them, and if asked it reads
- * the full-mission window. The files carry no prime-window columns, so that scope reads full too.
+ * Column keys per scope: citations counted in the scope, top-10% weight, pooled top-1% weight.
+ * Lifetime publishes no top-10% or top-1% measure, so it has no weight columns: rows report no top
+ * paper and a top-papers filter passes every row. The files carry no prime-window columns, so that
+ * scope reads full too.
  */
 const SCOPE_COLUMNS = {
-	full: { cited: 'f', top10: 'fe', top1: 'f1' },
-	lifetime: { cited: 'c', top10: 'e', top1: 'f1' }
+	full: { cited: 'full_window_citations', top10: 'top10_weight_full', top1: 'top1_weight_full' },
+	lifetime: { cited: 'citations' }
 };
 const keysFor = (scope) => SCOPE_COLUMNS[scope] ?? SCOPE_COLUMNS.full;
 
 /**
  * The tie-weight column that decides "is this paper a top paper" for a given
- * view: top 1% exists in the two windowed scopes only; top 10% exists in every scope.
+ * view: both exist in the windowed scopes only (undefined for lifetime).
  *
  * @param {import('../data/types.d.ts').PapersFile['columns']} columns
  * @param {import('../data/types.d.ts').Scope} scope
@@ -78,7 +79,7 @@ export function topColumn(columns, scope, top) {
  */
 export function filterIndex(columns, options = {}) {
 	const { search = '', topOnly = false, scope = 'full', top = 10, haystack = null, order = null } = options;
-	const n = order ? order.length : columns.b.length;
+	const n = order ? order.length : columns.bibcode.length;
 	const needle = String(search ?? '')
 		.trim()
 		.toLowerCase();
@@ -122,9 +123,9 @@ const compareStrings = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 export function sortIndex(index, columns, options = {}) {
 	const { sort = 'cited' } = options;
 	const out = index.slice();
-	const citations = columns.c;
-	const years = columns.y;
-	const bibcodes = columns.b;
+	const citations = columns.citations;
+	const years = columns.year;
+	const bibcodes = columns.bibcode;
 
 	const tieBreak = (i, j) => {
 		const d = (citations[j] ?? 0) - (citations[i] ?? 0);
@@ -157,24 +158,23 @@ export function sortIndex(index, columns, options = {}) {
  * @param {import('../data/types.d.ts').Scope} [scope] which window and weights drive the row
  */
 export function rowAt(columns, i, scope = 'full') {
-	const bibcode = columns.b[i];
+	const bibcode = columns.bibcode[i];
 	const keys = keysFor(scope);
-	const top10 = columns[keys.top10][i];
-	const shared = Number(columns.s[i] ?? 1);
+	const shared = Number(columns.shared_by[i] ?? 1);
 	return {
 		i,
 		bibcode,
-		year: columns.y[i],
-		title: columns.t[i],
-		firstAuthor: columns.a[i],
-		citations: columns.c[i],
+		year: columns.year[i],
+		title: columns.title[i],
+		firstAuthor: columns.first_author[i],
+		citations: columns.citations[i],
 		windowCitations: scope === 'lifetime' ? null : columns[keys.cited][i],
 		shared,
 		sharedWith: shared > 1 ? shared - 1 : 0,
-		addedByHand: columns.i[i] === 1,
+		addedByHand: columns.curated[i] === 1,
 		journal: journalFromBibcode(bibcode),
-		top10: top10 ?? 0,
-		top1: (columns[keys.top1][i] ?? 0) > 0
+		top10: keys.top10 ? (columns[keys.top10][i] ?? 0) : 0,
+		top1: keys.top1 ? (columns[keys.top1][i] ?? 0) > 0 : false
 	};
 }
 
@@ -193,7 +193,6 @@ export const CSV_HEADER = [
 	'title',
 	'first_author',
 	'citations',
-	'top10_weight_lifetime',
 	'full_window_citations',
 	'top10_weight_full',
 	'top1_weight_full',
@@ -216,36 +215,35 @@ export function csvField(value) {
  * @param {number[] | null} [index] optional subset, in the order given
  */
 export function toCsv(columns, adsUrl = (b) => b, index = null) {
-	const n = columns.b.length;
+	const n = columns.bibcode.length;
 	const lines = new Array((index ? index.length : n) + 1);
 	lines[0] = CSV_HEADER.join(',');
 	for (let k = 0; k < lines.length - 1; k += 1) {
 		const i = index ? index[k] : k;
 		lines[k + 1] = [
-			csvField(columns.b[i]),
-			csvField(columns.y[i]),
-			csvField(columns.d[i]),
-			csvField(columns.t[i]),
-			csvField(columns.a[i]),
-			csvField(columns.c[i]),
-			csvField(columns.e[i]),
-			csvField(columns.f[i]),
-			csvField(columns.fe[i]),
-			csvField(columns.f1[i]),
-			csvField(columns.s[i]),
-			csvField(adsUrl(columns.b[i]))
+			csvField(columns.bibcode[i]),
+			csvField(columns.year[i]),
+			csvField(columns.pubdate[i]),
+			csvField(columns.title[i]),
+			csvField(columns.first_author[i]),
+			csvField(columns.citations[i]),
+			csvField(columns.full_window_citations[i]),
+			csvField(columns.top10_weight_full[i]),
+			csvField(columns.top1_weight_full[i]),
+			csvField(columns.shared_by[i]),
+			csvField(adsUrl(columns.bibcode[i]))
 		].join(',');
 	}
 	return lines.join('\r\n');
 }
 
-/** The reader's scopes as the CSV names them, after the reader-facing names. */
-const MISSION_SCOPES = [['full', 'active'], ['lifetime', 'lifetime']];
+/** The reader's scopes as the CSV names them, after the reader-facing names, with the fields each publishes. */
+const MISSION_SCOPES = [['full', 'active', ['papers', 'citations', 'top10', 'top1']], ['lifetime', 'lifetime', ['papers', 'citations']]];
 /** A mission's figures in one scope count only when the scope is measured: the packager's own rule for its averages and totals. */
 export const measured = (s) => s != null && (s.status ?? 'available') === 'available';
 
 /**
- * A division's missions as CSV, CRLF-delimited: both scopes and both tiers, so a page that shows
+ * A division's missions as CSV, CRLF-delimited: both scopes (the active window with both tiers), so a page that shows
  * one scope at a time hides nothing. Unmeasured output stays blank, never zero. Each mission is named
  * by its upstream short title (`mission`, the key every CSV shares), then by its name on the site. Costs
  * are the catalog's life-cycle cost as reported (`lcc`) and in base-year dollars (`adjusted_lcc`), both
@@ -257,15 +255,15 @@ export const measured = (s) => s != null && (s.status ?? 'available') === 'avail
 export function missionsCsv(missions, { url = (id) => id } = {}) {
 	const header = ['mission', 'name', 'launch_year', 'type', 'lcc', 'adjusted_lcc', 'status',
 		'selection', 'formulation_start', 'launch_date', 'science_start', 'active_window_start', 'active_window_end'];
-	for (const [, name] of MISSION_SCOPES) header.push(`${name}_papers`, `${name}_citations`, `${name}_top10`, `${name}_top1`);
+	for (const [, name, fields] of MISSION_SCOPES) header.push(...fields.map((f) => `${name}_${f}`));
 	header.push('h_index', 'g_index', 'url');
 	const lines = [header.join(',')];
 	for (const m of missions) {
 		const row = [m.shortTitle, m.name, m.launchYear, m.type, m.lcc, m.cost, m.status,
 			m.selection, m.dates?.formulation, m.dates?.launch, m.dates?.scienceStart, m.full?.bounds?.start, m.full?.bounds?.end];
-		for (const [key] of MISSION_SCOPES) {
+		for (const [key, , fields] of MISSION_SCOPES) {
 			const s = m[key];
-			row.push(...(measured(s) ? [s.papers, s.citations, s.top10, s.top1] : [null, null, null, null]));
+			row.push(...fields.map((f) => (measured(s) ? s[f] : null)));
 		}
 		row.push(m.indices?.h, m.indices?.g, url(m.id));
 		lines.push(row.map(csvField).join(','));
@@ -281,7 +279,7 @@ export function missionsCsv(missions, { url = (id) => id } = {}) {
  * @param {(bibcode: string) => string} adsUrl
  */
 export function clpsCsv(landers, adsUrl) {
-	const lines = [['mission', 'name', 'launch_date', 'lcc', 'adjusted_lcc', 'status', 'papers', 'bibcode', 'pubdate', 'title', 'scix_url'].join(',')];
+	const lines = [['mission', 'name', 'launch_date', 'lcc', 'adjusted_lcc', 'status', 'lifetime_papers', 'bibcode', 'pubdate', 'title', 'scix_url'].join(',')];
 	for (const m of landers) {
 		// papers blank when the output is unavailable, so it never reads as a measured zero
 		const lead = [m.shortTitle, m.name, m.launchDate, m.lcc, m.cost, m.status, m.papers ? m.papers.b.length : null];

@@ -1,46 +1,16 @@
 import { browser } from '$app/environment';
-import { replaceState } from '$app/navigation';
+import { goto } from '$app/navigation';
+import { page } from '$app/state';
+import { legacyScopeLocation } from './scope.js';
 
-// Reader's choice of scope and percentile. Lives in the URL (?scope=&top=) so a view can be
-// shared, and in module state so it carries across pages. Pages are prerendered, so the
-// URL is only read in the browser.
-const DEFAULTS = { scope: 'full', top: 10 };
-/** The scopes a reader can pick, in switch order; the prime-phase `window` stays in the packaged data only. */
-export const SCOPES = ['full', 'lifetime'];
+// Route data is request-local and identical in prerendered HTML and the hydrated page.
+export const view = {
+	get scope() { return page.data.scope ?? 'full'; },
+	get top() { return browser && this.scope === 'full' && page.url.searchParams.get('top') === '1' ? 1 : 10; }
+};
 
-export const view = $state({ ...DEFAULTS });
-
-/** Top 1% exists only for the windowed scope, so choosing one can move the other. */
-export function setScope(scope) {
-	view.scope = scope;
-	if (scope === 'lifetime') view.top = 10;
-	writeUrl();
-}
-
-export function setTop(top) {
-	view.top = top;
-	if (top === 1 && view.scope === 'lifetime') view.scope = 'full';
-	writeUrl();
-}
-
-export function readUrl() {
-	if (!browser) return;
-	const q = new URLSearchParams(window.location.search);
-	const scope = q.get('scope');
-	const top = Number(q.get('top'));
-	if (SCOPES.includes(scope)) view.scope = scope;
-	if (top === 10 || top === 1) view.top = top;
-	if (view.top === 1 && view.scope === 'lifetime') view.scope = 'full';
-}
-
-/** Re-apply the current view to the address bar (after a navigation, or a change). */
-export function writeUrl() {
-	if (!browser) return;
-	const url = new URL(window.location.href);
-	url.searchParams.delete('x'); // Old shared links now use the continuous cost view.
-	for (const key of ['scope', 'top']) {
-		if (view[key] === DEFAULTS[key]) url.searchParams.delete(key);
-		else url.searchParams.set(key, String(view[key]));
-	}
-	if (url.href !== window.location.href) replaceState(url, {});
+/** afterNavigate hook (browser only): old base-page `?scope=` links move to their scope's path. */
+export function redirectLegacyScope() {
+	const next = legacyScopeLocation(page.url, page.data.scope);
+	if (next) return goto(next, { replaceState: true, noScroll: true, keepFocus: true });
 }

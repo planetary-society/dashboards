@@ -115,7 +115,7 @@
 
 {#snippet nc(c = 'c')}N<sub>{c}</sub>{/snippet}
 
-<Seo title="Analysis" {description} />
+<Seo title="NASA Mission Costs and Scientific Productivity: Analysis" {description} />
 
 <div class="wrap page">
 	<EntityHeader name="Analysis" second={`A. H. D. Koeppel and C. Dreier, The Planetary Society. Data as of ${apDate(site.asOf)}.`}>

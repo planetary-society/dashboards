@@ -6,13 +6,15 @@
 	import Num from './Num.svelte';
 	import Hint from './Hint.svelte';
 	import { FOOTNOTES, noteText } from '$lib/copy/footnotes.js';
-	import { canonical, methodsHref, missionHref, thumbSrc } from '$lib/paths.js';
-	import { missionsCsv } from '$lib/mission/papers.js';
-	import { downloadText } from '$lib/download.js';
+	import { scopeLabel } from '$lib/copy/window.js';
+	import { exportUrl, methodsHref, missionHref, thumbSrc } from '$lib/paths.js';
 	import { int, weight, money } from '$lib/format.js';
 
 	// rankable: false for a division too small to rank, which has no top-10% papers to show
 	let { missions, slug, site, scope = 'full', rankable = true } = $props();
+
+	// Top-10% papers are the active window's measure; the lifetime view has no such column.
+	const ranked = $derived(rankable && scope !== 'lifetime');
 
 	let sort = $state({ key: 'launch', dir: 1 });
 
@@ -48,8 +50,6 @@
 	}
 	const ariaSort = (key) => (sort.key !== key ? 'none' : sort.dir === 1 ? 'ascending' : 'descending');
 
-	// links on the live site, as the download page's copy of this file has them
-	const downloadCsv = () => downloadText(missionsCsv(missions, { url: (id) => canonical(missionHref(slug, id)) }), `${slug}-missions.csv`);
 </script>
 
 {#snippet th(key, label, cls = '', notes = null)}
@@ -61,11 +61,11 @@
 {/snippet}
 
 <div class="tools">
-	<button type="button" class="link" onclick={downloadCsv}>Download CSV</button>
+	<a class="link" href={exportUrl(`${slug}-missions.csv`)} download>Download CSV</a>
 </div>
 
 <table>
-	<caption class="sr-only">Missions, earliest launch first</caption>
+	<caption class="sr-only">Missions — {scopeLabel(scope)}, earliest launch first</caption>
 	<thead>
 		<tr>
 			<th class="thumb"><span class="sr-only">Image</span></th>
@@ -73,9 +73,9 @@
 			{@render th('launch', 'Launch', 'num wide')}
 			{@render th('type', 'Type', 'type wide')}
 			{@render th('cost', `LCC (${site.costBaseYear} $)`, 'num mid', ['cost'])}
-			{@render th('papers', 'Publications', rankable ? 'num mid' : 'num', ['publications'])}
+			{@render th('papers', 'Publications', ranked ? 'num mid' : 'num', ['publications'])}
 			{@render th('citations', 'Citations', 'num', ['citations'])}
-			{#if rankable}{@render th('top', 'Top-10% papers', 'num top', ['top10', 'shared'])}{/if}
+			{#if ranked}{@render th('top', 'Top-10% papers', 'num top', ['top10', 'shared'])}{/if}
 		</tr>
 	</thead>
 	<tbody>
@@ -86,15 +86,15 @@
 					{#if m.hasThumb}<img src={thumbSrc(m.id)} alt="" width="32" height="32" loading="lazy" />{:else}<span class="blank"></span>{/if}
 				</td>
 				<td class="name">
-					<a href={missionHref(slug, m.id)}>{m.name}</a>{#if m.shortfall}{' '}<span class="tag">{m.status[0] + m.status.slice(1).toLowerCase()}</span>{/if}
+					<a href={missionHref(slug, m.id, scope)}>{m.name}</a>{#if m.shortfall}{' '}<span class="tag">{m.status[0] + m.status.slice(1).toLowerCase()}</span>{/if}
 					<span class="sub meta">{money(m.cost)}, {m.launchYear ?? '—'}</span>
 				</td>
 				<td class="num wide"><Num value={m.launchYear ?? '—'} /></td>
 				<td class="type wide">{m.type ?? '—'}</td>
 				<td class="num mid"><Num value={money(m.cost)} /></td>
-				<td class={rankable ? 'num mid' : 'num'}><Num value={int(m[scope].papers)} /></td>
+				<td class={ranked ? 'num mid' : 'num'}><Num value={int(m[scope].papers)} /></td>
 				<td class="num"><Num value={int(m[scope].citations)} /></td>
-				{#if rankable}
+				{#if ranked}
 					<td class="num top">
 						<span class="bar" style:width="{((top ?? 0) / maxTop) * 100}%"></span>
 						<span class="topv" class:nil={!top}><Num value={top == null ? '—' : weight(top)} /></span>

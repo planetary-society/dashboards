@@ -5,22 +5,25 @@
 	let { options, value, onchange, label } = $props();
 </script>
 
+{#snippet optionLabel(opt)}
+	{#if opt.short}<span class="long">{opt.label}</span><span class="short">{opt.short}</span>{:else}{opt.label}{/if}
+{/snippet}
+
 <span class="choice" role="group" aria-label={label}>
 	{#each options as opt, i (opt.value)}
 		{#if i > 0}<span class="sep" aria-hidden="true">/</span>{/if}
-		<button
-			type="button"
-			aria-pressed={opt.value === value}
-			onclick={() => onchange(opt.value)}
-			>{#if opt.short}<span class="long">{opt.label}</span><span class="short">{opt.short}</span>{:else}{opt.label}{/if}</button
-		>{#if opt.hint}<Hint label={opt.label} text={opt.hint.text} href={opt.hint.href} />{/if}
+		{#if opt.href}
+			<a href={opt.href} aria-current={opt.value === value ? 'page' : undefined} data-sveltekit-noscroll>{@render optionLabel(opt)}</a>
+		{:else}
+			<button type="button" aria-pressed={opt.value === value} onclick={() => onchange(opt.value)}>{@render optionLabel(opt)}</button>
+		{/if}{#if opt.hint}<Hint label={opt.label} text={opt.hint.text} href={opt.hint.href} />{/if}
 	{/each}
 </span>
 
 <style>
 	/* The group wraps between options (a three-way scope choice is wider than a phone
 	   heading); each option stays whole. */
-	button {
+	:is(button, a) {
 		white-space: nowrap;
 		position: relative;
 		color: var(--soil);
@@ -31,7 +34,7 @@
 		transition: color 150ms;
 	}
 
-	button::after {
+	:is(button, a)::after {
 		content: '';
 		position: absolute;
 		left: 2px;
@@ -44,22 +47,23 @@
 	/* Touch: "1%" is only 28px wide. Grow the hit area, not the type, so the sentence
 	   it sits inside reads the same. */
 	@media (pointer: coarse) {
-		button::before {
+		:is(button, a)::before {
 			content: '';
 			position: absolute;
 			inset: -4px -8px;
 		}
 	}
 
-	button:hover {
+	:is(button, a):hover {
+		color: var(--white);
+		text-decoration: none;
+	}
+
+	[aria-pressed='true'], [aria-current='page'] {
 		color: var(--white);
 	}
 
-	button[aria-pressed='true'] {
-		color: var(--white);
-	}
-
-	button[aria-pressed='true']::after {
+	[aria-pressed='true']::after, [aria-current='page']::after {
 		background: var(--neptune);
 	}
 

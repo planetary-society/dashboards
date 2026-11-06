@@ -1,5 +1,6 @@
 <script>
 	import { page } from '$app/state';
+	import { view } from '$lib/state/view.svelte.js';
 	import { home, divisionHref, methodsHref, analysisHref, downloadHref, asset } from '$lib/paths.js';
 
 	let { divisions } = $props();
@@ -46,7 +47,7 @@
 			<li><a href={analysisPath} aria-current={path === analysisPath ? 'page' : undefined}>Analysis</a></li>
 			{#each divisions as d (d.slug)}
 				<li>
-					<a href={divisionHref(d.slug)} aria-current={inDivision(d.slug) ? 'page' : undefined}>{d.nav}</a>
+					<a href={divisionHref(d.slug, view.scope)} aria-current={inDivision(d.slug) ? 'page' : undefined}>{d.nav}</a>
 				</li>
 			{/each}
 			<li><a href={methodsPath} aria-current={path === methodsPath ? 'page' : undefined}>Methods</a></li>

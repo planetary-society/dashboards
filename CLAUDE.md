@@ -4,7 +4,7 @@ Interactive visualizations from The Planetary Society for NASA spending and cont
 
 ## Overview
 
-- Static site with no build step. The `docs/` folder is deployed directly to GitHub Pages.
+- Static site with no build step. The `docs/` folder is deployed directly to GitHub Pages, which is set to "Deploy from a branch" (`main`, `/docs`): every push to `main` publishes `docs/` through GitHub's own "pages build and deployment" run. No workflow in this repo deploys on its own; adding a deploy step makes the two collide ("in progress deployment").
 - All frontend libraries loaded via CDN (D3.js, Grid.js, Bootstrap Icons) — no npm/bundler.
 - A root `package.json` exists solely to declare `{"type": "module"}`, so Node can import the `docs/` ES modules directly (used by the tests and by `scripts/bake-seo.mjs`). There are no runtime dependencies to install.
 - **One exception to "no build step":** `science-mission-impact/` is a SvelteKit app with its own `package.json` and lockfile (see [Science Mission Impact](#science-mission-impact)). Its build output is committed to `docs/science-mission-impact/`, so the deploy stays a plain file copy and the root stays dependency-free.
@@ -202,8 +202,8 @@ container.addEventListener("click", (e) => {
 
 ### GitHub Actions Workflows
 
-- **`daily-dashboard-update.yml`** — Runs daily at 17:00 UTC. Downloads every CSV named in the workflow's `DATA_FILES` env (`terminations`, `descoped`, `doge_claims`, `cancellations_for_convenience_awards_by_fiscal_year`) from the `output/` directory of `planetary-society/nasa-cancellations-tracking`, copies over the deployed copies only when a file actually changed, rewrites `metadata.json` with a per-file `lastUpdated`/`rowCount` (each date taken from the most recent upstream commit touching that file), and deploys `docs/` to GitHub Pages. The download, compare and metadata steps all iterate `DATA_FILES`, so syncing another file is a one-line change. The top-level `lastUpdated` — the date the page states — is the max over `terminations`/`doge_claims` only, so regenerating `descoped` or the fiscal-year rollup never makes the page claim newer award data than it has.
-- **`sync-spending-data.yml`** — Runs daily at 06:00 UTC. Runs `.github/scripts/fetch-data.py --get summaries` to pull science spending CSVs from private repo (`planetary-society/nasa-spending-impact-generator`). Commits but does not deploy (deployment happens via the other workflow).
+- **`daily-dashboard-update.yml`** — Runs daily at 17:00 UTC. Downloads every CSV named in the workflow's `DATA_FILES` env (`terminations`, `descoped`, `doge_claims`, `cancellations_for_convenience_awards_by_fiscal_year`) from the `output/` directory of `planetary-society/nasa-cancellations-tracking`, copies over the deployed copies only when a file actually changed, rewrites `metadata.json` with a per-file `lastUpdated`/`rowCount` (each date taken from the most recent upstream commit touching that file), runs the tests and the SEO bake, and commits and pushes whatever changed. That push is the deploy (via the Pages branch build); a failed test or bake means no commit, so the site stays on the previous build, and a no-change day deploys nothing. The download, compare and metadata steps all iterate `DATA_FILES`, so syncing another file is a one-line change. The top-level `lastUpdated` — the date the page states — is the max over `terminations`/`doge_claims` only, so regenerating `descoped` or the fiscal-year rollup never makes the page claim newer award data than it has.
+- **`sync-spending-data.yml`** — Runs daily at 06:00 UTC. Runs `.github/scripts/fetch-data.py --get summaries` to pull science spending CSVs from private repo (`planetary-society/nasa-spending-impact-generator`). Commits and pushes when the data changed; like any push to `main`, that publishes through the Pages branch build.
 
 ### Scripts
 

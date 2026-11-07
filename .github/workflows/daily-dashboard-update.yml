@@ -6,7 +6,12 @@
 # 3. Rewrite docs/data/cancellations/metadata.json when data changed.
 # 4. Run the Node test suite, then bake static SEO content (the headline figures
 #    in index.html, per-district pages, sitemap) via scripts/bake-seo.mjs.
-# 5. Commit whatever changed and deploy the static dashboards to GitHub Pages.
+# 5. Commit and push whatever changed.
+#
+# This workflow does not deploy. Pages is set to "Deploy from a branch"
+# (main /docs), so the push in step 5 starts GitHub's own "pages build and
+# deployment" run, which publishes docs/. A second deploy from here would
+# collide with that run ("in progress deployment") on most days.
 #
 # Every file the dashboard reads is generated upstream, so they are all synced
 # the same way. Adding another means adding one line to DATA_FILES -- the
@@ -37,12 +42,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write   # Required to commit changes
-      pages: write      # Required to deploy to GitHub Pages
-      id-token: write   # Required for trusted deployment
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Check out repository
@@ -157,24 +156,15 @@ jobs:
         run: node scripts/bake-seo.mjs
 
       # No `if:` guard: bake output must commit even on days when the CSVs did
-      # not change (otherwise the deployed artifact and the repo drift apart,
-      # and the same diff reappears every run). The action no-ops on a clean
-      # tree. The docs/cancellations/** glob stages district-page deletions
-      # from the bake's delete-and-rebuild too.
+      # not change (the push is the deploy, so an uncommitted bake never
+      # reaches the site, and the same diff reappears every run). The action
+      # no-ops on a clean tree, so a no-change day deploys nothing. The
+      # docs/cancellations/** glob stages district-page deletions from the
+      # bake's delete-and-rebuild too.
+      # Pushes made with GITHUB_TOKEN start no workflows, but they do start
+      # the Pages branch build -- that is what publishes this commit.
       - name: Commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "chore: daily data refresh"
           file_pattern: "docs/data/cancellations/* docs/cancellations/** docs/sitemap.xml"
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v6
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: 'docs'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5

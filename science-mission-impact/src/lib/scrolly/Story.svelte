@@ -150,6 +150,9 @@
 		if (index > reached) reached = index;
 	});
 	let progress = $state(0);
+	// the title and its cue ride up with the page from the first pixel of scrolling, though they sit in
+	// the pinned graphic, so the first swipe moves them at once; they fade as MOTIVATION takes over
+	let scrollY = $state(0);
 	let W = $state(0);
 	let H = $state(0);
 	const compact = $derived(W > 0 && W < 600);
@@ -287,6 +290,8 @@
 	};
 </script>
 
+<svelte:window bind:scrollY />
+
 <Scroller bind:index bind:progress>
 	{#snippet graphic()}
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -333,11 +338,11 @@
 			<!-- the title, its rising thumbnails (the backdrop from the title to the questions, and from the findings to the close) and the cue; on a phone they have the whole screen -->
 			<div class="opening" style:opacity={ending ? 1 - ending : null}>
 				<Drift tiles={drifting} visible={backdrop} />
-				<div class="thesis" class:visible={index === TITLE}>
+				<div class="thesis" class:visible={index === TITLE} style:translate="0 {-scrollY}px">
 					<p class="title">The impact and productivity of NASA’s science missions</p>
 					<p class="sub">What can {int(site.missions)} NASA missions tell us about the relationship of cost to scientific output?</p>
 				</div>
-				<p class="cue" class:visible={index === TITLE} aria-hidden="true">Scroll to begin</p>
+				<p class="cue" class:visible={index === TITLE} style:translate="0 {-scrollY}px" aria-hidden="true">Scroll to begin</p>
 			</div>
 		</div>
 	{/snippet}

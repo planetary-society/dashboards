@@ -155,6 +155,15 @@
 		margin-bottom: var(--step-gap);
 	}
 
+	/* A textless first step (the story's title, drawn in the graphic) has no hold: it ends just below
+	   measure()'s 80% line, so the first touch of scrolling moves on. Plain vh, not svh: vh is never
+	   shorter than innerHeight, so the title stays active at the top of the page. On a phone the steps
+	   start under the pinned graphic (--graphic-h, set only there). */
+	.steps :global([data-step]:first-child:empty) {
+		min-height: calc(84vh - var(--nav-h) - var(--graphic-h, 0px));
+		margin-bottom: 0;
+	}
+
 	/* The text rides up to a little above the middle, then holds there while the rest of its
 	   block scrolls by. The text is the step's first child, the one fit() measures. */
 	.steps :global([data-step] > :first-child) {

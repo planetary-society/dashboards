@@ -26,109 +26,28 @@
     }
   },
   "indices": {
-    "h": 1,
-    "m": 0.2,
+    "h": 0,
+    "m": null,
     "i100": 0,
-    "g": 1,
-    "tori": 0.004,
-    "riq": 63
+    "g": 0,
+    "tori": null,
+    "riq": null
   },
   "facts": {
-    "papers": 1,
-    "citations": 4,
-    "publicationYears": [
-      2022,
-      2022
-    ]
+    "papers": 0,
+    "citations": 0,
+    "publicationYears": null
   },
-  "lifetimeSeries": {
-    "years": [
-      2022,
-      2023,
-      2024,
-      2025,
-      2026
-    ],
-    "papers": [
-      1,
-      0,
-      0,
-      0,
-      0
-    ],
-    "citations": [
-      0,
-      1,
-      2,
-      1,
-      0
-    ],
-    "partialFromYear": 2026,
-    "citationCoverage": {
-      "status": "complete",
-      "expected": 4,
-      "observed": 4,
-      "missing": 0
-    }
-  },
-  "affiliations": {
-    "papers": 1,
-    "us": {
-      "mapped": 1,
-      "top": [
-        {
-          "name": "Boston University, Massachusetts",
-          "papers": 1
-        },
-        {
-          "name": "Drexel University, Pennsylvania",
-          "papers": 1
-        },
-        {
-          "name": "Johns Hopkins University, Applied Physics Laboratory",
-          "papers": 1
-        }
-      ]
-    },
-    "world": {
-      "mapped": 1,
-      "top": [
-        {
-          "name": "Boston University, Massachusetts",
-          "papers": 1
-        },
-        {
-          "name": "Drexel University, Pennsylvania",
-          "papers": 1
-        },
-        {
-          "name": "Johns Hopkins University, Applied Physics Laboratory",
-          "papers": 1
-        }
-      ]
-    }
-  },
-  "mostCited": {
-    "bibcode": "2022RScI...93f4504A",
-    "title": "The cusp plasma imaging detector (CuPID) cubesat observatory: Instrumentation",
-    "firstAuthor": "Atz, Emil",
-    "authors": [
-      "Atz, Emil",
-      "Walsh, Brian",
-      "O'Brien, Connor",
-      "Collier, Michael"
-    ],
-    "authorCount": 24,
-    "year": 2022,
-    "citations": 4
-  },
+  "lifetimeSeries": null,
+  "affiliations": null,
+  "mostCited": null,
   "ranks": {
     "full": {
       "bins": [
         0,
         0,
-        0.601,
-        0.399,
+        0,
+        0,
         0,
         0,
         0,
@@ -142,7 +61,7 @@
       "bins": [
         0,
         0,
-        1,
+        0,
         0,
         0,
         0,
@@ -157,7 +76,7 @@
       "bins": [
         0,
         0,
-        1,
+        0,
         0,
         0,
         0,
@@ -170,9 +89,9 @@
     }
   },
   "full": {
-    "papers": 1,
-    "outputBasis": "measured",
-    "citations": 4,
+    "papers": 0,
+    "outputBasis": "assumed_zero",
+    "citations": 0,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": 0,
@@ -194,22 +113,22 @@
       "citationBuckets": 6
     },
     "indices": {
-      "h": 1,
-      "g": 1,
-      "m": 0.5
+      "h": 0,
+      "g": 0,
+      "m": 0
     },
     "spread": {
-      "mean": 4,
-      "median": 4,
+      "mean": null,
+      "median": null,
       "uncited": 0,
       "i10": 0,
       "i100": 0
     }
   },
   "window": {
-    "papers": 1,
-    "outputBasis": "measured",
-    "citations": 4,
+    "papers": 0,
+    "outputBasis": "assumed_zero",
+    "citations": 0,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": 0,
@@ -231,22 +150,22 @@
       "citationBuckets": 6
     },
     "indices": {
-      "h": 1,
-      "g": 1,
-      "m": 0.5
+      "h": 0,
+      "g": 0,
+      "m": 0
     },
     "spread": {
-      "mean": 4,
-      "median": 4,
+      "mean": null,
+      "median": null,
       "uncited": 0,
       "i10": 0,
       "i100": 0
     }
   },
   "lifetime": {
-    "papers": 1,
-    "outputBasis": "measured",
-    "citations": 4,
+    "papers": 0,
+    "outputBasis": "assumed_zero",
+    "citations": 0,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": null,
@@ -259,44 +178,32 @@
       "date": null
     },
     "spread": {
-      "mean": 4,
-      "median": 4,
+      "mean": null,
+      "median": null,
       "uncited": 0,
       "i10": 0,
       "i100": 0
     }
   },
   "query": {
-    "arms": "((=abs:\"Cusp Plasma Imaging Detector\" OR (abs:\"CuPID\" AND (abs:\"cusp\" OR abs:\"magnetopause\" OR abs:\"cubesat\" OR abs:\"magnetosheath\" OR abs:\"X-ray imaging\" OR abs:\"charge exchange\"))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2021-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Cusp+Plasma+Imaging+Detector%22+OR+%28abs%3A%22CuPID%22+AND+%28abs%3A%22cusp%22+OR+abs%3A%22magnetopause%22+OR+abs%3A%22cubesat%22+OR+abs%3A%22magnetosheath%22+OR+abs%3A%22X-ray+imaging%22+OR+abs%3A%22charge+exchange%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2021-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:38:43.763194+00:00",
+    "arms": null,
+    "filters": null,
+    "url": null,
+    "fetchedAt": null,
     "reconciliation": {
-      "adsReturned": 1,
+      "adsReturned": 0,
       "curatedOut": 0,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 1
+      "final": 0
     }
   },
   "curation": {
     "includes": [],
     "excludes": []
   },
-  "topCited": [
-    {
-      "bibcode": "2022RScI...93f4504A",
-      "title": "The cusp plasma imaging detector (CuPID) cubesat observatory: Instrumentation",
-      "firstAuthor": "Atz, Emil",
-      "authors": null,
-      "authorCount": null,
-      "year": 2022,
-      "citations": 4
-    }
-  ],
-  "papersFile": {
-    "rows": 1
-  }
+  "topCited": [],
+  "papersFile": null
 }

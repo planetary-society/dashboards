@@ -33,43 +33,12 @@ All source, membership, window, paper-count, rank and citation-coverage checks p
 - Missions added: none
 - Missions removed: none
 
-| Figure                                                  | Before    | After     |
-| ------------------------------------------------------- | --------- | --------- |
-| papers · globally distinct                              | 148,534   | 148,666   |
-| citations · globally distinct                           | 6,404,415 | 6,397,989 |
-| Astrophysics · papers                                   | 63,551    | 63,615    |
-| Astrophysics · citations                                | 3,486,112 | 3,476,147 |
-| Astrophysics · lifetime top-1% cutoff                   | 461       | 459       |
-| Astrophysics · m-index vs cost (rho)                    | 0.604     | 0.597     |
-| Astrophysics · h-index vs cost (rho)                    | 0.730     | 0.730     |
-| Biological & Physical Sciences · citations              | 242       | 245       |
-| Biological & Physical Sciences · window top-10% cutoff  | 14        | 15        |
-| Biological & Physical Sciences · window top-1% cutoff   | 14        | 15        |
-| Biological & Physical Sciences · lifetime top-1% cutoff | 43        | 44        |
-| Earth Science · papers                                  | 52,195    | 52,229    |
-| Earth Science · citations                               | 1,765,901 | 1,769,720 |
-| Earth Science · m-index vs cost (rho)                   | 0.767     | 0.764     |
-| Earth Science · h-index vs cost (rho)                   | 0.797     | 0.794     |
-| Heliophysics · papers                                   | 18,351    | 18,365    |
-| Heliophysics · citations                                | 601,501   | 601,284   |
-| Heliophysics · lifetime top-1% cutoff                   | 262       | 261       |
-| Planetary Science · papers                              | 15,723    | 15,744    |
-| Planetary Science · citations                           | 597,186   | 597,056   |
-| Planetary Science · lifetime top-1% cutoff              | 333       | 334       |
-| Planetary Science · m-index vs cost (rho)               | 0.716     | 0.718     |
-| Planetary Science · h-index vs cost (rho)               | 0.559     | 0.557     |
-| story · under-threshold share · astrophysics            | 0.000     | 0.000     |
-| story · under-threshold share · earth                   | 0.000     | 0.000     |
-| story · under-threshold share · heliophysics            | 0.083     | 0.083     |
-| story · under-threshold share · planetary               | 0.010     | 0.010     |
-| story · under threshold · top-10% papers per mission    | 3.210     | 3.209     |
-| story · over threshold · top-10% papers per mission     | 116.297   | 116.299   |
-| story · citations per $100M · astrophysics · over       | 3660.530  | 3659.428  |
-| story · citations per $100M · earth · over              | 1986.082  | 1989.880  |
-| story · citations per $100M · heliophysics · under      | 2302.029  | 2326.206  |
-| story · citations per $100M · heliophysics · over       | 1651.002  | 1651.546  |
-| story · citations per $100M · planetary · under         | 276.190   | 276.448   |
-| story · citations per $100M · planetary · over          | 432.752   | 432.940   |
+| Figure                                             | Before   | After    |
+| -------------------------------------------------- | -------- | -------- |
+| story · citations per $100M · astrophysics · under | 288.539  | 284.843  |
+| story · citations per $100M · earth · under        | 273.002  | 272.590  |
+| story · citations per $100M · heliophysics · under | 2326.206 | 2339.019 |
+| story · citations per $100M · planetary · under    | 276.448  | 263.235  |
 
 ## Data notes
 
@@ -95,10 +64,10 @@ ok 143 · failed 0 · no image URL 0 (from `static/img/missions/manifest.json`)
 
 | File                     | Bytes          |
 | ------------------------ | -------------- |
-| `generated/site.json`    | 376,116        |
-| `generated/index.json`   | 28,291         |
-| `generated/scrolly.json` | 95,512         |
-| `generated/divisions/`   | 734,285        |
-| `generated/missions/`    | 2,265,227      |
+| `generated/site.json`    | 376,010        |
+| `generated/index.json`   | 28,292         |
+| `generated/scrolly.json` | 95,513         |
+| `generated/divisions/`   | 734,319        |
+| `generated/missions/`    | 2,265,230      |
 | `static/data/papers/`    | 31,059,253     |
-| **total**                | **34,558,684** |
+| **total**                | **34,558,617** |

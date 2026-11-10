@@ -425,16 +425,18 @@
 		<!-- CITES: DOLLAR_DIVISION's missions by cost and by the citations they drew, before per dollar -->
 		<section data-step><div class="step">
 			{#if citesL}
-				<p><span class="neptuneBlue"><strong>Scientific impact per dollar</strong></span></p>
-				<p>Plotting missions by cost and total citations in each publication window shows a clear relationship between total cost and total scientific impact.</p><p>Missions in {dollarField} are shown here.</p><p>Bigger budgets buy more science in total. What they buy per dollar is the next question.</p>
+				<p><span class="neptuneBlue"><strong>Scientific impact and cost</strong></span></p>
+				<p>There is a clear relationship between citation output for missions and cost. More expensive missions tend to generate more scientific impact.</p>
 			{/if}
 		</div></section>
 		<!-- SCATTER, DOWN, FLAT and FIT always render, so later steps keep their numbers; without DOLLAR_DIVISION data they're blank -->
 		<!-- SCATTER: DOLLAR_DIVISION, each mission by cost and by citations per dollar -->
 		<section data-step><div class="step">
 			{#if dollarAverage}
+				<p><span class="neptuneBlue"><strong>Scientific impact per dollar</strong></span></p>
+
 				<p>Dividing each mission’s citations by cost compares citations per {moneyWords(100)} spent. This can be thought of as <strong>scientific impact per dollar</strong>.</p>
-				{#if dollarBest}<p>The highest return per dollar in {dollarField} came from {dollarBest.name}, a {moneyWords(dollarBest.cost)} mission.</p>{/if}
+				{#if dollarBest}<p>The best citation return per dollar in {dollarField} came from {dollarBest.name}, a {moneyWords(dollarBest.cost)} mission, adjusted for inflation.</p>{/if}
 			{/if}
 		</div></section>
 		<!-- DOWN: the line the missions would follow if small ones got more for their money -->
@@ -490,7 +492,7 @@
 		</div></section>
 		<!-- TIME_SCI: the same groups, counted from the start of science operations -->
 		<section data-step><div class="step">
-			{#if science}<p>If you measure from the start of science operations, more expensive missions tend to lead to high-impact papers almost immediately.</p><p>Both clocks matter: one counts the wait from a project’s approval, the other from its first data.</p>{/if}
+			{#if science}<p>But when measuring from the start of science operations, more expensive missions tend to result in a high-impact paper almost immediately.</p>{/if}
 		</div></section>
 		<!-- CLPS: the commercial case study the motivation names -->
 		<section data-step data-scrub><div class="step">

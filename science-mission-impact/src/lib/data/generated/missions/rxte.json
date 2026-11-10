@@ -28,14 +28,14 @@
   "indices": {
     "h": 146,
     "m": 4.71,
-    "i100": 293,
-    "g": 223,
-    "tori": 670.195,
-    "riq": 809
+    "i100": 292,
+    "g": 222,
+    "tori": 634.351,
+    "riq": 787
   },
   "facts": {
     "papers": 2578,
-    "citations": 122358,
+    "citations": 122058,
     "publicationYears": [
       1996,
       2026
@@ -112,40 +112,40 @@
       16,
       276,
       842,
-      1613,
-      2173,
-      3235,
-      2673,
-      2950,
-      3638,
-      3280,
-      3792,
+      1601,
+      2158,
+      3237,
+      2674,
+      2949,
+      3640,
+      3281,
+      3793,
       4044,
       4376,
-      4042,
-      4389,
-      4830,
+      4043,
+      4390,
+      4828,
       4612,
-      5203,
-      5064,
-      4738,
+      5206,
+      5069,
+      4739,
       5124,
-      5074,
-      4812,
+      5072,
+      4811,
       4952,
       4795,
       4955,
-      4814,
-      4894,
-      5141,
-      5615,
-      6396
+      4815,
+      4873,
+      5145,
+      5599,
+      6143
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 122358,
-      "observed": 122358,
+      "expected": 122058,
+      "observed": 122058,
       "missing": 0
     }
   },
@@ -196,60 +196,60 @@
     ],
     "authorCount": 2,
     "year": 2006,
-    "citations": 2489
+    "citations": 2478
   },
   "ranks": {
     "full": {
       "bins": [
-        286.36,
-        240.263,
-        238.449,
-        230.986,
-        209.235,
-        203.994,
-        171.51,
-        154.11,
-        163.486,
-        104.607
+        286.311,
+        240.777,
+        237.853,
+        231.109,
+        208.659,
+        204.516,
+        172.934,
+        151.695,
+        164.55,
+        104.596
       ],
       "top1": 3
     },
     "window": {
       "bins": [
-        69.279,
-        38.549,
-        32.58,
-        39.666,
-        24.072,
-        32.443,
-        26.923,
-        31.105,
-        34.834,
-        30.55
+        69.288,
+        39.324,
+        31.812,
+        39.65,
+        24.099,
+        33.023,
+        26.826,
+        30.822,
+        34.622,
+        30.534
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        217.939,
-        198.241,
-        241.024,
-        278.184,
-        271.05,
-        311.845,
-        292.624,
-        271.977,
-        257.025,
-        238.09
+        216.611,
+        195.96,
+        242.21,
+        277.77,
+        268.023,
+        312.019,
+        297.304,
+        271.987,
+        259.343,
+        236.772
       ],
-      "top1": 17
+      "top1": 16.537
     }
   },
   "full": {
     "papers": 2003,
     "outputBasis": "measured",
-    "citations": 30251,
-    "top10": 90.19,
+    "citations": 30230,
+    "top10": 90.18,
     "top10ShareOfDivision": 0.01813,
     "top1": 3,
     "top1ShareOfDivision": 0.00603,
@@ -271,11 +271,11 @@
     },
     "indices": {
       "h": 60,
-      "g": 79,
+      "g": 78,
       "m": 3.333
     },
     "spread": {
-      "mean": 15.103,
+      "mean": 15.092,
       "median": 10,
       "uncited": 140,
       "i10": 1016,
@@ -285,8 +285,8 @@
   "window": {
     "papers": 360,
     "outputBasis": "measured",
-    "citations": 6871,
-    "top10": 30.55,
+    "citations": 6841,
+    "top10": 30.534,
     "top10ShareOfDivision": 0.01579,
     "top1": 1,
     "top1ShareOfDivision": 0.00517,
@@ -312,7 +312,7 @@
       "m": 10.5
     },
     "spread": {
-      "mean": 19.086,
+      "mean": 19.003,
       "median": 11,
       "uncited": 44,
       "i10": 197,
@@ -322,9 +322,9 @@
   "lifetime": {
     "papers": 2578,
     "outputBasis": "measured",
-    "citations": 122358,
-    "top10": 205.673,
-    "top10ShareOfDivision": 0.03236,
+    "citations": 122058,
+    "top10": 204.662,
+    "top10ShareOfDivision": 0.03217,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -335,18 +335,18 @@
       "date": "1996-09-00"
     },
     "spread": {
-      "mean": 47.462,
+      "mean": 47.346,
       "median": 27,
       "uncited": 104,
-      "i10": 2000,
-      "i100": 293
+      "i10": 1998,
+      "i100": 292
     }
   },
   "query": {
     "arms": "((abs:RXTE OR =abs:\"Rossi X-ray Timing Explorer\" OR =abs:\"Rossi-XTE\" OR abs:HEXTE OR =abs:\"XTE observations\" OR =abs:\"XTE observation\" OR =abs:\"XTE data\" OR =abs:\"XTE/PCA\" OR =abs:\"XTE/ASM\" OR =abs:\"observed with XTE\" OR =abs:\"observed by XTE\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1996-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28abs%3ARXTE+OR+%3Dabs%3A%22Rossi+X-ray+Timing+Explorer%22+OR+%3Dabs%3A%22Rossi-XTE%22+OR+abs%3AHEXTE+OR+%3Dabs%3A%22XTE+observations%22+OR+%3Dabs%3A%22XTE+observation%22+OR+%3Dabs%3A%22XTE+data%22+OR+%3Dabs%3A%22XTE%2FPCA%22+OR+%3Dabs%3A%22XTE%2FASM%22+OR+%3Dabs%3A%22observed+with+XTE%22+OR+%3Dabs%3A%22observed+by+XTE%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:41:18.117931+00:00",
+    "fetchedAt": "2026-11-10T03:34:45.332912+00:00",
     "reconciliation": {
       "adsReturned": 2584,
       "curatedOut": 7,
@@ -1003,7 +1003,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 2489
+      "citations": 2478
     },
     {
       "bibcode": "2008ApJS..179..360G",
@@ -1012,16 +1012,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 760
-    },
-    {
-      "bibcode": "1996ApJ...469L..33L",
-      "title": "First Results from the All-Sky Monitor on the Rossi X-Ray Timing Explorer",
-      "firstAuthor": "Levine, Alan M.",
-      "authors": null,
-      "authorCount": null,
-      "year": 1996,
-      "citations": 655
+      "citations": 759
     },
     {
       "bibcode": "2003MNRAS.339..793G",
@@ -1031,6 +1022,15 @@
       "authorCount": null,
       "year": 2003,
       "citations": 655
+    },
+    {
+      "bibcode": "1996ApJ...469L..33L",
+      "title": "First Results from the All-Sky Monitor on the Rossi X-Ray Timing Explorer",
+      "firstAuthor": "Levine, Alan M.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1996,
+      "citations": 653
     },
     {
       "bibcode": "2000ARA&A..38..717V",
@@ -1066,7 +1066,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 545
+      "citations": 544
     },
     {
       "bibcode": "2006ApJS..163..401J",
@@ -1075,7 +1075,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 545
+      "citations": 544
     },
     {
       "bibcode": "2000A&A...355..271B",
@@ -1084,7 +1084,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 530
+      "citations": 528
     },
     {
       "bibcode": "1998ApJ...501L..89B",
@@ -1093,7 +1093,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 508
+      "citations": 504
     },
     {
       "bibcode": "2005A&A...440..207B",
@@ -1102,7 +1102,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 498
+      "citations": 495
     },
     {
       "bibcode": "1999ApJ...510..874N",
@@ -1111,7 +1111,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 494
+      "citations": 488
     },
     {
       "bibcode": "2005Ap&SS.300..107H",
@@ -1120,16 +1120,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 478
-    },
-    {
-      "bibcode": "2002MNRAS.332..231U",
-      "title": "Measuring the broad-band power spectra of active galactic nuclei with RXTE",
-      "firstAuthor": "Uttley, P.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2002,
-      "citations": 471
+      "citations": 474
     },
     {
       "bibcode": "1999MNRAS.309..496G",
@@ -1141,13 +1132,22 @@
       "citations": 469
     },
     {
+      "bibcode": "2002MNRAS.332..231U",
+      "title": "Measuring the broad-band power spectra of active galactic nuclei with RXTE",
+      "firstAuthor": "Uttley, P.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2002,
+      "citations": 468
+    },
+    {
       "bibcode": "1997ApJ...482..993M",
       "title": "RXTE Observations of QPOs in the Black Hole Candidate GRS 1915+105",
       "firstAuthor": "Morgan, E. H.",
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 465
+      "citations": 459
     },
     {
       "bibcode": "1996ApJ...469L...9S",
@@ -1156,7 +1156,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 457
+      "citations": 455
     },
     {
       "bibcode": "2003A&A...400.1007C",
@@ -1165,7 +1165,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 451
+      "citations": 447
     },
     {
       "bibcode": "2002ApJ...568..610E",
@@ -1174,7 +1174,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 424
+      "citations": 423
     }
   ],
   "papersFile": {

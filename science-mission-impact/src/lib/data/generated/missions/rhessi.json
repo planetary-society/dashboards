@@ -30,12 +30,12 @@
     "m": 3.68,
     "i100": 86,
     "g": 151,
-    "tori": 239.324,
-    "riq": 618
+    "tori": 238.513,
+    "riq": 617
   },
   "facts": {
     "papers": 1038,
-    "citations": 40324,
+    "citations": 40307,
     "publicationYears": [
       2002,
       2026
@@ -100,34 +100,34 @@
       51,
       180,
       383,
-      550,
+      547,
       876,
       868,
       1104,
-      1381,
+      1380,
       1295,
       2138,
-      1829,
-      1990,
-      1574,
+      1830,
+      1991,
+      1608,
       1904,
       2183,
       2092,
       2179,
       2275,
-      2290,
-      2149,
+      2284,
       2150,
-      2178,
+      2150,
+      2184,
       2239,
-      2227,
-      2239
+      2222,
+      2194
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 40324,
-      "observed": 40324,
+      "expected": 40307,
+      "observed": 40307,
       "missing": 0
     }
   },
@@ -180,23 +180,23 @@
     ],
     "authorCount": 66,
     "year": 2002,
-    "citations": 1689
+    "citations": 1692
   },
   "ranks": {
     "full": {
       "bins": [
-        105.143,
-        99.446,
-        83.099,
-        67.146,
-        76.291,
-        93.608,
-        97.852,
-        90.9,
-        90.787,
-        104.729
+        104.72,
+        99.94,
+        83.078,
+        67.051,
+        76.337,
+        93.713,
+        97.397,
+        91.33,
+        90.727,
+        104.706
       ],
-      "top1": 10.212
+      "top1": 10.285
     },
     "window": {
       "bins": [
@@ -205,9 +205,9 @@
         27.501,
         13.719,
         27.346,
-        23.537,
-        19.47,
-        22.471,
+        23.639,
+        19.461,
+        22.377,
         19.583,
         24
       ],
@@ -215,16 +215,16 @@
     },
     "lifetime": {
       "bins": [
-        68.562,
-        96.592,
-        87.162,
-        92.904,
-        98.726,
-        95.971,
-        112.944,
-        129.565,
-        128.378,
-        127.197
+        67.408,
+        95.177,
+        90.082,
+        92.008,
+        98.847,
+        97.619,
+        110.668,
+        130.471,
+        127.928,
+        127.792
       ],
       "top1": 16
     }
@@ -232,11 +232,11 @@
   "full": {
     "papers": 909,
     "outputBasis": "measured",
-    "citations": 10809,
-    "top10": 82.179,
-    "top10ShareOfDivision": 0.05702,
-    "top1": 7.773,
-    "top1ShareOfDivision": 0.05393,
+    "citations": 10813,
+    "top10": 82.159,
+    "top10ShareOfDivision": 0.057,
+    "top1": 7.809,
+    "top1ShareOfDivision": 0.05418,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.619,
@@ -259,9 +259,9 @@
       "m": 2.172
     },
     "spread": {
-      "mean": 11.891,
+      "mean": 11.895,
       "median": 8,
-      "uncited": 68,
+      "uncited": 67,
       "i10": 406,
       "i100": 2
     }
@@ -269,7 +269,7 @@
   "window": {
     "papers": 252,
     "outputBasis": "measured",
-    "citations": 3234,
+    "citations": 3231,
     "top10": 24,
     "top10ShareOfDivision": 0.0541,
     "top1": 1,
@@ -296,7 +296,7 @@
       "m": 5.601
     },
     "spread": {
-      "mean": 12.833,
+      "mean": 12.821,
       "median": 8,
       "uncited": 22,
       "i10": 113,
@@ -306,9 +306,9 @@
   "lifetime": {
     "papers": 1038,
     "outputBasis": "measured",
-    "citations": 40324,
-    "top10": 104.774,
-    "top10ShareOfDivision": 0.05709,
+    "citations": 40307,
+    "top10": 105.171,
+    "top10ShareOfDivision": 0.05727,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -319,10 +319,10 @@
       "date": "2002-11-00"
     },
     "spread": {
-      "mean": 38.848,
+      "mean": 38.831,
       "median": 20,
-      "uncited": 42,
-      "i10": 709,
+      "uncited": 41,
+      "i10": 710,
       "i100": 86
     }
   },
@@ -330,7 +330,7 @@
     "arms": "(((abs:RHESSI AND abs:(solar OR flare OR X-ray OR gamma OR terrestrial OR electron OR photon OR polarization OR transient OR image)) OR (abs:HESSI AND abs:solar) OR =abs:\"High Energy Solar Spectroscopic Imager\" OR =abs:\"High Energy Solar Spectroscopy Imager\" OR facility:RHESSI))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2002-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3ARHESSI+AND+abs%3A%28solar+OR+flare+OR+X-ray+OR+gamma+OR+terrestrial+OR+electron+OR+photon+OR+polarization+OR+transient+OR+image%29%29+OR+%28abs%3AHESSI+AND+abs%3Asolar%29+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopic+Imager%22+OR+%3Dabs%3A%22High+Energy+Solar+Spectroscopy+Imager%22+OR+facility%3ARHESSI%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:37:09.889973+00:00",
+    "fetchedAt": "2026-11-10T03:30:40.716649+00:00",
     "reconciliation": {
       "adsReturned": 1048,
       "curatedOut": 9,
@@ -459,7 +459,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 1689
+      "citations": 1692
     },
     {
       "bibcode": "2011SSRv..159...19F",
@@ -477,7 +477,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 526
+      "citations": 527
     },
     {
       "bibcode": "2017LRSP...14....2B",
@@ -486,7 +486,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 507
+      "citations": 502
+    },
+    {
+      "bibcode": "2005Sci...307.1085S",
+      "title": "Terrestrial Gamma-Ray Flashes Observed up to 20 MeV",
+      "firstAuthor": "Smith, David M.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2005,
+      "citations": 387
     },
     {
       "bibcode": "2006ApJ...647..483L",
@@ -496,15 +505,6 @@
       "authorCount": null,
       "year": 2006,
       "citations": 385
-    },
-    {
-      "bibcode": "2005Sci...307.1085S",
-      "title": "Terrestrial Gamma-Ray Flashes Observed up to 20 MeV",
-      "firstAuthor": "Smith, David M.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2005,
-      "citations": 384
     },
     {
       "bibcode": "2003ApJ...595L..69L",
@@ -531,7 +531,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 348
+      "citations": 346
     },
     {
       "bibcode": "2002SoPh..210...33S",
@@ -558,7 +558,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 296
+      "citations": 297
     },
     {
       "bibcode": "2008LRSP....5....1B",
@@ -567,16 +567,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 285
-    },
-    {
-      "bibcode": "2003ApJ...595L.135J",
-      "title": "Observations of the Failed Eruption of a Filament",
-      "firstAuthor": "Ji, Haisheng",
-      "authors": null,
-      "authorCount": null,
-      "year": 2003,
-      "citations": 280
+      "citations": 286
     },
     {
       "bibcode": "2003ApJ...595L..97H",
@@ -588,13 +579,22 @@
       "citations": 279
     },
     {
+      "bibcode": "2003ApJ...595L.135J",
+      "title": "Observations of the Failed Eruption of a Filament",
+      "firstAuthor": "Ji, Haisheng",
+      "authors": null,
+      "authorCount": null,
+      "year": 2003,
+      "citations": 278
+    },
+    {
       "bibcode": "2003ApJ...597..998L",
       "title": "Polarization of Prompt Gamma-Ray Burst Emission: Evidence for Electromagnetically Dominated Outflow",
       "firstAuthor": "Lyutikov, M.",
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 267
+      "citations": 268
     },
     {
       "bibcode": "2005GeoRL..3222804D",
@@ -603,7 +603,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 255
+      "citations": 257
     },
     {
       "bibcode": "2008A&ARv..16..155K",
@@ -630,7 +630,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 242
+      "citations": 243
     }
   ],
   "papersFile": {

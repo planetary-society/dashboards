@@ -26,16 +26,16 @@
     }
   },
   "indices": {
-    "h": 94,
-    "m": 6.267,
-    "i100": 86,
+    "h": 93,
+    "m": 6.2,
+    "i100": 82,
     "g": 156,
-    "tori": 120.218,
-    "riq": 685
+    "tori": 97.416,
+    "riq": 616
   },
   "facts": {
-    "papers": 1936,
-    "citations": 55278,
+    "papers": 1938,
+    "citations": 54715,
     "publicationYears": [
       2012,
       2026
@@ -74,41 +74,41 @@
       183,
       181,
       174,
-      193
+      195
     ],
     "citations": [
       0,
       103,
       529,
-      1207,
+      1206,
       1665,
       2466,
       2872,
       3544,
-      3802,
-      4314,
-      5106,
-      5870,
-      6913,
-      7371,
-      9516
+      3803,
+      4315,
+      5114,
+      5873,
+      6912,
+      7295,
+      9018
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 55278,
-      "observed": 55278,
+      "expected": 54715,
+      "observed": 54715,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 1936,
+    "papers": 1938,
     "us": {
-      "mapped": 1141,
+      "mapped": 1142,
       "top": [
         {
           "name": "California Institute of Technology",
-          "papers": 503
+          "papers": 504
         },
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
@@ -121,11 +121,11 @@
       ]
     },
     "world": {
-      "mapped": 1882,
+      "mapped": 1884,
       "top": [
         {
           "name": "California Institute of Technology",
-          "papers": 503
+          "papers": 504
         },
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
@@ -150,61 +150,61 @@
     ],
     "authorCount": 389,
     "year": 2022,
-    "citations": 2498
+    "citations": 2465
   },
   "ranks": {
     "full": {
       "bins": [
-        93.18,
-        141.55,
-        161.84,
-        185.781,
-        165.195,
-        183.497,
-        131.825,
-        121.8,
-        124.967,
-        78.364
+        93.787,
+        144.421,
+        160.811,
+        183.457,
+        167.773,
+        181.642,
+        131.139,
+        121.976,
+        124.845,
+        78.149
       ],
       "top1": 5
     },
     "window": {
       "bins": [
-        12.173,
-        17.023,
-        17.534,
-        24.23,
-        30.152,
-        28.873,
-        29.059,
-        42.572,
-        35.384,
+        12.175,
+        17.029,
+        17.53,
+        24.226,
+        30.173,
+        28.86,
+        29.051,
+        42.645,
+        35.311,
         17
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        260.718,
-        300.347,
-        273.453,
-        245.382,
-        235.307,
-        178.591,
-        145.166,
-        128.052,
-        111.985,
-        57
+        263.528,
+        304.527,
+        275.148,
+        242.54,
+        236.837,
+        177.247,
+        140.34,
+        128.965,
+        113.095,
+        55.772
       ],
-      "top1": 4
+      "top1": 3
     }
   },
   "full": {
     "papers": 1388,
     "outputBasis": "measured",
-    "citations": 25875,
-    "top10": 54.422,
-    "top10ShareOfDivision": 0.01094,
+    "citations": 25835,
+    "top10": 54.275,
+    "top10ShareOfDivision": 0.01091,
     "top1": 2.667,
     "top1ShareOfDivision": 0.00536,
     "first": {
@@ -229,17 +229,17 @@
       "m": 4.854
     },
     "spread": {
-      "mean": 18.642,
+      "mean": 18.613,
       "median": 12,
       "uncited": 26,
       "i10": 813,
-      "i100": 15
+      "i100": 14
     }
   },
   "window": {
     "papers": 254,
     "outputBasis": "measured",
-    "citations": 6306,
+    "citations": 6307,
     "top10": 16.5,
     "top10ShareOfDivision": 0.00853,
     "top1": 1,
@@ -266,7 +266,7 @@
       "m": 10.217
     },
     "spread": {
-      "mean": 24.827,
+      "mean": 24.831,
       "median": 18,
       "uncited": 2,
       "i10": 194,
@@ -274,11 +274,11 @@
     }
   },
   "lifetime": {
-    "papers": 1936,
+    "papers": 1938,
     "outputBasis": "measured",
-    "citations": 55278,
-    "top10": 40.95,
-    "top10ShareOfDivision": 0.00644,
+    "citations": 54715,
+    "top10": 39.722,
+    "top10ShareOfDivision": 0.00624,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -289,26 +289,26 @@
       "date": "2013-02-00"
     },
     "spread": {
-      "mean": 28.553,
+      "mean": 28.233,
       "median": 14,
-      "uncited": 104,
-      "i10": 1180,
-      "i100": 86
+      "uncited": 102,
+      "i10": 1171,
+      "i100": 82
     }
   },
   "query": {
     "arms": "(((abs:\"NuSTAR\" NOT (=abs:\"Facility for Antiproton and Ion Research\" OR =abs:\"Facility for Anti-proton and Ion Research\" OR =abs:\"Nuclear Structure Astrophysics and Reactions\" OR =abs:\"radioactive beam\" OR =abs:\"radioactive beams\" OR =abs:\"radioactive ion beam\" OR =abs:\"radioactive ion beams\" OR =abs:\"exotic nuclei\" OR abs:((DESPEC OR GSI) AND (nuclear OR nuclei OR isotope OR detector OR beam)))) OR =abs:\"Nuclear Spectroscopic Telescope Array\" OR facility:\"NuSTAR\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2012-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22NuSTAR%22+NOT+%28%3Dabs%3A%22Facility+for+Antiproton+and+Ion+Research%22+OR+%3Dabs%3A%22Facility+for+Anti-proton+and+Ion+Research%22+OR+%3Dabs%3A%22Nuclear+Structure+Astrophysics+and+Reactions%22+OR+%3Dabs%3A%22radioactive+beam%22+OR+%3Dabs%3A%22radioactive+beams%22+OR+%3Dabs%3A%22radioactive+ion+beam%22+OR+%3Dabs%3A%22radioactive+ion+beams%22+OR+%3Dabs%3A%22exotic+nuclei%22+OR+abs%3A%28%28DESPEC+OR+GSI%29+AND+%28nuclear+OR+nuclei+OR+isotope+OR+detector+OR+beam%29%29%29%29+OR+%3Dabs%3A%22Nuclear+Spectroscopic+Telescope+Array%22+OR+facility%3A%22NuSTAR%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:44:44.552319+00:00",
+    "fetchedAt": "2026-11-10T03:38:42.778973+00:00",
     "reconciliation": {
-      "adsReturned": 1945,
+      "adsReturned": 1947,
       "curatedOut": 10,
       "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 1936
+      "final": 1938
     }
   },
   "curation": {
@@ -413,7 +413,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 2498
+      "citations": 2465
     },
     {
       "bibcode": "2013ApJ...770..103H",
@@ -422,7 +422,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 2170
+      "citations": 2156
     },
     {
       "bibcode": "2017Sci...358.1565E",
@@ -431,7 +431,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 560
+      "citations": 556
     },
     {
       "bibcode": "2022ApJ...930L..13E",
@@ -440,7 +440,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 463
+      "citations": 458
     },
     {
       "bibcode": "2016ApJ...831L..14F",
@@ -449,7 +449,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 380
+      "citations": 378
     },
     {
       "bibcode": "2015MNRAS.451.4375F",
@@ -458,7 +458,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 364
+      "citations": 360
     },
     {
       "bibcode": "2015A&ARv..23....1B",
@@ -467,7 +467,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 346
+      "citations": 339
     },
     {
       "bibcode": "2019ApJ...872...18M",
@@ -476,7 +476,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 308
+      "citations": 305
     },
     {
       "bibcode": "2015ApJS..220....8M",
@@ -494,7 +494,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 298
+      "citations": 296
     },
     {
       "bibcode": "2018MNRAS.476L..45C",
@@ -503,7 +503,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 290
+      "citations": 288
     },
     {
       "bibcode": "2015A&A...583A..99F",
@@ -512,7 +512,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 289
+      "citations": 287
     },
     {
       "bibcode": "2018MNRAS.478L..18T",
@@ -521,7 +521,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 275
+      "citations": 277
     },
     {
       "bibcode": "2013Natur.494..449R",
@@ -530,7 +530,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 269
+      "citations": 268
     },
     {
       "bibcode": "2015PhRvD..92f3007G",
@@ -539,7 +539,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 251
+      "citations": 250
     },
     {
       "bibcode": "2013ApJ...770L..23M",
@@ -548,7 +548,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 248
+      "citations": 247
     },
     {
       "bibcode": "2014ApJ...792...48W",
@@ -557,7 +557,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 236
+      "citations": 234
     },
     {
       "bibcode": "2018ApJ...854...42B",
@@ -575,7 +575,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 217
+      "citations": 223
     },
     {
       "bibcode": "2015ApJ...807...79H",
@@ -588,6 +588,6 @@
     }
   ],
   "papersFile": {
-    "rows": 1936
+    "rows": 1938
   }
 }

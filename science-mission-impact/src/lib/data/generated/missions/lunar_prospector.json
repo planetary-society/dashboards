@@ -28,14 +28,14 @@
   "indices": {
     "h": 67,
     "m": 2.31,
-    "i100": 39,
+    "i100": 40,
     "g": 110,
-    "tori": 126.111,
-    "riq": 387
+    "tori": 125.176,
+    "riq": 385
   },
   "facts": {
     "papers": 287,
-    "citations": 14658,
+    "citations": 14660,
     "publicationYears": [
       1998,
       2026
@@ -120,8 +120,8 @@
       605,
       669,
       800,
-      579,
-      657,
+      581,
+      662,
       784,
       570,
       487,
@@ -132,14 +132,14 @@
       735,
       1110,
       938,
-      944,
-      931
+      941,
+      929
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 14658,
-      "observed": 14658,
+      "expected": 14660,
+      "observed": 14660,
       "missing": 0
     }
   },
@@ -197,13 +197,13 @@
   "ranks": {
     "full": {
       "bins": [
-        15.16,
-        2.773,
-        3.256,
-        1.845,
-        1.136,
-        3.212,
-        1.618,
+        15.158,
+        2.778,
+        3.253,
+        1.854,
+        1.13,
+        3.264,
+        1.564,
         6,
         4,
         7
@@ -212,14 +212,14 @@
     },
     "window": {
       "bins": [
-        14.386,
-        2.66,
-        2.2,
-        1.754,
-        1.547,
-        2.36,
-        3.152,
-        3.179,
+        14.389,
+        2.648,
+        2.212,
+        1.751,
+        1.544,
+        2.363,
+        3.172,
+        3.16,
         3.762,
         5
       ],
@@ -227,16 +227,16 @@
     },
     "lifetime": {
       "bins": [
-        21.872,
-        20.471,
-        25.495,
-        20.477,
-        25.737,
-        27.103,
-        33.01,
-        34.127,
-        32.03,
-        46.677
+        21.688,
+        20.463,
+        25.44,
+        20.521,
+        25.669,
+        27.255,
+        32.902,
+        34.265,
+        31.978,
+        46.819
       ],
       "top1": 3
     }
@@ -318,9 +318,9 @@
   "lifetime": {
     "papers": 287,
     "outputBasis": "measured",
-    "citations": 14658,
-    "top10": 44.01,
-    "top10ShareOfDivision": 0.02799,
+    "citations": 14660,
+    "top10": 44.153,
+    "top10ShareOfDivision": 0.02804,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -331,18 +331,18 @@
       "date": "1998-09-00"
     },
     "spread": {
-      "mean": 51.073,
+      "mean": 51.08,
       "median": 26,
       "uncited": 16,
       "i10": 212,
-      "i100": 39
+      "i100": 40
     }
   },
   "query": {
     "arms": "((=abs:\"Lunar Prospector\" OR (abs:LPNS AND abs:(lunar OR Moon OR neutron))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1998-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Prospector%22+OR+%28abs%3ALPNS+AND+abs%3A%28lunar+OR+Moon+OR+neutron%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:26:25.227946+00:00",
+    "fetchedAt": "2026-11-10T03:18:00.824630+00:00",
     "reconciliation": {
       "adsReturned": 305,
       "curatedOut": 18,
@@ -546,7 +546,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 297
+      "citations": 299
     },
     {
       "bibcode": "2001JGR...10623231F",
@@ -564,7 +564,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 264
+      "citations": 262
     },
     {
       "bibcode": "2000JGR...105.4175F",
@@ -573,7 +573,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 238
+      "citations": 239
     },
     {
       "bibcode": "1998Sci...281.1476K",
@@ -609,7 +609,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 219
+      "citations": 220
     },
     {
       "bibcode": "2002JGRE..107.5130L",
@@ -645,7 +645,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 166
+      "citations": 168
+    },
+    {
+      "bibcode": "2001JGR...10627825H",
+      "title": "Initial mapping and interpretation of lunar crustal magnetic anomalies using Lunar Prospector magnetometer data",
+      "firstAuthor": "Hood, L. L.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2001,
+      "citations": 165
     },
     {
       "bibcode": "2004GeCoA..68.3791G",
@@ -655,15 +664,6 @@
       "authorCount": null,
       "year": 2004,
       "citations": 165
-    },
-    {
-      "bibcode": "2001JGR...10627825H",
-      "title": "Initial mapping and interpretation of lunar crustal magnetic anomalies using Lunar Prospector magnetometer data",
-      "firstAuthor": "Hood, L. L.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2001,
-      "citations": 163
     },
     {
       "bibcode": "2003JGRE..108.5102L",

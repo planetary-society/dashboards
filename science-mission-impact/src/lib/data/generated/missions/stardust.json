@@ -30,12 +30,12 @@
     "m": 2.542,
     "i100": 32,
     "g": 109,
-    "tori": 78.533,
-    "riq": 369
+    "tori": 77.409,
+    "riq": 366
   },
   "facts": {
     "papers": 339,
-    "citations": 15340,
+    "citations": 15329,
     "publicationYears": [
       2003,
       2026
@@ -106,7 +106,7 @@
       769,
       1092,
       806,
-      907,
+      911,
       932,
       731,
       896,
@@ -117,14 +117,14 @@
       668,
       632,
       858,
-      599,
-      638
+      598,
+      624
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 15340,
-      "observed": 15340,
+      "expected": 15329,
+      "observed": 15329,
       "missing": 0
     }
   },
@@ -182,26 +182,26 @@
   "ranks": {
     "full": {
       "bins": [
-        20.92,
-        17.879,
-        15.716,
-        21.83,
-        31.359,
-        20.06,
-        20.439,
-        27.593,
-        27.204,
+        20.912,
+        17.895,
+        15.699,
+        21.913,
+        31.303,
+        20.151,
+        20.307,
+        27.629,
+        27.191,
         23
       ],
       "top1": 4
     },
     "window": {
       "bins": [
-        7.772,
-        6.228,
-        1.984,
-        7.987,
-        5.029,
+        7.778,
+        6.222,
+        1.995,
+        8.01,
+        4.995,
         1.907,
         4.093,
         4,
@@ -212,16 +212,16 @@
     },
     "lifetime": {
       "bins": [
-        21.808,
-        26.41,
-        24.621,
-        32.056,
-        36.948,
-        41.976,
-        45.43,
-        36.044,
-        36.03,
-        37.677
+        21.531,
+        26.339,
+        24.72,
+        32.049,
+        36.726,
+        42.285,
+        45.74,
+        36.015,
+        35.776,
+        37.819
       ],
       "top1": 6
     }
@@ -303,9 +303,9 @@
   "lifetime": {
     "papers": 339,
     "outputBasis": "measured",
-    "citations": 15340,
-    "top10": 35.677,
-    "top10ShareOfDivision": 0.02269,
+    "citations": 15329,
+    "top10": 35.819,
+    "top10ShareOfDivision": 0.02275,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -316,10 +316,10 @@
       "date": "2004-06-00"
     },
     "spread": {
-      "mean": 45.251,
+      "mean": 45.218,
       "median": 23,
       "uncited": 13,
-      "i10": 251,
+      "i10": 250,
       "i100": 32
     }
   },
@@ -327,7 +327,7 @@
     "arms": "((((=abs:\"Stardust\" AND (abs:\"Wild 2\" OR abs:\"Tempel 1\" OR =abs:\"aerogel\" OR abs:\"sample return\" OR abs:\"cometary coma\" OR abs:\"Dust Flux Monitor\" OR abs:\"CIDA\")) OR (=abs:\"Stardust-NExT\" OR =title:\"Stardust-NExT\")) OR =abs:\"Stardust spacecraft\" OR (=abs:\"Wild 2\" AND abs:comet AND (abs:sample OR =abs:aerogel OR (abs:organic AND abs:solid) OR (abs:particle AND abs:mineral)))) AND NOT title:(\"interstellar medium\" OR \"ISM\" OR \"star formation\" OR \"reddening\" OR \"supernova\") NOT title:(\"David Bowie\" OR \"Ziggy\" OR \"movie\" OR \"entertainment\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2004-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Stardust%22+AND+%28abs%3A%22Wild+2%22+OR+abs%3A%22Tempel+1%22+OR+%3Dabs%3A%22aerogel%22+OR+abs%3A%22sample+return%22+OR+abs%3A%22cometary+coma%22+OR+abs%3A%22Dust+Flux+Monitor%22+OR+abs%3A%22CIDA%22%29%29+OR+%28%3Dabs%3A%22Stardust-NExT%22+OR+%3Dtitle%3A%22Stardust-NExT%22%29%29+OR+%3Dabs%3A%22Stardust+spacecraft%22+OR+%28%3Dabs%3A%22Wild+2%22+AND+abs%3Acomet+AND+%28abs%3Asample+OR+%3Dabs%3Aaerogel+OR+%28abs%3Aorganic+AND+abs%3Asolid%29+OR+%28abs%3Aparticle+AND+abs%3Amineral%29%29%29%29+AND+NOT+title%3A%28%22interstellar+medium%22+OR+%22ISM%22+OR+%22star+formation%22+OR+%22reddening%22+OR+%22supernova%22%29+NOT+title%3A%28%22David+Bowie%22+OR+%22Ziggy%22+OR+%22movie%22+OR+%22entertainment%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2004-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:26:37.918946+00:00",
+    "fetchedAt": "2026-11-10T03:18:16.735937+00:00",
     "reconciliation": {
       "adsReturned": 341,
       "curatedOut": 4,
@@ -418,7 +418,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 471
+      "citations": 470
     },
     {
       "bibcode": "2016SciA....2E0285A",
@@ -427,7 +427,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 456
+      "citations": 455
     },
     {
       "bibcode": "2009M&PS...44.1323E",
@@ -436,7 +436,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 410
+      "citations": 411
     },
     {
       "bibcode": "2006Sci...314.1724M",
@@ -481,7 +481,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 244
+      "citations": 242
     },
     {
       "bibcode": "2008Sci...319..447I",
@@ -499,7 +499,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 201
+      "citations": 200
     },
     {
       "bibcode": "2011PNAS..10819171C",
@@ -529,15 +529,6 @@
       "citations": 172
     },
     {
-      "bibcode": "2010Sci...328..742D",
-      "title": "Extreme Deuterium Excesses in Ultracarbonaceous Micrometeorites from Central Antarctic Snow",
-      "firstAuthor": "Duprat, J.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2010,
-      "citations": 163
-    },
-    {
       "bibcode": "2014Sci...345..786W",
       "title": "Evidence for interstellar origin of seven dust particles collected by the Stardust spacecraft",
       "firstAuthor": "Westphal, Andrew J.",
@@ -545,6 +536,15 @@
       "authorCount": null,
       "year": 2014,
       "citations": 162
+    },
+    {
+      "bibcode": "2010Sci...328..742D",
+      "title": "Extreme Deuterium Excesses in Ultracarbonaceous Micrometeorites from Central Antarctic Snow",
+      "firstAuthor": "Duprat, J.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2010,
+      "citations": 161
     },
     {
       "bibcode": "2011ApJ...743..129N",
@@ -562,7 +562,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 152
+      "citations": 151
     },
     {
       "bibcode": "2008M&PS...43..353C",

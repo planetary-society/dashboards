@@ -26,16 +26,16 @@
     }
   },
   "indices": {
-    "h": 132,
-    "m": 7.765,
-    "i100": 225,
-    "g": 237,
-    "tori": 321.524,
-    "riq": 996
+    "h": 131,
+    "m": 7.706,
+    "i100": 222,
+    "g": 236,
+    "tori": 270.962,
+    "riq": 914
   },
   "facts": {
-    "papers": 2607,
-    "citations": 107904,
+    "papers": 2611,
+    "citations": 107067,
     "publicationYears": [
       2010,
       2026
@@ -78,39 +78,39 @@
       197,
       206,
       237,
-      213
+      217
     ],
     "citations": [
       42,
       248,
       983,
       1884,
-      2939,
+      2943,
       3540,
-      4439,
-      5150,
-      6115,
-      6351,
-      7116,
-      8026,
-      8293,
-      9417,
-      11583,
-      13735,
-      18043
+      4457,
+      5151,
+      6116,
+      6352,
+      7115,
+      8028,
+      8299,
+      9415,
+      11560,
+      13603,
+      17331
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 107904,
-      "observed": 107904,
+      "expected": 107067,
+      "observed": 107067,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 2607,
+    "papers": 2611,
     "us": {
-      "mapped": 1560,
+      "mapped": 1562,
       "top": [
         {
           "name": "California Institute of Technology",
@@ -127,7 +127,7 @@
       ]
     },
     "world": {
-      "mapped": 2523,
+      "mapped": 2526,
       "top": [
         {
           "name": "California Institute of Technology",
@@ -156,51 +156,51 @@
     ],
     "authorCount": 38,
     "year": 2010,
-    "citations": 8104
+    "citations": 8070
   },
   "ranks": {
     "full": {
       "bins": [
-        8.107,
-        14.921,
-        17.599,
-        17.031,
-        13.91,
-        21.042,
-        25.548,
-        21.701,
-        31.021,
-        19.121
+        8.105,
+        14.893,
+        17.053,
+        17.605,
+        13.884,
+        21.016,
+        25.573,
+        21.719,
+        31.003,
+        19.149
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        7.88,
-        16.838,
-        21.23,
-        18.59,
-        19.485,
-        20.757,
-        24.754,
-        22.275,
-        21.192,
+        7.881,
+        16.841,
+        21.234,
+        18.58,
+        19.49,
+        20.763,
+        24.743,
+        21.389,
+        22.078,
         17
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        357.855,
-        344.592,
-        323.508,
-        296.498,
-        243.005,
-        248.494,
-        221.992,
-        198.505,
-        207.19,
-        165.36
+        357.667,
+        345.596,
+        327.415,
+        294.296,
+        250.607,
+        246.06,
+        221.381,
+        200.235,
+        204.357,
+        163.386
       ],
       "top1": 12
     }
@@ -208,9 +208,9 @@
   "full": {
     "papers": 190,
     "outputBasis": "measured",
-    "citations": 5254,
-    "top10": 14.788,
-    "top10ShareOfDivision": 0.00297,
+    "citations": 5256,
+    "top10": 14.816,
+    "top10ShareOfDivision": 0.00298,
     "top1": 2,
     "top1ShareOfDivision": 0.00402,
     "first": {
@@ -235,7 +235,7 @@
       "m": 11.7
     },
     "spread": {
-      "mean": 27.653,
+      "mean": 27.663,
       "median": 17,
       "uncited": 5,
       "i10": 133,
@@ -245,7 +245,7 @@
   "window": {
     "papers": 190,
     "outputBasis": "measured",
-    "citations": 5254,
+    "citations": 5256,
     "top10": 16.5,
     "top10ShareOfDivision": 0.00853,
     "top1": 2,
@@ -272,7 +272,7 @@
       "m": 11.7
     },
     "spread": {
-      "mean": 27.653,
+      "mean": 27.663,
       "median": 17,
       "uncited": 5,
       "i10": 133,
@@ -280,11 +280,11 @@
     }
   },
   "lifetime": {
-    "papers": 2607,
+    "papers": 2611,
     "outputBasis": "measured",
-    "citations": 107904,
-    "top10": 126.927,
-    "top10ShareOfDivision": 0.01997,
+    "citations": 107067,
+    "top10": 124.953,
+    "top10ShareOfDivision": 0.01964,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -295,26 +295,26 @@
       "date": "2010-02-00"
     },
     "spread": {
-      "mean": 41.39,
-      "median": 17,
-      "uncited": 181,
-      "i10": 1680,
-      "i100": 225
+      "mean": 41.006,
+      "median": 16,
+      "uncited": 173,
+      "i10": 1673,
+      "i100": 222
     }
   },
   "query": {
     "arms": "(((((=abs:\"Wide-field Infrared Survey Explorer\" OR =abs:\"Wide-field Infrared Space Explorer\" OR (abs:WISE AND (abs:infrared OR abs:observatory OR abs:NEOWISE OR abs:asteroid OR abs:\"all-sky\")) OR facility:WISE OR =abs:\"WISE satellite\" OR ((=abs:AllWISE OR =abs:unWISE OR =abs:CatWISE) AND (abs:infrared OR abs:catalog OR abs:photometry OR abs:survey OR abs:WISE)) OR (abs:NEOWISE AND NOT (abs:asteroid OR abs:comet OR =abs:NEOs OR =abs:\"near-Earth objects\" OR =abs:\"minor planet\" OR =abs:\"minor planets\" OR =abs:\"small body\" OR =abs:\"small bodies\" OR abs:trojan OR =abs:\"planetary defense\" OR =abs:\"Kuiper belt\" OR =abs:\"trans-Neptunian\" OR abs:Neptune OR abs:regolith OR =abs:\"Planet Nine\")) OR (abs:NEOWISE AND (abs:AGN OR abs:quasar OR abs:YSO OR abs:protostar OR abs:\"tidal disruption event\" OR abs:supernova OR abs:\"brown dwarf\" OR abs:\"white dwarf\" OR abs:maser OR abs:\"star-forming\" OR abs:\"black hole\"))) AND NOT (=abs:\"C 2020 F3 NEOWISE\" OR =abs:\"comet NEOWISE\" OR =abs:\"C 2014 N3 NEOWISE\")) AND NOT (abs:NEOWISE AND (abs:asteroid OR abs:comet OR =abs:NEOs OR =abs:\"near-Earth objects\" OR =abs:\"minor planet\" OR =abs:\"minor planets\" OR =abs:\"small body\" OR =abs:\"small bodies\" OR abs:trojan OR =abs:\"planetary defense\" OR =abs:\"Kuiper belt\" OR =abs:\"trans-Neptunian\" OR abs:Neptune OR abs:regolith OR =abs:\"Planet Nine\") AND NOT (abs:AGN OR abs:quasar OR abs:YSO OR abs:protostar OR abs:\"tidal disruption event\" OR abs:supernova OR abs:\"brown dwarf\" OR abs:\"white dwarf\" OR abs:maser OR abs:\"star-forming\" OR abs:\"black hole\") AND NOT =abs:WISE AND NOT facility:WISE)) AND collection:astronomy))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2010-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28%28%3Dabs%3A%22Wide-field+Infrared+Survey+Explorer%22+OR+%3Dabs%3A%22Wide-field+Infrared+Space+Explorer%22+OR+%28abs%3AWISE+AND+%28abs%3Ainfrared+OR+abs%3Aobservatory+OR+abs%3ANEOWISE+OR+abs%3Aasteroid+OR+abs%3A%22all-sky%22%29%29+OR+facility%3AWISE+OR+%3Dabs%3A%22WISE+satellite%22+OR+%28%28%3Dabs%3AAllWISE+OR+%3Dabs%3AunWISE+OR+%3Dabs%3ACatWISE%29+AND+%28abs%3Ainfrared+OR+abs%3Acatalog+OR+abs%3Aphotometry+OR+abs%3Asurvey+OR+abs%3AWISE%29%29+OR+%28abs%3ANEOWISE+AND+NOT+%28abs%3Aasteroid+OR+abs%3Acomet+OR+%3Dabs%3ANEOs+OR+%3Dabs%3A%22near-Earth+objects%22+OR+%3Dabs%3A%22minor+planet%22+OR+%3Dabs%3A%22minor+planets%22+OR+%3Dabs%3A%22small+body%22+OR+%3Dabs%3A%22small+bodies%22+OR+abs%3Atrojan+OR+%3Dabs%3A%22planetary+defense%22+OR+%3Dabs%3A%22Kuiper+belt%22+OR+%3Dabs%3A%22trans-Neptunian%22+OR+abs%3ANeptune+OR+abs%3Aregolith+OR+%3Dabs%3A%22Planet+Nine%22%29%29+OR+%28abs%3ANEOWISE+AND+%28abs%3AAGN+OR+abs%3Aquasar+OR+abs%3AYSO+OR+abs%3Aprotostar+OR+abs%3A%22tidal+disruption+event%22+OR+abs%3Asupernova+OR+abs%3A%22brown+dwarf%22+OR+abs%3A%22white+dwarf%22+OR+abs%3Amaser+OR+abs%3A%22star-forming%22+OR+abs%3A%22black+hole%22%29%29%29+AND+NOT+%28%3Dabs%3A%22C+2020+F3+NEOWISE%22+OR+%3Dabs%3A%22comet+NEOWISE%22+OR+%3Dabs%3A%22C+2014+N3+NEOWISE%22%29%29+AND+NOT+%28abs%3ANEOWISE+AND+%28abs%3Aasteroid+OR+abs%3Acomet+OR+%3Dabs%3ANEOs+OR+%3Dabs%3A%22near-Earth+objects%22+OR+%3Dabs%3A%22minor+planet%22+OR+%3Dabs%3A%22minor+planets%22+OR+%3Dabs%3A%22small+body%22+OR+%3Dabs%3A%22small+bodies%22+OR+abs%3Atrojan+OR+%3Dabs%3A%22planetary+defense%22+OR+%3Dabs%3A%22Kuiper+belt%22+OR+%3Dabs%3A%22trans-Neptunian%22+OR+abs%3ANeptune+OR+abs%3Aregolith+OR+%3Dabs%3A%22Planet+Nine%22%29+AND+NOT+%28abs%3AAGN+OR+abs%3Aquasar+OR+abs%3AYSO+OR+abs%3Aprotostar+OR+abs%3A%22tidal+disruption+event%22+OR+abs%3Asupernova+OR+abs%3A%22brown+dwarf%22+OR+abs%3A%22white+dwarf%22+OR+abs%3Amaser+OR+abs%3A%22star-forming%22+OR+abs%3A%22black+hole%22%29+AND+NOT+%3Dabs%3AWISE+AND+NOT+facility%3AWISE%29%29+AND+collection%3Aastronomy%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2010-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:44:35.296311+00:00",
+    "fetchedAt": "2026-11-10T03:38:32.746729+00:00",
     "reconciliation": {
-      "adsReturned": 2613,
+      "adsReturned": 2617,
       "curatedOut": 7,
       "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 2607
+      "final": 2611
     }
   },
   "curation": {
@@ -395,7 +395,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 8104
+      "citations": 8070
     },
     {
       "bibcode": "2019AJ....157..168D",
@@ -404,7 +404,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 2469
+      "citations": 2428
     },
     {
       "bibcode": "2011ApJ...731...53M",
@@ -413,7 +413,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 931
+      "citations": 926
     },
     {
       "bibcode": "2012ApJ...753...30S",
@@ -422,7 +422,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 914
+      "citations": 911
     },
     {
       "bibcode": "2014ApJ...792...30M",
@@ -431,7 +431,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 815
+      "citations": 808
     },
     {
       "bibcode": "2011ApJ...735..112J",
@@ -440,7 +440,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 729
+      "citations": 728
     },
     {
       "bibcode": "2026AJ....171..285D",
@@ -449,16 +449,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2026,
-      "citations": 725
-    },
-    {
-      "bibcode": "2018ApJ...859...11S",
-      "title": "Dust Attenuation Curves in the Local Universe: Demographics and New Laws for Star-forming Galaxies and High-redshift Analogs",
-      "firstAuthor": "Salim, Samir",
-      "authors": null,
-      "authorCount": null,
-      "year": 2018,
-      "citations": 659
+      "citations": 701
     },
     {
       "bibcode": "2017ApJS..233...17R",
@@ -467,7 +458,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 656
+      "citations": 672
+    },
+    {
+      "bibcode": "2018ApJ...859...11S",
+      "title": "Dust Attenuation Curves in the Local Universe: Demographics and New Laws for Star-forming Galaxies and High-redshift Analogs",
+      "firstAuthor": "Salim, Samir",
+      "authors": null,
+      "authorCount": null,
+      "year": 2018,
+      "citations": 661
     },
     {
       "bibcode": "2020ApJS..250....8L",
@@ -476,7 +476,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 637
+      "citations": 625
     },
     {
       "bibcode": "2012ApJS..201...19D",
@@ -485,7 +485,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 569
+      "citations": 565
     },
     {
       "bibcode": "2019ApJ...877..116W",
@@ -494,7 +494,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 537
+      "citations": 528
     },
     {
       "bibcode": "2014ApJS..212....1A",
@@ -503,7 +503,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 455
+      "citations": 454
     },
     {
       "bibcode": "2016ApJS..227....2S",
@@ -512,7 +512,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 445
+      "citations": 443
     },
     {
       "bibcode": "2019ApJS..240...30S",
@@ -521,16 +521,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 440
-    },
-    {
-      "bibcode": "2011PASP..123.1218A",
-      "title": "Common-Resolution Convolution Kernels for Space- and Ground-Based Telescopes",
-      "firstAuthor": "Aniano, G.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2011,
-      "citations": 438
+      "citations": 436
     },
     {
       "bibcode": "2013ApJ...772...26A",
@@ -539,7 +530,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 436
+      "citations": 435
+    },
+    {
+      "bibcode": "2011PASP..123.1218A",
+      "title": "Common-Resolution Convolution Kernels for Space- and Ground-Based Telescopes",
+      "firstAuthor": "Aniano, G.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2011,
+      "citations": 434
     },
     {
       "bibcode": "2011ApJS..197...19K",
@@ -548,7 +548,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 414
+      "citations": 411
     },
     {
       "bibcode": "2011ApJ...741...68M",
@@ -557,7 +557,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 405
+      "citations": 404
     },
     {
       "bibcode": "2014AJ....147..108L",
@@ -566,10 +566,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 405
+      "citations": 400
     }
   ],
   "papersFile": {
-    "rows": 2607
+    "rows": 2611
   }
 }

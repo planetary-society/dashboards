@@ -30,12 +30,12 @@
     "m": 0.8,
     "i100": 0,
     "g": 11,
-    "tori": 1.248,
-    "riq": 124
+    "tori": 1.177,
+    "riq": 120
   },
   "facts": {
     "papers": 11,
-    "citations": 232,
+    "citations": 233,
     "publicationYears": [
       2017,
       2025
@@ -76,13 +76,13 @@
       27,
       23,
       39,
-      39
+      40
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 232,
-      "observed": 232,
+      "expected": 233,
+      "observed": 233,
       "missing": 0
     }
   },
@@ -141,14 +141,14 @@
     "full": {
       "bins": [
         0,
-        0.05,
-        0.95,
+        0.051,
+        0.949,
         0,
         0,
         1,
         0,
-        0.106,
-        1.894,
+        0.121,
+        1.879,
         0
       ],
       "top1": 0
@@ -170,13 +170,13 @@
     },
     "lifetime": {
       "bins": [
-        0.59,
-        0.41,
+        0.587,
+        0.413,
         1,
         1,
-        2.188,
-        2.19,
-        1.622,
+        1.352,
+        2.997,
+        1.651,
         0,
         2,
         0
@@ -261,7 +261,7 @@
   "lifetime": {
     "papers": 11,
     "outputBasis": "measured",
-    "citations": 232,
+    "citations": 233,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": null,
@@ -274,7 +274,7 @@
       "date": null
     },
     "spread": {
-      "mean": 21.091,
+      "mean": 21.182,
       "median": 15,
       "uncited": 0,
       "i10": 8,
@@ -285,7 +285,7 @@
     "arms": "((((abs:minXSS AND abs:(solar OR \"X-ray\")) OR =abs:\"Miniature X-ray Solar Spectrometer\") AND NOT abs:(DAXSS OR \"MinXSS-3\" OR INSPIRESat)))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2016-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3AminXSS+AND+abs%3A%28solar+OR+%22X-ray%22%29%29+OR+%3Dabs%3A%22Miniature+X-ray+Solar+Spectrometer%22%29+AND+NOT+abs%3A%28DAXSS+OR+%22MinXSS-3%22+OR+INSPIRESat%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2016-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:38:25.729495+00:00",
+    "fetchedAt": "2026-11-10T03:31:58.608598+00:00",
     "reconciliation": {
       "adsReturned": 11,
       "curatedOut": 1,
@@ -365,6 +365,15 @@
       "citations": 20
     },
     {
+      "bibcode": "2023ApJ...948...71M",
+      "title": "Coronal Heating as Determined by the Solar Flare Frequency Distribution Obtained by Aggregating Case Studies",
+      "firstAuthor": "Mason, James Paul",
+      "authors": null,
+      "authorCount": null,
+      "year": 2023,
+      "citations": 15
+    },
+    {
       "bibcode": "2023ApJ...957...14S",
       "title": "Estimations of Elemental Abundances during Solar Flares Observed in Soft X-Rays by the MinXSS-1 CubeSat Mission",
       "firstAuthor": "Suarez, Crisel",
@@ -380,15 +389,6 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 14
-    },
-    {
-      "bibcode": "2023ApJ...948...71M",
-      "title": "Coronal Heating as Determined by the Solar Flare Frequency Distribution Obtained by Aggregating Case Studies",
-      "firstAuthor": "Mason, James Paul",
-      "authors": null,
-      "authorCount": null,
-      "year": 2023,
       "citations": 14
     },
     {

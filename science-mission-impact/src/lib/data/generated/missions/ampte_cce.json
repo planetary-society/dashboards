@@ -30,12 +30,12 @@
     "m": 1.571,
     "i100": 48,
     "g": 110,
-    "tori": 134.299,
+    "tori": 134.619,
     "riq": 282
   },
   "facts": {
     "papers": 286,
-    "citations": 14524,
+    "citations": 14527,
     "publicationYears": [
       1985,
       2025
@@ -159,8 +159,8 @@
       420,
       416,
       342,
-      356,
-      381,
+      360,
+      383,
       430,
       437,
       333,
@@ -172,13 +172,13 @@
       320,
       262,
       294,
-      189
+      186
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 14524,
-      "observed": 14524,
+      "expected": 14527,
+      "observed": 14527,
       "missing": 0
     }
   },
@@ -236,16 +236,16 @@
   "ranks": {
     "full": {
       "bins": [
-        21.569,
-        7.63,
-        6.809,
-        6.062,
-        13.47,
-        15.09,
-        12.881,
-        10.807,
-        12.885,
-        6.797
+        21.572,
+        7.633,
+        6.808,
+        6.048,
+        13.48,
+        15.097,
+        12.892,
+        10.832,
+        12.859,
+        6.779
       ],
       "top1": 0
     },
@@ -266,26 +266,26 @@
     },
     "lifetime": {
       "bins": [
-        28.034,
-        17.84,
-        21.737,
-        15.126,
-        24.765,
-        20.875,
-        24.594,
-        34.836,
-        34.192,
+        27.976,
+        17.851,
+        21.612,
+        15.227,
+        24.741,
+        20.94,
+        24.5,
+        34.911,
+        34.24,
         64
       ],
-      "top1": 4.503
+      "top1": 4.65
     }
   },
   "full": {
     "papers": 114,
     "outputBasis": "measured",
     "citations": 1064,
-    "top10": 6.797,
-    "top10ShareOfDivision": 0.00472,
+    "top10": 6.779,
+    "top10ShareOfDivision": 0.0047,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -357,9 +357,9 @@
   "lifetime": {
     "papers": 286,
     "outputBasis": "measured",
-    "citations": 14524,
+    "citations": 14527,
     "top10": 64,
-    "top10ShareOfDivision": 0.03488,
+    "top10ShareOfDivision": 0.03485,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -370,7 +370,7 @@
       "date": "1985-05-00"
     },
     "spread": {
-      "mean": 50.783,
+      "mean": 50.794,
       "median": 27,
       "uncited": 18,
       "i10": 205,
@@ -381,7 +381,7 @@
     "arms": "(((abs:(\"AMPTE CCE\" OR AMPTECCE) AND abs:(magnetosphere OR magnetospheric OR ions OR particles OR plasma OR \"ring current\" OR spacecraft OR satellite)) OR =abs:\"Charge Composition Explorer\" OR (abs:AMPTE AND =abs:\"Charged Particle Explorer\") OR (abs:CCE AND abs:(magnetosphere OR magnetospheric OR \"ring current\" OR magnetopause OR plasmasphere)) OR (abs:(CHEM OR MEPA OR HPCE) AND abs:(magnetosphere OR magnetospheric OR \"ring current\")) OR (abs:AMPTE AND =abs:(\"ring current\" OR \"ring currents\" OR plasmasphere OR plasmaspheric OR \"radiation belt\" OR \"radiation belts\" OR \"inner magnetosphere\") AND NOT abs:(IRM OR UKS OR \"Ion Release Module\" OR \"UK Subsatellite\" OR \"United Kingdom Subsatellite\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1984-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%28%22AMPTE+CCE%22+OR+AMPTECCE%29+AND+abs%3A%28magnetosphere+OR+magnetospheric+OR+ions+OR+particles+OR+plasma+OR+%22ring+current%22+OR+spacecraft+OR+satellite%29%29+OR+%3Dabs%3A%22Charge+Composition+Explorer%22+OR+%28abs%3AAMPTE+AND+%3Dabs%3A%22Charged+Particle+Explorer%22%29+OR+%28abs%3ACCE+AND+abs%3A%28magnetosphere+OR+magnetospheric+OR+%22ring+current%22+OR+magnetopause+OR+plasmasphere%29%29+OR+%28abs%3A%28CHEM+OR+MEPA+OR+HPCE%29+AND+abs%3A%28magnetosphere+OR+magnetospheric+OR+%22ring+current%22%29%29+OR+%28abs%3AAMPTE+AND+%3Dabs%3A%28%22ring+current%22+OR+%22ring+currents%22+OR+plasmasphere+OR+plasmaspheric+OR+%22radiation+belt%22+OR+%22radiation+belts%22+OR+%22inner+magnetosphere%22%29+AND+NOT+abs%3A%28IRM+OR+UKS+OR+%22Ion+Release+Module%22+OR+%22UK+Subsatellite%22+OR+%22United+Kingdom+Subsatellite%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1984-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:36:10.333743+00:00",
+    "fetchedAt": "2026-11-10T03:29:02.158850+00:00",
     "reconciliation": {
       "adsReturned": 289,
       "curatedOut": 3,
@@ -465,7 +465,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 262
+      "citations": 261
     },
     {
       "bibcode": "1990JGR....9510495A",
@@ -501,7 +501,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1994,
-      "citations": 229
+      "citations": 230
     },
     {
       "bibcode": "1993JGR....9811369A",
@@ -546,7 +546,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 207
+      "citations": 208
     },
     {
       "bibcode": "1989JGR....94.3579K",
@@ -582,7 +582,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1987,
-      "citations": 167
+      "citations": 168
     },
     {
       "bibcode": "1985GeoRL..12..325G",

@@ -30,12 +30,12 @@
     "m": 1.767,
     "i100": 22,
     "g": 86,
-    "tori": 55.221,
-    "riq": 247
+    "tori": 54.782,
+    "riq": 246
   },
   "facts": {
     "papers": 283,
-    "citations": 9696,
+    "citations": 9701,
     "publicationYears": [
       1997,
       2026
@@ -123,8 +123,8 @@
       388,
       446,
       497,
-      386,
-      360,
+      388,
+      364,
       383,
       389,
       348,
@@ -136,13 +136,13 @@
       260,
       371,
       330,
-      298
+      297
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 9696,
-      "observed": 9696,
+      "expected": 9701,
+      "observed": 9701,
       "missing": 0
     }
   },
@@ -200,16 +200,16 @@
   "ranks": {
     "full": {
       "bins": [
-        34.801,
-        27.095,
-        27.33,
-        27.62,
-        25.309,
-        17.648,
+        34.81,
+        27.11,
+        27.321,
+        27.592,
+        25.322,
+        17.666,
         18.708,
-        7.595,
-        14.03,
-        11.864
+        7.591,
+        14.026,
+        11.853
       ],
       "top1": 2
     },
@@ -220,26 +220,26 @@
         4.257,
         1.371,
         3.513,
-        5.85,
-        2.587,
+        5.867,
+        2.57,
         2,
-        3.422,
-        5.578
+        3.443,
+        5.557
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        22.903,
-        19.552,
-        31.833,
-        27.505,
-        28.274,
-        35.312,
-        28.594,
-        26.028,
-        31.934,
-        31.066
+        22.868,
+        19.384,
+        31.721,
+        27.585,
+        28.379,
+        35.412,
+        28.5,
+        26.151,
+        31.736,
+        31.264
       ],
       "top1": 4
     }
@@ -248,8 +248,8 @@
     "papers": 212,
     "outputBasis": "measured",
     "citations": 1709,
-    "top10": 11.864,
-    "top10ShareOfDivision": 0.00823,
+    "top10": 11.853,
+    "top10ShareOfDivision": 0.00822,
     "top1": 2,
     "top1ShareOfDivision": 0.01388,
     "first": {
@@ -285,8 +285,8 @@
     "papers": 36,
     "outputBasis": "measured",
     "citations": 608,
-    "top10": 5.578,
-    "top10ShareOfDivision": 0.01257,
+    "top10": 5.557,
+    "top10ShareOfDivision": 0.01253,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -321,9 +321,9 @@
   "lifetime": {
     "papers": 283,
     "outputBasis": "measured",
-    "citations": 9696,
-    "top10": 28.366,
-    "top10ShareOfDivision": 0.01546,
+    "citations": 9701,
+    "top10": 28.465,
+    "top10ShareOfDivision": 0.0155,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -334,7 +334,7 @@
       "date": "1998-06-00"
     },
     "spread": {
-      "mean": 34.261,
+      "mean": 34.279,
       "median": 16,
       "uncited": 17,
       "i10": 187,
@@ -345,7 +345,7 @@
     "arms": "((=abs:\"Fast Auroral Snapshot\" OR =abs:\"Fast Auroral Snapshots\" OR (abs:FAST AND (abs:satellite OR abs:spacecraft OR abs:mission OR abs:probe) AND (abs:aurora OR abs:auroral)) OR (abs:FAST AND (abs:satellite OR abs:spacecraft) AND (abs:ionospher* OR abs:magnetospher* OR abs:photoelectron*))) AND NOT =abs:\"Aperture Spherical\" AND NOT =abs:\"FAST events\" AND NOT =abs:\"FAST perturbations\" AND NOT =abs:\"Swarm FAST\")",
     "filters": "property:refereed AND doctype:article AND pubdate:[1996-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Fast+Auroral+Snapshot%22+OR+%3Dabs%3A%22Fast+Auroral+Snapshots%22+OR+%28abs%3AFAST+AND+%28abs%3Asatellite+OR+abs%3Aspacecraft+OR+abs%3Amission+OR+abs%3Aprobe%29+AND+%28abs%3Aaurora+OR+abs%3Aauroral%29%29+OR+%28abs%3AFAST+AND+%28abs%3Asatellite+OR+abs%3Aspacecraft%29+AND+%28abs%3Aionospher%2A+OR+abs%3Amagnetospher%2A+OR+abs%3Aphotoelectron%2A%29%29%29+AND+NOT+%3Dabs%3A%22Aperture+Spherical%22+AND+NOT+%3Dabs%3A%22FAST+events%22+AND+NOT+%3Dabs%3A%22FAST+perturbations%22+AND+NOT+%3Dabs%3A%22Swarm+FAST%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:36:40.216565+00:00",
+    "fetchedAt": "2026-11-10T03:30:01.615380+00:00",
     "reconciliation": {
       "adsReturned": 287,
       "curatedOut": 4,
@@ -455,7 +455,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 190
+      "citations": 193
     },
     {
       "bibcode": "1998GeoRL..25.2061E",
@@ -527,7 +527,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 126
+      "citations": 125
     },
     {
       "bibcode": "2002GeoRL..29.1535C",
@@ -572,7 +572,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 105
+      "citations": 106
     }
   ],
   "papersFile": {

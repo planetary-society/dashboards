@@ -30,12 +30,12 @@
     "m": 3.333,
     "i100": 57,
     "g": 120,
-    "tori": 153.278,
-    "riq": 515
+    "tori": 157.478,
+    "riq": 522
   },
   "facts": {
     "papers": 1262,
-    "citations": 32401,
+    "citations": 32500,
     "publicationYears": [
       2003,
       2026
@@ -105,26 +105,26 @@
       906,
       1111,
       1324,
-      1251,
-      1314,
+      1306,
+      1323,
       1410,
       1316,
       1590,
-      2070,
+      2069,
       1596,
       1877,
-      2374,
+      2373,
       2195,
       2390,
-      2667,
-      2650,
-      2443
+      2666,
+      2649,
+      2482
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 32401,
-      "observed": 32401,
+      "expected": 32500,
+      "observed": 32500,
       "missing": 0
     }
   },
@@ -177,21 +177,21 @@
     ],
     "authorCount": 9,
     "year": 2005,
-    "citations": 445
+    "citations": 443
   },
   "ranks": {
     "full": {
       "bins": [
-        81.666,
-        115.964,
-        149.73,
-        127.39,
-        131.107,
-        110.418,
-        95.316,
-        86.787,
-        71.961,
-        55.661
+        81.72,
+        115.987,
+        149.349,
+        127.144,
+        130.854,
+        110.879,
+        95.815,
+        85.7,
+        72.921,
+        55.632
       ],
       "top1": 3
     },
@@ -202,9 +202,9 @@
         10.353,
         9.903,
         6.278,
-        7.448,
-        5.564,
-        2.68,
+        7.483,
+        5.548,
+        2.661,
         1.93,
         4
       ],
@@ -212,16 +212,16 @@
     },
     "lifetime": {
       "bins": [
-        153.957,
-        135.07,
-        109.029,
-        139.48,
-        121.409,
-        149.753,
-        130.81,
+        152.731,
+        133.681,
+        110.787,
+        138.586,
+        121.736,
+        149.853,
+        130.868,
         122.917,
-        110.509,
-        89.066
+        111.576,
+        89.264
       ],
       "top1": 6
     }
@@ -229,11 +229,11 @@
   "full": {
     "papers": 1026,
     "outputBasis": "measured",
-    "citations": 9164,
-    "top10": 54.661,
-    "top10ShareOfDivision": 0.03793,
+    "citations": 9180,
+    "top10": 54.632,
+    "top10ShareOfDivision": 0.0379,
     "top1": 3,
-    "top1ShareOfDivision": 0.02082,
+    "top1ShareOfDivision": 0.02081,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.856,
@@ -251,15 +251,15 @@
       "citationBuckets": 25
     },
     "indices": {
-      "h": 30,
+      "h": 31,
       "g": 40,
-      "m": 1.369
+      "m": 1.415
     },
     "spread": {
-      "mean": 8.932,
+      "mean": 8.947,
       "median": 6,
       "uncited": 44,
-      "i10": 332,
+      "i10": 333,
       "i100": 0
     }
   },
@@ -303,9 +303,9 @@
   "lifetime": {
     "papers": 1262,
     "outputBasis": "measured",
-    "citations": 32401,
-    "top10": 87.066,
-    "top10ShareOfDivision": 0.04744,
+    "citations": 32500,
+    "top10": 87.264,
+    "top10ShareOfDivision": 0.04752,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -316,10 +316,10 @@
       "date": "2003-07-00"
     },
     "spread": {
-      "mean": 25.674,
+      "mean": 25.753,
       "median": 14,
-      "uncited": 115,
-      "i10": 743,
+      "uncited": 114,
+      "i10": 744,
       "i100": 57
     }
   },
@@ -327,7 +327,7 @@
     "arms": "((=abs:\"Thermosphere Ionosphere Mesosphere Energetics and Dynamics\" OR (abs:TIMED AND (abs:SABER OR abs:GUVI OR abs:TIDI OR =abs:\"Solar EUV Experiment\" OR =abs:\"TIMED satellite\" OR =abs:\"TIMED spacecraft\" OR =abs:\"TIMED mission\" OR abs:\"TIMED SEE\" OR abs:irradiance OR abs:thermosphere OR abs:ionosphere OR abs:mesosphere)) OR (abs:SABER AND (abs:mesosphere OR abs:thermosphere OR abs:ionosphere OR abs:stratosphere OR abs:stratopause OR abs:mesopause OR abs:airglow OR abs:nightglow OR abs:ozone OR abs:hydroxyl OR abs:tides OR abs:tide OR =abs:\"middle atmosphere\" OR =abs:\"gravity wave\" OR =abs:\"gravity waves\" OR =abs:\"nitric oxide\")) OR (abs:GUVI AND (abs:thermosphere OR abs:ionosphere OR abs:aurora OR abs:auroral OR abs:airglow OR abs:dayglow)) OR (abs:TIDI AND (abs:mesosphere OR abs:thermosphere OR abs:winds OR abs:wind OR abs:tides OR abs:tide)) ))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2002-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Thermosphere+Ionosphere+Mesosphere+Energetics+and+Dynamics%22+OR+%28abs%3ATIMED+AND+%28abs%3ASABER+OR+abs%3AGUVI+OR+abs%3ATIDI+OR+%3Dabs%3A%22Solar+EUV+Experiment%22+OR+%3Dabs%3A%22TIMED+satellite%22+OR+%3Dabs%3A%22TIMED+spacecraft%22+OR+%3Dabs%3A%22TIMED+mission%22+OR+abs%3A%22TIMED+SEE%22+OR+abs%3Airradiance+OR+abs%3Athermosphere+OR+abs%3Aionosphere+OR+abs%3Amesosphere%29%29+OR+%28abs%3ASABER+AND+%28abs%3Amesosphere+OR+abs%3Athermosphere+OR+abs%3Aionosphere+OR+abs%3Astratosphere+OR+abs%3Astratopause+OR+abs%3Amesopause+OR+abs%3Aairglow+OR+abs%3Anightglow+OR+abs%3Aozone+OR+abs%3Ahydroxyl+OR+abs%3Atides+OR+abs%3Atide+OR+%3Dabs%3A%22middle+atmosphere%22+OR+%3Dabs%3A%22gravity+wave%22+OR+%3Dabs%3A%22gravity+waves%22+OR+%3Dabs%3A%22nitric+oxide%22%29%29+OR+%28abs%3AGUVI+AND+%28abs%3Athermosphere+OR+abs%3Aionosphere+OR+abs%3Aaurora+OR+abs%3Aauroral+OR+abs%3Aairglow+OR+abs%3Adayglow%29%29+OR+%28abs%3ATIDI+AND+%28abs%3Amesosphere+OR+abs%3Athermosphere+OR+abs%3Awinds+OR+abs%3Awind+OR+abs%3Atides+OR+abs%3Atide%29%29+%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:37:06.175727+00:00",
+    "fetchedAt": "2026-11-10T03:30:32.705569+00:00",
     "reconciliation": {
       "adsReturned": 1265,
       "curatedOut": 2,
@@ -367,7 +367,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 445
+      "citations": 443
     },
     {
       "bibcode": "2008JGRD..11317101R",
@@ -376,7 +376,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 385
+      "citations": 386
     },
     {
       "bibcode": "2008JGRD..11315S11S",
@@ -385,7 +385,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 347
+      "citations": 349
     },
     {
       "bibcode": "2008JGRA..113.2310F",
@@ -394,7 +394,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 325
+      "citations": 327
     },
     {
       "bibcode": "2003JGRA..108.1451C",
@@ -421,7 +421,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 234
+      "citations": 235
     },
     {
       "bibcode": "2008JASTP..70.1231Z",
@@ -439,7 +439,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 219
+      "citations": 220
     },
     {
       "bibcode": "2009JGRA..114.1312Q",
@@ -448,7 +448,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 213
+      "citations": 214
     },
     {
       "bibcode": "2009JGRD..114.0I05O",
@@ -457,7 +457,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 211
+      "citations": 214
     },
     {
       "bibcode": "2012JGRA..11710323J",
@@ -466,7 +466,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 210
+      "citations": 211
     },
     {
       "bibcode": "2005GeoRL..32.3S09T",
@@ -493,7 +493,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 200
+      "citations": 201
     },
     {
       "bibcode": "2009GeoRL..36.1101W",
@@ -523,6 +523,15 @@
       "citations": 181
     },
     {
+      "bibcode": "2006JGRA..11110S03O",
+      "title": "Diurnal nonmigrating tides from TIMED Doppler Interferometer wind data: Monthly climatologies and seasonal variations",
+      "firstAuthor": "Oberheide, J.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2006,
+      "citations": 179
+    },
+    {
       "bibcode": "2010GeoRL..3716103S",
       "title": "Anomalously low solar extreme-ultraviolet irradiance and thermospheric density during solar minimum",
       "firstAuthor": "Solomon, Stanley C.",
@@ -530,15 +539,6 @@
       "authorCount": null,
       "year": 2010,
       "citations": 179
-    },
-    {
-      "bibcode": "2006JGRA..11110S03O",
-      "title": "Diurnal nonmigrating tides from TIMED Doppler Interferometer wind data: Monthly climatologies and seasonal variations",
-      "firstAuthor": "Oberheide, J.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2006,
-      "citations": 177
     }
   ],
   "papersFile": {

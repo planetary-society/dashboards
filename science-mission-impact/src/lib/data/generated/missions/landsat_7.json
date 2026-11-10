@@ -28,14 +28,14 @@
   "indices": {
     "h": 184,
     "m": 6.815,
-    "i100": 413,
+    "i100": 418,
     "g": 294,
-    "tori": 1900.661,
-    "riq": 1614
+    "tori": 1950.396,
+    "riq": 1635
   },
   "facts": {
     "papers": 4132,
-    "citations": 188038,
+    "citations": 188785,
     "publicationYears": [
       2000,
       2026
@@ -105,35 +105,35 @@
       16,
       40,
       208,
-      328,
-      585,
+      327,
+      586,
       900,
-      1346,
-      2099,
-      2449,
-      2783,
-      3596,
-      4356,
-      5026,
-      6252,
-      7390,
+      1354,
+      2106,
+      2455,
+      2793,
+      3607,
+      4361,
+      5210,
+      6587,
+      7391,
       8318,
-      9531,
-      11162,
-      12991,
-      14381,
-      16409,
-      18082,
-      15614,
-      15880,
-      15529,
-      12766
+      9537,
+      11184,
+      13014,
+      14410,
+      16437,
+      18095,
+      15633,
+      15882,
+      15532,
+      12801
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 188038,
-      "observed": 188038,
+      "expected": 188785,
+      "observed": 188785,
       "missing": 0
     }
   },
@@ -185,51 +185,51 @@
     ],
     "authorCount": 3,
     "year": 2009,
-    "citations": 1985
+    "citations": 1998
   },
   "ranks": {
     "full": {
       "bins": [
-        534.711,
-        483.451,
-        455.936,
-        395.124,
-        379.794,
-        343.582,
-        328.153,
-        281.711,
-        293.9,
-        292.637
+        533.957,
+        481.775,
+        453.369,
+        397.076,
+        379.258,
+        344.825,
+        326.627,
+        283.779,
+        292.377,
+        295.957
       ],
-      "top1": 32
+      "top1": 32.249
     },
     "window": {
       "bins": [
-        106.225,
-        86.071,
-        65.088,
-        58.094,
-        58.686,
-        43.472,
-        38.485,
-        29.635,
-        21.315,
-        11.928
+        106.323,
+        85.976,
+        64.743,
+        56.718,
+        60.714,
+        42.389,
+        39.325,
+        29.616,
+        21.197,
+        12
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        282.988,
-        311.66,
-        341.17,
-        351.824,
-        419.403,
-        430.217,
-        460.227,
-        443.73,
-        472.421,
-        618.361
+        280.812,
+        311.979,
+        340.629,
+        350.626,
+        422.141,
+        427.681,
+        461.75,
+        442.85,
+        472.886,
+        620.646
       ],
       "top1": 70
     }
@@ -237,11 +237,11 @@
   "full": {
     "papers": 3789,
     "outputBasis": "measured",
-    "citations": 36812,
-    "top10": 199.747,
-    "top10ShareOfDivision": 0.05109,
-    "top1": 20.333,
-    "top1ShareOfDivision": 0.052,
+    "citations": 36971,
+    "top10": 202.285,
+    "top10ShareOfDivision": 0.05174,
+    "top1": 20.583,
+    "top1ShareOfDivision": 0.05264,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 2.007,
@@ -259,24 +259,24 @@
       "citationBuckets": 28
     },
     "indices": {
-      "h": 58,
+      "h": 59,
       "g": 83,
-      "m": 2.367
+      "m": 2.408
     },
     "spread": {
-      "mean": 9.715,
+      "mean": 9.757,
       "median": 5,
-      "uncited": 431,
-      "i10": 1171,
+      "uncited": 429,
+      "i10": 1175,
       "i100": 19
     }
   },
   "window": {
     "papers": 519,
     "outputBasis": "measured",
-    "citations": 3443,
-    "top10": 8.798,
-    "top10ShareOfDivision": 0.00881,
+    "citations": 3454,
+    "top10": 8.833,
+    "top10ShareOfDivision": 0.00885,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -301,7 +301,7 @@
       "m": 3.512
     },
     "spread": {
-      "mean": 6.634,
+      "mean": 6.655,
       "median": 4,
       "uncited": 83,
       "i10": 120,
@@ -311,9 +311,9 @@
   "lifetime": {
     "papers": 4132,
     "outputBasis": "measured",
-    "citations": 188038,
-    "top10": 497.705,
-    "top10ShareOfDivision": 0.09535,
+    "citations": 188785,
+    "top10": 500.148,
+    "top10ShareOfDivision": 0.09576,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -324,18 +324,18 @@
       "date": "2001-00-00"
     },
     "spread": {
-      "mean": 45.508,
+      "mean": 45.689,
       "median": 19,
-      "uncited": 238,
-      "i10": 2839,
-      "i100": 413
+      "uncited": 236,
+      "i10": 2843,
+      "i100": 418
     }
   },
   "query": {
     "arms": "((=abs:\"Landsat-7\" OR =abs:\"Enhanced Thematic Mapper Plus\" OR (abs:\"ETM+\" AND (abs:(Landsat OR multispectral OR albedo OR MODIS OR NDVI) OR =abs:\"TM ETM\" OR =abs:\"TM images\" OR =abs:\"Thematic Mapper\" OR =abs:\"remote sensing\" OR =abs:\"satellite imagery\" OR =abs:\"satellite images\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1999-07 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Landsat-7%22+OR+%3Dabs%3A%22Enhanced+Thematic+Mapper+Plus%22+OR+%28abs%3A%22ETM%2B%22+AND+%28abs%3A%28Landsat+OR+multispectral+OR+albedo+OR+MODIS+OR+NDVI%29+OR+%3Dabs%3A%22TM+ETM%22+OR+%3Dabs%3A%22TM+images%22+OR+%3Dabs%3A%22Thematic+Mapper%22+OR+%3Dabs%3A%22remote+sensing%22+OR+%3Dabs%3A%22satellite+imagery%22+OR+%3Dabs%3A%22satellite+images%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-07+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:30:44.631167+00:00",
+    "fetchedAt": "2026-11-10T03:22:48.591477+00:00",
     "reconciliation": {
       "adsReturned": 4153,
       "curatedOut": 8,
@@ -423,7 +423,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 1985
+      "citations": 1998
     },
     {
       "bibcode": "2004RSEnv..89..467W",
@@ -432,7 +432,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 1693
+      "citations": 1703
     },
     {
       "bibcode": "2004IJRS...25.2365L",
@@ -441,7 +441,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 1549
+      "citations": 1573
     },
     {
       "bibcode": "2006ITGRS..44.2207G",
@@ -450,7 +450,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 1493
+      "citations": 1508
     },
     {
       "bibcode": "2005IJRS...26..217P",
@@ -459,7 +459,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 1436
+      "citations": 1449
     },
     {
       "bibcode": "2016RSEnv.185...46V",
@@ -468,7 +468,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 1312
+      "citations": 1315
     },
     {
       "bibcode": "2006IGRSL...3...68M",
@@ -477,7 +477,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 1308
+      "citations": 1312
     },
     {
       "bibcode": "2006RSEnv.104..133C",
@@ -486,7 +486,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 1156
+      "citations": 1163
     },
     {
       "bibcode": "2013IJRS...34.2607G",
@@ -495,7 +495,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 1101
+      "citations": 1104
     },
     {
       "bibcode": "2007RSEnv.106..375Y",
@@ -504,7 +504,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 1081
+      "citations": 1086
     },
     {
       "bibcode": "2016RSEnv.185...57R",
@@ -531,7 +531,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 921
+      "citations": 926
     },
     {
       "bibcode": "2011RSEnv.115.3249L",
@@ -540,7 +540,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 883
+      "citations": 887
     },
     {
       "bibcode": "2005RSEnv..98..442L",
@@ -549,7 +549,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 786
+      "citations": 791
     },
     {
       "bibcode": "2018RemS...11...48Z",
@@ -567,7 +567,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 768
+      "citations": 772
     },
     {
       "bibcode": "2005RSEnv..95..480X",
@@ -576,7 +576,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 741
+      "citations": 744
     },
     {
       "bibcode": "2003RSEnv..86..554P",
@@ -585,7 +585,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 668
+      "citations": 676
     },
     {
       "bibcode": "2003ITGRS..41.2674C",
@@ -594,7 +594,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 613
+      "citations": 622
     }
   ],
   "papersFile": {

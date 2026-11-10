@@ -30,12 +30,12 @@
     "m": 1.333,
     "i100": 13,
     "g": 70,
-    "tori": 38.25,
-    "riq": 237
+    "tori": 38.464,
+    "riq": 238
   },
   "facts": {
     "papers": 141,
-    "citations": 5405,
+    "citations": 5410,
     "publicationYears": [
       1997,
       2022
@@ -132,17 +132,17 @@
       213,
       222,
       264,
-      206,
+      207,
       182,
       215,
       185,
-      141
+      145
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 5405,
-      "observed": 5405,
+      "expected": 5410,
+      "observed": 5410,
       "missing": 0
     }
   },
@@ -200,28 +200,28 @@
   "ranks": {
     "full": {
       "bins": [
-        18.324,
-        13.234,
-        14.914,
-        7.32,
-        4.825,
-        7.188,
-        5.539,
-        2.954,
-        8.397,
-        7.305
+        18.352,
+        13.26,
+        14.933,
+        7.297,
+        4.821,
+        7.161,
+        5.614,
+        2.889,
+        8.437,
+        7.236
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        3.381,
-        3.517,
+        3.382,
+        3.516,
         1.102,
         0,
         1,
-        1.102,
-        1.898,
+        1.11,
+        1.89,
         1,
         2,
         1
@@ -230,16 +230,16 @@
     },
     "lifetime": {
       "bins": [
-        7.595,
-        11.772,
-        11.533,
-        22.563,
-        9.848,
-        10.594,
-        14.355,
-        15.739,
-        14.806,
-        22.194
+        7.6,
+        11.344,
+        11.967,
+        22.594,
+        9.832,
+        10.09,
+        14.883,
+        15.69,
+        14.892,
+        22.108
       ],
       "top1": 1
     }
@@ -248,8 +248,8 @@
     "papers": 90,
     "outputBasis": "measured",
     "citations": 768,
-    "top10": 5.819,
-    "top10ShareOfDivision": 0.00149,
+    "top10": 5.785,
+    "top10ShareOfDivision": 0.00148,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -321,9 +321,9 @@
   "lifetime": {
     "papers": 141,
     "outputBasis": "measured",
-    "citations": 5405,
-    "top10": 14.811,
-    "top10ShareOfDivision": 0.00284,
+    "citations": 5410,
+    "top10": 14.724,
+    "top10ShareOfDivision": 0.00282,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -334,7 +334,7 @@
       "date": "1997-11-00"
     },
     "spread": {
-      "mean": 38.333,
+      "mean": 38.369,
       "median": 17,
       "uncited": 6,
       "i10": 87,
@@ -345,7 +345,7 @@
     "arms": "(((=abs:\"Earth Probe\" AND (abs:TOMS OR =abs:\"Total Ozone Mapping Spectrometer\")) OR ((abs:\"TOMS-EP\" OR abs:\"EP-TOMS\" OR abs:EPTOMS) AND abs:(ozone OR aerosol OR ultraviolet OR UV OR SO2 OR volcanic OR satellite))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1996-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Earth+Probe%22+AND+%28abs%3ATOMS+OR+%3Dabs%3A%22Total+Ozone+Mapping+Spectrometer%22%29%29+OR+%28%28abs%3A%22TOMS-EP%22+OR+abs%3A%22EP-TOMS%22+OR+abs%3AEPTOMS%29+AND+abs%3A%28ozone+OR+aerosol+OR+ultraviolet+OR+UV+OR+SO2+OR+volcanic+OR+satellite%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:30:27.548449+00:00",
+    "fetchedAt": "2026-11-10T03:22:27.974490+00:00",
     "reconciliation": {
       "adsReturned": 140,
       "curatedOut": 0,
@@ -461,21 +461,21 @@
       "citations": 117
     },
     {
-      "bibcode": "2003JGRD..108.4320M",
-      "title": "Organic nitrogen in rain and aerosol in the eastern Mediterranean atmosphere: An association with atmospheric dust",
-      "firstAuthor": "Mace, Kimberly A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2003,
-      "citations": 111
-    },
-    {
       "bibcode": "2010ACP....1011277V",
       "title": "Multi sensor reanalysis of total ozone",
       "firstAuthor": "van der A, R. J.",
       "authors": null,
       "authorCount": null,
       "year": 2010,
+      "citations": 113
+    },
+    {
+      "bibcode": "2003JGRD..108.4320M",
+      "title": "Organic nitrogen in rain and aerosol in the eastern Mediterranean atmosphere: An association with atmospheric dust",
+      "firstAuthor": "Mace, Kimberly A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2003,
       "citations": 111
     },
     {

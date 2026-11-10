@@ -26,16 +26,16 @@
     }
   },
   "indices": {
-    "h": 146,
-    "m": 5.034,
-    "i100": 257,
+    "h": 147,
+    "m": 5.069,
+    "i100": 259,
     "g": 250,
-    "tori": 924.537,
-    "riq": 1048
+    "tori": 936.026,
+    "riq": 1054
   },
   "facts": {
     "papers": 3024,
-    "citations": 130321,
+    "citations": 130458,
     "publicationYears": [
       1998,
       2026
@@ -113,33 +113,33 @@
       555,
       726,
       949,
-      1101,
-      1340,
-      1705,
-      1935,
-      2081,
-      2298,
-      2814,
-      3245,
-      3902,
-      4638,
-      5309,
-      6213,
-      8082,
-      8813,
+      1100,
+      1337,
+      1704,
+      1934,
+      2082,
+      2300,
+      2812,
+      3268,
+      3977,
+      4631,
+      5306,
+      6203,
+      8077,
+      8811,
       10326,
-      11852,
-      12436,
-      10659,
-      10326,
-      10096,
-      8188
+      11854,
+      12435,
+      10662,
+      10325,
+      10091,
+      8261
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 130321,
-      "observed": 130321,
+      "expected": 130458,
+      "observed": 130458,
       "missing": 0
     }
   },
@@ -192,51 +192,51 @@
     ],
     "authorCount": 9,
     "year": 2007,
-    "citations": 5536
+    "citations": 5537
   },
   "ranks": {
     "full": {
       "bins": [
-        206.867,
-        201.26,
-        175.592,
-        162.368,
-        162.263,
-        152.49,
-        139.849,
-        150.827,
-        152.735,
-        120.749
+        205.982,
+        201.433,
+        177.702,
+        161.944,
+        161.167,
+        152.803,
+        140.661,
+        149.764,
+        152.182,
+        121.36
       ],
       "top1": 14
     },
     "window": {
       "bins": [
-        25.569,
-        21.92,
-        29.027,
-        26.529,
-        30.343,
-        16.714,
-        16.45,
-        15.285,
-        10.234,
-        14.928
+        25.588,
+        21.902,
+        29.127,
+        26.564,
+        30.311,
+        16.618,
+        16.501,
+        15.258,
+        10.205,
+        14.926
       ],
       "top1": 0.102
     },
     "lifetime": {
       "bins": [
-        163.607,
-        246.772,
-        261.878,
-        268.368,
-        295.987,
-        315.511,
-        340.71,
-        340.007,
-        399.577,
-        391.583
+        161.41,
+        247.239,
+        261.185,
+        269.144,
+        296.526,
+        315.473,
+        342.237,
+        340.255,
+        400.101,
+        390.43
       ],
       "top1": 43
     }
@@ -244,9 +244,9 @@
   "full": {
     "papers": 1625,
     "outputBasis": "measured",
-    "citations": 16528,
-    "top10": 102.68,
-    "top10ShareOfDivision": 0.02626,
+    "citations": 16559,
+    "top10": 103.208,
+    "top10ShareOfDivision": 0.0264,
     "top1": 9.417,
     "top1ShareOfDivision": 0.02408,
     "first": {
@@ -271,10 +271,10 @@
       "m": 2.225
     },
     "spread": {
-      "mean": 10.171,
+      "mean": 10.19,
       "median": 6,
-      "uncited": 163,
-      "i10": 554,
+      "uncited": 161,
+      "i10": 555,
       "i100": 8
     }
   },
@@ -282,7 +282,7 @@
     "papers": 207,
     "outputBasis": "measured",
     "citations": 2026,
-    "top10": 13.928,
+    "top10": 13.926,
     "top10ShareOfDivision": 0.01395,
     "top1": 0.102,
     "top1ShareOfDivision": 0.00103,
@@ -318,9 +318,9 @@
   "lifetime": {
     "papers": 3024,
     "outputBasis": "measured",
-    "citations": 130321,
-    "top10": 330.12,
-    "top10ShareOfDivision": 0.06325,
+    "citations": 130458,
+    "top10": 329.025,
+    "top10ShareOfDivision": 0.063,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -331,18 +331,18 @@
       "date": "1998-06-00"
     },
     "spread": {
-      "mean": 43.096,
+      "mean": 43.141,
       "median": 19,
-      "uncited": 125,
-      "i10": 2080,
-      "i100": 257
+      "uncited": 123,
+      "i10": 2082,
+      "i100": 259
     }
   },
   "query": {
     "arms": "(((abs:\"TRMM\" AND abs:\"satellite\") OR =abs:\"Tropical Rainfall Measuring Mission\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1998-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22TRMM%22+AND+abs%3A%22satellite%22%29+OR+%3Dabs%3A%22Tropical+Rainfall+Measuring+Mission%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:30:34.508548+00:00",
+    "fetchedAt": "2026-11-10T03:22:36.508345+00:00",
     "reconciliation": {
       "adsReturned": 3029,
       "curatedOut": 0,
@@ -365,7 +365,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 5536
+      "citations": 5537
     },
     {
       "bibcode": "2010ACP....1011707V",
@@ -374,7 +374,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 2110
+      "citations": 2114
     },
     {
       "bibcode": "1998JAtOT..15..809K",
@@ -383,7 +383,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 1672
+      "citations": 1678
     },
     {
       "bibcode": "2019BAMS..100..473B",
@@ -392,7 +392,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 1256
+      "citations": 1258
     },
     {
       "bibcode": "2013JGRG..118..317G",
@@ -401,7 +401,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 1067
+      "citations": 1068
     },
     {
       "bibcode": "2000Sci...287.1793R",
@@ -410,7 +410,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 967
+      "citations": 970
     },
     {
       "bibcode": "2000BAMS...81.2035S",
@@ -437,7 +437,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 682
+      "citations": 683
     },
     {
       "bibcode": "2000JApMe..39.2038I",
@@ -446,7 +446,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 681
+      "citations": 682
     },
     {
       "bibcode": "2007ITGRS..45.2259K",
@@ -455,7 +455,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 658
+      "citations": 661
     },
     {
       "bibcode": "2012RSEnv.123..280L",
@@ -464,7 +464,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 587
+      "citations": 590
     },
     {
       "bibcode": "1999GeoRL..26.3105R",
@@ -473,7 +473,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 578
+      "citations": 579
     },
     {
       "bibcode": "2003JCli...16.1456N",
@@ -482,7 +482,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 578
+      "citations": 577
     },
     {
       "bibcode": "2001JApMe..40.1801K",
@@ -509,7 +509,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 498
+      "citations": 499
     },
     {
       "bibcode": "2016JHyd..533..152T",
@@ -527,7 +527,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 464
+      "citations": 467
     },
     {
       "bibcode": "2010BGeo....7.1171G",

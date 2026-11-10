@@ -26,16 +26,16 @@
     }
   },
   "indices": {
-    "h": 80,
-    "m": 2.963,
-    "i100": 45,
+    "h": 81,
+    "m": 3,
+    "i100": 46,
     "g": 119,
-    "tori": 263.051,
-    "riq": 600
+    "tori": 266.85,
+    "riq": 605
   },
   "facts": {
     "papers": 826,
-    "citations": 27116,
+    "citations": 27191,
     "publicationYears": [
       2000,
       2026
@@ -109,31 +109,31 @@
       231,
       379,
       453,
-      712,
+      713,
       726,
-      842,
+      844,
       953,
       1226,
-      1217,
-      1449,
+      1233,
+      1490,
       1287,
       1454,
       1613,
       1454,
-      1866,
-      1656,
+      1867,
+      1657,
       1867,
       1946,
-      1657,
+      1659,
       1408,
       1394,
-      1033
+      1044
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 27116,
-      "observed": 27116,
+      "expected": 27191,
+      "observed": 27191,
       "missing": 0
     }
   },
@@ -186,51 +186,51 @@
     ],
     "authorCount": 4,
     "year": 2004,
-    "citations": 749
+    "citations": 751
   },
   "ranks": {
     "full": {
       "bins": [
-        116.436,
-        124.337,
-        119.793,
-        89.721,
-        79.731,
-        77.51,
-        64.409,
-        50.333,
-        44.118,
-        19.611
+        116.754,
+        124.447,
+        118.339,
+        90.412,
+        80.222,
+        76.726,
+        65.477,
+        50.218,
+        43.933,
+        19.472
       ],
       "top1": 1
     },
     "window": {
       "bins": [
-        10.427,
-        21.028,
-        14.898,
-        9.588,
-        14.48,
-        6.784,
-        3.795,
-        5.959,
-        4.041,
+        10.441,
+        21.015,
+        14.954,
+        9.583,
+        14.501,
+        6.725,
+        3.781,
+        5.967,
+        4.033,
         3
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        31.572,
-        74.778,
-        74.393,
-        83.345,
-        83.344,
-        80.722,
-        103.978,
-        113.813,
-        92.859,
-        87.194
+        31.603,
+        74.651,
+        74.154,
+        83.75,
+        81.971,
+        82.433,
+        102.843,
+        114.752,
+        92.629,
+        87.215
       ],
       "top1": 5
     }
@@ -238,9 +238,9 @@
   "full": {
     "papers": 786,
     "outputBasis": "measured",
-    "citations": 5151,
-    "top10": 17.778,
-    "top10ShareOfDivision": 0.00455,
+    "citations": 5162,
+    "top10": 17.639,
+    "top10ShareOfDivision": 0.00451,
     "top1": 1,
     "top1ShareOfDivision": 0.00256,
     "first": {
@@ -265,10 +265,10 @@
       "m": 1.176
     },
     "spread": {
-      "mean": 6.553,
+      "mean": 6.567,
       "median": 4,
       "uncited": 90,
-      "i10": 173,
+      "i10": 174,
       "i100": 0
     }
   },
@@ -312,9 +312,9 @@
   "lifetime": {
     "papers": 826,
     "outputBasis": "measured",
-    "citations": 27116,
-    "top10": 80.528,
-    "top10ShareOfDivision": 0.01543,
+    "citations": 27191,
+    "top10": 80.549,
+    "top10ShareOfDivision": 0.01542,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -325,18 +325,18 @@
       "date": "2000-08-00"
     },
     "spread": {
-      "mean": 32.828,
+      "mean": 32.919,
       "median": 19,
       "uncited": 22,
       "i10": 561,
-      "i100": 45
+      "i100": 46
     }
   },
   "query": {
     "arms": "((abs:\"QuikSCAT\" OR abs:QSCAT OR (=abs:\"SeaWinds\" AND NOT abs:(\"ADEOS\" OR \"Midori\" OR \"Advanced Earth Observing Satellite\" OR \"Blended SeaWinds\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1999-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22QuikSCAT%22+OR+abs%3AQSCAT+OR+%28%3Dabs%3A%22SeaWinds%22+AND+NOT+abs%3A%28%22ADEOS%22+OR+%22Midori%22+OR+%22Advanced+Earth+Observing+Satellite%22+OR+%22Blended+SeaWinds%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:30:47.910424+00:00",
+    "fetchedAt": "2026-11-10T03:22:54.800575+00:00",
     "reconciliation": {
       "adsReturned": 835,
       "curatedOut": 10,
@@ -449,7 +449,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 749
+      "citations": 751
     },
     {
       "bibcode": "2001JCli...14.1479C",
@@ -458,7 +458,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 431
+      "citations": 433
     },
     {
       "bibcode": "2008JPO....38.2379R",
@@ -467,7 +467,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 425
+      "citations": 427
     },
     {
       "bibcode": "2005JCli...18..287C",
@@ -503,7 +503,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 263
+      "citations": 271
     },
     {
       "bibcode": "2002JAtOT..19.2049E",
@@ -512,7 +512,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 247
+      "citations": 248
     },
     {
       "bibcode": "2013RSPSB.28030171L",
@@ -530,7 +530,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 208
+      "citations": 210
     },
     {
       "bibcode": "2009CSR....29..467J",
@@ -542,6 +542,15 @@
       "citations": 201
     },
     {
+      "bibcode": "2003JCli...16.2340O",
+      "title": "Observations of SST-Induced Perturbations of the Wind Stress Field over the Southern Ocean on Seasonal Timescales.",
+      "firstAuthor": "O'Neill, Larry W.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2003,
+      "citations": 198
+    },
+    {
       "bibcode": "2017RSEnv.199..333G",
       "title": "The shared and unique values of optical, fluorescence, thermal and microwave satellite data for estimating large-scale crop yields",
       "firstAuthor": "Guan, Kaiyu",
@@ -551,13 +560,13 @@
       "citations": 198
     },
     {
-      "bibcode": "2003JCli...16.2340O",
-      "title": "Observations of SST-Induced Perturbations of the Wind Stress Field over the Southern Ocean on Seasonal Timescales.",
+      "bibcode": "2005JCli...18.2706O",
+      "title": "High-Resolution Satellite Measurements of the Atmospheric Boundary Layer Response to SST Variations along the Agulhas Return Current.",
       "firstAuthor": "O'Neill, Larry W.",
       "authors": null,
       "authorCount": null,
-      "year": 2003,
-      "citations": 197
+      "year": 2005,
+      "citations": 195
     },
     {
       "bibcode": "2010GeoRL..3718816C",
@@ -567,15 +576,6 @@
       "authorCount": null,
       "year": 2010,
       "citations": 195
-    },
-    {
-      "bibcode": "2005JCli...18.2706O",
-      "title": "High-Resolution Satellite Measurements of the Atmospheric Boundary Layer Response to SST Variations along the Agulhas Return Current.",
-      "firstAuthor": "O'Neill, Larry W.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2005,
-      "citations": 194
     },
     {
       "bibcode": "2008RSEnv.112.2000S",
@@ -605,6 +605,15 @@
       "citations": 155
     },
     {
+      "bibcode": "2000GeoRL..27.2545L",
+      "title": "Atmospheric manifestation of tropical instability wave observed by QuikSCAT and tropical rain measuring mission",
+      "firstAuthor": "Liu, Timothy W.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2000,
+      "citations": 153
+    },
+    {
       "bibcode": "2006GeoRL..33.3602C",
       "title": "Upwelling around Cabo Frio, Brazil: The importance of wind stress curl",
       "firstAuthor": "Castelao, Renato M.",
@@ -612,15 +621,6 @@
       "authorCount": null,
       "year": 2006,
       "citations": 153
-    },
-    {
-      "bibcode": "2000GeoRL..27.2545L",
-      "title": "Atmospheric manifestation of tropical instability wave observed by QuikSCAT and tropical rain measuring mission",
-      "firstAuthor": "Liu, Timothy W.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2000,
-      "citations": 152
     }
   ],
   "papersFile": {

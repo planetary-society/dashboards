@@ -30,12 +30,12 @@
     "m": 7.75,
     "i100": 84,
     "g": 138,
-    "tori": 170.507,
-    "riq": 1004
+    "tori": 172.968,
+    "riq": 1011
   },
   "facts": {
-    "papers": 1846,
-    "citations": 41423,
+    "papers": 1848,
+    "citations": 41481,
     "publicationYears": [
       2015,
       2026
@@ -68,7 +68,7 @@
       183,
       198,
       240,
-      254
+      256
     ],
     "citations": [
       29,
@@ -77,25 +77,25 @@
       1069,
       2134,
       2779,
-      3851,
+      3853,
       5399,
       5088,
-      6023,
-      7143,
-      7269
+      6031,
+      7145,
+      7315
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 41423,
-      "observed": 41423,
+      "expected": 41481,
+      "observed": 41481,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 1846,
+    "papers": 1848,
     "us": {
-      "mapped": 739,
+      "mapped": 740,
       "top": [
         {
           "name": "Jet Propulsion Laboratory",
@@ -103,7 +103,7 @@
         },
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
-          "papers": 183
+          "papers": 184
         },
         {
           "name": "U.S. Department of Agriculture",
@@ -112,7 +112,7 @@
       ]
     },
     "world": {
-      "mapped": 1475,
+      "mapped": 1477,
       "top": [
         {
           "name": "Jet Propulsion Laboratory",
@@ -120,7 +120,7 @@
         },
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
-          "papers": 183
+          "papers": 184
         },
         {
           "name": "Chinese Academy of Sciences, Beijing",
@@ -146,46 +146,46 @@
   "ranks": {
     "full": {
       "bins": [
-        44.782,
-        66.944,
-        74.784,
-        103.662,
-        109.853,
-        124.619,
-        123.357,
-        147.541,
-        154.876,
-        203.582
+        44.936,
+        67.046,
+        75.538,
+        103.406,
+        109.455,
+        124.475,
+        124.149,
+        147.185,
+        155.27,
+        202.541
       ],
       "top1": 20
     },
     "window": {
       "bins": [
-        19.092,
-        25.363,
-        25.44,
-        44.196,
-        53.366,
-        51.487,
-        55.161,
-        60.53,
-        79.652,
-        94.713
+        19.117,
+        25.338,
+        25.565,
+        44.341,
+        53.597,
+        51.124,
+        55.14,
+        60.482,
+        79.591,
+        94.705
       ],
       "top1": 10
     },
     "lifetime": {
       "bins": [
-        282.626,
-        249.425,
-        228.279,
-        200.401,
-        178.884,
-        172.164,
-        145.309,
-        144.236,
-        126.897,
-        117.778
+        280.732,
+        253.028,
+        227.698,
+        197.718,
+        181.754,
+        171.864,
+        145.992,
+        144.602,
+        127.075,
+        117.538
       ],
       "top1": 5
     }
@@ -193,9 +193,9 @@
   "full": {
     "papers": 1154,
     "outputBasis": "measured",
-    "citations": 19006,
-    "top10": 180.749,
-    "top10ShareOfDivision": 0.04623,
+    "citations": 19012,
+    "top10": 179.916,
+    "top10ShareOfDivision": 0.04602,
     "top1": 18.333,
     "top1ShareOfDivision": 0.04689,
     "first": {
@@ -220,10 +220,10 @@
       "m": 6.284
     },
     "spread": {
-      "mean": 16.47,
+      "mean": 16.475,
       "median": 11,
       "uncited": 32,
-      "i10": 619,
+      "i10": 620,
       "i100": 11
     }
   },
@@ -231,8 +231,8 @@
     "papers": 509,
     "outputBasis": "measured",
     "citations": 10122,
-    "top10": 88.583,
-    "top10ShareOfDivision": 0.08874,
+    "top10": 88.575,
+    "top10ShareOfDivision": 0.08873,
     "top1": 9.5,
     "top1ShareOfDivision": 0.09517,
     "first": {
@@ -265,11 +265,11 @@
     }
   },
   "lifetime": {
-    "papers": 1846,
+    "papers": 1848,
     "outputBasis": "measured",
-    "citations": 41423,
-    "top10": 104.194,
-    "top10ShareOfDivision": 0.01996,
+    "citations": 41481,
+    "top10": 103.955,
+    "top10ShareOfDivision": 0.0199,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -280,10 +280,10 @@
       "date": "2015-05-00"
     },
     "spread": {
-      "mean": 22.439,
+      "mean": 22.446,
       "median": 9,
-      "uncited": 237,
-      "i10": 882,
+      "uncited": 234,
+      "i10": 886,
       "i100": 84
     }
   },
@@ -291,15 +291,15 @@
     "arms": "((=abs:\"Soil Moisture Active Passive\" OR =abs:\"SMAP Reflectometry\" OR (abs:SMAP AND (abs:(satellite OR soil OR radiometer OR microwave OR ocean OR freeze OR thaw OR vegetation OR drought OR SAR) OR =abs:salinity OR =abs:\"remote sensing\" OR =abs:\"land surface\" OR =abs:\"gap filling\" OR abs:\"L-band\"))) AND NOT =abs:\"GIC-SMAP\")",
     "filters": "property:refereed AND doctype:article AND pubdate:[2015-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Soil+Moisture+Active+Passive%22+OR+%3Dabs%3A%22SMAP+Reflectometry%22+OR+%28abs%3ASMAP+AND+%28abs%3A%28satellite+OR+soil+OR+radiometer+OR+microwave+OR+ocean+OR+freeze+OR+thaw+OR+vegetation+OR+drought+OR+SAR%29+OR+%3Dabs%3Asalinity+OR+%3Dabs%3A%22remote+sensing%22+OR+%3Dabs%3A%22land+surface%22+OR+%3Dabs%3A%22gap+filling%22+OR+abs%3A%22L-band%22%29%29%29+AND+NOT+%3Dabs%3A%22GIC-SMAP%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2015-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:33:42.985699+00:00",
+    "fetchedAt": "2026-11-10T03:26:34.381083+00:00",
     "reconciliation": {
-      "adsReturned": 1849,
+      "adsReturned": 1851,
       "curatedOut": 3,
       "curatedIn": 2,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 2,
-      "final": 1846
+      "final": 1848
     }
   },
   "curation": {
@@ -365,7 +365,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 503
+      "citations": 504
     },
     {
       "bibcode": "2017NatGe..10..100M",
@@ -464,7 +464,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 223
+      "citations": 224
     },
     {
       "bibcode": "2019IJSTA..12.2227C",
@@ -531,6 +531,6 @@
     }
   ],
   "papersFile": {
-    "rows": 1846
+    "rows": 1848
   }
 }

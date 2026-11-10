@@ -26,16 +26,16 @@
     }
   },
   "indices": {
-    "h": 65,
-    "m": 5,
+    "h": 66,
+    "m": 5.077,
     "i100": 41,
     "g": 118,
-    "tori": 77.778,
-    "riq": 629
+    "tori": 78.73,
+    "riq": 633
   },
   "facts": {
-    "papers": 706,
-    "citations": 20110,
+    "papers": 707,
+    "citations": 20136,
     "publicationYears": [
       2014,
       2026
@@ -70,7 +70,7 @@
       71,
       86,
       96,
-      78
+      79
     ],
     "citations": [
       0,
@@ -78,25 +78,25 @@
       43,
       224,
       479,
-      889,
+      888,
       1360,
       1864,
       2493,
-      2706,
+      2707,
       3170,
-      3632,
-      3240
+      3641,
+      3257
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 20110,
-      "observed": 20110,
+      "expected": 20136,
+      "observed": 20136,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 706,
+    "papers": 707,
     "us": {
       "mapped": 220,
       "top": [
@@ -142,61 +142,61 @@
     ],
     "authorCount": 2,
     "year": 2019,
-    "citations": 622
+    "citations": 625
   },
   "ranks": {
     "full": {
       "bins": [
-        26.358,
-        20.261,
-        21.268,
-        27.883,
-        48.087,
-        38.821,
-        43.166,
-        52.427,
-        62.591,
-        105.138
+        26.41,
+        20.278,
+        21.492,
+        27.769,
+        48.247,
+        38.815,
+        43.43,
+        52.154,
+        62.753,
+        104.652
       ],
       "top1": 19
     },
     "window": {
       "bins": [
-        7.381,
-        3.517,
-        6.671,
-        9.148,
-        12.735,
-        4.753,
-        5.503,
-        10.212,
-        9.081,
+        7.382,
+        3.516,
+        6.708,
+        9.183,
+        12.707,
+        4.723,
+        5.51,
+        10.205,
+        9.066,
         26
       ],
       "top1": 7.102
     },
     "lifetime": {
       "bins": [
-        113.358,
-        81.809,
-        75.718,
-        68.312,
-        67.362,
-        68.613,
-        62.917,
-        58.101,
-        50.811,
+        114.084,
+        81.992,
+        75.86,
+        68.321,
+        66.871,
+        68.677,
+        63.671,
+        56.986,
+        51.538,
         59
       ],
-      "top1": 11.238
+      "top1": 11.097
     }
   },
   "full": {
     "papers": 446,
     "outputBasis": "measured",
-    "citations": 9049,
-    "top10": 95.736,
-    "top10ShareOfDivision": 0.02449,
+    "citations": 9052,
+    "top10": 95.284,
+    "top10ShareOfDivision": 0.02437,
     "top1": 18.333,
     "top1ShareOfDivision": 0.04689,
     "first": {
@@ -221,7 +221,7 @@
       "m": 4.929
     },
     "spread": {
-      "mean": 20.289,
+      "mean": 20.296,
       "median": 12,
       "uncited": 22,
       "i10": 260,
@@ -266,11 +266,11 @@
     }
   },
   "lifetime": {
-    "papers": 706,
+    "papers": 707,
     "outputBasis": "measured",
-    "citations": 20110,
+    "citations": 20136,
     "top10": 53.75,
-    "top10ShareOfDivision": 0.0103,
+    "top10ShareOfDivision": 0.01029,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -281,9 +281,9 @@
       "date": "2015-01-00"
     },
     "spread": {
-      "mean": 28.484,
+      "mean": 28.481,
       "median": 10,
-      "uncited": 99,
+      "uncited": 100,
       "i10": 366,
       "i100": 41
     }
@@ -292,15 +292,15 @@
     "arms": "((=abs:\"Orbiting Carbon Observatory 2\" OR (=abs:\"Orbiting Carbon Observatory\" AND NOT (abs:\"OCO-3\" OR =abs:\"Orbiting Carbon Observatory 3\")) OR ((abs:\"OCO-2\" OR abs:OCO2) AND (=abs:xco2 OR abs:satellite OR abs:atmosphere OR abs:vegetation OR abs:photosynthesis OR abs:albedo OR abs:emissions OR abs:crop OR abs:terrestrial OR abs:concentration) AND NOT =abs:\"operational carbon dioxide\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Orbiting+Carbon+Observatory+2%22+OR+%28%3Dabs%3A%22Orbiting+Carbon+Observatory%22+AND+NOT+%28abs%3A%22OCO-3%22+OR+%3Dabs%3A%22Orbiting+Carbon+Observatory+3%22%29%29+OR+%28%28abs%3A%22OCO-2%22+OR+abs%3AOCO2%29+AND+%28%3Dabs%3Axco2+OR+abs%3Asatellite+OR+abs%3Aatmosphere+OR+abs%3Avegetation+OR+abs%3Aphotosynthesis+OR+abs%3Aalbedo+OR+abs%3Aemissions+OR+abs%3Acrop+OR+abs%3Aterrestrial+OR+abs%3Aconcentration%29+AND+NOT+%3Dabs%3A%22operational+carbon+dioxide%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:33:36.725554+00:00",
+    "fetchedAt": "2026-11-10T03:26:27.109431+00:00",
     "reconciliation": {
-      "adsReturned": 706,
+      "adsReturned": 707,
       "curatedOut": 0,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 706
+      "final": 707
     }
   },
   "curation": {
@@ -315,7 +315,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 622
+      "citations": 625
     },
     {
       "bibcode": "2017Sci...358.5747S",
@@ -324,7 +324,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 542
+      "citations": 544
     },
     {
       "bibcode": "2018ESSD...10...87O",
@@ -351,7 +351,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 404
+      "citations": 405
     },
     {
       "bibcode": "2018GCBio..24.3990L",
@@ -360,7 +360,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 384
+      "citations": 385
     },
     {
       "bibcode": "2017Sci...358.5690L",
@@ -369,7 +369,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 363
+      "citations": 364
     },
     {
       "bibcode": "2017AMT....10...59C",
@@ -396,7 +396,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 331
+      "citations": 332
     },
     {
       "bibcode": "2019PNAS..11611640M",
@@ -423,7 +423,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 267
+      "citations": 268
     },
     {
       "bibcode": "2019AMT....12.2341E",
@@ -432,7 +432,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 236
+      "citations": 237
     },
     {
       "bibcode": "2017GeoRL..4410045N",
@@ -477,7 +477,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 179
+      "citations": 180
     },
     {
       "bibcode": "2019ACP....19.9371R",
@@ -490,6 +490,6 @@
     }
   ],
   "papersFile": {
-    "rows": 706
+    "rows": 707
   }
 }

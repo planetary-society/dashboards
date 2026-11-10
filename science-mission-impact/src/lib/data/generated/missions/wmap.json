@@ -28,14 +28,14 @@
   "indices": {
     "h": 239,
     "m": 9.192,
-    "i100": 647,
+    "i100": 649,
     "g": 495,
-    "tori": 1486.004,
-    "riq": 1482
+    "tori": 1395.449,
+    "riq": 1436
   },
   "facts": {
     "papers": 3298,
-    "citations": 344234,
+    "citations": 343901,
     "publicationYears": [
       2001,
       2026
@@ -104,33 +104,33 @@
       2667,
       7324,
       8550,
-      10094,
+      10096,
       12523,
-      12403,
-      16319,
-      15821,
-      17316,
-      17927,
-      18009,
-      22208,
-      18272,
-      19520,
-      16086,
-      16148,
-      14503,
-      13196,
-      13307,
-      12500,
-      12846,
-      13908,
-      15346,
-      17408
+      12405,
+      16328,
+      15832,
+      17337,
+      17936,
+      18040,
+      22295,
+      18287,
+      19530,
+      16092,
+      16157,
+      14505,
+      13200,
+      13314,
+      12505,
+      12847,
+      13882,
+      15149,
+      17067
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 344234,
-      "observed": 344234,
+      "expected": 343901,
+      "observed": 343901,
       "missing": 0
     }
   },
@@ -183,51 +183,51 @@
     ],
     "authorCount": 262,
     "year": 2016,
-    "citations": 13712
+    "citations": 13681
   },
   "ranks": {
     "full": {
       "bins": [
-        205.188,
-        199.597,
-        168.536,
-        145.768,
-        192.278,
-        200.087,
-        258.044,
-        247.745,
-        277.666,
-        402.092
+        205.155,
+        199.383,
+        168.66,
+        145.016,
+        192.5,
+        200.069,
+        258.386,
+        246.611,
+        277.877,
+        403.342
       ],
       "top1": 74
     },
     "window": {
       "bins": [
-        51.813,
-        45.494,
-        42.641,
-        26.704,
-        31.45,
-        53.87,
-        59.118,
-        68.336,
-        68.476,
-        125.1
+        51.819,
+        45.516,
+        42.622,
+        26.695,
+        31.455,
+        53.879,
+        59.103,
+        68.445,
+        68.399,
+        125.068
       ],
       "top1": 23.286
     },
     "lifetime": {
       "bins": [
-        206.939,
-        291.036,
-        293.198,
-        272.725,
-        278.295,
-        297.847,
-        332.14,
-        365.835,
-        409.355,
-        550.63
+        204.417,
+        288.621,
+        291.145,
+        275.158,
+        279.439,
+        300.83,
+        329.478,
+        367.797,
+        407.798,
+        553.316
       ],
       "top1": 87
     }
@@ -235,9 +235,9 @@
   "full": {
     "papers": 2297,
     "outputBasis": "measured",
-    "citations": 95676,
-    "top10": 379.592,
-    "top10ShareOfDivision": 0.07631,
+    "citations": 95738,
+    "top10": 380.342,
+    "top10ShareOfDivision": 0.07646,
     "top1": 66.833,
     "top1ShareOfDivision": 0.13435,
     "first": {
@@ -262,19 +262,19 @@
       "m": 9.939
     },
     "spread": {
-      "mean": 41.653,
+      "mean": 41.68,
       "median": 17,
       "uncited": 99,
-      "i10": 1585,
+      "i10": 1586,
       "i100": 134
     }
   },
   "window": {
     "papers": 573,
     "outputBasis": "measured",
-    "citations": 30348,
-    "top10": 121.1,
-    "top10ShareOfDivision": 0.06261,
+    "citations": 30351,
+    "top10": 121.068,
+    "top10ShareOfDivision": 0.06259,
     "top1": 22.286,
     "top1ShareOfDivision": 0.11521,
     "first": {
@@ -299,7 +299,7 @@
       "m": 19.5
     },
     "spread": {
-      "mean": 52.963,
+      "mean": 52.969,
       "median": 22,
       "uncited": 32,
       "i10": 419,
@@ -309,9 +309,9 @@
   "lifetime": {
     "papers": 3298,
     "outputBasis": "measured",
-    "citations": 344234,
-    "top10": 511.797,
-    "top10ShareOfDivision": 0.08053,
+    "citations": 343901,
+    "top10": 513.983,
+    "top10ShareOfDivision": 0.0808,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -322,18 +322,18 @@
       "date": "2002-06-00"
     },
     "spread": {
-      "mean": 104.377,
+      "mean": 104.276,
       "median": 34,
-      "uncited": 100,
-      "i10": 2604,
-      "i100": 647
+      "uncited": 99,
+      "i10": 2603,
+      "i100": 649
     }
   },
   "query": {
     "arms": "((=abs:\"Microwave Anisotropy Probe\" OR =title:\"Microwave Anisotropy Probe\" OR =abs:\"differencing assembly\" OR =abs:\"Pseudo-Correlation Radiometer\" OR ((abs:WMAP OR title:WMAP OR =abs:WMAP1 OR =abs:WMAP5 OR =abs:WMAP7 OR =abs:WMAP9 OR =title:WMAP1 OR =title:WMAP5 OR =title:WMAP7 OR =title:WMAP9) AND (=abs:\"WMAP satellite\" OR =abs:\"WMAP mission\" OR =abs:\"WMAP team\" OR =abs:\"WMAP instrument\" OR =abs:\"WMAP data\" OR =abs:\"WMAP observations\" OR =abs:\"cosmic microwave background\" OR abs:CMB OR =abs:cosmology OR =abs:cosmological OR =abs:anisotropy OR =abs:anisotropies OR =abs:\"power spectrum\" OR =abs:polarization OR =abs:polarisation OR =abs:foreground OR =abs:foregrounds OR =abs:inflation OR =abs:\"dark energy\" OR =abs:\"dark matter\" OR =abs:microwave OR =abs:sky OR =abs:map OR =abs:maps OR =abs:galactic OR =abs:emission OR =abs:universe OR =abs:haze OR =abs:reionization OR =abs:neutrino OR =abs:neutrinos OR =abs:baryon OR =abs:cosmic OR =abs:galaxies OR =abs:redshift))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2001-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Microwave+Anisotropy+Probe%22+OR+%3Dtitle%3A%22Microwave+Anisotropy+Probe%22+OR+%3Dabs%3A%22differencing+assembly%22+OR+%3Dabs%3A%22Pseudo-Correlation+Radiometer%22+OR+%28%28abs%3AWMAP+OR+title%3AWMAP+OR+%3Dabs%3AWMAP1+OR+%3Dabs%3AWMAP5+OR+%3Dabs%3AWMAP7+OR+%3Dabs%3AWMAP9+OR+%3Dtitle%3AWMAP1+OR+%3Dtitle%3AWMAP5+OR+%3Dtitle%3AWMAP7+OR+%3Dtitle%3AWMAP9%29+AND+%28%3Dabs%3A%22WMAP+satellite%22+OR+%3Dabs%3A%22WMAP+mission%22+OR+%3Dabs%3A%22WMAP+team%22+OR+%3Dabs%3A%22WMAP+instrument%22+OR+%3Dabs%3A%22WMAP+data%22+OR+%3Dabs%3A%22WMAP+observations%22+OR+%3Dabs%3A%22cosmic+microwave+background%22+OR+abs%3ACMB+OR+%3Dabs%3Acosmology+OR+%3Dabs%3Acosmological+OR+%3Dabs%3Aanisotropy+OR+%3Dabs%3Aanisotropies+OR+%3Dabs%3A%22power+spectrum%22+OR+%3Dabs%3Apolarization+OR+%3Dabs%3Apolarisation+OR+%3Dabs%3Aforeground+OR+%3Dabs%3Aforegrounds+OR+%3Dabs%3Ainflation+OR+%3Dabs%3A%22dark+energy%22+OR+%3Dabs%3A%22dark+matter%22+OR+%3Dabs%3Amicrowave+OR+%3Dabs%3Asky+OR+%3Dabs%3Amap+OR+%3Dabs%3Amaps+OR+%3Dabs%3Agalactic+OR+%3Dabs%3Aemission+OR+%3Dabs%3Auniverse+OR+%3Dabs%3Ahaze+OR+%3Dabs%3Areionization+OR+%3Dabs%3Aneutrino+OR+%3Dabs%3Aneutrinos+OR+%3Dabs%3Abaryon+OR+%3Dabs%3Acosmic+OR+%3Dabs%3Agalaxies+OR+%3Dabs%3Aredshift%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2001-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:42:07.353957+00:00",
+    "fetchedAt": "2026-11-10T03:35:56.502578+00:00",
     "reconciliation": {
       "adsReturned": 3300,
       "curatedOut": 0,
@@ -356,7 +356,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 13712
+      "citations": 13681
     },
     {
       "bibcode": "2003ApJS..148..175S",
@@ -365,7 +365,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 10886
+      "citations": 10882
     },
     {
       "bibcode": "2014A&A...571A..16P",
@@ -374,7 +374,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 8471
+      "citations": 8465
     },
     {
       "bibcode": "2011ApJS..192...18K",
@@ -383,7 +383,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 8456
+      "citations": 8447
     },
     {
       "bibcode": "2007ApJS..170..377S",
@@ -392,16 +392,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 7697
-    },
-    {
-      "bibcode": "2013ApJS..208...19H",
-      "title": "Nine-year Wilkinson Microwave Anisotropy Probe (WMAP) Observations: Cosmological Parameter Results",
-      "firstAuthor": "Hinshaw, G.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2013,
-      "citations": 5718
+      "citations": 7693
     },
     {
       "bibcode": "2005ApJ...622..759G",
@@ -410,7 +401,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 5711
+      "citations": 5709
+    },
+    {
+      "bibcode": "2013ApJS..208...19H",
+      "title": "Nine-year Wilkinson Microwave Anisotropy Probe (WMAP) Observations: Cosmological Parameter Results",
+      "firstAuthor": "Hinshaw, G.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 5705
     },
     {
       "bibcode": "2009ApJS..180..330K",
@@ -419,7 +419,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 5474
+      "citations": 5471
     },
     {
       "bibcode": "2003ApJS..148....1B",
@@ -428,7 +428,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 4928
+      "citations": 4929
     },
     {
       "bibcode": "2004PhRvD..69j3501T",
@@ -437,7 +437,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 3909
+      "citations": 3906
     },
     {
       "bibcode": "2013ApJS..208...20B",
@@ -446,7 +446,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 2581
+      "citations": 2574
     },
     {
       "bibcode": "2011MNRAS.416.3017B",
@@ -455,7 +455,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 2577
+      "citations": 2568
     },
     {
       "bibcode": "2016ApJ...826...56R",
@@ -464,7 +464,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 2115
+      "citations": 2104
     },
     {
       "bibcode": "2005MNRAS.362..505C",
@@ -473,7 +473,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 2035
+      "citations": 2026
     },
     {
       "bibcode": "2014A&A...568A..22B",
@@ -482,7 +482,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 1903
+      "citations": 1895
     },
     {
       "bibcode": "2010MNRAS.401.2148P",
@@ -500,7 +500,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 1815
+      "citations": 1813
     },
     {
       "bibcode": "2014A&A...571A..22P",
@@ -509,7 +509,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 1805
+      "citations": 1801
     },
     {
       "bibcode": "2003ApJ...594....1T",
@@ -527,7 +527,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 1785
+      "citations": 1781
     }
   ],
   "papersFile": {

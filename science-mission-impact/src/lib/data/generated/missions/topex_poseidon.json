@@ -30,12 +30,12 @@
     "m": 3.2,
     "i100": 138,
     "g": 191,
-    "tori": 882.625,
-    "riq": 848
+    "tori": 895.46,
+    "riq": 854
   },
   "facts": {
     "papers": 1637,
-    "citations": 67195,
+    "citations": 67388,
     "publicationYears": [
       1992,
       2026
@@ -122,42 +122,42 @@
       140,
       413,
       293,
-      530,
+      529,
       595,
       591,
       660,
-      1146,
+      1145,
       1234,
-      1270,
+      1269,
       1503,
-      1501,
+      1503,
       1999,
       2088,
-      2187,
-      2228,
-      2600,
+      2189,
+      2234,
+      2601,
       2415,
-      2678,
-      2618,
-      2603,
-      2759,
+      2680,
+      2644,
+      2707,
+      2760,
       2745,
       2554,
       2896,
-      3139,
+      3141,
       3200,
       3649,
       3339,
       3320,
       2944,
       2940,
-      2415
+      2465
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 67195,
-      "observed": 67195,
+      "expected": 67388,
+      "observed": 67388,
       "missing": 0
     }
   },
@@ -208,61 +208,61 @@
     ],
     "authorCount": 2,
     "year": 1998,
-    "citations": 1282
+    "citations": 1284
   },
   "ranks": {
     "full": {
       "bins": [
-        254.062,
-        216.622,
-        174.053,
-        121.716,
-        114.494,
-        96.042,
-        86.637,
-        55.456,
-        41.308,
-        41.611
+        254.628,
+        216.091,
+        175.219,
+        121.384,
+        113.95,
+        96.518,
+        86.463,
+        55.035,
+        41.24,
+        41.472
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        55.28,
-        43.766,
-        33.47,
-        22.529,
-        21.763,
-        31.01,
+        55.323,
+        43.724,
+        33.569,
+        22.564,
+        21.804,
+        30.891,
         18.734,
-        12.407,
-        13.184,
-        11.857
+        12.356,
+        13.181,
+        11.852
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        101.868,
-        140.281,
-        155.339,
-        142.53,
-        168.347,
-        161.15,
-        173.402,
-        171.734,
-        205.572,
-        216.778
+        101.605,
+        140.37,
+        154.223,
+        141.118,
+        169.396,
+        160.325,
+        175.224,
+        172.051,
+        206.257,
+        216.43
       ],
-      "top1": 27
+      "top1": 26.097
     }
   },
   "full": {
     "papers": 1202,
     "outputBasis": "measured",
-    "citations": 7079,
-    "top10": 41.111,
-    "top10ShareOfDivision": 0.01051,
+    "citations": 7080,
+    "top10": 40.972,
+    "top10ShareOfDivision": 0.01048,
     "top1": 2,
     "top1ShareOfDivision": 0.00512,
     "first": {
@@ -287,7 +287,7 @@
       "m": 2.033
     },
     "spread": {
-      "mean": 5.889,
+      "mean": 5.89,
       "median": 3,
       "uncited": 207,
       "i10": 217,
@@ -298,8 +298,8 @@
     "papers": 264,
     "outputBasis": "measured",
     "citations": 1972,
-    "top10": 11.857,
-    "top10ShareOfDivision": 0.01188,
+    "top10": 11.852,
+    "top10ShareOfDivision": 0.01187,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -334,9 +334,9 @@
   "lifetime": {
     "papers": 1637,
     "outputBasis": "measured",
-    "citations": 67195,
-    "top10": 213.111,
-    "top10ShareOfDivision": 0.04083,
+    "citations": 67388,
+    "top10": 212.764,
+    "top10ShareOfDivision": 0.04074,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -347,10 +347,10 @@
       "date": "1993-06-00"
     },
     "spread": {
-      "mean": 41.048,
+      "mean": 41.166,
       "median": 18,
       "uncited": 84,
-      "i10": 1095,
+      "i10": 1098,
       "i100": 138
     }
   },
@@ -358,7 +358,7 @@
     "arms": "((((abs:TOPEX OR abs:\"TOPEX/Poseidon\") AND abs:(altimeter OR altimetry OR ocean OR sea OR satellite OR radiometer OR ionosphere OR electron OR geoid OR tide OR wave OR wind OR orbit OR data OR Poseidon OR Jason) -abs:\"topographic exposure\") OR =abs:\"Ocean Topography Experiment\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1992-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3ATOPEX+OR+abs%3A%22TOPEX%2FPoseidon%22%29+AND+abs%3A%28altimeter+OR+altimetry+OR+ocean+OR+sea+OR+satellite+OR+radiometer+OR+ionosphere+OR+electron+OR+geoid+OR+tide+OR+wave+OR+wind+OR+orbit+OR+data+OR+Poseidon+OR+Jason%29+-abs%3A%22topographic+exposure%22%29+OR+%3Dabs%3A%22Ocean+Topography+Experiment%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1992-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:30:24.737860+00:00",
+    "fetchedAt": "2026-11-10T03:22:20.836538+00:00",
     "reconciliation": {
       "adsReturned": 1642,
       "curatedOut": 3,
@@ -423,7 +423,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 1282
+      "citations": 1284
     },
     {
       "bibcode": "2000JGR...10519477D",
@@ -441,7 +441,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 1090
+      "citations": 1093
     },
     {
       "bibcode": "1994JGR....9924821E",
@@ -450,7 +450,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1994,
-      "citations": 953
+      "citations": 958
     },
     {
       "bibcode": "2007GeoRL..3415606C",
@@ -459,7 +459,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 922
+      "citations": 925
     },
     {
       "bibcode": "2018PNAS..115.2022N",
@@ -477,7 +477,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 623
+      "citations": 627
     },
     {
       "bibcode": "1996Sci...272..234C",
@@ -486,7 +486,16 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 577
+      "citations": 578
+    },
+    {
+      "bibcode": "2011AdSpR..47.1497C",
+      "title": "SOLS: A lake database to monitor in the Near Real Time water level and storage variations from remote sensing data",
+      "firstAuthor": "Crétaux, J.-F.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2011,
+      "citations": 533
     },
     {
       "bibcode": "2003GeoRL..30.1275C",
@@ -496,15 +505,6 @@
       "authorCount": null,
       "year": 2003,
       "citations": 532
-    },
-    {
-      "bibcode": "2011AdSpR..47.1497C",
-      "title": "SOLS: A lake database to monitor in the Near Real Time water level and storage variations from remote sensing data",
-      "firstAuthor": "Crétaux, J.-F.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2011,
-      "citations": 528
     },
     {
       "bibcode": "1994JGR....9924369F",
@@ -522,7 +522,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 494
+      "citations": 495
     },
     {
       "bibcode": "2004Sci...304..555H",
@@ -549,16 +549,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 421
-    },
-    {
-      "bibcode": "2004JCli...17.2609C",
-      "title": "Estimates of the Regional Distribution of Sea Level Rise over the 1950 2000 Period.",
-      "firstAuthor": "Church, John A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2004,
-      "citations": 419
+      "citations": 423
     },
     {
       "bibcode": "2000JOce...56..567M",
@@ -567,7 +558,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 417
+      "citations": 420
+    },
+    {
+      "bibcode": "2004JCli...17.2609C",
+      "title": "Estimates of the Regional Distribution of Sea Level Rise over the 1950 2000 Period.",
+      "firstAuthor": "Church, John A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2004,
+      "citations": 420
     },
     {
       "bibcode": "2006JGRB..11110306S",
@@ -585,7 +585,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 347
+      "citations": 346
     },
     {
       "bibcode": "2004JGRC..10912032R",

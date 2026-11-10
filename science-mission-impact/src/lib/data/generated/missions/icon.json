@@ -30,12 +30,12 @@
     "m": 3.714,
     "i100": 0,
     "g": 37,
-    "tori": 10.102,
-    "riq": 454
+    "tori": 10.227,
+    "riq": 456
   },
   "facts": {
     "papers": 214,
-    "citations": 2332,
+    "citations": 2339,
     "publicationYears": [
       2020,
       2026
@@ -66,14 +66,14 @@
       165,
       466,
       529,
-      575,
-      561
+      576,
+      567
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 2332,
-      "observed": 2332,
+      "expected": 2339,
+      "observed": 2339,
       "missing": 0
     }
   },
@@ -131,15 +131,15 @@
   "ranks": {
     "full": {
       "bins": [
-        1.523,
-        7.726,
-        7.759,
-        7.804,
-        14.151,
-        12.667,
-        16.874,
-        11.602,
-        9.894,
+        1.524,
+        7.732,
+        7.757,
+        7.791,
+        14.16,
+        12.675,
+        16.872,
+        11.611,
+        9.879,
         17
       ],
       "top1": 1
@@ -151,9 +151,9 @@
         9.803,
         15.891,
         13.441,
-        16.724,
-        9.755,
-        10.832,
+        16.741,
+        9.794,
+        10.776,
         6,
         12
       ],
@@ -161,14 +161,14 @@
     },
     "lifetime": {
       "bins": [
-        45.625,
-        41.746,
-        29.852,
-        23.094,
-        20.622,
-        20.573,
-        14.811,
-        6.676,
+        44.976,
+        42.161,
+        29.742,
+        23.343,
+        20.657,
+        20.515,
+        14.887,
+        6.717,
         10,
         1
       ],
@@ -178,7 +178,7 @@
   "full": {
     "papers": 107,
     "outputBasis": "measured",
-    "citations": 1607,
+    "citations": 1609,
     "top10": 16.5,
     "top10ShareOfDivision": 0.01145,
     "top1": 1,
@@ -205,7 +205,7 @@
       "m": 5.25
     },
     "spread": {
-      "mean": 15.019,
+      "mean": 15.037,
       "median": 11,
       "uncited": 1,
       "i10": 57,
@@ -215,7 +215,7 @@
   "window": {
     "papers": 107,
     "outputBasis": "measured",
-    "citations": 1607,
+    "citations": 1609,
     "top10": 12,
     "top10ShareOfDivision": 0.02705,
     "top1": 0,
@@ -242,7 +242,7 @@
       "m": 5.25
     },
     "spread": {
-      "mean": 15.019,
+      "mean": 15.037,
       "median": 11,
       "uncited": 1,
       "i10": 57,
@@ -252,7 +252,7 @@
   "lifetime": {
     "papers": 214,
     "outputBasis": "measured",
-    "citations": 2332,
+    "citations": 2339,
     "top10": 1,
     "top10ShareOfDivision": 0.00054,
     "top1": null,
@@ -265,7 +265,7 @@
       "date": "2022-05-00"
     },
     "spread": {
-      "mean": 10.897,
+      "mean": 10.93,
       "median": 6,
       "uncited": 35,
       "i10": 76,
@@ -276,7 +276,7 @@
     "arms": "(((=abs:\"Ionospheric Connection Explorer\" OR =abs:\"Ionospheric Connections Explorer\" OR =abs:\"ICON mission\" OR =abs:\"ICON satellite\" OR =abs:\"NASA ICON\" OR (abs:MIGHTI AND abs:(wind OR winds OR temperature OR thermosphere OR ICON)) OR (abs:ICON AND abs:(ionosphere OR ionospheric OR thermosphere OR IVM))) NOT (abs:(\"UA-ICON\" OR \"ICON-ART\" OR \"ICON-ESM\" OR \"ICON-LEM\" OR \"ICON-NWP\" OR \"ICON-Sapphire\" OR \"ICON general circulation model\" OR icosahedral) AND abs:(model OR models OR simulation OR simulations))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2020-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Ionospheric+Connection+Explorer%22+OR+%3Dabs%3A%22Ionospheric+Connections+Explorer%22+OR+%3Dabs%3A%22ICON+mission%22+OR+%3Dabs%3A%22ICON+satellite%22+OR+%3Dabs%3A%22NASA+ICON%22+OR+%28abs%3AMIGHTI+AND+abs%3A%28wind+OR+winds+OR+temperature+OR+thermosphere+OR+ICON%29%29+OR+%28abs%3AICON+AND+abs%3A%28ionosphere+OR+ionospheric+OR+thermosphere+OR+IVM%29%29%29+NOT+%28abs%3A%28%22UA-ICON%22+OR+%22ICON-ART%22+OR+%22ICON-ESM%22+OR+%22ICON-LEM%22+OR+%22ICON-NWP%22+OR+%22ICON-Sapphire%22+OR+%22ICON+general+circulation+model%22+OR+icosahedral%29+AND+abs%3A%28model+OR+models+OR+simulation+OR+simulations%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2020-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:38:36.606435+00:00",
+    "fetchedAt": "2026-11-10T03:32:08.518611+00:00",
     "reconciliation": {
       "adsReturned": 218,
       "curatedOut": 4,
@@ -530,21 +530,21 @@
       "citations": 41
     },
     {
-      "bibcode": "2021JGRA..12629059M",
-      "title": "The Thermospheric Column O/N₂ Ratio",
-      "firstAuthor": "Meier, R. R.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2021,
-      "citations": 39
-    },
-    {
       "bibcode": "2023E&SS...1002962Y",
       "title": "Monthly Climatologies of Zonal-Mean and Tidal Winds in the Thermosphere as Observed by ICON/MIGHTI During April 2020-March 2022",
       "firstAuthor": "Yamazaki, Y.",
       "authors": null,
       "authorCount": null,
       "year": 2023,
+      "citations": 40
+    },
+    {
+      "bibcode": "2021JGRA..12629059M",
+      "title": "The Thermospheric Column O/N₂ Ratio",
+      "firstAuthor": "Meier, R. R.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2021,
       "citations": 39
     },
     {

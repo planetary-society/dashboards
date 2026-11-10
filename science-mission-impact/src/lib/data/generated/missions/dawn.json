@@ -30,12 +30,12 @@
     "m": 3.688,
     "i100": 27,
     "g": 94,
-    "tori": 41.494,
-    "riq": 378
+    "tori": 40.291,
+    "riq": 373
   },
   "facts": {
-    "papers": 422,
-    "citations": 13711,
+    "papers": 423,
+    "citations": 13727,
     "publicationYears": [
       2011,
       2026
@@ -76,13 +76,13 @@
       10,
       13,
       16,
-      10
+      11
     ],
     "citations": [
       31,
       158,
-      511,
-      923,
+      513,
+      931,
       1009,
       802,
       641,
@@ -91,27 +91,27 @@
       1101,
       1154,
       1237,
-      853,
+      851,
       818,
-      912,
-      841
+      908,
+      853
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 13711,
-      "observed": 13711,
+      "expected": 13727,
+      "observed": 13727,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 422,
+    "papers": 423,
     "us": {
-      "mapped": 322,
+      "mapped": 323,
       "top": [
         {
           "name": "Jet Propulsion Laboratory",
-          "papers": 225
+          "papers": 226
         },
         {
           "name": "University of California, Los Angeles",
@@ -124,11 +124,11 @@
       ]
     },
     "world": {
-      "mapped": 405,
+      "mapped": 406,
       "top": [
         {
           "name": "Jet Propulsion Laboratory",
-          "papers": 225
+          "papers": 226
         },
         {
           "name": "University of California, Los Angeles",
@@ -158,46 +158,46 @@
   "ranks": {
     "full": {
       "bins": [
-        15.04,
-        25.289,
-        29.321,
-        23.762,
-        26.802,
-        32.695,
-        36.192,
-        43.083,
-        46.771,
-        53.044
+        15.035,
+        25.322,
+        29.279,
+        23.867,
+        26.736,
+        32.943,
+        36.423,
+        42.631,
+        46.846,
+        52.918
       ],
       "top1": 6
     },
     "window": {
       "bins": [
-        8.591,
-        24.685,
-        18.709,
-        18.552,
-        22.377,
-        21.341,
-        23.452,
-        25.008,
-        28.286,
-        33
+        8.593,
+        24.629,
+        18.773,
+        18.616,
+        22.294,
+        21.349,
+        23.52,
+        24.94,
+        27.508,
+        33.778
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        32.276,
-        36.473,
-        40.901,
-        50.034,
-        47.475,
-        50.166,
-        49.3,
-        47.962,
-        34.737,
-        32.677
+        32.953,
+        36.487,
+        40.604,
+        48.873,
+        48.228,
+        50.276,
+        50.032,
+        48.75,
+        33.978,
+        32.819
       ],
       "top1": 1
     }
@@ -205,9 +205,9 @@
   "full": {
     "papers": 332,
     "outputBasis": "measured",
-    "citations": 6466,
-    "top10": 53.044,
-    "top10ShareOfDivision": 0.04881,
+    "citations": 6473,
+    "top10": 52.918,
+    "top10ShareOfDivision": 0.04869,
     "top1": 6,
     "top1ShareOfDivision": 0.05521,
     "first": {
@@ -232,7 +232,7 @@
       "m": 4.106
     },
     "spread": {
-      "mean": 19.476,
+      "mean": 19.497,
       "median": 13,
       "uncited": 10,
       "i10": 201,
@@ -242,9 +242,9 @@
   "window": {
     "papers": 224,
     "outputBasis": "measured",
-    "citations": 5081,
-    "top10": 33,
-    "top10ShareOfDivision": 0.06889,
+    "citations": 5090,
+    "top10": 33.778,
+    "top10ShareOfDivision": 0.07052,
     "top1": 2,
     "top1ShareOfDivision": 0.04175,
     "first": {
@@ -269,7 +269,7 @@
       "m": 5.35
     },
     "spread": {
-      "mean": 22.683,
+      "mean": 22.723,
       "median": 14,
       "uncited": 7,
       "i10": 138,
@@ -277,11 +277,11 @@
     }
   },
   "lifetime": {
-    "papers": 422,
+    "papers": 423,
     "outputBasis": "measured",
-    "citations": 13711,
-    "top10": 32.677,
-    "top10ShareOfDivision": 0.02078,
+    "citations": 13727,
+    "top10": 32.819,
+    "top10ShareOfDivision": 0.02085,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -292,9 +292,9 @@
       "date": "2011-12-00"
     },
     "spread": {
-      "mean": 32.491,
+      "mean": 32.452,
       "median": 18,
-      "uncited": 22,
+      "uncited": 23,
       "i10": 288,
       "i100": 27
     }
@@ -303,15 +303,15 @@
     "arms": "((=abs:\"Dawn mission\" OR =abs:\"Dawn spacecraft\" OR ((=abs:Dawn OR abs:VIR) AND (abs:Vesta OR abs:Ceres))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2011-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Dawn+mission%22+OR+%3Dabs%3A%22Dawn+spacecraft%22+OR+%28%28%3Dabs%3ADawn+OR+abs%3AVIR%29+AND+%28abs%3AVesta+OR+abs%3ACeres%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2011-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:27:35.277761+00:00",
+    "fetchedAt": "2026-11-10T03:19:39.110770+00:00",
     "reconciliation": {
-      "adsReturned": 433,
+      "adsReturned": 434,
       "curatedOut": 11,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 422
+      "final": 423
     }
   },
   "curation": {
@@ -432,7 +432,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 282
+      "citations": 281
     },
     {
       "bibcode": "2012Sci...336..697D",
@@ -441,7 +441,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 257
+      "citations": 259
     },
     {
       "bibcode": "2012Sci...338..242P",
@@ -477,7 +477,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 212
+      "citations": 213
     },
     {
       "bibcode": "2016Sci...353.1008R",
@@ -486,7 +486,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 189
+      "citations": 190
+    },
+    {
+      "bibcode": "2016Natur.537..515P",
+      "title": "A partially differentiated interior for (1) Ceres deduced from its gravity field and shape",
+      "firstAuthor": "Park, R. S.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2016,
+      "citations": 186
     },
     {
       "bibcode": "2012Sci...336..694S",
@@ -507,31 +516,13 @@
       "citations": 184
     },
     {
-      "bibcode": "2016Natur.537..515P",
-      "title": "A partially differentiated interior for (1) Ceres deduced from its gravity field and shape",
-      "firstAuthor": "Park, R. S.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2016,
-      "citations": 184
-    },
-    {
       "bibcode": "2011SSRv..163..371P",
       "title": "Dawn's Gamma Ray and Neutron Detector",
       "firstAuthor": "Prettyman, Thomas H.",
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 178
-    },
-    {
-      "bibcode": "2012Icar..221..544R",
-      "title": "Delivery of dark material to Vesta via carbonaceous chondritic impacts",
-      "firstAuthor": "Reddy, Vishnu",
-      "authors": null,
-      "authorCount": null,
-      "year": 2012,
-      "citations": 165
+      "citations": 177
     },
     {
       "bibcode": "2012Sci...336..700R",
@@ -543,13 +534,22 @@
       "citations": 165
     },
     {
+      "bibcode": "2012Icar..221..544R",
+      "title": "Delivery of dark material to Vesta via carbonaceous chondritic impacts",
+      "firstAuthor": "Reddy, Vishnu",
+      "authors": null,
+      "authorCount": null,
+      "year": 2012,
+      "citations": 163
+    },
+    {
       "bibcode": "2017Sci...355...55P",
       "title": "Extensive water ice within Ceres’ aqueously altered regolith: Evidence from nuclear spectroscopy",
       "firstAuthor": "Prettyman, T. H.",
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 164
+      "citations": 163
     },
     {
       "bibcode": "2017Sci...355..719D",
@@ -558,7 +558,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 156
+      "citations": 155
     },
     {
       "bibcode": "2016Sci...353.4279A",
@@ -588,16 +588,16 @@
       "citations": 139
     },
     {
-      "bibcode": "2012ApJ...758L..36D",
-      "title": "Detection of Widespread Hydrated Materials on Vesta by the VIR Imaging Spectrometer on board the Dawn Mission",
-      "firstAuthor": "De Sanctis, M. C.",
+      "bibcode": "2014E&PSL.395..267N",
+      "title": "Differentiation of Vesta: Implications for a shallow magma ocean",
+      "firstAuthor": "Neumann, Wladimir",
       "authors": null,
       "authorCount": null,
-      "year": 2012,
-      "citations": 125
+      "year": 2014,
+      "citations": 126
     }
   ],
   "papersFile": {
-    "rows": 422
+    "rows": 423
   }
 }

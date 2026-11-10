@@ -29,13 +29,13 @@
     "h": 96,
     "m": 2.667,
     "i100": 90,
-    "g": 144,
-    "tori": 339.19,
-    "riq": 511
+    "g": 145,
+    "tori": 346.199,
+    "riq": 516
   },
   "facts": {
     "papers": 1346,
-    "citations": 47371,
+    "citations": 47510,
     "publicationYears": [
       1991,
       2026
@@ -141,26 +141,26 @@
       1701,
       1848,
       1897,
-      1810,
-      1564,
+      1925,
+      1574,
       1769,
       1436,
       1354,
       1567,
       1330,
-      1262,
+      1263,
       1427,
       1151,
-      1162,
+      1163,
       1168,
       1134,
-      940
+      952
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 47371,
-      "observed": 47371,
+      "expected": 47510,
+      "observed": 47510,
       "missing": 0
     }
   },
@@ -213,51 +213,51 @@
     ],
     "authorCount": 10,
     "year": 1993,
-    "citations": 679
+    "citations": 681
   },
   "ranks": {
     "full": {
       "bins": [
-        122.146,
-        122.941,
-        98.217,
-        132.733,
-        108.996,
-        118.544,
-        115.301,
-        102.098,
-        84.499,
-        75.527
+        122.46,
+        123.049,
+        99.083,
+        132.415,
+        109.026,
+        118.285,
+        115.436,
+        101.514,
+        84.552,
+        75.18
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        17.188,
-        12.607,
-        9.178,
-        9.355,
-        11.576,
-        14.71,
-        13.093,
-        16.212,
-        20.153,
-        14.928
+        17.206,
+        12.59,
+        9.209,
+        9.386,
+        11.601,
+        14.665,
+        13.072,
+        16.205,
+        20.14,
+        14.926
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        72.401,
-        76.99,
-        101.956,
-        107.421,
-        140.224,
-        156.335,
-        181.506,
-        187.817,
-        177.961,
-        143.389
+        72.123,
+        77.186,
+        102.124,
+        106.378,
+        141,
+        156.08,
+        182.775,
+        185.34,
+        179.779,
+        143.215
       ],
       "top1": 9
     }
@@ -265,9 +265,9 @@
   "full": {
     "papers": 1081,
     "outputBasis": "measured",
-    "citations": 9943,
-    "top10": 73.027,
-    "top10ShareOfDivision": 0.01868,
+    "citations": 9942,
+    "top10": 72.68,
+    "top10ShareOfDivision": 0.01859,
     "top1": 2,
     "top1ShareOfDivision": 0.00512,
     "first": {
@@ -292,7 +292,7 @@
       "m": 2.165
     },
     "spread": {
-      "mean": 9.198,
+      "mean": 9.197,
       "median": 6,
       "uncited": 96,
       "i10": 370,
@@ -303,8 +303,8 @@
     "papers": 139,
     "outputBasis": "measured",
     "citations": 1901,
-    "top10": 14.928,
-    "top10ShareOfDivision": 0.01496,
+    "top10": 14.926,
+    "top10ShareOfDivision": 0.01495,
     "top1": 1,
     "top1ShareOfDivision": 0.01002,
     "first": {
@@ -339,9 +339,9 @@
   "lifetime": {
     "papers": 1346,
     "outputBasis": "measured",
-    "citations": 47371,
-    "top10": 130.458,
-    "top10ShareOfDivision": 0.02499,
+    "citations": 47510,
+    "top10": 130.328,
+    "top10ShareOfDivision": 0.02495,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -352,10 +352,10 @@
       "date": "1992-01-00"
     },
     "spread": {
-      "mean": 35.194,
+      "mean": 35.297,
       "median": 21,
       "uncited": 59,
-      "i10": 986,
+      "i10": 987,
       "i100": 90
     }
   },
@@ -363,7 +363,7 @@
     "arms": "((=abs:(\"Upper Atmosphere Research Satellite\" OR \"Upper Atmospheric Research Satellite\" OR \"Halogen Occultation Experiment\" OR \"Cryogenic Limb Array Etalon Spectrometer\" OR \"Improved Stratospheric and Mesospheric Sounder\" OR \"High Resolution Doppler Imager\" OR \"Particle Environment Monitor\") OR (abs:UARS AND abs:(atmosphere OR atmospheric OR stratospher* OR mesospher* OR thermospher* OR mesopause OR ozone OR irradiance OR limb OR wind OR winds OR aerosol OR aerosols OR airglow OR dayglow OR tide OR tides OR radar OR radars OR auroral OR aurora OR ionospher* OR solar OR spacecraft OR satellite OR MLS OR SOLSTICE OR ACRIM OR PEM)) OR (abs:(HALOE OR CLAES OR ISAMS) AND abs:(atmosphere OR atmospheric OR stratospher* OR mesospher* OR thermospher* OR ozone OR aerosol OR aerosols OR limb OR tropopause OR vortex OR =\"water vapor\" OR methane OR tracer OR tracers OR transport)) OR (abs:(HRDI OR WINDII) AND abs:(atmosphere OR atmospheric OR stratospher* OR mesospher* OR thermospher* OR mesopause OR wind OR winds OR tide OR tides OR airglow OR dayglow OR nightglow OR ozone)) OR (=abs:\"Wind Imaging Interferometer\" AND abs:(atmosphere OR atmospheric OR stratospher* OR mesospher* OR thermospher* OR mesopause OR wind OR winds OR tide OR tides OR airglow OR dayglow OR nightglow OR ozone) NOT abs:(static OR polarization OR polarizing OR birefringent OR \"four-quadrant\")) OR (abs:SUSIM AND abs:(irradiance OR ultraviolet OR UV) NOT abs:(ATLAS OR Spacelab))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1991-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%28%22Upper+Atmosphere+Research+Satellite%22+OR+%22Upper+Atmospheric+Research+Satellite%22+OR+%22Halogen+Occultation+Experiment%22+OR+%22Cryogenic+Limb+Array+Etalon+Spectrometer%22+OR+%22Improved+Stratospheric+and+Mesospheric+Sounder%22+OR+%22High+Resolution+Doppler+Imager%22+OR+%22Particle+Environment+Monitor%22%29+OR+%28abs%3AUARS+AND+abs%3A%28atmosphere+OR+atmospheric+OR+stratospher%2A+OR+mesospher%2A+OR+thermospher%2A+OR+mesopause+OR+ozone+OR+irradiance+OR+limb+OR+wind+OR+winds+OR+aerosol+OR+aerosols+OR+airglow+OR+dayglow+OR+tide+OR+tides+OR+radar+OR+radars+OR+auroral+OR+aurora+OR+ionospher%2A+OR+solar+OR+spacecraft+OR+satellite+OR+MLS+OR+SOLSTICE+OR+ACRIM+OR+PEM%29%29+OR+%28abs%3A%28HALOE+OR+CLAES+OR+ISAMS%29+AND+abs%3A%28atmosphere+OR+atmospheric+OR+stratospher%2A+OR+mesospher%2A+OR+thermospher%2A+OR+ozone+OR+aerosol+OR+aerosols+OR+limb+OR+tropopause+OR+vortex+OR+%3D%22water+vapor%22+OR+methane+OR+tracer+OR+tracers+OR+transport%29%29+OR+%28abs%3A%28HRDI+OR+WINDII%29+AND+abs%3A%28atmosphere+OR+atmospheric+OR+stratospher%2A+OR+mesospher%2A+OR+thermospher%2A+OR+mesopause+OR+wind+OR+winds+OR+tide+OR+tides+OR+airglow+OR+dayglow+OR+nightglow+OR+ozone%29%29+OR+%28%3Dabs%3A%22Wind+Imaging+Interferometer%22+AND+abs%3A%28atmosphere+OR+atmospheric+OR+stratospher%2A+OR+mesospher%2A+OR+thermospher%2A+OR+mesopause+OR+wind+OR+winds+OR+tide+OR+tides+OR+airglow+OR+dayglow+OR+nightglow+OR+ozone%29+NOT+abs%3A%28static+OR+polarization+OR+polarizing+OR+birefringent+OR+%22four-quadrant%22%29%29+OR+%28abs%3ASUSIM+AND+abs%3A%28irradiance+OR+ultraviolet+OR+UV%29+NOT+abs%3A%28ATLAS+OR+Spacelab%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1991-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:30:15.857528+00:00",
+    "fetchedAt": "2026-11-10T03:22:09.389628+00:00",
     "reconciliation": {
       "adsReturned": 1350,
       "curatedOut": 3,
@@ -411,7 +411,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 679
+      "citations": 681
     },
     {
       "bibcode": "2007JGRD..112.9301G",
@@ -420,7 +420,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 575
+      "citations": 579
     },
     {
       "bibcode": "2003SoPh..214....1T",
@@ -438,7 +438,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 397
+      "citations": 399
     },
     {
       "bibcode": "1996BAMS...77...19W",
@@ -447,16 +447,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1996,
-      "citations": 390
-    },
-    {
-      "bibcode": "1995JGR...100.5173R",
-      "title": "Seasonal cycle of the residual mean meridional circulation in the stratosphere",
-      "firstAuthor": "Rosenlof, Karen H.",
-      "authors": null,
-      "authorCount": null,
-      "year": 1995,
-      "citations": 347
+      "citations": 394
     },
     {
       "bibcode": "2008JGRD..11315S11S",
@@ -465,6 +456,15 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
+      "citations": 349
+    },
+    {
+      "bibcode": "1995JGR...100.5173R",
+      "title": "Seasonal cycle of the residual mean meridional circulation in the stratosphere",
+      "firstAuthor": "Rosenlof, Karen H.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1995,
       "citations": 347
     },
     {
@@ -492,7 +492,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 303
+      "citations": 304
     },
     {
       "bibcode": "1998JGR...10313837S",
@@ -510,7 +510,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 293
+      "citations": 294
     },
     {
       "bibcode": "1996JGR...101.9541W",
@@ -537,7 +537,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 248
+      "citations": 247
     },
     {
       "bibcode": "1994JAtS...51.2973M",

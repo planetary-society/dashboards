@@ -30,12 +30,12 @@
     "m": 6.846,
     "i100": 69,
     "g": 146,
-    "tori": 234.954,
-    "riq": 1094
+    "tori": 234.544,
+    "riq": 1093
   },
   "facts": {
-    "papers": 2845,
-    "citations": 54581,
+    "papers": 2850,
+    "citations": 54636,
     "publicationYears": [
       2014,
       2026
@@ -70,33 +70,33 @@
       348,
       323,
       406,
-      410
+      415
     ],
     "citations": [
-      24,
-      142,
-      328,
-      662,
-      1741,
-      2309,
+      23,
+      140,
+      326,
+      657,
+      1733,
+      2307,
       3268,
-      5086,
+      5087,
       6816,
-      7321,
-      8042,
-      9324,
-      9518
+      7320,
+      8039,
+      9321,
+      9599
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 54581,
-      "observed": 54581,
+      "expected": 54636,
+      "observed": 54636,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 2845,
+    "papers": 2850,
     "us": {
       "mapped": 760,
       "top": [
@@ -115,7 +115,7 @@
       ]
     },
     "world": {
-      "mapped": 2129,
+      "mapped": 2134,
       "top": [
         {
           "name": "Chinese Academy of Sciences, Beijing",
@@ -123,7 +123,7 @@
         },
         {
           "name": "China Meteorological Administration",
-          "papers": 145
+          "papers": 146
         },
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
@@ -144,50 +144,50 @@
     ],
     "authorCount": 9,
     "year": 2014,
-    "citations": 2270
+    "citations": 2271
   },
   "ranks": {
     "full": {
       "bins": [
-        69.531,
-        111.746,
-        114.687,
-        147.446,
-        157.245,
-        176.472,
-        199.655,
-        213.517,
-        246.118,
-        268.582
+        69.814,
+        111.851,
+        115.798,
+        147.36,
+        157.079,
+        176.613,
+        200.307,
+        211.596,
+        247.041,
+        267.541
       ],
       "top1": 27
     },
     "window": {
       "bins": [
-        15.092,
-        28.261,
-        31.542,
-        33.255,
-        31.594,
-        37.79,
-        54.432,
-        51.668,
-        55.939,
-        77.427
+        15.117,
+        28.236,
+        31.667,
+        33.348,
+        31.611,
+        37.663,
+        54.426,
+        51.635,
+        55.886,
+        77.409
       ],
       "top1": 7.307
     },
     "lifetime": {
       "bins": [
-        490.003,
-        415.26,
-        361.133,
-        306.906,
-        254.936,
-        268.994,
-        232.339,
-        229.511,
-        167.918,
+        491.858,
+        416.887,
+        360.236,
+        309.551,
+        252.853,
+        271.933,
+        231.658,
+        229.568,
+        167.457,
         118
       ],
       "top1": 6
@@ -196,9 +196,9 @@
   "full": {
     "papers": 1705,
     "outputBasis": "measured",
-    "citations": 27035,
-    "top10": 249.874,
-    "top10ShareOfDivision": 0.06391,
+    "citations": 27042,
+    "top10": 248.937,
+    "top10ShareOfDivision": 0.06367,
     "top1": 25,
     "top1ShareOfDivision": 0.06394,
     "first": {
@@ -223,7 +223,7 @@
       "m": 5.845
     },
     "spread": {
-      "mean": 15.856,
+      "mean": 15.86,
       "median": 10,
       "uncited": 46,
       "i10": 914,
@@ -234,8 +234,8 @@
     "papers": 417,
     "outputBasis": "measured",
     "citations": 8377,
-    "top10": 76.927,
-    "top10ShareOfDivision": 0.07707,
+    "top10": 76.909,
+    "top10ShareOfDivision": 0.07705,
     "top1": 7.307,
     "top1ShareOfDivision": 0.07321,
     "first": {
@@ -268,11 +268,11 @@
     }
   },
   "lifetime": {
-    "papers": 2845,
+    "papers": 2850,
     "outputBasis": "measured",
-    "citations": 54581,
+    "citations": 54636,
     "top10": 91.083,
-    "top10ShareOfDivision": 0.01745,
+    "top10ShareOfDivision": 0.01744,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -283,9 +283,9 @@
       "date": "2014-05-00"
     },
     "spread": {
-      "mean": 19.185,
+      "mean": 19.171,
       "median": 7,
-      "uncited": 423,
+      "uncited": 424,
       "i10": 1268,
       "i100": 69
     }
@@ -294,15 +294,15 @@
     "arms": "(((abs:IMERG AND abs:(precipitation OR rainfall OR satellite)) OR =abs:\"Global Precipitation Measurement\" OR (abs:GPM AND (abs:(precipitation OR rainfall OR satellite OR DPR OR GMI OR IMERG) OR =abs:\"Core Observatory\" OR =abs:\"Microwave Imager\") NOT (=abs:\"gas-permeable membrane\" OR =abs:\"Glaciar Perito Moreno\" OR =abs:\"groundwater potential\" OR =abs:\"gamma-pareto quantile mapping\" OR =abs:\"grid-preprocessed mosaicking\" OR =abs:\"Gauss pseudospectral\" OR =abs:\"Gaussian plume model\")) OR =abs:\"GPM Microwave Imager\" OR (=abs:\"Dual-frequency Precipitation Radar\" AND abs:(satellite OR GPM OR spaceborne) NOT abs:(FY-3G OR FY3G)) OR (abs:GMI AND abs:(precipitation OR rainfall OR microwave) NOT (=abs:\"Global Modeling Initiative\" OR =abs:\"giant magnetoimpedance\" OR =abs:\"giant magneto-impedance\" OR =abs:\"gradient meteorological instrument\" OR (abs:global AND abs:Moran))) OR (abs:DPR AND abs:(precipitation AND (satellite OR spaceborne OR GPM)) NOT =abs:\"DPR Korea\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3AIMERG+AND+abs%3A%28precipitation+OR+rainfall+OR+satellite%29%29+OR+%3Dabs%3A%22Global+Precipitation+Measurement%22+OR+%28abs%3AGPM+AND+%28abs%3A%28precipitation+OR+rainfall+OR+satellite+OR+DPR+OR+GMI+OR+IMERG%29+OR+%3Dabs%3A%22Core+Observatory%22+OR+%3Dabs%3A%22Microwave+Imager%22%29+NOT+%28%3Dabs%3A%22gas-permeable+membrane%22+OR+%3Dabs%3A%22Glaciar+Perito+Moreno%22+OR+%3Dabs%3A%22groundwater+potential%22+OR+%3Dabs%3A%22gamma-pareto+quantile+mapping%22+OR+%3Dabs%3A%22grid-preprocessed+mosaicking%22+OR+%3Dabs%3A%22Gauss+pseudospectral%22+OR+%3Dabs%3A%22Gaussian+plume+model%22%29%29+OR+%3Dabs%3A%22GPM+Microwave+Imager%22+OR+%28%3Dabs%3A%22Dual-frequency+Precipitation+Radar%22+AND+abs%3A%28satellite+OR+GPM+OR+spaceborne%29+NOT+abs%3A%28FY-3G+OR+FY3G%29%29+OR+%28abs%3AGMI+AND+abs%3A%28precipitation+OR+rainfall+OR+microwave%29+NOT+%28%3Dabs%3A%22Global+Modeling+Initiative%22+OR+%3Dabs%3A%22giant+magnetoimpedance%22+OR+%3Dabs%3A%22giant+magneto-impedance%22+OR+%3Dabs%3A%22gradient+meteorological+instrument%22+OR+%28abs%3Aglobal+AND+abs%3AMoran%29%29%29+OR+%28abs%3ADPR+AND+abs%3A%28precipitation+AND+%28satellite+OR+spaceborne+OR+GPM%29%29+NOT+%3Dabs%3A%22DPR+Korea%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:33:27.991397+00:00",
+    "fetchedAt": "2026-11-10T03:26:20.105863+00:00",
     "reconciliation": {
-      "adsReturned": 2846,
+      "adsReturned": 2852,
       "curatedOut": 1,
       "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
-      "duplicates": 1,
-      "final": 2845
+      "duplicates": 2,
+      "final": 2850
     }
   },
   "curation": {
@@ -335,7 +335,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 2270
+      "citations": 2271
     },
     {
       "bibcode": "2017BAMS...98.1679S",
@@ -353,7 +353,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 505
+      "citations": 508
     },
     {
       "bibcode": "2016JHyd..533..152T",
@@ -371,7 +371,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 464
+      "citations": 467
     },
     {
       "bibcode": "2017JGRD..122..910X",
@@ -380,7 +380,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 351
+      "citations": 350
     },
     {
       "bibcode": "2016RemS....8..135S",
@@ -482,13 +482,22 @@
       "citations": 224
     },
     {
+      "bibcode": "2022JHyd..60527353X",
+      "title": "Do ERA5 and ERA5-land precipitation estimates outperform satellite-based precipitation products? A comprehensive comparison between state-of-the-art model-based and satellite-based precipitation products over mainland China",
+      "firstAuthor": "Xu, Jintao",
+      "authors": null,
+      "authorCount": null,
+      "year": 2022,
+      "citations": 212
+    },
+    {
       "bibcode": "2016JHyMe..17..121T",
       "title": "Statistical and Hydrological Comparisons between TRMM and GPM Level-3 Products over a Midlatitude Basin: Is Day-1 IMERG a Good Successor for TMPA 3B42V7?",
       "firstAuthor": "Tang, Guoqiang",
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 212
+      "citations": 211
     },
     {
       "bibcode": "2017AtmRe.196..151W",
@@ -498,18 +507,9 @@
       "authorCount": null,
       "year": 2017,
       "citations": 211
-    },
-    {
-      "bibcode": "2018AtmRe.202...63T",
-      "title": "Comparison of GPM IMERG, TMPA 3B42 and PERSIANN-CDR satellite precipitation products over Malaysia",
-      "firstAuthor": "Tan, Mou Leong",
-      "authors": null,
-      "authorCount": null,
-      "year": 2018,
-      "citations": 211
     }
   ],
   "papersFile": {
-    "rows": 2845
+    "rows": 2850
   }
 }

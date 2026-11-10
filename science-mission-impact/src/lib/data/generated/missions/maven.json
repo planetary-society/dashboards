@@ -30,12 +30,12 @@
     "m": 5.667,
     "i100": 40,
     "g": 113,
-    "tori": 31.337,
-    "riq": 466
+    "tori": 30.735,
+    "riq": 461
   },
   "facts": {
-    "papers": 961,
-    "citations": 23476,
+    "papers": 963,
+    "citations": 23480,
     "publicationYears": [
       2015,
       2026
@@ -68,7 +68,7 @@
       99,
       103,
       100,
-      102
+      104
     ],
     "citations": [
       341,
@@ -80,20 +80,20 @@
       2197,
       2445,
       3119,
-      3099,
-      3180,
-      3383
+      3095,
+      3173,
+      3398
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 23476,
-      "observed": 23476,
+      "expected": 23480,
+      "observed": 23480,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 961,
+    "papers": 963,
     "us": {
       "mapped": 628,
       "top": [
@@ -112,7 +112,7 @@
       ]
     },
     "world": {
-      "mapped": 918,
+      "mapped": 920,
       "top": [
         {
           "name": "University of Colorado, Boulder",
@@ -141,51 +141,51 @@
     ],
     "authorCount": 71,
     "year": 2015,
-    "citations": 790
+    "citations": 791
   },
   "ranks": {
     "full": {
       "bins": [
-        25.68,
-        43.847,
-        56.856,
-        65.062,
-        86.666,
-        83.709,
-        75.587,
-        104.963,
-        58.587,
-        55.044
+        25.666,
+        43.433,
+        58.055,
+        63.647,
+        87.364,
+        84.198,
+        74.997,
+        105.113,
+        58.609,
+        54.918
       ],
       "top1": 3
     },
     "window": {
       "bins": [
-        9.977,
-        15.184,
-        18.561,
-        22.409,
-        33.33,
-        26.074,
-        38.819,
-        33.123,
-        25.7,
-        21.824
+        9.981,
+        15.148,
+        18.612,
+        22.471,
+        33.237,
+        26.085,
+        38.937,
+        33.006,
+        25.746,
+        21.778
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        154.644,
-        125.723,
-        124.825,
-        111.123,
-        101.844,
-        82.828,
-        81.803,
-        72.503,
-        60.03,
-        45.677
+        154.478,
+        124.456,
+        125.882,
+        112.324,
+        103.81,
+        81.699,
+        81.74,
+        72.813,
+        60.798,
+        45
       ],
       "top1": 3
     }
@@ -194,8 +194,8 @@
     "papers": 656,
     "outputBasis": "measured",
     "citations": 9243,
-    "top10": 52.744,
-    "top10ShareOfDivision": 0.04853,
+    "top10": 52.618,
+    "top10ShareOfDivision": 0.04842,
     "top1": 3,
     "top1ShareOfDivision": 0.0276,
     "first": {
@@ -231,8 +231,8 @@
     "papers": 245,
     "outputBasis": "measured",
     "citations": 4622,
-    "top10": 20.824,
-    "top10ShareOfDivision": 0.04347,
+    "top10": 20.778,
+    "top10ShareOfDivision": 0.04338,
     "top1": 1,
     "top1ShareOfDivision": 0.02088,
     "first": {
@@ -265,11 +265,11 @@
     }
   },
   "lifetime": {
-    "papers": 961,
+    "papers": 963,
     "outputBasis": "measured",
-    "citations": 23476,
-    "top10": 43.377,
-    "top10ShareOfDivision": 0.02759,
+    "citations": 23480,
+    "top10": 42.7,
+    "top10ShareOfDivision": 0.02712,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -280,10 +280,10 @@
       "date": "2015-02-00"
     },
     "spread": {
-      "mean": 24.429,
-      "median": 11,
+      "mean": 24.382,
+      "median": 10,
       "uncited": 104,
-      "i10": 502,
+      "i10": 501,
       "i100": 40
     }
   },
@@ -291,15 +291,15 @@
     "arms": "((=abs:\"Mars Atmosphere and Volatile Evolution\" OR =abs:\"Mars Atmospheric and Volatile Evolution\" OR (abs:MAVEN AND (abs:solar OR abs:heliosphere)) OR ((abs:MAVEN OR abs:SWEA OR abs:SWIA OR abs:STATIC OR abs:IUVS OR abs:NGIMS OR =abs:\"Solar Wind Electron Analyzer\" OR =abs:\"Solar Wind Ion Analyzer\" OR =abs:\"Suprathermal and Thermal Ion Composition\" OR =abs:\"Imaging Ultraviolet Spectrometer\" OR =abs:\"Imaging Ultraviolet Spectrograph\" OR =abs:\"Langmuir Probe and Waves\" OR =abs:\"Neutral Gas and Ion Mass Spectrometer\") AND (abs:Mars OR abs:martian))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Atmosphere+and+Volatile+Evolution%22+OR+%3Dabs%3A%22Mars+Atmospheric+and+Volatile+Evolution%22+OR+%28abs%3AMAVEN+AND+%28abs%3Asolar+OR+abs%3Aheliosphere%29%29+OR+%28%28abs%3AMAVEN+OR+abs%3ASWEA+OR+abs%3ASWIA+OR+abs%3ASTATIC+OR+abs%3AIUVS+OR+abs%3ANGIMS+OR+%3Dabs%3A%22Solar+Wind+Electron+Analyzer%22+OR+%3Dabs%3A%22Solar+Wind+Ion+Analyzer%22+OR+%3Dabs%3A%22Suprathermal+and+Thermal+Ion+Composition%22+OR+%3Dabs%3A%22Imaging+Ultraviolet+Spectrometer%22+OR+%3Dabs%3A%22Imaging+Ultraviolet+Spectrograph%22+OR+%3Dabs%3A%22Langmuir+Probe+and+Waves%22+OR+%3Dabs%3A%22Neutral+Gas+and+Ion+Mass+Spectrometer%22%29+AND+%28abs%3AMars+OR+abs%3Amartian%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:28:20.724056+00:00",
+    "fetchedAt": "2026-11-10T03:20:28.045657+00:00",
     "reconciliation": {
-      "adsReturned": 968,
+      "adsReturned": 970,
       "curatedOut": 7,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 961
+      "final": 963
     }
   },
   "curation": {
@@ -371,7 +371,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 790
+      "citations": 791
     },
     {
       "bibcode": "2015SSRv..195..257C",
@@ -380,7 +380,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 553
+      "citations": 554
     },
     {
       "bibcode": "2015SSRv..195..125H",
@@ -389,7 +389,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 442
+      "citations": 443
     },
     {
       "bibcode": "2016SSRv..200..495M",
@@ -416,7 +416,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 300
+      "citations": 299
     },
     {
       "bibcode": "2015SSRv..195...49M",
@@ -425,7 +425,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 299
+      "citations": 298
     },
     {
       "bibcode": "2017JGRA..122..547H",
@@ -479,7 +479,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 213
+      "citations": 212
     },
     {
       "bibcode": "2017Sci...355.1408J",
@@ -488,7 +488,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 205
+      "citations": 204
     },
     {
       "bibcode": "2015GeoRL..42.8951M",
@@ -546,6 +546,6 @@
     }
   ],
   "papersFile": {
-    "rows": 961
+    "rows": 963
   }
 }

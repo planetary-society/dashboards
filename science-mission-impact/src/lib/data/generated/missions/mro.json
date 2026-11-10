@@ -30,12 +30,12 @@
     "m": 4.85,
     "i100": 92,
     "g": 165,
-    "tori": 202.322,
-    "riq": 677
+    "tori": 204.866,
+    "riq": 681
   },
   "facts": {
-    "papers": 1285,
-    "citations": 46266,
+    "papers": 1287,
+    "citations": 46304,
     "publicationYears": [
       2007,
       2026
@@ -84,7 +84,7 @@
       67,
       89,
       75,
-      77
+      79
     ],
     "citations": [
       43,
@@ -93,31 +93,31 @@
       1278,
       1455,
       1673,
-      1919,
-      1967,
-      2259,
-      2391,
+      1929,
+      1992,
+      2260,
+      2389,
       2106,
-      2490,
-      2659,
-      2738,
+      2491,
+      2660,
+      2740,
       4035,
       4011,
-      3125,
+      3126,
       3831,
-      3694,
-      3649
+      3695,
+      3647
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 46266,
-      "observed": 46266,
+      "expected": 46304,
+      "observed": 46304,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 1285,
+    "papers": 1287,
     "us": {
       "mapped": 786,
       "top": [
@@ -136,7 +136,7 @@
       ]
     },
     "world": {
-      "mapped": 1184,
+      "mapped": 1186,
       "top": [
         {
           "name": "Jet Propulsion Laboratory",
@@ -170,45 +170,45 @@
   "ranks": {
     "full": {
       "bins": [
-        101.32,
-        127.265,
-        122.124,
-        100.012,
-        99.16,
-        127.878,
-        88.096,
-        110.513,
-        80.587,
-        87.044
+        101.278,
+        127.405,
+        120.977,
+        101.434,
+        97.72,
+        128.67,
+        88.331,
+        110.658,
+        80.609,
+        86.918
       ],
       "top1": 8
     },
     "window": {
       "bins": [
-        25.135,
-        26.186,
-        26.599,
-        31.834,
-        32.706,
-        31.074,
-        44.231,
-        34.711,
-        36.877,
-        31.647
+        25.148,
+        26.091,
+        26.733,
+        31.234,
+        33.242,
+        31.085,
+        44.319,
+        34.385,
+        37.206,
+        31.556
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        169.58,
-        154.661,
-        149.655,
-        120.735,
-        110.951,
-        107.718,
-        131.657,
-        109.509,
-        121.534,
+        169.61,
+        154.764,
+        149.691,
+        121.186,
+        111.624,
+        107.038,
+        131.898,
+        109.606,
+        122.583,
         109
       ],
       "top1": 15
@@ -217,9 +217,9 @@
   "full": {
     "papers": 1044,
     "outputBasis": "measured",
-    "citations": 13463,
-    "top10": 74.116,
-    "top10ShareOfDivision": 0.0682,
+    "citations": 13477,
+    "top10": 74.039,
+    "top10ShareOfDivision": 0.06813,
     "top1": 8,
     "top1ShareOfDivision": 0.07361,
     "first": {
@@ -244,19 +244,19 @@
       "m": 2.634
     },
     "spread": {
-      "mean": 12.896,
+      "mean": 12.909,
       "median": 8,
       "uncited": 61,
-      "i10": 446,
+      "i10": 448,
       "i100": 8
     }
   },
   "window": {
     "papers": 321,
     "outputBasis": "measured",
-    "citations": 6133,
-    "top10": 30.647,
-    "top10ShareOfDivision": 0.06398,
+    "citations": 6140,
+    "top10": 30.556,
+    "top10ShareOfDivision": 0.06379,
     "top1": 2,
     "top1ShareOfDivision": 0.04175,
     "first": {
@@ -276,24 +276,24 @@
       "citationBuckets": 10
     },
     "indices": {
-      "h": 37,
+      "h": 38,
       "g": 56,
-      "m": 6.342
+      "m": 6.514
     },
     "spread": {
-      "mean": 19.106,
+      "mean": 19.128,
       "median": 12,
       "uncited": 14,
-      "i10": 192,
+      "i10": 194,
       "i100": 5
     }
   },
   "lifetime": {
-    "papers": 1285,
+    "papers": 1287,
     "outputBasis": "measured",
-    "citations": 46266,
+    "citations": 46304,
     "top10": 89.617,
-    "top10ShareOfDivision": 0.057,
+    "top10ShareOfDivision": 0.05692,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -304,9 +304,9 @@
       "date": "2007-05-00"
     },
     "spread": {
-      "mean": 36.005,
+      "mean": 35.978,
       "median": 14,
-      "uncited": 116,
+      "uncited": 117,
       "i10": 762,
       "i100": 92
     }
@@ -315,15 +315,15 @@
     "arms": "((=abs:\"Mars Reconnaissance Orbiter\" OR (abs:\"MRO\" AND abs:\"Mars\") OR (abs:\"HiRISE\" AND abs:\"Mars\") OR (abs:\"CRISM\" AND abs:\"Mars\") OR (abs:\"CTX\" AND abs:\"Mars\") OR (abs:\"SHARAD\" AND abs:\"Mars\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2006-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Reconnaissance+Orbiter%22+OR+%28abs%3A%22MRO%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22HiRISE%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22CRISM%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22CTX%22+AND+abs%3A%22Mars%22%29+OR+%28abs%3A%22SHARAD%22+AND+abs%3A%22Mars%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2006-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:27:14.543834+00:00",
+    "fetchedAt": "2026-11-10T03:19:10.971280+00:00",
     "reconciliation": {
-      "adsReturned": 1292,
+      "adsReturned": 1294,
       "curatedOut": 4,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 3,
-      "final": 1285
+      "final": 1287
     }
   },
   "curation": {
@@ -380,7 +380,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 969
+      "citations": 970
     },
     {
       "bibcode": "2007JGRE..112.5S03M",
@@ -389,7 +389,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 798
+      "citations": 800
     },
     {
       "bibcode": "2008Natur.454..305M",
@@ -416,7 +416,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 501
+      "citations": 503
     },
     {
       "bibcode": "2013JGRE..118..831C",
@@ -425,7 +425,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 448
+      "citations": 449
     },
     {
       "bibcode": "2015Icar..251...65M",
@@ -437,6 +437,15 @@
       "citations": 437
     },
     {
+      "bibcode": "2009JGRE..114.0D06M",
+      "title": "A synthesis of Martian aqueous mineralogy after 1 Mars year of observations from the Mars Reconnaissance Orbiter",
+      "firstAuthor": "Murchie, Scott L.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2009,
+      "citations": 422
+    },
+    {
       "bibcode": "2011Sci...333..740M",
       "title": "Seasonal Flows on Warm Martian Slopes",
       "firstAuthor": "McEwen, Alfred S.",
@@ -444,15 +453,6 @@
       "authorCount": null,
       "year": 2011,
       "citations": 421
-    },
-    {
-      "bibcode": "2009JGRE..114.0D06M",
-      "title": "A synthesis of Martian aqueous mineralogy after 1 Mars year of observations from the Mars Reconnaissance Orbiter",
-      "firstAuthor": "Murchie, Scott L.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2009,
-      "citations": 420
     },
     {
       "bibcode": "2015NatGe...8..829O",
@@ -497,7 +497,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 339
+      "citations": 340
     },
     {
       "bibcode": "2008JGRE..113.0A24K",
@@ -515,7 +515,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 325
+      "citations": 324
     },
     {
       "bibcode": "2008Sci...322.1235H",
@@ -524,7 +524,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 319
+      "citations": 320
     },
     {
       "bibcode": "2007JGRE..112.8S14P",
@@ -533,7 +533,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 311
+      "citations": 312
     },
     {
       "bibcode": "2011Icar..214..413T",
@@ -546,6 +546,6 @@
     }
   ],
   "papersFile": {
-    "rows": 1285
+    "rows": 1287
   }
 }

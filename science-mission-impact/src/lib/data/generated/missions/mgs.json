@@ -28,14 +28,14 @@
   "indices": {
     "h": 135,
     "m": 4.5,
-    "i100": 207,
+    "i100": 208,
     "g": 213,
-    "tori": 719.093,
-    "riq": 893
+    "tori": 728.6,
+    "riq": 899
   },
   "facts": {
     "papers": 1504,
-    "citations": 82618,
+    "citations": 82691,
     "publicationYears": [
       1997,
       2026
@@ -113,36 +113,36 @@
       497,
       1136,
       1247,
-      1870,
+      1869,
       1984,
-      2370,
-      2985,
-      3455,
-      3236,
+      2369,
+      2994,
+      3456,
+      3237,
       3537,
-      3970,
-      3570,
+      3976,
+      3572,
       3607,
-      3259,
-      3128,
+      3269,
+      3170,
       4025,
-      3368,
-      3092,
-      3298,
+      3366,
+      3091,
+      3299,
       3462,
-      2950,
+      2956,
       4121,
       4085,
-      3691,
+      3693,
       3531,
-      3684,
-      3239
+      3683,
+      3238
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 82618,
-      "observed": 82618,
+      "expected": 82691,
+      "observed": 82691,
       "missing": 0
     }
   },
@@ -200,29 +200,29 @@
   "ranks": {
     "full": {
       "bins": [
-        82.44,
-        76.285,
-        74.901,
-        75.922,
-        85.711,
-        80.942,
-        93.137,
-        78.54,
-        79.396,
-        88.726
+        82.401,
+        76.376,
+        74.812,
+        76.295,
+        85.42,
+        81.307,
+        92.688,
+        78.65,
+        79.493,
+        88.557
       ],
       "top1": 10
     },
     "window": {
       "bins": [
-        22.749,
-        23.618,
-        28.601,
-        26.786,
-        24.8,
-        25.887,
-        22.618,
-        23.417,
+        22.759,
+        23.536,
+        28.694,
+        26.819,
+        24.73,
+        25.903,
+        22.638,
+        23.398,
         28.524,
         26
       ],
@@ -230,16 +230,16 @@
     },
     "lifetime": {
       "bins": [
-        94.561,
-        119.337,
-        105.294,
-        141.439,
-        123.528,
-        134.803,
-        146.868,
-        168.688,
-        217.099,
-        252.383
+        93.282,
+        119.082,
+        105.52,
+        140.895,
+        124.561,
+        132.609,
+        148.221,
+        169.26,
+        217.473,
+        253.097
       ],
       "top1": 27
     }
@@ -247,9 +247,9 @@
   "full": {
     "papers": 816,
     "outputBasis": "measured",
-    "citations": 11993,
-    "top10": 79.627,
-    "top10ShareOfDivision": 0.07327,
+    "citations": 11996,
+    "top10": 79.518,
+    "top10ShareOfDivision": 0.07317,
     "top1": 10,
     "top1ShareOfDivision": 0.09201,
     "first": {
@@ -274,7 +274,7 @@
       "m": 4.447
     },
     "spread": {
-      "mean": 14.697,
+      "mean": 14.701,
       "median": 9,
       "uncited": 45,
       "i10": 400,
@@ -321,9 +321,9 @@
   "lifetime": {
     "papers": 1504,
     "outputBasis": "measured",
-    "citations": 82618,
-    "top10": 218.828,
-    "top10ShareOfDivision": 0.13918,
+    "citations": 82691,
+    "top10": 219.47,
+    "top10ShareOfDivision": 0.1394,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -334,18 +334,18 @@
       "date": "1998-03-00"
     },
     "spread": {
-      "mean": 54.932,
-      "median": 27,
-      "uncited": 63,
+      "mean": 54.981,
+      "median": 27.5,
+      "uncited": 62,
       "i10": 1130,
-      "i100": 207
+      "i100": 208
     }
   },
   "query": {
     "arms": "((=abs:\"Global Surveyor\" OR (abs:MGS AND abs:Mars) OR =abs:\"Mars Orbital Camera\" OR =abs:\"Mars Orbital Laser Altimeter\" OR ((=abs:Mars OR =abs:Martian) AND (abs:MOLA OR =abs:\"Mars Orbiter Laser Altimeter\" OR abs:MOC OR =abs:\"Mars Orbiter Camera\" OR ((abs:TES OR =abs:\"Thermal Emission Spectrometer\") NOT (=abs:\"Mini-TES\" OR =abs:\"Miniature Thermal Emission Spectrometer\"))))) NOT (=abs:simulant OR =abs:simulants OR =abs:\"thermal energy storage\" OR =abs:\"MGS-1\" OR =abs:\"MGS-1S\" OR =abs:\"MGS-1C\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1999-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Global+Surveyor%22+OR+%28abs%3AMGS+AND+abs%3AMars%29+OR+%3Dabs%3A%22Mars+Orbital+Camera%22+OR+%3Dabs%3A%22Mars+Orbital+Laser+Altimeter%22+OR+%28%28%3Dabs%3AMars+OR+%3Dabs%3AMartian%29+AND+%28abs%3AMOLA+OR+%3Dabs%3A%22Mars+Orbiter+Laser+Altimeter%22+OR+abs%3AMOC+OR+%3Dabs%3A%22Mars+Orbiter+Camera%22+OR+%28%28abs%3ATES+OR+%3Dabs%3A%22Thermal+Emission+Spectrometer%22%29+NOT+%28%3Dabs%3A%22Mini-TES%22+OR+%3Dabs%3A%22Miniature+Thermal+Emission+Spectrometer%22%29%29%29%29%29+NOT+%28%3Dabs%3Asimulant+OR+%3Dabs%3Asimulants+OR+%3Dabs%3A%22thermal+energy+storage%22+OR+%3Dabs%3A%22MGS-1%22+OR+%3Dabs%3A%22MGS-1S%22+OR+%3Dabs%3A%22MGS-1C%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1999-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-03T23:26:05.132990+00:00",
+    "fetchedAt": "2026-11-10T03:17:24.265145+00:00",
     "reconciliation": {
       "adsReturned": 1499,
       "curatedOut": 20,
@@ -780,7 +780,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 942
+      "citations": 943
     },
     {
       "bibcode": "2001JGR...10623823C",
@@ -789,7 +789,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 831
+      "citations": 832
     },
     {
       "bibcode": "1999Sci...284.1495S",
@@ -807,7 +807,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 737
+      "citations": 738
     },
     {
       "bibcode": "1998Sci...279.1676A",
@@ -888,7 +888,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 431
+      "citations": 432
     },
     {
       "bibcode": "2009JGRE..114.0D06M",
@@ -897,7 +897,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 420
+      "citations": 422
+    },
+    {
+      "bibcode": "2003Sci...302.1931M",
+      "title": "Evidence for Persistent Flow and Aqueous Sedimentation on Early Mars",
+      "firstAuthor": "Malin, Michael C.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2003,
+      "citations": 412
     },
     {
       "bibcode": "2001SSRv...96..105N",
@@ -909,22 +918,13 @@
       "citations": 411
     },
     {
-      "bibcode": "2003Sci...302.1931M",
-      "title": "Evidence for Persistent Flow and Aqueous Sedimentation on Early Mars",
-      "firstAuthor": "Malin, Michael C.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2003,
-      "citations": 411
-    },
-    {
       "bibcode": "2002JGRE..107.5111C",
       "title": "The case for rainfall on a warm, wet early Mars",
       "firstAuthor": "Craddock, Robert A.",
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 409
+      "citations": 408
     },
     {
       "bibcode": "2006Sci...314.1573M",

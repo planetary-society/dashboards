@@ -1,1 +1,0 @@
-export{t as component}from"../chunks/DcTC-_Vc.js";

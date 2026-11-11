@@ -11,10 +11,11 @@
 
 import { MAPS, onMap } from '../../src/lib/charts/affiliationmap.js';
 import { PackagingError } from './invariants.mjs';
+import { byText } from './util.mjs';
 
 const TOP = 3;
 const increment = (map, key) => map.set(key, (map.get(key) ?? 0) + 1);
-const byPapersThenName = (a, b) => b.papers - a.papers || a.name.localeCompare(b.name);
+const byPapersThenName = (a, b) => b.papers - a.papers || byText(a.name, b.name); // code points, not the machine's locale
 
 /**
  * An institution record checked once and placed on each map: its cell key there, or null when the

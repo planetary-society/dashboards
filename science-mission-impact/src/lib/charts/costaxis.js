@@ -32,6 +32,8 @@ export function stackLevels(list, xOf, s, gap) {
 /** The whole powers of ten inside [lo, hi]. Repeated ×10 drifts off the decade, so each is cleaned. */
 export function decadeTicks(lo, hi) {
 	const out = [];
+	// a zero or infinite end never leaves the loop: 0 × 10 stays 0, and Infinity <= Infinity
+	if (!(lo > 0 && Number.isFinite(hi))) return out;
 	for (let v = 10 ** Math.ceil(Math.log10(lo)); v <= hi; v *= 10) out.push(Number(v.toPrecision(12)));
 	return out;
 }

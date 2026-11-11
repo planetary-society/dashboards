@@ -75,7 +75,9 @@ export function groupMeans(points, edges) {
 	const means = (list) => members(list).map((group) => group.length >= MIN_MISSIONS ? mean(group.map((m) => m.rate)) : null);
 	const bestOf = (values) => {
 		const present = values.filter((v) => v !== null);
-		return present.length < 2 ? null : values.indexOf(Math.max(...present));
+		const top = Math.max(...present);
+		// tied leaders (every group at zero, say) have no best
+		return present.length < 2 || present.filter((v) => v === top).length > 1 ? null : values.indexOf(top);
 	};
 	const observed = means(missions);
 	const best = bestOf(observed);

@@ -40,6 +40,8 @@ export const weight = (v) => round(v, WEIGHT_DP);
 /** Coerce to a finite number, or null. `null` in stays `null` out. */
 export function num(value) {
 	if (value === null || value === undefined) return null;
+	// Number('') is 0: a blank is unavailable, never a measured zero
+	if (typeof value === 'string' && value.trim() === '') return null;
 	const n = Number(value);
 	return Number.isFinite(n) ? n : null;
 }

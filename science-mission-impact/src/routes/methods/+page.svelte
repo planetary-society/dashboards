@@ -119,10 +119,10 @@
 			<p>The publications we tracked are the peer-reviewed research papers associated with each mission using a set of keywords in their abstract, title, and keywords via NASA's <a href="https://scixplorer.org/">Science Explorer digital library</a> (SciX). Publications are time-gated by the start of mission operations and continue through the full mission's lifetime, plus two years to accomodate general publication times.</p>
 			<p>Our SciX queries use mission and major instrument names along with topic restrictions to distinguish ambiguous acronyms. The query for each mission is listed in the mission's overview page.</p>
 			<p> This approach will miss papers that use mission data without naming the source in those fields.
-				A name match alone also does not establish that a paper used the data.</p><p>In essence, we are measuring the signal strength of a mission's name in the SciX abstract fields. That is a common approach to bibliometrics, though more complex approaches are possible (see <a href="https://doi.org/10.1007/978-3-031-69004-4">De Marchi, G., & Parmar, A. N., 2024)</a>.</p>
+				A name match alone also does not establish that a paper used the data.</p><p>As mentioned earlier, this approach is effectively measuring a mission's <em>signal strength</em> in the SciX abstract fields. This is a common approach for bibliometrics, though more complex approaches are possible given access to the full text of journal articles and advanced machine learning analysis (see <a href="https://doi.org/10.1007/978-3-031-69004-4">De Marchi, G., & Parmar, A. N., 2024)</a>.</p>
 			<h3 id="removed" class="subhead">What we exclude</h3>
-			<p>We have general exclusions for non-refereed material, conference proceedings, news articles, and records for
-				datasets or data catalogs. We have mission-by-mission exclusions based on known false positives reviewed with AI and human oversight.</p>
+			<p>We have general exclusions for non-refereed material, conference proceedings, news articles, and 
+				datasets or data catalogs. We have additional mission-by-mission exclusions and additions based on known false positives reviewed with AI and human oversight.</p>
 		</section>
 
 		<section id="windows">
@@ -130,7 +130,7 @@
 			<p>Older papers have had more time to collect citations, which would artificially inflate their metrics compared to more recent ones. To account for this, all metrics in this dashboard (except for the explicit lifetime metrics) use windowed citation counts of {spell(fullPolicy.citationYears)} years, inclusive, from the publish date of each paper.</p>
 			<p>This means that missions launched after the full citation comparison window are not included in this study. A
 				mission still operating limits publications to those have were published within this citation window.</p>
-			<p>The count runs by calendar year: a paper collects citations from papers dated its own publication year through {spell(fullPolicy.citationYears)} years later, so every paper gets {spell(calendarYears(fullPolicy))} calendar years of exposure, from just over {spell(fullPolicy.citationYears)} years for a December paper to almost {spell(calendarYears(fullPolicy))} for a January one. Counting this way also keeps the figures stable: a paper's lifetime total grows every time the citation database is queried, while its windowed count is fixed once its window closes. The length is a trade-off. A longer window would count more of each paper's citations but exclude more recent missions, since a mission's papers count only once their windows have closed.</p>
+			<p>The count runs by calendar year: a paper collects citations from papers dated its own publication year through {spell(fullPolicy.citationYears)} years later, so every paper gets {spell(calendarYears(fullPolicy))} calendar years of exposure, from just over {spell(fullPolicy.citationYears)} years for a December paper to almost {spell(calendarYears(fullPolicy))} for a January one. The length is a trade-off, and it's ultimately an editorial decision. A longer window would count more of each paper's citations but exclude more recent missions, since a mission's papers count only once their windows have closed.</p>
 		</section>
 
 		<section id="cost">
@@ -150,16 +150,6 @@
 			<p>The shaded band is a 95% range from resampling the missions. To compare small and larger missions, we
 				average the rates on each side of {threshold} and only say one side did better when the 95% range of the
 				difference excludes zero and the result holds with any single mission left out.</p>
-			<p>The overview also shows the same rates in the three cost groups our analysis uses ({listify(data.groups.map((g) => tierLabel(g)))}).
-				Each bar is the plain average of the missions in its group, failures counted as zero, with a 95% range from
-				2,000 resamples of that group’s missions; a group is drawn only when at least three missions fall in it. We
-				say one group did better than the next only when that ordering holds with any single mission left out.</p>
-			<p>To recreate the averages: a mission’s weight is (1 − d³)³, where d is its distance from the cost being
-				averaged on a logarithmic scale, in factors of 10, so the weight falls to zero at 10 times the cost or a tenth
-				of it. We compute the average at 81 evenly spaced points on that scale, from the cheapest mission to the most
-				expensive, and leave a point blank unless at least three missions contribute and no single mission dominates
-				(an effective sample size of at least two). The band and the small-versus-larger comparison each use 2,000
-				resamples of the missions.</p>
 		</section>
 
 		<section id="nc">

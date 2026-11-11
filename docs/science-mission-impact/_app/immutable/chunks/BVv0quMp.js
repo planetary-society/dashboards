@@ -1,1 +1,0 @@
-var e=e=>e>=1e3?`$${+(e/1e3).toFixed(2)}B`:`$${+e.toFixed(1)}M`;function t({lo:t,hi:n},{short:r=!1}={}){if(n==null)return`>${e(t)}`;if(t===0)return`≤${e(n)}`;let i=e(t),a=e(n);return r&&i.at(-1)===a.at(-1)?`${i.slice(0,-1)}–${a.slice(1)}`:`${i}–${a}`}export{t as n,e as t};

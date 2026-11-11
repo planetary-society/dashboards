@@ -603,6 +603,8 @@ export function buildMissionDoc({
 			target: corpus.mission?.mission_target ?? null,
 			launchVehicle: corpus.mission?.launch_vehicle ?? null,
 			wikipedia: wikipediaOf(corpus.mission?.wikipedia_url, id),
+			// the catalog's First Science Publication Identifier (a DOI or ADS bibcode), unresolved
+			firstSciencePublication: corpus.mission?.first_science_publication_identifier?.trim() || null,
 			dates: {
 				formulation,
 				launch: launchDate,

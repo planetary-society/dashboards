@@ -198,8 +198,11 @@ export interface AnalysisFacts {
 			formulation: MedianYears; // years from formulation start
 			science: MedianYears; // years from the start of science
 		}[];
-		/** The same figures per cost group (`groups`), for the overview's time bars. */
-		groups: AnalysisFacts['time']['tiers'];
+		/** The same figures per cost group (`groups`) for the overview's swarm, counting only papers published on or after the start of science (MissionRow.firstAfterScience), plus each flown mission's own times. */
+		groups: (AnalysisFacts['time']['tiers'][number] & {
+			/** every mission counted in `missions`, cost order; a time is null without a paper (or that clock's start date) */
+			points: { id: string; name: string; reached: boolean; formulation: number | null; science: number | null }[];
+		})[];
 		failedExcluded: number;
 		fastest: AnalysisFastest | null; // shortest from formulation, any tier (ties: cost, then id)
 		byDivision: { division: DivisionSlug; name: string; fastest: AnalysisFastest | null }[]; // config order
@@ -585,6 +588,8 @@ export interface MissionRow {
 	full: MissionScopeStats & { status: string }; // available | ...
 	window: MissionScopeStats & { status: string }; // rolling status: available | immature | ...
 	lifetime: MissionScopeStats;
+	/** The overview's time to science: the first lifetime top-10% paper published on or after `dates.scienceStart` (null without one); pages never read it. */
+	firstAfterScience: FirstTopPaper | null;
 }
 
 /** The story's membership, stamped by the packager: 'under' is 0 < cost <= the threshold; null without a cost. */

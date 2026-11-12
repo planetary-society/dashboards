@@ -12,7 +12,7 @@
  */
 
 import { PackagingError } from './invariants.mjs';
-import { median, num, parseDay, ratio, share, weight, sum, yearsBetween } from './util.mjs';
+import { median, num, onOrAfter, parseDay, ratio, share, weight, sum, yearsBetween } from './util.mjs';
 
 const FAILURE_STATUSES = ['failed', 'failure'];
 // A mission that fell short of its goals: a failure, or upstream's partial failure or partial success.
@@ -79,19 +79,23 @@ export function isRankable({ poolPapers, missions, rankingMinPapers, scope = 'fu
  * weight above zero, so a paper tied at the cutoff counts): the story's high-impact paper.
  * Dated by its ADS pubdate (month resolution, read by `parseDay`), ties in date broken by
  * bibcode so the pick is stable. Null when no row qualifies; throws on a qualifying row with
- * no date rather than skipping it.
+ * no date rather than skipping it. With `from`, only papers dated on or after it qualify, at the
+ * paper's own date precision (`onOrAfter`: a pubdate with no day counts from anywhere in its month).
  *
  * @param {Iterable<object>} rows one scope's paper rows of one mission
  * @param {string} weightKey the scope's top-10% weight field
  * @param {Map<string, string>} pubdates bibcode -> ADS pubdate
+ * @param {{from?: string|null}} [options]
  */
-export function firstTopRow(rows, weightKey, pubdates) {
+export function firstTopRow(rows, weightKey, pubdates, { from = null } = {}) {
+	if (from !== null && parseDay(from) === null) throw new Error(`first top-10% paper: unreadable start date ${from}`);
 	let best = null;
 	for (const row of rows) {
 		if (!(Number(row[weightKey]) > 0)) continue;
 		const date = pubdates.get(row.bibcode) ?? null;
 		const day = parseDay(date);
 		if (day === null) throw new Error(`first top-10% paper: ${row.mission} ${row.bibcode} has no publication date`);
+		if (from !== null && !onOrAfter(date, from)) continue;
 		if (!best || day < best.day || (day === best.day && row.bibcode < best.bibcode)) best = { bibcode: row.bibcode, date, day };
 	}
 	return best && { bibcode: best.bibcode, date: best.date };

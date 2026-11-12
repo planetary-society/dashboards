@@ -10,9 +10,9 @@ export function load() {
 	const { landers, ...homeComparison } = comparison;
 	const homeClps = { ...rest, comparison: homeComparison };
 	const tiles = scrolly.tiles.map(({ share, papers, launchDate, size, ...tile }) => tile);
-	// The story's failure chart, time bars and third finding read the Analysis page's three cost groups
+	// The story's failure chart, time swarm and third finding read the Analysis page's three cost groups
 	// (BINS's) as its `tiers`, never its six tiers: analysis.groups with the failure counts and
-	// time-to-science medians packaged over them (the time bars read nothing else of analysis.time)
+	// time-to-science medians packaged over them (the swarm reads nothing else of analysis.time)
 	return {
 		facts: { missions, papersDistinct, citationsDistinct, launchYears, story: homeStory, clps: homeClps, time: { tiers: analysis.time.groups }, tiers: analysis.groups, failureTiers: analysis.failures.groups },
 		scrolly: { ...scrolly, tiles }

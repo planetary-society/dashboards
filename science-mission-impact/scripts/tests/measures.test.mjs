@@ -139,6 +139,18 @@ describe('firstTopRow', () => {
 		assert.equal(firstTopRow(tie, 'w', new Map([['a', '2001-02-00'], ['b', '2001-02-00']])).bibcode, 'a');
 		assert.throws(() => firstTopRow([{ mission: 'M', bibcode: 'x', w: 1 }], 'w', new Map()), /M x has no publication date/);
 	});
+
+	it('with `from`, skips papers dated before it, at each paper’s own date precision', () => {
+		// science began 2005-03-10: the paper dated only to March counts (no day: any time that month)
+		assert.deepEqual(firstTopRow(rows, 'w', pubdates, { from: '2005-03-10' }), { bibcode: '2005late', date: '2005-03-00' });
+		// a paper with a day before the start doesn't, the March one dated only to its month still does
+		const dayed = [...rows, { mission: 'M', bibcode: '2005day', w: 1 }];
+		assert.deepEqual(firstTopRow(dayed, 'w', new Map([...pubdates, ['2005day', '2005-03-05']]), { from: '2005-03-10' }), { bibcode: '2005late', date: '2005-03-00' });
+		// from April, March is out; the year-only paper (no month: any time in 2005) counts
+		assert.deepEqual(firstTopRow(rows, 'w', pubdates, { from: '2005-04-10' }), { bibcode: '2005year', date: '2005-00-00' });
+		assert.equal(firstTopRow(rows, 'w', pubdates, { from: '2007-01-01' }), null);
+		assert.throws(() => firstTopRow(rows, 'w', pubdates, { from: 'soon' }), /unreadable start date soon/);
+	});
 });
 
 describe('hgIndex and windowIndices', () => {

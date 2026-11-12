@@ -7,8 +7,8 @@
 	// DOLLAR_DIVISION's citations against cost and per dollar (the line they would follow if small
 	// missions did better, then as well, then their running average), then every division's running
 	// average, then the same rates as a bar per cost group (BINS). 2 of 4, failure rates by cost group
-	// (FAILURE). 3 of 4, time to science: the Analysis page's time bars over the same groups, from
-	// project start, then from the start of science. 4 of 4,
+	// (FAILURE). 3 of 4, time to science: every mission's years to a first high-impact paper over the same groups
+	// (the time swarm), from project start, then from the start of science. 4 of 4,
 	// CLPS. Then the four answers (FINDINGS) and the close over the opening's rising thumbnails.
 	// Steps share a graphic state (PAPERS/TOP, SCATTER/DOWN/FLAT/FIT), so long text
 	// is split across them. Every figure in the copy comes from site.story (the packager) or site itself;
@@ -23,7 +23,8 @@
 	import DollarChart from './DollarChart.svelte';
 	import BinsChart from './BinsChart.svelte';
 	import ClpsChart from './ClpsChart.svelte';
-	import TimeBars from '$lib/analysis/TimeBars.svelte';
+	import TimeSwarm from './TimeSwarm.svelte';
+	import { timeSwarmLayout, timeHit, timeItems } from './timeswarm.js';
 	import OutcomeChart from './OutcomeChart.svelte';
 	import { gridLayout, rugLayout, skylineLayout, skylineHit, laneHit, primerLayout, tierOutcomeLayout, focusLayout, costLayout, perDollarLayout, binsLayout } from './layouts.js';
 	import { failureItems, withHidden } from './items.js';
@@ -31,7 +32,7 @@
 	import { largerAnnualMedians, noClearSmallAdvantage, significant } from '$lib/copy/discussion.js';
 	import { calendarYears } from '$lib/copy/window.js';
 	import { analysisHref, methodsHref } from '$lib/paths.js';
-	import { CLOSE_YEARS, clpsCosts, mostUnreached, scienceOrder } from '$lib/copy/analysis.js';
+	import { CLOSE_YEARS, clpsCosts, mostUnreached, scienceOrder, slowestBuild } from '$lib/copy/analysis.js';
 
 	let { site, scrolly } = $props();
 	const TITLE = 0, MOTIVATION = 1, QUESTIONS = 2, OVERVIEW = 3;
@@ -121,9 +122,14 @@
 
 	// TIME_FORM and TIME_SCI: the Analysis page's gates (src/lib/copy/analysis.js) over the three cost groups
 	const timed = $derived(index === TIME_FORM || index === TIME_SCI);
+	// the swarm's clock: science from TIME_SCI on, so leaving forward the dots don't glide back as they fade
+	const clock = $derived(index >= TIME_SCI ? 'science' : 'formulation');
 	const timeFirst = $derived(site.time.tiers[0]);
+	const timeMid = $derived(site.time.tiers[1]);
+	// TIME_FORM's "the most expensive missions generally take longer": the costliest group's median from project start is the longest
+	const slowest = $derived(slowestBuild(site.time));
 	const science = $derived(scienceOrder(site.time) != null);
-	// most of the cheapest group's missions that flew have no high-impact paper yet (the time bars read the lifetime ranking)
+	// most of the cheapest group's missions that flew have no high-impact paper yet (the time swarm reads the lifetime ranking)
 	const mostNone = $derived(mostUnreached(timeFirst));
 	// the cheapest missions that reached one took about as long from project start as mid-size missions:
 	// the cheapest group's median within CLOSE_YEARS of the quickest of the groups below the costliest
@@ -183,6 +189,8 @@
 	const citesL = $derived(cost && dollarAverage ? perDollarLayout(tiles, W, H, { divisions: rankable.filter((d) => d.slug === DOLLAR_DIVISION), averages, x: cost.x, citations: true, titled: true }) : null);
 	// FAILURE: every costed mission by cost group, up if it met its goals, down if not
 	const outcomeL = $derived(ready ? tierOutcomeLayout(tiles, site.tiers, W, H) : null);
+	// TIME_FORM/TIME_SCI: every flown mission's years to a first high-impact paper, both clocks at once
+	const timeL = $derived(ready ? timeSwarmLayout(site.time.tiers, site.tiers, W, H) : null);
 	// Hidden squares wait where the failure chart has them,
 	// unless `fallback` places them first; withHidden only looks positions up, so no merged Map is built
 	const hidden = (items, fallback) => withHidden(items, tiles, { get: (id) => fallback.get(id) ?? outcomeL.pos.get(id) });
@@ -239,8 +247,11 @@
 		if (index === BINS) return hidden(new Map(), dollarAll.pos);
 		// the missions FITS leaves out wait, hidden, where FAILURE's tier chart brings them in
 		if (index === FITS) return hidden(failureItems(tiles, dollarAll), outcomeL.pos);
-		// the time steps and CLPS: no squares, each fades where the tier chart left it
-		return hidden(new Map(), outcomeL.pos);
+		// the time steps: each flown mission flies from the tier chart to its years (or the None column); the
+		// failures, which have no time to science, fade where the tier chart left them
+		if (timed && timeL) return hidden(timeItems(timeL, clock), outcomeL.pos);
+		// CLPS on: the squares fade where the time chart left them
+		return hidden(new Map(), timeL ? timeItems(timeL, 'science') : outcomeL.pos);
 	});
 	// the lines draw while the reader scrolls, not inside the 400 ms fade-in
 	const clpsDraw = $derived(reduced ? 1 : Math.max(0, Math.min(1, (progress - 0.1) / 0.6)));
@@ -263,6 +274,11 @@
 	const hotBar = $derived(primed ? pointedBar : null);
 	const hotLane = $derived(laned ? pointedBar : null);
 	const laneCursor = $derived(laned ? pointedX : null);
+	const hotTime = $derived(timed ? pointedBar : null);
+	// the time chart washes a pointed-at square in Flame only inside the None column (Flame's true
+	// negative: no high-impact paper); anywhere else on it the square is outlined in white
+	const timeNone = $derived(new Set(timeL?.piles.flatMap((p) => p.marks.map((m) => m.id)) ?? []));
+	const hotTone = $derived(hotTime && !timeNone.has(hotTime) ? 'plain' : 'flame');
 	// the skyline names a mission with a column, so its square's own tip stays off
 	const skyNamed = $derived(hot && sky?.columns.some((c) => c.id === hot) ? hot : null);
 	function skim(e) {
@@ -277,13 +293,20 @@
 			pointedX = py >= cost.top && py <= cost.bottomY ? px : null;
 			return;
 		}
+		if (timed && timeL) {
+			const id = timeHit(timeL, clock, e.clientX - r.left, e.clientY - r.top);
+			// as on the skyline, a first tap on a square names it and a second opens its page
+			if (e.type === 'pointerdown') follow = e.pointerType === 'mouse' || (id != null && id === pointedBar);
+			pointedBar = id;
+			return;
+		}
 		if (!skyline || !sky) return;
 		const id = e.target.closest?.('[data-id]')?.dataset.id;
 		if (e.type === 'pointerdown') follow = e.pointerType === 'mouse' || (id != null && id === pointed);
 		pointed = id ?? skylineHit(sky, e.clientX - r.left, e.clientY - r.top);
 	}
 	const holdClick = (e) => {
-		if (skyline && !follow) e.preventDefault();
+		if ((skyline || timed) && !follow) e.preventDefault();
 	};
 	const unskim = (e) => {
 		if (e.pointerType === 'mouse') pointed = pointedBar = pointedX = null;
@@ -295,7 +318,7 @@
 <Scroller bind:index bind:progress>
 	{#snippet graphic()}
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<div class="stage" class:skimming={skyline || primed || laned} class:resting={backdrop} bind:clientWidth={W} bind:clientHeight={H} onpointerdown={skim} onpointermove={skim} onpointerleave={unskim} onclickcapture={holdClick}>
+		<div class="stage" class:skimming={skyline || primed || laned || timed} class:zooming={timed} class:resting={backdrop} bind:clientWidth={W} bind:clientHeight={H} onpointerdown={skim} onpointermove={skim} onpointerleave={unskim} onclickcapture={holdClick}>
 			{#if rug && cost && outcomeL}
 				{#if reached >= OVERVIEW}
 					<Skyline layout={sky} total={site.papersDistinct} cited={site.citationsDistinct} rise={index === CORPUS ? scrub : index > CORPUS ? 1 : 0} {cite} visible={skyline} highlight={hot} {compact} width={W} height={H} />
@@ -306,10 +329,8 @@
 				{#if reached >= BINS}
 					<OutcomeChart layout={outcomeL} visible={index === FAILURE} {compact} width={W} height={H} />
 				{/if}
-				{#if reached >= FAILURE}
-					<div class="time-panel" class:visible={timed} aria-hidden="true">
-						<TimeBars tiers={site.tiers} time={site.time} only={index === TIME_SCI ? 'science' : 'formulation'} title="Median time to first high-impact paper from {index === TIME_SCI ? 'start of science operations' : 'project start'}" height={H} ci />
-					</div>
+				{#if reached >= FAILURE && timeL}
+					<TimeSwarm layout={timeL} {clock} title="Years to each mission’s first high-impact paper, from {clock === 'science' ? 'the start of science' : 'project start'}" axis="Years from {clock === 'science' ? 'the start of science' : 'project start'}" hot={hotTime} visible={timed} {compact} width={W} height={H} />
 				{/if}
 				{#if reached >= TOP && focusL}
 					<FocusChart layout={focusL} name={focusName} {grow} bars={index >= BARS} visible={focused} {compact} width={W} height={H} />
@@ -333,7 +354,7 @@
 				{#if reached >= TIME_SCI}
 					<ClpsChart {clps} title="Total papers by month since each mission’s start" draw={index === CLPS ? clpsFirst : index > CLPS ? 1 : 0} drawComparators={index === CLPS_COMPARE ? clpsDraw : index > CLPS_COMPARE ? 1 : 0} visible={(index === CLPS && clpsIn) || index === CLPS_COMPARE} {compact} width={W} height={H} />
 				{/if}
-				<Squares {tiles} {items} opacity={squaresOpacity} interactive={false} highlightId={hot} quietId={skyNamed} />
+				<Squares {tiles} {items} opacity={squaresOpacity} interactive={false} highlightId={hot ?? hotTime} highlightTone={hotTone} quietId={skyNamed ?? hotTime} />
 			{/if}
 			<!-- the title, its rising thumbnails (the backdrop from the title to the questions, and from the findings to the close) and the cue; on a phone they have the whole screen -->
 			<div class="opening" style:opacity={ending ? 1 - ending : null}>
@@ -390,7 +411,7 @@
 				<p>In <strong>{field}</strong>, the most cited paper had {int(primer.counts.length - 1)} citations. But half accrued {spell(primerMedian)} or fewer citations in their first {spell(calendarYears(site.fullPolicy))} years.</p><p class="aside">Citations are counted within {spell(site.fullPolicy.citationYears)} years of a paper’s publication date. <a href={methodsHref('windows')}>Why?</a></p>
 			{/if}
 		</div></section>
-		<!-- TOP: the same bars, the top 10% in blue; the one definition every high-impact chart but the time bars uses -->
+		<!-- TOP: the same bars, the top 10% in blue; the one definition every high-impact chart but the time swarm uses -->
 		<section data-step><div class="step">
 			<p>We consider a paper to be <span class="neptuneBlue"><strong><em>high-impact</em></strong></span> when it has more citations than 90% of the other papers in its field in our data set.</p>
 			{#if primer}<p class="aside">In {field}, that means papers with {primer.cutoff} citations or more are high-impact.</p>{/if}
@@ -487,10 +508,10 @@
 		<!-- TIME_FORM: years to a first high-impact paper, counted from the start of formulation -->
 		<section data-step><div class="step">
 			<p class="part neptuneBlue"><strong>Time to high-impact science</strong></p>
-			<p>Some very low-cost missions can result in rapid impactful science results.</p><p>But the median duration was about {years(timeFirst.formulation.median)} from start of formulation to the first high-impact paper’s publication date.</p>
-			<p>Mid-cost missions commonly return high-impact science about as quickly.</p>
-			<p>Higher cost missions tend to take longer due to lengthy development and transit times before science operations begin.</p>
-			<p class="aside">Lines show a 95% interval for each median.</p>
+			{#if cheapAsQuick}<p>The median time from project start to its first high-impact paper is roughly the same for very low-cost and mid-cost missions.</p>{:else if timeFirst.formulation.median != null && timeMid.formulation.median != null}<p>The median time from project start to a first high-impact paper was {years(timeFirst.formulation.median)} years for very low-cost missions and {years(timeMid.formulation.median)} years for mid-cost missions.</p>{/if}
+			{#if timeFirst.without > 0}<p>Of the missions below {moneyWords(story.referenceCost)}, {spell(timeFirst.without)} returned no high-impact science papers.</p>{/if}
+			{#if slowest}<p>The most expensive missions generally take longer to return high-impact science due to lengthy development and transit times.</p>{/if}
+			<p class="aside">White lines mark median values. Shading indicates the 95% interval.</p>
 		</div></section>
 		<!-- TIME_SCI: the same groups, counted from the start of science operations -->
 		<section data-step><div class="step">
@@ -550,6 +571,11 @@
 	.stage { position: relative; height: 100%; width: 100%; }
 	/* a sideways finger skims the columns; an upward one still scrolls the page */
 	.stage.skimming { touch-action: pan-y; }
+	/* TIME_FORM/TIME_SCI: the change of clock is a zoom of the whole chart (squares, axis, medians), so it
+	   runs slower and eases in and out rather than snapping into place; reduced motion keeps --move at 0 */
+	@media (prefers-reduced-motion: no-preference) {
+		.stage.zooming { --move: 1200ms; --ease: cubic-bezier(0.65, 0, 0.35, 1); }
+	}
 	/* the unseen mosaic under the drift (the title to the questions, the findings and the close) is backdrop: no tips, no clicks
 	   (Squares sets pointer-events inline only on a square it hides) */
 	.stage.resting :global(.sq) { pointer-events: none; }
@@ -557,9 +583,6 @@
 	@media (max-width: 860px) {
 		section:not([data-bleed]) > .step :global(.neptuneBlue) { color: color-mix(in srgb, var(--neptune) 75%, var(--neptune-mid)); }
 	}
-	/* TIME_FORM/TIME_SCI: the Analysis page's time bars, centred on the stage */
-	.time-panel { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; opacity: 0; transition: opacity 400ms linear; pointer-events: none; }
-	.time-panel.visible { opacity: 1; }
 	/* a soft shade under the title keeps the thumbnails rising behind it from crossing the type */
 	.thesis { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: center; gap: 0.6em; margin: 0; background: radial-gradient(ellipse 62% 42% at 42% 50%, rgb(0 0 0 / 0.78), rgb(0 0 0 / 0.4) 55%, transparent); text-shadow: 0 0 24px var(--black), 0 0 8px var(--black); opacity: 0; transition: opacity 400ms linear; pointer-events: none; }
 	.thesis .title { max-width: 14em; font-weight: 300; font-size: clamp(34px, 5.4vw, 76px); line-height: 1.08; letter-spacing: -0.04em; }

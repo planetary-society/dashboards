@@ -10,10 +10,12 @@
 	 *   variant: 'solid' | 'lost' | 'partial'
 	 * interactive: squares are in the tab order (false inside the aria-hidden story graphic)
 	 * highlightId: the square washed in Rocket Flame (the skyline's pointed-at mission)
+	 * highlightTone: 'flame' (that wash) or 'plain', the same square outlined in white with no wash, for
+	 *   a pointed-at mission that isn't a negative (Flame marks true negatives)
 	 * quietId: a square whose tip is left off because something else already names it
 	 * opacity: every square at once, over each one's own (the story's mosaic fading in as it scrolls)
 	 */
-	let { tiles, items, interactive = true, highlightId = null, quietId = null, opacity: all = 1, scope = 'full' } = $props();
+	let { tiles, items, interactive = true, highlightId = null, highlightTone = 'flame', quietId = null, opacity: all = 1, scope = 'full' } = $props();
 
 	let tip = $state(null);
 	let tipEl = $state(null);
@@ -56,6 +58,7 @@
 			<a
 				class="sq mark-{it.variant ?? 'solid'}"
 				class:hot={highlightId === t.id}
+				class:plain={highlightId === t.id && highlightTone === 'plain'}
 				href={missionHref(t.division, t.id, scope)}
 				tabindex={interactive && opacity >= 0.05 ? 0 : -1}
 				aria-label={it.label ?? t.name}
@@ -173,6 +176,13 @@
 
 	.sq.hot::before {
 		--wash-opacity: 0.7;
+	}
+
+	/* the same square, outlined in white like a hovered one, with no Flame wash */
+	.sq.hot.plain {
+		--edge: var(--white);
+		--wash: transparent;
+		outline-color: var(--white);
 	}
 
 	/* an outright failure: the picture dimmed under a red X; a partial outcome: one red stroke */

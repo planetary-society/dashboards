@@ -137,6 +137,24 @@ export function parseDay(value) {
 }
 
 /**
+ * Whether `date` falls on or after `from` at `date`'s own precision: one with no day (an ADS pubdate,
+ * "2011-04-00") counts from anywhere in its month, one with no month from anywhere in its year, so a
+ * paper dated only to the month science began counts as published once it began. Null when either
+ * date is unreadable.
+ */
+export function onOrAfter(date, from) {
+	const part = (value) => {
+		const match = typeof value === 'string' ? /^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?/.exec(value.trim()) : null;
+		return match && match.slice(1).map((p) => Number(p ?? 0));
+	};
+	const [a, b] = [part(date), part(from)];
+	if (!a || !b) return null;
+	if (a[1] < 1) return a[0] >= b[0];
+	if (a[2] < 1) return a[0] * 12 + a[1] >= b[0] * 12 + Math.max(b[1], 1);
+	return parseDay(date) >= parseDay(from);
+}
+
+/**
  * Julian years from one date to another, rounded for output. Null when either
  * date is missing or unparseable; negative values are meaningful.
  */

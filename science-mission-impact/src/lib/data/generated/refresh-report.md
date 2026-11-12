@@ -58,10 +58,10 @@ ok 143 · failed 0 · no image URL 0 (from `static/img/missions/manifest.json`)
 
 | File                     | Bytes          |
 | ------------------------ | -------------- |
-| `generated/site.json`    | 376,012        |
+| `generated/site.json`    | 399,198        |
 | `generated/index.json`   | 28,292         |
 | `generated/scrolly.json` | 95,512         |
-| `generated/divisions/`   | 734,328        |
+| `generated/divisions/`   | 764,088        |
 | `generated/missions/`    | 2,272,705      |
 | `static/data/papers/`    | 31,059,600     |
-| **total**                | **34,566,449** |
+| **total**                | **34,619,395** |

@@ -59,6 +59,7 @@ import {
 import {
 	buildCitationSpread,
 	buildDivisionScopeStats,
+	buildFirstTopPaper,
 	buildMissionScopeStats,
 	buildTiers,
 	firstTopRow,
@@ -481,6 +482,22 @@ export function buildMissionDoc({
 			formulation
 		});
 	const lifetimeStats = scopeStats('lifetime');
+	// The overview's time to science counts only papers published once science began: the first
+	// lifetime top-10% paper dated on or after the science start at its own date's precision, on the
+	// same two clocks (null without a science start date, which no reading can place). A paper dated
+	// only to the month science began reads as published when it began, 0 years on that clock, rather
+	// than on the 1st of the month, before it.
+	const afterScience = scienceStart
+		? buildFirstTopPaper({
+				first: firstTopRow(lifetimeRows, 'top10_weight', pubdates, { from: scienceStart }),
+				failed: isFailure(statsMission.mission_status),
+				papers: lifetimeStats.papers,
+				scienceStart,
+				formulation
+			})
+		: null;
+	const firstAfterScience =
+		afterScience?.yearsFromScienceStart < 0 ? { ...afterScience, yearsFromScienceStart: 0 } : afterScience;
 	const windowStats = { ...scopeStats('window'), status: windowStatus, bounds, indices: windowIndices(windowRows.values(), bounds) };
 	// The full-mission window has no month-by-month companions: its cohort dates and measures only.
 	const fullCohort = statsMission.full_mission_cohort;
@@ -680,7 +697,8 @@ export function buildMissionDoc({
 			hasThumb,
 			full: fullStats,
 			window: windowStats,
-			lifetime: lifetimeStats
+			lifetime: lifetimeStats,
+			firstAfterScience
 		},
 		indexEntry: {
 			id,

@@ -121,18 +121,40 @@ function failureCell(members, divisions) {
 	};
 }
 
-/** One cost range's time to a first top-10% paper over its flown missions. */
-function timeCell(members) {
-	const reached = members.filter((m) => m.first.state === 'reached');
+/** A mission's first top-10% paper as the Analysis page reads it: the earliest, whenever published. */
+const anyFirst = (m) => m.first;
+
+/**
+ * The overview's reading: the earliest published on or after the start of science. A mission with
+ * no science start date can't be read this way, which `buildAnalysis` refuses for a flown one.
+ */
+const firstAfterScience = (m) => m.firstAfterScience;
+
+/** One cost range's time to a first top-10% paper (`firstOf` picks which) over its flown missions. */
+function timeCell(members, firstOf = anyFirst) {
+	const reached = members.filter((m) => firstOf(m).state === 'reached');
 	return {
 		missions: members.length,
 		reached: reached.length,
 		without: members.length - reached.length,
-		undated: reached.filter((m) => m.first.yearsFromFormulation == null).length,
-		formulation: years(reached.map((m) => m.first.yearsFromFormulation)),
-		science: years(reached.map((m) => m.first.yearsFromScienceStart))
+		undated: reached.filter((m) => firstOf(m).yearsFromFormulation == null).length,
+		formulation: years(reached.map((m) => firstOf(m).yearsFromFormulation)),
+		science: years(reached.map((m) => firstOf(m).yearsFromScienceStart))
 	};
 }
+
+/**
+ * Every flown mission of one cost group with its own years to a first top-10% paper (`firstOf`
+ * picks which) on both clocks (null where it has none, or a clock's start date is missing), in cost
+ * order: the overview's swarm draws one mark per mission, those without a paper apart from the axis.
+ */
+const timePoints = (members, firstOf = anyFirst) =>
+	members.map((m) => {
+		const first = firstOf(m);
+		const reached = first.state === 'reached';
+		const at = (v) => (reached && v != null ? round(v, 2) : null);
+		return { id: m.id, name: m.name, reached, formulation: at(first.yearsFromFormulation), science: at(first.yearsFromScienceStart) };
+	});
 
 /** Missions and shortfalls on one side of the threshold, the rate unrounded. */
 const shortfallSide = (list) => {
@@ -170,7 +192,9 @@ export function buildAnalysis(divisionDocs, { thresholdCost, costTiers, costGrou
 				id: row.id, name: row.name, division: doc.slug, cost: row.cost,
 				tier: rangeOf(tiers, row.cost), group: rangeOf(groups, row.cost),
 				failed: row.failed, shortfall: row.shortfall, selection: row.selection ?? null,
-				n50, rate: n50 / row.cost, top10: Number(row.full.top10 ?? 0), first: row.lifetime.first
+				n50, rate: n50 / row.cost, top10: Number(row.full.top10 ?? 0), first: row.lifetime.first,
+				// the overview's reading: the first such paper published once science began
+				firstAfterScience: row.firstAfterScience
 			});
 		}
 	}
@@ -184,6 +208,8 @@ export function buildAnalysis(divisionDocs, { thresholdCost, costTiers, costGrou
 	const under = shortfallSide(outcomeRows.filter((m) => m.cost <= thresholdCost));
 	const over = shortfallSide(outcomeRows.filter((m) => m.cost > thresholdCost));
 	const flown = missions.filter((m) => !m.failed); // a failure has no time to a first paper
+	const unstarted = flown.filter((m) => !m.firstAfterScience).map((m) => m.id);
+	if (unstarted.length) throw new PackagingError(`no science start or launch date, so no time to science after it: ${unstarted.join(', ')}`);
 
 	return {
 		scope: 'full',
@@ -219,7 +245,8 @@ export function buildAnalysis(divisionDocs, { thresholdCost, costTiers, costGrou
 		}),
 		time: {
 			tiers: tiers.map((_, t) => timeCell(ofTier(flown, t))),
-			groups: groups.map((_, g) => timeCell(ofGroup(flown, g))),
+			// the overview's groups count only papers published once science began, so no time from it is negative
+			groups: groups.map((_, g) => ({ ...timeCell(ofGroup(flown, g), firstAfterScience), points: timePoints(ofGroup(flown, g), firstAfterScience) })),
 			failedExcluded: missions.length - flown.length,
 			fastest: fastestOf(flown),
 			byDivision: divisions.map((d) => ({ division: d.slug, name: d.name, fastest: fastestOf(ofDivision(flown, d.slug)) }))

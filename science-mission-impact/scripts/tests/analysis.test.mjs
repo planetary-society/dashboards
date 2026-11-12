@@ -4,11 +4,13 @@ import { describe, it } from 'node:test';
 import { buildAnalysis, managementOf, medianInterval, rateSpread, selectionOf } from '../lib/analysis.mjs';
 import { buildSite } from '../lib/site.mjs';
 
-/** A packaged mission row with only what the Analysis page reads. */
-const row = (id, cost, { papers = 0, citations = 0, top10 = 0, failed = false, shortfall = failed, selection = null, status = 'available', first = { state: 'none' } } = {}) => ({
+const blank = { yearsFromScienceStart: null, yearsFromFormulation: null };
+/** A packaged mission row with only what the analysis reads; its first paper came after science began unless `afterScience` says otherwise. */
+const row = (id, cost, { papers = 0, citations = 0, top10 = 0, failed = false, shortfall = failed, selection = null, status = 'available', first = { state: 'none' }, afterScience = first } = {}) => ({
 	id, name: id.toUpperCase(), cost, failed, shortfall, selection,
 	full: { status, papers, citations, top10 },
-	lifetime: { first: { yearsFromScienceStart: null, yearsFromFormulation: null, ...first } }
+	lifetime: { first: { ...blank, ...first } },
+	firstAfterScience: { ...blank, ...afterScience }
 });
 const reached = (formulation, science) => ({ state: 'reached', yearsFromFormulation: formulation, yearsFromScienceStart: science });
 /** A division whose full-scope top-50% cutoff is `c`. */
@@ -101,8 +103,32 @@ describe('buildAnalysis', () => {
 		const { failures, time } = facts;
 		assert.deepEqual([failures.groups.length, time.groups.length], [facts.groups.length, facts.groups.length]);
 		for (const value of [(c) => c.missions, (c) => c.failed + c.partial]) assert.equal(total(failures.groups, value), total(failures.tiers, value));
-		for (const value of [(c) => c.missions, (c) => c.reached]) assert.equal(total(time.groups, value), total(time.tiers, value));
+		assert.equal(total(time.groups, (c) => c.missions), total(time.tiers, (c) => c.missions));
 		for (const cell of failures.groups) assert.deepEqual(cell.byDivision.map((r) => r.division), divisions.map((d) => d.slug));
+	});
+
+	it('times the overview\'s groups to the first paper published once science began, the tiers to the first of all', () => {
+		const total = (list, value) => list.reduce((a, cell) => a + value(cell), 0);
+		// e1's first top paper came out in cruise, a later one in orbit; e2's only top paper predates science
+		const early = [
+			row('e1', 500, { papers: 30, citations: 300, first: reached(3, -2), afterScience: reached(6, 1) }),
+			row('e2', 600, { papers: 8, citations: 40, first: reached(2, -1), afterScience: { state: 'none' } })
+		];
+		const withEarly = analyse([doc('a', 10, [...docs[0].missions, ...early]), ...docs.slice(1)], { divisions });
+		const group = withEarly.time.groups[1]; // $150M–$1B
+		const points = new Map(group.points.map((p) => [p.id, p]));
+		assert.deepEqual(points.get('e1'), { id: 'e1', name: 'E1', reached: true, formulation: 6, science: 1 });
+		assert.deepEqual(points.get('e2'), { id: 'e2', name: 'E2', reached: false, formulation: null, science: null });
+		assert.ok(group.points.every((p) => p.science === null || p.science >= 0));
+		// the Analysis page's tiers still read each mission's first paper, whenever it came out
+		const tierScience = withEarly.time.tiers.flatMap((t) => [t.science.min]);
+		assert.ok(tierScience.includes(-2));
+		assert.equal(total(withEarly.time.tiers, (c) => c.reached), total(withEarly.time.groups, (c) => c.reached) + 1);
+	});
+
+	it('refuses a flown mission with no science start to time from', () => {
+		const unstarted = { ...row('u1', 400, { papers: 3, citations: 9 }), firstAfterScience: null };
+		assert.throws(() => analyse([doc('a', 10, [...docs[0].missions, unstarted]), ...docs.slice(1)], { divisions }), (e) => e.name === 'PackagingError' && e.message.includes('u1'));
 	});
 
 	it('counts outcomes per tier and either side of the threshold, every configured division kept', () => {

@@ -3,7 +3,7 @@
 	import EntityHeader from '$lib/ui/EntityHeader.svelte';
 	import { fullWindowLabel } from '$lib/copy/window.js';
 	import { fileSize, int, listify, longDate, spell } from '$lib/format.js';
-	import { exportUrl, methodsHref } from '$lib/paths.js';
+	import { exportUrl } from '$lib/paths.js';
 
 	let { data } = $props();
 	const manifest = $derived(data.manifest);
@@ -95,17 +95,10 @@
 			<h2>Reuse and sources</h2>
 			<p>{manifest.rights} <a href={manifest.license}>Read CC BY 4.0</a>.</p>
 			<p>{manifest.source.acknowledgement} <a href={manifest.source.terms}>SciX/ADS source terms</a>.</p>
-			<p>Mission and cost data: {manifest.source.missionMetadata}. <a href={methodsHref()}>Methods</a> · <a href={manifest.source.dashboardCode}>Dashboard source code</a>.</p>
-			<p class="meta">Upstream analysis revision: <code>{manifest.source.codeRevision || 'Not supplied'}</code>{manifest.source.codeRevisionDirty ? ' (included uncommitted changes)' : ''}.</p>
 		</section>
 
 		<section id="data-dictionary">
 			<h2>Data dictionary</h2>
-			{#each dictionary.notes as note}<p>{note}</p>{/each}
-			<h3>Measurement scopes</h3>
-			<p><strong>Active Mission Window.</strong> {dictionary.scopes.active}</p>
-			<p><strong>Lifetime.</strong> {dictionary.scopes.lifetime}</p>
-			<h3>Fields</h3>
 			<p class="meta">CSV columns, and the columns of each mission’s publication JSON, which names them the same way.</p>
 			<dl>{#each Object.entries(dictionary.fields) as [field, definition]}<dt><code>{field}</code></dt><dd>{definition}</dd>{/each}</dl>
 		</section>

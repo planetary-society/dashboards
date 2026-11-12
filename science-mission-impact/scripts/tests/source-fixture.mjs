@@ -6,7 +6,7 @@ import { loadConfig } from '../lib/config.mjs';
 
 export const APP_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
-/** Small schema-5/11 export with deliberately nonstandard companion paths. */
+/** Small schema-6/12 export with deliberately nonstandard companion paths. */
 export function sourceFixture(rawDir, { compatible = true } = {}) {
 	// The real config, less its per-mission maps: they name real missions, not the fixture's.
 	const { names, thumbnails, ...config } = loadConfig(APP_DIR);
@@ -40,7 +40,7 @@ export function sourceFixture(rawDir, { compatible = true } = {}) {
 		const ref = write(`payload/${label}/envelope.json`, corpus);
 		index.missions.push({ mission_id: id, short_title: shortTitle, division: division.name, files: { corpus: ref } });
 		const stats = {
-			kind: 'corpus_stats', schema_version: 11,
+			kind: 'corpus_stats', schema_version: 12,
 			run: { label, as_of_date: '2026-10-02', processing_failures: [], processing_failure_count: 0,
 				policy: compatible ? { publication_years: 3, citation_years: 3 } : { post_prime_years: 2, citation_years: 3 },
 				full_mission_policy: { post_prime_years: 2, citation_years: 3, maturity_grace_months: 3, anchor: 'mission_end', opens_at: 'mission_start', min_window_years: 2 },
@@ -63,7 +63,7 @@ export function sourceFixture(rawDir, { compatible = true } = {}) {
 		};
 		for (const [key, scope] of [['papers_json', 'lifetime'], ['papers_window_json', 'window'], ['papers_full_mission_json', 'full_mission']]) {
 			stats.files[key] = write(`tables/${label}/${scope}.json`, {
-				kind: 'corpus_stats_papers', schema_version: 11, label, scope, papers: []
+				kind: 'corpus_stats_papers', schema_version: 12, label, scope, papers: []
 			});
 		}
 		const statsPath = `stats/${label}/corpus_stats.json`;

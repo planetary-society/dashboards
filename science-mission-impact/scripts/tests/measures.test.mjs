@@ -4,6 +4,7 @@ import { describe, it } from 'node:test';
 import {
 	buildCitationSpread,
 	buildDivisionScopeStats,
+	buildFirstAfterScience,
 	buildFirstTopPaper,
 	buildMissionScopeStats,
 	firstTopRow,
@@ -113,6 +114,26 @@ describe('isRankable', () => {
 		assert.equal(isRankable({ poolPapers: 50, missions: [full, { ...full, full_mission_top_k: { 10: null } }], rankingMinPapers: 50 }), false);
 		// Window-only coverage does not make a division rankable in the full-mission scope.
 		assert.equal(isRankable({ poolPapers: 50, missions: [mission, mission], rankingMinPapers: 50 }), false);
+	});
+});
+
+describe('buildFirstAfterScience', () => {
+	// a cruise paper before science began, one dated only to the month it began, and a later one
+	const rows = [{ bibcode: 'cruise', top10_weight: 1 }, { bibcode: 'arrival', top10_weight: 1 }, { bibcode: 'later', top10_weight: 1 }];
+	const pubdates = new Map([['cruise', '2008-03-00'], ['arrival', '2011-04-00'], ['later', '2011-09-00']]);
+	const args = { rows, pubdates, scienceStart: '2011-04-04', formulation: '2001-01-01', failed: false, papers: 3 };
+
+	it('skips papers from before science began and times one from its first month at 0', () => {
+		const first = buildFirstAfterScience(args);
+		assert.deepEqual([first.state, first.bibcode, first.yearsFromScienceStart], ['reached', 'arrival', 0]);
+		// the build clock reads the paper's own date, unclamped
+		assert.ok(first.yearsFromFormulation > 10);
+		assert.equal(buildFirstAfterScience({ ...args, rows: rows.filter((r) => r.bibcode !== 'arrival') }).bibcode, 'later');
+	});
+
+	it('has no reading without a science start, and none reached with only earlier papers', () => {
+		assert.equal(buildFirstAfterScience({ ...args, scienceStart: null }), null);
+		assert.equal(buildFirstAfterScience({ ...args, rows: rows.slice(0, 1) }).state, 'none');
 	});
 });
 

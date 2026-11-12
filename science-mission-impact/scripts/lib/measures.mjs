@@ -182,6 +182,21 @@ export function buildFirstTopPaper({ first, failed, papers, scienceStart = null,
 }
 
 /**
+ * The overview's time to science, as a FirstTopPaper on both clocks: the first lifetime top-10% paper
+ * dated on or after the start of science at its own date's precision (`firstTopRow` with `from`);
+ * null without a science start date, which no reading can place. A paper dated only to the month
+ * science began counts (`onOrAfter`), so it reads as published when science began, 0 on that clock,
+ * rather than on the 1st of the month `parseDay` gives it, before the start.
+ *
+ * @param {{rows: Iterable<object>, pubdates: Map<string, string>, scienceStart: string|null, formulation?: string|null, failed: boolean, papers: number|null}} args
+ */
+export function buildFirstAfterScience({ rows, pubdates, scienceStart, formulation = null, failed, papers }) {
+	if (!scienceStart) return null;
+	const first = buildFirstTopPaper({ first: firstTopRow(rows, 'top10_weight', pubdates, { from: scienceStart }), failed, papers, scienceStart, formulation });
+	return first.yearsFromScienceStart < 0 ? { ...first, yearsFromScienceStart: 0 } : first;
+}
+
+/**
  * MissionScopeStats for one mission in one scope.
  *
  * `divisionTop10` / `divisionTop1` are the sums of the same measure over every

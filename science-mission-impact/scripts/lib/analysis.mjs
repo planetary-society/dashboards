@@ -121,39 +121,32 @@ function failureCell(members, divisions) {
 	};
 }
 
-/** A mission's first top-10% paper as the Analysis page reads it: the earliest, whenever published. */
-const anyFirst = (m) => m.first;
-
 /**
- * The overview's reading: the earliest published on or after the start of science. A mission with
- * no science start date can't be read this way, which `buildAnalysis` refuses for a flown one.
+ * One cost range's time to a first top-10% paper, from each of its flown missions' FirstTopPaper:
+ * `first` (the Analysis page's, whenever published) or `firstAfterScience` (the overview's).
  */
-const firstAfterScience = (m) => m.firstAfterScience;
-
-/** One cost range's time to a first top-10% paper (`firstOf` picks which) over its flown missions. */
-function timeCell(members, firstOf = anyFirst) {
-	const reached = members.filter((m) => firstOf(m).state === 'reached');
+function timeCell(firsts) {
+	const reached = firsts.filter((f) => f.state === 'reached');
 	return {
-		missions: members.length,
+		missions: firsts.length,
 		reached: reached.length,
-		without: members.length - reached.length,
-		undated: reached.filter((m) => firstOf(m).yearsFromFormulation == null).length,
-		formulation: years(reached.map((m) => firstOf(m).yearsFromFormulation)),
-		science: years(reached.map((m) => firstOf(m).yearsFromScienceStart))
+		without: firsts.length - reached.length,
+		undated: reached.filter((f) => f.yearsFromFormulation == null).length,
+		formulation: years(reached.map((f) => f.yearsFromFormulation)),
+		science: years(reached.map((f) => f.yearsFromScienceStart))
 	};
 }
 
 /**
- * Every flown mission of one cost group with its own years to a first top-10% paper (`firstOf`
- * picks which) on both clocks (null where it has none, or a clock's start date is missing), in cost
+ * Every flown mission of one cost group with its own years to a first top-10% paper published once
+ * science began, on both clocks (null where it has none, or a clock's start date is missing), in cost
  * order: the overview's swarm draws one mark per mission, those without a paper apart from the axis.
  */
-const timePoints = (members, firstOf = anyFirst) =>
-	members.map((m) => {
-		const first = firstOf(m);
+const timePoints = (members) =>
+	members.map(({ id, name, firstAfterScience: first }) => {
 		const reached = first.state === 'reached';
 		const at = (v) => (reached && v != null ? round(v, 2) : null);
-		return { id: m.id, name: m.name, reached, formulation: at(first.yearsFromFormulation), science: at(first.yearsFromScienceStart) };
+		return { id, name, reached, formulation: at(first.yearsFromFormulation), science: at(first.yearsFromScienceStart) };
 	});
 
 /** Missions and shortfalls on one side of the threshold, the rate unrounded. */
@@ -244,9 +237,12 @@ export function buildAnalysis(divisionDocs, { thresholdCost, costTiers, costGrou
 			return { ...rateSpread(members.map((m) => m.rate)), shortfall: members.filter((m) => m.shortfall).length, failed: members.filter((m) => m.failed).length };
 		}),
 		time: {
-			tiers: tiers.map((_, t) => timeCell(ofTier(flown, t))),
+			tiers: tiers.map((_, t) => timeCell(ofTier(flown, t).map((m) => m.first))),
 			// the overview's groups count only papers published once science began, so no time from it is negative
-			groups: groups.map((_, g) => ({ ...timeCell(ofGroup(flown, g), firstAfterScience), points: timePoints(ofGroup(flown, g), firstAfterScience) })),
+			groups: groups.map((_, g) => {
+				const members = ofGroup(flown, g);
+				return { ...timeCell(members.map((m) => m.firstAfterScience)), points: timePoints(members) };
+			}),
 			failedExcluded: missions.length - flown.length,
 			fastest: fastestOf(flown),
 			byDivision: divisions.map((d) => ({ division: d.slug, name: d.name, fastest: fastestOf(ofDivision(flown, d.slug)) }))

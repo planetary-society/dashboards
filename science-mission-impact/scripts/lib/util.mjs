@@ -121,6 +121,12 @@ export function yearOf(value) {
 	return parseYearMonth(value)?.y ?? null;
 }
 
+/** A date string's [year, month, day], 0 for a part ADS leaves unknown ("2003-00-00") or one left off; null when unreadable. */
+function dateParts(value) {
+	const match = typeof value === 'string' ? /^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?/.exec(value.trim()) : null;
+	return match && match.slice(1).map((part) => Number(part ?? 0));
+}
+
 /**
  * UTC milliseconds of a date string, for durations. ADS writes "2003-00-00" for a paper dated
  * only by year: an unknown (or missing) month is read at mid-year, 1 July, so the duration is off
@@ -129,9 +135,9 @@ export function yearOf(value) {
  * with the `date` ADS itself derives from the same pubdate.
  */
 export function parseDay(value) {
-	const match = typeof value === 'string' ? /^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?/.exec(value.trim()) : null;
-	if (!match) return null;
-	const [y, m, d] = match.slice(1).map((part) => Number(part ?? 0));
+	const parts = dateParts(value);
+	if (!parts) return null;
+	const [y, m, d] = parts;
 	if (m < 1) return Date.UTC(y, 6, 1);
 	return Date.UTC(y, Math.min(m, 12) - 1, d >= 1 ? d : 1);
 }
@@ -139,18 +145,14 @@ export function parseDay(value) {
 /**
  * Whether `date` falls on or after `from` at `date`'s own precision: one with no day (an ADS pubdate,
  * "2011-04-00") counts from anywhere in its month, one with no month from anywhere in its year, so a
- * paper dated only to the month science began counts as published once it began. Null when either
- * date is unreadable.
+ * paper dated only to the month science began counts as published once it began. Both dates must be
+ * readable (`firstTopRow` checks them first).
  */
 export function onOrAfter(date, from) {
-	const part = (value) => {
-		const match = typeof value === 'string' ? /^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?/.exec(value.trim()) : null;
-		return match && match.slice(1).map((p) => Number(p ?? 0));
-	};
-	const [a, b] = [part(date), part(from)];
-	if (!a || !b) return null;
-	if (a[1] < 1) return a[0] >= b[0];
-	if (a[2] < 1) return a[0] * 12 + a[1] >= b[0] * 12 + Math.max(b[1], 1);
+	const [y, m, d] = dateParts(date);
+	const [fy, fm] = dateParts(from);
+	if (m < 1) return y >= fy;
+	if (d < 1) return y * 12 + m >= fy * 12 + Math.max(fm, 1);
 	return parseDay(date) >= parseDay(from);
 }
 

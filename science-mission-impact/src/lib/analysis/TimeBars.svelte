@@ -6,46 +6,22 @@
 	import { timeLayout } from './charts-a.js';
 	import { tierLabel } from './tiers.js';
 
-	/**
-	 * tiers: AnalysisFacts.tiers; time: AnalysisFacts.time. only: 'formulation' or 'science' fades the
-	 * other measure out (the story's one step each), and the science bars, alone, are hatched so they
-	 * read as the other measure; height: fit into this many px (the story's stage): rows tighten from
-	 * 54 to 28px. title: the story's, top right
-	 * over the plot like its other charts, in place of the key.
-	 */
-	let { tiers, time, only = null, height = null, title = null } = $props();
-	const uid = $props.id();
+	/** tiers: AnalysisFacts.tiers; time: AnalysisFacts.time. */
+	let { tiers, time } = $props();
 	let width = $state(0);
-	// the key (or title) above the bars, as measured, then 66px for the gap under it and the axis
-	let head = $state(16);
-	const pitch = $derived(height ? Math.max(28, Math.min(54, Math.floor((height - head - 66) / tiers.length))) : 54);
-	const layout = $derived(timeLayout(tiers, time, width, { pitch, only }));
-	const off = (key) => only != null && only !== key;
+	const layout = $derived(timeLayout(tiers, time, width));
 	// a median's 95% interval, for the screen-reader table only (the bars draw no whiskers)
 	const interval = (ci) => range(ci, years, ' to ');
 </script>
 
 <div class="time-bars">
-	{#if title}
-		<!-- right-aligned to the plot's end; on a phone it balances over two lines, a word joiner
-		     after each hyphen keeping "high-impact" whole -->
-		<p class="heading" class:compact={width > 0 && width < 600} bind:clientHeight={head} style:padding-right={width > 0 ? `${width - layout.x.range()[1]}px` : null}>{title.replaceAll('-', '-⁠')}</p>
-	{:else}
-		<p class="key" bind:clientHeight={head} aria-hidden="true">
-			{#if !off('formulation')}<span><i class="swatch formulation"></i>From formulation start</span>{/if}
-			{#if !off('science')}<span><i class="swatch {only ? 'formulation' : 'science'}"></i>From the start of science</span>{/if}
-		</p>
-	{/if}
+	<p class="key" aria-hidden="true">
+		<span><i class="swatch formulation"></i>From formulation start</span>
+		<span><i class="swatch science"></i>From the start of science</span>
+	</p>
 	<div class="stage" bind:clientWidth={width} style:height="{layout.height}px">
 		{#if width > 0}
 			<svg {width} height={layout.height} aria-hidden="true">
-				<!-- the science bars' hatching, when they stand alone -->
-				<defs>
-					<pattern id="hatch-{uid}" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-						<rect class="hatch-ground" width="6" height="6" />
-						<rect class="hatch-stripe" width="3" height="6" />
-					</pattern>
-				</defs>
 				{#each layout.ticks as v (v)}
 					<line class="grid" x1={layout.x(v)} x2={layout.x(v)} y1={layout.top} y2={layout.bottom} />
 					<text class="tick" x={layout.x(v)} y={layout.bottom + 16} text-anchor="middle">{v}</text>
@@ -57,9 +33,8 @@
 					{:else}
 						{#each [row.formulation, row.science] as bar, k (k)}
 							{#if bar}
-								{@const faded = off(k ? 'science' : 'formulation')}
-								<rect class="bar" class:thin={k === 1 && !only} class:off={faded} style:fill={k === 1 && only ? `url(#hatch-${uid})` : null} x={bar.x} y={bar.y} width={bar.w} height={bar.h} />
-								<text class="value" class:thin={k === 1 && !only} class:off={faded} x={bar.tx} y={bar.cy} dy="0.32em" text-anchor={bar.anchor}>{yearsLabel(bar.median)}</text>
+								<rect class="bar" class:thin={k === 1} x={bar.x} y={bar.y} width={bar.w} height={bar.h} />
+								<text class="value" class:thin={k === 1} x={bar.tx} y={bar.cy} dy="0.32em" text-anchor={bar.anchor}>{yearsLabel(bar.median)}</text>
 							{/if}
 						{/each}
 					{/if}
@@ -110,11 +85,6 @@
 	.swatch { display: inline-block; width: 16px; }
 	.swatch.formulation { height: 10px; background: var(--neptune); }
 	.swatch.science { height: 5px; background: var(--neptune-mid); }
-	/* the overview's .stage-title, in HTML so it can wrap */
-	.heading { margin-bottom: 12px; font-size: 15px; line-height: 20px; text-align: right; text-wrap: balance; color: var(--dust); }
-	.heading.compact { font-size: 13px; line-height: 17px; }
-	.hatch-ground { fill: var(--neptune); opacity: 0.3; }
-	.hatch-stripe { fill: var(--neptune); }
 	.stage { position: relative; }
 	text { font: 12px var(--sans); }
 	.tick { font-size: 11px; fill: var(--soil); }
@@ -127,6 +97,4 @@
 	.grid { stroke: var(--shadow); }
 	.bar { fill: var(--neptune); }
 	.bar.thin { fill: var(--neptune-mid); }
-	.bar, .value { transition: opacity 400ms linear; }
-	.off { opacity: 0; }
 </style>

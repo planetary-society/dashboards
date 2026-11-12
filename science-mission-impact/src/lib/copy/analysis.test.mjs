@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { clpsCosts, edgeWords, favorsOver, mostUnreached, notLinear, rate, scienceOrder, selectionContrast, series, shortestTier, smallLowest, tierWords, topUnder } from './analysis.js';
+import { cheapAsQuick, clpsCosts, edgeWords, favorsOver, mostUnreached, notLinear, rate, scienceOrder, selectionContrast, series, shortestTier, smallLowest, tierWords, topUnder } from './analysis.js';
 import { range } from '../format.js';
 
 test('notLinear, topUnder and favorsOver gate the summary’s own sentences', () => {
@@ -96,4 +96,14 @@ test('clpsCosts names a comparator only when it cost about as much as one lander
 test('mostUnreached reads a time tier\'s coverage', () => {
 	const t = (reached, missions) => ({ reached, missions });
 	assert.deepEqual([t(6, 26), t(13, 26), t(14, 26), t(4, 4), t(0, 0)].map(mostUnreached), [true, false, false, false, false]);
+});
+
+test('cheapAsQuick: the cheapest tier within CLOSE_YEARS of the quickest one below the costliest', () => {
+	const t = (median) => ({ formulation: { median } });
+	assert.equal(cheapAsQuick({ tiers: [t(5.8), t(5.92), t(9.58)] }), true);
+	assert.equal(cheapAsQuick({ tiers: [t(5.8), t(6.5), t(9.58)] }), false);
+	// the costliest tier never counts, a missing median is passed over, and with none to compare there is no claim
+	assert.equal(cheapAsQuick({ tiers: [t(5.8), t(null), t(5.9), t(6)] }), true);
+	assert.equal(cheapAsQuick({ tiers: [t(5.8), t(null), t(5.9)] }), false);
+	assert.equal(cheapAsQuick({ tiers: [t(null), t(5.9), t(9)] }), false);
 });

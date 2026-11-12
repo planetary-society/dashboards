@@ -5,7 +5,9 @@
 	// None column, dimmed. This draws what goes under them (bands, gridlines, each median's 95%
 	// interval, the None strip, the axis) and what goes over them: each median's line and
 	// value, and the pointed-at mission's name, on a layer stacked above the squares.
+	import CostAxisLabel from '$lib/charts/CostAxisLabel.svelte';
 	import { CLOCKS, timeLabel } from './timeswarm.js';
+	import { breakTitle } from './layouts.js';
 
 	/**
 	 * layout: timeSwarmLayout(). clock: 'formulation' or 'science'. title: over the plot, top right
@@ -14,8 +16,7 @@
 	 */
 	let { layout, clock = 'formulation', title = null, axis = '', hot = null, visible = false, compact = false, width, height } = $props();
 	const active = $derived(layout.clocks[clock]);
-	const cut = $derived(title?.indexOf(', ') ?? -1);
-	const titleLines = $derived(!title ? [] : compact && cut > 0 ? [title.slice(0, cut + 1), title.slice(cut + 2)] : [title]);
+	const titleLines = $derived(breakTitle(title, compact));
 	const tag = $derived(timeLabel(layout, clock, hot));
 	const plotH = $derived(layout.axisY - layout.top);
 	const uid = $props.id();
@@ -33,6 +34,7 @@
 <div class="time-swarm" class:visible class:compact aria-hidden="true">
 	{#each layout.rows as row, i (i)}
 		<span class="band" style:top="{row.y}px" style:height="{row.h}px"></span>
+		<span class="name" style:top="{compact ? row.headY : row.y + 8}px" style:width={compact ? null : `${layout.left - 12}px`}>{row.label}</span>
 	{/each}
 	<!-- the None column: off the year axis, a strip of its own through every band -->
 	<span class="none-strip" style:left="{layout.pile.x}px" style:width="{layout.pile.w}px" style:top="{layout.top}px" style:height="{plotH}px"></span>
@@ -43,11 +45,7 @@
 		{/each}
 	</div>
 	<span class="tick none-tick" style:left="{layout.pile.cx}px" style:top="{layout.axisY + 5}px">None</span>
-	<span class="axis-label" style:left="{(layout.x0 + layout.x1) / 2}px" style:top="{layout.axisY + (compact ? 21 : 22)}px">{axis}</span>
-
-	{#each layout.rows as row, i (i)}
-		<span class="name" style:top="{compact ? row.headY : row.y + 8}px" style:width={compact ? null : `${layout.left - 12}px`}>{row.label}</span>
-	{/each}
+	<CostAxisLabel x0={layout.x0} x1={layout.x1} floor={layout.axisY} {compact} text={axis} />
 
 	<svg {width} {height}>
 		{#each titleLines as line, i (i)}<text class="stage-title" x={width - layout.right} y={layout.top - 12 - (titleLines.length - 1 - i) * 15} text-anchor="end">{line}</text>{/each}
@@ -163,19 +161,6 @@
 		color: var(--dust);
 	}
 
-	.axis-label {
-		transform: translateX(-50%);
-		font-size: 12px;
-		line-height: 16px;
-		color: var(--dust);
-		white-space: nowrap;
-	}
-
-	.compact .axis-label {
-		font-size: 11px;
-		line-height: 14px;
-	}
-
 	.name {
 		left: 4px;
 		font-size: 15px;
@@ -222,9 +207,15 @@
 		transition: transform var(--move) var(--ease);
 	}
 
-	/* a median's value: out at once when the clock changes, in again as the line settles (with no
-	   motion, --move is 0 and the delay goes negative: an immediate swap) */
+	/* a median's value, on a black halo so a gridline or a square under it can't break it up: out at
+	   once when the clock changes, in again as the line settles (with no motion, --move is 0 and the
+	   delay goes negative: an immediate swap) */
 	.value {
+		fill: var(--white);
+		paint-order: stroke;
+		stroke: var(--black);
+		stroke-width: 3px;
+		stroke-linejoin: round;
 		opacity: 0;
 		transition:
 			transform var(--move) var(--ease),
@@ -234,18 +225,6 @@
 	.value.on {
 		opacity: 1;
 		transition-delay: 0s, calc(var(--move) - 300ms);
-	}
-
-	/* a black halo keeps a value legible where a gridline or a square runs under it */
-	.value {
-		paint-order: stroke;
-		stroke: var(--black);
-		stroke-width: 3px;
-		stroke-linejoin: round;
-	}
-
-	.value {
-		fill: var(--white);
 	}
 
 	.compact .value {

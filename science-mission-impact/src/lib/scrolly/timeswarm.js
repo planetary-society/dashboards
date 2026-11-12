@@ -8,6 +8,7 @@
 
 import { scaleLinear } from 'd3-scale';
 import { rowGutter } from '../charts/perdollar.js';
+import { costAxisBottom, stackLevels } from '../charts/costaxis.js';
 import { tierLabel } from '../analysis/tiers.js';
 import { textWidth } from '../analysis/charts-b.js';
 import { yearsLabel } from '../format.js';
@@ -23,23 +24,17 @@ const SHRINK = 0.9;
 
 /**
  * Offsets from a row's midline that pack squares of side `s` centred at `xs` (pixels) without
- * overlap, `gap` apart: placed in x order, each takes the free offset nearest the midline (above
- * first on a tie), so the swarm stays symmetric and its height shows where missions crowd.
+ * overlap, `gap` apart: the cost axis's `stackLevels` (placed in x order, each on the lowest level it
+ * fits), its levels numbered outward from the midline, above first, so the swarm stays symmetric and
+ * its height shows where missions crowd.
  */
 export function swarm(xs, s, gap = 1) {
-	const d = s + gap;
-	const order = xs.map((_, i) => i).sort((a, b) => xs[a] - xs[b] || a - b);
-	const placed = [];
-	const ys = new Array(xs.length);
-	for (const i of order) {
-		// a placed square that overlaps this one's column rules out the offsets within a pitch of its own
-		const blocked = placed.filter(([px]) => Math.abs(xs[i] - px) < d).map(([, py]) => [py - d, py + d]);
-		const free = (y) => blocked.every(([lo, hi]) => y <= lo + 1e-6 || y >= hi - 1e-6);
-		const y = [0, ...blocked.flat()].sort((a, b) => Math.abs(a) - Math.abs(b) || a - b).find(free);
-		ys[i] = y;
-		placed.push([xs[i], y]);
-	}
-	return ys;
+	const order = xs.map((x, id) => ({ id, x })).sort((a, b) => a.x - b.x || a.id - b.id);
+	const { levels } = stackLevels(order, (t) => t.x, s, gap);
+	return xs.map((_, i) => {
+		const k = levels.get(i);
+		return (k % 2 ? -(k + 1) / 2 : k / 2) * (s + gap);
+	});
 }
 
 /**
@@ -54,9 +49,9 @@ export function timeSwarmLayout(groups, tiers, W, H) {
 	const compact = W < 600;
 	const left = rowGutter(W);
 	const right = compact ? 4 : 16;
-	const top = (compact ? 4 : 6) + (compact ? 38 : 28);
-	const bottom = compact ? 36 : 42;
-	const axisY = H - bottom;
+	// a strip for the title (two lines on a phone) over the bands, the cost axis's room for ticks and a label under them
+	const top = compact ? 42 : 34;
+	const axisY = H - costAxisBottom(compact);
 	const headH = compact ? 16 : 18;
 	const pad = compact ? 3 : 10;
 	const gap = 1;
@@ -82,7 +77,7 @@ export function timeSwarmLayout(groups, tiers, W, H) {
 					.nice()
 					.range([x0, x1]);
 				const rows = groups.map((g) => {
-					const pts = g.points.filter((p) => p.reached && p[clock] != null);
+					const pts = g.points.filter((p) => p[clock] != null);
 					const xs = pts.map((p) => x(p[clock]));
 					const ys = swarm(xs, s, gap);
 					return { pts, xs, ys, half: Math.max(0, ...ys.map(Math.abs)) + s / 2 };
@@ -109,9 +104,9 @@ export function timeSwarmLayout(groups, tiers, W, H) {
 	const heights = spare >= 0 ? needs.map((n) => n + 2 * pad + headH + spare / groups.length) : groups.map(() => (axisY - top) / groups.length);
 
 	let y = top;
-	const rows = groups.map((g, i) => {
+	const rows = groups.map((_, i) => {
 		const h = heights[i];
-		const row = { label: labels[i], missions: g.missions, reached: g.reached, y, h, headY: y + headH / 2 + 1, y0: y + headH + pad, y1: y + h - pad };
+		const row = { label: labels[i], y, h, headY: y + headH / 2 + 1, y0: y + headH + pad, y1: y + h - pad };
 		row.mid = (row.y0 + row.y1) / 2;
 		y += h;
 		return row;
@@ -119,24 +114,23 @@ export function timeSwarmLayout(groups, tiers, W, H) {
 	// a phone's header strip starts with the group's name: a median's value keeps clear of it
 	const nameEnd = (i) => (compact ? 4 + textWidth(labels[i], 12) + 8 : -Infinity);
 
-	// the None column: the same squares, filled row by row and centred on the band's midline
-	const piles = withouts.map((without, i) => {
+	// the None column: the same squares, filled row by row and centred on each band's midline
+	const none = withouts.flatMap((without, i) => {
 		const lines = Math.ceil(without.length / cols);
 		const first = rows[i].mid - ((lines - 1) * pitch) / 2;
-		const marks = without.map((p, k) => ({ id: p.id, name: p.name, x: pileX + pileInset + s / 2 + (k % cols) * pitch, y: first + Math.floor(k / cols) * pitch }));
-		return { marks };
+		return without.map((p, k) => ({ id: p.id, name: p.name, x: pileX + pileInset + s / 2 + (k % cols) * pitch, y: first + Math.floor(k / cols) * pitch }));
 	});
 
 	const out = Object.fromEntries(
 		CLOCKS.map((clock) => {
 			const { x, rows: placed } = clocks[clock];
-			const clockRows = groups.map((g, i) => {
-				const { pts, xs, ys, half } = placed[i];
+			// every mission's square on this clock, by its centre
+			const marks = placed.flatMap(({ pts, xs, ys }, i) => pts.map((p, k) => ({ id: p.id, name: p.name, years: p[clock], x: xs[k], y: rows[i].mid + ys[k] })));
+			const medians = groups.map((g, i) => {
+				const { half } = placed[i];
 				const row = rows[i];
-				// each mark by its centre
-				const marks = pts.map((p, k) => ({ id: p.id, name: p.name, years: p[clock], x: xs[k], y: row.mid + ys[k] }));
 				const { median, ci } = g[clock];
-				if (median == null) return { marks, median: null };
+				if (median == null) return { median: null };
 				// the median line and the interval's shading span this clock's swarm, a little either side;
 				// the value sits just over the line (in the header strip when the swarm fills its band)
 				const y0 = Math.max(row.y0 - 2, row.mid - half - 6);
@@ -146,31 +140,29 @@ export function timeSwarmLayout(groups, tiers, W, H) {
 				const mx = x(median);
 				// on a phone the value steps right of the group's name when they share the header strip
 				const shift = ty < row.headY + 12 && mx - textWidth(text, 12) / 2 < nameEnd(i);
-				return { marks, median: { x: mx, y0, y1, ty, text, tx: shift ? nameEnd(i) : mx, anchor: shift ? 'start' : 'middle', ci: ci ? ci.map(x) : null } };
+				return { median: { x: mx, y0, y1, ty, text, tx: shift ? nameEnd(i) : mx, anchor: shift ? 'start' : 'middle', ci: ci ? ci.map(x) : null } };
 			});
 			// about four gridlines at any width: every five years on the build clock, every year on the science one
-			return [clock, { x, ticks: x.ticks(4), rows: clockRows }];
+			return [clock, { x, ticks: x.ticks(4), marks, rows: medians }];
 		})
 	);
 
-	return { compact, W, H, left, right, top, axisY, s, x0, x1, pile: { x: pileX, w: pileW, cx: pileX + pileW / 2 }, rows, clocks: out, piles };
+	return { compact, W, left, right, top, axisY, s, x0, x1, pile: { x: pileX, w: pileW, cx: pileX + pileW / 2 }, rows, clocks: out, none };
 }
 
 /**
  * The stage's squares on one clock, for Squares: each mission with a first high-impact paper at its
- * place in its swarm, solid; each without one in the None column, dimmed. Failures aren't here (they
- * have no time to science), so the caller hides them.
+ * place in its swarm, solid, and `plain` (pointed at, it's outlined in white: Flame marks only the
+ * true negatives); each without one in the None column, dimmed. Failures aren't here (they have no
+ * time to science), so the caller hides them.
  */
 export function timeItems(layout, clock) {
 	const { s } = layout;
-	const items = new Map();
-	for (const row of layout.clocks[clock].rows) {
-		for (const m of row.marks) items.set(m.id, { x: m.x - s / 2, y: m.y - s / 2, s, variant: 'solid', opacity: 1 });
-	}
-	for (const pile of layout.piles) {
-		for (const m of pile.marks) items.set(m.id, { x: m.x - s / 2, y: m.y - s / 2, s, variant: 'solid', opacity: NONE_OPACITY });
-	}
-	return items;
+	const at = (m) => ({ x: m.x - s / 2, y: m.y - s / 2, s, variant: 'solid' });
+	return new Map([
+		...layout.clocks[clock].marks.map((m) => [m.id, { ...at(m), opacity: 1, plain: true }]),
+		...layout.none.map((m) => [m.id, { ...at(m), opacity: NONE_OPACITY }])
+	]);
 }
 
 /**
@@ -186,8 +178,8 @@ export function timeHit(layout, clock, px, py) {
 		const e = Math.hypot(m.x - px, m.y - py);
 		if (e <= dist) [best, dist] = [m.id, e];
 	};
-	for (const row of layout.clocks[clock].rows) row.marks.forEach(consider);
-	for (const pile of layout.piles) pile.marks.forEach(consider);
+	layout.clocks[clock].marks.forEach(consider);
+	layout.none.forEach(consider);
 	return best;
 }
 
@@ -195,9 +187,8 @@ export function timeHit(layout, clock, px, py) {
 export function timeLabel(layout, clock, id) {
 	if (id == null) return null;
 	const { s } = layout;
-	const mark = layout.clocks[clock].rows.flatMap((r) => r.marks).find((m) => m.id === id);
-	const held = mark ?? layout.piles.flatMap((p) => p.marks).find((m) => m.id === id);
+	const held = [...layout.clocks[clock].marks, ...layout.none].find((m) => m.id === id);
 	if (!held) return null;
-	const text = mark ? `${mark.name}: ${yearsLabel(mark.years)}` : `${held.name}: no high-impact papers`;
+	const text = `${held.name}: ${held.years == null ? 'no high-impact papers' : yearsLabel(held.years)}`;
 	return columnLabel(text, { x: held.x - s / 2, w: s }, { left: 4, right: layout.W - 4, y: held.y - s / 2 - 6, compact: layout.compact });
 }

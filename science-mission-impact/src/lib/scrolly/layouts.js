@@ -166,6 +166,12 @@ export function columnLabel(text, column, { left, right, y, compact = false }) {
 	return { text, x: anchor === 'start' ? column.x : anchor === 'end' ? column.x + column.w : cx, y, anchor };
 }
 
+/** A stage chart's title as lines: on a phone it breaks after its first comma (a titled layout leaves room for two). */
+export function breakTitle(title, compact) {
+	const cut = title?.indexOf(', ') ?? -1;
+	return !title ? [] : compact && cut > 0 ? [title.slice(0, cut + 1), title.slice(cut + 2)] : [title];
+}
+
 /**
  * The column under a pointer skimming the skyline (or the primer's bars): the nearest by x, within
  * `reach` (one year's footprint on the skyline), anywhere between the top of the chart and the

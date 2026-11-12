@@ -11,7 +11,7 @@
 	import { minorDollarTicks } from '$lib/charts/costaxis.js';
 	import DollarMinorTicks from '$lib/charts/DollarMinorTicks.svelte';
 	import CostAxisLabel from '$lib/charts/CostAxisLabel.svelte';
-	import { columnLabel } from './layouts.js';
+	import { breakTitle, columnLabel } from './layouts.js';
 
 	/**
 	 * layout: costLayout() over the compared divisions. hot: the pointed-at bar's mission id. cursor: the pointer's x over the lanes.
@@ -24,8 +24,7 @@
 	const [x0, x1] = $derived(layout.x.range());
 	const bw = $derived(compact ? 3 : 4);
 	// a phone is too narrow for the title on one line: it breaks after its first comma
-	const cut = $derived(title?.indexOf(', ') ?? -1);
-	const titleLines = $derived(!title ? [] : compact && cut > 0 ? [title.slice(0, cut + 1), title.slice(cut + 2)] : [title]);
+	const titleLines = $derived(breakTitle(title, compact));
 	// Each band's bars stand on its bottom edge, the divider under it, rather than on the layout's
 	// shelf (which sits higher, over room the hidden squares and the preview image use), so the
 	// axis and the divider are one line. Edges are whole pixels, so the band's border and the

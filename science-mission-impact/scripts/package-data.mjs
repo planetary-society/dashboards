@@ -59,7 +59,7 @@ import {
 import {
 	buildCitationSpread,
 	buildDivisionScopeStats,
-	buildFirstTopPaper,
+	buildFirstAfterScience,
 	buildMissionScopeStats,
 	buildTiers,
 	firstTopRow,
@@ -482,22 +482,9 @@ export function buildMissionDoc({
 			formulation
 		});
 	const lifetimeStats = scopeStats('lifetime');
-	// The overview's time to science counts only papers published once science began: the first
-	// lifetime top-10% paper dated on or after the science start at its own date's precision, on the
-	// same two clocks (null without a science start date, which no reading can place). A paper dated
-	// only to the month science began reads as published when it began, 0 years on that clock, rather
-	// than on the 1st of the month, before it.
-	const afterScience = scienceStart
-		? buildFirstTopPaper({
-				first: firstTopRow(lifetimeRows, 'top10_weight', pubdates, { from: scienceStart }),
-				failed: isFailure(statsMission.mission_status),
-				papers: lifetimeStats.papers,
-				scienceStart,
-				formulation
-			})
-		: null;
-	const firstAfterScience =
-		afterScience?.yearsFromScienceStart < 0 ? { ...afterScience, yearsFromScienceStart: 0 } : afterScience;
+	const failed = isFailure(statsMission.mission_status);
+	// the overview's time to science: only papers published once science began
+	const firstAfterScience = buildFirstAfterScience({ rows: lifetimeRows, pubdates, scienceStart, formulation, failed, papers: lifetimeStats.papers });
 	const windowStats = { ...scopeStats('window'), status: windowStatus, bounds, indices: windowIndices(windowRows.values(), bounds) };
 	// The full-mission window has no month-by-month companions: its cohort dates and measures only.
 	const fullCohort = statsMission.full_mission_cohort;
@@ -510,7 +497,6 @@ export function buildMissionDoc({
 	// The focus chart's measure: full-scope top-10% papers a year over the full window's years
 	const top10PerYear = yearlyTopRate({ top10: missionTop10(statsMission, 'full'), status: fullStats.status, bounds: fullStats.bounds });
 
-	const failed = isFailure(statsMission.mission_status);
 	const shortfall = isShortfall(statsMission.mission_status);
 	const launchYear = yearOf(launchDate);
 	const hasThumb = thumbExists(id);

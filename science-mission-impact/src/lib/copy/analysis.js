@@ -63,6 +63,16 @@ export function scienceOrder(time) {
 	return medians[0] === max && medians.at(-1) === min && once(max) && once(min) ? 'ends' : null;
 }
 
+/**
+ * The cheapest tier's missions that reached a first top-10% paper took about as long from formulation
+ * as the quickest of the tiers between it and the costliest: their medians within CLOSE_YEARS.
+ */
+export function cheapAsQuick(time) {
+	const [first, ...between] = time.tiers.slice(0, -1).map((t) => t.formulation.median);
+	const known = between.filter((m) => m != null);
+	return first != null && known.length > 0 && Math.abs(first - Math.min(...known)) < CLOSE_YEARS;
+}
+
 /** The costliest tier's median wait from formulation is longer than every other dated tier's. */
 export function slowestBuild(time) {
 	const last = time.tiers.at(-1);

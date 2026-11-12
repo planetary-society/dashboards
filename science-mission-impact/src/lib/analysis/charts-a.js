@@ -34,11 +34,11 @@ export const PER_LINE = 5;
  * width 0 (the server) the layout still says how tall a stage to reserve. A tier with no first
  * top-10% paper yet draws no bars.
  */
-export function timeLayout(tiers, time, width, { pitch = 54, only = null } = {}) {
+export function timeLayout(tiers, time, width) {
 	const labels = tiers.map((t) => tierLabel(t));
 	// tier labels are mostly digits, $ and M, wider than the average character
 	const left = Math.ceil(Math.max(...labels.map((l) => l.length)) * 7.6) + 14;
-	const thick = 14, thin = 7, gap = 4, top = 6;
+	const thick = 14, thin = 7, gap = 4, top = 6, pitch = 54;
 	const valueRoom = 52; // "11.5 yr" at 12px, and air
 	const values = time.tiers.flatMap((t) => (t.reached > 0 ? [t.formulation.median, t.science.median] : [])).filter((v) => v != null);
 	const x = scaleLinear()
@@ -54,14 +54,12 @@ export function timeLayout(tiers, time, width, { pitch = 54, only = null } = {})
 			return { median, x: Math.min(a, b), w: Math.abs(b - a), y, h, cy: y + h / 2, tx: out ? b - 5 : b + 5, anchor: out ? 'end' : 'start' };
 		};
 		const none = t.reached === 0;
-		// one measure alone (the story's steps): both draw as the same thick bar in the same place
-		const h = only ? thick : thick + gap + thin;
 		return {
 			label: labels[i],
 			none,
-			labelY: y0 + h / 2,
+			labelY: y0 + (thick + gap + thin) / 2,
 			formulation: none ? null : bar(t.formulation.median, y0, thick),
-			science: none ? null : only ? bar(t.science.median, y0, thick) : bar(t.science.median, y0 + thick + gap, thin)
+			science: none ? null : bar(t.science.median, y0 + thick + gap, thin)
 		};
 	});
 	const bottom = top + tiers.length * pitch - 8;

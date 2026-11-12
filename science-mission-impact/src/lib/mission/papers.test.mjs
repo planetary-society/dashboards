@@ -18,6 +18,7 @@ const ads = (b) => `https://scixplorer.org/abs/${encodeURIComponent(b)}/abstract
 function fixture() {
 	return {
 		bibcode: ['2004Sci...305..842P', '1998ApJ...500..525S', '2017Natur.545..456D', '2001AJ....121.2431A', '1995Icar..118....1B'],
+		doi: ['10.1126/science.1097', null, '10.1038/nature22', null, null],
 		year: [2004, 1998, 2017, null, 1995],
 		pubdate: ['2004-07-00', '1998-00-00', '2017-05-00', null, '1995-11-00'],
 		title: ['Cassini at Saturn', 'Maps of dust', 'A "quoted, comma" title', null, 'Icy moons'],
@@ -243,7 +244,7 @@ describe('toCsv', () => {
 		assert.equal(lines[0], CSV_HEADER.join(','));
 		assert.equal(
 			lines[0],
-			'bibcode,year,pubdate,title,first_author,citations,full_window_citations,top10_weight_full,top1_weight_full,shared_by,scix_url'
+			'bibcode,doi,year,pubdate,title,first_author,lifetime_citations,shared_by,scix_url'
 		);
 	});
 
@@ -252,12 +253,12 @@ describe('toCsv', () => {
 		assert.equal(lines.length, 6);
 		assert.equal(
 			lines[1],
-			'2004Sci...305..842P,2004,2004-07-00,Cassini at Saturn,"Porco, C.",900,400,0,0,1,https://scixplorer.org/abs/2004Sci...305..842P/abstract'
+			'2004Sci...305..842P,10.1126/science.1097,2004,2004-07-00,Cassini at Saturn,"Porco, C.",900,1,https://scixplorer.org/abs/2004Sci...305..842P/abstract'
 		);
-		// row 2: outside the full-mission cohort
-		assert.match(lines[3], /,300,,,,1,https:/);
+		// row 2: no first author
+		assert.match(lines[3], /,,300,1,https:/);
 		// row 3: no year, no pubdate, no title
-		assert.equal(lines[4], '2001AJ....121.2431A,,,,"Adams, J.",50,30,0.5,0,1,https://scixplorer.org/abs/2001AJ....121.2431A/abstract');	});
+		assert.equal(lines[4], '2001AJ....121.2431A,,,,,"Adams, J.",50,1,https://scixplorer.org/abs/2001AJ....121.2431A/abstract');	});
 
 	it('quotes a title holding a comma and a quote', () => {
 		const lines = toCsv(fixture(), ads).split('\r\n');
@@ -334,7 +335,7 @@ describe('the real hst papers file', { skip: !fs.existsSync(HST_PAPERS) && 'stat
 	const file = JSON.parse(fs.readFileSync(HST_PAPERS, 'utf8'));
 
 	it('has the columns this module reads, all the declared length', () => {
-		for (const key of ['bibcode', 'year', 'pubdate', 'title', 'first_author', 'citations', 'shared_by', 'full_window_citations', 'top10_weight_full', 'top1_weight_full', 'curated']) {
+		for (const key of ['bibcode', 'doi', 'year', 'pubdate', 'title', 'first_author', 'citations', 'shared_by', 'full_window_citations', 'top10_weight_full', 'top1_weight_full', 'curated']) {
 			assert.equal(file.columns[key]?.length, file.rows, `column ${key}`);
 		}
 	});

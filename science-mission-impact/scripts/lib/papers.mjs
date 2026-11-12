@@ -12,7 +12,7 @@ export const DICTIONARY_URL = 'https://dashboards.planetary.org/science-mission-
 export const PAPERS_ABOUT = 'Tracked peer-reviewed publications of one NASA science mission (id is the site mission ID), from Science Mission Impact by The Planetary Society. '
 	+ 'Columnar: each key in columns is an array of rows values, and one index is one paper in every column. Sorted by lifetime citations, most cited first, then bibcode. '
 	+ 'null means unavailable or outside the Active Mission Window, never zero; curated is 1 for a paper added by human-reviewed curation rather than returned by the query. '
-	+ 'Every column is defined in the dictionary.';
+	+ 'The dictionary defines every column the CSV exports share; citations is exported as lifetime_citations.';
 
 /**
  * Top-1% tie weight of a single paper against the division's pooled window
@@ -53,16 +53,18 @@ function comparePapers(a, b) {
  * @param {Set<string>} args.curatedBibcodes bibcodes the query did not return
  * @param {object|null} [args.fullTop1Cutoff] pooled_cutoffs.weights["1"] of the full-mission scope
  * @param {Map<string, string>} [args.pubdates] bibcode -> ADS pubdate, the date a first top-10% paper is read by
+ * @param {Map<string, string>} [args.dois] bibcode -> primary DOI
  */
-export function buildPapersFile({ id, asOf, lifetimeRows, fullRows = new Map(), curatedBibcodes, fullTop1Cutoff = null, pubdates = new Map() }) {
+export function buildPapersFile({ id, asOf, lifetimeRows, fullRows = new Map(), curatedBibcodes, fullTop1Cutoff = null, pubdates = new Map(), dois = new Map() }) {
 	const rows = [...lifetimeRows].sort(comparePapers);
 	// Named as the CSV columns and the dictionary name them, so the file explains itself. No lifetime
 	// top-10% column: the site publishes high-impact measures for the active window only.
-	const columns = { bibcode: [], year: [], pubdate: [], title: [], first_author: [], citations: [], shared_by: [],
+	const columns = { bibcode: [], doi: [], year: [], pubdate: [], title: [], first_author: [], citations: [], shared_by: [],
 		full_window_citations: [], top10_weight_full: [], top1_weight_full: [], curated: [] };
 	for (const row of rows) {
 		const fullRow = fullRows.get(row.bibcode) ?? null;
 		columns.bibcode.push(row.bibcode);
+		columns.doi.push(dois.get(row.bibcode) ?? null);
 		columns.year.push(row.year ?? null);
 		columns.pubdate.push(pubdates.get(row.bibcode) ?? null);
 		columns.title.push(row.title ?? null);

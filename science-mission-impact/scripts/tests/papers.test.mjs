@@ -63,7 +63,8 @@ describe('buildPapersFile', () => {
 		fullRows,
 		curatedBibcodes: new Set(['C-tie']),
 		fullTop1Cutoff: cutoff,
-		pubdates: new Map([['A-high', '2005-03-00'], ['B-low', '2006-00-00']])
+		pubdates: new Map([['A-high', '2005-03-00'], ['B-low', '2006-00-00']]),
+		dois: new Map([['A-high', '10.1000/a']])
 	});
 
 	it('sorts by citations descending, then bibcode', () => {
@@ -71,7 +72,7 @@ describe('buildPapersFile', () => {
 	});
 
 	it('writes the columns in the contract order', () => {
-		assert.deepEqual(Object.keys(file.columns), ['bibcode', 'year', 'pubdate', 'title', 'first_author', 'citations', 'shared_by', 'full_window_citations', 'top10_weight_full', 'top1_weight_full', 'curated']); // no lifetime top-10% column
+		assert.deepEqual(Object.keys(file.columns), ['bibcode', 'doi', 'year', 'pubdate', 'title', 'first_author', 'citations', 'shared_by', 'full_window_citations', 'top10_weight_full', 'top1_weight_full', 'curated']); // no lifetime top-10% column
 	});
 
 	it('describes itself and links the dictionary that defines its columns', () => {

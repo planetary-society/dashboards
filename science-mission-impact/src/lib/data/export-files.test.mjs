@@ -6,7 +6,7 @@ import { exportCatalog, buildExport } from './export-files.js';
 import { dataDictionary } from './dictionary.js';
 import { allMissionsCsv, clpsCsv, missionsCsv, publicationsCsv, toCsv } from '../mission/papers.js';
 
-const paper = { columns: { bibcode: ['2001Test....1....1A'], year: [2001], pubdate: ['2001-01-00'], title: ['A "quoted, café" title'], first_author: ['Test, A.'], citations: [12], shared_by: [2], full_window_citations: [3], top10_weight_full: [0.25], top1_weight_full: [null], curated: [0] } };
+const paper = { columns: { bibcode: ['2001Test....1....1A'], doi: ['10.1000/test'], year: [2001], pubdate: ['2001-01-00'], title: ['A "quoted, café" title'], first_author: ['Test, A.'], citations: [12], shared_by: [2], full_window_citations: [3], top10_weight_full: [0.25], top1_weight_full: [null], curated: [0] } };
 const mission = (id, papers = 1) => ({ id, shortTitle: id.toUpperCase(), name: `Mission ${id}`, lcc: 10, cost: 15, status: 'Completed', full: { papers, citations: 3, top10: 0.125, top1: null, status: 'available', bounds: { start: '2001-01-01', end: '2005-01-01' } }, lifetime: { papers, citations: 12, top10: 0.25, top1: null, status: 'available' }, indices: { h: 1, g: 1 } });
 const divisions = [{ slug: 'astro', missions: [mission('alpha'), mission('zero', 0)] }, { slug: 'planetary', missions: [mission('beta')] }, { slug: 'empty', missions: [] }];
 const landers = [{ shortTitle: 'LANDER', name: 'Lander', lcc: null, cost: 1, status: 'Failure', papers: { b: [], d: [], t: [] } }];
@@ -65,15 +65,18 @@ test('dictionary documents every CSV field and compact JSON column with snapshot
 		for (const field of fields) assert.ok(dictionary.fields[field], `missing definition for ${field}`);
 	}
 	// the publication JSON names its columns as the dictionary does, so every one is defined there
-	for (const key of Object.keys(paper.columns)) assert.ok(dictionary.fields[key], `missing definition for JSON column ${key}`);
+	// JSON-only names: the CSV exports drop these, or rename citations to lifetime_citations
+	const internal = ['citations', 'full_window_citations', 'top10_weight_full', 'top1_weight_full'];
+	for (const key of internal) assert.equal(dictionary.fields[key], undefined, key);
+	for (const key of Object.keys(paper.columns).filter((k) => !internal.includes(k))) assert.ok(dictionary.fields[key], `missing definition for JSON column ${key}`);
 	assert.equal(dictionary.paperJson, undefined);
 	assert.match(dictionary.fields.adjusted_lcc, /millions of 2025/);
-	assert.match(dictionary.fields.full_window_citations, /4 calendar years/);
+	assert.match(dictionary.scopes.active, /following 3 calendar years/);
 	for (const gone of ['lifetime_top10', 'lifetime_top1', 'top10_weight_lifetime']) assert.equal(dictionary.fields[gone], undefined, gone);
 	assert.match(dictionary.scopes.lifetime, /no top-10% or top-1% measure/);
 	const changed = dataDictionary({ ...site, costBaseYear: 2030, fullPolicy: { ...site.fullPolicy, citationYears: 2 } });
 	assert.match(changed.fields.adjusted_lcc, /2030/);
-	assert.match(changed.fields.full_window_citations, /3 calendar years/);
+	assert.match(changed.scopes.active, /following 2 calendar years/);
 });
 
 test('download page compiles with static anchors and safely embedded dataset JSON-LD', async () => {

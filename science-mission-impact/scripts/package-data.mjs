@@ -366,8 +366,8 @@ export function wikipediaOf(url, id) {
  * @param {object} args.run per-division blocks: scopes, summary and share denominators
  * @param {{into: Map<number, number>, seen: Set<string>}} args.divisionCitations
  * @param {Map<string, string[]>} args.citationOverrides the representative citing list of every division paper
- * @param {{cited: string[], curated: Set<string>, pubdates: Map<string, string>, authors: Map<string, object>}} args.ownCitations the mission's
- *   packaged papers, its curated records, every record's ADS pubdate and byline authors
+ * @param {{cited: string[], curated: Set<string>, pubdates: Map<string, string>, dois: Map<string, string>, authors: Map<string, object>}} args.ownCitations the mission's
+ *   packaged papers, its curated records, every record's ADS pubdate, primary DOI and byline authors
  */
 export function buildMissionDoc({
 	mission,
@@ -410,7 +410,7 @@ export function buildMissionDoc({
 
 	// --- lifetime citations by citing year (aggregates only) ------------------
 	const missionCitationYears = new Map();
-	const { cited, curated: curatedBibcodes, pubdates } = ownCitations;
+	const { cited, curated: curatedBibcodes, pubdates, dois } = ownCitations;
 	let divisionEdges = 0;
 	if (lifetimeRows.length > 0) {
 		// One pass, two sinks: the mission's own citing years, and the
@@ -541,7 +541,8 @@ export function buildMissionDoc({
 		fullRows,
 		curatedBibcodes,
 		fullTop1Cutoff: scopeFull.pooled_cutoffs?.weights?.['1'] ?? null,
-		pubdates
+		pubdates,
+		dois
 	});
 	assertColumnLengths(papersFile);
 	// Per-paper citations by scope; null in full_window_citations marks a row outside that cohort. The prime window is in
@@ -886,6 +887,7 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 				cited: [...included],
 				curated: new Set(records.filter((r) => r?.source && r.source !== 'query').map((r) => r.bibcode)),
 				pubdates: new Map(records.map((r) => [r.bibcode, r.pubdate])),
+				dois: new Map(records.map((r) => [r.bibcode, r.doi_primary ?? r.doi?.[0] ?? null])),
 				authors: new Map(records.filter((r) => bylined.has(r.bibcode)).map((r) => [r.bibcode, recordAuthors(r)])),
 				maps: affiliationMaps(affiliations, institutions, id, placed)
 			});

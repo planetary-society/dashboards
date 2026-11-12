@@ -707,6 +707,7 @@ export interface PapersFile {
 	// named as the CSV columns are
 	columns: {
 		bibcode: string[];
+		doi: (string | null)[]; // primary DOI from SciX/ADS
 		year: (number | null)[];
 		pubdate: (string | null)[]; // ADS pubdate, month resolution ("2003-01-00"); what a first top-10% paper is dated by
 		title: (string | null)[];

@@ -188,14 +188,12 @@ export function rowsFor(columns, index, start, end, scope = 'full') {
 
 export const CSV_HEADER = [
 	'bibcode',
+	'doi',
 	'year',
 	'pubdate',
 	'title',
 	'first_author',
-	'citations',
-	'full_window_citations',
-	'top10_weight_full',
-	'top1_weight_full',
+	'lifetime_citations',
 	'shared_by',
 	'scix_url'
 ];
@@ -222,14 +220,12 @@ export function toCsv(columns, adsUrl = (b) => b, index = null) {
 		const i = index ? index[k] : k;
 		lines[k + 1] = [
 			csvField(columns.bibcode[i]),
+			csvField(columns.doi[i]),
 			csvField(columns.year[i]),
 			csvField(columns.pubdate[i]),
 			csvField(columns.title[i]),
 			csvField(columns.first_author[i]),
 			csvField(columns.citations[i]),
-			csvField(columns.full_window_citations[i]),
-			csvField(columns.top10_weight_full[i]),
-			csvField(columns.top1_weight_full[i]),
 			csvField(columns.shared_by[i]),
 			csvField(adsUrl(columns.bibcode[i]))
 		].join(',');

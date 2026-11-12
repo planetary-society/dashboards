@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { failureGrid, timeLayout } from './charts-a.js';
+import { textWidth } from './charts-b.js';
 
 const failures = {
 	tiers: [
@@ -61,4 +62,25 @@ test('a negative median extends the axis left of zero and labels outward', () =>
 	const { science } = layout.rows[0];
 	assert.equal(science.x + science.w, layout.x(0));
 	assert.equal(science.anchor, 'end');
+});
+
+test('with ci, the value sits centred in its whisker, the line broken around it', () => {
+	const withCi = { tiers: [{ ...time.tiers[0], formulation: { median: 5.8, min: 3.4, ci: [3.9, 12.6] }, science: { median: 2.28, min: 1, ci: [2.2, 2.4] } }] };
+	const layout = timeLayout([tiers[0]], withCi, 460, { ci: true });
+	assert.ok(layout.x.domain()[1] >= 12.6);
+	const { formulation, science } = layout.rows[0];
+	const [x0, x1] = [layout.x(3.9), layout.x(12.6)];
+	assert.deepEqual([formulation.whisker.x0, formulation.whisker.x1], [x0, x1]);
+	assert.equal(formulation.tx, (x0 + x1) / 2);
+	assert.equal(formulation.anchor, 'middle');
+	// two pieces from the caps, with a gap around the value wider than "5.8 yr"
+	const [[a0, a1], [b0, b1]] = formulation.whisker.segments;
+	assert.deepEqual([a0, b1], [x0, x1]);
+	assert.ok(b0 - a1 >= textWidth('5.8 yr', 12) && a1 < formulation.tx && b0 > formulation.tx);
+	// a whisker too short to hold its value: whole, the value past its outer end
+	assert.deepEqual(science.whisker.segments, [[layout.x(2.2), layout.x(2.4)]]);
+	assert.equal(science.tx, layout.x(2.4) + 5);
+	assert.equal(science.anchor, 'start');
+	// off by default (the Analysis page)
+	assert.equal(timeLayout([tiers[0]], withCi, 460).rows[0].formulation.whisker, null);
 });

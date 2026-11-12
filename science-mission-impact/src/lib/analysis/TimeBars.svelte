@@ -2,7 +2,7 @@
 	// Median years to each tier's first top-10% paper, two ways on one axis: from the start of
 	// formulation (thick) and from the start of science (thin). Geometry in timeLayout; its height
 	// doesn't depend on width, so the server reserves the stage and nothing shifts on hydration.
-	import { int, range, years } from '$lib/format.js';
+	import { int, range, years, yearsLabel } from '$lib/format.js';
 	import { timeLayout } from './charts-a.js';
 	import { tierLabel } from './tiers.js';
 
@@ -11,19 +11,19 @@
 	 * other measure out (the story's one step each), and the science bars, alone, are hatched so they
 	 * read as the other measure; height: fit into this many px (the story's stage): rows tighten from
 	 * 54 to 28px. title: the story's, top right
-	 * over the plot like its other charts, in place of the key.
+	 * over the plot like its other charts, in place of the key. ci: draw each median's 95% interval
+	 * as a white whisker over its bar (the story's).
 	 */
-	let { tiers, time, only = null, height = null, title = null } = $props();
+	let { tiers, time, only = null, height = null, title = null, ci = false } = $props();
 	const uid = $props.id();
 	let width = $state(0);
 	// the key (or title) above the bars, as measured, then 66px for the gap under it and the axis
 	let head = $state(16);
 	const pitch = $derived(height ? Math.max(28, Math.min(54, Math.floor((height - head - 66) / tiers.length))) : 54);
-	const layout = $derived(timeLayout(tiers, time, width, { pitch, only }));
+	const layout = $derived(timeLayout(tiers, time, width, { pitch, only, ci }));
 	const off = (key) => only != null && only !== key;
-	const yr = (v) => `${years(v)} yr`;
-	// a median's 95% interval, for the screen-reader table only (the bars draw no whiskers)
-	const interval = (ci) => range(ci, years, ' to ');
+	// a median's 95% interval, for the screen-reader table (drawn as whiskers only with `ci`)
+	const interval = (pair) => range(pair, years, ' to ');
 </script>
 
 <div class="time-bars">
@@ -60,7 +60,14 @@
 							{#if bar}
 								{@const faded = off(k ? 'science' : 'formulation')}
 								<rect class="bar" class:thin={k === 1 && !only} class:off={faded} style:fill={k === 1 && only ? `url(#hatch-${uid})` : null} x={bar.x} y={bar.y} width={bar.w} height={bar.h} />
-								<text class="value" class:thin={k === 1 && !only} class:off={faded} x={bar.tx} y={bar.cy} dy="0.32em" text-anchor={bar.anchor}>{yr(bar.median)}</text>
+								{#if bar.whisker}
+									{@const { x0, x1, segments } = bar.whisker}
+									<g class="whisker" class:off={faded}>
+										{#each segments as [s0, s1], j (j)}<line x1={s0} x2={s1} y1={bar.cy} y2={bar.cy} />{/each}
+										{#each [x0, x1] as cx, j (j)}<line x1={cx} x2={cx} y1={bar.y - 2} y2={bar.y + bar.h + 2} />{/each}
+									</g>
+								{/if}
+								<text class="value" class:thin={k === 1 && !only} class:off={faded} x={bar.tx} y={bar.cy} dy="0.32em" text-anchor={bar.anchor}>{yearsLabel(bar.median)}</text>
 							{/if}
 						{/each}
 					{/if}
@@ -128,6 +135,8 @@
 	.grid { stroke: var(--shadow); }
 	.bar { fill: var(--neptune); }
 	.bar.thin { fill: var(--neptune-mid); }
-	.bar, .value { transition: opacity 400ms linear; }
+	/* white like the overview's cost-group whiskers (BinsChart) */
+	.whisker line { stroke: var(--white); stroke-width: 1.5px; }
+	.bar, .value, .whisker { transition: opacity 400ms linear; }
 	.off { opacity: 0; }
 </style>

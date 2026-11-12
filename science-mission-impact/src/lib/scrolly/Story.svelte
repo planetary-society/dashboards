@@ -308,7 +308,7 @@
 				{/if}
 				{#if reached >= FAILURE}
 					<div class="time-panel" class:visible={timed} aria-hidden="true">
-						<TimeBars tiers={site.tiers} time={site.time} only={index === TIME_SCI ? 'science' : 'formulation'} title="Median time to first high-impact paper from {index === TIME_SCI ? 'start of science operations' : 'project start'}" height={H} />
+						<TimeBars tiers={site.tiers} time={site.time} only={index === TIME_SCI ? 'science' : 'formulation'} title="Median time to first high-impact paper from {index === TIME_SCI ? 'start of science operations' : 'project start'}" height={H} ci />
 					</div>
 				{/if}
 				{#if reached >= TOP && focusL}
@@ -489,6 +489,7 @@
 			<p class="part neptuneBlue"><strong>Time to high-impact science</strong></p>
 			<p>Lower-cost missions commonly take about {years(timeFirst.formulation.median)} years to produce a high-impact science paper, when measured from the start of project formulation to the paper’s publication date.</p>
 			<p>More expensive missions tend to take longer due to longer development and transit times before science operations can begin.</p>
+			<p class="aside">Lines show a 95% interval for each median.</p>
 		</div></section>
 		<!-- TIME_SCI: the same groups, counted from the start of science operations -->
 		<section data-step><div class="step">

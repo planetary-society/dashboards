@@ -646,8 +646,8 @@ export interface Mission {
 		program: string | null;
 		target: string | null;
 		launchVehicle: string | null;
-		wikipedia: string 		firstSciencePublication: string | null; // the catalog's First Science Publication Identifier: a DOI or ADS bibcode, as entered
-| null; // https Wikipedia article URL, checked by the packager
+		wikipedia: string | null; // https Wikipedia article URL, checked by the packager
+		firstSciencePublication: string | null; // the catalog's First Science Publication Identifier: a DOI or ADS bibcode, as entered
 		dates: { formulation: string | null; launch: string | null; scienceStart: string | null; primeEnd: string | null; missionEnd: string | null };
 	};
 	indices: MissionIndices;

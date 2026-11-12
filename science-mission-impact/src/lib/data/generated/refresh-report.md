@@ -32,11 +32,7 @@ All source, membership, window, paper-count, rank and citation-coverage checks p
 - Missions added: none
 - Missions removed: none
 
-| Figure                        | Before    | After     |
-| ----------------------------- | --------- | --------- |
-| citations · globally distinct | 6,398,080 | 6,398,111 |
-| Astrophysics · citations      | 3,476,238 | 3,476,276 |
-| Planetary Science · citations | 597,056   | 597,048   |
+No change in totals, cutoffs or story figures.
 
 ## Data notes
 

@@ -487,8 +487,9 @@
 		<!-- TIME_FORM: years to a first high-impact paper, counted from the start of formulation -->
 		<section data-step><div class="step">
 			<p class="part neptuneBlue"><strong>Time to high-impact science</strong></p>
-			<p>Lower-cost missions commonly take about {years(timeFirst.formulation.median)} years to produce a high-impact science paper, when measured from the start of project formulation to the paper’s publication date.</p>
-			<p>More expensive missions tend to take longer due to longer development and transit times before science operations can begin.</p>
+			<p>Some very low-cost missions can result in rapid impactful science results.</p><p>But the median duration was about {years(timeFirst.formulation.median)} from start of formulation to the first high-impact paper’s publication date.</p>
+			<p>Mid-cost missions commonly return high-impact science about as quickly.</p>
+			<p>Higher cost missions tend to take longer due to lengthy development and transit times before science operations begin.</p>
 			<p class="aside">Lines show a 95% interval for each median.</p>
 		</div></section>
 		<!-- TIME_SCI: the same groups, counted from the start of science operations -->

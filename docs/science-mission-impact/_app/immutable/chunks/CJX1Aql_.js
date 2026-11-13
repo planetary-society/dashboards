@@ -1,0 +1,1 @@
+import"./-OhuSHLA.js";import{n as e}from"./DMJW1hJy.js";import{_ as t,b as n}from"./BRuh2EsO.js";var r={get scope(){return n.data.scope??`full`},get top(){return this.scope===`full`&&n.url.searchParams.get(`top`)===`1`?1:10}};function i(){let r=t(n.url,n.data.scope);if(r)return e(r,{replaceState:!0,noScroll:!0,keepFocus:!0})}export{r as n,i as t};

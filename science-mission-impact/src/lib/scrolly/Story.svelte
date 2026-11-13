@@ -376,7 +376,7 @@
 			<ol class="questions">
 				<li>Does scientific impact per-dollar vary with mission cost?</li>
 				<li>Do lower cost missions fail more often?</li>
-				<li>How does time to science with cost?</li>
+				<li>How does time to science change with cost?</li>
 				<li>What is the scientific productivity of commercial lunar landers?</li>
 			</ol>
 		</div></div>

@@ -14,7 +14,7 @@
     "Files at these URLs are replaced by later snapshots. The manifest version identifies the current export contents; these URLs are not a historical archive."
   ],
   "scopes": {
-    "active": "Mission-specific publication windows, from the month after science starts through the month 2 years after the mission ends (never shorter than 2 years), cut at the latest date that is mature on November 11, 2026. Exact exported boundaries are shown on each mission page. Each paper’s citations cover its publication year and the following 3 calendar years. Internal JSON uses “full” for this scope.",
+    "active": "Mission-specific publication windows, from the month after science starts through the month two years after the mission ends (never shorter than two years), cut at the latest date that is mature on Nov. 11, 2026. Exact exported boundaries are shown on each mission page. Each paper’s citations cover its publication year and the following 3 calendar years. Internal JSON uses “full” for this scope.",
     "lifetime": "Every tracked publication and every recorded citation through the 2026-11-11 snapshot. The lifetime scope reports papers and citations only, with no top-10% or top-1% measure: lifetime counts favor older papers, so high-impact comparisons use the Active Mission Window."
   },
   "schemas": {
@@ -111,8 +111,8 @@
     "name": "Mission display name.",
     "launch_year": "Catalog launch year; blank when unknown.",
     "type": "Catalog mission type.",
-    "lcc": "Reported prime-mission life-cycle cost, in millions of US dollars before inflation adjustment. Includes documented partner contributions; excludes extended-mission spending.",
-    "adjusted_lcc": "Prime-mission life-cycle cost in millions of 2025 US dollars.",
+    "lcc": "Reported prime-mission life-cycle cost, in millions of U.S. dollars before inflation adjustment. Includes documented partner contributions; excludes extended-mission spending.",
+    "adjusted_lcc": "Prime-mission life-cycle cost in millions of 2025 U.S. dollars.",
     "status": "Catalog mission status, including full or partial failures where recorded.",
     "selection": "Catalog selection strategy as exported.",
     "formulation_start": "Project formulation start date, or selection date for competed missions, YYYY-MM-DD when known.",
@@ -127,7 +127,7 @@
     "lifetime_papers": "Every tracked publication associated with the mission as of the snapshot.",
     "lifetime_citations": "All recorded citations as of the snapshot: to the mission’s tracked publications in mission summaries, or to the one publication in publication exports.",
     "h_index": "Lifetime h-index: the largest h for which h tracked papers each have at least h citations.",
-    "g_index": "Lifetime g-index: the largest g for which the g most cited tracked papers have at least g² citations in total.",
+    "g_index": "Lifetime g-index: the largest g for which the g most-cited tracked papers have at least g² citations in total.",
     "url": "Canonical active-window mission page URL.",
     "bibcode": "SciX/ADS publication identifier. Deduplicate by bibcode when counting distinct publications across missions.",
     "doi": "Primary DOI from SciX/ADS. Blank when the record has none.",

@@ -1,7 +1,7 @@
 // Rows for the key-measures tables, one builder per page. Pure (no $lib, no $app) so node can
 // test it: a hint carries its methods anchor and the table turns that into a link.
 import { FOOTNOTES, noteText } from './footnotes.js';
-import { int, money, weight, longDate } from '../format.js';
+import { int, money, weight, apDate } from '../format.js';
 
 /** h-index is a count; m-index runs 0–12 and needs its decimal. */
 export function indexValue(index, v) {
@@ -31,7 +31,7 @@ export function missionLine(meta, site) {
 		meta.type,
 		SELECTION[meta.selection],
 		MANAGEMENT[meta.management],
-		meta.dates.launch && `Launched on ${longDate(meta.dates.launch)}`,
+		meta.dates.launch && `Launched on ${apDate(meta.dates.launch)}`,
 		status && status !== 'unknown' && status
 	].filter(Boolean);
 	const cost = meta.lcc != null || meta.cost != null ? `LCC: ${money(meta.lcc)}/${money(meta.cost)} (${site.costBaseYear} $)` : null;
@@ -47,8 +47,8 @@ export function scopeSpans(mission, site) {
 	const b = mission.full?.spread && mission.full.bounds?.status === 'available' && mission.full.bounds.start ? mission.full.bounds : null;
 	const first = mission.facts?.publicationYears?.[0];
 	return {
-		full: b && `For ${mission.name}, papers published ${longDate(b.start)} to ${longDate(b.end)}.`,
-		lifetime: first && `For ${mission.name}, papers published from ${first} to ${longDate(site.asOf)}.`
+		full: b && `For ${mission.name}, papers published from ${apDate(b.start)}, to ${apDate(b.end)}.`,
+		lifetime: first && `For ${mission.name}, papers published from ${first} to ${apDate(site.asOf)}.`
 	};
 }
 

@@ -66,7 +66,7 @@
 	{#if d.affiliations}
 		<section id="affiliations" class="part" aria-labelledby="affiliations-title">
 			<h2 id="affiliations-title" class="part-title">Institutional contributions<Hint label="this map" {...tip('affiliations')} /></h2>
-			<p class="meta">Every tracked publication to date, each counted once however many {d.name} missions it names.</p>
+			<p class="meta">Every tracked publication to date, each counted once, however many {d.name} missions it names.</p>
 			<AffiliationMap summary={d.affiliations} url={mapsUrl('divisions', d.slug)} />
 		</section>
 	{/if}

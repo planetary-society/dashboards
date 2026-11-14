@@ -1,6 +1,6 @@
 <script>
 	import { methodsHref, asset } from '$lib/paths.js';
-	import { longDate } from '$lib/format.js';
+	import { apDate } from '$lib/format.js';
 
 	let { site } = $props();
 
@@ -56,7 +56,7 @@
 				<a href={methodsHref()}>How we did this</a>
 			</p>
 			<p class="meta">
-				Data as of {longDate(site.asOf)}.<br />
+				Data as of {apDate(site.asOf)}.<br />
 				{site.attribution.acknowledgement}
 				Mission and cost data: {site.attribution.missionMetadataSource}.
 			</p>

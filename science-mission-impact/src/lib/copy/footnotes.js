@@ -2,7 +2,7 @@
 // Entries are functions of the run's window policy (plus fullPolicy, asOf, costBaseYear,
 // referenceCost and the page's scope) so no number is typed into copy. `anchor` is the section of /methods that explains it.
 
-import { longDate, moneyWords, spell } from '../format.js';
+import { apDate, moneyWords, spell } from '../format.js';
 import { calendarYears, fullWindowLabel, fullWindowText, ordinal } from './window.js';
 
 export const FOOTNOTES = {
@@ -13,7 +13,7 @@ export const FOOTNOTES = {
 	},
 	top1: {
 		anchor: '',
-		text: () => 'Top 1%: among the 1% most-cited papers from this division’s missions within the selected window, all publication years ranked together.'
+		text: () => 'Top-1% papers: the 1% most-cited papers from this division’s missions within the selected window, all publication years ranked together.'
 	},
 	full: {
 		anchor: 'windows',
@@ -44,7 +44,7 @@ export const FOOTNOTES = {
 		anchor: '',
 		text: (p) =>
 			p.scope === 'lifetime'
-				? `m-index: a mission’s h-index divided by the years since its first peer-reviewed paper. It falls every 1 January even when nothing else changes; the figure shown is as of ${longDate(p.asOf)}. It also discounts the long operating life that larger missions paid for.`
+				? `m-index: a mission’s h-index divided by the years since its first peer-reviewed paper. It falls every Jan. 1, even when nothing else changes; the figure shown is as of ${apDate(p.asOf)}. It also discounts the long operating life that larger missions paid for.`
 				: 'm-index: the window’s h-index divided by the window’s length in years. It discounts the long operating life that larger missions paid for.'
 	},
 	hindex: {

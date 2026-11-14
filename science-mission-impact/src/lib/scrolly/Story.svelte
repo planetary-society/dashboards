@@ -365,7 +365,7 @@
 		<!-- MOTIVATION: the text rises over the title's thumbnails, still drifting, and takes the title's
 		     place; it pauses in the step's frame, centred on the screen. -->
 		<section data-step data-bleed><div><div class="step panel">
-			<p>As historic proposed cuts lead to delays and mission cancelations, NASA is again looking to <strong class="neptuneBlue">smaller and cheaper projects</strong> to replace them.</p>
+			<p>As historic proposed cuts lead to delays and mission cancellations, NASA is again looking to <strong class="neptuneBlue">smaller and cheaper projects</strong> to replace them.</p>
 			<p>Could that work?</p>
 		</div></div>
 		</section>
@@ -374,8 +374,8 @@
 		<section data-step data-bleed><div><div class="step panel">
 			<p>We asked four questions:</p>
 			<ol class="questions">
-				<li>Does scientific impact per-dollar vary with mission cost?</li>
-				<li>Do lower cost missions fail more often?</li>
+				<li>Does scientific impact per dollar vary with mission cost?</li>
+				<li>Do lower-cost missions fail more often?</li>
 				<li>How does time to science change with cost?</li>
 				<li>What is the scientific productivity of commercial lunar landers?</li>
 			</ol>
@@ -404,7 +404,7 @@
 		</div></section>
 		<!-- TOP: the same bars, the top 10% in blue; the one definition every high-impact chart but the time swarm uses -->
 		<section data-step><div class="step">
-			<p>We consider a paper to be <span class="neptuneBlue"><strong><em>high-impact</em></strong></span> when it has more citations than 90% of the other papers in its field in our data set.</p>
+			<p>We consider a paper to be <span class="neptuneBlue"><strong><em>high-impact</em></strong></span> when it has more citations than 90% of the other papers in its field in our dataset.</p>
 			{#if primer}<p class="aside">In {field}, that means papers with {primer.cutoff} citations or more are high-impact.</p>{/if}
 		</div></section>
 		<!-- ONE and BARS always render, so later steps keep their numbers; with no focus division they're blank -->
@@ -412,7 +412,7 @@
 		<section data-step><div class="step">
 			{#if focus && focusCount}
 				<p class="part neptuneBlue"><strong>The rate of high-impact papers by cost</strong></p>
-				<p>Here, {int(focusCount)} {field} missions are ordered left-to-right by their total cost, adjusted for inflation.</p>
+				<p>Here, {int(focusCount)} {field} missions are ordered left to right by their total cost, adjusted for inflation.</p>
 				<p class="aside"><span class="key mark-lost" role="img" aria-label="A red X"></span> denotes a total mission failure; <span class="key mark-partial" role="img" aria-label="a single red stroke"></span> denotes a partial failure.</p>
 			{/if}
 		</div></section>
@@ -432,13 +432,13 @@
 		<section data-step><div class="step">
 			<p>Missions below {moneyWords(story.referenceCost)} are considered very low cost.</p>
 			{#if smallStandouts.length}<p>Some stand out: {listify(smallStandouts.map((d) => `${d.bestSmall.name} (${d.name})`))} <strong>produced high-impact papers at a rate comparable to much more expensive missions</strong>.</p>{/if}
-			<p>Most produce <strong>few or no high-impact papers.</strong></p>
+			<p>Most produce <strong>few or no high-impact papers</strong>.</p>
 		</div></section>
 		<!-- CITES: DOLLAR_DIVISION's missions by cost and by the citations they drew, before per dollar -->
 		<section data-step><div class="step">
 			{#if citesL}
 				<p><span class="neptuneBlue"><strong>Scientific impact and cost</strong></span></p>
-				<p>There is a clear relationship between citation output for missions and cost. More expensive missions tend to generate more scientific impact.</p>
+				<p>There is a clear relationship between missions’ citation output and cost. More expensive missions tend to generate more scientific impact.</p>
 			{/if}
 		</div></section>
 		<!-- SCATTER, DOWN, FLAT and FIT always render, so later steps keep their numbers; without DOLLAR_DIVISION data they're blank -->
@@ -492,14 +492,13 @@
 		</div></section>
 		<!-- FAILURE: every costed mission by cost group, up if it met its goals, down if it failed or fell short -->
 		<section data-step><div class="step">
-			<p class="part neptuneBlue"><strong>Mission failure rates
-			</strong></p>
+			<p class="part neptuneBlue"><strong>Mission failure rates</strong></p>
 			<p>Very low-cost missions (the first column) have a full or partial failure rate of {tenths(failure.under.rate)}.</p><p>For mid-cost missions, between {moneyWords(mid.lo)} and {moneyWords(mid.hi)}, it is {tenths(site.failureTiers[1].rate)}; above {moneyWords(mid.hi)}, {tenths(site.failureTiers[2].rate)}.</p>
 		</div></section>
 		<!-- TIME_FORM: years to a first high-impact paper, counted from the start of formulation -->
 		<section data-step><div class="step">
 			<p class="part neptuneBlue"><strong>Time to high-impact science</strong></p>
-			{#if asQuick}<p>The median time from project start to its first high-impact paper is roughly the same for very low-cost and mid-cost missions.</p>{:else if timeFirst.formulation.median != null && timeMid.formulation.median != null}<p>The median time from project start to a first high-impact paper was {years(timeFirst.formulation.median)} years for very low-cost missions and {years(timeMid.formulation.median)} years for mid-cost missions.</p>{/if}
+			{#if asQuick}<p>The median time from project start to a first high-impact paper is roughly the same for very low-cost and mid-cost missions.</p>{:else if timeFirst.formulation.median != null && timeMid.formulation.median != null}<p>The median time from project start to a first high-impact paper was {years(timeFirst.formulation.median)} years for very low-cost missions and {years(timeMid.formulation.median)} years for mid-cost missions.</p>{/if}
 			{#if timeFirst.without > 0}<p>Of the missions below {moneyWords(story.referenceCost)}, {spell(timeFirst.without)} returned no high-impact science papers.</p>{/if}
 			{#if slowest}<p>The most expensive missions generally take longer to return high-impact science due to lengthy development and transit times.</p>{/if}
 			<p class="aside">White lines mark median values. Shading indicates the 95% interval.</p>
@@ -516,7 +515,7 @@
 		<!-- CLPS_COMPARE: the comparators by cost and purpose, then each lander at the same age -->
 		<section data-step data-scrub><div class="step">
 			{#if clpsCompared.length}
-				<p>Compare CLPS output with {spell(clpsCompared.length)} science-first NASA missions. These also had short mission durations and mixed experimental technology demonstration and science.</p>
+				<p>Compare CLPS output with {spell(clpsCompared.length)} science-first NASA missions. These also had short mission durations and mixed experimental technology demonstration with science.</p>
 				{#if behindEach && likeOne}<p><strong>So far, CLPS landers are trailing in scientific productivity</strong>.</p>{/if}
 			{/if}
 		</div></section>
@@ -528,7 +527,7 @@
 			<ul class="answers">
 				<li>
 					<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M15 8.5c-.6-.9-1.7-1.5-3-1.5-1.9 0-3 1-3 2.4 0 3.2 6 1.8 6 5 0 1.4-1.2 2.6-3 2.6-1.4 0-2.6-.6-3.2-1.6M12 5v2M12 17v2" /></svg>
-					<span>{#if midMost}<strong>Mid-cost missions tend to return the best efficiency:</strong> in most divisions they matched or beat the most expensive missions on science per dollar. Very low-cost missions do not provide a clear advantage, and neither do very expensive ones.{:else}<strong>Very low-cost missions do not provide a clear advantage in science per dollar, and neither do very expensive ones.</strong>{/if}</span>
+					<span>{#if midMost}<strong>Mid-cost missions tend to return the best efficiency:</strong> In most divisions they matched or beat the most expensive missions on science per dollar. Very low-cost missions do not provide a clear advantage, and neither do very expensive ones.{:else}<strong>Very low-cost missions do not provide a clear advantage in science per dollar, and neither do very expensive ones.</strong>{/if}</span>
 				</li>
 				<li>
 					<span class="icon key mark-lost" aria-hidden="true"></span>

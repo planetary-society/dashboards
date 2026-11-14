@@ -2,7 +2,7 @@
 	import Seo from '$lib/ui/Seo.svelte';
 	import EntityHeader from '$lib/ui/EntityHeader.svelte';
 	import { fullWindowLabel } from '$lib/copy/window.js';
-	import { fileSize, int, listify, longDate, spell } from '$lib/format.js';
+	import { apDate, fileSize, int, listify, spell } from '$lib/format.js';
 	import { exportUrl } from '$lib/paths.js';
 
 	let { data } = $props();
@@ -36,10 +36,10 @@
 	<EntityHeader name="Download" />
 	<div class="body">
 		<section>
-			<h2>Entire dataset (data as of {longDate(manifest.asOf)}.)</h2>
+			<h2>Entire dataset (data as of {apDate(manifest.asOf)})</h2>
 			<div class="item">
 				{@render download('science-mission-impact-missions.csv', 'All missions summary')}
-				<p>Each mission across every division: with LCC, status, selection, and key dates, plus its paper count, citation count,
+				<p>Every mission in every division, with its life-cycle cost (LCC), status, selection, and key dates, plus its paper count, citation count,
 					and high-impact papers in the {fullWindowLabel} and over its lifetime. {int(files.get('science-mission-impact-missions.csv').rows)} rows.</p>
 			</div>
 			<div class="item">

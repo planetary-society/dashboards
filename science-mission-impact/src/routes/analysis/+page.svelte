@@ -39,7 +39,7 @@
 	const lowest = $derived(smallLowest(g));
 	const overWins = $derived(favorsOver(site.perDollar));
 
-	// Divisional cost-sensitivity: the division whose small missions did best, the divisions whose
+	// Divisional cost sensitivity: the division whose small missions did best, the divisions whose
 	// small missions hold less than one top-10% paper between them, and every other division's leading tier.
 	const eff = $derived(a.efficiency);
 	const topSmall = $derived(topUnder(eff));
@@ -91,7 +91,7 @@
 		{ text: 'National Academies Press (2017). Powering Science: NASA’s Large Strategic Science Missions.', href: 'https://doi.org/10.17226/24857' },
 		{ text: 'National Academies Press (2023). Origins, Worlds, and Life.', href: 'https://doi.org/10.17226/26522' },
 		{ text: 'CHIPS and Science Act, H.R. 4346, 117th Congress (2022).', href: 'https://www.congress.gov/bill/117th-congress/house-bill/4346' },
-		{ text: 'Fiore, F., & Elvis, M. (2025). Space Policy, 101713.', href: 'https://doi.org/10.1016/j.spacepol.2025.101713' },
+		{ text: 'Fiore, F., & Elvis, M. (2026). Space science & the space economy. Space Policy, 75, 101713.', href: 'https://doi.org/10.1016/j.spacepol.2025.101713' },
 		{ text: 'Kim, M. J. (2025). Acta Astronautica, 232, 633–639.' }
 	];
 
@@ -100,7 +100,7 @@
 		['measure', 'Measuring impact'],
 		['time', 'Time to science'],
 		['impact', 'Science impact'],
-		['divisions', 'Divisional cost-sensitivity'],
+		['divisions', 'Divisional cost sensitivity'],
 		['standouts', 'Success at low cost'],
 		['selection', 'Selection strategies'],
 		['conclusions', 'Maximizing science per dollar'],
@@ -135,17 +135,17 @@
 					of a balanced program portfolio.</p>
 				<p>Programmatic experiments aimed at reducing cost and development time with low-cost missions are underway.
 					NASA’s CubeSat, SIMPLEx, and Commercial Lunar Payload Services (CLPS) programs have produced dozens of
-					low-cost missions across all science divisions since the late 2000s. Ride shares, commercial hardware, reusable
+					low-cost missions across all science divisions since the late 2000s. Ride-shares, commercial hardware, reusable
 					components, and in-kind contributions have further driven down costs.{@render cite([7, 8])}</p>
 				<p>Recent amendments to NASA’s competitive mission selection process have the stated aim of decreasing
 					development and selection time.{@render cite([2])} NASA originally aimed for two New Frontiers competitions
 					per decade and Discovery mission launches every two years, but budget uncertainty has stalled
 					announcements, producing a 10-year gap for New Frontiers (next selection expected 2027) and a gap of more
 					than seven years for Discovery. Meanwhile, development of new directed science missions, such as the Aeolus
-					and Skyfall missions to Mars and PROMISE Rover to the Moon, is proceeding quickly.</p>
+					and Skyfall missions to Mars and PROMISE rover to the Moon, is proceeding quickly.</p>
 				<p>The recent uptick in the number of directed and low-cost missions, paired with the changes for competed
 					missions, reflects a reprioritization. To prepare for precisely this type of restructuring, the National
-					Academies’ 2017 report, <i>Powering Science</i>, recommended NASA develop a publicly accessible database that
+					Academies’ 2017 report, “Powering Science”, recommended NASA develop a publicly accessible database that
 					might be used to assess the value of different mission classes.{@render cite([4])} Nearly a decade later,
 					NASA has not released such a database.</p>
 				<p>To inform current discussions in the mission science community with quantitative evidence, we compiled a
@@ -171,13 +171,13 @@
 					publications as those in the top 1% of citation counts for their respective division. “High-impact” works
 					are in the top 10%. “Above-average” works are in the top 50%. Each paper’s
 					citations count over the {spell(site.fullPolicy.citationYears + 1)} years from its publication; the
-					<a href={methodsHref()}>Methods</a> page explains how we gathered the papers, citations and costs.</p>
-				<p>Citation thresholds are a common approach to quantifying impact, used by NSF, universities, and others. We
+					<a href={methodsHref()}>Methods</a> page explains how we gathered the papers, citations, and costs.</p>
+				<p>Citation thresholds are a common approach to quantifying impact, used by the National Science Foundation, universities, and others. We
 					use them two ways.</p>
 			</div>
 			<div class="way" role="group" aria-labelledby="ic-way">
 				<header class="way-head">
-					<p class="way-title" id="ic-way">high-impact thresholds</p>
+					<p class="way-title" id="ic-way">High-impact thresholds</p>
 					<p class="formula">
 						<span>i<sub>c</sub></span><span>=</span><span>papers with citations &gt; <i>c</i></span>
 					</p>
@@ -249,8 +249,8 @@
 			<div class="text">
 				<h2>Time to science</h2>
 				<p>Results from past missions show that the relationship between cost and “time to science,” measured from
-					start of formulation to the publication date of a mission’s first high-impact paper, is
-					{notLinear(time) ? 'not linear' : 'longer for costlier missions'}. (Here each paper is ranked on all its
+					the start of formulation to the publication date of a mission’s first high-impact paper, is
+					{notLinear(time) ? 'not linear' : 'longer for costlier missions'}. (Here, each paper is ranked on all its
 					citations to date, and failed missions are left out.)
 					{#if shortest && shortest.index !== 0 && first.missions > 0}Very low-cost missions can take years to publish a
 						highly cited result, largely negating their rapid development advantage: of the {int(first.missions)}
@@ -275,7 +275,7 @@
 			<figure>
 				<p class="chart-title">Years to a first top-10% paper</p>
 				<TimeBars tiers={a.tiers} time={time} />
-				<figcaption>Figure 1. Median time from start of formulation, and from the start of science operations, to a
+				<figcaption>Figure 1. Median time from the start of formulation, and from the start of science operations, to a
 					mission’s first top-10% most-cited paper, binned by cost.</figcaption>
 			</figure>
 		</section>
@@ -324,7 +324,7 @@
 
 		<section id="divisions" class="row">
 			<div class="text">
-				<h2>Divisional cost-sensitivity</h2>
+				<h2>Divisional cost sensitivity</h2>
 				<p>The data also reflect a strong sensitivity of low-cost mission output to division (Figure 4).
 					{#if topSmall}{topSmall.name} missions have had more high-impact publication productivity in the {ref}-or-less
 						classes than any other division.{/if}
@@ -344,7 +344,7 @@
 				<EfficiencyHeatmap tiers={a.tiers} efficiency={eff} divisions={data.site.divisions} />
 				<figcaption>Figure 4. Different divisions have different cost-to-science thresholds. Each tier’s share of its
 					division’s {@render nc('50')}, divided by its share of the division’s spending: above 1×, a tier returned
-					more than its share. The outlined cell is each division’s highest; grey cells have no missions.</figcaption>
+					more than its share. The outlined cell is each division’s highest; gray cells have no missions.</figcaption>
 			</figure>
 		</section>
 
@@ -361,7 +361,7 @@
 			</div>
 			<div class="text">
 				<p>To gain insight into common themes that could inform program strategy for low-cost programs, we interviewed
-					PIs and managers from four Heliophysics missions, three Astrophysics missions, two Earth Science missions,
+					principal investigators (PIs) and managers from four Heliophysics missions, three Astrophysics missions, two Earth Science missions,
 					and one Planetary Science mission. Those conversations revealed three common keys to success:</p>
 				<ol class="themes">
 					<li>A focused guiding science objective driving development.</li>
@@ -385,7 +385,7 @@
 					{#if competedShare > 0.5}
 						<p>Most low-cost missions in our set ({int(small.competed.missions)} of the {int(smallClassified)} with a
 							recorded selection method), including nine of the 10 captured in interviews, were competed (Figure 6).
-							{#if contrast?.higher === 'competed'}Among mid-sized missions ({tierWords(a.groups[contrast.index])}),
+							{#if contrast?.higher === 'competed'}Among mid-size missions ({tierWords(a.groups[contrast.index])}),
 								where both types are well represented, competed missions have produced more impactful science output per
 								dollar: a median {rate(contrast.competed.median)} {@render nc('50')} per $1M, against
 								{rate(contrast.directed.median)} for directed missions.{/if}</p>

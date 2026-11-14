@@ -1,4 +1,4 @@
-import { longDate, spell } from '../format.js';
+import { apDate, spell } from '../format.js';
 
 // Reader-facing copy for the two scopes a reader can pick (SCOPES in state/scope.js). The
 // prime-phase `window` scope stays in the packaged data only, so it has no name here.
@@ -6,7 +6,7 @@ export const fullWindowLabel = 'Active Mission Window';
 
 /** `asOf`, when given, names the snapshot date instead of just referring to it. */
 export const fullWindowText = (policy, asOf = null) =>
-	`Mission-specific publication windows, from the month after science starts through the month ${policy.postEndYears} years after the mission ends${policy.minWindowYears ? ` (never shorter than ${policy.minWindowYears} years)` : ''}, cut at the latest date that is mature on ${asOf ? longDate(asOf) : 'the snapshot date'}. Exact exported boundaries are shown on each mission page.`;
+	`Mission-specific publication windows, from the month after science starts through the month ${spell(policy.postEndYears)} years after the mission ends${policy.minWindowYears ? ` (never shorter than ${spell(policy.minWindowYears)} years)` : ''}, cut at the latest date that is mature on ${asOf ? apDate(asOf) : 'the snapshot date'}. Exact exported boundaries are shown on each mission page.`;
 
 export function ordinal(n) {
 	const words = ['zeroth', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth'];

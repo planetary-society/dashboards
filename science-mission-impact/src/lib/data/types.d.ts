@@ -91,8 +91,8 @@ export interface Site {
 /** How a mission was chosen, from upstream `selection_strategy`: 'Competed' / 'Directed'; null for 'Unknown' or blank. */
 export type Selection = 'competed' | 'directed' | null;
 
-/** Who ran a mission, from upstream `management_model`: 'Agency-led' / 'PI-led' / 'Commercial-led'; null for 'Unknown' or blank. */
-export type Management = 'agency' | 'pi' | 'commercial' | null;
+/** Who ran a mission, from upstream `management_model`; null for 'Unknown' or blank. */
+export type Management = 'agency' | 'pi' | 'commercial' | 'student' | null;
 
 /** A cost tier ($M, the snapshot's adjusted dollar year): membership is lo < cost <= hi. The first tier's lo is 0; the last tier's hi is null (open). */
 export interface CostTier {
@@ -476,6 +476,7 @@ export interface CostCurve {
 
 /** generated/index.json — routing + lookups */
 export interface MissionIndexEntry {
+	inclusion?: MissionInclusion;
 	id: string;
 	name: string; // display name (smi.config.json names, else short_title)
 	fullName: string;
@@ -507,8 +508,10 @@ export interface Division {
 	lifetimeSeries: LifetimeSeries;
 	/** The same series in the Active Mission Window: its papers, each cited through its citation window. */
 	fullSeries: LifetimeSeries | null;
-	/** The division's papers counted once each; cells in static/data/maps/divisions/<slug>.json. */
+	/** Lifetime papers counted once each; cells in static/data/maps/divisions/<slug>.json. */
 	affiliations: AffiliationSummary | null;
+	/** Active-window papers counted once each; cells in static/data/maps/divisions/<slug>.full.json. */
+	fullAffiliations: AffiliationSummary | null;
 	mostCited: PaperRef | null;
 	/** The ten most cited papers per scope, each paper once (windows count in-window citations). missions: ids sharing it, highest count first. */
 	topPapers: Record<Scope, (Omit<PaperRef, 'missionId'> & { missions: string[] })[]>;
@@ -521,6 +524,7 @@ export interface Division {
 	/** Spearman rank correlation of each index with adjusted cost, over non-failed missions with a cost. */
 	indexCorrelation: { m: { rho: number | null; n: number }; h: { rho: number | null; n: number } };
 	missions: MissionRow[];
+	awaitingMissions: MissionRow[]; // lifetime previews, excluded from all division/analysis totals
 }
 
 /** Citation indices as computed upstream from the curated paper list, lifetime scope. `m` moves with the calendar year of `Site.asOf`. */
@@ -563,7 +567,14 @@ export interface LifetimeSeries {
 }
 
 
+export interface MissionInclusion {
+	date: string | null; // earliest eligibility under the current policy; null without the required dates
+	basis: 'window' | 'failure';
+	asOf: string; // snapshot of dist/latest used for this lifetime preview
+}
+
 export interface MissionRow {
+	inclusion?: MissionInclusion;
 	id: string;
 	shortTitle: string; // upstream short_title: the CSVs’ `mission` column
 	name: string;
@@ -572,7 +583,7 @@ export interface MissionRow {
 	size: MissionSize;
 	launchYear: number | null;
 	/** what every duration runs from, as the measures read them: scienceStart is the prime-mission start, else launch (unlike Mission.meta.dates) */
-	dates: { formulation: string | null; launch: string | null; scienceStart: string | null };
+	dates: { formulation: string | null; launch: string | null; scienceStart: string | null; primeEnd: string | null };
 	failed: boolean;
 	shortfall: boolean; // Failure, Partial Failure or Partial Success
 	status: string; // upstream mission_status, e.g. "Completed", "Failure"
@@ -636,6 +647,7 @@ export interface PaperRef {
 
 /** generated/missions/<id>.json */
 export interface Mission {
+	inclusion?: MissionInclusion;
 	id: string;
 	name: string;
 	fullName: string;
@@ -652,14 +664,17 @@ export interface Mission {
 		target: string | null;
 		launchVehicle: string | null;
 		wikipedia: string | null; // https Wikipedia article URL, checked by the packager
+		bibliography: string | null; // HTTP(S) URL from the catalog's Project Publications List
 		firstSciencePublication: string | null; // the catalog's First Science Publication Identifier: a DOI or ADS bibcode, as entered
 		dates: { formulation: string | null; launch: string | null; scienceStart: string | null; primeEnd: string | null; missionEnd: string | null };
 	};
 	indices: MissionIndices;
 	facts: { papers: number | null; citations: number | null; publicationYears: [number, number] | null };
 	lifetimeSeries: LifetimeSeries | null;
-	/** Cells in static/data/maps/missions/<id>.json; null when no paper has a mapped institution. */
+	/** Lifetime cells in static/data/maps/missions/<id>.json; null when no paper has a mapped institution. */
 	affiliations: AffiliationSummary | null;
+	/** Active-window cells in static/data/maps/missions/<id>.full.json; null when no paper has a mapped institution. */
+	fullAffiliations: AffiliationSummary | null;
 	mostCited: PaperRef | null;
 	/**
 	 * Papers by citation rank among all of the division's mission papers, in ten equal bins,

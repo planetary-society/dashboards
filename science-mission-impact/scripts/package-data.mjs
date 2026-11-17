@@ -8,6 +8,7 @@
  * Writes, exactly per src/lib/data/types.d.ts:
  *   src/lib/data/generated/site.json
  *   src/lib/data/generated/index.json
+ *   src/lib/data/generated/awaiting.json
  *   src/lib/data/generated/scrolly.json
  *   src/lib/data/generated/divisions/<slug>.json
  *   src/lib/data/generated/missions/<id>.json
@@ -89,7 +90,8 @@ import {
 } from './lib/series.mjs';
 import { buildSite, byCost, byLaunch, tileSort } from './lib/site.mjs';
 import { loadClps } from './lib/clps.mjs';
-import { affiliationMaps } from './lib/affiliations.mjs';
+import { selectAwaitingMissions } from './lib/inclusion.mjs';
+import { affiliationMaps, collectAffiliations } from './lib/affiliations.mjs';
 import { underThreshold } from './lib/public.mjs';
 import { managementOf, selectionOf } from './lib/analysis.mjs';
 import { cleanTitle } from './lib/text.mjs';
@@ -344,6 +346,17 @@ export function wikipediaOf(url, id) {
 	return url;
 }
 
+/** This catalog field may also contain a plain reference; only web URLs become links. */
+export function bibliographyOf(value) {
+	if (typeof value !== 'string') return null;
+	const url = value.trim();
+	try {
+		return ['http:', 'https:'].includes(new URL(url).protocol) ? url : null;
+	} catch {
+		return null;
+	}
+}
+
 /**
  * One mission: its generated/missions/<id>.json (written here, because the
  * document is the biggest thing in the run and nothing else needs it in
@@ -378,7 +391,8 @@ export function buildMissionDoc({
 	run,
 	divisionCitations,
 	citationOverrides,
-	ownCitations
+	ownCitations,
+	inclusion
 }) {
 	const { shortTitle, id, indexEntry, statsMission } = mission;
 	const { asOf, asOfYear } = snapshot;
@@ -588,6 +602,7 @@ export function buildMissionDoc({
 	// --- generated/missions/<id>.json ---------------------------------------------
 	const missionDoc = {
 		id,
+		...(inclusion ? { inclusion } : {}),
 		name,
 		fullName,
 		division: division.slug,
@@ -607,6 +622,7 @@ export function buildMissionDoc({
 			target: corpus.mission?.mission_target ?? null,
 			launchVehicle: corpus.mission?.launch_vehicle ?? null,
 			wikipedia: wikipediaOf(corpus.mission?.wikipedia_url, id),
+			bibliography: bibliographyOf(corpus.mission?.project_publications_list),
 			// the catalog's First Science Publication Identifier (a DOI or ADS bibcode), unresolved
 			firstSciencePublication: corpus.mission?.first_science_publication_identifier?.trim() || null,
 			dates: {
@@ -625,6 +641,7 @@ export function buildMissionDoc({
 		},
 		lifetimeSeries,
 		affiliations: ownCitations.maps?.summary ?? null,
+		fullAffiliations: ownCitations.fullMaps?.summary ?? null,
 		mostCited: paperRefFromTopCited(corpus.corpus?.top_cited?.[0], ownCitations.authors),
 		ranks,
 		full: { ...fullStats, spread: spreads.full },
@@ -655,11 +672,13 @@ export function buildMissionDoc({
 		pretty: true
 	});
 	if (ownCitations.maps) writeJson(join(paths.mapsDir, 'missions', `${id}.json`), ownCitations.maps.file, { pretty: false });
+	if (ownCitations.fullMaps) writeJson(join(paths.mapsDir, 'missions', `${id}.full.json`), ownCitations.fullMaps.file, { pretty: false });
 
 	// --- rows shared with the division, index, scrolly and story ------------------
 	return {
 		missionRow: {
 			id,
+			...(inclusion ? { inclusion } : {}),
 			// upstream short_title, the key the CSVs name each mission by
 			shortTitle,
 			name,
@@ -668,8 +687,8 @@ export function buildMissionDoc({
 			lcc: missionDoc.meta.lcc,
 			size,
 			launchYear,
-			// the dates every duration runs from, as the measures read them (science start falls back to launch)
-			dates: { formulation, launch: launchDate, scienceStart },
+			// Dates for the tables and durations (science start falls back to launch).
+			dates: { formulation, launch: launchDate, scienceStart, primeEnd: missionDoc.meta.dates.primeEnd },
 			failed,
 			shortfall,
 			// upstream mission_status, as the mission page shows it ('Completed', 'Extended Mission', 'Failure', …)
@@ -689,6 +708,7 @@ export function buildMissionDoc({
 		},
 		indexEntry: {
 			id,
+			...(inclusion ? { inclusion } : {}),
 			name,
 			fullName: missionDoc.fullName,
 			cost: num(statsMission.adjusted_lcc),
@@ -749,8 +769,9 @@ export function buildMissionDoc({
  * @param {Map<string, number>} args.globalBest bibcode -> highest citation count,
  *   accumulated across divisions so the site's distinct totals count a shared
  *   paper once
+ * @param {Map<string, object>|null} [args.inclusions] Package only these preview missions, without a division document or analysis totals.
  */
-export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, globalBest }) {
+export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, globalBest, inclusions = null }) {
 	const { division, stats, statsKey } = run;
 	const { asOfYear } = snapshot;
 
@@ -863,6 +884,7 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 	// The division's papers once each, with their institutions, for its affiliation map.
 	const divisionInstitutions = new Map();
 	const divisionAffiliations = new Map();
+	const divisionFullAffiliations = new Map();
 	// where each institution record falls on the maps, worked out once for the missions and reused by the division
 	const placed = new WeakMap();
 	function* citationSources() {
@@ -871,9 +893,9 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 			const records = paths.source.readMission(id, 'records').records ?? [];
 			const citations = paths.source.readMission(id, 'citations').citations ?? {};
 			const institutions = new Map((paths.source.readMission(id, 'institutions').institutions ?? []).map((inst) => [inst.id, inst]));
-			const affiliations = new Map([...included].map((bibcode) => [bibcode, []]));
-			for (const r of records) if (included.has(r.bibcode)) affiliations.set(r.bibcode, r.institution_ids ?? []);
-			for (const [bibcode, ids] of affiliations) divisionAffiliations.set(bibcode, [...(divisionAffiliations.get(bibcode) ?? []), ...ids]);
+			// A preview run maps only its awaiting missions, and only in lifetime (their pages have no active view).
+			const affiliations = !inclusions || inclusions.has(id) ? collectAffiliations(rowsByMission.get(shortTitle) ?? [], records, divisionAffiliations) : null;
+			const fullAffiliations = inclusions ? null : collectAffiliations(fullRowsByMission.get(shortTitle) ?? [], records, divisionFullAffiliations);
 			for (const [key, inst] of institutions) divisionInstitutions.set(key, inst);
 			// Bylines are read only for the mission's and the division's most-cited paper.
 			const bylined = new Set([
@@ -889,7 +911,8 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 				pubdates: new Map(records.map((r) => [r.bibcode, r.pubdate])),
 				dois: new Map(records.map((r) => [r.bibcode, r.doi_primary ?? r.doi?.[0] ?? null])),
 				authors: new Map(records.filter((r) => bylined.has(r.bibcode)).map((r) => [r.bibcode, recordAuthors(r)])),
-				maps: affiliationMaps(affiliations, institutions, id, placed)
+				maps: affiliations && affiliationMaps(affiliations, institutions, id, placed),
+				fullMaps: fullAffiliations && affiliationMaps(fullAffiliations, institutions, id, placed)
 			});
 			yield { name: shortTitle, records: records.filter((r) => included.has(r.bibcode)), citations };
 		}
@@ -924,6 +947,7 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 	};
 
 	for (const mission of resolved) {
+		if (inclusions && !inclusions.has(mission.id)) continue;
 		const built = buildMissionDoc({
 			mission,
 			division,
@@ -933,7 +957,8 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 			run: missionRun,
 			divisionCitations: citationSink,
 			citationOverrides,
-			ownCitations: ownCitations.get(mission.id)
+			ownCitations: ownCitations.get(mission.id),
+			inclusion: inclusions?.has(mission.id) ? { ...inclusions.get(mission.id), asOf: snapshot.asOf } : null
 		});
 
 		missionRows.push(built.missionRow);
@@ -946,6 +971,8 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 		if (built.notes.missingQuery) missionsWithoutQuery.push(built.notes.missingQuery);
 	}
 
+	// Reuse the same mission packaging for previews without publishing this broader cohort's totals.
+	if (inclusions) return { missionRows, indexEntries, bytes };
 
 	const coverage = citationCoverage({ expected: summaryLifetime.citations_total, observed: divisionEdges,
 		historyStatus: scopeLifetime.history_status, limits: config.citationHistory });
@@ -988,6 +1015,8 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 	}
 	const divisionMaps = affiliationMaps(divisionAffiliations, divisionInstitutions, division.slug, placed);
 	if (divisionMaps) writeJson(join(paths.mapsDir, 'divisions', `${division.slug}.json`), divisionMaps.file, { pretty: false });
+	const divisionFullMaps = affiliationMaps(divisionFullAffiliations, divisionInstitutions, division.slug, placed);
+	if (divisionFullMaps) writeJson(join(paths.mapsDir, 'divisions', `${division.slug}.full.json`), divisionFullMaps.file, { pretty: false });
 
 	missionRows.sort(byCost);
 
@@ -1021,6 +1050,7 @@ export function buildDivisionDoc({ run, snapshot, config, paths, byTitle, global
 		lifetimeSeries: divisionLifetimeSeries,
 		fullSeries: divisionFullSeries,
 		affiliations: divisionMaps?.summary ?? null,
+		fullAffiliations: divisionFullMaps?.summary ?? null,
 		mostCited: mostCitedRow
 			? {
 					bibcode: mostCitedRow.bibcode,
@@ -1146,9 +1176,15 @@ function main() {
 	}
 	const source = loadSourceCatalog(rawDir, config);
 	const { runs, snapshot } = loadRuns(rawDir, config, warnings, source);
-	// The CLPS chart's dataset is checked with everything else, before any output changes.
-	const { facts: clps, file: clpsFile } = loadClps({ rawDir: resolve(APP_ROOT, config.clps.rawDir), config, asOf: snapshot.asOf });
-	assertKnownIds('names', Object.keys(config.names ?? {}), new Set([...source.missions.keys(), ...clps.missions.map((m) => m.id), ...clps.comparators.map((m) => m.id)]));
+	// CLPS and missions awaiting inclusion share the explicitly configured latest dataset.
+	const latestDir = resolve(APP_ROOT, config.clps.rawDir);
+	const latest = loadSourceCatalog(latestDir, config);
+	const latestWarnings = new Warnings();
+	const latestRuns = loadRuns(latestDir, config, latestWarnings, latest);
+	for (const warning of latestWarnings.items) warnings.add(`latest dataset: ${warning}`);
+	const { facts: clps, file: clpsFile } = loadClps({ rawDir: latestDir, config, asOf: snapshot.asOf, source: latest });
+	const inclusions = selectAwaitingMissions({ source, latest, asOf: snapshot.asOf });
+	assertKnownIds('names', Object.keys(config.names ?? {}), new Set([...source.missions.keys(), ...inclusions.keys(), ...clps.missions.map((m) => m.id), ...clps.comparators.map((m) => m.id)]));
 	paths.source = source;
 	const byTitle = source.byTitle;
 	pendingFiles.clear();
@@ -1171,9 +1207,27 @@ function main() {
 		return division;
 		} catch (error) { errors.push(run.division.slug + ': ' + error.message); return null; }
 	});
+	const awaitingEntries = [];
+	for (const run of latestRuns.runs) {
+		try {
+			const awaiting = buildDivisionDoc({
+				run, snapshot: latestRuns.snapshot, config,
+				paths: { ...paths, source: latest }, byTitle: latest.byTitle,
+				globalBest: new Map(), inclusions
+			});
+			const division = built.find((d) => d?.divisionDoc.slug === run.division.slug);
+			if (!division) continue;
+			division.divisionDoc.awaitingMissions = awaiting.missionRows;
+			bytes.divisions += writeJson(join(paths.generatedDir, 'divisions', `${run.division.slug}.json`), division.divisionDoc, { pretty: true }) - division.bytes.divisions;
+			for (const key of ['missions', 'papers']) bytes[key] += awaiting.bytes[key];
+			awaitingEntries.push(...awaiting.indexEntries);
+		} catch (error) { errors.push(run.division.slug + ' awaiting inclusion: ' + error.message); }
+	}
 	if (errors.length) throw new PackagingError('Packaging validation failed:\n- ' + errors.join('\n- ') + '\nNo dashboard output was changed.');
 	// Packaging verified what it read; this covers the companions it had no use for.
 	source.verifyCompanions();
+	latest.verifyCompanions();
+	writeJson(join(paths.generatedDir, 'awaiting.json'), awaitingEntries.sort(tileSort({ config })), { pretty: true });
 
 	const flat = (pick) => built.flatMap(pick);
 	const indexEntries = flat((d) => d.indexEntries).sort(tileSort({ config }));

@@ -1,7 +1,7 @@
 import { strict as assert } from 'node:assert';
 import { describe, it } from 'node:test';
 
-import { affiliationMaps } from '../lib/affiliations.mjs';
+import { affiliationMaps, collectAffiliations } from '../lib/affiliations.mjs';
 
 const inst = (id, name, country, latitude, longitude) => ({ id, name, country, latitude, longitude });
 const institutions = new Map(
@@ -14,6 +14,50 @@ const institutions = new Map(
 		inst('lost', 'Somewhere', 'US', null, null)
 	].map((i) => [i.id, i])
 );
+
+describe('scope-specific affiliations', () => {
+	it('uses exported membership, including uncited papers and papers with no affiliation record', () => {
+		const pooled = new Map();
+		const papers = collectAffiliations([{ bibcode: 'active' }, { bibcode: 'missing' }], [
+			{ bibcode: 'active', citation_count: 0, institution_ids: ['gsfc'] },
+			{ bibcode: 'outside', institution_ids: ['jpl'] }
+		], pooled);
+		const { summary, file } = affiliationMaps(papers, institutions, 'active');
+		assert.deepEqual([...papers.keys()], ['active', 'missing']);
+		assert.equal(summary.papers, 2);
+		assert.equal(summary.world.mapped, 1);
+		assert.deepEqual(file.places, ['NASA Goddard']);
+		assert.deepEqual(pooled, papers);
+	});
+
+	it('pools shared papers once, using affiliations only from missions where the paper is in scope', () => {
+		const pooled = new Map();
+		collectAffiliations([{ bibcode: 'shared' }, { bibcode: 'a' }], [
+			{ bibcode: 'shared', institution_ids: ['gsfc'] },
+			{ bibcode: 'a', institution_ids: ['gsfc'] }
+		], pooled);
+		collectAffiliations([{ bibcode: 'shared' }, { bibcode: 'b' }], [
+			{ bibcode: 'shared', institution_ids: ['gsfc', 'umd'] },
+			{ bibcode: 'b', institution_ids: ['estec'] }
+		], pooled);
+		collectAffiliations([], [{ bibcode: 'shared', institution_ids: ['jpl'] }], pooled);
+		const { summary, file } = affiliationMaps(pooled, institutions, 'division');
+		assert.equal(summary.papers, 3);
+		assert.equal(summary.us.mapped, 2);
+		assert.equal(summary.world.mapped, 3);
+		assert.deepEqual(file.us.cells.map((cell) => cell[2]), [2]);
+		assert.ok(!file.places.includes('JPL'));
+		assert.deepEqual(summary.us.top, [{ name: 'NASA Goddard', papers: 2 }, { name: 'University of Maryland', papers: 1 }]);
+	});
+
+	it('keeps an empty or unmapped active cohort null even when lifetime papers can be mapped', () => {
+		const records = [{ bibcode: 'lifetime', institution_ids: ['gsfc'] }, { bibcode: 'unmapped', institution_ids: ['lost'] }];
+		for (const rows of [[], [{ bibcode: 'unmapped' }]]) {
+			assert.equal(affiliationMaps(collectAffiliations(rows, records, new Map()), institutions, 'active'), null);
+		}
+		assert.ok(affiliationMaps(collectAffiliations([{ bibcode: 'lifetime' }], records, new Map()), institutions, 'lifetime'));
+	});
+});
 
 describe('affiliationMaps', () => {
 	const papers = new Map([

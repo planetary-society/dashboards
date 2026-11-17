@@ -8,7 +8,12 @@ export function scienceMissionPaths(root) {
         ...read('smi.config.json').divisions.map((d) => d.slug),
         ...read('src/lib/data/generated/index.json').map((m) => `${m.division}/${m.id}`)
     ];
-    const listed = ['', 'analysis', 'methods', 'download', ...entities.flatMap((path) => [path, `${path}/lifetime`])];
+    // Older packages have no awaiting list; the daily bake must not fail on one.
+    const awaitingFile = 'src/lib/data/generated/awaiting.json';
+    const awaiting = existsSync(join(root, 'science-mission-impact', awaitingFile))
+        ? read(awaitingFile).map((m) => `${m.division}/${m.id}/lifetime`)
+        : [];
+    const listed = ['', 'analysis', 'methods', 'download', ...entities.flatMap((path) => [path, `${path}/lifetime`]), ...awaiting];
     const built = listed.filter((path) => existsSync(join(root, 'docs/science-mission-impact', path, 'index.html')));
     const missing = listed.filter((path) => !built.includes(path));
     if (missing.length) {

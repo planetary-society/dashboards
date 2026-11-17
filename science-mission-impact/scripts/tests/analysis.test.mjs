@@ -60,10 +60,11 @@ describe('selectionOf', () => {
 });
 
 describe('managementOf', () => {
-	it('maps the three models, reads Unknown or blank as unclassified and refuses anything else', () => {
+	it('maps the supported models, reads Unknown or blank as unclassified and refuses anything else', () => {
 		assert.equal(managementOf('Agency-led', 'x'), 'agency');
 		assert.equal(managementOf('PI-led', 'x'), 'pi');
 		assert.equal(managementOf('Commercial-led', 'x'), 'commercial');
+		assert.equal(managementOf('Student-led', 'x'), 'student');
 		for (const label of ['Unknown', '', null, undefined]) assert.equal(managementOf(label, 'x'), null);
 		for (const label of ['PI led', 'Strategic', 'agency-led']) assert.throws(() => managementOf(label, 'juno'), (e) => e.name === 'PackagingError' && e.message.includes('juno'));
 	});

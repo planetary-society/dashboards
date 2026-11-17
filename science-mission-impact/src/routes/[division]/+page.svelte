@@ -1,7 +1,6 @@
 <script>
-	// What the division does; then, under one scope switch, the by-year chart, the per-dollar chart and
-	// the mission table, all following the switch. The affiliation map, every paper to date, comes
-	// after the switch lets go.
+	// The charts, mission table and affiliation map follow the scope switch;
+	// awaiting missions below them always show lifetime totals.
 	import Seo from '$lib/ui/Seo.svelte';
 	import EntityHeader from '$lib/ui/EntityHeader.svelte';
 	import MissionTable from '$lib/ui/MissionTable.svelte';
@@ -10,7 +9,7 @@
 	import PerDollarScatter from '$lib/charts/PerDollarScatter.svelte';
 	import LifetimeTimeline from '$lib/charts/LifetimeTimeline.svelte';
 	import AffiliationMap from '$lib/charts/AffiliationMap.svelte';
-	import { int, money } from '$lib/format.js';
+	import { apDate, int, money } from '$lib/format.js';
 	import { scopeLabel } from '$lib/copy/window.js';
 	import { divisionIntro } from '$lib/copy/divisions.js';
 	import { FOOTNOTES, noteText } from '$lib/copy/footnotes.js';
@@ -22,7 +21,7 @@
 	const f = $derived(d.facts);
 	const stats = $derived(d.stats); // this scope only, like the series
 	/** Props for the "i" beside a term: one definition each. */
-	const tip = (id) => ({ text: noteText([id], site), href: methodsHref(FOOTNOTES[id].anchor) });
+	const tip = (id) => ({ text: noteText([id], site, data.scope), href: methodsHref(FOOTNOTES[id].anchor) });
 	const description = $derived(
 		`${int(f.missions)} NASA ${d.name} missions: ${int(stats.papers)} tracked peer-reviewed publications and ${int(stats.citations)} citations in the ${scopeLabel(data.scope)} scope. Data as of ${site.asOf}.`
 	);
@@ -59,17 +58,26 @@
 			<div class="table">
 				<MissionTable missions={d.missions} slug={d.slug} {site} scope={data.scope} rankable={d.rankable} />
 			</div>
-			<p class="meta source">How we found the papers, counted citations, and set costs: <a href={methodsHref()}>Methods</a>.</p>
 		</section>
+
+		{#if d.affiliations}
+			<section id="affiliations" class="part" aria-labelledby="affiliations-title">
+				<h2 id="affiliations-title" class="part-title">Institutional contributions<Hint label="this map" {...tip('affiliations')} /></h2>
+				<AffiliationMap summary={d.affiliations} url={mapsUrl('divisions', d.slug, data.scope)} scope={data.scope} />
+			</section>
+		{/if}
 	</div>
 
-	{#if d.affiliations}
-		<section id="affiliations" class="part" aria-labelledby="affiliations-title">
-			<h2 id="affiliations-title" class="part-title">Institutional contributions<Hint label="this map" {...tip('affiliations')} /></h2>
-			<p class="meta">Every tracked publication to date, each counted once, however many {d.name} missions it names.</p>
-			<AffiliationMap summary={d.affiliations} url={mapsUrl('divisions', d.slug)} />
+	{#if d.awaitingMissions?.length}
+		<section id="awaiting-inclusion" class="part" aria-labelledby="awaiting-title">
+			<h2 id="awaiting-title" class="part-title">Missions awaiting inclusion</h2>
+			<p class="meta source">These launched missions are not yet ready for comparison under our <a href={methodsHref('windows')}>maturity rules</a>. Only lifetime totals as of {apDate(d.awaitingMissions[0].inclusion.asOf)} are shown.</p>
+			<div class="table">
+				<MissionTable missions={d.awaitingMissions} slug={d.slug} {site} scope="lifetime" awaiting />
+			</div>
 		</section>
 	{/if}
+
 </div>
 
 <style>
@@ -110,6 +118,7 @@
 
 	.table {
 		margin-top: 20px;
+		overflow-x: auto;
 	}
 
 	.source {

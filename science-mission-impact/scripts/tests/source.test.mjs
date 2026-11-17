@@ -181,6 +181,7 @@ describe('dashboard compatibility preflight', () => {
 		const f = fixture();
 		f.runs[0].corpus.mission.prime_mission_end_date = '2001-02-03';
 		f.runs[0].corpus.mission.mission_end_date = '2005-06-07';
+		f.runs[0].corpus.mission.project_publications_list = 'https://example.test/mission-papers?q=science';
 		repin(f);
 		const out = path.join(root, 'lifecycle-output');
 		const script = packager(f);
@@ -190,7 +191,43 @@ describe('dashboard compatibility preflight', () => {
 		assert.equal(mission(f.runs[0].id).meta.dates.launch, '2000-01-01');
 		assert.equal(mission(f.runs[0].id).meta.dates.primeEnd, '2001-02-03');
 		assert.equal(mission(f.runs[0].id).meta.dates.missionEnd, '2005-06-07');
+		assert.equal(mission(f.runs[0].id).meta.bibliography, 'https://example.test/mission-papers?q=science');
 		assert.equal(mission(f.runs[1].id).meta.dates.missionEnd, null);
+		assert.equal(mission(f.runs[1].id).meta.bibliography, null);
+	});
+
+	it('packages awaiting mission pages without changing analysis membership or totals', () => {
+		const fixed = fixture();
+		const latest = fixture();
+		const pending = latest.runs[0];
+		pending.stats.missions[0].window_status = 'immature';
+		pending.stats.missions[0].window_cohort.status = 'immature';
+		pending.stats.missions[0].window_cohort.mature_date = '2029-10-01';
+		for (const kind of ['records_window', 'citations_window']) {
+			const ref = pending.corpus.files[kind];
+			const doc = JSON.parse(fs.readFileSync(path.join(latest.rawDir, ref.path), 'utf8'));
+			doc.window.status = 'immature';
+			pending.corpus.files[kind] = latest.write(ref.path, doc);
+		}
+		repin(latest);
+		fixed.runs[0].stats.missions = [];
+		saveStats(fixed);
+		const out = path.join(root, 'awaiting-output');
+		const app = fixtureApp(fixed, fs.mkdtempSync(path.join(root, 'app-')), { rawDir: latest.rawDir });
+		const result = spawnSync(process.execPath, [path.join(app, 'scripts/package-data.mjs'), fixed.rawDir, '--out', out], { encoding: 'utf8' });
+		assert.equal(result.status, 0, result.stdout + result.stderr);
+		const read = (name) => JSON.parse(fs.readFileSync(path.join(out, 'src/lib/data/generated', `${name}.json`), 'utf8'));
+		const inclusion = { date: '2029-10-01', basis: 'window', asOf: '2026-10-02' };
+		assert.deepEqual(read('awaiting').map((m) => m.id), [pending.id]);
+		assert.deepEqual(read(`missions/${pending.id}`).inclusion, inclusion);
+		const division = read('divisions/astrophysics');
+		assert.deepEqual(division.awaitingMissions[0].inclusion, inclusion);
+		assert.equal(division.awaitingMissions[0].lifetime.papers, 0);
+		assert.deepEqual(division.missions, []);
+		assert.equal(division.facts.missions, 0);
+		assert.equal(read('site').missions, 4);
+		assert.equal(read('index').length, 4);
+		assert.ok(read('scrolly').tiles.every((m) => m.id !== pending.id));
 	});
 
 	it('preflight reports inconsistent mission totals across divisions together', () => {

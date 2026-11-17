@@ -6,7 +6,7 @@ import { after, describe, it } from 'node:test';
 
 import { loadConfig, resolveRawDir } from '../lib/config.mjs';
 import * as fetchThumbs from '../fetch-thumbs.mjs';
-import { parseArgs as parsePackageArgs, wikipediaOf } from '../package-data.mjs';
+import { bibliographyOf, parseArgs as parsePackageArgs, wikipediaOf } from '../package-data.mjs';
 import { parseArgs, pipelineTestFiles, summaryLines, testFiles } from '../refresh.mjs';
 
 const TMP_ROOT = fs.mkdtempSync(path.join(os.tmpdir(), 'smi-pipeline-'));
@@ -244,6 +244,17 @@ describe('wikipediaOf', () => {
 	it('fails on anything else, since the page links it', () => {
 		for (const bad of ['http://en.wikipedia.org/wiki/X', 'javascript:alert(1)', 'https://evil.example/wiki/X', 'https://en.wikipedia.org.evil.example/wiki/X']) {
 			assert.throws(() => wikipediaOf(bad, 'x'), /not a Wikipedia article/);
+		}
+	});
+});
+
+describe('bibliographyOf', () => {
+	it('preserves web URLs and their queries, omitting missing values and non-web references', () => {
+		for (const url of ['https://ui.adsabs.harvard.edu/search/q=bibgroup%3A%22Mission%22&sort=date%20desc', 'http://example.org/papers#refereed']) {
+			assert.equal(bibliographyOf(`  ${url}  `), url);
+		}
+		for (const value of [undefined, null, '', '  ', 'See the project report', 'javascript:alert(1)', 'data:text/html,test', '//example.org/papers', '/papers', 42]) {
+			assert.equal(bibliographyOf(value), null);
 		}
 	});
 });

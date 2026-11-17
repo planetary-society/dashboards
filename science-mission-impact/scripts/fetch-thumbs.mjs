@@ -15,6 +15,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { loadConfig, resolveRawDir } from './lib/config.mjs';
+import { loadSourceCatalog } from './lib/source.mjs';
 import { failuresByHost, loadMissionScope, runThumbs } from './lib/thumbs-core.mjs';
 
 const APP_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -47,7 +48,8 @@ async function main() {
 		console.warn('         Re-run as: NODE_USE_ENV_PROXY=1 node scripts/fetch-thumbs.mjs');
 	}
 
-	const { missions, unmatched } = loadMissionScope({ rawDir, config });
+	const latest = loadSourceCatalog(path.resolve(APP_DIR, config.clps.rawDir), config);
+	const { missions, unmatched } = loadMissionScope({ rawDir, config, latest });
 	if (unmatched.length) {
 		// A short_title in a stats run with no index.json entry means the two
 		// inputs disagree — loud, but not a reason to skip the other tiles.

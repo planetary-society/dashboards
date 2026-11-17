@@ -3,6 +3,7 @@
 import { error } from '@sveltejs/kit';
 import site from './generated/site.json';
 import index from './generated/index.json';
+import awaiting from './generated/awaiting.json';
 import scrolly from './generated/scrolly.json';
 import clpsLanders from './generated/clps.json';
 
@@ -36,6 +37,7 @@ const scopeFields = (s) => ({ ...countFields(s), top10: s.top10, top1: s.top1 })
 export const missionFields = (m) => ({
 	id: m.id, shortTitle: m.shortTitle, name: m.name, cost: m.cost, lcc: m.lcc, launchYear: m.launchYear, type: m.type,
 	failed: m.failed, shortfall: m.shortfall, status: m.status, hasThumb: m.hasThumb, selection: m.selection, dates: m.dates,
+	...(m.inclusion ? { inclusion: m.inclusion } : {}),
 	indices: { h: m.indices?.h ?? null, g: m.indices?.g ?? null },
 	full: { ...scopeFields(m.full), bounds: { start: m.full.bounds?.start ?? null, end: m.full.bounds?.end ?? null } },
 	// lifetime publishes counts only: no top-10% or top-1% measure
@@ -43,4 +45,4 @@ export const missionFields = (m) => ({
 });
 
 export const divisionEntries = () => site.divisions.map((d) => ({ division: d.slug }));
-export const missionEntries = () => index.map((m) => ({ division: m.division, mission: m.id }));
+export const missionEntries = () => [...index, ...awaiting].map((m) => ({ division: m.division, mission: m.id }));

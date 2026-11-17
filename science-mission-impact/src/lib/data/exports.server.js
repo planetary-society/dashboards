@@ -48,7 +48,7 @@ async function buildManifest(fetch) {
 	const files = [];
 	for (const entry of catalog) {
 		const { rows, body, type } = await exportBody(entry, fetch);
-		const page = (scope) => entry.mission ? missionHref(entry.division, entry.mission, scope) : divisionHref(entry.division, scope);
+		const page = (scope) => entry.mission ? missionHref(entry.division, entry.mission, entry.inclusion ? 'lifetime' : scope) : divisionHref(entry.division, scope);
 		files.push({ ...entry, url: canonical(exportUrl(entry.filename)), format: type.split(';')[0], bytes: Buffer.byteLength(body), sha256: sha256(body),
 			rows,
 			page: canonical(entry.division ? page() : downloadHref()),
@@ -81,7 +81,7 @@ export function datasetMetadata(manifest) {
 	return {
 		'@context': 'https://schema.org', '@type': 'Dataset', '@id': `${manifest.landingPage}#dataset`,
 		name: manifest.name,
-		description: 'Mission costs, tracked peer-reviewed publications, and citation measures for NASA science missions. Includes active-window and lifetime measurements, plus a separate CLPS publication export.',
+		description: 'Mission costs, tracked peer-reviewed publications, and citation measures for NASA science missions. Pooled files cover missions in the analysis; separate files provide lifetime publications for missions awaiting inclusion and CLPS landers.',
 		url: manifest.landingPage, version: manifest.version, dateModified: manifest.asOf,
 		creator: CREATORS.map((name) => ({ '@type': 'Person', name })),
 		publisher: { '@type': 'Organization', name: manifest.publisher, url: 'https://www.planetary.org/' },

@@ -127,6 +127,10 @@ function dateParts(value) {
 	return match && match.slice(1).map((part) => Number(part ?? 0));
 }
 
+/** A complete, real calendar day as YYYY-MM-DD (no zero month or day, no 30 February). */
+export const isIsoDay = (value) => /^\d{4}-\d{2}-\d{2}$/.test(value ?? '') &&
+	Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value;
+
 /**
  * UTC milliseconds of a date string, for durations. ADS writes "2003-00-00" for a paper dated
  * only by year: an unknown (or missing) month is read at mid-year, 1 July, so the duration is off

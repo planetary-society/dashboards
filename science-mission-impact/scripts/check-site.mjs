@@ -6,6 +6,7 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import { int } from '../src/lib/format.js';
+import { scopeLabel } from '../src/lib/copy/window.js';
 
 const root = fileURLToPath(new URL('../.site/', import.meta.url));
 const origin = 'https://dashboards.planetary.org';
@@ -21,9 +22,17 @@ const local = (url) => {
 
 const pages = readdirSync(root, { recursive: true }).filter((file) => /(^|\/)index\.html$/.test(file));
 assert.ok(pages.length > 0, 'Build the site before running check:site');
+const awaiting = source('awaiting');
+const redirects = new Map(awaiting.map(({ division, id }) => [`${division}/${id}/index.html`, `${prefix}${division}/${id}/lifetime/`]));
 const titles = new Set();
 for (const file of pages) {
 	const html = read(file);
+	if (redirects.has(file)) {
+		const target = redirects.get(file);
+		assert.ok(html.includes(`<meta http-equiv="refresh" content="0;url=${target}">`), `${file}: missing lifetime redirect`);
+		assert.ok(statSync(join(root, local(target), 'index.html')).isFile(), `${file}: broken lifetime redirect`);
+		continue;
+	}
 	const title = html.match(/<title>([\s\S]*?)<\/title>/)?.[1];
 	assert.ok(title, `${file}: missing title`);
 	assert.ok(!titles.has(title), `${file}: duplicate title ${title}`);
@@ -45,11 +54,12 @@ for (const file of manifest.files) {
 	assert.equal(statSync(path).size, file.bytes, `${file.url}: size differs from manifest`);
 	assert.equal(createHash('sha256').update(readFileSync(path)).digest('hex'), file.sha256, `${file.url}: content differs from manifest`);
 }
-// Each publication JSON explains itself: it links the published dictionary, which defines every column it has.
+// Compact JSON uses internal aliases for the dictionary's public CSV field names.
+const publicField = { citations: 'lifetime_citations', full_window_citations: 'active_citations', top10_weight_full: 'active_top10', top1_weight_full: 'active_top1' };
 for (const { json } of manifest.files.filter((file) => file.json)) {
 	const papers = JSON.parse(read(local(json)));
 	assert.equal(papers.dictionary, manifest.dictionary, `${json}: links a different dictionary`);
-	for (const key of Object.keys(papers.columns)) assert.ok(dictionary.fields[key], `${json}: column ${key} is not in the dictionary`);
+	for (const key of Object.keys(papers.columns)) assert.ok(dictionary.fields[publicField[key] ?? key], `${json}: column ${key} is not in the dictionary`);
 }
 const download = read('download/index.html');
 const schema = JSON.parse(download.match(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/)?.[1] ?? 'null');
@@ -68,18 +78,64 @@ const rowValue = (html, label) => {
 		.find(([, body]) => body.includes(`>${label}<`))?.[1];
 	return row?.match(/<td[^>]*>([\s\S]*?)<\/td>/)?.[1].replace(/<[^>]*>/g, '').trim();
 };
+const checkMap = (html, doc, kind, id, scope, path) => {
+	const summary = scope === 'lifetime' ? doc.affiliations : doc.fullAffiliations;
+	const label = html.match(/aria-label="(Heat map of where the authors worked,[^"]*)"/)?.[1];
+	if (!summary) {
+		assert.equal(label, undefined, `${path}: map shown without scoped affiliations`);
+		return;
+	}
+	assert.ok(label?.includes(`of ${int(summary.papers)} tracked publications in the ${scopeLabel(scope)} scope`), `${path}: incorrect map scope or paper count`);
+	assert.equal(summary.papers, (kind === 'missions' ? doc[scope] : doc.stats[scope]).papers, `${path}: map cohort differs from the stats`);
+	const grid = JSON.parse(read(`data/maps/${kind}/${id}${scope === 'full' ? '.full' : ''}.json`));
+	for (const key of ['us', 'world']) {
+		assert.ok(grid[key].cells.every((cell) => cell[2] > 0 && cell[2] <= summary[key].mapped), `${path}: invalid ${key} map counts`);
+	}
+};
+for (const { slug } of source('site').divisions) {
+	const division = source(`divisions/${slug}`);
+	for (const scope of ['full', 'lifetime']) {
+		const path = `${slug}/${scope === 'lifetime' ? 'lifetime/' : ''}index.html`;
+		checkMap(read(path), division, 'divisions', slug, scope, path);
+	}
+}
 for (const { division, id } of source('index')) {
 	const mission = source(`missions/${id}`);
 	for (const scope of ['full', 'lifetime']) {
 		const path = `${division}/${id}/${scope === 'lifetime' ? 'lifetime/' : ''}index.html`;
 		const html = read(path);
 		const stats = mission[scope];
+		checkMap(html, mission, 'missions', id, scope, path);
 		if (mission.facts.papers > 0 && stats.spread) {
 			assert.equal(rowValue(html, 'Tracked publications'), int(stats.papers), `${path}: incorrect publication count`);
 			assert.equal(rowValue(html, 'Citations'), int(stats.citations), `${path}: incorrect citation count`);
 		}
-		assert.ok(html.includes(`href="${prefix}${division}/${id}/lifetime/"`), `${path}: no static lifetime selector link`);
-		assert.ok(html.includes(`href="${prefix}${division}/${id}/"`), `${path}: no static active selector link`);
+		assert.equal(html.includes('aria-label="Scope"'), mission.facts.papers > 0, `${path}: incorrect scope selector visibility`);
+		if (mission.facts.papers > 0) {
+			assert.ok(html.includes(`href="${prefix}${division}/${id}/lifetime/"`), `${path}: no static lifetime selector link`);
+			assert.ok(html.includes(`href="${prefix}${division}/${id}/"`), `${path}: no static active selector link`);
+		}
+	}
+}
+
+for (const { division, id } of awaiting) {
+	const mission = source(`missions/${id}`);
+	const path = `${division}/${id}/lifetime/index.html`;
+	const html = read(path);
+	checkMap(html, mission, 'missions', id, 'lifetime', path);
+	assert.ok(!html.includes('aria-label="Scope"'), `${path}: awaiting missions must have no scope switch`);
+	assert.ok(!html.includes(`href="${prefix}${division}/${id}/"`), `${path}: links to an active view`);
+	assert.match(html, /not yet included in the analysis/i, `${path}: missing analysis inclusion notice`);
+	if (mission.facts.papers > 0) {
+		assert.equal(rowValue(html, 'Tracked publications'), int(mission.lifetime.papers), `${path}: incorrect lifetime publication count`);
+		assert.equal(rowValue(html, 'Citations'), int(mission.lifetime.citations), `${path}: incorrect lifetime citation count`);
+		const entry = manifest.files.find((file) => file.mission === id);
+		assert.ok(entry?.inclusion, `${path}: publication export missing inclusion metadata`);
+		assert.equal(entry.page, `${origin}${prefix}${division}/${id}/lifetime/`, `${path}: incorrect export page`);
+	}
+	for (const scope of ['', 'lifetime/']) {
+		const divisionHtml = read(`${division}/${scope}index.html`);
+		assert.ok(divisionHtml.includes(`href="${prefix}${division}/${id}/lifetime/"`), `${division}/${scope}: awaiting mission missing from table`);
 	}
 }
 

@@ -17,7 +17,7 @@ const rowsFor = (site, scope) => (label, ids, value, note = null) => ({
 });
 
 const SELECTION = { competed: 'Competed', directed: 'Directed' };
-const MANAGEMENT = { agency: 'Agency-led', pi: 'PI-led', commercial: 'Commercial-led' };
+const MANAGEMENT = { agency: 'Agency-led', pi: 'PI-led', commercial: 'Commercial-led', student: 'Student-led' };
 
 /**
  * The quiet line under a mission's name: type, selection, management, launch, status, then the

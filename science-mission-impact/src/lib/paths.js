@@ -15,7 +15,7 @@ export const thumbSrc = (id) => asset(`img/missions/${id}.webp`);
 export const papersUrl = (id) => asset(`data/papers/${id}.json`);
 export const exportUrl = (filename) => asset(`data/exports/${filename}`);
 /** `kind` is 'missions' or 'divisions'. */
-export const mapsUrl = (kind, id) => asset(`data/maps/${kind}/${id}.json`);
+export const mapsUrl = (kind, id, scope = 'lifetime') => asset(`data/maps/${kind}/${id}${scope === 'full' ? '.full' : ''}.json`);
 export const basemapSrc = (key) => asset(`img/maps/${key}.svg`);
 
 export const scixAbstract = (bibcode) => `https://scixplorer.org/abs/${encodeURIComponent(bibcode)}/abstract`;

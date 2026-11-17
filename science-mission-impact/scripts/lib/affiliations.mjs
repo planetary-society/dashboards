@@ -17,6 +17,14 @@ const TOP = 3;
 const increment = (map, key) => map.set(key, (map.get(key) ?? 0) + 1);
 const byPapersThenName = (a, b) => b.papers - a.papers || byText(a.name, b.name); // code points, not the machine's locale
 
+/** Select the exported scope's papers and pool only their affiliations across missions. */
+export function collectAffiliations(rows, records, pooled) {
+	const papers = new Map(rows.map(({ bibcode }) => [bibcode, []]));
+	for (const record of records) if (papers.has(record.bibcode)) papers.set(record.bibcode, record.institution_ids ?? []);
+	for (const [bibcode, ids] of papers) pooled.set(bibcode, [...(pooled.get(bibcode) ?? []), ...ids]);
+	return papers;
+}
+
 /**
  * An institution record checked once and placed on each map: its cell key there, or null when the
  * map can't place it. Keyed by the record itself, so an id still has to be in each caller's own

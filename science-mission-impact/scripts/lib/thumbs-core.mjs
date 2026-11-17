@@ -10,7 +10,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { assertKnownIds } from './config.mjs';
-import { loadSourceCatalog } from './source.mjs';
+import { selectAwaitingMissions } from './inclusion.mjs';
+import { loadSourceCatalog, sourceAsOf } from './source.mjs';
 import { groupBy } from './util.mjs';
 
 /** Tiles are square, small, and sit on a black page: crop to the subject. */
@@ -131,17 +132,24 @@ export function readManifest(file) {
 
 /**
  * Missions in scope = every short_title in the configured corpus_stats runs,
+ * plus launched missions awaiting inclusion when the latest source is provided,
  * joined to index.json and its verified envelope. Missing identities are fatal;
  * unmatched remains an empty array for the existing thumbnail caller contract.
  * The image is smi.config.json `thumbnails.overrides[id]` when set, else upstream's
  * image_url: the URL fetched, hashed for the cache and recorded in the manifest.
  * @returns {{missions: Array<{mission_id: string, short_title: string, url: string|null}>, unmatched: string[]}}
  */
-export function loadMissionScope({ rawDir, config }) {
+export function loadMissionScope({ rawDir, config, latest = null }) {
 	const source = loadSourceCatalog(rawDir, config);
+	const selected = new Map(source.missions);
+	if (latest) {
+		for (const id of selectAwaitingMissions({ source, latest, asOf: sourceAsOf(source) }).keys()) {
+			selected.set(id, latest.missions.get(id));
+		}
+	}
 	const overrides = config.thumbnails?.overrides ?? {};
-	assertKnownIds('thumbnails.overrides', Object.keys(overrides), new Set(source.missions.keys()));
-	const missions = [...source.missions.values()].map(({ id, shortTitle, corpus }) => ({
+	assertKnownIds('thumbnails.overrides', Object.keys(overrides), new Set(selected.keys()));
+	const missions = [...selected.values()].map(({ id, shortTitle, corpus }) => ({
 		mission_id: id,
 		short_title: shortTitle,
 		url: overrides[id] ?? (isFetchableUrl(corpus.image_url) ? corpus.image_url : null)

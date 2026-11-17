@@ -111,7 +111,12 @@ export const FOOTNOTES = {
 	affiliations: {
 		anchor: '',
 		text: () =>
-			'The institutions SciX lists for each paper’s authors, as printed on the paper, located through the Research Organization Registry. A square counts a paper once, however many of its authors worked there.'
+			'The institutions SciX lists for each paper’s authors, as printed on the paper, located through the Research Organization Registry. Only papers in the selected scope are counted. A square counts a paper once, however many of its authors worked there.'
+	},
+	bibliography: {
+		anchor: 'mission-papers',
+		text: () =>
+			'Mission teams may use different search methods, inclusion criteria, and update schedules, so this bibliography may differ from the publications tracked here.'
 	}
 };
 

@@ -58,6 +58,23 @@ test('aggregate reads are sequential and propagate a missing source instead of e
 	await assert.rejects(buildExport(catalog[1], { ...options, readPapers: async () => { throw new Error('missing source'); } }), /missing source/);
 });
 
+test('awaiting missions have individual lifetime publication files but never enter pooled exports', async () => {
+	const inclusion = { date: '2032-10-01', basis: 'window', asOf: '2026-11-14' };
+	const awaiting = { ...mission('awaiting'), inclusion };
+	const expanded = divisions.map((d, i) => i === 0 ? { ...d, awaitingMissions: [awaiting, { ...mission('awaiting_zero', 0), inclusion }] } : d);
+	const expandedCatalog = exportCatalog(expanded);
+	const entry = expandedCatalog.find((f) => f.mission === awaiting.id);
+	assert.deepEqual(entry.inclusion, inclusion);
+	assert.ok(!expandedCatalog.some((f) => f.mission === 'awaiting_zero'));
+	assert.equal(await buildExport(entry, options), toCsv(paper.columns, scixUrl));
+	for (const filename of ['science-mission-impact-missions.csv', 'astro-missions.csv', 'science-mission-impact-publications.zip']) {
+		const requested = [];
+		const output = await buildExport(expandedCatalog.find((f) => f.filename === filename), { ...options, divisions: expanded, readPapers: async (id) => { requested.push(id); return paper; } });
+		assert.equal(output, await get(filename), filename);
+		assert.ok(!requested.includes(awaiting.id));
+	}
+});
+
 test('dictionary documents every CSV field and compact JSON column with snapshot-driven policy values', () => {
 	const site = { asOf: '2026-01-01', costBaseYear: 2025, fullPolicy: { postEndYears: 2, citationYears: 3, minWindowYears: 2 }, attribution: { adsTermsUrl: 'https://example.test/terms' } };
 	const dictionary = dataDictionary(site);

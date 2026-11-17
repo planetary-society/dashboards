@@ -12,5 +12,7 @@ test('agent index links the actual snapshot, exports and both division scopes wi
 		assert.ok(text.includes(`(${root}${path})`), path);
 	}
 	assert.match(text, /missing values differ from zero/);
+	assert.match(text, /awaiting inclusion.*lifetime-only mission pages/);
+	assert.match(text, /do not contribute to the analysis totals or pooled downloads/);
 	assert.equal(agentIndex(site, root), text);
 });

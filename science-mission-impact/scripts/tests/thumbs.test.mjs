@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { after, describe, it } from 'node:test';
+import { loadSourceCatalog } from '../lib/source.mjs';
 
 import {
 	checkImageResponse,
@@ -229,6 +230,30 @@ describe('loadMissionScope', () => {
 		assert.equal(missions.find((m) => m.mission_id === 'fixture_earth').url, 'https://example.test/fixture_earth.jpg');
 		assert.throws(() => loadMissionScope({ ...f, config: { ...f.config, thumbnails: { overrides: { gone: 'https://x.test/a.jpg' } } } }),
 			/thumbnails.overrides has unknown mission id\(s\): gone/);
+	});
+
+	it('retains thumbnails for launched awaiting missions without adding future missions or replacing analysis images', () => {
+		const f = sourceFixture(tmpDir());
+		const latest = loadSourceCatalog(f.rawDir, f.config);
+		latest.missions.get('fixture_astro').corpus.image_url = 'https://example.test/new-astro.jpg';
+		for (const [id, launch] of [['awaiting', '2025-01-01'], ['future', '2027-01-01']]) {
+			latest.missions.set(id, {
+				id, shortTitle: id,
+				corpus: { image_url: `https://example.test/${id}.jpg`, mission: { mission_launch_date: launch } },
+				statsMission: { window_status: 'immature', window_cohort: { mature_date: '2032-10-01' } }
+			});
+			latest.runs[0].resolved.push({ id });
+		}
+		const url = 'https://images.test/awaiting.jpg';
+		const config = { ...f.config, thumbnails: { overrides: { awaiting: url } } };
+		const { missions } = loadMissionScope({ ...f, config, latest });
+		assert.equal(missions.length, 6);
+		assert.equal(missions.find((m) => m.mission_id === 'awaiting').url, url);
+		assert.equal(missions.find((m) => m.mission_id === 'fixture_astro').url, 'https://example.test/fixture_astro.jpg');
+		assert.equal(missions.some((m) => m.mission_id === 'future'), false);
+		const plan = planThumbs({ missions, manifest: { awaiting: { status: 'ok', urlHash: sha256Hex(url) } }, hasTile: () => true, tileIds: ['awaiting', 'future'] });
+		assert.deepEqual(plan.cached.map((m) => m.mission_id), ['awaiting']);
+		assert.deepEqual(plan.stale, ['future']);
 	});
 
 	it('throws loudly when inputs are missing', () => {

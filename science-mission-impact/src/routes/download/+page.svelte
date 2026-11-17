@@ -39,12 +39,12 @@
 			<h2>Entire dataset (data as of {apDate(manifest.asOf)})</h2>
 			<div class="item">
 				{@render download('science-mission-impact-missions.csv', 'All missions summary')}
-				<p>Every mission in every division, with its life-cycle cost (LCC), status, selection, and key dates, plus its paper count, citation count,
+				<p>Every mission in the analysis, with its life-cycle cost (LCC), status, selection, and key dates, plus its paper count, citation count,
 					and high-impact papers in the {fullWindowLabel} and over its lifetime. {int(files.get('science-mission-impact-missions.csv').rows)} rows.</p>
 			</div>
 			<div class="item">
 				{@render download('science-mission-impact-publications.zip', 'All tracked publications')}
-				<p>One CSV, zipped, with one row per mission and paper, so a paper credited to two missions appears twice.
+				<p>One CSV, zipped, covering missions in the analysis with one row per mission and paper, so a paper credited to two missions appears twice.
 					Filter its <code>division</code> column for one division’s papers. {int(files.get('science-mission-impact-publications.zip').rows)} rows.</p>
 			</div>
 			<div class="item">
@@ -74,13 +74,14 @@
 					<select id="download-mission" value={mission.mission} onchange={(e) => (picked.mission = e.currentTarget.value)}>
 						{#each groups as g (g.slug)}
 							<optgroup label={g.name}>
-								{#each g.missions as m (m.mission)}<option value={m.mission}>{m.name}</option>{/each}
+								{#each g.missions as m (m.mission)}<option value={m.mission}>{m.name}{m.inclusion ? ' — awaiting inclusion' : ''}</option>{/each}
 							</optgroup>
 						{/each}
 					</select>
 				</div>
 				{@render download(mission.filename, 'Tracked publications')}
 				<a href={mission.json}>Publication data (JSON)</a>
+				{#if mission.inclusion}<p class="meta">Lifetime publications for a mission awaiting inclusion, excluded from the pooled analysis files. Data as of {apDate(mission.inclusion.asOf ?? manifest.asOf)}.</p>{/if}
 			{/if}
 			<p>Missions with no tracked publications aren’t listed.</p>
 		</section>

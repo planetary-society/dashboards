@@ -28,16 +28,16 @@ export function selectionOf(label, id) {
 	return SELECTIONS.get(label);
 }
 
-const MANAGEMENTS = new Map([['Agency-led', 'agency'], ['PI-led', 'pi'], ['Commercial-led', 'commercial']]);
+const MANAGEMENTS = new Map([['Agency-led', 'agency'], ['PI-led', 'pi'], ['Commercial-led', 'commercial'], ['Student-led', 'student']]);
 
 /**
- * A mission's upstream `management_model`: 'Agency-led' / 'PI-led' / 'Commercial-led',
+ * A mission's upstream `management_model`: 'Agency-led' / 'PI-led' / 'Commercial-led' / 'Student-led',
  * null for 'Unknown' or blank. Shown in the mission page's header line; no chart, CSV or analysis reads it.
  */
 export function managementOf(label, id) {
 	if (label == null || label === '' || label === 'Unknown') return null;
 	if (!MANAGEMENTS.has(label)) {
-		throw new PackagingError(`${id}: management_model ${JSON.stringify(label)} is not Agency-led, PI-led, Commercial-led or Unknown`);
+		throw new PackagingError(`${id}: management_model ${JSON.stringify(label)} is not Agency-led, PI-led, Commercial-led, Student-led or Unknown`);
 	}
 	return MANAGEMENTS.get(label);
 }

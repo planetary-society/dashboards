@@ -24,7 +24,10 @@ const lib = join(here, '..');
 const dataUrl = (code) => `data:text/javascript,${encodeURIComponent(code).replace(/'/g, '%27')}`;
 
 const PATHS_STUB = dataUrl(`
+	export const SITE_ORIGIN = 'https://example.test';
+	export const divisionHref = (slug, scope = 'full') => \`/\${slug}/\${scope === 'lifetime' ? 'lifetime/' : ''}\`;
 	export const missionHref = (slug, id, scope = 'full') => \`/\${slug}/\${id}/\${scope === 'lifetime' ? 'lifetime/' : ''}\`;
+	export const mapsUrl = (kind, id) => \`/data/maps/\${kind}/\${id}.json\`;
 	export const asset = (path) => '/' + path;
 	export const papersUrl = (id) => \`/data/papers/\${id}.json\`;
 	export const exportUrl = (filename) => \`/data/exports/\${filename}\`;
@@ -142,6 +145,24 @@ test('MissionTable lists every mission together, earliest launch first, and drop
 	assert.ok(!/class="num top/.test(unranked), 'no top-10% column');
 });
 
+test('awaiting mission table shows lifetime counts, links, and inclusion dates without the analysis download', async () => {
+	const Component = await load('../ui/MissionTable.svelte');
+	const missions = [
+		{ id: 'a', name: 'Alpha', dates: { launch: '2024-01-01' }, lifetime: { papers: 123, citations: 456 }, inclusion: { date: '2030-10-01' } },
+		{ id: 'b', name: 'Beta', dates: { launch: '2025-01-01' }, lifetime: { papers: null, citations: null }, inclusion: { date: null } }
+	];
+	const html = render(Component, { props: { missions, slug: 'earth', site, scope: 'lifetime', awaiting: true } }).body;
+	assert.match(html, /Missions awaiting inclusion — Lifetime/);
+	assert.match(html, /href="\/earth\/a\/lifetime\/"/);
+	assert.match(html, />123<.*>456</s);
+	assert.match(html, /Inclusion date/);
+	assert.match(html, /datetime="2030-10-01">Oct\. 1, 2030<\/time>/);
+	assert.match(html, /Not yet known/);
+	assert.doesNotMatch(html, /Download CSV|Top-10%/);
+	const headers = [...html.matchAll(/<th\b[\s\S]*?<\/th>/g)];
+	assert.match(headers.at(-1)[0], /Inclusion date/, 'the inclusion date is the final column');
+});
+
 const site = { asOf: '2026-09-18', windowPolicy: { kind: 'prime', postPrimeYears: 3, citationYears: 3 },
 	fullPolicy: { postEndYears: 3, citationYears: 3 }, referenceCost: 150, costBaseYear: 2025 };
 const spread = { mean: 12.5, median: 4, uncited: 10, i10: 30, i100: 2 };
@@ -152,6 +173,50 @@ const mission = {
 	window: { ...scope, spread: null, bounds: { start: '2004-04-01', end: '2010-07-01', status: 'available' } },
 	lifetime: { ...scope, papers: 100, citations: 3000, top1: null, top1ShareOfDivision: null }
 };
+
+test('awaiting mission pages explain exclusion and render lifetime measures without a scope switch', async () => {
+	const Component = await load('../../routes/[division]/[mission]/+page.svelte', { scope: 'lifetime' });
+	const m = {
+		...mission, id: 'a', name: 'Alpha', fullName: 'Alpha Mission', division: 'earth', divisionName: 'Earth Science',
+		meta: { dates: {} }, facts: { papers: 100 }, query: { arms: null }, curation: { includes: [], excludes: [] },
+		inclusion: { date: '2030-10-01', basis: 'window', asOf: '2026-09-19' }
+	};
+	const html = render(Component, { props: { data: { mission: m, site, scope: 'lifetime' } } });
+	assert.match(html.body, /not yet included in the analysis/);
+	assert.match(html.body, /Expected inclusion date: <time datetime="2030-10-01">Oct\. 1, 2030<\/time>/);
+	assert.match(html.body, /Only lifetime data is shown/);
+	assert.match(html.body, />3,000</);
+	assert.doesNotMatch(html.body, /Active Mission Window|Top-10% papers|Top-1% papers/);
+	assert.match(html.head, /Data as of 2026-09-19/);
+	const failure = { ...m, meta: { ...m.meta, failed: true }, facts: { papers: 0 }, inclusion: { ...m.inclusion, basis: 'failure', date: null } };
+	const failed = render(Component, { props: { data: { mission: failure, site, scope: 'lifetime' } } }).body;
+	assert.match(failed, /waiting period for a failed mission/);
+	assert.match(failed, /inclusion date is not yet known/);
+	assert.doesNotMatch(failed, /counts as zero in the comparisons/);
+});
+
+test('mission bibliography links follow Wikipedia, stand alone when needed, and explain differing inclusion methods', async () => {
+	const m = {
+		...mission, id: 'a', name: 'Alpha', fullName: 'Alpha Mission', division: 'earth', divisionName: 'Earth Science',
+		meta: { dates: {}, wikipedia: 'https://en.wikipedia.org/wiki/Alpha', bibliography: 'https://example.test/publications?sort=date&scope=all' },
+		facts: { papers: 0 }, query: { arms: null }, curation: { includes: [], excludes: [] }
+	};
+	for (const [scope, inclusion] of [['full', undefined], ['lifetime', undefined], ['lifetime', { date: '2030-10-01', basis: 'window', asOf: site.asOf }]]) {
+		const Component = await load('../../routes/[division]/[mission]/+page.svelte', { scope });
+		const html = (meta) => render(Component, { props: { data: { mission: { ...m, meta, inclusion }, site, scope } } }).body;
+		const linked = html(m.meta);
+		assert.match(linked, /href="https:\/\/example\.test\/publications\?sort=date&amp;scope=all"[^>]*>Mission-curated bibliography<\/a>/);
+		assert.ok(linked.indexOf('>Wikipedia</a>') < linked.indexOf('>Mission-curated bibliography</a>'));
+		assert.match(linked, /Mission teams may use different search methods, inclusion criteria, and update schedules, so this bibliography may differ from the publications tracked here\./);
+		assert.match(linked, /aria-label="What is [^"]*bibliography\?"/);
+		const standalone = html({ ...m.meta, wikipedia: null });
+		assert.match(standalone, />Mission-curated bibliography<\/a>/);
+		assert.doesNotMatch(standalone, />Wikipedia<\/a>/);
+		const absent = html({ ...m.meta, bibliography: null });
+		assert.match(absent, />Wikipedia<\/a>/);
+		assert.doesNotMatch(absent, /Mission-curated bibliography|Mission teams may use/);
+	}
+});
 // Each row's visible text: label, the hint's "i", value. Tips and screen-reader copies dropped.
 const rowsOf = (html) => [...html.matchAll(/<tr>([\s\S]*?)<\/tr>/g)].map(([, r]) =>
 	r.replace(/<span role="tooltip"[\s\S]*?<\/span>|<span class="sr-only[^"]*">[\s\S]*?<\/span>/g, '')

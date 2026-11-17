@@ -131,6 +131,11 @@
 			<p>This means that missions launched after the full citation comparison window are not included in this study. A
 				mission still operating limits publications to those that were published within this citation window.</p>
 			<p>The count runs by calendar year: a paper collects citations from papers dated its own publication year through {spell(fullPolicy.citationYears)} years later, so every paper gets {spell(calendarYears(fullPolicy))} calendar years of exposure, from just over {spell(fullPolicy.citationYears)} years for a December paper to almost {spell(calendarYears(fullPolicy))} for a January one. The length is a trade-off, and it’s ultimately an editorial decision. A longer window would count more of each paper’s citations but exclude more recent missions, since a mission’s papers count only once their windows have closed.</p>
+			<p>Eligibility for the main analysis follows the maturity of each mission’s prime-mission publication window.
+				Failed missions with no recorded publications can qualify earlier under a waiting period after mission end.
+				The “Missions awaiting inclusion” lists show lifetime data for launched missions that have not yet qualified;
+				they do not contribute to the comparative totals. Inclusion dates are estimates based on the current mission
+				dates and rules. When a required date is missing, the inclusion date remains unknown.</p>
 		</section>
 
 		<section id="cost">

@@ -1,18 +1,19 @@
 <script>
-	// Where the authors of every tracked paper worked, on a US or a world map: each square glows
+	// Where the authors of the selected scope's papers worked, on a US or a world map: each square glows
 	// brighter the more papers have an author there. The page carries the summary; the squares come
 	// from a data file fetched after load, and the land is a cached image (scripts/basemaps.mjs). The
 	// map sits low on the page, so its data, its land and d3-geo all wait until the reader nears it.
 	import Choice from '$lib/ui/Choice.svelte';
 	import { int, plural } from '$lib/format.js';
 	import { basemapSrc } from '$lib/paths.js';
+	import { scopeLabel } from '$lib/copy/window.js';
 	import { FRAMES } from './mapframes.js';
 	import { decadeTicks } from './costaxis.js';
 	import { scaleSequentialLog } from 'd3-scale';
 	import { interpolateLab, piecewise } from 'd3-interpolate';
 
 	/** maxHeight: the most the map itself may stand, in px, so it can match a chart beside it; its width follows. */
-	let { summary, url, maxHeight = null } = $props();
+	let { summary, url, scope = 'full', maxHeight = null } = $props();
 	const uid = $props.id();
 	let chosen = $state(null);
 	// raw: the fetched grid and the pointed-at cell are replaced, never mutated, so neither needs a deep proxy
@@ -92,7 +93,7 @@
 		<svg
 			viewBox="0 0 {map.width} {map.height}"
 			role="img"
-			aria-label="Heat map of where the authors worked, {map.label}: {int(facts.mapped)} of {int(summary.papers)} tracked publications have an author on this map.{leaders ? ` Institutions on the most papers: ${leaders}.` : ''}"
+			aria-label="Heat map of where the authors worked, {map.label}: {int(facts.mapped)} of {int(summary.papers)} tracked publications in the {scopeLabel(scope)} scope have an author on this map.{leaders ? ` Institutions on the most papers: ${leaders}.` : ''}"
 			onpointermove={pick}
 			onpointerdown={pick}
 			onpointerleave={(e) => e.pointerType === 'mouse' && (hover = null)}

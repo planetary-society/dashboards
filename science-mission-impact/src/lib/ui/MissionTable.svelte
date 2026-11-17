@@ -8,10 +8,10 @@
 	import { FOOTNOTES, noteText } from '$lib/copy/footnotes.js';
 	import { scopeLabel } from '$lib/copy/window.js';
 	import { exportUrl, methodsHref, missionHref, thumbSrc } from '$lib/paths.js';
-	import { int, weight, money } from '$lib/format.js';
+	import { apDate, int, weight, money } from '$lib/format.js';
 
 	// rankable: false for a division too small to rank, which has no top-10% papers to show
-	let { missions, slug, site, scope = 'full', rankable = true } = $props();
+	let { missions, slug, site, scope = 'full', rankable = true, awaiting = false } = $props();
 
 	// Top-10% papers are the active window's measure; the lifetime view has no such column.
 	const ranked = $derived(rankable && scope !== 'lifetime');
@@ -21,11 +21,13 @@
 	const value = {
 		name: (m) => m.name.toLowerCase(),
 		launch: (m) => m.dates?.launch ?? null,
+		primeEnd: (m) => m.dates?.primeEnd ?? null,
 		type: (m) => m.type?.toLowerCase() ?? null,
 		cost: (m) => m.cost,
 		papers: (m) => m[scope].papers,
 		citations: (m) => m[scope].citations,
-		top: (m) => m[scope].top10
+		top: (m) => m[scope].top10,
+		inclusion: (m) => m.inclusion?.date ?? null
 	};
 
 	function sorted(list) {
@@ -46,7 +48,7 @@
 	const maxTop = $derived(Math.max(1e-9, ...missions.map((m) => m[scope].top10 ?? 0)));
 
 	function setSort(key) {
-		sort = sort.key === key ? { key, dir: -sort.dir } : { key, dir: ['name', 'launch', 'cost'].includes(key) ? 1 : -1 };
+		sort = sort.key === key ? { key, dir: -sort.dir } : { key, dir: ['name', 'launch', 'primeEnd', 'cost', 'inclusion'].includes(key) ? 1 : -1 };
 	}
 	const ariaSort = (key) => (sort.key !== key ? 'none' : sort.dir === 1 ? 'ascending' : 'descending');
 
@@ -60,22 +62,26 @@
 	</th>
 {/snippet}
 
-<div class="tools">
-	<a class="link" href={exportUrl(`${slug}-missions.csv`)} download>Download CSV</a>
-</div>
+{#if !awaiting}
+	<div class="tools">
+		<a class="link" href={exportUrl(`${slug}-missions.csv`)} download>Download CSV</a>
+	</div>
+{/if}
 
-<table>
-	<caption class="sr-only">Missions — {scopeLabel(scope)}, earliest launch first</caption>
+<table class:awaiting>
+	<caption class="sr-only">{awaiting ? 'Missions awaiting inclusion' : 'Missions'} — {scopeLabel(scope)}, earliest launch first</caption>
 	<thead>
 		<tr>
 			<th class="thumb"><span class="sr-only">Image</span></th>
 			{@render th('name', 'Mission', 'name')}
 			{@render th('launch', 'Launch', 'num wide')}
+			{#if awaiting}{@render th('primeEnd', 'Prime Mission End', 'num wide')}{/if}
 			{@render th('type', 'Type', 'type wide')}
 			{@render th('cost', `LCC (${site.costBaseYear} $)`, 'num mid', ['cost'])}
 			{@render th('papers', 'Publications', ranked ? 'num mid' : 'num', ['publications'])}
 			{@render th('citations', 'Citations', 'num', ['citations'])}
 			{#if ranked}{@render th('top', 'Top-10% papers', 'num top', ['top10', 'shared'])}{/if}
+			{#if awaiting}{@render th('inclusion', 'Inclusion date', 'num inclusion')}{/if}
 		</tr>
 	</thead>
 	<tbody>
@@ -90,6 +96,9 @@
 					<span class="sub meta">{money(m.cost)}, {m.launchYear ?? '—'}</span>
 				</td>
 				<td class="num wide"><Num value={m.launchYear ?? '—'} /></td>
+				{#if awaiting}
+					<td class="num wide">{#if m.dates?.primeEnd}<time datetime={m.dates.primeEnd}>{apDate(m.dates.primeEnd)}</time>{:else}—{/if}</td>
+				{/if}
 				<td class="type wide">{m.type ?? '—'}</td>
 				<td class="num mid"><Num value={money(m.cost)} /></td>
 				<td class={ranked ? 'num mid' : 'num'}><Num value={int(m[scope].papers)} /></td>
@@ -99,6 +108,9 @@
 						<span class="bar" style:width="{((top ?? 0) / maxTop) * 100}%"></span>
 						<span class="topv" class:nil={!top}><Num value={top == null ? '—' : weight(top)} /></span>
 					</td>
+				{/if}
+				{#if awaiting}
+					<td class="num inclusion">{#if m.inclusion?.date}<time datetime={m.inclusion.date}>{apDate(m.inclusion.date)}</time>{:else}Not yet known{/if}</td>
 				{/if}
 			</tr>
 		{/each}
@@ -274,6 +286,10 @@
 		color: var(--soil);
 	}
 
+	.inclusion {
+		width: 130px;
+	}
+
 	@media (max-width: 860px) {
 		.wide {
 			display: none;
@@ -289,6 +305,14 @@
 	}
 
 	@media (max-width: 560px) {
+		.awaiting .thumb {
+			display: none;
+		}
+
+		.inclusion {
+			width: 84px;
+		}
+
 		.mid {
 			display: none;
 		}

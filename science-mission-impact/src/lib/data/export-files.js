@@ -9,9 +9,10 @@ export function exportCatalog(divisions) {
 		{ filename: 'science-mission-impact-clps.csv', kind: 'clps' },
 		...divisions.flatMap((d) => [
 			{ filename: `${d.slug}-missions.csv`, kind: 'missions', division: d.slug },
-			...d.missions.filter(hasPapers).map((m) => ({
+			...[...d.missions, ...(d.awaitingMissions ?? [])].filter(hasPapers).map((m) => ({
 				filename: `${m.id}-publications.csv`, kind: 'publications', division: d.slug,
-				mission: m.id, missionKey: m.shortTitle, name: m.name
+				mission: m.id, missionKey: m.shortTitle, name: m.name,
+				...(m.inclusion ? { inclusion: m.inclusion } : {})
 			}))
 		])
 	];

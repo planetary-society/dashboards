@@ -22,6 +22,14 @@ describe('papersByYearMap', () => {
 		]);
 	});
 
+	it('counts only refereed mission papers, including a measured zero', () => {
+		const map = papersByYearMap([
+			{ year: 2017, total: 1, refereed: 0 },
+			{ year: 2018, total: 5, refereed: 2 }
+		]);
+		assert.deepEqual([...map], [[2017, 0], [2018, 2]]);
+	});
+
 	it('reads the division shape (object keyed by year string)', () => {
 		const map = papersByYearMap({ 1990: 3, 1991: 27 });
 		assert.deepEqual([...map], [

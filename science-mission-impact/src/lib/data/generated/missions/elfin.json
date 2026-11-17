@@ -8,7 +8,7 @@
   "meta": {
     "status": "Completed",
     "failed": false,
-    "cost": 4,
+    "cost": 3.9,
     "lcc": 3,
     "type": "In-Situ Probe",
     "selection": "competed",
@@ -17,11 +17,12 @@
     "target": "Earth",
     "launchVehicle": "Delta II",
     "wikipedia": "https://en.wikipedia.org/wiki/ELFIN",
+    "bibliography": "https://elfin.igpp.ucla.edu/publications",
     "firstSciencePublication": "10.1007/s11214-020-00721-7",
     "dates": {
-      "formulation": "2013-09-30",
+      "formulation": "2014-05-22",
       "launch": "2018-09-15",
-      "scienceStart": "2018-09-15",
+      "scienceStart": null,
       "primeEnd": "2020-01-15",
       "missionEnd": "2022-09-30"
     }
@@ -31,12 +32,12 @@
     "m": 2.857,
     "i100": 1,
     "g": 31,
-    "tori": 1.808,
-    "riq": 192
+    "tori": 1.837,
+    "riq": 193
   },
   "facts": {
     "papers": 70,
-    "citations": 1151,
+    "citations": 1152,
     "publicationYears": [
       2020,
       2026
@@ -68,13 +69,13 @@
       114,
       301,
       402,
-      275
+      276
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 1151,
-      "observed": 1151,
+      "expected": 1152,
+      "observed": 1152,
       "missing": 0
     }
   },
@@ -115,6 +116,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 23,
+    "us": {
+      "mapped": 23,
+      "top": [
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 22
+        },
+        {
+          "name": "University of Texas, Dallas",
+          "papers": 12
+        },
+        {
+          "name": "Boston University, Massachusetts",
+          "papers": 7
+        }
+      ]
+    },
+    "world": {
+      "mapped": 23,
+      "top": [
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 22
+        },
+        {
+          "name": "University of Texas, Dallas",
+          "papers": 12
+        },
+        {
+          "name": "Atomic Energy Commission, France",
+          "papers": 8
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2020SSRv..216..103A",
     "title": "The ELFIN Mission",
@@ -134,14 +172,14 @@
       "bins": [
         0,
         0,
-        0.602,
-        1.398,
+        0.603,
+        1.397,
         0,
         1,
-        3.02,
-        0.98,
-        3.147,
-        12.853
+        3.043,
+        0.957,
+        3.187,
+        12.813
       ],
       "top1": 1
     },
@@ -162,15 +200,15 @@
     },
     "lifetime": {
       "bins": [
-        8.521,
-        9.364,
-        14.648,
-        7.578,
-        6.064,
-        6.173,
-        5.651,
-        3.88,
-        7.12,
+        8.517,
+        9.371,
+        14.697,
+        7.535,
+        6.062,
+        6.172,
+        5.646,
+        3.9,
+        7.1,
         1
       ],
       "top1": 0
@@ -180,14 +218,14 @@
     "papers": 23,
     "outputBasis": "measured",
     "citations": 669,
-    "top10": 11.686,
-    "top10ShareOfDivision": 0.00811,
+    "top10": 11.647,
+    "top10ShareOfDivision": 0.00808,
     "top1": 1,
     "top1ShareOfDivision": 0.00694,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.793,
-      "yearsFromFormulation": 6.752,
+      "yearsFromFormulation": 6.111,
       "bibcode": "2020SSRv..216..103A",
       "date": "2020-07-00"
     },
@@ -218,13 +256,13 @@
     "outputBasis": "measured",
     "citations": 109,
     "top10": 2,
-    "top10ShareOfDivision": 0.00451,
+    "top10ShareOfDivision": 0.00471,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.793,
-      "yearsFromFormulation": 6.752,
+      "yearsFromFormulation": 6.111,
       "bibcode": "2020SSRv..216..103A",
       "date": "2020-07-00"
     },
@@ -253,7 +291,7 @@
   "lifetime": {
     "papers": 70,
     "outputBasis": "measured",
-    "citations": 1151,
+    "citations": 1152,
     "top10": 1,
     "top10ShareOfDivision": 0.00054,
     "top1": null,
@@ -261,12 +299,12 @@
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.793,
-      "yearsFromFormulation": 6.752,
+      "yearsFromFormulation": 6.111,
       "bibcode": "2020SSRv..216..103A",
       "date": "2020-07-00"
     },
     "spread": {
-      "mean": 16.443,
+      "mean": 16.457,
       "median": 7.5,
       "uncited": 5,
       "i10": 31,
@@ -399,7 +437,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 37
+      "citations": 38
     },
     {
       "bibcode": "2023JGRA..12831087Z",

@@ -17,11 +17,12 @@
     "target": "Heliosphere",
     "launchVehicle": "Pegasus XL",
     "wikipedia": "https://en.wikipedia.org/wiki/Interstellar_Boundary_Explorer",
+    "bibliography": "https://ibex.princeton.edu/ibex-publications",
     "firstSciencePublication": "10.1029/2009GL038794",
     "dates": {
-      "formulation": "2005-01-27",
+      "formulation": "2005-01-26",
       "launch": "2008-10-19",
-      "scienceStart": "2009-02-01",
+      "scienceStart": "2008-12-01",
       "primeEnd": "2010-03-02",
       "missionEnd": null
     }
@@ -31,12 +32,12 @@
     "m": 3.444,
     "i100": 34,
     "g": 100,
-    "tori": 32.865,
-    "riq": 301
+    "tori": 33.464,
+    "riq": 304
   },
   "facts": {
-    "papers": 374,
-    "citations": 14609,
+    "papers": 375,
+    "citations": 14673,
     "publicationYears": [
       2009,
       2026
@@ -64,7 +65,7 @@
       2026
     ],
     "papers": [
-      18,
+      19,
       15,
       14,
       25,
@@ -85,34 +86,34 @@
     ],
     "citations": [
       36,
-      146,
+      147,
       243,
-      425,
-      641,
-      871,
-      1327,
-      1016,
-      828,
-      819,
-      1152,
-      813,
-      715,
-      1334,
-      1225,
-      670,
-      1306,
-      1042
+      427,
+      647,
+      872,
+      1330,
+      1017,
+      829,
+      824,
+      1156,
+      818,
+      719,
+      1338,
+      1227,
+      676,
+      1322,
+      1045
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 14609,
-      "observed": 14609,
+      "expected": 14673,
+      "observed": 14673,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 374,
+    "papers": 375,
     "us": {
       "mapped": 318,
       "top": [
@@ -131,7 +132,7 @@
       ]
     },
     "world": {
-      "mapped": 367,
+      "mapped": 368,
       "top": [
         {
           "name": "Southwest Research Institute, Texas",
@@ -144,6 +145,43 @@
         {
           "name": "University of Texas, San Antonio",
           "papers": 156
+        }
+      ]
+    }
+  },
+  "fullAffiliations": {
+    "papers": 331,
+    "us": {
+      "mapped": 280,
+      "top": [
+        {
+          "name": "Southwest Research Institute, Texas",
+          "papers": 180
+        },
+        {
+          "name": "University of New Hampshire",
+          "papers": 164
+        },
+        {
+          "name": "University of Texas, San Antonio",
+          "papers": 144
+        }
+      ]
+    },
+    "world": {
+      "mapped": 325,
+      "top": [
+        {
+          "name": "Southwest Research Institute, Texas",
+          "papers": 180
+        },
+        {
+          "name": "University of New Hampshire",
+          "papers": 164
+        },
+        {
+          "name": "University of Texas, San Antonio",
+          "papers": 144
         }
       ]
     }
@@ -165,81 +203,81 @@
   "ranks": {
     "full": {
       "bins": [
-        12.715,
-        15.848,
-        17.667,
-        19.119,
-        32.155,
-        32.232,
-        34.892,
-        58.613,
-        41.126,
-        65.632
+        12.739,
+        15.971,
+        18.532,
+        19.156,
+        31.16,
+        33.245,
+        34.5,
+        58.957,
+        40.3,
+        66.44
       ],
-      "top1": 7.571
+      "top1": 7.562
     },
     "window": {
       "bins": [
-        2.572,
-        3.85,
-        3.418,
-        3.26,
-        4.464,
-        4.157,
-        7.688,
-        3.661,
-        9.816,
-        15.114
+        2.421,
+        4.515,
+        3.817,
+        3.187,
+        4.626,
+        4.138,
+        7.763,
+        3.783,
+        10.61,
+        14.141
       ],
-      "top1": 2.18
+      "top1": 2
     },
     "lifetime": {
       "bins": [
-        22.282,
-        21.201,
-        30.584,
-        28.601,
-        33.093,
-        37.984,
-        43.821,
-        61.194,
-        45.24,
+        22.276,
+        21.219,
+        30.675,
+        28.071,
+        33.397,
+        38.135,
+        43.8,
+        61.228,
+        46.2,
         50
       ],
       "top1": 2
     }
   },
   "full": {
-    "papers": 330,
+    "papers": 331,
     "outputBasis": "measured",
-    "citations": 5773,
-    "top10": 64.632,
-    "top10ShareOfDivision": 0.04484,
-    "top1": 7.571,
-    "top1ShareOfDivision": 0.05252,
+    "citations": 5788,
+    "top10": 65.44,
+    "top10ShareOfDivision": 0.04542,
+    "top1": 7.562,
+    "top1ShareOfDivision": 0.05248,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 0.496,
-      "yearsFromFormulation": 4.509,
+      "yearsFromScienceStart": 0.665,
+      "yearsFromFormulation": 4.512,
       "bibcode": "2009SSRv..146...11M",
       "date": "2009-08-00"
     },
     "status": "available",
     "bounds": {
-      "start": "2009-03-01",
+      "start": "2009-01-01",
       "end": "2024-01-01",
       "matureDate": "2026-10-01",
       "status": "available",
-      "months": 178,
+      "months": 180,
       "citationBuckets": 18
     },
     "indices": {
       "h": 36,
       "g": 49,
-      "m": 2.427
+      "m": 2.4
     },
     "spread": {
-      "mean": 17.494,
+      "mean": 17.486,
       "median": 13,
       "uncited": 8,
       "i10": 209,
@@ -247,78 +285,78 @@
     }
   },
   "window": {
-    "papers": 58,
+    "papers": 59,
     "outputBasis": "measured",
-    "citations": 1409,
-    "top10": 15.114,
-    "top10ShareOfDivision": 0.03407,
-    "top1": 2.18,
-    "top1ShareOfDivision": 0.04914,
+    "citations": 1412,
+    "top10": 14.141,
+    "top10ShareOfDivision": 0.03328,
+    "top1": 2,
+    "top1ShareOfDivision": 0.04707,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 0.496,
-      "yearsFromFormulation": 4.509,
+      "yearsFromScienceStart": 0.665,
+      "yearsFromFormulation": 4.512,
       "bibcode": "2009SSRv..146...11M",
       "date": "2009-08-00"
     },
     "status": "available",
     "bounds": {
-      "start": "2009-03-01",
+      "start": "2009-01-01",
       "end": "2012-04-01",
       "matureDate": "2015-10-01",
       "status": "available",
-      "months": 37,
+      "months": 39,
       "citationBuckets": 7
     },
     "indices": {
       "h": 24,
       "g": 35,
-      "m": 7.777
+      "m": 7.391
     },
     "spread": {
-      "mean": 24.293,
-      "median": 16.5,
+      "mean": 23.932,
+      "median": 16,
       "uncited": 1,
       "i10": 41,
       "i100": 0
     }
   },
   "lifetime": {
-    "papers": 374,
+    "papers": 375,
     "outputBasis": "measured",
-    "citations": 14609,
+    "citations": 14673,
     "top10": 50,
     "top10ShareOfDivision": 0.02723,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 0.329,
-      "yearsFromFormulation": 4.342,
+      "yearsFromScienceStart": 0.498,
+      "yearsFromFormulation": 4.345,
       "bibcode": "2009GeoRL..3612104M",
       "date": "2009-06-00"
     },
     "spread": {
-      "mean": 39.061,
+      "mean": 39.128,
       "median": 24,
       "uncited": 17,
-      "i10": 273,
+      "i10": 275,
       "i100": 34
     }
   },
   "query": {
     "arms": "(((abs:\"IBEX-Hi\" OR abs:\"IBEX-Lo\" OR abs:\"Interstellar Boundary Explorer\" OR (abs:IBEX AND (abs:\"energetic neutral atom\" OR abs:\"electrostatic analyzer\" OR abs:(ENA OR ENAs OR heliosphere OR heliospheric OR heliosheath OR heliopause OR interstellar OR ribbon OR \"pickup ion\" OR \"pick-up ion\" OR \"solar wind\" OR magnetosphere OR magnetospheric OR \"bow shock\" OR lunar OR Moon))))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2009-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22IBEX-Hi%22+OR+abs%3A%22IBEX-Lo%22+OR+abs%3A%22Interstellar+Boundary+Explorer%22+OR+%28abs%3AIBEX+AND+%28abs%3A%22energetic+neutral+atom%22+OR+abs%3A%22electrostatic+analyzer%22+OR+abs%3A%28ENA+OR+ENAs+OR+heliosphere+OR+heliospheric+OR+heliosheath+OR+heliopause+OR+interstellar+OR+ribbon+OR+%22pickup+ion%22+OR+%22pick-up+ion%22+OR+%22solar+wind%22+OR+magnetosphere+OR+magnetospheric+OR+%22bow+shock%22+OR+lunar+OR+Moon%29%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:12:31.595466+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2009-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22IBEX-Hi%22+OR+abs%3A%22IBEX-Lo%22+OR+abs%3A%22Interstellar+Boundary+Explorer%22+OR+%28abs%3AIBEX+AND+%28abs%3A%22energetic+neutral+atom%22+OR+abs%3A%22electrostatic+analyzer%22+OR+abs%3A%28ENA+OR+ENAs+OR+heliosphere+OR+heliospheric+OR+heliosheath+OR+heliopause+OR+interstellar+OR+ribbon+OR+%22pickup+ion%22+OR+%22pick-up+ion%22+OR+%22solar+wind%22+OR+magnetosphere+OR+magnetospheric+OR+%22bow+shock%22+OR+lunar+OR+Moon%29%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-13T23:55:26.796089+00:00",
     "reconciliation": {
-      "adsReturned": 381,
+      "adsReturned": 382,
       "curatedOut": 8,
       "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 374
+      "final": 375
     }
   },
   "curation": {
@@ -582,6 +620,6 @@
     }
   ],
   "papersFile": {
-    "rows": 374
+    "rows": 375
   }
 }

@@ -8,8 +8,8 @@
   "meta": {
     "status": "Extended Mission",
     "failed": false,
-    "cost": 1268.4,
-    "lcc": 857,
+    "cost": 1378.2,
+    "lcc": 931.2,
     "type": "Orbiter",
     "selection": "directed",
     "management": "agency",
@@ -17,9 +17,10 @@
     "target": "Earth",
     "launchVehicle": "Atlas V 401",
     "wikipedia": "https://en.wikipedia.org/wiki/Landsat_8",
+    "bibliography": null,
     "firstSciencePublication": "10.1016/j.epsl.2014.01.036",
     "dates": {
-      "formulation": "2005-12-01",
+      "formulation": "2003-10-01",
       "launch": "2013-02-11",
       "scienceStart": "2013-05-30",
       "primeEnd": "2018-05-30",
@@ -31,12 +32,12 @@
     "m": 10.071,
     "i100": 254,
     "g": 227,
-    "tori": 1134.034,
-    "riq": 2245
+    "tori": 1125.523,
+    "riq": 2236
   },
   "facts": {
     "papers": 6714,
-    "citations": 159405,
+    "citations": 159417,
     "publicationYears": [
       2013,
       2026
@@ -79,23 +80,23 @@
       0,
       76,
       416,
-      1067,
+      1068,
       2137,
-      4206,
-      7264,
+      4207,
+      7265,
       11022,
       15277,
       20665,
-      20973,
-      24478,
-      27461,
-      24363
+      20975,
+      24480,
+      27463,
+      24366
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 159405,
-      "observed": 159405,
+      "expected": 159417,
+      "observed": 159417,
       "missing": 0
     }
   },
@@ -136,6 +137,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 4774,
+    "us": {
+      "mapped": 651,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 71
+        },
+        {
+          "name": "University of Maryland, College Park",
+          "papers": 48
+        },
+        {
+          "name": "U.S. Geological Survey",
+          "papers": 47
+        }
+      ]
+    },
+    "world": {
+      "mapped": 3381,
+      "top": [
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 376
+        },
+        {
+          "name": "Chinese Academy of Sciences",
+          "papers": 195
+        },
+        {
+          "name": "Wuhan University, China",
+          "papers": 119
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2014RSEnv.145..154R",
     "title": "Landsat-8: Science and product vision for terrestrial global change research",
@@ -153,62 +191,62 @@
   "ranks": {
     "full": {
       "bins": [
-        404.263,
-        364.107,
-        413.949,
-        424.44,
-        433.329,
-        459.985,
-        507.267,
-        521.744,
-        559.71,
-        685.206
+        404.274,
+        364.482,
+        414.434,
+        425.45,
+        434.316,
+        460.588,
+        507.431,
+        520.631,
+        559.059,
+        683.336
       ],
-      "top1": 77.249
+      "top1": 77.288
     },
     "window": {
       "bins": [
-        237.322,
-        205.256,
-        223.739,
-        206.904,
-        189.177,
-        203.492,
-        236.541,
-        210.848,
-        241.756,
-        281.966
+        236.023,
+        204.186,
+        224.145,
+        208.211,
+        189.416,
+        202.88,
+        238.613,
+        209.647,
+        242.867,
+        281.013
       ],
-      "top1": 36.205
+      "top1": 36
     },
     "lifetime": {
       "bins": [
-        958.837,
-        822.287,
-        766.473,
-        765.286,
-        696.816,
-        665.584,
-        585.954,
-        519.775,
-        513.127,
-        419.861
+        959.213,
+        823.698,
+        768.676,
+        765.141,
+        697.441,
+        665.662,
+        584.043,
+        520.083,
+        511.732,
+        418.313
       ],
-      "top1": 29
+      "top1": 28.917
     }
   },
   "full": {
     "papers": 4774,
     "outputBasis": "measured",
-    "citations": 69402,
-    "top10": 578.196,
-    "top10ShareOfDivision": 0.14788,
-    "top1": 64.583,
-    "top1ShareOfDivision": 0.16518,
+    "citations": 69409,
+    "top10": 576.681,
+    "top10ShareOfDivision": 0.14732,
+    "top1": 64.622,
+    "top1ShareOfDivision": 0.16508,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.507,
-      "yearsFromFormulation": 8,
+      "yearsFromFormulation": 10.168,
       "bibcode": "2013RemS....6..310L",
       "date": "2013-12-00"
     },
@@ -227,7 +265,7 @@
       "m": 7.369
     },
     "spread": {
-      "mean": 14.537,
+      "mean": 14.539,
       "median": 9,
       "uncited": 329,
       "i10": 2237,
@@ -237,15 +275,15 @@
   "window": {
     "papers": 2237,
     "outputBasis": "measured",
-    "citations": 34611,
-    "top10": 280.299,
-    "top10ShareOfDivision": 0.2808,
-    "top1": 36.205,
-    "top1ShareOfDivision": 0.3627,
+    "citations": 34614,
+    "top10": 279.846,
+    "top10ShareOfDivision": 0.28667,
+    "top1": 36,
+    "top1ShareOfDivision": 0.36878,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.507,
-      "yearsFromFormulation": 8,
+      "yearsFromFormulation": 10.168,
       "bibcode": "2013RemS....6..310L",
       "date": "2013-12-00"
     },
@@ -264,7 +302,7 @@
       "m": 9.57
     },
     "spread": {
-      "mean": 15.472,
+      "mean": 15.473,
       "median": 9,
       "uncited": 188,
       "i10": 1049,
@@ -274,20 +312,20 @@
   "lifetime": {
     "papers": 6714,
     "outputBasis": "measured",
-    "citations": 159405,
-    "top10": 341.537,
-    "top10ShareOfDivision": 0.06539,
+    "citations": 159417,
+    "top10": 340.146,
+    "top10ShareOfDivision": 0.06507,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.507,
-      "yearsFromFormulation": 8,
+      "yearsFromFormulation": 10.168,
       "bibcode": "2013RemS....6..310L",
       "date": "2013-12-00"
     },
     "spread": {
-      "mean": 23.742,
+      "mean": 23.744,
       "median": 10,
       "uncited": 818,
       "i10": 3392,

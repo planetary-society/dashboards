@@ -32,7 +32,7 @@
 	import { largerAnnualMedians, noClearSmallAdvantage, significant } from '$lib/copy/discussion.js';
 	import { calendarYears } from '$lib/copy/window.js';
 	import { analysisHref, methodsHref } from '$lib/paths.js';
-	import { cheapAsQuick, clpsCosts, mostUnreached, scienceOrder, slowestBuild } from '$lib/copy/analysis.js';
+	import { cheapAsQuick, cheapOverlap, clpsCosts, mostUnreached, scienceOrder, slowestBuild } from '$lib/copy/analysis.js';
 
 	let { site, scrolly } = $props();
 	const TITLE = 0, MOTIVATION = 1, QUESTIONS = 2, OVERVIEW = 3;
@@ -129,10 +129,12 @@
 	// TIME_FORM's "the most expensive missions generally take longer": the costliest group's median from project start is the longest
 	const slowest = $derived(slowestBuild(site.time));
 	const science = $derived(scienceOrder(site.time) != null);
-	// most of the cheapest group's missions that flew have no high-impact paper yet (the time swarm reads the lifetime ranking)
+	// most of the cheapest group's missions, failures included, have no high-impact paper yet
 	const mostNone = $derived(mostUnreached(timeFirst));
 	// the cheapest missions that reached one took about as long from project start as mid-size missions
 	const asQuick = $derived(cheapAsQuick(site.time));
+	// ...and their 95% intervals overlap: the copy calls the difference not statistically significant
+	const overlap = $derived(cheapOverlap(site.time));
 	// the middle cost group, named in BINS and FAILURE (the first group is the small side, at or under the
 	// threshold, so FAILURE's "the first column")
 	const mid = $derived(site.tiers[1]);
@@ -242,8 +244,8 @@
 		if (index === BINS) return hidden(new Map(), dollarAll.pos);
 		// the missions FITS leaves out wait, hidden, where FAILURE's tier chart brings them in
 		if (index === FITS) return hidden(failureItems(tiles, dollarAll), outcomeL.pos);
-		// the time steps: each flown mission flies from the tier chart to its years (or the None column); the
-		// failures, which have no time to science, fade where the tier chart left them
+		// the time steps: each mission flies from the tier chart to its years, or to the None column (every
+		// failure, with its X)
 		if (timed && timeL) return hidden(timeItems(timeL, clock), outcomeL.pos);
 		// CLPS on: the squares fade where the time chart left them
 		return hidden(new Map(), timeL ? timeItems(timeL, 'science') : outcomeL.pos);
@@ -498,10 +500,10 @@
 		<!-- TIME_FORM: years to a first high-impact paper, counted from the start of formulation -->
 		<section data-step><div class="step">
 			<p class="part neptuneBlue"><strong>Time to high-impact science</strong></p>
-			{#if asQuick}<p>The median time from project start to a first high-impact paper is roughly the same for very low-cost and mid-cost missions.</p>{:else if timeFirst.formulation.median != null && timeMid.formulation.median != null}<p>The median time from project start to a first high-impact paper was {years(timeFirst.formulation.median)} years for very low-cost missions and {years(timeMid.formulation.median)} years for mid-cost missions.</p>{/if}
-			{#if timeFirst.without > 0}<p>Of the missions below {moneyWords(story.referenceCost)}, {spell(timeFirst.without)} returned no high-impact science papers.</p>{/if}
-			{#if slowest}<p>The most expensive missions generally take longer to return high-impact science due to lengthy development and transit times.</p>{/if}
-			<p class="aside">White lines mark median values. Shading indicates the 95% interval.</p>
+			{#if timeFirst.without > 0}<p>Of the very low-cost missions in our study, <strong>{whole(timeFirst.without / timeFirst.missions)} produced no high-impact papers at all</strong>.</p>{/if}
+			{#if asQuick}<p>For those that did, the median time from project start to a first high-impact paper was roughly the same for very low-cost and mid-cost missions.</p>{:else if overlap}<p>For those that did, the median time from project start to a first high-impact paper was <strong>not significantly shorter than for mid-cost missions</strong>.</p>{:else if timeFirst.formulation.median != null && timeMid.formulation.median != null}<p>For those that did, the median time from project start to a first high-impact paper was {years(timeFirst.formulation.median)} years, against {years(timeMid.formulation.median)} years for mid-cost missions.</p>{/if}
+			{#if slowest}<p>The most expensive missions took longer to return high-impact science, likely due to longer development and transit times.</p>{/if}
+			<p class="aside">Dashed lines mark median values. Shading indicates the 95% interval.</p>
 		</div></section>
 		<!-- TIME_SCI: the same groups, counted from the start of science operations -->
 		<section data-step><div class="step">
@@ -535,7 +537,7 @@
 				</li>
 				<li>
 					<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13.5" r="7.5" /><path d="M12 13.5V9.5M10 3h4M12 3v3M18 7l1.5-1.5" /></svg>
-					<span>{#if mostNone}<strong>Not reliably faster.</strong> Most low-cost missions generate no high-impact science papers. {#if asQuick}Those that do often take as long as mid-size missions.{/if}{:else if science}<strong>Not faster.</strong> Once science begins, larger missions reach a high-impact paper sooner.{:else}<strong>Speed</strong> varies with cost in no simple way.{/if}</span>
+					<span>{#if mostNone}<strong>Not reliably faster.</strong> Most low-cost missions generate no high-impact science papers. {#if overlap}Those that do are not significantly faster than mid-cost missions.{/if}{:else if science}<strong>Not faster.</strong> Once science begins, larger missions reach a high-impact paper sooner.{:else}<strong>Speed</strong> varies with cost in no simple way.{/if}</span>
 				</li>
 				<li>
 					<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 10h8l1.5 5h-11zM12 10V6M10 6h4M7 15l-2.5 4M17 15l2.5 4M3 19h4M17 19h4" /></svg>

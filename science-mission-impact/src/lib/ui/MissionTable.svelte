@@ -8,7 +8,7 @@
 	import { FOOTNOTES, noteText } from '$lib/copy/footnotes.js';
 	import { scopeLabel } from '$lib/copy/window.js';
 	import { exportUrl, methodsHref, missionHref, thumbSrc } from '$lib/paths.js';
-	import { apDate, int, weight, money } from '$lib/format.js';
+	import { apDate, int, monthYear, weight, money } from '$lib/format.js';
 
 	// rankable: false for a division too small to rank, which has no top-10% papers to show
 	let { missions, slug, site, scope = 'full', rankable = true, awaiting = false } = $props();
@@ -97,7 +97,7 @@
 				</td>
 				<td class="num wide"><Num value={m.launchYear ?? '—'} /></td>
 				{#if awaiting}
-					<td class="num wide">{#if m.dates?.primeEnd}<time datetime={m.dates.primeEnd}>{apDate(m.dates.primeEnd)}</time>{:else}—{/if}</td>
+					<td class="num wide">{#if m.dates?.primeEnd}<time datetime={m.dates.primeEnd}>{monthYear(m.dates.primeEnd)}</time>{:else}—{/if}</td>
 				{/if}
 				<td class="type wide">{m.type ?? '—'}</td>
 				<td class="num mid"><Num value={money(m.cost)} /></td>

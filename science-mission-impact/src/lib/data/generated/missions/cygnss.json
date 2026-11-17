@@ -17,12 +17,13 @@
     "target": "Earth",
     "launchVehicle": "Pegasus XL",
     "wikipedia": "https://en.wikipedia.org/wiki/Cyclone_Global_Navigation_Satellite_System",
+    "bibliography": "https://www.earthdata.nasa.gov/data/platforms/space-based-platforms/cygnss/publications",
     "firstSciencePublication": "10.1029/2018GL077905",
     "dates": {
       "formulation": "2012-06-18",
       "launch": "2016-12-15",
-      "scienceStart": "2016-12-15",
-      "primeEnd": "2020-11-09",
+      "scienceStart": "2017-03-23",
+      "primeEnd": "2019-03-19",
       "missionEnd": null
     }
   },
@@ -31,12 +32,12 @@
     "m": 4.6,
     "i100": 15,
     "g": 71,
-    "tori": 34.92,
-    "riq": 590
+    "tori": 34.701,
+    "riq": 589
   },
   "facts": {
-    "papers": 491,
-    "citations": 8426,
+    "papers": 488,
+    "citations": 8360,
     "publicationYears": [
       2017,
       2026
@@ -56,7 +57,7 @@
       2026
     ],
     "papers": [
-      7,
+      4,
       12,
       30,
       36,
@@ -68,27 +69,27 @@
       79
     ],
     "citations": [
-      1,
-      29,
-      168,
-      439,
-      626,
-      1087,
-      1160,
-      1434,
-      1799,
-      1683
+      0,
+      26,
+      160,
+      431,
+      614,
+      1082,
+      1154,
+      1422,
+      1792,
+      1679
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 8426,
-      "observed": 8426,
+      "expected": 8360,
+      "observed": 8360,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 491,
+    "papers": 488,
     "us": {
       "mapped": 154,
       "top": [
@@ -124,6 +125,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 264,
+    "us": {
+      "mapped": 108,
+      "top": [
+        {
+          "name": "University of Michigan",
+          "papers": 37
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 30
+        },
+        {
+          "name": "The Ohio State University",
+          "papers": 30
+        }
+      ]
+    },
+    "world": {
+      "mapped": 200,
+      "top": [
+        {
+          "name": "University of Michigan",
+          "papers": 37
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 30
+        },
+        {
+          "name": "The Ohio State University",
+          "papers": 30
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2018GeoRL..45.4049C",
     "title": "Soil Moisture Sensing Using Spaceborne GNSS Reflections: Comparison of CYGNSS Reflectivity to SMAP Soil Moisture",
@@ -140,159 +178,159 @@
     "full": {
       "bins": [
         5.764,
-        11.848,
-        17.587,
-        19.75,
-        20.486,
-        24.279,
-        43.412,
-        36.507,
-        34.13,
-        53.236
+        11.863,
+        17.495,
+        18.928,
+        19.929,
+        23.109,
+        43.28,
+        36.443,
+        34.005,
+        53.183
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        3.529,
-        10.199,
-        12.676,
-        16.784,
-        11.308,
-        27.49,
-        26.896,
-        19.02,
-        25.542,
-        37.557
+        2.372,
+        4.419,
+        2.792,
+        8.989,
+        4.921,
+        14.792,
+        7.309,
+        9.366,
+        13.75,
+        27.29
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        88.483,
-        66.826,
-        60.894,
-        58.202,
-        52.832,
-        58.568,
-        31.123,
-        27.303,
-        26.769,
+        88.517,
+        66.942,
+        60.915,
+        58.282,
+        53.048,
+        56.975,
+        30.421,
+        26.244,
+        26.656,
         20
       ],
       "top1": 0
     }
   },
   "full": {
-    "papers": 267,
+    "papers": 264,
     "outputBasis": "measured",
-    "citations": 4514,
-    "top10": 42.819,
-    "top10ShareOfDivision": 0.01095,
+    "citations": 4495,
+    "top10": 42.767,
+    "top10ShareOfDivision": 0.01092,
     "top1": 1,
-    "top1ShareOfDivision": 0.00256,
+    "top1ShareOfDivision": 0.00255,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 1.374,
+      "yearsFromScienceStart": 1.106,
       "yearsFromFormulation": 5.867,
       "bibcode": "2018GeoRL..45.4049C",
       "date": "2018-05-00"
     },
     "status": "available",
     "bounds": {
-      "start": "2017-01-01",
+      "start": "2017-04-01",
       "end": "2024-01-01",
       "matureDate": "2026-10-01",
       "status": "available",
-      "months": 84,
+      "months": 81,
       "citationBuckets": 10
     },
     "indices": {
       "h": 34,
       "g": 46,
-      "m": 4.859
+      "m": 5.036
     },
     "spread": {
-      "mean": 16.906,
-      "median": 11,
+      "mean": 17.027,
+      "median": 11.5,
       "uncited": 4,
       "i10": 165,
       "i100": 0
     }
   },
   "window": {
-    "papers": 191,
+    "papers": 96,
     "outputBasis": "measured",
-    "citations": 3573,
-    "top10": 32.927,
-    "top10ShareOfDivision": 0.03299,
+    "citations": 2198,
+    "top10": 22.123,
+    "top10ShareOfDivision": 0.02266,
     "top1": 0.5,
-    "top1ShareOfDivision": 0.00501,
+    "top1ShareOfDivision": 0.00512,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 1.374,
+      "yearsFromScienceStart": 1.106,
       "yearsFromFormulation": 5.867,
       "bibcode": "2018GeoRL..45.4049C",
       "date": "2018-05-00"
     },
     "status": "available",
     "bounds": {
-      "start": "2017-01-01",
-      "end": "2022-12-01",
-      "matureDate": "2025-10-01",
+      "start": "2017-04-01",
+      "end": "2021-04-01",
+      "matureDate": "2024-10-01",
       "status": "available",
-      "months": 71,
-      "citationBuckets": 9
+      "months": 48,
+      "citationBuckets": 8
     },
     "indices": {
-      "h": 32,
-      "g": 45,
-      "m": 5.411
+      "h": 30,
+      "g": 41,
+      "m": 7.5
     },
     "spread": {
-      "mean": 18.707,
-      "median": 12,
+      "mean": 22.896,
+      "median": 16,
       "uncited": 2,
-      "i10": 125,
+      "i10": 67,
       "i100": 0
     }
   },
   "lifetime": {
-    "papers": 491,
+    "papers": 488,
     "outputBasis": "measured",
-    "citations": 8426,
+    "citations": 8360,
     "top10": 15.083,
     "top10ShareOfDivision": 0.00289,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 1.374,
+      "yearsFromScienceStart": 1.106,
       "yearsFromFormulation": 5.867,
       "bibcode": "2018GeoRL..45.4049C",
       "date": "2018-05-00"
     },
     "spread": {
-      "mean": 17.161,
+      "mean": 17.131,
       "median": 8,
       "uncited": 76,
-      "i10": 216,
+      "i10": 213,
       "i100": 15
     }
   },
   "query": {
     "arms": "((=abs:\"Cyclone Global Navigation Satellite System\" OR (abs:CYGNSS AND (abs:satellite OR abs:GNSS OR abs:reflectometry OR abs:wind OR abs:soil OR abs:ocean OR abs:surface OR abs:data OR abs:retrieval OR abs:observations OR abs:cyclone OR abs:land OR abs:simulator OR abs:constellation OR abs:flood)) OR ((=abs:\"Delay Doppler Mapping Instrument\" OR abs:DDMI) AND (abs:CYGNSS OR abs:GNSS OR abs:reflectometry))))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2017-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Cyclone+Global+Navigation+Satellite+System%22+OR+%28abs%3ACYGNSS+AND+%28abs%3Asatellite+OR+abs%3AGNSS+OR+abs%3Areflectometry+OR+abs%3Awind+OR+abs%3Asoil+OR+abs%3Aocean+OR+abs%3Asurface+OR+abs%3Adata+OR+abs%3Aretrieval+OR+abs%3Aobservations+OR+abs%3Acyclone+OR+abs%3Aland+OR+abs%3Asimulator+OR+abs%3Aconstellation+OR+abs%3Aflood%29%29+OR+%28%28%3Dabs%3A%22Delay+Doppler+Mapping+Instrument%22+OR+abs%3ADDMI%29+AND+%28abs%3ACYGNSS+OR+abs%3AGNSS+OR+abs%3Areflectometry%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2017-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:07:38.158503+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2017-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Cyclone+Global+Navigation+Satellite+System%22+OR+%28abs%3ACYGNSS+AND+%28abs%3Asatellite+OR+abs%3AGNSS+OR+abs%3Areflectometry+OR+abs%3Awind+OR+abs%3Asoil+OR+abs%3Aocean+OR+abs%3Asurface+OR+abs%3Adata+OR+abs%3Aretrieval+OR+abs%3Aobservations+OR+abs%3Acyclone+OR+abs%3Aland+OR+abs%3Asimulator+OR+abs%3Aconstellation+OR+abs%3Aflood%29%29+OR+%28%28%3Dabs%3A%22Delay+Doppler+Mapping+Instrument%22+OR+abs%3ADDMI%29+AND+%28abs%3ACYGNSS+OR+abs%3AGNSS+OR+abs%3Areflectometry%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2017-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-16T17:31:08.403478+00:00",
     "reconciliation": {
-      "adsReturned": 492,
+      "adsReturned": 489,
       "curatedOut": 1,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 491
+      "final": 488
     }
   },
   "curation": {
@@ -491,6 +529,6 @@
     }
   ],
   "papersFile": {
-    "rows": 491
+    "rows": 488
   }
 }

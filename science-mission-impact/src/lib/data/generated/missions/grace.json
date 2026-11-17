@@ -17,11 +17,12 @@
     "target": "Earth",
     "launchVehicle": "Rokot",
     "wikipedia": "https://en.wikipedia.org/wiki/GRACE_and_GRACE-FO",
+    "bibliography": "https://grace.jpl.nasa.gov/publications/?page=0&per_page=40&order=publication_year+desc%2C+created_at+desc&fts=&full_text_search=true&advanced=true",
     "firstSciencePublication": "10.1029/2003GL018622",
     "dates": {
       "formulation": "1997-05-01",
       "launch": "2002-03-17",
-      "scienceStart": "2002-03-17",
+      "scienceStart": null,
       "primeEnd": "2007-03-17",
       "missionEnd": "2017-10-27"
     }
@@ -31,12 +32,12 @@
     "m": 6.64,
     "i100": 348,
     "g": 286,
-    "tori": 962.56,
-    "riq": 1193
+    "tori": 951.24,
+    "riq": 1186
   },
   "facts": {
     "papers": 4707,
-    "citations": 175160,
+    "citations": 175176,
     "publicationYears": [
       2002,
       2026
@@ -112,23 +113,23 @@
       3872,
       5028,
       5241,
-      6303,
+      6305,
       6737,
       8241,
       10283,
       11716,
-      14670,
+      14671,
       15657,
-      16730,
-      17280,
-      20830,
-      18527
+      16733,
+      17282,
+      20831,
+      18534
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 175160,
-      "observed": 175160,
+      "expected": 175176,
+      "observed": 175176,
       "missing": 0
     }
   },
@@ -169,6 +170,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 2286,
+    "us": {
+      "mapped": 794,
+      "top": [
+        {
+          "name": "University of Texas, Austin",
+          "papers": 155
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 154
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 138
+        }
+      ]
+    },
+    "world": {
+      "mapped": 1977,
+      "top": [
+        {
+          "name": "Helmholtz Association of German Research Centers",
+          "papers": 181
+        },
+        {
+          "name": "University of Texas, Austin",
+          "papers": 155
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 154
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2004GeoRL..31.9607T",
     "title": "The gravity recovery and climate experiment: Mission overview and early results",
@@ -186,46 +224,46 @@
   "ranks": {
     "full": {
       "bins": [
-        235.218,
-        199.273,
-        173.114,
-        213.196,
-        205.721,
-        228.662,
-        221.825,
-        254.35,
-        263.336,
-        291.305
+        235.223,
+        199.468,
+        173.347,
+        213.717,
+        206.454,
+        228.585,
+        221.763,
+        254.471,
+        262.405,
+        290.568
       ],
-      "top1": 48.748
+      "top1": 48.865
     },
     "window": {
       "bins": [
-        62.235,
-        44.881,
-        41.304,
-        30.362,
-        35.201,
-        52.442,
-        42.339,
-        47.105,
-        43.205,
-        35.926
+        61.913,
+        44.729,
+        41.445,
+        30.63,
+        35.195,
+        52.326,
+        42.705,
+        46.896,
+        43.302,
+        35.858
       ],
       "top1": 5
     },
     "lifetime": {
       "bins": [
-        519.301,
-        496.855,
-        419.519,
-        439.281,
-        480.231,
-        450.255,
-        449.558,
-        480.244,
-        472.788,
-        498.968
+        519.518,
+        497.585,
+        421.106,
+        439.294,
+        479.538,
+        451.597,
+        448.767,
+        480.894,
+        471.013,
+        497.688
       ],
       "top1": 64
     }
@@ -233,11 +271,11 @@
   "full": {
     "papers": 2286,
     "outputBasis": "measured",
-    "citations": 32801,
-    "top10": 283.696,
-    "top10ShareOfDivision": 0.07256,
-    "top1": 47.748,
-    "top1ShareOfDivision": 0.12212,
+    "citations": 32802,
+    "top10": 283.02,
+    "top10ShareOfDivision": 0.0723,
+    "top1": 47.865,
+    "top1ShareOfDivision": 0.12227,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.374,
@@ -271,10 +309,10 @@
     "papers": 435,
     "outputBasis": "measured",
     "citations": 5550,
-    "top10": 35.926,
-    "top10ShareOfDivision": 0.03599,
+    "top10": 35.858,
+    "top10ShareOfDivision": 0.03673,
     "top1": 5,
-    "top1ShareOfDivision": 0.05009,
+    "top1ShareOfDivision": 0.05122,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 2.125,
@@ -307,9 +345,9 @@
   "lifetime": {
     "papers": 4707,
     "outputBasis": "measured",
-    "citations": 175160,
-    "top10": 477.302,
-    "top10ShareOfDivision": 0.09139,
+    "citations": 175176,
+    "top10": 476.021,
+    "top10ShareOfDivision": 0.09106,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -320,7 +358,7 @@
       "date": "2002-05-00"
     },
     "spread": {
-      "mean": 37.213,
+      "mean": 37.216,
       "median": 14,
       "uncited": 438,
       "i10": 2826,

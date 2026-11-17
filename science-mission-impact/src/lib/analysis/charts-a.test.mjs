@@ -54,11 +54,19 @@ test('time bars share one axis from zero with room for every value label', () =>
 	assert.equal(timeLayout(tiers, time, 0).height, layout.height);
 });
 
-test('a negative median extends the axis left of zero and labels outward', () => {
-	const odd = { tiers: [{ ...time.tiers[2], science: { median: -1.5, min: -4 } }] };
-	const layout = timeLayout([tiers[2]], odd, 460);
-	assert.ok(layout.x.domain()[0] <= -1.5);
-	const { science } = layout.rows[0];
-	assert.equal(science.x + science.w, layout.x(0));
-	assert.equal(science.anchor, 'end');
+test('time whiskers span the packaged interval and leave room for median labels', () => {
+	const sample = { tiers: [time.tiers[0], {
+		...time.tiers[2], formulation: { median: 11.5, ci: [9, 14] }, science: { median: -1.5, ci: [-4, 0.5] }
+	}] };
+	for (const width of [300, 760]) {
+		const layout = timeLayout([tiers[0], tiers[2]], sample, width);
+		assert.equal(layout.rows[0].formulation.whisker, null);
+		const { formulation, science } = layout.rows[1];
+		assert.equal(science.x + science.w, layout.x(0));
+		for (const [bar, ci] of [[formulation, [9, 14]], [science, [-4, 0.5]]]) {
+			assert.deepEqual(bar.whisker, ci.map(layout.x));
+			assert.ok(bar.whisker[0] >= layout.left && bar.whisker[1] < bar.tx);
+			assert.ok(bar.tx + 46 <= width);
+		}
+	}
 });

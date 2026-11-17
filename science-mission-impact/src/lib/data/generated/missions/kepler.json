@@ -8,8 +8,8 @@
   "meta": {
     "status": "Completed",
     "failed": false,
-    "cost": 1122.4,
-    "lcc": 692,
+    "cost": 1113.7,
+    "lcc": 686.6,
     "type": "Survey Observatory",
     "selection": "competed",
     "management": "pi",
@@ -17,13 +17,14 @@
     "target": "Exoplanets",
     "launchVehicle": "Delta II 7925-10L",
     "wikipedia": "https://en.wikipedia.org/wiki/Kepler_space_telescope",
+    "bibliography": "https://keplergo.github.io/KeplerScienceWebsite/publications.html",
     "firstSciencePublication": "10.1126/science.1178312",
     "dates": {
-      "formulation": "2001-12-20",
+      "formulation": "2001-12-21",
       "launch": "2009-03-06",
       "scienceStart": "2009-05-13",
       "primeEnd": "2012-11-15",
-      "missionEnd": "2018-10-30"
+      "missionEnd": "2018-11-15"
     }
   },
   "indices": {
@@ -31,12 +32,12 @@
     "m": 11.444,
     "i100": 568,
     "g": 327,
-    "tori": 844.871,
-    "riq": 1529
+    "tori": 832.784,
+    "riq": 1518
   },
   "facts": {
     "papers": 4603,
-    "citations": 238745,
+    "citations": 238746,
     "publicationYears": [
       2009,
       2026
@@ -95,7 +96,7 @@
       13405,
       17398,
       16978,
-      17887,
+      17888,
       19242,
       19081,
       18659,
@@ -106,8 +107,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 238745,
-      "observed": 238745,
+      "expected": 238746,
+      "observed": 238746,
       "missing": 0
     }
   },
@@ -148,6 +149,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 3046,
+    "us": {
+      "mapped": 1829,
+      "top": [
+        {
+          "name": "NASA Ames Research Center",
+          "papers": 432
+        },
+        {
+          "name": "Harvard Smithsonian Center for Astrophysics",
+          "papers": 406
+        },
+        {
+          "name": "California Institute of Technology",
+          "papers": 368
+        }
+      ]
+    },
+    "world": {
+      "mapped": 2895,
+      "top": [
+        {
+          "name": "Aarhus University, Denmark",
+          "papers": 465
+        },
+        {
+          "name": "NASA Ames Research Center",
+          "papers": 432
+        },
+        {
+          "name": "Harvard Smithsonian Center for Astrophysics",
+          "papers": 406
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2010Sci...327..977B",
     "title": "Kepler Planet-Detection Mission: Introduction and First Results",
@@ -165,25 +203,25 @@
   "ranks": {
     "full": {
       "bins": [
-        250.733,
-        246.247,
-        216.55,
-        262.243,
-        305.87,
-        290.476,
-        295.695,
-        355.51,
-        359.29,
-        442.386
+        252.881,
+        251.773,
+        219.531,
+        264.34,
+        307.164,
+        293.935,
+        296.878,
+        356.462,
+        360.34,
+        442.695
       ],
-      "top1": 46.494
+      "top1": 46.531
     },
     "window": {
       "bins": [
         70.638,
         78.697,
-        49.779,
-        78.611,
+        49.751,
+        78.64,
         79.633,
         92.612,
         110.76,
@@ -197,12 +235,12 @@
       "bins": [
         536.946,
         481.407,
-        474.735,
-        435.128,
-        478.111,
-        474.005,
-        412.99,
-        412.997,
+        474.797,
+        434.994,
+        478.153,
+        474.034,
+        413.069,
+        412.917,
         433.809,
         462.873
       ],
@@ -210,39 +248,39 @@
     }
   },
   "full": {
-    "papers": 3025,
+    "papers": 3046,
     "outputBasis": "measured",
-    "citations": 80536,
-    "top10": 425.978,
-    "top10ShareOfDivision": 0.08563,
-    "top1": 46.494,
-    "top1ShareOfDivision": 0.09347,
+    "citations": 80741,
+    "top10": 426.277,
+    "top10ShareOfDivision": 0.08564,
+    "top1": 46.531,
+    "top1ShareOfDivision": 0.09348,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.219,
-      "yearsFromFormulation": 7.614,
+      "yearsFromFormulation": 7.611,
       "bibcode": "2009ApJ...700.1589S",
       "date": "2009-08-00"
     },
     "status": "available",
     "bounds": {
       "start": "2009-06-01",
-      "end": "2020-11-01",
+      "end": "2020-12-01",
       "matureDate": "2023-10-01",
       "status": "available",
-      "months": 137,
+      "months": 138,
       "citationBuckets": 15
     },
     "indices": {
       "h": 104,
       "g": 150,
-      "m": 9.107
+      "m": 9.042
     },
     "spread": {
-      "mean": 26.623,
+      "mean": 26.507,
       "median": 16,
-      "uncited": 123,
-      "i10": 2063,
+      "uncited": 124,
+      "i10": 2071,
       "i100": 113
     }
   },
@@ -257,7 +295,7 @@
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.219,
-      "yearsFromFormulation": 7.614,
+      "yearsFromFormulation": 7.611,
       "bibcode": "2009ApJ...700.1589S",
       "date": "2009-08-00"
     },
@@ -286,7 +324,7 @@
   "lifetime": {
     "papers": 4603,
     "outputBasis": "measured",
-    "citations": 238745,
+    "citations": 238746,
     "top10": 450.04,
     "top10ShareOfDivision": 0.07074,
     "top1": null,
@@ -294,7 +332,7 @@
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.052,
-      "yearsFromFormulation": 7.447,
+      "yearsFromFormulation": 7.444,
       "bibcode": "2009ApJ...698.1778R",
       "date": "2009-06-00"
     },

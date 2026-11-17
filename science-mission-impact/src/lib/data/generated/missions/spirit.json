@@ -8,7 +8,7 @@
   "meta": {
     "status": "Completed",
     "failed": false,
-    "cost": 756.4,
+    "cost": 773,
     "lcc": 424,
     "type": "Rover",
     "selection": "directed",
@@ -17,13 +17,14 @@
     "target": "Mars",
     "launchVehicle": "Delta II 7925",
     "wikipedia": "https://en.wikipedia.org/wiki/Spirit_(rover)",
+    "bibliography": "https://an.rsl.wustl.edu/mera/AN/pages/mer/mer_ref.htm",
     "firstSciencePublication": "10.1126/science.1100194",
     "dates": {
       "formulation": "2000-05-01",
       "launch": "2003-06-10",
       "scienceStart": "2004-01-04",
-      "primeEnd": "2004-03-06",
-      "missionEnd": "2011-05-25"
+      "primeEnd": "2004-04-05",
+      "missionEnd": "2010-03-22"
     }
   },
   "indices": {
@@ -31,12 +32,12 @@
     "m": 3.609,
     "i100": 65,
     "g": 130,
-    "tori": 110.831,
+    "tori": 110.865,
     "riq": 438
   },
   "facts": {
     "papers": 453,
-    "citations": 22475,
+    "citations": 22476,
     "publicationYears": [
       2004,
       2026
@@ -106,7 +107,7 @@
       1235,
       1203,
       1164,
-      1160,
+      1161,
       1058,
       1099,
       997,
@@ -121,8 +122,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 22475,
-      "observed": 22475,
+      "expected": 22476,
+      "observed": 22476,
       "missing": 0
     }
   },
@@ -163,6 +164,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 293,
+    "us": {
+      "mapped": 226,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 102
+        },
+        {
+          "name": "Cornell University, New York",
+          "papers": 96
+        },
+        {
+          "name": "Arizona State University",
+          "papers": 74
+        }
+      ]
+    },
+    "world": {
+      "mapped": 259,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 102
+        },
+        {
+          "name": "Cornell University, New York",
+          "papers": 96
+        },
+        {
+          "name": "Arizona State University",
+          "papers": 74
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2015Icar..251...65M",
     "title": "Eight-year climatology of dust optical depth on Mars",
@@ -180,29 +218,29 @@
   "ranks": {
     "full": {
       "bins": [
-        50.385,
-        34.164,
-        30.275,
-        27.595,
-        17.992,
-        31.086,
-        20.563,
-        28.463,
-        31.199,
-        46.279
+        49.633,
+        30.036,
+        25.133,
+        25.595,
+        16.799,
+        28.474,
+        19.375,
+        25.538,
+        28.115,
+        44.304
       ],
-      "top1": 6.34
+      "top1": 6.325
     },
     "window": {
       "bins": [
-        11.778,
-        6.222,
-        5.249,
-        3.352,
-        5.671,
-        3.541,
-        2.343,
-        4.843,
+        11.6,
+        7.363,
+        5.245,
+        3.358,
+        5.681,
+        3.507,
+        2.481,
+        4.765,
         11,
         25
       ],
@@ -213,8 +251,8 @@
         30.11,
         37.342,
         51.457,
-        37.731,
-        38.336,
+        37.739,
+        38.328,
         37.06,
         47.417,
         48.155,
@@ -225,13 +263,13 @@
     }
   },
   "full": {
-    "papers": 318,
+    "papers": 293,
     "outputBasis": "measured",
-    "citations": 5129,
-    "top10": 29.346,
-    "top10ShareOfDivision": 0.027,
-    "top1": 4.505,
-    "top1ShareOfDivision": 0.04145,
+    "citations": 4821,
+    "top10": 27.856,
+    "top10ShareOfDivision": 0.02564,
+    "top1": 4.494,
+    "top1ShareOfDivision": 0.04136,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.408,
@@ -242,33 +280,33 @@
     "status": "available",
     "bounds": {
       "start": "2004-02-01",
-      "end": "2013-06-01",
-      "matureDate": "2016-10-01",
+      "end": "2012-04-01",
+      "matureDate": "2015-10-01",
       "status": "available",
-      "months": 112,
-      "citationBuckets": 13
+      "months": 98,
+      "citationBuckets": 12
     },
     "indices": {
-      "h": 39,
+      "h": 38,
       "g": 54,
-      "m": 4.18
+      "m": 4.655
     },
     "spread": {
-      "mean": 16.129,
+      "mean": 16.454,
       "median": 9,
       "uncited": 36,
-      "i10": 146,
+      "i10": 135,
       "i100": 5
     }
   },
   "window": {
-    "papers": 79,
+    "papers": 80,
     "outputBasis": "measured",
-    "citations": 2427,
+    "citations": 2430,
     "top10": 18,
-    "top10ShareOfDivision": 0.03758,
+    "top10ShareOfDivision": 0.03809,
     "top1": 0.5,
-    "top1ShareOfDivision": 0.01044,
+    "top1ShareOfDivision": 0.01058,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.408,
@@ -279,19 +317,19 @@
     "status": "available",
     "bounds": {
       "start": "2004-02-01",
-      "end": "2006-04-01",
+      "end": "2006-05-01",
       "matureDate": "2009-10-01",
       "status": "available",
-      "months": 26,
+      "months": 27,
       "citationBuckets": 6
     },
     "indices": {
       "h": 31,
       "g": 48,
-      "m": 14.332
+      "m": 13.808
     },
     "spread": {
-      "mean": 30.722,
+      "mean": 30.375,
       "median": 19,
       "uncited": 7,
       "i10": 49,
@@ -301,7 +339,7 @@
   "lifetime": {
     "papers": 453,
     "outputBasis": "measured",
-    "citations": 22475,
+    "citations": 22476,
     "top10": 45.7,
     "top10ShareOfDivision": 0.02903,
     "top1": null,
@@ -314,7 +352,7 @@
       "date": "2004-06-00"
     },
     "spread": {
-      "mean": 49.614,
+      "mean": 49.616,
       "median": 24,
       "uncited": 23,
       "i10": 320,

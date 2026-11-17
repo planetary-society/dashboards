@@ -8,7 +8,7 @@
   "meta": {
     "status": "Extended Mission",
     "failed": false,
-    "cost": 172.4,
+    "cost": 170.6,
     "lcc": 120,
     "type": "Remote Sensing Observatory",
     "selection": "competed",
@@ -17,12 +17,13 @@
     "target": "Sun-Earth Interaction",
     "launchVehicle": "Pegasus XL",
     "wikipedia": "https://en.wikipedia.org/wiki/Interface_Region_Imaging_Spectrograph",
+    "bibliography": "https://pyoung.org/iris/publications/iris_big_list.html",
     "firstSciencePublication": "10.1088/0004-637X/786/2/137",
     "dates": {
       "formulation": "2009-06-19",
       "launch": "2013-06-28",
       "scienceStart": "2013-07-17",
-      "primeEnd": "2016-12-01",
+      "primeEnd": "2015-08-01",
       "missionEnd": null
     }
   },
@@ -31,12 +32,12 @@
     "m": 4.714,
     "i100": 27,
     "g": 99,
-    "tori": 63.392,
-    "riq": 568
+    "tori": 62.351,
+    "riq": 564
   },
   "facts": {
     "papers": 678,
-    "citations": 19146,
+    "citations": 19148,
     "publicationYears": [
       2013,
       2026
@@ -89,13 +90,13 @@
       1841,
       2064,
       1910,
-      2283
+      2285
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 19146,
-      "observed": 19146,
+      "expected": 19148,
+      "observed": 19148,
       "missing": 0
     }
   },
@@ -136,6 +137,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 541,
+    "us": {
+      "mapped": 264,
+      "top": [
+        {
+          "name": "Lockheed Martin Corporation",
+          "papers": 112
+        },
+        {
+          "name": "Bay Area Environmental Research Institute, California",
+          "papers": 74
+        },
+        {
+          "name": "Harvard Smithsonian Center for Astrophysics",
+          "papers": 57
+        }
+      ]
+    },
+    "world": {
+      "mapped": 519,
+      "top": [
+        {
+          "name": "Lockheed Martin Corporation",
+          "papers": 112
+        },
+        {
+          "name": "University of Oslo, Norway",
+          "papers": 106
+        },
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 79
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2014SoPh..289.2733D",
     "title": "The Interface Region Imaging Spectrograph (IRIS)",
@@ -153,46 +191,46 @@
   "ranks": {
     "full": {
       "bins": [
-        19.239,
-        22.938,
-        35.078,
-        39.731,
-        49.6,
-        53.788,
-        61.863,
-        91.174,
-        80.325,
-        87.265
+        19.266,
+        23.095,
+        34.916,
+        39.825,
+        49.604,
+        53.747,
+        62.066,
+        91.074,
+        80.34,
+        87.067
       ],
       "top1": 3
     },
     "window": {
       "bins": [
-        6.786,
-        11.479,
-        16.448,
-        24.078,
-        30.711,
-        28.376,
-        42.794,
-        39.536,
-        37.234,
-        33.557
+        5.71,
+        5.515,
+        9.784,
+        15.839,
+        17.545,
+        19.587,
+        28.417,
+        26.851,
+        27.751,
+        31
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        52.845,
-        57.718,
-        64.664,
-        66.999,
-        70.592,
-        78.021,
-        89.273,
-        75.529,
-        74.096,
-        48.264
+        52.827,
+        57.77,
+        64.825,
+        66.86,
+        70.629,
+        77.988,
+        89.249,
+        75.553,
+        74.043,
+        48.257
       ],
       "top1": 2
     }
@@ -200,11 +238,11 @@
   "full": {
     "papers": 541,
     "outputBasis": "measured",
-    "citations": 8449,
-    "top10": 66.455,
-    "top10ShareOfDivision": 0.0461,
+    "citations": 8451,
+    "top10": 66.277,
+    "top10ShareOfDivision": 0.046,
     "top1": 3,
-    "top1ShareOfDivision": 0.02081,
+    "top1ShareOfDivision": 0.02082,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.041,
@@ -227,7 +265,7 @@
       "m": 3.456
     },
     "spread": {
-      "mean": 15.617,
+      "mean": 15.621,
       "median": 13,
       "uncited": 14,
       "i10": 331,
@@ -235,13 +273,13 @@
     }
   },
   "window": {
-    "papers": 271,
+    "papers": 188,
     "outputBasis": "measured",
-    "citations": 5071,
-    "top10": 28.057,
-    "top10ShareOfDivision": 0.06325,
+    "citations": 3945,
+    "top10": 25.5,
+    "top10ShareOfDivision": 0.06001,
     "top1": 1,
-    "top1ShareOfDivision": 0.02254,
+    "top1ShareOfDivision": 0.02353,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.041,
@@ -252,30 +290,30 @@
     "status": "available",
     "bounds": {
       "start": "2013-08-01",
-      "end": "2019-01-01",
-      "matureDate": "2021-10-01",
+      "end": "2017-09-01",
+      "matureDate": "2020-10-01",
       "status": "available",
-      "months": 65,
-      "citationBuckets": 9
+      "months": 49,
+      "citationBuckets": 8
     },
     "indices": {
-      "h": 33,
-      "g": 47,
-      "m": 6.091
+      "h": 31,
+      "g": 46,
+      "m": 7.589
     },
     "spread": {
-      "mean": 18.712,
-      "median": 15,
-      "uncited": 6,
-      "i10": 186,
+      "mean": 20.984,
+      "median": 16,
+      "uncited": 5,
+      "i10": 137,
       "i100": 1
     }
   },
   "lifetime": {
     "papers": 678,
     "outputBasis": "measured",
-    "citations": 19146,
-    "top10": 37.931,
+    "citations": 19148,
+    "top10": 37.923,
     "top10ShareOfDivision": 0.02065,
     "top1": null,
     "top1ShareOfDivision": null,
@@ -287,7 +325,7 @@
       "date": "2013-08-00"
     },
     "spread": {
-      "mean": 28.239,
+      "mean": 28.242,
       "median": 16.5,
       "uncited": 37,
       "i10": 443,

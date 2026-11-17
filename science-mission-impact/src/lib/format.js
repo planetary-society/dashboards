@@ -91,6 +91,12 @@ export function apDate(iso) {
 	return m && d ? `${AP_MONTHS[m - 1]} ${d}, ${y}` : longDate(iso);
 }
 
+/** ISO date → "Oct 2029": a table's compact month, no day (the awaiting list's prime mission end). */
+export function monthYear(iso) {
+	const [y, m] = (iso ?? '').slice(0, 7).split('-').map(Number);
+	return m ? `${MONTHS[m - 1].slice(0, 3)} ${y}` : longDate(iso);
+}
+
 /** "five" → "Five": sentence-cases a spelled number or any other opening word. */
 export const upperFirst = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
 

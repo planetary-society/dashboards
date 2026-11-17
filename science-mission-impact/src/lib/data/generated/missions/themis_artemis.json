@@ -1,14 +1,14 @@
 {
   "id": "themis_artemis",
   "name": "THEMIS-ARTEMIS",
-  "fullName": "Time History of Events and Macroscale Magnetospheric Processes / Acceleration, Reconnection, Turbulence and Electrodynamics of the Moon’s Interaction with the Sun",
+  "fullName": "Time History of Events and Macroscale Interactions during Substorms / Acceleration, Reconnection, Turbulence and Electrodynamics of the Moon’s Interaction with the Sun",
   "division": "heliophysics",
   "divisionName": "Heliophysics",
   "hasThumb": true,
   "meta": {
     "status": "Extended Mission",
     "failed": false,
-    "cost": 301.3,
+    "cost": 292,
     "lcc": 180,
     "type": "Constellation",
     "selection": "competed",
@@ -17,11 +17,12 @@
     "target": "Sun-Earth Interaction",
     "launchVehicle": "Delta II 7925",
     "wikipedia": "https://en.wikipedia.org/wiki/THEMIS",
+    "bibliography": null,
     "firstSciencePublication": "10.1029/2007GL032933",
     "dates": {
       "formulation": "2003-03-20",
       "launch": "2007-02-17",
-      "scienceStart": "2007-02-17",
+      "scienceStart": null,
       "primeEnd": "2009-09-30",
       "missionEnd": null
     }
@@ -31,12 +32,12 @@
     "m": 4.25,
     "i100": 64,
     "g": 146,
-    "tori": 141.898,
+    "tori": 142.003,
     "riq": 595
   },
   "facts": {
     "papers": 923,
-    "citations": 34608,
+    "citations": 34613,
     "publicationYears": [
       2007,
       2026
@@ -104,16 +105,16 @@
       2423,
       2993,
       2766,
-      2580,
+      2581,
       2652,
       2768,
-      1980
+      1984
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 34608,
-      "observed": 34608,
+      "expected": 34613,
+      "observed": 34613,
       "missing": 0
     }
   },
@@ -154,6 +155,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 824,
+    "us": {
+      "mapped": 637,
+      "top": [
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 449
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 216
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 104
+        }
+      ]
+    },
+    "world": {
+      "mapped": 793,
+      "top": [
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 449
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 216
+        },
+        {
+          "name": "Technical University of Braunschweig, Germany",
+          "papers": 122
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2008SSRv..141....5A",
     "title": "The THEMIS Mission",
@@ -168,46 +206,46 @@
   "ranks": {
     "full": {
       "bins": [
-        50.622,
-        91.782,
-        75.322,
-        95.215,
-        89.378,
-        89.25,
-        102.138,
-        80.739,
-        74.068,
-        75.485
+        50.751,
+        92.03,
+        74.997,
+        95.381,
+        89.319,
+        89.281,
+        102.196,
+        80.601,
+        74.098,
+        75.347
       ],
-      "top1": 13.571
+      "top1": 13.562
     },
     "window": {
       "bins": [
-        8.143,
-        18.254,
-        16.155,
-        27.546,
-        15.656,
-        18.965,
-        21.097,
-        12.532,
-        15.538,
-        20.114
+        7.842,
+        17.964,
+        15.965,
+        27.834,
+        16.182,
+        18.916,
+        21.229,
+        13.314,
+        15.613,
+        19.141
       ],
       "top1": 4
     },
     "lifetime": {
       "bins": [
-        65.887,
-        73.388,
-        84.485,
-        91.247,
-        112.691,
-        97.188,
-        100.095,
-        89.66,
-        98.096,
-        110.264
+        65.861,
+        73.456,
+        84.69,
+        90.677,
+        113.136,
+        97.141,
+        100.041,
+        89.697,
+        98.043,
+        110.257
       ],
       "top1": 13
     }
@@ -215,11 +253,11 @@
   "full": {
     "papers": 824,
     "outputBasis": "measured",
-    "citations": 9661,
-    "top10": 68.069,
-    "top10ShareOfDivision": 0.04722,
-    "top1": 12.071,
-    "top1ShareOfDivision": 0.08374,
+    "citations": 9662,
+    "top10": 67.93,
+    "top10ShareOfDivision": 0.04714,
+    "top1": 12.062,
+    "top1ShareOfDivision": 0.08371,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.202,
@@ -242,7 +280,7 @@
       "m": 2.197
     },
     "spread": {
-      "mean": 11.725,
+      "mean": 11.726,
       "median": 8,
       "uncited": 26,
       "i10": 357,
@@ -253,10 +291,10 @@
     "papers": 174,
     "outputBasis": "measured",
     "citations": 3033,
-    "top10": 20.114,
-    "top10ShareOfDivision": 0.04534,
+    "top10": 19.141,
+    "top10ShareOfDivision": 0.04505,
     "top1": 4,
-    "top1ShareOfDivision": 0.09017,
+    "top1ShareOfDivision": 0.09414,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.454,
@@ -289,8 +327,8 @@
   "lifetime": {
     "papers": 923,
     "outputBasis": "measured",
-    "citations": 34608,
-    "top10": 103.157,
+    "citations": 34613,
+    "top10": 103.15,
     "top10ShareOfDivision": 0.05617,
     "top1": null,
     "top1ShareOfDivision": null,
@@ -302,10 +340,10 @@
       "date": "2008-04-00"
     },
     "spread": {
-      "mean": 37.495,
+      "mean": 37.501,
       "median": 16,
       "uncited": 43,
-      "i10": 623,
+      "i10": 624,
       "i100": 64
     }
   },

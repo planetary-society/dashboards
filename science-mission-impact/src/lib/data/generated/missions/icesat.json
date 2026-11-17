@@ -17,11 +17,12 @@
     "target": "Earth",
     "launchVehicle": "Delta II",
     "wikipedia": "https://en.wikipedia.org/wiki/ICESat",
+    "bibliography": "https://icesat.gsfc.nasa.gov/icesat/publications.php",
     "firstSciencePublication": "10.1029/2004GL020309",
     "dates": {
       "formulation": "1998-01-26",
       "launch": "2003-01-13",
-      "scienceStart": "2003-01-13",
+      "scienceStart": "2003-02-20",
       "primeEnd": "2006-01-13",
       "missionEnd": "2010-08-14"
     }
@@ -31,12 +32,12 @@
     "m": 3.958,
     "i100": 89,
     "g": 166,
-    "tori": 257.04,
-    "riq": 641
+    "tori": 255.883,
+    "riq": 639
   },
   "facts": {
     "papers": 783,
-    "citations": 39192,
+    "citations": 39240,
     "publicationYears": [
       2003,
       2026
@@ -108,8 +109,8 @@
       1102,
       1381,
       1798,
-      1795,
-      2012,
+      1823,
+      2030,
       2117,
       2499,
       2545,
@@ -119,13 +120,13 @@
       3139,
       3181,
       3239,
-      2560
+      2562
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 39192,
-      "observed": 39192,
+      "expected": 39240,
+      "observed": 39240,
       "missing": 0
     }
   },
@@ -166,6 +167,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 242,
+    "us": {
+      "mapped": 139,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 58
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 21
+        },
+        {
+          "name": "Science Systems and Applications Inc., Maryland",
+          "papers": 17
+        }
+      ]
+    },
+    "world": {
+      "mapped": 194,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 58
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 21
+        },
+        {
+          "name": "Science Systems and Applications Inc., Maryland",
+          "papers": 17
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2009MarGe..32..355B",
     "title": "Global Bathymetry and Elevation Data at 30 Arc Seconds Resolution: SRTM30_PLUS",
@@ -178,51 +216,51 @@
     ],
     "authorCount": 18,
     "year": 2009,
-    "citations": 1101
+    "citations": 1112
   },
   "ranks": {
     "full": {
       "bins": [
         23.234,
-        17.454,
-        21.62,
-        15.666,
-        21.124,
-        18.144,
-        25.447,
-        29.292,
-        32.784,
-        37.236
+        17.473,
+        21.639,
+        15.678,
+        21.228,
+        18.154,
+        25.288,
+        29.392,
+        32.73,
+        37.183
       ],
       "top1": 4
     },
     "window": {
       "bins": [
-        7.147,
-        8.615,
-        11.844,
-        7.785,
-        9.108,
-        6.94,
-        9.444,
-        10.052,
-        7.066,
+        7.117,
+        8.517,
+        11.867,
+        7.857,
+        9.135,
+        6.887,
+        9.591,
+        9.948,
+        7.08,
         5
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        60.682,
-        45.739,
-        59.222,
-        66.514,
-        60.08,
-        80.849,
-        92.081,
-        80.452,
-        115.274,
-        122.108
+        60.703,
+        45.405,
+        59.845,
+        66.56,
+        59.712,
+        81.71,
+        91.265,
+        81.21,
+        114.651,
+        121.938
       ],
       "top1": 17
     }
@@ -230,34 +268,34 @@
   "full": {
     "papers": 242,
     "outputBasis": "measured",
-    "citations": 3663,
-    "top10": 30.986,
-    "top10ShareOfDivision": 0.00793,
+    "citations": 3666,
+    "top10": 30.933,
+    "top10ShareOfDivision": 0.0079,
     "top1": 3.5,
-    "top1ShareOfDivision": 0.00895,
+    "top1ShareOfDivision": 0.00894,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 1.634,
+      "yearsFromScienceStart": 1.53,
       "yearsFromFormulation": 6.598,
       "bibcode": "2004GeoRL..3118402S",
       "date": "2004-09-00"
     },
     "status": "available",
     "bounds": {
-      "start": "2003-02-01",
+      "start": "2003-03-01",
       "end": "2012-09-01",
       "matureDate": "2015-10-01",
       "status": "available",
-      "months": 115,
+      "months": 114,
       "citationBuckets": 13
     },
     "indices": {
       "h": 31,
       "g": 45,
-      "m": 3.235
+      "m": 3.261
     },
     "spread": {
-      "mean": 15.136,
+      "mean": 15.149,
       "median": 10,
       "uncited": 20,
       "i10": 123,
@@ -269,29 +307,29 @@
     "outputBasis": "measured",
     "citations": 872,
     "top10": 5,
-    "top10ShareOfDivision": 0.00501,
+    "top10ShareOfDivision": 0.00512,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 1.634,
+      "yearsFromScienceStart": 1.53,
       "yearsFromFormulation": 6.598,
       "bibcode": "2004GeoRL..3118402S",
       "date": "2004-09-00"
     },
     "status": "available",
     "bounds": {
-      "start": "2003-02-01",
+      "start": "2003-03-01",
       "end": "2008-02-01",
       "matureDate": "2011-10-01",
       "status": "available",
-      "months": 60,
+      "months": 59,
       "citationBuckets": 9
     },
     "indices": {
       "h": 16,
       "g": 23,
-      "m": 3.201
+      "m": 3.25
     },
     "spread": {
       "mean": 10.506,
@@ -304,20 +342,20 @@
   "lifetime": {
     "papers": 783,
     "outputBasis": "measured",
-    "citations": 39192,
-    "top10": 101.441,
-    "top10ShareOfDivision": 0.01942,
+    "citations": 39240,
+    "top10": 101.271,
+    "top10ShareOfDivision": 0.01937,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 1.55,
+      "yearsFromScienceStart": 1.446,
       "yearsFromFormulation": 6.513,
       "bibcode": "2004GeoRL..3116401K",
       "date": "2004-08-00"
     },
     "spread": {
-      "mean": 50.054,
+      "mean": 50.115,
       "median": 21,
       "uncited": 53,
       "i10": 550,
@@ -326,9 +364,9 @@
   },
   "query": {
     "arms": "((((abs:\"ICESat\" OR abs:\"ICESat-1\" OR abs:\"GLAS\" OR =abs:\"Geoscience Laser Altimeter System\") AND (abs:\"satellite\" OR abs:\"remote sensing\" OR abs:\"laser altimetry\" OR abs:\"laser altimeter\")) OR abs:\"Ice, Clouds and Land Elevation Satellite\" OR abs:\"Geoscience Laser Altimeter System\") AND NOT (abs:\"ICESat-2\" AND NOT (abs:\"ICESat-1\" OR abs:\"GLAS\" OR =abs:\"Geoscience Laser Altimeter System\" OR =abs:\"ICESat ICESat-2\" OR =abs:\"ICESat 2003\" OR =abs:\"ICESat data\" OR =abs:\"ICESat mission\" OR =abs:\"ICESat CryoSat\" OR =abs:\"ICESat Ice Cloud\")))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2003-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3A%22ICESat%22+OR+abs%3A%22ICESat-1%22+OR+abs%3A%22GLAS%22+OR+%3Dabs%3A%22Geoscience+Laser+Altimeter+System%22%29+AND+%28abs%3A%22satellite%22+OR+abs%3A%22remote+sensing%22+OR+abs%3A%22laser+altimetry%22+OR+abs%3A%22laser+altimeter%22%29%29+OR+abs%3A%22Ice%2C+Clouds+and+Land+Elevation+Satellite%22+OR+abs%3A%22Geoscience+Laser+Altimeter+System%22%29+AND+NOT+%28abs%3A%22ICESat-2%22+AND+NOT+%28abs%3A%22ICESat-1%22+OR+abs%3A%22GLAS%22+OR+%3Dabs%3A%22Geoscience+Laser+Altimeter+System%22+OR+%3Dabs%3A%22ICESat+ICESat-2%22+OR+%3Dabs%3A%22ICESat+2003%22+OR+%3Dabs%3A%22ICESat+data%22+OR+%3Dabs%3A%22ICESat+mission%22+OR+%3Dabs%3A%22ICESat+CryoSat%22+OR+%3Dabs%3A%22ICESat+Ice+Cloud%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:05:52.514155+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2003-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%28%28abs%3A%22ICESat%22+OR+abs%3A%22ICESat-1%22+OR+abs%3A%22GLAS%22+OR+%3Dabs%3A%22Geoscience+Laser+Altimeter+System%22%29+AND+%28abs%3A%22satellite%22+OR+abs%3A%22remote+sensing%22+OR+abs%3A%22laser+altimetry%22+OR+abs%3A%22laser+altimeter%22%29%29+OR+abs%3A%22Ice%2C+Clouds+and+Land+Elevation+Satellite%22+OR+abs%3A%22Geoscience+Laser+Altimeter+System%22%29+AND+NOT+%28abs%3A%22ICESat-2%22+AND+NOT+%28abs%3A%22ICESat-1%22+OR+abs%3A%22GLAS%22+OR+%3Dabs%3A%22Geoscience+Laser+Altimeter+System%22+OR+%3Dabs%3A%22ICESat+ICESat-2%22+OR+%3Dabs%3A%22ICESat+2003%22+OR+%3Dabs%3A%22ICESat+data%22+OR+%3Dabs%3A%22ICESat+mission%22+OR+%3Dabs%3A%22ICESat+CryoSat%22+OR+%3Dabs%3A%22ICESat+Ice+Cloud%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2003-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-16T17:30:33.764783+00:00",
     "reconciliation": {
       "adsReturned": 790,
       "curatedOut": 0,
@@ -351,7 +389,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 1101
+      "citations": 1112
     },
     {
       "bibcode": "2017GeoRL..44.5844Y",
@@ -369,7 +407,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 1029
+      "citations": 1030
     },
     {
       "bibcode": "2011JGRG..116.4021S",
@@ -414,7 +452,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 595
+      "citations": 596
     },
     {
       "bibcode": "2009JGRC..114.7005K",
@@ -423,7 +461,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 554
+      "citations": 555
     },
     {
       "bibcode": "2005GeoRL..3221S01S",
@@ -459,7 +497,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 384
+      "citations": 385
     },
     {
       "bibcode": "2015TCry....9..557K",
@@ -468,7 +506,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 362
+      "citations": 363
     },
     {
       "bibcode": "2011GeoRL..3810504R",
@@ -486,7 +524,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 335
+      "citations": 336
     },
     {
       "bibcode": "2013RSEnv.135...25S",
@@ -513,7 +551,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 275
+      "citations": 276
     },
     {
       "bibcode": "2005GeoRL..3221S02A",

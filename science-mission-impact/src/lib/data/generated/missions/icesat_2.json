@@ -8,8 +8,8 @@
   "meta": {
     "status": "Extended Mission",
     "failed": false,
-    "cost": 1490.1,
-    "lcc": 1063.6,
+    "cost": 1422.6,
+    "lcc": 1056.1,
     "type": "Orbiter",
     "selection": "directed",
     "management": "agency",
@@ -17,11 +17,12 @@
     "target": "Earth",
     "launchVehicle": "Delta II",
     "wikipedia": "https://en.wikipedia.org/wiki/ICESat-2",
+    "bibliography": null,
     "firstSciencePublication": "10.1029/2019JC015486",
     "dates": {
       "formulation": "2009-12-11",
       "launch": "2018-09-15",
-      "scienceStart": "2018-09-15",
+      "scienceStart": null,
       "primeEnd": "2021-12-01",
       "missionEnd": null
     }
@@ -31,12 +32,12 @@
     "m": 7,
     "i100": 27,
     "g": 101,
-    "tori": 81.972,
-    "riq": 905
+    "tori": 78.334,
+    "riq": 885
   },
   "facts": {
     "papers": 1280,
-    "citations": 19918,
+    "citations": 19919,
     "publicationYears": [
       2018,
       2026
@@ -73,14 +74,14 @@
       1767,
       2610,
       3909,
-      5129,
+      5130,
       5160
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 19918,
-      "observed": 19918,
+      "expected": 19919,
+      "observed": 19919,
       "missing": 0
     }
   },
@@ -121,6 +122,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 510,
+    "us": {
+      "mapped": 145,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 61
+        },
+        {
+          "name": "University of Maryland, College Park",
+          "papers": 27
+        },
+        {
+          "name": "Earth System Science Interdisciplinary Center",
+          "papers": 25
+        }
+      ]
+    },
+    "world": {
+      "mapped": 368,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 61
+        },
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 55
+        },
+        {
+          "name": "Wuhan University, China",
+          "papers": 45
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2019RSEnv.23311325N",
     "title": "The Ice, Cloud, and Land Elevation Satellite - 2 mission: A global geolocated photon product derived from the Advanced Topographic Laser Altimeter System",
@@ -139,45 +177,45 @@
     "full": {
       "bins": [
         16.528,
-        15.392,
-        19.478,
-        33.814,
-        51.984,
-        46.639,
-        55.168,
-        64.207,
-        83.847,
-        122.944
+        15.406,
+        19.535,
+        33.888,
+        52.148,
+        46.627,
+        55.257,
+        64.494,
+        83.383,
+        122.734
       ],
       "top1": 13
     },
     "window": {
       "bins": [
-        17.588,
-        17.072,
-        27.563,
-        42.327,
-        53.423,
-        56.452,
-        48.187,
-        75.929,
-        74.681,
-        96.778
+        17.467,
+        17.01,
+        27.36,
+        42.528,
+        53.497,
+        56.376,
+        48.516,
+        75.685,
+        74.986,
+        96.574
       ],
       "top1": 11
     },
     "lifetime": {
       "bins": [
-        300.01,
-        203.974,
-        175.595,
-        128.033,
-        115.179,
-        100.343,
-        85.413,
-        68.915,
-        53.43,
-        49.108
+        300.117,
+        204.286,
+        175.887,
+        127.907,
+        115.028,
+        100.659,
+        84.95,
+        68.855,
+        53.499,
+        48.813
       ],
       "top1": 5
     }
@@ -185,11 +223,11 @@
   "full": {
     "papers": 510,
     "outputBasis": "measured",
-    "citations": 10389,
-    "top10": 116.194,
-    "top10ShareOfDivision": 0.02972,
+    "citations": 10390,
+    "top10": 115.984,
+    "top10ShareOfDivision": 0.02963,
     "top1": 12.5,
-    "top1ShareOfDivision": 0.03197,
+    "top1ShareOfDivision": 0.03193,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.129,
@@ -212,7 +250,7 @@
       "m": 8.76
     },
     "spread": {
-      "mean": 20.371,
+      "mean": 20.373,
       "median": 13,
       "uncited": 13,
       "i10": 323,
@@ -222,11 +260,11 @@
   "window": {
     "papers": 510,
     "outputBasis": "measured",
-    "citations": 10389,
-    "top10": 96.112,
-    "top10ShareOfDivision": 0.09629,
+    "citations": 10390,
+    "top10": 95.908,
+    "top10ShareOfDivision": 0.09825,
     "top1": 11,
-    "top1ShareOfDivision": 0.1102,
+    "top1ShareOfDivision": 0.11268,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.129,
@@ -249,7 +287,7 @@
       "m": 8.76
     },
     "spread": {
-      "mean": 20.371,
+      "mean": 20.373,
       "median": 13,
       "uncited": 13,
       "i10": 323,
@@ -259,20 +297,20 @@
   "lifetime": {
     "papers": 1280,
     "outputBasis": "measured",
-    "citations": 19918,
-    "top10": 43.774,
-    "top10ShareOfDivision": 0.00838,
+    "citations": 19919,
+    "top10": 43.479,
+    "top10ShareOfDivision": 0.00832,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 0.129,
-      "yearsFromFormulation": 8.89,
-      "bibcode": "2018TCry...12.3551L",
-      "date": "2018-11-00"
+      "yearsFromScienceStart": 0.211,
+      "yearsFromFormulation": 8.972,
+      "bibcode": "2018RemS...10.1962Z",
+      "date": "2018-12-00"
     },
     "spread": {
-      "mean": 15.561,
+      "mean": 15.562,
       "median": 5,
       "uncited": 260,
       "i10": 471,

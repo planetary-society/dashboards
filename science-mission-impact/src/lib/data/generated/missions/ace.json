@@ -8,15 +8,16 @@
   "meta": {
     "status": "Extended Mission",
     "failed": false,
-    "cost": 538,
+    "cost": 524.8,
     "lcc": 244,
     "type": "In-Situ Probe",
     "selection": "competed",
     "management": "agency",
-    "program": "Medium-class Explorers (MIDEX)",
+    "program": "Explorer Program",
     "target": "Sun-Earth Interaction",
     "launchVehicle": "Delta II 7920",
     "wikipedia": "https://en.wikipedia.org/wiki/Advanced_Composition_Explorer",
+    "bibliography": "https://izw1.caltech.edu/ACE/ASC/publications.html, https://science.gsfc.nasa.gov/heliophysics/projects/12/",
     "firstSciencePublication": "10.1029/1998GL900174",
     "dates": {
       "formulation": "1993-10-01",
@@ -31,12 +32,12 @@
     "m": 3.655,
     "i100": 126,
     "g": 169,
-    "tori": 347.863,
+    "tori": 347.439,
     "riq": 621
   },
   "facts": {
     "papers": 1512,
-    "citations": 54358,
+    "citations": 54364,
     "publicationYears": [
       1998,
       2026
@@ -134,13 +135,13 @@
       3371,
       3432,
       3411,
-      3535
+      3541
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 54358,
-      "observed": 54358,
+      "expected": 54364,
+      "observed": 54364,
       "missing": 0
     }
   },
@@ -181,6 +182,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 1361,
+    "us": {
+      "mapped": 768,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 179
+        },
+        {
+          "name": "University of New Hampshire",
+          "papers": 136
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 131
+        }
+      ]
+    },
+    "world": {
+      "mapped": 1213,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 179
+        },
+        {
+          "name": "University of New Hampshire",
+          "papers": 136
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 131
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2005JGRA..110.2104K",
     "title": "Solar wind spatial scales in and comparisons of hourly Wind and ACE plasma and magnetic field data",
@@ -196,46 +234,46 @@
   "ranks": {
     "full": {
       "bins": [
-        188.294,
-        172.384,
-        160.749,
-        154.923,
-        129.013,
-        131.752,
-        100.651,
-        113.644,
-        122.104,
-        87.485
+        188.613,
+        172.954,
+        159.953,
+        155.126,
+        128.962,
+        131.699,
+        100.776,
+        113.509,
+        122.061,
+        87.347
       ],
       "top1": 5
     },
     "window": {
       "bins": [
-        47.931,
-        42.683,
-        33.295,
-        23.635,
-        22.085,
-        12.661,
-        18.343,
-        17.507,
-        17.861,
+        46.498,
+        42.211,
+        34.072,
+        23.915,
+        22.96,
+        12.621,
+        18.587,
+        17.634,
+        17.502,
         5
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        130.971,
-        165.752,
-        147.104,
-        130.406,
-        156.289,
-        141.807,
-        149.935,
-        159.017,
-        138.664,
-        192.056
+        130.93,
+        165.872,
+        146.458,
+        131.147,
+        156.232,
+        141.804,
+        149.846,
+        159.111,
+        138.573,
+        192.027
       ],
       "top1": 16
     }
@@ -244,8 +282,8 @@
     "papers": 1361,
     "outputBasis": "measured",
     "citations": 12413,
-    "top10": 65.602,
-    "top10ShareOfDivision": 0.04551,
+    "top10": 65.464,
+    "top10ShareOfDivision": 0.04543,
     "top1": 2.417,
     "top1ShareOfDivision": 0.01677,
     "first": {
@@ -282,7 +320,7 @@
     "outputBasis": "measured",
     "citations": 2036,
     "top10": 5,
-    "top10ShareOfDivision": 0.01127,
+    "top10ShareOfDivision": 0.01177,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -317,9 +355,9 @@
   "lifetime": {
     "papers": 1512,
     "outputBasis": "measured",
-    "citations": 54358,
-    "top10": 150.315,
-    "top10ShareOfDivision": 0.08185,
+    "citations": 54364,
+    "top10": 150.287,
+    "top10ShareOfDivision": 0.08183,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -330,7 +368,7 @@
       "date": "1998-07-00"
     },
     "spread": {
-      "mean": 35.951,
+      "mean": 35.955,
       "median": 16,
       "uncited": 94,
       "i10": 960,
@@ -713,7 +751,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 730
+      "citations": 731
     },
     {
       "bibcode": "2004JGRA..109.8302T",

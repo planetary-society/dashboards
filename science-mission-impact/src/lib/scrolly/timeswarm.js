@@ -1,7 +1,8 @@
 // Geometry for the story's time-to-science chart (TIME_FORM, TIME_SCI): one band per cost group,
 // every flown mission that reached a first high-impact paper a mission square at its own years on
 // one shared axis, packed into a beeswarm, with the group's packaged median and its 95% interval;
-// past an axis break, a "None" column holds the square of each mission without one. Both clocks are
+// past an axis break, a "None" column holds the square of each mission without one, failures (with their
+// red X) after the rest. Both clocks are
 // laid out at once, on one square size and one set of bands, so the squares can glide from one
 // step's positions to the other's while the bands and the None column hold still. The stage's
 // Squares draws the squares (`timeItems`); TimeSwarm draws everything else.
@@ -18,6 +19,9 @@ export const CLOCKS = ['formulation', 'science'];
 
 /** The None column's squares, dimmed: the picture still shows, but they read as missing the measure. */
 export const NONE_OPACITY = 0.45;
+
+/** The marks every other chart gives a mission: an outright failure's red X, a partial failure's stroke. */
+const variantOf = (p) => (p.failed ? 'lost' : p.shortfall ? 'partial' : 'solid');
 
 /** Squares are drawn this much of the largest size that fits the stage. */
 const SHRINK = 0.9;
@@ -59,7 +63,8 @@ export function timeSwarmLayout(groups, tiers, W, H) {
 	const pileInset = compact ? 5 : 8; // the None column's padding either side of its squares
 	const lead = compact ? 10 : 8; // room left of the axis for its first tick label
 	const labels = tiers.map((t) => tierLabel(t));
-	const withouts = groups.map((g) => g.points.filter((p) => !p.reached));
+	// failures last, so their X's gather at the column's foot
+	const withouts = groups.map((g) => g.points.filter((p) => !p.reached).sort((a, b) => (a.failed ? 1 : 0) - (b.failed ? 1 : 0)));
 	// a None column about half as wide as it is tall
 	const cols = Math.max(1, Math.ceil(Math.sqrt(Math.max(...withouts.map((w) => w.length)) / 1.25)));
 
@@ -118,14 +123,14 @@ export function timeSwarmLayout(groups, tiers, W, H) {
 	const none = withouts.flatMap((without, i) => {
 		const lines = Math.ceil(without.length / cols);
 		const first = rows[i].mid - ((lines - 1) * pitch) / 2;
-		return without.map((p, k) => ({ id: p.id, name: p.name, x: pileX + pileInset + s / 2 + (k % cols) * pitch, y: first + Math.floor(k / cols) * pitch }));
+		return without.map((p, k) => ({ id: p.id, name: p.name, variant: variantOf(p), x: pileX + pileInset + s / 2 + (k % cols) * pitch, y: first + Math.floor(k / cols) * pitch }));
 	});
 
 	const out = Object.fromEntries(
 		CLOCKS.map((clock) => {
 			const { x, rows: placed } = clocks[clock];
 			// every mission's square on this clock, by its centre
-			const marks = placed.flatMap(({ pts, xs, ys }, i) => pts.map((p, k) => ({ id: p.id, name: p.name, years: p[clock], x: xs[k], y: rows[i].mid + ys[k] })));
+			const marks = placed.flatMap(({ pts, xs, ys }, i) => pts.map((p, k) => ({ id: p.id, name: p.name, variant: variantOf(p), years: p[clock], x: xs[k], y: rows[i].mid + ys[k] })));
 			const medians = groups.map((g, i) => {
 				const { half } = placed[i];
 				const row = rows[i];
@@ -153,15 +158,15 @@ export function timeSwarmLayout(groups, tiers, W, H) {
 /**
  * The stage's squares on one clock, for Squares: each mission with a first high-impact paper at its
  * place in its swarm, solid, and `plain` (pointed at, it's outlined in white: Flame marks only the
- * true negatives); each without one in the None column, dimmed. Failures aren't here (they have no
- * time to science), so the caller hides them.
+ * true negatives); each without one in the None column, dimmed, but a failure at full strength so
+ * its X reads. Each carries the failure marks the other charts use.
  */
 export function timeItems(layout, clock) {
 	const { s } = layout;
-	const at = (m) => ({ x: m.x - s / 2, y: m.y - s / 2, s, variant: 'solid' });
+	const at = (m) => ({ x: m.x - s / 2, y: m.y - s / 2, s, variant: m.variant });
 	return new Map([
 		...layout.clocks[clock].marks.map((m) => [m.id, { ...at(m), opacity: 1, plain: true }]),
-		...layout.none.map((m) => [m.id, { ...at(m), opacity: NONE_OPACITY }])
+		...layout.none.map((m) => [m.id, { ...at(m), opacity: m.variant === 'lost' ? 1 : NONE_OPACITY }])
 	]);
 }
 

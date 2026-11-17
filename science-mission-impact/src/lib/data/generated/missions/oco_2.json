@@ -8,8 +8,8 @@
   "meta": {
     "status": "Extended Mission",
     "failed": false,
-    "cost": 687.2,
-    "lcc": 478.2,
+    "cost": 600.5,
+    "lcc": 428.6,
     "type": "Orbiter",
     "selection": "directed",
     "management": "agency",
@@ -17,6 +17,7 @@
     "target": "Earth",
     "launchVehicle": "Delta II 7320",
     "wikipedia": "https://en.wikipedia.org/wiki/Orbiting_Carbon_Observatory_2",
+    "bibliography": "https://ocov2.jpl.nasa.gov/science/publications/",
     "firstSciencePublication": "10.1007/s41324-016-0044-8",
     "dates": {
       "formulation": "2010-03-01",
@@ -31,12 +32,12 @@
     "m": 5.077,
     "i100": 41,
     "g": 118,
-    "tori": 78.983,
-    "riq": 634
+    "tori": 76.779,
+    "riq": 625
   },
   "facts": {
     "papers": 707,
-    "citations": 20136,
+    "citations": 20142,
     "publicationYears": [
       2014,
       2026
@@ -78,21 +79,21 @@
       10,
       43,
       224,
-      479,
-      888,
+      480,
+      889,
       1360,
       1864,
       2493,
-      2707,
+      2709,
       3170,
-      3641,
-      3257
+      3642,
+      3258
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 20136,
-      "observed": 20136,
+      "expected": 20142,
+      "observed": 20142,
       "missing": 0
     }
   },
@@ -133,6 +134,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 446,
+    "us": {
+      "mapped": 167,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 84
+        },
+        {
+          "name": "California Institute of Technology",
+          "papers": 50
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 32
+        }
+      ]
+    },
+    "world": {
+      "mapped": 306,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 84
+        },
+        {
+          "name": "California Institute of Technology",
+          "papers": 50
+        },
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 48
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2019RemS...11..517L",
     "title": "A Global, 0.05-Degree Product of Solar-Induced Chlorophyll Fluorescence Derived from OCO-2, MODIS, and Reanalysis Data",
@@ -148,58 +186,58 @@
   "ranks": {
     "full": {
       "bins": [
-        26.41,
-        20.278,
-        21.492,
-        27.769,
-        48.247,
-        38.815,
-        43.43,
-        52.154,
-        62.753,
-        104.652
+        26.411,
+        20.297,
+        21.537,
+        27.805,
+        48.455,
+        38.787,
+        43.608,
+        52.086,
+        62.731,
+        104.284
       ],
       "top1": 19
     },
     "window": {
       "bins": [
-        7.382,
-        3.516,
-        6.708,
-        9.183,
-        12.707,
-        4.723,
-        5.51,
-        10.205,
-        9.066,
+        7.372,
+        3.471,
+        6.658,
+        9.251,
+        12.73,
+        4.709,
+        5.593,
+        10.137,
+        9.08,
         26
       ],
-      "top1": 7.102
+      "top1": 7
     },
     "lifetime": {
       "bins": [
-        114.084,
-        81.992,
-        75.86,
-        68.321,
-        66.871,
-        68.677,
-        63.671,
-        56.986,
-        51.538,
-        59
+        114.121,
+        82.121,
+        76.096,
+        68.232,
+        67.092,
+        68.543,
+        63.73,
+        56.754,
+        51.436,
+        58.875
       ],
-      "top1": 11.097
+      "top1": 11
     }
   },
   "full": {
     "papers": 446,
     "outputBasis": "measured",
-    "citations": 9052,
-    "top10": 95.284,
-    "top10ShareOfDivision": 0.02437,
+    "citations": 9054,
+    "top10": 94.942,
+    "top10ShareOfDivision": 0.02425,
     "top1": 18.333,
-    "top1ShareOfDivision": 0.04689,
+    "top1ShareOfDivision": 0.04683,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.405,
@@ -222,7 +260,7 @@
       "m": 4.929
     },
     "spread": {
-      "mean": 20.296,
+      "mean": 20.3,
       "median": 12,
       "uncited": 22,
       "i10": 260,
@@ -232,11 +270,11 @@
   "window": {
     "papers": 95,
     "outputBasis": "measured",
-    "citations": 2610,
+    "citations": 2612,
     "top10": 24.833,
-    "top10ShareOfDivision": 0.02488,
-    "top1": 7.102,
-    "top1ShareOfDivision": 0.07115,
+    "top10ShareOfDivision": 0.02544,
+    "top1": 7,
+    "top1ShareOfDivision": 0.07171,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.405,
@@ -259,7 +297,7 @@
       "m": 6.719
     },
     "spread": {
-      "mean": 27.474,
+      "mean": 27.495,
       "median": 12,
       "uncited": 7,
       "i10": 52,
@@ -269,9 +307,9 @@
   "lifetime": {
     "papers": 707,
     "outputBasis": "measured",
-    "citations": 20136,
-    "top10": 53.75,
-    "top10ShareOfDivision": 0.01029,
+    "citations": 20142,
+    "top10": 53.667,
+    "top10ShareOfDivision": 0.01027,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -282,7 +320,7 @@
       "date": "2015-01-00"
     },
     "spread": {
-      "mean": 28.481,
+      "mean": 28.489,
       "median": 10,
       "uncited": 100,
       "i10": 366,

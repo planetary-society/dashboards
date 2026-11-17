@@ -8,15 +8,16 @@
   "meta": {
     "status": "Extended Mission",
     "failed": false,
-    "cost": 448.7,
-    "lcc": 222,
+    "cost": 584.5,
+    "lcc": 301,
     "type": "Orbiter",
     "selection": "directed",
     "management": "agency",
     "program": "Mars Exploration Program (MEP)",
     "target": "Mars",
-    "launchVehicle": "Delta II 7425",
+    "launchVehicle": "Delta II 7925",
     "wikipedia": "https://en.wikipedia.org/wiki/2001_Mars_Odyssey",
+    "bibliography": null,
     "firstSciencePublication": "10.1126/science.1073722",
     "dates": {
       "formulation": "1996-10-01",
@@ -31,12 +32,12 @@
     "m": 3.36,
     "i100": 60,
     "g": 140,
-    "tori": 221.018,
+    "tori": 221.049,
     "riq": 594
   },
   "facts": {
     "papers": 611,
-    "citations": 28461,
+    "citations": 28462,
     "publicationYears": [
       2002,
       2026
@@ -112,7 +113,7 @@
       1343,
       1213,
       1329,
-      1298,
+      1299,
       1098,
       1370,
       1340,
@@ -127,8 +128,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 28461,
-      "observed": 28461,
+      "expected": 28462,
+      "observed": 28462,
       "missing": 0
     }
   },
@@ -169,6 +170,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 559,
+    "us": {
+      "mapped": 393,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 76
+        },
+        {
+          "name": "Arizona State University",
+          "papers": 75
+        },
+        {
+          "name": "University of Arizona",
+          "papers": 74
+        }
+      ]
+    },
+    "world": {
+      "mapped": 496,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 76
+        },
+        {
+          "name": "Arizona State University",
+          "papers": 75
+        },
+        {
+          "name": "University of Arizona",
+          "papers": 74
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2004SSRv..110...85C",
     "title": "The Thermal Emission Imaging System (THEMIS) for the Mars 2001 Odyssey Mission",
@@ -186,29 +224,29 @@
   "ranks": {
     "full": {
       "bins": [
-        66.051,
-        71.001,
-        68.278,
-        42.052,
-        60.889,
-        42.91,
-        61.483,
-        48.858,
-        45.92,
-        51.557
+        65.984,
+        71.025,
+        68.286,
+        42.012,
+        60.901,
+        42.94,
+        61.472,
+        48.856,
+        45.916,
+        51.607
       ],
-      "top1": 3.67
+      "top1": 3.663
     },
     "window": {
       "bins": [
-        22.759,
-        25.462,
-        23.022,
-        16.963,
-        8.154,
-        18.707,
-        12.471,
-        11.461,
+        22.433,
+        25.417,
+        23.188,
+        16.921,
+        8.273,
+        18.536,
+        12.79,
+        11.441,
         13,
         16
       ],
@@ -219,8 +257,8 @@
         52.641,
         50.531,
         63.259,
-        55.376,
-        54.364,
+        55.394,
+        54.346,
         46.708,
         62.996,
         66.341,
@@ -234,10 +272,10 @@
     "papers": 559,
     "outputBasis": "measured",
     "citations": 7202,
-    "top10": 36.972,
-    "top10ShareOfDivision": 0.03402,
-    "top1": 3.67,
-    "top1ShareOfDivision": 0.03377,
+    "top10": 37,
+    "top10ShareOfDivision": 0.03405,
+    "top1": 3.663,
+    "top1ShareOfDivision": 0.03371,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.361,
@@ -272,9 +310,9 @@
     "outputBasis": "measured",
     "citations": 2789,
     "top10": 16,
-    "top10ShareOfDivision": 0.0334,
+    "top10ShareOfDivision": 0.03386,
     "top1": 2,
-    "top1ShareOfDivision": 0.04175,
+    "top1ShareOfDivision": 0.04232,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.361,
@@ -307,7 +345,7 @@
   "lifetime": {
     "papers": 611,
     "outputBasis": "measured",
-    "citations": 28461,
+    "citations": 28462,
     "top10": 49.679,
     "top10ShareOfDivision": 0.03155,
     "top1": null,
@@ -320,7 +358,7 @@
       "date": "2002-07-00"
     },
     "spread": {
-      "mean": 46.581,
+      "mean": 46.583,
       "median": 22,
       "uncited": 37,
       "i10": 420,

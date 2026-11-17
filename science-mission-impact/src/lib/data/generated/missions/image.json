@@ -8,8 +8,8 @@
   "meta": {
     "status": "Completed",
     "failed": false,
-    "cost": 276.9,
-    "lcc": 137,
+    "cost": 321.3,
+    "lcc": 159,
     "type": "Remote Sensing Observatory",
     "selection": "competed",
     "management": "pi",
@@ -17,11 +17,12 @@
     "target": "Sun-Earth Interaction",
     "launchVehicle": "Delta II 7326",
     "wikipedia": "https://en.wikipedia.org/wiki/IMAGE_(spacecraft)",
+    "bibliography": null,
     "firstSciencePublication": "10.1126/science.291.5504.619",
     "dates": {
-      "formulation": "1996-03-01",
+      "formulation": "1996-04-10",
       "launch": "2000-03-25",
-      "scienceStart": "2000-03-25",
+      "scienceStart": null,
       "primeEnd": "2002-03-25",
       "missionEnd": "2005-12-18"
     }
@@ -31,12 +32,12 @@
     "m": 2.185,
     "i100": 26,
     "g": 89,
-    "tori": 71.133,
+    "tori": 71.2,
     "riq": 312
   },
   "facts": {
     "papers": 495,
-    "citations": 14071,
+    "citations": 14072,
     "publicationYears": [
       2000,
       2026
@@ -128,13 +129,13 @@
       620,
       572,
       665,
-      456
+      457
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 14071,
-      "observed": 14071,
+      "expected": 14072,
+      "observed": 14072,
       "missing": 0
     }
   },
@@ -175,6 +176,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 255,
+    "us": {
+      "mapped": 170,
+      "top": [
+        {
+          "name": "University of California, Berkeley",
+          "papers": 65
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 61
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 36
+        }
+      ]
+    },
+    "world": {
+      "mapped": 197,
+      "top": [
+        {
+          "name": "University of California, Berkeley",
+          "papers": 65
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 61
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 36
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2005JGRA..11011302S",
     "title": "Longitudinal structure of the equatorial anomaly in the nighttime ionosphere observed by IMAGE/FUV",
@@ -192,45 +230,45 @@
   "ranks": {
     "full": {
       "bins": [
-        38.145,
-        32.776,
-        30.334,
-        37.322,
-        25.12,
-        22.217,
-        19.616,
-        16.953,
-        21.518,
+        38.218,
+        32.847,
+        30.212,
+        37.337,
+        25.141,
+        22.197,
+        19.613,
+        16.954,
+        21.482,
         11
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        17.858,
-        8.563,
-        14.131,
-        10.794,
-        12.905,
-        12.608,
-        6.956,
-        10.323,
-        7.861,
+        17.104,
+        9.186,
+        13.481,
+        11.046,
+        13.445,
+        12.589,
+        7.081,
+        10.566,
+        7.502,
         5
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        31.15,
-        40.528,
-        51.176,
-        62.149,
-        50.582,
-        54.811,
-        51.019,
-        57.346,
-        53.24,
+        31.138,
+        40.572,
+        51.381,
+        61.951,
+        50.596,
+        54.78,
+        51.013,
+        57.369,
+        53.2,
         43
       ],
       "top1": 3
@@ -241,13 +279,13 @@
     "outputBasis": "measured",
     "citations": 2062,
     "top10": 10.5,
-    "top10ShareOfDivision": 0.00728,
+    "top10ShareOfDivision": 0.00729,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.772,
-      "yearsFromFormulation": 4.838,
+      "yearsFromFormulation": 4.728,
       "bibcode": "2001Sci...291..619B",
       "date": "2001-01-00"
     },
@@ -278,13 +316,13 @@
     "outputBasis": "measured",
     "citations": 1129,
     "top10": 5,
-    "top10ShareOfDivision": 0.01127,
+    "top10ShareOfDivision": 0.01177,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.772,
-      "yearsFromFormulation": 4.838,
+      "yearsFromFormulation": 4.728,
       "bibcode": "2001Sci...291..619B",
       "date": "2001-01-00"
     },
@@ -313,7 +351,7 @@
   "lifetime": {
     "papers": 495,
     "outputBasis": "measured",
-    "citations": 14071,
+    "citations": 14072,
     "top10": 37.833,
     "top10ShareOfDivision": 0.0206,
     "top1": null,
@@ -321,12 +359,12 @@
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.268,
-      "yearsFromFormulation": 4.334,
+      "yearsFromFormulation": 4.225,
       "bibcode": "2000JGR...10515741M",
       "date": "2000-07-00"
     },
     "spread": {
-      "mean": 28.426,
+      "mean": 28.428,
       "median": 16,
       "uncited": 20,
       "i10": 315,

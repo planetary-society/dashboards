@@ -28,9 +28,9 @@ export function failureGrid(failures, divisions) {
 export const PER_LINE = 5;
 
 /**
- * Two bars per tier on one years axis from 0 (further left only if a median is negative): the
+ * Two bars per tier on one years axis covering zero, both medians and their confidence intervals: the
  * median from formulation start, thick, and from the start of science, thin, each with its value
- * at the bar's outer end. Rows have a fixed height, so the height does not depend on `width`: at
+ * beyond its whisker. Rows have a fixed height, so the height does not depend on `width`: at
  * width 0 (the server) the layout still says how tall a stage to reserve. A tier with no first
  * top-10% paper yet draws no bars.
  */
@@ -40,26 +40,28 @@ export function timeLayout(tiers, time, width) {
 	const left = Math.ceil(Math.max(...labels.map((l) => l.length)) * 7.6) + 14;
 	const thick = 14, thin = 7, gap = 4, top = 6, pitch = 54;
 	const valueRoom = 52; // "11.5 yr" at 12px, and air
-	const values = time.tiers.flatMap((t) => (t.reached > 0 ? [t.formulation.median, t.science.median] : [])).filter((v) => v != null);
+	const values = time.tiers.filter((t) => t.reached > 0)
+		.flatMap((t) => [t.formulation, t.science])
+		.flatMap(({ median, ci }) => median == null ? [] : [median, ...(ci ?? [])]);
 	const x = scaleLinear()
 		.domain([Math.min(0, ...values), Math.max(1, ...values)])
 		.nice()
 		.range([left, Math.max(left + 1, width - valueRoom)]);
 	const rows = time.tiers.map((t, i) => {
 		const y0 = top + i * pitch;
-		const bar = (median, y, h) => {
+		const bar = ({ median, ci }, y, h) => {
 			if (median == null) return null;
 			const [a, b] = [x(0), x(median)];
-			const out = median < 0;
-			return { median, x: Math.min(a, b), w: Math.abs(b - a), y, h, cy: y + h / 2, tx: out ? b - 5 : b + 5, anchor: out ? 'end' : 'start' };
+			const whisker = ci ? ci.map(x) : null;
+			return { median, x: Math.min(a, b), w: Math.abs(b - a), y, h, cy: y + h / 2, whisker, tx: Math.max(a, whisker?.[1] ?? b) + 5 };
 		};
 		const none = t.reached === 0;
 		return {
 			label: labels[i],
 			none,
 			labelY: y0 + (thick + gap + thin) / 2,
-			formulation: none ? null : bar(t.formulation.median, y0, thick),
-			science: none ? null : bar(t.science.median, y0 + thick + gap, thin)
+			formulation: none ? null : bar(t.formulation, y0, thick),
+			science: none ? null : bar(t.science, y0 + thick + gap, thin)
 		};
 	});
 	const bottom = top + tiers.length * pitch - 8;

@@ -103,8 +103,8 @@
       0,
       0,
       0,
-      2,
-      2,
+      1,
+      0,
       0,
       0,
       0,
@@ -122,9 +122,9 @@
       0,
       0,
       2,
-      4,
-      15,
-      4,
+      2,
+      10,
+      2,
       0,
       0,
       0
@@ -132,8 +132,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 57,
-      "observed": 57,
+      "expected": 48,
+      "observed": 48,
       "missing": 0
     }
   },
@@ -170,6 +170,43 @@
         {
           "name": "Bay Area Environmental Research Institute, California",
           "papers": 2
+        }
+      ]
+    }
+  },
+  "fullAffiliations": {
+    "papers": 4,
+    "us": {
+      "mapped": 2,
+      "top": [
+        {
+          "name": "NASA Ames Research Center",
+          "papers": 2
+        },
+        {
+          "name": "Bay Area Environmental Research Institute, California",
+          "papers": 1
+        },
+        {
+          "name": "Draper Laboratory, Inc., Massachusetts",
+          "papers": 1
+        }
+      ]
+    },
+    "world": {
+      "mapped": 2,
+      "top": [
+        {
+          "name": "NASA Ames Research Center",
+          "papers": 2
+        },
+        {
+          "name": "Aarhus University, Denmark",
+          "papers": 1
+        },
+        {
+          "name": "Bay Area Environmental Research Institute, California",
+          "papers": 1
         }
       ]
     }
@@ -257,54 +294,6 @@
         "citations": 7,
         "missions": [
           "o_oreos"
-        ]
-      },
-      {
-        "bibcode": "2020AcAau.173..449P",
-        "title": "The EcAMSat fluidic system to study antibiotic resistance in low earth orbit: Development and lessons learned from space flight",
-        "firstAuthor": "Padgen, Michael R.",
-        "authors": [
-          "Padgen, Michael R.",
-          "Chinn, Tori N.",
-          "Friedericks, Charlie R.",
-          "Lera, Matthew P."
-        ],
-        "authorCount": 9,
-        "year": 2020,
-        "citations": 7,
-        "missions": [
-          "ecamsat"
-        ]
-      },
-      {
-        "bibcode": "2021LSSR...29...72W",
-        "title": "Comments on \"EcAMSat spaceflight measurements of the role of σˢ in antibiotic resistance of stationary phase Escherichia coli in microgravity\"",
-        "firstAuthor": "Wang, Chongzhen",
-        "authors": [
-          "Wang, Chongzhen"
-        ],
-        "authorCount": 1,
-        "year": 2021,
-        "citations": 1,
-        "missions": [
-          "ecamsat"
-        ]
-      },
-      {
-        "bibcode": "2021LSSR...29...85P",
-        "title": "Response to Comments on \"EcAMSat spaceflight measurements of the role of σˢ in antibiotic resistance of stationary phase Escherichia coli in microgravity\"",
-        "firstAuthor": "Padgen, Michael R.",
-        "authors": [
-          "Padgen, Michael R.",
-          "Parra, Macarena P.",
-          "Ricco, Antonio J.",
-          "Matin, AC"
-        ],
-        "authorCount": 4,
-        "year": 2021,
-        "citations": 1,
-        "missions": [
-          "ecamsat"
         ]
       }
     ],
@@ -535,12 +524,12 @@
   "stats": {
     "full": {
       "missions": 5,
-      "papers": 7,
-      "citations": 57,
-      "mean": 8.143,
-      "median": 7,
+      "papers": 4,
+      "citations": 48,
+      "mean": 12,
+      "median": 12.5,
       "uncited": 0,
-      "hIndex": 5,
+      "hIndex": 4,
       "topDecileCitationShare": null,
       "cutoffs": [
         {
@@ -565,13 +554,13 @@
         },
         {
           "percent": 25,
-          "citations": 15,
-          "papers": 2
+          "citations": 16,
+          "papers": 1
         },
         {
           "percent": 50,
-          "citations": 7,
-          "papers": 5
+          "citations": 15,
+          "papers": 2
         }
       ]
     },
@@ -664,13 +653,13 @@
     "full": {
       "counts": [
         0,
-        2,
         0,
         0,
         0,
         0,
         0,
-        2,
+        0,
+        1,
         0,
         0,
         1,
@@ -698,9 +687,9 @@
         0,
         0,
         0,
-        0.7
+        0.4
       ],
-      "papers": 7
+      "papers": 4
     }
   },
   "costCurves": null,
@@ -726,7 +715,8 @@
       "dates": {
         "formulation": "2010-07-01",
         "launch": "2017-11-12",
-        "scienceStart": "2017-11-20"
+        "scienceStart": "2017-11-20",
+        "primeEnd": "2017-12-15"
       },
       "failed": false,
       "shortfall": false,
@@ -744,15 +734,15 @@
       },
       "papers": 4,
       "citations": 42,
-      "top10PerYear": 0.115,
+      "top10PerYear": 0.155,
       "hasThumb": true,
       "full": {
-        "papers": 4,
+        "papers": 1,
         "outputBasis": "measured",
-        "citations": 25,
-        "top10": 0.7,
+        "citations": 16,
+        "top10": 0.4,
         "top10ShareOfDivision": 1,
-        "top1": 0.07,
+        "top1": 0.04,
         "top1ShareOfDivision": 1,
         "first": {
           "state": "reached",
@@ -764,16 +754,16 @@
         "status": "available",
         "bounds": {
           "start": "2017-12-01",
-          "end": "2024-01-01",
-          "matureDate": "2026-10-01",
+          "end": "2020-07-01",
+          "matureDate": "2023-10-01",
           "status": "available",
-          "months": 73,
-          "citationBuckets": 10
+          "months": 31,
+          "citationBuckets": 7
         },
         "indices": {
-          "h": 2,
-          "g": 4,
-          "m": 0.329
+          "h": 1,
+          "g": 1,
+          "m": 0.387
         }
       },
       "window": {
@@ -834,14 +824,15 @@
       "id": "genesat",
       "shortTitle": "GeneSat",
       "name": "GeneSat",
-      "cost": 6,
+      "cost": 5.9,
       "lcc": 3.5,
       "size": "under",
       "launchYear": 2006,
       "dates": {
         "formulation": "2003-01-01",
         "launch": "2006-12-16",
-        "scienceStart": "2006-12-16"
+        "scienceStart": "2006-12-16",
+        "primeEnd": "2007-01-17"
       },
       "failed": false,
       "shortfall": false,
@@ -949,14 +940,15 @@
       "id": "pharmasat",
       "shortTitle": "PharmaSat",
       "name": "PharmaSat",
-      "cost": 6.8,
+      "cost": 6.7,
       "lcc": 4.5,
       "size": "under",
       "launchYear": 2009,
       "dates": {
         "formulation": "2007-02-07",
         "launch": "2009-05-19",
-        "scienceStart": "2009-05-19"
+        "scienceStart": "2009-05-21",
+        "primeEnd": "2009-11-19"
       },
       "failed": false,
       "shortfall": false,
@@ -1064,14 +1056,15 @@
       "id": "o_oreos",
       "shortTitle": "O/OREOS",
       "name": "O/OREOS",
-      "cost": 8.1,
+      "cost": 8,
       "lcc": 5.5,
       "size": "under",
       "launchYear": 2010,
       "dates": {
         "formulation": "2008-07-02",
         "launch": "2010-11-20",
-        "scienceStart": "2010-11-20"
+        "scienceStart": "2010-11-20",
+        "primeEnd": "2011-05-19"
       },
       "failed": false,
       "shortfall": false,
@@ -1186,7 +1179,8 @@
       "dates": {
         "formulation": "2011-01-01",
         "launch": "2014-04-18",
-        "scienceStart": "2014-04-18"
+        "scienceStart": "2014-04-18",
+        "primeEnd": "2014-05-18"
       },
       "failed": false,
       "shortfall": true,
@@ -1284,6 +1278,129 @@
       },
       "firstAfterScience": {
         "state": "no_papers",
+        "yearsFromScienceStart": null,
+        "yearsFromFormulation": null,
+        "bibcode": null,
+        "date": null
+      }
+    }
+  ],
+  "awaitingMissions": [
+    {
+      "id": "biosentinel",
+      "inclusion": {
+        "date": "2028-10-01",
+        "basis": "window",
+        "asOf": "2026-11-17"
+      },
+      "shortTitle": "BioSentinel",
+      "name": "BioSentinel",
+      "cost": 59.1,
+      "lcc": 46.5,
+      "size": "under",
+      "launchYear": 2022,
+      "dates": {
+        "formulation": "2013-01-01",
+        "launch": "2022-11-16",
+        "scienceStart": "2022-12-05",
+        "primeEnd": "2023-04-01"
+      },
+      "failed": false,
+      "shortfall": false,
+      "status": "Extended Mission",
+      "type": "Flyby",
+      "selection": "competed",
+      "management": "pi",
+      "indices": {
+        "h": 6,
+        "m": 1.5,
+        "i100": 0,
+        "g": 8,
+        "tori": 0.946,
+        "riq": 243
+      },
+      "papers": 9,
+      "citations": 104,
+      "top10PerYear": null,
+      "hasThumb": true,
+      "full": {
+        "papers": 5,
+        "outputBasis": "measured",
+        "citations": 71,
+        "top10": 0.9,
+        "top10ShareOfDivision": 1,
+        "top1": 0.09,
+        "top1ShareOfDivision": 1,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.487,
+          "yearsFromFormulation": 10.412,
+          "bibcode": "2023AsBio..23..631M",
+          "date": "2023-06-00"
+        },
+        "status": "immature",
+        "bounds": {
+          "start": "2023-01-01",
+          "end": "2024-01-01",
+          "matureDate": "2027-10-01",
+          "status": "immature",
+          "months": 12,
+          "citationBuckets": 4
+        },
+        "indices": {
+          "h": 5,
+          "g": 5,
+          "m": 5.005
+        }
+      },
+      "window": {
+        "papers": 7,
+        "outputBasis": "measured",
+        "citations": 85,
+        "top10": 1,
+        "top10ShareOfDivision": 1,
+        "top1": 0.1,
+        "top1ShareOfDivision": 1,
+        "first": {
+          "state": "reached",
+          "yearsFromScienceStart": 0.487,
+          "yearsFromFormulation": 10.412,
+          "bibcode": "2023AsBio..23..631M",
+          "date": "2023-06-00"
+        },
+        "status": "immature",
+        "bounds": {
+          "start": "2023-01-01",
+          "end": "2025-05-01",
+          "matureDate": "2028-10-01",
+          "status": "immature",
+          "months": 28,
+          "citationBuckets": 6
+        },
+        "indices": {
+          "h": 6,
+          "g": 7,
+          "m": 2.575
+        }
+      },
+      "lifetime": {
+        "papers": 9,
+        "outputBasis": "measured",
+        "citations": 104,
+        "top10": 0,
+        "top10ShareOfDivision": 0,
+        "top1": null,
+        "top1ShareOfDivision": null,
+        "first": {
+          "state": "none",
+          "yearsFromScienceStart": null,
+          "yearsFromFormulation": null,
+          "bibcode": null,
+          "date": null
+        }
+      },
+      "firstAfterScience": {
+        "state": "none",
         "yearsFromScienceStart": null,
         "yearsFromFormulation": null,
         "bibcode": null,

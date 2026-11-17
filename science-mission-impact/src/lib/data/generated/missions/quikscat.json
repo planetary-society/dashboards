@@ -13,10 +13,11 @@
     "type": "Orbiter",
     "selection": "directed",
     "management": "agency",
-    "program": "Advanced Earth Observing Satellite",
+    "program": "Earth Observing System (EOS)",
     "target": "Earth",
     "launchVehicle": "Titan II",
     "wikipedia": "https://en.wikipedia.org/wiki/QuikSCAT",
+    "bibliography": "https://podaac.jpl.nasa.gov/QuikSCAT?tab=metrics&sections=about",
     "firstSciencePublication": "10.1029/2000GL011545",
     "dates": {
       "formulation": "1997-11-19",
@@ -31,12 +32,12 @@
     "m": 3,
     "i100": 46,
     "g": 119,
-    "tori": 267.023,
-    "riq": 605
+    "tori": 266.205,
+    "riq": 604
   },
   "facts": {
     "papers": 826,
-    "citations": 27191,
+    "citations": 27193,
     "publicationYears": [
       2000,
       2026
@@ -127,14 +128,14 @@
       1946,
       1659,
       1408,
-      1394,
-      1044
+      1395,
+      1045
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 27191,
-      "observed": 27191,
+      "expected": 27193,
+      "observed": 27193,
       "missing": 0
     }
   },
@@ -175,6 +176,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 786,
+    "us": {
+      "mapped": 314,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 76
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 29
+        },
+        {
+          "name": "Brigham Young University, Utah",
+          "papers": 23
+        }
+      ]
+    },
+    "world": {
+      "mapped": 575,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 76
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 29
+        },
+        {
+          "name": "Brigham Young University, Utah",
+          "papers": 23
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2004Sci...303..978C",
     "title": "Satellite Measurements Reveal Persistent Small-Scale Features in Ocean Winds",
@@ -192,46 +230,46 @@
   "ranks": {
     "full": {
       "bins": [
-        116.754,
-        124.447,
-        118.339,
-        90.412,
-        80.222,
-        76.726,
-        65.477,
-        50.218,
-        43.933,
-        19.472
+        116.757,
+        124.57,
+        118.406,
+        90.594,
+        80.408,
+        76.643,
+        65.336,
+        50.27,
+        43.648,
+        19.367
       ],
       "top1": 1
     },
     "window": {
       "bins": [
-        10.441,
-        21.015,
-        14.954,
-        9.583,
-        14.501,
-        6.725,
-        3.781,
-        5.967,
-        4.033,
+        10.35,
+        20.814,
+        15.088,
+        9.714,
+        14.503,
+        6.722,
+        3.809,
+        5.96,
+        4.04,
         3
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        31.603,
-        74.651,
-        74.154,
-        83.75,
-        81.971,
-        82.433,
-        102.843,
-        114.752,
-        92.629,
-        87.215
+        31.628,
+        74.803,
+        74.316,
+        83.765,
+        82.149,
+        82.799,
+        102.574,
+        114.687,
+        92.278,
+        87
       ],
       "top1": 5
     }
@@ -240,10 +278,10 @@
     "papers": 786,
     "outputBasis": "measured",
     "citations": 5162,
-    "top10": 17.639,
-    "top10ShareOfDivision": 0.00451,
+    "top10": 17.533,
+    "top10ShareOfDivision": 0.00448,
     "top1": 1,
-    "top1ShareOfDivision": 0.00256,
+    "top1ShareOfDivision": 0.00255,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.703,
@@ -278,7 +316,7 @@
     "outputBasis": "measured",
     "citations": 700,
     "top10": 2.5,
-    "top10ShareOfDivision": 0.0025,
+    "top10ShareOfDivision": 0.00256,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -313,9 +351,9 @@
   "lifetime": {
     "papers": 826,
     "outputBasis": "measured",
-    "citations": 27191,
-    "top10": 80.549,
-    "top10ShareOfDivision": 0.01542,
+    "citations": 27193,
+    "top10": 80.333,
+    "top10ShareOfDivision": 0.01537,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -326,7 +364,7 @@
       "date": "2000-08-00"
     },
     "spread": {
-      "mean": 32.919,
+      "mean": 32.921,
       "median": 19,
       "uncited": 22,
       "i10": 561,

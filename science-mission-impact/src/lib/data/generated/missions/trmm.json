@@ -8,7 +8,7 @@
   "meta": {
     "status": "Completed",
     "failed": false,
-    "cost": 2353.5,
+    "cost": 2426.3,
     "lcc": 1040,
     "type": "Orbiter",
     "selection": "directed",
@@ -17,6 +17,7 @@
     "target": "Earth",
     "launchVehicle": "H-2",
     "wikipedia": "https://en.wikipedia.org/wiki/Tropical_Rainfall_Measuring_Mission",
+    "bibliography": "https://gpm.nasa.gov/resources/trmm-publications",
     "firstSciencePublication": "10.1029/1998GL900452",
     "dates": {
       "formulation": "1987-01-01",
@@ -31,12 +32,12 @@
     "m": 5.069,
     "i100": 259,
     "g": 250,
-    "tori": 933.983,
-    "riq": 1053
+    "tori": 934.288,
+    "riq": 1054
   },
   "facts": {
     "papers": 3024,
-    "citations": 130458,
+    "citations": 130637,
     "publicationYears": [
       1998,
       2026
@@ -123,24 +124,24 @@
       2812,
       3268,
       3977,
-      4631,
+      4636,
       5306,
       6203,
-      8077,
-      8811,
-      10326,
-      11854,
-      12435,
-      10662,
-      10325,
-      10091,
-      8261
+      8078,
+      8813,
+      10331,
+      11861,
+      12444,
+      10682,
+      10354,
+      10155,
+      8298
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 130458,
-      "observed": 130458,
+      "expected": 130637,
+      "observed": 130637,
       "missing": 0
     }
   },
@@ -181,6 +182,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 1625,
+    "us": {
+      "mapped": 577,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 83
+        },
+        {
+          "name": "National Oceanic and Atmospheric Administration, Washington",
+          "papers": 40
+        },
+        {
+          "name": "University of Oklahoma, Norman",
+          "papers": 40
+        }
+      ]
+    },
+    "world": {
+      "mapped": 1167,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 83
+        },
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 75
+        },
+        {
+          "name": "Ministry of Earth Science, India",
+          "papers": 44
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2007JHyMe...8...38H",
     "title": "The TRMM Multisatellite Precipitation Analysis (TMPA): Quasi-Global, Multiyear, Combined-Sensor Precipitation Estimates at Fine Scales",
@@ -198,46 +236,46 @@
   "ranks": {
     "full": {
       "bins": [
-        205.982,
-        201.433,
-        177.702,
-        161.944,
-        161.167,
-        152.803,
-        140.661,
-        149.764,
-        152.182,
-        121.36
+        205.988,
+        201.624,
+        177.836,
+        162.337,
+        161.667,
+        151.583,
+        141.602,
+        149.957,
+        151.573,
+        120.834
       ],
       "top1": 14
     },
     "window": {
       "bins": [
-        25.588,
-        21.902,
-        29.127,
-        26.564,
-        30.311,
-        16.618,
-        16.501,
-        15.258,
-        10.205,
-        14.926
+        25.467,
+        21.749,
+        29.12,
+        26.774,
+        30.346,
+        16.639,
+        16.66,
+        15.085,
+        10.302,
+        14.858
       ],
-      "top1": 0.102
+      "top1": 0
     },
     "lifetime": {
       "bins": [
-        161.41,
-        247.239,
-        261.185,
-        269.144,
-        296.526,
-        315.473,
-        342.237,
-        340.255,
-        400.101,
-        390.43
+        161.192,
+        246.454,
+        260.73,
+        270.818,
+        296.185,
+        315.272,
+        342.085,
+        340.429,
+        400.271,
+        390.563
       ],
       "top1": 43
     }
@@ -245,11 +283,11 @@
   "full": {
     "papers": 1625,
     "outputBasis": "measured",
-    "citations": 16559,
-    "top10": 103.208,
-    "top10ShareOfDivision": 0.0264,
+    "citations": 16564,
+    "top10": 102.734,
+    "top10ShareOfDivision": 0.02624,
     "top1": 9.417,
-    "top1ShareOfDivision": 0.02408,
+    "top1ShareOfDivision": 0.02406,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.479,
@@ -272,10 +310,10 @@
       "m": 2.225
     },
     "spread": {
-      "mean": 10.19,
+      "mean": 10.193,
       "median": 6,
       "uncited": 161,
-      "i10": 555,
+      "i10": 556,
       "i100": 8
     }
   },
@@ -283,10 +321,10 @@
     "papers": 207,
     "outputBasis": "measured",
     "citations": 2026,
-    "top10": 13.926,
-    "top10ShareOfDivision": 0.01395,
-    "top1": 0.102,
-    "top1ShareOfDivision": 0.00103,
+    "top10": 13.858,
+    "top10ShareOfDivision": 0.0142,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.479,
@@ -319,9 +357,9 @@
   "lifetime": {
     "papers": 3024,
     "outputBasis": "measured",
-    "citations": 130458,
-    "top10": 329.025,
-    "top10ShareOfDivision": 0.063,
+    "citations": 130637,
+    "top10": 328.76,
+    "top10ShareOfDivision": 0.06289,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -332,10 +370,10 @@
       "date": "1998-06-00"
     },
     "spread": {
-      "mean": 43.141,
+      "mean": 43.2,
       "median": 19,
       "uncited": 123,
-      "i10": 2082,
+      "i10": 2083,
       "i100": 259
     }
   },
@@ -513,6 +551,15 @@
       "citations": 499
     },
     {
+      "bibcode": "2020RSEnv.24011697T",
+      "title": "Have satellite precipitation products improved over last two decades? A comprehensive comparison of GPM IMERG with nine satellite and reanalysis datasets",
+      "firstAuthor": "Tang, Guoqiang",
+      "authors": null,
+      "authorCount": null,
+      "year": 2020,
+      "citations": 480
+    },
+    {
       "bibcode": "2016JHyd..533..152T",
       "title": "Evaluation of GPM Day-1 IMERG and TMPA Version-7 legacy products over Mainland China at multiple spatiotemporal scales",
       "firstAuthor": "Tang, Guoqiang",
@@ -520,15 +567,6 @@
       "authorCount": null,
       "year": 2016,
       "citations": 475
-    },
-    {
-      "bibcode": "2020RSEnv.24011697T",
-      "title": "Have satellite precipitation products improved over last two decades? A comprehensive comparison of GPM IMERG with nine satellite and reanalysis datasets",
-      "firstAuthor": "Tang, Guoqiang",
-      "authors": null,
-      "authorCount": null,
-      "year": 2020,
-      "citations": 467
     },
     {
       "bibcode": "2010BGeo....7.1171G",

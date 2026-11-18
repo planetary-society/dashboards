@@ -55,7 +55,7 @@
 
 <div class="query">
 	{#if arms}
-		<p class="lead">We searched NASA’s Science Explorer (SciX) for peer-reviewed articles naming {name} in the title, abstract or keywords; standard filters drop articles that are not peer-reviewed and magazine pieces.</p>
+		<p class="lead">We searched NASA’s Science Explorer (SciX) for peer-reviewed articles naming {name} in the title, abstract, or keywords; standard filters drop articles that are not peer-reviewed and magazine pieces.</p>
 		<p class="arms">{fullQuery(query)}</p>
 
 		<p class="actions">

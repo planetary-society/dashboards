@@ -75,7 +75,7 @@
 			<th class="thumb"><span class="sr-only">Image</span></th>
 			{@render th('name', 'Mission', 'name')}
 			{@render th('launch', 'Launch', 'num wide')}
-			{#if awaiting}{@render th('primeEnd', 'Prime Mission End', 'num wide')}{/if}
+			{#if awaiting}{@render th('primeEnd', 'Prime mission end', 'num wide')}{/if}
 			{@render th('type', 'Type', 'type wide')}
 			{@render th('cost', `LCC (${site.costBaseYear} $)`, 'num mid', ['cost'])}
 			{@render th('papers', 'Publications', ranked ? 'num mid' : 'num', ['publications'])}

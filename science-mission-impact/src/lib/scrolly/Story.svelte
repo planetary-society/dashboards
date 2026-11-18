@@ -30,7 +30,7 @@
 	import { failureItems, withHidden } from './items.js';
 	import { int, listify, money, moneyWords, spell, years } from '$lib/format.js';
 	import { largerAnnualMedians, noClearSmallAdvantage, significant } from '$lib/copy/discussion.js';
-	import { calendarYears } from '$lib/copy/window.js';
+	import { calendarYears, ordinal } from '$lib/copy/window.js';
 	import { analysisHref, methodsHref } from '$lib/paths.js';
 	import { cheapAsQuick, cheapOverlap, clpsCosts, mostUnreached, scienceOrder, slowestBuild } from '$lib/copy/analysis.js';
 
@@ -401,7 +401,7 @@
 		<section data-step data-scrub><div class="step">
 			{#if primer && primerMedian != null}
 				<p>Papers are not cited equally.</p>
-				<p>In <strong>{field}</strong>, the most cited paper had {int(primer.counts.length - 1)} citations. But half accrued {spell(primerMedian)} or fewer citations in their first {spell(calendarYears(site.fullPolicy))} years.</p><p class="aside">Citations are counted within {spell(site.fullPolicy.citationYears)} years of a paper’s publication date. <a href={methodsHref('windows')}>Why?</a></p>
+				<p>In <strong>{field}</strong>, the most cited paper had {int(primer.counts.length - 1)} citations. But half accrued {spell(primerMedian)} or fewer citations in their first {spell(calendarYears(site.fullPolicy))} years.</p><p class="aside">Citations are counted through the {ordinal(site.fullPolicy.citationYears)} calendar year after a paper appears. <a href={methodsHref('windows')}>Why?</a></p>
 			{/if}
 		</div></section>
 		<!-- TOP: the same bars, the top 10% in blue; the one definition every high-impact chart but the time swarm uses -->

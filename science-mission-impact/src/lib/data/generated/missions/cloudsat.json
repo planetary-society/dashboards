@@ -1,7 +1,7 @@
 {
   "id": "cloudsat",
   "name": "Cloudsat",
-  "fullName": "Cloudsat",
+  "fullName": "CloudSat",
   "division": "earth",
   "divisionName": "Earth Science",
   "hasThumb": true,
@@ -17,13 +17,14 @@
     "target": "Earth",
     "launchVehicle": "Delta II 7420",
     "wikipedia": "https://en.wikipedia.org/wiki/CloudSat",
+    "bibliography": null,
     "firstSciencePublication": "10.1029/2006GL029017",
     "dates": {
       "formulation": "1999-03-30",
       "launch": "2006-04-28",
-      "scienceStart": "2006-04-28",
+      "scienceStart": "2006-06-02",
       "primeEnd": "2008-02-27",
-      "missionEnd": "2023-12-15"
+      "missionEnd": "2023-12-20"
     }
   },
   "indices": {
@@ -31,12 +32,12 @@
     "m": 3.81,
     "i100": 49,
     "g": 128,
-    "tori": 148.158,
-    "riq": 553
+    "tori": 148.63,
+    "riq": 554
   },
   "facts": {
     "papers": 981,
-    "citations": 29516,
+    "citations": 29539,
     "publicationYears": [
       2006,
       2026
@@ -94,29 +95,29 @@
       6,
       127,
       217,
-      431,
+      432,
       551,
       720,
       864,
-      1054,
-      1257,
-      1203,
-      1604,
+      1056,
+      1263,
+      1204,
+      1605,
       1876,
       2026,
       2301,
       2620,
-      2506,
+      2507,
       2481,
-      2601,
-      2739,
-      2332
+      2603,
+      2744,
+      2336
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 29516,
-      "observed": 29516,
+      "expected": 29539,
+      "observed": 29539,
       "missing": 0
     }
   },
@@ -157,6 +158,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 830,
+    "us": {
+      "mapped": 426,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 120
+        },
+        {
+          "name": "Colorado State University",
+          "papers": 73
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 67
+        }
+      ]
+    },
+    "world": {
+      "mapped": 678,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 120
+        },
+        {
+          "name": "Colorado State University",
+          "papers": 73
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 67
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2010BAMS...91.1211W",
     "title": "The CALIPSO Mission",
@@ -174,46 +212,46 @@
   "ranks": {
     "full": {
       "bins": [
-        54.994,
-        76.832,
-        88.842,
-        81.863,
-        109.839,
-        94.882,
-        91.75,
-        95.266,
-        79.552,
-        56.18
+        55.543,
+        77.148,
+        89.018,
+        82.154,
+        109.56,
+        94.782,
+        91.671,
+        94.748,
+        79.807,
+        55.569
       ],
       "top1": 3
     },
     "window": {
       "bins": [
-        3.912,
-        7.918,
-        9.574,
-        9.588,
-        14.005,
-        11.441,
-        16.291,
-        11.238,
-        11.033,
+        3.923,
+        7.884,
+        9.583,
+        9.645,
+        13.986,
+        11.453,
+        15.991,
+        11.514,
+        11.022,
         11
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        74.404,
-        102.149,
-        98.53,
-        110.332,
-        106.605,
-        94.164,
-        110.602,
-        113.139,
-        79.075,
-        92
+        73.876,
+        102.065,
+        99.04,
+        110.858,
+        106.724,
+        93.248,
+        111.553,
+        112.758,
+        79.291,
+        91.586
       ],
       "top1": 10
     }
@@ -221,34 +259,34 @@
   "full": {
     "papers": 830,
     "outputBasis": "measured",
-    "citations": 8572,
-    "top10": 34.526,
-    "top10ShareOfDivision": 0.00883,
+    "citations": 8580,
+    "top10": 34.211,
+    "top10ShareOfDivision": 0.00875,
     "top1": 1.333,
     "top1ShareOfDivision": 0.00341,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 1.008,
+      "yearsFromScienceStart": 0.912,
       "yearsFromFormulation": 8.088,
       "bibcode": "2007GeoRL..34.9808M",
       "date": "2007-05-00"
     },
     "status": "available",
     "bounds": {
-      "start": "2006-05-01",
+      "start": "2006-07-01",
       "end": "2024-01-01",
       "matureDate": "2026-10-01",
       "status": "available",
-      "months": 212,
+      "months": 210,
       "citationBuckets": 21
     },
     "indices": {
       "h": 33,
       "g": 46,
-      "m": 1.868
+      "m": 1.885
     },
     "spread": {
-      "mean": 10.328,
+      "mean": 10.337,
       "median": 7,
       "uncited": 40,
       "i10": 318,
@@ -258,34 +296,34 @@
   "window": {
     "papers": 106,
     "outputBasis": "measured",
-    "citations": 1484,
+    "citations": 1485,
     "top10": 9,
-    "top10ShareOfDivision": 0.00902,
+    "top10ShareOfDivision": 0.00923,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 1.008,
+      "yearsFromScienceStart": 0.912,
       "yearsFromFormulation": 8.088,
       "bibcode": "2007GeoRL..34.9808M",
       "date": "2007-05-00"
     },
     "status": "available",
     "bounds": {
-      "start": "2006-05-01",
+      "start": "2006-07-01",
       "end": "2010-03-01",
       "matureDate": "2013-10-01",
       "status": "available",
-      "months": 46,
+      "months": 44,
       "citationBuckets": 8
     },
     "indices": {
       "h": 20,
       "g": 30,
-      "m": 5.218
+      "m": 5.456
     },
     "spread": {
-      "mean": 14,
+      "mean": 14.009,
       "median": 10,
       "uncited": 2,
       "i10": 58,
@@ -295,20 +333,20 @@
   "lifetime": {
     "papers": 981,
     "outputBasis": "measured",
-    "citations": 29516,
-    "top10": 54.667,
-    "top10ShareOfDivision": 0.01047,
+    "citations": 29539,
+    "top10": 54.483,
+    "top10ShareOfDivision": 0.01042,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 1.008,
+      "yearsFromScienceStart": 0.912,
       "yearsFromFormulation": 8.088,
       "bibcode": "2007GeoRL..34.9808M",
       "date": "2007-05-00"
     },
     "spread": {
-      "mean": 30.088,
+      "mean": 30.111,
       "median": 14,
       "uncited": 60,
       "i10": 594,
@@ -317,9 +355,9 @@
   },
   "query": {
     "arms": "(=abs:\"CloudSat\")",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2006-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%3Dabs%3A%22CloudSat%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2006-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:06:29.979875+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2006-07 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%3Dabs%3A%22CloudSat%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2006-07+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-16T17:30:54.601243+00:00",
     "reconciliation": {
       "adsReturned": 986,
       "curatedOut": 5,
@@ -428,7 +466,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 398
+      "citations": 399
     },
     {
       "bibcode": "2009JGRD..114.0A26M",
@@ -473,7 +511,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 293
+      "citations": 296
     },
     {
       "bibcode": "2009JGRD..114.0A22H",

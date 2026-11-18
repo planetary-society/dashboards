@@ -70,7 +70,8 @@
 		{#each layout.rows as row, i (i)}
 			{@const { median } = active.rows[i]}
 			{#if median}
-				<rect class="median" x="-1" width="2" height="1" style:transform="translate({median.x}px, {median.y0}px) scaleY({median.y1 - median.y0})" />
+				<!-- a line, not a scaled rect, so the dashes keep their size; its length snaps while x glides -->
+				<line class="median" y2={median.y1 - median.y0} style:transform="translate({median.x}px, {median.y0}px)" />
 				<!-- both clocks' values ride with the line: the old one fades as it leaves, the new one as it lands -->
 				{#each CLOCKS as c (c)}
 					{@const own = layout.clocks[c].rows[i].median}
@@ -192,14 +193,17 @@
 		opacity: 0;
 	}
 
-	/* the running-average charts' 95% band (DollarChart's .confidence) */
+	/* the running-average charts' 95% band colour (DollarChart's .confidence), stronger here */
 	.ci {
 		fill: var(--neptune);
-		fill-opacity: 0.14;
+		fill-opacity: 0.32;
 	}
 
+	/* dashed and grey, so the intervals behind the medians carry the comparison */
 	.median {
-		fill: var(--white);
+		stroke: var(--dust);
+		stroke-width: 2;
+		stroke-dasharray: 4 3;
 	}
 
 	.ci,

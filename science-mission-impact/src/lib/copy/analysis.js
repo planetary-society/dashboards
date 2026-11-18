@@ -73,6 +73,15 @@ export function cheapAsQuick(time) {
 	return first != null && known.length > 0 && Math.abs(first - Math.min(...known)) < CLOSE_YEARS;
 }
 
+/**
+ * The two cheapest tiers' 95% intervals for the median wait from formulation overlap, so the story
+ * calls their difference not statistically significant (no packaged test; overlap is the shown evidence).
+ */
+export function cheapOverlap(time) {
+	const [a, b] = time.tiers.map((t) => t.formulation.ci);
+	return a != null && b != null && a[0] <= b[1] && b[0] <= a[1];
+}
+
 /** The costliest tier's median wait from formulation is longer than every other dated tier's. */
 export function slowestBuild(time) {
 	const last = time.tiers.at(-1);

@@ -71,7 +71,7 @@
 	{#if d.awaitingMissions?.length}
 		<section id="awaiting-inclusion" class="part" aria-labelledby="awaiting-title">
 			<h2 id="awaiting-title" class="part-title">Missions awaiting inclusion</h2>
-			<p class="meta source">These launched missions are not yet ready for comparison under our <a href={methodsHref('windows')}>maturity rules</a>. Only lifetime totals as of {apDate(d.awaitingMissions[0].inclusion.asOf)} are shown.</p>
+			<p class="meta source">These launched missions are not yet ready for comparison under our <a href={methodsHref('windows')}>maturity rules</a>. Only lifetime totals as of {apDate(d.awaitingMissions[0].inclusion.asOf)}, are shown.</p>
 			<div class="table">
 				<MissionTable missions={d.awaitingMissions} slug={d.slug} {site} scope="lifetime" awaiting />
 			</div>

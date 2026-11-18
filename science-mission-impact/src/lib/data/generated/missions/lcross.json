@@ -8,7 +8,7 @@
   "meta": {
     "status": "Completed",
     "failed": false,
-    "cost": 139,
+    "cost": 134.2,
     "lcc": 89,
     "type": "Impactor",
     "selection": "competed",
@@ -17,6 +17,7 @@
     "target": "Moon",
     "launchVehicle": "Atlas V 401",
     "wikipedia": "https://en.wikipedia.org/wiki/LCROSS",
+    "bibliography": null,
     "firstSciencePublication": "10.1126/science.1186986",
     "dates": {
       "formulation": "2006-04-01",
@@ -31,12 +32,12 @@
     "m": 1.353,
     "i100": 5,
     "g": 54,
-    "tori": 14.093,
-    "riq": 220
+    "tori": 14.267,
+    "riq": 222
   },
   "facts": {
     "papers": 58,
-    "citations": 2989,
+    "citations": 3001,
     "publicationYears": [
       2010,
       2026
@@ -86,25 +87,25 @@
       109,
       203,
       124,
-      144,
+      143,
+      146,
       139,
-      137,
       108,
       129,
       122,
-      146,
-      178,
+      147,
+      180,
       239,
       308,
       304,
       253,
-      320
+      321
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 2989,
-      "observed": 2989,
+      "expected": 3001,
+      "observed": 3001,
       "missing": 0
     }
   },
@@ -145,6 +146,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 14,
+    "us": {
+      "mapped": 12,
+      "top": [
+        {
+          "name": "NASA Ames Research Center",
+          "papers": 6
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 4
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 4
+        }
+      ]
+    },
+    "world": {
+      "mapped": 13,
+      "top": [
+        {
+          "name": "NASA Ames Research Center",
+          "papers": 6
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 4
+        },
+        {
+          "name": "Johns Hopkins University, Applied Physics Laboratory",
+          "papers": 4
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2010Sci...330..463C",
     "title": "Detection of Water in the LCROSS Ejecta Plume",
@@ -157,19 +195,19 @@
     ],
     "authorCount": 17,
     "year": 2010,
-    "citations": 750
+    "citations": 751
   },
   "ranks": {
     "full": {
       "bins": [
         0,
-        3.468,
-        1.532,
+        3.517,
+        1.483,
         0,
         1,
         0,
-        1.515,
-        1.485,
+        1.559,
+        1.441,
         0,
         5
       ],
@@ -178,12 +216,12 @@
     "window": {
       "bins": [
         0,
-        4.018,
-        0.982,
-        0.601,
-        0.399,
-        1,
-        2,
+        4.131,
+        0.869,
+        0.689,
+        0.311,
+        1.022,
+        1.978,
         0,
         1,
         4
@@ -192,15 +230,15 @@
     },
     "lifetime": {
       "bins": [
-        6.844,
-        8.446,
-        4.642,
-        4.596,
-        5.472,
+        6.877,
+        8.544,
+        4.567,
+        4.654,
+        5.359,
         7,
         5,
-        4.202,
-        5.798,
+        3.513,
+        6.488,
         6
       ],
       "top1": 2
@@ -213,7 +251,7 @@
     "top10": 3.5,
     "top10ShareOfDivision": 0.00322,
     "top1": 1,
-    "top1ShareOfDivision": 0.0092,
+    "top1ShareOfDivision": 0.00921,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.977,
@@ -248,9 +286,9 @@
     "outputBasis": "measured",
     "citations": 433,
     "top10": 2.5,
-    "top10ShareOfDivision": 0.00522,
+    "top10ShareOfDivision": 0.00533,
     "top1": 1,
-    "top1ShareOfDivision": 0.02088,
+    "top1ShareOfDivision": 0.0213,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.977,
@@ -283,7 +321,7 @@
   "lifetime": {
     "papers": 58,
     "outputBasis": "measured",
-    "citations": 2989,
+    "citations": 3001,
     "top10": 4,
     "top10ShareOfDivision": 0.00254,
     "top1": null,
@@ -296,7 +334,7 @@
       "date": "2010-10-00"
     },
     "spread": {
-      "mean": 51.534,
+      "mean": 51.741,
       "median": 16.5,
       "uncited": 4,
       "i10": 37,
@@ -307,7 +345,7 @@
     "arms": "((=abs:\"Lunar CRater Observation and Sensing Satellite\" OR (abs:\"LCROSS\" AND (abs:\"Moon\" OR abs:\"lunar\" OR abs:\"impact\" OR abs:\"crater\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2009-11 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+CRater+Observation+and+Sensing+Satellite%22+OR+%28abs%3A%22LCROSS%22+AND+%28abs%3A%22Moon%22+OR+abs%3A%22lunar%22+OR+abs%3A%22impact%22+OR+abs%3A%22crater%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2009-11+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:00:11.634939+00:00",
+    "fetchedAt": "2026-11-18T18:18:27.529642+00:00",
     "reconciliation": {
       "adsReturned": 61,
       "curatedOut": 3,
@@ -355,7 +393,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 750
+      "citations": 751
     },
     {
       "bibcode": "2010Sci...330..479P",
@@ -364,7 +402,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 475
+      "citations": 478
     },
     {
       "bibcode": "2010Sci...330..483M",
@@ -373,7 +411,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 312
+      "citations": 313
     },
     {
       "bibcode": "2010Sci...330..468S",
@@ -391,7 +429,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 153
+      "citations": 154
     },
     {
       "bibcode": "2010EM&P..107...65A",
@@ -400,7 +438,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 89
+      "citations": 90
     },
     {
       "bibcode": "2010Sci...330..477H",
@@ -418,7 +456,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 69
+      "citations": 70
     },
     {
       "bibcode": "2013Icar..225..681C",
@@ -448,6 +486,15 @@
       "citations": 61
     },
     {
+      "bibcode": "2012JGRE..117.1002L",
+      "title": "Remote laser-induced breakdown spectroscopy (LIBS) for lunar exploration",
+      "firstAuthor": "Lasue, J.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2012,
+      "citations": 54
+    },
+    {
       "bibcode": "2011JGRE..116.1005N",
       "title": "The nature of lunar volatiles as revealed by Mini-RF observations of the LCROSS impact site",
       "firstAuthor": "Neish, C. D.",
@@ -455,15 +502,6 @@
       "authorCount": null,
       "year": 2011,
       "citations": 53
-    },
-    {
-      "bibcode": "2012JGRE..117.1002L",
-      "title": "Remote laser-induced breakdown spectroscopy (LIBS) for lunar exploration",
-      "firstAuthor": "Lasue, J.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2012,
-      "citations": 51
     },
     {
       "bibcode": "2022Icar..37714874B",
@@ -481,7 +519,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 40
+      "citations": 41
     },
     {
       "bibcode": "2012SSRv..167....3C",

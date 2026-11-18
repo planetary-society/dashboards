@@ -104,7 +104,10 @@ describe('buildAnalysis', () => {
 		const { failures, time } = facts;
 		assert.deepEqual([failures.groups.length, time.groups.length], [facts.groups.length, facts.groups.length]);
 		for (const value of [(c) => c.missions, (c) => c.failed + c.partial]) assert.equal(total(failures.groups, value), total(failures.tiers, value));
-		assert.equal(total(time.groups, (c) => c.missions), total(time.tiers, (c) => c.missions));
+		// the overview's groups keep the failures the tiers leave out, in their None count
+		assert.equal(total(time.groups, (c) => c.missions), total(time.tiers, (c) => c.missions) + time.failedExcluded);
+		assert.equal(total(time.groups, (c) => c.failed), time.failedExcluded);
+		assert.ok(time.groups.flatMap((g) => g.points).filter((p) => p.failed).every((p) => !p.reached));
 		for (const cell of failures.groups) assert.deepEqual(cell.byDivision.map((r) => r.division), divisions.map((d) => d.slug));
 	});
 
@@ -118,8 +121,8 @@ describe('buildAnalysis', () => {
 		const withEarly = analyse([doc('a', 10, [...docs[0].missions, ...early]), ...docs.slice(1)], { divisions });
 		const group = withEarly.time.groups[1]; // $150M–$1B
 		const points = new Map(group.points.map((p) => [p.id, p]));
-		assert.deepEqual(points.get('e1'), { id: 'e1', name: 'E1', reached: true, formulation: 6, science: 1 });
-		assert.deepEqual(points.get('e2'), { id: 'e2', name: 'E2', reached: false, formulation: null, science: null });
+		assert.deepEqual(points.get('e1'), { id: 'e1', name: 'E1', reached: true, failed: false, shortfall: false, formulation: 6, science: 1 });
+		assert.deepEqual(points.get('e2'), { id: 'e2', name: 'E2', reached: false, failed: false, shortfall: false, formulation: null, science: null });
 		assert.ok(group.points.every((p) => p.science === null || p.science >= 0));
 		// the Analysis page's tiers still read each mission's first paper, whenever it came out
 		const tierScience = withEarly.time.tiers.flatMap((t) => [t.science.min]);
@@ -177,7 +180,8 @@ describe('buildAnalysis', () => {
 	it('times first top-10% papers without the failures, counting the undated', () => {
 		const { tiers, failedExcluded, fastest, byDivision } = facts.time;
 		assert.equal(failedExcluded, 1);
-		// too few reached missions for a 95% interval on any median here (medianInterval needs six)
+		assert.equal(facts.time.tierConfidence, 0.9);
+		// These tiers have fewer than five dated missions, too few for a 90% interval.
 		assert.deepEqual(tiers[0], { missions: 3, reached: 3, without: 0, undated: 0, formulation: { median: 2, min: 2, ci: null }, science: { median: 1, min: 0.5, ci: null } });
 		assert.deepEqual(tiers[1], { missions: 2, reached: 2, without: 0, undated: 1, formulation: { median: 5, min: 5, ci: null }, science: { median: 2, min: 2, ci: null } });
 		assert.deepEqual(tiers[2], { missions: 2, reached: 2, without: 0, undated: 0, formulation: { median: 3, min: 2, ci: null }, science: { median: 1.25, min: 1, ci: null } });
@@ -250,6 +254,11 @@ describe('buildAnalysis', () => {
 });
 
 describe('medianInterval', () => {
+	it('covers a five-mission tier at 90% using the full observed range', () => {
+		assert.equal(medianInterval([1, 2, 3, 4], 0.9), null);
+		assert.deepEqual(medianInterval([4, 1, 5, 3, 2], 0.9), [1, 5]);
+		assert.deepEqual(medianInterval([1, 2, 3, 4, 5, 6, 7, 8], 0.9), [2, 7]);
+	});
 	it('takes the narrowest order statistics whose binomial coverage reaches 95%, and none below six values', () => {
 		const n = (count) => Array.from({ length: count }, (_, i) => count - i); // count..1, unsorted
 		assert.equal(medianInterval(n(5)), null); // (x1, x5) covers 1 - 2/32 = 93.75%

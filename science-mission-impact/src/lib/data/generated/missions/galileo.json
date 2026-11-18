@@ -16,13 +16,14 @@
     "program": "Outer Planets",
     "target": "Jupiter System",
     "launchVehicle": "Shuttle-Inertial Upper Stage",
-    "wikipedia": null,
+    "wikipedia": "https://en.wikipedia.org/wiki/Galileo_project",
+    "bibliography": null,
     "firstSciencePublication": "10.1126/science.253.5027.1516",
     "dates": {
       "formulation": "1977-10-01",
       "launch": "1989-10-18",
       "scienceStart": "1995-12-07",
-      "primeEnd": "1997-12-08",
+      "primeEnd": "1997-12-07",
       "missionEnd": "2003-09-21"
     }
   },
@@ -31,12 +32,12 @@
     "m": 3.25,
     "i100": 154,
     "g": 170,
-    "tori": 462.418,
-    "riq": 581
+    "tori": 475.05,
+    "riq": 589
   },
   "facts": {
     "papers": 1554,
-    "citations": 64820,
+    "citations": 65040,
     "publicationYears": [
       1991,
       2026
@@ -136,32 +137,32 @@
       1837,
       2149,
       1514,
-      1598,
+      1597,
       1681,
       1699,
       2577,
       1929,
       1639,
       1937,
-      1910,
-      2125,
-      2242,
-      2171,
+      1892,
+      2142,
+      2446,
+      2180,
       2188,
       2169,
       2832,
       2625,
       2961,
-      3169,
-      3732,
-      3776,
-      3437
+      3167,
+      3731,
+      3771,
+      3454
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 64820,
-      "observed": 64820,
+      "expected": 65040,
+      "observed": 65040,
       "missing": 0
     }
   },
@@ -202,6 +203,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 781,
+    "us": {
+      "mapped": 394,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 123
+        },
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 80
+        },
+        {
+          "name": "University of Arizona",
+          "papers": 64
+        }
+      ]
+    },
+    "world": {
+      "mapped": 491,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 123
+        },
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 80
+        },
+        {
+          "name": "University of Arizona",
+          "papers": 64
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2000Sci...289.1340K",
     "title": "Galileo Magnetometer Measurements: A Stronger Case for a Subsurface Ocean at Europa",
@@ -214,63 +252,63 @@
     ],
     "authorCount": 6,
     "year": 2000,
-    "citations": 547
+    "citations": 550
   },
   "ranks": {
     "full": {
       "bins": [
-        131.84,
-        90.89,
-        93.508,
-        92.103,
-        64.997,
-        62.093,
-        65.84,
-        65.966,
-        58.928,
-        54.836
+        133.738,
+        91.693,
+        94.506,
+        89.696,
+        65.133,
+        61.442,
+        65.854,
+        65.3,
+        59.245,
+        54.393
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        67.315,
-        40.035,
-        40.136,
-        35.528,
-        34.251,
-        39.523,
-        38.369,
-        30.557,
-        32.73,
-        23.556
+        68.325,
+        41.167,
+        39.179,
+        35.668,
+        34.283,
+        39.616,
+        37.42,
+        31.157,
+        32.598,
+        22.587
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        131.813,
-        111.1,
-        122.767,
-        150.1,
-        145.316,
-        153.818,
-        169.319,
-        196.59,
-        186.081,
-        187.097
+        131.554,
+        112.492,
+        122.511,
+        150.759,
+        142.265,
+        155.099,
+        168.487,
+        197.471,
+        184.401,
+        188.962
       ],
-      "top1": 13.44
+      "top1": 13.65
     }
   },
   "full": {
     "papers": 781,
     "outputBasis": "measured",
     "citations": 8211,
-    "top10": 54.336,
-    "top10ShareOfDivision": 0.05,
+    "top10": 53.893,
+    "top10ShareOfDivision": 0.04963,
     "top1": 2,
-    "top1ShareOfDivision": 0.0184,
+    "top1ShareOfDivision": 0.01842,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.068,
@@ -304,8 +342,8 @@
     "papers": 382,
     "outputBasis": "measured",
     "citations": 5106,
-    "top10": 23.556,
-    "top10ShareOfDivision": 0.04918,
+    "top10": 22.587,
+    "top10ShareOfDivision": 0.04812,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -340,9 +378,9 @@
   "lifetime": {
     "papers": 1554,
     "outputBasis": "measured",
-    "citations": 64820,
-    "top10": 181.437,
-    "top10ShareOfDivision": 0.11524,
+    "citations": 65040,
+    "top10": 183.212,
+    "top10ShareOfDivision": 0.11621,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -353,8 +391,8 @@
       "date": "1991-09-00"
     },
     "spread": {
-      "mean": 41.712,
-      "median": 23,
+      "mean": 41.853,
+      "median": 23.5,
       "uncited": 92,
       "i10": 1110,
       "i100": 154
@@ -364,7 +402,7 @@
     "arms": "((((=abs:Galileo AND abs:(Jupiter OR Jovian OR Io OR Europa OR Ganymede OR Callisto OR Amalthea OR Thebe OR Gaspra OR Dactyl OR \"Shoemaker-Levy\" OR =abs:(\"Galilean satellites\" OR \"Galilean satellite\" OR \"Galilean moons\" OR \"Galilean moon\")) NOT =abs:(\"Telescopio Nazionale Galileo\" OR \"Telescopio Nazinale Galileo\")) OR (=abs:Galileo AND collection:astronomy AND (abs:(spacecraft OR flyby OR asteroid OR magnetometer) OR =abs:(\"entry probe\" OR orbiter)) NOT (=abs:(\"navigation satellite\" OR \"satellite navigation\" OR \"positioning system\" OR \"Galileo Project\" OR \"Galileo FOC\" OR \"Galileo IOV\" OR \"Galileo constellation\" OR \"Galileo for Science\" OR \"Telescopio Nazionale Galileo\" OR \"Telescopio Nazinale Galileo\") OR abs:(GLONASS OR BeiDou))) OR =abs:\"Galileo probe\" OR (collection:astronomy AND (=abs:(\"Near-Infrared Mapping Spectrometer\" OR \"Near Infrared Mapping Spectrometer\" OR \"Photopolarimeter-Radiometer\" OR \"Solid State Imaging\" OR \"Energetic Particles Detector\" OR \"Heavy Ion Counter\" OR \"Dust Detector System\" OR \"Probe Mass Spectrometer\" OR \"Net Flux Radiometer\") OR abs:(NIMS OR SSI OR PPR OR EPD)) AND abs:(Jupiter OR Jovian OR Io OR Europa OR Ganymede OR Callisto OR Amalthea OR Gaspra OR Ida OR Dactyl))) NOT =abs:(Galilei OR \"Sidereus Nuncius\" OR \"Galileo Avionica\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1996-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3AGalileo+AND+abs%3A%28Jupiter+OR+Jovian+OR+Io+OR+Europa+OR+Ganymede+OR+Callisto+OR+Amalthea+OR+Thebe+OR+Gaspra+OR+Dactyl+OR+%22Shoemaker-Levy%22+OR+%3Dabs%3A%28%22Galilean+satellites%22+OR+%22Galilean+satellite%22+OR+%22Galilean+moons%22+OR+%22Galilean+moon%22%29%29+NOT+%3Dabs%3A%28%22Telescopio+Nazionale+Galileo%22+OR+%22Telescopio+Nazinale+Galileo%22%29%29+OR+%28%3Dabs%3AGalileo+AND+collection%3Aastronomy+AND+%28abs%3A%28spacecraft+OR+flyby+OR+asteroid+OR+magnetometer%29+OR+%3Dabs%3A%28%22entry+probe%22+OR+orbiter%29%29+NOT+%28%3Dabs%3A%28%22navigation+satellite%22+OR+%22satellite+navigation%22+OR+%22positioning+system%22+OR+%22Galileo+Project%22+OR+%22Galileo+FOC%22+OR+%22Galileo+IOV%22+OR+%22Galileo+constellation%22+OR+%22Galileo+for+Science%22+OR+%22Telescopio+Nazionale+Galileo%22+OR+%22Telescopio+Nazinale+Galileo%22%29+OR+abs%3A%28GLONASS+OR+BeiDou%29%29%29+OR+%3Dabs%3A%22Galileo+probe%22+OR+%28collection%3Aastronomy+AND+%28%3Dabs%3A%28%22Near-Infrared+Mapping+Spectrometer%22+OR+%22Near+Infrared+Mapping+Spectrometer%22+OR+%22Photopolarimeter-Radiometer%22+OR+%22Solid+State+Imaging%22+OR+%22Energetic+Particles+Detector%22+OR+%22Heavy+Ion+Counter%22+OR+%22Dust+Detector+System%22+OR+%22Probe+Mass+Spectrometer%22+OR+%22Net+Flux+Radiometer%22%29+OR+abs%3A%28NIMS+OR+SSI+OR+PPR+OR+EPD%29%29+AND+abs%3A%28Jupiter+OR+Jovian+OR+Io+OR+Europa+OR+Ganymede+OR+Callisto+OR+Amalthea+OR+Gaspra+OR+Ida+OR+Dactyl%29%29%29+NOT+%3Dabs%3A%28Galilei+OR+%22Sidereus+Nuncius%22+OR+%22Galileo+Avionica%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1996-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-10T23:58:15.915609+00:00",
+    "fetchedAt": "2026-11-18T18:15:43.309023+00:00",
     "reconciliation": {
       "adsReturned": 1510,
       "curatedOut": 35,
@@ -828,7 +866,7 @@
       {
         "bibcode": "1995AdSpR..15d...5R",
         "doi": null,
-        "title": "The solar wind interaction with Venus: a comparison of Galileo and pioneer Venus observations",
+        "title": "The solar wind interaction with Venus: A comparison of Galileo and Pioneer Venus observations",
         "reason": "Galileo's Venus flyby observations of the solar wind interaction compared with Pioneer Venus.",
         "authority": "agent",
         "date": "2026-09-14"
@@ -924,7 +962,7 @@
       {
         "bibcode": "1995AdSpR..16d..47W",
         "doi": null,
-        "title": "Solar wind interaction with small bodies: 1. whistler wing signatures near Galileo's closest approach to Gaspra and Ida",
+        "title": "Solar wind interaction with small bodies: 1. Whistler wing signatures near Galileo's closest approach to Gaspra and Ida",
         "reason": "Whistler wave signatures near Gaspra and Ida in Galileo magnetometer data.",
         "authority": "agent",
         "date": "2026-09-14"
@@ -932,7 +970,7 @@
       {
         "bibcode": "1995AdSpR..16d..59K",
         "doi": null,
-        "title": "Solar wind interaction with small bodies: 2. what can Galileo's detection of magnetic rotations tell us about Gaspra and Ida",
+        "title": "Solar wind interaction with small bodies: 2. What can Galileo's detection of magnetic rotations tell us about Gaspra and Ida",
         "reason": "Interpretation of Galileo's magnetic field rotations near asteroids Gaspra and Ida.",
         "authority": "agent",
         "date": "2026-09-14"
@@ -940,7 +978,7 @@
       {
         "bibcode": "1995AdSpR..16d.197K",
         "doi": null,
-        "title": "Galileo glybys of Earth: the nature of the distant shock",
+        "title": "Galileo flybys of earth: The nature of the distant shock",
         "reason": "Galileo magnetometer observations of Earth's distant bow shock during its Earth flybys.",
         "authority": "agent",
         "date": "2026-09-14"
@@ -1341,7 +1379,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 547
+      "citations": 550
     },
     {
       "bibcode": "1998Natur.395..777K",
@@ -1350,7 +1388,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 523
+      "citations": 524
     },
     {
       "bibcode": "1998Natur.391..363C",
@@ -1359,7 +1397,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 476
+      "citations": 477
     },
     {
       "bibcode": "1998PhRvL..81.2858A",
@@ -1371,13 +1409,22 @@
       "citations": 470
     },
     {
+      "bibcode": "2001Icar..149..133C",
+      "title": "Energetic Ion and Electron Irradiation of the Icy Galilean Satellites",
+      "firstAuthor": "Cooper, John F.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2001,
+      "citations": 371
+    },
+    {
       "bibcode": "2002Icar..157..507K",
       "title": "The Permanent and Inductive Magnetic Moments of Ganymede",
       "firstAuthor": "Kivelson, M. G.",
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 372
+      "citations": 370
     },
     {
       "bibcode": "1998Sci...281.2019A",
@@ -1386,15 +1433,6 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 369
-    },
-    {
-      "bibcode": "2001Icar..149..133C",
-      "title": "Energetic Ion and Electron Irradiation of the Icy Galilean Satellites",
-      "firstAuthor": "Cooper, John F.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2001,
       "citations": 369
     },
     {
@@ -1416,18 +1454,18 @@
       "citations": 366
     },
     {
-      "bibcode": "1998Sci...280.1242M",
-      "title": "Salts on Europa's Surface Detected by Galileo's Near Infrared Mapping Spectrometer",
-      "firstAuthor": "McCord, T. B.",
-      "authors": null,
-      "authorCount": null,
-      "year": 1998,
-      "citations": 355
-    },
-    {
       "bibcode": "1998Natur.391..365P",
       "title": "Geological evidence for solid-state convection in Europa's ice shell",
       "firstAuthor": "Pappalardo, R. T.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1998,
+      "citations": 354
+    },
+    {
+      "bibcode": "1998Sci...280.1242M",
+      "title": "Salts on Europa's Surface Detected by Galileo's Near Infrared Mapping Spectrometer",
+      "firstAuthor": "McCord, T. B.",
       "authors": null,
       "authorCount": null,
       "year": 1998,
@@ -1449,7 +1487,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 344
+      "citations": 342
     },
     {
       "bibcode": "1993Natur.365..715S",
@@ -1458,7 +1496,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1993,
-      "citations": 334
+      "citations": 333
     },
     {
       "bibcode": "1999Sci...286...97C",
@@ -1497,6 +1535,15 @@
       "citations": 296
     },
     {
+      "bibcode": "1998JGR...10322831N",
+      "title": "The composition of the Jovian atmosphere as determined by the Galileo probe mass spectrometer",
+      "firstAuthor": "Niemann, H. B.",
+      "authors": null,
+      "authorCount": null,
+      "year": 1998,
+      "citations": 294
+    },
+    {
       "bibcode": "1999JGR...10411827M",
       "title": "Hydrated salt minerals on Europa's surface from the Galileo near-infrared mapping spectrometer (NIMS) investigation",
       "firstAuthor": "McCord, Thomas B.",
@@ -1504,15 +1551,6 @@
       "authorCount": null,
       "year": 1999,
       "citations": 294
-    },
-    {
-      "bibcode": "1998JGR...10322831N",
-      "title": "The composition of the Jovian atmosphere as determined by the Galileo probe mass spectrometer",
-      "firstAuthor": "Niemann, H. B.",
-      "authors": null,
-      "authorCount": null,
-      "year": 1998,
-      "citations": 293
     }
   ],
   "papersFile": {

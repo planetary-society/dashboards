@@ -8,8 +8,8 @@
   "meta": {
     "status": "Completed",
     "failed": false,
-    "cost": 971.4,
-    "lcc": 676,
+    "cost": 912.2,
+    "lcc": 641.5,
     "type": "Orbiter",
     "selection": "competed",
     "management": "pi",
@@ -17,13 +17,14 @@
     "target": "Mars",
     "launchVehicle": "Atlas V 401",
     "wikipedia": "https://en.wikipedia.org/wiki/MAVEN",
+    "bibliography": null,
     "firstSciencePublication": "10.1002/2015GL063863",
     "dates": {
       "formulation": "2008-09-01",
       "launch": "2013-11-18",
       "scienceStart": "2014-11-16",
-      "primeEnd": "2016-10-03",
-      "missionEnd": "2026-06-03"
+      "primeEnd": "2015-11-16",
+      "missionEnd": "2025-12-06"
     }
   },
   "indices": {
@@ -31,12 +32,12 @@
     "m": 5.667,
     "i100": 40,
     "g": 113,
-    "tori": 31.283,
+    "tori": 31.335,
     "riq": 466
   },
   "facts": {
     "papers": 963,
-    "citations": 23480,
+    "citations": 23528,
     "publicationYears": [
       2015,
       2026
@@ -83,13 +84,13 @@
       3119,
       3095,
       3173,
-      3398
+      3446
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 23480,
-      "observed": 23480,
+      "expected": 23528,
+      "observed": 23528,
       "missing": 0
     }
   },
@@ -130,6 +131,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 656,
+    "us": {
+      "mapped": 476,
+      "top": [
+        {
+          "name": "University of Colorado, Boulder",
+          "papers": 343
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 280
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 276
+        }
+      ]
+    },
+    "world": {
+      "mapped": 634,
+      "top": [
+        {
+          "name": "University of Colorado, Boulder",
+          "papers": 343
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 280
+        },
+        {
+          "name": "University of California, Berkeley",
+          "papers": 276
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2015SSRv..195....3J",
     "title": "The Mars Atmosphere and Volatile Evolution (MAVEN) Mission",
@@ -142,50 +180,50 @@
     ],
     "authorCount": 71,
     "year": 2015,
-    "citations": 791
+    "citations": 793
   },
   "ranks": {
     "full": {
       "bins": [
-        25.666,
-        43.433,
-        58.055,
-        63.647,
-        87.364,
-        84.198,
-        74.997,
-        105.113,
-        58.609,
-        54.918
+        26.334,
+        44.14,
+        58.843,
+        63.139,
+        87.092,
+        84.043,
+        74.824,
+        104.309,
+        58.579,
+        54.697
       ],
       "top1": 3
     },
     "window": {
       "bins": [
-        9.981,
-        15.148,
-        18.612,
-        22.471,
-        33.237,
-        26.085,
-        38.937,
-        33.006,
-        25.746,
-        21.778
+        8.201,
+        10.586,
+        13.681,
+        14.356,
+        18.101,
+        18.139,
+        27.587,
+        20.558,
+        22.497,
+        20.293
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        154.478,
-        124.456,
-        125.882,
-        112.324,
-        103.81,
-        81.699,
-        81.74,
-        72.813,
-        60.798,
+        153.622,
+        125.579,
+        126.395,
+        113.796,
+        102.786,
+        81.687,
+        80.801,
+        72.846,
+        60.488,
         45
       ],
       "top1": 3
@@ -194,11 +232,11 @@
   "full": {
     "papers": 656,
     "outputBasis": "measured",
-    "citations": 9243,
-    "top10": 52.618,
-    "top10ShareOfDivision": 0.04842,
+    "citations": 9244,
+    "top10": 52.397,
+    "top10ShareOfDivision": 0.04826,
     "top1": 3,
-    "top1ShareOfDivision": 0.0276,
+    "top1ShareOfDivision": 0.02763,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.211,
@@ -221,7 +259,7 @@
       "m": 3.963
     },
     "spread": {
-      "mean": 14.09,
+      "mean": 14.091,
       "median": 10,
       "uncited": 12,
       "i10": 353,
@@ -229,13 +267,13 @@
     }
   },
   "window": {
-    "papers": 245,
+    "papers": 174,
     "outputBasis": "measured",
-    "citations": 4622,
-    "top10": 20.778,
-    "top10ShareOfDivision": 0.04338,
+    "citations": 3699,
+    "top10": 19.293,
+    "top10ShareOfDivision": 0.0411,
     "top1": 1,
-    "top1ShareOfDivision": 0.02088,
+    "top1ShareOfDivision": 0.0213,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.211,
@@ -246,31 +284,31 @@
     "status": "available",
     "bounds": {
       "start": "2014-12-01",
-      "end": "2018-11-01",
-      "matureDate": "2021-10-01",
+      "end": "2017-12-01",
+      "matureDate": "2020-10-01",
       "status": "available",
-      "months": 47,
-      "citationBuckets": 8
+      "months": 36,
+      "citationBuckets": 7
     },
     "indices": {
       "h": 32,
-      "g": 48,
-      "m": 8.167
+      "g": 47,
+      "m": 10.663
     },
     "spread": {
-      "mean": 18.865,
-      "median": 14,
-      "uncited": 6,
-      "i10": 163,
+      "mean": 21.259,
+      "median": 16,
+      "uncited": 4,
+      "i10": 118,
       "i100": 2
     }
   },
   "lifetime": {
     "papers": 963,
     "outputBasis": "measured",
-    "citations": 23480,
+    "citations": 23528,
     "top10": 42.7,
-    "top10ShareOfDivision": 0.02712,
+    "top10ShareOfDivision": 0.02709,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -281,8 +319,8 @@
       "date": "2015-02-00"
     },
     "spread": {
-      "mean": 24.382,
-      "median": 10,
+      "mean": 24.432,
+      "median": 11,
       "uncited": 104,
       "i10": 501,
       "i100": 40
@@ -292,7 +330,7 @@
     "arms": "((=abs:\"Mars Atmosphere and Volatile Evolution\" OR =abs:\"Mars Atmospheric and Volatile Evolution\" OR (abs:MAVEN AND (abs:solar OR abs:heliosphere)) OR ((abs:MAVEN OR abs:SWEA OR abs:SWIA OR abs:STATIC OR abs:IUVS OR abs:NGIMS OR =abs:\"Solar Wind Electron Analyzer\" OR =abs:\"Solar Wind Ion Analyzer\" OR =abs:\"Suprathermal and Thermal Ion Composition\" OR =abs:\"Imaging Ultraviolet Spectrometer\" OR =abs:\"Imaging Ultraviolet Spectrograph\" OR =abs:\"Langmuir Probe and Waves\" OR =abs:\"Neutral Gas and Ion Mass Spectrometer\") AND (abs:Mars OR abs:martian))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Atmosphere+and+Volatile+Evolution%22+OR+%3Dabs%3A%22Mars+Atmospheric+and+Volatile+Evolution%22+OR+%28abs%3AMAVEN+AND+%28abs%3Asolar+OR+abs%3Aheliosphere%29%29+OR+%28%28abs%3AMAVEN+OR+abs%3ASWEA+OR+abs%3ASWIA+OR+abs%3ASTATIC+OR+abs%3AIUVS+OR+abs%3ANGIMS+OR+%3Dabs%3A%22Solar+Wind+Electron+Analyzer%22+OR+%3Dabs%3A%22Solar+Wind+Ion+Analyzer%22+OR+%3Dabs%3A%22Suprathermal+and+Thermal+Ion+Composition%22+OR+%3Dabs%3A%22Imaging+Ultraviolet+Spectrometer%22+OR+%3Dabs%3A%22Imaging+Ultraviolet+Spectrograph%22+OR+%3Dabs%3A%22Langmuir+Probe+and+Waves%22+OR+%3Dabs%3A%22Neutral+Gas+and+Ion+Mass+Spectrometer%22%29+AND+%28abs%3AMars+OR+abs%3Amartian%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:00:49.011738+00:00",
+    "fetchedAt": "2026-11-18T18:19:23.118641+00:00",
     "reconciliation": {
       "adsReturned": 970,
       "curatedOut": 7,
@@ -372,7 +410,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 791
+      "citations": 793
     },
     {
       "bibcode": "2015SSRv..195..257C",
@@ -390,7 +428,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 443
+      "citations": 444
     },
     {
       "bibcode": "2016SSRv..200..495M",
@@ -399,7 +437,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 323
+      "citations": 324
     },
     {
       "bibcode": "2015SSRv..195..199M",
@@ -408,7 +446,16 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 319
+      "citations": 320
+    },
+    {
+      "bibcode": "2015SSRv..195...49M",
+      "title": "The Neutral Gas and Ion Mass Spectrometer on the Mars Atmosphere and Volatile Evolution Mission",
+      "firstAuthor": "Mahaffy, Paul R.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2015,
+      "citations": 299
     },
     {
       "bibcode": "2018Icar..315..146J",
@@ -418,15 +465,6 @@
       "authorCount": null,
       "year": 2018,
       "citations": 299
-    },
-    {
-      "bibcode": "2015SSRv..195...49M",
-      "title": "The Neutral Gas and Ion Mass Spectrometer on the Mars Atmosphere and Volatile Evolution Mission",
-      "firstAuthor": "Mahaffy, Paul R.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2015,
-      "citations": 298
     },
     {
       "bibcode": "2017JGRA..122..547H",
@@ -444,7 +482,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 240
+      "citations": 241
     },
     {
       "bibcode": "2015JGRE..120..311B",
@@ -453,7 +491,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 237
+      "citations": 238
     },
     {
       "bibcode": "2015SSRv..195..293E",
@@ -471,7 +509,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 217
+      "citations": 218
     },
     {
       "bibcode": "2015Sci...350.0210J",
@@ -516,7 +554,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 165
+      "citations": 166
     },
     {
       "bibcode": "2017JGRA..122.2748T",
@@ -534,7 +572,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 146
+      "citations": 147
     },
     {
       "bibcode": "2017JGRA..122.1831X",
@@ -543,7 +581,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 146
+      "citations": 147
     }
   ],
   "papersFile": {

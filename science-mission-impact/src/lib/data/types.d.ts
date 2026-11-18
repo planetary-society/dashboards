@@ -190,6 +190,7 @@ export interface AnalysisFacts {
 	groupRates: AnalysisSpreadGroup[];
 	/** Years to each mission's first top-10% paper in the lifetime ranking (MissionRow.lifetime.first), by tier. Failures are left out: they have no time to the event. */
 	time: {
+		tierConfidence: number; // confidence level used for both clocks in Figure 1
 		tiers: {
 			missions: number; // in the tier, failures left out
 			reached: number; // with a first top-10% paper
@@ -231,7 +232,7 @@ export interface AnalysisFacts {
 	}[];
 }
 
-/** Years over the reached missions: the median, the minimum and the median's distribution-free 95% interval (`medianInterval` in analysis.mjs: order statistics; null below six missions). */
+/** Years over the reached missions. The median's distribution-free interval uses tierConfidence for tiers and 95% for overview groups. */
 export interface MedianYears {
 	median: number | null;
 	min: number | null;

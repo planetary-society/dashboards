@@ -8,7 +8,7 @@
   "meta": {
     "status": "Completed",
     "failed": false,
-    "cost": 613,
+    "cost": 598,
     "lcc": 278,
     "type": "Lander",
     "selection": "directed",
@@ -17,6 +17,7 @@
     "target": "Mars",
     "launchVehicle": "Delta II 7925",
     "wikipedia": "https://en.wikipedia.org/wiki/Mars_Pathfinder",
+    "bibliography": null,
     "firstSciencePublication": "10.1126/science.278.5344.1743",
     "dates": {
       "formulation": "1993-10-01",
@@ -31,12 +32,12 @@
     "m": 1.833,
     "i100": 25,
     "g": 90,
-    "tori": 74.274,
-    "riq": 287
+    "tori": 75.346,
+    "riq": 289
   },
   "facts": {
-    "papers": 154,
-    "citations": 8800,
+    "papers": 152,
+    "citations": 8830,
     "publicationYears": [
       1997,
       2026
@@ -78,7 +79,7 @@
     "papers": [
       10,
       5,
-      42,
+      40,
       22,
       9,
       7,
@@ -110,45 +111,45 @@
     "citations": [
       13,
       74,
-      251,
+      250,
       391,
       375,
       381,
       435,
       380,
-      356,
+      358,
       476,
       457,
       376,
       328,
-      311,
+      322,
       291,
-      270,
+      271,
       216,
-      263,
+      262,
       270,
-      291,
-      270,
+      301,
+      271,
       246,
       253,
       248,
       318,
       305,
-      283,
+      282,
       243,
       230,
-      199
+      207
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 8800,
-      "observed": 8800,
+      "expected": 8830,
+      "observed": 8830,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 154,
+    "papers": 152,
     "us": {
       "mapped": 46,
       "top": [
@@ -184,6 +185,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 55,
+    "us": {
+      "mapped": 3,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 2
+        },
+        {
+          "name": "NASA Ames Research Center",
+          "papers": 1
+        },
+        {
+          "name": "NASA Johnson Space Center",
+          "papers": 1
+        }
+      ]
+    },
+    "world": {
+      "mapped": 3,
+      "top": [
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 2
+        },
+        {
+          "name": "NASA Ames Research Center",
+          "papers": 1
+        },
+        {
+          "name": "NASA Johnson Space Center",
+          "papers": 1
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "1997Sci...278.1752S",
     "title": "The Mars Pathfinder Atmospheric Structure Investigation/Meteorology",
@@ -201,29 +239,29 @@
   "ranks": {
     "full": {
       "bins": [
-        8.439,
-        3.497,
-        2.629,
-        3.477,
-        7.13,
-        2.64,
-        5.188,
+        6.509,
+        3.525,
+        2.702,
+        3.347,
+        7.136,
+        2.635,
+        5.147,
         7,
-        6.361,
-        10.639
+        6.434,
+        10.566
       ],
       "top1": 1
     },
     "window": {
       "bins": [
-        6.593,
-        4.426,
-        4.23,
-        5.357,
-        4.666,
-        5.541,
-        6.726,
-        3.461,
+        4.68,
+        4.451,
+        4.236,
+        5.768,
+        4.25,
+        5.615,
+        6.665,
+        3.335,
         5,
         8
       ],
@@ -231,28 +269,28 @@
     },
     "lifetime": {
       "bins": [
-        12.844,
-        6.446,
-        9.505,
-        7.26,
-        17.334,
-        12.417,
-        10.614,
-        21.781,
-        26.978,
-        28.819
+        10.877,
+        6.544,
+        9.54,
+        7.322,
+        17.353,
+        12.314,
+        11.106,
+        21.457,
+        26.526,
+        28.962
       ],
       "top1": 1
     }
   },
   "full": {
-    "papers": 57,
+    "papers": 55,
     "outputBasis": "measured",
-    "citations": 1080,
-    "top10": 10.639,
-    "top10ShareOfDivision": 0.00979,
+    "citations": 1079,
+    "top10": 10.566,
+    "top10ShareOfDivision": 0.00973,
     "top1": 1,
-    "top1ShareOfDivision": 0.0092,
+    "top1ShareOfDivision": 0.00921,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.411,
@@ -275,19 +313,19 @@
       "m": 8.31
     },
     "spread": {
-      "mean": 18.947,
+      "mean": 19.618,
       "median": 12,
-      "uncited": 7,
+      "uncited": 5,
       "i10": 31,
       "i100": 1
     }
   },
   "window": {
-    "papers": 54,
+    "papers": 52,
     "outputBasis": "measured",
-    "citations": 1055,
+    "citations": 1054,
     "top10": 8,
-    "top10ShareOfDivision": 0.0167,
+    "top10ShareOfDivision": 0.01704,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -312,19 +350,19 @@
       "m": 8.637
     },
     "spread": {
-      "mean": 19.537,
-      "median": 12,
-      "uncited": 5,
+      "mean": 20.269,
+      "median": 12.5,
+      "uncited": 3,
       "i10": 30,
       "i100": 1
     }
   },
   "lifetime": {
-    "papers": 154,
+    "papers": 152,
     "outputBasis": "measured",
-    "citations": 8800,
-    "top10": 26.653,
-    "top10ShareOfDivision": 0.01693,
+    "citations": 8830,
+    "top10": 26.554,
+    "top10ShareOfDivision": 0.01684,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -335,10 +373,10 @@
       "date": "1997-12-00"
     },
     "spread": {
-      "mean": 57.143,
+      "mean": 58.092,
       "median": 36,
-      "uncited": 10,
-      "i10": 120,
+      "uncited": 8,
+      "i10": 121,
       "i100": 25
     }
   },
@@ -346,15 +384,15 @@
     "arms": "((=abs:\"Mars Pathfinder\" OR ((=abs:Sojourner OR =abs:\"Pathfinder rover\" OR =abs:\"Pathfinder microrover\" OR =abs:\"Imager for Pathfinder\") AND abs:Mars)) AND NOT =title:(navigation OR \"orbit determination\" OR heatshield OR \"heat shield\" OR airbag OR aeroheating OR \"gas dynamics\" OR aerothermodynamics OR \"entry vehicles\" OR \"flow field\" OR \"thermal analysis\" OR thermochemical OR dsmc OR \"solar power\" OR \"radioisotope power\" OR \"radioactive sources\" OR \"alpha sources\" OR electronics OR \"force balances\" OR \"chromatic calibration\" OR \"lander cameras\" OR NetLander OR \"Surface Stereo Imager\" OR \"Mars Polar Lander\" OR \"parachute drag\" OR \"entry descent and landing scenario\" OR \"entry descent and landing systems\" OR \"ascent propulsion\" OR \"mission proposal\" OR management OR \"project manager\" OR \"media coverage\" OR \"manage to budget\" OR \"robotic exploration program\" OR \"Mars exploration rover project\" OR \"Mars exploration rover mission\" OR \"lunar base\" OR communications OR \"heat flux\" OR \"flow properties\" OR \"laminar turbulent\" OR \"design approach\" OR \"interaction framework\" OR pseudolite OR localization OR \"motion planning\" OR educator OR \"limited by cost\" OR \"Discovery Program\" OR \"angular rates\" OR Goldstone OR \"superpressure balloon\" OR \"Mars Pathfinder vehicle\" OR proceedings) AND NOT (=title:instruments AND =title:\"Magnetic Properties\") AND NOT (=title:\"solar cells\" AND =title:performance) AND NOT =abs:bibliometric)",
     "filters": "property:refereed AND doctype:article AND pubdate:[1997-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Mars+Pathfinder%22+OR+%28%28%3Dabs%3ASojourner+OR+%3Dabs%3A%22Pathfinder+rover%22+OR+%3Dabs%3A%22Pathfinder+microrover%22+OR+%3Dabs%3A%22Imager+for+Pathfinder%22%29+AND+abs%3AMars%29%29+AND+NOT+%3Dtitle%3A%28navigation+OR+%22orbit+determination%22+OR+heatshield+OR+%22heat+shield%22+OR+airbag+OR+aeroheating+OR+%22gas+dynamics%22+OR+aerothermodynamics+OR+%22entry+vehicles%22+OR+%22flow+field%22+OR+%22thermal+analysis%22+OR+thermochemical+OR+dsmc+OR+%22solar+power%22+OR+%22radioisotope+power%22+OR+%22radioactive+sources%22+OR+%22alpha+sources%22+OR+electronics+OR+%22force+balances%22+OR+%22chromatic+calibration%22+OR+%22lander+cameras%22+OR+NetLander+OR+%22Surface+Stereo+Imager%22+OR+%22Mars+Polar+Lander%22+OR+%22parachute+drag%22+OR+%22entry+descent+and+landing+scenario%22+OR+%22entry+descent+and+landing+systems%22+OR+%22ascent+propulsion%22+OR+%22mission+proposal%22+OR+management+OR+%22project+manager%22+OR+%22media+coverage%22+OR+%22manage+to+budget%22+OR+%22robotic+exploration+program%22+OR+%22Mars+exploration+rover+project%22+OR+%22Mars+exploration+rover+mission%22+OR+%22lunar+base%22+OR+communications+OR+%22heat+flux%22+OR+%22flow+properties%22+OR+%22laminar+turbulent%22+OR+%22design+approach%22+OR+%22interaction+framework%22+OR+pseudolite+OR+localization+OR+%22motion+planning%22+OR+educator+OR+%22limited+by+cost%22+OR+%22Discovery+Program%22+OR+%22angular+rates%22+OR+Goldstone+OR+%22superpressure+balloon%22+OR+%22Mars+Pathfinder+vehicle%22+OR+proceedings%29+AND+NOT+%28%3Dtitle%3Ainstruments+AND+%3Dtitle%3A%22Magnetic+Properties%22%29+AND+NOT+%28%3Dtitle%3A%22solar+cells%22+AND+%3Dtitle%3Aperformance%29+AND+NOT+%3Dabs%3Abibliometric%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1997-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-10T23:58:33.708468+00:00",
+    "fetchedAt": "2026-11-18T18:16:03.988619+00:00",
     "reconciliation": {
       "adsReturned": 161,
       "curatedOut": 9,
       "curatedIn": 2,
       "libraryOut": 0,
       "otherOut": 0,
-      "duplicates": 0,
-      "final": 154
+      "duplicates": 2,
+      "final": 152
     }
   },
   "curation": {
@@ -468,7 +506,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 279
+      "citations": 281
     },
     {
       "bibcode": "2006Icar..182...23K",
@@ -486,7 +524,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 266
+      "citations": 268
     },
     {
       "bibcode": "1997Sci...278.1749F",
@@ -513,7 +551,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 225
+      "citations": 226
     },
     {
       "bibcode": "1999JGR...104.8679M",
@@ -540,7 +578,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 192
+      "citations": 193
     },
     {
       "bibcode": "1997Sci...278.1743G",
@@ -576,7 +614,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 161
+      "citations": 162
     },
     {
       "bibcode": "1999JGR...104.8943M",
@@ -603,7 +641,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1997,
-      "citations": 124
+      "citations": 125
     },
     {
       "bibcode": "2000GeCoA..64.2155M",
@@ -634,6 +672,6 @@
     }
   ],
   "papersFile": {
-    "rows": 154
+    "rows": 152
   }
 }

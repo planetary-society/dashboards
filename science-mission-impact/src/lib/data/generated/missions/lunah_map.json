@@ -1,0 +1,262 @@
+{
+  "id": "lunah_map",
+  "inclusion": {
+    "date": "2028-10-01",
+    "basis": "window",
+    "asOf": "2026-11-18"
+  },
+  "name": "LunaH-Map",
+  "fullName": "Lunar Polar Hydrogen Mapper",
+  "division": "planetary",
+  "divisionName": "Planetary Science",
+  "hasThumb": true,
+  "meta": {
+    "status": "Partial Success",
+    "failed": false,
+    "cost": 18.9,
+    "lcc": 15.5,
+    "type": "Orbiter",
+    "selection": "competed",
+    "management": "pi",
+    "program": "SIMPLEx",
+    "target": "Moon",
+    "launchVehicle": "SLS Block 1",
+    "wikipedia": "https://en.wikipedia.org/wiki/Lunar_Polar_Hydrogen_Mapper",
+    "bibliography": null,
+    "firstSciencePublication": null,
+    "dates": {
+      "formulation": "2015-08-25",
+      "launch": "2022-11-16",
+      "scienceStart": null,
+      "primeEnd": "2023-02-20",
+      "missionEnd": "2023-05-01"
+    }
+  },
+  "indices": {
+    "h": 0,
+    "m": 0,
+    "i100": 0,
+    "g": 0,
+    "tori": 0,
+    "riq": 0
+  },
+  "facts": {
+    "papers": 1,
+    "citations": 0,
+    "publicationYears": [
+      2026,
+      2026
+    ]
+  },
+  "lifetimeSeries": {
+    "years": [
+      2026
+    ],
+    "papers": [
+      1
+    ],
+    "citations": [
+      0
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 0,
+      "observed": 0,
+      "missing": 0
+    }
+  },
+  "affiliations": null,
+  "fullAffiliations": null,
+  "mostCited": {
+    "bibcode": "2026JAnSc..73...70K",
+    "title": "Automated Optimization of Weak Stability Boundary Lunar Transfers for the LunaH-Map Mission",
+    "firstAuthor": "Knittel, Jeremy",
+    "authors": [
+      "Knittel, Jeremy",
+      "Nelson, Derek",
+      "Levine, Andrew",
+      "VeNard, Carly"
+    ],
+    "authorCount": 6,
+    "year": 2026,
+    "citations": 0
+  },
+  "ranks": {
+    "full": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "window": {
+      "bins": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    },
+    "lifetime": {
+      "bins": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "top1": 0
+    }
+  },
+  "full": {
+    "papers": 0,
+    "outputBasis": "measured",
+    "citations": 0,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "no_papers",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "immature",
+    "bounds": {
+      "start": "2022-12-01",
+      "end": "2024-01-01",
+      "matureDate": "2027-10-01",
+      "status": "immature",
+      "months": 13,
+      "citationBuckets": 5
+    },
+    "indices": {
+      "h": 0,
+      "g": 0,
+      "m": 0
+    },
+    "spread": {
+      "mean": null,
+      "median": null,
+      "uncited": 0,
+      "i10": 0,
+      "i100": 0
+    }
+  },
+  "window": {
+    "papers": 0,
+    "outputBasis": "measured",
+    "citations": 0,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": 0,
+    "top1ShareOfDivision": 0,
+    "first": {
+      "state": "no_papers",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "status": "immature",
+    "bounds": {
+      "start": "2022-12-01",
+      "end": "2025-03-01",
+      "matureDate": "2028-10-01",
+      "status": "immature",
+      "months": 27,
+      "citationBuckets": 7
+    },
+    "indices": {
+      "h": 0,
+      "g": 0,
+      "m": 0
+    },
+    "spread": {
+      "mean": null,
+      "median": null,
+      "uncited": 0,
+      "i10": 0,
+      "i100": 0
+    }
+  },
+  "lifetime": {
+    "papers": 1,
+    "outputBasis": "measured",
+    "citations": 0,
+    "top10": 0,
+    "top10ShareOfDivision": 0,
+    "top1": null,
+    "top1ShareOfDivision": null,
+    "first": {
+      "state": "none",
+      "yearsFromScienceStart": null,
+      "yearsFromFormulation": null,
+      "bibcode": null,
+      "date": null
+    },
+    "spread": {
+      "mean": 0,
+      "median": 0,
+      "uncited": 1,
+      "i10": 0,
+      "i100": 0
+    }
+  },
+  "query": {
+    "arms": "((abs:\"Lunar Polar Hydrogen Mapper\" OR abs:\"LunaH-Map\"))",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2022-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22Lunar+Polar+Hydrogen+Mapper%22+OR+abs%3A%22LunaH-Map%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2022-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-18T18:20:01.381488+00:00",
+    "reconciliation": {
+      "adsReturned": 1,
+      "curatedOut": 0,
+      "curatedIn": 0,
+      "libraryOut": 0,
+      "otherOut": 0,
+      "duplicates": 0,
+      "final": 1
+    }
+  },
+  "curation": {
+    "includes": [],
+    "excludes": []
+  },
+  "topCited": [
+    {
+      "bibcode": "2026JAnSc..73...70K",
+      "title": "Automated Optimization of Weak Stability Boundary Lunar Transfers for the LunaH-Map Mission",
+      "firstAuthor": "Knittel, Jeremy",
+      "authors": null,
+      "authorCount": null,
+      "year": 2026,
+      "citations": 0
+    }
+  ],
+  "papersFile": {
+    "rows": 1
+  }
+}

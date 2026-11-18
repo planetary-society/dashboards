@@ -8,7 +8,7 @@
   "meta": {
     "status": "Extended Mission",
     "failed": false,
-    "cost": 503.2,
+    "cost": 531.1,
     "lcc": 340,
     "type": "In-Situ Probe",
     "selection": "directed",
@@ -17,6 +17,7 @@
     "target": "Sun-Earth L1 Lagrange Point",
     "launchVehicle": "Falcon 9",
     "wikipedia": "https://en.wikipedia.org/wiki/Deep_Space_Climate_Observatory",
+    "bibliography": "https://epic.gsfc.nasa.gov/science/pubs",
     "firstSciencePublication": "10.1002/2017GL073248",
     "dates": {
       "formulation": "1998-01-01",
@@ -31,12 +32,12 @@
     "m": 2.455,
     "i100": 1,
     "g": 41,
-    "tori": 9.269,
-    "riq": 253
+    "tori": 9.365,
+    "riq": 255
   },
   "facts": {
     "papers": 199,
-    "citations": 2480,
+    "citations": 2485,
     "publicationYears": [
       2016,
       2026
@@ -77,16 +78,16 @@
       160,
       372,
       321,
-      297,
+      299,
       331,
       377,
-      395
+      398
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 2480,
-      "observed": 2480,
+      "expected": 2485,
+      "observed": 2485,
       "missing": 0
     }
   },
@@ -127,6 +128,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 129,
+    "us": {
+      "mapped": 82,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 54
+        },
+        {
+          "name": "Boston University, Massachusetts",
+          "papers": 14
+        },
+        {
+          "name": "Joint Center for Earth Systems Technology, UMD, Baltimore",
+          "papers": 13
+        }
+      ]
+    },
+    "world": {
+      "mapped": 101,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 54
+        },
+        {
+          "name": "Boston University, Massachusetts",
+          "papers": 14
+        },
+        {
+          "name": "Joint Center for Earth Systems Technology, UMD, Baltimore",
+          "papers": 13
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2018BAMS...99.1829M",
     "title": "Earth Observations from DSCOVR EPIC Instrument",
@@ -144,46 +182,46 @@
   "ranks": {
     "full": {
       "bins": [
-        7.352,
-        11.876,
-        18.535,
-        12.633,
-        22.474,
-        16.075,
-        8.306,
-        7.73,
-        10.02,
+        7.438,
+        11.922,
+        18.543,
+        12.732,
+        22.764,
+        15.815,
+        8.254,
+        7.739,
+        9.792,
         14
       ],
       "top1": 0
     },
     "window": {
       "bins": [
-        6.294,
-        10.468,
-        16.844,
-        12.777,
-        23.611,
-        9.224,
-        5.934,
-        8.814,
-        8.181,
-        8.852
+        6.308,
+        10.423,
+        16.855,
+        12.891,
+        23.564,
+        9.196,
+        5.996,
+        8.746,
+        8.383,
+        8.639
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        41.762,
-        30.716,
-        29.727,
-        26.499,
-        23.188,
-        12.012,
-        10.097,
+        41.242,
+        31.181,
+        29.891,
+        26.468,
+        23.169,
+        12.144,
+        9.904,
         11,
-        8.892,
-        5.108
+        9,
+        5
       ],
       "top1": 0
     }
@@ -191,7 +229,7 @@
   "full": {
     "papers": 129,
     "outputBasis": "measured",
-    "citations": 1393,
+    "citations": 1395,
     "top10": 8.417,
     "top10ShareOfDivision": 0.00215,
     "top1": 0,
@@ -218,7 +256,7 @@
       "m": 2.376
     },
     "spread": {
-      "mean": 10.798,
+      "mean": 10.814,
       "median": 7,
       "uncited": 5,
       "i10": 39,
@@ -229,8 +267,8 @@
     "papers": 111,
     "outputBasis": "measured",
     "citations": 1191,
-    "top10": 8.352,
-    "top10ShareOfDivision": 0.00837,
+    "top10": 8.639,
+    "top10ShareOfDivision": 0.00886,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -265,9 +303,9 @@
   "lifetime": {
     "papers": 199,
     "outputBasis": "measured",
-    "citations": 2480,
-    "top10": 2.887,
-    "top10ShareOfDivision": 0.00055,
+    "citations": 2485,
+    "top10": 2.833,
+    "top10ShareOfDivision": 0.00054,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -278,7 +316,7 @@
       "date": "2017-07-00"
     },
     "spread": {
-      "mean": 12.462,
+      "mean": 12.487,
       "median": 6,
       "uncited": 36,
       "i10": 70,
@@ -289,7 +327,7 @@
     "arms": "((=abs:\"Deep Space Climate Observatory\" OR (abs:DSCOVR AND abs:(Earth OR solar OR wind OR climate OR satellite OR spacecraft OR EPIC OR NISTAR)) OR =abs:\"Earth Polychromatic Imaging Camera\" OR (abs:EPIC AND (=abs:polychromatic OR =abs:\"sunlit Earth\" OR (abs:aerosol AND abs:(satellite OR retrieval OR radiometric OR polarimetric)))) OR (abs:NISTAR AND abs:(Earth OR radiometer OR radiation))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2015-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Deep+Space+Climate+Observatory%22+OR+%28abs%3ADSCOVR+AND+abs%3A%28Earth+OR+solar+OR+wind+OR+climate+OR+satellite+OR+spacecraft+OR+EPIC+OR+NISTAR%29%29+OR+%3Dabs%3A%22Earth+Polychromatic+Imaging+Camera%22+OR+%28abs%3AEPIC+AND+%28%3Dabs%3Apolychromatic+OR+%3Dabs%3A%22sunlit+Earth%22+OR+%28abs%3Aaerosol+AND+abs%3A%28satellite+OR+retrieval+OR+radiometric+OR+polarimetric%29%29%29%29+OR+%28abs%3ANISTAR+AND+abs%3A%28Earth+OR+radiometer+OR+radiation%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2015-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:07:30.862543+00:00",
+    "fetchedAt": "2026-11-18T18:25:33.480361+00:00",
     "reconciliation": {
       "adsReturned": 202,
       "curatedOut": 3,
@@ -354,7 +392,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 93
+      "citations": 95
     },
     {
       "bibcode": "2021RSEnv.25312236F",
@@ -363,7 +401,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 90
+      "citations": 92
     },
     {
       "bibcode": "2017GeoRL..44.7544X",

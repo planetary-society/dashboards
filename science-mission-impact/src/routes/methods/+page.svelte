@@ -92,7 +92,7 @@
 			<p>We tailor each query to filter out obvious false positives from name or acronym collisions:
 				TRACE, for example, is both a space mission and a very common word. We also compared our query
 				outcomes to the managed collections of several missions with hand-curated publication sets. They
-				generally agree within 10%-25% of publication records, with a single exception, GALEX, differing
+				generally agree within 10%–25% of publication records, with a single exception, GALEX, differing
 				by a wide amount due to the pattern of not reporting the mission name in many abstracts. Since we’re
 				primarily comparing mission costs across orders of magnitude, this is well within acceptable limits.
 				We tested our outcomes with curated mission collections and found the overall comparative outcomes
@@ -116,8 +116,8 @@
 
 		<section id="mission-papers">
 			<h2>Tracked publications</h2>
-			<p>The publications we tracked are the peer-reviewed research papers associated with each mission using a set of keywords in their abstract, title, and keywords via NASA’s <a href="https://scixplorer.org/">Science Explorer digital library</a> (SciX). Publications are time-gated by the start of mission operations and continue through the full mission’s lifetime, plus two years to accommodate general publication times.</p>
-			<p>Our SciX queries use mission and major instrument names along with topic restrictions to distinguish ambiguous acronyms. The query for each mission is listed in the mission’s overview page.</p>
+			<p>The publications we tracked are the peer-reviewed research papers associated with each mission by searching their titles, abstracts, and keywords via NASA’s <a href="https://scixplorer.org/">Science Explorer digital library</a> (SciX). Publications are time-gated by the start of mission operations and continue through the full mission’s lifetime, plus two years to accommodate general publication times.</p>
+			<p>Our SciX queries use mission and major instrument names along with topic restrictions to distinguish ambiguous acronyms. The query for each mission is listed on each mission’s page.</p>
 			<p> This approach will miss papers that use mission data without naming the source in those fields.
 				A name match alone also does not establish that a paper used the data.</p><p>As mentioned earlier, this approach is effectively measuring a mission’s <em>signal strength</em> in the SciX abstract fields. This is a common approach for bibliometrics, though more complex approaches are possible given access to the full text of journal articles and advanced machine learning analysis (see <a href="https://doi.org/10.1007/978-3-031-69004-4">De Marchi, G., & Parmar, A. N., 2024</a>).</p>
 			<h3 id="removed" class="subhead">What we exclude</h3>
@@ -127,7 +127,7 @@
 
 		<section id="windows">
 			<h2>Citation comparison windows</h2>
-			<p>Older papers have had more time to collect citations, which would artificially inflate their metrics compared to more recent ones. To account for this, all metrics in this dashboard (except for the explicit lifetime metrics) use windowed citation counts of {spell(fullPolicy.citationYears)} years, inclusive, from the publish date of each paper.</p>
+			<p>Older papers have had more time to collect citations, which would artificially inflate their metrics compared to more recent ones. To account for this, all metrics in this dashboard (except for the explicit lifetime metrics) use windowed citation counts over {spell(calendarYears(fullPolicy))} calendar years: each paper’s publication year and the {spell(fullPolicy.citationYears)} years after it.</p>
 			<p>This means that missions launched after the full citation comparison window are not included in this study. A
 				mission still operating limits publications to those that were published within this citation window.</p>
 			<p>The count runs by calendar year: a paper collects citations from papers dated its own publication year through {spell(fullPolicy.citationYears)} years later, so every paper gets {spell(calendarYears(fullPolicy))} calendar years of exposure, from just over {spell(fullPolicy.citationYears)} years for a December paper to almost {spell(calendarYears(fullPolicy))} for a January one. The length is a trade-off, and it’s ultimately an editorial decision. A longer window would count more of each paper’s citations but exclude more recent missions, since a mission’s papers count only once their windows have closed.</p>
@@ -172,7 +172,7 @@
 
 		<section id="ai">
 			<h2>How we used AI in this project</h2>
-			<p>AI was used extensively in this project to help write and review code, to refine and improve our SciX queries, and to identify papers for exclusion based on our internal criteria. All AI-driven query suggestions and exclusions were reviewed by humans. In accordance with The Planetary Society’s policy, beyond basic copyediting, AI was not used to write our analysis or narrative text. Some descriptive, functional text such as tooltips on this dashboard are AI-generated.</p>
+			<p>AI was used extensively in this project to help write and review code, to refine and improve our SciX queries, and to identify papers for exclusion based on our internal criteria. All AI-driven query suggestions and exclusions were reviewed by humans. In accordance with The Planetary Society’s policy, beyond basic copyediting, AI was not used to write our analysis or narrative text. Some descriptive, functional text, such as tooltips on this dashboard, is AI-generated.</p>
 		</section>
 
 		<section id="citing">

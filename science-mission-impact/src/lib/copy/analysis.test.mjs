@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { cheapAsQuick, clpsCosts, edgeWords, favorsOver, mostUnreached, notLinear, rate, scienceOrder, selectionContrast, series, shortestTier, smallLowest, tierWords, topUnder } from './analysis.js';
+import { cheapAsQuick, cheapOverlap,clpsCosts, edgeWords, favorsOver, mostUnreached, notLinear, rate, scienceOrder, selectionContrast, series, shortestTier, smallLowest, tierWords, topUnder } from './analysis.js';
 import { range } from '../format.js';
 
 test('notLinear, topUnder and favorsOver gate the summary’s own sentences', () => {
@@ -98,7 +98,14 @@ test('mostUnreached reads a time tier\'s coverage', () => {
 	assert.deepEqual([t(6, 26), t(13, 26), t(14, 26), t(4, 4), t(0, 0)].map(mostUnreached), [true, false, false, false, false]);
 });
 
-test('cheapAsQuick: the cheapest tier within CLOSE_YEARS of the quickest one below the costliest', () => {
+test('cheapOverlap: the two cheapest tiers’ formulation intervals overlap', () => {
+	const t = (ci) => ({ formulation: { ci } });
+	assert.equal(cheapOverlap({ tiers: [t([3.88, 8.07]), t([5.58, 6.92]), t([8, 11.67])] }), true);
+	assert.equal(cheapOverlap({ tiers: [t([3, 5]), t([5.5, 7])] }), false);
+	assert.equal(cheapOverlap({ tiers: [t(null), t([5.5, 7])] }), false);
+});
+
+test('cheapAsQuick:the cheapest tier within CLOSE_YEARS of the quickest one below the costliest', () => {
 	const t = (median) => ({ formulation: { median } });
 	assert.equal(cheapAsQuick({ tiers: [t(5.8), t(5.92), t(9.58)] }), true);
 	assert.equal(cheapAsQuick({ tiers: [t(5.8), t(6.5), t(9.58)] }), false);

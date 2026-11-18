@@ -27,6 +27,7 @@ export function foldYears(counts, asOfYear) {
 /**
  * Turn `publications_by_year` (missions: `[{year,total,refereed}]`) or
  * `papers_by_year` (divisions: `{ "1990": 3, ... }`) into a year -> count Map.
+ * Mission counts use refereed papers to match the statistics and paper tables.
  */
 export function papersByYearMap(source) {
 	const out = new Map();
@@ -34,7 +35,7 @@ export function papersByYearMap(source) {
 		for (const row of source) {
 			const year = Number(row?.year);
 			if (!Number.isFinite(year)) continue;
-			const count = Number(row?.total ?? row?.refereed ?? 0);
+			const count = Number(row?.refereed ?? row?.total ?? 0);
 			if (!Number.isFinite(count)) continue;
 			out.set(year, (out.get(year) ?? 0) + count);
 		}

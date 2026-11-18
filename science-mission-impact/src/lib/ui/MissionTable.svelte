@@ -8,7 +8,7 @@
 	import { FOOTNOTES, noteText } from '$lib/copy/footnotes.js';
 	import { scopeLabel } from '$lib/copy/window.js';
 	import { exportUrl, methodsHref, missionHref, thumbSrc } from '$lib/paths.js';
-	import { apDate, int, weight, money } from '$lib/format.js';
+	import { apDate, int, monthYear, weight, money } from '$lib/format.js';
 
 	// rankable: false for a division too small to rank, which has no top-10% papers to show
 	let { missions, slug, site, scope = 'full', rankable = true, awaiting = false } = $props();
@@ -75,7 +75,7 @@
 			<th class="thumb"><span class="sr-only">Image</span></th>
 			{@render th('name', 'Mission', 'name')}
 			{@render th('launch', 'Launch', 'num wide')}
-			{#if awaiting}{@render th('primeEnd', 'Prime Mission End', 'num wide')}{/if}
+			{#if awaiting}{@render th('primeEnd', 'Prime mission end', 'num wide')}{/if}
 			{@render th('type', 'Type', 'type wide')}
 			{@render th('cost', `LCC (${site.costBaseYear} $)`, 'num mid', ['cost'])}
 			{@render th('papers', 'Publications', ranked ? 'num mid' : 'num', ['publications'])}
@@ -97,7 +97,7 @@
 				</td>
 				<td class="num wide"><Num value={m.launchYear ?? '—'} /></td>
 				{#if awaiting}
-					<td class="num wide">{#if m.dates?.primeEnd}<time datetime={m.dates.primeEnd}>{apDate(m.dates.primeEnd)}</time>{:else}—{/if}</td>
+					<td class="num wide">{#if m.dates?.primeEnd}<time datetime={m.dates.primeEnd}>{monthYear(m.dates.primeEnd)}</time>{:else}—{/if}</td>
 				{/if}
 				<td class="type wide">{m.type ?? '—'}</td>
 				<td class="num mid"><Num value={money(m.cost)} /></td>

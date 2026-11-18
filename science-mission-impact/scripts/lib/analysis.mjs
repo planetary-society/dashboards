@@ -68,11 +68,10 @@ export function rateSpread(values) {
 }
 
 /**
- * The distribution-free 95% interval for a median: the narrowest pair of order statistics
- * (x_(k), x_(n+1−k)) whose binomial(n, ½) coverage, 1 − 2·P(B < k), is at least 95%; null when even
- * (x_(1), x_(n)) falls short (fewer than six values).
+ * The innermost symmetric pair of order statistics whose binomial(n, ½) coverage,
+ * 1 − 2·P(B < k), reaches the requested confidence. Null if even the full range falls short.
  */
-export function medianInterval(values) {
+export function medianInterval(values, confidence = 0.95) {
 	const x = values.slice().sort((a, b) => a - b);
 	const n = x.length;
 	let pmf = 0.5 ** n; // P(B = 0)
@@ -80,17 +79,17 @@ export function medianInterval(values) {
 	let k = 0;
 	for (let j = 1; 2 * j <= n; j++) {
 		below += pmf;
-		if (1 - 2 * below < 0.95) break;
+		if (1 - 2 * below < confidence) break;
 		k = j;
 		pmf *= (n - j + 1) / j; // P(B = j)
 	}
 	return k ? [x[k - 1], x[n - k]] : null;
 }
 
-/** Median, minimum and the median's 95% interval (`medianInterval`) of the non-null values, in years (2 dp). */
-function years(values) {
+/** Median, minimum and confidence interval of the dated values, in years (2 dp). */
+function years(values, confidence) {
 	const known = values.filter((v) => v != null);
-	const ci = medianInterval(known);
+	const ci = medianInterval(known, confidence);
 	return { median: round(median(known), 2), min: known.length ? round(Math.min(...known), 2) : null, ci: ci && ci.map((v) => round(v, 2)) };
 }
 
@@ -125,28 +124,29 @@ function failureCell(members, divisions) {
  * One cost range's time to a first top-10% paper, from each of its flown missions' FirstTopPaper:
  * `first` (the Analysis page's, whenever published) or `firstAfterScience` (the overview's).
  */
-function timeCell(firsts) {
+function timeCell(firsts, confidence) {
 	const reached = firsts.filter((f) => f.state === 'reached');
 	return {
 		missions: firsts.length,
 		reached: reached.length,
 		without: firsts.length - reached.length,
 		undated: reached.filter((f) => f.yearsFromFormulation == null).length,
-		formulation: years(reached.map((f) => f.yearsFromFormulation)),
-		science: years(reached.map((f) => f.yearsFromScienceStart))
+		formulation: years(reached.map((f) => f.yearsFromFormulation), confidence),
+		science: years(reached.map((f) => f.yearsFromScienceStart), confidence)
 	};
 }
 
 /**
- * Every flown mission of one cost group with its own years to a first top-10% paper published once
+ * Every mission of one cost group with its own years to a first top-10% paper published once
  * science began, on both clocks (null where it has none, or a clock's start date is missing), in cost
- * order: the overview's swarm draws one mark per mission, those without a paper apart from the axis.
+ * order: the overview's swarm draws one mark per mission, those without a paper (failures among
+ * them, which have no time to science) apart from the axis.
  */
 const timePoints = (members) =>
-	members.map(({ id, name, firstAfterScience: first }) => {
-		const reached = first.state === 'reached';
+	members.map(({ id, name, failed, shortfall, firstAfterScience: first }) => {
+		const reached = !failed && first.state === 'reached';
 		const at = (v) => (reached && v != null ? round(v, 2) : null);
-		return { id, name, reached, formulation: at(first.yearsFromFormulation), science: at(first.yearsFromScienceStart) };
+		return { id, name, reached, failed, shortfall, formulation: at(first?.yearsFromFormulation), science: at(first?.yearsFromScienceStart) };
 	});
 
 /** Missions and shortfalls on one side of the threshold, the rate unrounded. */
@@ -166,6 +166,7 @@ const shortfallSide = (list) => {
  */
 export function buildAnalysis(divisionDocs, { thresholdCost, costTiers, costGroups, focusDivision = null, divisions = divisionDocs }) {
 	const tiers = ranges(costTiers);
+	const tierConfidence = 0.90; // Figure 1 can show the same interval for tiers with as few as five dated missions.
 	const groups = ranges(costGroups);
 	const docOf = new Map(divisionDocs.map((d) => [d.slug, d]));
 	const cutoffOf = (doc, percent) => doc?.stats?.full?.cutoffs?.find((c) => c.percent === percent)?.citations;
@@ -237,11 +238,14 @@ export function buildAnalysis(divisionDocs, { thresholdCost, costTiers, costGrou
 			return { ...rateSpread(members.map((m) => m.rate)), shortfall: members.filter((m) => m.shortfall).length, failed: members.filter((m) => m.failed).length };
 		}),
 		time: {
-			tiers: tiers.map((_, t) => timeCell(ofTier(flown, t).map((m) => m.first))),
-			// the overview's groups count only papers published once science began, so no time from it is negative
+			tierConfidence,
+			tiers: tiers.map((_, t) => timeCell(ofTier(flown, t).map((m) => m.first), tierConfidence)),
+			// the overview's groups count only papers published once science began, so no time from it is
+			// negative; they keep failures, in `without` (a failure never reaches a paper) and `failed`
 			groups: groups.map((_, g) => {
-				const members = ofGroup(flown, g);
-				return { ...timeCell(members.map((m) => m.firstAfterScience)), points: timePoints(members) };
+				const members = ofGroup(missions, g);
+				const firsts = members.map((m) => (m.failed ? { state: 'failed' } : m.firstAfterScience));
+				return { ...timeCell(firsts, 0.95), failed: members.filter((m) => m.failed).length, points: timePoints(members) };
 			}),
 			failedExcluded: missions.length - flown.length,
 			fastest: fastestOf(flown),

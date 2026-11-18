@@ -8,8 +8,8 @@
   "meta": {
     "status": "Extended Mission",
     "failed": false,
-    "cost": 1670.9,
-    "lcc": 1129,
+    "cost": 1705,
+    "lcc": 1152,
     "type": "Orbiter",
     "selection": "competed",
     "management": "pi",
@@ -17,6 +17,7 @@
     "target": "Jupiter",
     "launchVehicle": "Atlas V",
     "wikipedia": "https://en.wikipedia.org/wiki/Juno_(spacecraft)",
+    "bibliography": "https://scixplorer.org/search?d=planetary&p=1&p_=0&q=(docs(library%2FBAistsINTI2G89xSiNomNw)+OR+%3Dabs%3A%22Jupiter+Near-polar+Orbiter%22+OR+%3Dabs%3A%22Juno+Spacecraft%22+OR+(%3Dabs%3AJuno+AND+(abs%3AJupiter+OR+abs%3AThebe+OR+abs%3AAmalthea+OR+abs%3AAdrastea+OR+abs%3AMetis+OR+abs%3AIo+OR+abs%3AEuropa+OR+abs%3AGanymede+OR+abs%3ACallisto+OR+abs%3A%22Microwave+radiometer%22+OR+abs%3A%22Jovian+Infrared+Auroral+Mapper%22+OR+abs%3AJIRAM+OR+abs%3A%22Jovian+Auroral+Distributions+Experiment%22+OR+abs%3A%22Jovian+Energetic+Particle+Detector+Instrument%22+OR+abs%3A%22Radio+and+Plasma+Wave+Sensor%22+OR+abs%3A%22Ultraviolet+Spectrograph%22+OR+abs%3A%22JunoCam%22+OR+abs%3A%22Fluxgate+Magnetomer%22)))+AND+year%3A2016-2030+AND+doctype%3Aarticle+AND+property%3Arefereed+&sort=citation_count+desc&sort=date+desc",
     "firstSciencePublication": "10.1007/s10509-016-2842-9",
     "dates": {
       "formulation": "2005-06-01",
@@ -30,13 +31,13 @@
     "h": 63,
     "m": 5.727,
     "i100": 28,
-    "g": 101,
-    "tori": 53.466,
-    "riq": 609
+    "g": 102,
+    "tori": 55.834,
+    "riq": 622
   },
   "facts": {
-    "papers": 839,
-    "citations": 19181,
+    "papers": 840,
+    "citations": 19289,
     "publicationYears": [
       2016,
       2026
@@ -67,7 +68,7 @@
       75,
       108,
       114,
-      88
+      89
     ],
     "citations": [
       4,
@@ -79,19 +80,19 @@
       1968,
       2309,
       2821,
-      3378,
-      3478
+      3369,
+      3595
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 19181,
-      "observed": 19181,
+      "expected": 19289,
+      "observed": 19289,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 839,
+    "papers": 840,
     "us": {
       "mapped": 637,
       "top": [
@@ -110,7 +111,7 @@
       ]
     },
     "world": {
-      "mapped": 800,
+      "mapped": 801,
       "top": [
         {
           "name": "Southwest Research Institute, Texas",
@@ -127,6 +128,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 527,
+    "us": {
+      "mapped": 425,
+      "top": [
+        {
+          "name": "Southwest Research Institute, Texas",
+          "papers": 272
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 192
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 169
+        }
+      ]
+    },
+    "world": {
+      "mapped": 511,
+      "top": [
+        {
+          "name": "Southwest Research Institute, Texas",
+          "papers": 272
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 192
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 169
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2021AJ....161..105P",
     "title": "The JPL Planetary and Lunar Ephemerides DE440 and DE441",
@@ -139,51 +177,51 @@
     ],
     "authorCount": 4,
     "year": 2021,
-    "citations": 521
+    "citations": 523
   },
   "ranks": {
     "full": {
       "bins": [
-        17.508,
-        37.913,
-        34.909,
-        36.843,
-        62.304,
-        67.014,
-        71.719,
-        67.931,
-        70.023,
-        60.836
+        18.07,
+        38.234,
+        35.335,
+        37.582,
+        61.453,
+        66.651,
+        71.5,
+        67.457,
+        70.325,
+        60.393
       ],
       "top1": 6
     },
     "window": {
       "bins": [
-        17.148,
-        43.202,
-        45.628,
-        55.45,
-        65.559,
-        71.242,
-        57.781,
-        57.943,
-        43.27,
-        37.778
+        17.763,
+        44.729,
+        45.748,
+        55.748,
+        65.486,
+        70.808,
+        57.359,
+        57.175,
+        42.892,
+        37.293
       ],
       "top1": 3
     },
     "lifetime": {
       "bins": [
-        110.126,
-        115.938,
-        112.889,
-        96.076,
-        98.312,
-        95.309,
-        79.287,
-        56.67,
-        37.573,
-        36.819
+        110.239,
+        117.174,
+        113.196,
+        96.576,
+        97.993,
+        94.687,
+        78.968,
+        56.679,
+        37.488,
+        37
       ],
       "top1": 4
     }
@@ -191,11 +229,11 @@
   "full": {
     "papers": 527,
     "outputBasis": "measured",
-    "citations": 9149,
-    "top10": 60.336,
-    "top10ShareOfDivision": 0.05552,
+    "citations": 9150,
+    "top10": 59.893,
+    "top10ShareOfDivision": 0.05516,
     "top1": 6,
-    "top1ShareOfDivision": 0.05521,
+    "top1ShareOfDivision": 0.05526,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.433,
@@ -218,7 +256,7 @@
       "m": 5.592
     },
     "spread": {
-      "mean": 17.361,
+      "mean": 17.362,
       "median": 12,
       "uncited": 6,
       "i10": 316,
@@ -229,10 +267,10 @@
     "papers": 495,
     "outputBasis": "measured",
     "citations": 8712,
-    "top10": 37.778,
-    "top10ShareOfDivision": 0.07887,
+    "top10": 37.293,
+    "top10ShareOfDivision": 0.07945,
     "top1": 3,
-    "top1ShareOfDivision": 0.06263,
+    "top1ShareOfDivision": 0.06391,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.676,
@@ -263,11 +301,11 @@
     }
   },
   "lifetime": {
-    "papers": 839,
+    "papers": 840,
     "outputBasis": "measured",
-    "citations": 19181,
-    "top10": 34.41,
-    "top10ShareOfDivision": 0.02186,
+    "citations": 19289,
+    "top10": 34.5,
+    "top10ShareOfDivision": 0.02188,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -278,10 +316,10 @@
       "date": "2016-03-00"
     },
     "spread": {
-      "mean": 22.862,
+      "mean": 22.963,
       "median": 11,
-      "uncited": 76,
-      "i10": 450,
+      "uncited": 75,
+      "i10": 452,
       "i100": 28
     }
   },
@@ -289,15 +327,15 @@
     "arms": "((=abs:\"Juno mission\" OR =abs:\"Juno spacecraft\" OR =abs:\"Jupiter Near-polar Orbiter\" OR ((=abs:Juno OR abs:JIRAM OR =abs:JunoCam) AND (abs:Jupiter OR abs:Jovian OR abs:Io OR abs:Europa OR abs:Ganymede OR abs:Callisto OR abs:Thebe OR abs:Amalthea OR abs:Adrastea OR abs:Metis))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2016-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Juno+mission%22+OR+%3Dabs%3A%22Juno+spacecraft%22+OR+%3Dabs%3A%22Jupiter+Near-polar+Orbiter%22+OR+%28%28%3Dabs%3AJuno+OR+abs%3AJIRAM+OR+%3Dabs%3AJunoCam%29+AND+%28abs%3AJupiter+OR+abs%3AJovian+OR+abs%3AIo+OR+abs%3AEuropa+OR+abs%3AGanymede+OR+abs%3ACallisto+OR+abs%3AThebe+OR+abs%3AAmalthea+OR+abs%3AAdrastea+OR+abs%3AMetis%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2016-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:00:25.715126+00:00",
+    "fetchedAt": "2026-11-18T18:18:56.667279+00:00",
     "reconciliation": {
-      "adsReturned": 858,
+      "adsReturned": 859,
       "curatedOut": 21,
       "curatedIn": 2,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 839
+      "final": 840
     }
   },
   "curation": {
@@ -506,7 +544,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 521
+      "citations": 523
     },
     {
       "bibcode": "2017SSRv..213....5B",
@@ -515,7 +553,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 346
+      "citations": 347
     },
     {
       "bibcode": "2017GeoRL..44.4649W",
@@ -524,7 +562,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 343
+      "citations": 345
     },
     {
       "bibcode": "2017SSRv..213...39C",
@@ -551,7 +589,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 279
+      "citations": 281
     },
     {
       "bibcode": "2017Sci...356..821B",
@@ -560,7 +598,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 278
+      "citations": 281
     },
     {
       "bibcode": "2017MNRAS.469.3994B",
@@ -569,7 +607,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 243
+      "citations": 242
     },
     {
       "bibcode": "2018Natur.555..223K",
@@ -587,7 +625,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 207
+      "citations": 209
     },
     {
       "bibcode": "2022JGRE..12707055C",
@@ -596,7 +634,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 194
+      "citations": 197
     },
     {
       "bibcode": "2017SSRv..213..347K",
@@ -605,7 +643,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 191
+      "citations": 192
     },
     {
       "bibcode": "2017SSRv..213..219B",
@@ -623,7 +661,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 184
+      "citations": 186
     },
     {
       "bibcode": "2018Natur.555..220I",
@@ -641,7 +679,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 162
+      "citations": 164
     },
     {
       "bibcode": "2018Natur.555..227G",
@@ -668,19 +706,19 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 142
+      "citations": 143
     },
     {
-      "bibcode": "2017GeoRL..44.5317L",
-      "title": "The distribution of ammonia on Jupiter from a preliminary inversion of Juno microwave radiometer data",
-      "firstAuthor": "Li, Cheng",
+      "bibcode": "2017SSRv..213..447G",
+      "title": "The Ultraviolet Spectrograph on NASA's Juno Mission",
+      "firstAuthor": "Gladstone, G. Randall",
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 140
+      "citations": 141
     }
   ],
   "papersFile": {
-    "rows": 839
+    "rows": 840
   }
 }

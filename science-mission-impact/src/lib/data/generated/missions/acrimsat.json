@@ -8,8 +8,8 @@
   "meta": {
     "status": "Completed",
     "failed": false,
-    "cost": 36.2,
-    "lcc": 17.5,
+    "cost": 62.1,
+    "lcc": 30,
     "type": "Orbiter",
     "selection": "directed",
     "management": null,
@@ -17,11 +17,12 @@
     "target": "Sun",
     "launchVehicle": "Taurus",
     "wikipedia": "https://en.wikipedia.org/wiki/ACRIMSAT",
+    "bibliography": null,
     "firstSciencePublication": "10.1029/2002GL016038",
     "dates": {
       "formulation": "1995-02-03",
       "launch": "1999-12-21",
-      "scienceStart": "1999-12-21",
+      "scienceStart": "2000-04-05",
       "primeEnd": "2005-01-01",
       "missionEnd": "2013-12-14"
     }
@@ -166,6 +167,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 12,
+    "us": {
+      "mapped": 6,
+      "top": [
+        {
+          "name": "California State University System",
+          "papers": 2
+        },
+        {
+          "name": "Duke University, North Carolina",
+          "papers": 2
+        },
+        {
+          "name": "Columbia University, New York",
+          "papers": 1
+        }
+      ]
+    },
+    "world": {
+      "mapped": 9,
+      "top": [
+        {
+          "name": "California State University System",
+          "papers": 2
+        },
+        {
+          "name": "Duke University, North Carolina",
+          "papers": 2
+        },
+        {
+          "name": "Australian National University, Canberra",
+          "papers": 1
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2003GeoRL..30.1199W",
     "title": "Secular total solar irradiance trend during solar cycles 21-23",
@@ -181,14 +219,14 @@
   "ranks": {
     "full": {
       "bins": [
-        1.294,
-        0.706,
+        1.305,
+        0.695,
         0,
-        1.421,
-        2.579,
-        1.648,
-        1.977,
-        1.375,
+        1.475,
+        2.525,
+        1.738,
+        1.996,
+        1.266,
         0,
         1
       ],
@@ -196,11 +234,11 @@
     },
     "window": {
       "bins": [
-        1.382,
-        0.618,
+        1.385,
+        0.615,
         0,
-        0.399,
-        0.601,
+        0.407,
+        0.593,
         0,
         0,
         0,
@@ -211,14 +249,14 @@
     },
     "lifetime": {
       "bins": [
-        0.32,
-        0.68,
+        0.308,
+        0.692,
         0,
         1,
         3,
         2,
-        1.31,
-        1.69,
+        1.374,
+        1.626,
         1,
         1
       ],
@@ -235,24 +273,24 @@
     "top1ShareOfDivision": 0,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 3.192,
+      "yearsFromScienceStart": 2.902,
       "yearsFromFormulation": 8.071,
       "bibcode": "2003GeoRL..30.1199W",
       "date": "2003-03-00"
     },
     "status": "available",
     "bounds": {
-      "start": "2000-01-01",
+      "start": "2000-05-01",
       "end": "2016-01-01",
       "matureDate": "2018-10-01",
       "status": "available",
-      "months": 192,
+      "months": 188,
       "citationBuckets": 19
     },
     "indices": {
       "h": 6,
       "g": 10,
-      "m": 0.375
+      "m": 0.383
     },
     "spread": {
       "mean": 9.833,
@@ -267,29 +305,29 @@
     "outputBasis": "measured",
     "citations": 46,
     "top10": 1,
-    "top10ShareOfDivision": 0.001,
+    "top10ShareOfDivision": 0.00103,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 3.192,
+      "yearsFromScienceStart": 2.902,
       "yearsFromFormulation": 8.071,
       "bibcode": "2003GeoRL..30.1199W",
       "date": "2003-03-00"
     },
     "status": "available",
     "bounds": {
-      "start": "2000-01-01",
+      "start": "2000-05-01",
       "end": "2007-02-01",
       "matureDate": "2010-10-01",
       "status": "available",
-      "months": 85,
+      "months": 81,
       "citationBuckets": 11
     },
     "indices": {
       "h": 2,
       "g": 3,
-      "m": 0.282
+      "m": 0.296
     },
     "spread": {
       "mean": 11.5,
@@ -309,7 +347,7 @@
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 3.192,
+      "yearsFromScienceStart": 2.902,
       "yearsFromFormulation": 8.071,
       "bibcode": "2003GeoRL..30.1199W",
       "date": "2003-03-00"
@@ -324,9 +362,9 @@
   },
   "query": {
     "arms": "((abs:\"ACRIMSAT\" OR abs:\"Active Cavity Radiometer Irradiance Monitor Satellite\" OR abs:\"ACRIM3\" OR abs:\"ACRIM-3\" OR abs:\"ACRIM 3\" OR abs:\"ACRIM III\"))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2000-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22ACRIMSAT%22+OR+abs%3A%22Active+Cavity+Radiometer+Irradiance+Monitor+Satellite%22+OR+abs%3A%22ACRIM3%22+OR+abs%3A%22ACRIM-3%22+OR+abs%3A%22ACRIM+3%22+OR+abs%3A%22ACRIM+III%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:04:41.596735+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2000-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22ACRIMSAT%22+OR+abs%3A%22Active+Cavity+Radiometer+Irradiance+Monitor+Satellite%22+OR+abs%3A%22ACRIM3%22+OR+abs%3A%22ACRIM-3%22+OR+abs%3A%22ACRIM+3%22+OR+abs%3A%22ACRIM+III%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2000-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-16T17:30:24.820054+00:00",
     "reconciliation": {
       "adsReturned": 11,
       "curatedOut": 1,

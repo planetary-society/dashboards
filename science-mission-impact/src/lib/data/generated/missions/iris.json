@@ -8,7 +8,7 @@
   "meta": {
     "status": "Extended Mission",
     "failed": false,
-    "cost": 172.4,
+    "cost": 170.6,
     "lcc": 120,
     "type": "Remote Sensing Observatory",
     "selection": "competed",
@@ -17,12 +17,13 @@
     "target": "Sun-Earth Interaction",
     "launchVehicle": "Pegasus XL",
     "wikipedia": "https://en.wikipedia.org/wiki/Interface_Region_Imaging_Spectrograph",
+    "bibliography": "https://pyoung.org/iris/publications/iris_big_list.html",
     "firstSciencePublication": "10.1088/0004-637X/786/2/137",
     "dates": {
       "formulation": "2009-06-19",
       "launch": "2013-06-28",
       "scienceStart": "2013-07-17",
-      "primeEnd": "2016-12-01",
+      "primeEnd": "2015-08-01",
       "missionEnd": null
     }
   },
@@ -31,12 +32,12 @@
     "m": 4.714,
     "i100": 27,
     "g": 99,
-    "tori": 63.392,
+    "tori": 63.282,
     "riq": 568
   },
   "facts": {
-    "papers": 678,
-    "citations": 19146,
+    "papers": 680,
+    "citations": 19181,
     "publicationYears": [
       2013,
       2026
@@ -67,19 +68,19 @@
       58,
       63,
       53,
-      58,
+      57,
       44,
       58,
       57,
       54,
       36,
-      47
+      50
     ],
     "citations": [
       7,
       82,
       487,
-      808,
+      810,
       1052,
       1346,
       1675,
@@ -89,18 +90,18 @@
       1841,
       2064,
       1910,
-      2283
+      2316
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 19146,
-      "observed": 19146,
+      "expected": 19181,
+      "observed": 19181,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 678,
+    "papers": 680,
     "us": {
       "mapped": 325,
       "top": [
@@ -119,7 +120,7 @@
       ]
     },
     "world": {
-      "mapped": 648,
+      "mapped": 651,
       "top": [
         {
           "name": "University of Oslo, Norway",
@@ -136,6 +137,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 540,
+    "us": {
+      "mapped": 264,
+      "top": [
+        {
+          "name": "Lockheed Martin Corporation",
+          "papers": 112
+        },
+        {
+          "name": "Bay Area Environmental Research Institute, California",
+          "papers": 74
+        },
+        {
+          "name": "Harvard Smithsonian Center for Astrophysics",
+          "papers": 57
+        }
+      ]
+    },
+    "world": {
+      "mapped": 519,
+      "top": [
+        {
+          "name": "Lockheed Martin Corporation",
+          "papers": 112
+        },
+        {
+          "name": "University of Oslo, Norway",
+          "papers": 106
+        },
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 79
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2014SoPh..289.2733D",
     "title": "The Interface Region Imaging Spectrograph (IRIS)",
@@ -148,63 +186,63 @@
     ],
     "authorCount": 88,
     "year": 2014,
-    "citations": 1294
+    "citations": 1304
   },
   "ranks": {
     "full": {
       "bins": [
-        19.239,
-        22.938,
-        35.078,
-        39.731,
-        49.6,
-        53.788,
-        61.863,
-        91.174,
-        80.325,
-        87.265
+        18.391,
+        23.389,
+        34.922,
+        39.734,
+        50.514,
+        52.819,
+        62.387,
+        90.782,
+        80.357,
+        86.704
       ],
       "top1": 3
     },
     "window": {
       "bins": [
-        6.786,
-        11.479,
-        16.448,
-        24.078,
-        30.711,
-        28.376,
-        42.794,
-        39.536,
-        37.234,
-        33.557
+        5.727,
+        5.657,
+        9.797,
+        15.828,
+        17.497,
+        19.653,
+        28.369,
+        26.766,
+        27.706,
+        31
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        52.845,
-        57.718,
-        64.664,
-        66.999,
-        70.592,
-        78.021,
-        89.273,
-        75.529,
-        74.096,
-        48.264
+        54.504,
+        57.049,
+        62.304,
+        70.899,
+        70.742,
+        79.029,
+        86.228,
+        77.878,
+        72.367,
+        49
       ],
       "top1": 2
     }
   },
   "full": {
-    "papers": 541,
+    "papers": 540,
     "outputBasis": "measured",
-    "citations": 8449,
-    "top10": 66.455,
-    "top10ShareOfDivision": 0.0461,
+    "citations": 8456,
+    "top10": 65.939,
+    "top10ShareOfDivision": 0.04582,
     "top1": 3,
-    "top1ShareOfDivision": 0.02081,
+    "top1ShareOfDivision": 0.02085,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.041,
@@ -227,21 +265,21 @@
       "m": 3.456
     },
     "spread": {
-      "mean": 15.617,
+      "mean": 15.659,
       "median": 13,
-      "uncited": 14,
+      "uncited": 13,
       "i10": 331,
       "i100": 1
     }
   },
   "window": {
-    "papers": 271,
+    "papers": 188,
     "outputBasis": "measured",
-    "citations": 5071,
-    "top10": 28.057,
-    "top10ShareOfDivision": 0.06325,
+    "citations": 3947,
+    "top10": 25.5,
+    "top10ShareOfDivision": 0.0601,
     "top1": 1,
-    "top1ShareOfDivision": 0.02254,
+    "top1ShareOfDivision": 0.02357,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.041,
@@ -252,31 +290,31 @@
     "status": "available",
     "bounds": {
       "start": "2013-08-01",
-      "end": "2019-01-01",
-      "matureDate": "2021-10-01",
+      "end": "2017-09-01",
+      "matureDate": "2020-10-01",
       "status": "available",
-      "months": 65,
-      "citationBuckets": 9
+      "months": 49,
+      "citationBuckets": 8
     },
     "indices": {
-      "h": 33,
-      "g": 47,
-      "m": 6.091
+      "h": 31,
+      "g": 46,
+      "m": 7.589
     },
     "spread": {
-      "mean": 18.712,
-      "median": 15,
-      "uncited": 6,
-      "i10": 186,
+      "mean": 20.995,
+      "median": 16,
+      "uncited": 5,
+      "i10": 137,
       "i100": 1
     }
   },
   "lifetime": {
-    "papers": 678,
+    "papers": 680,
     "outputBasis": "measured",
-    "citations": 19146,
-    "top10": 37.931,
-    "top10ShareOfDivision": 0.02065,
+    "citations": 19181,
+    "top10": 38.667,
+    "top10ShareOfDivision": 0.02105,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -287,9 +325,9 @@
       "date": "2013-08-00"
     },
     "spread": {
-      "mean": 28.239,
-      "median": 16.5,
-      "uncited": 37,
+      "mean": 28.207,
+      "median": 16,
+      "uncited": 39,
       "i10": 443,
       "i100": 27
     }
@@ -298,15 +336,15 @@
     "arms": "((=abs:\"Interface Region Imaging Spectrograph\" OR (abs:\"IRIS\" AND NOT =abs:Voyager AND NOT =abs:\"IRIS rocket\" AND NOT =abs:\"coronas-f\" AND NOT =abs:\"koronas-f\" AND (=abs:sun OR abs:chromosphere OR abs:corona OR abs:flare))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2013-08 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Interface+Region+Imaging+Spectrograph%22+OR+%28abs%3A%22IRIS%22+AND+NOT+%3Dabs%3AVoyager+AND+NOT+%3Dabs%3A%22IRIS+rocket%22+AND+NOT+%3Dabs%3A%22coronas-f%22+AND+NOT+%3Dabs%3A%22koronas-f%22+AND+%28%3Dabs%3Asun+OR+abs%3Achromosphere+OR+abs%3Acorona+OR+abs%3Aflare%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2013-08+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:12:58.169646+00:00",
+    "fetchedAt": "2026-11-18T18:30:27.784231+00:00",
     "reconciliation": {
-      "adsReturned": 680,
+      "adsReturned": 683,
       "curatedOut": 2,
       "curatedIn": 0,
       "libraryOut": 0,
-      "otherOut": 0,
+      "otherOut": 1,
       "duplicates": 0,
-      "final": 678
+      "final": 680
     }
   },
   "curation": {
@@ -338,7 +376,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 1294
+      "citations": 1304
     },
     {
       "bibcode": "2014Sci...346A.315T",
@@ -359,15 +397,6 @@
       "citations": 242
     },
     {
-      "bibcode": "2014Sci...346C.315P",
-      "title": "Hot explosions in the cool atmosphere of the Sun",
-      "firstAuthor": "Peter, H.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2014,
-      "citations": 200
-    },
-    {
       "bibcode": "2017Sci...356.1269M",
       "title": "On the generation of solar spicules and Alfvénic waves",
       "firstAuthor": "Martínez-Sykora, J.",
@@ -375,6 +404,15 @@
       "authorCount": null,
       "year": 2017,
       "citations": 200
+    },
+    {
+      "bibcode": "2014Sci...346C.315P",
+      "title": "Hot explosions in the cool atmosphere of the Sun",
+      "firstAuthor": "Peter, H.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2014,
+      "citations": 199
     },
     {
       "bibcode": "2013ApJ...772...89L",
@@ -392,7 +430,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 162
+      "citations": 163
     },
     {
       "bibcode": "2014Sci...346B.315T",
@@ -401,7 +439,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 151
+      "citations": 152
     },
     {
       "bibcode": "2015ApJ...807L..22G",
@@ -410,16 +448,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 149
-    },
-    {
-      "bibcode": "2014ApJ...797L..14T",
-      "title": "Imaging and Spectroscopic Observations of Magnetic Reconnection and Chromospheric Evaporation in a Solar Flare",
-      "firstAuthor": "Tian, Hui",
-      "authors": null,
-      "authorCount": null,
-      "year": 2014,
-      "citations": 139
+      "citations": 150
     },
     {
       "bibcode": "2015ApJ...811..139T",
@@ -428,6 +457,15 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
+      "citations": 141
+    },
+    {
+      "bibcode": "2014ApJ...797L..14T",
+      "title": "Imaging and Spectroscopic Observations of Magnetic Reconnection and Chromospheric Evaporation in a Solar Flare",
+      "firstAuthor": "Tian, Hui",
+      "authors": null,
+      "authorCount": null,
+      "year": 2014,
       "citations": 139
     },
     {
@@ -446,7 +484,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 133
+      "citations": 134
     },
     {
       "bibcode": "2015ApJ...809...72A",
@@ -476,6 +514,24 @@
       "citations": 124
     },
     {
+      "bibcode": "2014ApJ...786..137T",
+      "title": "High-resolution Observations of the Shock Wave Behavior for Sunspot Oscillations with the Interface Region Imaging Spectrograph",
+      "firstAuthor": "Tian, H.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2014,
+      "citations": 120
+    },
+    {
+      "bibcode": "2015ApJ...801...83C",
+      "title": "Homologous Helical Jets: Observations By IRIS, SDO, and Hinode and Magnetic Modeling With Data-Driven Simulations",
+      "firstAuthor": "Cheung, Mark C. M.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2015,
+      "citations": 120
+    },
+    {
       "bibcode": "2017ApJ...836...12K",
       "title": "The Atmospheric Response to High Nonthermal Electron Beam Fluxes in Solar Flares. I. Modeling the Brightest NUV Footpoints in the X1 Solar Flare of 2014 March 29",
       "firstAuthor": "Kowalski, Adam F.",
@@ -485,34 +541,16 @@
       "citations": 120
     },
     {
-      "bibcode": "2014ApJ...786..137T",
-      "title": "High-resolution Observations of the Shock Wave Behavior for Sunspot Oscillations with the Interface Region Imaging Spectrograph",
-      "firstAuthor": "Tian, H.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2014,
-      "citations": 119
-    },
-    {
       "bibcode": "2017ApJ...839...22H",
       "title": "Bombs and Flares at the Surface and Lower Atmosphere of the Sun",
       "firstAuthor": "Hansteen, V. H.",
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 119
-    },
-    {
-      "bibcode": "2015ApJ...801...83C",
-      "title": "Homologous Helical Jets: Observations By IRIS, SDO, and Hinode and Magnetic Modeling With Data-Driven Simulations",
-      "firstAuthor": "Cheung, Mark C. M.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2015,
       "citations": 118
     }
   ],
   "papersFile": {
-    "rows": 678
+    "rows": 680
   }
 }

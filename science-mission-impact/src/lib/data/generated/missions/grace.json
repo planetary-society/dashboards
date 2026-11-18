@@ -17,11 +17,12 @@
     "target": "Earth",
     "launchVehicle": "Rokot",
     "wikipedia": "https://en.wikipedia.org/wiki/GRACE_and_GRACE-FO",
+    "bibliography": "https://grace.jpl.nasa.gov/publications/?page=0&per_page=40&order=publication_year+desc%2C+created_at+desc&fts=&full_text_search=true&advanced=true",
     "firstSciencePublication": "10.1029/2003GL018622",
     "dates": {
       "formulation": "1997-05-01",
       "launch": "2002-03-17",
-      "scienceStart": "2002-03-17",
+      "scienceStart": null,
       "primeEnd": "2007-03-17",
       "missionEnd": "2017-10-27"
     }
@@ -29,14 +30,14 @@
   "indices": {
     "h": 166,
     "m": 6.64,
-    "i100": 348,
+    "i100": 347,
     "g": 286,
-    "tori": 962.56,
-    "riq": 1193
+    "tori": 981.673,
+    "riq": 1205
   },
   "facts": {
-    "papers": 4707,
-    "citations": 175160,
+    "papers": 4727,
+    "citations": 175646,
     "publicationYears": [
       2002,
       2026
@@ -80,12 +81,12 @@
       93,
       119,
       106,
-      151,
-      183,
+      150,
+      182,
       149,
       150,
       181,
-      209,
+      208,
       201,
       212,
       278,
@@ -95,7 +96,7 @@
       338,
       334,
       391,
-      386
+      409
     ],
     "citations": [
       10,
@@ -103,39 +104,39 @@
       144,
       378,
       746,
-      1033,
-      1432,
-      1709,
+      1032,
+      1433,
+      1708,
       2228,
       2583,
-      3732,
+      3719,
       3872,
-      5028,
-      5241,
-      6303,
-      6737,
+      5029,
+      5299,
+      6701,
+      6806,
       8241,
-      10283,
-      11716,
-      14670,
-      15657,
-      16730,
-      17280,
-      20830,
-      18527
+      10282,
+      11714,
+      14671,
+      15658,
+      16734,
+      17274,
+      20825,
+      18509
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 175160,
-      "observed": 175160,
+      "expected": 175646,
+      "observed": 175646,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 4707,
+    "papers": 4727,
     "us": {
-      "mapped": 1266,
+      "mapped": 1268,
       "top": [
         {
           "name": "University of Texas, Austin",
@@ -152,7 +153,7 @@
       ]
     },
     "world": {
-      "mapped": 3872,
+      "mapped": 3886,
       "top": [
         {
           "name": "Chinese Academy of Sciences, Beijing",
@@ -169,6 +170,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 2283,
+    "us": {
+      "mapped": 794,
+      "top": [
+        {
+          "name": "University of Texas, Austin",
+          "papers": 155
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 154
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 138
+        }
+      ]
+    },
+    "world": {
+      "mapped": 1976,
+      "top": [
+        {
+          "name": "Helmholtz Association of German Research Centers",
+          "papers": 181
+        },
+        {
+          "name": "University of Texas, Austin",
+          "papers": 155
+        },
+        {
+          "name": "Jet Propulsion Laboratory",
+          "papers": 154
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2004GeoRL..31.9607T",
     "title": "The gravity recovery and climate experiment: Mission overview and early results",
@@ -181,63 +219,63 @@
     ],
     "authorCount": 4,
     "year": 2004,
-    "citations": 2112
+    "citations": 2127
   },
   "ranks": {
     "full": {
       "bins": [
-        235.218,
-        199.273,
-        173.114,
-        213.196,
-        205.721,
-        228.662,
-        221.825,
-        254.35,
-        263.336,
-        291.305
+        231.885,
+        197.63,
+        174.903,
+        211.951,
+        205.364,
+        229.264,
+        219.64,
+        260.286,
+        259.484,
+        292.594
       ],
-      "top1": 48.748
+      "top1": 48.342
     },
     "window": {
       "bins": [
-        62.235,
-        44.881,
-        41.304,
-        30.362,
-        35.201,
-        52.442,
-        42.339,
-        47.105,
-        43.205,
-        35.926
+        62.308,
+        44.691,
+        41.354,
+        30.531,
+        35.258,
+        52.396,
+        42.623,
+        46.752,
+        43.268,
+        35.82
       ],
       "top1": 5
     },
     "lifetime": {
       "bins": [
-        519.301,
-        496.855,
-        419.519,
-        439.281,
-        480.231,
-        450.255,
-        449.558,
-        480.244,
-        472.788,
-        498.968
+        536.395,
+        496.785,
+        421.177,
+        438.18,
+        480.814,
+        451.707,
+        450.018,
+        479.534,
+        473.219,
+        499.172
       ],
       "top1": 64
     }
   },
   "full": {
-    "papers": 2286,
+    "papers": 2283,
     "outputBasis": "measured",
-    "citations": 32801,
-    "top10": 283.696,
-    "top10ShareOfDivision": 0.07256,
-    "top1": 47.748,
-    "top1ShareOfDivision": 0.12212,
+    "citations": 32920,
+    "top10": 285.128,
+    "top10ShareOfDivision": 0.0729,
+    "top1": 47.342,
+    "top1ShareOfDivision": 0.12104,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.374,
@@ -260,21 +298,21 @@
       "m": 3.81
     },
     "spread": {
-      "mean": 14.349,
+      "mean": 14.42,
       "median": 8,
-      "uncited": 192,
-      "i10": 1012,
+      "uncited": 188,
+      "i10": 1018,
       "i100": 30
     }
   },
   "window": {
     "papers": 435,
     "outputBasis": "measured",
-    "citations": 5550,
-    "top10": 35.926,
-    "top10ShareOfDivision": 0.03599,
+    "citations": 5549,
+    "top10": 35.82,
+    "top10ShareOfDivision": 0.03674,
     "top1": 5,
-    "top1ShareOfDivision": 0.05009,
+    "top1ShareOfDivision": 0.05128,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 2.125,
@@ -297,7 +335,7 @@
       "m": 4.714
     },
     "spread": {
-      "mean": 12.759,
+      "mean": 12.756,
       "median": 8,
       "uncited": 50,
       "i10": 189,
@@ -305,11 +343,11 @@
     }
   },
   "lifetime": {
-    "papers": 4707,
+    "papers": 4727,
     "outputBasis": "measured",
-    "citations": 175160,
-    "top10": 477.302,
-    "top10ShareOfDivision": 0.09139,
+    "citations": 175646,
+    "top10": 477.505,
+    "top10ShareOfDivision": 0.09131,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -320,26 +358,26 @@
       "date": "2002-05-00"
     },
     "spread": {
-      "mean": 37.213,
+      "mean": 37.158,
       "median": 14,
-      "uncited": 438,
-      "i10": 2826,
-      "i100": 348
+      "uncited": 459,
+      "i10": 2830,
+      "i100": 347
     }
   },
   "query": {
     "arms": "((((=abs:\"Gravity Recovery and Climate Experiment\" OR (abs:GRACE AND (abs:(satellite OR gravity OR geoid OR gravimetry OR mission OR hydrology OR mascon OR plasma OR ionosphere OR thermosphere) OR =abs:groundwater OR =abs:\"water storage\" OR =abs:\"mass concentration\" OR =abs:\"K-band ranging\" OR =abs:\"K-band range rate\"))) AND NOT =abs:\"GRACE-FO\") OR (=abs:\"GRACE/GRACE-FO\" AND abs:(data OR gravity OR water OR mass OR satellite OR mission)) OR =abs:\"GRACE and GRACE-FO\" OR =abs:\"GRACE and GRACE Follow-On\" OR =abs:\"GRACE and its successor\" OR =abs:\"GRACE data\" OR =abs:\"GRACE observations\" OR =abs:\"GRACE mission\" OR =abs:\"GRACE satellite\" OR =abs:\"GRACE satellites\" OR =abs:\"GRACE gravity\" OR =abs:\"GRACE measurements\" OR =abs:\"GRACE terrestrial\" OR =abs:\"GRACE mascon\" OR =abs:\"GRACE derived\" OR =abs:\"GRACE based\") AND NOT abs:(afterglow OR POLARCAT) AND NOT =abs:(coronary OR myocardial))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2002-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28%3Dabs%3A%22Gravity+Recovery+and+Climate+Experiment%22+OR+%28abs%3AGRACE+AND+%28abs%3A%28satellite+OR+gravity+OR+geoid+OR+gravimetry+OR+mission+OR+hydrology+OR+mascon+OR+plasma+OR+ionosphere+OR+thermosphere%29+OR+%3Dabs%3Agroundwater+OR+%3Dabs%3A%22water+storage%22+OR+%3Dabs%3A%22mass+concentration%22+OR+%3Dabs%3A%22K-band+ranging%22+OR+%3Dabs%3A%22K-band+range+rate%22%29%29%29+AND+NOT+%3Dabs%3A%22GRACE-FO%22%29+OR+%28%3Dabs%3A%22GRACE%2FGRACE-FO%22+AND+abs%3A%28data+OR+gravity+OR+water+OR+mass+OR+satellite+OR+mission%29%29+OR+%3Dabs%3A%22GRACE+and+GRACE-FO%22+OR+%3Dabs%3A%22GRACE+and+GRACE+Follow-On%22+OR+%3Dabs%3A%22GRACE+and+its+successor%22+OR+%3Dabs%3A%22GRACE+data%22+OR+%3Dabs%3A%22GRACE+observations%22+OR+%3Dabs%3A%22GRACE+mission%22+OR+%3Dabs%3A%22GRACE+satellite%22+OR+%3Dabs%3A%22GRACE+satellites%22+OR+%3Dabs%3A%22GRACE+gravity%22+OR+%3Dabs%3A%22GRACE+measurements%22+OR+%3Dabs%3A%22GRACE+terrestrial%22+OR+%3Dabs%3A%22GRACE+mascon%22+OR+%3Dabs%3A%22GRACE+derived%22+OR+%3Dabs%3A%22GRACE+based%22%29+AND+NOT+abs%3A%28afterglow+OR+POLARCAT%29+AND+NOT+%3Dabs%3A%28coronary+OR+myocardial%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2002-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:05:01.875708+00:00",
+    "fetchedAt": "2026-11-18T18:23:39.027773+00:00",
     "reconciliation": {
-      "adsReturned": 4837,
+      "adsReturned": 4860,
       "curatedOut": 128,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
-      "duplicates": 2,
-      "final": 4707
+      "duplicates": 5,
+      "final": 4727
     }
   },
   "curation": {
@@ -1395,7 +1433,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 2112
+      "citations": 2127
     },
     {
       "bibcode": "2004AREPS..32..111P",
@@ -1404,7 +1442,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 2070
+      "citations": 2075
     },
     {
       "bibcode": "2009Natur.460..999R",
@@ -1422,7 +1460,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2004,
-      "citations": 1966
+      "citations": 1972
     },
     {
       "bibcode": "2012JGRB..117.4406P",
@@ -1431,7 +1469,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 1685
+      "citations": 1714
     },
     {
       "bibcode": "2018Natur.557..651R",
@@ -1440,7 +1478,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 1539
+      "citations": 1541
     },
     {
       "bibcode": "2016JGRB..121.7547S",
@@ -1458,7 +1496,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 1126
+      "citations": 1131
     },
     {
       "bibcode": "2015JGRB..120..450P",
@@ -1467,7 +1505,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 1101
+      "citations": 1099
     },
     {
       "bibcode": "2015JGRB..120.2648W",
@@ -1485,7 +1523,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 1030
+      "citations": 1031
     },
     {
       "bibcode": "2023NRvEE...4...87S",
@@ -1512,7 +1550,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 860
+      "citations": 858
     },
     {
       "bibcode": "2012Natur.482..514J",
@@ -1521,7 +1559,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 753
+      "citations": 758
     },
     {
       "bibcode": "2015RvGeo..53..452A",
@@ -1530,7 +1568,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 740
+      "citations": 741
     },
     {
       "bibcode": "2011JGRD..11612115D",
@@ -1557,7 +1595,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 703
+      "citations": 707
     },
     {
       "bibcode": "2011GeoRL..38.3403F",
@@ -1566,10 +1604,10 @@
       "authors": null,
       "authorCount": null,
       "year": 2011,
-      "citations": 685
+      "citations": 686
     }
   ],
   "papersFile": {
-    "rows": 4707
+    "rows": 4727
   }
 }

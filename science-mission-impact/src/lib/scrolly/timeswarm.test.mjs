@@ -10,7 +10,7 @@ const median = (median, ci = null) => ({ median, min: null, ci });
 const groups = [
 	{
 		missions: 12, reached: 4,
-		points: [3.3, 4.1, 6.5, 9.2].map((v, i) => point(`s${i}`, v, v / 3)).concat(Array.from({ length: 8 }, (_, i) => point(`n${i}`, null, null))),
+		points: [3.3, 4.1, 6.5, 9.2].map((v, i) => point(`s${i}`, v, v / 3)).concat({ ...point('nx', null, null), failed: true }, Array.from({ length: 8 }, (_, i) => point(`n${i}`, null, null))),
 		formulation: median(5.3, [3.3, 9.2]), science: median(1.8, [1.1, 3.1])
 	},
 	{ missions: 40, reached: 40, points: Array.from({ length: 40 }, (_, i) => point(`m${i}`, 4 + (i % 10) * 0.5, (i % 8) * 0.12)), formulation: median(6.2, [5.4, 6.9]), science: median(0.4, [0.3, 0.6]) },
@@ -49,7 +49,7 @@ test('bands share the stage between the title and the axis, every square inside 
 		}
 		// the None column sits right of the year axis, one square per mission without a paper
 		assert.ok(layout.pile.x > layout.x1);
-		assert.deepEqual(layout.none.map((m) => m.id[0]), Array(8).fill('n'));
+		assert.deepEqual(layout.none.map((m) => m.id[0]), Array(9).fill('n'));
 		for (const m of layout.none) assert.ok(m.y >= first.y0 - 0.5 && m.y <= first.y1 + 0.5);
 	}
 	// the square is smaller on a phone than on a desktop, and a tenth under the largest that fits (never under 3.6px)
@@ -61,8 +61,11 @@ test('bands share the stage between the title and the axis, every square inside 
 test('the stage squares: every flown mission placed, those without a paper dimmed in the None column', () => {
 	const layout = timeSwarmLayout(groups, tiers, 850, 800);
 	const items = timeItems(layout, 'formulation');
-	assert.equal(items.size, 72);
+	assert.equal(items.size, 73);
 	assert.equal(items.get('n0').opacity, NONE_OPACITY);
+	// a failure joins the None column with its red X, at full strength, after the others
+	assert.deepEqual([items.get('nx').variant, items.get('nx').opacity, items.get('n0').variant], ['lost', 1, 'solid']);
+	assert.equal(layout.none.filter((m) => bandOf(m.id) === 0).at(-1).id, 'nx');
 	assert.deepEqual([items.get('m0').opacity, items.get('m0').plain], [1, true]);
 	// pointed at, a None square takes the Flame wash: it isn't plain
 	assert.equal(items.get('n0').plain, undefined);

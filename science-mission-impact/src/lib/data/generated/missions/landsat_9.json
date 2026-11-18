@@ -1,0 +1,490 @@
+{
+  "id": "landsat_9",
+  "inclusion": {
+    "date": "2031-10-01",
+    "basis": "window",
+    "asOf": "2026-11-18"
+  },
+  "name": "Landsat 9",
+  "fullName": "Landsat 9",
+  "division": "earth",
+  "divisionName": "Earth Science",
+  "hasThumb": true,
+  "meta": {
+    "status": "Extended Mission",
+    "failed": false,
+    "cost": 930.9,
+    "lcc": 746.5,
+    "type": "Orbiter",
+    "selection": "directed",
+    "management": "agency",
+    "program": "Landsat",
+    "target": "Earth",
+    "launchVehicle": "Atlas V 401",
+    "wikipedia": "https://en.wikipedia.org/wiki/Landsat_9",
+    "bibliography": null,
+    "firstSciencePublication": "10.1109/JSTARS.2022.3187179",
+    "dates": {
+      "formulation": "2015-03-01",
+      "launch": "2021-09-27",
+      "scienceStart": "2022-08-11",
+      "primeEnd": "2026-09-27",
+      "missionEnd": null
+    }
+  },
+  "indices": {
+    "h": 25,
+    "m": 5,
+    "i100": 2,
+    "g": 44,
+    "tori": 29.509,
+    "riq": 905
+  },
+  "facts": {
+    "papers": 462,
+    "citations": 3542,
+    "publicationYears": [
+      2022,
+      2026
+    ]
+  },
+  "lifetimeSeries": {
+    "years": [
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "papers": [
+      15,
+      55,
+      134,
+      111,
+      147
+    ],
+    "citations": [
+      16,
+      170,
+      575,
+      1236,
+      1545
+    ],
+    "partialFromYear": 2026,
+    "citationCoverage": {
+      "status": "complete",
+      "expected": 3542,
+      "observed": 3542,
+      "missing": 0
+    }
+  },
+  "affiliations": {
+    "papers": 462,
+    "us": {
+      "mapped": 54,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 16
+        },
+        {
+          "name": "U.S. Geological Survey",
+          "papers": 8
+        },
+        {
+          "name": "Rochester Institute of Technology, New York",
+          "papers": 6
+        }
+      ]
+    },
+    "world": {
+      "mapped": 283,
+      "top": [
+        {
+          "name": "Chinese Academy of Sciences, Beijing",
+          "papers": 18
+        },
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 16
+        },
+        {
+          "name": "University of Dschang, Cameroon",
+          "papers": 9
+        }
+      ]
+    }
+  },
+  "fullAffiliations": null,
+  "mostCited": {
+    "bibcode": "2022RSEnv.28013195W",
+    "title": "Fifty years of Landsat science and impacts",
+    "firstAuthor": "Wulder, Michael A.",
+    "authors": [
+      "Wulder, Michael A.",
+      "Roy, David P.",
+      "Radeloff, Volker C.",
+      "Loveland, Thomas R."
+    ],
+    "authorCount": 27,
+    "year": 2022,
+    "citations": 452
+  },
+  "ranks": {
+    "full": {
+      "bins": [
+        2.566,
+        4.875,
+        3.156,
+        8.739,
+        3.514,
+        10.77,
+        10.724,
+        8.566,
+        8.056,
+        8.033
+      ],
+      "top1": 2
+    },
+    "window": {
+      "bins": [
+        133.21,
+        78.145,
+        51.913,
+        40.922,
+        31.403,
+        32.863,
+        31.331,
+        23.139,
+        22.003,
+        16.073
+      ],
+      "top1": 4
+    },
+    "lifetime": {
+      "bins": [
+        145.453,
+        99.037,
+        65.412,
+        49.73,
+        37.774,
+        27.751,
+        15.844,
+        12.636,
+        4.364,
+        4
+      ],
+      "top1": 1
+    }
+  },
+  "full": {
+    "papers": 69,
+    "outputBasis": "measured",
+    "citations": 1306,
+    "top10": 5.858,
+    "top10ShareOfDivision": 0.00148,
+    "top1": 2,
+    "top1ShareOfDivision": 0.00506,
+    "first": {
+      "state": "reached",
+      "yearsFromScienceStart": 0.057,
+      "yearsFromFormulation": 7.504,
+      "bibcode": "2022RemS...14.4596N",
+      "date": "2022-09-00"
+    },
+    "status": "immature",
+    "bounds": {
+      "start": "2022-09-01",
+      "end": "2024-01-01",
+      "matureDate": "2027-10-01",
+      "status": "immature",
+      "months": 16,
+      "citationBuckets": 5
+    },
+    "indices": {
+      "h": 17,
+      "g": 33,
+      "m": 12.753
+    },
+    "spread": {
+      "mean": 18.928,
+      "median": 10,
+      "uncited": 1,
+      "i10": 35,
+      "i100": 2
+    }
+  },
+  "window": {
+    "papers": 461,
+    "outputBasis": "measured",
+    "citations": 3313,
+    "top10": 16.073,
+    "top10ShareOfDivision": 0.01402,
+    "top1": 4,
+    "top1ShareOfDivision": 0.0349,
+    "first": {
+      "state": "reached",
+      "yearsFromScienceStart": 0.057,
+      "yearsFromFormulation": 7.504,
+      "bibcode": "2022RemS...14.4596N",
+      "date": "2022-09-00"
+    },
+    "status": "immature",
+    "bounds": {
+      "start": "2022-09-01",
+      "end": "2028-10-01",
+      "matureDate": "2031-10-01",
+      "status": "immature",
+      "months": 73,
+      "citationBuckets": 10
+    },
+    "indices": {
+      "h": 24,
+      "g": 42,
+      "m": 3.945
+    },
+    "spread": {
+      "mean": 7.187,
+      "median": 2,
+      "uncited": 134,
+      "i10": 96,
+      "i100": 2
+    }
+  },
+  "lifetime": {
+    "papers": 462,
+    "outputBasis": "measured",
+    "citations": 3542,
+    "top10": 4,
+    "top10ShareOfDivision": 0.00075,
+    "top1": null,
+    "top1ShareOfDivision": null,
+    "first": {
+      "state": "reached",
+      "yearsFromScienceStart": 0.14,
+      "yearsFromFormulation": 7.587,
+      "bibcode": "2022RSEnv.28013195W",
+      "date": "2022-10-00"
+    },
+    "spread": {
+      "mean": 7.667,
+      "median": 2,
+      "uncited": 134,
+      "i10": 99,
+      "i100": 2
+    }
+  },
+  "query": {
+    "arms": "((abs:\"Landsat 9\" OR abs:\"Landsat-9\" OR ((abs:\"TIRS-2\" OR abs:\"TIRS 2\" OR abs:\"OLI-2\" OR abs:\"OLI 2\") AND abs:\"Landsat\")))",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2022-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22Landsat+9%22+OR+abs%3A%22Landsat-9%22+OR+%28%28abs%3A%22TIRS-2%22+OR+abs%3A%22TIRS+2%22+OR+abs%3A%22OLI-2%22+OR+abs%3A%22OLI+2%22%29+AND+abs%3A%22Landsat%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2022-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-18T18:25:56.970280+00:00",
+    "reconciliation": {
+      "adsReturned": 461,
+      "curatedOut": 0,
+      "curatedIn": 1,
+      "libraryOut": 0,
+      "otherOut": 0,
+      "duplicates": 0,
+      "final": 462
+    }
+  },
+  "curation": {
+    "includes": [
+      {
+        "bibcode": "2022IJSTA..15.5250N",
+        "doi": null,
+        "title": "River Bathymetry Retrieval From Landsat-9 Images Based on Neural Networks and Comparison to SuperDove and Sentinel-2",
+        "reason": "Mission's first published science result: river bathymetry retrieved from Landsat 9 imagery.",
+        "authority": "agent",
+        "date": "2026-10-04"
+      }
+    ],
+    "excludes": []
+  },
+  "topCited": [
+    {
+      "bibcode": "2022RSEnv.28013195W",
+      "title": "Fifty years of Landsat science and impacts",
+      "firstAuthor": "Wulder, Michael A.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2022,
+      "citations": 452
+    },
+    {
+      "bibcode": "2023SciRS...800103C",
+      "title": "The 50-year Landsat collection 2 archive",
+      "firstAuthor": "Crawford, Christopher J.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2023,
+      "citations": 217
+    },
+    {
+      "bibcode": "2024NatHa.120.5509C",
+      "title": "Determination of land surface temperature and urban heat island effects with remote sensing capabilities: the case of Kayseri, Türkiye",
+      "firstAuthor": "Cetin, Mehmet",
+      "authors": null,
+      "authorCount": null,
+      "year": 2024,
+      "citations": 99
+    },
+    {
+      "bibcode": "2024EcInf..8202732A",
+      "title": "Integration of machine learning and remote sensing for above ground biomass estimation through Landsat-9 and field data in temperate forests of the Himalayan region",
+      "firstAuthor": "Anees, Shoaib Ahmad",
+      "authors": null,
+      "authorCount": null,
+      "year": 2024,
+      "citations": 86
+    },
+    {
+      "bibcode": "2024EJRSS..27..216Z",
+      "title": "Performance assessment of machine learning algorithms for mapping of land use/land cover using remote sensing data",
+      "firstAuthor": "Zafar, Zeeshan",
+      "authors": null,
+      "authorCount": null,
+      "year": 2024,
+      "citations": 72
+    },
+    {
+      "bibcode": "2022RemS...14.4596N",
+      "title": "Water Quality Retrieval from Landsat-9 (OLI-2) Imagery and Comparison to Sentinel-2",
+      "firstAuthor": "Niroumand-Jadidi, Milad",
+      "authors": null,
+      "authorCount": null,
+      "year": 2022,
+      "citations": 53
+    },
+    {
+      "bibcode": "2024TFP....1600521M",
+      "title": "Assessing Chilgoza Pine (Pinus gerardiana) forest fire severity: Remote sensing analysis, correlations, and predictive modeling for enhanced management strategies",
+      "firstAuthor": "Mehmood, Kaleem",
+      "authors": null,
+      "authorCount": null,
+      "year": 2024,
+      "citations": 51
+    },
+    {
+      "bibcode": "2022IJSTA..15.5250N",
+      "title": "River Bathymetry Retrieval From Landsat-9 Images Based on Neural Networks and Comparison to SuperDove and Sentinel-2",
+      "firstAuthor": "Niroumand-Jadidi, Milad",
+      "authors": null,
+      "authorCount": null,
+      "year": 2022,
+      "citations": 45
+    },
+    {
+      "bibcode": "2025JHyd..65432771C",
+      "title": "Improved surface water mapping using satellite remote sensing imagery based on optimization of the Otsu threshold and effective selection of remote-sensing water index",
+      "firstAuthor": "Che, Lusheng",
+      "authors": null,
+      "authorCount": null,
+      "year": 2025,
+      "citations": 42
+    },
+    {
+      "bibcode": "2024STilR.23505897G",
+      "title": "Assessing spatial variations in soil organic carbon and C:N ratio in Northeast China's black soil region: Insights from Landsat-9 satellite and crop growth information",
+      "firstAuthor": "Geng, Jing",
+      "authors": null,
+      "authorCount": null,
+      "year": 2024,
+      "citations": 38
+    },
+    {
+      "bibcode": "2024NatSR..1416700E",
+      "title": "Geological controls of mineralization occurrences in the Egyptian Eastern Desert using advanced integration of remote sensing and magnetic data",
+      "firstAuthor": "Eldosouky, Ahmed M.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2024,
+      "citations": 36
+    },
+    {
+      "bibcode": "2024RemS...16.1984C",
+      "title": "The Performance of Landsat-8 and Landsat-9 Data for Water Body Extraction Based on Various Water Indices: A Comparative Analysis",
+      "firstAuthor": "Chen, Jie",
+      "authors": null,
+      "authorCount": null,
+      "year": 2024,
+      "citations": 36
+    },
+    {
+      "bibcode": "2022JGSA....6...35B",
+      "title": "Comparing Pan-sharpened Landsat-9 and Sentinel-2 for Land-Use Classification Using Machine Learning Classifiers",
+      "firstAuthor": "Bouslihim, Yassine",
+      "authors": null,
+      "authorCount": null,
+      "year": 2022,
+      "citations": 34
+    },
+    {
+      "bibcode": "2024ITGRS..6261895L",
+      "title": "Automated In-Season Crop-Type Data Layer Mapping Without Ground Truth for the Conterminous United States Based on Multisource Satellite Imagery",
+      "firstAuthor": "Li, Hui",
+      "authors": null,
+      "authorCount": null,
+      "year": 2024,
+      "citations": 33
+    },
+    {
+      "bibcode": "2023EcInd.15511041X",
+      "title": "Monitoring of chlorophyll-a and suspended sediment concentrations in optically complex inland rivers using multisource remote sensing measurements",
+      "firstAuthor": "Xiao, Yi",
+      "authors": null,
+      "authorCount": null,
+      "year": 2023,
+      "citations": 32
+    },
+    {
+      "bibcode": "2024ScTEn.92672117G",
+      "title": "Remote sensing and monitoring of water resources: A comparative study of different indices and thresholding methods",
+      "firstAuthor": "Günen, Mehmet Akif",
+      "authors": null,
+      "authorCount": null,
+      "year": 2024,
+      "citations": 31
+    },
+    {
+      "bibcode": "2023JAfES.20004855A",
+      "title": "Application of remote sensing data integration in detecting mineralized granitic zones: A case study of the Gabal Al-Ijlah Al-Hamra, Central Eastern Desert, Egypt",
+      "firstAuthor": "Abo Khashaba, Saif M.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2023,
+      "citations": 30
+    },
+    {
+      "bibcode": "2024ER....24117638S",
+      "title": "Monitoring of wetland turbidity using multi-temporal Landsat-8 and Landsat-9 satellite imagery in the Bisalpur wetland, Rajasthan, India",
+      "firstAuthor": "Singh, Raj",
+      "authors": null,
+      "authorCount": null,
+      "year": 2024,
+      "citations": 30
+    },
+    {
+      "bibcode": "2023IGRSL..2091019F",
+      "title": "Using Experimental Models and Multitemporal Landsat-9 Images for Cadmium Concentration Mapping",
+      "firstAuthor": "Felegari, Shilan",
+      "authors": null,
+      "authorCount": null,
+      "year": 2023,
+      "citations": 29
+    },
+    {
+      "bibcode": "2023JRemS...3...49T",
+      "title": "Recipes for the Derivation of Water Quality Parameters Using the High-Spatial-Resolution Data from Sensors on Board Sentinel-2A, Sentinel-2B, Landsat-5, Landsat-7, Landsat-8, and Landsat-9 Satellites",
+      "firstAuthor": "Tavora, Juliana",
+      "authors": null,
+      "authorCount": null,
+      "year": 2023,
+      "citations": 29
+    }
+  ],
+  "papersFile": {
+    "rows": 462
+  }
+}

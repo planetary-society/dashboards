@@ -8,7 +8,7 @@
   "meta": {
     "status": "Completed",
     "failed": false,
-    "cost": 4,
+    "cost": 3.9,
     "lcc": 3,
     "type": "In-Situ Probe",
     "selection": "competed",
@@ -17,11 +17,12 @@
     "target": "Earth",
     "launchVehicle": "Delta II",
     "wikipedia": "https://en.wikipedia.org/wiki/ELFIN",
+    "bibliography": "https://elfin.igpp.ucla.edu/publications",
     "firstSciencePublication": "10.1007/s11214-020-00721-7",
     "dates": {
-      "formulation": "2013-09-30",
+      "formulation": "2014-05-22",
       "launch": "2018-09-15",
-      "scienceStart": "2018-09-15",
+      "scienceStart": null,
       "primeEnd": "2020-01-15",
       "missionEnd": "2022-09-30"
     }
@@ -31,12 +32,12 @@
     "m": 2.857,
     "i100": 1,
     "g": 31,
-    "tori": 1.808,
-    "riq": 192
+    "tori": 1.837,
+    "riq": 193
   },
   "facts": {
     "papers": 70,
-    "citations": 1151,
+    "citations": 1152,
     "publicationYears": [
       2020,
       2026
@@ -68,13 +69,13 @@
       114,
       301,
       402,
-      275
+      276
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 1151,
-      "observed": 1151,
+      "expected": 1152,
+      "observed": 1152,
       "missing": 0
     }
   },
@@ -115,6 +116,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 23,
+    "us": {
+      "mapped": 23,
+      "top": [
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 22
+        },
+        {
+          "name": "University of Texas, Dallas",
+          "papers": 12
+        },
+        {
+          "name": "Boston University, Massachusetts",
+          "papers": 7
+        }
+      ]
+    },
+    "world": {
+      "mapped": 23,
+      "top": [
+        {
+          "name": "University of California, Los Angeles",
+          "papers": 22
+        },
+        {
+          "name": "University of Texas, Dallas",
+          "papers": 12
+        },
+        {
+          "name": "Atomic Energy Commission, France",
+          "papers": 8
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2020SSRv..216..103A",
     "title": "The ELFIN Mission",
@@ -134,14 +172,14 @@
       "bins": [
         0,
         0,
-        0.602,
-        1.398,
+        0.623,
+        1.377,
         0,
         1,
-        3.02,
-        0.98,
-        3.147,
-        12.853
+        3.096,
+        0.904,
+        3.236,
+        12.764
       ],
       "top1": 1
     },
@@ -162,15 +200,15 @@
     },
     "lifetime": {
       "bins": [
-        8.521,
-        9.364,
-        14.648,
-        7.578,
-        6.064,
-        6.173,
-        5.651,
-        3.88,
-        7.12,
+        8.445,
+        9.434,
+        14.784,
+        7.444,
+        6.07,
+        6.174,
+        5.647,
+        3.927,
+        7.073,
         1
       ],
       "top1": 0
@@ -180,14 +218,14 @@
     "papers": 23,
     "outputBasis": "measured",
     "citations": 669,
-    "top10": 11.686,
-    "top10ShareOfDivision": 0.00811,
+    "top10": 11.598,
+    "top10ShareOfDivision": 0.00806,
     "top1": 1,
-    "top1ShareOfDivision": 0.00694,
+    "top1ShareOfDivision": 0.00695,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.793,
-      "yearsFromFormulation": 6.752,
+      "yearsFromFormulation": 6.111,
       "bibcode": "2020SSRv..216..103A",
       "date": "2020-07-00"
     },
@@ -218,13 +256,13 @@
     "outputBasis": "measured",
     "citations": 109,
     "top10": 2,
-    "top10ShareOfDivision": 0.00451,
+    "top10ShareOfDivision": 0.00471,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.793,
-      "yearsFromFormulation": 6.752,
+      "yearsFromFormulation": 6.111,
       "bibcode": "2020SSRv..216..103A",
       "date": "2020-07-00"
     },
@@ -253,7 +291,7 @@
   "lifetime": {
     "papers": 70,
     "outputBasis": "measured",
-    "citations": 1151,
+    "citations": 1152,
     "top10": 1,
     "top10ShareOfDivision": 0.00054,
     "top1": null,
@@ -261,12 +299,12 @@
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 1.793,
-      "yearsFromFormulation": 6.752,
+      "yearsFromFormulation": 6.111,
       "bibcode": "2020SSRv..216..103A",
       "date": "2020-07-00"
     },
     "spread": {
-      "mean": 16.443,
+      "mean": 16.457,
       "median": 7.5,
       "uncited": 5,
       "i10": 31,
@@ -277,7 +315,7 @@
     "arms": "((=abs:\"Electron Losses and Fields Investigation\" OR =abs:\"Electron Loss and Fields Investigation\" OR =abs:\"Electron Losses and Fields Investigations\" OR (abs:ELFIN AND abs:(\"Van Allen\" OR \"magnetic field\" OR \"radiation belt\" OR \"electron precipitation\" OR magnetosphere OR \"energetic particle\" OR CubeSat))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2018-10 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Electron+Losses+and+Fields+Investigation%22+OR+%3Dabs%3A%22Electron+Loss+and+Fields+Investigation%22+OR+%3Dabs%3A%22Electron+Losses+and+Fields+Investigations%22+OR+%28abs%3AELFIN+AND+abs%3A%28%22Van+Allen%22+OR+%22magnetic+field%22+OR+%22radiation+belt%22+OR+%22electron+precipitation%22+OR+magnetosphere+OR+%22energetic+particle%22+OR+CubeSat%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2018-10+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:13:14.242254+00:00",
+    "fetchedAt": "2026-11-18T18:30:50.602527+00:00",
     "reconciliation": {
       "adsReturned": 71,
       "curatedOut": 1,
@@ -399,7 +437,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 37
+      "citations": 38
     },
     {
       "bibcode": "2023JGRA..12831087Z",

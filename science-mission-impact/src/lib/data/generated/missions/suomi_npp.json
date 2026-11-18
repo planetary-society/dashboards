@@ -6,37 +6,38 @@
   "divisionName": "Earth Science",
   "hasThumb": true,
   "meta": {
-    "status": "Extended Mission",
+    "status": "Completed",
     "failed": false,
-    "cost": 1541.4,
-    "lcc": 864,
+    "cost": 1381,
+    "lcc": 851.4,
     "type": "Orbiter",
     "selection": "directed",
     "management": "agency",
-    "program": "Earth Observing System (EOS)",
+    "program": "Earth Systematic Missions",
     "target": "Earth",
     "launchVehicle": "Delta II 7920",
     "wikipedia": "https://en.wikipedia.org/wiki/Suomi_NPP",
+    "bibliography": "https://eospso.gsfc.nasa.gov/publications/suomi-npp",
     "firstSciencePublication": "10.1073/pnas.1207034109",
     "dates": {
       "formulation": "1998-11-01",
       "launch": "2011-10-28",
-      "scienceStart": "2014-05-01",
-      "primeEnd": "2019-05-01",
-      "missionEnd": null
+      "scienceStart": "2012-03-07",
+      "primeEnd": "2016-10-28",
+      "missionEnd": "2026-11-02"
     }
   },
   "indices": {
-    "h": 65,
-    "m": 4.333,
-    "i100": 33,
-    "g": 102,
-    "tori": 143.518,
-    "riq": 748
+    "h": 78,
+    "m": 5.2,
+    "i100": 55,
+    "g": 125,
+    "tori": 183.621,
+    "riq": 846
   },
   "facts": {
-    "papers": 874,
-    "citations": 19326,
+    "papers": 940,
+    "citations": 26264,
     "publicationYears": [
       2012,
       2026
@@ -61,255 +62,292 @@
       2026
     ],
     "papers": [
-      1,
-      0,
-      16,
+      2,
+      42,
+      41,
       54,
       57,
       73,
       77,
       71,
-      71,
+      70,
       73,
       111,
       80,
       71,
       68,
-      51
+      50
     ],
     "citations": [
       0,
-      6,
-      18,
-      115,
-      242,
-      416,
-      695,
-      1177,
-      1522,
-      1856,
-      2632,
-      2497,
-      2722,
-      2838,
-      2590
+      53,
+      295,
+      495,
+      652,
+      850,
+      1219,
+      1775,
+      2187,
+      2509,
+      3345,
+      3071,
+      3314,
+      3336,
+      3163
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 19326,
-      "observed": 19326,
+      "expected": 26264,
+      "observed": 26264,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 874,
+    "papers": 940,
     "us": {
-      "mapped": 425,
+      "mapped": 478,
       "top": [
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
-          "papers": 128
+          "papers": 140
         },
         {
           "name": "National Oceanic and Atmospheric Administration, Washington",
-          "papers": 98
+          "papers": 126
         },
         {
           "name": "Science Systems and Applications Inc., Maryland",
-          "papers": 81
+          "papers": 87
         }
       ]
     },
     "world": {
-      "mapped": 668,
+      "mapped": 728,
       "top": [
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
-          "papers": 128
+          "papers": 140
         },
         {
           "name": "National Oceanic and Atmospheric Administration, Washington",
-          "papers": 98
+          "papers": 126
         },
         {
           "name": "Science Systems and Applications Inc., Maryland",
-          "papers": 81
+          "papers": 87
+        }
+      ]
+    }
+  },
+  "fullAffiliations": {
+    "papers": 751,
+    "us": {
+      "mapped": 418,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 121
+        },
+        {
+          "name": "National Oceanic and Atmospheric Administration, Washington",
+          "papers": 115
+        },
+        {
+          "name": "Science Systems and Applications Inc., Maryland",
+          "papers": 76
+        }
+      ]
+    },
+    "world": {
+      "mapped": 597,
+      "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 121
+        },
+        {
+          "name": "National Oceanic and Atmospheric Administration, Washington",
+          "papers": 115
+        },
+        {
+          "name": "Science Systems and Applications Inc., Maryland",
+          "papers": 76
         }
       ]
     }
   },
   "mostCited": {
-    "bibcode": "2021ESSD...13..889C",
-    "title": "An extended time series (2000─2018) of global NPP-VIIRS-like nighttime light data from a cross-sensor calibration",
-    "firstAuthor": "Chen, Zuoqi",
+    "bibcode": "2014RSEnv.143...85S",
+    "title": "The New VIIRS 375 m active fire detection data product: Algorithm description and initial assessment",
+    "firstAuthor": "Schroeder, Wilfrid",
     "authors": [
-      "Chen, Zuoqi",
-      "Yu, Bailang",
-      "Yang, Chengshu",
-      "Zhou, Yuyu"
+      "Schroeder, Wilfrid",
+      "Oliva, Patricia",
+      "Giglio, Louis",
+      "Csiszar, Ivan A."
     ],
-    "authorCount": 9,
-    "year": 2021,
-    "citations": 662
+    "authorCount": 4,
+    "year": 2014,
+    "citations": 826
   },
   "ranks": {
     "full": {
       "bins": [
-        50.936,
-        61.51,
-        75.695,
-        75.074,
-        72.078,
-        53.365,
-        62.781,
-        86.442,
-        72.701,
-        72.416
+        55.019,
+        64.486,
+        80.398,
+        78.807,
+        75.851,
+        57.429,
+        70.089,
+        94.57,
+        84.667,
+        89.683
       ],
-      "top1": 6
+      "top1": 8
     },
     "window": {
       "bins": [
-        33.794,
-        39.322,
-        61.512,
-        56.133,
-        43.722,
-        40.943,
-        45.492,
-        55.788,
-        43.517,
-        38.778
+        18.769,
+        29.422,
+        46.576,
+        35.929,
+        26.894,
+        33.592,
+        34.978,
+        46.599,
+        30.602,
+        29.639
       ],
       "top1": 3
     },
     "lifetime": {
       "bins": [
-        99.605,
-        104.771,
-        109.675,
-        122.611,
-        87.812,
-        94.66,
-        74.722,
-        65.605,
-        62.43,
-        52.108
+        97.576,
+        109.365,
+        112.315,
+        125.619,
+        86.921,
+        100.063,
+        76.758,
+        72.132,
+        77.389,
+        81.862
       ],
-      "top1": 4
+      "top1": 8
     }
   },
   "full": {
-    "papers": 683,
+    "papers": 751,
     "outputBasis": "measured",
-    "citations": 8475,
-    "top10": 56.65,
-    "top10ShareOfDivision": 0.01449,
-    "top1": 6,
-    "top1ShareOfDivision": 0.01535,
+    "citations": 9830,
+    "top10": 70.974,
+    "top10ShareOfDivision": 0.01815,
+    "top1": 7.333,
+    "top1ShareOfDivision": 0.01875,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 0.832,
-      "yearsFromFormulation": 16.329,
-      "bibcode": "2015IJSTA...8.1217Y",
-      "date": "2015-03-00"
+      "yearsFromScienceStart": 0.487,
+      "yearsFromFormulation": 13.834,
+      "bibcode": "2012PNAS..10915706M",
+      "date": "2012-09-00"
     },
     "status": "available",
     "bounds": {
-      "start": "2014-06-01",
+      "start": "2012-04-01",
       "end": "2024-01-01",
       "matureDate": "2026-10-01",
       "status": "available",
-      "months": 115,
-      "citationBuckets": 13
+      "months": 141,
+      "citationBuckets": 15
     },
     "indices": {
-      "h": 37,
-      "g": 54,
-      "m": 3.86
+      "h": 39,
+      "g": 58,
+      "m": 3.319
     },
     "spread": {
-      "mean": 12.408,
-      "median": 7,
-      "uncited": 38,
-      "i10": 291,
-      "i100": 3
+      "mean": 13.089,
+      "median": 8,
+      "uncited": 41,
+      "i10": 336,
+      "i100": 4
     }
   },
   "window": {
-    "papers": 459,
+    "papers": 333,
     "outputBasis": "measured",
-    "citations": 5934,
-    "top10": 37.112,
-    "top10ShareOfDivision": 0.03718,
+    "citations": 4346,
+    "top10": 28.973,
+    "top10ShareOfDivision": 0.02972,
     "top1": 3,
-    "top1ShareOfDivision": 0.03005,
+    "top1ShareOfDivision": 0.03077,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": 0.832,
-      "yearsFromFormulation": 16.329,
-      "bibcode": "2015IJSTA...8.1217Y",
-      "date": "2015-03-00"
+      "yearsFromScienceStart": 0.487,
+      "yearsFromFormulation": 13.834,
+      "bibcode": "2012PNAS..10915706M",
+      "date": "2012-09-00"
     },
     "status": "available",
     "bounds": {
-      "start": "2014-06-01",
-      "end": "2021-06-01",
-      "matureDate": "2024-10-01",
+      "start": "2012-04-01",
+      "end": "2018-11-01",
+      "matureDate": "2021-10-01",
       "status": "available",
-      "months": 84,
-      "citationBuckets": 11
+      "months": 79,
+      "citationBuckets": 10
     },
     "indices": {
-      "h": 32,
-      "g": 49,
-      "m": 4.571
+      "h": 30,
+      "g": 43,
+      "m": 4.556
     },
     "spread": {
-      "mean": 12.928,
-      "median": 8,
-      "uncited": 25,
-      "i10": 204,
+      "mean": 13.051,
+      "median": 9,
+      "uncited": 13,
+      "i10": 160,
       "i100": 2
     }
   },
   "lifetime": {
-    "papers": 874,
+    "papers": 940,
     "outputBasis": "measured",
-    "citations": 19326,
-    "top10": 39.108,
-    "top10ShareOfDivision": 0.00749,
+    "citations": 26264,
+    "top10": 64.121,
+    "top10ShareOfDivision": 0.01226,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
       "state": "reached",
-      "yearsFromScienceStart": -1.662,
+      "yearsFromScienceStart": 0.487,
       "yearsFromFormulation": 13.834,
       "bibcode": "2012PNAS..10915706M",
       "date": "2012-09-00"
     },
     "spread": {
-      "mean": 22.112,
-      "median": 9,
-      "uncited": 82,
-      "i10": 436,
-      "i100": 33
+      "mean": 27.94,
+      "median": 10.5,
+      "uncited": 80,
+      "i10": 494,
+      "i100": 55
     }
   },
   "query": {
     "arms": "((=abs:\"Suomi National Polar-orbiting Partnership\" OR abs:\"Suomi NPP\" OR abs:\"Suomi-NPP\" OR (abs:\"SNPP\" AND abs:\"satellite\")))",
-    "filters": "property:refereed AND doctype:article AND pubdate:[2014-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
-    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Suomi+National+Polar-orbiting+Partnership%22+OR+abs%3A%22Suomi+NPP%22+OR+abs%3A%22Suomi-NPP%22+OR+%28abs%3A%22SNPP%22+AND+abs%3A%22satellite%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:06:34.227290+00:00",
+    "filters": "property:refereed AND doctype:article AND pubdate:[2012-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
+    "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Suomi+National+Polar-orbiting+Partnership%22+OR+abs%3A%22Suomi+NPP%22+OR+abs%3A%22Suomi-NPP%22+OR+%28abs%3A%22SNPP%22+AND+abs%3A%22satellite%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
+    "fetchedAt": "2026-11-13T23:54:13.127341+00:00",
     "reconciliation": {
-      "adsReturned": 877,
+      "adsReturned": 945,
       "curatedOut": 0,
       "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
-      "duplicates": 4,
-      "final": 874
+      "duplicates": 6,
+      "final": 940
     }
   },
   "curation": {
@@ -327,13 +365,22 @@
   },
   "topCited": [
     {
+      "bibcode": "2014RSEnv.143...85S",
+      "title": "The New VIIRS 375 m active fire detection data product: Algorithm description and initial assessment",
+      "firstAuthor": "Schroeder, Wilfrid",
+      "authors": null,
+      "authorCount": null,
+      "year": 2014,
+      "citations": 826
+    },
+    {
       "bibcode": "2021ESSD...13..889C",
       "title": "An extended time series (2000─2018) of global NPP-VIIRS-like nighttime light data from a cross-sensor calibration",
       "firstAuthor": "Chen, Zuoqi",
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 662
+      "citations": 673
     },
     {
       "bibcode": "2016RSEnv.178..127H",
@@ -354,6 +401,15 @@
       "citations": 426
     },
     {
+      "bibcode": "2014ITGRS..52.1142C",
+      "title": "Early On-Orbit Performance of the Visible Infrared Imaging Radiometer Suite Onboard the Suomi National Polar-Orbiting Partnership (S-NPP) Satellite",
+      "firstAuthor": "Cao, Changyong",
+      "authors": null,
+      "authorCount": null,
+      "year": 2014,
+      "citations": 385
+    },
+    {
       "bibcode": "2017RSEnv.192..176B",
       "title": "Advances in using multitemporal night-time lights satellite imagery to detect, estimate, and monitor socioeconomic dynamics",
       "firstAuthor": "Bennett, Mia M.",
@@ -361,6 +417,69 @@
       "authorCount": null,
       "year": 2017,
       "citations": 375
+    },
+    {
+      "bibcode": "2013RemS....5.3057L",
+      "title": "Potential of NPP-VIIRS Nighttime Light Imagery for Modeling the Regional Economy of China",
+      "firstAuthor": "Li, Xi",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 315
+    },
+    {
+      "bibcode": "2013RSEnv.129...32Z",
+      "title": "The Vegetation Adjusted NTL Urban Index: A new approach to reduce saturation and increase variation in nighttime luminosity",
+      "firstAuthor": "Zhang, Qingling",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 313
+    },
+    {
+      "bibcode": "2013RemS....5.6717M",
+      "title": "Illuminating the Capabilities of the Suomi National Polar-Orbiting Partnership (NPP) Visible Infrared Imaging Radiometer Suite (VIIRS) Day/Night Band",
+      "firstAuthor": "Miller, Steven D.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 275
+    },
+    {
+      "bibcode": "2014RSL.....5..358S",
+      "title": "Evaluation of NPP-VIIRS night-time light composite data for extracting built-up urban areas",
+      "firstAuthor": "Shi, Kaifang",
+      "authors": null,
+      "authorCount": null,
+      "year": 2014,
+      "citations": 247
+    },
+    {
+      "bibcode": "2013JGRD..11811664C",
+      "title": "Suomi NPP VIIRS sensor data record verification, validation, and long-term performance monitoring",
+      "firstAuthor": "Cao, Changyong",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 242
+    },
+    {
+      "bibcode": "2013JGRD..11812673J",
+      "title": "Suomi-NPP VIIRS aerosol algorithms and data products",
+      "firstAuthor": "Jackson, John M.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 225
+    },
+    {
+      "bibcode": "2013JGRD..11812734H",
+      "title": "Suomi NPP CrIS measurements, sensor data record algorithm, calibration and validation activities, and record data quality",
+      "firstAuthor": "Han, Yong",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 215
     },
     {
       "bibcode": "2012PNAS..10915706M",
@@ -372,6 +491,15 @@
       "citations": 210
     },
     {
+      "bibcode": "2013RemS....5.4423E",
+      "title": "VIIRS Nightfire: Satellite Pyrometry at Night",
+      "firstAuthor": "Elvidge, Christopher D.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 210
+    },
+    {
       "bibcode": "2015IJSTA...8.1217Y",
       "title": "Poverty Evaluation Using NPP-VIIRS Nighttime Light Composite Data at the County Level in China",
       "firstAuthor": "Yu, Bailang",
@@ -379,6 +507,15 @@
       "authorCount": null,
       "year": 2015,
       "citations": 206
+    },
+    {
+      "bibcode": "2013BAMS...94.1019H",
+      "title": "First-Light Imagery from Suomi NPP VIIRS",
+      "firstAuthor": "Hillger, Donald",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 186
     },
     {
       "bibcode": "2017IJRS...38.5934L",
@@ -396,7 +533,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 173
+      "citations": 175
     },
     {
       "bibcode": "2017RSEnv.190..366L",
@@ -406,108 +543,9 @@
       "authorCount": null,
       "year": 2017,
       "citations": 168
-    },
-    {
-      "bibcode": "2019ApEn..235..612Z",
-      "title": "Spatio-temporal dynamics of urban residential CO₂ emissions and their driving forces in China using the integrated two nighttime light datasets",
-      "firstAuthor": "Zhao, Jincai",
-      "authors": null,
-      "authorCount": null,
-      "year": 2019,
-      "citations": 158
-    },
-    {
-      "bibcode": "2021JCPro.32829488Z",
-      "title": "An improved approach for monitoring urban built-up areas by combining NPP-VIIRS nighttime light, NDVI, NDWI, and NDBI",
-      "firstAuthor": "Zheng, Yuanmao",
-      "authors": null,
-      "authorCount": null,
-      "year": 2021,
-      "citations": 155
-    },
-    {
-      "bibcode": "2018ScTEn.615..857L",
-      "title": "Potential for using remote sensing to estimate carbon fluxes across northern peatlands ─ A review",
-      "firstAuthor": "Lees, K. J.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2018,
-      "citations": 154
-    },
-    {
-      "bibcode": "2020RSEnv.24811980Z",
-      "title": "Mapping urban dynamics (1992-2018) in Southeast Asia using consistent nighttime light data from DMSP and VIIRS",
-      "firstAuthor": "Zhao, Min",
-      "authors": null,
-      "authorCount": null,
-      "year": 2020,
-      "citations": 147
-    },
-    {
-      "bibcode": "2014RSEnv.154...19G",
-      "title": "Validation of Land Surface Temperature products derived from the Visible Infrared Imaging Radiometer Suite (VIIRS) using ground-based and heritage satellite measurements",
-      "firstAuthor": "Guillevic, Pierre C.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2014,
-      "citations": 140
-    },
-    {
-      "bibcode": "2015GeoRL..42.7874A",
-      "title": "Multisensor profiling of a concentric gravity wave event propagating from the troposphere to the ionosphere",
-      "firstAuthor": "Azeem, Irfan",
-      "authors": null,
-      "authorCount": null,
-      "year": 2015,
-      "citations": 136
-    },
-    {
-      "bibcode": "2019JPRS..153...36Z",
-      "title": "Developing a new cross-sensor calibration model for DMSP-OLS and Suomi-NPP VIIRS night-light imageries",
-      "firstAuthor": "Zheng, Qiming",
-      "authors": null,
-      "authorCount": null,
-      "year": 2019,
-      "citations": 136
-    },
-    {
-      "bibcode": "2020ITGRS..58.1843Z",
-      "title": "Building a Series of Consistent Night-Time Light Data (1992─2018) in Southeast Asia by Integrating DMSP-OLS and NPP-VIIRS",
-      "firstAuthor": "Zhao, Min",
-      "authors": null,
-      "authorCount": null,
-      "year": 2020,
-      "citations": 134
-    },
-    {
-      "bibcode": "2019RSEnv.23311357L",
-      "title": "Anisotropic characteristic of artificial light at night - Systematic investigation with VIIRS DNB multi-temporal observations",
-      "firstAuthor": "Li, Xi",
-      "authors": null,
-      "authorCount": null,
-      "year": 2019,
-      "citations": 126
-    },
-    {
-      "bibcode": "2017RSEnv.201..256L",
-      "title": "Evaluation of the VIIRS BRDF, Albedo and NBAR products suite and an assessment of continuity with the long term MODIS record",
-      "firstAuthor": "Liu, Yan",
-      "authors": null,
-      "authorCount": null,
-      "year": 2017,
-      "citations": 118
-    },
-    {
-      "bibcode": "2017ESSD....9..765R",
-      "title": "Overview of NASA's MODIS and Visible Infrared Imaging Radiometer Suite (VIIRS) snow-cover Earth System Data Records",
-      "firstAuthor": "Riggs, George A.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2017,
-      "citations": 117
     }
   ],
   "papersFile": {
-    "rows": 874
+    "rows": 940
   }
 }

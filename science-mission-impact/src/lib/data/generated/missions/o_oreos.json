@@ -8,7 +8,7 @@
   "meta": {
     "status": "Completed",
     "failed": false,
-    "cost": 8.1,
+    "cost": 8,
     "lcc": 5.5,
     "type": "Orbiter",
     "selection": "competed",
@@ -17,6 +17,7 @@
     "target": "Biology",
     "launchVehicle": "Minotaur IV",
     "wikipedia": "https://en.wikipedia.org/wiki/O/OREOS",
+    "bibliography": null,
     "firstSciencePublication": "10.1089/ast.2011.0714",
     "dates": {
       "formulation": "2008-07-02",
@@ -31,12 +32,12 @@
     "m": 0.563,
     "i100": 0,
     "g": 11,
-    "tori": 1.071,
-    "riq": 103
+    "tori": 1.155,
+    "riq": 107
   },
   "facts": {
     "papers": 11,
-    "citations": 203,
+    "citations": 207,
     "publicationYears": [
       2011,
       2020
@@ -85,7 +86,7 @@
       1,
       23,
       26,
-      8,
+      12,
       14,
       3,
       18,
@@ -100,8 +101,8 @@
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 203,
-      "observed": 203,
+      "expected": 207,
+      "observed": 207,
       "missing": 0
     }
   },
@@ -142,6 +143,43 @@
       ]
     }
   },
+  "fullAffiliations": {
+    "papers": 3,
+    "us": {
+      "mapped": 1,
+      "top": [
+        {
+          "name": "Bay Area Environmental Research Institute, California",
+          "papers": 1
+        },
+        {
+          "name": "Draper Laboratory, Inc., Massachusetts",
+          "papers": 1
+        },
+        {
+          "name": "George Washington University, Washington DC",
+          "papers": 1
+        }
+      ]
+    },
+    "world": {
+      "mapped": 1,
+      "top": [
+        {
+          "name": "Aarhus University, Denmark",
+          "papers": 1
+        },
+        {
+          "name": "Bay Area Environmental Research Institute, California",
+          "papers": 1
+        },
+        {
+          "name": "Draper Laboratory, Inc., Massachusetts",
+          "papers": 1
+        }
+      ]
+    }
+  },
   "mostCited": {
     "bibcode": "2011AsBio..11..951N",
     "title": "The O/OREOS Mission: First Science Data from the Space Environment Survivability of Living Organisms (SESLO) Payload",
@@ -159,15 +197,15 @@
   "ranks": {
     "full": {
       "bins": [
-        0,
-        0,
-        0.05,
-        0.35,
-        0.35,
-        0.45,
-        0.7,
-        0.7,
         0.4,
+        0.4,
+        0.4,
+        0.4,
+        0.4,
+        0.4,
+        0.4,
+        0.2,
+        0,
         0
       ],
       "top1": 0
@@ -193,8 +231,8 @@
         1,
         1.5,
         1.5,
-        1.25,
-        0.75,
+        1,
+        1,
         1.5,
         0.5,
         1.5,
@@ -280,7 +318,7 @@
   "lifetime": {
     "papers": 11,
     "outputBasis": "measured",
-    "citations": 203,
+    "citations": 207,
     "top10": 1.5,
     "top10ShareOfDivision": 1,
     "top1": null,
@@ -293,7 +331,7 @@
       "date": "2011-12-00"
     },
     "spread": {
-      "mean": 18.455,
+      "mean": 18.818,
       "median": 13,
       "uncited": 0,
       "i10": 9,
@@ -304,7 +342,7 @@
     "arms": "((abs:\"O/OREOS\" OR abs:\"OOREOS\" OR abs:\"O-OREOS\" OR abs:\"Organism/Organic Exposure to Orbital Stresses\" OR abs:\"Organism/Organics Exposure to Orbital Stresses\" OR abs:\"SESLO\" OR abs:\"Space Environment Survivability of Living Organisms\" OR abs:\"Space Environment Viability of Organics\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2010-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22O%2FOREOS%22+OR+abs%3A%22OOREOS%22+OR+abs%3A%22O-OREOS%22+OR+abs%3A%22Organism%2FOrganic+Exposure+to+Orbital+Stresses%22+OR+abs%3A%22Organism%2FOrganics+Exposure+to+Orbital+Stresses%22+OR+abs%3A%22SESLO%22+OR+abs%3A%22Space+Environment+Survivability+of+Living+Organisms%22+OR+abs%3A%22Space+Environment+Viability+of+Organics%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2010-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:20:58.158142+00:00",
+    "fetchedAt": "2026-11-18T18:39:12.909469+00:00",
     "reconciliation": {
       "adsReturned": 11,
       "curatedOut": 0,
@@ -336,7 +374,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 38
+      "citations": 39
     },
     {
       "bibcode": "2012AsBio..12..841M",
@@ -345,7 +383,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 30
+      "citations": 31
     },
     {
       "bibcode": "2017AcAau.133..269B",
@@ -381,7 +419,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 12
+      "citations": 13
     },
     {
       "bibcode": "2019Life...10....1N",
@@ -408,7 +446,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 8
+      "citations": 9
     },
     {
       "bibcode": "2015BSRSL..84...60C",

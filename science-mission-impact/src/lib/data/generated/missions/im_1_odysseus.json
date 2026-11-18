@@ -3,7 +3,7 @@
   "inclusion": {
     "date": "2029-10-01",
     "basis": "window",
-    "asOf": "2026-11-17"
+    "asOf": "2026-11-18"
   },
   "name": "IM-1 Odysseus",
   "fullName": "Intuitive Machines-1",
@@ -140,8 +140,8 @@
     "window": {
       "bins": [
         1,
-        0.719,
-        0.281,
+        0.768,
+        0.232,
         0,
         0,
         1,
@@ -265,7 +265,7 @@
     "arms": "(((=abs:\"Odysseus\" AND (abs:(Moon OR lunar OR lander OR landing OR \"IM-1\" OR \"Nova-C\") OR =abs:\"Intuitive Machines\") NOT abs:Tethys) OR (abs:\"IM-1\" AND (abs:(Moon OR lunar OR lander OR landing OR \"Nova-C\") OR =abs:\"Intuitive Machines\")) OR =abs:\"Intuitive Machines-1\" OR =abs:\"Intuitive Machine 1\" OR =abs:\"Intuitive Machines Mission 1\" OR ((abs:(ROLSES OR SCALPSS OR RFMG OR \"LN-1\") OR =abs:\"Radio Frequency Mass Gauge\" OR =abs:\"Navigation Doppler Lidar\" OR =abs:\"Lunar Node 1\" OR =abs:\"Lunar Plume-Surface Studies\") AND (abs:(\"IM-1\" OR \"Nova-C\" OR Malapert) OR =abs:\"Intuitive Machines\" OR =abs:\"Odysseus\")) OR ((abs:(LRA OR retroreflector OR \"retro-reflector\") OR =abs:\"Laser Retroreflector Array\") AND (abs:(\"IM-1\" OR Malapert) OR =abs:\"Odysseus\") AND abs:(lunar OR Moon))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2024-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Odysseus%22+AND+%28abs%3A%28Moon+OR+lunar+OR+lander+OR+landing+OR+%22IM-1%22+OR+%22Nova-C%22%29+OR+%3Dabs%3A%22Intuitive+Machines%22%29+NOT+abs%3ATethys%29+OR+%28abs%3A%22IM-1%22+AND+%28abs%3A%28Moon+OR+lunar+OR+lander+OR+landing+OR+%22Nova-C%22%29+OR+%3Dabs%3A%22Intuitive+Machines%22%29%29+OR+%3Dabs%3A%22Intuitive+Machines-1%22+OR+%3Dabs%3A%22Intuitive+Machine+1%22+OR+%3Dabs%3A%22Intuitive+Machines+Mission+1%22+OR+%28%28abs%3A%28ROLSES+OR+SCALPSS+OR+RFMG+OR+%22LN-1%22%29+OR+%3Dabs%3A%22Radio+Frequency+Mass+Gauge%22+OR+%3Dabs%3A%22Navigation+Doppler+Lidar%22+OR+%3Dabs%3A%22Lunar+Node+1%22+OR+%3Dabs%3A%22Lunar+Plume-Surface+Studies%22%29+AND+%28abs%3A%28%22IM-1%22+OR+%22Nova-C%22+OR+Malapert%29+OR+%3Dabs%3A%22Intuitive+Machines%22+OR+%3Dabs%3A%22Odysseus%22%29%29+OR+%28%28abs%3A%28LRA+OR+retroreflector+OR+%22retro-reflector%22%29+OR+%3Dabs%3A%22Laser+Retroreflector+Array%22%29+AND+%28abs%3A%28%22IM-1%22+OR+Malapert%29+OR+%3Dabs%3A%22Odysseus%22%29+AND+abs%3A%28lunar+OR+Moon%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2024-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:01:35.853537+00:00",
+    "fetchedAt": "2026-11-18T18:20:15.185172+00:00",
     "reconciliation": {
       "adsReturned": 7,
       "curatedOut": 0,

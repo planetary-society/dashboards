@@ -3,7 +3,7 @@
   "inclusion": {
     "date": "2032-10-01",
     "basis": "window",
-    "asOf": "2026-11-17"
+    "asOf": "2026-11-18"
   },
   "name": "PACE",
   "fullName": "Plankton, Aerosol, Cloud, ocean Ecosystem",
@@ -37,11 +37,11 @@
     "m": 2.333,
     "i100": 0,
     "g": 9,
-    "tori": 1.218,
-    "riq": 367
+    "tori": 1.44,
+    "riq": 300
   },
   "facts": {
-    "papers": 86,
+    "papers": 91,
     "citations": 190,
     "publicationYears": [
       2024,
@@ -55,14 +55,14 @@
       2026
     ],
     "papers": [
-      17,
-      24,
-      45
+      16,
+      25,
+      50
     ],
     "citations": [
-      4,
-      37,
-      149
+      2,
+      36,
+      152
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
@@ -73,17 +73,17 @@
     }
   },
   "affiliations": {
-    "papers": 86,
+    "papers": 91,
     "us": {
-      "mapped": 52,
+      "mapped": 56,
       "top": [
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
-          "papers": 22
+          "papers": 24
         },
         {
           "name": "Science Systems and Applications Inc., Maryland",
-          "papers": 12
+          "papers": 13
         },
         {
           "name": "University of Maryland, Baltimore County",
@@ -92,15 +92,15 @@
       ]
     },
     "world": {
-      "mapped": 69,
+      "mapped": 73,
       "top": [
         {
           "name": "NASA Goddard Space Flight Center, Maryland",
-          "papers": 22
+          "papers": 24
         },
         {
           "name": "Science Systems and Applications Inc., Maryland",
-          "papers": 12
+          "papers": 13
         },
         {
           "name": "University of Maryland, Baltimore County",
@@ -142,14 +142,14 @@
     },
     "window": {
       "bins": [
-        36.855,
-        17.903,
-        13.282,
-        6.229,
-        5.392,
-        2.768,
-        2.391,
-        1.18,
+        40.758,
+        18.454,
+        13.841,
+        7.206,
+        4.396,
+        2.776,
+        2.395,
+        1.174,
         0,
         0
       ],
@@ -157,11 +157,11 @@
     },
     "lifetime": {
       "bins": [
-        40.104,
-        21.847,
-        13.454,
-        5.859,
-        3.735,
+        43.912,
+        22.918,
+        14.424,
+        4.998,
+        3.749,
         1,
         0,
         0,
@@ -205,7 +205,7 @@
     }
   },
   "window": {
-    "papers": 86,
+    "papers": 91,
     "outputBasis": "measured",
     "citations": 190,
     "top10": 0,
@@ -234,15 +234,15 @@
       "m": 1.4
     },
     "spread": {
-      "mean": 2.209,
+      "mean": 2.088,
       "median": 1,
-      "uncited": 37,
+      "uncited": 41,
       "i10": 4,
       "i100": 0
     }
   },
   "lifetime": {
-    "papers": 86,
+    "papers": 91,
     "outputBasis": "measured",
     "citations": 190,
     "top10": 0,
@@ -257,9 +257,9 @@
       "date": null
     },
     "spread": {
-      "mean": 2.209,
+      "mean": 2.088,
       "median": 1,
-      "uncited": 37,
+      "uncited": 41,
       "i10": 4,
       "i100": 0
     }
@@ -268,20 +268,62 @@
     "arms": "((abs:\"PACE satellite\" OR abs:\"Plankton, Aerosol, Cloud, ocean Ecosystem\" OR ((abs:\"SPEXone\" OR abs:\"HARP2\") AND (abs:\"polarimeter\" OR abs:\"polarimetric\" OR abs:\"polarization\" OR abs:\"aerosol\" OR abs:\"cloud\")) OR (abs:\"PACE\" AND (abs:\"ocean color\" OR abs:\"OCI\" OR abs:\"SPEXone\" OR abs:\"HARP2\" OR abs:\"phytoplankton\" OR abs:\"aerosol\") NOT =abs:\"Pallas Cloud Experiment\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2024-05 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22PACE+satellite%22+OR+abs%3A%22Plankton%2C+Aerosol%2C+Cloud%2C+ocean+Ecosystem%22+OR+%28%28abs%3A%22SPEXone%22+OR+abs%3A%22HARP2%22%29+AND+%28abs%3A%22polarimeter%22+OR+abs%3A%22polarimetric%22+OR+abs%3A%22polarization%22+OR+abs%3A%22aerosol%22+OR+abs%3A%22cloud%22%29%29+OR+%28abs%3A%22PACE%22+AND+%28abs%3A%22ocean+color%22+OR+abs%3A%22OCI%22+OR+abs%3A%22SPEXone%22+OR+abs%3A%22HARP2%22+OR+abs%3A%22phytoplankton%22+OR+abs%3A%22aerosol%22%29+NOT+%3Dabs%3A%22Pallas+Cloud+Experiment%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2024-05+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:08:16.425346+00:00",
+    "fetchedAt": "2026-11-18T18:26:03.046605+00:00",
     "reconciliation": {
-      "adsReturned": 86,
-      "curatedOut": 0,
-      "curatedIn": 0,
+      "adsReturned": 88,
+      "curatedOut": 1,
+      "curatedIn": 4,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 86
+      "final": 91
     }
   },
   "curation": {
-    "includes": [],
-    "excludes": []
+    "includes": [
+      {
+        "bibcode": "2025IGRSL..22L4089I",
+        "doi": null,
+        "title": "SimCLR-Enabled Wide and Deep Learning for Cyanobacterial Bloom Prediction From NASA's PACE Hyperspectral Mission",
+        "reason": "Predicts cyanobacterial blooms using NASA PACE hyperspectral observations.",
+        "authority": "agent",
+        "date": "2026-11-14"
+      },
+      {
+        "bibcode": "2026IJAEO.14605032K",
+        "doi": null,
+        "title": "Advancing CyanoHAB monitoring with hyperspectral data from NASA PACE: First results and validation",
+        "reason": "Reports validated cyanobacterial-bloom monitoring with NASA PACE hyperspectral data.",
+        "authority": "agent",
+        "date": "2026-11-14"
+      },
+      {
+        "bibcode": "2026E&SS...1304881L",
+        "doi": null,
+        "title": "Fusing Multi- and Hyperspectral Satellite Data for Harmful Algal Bloom Monitoring With Self-Supervised and Hierarchical Deep Learning",
+        "reason": "Uses OCI reflectances with other satellite observations to map harmful algal blooms.",
+        "authority": "agent",
+        "date": "2026-11-14"
+      },
+      {
+        "bibcode": "2026RSL....17..853H",
+        "doi": null,
+        "title": "Observing fall foliage with PACE pigment indices",
+        "reason": "Uses PACE pigment indices to track autumn forest foliage.",
+        "authority": "agent",
+        "date": "2026-11-14"
+      }
+    ],
+    "excludes": [
+      {
+        "bibcode": "2024FrRS....569769B",
+        "doi": "10.3389/frsen.2024.1369769",
+        "title": "Design and verification of a highly accurate in-situ hyperspectral radiometric measurement system (HyperNav)",
+        "reason": "Describes the separate HyperNav in-situ radiometer and its design and field verification.",
+        "authority": "agent",
+        "date": "2026-11-14"
+      }
+    ]
   },
   "topCited": [
     {
@@ -355,15 +397,6 @@
       "authorCount": null,
       "year": 2026,
       "citations": 7
-    },
-    {
-      "bibcode": "2024FrRS....569769B",
-      "title": "Design and verification of a highly accurate in-situ hyperspectral radiometric measurement system (HyperNav)",
-      "firstAuthor": "Barnard, Andrew",
-      "authors": null,
-      "authorCount": null,
-      "year": 2024,
-      "citations": 6
     },
     {
       "bibcode": "2025RSEnv.32014647Z",
@@ -447,6 +480,15 @@
       "citations": 4
     },
     {
+      "bibcode": "2026ITGRS..6410701F",
+      "title": "Collaborative Neural Networks Significantly Improve Global Aerosol Retrievals From Multiangle Polarimeters",
+      "firstAuthor": "Fu, Guangliang",
+      "authors": null,
+      "authorCount": null,
+      "year": 2026,
+      "citations": 4
+    },
+    {
       "bibcode": "2024AMT....17.6769E",
       "title": "Retrieval of cloud fraction and optical thickness of liquid water clouds over the ocean from multi-angle polarization observations",
       "firstAuthor": "Emde, Claudia",
@@ -466,6 +508,6 @@
     }
   ],
   "papersFile": {
-    "rows": 86
+    "rows": 91
   }
 }

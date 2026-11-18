@@ -30,14 +30,14 @@
   "indices": {
     "h": 103,
     "m": 3.552,
-    "i100": 108,
+    "i100": 110,
     "g": 163,
-    "tori": 368.478,
-    "riq": 685
+    "tori": 373.525,
+    "riq": 690
   },
   "facts": {
     "papers": 715,
-    "citations": 39455,
+    "citations": 39517,
     "publicationYears": [
       1998,
       2025
@@ -114,7 +114,7 @@
       622,
       867,
       916,
-      1213,
+      1217,
       1555,
       1844,
       1917,
@@ -123,10 +123,10 @@
       2123,
       2317,
       1999,
-      1744,
-      1848,
-      1819,
-      1552,
+      1745,
+      1849,
+      1842,
+      1554,
       1511,
       1633,
       1396,
@@ -135,13 +135,13 @@
       1288,
       1368,
       1228,
-      1182
+      1213
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 39455,
-      "observed": 39455,
+      "expected": 39517,
+      "observed": 39517,
       "missing": 0
     }
   },
@@ -236,46 +236,46 @@
   "ranks": {
     "full": {
       "bins": [
-        67.378,
-        47.752,
-        54.992,
-        62.457,
-        58.127,
-        64.899,
-        71.87,
-        69.95,
-        72.041,
-        85.534
+        67.79,
+        47.996,
+        55.013,
+        62.357,
+        57.796,
+        65.188,
+        71.922,
+        69.556,
+        71.972,
+        85.411
       ],
       "top1": 5
     },
     "window": {
       "bins": [
-        4.131,
-        6.804,
-        10.827,
-        9.117,
-        6.253,
-        3.72,
-        5.614,
-        5.783,
-        6.751,
+        4.182,
+        6.848,
+        10.945,
+        9.029,
+        6.164,
+        3.734,
+        5.607,
+        5.785,
+        6.706,
         13
       ],
       "top1": 2
     },
     "lifetime": {
       "bins": [
-        44.413,
-        43.689,
-        38.818,
-        33.801,
-        65.461,
-        65.652,
-        75.881,
-        101.683,
-        87.573,
-        158.027
+        44.078,
+        43.957,
+        39.09,
+        33.522,
+        65.493,
+        65.68,
+        73.681,
+        102.203,
+        90.278,
+        157.016
       ],
       "top1": 18
     }
@@ -283,11 +283,11 @@
   "full": {
     "papers": 655,
     "outputBasis": "measured",
-    "citations": 8322,
-    "top10": 81.534,
-    "top10ShareOfDivision": 0.05659,
+    "citations": 8326,
+    "top10": 81.411,
+    "top10ShareOfDivision": 0.05657,
     "top1": 5,
-    "top1ShareOfDivision": 0.0347,
+    "top1ShareOfDivision": 0.03474,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.252,
@@ -310,7 +310,7 @@
       "m": 2.556
     },
     "spread": {
-      "mean": 12.705,
+      "mean": 12.711,
       "median": 9,
       "uncited": 50,
       "i10": 317,
@@ -322,9 +322,9 @@
     "outputBasis": "measured",
     "citations": 1363,
     "top10": 13,
-    "top10ShareOfDivision": 0.0306,
+    "top10ShareOfDivision": 0.03064,
     "top1": 2,
-    "top1ShareOfDivision": 0.04707,
+    "top1ShareOfDivision": 0.04714,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.252,
@@ -357,9 +357,9 @@
   "lifetime": {
     "papers": 715,
     "outputBasis": "measured",
-    "citations": 39455,
-    "top10": 145.158,
-    "top10ShareOfDivision": 0.07904,
+    "citations": 39517,
+    "top10": 144.272,
+    "top10ShareOfDivision": 0.07853,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -370,18 +370,18 @@
       "date": "1998-08-00"
     },
     "spread": {
-      "mean": 55.182,
+      "mean": 55.269,
       "median": 29,
       "uncited": 28,
       "i10": 561,
-      "i100": 108
+      "i100": 110
     }
   },
   "query": {
     "arms": "((=abs:\"Transition Region and Coronal Explorer\" OR (abs:TRACE AND (abs:satellite OR abs:observation OR abs:observatory OR abs:telscope) AND (abs:(corona OR coronal OR flare OR flares OR chromosphere OR chromospheric OR prominence OR filament OR sunspot OR EUV) OR =abs:\"active region\" OR =abs:\"transition region\"))) AND NOT (abs:\"TRACE-P\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1998-06 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Transition+Region+and+Coronal+Explorer%22+OR+%28abs%3ATRACE+AND+%28abs%3Asatellite+OR+abs%3Aobservation+OR+abs%3Aobservatory+OR+abs%3Atelscope%29+AND+%28abs%3A%28corona+OR+coronal+OR+flare+OR+flares+OR+chromosphere+OR+chromospheric+OR+prominence+OR+filament+OR+sunspot+OR+EUV%29+OR+%3Dabs%3A%22active+region%22+OR+%3Dabs%3A%22transition+region%22%29%29%29+AND+NOT+%28abs%3A%22TRACE-P%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-06+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:11:24.694003+00:00",
+    "fetchedAt": "2026-11-18T18:28:56.832634+00:00",
     "reconciliation": {
       "adsReturned": 719,
       "curatedOut": 4,
@@ -446,7 +446,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 856
+      "citations": 857
     },
     {
       "bibcode": "1999ApJ...520..880A",
@@ -464,7 +464,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 731
+      "citations": 732
     },
     {
       "bibcode": "2003SoPh..212..165S",
@@ -473,7 +473,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 693
+      "citations": 695
     },
     {
       "bibcode": "2017LRSP...14....2B",
@@ -482,7 +482,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 502
+      "citations": 507
     },
     {
       "bibcode": "2001A&A...372L..53N",
@@ -491,7 +491,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 456
+      "citations": 457
     },
     {
       "bibcode": "2002ApJ...577..475R",
@@ -509,7 +509,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2002,
-      "citations": 425
+      "citations": 426
     },
     {
       "bibcode": "1999SoPh..187..261S",
@@ -527,16 +527,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2009,
-      "citations": 367
-    },
-    {
-      "bibcode": "2002SoPh..206...99A",
-      "title": "Transverse Oscillations in Coronal Loops Observed with TRACE II. Measurements of Geometric and Physical Parameters",
-      "firstAuthor": "Aschwanden, Markus J.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2002,
-      "citations": 340
+      "citations": 369
     },
     {
       "bibcode": "1998ApJ...502L.181A",
@@ -545,7 +536,16 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 338
+      "citations": 341
+    },
+    {
+      "bibcode": "2002SoPh..206...99A",
+      "title": "Transverse Oscillations in Coronal Loops Observed with TRACE II. Measurements of Geometric and Physical Parameters",
+      "firstAuthor": "Aschwanden, Markus J.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2002,
+      "citations": 341
     },
     {
       "bibcode": "2000ApJ...535.1047A",
@@ -563,7 +563,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2008,
-      "citations": 286
+      "citations": 288
     },
     {
       "bibcode": "2005ApJ...618.1020G",
@@ -572,7 +572,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2005,
-      "citations": 285
+      "citations": 287
     },
     {
       "bibcode": "2003ApJ...595L.135J",
@@ -581,7 +581,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 278
+      "citations": 279
     },
     {
       "bibcode": "2000ApJ...541.1059A",

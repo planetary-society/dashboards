@@ -3,7 +3,7 @@
   "inclusion": {
     "date": "2028-10-01",
     "basis": "window",
-    "asOf": "2026-11-17"
+    "asOf": "2026-11-18"
   },
   "name": "Mars 2020",
   "fullName": "Mars Perseverance Rover",
@@ -37,12 +37,12 @@
     "m": 5.667,
     "i100": 6,
     "g": 53,
-    "tori": 10.23,
-    "riq": 456
+    "tori": 10.343,
+    "riq": 459
   },
   "facts": {
-    "papers": 428,
-    "citations": 4845,
+    "papers": 430,
+    "citations": 4853,
     "publicationYears": [
       2021,
       2026
@@ -63,7 +63,7 @@
       95,
       69,
       95,
-      69
+      71
     ],
     "citations": [
       5,
@@ -71,18 +71,18 @@
       706,
       916,
       1424,
-      1617
+      1625
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 4845,
-      "observed": 4845,
+      "expected": 4853,
+      "observed": 4853,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 428,
+    "papers": 430,
     "us": {
       "mapped": 273,
       "top": [
@@ -131,49 +131,49 @@
     ],
     "authorCount": 39,
     "year": 2021,
-    "citations": 185
+    "citations": 186
   },
   "ranks": {
     "full": {
       "bins": [
-        26.395,
-        25.611,
-        16.708,
-        22.744,
-        14.824,
-        12.183,
-        18.752,
-        11.976,
-        18.492,
-        27.316
+        26.77,
+        25.814,
+        16.572,
+        22.529,
+        14.825,
+        12.138,
+        18.847,
+        11.818,
+        18.586,
+        27.102
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        38.836,
-        50.409,
-        31.951,
-        32.394,
-        27.137,
-        23.04,
-        14.544,
-        21.855,
-        17.778,
-        22.056
+        39.467,
+        50.977,
+        31.418,
+        31.923,
+        26.896,
+        23.241,
+        14.464,
+        22.32,
+        17.295,
+        22
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        113.06,
-        85.908,
-        62.478,
-        58.077,
-        36.114,
-        17.191,
-        22.355,
-        10.817,
+        114.059,
+        86.198,
+        62.174,
+        58.923,
+        35.456,
+        17.989,
+        22.319,
+        10.883,
         16,
         6
       ],
@@ -183,11 +183,11 @@
   "full": {
     "papers": 195,
     "outputBasis": "measured",
-    "citations": 3060,
-    "top10": 26.658,
-    "top10ShareOfDivision": 0.02365,
+    "citations": 3062,
+    "top10": 26.551,
+    "top10ShareOfDivision": 0.02339,
     "top1": 2,
-    "top1ShareOfDivision": 0.01774,
+    "top1ShareOfDivision": 0.01762,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.082,
@@ -210,7 +210,7 @@
       "m": 11.191
     },
     "spread": {
-      "mean": 15.692,
+      "mean": 15.703,
       "median": 7,
       "uncited": 20,
       "i10": 84,
@@ -220,9 +220,9 @@
   "window": {
     "papers": 280,
     "outputBasis": "measured",
-    "citations": 3783,
-    "top10": 22.056,
-    "top10ShareOfDivision": 0.04069,
+    "citations": 3786,
+    "top10": 22,
+    "top10ShareOfDivision": 0.03997,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -247,19 +247,19 @@
       "m": 8.638
     },
     "spread": {
-      "mean": 13.511,
+      "mean": 13.521,
       "median": 7,
       "uncited": 28,
-      "i10": 107,
+      "i10": 108,
       "i100": 2
     }
   },
   "lifetime": {
-    "papers": 428,
+    "papers": 430,
     "outputBasis": "measured",
-    "citations": 4845,
+    "citations": 4853,
     "top10": 6,
-    "top10ShareOfDivision": 0.00361,
+    "top10ShareOfDivision": 0.00357,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -270,10 +270,10 @@
       "date": "2021-11-00"
     },
     "spread": {
-      "mean": 11.32,
+      "mean": 11.286,
       "median": 4,
-      "uncited": 96,
-      "i10": 131,
+      "uncited": 98,
+      "i10": 132,
       "i100": 6
     }
   },
@@ -281,15 +281,15 @@
     "arms": "(((=abs:\"Perseverance rover\" OR (=abs:\"Mars 2020\" AND (abs:(rover OR spacecraft OR Jezero OR spectroscopy OR biosignature) OR =abs:martian OR =title:\"Mars 2020\")) OR (abs:Mars AND ((abs:Perseverance AND NOT =abs:\"Perseverance Valley\") OR abs:M2020 OR =abs:Mars2020 OR =abs:\"Mastcam-Z\" OR =abs:SuperCam OR abs:PIXL OR abs:SHERLOC OR abs:MEDA OR abs:RIMFAX)) OR ((=abs:Ingenuity OR =abs:\"Mars helicopter\") AND abs:Mars AND title:(wind OR dust OR sound OR acoustic) AND NOT =title:\"wind tunnel\")) AND NOT (=title:(segmentation OR backshell OR generator OR thermoelectric OR design OR hardware OR localization OR reliability OR propulsion OR testbed OR miniaturization OR ablation OR avionics OR batteries OR aerothermal OR monolithic OR retroreflector) OR title:(MOXIE OR SLAM OR GNC OR ISRU OR aerodynamic* OR aerothermodynamic* OR sailplane* OR calibrat* OR parachut* OR navigat*) OR =title:\"auto-focusing\" OR =title:\"landing site evaluation\" OR title:fertili* OR =title:\"parking orbit\" OR (=title:(sensor OR spectrometer) AND abs:(design AND calibration) AND NOT title:(results OR observation* OR mineral*)) OR =title:\"camera model\" OR =title:\"Moon Diver\" OR =title:\"communication link\" OR =title:\"risk assessment\" OR =title:\"risk classification\" OR =title:\"Sigma-Delta modulation\" OR =title:\"Internet of Things\" OR =title:\"oxygen production\" OR =title:\"producing oxygen\" OR =title:\"methane and oxygen\" OR =title:\"space habitats\" OR =title:\"cambered plate\" OR ((=title:(helicopter OR drone OR aircraft OR quadcopter OR quadrotor OR octocopter) OR title:(rotor* OR UAV OR UAS)) AND NOT title:(wind OR dust OR sound OR acoustic OR geology OR geomorphology)))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2021-07 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%3Dabs%3A%22Perseverance+rover%22+OR+%28%3Dabs%3A%22Mars+2020%22+AND+%28abs%3A%28rover+OR+spacecraft+OR+Jezero+OR+spectroscopy+OR+biosignature%29+OR+%3Dabs%3Amartian+OR+%3Dtitle%3A%22Mars+2020%22%29%29+OR+%28abs%3AMars+AND+%28%28abs%3APerseverance+AND+NOT+%3Dabs%3A%22Perseverance+Valley%22%29+OR+abs%3AM2020+OR+%3Dabs%3AMars2020+OR+%3Dabs%3A%22Mastcam-Z%22+OR+%3Dabs%3ASuperCam+OR+abs%3APIXL+OR+abs%3ASHERLOC+OR+abs%3AMEDA+OR+abs%3ARIMFAX%29%29+OR+%28%28%3Dabs%3AIngenuity+OR+%3Dabs%3A%22Mars+helicopter%22%29+AND+abs%3AMars+AND+title%3A%28wind+OR+dust+OR+sound+OR+acoustic%29+AND+NOT+%3Dtitle%3A%22wind+tunnel%22%29%29+AND+NOT+%28%3Dtitle%3A%28segmentation+OR+backshell+OR+generator+OR+thermoelectric+OR+design+OR+hardware+OR+localization+OR+reliability+OR+propulsion+OR+testbed+OR+miniaturization+OR+ablation+OR+avionics+OR+batteries+OR+aerothermal+OR+monolithic+OR+retroreflector%29+OR+title%3A%28MOXIE+OR+SLAM+OR+GNC+OR+ISRU+OR+aerodynamic%2A+OR+aerothermodynamic%2A+OR+sailplane%2A+OR+calibrat%2A+OR+parachut%2A+OR+navigat%2A%29+OR+%3Dtitle%3A%22auto-focusing%22+OR+%3Dtitle%3A%22landing+site+evaluation%22+OR+title%3Afertili%2A+OR+%3Dtitle%3A%22parking+orbit%22+OR+%28%3Dtitle%3A%28sensor+OR+spectrometer%29+AND+abs%3A%28design+AND+calibration%29+AND+NOT+title%3A%28results+OR+observation%2A+OR+mineral%2A%29%29+OR+%3Dtitle%3A%22camera+model%22+OR+%3Dtitle%3A%22Moon+Diver%22+OR+%3Dtitle%3A%22communication+link%22+OR+%3Dtitle%3A%22risk+assessment%22+OR+%3Dtitle%3A%22risk+classification%22+OR+%3Dtitle%3A%22Sigma-Delta+modulation%22+OR+%3Dtitle%3A%22Internet+of+Things%22+OR+%3Dtitle%3A%22oxygen+production%22+OR+%3Dtitle%3A%22producing+oxygen%22+OR+%3Dtitle%3A%22methane+and+oxygen%22+OR+%3Dtitle%3A%22space+habitats%22+OR+%3Dtitle%3A%22cambered+plate%22+OR+%28%28%3Dtitle%3A%28helicopter+OR+drone+OR+aircraft+OR+quadcopter+OR+quadrotor+OR+octocopter%29+OR+title%3A%28rotor%2A+OR+UAV+OR+UAS%29%29+AND+NOT+title%3A%28wind+OR+dust+OR+sound+OR+acoustic+OR+geology+OR+geomorphology%29%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2021-07+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:01:14.656146+00:00",
+    "fetchedAt": "2026-11-18T18:19:49.833941+00:00",
     "reconciliation": {
-      "adsReturned": 429,
+      "adsReturned": 431,
       "curatedOut": 14,
       "curatedIn": 14,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 1,
-      "final": 428
+      "final": 430
     }
   },
   "curation": {
@@ -578,7 +578,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2021,
-      "citations": 185
+      "citations": 186
     },
     {
       "bibcode": "2022Sci...378.1105S",
@@ -704,7 +704,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 66
+      "citations": 67
     },
     {
       "bibcode": "2023JGRE..12807455C",
@@ -722,7 +722,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 60
+      "citations": 61
     },
     {
       "bibcode": "2022SciA....8O4856B",
@@ -753,6 +753,6 @@
     }
   ],
   "papersFile": {
-    "rows": 428
+    "rows": 430
   }
 }

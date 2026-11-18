@@ -30,14 +30,14 @@
   "indices": {
     "h": 93,
     "m": 6.2,
-    "i100": 82,
+    "i100": 83,
     "g": 156,
-    "tori": 114.577,
-    "riq": 669
+    "tori": 116.469,
+    "riq": 674
   },
   "facts": {
-    "papers": 1938,
-    "citations": 54715,
+    "papers": 1944,
+    "citations": 54809,
     "publicationYears": [
       2012,
       2026
@@ -76,37 +76,37 @@
       183,
       181,
       174,
-      195
+      201
     ],
     "citations": [
       0,
       103,
       529,
-      1206,
+      1209,
       1665,
       2466,
-      2872,
-      3544,
+      2867,
+      3550,
       3803,
       4315,
-      5114,
-      5873,
-      6912,
-      7295,
-      9018
+      5112,
+      5877,
+      6913,
+      7289,
+      9111
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 54715,
-      "observed": 54715,
+      "expected": 54809,
+      "observed": 54809,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 1938,
+    "papers": 1944,
     "us": {
-      "mapped": 1142,
+      "mapped": 1143,
       "top": [
         {
           "name": "California Institute of Technology",
@@ -123,7 +123,7 @@
       ]
     },
     "world": {
-      "mapped": 1884,
+      "mapped": 1890,
       "top": [
         {
           "name": "California Institute of Technology",
@@ -189,63 +189,63 @@
     ],
     "authorCount": 389,
     "year": 2022,
-    "citations": 2465
+    "citations": 2490
   },
   "ranks": {
     "full": {
       "bins": [
-        93.809,
-        144.331,
-        160.739,
-        183.394,
-        167.796,
-        181.646,
-        131.166,
-        121.984,
-        124.967,
-        78.168
+        95.515,
+        144.554,
+        160.698,
+        182.311,
+        168.396,
+        181.109,
+        131.056,
+        121.708,
+        124.525,
+        78.128
       ],
       "top1": 5
     },
     "window": {
       "bins": [
-        12.175,
-        17.029,
-        17.526,
-        24.23,
-        30.173,
-        28.86,
-        29.051,
-        42.645,
-        35.311,
+        12.408,
+        17.085,
+        17.387,
+        24.416,
+        30.384,
+        28.563,
+        29.447,
+        42.232,
+        35.078,
         17
       ],
       "top1": 1
     },
     "lifetime": {
       "bins": [
-        263.48,
-        304.535,
-        275.204,
-        242.462,
-        236.866,
-        177.275,
-        140.38,
-        128.959,
-        113.092,
-        55.749
+        270.054,
+        306.143,
+        273.691,
+        243.813,
+        235.78,
+        176.1,
+        141.059,
+        128.426,
+        113.473,
+        55.461
       ],
-      "top1": 3
+      "top1": 3.488
     }
   },
   "full": {
     "papers": 1388,
     "outputBasis": "measured",
-    "citations": 25835,
-    "top10": 54.284,
-    "top10ShareOfDivision": 0.01091,
+    "citations": 25842,
+    "top10": 54.264,
+    "top10ShareOfDivision": 0.01092,
     "top1": 2.667,
-    "top1ShareOfDivision": 0.00536,
+    "top1ShareOfDivision": 0.00537,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.504,
@@ -268,21 +268,21 @@
       "m": 4.854
     },
     "spread": {
-      "mean": 18.613,
+      "mean": 18.618,
       "median": 12,
       "uncited": 26,
-      "i10": 813,
+      "i10": 814,
       "i100": 14
     }
   },
   "window": {
     "papers": 254,
     "outputBasis": "measured",
-    "citations": 6307,
+    "citations": 6309,
     "top10": 16.5,
-    "top10ShareOfDivision": 0.00853,
+    "top10ShareOfDivision": 0.00855,
     "top1": 1,
-    "top1ShareOfDivision": 0.00517,
+    "top1ShareOfDivision": 0.00518,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.504,
@@ -305,7 +305,7 @@
       "m": 10.217
     },
     "spread": {
-      "mean": 24.831,
+      "mean": 24.839,
       "median": 18,
       "uncited": 2,
       "i10": 194,
@@ -313,11 +313,11 @@
     }
   },
   "lifetime": {
-    "papers": 1938,
+    "papers": 1944,
     "outputBasis": "measured",
-    "citations": 54715,
-    "top10": 39.699,
-    "top10ShareOfDivision": 0.00624,
+    "citations": 54809,
+    "top10": 39.411,
+    "top10ShareOfDivision": 0.0062,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -328,26 +328,26 @@
       "date": "2013-02-00"
     },
     "spread": {
-      "mean": 28.233,
+      "mean": 28.194,
       "median": 14,
-      "uncited": 102,
+      "uncited": 107,
       "i10": 1171,
-      "i100": 82
+      "i100": 83
     }
   },
   "query": {
     "arms": "(((abs:\"NuSTAR\" NOT (=abs:\"Facility for Antiproton and Ion Research\" OR =abs:\"Facility for Anti-proton and Ion Research\" OR =abs:\"Nuclear Structure Astrophysics and Reactions\" OR =abs:\"radioactive beam\" OR =abs:\"radioactive beams\" OR =abs:\"radioactive ion beam\" OR =abs:\"radioactive ion beams\" OR =abs:\"exotic nuclei\" OR abs:((DESPEC OR GSI) AND (nuclear OR nuclei OR isotope OR detector OR beam)))) OR =abs:\"Nuclear Spectroscopic Telescope Array\" OR facility:\"NuSTAR\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2012-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22NuSTAR%22+NOT+%28%3Dabs%3A%22Facility+for+Antiproton+and+Ion+Research%22+OR+%3Dabs%3A%22Facility+for+Anti-proton+and+Ion+Research%22+OR+%3Dabs%3A%22Nuclear+Structure+Astrophysics+and+Reactions%22+OR+%3Dabs%3A%22radioactive+beam%22+OR+%3Dabs%3A%22radioactive+beams%22+OR+%3Dabs%3A%22radioactive+ion+beam%22+OR+%3Dabs%3A%22radioactive+ion+beams%22+OR+%3Dabs%3A%22exotic+nuclei%22+OR+abs%3A%28%28DESPEC+OR+GSI%29+AND+%28nuclear+OR+nuclei+OR+isotope+OR+detector+OR+beam%29%29%29%29+OR+%3Dabs%3A%22Nuclear+Spectroscopic+Telescope+Array%22+OR+facility%3A%22NuSTAR%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:19:05.862040+00:00",
+    "fetchedAt": "2026-11-18T18:37:48.142503+00:00",
     "reconciliation": {
-      "adsReturned": 1947,
+      "adsReturned": 1953,
       "curatedOut": 10,
       "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 1938
+      "final": 1944
     }
   },
   "curation": {
@@ -452,7 +452,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 2465
+      "citations": 2490
     },
     {
       "bibcode": "2013ApJ...770..103H",
@@ -461,7 +461,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 2156
+      "citations": 2163
     },
     {
       "bibcode": "2017Sci...358.1565E",
@@ -479,7 +479,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2022,
-      "citations": 458
+      "citations": 459
     },
     {
       "bibcode": "2016ApJ...831L..14F",
@@ -506,7 +506,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 339
+      "citations": 341
     },
     {
       "bibcode": "2019ApJ...872...18M",
@@ -515,7 +515,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 305
+      "citations": 307
     },
     {
       "bibcode": "2015ApJS..220....8M",
@@ -524,7 +524,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 301
+      "citations": 300
     },
     {
       "bibcode": "2018ApJ...864...84K",
@@ -569,7 +569,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 268
+      "citations": 269
     },
     {
       "bibcode": "2015PhRvD..92f3007G",
@@ -596,7 +596,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 234
+      "citations": 235
     },
     {
       "bibcode": "2018ApJ...854...42B",
@@ -605,7 +605,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2018,
-      "citations": 231
+      "citations": 232
     },
     {
       "bibcode": "2020ApJ...898L...1R",
@@ -614,19 +614,19 @@
       "authors": null,
       "authorCount": null,
       "year": 2020,
-      "citations": 223
+      "citations": 222
     },
     {
-      "bibcode": "2015ApJ...807...79H",
-      "title": "Rapid Variability of Blazar 3C 279 during Flaring States in 2013-2014 with Joint Fermi-LAT, NuSTAR, Swift, and Ground-Based Multiwavelength Observations",
-      "firstAuthor": "Hayashida, M.",
+      "bibcode": "2021MNRAS.500..448C",
+      "title": "Repeating behaviour of FRB 121102: periodicity, waiting times, and energy distribution",
+      "firstAuthor": "Cruces, M.",
       "authors": null,
       "authorCount": null,
-      "year": 2015,
-      "citations": 201
+      "year": 2021,
+      "citations": 203
     }
   ],
   "papersFile": {
-    "rows": 1938
+    "rows": 1944
   }
 }

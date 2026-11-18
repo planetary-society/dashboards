@@ -3,7 +3,7 @@
   "inclusion": {
     "date": "2031-10-01",
     "basis": "window",
-    "asOf": "2026-11-17"
+    "asOf": "2026-11-18"
   },
   "name": "Landsat 9",
   "fullName": "Landsat 9",
@@ -41,7 +41,7 @@
     "riq": 905
   },
   "facts": {
-    "papers": 458,
+    "papers": 462,
     "citations": 3542,
     "publicationYears": [
       2022,
@@ -61,14 +61,14 @@
       55,
       134,
       111,
-      143
+      147
     ],
     "citations": [
       16,
       170,
       575,
-      1237,
-      1544
+      1236,
+      1545
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
@@ -79,7 +79,7 @@
     }
   },
   "affiliations": {
-    "papers": 458,
+    "papers": 462,
     "us": {
       "mapped": 54,
       "top": [
@@ -98,7 +98,7 @@
       ]
     },
     "world": {
-      "mapped": 282,
+      "mapped": 283,
       "top": [
         {
           "name": "Chinese Academy of Sciences, Beijing",
@@ -133,45 +133,45 @@
   "ranks": {
     "full": {
       "bins": [
-        2.513,
-        4.903,
-        3.117,
-        8.671,
-        3.593,
-        10.715,
-        10.629,
-        8.696,
-        7.998,
-        8.168
+        2.566,
+        4.875,
+        3.156,
+        8.739,
+        3.514,
+        10.77,
+        10.724,
+        8.566,
+        8.056,
+        8.033
       ],
       "top1": 2
     },
     "window": {
       "bins": [
-        129.492,
-        77.895,
-        51.878,
-        40.981,
-        31.38,
-        32.804,
-        31.311,
-        23.18,
-        21.924,
-        16.154
+        133.21,
+        78.145,
+        51.913,
+        40.922,
+        31.403,
+        32.863,
+        31.331,
+        23.139,
+        22.003,
+        16.073
       ],
       "top1": 4
     },
     "lifetime": {
       "bins": [
-        142.21,
-        98.644,
-        65.173,
-        49.664,
-        37.749,
-        27.717,
-        15.843,
-        12.623,
-        4.377,
+        145.453,
+        99.037,
+        65.412,
+        49.73,
+        37.774,
+        27.751,
+        15.844,
+        12.636,
+        4.364,
         4
       ],
       "top1": 1
@@ -180,9 +180,9 @@
   "full": {
     "papers": 69,
     "outputBasis": "measured",
-    "citations": 1307,
-    "top10": 5.959,
-    "top10ShareOfDivision": 0.00151,
+    "citations": 1306,
+    "top10": 5.858,
+    "top10ShareOfDivision": 0.00148,
     "top1": 2,
     "top1ShareOfDivision": 0.00506,
     "first": {
@@ -207,7 +207,7 @@
       "m": 12.753
     },
     "spread": {
-      "mean": 18.942,
+      "mean": 18.928,
       "median": 10,
       "uncited": 1,
       "i10": 35,
@@ -215,13 +215,13 @@
     }
   },
   "window": {
-    "papers": 457,
+    "papers": 461,
     "outputBasis": "measured",
-    "citations": 3314,
-    "top10": 16.154,
-    "top10ShareOfDivision": 0.01409,
+    "citations": 3313,
+    "top10": 16.073,
+    "top10ShareOfDivision": 0.01402,
     "top1": 4,
-    "top1ShareOfDivision": 0.03489,
+    "top1ShareOfDivision": 0.0349,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.057,
@@ -244,15 +244,15 @@
       "m": 3.945
     },
     "spread": {
-      "mean": 7.252,
+      "mean": 7.187,
       "median": 2,
-      "uncited": 130,
+      "uncited": 134,
       "i10": 96,
       "i100": 2
     }
   },
   "lifetime": {
-    "papers": 458,
+    "papers": 462,
     "outputBasis": "measured",
     "citations": 3542,
     "top10": 4,
@@ -267,9 +267,9 @@
       "date": "2022-10-00"
     },
     "spread": {
-      "mean": 7.734,
-      "median": 2.5,
-      "uncited": 130,
+      "mean": 7.667,
+      "median": 2,
+      "uncited": 134,
       "i10": 99,
       "i100": 2
     }
@@ -278,15 +278,15 @@
     "arms": "((abs:\"Landsat 9\" OR abs:\"Landsat-9\" OR ((abs:\"TIRS-2\" OR abs:\"TIRS 2\" OR abs:\"OLI-2\" OR abs:\"OLI 2\") AND abs:\"Landsat\")))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2022-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22Landsat+9%22+OR+abs%3A%22Landsat-9%22+OR+%28%28abs%3A%22TIRS-2%22+OR+abs%3A%22TIRS+2%22+OR+abs%3A%22OLI-2%22+OR+abs%3A%22OLI+2%22%29+AND+abs%3A%22Landsat%22%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2022-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:08:07.282263+00:00",
+    "fetchedAt": "2026-11-18T18:25:56.970280+00:00",
     "reconciliation": {
-      "adsReturned": 457,
+      "adsReturned": 461,
       "curatedOut": 0,
       "curatedIn": 1,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 458
+      "final": 462
     }
   },
   "curation": {
@@ -485,6 +485,6 @@
     }
   ],
   "papersFile": {
-    "rows": 458
+    "rows": 462
   }
 }

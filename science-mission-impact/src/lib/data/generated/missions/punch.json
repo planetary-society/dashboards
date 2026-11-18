@@ -3,7 +3,7 @@
   "inclusion": {
     "date": "2032-10-01",
     "basis": "window",
-    "asOf": "2026-11-17"
+    "asOf": "2026-11-18"
   },
   "name": "PUNCH",
   "fullName": "Polarimeter to Unify the Corona and Heliosphere",
@@ -41,8 +41,8 @@
     "riq": 108
   },
   "facts": {
-    "papers": 5,
-    "citations": 32,
+    "papers": 6,
+    "citations": 33,
     "publicationYears": [
       2025,
       2026
@@ -55,52 +55,52 @@
     ],
     "papers": [
       1,
-      4
+      5
     ],
     "citations": [
       0,
-      32
+      33
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 32,
-      "observed": 32,
+      "expected": 33,
+      "observed": 33,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 5,
+    "papers": 6,
     "us": {
-      "mapped": 4,
+      "mapped": 5,
       "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 3
+        },
         {
           "name": "National Center for Atmospheric Research, Colorado",
           "papers": 3
         },
         {
           "name": "Boston College, Massachusetts",
-          "papers": 2
-        },
-        {
-          "name": "Cooperative Institute for Research in Environmental Sciences",
           "papers": 2
         }
       ]
     },
     "world": {
-      "mapped": 4,
+      "mapped": 5,
       "top": [
+        {
+          "name": "NASA Goddard Space Flight Center, Maryland",
+          "papers": 3
+        },
         {
           "name": "National Center for Atmospheric Research, Colorado",
           "papers": 3
         },
         {
           "name": "Boston College, Massachusetts",
-          "papers": 2
-        },
-        {
-          "name": "Cooperative Institute for Research in Environmental Sciences",
           "papers": 2
         }
       ]
@@ -119,7 +119,7 @@
     ],
     "authorCount": 78,
     "year": 2026,
-    "citations": 25
+    "citations": 26
   },
   "ranks": {
     "full": {
@@ -139,22 +139,22 @@
     },
     "window": {
       "bins": [
-        2,
+        3,
         1,
-        0.553,
-        0.447,
+        0.573,
+        0.427,
         0,
         0,
         0,
-        1,
-        0,
+        0.45,
+        0.55,
         0
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        2,
+        3,
         1,
         1,
         0,
@@ -202,9 +202,9 @@
     }
   },
   "window": {
-    "papers": 5,
+    "papers": 6,
     "outputBasis": "measured",
-    "citations": 29,
+    "citations": 30,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": 0,
@@ -231,17 +231,17 @@
       "m": 0.5
     },
     "spread": {
-      "mean": 5.8,
-      "median": 2,
-      "uncited": 2,
+      "mean": 5,
+      "median": 1,
+      "uncited": 3,
       "i10": 1,
       "i100": 0
     }
   },
   "lifetime": {
-    "papers": 5,
+    "papers": 6,
     "outputBasis": "measured",
-    "citations": 32,
+    "citations": 33,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": null,
@@ -254,9 +254,9 @@
       "date": null
     },
     "spread": {
-      "mean": 6.4,
-      "median": 2,
-      "uncited": 2,
+      "mean": 5.5,
+      "median": 1,
+      "uncited": 3,
       "i10": 1,
       "i100": 0
     }
@@ -265,15 +265,15 @@
     "arms": "((=abs:\"Polarimeter to Unify the Corona and Heliosphere\" OR (abs:\"PUNCH\" AND abs:solar AND (abs:\"corona\" OR abs:\"heliosphere\" OR abs:\"solar wind\" OR abs:\"NFI\" OR abs:\"WFI\" OR abs:\"STEAM\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2025-09 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Polarimeter+to+Unify+the+Corona+and+Heliosphere%22+OR+%28abs%3A%22PUNCH%22+AND+abs%3Asolar+AND+%28abs%3A%22corona%22+OR+abs%3A%22heliosphere%22+OR+abs%3A%22solar+wind%22+OR+abs%3A%22NFI%22+OR+abs%3A%22WFI%22+OR+abs%3A%22STEAM%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2025-09+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:13:30.039305+00:00",
+    "fetchedAt": "2026-11-18T18:31:08.820480+00:00",
     "reconciliation": {
-      "adsReturned": 5,
+      "adsReturned": 6,
       "curatedOut": 0,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 5
+      "final": 6
     }
   },
   "curation": {
@@ -288,7 +288,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2026,
-      "citations": 25
+      "citations": 26
     },
     {
       "bibcode": "2026SoPh..301...33G",
@@ -325,9 +325,18 @@
       "authorCount": null,
       "year": 2026,
       "citations": 0
+    },
+    {
+      "bibcode": "2026SoPh..301..170L",
+      "title": "Solar Polar Field Reversal Influences on the Solar Wind During Weak Polar Field Cycles 24 and 25",
+      "firstAuthor": "Luhmann, J. G.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2026,
+      "citations": 0
     }
   ],
   "papersFile": {
-    "rows": 5
+    "rows": 6
   }
 }

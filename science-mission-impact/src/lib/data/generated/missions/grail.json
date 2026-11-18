@@ -32,12 +32,12 @@
     "m": 3.067,
     "i100": 22,
     "g": 84,
-    "tori": 30.999,
-    "riq": 371
+    "tori": 31.333,
+    "riq": 373
   },
   "facts": {
     "papers": 192,
-    "citations": 7707,
+    "citations": 7723,
     "publicationYears": [
       2012,
       2026
@@ -81,25 +81,25 @@
     "citations": [
       1,
       136,
-      288,
+      286,
       323,
-      383,
-      329,
+      394,
+      332,
       497,
       503,
       510,
       549,
       640,
-      896,
+      895,
       897,
       822,
-      933
+      938
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 7707,
-      "observed": 7707,
+      "expected": 7723,
+      "observed": 7723,
       "missing": 0
     }
   },
@@ -189,17 +189,17 @@
     ],
     "authorCount": 16,
     "year": 2013,
-    "citations": 888
+    "citations": 887
   },
   "ranks": {
     "full": {
       "bins": [
-        2.718,
-        3.282,
-        1.56,
-        2.519,
-        2.259,
-        2.662,
+        2.509,
+        3.491,
+        1.49,
+        2.674,
+        2.054,
+        2.782,
         4,
         3,
         5,
@@ -209,14 +209,14 @@
     },
     "window": {
       "bins": [
-        2.767,
-        1.233,
-        3,
+        2.68,
+        1.32,
+        2.367,
+        2.633,
         2,
-        2,
         3,
-        1.559,
-        1.441,
+        1.665,
+        1.335,
         2,
         8
       ],
@@ -224,16 +224,16 @@
     },
     "lifetime": {
       "bins": [
-        27.11,
-        26.051,
-        26.498,
-        14.459,
-        12.077,
-        14.612,
-        17.193,
-        13,
-        16.361,
-        24.639
+        27.192,
+        26.49,
+        26.253,
+        14.631,
+        11.435,
+        14,
+        17.611,
+        13.389,
+        17.038,
+        23.962
       ],
       "top1": 2
     }
@@ -241,11 +241,11 @@
   "full": {
     "papers": 37,
     "outputBasis": "measured",
-    "citations": 1104,
+    "citations": 1113,
     "top10": 9.5,
-    "top10ShareOfDivision": 0.00874,
+    "top10ShareOfDivision": 0.00875,
     "top1": 2,
-    "top1ShareOfDivision": 0.01841,
+    "top1ShareOfDivision": 0.01842,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.906,
@@ -268,21 +268,21 @@
       "m": 6.177
     },
     "spread": {
-      "mean": 29.838,
+      "mean": 30.081,
       "median": 14,
-      "uncited": 2,
-      "i10": 23,
+      "uncited": 1,
+      "i10": 24,
       "i100": 2
     }
   },
   "window": {
     "papers": 27,
     "outputBasis": "measured",
-    "citations": 923,
+    "citations": 931,
     "top10": 8,
-    "top10ShareOfDivision": 0.01693,
+    "top10ShareOfDivision": 0.01704,
     "top1": 2,
-    "top1ShareOfDivision": 0.04232,
+    "top1ShareOfDivision": 0.04261,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.906,
@@ -300,24 +300,24 @@
       "citationBuckets": 6
     },
     "indices": {
-      "h": 13,
-      "g": 25,
-      "m": 6.002
+      "h": 14,
+      "g": 26,
+      "m": 6.464
     },
     "spread": {
-      "mean": 34.185,
-      "median": 13,
-      "uncited": 2,
-      "i10": 16,
+      "mean": 34.481,
+      "median": 14,
+      "uncited": 1,
+      "i10": 17,
       "i100": 2
     }
   },
   "lifetime": {
     "papers": 192,
     "outputBasis": "measured",
-    "citations": 7707,
-    "top10": 21.639,
-    "top10ShareOfDivision": 0.01374,
+    "citations": 7723,
+    "top10": 20.962,
+    "top10ShareOfDivision": 0.0133,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -328,7 +328,7 @@
       "date": "2012-11-00"
     },
     "spread": {
-      "mean": 40.141,
+      "mean": 40.224,
       "median": 12.5,
       "uncited": 20,
       "i10": 107,
@@ -339,7 +339,7 @@
     "arms": "((=abs:\"Gravity Recovery and Interior Laboratory\" OR (abs:GRAIL AND (abs:Moon OR abs:lunar OR abs:gravity)) ))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2012-04 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Gravity+Recovery+and+Interior+Laboratory%22+OR+%28abs%3AGRAIL+AND+%28abs%3AMoon+OR+abs%3Alunar+OR+abs%3Agravity%29%29+%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2012-04+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:00:27.497097+00:00",
+    "fetchedAt": "2026-11-18T18:19:00.923169+00:00",
     "reconciliation": {
       "adsReturned": 192,
       "curatedOut": 0,
@@ -362,7 +362,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 888
+      "citations": 887
     },
     {
       "bibcode": "2013Sci...339..668Z",
@@ -371,7 +371,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 452
+      "citations": 454
     },
     {
       "bibcode": "2015SciA....1E0852N",
@@ -398,7 +398,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 182
+      "citations": 181
     },
     {
       "bibcode": "2013Sci...340.1552M",
@@ -416,7 +416,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 179
+      "citations": 180
     },
     {
       "bibcode": "2013JGRE..118.1415K",
@@ -425,7 +425,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2013,
-      "citations": 178
+      "citations": 179
     },
     {
       "bibcode": "2017Icar..283..146W",
@@ -455,6 +455,15 @@
       "citations": 161
     },
     {
+      "bibcode": "2013JGRE..118.1676L",
+      "title": "High‒degree gravity models from GRAIL primary mission data",
+      "firstAuthor": "Lemoine, Frank G.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 140
+    },
+    {
       "bibcode": "2015JGRE..120..869L",
       "title": "Lunar central peak mineralogy and iron content using the Kaguya Multiband Imager: Reassessment of the compositional structure of the lunar crust",
       "firstAuthor": "Lemelin, Myriam",
@@ -462,15 +471,6 @@
       "authorCount": null,
       "year": 2015,
       "citations": 140
-    },
-    {
-      "bibcode": "2013JGRE..118.1676L",
-      "title": "High‒degree gravity models from GRAIL primary mission data",
-      "firstAuthor": "Lemoine, Frank G.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2013,
-      "citations": 139
     },
     {
       "bibcode": "2012JGRE..11711005J",
@@ -500,18 +500,18 @@
       "citations": 127
     },
     {
-      "bibcode": "2013JGRE..118.1789Z",
-      "title": "A 3-D numerical study of the thermal evolution of the Moon after cumulate mantle overturn: The importance of rheology and core solidification",
-      "firstAuthor": "Zhang, Nan",
-      "authors": null,
-      "authorCount": null,
-      "year": 2013,
-      "citations": 121
-    },
-    {
       "bibcode": "2013SSRv..178....3Z",
       "title": "Gravity Recovery and Interior Laboratory (GRAIL): Mapping the Lunar Interior from Crust to Core",
       "firstAuthor": "Zuber, Maria T.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2013,
+      "citations": 124
+    },
+    {
+      "bibcode": "2013JGRE..118.1789Z",
+      "title": "A 3-D numerical study of the thermal evolution of the Moon after cumulate mantle overturn: The importance of rheology and core solidification",
+      "firstAuthor": "Zhang, Nan",
       "authors": null,
       "authorCount": null,
       "year": 2013,
@@ -533,7 +533,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 111
+      "citations": 112
     }
   ],
   "papersFile": {

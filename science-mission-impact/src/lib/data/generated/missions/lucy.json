@@ -3,7 +3,7 @@
   "inclusion": {
     "date": "2038-10-01",
     "basis": "window",
-    "asOf": "2026-11-17"
+    "asOf": "2026-11-18"
   },
   "name": "Lucy",
   "fullName": "Lucy",
@@ -37,12 +37,12 @@
     "m": 2.4,
     "i100": 0,
     "g": 18,
-    "tori": 1.005,
-    "riq": 250
+    "tori": 1.03,
+    "riq": 253
   },
   "facts": {
     "papers": 50,
-    "citations": 411,
+    "citations": 412,
     "publicationYears": [
       2022,
       2025
@@ -68,13 +68,13 @@
       24,
       66,
       182,
-      139
+      140
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 411,
-      "observed": 411,
+      "expected": 412,
+      "observed": 412,
       "missing": 0
     }
   },
@@ -133,14 +133,14 @@
   "ranks": {
     "full": {
       "bins": [
-        0.711,
-        1.213,
-        2.266,
-        0.867,
-        1.37,
-        2.573,
-        2.286,
-        3.714,
+        0.752,
+        0.754,
+        2.733,
+        0.846,
+        1.418,
+        2.497,
+        2.398,
+        3.602,
         1,
         0
       ],
@@ -148,14 +148,14 @@
     },
     "window": {
       "bins": [
-        14.462,
-        9.849,
-        3.55,
-        4.139,
-        3.717,
-        3.283,
-        5.156,
-        2.844,
+        14.722,
+        9.121,
+        4.07,
+        4.088,
+        3.736,
+        3.264,
+        5.193,
+        2.807,
         1,
         2
       ],
@@ -163,11 +163,11 @@
     },
     "lifetime": {
       "bins": [
-        13.852,
-        12.246,
-        4.791,
-        6.816,
-        4.295,
+        13.626,
+        11.5,
+        5.656,
+        6.888,
+        4.329,
         5,
         1,
         1,
@@ -180,7 +180,7 @@
   "full": {
     "papers": 16,
     "outputBasis": "measured",
-    "citations": 173,
+    "citations": 174,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": 0,
@@ -207,7 +207,7 @@
       "m": 4.702
     },
     "spread": {
-      "mean": 10.813,
+      "mean": 10.875,
       "median": 9.5,
       "uncited": 0,
       "i10": 8,
@@ -217,9 +217,9 @@
   "window": {
     "papers": 50,
     "outputBasis": "measured",
-    "citations": 409,
+    "citations": 410,
     "top10": 2,
-    "top10ShareOfDivision": 0.00369,
+    "top10ShareOfDivision": 0.00363,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -244,8 +244,8 @@
       "m": 0.873
     },
     "spread": {
-      "mean": 8.18,
-      "median": 3,
+      "mean": 8.2,
+      "median": 3.5,
       "uncited": 10,
       "i10": 16,
       "i100": 0
@@ -254,7 +254,7 @@
   "lifetime": {
     "papers": 50,
     "outputBasis": "measured",
-    "citations": 411,
+    "citations": 412,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": null,
@@ -267,8 +267,8 @@
       "date": null
     },
     "spread": {
-      "mean": 8.22,
-      "median": 3,
+      "mean": 8.24,
+      "median": 3.5,
       "uncited": 10,
       "i10": 16,
       "i100": 0
@@ -278,7 +278,7 @@
     "arms": "((abs:\"Lucy\" AND (abs:\"Trojan asteroid\" OR abs:\"L'LORRI\" OR abs:\"L'Ralph\" OR abs:\"L'TES\" OR abs:\"Eurybates\" OR abs:\"Polymele\" OR abs:\"Leucus\" OR abs:\"Orus\" OR abs:\"Patroclus\" OR abs:\"Dinkinesh\" OR abs:\"Discovery mission\")) AND NOT abs:\"Lucy-Richardson\")",
     "filters": "property:refereed AND doctype:article AND pubdate:[2022-02 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28abs%3A%22Lucy%22+AND+%28abs%3A%22Trojan+asteroid%22+OR+abs%3A%22L%27LORRI%22+OR+abs%3A%22L%27Ralph%22+OR+abs%3A%22L%27TES%22+OR+abs%3A%22Eurybates%22+OR+abs%3A%22Polymele%22+OR+abs%3A%22Leucus%22+OR+abs%3A%22Orus%22+OR+abs%3A%22Patroclus%22+OR+abs%3A%22Dinkinesh%22+OR+abs%3A%22Discovery+mission%22%29%29+AND+NOT+abs%3A%22Lucy-Richardson%22%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2022-02+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:01:18.326751+00:00",
+    "fetchedAt": "2026-11-18T18:19:55.648139+00:00",
     "reconciliation": {
       "adsReturned": 50,
       "curatedOut": 0,

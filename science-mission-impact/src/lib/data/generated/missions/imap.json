@@ -3,7 +3,7 @@
   "inclusion": {
     "date": "2033-10-01",
     "basis": "window",
-    "asOf": "2026-11-17"
+    "asOf": "2026-11-18"
   },
   "name": "IMAP",
   "fullName": "Interstellar Mapping and Acceleration Probe",
@@ -33,16 +33,16 @@
     }
   },
   "indices": {
-    "h": 2,
-    "m": 2,
+    "h": 3,
+    "m": 3,
     "i100": 0,
     "g": 3,
     "tori": 0.038,
     "riq": 97
   },
   "facts": {
-    "papers": 13,
-    "citations": 13,
+    "papers": 14,
+    "citations": 16,
     "publicationYears": [
       2026,
       2026
@@ -53,23 +53,23 @@
       2026
     ],
     "papers": [
-      13
+      14
     ],
     "citations": [
-      13
+      16
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 13,
-      "observed": 13,
+      "expected": 16,
+      "observed": 16,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 13,
+    "papers": 14,
     "us": {
-      "mapped": 11,
+      "mapped": 12,
       "top": [
         {
           "name": "Princeton University, New Jersey",
@@ -86,7 +86,7 @@
       ]
     },
     "world": {
-      "mapped": 13,
+      "mapped": 14,
       "top": [
         {
           "name": "Princeton University, New Jersey",
@@ -136,9 +136,9 @@
     },
     "window": {
       "bins": [
-        8.027,
-        3.448,
-        1.525,
+        8.116,
+        3.874,
+        2.01,
         0,
         0,
         0,
@@ -151,9 +151,9 @@
     },
     "lifetime": {
       "bins": [
-        8.102,
-        3.782,
-        1.116,
+        8.169,
+        4.588,
+        1.243,
         0,
         0,
         0,
@@ -199,9 +199,9 @@
     }
   },
   "window": {
-    "papers": 13,
+    "papers": 14,
     "outputBasis": "measured",
-    "citations": 13,
+    "citations": 16,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": 0,
@@ -223,22 +223,22 @@
       "citationBuckets": 8
     },
     "indices": {
-      "h": 2,
+      "h": 3,
       "g": 3,
-      "m": 0.5
+      "m": 0.75
     },
     "spread": {
-      "mean": 1,
-      "median": 0,
-      "uncited": 7,
+      "mean": 1.143,
+      "median": 1,
+      "uncited": 6,
       "i10": 0,
       "i100": 0
     }
   },
   "lifetime": {
-    "papers": 13,
+    "papers": 14,
     "outputBasis": "measured",
-    "citations": 13,
+    "citations": 16,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": null,
@@ -251,9 +251,9 @@
       "date": null
     },
     "spread": {
-      "mean": 1,
-      "median": 0,
-      "uncited": 7,
+      "mean": 1.143,
+      "median": 1,
+      "uncited": 6,
       "i10": 0,
       "i100": 0
     }
@@ -262,15 +262,15 @@
     "arms": "((=abs:\"Interstellar Mapping and Acceleration Probe\" OR (abs:\"IMAP\" AND (abs:\"interstellar\" OR abs:\"heliosphere\" OR abs:\"solar wind\" OR abs:\"CoDICE\" OR abs:\"IDEX\" OR abs:\"GLOWS\"))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2026-03 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Interstellar+Mapping+and+Acceleration+Probe%22+OR+%28abs%3A%22IMAP%22+AND+%28abs%3A%22interstellar%22+OR+abs%3A%22heliosphere%22+OR+abs%3A%22solar+wind%22+OR+abs%3A%22CoDICE%22+OR+abs%3A%22IDEX%22+OR+abs%3A%22GLOWS%22%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2026-03+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:13:41.233337+00:00",
+    "fetchedAt": "2026-11-18T18:31:15.604007+00:00",
     "reconciliation": {
-      "adsReturned": 13,
+      "adsReturned": 14,
       "curatedOut": 0,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
       "duplicates": 0,
-      "final": 13
+      "final": 14
     }
   },
   "curation": {
@@ -297,18 +297,18 @@
       "citations": 3
     },
     {
-      "bibcode": "2026ApJ...999...11G",
-      "title": "Solar Wind Forecasting for Long-term Variations of the Global Heliosphere",
-      "firstAuthor": "Gasser, Jonathan",
-      "authors": null,
-      "authorCount": null,
-      "year": 2026,
-      "citations": 2
-    },
-    {
       "bibcode": "2026SSRv..222...44H",
       "title": "The IMAP Magnetometer",
       "firstAuthor": "Horbury, T. S.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2026,
+      "citations": 3
+    },
+    {
+      "bibcode": "2026ApJ...999...11G",
+      "title": "Solar Wind Forecasting for Long-term Variations of the Global Heliosphere",
+      "firstAuthor": "Gasser, Jonathan",
       "authors": null,
       "authorCount": null,
       "year": 2026,
@@ -324,9 +324,27 @@
       "citations": 1
     },
     {
+      "bibcode": "2026SSRv..222...45S",
+      "title": "The Solar Wind Electron (SWE) Instrument for the Interstellar Mapping and Acceleration Probe Mission",
+      "firstAuthor": "Skoug, R. M.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2026,
+      "citations": 1
+    },
+    {
       "bibcode": "2027ApJS..288....1P",
       "title": "Reconstructed Evolution of Latitudinal Profiles of the Solar Wind during the Past 60 yr",
       "firstAuthor": "Porowski, C.",
+      "authors": null,
+      "authorCount": null,
+      "year": 2027,
+      "citations": 1
+    },
+    {
+      "bibcode": "2027ApJS..288....3C",
+      "title": "Correlation of Diffusion Upstream of Shocks with Their Magnetic Compression: An Application of IMAP's Living Catalog of Interplanetary Shocks",
+      "firstAuthor": "Cuesta, M. E.",
       "authors": null,
       "authorCount": null,
       "year": 2027,
@@ -342,18 +360,18 @@
       "citations": 0
     },
     {
-      "bibcode": "2026SSRv..222...45S",
-      "title": "The Solar Wind Electron (SWE) Instrument for the Interstellar Mapping and Acceleration Probe Mission",
-      "firstAuthor": "Skoug, R. M.",
+      "bibcode": "2026SSRv..222...76K",
+      "title": "In-Situ Mass Spectrometry of Interstellar Dust in Space Missions: A Novel Approach to Study the Physical and Chemical Properties of the Local Interstellar Cloud",
+      "firstAuthor": "Kimura, Hiroshi",
       "authors": null,
       "authorCount": null,
       "year": 2026,
       "citations": 0
     },
     {
-      "bibcode": "2026SSRv..222...76K",
-      "title": "In-Situ Mass Spectrometry of Interstellar Dust in Space Missions: A Novel Approach to Study the Physical and Chemical Properties of the Local Interstellar Cloud",
-      "firstAuthor": "Kimura, Hiroshi",
+      "bibcode": "2026SoPh..301..170L",
+      "title": "Solar Polar Field Reversal Influences on the Solar Wind During Weak Polar Field Cycles 24 and 25",
+      "firstAuthor": "Luhmann, J. G.",
       "authors": null,
       "authorCount": null,
       "year": 2026,
@@ -378,15 +396,6 @@
       "citations": 0
     },
     {
-      "bibcode": "2027ApJS..288....3C",
-      "title": "Correlation of Diffusion Upstream of Shocks with Their Magnetic Compression: An Application of IMAP's Living Catalog of Interplanetary Shocks",
-      "firstAuthor": "Cuesta, M. E.",
-      "authors": null,
-      "authorCount": null,
-      "year": 2027,
-      "citations": 0
-    },
-    {
       "bibcode": "2027ApJS..288....5Z",
       "title": "Persistent Sub-MeV Ion Enhancement Downstream of an Interplanetary Shock: Multispacecraft Observations near L1",
       "firstAuthor": "Zhao, L.-L.",
@@ -397,6 +406,6 @@
     }
   ],
   "papersFile": {
-    "rows": 13
+    "rows": 14
   }
 }

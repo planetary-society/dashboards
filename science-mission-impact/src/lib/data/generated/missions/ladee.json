@@ -32,12 +32,12 @@
     "m": 1.923,
     "i100": 3,
     "g": 40,
-    "tori": 12.469,
-    "riq": 271
+    "tori": 12.687,
+    "riq": 273
   },
   "facts": {
-    "papers": 75,
-    "citations": 1776,
+    "papers": 73,
+    "citations": 1781,
     "publicationYears": [
       2014,
       2026
@@ -60,10 +60,10 @@
       2026
     ],
     "papers": [
-      10,
+      9,
       9,
       14,
-      8,
+      7,
       6,
       5,
       3,
@@ -76,8 +76,8 @@
     ],
     "citations": [
       9,
-      35,
-      101,
+      37,
+      102,
       64,
       112,
       130,
@@ -87,20 +87,20 @@
       261,
       206,
       176,
-      182
+      184
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 1776,
-      "observed": 1776,
+      "expected": 1781,
+      "observed": 1781,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 75,
+    "papers": 73,
     "us": {
-      "mapped": 57,
+      "mapped": 56,
       "top": [
         {
           "name": "University of Colorado, Boulder",
@@ -117,7 +117,7 @@
       ]
     },
     "world": {
-      "mapped": 70,
+      "mapped": 69,
       "top": [
         {
           "name": "University of Colorado, Boulder",
@@ -135,7 +135,7 @@
     }
   },
   "fullAffiliations": {
-    "papers": 24,
+    "papers": 23,
     "us": {
       "mapped": 19,
       "top": [
@@ -188,11 +188,11 @@
   "ranks": {
     "full": {
       "bins": [
-        4.718,
-        2.216,
-        1.066,
-        2.079,
-        2.921,
+        3.509,
+        2.525,
+        0.966,
+        2.082,
+        2.918,
         2,
         2,
         3,
@@ -203,14 +203,14 @@
     },
     "window": {
       "bins": [
-        4.767,
-        2.221,
-        0.22,
-        3.358,
-        2.434,
-        1.877,
-        2.241,
-        3.882,
+        3.68,
+        2.32,
+        0.367,
+        3.011,
+        2.622,
+        2,
+        2.329,
+        3.671,
         1,
         0
       ],
@@ -218,24 +218,24 @@
     },
     "lifetime": {
       "bins": [
-        11.133,
-        9.867,
-        8,
-        7.529,
-        3.861,
-        10.417,
-        7.193,
-        7,
-        5.361,
-        4.639
+        9.157,
+        9.316,
+        8.527,
+        7.641,
+        3.676,
+        10.665,
+        7.017,
+        6.513,
+        6.526,
+        3.962
       ],
       "top1": 0
     }
   },
   "full": {
-    "papers": 24,
+    "papers": 23,
     "outputBasis": "measured",
-    "citations": 240,
+    "citations": 243,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": 0,
@@ -262,17 +262,17 @@
       "m": 4.141
     },
     "spread": {
-      "mean": 10,
-      "median": 7.5,
-      "uncited": 4,
+      "mean": 10.565,
+      "median": 8,
+      "uncited": 2,
       "i10": 11,
       "i100": 0
     }
   },
   "window": {
-    "papers": 22,
+    "papers": 21,
     "outputBasis": "measured",
-    "citations": 231,
+    "citations": 234,
     "top10": 0,
     "top10ShareOfDivision": 0,
     "top1": 0,
@@ -299,19 +299,19 @@
       "m": 4.286
     },
     "spread": {
-      "mean": 10.5,
-      "median": 9,
-      "uncited": 4,
+      "mean": 11.143,
+      "median": 10,
+      "uncited": 2,
       "i10": 11,
       "i100": 0
     }
   },
   "lifetime": {
-    "papers": 75,
+    "papers": 73,
     "outputBasis": "measured",
-    "citations": 1776,
-    "top10": 3.972,
-    "top10ShareOfDivision": 0.00252,
+    "citations": 1781,
+    "top10": 3.295,
+    "top10ShareOfDivision": 0.00209,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -322,9 +322,9 @@
       "date": "2014-12-00"
     },
     "spread": {
-      "mean": 23.68,
-      "median": 14,
-      "uncited": 9,
+      "mean": 24.397,
+      "median": 16,
+      "uncited": 7,
       "i10": 42,
       "i100": 3
     }
@@ -333,15 +333,15 @@
     "arms": "((=abs:\"Lunar Atmosphere and Dust Environment Explorer\" OR ((abs:LADEE OR abs:LDEX OR =abs:\"Lunar Dust Experiment\") AND abs:(Moon OR lunar OR dust))))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2013-12 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%3Dabs%3A%22Lunar+Atmosphere+and+Dust+Environment+Explorer%22+OR+%28%28abs%3ALADEE+OR+abs%3ALDEX+OR+%3Dabs%3A%22Lunar+Dust+Experiment%22%29+AND+abs%3A%28Moon+OR+lunar+OR+dust%29%29%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2013-12+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:00:40.958269+00:00",
+    "fetchedAt": "2026-11-18T18:19:16.393381+00:00",
     "reconciliation": {
       "adsReturned": 78,
       "curatedOut": 3,
       "curatedIn": 0,
       "libraryOut": 0,
-      "otherOut": 0,
+      "otherOut": 2,
       "duplicates": 0,
-      "final": 75
+      "final": 73
     }
   },
   "curation": {
@@ -407,7 +407,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 101
+      "citations": 103
     },
     {
       "bibcode": "2015GeoRL..42.3723B",
@@ -479,7 +479,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 52
+      "citations": 53
     },
     {
       "bibcode": "2014SSRv..185...27M",
@@ -564,6 +564,6 @@
     }
   ],
   "papersFile": {
-    "rows": 75
+    "rows": 73
   }
 }

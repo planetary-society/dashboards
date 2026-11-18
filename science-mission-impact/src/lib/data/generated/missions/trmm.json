@@ -30,14 +30,14 @@
   "indices": {
     "h": 147,
     "m": 5.069,
-    "i100": 259,
+    "i100": 260,
     "g": 250,
-    "tori": 934.288,
-    "riq": 1054
+    "tori": 942.9,
+    "riq": 1058
   },
   "facts": {
-    "papers": 3024,
-    "citations": 130637,
+    "papers": 3023,
+    "citations": 130742,
     "publicationYears": [
       1998,
       2026
@@ -94,7 +94,7 @@
       142,
       157,
       149,
-      197,
+      196,
       201,
       205,
       191,
@@ -119,34 +119,34 @@
       1337,
       1704,
       1934,
-      2082,
-      2300,
+      2089,
+      2299,
       2812,
-      3268,
-      3977,
-      4636,
-      5306,
-      6203,
-      8078,
+      3265,
+      3973,
+      4683,
+      5409,
+      6208,
+      8077,
       8813,
-      10331,
-      11861,
-      12444,
-      10682,
-      10354,
-      10155,
-      8298
+      10319,
+      11854,
+      12446,
+      10678,
+      10355,
+      10141,
+      8284
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 130637,
-      "observed": 130637,
+      "expected": 130742,
+      "observed": 130742,
       "missing": 0
     }
   },
   "affiliations": {
-    "papers": 3024,
+    "papers": 3023,
     "us": {
       "mapped": 910,
       "top": [
@@ -183,7 +183,7 @@
     }
   },
   "fullAffiliations": {
-    "papers": 1625,
+    "papers": 1624,
     "us": {
       "mapped": 577,
       "top": [
@@ -231,63 +231,63 @@
     ],
     "authorCount": 9,
     "year": 2007,
-    "citations": 5537
+    "citations": 5547
   },
   "ranks": {
     "full": {
       "bins": [
-        205.988,
-        201.624,
-        177.836,
-        162.337,
-        161.667,
-        151.583,
-        141.602,
-        149.957,
-        151.573,
-        120.834
+        206.019,
+        200.376,
+        178.765,
+        161.828,
+        162.534,
+        149.935,
+        141.233,
+        149.791,
+        152.267,
+        121.252
       ],
       "top1": 14
     },
     "window": {
       "bins": [
-        25.467,
-        21.749,
-        29.12,
-        26.774,
-        30.346,
-        16.639,
-        16.66,
-        15.085,
-        10.302,
-        14.858
+        25.615,
+        21.807,
+        29.138,
+        26.73,
+        30.281,
+        16.548,
+        16.81,
+        14.984,
+        10.268,
+        14.82
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        161.192,
-        246.454,
-        260.73,
-        270.818,
-        296.185,
-        315.272,
-        342.085,
-        340.429,
-        400.271,
-        390.563
+        159.385,
+        246.176,
+        260.697,
+        271.421,
+        295.585,
+        314.219,
+        344.107,
+        339.651,
+        401.864,
+        389.896
       ],
       "top1": 43
     }
   },
   "full": {
-    "papers": 1625,
+    "papers": 1624,
     "outputBasis": "measured",
-    "citations": 16564,
-    "top10": 102.734,
-    "top10ShareOfDivision": 0.02624,
+    "citations": 16621,
+    "top10": 103.222,
+    "top10ShareOfDivision": 0.02639,
     "top1": 9.417,
-    "top1ShareOfDivision": 0.02406,
+    "top1ShareOfDivision": 0.02407,
     "first": {
       "state": "reached",
       "yearsFromScienceStart": 0.479,
@@ -310,10 +310,10 @@
       "m": 2.225
     },
     "spread": {
-      "mean": 10.193,
+      "mean": 10.235,
       "median": 6,
-      "uncited": 161,
-      "i10": 556,
+      "uncited": 160,
+      "i10": 558,
       "i100": 8
     }
   },
@@ -321,8 +321,8 @@
     "papers": 207,
     "outputBasis": "measured",
     "citations": 2026,
-    "top10": 13.858,
-    "top10ShareOfDivision": 0.0142,
+    "top10": 13.82,
+    "top10ShareOfDivision": 0.01417,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -355,11 +355,11 @@
     }
   },
   "lifetime": {
-    "papers": 3024,
+    "papers": 3023,
     "outputBasis": "measured",
-    "citations": 130637,
-    "top10": 328.76,
-    "top10ShareOfDivision": 0.06289,
+    "citations": 130742,
+    "top10": 328.2,
+    "top10ShareOfDivision": 0.06276,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -370,26 +370,26 @@
       "date": "1998-06-00"
     },
     "spread": {
-      "mean": 43.2,
+      "mean": 43.249,
       "median": 19,
       "uncited": 123,
       "i10": 2083,
-      "i100": 259
+      "i100": 260
     }
   },
   "query": {
     "arms": "(((abs:\"TRMM\" AND abs:\"satellite\") OR =abs:\"Tropical Rainfall Measuring Mission\"))",
     "filters": "property:refereed AND doctype:article AND pubdate:[1998-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28abs%3A%22TRMM%22+AND+abs%3A%22satellite%22%29+OR+%3Dabs%3A%22Tropical+Rainfall+Measuring+Mission%22%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B1998-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:03:32.024850+00:00",
+    "fetchedAt": "2026-11-18T18:22:01.032982+00:00",
     "reconciliation": {
       "adsReturned": 3029,
       "curatedOut": 0,
       "curatedIn": 0,
       "libraryOut": 0,
       "otherOut": 0,
-      "duplicates": 5,
-      "final": 3024
+      "duplicates": 6,
+      "final": 3023
     }
   },
   "curation": {
@@ -404,7 +404,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2007,
-      "citations": 5537
+      "citations": 5547
     },
     {
       "bibcode": "2010ACP....1011707V",
@@ -413,7 +413,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 2114
+      "citations": 2116
     },
     {
       "bibcode": "1998JAtOT..15..809K",
@@ -422,7 +422,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1998,
-      "citations": 1678
+      "citations": 1683
     },
     {
       "bibcode": "2019BAMS..100..473B",
@@ -431,7 +431,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2019,
-      "citations": 1258
+      "citations": 1257
     },
     {
       "bibcode": "2013JGRG..118..317G",
@@ -449,7 +449,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 970
+      "citations": 972
     },
     {
       "bibcode": "2000BAMS...81.2035S",
@@ -458,7 +458,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 938
+      "citations": 939
     },
     {
       "bibcode": "2000JApMe..39.1965K",
@@ -470,22 +470,22 @@
       "citations": 844
     },
     {
-      "bibcode": "2008JGRF..113.1002O",
-      "title": "Multisensor historical climatology of satellite-derived global land surface moisture",
-      "firstAuthor": "Owe, Manfred",
-      "authors": null,
-      "authorCount": null,
-      "year": 2008,
-      "citations": 683
-    },
-    {
       "bibcode": "2000JApMe..39.2038I",
       "title": "Rain-Profiling Algorithm for the TRMM Precipitation Radar.",
       "firstAuthor": "Iguchi, Toshio",
       "authors": null,
       "authorCount": null,
       "year": 2000,
-      "citations": 682
+      "citations": 684
+    },
+    {
+      "bibcode": "2008JGRF..113.1002O",
+      "title": "Multisensor historical climatology of satellite-derived global land surface moisture",
+      "firstAuthor": "Owe, Manfred",
+      "authors": null,
+      "authorCount": null,
+      "year": 2008,
+      "citations": 684
     },
     {
       "bibcode": "2007ITGRS..45.2259K",
@@ -503,7 +503,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 590
+      "citations": 592
     },
     {
       "bibcode": "1999GeoRL..26.3105R",
@@ -512,7 +512,7 @@
       "authors": null,
       "authorCount": null,
       "year": 1999,
-      "citations": 579
+      "citations": 580
     },
     {
       "bibcode": "2003JCli...16.1456N",
@@ -521,7 +521,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2003,
-      "citations": 577
+      "citations": 576
     },
     {
       "bibcode": "2001JApMe..40.1801K",
@@ -530,7 +530,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2001,
-      "citations": 561
+      "citations": 559
     },
     {
       "bibcode": "2010RSEnv.114.2875R",
@@ -539,7 +539,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2010,
-      "citations": 509
+      "citations": 512
     },
     {
       "bibcode": "2006GeoRL..33.8405B",
@@ -548,7 +548,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2006,
-      "citations": 499
+      "citations": 500
     },
     {
       "bibcode": "2020RSEnv.24011697T",
@@ -566,7 +566,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 475
+      "citations": 476
     },
     {
       "bibcode": "2010BGeo....7.1171G",
@@ -579,6 +579,6 @@
     }
   ],
   "papersFile": {
-    "rows": 3024
+    "rows": 3023
   }
 }

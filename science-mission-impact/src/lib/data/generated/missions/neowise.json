@@ -30,14 +30,14 @@
   "indices": {
     "h": 33,
     "m": 2.063,
-    "i100": 9,
+    "i100": 10,
     "g": 65,
-    "tori": 14.864,
-    "riq": 240
+    "tori": 15.313,
+    "riq": 244
   },
   "facts": {
     "papers": 109,
-    "citations": 4490,
+    "citations": 4505,
     "publicationYears": [
       2011,
       2026
@@ -84,9 +84,9 @@
       12,
       100,
       112,
-      205,
+      204,
       249,
-      212,
+      214,
       237,
       368,
       285,
@@ -96,13 +96,13 @@
       367,
       436,
       464,
-      461
+      475
     ],
     "partialFromYear": 2026,
     "citationCoverage": {
       "status": "complete",
-      "expected": 4490,
-      "observed": 4490,
+      "expected": 4505,
+      "observed": 4505,
       "missing": 0
     }
   },
@@ -192,19 +192,19 @@
     ],
     "authorCount": 35,
     "year": 2014,
-    "citations": 808
+    "citations": 813
   },
   "ranks": {
     "full": {
       "bins": [
-        4.718,
-        3.216,
-        6.187,
-        11.038,
-        7.855,
-        13.417,
-        8.125,
-        5.445,
+        4.754,
+        3.279,
+        6.437,
+        10.858,
+        7.98,
+        13.103,
+        7.824,
+        5.764,
         10,
         1
       ],
@@ -212,30 +212,30 @@
     },
     "window": {
       "bins": [
-        4.767,
-        4.208,
-        11.271,
-        10.451,
-        13.043,
-        7.137,
-        8.123,
-        7.8,
-        2.2,
+        4.84,
+        4.684,
+        11.678,
+        9.866,
+        12.473,
+        7.546,
+        7.914,
+        8.21,
+        1.79,
         1
       ],
       "top1": 0
     },
     "lifetime": {
       "bins": [
-        11.422,
-        7.868,
-        8.573,
-        17.195,
-        8.331,
-        14.61,
-        11.484,
-        9.718,
-        9.798,
+        11.157,
+        7.789,
+        9.027,
+        17.309,
+        8.353,
+        14.364,
+        11.611,
+        9.901,
+        9.488,
         10
       ],
       "top1": 3
@@ -244,7 +244,7 @@
   "full": {
     "papers": 71,
     "outputBasis": "measured",
-    "citations": 787,
+    "citations": 788,
     "top10": 1,
     "top10ShareOfDivision": 0.00092,
     "top1": 0,
@@ -271,7 +271,7 @@
       "m": 1.5
     },
     "spread": {
-      "mean": 11.085,
+      "mean": 11.099,
       "median": 9,
       "uncited": 4,
       "i10": 33,
@@ -281,9 +281,9 @@
   "window": {
     "papers": 70,
     "outputBasis": "measured",
-    "citations": 778,
+    "citations": 779,
     "top10": 1,
-    "top10ShareOfDivision": 0.00212,
+    "top10ShareOfDivision": 0.00213,
     "top1": 0,
     "top1ShareOfDivision": 0,
     "first": {
@@ -308,7 +308,7 @@
       "m": 1.58
     },
     "spread": {
-      "mean": 11.114,
+      "mean": 11.129,
       "median": 9,
       "uncited": 4,
       "i10": 33,
@@ -318,9 +318,9 @@
   "lifetime": {
     "papers": 109,
     "outputBasis": "measured",
-    "citations": 4490,
+    "citations": 4505,
     "top10": 10,
-    "top10ShareOfDivision": 0.00635,
+    "top10ShareOfDivision": 0.00634,
     "top1": null,
     "top1ShareOfDivision": null,
     "first": {
@@ -331,18 +331,18 @@
       "date": "2011-11-00"
     },
     "spread": {
-      "mean": 41.193,
+      "mean": 41.33,
       "median": 18,
-      "uncited": 10,
+      "uncited": 9,
       "i10": 69,
-      "i100": 9
+      "i100": 10
     }
   },
   "query": {
     "arms": "((((((abs:NEOWISE AND (abs:infrared OR abs:survey OR abs:telescope OR abs:mission OR abs:photometry OR abs:asteroid OR abs:data OR abs:variability OR abs:WISE)) AND NOT (=abs:\"C 2020 F3 NEOWISE\" OR =abs:\"comet NEOWISE\" OR =abs:\"C 2014 N3 NEOWISE\")) OR ((abs:NEOWISE AND (abs:infrared OR abs:survey OR abs:telescope OR abs:mission OR abs:photometry OR abs:asteroid OR abs:data OR abs:variability OR abs:WISE)) AND (=abs:\"NEOWISE data\" OR =abs:\"NEOWISE observations\" OR =abs:\"NEOWISE mission\" OR =abs:\"NEOWISE survey\" OR =abs:\"NEOWISE images\" OR =abs:\"NEOWISE space telescope\" OR =abs:\"NEOWISE program\" OR =abs:\"Near Earth Object program of the Wide Field Infrared Survey Explorer\"))) AND (abs:asteroid OR abs:comet OR =abs:NEOs OR =abs:\"near-Earth objects\" OR =abs:\"minor planet\" OR =abs:\"minor planets\" OR =abs:\"small body\" OR =abs:\"small bodies\" OR abs:trojan OR =abs:\"planetary defense\" OR =abs:\"Kuiper belt\" OR =abs:\"trans-Neptunian\" OR abs:Neptune OR abs:regolith OR =abs:\"Planet Nine\") AND NOT (abs:AGN OR abs:quasar OR abs:YSO OR abs:protostar OR abs:\"tidal disruption event\" OR abs:supernova OR abs:\"brown dwarf\" OR abs:\"white dwarf\" OR abs:maser OR abs:\"star-forming\" OR abs:\"black hole\")) AND collection:astronomy))",
     "filters": "property:refereed AND doctype:article AND pubdate:[2014-01 TO 2040-01] AND NOT bibstem:(\"A&R\" OR \"ACPD\" OR \"AIASJ\" OR \"AMTD\" OR \"AeAm\" OR \"AirSp\" OR \"AsNow\" OR \"AsUAI\" OR \"AvWST\" OR \"BGD\" OR \"C&E\" OR \"C&T\" OR \"CAPJ\" OR \"CliPD\" OR \"E&S\" OR \"ENews\" OR \"ESDD\" OR \"ESSDD\" OR \"ESuDD\" OR \"GID\" OR \"GMDD\" OR \"GeCAS\" OR \"HESSD\" OR \"IrAJ\" OR \"JCos\" OR \"JRASC\" OR \"LAstr\" OR \"MNSSA\" OR \"Met\" OR \"NHESD\" OR \"NPGD\" OR \"NewSc\" OR \"OcScD\" OR \"Orion\" OR \"PhT\" OR \"PhTea\" OR \"PhuZ\" OR \"PhyOJ\" OR \"PhyW\" OR \"PlR\" OR \"SOILD\" OR \"SciAm\" OR \"SpFl\" OR \"TCD\" OR \"ZemVs\")",
     "url": "https://scixplorer.org/search/?q=%28%28%28%28%28%28abs%3ANEOWISE+AND+%28abs%3Ainfrared+OR+abs%3Asurvey+OR+abs%3Atelescope+OR+abs%3Amission+OR+abs%3Aphotometry+OR+abs%3Aasteroid+OR+abs%3Adata+OR+abs%3Avariability+OR+abs%3AWISE%29%29+AND+NOT+%28%3Dabs%3A%22C+2020+F3+NEOWISE%22+OR+%3Dabs%3A%22comet+NEOWISE%22+OR+%3Dabs%3A%22C+2014+N3+NEOWISE%22%29%29+OR+%28%28abs%3ANEOWISE+AND+%28abs%3Ainfrared+OR+abs%3Asurvey+OR+abs%3Atelescope+OR+abs%3Amission+OR+abs%3Aphotometry+OR+abs%3Aasteroid+OR+abs%3Adata+OR+abs%3Avariability+OR+abs%3AWISE%29%29+AND+%28%3Dabs%3A%22NEOWISE+data%22+OR+%3Dabs%3A%22NEOWISE+observations%22+OR+%3Dabs%3A%22NEOWISE+mission%22+OR+%3Dabs%3A%22NEOWISE+survey%22+OR+%3Dabs%3A%22NEOWISE+images%22+OR+%3Dabs%3A%22NEOWISE+space+telescope%22+OR+%3Dabs%3A%22NEOWISE+program%22+OR+%3Dabs%3A%22Near+Earth+Object+program+of+the+Wide+Field+Infrared+Survey+Explorer%22%29%29%29+AND+%28abs%3Aasteroid+OR+abs%3Acomet+OR+%3Dabs%3ANEOs+OR+%3Dabs%3A%22near-Earth+objects%22+OR+%3Dabs%3A%22minor+planet%22+OR+%3Dabs%3A%22minor+planets%22+OR+%3Dabs%3A%22small+body%22+OR+%3Dabs%3A%22small+bodies%22+OR+abs%3Atrojan+OR+%3Dabs%3A%22planetary+defense%22+OR+%3Dabs%3A%22Kuiper+belt%22+OR+%3Dabs%3A%22trans-Neptunian%22+OR+abs%3ANeptune+OR+abs%3Aregolith+OR+%3Dabs%3A%22Planet+Nine%22%29+AND+NOT+%28abs%3AAGN+OR+abs%3Aquasar+OR+abs%3AYSO+OR+abs%3Aprotostar+OR+abs%3A%22tidal+disruption+event%22+OR+abs%3Asupernova+OR+abs%3A%22brown+dwarf%22+OR+abs%3A%22white+dwarf%22+OR+abs%3Amaser+OR+abs%3A%22star-forming%22+OR+abs%3A%22black+hole%22%29%29+AND+collection%3Aastronomy%29%29+AND+property%3Arefereed+AND+doctype%3Aarticle+AND+pubdate%3A%5B2014-01+TO+2040-01%5D+AND+NOT+bibstem%3A%28%22A%26R%22+OR+%22ACPD%22+OR+%22AIASJ%22+OR+%22AMTD%22+OR+%22AeAm%22+OR+%22AirSp%22+OR+%22AsNow%22+OR+%22AsUAI%22+OR+%22AvWST%22+OR+%22BGD%22+OR+%22C%26E%22+OR+%22C%26T%22+OR+%22CAPJ%22+OR+%22CliPD%22+OR+%22E%26S%22+OR+%22ENews%22+OR+%22ESDD%22+OR+%22ESSDD%22+OR+%22ESuDD%22+OR+%22GID%22+OR+%22GMDD%22+OR+%22GeCAS%22+OR+%22HESSD%22+OR+%22IrAJ%22+OR+%22JCos%22+OR+%22JRASC%22+OR+%22LAstr%22+OR+%22MNSSA%22+OR+%22Met%22+OR+%22NHESD%22+OR+%22NPGD%22+OR+%22NewSc%22+OR+%22OcScD%22+OR+%22Orion%22+OR+%22PhT%22+OR+%22PhTea%22+OR+%22PhuZ%22+OR+%22PhyOJ%22+OR+%22PhyW%22+OR+%22PlR%22+OR+%22SOILD%22+OR+%22SciAm%22+OR+%22SpFl%22+OR+%22TCD%22+OR+%22ZemVs%22%29&sort=date+desc",
-    "fetchedAt": "2026-11-11T00:00:20.322773+00:00",
+    "fetchedAt": "2026-11-18T18:18:48.436061+00:00",
     "reconciliation": {
       "adsReturned": 86,
       "curatedOut": 0,
@@ -550,7 +550,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 808
+      "citations": 813
     },
     {
       "bibcode": "2011ApJ...741...68M",
@@ -595,7 +595,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 115
+      "citations": 116
     },
     {
       "bibcode": "2013ApJ...770....7M",
@@ -622,7 +622,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 103
+      "citations": 102
     },
     {
       "bibcode": "2012ApJ...759L...8M",
@@ -631,7 +631,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2012,
-      "citations": 99
+      "citations": 100
     },
     {
       "bibcode": "2015ApJ...814..117N",
@@ -640,7 +640,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 84
+      "citations": 85
     },
     {
       "bibcode": "2011ApJ...736..100M",
@@ -658,7 +658,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2016,
-      "citations": 80
+      "citations": 81
     },
     {
       "bibcode": "2012ApJ...744..197G",
@@ -676,7 +676,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2014,
-      "citations": 70
+      "citations": 69
     },
     {
       "bibcode": "2015ApJ...814...85B",
@@ -685,7 +685,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2015,
-      "citations": 66
+      "citations": 67
     },
     {
       "bibcode": "2017AJ....154...53B",
@@ -694,7 +694,7 @@
       "authors": null,
       "authorCount": null,
       "year": 2017,
-      "citations": 61
+      "citations": 62
     },
     {
       "bibcode": "2021Icar..36514452H",
